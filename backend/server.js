@@ -202,6 +202,13 @@ app.get("/health", (req, res) => {
   res.json({ ok: true, message: "backend live" });
 });
 
+app.post("/api/alexa/ping", (req, res) => {
+  return res.json({
+    ok: true,
+    speech: "Mentor backend connected successfully."
+  });
+});
+
 /* -------------------- SYLLABUS API -------------------- */
 app.get("/api/syllabus", (req, res) => {
   try {
