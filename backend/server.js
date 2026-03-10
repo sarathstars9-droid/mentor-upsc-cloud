@@ -203,9 +203,10 @@ app.get("/health", (req, res) => {
 });
 
 app.post("/api/alexa/ping", (req, res) => {
+  console.log("Alexa ping received on cloud");
   return res.json({
     ok: true,
-    speech: "Mentor backend connected successfully."
+    speech: "Mentor backend connected successfully version 2."
   });
 });
 
