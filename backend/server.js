@@ -1,6 +1,7 @@
 // backend/server.js (ESM ONLY)
 // PHASE 2: Plan-photo OCR => TIME BLOCKS (start/end/subject/topic/minutes)
 // Keeps your existing syllabus + advice engine + mapping logic intact.
+// Added: Dynamic Reminder Engine registration + block start/complete APIs
 
 // ---- imports MUST be first in ESM ----
 import express from "express";
@@ -20,6 +21,14 @@ import {
   findMicroTheme,
   findTopMicroThemes,
 } from "./brain/findMicroTheme.js";
+
+import {
+  registerDaySchedule,
+  startBlock,
+  completeBlock,
+  getDay,
+  tickReminderEngine,
+} from "./reminderEngine.js";
 
 dotenv.config();
 
@@ -175,6 +184,22 @@ function markOverlaps(items) {
   }));
 }
 
+function toISOWithDate(dateStr, hhmm) {
+  const t = normTime(hhmm);
+  if (!dateStr || !t) return "";
+  return `${dateStr}T${t}:00+05:30`;
+}
+
+function blockLabelFromIndex(idx) {
+  if (idx === 0) return "First block";
+  if (idx === 1) return "Second block";
+  if (idx === 2) return "Third block";
+  if (idx === 3) return "Fourth block";
+  if (idx === 4) return "Fifth block";
+  if (idx === 5) return "Sixth block";
+  return `${idx + 1}th block`;
+}
+
 /* -------------------- APP INIT -------------------- */
 const app = express();
 
@@ -206,7 +231,7 @@ app.post("/api/alexa/ping", (req, res) => {
   console.log("Alexa ping received on cloud");
   return res.json({
     ok: true,
-    speech: "Mentor backend connected successfully version 2."
+    speech: "Mentor backend connected successfully version 2.",
   });
 });
 
@@ -470,6 +495,28 @@ Output ONLY JSON.
     const hasC1 = enrichedItems.some((x) => x.mapped?.code === "C.1");
     const csatDrill = hasC1 ? "CHECK_NUMERACY" : "NONE";
 
+    // Register only study blocks that have a start time
+    const reminderBlocks = enrichedItems
+      .filter((it) => !it.mapped?.nonStudy && it.startTime)
+      .map((it, idx) => ({
+        blockId: `B${idx + 1}`,
+        label: blockLabelFromIndex(idx),
+        subject: it.subject || "Study",
+        topic: it.topic || "",
+        startTime: toISOWithDate(safeDate, it.startTime),
+        endTime: it.endTime ? toISOWithDate(safeDate, it.endTime) : "",
+        plannedMinutes: Number(it.minutes || 0),
+      }));
+
+    const reminderRegistration =
+      reminderBlocks.length > 0
+        ? registerDaySchedule({
+            userId: "moulika",
+            dayKey: safeDate,
+            blocks: reminderBlocks,
+          })
+        : [];
+
     return res.json({
       ok: true,
       date: safeDate,
@@ -478,6 +525,11 @@ Output ONLY JSON.
       daysToPrelims: tr,
       killSwitchMode: kill,
       csatDrill,
+      reminderEngine: {
+        ok: true,
+        registeredBlocks: reminderRegistration.length,
+        blocks: reminderRegistration,
+      },
     });
   } catch (err) {
     console.error("[plan-photo ERR]", err);
@@ -562,11 +614,80 @@ app.post("/api/analyze-day", (req, res) => {
   }
 });
 
-/* -------------------- LISTEN (KEEP THIS LAST) -------------------- */
-const PORT = Number(process.env.PORT || 8787);
-const HOST = process.env.HOST || "0.0.0.0";
+/* -------------------- REMINDER ENGINE API -------------------- */
+app.post("/api/schedule/register", (req, res) => {
+  try {
+    const { dayKey, userId, blocks } = req.body || {};
 
-console.log("[BOOT] about to listen", { HOST, PORT });
+    if (!dayKey || !Array.isArray(blocks) || blocks.length === 0) {
+      return res.status(400).json({
+        ok: false,
+        message: "dayKey and blocks are required",
+      });
+    }
+
+    const saved = registerDaySchedule({ dayKey, userId, blocks });
+
+    return res.json({
+      ok: true,
+      dayKey,
+      blocks: saved,
+    });
+  } catch (err) {
+    console.error("[schedule/register ERR]", err);
+    return res.status(500).json({
+      ok: false,
+      message: String(err?.message || err),
+    });
+  }
+});
+
+app.post("/api/block/start", (req, res) => {
+  try {
+    const result = startBlock(req.body || {});
+    if (!result.ok) {
+      return res.status(400).json(result);
+    }
+    return res.json(result);
+  } catch (err) {
+    console.error("[block/start ERR]", err);
+    return res.status(500).json({
+      ok: false,
+      message: String(err?.message || err),
+    });
+  }
+});
+
+app.post("/api/block/complete", (req, res) => {
+  try {
+    const result = completeBlock(req.body || {});
+    if (!result.ok) {
+      return res.status(400).json(result);
+    }
+    return res.json(result);
+  } catch (err) {
+    console.error("[block/complete ERR]", err);
+    return res.status(500).json({
+      ok: false,
+      message: String(err?.message || err),
+    });
+  }
+});
+
+app.get("/api/day/:dayKey", (req, res) => {
+  try {
+    return res.json({
+      ok: true,
+      day: getDay(req.params.dayKey),
+    });
+  } catch (err) {
+    console.error("[day/get ERR]", err);
+    return res.status(500).json({
+      ok: false,
+      message: String(err?.message || err),
+    });
+  }
+});
 
 /* -------------------- PROXY: FRONTEND -> BACKEND -> APPS SCRIPT (NO CORS) -------------------- */
 app.post("/api/sheets", async (req, res) => {
@@ -606,6 +727,21 @@ app.post("/api/sheets", async (req, res) => {
     return res.status(500).json({ ok: false, message: String(e?.message || e) });
   }
 });
+
+/* -------------------- REMINDER ENGINE TICK -------------------- */
+setInterval(() => {
+  try {
+    tickReminderEngine();
+  } catch (err) {
+    console.error("[ReminderEngine Tick ERR]", err);
+  }
+}, 30 * 1000);
+
+/* -------------------- LISTEN (KEEP THIS LAST) -------------------- */
+const PORT = Number(process.env.PORT || 8787);
+const HOST = process.env.HOST || "0.0.0.0";
+
+console.log("[BOOT] about to listen", { HOST, PORT });
 
 app.listen(PORT, HOST, () => {
   console.log(`backend running on http://${HOST}:${PORT}`);
