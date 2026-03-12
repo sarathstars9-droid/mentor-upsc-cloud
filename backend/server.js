@@ -11,8 +11,10 @@ import OpenAI from "openai";
 import dotenv from "dotenv";
 import { detectLoops } from "./brain/loopDetector.js";
 
+
 import SYLLABUS_GRAPH_2026 from "./brain/syllabusGraph.js";
 import { buildDailyAdvice } from "./brain/adviceEngine.js";
+import { computeSyllabusProgress } from "./brain/syllabusProgressEngine.js";
 
 import {
   mapPlanItemToMicroTheme,
@@ -611,6 +613,20 @@ app.post("/api/analyze-day", (req, res) => {
     return res
       .status(500)
       .json({ ok: false, message: String(err?.message || err) });
+  }
+});
+
+app.post("/api/syllabus-progress", (req, res) => {
+  try {
+    const { blocks = [] } = req.body || {};
+    const out = computeSyllabusProgress(blocks);
+    return res.json({ ok: true, ...out });
+  } catch (err) {
+    console.error("syllabus-progress failed", err);
+    return res.status(500).json({
+      ok: false,
+      message: err?.message || "syllabus-progress failed",
+    });
   }
 });
 
