@@ -36,7 +36,6 @@ export function getDailyMotivation(completionPercent) {
 }
 
 export function getBacklogSummary(blocks = []) {
-
   let missed = 0;
   let partial = 0;
 
@@ -70,6 +69,8 @@ export function buildPlanItemMappingPath(item) {
   const m = item?.mapped;
   if (!m) return "";
 
+  if (m.path) return String(m.path);
+
   const parts = [m.gsPaper, m.gsHeading, m.macroTheme, m.microTheme].filter(Boolean);
   return parts.join(" > ");
 }
@@ -87,58 +88,107 @@ export function makeStableBlockId(dateStr, item, index) {
   return `${d}__${s}__${subj}__${index + 1}`;
 }
 
+function stringifyCompact(value) {
+  if (value == null) return "";
+  if (typeof value === "string") return value;
+  try {
+    return JSON.stringify(value);
+  } catch {
+    return "";
+  }
+}
+
 export function buildTodayBlocksFromParsed(out) {
   const items = Array.isArray(out?.items) ? out.items : [];
 
-  return items.map((item, index) => ({
-    BlockId: makeStableBlockId(out?.date || "", item, index),
-    Date: out?.date || "",
-    PlannedSubject: item?.subject || "Unknown",
-    PlannedTopic: item?.topic || "",
-    PlannedStart: item?.startTime || "",
-    PlannedEnd: item?.endTime || "",
-    PlannedMinutes: safeNumber(item?.minutes, 0),
+  return items.map((item, index) => {
+    const mapped = item?.mapped || null;
+    const topMatches = Array.isArray(mapped?.allMatches) ? mapped.allMatches : [];
 
-    ActualSubject: "",
-    ActualTopic: "",
-    ActualStart: "",
-    ActualEnd: "",
-    ActualMinutes: 0,
+    return {
+      BlockId: makeStableBlockId(out?.date || "", item, index),
+      Date: out?.date || "",
+      PlannedSubject: item?.subject || "Unknown",
+      PlannedTopic: item?.topic || "",
+      PlannedStart: item?.startTime || "",
+      PlannedEnd: item?.endTime || "",
+      PlannedMinutes: safeNumber(item?.minutes, 0),
 
-    PauseCount: 0,
-    TotalPauseMinutes: 0,
-    LastPauseAt: "",
-    LastResumeAt: "",
+      ActualSubject: "",
+      ActualTopic: "",
+      ActualStart: "",
+      ActualEnd: "",
+      ActualMinutes: 0,
 
-    Status: BLOCK_STATUS.PLANNED,
-    CompletionStatus: "",
-    TopicMatchStatus: "",
-    DelayMinutes: 0,
-    GraceState: "",
+      PauseCount: 0,
+      TotalPauseMinutes: 0,
+      LastPauseAt: "",
+      LastResumeAt: "",
 
-    OutputType: "",
-    OutputCount: 0,
-    FocusRating: "",
-    InterruptionReason: "",
-    ReviewNotes: "",
+      Status: BLOCK_STATUS.PLANNED,
+      CompletionStatus: "",
+      TopicMatchStatus: "",
+      DelayMinutes: 0,
+      GraceState: "",
 
-    BacklogBucket: "",
-    CarriedToNextDay: "no",
-    CarryTargetDate: "",
-    ParentBlockId: "",
+      OutputType: "",
+      OutputCount: 0,
+      FocusRating: "",
+      InterruptionReason: "",
+      ReviewNotes: "",
 
-    SyllabusTop1Code: item?.mapped?.code ? String(item.mapped.code) : "",
-    SyllabusTop1Path: buildPlanItemMappingPath(item),
-    Top3Codes: "",
-    Top3Paths: "",
-    Top3Names: "",
+      BacklogBucket: "",
+      CarriedToNextDay: "no",
+      CarryTargetDate: "",
+      ParentBlockId: "",
 
-    MasterySignal: "",
-    ConfidenceScore: "",
-    FakeStudyRisk: "",
+      // legacy display fields
+      SyllabusTop1Code: mapped?.code ? String(mapped.code) : "",
+      SyllabusTop1Path: buildPlanItemMappingPath(item),
+      Top3Codes: topMatches
+        .map((m) => m?.code)
+        .filter(Boolean)
+        .slice(0, 3)
+        .join(" | "),
+      Top3Paths: topMatches
+        .map((m) => m?.path)
+        .filter(Boolean)
+        .slice(0, 3)
+        .join(" | "),
+      Top3Names: topMatches
+        .map((m) => m?.name)
+        .filter(Boolean)
+        .slice(0, 3)
+        .join(" | "),
 
-    PlanSource: "photo_ocr",
-  }));
+      // Phase 2 enriched mapping fields
+      SyllabusNodeId: mapped?.syllabusNodeId || mapped?.code || "",
+      GsPaper: mapped?.gsPaper || "",
+      SubjectGroup: mapped?.subjectGroup || "",
+      MappingConfidence: safeNumber(mapped?.confidence, 0),
+      MappingTag: mapped?.tag || "",
+      MappingVersion: mapped?.mappingVersion || "",
+      MappingSubject: mapped?.subject || "",
+      MappingMicroTheme: mapped?.microTheme || "",
+      MappingSection: mapped?.section || "",
+      MappingParentTopic: mapped?.parentTopic || "",
+      MappingPath: mapped?.path || buildPlanItemMappingPath(item),
+      MappingMatchedTokens: stringifyCompact(mapped?.matchedTokens || []),
+      MappingMatchesRaw: stringifyCompact(mapped?.allMatches || []),
+      MappingChunksRaw: stringifyCompact(mapped?.chunks || []),
+      MappingIgnoredTokens: stringifyCompact(mapped?.ignoredTokens || []),
+      MappingIgnoredText: mapped?.ignoredText || "",
+      IsNonStudy: mapped?.nonStudy ? "yes" : "no",
+
+      MasterySignal: "",
+      ConfidenceScore: safeNumber(mapped?.confidence, 0),
+      FakeStudyRisk: "",
+
+      Locked: item?.locked ? "yes" : "no",
+      ApprovalRequired: out?.approvalRequired ? "yes" : "no",
+      PlanSource: "photo_ocr",
+    };
+  });
 }
 
 export function formatTimeOnly(isoString) {
@@ -241,9 +291,31 @@ export function buildScheduleBlocksPayload(blocks) {
     minutes: safeNumber(block.PlannedMinutes, 0),
     subject: block.PlannedSubject || "Unknown",
     topic: block.PlannedTopic || "",
+
+    // legacy mapping fields
     mappingCode: block.SyllabusTop1Code || "",
     mappingPath: block.SyllabusTop1Path || "",
-    topMatchesCodes: "",
+    topMatchesCodes: block.Top3Codes || "",
+
+    // Phase 2 enriched fields
+    syllabusNodeId: block.SyllabusNodeId || "",
+    gsPaper: block.GsPaper || "",
+    subjectGroup: block.SubjectGroup || "",
+    confidence: safeNumber(block.MappingConfidence, 0),
+    mappingTag: block.MappingTag || "",
+    mappingVersion: block.MappingVersion || "",
+    mappingSubject: block.MappingSubject || "",
+    mappingMicroTheme: block.MappingMicroTheme || "",
+    mappingSection: block.MappingSection || "",
+    mappingParentTopic: block.MappingParentTopic || "",
+    matchedTokens: block.MappingMatchedTokens || "[]",
+    allMatches: block.MappingMatchesRaw || "[]",
+    chunks: block.MappingChunksRaw || "[]",
+    ignoredTokens: block.MappingIgnoredTokens || "[]",
+    ignoredText: block.MappingIgnoredText || "",
+    isNonStudy: block.IsNonStudy || "no",
+    locked: block.Locked || "no",
+    approvalRequired: block.ApprovalRequired || "yes",
   }));
 }
 
@@ -340,7 +412,9 @@ export function getTimeLeakSummary(blocks) {
   const leaks = [];
 
   if (delayedStarts > 0) {
-    leaks.push(`Delay before start: ${delayedStarts} block${delayedStarts > 1 ? "s" : ""} affected`);
+    leaks.push(
+      `Delay before start: ${delayedStarts} block${delayedStarts > 1 ? "s" : ""} affected`
+    );
   }
 
   if (counts.partial > 0) {
@@ -366,7 +440,12 @@ export function getLoopFrequencySummary(blocks) {
   return [
     `Start friction: ${delayedStarts >= 2 ? "medium" : delayedStarts === 1 ? "low" : "stable"}`,
     `Pause drift: ${counts.paused >= 2 ? "medium" : counts.paused === 1 ? "low" : "stable"}`,
-    `Backlog carry risk: ${counts.missed + counts.skipped >= 2 ? "medium" : counts.missed + counts.skipped === 1 ? "low" : "stable"}`,
+    `Backlog carry risk: ${counts.missed + counts.skipped >= 2
+      ? "medium"
+      : counts.missed + counts.skipped === 1
+        ? "low"
+        : "stable"
+    }`,
   ];
 }
 

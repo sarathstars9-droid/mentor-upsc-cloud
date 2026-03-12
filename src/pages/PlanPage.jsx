@@ -46,6 +46,19 @@ async function post(action, payload = {}) {
   }
 }
 
+async function loadSyllabusRadar(blocks) {
+  const res = await fetch(`${BACKEND_URL}/api/syllabus-progress`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ blocks }),
+  });
+
+  const data = await res.json();
+  return data;
+}
+
 /* ---------------- Local Backend: Text → Syllabus Map ---------------- */
 async function mapTextToSyllabus(text) {
   const t = String(text || "").trim();
@@ -216,6 +229,26 @@ async function updateBlockAction(action, payload) {
   return post(action, { payload });
 }
 
+function SyllabusRadar({ radar }) {
+  if (!radar) return null;
+
+  return (
+    <div className="plan-card">
+      <h2 className="plan-card-title">Syllabus Coverage Radar</h2>
+
+      <div style={{ display: "grid", gap: 8, fontSize: 14 }}>
+        <div>GS1: <b>{radar.GS1 || 0}%</b></div>
+        <div>GS2: <b>{radar.GS2 || 0}%</b></div>
+        <div>GS3: <b>{radar.GS3 || 0}%</b></div>
+        <div>GS4: <b>{radar.GS4 || 0}%</b></div>
+        <div>Essay: <b>{radar.ESSAY || 0}%</b></div>
+        <div>CSAT: <b>{radar.CSAT || 0}%</b></div>
+        <div>Optional: <b>{radar.OPTIONAL || 0}%</b></div>
+      </div>
+    </div>
+  );
+}
+
 export default function PlanPage() {
   const [prelimsDate] = useState(DEFAULT_PRELIMS);
   const [mainsDate] = useState(DEFAULT_MAINS);
@@ -233,6 +266,7 @@ export default function PlanPage() {
   const [doneMin, setDoneMin] = useState(0);
   const [csatMin, setCsatMin] = useState(60);
   const [reflection, setReflection] = useState("");
+  const [syllabusRadar, setSyllabusRadar] = useState(null);
 
   const [review, setReview] = useState({
     planCompleted: "Partial",
@@ -260,6 +294,7 @@ export default function PlanPage() {
   const [todayBlocks, setTodayBlocks] = useState([]);
   const [ocrApprovalOpen, setOcrApprovalOpen] = useState(false);
   const [ocrDraftBlocks, setOcrDraftBlocks] = useState([]);
+  const [ocrPreviewReminderBlocks, setOcrPreviewReminderBlocks] = useState([]);
 
   const currentBlock =
     todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.ACTIVE) ||
@@ -339,6 +374,15 @@ export default function PlanPage() {
         }));
 
         setTodayBlocks(mapped);
+
+        try {
+          const radarData = await loadSyllabusRadar(mapped);
+          if (radarData?.radar) {
+            setSyllabusRadar(radarData.radar);
+          }
+        } catch (err) {
+          console.warn("Radar load failed", err);
+        }
       } catch (err) {
         console.error("loadBlocks failed", err);
       }
@@ -508,10 +552,10 @@ export default function PlanPage() {
         prev.map((block) =>
           block.BlockId === blockId
             ? {
-                ...block,
-                Status: BLOCK_STATUS.ACTIVE,
-                ActualStart: nowIso,
-              }
+              ...block,
+              Status: BLOCK_STATUS.ACTIVE,
+              ActualStart: nowIso,
+            }
             : block
         )
       );
@@ -542,11 +586,11 @@ export default function PlanPage() {
         prev.map((block) =>
           block.BlockId === blockId
             ? {
-                ...block,
-                Status: BLOCK_STATUS.PAUSED,
-                LastPauseAt: nowIso,
-                PauseCount: Number(block.PauseCount || 0) + 1,
-              }
+              ...block,
+              Status: BLOCK_STATUS.PAUSED,
+              LastPauseAt: nowIso,
+              PauseCount: Number(block.PauseCount || 0) + 1,
+            }
             : block
         )
       );
@@ -579,12 +623,12 @@ export default function PlanPage() {
         prev.map((block) =>
           block.BlockId === blockId
             ? {
-                ...block,
-                Status: BLOCK_STATUS.ACTIVE,
-                LastResumeAt: nowIso,
-                TotalPauseMinutes:
-                  totalPauseMinutes !== null ? totalPauseMinutes : block.TotalPauseMinutes,
-              }
+              ...block,
+              Status: BLOCK_STATUS.ACTIVE,
+              LastResumeAt: nowIso,
+              TotalPauseMinutes:
+                totalPauseMinutes !== null ? totalPauseMinutes : block.TotalPauseMinutes,
+            }
             : block
         )
       );
@@ -659,26 +703,26 @@ export default function PlanPage() {
         reviewForm.completionStatus === "completed"
           ? BLOCK_STATUS.COMPLETED
           : reviewForm.completionStatus === "partial"
-          ? BLOCK_STATUS.PARTIAL
-          : BLOCK_STATUS.MISSED;
+            ? BLOCK_STATUS.PARTIAL
+            : BLOCK_STATUS.MISSED;
 
       setTodayBlocks((prev) =>
         prev.map((block) =>
           block.BlockId === activeReviewBlock.BlockId
             ? {
-                ...block,
-                Status: finalStatus,
-                ActualEnd: actualEndIso,
-                ActualMinutes: actualMinutes,
-                CompletionStatus: reviewForm.completionStatus,
-                TopicMatchStatus: reviewForm.topicMatchStatus,
-                OutputType: reviewForm.outputType,
-                OutputCount: Number(reviewForm.outputCount || 0),
-                FocusRating: reviewForm.focusRating,
-                InterruptionReason: reviewForm.interruptionReason,
-                ReviewNotes: reviewForm.reviewNotes,
-                BacklogBucket: reviewForm.backlogBucket,
-              }
+              ...block,
+              Status: finalStatus,
+              ActualEnd: actualEndIso,
+              ActualMinutes: actualMinutes,
+              CompletionStatus: reviewForm.completionStatus,
+              TopicMatchStatus: reviewForm.topicMatchStatus,
+              OutputType: reviewForm.outputType,
+              OutputCount: Number(reviewForm.outputCount || 0),
+              FocusRating: reviewForm.focusRating,
+              InterruptionReason: reviewForm.interruptionReason,
+              ReviewNotes: reviewForm.reviewNotes,
+              BacklogBucket: reviewForm.backlogBucket,
+            }
             : block
         )
       );
@@ -815,7 +859,12 @@ export default function PlanPage() {
   async function handleApproveOcrBlocks() {
     const approvedBlocks = buildApprovedOcrBlocks(date, ocrDraftBlocks);
     const blocksPayload = buildScheduleBlocksPayload(approvedBlocks);
+    const previewBlocksToRegister = [...ocrPreviewReminderBlocks];
 
+    // close modal immediately for better UX
+    setOcrApprovalOpen(false);
+
+    // update UI immediately
     setTodayBlocks(approvedBlocks);
     setPlanMin(
       approvedBlocks.reduce((sum, block) => sum + Number(block.PlannedMinutes || 0), 0)
@@ -825,6 +874,7 @@ export default function PlanPage() {
     setStatus("Saving approved schedule blocks...");
 
     try {
+      // 1) Save approved blocks to Sheets
       const saveBlocksOut = await post("saveScheduleBlocks", {
         date,
         items: blocksPayload,
@@ -835,32 +885,58 @@ export default function PlanPage() {
         return;
       }
 
+      // 2) Sync calendar only AFTER approval
       setStatus("Syncing approved calendar events...");
       const calOut = await post("syncCalendarFromBlocks", { date });
       if (!calOut?.ok) {
         console.warn("syncCalendarFromBlocks failed:", calOut);
       }
 
+      // 3) Sync fixed reminders only AFTER approval
       setStatus("Syncing fixed reminders...");
       const fixedOut = await post("syncFixedReminders", { date });
       if (!fixedOut?.ok) {
         console.warn("syncFixedReminders failed:", fixedOut);
       }
 
-      setOcrApprovalOpen(false);
+      // 4) Register reminder engine blocks only AFTER approval
+      if (previewBlocksToRegister.length > 0) {
+        setStatus("Registering approved reminder blocks...");
+        const regRes = await fetch(`${BACKEND_URL}/api/schedule/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            dayKey: date,
+            userId: "moulika",
+            blocks: previewBlocksToRegister,
+          }),
+        });
+
+        const regText = await regRes.text();
+        let regOut;
+        try {
+          regOut = JSON.parse(regText);
+        } catch {
+          regOut = { ok: false, raw: regText };
+        }
+
+        if (!regOut?.ok) {
+          console.warn("schedule/register failed:", regOut);
+        }
+      }
+
+      // clear draft state after successful processing
       setOcrDraftBlocks([]);
+      setOcrPreviewReminderBlocks([]);
       setParsedPlan(null);
 
-      setTimeout(() => {
-        setStatus("✅ Approved plan saved and calendar synced.");
-      }, 0);
+      setStatus("✅ Approved plan saved, calendar synced, and reminders registered.");
     } catch (e) {
       setStatus("❌ OCR approval save failed: " + (e?.message || String(e)));
     } finally {
       setBusy(false);
     }
   }
-
   async function onParsePhoto() {
     if (!planPhoto) {
       setStatus("❌ Please choose a plan photo first.");
@@ -883,9 +959,19 @@ export default function PlanPage() {
 
       const draftBlocks = buildTodayBlocksFromParsed(out);
       setOcrDraftBlocks(draftBlocks);
+
+      const previewBlocks = Array.isArray(out?.reminderEngine?.previewBlocks)
+        ? out.reminderEngine.previewBlocks
+        : [];
+      setOcrPreviewReminderBlocks(previewBlocks);
+
       setOcrApprovalOpen(true);
 
-      setStatus("OCR parsed. Please review and approve before saving.");
+      setStatus(
+        out?.approvalRequired
+          ? "OCR parsed. Please review and approve before saving."
+          : "OCR parsed successfully."
+      );
     } catch (e) {
       setStatus("❌ Photo parse failed: " + (e?.message || String(e)));
     } finally {
@@ -946,13 +1032,11 @@ export default function PlanPage() {
       const reflectionCombined =
         `Reflection: ${String(reflection || "").trim()}\n` +
         `Went well: ${review.wentWell}\n` +
-        `Went wrong: ${review.wentWrongReason}${
-          review.wentWrongText ? " — " + review.wentWrongText : ""
+        `Went wrong: ${review.wentWrongReason}${review.wentWrongText ? " — " + review.wentWrongText : ""
         }\n` +
-        `Extra beyond plan: ${review.extraDone}${
-          review.extraDone === "Yes"
-            ? ` — ${review.extraText} (${Number(review.extraMinutes) || 0} min)`
-            : ""
+        `Extra beyond plan: ${review.extraDone}${review.extraDone === "Yes"
+          ? ` — ${review.extraText} (${Number(review.extraMinutes) || 0} min)`
+          : ""
         }\n` +
         `LoopFlags: ${String(loopOut?.loopFlagsText || "").trim()}`;
 
@@ -971,7 +1055,7 @@ export default function PlanPage() {
       } else {
         setStatus(
           "⚠️ Night review saved + loops done, but Analyze-Day failed: " +
-            (analyzeOut?.message || "unknown")
+          (analyzeOut?.message || "unknown")
         );
       }
     } catch (e) {
@@ -1117,7 +1201,9 @@ export default function PlanPage() {
 
           {spotlightBlock && getDisplayStatus(spotlightBlock.Status) === BLOCK_STATUS.ACTIVE && (
             <>
-              <button onClick={() => handlePauseBlock(spotlightBlock.BlockId)}>Pause</button>
+              <button disabled={busy} onClick={handleApproveOcrBlocks}>
+                {busy ? "Processing..." : "Approve and Continue"}
+              </button>
               <button onClick={() => requestStopBlock(spotlightBlock)}>Stop</button>
             </>
           )}
@@ -1283,11 +1369,10 @@ export default function PlanPage() {
                 {todayBlocks.map((block) => (
                   <div
                     key={block.BlockId}
-                    className={`block-card ${
-                      getDisplayStatus(block.Status) === BLOCK_STATUS.ACTIVE
-                        ? "block-card-active"
-                        : ""
-                    }`}
+                    className={`block-card ${getDisplayStatus(block.Status) === BLOCK_STATUS.ACTIVE
+                      ? "block-card-active"
+                      : ""
+                      }`}
                   >
                     <div className="block-top">
                       <div>
@@ -1323,32 +1408,32 @@ export default function PlanPage() {
                     {(block.ActualStart ||
                       block.ActualEnd ||
                       Number(block.ActualMinutes || 0) > 0) && (
-                      <div className="block-details">
-                        {block.ActualStart && (
+                        <div className="block-details">
+                          {block.ActualStart && (
+                            <div>
+                              Started: <b>{formatTimeOnly(block.ActualStart)}</b>
+                            </div>
+                          )}
+
+                          {block.ActualEnd && (
+                            <div>
+                              Ended: <b>{formatTimeOnly(block.ActualEnd)}</b>
+                            </div>
+                          )}
+
                           <div>
-                            Started: <b>{formatTimeOnly(block.ActualStart)}</b>
+                            Actual: <b>{Number(block.ActualMinutes || 0)} min</b>
                           </div>
-                        )}
 
-                        {block.ActualEnd && (
                           <div>
-                            Ended: <b>{formatTimeOnly(block.ActualEnd)}</b>
+                            Pause: <b>{Number(block.TotalPauseMinutes || 0)} min</b>
                           </div>
-                        )}
 
-                        <div>
-                          Actual: <b>{Number(block.ActualMinutes || 0)} min</b>
+                          <div>
+                            Pauses: <b>{Number(block.PauseCount || 0)}</b>
+                          </div>
                         </div>
-
-                        <div>
-                          Pause: <b>{Number(block.TotalPauseMinutes || 0)} min</b>
-                        </div>
-
-                        <div>
-                          Pauses: <b>{Number(block.PauseCount || 0)}</b>
-                        </div>
-                      </div>
-                    )}
+                      )}
 
                     {block.SyllabusTop1Path && (
                       <div className="block-path">{block.SyllabusTop1Path}</div>
@@ -1393,6 +1478,7 @@ export default function PlanPage() {
         </section>
 
         <section className="plan-right">
+          <SyllabusRadar radar={syllabusRadar} />
           <div className="plan-card">
             <h2 className="plan-card-title">Weekly Dashboard</h2>
 
@@ -1790,8 +1876,8 @@ export default function PlanPage() {
               {getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.ACTIVE
                 ? "Focus Mode Active"
                 : getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED
-                ? "Focus Mode Paused"
-                : "Focus Mode"}
+                  ? "Focus Mode Paused"
+                  : "Focus Mode"}
             </div>
 
             <h2 className="focus-title">{currentBlock.PlannedSubject || "Study Block"}</h2>
@@ -1818,8 +1904,8 @@ export default function PlanPage() {
               {getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.ACTIVE
                 ? "Stay with this block. Pause only if needed. Stop only when you are ready to review."
                 : getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED
-                ? "Resume this block and recover momentum calmly."
-                : "Start this block with full attention. The rest of the day can wait."}
+                  ? "Resume this block and recover momentum calmly."
+                  : "Start this block with full attention. The rest of the day can wait."}
             </div>
 
             <div className="focus-actions">
@@ -1872,11 +1958,10 @@ export default function PlanPage() {
               {ocrDraftBlocks.map((block, index) => (
                 <div
                   key={block.BlockId || `${block.PlannedStart}-${index}`}
-                  className={`block-card ${
-                    getDisplayStatus(block.Status) === BLOCK_STATUS.ACTIVE
-                      ? "block-card-active"
-                      : ""
-                  }`}
+                  className={`block-card ${getDisplayStatus(block.Status) === BLOCK_STATUS.ACTIVE
+                    ? "block-card-active"
+                    : ""
+                    }`}
                 >
                   <div className="plan-split-grid">
                     <label className="field-label">
@@ -1938,6 +2023,28 @@ export default function PlanPage() {
                       className="focus-close-btn"
                       onClick={() => removeOcrDraftBlock(index)}
                     >
+                      {(block.SyllabusTop1Code || block.SyllabusTop1Path) && (
+                        <div
+                          style={{
+                            marginTop: 10,
+                            padding: 10,
+                            borderRadius: 12,
+                            background: "rgba(123,136,138,0.10)",
+                            border: "1px solid rgba(123,136,138,0.16)",
+                            fontSize: 13,
+                          }}
+                        >
+                          <div>
+                            <b>Mapping:</b> {block.SyllabusTop1Code || "—"}
+                          </div>
+                          {block.SyllabusTop1Path && (
+                            <div style={{ marginTop: 4, opacity: 0.9 }}>
+                              {block.SyllabusTop1Path}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
                       Remove Block
                     </button>
                   </div>
@@ -1952,6 +2059,8 @@ export default function PlanPage() {
                 className="focus-close-btn"
                 onClick={() => {
                   setOcrApprovalOpen(false);
+                  setOcrDraftBlocks([]);
+                  setOcrPreviewReminderBlocks([]);
                   setStatus("OCR review closed. Nothing was saved or synced.");
                 }}
               >

@@ -1,7 +1,12 @@
 // backend/server.js (ESM ONLY)
 // PHASE 2: Plan-photo OCR => TIME BLOCKS (start/end/subject/topic/minutes)
-// Keeps your existing syllabus + advice engine + mapping logic intact.
-// Added: Dynamic Reminder Engine registration + block start/complete APIs
+// Keeps syllabus + advice engine + mapping logic intact
+// FIXED:
+// - removed duplicate imports
+// - upgraded syllabus intelligence enrichment
+// - OCR route now PREVIEWS mapping only
+// - no reminder/calendar/downstream registration before OCR approval
+// - enriched mapping fields exposed for frontend + Sheets save after approval
 
 // ---- imports MUST be first in ESM ----
 import express from "express";
@@ -9,13 +14,11 @@ import cors from "cors";
 import multer from "multer";
 import OpenAI from "openai";
 import dotenv from "dotenv";
-import { detectLoops } from "./brain/loopDetector.js";
-
 
 import SYLLABUS_GRAPH_2026 from "./brain/syllabusGraph.js";
+import { detectLoops } from "./brain/loopDetector.js";
 import { buildDailyAdvice } from "./brain/adviceEngine.js";
 import { computeSyllabusProgress } from "./brain/syllabusProgressEngine.js";
-
 import {
   mapPlanItemToMicroTheme,
   daysToPrelims,
@@ -23,6 +26,11 @@ import {
   findMicroTheme,
   findTopMicroThemes,
 } from "./brain/findMicroTheme.js";
+
+import {
+  computeSyllabusProgress,
+  buildSyllabusCoverageRadar
+} from "./brain/syllabusProgressEngine.js";
 
 import {
   registerDaySchedule,
@@ -58,14 +66,15 @@ function normTime(t) {
   if (/^\d{4}$/.test(cleaned)) {
     const hh = cleaned.slice(0, 2);
     const mm = cleaned.slice(2, 4);
-    const H = Number(hh),
-      M = Number(mm);
+    const H = Number(hh);
+    const M = Number(mm);
     if (H < 0 || H > 23 || M < 0 || M > 59) return "";
     return `${hh}:${mm}`;
   }
 
   const m = cleaned.match(/^(\d{1,2}):(\d{1,2})$/);
   if (!m) return "";
+
   const hh = Number(m[1]);
   const mm = Number(m[2]);
   if (Number.isNaN(hh) || Number.isNaN(mm)) return "";
@@ -85,11 +94,11 @@ function diffMinutes(start, end) {
   const e = toMinutes(end);
   if (s == null || e == null) return null;
   let d = e - s;
-  if (d < 0) d += 24 * 60; // if crosses midnight / ambiguous AM-PM
+  if (d < 0) d += 24 * 60; // crosses midnight / ambiguous AM-PM
   return d;
 }
 
-// infer PM blocks if time goes backwards later in the same day (e.g., 13:00 after 11:30)
+// infer PM blocks if time goes backwards later in the same day
 function inferHalfDay(items) {
   let last = null;
   return items.map((it) => {
@@ -98,7 +107,6 @@ function inferHalfDay(items) {
 
     const sMin = toMinutes(st);
     if (sMin != null && last != null) {
-      // if time goes backwards significantly, assume PM by adding 12h (only if plausible)
       if (sMin + 60 < last && sMin < 12 * 60) {
         const hh = Number(st.slice(0, 2)) + 12;
         if (hh <= 23) st = `${String(hh).padStart(2, "0")}:${st.slice(3)}`;
@@ -118,8 +126,7 @@ function inferHalfDay(items) {
 }
 
 /**
- * Non-study blocks that should NOT be syllabus-mapped
- * (prevents yoga/puja/break etc from polluting analytics)
+ * Non-study blocks should NOT be syllabus-mapped
  */
 function isNonStudyBlock(subject, topic) {
   const s = String(subject || "").toLowerCase();
@@ -152,18 +159,15 @@ function isNonStudyBlock(subject, topic) {
 }
 
 /**
- * Overlap marking (non-blocking):
- * Adds status = "OVERLAP" if time blocks overlap.
- * We still keep ALL items.
+ * Overlap marking (non-blocking)
+ * Keeps all items, only marks overlap
  */
 function markOverlaps(items) {
-  // Build timeline entries only for items with start and end
   const timeline = items
     .map((it, idx) => {
       const s = toMinutes(it.startTime);
       const e = toMinutes(it.endTime);
       if (s == null || e == null) return null;
-      // handle midnight crossing
       const end = e >= s ? e : e + 24 * 60;
       return { idx, s, e: end };
     })
@@ -202,6 +206,64 @@ function blockLabelFromIndex(idx) {
   return `${idx + 1}th block`;
 }
 
+function buildMappedObject(mapped, nonStudy, originalItem) {
+  if (nonStudy) {
+    return {
+      syllabusNodeId: "NON_STUDY",
+      code: "NON_STUDY",
+      gsPaper: "",
+      subjectGroup: "",
+      gsHeading: "",
+      macroTheme: "Non-Study",
+      subject: "Non-Study",
+      microTheme: originalItem?.subject || "Non-Study",
+      mappedTopicName: originalItem?.topic || originalItem?.subject || "Non-Study",
+      section: "",
+      parentTopic: "",
+      path: "",
+      tag: "X",
+      caThemes: [],
+      confidence: 1,
+      matched: [],
+      matchedTokens: [],
+      allMatches: [],
+      chunks: [],
+      ignoredTokens: [],
+      ignoredText: "",
+      mappingVersion: "phase2-v1",
+      nonStudy: true,
+    };
+  }
+
+  if (!mapped) return null;
+
+  return {
+    syllabusNodeId: mapped.syllabusNodeId || mapped.code || null,
+    code: mapped.code || null,
+    gsPaper: mapped.gsPaper || "",
+    subjectGroup: mapped.subjectGroup || "",
+    gsHeading: mapped.gsHeading || mapped.subjectGroup || "",
+    macroTheme: mapped.macroTheme || mapped.section || "",
+    subject: mapped.subject || "",
+    microTheme: mapped.microTitle || mapped.mappedTopicName || "",
+    mappedTopicName: mapped.mappedTopicName || mapped.microTitle || "",
+    section: mapped.section || "",
+    parentTopic: mapped.parentTopic || "",
+    path: mapped.path || "",
+    tag: mapped.tag || "",
+    caThemes: mapped.caThemes || [],
+    confidence: mapped.confidence || 0,
+    matched: mapped.matched || [],
+    matchedTokens: mapped.matchedTokens || [],
+    allMatches: mapped.allMatches || [],
+    chunks: mapped.chunks || [],
+    ignoredTokens: mapped.ignoredTokens || [],
+    ignoredText: mapped.ignoredText || "",
+    mappingVersion: mapped.mappingVersion || "phase2-v1",
+    nonStudy: false,
+  };
+}
+
 /* -------------------- APP INIT -------------------- */
 const app = express();
 
@@ -237,6 +299,24 @@ app.post("/api/alexa/ping", (req, res) => {
   });
 });
 
+app.post("/api/syllabus-progress", (req, res) => {
+  try {
+    const blocks = Array.isArray(req.body?.blocks) ? req.body.blocks : [];
+
+    const progress = computeSyllabusProgress(blocks);
+    const radar = buildSyllabusCoverageRadar(progress);
+
+    res.json({
+      ok: true,
+      radar,
+      progress
+    });
+  } catch (err) {
+    console.error("SYLLABUS_PROGRESS_ERROR", err);
+    res.status(500).json({ ok: false });
+  }
+});
+
 /* -------------------- SYLLABUS API -------------------- */
 app.get("/api/syllabus", (req, res) => {
   try {
@@ -257,13 +337,18 @@ app.post("/api/loop-detect", (req, res) => {
 });
 
 /* -------------------- PHOTO → PLAN PARSE (TIME BLOCKS) -------------------- */
+/* IMPORTANT UX RULE:
+   This route only PARSES + ENRICHES + RETURNS PREVIEW.
+   It does NOT register reminders / save / trigger downstream actions.
+   Approval must happen on frontend before calling save/register routes.
+*/
 app.post("/api/plan-photo", upload.single("photo"), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ ok: false, message: "No photo uploaded" });
     }
 
-    const providedDate = String(req.body?.date || "").trim(); // optional
+    const providedDate = String(req.body?.date || "").trim();
     const dateFallback = providedDate || todayISODate();
 
     const base64 = req.file.buffer.toString("base64");
@@ -380,7 +465,6 @@ Output ONLY JSON.
       let subject = String(it.subject || "Unknown").trim() || "Unknown";
       let topic = String(it.topic || "").trim();
 
-      // ✅ Current Affairs normalization
       const subjLower = subject.toLowerCase();
       const topicLower = topic.toLowerCase();
 
@@ -409,10 +493,8 @@ Output ONLY JSON.
       };
     });
 
-    // infer PM where needed
     items = inferHalfDay(items);
 
-    // compute minutes when missing
     items = items.map((it) => {
       let mins = safeNum(it.minutes, 0);
       if ((!mins || mins <= 0) && it.startTime && it.endTime) {
@@ -422,10 +504,9 @@ Output ONLY JSON.
       return { ...it, minutes: Math.max(0, Math.round(mins)) };
     });
 
-    // add overlap status (NON-BLOCKING)
     items = markOverlaps(items);
 
-    // ---- Syllabus Intelligence Enrichment (keep your logic) ----
+    // ---- Syllabus Intelligence Enrichment ----
     const tr = daysToPrelims(new Date());
     const kill = killSwitchMode(tr);
 
@@ -433,12 +514,10 @@ Output ONLY JSON.
       const textForMap = `${it.subject} ${it.topic}`.trim();
       const nonStudy = isNonStudyBlock(it.subject, it.topic);
 
-      // ✅ If non-study, do NOT map into syllabus
       let mapped = null;
       let fallbackPath = null;
 
       if (!nonStudy) {
-        // Pass combined text for stronger semantic match
         mapped = mapPlanItemToMicroTheme(textForMap, it.subject);
 
         if (!mapped) {
@@ -447,44 +526,18 @@ Output ONLY JSON.
         }
       }
 
-      const locked = kill === "ON" && mapped?.tag === "M";
+      const mappedObj = buildMappedObject(mapped, nonStudy, it);
+      const locked = kill === "ON" && mappedObj?.tag === "M";
 
       return {
         ...it,
-        // keep subject as-is (do not override non-study blocks)
         subject:
           it.subject && it.subject !== "Unknown"
             ? it.subject
-            : mapped?.subject
-            ? mapped.subject
-            : fallbackPath || "Unknown",
-        mapped: mapped
-          ? {
-              code: mapped.code,
-              gsPaper: mapped.gsPaper,
-              gsHeading: mapped.gsHeading,
-              macroTheme: mapped.macroTheme,
-              subject: mapped.subject,
-              microTheme: mapped.microTitle,
-              tag: mapped.tag,
-              caThemes: mapped.caThemes || [],
-              confidence: mapped.confidence || 0,
-              nonStudy,
-            }
-          : nonStudy
-          ? {
-              code: "NON_STUDY",
-              gsPaper: "",
-              gsHeading: "",
-              macroTheme: "Non-Study",
-              subject: "Non-Study",
-              microTheme: it.subject || "Non-Study",
-              tag: "X",
-              caThemes: [],
-              confidence: 1,
-              nonStudy: true,
-            }
-          : null,
+            : mappedObj?.subject
+              ? mappedObj.subject
+              : fallbackPath || "Unknown",
+        mapped: mappedObj,
         locked,
       };
     });
@@ -497,8 +550,8 @@ Output ONLY JSON.
     const hasC1 = enrichedItems.some((x) => x.mapped?.code === "C.1");
     const csatDrill = hasC1 ? "CHECK_NUMERACY" : "NONE";
 
-    // Register only study blocks that have a start time
-    const reminderBlocks = enrichedItems
+    // Preview only — frontend must explicitly approve before registration/save
+    const reminderPreview = enrichedItems
       .filter((it) => !it.mapped?.nonStudy && it.startTime)
       .map((it, idx) => ({
         blockId: `B${idx + 1}`,
@@ -508,16 +561,11 @@ Output ONLY JSON.
         startTime: toISOWithDate(safeDate, it.startTime),
         endTime: it.endTime ? toISOWithDate(safeDate, it.endTime) : "",
         plannedMinutes: Number(it.minutes || 0),
+        syllabusNodeId: it.mapped?.syllabusNodeId || null,
+        gsPaper: it.mapped?.gsPaper || null,
+        subjectGroup: it.mapped?.subjectGroup || null,
+        confidence: it.mapped?.confidence || 0,
       }));
-
-    const reminderRegistration =
-      reminderBlocks.length > 0
-        ? registerDaySchedule({
-            userId: "moulika",
-            dayKey: safeDate,
-            blocks: reminderBlocks,
-          })
-        : [];
 
     return res.json({
       ok: true,
@@ -527,10 +575,13 @@ Output ONLY JSON.
       daysToPrelims: tr,
       killSwitchMode: kill,
       csatDrill,
+      approvalRequired: true,
       reminderEngine: {
         ok: true,
-        registeredBlocks: reminderRegistration.length,
-        blocks: reminderRegistration,
+        registeredBlocks: 0,
+        blocks: [],
+        previewBlocks: reminderPreview,
+        message: "OCR parsed successfully. Approval required before save/calendar/reminder registration.",
       },
     });
   } catch (err) {
@@ -616,6 +667,7 @@ app.post("/api/analyze-day", (req, res) => {
   }
 });
 
+/* -------------------- SYLLABUS PROGRESS -------------------- */
 app.post("/api/syllabus-progress", (req, res) => {
   try {
     const { blocks = [] } = req.body || {};
@@ -631,6 +683,7 @@ app.post("/api/syllabus-progress", (req, res) => {
 });
 
 /* -------------------- REMINDER ENGINE API -------------------- */
+/* Call this only AFTER OCR approval / manual confirmation */
 app.post("/api/schedule/register", (req, res) => {
   try {
     const { dayKey, userId, blocks } = req.body || {};
@@ -710,17 +763,18 @@ app.post("/api/sheets", async (req, res) => {
   try {
     const scriptUrl = String(process.env.SCRIPT_URL || "").trim();
     if (!scriptUrl) {
-      return res.status(500).json({ ok: false, message: "Missing SCRIPT_URL in backend .env" });
+      return res.status(500).json({
+        ok: false,
+        message: "Missing SCRIPT_URL in backend .env",
+      });
     }
 
-    // Frontend sends: { action: "setup", ...payload }
     const payload = req.body || {};
     const action = String(payload.action || "").trim();
     if (!action) {
       return res.status(400).json({ ok: false, message: "Missing action" });
     }
 
-    // Apps Script expects: data=<JSON string>
     const body = new URLSearchParams();
     body.set("data", JSON.stringify(payload));
 
@@ -732,7 +786,6 @@ app.post("/api/sheets", async (req, res) => {
 
     const text = await r.text();
 
-    // Try JSON else return raw
     try {
       return res.status(200).json(JSON.parse(text));
     } catch {

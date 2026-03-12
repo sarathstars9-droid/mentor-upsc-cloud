@@ -137,6 +137,47 @@ export function buildSyllabusIndex() {
   return { flat, byCode };
 }
 
+export function buildSyllabusCoverageRadar(progress) {
+  if (!progress || !Array.isArray(progress.papers)) {
+    return {
+      GS1: 0,
+      GS2: 0,
+      GS3: 0,
+      GS4: 0,
+      ESSAY: 0,
+      CSAT: 0,
+      OPTIONAL: 0,
+    };
+  }
+
+  const radar = {
+    GS1: 0,
+    GS2: 0,
+    GS3: 0,
+    GS4: 0,
+    ESSAY: 0,
+    CSAT: 0,
+    OPTIONAL: 0,
+  };
+
+  for (const row of progress.papers) {
+    const key = String(row.paper || "").toUpperCase();
+
+    if (key.includes("GS1")) radar.GS1 = row.progressPercent;
+    if (key.includes("GS2")) radar.GS2 = row.progressPercent;
+    if (key.includes("GS3")) radar.GS3 = row.progressPercent;
+    if (key.includes("GS4")) radar.GS4 = row.progressPercent;
+
+    if (key.includes("ESSAY")) radar.ESSAY = row.progressPercent;
+
+    if (key.includes("CSAT")) radar.CSAT = row.progressPercent;
+
+    if (key.includes("OPTIONAL")) radar.OPTIONAL = row.progressPercent;
+  }
+
+  return radar;
+}
+
 export function computeSyllabusProgress(blocks = []) {
   const index = buildSyllabusIndex();
 
@@ -233,10 +274,10 @@ export function computeSyllabusProgress(blocks = []) {
       progressPercent:
         examModeSummary.Prelims.totalTopics > 0
           ? Math.round(
-              (examModeSummary.Prelims.completedEquivalent /
-                examModeSummary.Prelims.totalTopics) *
-                100
-            )
+            (examModeSummary.Prelims.completedEquivalent /
+              examModeSummary.Prelims.totalTopics) *
+            100
+          )
           : 0,
     },
     Mains: {
@@ -244,10 +285,10 @@ export function computeSyllabusProgress(blocks = []) {
       progressPercent:
         examModeSummary.Mains.totalTopics > 0
           ? Math.round(
-              (examModeSummary.Mains.completedEquivalent /
-                examModeSummary.Mains.totalTopics) *
-                100
-            )
+            (examModeSummary.Mains.completedEquivalent /
+              examModeSummary.Mains.totalTopics) *
+            100
+          )
           : 0,
     },
   };
