@@ -14,7 +14,7 @@ import SettingsPage from "./pages/SettingsPage";
 import ExecutionPage from "./pages/ExecutionPage";
 import RevisionPage from "./pages/RevisionPage";
 import SyllabusPage from "./pages/SyllabusPage";
-import CsatPage from "./pages/CsatPage";
+import CsatPage from "./pages/CSATPage";
 import BacklogPage from "./pages/BacklogPage";
 import FocusPage from "./pages/FocusPage";
 
