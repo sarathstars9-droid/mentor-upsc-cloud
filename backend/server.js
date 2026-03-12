@@ -18,7 +18,7 @@ import dotenv from "dotenv";
 import SYLLABUS_GRAPH_2026 from "./brain/syllabusGraph.js";
 import { detectLoops } from "./brain/loopDetector.js";
 import { buildDailyAdvice } from "./brain/adviceEngine.js";
-import { computeSyllabusProgress } from "./brain/syllabusProgressEngine.js";
+
 import {
   mapPlanItemToMicroTheme,
   daysToPrelims,
