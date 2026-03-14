@@ -220,7 +220,8 @@ export function nowMinutesOfDay() {
 }
 
 export function getDisplayStatus(status) {
-  return String(status || BLOCK_STATUS.PLANNED).toLowerCase();
+  const normalized = String(status || BLOCK_STATUS.PLANNED).trim().toLowerCase();
+  return normalized;
 }
 
 export function getStatusBadgeColor(status) {

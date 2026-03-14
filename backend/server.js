@@ -299,23 +299,6 @@ app.post("/api/alexa/ping", (req, res) => {
   });
 });
 
-app.post("/api/syllabus-progress", (req, res) => {
-  try {
-    const blocks = Array.isArray(req.body?.blocks) ? req.body.blocks : [];
-
-    const progress = computeSyllabusProgress(blocks);
-    const radar = buildSyllabusCoverageRadar(progress);
-
-    res.json({
-      ok: true,
-      radar,
-      progress
-    });
-  } catch (err) {
-    console.error("SYLLABUS_PROGRESS_ERROR", err);
-    res.status(500).json({ ok: false });
-  }
-});
 
 /* -------------------- SYLLABUS API -------------------- */
 app.get("/api/syllabus", (req, res) => {

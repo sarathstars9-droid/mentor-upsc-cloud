@@ -8,20 +8,20 @@ export const BLOCK_STATUS = {
   MISSED: "missed",
   SKIPPED: "skipped",
   EXPIRED: "expired",
-  UNVERIFIED: "unverified"
+  UNVERIFIED: "unverified",
 };
 
 export const COMPLETION_STATUS = {
   COMPLETED: "completed",
   PARTIAL: "partial",
-  MISSED: "missed"
+  MISSED: "missed",
 };
 
 export const TOPIC_MATCH_STATUS = {
   AS_PLANNED: "as_planned",
   PARTIALLY_CHANGED: "partially_changed",
   DIFFERENT_TOPIC: "different_topic",
-  NOT_STUDIED: "not_studied"
+  NOT_STUDIED: "not_studied",
 };
 
 export const OUTPUT_TYPE = {
@@ -30,13 +30,13 @@ export const OUTPUT_TYPE = {
   MCQS: "mcqs",
   ANSWER_WRITING: "answer_writing",
   TEST: "test",
-  NOTHING_SUBSTANTIAL: "nothing_substantial"
+  NOTHING_SUBSTANTIAL: "nothing_substantial",
 };
 
 export const FOCUS_RATING = {
   DEEP: "deep",
   AVERAGE: "average",
-  DISTRACTED: "distracted"
+  DISTRACTED: "distracted",
 };
 
 export const INTERRUPTION_REASON = {
@@ -46,12 +46,12 @@ export const INTERRUPTION_REASON = {
   WORK_TEACHING: "work_teaching",
   POOR_PLANNING: "poor_planning",
   HEALTH: "health",
-  OTHER: "other"
+  OTHER: "other",
 };
 
 export const BACKLOG_BUCKET = {
   RECOVER_TODAY: "recover_today",
   MOVE_TO_TOMORROW: "move_to_tomorrow",
   WEEKLY_BACKLOG: "weekly_backlog",
-  DROP: "drop"
+  DROP: "drop",
 };

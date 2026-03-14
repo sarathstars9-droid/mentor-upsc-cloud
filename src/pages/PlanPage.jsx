@@ -2,6 +2,11 @@ import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import { BACKEND_URL } from "../config";
 import { BLOCK_STATUS } from "../blockConstants";
 import { getRealStreakFromBlocks } from "../utils/dashboard";
+import SyllabusRadar from "../components/plan/SyllabusRadar.jsx";
+import FocusModeModal from "../components/plan/FocusModeModal.jsx";
+import { theme } from "../theme/theme";
+import StopConfirmModal from "../components/plan/StopConfirmModal.jsx";
+import BlockReviewModal from "../components/plan/BlockReviewModal.jsx";
 import {
   daysLeft,
   getCompletionPercent,
@@ -235,38 +240,28 @@ async function updateBlockAction(action, payload) {
   return post(action, { payload });
 }
 
-function SyllabusRadar({ radar }) {
-  if (!radar) return null;
+function getEffectiveBlockStatus(block) {
+  const raw = String(block?.Status || "").trim().toLowerCase();
 
-  return (
-    <div className="plan-card">
-      <h2 className="plan-card-title">Syllabus Coverage Radar</h2>
+  if (block?.ActualEnd) {
+    if (
+      raw === BLOCK_STATUS.PARTIAL ||
+      raw === BLOCK_STATUS.MISSED ||
+      raw === BLOCK_STATUS.SKIPPED
+    ) {
+      return raw;
+    }
+    return BLOCK_STATUS.COMPLETED;
+  }
 
-      <div style={{ display: "grid", gap: 8, fontSize: 14 }}>
-        <div>
-          GS1: <b>{radar.GS1 || 0}%</b>
-        </div>
-        <div>
-          GS2: <b>{radar.GS2 || 0}%</b>
-        </div>
-        <div>
-          GS3: <b>{radar.GS3 || 0}%</b>
-        </div>
-        <div>
-          GS4: <b>{radar.GS4 || 0}%</b>
-        </div>
-        <div>
-          Essay: <b>{radar.ESSAY || 0}%</b>
-        </div>
-        <div>
-          CSAT: <b>{radar.CSAT || 0}%</b>
-        </div>
-        <div>
-          Optional: <b>{radar.OPTIONAL || 0}%</b>
-        </div>
-      </div>
-    </div>
-  );
+  if (raw === "review_pending") return "review_pending";
+
+  if (block?.LastPauseAt && !block?.ActualEnd) return BLOCK_STATUS.PAUSED;
+  if (block?.ActualStart && !block?.ActualEnd) return BLOCK_STATUS.ACTIVE;
+
+  if (raw) return raw;
+
+  return BLOCK_STATUS.PLANNED;
 }
 
 export default function PlanPage() {
@@ -333,16 +328,33 @@ export default function PlanPage() {
   const currentBlock = useMemo(() => {
     if (!todayBlocks.length) return null;
 
-    const active = todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.ACTIVE);
+    const visibleBlocks = todayBlocks.filter(
+      (b) => getEffectiveBlockStatus(b) !== "review_pending"
+    );
+
+    if (!visibleBlocks.length) return null;
+
+    const active = visibleBlocks.find(
+      (b) => getEffectiveBlockStatus(b) === BLOCK_STATUS.ACTIVE
+    );
     if (active) return active;
 
-    const paused = todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.PAUSED);
+    const paused = visibleBlocks.find(
+      (b) => getEffectiveBlockStatus(b) === BLOCK_STATUS.PAUSED
+    );
     if (paused) return paused;
 
-    const planned = todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.PLANNED);
+    const planned = visibleBlocks.find(
+      (b) => getEffectiveBlockStatus(b) === BLOCK_STATUS.PLANNED
+    );
     if (planned) return planned;
 
-    return todayBlocks[0] || null;
+    const upcoming = visibleBlocks.find(
+      (b) => getEffectiveBlockStatus(b) === BLOCK_STATUS.UPCOMING
+    );
+    if (upcoming) return upcoming;
+
+    return visibleBlocks[0] || null;
   }, [todayBlocks]);
 
   useEffect(() => {
@@ -382,7 +394,15 @@ export default function PlanPage() {
           LastPauseAt: b.LastPauseAt || "",
           LastResumeAt: b.LastResumeAt || "",
 
-          Status: String(b.Status || BLOCK_STATUS.PLANNED).trim().toLowerCase(),
+          Status:
+            String(b.Status || "").trim().toLowerCase() ||
+            (b.ActualEnd
+              ? BLOCK_STATUS.COMPLETED
+              : b.LastPauseAt
+                ? BLOCK_STATUS.PAUSED
+                : b.ActualStart
+                  ? BLOCK_STATUS.ACTIVE
+                  : BLOCK_STATUS.PLANNED),
           CompletionStatus: b.CompletionStatus || "",
           TopicMatchStatus: b.TopicMatchStatus || "",
 
@@ -401,7 +421,63 @@ export default function PlanPage() {
         }));
 
         setTodayBlocks(mapped);
+        setReminderState((prev) => {
+          const next = {};
 
+          for (const block of mapped) {
+            const blockId = block.BlockId;
+            if (!blockId) continue;
+
+            const blockStatus = getDisplayStatus(block.Status);
+            const old = prev[blockId] || {};
+
+            if (
+              blockStatus === BLOCK_STATUS.COMPLETED ||
+              blockStatus === BLOCK_STATUS.PARTIAL ||
+              blockStatus === BLOCK_STATUS.MISSED ||
+              blockStatus === BLOCK_STATUS.SKIPPED
+            ) {
+              next[blockId] = {
+                start_now: true,
+                not_started_3: true,
+                please_begin_5: true,
+                paused_too_long: true,
+              };
+              continue;
+            }
+
+            if (blockStatus === BLOCK_STATUS.ACTIVE) {
+              next[blockId] = {
+                ...old,
+                start_now: true,
+                not_started_3: true,
+                please_begin_5: true,
+                paused_too_long: false,
+              };
+              continue;
+            }
+
+            if (blockStatus === BLOCK_STATUS.PAUSED) {
+              next[blockId] = {
+                ...old,
+                start_now: true,
+                not_started_3: true,
+                please_begin_5: true,
+                paused_too_long: old.paused_too_long || false,
+              };
+              continue;
+            }
+
+            next[blockId] = {
+              start_now: old.start_now || false,
+              not_started_3: old.not_started_3 || false,
+              please_begin_5: old.please_begin_5 || false,
+              paused_too_long: false,
+            };
+          }
+
+          return next;
+        });
         if (mapped.length > 0) {
           const totalPlanned = mapped.reduce(
             (sum, block) => sum + Number(block.PlannedMinutes || 0),
@@ -426,7 +502,9 @@ export default function PlanPage() {
     },
     [date]
   );
-
+  useEffect(() => {
+    setReminderState({});
+  }, [date]);
   useEffect(() => {
     if (!date) return;
     loadBlocksForDate(date);
@@ -630,6 +708,31 @@ export default function PlanPage() {
       setSpotlightOpen(true);
     }
 
+    setTodayBlocks((prev) =>
+      prev.map((b) =>
+        b.BlockId === blockId
+          ? {
+            ...b,
+            Status: BLOCK_STATUS.ACTIVE,
+            ActualStart: b.ActualStart || nowIso,
+          }
+          : b
+      )
+    );
+
+    setReminderState((prev) => ({
+      ...prev,
+      [blockId]: {
+        ...(prev[blockId] || {}),
+        start_now: true,
+        not_started_3: true,
+        please_begin_5: true,
+        paused_too_long: false,
+      },
+    }));
+
+    setStatus("✅ Block started. Focus Mode is active.");
+
     try {
       const out = await updateBlockAction("startBlock", {
         blockId,
@@ -638,31 +741,33 @@ export default function PlanPage() {
 
       if (!out?.ok) {
         setStatus(`❌ startBlock failed: ${out?.message || "unknown"}`);
+        await loadBlocksForDate(date);
         return;
       }
 
-      setReminderState((prev) => ({
-        ...prev,
-        [blockId]: {
-          ...(prev[blockId] || {}),
-          start_now: true,
-          not_started_3: true,
-          please_begin_5: true,
-          paused_too_long: false,
-        },
-      }));
-
       await loadBlocksForDate(date);
-      setSpotlightOpen(true);
-      setStatus("✅ Block started. Focus Mode is active.");
     } catch (e) {
       console.error("startBlock failed", e);
       setStatus("❌ startBlock failed");
+      await loadBlocksForDate(date);
     }
   }
 
   async function handlePauseBlock(blockId) {
     const nowIso = new Date().toISOString();
+
+    setTodayBlocks((prev) =>
+      prev.map((b) =>
+        b.BlockId === blockId
+          ? {
+            ...b,
+            Status: BLOCK_STATUS.PAUSED,
+            LastPauseAt: nowIso,
+            PauseCount: Number(b.PauseCount || 0) + 1,
+          }
+          : b
+      )
+    );
 
     try {
       const out = await updateBlockAction("pauseBlock", {
@@ -671,29 +776,35 @@ export default function PlanPage() {
       });
 
       if (!out?.ok) {
+        console.error("pauseBlock failed", out);
         setStatus(`❌ pauseBlock failed: ${out?.message || "unknown"}`);
+        await loadBlocksForDate(date);
         return;
       }
 
-      setReminderState((prev) => ({
-        ...prev,
-        [blockId]: {
-          ...(prev[blockId] || {}),
-          paused_too_long: false,
-        },
-      }));
-
       await loadBlocksForDate(date);
-      setSpotlightOpen(true);
       setStatus("⏸️ Block paused.");
     } catch (e) {
-      console.error("pauseBlock failed", e);
+      console.error("pauseBlock error", e);
       setStatus("❌ pauseBlock failed");
+      await loadBlocksForDate(date);
     }
   }
-
   async function handleResumeBlock(blockId) {
     const nowIso = new Date().toISOString();
+
+    // Optimistic UI update
+    setTodayBlocks((prev) =>
+      prev.map((b) =>
+        b.BlockId === blockId
+          ? {
+            ...b,
+            Status: BLOCK_STATUS.ACTIVE,
+            LastResumeAt: nowIso,
+          }
+          : b
+      )
+    );
 
     try {
       const res = await updateBlockAction("resumeBlock", {
@@ -703,6 +814,7 @@ export default function PlanPage() {
 
       if (!res?.ok) {
         setStatus(`❌ resumeBlock failed: ${res?.message || "unknown"}`);
+        await loadBlocksForDate(date);
         return;
       }
 
@@ -720,6 +832,7 @@ export default function PlanPage() {
     } catch (e) {
       console.error("resumeBlock failed", e);
       setStatus("❌ resumeBlock failed");
+      await loadBlocksForDate(date);
     }
   }
 
@@ -732,8 +845,28 @@ export default function PlanPage() {
   function handleStopBlock(block) {
     if (!block) return;
 
+    const blockId = block.BlockId;
+
     setStopConfirmOpen(false);
-    setActiveReviewBlock(block);
+    setPendingStopBlock(null);
+    setSpotlightOpen(false);
+
+    setTodayBlocks((prev) =>
+      prev.map((b) =>
+        b.BlockId === blockId
+          ? {
+            ...b,
+            Status: "review_pending",
+          }
+          : b
+      )
+    );
+
+    setActiveReviewBlock({
+      ...block,
+      Status: "review_pending",
+    });
+
     setReviewForm({
       completionStatus: "",
       topicMatchStatus: "",
@@ -745,7 +878,6 @@ export default function PlanPage() {
       backlogBucket: "",
     });
   }
-
   async function handleSubmitReview() {
     if (!activeReviewBlock) return;
 
@@ -1185,76 +1317,116 @@ export default function PlanPage() {
         </div>
       </section>
 
-      <div className="spotlight-card">
-        <div className="spotlight-left">
-          <div className="spotlight-label">Current Block Spotlight</div>
+      {currentBlock && (
+        <div className="spotlight-card" style={{ padding: "20px 24px", minHeight: "unset" }}>
+          <div className="spotlight-left">
+            <div className="spotlight-label">Current Block Spotlight</div>
 
-          {!currentBlock ? (
-            <>
-              <div className="spotlight-title">No active block yet</div>
-              <div className="spotlight-subtitle">{spotlightMessage}</div>
-            </>
-          ) : (
-            <>
-              <div className="spotlight-title">
-                {currentBlock.PlannedSubject || "Unknown Subject"}
-              </div>
+            {!currentBlock ? (
+              <>
+                <div className="spotlight-title" style={{ fontSize: 28, lineHeight: 1.1 }}>
+                  No active block yet
+                </div>
+                <div className="spotlight-subtitle" style={{ fontSize: 16, marginTop: 6 }}>
+                  {spotlightMessage}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="spotlight-title" style={{ fontSize: 28, lineHeight: 1.1 }}>
+                  {currentBlock.PlannedSubject || "Unknown Subject"}
+                </div>
 
-              <div className="spotlight-subtitle">
-                {currentBlock.PlannedTopic || "No topic"}
-              </div>
+                <div className="spotlight-subtitle" style={{ fontSize: 16, marginTop: 6 }}>
+                  {currentBlock.PlannedTopic || "No topic"}
+                </div>
 
-              <div className="spotlight-meta">
-                <span className="spotlight-chip">
-                  {currentBlock.PlannedStart || "--:--"} → {currentBlock.PlannedEnd || "--:--"}
-                </span>
-                <span className="spotlight-chip">{currentBlock.PlannedMinutes || 0} min</span>
-                <span
-                  className="spotlight-chip spotlight-status"
-                  style={{ background: getStatusBadgeColor(currentBlock.Status) }}
-                >
-                  {getDisplayStatus(currentBlock.Status)}
-                </span>
-              </div>
+                <div className="spotlight-meta">
+                  <span className="spotlight-chip">
+                    {currentBlock?.PlannedStart || "--:--"} → {currentBlock?.PlannedEnd || "--:--"}
+                  </span>
 
-              <div className="spotlight-note">{spotlightMessage}</div>
-            </>
-          )}
+                  <span className="spotlight-chip">
+                    {currentBlock?.PlannedMinutes || 0} min
+                  </span>
+
+                  <span
+                    className="spotlight-chip spotlight-status"
+                    style={{
+                      background:
+                        getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.ACTIVE
+                          ? "rgba(59, 130, 246, 0.22)"
+                          : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.PAUSED
+                            ? "rgba(245, 158, 11, 0.22)"
+                            : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.COMPLETED
+                              ? "rgba(34, 197, 94, 0.22)"
+                              : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.PARTIAL
+                                ? "rgba(168, 85, 247, 0.22)"
+                                : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.MISSED ||
+                                  getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.SKIPPED
+                                  ? "rgba(249, 115, 22, 0.22)"
+                                  : "rgba(148, 163, 184, 0.18)",
+                      color:
+                        getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.ACTIVE
+                          ? "#93c5fd"
+                          : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.PAUSED
+                            ? "#fcd34d"
+                            : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.COMPLETED
+                              ? "#86efac"
+                              : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.PARTIAL
+                                ? "#d8b4fe"
+                                : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.MISSED ||
+                                  getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.SKIPPED
+                                  ? "#fdba74"
+                                  : "#cbd5e1",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                    }}
+                  >
+                    {getDisplayStatus(currentBlock?.Status)}
+                  </span>
+                </div>
+
+                <div className="spotlight-note" style={{ marginTop: 8, fontSize: 14 }}>
+                  {spotlightMessage}
+                </div>
+              </>
+            )}
+          </div>
+
+          <div className="spotlight-right">
+            {currentBlock && getEffectiveBlockStatus(currentBlock) === BLOCK_STATUS.PLANNED && (
+              <button
+                disabled={busy}
+                onClick={() => handleStartBlock(currentBlock.BlockId, { openFocus: true })}
+              >
+                {busy ? "Processing..." : "Start Block"}
+              </button>
+            )}
+
+            {currentBlock && getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.ACTIVE && (
+              <>
+                <button disabled={busy} onClick={() => handlePauseBlock(currentBlock.BlockId)}>
+                  {busy ? "Processing..." : "Pause"}
+                </button>
+                <button disabled={busy} onClick={() => requestStopBlock(currentBlock)}>
+                  Stop
+                </button>
+              </>
+            )}
+
+            {currentBlock && getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED && (
+              <>
+                <button disabled={busy} onClick={() => handleResumeBlock(currentBlock.BlockId)}>
+                  {busy ? "Processing..." : "Resume"}
+                </button>
+                <button disabled={busy} onClick={() => requestStopBlock(currentBlock)}>
+                  Stop
+                </button>
+              </>
+            )}
+          </div>
         </div>
-
-        <div className="spotlight-right">
-          {currentBlock && getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PLANNED && (
-            <button
-              disabled={busy}
-              onClick={() => handleStartBlock(currentBlock.BlockId, { openFocus: true })}
-            >
-              {busy ? "Processing..." : "Start Block"}
-            </button>
-          )}
-
-          {currentBlock && getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.ACTIVE && (
-            <>
-              <button disabled={busy} onClick={() => handlePauseBlock(currentBlock.BlockId)}>
-                {busy ? "Processing..." : "Pause"}
-              </button>
-              <button disabled={busy} onClick={() => requestStopBlock(currentBlock)}>
-                Stop
-              </button>
-            </>
-          )}
-
-          {currentBlock && getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED && (
-            <>
-              <button disabled={busy} onClick={() => handleResumeBlock(currentBlock.BlockId)}>
-                {busy ? "Processing..." : "Resume"}
-              </button>
-              <button disabled={busy} onClick={() => requestStopBlock(currentBlock)}>
-                Stop
-              </button>
-            </>
-          )}
-        </div>
-      </div>
+      )}
 
       <div className="quick-nav-bar">
         <button onClick={() => scrollToSection(studyBlocksRef)}>Today’s Study Blocks</button>
@@ -1262,7 +1434,7 @@ export default function PlanPage() {
         <button onClick={() => scrollToSection(loopDetectorRef)}>Loop Detector</button>
       </div>
 
-      <div className="plan-card">
+      <div className="plan-card" style={{ background: theme.colors.card }}>
         <div className="section-shell">
           <div className="section-kicker">Execution</div>
           <h3 className="section-headline">Daily Actions</h3>
@@ -1371,7 +1543,7 @@ export default function PlanPage() {
             )}
           </div>
 
-          <div ref={nightReviewRef} className="plan-card">
+          <div className="plan-card">
             <h3 className="plan-card-title">Plan Photo → Parse (OCR)</h3>
             <input
               type="file"
@@ -1550,7 +1722,7 @@ export default function PlanPage() {
             )}
           </div>
 
-          <div className="plan-card">
+          <div ref={nightReviewRef} className="plan-card">
             <h2 className="plan-card-title">Night Review</h2>
 
             <div style={{ display: "grid", gap: 12 }}>
@@ -1719,287 +1891,44 @@ export default function PlanPage() {
         </section>
       </div>
 
-      {activeReviewBlock && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.45)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 1000,
-            padding: 16,
-          }}
-        >
-          <div
-            style={{
-              background: "#25282E",
-              color: "#F3F2EE",
-              padding: 20,
-              borderRadius: 22,
-              width: 520,
-              maxWidth: "92vw",
-              border: "1px solid rgba(123,136,138,0.18)",
-            }}
-          >
-            <h3 style={{ marginTop: 0 }}>Block Review</h3>
+      <BlockReviewModal
+        open={!!activeReviewBlock}
+        block={activeReviewBlock}
+        reviewForm={reviewForm}
+        setReviewForm={setReviewForm}
+        onSubmit={handleSubmitReview}
+        onCancel={async () => {
+          setActiveReviewBlock(null);
+          setPendingStopBlock(null);
+          setStopConfirmOpen(false);
+          await loadBlocksForDate(date);
+        }}
+      />
 
-            <div style={{ marginBottom: 12 }}>
-              <b>{activeReviewBlock.PlannedSubject}</b> — {activeReviewBlock.PlannedTopic}
-            </div>
-
-            <div style={{ display: "grid", gap: 10 }}>
-              <label className="field-label">
-                Was this block completed?
-                <select
-                  value={reviewForm.completionStatus}
-                  onChange={(e) =>
-                    setReviewForm((f) => ({ ...f, completionStatus: e.target.value }))
-                  }
-                >
-                  <option value="">Select</option>
-                  <option value="completed">Completed</option>
-                  <option value="partial">Partial</option>
-                  <option value="missed">Missed</option>
-                </select>
-              </label>
-
-              <label className="field-label">
-                Did you study the planned topic?
-                <select
-                  value={reviewForm.topicMatchStatus}
-                  onChange={(e) =>
-                    setReviewForm((f) => ({ ...f, topicMatchStatus: e.target.value }))
-                  }
-                >
-                  <option value="">Select</option>
-                  <option value="as_planned">Yes, as planned</option>
-                  <option value="partially_changed">Partially changed</option>
-                  <option value="different_topic">Completely different topic</option>
-                  <option value="not_studied">Did not study</option>
-                </select>
-              </label>
-
-              <label className="field-label">
-                What was the output?
-                <select
-                  value={reviewForm.outputType}
-                  onChange={(e) => setReviewForm((f) => ({ ...f, outputType: e.target.value }))}
-                >
-                  <option value="">Select</option>
-                  <option value="notes">Notes</option>
-                  <option value="revision">Revision</option>
-                  <option value="mcqs">MCQs</option>
-                  <option value="answer_writing">Answer writing</option>
-                  <option value="test">Test</option>
-                  <option value="nothing_substantial">Nothing substantial</option>
-                </select>
-              </label>
-
-              <label className="field-label">
-                Focus quality?
-                <select
-                  value={reviewForm.focusRating}
-                  onChange={(e) => setReviewForm((f) => ({ ...f, focusRating: e.target.value }))}
-                >
-                  <option value="">Select</option>
-                  <option value="deep">Deep</option>
-                  <option value="average">Average</option>
-                  <option value="distracted">Distracted</option>
-                </select>
-              </label>
-
-              <label className="field-label">
-                Reason if partial/missed?
-                <select
-                  value={reviewForm.interruptionReason}
-                  onChange={(e) =>
-                    setReviewForm((f) => ({ ...f, interruptionReason: e.target.value }))
-                  }
-                >
-                  <option value="">Select</option>
-                  <option value="sleep">Sleep</option>
-                  <option value="low_energy">Low energy</option>
-                  <option value="phone_distraction">Phone distraction</option>
-                  <option value="work_teaching">Work/teaching interruption</option>
-                  <option value="poor_planning">Poor planning</option>
-                  <option value="health">Health</option>
-                  <option value="other">Other</option>
-                </select>
-              </label>
-
-              <label className="field-label">
-                Leftover action
-                <select
-                  value={reviewForm.backlogBucket}
-                  onChange={(e) => setReviewForm((f) => ({ ...f, backlogBucket: e.target.value }))}
-                >
-                  <option value="">Select</option>
-                  <option value="recover_today">Recover today</option>
-                  <option value="move_to_tomorrow">Move to tomorrow</option>
-                  <option value="weekly_backlog">Weekly backlog</option>
-                  <option value="drop">Drop</option>
-                </select>
-              </label>
-
-              <label className="field-label">
-                Notes
-                <textarea
-                  rows={3}
-                  value={reviewForm.reviewNotes}
-                  onChange={(e) => setReviewForm((f) => ({ ...f, reviewNotes: e.target.value }))}
-                />
-              </label>
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                gap: 8,
-                justifyContent: "flex-end",
-                marginTop: 16,
-              }}
-            >
-              <button
-                onClick={() => {
-                  setActiveReviewBlock(null);
-                  setPendingStopBlock(null);
-                  setStopConfirmOpen(false);
-                }}
-              >
-                Cancel
-              </button>
-              <button onClick={handleSubmitReview}>Submit Review</button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {stopConfirmOpen && (pendingStopBlock || currentBlock) && (
-        <div
-          className="focus-overlay"
-          onClick={() => {
-            setStopConfirmOpen(false);
-            setPendingStopBlock(null);
-          }}
-        >
-          <div className="focus-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="focus-kicker">Confirm Stop</div>
-
-            <h2 className="focus-title">End this block?</h2>
-
-            <div className="focus-subtitle">
-              {(pendingStopBlock || currentBlock)?.PlannedSubject || "Study Block"} —{" "}
-              {(pendingStopBlock || currentBlock)?.PlannedTopic || "No topic"}
-            </div>
-
-            <div className="focus-note">
-              This will close the active block and open the review form.
-            </div>
-
-            <div className="focus-actions">
-              <button
-                onClick={() => {
-                  const stopTarget = pendingStopBlock || currentBlock;
-                  if (stopTarget) {
-                    handleStopBlock(stopTarget);
-                  }
-                }}
-              >
-                Yes, End Block
-              </button>
-
-              <button
-                className="focus-close-btn"
-                onClick={() => {
-                  setStopConfirmOpen(false);
-                  setPendingStopBlock(null);
-                }}
-              >
-                Continue Block
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {spotlightOpen && currentBlock && (
-        <div className="focus-overlay" onClick={() => setSpotlightOpen(false)}>
-          <div className="focus-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="focus-kicker">
-              {getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.ACTIVE
-                ? "Focus Mode Active"
-                : getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED
-                  ? "Focus Mode Paused"
-                  : "Focus Mode"}
-            </div>
-
-            <h2 className="focus-title">{currentBlock.PlannedSubject || "Study Block"}</h2>
-
-            <div className="focus-subtitle">{currentBlock.PlannedTopic || "No topic"}</div>
-
-            <div className="focus-chips">
-              <span className="focus-chip">
-                {currentBlock.PlannedStart || "--:--"} → {currentBlock.PlannedEnd || "--:--"}
-              </span>
-              <span className="focus-chip">{currentBlock.PlannedMinutes || 0} min</span>
-              <span className="focus-chip">{getDisplayStatus(currentBlock.Status)}</span>
-              {currentBlock.ActualStart && (
-                <span className="focus-chip">Started {formatTimeOnly(currentBlock.ActualStart)}</span>
-              )}
-              {Number(currentBlock.PauseCount || 0) > 0 && (
-                <span className="focus-chip">Pauses {currentBlock.PauseCount || 0}</span>
-              )}
-            </div>
-
-            <div className="focus-note">
-              {getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.ACTIVE
-                ? "Stay with this block. Pause only if needed. Stop only when you are ready to review."
-                : getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED
-                  ? "Resume this block and recover momentum calmly."
-                  : "Start this block with full attention. The rest of the day can wait."}
-            </div>
-
-            <div className="focus-actions">
-              {getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PLANNED && (
-                <button
-                  disabled={busy}
-                  onClick={() => handleStartBlock(currentBlock.BlockId, { openFocus: true })}
-                >
-                  {busy ? "Processing..." : "Start Now"}
-                </button>
-              )}
-
-              {getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.ACTIVE && (
-                <>
-                  <button disabled={busy} onClick={() => handlePauseBlock(currentBlock.BlockId)}>
-                    {busy ? "Processing..." : "Pause"}
-                  </button>
-                  <button disabled={busy} onClick={() => requestStopBlock(currentBlock)}>
-                    Stop
-                  </button>
-                </>
-              )}
-
-              {getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED && (
-                <>
-                  <button disabled={busy} onClick={() => handleResumeBlock(currentBlock.BlockId)}>
-                    {busy ? "Processing..." : "Resume"}
-                  </button>
-                  <button disabled={busy} onClick={() => requestStopBlock(currentBlock)}>
-                    Stop
-                  </button>
-                </>
-              )}
-
-              <button className="focus-close-btn" onClick={() => setSpotlightOpen(false)}>
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <StopConfirmModal
+        open={stopConfirmOpen && !!(pendingStopBlock || currentBlock)}
+        block={pendingStopBlock || currentBlock}
+        onConfirm={() => {
+          const stopTarget = pendingStopBlock || currentBlock;
+          if (stopTarget) {
+            handleStopBlock(stopTarget);
+          }
+        }}
+        onCancel={() => {
+          setStopConfirmOpen(false);
+          setPendingStopBlock(null);
+        }}
+      />
+      <FocusModeModal
+        open={spotlightOpen}
+        block={currentBlock}
+        busy={busy}
+        onStart={() => currentBlock && handleStartBlock(currentBlock.BlockId, { openFocus: true })}
+        onPause={() => currentBlock && handlePauseBlock(currentBlock.BlockId)}
+        onResume={() => currentBlock && handleResumeBlock(currentBlock.BlockId)}
+        onStop={() => currentBlock && requestStopBlock(currentBlock)}
+        onClose={() => setSpotlightOpen(false)}
+      />
 
       {ocrApprovalOpen && (
         <div className="focus-overlay">
@@ -2119,6 +2048,8 @@ export default function PlanPage() {
                   setOcrApprovalOpen(false);
                   setOcrDraftBlocks([]);
                   setOcrPreviewReminderBlocks([]);
+                  setParsedPlan(null);
+                  setReminderState({});
                   setStatus("OCR review closed. Nothing was saved or synced.");
                 }}
               >
@@ -2127,7 +2058,8 @@ export default function PlanPage() {
             </div>
           </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
