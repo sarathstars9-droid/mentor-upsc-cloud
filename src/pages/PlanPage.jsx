@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect, useRef } from "react";
+import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import { BACKEND_URL } from "../config";
 import { BLOCK_STATUS } from "../blockConstants";
 import { getRealStreakFromBlocks } from "../utils/dashboard";
@@ -133,6 +133,12 @@ async function loopDetect(payload) {
 const DEFAULT_PRELIMS = "2026-05-24";
 const DEFAULT_MAINS = "2026-08-21";
 
+function getTodayLocalDate() {
+  const now = new Date();
+  const tzOffsetMs = now.getTimezoneOffset() * 60000;
+  return new Date(now.getTime() - tzOffsetMs).toISOString().slice(0, 10);
+}
+
 /* ---------------- Mapping fields for Sheets ---------------- */
 function buildMappingFields(mapOut) {
   const mappingCode = mapOut?.mapping?.code ? String(mapOut.mapping.code) : "";
@@ -237,13 +243,27 @@ function SyllabusRadar({ radar }) {
       <h2 className="plan-card-title">Syllabus Coverage Radar</h2>
 
       <div style={{ display: "grid", gap: 8, fontSize: 14 }}>
-        <div>GS1: <b>{radar.GS1 || 0}%</b></div>
-        <div>GS2: <b>{radar.GS2 || 0}%</b></div>
-        <div>GS3: <b>{radar.GS3 || 0}%</b></div>
-        <div>GS4: <b>{radar.GS4 || 0}%</b></div>
-        <div>Essay: <b>{radar.ESSAY || 0}%</b></div>
-        <div>CSAT: <b>{radar.CSAT || 0}%</b></div>
-        <div>Optional: <b>{radar.OPTIONAL || 0}%</b></div>
+        <div>
+          GS1: <b>{radar.GS1 || 0}%</b>
+        </div>
+        <div>
+          GS2: <b>{radar.GS2 || 0}%</b>
+        </div>
+        <div>
+          GS3: <b>{radar.GS3 || 0}%</b>
+        </div>
+        <div>
+          GS4: <b>{radar.GS4 || 0}%</b>
+        </div>
+        <div>
+          Essay: <b>{radar.ESSAY || 0}%</b>
+        </div>
+        <div>
+          CSAT: <b>{radar.CSAT || 0}%</b>
+        </div>
+        <div>
+          Optional: <b>{radar.OPTIONAL || 0}%</b>
+        </div>
       </div>
     </div>
   );
@@ -261,7 +281,7 @@ export default function PlanPage() {
   const [stopConfirmOpen, setStopConfirmOpen] = useState(false);
   const [pendingStopBlock, setPendingStopBlock] = useState(null);
 
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [date, setDate] = useState(getTodayLocalDate());
   const [planMin, setPlanMin] = useState(360);
   const [doneMin, setDoneMin] = useState(0);
   const [csatMin, setCsatMin] = useState(60);
@@ -296,12 +316,6 @@ export default function PlanPage() {
   const [ocrDraftBlocks, setOcrDraftBlocks] = useState([]);
   const [ocrPreviewReminderBlocks, setOcrPreviewReminderBlocks] = useState([]);
 
-  const currentBlock =
-    todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.ACTIVE) ||
-    todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.PAUSED) ||
-    todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.PLANNED) ||
-    null;
-
   const [activeReviewBlock, setActiveReviewBlock] = useState(null);
   const streakToday = getRealStreakFromBlocks(todayBlocks, doneMin);
 
@@ -316,6 +330,21 @@ export default function PlanPage() {
     backlogBucket: "",
   });
 
+  const currentBlock = useMemo(() => {
+    if (!todayBlocks.length) return null;
+
+    const active = todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.ACTIVE);
+    if (active) return active;
+
+    const paused = todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.PAUSED);
+    if (paused) return paused;
+
+    const planned = todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.PLANNED);
+    if (planned) return planned;
+
+    return todayBlocks[0] || null;
+  }, [todayBlocks]);
+
   useEffect(() => {
     if (!("Notification" in window)) {
       setAlertPermission("unsupported");
@@ -324,12 +353,10 @@ export default function PlanPage() {
     setAlertPermission(Notification.permission);
   }, []);
 
-  useEffect(() => {
-    if (!date) return;
-
-    async function loadBlocks() {
+  const loadBlocksForDate = useCallback(
+    async (targetDate = date) => {
       try {
-        const res = await post("getBlocksForDate", { date });
+        const res = await post("getBlocksForDate", { date: targetDate });
 
         if (!res?.ok && !res?.blocks) {
           console.warn("getBlocksForDate failed:", res);
@@ -355,7 +382,7 @@ export default function PlanPage() {
           LastPauseAt: b.LastPauseAt || "",
           LastResumeAt: b.LastResumeAt || "",
 
-          Status: b.Status || BLOCK_STATUS.PLANNED,
+          Status: String(b.Status || BLOCK_STATUS.PLANNED).trim().toLowerCase(),
           CompletionStatus: b.CompletionStatus || "",
           TopicMatchStatus: b.TopicMatchStatus || "",
 
@@ -375,6 +402,16 @@ export default function PlanPage() {
 
         setTodayBlocks(mapped);
 
+        if (mapped.length > 0) {
+          const totalPlanned = mapped.reduce(
+            (sum, block) => sum + Number(block.PlannedMinutes || 0),
+            0
+          );
+          if (totalPlanned > 0) {
+            setPlanMin(totalPlanned);
+          }
+        }
+
         try {
           const radarData = await loadSyllabusRadar(mapped);
           if (radarData?.radar) {
@@ -384,12 +421,46 @@ export default function PlanPage() {
           console.warn("Radar load failed", err);
         }
       } catch (err) {
-        console.error("loadBlocks failed", err);
+        console.error("loadBlocksForDate failed", err);
+      }
+    },
+    [date]
+  );
+
+  useEffect(() => {
+    if (!date) return;
+    loadBlocksForDate(date);
+  }, [date, loadBlocksForDate]);
+
+  useEffect(() => {
+    function handleWindowFocus() {
+      loadBlocksForDate(date);
+    }
+
+    function handleVisibilityChange() {
+      if (document.visibilityState === "visible") {
+        loadBlocksForDate(date);
       }
     }
 
-    loadBlocks();
-  }, [date]);
+    window.addEventListener("focus", handleWindowFocus);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("focus", handleWindowFocus);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [date, loadBlocksForDate]);
+
+  useEffect(() => {
+    if (!date) return;
+
+    const id = setInterval(() => {
+      loadBlocksForDate(date);
+    }, 20000);
+
+    return () => clearInterval(id);
+  }, [date, loadBlocksForDate]);
 
   useEffect(() => {
     setDoneMin(sumActualMinutes(todayBlocks));
@@ -513,6 +584,28 @@ export default function PlanPage() {
     return getDailyMotivation(completionToday);
   }, [completionToday]);
 
+  const spotlightMessage = useMemo(() => {
+    if (!currentBlock) {
+      return "Upload a plan photo or create today’s blocks to begin execution.";
+    }
+
+    const statusValue = getDisplayStatus(currentBlock.Status);
+
+    if (statusValue === BLOCK_STATUS.ACTIVE) {
+      return "This is the block that matters now. Protect it.";
+    }
+
+    if (statusValue === BLOCK_STATUS.PAUSED) {
+      return "Resume calmly. Momentum returns faster than you think.";
+    }
+
+    if (statusValue === BLOCK_STATUS.PLANNED) {
+      return "Start the next meaningful block. One clean start changes the day.";
+    }
+
+    return "Stay steady. Execution is built one block at a time.";
+  }, [currentBlock]);
+
   function autoFillFromParsed(out) {
     if (out?.date) setDate(out.date);
 
@@ -548,18 +641,18 @@ export default function PlanPage() {
         return;
       }
 
-      setTodayBlocks((prev) =>
-        prev.map((block) =>
-          block.BlockId === blockId
-            ? {
-              ...block,
-              Status: BLOCK_STATUS.ACTIVE,
-              ActualStart: nowIso,
-            }
-            : block
-        )
-      );
+      setReminderState((prev) => ({
+        ...prev,
+        [blockId]: {
+          ...(prev[blockId] || {}),
+          start_now: true,
+          not_started_3: true,
+          please_begin_5: true,
+          paused_too_long: false,
+        },
+      }));
 
+      await loadBlocksForDate(date);
       setSpotlightOpen(true);
       setStatus("✅ Block started. Focus Mode is active.");
     } catch (e) {
@@ -582,19 +675,15 @@ export default function PlanPage() {
         return;
       }
 
-      setTodayBlocks((prev) =>
-        prev.map((block) =>
-          block.BlockId === blockId
-            ? {
-              ...block,
-              Status: BLOCK_STATUS.PAUSED,
-              LastPauseAt: nowIso,
-              PauseCount: Number(block.PauseCount || 0) + 1,
-            }
-            : block
-        )
-      );
+      setReminderState((prev) => ({
+        ...prev,
+        [blockId]: {
+          ...(prev[blockId] || {}),
+          paused_too_long: false,
+        },
+      }));
 
+      await loadBlocksForDate(date);
       setSpotlightOpen(true);
       setStatus("⏸️ Block paused.");
     } catch (e) {
@@ -617,22 +706,15 @@ export default function PlanPage() {
         return;
       }
 
-      const totalPauseMinutes = res?.result?.totalPauseMinutes ?? null;
+      setReminderState((prev) => ({
+        ...prev,
+        [blockId]: {
+          ...(prev[blockId] || {}),
+          paused_too_long: false,
+        },
+      }));
 
-      setTodayBlocks((prev) =>
-        prev.map((block) =>
-          block.BlockId === blockId
-            ? {
-              ...block,
-              Status: BLOCK_STATUS.ACTIVE,
-              LastResumeAt: nowIso,
-              TotalPauseMinutes:
-                totalPauseMinutes !== null ? totalPauseMinutes : block.TotalPauseMinutes,
-            }
-            : block
-        )
-      );
-
+      await loadBlocksForDate(date);
       setSpotlightOpen(true);
       setStatus("▶️ Block resumed.");
     } catch (e) {
@@ -648,6 +730,9 @@ export default function PlanPage() {
   }
 
   function handleStopBlock(block) {
+    if (!block) return;
+
+    setStopConfirmOpen(false);
     setActiveReviewBlock(block);
     setReviewForm({
       completionStatus: "",
@@ -697,35 +782,7 @@ export default function PlanPage() {
         return;
       }
 
-      const actualMinutes = res?.result?.actualMinutes ?? 0;
-
-      const finalStatus =
-        reviewForm.completionStatus === "completed"
-          ? BLOCK_STATUS.COMPLETED
-          : reviewForm.completionStatus === "partial"
-            ? BLOCK_STATUS.PARTIAL
-            : BLOCK_STATUS.MISSED;
-
-      setTodayBlocks((prev) =>
-        prev.map((block) =>
-          block.BlockId === activeReviewBlock.BlockId
-            ? {
-              ...block,
-              Status: finalStatus,
-              ActualEnd: actualEndIso,
-              ActualMinutes: actualMinutes,
-              CompletionStatus: reviewForm.completionStatus,
-              TopicMatchStatus: reviewForm.topicMatchStatus,
-              OutputType: reviewForm.outputType,
-              OutputCount: Number(reviewForm.outputCount || 0),
-              FocusRating: reviewForm.focusRating,
-              InterruptionReason: reviewForm.interruptionReason,
-              ReviewNotes: reviewForm.reviewNotes,
-              BacklogBucket: reviewForm.backlogBucket,
-            }
-            : block
-        )
-      );
+      await loadBlocksForDate(date);
 
       setActiveReviewBlock(null);
       setPendingStopBlock(null);
@@ -858,49 +915,59 @@ export default function PlanPage() {
 
   async function handleApproveOcrBlocks() {
     const approvedBlocks = buildApprovedOcrBlocks(date, ocrDraftBlocks);
+
+    if (!approvedBlocks.length) {
+      setStatus("❌ No OCR blocks to approve.");
+      return;
+    }
+
     const blocksPayload = buildScheduleBlocksPayload(approvedBlocks);
-    const previewBlocksToRegister = [...ocrPreviewReminderBlocks];
-
-    // close modal immediately for better UX
-    setOcrApprovalOpen(false);
-
-    // update UI immediately
-    setTodayBlocks(approvedBlocks);
-    setPlanMin(
-      approvedBlocks.reduce((sum, block) => sum + Number(block.PlannedMinutes || 0), 0)
-    );
+    const reminderBlocksToRegister = approvedBlocks.map((block, index) => {
+      const existing = ocrPreviewReminderBlocks[index] || {};
+      return {
+        ...existing,
+        blockId: block.BlockId,
+        BlockId: block.BlockId,
+        subject: block.PlannedSubject,
+        plannedSubject: block.PlannedSubject,
+        topic: block.PlannedTopic,
+        plannedTopic: block.PlannedTopic,
+        start: block.PlannedStart,
+        plannedStart: block.PlannedStart,
+        end: block.PlannedEnd,
+        plannedEnd: block.PlannedEnd,
+        minutes: Number(block.PlannedMinutes || 0),
+        plannedMinutes: Number(block.PlannedMinutes || 0),
+      };
+    });
 
     setBusy(true);
     setStatus("Saving approved schedule blocks...");
 
     try {
-      // 1) Save approved blocks to Sheets
       const saveBlocksOut = await post("saveScheduleBlocks", {
         date,
         items: blocksPayload,
       });
 
       if (!saveBlocksOut?.ok) {
-        setStatus("⚠️ Approved, but saveScheduleBlocks failed. Check DEBUG_LOG.");
+        setStatus("❌ saveScheduleBlocks failed. Nothing else was synced.");
         return;
       }
 
-      // 2) Sync calendar only AFTER approval
       setStatus("Syncing approved calendar events...");
       const calOut = await post("syncCalendarFromBlocks", { date });
       if (!calOut?.ok) {
         console.warn("syncCalendarFromBlocks failed:", calOut);
       }
 
-      // 3) Sync fixed reminders only AFTER approval
       setStatus("Syncing fixed reminders...");
       const fixedOut = await post("syncFixedReminders", { date });
       if (!fixedOut?.ok) {
         console.warn("syncFixedReminders failed:", fixedOut);
       }
 
-      // 4) Register reminder engine blocks only AFTER approval
-      if (previewBlocksToRegister.length > 0) {
+      if (reminderBlocksToRegister.length > 0) {
         setStatus("Registering approved reminder blocks...");
         const regRes = await fetch(`${BACKEND_URL}/api/schedule/register`, {
           method: "POST",
@@ -908,7 +975,7 @@ export default function PlanPage() {
           body: JSON.stringify({
             dayKey: date,
             userId: "moulika",
-            blocks: previewBlocksToRegister,
+            blocks: reminderBlocksToRegister,
           }),
         });
 
@@ -925,10 +992,13 @@ export default function PlanPage() {
         }
       }
 
-      // clear draft state after successful processing
+      setOcrApprovalOpen(false);
       setOcrDraftBlocks([]);
       setOcrPreviewReminderBlocks([]);
       setParsedPlan(null);
+      setReminderState({});
+
+      await loadBlocksForDate(date);
 
       setStatus("✅ Approved plan saved, calendar synced, and reminders registered.");
     } catch (e) {
@@ -937,6 +1007,7 @@ export default function PlanPage() {
       setBusy(false);
     }
   }
+
   async function onParsePhoto() {
     if (!planPhoto) {
       setStatus("❌ Please choose a plan photo first.");
@@ -1069,43 +1140,6 @@ export default function PlanPage() {
   const activeFlags = Array.isArray(loops?.flags) ? loops.flags : [];
   const todayTriggered = Array.isArray(loops?.todayTriggered) ? loops.todayTriggered : [];
 
-  const spotlightBlock = useMemo(() => {
-    if (!todayBlocks.length) return null;
-
-    const active = todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.ACTIVE);
-    if (active) return active;
-
-    const paused = todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.PAUSED);
-    if (paused) return paused;
-
-    const planned = todayBlocks.find((b) => getDisplayStatus(b.Status) === BLOCK_STATUS.PLANNED);
-    if (planned) return planned;
-
-    return todayBlocks[0] || null;
-  }, [todayBlocks]);
-
-  const spotlightMessage = useMemo(() => {
-    if (!spotlightBlock) {
-      return "Upload a plan photo or create today’s blocks to begin execution.";
-    }
-
-    const statusValue = getDisplayStatus(spotlightBlock.Status);
-
-    if (statusValue === BLOCK_STATUS.ACTIVE) {
-      return "This is the block that matters now. Protect it.";
-    }
-
-    if (statusValue === BLOCK_STATUS.PAUSED) {
-      return "Resume calmly. Momentum returns faster than you think.";
-    }
-
-    if (statusValue === BLOCK_STATUS.PLANNED) {
-      return "Start the next meaningful block. One clean start changes the day.";
-    }
-
-    return "Stay steady. Execution is built one block at a time.";
-  }, [spotlightBlock]);
-
   function scrollToSection(ref) {
     if (ref?.current) {
       ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1155,7 +1189,7 @@ export default function PlanPage() {
         <div className="spotlight-left">
           <div className="spotlight-label">Current Block Spotlight</div>
 
-          {!spotlightBlock ? (
+          {!currentBlock ? (
             <>
               <div className="spotlight-title">No active block yet</div>
               <div className="spotlight-subtitle">{spotlightMessage}</div>
@@ -1163,23 +1197,23 @@ export default function PlanPage() {
           ) : (
             <>
               <div className="spotlight-title">
-                {spotlightBlock.PlannedSubject || "Unknown Subject"}
+                {currentBlock.PlannedSubject || "Unknown Subject"}
               </div>
 
               <div className="spotlight-subtitle">
-                {spotlightBlock.PlannedTopic || "No topic"}
+                {currentBlock.PlannedTopic || "No topic"}
               </div>
 
               <div className="spotlight-meta">
                 <span className="spotlight-chip">
-                  {spotlightBlock.PlannedStart || "--:--"} → {spotlightBlock.PlannedEnd || "--:--"}
+                  {currentBlock.PlannedStart || "--:--"} → {currentBlock.PlannedEnd || "--:--"}
                 </span>
-                <span className="spotlight-chip">{spotlightBlock.PlannedMinutes || 0} min</span>
+                <span className="spotlight-chip">{currentBlock.PlannedMinutes || 0} min</span>
                 <span
                   className="spotlight-chip spotlight-status"
-                  style={{ background: getStatusBadgeColor(spotlightBlock.Status) }}
+                  style={{ background: getStatusBadgeColor(currentBlock.Status) }}
                 >
-                  {getDisplayStatus(spotlightBlock.Status)}
+                  {getDisplayStatus(currentBlock.Status)}
                 </span>
               </div>
 
@@ -1189,29 +1223,34 @@ export default function PlanPage() {
         </div>
 
         <div className="spotlight-right">
-          {spotlightBlock && getDisplayStatus(spotlightBlock.Status) === BLOCK_STATUS.PLANNED && (
+          {currentBlock && getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PLANNED && (
             <button
-              onClick={() => {
-                setSpotlightOpen(true);
-              }}
+              disabled={busy}
+              onClick={() => handleStartBlock(currentBlock.BlockId, { openFocus: true })}
             >
-              Start Block
+              {busy ? "Processing..." : "Start Block"}
             </button>
           )}
 
-          {spotlightBlock && getDisplayStatus(spotlightBlock.Status) === BLOCK_STATUS.ACTIVE && (
+          {currentBlock && getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.ACTIVE && (
             <>
-              <button disabled={busy} onClick={handleApproveOcrBlocks}>
-                {busy ? "Processing..." : "Approve and Continue"}
+              <button disabled={busy} onClick={() => handlePauseBlock(currentBlock.BlockId)}>
+                {busy ? "Processing..." : "Pause"}
               </button>
-              <button onClick={() => requestStopBlock(spotlightBlock)}>Stop</button>
+              <button disabled={busy} onClick={() => requestStopBlock(currentBlock)}>
+                Stop
+              </button>
             </>
           )}
 
-          {spotlightBlock && getDisplayStatus(spotlightBlock.Status) === BLOCK_STATUS.PAUSED && (
+          {currentBlock && getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED && (
             <>
-              <button onClick={() => handleResumeBlock(spotlightBlock.BlockId)}>Resume</button>
-              <button onClick={() => requestStopBlock(spotlightBlock)}>Stop</button>
+              <button disabled={busy} onClick={() => handleResumeBlock(currentBlock.BlockId)}>
+                {busy ? "Processing..." : "Resume"}
+              </button>
+              <button disabled={busy} onClick={() => requestStopBlock(currentBlock)}>
+                Stop
+              </button>
             </>
           )}
         </div>
@@ -1231,10 +1270,18 @@ export default function PlanPage() {
         </div>
 
         <div className="plan-action-row">
-          <button disabled={busy} onClick={onSetup}>Setup Sheets</button>
-          <button disabled={busy} onClick={onSaveDaily}>Save Daily Log</button>
-          <button disabled={busy} onClick={onAnalyzeOnly}>Analyze Day Only</button>
-          <button disabled={busy} onClick={onWeeklyRollup}>Weekly Rollup</button>
+          <button disabled={busy} onClick={onSetup}>
+            Setup Sheets
+          </button>
+          <button disabled={busy} onClick={onSaveDaily}>
+            Save Daily Log
+          </button>
+          <button disabled={busy} onClick={onAnalyzeOnly}>
+            Analyze Day Only
+          </button>
+          <button disabled={busy} onClick={onWeeklyRollup}>
+            Weekly Rollup
+          </button>
           <button
             disabled={busy}
             onClick={async () => {
@@ -1363,7 +1410,9 @@ export default function PlanPage() {
 
           {todayBlocks.length > 0 && (
             <>
-              <h2 ref={studyBlocksRef} className="block-section-title">Today’s Study Blocks</h2>
+              <h2 ref={studyBlocksRef} className="block-section-title">
+                Today’s Study Blocks
+              </h2>
 
               <div className="blocks-grid">
                 {todayBlocks.map((block) => (
@@ -1442,18 +1491,21 @@ export default function PlanPage() {
                     <div className="block-actions">
                       {getDisplayStatus(block.Status) === BLOCK_STATUS.PLANNED && (
                         <button
-                          onClick={() => {
-                            handleStartBlock(block.BlockId, { openFocus: true });
-                          }}
+                          disabled={busy}
+                          onClick={() => handleStartBlock(block.BlockId, { openFocus: true })}
                         >
-                          Start
+                          {busy ? "Processing..." : "Start"}
                         </button>
                       )}
 
                       {getDisplayStatus(block.Status) === BLOCK_STATUS.ACTIVE && (
                         <>
-                          <button onClick={() => handlePauseBlock(block.BlockId)}>Pause</button>
-                          <button onClick={() => requestStopBlock(block)}>Stop</button>
+                          <button disabled={busy} onClick={() => handlePauseBlock(block.BlockId)}>
+                            {busy ? "Processing..." : "Pause"}
+                          </button>
+                          <button disabled={busy} onClick={() => requestStopBlock(block)}>
+                            Stop
+                          </button>
                           <span style={{ fontSize: 13, opacity: 0.9, alignSelf: "center" }}>
                             Active
                           </span>
@@ -1462,8 +1514,12 @@ export default function PlanPage() {
 
                       {getDisplayStatus(block.Status) === BLOCK_STATUS.PAUSED && (
                         <>
-                          <button onClick={() => handleResumeBlock(block.BlockId)}>Resume</button>
-                          <button onClick={() => requestStopBlock(block)}>Stop</button>
+                          <button disabled={busy} onClick={() => handleResumeBlock(block.BlockId)}>
+                            {busy ? "Processing..." : "Resume"}
+                          </button>
+                          <button disabled={busy} onClick={() => requestStopBlock(block)}>
+                            Stop
+                          </button>
                           <span style={{ fontSize: 13, opacity: 0.9, alignSelf: "center" }}>
                             Paused ({block.PauseCount || 0})
                           </span>
@@ -1479,6 +1535,7 @@ export default function PlanPage() {
 
         <section className="plan-right">
           <SyllabusRadar radar={syllabusRadar} />
+
           <div className="plan-card">
             <h2 className="plan-card-title">Weekly Dashboard</h2>
 
@@ -1728,9 +1785,7 @@ export default function PlanPage() {
                 What was the output?
                 <select
                   value={reviewForm.outputType}
-                  onChange={(e) =>
-                    setReviewForm((f) => ({ ...f, outputType: e.target.value }))
-                  }
+                  onChange={(e) => setReviewForm((f) => ({ ...f, outputType: e.target.value }))}
                 >
                   <option value="">Select</option>
                   <option value="notes">Notes</option>
@@ -1746,9 +1801,7 @@ export default function PlanPage() {
                 Focus quality?
                 <select
                   value={reviewForm.focusRating}
-                  onChange={(e) =>
-                    setReviewForm((f) => ({ ...f, focusRating: e.target.value }))
-                  }
+                  onChange={(e) => setReviewForm((f) => ({ ...f, focusRating: e.target.value }))}
                 >
                   <option value="">Select</option>
                   <option value="deep">Deep</option>
@@ -1780,9 +1833,7 @@ export default function PlanPage() {
                 Leftover action
                 <select
                   value={reviewForm.backlogBucket}
-                  onChange={(e) =>
-                    setReviewForm((f) => ({ ...f, backlogBucket: e.target.value }))
-                  }
+                  onChange={(e) => setReviewForm((f) => ({ ...f, backlogBucket: e.target.value }))}
                 >
                   <option value="">Select</option>
                   <option value="recover_today">Recover today</option>
@@ -1797,9 +1848,7 @@ export default function PlanPage() {
                 <textarea
                   rows={3}
                   value={reviewForm.reviewNotes}
-                  onChange={(e) =>
-                    setReviewForm((f) => ({ ...f, reviewNotes: e.target.value }))
-                  }
+                  onChange={(e) => setReviewForm((f) => ({ ...f, reviewNotes: e.target.value }))}
                 />
               </label>
             </div>
@@ -1816,6 +1865,7 @@ export default function PlanPage() {
                 onClick={() => {
                   setActiveReviewBlock(null);
                   setPendingStopBlock(null);
+                  setStopConfirmOpen(false);
                 }}
               >
                 Cancel
@@ -1827,7 +1877,13 @@ export default function PlanPage() {
       )}
 
       {stopConfirmOpen && (pendingStopBlock || currentBlock) && (
-        <div className="focus-overlay" onClick={() => setStopConfirmOpen(false)}>
+        <div
+          className="focus-overlay"
+          onClick={() => {
+            setStopConfirmOpen(false);
+            setPendingStopBlock(null);
+          }}
+        >
           <div className="focus-modal" onClick={(e) => e.stopPropagation()}>
             <div className="focus-kicker">Confirm Stop</div>
 
@@ -1846,7 +1902,6 @@ export default function PlanPage() {
               <button
                 onClick={() => {
                   const stopTarget = pendingStopBlock || currentBlock;
-                  setStopConfirmOpen(false);
                   if (stopTarget) {
                     handleStopBlock(stopTarget);
                   }
@@ -1891,9 +1946,7 @@ export default function PlanPage() {
               <span className="focus-chip">{currentBlock.PlannedMinutes || 0} min</span>
               <span className="focus-chip">{getDisplayStatus(currentBlock.Status)}</span>
               {currentBlock.ActualStart && (
-                <span className="focus-chip">
-                  Started {formatTimeOnly(currentBlock.ActualStart)}
-                </span>
+                <span className="focus-chip">Started {formatTimeOnly(currentBlock.ActualStart)}</span>
               )}
               {Number(currentBlock.PauseCount || 0) > 0 && (
                 <span className="focus-chip">Pauses {currentBlock.PauseCount || 0}</span>
@@ -1911,25 +1964,32 @@ export default function PlanPage() {
             <div className="focus-actions">
               {getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PLANNED && (
                 <button
-                  onClick={() => {
-                    handleStartBlock(currentBlock.BlockId, { openFocus: true });
-                  }}
+                  disabled={busy}
+                  onClick={() => handleStartBlock(currentBlock.BlockId, { openFocus: true })}
                 >
-                  Start Now
+                  {busy ? "Processing..." : "Start Now"}
                 </button>
               )}
 
               {getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.ACTIVE && (
                 <>
-                  <button onClick={() => handlePauseBlock(currentBlock.BlockId)}>Pause</button>
-                  <button onClick={() => requestStopBlock(currentBlock)}>Stop</button>
+                  <button disabled={busy} onClick={() => handlePauseBlock(currentBlock.BlockId)}>
+                    {busy ? "Processing..." : "Pause"}
+                  </button>
+                  <button disabled={busy} onClick={() => requestStopBlock(currentBlock)}>
+                    Stop
+                  </button>
                 </>
               )}
 
               {getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED && (
                 <>
-                  <button onClick={() => handleResumeBlock(currentBlock.BlockId)}>Resume</button>
-                  <button onClick={() => requestStopBlock(currentBlock)}>Stop</button>
+                  <button disabled={busy} onClick={() => handleResumeBlock(currentBlock.BlockId)}>
+                    {busy ? "Processing..." : "Resume"}
+                  </button>
+                  <button disabled={busy} onClick={() => requestStopBlock(currentBlock)}>
+                    Stop
+                  </button>
                 </>
               )}
 
@@ -2018,33 +2078,28 @@ export default function PlanPage() {
                     </label>
                   </div>
 
-                  <div style={{ marginTop: 12, display: "flex", justifyContent: "flex-end" }}>
-                    <button
-                      className="focus-close-btn"
-                      onClick={() => removeOcrDraftBlock(index)}
+                  {(block.SyllabusTop1Code || block.SyllabusTop1Path) && (
+                    <div
+                      style={{
+                        marginTop: 10,
+                        padding: 10,
+                        borderRadius: 12,
+                        background: "rgba(123,136,138,0.10)",
+                        border: "1px solid rgba(123,136,138,0.16)",
+                        fontSize: 13,
+                      }}
                     >
-                      {(block.SyllabusTop1Code || block.SyllabusTop1Path) && (
-                        <div
-                          style={{
-                            marginTop: 10,
-                            padding: 10,
-                            borderRadius: 12,
-                            background: "rgba(123,136,138,0.10)",
-                            border: "1px solid rgba(123,136,138,0.16)",
-                            fontSize: 13,
-                          }}
-                        >
-                          <div>
-                            <b>Mapping:</b> {block.SyllabusTop1Code || "—"}
-                          </div>
-                          {block.SyllabusTop1Path && (
-                            <div style={{ marginTop: 4, opacity: 0.9 }}>
-                              {block.SyllabusTop1Path}
-                            </div>
-                          )}
-                        </div>
+                      <div>
+                        <b>Mapping:</b> {block.SyllabusTop1Code || "—"}
+                      </div>
+                      {block.SyllabusTop1Path && (
+                        <div style={{ marginTop: 4, opacity: 0.9 }}>{block.SyllabusTop1Path}</div>
                       )}
+                    </div>
+                  )}
 
+                  <div style={{ marginTop: 12, display: "flex", justifyContent: "flex-end" }}>
+                    <button className="focus-close-btn" onClick={() => removeOcrDraftBlock(index)}>
                       Remove Block
                     </button>
                   </div>
@@ -2053,9 +2108,12 @@ export default function PlanPage() {
             </div>
 
             <div className="focus-actions" style={{ marginTop: 24 }}>
-              <button onClick={handleApproveOcrBlocks}>Approve and Continue</button>
+              <button disabled={busy} onClick={handleApproveOcrBlocks}>
+                {busy ? "Processing..." : "Approve and Continue"}
+              </button>
 
               <button
+                disabled={busy}
                 className="focus-close-btn"
                 onClick={() => {
                   setOcrApprovalOpen(false);
