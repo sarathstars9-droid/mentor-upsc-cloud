@@ -241,27 +241,48 @@ async function updateBlockAction(action, payload) {
 }
 
 function getEffectiveBlockStatus(block) {
-  const raw = String(block?.Status || "").trim().toLowerCase();
+  if (!block) return BLOCK_STATUS.PLANNED;
 
-  if (block?.ActualEnd) {
+  const rawStatus = String(block.Status || "").trim().toLowerCase();
+
+  if (block.ActualEnd) {
     if (
-      raw === BLOCK_STATUS.PARTIAL ||
-      raw === BLOCK_STATUS.MISSED ||
-      raw === BLOCK_STATUS.SKIPPED
+      rawStatus === BLOCK_STATUS.PARTIAL ||
+      rawStatus === BLOCK_STATUS.MISSED ||
+      rawStatus === BLOCK_STATUS.SKIPPED
     ) {
-      return raw;
+      return rawStatus;
     }
     return BLOCK_STATUS.COMPLETED;
   }
 
-  if (raw === "review_pending") return "review_pending";
+  if (rawStatus === "review_pending") {
+    return "review_pending";
+  }
 
-  if (block?.LastPauseAt && !block?.ActualEnd) return BLOCK_STATUS.PAUSED;
-  if (block?.ActualStart && !block?.ActualEnd) return BLOCK_STATUS.ACTIVE;
+  if (
+    rawStatus === BLOCK_STATUS.PAUSED ||
+    (block.LastPauseAt &&
+      (!block.LastResumeAt ||
+        new Date(block.LastPauseAt).getTime() > new Date(block.LastResumeAt).getTime()))
+  ) {
+    return BLOCK_STATUS.PAUSED;
+  }
 
-  if (raw) return raw;
+  if (block.ActualStart) {
+    return BLOCK_STATUS.ACTIVE;
+  }
 
   return BLOCK_STATUS.PLANNED;
+}
+
+function isFinishedStatus(status) {
+  return (
+    status === BLOCK_STATUS.COMPLETED ||
+    status === BLOCK_STATUS.PARTIAL ||
+    status === BLOCK_STATUS.MISSED ||
+    status === BLOCK_STATUS.SKIPPED
+  );
 }
 
 export default function PlanPage() {
@@ -377,48 +398,69 @@ export default function PlanPage() {
 
         const blocks = Array.isArray(res?.blocks) ? res.blocks : [];
 
-        const mapped = blocks.map((b) => ({
-          BlockId: b.BlockId,
-          PlannedSubject: b.Subject || "Unknown",
-          PlannedTopic: b.Topic || "",
-          PlannedStart: b.Start || "",
-          PlannedEnd: b.End || "",
-          PlannedMinutes: Number(b.Minutes || 0),
+        const mapped = blocks.map((b) => {
+          const rawStatus = String(b.Status || "").trim().toLowerCase();
 
-          ActualStart: b.ActualStart || "",
-          ActualEnd: b.ActualEnd || "",
-          ActualMinutes: Number(b.ActualMinutes || 0),
+          let derivedStatus = BLOCK_STATUS.PLANNED;
 
-          PauseCount: Number(b.PauseCount || 0),
-          TotalPauseMinutes: Number(b.TotalPauseMinutes || 0),
-          LastPauseAt: b.LastPauseAt || "",
-          LastResumeAt: b.LastResumeAt || "",
+          const pausedAfterResume =
+            b.LastPauseAt &&
+            (!b.LastResumeAt ||
+              new Date(b.LastPauseAt).getTime() > new Date(b.LastResumeAt).getTime());
 
-          Status:
-            String(b.Status || "").trim().toLowerCase() ||
-            (b.ActualEnd
-              ? BLOCK_STATUS.COMPLETED
-              : b.LastPauseAt
-                ? BLOCK_STATUS.PAUSED
-                : b.ActualStart
-                  ? BLOCK_STATUS.ACTIVE
-                  : BLOCK_STATUS.PLANNED),
-          CompletionStatus: b.CompletionStatus || "",
-          TopicMatchStatus: b.TopicMatchStatus || "",
+          if (b.ActualEnd) {
+            if (
+              rawStatus === BLOCK_STATUS.PARTIAL ||
+              rawStatus === BLOCK_STATUS.MISSED ||
+              rawStatus === BLOCK_STATUS.SKIPPED
+            ) {
+              derivedStatus = rawStatus;
+            } else {
+              derivedStatus = BLOCK_STATUS.COMPLETED;
+            }
+          } else if (rawStatus === "review_pending") {
+            derivedStatus = "review_pending";
+          } else if (rawStatus === BLOCK_STATUS.PAUSED || pausedAfterResume) {
+            derivedStatus = BLOCK_STATUS.PAUSED;
+          } else if (b.ActualStart) {
+            derivedStatus = BLOCK_STATUS.ACTIVE;
+          }
 
-          OutputType: b.OutputType || "",
-          OutputCount: Number(b.OutputCount || 0),
-          FocusRating: b.FocusRating || "",
-          InterruptionReason: b.InterruptionReason || "",
-          ReviewNotes: b.ReviewNotes || "",
-          BacklogBucket: b.BacklogBucket || "",
+          return {
+            BlockId: b.BlockId,
+            PlannedSubject: b.Subject || "Unknown",
+            PlannedTopic: b.Topic || "",
+            PlannedStart: b.Start || "",
+            PlannedEnd: b.End || "",
+            PlannedMinutes: Number(b.Minutes || 0),
 
-          ActualSubject: b.ActualSubject || "",
-          ActualTopic: b.ActualTopic || "",
+            ActualStart: b.ActualStart || "",
+            ActualEnd: b.ActualEnd || "",
+            ActualMinutes: Number(b.ActualMinutes || 0),
 
-          SyllabusTop1Code: b.MappingCode || "",
-          SyllabusTop1Path: b.MappingPath || "",
-        }));
+            PauseCount: Number(b.PauseCount || 0),
+            TotalPauseMinutes: Number(b.TotalPauseMinutes || 0),
+            LastPauseAt: b.LastPauseAt || "",
+            LastResumeAt: b.LastResumeAt || "",
+
+            Status: derivedStatus,
+            CompletionStatus: b.CompletionStatus || "",
+            TopicMatchStatus: b.TopicMatchStatus || "",
+
+            OutputType: b.OutputType || "",
+            OutputCount: Number(b.OutputCount || 0),
+            FocusRating: b.FocusRating || "",
+            InterruptionReason: b.InterruptionReason || "",
+            ReviewNotes: b.ReviewNotes || "",
+            BacklogBucket: b.BacklogBucket || "",
+
+            ActualSubject: b.ActualSubject || "",
+            ActualTopic: b.ActualTopic || "",
+
+            SyllabusTop1Code: b.MappingCode || "",
+            SyllabusTop1Path: b.MappingPath || "",
+          };
+        });
 
         setTodayBlocks(mapped);
         setReminderState((prev) => {
@@ -428,7 +470,7 @@ export default function PlanPage() {
             const blockId = block.BlockId;
             if (!blockId) continue;
 
-            const blockStatus = getDisplayStatus(block.Status);
+            const blockStatus = getEffectiveBlockStatus(block);
             const old = prev[blockId] || {};
 
             if (
@@ -597,7 +639,7 @@ export default function PlanPage() {
             paused_too_long: false,
           };
 
-          const blockStatus = getDisplayStatus(block.Status);
+          const blockStatus = getEffectiveBlockStatus(block);
 
           const hasStarted =
             blockStatus === BLOCK_STATUS.ACTIVE ||
@@ -667,7 +709,7 @@ export default function PlanPage() {
       return "Upload a plan photo or create today’s blocks to begin execution.";
     }
 
-    const statusValue = getDisplayStatus(currentBlock.Status);
+    const statusValue = getEffectiveBlockStatus(currentBlock)
 
     if (statusValue === BLOCK_STATUS.ACTIVE) {
       return "This is the block that matters now. Protect it.";
@@ -1354,35 +1396,35 @@ export default function PlanPage() {
                     className="spotlight-chip spotlight-status"
                     style={{
                       background:
-                        getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.ACTIVE
+                        getDisplayStatus(currentBlock) === BLOCK_STATUS.ACTIVE
                           ? "rgba(59, 130, 246, 0.22)"
-                          : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.PAUSED
+                          : getDisplayStatus(currentBlock) === BLOCK_STATUS.PAUSED
                             ? "rgba(245, 158, 11, 0.22)"
-                            : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.COMPLETED
+                            : getDisplayStatus(currentBlock) === BLOCK_STATUS.COMPLETED
                               ? "rgba(34, 197, 94, 0.22)"
-                              : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.PARTIAL
+                              : getDisplayStatus(currentBlock) === BLOCK_STATUS.PARTIAL
                                 ? "rgba(168, 85, 247, 0.22)"
-                                : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.MISSED ||
-                                  getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.SKIPPED
+                                : getDisplayStatus(currentBlock) === BLOCK_STATUS.MISSED ||
+                                  getDisplayStatus(currentBlock) === BLOCK_STATUS.SKIPPED
                                   ? "rgba(249, 115, 22, 0.22)"
                                   : "rgba(148, 163, 184, 0.18)",
                       color:
-                        getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.ACTIVE
+                        getDisplayStatus(currentBlock) === BLOCK_STATUS.ACTIVE
                           ? "#93c5fd"
-                          : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.PAUSED
+                          : getDisplayStatus(currentBlock) === BLOCK_STATUS.PAUSED
                             ? "#fcd34d"
-                            : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.COMPLETED
+                            : getDisplayStatus(currentBlock) === BLOCK_STATUS.COMPLETED
                               ? "#86efac"
-                              : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.PARTIAL
+                              : getDisplayStatus(currentBlock) === BLOCK_STATUS.PARTIAL
                                 ? "#d8b4fe"
-                                : getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.MISSED ||
-                                  getDisplayStatus(currentBlock?.Status) === BLOCK_STATUS.SKIPPED
+                                : getDisplayStatus(currentBlock) === BLOCK_STATUS.MISSED ||
+                                  getDisplayStatus(currentBlock) === BLOCK_STATUS.SKIPPED
                                   ? "#fdba74"
                                   : "#cbd5e1",
                       border: "1px solid rgba(255,255,255,0.08)",
                     }}
                   >
-                    {getDisplayStatus(currentBlock?.Status)}
+                    {getDisplayStatus(currentBlock)}
                   </span>
                 </div>
 
@@ -1414,7 +1456,7 @@ export default function PlanPage() {
               </>
             )}
 
-            {currentBlock && getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED && (
+            {currentBlock && getDisplayStatus(currentBlock) === BLOCK_STATUS.PAUSED && (
               <>
                 <button disabled={busy} onClick={() => handleResumeBlock(currentBlock.BlockId)}>
                   {busy ? "Processing..." : "Resume"}
@@ -1590,7 +1632,7 @@ export default function PlanPage() {
                 {todayBlocks.map((block) => (
                   <div
                     key={block.BlockId}
-                    className={`block-card ${getDisplayStatus(block.Status) === BLOCK_STATUS.ACTIVE
+                    className={`block-card ${getEffectiveBlockStatus(block) === BLOCK_STATUS.ACTIVE
                       ? "block-card-active"
                       : ""
                       }`}
