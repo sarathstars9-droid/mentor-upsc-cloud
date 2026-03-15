@@ -2,11 +2,11 @@ import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import { BACKEND_URL } from "../config";
 import { BLOCK_STATUS } from "../blockConstants";
 import { getRealStreakFromBlocks } from "../utils/dashboard";
-import SyllabusRadar from "../components/plan/SyllabusRadar.jsx";
-import FocusModeModal from "../components/plan/FocusModeModal.jsx";
+import SyllabusRadar from "../components/Plan/SyllabusRadar.jsx";
+import FocusModeModal from "../components/Plan/FocusModeModal.jsx";
 import { theme } from "../theme/theme";
-import StopConfirmModal from "../components/plan/StopConfirmModal.jsx";
-import BlockReviewModal from "../components/plan/BlockReviewModal.jsx";
+import StopConfirmModal from "../components/Plan/StopConfirmModal.jsx";
+import BlockReviewModal from "../components/Plan/BlockReviewModal.jsx";
 import {
   daysLeft,
   getCompletionPercent,
