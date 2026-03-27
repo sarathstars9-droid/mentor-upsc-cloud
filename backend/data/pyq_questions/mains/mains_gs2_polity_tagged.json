@@ -1,0 +1,953 @@
+{
+  "exam": "UPSC_CSE",
+  "stage": "Mains",
+  "paper": "GS2",
+  "subject": "Polity",
+  "questions": [
+    {
+      "id": "MAIN_GS2_POLITY_2024_01",
+      "year": 2024,
+      "questionNumber": 1,
+      "directive": "Examine",
+      "theme": "Legislature",
+      "question": "Examine the need for electoral reforms as suggested by various committees with particular reference to \"one nation - one election\" principle.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2024_02",
+      "year": 2024,
+      "questionNumber": 2,
+      "directive": "Explain",
+      "theme": "Judiciary, Dispute Redressal Mechanisms And",
+      "question": "Explain and distinguish between Lok Adalats and Arbitration Tribunals. Whether they entertain civil as well as criminal cases?",
+      "syllabusNodeId": "GS2-POL-JUD"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2024_03",
+      "year": 2024,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Separation of Powers",
+      "question": "\u201cThe growth of cabinet system has practically resulted in the marginalisation of the parliamentary supremacy.\u201d",
+      "syllabusNodeId": "GS2-POL-CONTEMP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2024_04",
+      "year": 2024,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "\u201cThe duty of the Comptroller and Auditor General is not merely to ensure the legality of expenditure but also its propriety.\u201d Comment",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2024_05",
+      "year": 2024,
+      "questionNumber": 5,
+      "directive": "Analyse",
+      "theme": "Legislature",
+      "question": "Analyse the role of local bodies in providing good governance at local level and bring out the pros and cons of merging the rural local bodies with the urban local bodies.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2024_06",
+      "year": 2024,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Fundamental Rights",
+      "question": "Right to privacy is intrinsic to life and personal liberty and is inherently protected under Article 21 of the constitution. Explain. In this reference discuss the law relating to D.N.A. testing of child in the womb to establish its paternity.",
+      "syllabusNodeId": "GS2-POL-FR"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2024_07",
+      "year": 2024,
+      "questionNumber": 7,
+      "directive": "Comment",
+      "theme": "Centre-State Relations",
+      "question": "What changes has the Union Government recently introduced in the domain of Centre-State relations? Suggest measures to be adopted to build the trust between the Centre and the States and for strengthening federalism.",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2024_08",
+      "year": 2024,
+      "questionNumber": 8,
+      "directive": "Explain",
+      "theme": "Judiciary, Dispute Redressal Mechanisms And",
+      "question": "Explain the reasons for the growth of public interest litigation in India. As a result of it, has the Indian Supreme Court emerged as the world\u2019s most powerful judiciary?",
+      "syllabusNodeId": "GS2-POL-JUD"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2024_09",
+      "year": 2024,
+      "questionNumber": 9,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "Discuss India as a secular state and compare with the secular principles of the US constitution.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2023_01",
+      "year": 2023,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Separation of Powers",
+      "question": "\u201cConstitutionally guaranteed judicial independence is a prerequisite of democracy.\u201d Comment.",
+      "syllabusNodeId": "GS2-POL-CONTEMP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2023_02",
+      "year": 2023,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Judiciary, Dispute Redressal Mechanisms And",
+      "question": "Who are entitled to receive free legal aid? Assess the role of the National Legal Services Authority (NALSA) in rendering free legal aid in India.",
+      "syllabusNodeId": "GS2-POL-JUD"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2023_03",
+      "year": 2023,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "\u201cThe states in India seem reluctant to empower urban local bodies both functionally as well as financially.\u201d",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2023_04",
+      "year": 2023,
+      "questionNumber": 4,
+      "directive": "Compare and contrast",
+      "theme": "Preamble, Features, and Philosophy",
+      "question": "Compare and contrast the British and Indian approaches to Parliamentary sovereignty.",
+      "syllabusNodeId": "GS2-POL-PREAMBLE"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2023_05",
+      "year": 2023,
+      "questionNumber": 5,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "Discuss the role of Presiding Officers of state legislatures in maintaining order and impartiality in conducting legislative work and in facilitating best democratic practices",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2023_06",
+      "year": 2023,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Historical Underpinnings and Evolution",
+      "question": "\u201cThe Constitution of India is a living instrument with capabilities of enormous dynamism. It is a constitution made for a progressive society.\u201d Illustrate with special reference to the expanding horizons of the right to life and personal liberty.",
+      "syllabusNodeId": "GS2-POL-CONTEMP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2023_07",
+      "year": 2023,
+      "questionNumber": 7,
+      "directive": "Explain",
+      "theme": "Preamble, Features, and Philosophy",
+      "question": "Explain the constitutional perspectives of Gender Justice with the help of relevant Constitutional Provisions and case laws.",
+      "syllabusNodeId": "GS2-POL-PREAMBLE"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2023_08",
+      "year": 2023,
+      "questionNumber": 8,
+      "directive": "Account for",
+      "theme": "Centre-State Relations",
+      "question": "Account for the legal and political factors responsible for the reduced frequency of using Article 356 by the Union Governments since mid 1990s",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2023_09",
+      "year": 2023,
+      "questionNumber": 9,
+      "directive": "Explain",
+      "theme": "Centre-State Relations",
+      "question": "Explain the significance of the 101st Constitutional Amendment Act. To what extent does it reflect the accommodative spirit of federalism?",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2023_10",
+      "year": 2023,
+      "questionNumber": 10,
+      "directive": "Explain",
+      "theme": "Legislature",
+      "question": "Explain the structure of the Parliamentary Committee system. How far have the financial committees helped in the institutionalisation of Indian Parliament?",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2022_01",
+      "year": 2022,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Judiciary, Dispute Redressal Mechanisms And",
+      "question": "The most significant achievement of modern law in India is the constitutionalizationof environmental problems by the Supreme Court. Discuss this statement with the help of relevant case laws.",
+      "syllabusNodeId": "GS2-POL-JUD"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2022_02",
+      "year": 2022,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Fundamental Rights",
+      "question": "Right of movement and residence throughout the territory of India are freely available to Indian citizens, but these rights are not absolute. Comment.",
+      "syllabusNodeId": "GS2-POL-FR"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2022_03",
+      "year": 2022,
+      "questionNumber": 3,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "To what extent in your opinion has the decentralisation of power in India changed the governance landscape at the grassroots?",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2022_04",
+      "year": 2022,
+      "questionNumber": 4,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "Discuss the role of the Vice President of India as the chairman of Rajya Sabha.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2022_05",
+      "year": 2022,
+      "questionNumber": 5,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "Discuss the role of the National Commission for Backward Classes in the wake of its transformation from a statutory body to a constitutional body.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2022_06",
+      "year": 2022,
+      "questionNumber": 6,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "Discuss the procedures to decide the disputes arising out of the election of a Member of the Parliament or a State Legislature under the Representation of People Act 1951. What are the grounds on which the election of any returned candidate may be declared void? What remedy is available to the aggrieved party against the decision? Refer to the case laws",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2022_07",
+      "year": 2022,
+      "questionNumber": 7,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "Discuss the essential conditions for the exercise of the legislative powers by the Governor. Discuss the legality of re- promulgation of ordinances by the Governor without placing them before the Legislature.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2022_08",
+      "year": 2022,
+      "questionNumber": 8,
+      "directive": "Comment",
+      "theme": "Centre-State Relations",
+      "question": "\u201cWhile the national political parties in India favour centralisation, the regional parties are in favour of state autonomy.\u201d Comment.",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2022_09",
+      "year": 2022,
+      "questionNumber": 9,
+      "directive": "Critically examine",
+      "theme": "Legislature",
+      "question": "Critically examine the procedures through which the presidents of India and France are elected.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2022_10",
+      "year": 2022,
+      "questionNumber": 10,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "Discuss the role of the Election Commission of India in light of the evolution of the Model Code of Conduct.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2021_01",
+      "year": 2021,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Preamble, Features, and Philosophy",
+      "question": "\u2018Constitutional Morality\u2019 is rooted in the Constitution itself and is founded on its essential facets. Explain the doctrine of \u2018Constitutional Morality\u2019 with the help of relevant judicial decisions",
+      "syllabusNodeId": "GS2-POL-PREAMBLE"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2021_02",
+      "year": 2021,
+      "questionNumber": 2,
+      "directive": "Discuss",
+      "theme": "Polity",
+      "question": "Discuss the desirability of greater representation to women in the higher judiciary to ensure diversity, equity and inclusiveness.",
+      "syllabusNodeId": "GS2-POL-CONTEMP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2021_03",
+      "year": 2021,
+      "questionNumber": 3,
+      "directive": "Discuss",
+      "theme": "Centre-State Relations",
+      "question": "How have the recommendations of the 14th Finance Commission of India enabled the states to improve their fiscal position?",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2021_04",
+      "year": 2021,
+      "questionNumber": 4,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "To what extent, in your view, the Parliament is able to ensure accountability of the executive in India?",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2021_05",
+      "year": 2021,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "Centre-State Relations",
+      "question": "The jurisdiction of the Central Bureau of Investigation(CBI) regarding lodging an FIR and conducting probes within a particular state is being questioned by various States. However, the power of States to withhold consent to the CBI is not absolute. Explain with special reference to the federal character of India.",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2021_06",
+      "year": 2021,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "Though the Human Rights Commissions have contributed immensely to the protection of human rights in India, yet they have failed to assert themselves against the mighty and powerful. Analyzing their structural and practical limitations, suggest remedial measures.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2021_07",
+      "year": 2021,
+      "questionNumber": 7,
+      "directive": "Analyze",
+      "theme": "Preamble, Features, and Philosophy",
+      "question": "Analyze the distinguishing features of the notion of Equality in the Constitutions of the USA and India.",
+      "syllabusNodeId": "GS2-POL-PREAMBLE"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2021_08",
+      "year": 2021,
+      "questionNumber": 8,
+      "directive": "Explain",
+      "theme": "Legislature",
+      "question": "Explain the constitutional provisions under which Legislative Councils are established. Review the working and current status of Legislative Councils with suitable illustrations.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2021_09",
+      "year": 2021,
+      "questionNumber": 9,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "Do Department-related Parliamentary Standing Committees keep the administration on its toes and inspire reverence for parliamentary control? Evaluate the working of such committees with suitable examples.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2020_01",
+      "year": 2020,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Polity",
+      "question": "\u201cThere is a need for simplification of procedure for disqualification of persons found guilty of corrupt practices under the Representation of Peoples Act.\u201d Comment.",
+      "syllabusNodeId": "GS2-POL-CONTEMP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2020_02",
+      "year": 2020,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "\u201cRecent amendments to the Right To Information Act will have a profound impact on the autonomy and independence of the Information Commission.\u201d",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2020_03",
+      "year": 2020,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Centre-State Relations",
+      "question": "How far do you think cooperation, competition and confrontation have shaped the nature of federation in India? Cite some recent examples to validate your answer",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2020_04",
+      "year": 2020,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "The judicial system in India and the UK seem to be converging as well as diverging in recent times. Highlight The key points of convergence and divergence between the two nations in terms of their judicial practices.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2020_05",
+      "year": 2020,
+      "questionNumber": 5,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "\u2018Once a Speaker, Always a Speaker\u2019! Do you think this practice should be adopted to impart objectivity to the office of the Speaker of Lok Sabha? What could be its implications for the robust functioning of parliamentary business in India?",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2020_06",
+      "year": 2020,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Centre-State Relations",
+      "question": "Indian Constitution exhibits centralising tendencies to maintain unity and integrity of the nation. Elucidate in the perspective of the Epidemic Diseases Act, 1897; The Disaster Management Act, 2005 and recently passed Farm Acts.",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2020_07",
+      "year": 2020,
+      "questionNumber": 7,
+      "directive": "Comment",
+      "theme": "Separation of Powers",
+      "question": "Judicial Legislation is antithetical to the doctrine of separation of powers as envisaged in the Indian Constitution. In this context justify the filing of large number of public interest petitions praying for issuing guidelines to executive authorities.",
+      "syllabusNodeId": "GS2-POL-CONTEMP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2020_08",
+      "year": 2020,
+      "questionNumber": 8,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "The strength and sustenance of local institutions in India has shifted from their formative phase of \u2018Functions, Functionaries and Funds\u2019to the contemporary stage of \u2018Functionality\u2019. Highlightthe critical challenges faced by local institutions in terms of their functionality in recent times.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2020_09",
+      "year": 2020,
+      "questionNumber": 9,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "Rajya Sabha has been transformed from a \u2018useless stepneytyre\u2019 to the most useful supporting organ in past few decades. Highlight the factors as well as the areas in which this transformation could be visible",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2020_10",
+      "year": 2020,
+      "questionNumber": 10,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "Which steps are required for constitutionalization of a Commission? Do you think imparting constitutionality to the National Commission for Women would ensure greater gender justice and empowerment in India? Give reasons",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2019_01",
+      "year": 2019,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Polity",
+      "question": "Do you think that Constitution of India does not accept principle of strict separation of powers rather it is based on the principle of \u2018checks and balance\u2019? Explain.",
+      "syllabusNodeId": "GS2-POL-CONTEMP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2019_02",
+      "year": 2019,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Judiciary, Dispute Redressal Mechanisms And",
+      "question": "The central administrative tribunal which was established for redressal of grievances and complaints by or against central government employees nowadays is exercising its power as an independent judicial authority. Explain.",
+      "syllabusNodeId": "GS2-POL-JUD"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2019_03",
+      "year": 2019,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "From the resolution of contentious issues regarding distribution of legislative powers by the courts, \u2018Principle of Federal Supremacy\u2019 and \u2018Harmonious Construction\u2019 have emerged. Explain.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2019_04",
+      "year": 2019,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Preamble, Features, and Philosophy",
+      "question": "What can France learn from the Indian Constitution\u2019s approach to secularism.",
+      "syllabusNodeId": "GS2-POL-PREAMBLE"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2019_05",
+      "year": 2019,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "On what grounds a people\u2019s representative can be disqualified under the Representation of Peoples Act, 1951? Also mention the remedies available to such person against his disqualification.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2019_06",
+      "year": 2019,
+      "questionNumber": 6,
+      "directive": "Discuss",
+      "theme": "Preamble, Features, and Philosophy",
+      "question": "Parliament\u2019s power to amend the constitution is limited power and it cannot be enlarged into absolute power.\u201d In light of this statement explain whether parliament under Article 368 of the constitution can destroy the Basic structure of the constitution by expanding its amending power?",
+      "syllabusNodeId": "GS2-POL-PREAMBLE"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2019_07",
+      "year": 2019,
+      "questionNumber": 7,
+      "directive": "Comment",
+      "theme": "Executive",
+      "question": "The Attorney-General is the chief legal adviser and lawyer of the Government of India.\u201d Discuss.",
+      "syllabusNodeId": "GS2-POL-EXEC"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2019_08",
+      "year": 2019,
+      "questionNumber": 8,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "Individual Parliamentarian\u2019s role as the national law maker is on a decline, which in turn, has adversely impacted the quality of debates and their outcome. Discuss.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2018_01",
+      "year": 2018,
+      "questionNumber": 1,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "In the light of recent controversy regarding the use of the Electronic Voting Machine (EVM), what are the challenges before the Election Commission of India to ensure the trustworthiness of elections in India?",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2018_02",
+      "year": 2018,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "Whether National Commission for Scheduled Castes (NCSC) can enforce the implementation of constitutional reservation for the Scheduled Castes in the religious minority institutions? Examine.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2018_03",
+      "year": 2018,
+      "questionNumber": 3,
+      "directive": "Discuss",
+      "theme": "Fundamental Rights",
+      "question": "Under what circumstances can the Financial Emergency be proclaimed by the President of India? What consequences follow when such a declaration remains in force?",
+      "syllabusNodeId": "GS2-POL-FR"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2018_04",
+      "year": 2018,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "Why do you think the committees are considered to be useful for parliamentary work? Discuss, in this context, the role of the Estimates Committee.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2018_05",
+      "year": 2018,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "Polity",
+      "question": "\u201cThe Comptroller and Auditor General (CAG) has a very vital role to play.\u201d Explain how this is reflected in the method and terms of his appointment as well as the range of powers he can exercise.",
+      "syllabusNodeId": "GS2-POL-CONTEMP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2018_06",
+      "year": 2018,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Centre-State Relations",
+      "question": "Whether the Supreme Court Judgment (July 2018) can settle the political tussle between the Lt. Governor and elected government of Delhi? Examine.",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2018_07",
+      "year": 2018,
+      "questionNumber": 7,
+      "directive": "Discuss",
+      "theme": "Judiciary, Dispute Redressal Mechanisms And",
+      "question": "How far do you agree with the view that tribunals curtail the jurisdiction of ordinary courts? In view of the above, discuss the constitutional validity and competency of the tribunals in India?",
+      "syllabusNodeId": "GS2-POL-JUD"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2018_08",
+      "year": 2018,
+      "questionNumber": 8,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "India and USA are the two large democracies. Examine the basic tenets on which the two political systems are based",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2018_09",
+      "year": 2018,
+      "questionNumber": 9,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "How is the Finance Commission of India constituted? What do you know about the terms of reference of the recently constituted Finance Commission? Discuss.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2018_10",
+      "year": 2018,
+      "questionNumber": 10,
+      "directive": "Assess",
+      "theme": "Legislature",
+      "question": "Assess the importance of the Panchayat system in India as a part of local government. Apart from government grants, what sources the Panchayats can look out for financing development projects?",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2017_01",
+      "year": 2017,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "\u201cThe local self government system in India has not proved to be effective instrument of governance.\u201d Critically examine the statement and give your views to improve the situation.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2017_02",
+      "year": 2017,
+      "questionNumber": 2,
+      "directive": "Critically examine",
+      "theme": "Separation of Powers",
+      "question": "Critically examine the Supreme Court\u2019s judgement on \u2018National Judicial Appointments Commission Act, 2014\u2019 with reference to appointment of judges of higher judiciary in India.",
+      "syllabusNodeId": "GS2-POL-CONTEMP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2017_03",
+      "year": 2017,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "\u2018Simultaneous election to the Lok Sabha and the State Assemblies will limit the amount of time and money spent in electioneering but it will reduce the government\u2019s accountability to the people\u2019 Discuss.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2017_04",
+      "year": 2017,
+      "questionNumber": 4,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "Discuss the role of Public Accounts Committee in establishing accountability of the government to the people.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2017_05",
+      "year": 2017,
+      "questionNumber": 5,
+      "directive": "Explain",
+      "theme": "Centre-State Relations",
+      "question": "Explain the salient features of the constitution (One Hundred and First Amendment) Act, 2016. Do you think it is efficacious enough \u2018to remove the cascading effect of taxes and provide for a common national market for goods and services\u2019?",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2017_06",
+      "year": 2017,
+      "questionNumber": 6,
+      "directive": "Examine",
+      "theme": "Fundamental Rights",
+      "question": "Examine the scope of Fundamental Rights in the light of the latest judgement of the Supreme Court on Right to Privacy.",
+      "syllabusNodeId": "GS2-POL-FR"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2017_07",
+      "year": 2017,
+      "questionNumber": 7,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "The Indian Constitution has provisions for holding a joint session of the two houses of the Parliament. Enumerate the occasions when this would normally happen and also the occasions when it cannot, with reasons thereof.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2017_08",
+      "year": 2017,
+      "questionNumber": 8,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "To enhance the quality of democracy in India the Election Commission of India has proposed electoral reforms in 2016. What are the suggested reforms and how far are they significant to make democracy successful?",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2017_09",
+      "year": 2017,
+      "questionNumber": 9,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "Is the National Commission for Women able to strategize and tackle the problems that women face at both public and private spheres? Give reasons in support of your answer.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2016_01",
+      "year": 2016,
+      "questionNumber": 1,
+      "directive": "Discuss",
+      "theme": "Centre-State Relations",
+      "question": "Discuss the essentials of the 69th Constitutional Amendment Act and anomalies, if any, that have led to recent reported conflicts between the elected representatives and institution of Lieutenant Governor in the administration of Delhi. Do you think that this will give rise to a new trend in the functioning of the Indian Federal Politics?",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2016_02",
+      "year": 2016,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Centre-State Relations",
+      "question": "To what extent is Article 370 of the Indian Constitution, bearing marginal note \u201ctemporary provision with respect to the State of Jammu and Kashmir\u201d, temporary? Discuss the future prospects of this provision in the context of Indian polity.",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2016_03",
+      "year": 2016,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Executive",
+      "question": "The Indian party system is passing through a phase of transition which looks to be full of contradictions and paradoxes.\u201d Discuss",
+      "syllabusNodeId": "GS2-POL-EXEC"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2016_04",
+      "year": 2016,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "Exercise of CAG\u2019s powers in relation to the accounts of the Union and the States is derived from Article 149 of the Indian Constitution. Discuss whether audit of the Government\u2019s policy implementation could amount to overstepping its own (CAG) jurisdiction.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2016_05",
+      "year": 2016,
+      "questionNumber": 5,
+      "directive": "Discuss",
+      "theme": "Preamble, Features, and Philosophy",
+      "question": "Discuss each adjective attached to the word \u2018Republic\u2019 in the \u2018Preamble\u2019. Are they defendable in the present circumstances?(-CAG) jurisdiction.",
+      "syllabusNodeId": "GS2-POL-PREAMBLE"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2016_06",
+      "year": 2016,
+      "questionNumber": 6,
+      "directive": "Discuss",
+      "theme": "Preamble, Features, and Philosophy",
+      "question": "What was held in the Coelho case? In this context, can you say that judicial review is of key importance amongst the basic features of the Constitution?",
+      "syllabusNodeId": "GS2-POL-PREAMBLE"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2016_07",
+      "year": 2016,
+      "questionNumber": 7,
+      "directive": "Comment",
+      "theme": "Historical Underpinnings and Evolution",
+      "question": "Did the Government of India Act, 1935 lay down a federal constitution? Discuss",
+      "syllabusNodeId": "GS2-POL-CONTEMP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2016_08",
+      "year": 2016,
+      "questionNumber": 8,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "What is quasi judicial body? Explain with the help of concrete examples.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2015_01",
+      "year": 2015,
+      "questionNumber": 1,
+      "directive": "Discuss",
+      "theme": "Directive Principles of State Policies (DPSP)",
+      "question": "Discuss the possible factors that inhibit India from enacting for its citizen a uniform civil code as provided for in the Directive Principles of State Policy(",
+      "syllabusNodeId": "GS2-POL-DPSP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2015_02",
+      "year": 2015,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Centre-State Relations",
+      "question": "The concept of cooperative federalism has been increasingly emphasised in recent years. Highlight the drawbacks in the existing structure and extent to which cooperative federalism would answer the shortcomings.",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2015_03",
+      "year": 2015,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "In the absence of a well \u2013 educated and organised local level government system, Panchayats and Samitis have remained mainly political institutions and not an effective instrument of governance. Critically Discuss.(",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2015_04",
+      "year": 2015,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "Khap panchayats have been in the news for functioning as extra \u2013 constitutional authorities, often delivering pronouncements amounting to human right violations. Discuss critically the actions taken by the legislative, executive and judiciary to set the things right in this regard.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2015_05",
+      "year": 2015,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "Separation of Powers",
+      "question": "Resorting to ordinances has always raised concern on violation of the spirit of separation of power doctrine. While noting the rationales justifying the power to promulgate, analyse whether the decision of the Supreme Court on the issue have further facilitated to resorting to this power. Should the power to promulgate the ordinances be repealed?(",
+      "syllabusNodeId": "GS2-POL-CONTEMP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2015_06",
+      "year": 2015,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Judiciary, Dispute Redressal Mechanisms And",
+      "question": "What are the major changes brought in the Arbitration and Conciliation Act, 1966 through the recent ordinance promulgated by the President? How far will it improve India\u2019s dispute resolution mechanism? Discuss.",
+      "syllabusNodeId": "GS2-POL-JUD"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2015_07",
+      "year": 2015,
+      "questionNumber": 7,
+      "directive": "Comment",
+      "theme": "Fundamental Rights",
+      "question": "Does the right to clean environment entail legal regulation on burning crackers during Diwali? Discuss in the light of Article 21 of Indian Constitution and judgements of the apex in this regard.",
+      "syllabusNodeId": "GS2-POL-FR"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2015_08",
+      "year": 2015,
+      "questionNumber": 8,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "For achieving the desired objectives,it is necessary to ensure that the regulatory institutions remain independent and autonomous. Discuss in the light of experiences in the recent past",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2014_01",
+      "year": 2014,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Judiciary, Dispute Redressal Mechanisms And",
+      "question": "Starting from inventing the \u2018basic structure\u2019 doctrine, the judiciary has played a highly proactive role in ensuring that India develops into a thriving democracy. In light of the statement, evaluate the role played by judicial activism in achieving the ideals of democracy.(",
+      "syllabusNodeId": "GS2-POL-JUD"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2014_02",
+      "year": 2014,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Centre-State Relations",
+      "question": "Though the federal principle is dominant in our Constitution and that principle is one of its basic features, but it is equally true that federalism under the Indian Constitution leans in favour of a strong Centre, a feature that militates against the concept of strong federalism.",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2014_03",
+      "year": 2014,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "The \u2018Powers, Privileges and Immunities of Parliament and its Members\u2019 as envisaged in Article 105 of the Constitution leave room for a large number of un-codified and un-enumerated privileges to continue. Assess the reasons for the absence of legal codification of the \u2018parliamentary privileges\u2019. How can this problem be addressed?(",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2014_04",
+      "year": 2014,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Fundamental Rights",
+      "question": "What do you understand about the concept \u201cfreedom of speech and expression\u201d? Does it cover hate speech also? Why do the films in India stand on a slightly different plane from other forms of expression? Discuss.",
+      "syllabusNodeId": "GS2-POL-FR"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2014_05",
+      "year": 2014,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "Executive",
+      "question": "Instances of President\u2019s delay in commuting death sentences has come under public debate as denial of justice. Should there be a time specified for the President to accept/reject such petitions? Analyse",
+      "syllabusNodeId": "GS2-POL-EXEC"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2014_06",
+      "year": 2014,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Executive",
+      "question": "The size of the cabinet should be as big as governmental work justifies and as big as the Prime Minister can manage as a team. How far is the efficacy of a government then inversely related to the size of the cabinet? Discuss.",
+      "syllabusNodeId": "GS2-POL-EXEC"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2013_01",
+      "year": 2013,
+      "questionNumber": 1,
+      "directive": "Discuss",
+      "theme": "Legislature",
+      "question": "The role of individual MPs (Members of Parliament) has diminished over the years and as a result healthy constructive debates on policy issues are not usually witnessed. How far can this be attributed to the anti-defection law which was legislated but with a different intention?",
+      "syllabusNodeId": "GS2-POL-PARL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2013_02",
+      "year": 2013,
+      "questionNumber": 2,
+      "directive": "Discuss",
+      "theme": "Fundamental Rights",
+      "question": "Discuss Section 66A of IT Act, with reference to its alleged violation of Article 19 of the Constitution.",
+      "syllabusNodeId": "GS2-POL-FR"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2013_03",
+      "year": 2013,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Fundamental Rights",
+      "question": "Recent directives from the Ministry of Petroleum and Natural Gas are perceived by the \u2018Nagas\u2019 as a threat to override the exceptional status enjoyed by the State. Discuss in light of Article 371A of the Indian Constitution.",
+      "syllabusNodeId": "GS2-POL-FR"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2013_04",
+      "year": 2013,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Separation of Powers",
+      "question": "The Supreme Court of India keeps a check on arbitrary power of the Parliament in amending the Constitution. Discuss critically.(",
+      "syllabusNodeId": "GS2-POL-AMEND"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2013_05",
+      "year": 2013,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "Executive",
+      "question": "Many State Governments further bifurcate geographical administrative areas like Districts and Talukas for better governance. In light of the above, can it also be justified that more smaller States would bring in effective governance at State level? Discuss.",
+      "syllabusNodeId": "GS2-POL-EXEC"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2013_06",
+      "year": 2013,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Centre-State Relations",
+      "question": "Constitutional mechanisms to resolve the inter-state water disputes have failed to address and solve the problems. Is the failure due to structural or process inadequacy or both? Discuss.",
+      "syllabusNodeId": "GS2-POL-CSREL"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2013_07",
+      "year": 2013,
+      "questionNumber": 7,
+      "directive": "Discuss",
+      "theme": "Polity",
+      "question": "Discuss the recommendations of the 13th Finance Commission which have been a departure from the previous commissions for strengthening the local government finances.",
+      "syllabusNodeId": "GS2-POL-CONTEMP"
+    },
+    {
+      "id": "MAIN_GS2_POLITY_2013_08",
+      "year": 2013,
+      "questionNumber": 8,
+      "directive": "Comment",
+      "theme": "Legislature",
+      "question": "The product diversification of financial institutions and insurance companies, resulting in overlapping of products and services strengthens the case for the merger of the two regulatory agencies, namely SEBI and IRDA. Justify.",
+      "syllabusNodeId": "GS2-POL-PARL"
+    }
+  ]
+}

@@ -2,23 +2,31 @@
 // PHASE 2: Plan-photo OCR => TIME BLOCKS (start/end/subject/topic/minutes)
 // Keeps syllabus + advice engine + mapping logic intact
 // FIXED:
-// - removed duplicate imports
-// - upgraded syllabus intelligence enrichment
-// - OCR route now PREVIEWS mapping only
+// - removed duplicate /api/pyq/node/:nodeId route
+// - PYQ route now prefers *_tagged.json
+// - PYQ route now checks nested folders correctly
+// - PYQ enrichment matches by item.id first, then year + question number
 // - no reminder/calendar/downstream registration before OCR approval
-// - enriched mapping fields exposed for frontend + Sheets save after approval
 
-// ---- imports MUST be first in ESM ----
 import express from "express";
 import cors from "cors";
 import multer from "multer";
 import OpenAI from "openai";
 import dotenv from "dotenv";
-
+import fs from "fs";
+import path from "path";
+import pyqRoutes from "./routes/pyqRoutes.js";
+import {
+  getPyqSummaryForNode,
+  getPyqsForTopic,
+  explainPyqResolution
+} from "./brain/pyqLinkEngine.js";
 import SYLLABUS_GRAPH_2026 from "./brain/syllabusGraph.js";
 import { detectLoops } from "./brain/loopDetector.js";
 import { buildDailyAdvice } from "./brain/adviceEngine.js";
-
+import prelimsPracticeRoute from "./routes/prelimsPracticeRoute.js";
+import prelimsDashboardRoute from "./routes/prelimsDashboardRoute.js";
+import prelimsRebuiltDatasetRoute from "./routes/prelimsRebuiltDatasetRoute.js";
 import {
   mapPlanItemToMicroTheme,
   daysToPrelims,
@@ -26,12 +34,11 @@ import {
   findMicroTheme,
   findTopMicroThemes,
 } from "./brain/findMicroTheme.js";
-
+import prelimsPyqTestRoutes from "./routes/prelimsPyqTestRoutes.js";
 import {
   computeSyllabusProgress,
-  buildSyllabusCoverageRadar
 } from "./brain/syllabusProgressEngine.js";
-
+import prelimsAnalyticsRoute from "./routes/prelimsAnalyticsRoute.js";
 import {
   registerDaySchedule,
   startBlock,
@@ -39,13 +46,82 @@ import {
   getDay,
   tickReminderEngine,
 } from "./reminderEngine.js";
-
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 dotenv.config();
 
-// ---- boot logs (after imports) ----
 console.log("[BOOT] server.js loaded");
 
 /* -------------------- HELPERS -------------------- */
+
+function normalizeOcrSubject(subject = "", topic = "") {
+  const s = String(subject || "").trim().toLowerCase().replace(/\s+/g, " ");
+  const t = String(topic || "").trim().toLowerCase().replace(/\s+/g, " ");
+
+  if (
+    ["gs3-st", "gs3 st", "gs3st", "science", "science and tech", "science & tech"].includes(s)
+  ) {
+    return "Science and Tech";
+  }
+
+  if (["csat", "aptitude"].includes(s)) {
+    return "CSAT";
+  }
+
+  if (["economy", "gs3-economy", "gs3 economy"].includes(s)) {
+    return "Economy";
+  }
+
+  if (["gs3"].includes(s)) {
+    if (/\bbiotech(nology)?\b|\bgenomics\b|\bproteomics\b|\bstem cell\b|\bdna\b|\brna\b|\bgene\b/i.test(t)) return "Science and Tech";
+    if (/\bnumber\s*system\b|\bprofit and loss\b|\bratio and proportion\b|\baverages?\b|\bmixtures?\b/i.test(t)) return "CSAT";
+    if (/\binflation\b|\bbanking\b|\bmoney\b|\bnational income\b|\bfiscal\b|\bmonetary\b|\bbudget\b|\btax\b|\bexternal sector\b|\bfinancial market\b/i.test(t)) return "Economy";
+    if (/\benvironment\b|\becology\b|\bbiodiversity\b|\bconservation\b/i.test(t)) return "Environment";
+    return "GS3";
+  }
+
+  return String(subject || "").trim();
+}
+
+function normalizeOcrTopic(topic = "", subject = "") {
+  let t = String(topic || "").trim();
+
+  t = t
+
+    .replace(/[–—]/g, "-")
+    .replace(/\bGS\s*[- ]?\s*\d+\b/gi, "")
+    .replace(/\bClass\b/gi, "")
+    .replace(/\bLecture\b/gi, "")
+    .replace(/\bRevision of\b/gi, "")
+    .replace(/\bshort notes?\b/gi, "")
+    .replace(/\ball topics under\b/gi, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  t = t
+    .replace(/\b2\s*vc\b/gi, "IVC")
+    .replace(/\bi\s*vc\b/gi, "IVC")
+    .replace(/\bivc\b/gi, "IVC")
+    .replace(/\bmauryas\b/gi, "Mauryas")
+    .replace(/\bvedic age\b/gi, "Vedic Age");
+
+  const s = normalizeOcrSubject(subject);
+
+  if (s === "Science and Tech") {
+    if (/^biotechnology$/i.test(t) || /\bbiotech(nology)?\b/i.test(t)) {
+      return "Biotechnology";
+    }
+  }
+
+  if (s === "CSAT") {
+    if (/^numbersystem$/i.test(t) || /\bnumber\s*system\b/i.test(t)) {
+      return "Number System";
+    }
+  }
+
+  return t;
+}
+
 function todayISODate() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -62,7 +138,6 @@ function normTime(t) {
 
   const cleaned = s.replace(/[.\s]/g, ":").replace(/::+/g, ":");
 
-  // "0440"
   if (/^\d{4}$/.test(cleaned)) {
     const hh = cleaned.slice(0, 2);
     const mm = cleaned.slice(2, 4);
@@ -94,7 +169,7 @@ function diffMinutes(start, end) {
   const e = toMinutes(end);
   if (s == null || e == null) return null;
   let d = e - s;
-  if (d < 0) d += 24 * 60; // crosses midnight / ambiguous AM-PM
+  if (d < 0) d += 24 * 60;
   return d;
 }
 
@@ -206,6 +281,101 @@ function blockLabelFromIndex(idx) {
   return `${idx + 1}th block`;
 }
 
+function emptyLinkedPyqs(nodeId = "") {
+  return {
+    syllabusNodeId: nodeId,
+    matchedNodeId: null,
+    total: 0,
+    lastAskedYear: null,
+    frequency: 0,
+    prelimsCount: 0,
+    mainsCount: 0,
+    essayCount: 0,
+    ethicsCount: 0,
+    optionalCount: 0,
+    csatCount: 0,
+    questions: [],
+  };
+}
+
+function getQuestionStage(q = {}) {
+  const id = String(q?.id || "").trim().toUpperCase();
+  const exam = String(q?.exam || "").trim().toLowerCase();
+  const paper = String(q?.paper || "").trim().toLowerCase();
+  const subject = String(q?.subject || "").trim().toLowerCase();
+
+  // 1) ID HAS HIGHEST PRIORITY
+  if (id.startsWith("PRE_CSAT_") || id.startsWith("CSAT_")) {
+    return "csat";
+  }
+
+  if (id.startsWith("PRE_")) {
+    return "prelims";
+  }
+
+  if (id.startsWith("ESSAY_")) {
+    return "essay";
+  }
+
+  if (id.startsWith("ETH_")) {
+    return "ethics";
+  }
+
+  if (id.startsWith("OPT_")) {
+    return "optional";
+  }
+
+  if (id.startsWith("MAINS_") || id.startsWith("MAIN_")) {
+    return "mains";
+  }
+
+  // Support mains ids like GS1_2020_Q1, GS2_2019_Q3, etc.
+  if (/^GS[1-4]_/.test(id)) {
+    if (id.startsWith("GS4_")) return "ethics";
+    return "mains";
+  }
+
+  // 2) EXAM FIELD NEXT
+  if (
+    exam === "prelims" ||
+    exam === "mains" ||
+    exam === "essay" ||
+    exam === "ethics" ||
+    exam === "optional" ||
+    exam === "csat"
+  ) {
+    return exam;
+  }
+
+  // 3) PAPER FIELD LAST
+  if (
+    paper === "prelims" ||
+    paper === "mains" ||
+    paper === "essay" ||
+    paper === "ethics" ||
+    paper === "optional" ||
+    paper === "csat"
+  ) {
+    return paper;
+  }
+
+  if (paper === "gs4") {
+    return "ethics";
+  }
+
+  // gs1/gs2/gs3 are ambiguous in your dataset,
+  // because prelims records also carry paper:"GS1".
+  // So do NOT force them unless you have stronger evidence.
+  if (
+    (paper === "gs1" || paper === "gs2" || paper === "gs3") &&
+    subject.includes("csat")
+  ) {
+    return "csat";
+  }
+
+  return "";
+}
+
 function buildMappedObject(mapped, nonStudy, originalItem) {
   if (nonStudy) {
     return {
@@ -245,8 +415,8 @@ function buildMappedObject(mapped, nonStudy, originalItem) {
     gsHeading: mapped.gsHeading || mapped.subjectGroup || "",
     macroTheme: mapped.macroTheme || mapped.section || "",
     subject: mapped.subject || "",
-    microTheme: mapped.microTitle || mapped.mappedTopicName || "",
-    mappedTopicName: mapped.mappedTopicName || mapped.microTitle || "",
+    microTheme: mapped.microTitle || mapped.mappedTopicName || mapped.microTheme || "",
+    mappedTopicName: mapped.mappedTopicName || mapped.microTitle || mapped.microTheme || "",
     section: mapped.section || "",
     parentTopic: mapped.parentTopic || "",
     path: mapped.path || "",
@@ -265,9 +435,20 @@ function buildMappedObject(mapped, nonStudy, originalItem) {
 }
 
 /* -------------------- APP INIT -------------------- */
+
 const app = express();
+app.use(cors({
+  origin: true,
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+}));
+
+// ✅ MUST BE HERE (TOP)
+app.use(express.json({ limit: "25mb" }));
+app.use(express.urlencoded({ extended: true }));
 
 /* -------------------- MIDDLEWARE -------------------- */
+app.use("/api/prelims-rebuilt", prelimsRebuiltDatasetRoute);
 app.use(
   cors({
     origin: true,
@@ -275,23 +456,100 @@ app.use(
     allowedHeaders: ["Content-Type"],
   })
 );
+app.use("/api/prelims", prelimsAnalyticsRoute);
+app.use("/api/prelims", prelimsDashboardRoute);
+app.use("/api", pyqRoutes);
+app.use("/api/prelims/practice", prelimsPracticeRoute);
+app.use("/api/prelims/pyq", prelimsPyqTestRoutes);
+app.get("/api/syllabus/dashboard", async (_req, res) => {
+  try {
+    const progress = await computeSyllabusProgress();
+    const summary = progress?.summary || {};
+    const papers = Array.isArray(progress?.papers) ? progress.papers : [];
 
-app.use(express.json({ limit: "25mb" }));
+    const dashboard = {
+      meta: {
+        generatedAt: new Date().toISOString(),
+        dateRange: "all",
+        lastActivityAt:
+          papers
+            .map((p) => p.lastActivityAt)
+            .filter(Boolean)
+            .sort()
+            .slice(-1)[0] || null,
+      },
+      summary: {
+        overallSyllabusCoveragePercent: summary.overallSyllabusCoveragePercent || 0,
+        overallPyqCoveragePercent: summary.overallPyqCoveragePercent || 0,
+        overallRevisionPercent: summary.overallRevisionPercent || 0,
+        overallReadinessScore: summary.overallReadinessScore || 0,
+        untouchedNodes: summary.untouchedNodes || 0,
+        weakClusters: summary.weakClusters || 0,
+      },
+      papers,
+      tableRows: papers.map((paper) => ({
+        paperKey: paper.paperKey,
+        paperLabel: paper.paperLabel,
+        totalNodes: paper?.totals?.totalNodes || 0,
+        touchedNodes: paper?.totals?.touchedNodes || 0,
+        inProgressNodes: paper?.totals?.inProgressNodes || 0,
+        coveredNodes: paper?.totals?.coveredNodes || 0,
+        revisedNodes: paper?.totals?.revisedNodes || 0,
+        masteredNodes: paper?.totals?.masteredNodes || 0,
+        untouchedNodes: paper?.totals?.untouchedNodes || 0,
+        totalPyqs: paper?.pyq?.totalPyqs || 0,
+        attemptedPyqs: paper?.pyq?.attemptedPyqs || 0,
+        correctPercent: paper?.pyq?.correctPercent || 0,
+        revisedPyqs: paper?.pyq?.revisedPyqs || 0,
+        sectionalTests: paper?.tests?.sectionalCount || 0,
+        fullTests: paper?.tests?.fullTestCount || 0,
+        institutionalTests: paper?.tests?.institutionalTestCount || 0,
+        weakZones: paper?.weakZonesCount || 0,
+        lastActivityAt: paper?.lastActivityAt || null,
+        readinessScore: paper?.readinessScore || 0,
+        status: paper?.status || "balanced",
+      })),
+      charts: {
+        syllabusByPaper: papers.map((paper) => ({
+          paper: paper.paperLabel,
+          value: paper?.progress?.syllabusPercent || 0,
+        })),
+        pyqByPaper: papers.map((paper) => ({
+          paper: paper.paperLabel,
+          value: paper?.progress?.pyqPercent || 0,
+        })),
+      },
+      weakZones: progress?.weakZones || [],
+      untouchedZones: progress?.untouchedZones || [],
+      recentActivity: progress?.recentActivity || [],
+      nextActions: progress?.nextActions || [],
+    };
 
+    res.json(dashboard);
+  } catch (err) {
+    console.error("syllabus dashboard error", err);
+    res.status(500).json({ error: "Failed to build syllabus dashboard" });
+  }
+});
+
+app.use(express.json());
 /* -------------------- FILE UPLOAD -------------------- */
+
 const upload = multer({ storage: multer.memoryStorage() });
 
 /* -------------------- OPENAI -------------------- */
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
 /* -------------------- HEALTH ROUTE -------------------- */
+
 app.get("/health", (req, res) => {
   res.json({ ok: true, message: "backend live" });
 });
 
-app.post("/api/alexa/ping", (req, res) => {
+app.post("/alexa/ping", (req, res) => {
   console.log("Alexa ping received on cloud");
   return res.json({
     ok: true,
@@ -299,8 +557,8 @@ app.post("/api/alexa/ping", (req, res) => {
   });
 });
 
-
 /* -------------------- SYLLABUS API -------------------- */
+
 app.get("/api/syllabus", (req, res) => {
   try {
     res.json(SYLLABUS_GRAPH_2026);
@@ -319,12 +577,76 @@ app.post("/api/loop-detect", (req, res) => {
   }
 });
 
+/* -------------------- PYQ NODE API -------------------- */
+app.get("/api/pyq/node/:nodeId", (req, res) => {
+  try {
+    const { nodeId } = req.params;
+
+    if (!nodeId) {
+      return res.status(400).json({
+        success: false,
+        message: "nodeId is required",
+      });
+    }
+
+    const questions = getPyqsForTopic(nodeId, 0);
+    const resolution = explainPyqResolution(nodeId);
+
+    const counts = {
+      total: questions.length,
+      prelims: 0,
+      mains: 0,
+      essay: 0,
+      ethics: 0,
+      optional: 0,
+      csat: 0,
+    };
+
+    for (const q of questions) {
+      const stage = getQuestionStage(q);
+
+      console.log("[PYQ NODE DEBUG]", {
+        nodeId,
+        id: q?.id,
+        exam: q?.exam,
+        paper: q?.paper,
+        subject: q?.subject,
+        stage,
+      });
+
+      if (stage === "prelims") counts.prelims++;
+      else if (stage === "mains") counts.mains++;
+      else if (stage === "essay") counts.essay++;
+      else if (stage === "ethics") counts.ethics++;
+      else if (stage === "optional") counts.optional++;
+      else if (stage === "csat") counts.csat++;
+    }
+
+    return res.json({
+      success: true,
+      nodeId,
+      counts,
+      resolution,
+      questions,
+    });
+  } catch (err) {
+    console.error("PYQ node API failed:", err);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to load PYQ node data",
+      error: String(err?.message || err),
+    });
+  }
+});
+
+
 /* -------------------- PHOTO → PLAN PARSE (TIME BLOCKS) -------------------- */
 /* IMPORTANT UX RULE:
    This route only PARSES + ENRICHES + RETURNS PREVIEW.
    It does NOT register reminders / save / trigger downstream actions.
    Approval must happen on frontend before calling save/register routes.
 */
+
 app.post("/api/plan-photo", upload.single("photo"), async (req, res) => {
   try {
     if (!req.file) {
@@ -440,8 +762,6 @@ Output ONLY JSON.
     }
 
     const safeDate = String(parsed.date || "").trim() || dateFallback;
-
-    // normalize + CA cleanup
     let items = Array.isArray(parsed.items) ? parsed.items : [];
 
     items = items.map((it) => {
@@ -489,39 +809,522 @@ Output ONLY JSON.
 
     items = markOverlaps(items);
 
-    // ---- Syllabus Intelligence Enrichment ----
     const tr = daysToPrelims(new Date());
     const kill = killSwitchMode(tr);
 
-    const enrichedItems = items.map((it) => {
-      const textForMap = `${it.subject} ${it.topic}`.trim();
-      const nonStudy = isNonStudyBlock(it.subject, it.topic);
+    const enrichedItems = items.map((rawIt, itemIndex) => {
+      const item = { ...rawIt };
+
+      const normalizedSubject = normalizeOcrSubject(item.subject, item.topic);
+      const normalizedTopic = normalizeOcrTopic(item.topic, normalizedSubject);
+
+      item.subject = normalizedSubject;
+      item.topic = normalizedTopic;
+
+      const textForMap = `${item.subject} ${item.topic}`.trim();
+      const nonStudy = isNonStudyBlock(item.subject, item.topic);
+
+      const rawTopicText = String(normalizedTopic || "").trim();
+
+      function normalizeAnchorText(value) {
+        return String(value || "")
+          .toLowerCase()
+          .replace(/&/g, " and ")
+          .replace(/[–—]/g, "-")
+          .replace(/[_/]+/g, " ")
+          .replace(/[()[\]{}]/g, " ")
+          .replace(/[.:]/g, " ")
+          .replace(/\bthe\b/g, " ")
+          .replace(/\bof\b/g, " ")
+          .replace(/\s+/g, " ")
+          .trim();
+      }
+
+      function splitTopicIntoParts(topicText) {
+        const raw = String(topicText || "").trim();
+        if (!raw) return [];
+
+        return raw
+          .replace(/[•●▪■◆►→]/g, ",")
+          .replace(/[;|]/g, ",")
+          .replace(/\s+\/\s+/g, ",")
+          .replace(/\s*&\s*/g, ",")
+          .replace(/\s+\+\s+/g, ",")
+          .replace(/\s+\band\b\s+/gi, ",")
+          .replace(/\s+\bthen\b\s+/gi, ",")
+          .replace(/\s+\bplus\b\s+/gi, ",")
+          .split(",")
+          .map((part) =>
+            String(part || "")
+              .replace(/^[\s\-–—:]+/, "")
+              .replace(/[\s\-–—:]+$/, "")
+              .replace(/\s+/g, " ")
+              .trim()
+          )
+          .filter(Boolean)
+          .filter((part) => part.split(" ").length >= 2);
+      }
+
+      function buildBroadAnchorSet(subject, topicText) {
+        const set = new Set();
+
+        const subjectNorm = normalizeAnchorText(subject);
+        if (subjectNorm) set.add(subjectNorm);
+
+        [
+          "history",
+          "ancient history",
+          "medieval history",
+          "modern history",
+          "art and culture",
+          "culture",
+          "society",
+          "indian society",
+          "world history",
+          "post independence",
+          "polity",
+          "indian polity",
+          "constitution",
+          "governance",
+          "social justice",
+          "international relations",
+          "ir",
+          "economy",
+          "indian economy",
+          "economic development",
+          "agriculture",
+          "internal security",
+          "disaster management",
+          "science and technology",
+          "science and tech",
+          "science and technology current affairs",
+          "science",
+          "technology",
+          "environment",
+          "ecology",
+          "environment and ecology",
+          "geography",
+          "physical geography",
+          "human geography",
+          "indian geography",
+          "world geography",
+          "geography optional",
+          "optional geography",
+          "geography optional paper 1",
+          "geography optional paper 2",
+          "ethics",
+          "ethics integrity and aptitude",
+          "ethics integrity aptitude",
+          "integrity",
+          "aptitude",
+          "essay",
+          "essay writing",
+          "essay practice",
+          "current affairs",
+          "current affair",
+          "ca",
+          "csat",
+          "comprehension",
+          "reasoning",
+          "quant",
+          "quantitative aptitude",
+          "mathematics",
+          "maths",
+          "number system",
+          "general studies",
+          "general studies paper 1",
+          "general studies paper 2",
+          "general studies paper 3",
+          "general studies paper 4",
+          "gs",
+          "gs1",
+          "gs2",
+          "gs3",
+          "gs4",
+          "paper 1",
+          "paper 2",
+          "optional",
+        ].forEach((x) => {
+          const n = normalizeAnchorText(x);
+          if (n) set.add(n);
+        });
+
+        return set;
+      }
+
+      function shouldDropBroadPart(partNorm, subjectNorm, broadAnchors, partCount) {
+        if (!partNorm) return true;
+        if (broadAnchors.has(partNorm)) return true;
+
+        if (subjectNorm) {
+          if (partNorm === subjectNorm) return true;
+
+          // Only do contains-based dropping for obviously broad subject labels,
+          // and only when there are multiple parts to preserve specific single-topic blocks.
+          if (partCount > 1) {
+            if (
+              partNorm.length <= Math.max(10, subjectNorm.length + 6) &&
+              (partNorm.includes(subjectNorm) || subjectNorm.includes(partNorm))
+            ) {
+              return true;
+            }
+          }
+        }
+
+        return false;
+      }
+
+      function normalizeMappedHit(hit) {
+        if (!hit) return null;
+        if (hit.microTitle) return hit;
+
+        return {
+          ...hit,
+          microTitle: hit.name || hit.mappedTopicName || hit.microTheme || "",
+          mappedTopicName: hit.name || hit.mappedTopicName || hit.microTheme || "",
+          gsHeading: hit.gsHeading || hit.subjectGroup || hit.gsPaper || "",
+          macroTheme: hit.macroTheme || hit.section || "",
+          microTheme: hit.microTheme || hit.name || hit.mappedTopicName || "",
+        };
+      }
+
+      function mapSinglePart(part, subject) {
+        const cleanPart = String(part || "").trim();
+        if (!cleanPart) return null;
+
+        const expandedPart = cleanPart
+          .replace(/\b2\s*vc\b/gi, "Indus Valley Civilization")
+          .replace(/\bi\s*vc\b/gi, "Indus Valley Civilization")
+          .replace(/\bivc\b/gi, "Indus Valley Civilization")
+          .replace(/\bmauryas\b/gi, "Mauryan Empire")
+          .replace(/\bvedic age\b/gi, "Vedic Period")
+          .replace(/\bpm\b/gi, "Prime Minister")
+          .replace(/\bfr\b/gi, "Fundamental Rights")
+          .replace(/\bei\b/gi, "Emotional Intelligence")
+          .trim();
+
+        const attempts = [
+          () => mapPlanItemToMicroTheme(expandedPart, subject),
+          () => mapPlanItemToMicroTheme(cleanPart, subject),
+
+          () => findMicroTheme(expandedPart),
+          () => findMicroTheme(cleanPart),
+
+          () => findMicroTheme(`${subject} ${expandedPart}`),
+          () => findMicroTheme(`${subject} ${cleanPart}`),
+        ];
+
+        for (const tryMap of attempts) {
+          const hit = normalizeMappedHit(tryMap());
+          const syllabusNodeId = hit?.syllabusNodeId || hit?.code || null;
+          if (hit && syllabusNodeId) {
+            return {
+              topic: cleanPart,
+              syllabusNodeId,
+              code: hit.code || syllabusNodeId,
+              label: hit.mappedTopicName || hit.microTitle || cleanPart,
+              microTheme: hit.microTheme || hit.microTitle || cleanPart,
+              path: hit.path || "",
+              confidence: hit.confidence || 0,
+            };
+          }
+        }
+
+        return null;
+      }
+
+      const rawTopicParts = splitTopicIntoParts(rawTopicText);
+      const broadAnchorsToIgnore = buildBroadAnchorSet(normalizedSubject, rawTopicText);
+      const subjectNorm = normalizeAnchorText(normalizedSubject);
+
+      const cleanedTopicParts = rawTopicParts.filter((part) => {
+        const pNorm = normalizeAnchorText(part);
+        return !shouldDropBroadPart(
+          pNorm,
+          subjectNorm,
+          broadAnchorsToIgnore,
+          rawTopicParts.length
+        );
+      });
+
+      // Final fallback order:
+      // 1) cleaned specific subtopics
+      // 2) all split parts (if cleaning removed everything)
+      // 3) raw topic text
+      let topicParts =
+        cleanedTopicParts.length > 0
+          ? cleanedTopicParts
+          : rawTopicParts.length > 0
+            ? rawTopicParts
+            : [rawTopicText].filter(Boolean);
+
+      // De-dupe by normalized text while preserving order
+      {
+        const seen = new Set();
+        topicParts = topicParts.filter((part) => {
+          const key = normalizeAnchorText(part);
+          if (!key || seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+      }
 
       let mapped = null;
       let fallbackPath = null;
+      let mappedNodes = [];
+      let linkedPyqs = emptyLinkedPyqs("");
 
       if (!nonStudy) {
-        mapped = mapPlanItemToMicroTheme(textForMap, it.subject);
+        // Primary block-level mapping
+        mapped = normalizeMappedHit(
+          mapPlanItemToMicroTheme(normalizedTopic, normalizedSubject)
+        );
 
         if (!mapped) {
-          const m2 = findMicroTheme(textForMap || "");
-          fallbackPath = m2?.found ? m2.path : null;
+          const m2 =
+            findMicroTheme(`${normalizedSubject} ${normalizedTopic}`) ||
+            findMicroTheme(normalizedTopic) ||
+            findMicroTheme(textForMap || "");
+
+          if (m2?.found || m2?.syllabusNodeId || m2?.code) {
+            fallbackPath = m2?.path || null;
+            mapped = normalizeMappedHit(m2);
+          }
+        }
+
+        // Per-subtopic multi-mapping
+        mappedNodes = topicParts
+          .map((part) => mapSinglePart(part, normalizedSubject))
+          .filter(Boolean);
+
+        // 🚨 HARD SUBJECT LOCK (FINAL FIX)
+        const subjectKey = String(normalizedSubject || "").toUpperCase();
+
+        mappedNodes = mappedNodes.filter((node) => {
+          const id = String(node?.syllabusNodeId || "").toUpperCase();
+
+          if (subjectKey.includes("ECONOMY") || subjectKey === "GS3") {
+            return id.startsWith("GS3-ECO");
+          }
+
+          if (subjectKey.includes("SCIENCE")) {
+            return id.startsWith("GS3-ST");
+          }
+
+          if (subjectKey.includes("CSAT")) {
+            return id.startsWith("CSAT");
+          }
+
+          if (subjectKey.includes("HISTORY")) {
+            return id.startsWith("GS1-HIS");
+          }
+
+          return true;
+        });
+
+        // Also include primary mapped node if not already present
+        const primaryNodeId = mapped?.syllabusNodeId || mapped?.code || null;
+        if (
+          primaryNodeId &&
+          !mappedNodes.some((x) => x.syllabusNodeId === primaryNodeId)
+        ) {
+          mappedNodes.unshift({
+            topic:
+              cleanedTopicParts[0] ||
+              normalizedTopic ||
+              item.topic ||
+              "",
+            syllabusNodeId: primaryNodeId,
+            code: mapped?.code || primaryNodeId,
+            label:
+              mapped?.mappedTopicName ||
+              mapped?.microTitle ||
+              normalizedTopic ||
+              item.topic ||
+              "Primary Topic",
+            microTheme:
+              mapped?.microTheme ||
+              mapped?.microTitle ||
+              normalizedTopic ||
+              item.topic ||
+              "Primary Topic",
+            path: mapped?.path || "",
+            confidence: mapped?.confidence || 0,
+          });
+        }
+        // Also include safe alternative PYQ buckets if provided
+        const alternativeNodeIds = Array.isArray(mapped?.alternativeNodeIds)
+          ? mapped.alternativeNodeIds
+          : [];
+
+        for (const altNodeId of alternativeNodeIds) {
+          if (!altNodeId) continue;
+
+          if (!mappedNodes.some((x) => x.syllabusNodeId === altNodeId)) {
+            mappedNodes.push({
+              topic: normalizedTopic || item.topic || "",
+              syllabusNodeId: altNodeId,
+              code: altNodeId,
+              label: altNodeId,
+              microTheme: normalizedTopic || item.topic || altNodeId,
+              path: mapped?.path || "",
+              confidence: Math.max(0.85, mapped?.confidence || 0),
+            });
+          }
+        }
+        // Dedupe mapped nodes by syllabus node id
+        {
+          const seenNodeIds = new Set();
+          mappedNodes = mappedNodes.filter((x) => {
+            if (!x?.syllabusNodeId) return false;
+            if (seenNodeIds.has(x.syllabusNodeId)) return false;
+            seenNodeIds.add(x.syllabusNodeId);
+            return true;
+          });
+        }
+
+        // Optional debug logs
+        console.log("[plan-photo][multi-topic]", {
+          index: itemIndex,
+          subject: normalizedSubject,
+          rawTopicText,
+          rawTopicParts,
+          cleanedTopicParts,
+          topicParts,
+          mappedNodeIds: mappedNodes.map((x) => x.syllabusNodeId),
+        });
+
+        // Merge PYQs from all mapped nodes
+        if (mappedNodes.length > 0) {
+          const mergedQuestions = [];
+          const questionSeen = new Set();
+
+          let prelimsCount = 0;
+          let mainsCount = 0;
+          let essayCount = 0;
+          let ethicsCount = 0;
+          let optionalCount = 0;
+          let csatCount = 0;
+          let lastAskedYear = null;
+
+          // 🚨 STRICT SUBJECT FILTER (SAFE VERSION)
+          const subjectPrefix = String(normalizedSubject || item.subject || "").toUpperCase();
+
+          const filteredMappedNodes = (mappedNodes || []).filter((node) => {
+            const nodeId = String(node?.syllabusNodeId || "").toUpperCase();
+            if (!nodeId) return false;
+
+            if (subjectPrefix.includes("ECONOMY") || subjectPrefix === "GS3") {
+              return nodeId.startsWith("GS3-ECO");
+            }
+
+            if (subjectPrefix.includes("SCIENCE")) {
+              return nodeId.startsWith("GS3-ST");
+            }
+
+            if (subjectPrefix.includes("CSAT")) {
+              return nodeId.startsWith("CSAT");
+            }
+
+            if (subjectPrefix.includes("HISTORY")) {
+              return nodeId.startsWith("GS1-HIS");
+            }
+
+            return true;
+          });
+
+          const effectiveMappedNodes =
+            filteredMappedNodes.length > 0 ? filteredMappedNodes : mappedNodes;
+
+          for (const node of effectiveMappedNodes) {
+            let summary = emptyLinkedPyqs(node.syllabusNodeId);
+
+            try {
+              summary = getPyqSummaryForNode(node.syllabusNodeId, 500);
+            } catch (err) {
+              console.error("[plan-photo PYQ load error]", err);
+            }
+
+            for (const q of Array.isArray(summary.questions) ? summary.questions : []) {
+              const qid =
+                q?.id ||
+                `${q?.year || ""}-${q?.paper || q?.exam || ""}-${q?.question || q?.questionText || ""}`.trim();
+
+              if (!questionSeen.has(qid)) {
+                questionSeen.add(qid);
+
+                const qNodes = q?.syllabusNodeIds || q?.syllabusNodeId;
+                const qNodeArr = Array.isArray(qNodes) ? qNodes : qNodes ? [qNodes] : [];
+                const isExactNodeMatch =
+                  qNodeArr.length === 0 || qNodeArr.includes(node.syllabusNodeId);
+
+                if (!isExactNodeMatch) {
+                  continue;
+                }
+
+                mergedQuestions.push(q);
+                const stage = getQuestionStage(q);
+
+                if (stage === "prelims") prelimsCount += 1;
+                else if (stage === "mains") mainsCount += 1;
+                else if (stage === "essay") essayCount += 1;
+                else if (stage === "ethics") ethicsCount += 1;
+                else if (stage === "optional") optionalCount += 1;
+                else if (stage === "csat") csatCount += 1;
+
+                if (q?.year) {
+                  const yearNum = Number(q.year);
+                  if (!Number.isNaN(yearNum)) {
+                    lastAskedYear = lastAskedYear
+                      ? Math.max(lastAskedYear, yearNum)
+                      : yearNum;
+                  }
+                }
+              }
+            }
+          }
+
+          linkedPyqs = {
+            syllabusNodeId: effectiveMappedNodes[0]?.syllabusNodeId || "",
+            matchedNodeId: effectiveMappedNodes[0]?.syllabusNodeId || null,
+            total: mergedQuestions.length,
+            lastAskedYear,
+            frequency: mergedQuestions.length,
+            prelimsCount,
+            mainsCount,
+            essayCount,
+            ethicsCount,
+            optionalCount,
+            csatCount,
+            questions: mergedQuestions,
+            mappedNodes: effectiveMappedNodes,
+          };
+        } else {
+          const pyqNodeId = mapped?.syllabusNodeId || mapped?.code || "";
+          linkedPyqs = pyqNodeId
+            ? getPyqSummaryForNode(pyqNodeId, 500)
+            : emptyLinkedPyqs(pyqNodeId);
         }
       }
 
-      const mappedObj = buildMappedObject(mapped, nonStudy, it);
+      const normalizedMapped = normalizeMappedHit(mapped);
+      const mappedObj = buildMappedObject(normalizedMapped, nonStudy, item);
       const locked = kill === "ON" && mappedObj?.tag === "M";
 
       return {
-        ...it,
+        ...item,
         subject:
-          it.subject && it.subject !== "Unknown"
-            ? it.subject
+          item.subject && item.subject !== "Unknown"
+            ? item.subject
             : mappedObj?.subject
               ? mappedObj.subject
               : fallbackPath || "Unknown",
         mapped: mappedObj,
+        mappedNodes,
         locked,
+        syllabusTopCode: mappedObj?.code || null,
+        syllabusTopPath: mappedObj?.path || null,
+        linkedPyqs,
       };
     });
 
@@ -533,7 +1336,6 @@ Output ONLY JSON.
     const hasC1 = enrichedItems.some((x) => x.mapped?.code === "C.1");
     const csatDrill = hasC1 ? "CHECK_NUMERACY" : "NONE";
 
-    // Preview only — frontend must explicitly approve before registration/save
     const reminderPreview = enrichedItems
       .filter((it) => !it.mapped?.nonStudy && it.startTime)
       .map((it, idx) => ({
@@ -577,6 +1379,7 @@ Output ONLY JSON.
 });
 
 /* -------------------- TEXT → MICROTHEME MAP -------------------- */
+
 app.post("/api/map-text", upload.none(), (req, res) => {
   try {
     let text = "";
@@ -608,6 +1411,7 @@ app.post("/api/map-text", upload.none(), (req, res) => {
 });
 
 /* -------------------- ANALYZE DAY -------------------- */
+
 app.post("/api/analyze-day", (req, res) => {
   try {
     const date = String(req.body?.date || "").trim();
@@ -651,6 +1455,7 @@ app.post("/api/analyze-day", (req, res) => {
 });
 
 /* -------------------- SYLLABUS PROGRESS -------------------- */
+
 app.post("/api/syllabus-progress", (req, res) => {
   try {
     const { blocks = [] } = req.body || {};
@@ -667,6 +1472,7 @@ app.post("/api/syllabus-progress", (req, res) => {
 
 /* -------------------- REMINDER ENGINE API -------------------- */
 /* Call this only AFTER OCR approval / manual confirmation */
+
 app.post("/api/schedule/register", (req, res) => {
   try {
     const { dayKey, userId, blocks } = req.body || {};
@@ -742,6 +1548,7 @@ app.get("/api/day/:dayKey", (req, res) => {
 });
 
 /* -------------------- PROXY: FRONTEND -> BACKEND -> APPS SCRIPT (NO CORS) -------------------- */
+
 app.post("/api/sheets", async (req, res) => {
   try {
     const scriptUrl = String(process.env.SCRIPT_URL || "").trim();
@@ -781,6 +1588,7 @@ app.post("/api/sheets", async (req, res) => {
 });
 
 /* -------------------- REMINDER ENGINE TICK -------------------- */
+
 setInterval(() => {
   try {
     tickReminderEngine();
@@ -789,7 +1597,8 @@ setInterval(() => {
   }
 }, 30 * 1000);
 
-/* -------------------- LISTEN (KEEP THIS LAST) -------------------- */
+/* -------------------- LISTEN -------------------- */
+
 const PORT = Number(process.env.PORT || 8787);
 const HOST = process.env.HOST || "0.0.0.0";
 

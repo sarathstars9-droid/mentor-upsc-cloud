@@ -1,0 +1,134 @@
+{
+  "summary": {
+    "attempted": 4,
+    "correct": 2,
+    "wrong": 2,
+    "skipped": 1,
+    "accuracy": 50,
+    "avgTime": 31.25,
+    "guessCount": 1,
+    "guessRate": 25,
+    "fastWrong": 2,
+    "slowQuestions": 0,
+    "safeAttempts": 2,
+    "riskyAttempts": 2
+  },
+  "nodeStats": {
+    "GS1-HIS-ANC-VEDIC-LATER": {
+      "attempted": 1,
+      "correct": 1,
+      "wrong": 0,
+      "accuracy": 100
+    },
+    "GS1-HIS-ANC-MAURYA": {
+      "attempted": 1,
+      "correct": 0,
+      "wrong": 1,
+      "accuracy": 0
+    },
+    "GS1-HIS-ANC-JAIN": {
+      "attempted": 1,
+      "correct": 1,
+      "wrong": 0,
+      "accuracy": 100
+    },
+    "GS1-HIS-ANC-BUD": {
+      "attempted": 1,
+      "correct": 0,
+      "wrong": 1,
+      "accuracy": 0
+    }
+  },
+  "subjectStats": {
+    "Ancient History": {
+      "attempted": 4,
+      "correct": 2,
+      "wrong": 2,
+      "accuracy": 50
+    }
+  },
+  "typeStats": {
+    "statement_based": {
+      "attempted": 2,
+      "correct": 1,
+      "wrong": 1,
+      "accuracy": 50
+    },
+    "matching": {
+      "attempted": 1,
+      "correct": 1,
+      "wrong": 0,
+      "accuracy": 100
+    },
+    "multi_select": {
+      "attempted": 1,
+      "correct": 0,
+      "wrong": 1,
+      "accuracy": 0
+    }
+  },
+  "trapStats": {
+    "statement_trap": {
+      "attempted": 2,
+      "correct": 1,
+      "wrong": 1,
+      "accuracy": 50
+    },
+    "matching_trap": {
+      "attempted": 1,
+      "correct": 1,
+      "wrong": 0,
+      "accuracy": 100
+    },
+    "elimination_trap": {
+      "attempted": 1,
+      "correct": 0,
+      "wrong": 1,
+      "accuracy": 0
+    }
+  },
+  "difficultyStats": {
+    "medium": {
+      "attempted": 2,
+      "correct": 1,
+      "wrong": 1,
+      "accuracy": 50
+    },
+    "hard": {
+      "attempted": 2,
+      "correct": 1,
+      "wrong": 1,
+      "accuracy": 50
+    }
+  },
+  "weakNodes": [
+    {
+      "nodeId": "GS1-HIS-ANC-MAURYA",
+      "accuracy": 0
+    },
+    {
+      "nodeId": "GS1-HIS-ANC-BUD",
+      "accuracy": 0
+    }
+  ],
+  "weakSubjects": [],
+  "weakTypes": [
+    {
+      "type": "multi_select",
+      "accuracy": 0
+    }
+  ],
+  "trapAlerts": [
+    {
+      "trap": "elimination_trap",
+      "accuracy": 0
+    }
+  ],
+  "recommendations": [
+    "Revise topic: GS1-HIS-ANC-MAURYA",
+    "Revise topic: GS1-HIS-ANC-BUD",
+    "Practice multi_select questions",
+    "Improve handling of elimination_trap",
+    "Slow down on fast wrong answers"
+  ]
+}

@@ -1,0 +1,5329 @@
+{
+  "sourceFile": "PYQ_GS_English_2013-25 (1).pdf",
+  "exam": "UPSC_CSE",
+  "stage": "Prelims",
+  "paper": "GS1",
+  "subject": "Current Affairs and Miscellaneous",
+  "questions": [
+    {
+      "id": "PRE_GS1_CAM_2025_001",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Polity",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2025,
+      "questionNumber": 1,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Who amongst the following are members of the Jury to select the recipient of ‘Gandhi Peace Prize’? I. The President of India II. The Prime Minister of India III. The Chief Justice of India IV . The Leader of Opposition in the Lok Sabha Select the correct answer using the code given below.",
+      "options": {
+        "a": "II and IV only",
+        "b": "I, II and III",
+        "c": "II, III and IV",
+        "d": "I and III only"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Union Executive",
+      "mappingAudit": {
+        "subjectConfidence": 0.85,
+        "topicConfidence": 0.85,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 4,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2025_002",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2025,
+      "questionNumber": 1,
+      "questionType": "PAIR_BASED",
+      "format": "text",
+      "question": "Consider the following pairs: I. International Y ear of the Woman Farmer : 2026 II. International Y ear of Sustainable and Resilient Tourism : 2027 III. International Y ear of Peace and Trust : 2025 IV . International Y ear of Asteroid Awareness and Planetary Defence : 2029 How many of the pairs given above are correctly matched?",
+      "options": {
+        "a": "Only one",
+        "b": "Only two",
+        "c": "Only three",
+        "d": "All the four"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "pair-structure-detected",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2025_003",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2025,
+      "questionNumber": 2,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements in respect of the first Kho Kho World Cup: I. The event was held in Delhi, India. II. Indian men beat Nepal with a score of 78-40 in the final to become the World Champion in men category. III. Indian women beat Nepal with a score of 54-36 in the final to become the World Champion in women category. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "I only",
+        "b": "II and III only",
+        "c": "I and III only",
+        "d": "I, II and III"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2024_004",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2024,
+      "questionNumber": 2,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: Statement-I: India does not import apples from the United States of America. Statement-II: In India, the law prohibits the import of Genetically Modified food without the approval of the competent authority. Which one of the following is correct in respect of the above statements ?",
+      "options": {
+        "a": "Both Statement-I and Statement-II are correct and Statement- II explains Stateme-I",
+        "b": "Both Statement-I and Statement-II are correct, but Statement- II does not explain Statement-I",
+        "c": "Statement-I is correct, but Statement-II is incorrect",
+        "d": "Statement--I is incorrect, but Statement-II is correct"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2024_005",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "GK/Persons in News",
+      "microtheme": "GK/Persons in News",
+      "year": 2024,
+      "questionNumber": 1,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: I. In the finals of the 45th Chess Olympiad held in 2024, Gukesh Dummaraju became the world’s youngest winner after defeating the Russian player Nepomniachtchi. II. Abhimanyu Mishra, an American chess player, holds the record of becoming the world’s youngest ever Grandmaster. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2024_006",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "GK/Persons in News",
+      "microtheme": "GK/Persons in News",
+      "year": 2024,
+      "questionNumber": 2,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Who of the following is the author of the books “The India Way” and “Why Bharat Matters”?",
+      "options": {
+        "a": "Bhupender Y adav",
+        "b": "Nalin Mehta",
+        "c": "Shashi Tharoor",
+        "d": "Subrahmanyam Jaishankar"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2024_007",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2024,
+      "questionNumber": 1,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "What are the duties of the Chief of Defence Staff (CDS) as Head of the Department of Military Affairs? 1. Permanent Chairman of Chiefs of Staff Committee. 2. Exercise military command over the three Service Chiefs. 3. Principal Military Advisor to the Defence Minister on all tri- service matters. Select the correct answer using the code given below:",
+      "options": {
+        "a": "1, 2 and 3",
+        "b": "1 and 2 only",
+        "c": "2 and 3 only",
+        "d": "1 and 3 only"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2024_008",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2024,
+      "questionNumber": 2,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Operations undertaken by the Army towards upliftment of the local population in remote areas to include addressing of their basic needs is called:",
+      "options": {
+        "a": "Operation Sankalp",
+        "b": "Operation Maitri",
+        "c": "Operation Sadbhavana",
+        "d": "Operation Madad"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2024_009",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2024,
+      "questionNumber": 3,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which of the following is/are correctly matched in terms of equivalent rank in the three services of the Indian Defence Forces? Army Air Force Navy 1. Brigadier Air Commodore Commander 2. Major General Air Vice Marshal Vice Admiral 3. Major Squadron Leader Lieutenant Commander 4. Lieutenant Group Captain Captain Colonel Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 and 4",
+        "b": "1 and 3",
+        "c": "2, 3 and 4",
+        "d": "3 only"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_010",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2023,
+      "questionNumber": 3,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements in relation to Janani Suraksha Y ojna: 1. It is safe motherhood intervention of the State Health Departments. 2. Its objective is to reduce maternal and neonatal mortality among poor pregnant women. 3. It aims to promote institutional delivery among poor pregnant women. 4. Its objective includes providing public health facilities to sick infants up to one year of age. How many of the statements given above are correct?",
+      "options": {
+        "a": "Only one",
+        "b": "Only two",
+        "c": "Only three",
+        "d": "All four"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_011",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2023,
+      "questionNumber": 4,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements in the context of interventions being undertaken under Anaemia Mukt Bharat Strategy: 1. It provides prophylactic calcium supplementation for pre- school children, adolescents and pregnant women. 2. It runs a campaign for delayed cord clamping at the time of child-birth. 3. It provides for periodic deworming to children and adolescents. 4. It addresses non-nutritional causes of anaemia in endemic pockets with special focus on malaria, hemoglobinopathies and fluorosis. How many of the statements given above are correct?",
+      "options": {
+        "a": "Only one",
+        "b": "Only two",
+        "c": "Only three",
+        "d": "All four"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_012",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2023,
+      "questionNumber": 5,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: Statement-I: According to the United Nations’ 'World Water Development Report, 2022’ , India extracts more than a quarter of the world's groundwater withdrawal each year. Statement-II: India needs to extract more than a quarter of the world’s groundwater each year to satisfy the drinking water and sanitation needs of almost 18% of world’s population living in its territory. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "a": "Both Statement-I and Statement-II are correct and Statement- II is the correct explanation for Statement-I",
+        "b": "Both Statement-I and Statement-II are correct and Statement- II is not the correct explanation for Statement-I",
+        "c": "Statement-I is correct but Statement-II is incorrect",
+        "d": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_013",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2023,
+      "questionNumber": 6,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: Statement-I: India accounts for 3.2% of global exports of goods. Statement-II: Many local companies and some foreign companies operating in India have taken advantage of India’s ‘Production-linked Incentive’ scheme. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "a": "Both Statement-I and Statement-II are correct and Statement- II is the correct explanation for Statement-I",
+        "b": "Both Statement-I and Statement-II are correct and Statement- II is not the correct explanation for Statement-I",
+        "c": "Statement-I is correct but Statement-II is incorrect",
+        "d": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_014",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2023,
+      "questionNumber": 7,
+      "questionType": "PAIR_BASED",
+      "format": "text",
+      "question": "Consider the following pairs with regard to sports awards: 1. Major Dhyan Chand For the most spectacular and Khel Ratna Award : outstanding performance by a sportsperson over period of last four years 2. Arjuna Award : For the lifetime achievement by a sportsperson 3. Dronacharya Award : To honor eminent coaches who have successfully trained sportspersons or teams 4. Rashtriya Khel To recognize the contribution Protsahan Puraskar : made by sports persons even after their retirement How many of the above pairs are correctly matched?",
+      "options": {
+        "a": "Only one",
+        "b": "Only two",
+        "c": "Only three",
+        "d": "All four"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "pair-structure-detected",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_015",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2023,
+      "questionNumber": 8,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements in respect of the 44th Chess Olympiad, 2022: 1. It was the first time that Chess Olympiad was held in India. 2. The official mascot was named ‘Thambi’ . 3. The trophy for the winning team in the open section is the Vera Menchik Cup. 4. The trophy for the winning team in the women’s section is the Hamilton-Russell Cup. How many of the statements given above are correct?",
+      "options": {
+        "a": "Only one",
+        "b": "Only two",
+        "c": "Only three",
+        "d": "All four"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_016",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2023,
+      "questionNumber": 3,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which of the following countries has been suffering from decades of civil strife and food shortages and was in news in the recent past for its very severe famine?",
+      "options": {
+        "a": "Angola",
+        "b": "Costa Rica",
+        "c": "Ecuador",
+        "d": "Somalia 4 . Consider the following statements: (2023) Statement-I: Switzerland is one of the leading exporters of gold in terms of value. Statement-II: Switzerland has the second largest gold reserves in the world. Which one of the following is correct in respect of the above statements? (a) Both Statement-I and Statement-II are correct and Statement- II is the correct explanation for Statement-I (b) Both Statement-I and Statement-II are correct and Statement- II is not the correct explanation for Statement-I (c) Statement-I is correct but Statement-II is incorrect (d) Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_017",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2023,
+      "questionNumber": 5,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: Statement-I: Recently, the United States of America (USA) and the European Union (EU) have launched the ‘Trade and Technology Council’ . Statement-II: The USA and the EU claim that through this they are trying to bring technological progress and physical productivity under their control. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "a": "Both Statement-I and Statement-II are correct and Statement- II is the correct explanation for Statement-I",
+        "b": "Both Statement-I and Statement-II are correct and Statement- II is not the correct explanation for Statement-I",
+        "c": "Statement-I is correct but Statement-II is incorrect",
+        "d": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_018",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Economy",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2023,
+      "questionNumber": 6,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: The ‘Stability and Growth Pact’ of the European Union is a treaty that 1. limits the levels of the budgetary deficit of the countries of the European Union 2. makes the countries of the European Union to share their infrastructure facilities 3. enables the countries of the European Union to share their technologies How many of the above statements are correct?",
+      "options": {
+        "a": "Only one",
+        "b": "Only two",
+        "c": "All three",
+        "d": "None"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Budget",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_019",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2023,
+      "questionNumber": 7,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. Recently, all the countries of the United Nations have adopted the first-ever compact for international migration, the ‘Global Compact for Safe, Orderly and Regular Migration (GCM)’ . 2. The objectives and commitments stated in the GCM are binding on the UN member countries. 3. The GCM addresses internal migration or internally displaced people also in its objectives and commitments. How many of the above statements are correct?",
+      "options": {
+        "a": "Only one",
+        "b": "Only two",
+        "c": "All three",
+        "d": "None"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_020",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2023,
+      "questionNumber": 8,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: Statement-I: Israel has established diplomatic relations with some Arab States. Statement-II: The ‘ Arab Peace Initiative’ mediated by Saudi Arabia was signed by Israel and Arab League. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "a": "Both Statement-I and Statement-II are correct and Statement- II is the correct explanation for Statement-I",
+        "b": "Both Statement-I and Statement-II are correct and Statement- II is not the correct explanation for Statement-I",
+        "c": "Statement-I is correct but Statement-II is incorrect",
+        "d": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_021",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "GK/Persons in News",
+      "microtheme": "GK/Persons in News",
+      "year": 2023,
+      "questionNumber": 3,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to coal-based thermal power plants in India, consider the following statements: 1. None of them uses seawater. 2. None of them are set up in water-stressed districts. 3. None of them is privately owned. How many of the above statements are correct?",
+      "options": {
+        "a": "Only one",
+        "b": "Only two",
+        "c": "All three",
+        "d": "None"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_022",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "History & Culture",
+      "section": "GK/Persons in News",
+      "microtheme": "GK/Persons in News",
+      "year": 2023,
+      "questionNumber": 4,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: Statement-I: 7th August is declared as the National Handloom day. Statement-II: It was in 1905 that the Swadeshi movement was launched on the same day. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "a": "Both Statement-I and Statement-II are correct and Statement- II is the correct explanation for Statement-I",
+        "b": "Both Statement-I and Statement-II are correct and Statement- II is not the correct explanation for Statement-I",
+        "c": "Statement-I is correct but Statement-II is incorrect",
+        "d": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_023",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "GK/Persons in News",
+      "microtheme": "GK/Persons in News",
+      "year": 2023,
+      "questionNumber": 5,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements in respect of the National Flag of India according to the Flag Code of India, 2002: Statement-I: One of the standard sizes of the National Flag of India is 600 mm × 400 mm. Statement-II: The ratio of the length to the height (width) of the Flag shall be 3 : 2. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "a": "Both Statement-I and Statements-II are correct and Statement-II is the correct explanation for Statement-I",
+        "b": "Both Statement-I and Statements-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "c": "Statement-I is correct but Statement-II is incorrect",
+        "d": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_024",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2023,
+      "questionNumber": 4,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. Carbon fibres are used in the manufacture of the components used in automobiles and aircrafts. 2. Carbon fibres once used cannot be recycled. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_025",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2023,
+      "questionNumber": 5,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Consider the following actions: 1. Detection of car crash/collision which results in the deployment of airbags almost instantaneously 2. Detection of accidental free fall of a laptop towards the ground which results in the immediate turning off of the hard drive. 3. Detection of the tilt of the smartphone which results in the rotation of display between portrait and landscape mode How many of the above actions is the function of the accelerometer required?",
+      "options": {
+        "a": "Only one",
+        "b": "Only two",
+        "c": "All three",
+        "d": "None"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_026",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2023,
+      "questionNumber": 6,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "‘Wolbachia method’ is sometimes talked about with reference to which one of the following?",
+      "options": {
+        "a": "Controlling the viral diseases spread by mosquitoes",
+        "b": "Converting crop residues into packing material",
+        "c": "Producing biodegradable plastics",
+        "d": "Producing biochar from thermochemical conversion of biomass"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2023_027",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2023,
+      "questionNumber": 7,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to Home Guards, consider the following statements: 1. Home Guards are raised under the Home Guards Act and Rules of the Central Government. 2. The role of the Home Guards is to serve as an auxiliary force to the police in maintenance of internal security. 3. To prevent infiltration on the international border/coastal areas, the Border Wing Home Guards Battalions have been raised in some States. How many of the above statements are correct?",
+      "options": {
+        "a": "Only one",
+        "b": "Only two",
+        "c": "All three",
+        "d": "None"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2022_028",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2022,
+      "questionNumber": 9,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements : 1. Gujarat has the largest solar park in India. 2. Kerala has a fully solar powered International Airport. 3. Goa has the largest floating solar photovoltaic project in India. Which of the statements given above is/are correct ?",
+      "options": {
+        "a": "1 and 2",
+        "b": "2 only",
+        "c": "1 and 3",
+        "d": "3 only"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2022_029",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2022,
+      "questionNumber": 10,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to Ayushman Bharat Digital Mission, consider the following statements : 1. Private and public hospitals must adopt it. 2. As it aims to achieve universal health coverage, every citizen of India should be part of it ultimately. 3. It has seamless portability across the country. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2022_030",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2022,
+      "questionNumber": 11,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "In India, what is the role of the Coal Controller’s Organization (CCO)? 1. CCO is the major source of Coal Statistics in Government of India. 2. It monitors progress of development of Captive Coal/Lignite blocks. 3. It hears any objection to the Government’s notification relating to acquisition of coal-bearing areas. 4. It ensures that coal mining companies deliver the coal to end users in the prescribed time. Select the correct answer using the code given below :",
+      "options": {
+        "a": "1, 2 and 3",
+        "b": "3 and 4 only",
+        "c": "1 and 2 only",
+        "d": "1, 2 and 4"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2022_031",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2022,
+      "questionNumber": 9,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements : 1. Bidibidi is a large refugee settlement in north-western Kenya. 2. Some people who fled from South Sudan civil war live in Bidibidi. 3. Some people who fled from civil war in Somalia live in Dadaab refugee complex in Kenya. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 and 2",
+        "b": "2 only",
+        "c": "2 and 3",
+        "d": "3 only"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2022_032",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2022,
+      "questionNumber": 10,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "\"Which one of the following best describes the term “greenwashing” ?",
+      "options": {
+        "a": "Conveying a false impression that a company’s products are eco-friendly and environmentally sound",
+        "b": "Non-inclusion of ecological/environmental costs in the Annual Financial Statements of a country",
+        "c": "Ignoring the disastrous ecological consequences while undertaking infrastructure development",
+        "d": "Making mandatory provisions for environmental costs in a government project/programme"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2022_033",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Economy",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2022,
+      "questionNumber": 11,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements : 1. Vietnam has been one of the fastest growing economies in the world in the recent years. 2. Vietnam is led by a multi-party political system. 3. Vietnam’s economic growth is linked to its integration with global supply chains and focus on exports. 4. For a long time Vietnam’s low labour costs and stable exchange rates have attracted global manufacturers. 5. Vietnam has the most productive e-service sector in the Indo- Pacific region. Which of the statements given above are correct ?",
+      "options": {
+        "a": "2 and 4",
+        "b": "3 and 5",
+        "c": "1, 3 and 4",
+        "d": "1 and 2"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "External Sector",
+      "mappingAudit": {
+        "subjectConfidence": 0.7,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2021_034",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2021,
+      "questionNumber": 12,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements in respect of the ICC Word Test Championship: 1. The finalists were decided by the number of matches they won. 2. New Zealand was ranked ahead of England because it won more matches than England. Which of the above statements is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2021_035",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2021,
+      "questionNumber": 13,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements in respect of the 32nd Summer Olympics: 1. The official motto for this Olympics is ‘ A New World’ . 2. Sport Climbing, Surfing, Skateboarding, Karate and Baseball are included in this Olympics. Which of the above statements is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2021_036",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2021,
+      "questionNumber": 14,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements in respect of the Laureus World Sports Award which was instituted in the year 2000: 1. American golfer Tiger Woods was the first winner of this award. 2. The award was received mostly by ‘Formula One’ players so far. 3. Roger Federer received this award the maximum number of times compared to others. Which of the above statements are correct?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "2 and 3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2020_037",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2020,
+      "questionNumber": 12,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "In India, under cyber insurances for individuals, which of the following benefits are generally covered, in addition to payment for the loss of funds and other benefits? 1. Cost of restoration of the computer system in case of malware disrupting access to one’s computer. 2. Cost of a new computer if some miscreant wilfully damages it, if proved so. 3. Cost of hiring a specialized consultant to minimize the loss in case of cyber extortion. 4. Cost of defence in the court of law if any third-party files a suit. Select the correct answer using the code given below:",
+      "options": {
+        "a": "1, 2 and 4 only",
+        "b": "1, 3 and 4 only",
+        "c": "2 and 3 only",
+        "d": "1, 2, 3 and 4"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2020_038",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2020,
+      "questionNumber": 13,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "In India, why are some nuclear reactors kept under “IAEA Safeguards” while others are not?",
+      "options": {
+        "a": "Some use uranium and others use thorium",
+        "b": "Some use imported uranium and others use domestic supplies",
+        "c": "Some are operated by foreign enterprises and others are operated by domestic enterprises",
+        "d": "Some are State-owned, and others are privately-owned"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Physics / Nuclear / Electronics",
+      "mappingAudit": {
+        "subjectConfidence": 0.7,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2020_039",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2020,
+      "questionNumber": 15,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. The value of Indo-Sri Lanka trade has consistently increased in the last decade. 2. “Textile and Textile articles” constitute an important item of trade between India and Bangladesh. 3. In the last five years, Nepal has been the largest trading partner of India in South Asia. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "2 only",
+        "c": "3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2020_040",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Environment",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2020,
+      "questionNumber": 16,
+      "questionType": "PAIR_BASED",
+      "format": "text",
+      "question": "International agreement/set-up Subject 1. Alma-Ata Declaration Healthcare of the people 2. Hague Convention Biological and chemical weapons 3. Talanoa Dialogue Global climate change 4. Under2 Coalition Child rights Which of the pairs given above is/are correctly matched?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "4 only",
+        "c": "1 and 3 only",
+        "d": "2, 3 and 4 only"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.7,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "pair-structure-detected",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2020_041",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2020,
+      "questionNumber": 8,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The term ‘West Texas Intermediate’, sometimes found in news, refers to a grade of:",
+      "options": {
+        "a": "Crude oil",
+        "b": "Bullion",
+        "c": "Rare earth elements",
+        "d": "Uranium"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2019_042",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2019,
+      "questionNumber": 14,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Recently, there was a growing awareness in our country about the importance of Himalayan Nettle (Girardinia Diversifolia) because it is found to be a sustainable source of:",
+      "options": {
+        "a": "Anti-malarial drug",
+        "b": "Biodiesel",
+        "c": "Pulp for paper industry",
+        "d": "Textile fibre"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2019_043",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2019,
+      "questionNumber": 15,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Atal Innovation Mission is set up under the:",
+      "options": {
+        "a": "Department of Science and Technology",
+        "b": "Ministry of Labour and Employment",
+        "c": "NITI Aayog",
+        "d": "Ministry of Skill Development and Entrepreneurship"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2019_044",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2019,
+      "questionNumber": 16,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: As per the Industrial Employment (Standing Orders) Central (Amendment) Rules, 2018 1. If rules for fixed-term employment are implemented, it becomes easier for the firms/companies to lay off workers. 2. No notice of termination of employment shall be necessary in the case of a temporary workman. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2019_045",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2019,
+      "questionNumber": 17,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements about Particularly Vulnerable Tribal Groups (PVTGs) in India: 1. PVTGs reside in 18 States and one Union Territory. 2. A stagnant or declining population is one of the criteria for determining PVTG status. 3. There are 95 PVTGs officially notified in the country so far. 4. Irular and Konda Reddi tribes are included in the list of PVTGs. Which of the statements given above are correct?",
+      "options": {
+        "a": "1, 2 and 3 only",
+        "b": "2, 3 and 4 only",
+        "c": "1, 2 and 4 only",
+        "d": "1, 3 and 4 only"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2019_046",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2019,
+      "questionNumber": 18,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which of the following adopted a law on data protection and privacy for its citizens known as ‘General Data Protection Regulation’ in April 2016 and started implementation of it from 25th May, 2018?",
+      "options": {
+        "a": "Australia",
+        "b": "Canada",
+        "c": "The European Union",
+        "d": "The United States of America"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2019_047",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2019,
+      "questionNumber": 19,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: The Reserve Bank of India’s recent directives relating to ‘Storage of Payment System Data, popularly known as data diktat, command the payment system providers that 1. They shall ensure that entire data relating to payment systems operated by them are stored in a system only in India. 2. They shall ensure that the systems are owned and operated by public sector enterprises. 3. They shall submit the consolidated system audit report to the Comptroller and Auditor General of India by the end of the calendar year. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "1 and 2 only",
+        "c": "3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2019_048",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2019,
+      "questionNumber": 20,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Which of the following statements is/are correct regarding the Maternity Benefit (Amendment) Act, 2017? 1. Pregnant women are entitled for three months pre-delivery and three months post-delivery paid leave. 2. Enterprises with creches must allow the mother a minimum six creche visits daily. 3. Women with two children get reduced entitlements. Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "2 only",
+        "c": "3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2019_049",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Polity",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2019,
+      "questionNumber": 21,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. Petroleum and Natural Gas Regulatory Board (PNGRB) is the first regulatory body set up by the Government of India. 2. One of the tasks of PNGRB is to ensure competitive markets for gas. 3. Appeals against the decisions of PNGRB go before the Appellate Tribunals for Electricity. Which one of the statements given above is correct?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "2 and 3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Judiciary",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2019_050",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2019,
+      "questionNumber": 22,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "What was the purpose of the Intercreditor Agreement signed by Indian banks and financial institutions recently?",
+      "options": {
+        "a": "To lessen the Government of India’s perennial burden of fiscal deficit and current account deficit.",
+        "b": "To support the infrastructure projects of Central and State Governments.",
+        "c": "To act as independent regulator in case of applications for loans of Rs 50 crore or more.",
+        "d": "To aim at faster resolution of stressed assets of Rs 50 crore or more which are under consortium lending."
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2019_051",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2019,
+      "questionNumber": 17,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The Global Competitiveness Report is published by the:",
+      "options": {
+        "a": "International Monetary Fund",
+        "b": "United Nations Conference on Trade and Development",
+        "c": "World Economic Forum",
+        "d": "World Bank"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2019_052",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2019,
+      "questionNumber": 18,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which one of the following is not a sub-index of the World Bank’s 'Ease of Doing Business Index'?",
+      "options": {
+        "a": "Maintenance of law and order",
+        "b": "Paying taxes",
+        "c": "Registering property",
+        "d": "Dealing with construction permits"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_053",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2018,
+      "questionNumber": 23,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which one of the following best describes the term \"Merchant Discount Rate\" sometimes seen in news?",
+      "options": {
+        "a": "The incentive given by a bank to a merchant for accepting payments through debit cards pertaining to that bank.",
+        "b": "The amount paid back by banks to their customers when they use debit cards for financial transactions for purchasing goods or services.",
+        "c": "The charge to a merchant by a bank for accepting payments from his customers through the bank's debit cards.",
+        "d": "The incentive given by the Government to merchants for promoting digital payments by their customers through Point of Sale (PoS) machines and debit cards."
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_054",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Polity",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2018,
+      "questionNumber": 24,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. Aadhaar card can be used as a proof of citizenship or domicile. 2. Once issued, Aadhaar number cannot be deactivated or omitted by the Issuing Authority. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_055",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2018,
+      "questionNumber": 25,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "The identity platform `Aadhaar' provides open \"Application Programming Interfaces (APIs)\". What does it imply? 1. It can be integrated into any electronic device. 2. Online authentication using iris is possible. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_056",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "History & Culture",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2018,
+      "questionNumber": 26,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. As per the right to education (RTE) Act, to be eligible for appointment as a teacher in a state, a person would be required to possess the minimum qualification laid down by the concerned State Council of Teacher education. 2. As per the RTE Act, for teaching primary classes, a candidate is required to pass a Teacher Eligibility Test conducted in accordance with the National Council of Teacher Education guidelines. 3. In India, more than 90% of teacher education institutions are directly under the State Governments. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "2 only",
+        "c": "1 and 3 only",
+        "d": "3 only"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Art & Culture",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_057",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2018,
+      "questionNumber": 27,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. The Food Safety and Standards Act, 2006 replaced the Prevention of Food Adulteration Act, 1954. 2. The Food Safety and Standards Authority of India (FSSAI) is under the charge of Director General of Health Services in the Union Ministry of Health and Family Welfare. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_058",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Economy",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2018,
+      "questionNumber": 28,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to the provisions made under the National Food Security Act, 2013, consider the following statements: 1. The families coming under the category of 'below poverty line (BPL)' only are eligible to receive subsidised food grains. 2. The eldest woman in a household, of age 18 years or above, shall be the head of the household for the purpose of issuance of a ration card. 3. Pregnant women and lactating mothers are entitled to a 'take- home ration' of 1600 calories per day during pregnancy and for six months thereafter. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "2 only",
+        "c": "1 and 3 only",
+        "d": "3 only"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Poverty & Inclusion",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_059",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2018,
+      "questionNumber": 29,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which of the following is/are the aims of “Digital India” Plan of the Government of India? 1. Formation of India’s own Internet companies like China did. 2. Establish a policy framework to encourage overseas multinational corporations that collect Big Data to build their large data centres within our national geographical boundaries. 3. Connect many of our villages to the Internet and bring Wi- Fi to many of our schools, public places and major tourist centres. Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "3 only",
+        "c": "2 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_060",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2018,
+      "questionNumber": 30,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to Pradhan Mantri Kaushal Vikas Y ojana, consider the following statements: 1. It is the flagship scheme of the Ministry of Labour and Employment. 2. It, among other things, will also impart training in soft skills, entrepreneurship, financial and digital literacy. 3. It aims to align the competencies of the unregulated workforce of the country to the National Skill Qualification Framework. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 and 3 only",
+        "b": "2 only",
+        "c": "2 and 3 only",
+        "d": "1, 2, and 3"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_061",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2018,
+      "questionNumber": 19,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "“Rule of Law Index” is released by which of the following?",
+      "options": {
+        "a": "Amnesty International",
+        "b": "International Court of Justice",
+        "c": "The Office of UN Commissioner for Human Rights",
+        "d": "World Justice Project"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_062",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2018,
+      "questionNumber": 20,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Recently, in which of the following countries having lakhs of people either suffered from severe famine/acute malnutrition or died due to starvation caused by war/ethnic conflicts?",
+      "options": {
+        "a": "Angola and Zambia",
+        "b": "Morocco and Tunisia",
+        "c": "Venezuela and Colombia",
+        "d": "Y emen and South Sudan"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_063",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2018,
+      "questionNumber": 21,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The term “Two state Solution” is sometimes mentioned in the new in the context of the affairs of:",
+      "options": {
+        "a": "China",
+        "b": "Israel",
+        "c": "Iraq",
+        "d": "Y emen"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_064",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2018,
+      "questionNumber": 22,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "What is \"Terminal High Altitude Area Defense (THAAD)\", sometimes seen in the news?",
+      "options": {
+        "a": "An Israeli radar system",
+        "b": "India's indigenous anti-missile program",
+        "c": "An American anti-missile system",
+        "d": "A defence collaboration between Japan and South Korea"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2018_065",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2018,
+      "questionNumber": 9,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The terms ‘Wanna Cry, Petya and Eternal Blue' sometimes mentioned in the news recently are related to:",
+      "options": {
+        "a": "Exoplanets",
+        "b": "Crypto currency",
+        "c": "Cyber attacks",
+        "d": "Minisatellites"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_066",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 31,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to 'National Investment and Infrastructure Fund', which of the following statements is/are correct? 1. It is an organ of NITI Aayog. 2. It has a corpus of Rs. 4,00,000 Crore at present. Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_067",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 32,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to 'National Skills Qualification Framework (NSQF)', which of the statements given below is/are correct? 1. Under NSQF , a learner can acquire the certification for competency only through formal learning. 2. An outcome expected from the implementation of NSQF is the mobility between vocational and general education. Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_068",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 33,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following in respect of ‘National Career Service’: 1. National Career Service is an initiative of the Department of Personnel and Training, Government of India. 2. National Career Service has been launched in a Mission Mode to improve the employment opportunities to uneducated youth of the country. Which of the above statements is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_069",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 34,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Which of the following statements best describes the term 'Scheme for Sustainable Structuring of Stressed Assets (S4A)', recently seen in the news?",
+      "options": {
+        "a": "It is a procedure for considering ecological costs of developmental schemes formulated by the Government.",
+        "b": "It is a scheme of RBI for reworking the financial structure of big corporate entities facing genuine difficulties.",
+        "c": "It is a disinvestment plan of the Government regarding Central Public Sector Undertakings.",
+        "d": "It is an important provision in 'The Insolvency and Bankruptcy Code' recently implemented by the Government."
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_070",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 35,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which of the following are the objectives of the ‘National Nutrition Mission’? 1. To create awareness relating to malnutrition among pregnant women and lactating mothers. 2. To reduce the incidence of anaemia among young children, adolescent girls, and women. 3. To promote the consumption of millets, coarse cereals, and unpolished rice. 4. To promote the consumption of poultry eggs. Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "1, 2 and 3 only",
+        "c": "1, 2 and 4 only",
+        "d": "3 and 4 only"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_071",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Geography",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 36,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: The nation-wide ‘Soil Health Card Scheme’ aims at 1. expanding the cultivable area under irrigation. 2. enabling the banks to assess the quantum of loans to be granted to farmers on the basis of soil quality. 3. checking the overuse of fertilisers in farmlands. Which of the above statements is/are correct?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "3 only",
+        "c": "2 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Indian Geography",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_072",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 37,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. National Payments Corporation of India (NPCI) helps in promoting financial inclusion in the country. 2. NCPI has launched RuPay, a card payment scheme. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_073",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 38,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "In India, it is legally mandatory for which of the following to report on cybersecurity incidents? 1. Service providers 2. Data centres 3. Body corporate Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 only",
+        "b": "1 and 2 only",
+        "c": "3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_074",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 39,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "What is the purpose of ‘Vidyanjali Y ojana’? 1. To enable the famous foreign educational institutions to open their campuses in India. 2. To increase the quality of education provided in government schools by taking help from the private sector and the community. 3. To encourage voluntary monetary contributions from private individuals and organisations so as to improve the infrastructure facilities for primary and secondary schools. Select the correct answer using the code given below:",
+      "options": {
+        "a": "2 only",
+        "b": "3 only",
+        "c": "1 and 2 only",
+        "d": "2 and 3 only"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_075",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 40,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "What is the aim of the programme ‘Unnat Bharat Abhiyan’?",
+      "options": {
+        "a": "Achieving 100% literacy by promoting collaboration between voluntary organisations, the government’s education system and local communities.",
+        "b": "Connecting institutions of higher education with local communities to address development challenges through appropriate technologies.",
+        "c": "Strengthening India’s scientific research institutions in order to make India a scientific and technological power.",
+        "d": "Developing human capital by allocating special funds for health care and education of rural and urban poor and organising skill development programmes and vocational training for them."
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_076",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 41,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Recently there was a proposal to translocate some of the lions from their habitat in Gujarat to which one of the following sites?",
+      "options": {
+        "a": "Corbett National Park",
+        "b": "Kuno Palpur Wildlife Sanctuary",
+        "c": "Mudumalai Wildlife Sanctuary",
+        "d": "Sariska National Park"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_077",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 42,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The term 'Domestic Content Requirement' is sometimes seen in the news with reference to:",
+      "options": {
+        "a": "Developing solar power production in our country",
+        "b": "Granting licenses to foreign T.V . channels in our country",
+        "c": "Exporting our food products to other countries",
+        "d": "Permitting foreign educational institutions to set up their campuses in our country"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_078",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 43,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Who among the following can join the National Pension System (NPS)?",
+      "options": {
+        "a": "Resident Indian citizens only.",
+        "b": "Persons of age from 21 to 55 only.",
+        "c": "All-State Government employees joining the services after the date of notification by the respective State Governments.",
+        "d": "All Central Governments Employees including those of Armed Forces joining the services on or after 1st April 2004."
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_079",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Geography",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 44,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. The Standard Mark of the Bureau of Indian Standards (BIS) is mandatory for automotive tyres and tubes. 2. AGMARK is a quality Certification Mark issued by the Food and Agriculture Organisation (FAO). Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Resources & Agriculture",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_080",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Polity",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 45,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to ‘Quality Council of India (QCI)’, consider the following statements: 1. QCI was set up jointly by the Government of India and the Indian Industry. 2. The Chairman of QCI is appointed by the Prime Minister on the recommendations of the industry to the Government. Which of the above statements is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Union Executive",
+      "mappingAudit": {
+        "subjectConfidence": 0.7,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_081",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 46,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "What is the purpose of setting up Small Finance Banks (SFBs) in India? 1. To supply credit to small business units 2. To supply credit to small and marginal farmers 3. To encourage young entrepreneurs to set up a business, particularly in rural areas Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "2 and 3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_082",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 47,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which of the following is a most likely consequence of implementing the 'Unified Payments Interface (UPI)'?",
+      "options": {
+        "a": "Mobile wallets will not be necessary for online payments.",
+        "b": "Digital currency will totally replace physical currency in about two decades.",
+        "c": "FDI inflows will drastically increase.",
+        "d": "Direct transfer of subsidies to poor people will become very effective."
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_083",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 48,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Recognition of 'Prior Learning Scheme' is sometimes mentioned in the news with reference to:",
+      "options": {
+        "a": "Certifying the skills acquired by construction workers through traditional channels.",
+        "b": "Enrolling the persons in Universities for distance learning programmes.",
+        "c": "Reserving some skilled jobs to rural and urban poor in some public sector undertakings.",
+        "d": "Certifying the skills acquired by trainees under the National Skill Development Programme."
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_084",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 49,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Which of the following statements is/are correct regarding Smart India Hackathon 2017? 1. It is a centrally sponsored scheme for developing every city of our country into Smart Cities in a decade. 2. It is an initiative to identify new digital technology innovations for solving the many problems faced by our country. 3. It is a programme aimed at making all the financial transactions in our country completely digital in a decade. Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 and 3 only",
+        "b": "2 only",
+        "c": "3 only",
+        "d": "2 and 3 only"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_085",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2017,
+      "questionNumber": 50,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to the ‘Prohibition of Benami Property Transactions Act, 1988 (PBPT Act)’, consider the following statements: 1. A property transaction is not treated as a Benami transaction if the owner of the property is not aware of the transaction. 2. Properties held by Benami are liable for confiscation by the Government. 3. The Act provides for three authorities for investigations but does not provide for any appellate mechanism. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "1 and 3 only",
+        "d": "2 and 3 only"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_086",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2017,
+      "questionNumber": 23,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The Global Infrastructure Facility is a/an:",
+      "options": {
+        "a": "ASEAN initiative to upgrade infrastructure in Asia and financed by credit from the Asian Development Bank.",
+        "b": "World Bank collaboration that facilitates the preparation and structuring of complex infrastructure Public-Private Partnerships (PPPs) to enable mobilization of the private sector and institutional investor capital.",
+        "c": "Collaboration among the major banks of the world working with the OECD and focused on expanding the set of infrastructure projects that have the potential to mobilize private vestment.",
+        "d": "UNCTAD funded an initiative that seeks to finance and facilitate infrastructure development in the world."
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_087",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Economy",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2017,
+      "questionNumber": 24,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to the role of UN-Habitat in the United Nations Programme working towards a better urban future, which of the statements is/are correct? 1. UN-Habitat has been mandated by the United Nations General Assembly to promote socially and environmentally sustainable towns and cities to provide adequate shelter for all. 2. Its partners are either governments or local urban authorities only. 3. UN-Habitat contributed to the overall objective of the United Nations system to reduce poverty and to promote access to safe drinking water and basic sanitation. Select the correct answer using the code given below:",
+      "options": {
+        "a": "1, 2 and 3",
+        "b": "1 and 3 only",
+        "c": "2 and 3 only",
+        "d": "1 only"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Poverty & Inclusion",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_088",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2017,
+      "questionNumber": 25,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "'Broad-based Trade and Investment Agreement (BTIA)' is sometimes seen in the news in the context of negotiations held between India and:",
+      "options": {
+        "a": "European Union",
+        "b": "Gulf Cooperation Council",
+        "c": "Organization for Economic Cooperation and Development",
+        "d": "Shanghai Cooperation Organization"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_089",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2017,
+      "questionNumber": 26,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. The Nuclear Security Summits are periodically held under the aegis of the United Nations. 2. The International Panel on Fissile Materials is an organ of the International Atomic Energy Agency. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_090",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2017,
+      "questionNumber": 27,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which of the following gives 'Global Gender Gap Index' ranking to the countries of the world?",
+      "options": {
+        "a": "World Economic Forum",
+        "b": "UN Human Rights Council",
+        "c": "UN Women",
+        "d": "World Health Organization"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_091",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2017,
+      "questionNumber": 28,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The term 'Digital Single Market Strategy' seen in the news refers to:",
+      "options": {
+        "a": "ASEAN",
+        "b": "BRICS",
+        "c": "EU",
+        "d": "G20"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_092",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2017,
+      "questionNumber": 10,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "What is the purpose of the 'evolved Laser Interferometer Space Antenna (eLISA)' project?",
+      "options": {
+        "a": "To detect neutrinos",
+        "b": "To detect gravitational waves",
+        "c": "To detect the effectiveness of missile defence system",
+        "d": "To study the effect of solar flares on our communication systems"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_093",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2017,
+      "questionNumber": 11,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. In tropical regions, Zika virus disease is transmitted by the same mosquito that transmits dengue. 2. Sexual transmission of Zika virus disease is possible. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2017_094",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2017,
+      "questionNumber": 12,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The terms 'Event Horizon', 'Singularity', ‘String Theory' and 'Standard Model' are sometimes seen in the news in the context of:",
+      "options": {
+        "a": "Observation and understanding of the Universe",
+        "b": "Study of the solar and the lunar eclipses",
+        "c": "Placing satellites in the orbit of the Earth",
+        "d": "Origin and evolution of living organisms on the Earth"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_095",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 51,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Rashtriya Garima Abhiyaan is a national campaign to:",
+      "options": {
+        "a": "rehabilitate the homeless and destitute persons and provide them with suitable sources of livelihood.",
+        "b": "release the sex workers from their practice and provide them with alternative sources of livelihood.",
+        "c": "eradicate the practice of manual scavenging and rehabilitate the manual scavengers.",
+        "d": "release the bonded labourers from their bondage and rehabilitate them."
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_096",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 52,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Regarding ‘Atal Pension Y ojana’, which of the following statements is/are correct? 1. It is a minimum guaranteed pension scheme mainly targeted at unorganized sector workers. 2. Only one member of a family can join the scheme. 3. Same amount of pension is guaranteed for the spouse for life after the subscriber’s death. Select the correct answer using the code given below.",
+      "options": {
+        "a": "1 only",
+        "b": "2 and 3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_097",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 53,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "On which of the following can you find the Bureau of Energy Efficiency Star Label? 1. Ceiling fans 2. Electric geysers 3. Tubular fluorescent lamps Select the correct answer using the code given below.",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "3 only",
+        "c": "2 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_098",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 54,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Regarding DigiLocker, sometimes seen in the news, which of the following statements is/are correct? 1. It is a digital locker system offered by the Government under Digital India Programme. 2. It allows you to access your e-documents irrespective of your physical location. Select the correct answer using the code given below.",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_099",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Geography",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 55,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Recently, linking of which of the following rivers was undertaken?",
+      "options": {
+        "a": "Cauvery and Tungabhadra",
+        "b": "Godavari and Krishna",
+        "c": "Mahanadi and Son",
+        "d": "Narmada and Tapti"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Indian Geography",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_100",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 56,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Recently, for the first time in our country, which of the following States has declared a particular butterfly as ‘State Butterfly’?",
+      "options": {
+        "a": "Arunachal Pradesh",
+        "b": "Himachal Pradesh",
+        "c": "Karnataka",
+        "d": "Maharashtra"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_101",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 57,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Recently, which of the following States has explored the possibility of constructing an artificial inland port to be connected to sea by a long navigational channel?",
+      "options": {
+        "a": "Andhra Pradesh",
+        "b": "Chhattisgarh",
+        "c": "Karnataka",
+        "d": "Rajasthan"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_102",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Geography",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 58,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to Pradhan Mantri Fasal Bima Y ojana, consider the following statements: 1. Under this scheme, farmers will have to pay a uniform premium of two percent for any crop they cultivate in any season of the year. 2. This scheme covers post-harvest losses arising out of the cyclones and unseasonal rains. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Climatology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_103",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Polity",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 59,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which of the following are the key features of ‘National Ganga River Basin Authority (NGRBA)’? 1. River basin is the unit of planning and management. 2. It spearheads the river conservation efforts at the national level. 3. One of the Chief Ministers of the States through which the Ganga flows becomes the Chairman of NGRBA on rotation basis. Select the correct answer using the code given below.",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "2 and 3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.7,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_104",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Geography",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 60,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Why does the Government of India promote the use of ‘Neem Coated Urea’ in agriculture?",
+      "options": {
+        "a": "Release of Neem oil in the soil increases nitrogen fixation by the soil microorganisms.",
+        "b": "Neem coating slows down the rate of dissolution of urea in the soil.",
+        "c": "Nitrous oxide, which is a greenhouse gas, is not at all released into the atmosphere by crop fields.",
+        "d": "It is a combination of a weedicide and a fertiliser for particular crops."
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Resources & Agriculture",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_105",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 61,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to ‘Stand Up India Scheme’ which of the following statements is/are correct? 1. Its purpose is to promote entrepreneurship among SC/ST and women entrepreneurs. 2. It provides for refinancing through SIDBI. Select the correct answer using the code given below.",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_106",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 62,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "‘Mission Indradhanush’ launched by the Government of India pertains to:",
+      "options": {
+        "a": "Immunisation of children and pregnant women",
+        "b": "Construction of smart cities across the country",
+        "c": "India’s own search for the Earth-like planets in outer space",
+        "d": "New Educational Policy"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_107",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 63,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "‘Net metering’ is sometimes seen in the news in the context of promoting the:",
+      "options": {
+        "a": "production and use of solar energy by the households/ consumers",
+        "b": "use of piped natural gas in the kitchens of households",
+        "c": "installation of CNG kits in motorcars",
+        "d": "installation of water meters in urban households"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_108",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 64,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to ‘Initiative for Nutritional Security through Intensive Millets Promotion’, which of the following statements is/are correct? 1. This initiative aims to demonstrate the improved production and post-harvest technologies, and to demonstrate value addition techniques, in an integrated manner, with cluster approach. 2. Poor, small, marginal and tribal farmers have a larger stake in this scheme. 3. An important objective of the scheme is to encourage farmers of commercial crops to shift to millet cultivation by offering them free kits of critical inputs of nutrients and micro irrigation equipment. Select the correct answer using the code given below.",
+      "options": {
+        "a": "1 only",
+        "b": "2 and 3 only",
+        "c": "1 and 2 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.SCHEMES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_109",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 65,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Recently, India’s first ‘National Investment and Manufacturing Zone’ was proposed to be set up in:",
+      "options": {
+        "a": "Andhra Pradesh",
+        "b": "Gujarat",
+        "c": "Maharashtra",
+        "d": "Uttar Pradesh"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_110",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 66,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "‘SW AY AM’, an initiative of the Government of India, aims at:",
+      "options": {
+        "a": "promoting the Self-Help Groups in rural areas",
+        "b": "providing financial and technical assistance to young start-up entrepreneurs",
+        "c": "promoting the education and health of adolescent girls",
+        "d": "providing affordable and quality education to the citizens for free"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_111",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 67,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Pradhan Mantri MUDRA Y ojana is aimed at:",
+      "options": {
+        "a": "bringing the small entrepreneurs into formal financial system",
+        "b": "providing loans to poor farmers for cultivating particular crops",
+        "c": "providing pensions to old and destitute persons",
+        "d": "funding the voluntary organizations involved in the promotion of skill development and employment generation."
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_112",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2016,
+      "questionNumber": 68,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "With reference to pre-packaged items in India, is it mandatory to the manufacturer to put the following information on the main label, as per the Food Safety and Standards (Packaging and Labelling) Regulations, 2011? 1. List of ingredients including additives 2. Nutrition information 3. Recommendations, if any, made by the medical profession about the possibility of any allergic reactions 4. Vegetarian/non-vegetarian Select the correct answer using the code given below.",
+      "options": {
+        "a": "1, 2 and 3",
+        "b": "2, 3 and 4",
+        "c": "1, 2 and 4",
+        "d": "1 and 4 only"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_113",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2016,
+      "questionNumber": 29,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The term ‘Regional Comprehensive Economic Partnership’ often appears in the news in the context of the affairs of a group of countries known as:",
+      "options": {
+        "a": "G20",
+        "b": "ASEAN",
+        "c": "SCO",
+        "d": "SAARC"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_114",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Environment",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2016,
+      "questionNumber": 30,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. The International Solar Alliance was launched at the United Nations Climate Change Conference in 2015. 2. The Alliance includes all the member countries of the United Nations. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.7,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_115",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2016,
+      "questionNumber": 31,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "‘European Stability Mechanism’, sometimes seen in the news, is an:",
+      "options": {
+        "a": "Agency created by the EU to deal with the impact of millions of refugees arriving from the Middle East.",
+        "b": "Agency of the EU that provides financial assistance to eurozone countries.",
+        "c": "Agency of the EU to deal with all the bilateral and multilateral agreements on trade.",
+        "d": "Agency of the EU to deal with the conflicts arising among the member countries."
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_116",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2016,
+      "questionNumber": 32,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which of the following is/are the indicator/indicators used by IFPRI to compute the Global Hunger Index Report? 1. Undernourishment 2. Child stunting 3. Child mortality Select the correct answer using the code given below.",
+      "options": {
+        "a": "1 only",
+        "b": "2 and 3 only",
+        "c": "1, 2 and 3",
+        "d": "1 and 3 only"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_117",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2016,
+      "questionNumber": 33,
+      "questionType": "PAIR_BASED",
+      "format": "text",
+      "question": "Consider the following pairs: Community sometimes In the affairs of mentioned in the news: 1. Kurd Bangladesh 2. Madhesi Nepal 3. Rohingya Myanmar Which of the pairs given above is/are correctly matched?",
+      "options": {
+        "a": "1 and 2",
+        "b": "2 only",
+        "c": "2 and 3",
+        "d": "3 only"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "pair-structure-detected",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_118",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2016,
+      "questionNumber": 34,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to ‘Organisation for the Prohibition of Chemical Weapons (OPCW)’, consider the following statements: 1. It is an organisation of the European Union in working relation with NATO and WHO. 2. It monitors the chemical industry to prevent new weapons from emerging. 3. It provides assistance and protection to States (Parties) against chemical weapons threats. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 and 3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_119",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2016,
+      "questionNumber": 35,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to the ‘Trans-Pacific Partnership’, consider the following statements: 1. It is an agreement among all the Pacific Rim countries except China and Russia. 2. It is a strategic alliance for the purpose of maritime security only. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_120",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2016,
+      "questionNumber": 36,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: The India-Africa Summit 1. held in 2015 was the third such Summit. 2. was actually initiated by Jawaharlal Nehru in 1951. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_121",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2016,
+      "questionNumber": 37,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. The New Development Bank has been set up by Asia-Pacific Economic Cooperation (APEC). 2. The headquarters of New Development Bank is in Shanghai. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_122",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2016,
+      "questionNumber": 38,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which of the following is not a member of ‘Gulf Cooperation Council’?",
+      "options": {
+        "a": "Iran",
+        "b": "Saudi Arabia",
+        "c": "Oman",
+        "d": "Kuwait"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_123",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2016,
+      "questionNumber": 39,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "‘Global Financial Stability Report’ is prepared by the:",
+      "options": {
+        "a": "European Central Bank",
+        "b": "International Monetary Fund",
+        "c": "International Bank for Reconstruction and Development",
+        "d": "Organisation for Economic Cooperation and Development"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_124",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "GK/Persons in News",
+      "microtheme": "GK/Persons in News",
+      "year": 2016,
+      "questionNumber": 6,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "A recent movie titled The Man Who Knew Infinity is based on the biography of:",
+      "options": {
+        "a": "S. Ramanujan",
+        "b": "S. Chandrasekhar",
+        "c": "S. N. Bose",
+        "d": "C. V . Raman"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_125",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "GK/Persons in News",
+      "microtheme": "GK/Persons in News",
+      "year": 2016,
+      "questionNumber": 7,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "H1N1 virus is sometimes mentioned in the news with reference to which one of the following diseases?",
+      "options": {
+        "a": "AIDS",
+        "b": "Bird flu",
+        "c": "Dengue",
+        "d": "Swine flu"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_126",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2016,
+      "questionNumber": 13,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "‘Project Loon’, sometimes seen in the news, is related to:",
+      "options": {
+        "a": "Waste management technology",
+        "b": "wireless communication technology",
+        "c": "solar power production technology",
+        "d": "water conservation technology"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_127",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Environment",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2016,
+      "questionNumber": 14,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Recently, our scientists have discovered a new and distinct species of banana plant which attains a height of about 11 metres and has orange-coloured fruit pulp. In which part of India has it been discovered?",
+      "options": {
+        "a": "Andaman Islands",
+        "b": "Anaimalai Forests",
+        "c": "Maikal Hills",
+        "d": "Tropical rain forests of northeast"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_128",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2016,
+      "questionNumber": 15,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which one of the following is the best description of ‘INS Astradharini’, that was in the news recently?",
+      "options": {
+        "a": "Amphibious warfare ship",
+        "b": "Nuclear-powered submarine",
+        "c": "Torpedo launch and recovery vessel",
+        "d": "Nuclear-powered aircraft carrier"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_129",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2016,
+      "questionNumber": 16,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "What is ‘Greased Lightning-10 (GL-10)’, recently in the news?",
+      "options": {
+        "a": "Electric plane tested by NASA",
+        "b": "Solar-powered two-seater aircraft designed by Japan",
+        "c": "Space observatory launched by China",
+        "d": "Reusable rocket designed by ISRO"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_130",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2016,
+      "questionNumber": 17,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "‘Doctors Without Borders (Medecins Sans Frontieres)’, often in the news, is:",
+      "options": {
+        "a": "A division of World Health Organisation",
+        "b": "A non-governmental international organisation",
+        "c": "An inter-governmental agency sponsored by European Union",
+        "d": "A specialised agency of the United Nations"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_131",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2016,
+      "questionNumber": 18,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The term ‘Base Erosion and Profit Shifting’ is sometimes seen in the news in the context of:",
+      "options": {
+        "a": "mining operation by multinational companies in resource- rich but backward areas",
+        "b": "curbing of the tax evasion by multinational companies",
+        "c": "exploitation of genetic resources of a country by multinational companies",
+        "d": "lack of consideration of environmental costs in the planning and implementation of developmental projects"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2016_132",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2016,
+      "questionNumber": 19,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which of the following has/have been accorded ‘Geographical Indication’ status? 1. Banaras Brocades and Sarees 2. Rajasthani Dal-Bati-Churma 3. Tirupati Laddu Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 only",
+        "b": "2 and 3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.GI",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_133",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Economy",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2015,
+      "questionNumber": 69,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to the Indian Renewable Energy Development Agency Limited (IREDA), which of the following statements is/ are correct? 1. It is a Public Limited Government Company. 2. It is a Non–Banking Financial Company. Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Banking Structure",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_134",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2015,
+      "questionNumber": 70,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The term ‘IndARC’ sometimes seen in the news, is the name of?",
+      "options": {
+        "a": "an indigenously developed radar system inducted into Indian Defence",
+        "b": "India’s satellite to provide services to the countries of Indian Ocean Rim",
+        "c": "a scientific establishment set up by India in Antarctic region",
+        "d": "India’s underwater observatory to scientifically study the Arctic region"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_135",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2015,
+      "questionNumber": 71,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The Government of India has established NITI Aayog to replace the:",
+      "options": {
+        "a": "Human Rights Commission",
+        "b": "Finance Commission",
+        "c": "Law Commission",
+        "d": "Planning Commission"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_136",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2015,
+      "questionNumber": 40,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "‘Beijing Declaration and Platform for Action’ often seen in the news, is:",
+      "options": {
+        "a": "a strategy to tackle the regional terrorism, an outcome of a meeting of the Shanghai Cooperation Organization.",
+        "b": "a plan of action for sustainable economic growth in the Asia- Pacific Region, an outcome of deliberations of the Asia-Pacific Economic Forum.",
+        "c": "an agenda for women’s empowerment, an outcome of a World Conference convened by the United Nations.",
+        "d": "a strategy to combat wildlife trafficking, a declaration of the East Asia Summit."
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_137",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Geography",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2015,
+      "questionNumber": 41,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to 'Forest Carbon Partnership Facility', which of the following statements is/are correct? 1. It is a global partnership of governments, businesses, civil society and indigenous peoples. 2. It provides financial aid to universities, individual scientists and institutions involved in scientific forestry research to develop eco-friendly and climate adaptation technologies for sustainable forest management. 3. It assists the countries in their 'REDD+ (Reducing Emissions from Deforestation +)' efforts by providing them with financial and technical assistance. Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 only",
+        "b": "2 and 3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Climatology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_138",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2015,
+      "questionNumber": 42,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "In the Mekong-Ganga Cooperation, an initiative of six countries, which of the following is/are not a participant/participants? 1. Bangladesh 2. Cambodia 3. China 4. Myanmar 5. Thailand Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 only",
+        "b": "2, 3 and 4 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 5 only"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_139",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Geography",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2015,
+      "questionNumber": 43,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "‘BioCarbon Fund Initiative for Sustainable Forest Landscapes’ is managed by the:",
+      "options": {
+        "a": "Asian Development Bank",
+        "b": "International Monetary Fund",
+        "c": "United Nations Environment Program",
+        "d": "World Bank"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_140",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2015,
+      "questionNumber": 44,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Amnesty International is:",
+      "options": {
+        "a": "an agency of the United Nations to help refugees of civil wars.",
+        "b": "a global Human Rights Movement.",
+        "c": "a non-governmental voluntary organisation to help very poor people.",
+        "d": "an inter-governmental agency to cater to medical emergencies in war-ravaged regions."
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_141",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2015,
+      "questionNumber": 45,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The area known as 'Golan Heights' sometimes appears in the news in the context of the events related to:",
+      "options": {
+        "a": "Central Asia",
+        "b": "Middle East",
+        "c": "South-East Asia",
+        "d": "Central Africa"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_142",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Geography",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2015,
+      "questionNumber": 46,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The terms ‘Agreement on Agriculture’, ‘Agreement on the Application of Sanitary and Phytosanitary Measures’ and Peace Clause’ appear in the news frequently in the context of the affairs of the:",
+      "options": {
+        "a": "Food and Agriculture Organisation",
+        "b": "United Nations Framework Conference on Climate Change",
+        "c": "World Trade Organisation",
+        "d": "United Nations Environment Programme"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Resources & Agriculture",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_143",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2015,
+      "questionNumber": 47,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which one of the following issues the ‘Global Economic Prospects’ report periodically?",
+      "options": {
+        "a": "The Asian Development Bank",
+        "b": "The European Bank for Reconstruction and Development",
+        "c": "The US Federal Reserve Bank",
+        "d": "The World Bank"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_144",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2015,
+      "questionNumber": 48,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Among the following which were frequently mentioned in the news for the outbreak of Ebola virus recently?",
+      "options": {
+        "a": "Syria and Jordan",
+        "b": "Guinea, Sierra Leone and Liberia",
+        "c": "Philippines and Papua New Guinea",
+        "d": "Jamaica, Haiti and Surinam"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_145",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2015,
+      "questionNumber": 49,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Which of the following statements is/are correct regarding National Innovation Foundation-India (NIF)? 1. NIF is an autonomous body of the Department of Science and Technology under the Central Government 2. NIF is an initiative to strengthen the highly advanced scientific research in India’s premier scientific institutions in collaboration with highly advanced foreign scientific institutions. Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_146",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2015,
+      "questionNumber": 50,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "The ‘Fortaleza Declaration’ recently in the news, is related to the affairs of:",
+      "options": {
+        "a": "ASEAN",
+        "b": "BRICS",
+        "c": "OECD",
+        "d": "WTO"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_147",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "History & Culture",
+      "section": "GK/Persons in News",
+      "microtheme": "GK/Persons in News",
+      "year": 2015,
+      "questionNumber": 8,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Indira Gandhi Peace Prize for Peace, Disarmament and Development for 2014 was given to which of the following?",
+      "options": {
+        "a": "Bhabha Atomic Research Centre",
+        "b": "Indian Institute of Science",
+        "c": "Indian Space Research Organisation",
+        "d": "Tata Institute of Fundamental Research"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_148",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2015,
+      "questionNumber": 20,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which one of the following was given classical language status recently?",
+      "options": {
+        "a": "Odia",
+        "b": "Konkani",
+        "c": "Bhojpuri",
+        "d": "Assamese"
+      },
+      "answer": "a",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_149",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2015,
+      "questionNumber": 21,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which of the following brings out the ‘Consumer Price Index’ Number for the Industrial Workers’?",
+      "options": {
+        "a": "The Reserve Bank of India",
+        "b": "The Department of Economic Affairs",
+        "c": "The Labour Bureau",
+        "d": "The department of Personnel and Training"
+      },
+      "answer": "c",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2015_150",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Miscellaneous",
+      "microtheme": "Miscellaneous",
+      "year": 2015,
+      "questionNumber": 22,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to bio-toilets used by the Indian Railways, consider the following statements: 1. The decomposition of human waste in the bio-toilets is initiated by a fungal inoculum. 2. Ammonia and water vapour are the only end products in this decomposition which are released into the atmosphere. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2014_151",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: India",
+      "microtheme": "Current Affairs: India",
+      "year": 2014,
+      "questionNumber": 72,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to two non-conventional energy sources called 'coalbed methane' and 'shale gas', consider the following statements: 1. Coalbed methane is the pure methane gas extracted from coal seams, while shale gas is a mixture of propane and butane only that can be extracted from fine-grained sedimentary rocks. 2. In India, abundant coalbed methane sources exist, but so far, no shale gas sources have been found. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "d",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_CAM_2014_152",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Current Affairs: World",
+      "microtheme": "Current Affairs: World",
+      "year": 2014,
+      "questionNumber": 51,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Recently, a series of uprisings of people referred to as 'Arab Spring' originally started from:",
+      "options": {
+        "a": "Egypt",
+        "b": "Lebanon",
+        "c": "Syria",
+        "d": "Tunisia"
+      },
+      "answer": "b",
+      "syllabusNodeId": "1C.MISC.INST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    }
+  ]
+}

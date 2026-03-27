@@ -1,0 +1,100 @@
+{
+  "taggedTotal": 1349,
+  "pdfExtractedTotal": 1197,
+  "matchedCount": 328,
+  "missingCount": 869,
+  "mismatchedCount": 328,
+  "taggedWithoutYearOrQuestionNumber": 0,
+  "yearlyAudit": [
+    {
+      "year": "2011",
+      "pdfCount": 90,
+      "taggedCount": 0,
+      "difference": 90
+    },
+    {
+      "year": "2012",
+      "pdfCount": 77,
+      "taggedCount": 0,
+      "difference": 77
+    },
+    {
+      "year": "2013",
+      "pdfCount": 85,
+      "taggedCount": 106,
+      "difference": -21
+    },
+    {
+      "year": "2014",
+      "pdfCount": 78,
+      "taggedCount": 100,
+      "difference": -22
+    },
+    {
+      "year": "2015",
+      "pdfCount": 82,
+      "taggedCount": 99,
+      "difference": -17
+    },
+    {
+      "year": "2016",
+      "pdfCount": 69,
+      "taggedCount": 103,
+      "difference": -34
+    },
+    {
+      "year": "2017",
+      "pdfCount": 81,
+      "taggedCount": 108,
+      "difference": -27
+    },
+    {
+      "year": "2018",
+      "pdfCount": 68,
+      "taggedCount": 107,
+      "difference": -39
+    },
+    {
+      "year": "2019",
+      "pdfCount": 69,
+      "taggedCount": 105,
+      "difference": -36
+    },
+    {
+      "year": "2020",
+      "pdfCount": 83,
+      "taggedCount": 103,
+      "difference": -20
+    },
+    {
+      "year": "2021",
+      "pdfCount": 81,
+      "taggedCount": 109,
+      "difference": -28
+    },
+    {
+      "year": "2022",
+      "pdfCount": 55,
+      "taggedCount": 103,
+      "difference": -48
+    },
+    {
+      "year": "2023",
+      "pdfCount": 90,
+      "taggedCount": 108,
+      "difference": -18
+    },
+    {
+      "year": "2024",
+      "pdfCount": 98,
+      "taggedCount": 99,
+      "difference": -1
+    },
+    {
+      "year": "2025",
+      "pdfCount": 91,
+      "taggedCount": 99,
+      "difference": -8
+    }
+  ]
+}

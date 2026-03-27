@@ -1,0 +1,359 @@
+{
+  "exam": "UPSC_CSE",
+  "stage": "Mains",
+  "paper": "GS3",
+  "subject": "AGRICULTURE",
+  "questions": [
+    {
+      "id": "GS3_AGRI_2024_01",
+      "year": 2024,
+      "questionNumber": 1,
+      "directive": "What",
+      "theme": "Land Reforms",
+      "question": "What were the factors responsible for the successful implementation of land reforms in some parts of the country? Elaborate.",
+      "syllabusNodeId": "GS3-ECO-LANDREFORMS"
+    },
+    {
+      "id": "GS3_AGRI_2024_02",
+      "year": 2024,
+      "questionNumber": 2,
+      "directive": "Explain",
+      "theme": "Crops & Diversification",
+      "question": "Explain the role of millets for ensuring health and nutritional security in India.",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2024_03",
+      "year": 2024,
+      "questionNumber": 3,
+      "directive": "What are",
+      "theme": "Irrigation & Water Management",
+      "question": "What are the major challenges faced by the Indian irrigation system in recent times? State the measures taken by the government for efficient irrigation management.",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2024_04",
+      "year": 2024,
+      "questionNumber": 4,
+      "directive": "Elucidate",
+      "theme": "Agri Marketing & Processing",
+      "question": "Elucidate the importance of buffer stocks for stabilizing agricultural prices in India. What are the challenges associated with the storage of buffer stock? Discuss.",
+      "syllabusNodeId": "GS3-ECO-FOODPROC"
+    },
+    {
+      "id": "GS3_AGRI_2023_01",
+      "year": 2023,
+      "questionNumber": 1,
+      "directive": "How does",
+      "theme": "Agri Marketing & Processing",
+      "question": "How does eTechnology help farmers in production and marketing of agricultural produce? Explain it.",
+      "syllabusNodeId": "GS3-ECO-FOODPROC"
+    },
+    {
+      "id": "GS3_AGRI_2023_02",
+      "year": 2023,
+      "questionNumber": 2,
+      "directive": "State",
+      "theme": "Land Reforms",
+      "question": "State the objectives and measures of land reforms in India. Discuss how land ceiling policy on landholding can be considered as an effective reform under economic criteria.",
+      "syllabusNodeId": "GS3-ECO-LANDREFORMS"
+    },
+    {
+      "id": "GS3_AGRI_2023_03",
+      "year": 2023,
+      "questionNumber": 3,
+      "directive": "Explain",
+      "theme": "Crops & Diversification",
+      "question": "Explain the changes in cropping pattern in India in the context of changes in consumption pattern and marketing conditions.",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2023_04",
+      "year": 2023,
+      "questionNumber": 4,
+      "directive": "What are",
+      "theme": "Farm Support & Subsidies",
+      "question": "What are the direct and indirect subsidies provided to farm sector in India? Discuss the issues raised by the World Trade Organization (WTO) in relation to agricultural subsidies.",
+      "syllabusNodeId": "GS3-ECO-PR-SCHEMES"
+    },
+    {
+      "id": "GS3_AGRI_2022_01",
+      "year": 2022,
+      "questionNumber": 1,
+      "directive": "What are",
+      "theme": "Agri Marketing & Processing",
+      "question": "What are the main bottlenecks in upstream and downstream process of marketing of agricultural products in India?",
+      "syllabusNodeId": "GS3-ECO-FOODPROC"
+    },
+    {
+      "id": "GS3_AGRI_2022_02",
+      "year": 2022,
+      "questionNumber": 2,
+      "directive": "What is",
+      "theme": "Farming Systems",
+      "question": "What is Integrated Farming System? How is it helpful to small and marginal farmers in India?",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2021_01",
+      "year": 2021,
+      "questionNumber": 1,
+      "directive": "How",
+      "theme": "Land Reforms",
+      "question": "How did land reforms in some parts of the country help to improve the socioeconomic conditions of marginal and small farmers?",
+      "syllabusNodeId": "GS3-ECO-LANDREFORMS"
+    },
+    {
+      "id": "GS3_AGRI_2021_02",
+      "year": 2021,
+      "questionNumber": 2,
+      "directive": "What are",
+      "theme": "Crops & Diversification",
+      "question": "What are the present challenges before crop diversification? How do emerging technologies provide an opportunity for crop diversification?",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2020_01",
+      "year": 2020,
+      "questionNumber": 1,
+      "directive": "What are",
+      "theme": "Agri Marketing & Processing",
+      "question": "What are the main constraints in transport and marketing of agricultural produce in India?",
+      "syllabusNodeId": "GS3-ECO-FOODPROC"
+    },
+    {
+      "id": "GS3_AGRI_2020_02",
+      "year": 2020,
+      "questionNumber": 2,
+      "directive": "What are",
+      "theme": "Agri Marketing & Processing",
+      "question": "What are the challenges and opportunities of the food processing sector in the country? How can the income of the farmers be substantially increased by encouraging food processing?",
+      "syllabusNodeId": "GS3-ECO-FOODPROC"
+    },
+    {
+      "id": "GS3_AGRI_2019_01",
+      "year": 2019,
+      "questionNumber": 1,
+      "directive": "How",
+      "theme": "Farming Systems",
+      "question": "How far is Integrated Farming System (IFS) helpful in sustaining agricultural production?",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2019_02",
+      "year": 2019,
+      "questionNumber": 2,
+      "directive": "Elaborate",
+      "theme": "Irrigation & Water Management",
+      "question": "Elaborate the impact of the National Watershed Project in increasing agricultural production from waterstressed areas.",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2019_03",
+      "year": 2019,
+      "questionNumber": 3,
+      "directive": "What are",
+      "theme": "Food Security",
+      "question": "What are the reformative steps taken by the Government to make the food grain distribution system more effective?",
+      "syllabusNodeId": "GS3-ECO-PDS-FOODSEC"
+    },
+    {
+      "id": "GS3_AGRI_2019_04",
+      "year": 2019,
+      "questionNumber": 4,
+      "directive": "Elaborate",
+      "theme": "Agri Marketing & Processing",
+      "question": "Elaborate the policy taken by the Government of India to meet the challenges of the food processing sector.",
+      "syllabusNodeId": "GS3-ECO-FOODPROC"
+    },
+    {
+      "id": "GS3_AGRI_2018_01",
+      "year": 2018,
+      "questionNumber": 1,
+      "directive": "What",
+      "theme": "Farm Support & Subsidies",
+      "question": "What do you mean by Minimum Support Price (MSP)? How will MSP rescue the farmers from the low income trap?",
+      "syllabusNodeId": "GS3-ECO-PR-SCHEMES"
+    },
+    {
+      "id": "GS3_AGRI_2018_02",
+      "year": 2018,
+      "questionNumber": 2,
+      "directive": "Assess",
+      "theme": "Crops & Diversification",
+      "question": "Assess the role of National Horticulture Mission (NHM) in boosting the production, productivity and income of horticulture farms. How far has it succeeded in increasing the income of farmers?",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2018_03",
+      "year": 2018,
+      "questionNumber": 3,
+      "directive": "How",
+      "theme": "Crops & Diversification",
+      "question": "How has the emphasis on certain crops brought about changes in cropping patterns in recent past? Elaborate the emphasis on millets production and consumption?",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2017_01",
+      "year": 2017,
+      "questionNumber": 1,
+      "directive": "Explain",
+      "theme": "Food Security",
+      "question": "Explain various types of revolutions, took place in Agriculture after Independence in India. How have these revolutions helped in poverty alleviation and food security in India?",
+      "syllabusNodeId": "GS3-ECO-PDS-FOODSEC"
+    },
+    {
+      "id": "GS3_AGRI_2017_02",
+      "year": 2017,
+      "questionNumber": 2,
+      "directive": "What are",
+      "theme": "Agri Marketing & Processing",
+      "question": "What are the reasons for poor acceptance of costeffective small processing unit? How will the food processing unit be helpful to uplift the socioeconomic status of poor farmers?",
+      "syllabusNodeId": "GS3-ECO-FOODPROC"
+    },
+    {
+      "id": "GS3_AGRI_2017_03",
+      "year": 2017,
+      "questionNumber": 3,
+      "directive": "What are",
+      "theme": "Crops & Diversification",
+      "question": "What are the major reasons for declining rice and wheat yield in the cropping system? How is crop diversification helpful to stabilize the yield of the crop in the system?",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2017_04",
+      "year": 2017,
+      "questionNumber": 4,
+      "directive": "How do",
+      "theme": "Crops & Diversification",
+      "question": "How do subsidies affect the cropping pattern, crop diversity and economy of farmers? What is the significance of crop insurance, minimum support price and food processing for small and marginal farmers?",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2016_01",
+      "year": 2016,
+      "questionNumber": 1,
+      "directive": "What is",
+      "theme": "Irrigation & Water Management",
+      "question": "What is wateruse efficiency? Describe the role of microirrigation in increasing the wateruse efficiency.",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2016_02",
+      "year": 2016,
+      "questionNumber": 2,
+      "directive": "What is",
+      "theme": "Farming Systems",
+      "question": "What is allelopathy? Discuss its role in major cropping systems of irrigated agriculture.",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2016_03",
+      "year": 2016,
+      "questionNumber": 3,
+      "directive": "Discuss",
+      "theme": "Land Reforms",
+      "question": "Discuss the role of land reforms in agricultural development. Identify the factors that were responsible for the success of land reforms in India.",
+      "syllabusNodeId": "GS3-ECO-LANDREFORMS"
+    },
+    {
+      "id": "GS3_AGRI_2016_04",
+      "year": 2016,
+      "questionNumber": 4,
+      "directive": "Given",
+      "theme": "Farm Support & Subsidies",
+      "question": "Given the vulnerability of Indian agriculture to vagaries of nature, discuss the need for crop insurance and bring out the salient features of the Pradhan Mantri Fasal Bima Yojana (PMFBY).",
+      "syllabusNodeId": "GS3-ECO-PR-SCHEMES"
+    },
+    {
+      "id": "GS3_AGRI_2015_01",
+      "year": 2015,
+      "questionNumber": 1,
+      "directive": "Livestock",
+      "theme": "Crops & Diversification",
+      "question": "Livestock rearing has a big potential for providing non-farm employment and income in rural areas. Discuss suggesting suitable measures to promote this sector in India.",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2015_02",
+      "year": 2015,
+      "questionNumber": 2,
+      "directive": "In",
+      "theme": "Land Reforms",
+      "question": "In the view of the declining average size of land holdings in India which has made agriculture nonviable for a majority of farmers should contract farming and land leasing be promoted in agriculture? Critically evaluate the pros and cons.",
+      "syllabusNodeId": "GS3-ECO-LANDREFORMS"
+    },
+    {
+      "id": "GS3_AGRI_2015_03",
+      "year": 2015,
+      "questionNumber": 3,
+      "directive": "How",
+      "theme": "Farmers & Agri Reforms",
+      "question": "How can the Digital India program help farmers to improve farm productivity and income? What step has the government taken in this regard?",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2015_04",
+      "year": 2015,
+      "questionNumber": 4,
+      "directive": "What are",
+      "theme": "Agri Marketing & Processing",
+      "question": "What are the impediments in marketing and supply chain management in developing the food processing industry in India? Can ecommerce help in overcoming this bottleneck?",
+      "syllabusNodeId": "GS3-ECO-FOODPROC"
+    },
+    {
+      "id": "GS3_AGRI_2014_01",
+      "year": 2014,
+      "questionNumber": 1,
+      "directive": "Normally",
+      "theme": "Agriculture",
+      "question": "Normally countries shift from agriculture to industry and then later to services, but India shifted directly from agriculture to services. What are the reasons for the huge growthservices visa-vis industry in the country? Can India become a developed country without a strong industrial base?",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2014_02",
+      "year": 2014,
+      "questionNumber": 2,
+      "directive": "There",
+      "theme": "Agri Marketing & Processing",
+      "question": "There is also a point of view that Agricultural Produce Market Committees [APMCs) set up under the State Acts have not only impeded the development of agriculture but also have been the cause of food inflation in India. Critically examine.",
+      "syllabusNodeId": "GS3-ECO-FOODPROC"
+    },
+    {
+      "id": "GS3_AGRI_2014_03",
+      "year": 2014,
+      "questionNumber": 3,
+      "directive": "In",
+      "theme": "Farmers & Agri Reforms",
+      "question": "In the villages itself no form of credit organization will be suitable except the cooperative society.\" - All India Rural Credit Survey.Discuss this statement in the background of agricultural finance in India. What constraints and challenges do financial institutions supplying agricultural finance face? How can technology be used to better reach and serve rural clients?",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI"
+    },
+    {
+      "id": "GS3_AGRI_2014_04",
+      "year": 2014,
+      "questionNumber": 4,
+      "directive": "The",
+      "theme": "Land Reforms",
+      "question": "The Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013 has come into effect from Ist January, 2014. What are the key issues which would get addressed with the Act in place? What implications would it have on industrialization and agriculture in India?",
+      "syllabusNodeId": "GS3-ECO-LANDREFORMS"
+    },
+    {
+      "id": "GS3_AGRI_2013_01",
+      "year": 2013,
+      "questionNumber": 1,
+      "directive": "What are",
+      "theme": "Farm Support & Subsidies",
+      "question": "What are the different types of agriculture subsidies given to farmers at the national and state levels? Critically analyze the agriculture subsidy regime with the reference to the distortions created by it.",
+      "syllabusNodeId": "GS3-ECO-PR-SCHEMES"
+    },
+    {
+      "id": "GS3_AGRI_2013_02",
+      "year": 2013,
+      "questionNumber": 2,
+      "directive": "Establish",
+      "theme": "Land Reforms",
+      "question": "Establish the relationship between land reform, agriculture productivity and elimination of poverty in Indian Economy. Discussion the difficulty in designing and implementation of the agriculture friendly land reforms in India.",
+      "syllabusNodeId": "GS3-ECO-LANDREFORMS"
+    }
+  ]
+}

@@ -1,0 +1,5823 @@
+{
+  "GS1-HIS-ANC": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-BUD-MT01",
+      "GS1-HIS-ANC-BUD-MT02",
+      "GS1-HIS-ANC-BUD-MT03",
+      "GS1-HIS-ANC-BUD-MT04",
+      "GS1-HIS-ANC-BUD-MT05",
+      "GS1-HIS-ANC-BUD-MT06",
+      "GS1-HIS-ANC-GUPTA-MT01",
+      "GS1-HIS-ANC-GUPTA-MT02",
+      "GS1-HIS-ANC-GUPTA-MT03",
+      "GS1-HIS-ANC-GUPTA-MT04",
+      "GS1-HIS-ANC-GUPTA-MT05",
+      "GS1-HIS-ANC-GUPTA-MT06",
+      "GS1-HIS-ANC-GUPTA-MT07",
+      "GS1-HIS-ANC-HARSHA-MT01",
+      "GS1-HIS-ANC-HARSHA-MT02",
+      "GS1-HIS-ANC-HARSHA-MT03",
+      "GS1-HIS-ANC-HARSHA-MT04",
+      "GS1-HIS-ANC-HARSHA-MT05",
+      "GS1-HIS-ANC-IVC-MT01",
+      "GS1-HIS-ANC-IVC-MT02",
+      "GS1-HIS-ANC-IVC-MT03",
+      "GS1-HIS-ANC-IVC-MT04",
+      "GS1-HIS-ANC-JAIN-MT01",
+      "GS1-HIS-ANC-JAIN-MT02",
+      "GS1-HIS-ANC-JAIN-MT03",
+      "GS1-HIS-ANC-JAIN-MT04",
+      "GS1-HIS-ANC-JAIN-MT05",
+      "GS1-HIS-ANC-MAHAJAN-MT01",
+      "GS1-HIS-ANC-MAHAJAN-MT02",
+      "GS1-HIS-ANC-MAHAJAN-MT03",
+      "GS1-HIS-ANC-MAHAJAN-MT04",
+      "GS1-HIS-ANC-MAHAJAN-MT05",
+      "GS1-HIS-ANC-MAHAJAN-MT06",
+      "GS1-HIS-ANC-MAHAJAN-MT07",
+      "GS1-HIS-ANC-MAURYA-MT01",
+      "GS1-HIS-ANC-MAURYA-MT02",
+      "GS1-HIS-ANC-MAURYA-MT03",
+      "GS1-HIS-ANC-MAURYA-MT04",
+      "GS1-HIS-ANC-MAURYA-MT05",
+      "GS1-HIS-ANC-MAURYA-MT06",
+      "GS1-HIS-ANC-MAURYA-MT07",
+      "GS1-HIS-ANC-POSTMAURYA-MT01",
+      "GS1-HIS-ANC-POSTMAURYA-MT02",
+      "GS1-HIS-ANC-POSTMAURYA-MT03",
+      "GS1-HIS-ANC-POSTMAURYA-MT04",
+      "GS1-HIS-ANC-POSTMAURYA-MT05",
+      "GS1-HIS-ANC-POSTMAURYA-MT06",
+      "GS1-HIS-ANC-PREHIST-MT01",
+      "GS1-HIS-ANC-PREHIST-MT02",
+      "GS1-HIS-ANC-PREHIST-MT03",
+      "GS1-HIS-ANC-PREHIST-MT04",
+      "GS1-HIS-ANC-PREHIST-MT05",
+      "GS1-HIS-ANC-PREHIST-MT06",
+      "GS1-HIS-ANC-PREHIST-MT07",
+      "GS1-HIS-ANC-PREHIST-MT08",
+      "GS1-HIS-ANC-PREHIST-MT09",
+      "GS1-HIS-ANC-SANGAM-MT01",
+      "GS1-HIS-ANC-SANGAM-MT02",
+      "GS1-HIS-ANC-SANGAM-MT03",
+      "GS1-HIS-ANC-SANGAM-MT04",
+      "GS1-HIS-ANC-SANGAM-MT05",
+      "GS1-HIS-ANC-VEDIC-LATER-MT01",
+      "GS1-HIS-ANC-VEDIC-LATER-MT02",
+      "GS1-HIS-ANC-VEDIC-LATER-MT03",
+      "GS1-HIS-ANC-VEDIC-LATER-MT04",
+      "GS1-HIS-ANC-VEDIC-LATER-MT05",
+      "GS1-HIS-ANC-VEDIC-RIG-MT01",
+      "GS1-HIS-ANC-VEDIC-RIG-MT02",
+      "GS1-HIS-ANC-VEDIC-RIG-MT03",
+      "GS1-HIS-ANC-VEDIC-RIG-MT04",
+      "GS1-HIS-ANC-VEDIC-RIG-MT05",
+      "GS1-HIS-ANC-VEDIC-RIG-MT06"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-BUD-MT01"
+  },
+  "GS1-HIS-ANC-PREHIST": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-PREHIST-MT01",
+      "GS1-HIS-ANC-PREHIST-MT02",
+      "GS1-HIS-ANC-PREHIST-MT03",
+      "GS1-HIS-ANC-PREHIST-MT04",
+      "GS1-HIS-ANC-PREHIST-MT05",
+      "GS1-HIS-ANC-PREHIST-MT06",
+      "GS1-HIS-ANC-PREHIST-MT07",
+      "GS1-HIS-ANC-PREHIST-MT08",
+      "GS1-HIS-ANC-PREHIST-MT09"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-PREHIST-MT01"
+  },
+  "GS1-HIS-ANC-IVC": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-IVC-MT01",
+      "GS1-HIS-ANC-IVC-MT02",
+      "GS1-HIS-ANC-IVC-MT03",
+      "GS1-HIS-ANC-IVC-MT04"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-IVC-MT01"
+  },
+  "GS1-HIS-ANC-VEDIC-RIG": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-VEDIC-RIG-MT01",
+      "GS1-HIS-ANC-VEDIC-RIG-MT02",
+      "GS1-HIS-ANC-VEDIC-RIG-MT03",
+      "GS1-HIS-ANC-VEDIC-RIG-MT04",
+      "GS1-HIS-ANC-VEDIC-RIG-MT05",
+      "GS1-HIS-ANC-VEDIC-RIG-MT06"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-VEDIC-RIG-MT01"
+  },
+  "GS1-HIS-ANC-VEDIC-LATER": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-VEDIC-LATER-MT01",
+      "GS1-HIS-ANC-VEDIC-LATER-MT02",
+      "GS1-HIS-ANC-VEDIC-LATER-MT03",
+      "GS1-HIS-ANC-VEDIC-LATER-MT04",
+      "GS1-HIS-ANC-VEDIC-LATER-MT05"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-VEDIC-LATER-MT01"
+  },
+  "GS1-HIS-ANC-JAIN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-JAIN-MT01",
+      "GS1-HIS-ANC-JAIN-MT02",
+      "GS1-HIS-ANC-JAIN-MT03",
+      "GS1-HIS-ANC-JAIN-MT04",
+      "GS1-HIS-ANC-JAIN-MT05"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-JAIN-MT01"
+  },
+  "GS1-HIS-ANC-BUD": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-BUD-MT01",
+      "GS1-HIS-ANC-BUD-MT02",
+      "GS1-HIS-ANC-BUD-MT03",
+      "GS1-HIS-ANC-BUD-MT04",
+      "GS1-HIS-ANC-BUD-MT05",
+      "GS1-HIS-ANC-BUD-MT06"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-BUD-MT01"
+  },
+  "GS1-HIS-ANC-MAHAJAN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-MAHAJAN-MT01",
+      "GS1-HIS-ANC-MAHAJAN-MT02",
+      "GS1-HIS-ANC-MAHAJAN-MT03",
+      "GS1-HIS-ANC-MAHAJAN-MT04",
+      "GS1-HIS-ANC-MAHAJAN-MT05",
+      "GS1-HIS-ANC-MAHAJAN-MT06",
+      "GS1-HIS-ANC-MAHAJAN-MT07"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-MAHAJAN-MT01"
+  },
+  "GS1-HIS-ANC-MAURYA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-MAURYA-MT01",
+      "GS1-HIS-ANC-MAURYA-MT02",
+      "GS1-HIS-ANC-MAURYA-MT03",
+      "GS1-HIS-ANC-MAURYA-MT04",
+      "GS1-HIS-ANC-MAURYA-MT05",
+      "GS1-HIS-ANC-MAURYA-MT06",
+      "GS1-HIS-ANC-MAURYA-MT07"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-MAURYA-MT01"
+  },
+  "GS1-HIS-ANC-POSTMAURYA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-POSTMAURYA-MT01",
+      "GS1-HIS-ANC-POSTMAURYA-MT02",
+      "GS1-HIS-ANC-POSTMAURYA-MT03",
+      "GS1-HIS-ANC-POSTMAURYA-MT04",
+      "GS1-HIS-ANC-POSTMAURYA-MT05",
+      "GS1-HIS-ANC-POSTMAURYA-MT06"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-POSTMAURYA-MT01"
+  },
+  "GS1-HIS-ANC-GUPTA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-GUPTA-MT01",
+      "GS1-HIS-ANC-GUPTA-MT02",
+      "GS1-HIS-ANC-GUPTA-MT03",
+      "GS1-HIS-ANC-GUPTA-MT04",
+      "GS1-HIS-ANC-GUPTA-MT05",
+      "GS1-HIS-ANC-GUPTA-MT06",
+      "GS1-HIS-ANC-GUPTA-MT07"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-GUPTA-MT01"
+  },
+  "GS1-HIS-ANC-HARSHA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-HARSHA-MT01",
+      "GS1-HIS-ANC-HARSHA-MT02",
+      "GS1-HIS-ANC-HARSHA-MT03",
+      "GS1-HIS-ANC-HARSHA-MT04",
+      "GS1-HIS-ANC-HARSHA-MT05"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-HARSHA-MT01"
+  },
+  "GS1-HIS-ANC-SANGAM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-ANC-SANGAM-MT01",
+      "GS1-HIS-ANC-SANGAM-MT02",
+      "GS1-HIS-ANC-SANGAM-MT03",
+      "GS1-HIS-ANC-SANGAM-MT04",
+      "GS1-HIS-ANC-SANGAM-MT05"
+    ],
+    "primaryNodeId": "GS1-HIS-ANC-SANGAM-MT01"
+  },
+  "GS1-HIS-MED": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MED-18C-MT01",
+      "GS1-HIS-MED-18C-MT02",
+      "GS1-HIS-MED-18C-MT03",
+      "GS1-HIS-MED-18C-MT04",
+      "GS1-HIS-MED-BHAKTI-MT01",
+      "GS1-HIS-MED-BHAKTI-MT02",
+      "GS1-HIS-MED-BHAKTI-MT03",
+      "GS1-HIS-MED-BHAKTI-MT04",
+      "GS1-HIS-MED-BHAKTI-MT05",
+      "GS1-HIS-MED-BHAKTI-MT06",
+      "GS1-HIS-MED-BHAKTI-MT07",
+      "GS1-HIS-MED-BHAKTI-MT08",
+      "GS1-HIS-MED-BHAKTI-MT09",
+      "GS1-HIS-MED-BHAKTI-MT10",
+      "GS1-HIS-MED-BHAKTI-MT11",
+      "GS1-HIS-MED-CHOLA-MT01",
+      "GS1-HIS-MED-CHOLA-MT01-D02",
+      "GS1-HIS-MED-CHOLA-MT02",
+      "GS1-HIS-MED-CHOLA-MT02-D02",
+      "GS1-HIS-MED-CHOLA-MT03",
+      "GS1-HIS-MED-CHOLA-MT03-D02",
+      "GS1-HIS-MED-CHOLA-MT04",
+      "GS1-HIS-MED-CHOLA-MT04-D02",
+      "GS1-HIS-MED-CHOLA-MT05",
+      "GS1-HIS-MED-CHOLA-MT05-D02",
+      "GS1-HIS-MED-CHOLA-MT06",
+      "GS1-HIS-MED-CHOLA-MT06-D02",
+      "GS1-HIS-MED-CHOLA-MT07",
+      "GS1-HIS-MED-CHOLA-MT08",
+      "GS1-HIS-MED-CHOLA-MT09",
+      "GS1-HIS-MED-DELHI-MT01",
+      "GS1-HIS-MED-DELHI-MT02",
+      "GS1-HIS-MED-DELHI-MT03",
+      "GS1-HIS-MED-DELHI-MT04",
+      "GS1-HIS-MED-DELHI-MT05",
+      "GS1-HIS-MED-DELHI-MT06",
+      "GS1-HIS-MED-EMPIRE-MT01",
+      "GS1-HIS-MED-EMPIRE-MT02",
+      "GS1-HIS-MED-EMPIRE-MT03",
+      "GS1-HIS-MED-EMPIRE-MT04",
+      "GS1-HIS-MED-EMPIRE-MT05",
+      "GS1-HIS-MED-MUGHAL-MT01",
+      "GS1-HIS-MED-MUGHAL-MT02",
+      "GS1-HIS-MED-MUGHAL-MT03",
+      "GS1-HIS-MED-MUGHAL-MT04",
+      "GS1-HIS-MED-MUGHAL-MT05",
+      "GS1-HIS-MED-MUGHAL-MT06",
+      "GS1-HIS-MED-MUGHAL-MT07",
+      "GS1-HIS-MED-REGIONAL-MT01",
+      "GS1-HIS-MED-REGIONAL-MT02",
+      "GS1-HIS-MED-REGIONAL-MT03",
+      "GS1-HIS-MED-REGIONAL-MT04",
+      "GS1-HIS-MED-REGIONAL-MT05",
+      "GS1-HIS-MED-REGIONAL-MT06",
+      "GS1-HIS-MED-REGIONAL-MT07",
+      "GS1-HIS-MED-REGIONAL-MT08",
+      "GS1-HIS-MED-REGIONAL-MT09",
+      "GS1-HIS-MED-SUFI-MT01",
+      "GS1-HIS-MED-SUFI-MT02",
+      "GS1-HIS-MED-SUFI-MT03",
+      "GS1-HIS-MED-SUFI-MT04",
+      "GS1-HIS-MED-SUFI-MT05",
+      "GS1-HIS-MED-SUFI-MT06",
+      "GS1-HIS-MED-SUFI-MT07",
+      "GS1-HIS-MED-SUFI-MT08",
+      "GS1-HIS-MED-SUFI-MT09",
+      "GS1-HIS-MED-VIJAYANAGARA-MT01",
+      "GS1-HIS-MED-VIJAYANAGARA-MT02",
+      "GS1-HIS-MED-VIJAYANAGARA-MT03",
+      "GS1-HIS-MED-VIJAYANAGARA-MT04",
+      "GS1-HIS-MED-VIJAYANAGARA-MT05",
+      "GS1-HIS-MED-VIJAYANAGARA-MT06",
+      "GS1-HIS-MED-VIJAYANAGARA-MT07",
+      "GS1-HIS-MED-VIJAYANAGARA-MT08",
+      "GS1-HIS-MED-VIJAYANAGARA-MT09"
+    ],
+    "primaryNodeId": "GS1-HIS-MED-18C-MT01"
+  },
+  "GS1-HIS-MED-VIJAYANAGARA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MED-VIJAYANAGARA-MT01",
+      "GS1-HIS-MED-VIJAYANAGARA-MT02",
+      "GS1-HIS-MED-VIJAYANAGARA-MT03",
+      "GS1-HIS-MED-VIJAYANAGARA-MT04",
+      "GS1-HIS-MED-VIJAYANAGARA-MT05",
+      "GS1-HIS-MED-VIJAYANAGARA-MT06",
+      "GS1-HIS-MED-VIJAYANAGARA-MT07",
+      "GS1-HIS-MED-VIJAYANAGARA-MT08",
+      "GS1-HIS-MED-VIJAYANAGARA-MT09"
+    ],
+    "primaryNodeId": "GS1-HIS-MED-VIJAYANAGARA-MT01"
+  },
+  "GS1-HIS-MED-CHOLA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MED-CHOLA-MT01",
+      "GS1-HIS-MED-CHOLA-MT01-D02",
+      "GS1-HIS-MED-CHOLA-MT02",
+      "GS1-HIS-MED-CHOLA-MT02-D02",
+      "GS1-HIS-MED-CHOLA-MT03",
+      "GS1-HIS-MED-CHOLA-MT03-D02",
+      "GS1-HIS-MED-CHOLA-MT04",
+      "GS1-HIS-MED-CHOLA-MT04-D02",
+      "GS1-HIS-MED-CHOLA-MT05",
+      "GS1-HIS-MED-CHOLA-MT05-D02",
+      "GS1-HIS-MED-CHOLA-MT06",
+      "GS1-HIS-MED-CHOLA-MT06-D02",
+      "GS1-HIS-MED-CHOLA-MT07",
+      "GS1-HIS-MED-CHOLA-MT08",
+      "GS1-HIS-MED-CHOLA-MT09"
+    ],
+    "primaryNodeId": "GS1-HIS-MED-CHOLA-MT01"
+  },
+  "GS1-HIS-MED-BHAKTI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MED-BHAKTI-MT01",
+      "GS1-HIS-MED-BHAKTI-MT02",
+      "GS1-HIS-MED-BHAKTI-MT03",
+      "GS1-HIS-MED-BHAKTI-MT04",
+      "GS1-HIS-MED-BHAKTI-MT05",
+      "GS1-HIS-MED-BHAKTI-MT06",
+      "GS1-HIS-MED-BHAKTI-MT07",
+      "GS1-HIS-MED-BHAKTI-MT08",
+      "GS1-HIS-MED-BHAKTI-MT09",
+      "GS1-HIS-MED-BHAKTI-MT10",
+      "GS1-HIS-MED-BHAKTI-MT11"
+    ],
+    "primaryNodeId": "GS1-HIS-MED-BHAKTI-MT01"
+  },
+  "GS1-HIS-MED-SUFI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MED-SUFI-MT01",
+      "GS1-HIS-MED-SUFI-MT02",
+      "GS1-HIS-MED-SUFI-MT03",
+      "GS1-HIS-MED-SUFI-MT04",
+      "GS1-HIS-MED-SUFI-MT05",
+      "GS1-HIS-MED-SUFI-MT06",
+      "GS1-HIS-MED-SUFI-MT07",
+      "GS1-HIS-MED-SUFI-MT08",
+      "GS1-HIS-MED-SUFI-MT09"
+    ],
+    "primaryNodeId": "GS1-HIS-MED-SUFI-MT01"
+  },
+  "GS1-HIS-MED-REGIONAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MED-REGIONAL-MT01",
+      "GS1-HIS-MED-REGIONAL-MT02",
+      "GS1-HIS-MED-REGIONAL-MT03",
+      "GS1-HIS-MED-REGIONAL-MT04",
+      "GS1-HIS-MED-REGIONAL-MT05",
+      "GS1-HIS-MED-REGIONAL-MT06",
+      "GS1-HIS-MED-REGIONAL-MT07",
+      "GS1-HIS-MED-REGIONAL-MT08",
+      "GS1-HIS-MED-REGIONAL-MT09"
+    ],
+    "primaryNodeId": "GS1-HIS-MED-REGIONAL-MT01"
+  },
+  "GS1-HIS-MED-EMPIRE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MED-EMPIRE-MT01",
+      "GS1-HIS-MED-EMPIRE-MT02",
+      "GS1-HIS-MED-EMPIRE-MT03",
+      "GS1-HIS-MED-EMPIRE-MT04",
+      "GS1-HIS-MED-EMPIRE-MT05"
+    ],
+    "primaryNodeId": "GS1-HIS-MED-EMPIRE-MT01"
+  },
+  "GS1-HIS-MED-DELHI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MED-DELHI-MT01",
+      "GS1-HIS-MED-DELHI-MT02",
+      "GS1-HIS-MED-DELHI-MT03",
+      "GS1-HIS-MED-DELHI-MT04",
+      "GS1-HIS-MED-DELHI-MT05",
+      "GS1-HIS-MED-DELHI-MT06"
+    ],
+    "primaryNodeId": "GS1-HIS-MED-DELHI-MT01"
+  },
+  "GS1-HIS-MED-MUGHAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MED-MUGHAL-MT01",
+      "GS1-HIS-MED-MUGHAL-MT02",
+      "GS1-HIS-MED-MUGHAL-MT03",
+      "GS1-HIS-MED-MUGHAL-MT04",
+      "GS1-HIS-MED-MUGHAL-MT05",
+      "GS1-HIS-MED-MUGHAL-MT06",
+      "GS1-HIS-MED-MUGHAL-MT07"
+    ],
+    "primaryNodeId": "GS1-HIS-MED-MUGHAL-MT01"
+  },
+  "GS1-HIS-MED-18C": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MED-18C-MT01",
+      "GS1-HIS-MED-18C-MT02",
+      "GS1-HIS-MED-18C-MT03",
+      "GS1-HIS-MED-18C-MT04"
+    ],
+    "primaryNodeId": "GS1-HIS-MED-18C-MT01"
+  },
+  "GS1-HIS-MOD": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MOD-1857-MT01",
+      "GS1-HIS-MOD-1857-MT02",
+      "GS1-HIS-MOD-1857-MT03",
+      "GS1-HIS-MOD-1857-MT04",
+      "GS1-HIS-MOD-ADMIN-MT01",
+      "GS1-HIS-MOD-ADMIN-MT02",
+      "GS1-HIS-MOD-ADMIN-MT03",
+      "GS1-HIS-MOD-ADMIN-MT04",
+      "GS1-HIS-MOD-CONSTDEV-MT01",
+      "GS1-HIS-MOD-CONSTDEV-MT02",
+      "GS1-HIS-MOD-CONSTDEV-MT03",
+      "GS1-HIS-MOD-CONSTDEV-MT04",
+      "GS1-HIS-MOD-CONSTDEV-MT05",
+      "GS1-HIS-MOD-CONSTDEV-MT06",
+      "GS1-HIS-MOD-CONSTDEV-MT07",
+      "GS1-HIS-MOD-EURO-MT01",
+      "GS1-HIS-MOD-EURO-MT02",
+      "GS1-HIS-MOD-EURO-MT03",
+      "GS1-HIS-MOD-EURO-MT04",
+      "GS1-HIS-MOD-EXPANSION-MT01",
+      "GS1-HIS-MOD-EXPANSION-MT02",
+      "GS1-HIS-MOD-EXPANSION-MT03",
+      "GS1-HIS-MOD-EXPANSION-MT04",
+      "GS1-HIS-MOD-EXPANSION-MT05",
+      "GS1-HIS-MOD-NATIONAL-MT01",
+      "GS1-HIS-MOD-NATIONAL-MT02",
+      "GS1-HIS-MOD-NATIONAL-MT03",
+      "GS1-HIS-MOD-NATIONAL-MT04",
+      "GS1-HIS-MOD-NATIONAL-MT05",
+      "GS1-HIS-MOD-NATIONAL-MT06",
+      "GS1-HIS-MOD-NATIONAL-MT07",
+      "GS1-HIS-MOD-REFORM-MT01",
+      "GS1-HIS-MOD-REFORM-MT02"
+    ],
+    "primaryNodeId": "GS1-HIS-MOD-1857-MT01"
+  },
+  "GS1-HIS-MOD-EURO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MOD-EURO-MT01",
+      "GS1-HIS-MOD-EURO-MT02",
+      "GS1-HIS-MOD-EURO-MT03",
+      "GS1-HIS-MOD-EURO-MT04"
+    ],
+    "primaryNodeId": "GS1-HIS-MOD-EURO-MT01"
+  },
+  "GS1-HIS-MOD-EXPANSION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MOD-EXPANSION-MT01",
+      "GS1-HIS-MOD-EXPANSION-MT02",
+      "GS1-HIS-MOD-EXPANSION-MT03",
+      "GS1-HIS-MOD-EXPANSION-MT04",
+      "GS1-HIS-MOD-EXPANSION-MT05"
+    ],
+    "primaryNodeId": "GS1-HIS-MOD-EXPANSION-MT01"
+  },
+  "GS1-HIS-MOD-ADMIN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MOD-ADMIN-MT01",
+      "GS1-HIS-MOD-ADMIN-MT02",
+      "GS1-HIS-MOD-ADMIN-MT03",
+      "GS1-HIS-MOD-ADMIN-MT04"
+    ],
+    "primaryNodeId": "GS1-HIS-MOD-ADMIN-MT01"
+  },
+  "GS1-HIS-MOD-1857": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MOD-1857-MT01",
+      "GS1-HIS-MOD-1857-MT02",
+      "GS1-HIS-MOD-1857-MT03",
+      "GS1-HIS-MOD-1857-MT04"
+    ],
+    "primaryNodeId": "GS1-HIS-MOD-1857-MT01"
+  },
+  "GS1-HIS-MOD-REFORM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MOD-REFORM-MT01",
+      "GS1-HIS-MOD-REFORM-MT02"
+    ],
+    "primaryNodeId": "GS1-HIS-MOD-REFORM-MT01"
+  },
+  "GS1-HIS-MOD-NATIONAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MOD-NATIONAL-MT01",
+      "GS1-HIS-MOD-NATIONAL-MT02",
+      "GS1-HIS-MOD-NATIONAL-MT03",
+      "GS1-HIS-MOD-NATIONAL-MT04",
+      "GS1-HIS-MOD-NATIONAL-MT05",
+      "GS1-HIS-MOD-NATIONAL-MT06",
+      "GS1-HIS-MOD-NATIONAL-MT07"
+    ],
+    "primaryNodeId": "GS1-HIS-MOD-NATIONAL-MT01"
+  },
+  "GS1-HIS-MOD-CONSTDEV": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-MOD-CONSTDEV-MT01",
+      "GS1-HIS-MOD-CONSTDEV-MT02",
+      "GS1-HIS-MOD-CONSTDEV-MT03",
+      "GS1-HIS-MOD-CONSTDEV-MT04",
+      "GS1-HIS-MOD-CONSTDEV-MT05",
+      "GS1-HIS-MOD-CONSTDEV-MT06",
+      "GS1-HIS-MOD-CONSTDEV-MT07"
+    ],
+    "primaryNodeId": "GS1-HIS-MOD-CONSTDEV-MT01"
+  },
+  "GS1-HIS-POSTIND": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-POSTIND-ECON-MT01",
+      "GS1-HIS-POSTIND-ECON-MT02",
+      "GS1-HIS-POSTIND-ECON-MT03",
+      "GS1-HIS-POSTIND-ECON-MT04",
+      "GS1-HIS-POSTIND-INTEGRATION-MT01",
+      "GS1-HIS-POSTIND-INTEGRATION-MT02",
+      "GS1-HIS-POSTIND-INTEGRATION-MT03",
+      "GS1-HIS-POSTIND-INTEGRATION-MT04",
+      "GS1-HIS-POSTIND-POL-MT01",
+      "GS1-HIS-POSTIND-POL-MT02",
+      "GS1-HIS-POSTIND-POL-MT03",
+      "GS1-HIS-POSTIND-POL-MT04"
+    ],
+    "primaryNodeId": "GS1-HIS-POSTIND-ECON-MT01"
+  },
+  "GS1-HIS-POSTIND-INTEGRATION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-POSTIND-INTEGRATION-MT01",
+      "GS1-HIS-POSTIND-INTEGRATION-MT02",
+      "GS1-HIS-POSTIND-INTEGRATION-MT03",
+      "GS1-HIS-POSTIND-INTEGRATION-MT04"
+    ],
+    "primaryNodeId": "GS1-HIS-POSTIND-INTEGRATION-MT01"
+  },
+  "GS1-HIS-POSTIND-ECON": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-POSTIND-ECON-MT01",
+      "GS1-HIS-POSTIND-ECON-MT02",
+      "GS1-HIS-POSTIND-ECON-MT03",
+      "GS1-HIS-POSTIND-ECON-MT04"
+    ],
+    "primaryNodeId": "GS1-HIS-POSTIND-ECON-MT01"
+  },
+  "GS1-HIS-POSTIND-POL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-POSTIND-POL-MT01",
+      "GS1-HIS-POSTIND-POL-MT02",
+      "GS1-HIS-POSTIND-POL-MT03",
+      "GS1-HIS-POSTIND-POL-MT04"
+    ],
+    "primaryNodeId": "GS1-HIS-POSTIND-POL-MT01"
+  },
+  "GS1-HIS-WORLD": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-WORLD-REV-MT01",
+      "GS1-HIS-WORLD-REV-MT02",
+      "GS1-HIS-WORLD-REV-MT03",
+      "GS1-HIS-WORLD-WARS-MT01",
+      "GS1-HIS-WORLD-WARS-MT02",
+      "GS1-HIS-WORLD-WARS-MT03",
+      "GS1-HIS-WORLD-WARS-MT04",
+      "GS1-HIS-WORLD-WARS-MT05"
+    ],
+    "primaryNodeId": "GS1-HIS-WORLD-REV-MT01"
+  },
+  "GS1-HIS-WORLD-REV": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-WORLD-REV-MT01",
+      "GS1-HIS-WORLD-REV-MT02",
+      "GS1-HIS-WORLD-REV-MT03"
+    ],
+    "primaryNodeId": "GS1-HIS-WORLD-REV-MT01"
+  },
+  "GS1-HIS-WORLD-WARS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-HIS-WORLD-WARS-MT01",
+      "GS1-HIS-WORLD-WARS-MT02",
+      "GS1-HIS-WORLD-WARS-MT03",
+      "GS1-HIS-WORLD-WARS-MT04",
+      "GS1-HIS-WORLD-WARS-MT05"
+    ],
+    "primaryNodeId": "GS1-HIS-WORLD-WARS-MT01"
+  },
+  "1C.VA.ARCH": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-VA-ARCH-MT01",
+      "1C-VA-ARCH-MT02",
+      "1C-VA-ARCH-MT03",
+      "1C-VA-ARCH-MT04",
+      "1C-VA-ARCH-MT05",
+      "1C-VA-ARCH-MT06",
+      "1C-VA-ARCH-MT07",
+      "1C-VA-ARCH-MT08",
+      "1C-VA-ARCH-MT09",
+      "1C-VA-ARCH-MT10",
+      "1C-VA-ARCH-MT11",
+      "1C-VA-ARCH-MT12",
+      "1C-VA-ARCH-MT13",
+      "1C-VA-ARCH-MT14",
+      "1C-VA-ARCH-MT15",
+      "1C-VA-ARCH-MT16",
+      "1C-VA-ARCH-MT17"
+    ],
+    "primaryNodeId": "1C-VA-ARCH-MT01"
+  },
+  "1C.VA.SCULP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-VA-SCULP-MT01",
+      "1C-VA-SCULP-MT02",
+      "1C-VA-SCULP-MT03",
+      "1C-VA-SCULP-MT04",
+      "1C-VA-SCULP-MT05",
+      "1C-VA-SCULP-MT06"
+    ],
+    "primaryNodeId": "1C-VA-SCULP-MT01"
+  },
+  "1C.VA.PAINT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-VA-PAINT-MT01",
+      "1C-VA-PAINT-MT02",
+      "1C-VA-PAINT-MT03",
+      "1C-VA-PAINT-MT04",
+      "1C-VA-PAINT-MT05",
+      "1C-VA-PAINT-MT06"
+    ],
+    "primaryNodeId": "1C-VA-PAINT-MT01"
+  },
+  "1C.VA.POTTERY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-VA-POTTERY-MT01",
+      "1C-VA-POTTERY-MT02",
+      "1C-VA-POTTERY-MT03",
+      "1C-VA-POTTERY-MT04",
+      "1C-VA-POTTERY-MT05"
+    ],
+    "primaryNodeId": "1C-VA-POTTERY-MT01"
+  },
+  "1C.VA.NUMIS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-VA-NUMIS-MT01",
+      "1C-VA-NUMIS-MT02"
+    ],
+    "primaryNodeId": "1C-VA-NUMIS-MT01"
+  },
+  "1C.PA.MUSIC": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-PA-MUSIC-MT01",
+      "1C-PA-MUSIC-MT02",
+      "1C-PA-MUSIC-MT03",
+      "1C-PA-MUSIC-MT04",
+      "1C-PA-MUSIC-MT05"
+    ],
+    "primaryNodeId": "1C-PA-MUSIC-MT01"
+  },
+  "1C.PA.DANCE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-PA-DANCE-MT01",
+      "1C-PA-DANCE-MT02",
+      "1C-PA-DANCE-MT03",
+      "1C-PA-DANCE-MT04"
+    ],
+    "primaryNodeId": "1C-PA-DANCE-MT01"
+  },
+  "1C.PA.THEATRE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-PA-THEATRE-MT01",
+      "1C-PA-THEATRE-MT02",
+      "1C-PA-THEATRE-MT03",
+      "1C-PA-THEATRE-MT04",
+      "1C-PA-THEATRE-MT05"
+    ],
+    "primaryNodeId": "1C-PA-THEATRE-MT01"
+  },
+  "1C.PA.PUPPET": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-PA-PUPPET-MT01",
+      "1C-PA-PUPPET-MT02",
+      "1C-PA-PUPPET-MT03",
+      "1C-PA-PUPPET-MT04",
+      "1C-PA-PUPPET-MT05"
+    ],
+    "primaryNodeId": "1C-PA-PUPPET-MT01"
+  },
+  "1C.PA.SPORTS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-PA-SPORTS-MT01",
+      "1C-PA-SPORTS-MT02"
+    ],
+    "primaryNodeId": "1C-PA-SPORTS-MT01"
+  },
+  "1C.RLL.RELIGION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-RLL-RELIGION-MT01",
+      "1C-RLL-RELIGION-MT02",
+      "1C-RLL-RELIGION-MT03",
+      "1C-RLL-RELIGION-MT04",
+      "1C-RLL-RELIGION-MT05",
+      "1C-RLL-RELIGION-MT06",
+      "1C-RLL-RELIGION-MT07",
+      "1C-RLL-RELIGION-MT08"
+    ],
+    "primaryNodeId": "1C-RLL-RELIGION-MT01"
+  },
+  "1C.RLL.LANG": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-RLL-LANG-MT01",
+      "1C-RLL-LANG-MT02",
+      "1C-RLL-LANG-MT03",
+      "1C-RLL-LANG-MT04",
+      "1C-RLL-LANG-MT05",
+      "1C-RLL-LANG-MT06",
+      "1C-RLL-LANG-MT07",
+      "1C-RLL-LANG-MT08"
+    ],
+    "primaryNodeId": "1C-RLL-LANG-MT01"
+  },
+  "1C.MISC.UNESCO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-MISC-UNESCO-MT01",
+      "1C-MISC-UNESCO-MT02",
+      "1C-MISC-UNESCO-MT03"
+    ],
+    "primaryNodeId": "1C-MISC-UNESCO-MT01"
+  },
+  "1C.MISC.INST": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-MISC-INST-MT01",
+      "1C-MISC-INST-MT02"
+    ],
+    "primaryNodeId": "1C-MISC-INST-MT01"
+  },
+  "1C.MISC.GI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-MISC-GI-MT01",
+      "1C-MISC-GI-MT02"
+    ],
+    "primaryNodeId": "1C-MISC-GI-MT01"
+  },
+  "1C.MISC.SCHEMES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "1C-MISC-SCHEMES-MT01",
+      "1C-MISC-SCHEMES-MT02",
+      "1C-MISC-SCHEMES-MT03",
+      "1C-MISC-SCHEMES-MT04",
+      "1C-MISC-SCHEMES-MT05"
+    ],
+    "primaryNodeId": "1C-MISC-SCHEMES-MT01"
+  },
+  "GS1-GEO-GEN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-GEN-EARTH-EVOLUTION-MT01",
+      "GS1-GEO-GEN-EARTH-EVOLUTION-MT02",
+      "GS1-GEO-GEN-EARTH-EVOLUTION-MT03",
+      "GS1-GEO-GEN-EARTH-EVOLUTION-MT04",
+      "GS1-GEO-GEN-EARTH-EVOLUTION-MT05",
+      "GS1-GEO-GEN-LATLON-MT01",
+      "GS1-GEO-GEN-LATLON-MT02",
+      "GS1-GEO-GEN-LATLON-MT03",
+      "GS1-GEO-GEN-LATLON-MT04",
+      "GS1-GEO-GEN-LATLON-MT05",
+      "GS1-GEO-GEN-MAGNETIC-MT01",
+      "GS1-GEO-GEN-UNIVERSE-MT01",
+      "GS1-GEO-GEN-UNIVERSE-MT02",
+      "GS1-GEO-GEN-UNIVERSE-MT03",
+      "GS1-GEO-GEN-UNIVERSE-MT04",
+      "GS1-GEO-GEN-UNIVERSE-MT05"
+    ],
+    "primaryNodeId": "GS1-GEO-GEN-EARTH-EVOLUTION-MT01"
+  },
+  "GS1-GEO-GEN-UNIVERSE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-GEN-UNIVERSE-MT01",
+      "GS1-GEO-GEN-UNIVERSE-MT02",
+      "GS1-GEO-GEN-UNIVERSE-MT03",
+      "GS1-GEO-GEN-UNIVERSE-MT04",
+      "GS1-GEO-GEN-UNIVERSE-MT05"
+    ],
+    "primaryNodeId": "GS1-GEO-GEN-UNIVERSE-MT01"
+  },
+  "GS1-GEO-GEN-EARTH-EVOLUTION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-GEN-EARTH-EVOLUTION-MT01",
+      "GS1-GEO-GEN-EARTH-EVOLUTION-MT02",
+      "GS1-GEO-GEN-EARTH-EVOLUTION-MT03",
+      "GS1-GEO-GEN-EARTH-EVOLUTION-MT04",
+      "GS1-GEO-GEN-EARTH-EVOLUTION-MT05"
+    ],
+    "primaryNodeId": "GS1-GEO-GEN-EARTH-EVOLUTION-MT01"
+  },
+  "GS1-GEO-GEN-LATLON": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-GEN-LATLON-MT01",
+      "GS1-GEO-GEN-LATLON-MT02",
+      "GS1-GEO-GEN-LATLON-MT03",
+      "GS1-GEO-GEN-LATLON-MT04",
+      "GS1-GEO-GEN-LATLON-MT05"
+    ],
+    "primaryNodeId": "GS1-GEO-GEN-LATLON-MT01"
+  },
+  "GS1-GEO-GEN-MAGNETIC": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "GS1-GEO-GEN-MAGNETIC-MT01"
+    ],
+    "primaryNodeId": "GS1-GEO-GEN-MAGNETIC-MT01"
+  },
+  "GS1-GEO-GM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-GM-ENDO-EXO-MT01",
+      "GS1-GEO-GM-ENDO-EXO-MT02",
+      "GS1-GEO-GM-ENDO-EXO-MT03",
+      "GS1-GEO-GM-EQ-VOL-MT01",
+      "GS1-GEO-GM-EQ-VOL-MT02",
+      "GS1-GEO-GM-EQ-VOL-MT03",
+      "GS1-GEO-GM-EQ-VOL-MT04",
+      "GS1-GEO-GM-INTERIOR-MT01",
+      "GS1-GEO-GM-INTERIOR-MT02",
+      "GS1-GEO-GM-INTERIOR-MT03",
+      "GS1-GEO-GM-LANDFORMS-MT01",
+      "GS1-GEO-GM-LANDFORMS-MT02",
+      "GS1-GEO-GM-LANDFORMS-MT03",
+      "GS1-GEO-GM-LANDFORMS-MT04",
+      "GS1-GEO-GM-LANDFORMS-MT05",
+      "GS1-GEO-GM-MINERALS-ROCKS-MT01",
+      "GS1-GEO-GM-MINERALS-ROCKS-MT02",
+      "GS1-GEO-GM-MINERALS-ROCKS-MT03",
+      "GS1-GEO-GM-MINERALS-ROCKS-MT04",
+      "GS1-GEO-GM-MINERALS-ROCKS-MT05",
+      "GS1-GEO-GM-MINERALS-ROCKS-MT06",
+      "GS1-GEO-GM-PLATE-MT01",
+      "GS1-GEO-GM-PLATE-MT02",
+      "GS1-GEO-GM-PLATE-MT03",
+      "GS1-GEO-GM-PLATE-MT04",
+      "GS1-GEO-GM-WEATHERING-SOIL-MT01",
+      "GS1-GEO-GM-WEATHERING-SOIL-MT02",
+      "GS1-GEO-GM-WEATHERING-SOIL-MT03",
+      "GS1-GEO-GM-WORLD-FACTS-MT01"
+    ],
+    "primaryNodeId": "GS1-GEO-GM-ENDO-EXO-MT01"
+  },
+  "GS1-GEO-GM-INTERIOR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-GM-INTERIOR-MT01",
+      "GS1-GEO-GM-INTERIOR-MT02",
+      "GS1-GEO-GM-INTERIOR-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-GM-INTERIOR-MT01"
+  },
+  "GS1-GEO-GM-MINERALS-ROCKS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-GM-MINERALS-ROCKS-MT01",
+      "GS1-GEO-GM-MINERALS-ROCKS-MT02",
+      "GS1-GEO-GM-MINERALS-ROCKS-MT03",
+      "GS1-GEO-GM-MINERALS-ROCKS-MT04",
+      "GS1-GEO-GM-MINERALS-ROCKS-MT05",
+      "GS1-GEO-GM-MINERALS-ROCKS-MT06"
+    ],
+    "primaryNodeId": "GS1-GEO-GM-MINERALS-ROCKS-MT01"
+  },
+  "GS1-GEO-GM-ENDO-EXO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-GM-ENDO-EXO-MT01",
+      "GS1-GEO-GM-ENDO-EXO-MT02",
+      "GS1-GEO-GM-ENDO-EXO-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-GM-ENDO-EXO-MT01"
+  },
+  "GS1-GEO-GM-EQ-VOL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-GM-EQ-VOL-MT01",
+      "GS1-GEO-GM-EQ-VOL-MT02",
+      "GS1-GEO-GM-EQ-VOL-MT03",
+      "GS1-GEO-GM-EQ-VOL-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-GM-EQ-VOL-MT01"
+  },
+  "GS1-GEO-GM-PLATE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-GM-PLATE-MT01",
+      "GS1-GEO-GM-PLATE-MT02",
+      "GS1-GEO-GM-PLATE-MT03",
+      "GS1-GEO-GM-PLATE-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-GM-PLATE-MT01"
+  },
+  "GS1-GEO-GM-LANDFORMS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-GM-LANDFORMS-MT01",
+      "GS1-GEO-GM-LANDFORMS-MT02",
+      "GS1-GEO-GM-LANDFORMS-MT03",
+      "GS1-GEO-GM-LANDFORMS-MT04",
+      "GS1-GEO-GM-LANDFORMS-MT05"
+    ],
+    "primaryNodeId": "GS1-GEO-GM-LANDFORMS-MT01"
+  },
+  "GS1-GEO-GM-WEATHERING-SOIL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-GM-WEATHERING-SOIL-MT01",
+      "GS1-GEO-GM-WEATHERING-SOIL-MT02",
+      "GS1-GEO-GM-WEATHERING-SOIL-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-GM-WEATHERING-SOIL-MT01"
+  },
+  "GS1-GEO-GM-WORLD-FACTS": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "GS1-GEO-GM-WORLD-FACTS-MT01"
+    ],
+    "primaryNodeId": "GS1-GEO-GM-WORLD-FACTS-MT01"
+  },
+  "GS1-GEO-OCE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-OCE-HYDRO-MT01",
+      "GS1-GEO-OCE-MOTIONS-MT01",
+      "GS1-GEO-OCE-MOTIONS-MT02",
+      "GS1-GEO-OCE-MOTIONS-MT03",
+      "GS1-GEO-OCE-RELIEF-MT01",
+      "GS1-GEO-OCE-RELIEF-MT02",
+      "GS1-GEO-OCE-RELIEF-MT03",
+      "GS1-GEO-OCE-RELIEF-MT04",
+      "GS1-GEO-OCE-RESOURCES-MT01",
+      "GS1-GEO-OCE-RESOURCES-MT02",
+      "GS1-GEO-OCE-RESOURCES-MT03",
+      "GS1-GEO-OCE-RESOURCES-MT04",
+      "GS1-GEO-OCE-TEMP-SAL-MT01",
+      "GS1-GEO-OCE-TEMP-SAL-MT02",
+      "GS1-GEO-OCE-TEMP-SAL-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-OCE-HYDRO-MT01"
+  },
+  "GS1-GEO-OCE-HYDRO": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "GS1-GEO-OCE-HYDRO-MT01"
+    ],
+    "primaryNodeId": "GS1-GEO-OCE-HYDRO-MT01"
+  },
+  "GS1-GEO-OCE-RELIEF": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-OCE-RELIEF-MT01",
+      "GS1-GEO-OCE-RELIEF-MT02",
+      "GS1-GEO-OCE-RELIEF-MT03",
+      "GS1-GEO-OCE-RELIEF-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-OCE-RELIEF-MT01"
+  },
+  "GS1-GEO-OCE-TEMP-SAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-OCE-TEMP-SAL-MT01",
+      "GS1-GEO-OCE-TEMP-SAL-MT02",
+      "GS1-GEO-OCE-TEMP-SAL-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-OCE-TEMP-SAL-MT01"
+  },
+  "GS1-GEO-OCE-MOTIONS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-OCE-MOTIONS-MT01",
+      "GS1-GEO-OCE-MOTIONS-MT02",
+      "GS1-GEO-OCE-MOTIONS-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-OCE-MOTIONS-MT01"
+  },
+  "GS1-GEO-OCE-RESOURCES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-OCE-RESOURCES-MT01",
+      "GS1-GEO-OCE-RESOURCES-MT02",
+      "GS1-GEO-OCE-RESOURCES-MT03",
+      "GS1-GEO-OCE-RESOURCES-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-OCE-RESOURCES-MT01"
+  },
+  "GS1-GEO-CLIM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-CLIM-ATM-MT01",
+      "GS1-GEO-CLIM-INSOLATION-MT01",
+      "GS1-GEO-CLIM-INSOLATION-MT02",
+      "GS1-GEO-CLIM-INSOLATION-MT03",
+      "GS1-GEO-CLIM-KOPPEN-MT01",
+      "GS1-GEO-CLIM-KOPPEN-MT02",
+      "GS1-GEO-CLIM-PRECIP-MT01",
+      "GS1-GEO-CLIM-PRECIP-MT02",
+      "GS1-GEO-CLIM-PRECIP-MT03",
+      "GS1-GEO-CLIM-PRECIP-MT04",
+      "GS1-GEO-CLIM-PRESSURE-WINDS-MT01",
+      "GS1-GEO-CLIM-PRESSURE-WINDS-MT02",
+      "GS1-GEO-CLIM-PRESSURE-WINDS-MT03",
+      "GS1-GEO-CLIM-SYSTEMS-MT01",
+      "GS1-GEO-CLIM-SYSTEMS-MT02",
+      "GS1-GEO-CLIM-SYSTEMS-MT03",
+      "GS1-GEO-CLIM-SYSTEMS-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-CLIM-ATM-MT01"
+  },
+  "GS1-GEO-CLIM-ATM": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "GS1-GEO-CLIM-ATM-MT01"
+    ],
+    "primaryNodeId": "GS1-GEO-CLIM-ATM-MT01"
+  },
+  "GS1-GEO-CLIM-INSOLATION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-CLIM-INSOLATION-MT01",
+      "GS1-GEO-CLIM-INSOLATION-MT02",
+      "GS1-GEO-CLIM-INSOLATION-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-CLIM-INSOLATION-MT01"
+  },
+  "GS1-GEO-CLIM-PRESSURE-WINDS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-CLIM-PRESSURE-WINDS-MT01",
+      "GS1-GEO-CLIM-PRESSURE-WINDS-MT02",
+      "GS1-GEO-CLIM-PRESSURE-WINDS-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-CLIM-PRESSURE-WINDS-MT01"
+  },
+  "GS1-GEO-CLIM-SYSTEMS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-CLIM-SYSTEMS-MT01",
+      "GS1-GEO-CLIM-SYSTEMS-MT02",
+      "GS1-GEO-CLIM-SYSTEMS-MT03",
+      "GS1-GEO-CLIM-SYSTEMS-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-CLIM-SYSTEMS-MT01"
+  },
+  "GS1-GEO-CLIM-PRECIP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-CLIM-PRECIP-MT01",
+      "GS1-GEO-CLIM-PRECIP-MT02",
+      "GS1-GEO-CLIM-PRECIP-MT03",
+      "GS1-GEO-CLIM-PRECIP-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-CLIM-PRECIP-MT01"
+  },
+  "GS1-GEO-CLIM-KOPPEN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-CLIM-KOPPEN-MT01",
+      "GS1-GEO-CLIM-KOPPEN-MT02"
+    ],
+    "primaryNodeId": "GS1-GEO-CLIM-KOPPEN-MT01"
+  },
+  "GS1-GEO-BIO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-BIO-SOIL-MT01",
+      "GS1-GEO-BIO-SOIL-MT02",
+      "GS1-GEO-BIO-SOIL-MT03",
+      "GS1-GEO-BIO-SOIL-MT04",
+      "GS1-GEO-BIO-VEG-MT01",
+      "GS1-GEO-BIO-VEG-MT02",
+      "GS1-GEO-BIO-VEG-MT03",
+      "GS1-GEO-BIO-VEG-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-BIO-SOIL-MT01"
+  },
+  "GS1-GEO-BIO-SOIL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-BIO-SOIL-MT01",
+      "GS1-GEO-BIO-SOIL-MT02",
+      "GS1-GEO-BIO-SOIL-MT03",
+      "GS1-GEO-BIO-SOIL-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-BIO-SOIL-MT01"
+  },
+  "GS1-GEO-BIO-VEG": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-BIO-VEG-MT01",
+      "GS1-GEO-BIO-VEG-MT02",
+      "GS1-GEO-BIO-VEG-MT03",
+      "GS1-GEO-BIO-VEG-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-BIO-VEG-MT01"
+  },
+  "GS1-GEO-HEW": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-HEW-ACTIVITIES-MT01",
+      "GS1-GEO-HEW-ACTIVITIES-MT02",
+      "GS1-GEO-HEW-ACTIVITIES-MT03",
+      "GS1-GEO-HEW-POP-MT01",
+      "GS1-GEO-HEW-POP-MT02",
+      "GS1-GEO-HEW-POP-MT03",
+      "GS1-GEO-HEW-POP-MT04",
+      "GS1-GEO-HEW-SETTLEMENTS-MT01",
+      "GS1-GEO-HEW-SETTLEMENTS-MT02",
+      "GS1-GEO-HEW-TRANSPORT-TRADE-MT01",
+      "GS1-GEO-HEW-TRANSPORT-TRADE-MT02",
+      "GS1-GEO-HEW-TRANSPORT-TRADE-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-HEW-ACTIVITIES-MT01"
+  },
+  "GS1-GEO-HEW-POP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-HEW-POP-MT01",
+      "GS1-GEO-HEW-POP-MT02",
+      "GS1-GEO-HEW-POP-MT03",
+      "GS1-GEO-HEW-POP-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-HEW-POP-MT01"
+  },
+  "GS1-GEO-HEW-ACTIVITIES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-HEW-ACTIVITIES-MT01",
+      "GS1-GEO-HEW-ACTIVITIES-MT02",
+      "GS1-GEO-HEW-ACTIVITIES-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-HEW-ACTIVITIES-MT01"
+  },
+  "GS1-GEO-HEW-TRANSPORT-TRADE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-HEW-TRANSPORT-TRADE-MT01",
+      "GS1-GEO-HEW-TRANSPORT-TRADE-MT02",
+      "GS1-GEO-HEW-TRANSPORT-TRADE-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-HEW-TRANSPORT-TRADE-MT01"
+  },
+  "GS1-GEO-HEW-SETTLEMENTS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-HEW-SETTLEMENTS-MT01",
+      "GS1-GEO-HEW-SETTLEMENTS-MT02"
+    ],
+    "primaryNodeId": "GS1-GEO-HEW-SETTLEMENTS-MT01"
+  },
+  "GS1-GEO-IND": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-IND-AGRI-MT01",
+      "GS1-GEO-IND-AGRI-MT02",
+      "GS1-GEO-IND-AGRI-MT03",
+      "GS1-GEO-IND-AGRI-MT04",
+      "GS1-GEO-IND-CLIMATE-MT01",
+      "GS1-GEO-IND-CLIMATE-MT02",
+      "GS1-GEO-IND-CLIMATE-MT03",
+      "GS1-GEO-IND-CLIMATE-MT04",
+      "GS1-GEO-IND-DRAINAGE-MT01",
+      "GS1-GEO-IND-DRAINAGE-MT02",
+      "GS1-GEO-IND-PHYSIO-MT01",
+      "GS1-GEO-IND-PHYSIO-MT02",
+      "GS1-GEO-IND-POP-URBAN-MT01",
+      "GS1-GEO-IND-POP-URBAN-MT02",
+      "GS1-GEO-IND-POP-URBAN-MT03",
+      "GS1-GEO-IND-RESOURCES-MT01",
+      "GS1-GEO-IND-RESOURCES-MT02",
+      "GS1-GEO-IND-RESOURCES-MT03",
+      "GS1-GEO-IND-SOILS-VEG-MT01",
+      "GS1-GEO-IND-SOILS-VEG-MT02"
+    ],
+    "primaryNodeId": "GS1-GEO-IND-AGRI-MT01"
+  },
+  "GS1-GEO-IND-PHYSIO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-IND-PHYSIO-MT01",
+      "GS1-GEO-IND-PHYSIO-MT02"
+    ],
+    "primaryNodeId": "GS1-GEO-IND-PHYSIO-MT01"
+  },
+  "GS1-GEO-IND-DRAINAGE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-IND-DRAINAGE-MT01",
+      "GS1-GEO-IND-DRAINAGE-MT02"
+    ],
+    "primaryNodeId": "GS1-GEO-IND-DRAINAGE-MT01"
+  },
+  "GS1-GEO-IND-CLIMATE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-IND-CLIMATE-MT01",
+      "GS1-GEO-IND-CLIMATE-MT02",
+      "GS1-GEO-IND-CLIMATE-MT03",
+      "GS1-GEO-IND-CLIMATE-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-IND-CLIMATE-MT01"
+  },
+  "GS1-GEO-IND-SOILS-VEG": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-IND-SOILS-VEG-MT01",
+      "GS1-GEO-IND-SOILS-VEG-MT02"
+    ],
+    "primaryNodeId": "GS1-GEO-IND-SOILS-VEG-MT01"
+  },
+  "GS1-GEO-IND-POP-URBAN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-IND-POP-URBAN-MT01",
+      "GS1-GEO-IND-POP-URBAN-MT02",
+      "GS1-GEO-IND-POP-URBAN-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-IND-POP-URBAN-MT01"
+  },
+  "GS1-GEO-IND-RESOURCES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-IND-RESOURCES-MT01",
+      "GS1-GEO-IND-RESOURCES-MT02",
+      "GS1-GEO-IND-RESOURCES-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-IND-RESOURCES-MT01"
+  },
+  "GS1-GEO-IND-AGRI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-IND-AGRI-MT01",
+      "GS1-GEO-IND-AGRI-MT02",
+      "GS1-GEO-IND-AGRI-MT03",
+      "GS1-GEO-IND-AGRI-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-IND-AGRI-MT01"
+  },
+  "GS1-GEO-MAINS-ECOHUM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-MAINS-AGRI-MT01",
+      "GS1-GEO-MAINS-AGRI-MT02",
+      "GS1-GEO-MAINS-AGRI-MT03",
+      "GS1-GEO-MAINS-AGRI-MT04",
+      "GS1-GEO-MAINS-INDUSTRY-MT01",
+      "GS1-GEO-MAINS-INDUSTRY-MT02",
+      "GS1-GEO-MAINS-INDUSTRY-MT03",
+      "GS1-GEO-MAINS-RESOURCES-MT01",
+      "GS1-GEO-MAINS-RESOURCES-MT02",
+      "GS1-GEO-MAINS-RESOURCES-MT03",
+      "GS1-GEO-MAINS-RESOURCES-MT04",
+      "GS1-GEO-MAINS-RESOURCES-MT05",
+      "GS1-GEO-MAINS-TRANSPORT-MT01",
+      "GS1-GEO-MAINS-TRANSPORT-MT02",
+      "GS1-GEO-MAINS-TRANSPORT-MT03",
+      "GS1-GEO-MAINS-URBAN-MT01",
+      "GS1-GEO-MAINS-URBAN-MT02"
+    ],
+    "primaryNodeId": "GS1-GEO-MAINS-AGRI-MT01"
+  },
+  "GS1-GEO-MAINS-RESOURCES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-MAINS-RESOURCES-MT01",
+      "GS1-GEO-MAINS-RESOURCES-MT02",
+      "GS1-GEO-MAINS-RESOURCES-MT03",
+      "GS1-GEO-MAINS-RESOURCES-MT04",
+      "GS1-GEO-MAINS-RESOURCES-MT05"
+    ],
+    "primaryNodeId": "GS1-GEO-MAINS-RESOURCES-MT01"
+  },
+  "GS1-GEO-MAINS-AGRI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-MAINS-AGRI-MT01",
+      "GS1-GEO-MAINS-AGRI-MT02",
+      "GS1-GEO-MAINS-AGRI-MT03",
+      "GS1-GEO-MAINS-AGRI-MT04"
+    ],
+    "primaryNodeId": "GS1-GEO-MAINS-AGRI-MT01"
+  },
+  "GS1-GEO-MAINS-INDUSTRY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-MAINS-INDUSTRY-MT01",
+      "GS1-GEO-MAINS-INDUSTRY-MT02",
+      "GS1-GEO-MAINS-INDUSTRY-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-MAINS-INDUSTRY-MT01"
+  },
+  "GS1-GEO-MAINS-TRANSPORT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-MAINS-TRANSPORT-MT01",
+      "GS1-GEO-MAINS-TRANSPORT-MT02",
+      "GS1-GEO-MAINS-TRANSPORT-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-MAINS-TRANSPORT-MT01"
+  },
+  "GS1-GEO-MAINS-URBAN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-MAINS-URBAN-MT01",
+      "GS1-GEO-MAINS-URBAN-MT02"
+    ],
+    "primaryNodeId": "GS1-GEO-MAINS-URBAN-MT01"
+  },
+  "GS1-GEO-PRE-REGIONAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+      "GS1-GEO-PRE-REGIONAL-PLACES-MT02",
+      "GS1-GEO-PRE-REGIONAL-PLACES-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01"
+  },
+  "GS1-GEO-PRE-REGIONAL-PLACES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+      "GS1-GEO-PRE-REGIONAL-PLACES-MT02",
+      "GS1-GEO-PRE-REGIONAL-PLACES-MT03"
+    ],
+    "primaryNodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01"
+  },
+  "GS1-SOC-UPSC": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-UPSC-DIVERSITY-MT01",
+      "GS1-SOC-UPSC-DIVERSITY-MT02",
+      "GS1-SOC-UPSC-DIVERSITY-MT03",
+      "GS1-SOC-UPSC-EMPOWER-MT01",
+      "GS1-SOC-UPSC-EMPOWER-MT02",
+      "GS1-SOC-UPSC-EMPOWER-MT03",
+      "GS1-SOC-UPSC-EMPOWER-MT04",
+      "GS1-SOC-UPSC-GLOBAL-MT01",
+      "GS1-SOC-UPSC-GLOBAL-MT02",
+      "GS1-SOC-UPSC-GLOBAL-MT03",
+      "GS1-SOC-UPSC-GLOBAL-MT04",
+      "GS1-SOC-UPSC-GLOBAL-MT05",
+      "GS1-SOC-UPSC-INTEGRATION-MT01",
+      "GS1-SOC-UPSC-INTEGRATION-MT02",
+      "GS1-SOC-UPSC-INTEGRATION-MT03",
+      "GS1-SOC-UPSC-INTEGRATION-MT04",
+      "GS1-SOC-UPSC-INTEGRATION-MT05",
+      "GS1-SOC-UPSC-SALIENT-MT01",
+      "GS1-SOC-UPSC-SALIENT-MT02",
+      "GS1-SOC-UPSC-SALIENT-MT03",
+      "GS1-SOC-UPSC-SALIENT-MT04",
+      "GS1-SOC-UPSC-SALIENT-MT05",
+      "GS1-SOC-UPSC-SOCIALSECTOR-MT01",
+      "GS1-SOC-UPSC-SOCIALSECTOR-MT02",
+      "GS1-SOC-UPSC-SOCIALSECTOR-MT03",
+      "GS1-SOC-UPSC-SOCIALSECTOR-MT04",
+      "GS1-SOC-UPSC-VULNERABLE-MT01",
+      "GS1-SOC-UPSC-VULNERABLE-MT02",
+      "GS1-SOC-UPSC-VULNERABLE-MT03",
+      "GS1-SOC-UPSC-VULNERABLE-MT04",
+      "GS1-SOC-UPSC-WOMEN-MT01",
+      "GS1-SOC-UPSC-WOMEN-MT02",
+      "GS1-SOC-UPSC-WOMEN-MT03",
+      "GS1-SOC-UPSC-WOMEN-MT04",
+      "GS1-SOC-UPSC-WOMEN-MT05"
+    ],
+    "primaryNodeId": "GS1-SOC-UPSC-DIVERSITY-MT01"
+  },
+  "GS1-SOC-UPSC-SALIENT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-UPSC-SALIENT-MT01",
+      "GS1-SOC-UPSC-SALIENT-MT02",
+      "GS1-SOC-UPSC-SALIENT-MT03",
+      "GS1-SOC-UPSC-SALIENT-MT04",
+      "GS1-SOC-UPSC-SALIENT-MT05"
+    ],
+    "primaryNodeId": "GS1-SOC-UPSC-SALIENT-MT01"
+  },
+  "GS1-SOC-UPSC-DIVERSITY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-UPSC-DIVERSITY-MT01",
+      "GS1-SOC-UPSC-DIVERSITY-MT02",
+      "GS1-SOC-UPSC-DIVERSITY-MT03"
+    ],
+    "primaryNodeId": "GS1-SOC-UPSC-DIVERSITY-MT01"
+  },
+  "GS1-SOC-UPSC-GLOBAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-UPSC-GLOBAL-MT01",
+      "GS1-SOC-UPSC-GLOBAL-MT02",
+      "GS1-SOC-UPSC-GLOBAL-MT03",
+      "GS1-SOC-UPSC-GLOBAL-MT04",
+      "GS1-SOC-UPSC-GLOBAL-MT05"
+    ],
+    "primaryNodeId": "GS1-SOC-UPSC-GLOBAL-MT01"
+  },
+  "GS1-SOC-UPSC-INTEGRATION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-UPSC-INTEGRATION-MT01",
+      "GS1-SOC-UPSC-INTEGRATION-MT02",
+      "GS1-SOC-UPSC-INTEGRATION-MT03",
+      "GS1-SOC-UPSC-INTEGRATION-MT04",
+      "GS1-SOC-UPSC-INTEGRATION-MT05"
+    ],
+    "primaryNodeId": "GS1-SOC-UPSC-INTEGRATION-MT01"
+  },
+  "GS1-SOC-UPSC-WOMEN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-UPSC-WOMEN-MT01",
+      "GS1-SOC-UPSC-WOMEN-MT02",
+      "GS1-SOC-UPSC-WOMEN-MT03",
+      "GS1-SOC-UPSC-WOMEN-MT04",
+      "GS1-SOC-UPSC-WOMEN-MT05"
+    ],
+    "primaryNodeId": "GS1-SOC-UPSC-WOMEN-MT01"
+  },
+  "GS1-SOC-UPSC-EMPOWER": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-UPSC-EMPOWER-MT01",
+      "GS1-SOC-UPSC-EMPOWER-MT02",
+      "GS1-SOC-UPSC-EMPOWER-MT03",
+      "GS1-SOC-UPSC-EMPOWER-MT04"
+    ],
+    "primaryNodeId": "GS1-SOC-UPSC-EMPOWER-MT01"
+  },
+  "GS1-SOC-UPSC-VULNERABLE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-UPSC-VULNERABLE-MT01",
+      "GS1-SOC-UPSC-VULNERABLE-MT02",
+      "GS1-SOC-UPSC-VULNERABLE-MT03",
+      "GS1-SOC-UPSC-VULNERABLE-MT04"
+    ],
+    "primaryNodeId": "GS1-SOC-UPSC-VULNERABLE-MT01"
+  },
+  "GS1-SOC-UPSC-SOCIALSECTOR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-UPSC-SOCIALSECTOR-MT01",
+      "GS1-SOC-UPSC-SOCIALSECTOR-MT02",
+      "GS1-SOC-UPSC-SOCIALSECTOR-MT03",
+      "GS1-SOC-UPSC-SOCIALSECTOR-MT04"
+    ],
+    "primaryNodeId": "GS1-SOC-UPSC-SOCIALSECTOR-MT01"
+  },
+  "GS1-SOC-UNITY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-UNITY-CHALLENGES-MT01",
+      "GS1-SOC-UNITY-CHALLENGES-MT02",
+      "GS1-SOC-UNITY-CHALLENGES-MT03",
+      "GS1-SOC-UNITY-CHALLENGES-MT04",
+      "GS1-SOC-UNITY-CHALLENGES-MT05",
+      "GS1-SOC-UNITY-CONCEPT-MT01",
+      "GS1-SOC-UNITY-CONCEPT-MT02",
+      "GS1-SOC-UNITY-CONCEPT-MT03",
+      "GS1-SOC-UNITY-CONCEPT-MT04",
+      "GS1-SOC-UNITY-CONCEPT-MT05"
+    ],
+    "primaryNodeId": "GS1-SOC-UNITY-CHALLENGES-MT01"
+  },
+  "GS1-SOC-UNITY-CONCEPT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-UNITY-CONCEPT-MT01",
+      "GS1-SOC-UNITY-CONCEPT-MT02",
+      "GS1-SOC-UNITY-CONCEPT-MT03",
+      "GS1-SOC-UNITY-CONCEPT-MT04",
+      "GS1-SOC-UNITY-CONCEPT-MT05"
+    ],
+    "primaryNodeId": "GS1-SOC-UNITY-CONCEPT-MT01"
+  },
+  "GS1-SOC-UNITY-CHALLENGES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-UNITY-CHALLENGES-MT01",
+      "GS1-SOC-UNITY-CHALLENGES-MT02",
+      "GS1-SOC-UNITY-CHALLENGES-MT03",
+      "GS1-SOC-UNITY-CHALLENGES-MT04",
+      "GS1-SOC-UNITY-CHALLENGES-MT05"
+    ],
+    "primaryNodeId": "GS1-SOC-UNITY-CHALLENGES-MT01"
+  },
+  "GS1-SOC-BASICS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-BASICS-FAMILY-MT01",
+      "GS1-SOC-BASICS-FAMILY-MT02",
+      "GS1-SOC-BASICS-FAMILY-MT03",
+      "GS1-SOC-BASICS-FAMILY-MT04"
+    ],
+    "primaryNodeId": "GS1-SOC-BASICS-FAMILY-MT01"
+  },
+  "GS1-SOC-BASICS-FAMILY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-BASICS-FAMILY-MT01",
+      "GS1-SOC-BASICS-FAMILY-MT02",
+      "GS1-SOC-BASICS-FAMILY-MT03",
+      "GS1-SOC-BASICS-FAMILY-MT04"
+    ],
+    "primaryNodeId": "GS1-SOC-BASICS-FAMILY-MT01"
+  },
+  "GS1-SOC-EMPOWER": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-EMPOWER-CONST-MT01",
+      "GS1-SOC-EMPOWER-CONST-MT02",
+      "GS1-SOC-EMPOWER-MINOR-MT01",
+      "GS1-SOC-EMPOWER-MINOR-MT02",
+      "GS1-SOC-EMPOWER-SC-MT01",
+      "GS1-SOC-EMPOWER-SC-MT02",
+      "GS1-SOC-EMPOWER-SC-MT03",
+      "GS1-SOC-EMPOWER-SC-MT04",
+      "GS1-SOC-EMPOWER-TRIBAL-MT01",
+      "GS1-SOC-EMPOWER-TRIBAL-MT02",
+      "GS1-SOC-EMPOWER-TRIBAL-MT03",
+      "GS1-SOC-EMPOWER-TRIBAL-MT04"
+    ],
+    "primaryNodeId": "GS1-SOC-EMPOWER-CONST-MT01"
+  },
+  "GS1-SOC-EMPOWER-CONST": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-EMPOWER-CONST-MT01",
+      "GS1-SOC-EMPOWER-CONST-MT02"
+    ],
+    "primaryNodeId": "GS1-SOC-EMPOWER-CONST-MT01"
+  },
+  "GS1-SOC-EMPOWER-SC": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-EMPOWER-SC-MT01",
+      "GS1-SOC-EMPOWER-SC-MT02",
+      "GS1-SOC-EMPOWER-SC-MT03",
+      "GS1-SOC-EMPOWER-SC-MT04"
+    ],
+    "primaryNodeId": "GS1-SOC-EMPOWER-SC-MT01"
+  },
+  "GS1-SOC-EMPOWER-TRIBAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-EMPOWER-TRIBAL-MT01",
+      "GS1-SOC-EMPOWER-TRIBAL-MT02",
+      "GS1-SOC-EMPOWER-TRIBAL-MT03",
+      "GS1-SOC-EMPOWER-TRIBAL-MT04"
+    ],
+    "primaryNodeId": "GS1-SOC-EMPOWER-TRIBAL-MT01"
+  },
+  "GS1-SOC-EMPOWER-MINOR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-EMPOWER-MINOR-MT01",
+      "GS1-SOC-EMPOWER-MINOR-MT02"
+    ],
+    "primaryNodeId": "GS1-SOC-EMPOWER-MINOR-MT01"
+  },
+  "GS1-SOC-WOMEN-ISSUES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-WOMEN-LAWS-MT01",
+      "GS1-SOC-WOMEN-LAWS-MT02",
+      "GS1-SOC-WOMEN-LAWS-MT03",
+      "GS1-SOC-WOMEN-LAWS-MT04",
+      "GS1-SOC-WOMEN-LAWS-MT05",
+      "GS1-SOC-WOMEN-LAWS-MT06"
+    ],
+    "primaryNodeId": "GS1-SOC-WOMEN-LAWS-MT01"
+  },
+  "GS1-SOC-WOMEN-LAWS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-WOMEN-LAWS-MT01",
+      "GS1-SOC-WOMEN-LAWS-MT02",
+      "GS1-SOC-WOMEN-LAWS-MT03",
+      "GS1-SOC-WOMEN-LAWS-MT04",
+      "GS1-SOC-WOMEN-LAWS-MT05",
+      "GS1-SOC-WOMEN-LAWS-MT06"
+    ],
+    "primaryNodeId": "GS1-SOC-WOMEN-LAWS-MT01"
+  },
+  "GS1-SOC-DEV": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-DEV-CENSUS-MT01",
+      "GS1-SOC-DEV-CENSUS-MT02",
+      "GS1-SOC-DEV-CENSUS-MT03",
+      "GS1-SOC-DEV-CENSUS-MT04",
+      "GS1-SOC-DEV-CENSUS-MT05",
+      "GS1-SOC-DEV-CENSUS-MT06",
+      "GS1-SOC-DEV-GLOBAL-MT01",
+      "GS1-SOC-DEV-GLOBAL-MT02",
+      "GS1-SOC-DEV-GLOBAL-MT03",
+      "GS1-SOC-DEV-POVERTY-MT01",
+      "GS1-SOC-DEV-POVERTY-MT02",
+      "GS1-SOC-DEV-POVERTY-MT03",
+      "GS1-SOC-DEV-POVERTY-MT04",
+      "GS1-SOC-DEV-POVERTY-MT05",
+      "GS1-SOC-DEV-URBAN-MT01",
+      "GS1-SOC-DEV-URBAN-MT02",
+      "GS1-SOC-DEV-URBAN-MT03",
+      "GS1-SOC-DEV-URBAN-MT04"
+    ],
+    "primaryNodeId": "GS1-SOC-DEV-CENSUS-MT01"
+  },
+  "GS1-SOC-DEV-POVERTY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-DEV-POVERTY-MT01",
+      "GS1-SOC-DEV-POVERTY-MT02",
+      "GS1-SOC-DEV-POVERTY-MT03",
+      "GS1-SOC-DEV-POVERTY-MT04",
+      "GS1-SOC-DEV-POVERTY-MT05"
+    ],
+    "primaryNodeId": "GS1-SOC-DEV-POVERTY-MT01"
+  },
+  "GS1-SOC-DEV-GLOBAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-DEV-GLOBAL-MT01",
+      "GS1-SOC-DEV-GLOBAL-MT02",
+      "GS1-SOC-DEV-GLOBAL-MT03"
+    ],
+    "primaryNodeId": "GS1-SOC-DEV-GLOBAL-MT01"
+  },
+  "GS1-SOC-DEV-URBAN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-DEV-URBAN-MT01",
+      "GS1-SOC-DEV-URBAN-MT02",
+      "GS1-SOC-DEV-URBAN-MT03",
+      "GS1-SOC-DEV-URBAN-MT04"
+    ],
+    "primaryNodeId": "GS1-SOC-DEV-URBAN-MT01"
+  },
+  "GS1-SOC-DEV-CENSUS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-DEV-CENSUS-MT01",
+      "GS1-SOC-DEV-CENSUS-MT02",
+      "GS1-SOC-DEV-CENSUS-MT03",
+      "GS1-SOC-DEV-CENSUS-MT04",
+      "GS1-SOC-DEV-CENSUS-MT05",
+      "GS1-SOC-DEV-CENSUS-MT06"
+    ],
+    "primaryNodeId": "GS1-SOC-DEV-CENSUS-MT01"
+  },
+  "GS1-SOC-CONTEMP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-CONTEMP-CHILD-MT01",
+      "GS1-SOC-CONTEMP-CHILD-MT02",
+      "GS1-SOC-CONTEMP-CHILD-MT03",
+      "GS1-SOC-CONTEMP-CHILD-MT04",
+      "GS1-SOC-CONTEMP-CHILD-MT05",
+      "GS1-SOC-CONTEMP-OTHER-MT01",
+      "GS1-SOC-CONTEMP-OTHER-MT02",
+      "GS1-SOC-CONTEMP-OTHER-MT03",
+      "GS1-SOC-CONTEMP-OTHER-MT04",
+      "GS1-SOC-CONTEMP-OTHER-MT05",
+      "GS1-SOC-CONTEMP-OTHER-MT06",
+      "GS1-SOC-CONTEMP-OTHER-MT07",
+      "GS1-SOC-CONTEMP-OTHER-MT08",
+      "GS1-SOC-CONTEMP-OTHER-MT09"
+    ],
+    "primaryNodeId": "GS1-SOC-CONTEMP-CHILD-MT01"
+  },
+  "GS1-SOC-CONTEMP-CHILD": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-CONTEMP-CHILD-MT01",
+      "GS1-SOC-CONTEMP-CHILD-MT02",
+      "GS1-SOC-CONTEMP-CHILD-MT03",
+      "GS1-SOC-CONTEMP-CHILD-MT04",
+      "GS1-SOC-CONTEMP-CHILD-MT05"
+    ],
+    "primaryNodeId": "GS1-SOC-CONTEMP-CHILD-MT01"
+  },
+  "GS1-SOC-CONTEMP-OTHER": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS1-SOC-CONTEMP-OTHER-MT01",
+      "GS1-SOC-CONTEMP-OTHER-MT02",
+      "GS1-SOC-CONTEMP-OTHER-MT03",
+      "GS1-SOC-CONTEMP-OTHER-MT04",
+      "GS1-SOC-CONTEMP-OTHER-MT05",
+      "GS1-SOC-CONTEMP-OTHER-MT06",
+      "GS1-SOC-CONTEMP-OTHER-MT07",
+      "GS1-SOC-CONTEMP-OTHER-MT08",
+      "GS1-SOC-CONTEMP-OTHER-MT09"
+    ],
+    "primaryNodeId": "GS1-SOC-CONTEMP-OTHER-MT01"
+  },
+  "GS2-POL-EVOL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-EVOL-CA-MT01",
+      "GS2-POL-EVOL-CA-MT02",
+      "GS2-POL-EVOL-CA-MT03",
+      "GS2-POL-EVOL-COMPANY-MT01",
+      "GS2-POL-EVOL-COMPANY-MT02",
+      "GS2-POL-EVOL-COMPANY-MT03",
+      "GS2-POL-EVOL-COMPANY-MT04",
+      "GS2-POL-EVOL-CROWN-MT01",
+      "GS2-POL-EVOL-CROWN-MT02",
+      "GS2-POL-EVOL-CROWN-MT03",
+      "GS2-POL-EVOL-CROWN-MT04",
+      "GS2-POL-EVOL-CROWN-MT05"
+    ],
+    "primaryNodeId": "GS2-POL-EVOL-CA-MT01"
+  },
+  "GS2-POL-EVOL-COMPANY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-EVOL-COMPANY-MT01",
+      "GS2-POL-EVOL-COMPANY-MT02",
+      "GS2-POL-EVOL-COMPANY-MT03",
+      "GS2-POL-EVOL-COMPANY-MT04"
+    ],
+    "primaryNodeId": "GS2-POL-EVOL-COMPANY-MT01"
+  },
+  "GS2-POL-EVOL-CROWN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-EVOL-CROWN-MT01",
+      "GS2-POL-EVOL-CROWN-MT02",
+      "GS2-POL-EVOL-CROWN-MT03",
+      "GS2-POL-EVOL-CROWN-MT04",
+      "GS2-POL-EVOL-CROWN-MT05"
+    ],
+    "primaryNodeId": "GS2-POL-EVOL-CROWN-MT01"
+  },
+  "GS2-POL-EVOL-CA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-EVOL-CA-MT01",
+      "GS2-POL-EVOL-CA-MT02",
+      "GS2-POL-EVOL-CA-MT03"
+    ],
+    "primaryNodeId": "GS2-POL-EVOL-CA-MT01"
+  },
+  "GS2-POL-FEATURES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-AMEND-MT01",
+      "GS2-POL-AMEND-MT02",
+      "GS2-POL-AMEND-MT03",
+      "GS2-POL-AMEND-MT04",
+      "GS2-POL-DOCTRINES-MT01",
+      "GS2-POL-DOCTRINES-MT02",
+      "GS2-POL-DOCTRINES-MT03",
+      "GS2-POL-DOCTRINES-MT04",
+      "GS2-POL-PREAMBLE-MT01",
+      "GS2-POL-PREAMBLE-MT02",
+      "GS2-POL-PREAMBLE-MT03",
+      "GS2-POL-PREAMBLE-MT04"
+    ],
+    "primaryNodeId": "GS2-POL-AMEND-MT01"
+  },
+  "GS2-POL-PREAMBLE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-PREAMBLE-MT01",
+      "GS2-POL-PREAMBLE-MT02",
+      "GS2-POL-PREAMBLE-MT03",
+      "GS2-POL-PREAMBLE-MT04"
+    ],
+    "primaryNodeId": "GS2-POL-PREAMBLE-MT01"
+  },
+  "GS2-POL-AMEND": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-AMEND-MT01",
+      "GS2-POL-AMEND-MT02",
+      "GS2-POL-AMEND-MT03",
+      "GS2-POL-AMEND-MT04"
+    ],
+    "primaryNodeId": "GS2-POL-AMEND-MT01"
+  },
+  "GS2-POL-DOCTRINES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-DOCTRINES-MT01",
+      "GS2-POL-DOCTRINES-MT02",
+      "GS2-POL-DOCTRINES-MT03",
+      "GS2-POL-DOCTRINES-MT04"
+    ],
+    "primaryNodeId": "GS2-POL-DOCTRINES-MT01"
+  },
+  "GS2-POL-UNION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-CITIZEN-MT01",
+      "GS2-POL-CITIZEN-MT02",
+      "GS2-POL-CITIZEN-MT03",
+      "GS2-POL-CITIZEN-MT04",
+      "GS2-POL-CITIZEN-MT05",
+      "GS2-POL-UTERR-MT01",
+      "GS2-POL-UTERR-MT02",
+      "GS2-POL-UTERR-MT03"
+    ],
+    "primaryNodeId": "GS2-POL-CITIZEN-MT01"
+  },
+  "GS2-POL-UTERR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-UTERR-MT01",
+      "GS2-POL-UTERR-MT02",
+      "GS2-POL-UTERR-MT03"
+    ],
+    "primaryNodeId": "GS2-POL-UTERR-MT01"
+  },
+  "GS2-POL-CITIZEN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-CITIZEN-MT01",
+      "GS2-POL-CITIZEN-MT02",
+      "GS2-POL-CITIZEN-MT03",
+      "GS2-POL-CITIZEN-MT04",
+      "GS2-POL-CITIZEN-MT05"
+    ],
+    "primaryNodeId": "GS2-POL-CITIZEN-MT01"
+  },
+  "GS2-POL-FR-DPSP-FD": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-DPSP-MT01",
+      "GS2-POL-DPSP-MT02",
+      "GS2-POL-DPSP-MT03",
+      "GS2-POL-FD-MT01",
+      "GS2-POL-FD-MT02",
+      "GS2-POL-FD-MT03",
+      "GS2-POL-FD-MT04",
+      "GS2-POL-FR-MT01",
+      "GS2-POL-FR-MT02",
+      "GS2-POL-FR-MT03",
+      "GS2-POL-FR-MT04",
+      "GS2-POL-FR-MT05",
+      "GS2-POL-FR-MT06",
+      "GS2-POL-FR-MT07"
+    ],
+    "primaryNodeId": "GS2-POL-DPSP-MT01"
+  },
+  "GS2-POL-FR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-FR-MT01",
+      "GS2-POL-FR-MT02",
+      "GS2-POL-FR-MT03",
+      "GS2-POL-FR-MT04",
+      "GS2-POL-FR-MT05",
+      "GS2-POL-FR-MT06",
+      "GS2-POL-FR-MT07"
+    ],
+    "primaryNodeId": "GS2-POL-FR-MT01"
+  },
+  "GS2-POL-DPSP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-DPSP-MT01",
+      "GS2-POL-DPSP-MT02",
+      "GS2-POL-DPSP-MT03"
+    ],
+    "primaryNodeId": "GS2-POL-DPSP-MT01"
+  },
+  "GS2-POL-FD": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-FD-MT01",
+      "GS2-POL-FD-MT02",
+      "GS2-POL-FD-MT03",
+      "GS2-POL-FD-MT04"
+    ],
+    "primaryNodeId": "GS2-POL-FD-MT01"
+  },
+  "GS2-POL-GOVSYSTEM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-BODIES-MT01",
+      "GS2-POL-CSREL-MT01",
+      "GS2-POL-CSREL-MT02",
+      "GS2-POL-CSREL-MT03",
+      "GS2-POL-EMER-MT01",
+      "GS2-POL-EMER-MT02",
+      "GS2-POL-EMER-MT03",
+      "GS2-POL-EXEC-MT01",
+      "GS2-POL-JUD-MT01",
+      "GS2-POL-LOCAL-MT01",
+      "GS2-POL-PARL-MT01",
+      "GS2-POL-STATE-MT01",
+      "GS2-POL-UTS-MT01"
+    ],
+    "primaryNodeId": "GS2-POL-BODIES-MT01"
+  },
+  "GS2-POL-CSREL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-CSREL-MT01",
+      "GS2-POL-CSREL-MT02",
+      "GS2-POL-CSREL-MT03"
+    ],
+    "primaryNodeId": "GS2-POL-CSREL-MT01"
+  },
+  "GS2-POL-EMER": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-EMER-MT01",
+      "GS2-POL-EMER-MT02",
+      "GS2-POL-EMER-MT03"
+    ],
+    "primaryNodeId": "GS2-POL-EMER-MT01"
+  },
+  "GS2-POL-EXEC": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "GS2-POL-EXEC-MT01"
+    ],
+    "primaryNodeId": "GS2-POL-EXEC-MT01"
+  },
+  "GS2-POL-PARL": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "GS2-POL-PARL-MT01"
+    ],
+    "primaryNodeId": "GS2-POL-PARL-MT01"
+  },
+  "GS2-POL-STATE": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "GS2-POL-STATE-MT01"
+    ],
+    "primaryNodeId": "GS2-POL-STATE-MT01"
+  },
+  "GS2-POL-LOCAL": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "GS2-POL-LOCAL-MT01"
+    ],
+    "primaryNodeId": "GS2-POL-LOCAL-MT01"
+  },
+  "GS2-POL-UTS": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "GS2-POL-UTS-MT01"
+    ],
+    "primaryNodeId": "GS2-POL-UTS-MT01"
+  },
+  "GS2-POL-JUD": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "GS2-POL-JUD-MT01"
+    ],
+    "primaryNodeId": "GS2-POL-JUD-MT01"
+  },
+  "GS2-POL-BODIES": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "GS2-POL-BODIES-MT01"
+    ],
+    "primaryNodeId": "GS2-POL-BODIES-MT01"
+  },
+  "GS2-POL-POLITICS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-ELECTIONS-MT01",
+      "GS2-POL-ELECTIONS-MT02",
+      "GS2-POL-ELECTIONS-MT03"
+    ],
+    "primaryNodeId": "GS2-POL-ELECTIONS-MT01"
+  },
+  "GS2-POL-ELECTIONS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-ELECTIONS-MT01",
+      "GS2-POL-ELECTIONS-MT02",
+      "GS2-POL-ELECTIONS-MT03"
+    ],
+    "primaryNodeId": "GS2-POL-ELECTIONS-MT01"
+  },
+  "GS2-POL-MAINS-FEATURES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-MAINS-AMEND-MT01",
+      "GS2-POL-MAINS-AMEND-MT02",
+      "GS2-POL-MAINS-AMEND-MT03",
+      "GS2-POL-MAINS-AMEND-MT04",
+      "GS2-POL-MAINS-AMEND-MT05",
+      "GS2-POL-MAINS-COMPARE-MT01",
+      "GS2-POL-MAINS-COMPARE-MT02",
+      "GS2-POL-MAINS-COMPARE-MT03",
+      "GS2-POL-MAINS-COMPARE-MT04",
+      "GS2-POL-MAINS-DOCTRINES-MT01",
+      "GS2-POL-MAINS-DOCTRINES-MT02",
+      "GS2-POL-MAINS-DOCTRINES-MT03",
+      "GS2-POL-MAINS-DOCTRINES-MT04",
+      "GS2-POL-MAINS-DOCTRINES-MT05",
+      "GS2-POL-MAINS-DOCTRINES-MT06",
+      "GS2-POL-MAINS-DOCTRINES-MT07",
+      "GS2-POL-MAINS-DOCTRINES-MT08",
+      "GS2-POL-MAINS-DOCTRINES-MT09",
+      "GS2-POL-MAINS-DPSP-UCC-FD-MT01",
+      "GS2-POL-MAINS-DPSP-UCC-FD-MT02",
+      "GS2-POL-MAINS-DPSP-UCC-FD-MT03",
+      "GS2-POL-MAINS-DPSP-UCC-FD-MT04",
+      "GS2-POL-MAINS-DPSP-UCC-FD-MT05",
+      "GS2-POL-MAINS-FR-DEBATES-MT01",
+      "GS2-POL-MAINS-FR-DEBATES-MT02",
+      "GS2-POL-MAINS-FR-DEBATES-MT03",
+      "GS2-POL-MAINS-FR-DEBATES-MT04",
+      "GS2-POL-MAINS-FR-DEBATES-MT05",
+      "GS2-POL-MAINS-FR-DEBATES-MT06",
+      "GS2-POL-MAINS-FR-DEBATES-MT07",
+      "GS2-POL-MAINS-FR-DEBATES-MT08",
+      "GS2-POL-MAINS-FR-DEBATES-MT09",
+      "GS2-POL-MAINS-HIST-MT01",
+      "GS2-POL-MAINS-HIST-MT02",
+      "GS2-POL-MAINS-HIST-MT03",
+      "GS2-POL-MAINS-HIST-MT04",
+      "GS2-POL-MAINS-HIST-MT05",
+      "GS2-POL-MAINS-PRESSURE-MT01",
+      "GS2-POL-MAINS-PRESSURE-MT02",
+      "GS2-POL-MAINS-PRESSURE-MT03",
+      "GS2-POL-MAINS-RPA-ELECT-MT01",
+      "GS2-POL-MAINS-RPA-ELECT-MT02",
+      "GS2-POL-MAINS-RPA-ELECT-MT03",
+      "GS2-POL-MAINS-RPA-ELECT-MT04",
+      "GS2-POL-MAINS-RPA-ELECT-MT05",
+      "GS2-POL-MAINS-RPA-ELECT-MT06",
+      "GS2-POL-MAINS-RPA-ELECT-MT07",
+      "GS2-POL-MAINS-RPA-ELECT-MT08",
+      "GS2-POL-MAINS-RPA-ELECT-MT09",
+      "GS2-POL-MAINS-UTS-MT01",
+      "GS2-POL-MAINS-UTS-MT02",
+      "GS2-POL-MAINS-UTS-MT03",
+      "GS2-POL-MAINS-UTS-MT04",
+      "GS2-POL-MAINS-UTS-MT05",
+      "GS2-POL-MAINS-UTS-MT06",
+      "GS2-POL-MAINS-VULNERABLE-LAWS-MT01",
+      "GS2-POL-MAINS-VULNERABLE-LAWS-MT02",
+      "GS2-POL-MAINS-VULNERABLE-LAWS-MT03",
+      "GS2-POL-MAINS-VULNERABLE-LAWS-MT04"
+    ],
+    "primaryNodeId": "GS2-POL-MAINS-AMEND-MT01"
+  },
+  "GS2-POL-MAINS-HIST": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-MAINS-HIST-MT01",
+      "GS2-POL-MAINS-HIST-MT02",
+      "GS2-POL-MAINS-HIST-MT03",
+      "GS2-POL-MAINS-HIST-MT04",
+      "GS2-POL-MAINS-HIST-MT05"
+    ],
+    "primaryNodeId": "GS2-POL-MAINS-HIST-MT01"
+  },
+  "GS2-POL-MAINS-COMPARE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-MAINS-COMPARE-MT01",
+      "GS2-POL-MAINS-COMPARE-MT02",
+      "GS2-POL-MAINS-COMPARE-MT03",
+      "GS2-POL-MAINS-COMPARE-MT04"
+    ],
+    "primaryNodeId": "GS2-POL-MAINS-COMPARE-MT01"
+  },
+  "GS2-POL-MAINS-AMEND": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-MAINS-AMEND-MT01",
+      "GS2-POL-MAINS-AMEND-MT02",
+      "GS2-POL-MAINS-AMEND-MT03",
+      "GS2-POL-MAINS-AMEND-MT04",
+      "GS2-POL-MAINS-AMEND-MT05"
+    ],
+    "primaryNodeId": "GS2-POL-MAINS-AMEND-MT01"
+  },
+  "GS2-POL-MAINS-FR-DEBATES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-MAINS-FR-DEBATES-MT01",
+      "GS2-POL-MAINS-FR-DEBATES-MT02",
+      "GS2-POL-MAINS-FR-DEBATES-MT03",
+      "GS2-POL-MAINS-FR-DEBATES-MT04",
+      "GS2-POL-MAINS-FR-DEBATES-MT05",
+      "GS2-POL-MAINS-FR-DEBATES-MT06",
+      "GS2-POL-MAINS-FR-DEBATES-MT07",
+      "GS2-POL-MAINS-FR-DEBATES-MT08",
+      "GS2-POL-MAINS-FR-DEBATES-MT09"
+    ],
+    "primaryNodeId": "GS2-POL-MAINS-FR-DEBATES-MT01"
+  },
+  "GS2-POL-MAINS-DPSP-UCC-FD": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-MAINS-DPSP-UCC-FD-MT01",
+      "GS2-POL-MAINS-DPSP-UCC-FD-MT02",
+      "GS2-POL-MAINS-DPSP-UCC-FD-MT03",
+      "GS2-POL-MAINS-DPSP-UCC-FD-MT04",
+      "GS2-POL-MAINS-DPSP-UCC-FD-MT05"
+    ],
+    "primaryNodeId": "GS2-POL-MAINS-DPSP-UCC-FD-MT01"
+  },
+  "GS2-POL-MAINS-UTS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-MAINS-UTS-MT01",
+      "GS2-POL-MAINS-UTS-MT02",
+      "GS2-POL-MAINS-UTS-MT03",
+      "GS2-POL-MAINS-UTS-MT04",
+      "GS2-POL-MAINS-UTS-MT05",
+      "GS2-POL-MAINS-UTS-MT06"
+    ],
+    "primaryNodeId": "GS2-POL-MAINS-UTS-MT01"
+  },
+  "GS2-POL-MAINS-DOCTRINES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-MAINS-DOCTRINES-MT01",
+      "GS2-POL-MAINS-DOCTRINES-MT02",
+      "GS2-POL-MAINS-DOCTRINES-MT03",
+      "GS2-POL-MAINS-DOCTRINES-MT04",
+      "GS2-POL-MAINS-DOCTRINES-MT05",
+      "GS2-POL-MAINS-DOCTRINES-MT06",
+      "GS2-POL-MAINS-DOCTRINES-MT07",
+      "GS2-POL-MAINS-DOCTRINES-MT08",
+      "GS2-POL-MAINS-DOCTRINES-MT09"
+    ],
+    "primaryNodeId": "GS2-POL-MAINS-DOCTRINES-MT01"
+  },
+  "GS2-POL-MAINS-PRESSURE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-MAINS-PRESSURE-MT01",
+      "GS2-POL-MAINS-PRESSURE-MT02",
+      "GS2-POL-MAINS-PRESSURE-MT03"
+    ],
+    "primaryNodeId": "GS2-POL-MAINS-PRESSURE-MT01"
+  },
+  "GS2-POL-MAINS-RPA-ELECT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-MAINS-RPA-ELECT-MT01",
+      "GS2-POL-MAINS-RPA-ELECT-MT02",
+      "GS2-POL-MAINS-RPA-ELECT-MT03",
+      "GS2-POL-MAINS-RPA-ELECT-MT04",
+      "GS2-POL-MAINS-RPA-ELECT-MT05",
+      "GS2-POL-MAINS-RPA-ELECT-MT06",
+      "GS2-POL-MAINS-RPA-ELECT-MT07",
+      "GS2-POL-MAINS-RPA-ELECT-MT08",
+      "GS2-POL-MAINS-RPA-ELECT-MT09"
+    ],
+    "primaryNodeId": "GS2-POL-MAINS-RPA-ELECT-MT01"
+  },
+  "GS2-POL-MAINS-VULNERABLE-LAWS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-POL-MAINS-VULNERABLE-LAWS-MT01",
+      "GS2-POL-MAINS-VULNERABLE-LAWS-MT02",
+      "GS2-POL-MAINS-VULNERABLE-LAWS-MT03",
+      "GS2-POL-MAINS-VULNERABLE-LAWS-MT04"
+    ],
+    "primaryNodeId": "GS2-POL-MAINS-VULNERABLE-LAWS-MT01"
+  },
+  "GS2-GOV-MAINS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-GOV-CIVIL-SERVICES-MT01",
+      "GS2-GOV-CIVIL-SERVICES-MT02",
+      "GS2-GOV-CIVIL-SERVICES-MT03",
+      "GS2-GOV-CIVIL-SERVICES-MT04",
+      "GS2-GOV-CIVIL-SERVICES-MT05",
+      "GS2-GOV-CIVIL-SERVICES-MT06",
+      "GS2-GOV-CIVIL-SERVICES-MT07",
+      "GS2-GOV-CIVIL-SERVICES-MT08",
+      "GS2-GOV-CIVIL-SERVICES-MT09",
+      "GS2-GOV-CIVIL-SERVICES-MT10",
+      "GS2-GOV-CIVIL-SERVICES-MT11",
+      "GS2-GOV-CONST-POSTS-MT01",
+      "GS2-GOV-CONST-POSTS-MT02",
+      "GS2-GOV-CONST-POSTS-MT03",
+      "GS2-GOV-CONST-POSTS-MT04",
+      "GS2-GOV-CONST-POSTS-MT05",
+      "GS2-GOV-DEVELOPMENT-INDUSTRY-MT01",
+      "GS2-GOV-DEVELOPMENT-INDUSTRY-MT02",
+      "GS2-GOV-DEVELOPMENT-INDUSTRY-MT03",
+      "GS2-GOV-DEVELOPMENT-INDUSTRY-MT04",
+      "GS2-GOV-DEVELOPMENT-INDUSTRY-MT05",
+      "GS2-GOV-DEVELOPMENT-INDUSTRY-MT06",
+      "GS2-GOV-EGOV-MT01",
+      "GS2-GOV-EGOV-MT02",
+      "GS2-GOV-EGOV-MT03",
+      "GS2-GOV-EGOV-MT04",
+      "GS2-GOV-GOOD-GOV-MT01",
+      "GS2-GOV-GOOD-GOV-MT02",
+      "GS2-GOV-GOOD-GOV-MT03",
+      "GS2-GOV-GOOD-GOV-MT04",
+      "GS2-GOV-GOOD-GOV-MT05",
+      "GS2-GOV-PRESSURE-GROUPS-MT01",
+      "GS2-GOV-PRESSURE-GROUPS-MT02",
+      "GS2-GOV-PRESSURE-GROUPS-MT03",
+      "GS2-GOV-PRESSURE-GROUPS-MT04",
+      "GS2-GOV-PRESSURE-GROUPS-MT05",
+      "GS2-GOV-REGULATORS-QUASI-MT01",
+      "GS2-GOV-REGULATORS-QUASI-MT02",
+      "GS2-GOV-REGULATORS-QUASI-MT03",
+      "GS2-GOV-REGULATORS-QUASI-MT04",
+      "GS2-GOV-REGULATORS-QUASI-MT05",
+      "GS2-GOV-REGULATORS-QUASI-MT06",
+      "GS2-GOV-REGULATORS-QUASI-MT07",
+      "GS2-GOV-REGULATORS-QUASI-MT08",
+      "GS2-GOV-REGULATORS-QUASI-MT09",
+      "GS2-GOV-REGULATORS-QUASI-MT10",
+      "GS2-GOV-REGULATORS-QUASI-MT11",
+      "GS2-GOV-REGULATORS-QUASI-MT12",
+      "GS2-GOV-REGULATORS-QUASI-MT13",
+      "GS2-GOV-REGULATORS-QUASI-MT14",
+      "GS2-GOV-REGULATORS-QUASI-MT15",
+      "GS2-GOV-REGULATORS-QUASI-MT16",
+      "GS2-GOV-REGULATORY-REFORMS-MT01",
+      "GS2-GOV-REGULATORY-REFORMS-MT02",
+      "GS2-GOV-REGULATORY-REFORMS-MT03",
+      "GS2-GOV-REGULATORY-REFORMS-MT04",
+      "GS2-GOV-REGULATORY-REFORMS-MT05",
+      "GS2-GOV-REGULATORY-REFORMS-MT06",
+      "GS2-GOV-SOCIO-ECON-MT01",
+      "GS2-GOV-SOCIO-ECON-MT02",
+      "GS2-GOV-SOCIO-ECON-MT03",
+      "GS2-GOV-SOCIO-ECON-MT04",
+      "GS2-GOV-SOCIO-ECON-MT05",
+      "GS2-GOV-SOCIO-ECON-MT06",
+      "GS2-GOV-SOCIO-ECON-MT07",
+      "GS2-GOV-SOCIO-ECON-MT08",
+      "GS2-GOV-SOCIO-ECON-MT09",
+      "GS2-GOV-SOCIO-ECON-MT10",
+      "GS2-GOV-SOCIO-ECON-MT11",
+      "GS2-GOV-TRANSPARENCY-MT01",
+      "GS2-GOV-TRANSPARENCY-MT02",
+      "GS2-GOV-TRANSPARENCY-MT03",
+      "GS2-GOV-TRANSPARENCY-MT04",
+      "GS2-GOV-TRANSPARENCY-MT05",
+      "GS2-GOV-TRANSPARENCY-MT06",
+      "GS2-GOV-TRANSPARENCY-MT07",
+      "GS2-GOV-TRANSPARENCY-MT08"
+    ],
+    "primaryNodeId": "GS2-GOV-CIVIL-SERVICES-MT01"
+  },
+  "GS2-GOV-GOOD-GOV": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-GOV-GOOD-GOV-MT01",
+      "GS2-GOV-GOOD-GOV-MT02",
+      "GS2-GOV-GOOD-GOV-MT03",
+      "GS2-GOV-GOOD-GOV-MT04",
+      "GS2-GOV-GOOD-GOV-MT05"
+    ],
+    "primaryNodeId": "GS2-GOV-GOOD-GOV-MT01"
+  },
+  "GS2-GOV-TRANSPARENCY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-GOV-TRANSPARENCY-MT01",
+      "GS2-GOV-TRANSPARENCY-MT02",
+      "GS2-GOV-TRANSPARENCY-MT03",
+      "GS2-GOV-TRANSPARENCY-MT04",
+      "GS2-GOV-TRANSPARENCY-MT05",
+      "GS2-GOV-TRANSPARENCY-MT06",
+      "GS2-GOV-TRANSPARENCY-MT07",
+      "GS2-GOV-TRANSPARENCY-MT08"
+    ],
+    "primaryNodeId": "GS2-GOV-TRANSPARENCY-MT01"
+  },
+  "GS2-GOV-EGOV": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-GOV-EGOV-MT01",
+      "GS2-GOV-EGOV-MT02",
+      "GS2-GOV-EGOV-MT03",
+      "GS2-GOV-EGOV-MT04"
+    ],
+    "primaryNodeId": "GS2-GOV-EGOV-MT01"
+  },
+  "GS2-GOV-CIVIL-SERVICES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-GOV-CIVIL-SERVICES-MT01",
+      "GS2-GOV-CIVIL-SERVICES-MT02",
+      "GS2-GOV-CIVIL-SERVICES-MT03",
+      "GS2-GOV-CIVIL-SERVICES-MT04",
+      "GS2-GOV-CIVIL-SERVICES-MT05",
+      "GS2-GOV-CIVIL-SERVICES-MT06",
+      "GS2-GOV-CIVIL-SERVICES-MT07",
+      "GS2-GOV-CIVIL-SERVICES-MT08",
+      "GS2-GOV-CIVIL-SERVICES-MT09",
+      "GS2-GOV-CIVIL-SERVICES-MT10",
+      "GS2-GOV-CIVIL-SERVICES-MT11"
+    ],
+    "primaryNodeId": "GS2-GOV-CIVIL-SERVICES-MT01"
+  },
+  "GS2-GOV-REGULATORY-REFORMS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-GOV-REGULATORY-REFORMS-MT01",
+      "GS2-GOV-REGULATORY-REFORMS-MT02",
+      "GS2-GOV-REGULATORY-REFORMS-MT03",
+      "GS2-GOV-REGULATORY-REFORMS-MT04",
+      "GS2-GOV-REGULATORY-REFORMS-MT05",
+      "GS2-GOV-REGULATORY-REFORMS-MT06"
+    ],
+    "primaryNodeId": "GS2-GOV-REGULATORY-REFORMS-MT01"
+  },
+  "GS2-GOV-DEVELOPMENT-INDUSTRY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-GOV-DEVELOPMENT-INDUSTRY-MT01",
+      "GS2-GOV-DEVELOPMENT-INDUSTRY-MT02",
+      "GS2-GOV-DEVELOPMENT-INDUSTRY-MT03",
+      "GS2-GOV-DEVELOPMENT-INDUSTRY-MT04",
+      "GS2-GOV-DEVELOPMENT-INDUSTRY-MT05",
+      "GS2-GOV-DEVELOPMENT-INDUSTRY-MT06"
+    ],
+    "primaryNodeId": "GS2-GOV-DEVELOPMENT-INDUSTRY-MT01"
+  },
+  "GS2-GOV-SOCIO-ECON": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-GOV-SOCIO-ECON-MT01",
+      "GS2-GOV-SOCIO-ECON-MT02",
+      "GS2-GOV-SOCIO-ECON-MT03",
+      "GS2-GOV-SOCIO-ECON-MT04",
+      "GS2-GOV-SOCIO-ECON-MT05",
+      "GS2-GOV-SOCIO-ECON-MT06",
+      "GS2-GOV-SOCIO-ECON-MT07",
+      "GS2-GOV-SOCIO-ECON-MT08",
+      "GS2-GOV-SOCIO-ECON-MT09",
+      "GS2-GOV-SOCIO-ECON-MT10",
+      "GS2-GOV-SOCIO-ECON-MT11"
+    ],
+    "primaryNodeId": "GS2-GOV-SOCIO-ECON-MT01"
+  },
+  "GS2-GOV-PRESSURE-GROUPS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-GOV-PRESSURE-GROUPS-MT01",
+      "GS2-GOV-PRESSURE-GROUPS-MT02",
+      "GS2-GOV-PRESSURE-GROUPS-MT03",
+      "GS2-GOV-PRESSURE-GROUPS-MT04",
+      "GS2-GOV-PRESSURE-GROUPS-MT05"
+    ],
+    "primaryNodeId": "GS2-GOV-PRESSURE-GROUPS-MT01"
+  },
+  "GS2-GOV-CONST-POSTS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-GOV-CONST-POSTS-MT01",
+      "GS2-GOV-CONST-POSTS-MT02",
+      "GS2-GOV-CONST-POSTS-MT03",
+      "GS2-GOV-CONST-POSTS-MT04",
+      "GS2-GOV-CONST-POSTS-MT05"
+    ],
+    "primaryNodeId": "GS2-GOV-CONST-POSTS-MT01"
+  },
+  "GS2-GOV-REGULATORS-QUASI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-GOV-REGULATORS-QUASI-MT01",
+      "GS2-GOV-REGULATORS-QUASI-MT02",
+      "GS2-GOV-REGULATORS-QUASI-MT03",
+      "GS2-GOV-REGULATORS-QUASI-MT04",
+      "GS2-GOV-REGULATORS-QUASI-MT05",
+      "GS2-GOV-REGULATORS-QUASI-MT06",
+      "GS2-GOV-REGULATORS-QUASI-MT07",
+      "GS2-GOV-REGULATORS-QUASI-MT08",
+      "GS2-GOV-REGULATORS-QUASI-MT09",
+      "GS2-GOV-REGULATORS-QUASI-MT10",
+      "GS2-GOV-REGULATORS-QUASI-MT11",
+      "GS2-GOV-REGULATORS-QUASI-MT12",
+      "GS2-GOV-REGULATORS-QUASI-MT13",
+      "GS2-GOV-REGULATORS-QUASI-MT14",
+      "GS2-GOV-REGULATORS-QUASI-MT15",
+      "GS2-GOV-REGULATORS-QUASI-MT16"
+    ],
+    "primaryNodeId": "GS2-GOV-REGULATORS-QUASI-MT01"
+  },
+  "GS2-IR-SYLLABUS-CORE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-DEVELOPED-DEVELOPING-MT01",
+      "GS2-IR-DEVELOPED-DEVELOPING-MT02",
+      "GS2-IR-DEVELOPED-DEVELOPING-MT03",
+      "GS2-IR-DEVELOPED-DEVELOPING-MT04",
+      "GS2-IR-DIASPORA-MT01",
+      "GS2-IR-DIASPORA-MT02",
+      "GS2-IR-DIASPORA-MT03",
+      "GS2-IR-GROUPINGS-MT01",
+      "GS2-IR-GROUPINGS-MT02",
+      "GS2-IR-GROUPINGS-MT03",
+      "GS2-IR-GROUPINGS-MT04",
+      "GS2-IR-INSTITUTIONS-MT01",
+      "GS2-IR-INSTITUTIONS-MT02",
+      "GS2-IR-INSTITUTIONS-MT03",
+      "GS2-IR-INSTITUTIONS-MT04",
+      "GS2-IR-NEIGHBOURS-MT01",
+      "GS2-IR-NEIGHBOURS-MT02",
+      "GS2-IR-NEIGHBOURS-MT03",
+      "GS2-IR-NEIGHBOURS-MT04"
+    ],
+    "primaryNodeId": "GS2-IR-DEVELOPED-DEVELOPING-MT01"
+  },
+  "GS2-IR-NEIGHBOURS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-NEIGHBOURS-MT01",
+      "GS2-IR-NEIGHBOURS-MT02",
+      "GS2-IR-NEIGHBOURS-MT03",
+      "GS2-IR-NEIGHBOURS-MT04"
+    ],
+    "primaryNodeId": "GS2-IR-NEIGHBOURS-MT01"
+  },
+  "GS2-IR-GROUPINGS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-GROUPINGS-MT01",
+      "GS2-IR-GROUPINGS-MT02",
+      "GS2-IR-GROUPINGS-MT03",
+      "GS2-IR-GROUPINGS-MT04"
+    ],
+    "primaryNodeId": "GS2-IR-GROUPINGS-MT01"
+  },
+  "GS2-IR-DEVELOPED-DEVELOPING": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-DEVELOPED-DEVELOPING-MT01",
+      "GS2-IR-DEVELOPED-DEVELOPING-MT02",
+      "GS2-IR-DEVELOPED-DEVELOPING-MT03",
+      "GS2-IR-DEVELOPED-DEVELOPING-MT04"
+    ],
+    "primaryNodeId": "GS2-IR-DEVELOPED-DEVELOPING-MT01"
+  },
+  "GS2-IR-DIASPORA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-DIASPORA-MT01",
+      "GS2-IR-DIASPORA-MT02",
+      "GS2-IR-DIASPORA-MT03"
+    ],
+    "primaryNodeId": "GS2-IR-DIASPORA-MT01"
+  },
+  "GS2-IR-INSTITUTIONS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-INSTITUTIONS-MT01",
+      "GS2-IR-INSTITUTIONS-MT02",
+      "GS2-IR-INSTITUTIONS-MT03",
+      "GS2-IR-INSTITUTIONS-MT04"
+    ],
+    "primaryNodeId": "GS2-IR-INSTITUTIONS-MT01"
+  },
+  "GS2-IR-FOREIGN-POLICY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-FP-EVOLUTION-MT01",
+      "GS2-IR-FP-EVOLUTION-MT02",
+      "GS2-IR-FP-EVOLUTION-MT03",
+      "GS2-IR-FP-EVOLUTION-MT04",
+      "GS2-IR-FP-EVOLUTION-MT05"
+    ],
+    "primaryNodeId": "GS2-IR-FP-EVOLUTION-MT01"
+  },
+  "GS2-IR-FP-EVOLUTION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-FP-EVOLUTION-MT01",
+      "GS2-IR-FP-EVOLUTION-MT02",
+      "GS2-IR-FP-EVOLUTION-MT03",
+      "GS2-IR-FP-EVOLUTION-MT04",
+      "GS2-IR-FP-EVOLUTION-MT05"
+    ],
+    "primaryNodeId": "GS2-IR-FP-EVOLUTION-MT01"
+  },
+  "GS2-IR-EXTENDED": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-AFRICA-MT01",
+      "GS2-IR-AFRICA-MT02",
+      "GS2-IR-ASEAN-EAP-MT01",
+      "GS2-IR-ASEAN-EAP-MT02",
+      "GS2-IR-ASEAN-EAP-MT03",
+      "GS2-IR-CENTRAL-ASIA-MT01",
+      "GS2-IR-CENTRAL-ASIA-MT02",
+      "GS2-IR-CENTRAL-ASIA-MT03",
+      "GS2-IR-MAJOR-POWERS-MT01",
+      "GS2-IR-MAJOR-POWERS-MT02",
+      "GS2-IR-MAJOR-POWERS-MT03",
+      "GS2-IR-MAJOR-POWERS-MT04",
+      "GS2-IR-MAJOR-POWERS-MT05",
+      "GS2-IR-WEST-ASIA-MT01",
+      "GS2-IR-WEST-ASIA-MT02",
+      "GS2-IR-WEST-ASIA-MT03",
+      "GS2-IR-WEST-ASIA-MT04"
+    ],
+    "primaryNodeId": "GS2-IR-AFRICA-MT01"
+  },
+  "GS2-IR-ASEAN-EAP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-ASEAN-EAP-MT01",
+      "GS2-IR-ASEAN-EAP-MT02",
+      "GS2-IR-ASEAN-EAP-MT03"
+    ],
+    "primaryNodeId": "GS2-IR-ASEAN-EAP-MT01"
+  },
+  "GS2-IR-CENTRAL-ASIA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-CENTRAL-ASIA-MT01",
+      "GS2-IR-CENTRAL-ASIA-MT02",
+      "GS2-IR-CENTRAL-ASIA-MT03"
+    ],
+    "primaryNodeId": "GS2-IR-CENTRAL-ASIA-MT01"
+  },
+  "GS2-IR-WEST-ASIA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-WEST-ASIA-MT01",
+      "GS2-IR-WEST-ASIA-MT02",
+      "GS2-IR-WEST-ASIA-MT03",
+      "GS2-IR-WEST-ASIA-MT04"
+    ],
+    "primaryNodeId": "GS2-IR-WEST-ASIA-MT01"
+  },
+  "GS2-IR-MAJOR-POWERS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-MAJOR-POWERS-MT01",
+      "GS2-IR-MAJOR-POWERS-MT02",
+      "GS2-IR-MAJOR-POWERS-MT03",
+      "GS2-IR-MAJOR-POWERS-MT04",
+      "GS2-IR-MAJOR-POWERS-MT05"
+    ],
+    "primaryNodeId": "GS2-IR-MAJOR-POWERS-MT01"
+  },
+  "GS2-IR-AFRICA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-AFRICA-MT01",
+      "GS2-IR-AFRICA-MT02"
+    ],
+    "primaryNodeId": "GS2-IR-AFRICA-MT01"
+  },
+  "GS2-IR-GLOBAL-ISSUES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-CLIMATE-DISARM-MT01",
+      "GS2-IR-CLIMATE-DISARM-MT02",
+      "GS2-IR-CLIMATE-DISARM-MT03",
+      "GS2-IR-REGIONAL-CONFLICTS-MT01",
+      "GS2-IR-REGIONAL-CONFLICTS-MT02",
+      "GS2-IR-REGIONAL-CONFLICTS-MT03",
+      "GS2-IR-TERRORISM-MT01",
+      "GS2-IR-TERRORISM-MT02"
+    ],
+    "primaryNodeId": "GS2-IR-CLIMATE-DISARM-MT01"
+  },
+  "GS2-IR-TERRORISM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-TERRORISM-MT01",
+      "GS2-IR-TERRORISM-MT02"
+    ],
+    "primaryNodeId": "GS2-IR-TERRORISM-MT01"
+  },
+  "GS2-IR-CLIMATE-DISARM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-CLIMATE-DISARM-MT01",
+      "GS2-IR-CLIMATE-DISARM-MT02",
+      "GS2-IR-CLIMATE-DISARM-MT03"
+    ],
+    "primaryNodeId": "GS2-IR-CLIMATE-DISARM-MT01"
+  },
+  "GS2-IR-REGIONAL-CONFLICTS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS2-IR-REGIONAL-CONFLICTS-MT01",
+      "GS2-IR-REGIONAL-CONFLICTS-MT02",
+      "GS2-IR-REGIONAL-CONFLICTS-MT03"
+    ],
+    "primaryNodeId": "GS2-IR-REGIONAL-CONFLICTS-MT01"
+  },
+  "GS3-ECO-PRE-BASICS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-BASICS-MACRO-MT01",
+      "GS3-ECO-PRE-BASICS-MACRO-MT02",
+      "GS3-ECO-PRE-BASICS-MACRO-MT03",
+      "GS3-ECO-PRE-BASICS-MACRO-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-BASICS-MACRO-MT01"
+  },
+  "GS3-ECO-PRE-BASICS-MACRO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-BASICS-MACRO-MT01",
+      "GS3-ECO-PRE-BASICS-MACRO-MT02",
+      "GS3-ECO-PRE-BASICS-MACRO-MT03",
+      "GS3-ECO-PRE-BASICS-MACRO-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-BASICS-MACRO-MT01"
+  },
+  "GS3-ECO-PRE-MEASURE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-GROWTH-MT01",
+      "GS3-ECO-PRE-GROWTH-MT02",
+      "GS3-ECO-PRE-GROWTH-MT03",
+      "GS3-ECO-PRE-GROWTH-MT04",
+      "GS3-ECO-PRE-INFLATION-MT01",
+      "GS3-ECO-PRE-INFLATION-MT02",
+      "GS3-ECO-PRE-INFLATION-MT03",
+      "GS3-ECO-PRE-NI-MT01",
+      "GS3-ECO-PRE-NI-MT02",
+      "GS3-ECO-PRE-NI-MT03",
+      "GS3-ECO-PRE-NI-MT04",
+      "GS3-ECO-PRE-NI-MT05",
+      "GS3-ECO-PRE-NI-MT06"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-GROWTH-MT01"
+  },
+  "GS3-ECO-PRE-NI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-NI-MT01",
+      "GS3-ECO-PRE-NI-MT02",
+      "GS3-ECO-PRE-NI-MT03",
+      "GS3-ECO-PRE-NI-MT04",
+      "GS3-ECO-PRE-NI-MT05",
+      "GS3-ECO-PRE-NI-MT06"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-NI-MT01"
+  },
+  "GS3-ECO-PRE-INFLATION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-INFLATION-MT01",
+      "GS3-ECO-PRE-INFLATION-MT02",
+      "GS3-ECO-PRE-INFLATION-MT03"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-INFLATION-MT01"
+  },
+  "GS3-ECO-PRE-GROWTH": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-GROWTH-MT01",
+      "GS3-ECO-PRE-GROWTH-MT02",
+      "GS3-ECO-PRE-GROWTH-MT03",
+      "GS3-ECO-PRE-GROWTH-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-GROWTH-MT01"
+  },
+  "GS3-ECO-PRE-MONEY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+      "GS3-ECO-PRE-BANKING-STRUCTURE-MT02",
+      "GS3-ECO-PRE-BANKING-STRUCTURE-MT03",
+      "GS3-ECO-PRE-BANKING-STRUCTURE-MT04",
+      "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "GS3-ECO-PRE-FIN-MARKETS-MT02",
+      "GS3-ECO-PRE-FIN-MARKETS-MT03",
+      "GS3-ECO-PRE-FIN-MARKETS-MT04",
+      "GS3-ECO-PRE-FIN-MARKETS-MT05",
+      "GS3-ECO-PRE-MONEY-BASICS-MT01",
+      "GS3-ECO-PRE-MONEY-BASICS-MT02",
+      "GS3-ECO-PRE-MONEY-BASICS-MT03",
+      "GS3-ECO-PRE-MONEY-BASICS-MT04",
+      "GS3-ECO-PRE-MONEY-BASICS-MT05",
+      "GS3-ECO-PRE-RBI-MT01",
+      "GS3-ECO-PRE-RBI-MT02",
+      "GS3-ECO-PRE-RBI-MT03",
+      "GS3-ECO-PRE-RBI-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01"
+  },
+  "GS3-ECO-PRE-MONEY-BASICS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-MONEY-BASICS-MT01",
+      "GS3-ECO-PRE-MONEY-BASICS-MT02",
+      "GS3-ECO-PRE-MONEY-BASICS-MT03",
+      "GS3-ECO-PRE-MONEY-BASICS-MT04",
+      "GS3-ECO-PRE-MONEY-BASICS-MT05"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-MONEY-BASICS-MT01"
+  },
+  "GS3-ECO-PRE-RBI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-RBI-MT01",
+      "GS3-ECO-PRE-RBI-MT02",
+      "GS3-ECO-PRE-RBI-MT03",
+      "GS3-ECO-PRE-RBI-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-RBI-MT01"
+  },
+  "GS3-ECO-PRE-FIN-MARKETS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "GS3-ECO-PRE-FIN-MARKETS-MT02",
+      "GS3-ECO-PRE-FIN-MARKETS-MT03",
+      "GS3-ECO-PRE-FIN-MARKETS-MT04",
+      "GS3-ECO-PRE-FIN-MARKETS-MT05"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01"
+  },
+  "GS3-ECO-PRE-BANKING-STRUCTURE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+      "GS3-ECO-PRE-BANKING-STRUCTURE-MT02",
+      "GS3-ECO-PRE-BANKING-STRUCTURE-MT03",
+      "GS3-ECO-PRE-BANKING-STRUCTURE-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01"
+  },
+  "GS3-ECO-PRE-PUBLIC-FIN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-BUDGET-MT01",
+      "GS3-ECO-PRE-BUDGET-MT02",
+      "GS3-ECO-PRE-BUDGET-MT03",
+      "GS3-ECO-PRE-BUDGET-MT04",
+      "GS3-ECO-PRE-TAX-MT01",
+      "GS3-ECO-PRE-TAX-MT02",
+      "GS3-ECO-PRE-TAX-MT03",
+      "GS3-ECO-PRE-TAX-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-BUDGET-MT01"
+  },
+  "GS3-ECO-PRE-BUDGET": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-BUDGET-MT01",
+      "GS3-ECO-PRE-BUDGET-MT02",
+      "GS3-ECO-PRE-BUDGET-MT03",
+      "GS3-ECO-PRE-BUDGET-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-BUDGET-MT01"
+  },
+  "GS3-ECO-PRE-TAX": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-TAX-MT01",
+      "GS3-ECO-PRE-TAX-MT02",
+      "GS3-ECO-PRE-TAX-MT03",
+      "GS3-ECO-PRE-TAX-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-TAX-MT01"
+  },
+  "GS3-ECO-PRE-PLANNING": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-PLANS-MT01",
+      "GS3-ECO-PRE-PLANS-MT02",
+      "GS3-ECO-PRE-PLANS-MT03",
+      "GS3-ECO-PRE-PLANS-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-PLANS-MT01"
+  },
+  "GS3-ECO-PRE-PLANS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-PLANS-MT01",
+      "GS3-ECO-PRE-PLANS-MT02",
+      "GS3-ECO-PRE-PLANS-MT03",
+      "GS3-ECO-PRE-PLANS-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-PLANS-MT01"
+  },
+  "GS3-ECO-PRE-OPEN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-BOP-MT01",
+      "GS3-ECO-PRE-BOP-MT02",
+      "GS3-ECO-PRE-BOP-MT03",
+      "GS3-ECO-PRE-BOP-MT04",
+      "GS3-ECO-PRE-BOP-MT05",
+      "GS3-ECO-PRE-TRADE-MT01",
+      "GS3-ECO-PRE-TRADE-MT02",
+      "GS3-ECO-PRE-TRADE-MT03"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-BOP-MT01"
+  },
+  "GS3-ECO-PRE-BOP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-BOP-MT01",
+      "GS3-ECO-PRE-BOP-MT02",
+      "GS3-ECO-PRE-BOP-MT03",
+      "GS3-ECO-PRE-BOP-MT04",
+      "GS3-ECO-PRE-BOP-MT05"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-BOP-MT01"
+  },
+  "GS3-ECO-PRE-TRADE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-TRADE-MT01",
+      "GS3-ECO-PRE-TRADE-MT02",
+      "GS3-ECO-PRE-TRADE-MT03"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-TRADE-MT01"
+  },
+  "GS3-ECO-PRE-SECTORS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-POVERTY-MT01",
+      "GS3-ECO-PRE-POVERTY-MT02",
+      "GS3-ECO-PRE-POVERTY-MT03",
+      "GS3-ECO-PRE-POVERTY-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-POVERTY-MT01"
+  },
+  "GS3-ECO-PRE-POVERTY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PRE-POVERTY-MT01",
+      "GS3-ECO-PRE-POVERTY-MT02",
+      "GS3-ECO-PRE-POVERTY-MT03",
+      "GS3-ECO-PRE-POVERTY-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PRE-POVERTY-MT01"
+  },
+  "GS3-ECO-MAINS-SECTORS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-AGR-CORE-MT01",
+      "GS3-ECO-AGR-CORE-MT02",
+      "GS3-ECO-AGR-CORE-MT03",
+      "GS3-ECO-AGR-CORE-MT04",
+      "GS3-ECO-AGR-CORE-MT05",
+      "GS3-ECO-AGR-CORE-MT06",
+      "GS3-ECO-AGRI-FIN-MT01",
+      "GS3-ECO-AGRI-FIN-MT02",
+      "GS3-ECO-AGRI-FIN-MT03",
+      "GS3-ECO-AGRI-FIN-MT04",
+      "GS3-ECO-ANIMAL-MT01",
+      "GS3-ECO-ANIMAL-MT02",
+      "GS3-ECO-ANIMAL-MT03",
+      "GS3-ECO-FOODPROC-MT01",
+      "GS3-ECO-FOODPROC-MT02",
+      "GS3-ECO-FOODPROC-MT03",
+      "GS3-ECO-FOODPROC-MT04",
+      "GS3-ECO-INDPOL-MT01",
+      "GS3-ECO-INDPOL-MT02",
+      "GS3-ECO-INDPOL-MT03",
+      "GS3-ECO-INDPOL-MT04",
+      "GS3-ECO-INDPOL-MT05",
+      "GS3-ECO-INDPOL-MT06",
+      "GS3-ECO-INDPOL-MT07",
+      "GS3-ECO-INDPOL-MT08",
+      "GS3-ECO-INDPOL-MT09",
+      "GS3-ECO-INDPOL-MT10",
+      "GS3-ECO-INDPOL-MT11",
+      "GS3-ECO-LANDREFORMS-MT01",
+      "GS3-ECO-LANDREFORMS-MT02",
+      "GS3-ECO-LANDREFORMS-MT03",
+      "GS3-ECO-LANDREFORMS-MT04",
+      "GS3-ECO-LANDREFORMS-MT05",
+      "GS3-ECO-PDS-FOODSEC-MT01",
+      "GS3-ECO-PDS-FOODSEC-MT02",
+      "GS3-ECO-PDS-FOODSEC-MT03",
+      "GS3-ECO-PDS-FOODSEC-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-AGR-CORE-MT01"
+  },
+  "GS3-ECO-AGR-CORE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-AGR-CORE-MT01",
+      "GS3-ECO-AGR-CORE-MT02",
+      "GS3-ECO-AGR-CORE-MT03",
+      "GS3-ECO-AGR-CORE-MT04",
+      "GS3-ECO-AGR-CORE-MT05",
+      "GS3-ECO-AGR-CORE-MT06"
+    ],
+    "primaryNodeId": "GS3-ECO-AGR-CORE-MT01"
+  },
+  "GS3-ECO-PDS-FOODSEC": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PDS-FOODSEC-MT01",
+      "GS3-ECO-PDS-FOODSEC-MT02",
+      "GS3-ECO-PDS-FOODSEC-MT03",
+      "GS3-ECO-PDS-FOODSEC-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-PDS-FOODSEC-MT01"
+  },
+  "GS3-ECO-ANIMAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-ANIMAL-MT01",
+      "GS3-ECO-ANIMAL-MT02",
+      "GS3-ECO-ANIMAL-MT03"
+    ],
+    "primaryNodeId": "GS3-ECO-ANIMAL-MT01"
+  },
+  "GS3-ECO-FOODPROC": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-FOODPROC-MT01",
+      "GS3-ECO-FOODPROC-MT02",
+      "GS3-ECO-FOODPROC-MT03",
+      "GS3-ECO-FOODPROC-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-FOODPROC-MT01"
+  },
+  "GS3-ECO-LANDREFORMS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-LANDREFORMS-MT01",
+      "GS3-ECO-LANDREFORMS-MT02",
+      "GS3-ECO-LANDREFORMS-MT03",
+      "GS3-ECO-LANDREFORMS-MT04",
+      "GS3-ECO-LANDREFORMS-MT05"
+    ],
+    "primaryNodeId": "GS3-ECO-LANDREFORMS-MT01"
+  },
+  "GS3-ECO-AGRI-FIN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-AGRI-FIN-MT01",
+      "GS3-ECO-AGRI-FIN-MT02",
+      "GS3-ECO-AGRI-FIN-MT03",
+      "GS3-ECO-AGRI-FIN-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-AGRI-FIN-MT01"
+  },
+  "GS3-ECO-INDPOL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-INDPOL-MT01",
+      "GS3-ECO-INDPOL-MT02",
+      "GS3-ECO-INDPOL-MT03",
+      "GS3-ECO-INDPOL-MT04",
+      "GS3-ECO-INDPOL-MT05",
+      "GS3-ECO-INDPOL-MT06",
+      "GS3-ECO-INDPOL-MT07",
+      "GS3-ECO-INDPOL-MT08",
+      "GS3-ECO-INDPOL-MT09",
+      "GS3-ECO-INDPOL-MT10",
+      "GS3-ECO-INDPOL-MT11"
+    ],
+    "primaryNodeId": "GS3-ECO-INDPOL-MT01"
+  },
+  "GS3-ECO-MAINS-POLICYREFORMS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-BANKING-MT01",
+      "GS3-ECO-BANKING-MT02",
+      "GS3-ECO-BANKING-MT03",
+      "GS3-ECO-BANKING-MT04",
+      "GS3-ECO-BANKING-MT05",
+      "GS3-ECO-BANKING-MT06",
+      "GS3-ECO-BANKING-MT07",
+      "GS3-ECO-BANKING-MT08",
+      "GS3-ECO-BANKING-MT09",
+      "GS3-ECO-BUDGETING-MT01",
+      "GS3-ECO-BUDGETING-MT02",
+      "GS3-ECO-BUDGETING-MT03",
+      "GS3-ECO-BUDGETING-MT04",
+      "GS3-ECO-BUDGETING-MT05",
+      "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "GS3-ECO-FINANCIAL-SYSTEM-MT02",
+      "GS3-ECO-FINANCIAL-SYSTEM-MT03",
+      "GS3-ECO-FINANCIAL-SYSTEM-MT04",
+      "GS3-ECO-FINANCIAL-SYSTEM-MT05",
+      "GS3-ECO-FISCAL-POLICY-MT01",
+      "GS3-ECO-FISCAL-POLICY-MT02",
+      "GS3-ECO-FISCAL-POLICY-MT03",
+      "GS3-ECO-FISCAL-POLICY-MT04",
+      "GS3-ECO-FISCAL-POLICY-MT05",
+      "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "GS3-ECO-FOREIGN-TRADE-IO-MT02",
+      "GS3-ECO-FOREIGN-TRADE-IO-MT03",
+      "GS3-ECO-FOREIGN-TRADE-IO-MT04",
+      "GS3-ECO-FOREIGN-TRADE-IO-MT05",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT02",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT03",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT04",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT05",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT06",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT08",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT09",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT10",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT11",
+      "GS3-ECO-INVESTMENT-MODELS-MT01",
+      "GS3-ECO-INVESTMENT-MODELS-MT02",
+      "GS3-ECO-INVESTMENT-MODELS-MT03",
+      "GS3-ECO-INVESTMENT-MODELS-MT04",
+      "GS3-ECO-INVESTMENT-MODELS-MT05",
+      "GS3-ECO-INVESTMENT-MODELS-MT06",
+      "GS3-ECO-MONETARY-POLICY-MT01",
+      "GS3-ECO-MONETARY-POLICY-MT02",
+      "GS3-ECO-MONETARY-POLICY-MT03",
+      "GS3-ECO-MONETARY-POLICY-MT04",
+      "GS3-ECO-PLAN-GROWTH-MT01",
+      "GS3-ECO-PLAN-GROWTH-MT02",
+      "GS3-ECO-PLAN-GROWTH-MT03",
+      "GS3-ECO-PLAN-GROWTH-MT04",
+      "GS3-ECO-PLAN-GROWTH-MT05",
+      "GS3-ECO-PLAN-GROWTH-MT06",
+      "GS3-ECO-PLAN-GROWTH-MT07",
+      "GS3-ECO-PLAN-GROWTH-MT08",
+      "GS3-ECO-PLAN-GROWTH-MT09",
+      "GS3-ECO-PLAN-GROWTH-MT10",
+      "GS3-ECO-RESOURCE-MOB-MT01",
+      "GS3-ECO-RESOURCE-MOB-MT02",
+      "GS3-ECO-RESOURCE-MOB-MT03",
+      "GS3-ECO-RESOURCE-MOB-MT04",
+      "GS3-ECO-RESOURCE-MOB-MT05",
+      "GS3-ECO-RESOURCE-MOB-MT06",
+      "GS3-ECO-RESOURCE-MOB-MT07",
+      "GS3-ECO-RESOURCE-MOB-MT08",
+      "GS3-ECO-RESOURCE-MOB-MT09",
+      "GS3-ECO-RESOURCE-MOB-MT10",
+      "GS3-ECO-RESOURCE-MOB-MT11",
+      "GS3-ECO-TAXATION-MT01",
+      "GS3-ECO-TAXATION-MT02",
+      "GS3-ECO-TAXATION-MT03",
+      "GS3-ECO-TAXATION-MT04",
+      "GS3-ECO-TAXATION-MT05"
+    ],
+    "primaryNodeId": "GS3-ECO-BANKING-MT01"
+  },
+  "GS3-ECO-PLAN-GROWTH": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PLAN-GROWTH-MT01",
+      "GS3-ECO-PLAN-GROWTH-MT02",
+      "GS3-ECO-PLAN-GROWTH-MT03",
+      "GS3-ECO-PLAN-GROWTH-MT04",
+      "GS3-ECO-PLAN-GROWTH-MT05",
+      "GS3-ECO-PLAN-GROWTH-MT06",
+      "GS3-ECO-PLAN-GROWTH-MT07",
+      "GS3-ECO-PLAN-GROWTH-MT08",
+      "GS3-ECO-PLAN-GROWTH-MT09",
+      "GS3-ECO-PLAN-GROWTH-MT10"
+    ],
+    "primaryNodeId": "GS3-ECO-PLAN-GROWTH-MT01"
+  },
+  "GS3-ECO-RESOURCE-MOB": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-RESOURCE-MOB-MT01",
+      "GS3-ECO-RESOURCE-MOB-MT02",
+      "GS3-ECO-RESOURCE-MOB-MT03",
+      "GS3-ECO-RESOURCE-MOB-MT04",
+      "GS3-ECO-RESOURCE-MOB-MT05",
+      "GS3-ECO-RESOURCE-MOB-MT06",
+      "GS3-ECO-RESOURCE-MOB-MT07",
+      "GS3-ECO-RESOURCE-MOB-MT08",
+      "GS3-ECO-RESOURCE-MOB-MT09",
+      "GS3-ECO-RESOURCE-MOB-MT10",
+      "GS3-ECO-RESOURCE-MOB-MT11"
+    ],
+    "primaryNodeId": "GS3-ECO-RESOURCE-MOB-MT01"
+  },
+  "GS3-ECO-INCLUSIVE-GROWTH": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT02",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT03",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT04",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT05",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT06",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT08",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT09",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT10",
+      "GS3-ECO-INCLUSIVE-GROWTH-MT11"
+    ],
+    "primaryNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01"
+  },
+  "GS3-ECO-BUDGETING": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-BUDGETING-MT01",
+      "GS3-ECO-BUDGETING-MT02",
+      "GS3-ECO-BUDGETING-MT03",
+      "GS3-ECO-BUDGETING-MT04",
+      "GS3-ECO-BUDGETING-MT05"
+    ],
+    "primaryNodeId": "GS3-ECO-BUDGETING-MT01"
+  },
+  "GS3-ECO-INVESTMENT-MODELS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-INVESTMENT-MODELS-MT01",
+      "GS3-ECO-INVESTMENT-MODELS-MT02",
+      "GS3-ECO-INVESTMENT-MODELS-MT03",
+      "GS3-ECO-INVESTMENT-MODELS-MT04",
+      "GS3-ECO-INVESTMENT-MODELS-MT05",
+      "GS3-ECO-INVESTMENT-MODELS-MT06"
+    ],
+    "primaryNodeId": "GS3-ECO-INVESTMENT-MODELS-MT01"
+  },
+  "GS3-ECO-FISCAL-POLICY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-FISCAL-POLICY-MT01",
+      "GS3-ECO-FISCAL-POLICY-MT02",
+      "GS3-ECO-FISCAL-POLICY-MT03",
+      "GS3-ECO-FISCAL-POLICY-MT04",
+      "GS3-ECO-FISCAL-POLICY-MT05"
+    ],
+    "primaryNodeId": "GS3-ECO-FISCAL-POLICY-MT01"
+  },
+  "GS3-ECO-TAXATION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-TAXATION-MT01",
+      "GS3-ECO-TAXATION-MT02",
+      "GS3-ECO-TAXATION-MT03",
+      "GS3-ECO-TAXATION-MT04",
+      "GS3-ECO-TAXATION-MT05"
+    ],
+    "primaryNodeId": "GS3-ECO-TAXATION-MT01"
+  },
+  "GS3-ECO-MONETARY-POLICY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-MONETARY-POLICY-MT01",
+      "GS3-ECO-MONETARY-POLICY-MT02",
+      "GS3-ECO-MONETARY-POLICY-MT03",
+      "GS3-ECO-MONETARY-POLICY-MT04"
+    ],
+    "primaryNodeId": "GS3-ECO-MONETARY-POLICY-MT01"
+  },
+  "GS3-ECO-FINANCIAL-SYSTEM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "GS3-ECO-FINANCIAL-SYSTEM-MT02",
+      "GS3-ECO-FINANCIAL-SYSTEM-MT03",
+      "GS3-ECO-FINANCIAL-SYSTEM-MT04",
+      "GS3-ECO-FINANCIAL-SYSTEM-MT05"
+    ],
+    "primaryNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01"
+  },
+  "GS3-ECO-BANKING": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-BANKING-MT01",
+      "GS3-ECO-BANKING-MT02",
+      "GS3-ECO-BANKING-MT03",
+      "GS3-ECO-BANKING-MT04",
+      "GS3-ECO-BANKING-MT05",
+      "GS3-ECO-BANKING-MT06",
+      "GS3-ECO-BANKING-MT07",
+      "GS3-ECO-BANKING-MT08",
+      "GS3-ECO-BANKING-MT09"
+    ],
+    "primaryNodeId": "GS3-ECO-BANKING-MT01"
+  },
+  "GS3-ECO-FOREIGN-TRADE-IO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "GS3-ECO-FOREIGN-TRADE-IO-MT02",
+      "GS3-ECO-FOREIGN-TRADE-IO-MT03",
+      "GS3-ECO-FOREIGN-TRADE-IO-MT04",
+      "GS3-ECO-FOREIGN-TRADE-IO-MT05"
+    ],
+    "primaryNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01"
+  },
+  "GS3-ECO-MAINS-SECTORS-CONTEMP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-SECT-AGRI-MT01",
+      "GS3-ECO-SECT-AGRI-MT02",
+      "GS3-ECO-SECT-AGRI-MT03",
+      "GS3-ECO-SECT-AGRI-MT04",
+      "GS3-ECO-SECT-AGRI-MT05",
+      "GS3-ECO-SECT-AGRI-MT06",
+      "GS3-ECO-SECT-AGRI-MT07",
+      "GS3-ECO-SECT-AGRI-MT08",
+      "GS3-ECO-SECT-AGRI-MT09",
+      "GS3-ECO-SECT-INDLAB-MT01",
+      "GS3-ECO-SECT-INDLAB-MT02",
+      "GS3-ECO-SECT-INDLAB-MT03",
+      "GS3-ECO-SECT-INDLAB-MT04",
+      "GS3-ECO-SECT-INDLAB-MT05",
+      "GS3-ECO-SECT-INDLAB-MT06",
+      "GS3-ECO-SECT-INDLAB-MT07",
+      "GS3-ECO-SECT-INDLAB-MT08",
+      "GS3-ECO-SECT-INDLAB-MT09",
+      "GS3-ECO-SECT-INDLAB-MT10",
+      "GS3-ECO-SECT-INDLAB-MT11",
+      "GS3-ECO-SECT-INDLAB-MT12",
+      "GS3-ECO-SECT-INDLAB-MT13",
+      "GS3-ECO-SECT-INDLAB-MT14",
+      "GS3-ECO-SECT-INDLAB-MT15",
+      "GS3-ECO-SECT-INDLAB-MT16",
+      "GS3-ECO-SECT-INDLAB-MT17",
+      "GS3-ECO-SECT-INDLAB-MT18",
+      "GS3-ECO-SECT-INDLAB-MT19",
+      "GS3-ECO-SECT-INDLAB-MT20",
+      "GS3-ECO-SECT-INFRA-MT01",
+      "GS3-ECO-SECT-INFRA-MT02",
+      "GS3-ECO-SECT-INFRA-MT03",
+      "GS3-ECO-SECT-INFRA-MT04",
+      "GS3-ECO-SECT-INFRA-MT05",
+      "GS3-ECO-SECT-INFRA-MT06",
+      "GS3-ECO-SECT-INFRA-MT07",
+      "GS3-ECO-SECT-INFRA-MT08",
+      "GS3-ECO-SECT-INFRA-MT09",
+      "GS3-ECO-SECT-INFRA-MT10",
+      "GS3-ECO-SECT-INFRA-MT11",
+      "GS3-ECO-SECT-INFRA-MT12",
+      "GS3-ECO-SECT-INFRA-MT13"
+    ],
+    "primaryNodeId": "GS3-ECO-SECT-AGRI-MT01"
+  },
+  "GS3-ECO-SECT-INDLAB": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-SECT-INDLAB-MT01",
+      "GS3-ECO-SECT-INDLAB-MT02",
+      "GS3-ECO-SECT-INDLAB-MT03",
+      "GS3-ECO-SECT-INDLAB-MT04",
+      "GS3-ECO-SECT-INDLAB-MT05",
+      "GS3-ECO-SECT-INDLAB-MT06",
+      "GS3-ECO-SECT-INDLAB-MT07",
+      "GS3-ECO-SECT-INDLAB-MT08",
+      "GS3-ECO-SECT-INDLAB-MT09",
+      "GS3-ECO-SECT-INDLAB-MT10",
+      "GS3-ECO-SECT-INDLAB-MT11",
+      "GS3-ECO-SECT-INDLAB-MT12",
+      "GS3-ECO-SECT-INDLAB-MT13",
+      "GS3-ECO-SECT-INDLAB-MT14",
+      "GS3-ECO-SECT-INDLAB-MT15",
+      "GS3-ECO-SECT-INDLAB-MT16",
+      "GS3-ECO-SECT-INDLAB-MT17",
+      "GS3-ECO-SECT-INDLAB-MT18",
+      "GS3-ECO-SECT-INDLAB-MT19",
+      "GS3-ECO-SECT-INDLAB-MT20"
+    ],
+    "primaryNodeId": "GS3-ECO-SECT-INDLAB-MT01"
+  },
+  "GS3-ECO-SECT-AGRI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-SECT-AGRI-MT01",
+      "GS3-ECO-SECT-AGRI-MT02",
+      "GS3-ECO-SECT-AGRI-MT03",
+      "GS3-ECO-SECT-AGRI-MT04",
+      "GS3-ECO-SECT-AGRI-MT05",
+      "GS3-ECO-SECT-AGRI-MT06",
+      "GS3-ECO-SECT-AGRI-MT07",
+      "GS3-ECO-SECT-AGRI-MT08",
+      "GS3-ECO-SECT-AGRI-MT09"
+    ],
+    "primaryNodeId": "GS3-ECO-SECT-AGRI-MT01"
+  },
+  "GS3-ECO-SECT-INFRA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-SECT-INFRA-MT01",
+      "GS3-ECO-SECT-INFRA-MT02",
+      "GS3-ECO-SECT-INFRA-MT03",
+      "GS3-ECO-SECT-INFRA-MT04",
+      "GS3-ECO-SECT-INFRA-MT05",
+      "GS3-ECO-SECT-INFRA-MT06",
+      "GS3-ECO-SECT-INFRA-MT07",
+      "GS3-ECO-SECT-INFRA-MT08",
+      "GS3-ECO-SECT-INFRA-MT09",
+      "GS3-ECO-SECT-INFRA-MT10",
+      "GS3-ECO-SECT-INFRA-MT11",
+      "GS3-ECO-SECT-INFRA-MT12",
+      "GS3-ECO-SECT-INFRA-MT13"
+    ],
+    "primaryNodeId": "GS3-ECO-SECT-INFRA-MT01"
+  },
+  "GS3-ECO-MAINS-POLICYREF-CONTEMP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PR-BANKFIN-MT01",
+      "GS3-ECO-PR-BANKFIN-MT02",
+      "GS3-ECO-PR-BANKFIN-MT03",
+      "GS3-ECO-PR-BANKFIN-MT04",
+      "GS3-ECO-PR-BANKFIN-MT05",
+      "GS3-ECO-PR-BANKFIN-MT06",
+      "GS3-ECO-PR-BANKFIN-MT07",
+      "GS3-ECO-PR-BANKFIN-MT08",
+      "GS3-ECO-PR-BANKFIN-MT09",
+      "GS3-ECO-PR-BANKFIN-MT10",
+      "GS3-ECO-PR-BANKFIN-MT11",
+      "GS3-ECO-PR-BANKFIN-MT12",
+      "GS3-ECO-PR-BANKFIN-MT13",
+      "GS3-ECO-PR-BANKFIN-MT14",
+      "GS3-ECO-PR-BANKFIN-MT15",
+      "GS3-ECO-PR-BANKFIN-MT16",
+      "GS3-ECO-PR-BANKFIN-MT17",
+      "GS3-ECO-PR-BANKFIN-MT18",
+      "GS3-ECO-PR-BANKFIN-MT19",
+      "GS3-ECO-PR-BANKFIN-MT20",
+      "GS3-ECO-PR-BANKFIN-MT21",
+      "GS3-ECO-PR-BUDTAX-MT01",
+      "GS3-ECO-PR-BUDTAX-MT02",
+      "GS3-ECO-PR-BUDTAX-MT03",
+      "GS3-ECO-PR-BUDTAX-MT04",
+      "GS3-ECO-PR-BUDTAX-MT05",
+      "GS3-ECO-PR-BUDTAX-MT06",
+      "GS3-ECO-PR-BUDTAX-MT07",
+      "GS3-ECO-PR-BUDTAX-MT08",
+      "GS3-ECO-PR-BUDTAX-MT09",
+      "GS3-ECO-PR-BUDTAX-MT10",
+      "GS3-ECO-PR-BUDTAX-MT11",
+      "GS3-ECO-PR-BUDTAX-MT12",
+      "GS3-ECO-PR-BUDTAX-MT13",
+      "GS3-ECO-PR-BUDTAX-MT14",
+      "GS3-ECO-PR-COMMITTEES-MT01",
+      "GS3-ECO-PR-COMMITTEES-MT02",
+      "GS3-ECO-PR-COMMITTEES-MT03",
+      "GS3-ECO-PR-COMMITTEES-MT04",
+      "GS3-ECO-PR-COMMITTEES-MT05",
+      "GS3-ECO-PR-COMMITTEES-MT06",
+      "GS3-ECO-PR-COMMITTEES-MT07",
+      "GS3-ECO-PR-COMMITTEES-MT08",
+      "GS3-ECO-PR-COMMITTEES-MT09",
+      "GS3-ECO-PR-COMMITTEES-MT10",
+      "GS3-ECO-PR-COMMITTEES-MT11",
+      "GS3-ECO-PR-COMMITTEES-MT12",
+      "GS3-ECO-PR-COMMITTEES-MT13",
+      "GS3-ECO-PR-EXTSECTOR-MT01",
+      "GS3-ECO-PR-EXTSECTOR-MT02",
+      "GS3-ECO-PR-EXTSECTOR-MT03",
+      "GS3-ECO-PR-EXTSECTOR-MT04",
+      "GS3-ECO-PR-EXTSECTOR-MT05",
+      "GS3-ECO-PR-EXTSECTOR-MT06",
+      "GS3-ECO-PR-EXTSECTOR-MT07",
+      "GS3-ECO-PR-EXTSECTOR-MT08",
+      "GS3-ECO-PR-EXTSECTOR-MT09",
+      "GS3-ECO-PR-SCHEMES-MT01",
+      "GS3-ECO-PR-SCHEMES-MT02",
+      "GS3-ECO-PR-SCHEMES-MT03",
+      "GS3-ECO-PR-SCHEMES-MT04",
+      "GS3-ECO-PR-SCHEMES-MT05",
+      "GS3-ECO-PR-SCHEMES-MT06",
+      "GS3-ECO-PR-SCHEMES-MT07",
+      "GS3-ECO-PR-SCHEMES-MT08",
+      "GS3-ECO-PR-SCHEMES-MT09",
+      "GS3-ECO-PR-SCHEMES-MT10",
+      "GS3-ECO-PR-SCHEMES-MT11",
+      "GS3-ECO-PR-SCHEMES-MT12",
+      "GS3-ECO-PR-SCHEMES-MT13"
+    ],
+    "primaryNodeId": "GS3-ECO-PR-BANKFIN-MT01"
+  },
+  "GS3-ECO-PR-BUDTAX": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PR-BUDTAX-MT01",
+      "GS3-ECO-PR-BUDTAX-MT02",
+      "GS3-ECO-PR-BUDTAX-MT03",
+      "GS3-ECO-PR-BUDTAX-MT04",
+      "GS3-ECO-PR-BUDTAX-MT05",
+      "GS3-ECO-PR-BUDTAX-MT06",
+      "GS3-ECO-PR-BUDTAX-MT07",
+      "GS3-ECO-PR-BUDTAX-MT08",
+      "GS3-ECO-PR-BUDTAX-MT09",
+      "GS3-ECO-PR-BUDTAX-MT10",
+      "GS3-ECO-PR-BUDTAX-MT11",
+      "GS3-ECO-PR-BUDTAX-MT12",
+      "GS3-ECO-PR-BUDTAX-MT13",
+      "GS3-ECO-PR-BUDTAX-MT14"
+    ],
+    "primaryNodeId": "GS3-ECO-PR-BUDTAX-MT01"
+  },
+  "GS3-ECO-PR-BANKFIN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PR-BANKFIN-MT01",
+      "GS3-ECO-PR-BANKFIN-MT02",
+      "GS3-ECO-PR-BANKFIN-MT03",
+      "GS3-ECO-PR-BANKFIN-MT04",
+      "GS3-ECO-PR-BANKFIN-MT05",
+      "GS3-ECO-PR-BANKFIN-MT06",
+      "GS3-ECO-PR-BANKFIN-MT07",
+      "GS3-ECO-PR-BANKFIN-MT08",
+      "GS3-ECO-PR-BANKFIN-MT09",
+      "GS3-ECO-PR-BANKFIN-MT10",
+      "GS3-ECO-PR-BANKFIN-MT11",
+      "GS3-ECO-PR-BANKFIN-MT12",
+      "GS3-ECO-PR-BANKFIN-MT13",
+      "GS3-ECO-PR-BANKFIN-MT14",
+      "GS3-ECO-PR-BANKFIN-MT15",
+      "GS3-ECO-PR-BANKFIN-MT16",
+      "GS3-ECO-PR-BANKFIN-MT17",
+      "GS3-ECO-PR-BANKFIN-MT18",
+      "GS3-ECO-PR-BANKFIN-MT19",
+      "GS3-ECO-PR-BANKFIN-MT20",
+      "GS3-ECO-PR-BANKFIN-MT21"
+    ],
+    "primaryNodeId": "GS3-ECO-PR-BANKFIN-MT01"
+  },
+  "GS3-ECO-PR-SCHEMES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PR-SCHEMES-MT01",
+      "GS3-ECO-PR-SCHEMES-MT02",
+      "GS3-ECO-PR-SCHEMES-MT03",
+      "GS3-ECO-PR-SCHEMES-MT04",
+      "GS3-ECO-PR-SCHEMES-MT05",
+      "GS3-ECO-PR-SCHEMES-MT06",
+      "GS3-ECO-PR-SCHEMES-MT07",
+      "GS3-ECO-PR-SCHEMES-MT08",
+      "GS3-ECO-PR-SCHEMES-MT09",
+      "GS3-ECO-PR-SCHEMES-MT10",
+      "GS3-ECO-PR-SCHEMES-MT11",
+      "GS3-ECO-PR-SCHEMES-MT12",
+      "GS3-ECO-PR-SCHEMES-MT13"
+    ],
+    "primaryNodeId": "GS3-ECO-PR-SCHEMES-MT01"
+  },
+  "GS3-ECO-PR-EXTSECTOR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PR-EXTSECTOR-MT01",
+      "GS3-ECO-PR-EXTSECTOR-MT02",
+      "GS3-ECO-PR-EXTSECTOR-MT03",
+      "GS3-ECO-PR-EXTSECTOR-MT04",
+      "GS3-ECO-PR-EXTSECTOR-MT05",
+      "GS3-ECO-PR-EXTSECTOR-MT06",
+      "GS3-ECO-PR-EXTSECTOR-MT07",
+      "GS3-ECO-PR-EXTSECTOR-MT08",
+      "GS3-ECO-PR-EXTSECTOR-MT09"
+    ],
+    "primaryNodeId": "GS3-ECO-PR-EXTSECTOR-MT01"
+  },
+  "GS3-ECO-PR-COMMITTEES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ECO-PR-COMMITTEES-MT01",
+      "GS3-ECO-PR-COMMITTEES-MT02",
+      "GS3-ECO-PR-COMMITTEES-MT03",
+      "GS3-ECO-PR-COMMITTEES-MT04",
+      "GS3-ECO-PR-COMMITTEES-MT05",
+      "GS3-ECO-PR-COMMITTEES-MT06",
+      "GS3-ECO-PR-COMMITTEES-MT07",
+      "GS3-ECO-PR-COMMITTEES-MT08",
+      "GS3-ECO-PR-COMMITTEES-MT09",
+      "GS3-ECO-PR-COMMITTEES-MT10",
+      "GS3-ECO-PR-COMMITTEES-MT11",
+      "GS3-ECO-PR-COMMITTEES-MT12",
+      "GS3-ECO-PR-COMMITTEES-MT13"
+    ],
+    "primaryNodeId": "GS3-ECO-PR-COMMITTEES-MT01"
+  },
+  "GS3-ENV-ECOLOGY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-BIOGEO-MT01",
+      "GS3-ENV-BIOGEO-MT02",
+      "GS3-ENV-BIOGEO-MT03",
+      "GS3-ENV-BIOGEO-MT04",
+      "GS3-ENV-BIOGEO-MT05",
+      "GS3-ENV-ECO-CONCEPTS-MT01",
+      "GS3-ENV-ECO-CONCEPTS-MT02",
+      "GS3-ENV-ECO-CONCEPTS-MT03",
+      "GS3-ENV-ECO-CONCEPTS-MT04",
+      "GS3-ENV-ECO-CONCEPTS-MT05",
+      "GS3-ENV-ECO-CONCEPTS-MT06",
+      "GS3-ENV-ECO-ENERGY-MT01",
+      "GS3-ENV-ECO-ENERGY-MT02",
+      "GS3-ENV-ECO-ENERGY-MT03",
+      "GS3-ENV-ECO-ENERGY-MT04",
+      "GS3-ENV-ECO-ENERGY-MT05",
+      "GS3-ENV-ECO-ENERGY-MT06"
+    ],
+    "primaryNodeId": "GS3-ENV-BIOGEO-MT01"
+  },
+  "GS3-ENV-ECO-CONCEPTS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-ECO-CONCEPTS-MT01",
+      "GS3-ENV-ECO-CONCEPTS-MT02",
+      "GS3-ENV-ECO-CONCEPTS-MT03",
+      "GS3-ENV-ECO-CONCEPTS-MT04",
+      "GS3-ENV-ECO-CONCEPTS-MT05",
+      "GS3-ENV-ECO-CONCEPTS-MT06"
+    ],
+    "primaryNodeId": "GS3-ENV-ECO-CONCEPTS-MT01"
+  },
+  "GS3-ENV-ECO-ENERGY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-ECO-ENERGY-MT01",
+      "GS3-ENV-ECO-ENERGY-MT02",
+      "GS3-ENV-ECO-ENERGY-MT03",
+      "GS3-ENV-ECO-ENERGY-MT04",
+      "GS3-ENV-ECO-ENERGY-MT05",
+      "GS3-ENV-ECO-ENERGY-MT06"
+    ],
+    "primaryNodeId": "GS3-ENV-ECO-ENERGY-MT01"
+  },
+  "GS3-ENV-BIOGEO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-BIOGEO-MT01",
+      "GS3-ENV-BIOGEO-MT02",
+      "GS3-ENV-BIOGEO-MT03",
+      "GS3-ENV-BIOGEO-MT04",
+      "GS3-ENV-BIOGEO-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-BIOGEO-MT01"
+  },
+  "GS3-ENV-BIODIV": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-CONSERVATION-MT01",
+      "GS3-ENV-CONSERVATION-MT02",
+      "GS3-ENV-CONSERVATION-MT03",
+      "GS3-ENV-CONSERVATION-MT04",
+      "GS3-ENV-CONSERVATION-MT05",
+      "GS3-ENV-PROJECTS-MT01",
+      "GS3-ENV-PROJECTS-MT02",
+      "GS3-ENV-PROJECTS-MT03",
+      "GS3-ENV-PROJECTS-MT04",
+      "GS3-ENV-PROJECTS-MT05",
+      "GS3-ENV-SPECIES-MT01",
+      "GS3-ENV-SPECIES-MT02",
+      "GS3-ENV-SPECIES-MT03",
+      "GS3-ENV-SPECIES-MT04",
+      "GS3-ENV-SPECIES-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-CONSERVATION-MT01"
+  },
+  "GS3-ENV-SPECIES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-SPECIES-MT01",
+      "GS3-ENV-SPECIES-MT02",
+      "GS3-ENV-SPECIES-MT03",
+      "GS3-ENV-SPECIES-MT04",
+      "GS3-ENV-SPECIES-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-SPECIES-MT01"
+  },
+  "GS3-ENV-CONSERVATION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-CONSERVATION-MT01",
+      "GS3-ENV-CONSERVATION-MT02",
+      "GS3-ENV-CONSERVATION-MT03",
+      "GS3-ENV-CONSERVATION-MT04",
+      "GS3-ENV-CONSERVATION-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-CONSERVATION-MT01"
+  },
+  "GS3-ENV-PROJECTS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-PROJECTS-MT01",
+      "GS3-ENV-PROJECTS-MT02",
+      "GS3-ENV-PROJECTS-MT03",
+      "GS3-ENV-PROJECTS-MT04",
+      "GS3-ENV-PROJECTS-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-PROJECTS-MT01"
+  },
+  "GS3-ENV-POLLUTION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-AIR-MT01",
+      "GS3-ENV-AIR-MT02",
+      "GS3-ENV-AIR-MT03",
+      "GS3-ENV-AIR-MT04",
+      "GS3-ENV-AIR-MT05",
+      "GS3-ENV-WASTE-MT01",
+      "GS3-ENV-WASTE-MT02",
+      "GS3-ENV-WASTE-MT03",
+      "GS3-ENV-WASTE-MT04",
+      "GS3-ENV-WASTE-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-AIR-MT01"
+  },
+  "GS3-ENV-AIR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-AIR-MT01",
+      "GS3-ENV-AIR-MT02",
+      "GS3-ENV-AIR-MT03",
+      "GS3-ENV-AIR-MT04",
+      "GS3-ENV-AIR-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-AIR-MT01"
+  },
+  "GS3-ENV-WASTE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-WASTE-MT01",
+      "GS3-ENV-WASTE-MT02",
+      "GS3-ENV-WASTE-MT03",
+      "GS3-ENV-WASTE-MT04",
+      "GS3-ENV-WASTE-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-WASTE-MT01"
+  },
+  "GS3-ENV-CLIMATE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-CLIMATEPHEN-MT01",
+      "GS3-ENV-CLIMATEPHEN-MT02",
+      "GS3-ENV-CLIMATEPHEN-MT03",
+      "GS3-ENV-CLIMATEPHEN-MT04",
+      "GS3-ENV-CLIMATEPHEN-MT05",
+      "GS3-ENV-GLOBALWARM-MT01",
+      "GS3-ENV-GLOBALWARM-MT02",
+      "GS3-ENV-GLOBALWARM-MT03",
+      "GS3-ENV-GLOBALWARM-MT04",
+      "GS3-ENV-GLOBALWARM-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-CLIMATEPHEN-MT01"
+  },
+  "GS3-ENV-GLOBALWARM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-GLOBALWARM-MT01",
+      "GS3-ENV-GLOBALWARM-MT02",
+      "GS3-ENV-GLOBALWARM-MT03",
+      "GS3-ENV-GLOBALWARM-MT04",
+      "GS3-ENV-GLOBALWARM-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-GLOBALWARM-MT01"
+  },
+  "GS3-ENV-CLIMATEPHEN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-CLIMATEPHEN-MT01",
+      "GS3-ENV-CLIMATEPHEN-MT02",
+      "GS3-ENV-CLIMATEPHEN-MT03",
+      "GS3-ENV-CLIMATEPHEN-MT04",
+      "GS3-ENV-CLIMATEPHEN-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-CLIMATEPHEN-MT01"
+  },
+  "GS3-ENV-LAWS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-ACTS-MT01",
+      "GS3-ENV-ACTS-MT02",
+      "GS3-ENV-ACTS-MT03",
+      "GS3-ENV-ACTS-MT04",
+      "GS3-ENV-ACTS-MT05",
+      "GS3-ENV-INTL-MT01",
+      "GS3-ENV-INTL-MT02",
+      "GS3-ENV-INTL-MT03",
+      "GS3-ENV-INTL-MT04",
+      "GS3-ENV-INTL-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-ACTS-MT01"
+  },
+  "GS3-ENV-ACTS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-ACTS-MT01",
+      "GS3-ENV-ACTS-MT02",
+      "GS3-ENV-ACTS-MT03",
+      "GS3-ENV-ACTS-MT04",
+      "GS3-ENV-ACTS-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-ACTS-MT01"
+  },
+  "GS3-ENV-INTL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-INTL-MT01",
+      "GS3-ENV-INTL-MT02",
+      "GS3-ENV-INTL-MT03",
+      "GS3-ENV-INTL-MT04",
+      "GS3-ENV-INTL-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-INTL-MT01"
+  },
+  "GS3-ENV-RES-ENERGY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-ENERGY-GOV-MT01",
+      "GS3-ENV-ENERGY-GOV-MT02",
+      "GS3-ENV-ENERGY-GOV-MT03",
+      "GS3-ENV-ENERGY-GOV-MT04",
+      "GS3-ENV-ENERGY-GOV-MT05",
+      "GS3-ENV-ENERGY-MT01",
+      "GS3-ENV-ENERGY-MT02",
+      "GS3-ENV-ENERGY-MT03",
+      "GS3-ENV-ENERGY-MT04",
+      "GS3-ENV-ENERGY-MT05",
+      "GS3-ENV-ENERGY-MT06",
+      "GS3-ENV-LAND-WATER-MT01",
+      "GS3-ENV-LAND-WATER-MT02",
+      "GS3-ENV-LAND-WATER-MT03",
+      "GS3-ENV-LAND-WATER-MT04",
+      "GS3-ENV-LAND-WATER-MT05",
+      "GS3-ENV-LAND-WATER-MT06"
+    ],
+    "primaryNodeId": "GS3-ENV-ENERGY-GOV-MT01"
+  },
+  "GS3-ENV-LAND-WATER": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-LAND-WATER-MT01",
+      "GS3-ENV-LAND-WATER-MT02",
+      "GS3-ENV-LAND-WATER-MT03",
+      "GS3-ENV-LAND-WATER-MT04",
+      "GS3-ENV-LAND-WATER-MT05",
+      "GS3-ENV-LAND-WATER-MT06"
+    ],
+    "primaryNodeId": "GS3-ENV-LAND-WATER-MT01"
+  },
+  "GS3-ENV-ENERGY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-ENERGY-MT01",
+      "GS3-ENV-ENERGY-MT02",
+      "GS3-ENV-ENERGY-MT03",
+      "GS3-ENV-ENERGY-MT04",
+      "GS3-ENV-ENERGY-MT05",
+      "GS3-ENV-ENERGY-MT06"
+    ],
+    "primaryNodeId": "GS3-ENV-ENERGY-MT01"
+  },
+  "GS3-ENV-ENERGY-GOV": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-ENERGY-GOV-MT01",
+      "GS3-ENV-ENERGY-GOV-MT02",
+      "GS3-ENV-ENERGY-GOV-MT03",
+      "GS3-ENV-ENERGY-GOV-MT04",
+      "GS3-ENV-ENERGY-GOV-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-ENERGY-GOV-MT01"
+  },
+  "GS3-ENV-CURRENT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-CURR-CLIMATE-MT01",
+      "GS3-ENV-CURR-CLIMATE-MT02",
+      "GS3-ENV-CURR-CLIMATE-MT03",
+      "GS3-ENV-CURR-CLIMATE-MT04",
+      "GS3-ENV-CURR-CLIMATE-MT05",
+      "GS3-ENV-CURR-POLLUTION-MT01",
+      "GS3-ENV-CURR-POLLUTION-MT02",
+      "GS3-ENV-CURR-POLLUTION-MT03",
+      "GS3-ENV-CURR-POLLUTION-MT04",
+      "GS3-ENV-CURR-POLLUTION-MT05",
+      "GS3-ENV-CURR-POLLUTION-MT06",
+      "GS3-ENV-CURR-POLLUTION-MT07",
+      "GS3-ENV-CURR-RIVERS-MT01",
+      "GS3-ENV-CURR-RIVERS-MT02",
+      "GS3-ENV-CURR-RIVERS-MT03",
+      "GS3-ENV-CURR-RIVERS-MT04",
+      "GS3-ENV-CURR-RIVERS-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-CURR-CLIMATE-MT01"
+  },
+  "GS3-ENV-CURR-POLLUTION": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-CURR-POLLUTION-MT01",
+      "GS3-ENV-CURR-POLLUTION-MT02",
+      "GS3-ENV-CURR-POLLUTION-MT03",
+      "GS3-ENV-CURR-POLLUTION-MT04",
+      "GS3-ENV-CURR-POLLUTION-MT05",
+      "GS3-ENV-CURR-POLLUTION-MT06",
+      "GS3-ENV-CURR-POLLUTION-MT07"
+    ],
+    "primaryNodeId": "GS3-ENV-CURR-POLLUTION-MT01"
+  },
+  "GS3-ENV-CURR-CLIMATE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-CURR-CLIMATE-MT01",
+      "GS3-ENV-CURR-CLIMATE-MT02",
+      "GS3-ENV-CURR-CLIMATE-MT03",
+      "GS3-ENV-CURR-CLIMATE-MT04",
+      "GS3-ENV-CURR-CLIMATE-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-CURR-CLIMATE-MT01"
+  },
+  "GS3-ENV-CURR-RIVERS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ENV-CURR-RIVERS-MT01",
+      "GS3-ENV-CURR-RIVERS-MT02",
+      "GS3-ENV-CURR-RIVERS-MT03",
+      "GS3-ENV-CURR-RIVERS-MT04",
+      "GS3-ENV-CURR-RIVERS-MT05"
+    ],
+    "primaryNodeId": "GS3-ENV-CURR-RIVERS-MT01"
+  },
+  "GS3-SEC-MAINS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-ARMY-MT01",
+      "GS3-SEC-ARMY-MT02",
+      "GS3-SEC-ARMY-MT03",
+      "GS3-SEC-BORDER-MT01",
+      "GS3-SEC-BORDER-MT02",
+      "GS3-SEC-BORDER-MT03",
+      "GS3-SEC-CYBER-BASICS-MT01",
+      "GS3-SEC-CYBER-BASICS-MT02",
+      "GS3-SEC-CYBER-BASICS-MT03",
+      "GS3-SEC-CYBER-BASICS-MT04",
+      "GS3-SEC-CYBERWAR-MT01",
+      "GS3-SEC-CYBERWAR-MT02",
+      "GS3-SEC-CYBERWAR-MT03",
+      "GS3-SEC-CYBERWAR-MT04",
+      "GS3-SEC-CYBERWAR-MT05",
+      "GS3-SEC-DEFENCE-MII-MT01",
+      "GS3-SEC-DEFENCE-MII-MT02",
+      "GS3-SEC-DEFENCE-MII-MT03",
+      "GS3-SEC-DEFENCE-MII-MT04",
+      "GS3-SEC-EXTREMISM-MT01",
+      "GS3-SEC-EXTREMISM-MT02",
+      "GS3-SEC-EXTREMISM-MT03",
+      "GS3-SEC-EXTREMISM-MT04",
+      "GS3-SEC-FORCES-MT01",
+      "GS3-SEC-FORCES-MT02",
+      "GS3-SEC-FORCES-MT03",
+      "GS3-SEC-FORCES-MT04",
+      "GS3-SEC-FORCES-MT05",
+      "GS3-SEC-FORCES-MT06",
+      "GS3-SEC-FORCES-MT07",
+      "GS3-SEC-FOUNDATIONS-MT01",
+      "GS3-SEC-FOUNDATIONS-MT02",
+      "GS3-SEC-FOUNDATIONS-MT03",
+      "GS3-SEC-FOUNDATIONS-MT04",
+      "GS3-SEC-FOUNDATIONS-MT05",
+      "GS3-SEC-GOV-MECH-MT01",
+      "GS3-SEC-GOV-MECH-MT02",
+      "GS3-SEC-GOV-MECH-MT03",
+      "GS3-SEC-GOV-MECH-MT04",
+      "GS3-SEC-GOV-MECH-MT05",
+      "GS3-SEC-MARITIME-MT01",
+      "GS3-SEC-MARITIME-MT02",
+      "GS3-SEC-MARITIME-MT03",
+      "GS3-SEC-MARITIME-MT04",
+      "GS3-SEC-ML-BLACK-MT01",
+      "GS3-SEC-ML-BLACK-MT02",
+      "GS3-SEC-ML-BLACK-MT03",
+      "GS3-SEC-ML-BLACK-MT04",
+      "GS3-SEC-NE-INSURGENCY-MT01",
+      "GS3-SEC-NE-INSURGENCY-MT02",
+      "GS3-SEC-NE-INSURGENCY-MT03",
+      "GS3-SEC-NEIGHBOURS-MT01",
+      "GS3-SEC-NEIGHBOURS-MT02",
+      "GS3-SEC-NEIGHBOURS-MT03",
+      "GS3-SEC-NEIGHBOURS-MT04",
+      "GS3-SEC-ORGCRIME-MT01",
+      "GS3-SEC-ORGCRIME-MT02",
+      "GS3-SEC-ORGCRIME-MT03",
+      "GS3-SEC-ORGCRIME-MT04",
+      "GS3-SEC-POLICE-PRISON-MT01",
+      "GS3-SEC-POLICE-PRISON-MT02",
+      "GS3-SEC-POLICE-PRISON-MT03",
+      "GS3-SEC-POLICE-PRISON-MT04",
+      "GS3-SEC-POLICE-PRISON-MT05",
+      "GS3-SEC-SOCIALMEDIA-MT01",
+      "GS3-SEC-SOCIALMEDIA-MT02",
+      "GS3-SEC-SOCIALMEDIA-MT03",
+      "GS3-SEC-TERRORISM-MT01",
+      "GS3-SEC-TERRORISM-MT02",
+      "GS3-SEC-TERRORISM-MT03"
+    ],
+    "primaryNodeId": "GS3-SEC-ARMY-MT01"
+  },
+  "GS3-SEC-FOUNDATIONS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-FOUNDATIONS-MT01",
+      "GS3-SEC-FOUNDATIONS-MT02",
+      "GS3-SEC-FOUNDATIONS-MT03",
+      "GS3-SEC-FOUNDATIONS-MT04",
+      "GS3-SEC-FOUNDATIONS-MT05"
+    ],
+    "primaryNodeId": "GS3-SEC-FOUNDATIONS-MT01"
+  },
+  "GS3-SEC-NEIGHBOURS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-NEIGHBOURS-MT01",
+      "GS3-SEC-NEIGHBOURS-MT02",
+      "GS3-SEC-NEIGHBOURS-MT03",
+      "GS3-SEC-NEIGHBOURS-MT04"
+    ],
+    "primaryNodeId": "GS3-SEC-NEIGHBOURS-MT01"
+  },
+  "GS3-SEC-TERRORISM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-TERRORISM-MT01",
+      "GS3-SEC-TERRORISM-MT02",
+      "GS3-SEC-TERRORISM-MT03"
+    ],
+    "primaryNodeId": "GS3-SEC-TERRORISM-MT01"
+  },
+  "GS3-SEC-ORGCRIME": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-ORGCRIME-MT01",
+      "GS3-SEC-ORGCRIME-MT02",
+      "GS3-SEC-ORGCRIME-MT03",
+      "GS3-SEC-ORGCRIME-MT04"
+    ],
+    "primaryNodeId": "GS3-SEC-ORGCRIME-MT01"
+  },
+  "GS3-SEC-EXTREMISM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-EXTREMISM-MT01",
+      "GS3-SEC-EXTREMISM-MT02",
+      "GS3-SEC-EXTREMISM-MT03",
+      "GS3-SEC-EXTREMISM-MT04"
+    ],
+    "primaryNodeId": "GS3-SEC-EXTREMISM-MT01"
+  },
+  "GS3-SEC-NE-INSURGENCY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-NE-INSURGENCY-MT01",
+      "GS3-SEC-NE-INSURGENCY-MT02",
+      "GS3-SEC-NE-INSURGENCY-MT03"
+    ],
+    "primaryNodeId": "GS3-SEC-NE-INSURGENCY-MT01"
+  },
+  "GS3-SEC-BORDER": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-BORDER-MT01",
+      "GS3-SEC-BORDER-MT02",
+      "GS3-SEC-BORDER-MT03"
+    ],
+    "primaryNodeId": "GS3-SEC-BORDER-MT01"
+  },
+  "GS3-SEC-CYBER-BASICS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-CYBER-BASICS-MT01",
+      "GS3-SEC-CYBER-BASICS-MT02",
+      "GS3-SEC-CYBER-BASICS-MT03",
+      "GS3-SEC-CYBER-BASICS-MT04"
+    ],
+    "primaryNodeId": "GS3-SEC-CYBER-BASICS-MT01"
+  },
+  "GS3-SEC-CYBERWAR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-CYBERWAR-MT01",
+      "GS3-SEC-CYBERWAR-MT02",
+      "GS3-SEC-CYBERWAR-MT03",
+      "GS3-SEC-CYBERWAR-MT04",
+      "GS3-SEC-CYBERWAR-MT05"
+    ],
+    "primaryNodeId": "GS3-SEC-CYBERWAR-MT01"
+  },
+  "GS3-SEC-SOCIALMEDIA": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-SOCIALMEDIA-MT01",
+      "GS3-SEC-SOCIALMEDIA-MT02",
+      "GS3-SEC-SOCIALMEDIA-MT03"
+    ],
+    "primaryNodeId": "GS3-SEC-SOCIALMEDIA-MT01"
+  },
+  "GS3-SEC-ML-BLACK": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-ML-BLACK-MT01",
+      "GS3-SEC-ML-BLACK-MT02",
+      "GS3-SEC-ML-BLACK-MT03",
+      "GS3-SEC-ML-BLACK-MT04"
+    ],
+    "primaryNodeId": "GS3-SEC-ML-BLACK-MT01"
+  },
+  "GS3-SEC-POLICE-PRISON": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-POLICE-PRISON-MT01",
+      "GS3-SEC-POLICE-PRISON-MT02",
+      "GS3-SEC-POLICE-PRISON-MT03",
+      "GS3-SEC-POLICE-PRISON-MT04",
+      "GS3-SEC-POLICE-PRISON-MT05"
+    ],
+    "primaryNodeId": "GS3-SEC-POLICE-PRISON-MT01"
+  },
+  "GS3-SEC-FORCES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-FORCES-MT01",
+      "GS3-SEC-FORCES-MT02",
+      "GS3-SEC-FORCES-MT03",
+      "GS3-SEC-FORCES-MT04",
+      "GS3-SEC-FORCES-MT05",
+      "GS3-SEC-FORCES-MT06",
+      "GS3-SEC-FORCES-MT07"
+    ],
+    "primaryNodeId": "GS3-SEC-FORCES-MT01"
+  },
+  "GS3-SEC-ARMY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-ARMY-MT01",
+      "GS3-SEC-ARMY-MT02",
+      "GS3-SEC-ARMY-MT03"
+    ],
+    "primaryNodeId": "GS3-SEC-ARMY-MT01"
+  },
+  "GS3-SEC-GOV-MECH": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-GOV-MECH-MT01",
+      "GS3-SEC-GOV-MECH-MT02",
+      "GS3-SEC-GOV-MECH-MT03",
+      "GS3-SEC-GOV-MECH-MT04",
+      "GS3-SEC-GOV-MECH-MT05"
+    ],
+    "primaryNodeId": "GS3-SEC-GOV-MECH-MT01"
+  },
+  "GS3-SEC-MARITIME": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-MARITIME-MT01",
+      "GS3-SEC-MARITIME-MT02",
+      "GS3-SEC-MARITIME-MT03",
+      "GS3-SEC-MARITIME-MT04"
+    ],
+    "primaryNodeId": "GS3-SEC-MARITIME-MT01"
+  },
+  "GS3-SEC-DEFENCE-MII": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-SEC-DEFENCE-MII-MT01",
+      "GS3-SEC-DEFENCE-MII-MT02",
+      "GS3-SEC-DEFENCE-MII-MT03",
+      "GS3-SEC-DEFENCE-MII-MT04"
+    ],
+    "primaryNodeId": "GS3-SEC-DEFENCE-MII-MT01"
+  },
+  "GS3-DM-MAINS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-DM-DISASTERS-MT01",
+      "GS3-DM-DISASTERS-MT02",
+      "GS3-DM-DISASTERS-MT03",
+      "GS3-DM-DISASTERS-MT04",
+      "GS3-DM-DISASTERS-MT05",
+      "GS3-DM-DISASTERS-MT06",
+      "GS3-DM-DISASTERS-MT07",
+      "GS3-DM-DISASTERS-MT08",
+      "GS3-DM-DISASTERS-MT09",
+      "GS3-DM-DISASTERS-MT10",
+      "GS3-DM-DISASTERS-MT11",
+      "GS3-DM-DISASTERS-MT12",
+      "GS3-DM-DISASTERS-MT13",
+      "GS3-DM-DISASTERS-MT14",
+      "GS3-DM-PREP-MIT-MT01",
+      "GS3-DM-PREP-MIT-MT02",
+      "GS3-DM-PREP-MIT-MT03",
+      "GS3-DM-PREP-MIT-MT04",
+      "GS3-DM-PREP-MIT-MT05",
+      "GS3-DM-PREP-MIT-MT06",
+      "GS3-DM-PREP-MIT-MT07",
+      "GS3-DM-PREP-MIT-MT08",
+      "GS3-DM-PREP-MIT-MT09",
+      "GS3-DM-PREP-MIT-MT10",
+      "GS3-DM-PREP-MIT-MT11",
+      "GS3-DM-PREP-MIT-MT12"
+    ],
+    "primaryNodeId": "GS3-DM-DISASTERS-MT01"
+  },
+  "GS3-DM-DISASTERS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-DM-DISASTERS-MT01",
+      "GS3-DM-DISASTERS-MT02",
+      "GS3-DM-DISASTERS-MT03",
+      "GS3-DM-DISASTERS-MT04",
+      "GS3-DM-DISASTERS-MT05",
+      "GS3-DM-DISASTERS-MT06",
+      "GS3-DM-DISASTERS-MT07",
+      "GS3-DM-DISASTERS-MT08",
+      "GS3-DM-DISASTERS-MT09",
+      "GS3-DM-DISASTERS-MT10",
+      "GS3-DM-DISASTERS-MT11",
+      "GS3-DM-DISASTERS-MT12",
+      "GS3-DM-DISASTERS-MT13",
+      "GS3-DM-DISASTERS-MT14"
+    ],
+    "primaryNodeId": "GS3-DM-DISASTERS-MT01"
+  },
+  "GS3-DM-PREP-MIT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-DM-PREP-MIT-MT01",
+      "GS3-DM-PREP-MIT-MT02",
+      "GS3-DM-PREP-MIT-MT03",
+      "GS3-DM-PREP-MIT-MT04",
+      "GS3-DM-PREP-MIT-MT05",
+      "GS3-DM-PREP-MIT-MT06",
+      "GS3-DM-PREP-MIT-MT07",
+      "GS3-DM-PREP-MIT-MT08",
+      "GS3-DM-PREP-MIT-MT09",
+      "GS3-DM-PREP-MIT-MT10",
+      "GS3-DM-PREP-MIT-MT11",
+      "GS3-DM-PREP-MIT-MT12"
+    ],
+    "primaryNodeId": "GS3-DM-PREP-MIT-MT01"
+  },
+  "GS3-ST-PRELIMS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ST-BIOTECH-MT01",
+      "GS3-ST-BIOTECH-MT02",
+      "GS3-ST-BIOTECH-MT03",
+      "GS3-ST-BIOTECH-MT04",
+      "GS3-ST-BIOTECH-MT05",
+      "GS3-ST-BIOTECH-MT06",
+      "GS3-ST-DEFENCE-MT01",
+      "GS3-ST-DEFENCE-MT02",
+      "GS3-ST-DEFENCE-MT03",
+      "GS3-ST-DEFENCE-MT04",
+      "GS3-ST-DEFENCE-MT05",
+      "GS3-ST-DEFENCE-MT06",
+      "GS3-ST-GENSCI-BIO-MT01",
+      "GS3-ST-GENSCI-BIO-MT02",
+      "GS3-ST-GENSCI-BIO-MT03",
+      "GS3-ST-GENSCI-BIO-MT04",
+      "GS3-ST-GENSCI-BIO-MT05",
+      "GS3-ST-GENSCI-BIO-MT06",
+      "GS3-ST-GENSCI-BIO-MT07",
+      "GS3-ST-GENSCI-BIO-MT08",
+      "GS3-ST-GENSCI-BIO-MT09",
+      "GS3-ST-GENSCI-BIO-MT10",
+      "GS3-ST-GENSCI-BIO-MT11",
+      "GS3-ST-GENSCI-BIO-MT12",
+      "GS3-ST-GENSCI-BIO-MT13",
+      "GS3-ST-GENSCI-BIO-MT14",
+      "GS3-ST-GENSCI-BIO-MT15",
+      "GS3-ST-GENSCI-BIO-MT16",
+      "GS3-ST-GENSCI-BIO-MT17",
+      "GS3-ST-GENSCI-BIO-MT18",
+      "GS3-ST-GENSCI-BIO-MT19",
+      "GS3-ST-GENSCI-BIO-MT20",
+      "GS3-ST-GENSCI-BIO-MT21",
+      "GS3-ST-IPR-MT01",
+      "GS3-ST-IPR-MT02",
+      "GS3-ST-IT-COMM-MT01",
+      "GS3-ST-IT-COMM-MT02",
+      "GS3-ST-IT-COMM-MT03",
+      "GS3-ST-IT-COMM-MT04",
+      "GS3-ST-IT-COMM-MT05",
+      "GS3-ST-IT-COMM-MT06",
+      "GS3-ST-IT-COMM-MT07",
+      "GS3-ST-IT-COMM-MT08",
+      "GS3-ST-MAINS-CORE-MT01",
+      "GS3-ST-MAINS-CORE-MT02",
+      "GS3-ST-MAINS-CORE-MT03",
+      "GS3-ST-MAINS-CORE-MT04",
+      "GS3-ST-MAINS-CORE-MT05",
+      "GS3-ST-MAINS-CORE-MT06",
+      "GS3-ST-MAINS-CORE-MT07",
+      "GS3-ST-MAINS-CORE-MT08",
+      "GS3-ST-MAINS-CORE-MT09",
+      "GS3-ST-MAINS-CORE-MT10",
+      "GS3-ST-MAINS-CORE-MT11",
+      "GS3-ST-MAINS-CORE-MT12",
+      "GS3-ST-MAINS-CORE-MT13",
+      "GS3-ST-MAINS-CORE-MT14",
+      "GS3-ST-MAINS-CORE-MT15",
+      "GS3-ST-MAINS-CURRENT-MT01",
+      "GS3-ST-MAINS-CURRENT-MT02",
+      "GS3-ST-MAINS-CURRENT-MT03",
+      "GS3-ST-MAINS-CURRENT-MT04",
+      "GS3-ST-MAINS-CURRENT-MT05",
+      "GS3-ST-MAINS-CURRENT-MT06",
+      "GS3-ST-MAINS-CURRENT-MT07",
+      "GS3-ST-MAINS-CURRENT-MT08",
+      "GS3-ST-MAINS-CURRENT-MT09",
+      "GS3-ST-MAINS-CURRENT-MT10",
+      "GS3-ST-MAINS-CURRENT-MT11",
+      "GS3-ST-MAINS-CURRENT-MT12",
+      "GS3-ST-MAINS-CURRENT-MT13",
+      "GS3-ST-MAINS-CURRENT-MT14",
+      "GS3-ST-MAINS-CURRENT-MT15",
+      "GS3-ST-MAINS-CURRENT-MT16",
+      "GS3-ST-MAINS-CURRENT-MT17",
+      "GS3-ST-MAINS-CURRENT-MT18",
+      "GS3-ST-MAINS-CURRENT-MT19",
+      "GS3-ST-MAINS-CURRENT-MT20",
+      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT02",
+      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT03",
+      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT04",
+      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT05",
+      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT06",
+      "GS3-ST-NUCLEAR-MT01",
+      "GS3-ST-NUCLEAR-MT02",
+      "GS3-ST-NUCLEAR-MT03",
+      "GS3-ST-NUCLEAR-MT04",
+      "GS3-ST-NUCLEAR-MT05",
+      "GS3-ST-NUCLEAR-MT06",
+      "GS3-ST-POLICY-INST-MT01",
+      "GS3-ST-POLICY-INST-MT02",
+      "GS3-ST-POLICY-INST-MT03",
+      "GS3-ST-POLICY-INST-MT04",
+      "GS3-ST-POLICY-INST-MT05",
+      "GS3-ST-POLICY-INST-MT06",
+      "GS3-ST-POLICY-INST-MT07",
+      "GS3-ST-POLICY-INST-MT08",
+      "GS3-ST-SPACE-MT01",
+      "GS3-ST-SPACE-MT02",
+      "GS3-ST-SPACE-MT03",
+      "GS3-ST-SPACE-MT04",
+      "GS3-ST-SPACE-MT05",
+      "GS3-ST-SPACE-MT06",
+      "GS3-ST-SPACE-MT07",
+      "GS3-ST-SPACE-MT08"
+    ],
+    "primaryNodeId": "GS3-ST-BIOTECH-MT01"
+  },
+  "GS3-ST-POLICY-INST": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ST-POLICY-INST-MT01",
+      "GS3-ST-POLICY-INST-MT02",
+      "GS3-ST-POLICY-INST-MT03",
+      "GS3-ST-POLICY-INST-MT04",
+      "GS3-ST-POLICY-INST-MT05",
+      "GS3-ST-POLICY-INST-MT06",
+      "GS3-ST-POLICY-INST-MT07",
+      "GS3-ST-POLICY-INST-MT08"
+    ],
+    "primaryNodeId": "GS3-ST-POLICY-INST-MT01"
+  },
+  "GS3-ST-SPACE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ST-SPACE-MT01",
+      "GS3-ST-SPACE-MT02",
+      "GS3-ST-SPACE-MT03",
+      "GS3-ST-SPACE-MT04",
+      "GS3-ST-SPACE-MT05",
+      "GS3-ST-SPACE-MT06",
+      "GS3-ST-SPACE-MT07",
+      "GS3-ST-SPACE-MT08"
+    ],
+    "primaryNodeId": "GS3-ST-SPACE-MT01"
+  },
+  "GS3-ST-IT-COMM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ST-IT-COMM-MT01",
+      "GS3-ST-IT-COMM-MT02",
+      "GS3-ST-IT-COMM-MT03",
+      "GS3-ST-IT-COMM-MT04",
+      "GS3-ST-IT-COMM-MT05",
+      "GS3-ST-IT-COMM-MT06",
+      "GS3-ST-IT-COMM-MT07",
+      "GS3-ST-IT-COMM-MT08"
+    ],
+    "primaryNodeId": "GS3-ST-IT-COMM-MT01"
+  },
+  "GS3-ST-MATERIALS-NANO-ROBOTICS-AI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT02",
+      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT03",
+      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT04",
+      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT05",
+      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT06"
+    ],
+    "primaryNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01"
+  },
+  "GS3-ST-DEFENCE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ST-DEFENCE-MT01",
+      "GS3-ST-DEFENCE-MT02",
+      "GS3-ST-DEFENCE-MT03",
+      "GS3-ST-DEFENCE-MT04",
+      "GS3-ST-DEFENCE-MT05",
+      "GS3-ST-DEFENCE-MT06"
+    ],
+    "primaryNodeId": "GS3-ST-DEFENCE-MT01"
+  },
+  "GS3-ST-NUCLEAR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ST-NUCLEAR-MT01",
+      "GS3-ST-NUCLEAR-MT02",
+      "GS3-ST-NUCLEAR-MT03",
+      "GS3-ST-NUCLEAR-MT04",
+      "GS3-ST-NUCLEAR-MT05",
+      "GS3-ST-NUCLEAR-MT06"
+    ],
+    "primaryNodeId": "GS3-ST-NUCLEAR-MT01"
+  },
+  "GS3-ST-IPR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ST-IPR-MT01",
+      "GS3-ST-IPR-MT02"
+    ],
+    "primaryNodeId": "GS3-ST-IPR-MT01"
+  },
+  "GS3-ST-BIOTECH": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ST-BIOTECH-MT01",
+      "GS3-ST-BIOTECH-MT02",
+      "GS3-ST-BIOTECH-MT03",
+      "GS3-ST-BIOTECH-MT04",
+      "GS3-ST-BIOTECH-MT05",
+      "GS3-ST-BIOTECH-MT06"
+    ],
+    "primaryNodeId": "GS3-ST-BIOTECH-MT01"
+  },
+  "GS3-ST-GENSCI-BIO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ST-GENSCI-BIO-MT01",
+      "GS3-ST-GENSCI-BIO-MT02",
+      "GS3-ST-GENSCI-BIO-MT03",
+      "GS3-ST-GENSCI-BIO-MT04",
+      "GS3-ST-GENSCI-BIO-MT05",
+      "GS3-ST-GENSCI-BIO-MT06",
+      "GS3-ST-GENSCI-BIO-MT07",
+      "GS3-ST-GENSCI-BIO-MT08",
+      "GS3-ST-GENSCI-BIO-MT09",
+      "GS3-ST-GENSCI-BIO-MT10",
+      "GS3-ST-GENSCI-BIO-MT11",
+      "GS3-ST-GENSCI-BIO-MT12",
+      "GS3-ST-GENSCI-BIO-MT13",
+      "GS3-ST-GENSCI-BIO-MT14",
+      "GS3-ST-GENSCI-BIO-MT15",
+      "GS3-ST-GENSCI-BIO-MT16",
+      "GS3-ST-GENSCI-BIO-MT17",
+      "GS3-ST-GENSCI-BIO-MT18",
+      "GS3-ST-GENSCI-BIO-MT19",
+      "GS3-ST-GENSCI-BIO-MT20",
+      "GS3-ST-GENSCI-BIO-MT21"
+    ],
+    "primaryNodeId": "GS3-ST-GENSCI-BIO-MT01"
+  },
+  "GS3-ST-MAINS-CORE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ST-MAINS-CORE-MT01",
+      "GS3-ST-MAINS-CORE-MT02",
+      "GS3-ST-MAINS-CORE-MT03",
+      "GS3-ST-MAINS-CORE-MT04",
+      "GS3-ST-MAINS-CORE-MT05",
+      "GS3-ST-MAINS-CORE-MT06",
+      "GS3-ST-MAINS-CORE-MT07",
+      "GS3-ST-MAINS-CORE-MT08",
+      "GS3-ST-MAINS-CORE-MT09",
+      "GS3-ST-MAINS-CORE-MT10",
+      "GS3-ST-MAINS-CORE-MT11",
+      "GS3-ST-MAINS-CORE-MT12",
+      "GS3-ST-MAINS-CORE-MT13",
+      "GS3-ST-MAINS-CORE-MT14",
+      "GS3-ST-MAINS-CORE-MT15"
+    ],
+    "primaryNodeId": "GS3-ST-MAINS-CORE-MT01"
+  },
+  "GS3-ST-MAINS-CURRENT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS3-ST-MAINS-CURRENT-MT01",
+      "GS3-ST-MAINS-CURRENT-MT02",
+      "GS3-ST-MAINS-CURRENT-MT03",
+      "GS3-ST-MAINS-CURRENT-MT04",
+      "GS3-ST-MAINS-CURRENT-MT05",
+      "GS3-ST-MAINS-CURRENT-MT06",
+      "GS3-ST-MAINS-CURRENT-MT07",
+      "GS3-ST-MAINS-CURRENT-MT08",
+      "GS3-ST-MAINS-CURRENT-MT09",
+      "GS3-ST-MAINS-CURRENT-MT10",
+      "GS3-ST-MAINS-CURRENT-MT11",
+      "GS3-ST-MAINS-CURRENT-MT12",
+      "GS3-ST-MAINS-CURRENT-MT13",
+      "GS3-ST-MAINS-CURRENT-MT14",
+      "GS3-ST-MAINS-CURRENT-MT15",
+      "GS3-ST-MAINS-CURRENT-MT16",
+      "GS3-ST-MAINS-CURRENT-MT17",
+      "GS3-ST-MAINS-CURRENT-MT18",
+      "GS3-ST-MAINS-CURRENT-MT19",
+      "GS3-ST-MAINS-CURRENT-MT20"
+    ],
+    "primaryNodeId": "GS3-ST-MAINS-CURRENT-MT01"
+  },
+  "OPT-P1-PHYSICAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P1-BIOGEO-MT01",
+      "OPT-P1-BIOGEO-MT02",
+      "OPT-P1-BIOGEO-MT03",
+      "OPT-P1-BIOGEO-MT04",
+      "OPT-P1-BIOGEO-MT05",
+      "OPT-P1-BIOGEO-MT06",
+      "OPT-P1-BIOGEO-MT07",
+      "OPT-P1-BIOGEO-MT08",
+      "OPT-P1-BIOGEO-MT09",
+      "OPT-P1-CLIM-MT01",
+      "OPT-P1-CLIM-MT02",
+      "OPT-P1-CLIM-MT03",
+      "OPT-P1-CLIM-MT04",
+      "OPT-P1-CLIM-MT05",
+      "OPT-P1-CLIM-MT06",
+      "OPT-P1-CLIM-MT07",
+      "OPT-P1-CLIM-MT08",
+      "OPT-P1-CLIM-MT09",
+      "OPT-P1-CLIM-MT10",
+      "OPT-P1-CLIM-MT11",
+      "OPT-P1-CLIM-MT12",
+      "OPT-P1-CLIM-MT13",
+      "OPT-P1-CLIM-MT14",
+      "OPT-P1-CLIM-MT15",
+      "OPT-P1-CLIM-MT16",
+      "OPT-P1-CLIM-MT17",
+      "OPT-P1-CLIM-MT18",
+      "OPT-P1-ENVGEO-MT01",
+      "OPT-P1-ENVGEO-MT02",
+      "OPT-P1-ENVGEO-MT03",
+      "OPT-P1-ENVGEO-MT04",
+      "OPT-P1-ENVGEO-MT05",
+      "OPT-P1-ENVGEO-MT06",
+      "OPT-P1-ENVGEO-MT07",
+      "OPT-P1-ENVGEO-MT08",
+      "OPT-P1-ENVGEO-MT09",
+      "OPT-P1-ENVGEO-MT10",
+      "OPT-P1-GEOM-MT01",
+      "OPT-P1-GEOM-MT02",
+      "OPT-P1-GEOM-MT03",
+      "OPT-P1-GEOM-MT04",
+      "OPT-P1-GEOM-MT05",
+      "OPT-P1-GEOM-MT06",
+      "OPT-P1-GEOM-MT07",
+      "OPT-P1-GEOM-MT08",
+      "OPT-P1-GEOM-MT09",
+      "OPT-P1-GEOM-MT10",
+      "OPT-P1-GEOM-MT11",
+      "OPT-P1-GEOM-MT12",
+      "OPT-P1-GEOM-MT13",
+      "OPT-P1-GEOM-MT14",
+      "OPT-P1-GEOM-MT15",
+      "OPT-P1-GEOM-MT16",
+      "OPT-P1-GEOM-MT17",
+      "OPT-P1-GEOM-MT18",
+      "OPT-P1-GEOM-MT19",
+      "OPT-P1-GEOM-MT20",
+      "OPT-P1-OCEAN-MT01",
+      "OPT-P1-OCEAN-MT02",
+      "OPT-P1-OCEAN-MT03",
+      "OPT-P1-OCEAN-MT04",
+      "OPT-P1-OCEAN-MT05",
+      "OPT-P1-OCEAN-MT06",
+      "OPT-P1-OCEAN-MT07",
+      "OPT-P1-OCEAN-MT08",
+      "OPT-P1-OCEAN-MT09",
+      "OPT-P1-OCEAN-MT10",
+      "OPT-P1-OCEAN-MT11",
+      "OPT-P1-OCEAN-MT12"
+    ],
+    "primaryNodeId": "OPT-P1-BIOGEO-MT01"
+  },
+  "OPT-P1-GEOM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P1-GEOM-MT01",
+      "OPT-P1-GEOM-MT02",
+      "OPT-P1-GEOM-MT03",
+      "OPT-P1-GEOM-MT04",
+      "OPT-P1-GEOM-MT05",
+      "OPT-P1-GEOM-MT06",
+      "OPT-P1-GEOM-MT07",
+      "OPT-P1-GEOM-MT08",
+      "OPT-P1-GEOM-MT09",
+      "OPT-P1-GEOM-MT10",
+      "OPT-P1-GEOM-MT11",
+      "OPT-P1-GEOM-MT12",
+      "OPT-P1-GEOM-MT13",
+      "OPT-P1-GEOM-MT14",
+      "OPT-P1-GEOM-MT15",
+      "OPT-P1-GEOM-MT16",
+      "OPT-P1-GEOM-MT17",
+      "OPT-P1-GEOM-MT18",
+      "OPT-P1-GEOM-MT19",
+      "OPT-P1-GEOM-MT20"
+    ],
+    "primaryNodeId": "OPT-P1-GEOM-MT01"
+  },
+  "OPT-P1-CLIM": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P1-CLIM-MT01",
+      "OPT-P1-CLIM-MT02",
+      "OPT-P1-CLIM-MT03",
+      "OPT-P1-CLIM-MT04",
+      "OPT-P1-CLIM-MT05",
+      "OPT-P1-CLIM-MT06",
+      "OPT-P1-CLIM-MT07",
+      "OPT-P1-CLIM-MT08",
+      "OPT-P1-CLIM-MT09",
+      "OPT-P1-CLIM-MT10",
+      "OPT-P1-CLIM-MT11",
+      "OPT-P1-CLIM-MT12",
+      "OPT-P1-CLIM-MT13",
+      "OPT-P1-CLIM-MT14",
+      "OPT-P1-CLIM-MT15",
+      "OPT-P1-CLIM-MT16",
+      "OPT-P1-CLIM-MT17",
+      "OPT-P1-CLIM-MT18"
+    ],
+    "primaryNodeId": "OPT-P1-CLIM-MT01"
+  },
+  "OPT-P1-OCEAN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P1-OCEAN-MT01",
+      "OPT-P1-OCEAN-MT02",
+      "OPT-P1-OCEAN-MT03",
+      "OPT-P1-OCEAN-MT04",
+      "OPT-P1-OCEAN-MT05",
+      "OPT-P1-OCEAN-MT06",
+      "OPT-P1-OCEAN-MT07",
+      "OPT-P1-OCEAN-MT08",
+      "OPT-P1-OCEAN-MT09",
+      "OPT-P1-OCEAN-MT10",
+      "OPT-P1-OCEAN-MT11",
+      "OPT-P1-OCEAN-MT12"
+    ],
+    "primaryNodeId": "OPT-P1-OCEAN-MT01"
+  },
+  "OPT-P1-BIOGEO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P1-BIOGEO-MT01",
+      "OPT-P1-BIOGEO-MT02",
+      "OPT-P1-BIOGEO-MT03",
+      "OPT-P1-BIOGEO-MT04",
+      "OPT-P1-BIOGEO-MT05",
+      "OPT-P1-BIOGEO-MT06",
+      "OPT-P1-BIOGEO-MT07",
+      "OPT-P1-BIOGEO-MT08",
+      "OPT-P1-BIOGEO-MT09"
+    ],
+    "primaryNodeId": "OPT-P1-BIOGEO-MT01"
+  },
+  "OPT-P1-ENVGEO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P1-ENVGEO-MT01",
+      "OPT-P1-ENVGEO-MT02",
+      "OPT-P1-ENVGEO-MT03",
+      "OPT-P1-ENVGEO-MT04",
+      "OPT-P1-ENVGEO-MT05",
+      "OPT-P1-ENVGEO-MT06",
+      "OPT-P1-ENVGEO-MT07",
+      "OPT-P1-ENVGEO-MT08",
+      "OPT-P1-ENVGEO-MT09",
+      "OPT-P1-ENVGEO-MT10"
+    ],
+    "primaryNodeId": "OPT-P1-ENVGEO-MT01"
+  },
+  "OPT-P1-HUMAN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P1-HG-PERSPECTIVES-MT01",
+      "OPT-P1-HG-PERSPECTIVES-MT02",
+      "OPT-P1-HG-PERSPECTIVES-MT03",
+      "OPT-P1-HG-PERSPECTIVES-MT04",
+      "OPT-P1-HG-PERSPECTIVES-MT05",
+      "OPT-P1-HG-PERSPECTIVES-MT06",
+      "OPT-P1-HG-PERSPECTIVES-MT07",
+      "OPT-P1-HG-PERSPECTIVES-MT08",
+      "OPT-P1-HG-PERSPECTIVES-MT09",
+      "OPT-P1-HG-PERSPECTIVES-MT10",
+      "OPT-P1-HG-PERSPECTIVES-MT11",
+      "OPT-P1-HG-PERSPECTIVES-MT12",
+      "OPT-P1-HG-PERSPECTIVES-MT13",
+      "OPT-P1-REGIONAL-PLANNING-MT01",
+      "OPT-P1-REGIONAL-PLANNING-MT02",
+      "OPT-P1-REGIONAL-PLANNING-MT03",
+      "OPT-P1-REGIONAL-PLANNING-MT04",
+      "OPT-P1-REGIONAL-PLANNING-MT05",
+      "OPT-P1-REGIONAL-PLANNING-MT06",
+      "OPT-P1-REGIONAL-PLANNING-MT07",
+      "OPT-P1-REGIONAL-PLANNING-MT08",
+      "OPT-P1-SETTLEMENT-MT01",
+      "OPT-P1-SETTLEMENT-MT02",
+      "OPT-P1-SETTLEMENT-MT03",
+      "OPT-P1-SETTLEMENT-MT04",
+      "OPT-P1-SETTLEMENT-MT05",
+      "OPT-P1-SETTLEMENT-MT06",
+      "OPT-P1-SETTLEMENT-MT07",
+      "OPT-P1-SETTLEMENT-MT08",
+      "OPT-P1-SETTLEMENT-MT09",
+      "OPT-P1-SETTLEMENT-MT10"
+    ],
+    "primaryNodeId": "OPT-P1-HG-PERSPECTIVES-MT01"
+  },
+  "OPT-P1-HG-PERSPECTIVES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P1-HG-PERSPECTIVES-MT01",
+      "OPT-P1-HG-PERSPECTIVES-MT02",
+      "OPT-P1-HG-PERSPECTIVES-MT03",
+      "OPT-P1-HG-PERSPECTIVES-MT04",
+      "OPT-P1-HG-PERSPECTIVES-MT05",
+      "OPT-P1-HG-PERSPECTIVES-MT06",
+      "OPT-P1-HG-PERSPECTIVES-MT07",
+      "OPT-P1-HG-PERSPECTIVES-MT08",
+      "OPT-P1-HG-PERSPECTIVES-MT09",
+      "OPT-P1-HG-PERSPECTIVES-MT10",
+      "OPT-P1-HG-PERSPECTIVES-MT11",
+      "OPT-P1-HG-PERSPECTIVES-MT12",
+      "OPT-P1-HG-PERSPECTIVES-MT13"
+    ],
+    "primaryNodeId": "OPT-P1-HG-PERSPECTIVES-MT01"
+  },
+  "OPT-P1-SETTLEMENT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P1-SETTLEMENT-MT01",
+      "OPT-P1-SETTLEMENT-MT02",
+      "OPT-P1-SETTLEMENT-MT03",
+      "OPT-P1-SETTLEMENT-MT04",
+      "OPT-P1-SETTLEMENT-MT05",
+      "OPT-P1-SETTLEMENT-MT06",
+      "OPT-P1-SETTLEMENT-MT07",
+      "OPT-P1-SETTLEMENT-MT08",
+      "OPT-P1-SETTLEMENT-MT09",
+      "OPT-P1-SETTLEMENT-MT10"
+    ],
+    "primaryNodeId": "OPT-P1-SETTLEMENT-MT01"
+  },
+  "OPT-P1-REGIONAL-PLANNING": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P1-REGIONAL-PLANNING-MT01",
+      "OPT-P1-REGIONAL-PLANNING-MT02",
+      "OPT-P1-REGIONAL-PLANNING-MT03",
+      "OPT-P1-REGIONAL-PLANNING-MT04",
+      "OPT-P1-REGIONAL-PLANNING-MT05",
+      "OPT-P1-REGIONAL-PLANNING-MT06",
+      "OPT-P1-REGIONAL-PLANNING-MT07",
+      "OPT-P1-REGIONAL-PLANNING-MT08"
+    ],
+    "primaryNodeId": "OPT-P1-REGIONAL-PLANNING-MT01"
+  },
+  "OPT-P2-PHYSICAL-RES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-INDIA-PHYS-MT01",
+      "OPT-P2-INDIA-PHYS-MT02",
+      "OPT-P2-INDIA-PHYS-MT03",
+      "OPT-P2-INDIA-PHYS-MT04",
+      "OPT-P2-INDIA-PHYS-MT05",
+      "OPT-P2-INDIA-PHYS-MT06",
+      "OPT-P2-RESOURCES-MT01",
+      "OPT-P2-RESOURCES-MT02",
+      "OPT-P2-RESOURCES-MT03",
+      "OPT-P2-RESOURCES-MT04",
+      "OPT-P2-RESOURCES-MT05",
+      "OPT-P2-RESOURCES-MT06"
+    ],
+    "primaryNodeId": "OPT-P2-INDIA-PHYS-MT01"
+  },
+  "OPT-P2-INDIA-PHYS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-INDIA-PHYS-MT01",
+      "OPT-P2-INDIA-PHYS-MT02",
+      "OPT-P2-INDIA-PHYS-MT03",
+      "OPT-P2-INDIA-PHYS-MT04",
+      "OPT-P2-INDIA-PHYS-MT05",
+      "OPT-P2-INDIA-PHYS-MT06"
+    ],
+    "primaryNodeId": "OPT-P2-INDIA-PHYS-MT01"
+  },
+  "OPT-P2-RESOURCES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-RESOURCES-MT01",
+      "OPT-P2-RESOURCES-MT02",
+      "OPT-P2-RESOURCES-MT03",
+      "OPT-P2-RESOURCES-MT04",
+      "OPT-P2-RESOURCES-MT05",
+      "OPT-P2-RESOURCES-MT06"
+    ],
+    "primaryNodeId": "OPT-P2-RESOURCES-MT01"
+  },
+  "OPT-P2-AGRI-IND": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-AGRI-MT01",
+      "OPT-P2-AGRI-MT02",
+      "OPT-P2-AGRI-MT03",
+      "OPT-P2-AGRI-MT04",
+      "OPT-P2-AGRI-MT05",
+      "OPT-P2-AGRI-MT06",
+      "OPT-P2-INDUSTRY-MT01",
+      "OPT-P2-INDUSTRY-MT02",
+      "OPT-P2-INDUSTRY-MT03",
+      "OPT-P2-INDUSTRY-MT04",
+      "OPT-P2-INDUSTRY-MT05"
+    ],
+    "primaryNodeId": "OPT-P2-AGRI-MT01"
+  },
+  "OPT-P2-AGRI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-AGRI-MT01",
+      "OPT-P2-AGRI-MT02",
+      "OPT-P2-AGRI-MT03",
+      "OPT-P2-AGRI-MT04",
+      "OPT-P2-AGRI-MT05",
+      "OPT-P2-AGRI-MT06"
+    ],
+    "primaryNodeId": "OPT-P2-AGRI-MT01"
+  },
+  "OPT-P2-INDUSTRY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-INDUSTRY-MT01",
+      "OPT-P2-INDUSTRY-MT02",
+      "OPT-P2-INDUSTRY-MT03",
+      "OPT-P2-INDUSTRY-MT04",
+      "OPT-P2-INDUSTRY-MT05"
+    ],
+    "primaryNodeId": "OPT-P2-INDUSTRY-MT01"
+  },
+  "OPT-P2-INFRA-CULTURE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-CULTURAL-MT01",
+      "OPT-P2-CULTURAL-MT02",
+      "OPT-P2-CULTURAL-MT03",
+      "OPT-P2-CULTURAL-MT04",
+      "OPT-P2-CULTURAL-MT05",
+      "OPT-P2-CULTURAL-MT06",
+      "OPT-P2-TRANSPORT-TRADE-MT01",
+      "OPT-P2-TRANSPORT-TRADE-MT02",
+      "OPT-P2-TRANSPORT-TRADE-MT03",
+      "OPT-P2-TRANSPORT-TRADE-MT04"
+    ],
+    "primaryNodeId": "OPT-P2-CULTURAL-MT01"
+  },
+  "OPT-P2-TRANSPORT-TRADE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-TRANSPORT-TRADE-MT01",
+      "OPT-P2-TRANSPORT-TRADE-MT02",
+      "OPT-P2-TRANSPORT-TRADE-MT03",
+      "OPT-P2-TRANSPORT-TRADE-MT04"
+    ],
+    "primaryNodeId": "OPT-P2-TRANSPORT-TRADE-MT01"
+  },
+  "OPT-P2-CULTURAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-CULTURAL-MT01",
+      "OPT-P2-CULTURAL-MT02",
+      "OPT-P2-CULTURAL-MT03",
+      "OPT-P2-CULTURAL-MT04",
+      "OPT-P2-CULTURAL-MT05",
+      "OPT-P2-CULTURAL-MT06"
+    ],
+    "primaryNodeId": "OPT-P2-CULTURAL-MT01"
+  },
+  "OPT-P2-SETTLE-REGDEV": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-REGIONAL-DEV-MT01",
+      "OPT-P2-REGIONAL-DEV-MT02",
+      "OPT-P2-REGIONAL-DEV-MT03",
+      "OPT-P2-REGIONAL-DEV-MT04",
+      "OPT-P2-REGIONAL-DEV-MT05",
+      "OPT-P2-SETTLEMENTS-MT01",
+      "OPT-P2-SETTLEMENTS-MT02",
+      "OPT-P2-SETTLEMENTS-MT03",
+      "OPT-P2-SETTLEMENTS-MT04",
+      "OPT-P2-SETTLEMENTS-MT05"
+    ],
+    "primaryNodeId": "OPT-P2-REGIONAL-DEV-MT01"
+  },
+  "OPT-P2-SETTLEMENTS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-SETTLEMENTS-MT01",
+      "OPT-P2-SETTLEMENTS-MT02",
+      "OPT-P2-SETTLEMENTS-MT03",
+      "OPT-P2-SETTLEMENTS-MT04",
+      "OPT-P2-SETTLEMENTS-MT05"
+    ],
+    "primaryNodeId": "OPT-P2-SETTLEMENTS-MT01"
+  },
+  "OPT-P2-REGIONAL-DEV": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-REGIONAL-DEV-MT01",
+      "OPT-P2-REGIONAL-DEV-MT02",
+      "OPT-P2-REGIONAL-DEV-MT03",
+      "OPT-P2-REGIONAL-DEV-MT04",
+      "OPT-P2-REGIONAL-DEV-MT05"
+    ],
+    "primaryNodeId": "OPT-P2-REGIONAL-DEV-MT01"
+  },
+  "OPT-P2-POLITY-CONTEMP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-CONTEMP-MT01",
+      "OPT-P2-CONTEMP-MT02",
+      "OPT-P2-CONTEMP-MT03",
+      "OPT-P2-CONTEMP-MT04",
+      "OPT-P2-CONTEMP-MT05",
+      "OPT-P2-CONTEMP-MT06",
+      "OPT-P2-POLITICAL-MT01",
+      "OPT-P2-POLITICAL-MT02",
+      "OPT-P2-POLITICAL-MT03",
+      "OPT-P2-POLITICAL-MT04"
+    ],
+    "primaryNodeId": "OPT-P2-CONTEMP-MT01"
+  },
+  "OPT-P2-POLITICAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-POLITICAL-MT01",
+      "OPT-P2-POLITICAL-MT02",
+      "OPT-P2-POLITICAL-MT03",
+      "OPT-P2-POLITICAL-MT04"
+    ],
+    "primaryNodeId": "OPT-P2-POLITICAL-MT01"
+  },
+  "OPT-P2-CONTEMP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "OPT-P2-CONTEMP-MT01",
+      "OPT-P2-CONTEMP-MT02",
+      "OPT-P2-CONTEMP-MT03",
+      "OPT-P2-CONTEMP-MT04",
+      "OPT-P2-CONTEMP-MT05",
+      "OPT-P2-CONTEMP-MT06"
+    ],
+    "primaryNodeId": "OPT-P2-CONTEMP-MT01"
+  },
+  "CSAT-BN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-AGES-MT01",
+      "CSAT-BN-AGES-MT02",
+      "CSAT-BN-AGES-MT03",
+      "CSAT-BN-APGP-MT01",
+      "CSAT-BN-APGP-MT02",
+      "CSAT-BN-APGP-MT03",
+      "CSAT-BN-ASR-MT01",
+      "CSAT-BN-ASR-MT02",
+      "CSAT-BN-ASR-MT03",
+      "CSAT-BN-AVG-MIX-MT01",
+      "CSAT-BN-AVG-MIX-MT02",
+      "CSAT-BN-AVG-MIX-MT03",
+      "CSAT-BN-AVG-MIX-MT04",
+      "CSAT-BN-CHAIN-MT01",
+      "CSAT-BN-CHAIN-MT02",
+      "CSAT-BN-CHAIN-MT03",
+      "CSAT-BN-EQN-MT01",
+      "CSAT-BN-EQN-MT02",
+      "CSAT-BN-EQN-MT03",
+      "CSAT-BN-INT-MT01",
+      "CSAT-BN-INT-MT02",
+      "CSAT-BN-INT-MT03",
+      "CSAT-BN-LCMHCF-MT01",
+      "CSAT-BN-LCMHCF-MT02",
+      "CSAT-BN-LCMHCF-MT03",
+      "CSAT-BN-MENS-MT01",
+      "CSAT-BN-MENS-MT02",
+      "CSAT-BN-MENS-MT03",
+      "CSAT-BN-MENS-MT04",
+      "CSAT-BN-NS-MT01",
+      "CSAT-BN-NS-MT02",
+      "CSAT-BN-NS-MT03",
+      "CSAT-BN-NS-MT04",
+      "CSAT-BN-NS-MT05",
+      "CSAT-BN-PERCENT-MT01",
+      "CSAT-BN-PERCENT-MT02",
+      "CSAT-BN-PERCENT-MT03",
+      "CSAT-BN-PERCENT-MT04",
+      "CSAT-BN-PLD-MT01",
+      "CSAT-BN-PLD-MT02",
+      "CSAT-BN-PLD-MT03",
+      "CSAT-BN-PLD-MT04",
+      "CSAT-BN-PNC-MT01",
+      "CSAT-BN-PNC-MT02",
+      "CSAT-BN-PNC-MT03",
+      "CSAT-BN-PROB-MT01",
+      "CSAT-BN-PROB-MT02",
+      "CSAT-BN-PROB-MT03",
+      "CSAT-BN-RATIO-MT01",
+      "CSAT-BN-RATIO-MT02",
+      "CSAT-BN-RATIO-MT03",
+      "CSAT-BN-RATIO-MT04",
+      "CSAT-BN-TRAINS-MT01",
+      "CSAT-BN-TRAINS-MT02",
+      "CSAT-BN-TRAINS-MT03",
+      "CSAT-BN-TSD-MT01",
+      "CSAT-BN-TSD-MT02",
+      "CSAT-BN-TSD-MT03",
+      "CSAT-BN-TWP-MT01",
+      "CSAT-BN-TWP-MT02",
+      "CSAT-BN-TWP-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-AGES-MT01"
+  },
+  "CSAT-BN-CHAIN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-CHAIN-MT01",
+      "CSAT-BN-CHAIN-MT02",
+      "CSAT-BN-CHAIN-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-CHAIN-MT01"
+  },
+  "CSAT-BN-TWP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-TWP-MT01",
+      "CSAT-BN-TWP-MT02",
+      "CSAT-BN-TWP-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-TWP-MT01"
+  },
+  "CSAT-BN-AVG-MIX": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-AVG-MIX-MT01",
+      "CSAT-BN-AVG-MIX-MT02",
+      "CSAT-BN-AVG-MIX-MT03",
+      "CSAT-BN-AVG-MIX-MT04"
+    ],
+    "primaryNodeId": "CSAT-BN-AVG-MIX-MT01"
+  },
+  "CSAT-BN-EQN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-EQN-MT01",
+      "CSAT-BN-EQN-MT02",
+      "CSAT-BN-EQN-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-EQN-MT01"
+  },
+  "CSAT-BN-RATIO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-RATIO-MT01",
+      "CSAT-BN-RATIO-MT02",
+      "CSAT-BN-RATIO-MT03",
+      "CSAT-BN-RATIO-MT04"
+    ],
+    "primaryNodeId": "CSAT-BN-RATIO-MT01"
+  },
+  "CSAT-BN-PERCENT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-PERCENT-MT01",
+      "CSAT-BN-PERCENT-MT02",
+      "CSAT-BN-PERCENT-MT03",
+      "CSAT-BN-PERCENT-MT04"
+    ],
+    "primaryNodeId": "CSAT-BN-PERCENT-MT01"
+  },
+  "CSAT-BN-PLD": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-PLD-MT01",
+      "CSAT-BN-PLD-MT02",
+      "CSAT-BN-PLD-MT03",
+      "CSAT-BN-PLD-MT04"
+    ],
+    "primaryNodeId": "CSAT-BN-PLD-MT01"
+  },
+  "CSAT-BN-AGES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-AGES-MT01",
+      "CSAT-BN-AGES-MT02",
+      "CSAT-BN-AGES-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-AGES-MT01"
+  },
+  "CSAT-BN-INT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-INT-MT01",
+      "CSAT-BN-INT-MT02",
+      "CSAT-BN-INT-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-INT-MT01"
+  },
+  "CSAT-BN-NS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-NS-MT01",
+      "CSAT-BN-NS-MT02",
+      "CSAT-BN-NS-MT03",
+      "CSAT-BN-NS-MT04",
+      "CSAT-BN-NS-MT05"
+    ],
+    "primaryNodeId": "CSAT-BN-NS-MT01"
+  },
+  "CSAT-BN-LCMHCF": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-LCMHCF-MT01",
+      "CSAT-BN-LCMHCF-MT02",
+      "CSAT-BN-LCMHCF-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-LCMHCF-MT01"
+  },
+  "CSAT-BN-TRAINS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-TRAINS-MT01",
+      "CSAT-BN-TRAINS-MT02",
+      "CSAT-BN-TRAINS-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-TRAINS-MT01"
+  },
+  "CSAT-BN-TSD": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-TSD-MT01",
+      "CSAT-BN-TSD-MT02",
+      "CSAT-BN-TSD-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-TSD-MT01"
+  },
+  "CSAT-BN-ASR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-ASR-MT01",
+      "CSAT-BN-ASR-MT02",
+      "CSAT-BN-ASR-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-ASR-MT01"
+  },
+  "CSAT-BN-APGP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-APGP-MT01",
+      "CSAT-BN-APGP-MT02",
+      "CSAT-BN-APGP-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-APGP-MT01"
+  },
+  "CSAT-BN-PNC": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-PNC-MT01",
+      "CSAT-BN-PNC-MT02",
+      "CSAT-BN-PNC-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-PNC-MT01"
+  },
+  "CSAT-BN-PROB": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-PROB-MT01",
+      "CSAT-BN-PROB-MT02",
+      "CSAT-BN-PROB-MT03"
+    ],
+    "primaryNodeId": "CSAT-BN-PROB-MT01"
+  },
+  "CSAT-BN-MENS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-BN-MENS-MT01",
+      "CSAT-BN-MENS-MT02",
+      "CSAT-BN-MENS-MT03",
+      "CSAT-BN-MENS-MT04"
+    ],
+    "primaryNodeId": "CSAT-BN-MENS-MT01"
+  },
+  "CSAT-RC": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-RC-ASSUMP-MT01",
+      "CSAT-RC-ASSUMP-MT02",
+      "CSAT-RC-CONCL-MT01",
+      "CSAT-RC-CONCL-MT02",
+      "CSAT-RC-FACT-MT01",
+      "CSAT-RC-FACT-MT02",
+      "CSAT-RC-INFER-MT01",
+      "CSAT-RC-INFER-MT02",
+      "CSAT-RC-MISC-MT01",
+      "CSAT-RC-STRENGTH-MT01",
+      "CSAT-RC-STRENGTH-MT02",
+      "CSAT-RC-THEME-MT01",
+      "CSAT-RC-THEME-MT02",
+      "CSAT-RC-THEME-MT03",
+      "CSAT-RC-TONE-MT01",
+      "CSAT-RC-TONE-MT02",
+      "CSAT-RC-TONE-MT03",
+      "CSAT-RC-WEAKEN-MT01",
+      "CSAT-RC-WEAKEN-MT02"
+    ],
+    "primaryNodeId": "CSAT-RC-ASSUMP-MT01"
+  },
+  "CSAT-RC-THEME": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-RC-THEME-MT01",
+      "CSAT-RC-THEME-MT02",
+      "CSAT-RC-THEME-MT03"
+    ],
+    "primaryNodeId": "CSAT-RC-THEME-MT01"
+  },
+  "CSAT-RC-TONE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-RC-TONE-MT01",
+      "CSAT-RC-TONE-MT02",
+      "CSAT-RC-TONE-MT03"
+    ],
+    "primaryNodeId": "CSAT-RC-TONE-MT01"
+  },
+  "CSAT-RC-ASSUMP": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-RC-ASSUMP-MT01",
+      "CSAT-RC-ASSUMP-MT02"
+    ],
+    "primaryNodeId": "CSAT-RC-ASSUMP-MT01"
+  },
+  "CSAT-RC-INFER": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-RC-INFER-MT01",
+      "CSAT-RC-INFER-MT02"
+    ],
+    "primaryNodeId": "CSAT-RC-INFER-MT01"
+  },
+  "CSAT-RC-CONCL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-RC-CONCL-MT01",
+      "CSAT-RC-CONCL-MT02"
+    ],
+    "primaryNodeId": "CSAT-RC-CONCL-MT01"
+  },
+  "CSAT-RC-FACT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-RC-FACT-MT01",
+      "CSAT-RC-FACT-MT02"
+    ],
+    "primaryNodeId": "CSAT-RC-FACT-MT01"
+  },
+  "CSAT-RC-STRENGTH": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-RC-STRENGTH-MT01",
+      "CSAT-RC-STRENGTH-MT02"
+    ],
+    "primaryNodeId": "CSAT-RC-STRENGTH-MT01"
+  },
+  "CSAT-RC-WEAKEN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-RC-WEAKEN-MT01",
+      "CSAT-RC-WEAKEN-MT02"
+    ],
+    "primaryNodeId": "CSAT-RC-WEAKEN-MT01"
+  },
+  "CSAT-RC-MISC": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "CSAT-RC-MISC-MT01"
+    ],
+    "primaryNodeId": "CSAT-RC-MISC-MT01"
+  },
+  "CSAT-DI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-DI-BAR-MT01",
+      "CSAT-DI-BAR-MT02",
+      "CSAT-DI-LINE-MT01",
+      "CSAT-DI-LINE-MT02",
+      "CSAT-DI-MIXED-MT01",
+      "CSAT-DI-MIXED-MT02",
+      "CSAT-DI-PIE-MT01",
+      "CSAT-DI-PIE-MT02",
+      "CSAT-DI-TABLES-MT01",
+      "CSAT-DI-TABLES-MT02"
+    ],
+    "primaryNodeId": "CSAT-DI-BAR-MT01"
+  },
+  "CSAT-DI-TABLES": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-DI-TABLES-MT01",
+      "CSAT-DI-TABLES-MT02"
+    ],
+    "primaryNodeId": "CSAT-DI-TABLES-MT01"
+  },
+  "CSAT-DI-BAR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-DI-BAR-MT01",
+      "CSAT-DI-BAR-MT02"
+    ],
+    "primaryNodeId": "CSAT-DI-BAR-MT01"
+  },
+  "CSAT-DI-LINE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-DI-LINE-MT01",
+      "CSAT-DI-LINE-MT02"
+    ],
+    "primaryNodeId": "CSAT-DI-LINE-MT01"
+  },
+  "CSAT-DI-PIE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-DI-PIE-MT01",
+      "CSAT-DI-PIE-MT02"
+    ],
+    "primaryNodeId": "CSAT-DI-PIE-MT01"
+  },
+  "CSAT-DI-MIXED": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-DI-MIXED-MT01",
+      "CSAT-DI-MIXED-MT02"
+    ],
+    "primaryNodeId": "CSAT-DI-MIXED-MT01"
+  },
+  "CSAT-LR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-BLOOD-MT01",
+      "CSAT-LR-BLOOD-MT02",
+      "CSAT-LR-CALENDAR-MT01",
+      "CSAT-LR-CALENDAR-MT02",
+      "CSAT-LR-CLOCK-MT01",
+      "CSAT-LR-CLOCK-MT02",
+      "CSAT-LR-CODE-MT01",
+      "CSAT-LR-CODE-MT02",
+      "CSAT-LR-COMPLEX-MT01",
+      "CSAT-LR-COMPLEX-MT02",
+      "CSAT-LR-CUBE-MT01",
+      "CSAT-LR-CUBE-MT02",
+      "CSAT-LR-CUBE-MT03",
+      "CSAT-LR-DIR-MT01",
+      "CSAT-LR-DIR-MT02",
+      "CSAT-LR-LSER-MT01",
+      "CSAT-LR-LSER-MT02",
+      "CSAT-LR-MISC-MT01",
+      "CSAT-LR-NSER-MT01",
+      "CSAT-LR-NSER-MT02",
+      "CSAT-LR-RANK-MT01",
+      "CSAT-LR-RANK-MT02",
+      "CSAT-LR-RANK-MT03",
+      "CSAT-LR-SELECT-MT01",
+      "CSAT-LR-SELECT-MT02",
+      "CSAT-LR-SIT-MT01",
+      "CSAT-LR-SIT-MT02",
+      "CSAT-LR-SYL-MT01",
+      "CSAT-LR-SYL-MT02",
+      "CSAT-LR-VENN-MT01",
+      "CSAT-LR-VENN-MT02",
+      "CSAT-LR-VISUAL-MT01",
+      "CSAT-LR-VISUAL-MT02",
+      "CSAT-LR-VISUAL-MT03"
+    ],
+    "primaryNodeId": "CSAT-LR-BLOOD-MT01"
+  },
+  "CSAT-LR-RANK": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-RANK-MT01",
+      "CSAT-LR-RANK-MT02",
+      "CSAT-LR-RANK-MT03"
+    ],
+    "primaryNodeId": "CSAT-LR-RANK-MT01"
+  },
+  "CSAT-LR-CUBE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-CUBE-MT01",
+      "CSAT-LR-CUBE-MT02",
+      "CSAT-LR-CUBE-MT03"
+    ],
+    "primaryNodeId": "CSAT-LR-CUBE-MT01"
+  },
+  "CSAT-LR-CLOCK": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-CLOCK-MT01",
+      "CSAT-LR-CLOCK-MT02"
+    ],
+    "primaryNodeId": "CSAT-LR-CLOCK-MT01"
+  },
+  "CSAT-LR-SIT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-SIT-MT01",
+      "CSAT-LR-SIT-MT02"
+    ],
+    "primaryNodeId": "CSAT-LR-SIT-MT01"
+  },
+  "CSAT-LR-COMPLEX": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-COMPLEX-MT01",
+      "CSAT-LR-COMPLEX-MT02"
+    ],
+    "primaryNodeId": "CSAT-LR-COMPLEX-MT01"
+  },
+  "CSAT-LR-DIR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-DIR-MT01",
+      "CSAT-LR-DIR-MT02"
+    ],
+    "primaryNodeId": "CSAT-LR-DIR-MT01"
+  },
+  "CSAT-LR-NSER": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-NSER-MT01",
+      "CSAT-LR-NSER-MT02"
+    ],
+    "primaryNodeId": "CSAT-LR-NSER-MT01"
+  },
+  "CSAT-LR-LSER": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-LSER-MT01",
+      "CSAT-LR-LSER-MT02"
+    ],
+    "primaryNodeId": "CSAT-LR-LSER-MT01"
+  },
+  "CSAT-LR-CODE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-CODE-MT01",
+      "CSAT-LR-CODE-MT02"
+    ],
+    "primaryNodeId": "CSAT-LR-CODE-MT01"
+  },
+  "CSAT-LR-VISUAL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-VISUAL-MT01",
+      "CSAT-LR-VISUAL-MT02",
+      "CSAT-LR-VISUAL-MT03"
+    ],
+    "primaryNodeId": "CSAT-LR-VISUAL-MT01"
+  },
+  "CSAT-LR-BLOOD": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-BLOOD-MT01",
+      "CSAT-LR-BLOOD-MT02"
+    ],
+    "primaryNodeId": "CSAT-LR-BLOOD-MT01"
+  },
+  "CSAT-LR-CALENDAR": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-CALENDAR-MT01",
+      "CSAT-LR-CALENDAR-MT02"
+    ],
+    "primaryNodeId": "CSAT-LR-CALENDAR-MT01"
+  },
+  "CSAT-LR-VENN": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-VENN-MT01",
+      "CSAT-LR-VENN-MT02"
+    ],
+    "primaryNodeId": "CSAT-LR-VENN-MT01"
+  },
+  "CSAT-LR-SYL": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-SYL-MT01",
+      "CSAT-LR-SYL-MT02"
+    ],
+    "primaryNodeId": "CSAT-LR-SYL-MT01"
+  },
+  "CSAT-LR-SELECT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-LR-SELECT-MT01",
+      "CSAT-LR-SELECT-MT02"
+    ],
+    "primaryNodeId": "CSAT-LR-SELECT-MT01"
+  },
+  "CSAT-LR-MISC": {
+    "aliasType": "leaf",
+    "canonicalIds": [
+      "CSAT-LR-MISC-MT01"
+    ],
+    "primaryNodeId": "CSAT-LR-MISC-MT01"
+  },
+  "CSAT-DS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-DS-CORE-MT01",
+      "CSAT-DS-CORE-MT02",
+      "CSAT-DS-CORE-MT03"
+    ],
+    "primaryNodeId": "CSAT-DS-CORE-MT01"
+  },
+  "CSAT-DS-CORE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "CSAT-DS-CORE-MT01",
+      "CSAT-DS-CORE-MT02",
+      "CSAT-DS-CORE-MT03"
+    ],
+    "primaryNodeId": "CSAT-DS-CORE-MT01"
+  },
+  "GS4-ETH-CORE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS4-ETH-APPLIED-MT01",
+      "GS4-ETH-APPLIED-MT02",
+      "GS4-ETH-APT-MT01",
+      "GS4-ETH-APT-MT02",
+      "GS4-ETH-APT-MT03",
+      "GS4-ETH-APT-MT04",
+      "GS4-ETH-APT-MT05",
+      "GS4-ETH-ATT-MT01",
+      "GS4-ETH-ATT-MT02",
+      "GS4-ETH-ATT-MT03",
+      "GS4-ETH-ATT-MT04",
+      "GS4-ETH-ATT-MT05",
+      "GS4-ETH-CS-MT01",
+      "GS4-ETH-CS-MT02",
+      "GS4-ETH-CS-MT03",
+      "GS4-ETH-CS-MT04",
+      "GS4-ETH-CS-MT05",
+      "GS4-ETH-CS-MT06",
+      "GS4-ETH-EI-MT01",
+      "GS4-ETH-EI-MT02",
+      "GS4-ETH-EI-MT03",
+      "GS4-ETH-EI-MT04",
+      "GS4-ETH-GOV-MT01",
+      "GS4-ETH-GOV-MT02",
+      "GS4-ETH-GOV-MT03",
+      "GS4-ETH-GOV-MT04",
+      "GS4-ETH-GOV-MT05",
+      "GS4-ETH-GOV-MT06",
+      "GS4-ETH-HI-MT01",
+      "GS4-ETH-HI-MT02",
+      "GS4-ETH-HI-MT03",
+      "GS4-ETH-HI-MT04",
+      "GS4-ETH-HI-MT05",
+      "GS4-ETH-HI-MT06",
+      "GS4-ETH-HI-MT07",
+      "GS4-ETH-HV-MT01",
+      "GS4-ETH-HV-MT02",
+      "GS4-ETH-HV-MT03",
+      "GS4-ETH-HV-MT04",
+      "GS4-ETH-HV-MT05",
+      "GS4-ETH-PROB-MT01",
+      "GS4-ETH-PROB-MT02",
+      "GS4-ETH-PROB-MT03",
+      "GS4-ETH-PROB-MT04",
+      "GS4-ETH-PROB-MT05",
+      "GS4-ETH-PROB-MT06",
+      "GS4-ETH-PROB-MT07",
+      "GS4-ETH-THINK-MT01",
+      "GS4-ETH-THINK-MT02",
+      "GS4-ETH-THINK-MT03",
+      "GS4-ETH-THINK-MT04"
+    ],
+    "primaryNodeId": "GS4-ETH-APPLIED-MT01"
+  },
+  "GS4-ETH-HI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS4-ETH-HI-MT01",
+      "GS4-ETH-HI-MT02",
+      "GS4-ETH-HI-MT03",
+      "GS4-ETH-HI-MT04",
+      "GS4-ETH-HI-MT05",
+      "GS4-ETH-HI-MT06",
+      "GS4-ETH-HI-MT07"
+    ],
+    "primaryNodeId": "GS4-ETH-HI-MT01"
+  },
+  "GS4-ETH-HV": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS4-ETH-HV-MT01",
+      "GS4-ETH-HV-MT02",
+      "GS4-ETH-HV-MT03",
+      "GS4-ETH-HV-MT04",
+      "GS4-ETH-HV-MT05"
+    ],
+    "primaryNodeId": "GS4-ETH-HV-MT01"
+  },
+  "GS4-ETH-ATT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS4-ETH-ATT-MT01",
+      "GS4-ETH-ATT-MT02",
+      "GS4-ETH-ATT-MT03",
+      "GS4-ETH-ATT-MT04",
+      "GS4-ETH-ATT-MT05"
+    ],
+    "primaryNodeId": "GS4-ETH-ATT-MT01"
+  },
+  "GS4-ETH-APT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS4-ETH-APT-MT01",
+      "GS4-ETH-APT-MT02",
+      "GS4-ETH-APT-MT03",
+      "GS4-ETH-APT-MT04",
+      "GS4-ETH-APT-MT05"
+    ],
+    "primaryNodeId": "GS4-ETH-APT-MT01"
+  },
+  "GS4-ETH-EI": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS4-ETH-EI-MT01",
+      "GS4-ETH-EI-MT02",
+      "GS4-ETH-EI-MT03",
+      "GS4-ETH-EI-MT04"
+    ],
+    "primaryNodeId": "GS4-ETH-EI-MT01"
+  },
+  "GS4-ETH-THINK": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS4-ETH-THINK-MT01",
+      "GS4-ETH-THINK-MT02",
+      "GS4-ETH-THINK-MT03",
+      "GS4-ETH-THINK-MT04"
+    ],
+    "primaryNodeId": "GS4-ETH-THINK-MT01"
+  },
+  "GS4-ETH-GOV": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS4-ETH-GOV-MT01",
+      "GS4-ETH-GOV-MT02",
+      "GS4-ETH-GOV-MT03",
+      "GS4-ETH-GOV-MT04",
+      "GS4-ETH-GOV-MT05",
+      "GS4-ETH-GOV-MT06"
+    ],
+    "primaryNodeId": "GS4-ETH-GOV-MT01"
+  },
+  "GS4-ETH-PROB": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS4-ETH-PROB-MT01",
+      "GS4-ETH-PROB-MT02",
+      "GS4-ETH-PROB-MT03",
+      "GS4-ETH-PROB-MT04",
+      "GS4-ETH-PROB-MT05",
+      "GS4-ETH-PROB-MT06",
+      "GS4-ETH-PROB-MT07"
+    ],
+    "primaryNodeId": "GS4-ETH-PROB-MT01"
+  },
+  "GS4-ETH-CS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS4-ETH-CS-MT01",
+      "GS4-ETH-CS-MT02",
+      "GS4-ETH-CS-MT03",
+      "GS4-ETH-CS-MT04",
+      "GS4-ETH-CS-MT05",
+      "GS4-ETH-CS-MT06"
+    ],
+    "primaryNodeId": "GS4-ETH-CS-MT01"
+  },
+  "GS4-ETH-APPLIED": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "GS4-ETH-APPLIED-MT01",
+      "GS4-ETH-APPLIED-MT02"
+    ],
+    "primaryNodeId": "GS4-ETH-APPLIED-MT01"
+  },
+  "ESSAY-MACRO": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "ESSAY-MT01",
+      "ESSAY-MT01-D02",
+      "ESSAY-MT01-D03",
+      "ESSAY-MT01-D04",
+      "ESSAY-MT01-D05",
+      "ESSAY-MT02",
+      "ESSAY-MT02-D02",
+      "ESSAY-MT02-D03",
+      "ESSAY-MT02-D04",
+      "ESSAY-MT02-D05",
+      "ESSAY-MT03",
+      "ESSAY-MT03-D02",
+      "ESSAY-MT03-D03",
+      "ESSAY-MT03-D04",
+      "ESSAY-MT03-D05",
+      "ESSAY-MT04",
+      "ESSAY-MT04-D02",
+      "ESSAY-MT04-D03",
+      "ESSAY-MT04-D04",
+      "ESSAY-MT04-D05",
+      "ESSAY-MT05",
+      "ESSAY-MT05-D02",
+      "ESSAY-MT05-D03",
+      "ESSAY-MT05-D04",
+      "ESSAY-MT05-D05",
+      "ESSAY-MT06",
+      "ESSAY-MT06-D02",
+      "ESSAY-MT06-D03",
+      "ESSAY-MT06-D04",
+      "ESSAY-MT06-D05",
+      "ESSAY-MT07",
+      "ESSAY-MT07-D02",
+      "ESSAY-MT07-D03",
+      "ESSAY-MT07-D04",
+      "ESSAY-MT08",
+      "ESSAY-MT08-D02",
+      "ESSAY-MT08-D03"
+    ],
+    "primaryNodeId": "ESSAY-MT01"
+  },
+  "ESSAY-PHIL-ABSTRACT": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "ESSAY-MT01",
+      "ESSAY-MT02",
+      "ESSAY-MT03",
+      "ESSAY-MT04",
+      "ESSAY-MT05",
+      "ESSAY-MT06",
+      "ESSAY-MT07",
+      "ESSAY-MT08"
+    ],
+    "primaryNodeId": "ESSAY-MT01"
+  },
+  "ESSAY-SCI-ETHICS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "ESSAY-MT01-D02",
+      "ESSAY-MT02-D02",
+      "ESSAY-MT03-D02",
+      "ESSAY-MT04-D02",
+      "ESSAY-MT05-D02",
+      "ESSAY-MT06-D02",
+      "ESSAY-MT07-D02"
+    ],
+    "primaryNodeId": "ESSAY-MT01-D02"
+  },
+  "ESSAY-SOC-CULTURE": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "ESSAY-MT01-D03",
+      "ESSAY-MT02-D03",
+      "ESSAY-MT03-D03",
+      "ESSAY-MT04-D03",
+      "ESSAY-MT05-D03",
+      "ESSAY-MT06-D03",
+      "ESSAY-MT07-D03",
+      "ESSAY-MT08-D02"
+    ],
+    "primaryNodeId": "ESSAY-MT01-D03"
+  },
+  "ESSAY-POL-ECON": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "ESSAY-MT01-D04",
+      "ESSAY-MT02-D04",
+      "ESSAY-MT03-D04",
+      "ESSAY-MT04-D04",
+      "ESSAY-MT05-D04",
+      "ESSAY-MT06-D04",
+      "ESSAY-MT07-D04",
+      "ESSAY-MT08-D03"
+    ],
+    "primaryNodeId": "ESSAY-MT01-D04"
+  },
+  "ESSAY-ENV-HUMANITY": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "ESSAY-MT01-D05",
+      "ESSAY-MT02-D05",
+      "ESSAY-MT03-D05",
+      "ESSAY-MT04-D05",
+      "ESSAY-MT05-D05",
+      "ESSAY-MT06-D05"
+    ],
+    "primaryNodeId": "ESSAY-MT01-D05"
+  },
+  "ESSAY-FRAMEWORK": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "ESSAY-MT01-D06",
+      "ESSAY-MT01-D07",
+      "ESSAY-MT02-D06",
+      "ESSAY-MT02-D07",
+      "ESSAY-MT03-D06",
+      "ESSAY-MT03-D07",
+      "ESSAY-MT04-D06",
+      "ESSAY-MT04-D07"
+    ],
+    "primaryNodeId": "ESSAY-MT01-D06"
+  },
+  "ESSAY-FRAMEWORK-P3": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "ESSAY-MT01-D06",
+      "ESSAY-MT02-D06",
+      "ESSAY-MT03-D06",
+      "ESSAY-MT04-D06"
+    ],
+    "primaryNodeId": "ESSAY-MT01-D06"
+  },
+  "ESSAY-FRAMEWORK-ASSETS": {
+    "aliasType": "parent",
+    "canonicalIds": [
+      "ESSAY-MT01-D07",
+      "ESSAY-MT02-D07",
+      "ESSAY-MT03-D07",
+      "ESSAY-MT04-D07"
+    ],
+    "primaryNodeId": "ESSAY-MT01-D07"
+  }
+}

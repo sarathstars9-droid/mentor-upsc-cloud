@@ -94,6 +94,21 @@ select {
   transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
 
+/* 🔥 FIX: Dropdown text visibility */
+select option {
+  background: #2d2f36;
+  /* same as surface-2 */
+  color: #ffffff;
+  /* FORCE WHITE TEXT */
+}
+
+/* Hover / selected */
+select option:hover,
+select option:checked {
+  background: #4a4c53;
+  color: #ffffff;
+}
+
 input:hover,
 textarea:hover,
 select:hover {
@@ -154,11 +169,13 @@ button:disabled {
 .page-wrap {
   display: grid;
   gap: 18px;
-  max-width: 1480px; /* 2-line zoom fix */
-  margin: 0 auto;    /* 2-line zoom fix */
+  max-width: 1480px;
+  /* 2-line zoom fix */
+  margin: 0 auto;
+  /* 2-line zoom fix */
 }
 
-.page-wrap > * + * {
+.page-wrap>*+* {
   margin-top: 0;
 }
 
@@ -1201,6 +1218,7 @@ button:disabled {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -1211,6 +1229,7 @@ button:disabled {
     opacity: 0;
     transform: scale(0.96);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -1261,6 +1280,7 @@ button:disabled {
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1284,6 +1304,7 @@ button:disabled {
 
 /* Tablet / iPad */
 @media (max-width: 1180px) {
+
   .plan-grid,
   .chart-grid {
     grid-template-columns: 1fr;

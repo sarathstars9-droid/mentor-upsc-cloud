@@ -1,0 +1,14 @@
+{
+  "totalFiles": 12,
+  "totalQuestions": 1349,
+  "questionTypeCounts": {
+    "MCQ": 733,
+    "PAIR_BASED": 71,
+    "STATEMENT_BASED": 527,
+    "MAP_BASED": 6,
+    "CHRONOLOGY": 8,
+    "MCQ_2_STATEMENT": 2,
+    "MATCHING": 1,
+    "MCQ_1_STATEMENT": 1
+  }
+}

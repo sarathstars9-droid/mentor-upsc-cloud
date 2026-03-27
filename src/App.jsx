@@ -10,14 +10,14 @@ import EthicsPage from "./pages/EthicsPage";
 import EssayPage from "./pages/EssayPage";
 import GeographyOptionalPage from "./pages/GeographyOptionalPage";
 import SettingsPage from "./pages/SettingsPage";
-
+import PyqTopicPage from "./pages/PyqTopicPage.jsx";
 import ExecutionPage from "./pages/ExecutionPage";
 import RevisionPage from "./pages/RevisionPage";
 import SyllabusPage from "./pages/SyllabusPage";
 import CsatPage from "./pages/CSATPage";
 import BacklogPage from "./pages/BacklogPage";
 import FocusPage from "./pages/FocusPage";
-
+import PrelimsMistakesPage from "./pages/PrelimsMistakesPage";
 import Navbar from "./components/Navbar";
 import { isLoggedIn, login, logout } from "./utils/auth";
 
@@ -65,7 +65,7 @@ export default function App() {
         <main className="page-shell">
           <Routes>
             <Route path="/" element={<Navigate to="/plan" replace />} />
-
+            <Route path="/prelims/mistakes" element={<PrelimsMistakesPage />} />
             <Route path="/plan" element={<PlanPage />} />
             <Route path="/execution" element={<ExecutionPage />} />
             <Route path="/performance" element={<PerformancePage />} />
@@ -80,7 +80,7 @@ export default function App() {
             <Route path="/ethics" element={<EthicsPage />} />
             <Route path="/essay" element={<EssayPage />} />
             <Route path="/settings" element={<SettingsPage />} />
-
+            <Route path="/pyq/topic/:syllabusNodeId" element={<PyqTopicPage />} />
             <Route path="*" element={<Navigate to="/plan" replace />} />
           </Routes>
         </main>

@@ -1,0 +1,4216 @@
+{
+  "exam": "UPSC_CSE",
+  "stage": "Mains",
+  "paper": "GS4",
+  "subject": "Ethics, Integrity and Aptitude",
+  "sourceFile": "Ethics Questions in UPSC Mains (GS 4).pdf",
+  "coverageYears": {
+    "start": 2013,
+    "end": 2025
+  },
+  "notes": [
+    "Built from the uploaded PDF source.",
+    "This source contains descriptive/quote/short-note ethics questions; case studies are not present in the uploaded PDF and therefore are not included here.",
+    "Section is set to 'A' for all entries because the uploaded PDF covers only the question set visible in the source."
+  ],
+  "questions": [
+    {
+      "id": "GS4_2025_Q1_A",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "In the present digital age, social media has revolutionised our way of communication and interaction. However, it has raised several ethical issues and challenges. Describe the key ethical dilemmas in this regard.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "social media",
+        "digital",
+        "media",
+        "revolutionised",
+        "communication",
+        "interaction"
+      ],
+      "microthemes": [
+        "digital ethics",
+        "privacy and misinformation"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2025_Q1_B",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cConstitutional morality is not a natural sentiment but a product of civil education and maturity of sense of rule of law.\u201d Examine this statement in the light of the role of civil servants in upholding constitutional morality, promoting good governance and ensuring accountability in public administration.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "constitutional morality",
+        "good governance",
+        "public administration",
+        "constitutional",
+        "natural",
+        "sentiment"
+      ],
+      "microthemes": [
+        "constitutional values",
+        "public accountability",
+        "probity and transparency",
+        "citizen-centric administration"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2025_Q2_A",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Carl von Clausewitz states that \u201cwar is the continuation of politics by other means.\u201d Critically examine the relevance of this statement in present context of contemporary geo- political conflicts.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "carl",
+        "clausewitz",
+        "states",
+        "continuation",
+        "politics",
+        "other"
+      ],
+      "microthemes": [
+        "ethics of war",
+        "international relations"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2025_Q2_B",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Considering the national security in mind, examine the ethical dilemmas related to controversial issues of compensation in case of development projects in ecologically sensitive border areas in the country.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "national security",
+        "considering",
+        "national",
+        "security",
+        "mind",
+        "dilemmas"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-APPLIED"
+    },
+    {
+      "id": "GS4_2025_Q3_A",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "a",
+      "type": "QUOTE_BASED",
+      "question": "Those who in trouble untroubled are, Will trouble trouble itself?",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Thiruvalluvar",
+      "commonPrompt": "Given below are three quotations of great thinkers. What do each of these quotations convey to you in the present context?",
+      "keywords": [
+        "trouble",
+        "untroubled",
+        "itself"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2025_Q3_B",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "b",
+      "type": "QUOTE_BASED",
+      "question": "The greatest discovery of my generation is that a human being can alter his life by altering his attitudes of mind.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "William James",
+      "commonPrompt": "Given below are three quotations of great thinkers. What do each of these quotations convey to you in the present context?",
+      "keywords": [
+        "greatest",
+        "discovery",
+        "generation",
+        "alter",
+        "altering",
+        "attitudes"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-ATT"
+    },
+    {
+      "id": "GS4_2025_Q3_C",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "c",
+      "type": "QUOTE_BASED",
+      "question": "The strength of a society lies not in its laudable ideals, but in the morality of its people.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Swami Vivekananda",
+      "commonPrompt": "Given below are three quotations of great thinkers. What do each of these quotations convey to you in the present context?",
+      "keywords": [
+        "strength",
+        "lies",
+        "laudable",
+        "ideals",
+        "people"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2025_Q4_A",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cFor any kind of social re-engineering by successful implementation of a welfare scheme, a civil servant must rise above personal biases and prejudices to maintain objectivity.\u201d Justify this statement with suitable examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "welfare scheme",
+        "kind",
+        "re-engineering",
+        "successful",
+        "implementation",
+        "welfare"
+      ],
+      "microthemes": [
+        "objectivity and bias",
+        "social justice"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2025_Q4_B",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "What are the major teachings of Mahavira? Explain their relevance in the contemporary world.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "teachings",
+        "mahavira",
+        "relevance"
+      ],
+      "microthemes": [
+        "Indian ethical traditions",
+        "religious ethics"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2025_Q5_A",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cOne who is devoted to one\u2019s duty attains highest perfection in life.\u201d Analyse this statement with reference to sense of responsibility and personal fulfilment as a civil servant.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "devoted",
+        "duty",
+        "attains",
+        "highest",
+        "perfection",
+        "analyse"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2025_Q5_B",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "To achieve holistic development goal, a civil servant acts as an enabler and active facilitator of growth rather than a regulator. What specific measures will you suggest to achieve this goal?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "achieve",
+        "holistic",
+        "development",
+        "goal",
+        "acts",
+        "enabler"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2025_Q6_A",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "It is said that for an ethical work culture, there must be code of ethics in place in every organisation. To ensure values-based work culture, what suitable measures would you adopt in your workplace?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "code of ethics",
+        "ethical work culture",
+        "said",
+        "work",
+        "culture",
+        "there"
+      ],
+      "microthemes": [
+        "ethical governance",
+        "organizational integrity"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2025_Q6_B",
+      "year": 2025,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "India is an emerging economic power of the world as evident from recent trends in GDP growth rate, foreign exchange reserves and IMF projection. However, it is still a developing country. In this context, how will you justify the need of an ethical framework for sustainable economic growth of the country? Discuss in 150 words.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "economic growth",
+        "india",
+        "emerging",
+        "economic",
+        "power",
+        "evident"
+      ],
+      "microthemes": [
+        "development ethics",
+        "inclusive growth"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2024_Q1_A",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "The application of Artificial Intelligence as a dependable source of input for administrative rational decision-making is a debatable issue. Critically examine the statement from the ethical point of view.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "artificial intelligence",
+        "application",
+        "artificial",
+        "intelligence",
+        "dependable",
+        "source"
+      ],
+      "microthemes": [
+        "ethics of technology",
+        "algorithmic accountability"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2024_Q1_B",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cEthics encompasses several key dimensions that are crucial in guiding individuals and organizations towards morally responsible behaviour.\u201d Explain the key dimensions of ethics that influence human actions. Discuss how these dimensions shape ethical decision-making in the professional context.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "encompasses",
+        "several",
+        "dimensions",
+        "crucial",
+        "guiding",
+        "individuals"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2024_Q2_A",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cIt is not enough to talk about peace, one must believe in it; and it is not enough to believe in it, one must act upon it.\u201d In the present context, the major weapon industries of the developed nations are adversely influencing continuation of number of wars for their own self-interest, all around the world. What are the ethical considerations of the powerful nations in today\u2019s international arena to stop continuation of ongoing conflicts?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "talk",
+        "about",
+        "peace",
+        "believe",
+        "upon",
+        "weapon"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2024_Q2_B",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Global warming and climate change are the outcomes of human greed in the name of development, indicating the direction in which extinction of organisms including human beings is heading towards loss of life on Earth. How do you put an end to this to protect life and bring equilibrium between the society and the environment?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "climate change",
+        "global warming",
+        "global",
+        "warming",
+        "climate",
+        "change"
+      ],
+      "microthemes": [
+        "environmental ethics",
+        "sustainable development"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2024_Q3",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 3,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "Given below are three quotations of great thinkers. What do each of these quotations convey to you in the present context?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "quotations",
+        "great",
+        "thinkers",
+        "convey"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-THINK"
+    },
+    {
+      "id": "GS4_2024_Q3_A",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cLearn everything that is good from others, but bring it in, and in your own way absorb it, do not become others.\u201d \u2014 Swami Vivekananda",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "learn",
+        "everything",
+        "others",
+        "absorb",
+        "become",
+        "swami"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2024_Q3_B",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cFaith is of no avail in the absence of strength. Faith and strength, both are essential to accomplish any great work.\u201d \u2014 Sardar Patel",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "faith",
+        "avail",
+        "absence",
+        "strength",
+        "both",
+        "essential"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2024_Q3_C",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "c",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cIn law, a man is guilty when he violates the rights of others. In ethics, he is guilty if he only thinks of doing so.\u201d \u2014 Immanuel Kant",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "guilty",
+        "violates",
+        "rights",
+        "others",
+        "thinks",
+        "doing"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2024_Q4_A",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cThe concept of Just and Unjust is contextual. What was just a year back, may turn out to be unjust in today\u2019s context. Changing context should be constantly under scrutiny to prevent miscarriage of justice.\u201d Examine the above statement with suitable examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "just",
+        "unjust",
+        "contextual",
+        "year",
+        "back",
+        "turn"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2024_Q4_B",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cMindless addiction to Form, ignoring the Substance of the matter, results in rendering of injustice. A perceptive civil servant is one who ignores such literalness and carries out true intent.\u201d Examine the above statement with suitable illustrations.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "mindless",
+        "addiction",
+        "form",
+        "ignoring",
+        "substance",
+        "matter"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2024_Q5_A",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u2018The \u2018Code of Conduct\u2019 and \u2018Code of Ethics\u2019 are the sources of guidance in public administration. There is code of conduct already in operation, whereas code of ethics is not yet put in place. Suggest a suitable model for code of ethics to maintain integrity, probity and transparency in governance.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "code of ethics",
+        "code of conduct",
+        "public administration",
+        "code",
+        "conduct",
+        "sources"
+      ],
+      "microthemes": [
+        "ethical governance",
+        "organizational integrity",
+        "probity and transparency",
+        "integrity in public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-PROB"
+    },
+    {
+      "id": "GS4_2024_Q5_B",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "The soul of the new law, Bharatiya Nyaya Sanhita (BNS) is Justice, Equality and Impartiality based on Indian culture and ethos. Discuss this in the light of major shift from a doctrine of punishment to justice in the present judicial system.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "bharatiya nyaya sanhita",
+        "soul",
+        "bharatiya",
+        "nyaya",
+        "sanhita",
+        "justice"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2024_Q6_A",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cIn Indian culture and value system, an equal opportunity has been provided irrespective of gender identity. The number of women in public service has been steadily increasing over the years.\u201d Examine the gender-specific challenges faced by female public servants and suggest suitable measures to increase their efficiency in discharging their duties and maintaining high standards of probity.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public servant",
+        "indian",
+        "culture",
+        "equal",
+        "opportunity",
+        "provided"
+      ],
+      "microthemes": [
+        "civil service values",
+        "role morality",
+        "gender justice",
+        "inclusion and equity"
+      ],
+      "syllabusNodeId": "GS4-ETH-PROB"
+    },
+    {
+      "id": "GS4_2024_Q6_B",
+      "year": 2024,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Mission Karmayogi is aiming for maintaining a very high standard of conduct and behaviour to ensure efficiency for serving citizens and in turn developing oneself. How will this scheme empower the civil servants in enhancing productive efficiency and delivering the services at the grassroots level ?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "mission karmayogi",
+        "mission",
+        "karmayogi",
+        "aiming",
+        "very",
+        "high"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2023_Q1_A",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What do you understand by \u2018moral integrity\u2019 and \u2018professional efficiency in the context of corporate governance in India ? Illustrate with suitable examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "corporate governance",
+        "moral integrity",
+        "professional efficiency",
+        "integrity",
+        "professional",
+        "efficiency"
+      ],
+      "microthemes": [
+        "business ethics",
+        "professional integrity",
+        "integrity in public service",
+        "ethical leadership"
+      ],
+      "syllabusNodeId": "GS4-ETH-PROB"
+    },
+    {
+      "id": "GS4_2023_Q1_B",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u2018International aid\u2019 is an accepted form of helping \u2018resource-challenged\u2019 nations. Comment on \u2018ethics in contemporary international aid\u2019. Support your answer with suitable examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "international aid",
+        "ethics in contemporary international aid",
+        "international",
+        "accepted",
+        "form",
+        "helping"
+      ],
+      "microthemes": [
+        "global ethics",
+        "international responsibility"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2023_Q2_A",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cCorruption is the manifestation of the failure of core values in the society.\u201d In your opinion, what measures can be adopted to uplift the core values in the society?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "corruption",
+        "manifestation",
+        "failure",
+        "core",
+        "opinion",
+        "measures"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2023_Q2_B",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "In the context of work environment, differentiate between \u2018coercion\u2019 and \u2018undue influence\u2019 with suitable examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "work",
+        "environment",
+        "between",
+        "coercion",
+        "undue",
+        "influence"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2023_Q3_A",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "a",
+      "type": "QUOTE_BASED",
+      "question": "The simplest acts of kindness are by far more powerful than a thousand heads bowing in prayer.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Mahatma Gandhi",
+      "commonPrompt": "Given below are the three quotations of great thinkers. What do each of these quotations convey to you in the present context?",
+      "keywords": [
+        "simplest",
+        "acts",
+        "kindness",
+        "powerful",
+        "thousand",
+        "heads"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2023_Q3_B",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "b",
+      "type": "QUOTE_BASED",
+      "question": "To awaken the people, it is the women who must be awakened. Ones she is on the move, the family moves, the village moves, the nation moves.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Jawaharlal Nehru",
+      "commonPrompt": "Given below are the three quotations of great thinkers. What do each of these quotations convey to you in the present context?",
+      "keywords": [
+        "awaken",
+        "people",
+        "women",
+        "awakened",
+        "ones",
+        "move"
+      ],
+      "microthemes": [
+        "gender justice",
+        "inclusion and equity"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2023_Q3_C",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "c",
+      "type": "QUOTE_BASED",
+      "question": "Do not hate anybody, because that hatred that comes out from you must, in the long run, come back to you. If you love, that love will come back to you, completing the circle.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Swami Vivekanand",
+      "commonPrompt": "Given below are the three quotations of great thinkers. What do each of these quotations convey to you in the present context?",
+      "keywords": [
+        "hate",
+        "anybody",
+        "because",
+        "hatred",
+        "comes",
+        "long"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2023_Q4_A",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What really matters for success, character, happiness and lifelong achievements is a definite set of emotional skills \u2013 your EQ- not just purely cognitive abilities that are measured by conventional IQ tests.\u201d Do you agree with this view ? Give reasons in support of your answer.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "really",
+        "matters",
+        "success",
+        "character",
+        "happiness",
+        "lifelong"
+      ],
+      "microthemes": [
+        "ethics and human flourishing",
+        "attitude and values"
+      ],
+      "syllabusNodeId": "GS4-ETH-EI"
+    },
+    {
+      "id": "GS4_2023_Q4_B",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Differentiate \u2018moral intuition from \u2018moral reasoning\u2019 with suitable examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "moral reasoning",
+        "moral intuition",
+        "intuition",
+        "reasoning"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2023_Q5_A",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Is conscience a more reliable guide when compared to laws, rules and regulations in the context of ethical decision making ? Discuss.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "conscience",
+        "reliable",
+        "guide",
+        "compared",
+        "decision",
+        "making"
+      ],
+      "microthemes": [
+        "moral reasoning",
+        "integrity"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2023_Q5_B",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u2018Probity is essential for an effective system of governance and socio-economic development.\u2019 Discuss.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "probity",
+        "essential",
+        "effective",
+        "socio-economic",
+        "development"
+      ],
+      "microthemes": [
+        "probity and transparency",
+        "ethical governance"
+      ],
+      "syllabusNodeId": "GS4-ETH-PROB"
+    },
+    {
+      "id": "GS4_2023_Q6_A",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What were the major teachings of Guru Nanak? Explain their relevance in the contemporary world.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "teachings",
+        "guru",
+        "nanak",
+        "relevance"
+      ],
+      "microthemes": [
+        "Indian ethical traditions",
+        "social harmony"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2023_Q6_B",
+      "year": 2023,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Explain the term social capital. How does it enhance good governance?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "good governance",
+        "social capital",
+        "capital",
+        "enhance"
+      ],
+      "microthemes": [
+        "probity and transparency",
+        "citizen-centric administration"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q1_A",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Wisdom lies in knowing what to reckon with and what to overlook. An officer being engrossed with the periphery, ignoring the core issues before him, is no rare in the bureaucracy. Do you agree that such preoccupation of an administrator leads to travesty of justice to the cause of effective service delivery and good governance? Critically evaluate.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "good governance",
+        "wisdom",
+        "lies",
+        "knowing",
+        "reckon",
+        "overlook"
+      ],
+      "microthemes": [
+        "probity and transparency",
+        "citizen-centric administration"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q1_B",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Apart from intellectual competency and moral qualities, empathy and compassion are some of the other vital attributes that facilitate the civil servants to be more competent in tackling the crucial issues or taking critical decisions. Explain with suitable illustrations.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "apart",
+        "intellectual",
+        "competency",
+        "qualities",
+        "empathy",
+        "compassion"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q2_A",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "The Rules and Regulations provided to all the civil servants are same, yet there is difference in the performance. Positive minded officers are able to interpret the Rules and Regulations in favour of the case and achieve success, whereas negative minded officers are unable to achieve goals by interpreting the same Rules and Regulations against the case. Discuss with illustrations.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "provided",
+        "same",
+        "there",
+        "difference",
+        "performance",
+        "positive"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-APPLIED"
+    },
+    {
+      "id": "GS4_2022_Q2_B",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "It is believed that adherence to ethics in human actions would ensure in smooth functioning of an organization/system. If so, what does ethics seek to promote in human life? How do ethical values assist in the resolution of conflicts faced by him in his day-to-day functioning?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "believed",
+        "adherence",
+        "actions",
+        "ensure",
+        "smooth",
+        "functioning"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2022_Q3_A",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Ethics is knowing the difference between what you have the right to do and what is right to do.\u2019-Potter Stewart .",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "knowing",
+        "difference",
+        "between",
+        "have",
+        "right",
+        "potter"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2022_Q3_B",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cIf a country is to be corruption free and become a nation of beautiful minds, I strongly feel there are three key societal members who can make a difference. They are the father, the mother and the teacher.\u201d \u2013 Abdul Kalam.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "corruption",
+        "free",
+        "become",
+        "beautiful",
+        "minds",
+        "strongly"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q3_C",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "c",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cJudge your success by what you had to give up in order to get it.\u201d Dalai Lama.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "judge",
+        "success",
+        "give",
+        "order",
+        "dalai",
+        "lama"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q4_A",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What do you understand by term \u2018good governance\u2019? How far recent initiatives in terms of e-Governance steps taken by the State have helped the beneficiaries? Discuss with suitable examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "good governance",
+        "initiatives",
+        "e-governance",
+        "steps",
+        "taken",
+        "have"
+      ],
+      "microthemes": [
+        "probity and transparency",
+        "citizen-centric administration"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q4_B",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Online methodology is being used for day-to-day meetings, institutional approvals in the administration and for teaching and learning in education sector to the extent telemedicine in the health sector is getting popular with the approvals of the competent authority. No doubt it has advantages and disadvantages for both the beneficiaries and system at large. Describe and discuss the ethical issues involved in the use of online method particularly to vulnerable section of society.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "online",
+        "methodology",
+        "used",
+        "day-to-day",
+        "meetings",
+        "institutional"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q5_A",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Russia and Ukraine war has been going on for the last seven months. Different countries have taken independent stands and actions keeping in view their own national interests. We are all aware that war has its own impact on the different aspects of society, including human tragedy. What are those ethical issues that are crucial to be considered while launching the war and its continuation so far? Illustrate with justification the ethical issues involved in the given state of affair.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "russia",
+        "ukraine",
+        "going",
+        "last",
+        "months",
+        "different"
+      ],
+      "microthemes": [
+        "ethics of war",
+        "international relations"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q5_B_1",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "subpart": 1,
+      "type": "SHORT_NOTE",
+      "question": "Constitutional morality",
+      "marks": 2,
+      "wordLimit": 30,
+      "commonPrompt": "Write short notes on the following in 30 words each:",
+      "keywords": [
+        "constitutional morality",
+        "constitutional"
+      ],
+      "microthemes": [
+        "constitutional values",
+        "public accountability"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q5_B_2",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "subpart": 2,
+      "type": "SHORT_NOTE",
+      "question": "Conflict of interest",
+      "marks": 2,
+      "wordLimit": 30,
+      "commonPrompt": "Write short notes on the following in 30 words each:",
+      "keywords": [
+        "conflict of interest",
+        "conflict",
+        "interest"
+      ],
+      "microthemes": [
+        "integrity in public service",
+        "institutional safeguards"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q5_B_3",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "subpart": 3,
+      "type": "SHORT_NOTE",
+      "question": "Probity in public life",
+      "marks": 2,
+      "wordLimit": 30,
+      "commonPrompt": "Write short notes on the following in 30 words each:",
+      "keywords": [
+        "public life",
+        "probity in public life",
+        "probity"
+      ],
+      "microthemes": [
+        "probity and accountability",
+        "ethical governance",
+        "probity and transparency"
+      ],
+      "syllabusNodeId": "GS4-ETH-PROB"
+    },
+    {
+      "id": "GS4_2022_Q5_B_4",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "subpart": 4,
+      "type": "SHORT_NOTE",
+      "question": "Challenges of digitalization",
+      "marks": 2,
+      "wordLimit": 30,
+      "commonPrompt": "Write short notes on the following in 30 words each:",
+      "keywords": [
+        "digitalization",
+        "challenges"
+      ],
+      "microthemes": [
+        "technology in governance",
+        "digital inclusion"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q5_B_5",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "subpart": 5,
+      "type": "SHORT_NOTE",
+      "question": "Devotion to duty",
+      "marks": 2,
+      "wordLimit": 30,
+      "commonPrompt": "Write short notes on the following in 30 words each:",
+      "keywords": [
+        "devotion to duty",
+        "devotion",
+        "duty"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q6_A",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Whistle blower, who reports corruption and illegal activities, wrongdoing and misconduct to the concerned authorities, runs the risk of being exposed to grave danger, physical harm and victimization by the vested interests, accused persons and his team. What policy measures would you suggest to strengthen protection mechanism to safeguard the whistle blower?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "whistle blower",
+        "whistle",
+        "blower",
+        "reports",
+        "corruption",
+        "illegal"
+      ],
+      "microthemes": [
+        "anti-corruption safeguards",
+        "institutional ethics"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2022_Q6_B",
+      "year": 2022,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "In contemporary world, corporate sector\u2019s contribution in generating wealth and employment is increasing. In doing so, they are bringing in unprecedented onslaught on the climate, environmental sustainability and living conditions of human beings. In this background, do you Responsibility (CSR) is efficient and sufficient enough to fulfill the social roles and responsibilities needed in the corporate work mandated? Critically examine.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "corporate",
+        "sector",
+        "contribution",
+        "generating",
+        "wealth",
+        "employment"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2021_Q1_A",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Identify five ethical traits on which one can plot the performance of a civil servant. Justify their inclusion in the matrix.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "traits",
+        "plot",
+        "performance",
+        "inclusion",
+        "matrix"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2021_Q1_B",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Identify ten essential values that are needed to be an effective public servant. Describe the /ways and means to prevent non-ethical behaviour in the pubic servants.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public servant",
+        "essential",
+        "needed",
+        "effective",
+        "describe",
+        "ways"
+      ],
+      "microthemes": [
+        "civil service values",
+        "role morality"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2021_Q2_A",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Impact of digital technology as a reliable source of input for rational decision-making is a debatable issue. Critically evaluate with a suitable example.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "digital technology",
+        "impact",
+        "digital",
+        "technology",
+        "reliable",
+        "source"
+      ],
+      "microthemes": [
+        "technology in governance",
+        "ethical decision-making"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2021_Q2_B",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Besides domain knowledge, a public official needs innovativeness and creativity of a high order as well, while resolving ethical dilemmas. Discuss with a suitable example.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "besides",
+        "domain",
+        "knowledge",
+        "official",
+        "needs",
+        "innovativeness"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2021_Q3_A",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "a",
+      "type": "QUOTE_BASED",
+      "question": "Every work has got to pass through hundreds of difficulties before succeeding. Those that persevere will see the light, sooner or later.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Swami Vivekananda",
+      "commonPrompt": "What does each of the following quotations mean to you?",
+      "keywords": [
+        "every",
+        "work",
+        "pass",
+        "through",
+        "hundreds",
+        "difficulties"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2021_Q3_B",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "b",
+      "type": "QUOTE_BASED",
+      "question": "We can never obtain peace in the outer world until and unless we obtain peace within ourselves.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Dalai Lama",
+      "commonPrompt": "What does each of the following quotations mean to you?",
+      "keywords": [
+        "never",
+        "obtain",
+        "peace",
+        "outer",
+        "until",
+        "unless"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2021_Q3_C",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "c",
+      "type": "QUOTE_BASED",
+      "question": "Life doesn\u2019t make any sense without interdependence. We need each other, and the sooner we learn that it is better for us all.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Erik Erikson word",
+      "commonPrompt": "What does each of the following quotations mean to you?",
+      "keywords": [
+        "doesn",
+        "make",
+        "sense",
+        "without",
+        "interdependence",
+        "other"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2021_Q4_A",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Attitude is an important component that goes as input in the elopement of humans How to build a suitable needed for a public servant?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public servant",
+        "attitude",
+        "important",
+        "component",
+        "goes",
+        "input"
+      ],
+      "microthemes": [
+        "civil service values",
+        "role morality"
+      ],
+      "syllabusNodeId": "GS4-ETH-ATT"
+    },
+    {
+      "id": "GS4_2021_Q4_B",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "In case of crisis of conscience does emotional intelligence help to overcome the same without compromising the ethical or moral stand that you are likely to follow? Critically examine.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "emotional intelligence",
+        "crisis of conscience",
+        "case",
+        "crisis",
+        "conscience",
+        "emotional"
+      ],
+      "microthemes": [
+        "attitude and aptitude",
+        "ethical decision-making",
+        "moral reasoning",
+        "integrity"
+      ],
+      "syllabusNodeId": "GS4-ETH-EI"
+    },
+    {
+      "id": "GS4_2021_Q5_A",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cRefugees should not be turned back to the country where they would face persecution or human rights violation.\u201d Examine the statement with reference to the ethical dimension being violated by the nation claiming to be democratic with an open society.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "refugees",
+        "turned",
+        "back",
+        "they",
+        "face",
+        "persecution"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2021_Q5_B",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Should impartial and being non-partisan be considered as indispensable qualities to make a successful civil servant? Discuss with illustrations.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "impartial",
+        "non-partisan",
+        "considered",
+        "indispensable",
+        "qualities",
+        "make"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2021_Q6_A",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "An independent and empowered social audit mechanism is an absolute must in every sphere of public service, including judiciary, to ensure performance, accountability, and ethical conduct. Elaborate.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "social audit",
+        "independent",
+        "empowered",
+        "audit",
+        "mechanism",
+        "absolute"
+      ],
+      "microthemes": [
+        "accountability mechanisms",
+        "participatory governance"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2021_Q6_B",
+      "year": 2021,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cIntegrity is a value that empowers the human being.\u201d Justify with suitable illustration.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "integrity",
+        "empowers",
+        "illustration"
+      ],
+      "microthemes": [
+        "integrity in public service",
+        "ethical leadership"
+      ],
+      "syllabusNodeId": "GS4-ETH-PROB"
+    },
+    {
+      "id": "GS4_2020_Q1_A",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Discuss the role of ethics and values in enhancing the following three major components of Comprehensive National Power (CNP) viz. Human capital, soft power (culture and policies), and social harmony.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "comprehensive national power",
+        "components",
+        "comprehensive",
+        "national",
+        "power",
+        "capital"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2020_Q1_B",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cEducation is not an injunction, it is an effective and pervasive tool for all-round development of an individual and social transformation.\u201d Examine the New Education Policy, 2020 (NEP, 2020) in light of the above statement.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "new education policy",
+        "education",
+        "injunction",
+        "effective",
+        "pervasive",
+        "tool"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2020_Q2_A",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u2018Hatred is destructive of a person\u2019s wisdom and conscience that can poison a nation\u2019s spirit.\u2019 Do you agree with this view? Justify your answer.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "hatred",
+        "destructive",
+        "person",
+        "wisdom",
+        "conscience",
+        "poison"
+      ],
+      "microthemes": [
+        "moral reasoning",
+        "integrity"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2020_Q2_B",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "What are the main components of emotional intelligence (EI)? Can they be learned? Discuss.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "emotional intelligence",
+        "main",
+        "components",
+        "emotional",
+        "intelligence",
+        "they"
+      ],
+      "microthemes": [
+        "attitude and aptitude",
+        "ethical decision-making"
+      ],
+      "syllabusNodeId": "GS4-ETH-EI"
+    },
+    {
+      "id": "GS4_2020_Q3_A",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What teachings of Buddha are most relevant today and why? Discuss.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "teachings",
+        "buddha",
+        "most",
+        "relevant",
+        "today"
+      ],
+      "microthemes": [
+        "Indian ethical traditions",
+        "compassion and moderation"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2020_Q3_B",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u2018The will to power exists, but it can be tamed and be guided by rationality and principles of moral duty.\u2019 Examine this statement in the context of international relations.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "power",
+        "exists",
+        "tamed",
+        "guided",
+        "rationality",
+        "principles"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2020_Q4_A",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Distinguish between laws and rules. Discuss the role of ethics in formulating them.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "distinguish",
+        "between",
+        "formulating"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2020_Q4_B",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "A positive attitude is considered to be an essential characteristic of a civil servant who is often required to function under extreme stress. What contributes to a positive attitude in a person?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "positive",
+        "attitude",
+        "considered",
+        "essential",
+        "characteristic",
+        "often"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-ATT"
+    },
+    {
+      "id": "GS4_2020_Q5_A",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What are the main factors responsible for gender inequality in India? Discuss the contribution of Savitribai Phule in this regard.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "gender inequality",
+        "main",
+        "factors",
+        "responsible",
+        "gender",
+        "inequality"
+      ],
+      "microthemes": [
+        "gender justice",
+        "inclusion and equity"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2020_Q5_B",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u2018The current internet expansion has instilled a different set of cultural values which are often in conflict with traditional values.\u2019 Discuss. 6 What do each of the following quotations mean to you?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "internet",
+        "expansion",
+        "instilled",
+        "different",
+        "cultural",
+        "often"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2020_Q5_A",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cCondemn none: If you can stretch out a helping hand, do so. If not, fold your hands, bless your brothers, and let them go their own way.\u201d- Swami Vivekanand",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "condemn",
+        "none",
+        "stretch",
+        "helping",
+        "hand",
+        "fold"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2020_Q5_B",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cThe best way to find yourself is to lose yourself in the service of others\u201d.- Mahatma Gandhi",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "best",
+        "find",
+        "yourself",
+        "lose",
+        "others",
+        "mahatma"
+      ],
+      "microthemes": [
+        "Indian ethical traditions",
+        "ethical leadership"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2020_Q5_C",
+      "year": 2020,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "c",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cA system of morality which is based on relative emotional values is a mere illusion, a thoroughly vulgar conception which has nothing sound in it and nothing true.\u201d- Socrates",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "relative",
+        "emotional",
+        "mere",
+        "illusion",
+        "thoroughly",
+        "vulgar"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-EI"
+    },
+    {
+      "id": "GS4_2019_Q1_A",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What are the basic principles of public life? Illustrate any three of these with suitable examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public life",
+        "basic",
+        "principles"
+      ],
+      "microthemes": [
+        "probity and accountability",
+        "ethical governance"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2019_Q1_B",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "What do you understand by the term \u2018public servant\u2019? Reflect on the expected role of a public servant.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public servant",
+        "reflect",
+        "expected"
+      ],
+      "microthemes": [
+        "civil service values",
+        "role morality"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2019_Q2_A",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What is meant by the term \u2018constitutional morality? How does one uphold constitutional morality?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "constitutional morality",
+        "meant",
+        "constitutional",
+        "uphold"
+      ],
+      "microthemes": [
+        "constitutional values",
+        "public accountability"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2019_Q2_B",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "What is meant by \u2018crisis of conscience? How does it manifest itself in the public domain?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "crisis of conscience",
+        "meant",
+        "crisis",
+        "conscience",
+        "manifest",
+        "itself"
+      ],
+      "microthemes": [
+        "moral reasoning",
+        "integrity"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2019_Q3_A",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Explain the basic principles of the citizens charter movement and bring out its importance.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "citizens charter",
+        "basic",
+        "principles",
+        "charter",
+        "movement",
+        "importance"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2019_Q3_B",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "There is a view that the Official Secrets Act is an obstacle to the implementation of the Right to Information Act. Do you agree with the view? Discuss.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "official secrets act",
+        "right to information",
+        "there",
+        "official",
+        "secrets",
+        "obstacle"
+      ],
+      "microthemes": [
+        "transparency",
+        "citizen empowerment",
+        "transparency vs secrecy",
+        "accountability"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2019_Q4_A",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What do you understand by probity in governance? Based on your understanding of the term, suggest measures for ensuring probity in government.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "probity",
+        "understanding",
+        "measures",
+        "government"
+      ],
+      "microthemes": [
+        "probity and transparency",
+        "ethical governance"
+      ],
+      "syllabusNodeId": "GS4-ETH-PROB"
+    },
+    {
+      "id": "GS4_2019_Q4_B",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cEmotional Intelligence is the ability to make your emotions work for you instead of against you\u201d. Do you agree with this view? Discuss",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "emotional intelligence",
+        "emotional",
+        "intelligence",
+        "ability",
+        "make",
+        "emotions"
+      ],
+      "microthemes": [
+        "attitude and aptitude",
+        "ethical decision-making"
+      ],
+      "syllabusNodeId": "GS4-ETH-EI"
+    },
+    {
+      "id": "GS4_2019_Q5_A",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "QUOTE_BASED",
+      "question": "An unexamined life is not worth living\u201d.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Socrates",
+      "commonPrompt": "What do each of the following quotations mean to you?",
+      "keywords": [
+        "unexamined",
+        "worth",
+        "living"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2019_Q5_B",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "QUOTE_BASED",
+      "question": "A man is but a product of his thoughts. What he thinks he becomes.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "M.K. Gandhi",
+      "commonPrompt": "What do each of the following quotations mean to you?",
+      "keywords": [
+        "product",
+        "thoughts",
+        "thinks",
+        "becomes"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2019_Q5_C",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "c",
+      "type": "QUOTE_BASED",
+      "question": "Where there is righteousness in the heart, there is beauty in the character. When there is beauty in the character, there is harmony in the home. When there is harmony in the home, there is order in the nation. When there is order in the nation, there is peace in the world",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "A.P.J. Abdul Kalam",
+      "commonPrompt": "What do each of the following quotations mean to you?",
+      "keywords": [
+        "there",
+        "righteousness",
+        "heart",
+        "beauty",
+        "character",
+        "harmony"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2019_Q6_A",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Effective utilization of public funds is crucial to meet development goals. Critically examine the reasons for the under-utilization and mis-utilization of public funds and their implications.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public funds",
+        "effective",
+        "utilization",
+        "funds",
+        "crucial",
+        "meet"
+      ],
+      "microthemes": [
+        "financial probity",
+        "development administration"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2019_Q6_B",
+      "year": 2019,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cNon-performance of duty by a public servant is a form of corruption\u201d. Do you agree with this view? Justify your answer.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public servant",
+        "non-performance",
+        "duty",
+        "form",
+        "corruption",
+        "agree"
+      ],
+      "microthemes": [
+        "civil service values",
+        "role morality"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2018_Q1_A",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "State the three basic values, universal in nature, in the context of civil services and bring out their importance.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "basic",
+        "universal",
+        "nature",
+        "importance"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-CS"
+    },
+    {
+      "id": "GS4_2018_Q1_B",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Distinguish between \u201cCode of Ethics\u201d and \u201cCode of conduct\u201d with suitable examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "code of ethics",
+        "code of conduct",
+        "distinguish",
+        "between",
+        "code",
+        "conduct"
+      ],
+      "microthemes": [
+        "ethical governance",
+        "organizational integrity"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2018_Q2_A",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What is meant by public interest? What are the principles and procedures to be followed by civil servants in the public interest?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public interest",
+        "meant",
+        "interest",
+        "principles",
+        "procedures",
+        "followed"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2018_Q2_B",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cThe Right to Information Act is not all about citizens\u2019 empowerment alone, it essentially redefines the concept of accountability.\u201d Discuss",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "right to information",
+        "right",
+        "information",
+        "about",
+        "empowerment",
+        "alone"
+      ],
+      "microthemes": [
+        "transparency",
+        "citizen empowerment"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2018_Q3_A",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What is meant by conflict of interest? Illustrate with examples, the difference between the actual and potential conflicts of interest.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "conflict of interest",
+        "meant",
+        "conflict",
+        "interest",
+        "difference",
+        "between"
+      ],
+      "microthemes": [
+        "integrity in public service",
+        "institutional safeguards"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2018_Q3_B",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cIn looking for people to hire, you look for three qualities: integrity, intelligence, and energy. And if they do not have the first, the other two will kill you.\u201d \u2014Warren Buffet",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "looking",
+        "people",
+        "hire",
+        "look",
+        "qualities",
+        "integrity"
+      ],
+      "microthemes": [
+        "integrity in public service",
+        "ethical leadership"
+      ],
+      "syllabusNodeId": "GS4-ETH-PROB"
+    },
+    {
+      "id": "GS4_2018_Q4_A",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cIn doing a good thing, everything is permitted which is not prohibited expressly or by clear implication.\u201d Examine the statement with suitable examples in the context of a public servant discharging his/her duties.",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "What do you understand by this statement in the present-day scenario? Explain.",
+      "keywords": [
+        "public servant",
+        "doing",
+        "thing",
+        "everything",
+        "permitted",
+        "prohibited"
+      ],
+      "microthemes": [
+        "civil service values",
+        "role morality"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2018_Q4_B",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "With regard to the morality of actions, one view is that means is of paramount importance and the other view is that the ends justify the means. Which view do you think is more appropriate? Justify your answer.",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "What do you understand by this statement in the present-day scenario? Explain.",
+      "keywords": [
+        "actions",
+        "paramount",
+        "importance",
+        "other",
+        "ends",
+        "appropriate"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2018_Q5_A",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Suppose the Government of India is thinking of constructing a dam in a mountain valley bound by forests and inhabited by ethnic communities. What rational policy should it resort to in dealing with unforeseen contingencies?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "suppose",
+        "government",
+        "india",
+        "thinking",
+        "constructing",
+        "mountain"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2018_Q5_B",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Explain the process of resolving ethical dilemmas in Public Administration.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public administration",
+        "process",
+        "resolving",
+        "dilemmas"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2018_Q6_A",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "a",
+      "type": "QUOTE_BASED",
+      "question": "The true rule, in determining to embrace, or reject anything, is not whether it has any evil in it; but whether it has more evil than good. There are few things wholly evil or wholly good. Almost everything, especially of government policy, is an inseparable compound of the two; so that our best judgment of the preponderance between them is continually demanded.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Abraham Lincoln",
+      "commonPrompt": "What do each of the following quotations means to you in the present context?",
+      "keywords": [
+        "true",
+        "rule",
+        "determining",
+        "embrace",
+        "reject",
+        "anything"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2018_Q6_B",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "b",
+      "type": "QUOTE_BASED",
+      "question": "Anger and intolerance are the enemies of correct understanding.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Mahatma Gandhi",
+      "commonPrompt": "What do each of the following quotations means to you in the present context?",
+      "keywords": [
+        "anger",
+        "intolerance",
+        "enemies",
+        "correct",
+        "understanding"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2018_Q6_C",
+      "year": 2018,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "c",
+      "type": "QUOTE_BASED",
+      "question": "Falsehood takes the place of truth when it results in the unblemished common good.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Tirukkural",
+      "commonPrompt": "What do each of the following quotations means to you in the present context?",
+      "keywords": [
+        "falsehood",
+        "takes",
+        "place",
+        "truth",
+        "results",
+        "unblemished"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2017_Q1_A",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "The crisis of ethical values in modern times is traced to a narrow perception of the good life.Discuss.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "crisis",
+        "modern",
+        "times",
+        "traced",
+        "narrow",
+        "perception"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2017_Q1_B",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Increased national wealth did not result in equitable distribution of its benefits. It has created only some \u201cenclaves of modernity and prosperity for a small minority at the cost of the majority.\u201d Justify.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "increased",
+        "national",
+        "wealth",
+        "result",
+        "equitable",
+        "distribution"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2017_Q2_A",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Discipline generally implies following the order and subordination. However, it may be counterproductive for the organisation. Discuss.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "discipline",
+        "generally",
+        "implies",
+        "order",
+        "subordination",
+        "however"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2017_Q2_B",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Without commonly shared and widely entrenched moral values and obligations, neither the law, nor democratic government, nor even the market economy will function properly. What do you understand by this statement? Explain with illustration in the contemporary times.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "without",
+        "commonly",
+        "shared",
+        "widely",
+        "entrenched",
+        "obligations"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2017_Q3",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 3,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "Conflict of interest in the public sector arises when (a) official duties, (b) public interest, and (c) personal interest are taking priority one above the other. How can this conflict in administration be resolved? Describe with an example",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "conflict of interest",
+        "public interest",
+        "conflict",
+        "interest",
+        "sector",
+        "arises"
+      ],
+      "microthemes": [
+        "integrity in public service",
+        "institutional safeguards"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2017_Q4",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 4,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "Young people with ethical conduct are not willing to come forward to join active politics. Suggest steps to motivate them to come forward.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "young",
+        "people",
+        "conduct",
+        "willing",
+        "come",
+        "forward"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2017_Q5_A",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "One of the tests of integrity is complete refusal to be compromised. Explain with reference to a real life example.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "tests",
+        "integrity",
+        "complete",
+        "refusal",
+        "compromised",
+        "reference"
+      ],
+      "microthemes": [
+        "integrity in public service",
+        "ethical leadership"
+      ],
+      "syllabusNodeId": "GS4-ETH-PROB"
+    },
+    {
+      "id": "GS4_2017_Q5_B",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Corporate social responsibility makes companies more profitable and sustainable. Analyse.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "corporate social responsibility",
+        "corporate",
+        "responsibility",
+        "makes",
+        "companies",
+        "profitable"
+      ],
+      "microthemes": [
+        "business ethics",
+        "environment and society"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2017_Q6_A",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cGreat ambition is the passion of a great character. Those endowed with it may perform very good or very bad acts. All depends on the principles which direct them.\u201d \u2013 Napoleon Bonaparte. Stating examples mention the rulers (i) who have harmed society and country, (ii) who worked for the development of society and country.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "great",
+        "ambition",
+        "passion",
+        "character",
+        "endowed",
+        "perform"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2017_Q6_B",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cIf a country is to be corruption free and become a nation of beautiful minds, I strongly feel there are three key societal members who can make a difference. They are the father, the mother and the teacher.\u201d \u2013 A.P.J. Abdul Kalam. Analyse.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "corruption",
+        "free",
+        "become",
+        "beautiful",
+        "minds",
+        "strongly"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2017_Q7_A",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 7,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "How will you apply emotional intelligence in administrative practices?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "emotional intelligence",
+        "apply",
+        "emotional",
+        "intelligence",
+        "practices"
+      ],
+      "microthemes": [
+        "attitude and aptitude",
+        "ethical decision-making"
+      ],
+      "syllabusNodeId": "GS4-ETH-EI"
+    },
+    {
+      "id": "GS4_2017_Q7_B",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 7,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Strength, peace and security are considered to be the pillars of international relations. Elucidate.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "strength",
+        "peace",
+        "security",
+        "considered",
+        "pillars",
+        "international"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2017_Q8_B",
+      "year": 2017,
+      "section": "A",
+      "questionNumber": 8,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Accountability (c) Fairness and Justice (d) Courage of Conviction (e) Spirit of service",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Examine the relevance of the following in the context of civil service: (a) Transparency",
+      "keywords": [
+        "accountability",
+        "fairness",
+        "justice",
+        "courage",
+        "conviction",
+        "spirit"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2016_Q1_A",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Explain how ethics contributes to social and human well-being.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "contributes",
+        "well-being"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2016_Q1_B",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Why should impartiality and non-partisanship be considered as foundational values in public services, especially in the present-day socio-political context? Illustrate your answer with examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "impartiality",
+        "non-partisanship",
+        "considered",
+        "foundational",
+        "especially",
+        "present-day"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2016_Q2_A",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What do you understand by the terms \u2018governance, \u2018good governance, and \u2018ethical governance?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "good governance"
+      ],
+      "microthemes": [
+        "probity and transparency",
+        "citizen-centric administration"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2016_Q2_B",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Discuss Mahatma Gandhi\u2019s Concept of seven sins.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "seven sins",
+        "mahatma",
+        "gandhi",
+        "sins"
+      ],
+      "microthemes": [
+        "Indian ethical traditions",
+        "ethical leadership"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2016_Q3_A",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Analyze John Rawls\u2019s concept of social justice in the Indian context.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "social justice",
+        "analyze",
+        "john",
+        "rawls",
+        "justice",
+        "indian"
+      ],
+      "microthemes": [
+        "equity and fairness",
+        "constitutional values"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2016_Q3_B",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Discuss the Public Services Code as recommended by the 2nd Administrative Reforms Commission.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "code",
+        "recommended",
+        "reforms",
+        "commission"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2016_Q4_A",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cCorruption causes misuse of government treasury, administrative inefficiency, and obstruction in the path of national development.\u201d Discuss Kautilya\u2019s views.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "corruption",
+        "causes",
+        "misuse",
+        "government",
+        "treasury",
+        "inefficiency"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2016_Q4_B",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "How could social influence and persuasion contribute to the success of Swachh Bharat Abhiyan?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "swachh bharat",
+        "influence",
+        "persuasion",
+        "contribute",
+        "success",
+        "swachh"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2016_Q5_A",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Discuss how they achieve this objective.",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Law and Ethics are considered to be the two tools for controlling human conduct so as to make it conducive to civilized social existence.",
+      "keywords": [
+        "they",
+        "achieve",
+        "objective"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2016_Q5_B",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Discuss how they achieve this objective.",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Law and Ethics are considered to be the two tools for controlling human conduct so as to make it conducive to civilized social existence.",
+      "keywords": [
+        "they",
+        "achieve",
+        "objective"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2016_Q6_A",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Discuss such undesirable values prevalent in today\u2019s educated Indians.",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Our attitudes towards life, work, other people, and society are generally shaped unconsciously by the family and the social surroundings in which we grow up. Some of these unconsciously acquired attitudes and values are often undesirable in the citizens of a modern democratic and egalitarian society.",
+      "keywords": [
+        "undesirable",
+        "prevalent",
+        "today",
+        "educated",
+        "indians"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2016_Q6_B",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "How can such undesirable attitudes be changed and socioethical values considered necessary in public services be cultivated in the aspiring and serving civil servants?",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Our attitudes towards life, work, other people, and society are generally shaped unconsciously by the family and the social surroundings in which we grow up. Some of these unconsciously acquired attitudes and values are often undesirable in the citizens of a modern democratic and egalitarian society.",
+      "keywords": [
+        "undesirable",
+        "attitudes",
+        "changed",
+        "socioethical",
+        "considered",
+        "necessary"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-ATT"
+    },
+    {
+      "id": "GS4_2016_Q7_A",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 7,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Discuss how it leads to negative emotions and undesirable behaviors.",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Anger is a harmful negative emotion. It is injurious to both personal life and work life.",
+      "keywords": [
+        "leads",
+        "negative",
+        "emotions",
+        "undesirable",
+        "behaviors"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2016_Q7_B",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 7,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "How can it be managed and controlled?",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Anger is a harmful negative emotion. It is injurious to both personal life and work life.",
+      "keywords": [
+        "managed",
+        "controlled"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2016_Q8",
+      "year": 2016,
+      "section": "A",
+      "questionNumber": 8,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "\u201cMax Weber said that it is not wise to apply to public administration the sort of moral and ethical norms we apply to matters of personal conscience. It is important to realize that the state bureaucracy might possess its own independent bureaucratic morality.\u201d Critically analyze this statement.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public administration",
+        "weber",
+        "said",
+        "wise",
+        "apply",
+        "sort"
+      ],
+      "microthemes": [
+        "moral reasoning",
+        "integrity"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2015_Q1_A",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What is meant by \u2018environmental ethics? Why is it important to study? Discuss any one environmental issue from the viewpoint of environmental ethics.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "environmental ethics",
+        "meant",
+        "environmental",
+        "important",
+        "study",
+        "issue"
+      ],
+      "microthemes": [
+        "environmental ethics",
+        "sustainable development"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2015_Q1_B",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Differentiate between the following: Law and Ethics Ethical management and Management of ethics Discrimination and Preferential treatment Personal ethics and Professional ethics",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "between",
+        "management",
+        "discrimination",
+        "preferential",
+        "treatment",
+        "personal"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2015_Q2_A",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "QUOTE_BASED",
+      "question": "\u201cThe weak can never forgive; forgiveness is the attribute of the strong.\u201d",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Given are two quotations of moral thinkers/philosophers. For each of these, bring out what it means to you in the present context:",
+      "keywords": [
+        "weak",
+        "never",
+        "forgive",
+        "forgiveness",
+        "attribute",
+        "strong"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2015_Q2_B",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "QUOTE_BASED",
+      "question": "\u201cWe can easily forgive a child who is afraid of the dark; the real tragedy of life is when men are afraid of the light.\u201d",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Given are two quotations of moral thinkers/philosophers. For each of these, bring out what it means to you in the present context:",
+      "keywords": [
+        "easily",
+        "forgive",
+        "child",
+        "afraid",
+        "dark",
+        "real"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2015_Q3_A",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cA mere compliance with the law is not enough, the public servant also has to have a well-developed sensibility to ethical issues for effective discharge of duties.\u201d Do you agree? Explain with the help of two examples, where (i) an act is ethically right, but not legally, and (ii) an act is legally right, but not ethically.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public servant",
+        "mere",
+        "compliance",
+        "also",
+        "have",
+        "well-developed"
+      ],
+      "microthemes": [
+        "civil service values",
+        "role morality"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2015_Q3_B",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "How do the virtues of trustworthiness and fortitude get manifested in public service? Explain with examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "virtues",
+        "trustworthiness",
+        "fortitude",
+        "manifested"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2015_Q4_A",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cSocial values are more important than economic values.\u201d Discuss the above statement with examples in the context of the inclusive growth of a nation.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "inclusive growth",
+        "important",
+        "economic",
+        "statement",
+        "inclusive",
+        "growth"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2015_Q4_B",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Some recent developments such as the introduction of the RTI Act, media and judicial activism, etc., are proving helpful in bringing about greater transparency and accountability in the functioning of the government. However, it is also being observed that at times the mechanisms are misused. Another negative effect is that the officers are now afraid to take prompt decisions. Analyze this situation in detail and suggest how this dichotomy can be resolved. Suggest how these negative impacts can be minimized.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "some",
+        "developments",
+        "introduction",
+        "media",
+        "judicial",
+        "activism"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-APPLIED"
+    },
+    {
+      "id": "GS4_2015_Q5_A",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Distinguish between these two terms and write their merits and demerits,",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Two different kinds of attitudes exhibited by public servants towards their work have been identified as the bureaucratic attitude and the democratic attitude.",
+      "keywords": [
+        "distinguish",
+        "between",
+        "merits",
+        "demerits"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2015_Q5_B",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Is it possible to balance the two to create a better administration for the faster development of our country?",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Two different kinds of attitudes exhibited by public servants towards their work have been identified as the bureaucratic attitude and the democratic attitude.",
+      "keywords": [
+        "balance",
+        "create",
+        "better",
+        "faster",
+        "development"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2015_Q6_A",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Evaluate the effectiveness of these measures with justifications.",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Today we find that in spite of various measures like prescribing codes of conduct, setting up vigilance cells/commissions, RTI, active media, and strengthening of legal mechanisms, corrupt practices are not coming under control.",
+      "keywords": [
+        "evaluate",
+        "effectiveness",
+        "measures",
+        "justifications"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2015_Q6_B",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Suggest more effective strategies to tackle this menace.",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Today we find that in spite of various measures like prescribing codes of conduct, setting up vigilance cells/commissions, RTI, active media, and strengthening of legal mechanisms, corrupt practices are not coming under control.",
+      "keywords": [
+        "effective",
+        "strategies",
+        "tackle",
+        "menace"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2015_Q7",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 7,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "At the international level, the bilateral relations between most nations are governed by the policy of promoting one\u2019s own national interest without any regard for the interest of other nations. This leads to conflicts and tensions between the nations. How can ethical consideration help resolve such tensions? Discuss with specific examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "international",
+        "level",
+        "bilateral",
+        "relations",
+        "between",
+        "most"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2015_Q8",
+      "year": 2015,
+      "section": "A",
+      "questionNumber": 8,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "Public servants are likely to confront with the issues of \u2018Conflict of Interest\u2019. What do you understand by the term \u2018Conflict of Interest\u2019 and how does it manifest in the decision-making by public servants? If faced with the conflict of interest situation, how would you resolve it? Explain with the help of examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "conflict of interest",
+        "public servant",
+        "likely",
+        "confront",
+        "issues",
+        "conflict"
+      ],
+      "microthemes": [
+        "integrity in public service",
+        "institutional safeguards",
+        "civil service values",
+        "role morality"
+      ],
+      "syllabusNodeId": "GS4-ETH-APPLIED"
+    },
+    {
+      "id": "GS4_2014_Q1_A",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "All human beings aspire for happiness. Do you agree? What does happiness mean to you? Explain with examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Explain with examples.",
+      "keywords": [
+        "aspire",
+        "happiness",
+        "agree"
+      ],
+      "microthemes": [
+        "ethics and human flourishing",
+        "attitude and values"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2014_Q1_B",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 1,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "What does ethics seek to promote in human life? Why is it all the more important in public administration?",
+      "marks": 10,
+      "wordLimit": 150,
+      "commonPrompt": "Explain with examples.",
+      "keywords": [
+        "public administration",
+        "seek",
+        "promote",
+        "important"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2014_Q2_A",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "In the context of defense services, \u2018patriotism\u2019 demands readiness to even lay down one\u2019s life in protecting the nation. According to you, what does patriotism imply in everyday civil life? Explain with illustrations and justify your answer.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "defense",
+        "patriotism",
+        "demands",
+        "readiness",
+        "even",
+        "down"
+      ],
+      "microthemes": [
+        "civic ethics",
+        "public duty"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2014_Q2_B",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "What do you understand by \u2018probity\u2019 in public life? What are the difficulties in practicing it in the present times? How can these difficulties be overcome?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public life",
+        "probity",
+        "difficulties",
+        "practicing",
+        "times",
+        "overcome"
+      ],
+      "microthemes": [
+        "probity and accountability",
+        "ethical governance",
+        "probity and transparency"
+      ],
+      "syllabusNodeId": "GS4-ETH-PROB"
+    },
+    {
+      "id": "GS4_2014_Q3_A",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cIntegrity without knowledge is weak and useless, but knowledge without integrity is dangerous and dreadful.\u201d What do you understand by this statement? Explain your stand with illustrations from the modern context.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "integrity",
+        "without",
+        "knowledge",
+        "weak",
+        "useless",
+        "dangerous"
+      ],
+      "microthemes": [
+        "integrity in public service",
+        "ethical leadership"
+      ],
+      "syllabusNodeId": "GS4-ETH-PROB"
+    },
+    {
+      "id": "GS4_2014_Q3_B",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 3,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "\u201cHuman beings should always be treated as \u2018ends in themselves and never as merely `means\u2019.\u201d Explain the meaning and significance of this statement, giving its implications in the modern techno-economic society.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "always",
+        "treated",
+        "ends",
+        "themselves",
+        "never",
+        "merely"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2014_Q4_A",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "Which eminent personality has inspired you the most in the context of ethical conduct in life? Give the gist of his/her teachings. Giving specific examples, describe how you have been able to apply these teachings for your own ethical development.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "eminent",
+        "personality",
+        "inspired",
+        "most",
+        "conduct",
+        "give"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2014_Q4_B",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 4,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "There is a heavy ethical responsibility on the public servants because they occupy positions of power, handle huge amounts of public funds, and their decisions have a wide-ranging impact on society and the environment. What steps have you taken to improve your ethical competence to handle such responsibility?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public servant",
+        "public funds",
+        "there",
+        "heavy",
+        "responsibility",
+        "because"
+      ],
+      "microthemes": [
+        "civil service values",
+        "role morality",
+        "financial probity",
+        "development administration"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2014_Q5_A",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "The current society is plagued with a widespread trust deficit. What are the consequences of this situation for personal well-being and for societal well-being? What can you do at the personal level to make yourself trustworthy?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "plagued",
+        "widespread",
+        "trust",
+        "deficit",
+        "consequences",
+        "situation"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-APPLIED"
+    },
+    {
+      "id": "GS4_2014_Q5_B",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "It is often said that poverty leads to corruption. However, there is no dearth of instances where affluent and powerful people indulge in corruption in a big way. What are the basic causes of corruption among people? Support your answer with examples.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "often",
+        "said",
+        "poverty",
+        "leads",
+        "corruption",
+        "however"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2014_Q6",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 6,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "What factors affect the formation of a person\u2019s attitude towards social problems? In our society, contrasting attitudes are prevalent about many social problems. What contrasting attitudes do you notice about the caste system in our society? How do you explain the existence of these contrasting attitudes?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "factors",
+        "affect",
+        "formation",
+        "person",
+        "attitude",
+        "problems"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-ATT"
+    },
+    {
+      "id": "GS4_2014_Q7",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 7,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "What does \u2018accountability\u2019 mean in the context of public service? What measures can be adopted to ensure individual and collective accountability of public servants?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public servant",
+        "accountability",
+        "measures",
+        "adopted",
+        "ensure",
+        "individual"
+      ],
+      "microthemes": [
+        "civil service values",
+        "role morality"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2014_Q8",
+      "year": 2014,
+      "section": "A",
+      "questionNumber": 8,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "We are witnessing increasing instances of sexual violence against women in the country. Despite existing legal provisions against it, the number of such incidences is on the rise. Suggest some innovative measures to tackle this menace.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "witnessing",
+        "increasing",
+        "instances",
+        "sexual",
+        "violence",
+        "against"
+      ],
+      "microthemes": [
+        "gender justice",
+        "inclusion and equity",
+        "social ethics"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2013_Q1",
+      "year": 2013,
+      "section": "A",
+      "questionNumber": 1,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "What do you understand by \u2018Values\u2019 and \u2018Ethics\u2019? In what way is it important to be ethical along with being professionally competent?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "important",
+        "along",
+        "professionally",
+        "competent"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2013_Q2_A",
+      "year": 2013,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What do you understand by the following terms in the context of public service? Integrity Perseverance Spirit of Service Commitment Courage of Conviction",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "integrity",
+        "perseverance",
+        "spirit",
+        "commitment",
+        "courage",
+        "conviction"
+      ],
+      "microthemes": [
+        "integrity in public service",
+        "ethical leadership"
+      ],
+      "syllabusNodeId": "GS4-ETH-PROB"
+    },
+    {
+      "id": "GS4_2013_Q2_B",
+      "year": 2013,
+      "section": "A",
+      "questionNumber": 2,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "Indicate two more attributes that you consider important for public service. Justify your answer.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "indicate",
+        "attributes",
+        "consider",
+        "important"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2013_Q3",
+      "year": 2013,
+      "section": "A",
+      "questionNumber": 3,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "Some people feel that values keep changing with time and situation, while others strongly believe that there are certain universal and eternal human values. Give your perception in this regard with due justification.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "some",
+        "people",
+        "feel",
+        "keep",
+        "changing",
+        "time"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    },
+    {
+      "id": "GS4_2013_Q4",
+      "year": 2013,
+      "section": "A",
+      "questionNumber": 4,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "What is \u2018emotional intelligence and how can it be developed in people? How does it help an individual in taking ethical decisions?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "emotional intelligence",
+        "emotional",
+        "intelligence",
+        "developed",
+        "people",
+        "help"
+      ],
+      "microthemes": [
+        "attitude and aptitude",
+        "ethical decision-making"
+      ],
+      "syllabusNodeId": "GS4-ETH-EI"
+    },
+    {
+      "id": "GS4_2013_Q5_A",
+      "year": 2013,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "a",
+      "type": "ETHICS_THEORY",
+      "question": "What do you understand by the term \u2018voice of conscience? How do you prepare yourself to heed to the voice of conscience?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "voice of conscience",
+        "voice",
+        "conscience",
+        "prepare",
+        "yourself",
+        "heed"
+      ],
+      "microthemes": [
+        "moral reasoning",
+        "integrity"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2013_Q5_B",
+      "year": 2013,
+      "section": "A",
+      "questionNumber": 5,
+      "part": "b",
+      "type": "ETHICS_THEORY",
+      "question": "What is meant by \u2018crisis of conscience? Narrate one incident in your life when you were faced with such a crisis and how you resolved the same.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "crisis of conscience",
+        "meant",
+        "crisis",
+        "conscience",
+        "narrate",
+        "incident"
+      ],
+      "microthemes": [
+        "moral reasoning",
+        "integrity"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2013_Q6_A",
+      "year": 2013,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "a",
+      "type": "QUOTE_BASED",
+      "question": "There is enough on this earth for everyone\u2019s need but for no one\u2019s greed.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Mahatma Gandhi",
+      "commonPrompt": "Given below are three quotations of great moral thinkers/philosophers. For each of these quotations, bring out what it means to you in the present context:",
+      "keywords": [
+        "there",
+        "earth",
+        "everyone",
+        "greed"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2013_Q6_B",
+      "year": 2013,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "b",
+      "type": "QUOTE_BASED",
+      "question": "Nearly all men can withstand adversity, but if you want to test a man\u2019s character, give him power.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Abraham Lincoln",
+      "commonPrompt": "Given below are three quotations of great moral thinkers/philosophers. For each of these quotations, bring out what it means to you in the present context:",
+      "keywords": [
+        "nearly",
+        "withstand",
+        "adversity",
+        "want",
+        "test",
+        "character"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2013_Q6_C",
+      "year": 2013,
+      "section": "A",
+      "questionNumber": 6,
+      "part": "c",
+      "type": "QUOTE_BASED",
+      "question": "I count him braver who overcomes his desires than him who overcomes his enemies.",
+      "marks": 10,
+      "wordLimit": 150,
+      "author": "Aristotle",
+      "commonPrompt": "Given below are three quotations of great moral thinkers/philosophers. For each of these quotations, bring out what it means to you in the present context:",
+      "keywords": [
+        "count",
+        "braver",
+        "overcomes",
+        "desires",
+        "enemies"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2013_Q7",
+      "year": 2013,
+      "section": "A",
+      "questionNumber": 7,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "\u201cThe good of an individual is contained in the good of all.\u201d what do you understand by this statement? How can this principle be implemented in public life?",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "public life",
+        "individual",
+        "contained",
+        "statement",
+        "principle",
+        "implemented"
+      ],
+      "microthemes": [
+        "probity and accountability",
+        "ethical governance"
+      ],
+      "syllabusNodeId": "GS4-ETH-GOV"
+    },
+    {
+      "id": "GS4_2013_Q8",
+      "year": 2013,
+      "section": "A",
+      "questionNumber": 8,
+      "part": null,
+      "type": "ETHICS_THEORY",
+      "question": "It is often said that \u2018politics and \u2018ethics do not go together. What is your opinion in this regard? Justify your answer with an illustration.",
+      "marks": 10,
+      "wordLimit": 150,
+      "keywords": [
+        "often",
+        "said",
+        "politics",
+        "together",
+        "opinion",
+        "illustration"
+      ],
+      "microthemes": [
+        "ethics and values",
+        "public service"
+      ],
+      "syllabusNodeId": "GS4-ETH-HV"
+    }
+  ]
+}

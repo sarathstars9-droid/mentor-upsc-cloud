@@ -1,0 +1,251 @@
+{
+  "exam": "UPSC_CSE",
+  "stage": "Mains",
+  "paper": "GS3",
+  "subject": "ENVIRONMENT",
+  "questions": [
+    {
+      "id": "GS3_ENV_2024_01",
+      "year": 2024,
+      "questionNumber": 1,
+      "directive": "Industrial",
+      "theme": "Pollution",
+      "question": "Industrial pollution of river water is a significant environmental issue in India. Discuss the various mitigation measures to deal with this problem and also the government's initiatives in this regard.",
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+    },
+    {
+      "id": "GS3_ENV_2024_02",
+      "year": 2024,
+      "questionNumber": 2,
+      "directive": "What",
+      "theme": "EIA & Regulation",
+      "question": "What role do Environmental NGOs and activists play in influencing Environmental Impact Assessment (EIA) outcomes for major projects in India? Cite Tour examples with all important details.",
+      "syllabusNodeId": "GS3-ENV-ACTS"
+    },
+    {
+      "id": "GS3_ENV_2023_01",
+      "year": 2023,
+      "questionNumber": 1,
+      "directive": "What is",
+      "theme": "Pollution",
+      "question": "What is oil pollution? What are its impacts on the marine ecosystem? In what way is oil pollution particularly harmful for a country like India?",
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+    },
+    {
+      "id": "GS3_ENV_2023_02",
+      "year": 2023,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Wetlands",
+      "question": "Comment on the National Wetland Conservation Programme initiated by the Government of India and name a few India's wetlands of international importance included in the Ramsar Sites.",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+    },
+    {
+      "id": "GS3_ENV_2023_03",
+      "year": 2023,
+      "questionNumber": 3,
+      "directive": "The",
+      "theme": "Climate Change",
+      "question": "The Intergovernmental Panel on Climate Change (IPCC) has predicted a global sea level rise of about one metre by AD 2100. What would be its impact in India and the other countries in the Indian Ocean region?",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM"
+    },
+    {
+      "id": "GS3_ENV_2022_01",
+      "year": 2022,
+      "questionNumber": 1,
+      "directive": "Discuss",
+      "theme": "Pollution",
+      "question": "Discuss in detail the photochemical smog emphasizing its formation, effects and mitigation. Explain the 1999 Gothenburg protocol.",
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+    },
+    {
+      "id": "GS3_ENV_2022_02",
+      "year": 2022,
+      "questionNumber": 2,
+      "directive": "Explain",
+      "theme": "Environment",
+      "question": "Explain the mechanism and occurrence of cloudburst in the context of the Indian subcontinent. Discuss two recent examples.",
+      "syllabusNodeId": "GS3-ENV-MAINS"
+    },
+    {
+      "id": "GS3_ENV_2022_03",
+      "year": 2022,
+      "questionNumber": 3,
+      "directive": "Discuss",
+      "theme": "Climate Change",
+      "question": "Discuss global warming and mention its effects on the global climate. Explain the control measures to bring down the level of greenhouse gases which cause global warming, in the light of the Kyoto Protocol, 1997.",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM"
+    },
+    {
+      "id": "GS3_ENV_2022_04",
+      "year": 2022,
+      "questionNumber": 4,
+      "directive": "Explain",
+      "theme": "Coastal Ecology",
+      "question": "Explain the causes and effects of coastal erosion in India. What are the available coastal management techniques for combating the hazard?",
+      "syllabusNodeId": "GS3-ENV-BIOGEO"
+    },
+    {
+      "id": "GS3_ENV_2021_01",
+      "year": 2021,
+      "questionNumber": 1,
+      "directive": "Explain",
+      "theme": "Climate Change",
+      "question": "Explain the purpose of the Green Grid Initiative launched at World Leaders Summit of the COP26 UN Climate Change Conference in Glasgow in November 2021. When was this idea first floated in the International Solar Alliance (ISA)?",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM"
+    },
+    {
+      "id": "GS3_ENV_2021_02",
+      "year": 2021,
+      "questionNumber": 2,
+      "directive": "Describe",
+      "theme": "Pollution",
+      "question": "Describe the key points of the revised Global Air Quality Guidelines (AQGs) recently released by the World Health Organisation (WHO). How are these different from its last update in 2005? What changes in India's National Clean Air Programme are required to achieve revised standards?",
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+    },
+    {
+      "id": "GS3_ENV_2021_03",
+      "year": 2021,
+      "questionNumber": 3,
+      "directive": "Describe",
+      "theme": "Climate Change",
+      "question": "Describe the major outcomes of the 26th session of the Conference of the Parties (COP26) to the United Nations Framework Convention on Climate Change (UNFCCC). What are the commitments made by India in this conference?",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM"
+    },
+    {
+      "id": "GS3_ENV_2020_01",
+      "year": 2020,
+      "questionNumber": 1,
+      "directive": "How does",
+      "theme": "EIA & Regulation",
+      "question": "How doesthe draft EnvironmentImpact Assessment(EIA)Notification, 2020 differfrom the existing EIA Notification, 2006?",
+      "syllabusNodeId": "GS3-ENV-ACTS"
+    },
+    {
+      "id": "GS3_ENV_2020_02",
+      "year": 2020,
+      "questionNumber": 2,
+      "directive": "What are",
+      "theme": "Water Conservation",
+      "question": "What are the salient features of the Jal Shakti Abhiyan launched by the Government of India for water conservation and water security?",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER"
+    },
+    {
+      "id": "GS3_ENV_2019_01",
+      "year": 2019,
+      "questionNumber": 1,
+      "directive": "Coastal",
+      "theme": "Coastal Ecology",
+      "question": "Coastal sand mining, whether legal or illegal, poses one of the biggest threats to our environment. Analyse the impact of sand mining along the Indian coasts, citing specific examples.",
+      "syllabusNodeId": "GS3-ENV-BIOGEO"
+    },
+    {
+      "id": "GS3_ENV_2019_02",
+      "year": 2019,
+      "questionNumber": 2,
+      "directive": "Define",
+      "theme": "Sustainable Development",
+      "question": "Define the concept of carrying capacity of an ecosystem as relevant to an environment. Explain how understanding this concept is vital while planning for sustainable development of a region",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+    },
+    {
+      "id": "GS3_ENV_2018_01",
+      "year": 2018,
+      "questionNumber": 1,
+      "directive": "What is",
+      "theme": "Wetlands",
+      "question": "What is wetland? Explain the Ramsar concept of'wise use' in the context of wetland conservation. Cite two examples of Ramsar sites from India.",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+    },
+    {
+      "id": "GS3_ENV_2018_02",
+      "year": 2018,
+      "questionNumber": 2,
+      "directive": "Sikkim",
+      "theme": "Sustainable Agriculture",
+      "question": "Sikkim is the first'Organic State' in India. What are the ecological and economical benefits of Organic State?",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+    },
+    {
+      "id": "GS3_ENV_2018_03",
+      "year": 2018,
+      "questionNumber": 3,
+      "directive": "How does",
+      "theme": "Biodiversity",
+      "question": "How does biodiversity vary in India? How is the Biological Diversity Act, 2002 helpful in conservation of flora and fauna?",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+    },
+    {
+      "id": "GS3_ENV_2017_01",
+      "year": 2017,
+      "questionNumber": 1,
+      "directive": "Not",
+      "theme": "Environment",
+      "question": "Not many years ago, river linking was a concept but it is becoming reality in the country. Discuss the advantages of river linking and its possible impact on the environment.",
+      "syllabusNodeId": "GS3-ENV-MAINS"
+    },
+    {
+      "id": "GS3_ENV_2017_02",
+      "year": 2017,
+      "questionNumber": 2,
+      "directive": "Climate",
+      "theme": "Climate Change",
+      "question": "Climate Change' is a global problem. How will India be affected by climate change? How Himalayan and coastal states of India will be affected by climate change?",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM"
+    },
+    {
+      "id": "GS3_ENV_2016_01",
+      "year": 2016,
+      "questionNumber": 1,
+      "directive": "Rehabilitation",
+      "theme": "Environment",
+      "question": "Rehabilitation of human settlements is one of the important environmental impacts which always attracts controversy while planning major projects. Discuss the measures suggested for mitigation of this impact while proposing major developmental projects.",
+      "syllabusNodeId": "GS3-ENV-MAINS"
+    },
+    {
+      "id": "GS3_ENV_2015_01",
+      "year": 2015,
+      "questionNumber": 1,
+      "directive": "Discuss",
+      "theme": "Water Conservation",
+      "question": "Discuss the Namami Gange and National Mission for Clean Ganga (NMCG) programmes and causes of mixed results from the previous schemes. What quantum leaps can help preserve the river Ganga better than incremental inputs",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER"
+    },
+    {
+      "id": "GS3_ENV_2014_01",
+      "year": 2014,
+      "questionNumber": 1,
+      "directive": "Should",
+      "theme": "Climate Change",
+      "question": "Should the pursuit of carbon credits and clean development mechanisms set up under UNFCCC be maintained even though there has been a massive slide in the value of a carbon credit? Discuss with respect to India's energy needs for economic growth.",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM"
+    },
+    {
+      "id": "GS3_ENV_2014_02",
+      "year": 2014,
+      "questionNumber": 2,
+      "directive": "Environmental",
+      "theme": "Environment",
+      "question": "Environmental Impact Assessment studies are increasingly undertaken before a project is cleared by the Government. Discuss the environmental impacts of coalfired thermal plants located at coal pitheads.",
+      "syllabusNodeId": "GS3-ENV-MAINS"
+    },
+    {
+      "id": "GS3_ENV_2013_01",
+      "year": 2013,
+      "questionNumber": 1,
+      "directive": "What are",
+      "theme": "Mining & Environment",
+      "question": "What are the consequences of illegal mining? Discuss the ministry of environment and forests' concept of \"GO AND NO GO\" zones for coal mining.",
+      "syllabusNodeId": "GS3-ENV-RESOURCES"
+    },
+    {
+      "id": "GS3_ENV_2013_02",
+      "year": 2013,
+      "questionNumber": 2,
+      "directive": "Enumerate",
+      "theme": "Pollution",
+      "question": "Enumerate the National Water Policy of India. Taking river Ganges as an example, discuss the strategies which may be adopted for river water pollution control and management. What are the legal provisions for management and handling of hazardous wastes in India?",
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+    }
+  ]
+}

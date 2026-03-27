@@ -1,4 +1,16 @@
 {
-  "days": [],
+  "days": [
+    {
+      "date": "2026-03-20",
+      "planMin": 1080,
+      "doneMin": 638,
+      "csatMin": 60,
+      "reflection": "",
+      "planCompleted": "Yes",
+      "wentWrongReason": "CSAT avoidance",
+      "extraDone": "No",
+      "ts": 1774029493097
+    }
+  ],
   "activeLoops": {}
 }

@@ -1,0 +1,1 @@
+console.log('Replace with real generator after pasting syllabus files');

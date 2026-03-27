@@ -1,86 +1,204 @@
 // backend/brain/syllabusEssay.js
 
 export const ESSAY_2026 = {
+  heading: "Essay Paper",
+  macroTheme: "Idea Building, Multidimensional Thinking, and Structured Expression",
   sections: [
     {
       id: "ESSAY-MACRO",
-      name: "Essay Paper (Predictive Blocks 2016–2025)",
+      name: "Essay Paper (Predictive Blocks 2016–2026)",
       tags: ["M"],
       topics: [
         {
-          id: "E.1",
+          id: "ESSAY-PHIL-ABSTRACT",
           name: "Philosophical / Abstract",
+          aliases: [
+            "philosophical essay",
+            "abstract essay",
+            "value essay",
+            "idea based essay"
+          ],
           tags: ["M"],
           microThemes: [
             "Nature of Truth",
             "Mind vs Machines",
             "Crisis of Character",
             "Wisdom vs Knowledge",
-            "The Self in a Digital Age"
+            "The Self in a Digital Age",
+            "Freedom and Responsibility",
+            "Means and Ends",
+            "Ethics and Human Purpose"
           ],
           keywords: [
-            "truth", "post truth", "truth and morality",
-            "mind vs machine", "human vs machine", "ai vs humans",
-            "character crisis", "values crisis", "ethical crisis",
-            "wisdom vs knowledge", "information vs wisdom",
-            "self", "identity", "digital self", "meaning of life"
+            "truth",
+            "post truth",
+            "truth and morality",
+            "wisdom",
+            "knowledge",
+            "mind vs machine",
+            "human vs machine",
+            "identity",
+            "digital self",
+            "meaning of life",
+            "freedom",
+            "responsibility",
+            "character",
+            "values",
+            "ethics"
           ],
           schemes: []
         },
 
         {
-          id: "E.2",
-          name: "Science & Ethics",
+          id: "ESSAY-SCI-ETHICS",
+          name: "Science, Technology & Ethics",
+          aliases: [
+            "science and ethics",
+            "technology essay",
+            "ai essay",
+            "innovation and ethics"
+          ],
           tags: ["M"],
           microThemes: [
             "Technology as a double-edged sword",
             "Ethics of AI",
             "Human vs Artificial Intelligence",
-            "Sustainability vs Consumerism"
+            "Automation and the future of work",
+            "Sustainability vs Consumerism",
+            "Science and moral responsibility",
+            "Innovation with accountability"
           ],
           keywords: [
-            "technology double edged", "tech boon bane",
-            "ethics of ai", "ai ethics", "algorithm bias", "deepfake",
-            "human vs artificial intelligence", "automation", "job loss",
-            "sustainability vs consumerism", "climate ethics", "green growth"
+            "technology",
+            "science",
+            "ethics of ai",
+            "ai ethics",
+            "algorithm bias",
+            "deepfake",
+            "automation",
+            "job loss",
+            "reskilling",
+            "upskilling",
+            "human vs artificial intelligence",
+            "consumerism",
+            "sustainability",
+            "climate ethics",
+            "green growth",
+            "innovation",
+            "responsible technology"
           ],
           schemes: []
         },
 
         {
-          id: "E.3",
-          name: "Society & Culture",
+          id: "ESSAY-SOC-CULTURE",
+          name: "Society, Culture & Social Justice",
+          aliases: [
+            "society essay",
+            "culture essay",
+            "social justice essay",
+            "women and society essay"
+          ],
           tags: ["M"],
           microThemes: [
             "Patriarchy as a subtle shackle",
             "Unity in Diversity",
             "Role of Social Media in Democracy",
-            "Education as a tool of liberation"
+            "Education as a tool of liberation",
+            "Gender justice",
+            "Social harmony and pluralism",
+            "Media, misinformation and society",
+            "Dignity and inclusion"
           ],
           keywords: [
-            "patriarchy", "gender equality", "women empowerment",
-            "unity in diversity", "pluralism", "social cohesion",
-            "social media democracy", "fake news", "misinformation",
-            "education liberation", "human capital", "social mobility"
+            "patriarchy",
+            "gender equality",
+            "women empowerment",
+            "unity in diversity",
+            "pluralism",
+            "social cohesion",
+            "education",
+            "social mobility",
+            "social justice",
+            "social media",
+            "fake news",
+            "misinformation",
+            "democracy",
+            "inclusion",
+            "dignity"
           ],
           schemes: []
         },
 
         {
-          id: "E.4",
-          name: "Polity & Economics",
+          id: "ESSAY-POL-ECON",
+          name: "Polity, Governance & Economy",
+          aliases: [
+            "governance essay",
+            "economy essay",
+            "polity essay",
+            "development essay"
+          ],
           tags: ["M"],
           microThemes: [
             "Federalism and friction",
             "Global South leadership",
             "Economic growth vs social justice",
-            "Governance as a service"
+            "Governance as a service",
+            "Development and inequality",
+            "Democracy and accountability",
+            "State capacity and welfare",
+            "Inclusive growth"
           ],
           keywords: [
-            "federalism", "centre state", "cooperative federalism",
-            "global south", "south south cooperation", "india leadership",
-            "growth vs justice", "inclusive growth", "inequality",
-            "governance as a service", "citizen centric governance", "good governance"
+            "federalism",
+            "centre state relations",
+            "cooperative federalism",
+            "global south",
+            "india leadership",
+            "economic growth",
+            "social justice",
+            "inclusive growth",
+            "inequality",
+            "governance",
+            "citizen centric governance",
+            "good governance",
+            "development",
+            "democracy",
+            "accountability",
+            "welfare state"
+          ],
+          schemes: []
+        },
+
+        {
+          id: "ESSAY-ENV-HUMANITY",
+          name: "Environment, Sustainability & Humanity",
+          aliases: [
+            "environment essay",
+            "climate essay",
+            "sustainability essay"
+          ],
+          tags: ["M"],
+          microThemes: [
+            "Development vs ecology",
+            "Climate change and justice",
+            "Humanity and nature",
+            "Intergenerational equity",
+            "Lifestyle and sustainability",
+            "Ecology as a civilizational ethic"
+          ],
+          keywords: [
+            "environment",
+            "ecology",
+            "climate change",
+            "climate justice",
+            "sustainability",
+            "development vs environment",
+            "intergenerational equity",
+            "nature",
+            "green growth",
+            "lifestyle for environment"
           ],
           schemes: []
         }
@@ -93,40 +211,58 @@ export const ESSAY_2026 = {
       tags: ["M"],
       topics: [
         {
-          id: "ESSAY-P3",
-          name: "P³ × S Formula (Perspective, Precision, Personality × Structure)",
+          id: "ESSAY-FRAMEWORK-P3",
+          name: "P3 × S Formula (Perspective, Precision, Personality × Structure)",
+          aliases: [
+            "essay framework",
+            "p3 framework",
+            "essay writing structure"
+          ],
           tags: ["M"],
           microThemes: [
             "Perspective: 8-Dimension Rule (PESTEL-HI)",
-            "Precision: Linear-Linkage flow (Intro → Thesis → Antithesis → Synthesis)",
-            "Personality: Originality + Non-cliché thinker bank + IAS 'So What?'",
-            "Structure: intros/outros + transitions + philosophical audit"
+            "Precision: Intro → Thesis → Antithesis → Synthesis",
+            "Personality: Originality + non-cliche thinker bank + IAS relevance",
+            "Structure: intros, transitions, conclusion, philosophical audit"
           ],
           keywords: [
-            "p3", "perspective precision personality", "pestel hi",
-            "political", "economic", "social", "technological", "environmental", "legal", "historical", "international",
+            "p3",
+            "perspective precision personality",
+            "essay framework",
+            "pestel hi",
             "thesis antithesis synthesis",
-            "intro hook", "conclusion outro", "transition phrases",
-            "philosophical audit", "so what ias"
+            "intro",
+            "conclusion",
+            "transition phrases",
+            "philosophical audit"
           ],
           schemes: []
         },
 
         {
-          id: "ESSAY-ASSETS",
-          name: "Essay Assets Library (for OS auto-prompts)",
+          id: "ESSAY-FRAMEWORK-ASSETS",
+          name: "Essay Assets Library",
+          aliases: [
+            "essay assets",
+            "intro outro library",
+            "essay prompts"
+          ],
           tags: ["M"],
           microThemes: [
-            "Intro/Outro Library for each block (E.1–E.4)",
-            "Transition Matrix for flow connectors",
-            "Philosophical Audit prompts (GS4 + GS1 linkages)",
-            "Cliché Alert (avoid Gandhi/Lincoln repeats)"
+            "Intro/Outro library for each essay block",
+            "Transition matrix for connectors",
+            "Philosophical audit prompts",
+            "Cliche alert and originality checks"
           ],
           keywords: [
-            "intro library", "outro library", "transition matrix",
-            "connector phrases", "flow",
-            "philosophical audit", "gs4 ethics link", "gs1 society link",
-            "cliche alert", "avoid gandhi", "avoid lincoln"
+            "intro library",
+            "outro library",
+            "transition matrix",
+            "connector phrases",
+            "flow",
+            "philosophical audit",
+            "cliche alert",
+            "originality"
           ],
           schemes: []
         }
@@ -134,4 +270,5 @@ export const ESSAY_2026 = {
     }
   ]
 };
+
 export default ESSAY_2026;

@@ -1,0 +1,3855 @@
+{
+  "exam": "UPSC_CSE",
+  "stage": "Mains",
+  "paper": "Essay",
+  "notes": {
+    "source": "User-uploaded topic-wise essay compilation PDF",
+    "sectionPolicy": "Section values are null because the uploaded source is organized topic-wise and does not preserve original Section A / Section B mapping year-wise. Fill sections later from original year question papers if needed.",
+    "themeCategories": [
+      "PHILOSOPHICAL",
+      "SOCIAL",
+      "POLITICAL",
+      "ECONOMIC",
+      "SCIENCE_TECH",
+      "ENVIRONMENT",
+      "ETHICS",
+      "INTERNATIONAL"
+    ]
+  },
+  "topics": [
+    {
+      "id": "ESSAY_1993_U_1",
+      "year": 1993,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "My vision of India in 2001 A.D.",
+      "keywords": [
+        "India",
+        "vision",
+        "future"
+      ],
+      "microthemes": [
+        "nation building",
+        "democratic development"
+      ],
+      "sourceTopicBucket": "India Since Independence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1993_U_2",
+      "year": 1993,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Economic growth without distributive justice is bound to breed violence.",
+      "keywords": [
+        "economic growth",
+        "distributive justice",
+        "violence"
+      ],
+      "microthemes": [
+        "inclusive growth",
+        "inequality"
+      ],
+      "sourceTopicBucket": "Growth vs Development",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_1993_U_3",
+      "year": 1993,
+      "section": null,
+      "themeCategory": "ENVIRONMENT",
+      "topic": "Ecological considerations need not hamper development.",
+      "keywords": [
+        "ecology",
+        "development",
+        "balance"
+      ],
+      "microthemes": [
+        "sustainable development",
+        "environment-development debate"
+      ],
+      "sourceTopicBucket": "Environment vs Development",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_1993_U_4",
+      "year": 1993,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "He who reigns within himself and rules passions, desires and fears is more than a king.",
+      "keywords": [
+        "self-mastery",
+        "passions",
+        "inner strength"
+      ],
+      "microthemes": [
+        "self-control",
+        "leadership ethics"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1993_U_5",
+      "year": 1993,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Compassion is the basis of all morality of the world.",
+      "keywords": [
+        "compassion",
+        "morality",
+        "humanity"
+      ],
+      "microthemes": [
+        "ethical conduct",
+        "human values"
+      ],
+      "sourceTopicBucket": "Compassion",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1993_U_6",
+      "year": 1993,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Men have failed; let women take over.",
+      "keywords": [
+        "women",
+        "leadership",
+        "gender"
+      ],
+      "microthemes": [
+        "women empowerment",
+        "gender equality"
+      ],
+      "sourceTopicBucket": "Compared to men",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_1993_U_7",
+      "year": 1993,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "The global order: political and economic.",
+      "keywords": [
+        "global order",
+        "politics",
+        "economy"
+      ],
+      "microthemes": [
+        "world order",
+        "global governance"
+      ],
+      "sourceTopicBucket": "International Org./ Bilateral",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1993_U_8",
+      "year": 1993,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Computer: the harbinger of silent revolution.",
+      "keywords": [
+        "computer",
+        "technology",
+        "revolution"
+      ],
+      "microthemes": [
+        "digital transformation",
+        "technological change"
+      ],
+      "sourceTopicBucket": "Computer and internet",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1994_U_1",
+      "year": 1994,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Politics, bureaucracy and business \u2013 fatal triangle.",
+      "keywords": [
+        "politics",
+        "bureaucracy",
+        "business"
+      ],
+      "microthemes": [
+        "governance",
+        "corruption"
+      ],
+      "sourceTopicBucket": "Administration",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1994_U_2",
+      "year": 1994,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "The Indian society at the crossroads.",
+      "keywords": [
+        "Indian society",
+        "change",
+        "crossroads"
+      ],
+      "microthemes": [
+        "social transition",
+        "modernization"
+      ],
+      "sourceTopicBucket": "Indian Society, Culture and Values",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_1994_U_3",
+      "year": 1994,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Multinational corporations \u2013 saviours or saboteurs.",
+      "keywords": [
+        "MNCs",
+        "globalization",
+        "industry"
+      ],
+      "microthemes": [
+        "liberalization",
+        "economic sovereignty"
+      ],
+      "sourceTopicBucket": "MNCs",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1994_U_4",
+      "year": 1994,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Youth is a blunder, manhood a struggle, old age a regret.",
+      "keywords": [
+        "youth",
+        "age",
+        "life stages"
+      ],
+      "microthemes": [
+        "human condition",
+        "life journey"
+      ],
+      "sourceTopicBucket": "Youth, Discipline",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1994_U_5",
+      "year": 1994,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Useless life is an early death.",
+      "keywords": [
+        "life",
+        "purpose",
+        "death"
+      ],
+      "microthemes": [
+        "meaning of life",
+        "human potential"
+      ],
+      "sourceTopicBucket": "Towards excellence",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_1994_U_6",
+      "year": 1994,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Modernisation and westernisation are not identical concepts.",
+      "keywords": [
+        "modernisation",
+        "westernisation",
+        "culture"
+      ],
+      "microthemes": [
+        "cultural change",
+        "identity"
+      ],
+      "sourceTopicBucket": "Globalization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1995_U_1",
+      "year": 1995,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Whither Indian democracy?",
+      "keywords": [
+        "democracy",
+        "India",
+        "future"
+      ],
+      "microthemes": [
+        "democratic institutions",
+        "political reform"
+      ],
+      "sourceTopicBucket": "India Since Independence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1995_U_2",
+      "year": 1995,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Politics without ethics is a disaster.",
+      "keywords": [
+        "politics",
+        "ethics",
+        "disaster"
+      ],
+      "microthemes": [
+        "ethical governance",
+        "public morality"
+      ],
+      "sourceTopicBucket": "Administration",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1995_U_3",
+      "year": 1995,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Disinterested intellectual curiosity is the lifeblood of civilisation.",
+      "keywords": [
+        "curiosity",
+        "civilisation",
+        "knowledge"
+      ],
+      "microthemes": [
+        "knowledge pursuit",
+        "intellectual culture"
+      ],
+      "sourceTopicBucket": "Knowledge",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_1995_U_4",
+      "year": 1995,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "When money speaks, the truth is silent.",
+      "keywords": [
+        "money",
+        "truth",
+        "power"
+      ],
+      "microthemes": [
+        "corruption",
+        "moral decline"
+      ],
+      "sourceTopicBucket": "Truth and reality",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_1995_U_5",
+      "year": 1995,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Our deeds determine us, as much as we determine our deeds.",
+      "keywords": [
+        "deeds",
+        "agency",
+        "character"
+      ],
+      "microthemes": [
+        "action and character",
+        "moral responsibility"
+      ],
+      "sourceTopicBucket": "Towards excellence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1995_U_6",
+      "year": 1995,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "The new emerging women power: the ground realities.",
+      "keywords": [
+        "women",
+        "power",
+        "reality"
+      ],
+      "microthemes": [
+        "women empowerment",
+        "social change"
+      ],
+      "sourceTopicBucket": "National Politics",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_1995_U_7",
+      "year": 1995,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Restructuring of Indian education system.",
+      "keywords": [
+        "education",
+        "restructuring",
+        "system"
+      ],
+      "microthemes": [
+        "education reform",
+        "human capital"
+      ],
+      "sourceTopicBucket": "Scheme implementation",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_1996_U_1",
+      "year": 1996,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Need for transparency in public administration.",
+      "keywords": [
+        "transparency",
+        "public administration",
+        "accountability"
+      ],
+      "microthemes": [
+        "good governance",
+        "administrative reform"
+      ],
+      "sourceTopicBucket": "Administration",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1996_U_2",
+      "year": 1996,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "The VIP cult is a bane of Indian democracy.",
+      "keywords": [
+        "VIP culture",
+        "democracy",
+        "equality"
+      ],
+      "microthemes": [
+        "political culture",
+        "constitutional morality"
+      ],
+      "sourceTopicBucket": "Administration",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1996_U_3",
+      "year": 1996,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Literacy is growing very fast, but there is no corresponding growth in education.",
+      "keywords": [
+        "literacy",
+        "education",
+        "quality"
+      ],
+      "microthemes": [
+        "education quality",
+        "human development"
+      ],
+      "sourceTopicBucket": "Values in Education",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_1996_U_4",
+      "year": 1996,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Truth is lived, not taught.",
+      "keywords": [
+        "truth",
+        "life",
+        "practice"
+      ],
+      "microthemes": [
+        "lived ethics",
+        "moral philosophy"
+      ],
+      "sourceTopicBucket": "Truth and reality",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_1996_U_5",
+      "year": 1996,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "Restructuring of UNO to reflect present realities.",
+      "keywords": [
+        "UNO",
+        "reform",
+        "global governance"
+      ],
+      "microthemes": [
+        "UN reform",
+        "multilateralism"
+      ],
+      "sourceTopicBucket": "International Org./ Bilateral",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1996_U_6",
+      "year": 1996,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "New cults and godmen: a threat to traditional religion.",
+      "keywords": [
+        "religion",
+        "godmen",
+        "tradition"
+      ],
+      "microthemes": [
+        "social values",
+        "faith and society"
+      ],
+      "sourceTopicBucket": "Indian Society, Culture and Values",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1997_U_1",
+      "year": 1997,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "What we have not learnt during fifty years of independence.",
+      "keywords": [
+        "independence",
+        "lessons",
+        "India"
+      ],
+      "microthemes": [
+        "nation building",
+        "post-independence assessment"
+      ],
+      "sourceTopicBucket": "India Since Independence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1997_U_2",
+      "year": 1997,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Judicial activism.",
+      "keywords": [
+        "judiciary",
+        "activism",
+        "democracy"
+      ],
+      "microthemes": [
+        "judicial role",
+        "constitutional balance"
+      ],
+      "sourceTopicBucket": "Judiciary",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1997_U_3",
+      "year": 1997,
+      "section": null,
+      "themeCategory": "ENVIRONMENT",
+      "topic": "Urbanization is a blessing in disguise.",
+      "keywords": [
+        "urbanization",
+        "development",
+        "cities"
+      ],
+      "microthemes": [
+        "urban development",
+        "social change"
+      ],
+      "sourceTopicBucket": "Environment vs Development",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1997_U_4",
+      "year": 1997,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Greater political power alone will not improve women's plight.",
+      "keywords": [
+        "women",
+        "political power",
+        "empowerment"
+      ],
+      "microthemes": [
+        "gender justice",
+        "representation"
+      ],
+      "sourceTopicBucket": "National Politics",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_1997_U_5",
+      "year": 1997,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "True religion cannot be misused.",
+      "keywords": [
+        "religion",
+        "misuse",
+        "values"
+      ],
+      "microthemes": [
+        "communal harmony",
+        "moral values"
+      ],
+      "sourceTopicBucket": "Security",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1997_U_6",
+      "year": 1997,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "The modern doctor and his patients.",
+      "keywords": [
+        "doctor",
+        "patients",
+        "medicine"
+      ],
+      "microthemes": [
+        "healthcare ethics",
+        "doctor-patient relationship"
+      ],
+      "sourceTopicBucket": "Sci-Tech: others",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1998_U_1",
+      "year": 1998,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "The language problem in India: its past, present and prospects.",
+      "keywords": [
+        "language",
+        "India",
+        "identity"
+      ],
+      "microthemes": [
+        "linguistic diversity",
+        "federalism"
+      ],
+      "sourceTopicBucket": "Federalism, Decentralization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1998_U_2",
+      "year": 1998,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "The composite culture of India.",
+      "keywords": [
+        "composite culture",
+        "India",
+        "pluralism"
+      ],
+      "microthemes": [
+        "unity in diversity",
+        "cultural heritage"
+      ],
+      "sourceTopicBucket": "Indian Society, Culture and Values",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_1998_U_3",
+      "year": 1998,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "The misinterpretation and misuse of freedom in India.",
+      "keywords": [
+        "freedom",
+        "misuse",
+        "India"
+      ],
+      "microthemes": [
+        "liberty and responsibility",
+        "democratic culture"
+      ],
+      "sourceTopicBucket": "Media, TV & Cinema, literature",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1998_U_4",
+      "year": 1998,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Woman is God's best creation.",
+      "keywords": [
+        "woman",
+        "creation",
+        "gender"
+      ],
+      "microthemes": [
+        "women dignity",
+        "gender perspectives"
+      ],
+      "sourceTopicBucket": "Compared to men",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1998_U_5",
+      "year": 1998,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "India's contribution to world wisdom.",
+      "keywords": [
+        "India",
+        "world wisdom",
+        "civilization"
+      ],
+      "microthemes": [
+        "soft power",
+        "civilizational values"
+      ],
+      "sourceTopicBucket": "Globalization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1998_U_6",
+      "year": 1998,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "The world of the twenty-first century.",
+      "keywords": [
+        "world",
+        "future",
+        "twenty-first century"
+      ],
+      "microthemes": [
+        "global change",
+        "future world order"
+      ],
+      "sourceTopicBucket": "Globalization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1999_U_1",
+      "year": 1999,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Reservation, politics and empowerment.",
+      "keywords": [
+        "reservation",
+        "politics",
+        "empowerment"
+      ],
+      "microthemes": [
+        "affirmative action",
+        "social justice"
+      ],
+      "sourceTopicBucket": "Poverty, Social Justice",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1999_U_2",
+      "year": 1999,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Mass media and cultural invasion.",
+      "keywords": [
+        "mass media",
+        "culture",
+        "invasion"
+      ],
+      "microthemes": [
+        "cultural globalization",
+        "media influence"
+      ],
+      "sourceTopicBucket": "Media, TV & Cinema, literature",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1999_U_3",
+      "year": 1999,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Resource management in the Indian context.",
+      "keywords": [
+        "resources",
+        "management",
+        "India"
+      ],
+      "microthemes": [
+        "sustainable resource use",
+        "development planning"
+      ],
+      "sourceTopicBucket": "Growth vs Development",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_1999_U_4",
+      "year": 1999,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Women empowerment: challenges and prospects.",
+      "keywords": [
+        "women empowerment",
+        "challenges",
+        "prospects"
+      ],
+      "microthemes": [
+        "gender equality",
+        "social reform"
+      ],
+      "sourceTopicBucket": "Empowerment overall",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_1999_U_5",
+      "year": 1999,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Youth culture today.",
+      "keywords": [
+        "youth",
+        "culture",
+        "society"
+      ],
+      "microthemes": [
+        "youth issues",
+        "social transformation"
+      ],
+      "sourceTopicBucket": "Youth, Discipline",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_1999_U_6",
+      "year": 1999,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Value-based science and education.",
+      "keywords": [
+        "science",
+        "education",
+        "values"
+      ],
+      "microthemes": [
+        "scientific temper",
+        "ethical education"
+      ],
+      "sourceTopicBucket": "Science and Education",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2000_U_1",
+      "year": 2000,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Why should we be proud of being Indians?",
+      "keywords": [
+        "India",
+        "pride",
+        "identity"
+      ],
+      "microthemes": [
+        "national identity",
+        "citizenship values"
+      ],
+      "sourceTopicBucket": "India Since Independence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2000_U_2",
+      "year": 2000,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "The country's need for a better disaster management system.",
+      "keywords": [
+        "disaster management",
+        "state capacity",
+        "governance"
+      ],
+      "microthemes": [
+        "administrative preparedness",
+        "resilience"
+      ],
+      "sourceTopicBucket": "Administration",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2000_U_3",
+      "year": 2000,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Indian culture today: a myth or a reality?",
+      "keywords": [
+        "Indian culture",
+        "myth",
+        "reality"
+      ],
+      "microthemes": [
+        "cultural continuity",
+        "modernity"
+      ],
+      "sourceTopicBucket": "Indian Society, Culture and Values",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2000_U_4",
+      "year": 2000,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Modernism and our traditional socio-ethical values.",
+      "keywords": [
+        "modernism",
+        "tradition",
+        "values"
+      ],
+      "microthemes": [
+        "cultural change",
+        "ethical values"
+      ],
+      "sourceTopicBucket": "Indian Society, Culture and Values",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2000_U_5",
+      "year": 2000,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "The implications of globalization for India.",
+      "keywords": [
+        "globalization",
+        "India",
+        "implications"
+      ],
+      "microthemes": [
+        "economic reform",
+        "global integration"
+      ],
+      "sourceTopicBucket": "Globalization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2000_U_6",
+      "year": 2000,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "The cyberworld: its charms and challenges.",
+      "keywords": [
+        "cyberworld",
+        "internet",
+        "challenges"
+      ],
+      "microthemes": [
+        "digital society",
+        "cyber risks"
+      ],
+      "sourceTopicBucket": "Computer and internet",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2001_U_1",
+      "year": 2001,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "What have we gained from our democratic set-up?",
+      "keywords": [
+        "democracy",
+        "gains",
+        "India"
+      ],
+      "microthemes": [
+        "democratic experience",
+        "institutional performance"
+      ],
+      "sourceTopicBucket": "India Since Independence",
+      "syllabusNodeId": "ESSAY-SCI-ETHICS"
+    },
+    {
+      "id": "ESSAY_2001_U_2",
+      "year": 2001,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Irrelevance of the classroom.",
+      "keywords": [
+        "classroom",
+        "education",
+        "relevance"
+      ],
+      "microthemes": [
+        "education reform",
+        "learning methods"
+      ],
+      "sourceTopicBucket": "Values in Education",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2001_U_3",
+      "year": 2001,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Empowerment alone cannot help our women.",
+      "keywords": [
+        "women",
+        "empowerment",
+        "limitations"
+      ],
+      "microthemes": [
+        "gender justice",
+        "social support"
+      ],
+      "sourceTopicBucket": "Empowerment overall",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2001_U_4",
+      "year": 2001,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "My vision of an ideal world order.",
+      "keywords": [
+        "world order",
+        "ideal",
+        "peace"
+      ],
+      "microthemes": [
+        "global governance",
+        "international relations"
+      ],
+      "sourceTopicBucket": "Globalization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2001_U_5",
+      "year": 2001,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "The march of science and the erosion of human values.",
+      "keywords": [
+        "science",
+        "human values",
+        "erosion"
+      ],
+      "microthemes": [
+        "technology and ethics",
+        "modernity"
+      ],
+      "sourceTopicBucket": "Science and Education",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2001_U_6",
+      "year": 2001,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "The pursuit of excellence.",
+      "keywords": [
+        "excellence",
+        "effort",
+        "growth"
+      ],
+      "microthemes": [
+        "self-improvement",
+        "achievement"
+      ],
+      "sourceTopicBucket": "Towards excellence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2002_U_1",
+      "year": 2002,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Responsibility of media in a democracy.",
+      "keywords": [
+        "media",
+        "democracy",
+        "responsibility"
+      ],
+      "microthemes": [
+        "free press",
+        "accountability"
+      ],
+      "sourceTopicBucket": "Media, TV & Cinema, literature",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2002_U_2",
+      "year": 2002,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Privatization of higher education in India.",
+      "keywords": [
+        "higher education",
+        "privatization",
+        "India"
+      ],
+      "microthemes": [
+        "education policy",
+        "access and equity"
+      ],
+      "sourceTopicBucket": "Higher education",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2002_U_3",
+      "year": 2002,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Search for truth can only be a spiritual problem.",
+      "keywords": [
+        "truth",
+        "spirituality",
+        "search"
+      ],
+      "microthemes": [
+        "philosophy",
+        "inner quest"
+      ],
+      "sourceTopicBucket": "Truth and reality",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2002_U_4",
+      "year": 2002,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "If youth knew, if age could.",
+      "keywords": [
+        "youth",
+        "age",
+        "wisdom"
+      ],
+      "microthemes": [
+        "intergenerational learning",
+        "human experience"
+      ],
+      "sourceTopicBucket": "Youth, Discipline",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2002_U_5",
+      "year": 2002,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "The paths of glory lead but to the grave.",
+      "keywords": [
+        "glory",
+        "mortality",
+        "ambition"
+      ],
+      "microthemes": [
+        "transience of success",
+        "human ambition"
+      ],
+      "sourceTopicBucket": "Towards excellence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2002_U_6",
+      "year": 2002,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Modern technological education and human values.",
+      "keywords": [
+        "technology",
+        "education",
+        "human values"
+      ],
+      "microthemes": [
+        "value-based education",
+        "technology ethics"
+      ],
+      "sourceTopicBucket": "Science and Education",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2003_U_1",
+      "year": 2003,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "How far has democracy in India delivered the goods?",
+      "keywords": [
+        "democracy",
+        "India",
+        "outcomes"
+      ],
+      "microthemes": [
+        "governance performance",
+        "democratic accountability"
+      ],
+      "sourceTopicBucket": "India Since Independence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2003_U_2",
+      "year": 2003,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "How should a civil servant conduct himself?",
+      "keywords": [
+        "civil servant",
+        "conduct",
+        "ethics"
+      ],
+      "microthemes": [
+        "public service ethics",
+        "administrative integrity"
+      ],
+      "sourceTopicBucket": "Administration",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2003_U_3",
+      "year": 2003,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "There is nothing either good or bad but thinking makes it so.",
+      "keywords": [
+        "thinking",
+        "good",
+        "bad"
+      ],
+      "microthemes": [
+        "perception",
+        "moral philosophy"
+      ],
+      "sourceTopicBucket": "Knowledge",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2003_U_4",
+      "year": 2003,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "The masks of new imperialism.",
+      "keywords": [
+        "imperialism",
+        "power",
+        "globalization"
+      ],
+      "microthemes": [
+        "neo-imperialism",
+        "global order"
+      ],
+      "sourceTopicBucket": "Globalization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2003_U_5",
+      "year": 2003,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "As civilization advances culture declines.",
+      "keywords": [
+        "civilization",
+        "culture",
+        "decline"
+      ],
+      "microthemes": [
+        "modernity and culture",
+        "value erosion"
+      ],
+      "sourceTopicBucket": "Globalization",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2003_U_6",
+      "year": 2003,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Spirituality and scientific temper.",
+      "keywords": [
+        "spirituality",
+        "scientific temper",
+        "reason"
+      ],
+      "microthemes": [
+        "science and spirituality",
+        "temper of inquiry"
+      ],
+      "sourceTopicBucket": "Science and Religion",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2004_U_1",
+      "year": 2004,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Water resources should be under the control of the central government.",
+      "keywords": [
+        "water resources",
+        "central government",
+        "federalism"
+      ],
+      "microthemes": [
+        "resource governance",
+        "centre-state relations"
+      ],
+      "sourceTopicBucket": "Federalism, Decentralization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2004_U_2",
+      "year": 2004,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Judicial activism and Indian democracy.",
+      "keywords": [
+        "judicial activism",
+        "democracy",
+        "India"
+      ],
+      "microthemes": [
+        "separation of powers",
+        "judiciary"
+      ],
+      "sourceTopicBucket": "Judiciary",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2004_U_3",
+      "year": 2004,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Whither women's emancipation?",
+      "keywords": [
+        "women",
+        "emancipation",
+        "society"
+      ],
+      "microthemes": [
+        "gender equality",
+        "social reform"
+      ],
+      "sourceTopicBucket": "Empowerment overall",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2004_U_4",
+      "year": 2004,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Globalization and its impact on Indian culture.",
+      "keywords": [
+        "globalization",
+        "Indian culture",
+        "impact"
+      ],
+      "microthemes": [
+        "cultural globalization",
+        "identity"
+      ],
+      "sourceTopicBucket": "Globalization",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2004_U_5",
+      "year": 2004,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "India's role in promoting ASEAN cooperation.",
+      "keywords": [
+        "India",
+        "ASEAN",
+        "cooperation"
+      ],
+      "microthemes": [
+        "regional diplomacy",
+        "foreign policy"
+      ],
+      "sourceTopicBucket": "International Org./ Bilateral",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2004_U_6",
+      "year": 2004,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "The lure of space.",
+      "keywords": [
+        "space",
+        "science",
+        "exploration"
+      ],
+      "microthemes": [
+        "space technology",
+        "human aspiration"
+      ],
+      "sourceTopicBucket": "Sci-Tech: others",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2005_U_1",
+      "year": 2005,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Justice must reach the poor.",
+      "keywords": [
+        "justice",
+        "poor",
+        "access"
+      ],
+      "microthemes": [
+        "legal access",
+        "social justice"
+      ],
+      "sourceTopicBucket": "Judiciary",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2005_U_2",
+      "year": 2005,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Food security for sustainable national development.",
+      "keywords": [
+        "food security",
+        "development",
+        "nation"
+      ],
+      "microthemes": [
+        "agriculture",
+        "sustainable development"
+      ],
+      "sourceTopicBucket": "Poverty, Social Justice",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_2005_U_3",
+      "year": 2005,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "What is real education?",
+      "keywords": [
+        "education",
+        "real",
+        "learning"
+      ],
+      "microthemes": [
+        "holistic education",
+        "values in education"
+      ],
+      "sourceTopicBucket": "Values in Education",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2005_U_4",
+      "year": 2005,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "If women ruled the world.",
+      "keywords": [
+        "women",
+        "world",
+        "leadership"
+      ],
+      "microthemes": [
+        "gender and leadership",
+        "alternative politics"
+      ],
+      "sourceTopicBucket": "World / Quote type",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2005_U_5",
+      "year": 2005,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "The hand that rocks the cradle rules the world.",
+      "keywords": [
+        "motherhood",
+        "women",
+        "influence"
+      ],
+      "microthemes": [
+        "care work",
+        "social power"
+      ],
+      "sourceTopicBucket": "World / Quote type",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2005_U_6",
+      "year": 2005,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "Terrorism and world peace.",
+      "keywords": [
+        "terrorism",
+        "peace",
+        "security"
+      ],
+      "microthemes": [
+        "global security",
+        "peace studies"
+      ],
+      "sourceTopicBucket": "Security",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2006_U_1",
+      "year": 2006,
+      "section": null,
+      "themeCategory": "ENVIRONMENT",
+      "topic": "Protection of ecology and environment is essential for sustained economic development.",
+      "keywords": [
+        "ecology",
+        "environment",
+        "development"
+      ],
+      "microthemes": [
+        "sustainable development",
+        "ecological balance"
+      ],
+      "sourceTopicBucket": "Environment vs Development",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_2006_U_2",
+      "year": 2006,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Globalization would finish small-scale industries in India.",
+      "keywords": [
+        "globalization",
+        "small-scale industries",
+        "India"
+      ],
+      "microthemes": [
+        "liberalization",
+        "MSMEs"
+      ],
+      "sourceTopicBucket": "MNCs",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2006_U_3",
+      "year": 2006,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Education for all campaign in India: myth or reality.",
+      "keywords": [
+        "education for all",
+        "India",
+        "campaign"
+      ],
+      "microthemes": [
+        "education policy",
+        "inclusive education"
+      ],
+      "sourceTopicBucket": "Scheme implementation",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2006_U_4",
+      "year": 2006,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Women's reservation bill would usher in empowerment for women in India.",
+      "keywords": [
+        "women reservation",
+        "empowerment",
+        "politics"
+      ],
+      "microthemes": [
+        "political representation",
+        "gender justice"
+      ],
+      "sourceTopicBucket": "National Politics",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2006_U_5",
+      "year": 2006,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "Importance of Indo-US nuclear agreement.",
+      "keywords": [
+        "Indo-US",
+        "nuclear agreement",
+        "foreign policy"
+      ],
+      "microthemes": [
+        "strategic relations",
+        "energy security"
+      ],
+      "sourceTopicBucket": "International Org./ Bilateral",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2006_U_6",
+      "year": 2006,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Increasing computerization would lead to the creation of a dehumanized society.",
+      "keywords": [
+        "computerization",
+        "society",
+        "dehumanization"
+      ],
+      "microthemes": [
+        "technology and society",
+        "human values"
+      ],
+      "sourceTopicBucket": "Computer and internet",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2007_U_1",
+      "year": 2007,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Evaluation of Panchayati Raj system in India from the point of view of power to the people.",
+      "keywords": [
+        "Panchayati Raj",
+        "decentralization",
+        "power"
+      ],
+      "microthemes": [
+        "grassroots democracy",
+        "local governance"
+      ],
+      "sourceTopicBucket": "Federalism, Decentralization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2007_U_2",
+      "year": 2007,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "How has satellite television brought about cultural change in Indian mindsets?",
+      "keywords": [
+        "satellite television",
+        "culture",
+        "mindsets"
+      ],
+      "microthemes": [
+        "media influence",
+        "cultural change"
+      ],
+      "sourceTopicBucket": "Media, TV & Cinema, literature",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2007_U_3",
+      "year": 2007,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "BPO boom in India.",
+      "keywords": [
+        "BPO",
+        "India",
+        "services"
+      ],
+      "microthemes": [
+        "service sector",
+        "employment"
+      ],
+      "sourceTopicBucket": "Sectors of Economy",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2007_U_4",
+      "year": 2007,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Independent thinking should be encouraged right from childhood.",
+      "keywords": [
+        "independent thinking",
+        "childhood",
+        "education"
+      ],
+      "microthemes": [
+        "critical thinking",
+        "education values"
+      ],
+      "sourceTopicBucket": "Values in Education",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2007_U_5",
+      "year": 2007,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Attitude makes habit, habit makes character and character makes a man.",
+      "keywords": [
+        "attitude",
+        "habit",
+        "character"
+      ],
+      "microthemes": [
+        "personality development",
+        "virtue ethics"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2007_U_6",
+      "year": 2007,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Is autonomy the best answer to combat balkanization?",
+      "keywords": [
+        "autonomy",
+        "balkanization",
+        "integration"
+      ],
+      "microthemes": [
+        "regionalism",
+        "national unity"
+      ],
+      "sourceTopicBucket": "Security",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2008_U_1",
+      "year": 2008,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Role of media in good governance.",
+      "keywords": [
+        "media",
+        "good governance",
+        "accountability"
+      ],
+      "microthemes": [
+        "governance",
+        "public discourse"
+      ],
+      "sourceTopicBucket": "Media, TV & Cinema, literature",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2008_U_2",
+      "year": 2008,
+      "section": null,
+      "themeCategory": "ENVIRONMENT",
+      "topic": "Urbanisation and its hazards.",
+      "keywords": [
+        "urbanisation",
+        "hazards",
+        "cities"
+      ],
+      "microthemes": [
+        "urban planning",
+        "environmental stress"
+      ],
+      "sourceTopicBucket": "Environment vs Development",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2008_U_3",
+      "year": 2008,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Special Economic Zone: boon or bane.",
+      "keywords": [
+        "SEZ",
+        "development",
+        "policy"
+      ],
+      "microthemes": [
+        "industrialization",
+        "land acquisition"
+      ],
+      "sourceTopicBucket": "MNCs",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2008_U_4",
+      "year": 2008,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Is an egalitarian society possible by educating the masses?",
+      "keywords": [
+        "egalitarian society",
+        "education",
+        "masses"
+      ],
+      "microthemes": [
+        "social mobility",
+        "education and equality"
+      ],
+      "sourceTopicBucket": "Values in Education",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2008_U_5",
+      "year": 2008,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Discipline means success, anarchy means ruin.",
+      "keywords": [
+        "discipline",
+        "anarchy",
+        "success"
+      ],
+      "microthemes": [
+        "self-discipline",
+        "social order"
+      ],
+      "sourceTopicBucket": "Youth, Discipline",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2008_U_6",
+      "year": 2008,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "National identity and patriotism.",
+      "keywords": [
+        "national identity",
+        "patriotism",
+        "nation"
+      ],
+      "microthemes": [
+        "citizenship",
+        "nationalism"
+      ],
+      "sourceTopicBucket": "Globalization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2009_U_1",
+      "year": 2009,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "The focus of health care is increasingly getting skewed towards the haves of our society.",
+      "keywords": [
+        "health care",
+        "inequality",
+        "haves"
+      ],
+      "microthemes": [
+        "health equity",
+        "social justice"
+      ],
+      "sourceTopicBucket": "Poverty, Social Justice",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2009_U_2",
+      "year": 2009,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Are our traditional handicrafts doomed to a slow death?",
+      "keywords": [
+        "handicrafts",
+        "tradition",
+        "economy"
+      ],
+      "microthemes": [
+        "cultural economy",
+        "livelihoods"
+      ],
+      "sourceTopicBucket": "Sectors of Economy",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2009_U_3",
+      "year": 2009,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "Globalization versus nationalism.",
+      "keywords": [
+        "globalization",
+        "nationalism",
+        "identity"
+      ],
+      "microthemes": [
+        "global-local tension",
+        "world politics"
+      ],
+      "sourceTopicBucket": "Globalization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2009_U_4",
+      "year": 2009,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Are we a soft state?",
+      "keywords": [
+        "soft state",
+        "state capacity",
+        "security"
+      ],
+      "microthemes": [
+        "governance weakness",
+        "national security"
+      ],
+      "sourceTopicBucket": "Security",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2009_U_5",
+      "year": 2009,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "Good fences make good neighbours.",
+      "keywords": [
+        "borders",
+        "neighbours",
+        "security"
+      ],
+      "microthemes": [
+        "boundary management",
+        "international relations"
+      ],
+      "sourceTopicBucket": "Security",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2010_U_1",
+      "year": 2010,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "From traditional Indian philanthropy to the gate-buffet model: a natural progression or a paradigm shift?",
+      "keywords": [
+        "philanthropy",
+        "charity",
+        "social change"
+      ],
+      "microthemes": [
+        "Indian values",
+        "social ethics"
+      ],
+      "sourceTopicBucket": "Indian Society, Culture and Values",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2010_U_2",
+      "year": 2010,
+      "section": null,
+      "themeCategory": "ENVIRONMENT",
+      "topic": "Should a moratorium be imposed on all fresh mining in tribal areas of the country?",
+      "keywords": [
+        "mining",
+        "tribal areas",
+        "moratorium"
+      ],
+      "microthemes": [
+        "environmental justice",
+        "tribal rights"
+      ],
+      "sourceTopicBucket": "Environment vs Development",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2010_U_3",
+      "year": 2010,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "Preparedness of our society for India's global leadership role.",
+      "keywords": [
+        "India",
+        "global leadership",
+        "society"
+      ],
+      "microthemes": [
+        "global role",
+        "soft power"
+      ],
+      "sourceTopicBucket": "Globalization",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2010_U_4",
+      "year": 2010,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Geography may remain the same; history need not.",
+      "keywords": [
+        "geography",
+        "history",
+        "change"
+      ],
+      "microthemes": [
+        "historical agency",
+        "civilizational evolution"
+      ],
+      "sourceTopicBucket": "History",
+      "syllabusNodeId": "ESSAY-SCI-ETHICS"
+    },
+    {
+      "id": "ESSAY_2011_U_1",
+      "year": 2011,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Creation of smaller states and the consequent administrative, economic and developmental implications.",
+      "keywords": [
+        "smaller states",
+        "administration",
+        "development"
+      ],
+      "microthemes": [
+        "federal restructuring",
+        "governance"
+      ],
+      "sourceTopicBucket": "Federalism, Decentralization",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_2011_U_2",
+      "year": 2011,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Does Indian cinema shape our popular culture or merely reflect it?",
+      "keywords": [
+        "Indian cinema",
+        "popular culture",
+        "media"
+      ],
+      "microthemes": [
+        "culture industry",
+        "social reflection"
+      ],
+      "sourceTopicBucket": "Media, TV & Cinema, literature",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2011_U_3",
+      "year": 2011,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Credit-based higher education system \u2013 status, opportunities and challenges.",
+      "keywords": [
+        "higher education",
+        "credit system",
+        "reform"
+      ],
+      "microthemes": [
+        "education reform",
+        "academic flexibility"
+      ],
+      "sourceTopicBucket": "Higher education",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2011_U_4",
+      "year": 2011,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "In the Indian context, both human intelligence and technical intelligence are crucial in combating terrorism.",
+      "keywords": [
+        "human intelligence",
+        "technical intelligence",
+        "terrorism"
+      ],
+      "microthemes": [
+        "security technology",
+        "counter-terrorism"
+      ],
+      "sourceTopicBucket": "Security",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2012_U_1",
+      "year": 2012,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "In the context of Gandhiji's views, explore 'Swadhinata', 'Swaraj' and 'Dharmarajya' and comment on their relevance to Indian democracy.",
+      "keywords": [
+        "Gandhi",
+        "Swaraj",
+        "democracy"
+      ],
+      "microthemes": [
+        "Gandhian thought",
+        "ethical polity"
+      ],
+      "sourceTopicBucket": "India Since Independence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2012_U_2",
+      "year": 2012,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Is the criticism that the PPP model for development is more of a bane than a boon in the Indian context justified?",
+      "keywords": [
+        "PPP",
+        "development",
+        "India"
+      ],
+      "microthemes": [
+        "public-private partnership",
+        "infrastructure"
+      ],
+      "sourceTopicBucket": "MNCs",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_2012_U_3",
+      "year": 2012,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Managing work and home \u2013 is the Indian working woman getting a fair deal?",
+      "keywords": [
+        "working woman",
+        "work-life balance",
+        "fair deal"
+      ],
+      "microthemes": [
+        "gender roles",
+        "care economy"
+      ],
+      "sourceTopicBucket": "Compared to men",
+      "syllabusNodeId": "ESSAY-SCI-ETHICS"
+    },
+    {
+      "id": "ESSAY_2012_U_4",
+      "year": 2012,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Science and Mysticism: Are they compatible?",
+      "keywords": [
+        "science",
+        "mysticism",
+        "compatibility"
+      ],
+      "microthemes": [
+        "reason and faith",
+        "knowledge systems"
+      ],
+      "sourceTopicBucket": "Science and Religion",
+      "syllabusNodeId": "ESSAY-SCI-ETHICS"
+    },
+    {
+      "id": "ESSAY_2013_U_1",
+      "year": 2013,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Is the colonial mentality hindering India's success?",
+      "keywords": [
+        "colonial mentality",
+        "India",
+        "success"
+      ],
+      "microthemes": [
+        "postcolonial mindset",
+        "nation building"
+      ],
+      "sourceTopicBucket": "India Since Independence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2013_U_2",
+      "year": 2013,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "GDP along with GDH would be the right indices for judging the wellbeing of a country.",
+      "keywords": [
+        "GDP",
+        "GDH",
+        "wellbeing"
+      ],
+      "microthemes": [
+        "development indicators",
+        "happiness"
+      ],
+      "sourceTopicBucket": "Growth vs Development",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2013_U_3",
+      "year": 2013,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Be the change you want to see in others.",
+      "keywords": [
+        "change",
+        "self",
+        "example"
+      ],
+      "microthemes": [
+        "leadership by example",
+        "personal ethics"
+      ],
+      "sourceTopicBucket": "Compassion",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2013_U_4",
+      "year": 2013,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Science and technology is the panacea for the growth and security of the nation.",
+      "keywords": [
+        "science and technology",
+        "growth",
+        "security"
+      ],
+      "microthemes": [
+        "innovation",
+        "national development"
+      ],
+      "sourceTopicBucket": "Sci-Tech: others",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_2014_U_1",
+      "year": 2014,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Was it the policy paralysis or the paralysis of implementation which slowed the growth of our country?",
+      "keywords": [
+        "policy paralysis",
+        "implementation",
+        "growth"
+      ],
+      "microthemes": [
+        "governance and economy",
+        "reform execution"
+      ],
+      "sourceTopicBucket": "Growth vs Development",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_2014_U_2",
+      "year": 2014,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Is sting operation an invasion on privacy?",
+      "keywords": [
+        "sting operation",
+        "privacy",
+        "media"
+      ],
+      "microthemes": [
+        "rights and accountability",
+        "media ethics"
+      ],
+      "sourceTopicBucket": "Media, TV & Cinema, literature",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2014_U_3",
+      "year": 2014,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Are the standardized tests a good measure of academic ability or progress?",
+      "keywords": [
+        "standardized tests",
+        "academic ability",
+        "education"
+      ],
+      "microthemes": [
+        "assessment reform",
+        "education quality"
+      ],
+      "sourceTopicBucket": "Values in Education",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2014_U_4",
+      "year": 2014,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Is the growing level of competition good for the youth?",
+      "keywords": [
+        "competition",
+        "youth",
+        "education"
+      ],
+      "microthemes": [
+        "stress",
+        "achievement culture"
+      ],
+      "sourceTopicBucket": "Values in Education",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2014_U_5",
+      "year": 2014,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "With greater power comes greater responsibility.",
+      "keywords": [
+        "power",
+        "responsibility",
+        "leadership"
+      ],
+      "microthemes": [
+        "public ethics",
+        "accountability"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2014_U_6",
+      "year": 2014,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Words are sharper than the two-edged sword.",
+      "keywords": [
+        "words",
+        "speech",
+        "power"
+      ],
+      "microthemes": [
+        "communication ethics",
+        "language and influence"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2014_U_7",
+      "year": 2014,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Fifty Golds in Olympics: Can this be a reality for India?",
+      "keywords": [
+        "Olympics",
+        "India",
+        "sports"
+      ],
+      "microthemes": [
+        "sports policy",
+        "national aspiration"
+      ],
+      "sourceTopicBucket": "Youth, Discipline",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2014_U_8",
+      "year": 2014,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Tourism: Can this be the next big thing for India?",
+      "keywords": [
+        "tourism",
+        "India",
+        "economy"
+      ],
+      "microthemes": [
+        "service sector",
+        "development strategy"
+      ],
+      "sourceTopicBucket": "Sectors of Economy",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2015_U_1",
+      "year": 2015,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Dreams which should not let India sleep.",
+      "keywords": [
+        "India",
+        "dreams",
+        "aspiration"
+      ],
+      "microthemes": [
+        "nation building",
+        "development vision"
+      ],
+      "sourceTopicBucket": "India Since Independence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2015_U_2",
+      "year": 2015,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Crisis faced in India \u2013 moral or economic.",
+      "keywords": [
+        "crisis",
+        "moral",
+        "economic"
+      ],
+      "microthemes": [
+        "development crisis",
+        "ethical economy"
+      ],
+      "sourceTopicBucket": "Growth vs Development",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2015_U_3",
+      "year": 2015,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Can capitalism bring inclusive growth?",
+      "keywords": [
+        "capitalism",
+        "inclusive growth",
+        "equity"
+      ],
+      "microthemes": [
+        "market economy",
+        "social justice"
+      ],
+      "sourceTopicBucket": "Growth vs Development",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_2015_U_4",
+      "year": 2015,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Education without values, as useful as it is, seems rather to make a man a more clever devil.",
+      "keywords": [
+        "education",
+        "values",
+        "ethics"
+      ],
+      "microthemes": [
+        "moral education",
+        "character building"
+      ],
+      "sourceTopicBucket": "Values in Education",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2015_U_5",
+      "year": 2015,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Character of an institution is reflected in its leader.",
+      "keywords": [
+        "institution",
+        "leader",
+        "character"
+      ],
+      "microthemes": [
+        "leadership ethics",
+        "institutional culture"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2015_U_6",
+      "year": 2015,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Lending hands to someone is better than giving a dole.",
+      "keywords": [
+        "help",
+        "charity",
+        "dignity"
+      ],
+      "microthemes": [
+        "empowerment",
+        "compassion"
+      ],
+      "sourceTopicBucket": "Compassion",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2015_U_7",
+      "year": 2015,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Quick but steady wins the race.",
+      "keywords": [
+        "speed",
+        "steadiness",
+        "success"
+      ],
+      "microthemes": [
+        "prudence",
+        "balanced progress"
+      ],
+      "sourceTopicBucket": "Towards excellence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2015_U_8",
+      "year": 2015,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Technology cannot replace manpower.",
+      "keywords": [
+        "technology",
+        "manpower",
+        "employment"
+      ],
+      "microthemes": [
+        "automation",
+        "human labour"
+      ],
+      "sourceTopicBucket": "Sci-Tech: others",
+      "syllabusNodeId": "ESSAY-SCI-ETHICS"
+    },
+    {
+      "id": "ESSAY_2016_U_1",
+      "year": 2016,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Cooperative federalism: Myth or reality.",
+      "keywords": [
+        "cooperative federalism",
+        "centre-state",
+        "governance"
+      ],
+      "microthemes": [
+        "federalism",
+        "collaboration"
+      ],
+      "sourceTopicBucket": "Federalism, Decentralization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2016_U_2",
+      "year": 2016,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Water disputes between States in federal India.",
+      "keywords": [
+        "water disputes",
+        "states",
+        "federalism"
+      ],
+      "microthemes": [
+        "inter-state relations",
+        "resource conflicts"
+      ],
+      "sourceTopicBucket": "Federalism, Decentralization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2016_U_3",
+      "year": 2016,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Digital economy: A leveller or a source of economic inequality.",
+      "keywords": [
+        "digital economy",
+        "inequality",
+        "inclusion"
+      ],
+      "microthemes": [
+        "digital divide",
+        "economic transformation"
+      ],
+      "sourceTopicBucket": "Growth vs Development",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2016_U_4",
+      "year": 2016,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Innovation is the key determinant of economic growth and social welfare.",
+      "keywords": [
+        "innovation",
+        "growth",
+        "welfare"
+      ],
+      "microthemes": [
+        "innovation economy",
+        "social welfare"
+      ],
+      "sourceTopicBucket": "Growth vs Development",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_2016_U_5",
+      "year": 2016,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Near jobless growth in India: An anomaly or an outcome of economic reforms.",
+      "keywords": [
+        "jobless growth",
+        "India",
+        "reforms"
+      ],
+      "microthemes": [
+        "employment",
+        "economic reform"
+      ],
+      "sourceTopicBucket": "Growth vs Development",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_2016_U_6",
+      "year": 2016,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Need brings greed, if greed increases it spoils breed.",
+      "keywords": [
+        "need",
+        "greed",
+        "society"
+      ],
+      "microthemes": [
+        "consumerism",
+        "moral decline"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2016_U_7",
+      "year": 2016,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "If development is not engendered, it is endangered.",
+      "keywords": [
+        "development",
+        "gender",
+        "engendered"
+      ],
+      "microthemes": [
+        "gender mainstreaming",
+        "inclusive development"
+      ],
+      "sourceTopicBucket": "Empowerment overall",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_2016_U_8",
+      "year": 2016,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Cyberspace and Internet: Blessing or curse to human civilization in the long run.",
+      "keywords": [
+        "cyberspace",
+        "internet",
+        "civilization"
+      ],
+      "microthemes": [
+        "digital society",
+        "technology impact"
+      ],
+      "sourceTopicBucket": "Computer and internet",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2017_U_1",
+      "year": 2017,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Impact of the new economic measures on fiscal ties between the Union and States in India.",
+      "keywords": [
+        "economic measures",
+        "fiscal ties",
+        "union-states"
+      ],
+      "microthemes": [
+        "fiscal federalism",
+        "economic reform"
+      ],
+      "sourceTopicBucket": "Federalism, Decentralization",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2017_U_2",
+      "year": 2017,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "We may brave human laws but cannot resist natural laws.",
+      "keywords": [
+        "human laws",
+        "natural laws",
+        "limits"
+      ],
+      "microthemes": [
+        "nature and society",
+        "moral order"
+      ],
+      "sourceTopicBucket": "Judiciary",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2017_U_3",
+      "year": 2017,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Farming has lost the ability to be a source of subsistence for a majority of farmers in India.",
+      "keywords": [
+        "farming",
+        "subsistence",
+        "farmers"
+      ],
+      "microthemes": [
+        "agrarian crisis",
+        "rural economy"
+      ],
+      "sourceTopicBucket": "Sectors of Economy",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2017_U_4",
+      "year": 2017,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Destiny of a nation is shaped in its classrooms.",
+      "keywords": [
+        "nation",
+        "classrooms",
+        "education"
+      ],
+      "microthemes": [
+        "education and nation building",
+        "human capital"
+      ],
+      "sourceTopicBucket": "Values in Education",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2017_U_5",
+      "year": 2017,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Joy is the simplest form of gratitude.",
+      "keywords": [
+        "joy",
+        "gratitude",
+        "happiness"
+      ],
+      "microthemes": [
+        "inner fulfillment",
+        "human values"
+      ],
+      "sourceTopicBucket": "Compassion",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2017_U_6",
+      "year": 2017,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Fulfilment of 'new woman' in India is a myth.",
+      "keywords": [
+        "new woman",
+        "India",
+        "myth"
+      ],
+      "microthemes": [
+        "gender roles",
+        "modern womanhood"
+      ],
+      "sourceTopicBucket": "Empowerment overall",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2017_U_7",
+      "year": 2017,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "Has the Non-Alignment Movement lost its relevance in a multipolar world?",
+      "keywords": [
+        "NAM",
+        "multipolar world",
+        "foreign policy"
+      ],
+      "microthemes": [
+        "strategic autonomy",
+        "international relations"
+      ],
+      "sourceTopicBucket": "International Org./ Bilateral",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2017_U_8",
+      "year": 2017,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "'Social media' is inherently a selfish medium.",
+      "keywords": [
+        "social media",
+        "selfish",
+        "digital culture"
+      ],
+      "microthemes": [
+        "social media ethics",
+        "online behaviour"
+      ],
+      "sourceTopicBucket": "Computer and internet",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2018_U_1",
+      "year": 2018,
+      "section": null,
+      "themeCategory": "ECONOMIC",
+      "topic": "Poverty anywhere is a threat to prosperity everywhere.",
+      "keywords": [
+        "poverty",
+        "prosperity",
+        "inequality"
+      ],
+      "microthemes": [
+        "inclusive development",
+        "global justice"
+      ],
+      "sourceTopicBucket": "Growth vs Development",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_2018_U_2",
+      "year": 2018,
+      "section": null,
+      "themeCategory": "ENVIRONMENT",
+      "topic": "Alternative technologies for a climate change resilient India.",
+      "keywords": [
+        "technology",
+        "climate change",
+        "resilience"
+      ],
+      "microthemes": [
+        "climate adaptation",
+        "green innovation"
+      ],
+      "sourceTopicBucket": "Environment vs Development",
+      "syllabusNodeId": "ESSAY-ENV-HUMANITY"
+    },
+    {
+      "id": "ESSAY_2018_U_3",
+      "year": 2018,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "A people that values its privileges above its principles loses both.",
+      "keywords": [
+        "privileges",
+        "principles",
+        "society"
+      ],
+      "microthemes": [
+        "constitutional morality",
+        "public ethics"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2018_U_4",
+      "year": 2018,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Customary morality cannot be a guide to modern life.",
+      "keywords": [
+        "customary morality",
+        "modern life",
+        "ethics"
+      ],
+      "microthemes": [
+        "social change",
+        "ethical reasoning"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2018_U_5",
+      "year": 2018,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "'The past' is a permanent dimension of human consciousness and values.",
+      "keywords": [
+        "past",
+        "consciousness",
+        "values"
+      ],
+      "microthemes": [
+        "history and memory",
+        "civilizational continuity"
+      ],
+      "sourceTopicBucket": "Knowledge",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2018_U_6",
+      "year": 2018,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "A good life is one inspired by love and guided by knowledge.",
+      "keywords": [
+        "good life",
+        "love",
+        "knowledge"
+      ],
+      "microthemes": [
+        "ethics and wisdom",
+        "human flourishing"
+      ],
+      "sourceTopicBucket": "Knowledge",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2018_U_7",
+      "year": 2018,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Reality does not conform to the ideal, but confirms it.",
+      "keywords": [
+        "reality",
+        "ideal",
+        "confirmation"
+      ],
+      "microthemes": [
+        "idealism",
+        "practical wisdom"
+      ],
+      "sourceTopicBucket": "Truth and reality",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2018_U_8",
+      "year": 2018,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "Management of Indian border disputes is a complex task.",
+      "keywords": [
+        "border disputes",
+        "India",
+        "management"
+      ],
+      "microthemes": [
+        "national security",
+        "boundary diplomacy"
+      ],
+      "sourceTopicBucket": "Security",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2019_U_1",
+      "year": 2019,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Neglect of primary health care and education in India are reasons for its backwardness.",
+      "keywords": [
+        "primary health care",
+        "education",
+        "backwardness"
+      ],
+      "microthemes": [
+        "human development",
+        "social sector"
+      ],
+      "sourceTopicBucket": "Poverty, Social Justice",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2019_U_2",
+      "year": 2019,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "Biased media is a real threat to Indian democracy.",
+      "keywords": [
+        "biased media",
+        "democracy",
+        "India"
+      ],
+      "microthemes": [
+        "media ethics",
+        "democratic discourse"
+      ],
+      "sourceTopicBucket": "Media, TV & Cinema, literature",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2019_U_3",
+      "year": 2019,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Values are not what humanity is, but what humanity ought to be.",
+      "keywords": [
+        "values",
+        "humanity",
+        "ought"
+      ],
+      "microthemes": [
+        "normative ethics",
+        "human ideals"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2019_U_4",
+      "year": 2019,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Best for an individual is not necessarily best for the society.",
+      "keywords": [
+        "individual",
+        "society",
+        "best"
+      ],
+      "microthemes": [
+        "social contract",
+        "collective good"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2019_U_5",
+      "year": 2019,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Courage to accept and dedication to improve are two keys to success.",
+      "keywords": [
+        "courage",
+        "improvement",
+        "success"
+      ],
+      "microthemes": [
+        "growth mindset",
+        "self-development"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2019_U_6",
+      "year": 2019,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Wisdom finds truth.",
+      "keywords": [
+        "wisdom",
+        "truth",
+        "knowledge"
+      ],
+      "microthemes": [
+        "epistemology",
+        "practical wisdom"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2019_U_7",
+      "year": 2019,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "South Asian societies are woven not around the state, but around plural cultures and plural identities.",
+      "keywords": [
+        "South Asia",
+        "plural identities",
+        "state"
+      ],
+      "microthemes": [
+        "regional society",
+        "identity politics"
+      ],
+      "sourceTopicBucket": "Globalization",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2019_U_8",
+      "year": 2019,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Rise of Artificial Intelligence: the threat of jobless future or better job opportunities through reskilling and upskilling.",
+      "keywords": [
+        "artificial intelligence",
+        "jobs",
+        "reskilling"
+      ],
+      "microthemes": [
+        "automation",
+        "future of work"
+      ],
+      "sourceTopicBucket": "Computer and internet",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2020_U_1",
+      "year": 2020,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "There can be no social justice without economic prosperity, but economic prosperity without social justice is meaningless.",
+      "keywords": [
+        "social justice",
+        "economic prosperity",
+        "meaning"
+      ],
+      "microthemes": [
+        "inclusive growth",
+        "equity"
+      ],
+      "sourceTopicBucket": "Poverty, Social Justice",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2020_U_2",
+      "year": 2020,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Culture is what we are, civilization is what we have.",
+      "keywords": [
+        "culture",
+        "civilization",
+        "identity"
+      ],
+      "microthemes": [
+        "cultural philosophy",
+        "civilizational values"
+      ],
+      "sourceTopicBucket": "Indian Society, Culture and Values",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2020_U_3",
+      "year": 2020,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Patriarchy is the least noticed yet the most significant structure of social inequality.",
+      "keywords": [
+        "patriarchy",
+        "inequality",
+        "society"
+      ],
+      "microthemes": [
+        "gender justice",
+        "social structures"
+      ],
+      "sourceTopicBucket": "Empowerment overall",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2020_U_4",
+      "year": 2020,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "Technology as the silent factor in international relations.",
+      "keywords": [
+        "technology",
+        "international relations",
+        "silent factor"
+      ],
+      "microthemes": [
+        "tech diplomacy",
+        "geopolitics"
+      ],
+      "sourceTopicBucket": "International Org./ Bilateral",
+      "syllabusNodeId": "ESSAY-SCI-ETHICS"
+    },
+    {
+      "id": "ESSAY_2020_U_5",
+      "year": 2020,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Simplicity is the ultimate sophistication.",
+      "keywords": [
+        "simplicity",
+        "sophistication",
+        "wisdom"
+      ],
+      "microthemes": [
+        "minimalism",
+        "clarity"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2020_U_6",
+      "year": 2020,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Ships do not sink because of water around them; they sink because of water that gets into them.",
+      "keywords": [
+        "ships",
+        "inner weakness",
+        "resilience"
+      ],
+      "microthemes": [
+        "self-discipline",
+        "internal threats"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2020_U_7",
+      "year": 2020,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Life is a long journey between being human and being humane.",
+      "keywords": [
+        "human",
+        "humane",
+        "journey"
+      ],
+      "microthemes": [
+        "compassion",
+        "ethical maturity"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2020_U_8",
+      "year": 2020,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Mindful manifesto is the catalyst to a tranquil self.",
+      "keywords": [
+        "mindfulness",
+        "tranquil self",
+        "manifesto"
+      ],
+      "microthemes": [
+        "mental discipline",
+        "self-awareness"
+      ],
+      "sourceTopicBucket": "Knowledge",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2021_U_1",
+      "year": 2021,
+      "section": null,
+      "themeCategory": "POLITICAL",
+      "topic": "There are better practices to 'best practices'.",
+      "keywords": [
+        "practices",
+        "improvement",
+        "governance"
+      ],
+      "microthemes": [
+        "innovation in governance",
+        "continuous improvement"
+      ],
+      "sourceTopicBucket": "Administration",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2021_U_2",
+      "year": 2021,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Philosophy of wantlessness is a Utopian ideal, while materialism is a chimera.",
+      "keywords": [
+        "wantlessness",
+        "materialism",
+        "utopia"
+      ],
+      "microthemes": [
+        "desire",
+        "consumerism"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2021_U_3",
+      "year": 2021,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Your perception of me is a reflection of you; my reaction to you is an awareness of me.",
+      "keywords": [
+        "perception",
+        "reaction",
+        "self-awareness"
+      ],
+      "microthemes": [
+        "psychology",
+        "self-knowledge"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2021_U_4",
+      "year": 2021,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "The real is rational and the rational is real.",
+      "keywords": [
+        "real",
+        "rational",
+        "philosophy"
+      ],
+      "microthemes": [
+        "reason",
+        "reality"
+      ],
+      "sourceTopicBucket": "Knowledge",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2021_U_5",
+      "year": 2021,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "Hand that rocks the cradle rules the world.",
+      "keywords": [
+        "women",
+        "care",
+        "influence"
+      ],
+      "microthemes": [
+        "gender roles",
+        "social power"
+      ],
+      "sourceTopicBucket": "World / Quote type",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2021_U_6",
+      "year": 2021,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "History repeats itself, first as tragedy, second as farce.",
+      "keywords": [
+        "history",
+        "tragedy",
+        "farce"
+      ],
+      "microthemes": [
+        "historical patterns",
+        "human folly"
+      ],
+      "sourceTopicBucket": "History",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2021_U_7",
+      "year": 2021,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "What is research, but a blind date with knowledge!",
+      "keywords": [
+        "research",
+        "knowledge",
+        "discovery"
+      ],
+      "microthemes": [
+        "scientific inquiry",
+        "curiosity"
+      ],
+      "sourceTopicBucket": "Science and Education",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2021_U_8",
+      "year": 2021,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "The process of self-discovery has now been technologically outsourced.",
+      "keywords": [
+        "self-discovery",
+        "technology",
+        "outsourced"
+      ],
+      "microthemes": [
+        "digital identity",
+        "technology and self"
+      ],
+      "sourceTopicBucket": "Computer and internet",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2022_U_1",
+      "year": 2022,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Poets are the unacknowledged legislators of the world.",
+      "keywords": [
+        "poets",
+        "world",
+        "imagination"
+      ],
+      "microthemes": [
+        "literature and society",
+        "creative influence"
+      ],
+      "sourceTopicBucket": "Media, TV & Cinema, literature",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2022_U_2",
+      "year": 2022,
+      "section": null,
+      "themeCategory": "ENVIRONMENT",
+      "topic": "Forests are the best case studies for economic excellence.",
+      "keywords": [
+        "forests",
+        "economic excellence",
+        "ecology"
+      ],
+      "microthemes": [
+        "natural capital",
+        "sustainable economy"
+      ],
+      "sourceTopicBucket": "Environment vs Development",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2022_U_3",
+      "year": 2022,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "A smile is the chosen vehicle for all ambiguities.",
+      "keywords": [
+        "smile",
+        "ambiguity",
+        "communication"
+      ],
+      "microthemes": [
+        "human relations",
+        "non-verbal ethics"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2022_U_4",
+      "year": 2022,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Just because you have a choice, it does not mean that any of them has to be right.",
+      "keywords": [
+        "choice",
+        "right",
+        "judgment"
+      ],
+      "microthemes": [
+        "moral reasoning",
+        "decision making"
+      ],
+      "sourceTopicBucket": "Truth and reality",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2022_U_5",
+      "year": 2022,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "The time to repair the roof is when the sun is shining.",
+      "keywords": [
+        "preparedness",
+        "timing",
+        "prudence"
+      ],
+      "microthemes": [
+        "prevention",
+        "foresight"
+      ],
+      "sourceTopicBucket": "Youth, Discipline",
+      "syllabusNodeId": "ESSAY-SCI-ETHICS"
+    },
+    {
+      "id": "ESSAY_2022_U_6",
+      "year": 2022,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "You cannot step twice in the same river.",
+      "keywords": [
+        "change",
+        "time",
+        "river"
+      ],
+      "microthemes": [
+        "impermanence",
+        "adaptation"
+      ],
+      "sourceTopicBucket": "Youth, Discipline",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2022_U_7",
+      "year": 2022,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "A ship in harbour is safe, but that is not what a ship is for.",
+      "keywords": [
+        "risk",
+        "purpose",
+        "courage"
+      ],
+      "microthemes": [
+        "venture",
+        "growth"
+      ],
+      "sourceTopicBucket": "Towards excellence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2023_U_1",
+      "year": 2023,
+      "section": null,
+      "themeCategory": "SOCIAL",
+      "topic": "A society that has more justice is a society that needs less charity.",
+      "keywords": [
+        "justice",
+        "charity",
+        "society"
+      ],
+      "microthemes": [
+        "social justice",
+        "welfare"
+      ],
+      "sourceTopicBucket": "Poverty, Social Justice",
+      "syllabusNodeId": "ESSAY-SOC-CULTURE"
+    },
+    {
+      "id": "ESSAY_2023_U_2",
+      "year": 2023,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Thinking is like a game, it does not begin unless there is an opposite team.",
+      "keywords": [
+        "thinking",
+        "debate",
+        "opposition"
+      ],
+      "microthemes": [
+        "dialectics",
+        "critical reasoning"
+      ],
+      "sourceTopicBucket": "Knowledge",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2023_U_3",
+      "year": 2023,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Mathematics is the music of reason.",
+      "keywords": [
+        "mathematics",
+        "reason",
+        "logic"
+      ],
+      "microthemes": [
+        "scientific temper",
+        "abstract thought"
+      ],
+      "sourceTopicBucket": "Knowledge",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2023_U_4",
+      "year": 2023,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Visionary decision-making happens at the intersection of intuition and logic.",
+      "keywords": [
+        "decision-making",
+        "intuition",
+        "logic"
+      ],
+      "microthemes": [
+        "leadership",
+        "balanced reasoning"
+      ],
+      "sourceTopicBucket": "Towards excellence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2023_U_5",
+      "year": 2023,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Not all who wander are lost.",
+      "keywords": [
+        "wandering",
+        "exploration",
+        "purpose"
+      ],
+      "microthemes": [
+        "search for meaning",
+        "creative journey"
+      ],
+      "sourceTopicBucket": "Towards excellence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2023_U_6",
+      "year": 2023,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Inspiration for creativity springs from the effort to look for the magical in the mundane.",
+      "keywords": [
+        "creativity",
+        "mundane",
+        "inspiration"
+      ],
+      "microthemes": [
+        "imagination",
+        "creative thinking"
+      ],
+      "sourceTopicBucket": "Towards excellence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2024_U_1",
+      "year": 2024,
+      "section": null,
+      "themeCategory": "ENVIRONMENT",
+      "topic": "Forests precede civilizations and deserts follow them.",
+      "keywords": [
+        "forests",
+        "civilizations",
+        "deserts"
+      ],
+      "microthemes": [
+        "environmental degradation",
+        "sustainable development"
+      ],
+      "sourceTopicBucket": "Environment vs Development",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2024_U_2",
+      "year": 2024,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Nearly all men can stand adversity, but to test character, give him power.",
+      "keywords": [
+        "adversity",
+        "character",
+        "power"
+      ],
+      "microthemes": [
+        "leadership ethics",
+        "abuse of power"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2024_U_3",
+      "year": 2024,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "All ideas having large consequences are always simple.",
+      "keywords": [
+        "ideas",
+        "simplicity",
+        "consequences"
+      ],
+      "microthemes": [
+        "clarity of thought",
+        "innovation"
+      ],
+      "sourceTopicBucket": "Knowledge",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2024_U_4",
+      "year": 2024,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "The empires of the future will be the empires of the mind.",
+      "keywords": [
+        "future",
+        "mind",
+        "empires"
+      ],
+      "microthemes": [
+        "knowledge economy",
+        "ideas"
+      ],
+      "sourceTopicBucket": "Knowledge",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2024_U_5",
+      "year": 2024,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "There is no path to happiness; happiness is the path.",
+      "keywords": [
+        "happiness",
+        "path",
+        "life"
+      ],
+      "microthemes": [
+        "wellbeing",
+        "inner fulfillment"
+      ],
+      "sourceTopicBucket": "Compassion",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2024_U_6",
+      "year": 2024,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "Social media is triggering Fear of Missing Out amongst the youth, precipitating depression and loneliness.",
+      "keywords": [
+        "social media",
+        "youth",
+        "FOMO"
+      ],
+      "microthemes": [
+        "mental health",
+        "digital addiction"
+      ],
+      "sourceTopicBucket": "Youth, Discipline",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2024_U_7",
+      "year": 2024,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "The cost of being wrong is less than the cost of doing nothing.",
+      "keywords": [
+        "risk",
+        "inaction",
+        "learning"
+      ],
+      "microthemes": [
+        "decision making",
+        "courage"
+      ],
+      "sourceTopicBucket": "Towards excellence",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2024_U_8",
+      "year": 2024,
+      "section": null,
+      "themeCategory": "SCIENCE_TECH",
+      "topic": "The doubter is a true man of science.",
+      "keywords": [
+        "doubt",
+        "science",
+        "inquiry"
+      ],
+      "microthemes": [
+        "scientific temper",
+        "critical thinking"
+      ],
+      "sourceTopicBucket": "Science and Education",
+      "syllabusNodeId": "ESSAY-SCI-ETHICS"
+    },
+    {
+      "id": "ESSAY_2025_U_1",
+      "year": 2025,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Contentment is natural wealth; luxury is artificial poverty.",
+      "keywords": [
+        "contentment",
+        "wealth",
+        "luxury"
+      ],
+      "microthemes": [
+        "minimalism",
+        "ethical living"
+      ],
+      "sourceTopicBucket": "Character, Honesty, Ethics",
+      "syllabusNodeId": "ESSAY-POL-ECON"
+    },
+    {
+      "id": "ESSAY_2025_U_2",
+      "year": 2025,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Thought finds a world and creates one also.",
+      "keywords": [
+        "thought",
+        "world",
+        "creation"
+      ],
+      "microthemes": [
+        "imagination",
+        "constructive ideas"
+      ],
+      "sourceTopicBucket": "Knowledge",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2025_U_3",
+      "year": 2025,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Muddy water is best cleared by leaving it alone.",
+      "keywords": [
+        "patience",
+        "clarity",
+        "restraint"
+      ],
+      "microthemes": [
+        "non-action",
+        "wisdom"
+      ],
+      "sourceTopicBucket": "Truth and reality",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2025_U_4",
+      "year": 2025,
+      "section": null,
+      "themeCategory": "ETHICS",
+      "topic": "Truth knows no colour.",
+      "keywords": [
+        "truth",
+        "impartiality",
+        "universality"
+      ],
+      "microthemes": [
+        "justice",
+        "objectivity"
+      ],
+      "sourceTopicBucket": "Truth and reality",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2025_U_5",
+      "year": 2025,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "It is best to see life as a journey, not as a destination.",
+      "keywords": [
+        "life",
+        "journey",
+        "destination"
+      ],
+      "microthemes": [
+        "process over outcome",
+        "human growth"
+      ],
+      "sourceTopicBucket": "Youth, Discipline",
+      "syllabusNodeId": "ESSAY-PHIL-ABSTRACT"
+    },
+    {
+      "id": "ESSAY_2025_U_6",
+      "year": 2025,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "The years teach much which the days never know.",
+      "keywords": [
+        "time",
+        "experience",
+        "learning"
+      ],
+      "microthemes": [
+        "wisdom",
+        "maturity"
+      ],
+      "sourceTopicBucket": "Youth, Discipline",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2025_U_7",
+      "year": 2025,
+      "section": null,
+      "themeCategory": "PHILOSOPHICAL",
+      "topic": "Best lessons are learnt through bitter experiences.",
+      "keywords": [
+        "lessons",
+        "experience",
+        "adversity"
+      ],
+      "microthemes": [
+        "resilience",
+        "learning from failure"
+      ],
+      "sourceTopicBucket": "Youth, Discipline",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    },
+    {
+      "id": "ESSAY_2025_U_8",
+      "year": 2025,
+      "section": null,
+      "themeCategory": "INTERNATIONAL",
+      "topic": "The supreme art of war is to subdue the enemy without fighting.",
+      "keywords": [
+        "war",
+        "strategy",
+        "enemy"
+      ],
+      "microthemes": [
+        "diplomacy",
+        "strategic restraint"
+      ],
+      "sourceTopicBucket": "Security",
+      "syllabusNodeId": "ESSAY-FRAMEWORK-P3"
+    }
+  ]
+}

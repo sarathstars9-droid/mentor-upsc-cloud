@@ -1,0 +1,395 @@
+{
+  "exam": "UPSC_CSE",
+  "stage": "Mains",
+  "paper": "GS2",
+  "subject": "Governance",
+  "questions": [
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2024_01",
+      "year": 2024,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Role of NGOs, SHGs, Donors, Charities, Institutional and Other Stakeholders",
+      "question": "Public charitable trusts have the potential to make India\u2019s development more inclusive as they relate to certain vital public issues. Comment.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2024_03",
+      "year": 2024,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Transparency, Accountability, Corruption, Whistleblowers",
+      "question": "The Doctrine of Democratic Governance makes it necessary that the public perception of the integrity and commitment of civil servants becomes absolutely positive. Discuss.",
+      "syllabusNodeId": "GS2-GOV-TRANSPARENCY"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2024_05",
+      "year": 2024,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "The Citizens\u2019 charter has been a landmark initiative in ensuring citizen-centric administration. But it is yet to reach its full potential. Identify the factors hindering the realisation of its promise and suggest measures to overcome them.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2024_07",
+      "year": 2024,
+      "questionNumber": 7,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "e-governance is not just about the routine application of digital technology in service delivery process. It is as much about multifarious interactions for ensuring transparency and accountability. In this context evaluate the role of the \u2018Interactive Service Model\u2019 of e- governance.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2023_02",
+      "year": 2023,
+      "questionNumber": 2,
+      "directive": "Discuss",
+      "theme": "Development Processes and Industry \u2013 Planning, Corporate Governance etc.",
+      "question": "Discuss the role of the Competition Commission of India in containing the abuse of dominant position by the Multi-National Corporations in India.",
+      "syllabusNodeId": "GS2-GOV-REGULATORS-QUASI"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2023_03",
+      "year": 2023,
+      "questionNumber": 3,
+      "directive": "Discuss",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "e-Governance, as a critical tool of governance, has ushered in effectiveness, transparency and accountability in governments. What inadequacies hamper the enhancement of these features?",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2022_01",
+      "year": 2022,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Development Processes and Industry \u2013 Planning, Corporate Governance etc.",
+      "question": "The Gati-Shakti Yojana needs meticulous coordination between the government and the private sector to achieve the goal of connectivity. Discuss.",
+      "syllabusNodeId": "GS2-GOV-DEVELOPMENT-INDUSTRY"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2022_05",
+      "year": 2022,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "Development Processes and Industry \u2013 Planning, Corporate Governance etc.",
+      "question": "Do you agree with the view that increasing dependence on donor agencies for development reduces the importance of community participation in the development process? Justify your answer",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2021_01",
+      "year": 2021,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Pressure Groups and Role of Civil Society",
+      "question": "Pressure groups play a vital role in influencing public policymaking in India.\u201d Explain how the business associations contribute to public policies.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2021_05",
+      "year": 2021,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "Has digital illiteracy, particularly in rural areas, coupled with lack of Information and Communication Technology(ICT) accessibility hindered socio-economic development? Examine with justification",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2021_07",
+      "year": 2021,
+      "questionNumber": 7,
+      "directive": "Comment",
+      "theme": "Role of NGOs, SHGs, Donors, Charities, Institutional and Other Stakeholders",
+      "question": "Can Civil Society and Non-Governmental Organizations present an alternative model of public service delivery to benefit the common citizen? Discuss the challenges of this alternative model.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2020_02",
+      "year": 2020,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "Institutional quality is a crucial driver of economic performance.\u201d In this context suggest reforms in the Civil Service for strengthening democracy.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2020_03",
+      "year": 2020,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "The emergence of the Fourth Industrial Revolution (Digital Revolution) has initiated e-Governance as an integral part of government.\u201d Discuss",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2020_05",
+      "year": 2020,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "Role of NGOs, SHGs, Donors, Charities, Institutional and Other Stakeholders",
+      "question": "Micro-Finance as an anti-poverty vaccine, is aimed at asset creation and income security of the rural poorin India.\u201d Evaluate the role of the Self Help Groups in achieving the twin objectives along with empowering women in rural India.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2019_01",
+      "year": 2019,
+      "questionNumber": 1,
+      "directive": "Discuss",
+      "theme": "Pressure Groups and Role of Civil Society",
+      "question": "What are the methods used by the farmers\u2019 organisation to influence the policy-makers in India and how effective are these methods?",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2019_04",
+      "year": 2019,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "Implementation of Information and Communication Technology (ICT) based projects/programmes usually suffers in terms of certain vital factors. Identify these factors and suggest measures for their effective implementation.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2019_06",
+      "year": 2019,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Development Processes and Industry \u2013 Planning, Corporate Governance etc.",
+      "question": "In the context of neo-liberal paradigm of development planning, multi-level planning is expected to make operations cost-effective and remove many implementation blockages.\u201d Discuss.",
+      "syllabusNodeId": "GS2-GOV-DEVELOPMENT-INDUSTRY"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2019_07",
+      "year": 2019,
+      "questionNumber": 7,
+      "directive": "Comment",
+      "theme": "Development Processes and Industry \u2013 Planning, Corporate Governance etc.",
+      "question": "The need for cooperation among various services sectors has been an inherent component of development discourse. Partnership bridges the gap among the sectors. It also sets in motion a culture of \u2018collaboration\u2019 and \u2018team spirit\u2019. In the light of statements above examine India\u2019s development process.",
+      "syllabusNodeId": "GS2-GOV-DEVELOPMENT-INDUSTRY"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2018_01",
+      "year": 2018,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Development Processes and Industry \u2013 Planning, Corporate Governance etc.",
+      "question": "Policy Contradictions among various competing sectors and stakeholders have resulted in inadequate \u2018protection and prevention of degradation\u2019 to environment.\u201d Comment with relevant illustrations.",
+      "syllabusNodeId": "GS2-GOV-EGOV"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2018_03",
+      "year": 2018,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "E-governance is not only about utilization of the power of new technology, but also much about critical importance of the \u2018use value\u2019 of information. Explain.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2018_06",
+      "year": 2018,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "The Citizens\u2019 Charter is an ideal instrument of organizational transparency and accountability, but it has its own limitations. Identify the limitations and suggest measures for greater effectiveness of the Citizens\u2019 Charter.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2017_04",
+      "year": 2017,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Role of NGOs, SHGs, Donors, Charities, Institutional and Other Stakeholders",
+      "question": "The emergence of Self Help Groups(SHGs) in contemporary times points to the slow but steady withdrawal of the state from developmental activities\u2019. Examine the role of the SHGs in developmental activities and the measures taken by the Government of India to promote the SHGs.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2017_06",
+      "year": 2017,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "Initially Civil Services in India were designed to achieve the goals of neutrality and effectiveness, which seems to be lacking in the present context. Do you agree with the view that drastic reforms are required in Civil Services. Comment.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2016_02",
+      "year": 2016,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Role of NGOs, SHGs, Donors, Charities, Institutional and Other Stakeholders",
+      "question": "In the Indian governance system, the role of non-state actors has been only marginal.\u201d Critically examine this statement.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2016_03",
+      "year": 2016,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Development Processes and Industry \u2013 Planning, Corporate Governance etc.",
+      "question": "Effectiveness of the government system at various levels and people\u2019s participation in the governance system are interdependent\u201d Discuss their relationship in the context of India.",
+      "syllabusNodeId": "GS2-GOV-DEVELOPMENT-INDUSTRY"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2016_04",
+      "year": 2016,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Transparency, Accountability, Corruption, Whistleblowers",
+      "question": "In the integrity index of Transparency International, India stands very low. Discuss briefly the legal, political, social and cultural factors that have caused the decline of public morality in India.",
+      "syllabusNodeId": "GS2-GOV-TRANSPARENCY"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2016_05",
+      "year": 2016,
+      "questionNumber": 5,
+      "directive": "Discuss",
+      "theme": "Development Processes and Industry \u2013 Planning, Corporate Governance etc.",
+      "question": "Has the Indian governmental system responded adequately to the demands of Liberalization, Privatization and Globalization started in 1991? What can the government do to be responsive to this important change?",
+      "syllabusNodeId": "GS2-GOV-DEVELOPMENT-INDUSTRY"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2016_06",
+      "year": 2016,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "Traditional bureaucratic structure and culture have hampered the process of socio-economic development in India.\u201d Comment.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2015_01",
+      "year": 2015,
+      "questionNumber": 1,
+      "directive": "Examine",
+      "theme": "Development Processes and Industry \u2013 Planning, Corporate Governance etc.",
+      "question": "Examine critically the recent changes in the rule governing foreign funding of NGOs under the Foreign Contribution (Regulation) Act (FCRA), 1976.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2015_02",
+      "year": 2015,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Role of NGOs, SHGs, Donors, Charities, Institutional and Other Stakeholders",
+      "question": "The Self Help Group (SHG) Bank Linkage Program (SBLP), which is India\u2019s own innovation, has proved to be one of the most effective poverty alleviation and women empowerment programmes. Elucidate.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2015_03",
+      "year": 2015,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Role of NGOs, SHGs, Donors, Charities, Institutional and Other Stakeholders",
+      "question": "How can be the role of NGOs be strengthened in India for development works relating to protection of the Environment? Discuss throwing light on the major constraints.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2015_07",
+      "year": 2015,
+      "questionNumber": 7,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "In the light of Satyam Scandal (2009), discuss the changes brought in the corporate governance to ensure transparency and accountability.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2015_08",
+      "year": 2015,
+      "questionNumber": 8,
+      "directive": "Comment",
+      "theme": "Transparency, Accountability, Corruption, Whistleblowers",
+      "question": "If an amendment bill to the Whistleblowers Protection Act 2011 tabled in the Parliament is passed, there maybe no one left to protect. Critically Evaluate.",
+      "syllabusNodeId": "GS2-GOV-TRANSPARENCY"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2014_01",
+      "year": 2014,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Development Processes and Industry \u2013 Planning, Corporate Governance etc.",
+      "question": "Though 100 percent FDI is already allowed in non-news media like a trade publication and general entertainment channel, the government is mulling over the proposal for increased FDI in news media for quite some time. What difference would an increase in FDI make? Critically evaluate the pros and cons.",
+      "syllabusNodeId": "GS2-GOV-DEVELOPMENT-INDUSTRY"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2014_02",
+      "year": 2014,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "The setting up of a Rail Tariff Authority to regulate fares will subject the cash strapped Indian Railways to demand subsidy for obligation to operate non-profitable routes and services. Taking into account the experience in the power sector, discuss if the proposed reform is expected to benefit the consumers, the Indian Railways or the private container operators.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2014_03",
+      "year": 2014,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "The National Human Rights Commission (NHRC) in India can be most effective when its tasks are adequately supported by other mechanisms that ensure the accountability of a government. In light of the above observation, assess the role of NHRC as an effective complement to the judiciary and other institutions in promoting and protecting human rights standards",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2014_04",
+      "year": 2014,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Role of NGOs, SHGs, Donors, Charities, Institutional and Other Stakeholders",
+      "question": "The penetration of Self Help Groups (SHGs) in rural areas in promoting participation in development programmes is facing socio-cultural hurdles. Examine.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2014_06",
+      "year": 2014,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Miscellaneous",
+      "question": "An athlete participates in Olympics for personal triumph and nation\u2019s glory; victors are showered with cash incentives by various agencies, on their return. Discuss the merit of state sponsored talent hunt and its cultivation as against the rationale of a reward mechanism as encouragement.",
+      "syllabusNodeId": "GS2-GOV-EGOV"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2014_08",
+      "year": 2014,
+      "questionNumber": 8,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "Has the Cadre based Civil Services Organization been the cause of slow change in India? Critically examine.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2014_09",
+      "year": 2014,
+      "questionNumber": 9,
+      "directive": "Comment",
+      "theme": "Development Processes and Industry \u2013 Planning, Corporate Governance etc.",
+      "question": "Two parallel run schemes of the Government, viz the Adhar card and NPR, one of voluntary and the other as compulsory, have led to debates at national levels and also litigations. On merits, discuss whether or not both schemes need to run concurrently. Analyse the potential of the schemes to achieve development benefits and equitable growth.",
+      "syllabusNodeId": "GS2-GOV-DEVELOPMENT-INDUSTRY"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2013_02",
+      "year": 2013,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Pressure Groups and Role of Civil Society",
+      "question": "Pressure group politics is sometimes seen as the informal face of politics. With regards to the above, assess the structure and functioning of pressure groups in India.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2013_03",
+      "year": 2013,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Role of NGOs, SHGs, Donors, Charities, Institutional and Other Stakeholders",
+      "question": "The legitimacy and accountability of Self Help Groups (SHGs) and their patrons, the micro-finance outfits, need systematic assessment and scrutiny for the sustained success of the concept. Discuss.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    },
+    {
+      "id": "MAIN_GS2_GOVERNANCE_2013_05",
+      "year": 2013,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "e-Governance, Citizen Charter, Civil Services, NGOs, Regulatory Bodies",
+      "question": "Electronic cash transfer system for the welfare schemes is an ambitious project to minimize corruption, eliminate wastage and facilitate reforms. Comment.",
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS"
+    }
+  ]
+}

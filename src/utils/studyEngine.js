@@ -71,7 +71,14 @@ export function buildPlanItemMappingPath(item) {
 
   if (m.path) return String(m.path);
 
-  const parts = [m.gsPaper, m.gsHeading, m.macroTheme, m.microTheme].filter(Boolean);
+  const lastPart =
+    m.microTheme ||
+    m.mappedTopicName ||
+    m.microTitle ||
+    m.name ||
+    "";
+
+  const parts = [m.gsPaper, m.gsHeading, m.macroTheme, lastPart].filter(Boolean);
   return parts.join(" > ");
 }
 
@@ -98,12 +105,37 @@ function stringifyCompact(value) {
   }
 }
 
+function safeArray(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+function normalizeMappedNodes(nodes = []) {
+  return safeArray(nodes)
+    .map((node) => {
+      if (!node) return null;
+
+      return {
+        topic: node.topic || "",
+        syllabusNodeId: node.syllabusNodeId || node.code || "",
+        code: node.code || node.syllabusNodeId || "",
+        label: node.label || node.microTheme || node.topic || "",
+        microTheme: node.microTheme || node.label || node.topic || "",
+        path: node.path || "",
+        confidence: safeNumber(node.confidence, 0),
+      };
+    })
+    .filter((node) => node && node.syllabusNodeId);
+}
+
 export function buildTodayBlocksFromParsed(out) {
   const items = Array.isArray(out?.items) ? out.items : [];
 
   return items.map((item, index) => {
     const mapped = item?.mapped || null;
     const topMatches = Array.isArray(mapped?.allMatches) ? mapped.allMatches : [];
+    const mappedNodes = normalizeMappedNodes(
+      item?.mappedNodes || item?.linkedPyqs?.mappedNodes || []
+    );
 
     return {
       BlockId: makeStableBlockId(out?.date || "", item, index),
@@ -169,7 +201,12 @@ export function buildTodayBlocksFromParsed(out) {
       MappingTag: mapped?.tag || "",
       MappingVersion: mapped?.mappingVersion || "",
       MappingSubject: mapped?.subject || "",
-      MappingMicroTheme: mapped?.microTheme || "",
+      MappingMicroTheme:
+        mapped?.microTheme ||
+        mapped?.mappedTopicName ||
+        mapped?.microTitle ||
+        mapped?.name ||
+        "",
       MappingSection: mapped?.section || "",
       MappingParentTopic: mapped?.parentTopic || "",
       MappingPath: mapped?.path || buildPlanItemMappingPath(item),
@@ -187,6 +224,19 @@ export function buildTodayBlocksFromParsed(out) {
       Locked: item?.locked ? "yes" : "no",
       ApprovalRequired: out?.approvalRequired ? "yes" : "no",
       PlanSource: "photo_ocr",
+
+      // multi-mapping
+      MappedNodesRaw: stringifyCompact(mappedNodes),
+      MappedNodeIds: mappedNodes.map((n) => n.syllabusNodeId).join(" | "),
+      MappedNodeLabels: mappedNodes
+        .map((n) => n.label || n.microTheme || n.topic)
+        .filter(Boolean)
+        .join(" | "),
+      mappedNodes,
+
+      // linked pyq
+      linkedPyqs: item?.linkedPyqs || null,
+      mapped: mapped || null,
     };
   });
 }
@@ -275,49 +325,82 @@ export function buildApprovedOcrBlocks(date, ocrDraftBlocks) {
       subject: block.PlannedSubject || "Unknown",
     };
 
+    const mappedNodes = normalizeMappedNodes(
+      block?.mappedNodes || block?.linkedPyqs?.mappedNodes || []
+    );
+
     return {
       ...block,
       BlockId: makeStableBlockId(date, stableLike, index),
       Date: date,
       PlannedMinutes: safeNumber(block.PlannedMinutes, 0),
+      MappedNodesRaw:
+        block?.MappedNodesRaw || stringifyCompact(mappedNodes),
+      MappedNodeIds:
+        block?.MappedNodeIds || mappedNodes.map((n) => n.syllabusNodeId).join(" | "),
+      MappedNodeLabels:
+        block?.MappedNodeLabels ||
+        mappedNodes
+          .map((n) => n.label || n.microTheme || n.topic)
+          .filter(Boolean)
+          .join(" | "),
+      mappedNodes,
     };
   });
 }
 
 export function buildScheduleBlocksPayload(blocks) {
-  return (blocks || []).map((block) => ({
-    blockId: block.BlockId,
-    startTime: block.PlannedStart || "",
-    endTime: block.PlannedEnd || "",
-    minutes: safeNumber(block.PlannedMinutes, 0),
-    subject: block.PlannedSubject || "Unknown",
-    topic: block.PlannedTopic || "",
+  return (blocks || []).map((block) => {
+    const mappedNodes = normalizeMappedNodes(
+      block?.mappedNodes || block?.linkedPyqs?.mappedNodes || []
+    );
 
-    // legacy mapping fields
-    mappingCode: block.SyllabusTop1Code || "",
-    mappingPath: block.SyllabusTop1Path || "",
-    topMatchesCodes: block.Top3Codes || "",
+    return {
+      blockId: block.BlockId,
+      startTime: block.PlannedStart || "",
+      endTime: block.PlannedEnd || "",
+      minutes: safeNumber(block.PlannedMinutes, 0),
+      subject: block.PlannedSubject || "Unknown",
+      topic: block.PlannedTopic || "",
 
-    // Phase 2 enriched fields
-    syllabusNodeId: block.SyllabusNodeId || "",
-    gsPaper: block.GsPaper || "",
-    subjectGroup: block.SubjectGroup || "",
-    confidence: safeNumber(block.MappingConfidence, 0),
-    mappingTag: block.MappingTag || "",
-    mappingVersion: block.MappingVersion || "",
-    mappingSubject: block.MappingSubject || "",
-    mappingMicroTheme: block.MappingMicroTheme || "",
-    mappingSection: block.MappingSection || "",
-    mappingParentTopic: block.MappingParentTopic || "",
-    matchedTokens: block.MappingMatchedTokens || "[]",
-    allMatches: block.MappingMatchesRaw || "[]",
-    chunks: block.MappingChunksRaw || "[]",
-    ignoredTokens: block.MappingIgnoredTokens || "[]",
-    ignoredText: block.MappingIgnoredText || "",
-    isNonStudy: block.IsNonStudy || "no",
-    locked: block.Locked || "no",
-    approvalRequired: block.ApprovalRequired || "yes",
-  }));
+      // legacy mapping fields
+      mappingCode: block.SyllabusTop1Code || "",
+      mappingPath: block.SyllabusTop1Path || "",
+      topMatchesCodes: block.Top3Codes || "",
+
+      // Phase 2 enriched fields
+      syllabusNodeId: block.SyllabusNodeId || "",
+      gsPaper: block.GsPaper || "",
+      subjectGroup: block.SubjectGroup || "",
+      confidence: safeNumber(block.MappingConfidence, 0),
+      mappingTag: block.MappingTag || "",
+      mappingVersion: block.MappingVersion || "",
+      mappingSubject: block.MappingSubject || "",
+      mappingMicroTheme: block.MappingMicroTheme || "",
+      mappingSection: block.MappingSection || "",
+      mappingParentTopic: block.MappingParentTopic || "",
+      matchedTokens: block.MappingMatchedTokens || "[]",
+      allMatches: block.MappingMatchesRaw || "[]",
+      chunks: block.MappingChunksRaw || "[]",
+      ignoredTokens: block.MappingIgnoredTokens || "[]",
+      ignoredText: block.MappingIgnoredText || "",
+      isNonStudy: block.IsNonStudy || "no",
+      locked: block.Locked || "no",
+      approvalRequired: block.ApprovalRequired || "yes",
+
+      // multi-mapping
+      mappedNodesRaw:
+        block.MappedNodesRaw || stringifyCompact(mappedNodes),
+      mappedNodeIds:
+        block.MappedNodeIds || mappedNodes.map((n) => n.syllabusNodeId).join(" | "),
+      mappedNodeLabels:
+        block.MappedNodeLabels ||
+        mappedNodes
+          .map((n) => n.label || n.microTheme || n.topic)
+          .filter(Boolean)
+          .join(" | "),
+    };
+  });
 }
 
 /* ---------------- Performance helpers ---------------- */

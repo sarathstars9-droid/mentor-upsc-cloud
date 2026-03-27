@@ -1,0 +1,134 @@
+{
+  "exam": "UPSC_CSE",
+  "stage": "Mains",
+  "paper": "GS3",
+  "subject": "DISASTER_MANAGEMENT",
+  "questions": [
+    {
+      "id": "GS3_DISASTER_2024_01",
+      "year": 2024,
+      "questionNumber": 1,
+      "directive": "What is",
+      "theme": "Disaster Risk Reduction",
+      "question": "What is disaster resilience? How is it determined? Describe various elements of a resilience framework. Also mention the global targets of Sendai Framework for Disaster Risk Reduction",
+      "syllabusNodeId": "GS3-DM-PREP-MIT"
+    },
+    {
+      "id": "GS3_DISASTER_2024_02",
+      "year": 2024,
+      "questionNumber": 2,
+      "directive": "Flooding",
+      "theme": "Flood Management",
+      "question": "Flooding in urban areas is an emerging climateinduced disaster. Discuss the causes of this disaster. Mention the features of two such major floods in the last two decades in India. Describe the policies and frameworks in India that aim at tackling such floods",
+      "syllabusNodeId": "GS3-DM-DISASTERS"
+    },
+    {
+      "id": "GS3_DISASTER_2023_01",
+      "year": 2023,
+      "questionNumber": 1,
+      "directive": "Dam",
+      "theme": "Dam Safety",
+      "question": "Dam failures are always catastrophic, especially on the downstream side, resulting in a colossal loss of life and property. Analyze the various causes of dam failures. Give two examples of large dam failures.",
+      "syllabusNodeId": "GS3-DM-DISASTERS"
+    },
+    {
+      "id": "GS3_DISASTER_2021_01",
+      "year": 2021,
+      "questionNumber": 1,
+      "directive": "Discuss",
+      "theme": "Earthquake Risk",
+      "question": "Discuss the vulnerability of India to earthquakerelated hazards. Give examples including the salient features of major disasters caused by earthquakes in different parts of India during the last three decades.",
+      "syllabusNodeId": "GS3-DM-DISASTERS"
+    },
+    {
+      "id": "GS3_DISASTER_2021_02",
+      "year": 2021,
+      "questionNumber": 2,
+      "directive": "Describe",
+      "theme": "Landslide Risk",
+      "question": "Describe the various causes and effects of landslides. Mention the important components of the National Landslide Risk Management Strategy.",
+      "syllabusNodeId": "GS3-DM-DISASTERS"
+    },
+    {
+      "id": "GS3_DISASTER_2019_01",
+      "year": 2019,
+      "questionNumber": 1,
+      "directive": "Vulnerability",
+      "theme": "Disaster Risk Reduction",
+      "question": "Vulnerability is an essential element for defining disaster impacts and its threat to people. How and in what ways can vulnerability to disasters be characterized? Discuss different types of vulnerability with reference to disasters.",
+      "syllabusNodeId": "GS3-DM-PREP-MIT"
+    },
+    {
+      "id": "GS3_DISASTER_2019_02",
+      "year": 2019,
+      "questionNumber": 2,
+      "directive": "Disaster",
+      "theme": "Landslide Risk",
+      "question": "Disaster preparedness is the first step in any disaster management process. Explain how hazard zonation mapping will help disaster mitigation in the case of landslides.",
+      "syllabusNodeId": "GS3-DM-DISASTERS"
+    },
+    {
+      "id": "GS3_DISASTER_2018_01",
+      "year": 2018,
+      "questionNumber": 1,
+      "directive": "Describe",
+      "theme": "Disaster Risk Reduction",
+      "question": "Describe various measures taken in India for Disaster Risk Reduction (DRR) before and after signing'Sendai Framework for DRR (201530)'. How is this framework different from'Hyogo Framework for Action, 2005'?",
+      "syllabusNodeId": "GS3-DM-PREP-MIT"
+    },
+    {
+      "id": "GS3_DISASTER_2017_01",
+      "year": 2017,
+      "questionNumber": 1,
+      "directive": "On",
+      "theme": "Tsunami Management",
+      "question": "On December 2004, tsumani brought havoc in 14 countries including India. Discuss the factors responsible for the occurrence of Tsunami and its effects on life and economy. In the light of guidelines of NDMA (2010) describe the mechanisms for preparedness to reduce the risk during such events.",
+      "syllabusNodeId": "GS3-DM-DISASTERS"
+    },
+    {
+      "id": "GS3_DISASTER_2016_01",
+      "year": 2016,
+      "questionNumber": 1,
+      "directive": "The",
+      "theme": "Flood Management",
+      "question": "The frequency of urban floods due to high intensity rainfall is increasing over the years. Discussing the reasons for urban floods, highlight the mechanisms for preparedness to reduce the risk during such events.",
+      "syllabusNodeId": "GS3-DM-DISASTERS"
+    },
+    {
+      "id": "GS3_DISASTER_2016_02",
+      "year": 2016,
+      "questionNumber": 2,
+      "directive": "With",
+      "theme": "Cloudburst Risk",
+      "question": "With reference to National Disaster Management Authority (NDMA) guidelines, discuss the measures to be adopted to mitigate the impact of recent incidents of cloudbursts in many places of Uttarakhand.",
+      "syllabusNodeId": "GS3-DM-DISASTERS"
+    },
+    {
+      "id": "GS3_DISASTER_2015_01",
+      "year": 2015,
+      "questionNumber": 1,
+      "directive": "The",
+      "theme": "Earthquake Risk",
+      "question": "The frequency of earthquakes appears to have increased in the Indian subcontinent. However, India's preparedness for mitigating their impact has significant gaps. Discuss various aspects.",
+      "syllabusNodeId": "GS3-DM-DISASTERS"
+    },
+    {
+      "id": "GS3_DISASTER_2014_01",
+      "year": 2014,
+      "questionNumber": 1,
+      "directive": "Drought",
+      "theme": "Drought Management",
+      "question": "Drought has been recognized as a disaster in view of its spatial expanse, temporal duration, slow onset and lasting effects on vulnerable sections. With a focus on the September 2010 guidelines from the National Disaster Management Authority (NDMA), discuss the mechanisms for preparedness to deal w",
+      "syllabusNodeId": "GS3-DM-DISASTERS"
+    },
+    {
+      "id": "GS3_DISASTER_2013_01",
+      "year": 2013,
+      "questionNumber": 1,
+      "directive": "How",
+      "theme": "Disaster Risk Reduction",
+      "question": "How important are vulnerability and risk assessment for predisaster management. As an administrator, what are key areas that you would focus in a disaster management",
+      "syllabusNodeId": "GS3-DM-PREP-MIT"
+    }
+  ]
+}

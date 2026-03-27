@@ -1,0 +1,1514 @@
+{
+  "sourceFile": "PYQ_GS_English_2013-25 (1).pdf",
+  "exam": "UPSC_CSE",
+  "stage": "Prelims",
+  "paper": "GS1",
+  "subject": "International Relations",
+  "questions": [
+    {
+      "id": "PRE_GS1_IR_2025_001",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Economy",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2025,
+      "questionNumber": 1,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Consider the following countries: 1. Austria 2. Bulgaria 3. Croatia 4. Serbia 5. Sweden 6. North Macedonia How many of the above are members of the North Atlantic Treaty Organization?",
+      "options": {
+        "a": "Only three",
+        "b": "Only four",
+        "c": "Only five",
+        "d": "All the six"
+      },
+      "answer": "b",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Banking Structure",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2025_002",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2025,
+      "questionNumber": 2,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements in respect of BIMSTEC: I. It is a regional organization consisting of seven member States till January 2025. II. It came into existence with the signing of the Dhaka Declaration, 1999. III. Bangladesh, India, Sri Lanka, Thailand and Nepal are founding member States of BIMSTEC. IV . In BIMSTEC, the subsector of ‘tourism’ is being led by India. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "I and II",
+        "b": "II and III",
+        "c": "I and IV",
+        "d": "I only"
+      },
+      "answer": "d",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2025_003",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2025,
+      "questionNumber": 3,
+      "questionType": "MCQ_2_STATEMENT",
+      "format": "text",
+      "question": "Consider the following statements with regard to BRICS; I. 16th BRICS Summit was held under the Chairship of Russia in Kazan. II. Indonesia has become a full member of BRICS. III. The theme of the 16th BRICS Summit was Strengthening Multiculturalism for Just Global Development and Security. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "I and II",
+        "b": "II and III",
+        "c": "I and III",
+        "d": "I only"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2025_004",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Environment",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2025,
+      "questionNumber": 4,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Which organization has enacted the Nature Restoration Law (NRL) to tackle climate change and biodiversity loss?",
+      "options": {
+        "a": "The European Union",
+        "b": "The World Bank",
+        "c": "The Organization for Economic Cooperation and Development",
+        "d": "The Food and Agriculture Organization"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-CLIMATE-DISARM",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.7,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2025_005",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2025,
+      "questionNumber": 1,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements regarding AI Action Summit held in Grand Palais, Paris in February 2025: I. Co-chaired with India, the event builds on the advances made at the Bletchley Park Summit held in 2023 and the Seoul Summit held in 2024. II. Along with other countries, US and UK also signed the declaration on inclusive and sustainable AI. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2025_006",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2025,
+      "questionNumber": 2,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "India is one of the founding members of the International North- South Transport Corridor (INSTC), a multimodal transportation corridor, which will connect",
+      "options": {
+        "a": "India to Central Asia to Europe via Iran",
+        "b": "India to Central Asia via China",
+        "c": "India to South-East Asia through Bangladesh and Myanmar",
+        "d": "India to Europe through Azerbaijan"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2024_007",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2024,
+      "questionNumber": 5,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements regarding World Toilet Organization: 1. It is one of the agencies of the United Nations. 2. World Toilet Summit, World Toilet Day and World Toilet 198 International Groups and Political Organizations College are the initiatives of this organization, to inspire action to tackle the global sanitation crisis. 3. The main focus of its function is to grant funds to the least developed countries and developing countries to achieve the end of open defecation. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "2 only",
+        "b": "3 only",
+        "c": "1 and 2",
+        "d": "2 and 3"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2024_008",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2024,
+      "questionNumber": 3,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements : Statement-I: There is instability and a worsening security situation in the Sahel region. Statement-II: There have been military takeovers/coups d’ état in several countries of the Sahel region in the recent past. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "a": "Both Statement-I and Statement-II are correct and Statement- II explains Statement-I",
+        "b": "Both Statement-I and Statement-II are correct, but Statement- II does not explain Statement-I",
+        "c": "Statement-I is correct, but Statement-II is incorrect.",
+        "d": "Statement--I is incorrect, but Statement-II is correct."
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2024_009",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2024,
+      "questionNumber": 4,
+      "questionType": "PAIR_BASED",
+      "format": "text",
+      "question": "Consider the following pairs: Country: Reason for being in the news 1. Argentina: Worst economic crisis 2. Sudan: War between the country's regular army and paramilitary forces 3. Turkey: Rescinded its membership of NATO How many of the pairs given above are correctly matched?",
+      "options": {
+        "a": "Only one pair",
+        "b": "Only two pairs",
+        "c": "All three pairs",
+        "d": "None of the pairs"
+      },
+      "answer": "b",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "pair-structure-detected",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2024_010",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2024,
+      "questionNumber": 5,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: Statement-I: Sumed pipeline is a strategic route for Persian Gulf oil and natural gas shipments to Europe. Statement-II: Sumed pipeline connects the Red Sea with the Mediterranean Sea. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "a": "Both Statement-I and Statement-II are correct and Statement- II explains Statement-I",
+        "b": "Both Statement-I and Statement-II are correct, but Statement- II does not explain Statement-I",
+        "c": "Statement-I is correct, but Statement-II is incorrect",
+        "d": "Statement-I is incorrect, but Statement-II is correct"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-CONTEMP",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2024_011",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2024,
+      "questionNumber": 6,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Consider the following countries: 1. Italy 2. Japan 3. Nigeria 4. South Korea 5. South Africa Which of the above countries are frequently mentioned in the media for their low birth rates, aging population or declining population?",
+      "options": {
+        "a": "1, 2 and 4",
+        "b": "1,3 and 5",
+        "c": "2 and 4 only",
+        "d": "3 and 5 only"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2023_012",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Polity",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2023,
+      "questionNumber": 6,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements about G-20: 1. The G-20 group was originally established as a platform for the Finance Ministers and Central Bank Governors to discuss international economic and financial issues. 2. Digital public infrastructure is one of India’s G-20 priorities. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "c",
+      "syllabusNodeId": "GS2-IR-GROUPINGS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2023_013",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2023,
+      "questionNumber": 7,
+      "questionType": "PAIR_BASED",
+      "format": "text",
+      "question": "Consider the following pairs: Regions often Reason for being in news mentioned in news : 1. North Kivu and Ituri : War between Armenia and Azerbaijan 2. Nagorno-Karabakh : Insurgency in Mozambique 3. Kherson and Dispute between Israel and Zaporizhzhia : Lebanon How many of the above pairs are correctly matched?",
+      "options": {
+        "a": "Only one",
+        "b": "Only two",
+        "c": "All three",
+        "d": "None"
+      },
+      "answer": "d",
+      "syllabusNodeId": "GS2-IR-WEST-ASIA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "pair-structure-detected",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2023_014",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2023,
+      "questionNumber": 8,
+      "questionType": "PAIR_BASED",
+      "format": "text",
+      "question": "Consider the following pairs: Area of conflict mentioned in Country where it is news : located 1. Donbas : Syria 2. Kachin : Ethiopia 3. Tigray : North Y emen How many of the above pairs are correctly matched?",
+      "options": {
+        "a": "Only one",
+        "b": "Only two",
+        "c": "All three",
+        "d": "None"
+      },
+      "answer": "d",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "pair-structure-detected",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2023_015",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2023,
+      "questionNumber": 9,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "In the recent years Chad, Guinea, Mali and Sudan caught international attention for which one of the following reasons is common to all of them?",
+      "options": {
+        "a": "Discovery of rich deposits of rare earth elements",
+        "b": "Establishment of Chinese military bases",
+        "c": "Southward expansion of Sahara Desert",
+        "d": "Successful coups"
+      },
+      "answer": "d",
+      "syllabusNodeId": "GS2-IR-CONTEMP",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2022_016",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "History & Culture",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2022,
+      "questionNumber": 7,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to the United Nations Convention on the Law of Sea, consider the following statements: 1. A coastal state has the right to establish the breadth of its territorial sea up to a limit not exceeding 12 nautical miles, measured from baseline determined in accordance with the convention. 2. Ships of all states, whether coastal or land-locked, enjoy the right of innocent passage through the territorial sea. 3. The Exclusive Economic Zone shall not extend beyond 200 nautical miles from the baseline from which the breadth of the territorial sea is measured. Which of the statements given above are correct ?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "2 and 3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "d",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Art & Culture",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2022_017",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2022,
+      "questionNumber": 8,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to the “United Nations Credentials Committee”, consider the following statements: 1. It is a committee set up by the UN Security Council and works under its supervision. 2. It traditionally meets in March, June and September every year. 3. It assesses the credentials of all UN members before submitting a report to the General Assembly for approval. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "3 only",
+        "b": "1 and 3",
+        "c": "2 and 3",
+        "d": "1 and 2"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2022_018",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2022,
+      "questionNumber": 9,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to the United Nations General Assembly, consider the following statements : 1. The UN General Assembly can grant observer status to the non-member States. 2. Inter-governmental organisations can seek observer status in the UN General Assembly. 3. Permanent Observers in the UN General Assembly can maintain missions at the UN headquarters. Which of the statements given above are correct?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "2 and 3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "d",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2022_019",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2022,
+      "questionNumber": 10,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Consider the following : 1. Asian Infrastructure Investment Bank 2. Missile Technology Control Regime 3. Shanghai Cooperation Organisation India is a member of which of the above?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "3 only",
+        "c": "2 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "d",
+      "syllabusNodeId": "GS2-IR-GROUPINGS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2022_020",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2022,
+      "questionNumber": 11,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to the “G20 Common Framework”, consider the following statements: 1. It is an initiative endorsed by the G20 together with the Paris Club. 2. It is an initiative to support Low Income Countries with unsustainable debt. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "c",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2022_021",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2022,
+      "questionNumber": 10,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Consider the following countries: 1. Armenia 2. Azerbaijan 3. Croatia 4. Romania 5. Uzbekistan Which of the above are members of the Organization of Turkic States ?",
+      "options": {
+        "a": "1, 2 and 4 only",
+        "b": "1 and 3 only",
+        "c": "2 and 5 only",
+        "d": "3, 4 and 5 only"
+      },
+      "answer": "c",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2022_022",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2022,
+      "questionNumber": 11,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Which one of the following statements best reflects the issue with Senkaku Islands, sometimes mentioned in the news?",
+      "options": {
+        "a": "It is generally believed that they are artificial islands made by a country around the South China Sea.",
+        "b": "China and Japan engage in maritime disputes over these islands in the East China Sea. -",
+        "c": "A permanent American military base has been set up there to help Taiwan to increase its defence capabilities.",
+        "d": "Though the International Court of Justice declared them as no man’s land, some South-East Asian countries claim them."
+      },
+      "answer": "b",
+      "syllabusNodeId": "GS2-IR-CONTEMP",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2022_023",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2022,
+      "questionNumber": 12,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Which one of the following statements best describes the ‘Polar Code’ ?",
+      "options": {
+        "a": "It is the international code of safety for ships operating in polar waters.",
+        "b": "It is the agreement of the countries around the North Pole regarding the demarcation of their territories in the polar region.",
+        "c": "It is a set of norms to be followed by the countries whose scientists undertake research studies in the North Pole and South Pole.",
+        "d": "It is a trade and security agreement of the member countries of the Arctic Council."
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-CONTEMP",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2022_024",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Polity",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2022,
+      "questionNumber": 13,
+      "questionType": "PAIR_BASED",
+      "format": "text",
+      "question": "Consider the following pairs : Country Important reason for being in the news recently 1. Chad Setting up of permanent military base by China 2. Guinea Suspension of Constitution and Government by military 3. Lebanon Severe and prolonged economic depression 4. Tunisia Suspension of Parliament by President How many pairs given above are correctly matched?",
+      "options": {
+        "a": "Only one pair",
+        "b": "Only two pairs",
+        "c": "Only three pairs",
+        "d": "All four pairs"
+      },
+      "answer": "c",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Union Executive",
+      "mappingAudit": {
+        "subjectConfidence": 0.7,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "pair-structure-detected",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2020_025",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2020,
+      "questionNumber": 12,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "In which one of the following groups are all the four countries members of G20?",
+      "options": {
+        "a": "Argentina, Mexico, South Africa, and Turkey",
+        "b": "Australia, Canada, Malaysia, and New Zealand",
+        "c": "Brazil, Saudi Arabia, and Vietnam",
+        "d": "Indonesia, Japan, Singapore, and South Korea"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2019_026",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "India & Its Neighbors",
+      "microtheme": "India & Its Neighbors",
+      "year": 2019,
+      "questionNumber": 1,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Recently, India signed a deal known as 'Action Plan for Prioritisation and Implementation of Cooperation Areas in the Nuclear Field' with which of the following countries?",
+      "options": {
+        "a": "Japan",
+        "b": "Russia",
+        "c": "The United Kingdom",
+        "d": "The United States of America"
+      },
+      "answer": "b",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2019_027",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2019,
+      "questionNumber": 13,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. The United Nations Convention against Corruption (UNCAC) has a ‘Protocol against the Smuggling of Migrants by Land, Sea and Air’ . 2. The UNCAC is the ever-first legally binding global anti- corruption instrument. 3. A highlight of the United Nations Convention against Transnational Organised Crime (UNTOC) is the inclusion of a specific chapter aimed at returning assets to their rightful owners from whom they had been taken illicitly. 4. The United Nations Office on Drugs and Crime (UNODC) is mandated by its member States to assist in the implementation of both UNCAC and UNTOC. Which of the statements given above are correct?",
+      "options": {
+        "a": "1 and 3 only",
+        "b": "2, 3 and 4 only",
+        "c": "2 and 4 only",
+        "d": "1, 2, 3 and 4"
+      },
+      "answer": "c",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2019_028",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2019,
+      "questionNumber": 14,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to Asian Infrastructure Investment Bank (AIIB), consider the following statements: 1. AIIB has more than 80 member nations. 2. India is the largest shareholder in AIIB. 3. AIIB does not have any members from outside Asia. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 and 3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-GROUPINGS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2018_029",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2018,
+      "questionNumber": 15,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Which is /are the consequence/consequences of becoming a member of the ‘Nuclear Supplier Group’? 1. It will have access to the latest and most effective nuclear technologies. 2. It automatically becomes a member of “The Treaty of non- proliferation of Nuclear weapons (NPT)” . Which of the statements given below is/ are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-CLIMATE-DISARM",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2018_030",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2018,
+      "questionNumber": 16,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "International Labour Organization’s Conventions 138 and 182 are related to:",
+      "options": {
+        "a": "Child Labour",
+        "b": "Adaptation of agricultural practices to global climate change",
+        "c": "Regulation of food prices and food security",
+        "d": "Gender parity at the workplace"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-GROUPINGS",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2018_031",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2018,
+      "questionNumber": 17,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "In the Indian context, what is the implication of ratifying the ‘Additional Protocol’ with the ‘International Atomic Energy Agency (IAEA)’?",
+      "options": {
+        "a": "The civilian nuclear reactors come under IAEA safeguards.",
+        "b": "The military nuclear installations come under the inspection of IAEA.",
+        "c": "The country will have the privilege to buy uranium from the Nuclear Suppliers Group (NSG).",
+        "d": "The country automatically becomes a member of the NSG."
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-GROUPINGS",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2018_032",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2018,
+      "questionNumber": 18,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Consider the following countries: 1. Australia 2. Canada 3. China 4. India 5. Japan 6. USA Which of the above are among the ‘free-trade partners’ of ASEAN?",
+      "options": {
+        "a": "1, 2, 4 and 5 only",
+        "b": "3, 4, 5 and 6 only",
+        "c": "1, 3, 4 and 5 only",
+        "d": "2, 3, 4 and 6 only"
+      },
+      "answer": "c",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2017_033",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "India & Its Neighbors",
+      "microtheme": "India & Its Neighbors",
+      "year": 2017,
+      "questionNumber": 2,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "What is the importance of developing Chabahar Port by India?",
+      "options": {
+        "a": "India’s trade with African countries will enormously increase.",
+        "b": "India’s relations with oil-producing Arab countries will be strengthened.",
+        "c": "India will not depend on Pakistan for access to Afghanistan and Central Asia.",
+        "d": "Pakistan will facilitate and protect the installation of a gas pipeline between Iraq and India."
+      },
+      "answer": "c",
+      "syllabusNodeId": "GS2-IR-CONTEMP",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2017_034",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Science & Technology",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2017,
+      "questionNumber": 19,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to ‘Asia Pacific Ministerial Conference on Housing and Urban Development (APMCHUD)’, consider the following statements: 1. The first APMCHUD was held in India in 2006 on the theme ‘Emerging Urban Forms — Policy Responses and Governance Structure’ . 2. India hosts all the Annual Ministerial Conferences in partnership with ADB, APEC and ASEAN. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "d",
+      "syllabusNodeId": "GS2-IR-ASEAN-EAP",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2017_035",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2017,
+      "questionNumber": 20,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following statements: 1. India has ratified the Trade Facilitation Agreement (TFA) of WTO. 2. TFA is a part of WTO’s Bali Ministerial Package of 2013. 3. TFA came into force in January 2016. Which of the statements given above are correct?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "1 and 3 only",
+        "c": "2 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2017_036",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Geography",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2017,
+      "questionNumber": 21,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "Consider the following in respect of the (IONS): 1. Inaugural IONS was held in India in 2015 under the chairmanship of the Indian Navy. 2. IONS is a voluntary initiative that seeks to increase maritime cooperation among navies of the littoral states of the Indian Ocean Region. Which of the above statements is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "b",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Oceanography",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2016_037",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "India & Its Neighbors",
+      "microtheme": "India & Its Neighbors",
+      "year": 2016,
+      "questionNumber": 3,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "‘Belt and Road Initiative’ is sometimes mentioned in the news in the context of the affairs of:",
+      "options": {
+        "a": "African Union",
+        "b": "Brazil",
+        "c": "European Union",
+        "d": "China"
+      },
+      "answer": "d",
+      "syllabusNodeId": "GS2-IR-CONTEMP",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2015_038",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "India’s Foreign Policy",
+      "microtheme": "India's Foreign Policy",
+      "year": 2015,
+      "questionNumber": 1,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Consider the following countries: 1. China 2. France 3. India 4. Israel 5. Pakistan Which among the above are Nuclear Weapons States as recognized by the Treaty on the Nonproliferation of Nuclear Weapons, commonly known as Nuclear Non-Proliferation Treaty (NPT)?",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "1, 3, 4 and 5 only",
+        "c": "2, 4 and 5 only",
+        "d": "1, 2, 3, 4 and 5 India's Foreign Policy"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2015_039",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Geography",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2015,
+      "questionNumber": 22,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to ‘Indian Ocean Rim Association for Regional Cooperation (IOR-ARC)’, Consider the following statements: 1. It was established very recently in response to incidents of piracy and accidents of oil spills. 200 International Groups and Political Organizations 2. It is an alliance meant for maritime security only. Which of the following statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "d",
+      "syllabusNodeId": "GS2-IR-GROUPINGS",
+      "topic": "Oceanography",
+      "mappingAudit": {
+        "subjectConfidence": 0.55,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2015_040",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2015,
+      "questionNumber": 23,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "India is a member of which of the following? 1. Asia-Pacific Economic Cooperation 2. Association of South-East Asian Nations 3. East Asia Summit Select the correct answer using the code given below:",
+      "options": {
+        "a": "1 and 2 only",
+        "b": "3 only",
+        "c": "1, 2 and 3",
+        "d": "India is a member of none of them"
+      },
+      "answer": "b",
+      "syllabusNodeId": "GS2-IR-ASEAN-EAP",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2014_041",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2014,
+      "questionNumber": 24,
+      "questionType": "STATEMENT_BASED",
+      "format": "text",
+      "question": "With reference to a grouping of countries known as BRICS, consider the following statements: 1. The First Summit of BRICS was held in Rio de Janeiro in 2009. 2. South Africa was the last to join the BRICS grouping. Which of the statements given above is/are correct?",
+      "options": {
+        "a": "1 only",
+        "b": "2 only",
+        "c": "Both 1 and 2",
+        "d": "Neither 1 nor 2"
+      },
+      "answer": "b",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "statement-structure-detected",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2014_042",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "International Groups and Political Organizations",
+      "microtheme": "International Groups and Political Organizations",
+      "year": 2014,
+      "questionNumber": 25,
+      "questionType": "MCQ",
+      "format": "text",
+      "question": "Consider the following countries: 1. Denmark 2. Japan 3. Russian Federation 4. United Kingdom 5. United States of America Which of the above are the members of the ‘ Arctic Council’?",
+      "options": {
+        "a": "1, 2 and 3",
+        "b": "2, 3 and 4",
+        "c": "1, 4 and 5",
+        "d": "1, 3 and 5"
+      },
+      "answer": "d",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "default-mcq",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "PRE_GS1_IR_2014_043",
+      "exam": "UPSC_CSE",
+      "stage": "Prelims",
+      "paper": "GS1",
+      "subject": "Unknown",
+      "section": "Places in news",
+      "microtheme": "Places in news",
+      "year": 2014,
+      "questionNumber": 14,
+      "questionType": "PAIR_BASED",
+      "format": "text",
+      "question": "Consider the following pairs: Region often in news Country 1. Chechnya Russian Federation 2. Darfur Mali 3. Swat Valley Iraq Which of the above pairs is/are correctly matched?",
+      "options": {
+        "a": "1 only",
+        "b": "2 and 3 only",
+        "c": "1 and 3 only",
+        "d": "1, 2 and 3"
+      },
+      "answer": "a",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.2,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "keyword-score",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_SUBJECT"
+      },
+      "typeAudit": {
+        "classifierReason": "pair-structure-detected",
+        "confidence": 0.95
+      }
+    }
+  ]
+}

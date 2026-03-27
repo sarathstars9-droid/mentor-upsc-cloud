@@ -1,0 +1,386 @@
+{
+  "exam": "UPSC_CSE",
+  "stage": "Mains",
+  "paper": "GS3",
+  "subject": "SCIENCE_TECH",
+  "questions": [
+    {
+      "id": "GS3_SCI_TECH_2024_01",
+      "year": 2024,
+      "questionNumber": 1,
+      "directive": "What is",
+      "theme": "IPR & Patents",
+      "question": "What is the present world scenario of intellectual property rights with respect to life materials? Although, India is second in the world to file patents, still only a few have been commercialized. Explain the reasons behind this less commercialization.",
+      "syllabusNodeId": "GS3-ST-IPR"
+    },
+    {
+      "id": "GS3_SCI_TECH_2024_02",
+      "year": 2024,
+      "questionNumber": 2,
+      "directive": "What is",
+      "theme": "Digital Systems",
+      "question": "What is the technology being employed for electronic toll collection on highways? What are its advantages and limitations? What are the proposed changes that will make this process seamless? Would this transition carry any potential hazards?",
+      "syllabusNodeId": "GS3-ST-IT-COMM"
+    },
+    {
+      "id": "GS3_SCI_TECH_2024_03",
+      "year": 2024,
+      "questionNumber": 3,
+      "directive": "The",
+      "theme": "Applied Science",
+      "question": "The world is facing an acute shortage of clean and safe freshwater. What are the alternative technologies which can solve this crisis? Briefly discuss any three such technologies citing their key merits and demerits.",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2024_04",
+      "year": 2024,
+      "questionNumber": 4,
+      "directive": "What are",
+      "theme": "Science Tech",
+      "question": "What are asteroids? How real is the threat of them causing extinction of life? What strategies have been developed to prevent such a catastrophe?",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2023_01",
+      "year": 2023,
+      "questionNumber": 1,
+      "directive": "Introduce",
+      "theme": "Artificial Intelligence",
+      "question": "Introduce the concept of Artificial Intelligence (AI). How does Al help clinical diagnosis? Do you perceive any threat to privacy of the individual in the use of Al in healthcare?",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+    },
+    {
+      "id": "GS3_SCI_TECH_2023_02",
+      "year": 2023,
+      "questionNumber": 2,
+      "directive": "Discuss",
+      "theme": "Biotechnology & Health Tech",
+      "question": "Discuss several ways in which microorganisms can help in meeting the current fuel shortage.",
+      "syllabusNodeId": "GS3-ST-BIOTECH"
+    },
+    {
+      "id": "GS3_SCI_TECH_2023_03",
+      "year": 2023,
+      "questionNumber": 3,
+      "directive": "What is",
+      "theme": "Artificial Intelligence",
+      "question": "What is the main task of India's third moon mission which could not be achieved in its earlier mission? List the countries that have achieved this task. Introduce the subsystems in the spacecraft launched and explain the role of the Virtual Launch Control Centre' at the Vikram Sarabhai Space Centre which contributed to the successful launch from Sriharikota.",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+    },
+    {
+      "id": "GS3_SCI_TECH_2022_01",
+      "year": 2022,
+      "questionNumber": 1,
+      "directive": "Each",
+      "theme": "Applied Science",
+      "question": "Each year a large amount of plant material, cellulose, is deposited on the surface of Planet Earth. What are the natural processes this cellulose undergoes before yielding carbon dioxide, water and other end products?",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2022_02",
+      "year": 2022,
+      "questionNumber": 2,
+      "directive": "Launched",
+      "theme": "Space Technology",
+      "question": "Launched on 25th December, 2021, James Webb Space Telescope has been much in the news since then. What are its unique features which make it superior to its predecessor Space Telescopes? What are the key goals of this mission? What potential benefits does it hold for the human race?",
+      "syllabusNodeId": "GS3-ST-SPACE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2022_03",
+      "year": 2022,
+      "questionNumber": 3,
+      "directive": "What is",
+      "theme": "Biotechnology & Health Tech",
+      "question": "What is the basic principle behind vaccine development? How do vaccines work? What approaches were adopted by the Indian vaccine manufacturers to produce COVID19 vaccines?",
+      "syllabusNodeId": "GS3-ST-BIOTECH"
+    },
+    {
+      "id": "GS3_SCI_TECH_2021_01",
+      "year": 2021,
+      "questionNumber": 1,
+      "directive": "How",
+      "theme": "Science Tech",
+      "question": "How and to What Extent Would MicroIrrigation Help Solve India's Water Crisis?",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2021_02",
+      "year": 2021,
+      "questionNumber": 2,
+      "directive": "How",
+      "theme": "Science Tech",
+      "question": "How is the S400 Air Defence System Technically Superior to Any Other System Presently Available in the World?",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2021_03",
+      "year": 2021,
+      "questionNumber": 3,
+      "directive": "What are",
+      "theme": "Biotechnology & Health Tech",
+      "question": "What are the research and developmental achievements in applied biotechnology? How will these achievements help uplift the poorer sections of society?",
+      "syllabusNodeId": "GS3-ST-BIOTECH"
+    },
+    {
+      "id": "GS3_SCI_TECH_2021_04",
+      "year": 2021,
+      "questionNumber": 4,
+      "directive": "The",
+      "theme": "Biotechnology & Health Tech",
+      "question": "The Nobel Prize in Physics of 2014 was jointly awarded to Akasaki, Amano, and Nakamura for the invention of Blue LEDs in the 1990s. How has this invention impacted the everyday life of human beings?",
+      "syllabusNodeId": "GS3-ST-BIOTECH"
+    },
+    {
+      "id": "GS3_SCI_TECH_2020_01",
+      "year": 2020,
+      "questionNumber": 1,
+      "directive": "What",
+      "theme": "Emerging Technologies",
+      "question": "What do you understand by nanotechnology and how is it helping in health sector?",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+    },
+    {
+      "id": "GS3_SCI_TECH_2020_02",
+      "year": 2020,
+      "questionNumber": 2,
+      "directive": "How",
+      "theme": "Science Tech",
+      "question": "How was India benefitted from the contributions of Sir M. Visvesvaraya and Dr. M. S. Swaminathan in the fields of water engineering and agricultural science respectively?",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2019_01",
+      "year": 2019,
+      "questionNumber": 1,
+      "directive": "How",
+      "theme": "Science Tech",
+      "question": "How is science interwoven deeply with our lives? What are the striking changes in agriculture triggered by sciencebased technologies?",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2019_02",
+      "year": 2019,
+      "questionNumber": 2,
+      "directive": "What is",
+      "theme": "Space Technology",
+      "question": "What is India's plan to have its own space station and how will it benefit our space programme?",
+      "syllabusNodeId": "GS3-ST-SPACE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2019_03",
+      "year": 2019,
+      "questionNumber": 3,
+      "directive": "How",
+      "theme": "IPR & Patents",
+      "question": "How is the Government of India protecting traditional knowledge of medicine from patenting by pharmaceutical companies?",
+      "syllabusNodeId": "GS3-ST-IPR"
+    },
+    {
+      "id": "GS3_SCI_TECH_2019_04",
+      "year": 2019,
+      "questionNumber": 4,
+      "directive": "How",
+      "theme": "Biotechnology & Health Tech",
+      "question": "How can biotechnology help to improve the living standards of farmers?",
+      "syllabusNodeId": "GS3-ST-BIOTECH"
+    },
+    {
+      "id": "GS3_SCI_TECH_2018_01",
+      "year": 2018,
+      "questionNumber": 1,
+      "directive": "Discuss",
+      "theme": "Science Tech",
+      "question": "Discuss the work of'BoseEinstein Statistics' done by Prof. Satyendra Nath Bose and show how it revolutionized the field of Physics",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2018_02",
+      "year": 2018,
+      "questionNumber": 2,
+      "directive": "What are",
+      "theme": "Science Tech",
+      "question": "What are the impediments disposing the huge quantities of discarded solid waste which are continuously being generated? How do we remove safely the toxic wastes that have been accumulated in our habitable environment?",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2018_03",
+      "year": 2018,
+      "questionNumber": 3,
+      "directive": "Why is",
+      "theme": "Biotechnology & Health Tech",
+      "question": "Why is there so much activity in the field of biotechnology in our country? How has this activity benefitted the field of biopharma?",
+      "syllabusNodeId": "GS3-ST-BIOTECH"
+    },
+    {
+      "id": "GS3_SCI_TECH_2018_04",
+      "year": 2018,
+      "questionNumber": 4,
+      "directive": "With",
+      "theme": "Nuclear Technology",
+      "question": "With growing energy needs should India keep on expanding its nuclear energy programme? Discuss the facts and fears associated with nuclear energy?",
+      "syllabusNodeId": "GS3-ST-NUCLEAR"
+    },
+    {
+      "id": "GS3_SCI_TECH_2017_01",
+      "year": 2017,
+      "questionNumber": 1,
+      "directive": "Stem",
+      "theme": "Biotechnology & Health Tech",
+      "question": "Stem cell therapy is gaining popularity in India to treat a wide variety of medical conditions including leukaemia, Thalassemia, damaged cornea and several burns. Describe briefly what stem cell therapy is and what advantages it has over other treatments?",
+      "syllabusNodeId": "GS3-ST-BIOTECH"
+    },
+    {
+      "id": "GS3_SCI_TECH_2017_02",
+      "year": 2017,
+      "questionNumber": 2,
+      "directive": "India",
+      "theme": "Space Technology",
+      "question": "India has achieved remarkable successes in unmanned space missions including the Chandrayaan and Mars Orbiter Mission, but has not ventured into manned space mission, both in terms of technology and logistics? Explain critically.",
+      "syllabusNodeId": "GS3-ST-SPACE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2017_03",
+      "year": 2017,
+      "questionNumber": 3,
+      "directive": "Give an account of",
+      "theme": "Nuclear Technology",
+      "question": "Give an account of the growth and development of nuclear science and technology in India. What is the advantage of fast breeder reactor programme in India?",
+      "syllabusNodeId": "GS3-ST-NUCLEAR"
+    },
+    {
+      "id": "GS3_SCI_TECH_2016_01",
+      "year": 2016,
+      "questionNumber": 1,
+      "directive": "Discuss",
+      "theme": "Space Technology",
+      "question": "Discuss India's achievements in the field of Space Science and Technology. How the application of this technology has helped India in its socioeconomic development?",
+      "syllabusNodeId": "GS3-ST-SPACE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2016_02",
+      "year": 2016,
+      "questionNumber": 2,
+      "directive": "Why is",
+      "theme": "Emerging Technologies",
+      "question": "Why is nanotechnology one of the key technologies of the 21st century? Describe the salient features of Indian Government's Mission on Nanoscience and Technology and the scope of its application in the development process of the country.",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+    },
+    {
+      "id": "GS3_SCI_TECH_2016_03",
+      "year": 2016,
+      "questionNumber": 3,
+      "directive": "What",
+      "theme": "Space Technology",
+      "question": "What do you understand by \"Standard Positioning System\" and \"Precision positioning system\" in the GPS era? Discuss the advantage India perceives from its ambitious IRNSS programme employing just seven satellites.",
+      "syllabusNodeId": "GS3-ST-SPACE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2015_01",
+      "year": 2015,
+      "questionNumber": 1,
+      "directive": "What are",
+      "theme": "Emerging Technologies",
+      "question": "What are the areas of prohibitive labour that can be sustainably managed by robots? Discuss the initiatives that can propel the research in premier research institutes for substantive and gainful innovation.",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+    },
+    {
+      "id": "GS3_SCI_TECH_2015_02",
+      "year": 2015,
+      "questionNumber": 2,
+      "directive": "Discuss",
+      "theme": "Digital Systems",
+      "question": "Discuss the advantage and security implication of cloud hosting of servers visavis in house machine based hosting for government business.",
+      "syllabusNodeId": "GS3-ST-IT-COMM"
+    },
+    {
+      "id": "GS3_SCI_TECH_2015_03",
+      "year": 2015,
+      "questionNumber": 3,
+      "directive": "India's",
+      "theme": "IPR & Patents",
+      "question": "India's Traditional Knowledge Digital Library (TKDL) which has a database containing formatted information on more than 2 million medicinal formulations is proving a powerful weapon in country's fight against erroneous patents. Discuss the pro and cons of making the database available publicly available under open source licensing.",
+      "syllabusNodeId": "GS3-ST-IPR"
+    },
+    {
+      "id": "GS3_SCI_TECH_2014_01",
+      "year": 2014,
+      "questionNumber": 1,
+      "directive": "Can",
+      "theme": "Science Tech",
+      "question": "Can overuse and free availability of antibiotics without Doctor's prescription, be contributors to the emergence of drugresistant diseases in India? What are the available mechanisms for monitoring and control? Critically discuss the various issues involved.",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2014_02",
+      "year": 2014,
+      "questionNumber": 2,
+      "directive": "In",
+      "theme": "IPR & Patents",
+      "question": "In a globalized world, Intellectual Property Rights assume significance and are a source of litigation. Broadly distinguish between the termsCopyrights, Patents and Trade Secrets.",
+      "syllabusNodeId": "GS3-ST-IPR"
+    },
+    {
+      "id": "GS3_SCI_TECH_2013_01",
+      "year": 2013,
+      "questionNumber": 1,
+      "directive": "Bring",
+      "theme": "IPR & Patents",
+      "question": "Bring out the circumstances in 2005 which forced amendment to section 3(d) in the Indian Patent Law, 1970. Discuss how it has been utilized by Supreme court in its judgment rejecting Novartis patent application for \"Glivec\". Discuss briefly the pros and cons of the decision.",
+      "syllabusNodeId": "GS3-ST-IPR"
+    },
+    {
+      "id": "GS3_SCI_TECH_2013_02",
+      "year": 2013,
+      "questionNumber": 2,
+      "directive": "What",
+      "theme": "Science Tech",
+      "question": "What do you understand by fixed dose drug combinations (FDCs)? Discuss their merits and demerits.",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2013_03",
+      "year": 2013,
+      "questionNumber": 3,
+      "directive": "What",
+      "theme": "Science Tech",
+      "question": "What do you understand by Umpire decision review in cricket? Discuss its various components. Explain how silicon tape on the edge of a bat may fool the system?",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    },
+    {
+      "id": "GS3_SCI_TECH_2013_04",
+      "year": 2013,
+      "questionNumber": 4,
+      "directive": "What is",
+      "theme": "Digital Systems",
+      "question": "What is digital signature? What does its authentication mean? Giver various salient builtin features of a digital signature.",
+      "syllabusNodeId": "GS3-ST-IT-COMM"
+    },
+    {
+      "id": "GS3_SCI_TECH_2013_05",
+      "year": 2013,
+      "questionNumber": 5,
+      "directive": "How does",
+      "theme": "Emerging Technologies",
+      "question": "How does the 3D printing technology work? List out the advantages and disadvantages of the technology.",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+    },
+    {
+      "id": "GS3_SCI_TECH_2013_06",
+      "year": 2013,
+      "questionNumber": 6,
+      "directive": "What is",
+      "theme": "Emerging Technologies",
+      "question": "What is an FRP composite material? How are they manufactured? Discuss their applications in aviation and automobile industry",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+    },
+    {
+      "id": "GS3_SCI_TECH_2013_07",
+      "year": 2013,
+      "questionNumber": 7,
+      "directive": "What",
+      "theme": "Science Tech",
+      "question": "What do you understand by run of the river hydroelectricity project? How is it different from any other hydroelectricity project?",
+      "syllabusNodeId": "GS3-ST-MAINS-CORE"
+    }
+  ]
+}

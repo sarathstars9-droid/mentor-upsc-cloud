@@ -1,0 +1,602 @@
+{
+  "exam": "UPSC_CSE",
+  "stage": "Mains",
+  "paper": "GS3",
+  "subject": "ECONOMY",
+  "questions": [
+    {
+      "id": "GS3_ECON_2024_01",
+      "year": 2024,
+      "questionNumber": 1,
+      "directive": "Examine",
+      "theme": "Growth & Development",
+      "question": "Examine the pattern and trend of public expenditure on social services in the postreforms period in India. To what extent this has been in consonance with achieving the objective of inclusive growth?",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2024_02",
+      "year": 2024,
+      "questionNumber": 2,
+      "directive": "What are",
+      "theme": "Inflation & Monetary Policy",
+      "question": "What are the causes of persistent high food inflation in India? Comment on the effectiveness of the monetary policy of the RBI to control this type of inflation.",
+      "syllabusNodeId": "GS3-ECO-MONETARY-POLICY"
+    },
+    {
+      "id": "GS3_ECON_2024_03",
+      "year": 2024,
+      "questionNumber": 3,
+      "directive": "Discuss",
+      "theme": "Employment & Labour",
+      "question": "Discuss the merits and demerits of the four'Labour Codes' in the context of labour market reforms in India. What has been the progress so far in this regard?",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB"
+    },
+    {
+      "id": "GS3_ECON_2024_04",
+      "year": 2024,
+      "questionNumber": 4,
+      "directive": "What is",
+      "theme": "Infrastructure & Investment",
+      "question": "What is the need for expanding the regional air connectivity in India? In this context, discuss the government's UDAN Scheme and its achievements.",
+      "syllabusNodeId": "GS3-ECO-SECT-INFRA"
+    },
+    {
+      "id": "GS3_ECON_2023_01",
+      "year": 2023,
+      "questionNumber": 1,
+      "directive": "Faster",
+      "theme": "Manufacturing & Industry",
+      "question": "Faster economic growth requires increased share of the manufacturing sector in GDP, particularly of MSMEs. Comment on the present policies of the Government in this regard.",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB"
+    },
+    {
+      "id": "GS3_ECON_2023_02",
+      "year": 2023,
+      "questionNumber": 2,
+      "directive": "What is",
+      "theme": "Technology & Economy",
+      "question": "What is the status of digitalization in the Indian economy? Examine the problems faced in this regard and suggest improvements.",
+      "syllabusNodeId": "GS3-ECO-INDPOL"
+    },
+    {
+      "id": "GS3_ECON_2023_03",
+      "year": 2023,
+      "questionNumber": 3,
+      "directive": "Most",
+      "theme": "Employment & Labour",
+      "question": "Most of the unemployment in India is structural in nature. Examine the methodology adopted to compute unemployment in the country and suggest improvements.",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB"
+    },
+    {
+      "id": "GS3_ECON_2023_04",
+      "year": 2023,
+      "questionNumber": 4,
+      "directive": "Distinguish",
+      "theme": "Inclusive Economy",
+      "question": "Distinguish between'care economy' and'monetized economy'. How can care economy be brought into monetized economy through women empowerment?",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2023_05",
+      "year": 2023,
+      "questionNumber": 5,
+      "directive": "The",
+      "theme": "Technology & Economy",
+      "question": "The adoption of electric vehicles is rapidly growing worldwide. How do electric vehicles contribute to reducing carbon emissions and what are the key benefits they offer compared to traditional combustion engine vehicles?",
+      "syllabusNodeId": "GS3-ECO-INDPOL"
+    },
+    {
+      "id": "GS3_ECON_2022_01",
+      "year": 2022,
+      "questionNumber": 1,
+      "directive": "Why is",
+      "theme": "Infrastructure & Investment",
+      "question": "Why is Public Private Partnership (PPP) required in infrastructural projects? Examine the role of PPP model in the redevelopment of Railway Stations in India.",
+      "syllabusNodeId": "GS3-ECO-SECT-INFRA"
+    },
+    {
+      "id": "GS3_ECON_2022_02",
+      "year": 2022,
+      "questionNumber": 2,
+      "directive": "What are",
+      "theme": "Food Economy & Welfare",
+      "question": "What are the major challenges of Public Distribution System (PDS) in India? How can it be made effective and transparent?",
+      "syllabusNodeId": "GS3-ECO-PDS-FOODSEC"
+    },
+    {
+      "id": "GS3_ECON_2022_03",
+      "year": 2022,
+      "questionNumber": 3,
+      "directive": "The",
+      "theme": "Economy",
+      "question": "The increase in life expectancy in the country has led to newer health challenges in the community. What are those challenges and what steps need to be taken to meet them?",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2022_04",
+      "year": 2022,
+      "questionNumber": 4,
+      "directive": "Economic",
+      "theme": "Growth & Development",
+      "question": "Economic growth in the recent past has been led by increase in labour productivity.\" Explain this statement. Suggest the growth pattern that will lead to creation of more jobs without compromising labour productivity",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2022_05",
+      "year": 2022,
+      "questionNumber": 5,
+      "directive": "Do",
+      "theme": "Economy",
+      "question": "Do you think India will meet 50 percent of its energy needs from renewable energy by 2030? Justify your answer. How will the shift of subsidies from fossil fuels to renewables help achieve the above objective? Explain.",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2021_01",
+      "year": 2021,
+      "questionNumber": 1,
+      "directive": "Explain",
+      "theme": "Growth & Development",
+      "question": "Explain the difference between computing methodology of India's Gross Domestic Product (GDP) before the year 2015 and after the year 2015.",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2021_02",
+      "year": 2021,
+      "questionNumber": 2,
+      "directive": "Distinguish",
+      "theme": "Public Finance & Budgeting",
+      "question": "Distinguish between Capital Budget and Revenue Budget. Explain the components of both these Budgets.",
+      "syllabusNodeId": "GS3-ECO-BUDGETING"
+    },
+    {
+      "id": "GS3_ECON_2021_03",
+      "year": 2021,
+      "questionNumber": 3,
+      "directive": "Do you agree",
+      "theme": "Economy",
+      "question": "Do you agree that the Indian economy has recently experienced a Vshaped recovery? Give reasons in support of your answer.",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2021_04",
+      "year": 2021,
+      "questionNumber": 4,
+      "directive": "Investment",
+      "theme": "Growth & Development",
+      "question": "Investment in infrastructure is essential for more rapid and inclusive economic growth.\" Discuss in the light of India's experience.",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2021_05",
+      "year": 2021,
+      "questionNumber": 5,
+      "directive": "What are",
+      "theme": "Food Economy & Welfare",
+      "question": "What are the salient features of the National Food Security Act, 2013? How has the Food Security Bill helped in eliminating hunger and malnutrition in India?",
+      "syllabusNodeId": "GS3-ECO-PDS-FOODSEC"
+    },
+    {
+      "id": "GS3_ECON_2020_01",
+      "year": 2020,
+      "questionNumber": 1,
+      "directive": "Explain",
+      "theme": "Growth & Development",
+      "question": "Explain intragenerational and intergenerational issues of equity from the perspective of inclusive growth and sustainable development.",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2020_02",
+      "year": 2020,
+      "questionNumber": 2,
+      "directive": "Define",
+      "theme": "Growth & Development",
+      "question": "Define potential GDP and explain its determinants. What are the factors that have been inhibiting India from realizing its potential GDP?",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2019_01",
+      "year": 2019,
+      "questionNumber": 1,
+      "directive": "Enumerate",
+      "theme": "Taxation & Fiscal Policy",
+      "question": "Enumerate the indirect taxes which have been subsumed in the Goods and Services Tax (GST) in India. Also, comment on the revenue implications of the GST introduced in India since July 2017.",
+      "syllabusNodeId": "GS3-ECO-TAXATION"
+    },
+    {
+      "id": "GS3_ECON_2019_02",
+      "year": 2019,
+      "questionNumber": 2,
+      "directive": "Do you agree",
+      "theme": "Inflation & Monetary Policy",
+      "question": "Do you agree with the view that steady GDP growth and low inflation have left the Indian economy in good shape? Give reasons in support of your arguments.",
+      "syllabusNodeId": "GS3-ECO-MONETARY-POLICY"
+    },
+    {
+      "id": "GS3_ECON_2019_03",
+      "year": 2019,
+      "questionNumber": 3,
+      "directive": "It",
+      "theme": "Growth & Development",
+      "question": "It is argued that the strategy of inclusive growth is intended to meet the objective of inclusiveness and sustainability together. Comment on this statement.",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2019_04",
+      "year": 2019,
+      "questionNumber": 4,
+      "directive": "The",
+      "theme": "Public Finance & Budgeting",
+      "question": "The public expenditure management is a challenge to the Government of India in the context of budget making during the postliberalization period. Clarify it.",
+      "syllabusNodeId": "GS3-ECO-BUDGETING"
+    },
+    {
+      "id": "GS3_ECON_2018_01",
+      "year": 2018,
+      "questionNumber": 1,
+      "directive": "Access",
+      "theme": "Economy",
+      "question": "Access to affordable, reliable, sustainable and modern energy is the sine qua non to achieve Sustainable Development Goals (SDGs).\" Comment on the progress made in India in this regard.",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2018_02",
+      "year": 2018,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Public Finance & Budgeting",
+      "question": "Comment on the important changes introduced in respect of the Long Term Capital Gains Tax (LTCGT) and Dividend Distribution Tax (DDT) in the Union Budget for 20182019.",
+      "syllabusNodeId": "GS3-ECO-BUDGETING"
+    },
+    {
+      "id": "GS3_ECON_2018_03",
+      "year": 2018,
+      "questionNumber": 3,
+      "directive": "Examine",
+      "theme": "Economy",
+      "question": "Examine the role of supermarkets in supply chain management of fruits, vegetables, and food items. How do they eliminate the number of intermediaries?",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2018_04",
+      "year": 2018,
+      "questionNumber": 4,
+      "directive": "How",
+      "theme": "Economy",
+      "question": "How are principles followed by the NITI Aayog different from those followed by erstwhile Planning Commission in India?",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2018_05",
+      "year": 2018,
+      "questionNumber": 5,
+      "directive": "How would",
+      "theme": "External Sector",
+      "question": "How would the recent phenomena of protectionism and currency manipulations in world trade affect macroeconomic stability of India?",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO"
+    },
+    {
+      "id": "GS3_ECON_2017_01",
+      "year": 2017,
+      "questionNumber": 1,
+      "directive": "Among",
+      "theme": "Growth & Development",
+      "question": "Among several factors for India's potential growth, savings rate is the most effective one. Do you agree? What are the other factors available for growth potential?",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2017_02",
+      "year": 2017,
+      "questionNumber": 2,
+      "directive": "Account",
+      "theme": "Manufacturing & Industry",
+      "question": "Account for the failure of the manufacturing sector in achieving the goal of labourintensive exports rather than capitalintensive exports. Suggest measures for more labourintensive rather than capitalintensive exports.",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB"
+    },
+    {
+      "id": "GS3_ECON_2017_03",
+      "year": 2017,
+      "questionNumber": 3,
+      "directive": "Examine",
+      "theme": "Infrastructure & Investment",
+      "question": "Examine the developments of Airports in India through Joint Ventures under PublicPrivate Partnership(PPP) model. What are the challenges faced by the authorities in this regard?",
+      "syllabusNodeId": "GS3-ECO-SECT-INFRA"
+    },
+    {
+      "id": "GS3_ECON_2017_04",
+      "year": 2017,
+      "questionNumber": 4,
+      "directive": "One",
+      "theme": "Public Finance & Budgeting",
+      "question": "One of the intended objectives of Union Budget 201718 is to'transform, energize and clean India'. Analyze the measures proposed in the Budget 201718 to achieve the objective?",
+      "syllabusNodeId": "GS3-ECO-BUDGETING"
+    },
+    {
+      "id": "GS3_ECON_2017_05",
+      "year": 2017,
+      "questionNumber": 5,
+      "directive": "Industrial",
+      "theme": "Manufacturing & Industry",
+      "question": "Industrial growth rate has lagged behind in the overall growth of GrossDomesticProduct(GDP) in the postreform period\" Give reasons. How far the recent changes is Industrial Policy is capable of increasing the industrial growth rate?",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB"
+    },
+    {
+      "id": "GS3_ECON_2017_06",
+      "year": 2017,
+      "questionNumber": 6,
+      "directive": "What are",
+      "theme": "Growth & Development",
+      "question": "What are the salient features of'inclusive growth'? Has India been experiencing such a growth process? Analyze and suggest measures for inclusive growth.",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2016_01",
+      "year": 2016,
+      "questionNumber": 1,
+      "directive": "How",
+      "theme": "Employment & Labour",
+      "question": "How globalization has led to the reduction of employment in the formal sector of the Indian economy? Is increased informalization detrimental to the development of the country?",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB"
+    },
+    {
+      "id": "GS3_ECON_2016_02",
+      "year": 2016,
+      "questionNumber": 2,
+      "directive": "Women",
+      "theme": "Public Finance & Budgeting",
+      "question": "Women empowerment in India needs gender budgeting. What are the requirements and status of gender budgeting in the Indian context?",
+      "syllabusNodeId": "GS3-ECO-BUDGETING"
+    },
+    {
+      "id": "GS3_ECON_2016_03",
+      "year": 2016,
+      "questionNumber": 3,
+      "directive": "Pradhan",
+      "theme": "Economy",
+      "question": "Pradhan Mantri Jan Dhan Yojana (PMJDY) is necessary for bringing unbanked to the institutional finance fold. Do you agree with this for financial inclusion of the poor section of the Indian society? Give arguments to justify your opinion?",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2016_04",
+      "year": 2016,
+      "questionNumber": 4,
+      "directive": "What are",
+      "theme": "Infrastructure & Investment",
+      "question": "What are'Smart Cities'? Examine their relevance for urban development in India. Will it increase ruralurban differences? Give arguments for'Smart Villages' in the light of PURA and RURBAN Mission",
+      "syllabusNodeId": "GS3-ECO-SECT-INFRA"
+    },
+    {
+      "id": "GS3_ECON_2016_05",
+      "year": 2016,
+      "questionNumber": 5,
+      "directive": "Justify",
+      "theme": "FDI & Liberalization",
+      "question": "Justify the need for FDI for the development of the Indian economy. Why there is gap between MOUs signed and actual FDIs? Suggest remedial steps to be taken for increasing actual FDIs in India.",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO"
+    },
+    {
+      "id": "GS3_ECON_2016_06",
+      "year": 2016,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Growth & Development",
+      "question": "Comment on the challenges for inclusive growth which include careless and useless manpower in the Indian context. Suggest measures to be taken for facing these challenges.",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2016_07",
+      "year": 2016,
+      "questionNumber": 7,
+      "directive": "Give an account of",
+      "theme": "Economy",
+      "question": "Give an account of the current status and the targets to be achieved pertaining to renewable energy sources in the country. Discuss in brief the importance of National Programme on Light Emitting Diodes (LEDs).",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2015_01",
+      "year": 2015,
+      "questionNumber": 1,
+      "directive": "The",
+      "theme": "Employment & Labour",
+      "question": "The nature of economic growth in India in recent times is often described as a jobless growth. Do you agree with this view? Give arguments in favour of your answer.",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB"
+    },
+    {
+      "id": "GS3_ECON_2015_02",
+      "year": 2015,
+      "questionNumber": 2,
+      "directive": "In what way",
+      "theme": "Food Economy & Welfare",
+      "question": "In what way could replacement of price subsidy with direct benefit Transfer (DBT) change the scenario of subsidies in India? Discuss.",
+      "syllabusNodeId": "GS3-ECO-PDS-FOODSEC"
+    },
+    {
+      "id": "GS3_ECON_2015_03",
+      "year": 2015,
+      "questionNumber": 3,
+      "directive": "Craze",
+      "theme": "External Sector",
+      "question": "Craze for gold in Indian has led to surge in import of gold in recent years and put pressure on balance of payments and external value of rupee. In view of this, examine the merits of Gold Monetization scheme.",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO"
+    },
+    {
+      "id": "GS3_ECON_2015_04",
+      "year": 2015,
+      "questionNumber": 4,
+      "directive": "Success",
+      "theme": "Manufacturing & Industry",
+      "question": "Success of make in India program depends on the success of Skill India programme and radical labour reforms.\" Discuss with logical arguments.",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB"
+    },
+    {
+      "id": "GS3_ECON_2015_05",
+      "year": 2015,
+      "questionNumber": 5,
+      "directive": "To",
+      "theme": "Economy",
+      "question": "To what factors can be the recent dramatic fall in equipment cost and tariff of solar energy be attributed? What implications does the trend have for thermal power producers and related industry?",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2015_06",
+      "year": 2015,
+      "questionNumber": 6,
+      "directive": "There",
+      "theme": "Manufacturing & Industry",
+      "question": "There is a clear acknowledgement that Special Economic Zones (SEZs) are a tool of industrial development, manufacturing and exports. Recognising this potential, the whole instrumentality of SEZs require augmentation. Discuss the issue plaguing the success of SEZs with respect to taxation, governing laws and administration.",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB"
+    },
+    {
+      "id": "GS3_ECON_2014_01",
+      "year": 2014,
+      "questionNumber": 1,
+      "directive": "While",
+      "theme": "Employment & Labour",
+      "question": "While we flaunt India's demographic dividend, we ignore the dropping rates of employability.  What are we missing while doing so? Where will the jobs that India desperately needs come from? Explain.",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB"
+    },
+    {
+      "id": "GS3_ECON_2014_02",
+      "year": 2014,
+      "questionNumber": 2,
+      "directive": "Capitalism",
+      "theme": "Growth & Development",
+      "question": "Capitalism has guided the world economy to unprecedented prosperity. However, it often encourages shortsightedness and contributes to wide disparities between the rich and the poor. In this light, would it be correct to believe and adopt capitalism for bringing inclusive growth in India? Discuss.",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2014_03",
+      "year": 2014,
+      "questionNumber": 3,
+      "directive": "Explain",
+      "theme": "Infrastructure & Investment",
+      "question": "Explain how Private Public Partnership arrangements, in long gestation infrastructure projects, can transfer unsustainable liabilities to the future. What arrangements need to be put in place to ensure that successive generations' capacities are not compromised?",
+      "syllabusNodeId": "GS3-ECO-SECT-INFRA"
+    },
+    {
+      "id": "GS3_ECON_2014_04",
+      "year": 2014,
+      "questionNumber": 4,
+      "directive": "National",
+      "theme": "Infrastructure & Investment",
+      "question": "National Urban Transport Policy emphasises on'moving people' instead of'moving vehicles'. Discuss critically the success of the various strategies of the Government in this regard.",
+      "syllabusNodeId": "GS3-ECO-SECT-INFRA"
+    },
+    {
+      "id": "GS3_ECON_2014_05",
+      "year": 2014,
+      "questionNumber": 5,
+      "directive": "Foreign",
+      "theme": "FDI & Liberalization",
+      "question": "Foreign Direct Investment (FDI) in the defence sector is now set to be liberalized: What influence this is expected to have on Indian defence and economy in the short and long run?",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO"
+    },
+    {
+      "id": "GS3_ECON_2014_06",
+      "year": 2014,
+      "questionNumber": 6,
+      "directive": "Scientific",
+      "theme": "Economy",
+      "question": "Scientific research in Indian universities is declining, because a career in science is not as attractive as are business professions, engineering or administration, and the universities are becoming consumeroriented. Critically comment.",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2013_01",
+      "year": 2013,
+      "questionNumber": 1,
+      "directive": "With",
+      "theme": "Growth & Development",
+      "question": "With a consideration towards the strategy of inclusive growth, the new companies bill, 2013 has indirectly made CSR a mandatory obligation. Discuss the challenges expected in its implementation in right earnest. Also discuss other provisions in the bill and their implications.",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2013_02",
+      "year": 2013,
+      "questionNumber": 2,
+      "directive": "What are",
+      "theme": "Public Finance & Budgeting",
+      "question": "What are the reasons for introduction of Fiscal responsibility and Budget Management (FRBM) act, 2003? Discuss critically its salient features and their effectiveness.",
+      "syllabusNodeId": "GS3-ECO-BUDGETING"
+    },
+    {
+      "id": "GS3_ECON_2013_03",
+      "year": 2013,
+      "questionNumber": 3,
+      "directive": "What is",
+      "theme": "Public Finance & Budgeting",
+      "question": "What is meaning of the term taxexpenditure? Taking housing sector as an example, discuss how it influences budgetary policies of the government.",
+      "syllabusNodeId": "GS3-ECO-BUDGETING"
+    },
+    {
+      "id": "GS3_ECON_2013_04",
+      "year": 2013,
+      "questionNumber": 4,
+      "directive": "Food",
+      "theme": "Economy",
+      "question": "Food security bill is expected to eliminate hunger and malnutrition in India. Critically discuss various apprehensions in its effective implementation along with the concerns it has generated in WTO?",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2013_05",
+      "year": 2013,
+      "questionNumber": 5,
+      "directive": "India",
+      "theme": "Economy",
+      "question": "India needs to strengthen measures to promote the pink revolution in food industry for better nutrition and health. Critically elucidate the statement.",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2013_06",
+      "year": 2013,
+      "questionNumber": 6,
+      "directive": "Examine",
+      "theme": "FDI & Liberalization",
+      "question": "Examine the impact of liberalization on companies owned by Indian. Are they competing with the MNCs satisfactorily?",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO"
+    },
+    {
+      "id": "GS3_ECON_2013_07",
+      "year": 2013,
+      "questionNumber": 7,
+      "directive": "Discuss",
+      "theme": "FDI & Liberalization",
+      "question": "Discuss the impact of FDI entry into multi-trade retail sector on supply chain management in commodity trade pattern of the economy.",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO"
+    },
+    {
+      "id": "GS3_ECON_2013_08",
+      "year": 2013,
+      "questionNumber": 8,
+      "directive": "Though",
+      "theme": "FDI & Liberalization",
+      "question": "Though India allowed foreign direct investment (FDI) in what is called multi brand retail through joint venture route in September 2012, the FDI even after a year, has not picket up. Discuss the reasons.",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO"
+    },
+    {
+      "id": "GS3_ECON_2013_09",
+      "year": 2013,
+      "questionNumber": 9,
+      "directive": "Discuss",
+      "theme": "Taxation & Fiscal Policy",
+      "question": "Discussion the rationale for introducing Goods and Services Tax in India. Bring out critically the reasons for delay in roll out for its regime.",
+      "syllabusNodeId": "GS3-ECO-TAXATION"
+    },
+    {
+      "id": "GS3_ECON_2013_10",
+      "year": 2013,
+      "questionNumber": 10,
+      "directive": "Write a note on",
+      "theme": "Economy",
+      "question": "Write a note on India's green energy corridor to alleviate the problems of conventional energy.",
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH"
+    },
+    {
+      "id": "GS3_ECON_2013_11",
+      "year": 2013,
+      "questionNumber": 11,
+      "directive": "Adaptation",
+      "theme": "Infrastructure & Investment",
+      "question": "Adaptation of PPP model for infrastructure development of the country has not been free from criticism. Critically discuss the pros and cons of the model.",
+      "syllabusNodeId": "GS3-ECO-SECT-INFRA"
+    }
+  ]
+}

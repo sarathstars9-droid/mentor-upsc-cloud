@@ -1,0 +1,42 @@
+{
+    "testId": "prelims_2020_gs1",
+    "userId": "user_1",
+    "timestamp": "2026-03-23T10:00:00Z",
+    "answers": [
+        {
+            "questionId": "PRE_GS1_ANCH_2024_008",
+            "selected": "b",
+            "correct": "b",
+            "isCorrect": true,
+            "timeTaken": 40
+        },
+        {
+            "questionId": "PRE_GS1_ANCH_2023_011",
+            "selected": "a",
+            "correct": "b",
+            "isCorrect": false,
+            "timeTaken": 18
+        },
+        {
+            "questionId": "PRE_GS1_ANCH_2023_013",
+            "selected": "b",
+            "correct": "b",
+            "isCorrect": true,
+            "timeTaken": 55
+        },
+        {
+            "questionId": "PRE_GS1_ANCH_2024_005",
+            "selected": "c",
+            "correct": "b",
+            "isCorrect": false,
+            "timeTaken": 12
+        },
+        {
+            "questionId": "PRE_GS1_ANCH_2023_009",
+            "selected": "",
+            "correct": "d",
+            "isCorrect": false,
+            "timeTaken": 0
+        }
+    ]
+}

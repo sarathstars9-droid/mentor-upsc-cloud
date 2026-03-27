@@ -1,0 +1,14 @@
+{
+    "testId": "prelims_2020_full",
+    "userId": "user_1",
+    "timestamp": "2026-03-23T10:00:00Z",
+    "answers": [
+        {
+            "questionId": "Q123",
+            "selected": "B",
+            "correct": "C",
+            "isCorrect": false,
+            "timeTaken": 42
+        }
+    ]
+}

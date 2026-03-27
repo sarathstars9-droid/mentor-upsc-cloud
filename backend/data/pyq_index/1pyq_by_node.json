@@ -1,0 +1,24 @@
+{
+  "GS3-ECO-PRE-BOP": {
+    "prelims": [
+      "PRE_GS1_ECO_2013_246",
+      "PRE_GS1_ECO_2013_247"
+    ],
+    "mains": [],
+    "essay": [],
+    "ethics": [],
+    "optional": [],
+    "csat": []
+  },
+  "GS2-POL-CONSTITUTIONAL_BODIES": {
+    "prelims": [
+      "PRE_GS1_POL_2025_001",
+      "PRE_GS1_POL_2025_002"
+    ],
+    "mains": [],
+    "essay": [],
+    "ethics": [],
+    "optional": [],
+    "csat": []
+  }
+}

@@ -6,7 +6,9 @@ import SyllabusRadar from "../components/Plan/SyllabusRadar.jsx";
 import FocusModeModal from "../components/Plan/FocusModeModal.jsx";
 import { theme } from "../theme/theme";
 import StopConfirmModal from "../components/Plan/StopConfirmModal.jsx";
+import PyqSummaryPanel from "../components/PyqSummaryPanel.jsx";
 import BlockReviewModal from "../components/Plan/BlockReviewModal.jsx";
+import { humanizeMappingCode } from "../utils/mappingUtils";
 import {
   daysLeft,
   getCompletionPercent,
@@ -23,6 +25,178 @@ import {
   buildApprovedOcrBlocks,
   buildScheduleBlocksPayload,
 } from "../utils/studyEngine";
+
+function getPyqQuestionText(q) {
+  if (!q) return "";
+
+  if (q.question) return q.question;
+  if (q.prompt) return q.prompt;
+
+  if (q.passageText) {
+    return q.passageText.slice(0, 120) + "...";
+  }
+
+  return "";
+}
+
+function getPyqQuestionLabel(q) {
+  if (!q) return "";
+
+  const year = q.year || "";
+  const qn = q.questionNumber || "";
+
+  return year && qn ? `${year} Q${qn}` : year ? `${year}` : "";
+}
+
+function safePyq(item) {
+  return (
+    item?.linkedPyqs || {
+      syllabusNodeId: "",
+      total: 0,
+      lastAskedYear: null,
+      frequency: 0,
+      prelimsCount: 0,
+      mainsCount: 0,
+      essayCount: 0,
+      ethicsCount: 0,
+      optionalCount: 0,
+      csatCount: 0,
+      questions: [],
+      mappedNodes: [],
+    }
+  );
+}
+
+function safeMappedNodes(item) {
+  const fromLinked = Array.isArray(item?.linkedPyqs?.mappedNodes)
+    ? item.linkedPyqs.mappedNodes
+    : [];
+  const fromItem = Array.isArray(item?.mappedNodes) ? item.mappedNodes : [];
+
+  if (fromLinked.length) return fromLinked;
+  if (fromItem.length) return fromItem;
+
+  return [];
+}
+
+function hasPyqs(item) {
+  return Number(item?.linkedPyqs?.total || 0) > 0;
+}
+
+function getPrimaryPyqNodeId(item) {
+  const direct = normalizeMappingCode(item?.SyllabusTop1Code || item?.linkedPyqs?.syllabusNodeId || "");
+  if (direct) return direct;
+
+  const mapped = safeMappedNodes(item)
+    .map((node) => normalizeMappingCode(node?.syllabusNodeId || node?.code || ""))
+    .filter(Boolean);
+
+  return mapped[0] || "";
+}
+
+function getCandidatePyqNodeIds(item) {
+  const ids = [];
+
+  const pushId = (value) => {
+    const normalized = normalizeMappingCode(value || "");
+    if (normalized && !ids.includes(normalized)) {
+      ids.push(normalized);
+    }
+  };
+
+  const pushAncestors = (value) => {
+    const normalized = normalizeMappingCode(value || "");
+    if (!normalized) return;
+
+    const parts = normalized.split("-").filter(Boolean);
+
+    for (let i = parts.length; i >= 1; i -= 1) {
+      const candidate = parts.slice(0, i).join("-");
+      if (candidate && !ids.includes(candidate)) {
+        ids.push(candidate);
+      }
+    }
+  };
+
+  pushId(item?.SyllabusTop1Code);
+  pushId(item?.linkedPyqs?.syllabusNodeId);
+
+  safeMappedNodes(item).forEach((node) => {
+    pushId(node?.syllabusNodeId);
+    pushId(node?.code);
+  });
+
+  // 🔥 broader fallback chain
+  pushAncestors(item?.SyllabusTop1Code);
+  pushAncestors(item?.linkedPyqs?.syllabusNodeId);
+
+  safeMappedNodes(item).forEach((node) => {
+    pushAncestors(node?.syllabusNodeId);
+    pushAncestors(node?.code);
+  });
+
+  // 🔥 CSAT-specific fallback
+  const subject = String(
+    item?.PlannedSubject || item?.ActualSubject || ""
+  ).toUpperCase();
+
+  const topic = String(
+    item?.PlannedTopic || item?.ActualTopic || ""
+  ).toUpperCase();
+
+  if (subject.includes("CSAT")) {
+    if (
+      topic.includes("NUMBER") ||
+      topic.includes("NUMERACY") ||
+      topic.includes("QUANT") ||
+      topic.includes("MATH") ||
+      topic.includes("RATIO") ||
+      topic.includes("PERCENTAGE")
+    ) {
+      pushId("CSAT-BN");
+    }
+
+    if (
+      topic.includes("COMPREHENSION") ||
+      topic.includes("RC") ||
+      topic.includes("READING")
+    ) {
+      pushId("CSAT-RC");
+    }
+
+    if (
+      topic.includes("REASONING") ||
+      topic.includes("LOGIC") ||
+      topic.includes("LR")
+    ) {
+      pushId("CSAT-LR");
+    }
+
+    // safe broad fallback
+    pushId("CSAT-BN");
+  }
+
+  return ids;
+}
+
+function extractQuestionsFromPyqResponse(data) {
+  if (Array.isArray(data?.questions)) return data.questions;
+  if (Array.isArray(data?.data?.questions)) return data.data.questions;
+  if (Array.isArray(data?.pyq?.questions)) return data.pyq.questions;
+  if (Array.isArray(data?.result?.questions)) return data.result.questions;
+  if (Array.isArray(data)) return data;
+  return [];
+}
+function getYieldLabel(total) {
+  if (total >= 50) return { label: "High Yield", color: "#22c55e" };
+  if (total >= 15) return { label: "Medium Yield", color: "#f59e0b" };
+  if (total > 0) return { label: "Low Yield", color: "#ef4444" };
+  return { label: "No PYQs", color: "#6b7280" };
+}
+
+function renderPyqPanel(block) {
+  return <PyqSummaryPanel pyq={block?.linkedPyqs} />;
+}
 
 /* =========================================================
    UPSC Mentor OS (Production UI)
@@ -284,7 +458,132 @@ function isFinishedStatus(status) {
     status === BLOCK_STATUS.SKIPPED
   );
 }
+function normalizeMappingCode(code = "") {
+  const raw = String(code || "").trim();
+  if (!raw) return "";
 
+  const upper = raw.replace(/\./g, "-").toUpperCase();
+
+  const exactMap = {
+    // GS mappings
+    "GS3.SNT": "GS3-ST",
+    "GS1.HIS.ANC": "GS1-HIS-ANC",
+    "GS1.HIS.MED": "GS1-HIS-MED",
+    "GS1.HIS.MOD": "GS1-HIS-MOD",
+
+    // CSAT mappings
+    "CSAT-CORE": "CSAT-BN",
+    "CSAT.CORE": "CSAT-BN",
+    "CSAT-APTITUDE": "CSAT-BN",
+    "CSAT.NUMERACY": "CSAT-BN",
+    "CSAT-BASIC-NUMERACY": "CSAT-BN",
+
+    // REMOVE GENERIC
+    "MISC-GEN": "GS3-ENV",
+    "GEN": "GS3-ST",
+  };
+
+  if (exactMap[raw]) return exactMap[raw];
+  if (exactMap[upper]) return exactMap[upper];
+
+  // CSAT rules
+  if (upper === "CSAT") return "CSAT-BN";
+  if (upper.startsWith("CSAT-BN")) return "CSAT-BN";
+  if (upper.startsWith("CSAT-RC")) return "CSAT-RC";
+  if (upper.startsWith("CSAT-LR")) return "CSAT-LR";
+
+  // fallback rules
+  if (upper.includes("ENV")) return "GS3-ENV";
+  if (upper.includes("ECO")) return "GS3-ECO";
+  if (upper.includes("POL")) return "GS2-POL-CON";
+  if (upper.includes("HIS")) return "GS1-HIS-MOD";
+
+  return upper;
+}
+
+function MappedNodesChips({ nodes = [] }) {
+  if (!Array.isArray(nodes) || !nodes.length) return null;
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 8,
+        marginTop: 10,
+      }}
+    >
+      {nodes.map((node, idx) => (
+        <span
+          key={`${node?.syllabusNodeId || node?.code || node?.label || "node"}-${idx}`}
+          style={{
+            padding: "6px 10px",
+            borderRadius: 999,
+            background: "rgba(59,130,246,0.12)",
+            border: "1px solid rgba(96,165,250,0.28)",
+            color: "#dbeafe",
+            fontSize: 12,
+            fontWeight: 600,
+          }}
+          title={humanizeMappingCode(node?.path || node?.syllabusNodeId || "")}
+        >
+          {node?.label || node?.microTheme || node?.topic || node?.syllabusNodeId || "Mapped"}
+        </span>
+      ))}
+    </div>
+  );
+}
+function getQuestionStage(q = {}) {
+  const id = String(q?.id || "").trim().toUpperCase();
+  const exam = String(q?.exam || "").trim().toLowerCase();
+  const paper = String(q?.paper || "").trim().toLowerCase();
+  const subject = String(q?.subject || "").trim().toLowerCase();
+
+  // 1) ID HAS HIGHEST PRIORITY
+  if (id.startsWith("PRE_CSAT_") || id.startsWith("CSAT_")) return "csat";
+  if (id.startsWith("PRE_")) return "prelims";
+  if (id.startsWith("ESSAY_")) return "essay";
+  if (id.startsWith("ETH_")) return "ethics";
+  if (id.startsWith("OPT_")) return "optional";
+  if (id.startsWith("MAINS_") || id.startsWith("MAIN_")) return "mains";
+
+  if (/^GS[1-4]_/.test(id)) {
+    if (id.startsWith("GS4_")) return "ethics";
+    return "mains";
+  }
+
+  // 2) EXAM FIELD NEXT
+  if (
+    exam === "prelims" ||
+    exam === "mains" ||
+    exam === "essay" ||
+    exam === "ethics" ||
+    exam === "optional" ||
+    exam === "csat"
+  ) {
+    return exam;
+  }
+
+  // 3) PAPER FIELD LAST
+  if (paper === "prelims") return "prelims";
+  if (paper === "mains") return "mains";
+  if (paper === "essay") return "essay";
+  if (paper === "ethics") return "ethics";
+  if (paper === "optional") return "optional";
+  if (paper === "csat") return "csat";
+
+  if (paper.includes("optional")) return "optional";
+  if (paper === "gs4") return "ethics";
+
+  if (
+    (paper === "gs1" || paper === "gs2" || paper === "gs3") &&
+    subject.includes("csat")
+  ) {
+    return "csat";
+  }
+
+  return "";
+}
 export default function PlanPage() {
   const [prelimsDate] = useState(DEFAULT_PRELIMS);
   const [mainsDate] = useState(DEFAULT_MAINS);
@@ -328,6 +627,9 @@ export default function PlanPage() {
   const [loops, setLoops] = useState(null);
 
   const [todayBlocks, setTodayBlocks] = useState([]);
+  const [currentBlockPyqLive, setCurrentBlockPyqLive] = useState(null);
+  const [currentBlockPyqLoading, setCurrentBlockPyqLoading] = useState(false);
+  const [currentBlockPyqError, setCurrentBlockPyqError] = useState("");
   const [ocrApprovalOpen, setOcrApprovalOpen] = useState(false);
   const [ocrDraftBlocks, setOcrDraftBlocks] = useState([]);
   const [ocrPreviewReminderBlocks, setOcrPreviewReminderBlocks] = useState([]);
@@ -349,9 +651,23 @@ export default function PlanPage() {
   const currentBlock = useMemo(() => {
     if (!todayBlocks.length) return null;
 
-    const visibleBlocks = todayBlocks.filter(
-      (b) => getEffectiveBlockStatus(b) !== "review_pending"
-    );
+    const visibleBlocks = todayBlocks
+      .filter((b) => {
+        const status = getEffectiveBlockStatus(b);
+
+        return (
+          status !== "review_pending" &&
+          status !== BLOCK_STATUS.COMPLETED &&
+          status !== BLOCK_STATUS.PARTIAL &&
+          status !== BLOCK_STATUS.MISSED &&
+          status !== BLOCK_STATUS.SKIPPED
+        );
+      })
+      .sort((a, b) => {
+        const aMin = hhmmToMinutes(a?.PlannedStart) ?? Number.MAX_SAFE_INTEGER;
+        const bMin = hhmmToMinutes(b?.PlannedStart) ?? Number.MAX_SAFE_INTEGER;
+        return aMin - bMin;
+      });
 
     if (!visibleBlocks.length) return null;
 
@@ -370,13 +686,121 @@ export default function PlanPage() {
     );
     if (planned) return planned;
 
-    const upcoming = visibleBlocks.find(
-      (b) => getEffectiveBlockStatus(b) === BLOCK_STATUS.UPCOMING
-    );
-    if (upcoming) return upcoming;
-
     return visibleBlocks[0] || null;
   }, [todayBlocks]);
+
+  const currentBlockPyqNodeId = useMemo(() => {
+    return getPrimaryPyqNodeId(currentBlock);
+  }, [currentBlock]);
+
+  const currentBlockPyq = useMemo(() => {
+    const linked = safePyq(currentBlock);
+
+    if (linked?.total > 0) {
+      return linked;
+    }
+
+    const liveQuestions = Array.isArray(currentBlockPyqLive) ? currentBlockPyqLive : [];
+
+    if (liveQuestions.length) {
+      const prelimsCount = liveQuestions.filter(
+        (q) => getQuestionStage(q) === "prelims"
+      ).length;
+
+      const mainsCount = liveQuestions.filter(
+        (q) => getQuestionStage(q) === "mains"
+      ).length;
+
+      const essayCount = liveQuestions.filter(
+        (q) => getQuestionStage(q) === "essay"
+      ).length;
+
+      const ethicsCount = liveQuestions.filter(
+        (q) => getQuestionStage(q) === "ethics"
+      ).length;
+
+      const optionalCount = liveQuestions.filter(
+        (q) => getQuestionStage(q) === "optional"
+      ).length;
+
+      const csatCount = liveQuestions.filter(
+        (q) => getQuestionStage(q) === "csat"
+      ).length;
+
+      const years = liveQuestions
+        .map((q) => Number(q.year))
+        .filter((y) => !Number.isNaN(y) && y > 0);
+
+      const lastAskedYear = years.length ? Math.max(...years) : null;
+
+      return {
+        syllabusNodeId: currentBlockPyqNodeId || "",
+        total: liveQuestions.length,
+        lastAskedYear,
+        frequency: 0,
+        prelimsCount,
+        mainsCount,
+        essayCount,
+        ethicsCount,
+        optionalCount,
+        csatCount,
+        questions: liveQuestions,
+        mappedNodes: [],
+      };
+    }
+
+    return safePyq();
+  }, [currentBlock, currentBlockPyqLive, currentBlockPyqNodeId]);
+
+  useEffect(() => {
+    const candidateNodeIds = getCandidatePyqNodeIds(currentBlock);
+
+    if (!candidateNodeIds.length) {
+      setCurrentBlockPyqLive(null);
+      setCurrentBlockPyqLoading(false);
+      setCurrentBlockPyqError("");
+      return;
+    }
+
+    let ignore = false;
+    setCurrentBlockPyqLoading(true);
+    setCurrentBlockPyqError("");
+
+    (async () => {
+      try {
+        for (const nodeId of candidateNodeIds) {
+          const res = await fetch(`${BACKEND_URL}/api/pyq/node/${encodeURIComponent(nodeId)}`);
+          const data = await res.json();
+          if (ignore) return;
+
+          const questions = extractQuestionsFromPyqResponse(data);
+          if ((data?.success || Array.isArray(questions)) && questions.length > 0) {
+            setCurrentBlockPyqLive(questions);
+            setCurrentBlockPyqError("");
+            setCurrentBlockPyqLoading(false);
+            return;
+          }
+        }
+
+        if (!ignore) {
+          setCurrentBlockPyqLive([]);
+          setCurrentBlockPyqError("No PYQs found for the mapped node.");
+          setCurrentBlockPyqLoading(false);
+        }
+      } catch (err) {
+        console.warn("Failed to load live PYQ data:", err);
+        if (!ignore) {
+          setCurrentBlockPyqLive([]);
+          setCurrentBlockPyqError("Failed to load live PYQs.");
+          setCurrentBlockPyqLoading(false);
+        }
+      }
+    })();
+
+    return () => {
+      ignore = true;
+    };
+  }, [currentBlock]);
 
   useEffect(() => {
     if (!("Notification" in window)) {
@@ -426,6 +850,38 @@ export default function PlanPage() {
             derivedStatus = BLOCK_STATUS.ACTIVE;
           }
 
+          let mappedNodes = [];
+          const rawMappedNodes = String(b.MappedNodesRaw || "").trim();
+
+          if (rawMappedNodes) {
+            try {
+              const parsed = JSON.parse(rawMappedNodes);
+              if (Array.isArray(parsed)) {
+                mappedNodes = parsed;
+              }
+            } catch (err) {
+              console.warn("Failed parsing MappedNodesRaw for block:", b.BlockId, err);
+            }
+          }
+
+          const normalizedMappedNodes = Array.isArray(mappedNodes)
+            ? mappedNodes
+              .map((node) => {
+                if (!node) return null;
+
+                return {
+                  topic: node.topic || "",
+                  syllabusNodeId: node.syllabusNodeId || node.code || "",
+                  code: normalizeMappingCode(node.code || node.syllabusNodeId || ""),
+                  label: node.label || node.microTheme || node.topic || "",
+                  microTheme: node.microTheme || node.label || node.topic || "",
+                  path: node.path || "",
+                  confidence: Number(node.confidence || 0),
+                };
+              })
+              .filter((node) => node && node.syllabusNodeId)
+            : [];
+
           return {
             BlockId: b.BlockId,
             PlannedSubject: b.Subject || "Unknown",
@@ -457,12 +913,25 @@ export default function PlanPage() {
             ActualSubject: b.ActualSubject || "",
             ActualTopic: b.ActualTopic || "",
 
-            SyllabusTop1Code: b.MappingCode || "",
+            SyllabusTop1Code: normalizeMappingCode(b.MappingCode || ""),
             SyllabusTop1Path: b.MappingPath || "",
+
+            MappedNodesRaw: rawMappedNodes,
+            MappedNodeIds: b.MappedNodeIds || "",
+            MappedNodeLabels: b.MappedNodeLabels || "",
+            mappedNodes: normalizedMappedNodes,
           };
         });
 
-        setTodayBlocks(mapped);
+        // ✅ DEDUPE BY BlockId BEFORE RENDER
+        const dedupedMapped = Array.from(
+          new Map(
+            mapped.map((block) => [block.BlockId || `${block.PlannedStart}_${block.PlannedSubject}_${block.PlannedTopic}`, block])
+          ).values()
+        );
+
+        setTodayBlocks(dedupedMapped);
+
         setReminderState((prev) => {
           const next = {};
 
@@ -520,6 +989,7 @@ export default function PlanPage() {
 
           return next;
         });
+
         if (mapped.length > 0) {
           const totalPlanned = mapped.reduce(
             (sum, block) => sum + Number(block.PlannedMinutes || 0),
@@ -544,9 +1014,11 @@ export default function PlanPage() {
     },
     [date]
   );
+
   useEffect(() => {
     setReminderState({});
   }, [date]);
+
   useEffect(() => {
     if (!date) return;
     loadBlocksForDate(date);
@@ -709,7 +1181,7 @@ export default function PlanPage() {
       return "Upload a plan photo or create today’s blocks to begin execution.";
     }
 
-    const statusValue = getEffectiveBlockStatus(currentBlock)
+    const statusValue = getEffectiveBlockStatus(currentBlock);
 
     if (statusValue === BLOCK_STATUS.ACTIVE) {
       return "This is the block that matters now. Protect it.";
@@ -832,10 +1304,10 @@ export default function PlanPage() {
       await loadBlocksForDate(date);
     }
   }
+
   async function handleResumeBlock(blockId) {
     const nowIso = new Date().toISOString();
 
-    // Optimistic UI update
     setTodayBlocks((prev) =>
       prev.map((b) =>
         b.BlockId === blockId
@@ -920,6 +1392,7 @@ export default function PlanPage() {
       backlogBucket: "",
     });
   }
+
   async function handleSubmitReview() {
     if (!activeReviewBlock) return;
 
@@ -1202,7 +1675,18 @@ export default function PlanPage() {
       setReminderState({});
       autoFillFromParsed(out);
 
-      const draftBlocks = buildTodayBlocksFromParsed(out);
+      const parsedItems = Array.isArray(out?.items) ? out.items : [];
+
+      const draftBlocks = buildTodayBlocksFromParsed(out).map((block, index) => {
+        const src = parsedItems[index] || {};
+        return {
+          ...block,
+          linkedPyqs: src.linkedPyqs || safePyq(),
+          mapped: src.mapped || null,
+          mappedNodes: src.mappedNodes || src?.linkedPyqs?.mappedNodes || [],
+        };
+      });
+
       setOcrDraftBlocks(draftBlocks);
 
       const previewBlocks = Array.isArray(out?.reminderEngine?.previewBlocks)
@@ -1388,45 +1872,168 @@ export default function PlanPage() {
                     {currentBlock?.PlannedStart || "--:--"} → {currentBlock?.PlannedEnd || "--:--"}
                   </span>
 
-                  <span className="spotlight-chip">
-                    {currentBlock?.PlannedMinutes || 0} min
-                  </span>
+                  <span className="spotlight-chip">{currentBlock?.PlannedMinutes || 0} min</span>
 
                   <span
                     className="spotlight-chip spotlight-status"
                     style={{
                       background:
-                        getDisplayStatus(currentBlock) === BLOCK_STATUS.ACTIVE
+                        getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.ACTIVE
                           ? "rgba(59, 130, 246, 0.22)"
-                          : getDisplayStatus(currentBlock) === BLOCK_STATUS.PAUSED
+                          : getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED
                             ? "rgba(245, 158, 11, 0.22)"
-                            : getDisplayStatus(currentBlock) === BLOCK_STATUS.COMPLETED
+                            : getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.COMPLETED
                               ? "rgba(34, 197, 94, 0.22)"
-                              : getDisplayStatus(currentBlock) === BLOCK_STATUS.PARTIAL
+                              : getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PARTIAL
                                 ? "rgba(168, 85, 247, 0.22)"
-                                : getDisplayStatus(currentBlock) === BLOCK_STATUS.MISSED ||
-                                  getDisplayStatus(currentBlock) === BLOCK_STATUS.SKIPPED
+                                : getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.MISSED ||
+                                  getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.SKIPPED
                                   ? "rgba(249, 115, 22, 0.22)"
                                   : "rgba(148, 163, 184, 0.18)",
                       color:
-                        getDisplayStatus(currentBlock) === BLOCK_STATUS.ACTIVE
+                        getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.ACTIVE
                           ? "#93c5fd"
-                          : getDisplayStatus(currentBlock) === BLOCK_STATUS.PAUSED
+                          : getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED
                             ? "#fcd34d"
-                            : getDisplayStatus(currentBlock) === BLOCK_STATUS.COMPLETED
+                            : getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.COMPLETED
                               ? "#86efac"
-                              : getDisplayStatus(currentBlock) === BLOCK_STATUS.PARTIAL
+                              : getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PARTIAL
                                 ? "#d8b4fe"
-                                : getDisplayStatus(currentBlock) === BLOCK_STATUS.MISSED ||
-                                  getDisplayStatus(currentBlock) === BLOCK_STATUS.SKIPPED
+                                : getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.MISSED ||
+                                  getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.SKIPPED
                                   ? "#fdba74"
                                   : "#cbd5e1",
                       border: "1px solid rgba(255,255,255,0.08)",
                     }}
                   >
-                    {getDisplayStatus(currentBlock)}
+                    {String(getDisplayStatus(currentBlock.Status))}
                   </span>
                 </div>
+
+                {currentBlockPyq?.total > 0 && (
+                  <div
+                    style={{
+                      marginTop: 12,
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: 10,
+                      alignItems: "center",
+                    }}
+                  >
+                    <div
+                      style={{
+                        padding: "10px 14px",
+                        borderRadius: 12,
+                        background: "rgba(255,255,255,0.05)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                        color: "#dbeafe",
+                        fontSize: 14,
+                        fontWeight: 600,
+                      }}
+                    >
+                      PYQs: {currentBlockPyq.total}
+                    </div>
+
+                    <div
+                      style={{
+                        padding: "10px 14px",
+                        borderRadius: 12,
+                        background: "rgba(255,255,255,0.05)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                        color: "#cbd5e1",
+                        fontSize: 14,
+                        fontWeight: 600,
+                      }}
+                    >
+                      Prelims: {currentBlockPyq.prelimsCount || 0}
+                    </div>
+
+                    <div
+                      style={{
+                        padding: "10px 14px",
+                        borderRadius: 12,
+                        background: "rgba(255,255,255,0.05)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                        color: "#cbd5e1",
+                        fontSize: 14,
+                        fontWeight: 600,
+                      }}
+                    >
+                      Mains: {currentBlockPyq.mainsCount || 0}
+                    </div>
+
+                    {!!currentBlockPyq.lastAskedYear && (
+                      <div
+                        style={{
+                          padding: "10px 14px",
+                          borderRadius: 12,
+                          background: "rgba(255,255,255,0.05)",
+                          border: "1px solid rgba(255,255,255,0.08)",
+                          color: "#94a3b8",
+                          fontSize: 14,
+                          fontWeight: 600,
+                        }}
+                      >
+                        Last asked: {currentBlockPyq.lastAskedYear}
+                      </div>
+                    )}
+
+                    <button
+                      onClick={() =>
+                        window.open(
+                          `/pyq/topic/${currentBlockPyqNodeId || currentBlockPyq.syllabusNodeId}`,
+                          "_blank"
+                        )
+                      }
+                      style={{
+                        padding: "10px 16px",
+                        borderRadius: 12,
+                        border: "1px solid rgba(96,165,250,0.35)",
+                        background: "rgba(59,130,246,0.15)",
+                        color: "#dbeafe",
+                        fontSize: 14,
+                        fontWeight: 700,
+                        cursor: "pointer",
+                      }}
+                    >
+                      View All PYQs
+                    </button>
+                  </div>
+                )}
+
+                {!currentBlockPyq?.total && currentBlockPyqLoading && (
+                  <div
+                    style={{
+                      marginTop: 12,
+                      padding: "10px 14px",
+                      borderRadius: 12,
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      color: "#cbd5e1",
+                      fontSize: 13,
+                      fontWeight: 600,
+                    }}
+                  >
+                    Loading PYQs...
+                  </div>
+                )}
+
+                {!currentBlockPyq?.total && !currentBlockPyqLoading && currentBlockPyqNodeId && (
+                  <div
+                    style={{
+                      marginTop: 12,
+                      padding: "10px 14px",
+                      borderRadius: 12,
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.07)",
+                      color: "#94a3b8",
+                      fontSize: 13,
+                    }}
+                  >
+                    PYQs not attached yet for <b>{currentBlockPyqNodeId}</b>
+                    {currentBlockPyqError ? ` — ${currentBlockPyqError}` : ""}
+                  </div>
+                )}
 
                 <div className="spotlight-note" style={{ marginTop: 8, fontSize: 14 }}>
                   {spotlightMessage}
@@ -1456,7 +2063,7 @@ export default function PlanPage() {
               </>
             )}
 
-            {currentBlock && getDisplayStatus(currentBlock) === BLOCK_STATUS.PAUSED && (
+            {currentBlock && getDisplayStatus(currentBlock.Status) === BLOCK_STATUS.PAUSED && (
               <>
                 <button disabled={busy} onClick={() => handleResumeBlock(currentBlock.BlockId)}>
                   {busy ? "Processing..." : "Resume"}
@@ -1664,9 +2271,40 @@ export default function PlanPage() {
                       </div>
 
                       <div>
-                        Mapping: <b>{block.SyllabusTop1Code || "—"}</b>
+                        Mapping: <b>{humanizeMappingCode(block.SyllabusTop1Code || "—")}</b>
                       </div>
                     </div>
+
+                    {Array.isArray(block.mappedNodes) && block.mappedNodes.length > 0 && (
+                      <div
+                        style={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          gap: 8,
+                          marginTop: 10,
+                        }}
+                      >
+                        {block.mappedNodes.slice(0, 5).map((node, idx) => (
+                          <span
+                            key={`${node?.syllabusNodeId || node?.code || node?.label || "node"}-${idx}`}
+                            style={{
+                              padding: "6px 10px",
+                              borderRadius: 999,
+                              background: "rgba(59,130,246,0.12)",
+                              border: "1px solid rgba(96,165,250,0.28)",
+                              color: "#dbeafe",
+                              fontSize: 12,
+                              fontWeight: 600,
+                            }}
+                            title={node?.path || node?.syllabusNodeId || ""}
+                          >
+                            {humanizeMappingCode(
+                              node?.label || node?.microTheme || node?.topic || node?.syllabusNodeId || "Mapped"
+                            )}
+                          </span>
+                        ))}
+                      </div>
+                    )}
 
                     {(block.ActualStart ||
                       block.ActualEnd ||
@@ -1701,6 +2339,59 @@ export default function PlanPage() {
                     {block.SyllabusTop1Path && (
                       <div className="block-path">{block.SyllabusTop1Path}</div>
                     )}
+
+                    {hasPyqs(block) ? (
+                      <div
+                        style={{
+                          marginTop: 10,
+                          display: "flex",
+                          flexWrap: "wrap",
+                          gap: 8,
+                          alignItems: "center",
+                        }}
+                      >
+                        <span
+                          style={{
+                            padding: "6px 10px",
+                            borderRadius: 999,
+                            background: "rgba(59,130,246,0.14)",
+                            border: "1px solid rgba(96,165,250,0.26)",
+                            color: "#dbeafe",
+                            fontSize: 12,
+                            fontWeight: 700,
+                          }}
+                        >
+
+                          PYQs {Number(block?.linkedPyqs?.total || 0)}
+                        </span>
+                        {!!block?.linkedPyqs?.lastAskedYear && (
+                          <span
+                            style={{
+                              padding: "6px 10px",
+                              borderRadius: 999,
+                              background: "rgba(255,255,255,0.04)",
+                              border: "1px solid rgba(255,255,255,0.08)",
+                              color: "#cbd5e1",
+                              fontSize: 12,
+                              fontWeight: 600,
+                            }}
+                          >
+                            Last asked {block.linkedPyqs.lastAskedYear}
+                          </span>
+                        )}
+                      </div>
+                    ) : block.SyllabusTop1Code ? (
+                      <div
+                        style={{
+                          marginTop: 8,
+                          fontSize: 12,
+                          opacity: 0.78,
+                          color: "#C8D0E0",
+                        }}
+                      >
+                        PYQ node linked: {humanizeMappingCode(block.linkedNode)}
+                      </div>
+                    ) : null}
 
                     <div className="block-actions">
                       {getDisplayStatus(block.Status) === BLOCK_STATUS.PLANNED && (
@@ -1961,6 +2652,7 @@ export default function PlanPage() {
           setPendingStopBlock(null);
         }}
       />
+
       <FocusModeModal
         open={spotlightOpen}
         block={currentBlock}
@@ -1982,100 +2674,117 @@ export default function PlanPage() {
             <div className="focus-kicker">OCR Review</div>
             <h2 className="focus-title">Approve Parsed Plan</h2>
             <div className="focus-subtitle">
-              Review subject, topic, time, and minutes before saving blocks and syncing calendar.
+              Review subject, topic, time, minutes, mapping, and PYQ intelligence before saving.
             </div>
 
             <div style={{ display: "grid", gap: 14, marginTop: 20 }}>
-              {ocrDraftBlocks.map((block, index) => (
-                <div
-                  key={block.BlockId || `${block.PlannedStart}-${index}`}
-                  className={`block-card ${getDisplayStatus(block.Status) === BLOCK_STATUS.ACTIVE
-                    ? "block-card-active"
-                    : ""
-                    }`}
-                >
-                  <div className="plan-split-grid">
-                    <label className="field-label">
-                      Subject
-                      <input
-                        value={block.PlannedSubject || ""}
-                        onChange={(e) =>
-                          updateOcrDraftBlock(index, { PlannedSubject: e.target.value })
-                        }
-                      />
-                    </label>
+              {ocrDraftBlocks.map((block, index) => {
+                const mappedNodes = safeMappedNodes(block);
 
-                    <label className="field-label">
-                      Topic
-                      <input
-                        value={block.PlannedTopic || ""}
-                        onChange={(e) =>
-                          updateOcrDraftBlock(index, { PlannedTopic: e.target.value })
-                        }
-                      />
-                    </label>
+                return (
+                  <div
+                    key={block.BlockId || `${block.PlannedStart}-${index}`}
+                    className={`block-card ${getDisplayStatus(block.Status) === BLOCK_STATUS.ACTIVE
+                      ? "block-card-active"
+                      : ""
+                      }`}
+                  >
+                    <div className="plan-split-grid">
+                      <label className="field-label">
+                        Subject
+                        <input
+                          value={block.PlannedSubject || ""}
+                          onChange={(e) =>
+                            updateOcrDraftBlock(index, { PlannedSubject: e.target.value })
+                          }
+                        />
+                      </label>
 
-                    <label className="field-label">
-                      Start
-                      <input
-                        value={block.PlannedStart || ""}
-                        onChange={(e) =>
-                          updateOcrDraftBlock(index, { PlannedStart: e.target.value })
-                        }
-                      />
-                    </label>
+                      <label className="field-label">
+                        Topic
+                        <input
+                          value={block.PlannedTopic || ""}
+                          onChange={(e) =>
+                            updateOcrDraftBlock(index, { PlannedTopic: e.target.value })
+                          }
+                        />
+                      </label>
 
-                    <label className="field-label">
-                      End
-                      <input
-                        value={block.PlannedEnd || ""}
-                        onChange={(e) =>
-                          updateOcrDraftBlock(index, { PlannedEnd: e.target.value })
-                        }
-                      />
-                    </label>
+                      <label className="field-label">
+                        Start
+                        <input
+                          value={block.PlannedStart || ""}
+                          onChange={(e) =>
+                            updateOcrDraftBlock(index, { PlannedStart: e.target.value })
+                          }
+                        />
+                      </label>
 
-                    <label className="field-label">
-                      Minutes
-                      <input
-                        type="number"
-                        value={block.PlannedMinutes || 0}
-                        onChange={(e) =>
-                          updateOcrDraftBlock(index, {
-                            PlannedMinutes: Number(e.target.value || 0),
-                          })
-                        }
-                      />
-                    </label>
-                  </div>
+                      <label className="field-label">
+                        End
+                        <input
+                          value={block.PlannedEnd || ""}
+                          onChange={(e) =>
+                            updateOcrDraftBlock(index, { PlannedEnd: e.target.value })
+                          }
+                        />
+                      </label>
 
-                  {(block.SyllabusTop1Code || block.SyllabusTop1Path) && (
-                    <div
-                      style={{
-                        marginTop: 10,
-                        padding: 10,
-                        borderRadius: 12,
-                        background: "rgba(123,136,138,0.10)",
-                        border: "1px solid rgba(123,136,138,0.16)",
-                        fontSize: 13,
-                      }}
-                    >
-                      <div>
-                        <b>Mapping:</b> {block.SyllabusTop1Code || "—"}
-                      </div>
-                      {block.SyllabusTop1Path && (
-                        <div style={{ marginTop: 4, opacity: 0.9 }}>{block.SyllabusTop1Path}</div>
-                      )}
+                      <label className="field-label">
+                        Minutes
+                        <input
+                          type="number"
+                          value={block.PlannedMinutes || 0}
+                          onChange={(e) =>
+                            updateOcrDraftBlock(index, {
+                              PlannedMinutes: Number(e.target.value || 0),
+                            })
+                          }
+                        />
+                      </label>
                     </div>
-                  )}
 
-                  <div style={{ marginTop: 12, display: "flex", justifyContent: "flex-end" }}>
-                    <button className="focus-close-btn" onClick={() => removeOcrDraftBlock(index)}>
-                      Remove Block
-                    </button>
+                    {(block.SyllabusTop1Code || block.SyllabusTop1Path) && (
+                      <div
+                        style={{
+                          marginTop: 10,
+                          padding: 10,
+                          borderRadius: 12,
+                          background: "rgba(123,136,138,0.10)",
+                          border: "1px solid rgba(123,136,138,0.16)",
+                          fontSize: 13,
+                        }}
+                      >
+                        <div>
+                          <b>Primary Mapping:</b> {block.SyllabusTop1Code || "—"}
+                        </div>
+                        {block.SyllabusTop1Path && (
+                          <div style={{ marginTop: 4, opacity: 0.9 }}>{block.SyllabusTop1Path}</div>
+                        )}
+
+                        {mappedNodes.length > 0 && (
+                          <div style={{ marginTop: 10 }}>
+                            <div style={{ fontSize: 12, opacity: 0.8, marginBottom: 4 }}>
+                              Multi-mapped nodes
+                            </div>
+                            <MappedNodesChips nodes={mappedNodes} />
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {renderPyqPanel(block)}
+
+
+
+                    <div style={{ marginTop: 12, display: "flex", justifyContent: "flex-end" }}>
+                      <button className="focus-close-btn" onClick={() => removeOcrDraftBlock(index)}>
+                        Remove Block
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div className="focus-actions" style={{ marginTop: 24 }}>
@@ -2100,8 +2809,7 @@ export default function PlanPage() {
             </div>
           </div>
         </div>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
 }

@@ -1,0 +1,2877 @@
+{
+  "version": "2026-canonical-v2",
+  "summary": {
+    "generatedAt": "2026-03-24T20:09:29.496Z",
+    "sourcesLoaded": [
+      {
+        "sourceFile": "syllabusGraph.js",
+        "sourceKey": "SYLLABUS_GRAPH_2026",
+        "sourceType": "graph"
+      },
+      {
+        "sourceFile": "syllabusOptional.js",
+        "sourceKey": "OPTIONAL_2026",
+        "sourceType": "optional"
+      },
+      {
+        "sourceFile": "syllabusCSAT.js",
+        "sourceKey": "CSAT_2026",
+        "sourceType": "csat"
+      },
+      {
+        "sourceFile": "syllabusGS4.js",
+        "sourceKey": "GS4_2026",
+        "sourceType": "gs4"
+      },
+      {
+        "sourceFile": "syllabusEssay.js",
+        "sourceKey": "ESSAY_2026",
+        "sourceType": "essay"
+      }
+    ],
+    "totals": {
+      "nodes": 1726,
+      "sourceFiles": 5,
+      "duplicateFingerprints": 0,
+      "weakNodes": 459,
+      "missingTags": 0,
+      "missingKeywords": 0,
+      "missingMicroThemes": 5,
+      "missingSubtopics": 0,
+      "malformedNodes": 0
+    },
+    "byRootPaper": {
+      "CSAT": 127,
+      "ESSAY": 45,
+      "GS1": 521,
+      "GS2": 247,
+      "GS3": 582,
+      "GS4": 51,
+      "OPTIONAL-PAPER1": 100,
+      "OPTIONAL-PAPER2": 53
+    },
+    "bySubject": {
+      "CSAT": 127,
+      "Essay": 45,
+      "Culture": 85,
+      "Geography": 137,
+      "History": 200,
+      "Society": 99,
+      "Governance": 77,
+      "InternationalRelations": 49,
+      "Polity": 121,
+      "DisasterManagement": 26,
+      "Economy": 284,
+      "Environment": 96,
+      "InternalSecurity": 70,
+      "ScienceTech": 106,
+      "Ethics": 51,
+      "Geography Optional": 153
+    },
+    "bySourceFile": {
+      "syllabusCSAT.js": 127,
+      "syllabusEssay.js": 45,
+      "syllabusGraph.js": 1350,
+      "syllabusGS4.js": 51,
+      "syllabusOptional.js": 153
+    }
+  },
+  "duplicateFingerprints": [],
+  "weakNodes": [
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-PREHIST-MT06",
+      "subject": "History",
+      "topic": "Pre Historic Times",
+      "microTheme": "Chalcolithic Age"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-VEDIC-RIG-MT04",
+      "subject": "History",
+      "topic": "Rig Vedic Period",
+      "microTheme": "Social organisation"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-VEDIC-RIG-MT05",
+      "subject": "History",
+      "topic": "Rig Vedic Period",
+      "microTheme": "Economy"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-VEDIC-LATER-MT02",
+      "subject": "History",
+      "topic": "Later Vedic Period",
+      "microTheme": "Political system"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-VEDIC-LATER-MT04",
+      "subject": "History",
+      "topic": "Later Vedic Period",
+      "microTheme": "Economy"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-JAIN-MT02",
+      "subject": "History",
+      "topic": "Jainism",
+      "microTheme": "Teachings"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-JAIN-MT04",
+      "subject": "History",
+      "topic": "Jainism",
+      "microTheme": "Literature"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-BUD-MT02",
+      "subject": "History",
+      "topic": "Buddhism",
+      "microTheme": "Teachings"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-BUD-MT04",
+      "subject": "History",
+      "topic": "Buddhism",
+      "microTheme": "Literature"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-MAHAJAN-MT02",
+      "subject": "History",
+      "topic": "Mahajanapadas & Magadha Rise",
+      "microTheme": "16 Mahajanapadas"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-MAHAJAN-MT03",
+      "subject": "History",
+      "topic": "Mahajanapadas & Magadha Rise",
+      "microTheme": "Magadha"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-MAHAJAN-MT05",
+      "subject": "History",
+      "topic": "Mahajanapadas & Magadha Rise",
+      "microTheme": "Persian invasions"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-MAHAJAN-MT06",
+      "subject": "History",
+      "topic": "Mahajanapadas & Magadha Rise",
+      "microTheme": "Alexander’s invasion"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA-MT05",
+      "subject": "History",
+      "topic": "Mauryan Empire",
+      "microTheme": "Dhamma policy"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA-MT07",
+      "subject": "History",
+      "topic": "Mauryan Empire",
+      "microTheme": "Decline"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-POSTMAURYA-MT02",
+      "subject": "History",
+      "topic": "Post-Mauryan India",
+      "microTheme": "Satavahanas"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-POSTMAURYA-MT04",
+      "subject": "History",
+      "topic": "Post-Mauryan India",
+      "microTheme": "Sakas"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-POSTMAURYA-MT05",
+      "subject": "History",
+      "topic": "Post-Mauryan India",
+      "microTheme": "Kushanas"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-POSTMAURYA-MT06",
+      "subject": "History",
+      "topic": "Post-Mauryan India",
+      "microTheme": "Kanishka"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA-MT02",
+      "subject": "History",
+      "topic": "Gupta Period",
+      "microTheme": "Administration"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA-MT07",
+      "subject": "History",
+      "topic": "Gupta Period",
+      "microTheme": "Later Guptas"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-HARSHA-MT01",
+      "subject": "History",
+      "topic": "Harshavardhana",
+      "microTheme": "Military conquests"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-HARSHA-MT03",
+      "subject": "History",
+      "topic": "Harshavardhana",
+      "microTheme": "Administration"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-HARSHA-MT05",
+      "subject": "History",
+      "topic": "Harshavardhana",
+      "microTheme": "Economy"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-ANC-SANGAM-MT01",
+      "subject": "History",
+      "topic": "Sangam Period (South Indian Dynasties)",
+      "microTheme": "Sangam literature"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA-MT03",
+      "subject": "History",
+      "topic": "Vijayanagara Empire",
+      "microTheme": "Krishnadevaraya"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA-MT05",
+      "subject": "History",
+      "topic": "Vijayanagara Empire",
+      "microTheme": "Irrigation works"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-CHOLA-MT01",
+      "subject": "History",
+      "topic": "Cholas and South Indian Medieval Kingdoms",
+      "microTheme": "Imperial Cholas"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-CHOLA-MT02",
+      "subject": "History",
+      "topic": "Cholas and South Indian Medieval Kingdoms",
+      "microTheme": "Rajaraja I"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-CHOLA-MT03",
+      "subject": "History",
+      "topic": "Cholas and South Indian Medieval Kingdoms",
+      "microTheme": "Rajendra I"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-CHOLA-MT04",
+      "subject": "History",
+      "topic": "Cholas and South Indian Medieval Kingdoms",
+      "microTheme": "Chola administration"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-CHOLA-MT07",
+      "subject": "History",
+      "topic": "Cholas and South Indian Medieval Kingdoms",
+      "microTheme": "Naval expeditions"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-CHOLA-MT08",
+      "subject": "History",
+      "topic": "Cholas and South Indian Medieval Kingdoms",
+      "microTheme": "Temple economy"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-BHAKTI-MT03",
+      "subject": "History",
+      "topic": "Bhakti Movement",
+      "microTheme": "Ramanuja"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-BHAKTI-MT04",
+      "subject": "History",
+      "topic": "Bhakti Movement",
+      "microTheme": "Basavanna"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-BHAKTI-MT05",
+      "subject": "History",
+      "topic": "Bhakti Movement",
+      "microTheme": "Kabir"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-BHAKTI-MT06",
+      "subject": "History",
+      "topic": "Bhakti Movement",
+      "microTheme": "Guru Nanak"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-BHAKTI-MT07",
+      "subject": "History",
+      "topic": "Bhakti Movement",
+      "microTheme": "Tulsidas"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-BHAKTI-MT08",
+      "subject": "History",
+      "topic": "Bhakti Movement",
+      "microTheme": "Mirabai"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-SUFI-MT03",
+      "subject": "History",
+      "topic": "Sufi Movement",
+      "microTheme": "Chishti order"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-SUFI-MT04",
+      "subject": "History",
+      "topic": "Sufi Movement",
+      "microTheme": "Suhrawardi order"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-SUFI-MT05",
+      "subject": "History",
+      "topic": "Sufi Movement",
+      "microTheme": "Qadiri order"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-SUFI-MT06",
+      "subject": "History",
+      "topic": "Sufi Movement",
+      "microTheme": "Naqshbandi order"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT02",
+      "subject": "History",
+      "topic": "Regional and Provincial Kingdoms of Medieval India",
+      "microTheme": "Rajputs"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT03",
+      "subject": "History",
+      "topic": "Regional and Provincial Kingdoms of Medieval India",
+      "microTheme": "Chandelas"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT04",
+      "subject": "History",
+      "topic": "Regional and Provincial Kingdoms of Medieval India",
+      "microTheme": "Paramaras"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT05",
+      "subject": "History",
+      "topic": "Regional and Provincial Kingdoms of Medieval India",
+      "microTheme": "Gurjara-Pratiharas"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT06",
+      "subject": "History",
+      "topic": "Regional and Provincial Kingdoms of Medieval India",
+      "microTheme": "Kakatiyas"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT07",
+      "subject": "History",
+      "topic": "Regional and Provincial Kingdoms of Medieval India",
+      "microTheme": "Hoysalas"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "subject": "History",
+      "topic": "Regional and Provincial Kingdoms of Medieval India",
+      "microTheme": "Bahmani kingdom"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-EMPIRE-MT02",
+      "subject": "History",
+      "topic": "Early Medieval Dynasties (750–1200) + Feudalism",
+      "microTheme": "Tripartite conflict"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-EMPIRE-MT04",
+      "subject": "History",
+      "topic": "Early Medieval Dynasties (750–1200) + Feudalism",
+      "microTheme": "Indian feudalism"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-CHOLA-MT02-D02",
+      "subject": "History",
+      "topic": "Cholas & South Indian Kingdoms",
+      "microTheme": "Administration"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-CHOLA-MT05-D02",
+      "subject": "History",
+      "topic": "Cholas & South Indian Kingdoms",
+      "microTheme": "Chera/Yadava"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MED-DELHI-MT06",
+      "subject": "History",
+      "topic": "Delhi Sultanate (1206–1526)",
+      "microTheme": "Decline factors"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MOD-EURO-MT03",
+      "subject": "History",
+      "topic": "Advent of Europeans + Anglo-French rivalry",
+      "microTheme": "Carnatic wars"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "subject": "History",
+      "topic": "British Expansion (Bengal → Pan-India)",
+      "microTheme": "Bengal consolidation"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION-MT03",
+      "subject": "History",
+      "topic": "British Expansion (Bengal → Pan-India)",
+      "microTheme": "Subsidiary alliance"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MOD-1857-MT03",
+      "subject": "History",
+      "topic": "Revolt of 1857",
+      "microTheme": "Failure + nature"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-MOD-1857-MT04",
+      "subject": "History",
+      "topic": "Revolt of 1857",
+      "microTheme": "Impact + consequences"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-POSTIND-INTEGRATION-MT01",
+      "subject": "History",
+      "topic": "Integration of Princely States + Nation-building challenges",
+      "microTheme": "Partition rehabilitation"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-WORLD-WARS-MT03",
+      "subject": "History",
+      "topic": "World Wars + Cold War + Decolonization",
+      "microTheme": "WWII aftermath"
+    },
+    {
+      "syllabusNodeId": "GS1-HIS-WORLD-WARS-MT04",
+      "subject": "History",
+      "topic": "World Wars + Cold War + Decolonization",
+      "microTheme": "Decolonization"
+    },
+    {
+      "syllabusNodeId": "1C-VA-ARCH-MT01",
+      "subject": "Culture",
+      "topic": "Architecture in India",
+      "microTheme": "Harappan Architecture"
+    },
+    {
+      "syllabusNodeId": "1C-VA-ARCH-MT02",
+      "subject": "Culture",
+      "topic": "Architecture in India",
+      "microTheme": "Mauryan Architecture"
+    },
+    {
+      "syllabusNodeId": "1C-VA-ARCH-MT08",
+      "subject": "Culture",
+      "topic": "Architecture in India",
+      "microTheme": "Hoysala style (key features)"
+    },
+    {
+      "syllabusNodeId": "1C-VA-ARCH-MT09",
+      "subject": "Culture",
+      "topic": "Architecture in India",
+      "microTheme": "Pallava temples and features"
+    },
+    {
+      "syllabusNodeId": "1C-VA-ARCH-MT10",
+      "subject": "Culture",
+      "topic": "Architecture in India",
+      "microTheme": "Chola temples and features"
+    },
+    {
+      "syllabusNodeId": "1C-VA-ARCH-MT11",
+      "subject": "Culture",
+      "topic": "Architecture in India",
+      "microTheme": "Vijayanagara architecture"
+    },
+    {
+      "syllabusNodeId": "1C-VA-ARCH-MT14",
+      "subject": "Culture",
+      "topic": "Architecture in India",
+      "microTheme": "Sikh/Avadh/Rajput architecture (features)"
+    },
+    {
+      "syllabusNodeId": "1C-VA-SCULP-MT04",
+      "subject": "Culture",
+      "topic": "Sculpture Traditions",
+      "microTheme": "Gupta sculpture (features, ideals)"
+    },
+    {
+      "syllabusNodeId": "1C-VA-SCULP-MT06",
+      "subject": "Culture",
+      "topic": "Sculpture Traditions",
+      "microTheme": "Jain and Buddhist sculpture (broad features)"
+    },
+    {
+      "syllabusNodeId": "1C-VA-POTTERY-MT05",
+      "subject": "Culture",
+      "topic": "Pottery & Material Culture",
+      "microTheme": "Glazed and unglazed pottery (broad idea)"
+    },
+    {
+      "syllabusNodeId": "1C-VA-NUMIS-MT01",
+      "subject": "Culture",
+      "topic": "Numismatics (Coins)",
+      "microTheme": "Coinage basics (terms, types, utility in history)"
+    },
+    {
+      "syllabusNodeId": "1C-VA-NUMIS-MT02",
+      "subject": "Culture",
+      "topic": "Numismatics (Coins)",
+      "microTheme": "Major coin traditions (broad overview)"
+    },
+    {
+      "syllabusNodeId": "1C-PA-MUSIC-MT01",
+      "subject": "Culture",
+      "topic": "Music",
+      "microTheme": "Hindustani vs Carnatic: features, similarities/differences"
+    },
+    {
+      "syllabusNodeId": "1C-PA-MUSIC-MT04",
+      "subject": "Culture",
+      "topic": "Music",
+      "microTheme": "Folk music traditions (broad)"
+    },
+    {
+      "syllabusNodeId": "1C-PA-DANCE-MT01",
+      "subject": "Culture",
+      "topic": "Dance",
+      "microTheme": "Evolution of dance (broad references: Nataraja, traditions)"
+    },
+    {
+      "syllabusNodeId": "1C-PA-DANCE-MT02",
+      "subject": "Culture",
+      "topic": "Dance",
+      "microTheme": "Ashta Nayika; Rasa and Bhava (basics)"
+    },
+    {
+      "syllabusNodeId": "1C-PA-DANCE-MT03",
+      "subject": "Culture",
+      "topic": "Dance",
+      "microTheme": "Classical dances: features + state association"
+    },
+    {
+      "syllabusNodeId": "1C-PA-DANCE-MT04",
+      "subject": "Culture",
+      "topic": "Dance",
+      "microTheme": "Folk dances (broad classification)"
+    },
+    {
+      "syllabusNodeId": "1C-PA-THEATRE-MT01",
+      "subject": "Culture",
+      "topic": "Theatre, Drama & Cinema",
+      "microTheme": "Natyashastra basics (conceptual)"
+    },
+    {
+      "syllabusNodeId": "1C-PA-THEATRE-MT02",
+      "subject": "Culture",
+      "topic": "Theatre, Drama & Cinema",
+      "microTheme": "Classical Sanskrit theatre (broad)"
+    },
+    {
+      "syllabusNodeId": "1C-PA-THEATRE-MT04",
+      "subject": "Culture",
+      "topic": "Theatre, Drama & Cinema",
+      "microTheme": "Modern theatre renaissance (broad)"
+    },
+    {
+      "syllabusNodeId": "1C-PA-THEATRE-MT05",
+      "subject": "Culture",
+      "topic": "Theatre, Drama & Cinema",
+      "microTheme": "Indian cinema: basic evolution + categories (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-PA-PUPPET-MT01",
+      "subject": "Culture",
+      "topic": "Puppetry",
+      "microTheme": "String puppets"
+    },
+    {
+      "syllabusNodeId": "1C-PA-PUPPET-MT02",
+      "subject": "Culture",
+      "topic": "Puppetry",
+      "microTheme": "Shadow puppets"
+    },
+    {
+      "syllabusNodeId": "1C-PA-PUPPET-MT03",
+      "subject": "Culture",
+      "topic": "Puppetry",
+      "microTheme": "Rod puppets"
+    },
+    {
+      "syllabusNodeId": "1C-PA-PUPPET-MT04",
+      "subject": "Culture",
+      "topic": "Puppetry",
+      "microTheme": "Glove puppets"
+    },
+    {
+      "syllabusNodeId": "1C-PA-PUPPET-MT05",
+      "subject": "Culture",
+      "topic": "Puppetry",
+      "microTheme": "Tribal/modern puppetry (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-PA-SPORTS-MT01",
+      "subject": "Culture",
+      "topic": "Traditional Sports & Martial Arts",
+      "microTheme": "Traditional martial arts (examples + broad forms)"
+    },
+    {
+      "syllabusNodeId": "1C-PA-SPORTS-MT02",
+      "subject": "Culture",
+      "topic": "Traditional Sports & Martial Arts",
+      "microTheme": "Animal sports (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-RLL-RELIGION-MT01",
+      "subject": "Culture",
+      "topic": "Religions & Philosophies in India",
+      "microTheme": "Pre-Vedic traditions (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-RLL-RELIGION-MT02",
+      "subject": "Culture",
+      "topic": "Religions & Philosophies in India",
+      "microTheme": "Hinduism (broad schools/ideas)"
+    },
+    {
+      "syllabusNodeId": "1C-RLL-RELIGION-MT07",
+      "subject": "Culture",
+      "topic": "Religions & Philosophies in India",
+      "microTheme": "Bhakti movement (features, saints as overview)"
+    },
+    {
+      "syllabusNodeId": "1C-RLL-RELIGION-MT08",
+      "subject": "Culture",
+      "topic": "Religions & Philosophies in India",
+      "microTheme": "Vedanta philosophy (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-RLL-LANG-MT01",
+      "subject": "Culture",
+      "topic": "Languages & Literature",
+      "microTheme": "Classical languages in India (concept + examples)"
+    },
+    {
+      "syllabusNodeId": "1C-RLL-LANG-MT02",
+      "subject": "Culture",
+      "topic": "Languages & Literature",
+      "microTheme": "Vedic literature (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-RLL-LANG-MT03",
+      "subject": "Culture",
+      "topic": "Languages & Literature",
+      "microTheme": "Sanskrit literature (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-RLL-LANG-MT04",
+      "subject": "Culture",
+      "topic": "Languages & Literature",
+      "microTheme": "Pali and Prakrit literature (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-RLL-LANG-MT05",
+      "subject": "Culture",
+      "topic": "Languages & Literature",
+      "microTheme": "Tamil and Sangam literature (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-RLL-LANG-MT06",
+      "subject": "Culture",
+      "topic": "Languages & Literature",
+      "microTheme": "Medieval literature trends (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-RLL-LANG-MT07",
+      "subject": "Culture",
+      "topic": "Languages & Literature",
+      "microTheme": "Modern Indian literature (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-RLL-LANG-MT08",
+      "subject": "Culture",
+      "topic": "Languages & Literature",
+      "microTheme": "Persian/Urdu contributions (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-MISC-UNESCO-MT02",
+      "subject": "Culture",
+      "topic": "UNESCO Heritage & Cultural Governance",
+      "microTheme": "UNESCO Intangible Cultural Heritage: key Indian inscriptions (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-MISC-UNESCO-MT03",
+      "subject": "Culture",
+      "topic": "UNESCO Heritage & Cultural Governance",
+      "microTheme": "UNESCO Creative Cities Network; Global Geoparks (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "subject": "Culture",
+      "topic": "Cultural Institutions & Legal Protection",
+      "microTheme": "Government cultural institutions (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-MISC-INST-MT02",
+      "subject": "Culture",
+      "topic": "Cultural Institutions & Legal Protection",
+      "microTheme": "Legal provisions for protection/promotion of heritage (overview)"
+    },
+    {
+      "syllabusNodeId": "1C-MISC-SCHEMES-MT01",
+      "subject": "Culture",
+      "topic": "Culture Schemes (to be linked dynamically)",
+      "microTheme": "HRIDAY"
+    },
+    {
+      "syllabusNodeId": "1C-MISC-SCHEMES-MT02",
+      "subject": "Culture",
+      "topic": "Culture Schemes (to be linked dynamically)",
+      "microTheme": "Swadesh Darshan"
+    },
+    {
+      "syllabusNodeId": "1C-MISC-SCHEMES-MT03",
+      "subject": "Culture",
+      "topic": "Culture Schemes (to be linked dynamically)",
+      "microTheme": "PRASAD"
+    },
+    {
+      "syllabusNodeId": "1C-MISC-SCHEMES-MT04",
+      "subject": "Culture",
+      "topic": "Culture Schemes (to be linked dynamically)",
+      "microTheme": "Adarsh Smarak"
+    },
+    {
+      "syllabusNodeId": "1C-MISC-SCHEMES-MT05",
+      "subject": "Culture",
+      "topic": "Culture Schemes (to be linked dynamically)",
+      "microTheme": "Project Mausam"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE-MT05",
+      "subject": "Geography",
+      "topic": "Universe & Solar System Basics",
+      "microTheme": "Dwarf planets"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-GEN-EARTH-EVOLUTION-MT05",
+      "subject": "Geography",
+      "topic": "Earth Evolution & Geological Time Scale",
+      "microTheme": "Origin of life (broad overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-GEN-MAGNETIC-MT01",
+      "subject": "Geography",
+      "topic": "Earth’s Magnetic Field",
+      "microTheme": "Magnetic field basics; declination/inclination (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-GM-EQ-VOL-MT02",
+      "subject": "Geography",
+      "topic": "Earthquakes & Volcanism",
+      "microTheme": "Types of earthquakes; effects; distribution"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-GM-EQ-VOL-MT03",
+      "subject": "Geography",
+      "topic": "Earthquakes & Volcanism",
+      "microTheme": "Volcano types: shield, composite, caldera, flood basalt, mid-ocean ridge"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-GM-PLATE-MT04",
+      "subject": "Geography",
+      "topic": "Continental Drift → Sea Floor Spreading → Plate Tectonics",
+      "microTheme": "Indian plate basics"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-GM-WEATHERING-SOIL-MT02",
+      "subject": "Geography",
+      "topic": "Weathering, Mass Movements & Soil Formation (Basics)",
+      "microTheme": "Mass movement: heave/flow/slide (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-GM-WEATHERING-SOIL-MT03",
+      "subject": "Geography",
+      "topic": "Weathering, Mass Movements & Soil Formation (Basics)",
+      "microTheme": "Soil formation basics; leaching/enrichment"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS-MT01",
+      "subject": "Geography",
+      "topic": "Waves, Tides & Ocean Currents",
+      "microTheme": "Waves characteristics"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-CLIM-ATM-MT01",
+      "subject": "Geography",
+      "topic": "Atmosphere: Composition & Vertical Structure",
+      "microTheme": "Troposphere to exosphere; inversion of temperature (concept)"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-CLIM-INSOLATION-MT01",
+      "subject": "Geography",
+      "topic": "Insolation, Heat Budget & Temperature Distribution",
+      "microTheme": "Aphelion/perihelion"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS-MT03",
+      "subject": "Geography",
+      "topic": "Air Mass, Fronts, Cyclones, Jet Streams, Monsoon",
+      "microTheme": "Jet streams"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-CLIM-PRECIP-MT02",
+      "subject": "Geography",
+      "topic": "Humidity, Clouds, Precipitation & Rainfall Types",
+      "microTheme": "Cloud types; precipitation types"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-CLIM-KOPPEN-MT01",
+      "subject": "Geography",
+      "topic": "Climatic Regions & Köppen Classification (World Climates)",
+      "microTheme": "Köppen classification overview"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-BIO-SOIL-MT03",
+      "subject": "Geography",
+      "topic": "Soils: Formation, Profiles, Erosion & Conservation",
+      "microTheme": "Soil classification (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-HEW-POP-MT04",
+      "subject": "Geography",
+      "topic": "Population & Demography (World)",
+      "microTheme": "Population problems; policies (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-HEW-TRANSPORT-TRADE-MT02",
+      "subject": "Geography",
+      "topic": "Transport, Communication & International Trade (World)",
+      "microTheme": "Ports types; gateways of trade"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-HEW-TRANSPORT-TRADE-MT03",
+      "subject": "Geography",
+      "topic": "Transport, Communication & International Trade (World)",
+      "microTheme": "WTO & regional blocs (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-HEW-SETTLEMENTS-MT02",
+      "subject": "Geography",
+      "topic": "Settlements & Urbanization (World basics + India link)",
+      "microTheme": "Urban problems: slums; migration (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-IND-SOILS-VEG-MT02",
+      "subject": "Geography",
+      "topic": "Soils & Natural Vegetation in India",
+      "microTheme": "Forest distribution; mangroves; forest issues"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-IND-POP-URBAN-MT01",
+      "subject": "Geography",
+      "topic": "Population, Settlements & Urbanization in India",
+      "microTheme": "Population size/growth/distribution; census basics"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-IND-RESOURCES-MT02",
+      "subject": "Geography",
+      "topic": "Resources: Land, Minerals, Energy (India) — Overview",
+      "microTheme": "Minerals (ferrous/non-ferrous) distribution basics"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "subject": "Geography",
+      "topic": "Agriculture (India) — Basics + Crops + Scheme Hooks",
+      "microTheme": "Cropping seasons; cropping pattern; irrigation; fertilizers; land reforms (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT03",
+      "subject": "Geography",
+      "topic": "Agriculture (India) — Basics + Crops + Scheme Hooks",
+      "microTheme": "Issues: climate change, feminization, digitization"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-MAINS-AGRI-MT01",
+      "subject": "Geography",
+      "topic": "Agriculture (Mains): Productivity, Policies, Food Security, CSA",
+      "microTheme": "MSP debates; APMC issues; e-NAM"
+    },
+    {
+      "syllabusNodeId": "GS1-GEO-MAINS-INDUSTRY-MT01",
+      "subject": "Geography",
+      "topic": "Industry (Mains): Location Theories + Regional Inequality",
+      "microTheme": "Weber; Losch (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-UPSC-INTEGRATION-MT02",
+      "subject": "Society",
+      "topic": "National Integration; communalism, regionalism & secularism",
+      "microTheme": "Communalism: concept, origin, causes, impact"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-UPSC-INTEGRATION-MT03",
+      "subject": "Society",
+      "topic": "National Integration; communalism, regionalism & secularism",
+      "microTheme": "Regionalism: types, causes, effects, solutions"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-UPSC-WOMEN-MT04",
+      "subject": "Society",
+      "topic": "Role of women and women’s organization",
+      "microTheme": "Gender budgeting (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-UPSC-EMPOWER-MT04",
+      "subject": "Society",
+      "topic": "Social empowerment, poverty and developmental issues",
+      "microTheme": "Developmental issues and social justice lens"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-UPSC-VULNERABLE-MT02",
+      "subject": "Society",
+      "topic": "Welfare schemes, laws, institutions for vulnerable sections",
+      "microTheme": "Mechanisms: commissions, ministries, legal frameworks (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-UPSC-SOCIALSECTOR-MT01",
+      "subject": "Society",
+      "topic": "Social sector services: Health, Education, HR",
+      "microTheme": "Health sector issues: access, affordability, quality"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-UPSC-SOCIALSECTOR-MT02",
+      "subject": "Society",
+      "topic": "Social sector services: Health, Education, HR",
+      "microTheme": "Education sector issues: learning outcomes, equity"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-UNITY-CHALLENGES-MT05",
+      "subject": "Society",
+      "topic": "Challenges of diversity to unity",
+      "microTheme": "Social inequalities"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-BASICS-FAMILY-MT01",
+      "subject": "Society",
+      "topic": "Family, Kinship and Patriarchy in India",
+      "microTheme": "Family types; changing family structure"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-EMPOWER-CONST-MT01",
+      "subject": "Society",
+      "topic": "Constitutional provisions for Social Justice (SC/ST etc.)",
+      "microTheme": "Constitutional safeguards (broad mapping)"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-EMPOWER-CONST-MT02",
+      "subject": "Society",
+      "topic": "Constitutional provisions for Social Justice (SC/ST etc.)",
+      "microTheme": "Institutions for protection and empowerment (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-EMPOWER-SC-MT03",
+      "subject": "Society",
+      "topic": "Scheduled Castes: identity, issues, state efforts",
+      "microTheme": "State mechanisms against atrocities (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-EMPOWER-MINOR-MT01",
+      "subject": "Society",
+      "topic": "Status of minorities in India",
+      "microTheme": "Minority rights and inclusion (broad)"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-WOMEN-LAWS-MT04",
+      "subject": "Society",
+      "topic": "Women: laws, debates, social change",
+      "microTheme": "Surrogacy debates; maternity laws issues"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-WOMEN-LAWS-MT05",
+      "subject": "Society",
+      "topic": "Women: laws, debates, social change",
+      "microTheme": "Women in judiciary; dowry-related issues"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-DEV-POVERTY-MT04",
+      "subject": "Society",
+      "topic": "Understanding poverty, inequality and policies",
+      "microTheme": "Poverty alleviation since independence (overview)"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-DEV-POVERTY-MT05",
+      "subject": "Society",
+      "topic": "Understanding poverty, inequality and policies",
+      "microTheme": "Concept of inequality"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-DEV-URBAN-MT01",
+      "subject": "Society",
+      "topic": "Urbanization & governance; Smart Cities (analysis)",
+      "microTheme": "Trends and patterns"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-DEV-CENSUS-MT04",
+      "subject": "Society",
+      "topic": "Census 2011 & socio-demographic issues",
+      "microTheme": "Literacy trends and challenges; improvement efforts"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-DEV-CENSUS-MT05",
+      "subject": "Society",
+      "topic": "Census 2011 & socio-demographic issues",
+      "microTheme": "Old age population: issues and policy initiatives"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-CONTEMP-OTHER-MT02",
+      "subject": "Society",
+      "topic": "Other social debates and issues",
+      "microTheme": "Domestic workers: laws and issues"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-CONTEMP-OTHER-MT06",
+      "subject": "Society",
+      "topic": "Other social debates and issues",
+      "microTheme": "Manual scavenging"
+    },
+    {
+      "syllabusNodeId": "GS1-SOC-CONTEMP-OTHER-MT09",
+      "subject": "Society",
+      "topic": "Other social debates and issues",
+      "microTheme": "HIV stigma"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-EVOL-CROWN-MT04",
+      "subject": "Polity",
+      "topic": "Crown Rule (1858–1947) + Constitutional Developments",
+      "microTheme": "Simon Commission"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "subject": "Polity",
+      "topic": "Drafting, Sources & Committees of the Constituent Assembly",
+      "microTheme": "Constitutional practices"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-PREAMBLE-MT03",
+      "subject": "Polity",
+      "topic": "Preamble and Values",
+      "microTheme": "Amendability"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-AMEND-MT02",
+      "subject": "Polity",
+      "topic": "Amendment Procedure + Types + Basic Structure",
+      "microTheme": "Types of amendments"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-DOCTRINES-MT03",
+      "subject": "Polity",
+      "topic": "Key Constitutional Doctrines/Terms",
+      "microTheme": "Laches"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-UTERR-MT03",
+      "subject": "Polity",
+      "topic": "Union and Its Territory (Articles 1–4) + Delimitation/SRC",
+      "microTheme": "Delimitation Commission"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-CITIZEN-MT01",
+      "subject": "Polity",
+      "topic": "Citizenship (Constitution + Citizenship Act 1955)",
+      "microTheme": "Constitutional provisions"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-CITIZEN-MT05",
+      "subject": "Polity",
+      "topic": "Citizenship (Constitution + Citizenship Act 1955)",
+      "microTheme": "Indian diaspora basics"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-EMER-MT01",
+      "subject": "Polity",
+      "topic": "Emergency Provisions",
+      "microTheme": "National"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-EMER-MT02",
+      "subject": "Polity",
+      "topic": "Emergency Provisions",
+      "microTheme": "President’s Rule"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-EMER-MT03",
+      "subject": "Polity",
+      "topic": "Emergency Provisions",
+      "microTheme": "Financial emergency"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-MAINS-DPSP-UCC-FD-MT02",
+      "subject": "Polity",
+      "topic": "DPSP Scope + FR vs DPSP + UCC + Fundamental Duties",
+      "microTheme": "Implementation challenges"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-MAINS-UTS-MT05",
+      "subject": "Polity",
+      "topic": "Union Territories + LG vs CM + Special Provisions + Scheduled/Tribal Areas",
+      "microTheme": "Scheduled areas and tribal areas; governance issues"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-MAINS-DOCTRINES-MT01",
+      "subject": "Polity",
+      "topic": "Major Doctrines (Judicial): Basic Structure, Eclipse, Pith & Substance etc.",
+      "microTheme": "Basic structure"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-MAINS-DOCTRINES-MT02",
+      "subject": "Polity",
+      "topic": "Major Doctrines (Judicial): Basic Structure, Eclipse, Pith & Substance etc.",
+      "microTheme": "Harmonious construction"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-MAINS-DOCTRINES-MT03",
+      "subject": "Polity",
+      "topic": "Major Doctrines (Judicial): Basic Structure, Eclipse, Pith & Substance etc.",
+      "microTheme": "Eclipse"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-MAINS-DOCTRINES-MT06",
+      "subject": "Polity",
+      "topic": "Major Doctrines (Judicial): Basic Structure, Eclipse, Pith & Substance etc.",
+      "microTheme": "Colourable legislation"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-MAINS-DOCTRINES-MT07",
+      "subject": "Polity",
+      "topic": "Major Doctrines (Judicial): Basic Structure, Eclipse, Pith & Substance etc.",
+      "microTheme": "Severability"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-MAINS-DOCTRINES-MT08",
+      "subject": "Polity",
+      "topic": "Major Doctrines (Judicial): Basic Structure, Eclipse, Pith & Substance etc.",
+      "microTheme": "Territorial nexus"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-MAINS-DOCTRINES-MT09",
+      "subject": "Polity",
+      "topic": "Major Doctrines (Judicial): Basic Structure, Eclipse, Pith & Substance etc.",
+      "microTheme": "Laches"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-MAINS-RPA-ELECT-MT01",
+      "subject": "Polity",
+      "topic": "Elections + RPA + Electoral Reforms + Funding + Anti-Defection",
+      "microTheme": "Salient features of RPA; election laws"
+    },
+    {
+      "syllabusNodeId": "GS2-POL-MAINS-RPA-ELECT-MT04",
+      "subject": "Polity",
+      "topic": "Elections + RPA + Electoral Reforms + Funding + Anti-Defection",
+      "microTheme": "Political parties issues; inner party democracy; strong opposition"
+    },
+    {
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV-MT01",
+      "subject": "Governance",
+      "topic": "Good Governance: Concept, Issues, Rights-Based Approach, Policy Design & Implementation",
+      "microTheme": "Concept of good governance"
+    },
+    {
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV-MT02",
+      "subject": "Governance",
+      "topic": "Good Governance: Concept, Issues, Rights-Based Approach, Policy Design & Implementation",
+      "microTheme": "Issues concerning governance"
+    },
+    {
+      "syllabusNodeId": "GS2-GOV-TRANSPARENCY-MT01",
+      "subject": "Governance",
+      "topic": "Transparency & Accountability: RTI, Citizen Charters, OSA, Media/Social Media, Right to Service",
+      "microTheme": "Right to Information (RTI): purpose and issues"
+    },
+    {
+      "syllabusNodeId": "GS2-GOV-CIVIL-SERVICES-MT01",
+      "subject": "Governance",
+      "topic": "Role of Civil Services in a Democracy: Neutrality, Ethics, Reforms, Lateral Entry, Performance, MCC",
+      "microTheme": "Concept and need of civil services"
+    },
+    {
+      "syllabusNodeId": "GS2-GOV-DEVELOPMENT-INDUSTRY-MT03",
+      "subject": "Governance",
+      "topic": "Development Processes & Development Industry: NGOs, SHGs, MFIs, Donors, Foreign Aid, Pressure Group Politics",
+      "microTheme": "Microfinance institutions: issues and recommendations"
+    },
+    {
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON-MT01",
+      "subject": "Governance",
+      "topic": "Socio-Economic Development in Governance Lens: HD, Poverty, Inequality, Hunger, Health, Education, Welfare Mechanisms",
+      "microTheme": "Human development: concept; growth vs human development link"
+    },
+    {
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON-MT04",
+      "subject": "Governance",
+      "topic": "Socio-Economic Development in Governance Lens: HD, Poverty, Inequality, Hunger, Health, Education, Welfare Mechanisms",
+      "microTheme": "Poverty alleviation since independence; programmes; inequality concept"
+    },
+    {
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON-MT07",
+      "subject": "Governance",
+      "topic": "Socio-Economic Development in Governance Lens: HD, Poverty, Inequality, Hunger, Health, Education, Welfare Mechanisms",
+      "microTheme": "Institutional measures for welfare of vulnerable sections; issues in mechanisms"
+    },
+    {
+      "syllabusNodeId": "GS2-GOV-PRESSURE-GROUPS-MT02",
+      "subject": "Governance",
+      "topic": "Pressure Groups: Types, Significance, Role, Difference from Political Parties",
+      "microTheme": "Types of pressure groups"
+    },
+    {
+      "syllabusNodeId": "GS2-GOV-CONST-POSTS-MT05",
+      "subject": "Governance",
+      "topic": "Appointments to Constitutional Posts & Constitutional Bodies: CAG, ECI, UPSC, Finance Commission, NCSC/NST",
+      "microTheme": "National Commissions for SCs/STs: role overview"
+    },
+    {
+      "syllabusNodeId": "GS2-IR-NEIGHBOURS-MT01",
+      "subject": "InternationalRelations",
+      "topic": "India & Neighbourhood Relations",
+      "microTheme": "Neighbourhood First"
+    },
+    {
+      "syllabusNodeId": "GS2-IR-GROUPINGS-MT03",
+      "subject": "InternationalRelations",
+      "topic": "Groupings, Agreements, Forums impacting India",
+      "microTheme": "Indo-Pacific concept; East Asia Summit"
+    },
+    {
+      "syllabusNodeId": "GS2-IR-ASEAN-EAP-MT01",
+      "subject": "InternationalRelations",
+      "topic": "ASEAN / East Asia / Indo-Pacific",
+      "microTheme": "India-ASEAN partnership; Indo-Pacific concept"
+    },
+    {
+      "syllabusNodeId": "GS2-IR-WEST-ASIA-MT04",
+      "subject": "InternationalRelations",
+      "topic": "West Asia / Middle East",
+      "microTheme": "Migrant workers and diaspora issues"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-BASICS-MACRO-MT02",
+      "subject": "Economy",
+      "topic": "Macroeconomic Concepts",
+      "microTheme": "Types of economies"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-INFLATION-MT01",
+      "subject": "Economy",
+      "topic": "Inflation + Indices",
+      "microTheme": "Inflation types and causes"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-MONEY-BASICS-MT03",
+      "subject": "Economy",
+      "topic": "Money: Functions + Aggregates",
+      "microTheme": "Broad vs narrow money"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-MONEY-BASICS-MT04",
+      "subject": "Economy",
+      "topic": "Money: Functions + Aggregates",
+      "microTheme": "Money multiplier"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-RBI-MT01",
+      "subject": "Economy",
+      "topic": "RBI + Monetary Policy + Credit Control Tools",
+      "microTheme": "RBI role"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-RBI-MT02",
+      "subject": "Economy",
+      "topic": "RBI + Monetary Policy + Credit Control Tools",
+      "microTheme": "Monetary policy basics"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-RBI-MT04",
+      "subject": "Economy",
+      "topic": "RBI + Monetary Policy + Credit Control Tools",
+      "microTheme": "Call rate"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-FIN-MARKETS-MT02",
+      "subject": "Economy",
+      "topic": "Financial Markets + Regulators",
+      "microTheme": "Stock exchange basics"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-FIN-MARKETS-MT03",
+      "subject": "Economy",
+      "topic": "Financial Markets + Regulators",
+      "microTheme": "Insurance sector basics"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "subject": "Economy",
+      "topic": "Budget + Deficits + FRBM",
+      "microTheme": "Union budget basics"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-BOP-MT02",
+      "subject": "Economy",
+      "topic": "BoP + Forex + Exchange Rates",
+      "microTheme": "Exchange rate basics"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-BOP-MT03",
+      "subject": "Economy",
+      "topic": "BoP + Forex + Exchange Rates",
+      "microTheme": "NEER/REER"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-TRADE-MT01",
+      "subject": "Economy",
+      "topic": "Trade Policy + Agreements",
+      "microTheme": "Trade policy basics"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-POVERTY-MT02",
+      "subject": "Economy",
+      "topic": "Poverty + Inequality + Employment",
+      "microTheme": "Inequality basics"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PRE-POVERTY-MT03",
+      "subject": "Economy",
+      "topic": "Poverty + Inequality + Employment",
+      "microTheme": "Employment and unemployment basics"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-AGR-CORE-MT02",
+      "subject": "Economy",
+      "topic": "Agriculture: Crops, Cropping Patterns, Irrigation, MSP, Subsidies",
+      "microTheme": "Irrigation types; irrigation systems; storage"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-AGR-CORE-MT05",
+      "subject": "Economy",
+      "topic": "Agriculture: Crops, Cropping Patterns, Irrigation, MSP, Subsidies",
+      "microTheme": "Farm subsidies (direct/indirect) and MSP issues"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PDS-FOODSEC-MT03",
+      "subject": "Economy",
+      "topic": "PDS, Buffer Stocks, Food Security",
+      "microTheme": "Food security issues; NFSA linkages"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-AGRI-FIN-MT04",
+      "subject": "Economy",
+      "topic": "Agriculture Finance + Credit Institutions + Crop Insurance",
+      "microTheme": "Crop insurance: issues; PMFBY; comparison with earlier schemes"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-INDPOL-MT07",
+      "subject": "Economy",
+      "topic": "Industrial Policy, Liberalisation, MSMEs, Corridors, SEZ, Disinvestment",
+      "microTheme": "MSMEs: role, issues, globalisation impact"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-INDPOL-MT08",
+      "subject": "Economy",
+      "topic": "Industrial Policy, Liberalisation, MSMEs, Corridors, SEZ, Disinvestment",
+      "microTheme": "Industrial corridors; SEZ issues"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PLAN-GROWTH-MT08",
+      "subject": "Economy",
+      "topic": "Planning, Growth, Development, Unemployment",
+      "microTheme": "Trends in saving and capital formation since independence"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-RESOURCE-MOB-MT01",
+      "subject": "Economy",
+      "topic": "Resource Mobilization (Tax, Debt, Fiscal-Monetary, Foreign Investment)",
+      "microTheme": "Types of resources: physical and financial"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "subject": "Economy",
+      "topic": "Inclusive Growth + Issues",
+      "microTheme": "Meaning and concept of inclusion"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-BUDGETING-MT01",
+      "subject": "Economy",
+      "topic": "Government Budgeting (Outcome, Gender, Process, Analysis)",
+      "microTheme": "Budget terminology and types"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-BUDGETING-MT04",
+      "subject": "Economy",
+      "topic": "Government Budgeting (Outcome, Gender, Process, Analysis)",
+      "microTheme": "Merger of Railway and General Budget"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-INVESTMENT-MODELS-MT05",
+      "subject": "Economy",
+      "topic": "Investment Models (FDI, Startups, PPP, Trends)",
+      "microTheme": "PPP models"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-INVESTMENT-MODELS-MT06",
+      "subject": "Economy",
+      "topic": "Investment Models (FDI, Startups, PPP, Trends)",
+      "microTheme": "Savings and investment trends"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-FISCAL-POLICY-MT02",
+      "subject": "Economy",
+      "topic": "Fiscal Policy (Deficits, Spending Trends, Twin Balance Sheet)",
+      "microTheme": "Government revenue and spending trends"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-FISCAL-POLICY-MT05",
+      "subject": "Economy",
+      "topic": "Fiscal Policy (Deficits, Spending Trends, Twin Balance Sheet)",
+      "microTheme": "Types of deficit"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-BANKING-MT06",
+      "subject": "Economy",
+      "topic": "Banking (Structure, Reforms, NBFC, Inclusion, NPAs)",
+      "microTheme": "NBFCs"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-BANKING-MT07",
+      "subject": "Economy",
+      "topic": "Banking (Structure, Reforms, NBFC, Inclusion, NPAs)",
+      "microTheme": "Financial inclusion"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "subject": "Economy",
+      "topic": "Foreign Trade + BoP + Globalisation + International Organisations",
+      "microTheme": "Trends in international trade"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT11",
+      "subject": "Economy",
+      "topic": "Industry & Labour (Contemporary Issues)",
+      "microTheme": "Exit issues and Insolvency Resolution Process (IBC)"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT15",
+      "subject": "Economy",
+      "topic": "Industry & Labour (Contemporary Issues)",
+      "microTheme": "Contract workers: issues and reforms"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PR-BUDTAX-MT04",
+      "subject": "Economy",
+      "topic": "Budget & Taxation (Contemporary Issues)",
+      "microTheme": "Ponzi schemes: issues and regulation"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PR-BUDTAX-MT05",
+      "subject": "Economy",
+      "topic": "Budget & Taxation (Contemporary Issues)",
+      "microTheme": "Fat tax: concept and analysis"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PR-BUDTAX-MT06",
+      "subject": "Economy",
+      "topic": "Budget & Taxation (Contemporary Issues)",
+      "microTheme": "Municipal bonds: concept and use-cases"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PR-BANKFIN-MT01",
+      "subject": "Economy",
+      "topic": "Banking & Finance (Contemporary Issues)",
+      "microTheme": "Willful defaulter: concept and debates"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PR-BANKFIN-MT02",
+      "subject": "Economy",
+      "topic": "Banking & Finance (Contemporary Issues)",
+      "microTheme": "Shadow banking: concept (NBFC ecosystem)"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PR-BANKFIN-MT03",
+      "subject": "Economy",
+      "topic": "Banking & Finance (Contemporary Issues)",
+      "microTheme": "Non-performing assets (NPAs): trends and solutions"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PR-BANKFIN-MT14",
+      "subject": "Economy",
+      "topic": "Banking & Finance (Contemporary Issues)",
+      "microTheme": "Crypto-currencies: concept and regulation debates"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PR-SCHEMES-MT05",
+      "subject": "Economy",
+      "topic": "Schemes & Policies (Contemporary Issues)",
+      "microTheme": "Operation Greens"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PR-SCHEMES-MT10",
+      "subject": "Economy",
+      "topic": "Schemes & Policies (Contemporary Issues)",
+      "microTheme": "Sagarmala project"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PR-SCHEMES-MT12",
+      "subject": "Economy",
+      "topic": "Schemes & Policies (Contemporary Issues)",
+      "microTheme": "GST analysis"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PR-EXTSECTOR-MT01",
+      "subject": "Economy",
+      "topic": "External Sector + Global Economic Governance (Contemporary Issues)",
+      "microTheme": "FDI status and issues in India"
+    },
+    {
+      "syllabusNodeId": "GS3-ECO-PR-EXTSECTOR-MT09",
+      "subject": "Economy",
+      "topic": "External Sector + Global Economic Governance (Contemporary Issues)",
+      "microTheme": "Broad-based trade & investment agreement: India–EU FTA talks"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS-MT02",
+      "subject": "Environment",
+      "topic": "Basic Ecology Concepts",
+      "microTheme": "Ecological hierarchy"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS-MT04",
+      "subject": "Environment",
+      "topic": "Basic Ecology Concepts",
+      "microTheme": "Climax community"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY-MT02",
+      "subject": "Environment",
+      "topic": "Ecosystem Functions & Energy Flow",
+      "microTheme": "Trophic levels"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY-MT03",
+      "subject": "Environment",
+      "topic": "Ecosystem Functions & Energy Flow",
+      "microTheme": "Ecological pyramids"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY-MT05",
+      "subject": "Environment",
+      "topic": "Ecosystem Functions & Energy Flow",
+      "microTheme": "Biomagnification"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY-MT06",
+      "subject": "Environment",
+      "topic": "Ecosystem Functions & Energy Flow",
+      "microTheme": "Primary productivity"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-BIOGEO-MT01",
+      "subject": "Environment",
+      "topic": "Biogeochemical Cycles",
+      "microTheme": "Carbon cycle"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-BIOGEO-MT02",
+      "subject": "Environment",
+      "topic": "Biogeochemical Cycles",
+      "microTheme": "Nitrogen cycle"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-BIOGEO-MT03",
+      "subject": "Environment",
+      "topic": "Biogeochemical Cycles",
+      "microTheme": "Hydrological cycle"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-BIOGEO-MT04",
+      "subject": "Environment",
+      "topic": "Biogeochemical Cycles",
+      "microTheme": "Phosphorus cycle"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "subject": "Environment",
+      "topic": "Species Concepts",
+      "microTheme": "Endemic species"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT02",
+      "subject": "Environment",
+      "topic": "Species Concepts",
+      "microTheme": "Keystone species"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT03",
+      "subject": "Environment",
+      "topic": "Species Concepts",
+      "microTheme": "Indicator species"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT04",
+      "subject": "Environment",
+      "topic": "Species Concepts",
+      "microTheme": "Invasive species"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-CONSERVATION-MT03",
+      "subject": "Environment",
+      "topic": "Conservation Methods",
+      "microTheme": "Biosphere reserve"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-CONSERVATION-MT05",
+      "subject": "Environment",
+      "topic": "Conservation Methods",
+      "microTheme": "Sacred groves"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-PROJECTS-MT01",
+      "subject": "Environment",
+      "topic": "Species Conservation Projects",
+      "microTheme": "Project Tiger"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-PROJECTS-MT02",
+      "subject": "Environment",
+      "topic": "Species Conservation Projects",
+      "microTheme": "Project Elephant"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-AIR-MT01",
+      "subject": "Environment",
+      "topic": "Air Pollution",
+      "microTheme": "Smog"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-AIR-MT02",
+      "subject": "Environment",
+      "topic": "Air Pollution",
+      "microTheme": "Acid rain"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-AIR-MT03",
+      "subject": "Environment",
+      "topic": "Air Pollution",
+      "microTheme": "Ozone depletion"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-WASTE-MT04",
+      "subject": "Environment",
+      "topic": "Waste Management",
+      "microTheme": "Hazardous waste"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "subject": "Environment",
+      "topic": "Global Warming Concepts",
+      "microTheme": "Greenhouse effect"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT02",
+      "subject": "Environment",
+      "topic": "Global Warming Concepts",
+      "microTheme": "Carbon footprint"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT03",
+      "subject": "Environment",
+      "topic": "Global Warming Concepts",
+      "microTheme": "Carbon sequestration"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN-MT01",
+      "subject": "Environment",
+      "topic": "Climate Phenomena",
+      "microTheme": "El Nino"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN-MT02",
+      "subject": "Environment",
+      "topic": "Climate Phenomena",
+      "microTheme": "La Nina"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN-MT03",
+      "subject": "Environment",
+      "topic": "Climate Phenomena",
+      "microTheme": "Ocean acidification"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN-MT04",
+      "subject": "Environment",
+      "topic": "Climate Phenomena",
+      "microTheme": "Glacier melting"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-INTL-MT01",
+      "subject": "Environment",
+      "topic": "International Environmental Agreements",
+      "microTheme": "UNFCCC"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-INTL-MT02",
+      "subject": "Environment",
+      "topic": "International Environmental Agreements",
+      "microTheme": "Paris Agreement"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-INTL-MT03",
+      "subject": "Environment",
+      "topic": "International Environmental Agreements",
+      "microTheme": "Montreal Protocol"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-INTL-MT04",
+      "subject": "Environment",
+      "topic": "International Environmental Agreements",
+      "microTheme": "Kyoto Protocol"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-LAND-WATER-MT05",
+      "subject": "Environment",
+      "topic": "Land, Forest & Water Resources",
+      "microTheme": "Groundwater and surface water issues"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-ENERGY-MT05",
+      "subject": "Environment",
+      "topic": "Energy Resources (Renewable + Non-renewable)",
+      "microTheme": "Nuclear energy basics; 3-stage nuclear programme"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION-MT02",
+      "subject": "Environment",
+      "topic": "Current Issues: Pollution + Waste + Innovations",
+      "microTheme": "Black carbon"
+    },
+    {
+      "syllabusNodeId": "GS3-ENV-CURR-RIVERS-MT01",
+      "subject": "Environment",
+      "topic": "Current Issues: Rivers, Wetlands, Coasts",
+      "microTheme": "Namami Gange"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-NEIGHBOURS-MT01",
+      "subject": "InternalSecurity",
+      "topic": "External State Actors: Neighbourhood Security Challenges",
+      "microTheme": "Pakistan challenge"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-NEIGHBOURS-MT02",
+      "subject": "InternalSecurity",
+      "topic": "External State Actors: Neighbourhood Security Challenges",
+      "microTheme": "China challenge"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-ORGCRIME-MT01",
+      "subject": "InternalSecurity",
+      "topic": "Organized Crime + Terror Linkages",
+      "microTheme": "Types of organized crime"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-NE-INSURGENCY-MT01",
+      "subject": "InternalSecurity",
+      "topic": "Insurgency in North-East",
+      "microTheme": "North-East insurgency overview"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-NE-INSURGENCY-MT02",
+      "subject": "InternalSecurity",
+      "topic": "Insurgency in North-East",
+      "microTheme": "Assam insurgency"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-NE-INSURGENCY-MT03",
+      "subject": "InternalSecurity",
+      "topic": "Insurgency in North-East",
+      "microTheme": "Issues and conflicts in NE"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-BORDER-MT02",
+      "subject": "InternalSecurity",
+      "topic": "Border Area Security + Border Management",
+      "microTheme": "Issues faced in border management"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-CYBER-BASICS-MT01",
+      "subject": "InternalSecurity",
+      "topic": "Cyber Security Basics + Cyber Crimes",
+      "microTheme": "Basics of cyber security"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-CYBER-BASICS-MT02",
+      "subject": "InternalSecurity",
+      "topic": "Cyber Security Basics + Cyber Crimes",
+      "microTheme": "Types of cyber crimes"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-CYBER-BASICS-MT03",
+      "subject": "InternalSecurity",
+      "topic": "Cyber Security Basics + Cyber Crimes",
+      "microTheme": "Ransomware incidents"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-CYBERWAR-MT05",
+      "subject": "InternalSecurity",
+      "topic": "Cyber Warfare + Spyware + State Actors",
+      "microTheme": "Way forward"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-POLICE-PRISON-MT05",
+      "subject": "InternalSecurity",
+      "topic": "Police Reforms + Prison Reforms",
+      "microTheme": "Prison reforms"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-FORCES-MT01",
+      "subject": "InternalSecurity",
+      "topic": "Security Forces & Mandate",
+      "microTheme": "Assam Rifles"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-FORCES-MT02",
+      "subject": "InternalSecurity",
+      "topic": "Security Forces & Mandate",
+      "microTheme": "BSF"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-FORCES-MT03",
+      "subject": "InternalSecurity",
+      "topic": "Security Forces & Mandate",
+      "microTheme": "ITBP"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-FORCES-MT04",
+      "subject": "InternalSecurity",
+      "topic": "Security Forces & Mandate",
+      "microTheme": "CISF"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-FORCES-MT05",
+      "subject": "InternalSecurity",
+      "topic": "Security Forces & Mandate",
+      "microTheme": "CRPF"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-FORCES-MT06",
+      "subject": "InternalSecurity",
+      "topic": "Security Forces & Mandate",
+      "microTheme": "NSG"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-FORCES-MT07",
+      "subject": "InternalSecurity",
+      "topic": "Security Forces & Mandate",
+      "microTheme": "Issues with paramilitary forces"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-GOV-MECH-MT04",
+      "subject": "InternalSecurity",
+      "topic": "Governance + National Security Mechanism + Intelligence",
+      "microTheme": "Centre-state issues in internal security management"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-GOV-MECH-MT05",
+      "subject": "InternalSecurity",
+      "topic": "Governance + National Security Mechanism + Intelligence",
+      "microTheme": "Issues in intelligence services and response mechanisms"
+    },
+    {
+      "syllabusNodeId": "GS3-SEC-DEFENCE-MII-MT04",
+      "subject": "InternalSecurity",
+      "topic": "Make in India in Defence + Indigenization",
+      "microTheme": "Technology acquisition"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-DISASTERS-MT01",
+      "subject": "DisasterManagement",
+      "topic": "Natural and Man-made Disasters: Types + India Vulnerability",
+      "microTheme": "Types of disasters: natural vs man-made"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-DISASTERS-MT03",
+      "subject": "DisasterManagement",
+      "topic": "Natural and Man-made Disasters: Types + India Vulnerability",
+      "microTheme": "Earthquakes"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-DISASTERS-MT04",
+      "subject": "DisasterManagement",
+      "topic": "Natural and Man-made Disasters: Types + India Vulnerability",
+      "microTheme": "Tsunamis"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-DISASTERS-MT05",
+      "subject": "DisasterManagement",
+      "topic": "Natural and Man-made Disasters: Types + India Vulnerability",
+      "microTheme": "Landslides"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-DISASTERS-MT06",
+      "subject": "DisasterManagement",
+      "topic": "Natural and Man-made Disasters: Types + India Vulnerability",
+      "microTheme": "Floods"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-DISASTERS-MT07",
+      "subject": "DisasterManagement",
+      "topic": "Natural and Man-made Disasters: Types + India Vulnerability",
+      "microTheme": "Drought"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-DISASTERS-MT08",
+      "subject": "DisasterManagement",
+      "topic": "Natural and Man-made Disasters: Types + India Vulnerability",
+      "microTheme": "Epidemics"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-DISASTERS-MT10",
+      "subject": "DisasterManagement",
+      "topic": "Natural and Man-made Disasters: Types + India Vulnerability",
+      "microTheme": "Dam collapse"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-DISASTERS-MT11",
+      "subject": "DisasterManagement",
+      "topic": "Natural and Man-made Disasters: Types + India Vulnerability",
+      "microTheme": "Gas leakage"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-DISASTERS-MT12",
+      "subject": "DisasterManagement",
+      "topic": "Natural and Man-made Disasters: Types + India Vulnerability",
+      "microTheme": "Oil spill"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-DISASTERS-MT13",
+      "subject": "DisasterManagement",
+      "topic": "Natural and Man-made Disasters: Types + India Vulnerability",
+      "microTheme": "Volcanic eruption"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-DISASTERS-MT14",
+      "subject": "DisasterManagement",
+      "topic": "Natural and Man-made Disasters: Types + India Vulnerability",
+      "microTheme": "Forest fires"
+    },
+    {
+      "syllabusNodeId": "GS3-DM-PREP-MIT-MT07",
+      "subject": "DisasterManagement",
+      "topic": "Disaster Management: Preparedness + Mitigation + Frameworks",
+      "microTheme": "Disaster insurance"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-POLICY-INST-MT03",
+      "subject": "ScienceTech",
+      "topic": "S&T Policy + Institutions + India Collaboration",
+      "microTheme": "Awards related to science (overview)"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-IT-COMM-MT02",
+      "subject": "ScienceTech",
+      "topic": "IT & Communication (ICT, Cyber, Internet, Digital India, Emerging Tech)",
+      "microTheme": "Basics: computer terms, generations, networks, internet (IP/URL/HTTP)"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "subject": "ScienceTech",
+      "topic": "Materials, Nano Tech, Robotics, AI (incl. lasers, superconductors)",
+      "microTheme": "Superconductors: basics, types, applications"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT02",
+      "subject": "ScienceTech",
+      "topic": "Materials, Nano Tech, Robotics, AI (incl. lasers, superconductors)",
+      "microTheme": "Lasers: types and applications"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT03",
+      "subject": "ScienceTech",
+      "topic": "Materials, Nano Tech, Robotics, AI (incl. lasers, superconductors)",
+      "microTheme": "AI basics + applications + pros/cons"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT04",
+      "subject": "ScienceTech",
+      "topic": "Materials, Nano Tech, Robotics, AI (incl. lasers, superconductors)",
+      "microTheme": "Robotics: components, types, applications (industry/health/space/defence)"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-DEFENCE-MT01",
+      "subject": "ScienceTech",
+      "topic": "Defence Technology (Missiles, Platforms, DRDO, Ships/Submarines)",
+      "microTheme": "Missile basics: ballistic vs cruise; range/proplusion classification"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-DEFENCE-MT04",
+      "subject": "ScienceTech",
+      "topic": "Defence Technology (Missiles, Platforms, DRDO, Ships/Submarines)",
+      "microTheme": "UAVs, stealth, AWACS (overview)"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "subject": "ScienceTech",
+      "topic": "Nuclear Technology (Energy, Reactors, 3-stage programme, Safety)",
+      "microTheme": "Fission vs fusion; radioactivity basics"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT06",
+      "subject": "ScienceTech",
+      "topic": "Nuclear Technology (Energy, Reactors, 3-stage programme, Safety)",
+      "microTheme": "Nuclear/radiological disasters (overview)"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-IPR-MT01",
+      "subject": "ScienceTech",
+      "topic": "IPR (Patents, Copyright, Trademarks) + Linkages",
+      "microTheme": "IPR basics: patents, copyright, trademarks, industrial design, trade secrets"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "subject": "ScienceTech",
+      "topic": "Biotechnology (Genetics, GM, Health, Biofuels, Recent Developments)",
+      "microTheme": "Basics: genetics, genetic engineering, DNA sequencing, genomics/proteomics"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT04",
+      "subject": "ScienceTech",
+      "topic": "General Science (Prelims): Biology",
+      "microTheme": "Cell division; sexual reproduction basics"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-MAINS-CORE-MT07",
+      "subject": "ScienceTech",
+      "topic": "Science & Technology (Mains): Developments, Applications, Indigenisation, IPR",
+      "microTheme": "SPACE governance: space race issues; Outer Space Treaty (broad); Space Activities Bill 2017 (hook)"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-MAINS-CORE-MT11",
+      "subject": "ScienceTech",
+      "topic": "Science & Technology (Mains): Developments, Applications, Indigenisation, IPR",
+      "microTheme": "ROBOTICS & AI: applications, productivity vs unemployment debate, ethical/safety issues"
+    },
+    {
+      "syllabusNodeId": "GS3-ST-MAINS-CORE-MT13",
+      "subject": "ScienceTech",
+      "topic": "Science & Technology (Mains): Developments, Applications, Indigenisation, IPR",
+      "microTheme": "BIOTECH: applications, projects, bio-piracy, bioinformatics, biotech & IPR issues, ethical dimensions"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-GEOM-MT06",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Geosynclines"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-GEOM-MT08",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Isostasy"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-GEOM-MT09",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Plate tectonics"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-GEOM-MT11",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Volcanicity"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-GEOM-MT16",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Denudation chronology"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-GEOM-MT17",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Channel morphology"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-GEOM-MT18",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Erosion surfaces"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-GEOM-MT19",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Slope development"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-GEOM-MT20",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Applied geomorphology"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-CLIM-MT03",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Atmospheric circulation"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-CLIM-MT09",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Types and distribution of precipitation"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-CLIM-MT14",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Hydrological cycle"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-CLIM-MT17",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Applied climatology"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-CLIM-MT18",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Urban climate"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-OCEAN-MT04",
+      "subject": "Geography Optional",
+      "topic": "Physical Geography",
+      "microTheme": "Ocean deposits and their types"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-HG-PERSPECTIVES-MT11",
+      "subject": "Geography Optional",
+      "topic": "Human Geography",
+      "microTheme": "Secularisation trends"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-SETTLEMENT-MT01",
+      "subject": "Geography Optional",
+      "topic": "Human Geography",
+      "microTheme": "Rural settlements: types and patterns (clustered, dispersed, linear etc.)"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-SETTLEMENT-MT02",
+      "subject": "Geography Optional",
+      "topic": "Human Geography",
+      "microTheme": "Environmental issues in rural settlements"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-SETTLEMENT-MT04",
+      "subject": "Geography Optional",
+      "topic": "Human Geography",
+      "microTheme": "Urban morphology"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-REGIONAL-PLANNING-MT01",
+      "subject": "Geography Optional",
+      "topic": "Human Geography",
+      "microTheme": "Concept and importance of a region in geography"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-REGIONAL-PLANNING-MT02",
+      "subject": "Geography Optional",
+      "topic": "Human Geography",
+      "microTheme": "Types of regions — formal, functional, perceptual"
+    },
+    {
+      "syllabusNodeId": "OPT-P1-REGIONAL-PLANNING-MT07",
+      "subject": "Geography Optional",
+      "topic": "Human Geography",
+      "microTheme": "Environmental issues in regional planning"
+    },
+    {
+      "syllabusNodeId": "OPT-P2-INDIA-PHYS-MT06",
+      "subject": "Geography Optional",
+      "topic": "Physical Setting & Resource Base",
+      "microTheme": "Natural vegetation and soil types"
+    },
+    {
+      "syllabusNodeId": "OPT-P2-RESOURCES-MT01",
+      "subject": "Geography Optional",
+      "topic": "Physical Setting & Resource Base",
+      "microTheme": "Land resources"
+    },
+    {
+      "syllabusNodeId": "OPT-P2-RESOURCES-MT03",
+      "subject": "Geography Optional",
+      "topic": "Physical Setting & Resource Base",
+      "microTheme": "Energy resources"
+    },
+    {
+      "syllabusNodeId": "OPT-P2-RESOURCES-MT04",
+      "subject": "Geography Optional",
+      "topic": "Physical Setting & Resource Base",
+      "microTheme": "Mineral resources"
+    },
+    {
+      "syllabusNodeId": "OPT-P2-RESOURCES-MT05",
+      "subject": "Geography Optional",
+      "topic": "Physical Setting & Resource Base",
+      "microTheme": "Marine resources"
+    },
+    {
+      "syllabusNodeId": "OPT-P2-SETTLEMENTS-MT01",
+      "subject": "Geography Optional",
+      "topic": "Settlements & Regional Development",
+      "microTheme": "Types, patterns and morphology of rural settlements"
+    },
+    {
+      "syllabusNodeId": "OPT-P2-POLITICAL-MT02",
+      "subject": "Geography Optional",
+      "topic": "Political Aspects & Contemporary Issues",
+      "microTheme": "Regional consciousness and inter-state issues"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-CHAIN-MT01",
+      "subject": "CSAT",
+      "topic": "Chain Rule",
+      "microTheme": "Chain rule basics"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-CHAIN-MT03",
+      "subject": "CSAT",
+      "topic": "Chain Rule",
+      "microTheme": "Unit comparison"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-TWP-MT02",
+      "subject": "CSAT",
+      "topic": "Time, Work and Pipes",
+      "microTheme": "Work efficiency"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-AVG-MIX-MT01",
+      "subject": "CSAT",
+      "topic": "Average – Mixtures and Allegations",
+      "microTheme": "Average"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-AVG-MIX-MT02",
+      "subject": "CSAT",
+      "topic": "Average – Mixtures and Allegations",
+      "microTheme": "Weighted average"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-AVG-MIX-MT03",
+      "subject": "CSAT",
+      "topic": "Average – Mixtures and Allegations",
+      "microTheme": "Mixtures"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-AVG-MIX-MT04",
+      "subject": "CSAT",
+      "topic": "Average – Mixtures and Allegations",
+      "microTheme": "Alligation"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-EQN-MT01",
+      "subject": "CSAT",
+      "topic": "Simple Equations",
+      "microTheme": "Linear equations"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-EQN-MT02",
+      "subject": "CSAT",
+      "topic": "Simple Equations",
+      "microTheme": "Equation solving"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-EQN-MT03",
+      "subject": "CSAT",
+      "topic": "Simple Equations",
+      "microTheme": "Word problems"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-RATIO-MT01",
+      "subject": "CSAT",
+      "topic": "Ratio – Proportion and Variations",
+      "microTheme": "Ratio"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-RATIO-MT02",
+      "subject": "CSAT",
+      "topic": "Ratio – Proportion and Variations",
+      "microTheme": "Proportion"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-RATIO-MT03",
+      "subject": "CSAT",
+      "topic": "Ratio – Proportion and Variations",
+      "microTheme": "Direct variation"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-RATIO-MT04",
+      "subject": "CSAT",
+      "topic": "Ratio – Proportion and Variations",
+      "microTheme": "Inverse variation"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-PERCENT-MT01",
+      "subject": "CSAT",
+      "topic": "Percentages",
+      "microTheme": "Percentage basics"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-PERCENT-MT02",
+      "subject": "CSAT",
+      "topic": "Percentages",
+      "microTheme": "Percentage increase"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-PERCENT-MT03",
+      "subject": "CSAT",
+      "topic": "Percentages",
+      "microTheme": "Percentage decrease"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-PERCENT-MT04",
+      "subject": "CSAT",
+      "topic": "Percentages",
+      "microTheme": "Successive percentage"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-PLD-MT02",
+      "subject": "CSAT",
+      "topic": "Profit – Loss and Discounts",
+      "microTheme": "Discount"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-PLD-MT03",
+      "subject": "CSAT",
+      "topic": "Profit – Loss and Discounts",
+      "microTheme": "Marked price"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-PLD-MT04",
+      "subject": "CSAT",
+      "topic": "Profit – Loss and Discounts",
+      "microTheme": "Successive discount"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-AGES-MT01",
+      "subject": "CSAT",
+      "topic": "Ages",
+      "microTheme": "Age relations"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-INT-MT01",
+      "subject": "CSAT",
+      "topic": "Interest",
+      "microTheme": "Simple interest"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-INT-MT02",
+      "subject": "CSAT",
+      "topic": "Interest",
+      "microTheme": "Compound interest"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-NS-MT01",
+      "subject": "CSAT",
+      "topic": "Number System",
+      "microTheme": "Divisibility"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-NS-MT03",
+      "subject": "CSAT",
+      "topic": "Number System",
+      "microTheme": "Remainders"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-NS-MT04",
+      "subject": "CSAT",
+      "topic": "Number System",
+      "microTheme": "Unit digit"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-NS-MT05",
+      "subject": "CSAT",
+      "topic": "Number System",
+      "microTheme": "Cyclicity"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-LCMHCF-MT01",
+      "subject": "CSAT",
+      "topic": "LCM – HCF",
+      "microTheme": "LCM"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-LCMHCF-MT02",
+      "subject": "CSAT",
+      "topic": "LCM – HCF",
+      "microTheme": "HCF"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-TRAINS-MT02",
+      "subject": "CSAT",
+      "topic": "Trains",
+      "microTheme": "Platform crossing"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-TRAINS-MT03",
+      "subject": "CSAT",
+      "topic": "Trains",
+      "microTheme": "Relative speed"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-TSD-MT02",
+      "subject": "CSAT",
+      "topic": "Time – Speed – Distance",
+      "microTheme": "Relative speed"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-ASR-MT01",
+      "subject": "CSAT",
+      "topic": "Average Speed and Races",
+      "microTheme": "Average speed"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-ASR-MT02",
+      "subject": "CSAT",
+      "topic": "Average Speed and Races",
+      "microTheme": "Race problems"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-ASR-MT03",
+      "subject": "CSAT",
+      "topic": "Average Speed and Races",
+      "microTheme": "Comparative speed"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-APGP-MT01",
+      "subject": "CSAT",
+      "topic": "AP – GP",
+      "microTheme": "Arithmetic progression"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-APGP-MT02",
+      "subject": "CSAT",
+      "topic": "AP – GP",
+      "microTheme": "Geometric progression"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-APGP-MT03",
+      "subject": "CSAT",
+      "topic": "AP – GP",
+      "microTheme": "Sequence-based basics"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-PNC-MT01",
+      "subject": "CSAT",
+      "topic": "Permutations and Combinations",
+      "microTheme": "Permutation"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-PNC-MT02",
+      "subject": "CSAT",
+      "topic": "Permutations and Combinations",
+      "microTheme": "Combination"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-PROB-MT01",
+      "subject": "CSAT",
+      "topic": "Probability",
+      "microTheme": "Basic probability"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-PROB-MT02",
+      "subject": "CSAT",
+      "topic": "Probability",
+      "microTheme": "Events"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-PROB-MT03",
+      "subject": "CSAT",
+      "topic": "Probability",
+      "microTheme": "Conditional interpretation"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-MENS-MT01",
+      "subject": "CSAT",
+      "topic": "Mensuration",
+      "microTheme": "Area"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-MENS-MT02",
+      "subject": "CSAT",
+      "topic": "Mensuration",
+      "microTheme": "Perimeter"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-MENS-MT03",
+      "subject": "CSAT",
+      "topic": "Mensuration",
+      "microTheme": "Volume"
+    },
+    {
+      "syllabusNodeId": "CSAT-BN-MENS-MT04",
+      "subject": "CSAT",
+      "topic": "Mensuration",
+      "microTheme": "Surface area"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-THEME-MT01",
+      "subject": "CSAT",
+      "topic": "Theme, Main Idea, and Title of the Passage",
+      "microTheme": "Central theme"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-THEME-MT02",
+      "subject": "CSAT",
+      "topic": "Theme, Main Idea, and Title of the Passage",
+      "microTheme": "Main idea"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-THEME-MT03",
+      "subject": "CSAT",
+      "topic": "Theme, Main Idea, and Title of the Passage",
+      "microTheme": "Suitable title"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-TONE-MT01",
+      "subject": "CSAT",
+      "topic": "Tone and Summary of Passage",
+      "microTheme": "Author tone"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-TONE-MT02",
+      "subject": "CSAT",
+      "topic": "Tone and Summary of Passage",
+      "microTheme": "Passage summary"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-ASSUMP-MT01",
+      "subject": "CSAT",
+      "topic": "Statements – Assumptions",
+      "microTheme": "Implicit assumptions"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-INFER-MT01",
+      "subject": "CSAT",
+      "topic": "Statements – Inferences",
+      "microTheme": "Inference drawing"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-INFER-MT02",
+      "subject": "CSAT",
+      "topic": "Statements – Inferences",
+      "microTheme": "Logical implication"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-CONCL-MT01",
+      "subject": "CSAT",
+      "topic": "Statements – Conclusions",
+      "microTheme": "Conclusion identification"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-CONCL-MT02",
+      "subject": "CSAT",
+      "topic": "Statements – Conclusions",
+      "microTheme": "Logical conclusion"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-STRENGTH-MT01",
+      "subject": "CSAT",
+      "topic": "Strengthening the Argument",
+      "microTheme": "Argument strengthening"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-STRENGTH-MT02",
+      "subject": "CSAT",
+      "topic": "Strengthening the Argument",
+      "microTheme": "Supporting evidence"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-WEAKEN-MT01",
+      "subject": "CSAT",
+      "topic": "Weakening the Argument",
+      "microTheme": "Argument weakening"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-WEAKEN-MT02",
+      "subject": "CSAT",
+      "topic": "Weakening the Argument",
+      "microTheme": "Counter evidence"
+    },
+    {
+      "syllabusNodeId": "CSAT-RC-MISC-MT01",
+      "subject": "CSAT",
+      "topic": "Miscellaneous",
+      "microTheme": "Mixed comprehension question types"
+    },
+    {
+      "syllabusNodeId": "CSAT-DI-TABLES-MT01",
+      "subject": "CSAT",
+      "topic": "Tables",
+      "microTheme": "Table reading"
+    },
+    {
+      "syllabusNodeId": "CSAT-DI-LINE-MT02",
+      "subject": "CSAT",
+      "topic": "Line Graphs",
+      "microTheme": "Trend analysis"
+    },
+    {
+      "syllabusNodeId": "CSAT-DI-PIE-MT02",
+      "subject": "CSAT",
+      "topic": "Pie Charts",
+      "microTheme": "Percentage distribution"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-RANK-MT01",
+      "subject": "CSAT",
+      "topic": "Ranking and Comparison",
+      "microTheme": "Ranking"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-RANK-MT02",
+      "subject": "CSAT",
+      "topic": "Ranking and Comparison",
+      "microTheme": "Order comparison"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-RANK-MT03",
+      "subject": "CSAT",
+      "topic": "Ranking and Comparison",
+      "microTheme": "Position logic"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-CUBE-MT01",
+      "subject": "CSAT",
+      "topic": "Cubes and Dice",
+      "microTheme": "Cube folding"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-CUBE-MT02",
+      "subject": "CSAT",
+      "topic": "Cubes and Dice",
+      "microTheme": "Dice orientation"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-CUBE-MT03",
+      "subject": "CSAT",
+      "topic": "Cubes and Dice",
+      "microTheme": "Face relation"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-SIT-MT01",
+      "subject": "CSAT",
+      "topic": "Sitting Arrangements",
+      "microTheme": "Linear arrangement"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-SIT-MT02",
+      "subject": "CSAT",
+      "topic": "Sitting Arrangements",
+      "microTheme": "Circular arrangement"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-DIR-MT01",
+      "subject": "CSAT",
+      "topic": "Direction Sense",
+      "microTheme": "Direction test"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-NSER-MT02",
+      "subject": "CSAT",
+      "topic": "Number Series",
+      "microTheme": "Series completion"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-LSER-MT01",
+      "subject": "CSAT",
+      "topic": "Letter Series",
+      "microTheme": "Alphabet pattern"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-LSER-MT02",
+      "subject": "CSAT",
+      "topic": "Letter Series",
+      "microTheme": "Letter sequence"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-CODE-MT01",
+      "subject": "CSAT",
+      "topic": "Coding – Decoding",
+      "microTheme": "Coding pattern"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-CODE-MT02",
+      "subject": "CSAT",
+      "topic": "Coding – Decoding",
+      "microTheme": "Decoding logic"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-VISUAL-MT01",
+      "subject": "CSAT",
+      "topic": "Visual Reasoning and Figure Counting",
+      "microTheme": "Figure counting"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-VISUAL-MT02",
+      "subject": "CSAT",
+      "topic": "Visual Reasoning and Figure Counting",
+      "microTheme": "Pattern recognition"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-VISUAL-MT03",
+      "subject": "CSAT",
+      "topic": "Visual Reasoning and Figure Counting",
+      "microTheme": "Visual logic"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-BLOOD-MT01",
+      "subject": "CSAT",
+      "topic": "Blood Relations",
+      "microTheme": "Family relations"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-VENN-MT01",
+      "subject": "CSAT",
+      "topic": "Venn Diagrams",
+      "microTheme": "Set relation"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-VENN-MT02",
+      "subject": "CSAT",
+      "topic": "Venn Diagrams",
+      "microTheme": "Venn logic"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-SYL-MT01",
+      "subject": "CSAT",
+      "topic": "Syllogism",
+      "microTheme": "Syllogistic logic"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-SELECT-MT01",
+      "subject": "CSAT",
+      "topic": "Selections",
+      "microTheme": "Selection criteria"
+    },
+    {
+      "syllabusNodeId": "CSAT-LR-MISC-MT01",
+      "subject": "CSAT",
+      "topic": "Miscellaneous",
+      "microTheme": "Mixed logical reasoning types"
+    },
+    {
+      "syllabusNodeId": "CSAT-DS-CORE-MT01",
+      "subject": "CSAT",
+      "topic": "Data Sufficiency",
+      "microTheme": "Statement sufficiency"
+    },
+    {
+      "syllabusNodeId": "CSAT-DS-CORE-MT02",
+      "subject": "CSAT",
+      "topic": "Data Sufficiency",
+      "microTheme": "Logical sufficiency"
+    },
+    {
+      "syllabusNodeId": "CSAT-DS-CORE-MT03",
+      "subject": "CSAT",
+      "topic": "Data Sufficiency",
+      "microTheme": "Quantitative sufficiency"
+    },
+    {
+      "syllabusNodeId": "GS4-ETH-EI-MT01",
+      "subject": "Ethics",
+      "topic": "Emotional Intelligence (EI): Concepts, Models, Utility, Critiques",
+      "microTheme": "Concept and models: Salovey & Mayer, Bar-On, Goleman"
+    },
+    {
+      "syllabusNodeId": "GS4-ETH-PROB-MT01",
+      "subject": "Ethics",
+      "topic": "Probity in Governance: Transparency, RTI, Work Culture, Corruption Control",
+      "microTheme": "Concept of public service; philosophical basis of probity"
+    },
+    {
+      "syllabusNodeId": "ESSAY-MT05-D03",
+      "subject": "Essay",
+      "topic": "Society, Culture & Social Justice",
+      "microTheme": "Gender justice"
+    },
+    {
+      "syllabusNodeId": "ESSAY-MT08-D03",
+      "subject": "Essay",
+      "topic": "Polity, Governance & Economy",
+      "microTheme": "Inclusive growth"
+    },
+    {
+      "syllabusNodeId": "ESSAY-MT04-D05",
+      "subject": "Essay",
+      "topic": "Environment, Sustainability & Humanity",
+      "microTheme": "Intergenerational equity"
+    }
+  ],
+  "missingTags": [],
+  "missingKeywords": [],
+  "missingMicroThemes": [
+    {
+      "sourceFile": "syllabusGraph.js",
+      "rootPaper": "GS2",
+      "subject": "Polity",
+      "section": "Polity & Governance (Mains): Features, Amendments, Debates, RPA, Pressure Groups",
+      "topic": "Polity & Governance (Mains): Executive, Legislature, Judiciary, Federalism, Devolution, Dispute Redressal"
+    },
+    {
+      "sourceFile": "syllabusGraph.js",
+      "rootPaper": "GS2",
+      "subject": "Governance",
+      "section": "Governance (Mains): Policies, Transparency, E-Governance, Civil Services, Bodies/Regulators, Development Industry",
+      "topic": "Polity & Governance (Mains): Contemporary Issues (Bills/Acts + Elections + RPA + Anti-Defection)"
+    },
+    {
+      "sourceFile": "syllabusGraph.js",
+      "rootPaper": "GS2",
+      "subject": "InternationalRelations",
+      "section": "Global Issues & Security Challenges",
+      "topic": "International Relations (Contemporary Issues)"
+    },
+    {
+      "sourceFile": "syllabusGraph.js",
+      "rootPaper": "GS3",
+      "subject": "Environment",
+      "section": "Current Environmental Issues",
+      "topic": "Environment (Mains: Ecology, Pollution, EIA, Climate, Sustainability)"
+    },
+    {
+      "sourceFile": "syllabusGraph.js",
+      "rootPaper": "GS3",
+      "subject": "InternalSecurity",
+      "section": "Internal Security Challenges In India (Mains)",
+      "topic": "Contemporary Issues: Internal Security Challenges In India (Mains)"
+    }
+  ],
+  "missingSubtopics": [],
+  "malformedNodes": []
+}

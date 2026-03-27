@@ -1,0 +1,172 @@
+[
+    {
+        "id": "SRC_PRE_ANCIENT",
+        "jsonFileName": "prelims_gs_history_ancient.json",
+        "examStage": "PRELIMS",
+        "paperType": "GS",
+        "paperCode": "PRE_GS",
+        "subject": "History",
+        "subSubject": "Ancient History",
+        "questionStyle": "MCQ"
+    },
+    {
+        "id": "SRC_PRE_MEDIEVAL",
+        "jsonFileName": "prelims_gs_history_medieval.json",
+        "examStage": "PRELIMS",
+        "paperType": "GS",
+        "paperCode": "PRE_GS",
+        "subject": "History",
+        "subSubject": "Medieval History",
+        "questionStyle": "MCQ"
+    },
+    {
+        "id": "SRC_PRE_ART_CULTURE",
+        "jsonFileName": "prelims_gs_art_culture.json",
+        "examStage": "PRELIMS",
+        "paperType": "GS",
+        "paperCode": "PRE_GS",
+        "subject": "Art & Culture",
+        "subSubject": "Art & Culture",
+        "questionStyle": "MCQ"
+    },
+    {
+        "id": "SRC_PRE_MODERN",
+        "jsonFileName": "prelims_gs_history_modern.json",
+        "examStage": "PRELIMS",
+        "paperType": "GS",
+        "paperCode": "PRE_GS",
+        "subject": "History",
+        "subSubject": "Modern History",
+        "questionStyle": "MCQ"
+    },
+    {
+        "id": "SRC_PRE_POLITY",
+        "jsonFileName": "prelims_gs_polity.json",
+        "examStage": "PRELIMS",
+        "paperType": "GS",
+        "paperCode": "PRE_GS",
+        "subject": "Polity",
+        "subSubject": "Indian Polity",
+        "questionStyle": "MCQ"
+    },
+    {
+        "id": "SRC_PRE_ECONOMY",
+        "jsonFileName": "prelims_gs_economy.json",
+        "examStage": "PRELIMS",
+        "paperType": "GS",
+        "paperCode": "PRE_GS",
+        "subject": "Economy",
+        "subSubject": "Economics & Development",
+        "questionStyle": "MCQ"
+    },
+    {
+        "id": "SRC_PRE_GEOGRAPHY",
+        "jsonFileName": "prelims_gs_geography.json",
+        "examStage": "PRELIMS",
+        "paperType": "GS",
+        "paperCode": "PRE_GS",
+        "subject": "Geography",
+        "subSubject": "Geography",
+        "questionStyle": "MCQ"
+    },
+    {
+        "id": "SRC_PRE_ENVIRONMENT",
+        "jsonFileName": "prelims_gs_environment.json",
+        "examStage": "PRELIMS",
+        "paperType": "GS",
+        "paperCode": "PRE_GS",
+        "subject": "Environment",
+        "subSubject": "Environment",
+        "questionStyle": "MCQ"
+    },
+    {
+        "id": "SRC_PRE_SCI_TECH",
+        "jsonFileName": "prelims_gs_science_tech.json",
+        "examStage": "PRELIMS",
+        "paperType": "GS",
+        "paperCode": "PRE_GS",
+        "subject": "Science & Technology",
+        "subSubject": "Science & Technology",
+        "questionStyle": "MCQ"
+    },
+    {
+        "id": "SRC_MAINS_HISTORY",
+        "jsonFileName": "mains_gs_history.json",
+        "examStage": "MAINS",
+        "paperType": "GS",
+        "paperCode": "GS1",
+        "subject": "History",
+        "subSubject": "History",
+        "questionStyle": "DESCRIPTIVE"
+    },
+    {
+        "id": "SRC_MAINS_POLITY",
+        "jsonFileName": "mains_gs_polity.json",
+        "examStage": "MAINS",
+        "paperType": "GS",
+        "paperCode": "GS2",
+        "subject": "Polity",
+        "subSubject": "Indian Polity",
+        "questionStyle": "DESCRIPTIVE"
+    },
+    {
+        "id": "SRC_MAINS_ECONOMY",
+        "jsonFileName": "mains_gs_economy.json",
+        "examStage": "MAINS",
+        "paperType": "GS",
+        "paperCode": "GS3",
+        "subject": "Economy",
+        "subSubject": "Economics & Development",
+        "questionStyle": "DESCRIPTIVE"
+    },
+    {
+        "id": "SRC_ESSAY",
+        "jsonFileName": "essay_topicwise.json",
+        "examStage": "MAINS",
+        "paperType": "ESSAY",
+        "paperCode": "ESSAY",
+        "subject": "Essay",
+        "subSubject": "Essay",
+        "questionStyle": "DESCRIPTIVE"
+    },
+    {
+        "id": "SRC_ETHICS",
+        "jsonFileName": "ethics_topicwise.json",
+        "examStage": "MAINS",
+        "paperType": "ETHICS",
+        "paperCode": "GS4",
+        "subject": "Ethics",
+        "subSubject": "Ethics",
+        "questionStyle": "DESCRIPTIVE"
+    },
+    {
+        "id": "SRC_CSAT",
+        "jsonFileName": "csat_topicwise.json",
+        "examStage": "PRELIMS",
+        "paperType": "CSAT",
+        "paperCode": "CSAT",
+        "subject": "CSAT",
+        "subSubject": "CSAT",
+        "questionStyle": "MCQ"
+    },
+    {
+        "id": "SRC_GEO_OPT_P1",
+        "jsonFileName": "geography_optional_paper1.json",
+        "examStage": "MAINS",
+        "paperType": "OPTIONAL",
+        "paperCode": "OPTIONAL_P1",
+        "subject": "Geography Optional",
+        "subSubject": "Paper 1",
+        "questionStyle": "DESCRIPTIVE"
+    },
+    {
+        "id": "SRC_GEO_OPT_P2",
+        "jsonFileName": "geography_optional_paper2.json",
+        "examStage": "MAINS",
+        "paperType": "OPTIONAL",
+        "paperCode": "OPTIONAL_P2",
+        "subject": "Geography Optional",
+        "subSubject": "Paper 2",
+        "questionStyle": "DESCRIPTIVE"
+    }
+]

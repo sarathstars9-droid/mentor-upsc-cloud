@@ -1,0 +1,377 @@
+{
+  "exam": "UPSC_CSE",
+  "stage": "Mains",
+  "paper": "GS2",
+  "subject": "Social Justice",
+  "questions": [
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2024_02",
+      "year": 2024,
+      "questionNumber": 2,
+      "directive": "Discuss",
+      "theme": "Poverty, Hunger, Inclusive Development, and Human Development",
+      "question": "Poverty and malnutrition create a vicious cycle, adversely affecting human capital formation. What steps can be taken to break the cycle?",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2024_04",
+      "year": 2024,
+      "questionNumber": 4,
+      "directive": "Discuss",
+      "theme": "Rights Issues \u2013 Disability, Women, Children, Minorities, LGBTQIA+",
+      "question": "What are the aims and objects of recently passed and enforced, The Public Examination (Prevention of Unfair Means) Act, 2024? Whether University / State Education Board examinations, too, are covered under the Act?",
+      "syllabusNodeId": "GS2-POL-CITIZEN"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2024_06",
+      "year": 2024,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "In a crucial domain like the public healthcare system the Indian State should play a vital role to contain the adverse impact of marketisation of the system. Suggest some measures through which the State can enhance the reach of public healthcare at the grassroots level.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2023_01",
+      "year": 2023,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "The crucial aspect of development process has been the inadequate attention paid to Human Resource Development in India. Suggest measures that can address this inadequacy.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2023_04",
+      "year": 2023,
+      "questionNumber": 4,
+      "directive": "Discuss",
+      "theme": "Rights Issues \u2013 Disability, Women, Children, Minorities, LGBTQIA+",
+      "question": "Discuss the contribution of civil society groups for women\u2019s effective and meaningful participation and representation in state legislatures in India.",
+      "syllabusNodeId": "GS2-POL-CITIZEN"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2023_05",
+      "year": 2023,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "Welfare Schemes, Vulnerable Sections, Social Sector Interventions",
+      "question": "Development and welfare schemes for the vulnerable, by its nature, are discriminatory in approach.\u201d Do you agree? Give reasons for your answer.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2023_06",
+      "year": 2023,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "Skill development programmes have succeeded in increasing human resources supply to various sectors. In the context of the statement, analyse the linkages between education, skill and employment.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2022_02",
+      "year": 2022,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Rights Issues \u2013 Disability, Women, Children, Minorities, LGBTQIA+",
+      "question": "The rights of persons with disabilities Act, 2016 remains only a legal document without intense sensitisation of Government functionaries and citizens regarding disability. Comment.",
+      "syllabusNodeId": "GS2-POL-CITIZEN"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2022_03",
+      "year": 2022,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Welfare Schemes, Vulnerable Sections, Social Sector Interventions",
+      "question": "Reforming the government delivery system through the Direct Benefit Transfer Scheme is a progressive step, but it has limitations too. Comment",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2022_04",
+      "year": 2022,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Welfare Schemes, Vulnerable Sections, Social Sector Interventions",
+      "question": "Besides the welfare schemes, India needs deft management of inflation and unemployment to serve the poor and the underprivileged sections of society. Discuss.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2022_06",
+      "year": 2022,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "The Right of Children to Free and Compulsory Education Act, 2009 remains inadequate in promoting an incentive-based system for children\u2019s education without generating awareness about the importance of schooling. Analyse.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2021_02",
+      "year": 2021,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "Besides being a moral imperative of Welfare State, primary health structure is a necessary pre-condition for sustainable development.\u201d Analyze.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2021_03",
+      "year": 2021,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "Earn while you learn\u2019 scheme needs to be strengthened to make vocational education and skill training meaningful.\u201d Comment.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2021_04",
+      "year": 2021,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Poverty, Hunger, Inclusive Development, and Human Development",
+      "question": "Can the vicious cycle of gender inequality, poverty and malnutrition be broken through the microfinancing of women SHGs? Explain with examples.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2021_06",
+      "year": 2021,
+      "questionNumber": 6,
+      "directive": "Discuss",
+      "theme": "Rights Issues \u2013 Disability, Women, Children, Minorities, LGBTQIA+",
+      "question": "Though women in post-Independent India have excelled in various fields, the social attitude towards women and the feminist movement has been patriarchal.\u201d Apart from women education and women empowerment schemes, what interventions can help change this milieu?",
+      "syllabusNodeId": "GS2-POL-CITIZEN"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2020_01",
+      "year": 2020,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "In order to enhance the prospects of social development, sound and adequate health care policies are needed particularly in the fields of geriatric and maternal health care. Discuss.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2020_04",
+      "year": 2020,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Poverty, Hunger, Inclusive Development, and Human Development",
+      "question": "The incidence and intensity of poverty are more important in determining poverty based on income alone.\u201d In this context analyse the latest United Nations Multidimensional Poverty Index Report.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2020_06",
+      "year": 2020,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "National Education Policy 2020 isin conformity with the Sustainable Development Goal-4 (2030). It intends to restructure and reorient education system in India. Critically examine the statement.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2019_02",
+      "year": 2019,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Poverty, Hunger, Inclusive Development, and Human Development",
+      "question": "Despite the consistent experience of high growth, India still goes with the lowest indicators of human development. Examine the issues that make balanced and inclusive development elusive.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2019_03",
+      "year": 2019,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Poverty, Hunger, Inclusive Development, and Human Development",
+      "question": "here is a growing divergence in the relationship between poverty and hunger in India. The shrinking of social expenditure by the government is forcing the poor to spend more on non-food essential items squeezing their food budget. Elucidate",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2019_05",
+      "year": 2019,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "Rights Issues \u2013 Disability, Women, Children, Minorities, LGBTQIA+",
+      "question": "The reservation of seats for women in the institutions of local self-government has had a limited impact on the patriarchal character of the Indian Political Process.\u201d Comment.",
+      "syllabusNodeId": "GS2-POL-CITIZEN"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2019_08",
+      "year": 2019,
+      "questionNumber": 8,
+      "directive": "Comment",
+      "theme": "Welfare Schemes, Vulnerable Sections, Social Sector Interventions",
+      "question": "Performance of welfare schemes that are implemented for vulnerable sections is not so effective due to absence of their awareness and active involvement at all stages of policy process. Discuss.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2018_02",
+      "year": 2018,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "Appropriate local community-level healthcare intervention is a prerequisite to achieve \u2018Health for All\u2019 in India. Explain.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2018_04",
+      "year": 2018,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Rights Issues \u2013 Disability, Women, Children, Minorities, LGBTQIA+",
+      "question": "Multiplicity of various commissions for the vulnerable sections of the society leads to problems of overlapping jurisdiction & duplication of functions. Is it better to merge all commissions into an umbrella human rights commission? Argue your case.",
+      "syllabusNodeId": "GS2-POL-CITIZEN"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2018_05",
+      "year": 2018,
+      "questionNumber": 5,
+      "directive": "Discuss",
+      "theme": "Poverty, Hunger, Inclusive Development, and Human Development",
+      "question": "How far do you agree with the view that the focus on lack of availability of food as the main cause of hunger takes the attention away from ineffective human development policies in India?",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2017_01",
+      "year": 2017,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Poverty, Hunger, Inclusive Development, and Human Development",
+      "question": "To ensure effective implementation of policies addressing water, sanitation and hygiene needs, the identification of beneficiary segments is to be synchronized with the anticipated outcomes\u2019. Examine the statement in the context of the WASH scheme.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2017_02",
+      "year": 2017,
+      "questionNumber": 2,
+      "directive": "Comment",
+      "theme": "Rights Issues \u2013 Disability, Women, Children, Minorities, LGBTQIA+",
+      "question": "Does the Rights of Persons with Disabilities Act, 2016 ensure effective mechanism for empowerment and inclusion of the intended beneficiaries in the society? Discuss.",
+      "syllabusNodeId": "GS2-POL-CITIZEN"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2017_03",
+      "year": 2017,
+      "questionNumber": 3,
+      "directive": "Comment",
+      "theme": "Poverty, Hunger, Inclusive Development, and Human Development",
+      "question": "Hunger and Poverty are the biggest challenges for good governance in India still today. Evaluate how far successive governments have progressed in dealing with these humongous problems. Suggest measures for improvement.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2017_05",
+      "year": 2017,
+      "questionNumber": 5,
+      "directive": "Comment",
+      "theme": "Poverty, Hunger, Inclusive Development, and Human Development",
+      "question": "Poverty Alleviation programs in India remain mere showpieces until and unless they are backed up by political will.\u201d Discuss with reference to the performance of the major poverty alleviation program in India.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2016_01",
+      "year": 2016,
+      "questionNumber": 1,
+      "directive": "Discuss",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "Professor Amartya Sen has advocated important reforms in the realms of primary education and primary health care. What are your suggestions to improve their status and performance?",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2016_07",
+      "year": 2016,
+      "questionNumber": 7,
+      "directive": "Examine",
+      "theme": "Rights Issues \u2013 Disability, Women, Children, Minorities, LGBTQIA+",
+      "question": "Examine the main provisions of the National Child Policy and throw light on the status of its implementation.",
+      "syllabusNodeId": "GS2-POL-CITIZEN"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2016_08",
+      "year": 2016,
+      "questionNumber": 8,
+      "directive": "Discuss",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "Demographic Dividend in India will remain only theoretical unless our manpower becomes more educated, aware, skilled and creative.\u201d What measures have been taken by the government to enhance the capacity of our population to be more productive and employable?",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2015_04",
+      "year": 2015,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "The quality of higher education in India requires major improvement to make it internationally competitive. Do you think that the entry of foreign educational institutions would help improve the quality of technical and higher education in the country. Discuss.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2015_05",
+      "year": 2015,
+      "questionNumber": 5,
+      "directive": "Discuss",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "Public health system has limitations in providing universal health coverage. Do you think that the private sector can help in bridging the gap? What other viable alternatives do you suggest?",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2015_06",
+      "year": 2015,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Poverty, Hunger, Inclusive Development, and Human Development",
+      "question": "Though there have been several different estimates of poverty in India, all indicate reduction in poverty over time. Do you agree? Critically examine with reference to urban and rural poverty indicators.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2014_05",
+      "year": 2014,
+      "questionNumber": 5,
+      "directive": "Discuss",
+      "theme": "Welfare Schemes, Vulnerable Sections, Social Sector Interventions",
+      "question": "Do government\u2019s schemes for up-lifting vulnerable and backward communities by protecting required social resources for them, lead to their exclusion in establishing businesses in urban economies?",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2014_07",
+      "year": 2014,
+      "questionNumber": 7,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "Should the premier institutes like IITs/ IIMs be allowed to retain premier status, allowed more academic independence in designing courses and also decide mode/ criteria of selection of students. Discuss in light of the growing challenges",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2013_01",
+      "year": 2013,
+      "questionNumber": 1,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "The concept of Mid Day Meal (MDM) scheme is almost a century old in India with early beginnings in Madras Presidency in pre-independent India. The scheme has again been given impetus in most states in the last two decades. Critically examine its twin objectives, latest mandates and success.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2013_04",
+      "year": 2013,
+      "questionNumber": 4,
+      "directive": "Comment",
+      "theme": "Welfare Schemes, Vulnerable Sections, Social Sector Interventions",
+      "question": "The Central Government frequently complains on the poor performance of the State Governments in eradicating suffering of the vulnerable sections of the society. Restructuring of Centrally sponsored schemes across the sectors for ameliorating the cause of vulnerable sections of population aims at providing flexibility to the States in better implementation. Critically evaluate.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2013_06",
+      "year": 2013,
+      "questionNumber": 6,
+      "directive": "Comment",
+      "theme": "Poverty, Hunger, Inclusive Development, and Human Development",
+      "question": "The basis of providing urban amenities in rural areas (PURA) is rooted in establishing connectivity. Comment.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    },
+    {
+      "id": "MAIN_GS2_SOCIAL_JUSTICE_2013_07",
+      "year": 2013,
+      "questionNumber": 7,
+      "directive": "Comment",
+      "theme": "Education, Health, and Human Resource Development",
+      "question": "Identify the Millennium Development Goals (MDGs) that are related to health. Discuss the success of the actions taken by the Government for achieving the same.",
+      "syllabusNodeId": "GS2-GOV-SOCIO-ECON"
+    }
+  ]
+}
