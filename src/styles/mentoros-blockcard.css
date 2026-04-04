@@ -1,0 +1,339 @@
+/* ============================================================
+   mentoros-blockcard.css
+   DROP INTO: src/styles/mentoros-blockcard.css
+   Import in index.css AFTER mentoros-theme.css:
+     @import './styles/mentoros-blockcard.css';
+
+   Styles the BlockCard component to match screenshot 5:
+   - 2-column grid (handled by .blocks-grid in mentoros-layout.css)
+   - Subject bold + topic sub-text
+   - Time range right-aligned
+   - Status badge (amber=planned, green=active, blue=paused, grey=done)
+   - Mapping: code inline with badge
+   - Topic chips row (rounded pills)
+   - Meta row: Started · Ended · Actual · Pause · Pauses
+   - Syllabus path text (muted)
+   - PYQ node linked line
+   - Action buttons: Pause (dark) · Stop (red accent) · Active label
+   ============================================================ */
+
+/* ── CARD CONTAINER ── */
+.bc-card {
+  background: var(--s2, #1E1E1E);
+  border: 1px solid #2A2A2A;
+  border-radius: 14px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.18s, transform 0.18s;
+  position: relative;
+  overflow: hidden;
+}
+
+.bc-card:hover {
+  border-color: #333;
+  transform: translateY(-1px);
+}
+
+/* active card gets a subtle green top line */
+.bc-card--active {
+  border-color: rgba(34, 197, 94, 0.30);
+  background: linear-gradient(180deg, rgba(34,197,94,0.03), transparent 40%), var(--s2, #1E1E1E);
+}
+.bc-card--active::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--grn, #22C55E), transparent 65%);
+}
+
+/* completed card — muted border */
+.bc-card--done {
+  opacity: 0.80;
+}
+
+/* ── ROW 1: HEADER ── */
+.bc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.bc-subject-wrap {
+  min-width: 0;
+}
+
+.bc-subject {
+  font-family: var(--disp, 'Outfit', sans-serif);
+  font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--txt, rgba(255,255,255,0.92));
+  margin-bottom: 3px;
+}
+
+.bc-topic-sub {
+  font-family: var(--sans, 'Space Grotesk', sans-serif);
+  font-size: 0.80rem;
+  color: var(--mid, rgba(255,255,255,0.50));
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.bc-time-wrap {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.bc-time-range {
+  font-family: var(--mono, 'Space Mono', monospace);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--txt, rgba(255,255,255,0.92));
+  white-space: nowrap;
+}
+
+.bc-duration {
+  font-family: var(--mono, 'Space Mono', monospace);
+  font-size: 0.65rem;
+  color: var(--mid, rgba(255,255,255,0.50));
+  margin-top: 3px;
+  text-align: right;
+}
+
+/* ── ROW 2: STATUS BADGE + MAPPING ── */
+.bc-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Status badge base */
+.bc-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: var(--mono, 'Space Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: lowercase;
+  border: 1px solid transparent;
+}
+
+/* planned — amber outline */
+.bc-badge--planned {
+  color: var(--ylw, #F59E0B);
+  background: rgba(245, 158, 11, 0.10);
+  border-color: rgba(245, 158, 11, 0.28);
+}
+
+/* active — green filled */
+.bc-badge--active {
+  color: #111;
+  background: var(--grn, #22C55E);
+  border-color: var(--grn, #22C55E);
+}
+
+/* paused — blue outline */
+.bc-badge--paused {
+  color: var(--blu, #60A5FA);
+  background: rgba(96, 165, 250, 0.10);
+  border-color: rgba(96, 165, 250, 0.28);
+}
+
+/* completed — muted grey */
+.bc-badge--done {
+  color: var(--mid, rgba(255,255,255,0.50));
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+}
+
+/* Mapping code inline label */
+.bc-mapping {
+  font-family: var(--mono, 'Space Mono', monospace);
+  font-size: 0.65rem;
+  color: var(--mid, rgba(255,255,255,0.50));
+  letter-spacing: 0.02em;
+}
+.bc-mapping strong {
+  color: var(--txt, rgba(255,255,255,0.88));
+  font-weight: 700;
+}
+
+/* ── ROW 3: TOPIC CHIPS ── */
+.bc-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.bc-chip {
+  padding: 5px 13px;
+  border-radius: 20px;
+  font-family: var(--mono, 'Space Mono', monospace);
+  font-size: 0.62rem;
+  font-weight: 500;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: var(--mid, rgba(255,255,255,0.55));
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+/* active card chips get a green tint */
+.bc-card--active .bc-chip {
+  background: rgba(34,197,94,0.08);
+  border-color: rgba(34,197,94,0.18);
+  color: rgba(34,197,94,0.85);
+}
+
+/* ── ROW 4: META ROW (Started · Ended · Actual · Pause · Pauses) ── */
+.bc-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-family: var(--sans, 'Space Grotesk', sans-serif);
+  font-size: 0.78rem;
+  color: var(--mid, rgba(255,255,255,0.50));
+  line-height: 1.5;
+}
+
+.bc-meta-row strong {
+  color: var(--txt, rgba(255,255,255,0.88));
+  font-weight: 700;
+}
+
+.bc-meta-planned {
+  color: var(--dim, rgba(255,255,255,0.28));
+  font-style: italic;
+}
+
+/* ── ROW 5: SYLLABUS PATH ── */
+.bc-path {
+  font-family: var(--sans, 'Space Grotesk', sans-serif);
+  font-size: 0.76rem;
+  color: var(--dim, rgba(255,255,255,0.30));
+  line-height: 1.5;
+  /* path like "GS3 > Science & Technology > Biotechnology" */
+}
+
+/* ── ROW 6: PYQ NODE LINKED ── */
+.bc-pyq-linked {
+  font-family: var(--sans, 'Space Grotesk', sans-serif);
+  font-size: 0.76rem;
+  color: var(--dim, rgba(255,255,255,0.30));
+  line-height: 1.5;
+}
+.bc-pyq-linked strong {
+  color: var(--mid, rgba(255,255,255,0.52));
+  font-weight: 700;
+}
+
+/* ── ROW 7: ACTION BUTTONS ── */
+.bc-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* Base button */
+.bc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-family: var(--sans, 'Space Grotesk', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.bc-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* PRIMARY (Start / Resume) — amber fill matching screenshot 5 */
+.bc-btn--primary {
+  background: var(--saf, #FF8C00);
+  color: #111;
+  border-color: var(--saf, #FF8C00);
+  box-shadow: 0 2px 10px rgba(255,140,0,0.25);
+}
+.bc-btn--primary:hover:not(:disabled) {
+  background: #FFA020;
+  box-shadow: 0 4px 16px rgba(255,140,0,0.38);
+}
+
+/* PAUSE — dark filled, like screenshot */
+.bc-btn--pause {
+  background: #2A2A2A;
+  color: var(--txt, rgba(255,255,255,0.88));
+  border-color: #3A3A3A;
+}
+.bc-btn--pause:hover:not(:disabled) {
+  background: #333;
+  border-color: #444;
+}
+
+/* STOP — red accent */
+.bc-btn--stop {
+  background: rgba(239,68,68,0.12);
+  color: var(--red, #EF4444);
+  border-color: rgba(239,68,68,0.30);
+}
+.bc-btn--stop:hover:not(:disabled) {
+  background: rgba(239,68,68,0.22);
+  border-color: rgba(239,68,68,0.50);
+}
+
+/* STATUS LABEL (text next to buttons — "Active", "Paused") */
+.bc-status-label {
+  font-family: var(--sans, 'Space Grotesk', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.bc-status-label--active { color: var(--grn, #22C55E); }
+.bc-status-label--paused { color: var(--blu, #60A5FA); }
+.bc-status-label--done   { color: var(--mid, rgba(255,255,255,0.50)); }
+
+/* ── BLOCKS GRID (2-column, matching screenshot 5) ── */
+/* This overrides/extends .blocks-grid from mentoros-layout.css */
+.blocks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* Collapse to 1 column on narrow screens */
+@media (max-width: 900px) {
+  .blocks-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .bc-card {
+    padding: 16px 16px;
+  }
+  .bc-subject {
+    font-size: 0.96rem;
+  }
+  .bc-meta-row {
+    gap: 4px 10px;
+    font-size: 0.73rem;
+  }
+}

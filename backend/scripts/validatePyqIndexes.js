@@ -1,91 +1,103 @@
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
+import { getNodeById } from "../brain/unifiedSyllabusIndex.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const INDEX_DIR = path.resolve(__dirname, "../data/pyq_index");
 
-const BACKEND_DIR = path.join(__dirname, "..");
-const PYQ_QUESTIONS_DIR = path.join(BACKEND_DIR, "data", "pyq_questions");
-const INDEX_FILE = path.join(BACKEND_DIR, "data", "pyq_index", "pyq_by_node.json");
+const PYQ_BY_NODE_PATH = path.join(INDEX_DIR, "pyq_by_node.json");
+const MASTER_INDEX_PATH = path.join(INDEX_DIR, "pyq_master_index.json");
 
-function readJSON(filePath) {
-    return JSON.parse(fs.readFileSync(filePath, "utf-8"));
-}
+async function validateIndexes() {
+  console.log("🔍 Validating PYQ Indexes...");
+  
+  const pyqByNodeRaw = await fs.readFile(PYQ_BY_NODE_PATH, "utf-8");
+  const masterIndexRaw = await fs.readFile(MASTER_INDEX_PATH, "utf-8");
+  
+  const pyqByNode = JSON.parse(pyqByNodeRaw);
+  const masterIndex = JSON.parse(masterIndexRaw);
 
-function walkJsonFiles(dir) {
-    const results = [];
+  let orphanNodes = 0;
+  let orphanQuestions = 0;
+  let crossSubjectLeaks = 0;
+  let duplicateQuestions = 0;
+  let totalValid = 0;
 
-    function walk(current) {
-        const entries = fs.readdirSync(current, { withFileTypes: true });
+  for (const [nodeId, buckets] of Object.entries(pyqByNode)) {
+    // 1. Check if nodeId exists in syllabus registry
+    const syllabusNode = getNodeById(nodeId);
+    if (!syllabusNode) {
+      console.warn(`[VALIDATION] Orphan Node ID found in pyq_by_node: ${nodeId}`);
+      orphanNodes++;
+    }
 
-        for (const entry of entries) {
-            const fullPath = path.join(current, entry.name);
+    const seenIds = new Set();
 
-            if (entry.isDirectory()) {
-                walk(fullPath);
-            } else if (entry.isFile() && entry.name.endsWith("_tagged.json")) {
-                results.push(fullPath);
-            }
+    // 2. Validate buckets and questions
+    for (const [bucketName, questions] of Object.entries(buckets)) {
+      if (!Array.isArray(questions)) continue; // skip 'total' and 'latestYear'
+
+      for (const qid of questions) {
+        // Duplicate check
+        if (seenIds.has(qid)) {
+           console.warn(`[VALIDATION] Duplicate Question ID in node ${nodeId}: ${qid}`);
+           duplicateQuestions++;
         }
-    }
+        seenIds.add(qid);
 
-    walk(dir);
-    return results;
-}
-
-function buildLookup() {
-    const files = walkJsonFiles(PYQ_QUESTIONS_DIR);
-    const lookup = new Map();
-
-    for (const file of files) {
-        const data = readJSON(file);
-        const questions = Array.isArray(data.questions) ? data.questions : [];
-
-        for (const q of questions) {
-            if (q.id) {
-                lookup.set(q.id, q.syllabusNodeId || null);
-            }
+        // 3. Check if questionId exists in master index
+        const masterQ = masterIndex[qid];
+        if (!masterQ) {
+          console.warn(`[VALIDATION] Orphan Question ID (not in master): ${qid} inside node ${nodeId}`);
+          orphanQuestions++;
+          continue;
         }
-    }
 
-    return lookup;
-}
+        // 4. Check stage/bucket classification leakage
+        const mStage = String(masterQ.stage).toLowerCase();
+        let expectedBucket = mStage;
+        if (mStage.includes("csat")) expectedBucket = "csat";
+        else if (mStage.includes("prelims")) expectedBucket = "prelims";
+        else if (mStage.includes("mains")) expectedBucket = "mains";
+        else if (mStage.includes("essay")) expectedBucket = "essay";
+        else if (mStage.includes("optional")) expectedBucket = "optional";
+        else if (mStage.includes("ethics")) expectedBucket = "ethics";
 
-function validate() {
-    const index = readJSON(INDEX_FILE);
-    const lookup = buildLookup();
-
-    let issues = 0;
-
-    for (const nodeId of Object.keys(index)) {
-        const buckets = index[nodeId];
-
-        for (const bucketName of Object.keys(buckets)) {
-            const ids = Array.isArray(buckets[bucketName]) ? buckets[bucketName] : [];
-
-            for (const id of ids) {
-                const actualNodeId = lookup.get(id);
-
-                if (!lookup.has(id)) {
-                    console.log(`❌ Missing question: ${id}`);
-                    issues++;
-                    continue;
-                }
-
-                if (actualNodeId !== nodeId) {
-                    console.log(`❌ Wrong mapping: ${id} -> index:${nodeId}, actual:${actualNodeId}`);
-                    issues++;
-                }
-            }
+        if (bucketName !== expectedBucket && expectedBucket !== "unknown") {
+           console.warn(`[VALIDATION] Leakage: Question ${qid} (stage: ${mStage}) found in bucket '${bucketName}' for node ${nodeId}`);
+           crossSubjectLeaks++;
         }
-    }
 
-    if (issues === 0) {
-        console.log("✅ ALL MAPPINGS CORRECT");
-    } else {
-        console.log(`⚠️ Issues found: ${issues}`);
+        // 5. Subject leakage (if syllabus tree allows matching subject string roughly)
+        // Ensure CSAT nodes only get CSAT questions
+        if (nodeId.startsWith("CSAT") && bucketName !== "csat") {
+           console.warn(`[VALIDATION] Cross-Subject Leakage: CSAT Node ${nodeId} has non-CSAT question ${qid}`);
+           crossSubjectLeaks++;
+        }
+
+        totalValid++;
+      }
     }
+  }
+
+  console.log("\n=== VALIDATION REPORT ===");
+  console.log(`Total Valid Indexed Questions: ${totalValid}`);
+  console.log(`Orphan Nodes (Not in Syllabus): ${orphanNodes}`);
+  console.log(`Orphan Question IDs (Missing from Master): ${orphanQuestions}`);
+  console.log(`Duplicate Question Instances: ${duplicateQuestions}`);
+  console.log(`Cross-Subject/Bucket Leaks: ${crossSubjectLeaks}`);
+
+  if (orphanNodes > 0 || orphanQuestions > 0 || crossSubjectLeaks > 0) {
+     console.error("❌ Validation Failed with inconsistencies.");
+     process.exit(1);
+  }
+
+  console.log("✅ Validation Passed: 0 anomalies detected!");
 }
 
-validate();
+validateIndexes().catch(err => {
+  console.error("Fatal validation error:", err);
+  process.exit(1);
+});

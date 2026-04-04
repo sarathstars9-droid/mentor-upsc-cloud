@@ -1,0 +1,639 @@
+{
+  "step1": {
+    "endpoint": "POST /api/mains/attempt/save",
+    "requestPayload": {
+      "userId": "test_user_001",
+      "source": {
+        "paper": "GS1",
+        "questionId": "GS1_2023_Q14",
+        "questionMarks": 15,
+        "year": 2023
+      },
+      "question": {
+        "text": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the independence movement?",
+        "marks": 15,
+        "wordLimit": 250,
+        "paper": "GS1"
+      },
+      "writingSession": {
+        "startedAt": "2026-04-04T20:00:00.000Z",
+        "completedAt": "2026-04-04T20:18:00.000Z",
+        "durationMinutes": 18,
+        "wordCount": 238
+      },
+      "answerUpload": {
+        "method": "typed",
+        "extractedText": "Women played a pivotal role in India freedom struggle. They participated in Non-Cooperation, Civil Disobedience, and Quit India. Leaders like Sarojini Naidu, Annie Besant gave new dimensions."
+      },
+      "selfReview": {
+        "selfScore": 10,
+        "selfNote": "Covered social dimensions but missed economic angle"
+      }
+    },
+    "httpStatus": 200,
+    "response": {
+      "ok": true,
+      "attemptId": "attempt_1775318023070_rx9xyh"
+    },
+    "createdFile": "data/mains_reviews/attempts/attempt_1775318023070_rx9xyh.json"
+  },
+  "step2": {
+    "endpoint": "POST /api/mains/review/save",
+    "requestPayload": {
+      "attemptId": "attempt_1775318023070_rx9xyh",
+      "userId": "test_user_001",
+      "reviewSource": {
+        "type": "chatgpt_pasted"
+      },
+      "rawReviewText": "(2261 chars — sections A–I present)",
+      "userAgreement": {
+        "value": "agree",
+        "note": "Looks accurate"
+      }
+    },
+    "httpStatus": 200,
+    "response": {
+      "ok": true,
+      "reviewId": "review_1775318023095_njtzx4"
+    },
+    "createdFile": "data/mains_reviews/reviews/review_1775318023095_njtzx4.json"
+  },
+  "step3": {
+    "endpoint": "POST /api/mains/review/process",
+    "requestPayload": {
+      "attemptId": "attempt_1775318023070_rx9xyh",
+      "reviewId": "review_1775318023095_njtzx4"
+    },
+    "httpStatus": 200,
+    "response": {
+      "ok": true,
+      "result": {
+        "qualityLabel": "elite_review",
+        "qualityScore": 0.95,
+        "marksAwarded": 10,
+        "marksTotal": 15,
+        "mistakeFlags": [
+          "missed_core_demand",
+          "poor_directive_handling",
+          "low_dimensionality",
+          "weak_analysis",
+          "no_examples",
+          "weak_conclusion"
+        ],
+        "revisionTaskCount": 5,
+        "mistakeBookSynced": true,
+        "revisionSynced": true,
+        "verdictLabel": "good but not ranker level",
+        "trustWeight": 1,
+        "auditFlags": [],
+        "strengths": [
+          "Mentions Non-Cooperation, Civil Disobedience, Quit India movements",
+          "Names Sarojini Naidu and Annie Besant",
+          "Economic participation: spinning charkha, boycott of foreign goods"
+        ],
+        "missingDimensions": [
+          "Mentions Non-Cooperation, Civil Disobedience, Quit India movements",
+          "Names Sarojini Naidu and Annie Besant",
+          "Economic participation: spinning charkha, boycott of foreign goods",
+          "Constitutional angle: demand for adult franchise",
+          "Regional leaders: Kalpana Dutt, Matangini Hazra"
+        ],
+        "upgradeActions": [
+          "Add structured intro about democratization and moral authority",
+          "Expand economic dimension: charkha, boycott, pickets",
+          "Include Rani of Jhansi Regiment and Aruna Asaf Ali underground role",
+          "Add dimension on how women forced Congress to take up gender equality",
+          "Conclude with Article 15 constitutional legacy"
+        ],
+        "examinerConcerns": [
+          "Treats women as passive participants not agents of transformation",
+          "Missing analysis of how movement changed from elite to mass",
+          "No mention of constitutional milestones post-1920",
+          "Directive word requires multi-dimensional exploration only 2 dimensions covered",
+          "Conclusion adds no synthesis and reads like repetition"
+        ],
+        "directiveHandled": {
+          "status": "partly",
+          "directiveWord": "Discuss"
+        },
+        "structureRatings": {
+          "intro": "average",
+          "body": "average",
+          "conclusion": "weak"
+        },
+        "rewriteBlueprint": [
+          "Intro: Women as agents of transformation not just participants",
+          "Body point 1: Pre-1920 limited but symbolic participation",
+          "Body point 2: Non-Cooperation mass entry charkha khadi",
+          "Body point 3: Civil Disobedience salt satyagraha arrests",
+          "Body point 4: Quit India Aruna Asaf Ali underground",
+          "Body point 5: INA Rani of Jhansi Regiment Lakshmi Sahgal",
+          "Conclusion: Elite to mass transformation constitutional legacy"
+        ],
+        "revisionTasks": [
+          {
+            "schema": "mainsRevisionTask",
+            "taskType": "rewrite_same_question",
+            "paper": "GS1",
+            "question": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "priority": 10,
+            "dueIn": 1,
+            "createdAt": "2026-04-04T15:53:43.116Z",
+            "status": "pending"
+          },
+          {
+            "schema": "mainsRevisionTask",
+            "taskType": "directive_practice",
+            "paper": "GS1",
+            "question": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "priority": 9,
+            "dueIn": 1,
+            "createdAt": "2026-04-04T15:53:43.116Z",
+            "status": "pending"
+          },
+          {
+            "schema": "mainsRevisionTask",
+            "taskType": "dimension_expansion",
+            "paper": "GS1",
+            "question": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "priority": 8,
+            "dueIn": 3,
+            "createdAt": "2026-04-04T15:53:43.116Z",
+            "status": "pending"
+          },
+          {
+            "schema": "mainsRevisionTask",
+            "taskType": "example_enrichment",
+            "paper": "GS1",
+            "question": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "priority": 6,
+            "dueIn": 3,
+            "createdAt": "2026-04-04T15:53:43.116Z",
+            "status": "pending"
+          },
+          {
+            "schema": "mainsRevisionTask",
+            "taskType": "rewrite_conclusion_only",
+            "paper": "GS1",
+            "question": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "priority": 5,
+            "dueIn": 7,
+            "createdAt": "2026-04-04T15:53:43.116Z",
+            "status": "pending"
+          }
+        ],
+        "mistakeRecords": [
+          {
+            "schema": "mainsMistakeRecord",
+            "mistakeId": "missed_core_demand",
+            "paper": "GS1",
+            "marks": 15,
+            "questionText": "Discuss the significance of women participation in the freedom struggle of India. How did it transfo",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "baseSeverity": 1,
+            "trustWeight": 1,
+            "adjustedSeverity": 1,
+            "reviewQuality": "elite_review",
+            "flaggedAt": "2026-04-04T15:53:43.115Z",
+            "mustRevise": true,
+            "reviseNote": ""
+          },
+          {
+            "schema": "mainsMistakeRecord",
+            "mistakeId": "poor_directive_handling",
+            "paper": "GS1",
+            "marks": 15,
+            "questionText": "Discuss the significance of women participation in the freedom struggle of India. How did it transfo",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "baseSeverity": 0.95,
+            "trustWeight": 1,
+            "adjustedSeverity": 0.95,
+            "reviewQuality": "elite_review",
+            "flaggedAt": "2026-04-04T15:53:43.115Z",
+            "mustRevise": true,
+            "reviseNote": ""
+          },
+          {
+            "schema": "mainsMistakeRecord",
+            "mistakeId": "low_dimensionality",
+            "paper": "GS1",
+            "marks": 15,
+            "questionText": "Discuss the significance of women participation in the freedom struggle of India. How did it transfo",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "baseSeverity": 0.8,
+            "trustWeight": 1,
+            "adjustedSeverity": 0.8,
+            "reviewQuality": "elite_review",
+            "flaggedAt": "2026-04-04T15:53:43.115Z",
+            "mustRevise": true,
+            "reviseNote": ""
+          },
+          {
+            "schema": "mainsMistakeRecord",
+            "mistakeId": "weak_analysis",
+            "paper": "GS1",
+            "marks": 15,
+            "questionText": "Discuss the significance of women participation in the freedom struggle of India. How did it transfo",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "baseSeverity": 0.75,
+            "trustWeight": 1,
+            "adjustedSeverity": 0.75,
+            "reviewQuality": "elite_review",
+            "flaggedAt": "2026-04-04T15:53:43.115Z",
+            "mustRevise": true,
+            "reviseNote": ""
+          },
+          {
+            "schema": "mainsMistakeRecord",
+            "mistakeId": "no_examples",
+            "paper": "GS1",
+            "marks": 15,
+            "questionText": "Discuss the significance of women participation in the freedom struggle of India. How did it transfo",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "baseSeverity": 0.65,
+            "trustWeight": 1,
+            "adjustedSeverity": 0.65,
+            "reviewQuality": "elite_review",
+            "flaggedAt": "2026-04-04T15:53:43.115Z",
+            "mustRevise": true,
+            "reviseNote": ""
+          },
+          {
+            "schema": "mainsMistakeRecord",
+            "mistakeId": "weak_conclusion",
+            "paper": "GS1",
+            "marks": 15,
+            "questionText": "Discuss the significance of women participation in the freedom struggle of India. How did it transfo",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "baseSeverity": 0.6,
+            "trustWeight": 1,
+            "adjustedSeverity": 0.6,
+            "reviewQuality": "elite_review",
+            "flaggedAt": "2026-04-04T15:53:43.115Z",
+            "mustRevise": true,
+            "reviseNote": ""
+          }
+        ],
+        "sectionCount": 9,
+        "totalSections": 9,
+        "isPartial": false,
+        "processedAt": "2026-04-04T15:53:43.118Z"
+      }
+    },
+    "createdFile": "data/mains_reviews/derived/attempt_1775318023070_rx9xyh_review_1775318023095_njtzx4.json"
+  },
+  "step4": {
+    "endpoint": "GET /api/mains/review/result?attemptId=attempt_1775318023070_rx9xyh&reviewId=review_1775318023095_njtzx4",
+    "httpStatus": 200,
+    "response": {
+      "ok": true,
+      "attempt": {
+        "schema": "mainsAnswerAttempt",
+        "attemptId": "attempt_1775318023070_rx9xyh",
+        "createdAt": "2026-04-04T15:53:43.070Z",
+        "userId": "test_user_001",
+        "source": {
+          "paper": "GS1",
+          "questionId": "GS1_2023_Q14",
+          "questionMarks": 15,
+          "year": 2023
+        },
+        "question": {
+          "text": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the independence movement?",
+          "marks": 15,
+          "wordLimit": 250,
+          "paper": "GS1"
+        },
+        "writingSession": {
+          "startedAt": "2026-04-04T20:00:00.000Z",
+          "completedAt": "2026-04-04T20:18:00.000Z",
+          "durationMinutes": 18,
+          "wordCount": 238
+        },
+        "answerUpload": {
+          "method": "typed",
+          "extractedText": "Women played a pivotal role in India freedom struggle. They participated in Non-Cooperation, Civil Disobedience, and Quit India. Leaders like Sarojini Naidu, Annie Besant gave new dimensions."
+        },
+        "extraction": {},
+        "selfReview": {
+          "selfScore": 10,
+          "selfNote": "Covered social dimensions but missed economic angle"
+        },
+        "status": "saved"
+      },
+      "review": {
+        "schema": "mainsExternalReview",
+        "reviewId": "review_1775318023095_njtzx4",
+        "attemptId": "attempt_1775318023070_rx9xyh",
+        "createdAt": "2026-04-04T15:53:43.095Z",
+        "userId": "test_user_001",
+        "reviewSource": {
+          "type": "chatgpt_pasted"
+        },
+        "rawReviewText": "A. Marks Awarded\n10/15\nJustification: The answer covers the social role of women but lacks economic and political dimensions.\n\nB. Directive Word Handling\nDirective word: Discuss\nWas it handled: Partly\nThe answer provides some dimensions but misses the transformative impact analysis.\n\nC. Structure Review\nIntro quality: Average\nBody organization: Average\nConclusion quality: Weak\nIntroduction lacks context-setting. Body paragraphs loosely connected. Conclusion is abrupt.\n\nD. Content Strength\nStrengths:\n- Mentions Non-Cooperation, Civil Disobedience, Quit India movements\n- Names Sarojini Naidu and Annie Besant\n\nMissing dimensions:\n- Economic participation: spinning charkha, boycott of foreign goods\n- Constitutional angle: demand for adult franchise\n- Regional leaders: Kalpana Dutt, Matangini Hazra\n- Shift from elite to mass movement\n\nFactual weaknesses:\n- No reference to Rani of Jhansi Regiment in INA\n- No data on women imprisoned during Quit India\n\nE. Examiner Concerns\n1. Treats women as passive participants not agents of transformation\n2. Missing analysis of how movement changed from elite to mass\n3. No mention of constitutional milestones post-1920\n4. Directive word requires multi-dimensional exploration only 2 dimensions covered\n5. Conclusion adds no synthesis and reads like repetition\n\nF. AIR-1 Upgrade Advice\n1. Add structured intro about democratization and moral authority\n2. Expand economic dimension: charkha, boycott, pickets\n3. Include Rani of Jhansi Regiment and Aruna Asaf Ali underground role\n4. Add dimension on how women forced Congress to take up gender equality\n5. Conclude with Article 15 constitutional legacy\n\nG. Rewrite Blueprint\nIntro: Women as agents of transformation not just participants\nBody point 1: Pre-1920 limited but symbolic participation\nBody point 2: Non-Cooperation mass entry charkha khadi\nBody point 3: Civil Disobedience salt satyagraha arrests\nBody point 4: Quit India Aruna Asaf Ali underground\nBody point 5: INA Rani of Jhansi Regiment Lakshmi Sahgal\nConclusion: Elite to mass transformation constitutional legacy\n\nH. Mistake Classification\n- poor directive handling\n- weak conclusion\n- low dimensionality\n- no examples\n- weak analysis\n- missed core demand\n\nI. Final Verdict\nGood but not ranker level",
+        "userAgreement": {
+          "value": "agree",
+          "note": "Looks accurate"
+        },
+        "status": "saved"
+      },
+      "audit": {
+        "schema": "mainsReviewAudit",
+        "auditedAt": "2026-04-04T15:53:43.113Z",
+        "scores": {
+          "completeness": 1,
+          "specificity": 1,
+          "actionability": 1,
+          "consistency": 0.65
+        },
+        "qualityScore": 0.95,
+        "qualityLabel": "elite_review",
+        "trustWeight": 1,
+        "auditFlags": [],
+        "marksAwarded": 10,
+        "marksTotal": 15,
+        "verdictLabel": "good but not ranker level",
+        "sectionCount": 9,
+        "totalSections": 9,
+        "isPartial": false
+      },
+      "intelligence": {
+        "parsed": {
+          "schema": "mainsParsedReview",
+          "parsedAt": "2026-04-04T15:53:43.112Z",
+          "isPartial": false,
+          "sectionCount": 9,
+          "totalSections": 9,
+          "sections": {
+            "marksAwarded": "Marks Awarded\n10/15\nJustification: The answer covers the social role of women but lacks economic and political dimensions.",
+            "directiveWordHandling": "Directive Word Handling\nDirective word: Discuss\nWas it handled: Partly\nThe answer provides some dimensions but misses the transformative impact analysis.",
+            "structureReview": "Structure Review\nIntro quality: Average\nBody organization: Average\nConclusion quality: Weak\nIntroduction lacks context-setting. Body paragraphs loosely connected. Conclusion is abrupt.",
+            "contentStrength": "Content Strength\nStrengths:\n- Mentions Non-Cooperation, Civil Disobedience, Quit India movements\n- Names Sarojini Naidu and Annie Besant\n\nMissing dimensions:\n- Economic participation: spinning charkha, boycott of foreign goods\n- Constitutional angle: demand for adult franchise\n- Regional leaders: Kalpana Dutt, Matangini Hazra\n- Shift from elite to mass movement\n\nFactual weaknesses:\n- No reference to Rani of Jhansi Regiment in INA\n- No data on women imprisoned during Quit India",
+            "examinerConcerns": "Examiner Concerns\n1. Treats women as passive participants not agents of transformation\n2. Missing analysis of how movement changed from elite to mass\n3. No mention of constitutional milestones post-1920\n4. Directive word requires multi-dimensional exploration only 2 dimensions covered\n5. Conclusion adds no synthesis and reads like repetition",
+            "air1UpgradeAdvice": "AIR-1 Upgrade Advice\n1. Add structured intro about democratization and moral authority\n2. Expand economic dimension: charkha, boycott, pickets\n3. Include Rani of Jhansi Regiment and Aruna Asaf Ali underground role\n4. Add dimension on how women forced Congress to take up gender equality\n5. Conclude with Article 15 constitutional legacy",
+            "rewriteBlueprint": "Rewrite Blueprint\nIntro: Women as agents of transformation not just participants\nBody point 1: Pre-1920 limited but symbolic participation\nBody point 2: Non-Cooperation mass entry charkha khadi\nBody point 3: Civil Disobedience salt satyagraha arrests\nBody point 4: Quit India Aruna Asaf Ali underground\nBody point 5: INA Rani of Jhansi Regiment Lakshmi Sahgal\nConclusion: Elite to mass transformation constitutional legacy",
+            "mistakeClassification": "Mistake Classification\n- poor directive handling\n- weak conclusion\n- low dimensionality\n- no examples\n- weak analysis\n- missed core demand",
+            "finalVerdict": "Final Verdict\nGood but not ranker level"
+          },
+          "extracted": {
+            "marksAwarded": 10,
+            "marksTotal": 15,
+            "verdictLabel": "good but not ranker level",
+            "rawMistakeLabels": [
+              "missed_core_demand",
+              "poor_directive_handling",
+              "weak_conclusion",
+              "low_dimensionality",
+              "no_examples",
+              "weak_analysis"
+            ]
+          }
+        },
+        "signals": {
+          "schema": "mainsReviewSignals",
+          "extractedAt": "2026-04-04T15:53:43.115Z",
+          "qualityLabel": "elite_review",
+          "trustWeight": 1,
+          "marksAwarded": 10,
+          "marksTotal": 15,
+          "verdictLabel": "good but not ranker level",
+          "directiveHandled": {
+            "status": "partly",
+            "directiveWord": "Discuss"
+          },
+          "structureRatings": {
+            "intro": "average",
+            "body": "average",
+            "conclusion": "weak"
+          },
+          "strengths": [
+            "Mentions Non-Cooperation, Civil Disobedience, Quit India movements",
+            "Names Sarojini Naidu and Annie Besant",
+            "Economic participation: spinning charkha, boycott of foreign goods"
+          ],
+          "missingDimensions": [
+            "Mentions Non-Cooperation, Civil Disobedience, Quit India movements",
+            "Names Sarojini Naidu and Annie Besant",
+            "Economic participation: spinning charkha, boycott of foreign goods",
+            "Constitutional angle: demand for adult franchise",
+            "Regional leaders: Kalpana Dutt, Matangini Hazra"
+          ],
+          "upgradeActions": [
+            "Add structured intro about democratization and moral authority",
+            "Expand economic dimension: charkha, boycott, pickets",
+            "Include Rani of Jhansi Regiment and Aruna Asaf Ali underground role",
+            "Add dimension on how women forced Congress to take up gender equality",
+            "Conclude with Article 15 constitutional legacy"
+          ],
+          "examinerConcerns": [
+            "Treats women as passive participants not agents of transformation",
+            "Missing analysis of how movement changed from elite to mass",
+            "No mention of constitutional milestones post-1920",
+            "Directive word requires multi-dimensional exploration only 2 dimensions covered",
+            "Conclusion adds no synthesis and reads like repetition"
+          ],
+          "rawMistakeLabels": [
+            "missed_core_demand",
+            "poor_directive_handling",
+            "weak_conclusion",
+            "low_dimensionality",
+            "no_examples",
+            "weak_analysis"
+          ],
+          "rewriteBlueprint": [
+            "Intro: Women as agents of transformation not just participants",
+            "Body point 1: Pre-1920 limited but symbolic participation",
+            "Body point 2: Non-Cooperation mass entry charkha khadi",
+            "Body point 3: Civil Disobedience salt satyagraha arrests",
+            "Body point 4: Quit India Aruna Asaf Ali underground",
+            "Body point 5: INA Rani of Jhansi Regiment Lakshmi Sahgal",
+            "Conclusion: Elite to mass transformation constitutional legacy"
+          ],
+          "auditFlags": []
+        },
+        "mistakeRecords": [
+          {
+            "schema": "mainsMistakeRecord",
+            "mistakeId": "missed_core_demand",
+            "paper": "GS1",
+            "marks": 15,
+            "questionText": "Discuss the significance of women participation in the freedom struggle of India. How did it transfo",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "baseSeverity": 1,
+            "trustWeight": 1,
+            "adjustedSeverity": 1,
+            "reviewQuality": "elite_review",
+            "flaggedAt": "2026-04-04T15:53:43.115Z",
+            "mustRevise": true,
+            "reviseNote": ""
+          },
+          {
+            "schema": "mainsMistakeRecord",
+            "mistakeId": "poor_directive_handling",
+            "paper": "GS1",
+            "marks": 15,
+            "questionText": "Discuss the significance of women participation in the freedom struggle of India. How did it transfo",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "baseSeverity": 0.95,
+            "trustWeight": 1,
+            "adjustedSeverity": 0.95,
+            "reviewQuality": "elite_review",
+            "flaggedAt": "2026-04-04T15:53:43.115Z",
+            "mustRevise": true,
+            "reviseNote": ""
+          },
+          {
+            "schema": "mainsMistakeRecord",
+            "mistakeId": "low_dimensionality",
+            "paper": "GS1",
+            "marks": 15,
+            "questionText": "Discuss the significance of women participation in the freedom struggle of India. How did it transfo",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "baseSeverity": 0.8,
+            "trustWeight": 1,
+            "adjustedSeverity": 0.8,
+            "reviewQuality": "elite_review",
+            "flaggedAt": "2026-04-04T15:53:43.115Z",
+            "mustRevise": true,
+            "reviseNote": ""
+          },
+          {
+            "schema": "mainsMistakeRecord",
+            "mistakeId": "weak_analysis",
+            "paper": "GS1",
+            "marks": 15,
+            "questionText": "Discuss the significance of women participation in the freedom struggle of India. How did it transfo",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "baseSeverity": 0.75,
+            "trustWeight": 1,
+            "adjustedSeverity": 0.75,
+            "reviewQuality": "elite_review",
+            "flaggedAt": "2026-04-04T15:53:43.115Z",
+            "mustRevise": true,
+            "reviseNote": ""
+          },
+          {
+            "schema": "mainsMistakeRecord",
+            "mistakeId": "no_examples",
+            "paper": "GS1",
+            "marks": 15,
+            "questionText": "Discuss the significance of women participation in the freedom struggle of India. How did it transfo",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "baseSeverity": 0.65,
+            "trustWeight": 1,
+            "adjustedSeverity": 0.65,
+            "reviewQuality": "elite_review",
+            "flaggedAt": "2026-04-04T15:53:43.115Z",
+            "mustRevise": true,
+            "reviseNote": ""
+          },
+          {
+            "schema": "mainsMistakeRecord",
+            "mistakeId": "weak_conclusion",
+            "paper": "GS1",
+            "marks": 15,
+            "questionText": "Discuss the significance of women participation in the freedom struggle of India. How did it transfo",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "baseSeverity": 0.6,
+            "trustWeight": 1,
+            "adjustedSeverity": 0.6,
+            "reviewQuality": "elite_review",
+            "flaggedAt": "2026-04-04T15:53:43.115Z",
+            "mustRevise": true,
+            "reviseNote": ""
+          }
+        ],
+        "revisionTasks": [
+          {
+            "schema": "mainsRevisionTask",
+            "taskType": "rewrite_same_question",
+            "paper": "GS1",
+            "question": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "priority": 10,
+            "dueIn": 1,
+            "createdAt": "2026-04-04T15:53:43.116Z",
+            "status": "pending"
+          },
+          {
+            "schema": "mainsRevisionTask",
+            "taskType": "directive_practice",
+            "paper": "GS1",
+            "question": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "priority": 9,
+            "dueIn": 1,
+            "createdAt": "2026-04-04T15:53:43.116Z",
+            "status": "pending"
+          },
+          {
+            "schema": "mainsRevisionTask",
+            "taskType": "dimension_expansion",
+            "paper": "GS1",
+            "question": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "priority": 8,
+            "dueIn": 3,
+            "createdAt": "2026-04-04T15:53:43.116Z",
+            "status": "pending"
+          },
+          {
+            "schema": "mainsRevisionTask",
+            "taskType": "example_enrichment",
+            "paper": "GS1",
+            "question": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "priority": 6,
+            "dueIn": 3,
+            "createdAt": "2026-04-04T15:53:43.116Z",
+            "status": "pending"
+          },
+          {
+            "schema": "mainsRevisionTask",
+            "taskType": "rewrite_conclusion_only",
+            "paper": "GS1",
+            "question": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the",
+            "attemptId": "attempt_1775318023070_rx9xyh",
+            "reviewId": "review_1775318023095_njtzx4",
+            "priority": 5,
+            "dueIn": 7,
+            "createdAt": "2026-04-04T15:53:43.116Z",
+            "status": "pending"
+          }
+        ]
+      }
+    }
+  },
+  "summary": {
+    "allPassed": true,
+    "attemptId": "attempt_1775318023070_rx9xyh",
+    "reviewId": "review_1775318023095_njtzx4",
+    "derivedFile": "data/mains_reviews/derived/attempt_1775318023070_rx9xyh_review_1775318023095_njtzx4.json"
+  }
+}

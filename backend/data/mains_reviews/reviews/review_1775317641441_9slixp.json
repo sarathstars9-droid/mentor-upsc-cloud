@@ -1,0 +1,16 @@
+{
+  "schema": "mainsExternalReview",
+  "reviewId": "review_1775317641441_9slixp",
+  "attemptId": "attempt_1775317641417_czkeem",
+  "createdAt": "2026-04-04T15:47:21.441Z",
+  "userId": "test_user_001",
+  "reviewSource": {
+    "type": "chatgpt_pasted"
+  },
+  "rawReviewText": "A. Marks Awarded\n10/15\nJustification: The answer covers the social role of women but lacks economic and political dimensions.\n\nB. Directive Word Handling\nDirective word: Discuss\nWas it handled: Partly\nThe answer provides some dimensions but misses the transformative impact analysis.\n\nC. Structure Review\nIntro quality: Average\nBody organization: Average\nConclusion quality: Weak\nIntroduction lacks context-setting. Body paragraphs loosely connected. Conclusion is abrupt.\n\nD. Content Strength\nStrengths:\n- Mentions Non-Cooperation, Civil Disobedience, Quit India movements\n- Names Sarojini Naidu and Annie Besant\n\nMissing dimensions:\n- Economic participation: spinning charkha, boycott of foreign goods\n- Constitutional angle: demand for adult franchise\n- Regional leaders: Kalpana Dutt, Matangini Hazra\n- Shift from elite to mass movement\n\nFactual weaknesses:\n- No reference to Rani of Jhansi Regiment in INA\n- No data on women imprisoned during Quit India\n\nE. Examiner Concerns\n1. Treats women as passive participants not agents of transformation\n2. Missing analysis of how movement changed from elite to mass\n3. No mention of constitutional milestones post-1920\n4. Directive word requires multi-dimensional exploration only 2 dimensions covered\n5. Conclusion adds no synthesis and reads like repetition\n\nF. AIR-1 Upgrade Advice\n1. Add structured intro about democratization and moral authority\n2. Expand economic dimension: charkha, boycott, pickets\n3. Include Rani of Jhansi Regiment and Aruna Asaf Ali underground role\n4. Add dimension on how women forced Congress to take up gender equality\n5. Conclude with Article 15 constitutional legacy\n\nG. Rewrite Blueprint\nIntro: Women as agents of transformation not just participants\nBody point 1: Pre-1920 limited but symbolic participation\nBody point 2: Non-Cooperation mass entry charkha khadi\nBody point 3: Civil Disobedience salt satyagraha arrests\nBody point 4: Quit India Aruna Asaf Ali underground\nBody point 5: INA Rani of Jhansi Regiment Lakshmi Sahgal\nConclusion: Elite to mass transformation constitutional legacy\n\nH. Mistake Classification\n- poor directive handling\n- weak conclusion\n- low dimensionality\n- no examples\n- weak analysis\n- missed core demand\n\nI. Final Verdict\nGood but not ranker level",
+  "userAgreement": {
+    "value": "agree",
+    "note": "Looks accurate"
+  },
+  "status": "saved"
+}

@@ -16,6 +16,7 @@ import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
 import pyqRoutes from "./routes/pyqRoutes.js";
+import buildTopicTest from "./phase3a/builders/buildTopicTest.js";
 import {
   getPyqSummaryForNode,
   getPyqsForTopic,
@@ -35,10 +36,18 @@ import {
   findTopMicroThemes,
 } from "./brain/findMicroTheme.js";
 import prelimsPyqTestRoutes from "./routes/prelimsPyqTestRoutes.js";
+import blockResolveRoute from "./routes/blockResolveRoute.js";
+import { loadGs1Questions } from "./api/mainsGs1Questions.js";
+import { loadGs1TopicQuestions } from "./api/mainsGs1TopicQuestions.js";
+import { loadGs2Questions } from "./api/mainsGs2Questions.js";
+import { loadGs3Questions } from "./api/mainsGs3Questions.js";
+import mainsThemeRoutes from "./routes/mainsThemeRoutes.js";
+import mainsReviewRoutes from "./routes/mainsReviewRoutes.js";
 import {
   computeSyllabusProgress,
 } from "./brain/syllabusProgressEngine.js";
 import prelimsAnalyticsRoute from "./routes/prelimsAnalyticsRoute.js";
+import { buildFullLengthTest, getAvailableFullLengthYears } from "./utils/buildFullLengthTest.js";
 import {
   registerDaySchedule,
   startBlock,
@@ -46,6 +55,11 @@ import {
   getDay,
   tickReminderEngine,
 } from "./reminderEngine.js";
+import { autoResolveNodes } from "./brain/autoNodeResolver.js";
+import { resolvePrelimsNodes } from "./brain/prelimsNodeResolver.js";
+import { getGSCounts, loadGSData } from "./data/loaders/gsLoader.js";
+import { loadCSATData } from "./data/loaders/csatLoader.js";
+import { processOcrText } from "./ocrMapping/index.js";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -461,6 +475,91 @@ app.use("/api/prelims", prelimsDashboardRoute);
 app.use("/api", pyqRoutes);
 app.use("/api/prelims/practice", prelimsPracticeRoute);
 app.use("/api/prelims/pyq", prelimsPyqTestRoutes);
+app.use("/api/blocks", blockResolveRoute);        // isolated block classification — no PYQ/CSAT side-effects
+
+/* -------------------- MAINS GS1 QUESTIONS API -------------------- */
+
+// Cache on first call — no file I/O on every request
+let _gs1Cache = null;
+function getGs1Questions() {
+  if (!_gs1Cache) _gs1Cache = loadGs1Questions();
+  return _gs1Cache;
+}
+
+app.get("/api/mains/gs1/questions", (req, res) => {
+  try {
+    const questions = getGs1Questions();
+    return res.json({ ok: true, count: questions.length, questions });
+  } catch (err) {
+    console.error("[mains/gs1] Failed to load questions:", err);
+    return res.status(500).json({ ok: false, error: "Failed to load GS1 questions" });
+  }
+});
+
+/* -------------------- MAINS GS1 TOPIC QUESTIONS API -------------------- */
+
+let _gs1TopicCache = null;
+function getGs1TopicQuestions() {
+  if (!_gs1TopicCache) _gs1TopicCache = loadGs1TopicQuestions();
+  return _gs1TopicCache;
+}
+
+app.get("/api/mains/gs1/topic-questions", (req, res) => {
+  try {
+    const questions = getGs1TopicQuestions();
+    return res.json({ ok: true, count: questions.length, questions });
+  } catch (err) {
+    console.error("[mains/gs1/topic] Failed to load topic questions:", err);
+    return res.status(500).json({ ok: false, error: "Failed to load GS1 topic questions" });
+  }
+});
+
+/* -------------------- MAINS GS2 QUESTIONS API -------------------- */
+
+let _gs2Cache = null;
+function getGs2Questions() {
+  if (!_gs2Cache) _gs2Cache = loadGs2Questions();
+  return _gs2Cache;
+}
+
+app.get("/api/mains/gs2/questions", (req, res) => {
+  try {
+    const questions = getGs2Questions();
+    return res.json({ ok: true, count: questions.length, questions });
+  } catch (err) {
+    console.error("[mains/gs2] Failed to load questions:", err);
+    return res.status(500).json({ ok: false, error: "Failed to load GS2 questions" });
+  }
+});
+
+/* -------------------- MAINS GS3 QUESTIONS API -------------------- */
+
+let _gs3Cache = null;
+function getGs3Questions() {
+  if (!_gs3Cache) _gs3Cache = loadGs3Questions();
+  return _gs3Cache;
+}
+
+/* -------------------- MAINS THEME INTELLIGENCE ROUTES -------------------- */
+// Safe additive mount — no overlap with existing gs1/gs2/gs3 question routes
+// because existing routes use /api/mains/gs*/questions (not /api/mains/themes or /api/mains/pyqs)
+app.use("/api/mains", mainsThemeRoutes);
+
+/* -------------------- MAINS REVIEW PIPELINE ROUTES -------------------- */
+// Handles: POST attempt/save, POST review/save, POST review/process, GET review/result
+// Safe mount — uses /api/mains/attempt/* and /api/mains/review/* (no conflict with theme/gs routes)
+app.use("/api/mains", mainsReviewRoutes);
+
+app.get("/api/mains/gs3/questions", (req, res) => {
+  try {
+    const questions = getGs3Questions();
+    return res.json({ ok: true, count: questions.length, questions });
+  } catch (err) {
+    console.error("[mains/gs3] Failed to load questions:", err);
+    return res.status(500).json({ ok: false, error: "Failed to load GS3 questions" });
+  }
+});
+
 app.get("/api/syllabus/dashboard", async (_req, res) => {
   try {
     const progress = await computeSyllabusProgress();
@@ -576,7 +675,36 @@ app.post("/api/loop-detect", (req, res) => {
     return res.status(500).json({ ok: false, message: String(e?.message || e) });
   }
 });
+function collectNodeAndDescendantIds(pyqByNode, requestedNodeId) {
+  const matchingNodeIds = Object.keys(pyqByNode || {}).filter(
+    (id) => id === requestedNodeId || id.startsWith(`${requestedNodeId}-`)
+  );
 
+  const result = {
+    prelims: new Set(),
+    mains: new Set(),
+    essay: new Set(),
+    ethics: new Set(),
+    optional: new Set(),
+    csat: new Set(),
+  };
+
+  for (const matchedNodeId of matchingNodeIds) {
+    const bucket = pyqByNode?.[matchedNodeId] || {};
+    for (const stage of Object.keys(result)) {
+      const ids = Array.isArray(bucket?.[stage]) ? bucket[stage] : [];
+      for (const qid of ids) result[stage].add(qid);
+    }
+  }
+
+  return {
+    matchingNodeIds,
+    aggregated: Object.fromEntries(
+      Object.entries(result).map(([stage, set]) => [stage, Array.from(set)])
+    ),
+  };
+}
+/* -------------------- PYQ NODE API -------------------- */
 /* -------------------- PYQ NODE API -------------------- */
 app.get("/api/pyq/node/:nodeId", (req, res) => {
   try {
@@ -589,7 +717,30 @@ app.get("/api/pyq/node/:nodeId", (req, res) => {
       });
     }
 
-    const questions = getPyqsForTopic(nodeId, 0);
+    const pyqByNodePath = path.join(__dirname, "data", "pyq_index", "pyq_by_node.json");
+    const pyqByNode = JSON.parse(fs.readFileSync(pyqByNodePath, "utf8"));
+
+    const { matchingNodeIds } = collectNodeAndDescendantIds(pyqByNode, nodeId);
+
+    let questions = [];
+    const seen = new Set();
+
+    for (const matchedNodeId of matchingNodeIds) {
+      const nodeQuestions = getPyqsForTopic(matchedNodeId, 0);
+      for (const q of Array.isArray(nodeQuestions) ? nodeQuestions : []) {
+        const qid = String(q?.id || "").trim();
+        if (!qid || seen.has(qid)) continue;
+        seen.add(qid);
+        questions.push(q);
+      }
+    }
+
+    console.log("[PYQ AGG DEBUG]", {
+      requestedNodeId: nodeId,
+      matchingNodeIds,
+      totalQuestions: questions.length,
+    });
+
     const resolution = explainPyqResolution(nodeId);
 
     const counts = {
@@ -604,15 +755,18 @@ app.get("/api/pyq/node/:nodeId", (req, res) => {
 
     for (const q of questions) {
       const stage = getQuestionStage(q);
-
-      console.log("[PYQ NODE DEBUG]", {
-        nodeId,
-        id: q?.id,
-        exam: q?.exam,
-        paper: q?.paper,
-        subject: q?.subject,
-        stage,
-      });
+      if (process.env.NODE_ENV !== "production") {
+        console.log("[PYQ NODE SUMMARY]", {
+          nodeId,
+          total: questions.length,
+          prelims: counts.prelims,
+          mains: counts.mains,
+          essay: counts.essay,
+          ethics: counts.ethics,
+          optional: counts.optional,
+          csat: counts.csat,
+        });
+      }
 
       if (stage === "prelims") counts.prelims++;
       else if (stage === "mains") counts.mains++;
@@ -625,6 +779,7 @@ app.get("/api/pyq/node/:nodeId", (req, res) => {
     return res.json({
       success: true,
       nodeId,
+      matchedNodeIds: matchingNodeIds,
       counts,
       resolution,
       questions,
@@ -638,7 +793,6 @@ app.get("/api/pyq/node/:nodeId", (req, res) => {
     });
   }
 });
-
 
 /* -------------------- PHOTO → PLAN PARSE (TIME BLOCKS) -------------------- */
 /* IMPORTANT UX RULE:
@@ -815,516 +969,68 @@ Output ONLY JSON.
     const enrichedItems = items.map((rawIt, itemIndex) => {
       const item = { ...rawIt };
 
-      const normalizedSubject = normalizeOcrSubject(item.subject, item.topic);
-      const normalizedTopic = normalizeOcrTopic(item.topic, normalizedSubject);
+      const ocrInput = `${item.subject || ""} ${item.topic || ""}`.trim();
+      const mappingResult = processOcrText(ocrInput);
 
-      item.subject = normalizedSubject;
-      item.topic = normalizedTopic;
+      let linkedPyqs = { total: 0, mappedNodes: [] };
+      // Try confirmed nodeId first, then scan all top candidates for best PYQ coverage
+      const candidateNodeIds = [
+        mappingResult.nodeId,
+        ...(mappingResult.topicCandidates || []).map(c => c.nodeId),
+      ].filter(Boolean);
 
-      const textForMap = `${item.subject} ${item.topic}`.trim();
-      const nonStudy = isNonStudyBlock(item.subject, item.topic);
-
-      const rawTopicText = String(normalizedTopic || "").trim();
-
-      function normalizeAnchorText(value) {
-        return String(value || "")
-          .toLowerCase()
-          .replace(/&/g, " and ")
-          .replace(/[–—]/g, "-")
-          .replace(/[_/]+/g, " ")
-          .replace(/[()[\]{}]/g, " ")
-          .replace(/[.:]/g, " ")
-          .replace(/\bthe\b/g, " ")
-          .replace(/\bof\b/g, " ")
-          .replace(/\s+/g, " ")
-          .trim();
-      }
-
-      function splitTopicIntoParts(topicText) {
-        const raw = String(topicText || "").trim();
-        if (!raw) return [];
-
-        return raw
-          .replace(/[•●▪■◆►→]/g, ",")
-          .replace(/[;|]/g, ",")
-          .replace(/\s+\/\s+/g, ",")
-          .replace(/\s*&\s*/g, ",")
-          .replace(/\s+\+\s+/g, ",")
-          .replace(/\s+\band\b\s+/gi, ",")
-          .replace(/\s+\bthen\b\s+/gi, ",")
-          .replace(/\s+\bplus\b\s+/gi, ",")
-          .split(",")
-          .map((part) =>
-            String(part || "")
-              .replace(/^[\s\-–—:]+/, "")
-              .replace(/[\s\-–—:]+$/, "")
-              .replace(/\s+/g, " ")
-              .trim()
-          )
-          .filter(Boolean)
-          .filter((part) => part.split(" ").length >= 2);
-      }
-
-      function buildBroadAnchorSet(subject, topicText) {
-        const set = new Set();
-
-        const subjectNorm = normalizeAnchorText(subject);
-        if (subjectNorm) set.add(subjectNorm);
-
-        [
-          "history",
-          "ancient history",
-          "medieval history",
-          "modern history",
-          "art and culture",
-          "culture",
-          "society",
-          "indian society",
-          "world history",
-          "post independence",
-          "polity",
-          "indian polity",
-          "constitution",
-          "governance",
-          "social justice",
-          "international relations",
-          "ir",
-          "economy",
-          "indian economy",
-          "economic development",
-          "agriculture",
-          "internal security",
-          "disaster management",
-          "science and technology",
-          "science and tech",
-          "science and technology current affairs",
-          "science",
-          "technology",
-          "environment",
-          "ecology",
-          "environment and ecology",
-          "geography",
-          "physical geography",
-          "human geography",
-          "indian geography",
-          "world geography",
-          "geography optional",
-          "optional geography",
-          "geography optional paper 1",
-          "geography optional paper 2",
-          "ethics",
-          "ethics integrity and aptitude",
-          "ethics integrity aptitude",
-          "integrity",
-          "aptitude",
-          "essay",
-          "essay writing",
-          "essay practice",
-          "current affairs",
-          "current affair",
-          "ca",
-          "csat",
-          "comprehension",
-          "reasoning",
-          "quant",
-          "quantitative aptitude",
-          "mathematics",
-          "maths",
-          "number system",
-          "general studies",
-          "general studies paper 1",
-          "general studies paper 2",
-          "general studies paper 3",
-          "general studies paper 4",
-          "gs",
-          "gs1",
-          "gs2",
-          "gs3",
-          "gs4",
-          "paper 1",
-          "paper 2",
-          "optional",
-        ].forEach((x) => {
-          const n = normalizeAnchorText(x);
-          if (n) set.add(n);
-        });
-
-        return set;
-      }
-
-      function shouldDropBroadPart(partNorm, subjectNorm, broadAnchors, partCount) {
-        if (!partNorm) return true;
-        if (broadAnchors.has(partNorm)) return true;
-
-        if (subjectNorm) {
-          if (partNorm === subjectNorm) return true;
-
-          // Only do contains-based dropping for obviously broad subject labels,
-          // and only when there are multiple parts to preserve specific single-topic blocks.
-          if (partCount > 1) {
-            if (
-              partNorm.length <= Math.max(10, subjectNorm.length + 6) &&
-              (partNorm.includes(subjectNorm) || subjectNorm.includes(partNorm))
-            ) {
-              return true;
-            }
+      let bestLookupNodeId = null;
+      for (const cid of candidateNodeIds) {
+        try {
+          const result = getPyqSummaryForNode(cid, 500);
+          if (result.total > linkedPyqs.total) {
+            linkedPyqs = result;
+            bestLookupNodeId = cid;
           }
-        }
-
-        return false;
-      }
-
-      function normalizeMappedHit(hit) {
-        if (!hit) return null;
-        if (hit.microTitle) return hit;
-
-        return {
-          ...hit,
-          microTitle: hit.name || hit.mappedTopicName || hit.microTheme || "",
-          mappedTopicName: hit.name || hit.mappedTopicName || hit.microTheme || "",
-          gsHeading: hit.gsHeading || hit.subjectGroup || hit.gsPaper || "",
-          macroTheme: hit.macroTheme || hit.section || "",
-          microTheme: hit.microTheme || hit.name || hit.mappedTopicName || "",
-        };
-      }
-
-      function mapSinglePart(part, subject) {
-        const cleanPart = String(part || "").trim();
-        if (!cleanPart) return null;
-
-        const expandedPart = cleanPart
-          .replace(/\b2\s*vc\b/gi, "Indus Valley Civilization")
-          .replace(/\bi\s*vc\b/gi, "Indus Valley Civilization")
-          .replace(/\bivc\b/gi, "Indus Valley Civilization")
-          .replace(/\bmauryas\b/gi, "Mauryan Empire")
-          .replace(/\bvedic age\b/gi, "Vedic Period")
-          .replace(/\bpm\b/gi, "Prime Minister")
-          .replace(/\bfr\b/gi, "Fundamental Rights")
-          .replace(/\bei\b/gi, "Emotional Intelligence")
-          .trim();
-
-        const attempts = [
-          () => mapPlanItemToMicroTheme(expandedPart, subject),
-          () => mapPlanItemToMicroTheme(cleanPart, subject),
-
-          () => findMicroTheme(expandedPart),
-          () => findMicroTheme(cleanPart),
-
-          () => findMicroTheme(`${subject} ${expandedPart}`),
-          () => findMicroTheme(`${subject} ${cleanPart}`),
-        ];
-
-        for (const tryMap of attempts) {
-          const hit = normalizeMappedHit(tryMap());
-          const syllabusNodeId = hit?.syllabusNodeId || hit?.code || null;
-          if (hit && syllabusNodeId) {
-            return {
-              topic: cleanPart,
-              syllabusNodeId,
-              code: hit.code || syllabusNodeId,
-              label: hit.mappedTopicName || hit.microTitle || cleanPart,
-              microTheme: hit.microTheme || hit.microTitle || cleanPart,
-              path: hit.path || "",
-              confidence: hit.confidence || 0,
-            };
-          }
-        }
-
-        return null;
-      }
-
-      const rawTopicParts = splitTopicIntoParts(rawTopicText);
-      const broadAnchorsToIgnore = buildBroadAnchorSet(normalizedSubject, rawTopicText);
-      const subjectNorm = normalizeAnchorText(normalizedSubject);
-
-      const cleanedTopicParts = rawTopicParts.filter((part) => {
-        const pNorm = normalizeAnchorText(part);
-        return !shouldDropBroadPart(
-          pNorm,
-          subjectNorm,
-          broadAnchorsToIgnore,
-          rawTopicParts.length
-        );
-      });
-
-      // Final fallback order:
-      // 1) cleaned specific subtopics
-      // 2) all split parts (if cleaning removed everything)
-      // 3) raw topic text
-      let topicParts =
-        cleanedTopicParts.length > 0
-          ? cleanedTopicParts
-          : rawTopicParts.length > 0
-            ? rawTopicParts
-            : [rawTopicText].filter(Boolean);
-
-      // De-dupe by normalized text while preserving order
-      {
-        const seen = new Set();
-        topicParts = topicParts.filter((part) => {
-          const key = normalizeAnchorText(part);
-          if (!key || seen.has(key)) return false;
-          seen.add(key);
-          return true;
-        });
-      }
-
-      let mapped = null;
-      let fallbackPath = null;
-      let mappedNodes = [];
-      let linkedPyqs = emptyLinkedPyqs("");
-
-      if (!nonStudy) {
-        // Primary block-level mapping
-        mapped = normalizeMappedHit(
-          mapPlanItemToMicroTheme(normalizedTopic, normalizedSubject)
-        );
-
-        if (!mapped) {
-          const m2 =
-            findMicroTheme(`${normalizedSubject} ${normalizedTopic}`) ||
-            findMicroTheme(normalizedTopic) ||
-            findMicroTheme(textForMap || "");
-
-          if (m2?.found || m2?.syllabusNodeId || m2?.code) {
-            fallbackPath = m2?.path || null;
-            mapped = normalizeMappedHit(m2);
-          }
-        }
-
-        // Per-subtopic multi-mapping
-        mappedNodes = topicParts
-          .map((part) => mapSinglePart(part, normalizedSubject))
-          .filter(Boolean);
-
-        // 🚨 HARD SUBJECT LOCK (FINAL FIX)
-        const subjectKey = String(normalizedSubject || "").toUpperCase();
-
-        mappedNodes = mappedNodes.filter((node) => {
-          const id = String(node?.syllabusNodeId || "").toUpperCase();
-
-          if (subjectKey.includes("ECONOMY") || subjectKey === "GS3") {
-            return id.startsWith("GS3-ECO");
-          }
-
-          if (subjectKey.includes("SCIENCE")) {
-            return id.startsWith("GS3-ST");
-          }
-
-          if (subjectKey.includes("CSAT")) {
-            return id.startsWith("CSAT");
-          }
-
-          if (subjectKey.includes("HISTORY")) {
-            return id.startsWith("GS1-HIS");
-          }
-
-          return true;
-        });
-
-        // Also include primary mapped node if not already present
-        const primaryNodeId = mapped?.syllabusNodeId || mapped?.code || null;
-        if (
-          primaryNodeId &&
-          !mappedNodes.some((x) => x.syllabusNodeId === primaryNodeId)
-        ) {
-          mappedNodes.unshift({
-            topic:
-              cleanedTopicParts[0] ||
-              normalizedTopic ||
-              item.topic ||
-              "",
-            syllabusNodeId: primaryNodeId,
-            code: mapped?.code || primaryNodeId,
-            label:
-              mapped?.mappedTopicName ||
-              mapped?.microTitle ||
-              normalizedTopic ||
-              item.topic ||
-              "Primary Topic",
-            microTheme:
-              mapped?.microTheme ||
-              mapped?.microTitle ||
-              normalizedTopic ||
-              item.topic ||
-              "Primary Topic",
-            path: mapped?.path || "",
-            confidence: mapped?.confidence || 0,
-          });
-        }
-        // Also include safe alternative PYQ buckets if provided
-        const alternativeNodeIds = Array.isArray(mapped?.alternativeNodeIds)
-          ? mapped.alternativeNodeIds
-          : [];
-
-        for (const altNodeId of alternativeNodeIds) {
-          if (!altNodeId) continue;
-
-          if (!mappedNodes.some((x) => x.syllabusNodeId === altNodeId)) {
-            mappedNodes.push({
-              topic: normalizedTopic || item.topic || "",
-              syllabusNodeId: altNodeId,
-              code: altNodeId,
-              label: altNodeId,
-              microTheme: normalizedTopic || item.topic || altNodeId,
-              path: mapped?.path || "",
-              confidence: Math.max(0.85, mapped?.confidence || 0),
-            });
-          }
-        }
-        // Dedupe mapped nodes by syllabus node id
-        {
-          const seenNodeIds = new Set();
-          mappedNodes = mappedNodes.filter((x) => {
-            if (!x?.syllabusNodeId) return false;
-            if (seenNodeIds.has(x.syllabusNodeId)) return false;
-            seenNodeIds.add(x.syllabusNodeId);
-            return true;
-          });
-        }
-
-        // Optional debug logs
-        console.log("[plan-photo][multi-topic]", {
-          index: itemIndex,
-          subject: normalizedSubject,
-          rawTopicText,
-          rawTopicParts,
-          cleanedTopicParts,
-          topicParts,
-          mappedNodeIds: mappedNodes.map((x) => x.syllabusNodeId),
-        });
-
-        // Merge PYQs from all mapped nodes
-        if (mappedNodes.length > 0) {
-          const mergedQuestions = [];
-          const questionSeen = new Set();
-
-          let prelimsCount = 0;
-          let mainsCount = 0;
-          let essayCount = 0;
-          let ethicsCount = 0;
-          let optionalCount = 0;
-          let csatCount = 0;
-          let lastAskedYear = null;
-
-          // 🚨 STRICT SUBJECT FILTER (SAFE VERSION)
-          const subjectPrefix = String(normalizedSubject || item.subject || "").toUpperCase();
-
-          const filteredMappedNodes = (mappedNodes || []).filter((node) => {
-            const nodeId = String(node?.syllabusNodeId || "").toUpperCase();
-            if (!nodeId) return false;
-
-            if (subjectPrefix.includes("ECONOMY") || subjectPrefix === "GS3") {
-              return nodeId.startsWith("GS3-ECO");
-            }
-
-            if (subjectPrefix.includes("SCIENCE")) {
-              return nodeId.startsWith("GS3-ST");
-            }
-
-            if (subjectPrefix.includes("CSAT")) {
-              return nodeId.startsWith("CSAT");
-            }
-
-            if (subjectPrefix.includes("HISTORY")) {
-              return nodeId.startsWith("GS1-HIS");
-            }
-
-            return true;
-          });
-
-          const effectiveMappedNodes =
-            filteredMappedNodes.length > 0 ? filteredMappedNodes : mappedNodes;
-
-          for (const node of effectiveMappedNodes) {
-            let summary = emptyLinkedPyqs(node.syllabusNodeId);
-
-            try {
-              summary = getPyqSummaryForNode(node.syllabusNodeId, 500);
-            } catch (err) {
-              console.error("[plan-photo PYQ load error]", err);
-            }
-
-            for (const q of Array.isArray(summary.questions) ? summary.questions : []) {
-              const qid =
-                q?.id ||
-                `${q?.year || ""}-${q?.paper || q?.exam || ""}-${q?.question || q?.questionText || ""}`.trim();
-
-              if (!questionSeen.has(qid)) {
-                questionSeen.add(qid);
-
-                const qNodes = q?.syllabusNodeIds || q?.syllabusNodeId;
-                const qNodeArr = Array.isArray(qNodes) ? qNodes : qNodes ? [qNodes] : [];
-                const isExactNodeMatch =
-                  qNodeArr.length === 0 || qNodeArr.includes(node.syllabusNodeId);
-
-                if (!isExactNodeMatch) {
-                  continue;
-                }
-
-                mergedQuestions.push(q);
-                const stage = getQuestionStage(q);
-
-                if (stage === "prelims") prelimsCount += 1;
-                else if (stage === "mains") mainsCount += 1;
-                else if (stage === "essay") essayCount += 1;
-                else if (stage === "ethics") ethicsCount += 1;
-                else if (stage === "optional") optionalCount += 1;
-                else if (stage === "csat") csatCount += 1;
-
-                if (q?.year) {
-                  const yearNum = Number(q.year);
-                  if (!Number.isNaN(yearNum)) {
-                    lastAskedYear = lastAskedYear
-                      ? Math.max(lastAskedYear, yearNum)
-                      : yearNum;
-                  }
-                }
-              }
-            }
-          }
-
-          linkedPyqs = {
-            syllabusNodeId: effectiveMappedNodes[0]?.syllabusNodeId || "",
-            matchedNodeId: effectiveMappedNodes[0]?.syllabusNodeId || null,
-            total: mergedQuestions.length,
-            lastAskedYear,
-            frequency: mergedQuestions.length,
-            prelimsCount,
-            mainsCount,
-            essayCount,
-            ethicsCount,
-            optionalCount,
-            csatCount,
-            questions: mergedQuestions,
-            mappedNodes: effectiveMappedNodes,
-          };
-        } else {
-          const pyqNodeId = mapped?.syllabusNodeId || mapped?.code || "";
-          linkedPyqs = pyqNodeId
-            ? getPyqSummaryForNode(pyqNodeId, 500)
-            : emptyLinkedPyqs(pyqNodeId);
+          if (mappingResult.nodeId && cid === mappingResult.nodeId && linkedPyqs.total > 0) break; // confirmed match, stop
+        } catch (e) {
+          console.error("[plan-photo PYQ load error]", e);
         }
       }
+      // Also try subject-level fallback if nothing found
+      if (linkedPyqs.total === 0 && mappingResult.subjectCandidates?.[0]?.subjectId) {
+        try {
+          const r = getPyqSummaryForNode(mappingResult.subjectCandidates[0].subjectId, 500);
+          if (r.total > 0) { linkedPyqs = r; bestLookupNodeId = mappingResult.subjectCandidates[0].subjectId; }
+        } catch (e) { }
+      }
+      // Final fallback: walk parent prefixes of top candidate (e.g. GS3-ECO-BANKING-MT03 → GS3-ECO-BANKING → GS3-ECO)
+      if (linkedPyqs.total === 0 && candidateNodeIds[0]) {
+        const parts = candidateNodeIds[0].split("-");
+        for (let len = parts.length - 1; len >= 2; len--) {
+          const prefix = parts.slice(0, len).join("-");
+          try {
+            const r = getPyqSummaryForNode(prefix, 500);
+            if (r.total > 0) { linkedPyqs = r; bestLookupNodeId = prefix; break; }
+          } catch (e) { }
+        }
+      }
+      const resolvedNodeId = mappingResult.nodeId || bestLookupNodeId || null;
 
-      const normalizedMapped = normalizeMappedHit(mapped);
-      const mappedObj = buildMappedObject(normalizedMapped, nonStudy, item);
-      const locked = kill === "ON" && mappedObj?.tag === "M";
+      const finalMapping = {
+        subjectId: mappingResult.subjectId,
+        subjectName: mappingResult.subjectName,
+        nodeId: resolvedNodeId,
+        nodeName: mappingResult.nodeName !== "Unmapped" ? mappingResult.nodeName : (mappingResult.topicCandidates?.[0]?.nodeName || mappingResult.nodeName),
+        mappingSource: mappingResult.mappingSource,
+        resolverConfidence: mappingResult.resolverConfidence,
+        isApproved: mappingResult.isApproved,
+      };
 
       return {
         ...item,
-        subject:
-          item.subject && item.subject !== "Unknown"
-            ? item.subject
-            : mappedObj?.subject
-              ? mappedObj.subject
-              : fallbackPath || "Unknown",
-        mapped: mappedObj,
-        mappedNodes,
-        locked,
-        syllabusTopCode: mappedObj?.code || null,
-        syllabusTopPath: mappedObj?.path || null,
-        linkedPyqs,
+        subject: item.subject && item.subject !== "Unknown" ? item.subject : (mappingResult.subjectName || "Unknown"), // Preserve text recognized by OCR, fallback to resolved
+        finalMapping,
+        subjectCandidates: mappingResult.subjectCandidates,
+        topicCandidates: mappingResult.topicCandidates,
+        textQuality: mappingResult.textQuality,
+        confidenceBadge: mappingResult.confidenceBadge,
+        linkedPyqs
       };
     });
 
@@ -1333,11 +1039,10 @@ Output ONLY JSON.
       0
     );
 
-    const hasC1 = enrichedItems.some((x) => x.mapped?.code === "C.1");
-    const csatDrill = hasC1 ? "CHECK_NUMERACY" : "NONE";
+    const csatDrill = enrichedItems.some((x) => x.nodeId && x.nodeId.startsWith("CSAT-BN")) ? "CHECK_NUMERACY" : "NONE";
 
     const reminderPreview = enrichedItems
-      .filter((it) => !it.mapped?.nonStudy && it.startTime)
+      .filter((it) => it.startTime)
       .map((it, idx) => ({
         blockId: `B${idx + 1}`,
         label: blockLabelFromIndex(idx),
@@ -1346,10 +1051,8 @@ Output ONLY JSON.
         startTime: toISOWithDate(safeDate, it.startTime),
         endTime: it.endTime ? toISOWithDate(safeDate, it.endTime) : "",
         plannedMinutes: Number(it.minutes || 0),
-        syllabusNodeId: it.mapped?.syllabusNodeId || null,
-        gsPaper: it.mapped?.gsPaper || null,
-        subjectGroup: it.mapped?.subjectGroup || null,
-        confidence: it.mapped?.confidence || 0,
+        syllabusNodeId: it.nodeId || null,
+        confidence: it.resolverConfidence || 0,
       }));
 
     return res.json({
@@ -1584,6 +1287,312 @@ app.post("/api/sheets", async (req, res) => {
   } catch (e) {
     console.error("[api/sheets ERR]", e);
     return res.status(500).json({ ok: false, message: String(e?.message || e) });
+  }
+});
+
+/* ── GS COUNTS ── returns actual buildable question counts from raw files ── */
+app.get("/api/prelims/gs/counts", (_req, res) => {
+  try {
+    const counts = getGSCounts();
+    return res.json({ ok: true, counts });
+  } catch (err) {
+    console.error("❌ getGSCounts error:", err);
+    return res.status(500).json({ ok: false, error: String(err?.message || err) });
+  }
+});
+
+/* ── FULL-LENGTH YEARS ── returns available years for each paper type ── */
+app.get("/api/prelims/full-length/years", (_req, res) => {
+  try {
+    const gsData = loadGSData();
+    const csatData = loadCSATData();
+
+    // Flatten GS data
+    const allGSQuestions = [];
+    for (const subjectQuestions of Object.values(gsData)) {
+      allGSQuestions.push(...subjectQuestions);
+    }
+
+    // Flatten CSAT data
+    const allCSATQuestions = [...csatData.quant, ...csatData.lr, ...csatData.rc];
+
+    const gsYears = getAvailableFullLengthYears(allGSQuestions, "GS");
+    const csatYears = getAvailableFullLengthYears(allCSATQuestions, "CSAT");
+
+    return res.json({
+      ok: true,
+      gs: gsYears.sort((a, b) => a - b),
+      csat: csatYears.sort((a, b) => a - b),
+    });
+  } catch (err) {
+    console.error("❌ getAvailableYears error:", err);
+    return res.status(500).json({ ok: false, error: String(err?.message || err) });
+  }
+});
+
+app.post("/api/prelims/practice/build", (req, res) => {
+  try {
+    function normalizeResolverSubject(value = "") {
+      const v = String(value || "").trim().toLowerCase();
+
+      if (v.includes("science")) return "science_tech";
+      if (v.includes("economy")) return "economy";
+      // Preserve specific CSAT sub-subjects — must check before generic 'csat'
+      if (v === "csat_rc" || v.includes("csat_rc")) return "csat_rc";
+      if (v === "csat_quant" || v.includes("csat_quant")) return "csat_quant";
+      if (v === "csat_reasoning" || v.includes("csat_reasoning")) return "csat_reasoning";
+      // Generic CSAT (full subject) — currently not in resolver, will fall through
+      if (v.includes("csat")) return "csat_rc"; // Default CSAT → RC as broadest set
+      if (v.includes("history")) return "history";
+      if (v.includes("geography")) return "geography";
+      if (v.includes("polity")) return "polity";
+      if (v.includes("environment")) return "environment";
+      if (v.includes("culture")) return "culture";
+
+      return v;
+    }
+
+    function humanizeResolverInput(value = "") {
+      return String(value)
+        .replace(/[_-]+/g, " ")
+        .replace(/\bGS\d\b/gi, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    const {
+      topicNodeId,
+      count,
+      sort,
+      subjectId,
+      subjectAliases = [],
+      practiceScope = "subject",
+      selectedSubjectId,
+      selectedTopicId,
+      selectedMicroThemeIds = [],
+      practicePaper: rawPracticePaper,
+      mode,
+      fullLengthYear,
+      paper,
+      year,
+    } = req.body || {};
+
+    // Compatibility fallback for old payloads (paper -> practicePaper, year -> fullLengthYear)
+    const practicePaper =
+      rawPracticePaper ||
+      (String(paper || "").toUpperCase() === "GS1" ? "GS" :
+       String(paper || "").toUpperCase() === "CSAT" ? "CSAT" :
+       String(paper || "").toUpperCase() === "GS" ? "GS" :
+       paper);
+
+    const fullLengthYearFinal = fullLengthYear || year;
+    console.log("[/api/prelims/practice/build] request body", {
+      topicNodeId,
+      count,
+      sort,
+      subjectId,
+      subjectAliases,
+      practiceScope,
+      selectedSubjectId,
+      selectedTopicId,
+      selectedMicroThemeIds,
+      practicePaper,
+    });
+
+    let resolvedTopicNodeId = "";
+    let resolvedNodeIds = [];
+
+    // Prefer selectedSubjectId — it already has the specific csat_rc/csat_quant/csat_reasoning value.
+    // subjectId from frontend is the generic "CSAT" / "GS" label, which loses specificity.
+    const normalizedSubjectId = normalizeResolverSubject(selectedSubjectId || subjectId);
+
+    const primaryResolution = resolvePrelimsNodes({
+      subjectId: normalizedSubjectId,
+      topicId: String(selectedTopicId || "").trim(),
+      subtopicIds: Array.isArray(selectedMicroThemeIds)
+        ? selectedMicroThemeIds.map(String)
+        : [],
+      practiceScope,
+    });
+
+    console.log("PRIMARY RESOLUTION DEBUG:", {
+      subject: normalizedSubjectId,
+      topic: selectedTopicId,
+      subtopics: selectedMicroThemeIds,
+      result: primaryResolution,
+    });
+
+    if (
+      primaryResolution &&
+      Array.isArray(primaryResolution.nodeIds) &&
+      primaryResolution.nodeIds.length > 0
+    ) {
+      resolvedNodeIds = primaryResolution.nodeIds;
+      resolvedTopicNodeId = primaryResolution.nodeIds[0] || "";
+
+      console.log("✅ DATA-DRIVEN RESOLVER SUCCESS:", {
+        nodeIds: resolvedNodeIds,
+        level: primaryResolution.level || null,
+      });
+    } else {
+      console.warn("⚠ PRIMARY RESOLVER FAILED — CHECK MAPPING:", {
+        subject: normalizedSubjectId,
+        topic: selectedTopicId,
+        subtopics: selectedMicroThemeIds,
+      });
+
+      let baseInput = selectedTopicId || "";
+      if (!baseInput && practiceScope === "subject") baseInput = normalizedSubjectId;
+
+      const topicText = humanizeResolverInput(baseInput);
+      const subtopicParts = Array.isArray(selectedMicroThemeIds)
+        ? selectedMicroThemeIds.map(humanizeResolverInput).filter(Boolean)
+        : [];
+
+      const combinedText = [topicText, ...subtopicParts].filter(Boolean).join(" ").trim();
+
+      const resolved = autoResolveNodes({
+        text: combinedText,
+        subjectId: normalizedSubjectId,
+        debug: true,
+      });
+
+      if (practiceScope === "topic") {
+        resolvedTopicNodeId = resolved?.selectedNode || "";
+        resolvedNodeIds =
+          Array.isArray(resolved?.nodeIds) && resolved.nodeIds.length
+            ? resolved.nodeIds
+            : resolvedTopicNodeId
+              ? [resolvedTopicNodeId]
+              : [];
+      } else if (practiceScope === "subtopic") {
+        resolvedNodeIds = Array.isArray(resolved?.nodeIds) ? resolved.nodeIds : [];
+        if (!resolvedNodeIds.length && resolved?.selectedNode) {
+          resolvedNodeIds = [resolved.selectedNode];
+          resolvedTopicNodeId = resolved.selectedNode;
+        }
+      } else {
+        resolvedNodeIds = Array.isArray(resolved?.nodeIds) ? resolved.nodeIds : [];
+        if (!resolvedNodeIds.length && resolved?.selectedNode) {
+          resolvedNodeIds = [resolved.selectedNode];
+          resolvedTopicNodeId = resolved.selectedNode;
+        }
+      }
+
+      console.log("[/api/prelims/practice/build][AUTO-MAPPER FALLBACK]", {
+        inputText: combinedText,
+        subjectId: normalizedSubjectId,
+        practiceScope,
+        selectedNode: resolved?.selectedNode || null,
+        nodeIds: resolved?.nodeIds || [],
+        confidence: resolved?.confidence || 0,
+        gap: resolved?.gap || 0,
+      });
+    }
+
+    console.log("FINAL INPUT TO BUILDER:", {
+      resolvedTopicNodeId,
+      resolvedNodeIds,
+    });
+    // ================= FULL LENGTH HANDLER =================
+    if (mode === "full_length") {
+      try {
+        // Validate required parameters for full-length mode
+        if (!practicePaper) {
+          return res.status(400).json({
+            ok: false,
+            message: "Full-length mode requires 'practicePaper' (GS or CSAT)",
+          });
+        }
+
+        if (!fullLengthYearFinal) {
+          return res.status(400).json({
+            ok: false,
+            message: "Full-length mode requires 'fullLengthYear'",
+          });
+        }
+
+        const normalizedPaper = String(practicePaper).toUpperCase().trim();
+        if (normalizedPaper !== "GS" && normalizedPaper !== "CSAT") {
+          return res.status(400).json({
+            ok: false,
+            message: `Invalid paper type: '${practicePaper}'. Must be 'GS' or 'CSAT'.`,
+          });
+        }
+
+        console.log("🚀 FULL LENGTH MODE HIT", {
+          year: fullLengthYearFinal,
+          paper: normalizedPaper,
+        });
+
+        // Load from correct prelims data sources
+        let allQuestions = [];
+
+        if (normalizedPaper === "GS") {
+          // Load all GS subjects
+          const gsData = loadGSData();
+          for (const subjectQuestions of Object.values(gsData)) {
+            allQuestions.push(...subjectQuestions);
+          }
+        } else if (normalizedPaper === "CSAT") {
+          // Load all CSAT modules
+          const csatData = loadCSATData();
+          allQuestions.push(...csatData.quant, ...csatData.lr, ...csatData.rc);
+        }
+
+        const questions = buildFullLengthTest(allQuestions, {
+          year: fullLengthYearFinal,
+          paperType: normalizedPaper,
+        });
+
+        return res.json({
+          ok: true,
+          questions,
+          total: questions.length,
+          mode: "full_length",
+          year: fullLengthYearFinal,
+          paper: normalizedPaper,
+        });
+
+      } catch (err) {
+        console.error("❌ FULL LENGTH ERROR:", {
+          message: err.message,
+          year: fullLengthYearFinal,
+          paper: normalizedPaper,
+          stack: err.stack,
+        });
+
+        return res.status(400).json({
+          ok: false,
+          message: err.message,
+          details: process.env.NODE_ENV === "development" ? err.stack : undefined,
+        });
+      }
+    }
+    // ======================================================
+    const result = buildTopicTest({
+      topicNodeId: resolvedTopicNodeId,
+      count,
+      sort,
+      includeDescendants: true,
+      subjectId,
+      subjectAliases,
+      practiceScope,
+      selectedSubjectId,
+      selectedTopicId,
+      selectedMicroThemeIds,
+      practicePaper,
+      resolvedNodeIds,
+    });
+
+    return res.json(result);
+  } catch (err) {
+    console.error("❌ buildTopicTest error:", err);
+    return res.status(500).json({
+      ok: false,
+      error: "Failed to build test",
+      details: String(err?.message || err),
+    });
   }
 });
 

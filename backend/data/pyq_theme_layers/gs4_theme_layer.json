@@ -1,0 +1,916 @@
+{
+  "paper": "GS4",
+  "stage": "Mains",
+  "version": "2026-gs4-theme-layer-v2",
+  "description": "GS4 theme/subtheme layer rebuilt from the GS4 Theme-wise PYQ PDF (2013–2025) and aligned with the tagged GS4 ethics dataset for MentorOS pattern intelligence.",
+  "subjects": {
+    "Ethics Theory": {
+      "source": "pdf_primary + tagged_alignment",
+      "themes": [
+        {
+          "name": "Ethics and Human Interface",
+          "subthemes": [
+            {
+              "name": "Ethics in Human Actions",
+              "mappedNodes": [
+                "GS4-ETH-HV"
+              ],
+              "keywords": [
+                "ethics in human interface",
+                "duty",
+                "personal fulfilment",
+                "ethics seek to promote",
+                "human life"
+              ]
+            },
+            {
+              "name": "Determinants of Ethics in Human Actions",
+              "mappedNodes": [],
+              "keywords": [
+                "determinants",
+                "contextual ethics",
+                "just and unjust",
+                "human actions",
+                "ethical dimensions"
+              ]
+            },
+            {
+              "name": "Consequences of Ethics in Human Actions",
+              "mappedNodes": [],
+              "keywords": [
+                "consequences",
+                "ethical values",
+                "conflict resolution",
+                "day-to-day functioning"
+              ]
+            },
+            {
+              "name": "Role of Family, Society and Educational Institutions",
+              "mappedNodes": [
+                "GS4-ETH-HV",
+                "GS4-ETH-ATT"
+              ],
+              "keywords": [
+                "family",
+                "society",
+                "educational institutions",
+                "NEP 2020",
+                "inculcating values"
+              ]
+            },
+            {
+              "name": "Human Values from Great Leaders, Reformers and Administrators",
+              "mappedNodes": [
+                "GS4-ETH-THINK",
+                "GS4-ETH-HV"
+              ],
+              "keywords": [
+                "Guru Nanak",
+                "Savitribai Phule",
+                "patriotism",
+                "human values",
+                "leaders",
+                "reformers"
+              ]
+            },
+            {
+              "name": "Ethics in Private and Public Relationships",
+              "mappedNodes": [
+                "GS4-ETH-GOV",
+                "GS4-ETH-CS"
+              ],
+              "keywords": [
+                "public life",
+                "crisis of conscience",
+                "personal ethics",
+                "professional ethics",
+                "trust deficit",
+                "sexual violence",
+                "public relationships"
+              ]
+            },
+            {
+              "name": "Ethics and its Scope",
+              "mappedNodes": [
+                "GS4-ETH-GOV",
+                "GS4-ETH-APPLIED"
+              ],
+              "keywords": [
+                "environmental ethics",
+                "ethics and law",
+                "ethical management",
+                "management of ethics",
+                "discrimination",
+                "preferential treatment"
+              ]
+            },
+            {
+              "name": "Digital and Technology Ethics",
+              "mappedNodes": [
+                "GS4-ETH-APPLIED",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "online methodology",
+                "digital technology",
+                "internet expansion",
+                "technology and ethics",
+                "vulnerable sections"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Emotional Intelligence",
+          "subthemes": [
+            {
+              "name": "Concept of Emotional Intelligence",
+              "mappedNodes": [
+                "GS4-ETH-EI"
+              ],
+              "keywords": [
+                "EQ",
+                "emotional intelligence",
+                "components of EI",
+                "can they be learned"
+              ]
+            },
+            {
+              "name": "Emotional Intelligence in Ethical Decision Making",
+              "mappedNodes": [
+                "GS4-ETH-EI",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "ethical decisions",
+                "crisis of conscience",
+                "wisdom and conscience"
+              ]
+            },
+            {
+              "name": "Application of EI in Administration and Governance",
+              "mappedNodes": [
+                "GS4-ETH-EI",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "administrative practices",
+                "governance",
+                "application of EI"
+              ]
+            },
+            {
+              "name": "Managing Negative Emotions",
+              "mappedNodes": [
+                "GS4-ETH-EI"
+              ],
+              "keywords": [
+                "anger",
+                "negative emotion",
+                "undesirable behaviour",
+                "control emotions"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Aptitude and Foundational Values for Civil Service",
+          "subthemes": [
+            {
+              "name": "Values and Public Values",
+              "mappedNodes": [
+                "GS4-ETH-HV",
+                "GS4-ETH-ATT"
+              ],
+              "keywords": [
+                "values",
+                "public values",
+                "importance of values"
+              ]
+            },
+            {
+              "name": "Aptitude",
+              "mappedNodes": [
+                "GS4-ETH-ATT"
+              ],
+              "keywords": [
+                "aptitude",
+                "competency",
+                "civil servant"
+              ]
+            },
+            {
+              "name": "Integrity",
+              "mappedNodes": [
+                "GS4-ETH-ATT",
+                "GS4-ETH-PROB"
+              ],
+              "keywords": [
+                "integrity",
+                "refusal to be compromised",
+                "knowledge without integrity"
+              ]
+            },
+            {
+              "name": "Impartiality and Non-Partisanship",
+              "mappedNodes": [
+                "GS4-ETH-ATT"
+              ],
+              "keywords": [
+                "impartiality",
+                "non-partisanship",
+                "foundational values"
+              ]
+            },
+            {
+              "name": "Objectivity",
+              "mappedNodes": [
+                "GS4-ETH-ATT"
+              ],
+              "keywords": [
+                "objectivity",
+                "bias free",
+                "critical decisions"
+              ]
+            },
+            {
+              "name": "Dedication to Public Service",
+              "mappedNodes": [
+                "GS4-ETH-ATT",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "public service",
+                "spirit of service",
+                "dedication"
+              ]
+            },
+            {
+              "name": "Empathy, Tolerance and Compassion",
+              "mappedNodes": [
+                "GS4-ETH-ATT",
+                "GS4-ETH-HV"
+              ],
+              "keywords": [
+                "empathy",
+                "tolerance",
+                "compassion",
+                "weaker sections"
+              ]
+            },
+            {
+              "name": "Traits of an Effective Civil Servant",
+              "mappedNodes": [
+                "GS4-ETH-ATT",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "ethical traits",
+                "essential values",
+                "trustworthiness",
+                "fortitude",
+                "fairness",
+                "justice",
+                "courage of conviction"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Public Administration Ethics": {
+      "source": "pdf_primary + tagged_alignment",
+      "themes": [
+        {
+          "name": "Public/Civil Service Values and Ethics in Public Administration",
+          "subthemes": [
+            {
+              "name": "Ethics in Public Administration",
+              "mappedNodes": [
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "constitutional morality",
+                "public administration",
+                "good governance",
+                "accountability",
+                "public servant"
+              ]
+            },
+            {
+              "name": "Ethics in Public Administration and its Problems",
+              "mappedNodes": [
+                "GS4-ETH-GOV",
+                "GS4-ETH-CS"
+              ],
+              "keywords": [
+                "bureaucracy",
+                "service delivery",
+                "politics and ethics",
+                "Mission Karmayogi",
+                "workplace problems"
+              ]
+            },
+            {
+              "name": "Accountability and Ethical Governance",
+              "mappedNodes": [
+                "GS4-ETH-GOV",
+                "GS4-ETH-PROB"
+              ],
+              "keywords": [
+                "governance",
+                "good governance",
+                "ethical governance",
+                "accountability",
+                "public responsibility"
+              ]
+            },
+            {
+              "name": "Strengthening Ethical and Moral Values in Governance",
+              "mappedNodes": [
+                "GS4-ETH-GOV",
+                "GS4-ETH-HV"
+              ],
+              "keywords": [
+                "public interest",
+                "moral values in governance",
+                "ethical competence"
+              ]
+            },
+            {
+              "name": "Laws, Rules, Regulations and Conscience as Sources of Ethical Guidance",
+              "mappedNodes": [
+                "GS4-ETH-GOV",
+                "GS4-ETH-ATT"
+              ],
+              "keywords": [
+                "laws and rules",
+                "constitutional morality",
+                "voice of conscience",
+                "public duty",
+                "guidance",
+                "means and ends"
+              ]
+            },
+            {
+              "name": "Ethical Concerns and Dilemmas in Government and Private Institutions",
+              "mappedNodes": [
+                "GS4-ETH-GOV",
+                "GS4-ETH-CS"
+              ],
+              "keywords": [
+                "ethical dilemmas",
+                "government institutions",
+                "private institutions",
+                "innovation and creativity",
+                "resolving dilemmas"
+              ]
+            },
+            {
+              "name": "Applied Ethics",
+              "mappedNodes": [
+                "GS4-ETH-APPLIED",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "social media ethics",
+                "AI ethics",
+                "border ecology ethics",
+                "environmental clearance",
+                "digital ethics"
+              ]
+            },
+            {
+              "name": "Ethical Issues in International Relations and Funding",
+              "mappedNodes": [
+                "GS4-ETH-APPLIED"
+              ],
+              "keywords": [
+                "war ethics",
+                "international aid",
+                "refugees",
+                "climate justice",
+                "weapon industry",
+                "global warming",
+                "international arena"
+              ]
+            },
+            {
+              "name": "Corporate Governance",
+              "mappedNodes": [
+                "GS4-ETH-GOV",
+                "GS4-ETH-PROB"
+              ],
+              "keywords": [
+                "corporate governance",
+                "moral integrity",
+                "professional efficiency",
+                "CSR"
+              ]
+            },
+            {
+              "name": "Constitutional Values and Public Accountability",
+              "mappedNodes": [
+                "GS4-ETH-GOV",
+                "GS4-ETH-PROB"
+              ],
+              "keywords": [
+                "constitutional morality",
+                "rule of law",
+                "public accountability",
+                "citizen-centric administration"
+              ]
+            },
+            {
+              "name": "Digitalization and Ethical Governance",
+              "mappedNodes": [
+                "GS4-ETH-APPLIED",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "digitalization",
+                "challenges of digitalization",
+                "technology governance",
+                "social media",
+                "AI in administration"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Probity in Governance": {
+      "source": "pdf_primary + tagged_alignment",
+      "themes": [
+        {
+          "name": "Probity in Governance",
+          "subthemes": [
+            {
+              "name": "Concept of Probity",
+              "mappedNodes": [
+                "GS4-ETH-PROB"
+              ],
+              "keywords": [
+                "probity",
+                "probity in governance",
+                "probity in public life"
+              ]
+            },
+            {
+              "name": "Philosophical Basis of Governance and Probity",
+              "mappedNodes": [
+                "GS4-ETH-PROB",
+                "GS4-ETH-THINK"
+              ],
+              "keywords": [
+                "social capital",
+                "philosophical basis",
+                "good governance",
+                "probity"
+              ]
+            },
+            {
+              "name": "Information Sharing and Transparency in Government",
+              "mappedNodes": [
+                "GS4-ETH-PROB",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "RTI",
+                "Official Secrets Act",
+                "transparency",
+                "information sharing"
+              ]
+            },
+            {
+              "name": "Challenges of Corruption",
+              "mappedNodes": [
+                "GS4-ETH-PROB",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "corruption",
+                "coercion",
+                "undue influence",
+                "social audit",
+                "whistle blower",
+                "non-performance of duty"
+              ]
+            },
+            {
+              "name": "Codes of Ethics and Codes of Conduct",
+              "mappedNodes": [
+                "GS4-ETH-PROB",
+                "GS4-ETH-ATT"
+              ],
+              "keywords": [
+                "code of ethics",
+                "code of conduct",
+                "Public Services Code"
+              ]
+            },
+            {
+              "name": "Citizen's Charter",
+              "mappedNodes": [
+                "GS4-ETH-PROB",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "citizen's charter",
+                "citizens charter movement"
+              ]
+            },
+            {
+              "name": "Quality of Service Delivery",
+              "mappedNodes": [
+                "GS4-ETH-PROB",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "service delivery",
+                "e-governance",
+                "beneficiaries"
+              ]
+            },
+            {
+              "name": "Utilisation of Public Funds",
+              "mappedNodes": [
+                "GS4-ETH-PROB"
+              ],
+              "keywords": [
+                "public funds",
+                "under-utilisation",
+                "misutilisation",
+                "leakages"
+              ]
+            },
+            {
+              "name": "Concept of Public Service",
+              "mappedNodes": [
+                "GS4-ETH-GOV",
+                "GS4-ETH-ATT"
+              ],
+              "keywords": [
+                "public servant",
+                "role of public servant"
+              ]
+            },
+            {
+              "name": "Work Culture",
+              "mappedNodes": [
+                "GS4-ETH-ATT",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "ethical work culture",
+                "discipline",
+                "value-based culture",
+                "compliance-based culture"
+              ]
+            },
+            {
+              "name": "Gender and Probity in Public Service",
+              "mappedNodes": [
+                "GS4-ETH-PROB",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "female public servants",
+                "gender-specific challenges",
+                "efficiency",
+                "probity"
+              ]
+            },
+            {
+              "name": "Whistleblower Protection",
+              "mappedNodes": [
+                "GS4-ETH-PROB"
+              ],
+              "keywords": [
+                "whistle blower",
+                "protection mechanism",
+                "victimization",
+                "grave danger"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Moral Thinkers and Philosophers": {
+      "source": "pdf_primary + tagged_alignment",
+      "themes": [
+        {
+          "name": "Contributions of Moral Thinkers and Philosophers from India and World",
+          "subthemes": [
+            {
+              "name": "Indian Thinkers",
+              "mappedNodes": [
+                "GS4-ETH-THINK",
+                "GS4-ETH-HV"
+              ],
+              "keywords": [
+                "Mahavir",
+                "Thiruvalluvar",
+                "Swami Vivekananda",
+                "Sardar Patel",
+                "Mahatma Gandhi",
+                "Jawaharlal Nehru",
+                "Abdul Kalam",
+                "Guru Nanak"
+              ]
+            },
+            {
+              "name": "Western Thinkers",
+              "mappedNodes": [
+                "GS4-ETH-THINK"
+              ],
+              "keywords": [
+                "William James",
+                "Immanuel Kant",
+                "Socrates",
+                "Aristotle",
+                "Abraham Lincoln",
+                "Napoleon Bonaparte",
+                "John Rawls",
+                "Warren Buffet",
+                "Erik Erikson",
+                "Dalai Lama",
+                "Potter Stewart"
+              ]
+            },
+            {
+              "name": "Quote Based Questions",
+              "mappedNodes": [
+                "GS4-ETH-THINK",
+                "GS4-ETH-HV"
+              ],
+              "keywords": [
+                "quotation",
+                "present context",
+                "meaning of quote",
+                "great thinkers"
+              ]
+            },
+            {
+              "name": "Indian Ethical Traditions",
+              "mappedNodes": [
+                "GS4-ETH-THINK",
+                "GS4-ETH-HV"
+              ],
+              "keywords": [
+                "Buddha",
+                "Mahatma Gandhi seven sins",
+                "Mahavir teachings",
+                "Indian ethical traditions"
+              ]
+            },
+            {
+              "name": "Moral Reasoning and Intuition",
+              "mappedNodes": [
+                "GS4-ETH-THINK",
+                "GS4-ETH-ATT"
+              ],
+              "keywords": [
+                "moral intuition",
+                "moral reasoning",
+                "means and ends",
+                "ethics is knowing the difference"
+              ]
+            },
+            {
+              "name": "Ethical Leadership and Character",
+              "mappedNodes": [
+                "GS4-ETH-THINK",
+                "GS4-ETH-ATT"
+              ],
+              "keywords": [
+                "character test",
+                "power",
+                "integrity intelligence energy",
+                "beautiful minds",
+                "morality of people"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Applied Ethics and Case Patterns": {
+      "source": "tagged_primary + pdf_scope_note",
+      "themes": [
+        {
+          "name": "Applied Ethics",
+          "subthemes": [
+            {
+              "name": "Technology and Digital Ethics",
+              "mappedNodes": [
+                "GS4-ETH-APPLIED",
+                "GS4-ETH-CS"
+              ],
+              "keywords": [
+                "social media",
+                "AI",
+                "privacy",
+                "misinformation",
+                "digital ethics",
+                "online governance"
+              ]
+            },
+            {
+              "name": "Environmental and Development Ethics",
+              "mappedNodes": [
+                "GS4-ETH-APPLIED"
+              ],
+              "keywords": [
+                "climate change",
+                "development projects",
+                "ecologically sensitive areas",
+                "equilibrium between society and environment"
+              ]
+            },
+            {
+              "name": "War, Peace and International Ethics",
+              "mappedNodes": [
+                "GS4-ETH-APPLIED"
+              ],
+              "keywords": [
+                "war",
+                "peace",
+                "weapon industries",
+                "international aid",
+                "refugees",
+                "geo-political conflicts"
+              ]
+            },
+            {
+              "name": "Administrative Rationality and Ethics",
+              "mappedNodes": [
+                "GS4-ETH-GOV",
+                "GS4-ETH-CS"
+              ],
+              "keywords": [
+                "administrative decision-making",
+                "rational decision",
+                "positive minded officers",
+                "rules and regulations"
+              ]
+            },
+            {
+              "name": "Governance Reform Ethics",
+              "mappedNodes": [
+                "GS4-ETH-GOV",
+                "GS4-ETH-CS"
+              ],
+              "keywords": [
+                "Mission Karmayogi",
+                "welfare schemes",
+                "civil servant as enabler",
+                "grassroots services"
+              ]
+            },
+            {
+              "name": "Gender, Inclusion and Equity",
+              "mappedNodes": [
+                "GS4-ETH-APPLIED",
+                "GS4-ETH-CS"
+              ],
+              "keywords": [
+                "women in public service",
+                "gender identity",
+                "representation",
+                "equity",
+                "affirmative action"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Case Study Pattern Framework",
+          "subthemes": [
+            {
+              "name": "Crisis of Conscience Pattern",
+              "mappedNodes": [
+                "GS4-ETH-CS",
+                "GS4-ETH-ATT"
+              ],
+              "keywords": [
+                "crisis of conscience",
+                "ethical conflict",
+                "internal dilemma"
+              ]
+            },
+            {
+              "name": "Conflict of Interest Pattern",
+              "mappedNodes": [
+                "GS4-ETH-CS",
+                "GS4-ETH-PROB"
+              ],
+              "keywords": [
+                "conflict of interest",
+                "public vs private interest"
+              ]
+            },
+            {
+              "name": "Corruption and Probity Pattern",
+              "mappedNodes": [
+                "GS4-ETH-CS",
+                "GS4-ETH-PROB"
+              ],
+              "keywords": [
+                "corruption",
+                "probity",
+                "misuse of funds",
+                "bribery",
+                "leakage"
+              ]
+            },
+            {
+              "name": "Citizen-Centric Administration Pattern",
+              "mappedNodes": [
+                "GS4-ETH-CS",
+                "GS4-ETH-GOV"
+              ],
+              "keywords": [
+                "public interest",
+                "service delivery",
+                "beneficiary",
+                "citizen first"
+              ]
+            },
+            {
+              "name": "Compassion vs Rules Pattern",
+              "mappedNodes": [
+                "GS4-ETH-CS",
+                "GS4-ETH-ATT"
+              ],
+              "keywords": [
+                "rules vs empathy",
+                "compassion",
+                "humanitarian response"
+              ]
+            },
+            {
+              "name": "Technology Misuse Pattern",
+              "mappedNodes": [
+                "GS4-ETH-CS",
+                "GS4-ETH-APPLIED"
+              ],
+              "keywords": [
+                "AI bias",
+                "data misuse",
+                "privacy",
+                "social media harms"
+              ]
+            },
+            {
+              "name": "Gender and Vulnerability Pattern",
+              "mappedNodes": [
+                "GS4-ETH-CS",
+                "GS4-ETH-APPLIED"
+              ],
+              "keywords": [
+                "women",
+                "vulnerable groups",
+                "equity",
+                "inclusion"
+              ]
+            },
+            {
+              "name": "Institutional Integrity Pattern",
+              "mappedNodes": [
+                "GS4-ETH-CS",
+                "GS4-ETH-PROB"
+              ],
+              "keywords": [
+                "code of ethics",
+                "code of conduct",
+                "organizational culture",
+                "transparency"
+              ]
+            },
+            {
+              "name": "International and Environmental Tradeoff Pattern",
+              "mappedNodes": [
+                "GS4-ETH-CS",
+                "GS4-ETH-APPLIED"
+              ],
+              "keywords": [
+                "war ethics",
+                "border ecology",
+                "climate justice",
+                "development vs environment"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "notes": [
+    "This GS4 theme layer has been upgraded using the GS4 Theme-wise PYQ PDF and the tagged GS4 ethics dataset.",
+    "It now captures the deeper GS4 PYQ structure: Emotional Intelligence, Public Administration Ethics, Probity, Moral Thinkers, Ethics and Human Interface, and applied case patterns.",
+    "The tagged GS4 dataset explicitly notes that the uploaded source contains descriptive/quote/short-note ethics questions and does not include case studies, so case-study buckets here are pattern-framework overlays for MentorOS rather than direct source extraction.",
+    "mappedNodes are intentionally left empty until aligned to the user's canonical syllabusGraph node IDs."
+  ]
+}

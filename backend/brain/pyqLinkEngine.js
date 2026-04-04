@@ -276,178 +276,51 @@ function getBucketStageArrays(bucket) {
   };
 }
 
-// ---------------------------------------------------------
-// SAFE CANONICAL RESOLUTION
-// ---------------------------------------------------------
-
-const LEGACY_ALIAS_TO_CANONICAL = {
-  "GS3-ECONOMY": "GS3-ECO",
-  "GS3-ECONICS": "GS3-ECO",
-  "GS3-SCIENCEANDTECH": "GS3-ST",
-  "GS3-SCIENCE-AND-TECHNOLOGY": "GS3-ST",
-  "GS3-SCIENCETECH": "GS3-ST",
-  "GS2-POLITY": "GS2-POL",
-  "GS1-HISTORY": "GS1-HIS",
-  "GS4-ETHICS": "GS4-ETH",
-  "CSAT-NUMERACY": "CSAT-BN",
-  "CSAT-BASIC-NUMERACY": "CSAT-BN",
-  "OPTIONAL-GEOGRAPHY": "OPT-GEO",
-  "GEOGRAPHY-OPTIONAL": "OPT-GEO",
-};
-
-export function resolveToCanonicalNodeIds(inputId) {
-  const normalized = normalizeNodeId(inputId);
-  if (!normalized) return [];
-
-  const out = [];
-  const seen = new Set();
-
-  pushUnique(out, seen, normalized);
-
-  const aliasHit = LEGACY_ALIAS_TO_CANONICAL[normalized];
-  if (aliasHit) {
-    pushUnique(out, seen, normalizeNodeId(aliasHit));
-  }
-
-  if (normalized === "GS1HIS") pushUnique(out, seen, "GS1-HIS");
-  if (normalized === "GS2POL") pushUnique(out, seen, "GS2-POL");
-  if (normalized === "GS3ST") pushUnique(out, seen, "GS3-ST");
-  if (normalized === "GS3ECO") pushUnique(out, seen, "GS3-ECO");
-  if (normalized === "GS4ETH") pushUnique(out, seen, "GS4-ETH");
-  if (normalized === "CSATBN") pushUnique(out, seen, "CSAT-BN");
-  if (normalized === "OPTGEO") pushUnique(out, seen, "OPT-GEO");
-
-  return out;
-}
+import { getNodeById, getAllDescendantLeafNodeIds, isLeafNode } from "./unifiedSyllabusIndex.js";
 
 // ---------------------------------------------------------
-// CANONICAL / LEGACY → LEAF EXPANSION
+// REWRITTEN SAFE RESOLVER FOR RETRIEVAL
 // ---------------------------------------------------------
-
-export function expandCanonicalOrLegacyToLeafNodeIds(nodeIds = []) {
-  const out = [];
-  const seen = new Set();
-
-  for (const rawId of nodeIds) {
-    const nodeId = normalizeNodeId(rawId);
-    if (!nodeId) continue;
-
-    if (PYQ_NODE_KEY_SET.has(nodeId)) {
-      pushUnique(out, seen, nodeId);
-    }
-
-    const descendants = getDescendantPyqNodeIds(nodeId);
-    for (const childId of descendants) {
-      pushUnique(out, seen, childId);
-    }
-  }
-
-  return out;
-}
-
-// ---------------------------------------------------------
-// FINAL GENERIC RESOLVER
-// ---------------------------------------------------------
-
 export function resolveInputToLookupNodeIds(inputId) {
   const normalizedInput = normalizeNodeId(inputId);
   if (!normalizedInput) return [];
 
-  const resolved = [];
-  const seen = new Set();
-
-  const directCandidates = [normalizedInput];
-
-  let canonicalCandidates = [];
-  try {
-    canonicalCandidates = resolveToCanonicalNodeIds(normalizedInput)
-      .map(normalizeNodeId)
-      .filter(Boolean);
-  } catch (err) {
-    console.error(
-      "[pyqLinkEngine] resolveToCanonicalNodeIds failed:",
-      err.message
-    );
-    canonicalCandidates = [];
+  // 1. Is it a known node in the registry?
+  const node = getNodeById(normalizedInput);
+  if (!node) {
+    // If it's literally not in the syllabus, don't invent things.
+    // Try checking if it exists directly in PYQ index
+    if (PYQ_NODE_KEY_SET.has(normalizedInput)) return [normalizedInput];
+    // Try prefix-descendant lookup (handles mismatched naming schemes)
+    const descendantsByPrefix = getDescendantPyqNodeIds(normalizedInput);
+    if (descendantsByPrefix.length > 0) return descendantsByPrefix;
+    return [];
   }
 
-  const expandedCanonicalLeafs = expandCanonicalOrLegacyToLeafNodeIds(
-    canonicalCandidates
-  ).map(normalizeNodeId).filter(Boolean);
-
-  const familySeeds = [
-    normalizedInput,
-    ...canonicalCandidates,
-    ...expandedCanonicalLeafs,
-  ].filter(Boolean);
-
-  const belongsToAllowedFamily = (candidateId) =>
-    familySeeds.some((seed) => isSameFamilyAnchor(seed, candidateId));
-
-  const seedIds = [
-    ...directCandidates,
-    ...canonicalCandidates,
-    ...expandedCanonicalLeafs,
-  ]
-    .map(normalizeNodeId)
-    .filter(Boolean);
-
-  // 1) exact + descendants
-  for (const seedId of seedIds) {
-    if (!belongsToAllowedFamily(seedId)) continue;
-
-    if (PYQ_NODE_KEY_SET.has(seedId)) {
-      pushUnique(resolved, seen, seedId);
+  // 2. If it's a leaf, just return it — but also try prefix descendants if it has no direct PYQ
+  if (isLeafNode(normalizedInput)) {
+    // Direct hit in PYQ index?
+    if (PYQ_NODE_KEY_SET.has(normalizedInput)) return [normalizedInput];
+    // Walk ancestor prefixes to find PYQ-keyed relatives (bridges naming gap)
+    const parts = normalizedInput.split("-");
+    for (let len = parts.length - 1; len >= 2; len--) {
+      const prefix = parts.slice(0, len).join("-");
+      const descendants = getDescendantPyqNodeIds(prefix);
+      if (descendants.length > 0) return descendants;
     }
-
-    const descendants = getDescendantPyqNodeIds(seedId);
-    for (const childId of descendants) {
-      if (!belongsToAllowedFamily(childId)) continue;
-      pushUnique(resolved, seen, childId);
-    }
+    return [normalizedInput]; // fallback to self even if not in index
   }
 
-  // 2) closest ancestor fallback
-  if (!resolved.length) {
-    const ancestorSeeds = [];
-    const ancestorSeen = new Set();
-
-    for (const seedId of seedIds) {
-      const ancestors = getAncestorChainClosestFirst(seedId);
-
-      for (const anc of ancestors) {
-        if (!belongsToAllowedFamily(anc)) continue;
-        if (ancestorSeen.has(anc)) continue;
-        ancestorSeen.add(anc);
-        ancestorSeeds.push(anc);
-      }
-    }
-
-    for (const ancestorId of ancestorSeeds) {
-      if (PYQ_NODE_KEY_SET.has(ancestorId)) {
-        pushUnique(resolved, seen, ancestorId);
-      }
-
-      const descendants = getDescendantPyqNodeIds(ancestorId);
-      for (const childId of descendants) {
-        if (!belongsToAllowedFamily(childId)) continue;
-        pushUnique(resolved, seen, childId);
-      }
-
-      if (resolved.length) break;
-    }
+  // 3. If it's a parent, fetch all leaf descendants from registry.
+  // The registry already guarantees they are strict children of this node, thus same subject.
+  const leaves = getAllDescendantLeafNodeIds(normalizedInput);
+  
+  if (leaves.length === 0) {
+    return [normalizedInput]; // Fallback to itself if no leaves
   }
 
-  // 3) final broad fallback scan
-  if (!resolved.length) {
-    for (const nodeId of PYQ_NODE_KEY_SET) {
-      if (belongsToAllowedFamily(nodeId)) {
-        pushUnique(resolved, seen, nodeId);
-      }
-    }
-  }
-
-  return resolved;
+  // Also include the parent itself just in case pyqs are mapped directly to it
+  return Array.from(new Set([normalizedInput, ...leaves]));
 }
 
 // ---------------------------------------------------------
@@ -530,10 +403,58 @@ function flattenQuestionIdsFromNodeBuckets(nodeIds = [], options = {}) {
 
   return questionIds;
 }
+function humanizeTopicFromNodeId(nodeId = "") {
+  const id = String(nodeId || "").toUpperCase();
 
-function hydrateQuestions(questionIds = []) {
+  if (id.includes("MAURYA")) return "Mauryan Empire";
+  if (id.includes("GUPTA")) return "Gupta Period";
+  if (id.includes("VEDIC")) return "Vedic Period";
+  if (id.includes("PREHIST")) return "Prehistory";
+  if (id.includes("SANGAM")) return "Sangam Age";
+  if (id.includes("JAIN")) return "Jainism";
+  if (id.includes("IVC")) return "Indus Valley Civilization";
+
+  if (id.includes("ANC")) return "Ancient History";
+  if (id.includes("MED")) return "Medieval History";
+  if (id.includes("MOD")) return "Modern History";
+  if (id.includes("WORLD")) return "World History";
+  if (id.includes("HIS")) return "History";
+
+  if (id.includes("POL")) return "Polity";
+  if (id.includes("CONST")) return "Constitution";
+  if (id.includes("ECO")) return "Economy";
+  if (id.includes("ENV")) return "Environment";
+  if (id.includes("BIOTECH")) return "Biotechnology";
+  if (id.includes("ST")) return "Science & Technology";
+
+  if (id.includes("CSAT-BN")) return "Basic Numeracy";
+  if (id.includes("CSAT-RC")) return "Reading Comprehension";
+  if (id.includes("CSAT-LR")) return "Logical Reasoning";
+  if (id.includes("CSAT")) return "CSAT";
+
+  return "";
+}
+function hydrateQuestions(questionIds = [], fallbackNodeId = "") {
   return questionIds
-    .map((qid) => PYQ_MASTER_INDEX[qid])
+    .map((qid) => {
+      const q = PYQ_MASTER_INDEX[qid];
+      if (!q) return null;
+
+      const topic =
+        String(
+          q?.topic ||
+          q?.section ||
+          q?.subtopic ||
+          q?.microtheme ||
+          q?.microTheme ||
+          ""
+        ).trim() || humanizeTopicFromNodeId(fallbackNodeId);
+
+      return {
+        ...q,
+        topic,
+      };
+    })
     .filter(Boolean)
     .sort((a, b) => {
       const yA = Number(a?.year || 0);
@@ -562,7 +483,7 @@ export function getPyqsForTopic(inputNodeId, limit = 50, options = {}) {
   const lookupNodeIds = resolveInputToLookupNodeIds(inputNodeId);
   const qids = flattenQuestionIdsFromNodeBuckets(lookupNodeIds, options);
   const uniqueQids = Array.from(new Set(qids));
-  const questions = hydrateQuestions(uniqueQids);
+  const questions = hydrateQuestions(uniqueQids, inputNodeId);
 
   if (typeof limit === "number" && limit > 0) {
     return questions.slice(0, limit);
@@ -642,7 +563,7 @@ export function getPyqSummaryForNode(inputNodeId, limit = 50, options = {}) {
   const lookupNodeIds = resolveInputToLookupNodeIds(inputNodeId);
   const qids = flattenQuestionIdsFromNodeBuckets(lookupNodeIds, options);
   const uniqueQids = Array.from(new Set(qids));
-  const questions = hydrateQuestions(uniqueQids);
+  const questions = hydrateQuestions(uniqueQids, inputNodeId);
 
   const limitedQuestions =
     typeof limit === "number" && limit > 0
@@ -696,18 +617,11 @@ export function getPyqCountForTopic(inputNodeId, options = {}) {
 }
 export function explainPyqResolution(inputNodeId) {
   const normalized = normalizeNodeId(inputNodeId);
-  const canonical = resolveToCanonicalNodeIds(normalized);
-  const expanded = expandCanonicalOrLegacyToLeafNodeIds(canonical);
-  const ancestors = getAncestorChainClosestFirst(normalized);
   const finalLookup = resolveInputToLookupNodeIds(normalized);
 
   return {
     input: inputNodeId,
     normalized,
-    familyAnchor: getFamilyAnchor(normalized),
-    canonicalCandidates: canonical,
-    expandedCanonicalLeafs: expanded,
-    ancestors,
     finalLookupNodeIds: finalLookup,
   };
 }

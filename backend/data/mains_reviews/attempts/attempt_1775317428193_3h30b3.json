@@ -1,0 +1,34 @@
+{
+  "schema": "mainsAnswerAttempt",
+  "attemptId": "attempt_1775317428193_3h30b3",
+  "createdAt": "2026-04-04T15:43:48.193Z",
+  "userId": "test_user_001",
+  "source": {
+    "paper": "GS1",
+    "questionId": "GS1_2023_Q14",
+    "questionMarks": 15,
+    "year": 2023
+  },
+  "question": {
+    "text": "Discuss the significance of women participation in the freedom struggle of India. How did it transform the nature of the independence movement?",
+    "marks": 15,
+    "wordLimit": 250,
+    "paper": "GS1"
+  },
+  "writingSession": {
+    "startedAt": "2026-04-04T20:00:00.000Z",
+    "completedAt": "2026-04-04T20:18:00.000Z",
+    "durationMinutes": 18,
+    "wordCount": 238
+  },
+  "answerUpload": {
+    "method": "typed",
+    "extractedText": "Women played a pivotal role in India freedom struggle. They participated in the Non-Cooperation Movement, Civil Disobedience, and Quit India Movement. Leaders like Sarojini Naidu, Annie Besant, and Aruna Asaf Ali gave new dimensions to the struggle."
+  },
+  "extraction": {},
+  "selfReview": {
+    "selfScore": 10,
+    "selfNote": "Covered social dimensions but missed economic angle"
+  },
+  "status": "saved"
+}

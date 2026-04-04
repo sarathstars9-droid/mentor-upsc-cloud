@@ -1,0 +1,107 @@
+[
+  {
+    "id": "MAIN_GS2_GOVERNANCE_2023_02",
+    "paper": "GS2",
+    "question": "Discuss the role of the Competition Commission of India in containing the abuse of dominant position by the Multi-National Corporations in India.",
+    "theme": "Development Processes and Industry – Planning, Corporate Governance etc.",
+    "syllabusNodeId": "GS2-GOV-REGULATORS-QUASI",
+    "bestCandidate": {
+      "subject": "Governance",
+      "theme": "Pressure Groups, Formal/Informal Associations, Development Processes and Development Industry",
+      "subtheme": "Development Process and Industry",
+      "confidence": 0.07,
+      "matchedBy": "unmatched"
+    },
+    "reason": "no-theme-match"
+  },
+  {
+    "id": "MAIN_GS2_INTERNATIONAL_RELATIONS_2016_02",
+    "paper": "GS2",
+    "question": "Evaluate the economic and strategic dimensions of India’s Look East Policy in the context of the post Cold War international scenario.",
+    "theme": "International Relations",
+    "syllabusNodeId": "GS2-IR-CONTEMP",
+    "bestCandidate": {
+      "subject": "International Relations",
+      "theme": "Hard, Soft and Smart Power",
+      "subtheme": "Diaspora in the West",
+      "confidence": 0,
+      "matchedBy": "unmatched"
+    },
+    "reason": "no-theme-match"
+  },
+  {
+    "id": "MAIN_GS2_INTERNATIONAL_RELATIONS_2014_01",
+    "paper": "GS2",
+    "question": "The aim of Information Technology Agreements (ITAs) is to lower all taxes and tariffs on Information technology products by signatories to zero. What impact would such agreements have on India’s inter",
+    "theme": "International Relations",
+    "syllabusNodeId": "GS2-IR-CONTEMP",
+    "bestCandidate": {
+      "subject": "International Relations",
+      "theme": "Regional Groupings and Strategic Platforms",
+      "subtheme": "NATO",
+      "confidence": 0.28,
+      "matchedBy": "unmatched"
+    },
+    "reason": "no-theme-match"
+  },
+  {
+    "id": "GS3_DISASTER_2024_01",
+    "paper": "GS3",
+    "question": "What is disaster resilience? How is it determined? Describe various elements of a resilience framework. Also mention the global targets of Sendai Framework for Disaster Risk Reduction",
+    "theme": "Disaster Risk Reduction",
+    "syllabusNodeId": "GS3-DM-PREP-MIT",
+    "bestCandidate": {
+      "subject": "Internal Security",
+      "theme": "Kashmir Issue",
+      "subtheme": "J&K",
+      "confidence": 0,
+      "matchedBy": "unmatched"
+    },
+    "reason": "no-theme-match"
+  },
+  {
+    "id": "GS3_DISASTER_2019_01",
+    "paper": "GS3",
+    "question": "Vulnerability is an essential element for defining disaster impacts and its threat to people. How and in what ways can vulnerability to disasters be characterized? Discuss different types of vulnerabi",
+    "theme": "Disaster Risk Reduction",
+    "syllabusNodeId": "GS3-DM-PREP-MIT",
+    "bestCandidate": {
+      "subject": "Internal Security",
+      "theme": "Kashmir Issue",
+      "subtheme": "J&K",
+      "confidence": 0,
+      "matchedBy": "unmatched"
+    },
+    "reason": "no-theme-match"
+  },
+  {
+    "id": "GS3_DISASTER_2018_01",
+    "paper": "GS3",
+    "question": "Describe various measures taken in India for Disaster Risk Reduction (DRR) before and after signing'Sendai Framework for DRR (201530)'. How is this framework different from'Hyogo Framework for Action,",
+    "theme": "Disaster Risk Reduction",
+    "syllabusNodeId": "GS3-DM-PREP-MIT",
+    "bestCandidate": {
+      "subject": "Internal Security",
+      "theme": "Kashmir Issue",
+      "subtheme": "J&K",
+      "confidence": 0,
+      "matchedBy": "unmatched"
+    },
+    "reason": "no-theme-match"
+  },
+  {
+    "id": "GS3_DISASTER_2013_01",
+    "paper": "GS3",
+    "question": "How important are vulnerability and risk assessment for predisaster management. As an administrator, what are key areas that you would focus in a disaster management",
+    "theme": "Disaster Risk Reduction",
+    "syllabusNodeId": "GS3-DM-PREP-MIT",
+    "bestCandidate": {
+      "subject": "Internal Security",
+      "theme": "Kashmir Issue",
+      "subtheme": "J&K",
+      "confidence": 0,
+      "matchedBy": "unmatched"
+    },
+    "reason": "no-theme-match"
+  }
+]

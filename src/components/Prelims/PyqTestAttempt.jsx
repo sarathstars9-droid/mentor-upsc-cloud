@@ -1,9 +1,43 @@
-function optionKeys(question) {
-    return ["A", "B", "C", "D"].filter((k) => question?.options?.[k]);
+function normalizeOptions(question) {
+    if (!question) return {};
+
+    // Case 1: options as array
+    if (Array.isArray(question.options)) {
+        return {
+            A: question.options[0] ?? "",
+            B: question.options[1] ?? "",
+            C: question.options[2] ?? "",
+            D: question.options[3] ?? "",
+        };
+    }
+
+    // Case 2: options as object with uppercase/lowercase keys
+    if (question.options && typeof question.options === "object") {
+        return {
+            A: question.options.A ?? question.options.a ?? "",
+            B: question.options.B ?? question.options.b ?? "",
+            C: question.options.C ?? question.options.c ?? "",
+            D: question.options.D ?? question.options.d ?? "",
+        };
+    }
+
+    // Case 3: flat fields
+    return {
+        A: question.optionA ?? question.option_a ?? question.a ?? "",
+        B: question.optionB ?? question.option_b ?? question.b ?? "",
+        C: question.optionC ?? question.option_c ?? question.c ?? "",
+        D: question.optionD ?? question.option_d ?? question.d ?? "",
+    };
 }
 
+
+
+function optionKeys(question) {
+    const normalized = normalizeOptions(question);
+    return ["A", "B", "C", "D"].filter((k) => normalized[k]);
+}
 function getQid(question) {
-    return question?.questionId || question?.id || null;
+    return question?.questionId || question?.id || question?.qid || null;
 }
 
 function getTestHeading(testMeta) {
@@ -50,7 +84,17 @@ export default function PyqTestAttempt({
     const safeCurrentQuestion =
         currentQuestion || safeQuestions[currentIndex] || null;
     const currentQid = getQid(safeCurrentQuestion);
+    console.log("QUESTION OBJECT:", safeCurrentQuestion);
+    const visibleQuestionText =
+        safeCurrentQuestion?.questionText ||
+        safeCurrentQuestion?.question ||
+        safeCurrentQuestion?.question_text ||
+        safeCurrentQuestion?.ques ||
+        safeCurrentQuestion?.statement ||
+        "Question text not available.";
+    const normalizedOptions = normalizeOptions(safeCurrentQuestion);
 
+    console.log("NORMALIZED OPTIONS:", normalizedOptions);
     if (!safeCurrentQuestion) {
         return (
             <div
@@ -237,6 +281,30 @@ export default function PyqTestAttempt({
                     Attempted: {answeredCount}/{safeQuestions.length} • Sure: {sureCount} • Guess: {guessCount}
                 </div>
 
+                {safeCurrentQuestion?.passageText && (
+                    <div
+                        style={{
+                            background: "rgba(148,163,184,0.06)",
+                            border: "1px solid rgba(148,163,184,0.15)",
+                            borderLeft: "3px solid rgba(99,102,241,0.6)",
+                            borderRadius: 10,
+                            padding: "12px 16px",
+                            marginBottom: 16,
+                            fontSize: 14,
+                            fontWeight: 400,
+                            lineHeight: 1.75,
+                            color: "#94a3b8",
+                            whiteSpace: "pre-wrap",
+                            overflowWrap: "break-word",
+                            wordBreak: "break-word",
+                            maxHeight: 320,
+                            overflowY: "auto",
+                        }}
+                    >
+                        {safeCurrentQuestion.passageText}
+                    </div>
+                )}
+
                 <div
                     style={{
                         fontSize: 20,
@@ -250,7 +318,7 @@ export default function PyqTestAttempt({
                         width: "100%",
                     }}
                 >
-                    {safeCurrentQuestion.questionText || "Question text not available."}
+                    {visibleQuestionText}
                 </div>
 
                 <div style={{ display: "grid", gap: 12, minWidth: 0 }}>
@@ -290,7 +358,7 @@ export default function PyqTestAttempt({
                                         whiteSpace: "pre-wrap",
                                     }}
                                 >
-                                    {safeCurrentQuestion.options?.[key]}
+                                    {normalizedOptions[key]}
                                 </div>
                             </button>
                         );

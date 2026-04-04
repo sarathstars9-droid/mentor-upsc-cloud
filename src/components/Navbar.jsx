@@ -9,6 +9,7 @@ export default function Navbar({ onLogout, mobileOpen, setMobileOpen }) {
       { path: "/plan", label: "Plan", mobile: true, desktop: true },
       { path: "/execution", label: "Execution", mobile: false, desktop: true },
       { path: "/performance", label: "Performance", mobile: true, desktop: true },
+      { path: "/mistake", label: "mistake", mobile: true, desktop: true },
       { path: "/revision", label: "Revision", mobile: true, desktop: true },
       { path: "/syllabus", label: "Syllabus", mobile: true, desktop: true },
       { path: "/csat", label: "CSAT", mobile: false, desktop: true },

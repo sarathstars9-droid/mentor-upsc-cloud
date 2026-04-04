@@ -1,221 +1,154 @@
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
+import { getNodeById, expandCanonicalOrLegacyToLeafNodeIds } from "../brain/unifiedSyllabusIndex.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const BACKEND_DIR = path.join(__dirname, "..");
-const PYQ_QUESTIONS_DIR = path.join(BACKEND_DIR, "data", "pyq_questions");
-const OUTPUT_DIR = path.join(BACKEND_DIR, "data", "pyq_index");
-const OUTPUT_FILE = path.join(OUTPUT_DIR, "pyq_by_node.json");
+const INDEX_DIR = path.resolve(__dirname, "../data/pyq_index");
+const MASTER_INDEX_PATH = path.join(INDEX_DIR, "pyq_master_index.json");
+const OUTPUT_PATH = path.join(INDEX_DIR, "pyq_by_node.json");
 
-function readJSON(filePath) {
-    return JSON.parse(fs.readFileSync(filePath, "utf-8"));
-}
+// Define bucket list explicitly requested by user
+const stages = ["prelims", "mains", "csat", "essay", "ethics", "optional"];
 
-function writeJSON(filePath, data) {
-    fs.mkdirSync(path.dirname(filePath), { recursive: true });
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
-}
+async function rebuildIndexes() {
+  console.log("⏳ Loading pyq_master_index.json...");
+  
+  let masterIndexRaw;
+  try {
+    masterIndexRaw = await fs.readFile(MASTER_INDEX_PATH, "utf-8");
+  } catch (err) {
+    console.error("❌ Fatal: Missing pyq_master_index.json! Run buildPyqMasterIndex first.");
+    process.exit(1);
+  }
 
-function walkTaggedJsonFiles(dir) {
-    const results = [];
+  const pyqMasterIndex = JSON.parse(masterIndexRaw);
+  const totalIncoming = Object.keys(pyqMasterIndex).length;
 
-    function walk(currentDir) {
-        if (!fs.existsSync(currentDir)) return;
+  console.log(`✅ Loaded ${totalIncoming} questions from master index.`);
+  
+  // The structure to be written
+  const pyqByNode = {};
+  
+  // Counters for debug log
+  let skippedMissingNodeId = 0;
+  let unknownNodeIds = 0;
+  const stageCounts = Object.fromEntries(stages.map(s => [s, 0]));
 
-        const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+  // Helper to init node
+  function initNode(nid) {
+    if (!pyqByNode[nid]) {
+      pyqByNode[nid] = {
+        total: 0,
+        latestYear: 0
+      };
+      stages.forEach(stg => { pyqByNode[nid][stg] = []; });
+    }
+  }
 
-        for (const entry of entries) {
-            const fullPath = path.join(currentDir, entry.name);
+  // Iterate over all questions in Master Index
+  const questionsList = Object.values(pyqMasterIndex);
 
-            if (entry.isDirectory()) {
-                walk(fullPath);
-            } else if (entry.isFile() && entry.name.endsWith("_tagged.json")) {
-                results.push(fullPath);
-            }
-        }
+  // Sorting list by Year DESC before bucket injection ensures buckets are cleanly naturally ordered
+  questionsList.sort((a, b) => {
+    const yA = Number(a.year || 0);
+    const yB = Number(b.year || 0);
+    return yB - yA; // Latest first
+  });
+
+  for (const q of questionsList) {
+    const nodeId = q.syllabusNodeId || q.nodeId;
+    if (!nodeId) {
+      skippedMissingNodeId++;
+      continue;
     }
 
-    walk(dir);
-    return results;
-}
+    const stage = String(q.stage || "").toLowerCase();
 
-function getBucketFromQuestion(question = {}) {
-    const qid = String(question.id || question.question_id || "").trim();
-    const exam = String(question.exam || "").trim().toLowerCase();
-    const stage = String(question.stage || "").trim().toLowerCase();
-    const paper = String(question.paper || "").trim().toLowerCase();
-
-    // 1. strongest signal: explicit exam/stage metadata
-    if (exam === "mains" || stage === "mains") return "mains";
-    if (exam === "prelims" || stage === "prelims") return "prelims";
-    if (exam === "essay" || stage === "essay") return "essay";
-    if (exam === "ethics" || stage === "ethics") return "ethics";
-    if (exam === "optional" || stage === "optional") return "optional";
-    if (exam === "csat" || stage === "csat") return "csat";
-
-    // 2. infer from paper if needed
-    if (paper === "gs4") return "ethics";
-    if (paper === "essay") return "essay";
-    if (paper.includes("optional")) return "optional";
-    if (paper === "csat") return "csat";
-
-    // 3. fallback to id prefix
-    // 3. fallback to id pattern (VERY IMPORTANT FIX)
-    if (/^(PRE|PRELIMS)_/i.test(qid)) return "prelims";
-
-    // 👉 NEW: detect GS mains pattern
-    if (/^GS\d/i.test(qid)) return "mains";
-
-    if (/^(MAINS|MAIN)_/i.test(qid)) return "mains";
-    if (/^ESSAY_/i.test(qid)) return "essay";
-    if (/^ETHICS_/i.test(qid)) return "ethics";
-    if (/^(OPT|OPTIONAL)_/i.test(qid)) return "optional";
-    if (/^CSAT_/i.test(qid)) return "csat";
-
-    return null;
-}
-
-function createEmptyBuckets() {
-    return {
-        prelims: [],
-        mains: [],
-        essay: [],
-        ethics: [],
-        optional: [],
-        csat: []
-    };
-}
-
-function normalizeNodeIds(question) {
-    const raw =
-        question.syllabusNodeId ??
-        question.syllabus_node_id ??
-        question.syllabusNodeIds ??
-        question.syllabus_node_ids ??
-        question.nodeId ??
-        question.node_id ??
-        question.nodeIds ??
-        question.node_ids ??
-        [];
-
-    if (Array.isArray(raw)) {
-        return raw.map((x) => String(x).trim()).filter(Boolean);
+    // Ensure stage is a valid bucket
+    let bucketStage = stage;
+    if (!stages.includes(bucketStage)) {
+       // fallback generic bucket handling
+       if (stage.includes("csat")) bucketStage = "csat";
+       else if (stage.includes("prelims")) bucketStage = "prelims";
+       else if (stage.includes("mains")) bucketStage = "mains";
+       else continue; // Invalid stage, completely drops it. Wait, should we?
+       // Just put into optional by default if unknown? No, user explicitly said don't mix buckets.
     }
 
-    if (typeof raw === "string" && raw.trim()) {
-        return [raw.trim()];
+    // CRITICAL: Expand possibly legacy/parent nodes into their exact leaf canonical IDs
+    let lookupNodeId = nodeId;
+
+    // Explicit patch for reading comprehension which often uses legacy CSAT-COMP directly in datasets
+    if (lookupNodeId === "CSAT-COMP") {
+      lookupNodeId = "CSAT-RC";
     }
 
-    return [];
-}
-
-function ensureNode(index, nodeId) {
-    if (!index[nodeId]) {
-        index[nodeId] = createEmptyBuckets();
-    }
-}
-
-function pushUnique(arr, value) {
-    if (!arr.includes(value)) {
-        arr.push(value);
-    }
-}
-
-function sortBuckets(index) {
-    const sortedNodeIds = Object.keys(index).sort();
-    const finalIndex = {};
-
-    for (const nodeId of sortedNodeIds) {
-        finalIndex[nodeId] = {
-            prelims: [...index[nodeId].prelims].sort(),
-            mains: [...index[nodeId].mains].sort(),
-            essay: [...index[nodeId].essay].sort(),
-            ethics: [...index[nodeId].ethics].sort(),
-            optional: [...index[nodeId].optional].sort(),
-            csat: [...index[nodeId].csat].sort()
-        };
+    const resolvedNodes = expandCanonicalOrLegacyToLeafNodeIds(lookupNodeId);
+    
+    if (!resolvedNodes || resolvedNodes.length === 0) {
+       unknownNodeIds++;
+       console.warn(`[WARNING] Orphan question ${q.id}: Cannot resolve "${nodeId}" to any valid leaf node in Syllabus. Skipping.`);
+       continue;
     }
 
-    return finalIndex;
-}
+    // Now safely map to every resolved canonical leaf node
+    for (const validNodeId of resolvedNodes) {
+      initNode(validNodeId);
 
-function rebuild() {
-    const files = walkTaggedJsonFiles(PYQ_QUESTIONS_DIR);
-
-    const index = {};
-    let totalQuestions = 0;
-    let mappedQuestions = 0;
-    let skippedNoBucket = 0;
-    let skippedNoNode = 0;
-    let skippedNoId = 0;
-
-    for (const file of files) {
-        const data = readJSON(file);
-
-        let questions = [];
-        if (Array.isArray(data)) {
-            questions = data;
-        } else if (data && Array.isArray(data.questions)) {
-            questions = data.questions;
-        } else {
-            console.warn(`⚠ Skipping non-question file: ${file}`);
-            continue;
+      // Push explicitly only if not exist
+      if (!pyqByNode[validNodeId][bucketStage].includes(q.id)) {
+        pyqByNode[validNodeId][bucketStage].push(q.id);
+        pyqByNode[validNodeId].total += 1;
+        
+        const qYear = Number(q.year || 0);
+        if (qYear > (pyqByNode[validNodeId].latestYear || 0)) {
+          pyqByNode[validNodeId].latestYear = qYear;
         }
 
-        for (const question of questions) {
-            totalQuestions++;
-
-            const qid = String(question.id || question.question_id || "").trim();
-            if (!qid) {
-                skippedNoId++;
-                continue;
-            }
-
-            const bucket = getBucketFromQuestion(question);
-            if (String(question.id || "").includes("GS3_ENV_2024_01")) {
-                console.log("DEBUG_ENV_BUCKET", {
-                    id: question.id,
-                    exam: question.exam,
-                    stage: question.stage,
-                    paper: question.paper,
-                    bucket
-                });
-            }
-            if (!bucket) {
-                skippedNoBucket++;
-                continue;
-            }
-
-            const nodeIds = normalizeNodeIds(question);
-            if (!nodeIds.length) {
-                skippedNoNode++;
-                continue;
-            }
-
-            for (const nodeId of nodeIds) {
-                ensureNode(index, nodeId);
-                pushUnique(index[nodeId][bucket], qid);
-            }
-
-            mappedQuestions++;
-        }
+        // Track metric (only once per question per stage mapping, so we don't skew total count by multiplying leaf nodes)
+      }
     }
+    
+    // Increment metric for question mapping overall
+    if (stageCounts[bucketStage] !== undefined) {
+        stageCounts[bucketStage]++;
+    }
+  }
 
-    const finalIndex = sortBuckets(index);
-    writeJSON(OUTPUT_FILE, finalIndex);
+  // Write exact output structure
+  await fs.writeFile(OUTPUT_PATH, JSON.stringify(pyqByNode, null, 2), "utf-8");
 
-    console.log("✅ Rebuild complete");
-    console.log("Tagged files:", files.length);
-    console.log("Total questions:", totalQuestions);
-    console.log("Mapped questions:", mappedQuestions);
-    console.log("Skipped (no id):", skippedNoId);
-    console.log("Skipped (unknown bucket):", skippedNoBucket);
-    console.log("Skipped (no node ids):", skippedNoNode);
-    console.log("Nodes created:", Object.keys(finalIndex).length);
-    console.log("Output:", OUTPUT_FILE);
+  // Output required console debug metrics
+  console.log("\n\n=== REBUILD INDEX REPORT ===");
+  console.log(`[PYQ BUILD] Total Processed Nodes: ${Object.keys(pyqByNode).length}`);
+  console.log(`[PYQ BUILD] Total Valid Questions Mapped: ${Object.values(stageCounts).reduce((a,b)=>a+b, 0)}`);
+  
+  stages.forEach(s => {
+      console.log(`[PYQ BUILD] Total ${s.toUpperCase()}: ${stageCounts[s]}`);
+  });
+
+  if (skippedMissingNodeId > 0) {
+     console.log(`[PYQ BUILD] Ignored questions missing syllabusNodeId: ${skippedMissingNodeId}`);
+  }
+  if (unknownNodeIds > 0) {
+     console.log(`[PYQ BUILD] Mismatched/Skipped due to Invalid syllabusNodeId: ${unknownNodeIds}`);
+  }
+
+  // Top Nodes
+  const nodeEntries = Object.entries(pyqByNode)
+    .map(([nid, data]) => ({ nid, total: data.total }))
+    .sort((a,b) => b.total - a.total)
+    .slice(0, 10);
+    
+  console.log(`\n[PYQ BUILD] Top 10 High Volume Nodes:`);
+  nodeEntries.forEach((n, i) => console.log(`  ${i+1}. ${n.nid} => ${n.total} qs`));
+  console.log("✅ Rebuild complete! Fast lookup index generated at pyq_by_node.json");
 }
 
-rebuild();
+rebuildIndexes().catch(err => {
+  console.error("Fatal exception during rebuilding pyq indexes:", err);
+  process.exit(1);
+});

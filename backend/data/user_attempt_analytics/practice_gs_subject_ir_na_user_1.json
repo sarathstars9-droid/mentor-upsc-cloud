@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "attempted": 0,
+    "correct": 0,
+    "wrong": 0,
+    "skipped": 3,
+    "accuracy": 0,
+    "avgTime": 0,
+    "guessCount": 0,
+    "guessRate": 0,
+    "fastWrong": 0,
+    "slowQuestions": 0,
+    "safeAttempts": 0,
+    "riskyAttempts": 0
+  },
+  "behaviour": {},
+  "nodeStats": {},
+  "subjectStats": {},
+  "typeStats": {},
+  "trapStats": {},
+  "difficultyStats": {},
+  "weakNodes": [],
+  "weakSubjects": [],
+  "weakTypes": [],
+  "trapAlerts": [],
+  "recommendations": []
+}

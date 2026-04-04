@@ -1,0 +1,121 @@
+Folder PATH listing
+Volume serial number is D609-E5F2
+C:.
+¦   App.css
+¦   App.jsx
+¦   blockConstants.js
+¦   config.js
+¦   FolderStructure.txt
+¦   index.css
+¦   main.jsx
+¦   styles.lnk
+¦   
++---assets
+¦       react.svg
+¦       
++---components
+¦   ¦   DashboardHero.jsx
+¦   ¦   ExecutionHeatmap.jsx
+¦   ¦   Navbar.jsx
+¦   ¦   PyqModal.jsx
+¦   ¦   PyqSummaryPanel.jsx
+¦   ¦   RealityPanel.jsx
+¦   ¦   StreakCard.jsx
+¦   ¦   TargetRing.jsx
+¦   ¦   
+¦   +---layout
+¦   ¦       MentorMobileDrawer.jsx
+¦   ¦       MentorSidebar.jsx
+¦   ¦       MentorTopbar.jsx
+¦   ¦       
+¦   +---Plan
+¦   ¦       BlockCard.jsx
+¦   ¦       BlockList.jsx
+¦   ¦       BlockReviewModal.jsx
+¦   ¦       FocusModeModal.jsx
+¦   ¦       HeroSection.jsx
+¦   ¦       PlanRightRail.jsx
+¦   ¦       planSelectors.js
+¦   ¦       QuickActions.jsx
+¦   ¦       SpotlightCard.jsx
+¦   ¦       StopConfirmModal.jsx
+¦   ¦       SyllabusRadar.jsx
+¦   ¦       
+¦   +---Prelims
+¦   ¦       DashboardSummary.jsx
+¦   ¦       prelimsDashboardUtils.js
+¦   ¦       PyqTestAttempt.jsx
+¦   ¦       PyqTestResult.jsx
+¦   ¦       PyqTestStart.jsx
+¦   ¦       RecommendationsPanel.jsx
+¦   ¦       StatsBreakdownPanel.jsx
+¦   ¦       TrapPanel.jsx
+¦   ¦       WeakAreasPanel.jsx
+¦   ¦       
+¦   +---pyq
+¦           PyqAnalysisCard.jsx
+¦           PyqAnalysisView.jsx
+¦           PyqControlBar.jsx
+¦           PyqEmptyState.jsx
+¦           PyqLinkedQuestions.jsx
+¦           PyqProgressBar.jsx
+¦           PyqQuestionCard.jsx
+¦           PyqQuickView.jsx
+¦           PyqSummaryPanel.jsx
+¦           PyqThemeChips.jsx
+¦           PyqTimelinePanel.jsx
+¦           PyqTopicHeader.jsx
+¦           
++---data
+¦       ethicsFramework.js
+¦       prelimsStructure.js
+¦       
++---hooks
+¦       usePyqProgress.js
+¦       usePyqTopicPage.js
+¦       
++---layouts
+¦       MentorOSLayout.jsx
+¦       
++---pages
+¦       BacklogPage.jsx
+¦       CSATPage.jsx
+¦       EssayPage.jsx
+¦       EthicsPage.jsx
+¦       ExecutionPage.jsx
+¦       FocusPage.jsx
+¦       GeographyOptionalPage.jsx
+¦       LoginPage.jsx
+¦       MainsPage.jsx
+¦       MistakeBookPage.jsx
+¦       PerformancePage.jsx
+¦       PlanPage.jsx
+¦       PrelimsMistakesPage.jsx
+¦       PrelimsPage.jsx
+¦       PyqTopicPage.jsx
+¦       RevisionPage.jsx
+¦       SettingsPage.jsx
+¦       SyllabusPage.jsx
+¦       
++---styles
+¦       mentoros-blockcard.css
+¦       mentoros-layout.css
+¦       mentoros-plan.css
+¦       mentoros-theme.css
+¦       
++---theme
+¦       theme.js
+¦       
++---utils
+        auth.js
+        behaviourEngine.js
+        dashboard.js
+        mappingUtils.js
+        prelimsAnalysis.js
+        pyqFilters.js
+        pyqProgressStorage.js
+        pyqSort.js
+        pyqStage.js
+        studyEngine.js
+        trapDetector.js
+        

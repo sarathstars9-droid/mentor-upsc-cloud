@@ -10,7 +10,7 @@
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2025,
@@ -25,14 +25,23 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2025_002",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Indian Renaissance and Reform Movements",
       "microtheme": "Indian Renaissance and Reform Movements",
       "year": 2025,
@@ -47,19 +56,28 @@
         "d": "Dinkarrao Javalkar"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-EURO"
+      "syllabusNodeId": "GS1-HIS-MOD-EURO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2025_003",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Indian Renaissance and Reform Movements",
       "microtheme": "Indian Renaissance and Reform Movements",
       "year": 2025,
       "questionNumber": 2,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements about Raja Ram Mohan Roy: I. He possessed great love and respect for the traditional philosophical systems of the East. II. He desired his countrymen to accept the rational and scientific approach and the principle of human dignity and social equality of all men and women. Which of the statements given above is/are correct?",
       "options": {
@@ -69,14 +87,23 @@
         "d": "Neither I nor II"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-REFORM"
+      "syllabusNodeId": "GS1-HIS-MOD-REFORM",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2025_004",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2025,
@@ -91,14 +118,23 @@
         "d": "Promulgation of the Government of India Act, 1935"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2025_005",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2025,
@@ -113,14 +149,23 @@
         "d": "M. A. Jinnah"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2025_006",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2025,
@@ -135,19 +180,28 @@
         "d": "the launch of the Quit India Movement"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2025_007",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2025,
       "questionNumber": 4,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements in respect of the Non- Cooperation Movement: I. The Congress declared the attainment of ‘Swaraj’ by all legitimate and peaceful means to be its objective. II. It was to be implemented in stages with civil disobedience and non-payment of taxes for the next stage only if ‘Swaraj’ did not come within a year and the Government resorted to repression. Which of the statements given above is/are correct?",
       "options": {
@@ -157,14 +211,23 @@
         "d": "Neither I nor II"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2025_008",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2025,
@@ -179,14 +242,23 @@
         "d": "All the four"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2024_009",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Independence to Partition",
       "microtheme": "Independence to Partition",
       "year": 2024,
@@ -201,14 +273,23 @@
         "d": "Dr. Sachchidananda Sinha"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2024_010",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2024,
@@ -223,19 +304,28 @@
         "d": "Neither 1 nor 2"
       },
       "answer": null,
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2024_011",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The National Movement in the 1940s",
       "microtheme": "The National Movement in the 1940s",
       "year": 2024,
       "questionNumber": 1,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Party Its Leader 1. Bharatiya Jana Sangh Dr. Shyama Prasad Mukherjee 2. Socialist Party C. Rajagopalachari 3. Congress for Democracy Jagjivan Ram 4. Swatantra Party Acharya Narendra Dev How many of the above are correctly matched?",
       "options": {
@@ -245,14 +335,23 @@
         "d": "All four"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2024_012",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The National Movement in the 1940s",
       "microtheme": "The National Movement in the 1940s",
       "year": 2024,
@@ -267,14 +366,23 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2023_013",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2023,
@@ -289,14 +397,23 @@
         "d": "Muhammad Shah"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2023_014",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2023,
@@ -311,14 +428,23 @@
         "d": "The Charter Act of 1833"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-ADMIN"
+      "syllabusNodeId": "GS1-HIS-MOD-ADMIN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2023_015",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2023,
@@ -333,14 +459,23 @@
         "d": "construction of railways in Colonial India"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2022_016",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Independence to Partition",
       "microtheme": "Independence to Partition",
       "year": 2022,
@@ -355,14 +490,23 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2022_017",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2022,
@@ -377,14 +521,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Medieval History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2022_018",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Phases of Revolutionary Nationalism",
       "microtheme": "Phases of Revolutionary Nationalism",
       "year": 2022,
@@ -399,14 +552,23 @@
         "d": "3 only"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2022_019",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2022,
@@ -421,14 +583,23 @@
         "d": "1, 2 and 4"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-ADMIN"
+      "syllabusNodeId": "GS1-HIS-MOD-ADMIN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2021_020",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Development of Press, Education and Civil Services",
       "microtheme": "Development of Press, Education and Civil Services",
       "year": 2021,
@@ -443,14 +614,23 @@
         "d": "Sarojini Naidu"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2021_021",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2021,
@@ -465,14 +645,23 @@
         "d": "2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2021_022",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Indian Renaissance and Reform Movements",
       "microtheme": "Indian Renaissance and Reform Movements",
       "year": 2021,
@@ -487,14 +676,23 @@
         "d": "Madame Blavatsky and Colonel Olcott set up headquarters of Theosophical Society first here."
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-EURO"
+      "syllabusNodeId": "GS1-HIS-MOD-EURO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2021_023",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2021,
@@ -509,14 +707,23 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2021_024",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2021,
@@ -531,14 +738,23 @@
         "d": "Sarojini Naidu"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2021_025",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The National Movement in the 1940s",
       "microtheme": "The National Movement in the 1940s",
       "year": 2021,
@@ -553,14 +769,23 @@
         "d": "Cripps proposed an Indian Union with fall Dominion Status once the Second World War was over."
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2021_026",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The National Movement in the 1940s",
       "microtheme": "The National Movement in the 1940s",
       "year": 2021,
@@ -575,14 +800,23 @@
         "d": "officers of the Indian National Army"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2020_027",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Early Uprising Against the British and Revolt of 1857",
       "microtheme": "Early Uprising Against the British and Revolt of 1857",
       "year": 2020,
@@ -597,14 +831,23 @@
         "d": "Government control over the planters"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-1857"
+      "syllabusNodeId": "GS1-HIS-MOD-1857",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2020_028",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Early Uprising Against the British and Revolt of 1857",
       "microtheme": "Early Uprising Against the British and Revolt of 1857",
       "year": 2020,
@@ -619,19 +862,28 @@
         "d": "BirsaMunda’s Revolt of 1899-1900"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-1857"
+      "syllabusNodeId": "GS1-HIS-MOD-1857",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2020_029",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2020,
       "questionNumber": 8,
-      "questionType": "MCQ_SINGLE",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Which of the following statements correctly explains the impact of the Industrial Revolution on India during the first half of the nineteenth century?",
       "options": {
@@ -641,19 +893,28 @@
         "d": "Heavy duties were imposed on the imports of British manufactures."
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-EURO"
+      "syllabusNodeId": "GS1-HIS-MOD-EURO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2020_030",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2020,
       "questionNumber": 9,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "With reference to the history of India, consider the following pairs: 1. Aurang: In-charge of treasury of the State 2. Banian: Indian agent of the East India Company 3. Mirasidar : Designated revenue payer to the State Which of the pairs given above is/are correctly matched?",
       "options": {
@@ -663,14 +924,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2020_031",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2020,
@@ -685,14 +955,23 @@
         "d": "He wanted to train British civilians for administrative purpose in India"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2020_032",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Indian Renaissance and Reform Movements",
       "microtheme": "Indian Renaissance and Reform Movements",
       "year": 2020,
@@ -707,14 +986,23 @@
         "d": "Bhimrao Ramji Ambedkar"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-EURO"
+      "syllabusNodeId": "GS1-HIS-MOD-EURO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2020_033",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Indian Renaissance and Reform Movements",
       "microtheme": "Indian Renaissance and Reform Movements",
       "year": 2020,
@@ -729,14 +1017,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-EURO"
+      "syllabusNodeId": "GS1-HIS-MOD-EURO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2020_034",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "microtheme": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "year": 2020,
@@ -751,14 +1048,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2020_035",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2020,
@@ -773,19 +1079,28 @@
         "d": "2, 3 and 4 only"
       },
       "answer": null,
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2019_036",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Independence to Partition",
       "microtheme": "Independence to Partition",
       "year": 2019,
       "questionNumber": 3,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "With reference to Indian National Movement, consider the following pairs: Person Position held 1. Sir Tej Bahadur Sapru President, All India Liberal Federation 2. K.C. Neogy Member, The Constituent Assembly 3. P .C. Joshi General Secretary, Communist Party of India Which of the pairs given above is/are correctly matched?",
       "options": {
@@ -795,14 +1110,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2019_037",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2019,
@@ -817,14 +1141,23 @@
         "d": "Rubber, coffee and wheat"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2019_038",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2019,
@@ -839,19 +1172,28 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-ADMIN"
+      "syllabusNodeId": "GS1-HIS-MOD-ADMIN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2019_039",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Indian Renaissance and Reform Movements",
       "microtheme": "Indian Renaissance and Reform Movements",
       "year": 2019,
       "questionNumber": 6,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Movement/Organisation Leader 1. All India Anti- Mahatma Gandhi Untouchability League 2. All India Kisan Sabha Swami Sahajanand Saraswati 3. Self-Respect Movement Naicker E.V . Ramaswami Which of the pairs given above is/are correctly matched?",
       "options": {
@@ -861,14 +1203,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2019_040",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2019,
@@ -883,14 +1234,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2019_041",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2019,
@@ -905,19 +1265,28 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_042",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Development of Press, Education and Civil Services",
       "microtheme": "Development of Press, Education and Civil Services",
       "year": 2018,
       "questionNumber": 2,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Regarding Wood’s Dispatch, which of the following statements are true? 1. Grants-in-Aid system was introduced. 2. Establishment of universities was recommended. 3. English as a medium of instruction at all levels of education was recommended. Select the correct answer using the code given below:",
       "options": {
@@ -927,14 +1296,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_043",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Development of Press, Education and Civil Services",
       "microtheme": "Development of Press, Education and Civil Services",
       "year": 2018,
@@ -949,19 +1327,28 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-ADMIN"
+      "syllabusNodeId": "GS1-HIS-MOD-ADMIN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_044",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Development of Press, Education and Civil Services",
       "microtheme": "Development of Press, Education and Civil Services",
       "year": 2018,
       "questionNumber": 4,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "With reference to educational institutions during colonial rule in India, consider the following pairs: Institution Founder 1. Sanskrit College at Benaras William Jones 2. Calcutta Madrasa Warren Hastings 3. Fort William College Arthur Wellesley Which of the pairs given above is/are correct?",
       "options": {
@@ -971,14 +1358,23 @@
         "d": "3 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_045",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Early Uprising Against the British and Revolt of 1857",
       "microtheme": "Early Uprising Against the British and Revolt of 1857",
       "year": 2018,
@@ -993,14 +1389,23 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-1857"
+      "syllabusNodeId": "GS1-HIS-MOD-1857",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_046",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Independence to Partition",
       "microtheme": "Independence to Partition",
       "year": 2018,
@@ -1015,14 +1420,23 @@
         "d": "3 - 1 - 2 - 4"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_047",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2018,
@@ -1037,14 +1451,23 @@
         "d": "Cotton, silk, saltpetre and opium"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_048",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2018,
@@ -1059,14 +1482,23 @@
         "d": "To establish British paramountcy over the Indian States"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION"
+      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_049",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Indian Renaissance and Reform Movements",
       "microtheme": "Indian Renaissance and Reform Movements",
       "year": 2018,
@@ -1081,14 +1513,23 @@
         "d": "Satyendranath Tagore became the first Indian to succeed in the Indian Civil Services Examination."
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-EURO"
+      "syllabusNodeId": "GS1-HIS-MOD-EURO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_050",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "microtheme": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "year": 2018,
@@ -1103,14 +1544,23 @@
         "d": "Rapid increase in the urban population"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_051",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "microtheme": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "year": 2018,
@@ -1125,14 +1575,23 @@
         "d": "Motilal Nehru"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_052",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2018,
@@ -1147,14 +1606,23 @@
         "d": "Drastic decrease in the cultivation of plantation crops and commercial crops"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_053",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2018,
@@ -1169,14 +1637,23 @@
         "d": "The Servants of India Society"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_054",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2018,
@@ -1191,14 +1668,23 @@
         "d": "Provincial Governors"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2018_055",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The National Movement in the 1940s",
       "microtheme": "The National Movement in the 1940s",
       "year": 2018,
@@ -1213,14 +1699,23 @@
         "d": "Ashok Mehta, T.S. Ramanujam and G.G. Mehta"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2017_056",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "India in the 18th Century",
       "microtheme": "India in the 18th Century",
       "year": 2017,
@@ -1235,19 +1730,28 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2017_057",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "microtheme": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "year": 2017,
       "questionNumber": 4,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: 1. Radhakanta Deb — First President of the British Indian Association 2. Gazulu Lakshminarasu Chetty —Founder of the Madras Mahajana Sabha 3. Surendranath Banerjee — Founder of the Indian Association Which of the above pairs is/are correctly matched?",
       "options": {
@@ -1257,14 +1761,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2017_058",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "microtheme": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "year": 2017,
@@ -1279,14 +1792,23 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2017_059",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2017,
@@ -1301,14 +1823,23 @@
         "d": "A system of tribunals and a ban on strikes."
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2017_060",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2017,
@@ -1323,14 +1854,23 @@
         "d": "Division of the subjects delegated to the provinces into two categories."
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2017_061",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2017,
@@ -1345,14 +1885,23 @@
         "d": "Improve the relationship between the Government of India and the Indian States."
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2017_062",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The National Movement in the 1940s",
       "microtheme": "The National Movement in the 1940s",
       "year": 2017,
@@ -1367,14 +1916,23 @@
         "d": "3-1-2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2016_063",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Indian Renaissance and Reform Movements",
       "microtheme": "Indian Renaissance and Reform Movements",
       "year": 2016,
@@ -1389,14 +1947,23 @@
         "d": "a peasant movement in Punjab"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-EURO"
+      "syllabusNodeId": "GS1-HIS-MOD-EURO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2016_064",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Indian Renaissance and Reform Movements",
       "microtheme": "Indian Renaissance and Reform Movements",
       "year": 2016,
@@ -1411,14 +1978,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-EURO"
+      "syllabusNodeId": "GS1-HIS-MOD-EURO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2016_065",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "microtheme": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "year": 2016,
@@ -1433,14 +2009,23 @@
         "d": "Aurobindo Ghosh’s inability to be elected as the president of the Indian National Congress."
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2016_066",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "microtheme": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "year": 2016,
@@ -1455,14 +2040,23 @@
         "d": "Visit of Simon Commission to India"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2016_067",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2016,
@@ -1477,14 +2071,23 @@
         "d": "Constitutional reforms"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2016_068",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The National Movement in the 1940s",
       "microtheme": "The National Movement in the 1940s",
       "year": 2016,
@@ -1499,14 +2102,23 @@
         "d": "India should be given Dominion status"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2015_069",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "microtheme": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "year": 2015,
@@ -1521,14 +2133,23 @@
         "d": "Civil Disobedience Movement"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2015_070",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "microtheme": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "year": 2015,
@@ -1543,14 +2164,23 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2015_071",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "microtheme": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "year": 2015,
@@ -1565,14 +2195,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2015_072",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2015,
@@ -1587,14 +2226,23 @@
         "d": "None of the above"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2015_073",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2015,
@@ -1609,19 +2257,28 @@
         "d": "Annie Besant"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2015_074",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2015,
       "questionNumber": 21,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to Rowlatt Satyagraha, which of the following statements is/are correct? 1. The Rowlatt Act was based on the recommendations of the ‘Sedition Committee’ . 2. In Rowlatt Satyagraha Gandhiji tried to use the Home Rule League. 3. Demonstrations against the Simon Commission coincided with the Rowlatt Satyagraha. Select the correct answer using the code given below:",
       "options": {
@@ -1631,14 +2288,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2015_075",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2015,
@@ -1653,19 +2319,28 @@
         "d": "None of the above"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2015_076",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The National Movement in the 1940s",
       "microtheme": "The National Movement in the 1940s",
       "year": 2015,
       "questionNumber": 8,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to Cabinet Mission, which of the following statements is/are correct? 1. It recommended a federal government. 2. It enlarged the powers of the Indian courts. 3. It provided for more Indians in the ICS. Select the correct answer using the code given below:",
       "options": {
@@ -1675,14 +2350,23 @@
         "d": "None of the above"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2014_077",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Early Uprising Against the British and Revolt of 1857",
       "microtheme": "Early Uprising Against the British and Revolt of 1857",
       "year": 2014,
@@ -1697,14 +2381,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-1857"
+      "syllabusNodeId": "GS1-HIS-MOD-1857",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2014_078",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Independence to Partition",
       "microtheme": "Independence to Partition",
       "year": 2014,
@@ -1719,14 +2412,23 @@
         "d": "enquire into the riots in East Bengal"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2014_079",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Phases of Revolutionary Nationalism",
       "microtheme": "Phases of Revolutionary Nationalism",
       "year": 2014,
@@ -1741,14 +2443,23 @@
         "d": "Communist movement for India’s freedom with headquarters at Tashkent"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2014_080",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "microtheme": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "year": 2014,
@@ -1763,14 +2474,23 @@
         "d": "the Partition of India in 1947 when East Bengal became East Pakistan."
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2014_081",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2014,
@@ -1785,14 +2505,23 @@
         "d": "decision to participate in the Round Table Conference in London was taken"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2013_082",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Independence to Partition",
       "microtheme": "Independence to Partition",
       "year": 2013,
@@ -1807,14 +2536,23 @@
         "d": "Selected by the Government for their expertise in constitutional matters."
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2013_083",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Indian Renaissance and Reform Movements",
       "microtheme": "Indian Renaissance and Reform Movements",
       "year": 2013,
@@ -1829,14 +2567,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Modern History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2013_084",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "microtheme": "Rise of Indian National Movement: Moderate and Extremists Phase",
       "year": 2013,
@@ -1851,14 +2598,23 @@
         "d": "removal of a duty on imported cotton cloth."
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2013_085",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The Beginning of Gandhian Era",
       "microtheme": "The Beginning of Gandhian Era",
       "year": 2013,
@@ -1873,14 +2629,23 @@
         "d": "the Simon Commission suggested the partition of the country"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2013_086",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The National Movement in the 1940s",
       "microtheme": "The National Movement in the 1940s",
       "year": 2013,
@@ -1895,14 +2660,23 @@
         "d": "writing off all peasant debts"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_MODH_2013_087",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Modern History",
+      "subject": "History & Culture",
       "section": "The National Movement in the 1940s",
       "microtheme": "The National Movement in the 1940s",
       "year": 2013,
@@ -1917,7 +2691,16 @@
         "d": "Wavell Plan"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL"
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     }
   ]
 }

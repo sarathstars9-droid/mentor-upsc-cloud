@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:pyq": "node backend/scripts/buildPyqMasterIndex.js && node backend/scripts/rebuildPyqIndexes.js && node backend/scripts/validatePyqIndexes.js"
   },
   "dependencies": {
     "pdf-parse": "^2.4.5",

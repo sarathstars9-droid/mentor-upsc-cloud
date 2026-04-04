@@ -1,0 +1,1496 @@
+{
+  "paper": "GS1",
+  "stage": "Mains",
+  "version": "2026-gs1-theme-layer-v2",
+  "description": "GS1 theme/subtheme layer rebuilt from the GS1 Theme-wise PYQ PDF (2013–2025). Structured to match the GS2-style MentorOS theme-layer format.",
+  "subjects": {
+    "History": {
+      "source": "pdf_primary",
+      "themes": [
+        {
+          "name": "Modern History",
+          "subthemes": [
+            {
+              "name": "Personalities",
+              "mappedNodes": [
+                "GS1-HIS-MOD-NATIONAL"
+              ],
+              "keywords": [
+                "Jyotirao Phule",
+                "Gandhi",
+                "Tagore",
+                "Subhash Bose",
+                "Ambedkar",
+                "Azad",
+                "Dalhousie"
+              ]
+            },
+            {
+              "name": "British Policies",
+              "mappedNodes": [
+                "GS1-HIS-MED-EMPIRE"
+              ],
+              "keywords": [
+                "colonial rule",
+                "British policies",
+                "famines",
+                "East India Company",
+                "economic policies",
+                "indentured labour",
+                "Government of India Act 1935"
+              ]
+            },
+            {
+              "name": "Socio Religious Reform",
+              "mappedNodes": [
+                "GS1-HIS-MOD-REFORM"
+              ],
+              "keywords": [
+                "Young Bengal",
+                "Brahmo Samaj",
+                "Indian Renaissance",
+                "social reform movement"
+              ]
+            },
+            {
+              "name": "Peasant and Tribal Rebellions",
+              "mappedNodes": [
+                "GS1-HIS-MOD-1857"
+              ],
+              "keywords": [
+                "tribals",
+                "tribal response",
+                "local rebellions",
+                "1857 uprising",
+                "artisanal decline",
+                "rural economy"
+              ]
+            },
+            {
+              "name": "Women Movement",
+              "mappedNodes": [
+                "GS1-HIS-MOD-REFORM"
+              ],
+              "keywords": [
+                "women's question",
+                "19th century reform",
+                "women in modern India"
+              ]
+            },
+            {
+              "name": "Eve of British Conquest",
+              "mappedNodes": [
+                "GS1-HIS-MED-EMPIRE"
+              ],
+              "keywords": [
+                "fragmented polity",
+                "Panipat",
+                "mid-eighteenth century",
+                "reorganization of states and territories"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Freedom Struggle",
+          "subthemes": [
+            {
+              "name": "Gandhian Phase",
+              "mappedNodes": [
+                "GS1-HIS-MED-EMPIRE"
+              ],
+              "keywords": [
+                "Quit India",
+                "Non-Cooperation",
+                "Civil Disobedience",
+                "Gandhian phase",
+                "constructive programmes",
+                "women in freedom struggle"
+              ]
+            },
+            {
+              "name": "Moderate Phase",
+              "mappedNodes": [
+                "GS1-HIS-MED-EMPIRE"
+              ],
+              "keywords": [
+                "moderates",
+                "moderate ideology",
+                "moderate phase"
+              ]
+            },
+            {
+              "name": "Final Phase",
+              "mappedNodes": [
+                "GS1-HIS-MED-EMPIRE"
+              ],
+              "keywords": [
+                "naval mutiny",
+                "transfer of power",
+                "1940s",
+                "last nail in coffin"
+              ]
+            },
+            {
+              "name": "Role of Social Groups",
+              "mappedNodes": [
+                "GS1-HIS-MED-EMPIRE"
+              ],
+              "keywords": [
+                "women in freedom struggle",
+                "social groups",
+                "torch-bearer"
+              ]
+            },
+            {
+              "name": "Personalities in National Movement",
+              "mappedNodes": [
+                "GS1-HIS-MOD-NATIONAL"
+              ],
+              "keywords": [
+                "Curzon",
+                "Gandhi",
+                "national movement",
+                "ideological strands"
+              ]
+            },
+            {
+              "name": "Miscellaneous",
+              "mappedNodes": [],
+              "keywords": [
+                "anti-colonial struggle",
+                "world developments",
+                "national objective"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Art Forms, Literature and Architecture",
+          "subthemes": [
+            {
+              "name": "Architecture and Sculpture",
+              "mappedNodes": [
+                "1C.VA.ARCH",
+                "1C.VA.NUMIS"
+              ],
+              "keywords": [
+                "Harappan architecture",
+                "temple sculptures",
+                "lion and bull",
+                "rock-cut architecture",
+                "Gandhara art",
+                "stupa art",
+                "mesolithic art"
+              ]
+            },
+            {
+              "name": "Dynastic Art",
+              "mappedNodes": [
+                "1C.VA.ARCH"
+              ],
+              "keywords": [
+                "Chola",
+                "Pallava",
+                "Gupta",
+                "Pala",
+                "Vijayanagar",
+                "Krishnadeva Raya",
+                "Chandella"
+              ]
+            },
+            {
+              "name": "Bhakti-Sufi",
+              "mappedNodes": [
+                "1C.RLL.RELIGION"
+              ],
+              "keywords": [
+                "Bhakti movement",
+                "Sri Chaitanya",
+                "Sufis",
+                "mystic saints"
+              ]
+            },
+            {
+              "name": "Literature",
+              "mappedNodes": [
+                "1C.RLL.LANG"
+              ],
+              "keywords": [
+                "Persian literary sources",
+                "Sangam literature",
+                "South India literature"
+              ]
+            },
+            {
+              "name": "Dance",
+              "mappedNodes": [
+                "1C.VA.ARCH"
+              ],
+              "keywords": [
+                "Tandava dance"
+              ]
+            },
+            {
+              "name": "Society",
+              "mappedNodes": [
+                "GS1-HIS-ANC-VEDIC-RIG"
+              ],
+              "keywords": [
+                "Vedic society",
+                "Rig Vedic",
+                "later Vedic",
+                "religion",
+                "society and economy"
+              ]
+            },
+            {
+              "name": "Pre Vedic",
+              "mappedNodes": [
+                "GS1-HIS-ANC-IVC",
+                "GS1-HIS-ANC-VEDIC-RIG"
+              ],
+              "keywords": [
+                "Indus Valley Civilization",
+                "urban planning",
+                "present-day urbanization"
+              ]
+            },
+            {
+              "name": "Miscellaneous",
+              "mappedNodes": [
+                "1C.MISC.UNESCO"
+              ],
+              "keywords": [
+                "Indian art heritage",
+                "Indian philosophy and tradition",
+                "civilizational continuity"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Post Independence Consolidation",
+          "subthemes": [
+            {
+              "name": "Formation of States",
+              "mappedNodes": [
+                "GS1-HIS-MED-EMPIRE"
+              ],
+              "keywords": [
+                "integration of princely states",
+                "administrative issues",
+                "socio-cultural problems"
+              ]
+            },
+            {
+              "name": "Movements",
+              "mappedNodes": [
+                "GS1-HIS-MED-EMPIRE"
+              ],
+              "keywords": [
+                "Bhoodan",
+                "Gramdan",
+                "Vinoba Bhave"
+              ]
+            },
+            {
+              "name": "Political History",
+              "mappedNodes": [
+                "GS1-HIS-MED-EMPIRE"
+              ],
+              "keywords": [
+                "Jai Jawan Jai Kisan",
+                "Tashkent Agreement",
+                "Bangladesh emergence"
+              ]
+            },
+            {
+              "name": "Generic",
+              "mappedNodes": [],
+              "keywords": [
+                "India’s consolidation",
+                "early independence",
+                "polity",
+                "economy",
+                "education",
+                "international relations"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "World History",
+          "subthemes": [
+            {
+              "name": "American and French Revolution",
+              "mappedNodes": [
+                "GS1-HIS-WORLD-REV"
+              ],
+              "keywords": [
+                "French Revolution",
+                "American Revolution",
+                "mercantilism",
+                "modern world foundations"
+              ]
+            },
+            {
+              "name": "World Wars",
+              "mappedNodes": [
+                "GS1-HIS-WORLD-WARS"
+              ],
+              "keywords": [
+                "First World War",
+                "Second World War",
+                "balance of power",
+                "interwar years",
+                "Germany",
+                "great depression"
+              ]
+            },
+            {
+              "name": "Industrial Revolution",
+              "mappedNodes": [
+                "GS1-HIS-WORLD-INDUSTRIAL"
+              ],
+              "keywords": [
+                "industrial revolution in England",
+                "railways",
+                "Japan industrialization",
+                "quality of life"
+              ]
+            },
+            {
+              "name": "Decolonization",
+              "mappedNodes": [
+                "GS1-HIS-MED-EMPIRE"
+              ],
+              "keywords": [
+                "Malay Peninsula",
+                "West Africa",
+                "Suez Crisis",
+                "decolonization"
+              ]
+            },
+            {
+              "name": "Socialism and Communism",
+              "mappedNodes": [
+                "GS1-HIS-WORLD-REV"
+              ],
+              "keywords": [
+                "Lenin",
+                "New Economic Policy",
+                "socialism",
+                "communism"
+              ]
+            },
+            {
+              "name": "Rise of Nationalism",
+              "mappedNodes": [
+                "GS1-HIS-MED-EMPIRE"
+              ],
+              "keywords": [
+                "Africa",
+                "European competition",
+                "nationalism"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "History Miscellaneous",
+          "subthemes": [
+            {
+              "name": "Ancient India",
+              "mappedNodes": [
+                "GS1-HIS-ANC-IVC",
+                "GS1-HIS-ANC-VEDIC-RIG"
+              ],
+              "keywords": [
+                "Ancient India",
+                "geographical factors",
+                "Taxila"
+              ]
+            },
+            {
+              "name": "Medieval India",
+              "mappedNodes": [
+                "GS1-HIS-MED-EMPIRE"
+              ],
+              "keywords": [
+                "Sultanate period",
+                "technological changes"
+              ]
+            },
+            {
+              "name": "Sources and Historiography",
+              "mappedNodes": [
+                "GS1-HIS-ANC-IVC"
+              ],
+              "keywords": [
+                "Chinese travellers",
+                "Arab travellers",
+                "reconstruction of history"
+              ]
+            },
+            {
+              "name": "N/A",
+              "mappedNodes": [],
+              "keywords": [
+                "miscellaneous history"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Geography": {
+      "source": "pdf_primary",
+      "themes": [
+        {
+          "name": "Physical Geography",
+          "subthemes": [
+            {
+              "name": "Distribution of Oceans and Continents",
+              "mappedNodes": [
+                "GS1-GEO-GM-PLATE"
+              ],
+              "keywords": [
+                "tectonic movements",
+                "continents",
+                "ocean basins",
+                "Circum-Pacific",
+                "archipelagos",
+                "continental drift"
+              ]
+            },
+            {
+              "name": "Landforms",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "fjords",
+                "primary rocks",
+                "desertification"
+              ]
+            },
+            {
+              "name": "Geomorphology",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON",
+                "GS1-GEO-GM-PLATE"
+              ],
+              "keywords": [
+                "mountain ranges",
+                "fold mountains",
+                "earthquakes",
+                "volcanoes"
+              ]
+            },
+            {
+              "name": "Natural Vegetation",
+              "mappedNodes": [
+                "GS1-GEO-BIO-VEG"
+              ],
+              "keywords": [
+                "mangroves",
+                "coastal ecology"
+              ]
+            },
+            {
+              "name": "Geophysical Phenomena",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "cyclones",
+                "Phailin",
+                "tropical cyclones"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Indian Geography",
+          "subthemes": [
+            {
+              "name": "Economic Geography of India",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "Ganga River Basin",
+                "population distribution",
+                "land soil water resources",
+                "non-farm primary activities"
+              ]
+            },
+            {
+              "name": "Climate and Weather Phenomena",
+              "mappedNodes": [
+                "GS1-GEO-CLIM-PRESSURE-WINDS"
+              ],
+              "keywords": [
+                "Purvaiya",
+                "weather warnings",
+                "cyclone prone areas"
+              ]
+            },
+            {
+              "name": "Resources",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "Deccan trap",
+                "natural resource potential"
+              ]
+            },
+            {
+              "name": "Himalayas",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "Himalayan glaciers",
+                "landslides",
+                "ecological carrying capacity"
+              ]
+            },
+            {
+              "name": "Drainage System",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "interlinking of rivers",
+                "navigation",
+                "droughts and floods"
+              ]
+            },
+            {
+              "name": "Urbanisation",
+              "mappedNodes": [
+                "GS1-GEO-HEW-POP"
+              ],
+              "keywords": [
+                "megacities",
+                "air pollution",
+                "Delhi",
+                "urban life"
+              ]
+            },
+            {
+              "name": "Indian Monsoon",
+              "mappedNodes": [
+                "GS1-GEO-CLIM-PRESSURE-WINDS"
+              ],
+              "keywords": [
+                "monsoon behavior",
+                "humanized landscapes"
+              ]
+            },
+            {
+              "name": "Issues and Concerns",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "tourism pressure",
+                "ecological carrying capacity",
+                "J&K",
+                "Himachal",
+                "Uttarakhand"
+              ]
+            },
+            {
+              "name": "Physical Landmarks of India",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "Western Ghats",
+                "deltas",
+                "landslides"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Resources",
+          "subthemes": [
+            {
+              "name": "Water",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "groundwater",
+                "freshwater crisis",
+                "water stress",
+                "water harvesting",
+                "urban water bodies",
+                "flood irrigation",
+                "inland water transport",
+                "water scarcity"
+              ]
+            },
+            {
+              "name": "Energy Resource",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "offshore oil",
+                "solar energy",
+                "wind energy",
+                "mineral oil",
+                "atomic energy",
+                "shale oil",
+                "gas"
+              ]
+            },
+            {
+              "name": "Generic Resource Based",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "coastline resource potentials",
+                "hazard preparedness"
+              ]
+            },
+            {
+              "name": "Vegetation",
+              "mappedNodes": [
+                "GS1-GEO-BIO-VEG"
+              ],
+              "keywords": [
+                "natural vegetation",
+                "wildlife sanctuaries",
+                "rain forest"
+              ]
+            },
+            {
+              "name": "Rubber Industry",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "rubber-producing countries",
+                "environmental issues"
+              ]
+            },
+            {
+              "name": "Mining and Minerals",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "Gondwanaland",
+                "mining industry",
+                "coal mining",
+                "mineral distribution"
+              ]
+            },
+            {
+              "name": "Urbanization",
+              "mappedNodes": [],
+              "keywords": [
+                "urban mass transport",
+                "rapid economic development"
+              ]
+            },
+            {
+              "name": "Vegetation Resources",
+              "mappedNodes": [
+                "GS1-GEO-BIO-VEG"
+              ],
+              "keywords": [
+                "forest resources",
+                "climate change"
+              ]
+            },
+            {
+              "name": "Mineral",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "coal mining",
+                "development"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Climatology",
+          "subthemes": [
+            {
+              "name": "Climate Change",
+              "mappedNodes": [
+                "GS1-GEO-CLIM-PRESSURE-WINDS"
+              ],
+              "keywords": [
+                "climate change",
+                "food security",
+                "tropical countries"
+              ]
+            },
+            {
+              "name": "Layers of Atmosphere",
+              "mappedNodes": [
+                "GS1-GEO-CLIM-PRESSURE-WINDS"
+              ],
+              "keywords": [
+                "troposphere",
+                "weather processes"
+              ]
+            },
+            {
+              "name": "Climate Type",
+              "mappedNodes": [
+                "GS1-GEO-CLIM-PRESSURE-WINDS"
+              ],
+              "keywords": [
+                "monsoon climate",
+                "Monsoon Asia",
+                "hot deserts"
+              ]
+            },
+            {
+              "name": "Phenomena",
+              "mappedNodes": [
+                "GS1-GEO-CLIM-PRESSURE-WINDS"
+              ],
+              "keywords": [
+                "air mass",
+                "El Nino",
+                "heat islands",
+                "temperature inversion"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Agriculture",
+          "subthemes": [
+            {
+              "name": "N/A",
+              "mappedNodes": [],
+              "keywords": [
+                "food exporter",
+                "pulses",
+                "Green Revolution",
+                "tea gardens"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Oceanography",
+          "subthemes": [
+            {
+              "name": "Phenomena",
+              "mappedNodes": [
+                "GS1-GEO-CLIM-PRESSURE-WINDS"
+              ],
+              "keywords": [
+                "sea surface temperature",
+                "dead zones"
+              ]
+            },
+            {
+              "name": "Ocean Currents",
+              "mappedNodes": [
+                "GS1-GEO-OCE-MOTIONS"
+              ],
+              "keywords": [
+                "forces influencing currents",
+                "fishing industry",
+                "marine life",
+                "coastal environment"
+              ]
+            },
+            {
+              "name": "Ocean Salinity",
+              "mappedNodes": [
+                "GS1-GEO-OCE-MOTIONS"
+              ],
+              "keywords": [
+                "salinity",
+                "multidimensional effects"
+              ]
+            },
+            {
+              "name": "Ocean Resources",
+              "mappedNodes": [
+                "GS1-GEO-OCE-MOTIONS"
+              ],
+              "keywords": [
+                "resources of the oceans",
+                "resource crisis"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Industries",
+          "subthemes": [
+            {
+              "name": "Economic Geography India",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "non-farm primary activities",
+                "physiographic features"
+              ]
+            },
+            {
+              "name": "Iron and Steel",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "iron and steel industry",
+                "spatial pattern",
+                "raw material"
+              ]
+            },
+            {
+              "name": "Agro Based",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "food processing industries",
+                "North-West India"
+              ]
+            },
+            {
+              "name": "Miscellaneous",
+              "mappedNodes": [],
+              "keywords": [
+                "regional-resource based manufacturing",
+                "employment"
+              ]
+            },
+            {
+              "name": "Industrial Corridors",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "industrial corridors",
+                "characteristics"
+              ]
+            },
+            {
+              "name": "Petroleum",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "petroleum refineries",
+                "developing countries"
+              ]
+            },
+            {
+              "name": "Sugar Industry",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "sugar mills",
+                "southern states"
+              ]
+            },
+            {
+              "name": "Cotton Textile",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "decentralized cotton textile industry"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Geophysical Phenomena",
+          "subthemes": [
+            {
+              "name": "Global Warming",
+              "mappedNodes": [
+                "GS1-GEO-CLIM-PRESSURE-WINDS"
+              ],
+              "keywords": [
+                "sea level rise",
+                "island nations"
+              ]
+            },
+            {
+              "name": "Tsunami",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "tsunamis",
+                "formation",
+                "consequences"
+              ]
+            },
+            {
+              "name": "Cyclones",
+              "mappedNodes": [
+                "GS1-GEO-CLIM-PRESSURE-WINDS"
+              ],
+              "keywords": [
+                "twister",
+                "Gulf of Mexico",
+                "tropical cyclones",
+                "South China Sea",
+                "Bay of Bengal"
+              ]
+            },
+            {
+              "name": "Miscellaneous",
+              "mappedNodes": [],
+              "keywords": [
+                "Aurora Australis",
+                "Aurora Borealis"
+              ]
+            },
+            {
+              "name": "Cloudburst",
+              "mappedNodes": [],
+              "keywords": [
+                "cloud bursts"
+              ]
+            },
+            {
+              "name": "Landslide",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "Himalayan landslides",
+                "Western Ghats landslides"
+              ]
+            },
+            {
+              "name": "Volcanoes",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "volcanic eruptions",
+                "regional environment"
+              ]
+            },
+            {
+              "name": "Effect of Global Warming on Poles",
+              "mappedNodes": [
+                "GS1-GEO-CLIM-PRESSURE-WINDS"
+              ],
+              "keywords": [
+                "Arctic ice",
+                "Antarctic glaciers",
+                "weather patterns",
+                "human activities"
+              ]
+            },
+            {
+              "name": "Urban Floods",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "million cities",
+                "Hyderabad",
+                "Pune",
+                "major cities flood vulnerability"
+              ]
+            },
+            {
+              "name": "Effects of Global Warming on Corals",
+              "mappedNodes": [
+                "GS1-GEO-OCE-MOTIONS"
+              ],
+              "keywords": [
+                "coral life system"
+              ]
+            },
+            {
+              "name": "Mantle Plume",
+              "mappedNodes": [
+                "GS1-GEO-GM-PLATE"
+              ],
+              "keywords": [
+                "mantle plume",
+                "plate tectonics"
+              ]
+            },
+            {
+              "name": "Cryosphere",
+              "mappedNodes": [
+                "GS1-GEO-CLIM-PRESSURE-WINDS"
+              ],
+              "keywords": [
+                "cryosphere",
+                "global climate"
+              ]
+            },
+            {
+              "name": "Himalayas/Landslides",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "Himalayas highly prone to landslides",
+                "mitigation"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Geopolitics",
+          "subthemes": [
+            {
+              "name": "Landforms",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "straits",
+                "isthmus",
+                "international trade"
+              ]
+            },
+            {
+              "name": "Arctic",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "Arctic resources",
+                "Arctic Sea oil"
+              ]
+            },
+            {
+              "name": "South China Sea",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "South China Sea geopolitical significance"
+              ]
+            },
+            {
+              "name": "Indus Water Treaty",
+              "mappedNodes": [
+                "GS1-GEO-IND-RESOURCES"
+              ],
+              "keywords": [
+                "Indus Water Treaty",
+                "ecological economic political implications"
+              ]
+            },
+            {
+              "name": "Africa",
+              "mappedNodes": [
+                "GS1-GEO-GEN-LATLON"
+              ],
+              "keywords": [
+                "resource rich Africa",
+                "economic space"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Geography Miscellaneous",
+          "subthemes": [
+            {
+              "name": "N/A",
+              "mappedNodes": [],
+              "keywords": [
+                "AI",
+                "drones",
+                "GIS",
+                "RS techniques",
+                "sub-continent",
+                "mountain ecosystem",
+                "IRNSS",
+                "new states",
+                "Juno Mission"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Social Issues": {
+      "source": "pdf_primary",
+      "themes": [
+        {
+          "name": "Salient Features of Indian Society and Diversity of India",
+          "subthemes": [
+            {
+              "name": "Miscellaneous",
+              "mappedNodes": [],
+              "keywords": [
+                "fast food industries",
+                "modern society",
+                "health concerns"
+              ]
+            },
+            {
+              "name": "Tribe",
+              "mappedNodes": [
+                "GS1-SOC-EMPOWER-TRIBAL"
+              ],
+              "keywords": [
+                "tribal development",
+                "displacement",
+                "rehabilitation",
+                "tribal knowledge",
+                "Scheduled Tribes"
+              ]
+            },
+            {
+              "name": "Diversity",
+              "mappedNodes": [
+                "GS1-SOC-UPSC-DIVERSITY"
+              ],
+              "keywords": [
+                "cultural diversities",
+                "socio-economic marginalities",
+                "cultural pockets of small India",
+                "cultural units",
+                "national identity"
+              ]
+            },
+            {
+              "name": "Family and Marriage",
+              "mappedNodes": [
+                "GS1-SOC-BASICS-FAMILY"
+              ],
+              "keywords": [
+                "intercaste marriages",
+                "interreligious marriages",
+                "marriage as sacrament",
+                "child cuddling",
+                "joint family"
+              ]
+            },
+            {
+              "name": "Caste",
+              "mappedNodes": [
+                "GS1-SOC-EMPOWER-SC"
+              ],
+              "keywords": [
+                "caste identity",
+                "caste relevance",
+                "Dalit identity",
+                "caste system"
+              ]
+            },
+            {
+              "name": "Salient Features",
+              "mappedNodes": [
+                "GS1-SOC-UPSC-DIVERSITY"
+              ],
+              "keywords": [
+                "traditional social values",
+                "tolerance",
+                "love",
+                "continuity and change"
+              ]
+            },
+            {
+              "name": "Tribes",
+              "mappedNodes": [
+                "GS1-SOC-EMPOWER-TRIBAL"
+              ],
+              "keywords": [
+                "legal initiatives",
+                "ST discrimination",
+                "constitutional upliftment"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Role of Women, Population, Poverty and Urbanisation",
+          "subthemes": [
+            {
+              "name": "Urbanisation",
+              "mappedNodes": [
+                "GS1-GEO-HEW-POP"
+              ],
+              "keywords": [
+                "smart city",
+                "urban poverty",
+                "distributive justice",
+                "migration",
+                "Indian metropolises",
+                "work from home",
+                "tier 2 cities",
+                "IT industries",
+                "urban mass transport",
+                "smart villages",
+                "social problems of urbanization"
+              ]
+            },
+            {
+              "name": "Women",
+              "mappedNodes": [
+                "GS1-SOC-UPSC-WOMEN"
+              ],
+              "keywords": [
+                "gender equality",
+                "gender equity",
+                "women empowerment",
+                "suicide among young women",
+                "gig economy",
+                "continued challenges",
+                "women's movement",
+                "patriarchy",
+                "sex ratio",
+                "feminization of agriculture",
+                "women’s organization"
+              ]
+            },
+            {
+              "name": "Population and Associated Issues",
+              "mappedNodes": [
+                "GS1-SOC-DEV-CENSUS"
+              ],
+              "keywords": [
+                "demographic winter",
+                "population education"
+              ]
+            },
+            {
+              "name": "Population Related Issues",
+              "mappedNodes": [
+                "GS1-SOC-DEV-CENSUS"
+              ],
+              "keywords": [
+                "population education",
+                "population growth"
+              ]
+            },
+            {
+              "name": "Social Empowerment",
+              "mappedNodes": [
+                "GS1-SOC-UPSC-EMPOWER",
+                "GS1-SOC-DEV-POVERTY"
+              ],
+              "keywords": [
+                "human development",
+                "poverty",
+                "class inequalities",
+                "affirmative action",
+                "underprivileged",
+                "deprivation",
+                "digital initiatives education"
+              ]
+            },
+            {
+              "name": "Migration",
+              "mappedNodes": [
+                "GS1-SOC-DEV-URBAN"
+              ],
+              "keywords": [
+                "labour migration",
+                "inside and outside India"
+              ]
+            },
+            {
+              "name": "Population",
+              "mappedNodes": [
+                "GS1-SOC-DEV-CENSUS"
+              ],
+              "keywords": [
+                "population vs poverty",
+                "cause-effect"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Effects of Globalization on Indian Society",
+          "subthemes": [
+            {
+              "name": "Globalisation and Culture",
+              "mappedNodes": [
+                "GS1-SOC-CONTEMP-OTHER"
+              ],
+              "keywords": [
+                "consumer culture",
+                "aggressive consumerism"
+              ]
+            },
+            {
+              "name": "Globalisation and Women",
+              "mappedNodes": [
+                "GS1-SOC-UPSC-WOMEN"
+              ],
+              "keywords": [
+                "urban migration",
+                "young unmarried women",
+                "personal freedom",
+                "family relationship",
+                "women in India"
+              ]
+            },
+            {
+              "name": "Globalisation and Ethnicity",
+              "mappedNodes": [
+                "GS1-SOC-CONTEMP-OTHER"
+              ],
+              "keywords": [
+                "ethnic identity",
+                "communalism"
+              ]
+            },
+            {
+              "name": "Globalisation and Technology",
+              "mappedNodes": [
+                "GS1-SOC-CONTEMP-OTHER"
+              ],
+              "keywords": [
+                "new technology",
+                "scarce resources",
+                "cryptocurrency"
+              ]
+            },
+            {
+              "name": "Globalisation and Diversity",
+              "mappedNodes": [
+                "GS1-SOC-UPSC-DIVERSITY"
+              ],
+              "keywords": [
+                "diversity",
+                "pluralism",
+                "threat"
+              ]
+            },
+            {
+              "name": "Globalisation and Indian Culture",
+              "mappedNodes": [
+                "GS1-SOC-CONTEMP-OTHER"
+              ],
+              "keywords": [
+                "local identity",
+                "global identity",
+                "cultural homogenisation",
+                "cultural specificities"
+              ]
+            },
+            {
+              "name": "Globalisation and Aged",
+              "mappedNodes": [
+                "GS1-SOC-CONTEMP-OTHER"
+              ],
+              "keywords": [
+                "aged population"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Social Empowerment, Communalism, Regionalism and Secularism",
+          "subthemes": [
+            {
+              "name": "Social Empowerment + Regionalism",
+              "mappedNodes": [],
+              "keywords": [
+                "civil service ethos",
+                "professionalism",
+                "nationalistic consciousness"
+              ]
+            },
+            {
+              "name": "Social Empowerment",
+              "mappedNodes": [
+                "GS1-SOC-UPSC-EMPOWER",
+                "GS1-SOC-EMPOWER-SC",
+                "GS1-SOC-DEV-POVERTY"
+              ],
+              "keywords": [
+                "sustainable growth",
+                "environmental protection",
+                "poor people",
+                "collaboration",
+                "equity",
+                "social justice",
+                "sect",
+                "aspirational districts",
+                "sex ratio in tribes"
+              ]
+            },
+            {
+              "name": "Regionalism",
+              "mappedNodes": [
+                "GS1-SOC-UNITY-CHALLENGES"
+              ],
+              "keywords": [
+                "regional disparity",
+                "cultural assertiveness",
+                "basis of regionalism",
+                "linguistic states",
+                "separate state"
+              ]
+            },
+            {
+              "name": "Secularism",
+              "mappedNodes": [
+                "GS1-SOC-UNITY-CHALLENGES"
+              ],
+              "keywords": [
+                "Indian secularism",
+                "western model",
+                "tolerance",
+                "assimilation",
+                "pluralism",
+                "obscurantism",
+                "cultural practices"
+              ]
+            },
+            {
+              "name": "Communalism",
+              "mappedNodes": [
+                "GS1-SOC-UNITY-CHALLENGES"
+              ],
+              "keywords": [
+                "power struggle",
+                "relative deprivation"
+              ]
+            },
+            {
+              "name": "Religion",
+              "mappedNodes": [
+                "GS1-SOC-UNITY-CHALLENGES"
+              ],
+              "keywords": [
+                "religiousness",
+                "religiosity",
+                "communalism transformation"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "notes": [
+    "This GS1 theme layer has been rebuilt from the GS1 Theme-wise PYQ PDF (2013–2025).",
+    "It now matches the GS2-style shape: paper/stage/version/subjects/themes/subthemes/keywords.",
+    "mappedNodes are intentionally left empty until aligned to the user's canonical syllabusGraph node IDs."
+  ]
+}

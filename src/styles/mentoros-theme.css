@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');
+
+:root {
+  --bg: #08080d;
+  --surf: #0f0f17;
+  --s2: #14141e;
+  --s3: #1a1a27;
+  --s4: #20202f;
+  --border: rgba(255, 255, 255, 0.07);
+  --bx: rgba(255, 255, 255, 0.12);
+  --saf: #ff8c00;
+  --saf-d: rgba(255, 140, 0, 0.13);
+  --saf-g: rgba(255, 140, 0, 0.07);
+  --saf-b: rgba(255, 140, 0, 0.28);
+  --grn: #00d47e;
+  --grn-d: rgba(0, 212, 126, 0.10);
+  --blu: #5b9eff;
+  --blu-d: rgba(91, 158, 255, 0.10);
+  --red: #ff4d6a;
+  --red-d: rgba(255, 77, 106, 0.10);
+  --ylw: #ffd166;
+  --ylw-d: rgba(255, 209, 102, 0.10);
+  --pur: #a78bfa;
+  --pur-d: rgba(167, 139, 250, 0.10);
+  --txt: rgba(255, 255, 255, 0.92);
+  --mid: rgba(255, 255, 255, 0.52);
+  --dim: rgba(255, 255, 255, 0.26);
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Instrument Sans', sans-serif;
+  --disp: 'Instrument Sans', sans-serif;
+  --sb: 224px;
+  --topbar: 52px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body,
+#root {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--txt);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-feature-settings: "liga" 1, "kern" 1;
+  letter-spacing: -0.01em;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--s4);
+  border-radius: 3px;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--sans);
+}
+
+input,
+select,
+textarea {
+  font-family: var(--sans);
+}
+
+.card {
+  background: linear-gradient(180deg, var(--s2), var(--s3));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all .25s ease;
+}
+
+.card:hover {
+  border-color: var(--saf-b);
+  box-shadow: 0 0 20px rgba(255, 140, 0, 0.08);
+}

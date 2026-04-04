@@ -10,7 +10,7 @@
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Gupta and Post- Gupta Age",
       "microtheme": "Gupta and Post- Gupta Age",
       "year": 2025,
@@ -25,14 +25,23 @@
         "d": "Skandagupta"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-GUPTA"
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2025_002",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2025,
@@ -47,19 +56,28 @@
         "d": "level of the central administration"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Art & Culture",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2025_003",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2025,
       "questionNumber": 2,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "With reference to ancient India (600-322 BC), consider the following pairs: Territorial region River flowing in the region I. Asmaka : Godavari II. Kamboja : Vipas III. Avanti : Mahanadi IV . Kosala : Sarayu How many of the pairs given above are correctly matched?",
       "options": {
@@ -69,14 +87,23 @@
         "d": "All the four"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2025_004",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Sangam Age",
       "microtheme": "Sangam Age",
       "year": 2025,
@@ -91,14 +118,23 @@
         "d": "Simhavarman"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-ANC-SANGAM"
+      "syllabusNodeId": "GS1-HIS-ANC-SANGAM",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2024_005",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2024,
@@ -113,14 +149,23 @@
         "d": "None of the above are epithets of Gautama Buddha"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-BUD"
+      "syllabusNodeId": "GS1-HIS-ANC-BUD",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2024_006",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2024,
@@ -135,14 +180,23 @@
         "d": "Mahabhashya"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2024_007",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Prehistoric Period and Indus Valley Civilisation",
       "microtheme": "Prehistoric Period and Indus Valley Civilisation",
       "year": 2024,
@@ -157,14 +211,23 @@
         "d": "1 and 4"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-PREHIST"
+      "syllabusNodeId": "GS1-HIS-ANC-PREHIST",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2024_008",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Vedic and Later Vedic Age",
       "microtheme": "Vedic and Later Vedic Age",
       "year": 2024,
@@ -179,14 +242,23 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-VEDIC-LATER"
+      "syllabusNodeId": "GS1-HIS-ANC-VEDIC-LATER",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2023_009",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Gupta and Post- Gupta Age",
       "microtheme": "Gupta and Post- Gupta Age",
       "year": 2023,
@@ -201,14 +273,23 @@
         "d": "None"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-ANC-GUPTA"
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2023_010",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2023,
@@ -223,14 +304,23 @@
         "d": "Magadha"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2023_011",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2023,
@@ -245,14 +335,23 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Art & Culture",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2023_012",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2023,
@@ -267,19 +366,28 @@
         "d": "Vaishnavism"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2023_013",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2023,
       "questionNumber": 8,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Site : Well Known for 1. Besnagar : Shaivite cave shrine 2. Bhaja : Buddhist cave shrine 3. Sittanavasal : Jain cave shrine How many of the above pairs are correctly matched?",
       "options": {
@@ -289,14 +397,23 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-JAIN"
+      "syllabusNodeId": "GS1-HIS-ANC-JAIN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2023_014",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Sangam Age",
       "microtheme": "Sangam Age",
       "year": 2023,
@@ -311,14 +428,23 @@
         "d": "shrines of Jain Tirthankaras"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-SANGAM"
+      "syllabusNodeId": "GS1-HIS-ANC-SANGAM",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2023_015",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Sangam Age",
       "microtheme": "Sangam Age",
       "year": 2023,
@@ -333,14 +459,23 @@
         "d": "A king defeated in a battle committing ritual suicide by starving himself to death"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-ANC-SANGAM"
+      "syllabusNodeId": "GS1-HIS-ANC-SANGAM",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2022_016",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2022,
@@ -355,19 +490,28 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2022_017",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2022,
       "questionNumber": 10,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs : Site of Ashoka’s major rock Location in the State of edicts 1. Dhauli Odisha 2. Erragudi Andhra Pradesh 3. Jaugada Madhya Pradesh 4. Kalsi Karnataka How many pairs given above are correctly matched ?",
       "options": {
@@ -377,14 +521,23 @@
         "d": "All four pairs"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2022_018",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Sangam Age",
       "microtheme": "Sangam Age",
       "year": 2022,
@@ -399,19 +552,28 @@
         "d": "Sangam literature refers to magical forces as irrational."
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-SANGAM"
+      "syllabusNodeId": "GS1-HIS-ANC-SANGAM",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2021_019",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Gupta and Post- Gupta Age",
       "microtheme": "Gupta and Post- Gupta Age",
       "year": 2021,
       "questionNumber": 3,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to the history of ancient India, which of the following statements is/are correct? 1. Mitakshara was the civil law for upper castes and Dayabhaga was the civil law for lower castes. 2. In the Mitakshara system, the sons can claim right to the property during the lifetime of the father, whereas in the Dayabhaga system, it is only after the death of the father that the sons can claim right to the property. 3. The Mitakshara system deals with the matters related to the property held by male members only of a family, whereas the Dayabhaga system deals with the matters rélated to the property held by both male and female members of a family. Select the correct answer using the code given below.",
       "options": {
@@ -421,14 +583,23 @@
         "d": "3 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-GUPTA"
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2021_020",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Gupta and Post- Gupta Age",
       "microtheme": "Gupta and Post- Gupta Age",
       "year": 2021,
@@ -443,14 +614,23 @@
         "d": "5 and 6"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-GUPTA"
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA",
+      "topic": "Ancient History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2021_021",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Prehistoric Period and Indus Valley Civilisation",
       "microtheme": "Prehistoric Period and Indus Valley Civilisation",
       "year": 2021,
@@ -465,14 +645,23 @@
         "d": "Ropar 26 Prehistoric Period and Indus Valley Civilisation"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-ANC-IVC"
+      "syllabusNodeId": "GS1-HIS-ANC-IVC",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2020_022",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Gupta and Post- Gupta Age",
       "microtheme": "Gupta and Post- Gupta Age",
       "year": 2020,
@@ -487,14 +676,23 @@
         "d": "An order from the feudal lord to his subordinates"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-ANC-GUPTA"
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2020_023",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Gupta and Post- Gupta Age",
       "microtheme": "Gupta and Post- Gupta Age",
       "year": 2020,
@@ -509,14 +707,23 @@
         "d": "important of Buddhist pilgrimage centres"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-ANC-GUPTA"
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA",
+      "topic": "Ancient History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2020_024",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Gupta and Post- Gupta Age",
       "microtheme": "Gupta and Post- Gupta Age",
       "year": 2020,
@@ -531,14 +738,23 @@
         "d": "religious rituals"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-ANC-GUPTA"
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2020_025",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Gupta and Post- Gupta Age",
       "microtheme": "Gupta and Post- Gupta Age",
       "year": 2020,
@@ -553,14 +769,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-ANC-GUPTA"
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA",
+      "topic": "Ancient History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2020_026",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2020,
@@ -575,14 +800,23 @@
         "d": "Krishanadeva Raya"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Art & Culture",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2020_027",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2020,
@@ -597,14 +831,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-BUD"
+      "syllabusNodeId": "GS1-HIS-ANC-BUD",
+      "topic": "Ancient History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2020_028",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2020,
@@ -619,14 +862,23 @@
         "d": "Powerful merchant guilds of early medieval South India"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2020_029",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Sangam Age",
       "microtheme": "Sangam Age",
       "year": 2020,
@@ -641,14 +893,23 @@
         "d": "3 – 4 – 1 – 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-ANC-SANGAM"
+      "syllabusNodeId": "GS1-HIS-ANC-SANGAM",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2019_030",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Gupta and Post- Gupta Age",
       "microtheme": "Gupta and Post- Gupta Age",
       "year": 2019,
@@ -663,14 +924,23 @@
         "d": "The eldest son of the labourer was sent as the forced labourer."
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-ANC-GUPTA"
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA",
+      "topic": "Ancient History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2019_031",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2019,
@@ -685,14 +955,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-ANC-BUD"
+      "syllabusNodeId": "GS1-HIS-ANC-BUD",
+      "topic": "Ancient History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2019_032",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2019,
@@ -707,14 +986,23 @@
         "d": "Sohgaura"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Art & Culture",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2019_033",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Prehistoric Period and Indus Valley Civilisation",
       "microtheme": "Prehistoric Period and Indus Valley Civilisation",
       "year": 2019,
@@ -729,14 +1017,23 @@
         "d": "Desalpur"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-ANC-IVC"
+      "syllabusNodeId": "GS1-HIS-ANC-IVC",
+      "topic": "Ancient History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2018_034",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2018,
@@ -751,14 +1048,23 @@
         "d": "Shaivism"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2018_035",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2018,
@@ -773,14 +1079,23 @@
         "d": "Padmapani"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-ANC-BUD"
+      "syllabusNodeId": "GS1-HIS-ANC-BUD",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2017_036",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2017,
@@ -795,19 +1110,28 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-JAIN"
+      "syllabusNodeId": "GS1-HIS-ANC-JAIN",
+      "topic": "Ancient History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2017_037",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Vedic and Later Vedic Age",
       "microtheme": "Vedic and Later Vedic Age",
       "year": 2017,
       "questionNumber": 2,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to the difference between the culture of Rigvedic Aryans and Indus Valley people, which of the following statements is/are correct? 1. Rigvedic Aryans used the coat of mail and helmet in warfare, whereas the people of the Indus Valley Civilization did not leave any evidence of using them. 2. Rigvedic Aryans knew gold, silver, and copper, whereas Indus Valley people knew only copper and iron. 3. Rigvedic Aryans had domesticated the horse, whereas there is no evidence of Indus Valley people having been aware of this animal. Select the correct answer using the code given below:",
       "options": {
@@ -817,14 +1141,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-ANC-IVC"
+      "syllabusNodeId": "GS1-HIS-ANC-IVC",
+      "topic": "Ancient History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.85,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 4,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2016_038",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2016,
@@ -839,14 +1172,23 @@
         "d": "William Jones"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-MAURYA"
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2016_039",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2016,
@@ -861,19 +1203,28 @@
         "d": "1, 2, and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-BUD"
+      "syllabusNodeId": "GS1-HIS-ANC-BUD",
+      "topic": "Ancient History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2016_040",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Sangam Age",
       "microtheme": "Sangam Age",
       "year": 2016,
       "questionNumber": 6,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "In the context of the history of India, consider the following pairs: Term Description 1. Eripatti Land, revenue from which was set apart for the maintenance of the village tank 2. Taniyurs Villages donated to a single Brahmin or a group of Brahmins 3. Ghatikas Colleges generally attached to the temples Which of the pairs given above is/are correctly matched?",
       "options": {
@@ -883,14 +1234,23 @@
         "d": "1 and 3 Sangam Age-Gupta Age"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-ANC-SANGAM"
+      "syllabusNodeId": "GS1-HIS-ANC-SANGAM",
+      "topic": "Art & Culture",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2016_041",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Vedic and Later Vedic Age",
       "microtheme": "Vedic and Later Vedic Age",
       "year": 2016,
@@ -905,14 +1265,23 @@
         "d": "Magadha"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-ANC-VEDIC-LATER"
+      "syllabusNodeId": "GS1-HIS-ANC-VEDIC-LATER",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2015_042",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2015,
@@ -927,14 +1296,23 @@
         "d": "3 and 4 only"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-ANC-BUD"
+      "syllabusNodeId": "GS1-HIS-ANC-BUD",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2014_043",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2014,
@@ -949,19 +1327,28 @@
         "d": "1, 3 and 4"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-HIS-ANC-BUD"
+      "syllabusNodeId": "GS1-HIS-ANC-BUD",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2013_044",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Gupta and Post- Gupta Age",
       "microtheme": "Gupta and Post- Gupta Age",
       "year": 2013,
       "questionNumber": 10,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "The Chinese traveller Yuan Chwang (Hiuen Tsang) who visited India recorded the general conditions and culture of India at that time. In this context, which of the following statements is/are correct? 1. The roads and river routes were completely immune from robbery. 2. As regards punishment for offences, ordeals by fire, water, and poison were the instruments for determining the innocence or guilt of a person. 3. The tradesmen had to pay duties at ferries and barrier stations. Select the correct answer using the code given below:",
       "options": {
@@ -971,14 +1358,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-GUPTA"
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2013_045",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2013,
@@ -993,19 +1389,28 @@
         "d": "A mental stage beyond all comprehension"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-HIS-ANC-BUD"
+      "syllabusNodeId": "GS1-HIS-ANC-BUD",
+      "topic": "Ancient History",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2013_046",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Mauryan and Post-Mauryan Age",
       "microtheme": "Mauryan and Post-Mauryan Age",
       "year": 2013,
       "questionNumber": 24,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Which of the following statements is/are applicable to Jain doctrine? 1. The surest way of annihilating Karma is to practice penance. 2. Every object, even the smallest particle, has a soul. 3. Karma is the bane of the soul and must be ended. Select the correct answer using the code given below:",
       "options": {
@@ -1015,14 +1420,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-HIS-ANC-JAIN"
+      "syllabusNodeId": "GS1-HIS-ANC-JAIN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ANCH_2013_047",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "Ancient History",
+      "subject": "History & Culture",
       "section": "Prehistoric Period and Indus Valley Civilisation",
       "microtheme": "Prehistoric Period and Indus Valley Civilisation",
       "year": 2013,
@@ -1037,7 +1451,16 @@
         "d": "None of the statements given above is correct"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-HIS-ANC-IVC"
+      "syllabusNodeId": "GS1-HIS-ANC-IVC",
+      "topic": "Art & Culture",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     }
   ]
 }

@@ -13,7 +13,7 @@
       "subject": "Polity",
       "section": "Constitutional and Non-constitutional Bodies",
       "microtheme": "Constitutional and Non-constitutional Bodies",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-BODIES",
       "year": 2025,
       "questionNumber": 1,
       "questionType": "MCQ_1_STATEMENT",
@@ -44,7 +44,7 @@
       "subject": "Polity",
       "section": "Constitutional and Non-constitutional Bodies",
       "microtheme": "Constitutional and Non-constitutional Bodies",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FED",
       "year": 2025,
       "questionNumber": 2,
       "questionType": "MCQ_COUNT_BASED",
@@ -74,7 +74,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Governor",
       "year": 2025,
       "questionNumber": 1,
       "questionType": "MCQ_1_STATEMENT",
@@ -105,7 +105,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "President",
       "year": 2025,
       "questionNumber": 2,
       "questionType": "MCQ_1_STATEMENT",
@@ -118,7 +118,7 @@
         "d": "Neither I nor II"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -136,7 +136,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "President",
       "year": 2025,
       "questionNumber": 3,
       "questionType": "MCQ_1_STATEMENT",
@@ -167,7 +167,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "President",
       "year": 2025,
       "questionNumber": 4,
       "questionType": "MCQ_1_STATEMENT",
@@ -198,7 +198,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Features of the Indian Constitution",
-      "microtheme": "Features of the Indian Constitution",
+      "microtheme": "Freedom",
       "year": 2025,
       "questionNumber": 1,
       "questionType": "PAIR_BASED",
@@ -229,7 +229,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Features of the Indian Constitution",
-      "microtheme": "Features of the Indian Constitution",
+      "microtheme": "Governor",
       "year": 2025,
       "questionNumber": 2,
       "questionType": "MCQ_1_STATEMENT",
@@ -242,7 +242,7 @@
         "d": "Neither I nor II"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -260,7 +260,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Features of the Indian Constitution",
-      "microtheme": "Features of the Indian Constitution",
+      "microtheme": "Important Amendments",
       "year": 2025,
       "questionNumber": 3,
       "questionType": "PAIR_BASED",
@@ -304,7 +304,7 @@
         "d": "Statement I is not correct but Statement II is correct"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-GOV",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -322,7 +322,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Legislature",
-      "microtheme": "Legislature",
+      "microtheme": "President",
       "year": 2025,
       "questionNumber": 1,
       "questionType": "MCQ_SINGLE",
@@ -335,7 +335,7 @@
         "d": "I, II and III"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -366,7 +366,7 @@
         "d": "I, II and III"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-ELECTIONS",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -384,7 +384,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Legislature",
-      "microtheme": "Legislature",
+      "microtheme": "President",
       "year": 2025,
       "questionNumber": 3,
       "questionType": "MCQ_1_STATEMENT",
@@ -397,7 +397,7 @@
         "d": "Neither I nor II"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-ELECTIONS",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -428,7 +428,7 @@
         "d": "I, II and III"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Federalism & Local Governance",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -446,7 +446,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Features of the Indian Constitution",
-      "microtheme": "Features of the Indian Constitution",
+      "microtheme": "Procedure",
       "year": 2024,
       "questionNumber": 4,
       "questionType": "MCQ_3_STATEMENT",
@@ -459,7 +459,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -490,7 +490,7 @@
         "d": "Corporation tax is a State subject under the State List."
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -521,7 +521,7 @@
         "d": "Article 21"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Judiciary",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -539,7 +539,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Governance",
-      "microtheme": "Governance",
+      "microtheme": "Governor",
       "year": 2024,
       "questionNumber": 2,
       "questionType": "MCQ_MULTI_SELECT",
@@ -552,7 +552,7 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -583,7 +583,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PREAMBLE",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -632,7 +632,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Legislature",
-      "microtheme": "Legislature",
+      "microtheme": "Important Amendments",
       "year": 2024,
       "questionNumber": 4,
       "questionType": "MCQ_3_STATEMENT",
@@ -676,7 +676,7 @@
         "d": "3 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -707,7 +707,7 @@
         "d": "3 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -769,7 +769,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -818,7 +818,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Legislature",
-      "microtheme": "Legislature",
+      "microtheme": "Important Amendments",
       "year": 2024,
       "questionNumber": 10,
       "questionType": "MCQ_MULTI_SELECT",
@@ -862,7 +862,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-AMEND",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -924,7 +924,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -955,7 +955,7 @@
         "d": "All four"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-BODIES",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -986,7 +986,7 @@
         "d": "None"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-ELECTIONS",
       "topic": "Judiciary",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1017,7 +1017,7 @@
         "d": "All four"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-ELECTIONS",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1048,7 +1048,7 @@
         "d": "Equality before law"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1079,7 +1079,7 @@
         "d": "It secures social justice, social equality and social security"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1110,7 +1110,7 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1128,7 +1128,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Governance",
-      "microtheme": "Governance",
+      "microtheme": "Important Amendments",
       "year": 2023,
       "questionNumber": 3,
       "questionType": "PAIR_BASED",
@@ -1141,7 +1141,7 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-GOV",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1172,7 +1172,7 @@
         "d": "Statement-I is incorrect but Statement-II is correct"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-PREAMBLE",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1190,7 +1190,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Judiciary",
-      "microtheme": "Judiciary",
+      "microtheme": "Freedom",
       "year": 2023,
       "questionNumber": 2,
       "questionType": "MCQ_SINGLE",
@@ -1265,7 +1265,7 @@
         "d": "Statement-I is incorrect but Statement-II is correct"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-PARL",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1327,7 +1327,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-BODIES",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1358,7 +1358,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1376,7 +1376,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Features of the Indian Constitution",
-      "microtheme": "Features of the Indian Constitution",
+      "microtheme": "Council of Ministers",
       "year": 2022,
       "questionNumber": 10,
       "questionType": "MCQ_SINGLE",
@@ -1389,7 +1389,7 @@
         "d": "The State having such areas would be declared a Special Category State."
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1407,7 +1407,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Governance",
-      "microtheme": "Governance",
+      "microtheme": "Prime Minister",
       "year": 2022,
       "questionNumber": 4,
       "questionType": "MCQ_2_STATEMENT",
@@ -1420,7 +1420,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-GOV",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1451,7 +1451,7 @@
         "d": "1 and 4"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-GOV",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1469,7 +1469,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Judiciary",
-      "microtheme": "Judiciary",
+      "microtheme": "President",
       "year": 2022,
       "questionNumber": 4,
       "questionType": "MCQ_3_STATEMENT",
@@ -1482,7 +1482,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Fundamental Rights / DPSP / Duties",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1544,7 +1544,7 @@
         "d": "3 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-JUD",
       "topic": "Judiciary",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1575,7 +1575,7 @@
         "d": "2 and 4 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1637,7 +1637,7 @@
         "d": "3 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1668,7 +1668,7 @@
         "d": "1,2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1699,7 +1699,7 @@
         "d": "the Concept of Welfare"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1730,7 +1730,7 @@
         "d": "Neither Fundamental Right nor legal right"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1761,7 +1761,7 @@
         "d": "Article 29"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1792,7 +1792,7 @@
         "d": "2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1823,7 +1823,7 @@
         "d": "A society permanently living in a definite territory with a central authority, an executive responsible to the central authority and an independent judiciary"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1854,7 +1854,7 @@
         "d": "The Fundamental Rights are enforceable by Courts of Law."
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1885,7 +1885,7 @@
         "d": "2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1903,7 +1903,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Features of the Indian Constitution",
-      "microtheme": "Features of the Indian Constitution",
+      "microtheme": "Council of Ministers",
       "year": 2021,
       "questionNumber": 18,
       "questionType": "MCQ_SINGLE",
@@ -1934,7 +1934,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Governance",
-      "microtheme": "Governance",
+      "microtheme": "Prime Minister",
       "year": 2021,
       "questionNumber": 6,
       "questionType": "MCQ_2_STATEMENT",
@@ -1947,7 +1947,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-GOV",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1978,7 +1978,7 @@
         "d": "Ministry of Tribal Affairs"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2009,7 +2009,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-GOV",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2040,7 +2040,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PREAMBLE",
       "topic": "Judiciary",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2071,7 +2071,7 @@
         "d": "Separation of powers"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2102,7 +2102,7 @@
         "d": "A Sovereign Socialist Secular Democratic Republic"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-PREAMBLE",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2133,7 +2133,7 @@
         "d": "a government limited by the terms of the Constitution"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2213,7 +2213,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Judiciary",
-      "microtheme": "Judiciary",
+      "microtheme": "President",
       "year": 2021,
       "questionNumber": 9,
       "questionType": "MCQ_2_STATEMENT",
@@ -2244,7 +2244,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Council of Ministers",
       "year": 2020,
       "questionNumber": 8,
       "questionType": "MCQ_SINGLE",
@@ -2288,7 +2288,7 @@
         "d": "2 and 3 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2306,7 +2306,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Features of the Indian Constitution",
-      "microtheme": "Features of the Indian Constitution",
+      "microtheme": "Freedom",
       "year": 2020,
       "questionNumber": 19,
       "questionType": "MCQ_SINGLE",
@@ -2319,7 +2319,7 @@
         "d": "limited government"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2337,7 +2337,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Features of the Indian Constitution",
-      "microtheme": "Features of the Indian Constitution",
+      "microtheme": "Equality",
       "year": 2020,
       "questionNumber": 20,
       "questionType": "MCQ_MULTI_SELECT",
@@ -2368,7 +2368,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Features of the Indian Constitution",
-      "microtheme": "Features of the Indian Constitution",
+      "microtheme": "Writs",
       "year": 2020,
       "questionNumber": 21,
       "questionType": "MCQ_SINGLE",
@@ -2412,7 +2412,7 @@
         "d": "Seventh Schedule"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2430,7 +2430,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Features of the Indian Constitution",
-      "microtheme": "Features of the Indian Constitution",
+      "microtheme": "Writs",
       "year": 2020,
       "questionNumber": 23,
       "questionType": "MCQ_2_STATEMENT",
@@ -2443,7 +2443,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-FR",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Preamble & Constitutional Foundations",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2474,7 +2474,7 @@
         "d": "economic determinism"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2505,7 +2505,7 @@
         "d": "a part of the Constitution but has no legal effect independently of other parts"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-PREAMBLE",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Preamble & Constitutional Foundations",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2536,7 +2536,7 @@
         "d": "2 and 3 only"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2567,7 +2567,7 @@
         "d": "1, 2 and 4 only"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-GOV",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2598,7 +2598,7 @@
         "d": "1, 2 and 3 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-GOV",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2647,7 +2647,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Judiciary",
-      "microtheme": "Judiciary",
+      "microtheme": "Council of Ministers",
       "year": 2020,
       "questionNumber": 10,
       "questionType": "MCQ_SINGLE",
@@ -2753,7 +2753,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-PARL",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2802,7 +2802,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Governor",
       "year": 2019,
       "questionNumber": 10,
       "questionType": "MCQ_2_STATEMENT",
@@ -2815,7 +2815,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2833,7 +2833,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Governor",
       "year": 2019,
       "questionNumber": 11,
       "questionType": "MCQ_SINGLE",
@@ -2864,7 +2864,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Features of the Indian Constitution",
-      "microtheme": "Features of the Indian Constitution",
+      "microtheme": "Prime Minister",
       "year": 2019,
       "questionNumber": 27,
       "questionType": "MCQ_SINGLE",
@@ -2877,7 +2877,7 @@
         "d": "Twelfth Schedule"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2895,7 +2895,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Features of the Indian Constitution",
-      "microtheme": "Features of the Indian Constitution",
+      "microtheme": "Prime Minister",
       "year": 2019,
       "questionNumber": 28,
       "questionType": "MCQ_SINGLE",
@@ -2939,7 +2939,7 @@
         "d": "Article 29"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2970,7 +2970,7 @@
         "d": "Opportunity to develop oneself fully"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-PREAMBLE",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3001,7 +3001,7 @@
         "d": "2 and 5 only"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-BODIES",
       "topic": "Constitutional / Statutory Bodies",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3019,7 +3019,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Judiciary",
-      "microtheme": "Judiciary",
+      "microtheme": "Prime Minister",
       "year": 2019,
       "questionNumber": 11,
       "questionType": "MCQ_3_STATEMENT",
@@ -3032,7 +3032,7 @@
         "d": "1, 3 and 4 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3050,7 +3050,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Judiciary",
-      "microtheme": "Judiciary",
+      "microtheme": "Prime Minister",
       "year": 2019,
       "questionNumber": 12,
       "questionType": "MCQ_2_STATEMENT",
@@ -3094,7 +3094,7 @@
         "d": "State Legislatures cannot make laws on certain matters without the concurrence of the Union Legislature."
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Fundamental Rights / DPSP / Duties",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3174,7 +3174,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Governor",
       "year": 2018,
       "questionNumber": 12,
       "questionType": "MCQ_2_STATEMENT",
@@ -3187,7 +3187,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-ELECTIONS",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3205,7 +3205,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "President",
       "year": 2018,
       "questionNumber": 13,
       "questionType": "MCQ_2_STATEMENT",
@@ -3236,7 +3236,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "President",
       "year": 2018,
       "questionNumber": 14,
       "questionType": "MCQ_SINGLE",
@@ -3280,7 +3280,7 @@
         "d": "If laws are changed too often, liberty is in danger."
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-PREAMBLE",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3311,7 +3311,7 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-PREAMBLE",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3435,7 +3435,7 @@
         "d": "Article 24 and provisions under the 44th Amendments to the Constitution"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3528,7 +3528,7 @@
         "d": "3 only"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-BODIES",
       "topic": "Constitutional / Statutory Bodies",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3546,7 +3546,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Governor",
       "year": 2017,
       "questionNumber": 15,
       "questionType": "MCQ_MULTI_SELECT",
@@ -3577,7 +3577,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Prime Minister",
       "year": 2017,
       "questionNumber": 16,
       "questionType": "MCQ_MULTI_SELECT",
@@ -3590,7 +3590,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3621,7 +3621,7 @@
         "d": "Legal Right"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3652,7 +3652,7 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3683,7 +3683,7 @@
         "d": "It is the result of an agreement among the federating units."
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Federalism & Local Governance",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3714,7 +3714,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Fundamental Rights / DPSP / Duties",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3745,7 +3745,7 @@
         "d": "Liberty of belief"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Preamble & Constitutional Foundations",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3776,7 +3776,7 @@
         "d": "Duties, not Rights, are important for the stability of the State."
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3807,7 +3807,7 @@
         "d": "Ideology"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3838,7 +3838,7 @@
         "d": "Securing living wage and human conditions of work to workers"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Fundamental Rights / DPSP / Duties",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3869,7 +3869,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Fundamental Rights / DPSP / Duties",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3900,7 +3900,7 @@
         "d": "Rights are privileges of a few citizens against the many."
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3931,7 +3931,7 @@
         "d": "a band of dedicated party workers"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-PREAMBLE",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3962,7 +3962,7 @@
         "d": "The Fundamental Duties"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-PREAMBLE",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4055,7 +4055,7 @@
         "d": "A device for strengthening the hands of the head of the Government whose hold over the people is in a state of decline."
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-PARL",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4086,7 +4086,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4148,7 +4148,7 @@
         "d": "Direct democracy"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4166,7 +4166,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Council of Ministers",
       "year": 2016,
       "questionNumber": 17,
       "questionType": "MCQ_2_STATEMENT",
@@ -4241,7 +4241,7 @@
         "d": "Rajya Sabha by a majority of not less than two- thirds of its members present and voting"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4272,7 +4272,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Federalism & Local Governance",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4303,7 +4303,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4321,7 +4321,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Council of Ministers",
       "year": 2015,
       "questionNumber": 18,
       "questionType": "MCQ_2_STATEMENT",
@@ -4365,7 +4365,7 @@
         "d": "Seventh Schedule"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4396,7 +4396,7 @@
         "d": "Fundamental Duties"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4427,7 +4427,7 @@
         "d": "protect the interests of all the border States"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4458,7 +4458,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Fundamental Rights / DPSP / Duties",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4551,7 +4551,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4644,7 +4644,7 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Federalism & Local Governance",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4662,7 +4662,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Council of Ministers",
       "year": 2014,
       "questionNumber": 19,
       "questionType": "MCQ_MULTI_SELECT",
@@ -4706,7 +4706,7 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4724,7 +4724,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Council of Ministers",
       "year": 2014,
       "questionNumber": 21,
       "questionType": "MCQ_2_STATEMENT",
@@ -4768,7 +4768,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4799,7 +4799,7 @@
         "d": "Ninth Schedule"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4972,7 +4972,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Constitutional and Non-constitutional Bodies",
-      "microtheme": "Constitutional and Non-constitutional Bodies",
+      "microtheme": "Prime Minister",
       "year": 2013,
       "questionNumber": 6,
       "questionType": "MCQ_3_STATEMENT",
@@ -4985,7 +4985,7 @@
         "d": "1 and 3 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-BODIES",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -5016,7 +5016,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -5034,7 +5034,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Constitutional and Non-constitutional Bodies",
-      "microtheme": "Constitutional and Non-constitutional Bodies",
+      "microtheme": "Prime Minister",
       "year": 2013,
       "questionNumber": 8,
       "questionType": "MCQ_SINGLE",
@@ -5047,7 +5047,7 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-BODIES",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -5078,7 +5078,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Federalism & Local Governance",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -5096,7 +5096,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Governor",
       "year": 2013,
       "questionNumber": 22,
       "questionType": "MCQ_3_STATEMENT",
@@ -5109,7 +5109,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Union Executive",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -5127,7 +5127,7 @@
       "paper": "GS1",
       "subject": "Polity",
       "section": "Executive",
-      "microtheme": "Executive",
+      "microtheme": "Governor",
       "year": 2013,
       "questionNumber": 23,
       "questionType": "MCQ_SINGLE",
@@ -5171,7 +5171,7 @@
         "d": "None of the above"
       },
       "answer": "b",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -5202,7 +5202,7 @@
         "d": "Fundamental Rights and Fundamental Duties"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-CONTEMP",
+      "syllabusNodeId": "GS2-POL-FR",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -5326,7 +5326,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "a",
-      "syllabusNodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-EXEC",
       "topic": "Parliament & Legislature",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -5450,7 +5450,7 @@
         "d": "To free tribal people from exploitation"
       },
       "answer": "c",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Federalism & Local Governance",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -5481,7 +5481,7 @@
         "d": "Gram Sabha"
       },
       "answer": "d",
-      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-FED",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,

@@ -25,7 +25,7 @@
         "d": "I, II and III"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -56,7 +56,7 @@
         "d": "None"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -87,7 +87,7 @@
         "d": "All the four"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-ENERGY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -118,7 +118,7 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -149,7 +149,7 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -180,7 +180,7 @@
         "d": "Statement I is not correct but Statement II is correct"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -211,7 +211,7 @@
         "d": "silver nitrate and potassium chloride"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -242,7 +242,7 @@
         "d": "I, II and III"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-QUANTUM",
       "topic": "Emerging Technologies",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -304,7 +304,7 @@
         "d": "These are propulsion fuels for rocket"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-DEFENCE",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -366,7 +366,7 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-ENERGY",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -397,7 +397,7 @@
         "d": "None of the above statements is correct"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-ENV-TECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -428,7 +428,7 @@
         "d": "I, II and III"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-INFRA-TRANSPORT-TECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -459,7 +459,7 @@
         "d": "Neither Statement II nor Statement III is correct"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-ENV-TECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -490,7 +490,7 @@
         "d": "I and II only"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -521,7 +521,7 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -552,7 +552,7 @@
         "d": "Nitrogen pentoxide"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -614,7 +614,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -645,7 +645,7 @@
         "d": "Virtual matrix"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -738,7 +738,7 @@
         "d": "None"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-DEFENCE",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -769,7 +769,7 @@
         "d": "1, 3 and 4 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-ENERGY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -800,7 +800,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -831,7 +831,7 @@
         "d": "Water vapour"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MAINS-CURRENT",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -862,7 +862,7 @@
         "d": "Rainwater harvesting system"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MAINS-CURRENT",
+      "syllabusNodeId": "GS3-ST-ENERGY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -893,7 +893,7 @@
         "d": "All four"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-ENERGY",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1017,7 +1017,7 @@
         "d": "Japan"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1079,7 +1079,7 @@
         "d": "None"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1110,7 +1110,7 @@
         "d": "2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1265,7 +1265,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1296,7 +1296,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Emerging Technologies",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1327,7 +1327,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1358,7 +1358,7 @@
         "d": "Wireless Communication Technologies"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-QUANTUM",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1389,7 +1389,7 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1451,7 +1451,7 @@
         "d": "2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MAINS-CURRENT",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Physics / Nuclear / Electronics",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1482,7 +1482,7 @@
         "d": "A spacecraft moves along a comet with the same speed and places a probe on its surface."
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-DEFENCE",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1699,7 +1699,7 @@
         "d": "it is an oxide of hydrogen"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-BASIC-SCIENCE",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1730,7 +1730,7 @@
         "d": "Polyvinyl chloride"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-MAINS-CURRENT",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1761,7 +1761,7 @@
         "d": "Toiletries"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MAINS-CURRENT",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1792,7 +1792,7 @@
         "d": "Speed of light is always same."
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1823,7 +1823,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-BASIC-SCIENCE",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1854,7 +1854,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -1885,7 +1885,7 @@
         "d": "2, 3 and 4 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2040,7 +2040,7 @@
         "d": "Telecommunication and transportation infrastructure"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2071,7 +2071,7 @@
         "d": "2, 3 and 4 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Physics / Nuclear / Electronics",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2102,7 +2102,7 @@
         "d": "1 and 3 only"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Emerging Technologies",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2133,7 +2133,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-ENERGY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2164,7 +2164,7 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2195,7 +2195,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-DEFENCE",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2226,7 +2226,7 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-AI",
       "topic": "Emerging Technologies",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2257,7 +2257,7 @@
         "d": "Evolved LISA"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2288,7 +2288,7 @@
         "d": "Some of those infected with Hepatitis B and C viruses do not show the symptoms for many years."
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2443,7 +2443,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2474,7 +2474,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2505,7 +2505,7 @@
         "d": "4 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2536,7 +2536,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2567,7 +2567,7 @@
         "d": "a geological period in the history of the Indian subcontinent."
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-MAINS-CURRENT",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2598,7 +2598,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IPR",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2629,7 +2629,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2691,7 +2691,7 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2753,7 +2753,7 @@
         "d": "Virtual Private Network"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2784,7 +2784,7 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2815,7 +2815,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Emerging Technologies",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2877,7 +2877,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2908,7 +2908,7 @@
         "d": "3 only"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -2939,7 +2939,7 @@
         "d": "None"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3032,7 +3032,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3063,7 +3063,7 @@
         "d": "None of the above statements is correct"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3094,7 +3094,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3156,7 +3156,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3187,7 +3187,7 @@
         "d": "It can build fusion reactors for power generation"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-NUCLEAR",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3218,7 +3218,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3249,7 +3249,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3280,7 +3280,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Physics / Nuclear / Electronics",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3311,7 +3311,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3342,7 +3342,7 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3373,7 +3373,7 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3435,7 +3435,7 @@
         "d": "1, 2 and 3 only"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Physics / Nuclear / Electronics",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3466,7 +3466,7 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3497,7 +3497,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3528,7 +3528,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3559,7 +3559,7 @@
         "d": "None"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3590,7 +3590,7 @@
         "d": "fungi and mosses"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3652,7 +3652,7 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3683,7 +3683,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3745,7 +3745,7 @@
         "d": "None"
       },
       "answer": null,
-      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3776,7 +3776,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3807,7 +3807,7 @@
         "d": "there is an increase in humidity"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3838,7 +3838,7 @@
         "d": "leaves get damaged during transplantation"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3900,7 +3900,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -3931,7 +3931,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4024,7 +4024,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Space Technology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4055,7 +4055,7 @@
         "d": "None of the statements is correct"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4086,7 +4086,7 @@
         "d": "2, 3 and 5"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-SPACE",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4117,7 +4117,7 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Biotechnology",
       "mappingAudit": {
         "subjectConfidence": 0.99,
@@ -4148,7 +4148,7 @@
         "d": "Strong nuclear force holds protons and neutrons inside the nucleus of an atom"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-MATERIALS",
       "topic": "Unmapped Topic",
       "mappingAudit": {
         "subjectConfidence": 0.99,

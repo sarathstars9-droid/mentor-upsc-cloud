@@ -1,0 +1,3257 @@
+{
+  "GS1": {
+    "History": {
+      "Art Forms, Literature and Architecture": {
+        "Society": {
+          "questionIds": [
+            "MAINS_GS1_HIS_2024_001",
+            "MAINS_GS1_HIS_2023_005"
+          ],
+          "count": 2,
+          "years": [
+            2024,
+            2023
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Pre Vedic": {
+          "questionIds": [
+            "MAINS_GS1_HIS_2014_001"
+          ],
+          "count": 1,
+          "years": [
+            2014
+          ],
+          "lastAskedYear": 2014,
+          "directives": {
+            "Misc": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 1,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Modern History": {
+        "British Policies": {
+          "questionIds": [
+            "MAINS_GS1_HIS_2024_002",
+            "MAINS_GS1_HIS_2023_001",
+            "MAINS_GS1_HIS_2023_002",
+            "MAINS_GS1_HIS_2023_003",
+            "MAINS_GS1_HIS_2023_004",
+            "MAINS_GS1_HIS_2023_006",
+            "MAINS_GS1_HIS_2022_001",
+            "MAINS_GS1_HIS_2022_002",
+            "MAINS_GS1_HIS_2022_003",
+            "MAINS_GS1_HIS_2021_002",
+            "MAINS_GS1_HIS_2021_004",
+            "MAINS_GS1_HIS_2021_005",
+            "MAINS_GS1_HIS_2019_002",
+            "MAINS_GS1_HIS_2019_003",
+            "MAINS_GS1_HIS_2019_004",
+            "MAINS_GS1_HIS_2018_001",
+            "MAINS_GS1_HIS_2018_002",
+            "MAINS_GS1_HIS_2018_003",
+            "MAINS_GS1_HIS_2017_001",
+            "MAINS_GS1_HIS_2017_002",
+            "MAINS_GS1_HIS_2017_003",
+            "MAINS_GS1_HIS_2017_005",
+            "MAINS_GS1_HIS_2016_002",
+            "MAINS_GS1_HIS_2016_003",
+            "MAINS_GS1_HIS_2016_004",
+            "MAINS_GS1_HIS_2016_005",
+            "MAINS_GS1_HIS_2015_001",
+            "MAINS_GS1_HIS_2015_002",
+            "MAINS_GS1_HIS_2015_003",
+            "MAINS_GS1_HIS_2015_004",
+            "MAINS_GS1_HIS_2014_002",
+            "MAINS_GS1_HIS_2014_003",
+            "MAINS_GS1_HIS_2014_004",
+            "MAINS_GS1_HIS_2014_005",
+            "MAINS_GS1_HIS_2014_006",
+            "MAINS_GS1_HIS_2014_007",
+            "MAINS_GS1_HIS_2013_001",
+            "MAINS_GS1_HIS_2013_002",
+            "MAINS_GS1_HIS_2013_003",
+            "MAINS_GS1_HIS_2013_004",
+            "MAINS_GS1_HIS_2013_005",
+            "MAINS_GS1_HIS_2013_006",
+            "MAINS_GS1_HIS_2013_007",
+            "MAINS_GS1_HIS_2013_008",
+            "MAINS_GS1_HIS_2013_010",
+            "MAINS_GS1_HIS_2013_012"
+          ],
+          "count": 46,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 46
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 46,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Socio Religious Reform": {
+          "questionIds": [
+            "MAINS_GS1_HIS_2021_001",
+            "MAINS_GS1_HIS_2017_006"
+          ],
+          "count": 2,
+          "years": [
+            2021,
+            2017
+          ],
+          "lastAskedYear": 2021,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Personalities": {
+          "questionIds": [
+            "MAINS_GS1_HIS_2020_001",
+            "MAINS_GS1_HIS_2020_002"
+          ],
+          "count": 2,
+          "years": [
+            2020
+          ],
+          "lastAskedYear": 2020,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Peasant and Tribal Rebellions": {
+          "questionIds": [
+            "MAINS_GS1_HIS_2019_001",
+            "MAINS_GS1_HIS_2016_001"
+          ],
+          "count": 2,
+          "years": [
+            2019,
+            2016
+          ],
+          "lastAskedYear": 2019,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "World History": {
+        "World Wars": {
+          "questionIds": [
+            "MAINS_GS1_HIS_2024_003",
+            "MAINS_GS1_HIS_2021_003",
+            "MAINS_GS1_HIS_2015_006"
+          ],
+          "count": 3,
+          "years": [
+            2024,
+            2021,
+            2015
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 3
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 3,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Industrial Revolution": {
+          "questionIds": [
+            "MAINS_GS1_HIS_2024_004",
+            "MAINS_GS1_HIS_2017_004",
+            "MAINS_GS1_HIS_2015_005",
+            "MAINS_GS1_HIS_2013_009"
+          ],
+          "count": 4,
+          "years": [
+            2024,
+            2017,
+            2015,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 4
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 4,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "American and French Revolution": {
+          "questionIds": [
+            "MAINS_GS1_HIS_2019_005",
+            "MAINS_GS1_HIS_2013_011"
+          ],
+          "count": 2,
+          "years": [
+            2019,
+            2013
+          ],
+          "lastAskedYear": 2019,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    },
+    "Geography": {
+      "Indian Geography": {
+        "Climate and Weather Phenomena": {
+          "questionIds": [
+            "MAINS_GS1_GEO_2024_001",
+            "MAINS_GS1_GEO_2023_001",
+            "MAINS_GS1_GEO_2023_004",
+            "MAINS_GS1_GEO_2022_002",
+            "MAINS_GS1_GEO_2020_002",
+            "MAINS_GS1_GEO_2017_004",
+            "MAINS_GS1_GEO_2017_008",
+            "MAINS_GS1_GEO_2015_001",
+            "MAINS_GS1_GEO_2015_005",
+            "MAINS_GS1_GEO_2014_003",
+            "MAINS_GS1_GEO_2013_002",
+            "MAINS_GS1_GEO_2013_004"
+          ],
+          "count": 12,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2020,
+            2017,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 12
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 12,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Economic Geography of India": {
+          "questionIds": [
+            "MAINS_GS1_GEO_2024_003",
+            "MAINS_GS1_GEO_2023_002",
+            "MAINS_GS1_GEO_2023_005",
+            "MAINS_GS1_GEO_2023_006",
+            "MAINS_GS1_GEO_2021_002",
+            "MAINS_GS1_GEO_2021_005",
+            "MAINS_GS1_GEO_2020_003",
+            "MAINS_GS1_GEO_2020_005",
+            "MAINS_GS1_GEO_2020_006",
+            "MAINS_GS1_GEO_2020_007",
+            "MAINS_GS1_GEO_2020_008",
+            "MAINS_GS1_GEO_2020_009",
+            "MAINS_GS1_GEO_2019_003",
+            "MAINS_GS1_GEO_2019_005",
+            "MAINS_GS1_GEO_2018_001",
+            "MAINS_GS1_GEO_2018_002",
+            "MAINS_GS1_GEO_2018_006",
+            "MAINS_GS1_GEO_2018_007",
+            "MAINS_GS1_GEO_2017_007",
+            "MAINS_GS1_GEO_2016_003",
+            "MAINS_GS1_GEO_2016_005",
+            "MAINS_GS1_GEO_2016_007",
+            "MAINS_GS1_GEO_2016_008",
+            "MAINS_GS1_GEO_2015_003",
+            "MAINS_GS1_GEO_2014_008",
+            "MAINS_GS1_GEO_2013_009",
+            "MAINS_GS1_GEO_2013_010",
+            "MAINS_GS1_GEO_2013_011",
+            "MAINS_GS1_GEO_2013_012",
+            "MAINS_GS1_GEO_2013_013"
+          ],
+          "count": 30,
+          "years": [
+            2024,
+            2023,
+            2021,
+            2020,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 30
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 30,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Urbanisation": {
+          "questionIds": [
+            "MAINS_GS1_GEO_2021_004",
+            "MAINS_GS1_GEO_2019_006",
+            "MAINS_GS1_GEO_2018_005",
+            "MAINS_GS1_GEO_2015_006",
+            "MAINS_GS1_GEO_2013_005"
+          ],
+          "count": 5,
+          "years": [
+            2021,
+            2019,
+            2018,
+            2015,
+            2013
+          ],
+          "lastAskedYear": 2021,
+          "directives": {
+            "Misc": 5
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 5,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Physical Geography": {
+        "Landforms": {
+          "questionIds": [
+            "MAINS_GS1_GEO_2024_002",
+            "MAINS_GS1_GEO_2024_004",
+            "MAINS_GS1_GEO_2024_005",
+            "MAINS_GS1_GEO_2023_003",
+            "MAINS_GS1_GEO_2022_001",
+            "MAINS_GS1_GEO_2022_003",
+            "MAINS_GS1_GEO_2022_004",
+            "MAINS_GS1_GEO_2021_003",
+            "MAINS_GS1_GEO_2021_006",
+            "MAINS_GS1_GEO_2021_007",
+            "MAINS_GS1_GEO_2021_008",
+            "MAINS_GS1_GEO_2021_009",
+            "MAINS_GS1_GEO_2020_001",
+            "MAINS_GS1_GEO_2020_004",
+            "MAINS_GS1_GEO_2019_002",
+            "MAINS_GS1_GEO_2019_004",
+            "MAINS_GS1_GEO_2017_001",
+            "MAINS_GS1_GEO_2017_002",
+            "MAINS_GS1_GEO_2017_003",
+            "MAINS_GS1_GEO_2017_006",
+            "MAINS_GS1_GEO_2016_001",
+            "MAINS_GS1_GEO_2016_002",
+            "MAINS_GS1_GEO_2016_006",
+            "MAINS_GS1_GEO_2015_002",
+            "MAINS_GS1_GEO_2015_004",
+            "MAINS_GS1_GEO_2014_001",
+            "MAINS_GS1_GEO_2014_002",
+            "MAINS_GS1_GEO_2014_004",
+            "MAINS_GS1_GEO_2014_006",
+            "MAINS_GS1_GEO_2013_003",
+            "MAINS_GS1_GEO_2013_006",
+            "MAINS_GS1_GEO_2013_007",
+            "MAINS_GS1_GEO_2013_008"
+          ],
+          "count": 33,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2020,
+            2019,
+            2017,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 33
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 33,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Natural Vegetation": {
+          "questionIds": [
+            "MAINS_GS1_GEO_2021_001",
+            "MAINS_GS1_GEO_2019_007",
+            "MAINS_GS1_GEO_2018_004",
+            "MAINS_GS1_GEO_2014_005"
+          ],
+          "count": 4,
+          "years": [
+            2021,
+            2019,
+            2018,
+            2014
+          ],
+          "lastAskedYear": 2021,
+          "directives": {
+            "Misc": 4
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 4,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Distribution of Oceans and Continents": {
+          "questionIds": [
+            "MAINS_GS1_GEO_2018_003",
+            "MAINS_GS1_GEO_2013_001"
+          ],
+          "count": 2,
+          "years": [
+            2018,
+            2013
+          ],
+          "lastAskedYear": 2018,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Oceanography": {
+        "Ocean Currents": {
+          "questionIds": [
+            "MAINS_GS1_GEO_2019_001",
+            "MAINS_GS1_GEO_2019_008",
+            "MAINS_GS1_GEO_2017_005",
+            "MAINS_GS1_GEO_2016_004",
+            "MAINS_GS1_GEO_2015_007",
+            "MAINS_GS1_GEO_2014_007"
+          ],
+          "count": 6,
+          "years": [
+            2019,
+            2017,
+            2016,
+            2015,
+            2014
+          ],
+          "lastAskedYear": 2019,
+          "directives": {
+            "Misc": 6
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 6,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    },
+    "Society": {
+      "Role of Women, Population, Poverty and Urbanisation": {
+        "Migration": {
+          "questionIds": [
+            "MAINS_GS1_SOC_2024_001",
+            "MAINS_GS1_SOC_2023_005",
+            "MAINS_GS1_SOC_2023_007",
+            "MAINS_GS1_SOC_2022_003",
+            "MAINS_GS1_SOC_2022_004",
+            "MAINS_GS1_SOC_2021_005",
+            "MAINS_GS1_SOC_2020_004",
+            "MAINS_GS1_SOC_2019_006",
+            "MAINS_GS1_SOC_2018_005",
+            "MAINS_GS1_SOC_2017_004",
+            "MAINS_GS1_SOC_2016_001",
+            "MAINS_GS1_SOC_2016_004",
+            "MAINS_GS1_SOC_2015_004",
+            "MAINS_GS1_SOC_2013_001",
+            "MAINS_GS1_SOC_2013_003"
+          ],
+          "count": 15,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2020,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 15
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 15,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Population and Associated Issues": {
+          "questionIds": [
+            "MAINS_GS1_SOC_2024_002",
+            "MAINS_GS1_SOC_2021_004"
+          ],
+          "count": 2,
+          "years": [
+            2024,
+            2021
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Women": {
+          "questionIds": [
+            "MAINS_GS1_SOC_2024_003",
+            "MAINS_GS1_SOC_2023_002",
+            "MAINS_GS1_SOC_2021_002",
+            "MAINS_GS1_SOC_2019_002",
+            "MAINS_GS1_SOC_2019_005",
+            "MAINS_GS1_SOC_2018_004",
+            "MAINS_GS1_SOC_2015_003",
+            "MAINS_GS1_SOC_2015_005",
+            "MAINS_GS1_SOC_2014_001",
+            "MAINS_GS1_SOC_2014_002",
+            "MAINS_GS1_SOC_2014_004",
+            "MAINS_GS1_SOC_2013_002"
+          ],
+          "count": 12,
+          "years": [
+            2024,
+            2023,
+            2021,
+            2019,
+            2018,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 12
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 12,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Social Empowerment": {
+          "questionIds": [
+            "MAINS_GS1_SOC_2024_005",
+            "MAINS_GS1_SOC_2024_009",
+            "MAINS_GS1_SOC_2023_004",
+            "MAINS_GS1_SOC_2021_003",
+            "MAINS_GS1_SOC_2020_002",
+            "MAINS_GS1_SOC_2020_006",
+            "MAINS_GS1_SOC_2018_002",
+            "MAINS_GS1_SOC_2016_002",
+            "MAINS_GS1_SOC_2016_005",
+            "MAINS_GS1_SOC_2015_002"
+          ],
+          "count": 10,
+          "years": [
+            2024,
+            2023,
+            2021,
+            2020,
+            2018,
+            2016,
+            2015
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 10
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 10,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Salient Features of Indian Society and Diversity of India": {
+        "Family and Marriage": {
+          "questionIds": [
+            "MAINS_GS1_SOC_2024_004",
+            "MAINS_GS1_SOC_2024_007",
+            "MAINS_GS1_SOC_2023_001",
+            "MAINS_GS1_SOC_2023_003",
+            "MAINS_GS1_SOC_2022_001",
+            "MAINS_GS1_SOC_2014_003"
+          ],
+          "count": 6,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2014
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 6
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 6,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Diversity": {
+          "questionIds": [
+            "MAINS_GS1_SOC_2024_006",
+            "MAINS_GS1_SOC_2022_005",
+            "MAINS_GS1_SOC_2019_004",
+            "MAINS_GS1_SOC_2017_001"
+          ],
+          "count": 4,
+          "years": [
+            2024,
+            2022,
+            2019,
+            2017
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 4
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 4,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Caste": {
+          "questionIds": [
+            "MAINS_GS1_SOC_2023_006",
+            "MAINS_GS1_SOC_2022_006",
+            "MAINS_GS1_SOC_2020_001",
+            "MAINS_GS1_SOC_2020_005",
+            "MAINS_GS1_SOC_2018_001",
+            "MAINS_GS1_SOC_2015_001",
+            "MAINS_GS1_SOC_2015_006",
+            "MAINS_GS1_SOC_2013_004"
+          ],
+          "count": 8,
+          "years": [
+            2023,
+            2022,
+            2020,
+            2018,
+            2015,
+            2013
+          ],
+          "lastAskedYear": 2023,
+          "directives": {
+            "Misc": 8
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 8,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Tribe": {
+          "questionIds": [
+            "MAINS_GS1_SOC_2022_002",
+            "MAINS_GS1_SOC_2021_001",
+            "MAINS_GS1_SOC_2017_002",
+            "MAINS_GS1_SOC_2016_003"
+          ],
+          "count": 4,
+          "years": [
+            2022,
+            2021,
+            2017,
+            2016
+          ],
+          "lastAskedYear": 2022,
+          "directives": {
+            "Misc": 4
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 4,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Effects of Globalization on Indian Society": {
+        "Globalisation and Culture": {
+          "questionIds": [
+            "MAINS_GS1_SOC_2024_008",
+            "MAINS_GS1_SOC_2021_006",
+            "MAINS_GS1_SOC_2019_001",
+            "MAINS_GS1_SOC_2018_007",
+            "MAINS_GS1_SOC_2017_003"
+          ],
+          "count": 5,
+          "years": [
+            2024,
+            2021,
+            2019,
+            2018,
+            2017
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 5
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 5,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Social Empowerment, Communalism, Regionalism and Secularism": {
+        "Regionalism": {
+          "questionIds": [
+            "MAINS_GS1_SOC_2020_003",
+            "MAINS_GS1_SOC_2019_003",
+            "MAINS_GS1_SOC_2018_003",
+            "MAINS_GS1_SOC_2018_006",
+            "MAINS_GS1_SOC_2014_005"
+          ],
+          "count": 5,
+          "years": [
+            2020,
+            2019,
+            2018,
+            2014
+          ],
+          "lastAskedYear": 2020,
+          "directives": {
+            "Misc": 5
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 5,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    },
+    "Art & Culture": {
+      "Art Forms, Literature and Architecture": {
+        "Literature": {
+          "questionIds": [
+            "MAINS_GS1_ART_2024_001",
+            "MAINS_GS1_ART_2021_001",
+            "MAINS_GS1_ART_2020_004",
+            "MAINS_GS1_ART_2018_003",
+            "MAINS_GS1_ART_2016_001",
+            "MAINS_GS1_ART_2014_002",
+            "MAINS_GS1_ART_2014_003",
+            "MAINS_GS1_ART_2013_001"
+          ],
+          "count": 8,
+          "years": [
+            2024,
+            2021,
+            2020,
+            2018,
+            2016,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 8
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 8,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Architecture and Sculpture": {
+          "questionIds": [
+            "MAINS_GS1_ART_2024_002",
+            "MAINS_GS1_ART_2022_001",
+            "MAINS_GS1_ART_2022_003",
+            "MAINS_GS1_ART_2020_001",
+            "MAINS_GS1_ART_2020_003",
+            "MAINS_GS1_ART_2019_001",
+            "MAINS_GS1_ART_2017_001",
+            "MAINS_GS1_ART_2016_002",
+            "MAINS_GS1_ART_2015_001",
+            "MAINS_GS1_ART_2014_001",
+            "MAINS_GS1_ART_2013_002",
+            "MAINS_GS1_ART_2013_003"
+          ],
+          "count": 12,
+          "years": [
+            2024,
+            2022,
+            2020,
+            2019,
+            2017,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 12
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 12,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Miscellaneous": {
+          "questionIds": [
+            "MAINS_GS1_ART_2022_002",
+            "MAINS_GS1_ART_2018_002"
+          ],
+          "count": 2,
+          "years": [
+            2022,
+            2018
+          ],
+          "lastAskedYear": 2022,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Bhakti-Sufi": {
+          "questionIds": [
+            "MAINS_GS1_ART_2020_002",
+            "MAINS_GS1_ART_2018_001"
+          ],
+          "count": 2,
+          "years": [
+            2020,
+            2018
+          ],
+          "lastAskedYear": 2020,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    }
+  },
+  "GS2": {
+    "Polity": {
+      "Executive and Judiciary & Separation of Powers": {
+        "Union Legislature": {
+          "questionIds": [
+            "MAIN_GS2_POLITY_2024_01",
+            "MAIN_GS2_POLITY_2024_04",
+            "MAIN_GS2_POLITY_2024_05",
+            "MAIN_GS2_POLITY_2024_09",
+            "MAIN_GS2_POLITY_2023_03",
+            "MAIN_GS2_POLITY_2023_05",
+            "MAIN_GS2_POLITY_2023_10",
+            "MAIN_GS2_POLITY_2022_03",
+            "MAIN_GS2_POLITY_2022_04",
+            "MAIN_GS2_POLITY_2022_05",
+            "MAIN_GS2_POLITY_2022_06",
+            "MAIN_GS2_POLITY_2022_07",
+            "MAIN_GS2_POLITY_2022_09",
+            "MAIN_GS2_POLITY_2022_10",
+            "MAIN_GS2_POLITY_2021_04",
+            "MAIN_GS2_POLITY_2021_06",
+            "MAIN_GS2_POLITY_2021_08",
+            "MAIN_GS2_POLITY_2021_09",
+            "MAIN_GS2_POLITY_2020_02",
+            "MAIN_GS2_POLITY_2020_04",
+            "MAIN_GS2_POLITY_2020_05",
+            "MAIN_GS2_POLITY_2020_08",
+            "MAIN_GS2_POLITY_2020_09",
+            "MAIN_GS2_POLITY_2020_10",
+            "MAIN_GS2_POLITY_2019_03",
+            "MAIN_GS2_POLITY_2019_05",
+            "MAIN_GS2_POLITY_2019_08",
+            "MAIN_GS2_POLITY_2018_01",
+            "MAIN_GS2_POLITY_2018_02",
+            "MAIN_GS2_POLITY_2018_04",
+            "MAIN_GS2_POLITY_2018_08",
+            "MAIN_GS2_POLITY_2018_09",
+            "MAIN_GS2_POLITY_2018_10",
+            "MAIN_GS2_POLITY_2017_01",
+            "MAIN_GS2_POLITY_2017_03",
+            "MAIN_GS2_POLITY_2017_04",
+            "MAIN_GS2_POLITY_2017_07",
+            "MAIN_GS2_POLITY_2017_08",
+            "MAIN_GS2_POLITY_2017_09",
+            "MAIN_GS2_POLITY_2016_04",
+            "MAIN_GS2_POLITY_2016_08",
+            "MAIN_GS2_POLITY_2015_03",
+            "MAIN_GS2_POLITY_2015_04",
+            "MAIN_GS2_POLITY_2015_08",
+            "MAIN_GS2_POLITY_2014_03",
+            "MAIN_GS2_POLITY_2013_01",
+            "MAIN_GS2_POLITY_2013_08"
+          ],
+          "count": 47,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2020,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Examine": 1,
+            "Comment": 27,
+            "Analyze": 1,
+            "Discuss": 14,
+            "Explain": 2,
+            "Critically Examine": 1,
+            "Evaluate": 1
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 47,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Judiciary": {
+          "questionIds": [
+            "MAIN_GS2_POLITY_2024_02",
+            "MAIN_GS2_POLITY_2024_08",
+            "MAIN_GS2_POLITY_2023_02",
+            "MAIN_GS2_POLITY_2022_01",
+            "MAIN_GS2_POLITY_2019_02",
+            "MAIN_GS2_POLITY_2018_07",
+            "MAIN_GS2_POLITY_2015_06",
+            "MAIN_GS2_POLITY_2014_01"
+          ],
+          "count": 8,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2019,
+            2018,
+            2015,
+            2014
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Explain": 2,
+            "Comment": 5,
+            "Discuss": 1
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 8,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Separation of Powers": {
+          "questionIds": [
+            "MAIN_GS2_POLITY_2024_03",
+            "MAIN_GS2_POLITY_2023_01",
+            "MAIN_GS2_POLITY_2023_06",
+            "MAIN_GS2_POLITY_2021_02",
+            "MAIN_GS2_POLITY_2020_01",
+            "MAIN_GS2_POLITY_2020_07",
+            "MAIN_GS2_POLITY_2019_01",
+            "MAIN_GS2_POLITY_2018_05",
+            "MAIN_GS2_POLITY_2017_02",
+            "MAIN_GS2_POLITY_2016_07",
+            "MAIN_GS2_POLITY_2015_05",
+            "MAIN_GS2_POLITY_2013_07"
+          ],
+          "count": 12,
+          "years": [
+            2024,
+            2023,
+            2021,
+            2020,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Comment": 9,
+            "Discuss": 2,
+            "Critically Examine": 1
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 12,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "State Executive": {
+          "questionIds": [
+            "MAIN_GS2_POLITY_2019_07",
+            "MAIN_GS2_POLITY_2016_03",
+            "MAIN_GS2_POLITY_2014_05",
+            "MAIN_GS2_POLITY_2014_06",
+            "MAIN_GS2_POLITY_2013_05"
+          ],
+          "count": 5,
+          "years": [
+            2019,
+            2016,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2019,
+          "directives": {
+            "Comment": 5
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 5,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Basics of Constitutional Framework (FR, DPSP, FD etc.)": {
+        "Fundamental Rights": {
+          "questionIds": [
+            "MAIN_GS2_POLITY_2024_06",
+            "MAIN_GS2_POLITY_2022_02",
+            "MAIN_GS2_POLITY_2018_03",
+            "MAIN_GS2_POLITY_2017_06",
+            "MAIN_GS2_POLITY_2015_07",
+            "MAIN_GS2_POLITY_2014_04",
+            "MAIN_GS2_POLITY_2013_02",
+            "MAIN_GS2_POLITY_2013_03"
+          ],
+          "count": 8,
+          "years": [
+            2024,
+            2022,
+            2018,
+            2017,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Comment": 5,
+            "Discuss": 2,
+            "Examine": 1
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 8,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Amendment Procedure": {
+          "questionIds": [
+            "MAIN_GS2_POLITY_2023_04",
+            "MAIN_GS2_POLITY_2023_07",
+            "MAIN_GS2_POLITY_2021_01",
+            "MAIN_GS2_POLITY_2021_07",
+            "MAIN_GS2_POLITY_2019_04",
+            "MAIN_GS2_POLITY_2019_06",
+            "MAIN_GS2_POLITY_2016_05",
+            "MAIN_GS2_POLITY_2016_06",
+            "MAIN_GS2_POLITY_2013_04"
+          ],
+          "count": 9,
+          "years": [
+            2023,
+            2021,
+            2019,
+            2016,
+            2013
+          ],
+          "lastAskedYear": 2023,
+          "directives": {
+            "Distinguish": 1,
+            "Explain": 1,
+            "Comment": 3,
+            "Analyze": 1,
+            "Discuss": 3
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 9,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "DPSP": {
+          "questionIds": [
+            "MAIN_GS2_POLITY_2015_01"
+          ],
+          "count": 1,
+          "years": [
+            2015
+          ],
+          "lastAskedYear": 2015,
+          "directives": {
+            "Discuss": 1
+          },
+          "topDirective": "Discuss",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 1,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Federal Structure and Local Bodies": {
+        "Centre-State Financial Relations": {
+          "questionIds": [
+            "MAIN_GS2_POLITY_2024_07",
+            "MAIN_GS2_POLITY_2023_08",
+            "MAIN_GS2_POLITY_2023_09",
+            "MAIN_GS2_POLITY_2022_08",
+            "MAIN_GS2_POLITY_2021_03",
+            "MAIN_GS2_POLITY_2021_05",
+            "MAIN_GS2_POLITY_2020_03",
+            "MAIN_GS2_POLITY_2020_06",
+            "MAIN_GS2_POLITY_2018_06",
+            "MAIN_GS2_POLITY_2017_05",
+            "MAIN_GS2_POLITY_2016_01",
+            "MAIN_GS2_POLITY_2016_02",
+            "MAIN_GS2_POLITY_2015_02",
+            "MAIN_GS2_POLITY_2014_02",
+            "MAIN_GS2_POLITY_2013_06"
+          ],
+          "count": 15,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2020,
+            2018,
+            2017,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Comment": 10,
+            "Account For": 1,
+            "Explain": 2,
+            "Discuss": 2
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 15,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    },
+    "Governance": {
+      "Pressure Groups, Formal/Informal Associations, Development Processes and Development Industry": {
+        "NGO/VO/SHG/MFI/Pressure Groups": {
+          "questionIds": [
+            "MAIN_GS2_GOVERNANCE_2024_01",
+            "MAIN_GS2_GOVERNANCE_2024_05",
+            "MAIN_GS2_GOVERNANCE_2024_07",
+            "MAIN_GS2_GOVERNANCE_2023_03",
+            "MAIN_GS2_GOVERNANCE_2022_05",
+            "MAIN_GS2_GOVERNANCE_2021_01",
+            "MAIN_GS2_GOVERNANCE_2021_05",
+            "MAIN_GS2_GOVERNANCE_2021_07",
+            "MAIN_GS2_GOVERNANCE_2020_02",
+            "MAIN_GS2_GOVERNANCE_2020_03",
+            "MAIN_GS2_GOVERNANCE_2020_05",
+            "MAIN_GS2_GOVERNANCE_2019_01",
+            "MAIN_GS2_GOVERNANCE_2019_04",
+            "MAIN_GS2_GOVERNANCE_2018_03",
+            "MAIN_GS2_GOVERNANCE_2018_06",
+            "MAIN_GS2_GOVERNANCE_2017_04",
+            "MAIN_GS2_GOVERNANCE_2017_06",
+            "MAIN_GS2_GOVERNANCE_2016_02",
+            "MAIN_GS2_GOVERNANCE_2016_06",
+            "MAIN_GS2_GOVERNANCE_2015_01",
+            "MAIN_GS2_GOVERNANCE_2015_02",
+            "MAIN_GS2_GOVERNANCE_2015_03",
+            "MAIN_GS2_GOVERNANCE_2015_07",
+            "MAIN_GS2_GOVERNANCE_2014_02",
+            "MAIN_GS2_GOVERNANCE_2014_03",
+            "MAIN_GS2_GOVERNANCE_2014_04",
+            "MAIN_GS2_GOVERNANCE_2014_08",
+            "MAIN_GS2_GOVERNANCE_2013_02",
+            "MAIN_GS2_GOVERNANCE_2013_03",
+            "MAIN_GS2_GOVERNANCE_2013_05"
+          ],
+          "count": 30,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2020,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Comment": 27,
+            "Discuss": 2,
+            "Examine": 1
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 30,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Development Process and Industry": {
+          "questionIds": [
+            "MAIN_GS2_GOVERNANCE_2022_01",
+            "MAIN_GS2_GOVERNANCE_2019_06",
+            "MAIN_GS2_GOVERNANCE_2019_07",
+            "MAIN_GS2_GOVERNANCE_2016_03",
+            "MAIN_GS2_GOVERNANCE_2016_05",
+            "MAIN_GS2_GOVERNANCE_2014_01",
+            "MAIN_GS2_GOVERNANCE_2014_09"
+          ],
+          "count": 7,
+          "years": [
+            2022,
+            2019,
+            2016,
+            2014
+          ],
+          "lastAskedYear": 2022,
+          "directives": {
+            "Comment": 6,
+            "Discuss": 1
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 7,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Concept of Governance, e-Governance, Transparency and Accountability, Role of Civil Services in Democracy": {
+        "Transparency and Accountability": {
+          "questionIds": [
+            "MAIN_GS2_GOVERNANCE_2024_03",
+            "MAIN_GS2_GOVERNANCE_2016_04",
+            "MAIN_GS2_GOVERNANCE_2015_08"
+          ],
+          "count": 3,
+          "years": [
+            2024,
+            2016,
+            2015
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Comment": 3
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 3,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "E-Governance": {
+          "questionIds": [
+            "MAIN_GS2_GOVERNANCE_2018_01",
+            "MAIN_GS2_GOVERNANCE_2014_06"
+          ],
+          "count": 2,
+          "years": [
+            2018,
+            2014
+          ],
+          "lastAskedYear": 2018,
+          "directives": {
+            "Comment": 2
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    },
+    "Social Justice": {
+      "Poverty, Hunger, Inclusive Development and Human Development": {
+        "Poverty": {
+          "questionIds": [
+            "MAIN_GS2_SOCIAL_JUSTICE_2024_02",
+            "MAIN_GS2_SOCIAL_JUSTICE_2024_06",
+            "MAIN_GS2_SOCIAL_JUSTICE_2023_01",
+            "MAIN_GS2_SOCIAL_JUSTICE_2023_05",
+            "MAIN_GS2_SOCIAL_JUSTICE_2023_06",
+            "MAIN_GS2_SOCIAL_JUSTICE_2022_03",
+            "MAIN_GS2_SOCIAL_JUSTICE_2022_04",
+            "MAIN_GS2_SOCIAL_JUSTICE_2022_06",
+            "MAIN_GS2_SOCIAL_JUSTICE_2021_02",
+            "MAIN_GS2_SOCIAL_JUSTICE_2021_03",
+            "MAIN_GS2_SOCIAL_JUSTICE_2021_04",
+            "MAIN_GS2_SOCIAL_JUSTICE_2020_01",
+            "MAIN_GS2_SOCIAL_JUSTICE_2020_04",
+            "MAIN_GS2_SOCIAL_JUSTICE_2020_06",
+            "MAIN_GS2_SOCIAL_JUSTICE_2019_02",
+            "MAIN_GS2_SOCIAL_JUSTICE_2019_03",
+            "MAIN_GS2_SOCIAL_JUSTICE_2019_08",
+            "MAIN_GS2_SOCIAL_JUSTICE_2018_02",
+            "MAIN_GS2_SOCIAL_JUSTICE_2018_05",
+            "MAIN_GS2_SOCIAL_JUSTICE_2017_01",
+            "MAIN_GS2_SOCIAL_JUSTICE_2017_03",
+            "MAIN_GS2_SOCIAL_JUSTICE_2017_05",
+            "MAIN_GS2_SOCIAL_JUSTICE_2016_01",
+            "MAIN_GS2_SOCIAL_JUSTICE_2016_08",
+            "MAIN_GS2_SOCIAL_JUSTICE_2015_04",
+            "MAIN_GS2_SOCIAL_JUSTICE_2015_05",
+            "MAIN_GS2_SOCIAL_JUSTICE_2015_06",
+            "MAIN_GS2_SOCIAL_JUSTICE_2014_05",
+            "MAIN_GS2_SOCIAL_JUSTICE_2014_07",
+            "MAIN_GS2_SOCIAL_JUSTICE_2013_01",
+            "MAIN_GS2_SOCIAL_JUSTICE_2013_04",
+            "MAIN_GS2_SOCIAL_JUSTICE_2013_06",
+            "MAIN_GS2_SOCIAL_JUSTICE_2013_07"
+          ],
+          "count": 33,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2020,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Discuss": 6,
+            "Comment": 27
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 33,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Rights Issues – Disability, Women, Children, Minorities, LGBTQIA+": {
+        "Disability Rights": {
+          "questionIds": [
+            "MAIN_GS2_SOCIAL_JUSTICE_2024_04",
+            "MAIN_GS2_SOCIAL_JUSTICE_2023_04",
+            "MAIN_GS2_SOCIAL_JUSTICE_2022_02",
+            "MAIN_GS2_SOCIAL_JUSTICE_2021_06",
+            "MAIN_GS2_SOCIAL_JUSTICE_2019_05",
+            "MAIN_GS2_SOCIAL_JUSTICE_2018_04",
+            "MAIN_GS2_SOCIAL_JUSTICE_2017_02",
+            "MAIN_GS2_SOCIAL_JUSTICE_2016_07"
+          ],
+          "count": 8,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2019,
+            2018,
+            2017,
+            2016
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Discuss": 3,
+            "Comment": 4,
+            "Examine": 1
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 8,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    },
+    "International Relations": {
+      "Hard, Soft and Smart Power": {
+        "India’s Role in New World Order": {
+          "questionIds": [
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2024_01",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2024_04",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2023_01",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2023_03",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2023_04",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2022_01",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2022_03",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2022_04",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2021_02",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2021_04",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2020_02",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2020_03",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2020_04",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2019_01",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2019_02",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2019_03",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2018_01",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2018_02",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2017_01",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2016_01",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2015_02",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2015_03",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2015_04",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2014_02",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2014_03",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2013_03",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2013_05",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2013_06",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2013_07"
+          ],
+          "count": 29,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2020,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Comment": 25,
+            "Discuss": 4
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 29,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "International Forum": {
+          "questionIds": [
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2024_03",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2020_01",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2019_04",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2018_03",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2017_02",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2017_03",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2017_04",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2014_04",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2013_01",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2013_02",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2013_08"
+          ],
+          "count": 11,
+          "years": [
+            2024,
+            2020,
+            2019,
+            2018,
+            2017,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Comment": 9,
+            "Critically Examine": 1,
+            "Discuss": 1
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 11,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Diaspora in the West": {
+          "questionIds": [
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2023_02"
+          ],
+          "count": 1,
+          "years": [
+            2023
+          ],
+          "lastAskedYear": 2023,
+          "directives": {
+            "Comment": 1
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 1,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Regional Groupings and Strategic Platforms": {
+        "Ashgabat Agreement": {
+          "questionIds": [
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2024_02"
+          ],
+          "count": 1,
+          "years": [
+            2024
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Critically Analyze": 1
+          },
+          "topDirective": "Critically Analyze",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 1,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "SCO": {
+          "questionIds": [
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2022_02",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2021_03",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2016_04"
+          ],
+          "count": 3,
+          "years": [
+            2022,
+            2021,
+            2016
+          ],
+          "lastAskedYear": 2022,
+          "directives": {
+            "Comment": 1,
+            "Critically Examine": 1,
+            "Discuss": 1
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 3,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Bilateral and Regional Relations": {
+        "Africa": {
+          "questionIds": [
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2021_01",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2015_01"
+          ],
+          "count": 2,
+          "years": [
+            2021,
+            2015
+          ],
+          "lastAskedYear": 2021,
+          "directives": {
+            "Comment": 2
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "West Asia": {
+          "questionIds": [
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2018_04"
+          ],
+          "count": 1,
+          "years": [
+            2018
+          ],
+          "lastAskedYear": 2018,
+          "directives": {
+            "Discuss": 1
+          },
+          "topDirective": "Discuss",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 1,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Indian Ocean Neighbourhood": {
+          "questionIds": [
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2016_03",
+            "MAIN_GS2_INTERNATIONAL_RELATIONS_2013_04"
+          ],
+          "count": 2,
+          "years": [
+            2016,
+            2013
+          ],
+          "lastAskedYear": 2016,
+          "directives": {
+            "Comment": 1,
+            "Discuss": 1
+          },
+          "topDirective": "Comment",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    }
+  },
+  "GS3": {
+    "Economy": {
+      "Indian Economy and Issues": {
+        "Inclusive Growth": {
+          "questionIds": [
+            "GS3_ECON_2024_01",
+            "GS3_ECON_2022_04",
+            "GS3_ECON_2021_01",
+            "GS3_ECON_2021_04",
+            "GS3_ECON_2020_01",
+            "GS3_ECON_2020_02",
+            "GS3_ECON_2019_03",
+            "GS3_ECON_2017_01",
+            "GS3_ECON_2017_06",
+            "GS3_ECON_2016_06",
+            "GS3_ECON_2014_02",
+            "GS3_ECON_2013_01"
+          ],
+          "count": 12,
+          "years": [
+            2024,
+            2022,
+            2021,
+            2020,
+            2019,
+            2017,
+            2016,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Examine": 1,
+            "Misc": 8,
+            "Explain": 2,
+            "Comment": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 12,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Inflation": {
+          "questionIds": [
+            "GS3_ECON_2024_02",
+            "GS3_ECON_2019_02"
+          ],
+          "count": 2,
+          "years": [
+            2024,
+            2019
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Investment Models": {
+          "questionIds": [
+            "GS3_ECON_2024_04",
+            "GS3_ECON_2022_01",
+            "GS3_ECON_2017_03",
+            "GS3_ECON_2016_04",
+            "GS3_ECON_2014_03",
+            "GS3_ECON_2014_04",
+            "GS3_ECON_2013_11"
+          ],
+          "count": 7,
+          "years": [
+            2024,
+            2022,
+            2017,
+            2016,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 5,
+            "Examine": 1,
+            "Explain": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 7,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Fiscal Policy and Budget": {
+          "questionIds": [
+            "GS3_ECON_2021_02",
+            "GS3_ECON_2019_04",
+            "GS3_ECON_2018_02",
+            "GS3_ECON_2017_04",
+            "GS3_ECON_2016_02",
+            "GS3_ECON_2013_02",
+            "GS3_ECON_2013_03"
+          ],
+          "count": 7,
+          "years": [
+            2021,
+            2019,
+            2018,
+            2017,
+            2016,
+            2013
+          ],
+          "lastAskedYear": 2021,
+          "directives": {
+            "Distinguish": 1,
+            "Misc": 5,
+            "Comment": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 7,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "External Sector": {
+          "questionIds": [
+            "GS3_ECON_2018_05",
+            "GS3_ECON_2016_05",
+            "GS3_ECON_2015_03",
+            "GS3_ECON_2014_05",
+            "GS3_ECON_2013_06",
+            "GS3_ECON_2013_07",
+            "GS3_ECON_2013_08"
+          ],
+          "count": 7,
+          "years": [
+            2018,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2018,
+          "directives": {
+            "Misc": 4,
+            "Justify": 1,
+            "Examine": 1,
+            "Discuss": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 7,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "LPG Reforms and Industrial Policy": {
+        "Manufacturing and Industrial Sector": {
+          "questionIds": [
+            "GS3_ECON_2024_03",
+            "GS3_ECON_2023_01",
+            "GS3_ECON_2023_02",
+            "GS3_ECON_2023_03",
+            "GS3_ECON_2023_05",
+            "GS3_ECON_2017_02",
+            "GS3_ECON_2017_05",
+            "GS3_ECON_2016_01",
+            "GS3_ECON_2015_01",
+            "GS3_ECON_2015_04",
+            "GS3_ECON_2015_06",
+            "GS3_ECON_2014_01"
+          ],
+          "count": 12,
+          "years": [
+            2024,
+            2023,
+            2017,
+            2016,
+            2015,
+            2014
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Discuss": 1,
+            "Misc": 10,
+            "Account For": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 12,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Liberalisation": {
+          "questionIds": [
+            "GS3_ECON_2023_04",
+            "GS3_ECON_2022_03",
+            "GS3_ECON_2022_05",
+            "GS3_ECON_2021_03",
+            "GS3_ECON_2018_01",
+            "GS3_ECON_2018_03",
+            "GS3_ECON_2018_04",
+            "GS3_ECON_2016_03",
+            "GS3_ECON_2016_07",
+            "GS3_ECON_2015_05",
+            "GS3_ECON_2014_06",
+            "GS3_ECON_2013_04",
+            "GS3_ECON_2013_05",
+            "GS3_ECON_2013_10"
+          ],
+          "count": 14,
+          "years": [
+            2023,
+            2022,
+            2021,
+            2018,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2023,
+          "directives": {
+            "Distinguish": 1,
+            "Misc": 12,
+            "Examine": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 14,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Agriculture and Land Reforms": {
+        "PDS and Buffer Stock": {
+          "questionIds": [
+            "GS3_ECON_2022_02",
+            "GS3_ECON_2021_05",
+            "GS3_ECON_2015_02",
+            "GS3_AGRI_2019_03",
+            "GS3_AGRI_2017_01"
+          ],
+          "count": 5,
+          "years": [
+            2022,
+            2021,
+            2019,
+            2017,
+            2015
+          ],
+          "lastAskedYear": 2022,
+          "directives": {
+            "Misc": 4,
+            "Explain": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 5,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Land Reforms": {
+          "questionIds": [
+            "GS3_AGRI_2024_01",
+            "GS3_AGRI_2023_02",
+            "GS3_AGRI_2021_01",
+            "GS3_AGRI_2016_03",
+            "GS3_AGRI_2015_02",
+            "GS3_AGRI_2014_04",
+            "GS3_AGRI_2013_02"
+          ],
+          "count": 7,
+          "years": [
+            2024,
+            2023,
+            2021,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 6,
+            "Discuss": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 7,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Cropping Pattern and Irrigation": {
+          "questionIds": [
+            "GS3_AGRI_2024_02",
+            "GS3_AGRI_2024_03",
+            "GS3_AGRI_2023_03",
+            "GS3_AGRI_2022_02",
+            "GS3_AGRI_2021_02",
+            "GS3_AGRI_2019_01",
+            "GS3_AGRI_2019_02",
+            "GS3_AGRI_2018_02",
+            "GS3_AGRI_2018_03",
+            "GS3_AGRI_2017_03",
+            "GS3_AGRI_2017_04",
+            "GS3_AGRI_2016_01",
+            "GS3_AGRI_2016_02",
+            "GS3_AGRI_2015_01",
+            "GS3_AGRI_2015_03",
+            "GS3_AGRI_2014_01",
+            "GS3_AGRI_2014_03"
+          ],
+          "count": 17,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+            2014
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Explain": 2,
+            "Misc": 14,
+            "Evaluate": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 17,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Food Processing": {
+          "questionIds": [
+            "GS3_AGRI_2024_04",
+            "GS3_AGRI_2023_01",
+            "GS3_AGRI_2022_01",
+            "GS3_AGRI_2020_01",
+            "GS3_AGRI_2020_02",
+            "GS3_AGRI_2019_04",
+            "GS3_AGRI_2017_02",
+            "GS3_AGRI_2015_04",
+            "GS3_AGRI_2014_02"
+          ],
+          "count": 9,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2020,
+            2019,
+            2017,
+            2015,
+            2014
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Elucidate": 1,
+            "Misc": 8
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 9,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Subsidies": {
+          "questionIds": [
+            "GS3_AGRI_2023_04",
+            "GS3_AGRI_2018_01",
+            "GS3_AGRI_2016_04",
+            "GS3_AGRI_2013_01"
+          ],
+          "count": 4,
+          "years": [
+            2023,
+            2018,
+            2016,
+            2013
+          ],
+          "lastAskedYear": 2023,
+          "directives": {
+            "Misc": 4
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 4,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Public Finance": {
+        "Taxation": {
+          "questionIds": [
+            "GS3_ECON_2019_01",
+            "GS3_ECON_2013_09"
+          ],
+          "count": 2,
+          "years": [
+            2019,
+            2013
+          ],
+          "lastAskedYear": 2019,
+          "directives": {
+            "Misc": 1,
+            "Discuss": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    },
+    "Environment": {
+      "Environmental Pollution": {
+        "Water Pollution": {
+          "questionIds": [
+            "GS3_ENV_2024_01",
+            "GS3_ENV_2023_01",
+            "GS3_ENV_2022_01",
+            "GS3_ENV_2021_02",
+            "GS3_ENV_2020_02",
+            "GS3_ENV_2015_01",
+            "GS3_ENV_2013_02"
+          ],
+          "count": 7,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2020,
+            2015,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 5,
+            "Discuss": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 7,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "EIA": {
+        "Environmental Impact Assessment": {
+          "questionIds": [
+            "GS3_ENV_2024_02",
+            "GS3_ENV_2020_01"
+          ],
+          "count": 2,
+          "years": [
+            2024,
+            2020
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Ecosystems": {
+        "Coastal Ecosystem": {
+          "questionIds": [
+            "GS3_ENV_2023_02",
+            "GS3_ENV_2022_04",
+            "GS3_ENV_2019_01",
+            "GS3_ENV_2018_01",
+            "GS3_ENV_2018_03"
+          ],
+          "count": 5,
+          "years": [
+            2023,
+            2022,
+            2019,
+            2018
+          ],
+          "lastAskedYear": 2023,
+          "directives": {
+            "Comment": 1,
+            "Explain": 1,
+            "Misc": 3
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 5,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Pollutant and Ecological Processes": {
+          "questionIds": [
+            "GS3_ENV_2019_02",
+            "GS3_ENV_2018_02"
+          ],
+          "count": 2,
+          "years": [
+            2019,
+            2018
+          ],
+          "lastAskedYear": 2019,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Climate Change": {
+        "UNFCCC and COP": {
+          "questionIds": [
+            "GS3_ENV_2023_03",
+            "GS3_ENV_2022_02",
+            "GS3_ENV_2022_03",
+            "GS3_ENV_2021_01",
+            "GS3_ENV_2021_03",
+            "GS3_ENV_2017_01",
+            "GS3_ENV_2017_02",
+            "GS3_ENV_2016_01",
+            "GS3_ENV_2014_01",
+            "GS3_ENV_2014_02"
+          ],
+          "count": 10,
+          "years": [
+            2023,
+            2022,
+            2021,
+            2017,
+            2016,
+            2014
+          ],
+          "lastAskedYear": 2023,
+          "directives": {
+            "Misc": 7,
+            "Explain": 2,
+            "Discuss": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 10,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Sustainable Development": {
+        "Mining": {
+          "questionIds": [
+            "GS3_ENV_2013_01"
+          ],
+          "count": 1,
+          "years": [
+            2013
+          ],
+          "lastAskedYear": 2013,
+          "directives": {
+            "Misc": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 1,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    },
+    "Science and Technology": {
+      "IPR": {
+        "Patent and IPR Issues": {
+          "questionIds": [
+            "GS3_SCI_TECH_2024_01",
+            "GS3_SCI_TECH_2019_03",
+            "GS3_SCI_TECH_2015_03",
+            "GS3_SCI_TECH_2014_02",
+            "GS3_SCI_TECH_2013_01"
+          ],
+          "count": 5,
+          "years": [
+            2024,
+            2019,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 5
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 5,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Electronics, Robotics and IT": {
+        "Emerging Tech": {
+          "questionIds": [
+            "GS3_SCI_TECH_2024_02",
+            "GS3_SCI_TECH_2024_03",
+            "GS3_SCI_TECH_2024_04",
+            "GS3_SCI_TECH_2023_01",
+            "GS3_SCI_TECH_2023_03",
+            "GS3_SCI_TECH_2022_01",
+            "GS3_SCI_TECH_2021_01",
+            "GS3_SCI_TECH_2021_02",
+            "GS3_SCI_TECH_2020_01",
+            "GS3_SCI_TECH_2020_02",
+            "GS3_SCI_TECH_2019_01",
+            "GS3_SCI_TECH_2018_01",
+            "GS3_SCI_TECH_2018_02",
+            "GS3_SCI_TECH_2016_02",
+            "GS3_SCI_TECH_2015_01",
+            "GS3_SCI_TECH_2015_02",
+            "GS3_SCI_TECH_2014_01",
+            "GS3_SCI_TECH_2013_02",
+            "GS3_SCI_TECH_2013_03",
+            "GS3_SCI_TECH_2013_04",
+            "GS3_SCI_TECH_2013_05",
+            "GS3_SCI_TECH_2013_06",
+            "GS3_SCI_TECH_2013_07"
+          ],
+          "count": 23,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2020,
+            2019,
+            2018,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 21,
+            "Discuss": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 23,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Nuclear Tech and Alternative Energy Resources": {
+        "Bio Fuels": {
+          "questionIds": [
+            "GS3_SCI_TECH_2023_02",
+            "GS3_SCI_TECH_2022_03",
+            "GS3_SCI_TECH_2021_03",
+            "GS3_SCI_TECH_2021_04",
+            "GS3_SCI_TECH_2019_04",
+            "GS3_SCI_TECH_2018_03",
+            "GS3_SCI_TECH_2017_01"
+          ],
+          "count": 7,
+          "years": [
+            2023,
+            2022,
+            2021,
+            2019,
+            2018,
+            2017
+          ],
+          "lastAskedYear": 2023,
+          "directives": {
+            "Discuss": 1,
+            "Misc": 6
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 7,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Alternative Energy": {
+          "questionIds": [
+            "GS3_SCI_TECH_2018_04",
+            "GS3_SCI_TECH_2017_03"
+          ],
+          "count": 2,
+          "years": [
+            2018,
+            2017
+          ],
+          "lastAskedYear": 2018,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Space and Defence": {
+        "Space Missions": {
+          "questionIds": [
+            "GS3_SCI_TECH_2022_02",
+            "GS3_SCI_TECH_2019_02",
+            "GS3_SCI_TECH_2017_02",
+            "GS3_SCI_TECH_2016_01",
+            "GS3_SCI_TECH_2016_03"
+          ],
+          "count": 5,
+          "years": [
+            2022,
+            2019,
+            2017,
+            2016
+          ],
+          "lastAskedYear": 2022,
+          "directives": {
+            "Misc": 4,
+            "Discuss": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 5,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    },
+    "Internal Security": {
+      "Kashmir Issue": {
+        "J&K": {
+          "questionIds": [
+            "GS3_SECURITY_2024_01",
+            "GS3_SECURITY_2023_01",
+            "GS3_SECURITY_2023_04",
+            "GS3_SECURITY_2021_01",
+            "GS3_SECURITY_2021_03",
+            "GS3_SECURITY_2021_04",
+            "GS3_SECURITY_2019_01",
+            "GS3_SECURITY_2019_03",
+            "GS3_SECURITY_2018_02",
+            "GS3_SECURITY_2018_04",
+            "GS3_SECURITY_2017_02",
+            "GS3_SECURITY_2017_03",
+            "GS3_SECURITY_2017_04",
+            "GS3_SECURITY_2016_01",
+            "GS3_SECURITY_2016_02",
+            "GS3_SECURITY_2015_01",
+            "GS3_SECURITY_2015_03",
+            "GS3_SECURITY_2014_01",
+            "GS3_SECURITY_2014_02",
+            "GS3_SECURITY_2013_01",
+            "GS3_SECURITY_2013_02",
+            "GS3_SECURITY_2013_04"
+          ],
+          "count": 22,
+          "years": [
+            2024,
+            2023,
+            2021,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Explain": 1,
+            "Misc": 18,
+            "Discuss": 1,
+            "Analyze": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 22,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Role of Non-State Actors": {
+        "Non-State Actors and Technology": {
+          "questionIds": [
+            "GS3_SECURITY_2024_02",
+            "GS3_SECURITY_2024_04",
+            "GS3_SECURITY_2021_02",
+            "GS3_SECURITY_2020_01",
+            "GS3_SECURITY_2019_02",
+            "GS3_SECURITY_2018_03",
+            "GS3_SECURITY_2017_01",
+            "GS3_SECURITY_2016_04",
+            "GS3_SECURITY_2015_02",
+            "GS3_SECURITY_2015_04",
+            "GS3_SECURITY_2013_03"
+          ],
+          "count": 11,
+          "years": [
+            2024,
+            2021,
+            2020,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 9,
+            "Discuss": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 11,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Investigative Agencies": {
+          "questionIds": [
+            "GS3_SECURITY_2023_03"
+          ],
+          "count": 1,
+          "years": [
+            2023
+          ],
+          "lastAskedYear": 2023,
+          "directives": {
+            "Misc": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 1,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Generic": {
+          "questionIds": [
+            "GS3_DISASTER_2024_02",
+            "GS3_DISASTER_2023_01",
+            "GS3_DISASTER_2021_01",
+            "GS3_DISASTER_2021_02",
+            "GS3_DISASTER_2019_02",
+            "GS3_DISASTER_2017_01",
+            "GS3_DISASTER_2016_01",
+            "GS3_DISASTER_2016_02",
+            "GS3_DISASTER_2015_01",
+            "GS3_DISASTER_2014_01"
+          ],
+          "count": 10,
+          "years": [
+            2024,
+            2023,
+            2021,
+            2019,
+            2017,
+            2016,
+            2015,
+            2014
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 9,
+            "Discuss": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 10,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Border Management": {
+        "Specific Border Issues": {
+          "questionIds": [
+            "GS3_SECURITY_2024_03",
+            "GS3_SECURITY_2023_02",
+            "GS3_SECURITY_2020_02",
+            "GS3_SECURITY_2019_04",
+            "GS3_SECURITY_2018_01",
+            "GS3_SECURITY_2016_03",
+            "GS3_SECURITY_2014_03",
+            "GS3_SECURITY_2014_05",
+            "GS3_SECURITY_2013_05"
+          ],
+          "count": 9,
+          "years": [
+            2024,
+            2023,
+            2020,
+            2019,
+            2018,
+            2016,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 9
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 9,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Maritime Security": {
+          "questionIds": [
+            "GS3_SECURITY_2022_01",
+            "GS3_SECURITY_2014_04"
+          ],
+          "count": 2,
+          "years": [
+            2022,
+            2014
+          ],
+          "lastAskedYear": 2022,
+          "directives": {
+            "Misc": 2
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 2,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    }
+  },
+  "GS4": {
+    "Ethics Theory": {
+      "Ethics and Human Interface": {
+        "Ethics in Private and Public Relationships": {
+          "questionIds": [
+            "GS4_2025_Q1_A",
+            "GS4_2025_Q1_B",
+            "GS4_2025_Q2_A",
+            "GS4_2025_Q3_A",
+            "GS4_2025_Q3_C",
+            "GS4_2025_Q4_A",
+            "GS4_2025_Q4_B",
+            "GS4_2025_Q5_A",
+            "GS4_2025_Q5_B",
+            "GS4_2025_Q6_B",
+            "GS4_2024_Q1_A",
+            "GS4_2024_Q2_A",
+            "GS4_2024_Q2_B",
+            "GS4_2024_Q3_A",
+            "GS4_2024_Q3_B",
+            "GS4_2024_Q4_A",
+            "GS4_2024_Q4_B",
+            "GS4_2024_Q5_B",
+            "GS4_2024_Q6_B",
+            "GS4_2023_Q2_B",
+            "GS4_2023_Q3_A",
+            "GS4_2023_Q3_B",
+            "GS4_2023_Q3_C",
+            "GS4_2023_Q4_B",
+            "GS4_2023_Q5_A",
+            "GS4_2023_Q6_A",
+            "GS4_2023_Q6_B",
+            "GS4_2022_Q1_A",
+            "GS4_2022_Q1_B",
+            "GS4_2022_Q3_B",
+            "GS4_2022_Q3_C",
+            "GS4_2022_Q4_A",
+            "GS4_2022_Q4_B",
+            "GS4_2022_Q5_A",
+            "GS4_2022_Q5_B_1",
+            "GS4_2022_Q5_B_2",
+            "GS4_2022_Q5_B_4",
+            "GS4_2022_Q5_B_5",
+            "GS4_2022_Q6_A",
+            "GS4_2022_Q6_B",
+            "GS4_2021_Q1_A",
+            "GS4_2021_Q2_A",
+            "GS4_2021_Q2_B",
+            "GS4_2021_Q3_A",
+            "GS4_2021_Q3_B",
+            "GS4_2021_Q3_C",
+            "GS4_2021_Q5_A",
+            "GS4_2021_Q5_B",
+            "GS4_2021_Q6_A",
+            "GS4_2020_Q1_B",
+            "GS4_2020_Q2_A",
+            "GS4_2020_Q3_A",
+            "GS4_2020_Q3_B",
+            "GS4_2020_Q5_A",
+            "GS4_2020_Q5_D",
+            "GS4_2020_Q5_E",
+            "GS4_2019_Q1_A",
+            "GS4_2019_Q1_B",
+            "GS4_2019_Q2_A",
+            "GS4_2019_Q2_B",
+            "GS4_2019_Q3_A",
+            "GS4_2019_Q3_B",
+            "GS4_2019_Q5_A",
+            "GS4_2019_Q5_B",
+            "GS4_2019_Q5_C",
+            "GS4_2019_Q6_A",
+            "GS4_2019_Q6_B",
+            "GS4_2018_Q1_A",
+            "GS4_2018_Q2_A",
+            "GS4_2018_Q2_B",
+            "GS4_2018_Q3_A",
+            "GS4_2018_Q4_A",
+            "GS4_2018_Q4_B",
+            "GS4_2018_Q5_A",
+            "GS4_2018_Q5_B",
+            "GS4_2018_Q6_A",
+            "GS4_2018_Q6_B",
+            "GS4_2018_Q6_C",
+            "GS4_2017_Q1_B",
+            "GS4_2017_Q2_A",
+            "GS4_2017_Q3",
+            "GS4_2017_Q4",
+            "GS4_2017_Q5_B",
+            "GS4_2017_Q6_A",
+            "GS4_2017_Q6_B",
+            "GS4_2017_Q7_B",
+            "GS4_2017_Q8_B",
+            "GS4_2016_Q2_A",
+            "GS4_2016_Q2_B",
+            "GS4_2016_Q3_A",
+            "GS4_2016_Q3_B",
+            "GS4_2016_Q4_A",
+            "GS4_2016_Q4_B",
+            "GS4_2016_Q5_A",
+            "GS4_2016_Q5_B",
+            "GS4_2016_Q7_A",
+            "GS4_2016_Q7_B",
+            "GS4_2016_Q8",
+            "GS4_2015_Q2_A",
+            "GS4_2015_Q2_B",
+            "GS4_2015_Q3_A",
+            "GS4_2015_Q3_B",
+            "GS4_2015_Q5_A",
+            "GS4_2015_Q5_B",
+            "GS4_2015_Q6_A",
+            "GS4_2015_Q6_B",
+            "GS4_2015_Q7",
+            "GS4_2014_Q1_A",
+            "GS4_2014_Q2_A",
+            "GS4_2014_Q3_B",
+            "GS4_2014_Q4_A",
+            "GS4_2014_Q4_B",
+            "GS4_2014_Q5_B",
+            "GS4_2014_Q7",
+            "GS4_2014_Q8",
+            "GS4_2013_Q2_B",
+            "GS4_2013_Q5_A",
+            "GS4_2013_Q5_B",
+            "GS4_2013_Q6_A",
+            "GS4_2013_Q6_B",
+            "GS4_2013_Q6_C",
+            "GS4_2013_Q7"
+          ],
+          "count": 122,
+          "years": [
+            2025,
+            2024,
+            2023,
+            2022,
+            2021,
+            2020,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2025,
+          "directives": {
+            "Misc": 122
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 122,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Ethics and its Scope": {
+          "questionIds": [
+            "GS4_2025_Q2_B",
+            "GS4_2022_Q2_A",
+            "GS4_2015_Q4_B",
+            "GS4_2015_Q8",
+            "GS4_2014_Q5_A"
+          ],
+          "count": 5,
+          "years": [
+            2025,
+            2022,
+            2015,
+            2014
+          ],
+          "lastAskedYear": 2025,
+          "directives": {
+            "Misc": 5
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 5,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Role of Family, Society and Educational Institutions": {
+          "questionIds": [
+            "GS4_2025_Q3_B",
+            "GS4_2021_Q4_A",
+            "GS4_2020_Q4_B",
+            "GS4_2016_Q6_B",
+            "GS4_2014_Q6"
+          ],
+          "count": 5,
+          "years": [
+            2025,
+            2021,
+            2020,
+            2016,
+            2014
+          ],
+          "lastAskedYear": 2025,
+          "directives": {
+            "Misc": 5
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 5,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Ethics in Human Actions": {
+          "questionIds": [
+            "GS4_2025_Q6_A",
+            "GS4_2024_Q1_B",
+            "GS4_2024_Q3_C",
+            "GS4_2023_Q1_B",
+            "GS4_2023_Q2_A",
+            "GS4_2022_Q2_B",
+            "GS4_2022_Q3_A",
+            "GS4_2021_Q1_B",
+            "GS4_2020_Q1_A",
+            "GS4_2020_Q4_A",
+            "GS4_2020_Q5_B",
+            "GS4_2018_Q1_B",
+            "GS4_2017_Q1_A",
+            "GS4_2017_Q2_B",
+            "GS4_2016_Q1_A",
+            "GS4_2016_Q1_B",
+            "GS4_2016_Q6_A",
+            "GS4_2015_Q1_A",
+            "GS4_2015_Q1_B",
+            "GS4_2015_Q4_A",
+            "GS4_2014_Q1_B",
+            "GS4_2013_Q1",
+            "GS4_2013_Q3",
+            "GS4_2013_Q8"
+          ],
+          "count": 24,
+          "years": [
+            2025,
+            2024,
+            2023,
+            2022,
+            2021,
+            2020,
+            2018,
+            2017,
+            2016,
+            2015,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2025,
+          "directives": {
+            "Misc": 24
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 24,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        },
+        "Human Values from Great Leaders, Reformers and Administrators": {
+          "questionIds": [
+            "GS4_2024_Q3"
+          ],
+          "count": 1,
+          "years": [
+            2024
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 1
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 1,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Aptitude and Foundational Values for Civil Service": {
+        "Integrity": {
+          "questionIds": [
+            "GS4_2024_Q5_A",
+            "GS4_2024_Q6_A",
+            "GS4_2023_Q1_A",
+            "GS4_2023_Q5_B",
+            "GS4_2022_Q5_B_3",
+            "GS4_2021_Q6_B",
+            "GS4_2019_Q4_A",
+            "GS4_2018_Q3_B",
+            "GS4_2017_Q5_A",
+            "GS4_2014_Q2_B",
+            "GS4_2014_Q3_A",
+            "GS4_2013_Q2_A"
+          ],
+          "count": 12,
+          "years": [
+            2024,
+            2023,
+            2022,
+            2021,
+            2019,
+            2018,
+            2017,
+            2014,
+            2013
+          ],
+          "lastAskedYear": 2024,
+          "directives": {
+            "Misc": 12
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 12,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      },
+      "Emotional Intelligence": {
+        "Concept of Emotional Intelligence": {
+          "questionIds": [
+            "GS4_2023_Q4_A",
+            "GS4_2021_Q4_B",
+            "GS4_2020_Q2_B",
+            "GS4_2020_Q5_C",
+            "GS4_2019_Q4_B",
+            "GS4_2017_Q7_A",
+            "GS4_2013_Q4"
+          ],
+          "count": 7,
+          "years": [
+            2023,
+            2021,
+            2020,
+            2019,
+            2017,
+            2013
+          ],
+          "lastAskedYear": 2023,
+          "directives": {
+            "Misc": 7
+          },
+          "topDirective": "Misc",
+          "avgConfidence": 0.97,
+          "matchModeSummary": {
+            "mappedNodeExact": 7,
+            "keywordStrong": 0,
+            "keywordModerate": 0,
+            "themeNameFallback": 0
+          }
+        }
+      }
+    }
+  }
+}

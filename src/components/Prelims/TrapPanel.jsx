@@ -76,7 +76,10 @@ export default function TrapPanel({ trapAlerts = [], trapStats = {} }) {
                                 >
                                     {typeof alert === "string"
                                         ? alert
-                                        : alert.message || alert.text || JSON.stringify(alert)}
+                                        : alert.message || alert.text
+                                          || (alert.trap
+                                              ? `${alert.trap.replace(/_/g, " ")} — accuracy: ${alert.accuracy ?? 0}%`
+                                              : JSON.stringify(alert))}
                                 </div>
                             ))}
                         </div>

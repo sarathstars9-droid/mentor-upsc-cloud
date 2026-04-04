@@ -15,7 +15,7 @@
       "microtheme": "Agriculture",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement I : Of the two major ethanol producers in the world, i.e Brazil and the United States of America, the former produces more ethanol than the latter. Statement II: Unlike in the United States of America where corn is the principal feedstock for ethanol production, sugarcane is the principal feedstock for ethanol production in Brazil. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -25,7 +25,16 @@
         "d": "Statement I is not correct but Statement II is correct"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2025_002",
@@ -37,7 +46,7 @@
       "microtheme": "Biodiversity",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Regarding Peacock tarantula (Gooty tarantula), consider the following statements: I. It is an omnivorous crustacean. II. Its natural habitat in India is only limited to some forest areas. III. In its natural habitat, it is an arboreal species. Which of the statements given above is/are correct?",
       "options": {
@@ -47,7 +56,16 @@
         "d": "II and III"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2025_003",
@@ -59,7 +77,7 @@
       "microtheme": "Biodiversity",
       "year": 2025,
       "questionNumber": 2,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Plant : Description I. Cassava : Woody shrub II. Ginger : Herb with pseudostem III. Malabar spinach : Herbaceous climber IV . Mint : Annual shrub V . Papaya : Woody shrub How many of the above pairs are correctly matched?",
       "options": {
@@ -69,7 +87,16 @@
         "d": "All the five"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2025_004",
@@ -81,7 +108,7 @@
       "microtheme": "Climate Change: Causes and Implications",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: I. Carbon dioxide (CO2) emissions in India are less than 0.5 t CO2/capita. II. In terms of CO2 emissions from fuel combustion, India ranks second in the Asia-Pacific region. III. Electricity and heat producers are the largest sources of CO2 emissions in India. Which of the statements given above is/are correct?",
       "options": {
@@ -91,7 +118,16 @@
         "d": "I, II and III"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2025_005",
@@ -103,9 +139,9 @@
       "microtheme": "Ecosystem and Ecology",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
-      "question": "With reference to the planet Earth, consider the following statements: I. Rain forests produce more oxygen than that produced by oceans. II. Marine phytoplankton and photosynthetic bacteria produce about 50% of the world\u2019s oxygen. III. Well-oxygenated surface water contains several folds higher oxygen than that in atmospheric air. Which of the statements given above is/are correct?",
+      "question": "With reference to the planet Earth, consider the following statements: I. Rain forests produce more oxygen than that produced by oceans. II. Marine phytoplankton and photosynthetic bacteria produce about 50% of the world’s oxygen. III. Well-oxygenated surface water contains several folds higher oxygen than that in atmospheric air. Which of the statements given above is/are correct?",
       "options": {
         "a": "I and II",
         "b": "II only",
@@ -113,7 +149,16 @@
         "d": "None of the above statements is correct"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2025_006",
@@ -125,7 +170,7 @@
       "microtheme": "Environmental Pollution",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_3_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement I: Studies indicate that carbon dioxide emissions from cement industry account for more than 5% of global carbon emissions. Statement II: Silica-bearing clay is mixed with Limestone while manufacturing cement. Statement III: Limestone is converted into lime during clinker production for cement manufacturing. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -135,7 +180,16 @@
         "d": "Neither Statement II nor Statement III is correct"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2025_007",
@@ -147,9 +201,9 @@
       "microtheme": "Global Conservation Efforts",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_3_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: Statement I: At the 28th United Nations Climate Change Conference (COP28), India refrained from signing the Declaration on Climate and Health. Statement II: The COP28 Declaration on Climate and Health is a binding declaration. Statement III: If India\u2019s health sector is decarbonized, the resilience of its healthcare system may be compromised. Which one of the following is correct in respect of the above statements?",
+      "question": "Consider the following statements: Statement I: At the 28th United Nations Climate Change Conference (COP28), India refrained from signing the Declaration on Climate and Health. Statement II: The COP28 Declaration on Climate and Health is a binding declaration. Statement III: If India’s health sector is decarbonized, the resilience of its healthcare system may be compromised. Which one of the following is correct in respect of the above statements?",
       "options": {
         "a": "Both Statement II and Statement III are correct and both of them explain Statement I",
         "b": "Both Statement II and Statement III are correct but only one of them explains Statement I",
@@ -157,7 +211,16 @@
         "d": "Neither Statement II nor Statement III is correct"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.85,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 4,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2025_008",
@@ -169,7 +232,7 @@
       "microtheme": "Global Conservation Efforts",
       "year": 2025,
       "questionNumber": 2,
-      "questionType": "MCQ_3_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement I: Article 6 of the Paris Agreement on climate change is frequently discussed in global discussions on sustainable development and climate change. Statement II: Article 6 of the Paris Agreement on climate change sets out the principles of carbon markets. Statement III: Article 6 of the Paris Agreement on climate change intends to promote inter-country non-market strategies to reach their climate targets. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -179,7 +242,16 @@
         "d": "Neither Statement II nor Statement III is correct."
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.95,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 6,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2025_009",
@@ -193,7 +265,7 @@
       "questionNumber": 3,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "Which one of the following launched the \u2018Nature Solutions Finance Hub for Asia and the Pacific\u2019?",
+      "question": "Which one of the following launched the ‘Nature Solutions Finance Hub for Asia and the Pacific’?",
       "options": {
         "a": "The Asian Development Bank (ADB)",
         "b": "The Asian Infrastructure Investment Bank (AIIB)",
@@ -201,7 +273,16 @@
         "d": "The International Bank for Reconstruction and Development (IBRD)"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_010",
@@ -215,7 +296,7 @@
       "questionNumber": 2,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "Which one of the following is the correct description of \u201c100 Million Farmers\u201d?",
+      "question": "Which one of the following is the correct description of “100 Million Farmers”?",
       "options": {
         "a": "It is a platform for accelerating the transition towards food and water systems that are net-zero (carbon), nature-positive and that aims to increase farmer resilience.",
         "b": "It is an International alliance and a network of individuals and farming organisations interested in supporting and strengthening the development of organic animal husbandry.",
@@ -223,7 +304,16 @@
         "d": "It is a platform with the mission of encouraging the farmers to form Farmer Product Organisations or Agribusiness Consortiums, thus facilitating the access to global open markets to sell their products."
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_011",
@@ -237,7 +327,7 @@
       "questionNumber": 3,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "The organisms \u2018\u2019Cicada, Froghopper and Pond skater\u201d are:",
+      "question": "The organisms ‘’Cicada, Froghopper and Pond skater” are:",
       "options": {
         "a": "Birds",
         "b": "Fish",
@@ -245,7 +335,16 @@
         "d": "Reptiles"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_012",
@@ -257,7 +356,7 @@
       "microtheme": "Biodiversity",
       "year": 2024,
       "questionNumber": 4,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Country Animal found in its natural habitat 1. Brazil Indri 2. Indonesia Elk 3. Madagascar Bonobo How many of the pairs given above are correctly matched?",
       "options": {
@@ -267,7 +366,16 @@
         "d": "None"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_013",
@@ -289,7 +397,16 @@
         "d": "Silk cotton"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_014",
@@ -311,7 +428,16 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_015",
@@ -333,7 +459,16 @@
         "d": "None"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_016",
@@ -355,7 +490,16 @@
         "d": "All five"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_017",
@@ -377,7 +521,16 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_018",
@@ -399,7 +552,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_019",
@@ -411,7 +573,7 @@
       "microtheme": "Environment, Sustainable Development and General Issues",
       "year": 2024,
       "questionNumber": 1,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement-I: The European Parliament approved The Net-Zero Industry Act recently. Statement-II: The European Union intends to achieve carbon neutrality by 2040 and therefore aims to develop all of its own clean technology by that time. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -421,7 +583,16 @@
         "d": "Statement-I is incorrect, but Statement-II is correct"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ACTS"
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_020",
@@ -443,7 +614,16 @@
         "d": "Power plants using fossil fuels"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_021",
@@ -455,7 +635,7 @@
       "microtheme": "Environmental Pollution",
       "year": 2024,
       "questionNumber": 3,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement-I: Many chewing gums found in the market are considered a source of environmental pollution. Statement-II: Many chewing gums contain plastic as gum base. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -465,7 +645,16 @@
         "d": "Statement-I is incorrect, but Statement-II is correct"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_022",
@@ -487,7 +676,16 @@
         "d": "1,2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2024_023",
@@ -499,9 +697,9 @@
       "microtheme": "National Conservation Efforts",
       "year": 2024,
       "questionNumber": 1,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: Statement-I: The Indian Flying Fox is placed under the \u201cvermin\u201d category in the Wild Life (Protection) Act, 1972. Statement-II: The Indian Flying Fox feeds on the blood of other animals. Which one of the following is correct in respect of the above statements?",
+      "question": "Consider the following statements: Statement-I: The Indian Flying Fox is placed under the “vermin” category in the Wild Life (Protection) Act, 1972. Statement-II: The Indian Flying Fox feeds on the blood of other animals. Which one of the following is correct in respect of the above statements?",
       "options": {
         "a": "Both Statement-I and Statement-Il are correct and Statement- II explains Statement-I",
         "b": "Both Statement-I and Statement-II are correct, but Statement- II does not explain Statement-I",
@@ -509,7 +707,16 @@
         "d": "Statement-I is incorrect, but Statement-II in correct"
       },
       "answer": null,
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_024",
@@ -531,7 +738,16 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_025",
@@ -553,7 +769,16 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_026",
@@ -565,7 +790,7 @@
       "microtheme": "Biodiversity",
       "year": 2023,
       "questionNumber": 10,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements : Statement-I: Marsupials are not naturally found in India. Statement-II: Marsupials can thrive only in montane grasslands with no predators. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -575,7 +800,16 @@
         "d": "Statement-I is incorrect but Statement-II is correct"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_027",
@@ -597,7 +831,16 @@
         "d": "The World Wide Fund for Nature"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.85,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 4,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_028",
@@ -619,7 +862,16 @@
         "d": "None"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_029",
@@ -641,7 +893,16 @@
         "d": "Wasps"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_030",
@@ -653,7 +914,7 @@
       "microtheme": "Biodiversity",
       "year": 2023,
       "questionNumber": 14,
-      "questionType": "MCQ_COUNT_BASED",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Consider the following statements : 1. Some mushrooms have medicinal properties. 2. Some mushrooms have psychoactive properties. 3. Some mushrooms have insecticidal properties. 4. Some mushrooms have bioluminescent properties. How many of the above statements are correct?",
       "options": {
@@ -663,7 +924,16 @@
         "d": "All four"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_031",
@@ -675,7 +945,7 @@
       "microtheme": "Biodiversity",
       "year": 2023,
       "questionNumber": 15,
-      "questionType": "MCQ_COUNT_BASED",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Consider the following statements regarding the Indian squirrels : 1. They build nests by making burrows in the ground. 2. They store their food materials like nuts and seeds in the ground. 3. They are omnivorous. How many of the above statements are correct?",
       "options": {
@@ -685,7 +955,16 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_032",
@@ -707,7 +986,16 @@
         "d": "Sloth bear"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_033",
@@ -719,7 +1007,7 @@
       "microtheme": "Climate Change: Causes and Implications",
       "year": 2023,
       "questionNumber": 2,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements : Statement-I: Carbon markets are likely to be one of the most widespread tools in the fight against climate change. Statement-II : Carbon markets transfer resources from the private sector to the State. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -729,7 +1017,16 @@
         "d": "Statement-I is incorrect but Statement-II is correct"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_034",
@@ -741,7 +1038,7 @@
       "microtheme": "Ecosystem and Ecology",
       "year": 2023,
       "questionNumber": 3,
-      "questionType": "MCQ_COUNT_BASED",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Consider the following statements : 1. Some microorganisms can grow in environments with temperature above the boiling point of water. 2. Some microorganisms can grow in environments with temperature below the freezing point of water. 3. Some microorganisms can grow in a highly acidic environment with a pH below 3. How many of the above statements are correct?",
       "options": {
@@ -751,7 +1048,16 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_035",
@@ -773,7 +1079,16 @@
         "d": "All four"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_036",
@@ -785,7 +1100,7 @@
       "microtheme": "Environment, Sustainable Development and General Issues",
       "year": 2023,
       "questionNumber": 3,
-      "questionType": "MCQ_COUNT_BASED",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to green hydrogen, consider the following statements: 1. It can be used directly as a fuel for internal combustion. 2. It can be blended with natural gas and used as fuel for heat or power generation. 3. It can be used in the hydrogen fuel cell to run vehicles. How many of the above statements are correct?",
       "options": {
@@ -795,7 +1110,16 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_037",
@@ -817,7 +1141,16 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_038",
@@ -829,7 +1162,7 @@
       "microtheme": "Environmental Pollution",
       "year": 2023,
       "questionNumber": 5,
-      "questionType": "MCQ_COUNT_BASED",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Consider the following statements regarding mercury pollution: 1. Gold mining activity is a source of mercury pollution in the world. 2. Coal-based thermal power plants cause mercury pollution. 3. There is no known safe level of exposure to mercury. How many of the above statements are correct?",
       "options": {
@@ -839,7 +1172,16 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_039",
@@ -861,7 +1203,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2023_040",
@@ -873,7 +1224,7 @@
       "microtheme": "National Conservation Efforts",
       "year": 2023,
       "questionNumber": 2,
-      "questionType": "MCQ_COUNT_BASED",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Consider the following statements : Once the Central Government notifies an area as a 'Community Reserve' 1. the Chief Wildlife Warden of the State becomes the governing authority of such forest 2. Hunting is not allowed in such area 3. People of such area are allowed to collect non-timber forest produce 4. People of such area are allowed traditional agricultural practices How many of the above statements are correct?",
       "options": {
@@ -883,7 +1234,16 @@
         "d": "All four"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Protected Areas",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_041",
@@ -897,7 +1257,7 @@
       "questionNumber": 5,
       "questionType": "MCQ_MULTI_SELECT",
       "format": "text",
-      "question": "\u201cSystem of Rice Intensification\u201d of cultivation, in which alternate wetting and drying of rice fields is practised, results in 1. Reduced seed requirement 2. Reduced methane production 3. Reduced electricity consumption Select the correct answer using the code given below :",
+      "question": "“System of Rice Intensification” of cultivation, in which alternate wetting and drying of rice fields is practised, results in 1. Reduced seed requirement 2. Reduced methane production 3. Reduced electricity consumption Select the correct answer using the code given below :",
       "options": {
         "a": "1 and 2 only",
         "b": "2 and 3 only",
@@ -905,7 +1265,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-ACTS"
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_042",
@@ -919,7 +1288,7 @@
       "questionNumber": 17,
       "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "With reference to \u201cGucchi\u201d sometimes mentioned in the news, consider the following statements : 1. It is a fungus. 2. It grows in some Himalayan forest areas. 3. It is commercially cultivated in the Himalayan foothills of north-eastern India. Which of the statements given above is/are correct?",
+      "question": "With reference to “Gucchi” sometimes mentioned in the news, consider the following statements : 1. It is a fungus. 2. It grows in some Himalayan forest areas. 3. It is commercially cultivated in the Himalayan foothills of north-eastern India. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "3 only",
@@ -927,7 +1296,16 @@
         "d": "2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_043",
@@ -949,7 +1327,16 @@
         "d": "White Ibis"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_044",
@@ -963,15 +1350,24 @@
       "questionNumber": 3,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "\u201cClimate Action Tracker\u201d which monitors the emission reduction pledges of different countries is a :",
+      "question": "“Climate Action Tracker” which monitors the emission reduction pledges of different countries is a :",
       "options": {
         "a": "Database created by coalition of research organisations",
-        "b": "Wing of \u201cInternational Panel of Climate Change\u201d",
-        "c": "Committee under \u201cUnited Nations Framework Convention on Climate Change\u201d",
+        "b": "Wing of “International Panel of Climate Change”",
+        "c": "Committee under “United Nations Framework Convention on Climate Change”",
         "d": "Agency promoted and financed by United Nations Environment Programme and World Bank"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_045",
@@ -983,9 +1379,9 @@
       "microtheme": "Climate Change: Causes and Implications",
       "year": 2022,
       "questionNumber": 4,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: 1. \u201cThe Climate Group\u201d is an international non-profit organization that drives climate action by building large networks and runs them. 2. The International Energy Agency in partnership with the Climate Group launched a global initiative \u201cEP100\u201d . 3. EP100 brings together leading companies committed to driving innovation in energy efficiency and increasing competitiveness while delivering on emission reduction goals. 4. Some Indian companies are members of EP100. 5. The International Energy Agency is the Secretariat to the \u201cUnder2 Coalition\u201d . Which of the statements given above are correct ?",
+      "question": "Consider the following statements: 1. “The Climate Group” is an international non-profit organization that drives climate action by building large networks and runs them. 2. The International Energy Agency in partnership with the Climate Group launched a global initiative “EP100” . 3. EP100 brings together leading companies committed to driving innovation in energy efficiency and increasing competitiveness while delivering on emission reduction goals. 4. Some Indian companies are members of EP100. 5. The International Energy Agency is the Secretariat to the “Under2 Coalition” . Which of the statements given above are correct ?",
       "options": {
         "a": "1, 2, 4 and 5",
         "b": "1, 3 and 4 only",
@@ -993,7 +1389,16 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_046",
@@ -1015,7 +1420,16 @@
         "d": "Spider"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_047",
@@ -1029,7 +1443,7 @@
       "questionNumber": 5,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "The \u201cMiyawaki method\u201d is well known for the :",
+      "question": "The “Miyawaki method” is well known for the :",
       "options": {
         "a": "Promotion of commercial farming in arid and semi-arid areas",
         "b": "Development of gardens using genetically modified flora",
@@ -1037,7 +1451,16 @@
         "d": "Harvesting wind energy on coastal areas and on sea surfaces"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_048",
@@ -1051,7 +1474,7 @@
       "questionNumber": 6,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "\u201cBiorock technology\u201d is talked about in which one of the following situations?",
+      "question": "“Biorock technology” is talked about in which one of the following situations?",
       "options": {
         "a": "Restoration of damaged coral reefs",
         "b": "Development of building materials using plant residues",
@@ -1059,7 +1482,16 @@
         "d": "Providing salt licks for wild animals in forests/protected areas"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_049",
@@ -1081,7 +1513,16 @@
         "d": "1, 2, 4, 5 and 6"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_050",
@@ -1095,7 +1536,7 @@
       "questionNumber": 8,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "\u201cIf rainforests and tropical forests are the lungs of the Earth, then surely wetlands function as its kidneys.\u201d Which one of the following functions of wetlands best reflects the above statement ?",
+      "question": "“If rainforests and tropical forests are the lungs of the Earth, then surely wetlands function as its kidneys.” Which one of the following functions of wetlands best reflects the above statement ?",
       "options": {
         "a": "The water cycle in wetlands involves surface runoff, subsoil percolation and evaporation.",
         "b": "Algae form the nutrient base upon which fish, crustaceans, molluscs, birds, reptiles and mammals thrive.",
@@ -1103,7 +1544,16 @@
         "d": "Aquatic plants absorb heavy metals and excess nutrients."
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_051",
@@ -1117,15 +1567,24 @@
       "questionNumber": 5,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "Which one of the following best describes the term \u201cgreenwashing\u201d ? 142 Environment, Sustainable Development and General Issues",
+      "question": "Which one of the following best describes the term “greenwashing” ? 142 Environment, Sustainable Development and General Issues",
       "options": {
-        "a": "Conveying a false impression that a company\u2019s products are eco-friendly and environmentally sound",
+        "a": "Conveying a false impression that a company’s products are eco-friendly and environmentally sound",
         "b": "Non-inclusion of ecological/environmental costs in the Annual Financial Statements of a country",
         "c": "Ignoring the disastrous ecological consequences while undertaking infrastructure development",
         "d": "Making mandatory provisions for environmental costs in a government project/programme"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_052",
@@ -1147,7 +1606,16 @@
         "d": "1, 3 and 4"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_053",
@@ -1169,7 +1637,16 @@
         "d": "Wheat"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_054",
@@ -1181,7 +1658,7 @@
       "microtheme": "Environmental Pollution",
       "year": 2022,
       "questionNumber": 8,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to polyethylene terephthalate, the use of which is so widespread in our daily lives, consider the following statements : 1. Its fibres can be blended with wool and cotton fibres to reinforce their properties. 2. Containers made of it can be used to store any alcoholic beverage. 3. Bottles made of it can be recycled into other products. 4. Articles made of it can be easily disposed of by incineration without causing greenhouse gas emissions. Which of the statements given above are correct?",
       "options": {
@@ -1191,7 +1668,16 @@
         "d": "2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_055",
@@ -1203,9 +1689,9 @@
       "microtheme": "Environmental Pollution",
       "year": 2022,
       "questionNumber": 9,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "In the context of WHO Air Quality Guidelines, consider the following statements : 1. The 24-hour mean of PM2.5 should not exceed 15 \u03bc g/m3 and annual mean of PM2.5 should not exceed 5 \u03bc g/m3. 2. In a year, the highest levels of ozone pollution occur during the periods of inclement weather. 3. PM10 can penetrate the lung barrier and enter the bloodstream. 4. Excessive ozone in the air can trigger asthma. Which of the statements given above are correct?",
+      "question": "In the context of WHO Air Quality Guidelines, consider the following statements : 1. The 24-hour mean of PM2.5 should not exceed 15 μ g/m3 and annual mean of PM2.5 should not exceed 5 μ g/m3. 2. In a year, the highest levels of ozone pollution occur during the periods of inclement weather. 3. PM10 can penetrate the lung barrier and enter the bloodstream. 4. Excessive ozone in the air can trigger asthma. Which of the statements given above are correct?",
       "options": {
         "a": "1, 3 and 4",
         "b": "1 and 4 only",
@@ -1213,7 +1699,16 @@
         "d": "1 and 2 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_056",
@@ -1235,7 +1730,16 @@
         "d": "National Water Development Agency"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2022_057",
@@ -1257,7 +1761,16 @@
         "d": "3 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_058",
@@ -1279,7 +1792,16 @@
         "d": "2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-ACTS"
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_059",
@@ -1293,7 +1815,7 @@
       "questionNumber": 7,
       "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "With reference to \u2018palm oil\u2019, consider the following statements: 1. The palm oil tree is native to Southeast Asia. 2. The palm oil is a raw material for some industries producing lipstick and perfumes. 3. The palm oil can be used to produce biodiesel. Which of the statements given above are correct?",
+      "question": "With reference to ‘palm oil’, consider the following statements: 1. The palm oil tree is native to Southeast Asia. 2. The palm oil is a raw material for some industries producing lipstick and perfumes. 3. The palm oil can be used to produce biodiesel. Which of the statements given above are correct?",
       "options": {
         "a": "1 and 2 only",
         "b": "2 and 3 only",
@@ -1301,7 +1823,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_060",
@@ -1323,7 +1854,16 @@
         "d": "Red gram"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_061",
@@ -1345,7 +1885,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_062",
@@ -1357,7 +1906,7 @@
       "microtheme": "Biodiversity",
       "year": 2021,
       "questionNumber": 19,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: 1. Moringa (drumstick trees) is a leguminous evergreen trees. 2. The Tamarind tree is endemic to South Asia. 3. In India, most of the tamarind is collected as minor forest produce. 4. India exports tamarind and seeds of moringa. 5. Seeds of moringa and tamarind can be used in the production of biofuels. Which of the statements given above are correct?",
       "options": {
@@ -1367,7 +1916,16 @@
         "d": "1, 2, 3 and 5"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_063",
@@ -1389,7 +1947,16 @@
         "d": "Pelican"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_064",
@@ -1411,7 +1978,16 @@
         "d": "Nut grass"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_065",
@@ -1433,7 +2009,16 @@
         "d": "Carbon present in atmosphere"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_066",
@@ -1455,7 +2040,16 @@
         "d": "Sulphur cycle"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_067",
@@ -1477,7 +2071,16 @@
         "d": "1 and 4"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-ACTS"
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_068",
@@ -1499,7 +2102,16 @@
         "d": "1, 3 and 4"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_069",
@@ -1521,7 +2133,16 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_070",
@@ -1543,7 +2164,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_071",
@@ -1565,7 +2195,16 @@
         "d": "1 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_072",
@@ -1587,7 +2226,16 @@
         "d": "1, 3 and 5"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_073",
@@ -1609,7 +2257,16 @@
         "d": "tropical rainforest"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_074",
@@ -1631,7 +2288,16 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_075",
@@ -1653,7 +2319,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_076",
@@ -1675,7 +2350,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_077",
@@ -1689,7 +2373,7 @@
       "questionNumber": 5,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "The \u2018Common Carbon Metric\u2019, supported by UNEP , has been developed for",
+      "question": "The ‘Common Carbon Metric’, supported by UNEP , has been developed for",
       "options": {
         "a": "assessing the carbon footprint of building operations around the world",
         "b": "enabling commercial farming entities around the world to enter carbon emission trading",
@@ -1697,7 +2381,16 @@
         "d": "assessing the overall carbon footprint caused by the use of fossil fuels by the world in a unit time"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_078",
@@ -1709,9 +2402,9 @@
       "microtheme": "Global Conservation Efforts",
       "year": 2021,
       "questionNumber": 6,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "With reference to the 'New Y ork Declaration on Forests\u2019, which of the following statements are correct? 1. It was first endorsed at the United Nations Climate Summit in 2014. 2. It endorses a global timeline to end the loss of forests. 3. It is a legally binding international declaration. 4. It is endorsed by governments, big companies and indigenous communities. 5. India was one of the signatories at its inception. Select the correct answer using the code given below.",
+      "question": "With reference to the 'New Y ork Declaration on Forests’, which of the following statements are correct? 1. It was first endorsed at the United Nations Climate Summit in 2014. 2. It endorses a global timeline to end the loss of forests. 3. It is a legally binding international declaration. 4. It is endorsed by governments, big companies and indigenous communities. 5. India was one of the signatories at its inception. Select the correct answer using the code given below.",
       "options": {
         "a": "1, 2 and 4",
         "b": "1, 3 and 5",
@@ -1719,7 +2412,16 @@
         "d": "2 and 5"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_079",
@@ -1733,15 +2435,24 @@
       "questionNumber": 7,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "'R2 Code of Practices\u2019 constitutes a tool available for promoting the adoption of",
+      "question": "'R2 Code of Practices’ constitutes a tool available for promoting the adoption of",
       "options": {
         "a": "environmentally responsible practices in electronics recycling industry",
-        "b": "ecological management of \u2018Wetlands of International Importance\u2019 under the Ramsar Convention",
+        "b": "ecological management of ‘Wetlands of International Importance’ under the Ramsar Convention",
         "c": "sustainable practices in the cultivation of agricultural crops in degraded lands",
-        "d": "\u2018Environmental Impact Assessment\u2019 in the exploitation of natural resources"
+        "d": "‘Environmental Impact Assessment’ in the exploitation of natural resources"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2021_080",
@@ -1753,7 +2464,7 @@
       "microtheme": "Global Conservation Efforts",
       "year": 2021,
       "questionNumber": 8,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_2_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement 1: The United Nations Capital Development Fund (UNCDF) and the Arbor Day Foundation have recently recognized Hyderabad as 2020 Tree City of the World. Statement 2: Hyderabad was selected for the recognition for a year following its commitment to grow and maintain the urban forests. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -1763,7 +2474,16 @@
         "d": "Statement 1 is not correct but Statement 2 is correct"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_081",
@@ -1785,7 +2505,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_082",
@@ -1807,7 +2536,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-ACTS"
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_083",
@@ -1829,7 +2567,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_084",
@@ -1851,7 +2598,16 @@
         "d": "2, 3 and 4 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_085",
@@ -1873,7 +2629,16 @@
         "d": "Amphibians"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_086",
@@ -1885,7 +2650,7 @@
       "microtheme": "Biodiversity",
       "year": 2020,
       "questionNumber": 23,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to Indian elephants, consider the following statements: 1. The leader of an elephant group is a female. 2. The maximum gestation period can be 22 months. 3. An elephant can normally go on calving till the age of 40 years only. 4. Among the States in India, the highest elephant population is in Kerala. Which of the statements given above is/are correct?",
       "options": {
@@ -1895,7 +2660,16 @@
         "d": "1, 3, and 4 only"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_087",
@@ -1917,7 +2691,16 @@
         "d": "contribution of an individual person to the carbon footprint on the planet Earth."
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_088",
@@ -1939,7 +2722,16 @@
         "d": "1, 2, 3, 4, 5 and 6"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_089",
@@ -1961,7 +2753,16 @@
         "d": "1 and 5 only"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-INTL"
+      "syllabusNodeId": "GS3-ENV-INTL",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_090",
@@ -1983,7 +2784,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_091",
@@ -2005,7 +2815,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_092",
@@ -2027,7 +2846,16 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_093",
@@ -2049,7 +2877,16 @@
         "d": "Such a plant is invasive and harmful to the ecosystem."
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_094",
@@ -2063,7 +2900,7 @@
       "questionNumber": 6,
       "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: 1. 36% of India\u2019s districts are classified as \u201coverexploited\u201d or \u201ccritical\u201d by the Central Ground Water Authority (CGW A). 2. CGW A was formed under the Environment (Protection) Act. 3. India has the largest area under groundwater irrigation in the world. Which of the statements given above is/are correct?",
+      "question": "Consider the following statements: 1. 36% of India’s districts are classified as “overexploited” or “critical” by the Central Ground Water Authority (CGW A). 2. CGW A was formed under the Environment (Protection) Act. 3. India has the largest area under groundwater irrigation in the world. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 and 3 only",
@@ -2071,7 +2908,16 @@
         "d": "1 and 3 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_095",
@@ -2093,7 +2939,16 @@
         "d": "1 and 4 only"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Protected Areas",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.95,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 6,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_096",
@@ -2115,7 +2970,16 @@
         "d": "Tal Chhapar Wildlife Sanctuary"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_097",
@@ -2129,7 +2993,7 @@
       "questionNumber": 3,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "Among the following Tiger Reserves, which one has the largest area under \u201cCritical Tiger Habitat\u201d?",
+      "question": "Among the following Tiger Reserves, which one has the largest area under “Critical Tiger Habitat”?",
       "options": {
         "a": "Corbett",
         "b": "Ranthambore",
@@ -2137,7 +3001,16 @@
         "d": "Sunderbans"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2020_098",
@@ -2149,9 +3022,9 @@
       "microtheme": "Protected Area Network: NP, WS, BR, etc.",
       "year": 2020,
       "questionNumber": 4,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "With reference to India\u2019s Desert National Park, which of the following statements are correct? 1. It is spread over two districts. 2. There is no human habitation inside the Park. 3. It is one of the natural habitats of the Great Indian Bustard. Select the correct answer using the code given below.",
+      "question": "With reference to India’s Desert National Park, which of the following statements are correct? 1. It is spread over two districts. 2. There is no human habitation inside the Park. 3. It is one of the natural habitats of the Great Indian Bustard. Select the correct answer using the code given below.",
       "options": {
         "a": "1 and 2 only",
         "b": "2 and 3 only",
@@ -2159,7 +3032,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Protected Areas",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_099",
@@ -2171,7 +3053,7 @@
       "microtheme": "Biodiversity",
       "year": 2019,
       "questionNumber": 24,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Wildlife Naturally found in 1. Blue-finned Mahseer Cauvery River 2. Irrawaddy Dolphin Chambal River 3. Rusty Spotted Cat Eastern Ghats Which of the pairs given above is/are correctly matched?",
       "options": {
@@ -2181,7 +3063,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_100",
@@ -2193,7 +3084,7 @@
       "microtheme": "Biodiversity",
       "year": 2019,
       "questionNumber": 25,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: 1. Some species of turtles are herbivores. 2. Some species of fish are herbivores. 3. Some species of marine mammals are herbivores. 4. Some species of snakes are viviparous. Which of the statements given above is/are correct?",
       "options": {
@@ -2203,7 +3094,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_101",
@@ -2225,7 +3125,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_102",
@@ -2237,9 +3146,9 @@
       "microtheme": "Climate Change: Causes and Implications",
       "year": 2019,
       "questionNumber": 6,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "Which of the following statements are correct about the deposits of \u2018methane hydrate\u2019? 1. Global warming might trigger the release of methane gas from these deposits. 2. Large deposits of \u2018methane hydrate\u2019 are found in Arctic Tundra and under the seafloor. 3. Methane in the atmosphere oxidised to carbon dioxide after a decade or two. Select the correct answer using the code given below.",
+      "question": "Which of the following statements are correct about the deposits of ‘methane hydrate’? 1. Global warming might trigger the release of methane gas from these deposits. 2. Large deposits of ‘methane hydrate’ are found in Arctic Tundra and under the seafloor. 3. Methane in the atmosphere oxidised to carbon dioxide after a decade or two. Select the correct answer using the code given below.",
       "options": {
         "a": "1 and 2 only",
         "b": "2 and 3 only",
@@ -2247,7 +3156,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_103",
@@ -2269,7 +3187,16 @@
         "d": "Reducing global warming."
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_104",
@@ -2281,7 +3208,7 @@
       "microtheme": "Environment, Sustainable Development and General Issues",
       "year": 2019,
       "questionNumber": 9,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "In the context of proposals to the use of hydrogen - enriched CNG (H-CNG) as fuel for buses in public transport, consider the following statements: 1. The main advantage of the use of H-CNG is the elimination of carbon monoxide emissions. 2. H-CNG as fuel reduces carbon dioxide and hydrocarbon emissions. 3. Hydrogen up to one -fifth by volume can be blended with CNG as fuel for buses. 4. H-CNG makes the fuel less expensive than CNG. Which of the statements given above is/are correct?",
       "options": {
@@ -2291,7 +3218,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_105",
@@ -2313,7 +3249,16 @@
         "d": "moisturising agents in cosmetics."
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_106",
@@ -2327,7 +3272,7 @@
       "questionNumber": 16,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "In the context of which one of the following are the terms \u2018pyrolysis and plasma gasification\u2019 mentioned?",
+      "question": "In the context of which one of the following are the terms ‘pyrolysis and plasma gasification’ mentioned?",
       "options": {
         "a": "Extraction of rare earth elements",
         "b": "Natural gas extraction technologies",
@@ -2335,7 +3280,16 @@
         "d": "Waste-to-energy technologies"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_107",
@@ -2357,7 +3311,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_108",
@@ -2379,7 +3342,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_109",
@@ -2393,7 +3365,7 @@
       "questionNumber": 19,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "Why is there a great concern about the \u2018microbeads' that are released into the environment?",
+      "question": "Why is there a great concern about the ‘microbeads' that are released into the environment?",
       "options": {
         "a": "They are considered harmful to marine ecosystems.",
         "b": "They are considered to cause skin cancer in children.",
@@ -2401,7 +3373,16 @@
         "d": "They are often found to be used as food adulterants."
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_110",
@@ -2423,7 +3404,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Environmental Conventions",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_111",
@@ -2445,7 +3435,16 @@
         "d": "It is mandatory on the part of the waste generator that the waste generated in one district cannot be moved to another district."
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_112",
@@ -2467,7 +3466,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_113",
@@ -2489,7 +3497,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_114",
@@ -2511,7 +3528,16 @@
         "d": "3-2-1-4"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_115",
@@ -2525,7 +3551,7 @@
       "questionNumber": 11,
       "questionType": "MCQ_2_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: 1. As per law, the Compensatory Afforestation Fund Management and Planning Authority exists at both National and State levels. 2. People\u2019s participation is mandatory in the compensatory afforestation programmes carried out under the Compensatory Afforestation Fund Act, 2016. Which of the statements given above is/are correct?",
+      "question": "Consider the following statements: 1. As per law, the Compensatory Afforestation Fund Management and Planning Authority exists at both National and State levels. 2. People’s participation is mandatory in the compensatory afforestation programmes carried out under the Compensatory Afforestation Fund Act, 2016. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 only",
@@ -2533,7 +3559,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_116",
@@ -2547,7 +3582,7 @@
       "questionNumber": 12,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "In India, \u2018extended producer responsibility\u2019 was introduced as an important feature in which of the following?",
+      "question": "In India, ‘extended producer responsibility’ was introduced as an important feature in which of the following?",
       "options": {
         "a": "The Bio -medical Waste (Management and Handling) Rules,",
         "b": "The Recycled Plastic (Manufacturing and Usage) Rules, 1999",
@@ -2555,7 +3590,16 @@
         "d": "The Food Safety and Standard Regulations, 2011"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_117",
@@ -2577,7 +3621,16 @@
         "d": "Valley of Flowers National Park"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Protected Areas",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2019_118",
@@ -2599,7 +3652,16 @@
         "d": "Kawal and Sri Venkateswara Wildlife Sanctuaries; and Nagarjunasagar-Srisailam Tiger Reserve."
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Protected Areas",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_119",
@@ -2621,7 +3683,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_120",
@@ -2643,7 +3714,16 @@
         "d": "1, 2, 3 and 5 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_121",
@@ -2665,7 +3745,16 @@
         "d": "Mankind's overexploitation/misuse of natural resources, fragmentation/loss of natural habitats, destruction of ecosystems, pollution, and global climate change."
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_122",
@@ -2677,7 +3766,7 @@
       "microtheme": "Climate Change: Causes and Implications",
       "year": 2018,
       "questionNumber": 8,
-      "questionType": "MCQ_SINGLE",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Which of the following statements best describes \"carbon fertilisation\"?",
       "options": {
@@ -2687,7 +3776,16 @@
         "d": "Adaptation of all living beings on Earth to the climate change brought about by the increased concentration of carbon dioxide in the atmosphere"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_123",
@@ -2709,7 +3807,16 @@
         "d": "None of the above"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_124",
@@ -2731,7 +3838,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_125",
@@ -2753,7 +3869,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_126",
@@ -2775,7 +3900,16 @@
         "d": "The World Sustainable Development Summit 2016, New Delhi"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_127",
@@ -2797,7 +3931,16 @@
         "d": "The World Meteorological Organisation"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_128",
@@ -2809,7 +3952,7 @@
       "microtheme": "Global Conservation Efforts",
       "year": 2018,
       "questionNumber": 12,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to the 'Global Alliance for Climate-Smart Agriculture (GACSA)', which of the following statements is/are correct? 1. GACSA is an outcome of the Climate Summit held in Paris in 2015. 2. Membership of GACSA does not create any binding obligations. 3. India was instrumental in the creation of GACSA. Select the correct answer using the code given below:",
       "options": {
@@ -2819,7 +3962,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_129",
@@ -2841,7 +3993,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_130",
@@ -2863,7 +4024,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2018_131",
@@ -2885,7 +4055,16 @@
         "d": "Nagaland"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Protected Areas",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_132",
@@ -2897,7 +4076,7 @@
       "microtheme": "Agriculture",
       "year": 2017,
       "questionNumber": 16,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Which of the following statements can help in water conservation in agriculture? 1. Reduced or zero tillage of the land 2. Applying gypsum before irrigating the field 3. Allowing crop residue to remain in the field Select the correct answer using the code given below:",
       "options": {
@@ -2907,7 +4086,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_133",
@@ -2929,7 +4117,16 @@
         "d": "Deepor Beel"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_134",
@@ -2941,7 +4138,7 @@
       "microtheme": "Climate Change: Causes and Implications",
       "year": 2017,
       "questionNumber": 9,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to 'Global Climate Change Alliance', which of the following statements is/are correct? 1. It is an initiative of the European Union. 2. It provides technical and financial support to targeted developing countries to integrate climate change into their development policies and budgets. 3. It is coordinated by World Resources Institute (WRI) and World Business Council for Sustainable Development (WBCSD). Select the correct answer using the code given below:",
       "options": {
@@ -2951,7 +4148,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_135",
@@ -2973,7 +4179,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_136",
@@ -2995,7 +4210,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_137",
@@ -3017,7 +4241,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_138",
@@ -3039,7 +4272,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_139",
@@ -3061,7 +4303,16 @@
         "d": "Assessing oxygen levels in high-altitude regions"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_140",
@@ -3083,7 +4334,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_141",
@@ -3105,7 +4365,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_142",
@@ -3119,7 +4388,7 @@
       "questionNumber": 15,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "The term \u2018M-STrIPES\u2019 is sometimes seen in the news in the context of",
+      "question": "The term ‘M-STrIPES’ is sometimes seen in the news in the context of",
       "options": {
         "a": "Captive breeding of Wild Fauna",
         "b": "Maintenance of Tiger Reserves",
@@ -3127,7 +4396,16 @@
         "d": "Security of National Highways"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_143",
@@ -3149,7 +4427,16 @@
         "d": "Both (b) and (c) stated above are correct in this context."
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2017_144",
@@ -3171,7 +4458,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_145",
@@ -3185,7 +4481,7 @@
       "questionNumber": 29,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "In which of the following regions of India are you most likely to come across the \u2018Great Indian Hornbill\u2019 in its natural habitat?",
+      "question": "In which of the following regions of India are you most likely to come across the ‘Great Indian Hornbill’ in its natural habitat?",
       "options": {
         "a": "Sand deserts of northwest India",
         "b": "Higher Himalayas of Jammu and Kashmir",
@@ -3193,7 +4489,16 @@
         "d": "Western Ghats"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_146",
@@ -3207,7 +4512,7 @@
       "questionNumber": 30,
       "questionType": "MCQ_MULTI_SELECT",
       "format": "text",
-      "question": "What is/are unique about \u2018Kharai camel\u2019, a breed found in India? 1. It is capable of swimming up to three kilometers in seawater. 2. It survives by grazing on mangroves. 3. It lives in the wild and cannot be domesticated. Select the correct answer using the code given below.",
+      "question": "What is/are unique about ‘Kharai camel’, a breed found in India? 1. It is capable of swimming up to three kilometers in seawater. 2. It survives by grazing on mangroves. 3. It lives in the wild and cannot be domesticated. Select the correct answer using the code given below.",
       "options": {
         "a": "1 and 2 only",
         "b": "3 only",
@@ -3215,7 +4520,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_147",
@@ -3229,7 +4543,7 @@
       "questionNumber": 11,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "The term \u2018Intended Nationally Determined Contributions\u2019 is sometimes seen in the news in the context of",
+      "question": "The term ‘Intended Nationally Determined Contributions’ is sometimes seen in the news in the context of",
       "options": {
         "a": "pledges made by the European countries to rehabilitate refugees from the war-affected Middle East",
         "b": "plan of action outlined by the countries of the world to combat climate change",
@@ -3237,7 +4551,16 @@
         "d": "plan of action outlined by the countries of the world regarding Sustainable Development Goals"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_148",
@@ -3249,7 +4572,7 @@
       "microtheme": "Climate Change: Causes and Implications",
       "year": 2016,
       "questionNumber": 12,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Terms sometimes seen in the news Their origin 1. Annex-I Countries : Cartagena Protocol 2. Certified Emissions Reductions : Nagoya Protocol 3. Clean Development Mechanisms: Kyoto Protocol Which of the pairs given above is/are correctly matched?",
       "options": {
@@ -3259,7 +4582,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_149",
@@ -3273,7 +4605,7 @@
       "questionNumber": 13,
       "questionType": "MCQ_MULTI_SELECT",
       "format": "text",
-      "question": "Which of the following best describes the aim of the \u2018Green India Mission\u2019 of the Government of India? 1. Incorporating environmental benefits and costs into the Union and State Budgets thereby implementing the \u2018green accounting\u2019 . 2. Launching the second green revolution to enhance agricultural output so as to ensure food security to one and all in the future. 3. Restoring and enhancing forest cover and responding to climate change by a combination of adaptation and mitigation measures. Select the correct answer using the code given below.",
+      "question": "Which of the following best describes the aim of the ‘Green India Mission’ of the Government of India? 1. Incorporating environmental benefits and costs into the Union and State Budgets thereby implementing the ‘green accounting’ . 2. Launching the second green revolution to enhance agricultural output so as to ensure food security to one and all in the future. 3. Restoring and enhancing forest cover and responding to climate change by a combination of adaptation and mitigation measures. Select the correct answer using the code given below.",
       "options": {
         "a": "1 only",
         "b": "2 and 3 only",
@@ -3281,7 +4613,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_150",
@@ -3295,7 +4636,7 @@
       "questionNumber": 14,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "What is the \u2018Greenhouse Gas Protocol\u2019?",
+      "question": "What is the ‘Greenhouse Gas Protocol’?",
       "options": {
         "a": "It is an international accounting tool for government and business leaders to understand, quantify and manage greenhouse gas emissions.",
         "b": "It is an initiative of the United Nations to offer financial incentives to developing countries to reduce greenhouse gas emissions and to adopt eco-friendly technologies",
@@ -3303,7 +4644,16 @@
         "d": "It is one of the multilateral REDD+ initiatives hosted by the World Bank"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_151",
@@ -3315,7 +4665,7 @@
       "microtheme": "Climate Change: Causes and Implications",
       "year": 2016,
       "questionNumber": 15,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to the agreement at the UNFCCC Meeting in Paris in 2015, which of the following statements is/are correct? 1. The agreement was signed by all the member countries of the UN, and it will go into effect in 2017. 2. The agreement aims to limit greenhouse gas emissions so that the rise in average global temperature by the end of o o this century does not exceed 2 C or even 1.5 C above pre- industrial levels. 3. Developed countries acknowledged their historical responsibility in global warming and committed to donate $ 1000 billion a year from 2020 to help developing countries to cope with climate change. Select the correct answer using the code given below.",
       "options": {
@@ -3325,7 +4675,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.95,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 8,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_152",
@@ -3339,7 +4698,7 @@
       "questionNumber": 11,
       "questionType": "MCQ_2_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: 1. The Sustainable Development Goals were first proposed in 1972 by a global think tank called the \u2018Club of Rome\u2019 . 2. The Sustainable Development Goals have to be achieved by 2030. Which of the statements given above is/are correct?",
+      "question": "Consider the following statements: 1. The Sustainable Development Goals were first proposed in 1972 by a global think tank called the ‘Club of Rome’ . 2. The Sustainable Development Goals have to be achieved by 2030. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 only",
@@ -3347,7 +4706,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_153",
@@ -3361,7 +4729,7 @@
       "questionNumber": 12,
       "questionType": "MCQ_2_STATEMENT",
       "format": "text",
-      "question": "With reference to \u2018Agenda 21\u2019, sometimes seen in the news, consider the following statements: 1. It is a global action plan for sustainable development. 2. It originated in the World Summit on Sustainable Development held in Johannesburg in 2002. Which of the statements given above is/are correct?",
+      "question": "With reference to ‘Agenda 21’, sometimes seen in the news, consider the following statements: 1. It is a global action plan for sustainable development. 2. It originated in the World Summit on Sustainable Development held in Johannesburg in 2002. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 only",
@@ -3369,7 +4737,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-ACTS"
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_154",
@@ -3391,7 +4768,16 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_155",
@@ -3413,7 +4799,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_156",
@@ -3425,9 +4820,9 @@
       "microtheme": "Global Conservation Efforts",
       "year": 2016,
       "questionNumber": 16,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "With reference to an initiative called \u2018The Economics of Ecosystems and Biodiversity (TEEB)\u2019, which of the following statements is/are correct? 1. It is an initiative hosted by UNEP , IMF and World Economic Forum. 2. It is a global initiative that focuses on drawing attention to the economic benefits of biodiversity. 3. It presents an approach that can help decision makers recognize, demonstrate, and capture the value of ecosystems and biodiversity. Select the correct answer using the code given below.",
+      "question": "With reference to an initiative called ‘The Economics of Ecosystems and Biodiversity (TEEB)’, which of the following statements is/are correct? 1. It is an initiative hosted by UNEP , IMF and World Economic Forum. 2. It is a global initiative that focuses on drawing attention to the economic benefits of biodiversity. 3. It presents an approach that can help decision makers recognize, demonstrate, and capture the value of ecosystems and biodiversity. Select the correct answer using the code given below.",
       "options": {
         "a": "1 and 2 only",
         "b": "3 only",
@@ -3435,7 +4830,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_157",
@@ -3447,7 +4851,7 @@
       "microtheme": "Global Conservation Efforts",
       "year": 2016,
       "questionNumber": 17,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Which of the following statements is/are correct? Proper design and effective implementation of UNREDD+ Programme can significantly contribute to 1. Protection of biodiversity 2. Resilience of forest ecosystems 3. Poverty reduction Select the correct answer using the code given below.",
       "options": {
@@ -3457,7 +4861,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_158",
@@ -3471,7 +4884,7 @@
       "questionNumber": 18,
       "questionType": "MCQ_MULTI_SELECT",
       "format": "text",
-      "question": "What is/are the importance/importances of the \u2018United Nations Convention to Combat Desertification\u2019? 1. It aims to promote effective action through innovative national programmes and supportive international partnerships. 2. It has a special/particular focus on South Asia and North Africa regions, and its Secretariat facilitates the allocation of major portions of financial resources to these regions. 3. It is committed to a bottom-up approach, encouraging the participation of local people in combating desertification. Select the correct answer using the code given below.",
+      "question": "What is/are the importance/importances of the ‘United Nations Convention to Combat Desertification’? 1. It aims to promote effective action through innovative national programmes and supportive international partnerships. 2. It has a special/particular focus on South Asia and North Africa regions, and its Secretariat facilitates the allocation of major portions of financial resources to these regions. 3. It is committed to a bottom-up approach, encouraging the participation of local people in combating desertification. Select the correct answer using the code given below.",
       "options": {
         "a": "1 only",
         "b": "2 and 3 only",
@@ -3479,7 +4892,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_159",
@@ -3493,7 +4915,7 @@
       "questionNumber": 18,
       "questionType": "MCQ_2_STATEMENT",
       "format": "text",
-      "question": "With reference to \u2018Red Sanders\u2019, sometimes seen in the news, consider the following statements: 1. It is a tree species found in a part of South India. 2. It is one of the most important trees in the tropical rainforest areas of South India. Which of the statements given above is/are correct?",
+      "question": "With reference to ‘Red Sanders’, sometimes seen in the news, consider the following statements: 1. It is a tree species found in a part of South India. 2. It is one of the most important trees in the tropical rainforest areas of South India. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 only",
@@ -3501,7 +4923,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2016_160",
@@ -3515,7 +4946,7 @@
       "questionNumber": 19,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "\u2018Gadgil Committee Report\u2019 and \u2018Kasturirangan Committee Report\u2019, sometimes seen in the news, are related to",
+      "question": "‘Gadgil Committee Report’ and ‘Kasturirangan Committee Report’, sometimes seen in the news, are related to",
       "options": {
         "a": "Constitutional reforms",
         "b": "Ganga Action Plan",
@@ -3523,7 +4954,16 @@
         "d": "Protection of Western Ghats"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_161",
@@ -3545,7 +4985,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_162",
@@ -3567,7 +5016,16 @@
         "d": "Gharial"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_163",
@@ -3579,7 +5037,7 @@
       "microtheme": "Biodiversity",
       "year": 2015,
       "questionNumber": 32,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to 'dugong', a mammal found in India, which of the following statements is/are correct? 1. It is a herbivorous marine animal. 2. It is found along the entire coast of India. 3. It is given legal protection under Schedule I of the Wildlife (Protection) Act, 1972. Select the correct answer using the code given below:",
       "options": {
@@ -3589,7 +5047,16 @@
         "d": "3 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_164",
@@ -3601,7 +5068,7 @@
       "microtheme": "Climate Change: Causes and Implications",
       "year": 2015,
       "questionNumber": 16,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_2_STATEMENT",
       "format": "text",
       "question": "Which of the following statements regarding 'Green Climate Fund' is/are correct? 1. It is intended to assist developing countries in adaptation and mitigation practices to counter climate change. 2. It is founded under the aegis of UNEP , OECD, Asian Development Bank and World Bank. Select the correct answer using the code given below:",
       "options": {
@@ -3611,7 +5078,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_165",
@@ -3633,7 +5109,16 @@
         "d": "The flora and fauna of a geographical area"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_166",
@@ -3655,7 +5140,16 @@
         "d": "Andaman and Nicobar Islands"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_167",
@@ -3667,9 +5161,9 @@
       "microtheme": "Environment, Sustainable Development and General Issues",
       "year": 2015,
       "questionNumber": 13,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "With reference to \u2018fly ash\u2019 produced by the power plants using the coal as fuel, which of the following statements is/are correct? 1. Fly ash can be used in the production of bricks for building construction. 2. Fly ash can be used as a replacement for some of the Portland cement contents of concrete. 3. Fly ash is made up of silicon dioxide and calcium oxide only and does not contain any toxic elements. Select the correct answer using the code given below:",
+      "question": "With reference to ‘fly ash’ produced by the power plants using the coal as fuel, which of the following statements is/are correct? 1. Fly ash can be used in the production of bricks for building construction. 2. Fly ash can be used as a replacement for some of the Portland cement contents of concrete. 3. Fly ash is made up of silicon dioxide and calcium oxide only and does not contain any toxic elements. Select the correct answer using the code given below:",
       "options": {
         "a": "1 and 2 only",
         "b": "2 only",
@@ -3677,7 +5171,16 @@
         "d": "3 only"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_168",
@@ -3699,7 +5202,16 @@
         "d": "It is a Conference of the Member Countries of the Convention on Biological Diversity."
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_169",
@@ -3711,7 +5223,7 @@
       "microtheme": "Global Conservation Efforts",
       "year": 2015,
       "questionNumber": 19,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to an organisation known as 'BirdLife International', which of the following statements is/are correct? 1. It is a Global Partnership of Conservation Organisations. 2. The concept of 'biodiversity hotspots' originated from this organisation. 3. It identifies the sites known/referred to as 'Important Bird and Biodiversity Areas'. Select the correct answer using the code given below:",
       "options": {
@@ -3721,7 +5233,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_170",
@@ -3743,7 +5264,16 @@
         "d": "Nagoya Protocol"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_171",
@@ -3755,7 +5285,7 @@
       "microtheme": "Global Conservation Efforts",
       "year": 2015,
       "questionNumber": 21,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to the International Union for Conservation of Nature and Natural Resource (IUCN) and the Convention of International Trade in Endangered Species of Wild Fauna and Flora (CITES), which of the following statements is/are correct? 1. IUCN is an organ of the United Nations and CITES is an international agreement between governments. 2. IUCN runs thousands of field projects around the world to better manage natural environments. 3. CITES is legally binding on the States that have joined it, but this Conventional does not take the place of national laws. Select the correct answer using the code given below:",
       "options": {
@@ -3765,7 +5295,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_172",
@@ -3787,7 +5326,16 @@
         "d": "Wildlife (Protection) Act, 1972"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_173",
@@ -3809,7 +5357,16 @@
         "d": "Namdapha National Park"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Protected Areas",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2015_174",
@@ -3831,7 +5388,16 @@
         "d": "Sultanpur National Park"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Protected Areas",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_175",
@@ -3845,7 +5411,7 @@
       "questionNumber": 18,
       "questionType": "MCQ_MULTI_SELECT",
       "format": "text",
-      "question": "What is/are the significance of a practical approach to sugarcane production known as 'Sustainable Sugarcane Initiative\u2019? 1. Seed cost is very low in this compared to the conventional method of cultivation. 2. Drip irrigation can be practised very effectively in this. 3. There is no application of chemical/inorganic fertilisers at all in this. 4. The scope for intercropping is more in this compared to the conventional method of cultivation. Select the correct answer using the code given below:",
+      "question": "What is/are the significance of a practical approach to sugarcane production known as 'Sustainable Sugarcane Initiative’? 1. Seed cost is very low in this compared to the conventional method of cultivation. 2. Drip irrigation can be practised very effectively in this. 3. There is no application of chemical/inorganic fertilisers at all in this. 4. The scope for intercropping is more in this compared to the conventional method of cultivation. Select the correct answer using the code given below:",
       "options": {
         "a": "1 and 3 only",
         "b": "1, 2 and 4 only",
@@ -3853,7 +5419,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-ACTS"
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_176",
@@ -3875,7 +5450,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_177",
@@ -3897,7 +5481,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_178",
@@ -3919,7 +5512,16 @@
         "d": "3 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_179",
@@ -3941,7 +5543,16 @@
         "d": "It is a source of high quality biodiesel"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_180",
@@ -3963,7 +5574,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_181",
@@ -3985,7 +5605,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ACTS"
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_182",
@@ -4007,7 +5636,16 @@
         "d": "Hibernation cannot be observed in any of the above"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_183",
@@ -4029,7 +5667,16 @@
         "d": "Crustaceans-Herrings-Diatoms"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_184",
@@ -4051,7 +5698,16 @@
         "d": "Spider"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_185",
@@ -4073,7 +5729,16 @@
         "d": "Oxygen is taken, and carbon dioxide and water vapour are given out."
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_186",
@@ -4095,7 +5760,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_187",
@@ -4117,7 +5791,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_188",
@@ -4139,7 +5822,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_189",
@@ -4161,7 +5853,16 @@
         "d": "It is given the status of 'World Heritage Site'."
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_190",
@@ -4173,7 +5874,7 @@
       "microtheme": "Global Conservation Efforts",
       "year": 2014,
       "questionNumber": 23,
-      "questionType": "MCQ_SINGLE",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "With reference to 'Global Environment Facility', which of the following statements is/are correct?",
       "options": {
@@ -4183,7 +5884,16 @@
         "d": "Both (a) and (b)"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_191",
@@ -4195,7 +5905,7 @@
       "microtheme": "Global Conservation Efforts",
       "year": 2014,
       "questionNumber": 24,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_2_STATEMENT",
       "format": "text",
       "question": "With reference to a conservation organisation called 'Wetlands International', which of the following statements is/are correct? 1. It is an intergovernmental organisation formed by the countries which are signatories to the Ramsar Convention. 2. It works at the field level to develop and mobilise knowledge and use the practical experience to advocate for better policies. Select the correct answer using the code given below:",
       "options": {
@@ -4205,7 +5915,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Environmental Conventions",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_192",
@@ -4227,7 +5946,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN"
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "topic": "Climate Change",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_193",
@@ -4249,7 +5977,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_194",
@@ -4271,7 +6008,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_195",
@@ -4293,7 +6039,16 @@
         "d": "Wildlife Sanctuaries"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_196",
@@ -4315,7 +6070,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_197",
@@ -4327,7 +6091,7 @@
       "microtheme": "National Conservation Efforts",
       "year": 2014,
       "questionNumber": 24,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_2_STATEMENT",
       "format": "text",
       "question": "With reference to 'Eco-Sensitive Zones', which of the following statements is/are correct? 1. Eco-Sensitive Zones are the areas that are declared under the Wildlife (Protection) Act, 1972. 2. The purpose of the declaration of Eco Sensitive Zones is to prohibit all kinds of human activities in those zones except agriculture. Select the correct answer using the code given below:",
       "options": {
@@ -4337,7 +6101,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2014_198",
@@ -4349,7 +6122,7 @@
       "microtheme": "Protected Area Network: NP, WS, BR, etc.",
       "year": 2014,
       "questionNumber": 10,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Wetlands Conference of rivers 1. Harike Wetlands: Confluence of Beas and Satluj/ Sutlej 2. Keoladeo Ghana National Confluence of Banas and Park: Chambal 3. Kolleru Lake: Confluence of Musi and Krishna Which of the above pairs is/are correctly matched?",
       "options": {
@@ -4359,7 +6132,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CONSERVATION"
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_199",
@@ -4381,7 +6163,16 @@
         "d": "3 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE"
+      "syllabusNodeId": "GS3-ENV-CURR-CLIMATE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_200",
@@ -4403,7 +6194,16 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Biodiversity & Species",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_201",
@@ -4425,7 +6225,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_202",
@@ -4447,7 +6256,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_203",
@@ -4469,7 +6287,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_204",
@@ -4491,7 +6318,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-ACTS"
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.85,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 4,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_205",
@@ -4513,7 +6349,16 @@
         "d": "None of the above"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_206",
@@ -4535,7 +6380,16 @@
         "d": "Oceans, mangroves, lakes, grasslands"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_207",
@@ -4557,7 +6411,16 @@
         "d": "1, 2, 3, 4, 5, 6 and 7"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_208",
@@ -4579,7 +6442,16 @@
         "d": "nitrous oxide and sulphur dioxide"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_209",
@@ -4601,7 +6473,16 @@
         "d": "None"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-BIOGEO"
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "topic": "Pollution & Ecology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.85,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 4,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_210",
@@ -4623,7 +6504,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_211",
@@ -4645,7 +6535,16 @@
         "d": "Home range"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS"
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_212",
@@ -4657,7 +6556,7 @@
       "microtheme": "Environment, Sustainable Development and General Issues",
       "year": 2013,
       "questionNumber": 15,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to the usefulness of the by- products of the sugar industry, which of the following statements is/are correct? 1. Bagasse can be used as biomass fuel for the generation of energy. 2. Molasses can be used as one of the feedstocks for the production of synthetic chemical fertilisers. 3. Molasses can be used for the production of ethanol. Select the correct answer using the code given below:",
       "options": {
@@ -4667,7 +6566,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-ENERGY"
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_213",
@@ -4689,7 +6597,16 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_ENV_2013_214",
@@ -4711,7 +6628,16 @@
         "d": "high concentration of NO , O and CO in the evening 2 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION"
+      "syllabusNodeId": "GS3-ENV-CURR-POLLUTION",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     }
   ]
 }

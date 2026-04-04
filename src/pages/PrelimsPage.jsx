@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { BACKEND_URL } from "../config";
 import { PRELIMS_STRUCTURE } from "../data/prelimsStructure";
+import { recordTestAttempt, buildTestId } from "../utils/prelimsMistakeEngine";
+
 
 import PyqTestStart from "../components/Prelims/PyqTestStart";
 import PyqTestAttempt from "../components/Prelims/PyqTestAttempt";
@@ -47,6 +49,75 @@ const chipRowStyle = {
   gap: 10,
   flexWrap: "wrap",
 };
+
+
+
+function getSubjectBuildHints(selectedSubjectId, practicePaper) {
+  if (practicePaper === "CSAT") {
+    return {
+      subjectId: practicePaper === "CSAT" ? "CSAT" : selectedSubjectId,
+      subjectAliases: [],
+      debugExpectedSubjects: [],
+    };
+  }
+
+  const map = {
+    history: {
+      subjectId: "history",
+      subjectAliases: ["Ancient History", "Medieval History", "Modern History"],
+      debugExpectedSubjects: ["Ancient History", "Medieval History", "Modern History"],
+    },
+    culture: {
+      subjectId: "culture",
+      subjectAliases: ["Art & Culture", "Culture"],
+      debugExpectedSubjects: ["Art & Culture"],
+    },
+    current_affairs_misc: {
+      subjectId: "current_affairs_misc",
+      subjectAliases: ["Current Affairs & Misc", "Current Affairs", "Miscellaneous"],
+      debugExpectedSubjects: ["Current Affairs & Misc"],
+    },
+    geography: {
+      subjectId: "geography",
+      subjectAliases: ["Geography"],
+      debugExpectedSubjects: ["Geography"],
+    },
+    economy: {
+      subjectId: "economy",
+      subjectAliases: ["Economy"],
+      debugExpectedSubjects: ["Economy"],
+    },
+    polity: {
+      subjectId: "polity",
+      subjectAliases: ["Polity"],
+      debugExpectedSubjects: ["Polity"],
+    },
+    environment: {
+      subjectId: "environment",
+      subjectAliases: ["Environment"],
+      debugExpectedSubjects: ["Environment"],
+    },
+    science_tech: {
+      subjectId: "science_tech",
+      subjectAliases: ["Science & Technology", "ScienceTech", "Science and Technology"],
+      debugExpectedSubjects: ["Science & Technology", "ScienceTech"],
+    },
+    ir: {
+      subjectId: "ir",
+      subjectAliases: ["International Relations", "IR"],
+      debugExpectedSubjects: ["International Relations", "IR"],
+    },
+  };
+
+  return (
+    map[selectedSubjectId] || {
+      subjectId: selectedSubjectId,
+      subjectAliases: [],
+      debugExpectedSubjects: [],
+    }
+  );
+}
+
 
 function ModeButton({ active, children, onClick, disabled = false }) {
   return (
@@ -112,7 +183,11 @@ function normalizeAnswerKey(value) {
 
 function buildAttemptRows(questions, answersMap, confidenceMap) {
   return (Array.isArray(questions) ? questions : []).map((q, index) => {
-    const qid = q?.id || q?.questionId || `q_${index + 1}`;
+    const qid =
+      q?.questionId ||
+      q?.id ||
+      q?.qid ||
+      `q_${index + 1}`;
     const userAnswer = answersMap?.[qid] || "";
     const correctAnswer = q?.answer || "";
     const confidence = confidenceMap?.[qid] || "sure";
@@ -213,6 +288,7 @@ function buildLocalFallbackResult({
     },
   };
 }
+
 function getSelectedSubjectMeta(structure, practicePaper, selectedSubjectId) {
   if (practicePaper === "CSAT") {
     return (structure?.csat || []).find((s) => s.id === selectedSubjectId) || null;
@@ -230,6 +306,7 @@ function getSelectedMicroThemeMetas(topicMeta, selectedMicroThemeIds) {
   const items = Array.isArray(topicMeta?.subtopics) ? topicMeta.subtopics : [];
   return items.filter((item) => ids.includes(item.id));
 }
+
 async function analyzeAttemptWithBackend({
   testId,
   testMode,
@@ -284,6 +361,9 @@ export default function PrelimsPage() {
   const [testMode, setTestMode] = useState("sectional");
   const [testId, setTestId] = useState("prelims_2020_gs1");
 
+  // Live GS subject counts fetched from backend (authoritative buildable counts)
+  const [gsCountsFromAPI, setGsCountsFromAPI] = useState(null);
+
   const [dashboard, setDashboard] = useState(null);
   const [dashboardLoading, setDashboardLoading] = useState(false);
   const [dashboardError, setDashboardError] = useState("");
@@ -316,6 +396,16 @@ export default function PrelimsPage() {
   const [builderLoading, setBuilderLoading] = useState(false);
   const [builderError, setBuilderError] = useState("");
 
+  // Fetch actual buildable GS counts from backend once on mount
+  useEffect(() => {
+    let active = true;
+    fetch(`${BACKEND_URL}/api/prelims/gs/counts`)
+      .then((r) => r.json())
+      .then((json) => { if (active && json?.ok) setGsCountsFromAPI(json.counts); })
+      .catch(() => { });
+    return () => { active = false; };
+  }, []);
+
   useEffect(() => {
     let isMounted = true;
 
@@ -338,6 +428,14 @@ export default function PrelimsPage() {
             testId
           )}&userId=${encodeURIComponent("user_1")}`
         );
+
+        if (response.status === 404) {
+          if (isMounted) {
+            setDashboard(null);
+            setDashboardError("");
+          }
+          return;
+        }
 
         if (!response.ok) {
           throw new Error(
@@ -381,9 +479,12 @@ export default function PrelimsPage() {
     return base.map((item) => ({
       id: item.id,
       label: item.label || item.name || item.id,
-      count: item.count || 0,
+      // Use live API count for GS subjects when available; fall back to static
+      count: (practicePaper === "GS" && gsCountsFromAPI?.[item.id] != null)
+        ? gsCountsFromAPI[item.id]
+        : (item.count || 0),
     }));
-  }, [practicePaper]);
+  }, [practicePaper, gsCountsFromAPI]);
 
   const topics = useMemo(() => {
     const base =
@@ -392,11 +493,13 @@ export default function PrelimsPage() {
         : PRELIMS_STRUCTURE?.csat || [];
 
     const subject = base.find((item) => item.id === selectedSubjectId);
-    return (subject?.topics || []).map((topic) => ({
-      id: topic.id,
-      name: topic.name || topic.label || topic.id,
-      count: topic.count || 0,
-    }));
+    return (subject?.topics || [])
+      .filter((topic) => (topic.count || 0) > 0)
+      .map((topic) => ({
+        id: topic.id,
+        name: topic.name || topic.label || topic.id,
+        count: topic.count || 0,
+      }));
   }, [practicePaper, selectedSubjectId]);
 
   const microThemes = useMemo(() => {
@@ -461,6 +564,15 @@ export default function PrelimsPage() {
       return Math.min(prev || 1, max);
     });
   }, [availableQuestionCount]);
+
+  useEffect(() => {
+    if (!selectedSubjectId) return;
+    console.log("🧠 PRELIMS SUBJECT SELECTED:", {
+      selectedSubjectId,
+      practicePaper,
+      practiceScope,
+    });
+  }, [selectedSubjectId, practicePaper, practiceScope]);
 
   const recentHistory = useMemo(() => {
     const summary = dashboard?.summary || {};
@@ -592,18 +704,18 @@ export default function PrelimsPage() {
 
       if (testMode === "full_length") {
         const paperCode =
-          fullLengthType === "csat_yearwise" ? "csat" : "gs1";
+          fullLengthType === "csat_yearwise" ? "CSAT" : "GS";
 
-        nextTestId = `prelims_${fullLengthYear}_${paperCode}`;
+        nextTestId = `prelims_${fullLengthYear}_${paperCode.toLowerCase()}`;
 
         payload = {
           mode: "full_length",
-          fullLengthType,
-          fullLengthYear,
-          year: fullLengthYear,
-          paper: paperCode,
+          fullLengthYear: String(fullLengthYear),
+          practicePaper: paperCode,
           count: fullLengthType === "csat_yearwise" ? 80 : 100,
         };
+
+        console.log("🚀 FULL LENGTH BUILD PAYLOAD:", payload);
       } else {
         const safeScope =
           practiceScope === "subtopic" && selectedMicroThemeIds.length === 0
@@ -618,70 +730,124 @@ export default function PrelimsPage() {
           selectedSubjectId
         );
 
-        const topicMeta = getSelectedTopicMeta(
-          subjectMeta,
-          selectedTopicId
-        );
+        const topicMeta = getSelectedTopicMeta(subjectMeta, selectedTopicId);
 
-        const selectedMicroThemeMetas = getSelectedMicroThemeMetas(
-          topicMeta,
-          selectedMicroThemeIds
-        );
+        const selectedMicroThemeMetas = getSelectedMicroThemeMetas(topicMeta, selectedMicroThemeIds);
+        const topicHintIds = (topicMeta?.subtopics || []).map((item) => item.id);
+
+        // Backend resolver is the single authority for prelims node resolution.
+        // Frontend should never invent or force node IDs here.
+        let resolvedNodeId = "";
+
+        // subject
+        if (safeScope === "subject") {
+          const subjectMeta = getSelectedSubjectMeta(
+            PRELIMS_STRUCTURE,
+            practicePaper,
+            selectedSubjectId
+          );
+          resolvedNodeId = subjectMeta?.nodeId || "";
+        }
+
+        // topic
+        if (safeScope === "topic") {
+          const subjectMeta = getSelectedSubjectMeta(
+            PRELIMS_STRUCTURE,
+            practicePaper,
+            selectedSubjectId
+          );
+          const topicMeta = getSelectedTopicMeta(subjectMeta, selectedTopicId);
+          resolvedNodeId = topicMeta?.nodeId || "";
+        }
+
+        // subtopic
+        if (safeScope === "subtopic") {
+          const subjectMeta = getSelectedSubjectMeta(
+            PRELIMS_STRUCTURE,
+            practicePaper,
+            selectedSubjectId
+          );
+          const topicMeta = getSelectedTopicMeta(subjectMeta, selectedTopicId);
+          const selectedMicroThemeMetas = getSelectedMicroThemeMetas(
+            topicMeta,
+            selectedMicroThemeIds
+          );
+          resolvedNodeId = selectedMicroThemeMetas?.[0]?.nodeId || "";
+        }
+
+        const subjectHints = getSubjectBuildHints(selectedSubjectId, practicePaper);
+
+        console.log("🚀 PRACTICE BUILD CONTEXT:", {
+          practicePaper,
+          practiceScope,
+          safeScope,
+          selectedSubjectId,
+          selectedTopicId,
+          selectedMicroThemeIds,
+          practiceQuestionCount,
+        });
+
+        console.log("🧭 SUBJECT BUILD HINTS:", subjectHints);
 
         payload = {
-          mode: "sectional",
+          topicNodeId: resolvedNodeId,
+          count: practiceQuestionCount,
+          sort: "latest",
           practicePaper,
-          paper: practicePaper,
           practiceScope: safeScope,
-          scope: safeScope,
+
+          subjectId: subjectHints.subjectId,
+          subjectAliases: subjectHints.subjectAliases,
+          debugExpectedSubjects: subjectHints.debugExpectedSubjects,
+
 
           selectedSubjectId,
-          subjectId: selectedSubjectId,
-          selectedSubjectLabel: subjectMeta?.label || "",
-
-          selectedTopicId:
-            safeScope === "topic" || safeScope === "subtopic"
-              ? selectedTopicId
-              : null,
-          topicId:
-            safeScope === "topic" || safeScope === "subtopic"
-              ? selectedTopicId
-              : null,
-          selectedTopicLabel:
-            safeScope === "topic" || safeScope === "subtopic"
-              ? (topicMeta?.name || topicMeta?.label || "")
-              : "",
-
+          selectedTopicId,
+          selectedTopicLabel: topicMeta?.name || topicMeta?.label || "",
           selectedMicroThemeIds:
-            safeScope === "subtopic" ? selectedMicroThemeIds : [],
-          microThemeIds:
-            safeScope === "subtopic" ? selectedMicroThemeIds : [],
+            safeScope === "topic" ? topicHintIds : selectedMicroThemeIds,
           selectedMicroThemeLabels:
-            safeScope === "subtopic"
-              ? selectedMicroThemeMetas.map((item) => item.label)
-              : [],
-
-          practiceQuestionCount,
-          count: practiceQuestionCount,
+            safeScope === "topic"
+              ? (topicMeta?.subtopics || []).map((item) => item.label || item.name || item.id)
+              : selectedMicroThemeMetas.map((item) => item.label || item.name || item.id),
         };
+
+        console.log("🎯 FINAL NODE ID:", resolvedNodeId);
+        console.log("📦 BUILD PAYLOAD:", payload);
+        if (!resolvedNodeId) {
+          console.error("❌ NODE ID MISSING:", {
+            subjectId: selectedSubjectId,
+            topicId: selectedTopicId,
+            microThemeId: selectedMicroThemeIds[0],
+          });
+        }
       }
 
-      const response = await fetch(
-        `${BACKEND_URL}/api/prelims/practice/build`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+      const response = await fetch(`${BACKEND_URL}/api/prelims/practice/build`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
       const json = await response.json();
 
+      console.log("✅ BUILDER RESPONSE META:", {
+        ok: response.ok,
+        status: response.status,
+        count: Array.isArray(json?.questions) ? json.questions.length : 0,
+        sampleIds: Array.isArray(json?.questions)
+          ? json.questions.slice(0, 5).map((q) => q?.id || q?.questionId)
+          : [],
+        sampleSubjects: Array.isArray(json?.questions)
+          ? json.questions.slice(0, 10).map((q) => q?.subject)
+          : [],
+      });
+
       if (!response.ok) {
         throw new Error(
-          json?.error || `Practice build failed with status ${response.status}`
+          json?.message || json?.error || `Practice build failed with status ${response.status}`
         );
       }
 
@@ -692,13 +858,15 @@ export default function PrelimsPage() {
       }
 
       setTestId(nextTestId);
-      setQuestions(builtQuestions);
+      setQuestions([...builtQuestions]);
       setCurrentIndex(0);
       setAnswersMap({});
       setConfidenceMap({});
+      setResult(null);
       setTestStage("attempt");
     } catch (error) {
       console.error("Prelims practice build error:", error);
+      setQuestions([]);
       setBuilderError(
         error.message || "Failed to build prelims practice test"
       );
@@ -848,20 +1016,23 @@ export default function PrelimsPage() {
             </div>
           )}
 
-          {practiceScope === "subtopic" && selectedTopicId && microThemes.length === 0 && (
-            <div
-              style={{
-                marginBottom: 14,
-                padding: 12,
-                borderRadius: 12,
-                border: "1px solid rgba(245, 158, 11, 0.25)",
-                background: "rgba(120, 53, 15, 0.18)",
-                color: "#fde68a",
-              }}
-            >
-              No subtopics are configured for this topic yet. Choose another topic or switch to Topic-wise mode.
-            </div>
-          )}
+          {practiceScope === "subtopic" &&
+            selectedTopicId &&
+            microThemes.length === 0 && (
+              <div
+                style={{
+                  marginBottom: 14,
+                  padding: 12,
+                  borderRadius: 12,
+                  border: "1px solid rgba(245, 158, 11, 0.25)",
+                  background: "rgba(120, 53, 15, 0.18)",
+                  color: "#fde68a",
+                }}
+              >
+                No subtopics are configured for this topic yet. Choose another
+                topic or switch to Topic-wise mode.
+              </div>
+            )}
 
           {testStage === "start" && (
             <PyqTestStart
@@ -901,6 +1072,7 @@ export default function PrelimsPage() {
 
           {testStage === "attempt" && (
             <PyqTestAttempt
+              key={`${testId}_${selectedSubjectId}_${selectedTopicId}_${practiceScope}`}
               testMeta={{
                 mode: testMode === "full_length" ? "full_length" : "practice",
                 paperType: practicePaper,
@@ -941,7 +1113,9 @@ export default function PrelimsPage() {
                     answersMap,
                     confidenceMap
                   );
-
+                  // 🔍 DEBUG LOGS (ADD HERE)
+                  console.log("ANSWERS MAP:", answersMap);
+                  console.log("EVALUATED QUESTIONS:", evaluatedQuestions);
                   const analyticsResult = await analyzeAttemptWithBackend({
                     testId,
                     testMode,
@@ -952,18 +1126,41 @@ export default function PrelimsPage() {
                     evaluatedQuestions,
                   });
 
-                  const finalResult =
-                    analyticsResult ||
-                    buildLocalFallbackResult({
-                      evaluatedQuestions,
-                      testId,
-                      testMode,
-                      practicePaper,
-                      practiceScope,
-                      fullLengthYear,
-                    });
-
+                  const finalResult = buildLocalFallbackResult({
+                    evaluatedQuestions,
+                    testId,
+                    testMode,
+                    practicePaper,
+                    practiceScope,
+                    fullLengthYear,
+                  });
                   setResult(finalResult);
+
+                  // ── MISTAKE ENGINE: save attempt + update mistake book ──────
+                  try {
+                    const sourceType =
+                      testMode === "full_length" ? "full_length"
+                      : practiceScope === "topic"   ? "topic_test"
+                      : practiceScope === "subtopic" ? "topic_test"
+                      : "sectional_test";
+
+                    recordTestAttempt(
+                      {
+                        testId,
+                        sourceType,
+                        paper:   practicePaper,
+                        year:    testMode === "full_length" ? fullLengthYear : null,
+                        subject: selectedSubjectId,
+                        topic:   selectedTopicId,
+                        subtopic: selectedMicroThemeIds[0] || "",
+                      },
+                      evaluatedQuestions,
+                      finalResult.summary || {}
+                    );
+                  } catch (mistakeErr) {
+                    console.error("[MistakeEngine] Failed to record attempt:", mistakeErr);
+                  }
+                  // ── END MISTAKE ENGINE ─────────────────────────────────────
 
                   try {
                     localStorage.setItem(
@@ -975,6 +1172,7 @@ export default function PrelimsPage() {
                   }
 
                   setTestStage("result");
+
                 } catch (error) {
                   console.error("Prelims submit/analyze error:", error);
 

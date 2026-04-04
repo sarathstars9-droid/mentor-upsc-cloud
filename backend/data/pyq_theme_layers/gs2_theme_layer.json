@@ -1,0 +1,1128 @@
+{
+  "paper": "GS2",
+  "stage": "Mains",
+  "version": "2026-gs2-theme-layer-v1",
+  "description": "GS2 theme/subtheme layer synthesized from the uploaded GS2 PDF and GS2 tagged files for MentorOS pattern intelligence.",
+  "subjects": {
+    "Polity": {
+      "source": "pdf_primary + tagged_alignment",
+      "themes": [
+        {
+          "name": "Executive and Judiciary & Separation of Powers",
+          "subthemes": [
+            {
+              "name": "Judiciary",
+              "mappedNodes": [
+                "GS2-POL-JUD"
+              ],
+              "keywords": [
+                "judiciary",
+                "judicial review",
+                "judicial activism",
+                "PIL",
+                "collegium",
+                "NJAC",
+                "NALSA"
+              ]
+            },
+            {
+              "name": "Tribunals and ADR",
+              "mappedNodes": [
+                "GS2-POL-JUD"
+              ],
+              "keywords": [
+                "tribunal",
+                "lok adalat",
+                "arbitration",
+                "ADR",
+                "CAT"
+              ]
+            },
+            {
+              "name": "Separation of Powers",
+              "mappedNodes": [
+                "GS2-POL-CONTEMP"
+              ],
+              "keywords": [
+                "separation of powers",
+                "checks and balances",
+                "judicial legislation",
+                "ordinance"
+              ]
+            },
+            {
+              "name": "State Executive",
+              "mappedNodes": [
+                "GS2-POL-EXEC"
+              ],
+              "keywords": [
+                "governor",
+                "ordinance",
+                "state executive"
+              ]
+            },
+            {
+              "name": "Union Executive",
+              "mappedNodes": [
+                "GS2-POL-EXEC"
+              ],
+              "keywords": [
+                "president",
+                "cabinet",
+                "prime minister",
+                "mercy petition"
+              ]
+            },
+            {
+              "name": "Union Legislature",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "parliament accountability",
+                "legislature",
+                "executive accountability"
+              ]
+            },
+            {
+              "name": "Miscellaneous",
+              "mappedNodes": [
+                "GS2-POL-CONTEMP"
+              ],
+              "keywords": [
+                "khap panchayat",
+                "extra constitutional authorities"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Basics of Constitutional Framework (FR, DPSP, FD etc.)",
+          "subthemes": [
+            {
+              "name": "Amendment Procedure",
+              "mappedNodes": [
+                "GS2-POL-PREAMBLE",
+                "GS2-POL-AMEND"
+              ],
+              "keywords": [
+                "amendment",
+                "article 368",
+                "basic structure",
+                "amending power"
+              ]
+            },
+            {
+              "name": "Philosophy of the Constitution",
+              "mappedNodes": [
+                "GS2-POL-PREAMBLE"
+              ],
+              "keywords": [
+                "constitutional morality",
+                "living constitution",
+                "philosophy of constitution",
+                "republic",
+                "basic structure"
+              ]
+            },
+            {
+              "name": "Fundamental Rights",
+              "mappedNodes": [
+                "GS2-POL-FR"
+              ],
+              "keywords": [
+                "article 21",
+                "privacy",
+                "movement",
+                "speech and expression",
+                "66A",
+                "clean environment",
+                "education act"
+              ]
+            },
+            {
+              "name": "Preamble",
+              "mappedNodes": [
+                "GS2-POL-PREAMBLE"
+              ],
+              "keywords": [
+                "preamble",
+                "republic",
+                "secular",
+                "socialist",
+                "democratic"
+              ]
+            },
+            {
+              "name": "DPSP",
+              "mappedNodes": [
+                "GS2-POL-PREAMBLE",
+                "GS2-POL-DPSP"
+              ],
+              "keywords": [
+                "directive principles",
+                "uniform civil code",
+                "DPSP"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Federal Structure and Local Bodies",
+          "subthemes": [
+            {
+              "name": "Centre-State Financial Relations",
+              "mappedNodes": [
+                "GS2-POL-CSREL"
+              ],
+              "keywords": [
+                "fiscal federalism",
+                "finance commission",
+                "GST",
+                "101st amendment",
+                "financial relations"
+              ]
+            },
+            {
+              "name": "Centre-State Relations",
+              "mappedNodes": [
+                "GS2-POL-CSREL"
+              ],
+              "keywords": [
+                "centre state relations",
+                "J&K reorganisation",
+                "federalism",
+                "lt governor",
+                "delhi"
+              ]
+            },
+            {
+              "name": "Centre-State Executive Relations",
+              "mappedNodes": [
+                "GS2-POL-CSREL"
+              ],
+              "keywords": [
+                "CBI",
+                "consent",
+                "epidemic diseases act",
+                "disaster management act",
+                "farm acts"
+              ]
+            },
+            {
+              "name": "Local Bodies",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "panchayat",
+                "municipality",
+                "urban local body",
+                "local self government",
+                "decentralisation",
+                "grassroots"
+              ]
+            },
+            {
+              "name": "Emergency Provisions",
+              "mappedNodes": [
+                "GS2-POL-FR",
+                "GS2-POL-CSREL"
+              ],
+              "keywords": [
+                "article 356",
+                "financial emergency"
+              ]
+            },
+            {
+              "name": "Special Provisions in Federalism",
+              "mappedNodes": [
+                "GS2-POL-CSREL"
+              ],
+              "keywords": [
+                "article 370",
+                "article 371A",
+                "special provisions",
+                "69th amendment"
+              ]
+            },
+            {
+              "name": "Historical Background",
+              "mappedNodes": [
+                "GS2-POL-CONTEMP"
+              ],
+              "keywords": [
+                "government of india act 1935",
+                "historical background"
+              ]
+            },
+            {
+              "name": "Cooperative Federalism",
+              "mappedNodes": [
+                "GS2-POL-CSREL"
+              ],
+              "keywords": [
+                "cooperative federalism"
+              ]
+            },
+            {
+              "name": "Nature of Indian Federalism",
+              "mappedNodes": [
+                "GS2-POL-CSREL"
+              ],
+              "keywords": [
+                "strong centre",
+                "nature of indian federalism"
+              ]
+            },
+            {
+              "name": "Inter-State Relations",
+              "mappedNodes": [
+                "GS2-POL-CSREL"
+              ],
+              "keywords": [
+                "inter state water disputes",
+                "inter-state relations"
+              ]
+            },
+            {
+              "name": "Miscellaneous",
+              "mappedNodes": [
+                "GS2-POL-CSREL"
+              ],
+              "keywords": [
+                "smaller states",
+                "district bifurcation"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RPA, Legislature and Elections",
+          "subthemes": [
+            {
+              "name": "RPA Salient Features",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "representation of the people act",
+                "corrupt practices",
+                "disqualification",
+                "returned candidate"
+              ]
+            },
+            {
+              "name": "Elections",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "election commission",
+                "EVM",
+                "MCC",
+                "one nation one election"
+              ]
+            },
+            {
+              "name": "Electoral Reforms",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "electoral reforms",
+                "simultaneous elections"
+              ]
+            },
+            {
+              "name": "Parliamentary Committees",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "standing committee",
+                "estimates committee",
+                "financial committees"
+              ]
+            },
+            {
+              "name": "Presiding Officers",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "speaker",
+                "vice president",
+                "chairman rajya sabha",
+                "presiding officer"
+              ]
+            },
+            {
+              "name": "Legislative Councils",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "legislative council",
+                "bicameralism"
+              ]
+            },
+            {
+              "name": "Political Parties",
+              "mappedNodes": [
+                "GS2-POL-EXEC",
+                "GS2-POL-CSREL"
+              ],
+              "keywords": [
+                "party system",
+                "regional parties",
+                "national parties"
+              ]
+            },
+            {
+              "name": "Rajya Sabha",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "rajya sabha"
+              ]
+            },
+            {
+              "name": "Issues of Parliament",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "decline of debates",
+                "law maker role",
+                "issues of parliament"
+              ]
+            },
+            {
+              "name": "Basics of Parliament",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "joint session",
+                "parliament basics"
+              ]
+            },
+            {
+              "name": "Parliamentary Privileges",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "parliamentary privileges",
+                "article 105"
+              ]
+            },
+            {
+              "name": "Anti-Defection",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "anti defection",
+                "tenth schedule"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Comparison of Constitutions",
+          "subthemes": [
+            {
+              "name": "India and USA",
+              "mappedNodes": [
+                "GS2-POL-PREAMBLE",
+                "GS2-POL-EXEC"
+              ],
+              "keywords": [
+                "india and usa",
+                "pardon",
+                "equality",
+                "secular",
+                "democracies"
+              ]
+            },
+            {
+              "name": "India and Britain",
+              "mappedNodes": [
+                "GS2-POL-PREAMBLE",
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "india and britain",
+                "parliamentary sovereignty"
+              ]
+            },
+            {
+              "name": "India and France",
+              "mappedNodes": [
+                "GS2-POL-EXEC",
+                "GS2-POL-PREAMBLE"
+              ],
+              "keywords": [
+                "india and france",
+                "president election",
+                "secularism"
+              ]
+            },
+            {
+              "name": "India and UK",
+              "mappedNodes": [
+                "GS2-POL-JUD"
+              ],
+              "keywords": [
+                "india and uk",
+                "judicial system"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Constitutional and Non-Constitutional Bodies",
+          "subthemes": [
+            {
+              "name": "Constitutional Bodies",
+              "mappedNodes": [
+                "GS2-POL-PARL",
+                "GS2-POL-EXEC"
+              ],
+              "keywords": [
+                "CAG",
+                "attorney general",
+                "finance commission",
+                "NCBC",
+                "NCSC"
+              ]
+            },
+            {
+              "name": "Statutory Bodies",
+              "mappedNodes": [
+                "GS2-GOV-REGULATORS-QUASI",
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "information commission",
+                "human rights commission",
+                "statutory body"
+              ]
+            },
+            {
+              "name": "Statutory Commissions",
+              "mappedNodes": [
+                "GS2-POL-PARL"
+              ],
+              "keywords": [
+                "competition commission",
+                "NCW",
+                "NHRC",
+                "child rights",
+                "lokpal",
+                "rail tariff authority",
+                "IRDA",
+                "SEBI"
+              ]
+            },
+            {
+              "name": "Generic",
+              "mappedNodes": [],
+              "keywords": [
+                "quasi judicial body",
+                "regulatory institutions"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Governance": {
+      "source": "pdf_primary + tagged_alignment",
+      "themes": [
+        {
+          "name": "Pressure Groups, Formal/Informal Associations, Development Processes and Development Industry",
+          "subthemes": [
+            {
+              "name": "Development Process and Industry",
+              "mappedNodes": [
+                "GS2-GOV-DEVELOPMENT-INDUSTRY",
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "development process",
+                "human resource development",
+                "multi-level planning",
+                "demographic dividend",
+                "FDI",
+                "development industry"
+              ]
+            },
+            {
+              "name": "NGO/VO/SHG/MFI/Pressure Groups",
+              "mappedNodes": [
+                "GS2-GOV-PRESSURE-GROUPS"
+              ],
+              "keywords": [
+                "ngo",
+                "civil society",
+                "self help groups",
+                "pressure groups",
+                "microfinance",
+                "FCRA",
+                "charitable trusts",
+                "donor agencies",
+                "women social capital",
+                "environmental pressure groups"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Concept of Governance, e-Governance, Transparency and Accountability, Role of Civil Services in Democracy",
+          "subthemes": [
+            {
+              "name": "E-Governance",
+              "mappedNodes": [
+                "GS2-GOV-EGOV"
+              ],
+              "keywords": [
+                "e-governance",
+                "ICT",
+                "interactive service model",
+                "digital revolution"
+              ]
+            },
+            {
+              "name": "Basics of Governance",
+              "mappedNodes": [
+                "GS2-GOV-EGOV"
+              ],
+              "keywords": [
+                "citizens charter",
+                "basics of governance",
+                "integrity index",
+                "participation in governance"
+              ]
+            },
+            {
+              "name": "Civil Services",
+              "mappedNodes": [
+                "GS2-GOV-EGOV"
+              ],
+              "keywords": [
+                "civil service reform",
+                "civil services",
+                "bureaucratic structure",
+                "public perception of civil servants"
+              ]
+            },
+            {
+              "name": "Transparency and Accountability",
+              "mappedNodes": [
+                "GS2-GOV-TRANSPARENCY"
+              ],
+              "keywords": [
+                "whistleblower",
+                "transparency",
+                "accountability",
+                "corporate governance",
+                "public morality"
+              ]
+            },
+            {
+              "name": "Miscellaneous",
+              "mappedNodes": [
+                "GS2-GOV-EGOV",
+                "GS2-GOV-TRANSPARENCY"
+              ],
+              "keywords": [
+                "LPG reforms",
+                "government responsiveness"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Social Justice": {
+      "source": "tagged_primary + pdf_theme_synthesis",
+      "themes": [
+        {
+          "name": "Poverty, Hunger, Inclusive Development and Human Development",
+          "subthemes": [
+            {
+              "name": "Poverty",
+              "mappedNodes": [
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "poverty",
+                "MPI",
+                "urban poverty",
+                "rural poverty"
+              ]
+            },
+            {
+              "name": "Hunger and Malnutrition",
+              "mappedNodes": [
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "hunger",
+                "malnutrition",
+                "food budget",
+                "human capital"
+              ]
+            },
+            {
+              "name": "Inclusive Development",
+              "mappedNodes": [
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "inclusive development",
+                "balanced development",
+                "human development"
+              ]
+            },
+            {
+              "name": "Human Development",
+              "mappedNodes": [
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "human development",
+                "human resource development",
+                "employment",
+                "skills"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Rights Issues – Disability, Women, Children, Minorities, LGBTQIA+",
+          "subthemes": [
+            {
+              "name": "Disability Rights",
+              "mappedNodes": [
+                "GS2-POL-CITIZEN"
+              ],
+              "keywords": [
+                "disability",
+                "persons with disabilities act"
+              ]
+            },
+            {
+              "name": "Women Rights and Representation",
+              "mappedNodes": [
+                "GS2-POL-CITIZEN"
+              ],
+              "keywords": [
+                "women",
+                "representation",
+                "patriarchal",
+                "women participation",
+                "women empowerment"
+              ]
+            },
+            {
+              "name": "Children Rights and Education Access",
+              "mappedNodes": [
+                "GS2-POL-CITIZEN",
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "children",
+                "public examination act",
+                "child rights",
+                "RTE"
+              ]
+            },
+            {
+              "name": "Minorities and Vulnerable Groups",
+              "mappedNodes": [
+                "GS2-POL-CITIZEN"
+              ],
+              "keywords": [
+                "minorities",
+                "vulnerable sections",
+                "umbrella human rights commission"
+              ]
+            },
+            {
+              "name": "Generic Rights Issues",
+              "mappedNodes": [
+                "GS2-POL-CITIZEN"
+              ],
+              "keywords": [
+                "rights issues",
+                "LGBTQIA+"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Education, Health and Human Resource Development",
+          "subthemes": [
+            {
+              "name": "Education",
+              "mappedNodes": [
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "education",
+                "schooling",
+                "RTE",
+                "NEP",
+                "IIT",
+                "IIM"
+              ]
+            },
+            {
+              "name": "Health",
+              "mappedNodes": [
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "health",
+                "public healthcare",
+                "primary health",
+                "maternal",
+                "geriatric",
+                "MDG health"
+              ]
+            },
+            {
+              "name": "Human Resource Development",
+              "mappedNodes": [
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "human resource development",
+                "skill development",
+                "vocational education",
+                "earn while you learn"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Welfare Schemes, Vulnerable Sections and Social Sector Interventions",
+          "subthemes": [
+            {
+              "name": "Welfare Schemes",
+              "mappedNodes": [
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "welfare schemes",
+                "DBT",
+                "social expenditure"
+              ]
+            },
+            {
+              "name": "Vulnerable Sections",
+              "mappedNodes": [
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "vulnerable sections",
+                "underprivileged"
+              ]
+            },
+            {
+              "name": "Social Sector Interventions",
+              "mappedNodes": [
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "social sector interventions",
+                "direct benefit transfer",
+                "public health reach"
+              ]
+            },
+            {
+              "name": "Sports",
+              "mappedNodes": [
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "sports",
+                "olympics",
+                "talent hunt"
+              ]
+            },
+            {
+              "name": "Miscellaneous",
+              "mappedNodes": [
+                "GS2-GOV-SOCIO-ECON"
+              ],
+              "keywords": [
+                "PURA",
+                "MDGs"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "International Relations": {
+      "source": "pdf_primary + tagged_alignment",
+      "themes": [
+        {
+          "name": "Hard, Soft and Smart Power",
+          "subthemes": [
+            {
+              "name": "Diaspora in the West",
+              "mappedNodes": [
+                "GS2-IR-DIASPORA"
+              ],
+              "keywords": [
+                "diaspora in west",
+                "america",
+                "europe"
+              ]
+            },
+            {
+              "name": "International Forum",
+              "mappedNodes": [
+                "GS2-IR-INSTITUTIONS"
+              ],
+              "keywords": [
+                "international fora",
+                "climate change",
+                "global forums"
+              ]
+            },
+            {
+              "name": "India’s Role in New World Order",
+              "mappedNodes": [
+                "GS2-IR-MAJOR-POWERS"
+              ],
+              "keywords": [
+                "new world order",
+                "global order",
+                "leader of oppressed nations"
+              ]
+            },
+            {
+              "name": "India and UNSC",
+              "mappedNodes": [
+                "GS2-IR-INSTITUTIONS"
+              ],
+              "keywords": [
+                "UNSC seat",
+                "security council"
+              ]
+            },
+            {
+              "name": "Soft Power and Diaspora",
+              "mappedNodes": [
+                "GS2-IR-DIASPORA"
+              ],
+              "keywords": [
+                "diaspora",
+                "soft power"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "International Organizations",
+          "subthemes": [
+            {
+              "name": "UNSC",
+              "mappedNodes": [
+                "GS2-IR-INSTITUTIONS"
+              ],
+              "keywords": [
+                "UNSC",
+                "security council reform"
+              ]
+            },
+            {
+              "name": "UN and UN Agencies",
+              "mappedNodes": [
+                "GS2-IR-INSTITUTIONS"
+              ],
+              "keywords": [
+                "UN",
+                "UNESCO",
+                "WHO",
+                "ECOSOC",
+                "IMO"
+              ]
+            },
+            {
+              "name": "WTO",
+              "mappedNodes": [
+                "GS2-IR-INSTITUTIONS"
+              ],
+              "keywords": [
+                "WTO",
+                "trade war"
+              ]
+            },
+            {
+              "name": "Multilateral Institutions",
+              "mappedNodes": [
+                "GS2-IR-INSTITUTIONS"
+              ],
+              "keywords": [
+                "international organization",
+                "global institution"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Regional Groupings and Strategic Platforms",
+          "subthemes": [
+            {
+              "name": "SCO",
+              "mappedNodes": [
+                "GS2-IR-GROUPINGS"
+              ],
+              "keywords": [
+                "SCO"
+              ]
+            },
+            {
+              "name": "BIMSTEC",
+              "mappedNodes": [
+                "GS2-IR-GROUPINGS"
+              ],
+              "keywords": [
+                "BIMSTEC",
+                "SAARC"
+              ]
+            },
+            {
+              "name": "QUAD",
+              "mappedNodes": [
+                "GS2-IR-MAJOR-POWERS"
+              ],
+              "keywords": [
+                "QUAD"
+              ]
+            },
+            {
+              "name": "AUKUS",
+              "mappedNodes": [
+                "GS2-IR-MAJOR-POWERS"
+              ],
+              "keywords": [
+                "AUKUS"
+              ]
+            },
+            {
+              "name": "I2U2",
+              "mappedNodes": [
+                "GS2-IR-MAJOR-POWERS"
+              ],
+              "keywords": [
+                "I2U2"
+              ]
+            },
+            {
+              "name": "NATO",
+              "mappedNodes": [
+                "GS2-IR-MAJOR-POWERS"
+              ],
+              "keywords": [
+                "NATO"
+              ]
+            },
+            {
+              "name": "Ashgabat Agreement",
+              "mappedNodes": [
+                "GS2-IR-CENTRAL-ASIA"
+              ],
+              "keywords": [
+                "Ashgabat Agreement"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Bilateral and Regional Relations",
+          "subthemes": [
+            {
+              "name": "Major Powers",
+              "mappedNodes": [
+                "GS2-IR-MAJOR-POWERS"
+              ],
+              "keywords": [
+                "USA",
+                "China",
+                "Japan",
+                "Israel",
+                "Russia",
+                "Europe"
+              ]
+            },
+            {
+              "name": "Central Asia",
+              "mappedNodes": [
+                "GS2-IR-CENTRAL-ASIA"
+              ],
+              "keywords": [
+                "central asia",
+                "CARS"
+              ]
+            },
+            {
+              "name": "Africa",
+              "mappedNodes": [
+                "GS2-IR-AFRICA"
+              ],
+              "keywords": [
+                "africa"
+              ]
+            },
+            {
+              "name": "West Asia",
+              "mappedNodes": [
+                "GS2-IR-WEST-ASIA"
+              ],
+              "keywords": [
+                "west asia",
+                "iran",
+                "energy security"
+              ]
+            },
+            {
+              "name": "Indian Ocean Neighbourhood",
+              "mappedNodes": [
+                "GS2-IR-MAJOR-POWERS",
+                "GS2-IR-NEIGHBOURS"
+              ],
+              "keywords": [
+                "maldives",
+                "sri lanka"
+              ]
+            },
+            {
+              "name": "Diaspora",
+              "mappedNodes": [
+                "GS2-IR-DIASPORA"
+              ],
+              "keywords": [
+                "diaspora"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Use this as a pattern-intelligence layer, not as the raw source of truth.",
+    "Raw source of truth remains the tagged GS2 question JSON files.",
+    "Mapped nodes are intentionally many-to-one in some subthemes because the tagged dataset is flatter than the PDF theme hierarchy."
+  ]
+}

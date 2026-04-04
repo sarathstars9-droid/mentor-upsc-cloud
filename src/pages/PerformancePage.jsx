@@ -1,252 +1,359 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
+import ExecutionHeatmap from "../components/ExecutionHeatmap";
+import { buildHeatmapFromBlocks } from "../utils/dashboard";
+import { BACKEND_URL } from "../config";
+import { getBacklogSummary } from "../utils/studyEngine";
+import {
+  getCompletionPercent,
+  getStatusCounts,
+  countDelayedStarts,
+  getTotalStudyHours,
+  getSimpleStreakDays,
+  getSubjectDistributionText,
+  getWeakAreas,
+  getTimeLeakSummary,
+  getLoopFrequencySummary,
+  getTopicCoverageSummary,
+  getRevisionDueSummary
+} from "../utils/studyEngine";
 
-const ATTEMPTS_STORAGE_KEY = "prelims_test_attempts_v1";
+async function post(action, payload = {}) {
+  const res = await fetch(`${BACKEND_URL}/api/sheets`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action, ...payload }),
+  });
 
-function readAttempts() {
+  const text = await res.text();
   try {
-    const raw = localStorage.getItem(ATTEMPTS_STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
+    return JSON.parse(text);
   } catch {
-    return [];
+    return { ok: false, message: "Backend proxy did not return JSON", raw: text };
   }
-}
-
-function pct(num, den) {
-  if (!den) return 0;
-  return Number(((num / den) * 100).toFixed(2));
-}
-
-function aggregateBy(attempts, getter) {
-  const map = new Map();
-  for (const attempt of attempts) {
-    for (const q of attempt.questions || []) {
-      const key = getter(q);
-      if (!key) continue;
-      if (!map.has(key)) {
-        map.set(key, { label: key, total: 0, correct: 0, wrong: 0, unattempted: 0 });
-      }
-      const row = map.get(key);
-      row.total += 1;
-      row[q.status] += 1;
-    }
-  }
-
-  return [...map.values()]
-    .map((row) => ({
-      ...row,
-      accuracy: pct(row.correct, row.correct + row.wrong),
-      painScore: row.wrong * 2 + row.unattempted,
-    }))
-    .sort((a, b) => b.painScore - a.painScore);
-}
-
-function latestTrend(attempts) {
-  return attempts
-    .slice(0, 10)
-    .reverse()
-    .map((attempt, index) => ({
-      label: `${index + 1}`,
-      score: attempt.summary?.score || 0,
-      accuracy: attempt.summary?.accuracy || 0,
-      risk: attempt.summary?.riskTendency || "low",
-    }));
 }
 
 export default function PerformancePage() {
-  const attempts = readAttempts();
+  const [selectedDate, setSelectedDate] = useState(
+    new Date().toISOString().slice(0, 10)
+  );
+  const [realBlocks, setRealBlocks] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [loadMessage, setLoadMessage] = useState("");
 
-  const metrics = useMemo(() => {
-    const totalAttempts = attempts.length;
-    const totalQuestions = attempts.reduce((sum, a) => sum + (a.summary?.total || 0), 0);
-    const totalCorrect = attempts.reduce((sum, a) => sum + (a.summary?.correct || 0), 0);
-    const totalWrong = attempts.reduce((sum, a) => sum + (a.summary?.wrong || 0), 0);
-    const totalSkipped = attempts.reduce((sum, a) => sum + (a.summary?.unattempted || 0), 0);
+  const mockBlocks = [
+    { Status: "completed", PlannedSubject: "GS2", PlannedMinutes: 120, ActualMinutes: 110, DelayMinutes: 10 },
+    { Status: "completed", PlannedSubject: "CSAT", PlannedMinutes: 90, ActualMinutes: 90, DelayMinutes: 0 },
+    { Status: "partial", PlannedSubject: "Essay", PlannedMinutes: 60, ActualMinutes: 27, DelayMinutes: 15 },
+    { Status: "missed", PlannedSubject: "Optional", PlannedMinutes: 90, ActualMinutes: 0, DelayMinutes: 20 },
+    { Status: "planned", PlannedSubject: "Revision", PlannedMinutes: 90, ActualMinutes: 0, DelayMinutes: 0 },
+  ];
 
-    const avgAccuracy = totalAttempts
-      ? Number(
-        (
-          attempts.reduce((sum, a) => sum + Number(a.summary?.accuracy || 0), 0) / totalAttempts
-        ).toFixed(2)
-      )
-      : 0;
+  useEffect(() => {
+    if (!selectedDate) return;
 
-    const weakThemes = aggregateBy(attempts, (q) => q.microThemeLabel).slice(0, 8);
-    const weakNodes = aggregateBy(attempts, (q) => q.syllabusNodeId).slice(0, 8);
-    const weakSubjects = aggregateBy(attempts, (q) => q.subjectId).slice(0, 8);
-    const weakQuestionTypes = aggregateBy(attempts, (q) => q.questionType).slice(0, 8);
+    async function loadBlocks() {
+      setLoading(true);
+      setLoadMessage("Loading performance blocks...");
 
-    return {
-      totalAttempts,
-      totalQuestions,
-      totalCorrect,
-      totalWrong,
-      totalSkipped,
-      avgAccuracy,
-      weakThemes,
-      weakNodes,
-      weakSubjects,
-      weakQuestionTypes,
-      trend: latestTrend(attempts),
-    };
-  }, [attempts]);
+      try {
+        const res = await post("getBlocksForDate", { date: selectedDate });
+
+        if (!res?.ok && !Array.isArray(res?.blocks)) {
+          setRealBlocks([]);
+          setLoadMessage("No real data found yet. Showing fallback mode.");
+          return;
+        }
+
+        const blocks = Array.isArray(res?.blocks) ? res.blocks : [];
+
+        const mapped = blocks.map((b) => ({
+          BlockId: b.BlockId,
+          PlannedSubject: b.Subject || "Unknown",
+          PlannedTopic: b.Topic || "",
+          PlannedStart: b.Start || "",
+          PlannedEnd: b.End || "",
+          PlannedMinutes: Number(b.Minutes || 0),
+
+          ActualStart: b.ActualStart || "",
+          ActualEnd: b.ActualEnd || "",
+          ActualMinutes: Number(b.ActualMinutes || 0),
+
+          PauseCount: Number(b.PauseCount || 0),
+          TotalPauseMinutes: Number(b.TotalPauseMinutes || 0),
+          LastPauseAt: b.LastPauseAt || "",
+          LastResumeAt: b.LastResumeAt || "",
+
+          Status: b.Status || "planned",
+          CompletionStatus: b.CompletionStatus || "",
+          TopicMatchStatus: b.TopicMatchStatus || "",
+          DelayMinutes: Number(b.DelayMinutes || 0),
+
+          OutputType: b.OutputType || "",
+          OutputCount: Number(b.OutputCount || 0),
+          FocusRating: b.FocusRating || "",
+          InterruptionReason: b.InterruptionReason || "",
+          ReviewNotes: b.ReviewNotes || "",
+          BacklogBucket: b.BacklogBucket || "",
+
+          ActualSubject: b.ActualSubject || "",
+          ActualTopic: b.ActualTopic || "",
+
+          SyllabusTop1Code: b.MappingCode || "",
+          SyllabusTop1Path: b.MappingPath || "",
+        }));
+
+        setRealBlocks(mapped);
+
+        if (mapped.length > 0) {
+          setLoadMessage(`Loaded ${mapped.length} block${mapped.length > 1 ? "s" : ""} for ${selectedDate}.`);
+        } else {
+          setLoadMessage("No real data found yet. Showing fallback mode.");
+        }
+      } catch (err) {
+        console.error("PerformancePage load failed", err);
+        setRealBlocks([]);
+        setLoadMessage("Could not load real data. Showing fallback mode.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadBlocks();
+  }, [selectedDate]);
+
+  const hasRealData = Array.isArray(realBlocks) && realBlocks.length > 0;
+
+  const blocks = hasRealData ? realBlocks : mockBlocks;
+
+  const doneMin = useMemo(() => {
+    if (!hasRealData) return 227;
+    return blocks.reduce((sum, block) => sum + Number(block.ActualMinutes || 0), 0);
+  }, [blocks, hasRealData]);
+
+  const planMin = useMemo(() => {
+    if (!hasRealData) return 360;
+    return blocks.reduce((sum, block) => sum + Number(block.PlannedMinutes || 0), 0);
+  }, [blocks, hasRealData]);
+
+  const csatMin = useMemo(() => {
+    if (!hasRealData) return 60;
+
+    return blocks.reduce((sum, block) => {
+      const subject = String(block?.PlannedSubject || "").toLowerCase();
+      const topic = String(block?.PlannedTopic || "").toLowerCase();
+      const mins = Number(block?.ActualMinutes || block?.PlannedMinutes || 0);
+
+      const isCsat =
+        subject.includes("csat") ||
+        topic.includes("csat") ||
+        topic.includes("quant") ||
+        topic.includes("reasoning") ||
+        topic.includes("rc") ||
+        topic.includes("comprehension") ||
+        topic.includes("aptitude");
+
+      return sum + (isCsat ? mins : 0);
+    }, 0);
+  }, [blocks, hasRealData]);
+
+  const completion = useMemo(() => {
+    return getCompletionPercent(planMin, doneMin);
+  }, [planMin, doneMin]);
+
+  const counts = useMemo(() => getStatusCounts(blocks), [blocks]);
+  const delayedStarts = useMemo(() => countDelayedStarts(blocks), [blocks]);
+  const totalStudyHours = useMemo(() => getTotalStudyHours(doneMin), [doneMin]);
+  const streakDays = useMemo(() => getSimpleStreakDays(blocks, doneMin), [blocks, doneMin]);
+  const subjectDistributionText = useMemo(() => getSubjectDistributionText(blocks), [blocks]);
+
+  const weakAreas = useMemo(() => getWeakAreas(blocks), [blocks]);
+  const timeLeaks = useMemo(() => getTimeLeakSummary(blocks), [blocks]);
+  const loopFrequency = useMemo(() => getLoopFrequencySummary(blocks), [blocks]);
+  const topicCoverage = useMemo(() => getTopicCoverageSummary(blocks), [blocks]);
+  const backlogSummary = useMemo(() => getBacklogSummary(blocks), [blocks]);
+  const revisionDueSummary = useMemo(() => getRevisionDueSummary(blocks), [blocks]);
+
+  const completedPercentText = `${completion}%`;
+  const pendingPercentText = `${Math.max(0, 100 - completion)}%`;
 
   return (
-    <div style={page}>
-      <div style={headerCard}>
-        <div style={kicker}>PHASE 3A</div>
-        <h2 style={{ margin: 0 }}>Prelims Performance Intelligence</h2>
-        <p style={sub}>
-          Accuracy trends, weak clusters, and question-pattern analytics from stored prelims attempts.
+    <div className="page-wrap">
+      <div className="surface-card">
+        <h1 className="page-title">Performance</h1>
+        <p className="page-subtitle">
+          Quiet consistency matters more than dramatic days.
         </p>
+
+        <div
+          style={{
+            display: "flex",
+            gap: 16,
+            alignItems: "center",
+            flexWrap: "wrap",
+            marginTop: 12,
+          }}
+        >
+          <label className="field-label" style={{ minWidth: 220 }}>
+            Performance Date
+            <input
+              type="date"
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+            />
+          </label>
+
+          <div className="footer-note" style={{ marginTop: 20 }}>
+            Data mode: <b>{hasRealData ? "Real" : "Fallback / Mock"}</b>
+          </div>
+
+          <div className="footer-note" style={{ marginTop: 20 }}>
+            {loading ? "Loading..." : loadMessage}
+          </div>
+        </div>
       </div>
 
-      {!metrics.totalAttempts ? (
-        <div style={emptyCard}>No prelims attempts yet. Complete a test to unlock the dashboard.</div>
-      ) : (
-        <>
-          <div style={statsGrid}>
-            <Stat title="Attempts" value={metrics.totalAttempts} />
-            <Stat title="Questions Seen" value={metrics.totalQuestions} />
-            <Stat title="Average Accuracy" value={`${metrics.avgAccuracy}%`} />
-            <Stat title="Wrong" value={metrics.totalWrong} />
-            <Stat title="Skipped" value={metrics.totalSkipped} />
-          </div>
+      <ExecutionHeatmap data={buildHeatmapFromBlocks(blocks, doneMin)} />
 
-          <div style={twoCol}>
-            <Panel title="Last 10 Attempts Trend">
-              <div style={{ display: "grid", gap: 10 }}>
-                {metrics.trend.map((row) => (
-                  <div key={row.label} style={rowCard}>
-                    <strong>Attempt {row.label}</strong>
-                    <span>Score: {row.score}</span>
-                    <span>Accuracy: {row.accuracy}%</span>
-                    <span style={{ textTransform: "capitalize" }}>Risk: {row.risk}</span>
-                  </div>
-                ))}
-              </div>
-            </Panel>
-
-            <Panel title="Weak Subjects">
-              <List rows={metrics.weakSubjects} />
-            </Panel>
-          </div>
-
-          <div style={twoCol}>
-            <Panel title="Weak Micro-themes">
-              <List rows={metrics.weakThemes} />
-            </Panel>
-
-            <Panel title="Weak Syllabus Nodes">
-              <List rows={metrics.weakNodes} />
-            </Panel>
-          </div>
-
-          <Panel title="Weak Question Types">
-            <List rows={metrics.weakQuestionTypes} />
-          </Panel>
-        </>
-      )}
-    </div>
-  );
-}
-
-function Stat({ title, value }) {
-  return (
-    <div style={statCard}>
-      <div style={{ fontSize: 12, opacity: 0.7 }}>{title}</div>
-      <div style={{ fontSize: 28, fontWeight: 800 }}>{value}</div>
-    </div>
-  );
-}
-
-function Panel({ title, children }) {
-  return (
-    <div style={panel}>
-      <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 12 }}>{title}</div>
-      {children}
-    </div>
-  );
-}
-
-function List({ rows }) {
-  if (!rows.length) {
-    return <div style={{ opacity: 0.7 }}>No data yet.</div>;
-  }
-
-  return (
-    <div style={{ display: "grid", gap: 10 }}>
-      {rows.map((row) => (
-        <div key={row.label} style={rowCard}>
-          <strong>{row.label}</strong>
-          <span>Correct: {row.correct}</span>
-          <span>Wrong: {row.wrong}</span>
-          <span>Skipped: {row.unattempted}</span>
-          <span>Accuracy: {row.accuracy}%</span>
+      <div className="metrics-grid">
+        <div className="metric-card">
+          <div className="metric-label">Completion %</div>
+          <div className="metric-value">{completion}%</div>
         </div>
-      ))}
+
+        <div className="metric-card">
+          <div className="metric-label">Total Study Hours</div>
+          <div className="metric-value">{totalStudyHours}h</div>
+        </div>
+
+        <div className="metric-card">
+          <div className="metric-label">Completed Blocks</div>
+          <div className="metric-value">{counts.completed}</div>
+        </div>
+
+        <div className="metric-card">
+          <div className="metric-label">Partial Blocks</div>
+          <div className="metric-value">{counts.partial}</div>
+        </div>
+
+        <div className="metric-card">
+          <div className="metric-label">Missed Blocks</div>
+          <div className="metric-value">{counts.missed}</div>
+        </div>
+
+        <div className="metric-card">
+          <div className="metric-label">Delayed Starts</div>
+          <div className="metric-value">{delayedStarts}</div>
+        </div>
+
+        <div className="metric-card">
+          <div className="metric-label">CSAT Minutes</div>
+          <div className="metric-value">{csatMin}</div>
+        </div>
+
+        <div className="metric-card">
+          <div className="metric-label">Study Streak</div>
+          <div className="metric-value">{streakDays} Day</div>
+        </div>
+      </div>
+
+      <div className="chart-grid">
+        <div className="surface-card">
+          <h3 className="section-title">Subject Distribution</h3>
+          <div className="placeholder-chart">{subjectDistributionText}</div>
+        </div>
+
+        <div className="surface-card">
+          <h3 className="section-title">Daily Hours Snapshot</h3>
+          <div className="placeholder-chart">
+            For {selectedDate}: {totalStudyHours}h tracked. Weekly trend can be added after a few real days accumulate.
+          </div>
+        </div>
+
+        <div className="surface-card chart-wide">
+          <h3 className="section-title">Syllabus Completion Bar</h3>
+          <div className="progress-shell">
+            <div className="progress-bar" style={{ width: `${completion}%` }} />
+          </div>
+          <div className="progress-meta">
+            <span>Completed: {completedPercentText}</span>
+            <span>Pending: {pendingPercentText}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="chart-grid">
+        <div className="surface-card">
+          <h3 className="section-title">Pending Syllabus</h3>
+          <div className="insight-list">
+            <div>GS2 Polity — Parliament revision pending</div>
+            <div>Essay — 2 frameworks pending</div>
+            <div>Optional Geography — Mapping practice pending</div>
+          </div>
+        </div>
+
+        <div className="surface-card">
+          <h3 className="section-title">Revision Due</h3>
+          <div className="insight-list">
+            {revisionDueSummary.map((item, idx) => (
+              <div key={idx}>{item}</div>
+            ))}
+          </div>
+        </div>
+
+        <div className="surface-card">
+          <h3 className="section-title">Backlog Rescue</h3>
+          <div className="insight-list">
+            {backlogSummary.map((item, idx) => (
+              <div key={idx}>{item}</div>
+            ))}
+          </div>
+        </div>
+
+        <div className="surface-card">
+          <h3 className="section-title">What More to Study</h3>
+          <div className="insight-list">
+            <div>Finish pending GS2 topic</div>
+            <div>Add one CSAT reasoning block</div>
+            <div>Close one revision loop before new content</div>
+          </div>
+        </div>
+
+        <div className="surface-card">
+          <h3 className="section-title">Weak Areas</h3>
+          <div className="insight-list">
+            {weakAreas.map((item, idx) => (
+              <div key={idx}>{item}</div>
+            ))}
+          </div>
+        </div>
+
+        <div className="surface-card">
+          <h3 className="section-title">Where Time Is Leaking</h3>
+          <div className="insight-list">
+            {timeLeaks.map((item, idx) => (
+              <div key={idx}>{item}</div>
+            ))}
+          </div>
+        </div>
+
+        <div className="surface-card">
+          <h3 className="section-title">Loop Frequency</h3>
+          <div className="insight-list">
+            {loopFrequency.map((item, idx) => (
+              <div key={idx}>{item}</div>
+            ))}
+          </div>
+        </div>
+
+        <div className="surface-card">
+          <h3 className="section-title">Topic Coverage by Subject</h3>
+          <div className="insight-list">
+            {topicCoverage.map((item, idx) => (
+              <div key={idx}>{item}</div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
-
-const page = {
-  minHeight: "100vh",
-  background: "#0b1020",
-  color: "#e5e7eb",
-  padding: "24px 16px 56px",
-};
-
-const headerCard = {
-  maxWidth: 1200,
-  margin: "0 auto 18px",
-  padding: 20,
-  borderRadius: 20,
-  background: "rgba(255,255,255,0.04)",
-  border: "1px solid rgba(255,255,255,0.08)",
-};
-
-const kicker = { fontSize: 12, opacity: 0.75, marginBottom: 8 };
-const sub = { margin: "8px 0 0", fontSize: 14, opacity: 0.8 };
-const statsGrid = {
-  maxWidth: 1200,
-  margin: "0 auto 18px",
-  display: "grid",
-  gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
-  gap: 14,
-};
-const statCard = {
-  padding: 18,
-  borderRadius: 18,
-  background: "rgba(255,255,255,0.03)",
-  border: "1px solid rgba(255,255,255,0.08)",
-};
-const twoCol = {
-  maxWidth: 1200,
-  margin: "0 auto 18px",
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  gap: 18,
-};
-const panel = {
-  padding: 18,
-  borderRadius: 18,
-  background: "rgba(255,255,255,0.03)",
-  border: "1px solid rgba(255,255,255,0.08)",
-};
-const rowCard = {
-  padding: 12,
-  borderRadius: 14,
-  background: "rgba(255,255,255,0.03)",
-  border: "1px solid rgba(255,255,255,0.06)",
-  display: "grid",
-  gridTemplateColumns: "1.5fr repeat(4, auto)",
-  gap: 10,
-  alignItems: "center",
-};
-const emptyCard = {
-  maxWidth: 1200,
-  margin: "0 auto",
-  padding: 18,
-  borderRadius: 18,
-  background: "rgba(255,255,255,0.03)",
-  border: "1px solid rgba(255,255,255,0.08)",
-};

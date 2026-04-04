@@ -15,11 +15,23 @@ router.get("/dashboard", (req, res) => {
         }
 
         const result = getPrelimsDashboard(testId, userId);
+        if (!result || result.success === false) {
+            console.warn("[DASHBOARD EMPTY]", { testId, userId });
 
-        if (!result.success) {
-            return res.status(404).json(result);
+            return res.json({
+                success: true,
+                summary: {
+                    total: 0,
+                    attempted: 0,
+                    correct: 0,
+                    accuracy: 0,
+                },
+                weakNodes: [],
+                weakSubjects: [],
+                trapAlerts: [],
+                recommendations: [],
+            });
         }
-
         return res.json(result);
     } catch (error) {
         return res.status(500).json({

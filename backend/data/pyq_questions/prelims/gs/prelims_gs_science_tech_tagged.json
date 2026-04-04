@@ -15,7 +15,7 @@
       "microtheme": "Biology",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "With reference to monoclonal antibodies, often mentioned in news, consider the following statements: I. They are man-made proteins. II. They stimulate immunological function due to their ability to bind to specific antigens. III. They are used in treating viral infections like that of Nipah virus. Which of the statements given above are correct?",
       "options": {
@@ -25,7 +25,16 @@
         "d": "I, II and III"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_002",
@@ -37,7 +46,7 @@
       "microtheme": "Biology",
       "year": 2025,
       "questionNumber": 2,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: I. No virus can survive in ocean waters. II. No virus can infect bacteria. III. No virus can change the cellular transcriptional activity in host cells. How many of the statements given above are correct?",
       "options": {
@@ -47,7 +56,16 @@
         "d": "None"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_003",
@@ -69,7 +87,16 @@
         "d": "All the four"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-ENERGY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_004",
@@ -91,7 +118,16 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_005",
@@ -113,7 +149,16 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_006",
@@ -125,7 +170,7 @@
       "microtheme": "Chemistry",
       "year": 2025,
       "questionNumber": 4,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement I: Some rare earth elements are used in the manufacture of flat television screens and computer monitors. Statement II: Some rare earth elements have phosphorescent properties Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -135,7 +180,16 @@
         "d": "Statement I is not correct but Statement II is correct"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_007",
@@ -157,7 +211,16 @@
         "d": "silver nitrate and potassium chloride"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_008",
@@ -169,7 +232,7 @@
       "microtheme": "Communication Technology",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: I. It is expected that Majorana 1 chip will enable quantum computing. II. Majorana 1 chip has been introduced by Amazon Web Services (AWS). III. Deep learning is a subset of machine learning. Which of the statements given above are correct?",
       "options": {
@@ -179,7 +242,16 @@
         "d": "I, II and III"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-QUANTUM",
+      "topic": "Emerging Technologies",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_009",
@@ -191,7 +263,7 @@
       "microtheme": "Defence Technology",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "With reference to Unmanned Aerial Vehicles (UAVs), consider the following statements: I. All types of UAVs can do vertical Landing. II. All types of UAVs can do automated hovering. III. All types of UAVs can use battery only as a source of power supply. How many of the statements given above are correct?",
       "options": {
@@ -201,7 +273,16 @@
         "d": "None"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-DEFENCE"
+      "syllabusNodeId": "GS3-ST-DEFENCE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_010",
@@ -223,7 +304,16 @@
         "d": "These are propulsion fuels for rocket"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-DEFENCE",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_011",
@@ -235,9 +325,9 @@
       "microtheme": "Defence Technology",
       "year": 2025,
       "questionNumber": 3,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
-      "question": "With reference to India\u2019s defence, consider the following pairs: Aircraft type : Description I. Dornier 228 : Maritime patrol aircraft II. IL-7 : Supersonic combat aircraft III. C-17 Globe-master III : Military transport aircraft How many of the pairs given above are correctly matched?",
+      "question": "With reference to India’s defence, consider the following pairs: Aircraft type : Description I. Dornier 228 : Maritime patrol aircraft II. IL-7 : Supersonic combat aircraft III. C-17 Globe-master III : Military transport aircraft How many of the pairs given above are correctly matched?",
       "options": {
         "a": "Only one",
         "b": "Only two",
@@ -245,7 +335,16 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-DEFENCE"
+      "syllabusNodeId": "GS3-ST-DEFENCE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_012",
@@ -267,7 +366,16 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-ENERGY",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_013",
@@ -279,9 +387,9 @@
       "microtheme": "Miscellaneous",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
-      "question": "With reference to \u2018Direct Air Capture\u2019 an emerging technology, which of the following statements is/are correct? I. It can be used as a way of carbon sequestration. II. It can be a valuable approach for plastic production and in food processing. III. In aviation, it can be a source of carbon for combining with hydrogen to create low-carbon fuel. Select the correct answer using the code given below.",
+      "question": "With reference to ‘Direct Air Capture’ an emerging technology, which of the following statements is/are correct? I. It can be used as a way of carbon sequestration. II. It can be a valuable approach for plastic production and in food processing. III. In aviation, it can be a source of carbon for combining with hydrogen to create low-carbon fuel. Select the correct answer using the code given below.",
       "options": {
         "a": "I and II only",
         "b": "III only",
@@ -289,7 +397,16 @@
         "d": "None of the above statements is correct"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-ENV-TECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_014",
@@ -301,9 +418,9 @@
       "microtheme": "Miscellaneous",
       "year": 2025,
       "questionNumber": 2,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: I. Indian Railways have prepared a National Rail Plan (NRP) to create a \u2018future ready\u2019 railway system by 2028. II. \u2018Kavach\u2019 is an Automatic Train Protection system developed in collaboration with Germany. III. \u2018Kavach\u2019 system consists of RFID tags fitted on track in station section. Which of the statements given above are not correct?",
+      "question": "Consider the following statements: I. Indian Railways have prepared a National Rail Plan (NRP) to create a ‘future ready’ railway system by 2028. II. ‘Kavach’ is an Automatic Train Protection system developed in collaboration with Germany. III. ‘Kavach’ system consists of RFID tags fitted on track in station section. Which of the statements given above are not correct?",
       "options": {
         "a": "I and II only",
         "b": "II and III only",
@@ -311,7 +428,16 @@
         "d": "I, II and III"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-INFRA-TRANSPORT-TECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_015",
@@ -323,7 +449,7 @@
       "microtheme": "Space Science",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_3_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement I: Activated carbon is a good and an attractive tool to remove pollutants from effluent streams and to remediate contaminants from various industries. Statement II: Activated carbon exhibits a large surface area and a strong potential for adsorbing heavy metals. Statement III: Activated carbon can be easily synthesized from environmental wastes with high carbon content. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -333,7 +459,16 @@
         "d": "Neither Statement II nor Statement III is correct"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-ENV-TECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_016",
@@ -345,7 +480,7 @@
       "microtheme": "Space Science",
       "year": 2025,
       "questionNumber": 2,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "GPS-Aided Geo Augmented Navigation (GAGAN) uses a system of ground stations to provide necessary augmentation. Which of the following statements is/are correct in respect of GAGAN? I. It is designed to provide additional accuracy and integrity. II. It will allow more uniform and high quality air traffic management. III. It will provide benefits only in aviation but not in other modes of transportation. Select the correct answer using the code given below.",
       "options": {
@@ -355,7 +490,16 @@
         "d": "I and II only"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2025_017",
@@ -377,7 +521,16 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_018",
@@ -399,7 +552,16 @@
         "d": "Nitrogen pentoxide"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_019",
@@ -413,7 +575,7 @@
       "questionNumber": 1,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "\u201cMembrane Bioreactors\u201d are often discussed in the context of:",
+      "question": "“Membrane Bioreactors” are often discussed in the context of:",
       "options": {
         "a": "Assisted reproductive technologies",
         "b": "Drug delivery nanotechnologies",
@@ -421,7 +583,16 @@
         "d": "Wastewater treatment technologies"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_020",
@@ -443,7 +614,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_021",
@@ -457,7 +637,7 @@
       "questionNumber": 2,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "Which one of the following words/phrases is most appropriately used to denote \u201can interoperable network of 3D Virtual worlds that can be accessed simultaneously by millions of users, who can exert property rights over virtual items\u201d?",
+      "question": "Which one of the following words/phrases is most appropriately used to denote “an interoperable network of 3D Virtual worlds that can be accessed simultaneously by millions of users, who can exert property rights over virtual items”?",
       "options": {
         "a": "Big data analytics",
         "b": "Cryptography",
@@ -465,7 +645,16 @@
         "d": "Virtual matrix"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_022",
@@ -487,7 +676,16 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-DEFENCE"
+      "syllabusNodeId": "GS3-ST-DEFENCE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_023",
@@ -499,7 +697,7 @@
       "microtheme": "Defence Technology",
       "year": 2024,
       "questionNumber": 4,
-      "questionType": "MCQ_SINGLE",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Which of the following statements about Exercise Mitra Shakti-2023 are-correct? 1. This was a joint military Exercise between India and Bangladesh. 2. It commenced in Aundh (Pune). 3. Joint response during counter-terroriam operations was a goal of this operation. 4. The Indian Air Force was a part of this exercise. Select the answer using the code given below:",
       "options": {
@@ -509,7 +707,16 @@
         "d": "2, 3 and 4"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-DEFENCE"
+      "syllabusNodeId": "GS3-ST-DEFENCE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_024",
@@ -531,7 +738,16 @@
         "d": "None"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-DEFENCE",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_025",
@@ -553,7 +769,16 @@
         "d": "1, 3 and 4 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-ENERGY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_026",
@@ -575,7 +800,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_027",
@@ -597,7 +831,16 @@
         "d": "Water vapour"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MAINS-CURRENT"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_028",
@@ -611,7 +854,7 @@
       "questionNumber": 5,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "Recently, the term\u201dpumped-storage hydropower\u201d is actually and appropriately discussed in the context of which one of the following?",
+      "question": "Recently, the term”pumped-storage hydropower” is actually and appropriately discussed in the context of which one of the following?",
       "options": {
         "a": "Irrigation of terraced crop fields",
         "b": "Lift irrigation of cereal crops",
@@ -619,7 +862,16 @@
         "d": "Rainwater harvesting system"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MAINS-CURRENT"
+      "syllabusNodeId": "GS3-ST-ENERGY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_029",
@@ -633,7 +885,7 @@
       "questionNumber": 6,
       "questionType": "MCQ_COUNT_BASED",
       "format": "text",
-      "question": "Consider the following: 1. Battery storage 2. Biomass generators 3. Fuel cells 4. Rooftop solar photovoltaic units How many of the above are considered \u201cDistributed Energy Resources\u201d?",
+      "question": "Consider the following: 1. Battery storage 2. Biomass generators 3. Fuel cells 4. Rooftop solar photovoltaic units How many of the above are considered “Distributed Energy Resources”?",
       "options": {
         "a": "Only one",
         "b": "Only two",
@@ -641,7 +893,16 @@
         "d": "All four"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-ENERGY",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2024_030",
@@ -653,7 +914,7 @@
       "microtheme": "Space Science",
       "year": 2024,
       "questionNumber": 4,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement-I: Giant stars live much longer than dwarf stars. Statement-II: Compared to dwarf stars, giant stars have a greater rate of nuclear reactions. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -663,7 +924,16 @@
         "d": "Statement I is incorrect, but Statement II is correct"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-SPACE"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2023_031",
@@ -677,7 +947,7 @@
       "questionNumber": 2,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "\u2018 Aerial metagenomics\u2019 best refers to which one of the following situations?",
+      "question": "‘ Aerial metagenomics’ best refers to which one of the following situations?",
       "options": {
         "a": "Collecting DNA samples from air in a habitat at one go",
         "b": "Understanding the genetic makeup of avian species of a habitat",
@@ -685,7 +955,16 @@
         "d": "Sending drones to inaccessible areas to collect plant and animal samples from land surfaces and water bodies"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2023_032",
@@ -699,15 +978,24 @@
       "questionNumber": 3,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "\u2018Microsatellite DNA\u2019 is used in the case of which one of the following?",
+      "question": "‘Microsatellite DNA’ is used in the case of which one of the following?",
       "options": {
         "a": "Studying the evolutionary relationships among various species of fauna",
-        "b": "Stimulating \u2018stem cells\u2019 to transform into diverse functional tissues",
+        "b": "Stimulating ‘stem cells’ to transform into diverse functional tissues",
         "c": "Promoting clonal propagation of horticultural plants",
         "d": "Assessing the efficacy of drugs by conducting series of drug trials in a population"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2023_033",
@@ -729,7 +1017,16 @@
         "d": "Japan"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2023_034",
@@ -751,7 +1048,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-DEFENCE"
+      "syllabusNodeId": "GS3-ST-DEFENCE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2023_035",
@@ -763,7 +1069,7 @@
       "microtheme": "Space Science",
       "year": 2023,
       "questionNumber": 5,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Objects in Description space 1. Cepheids : Giant clouds of dust and gas in space 2. Nebulae : Stars which brighten and dim periodically 3. Pulsars : Neutron stars that are formed when massive stars run out of fuel and collapse How many of the above pairs are correctly matched?",
       "options": {
@@ -773,7 +1079,16 @@
         "d": "None"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_036",
@@ -795,7 +1110,16 @@
         "d": "2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_037",
@@ -817,7 +1141,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_038",
@@ -834,12 +1167,21 @@
       "question": "Which one of the following statements best describes the role of B cells and T cells in the human body?",
       "options": {
         "a": "They protect the body from environmental allergens.",
-        "b": "They alleviate the body\u2019s pain and inflammation.",
+        "b": "They alleviate the body’s pain and inflammation.",
         "c": "They act as immunosuppressants in the body.",
         "d": "They protect the body from diseases caused by pathogens."
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_039",
@@ -861,7 +1203,16 @@
         "d": "2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_040",
@@ -883,7 +1234,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_041",
@@ -905,7 +1265,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_042",
@@ -927,7 +1296,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Emerging Technologies",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_043",
@@ -941,7 +1319,7 @@
       "questionNumber": 7,
       "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "With reference to \u201cSoftware as a Service (SaaS)\u201d, consider the following statements : 1. SaaS buyers can customise the user interface and can change data fields. 2. SaaS users can access their data through their mobile devices. 3. Outlook, Hotmail and Y ahoo! Mail are forms of SaaS. Which of the statements given above are correct?",
+      "question": "With reference to “Software as a Service (SaaS)”, consider the following statements : 1. SaaS buyers can customise the user interface and can change data fields. 2. SaaS users can access their data through their mobile devices. 3. Outlook, Hotmail and Y ahoo! Mail are forms of SaaS. Which of the statements given above are correct?",
       "options": {
         "a": "1 and 2 only",
         "b": "2 and 3 only",
@@ -949,7 +1327,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_044",
@@ -963,7 +1350,7 @@
       "questionNumber": 8,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "Which one of the following is the context in which the term \u201cqubit\u201d is mentioned?",
+      "question": "Which one of the following is the context in which the term “qubit” is mentioned?",
       "options": {
         "a": "Cloud Services",
         "b": "Quantum Computing",
@@ -971,7 +1358,16 @@
         "d": "Wireless Communication Technologies"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-QUANTUM",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_045",
@@ -993,7 +1389,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_046",
@@ -1015,7 +1420,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-DEFENCE"
+      "syllabusNodeId": "GS3-ST-DEFENCE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_047",
@@ -1037,7 +1451,16 @@
         "d": "2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MAINS-CURRENT"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Physics / Nuclear / Electronics",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2022_048",
@@ -1051,7 +1474,7 @@
       "questionNumber": 6,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "Which one of the following statements best reflects the idea behind the \u201cFractional Orbital Bombardment System\u201d often talked about in the media?",
+      "question": "Which one of the following statements best reflects the idea behind the “Fractional Orbital Bombardment System” often talked about in the media?",
       "options": {
         "a": "A hypersonic missile is launched into space to counter the asteroid approaching the Earth and explode it in space.",
         "b": "A spacecraft lands on another planet after making several orbital motions.",
@@ -1059,7 +1482,16 @@
         "d": "A spacecraft moves along a comet with the same speed and places a probe on its surface."
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-DEFENCE",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2021_049",
@@ -1073,7 +1505,7 @@
       "questionNumber": 8,
       "questionType": "MCQ_2_STATEMENT",
       "format": "text",
-      "question": "With reference to recent developments regarding \u2018Recombinant Vector Vaccines\u2019, consider the following statements: 1. Genetic engineering is applied in the development of these vaccines. 2. Bacteria and viruses are used as vectors. Which of the statements given above is/are correct?",
+      "question": "With reference to recent developments regarding ‘Recombinant Vector Vaccines’, consider the following statements: 1. Genetic engineering is applied in the development of these vaccines. 2. Bacteria and viruses are used as vectors. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 only",
@@ -1081,7 +1513,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2021_050",
@@ -1103,7 +1544,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2021_051",
@@ -1125,7 +1575,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2021_052",
@@ -1139,15 +1598,24 @@
       "questionNumber": 11,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "The term \u2018ACE2\u2019 is talked about in the context of",
+      "question": "The term ‘ACE2’ is talked about in the context of",
       "options": {
         "a": "genes introduced in the genetically modified plants",
-        "b": "development of India\u2019s own satellite navigation system",
+        "b": "development of India’s own satellite navigation system",
         "c": "radio collars for wildlife tracking",
         "d": "spread of viral diseases"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2021_053",
@@ -1169,7 +1637,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2021_054",
@@ -1191,7 +1668,16 @@
         "d": "production of biofertilizers"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2021_055",
@@ -1213,7 +1699,16 @@
         "d": "it is an oxide of hydrogen"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-BASIC-SCIENCE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2021_056",
@@ -1235,7 +1730,16 @@
         "d": "Polyvinyl chloride"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-MAINS-CURRENT"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2021_057",
@@ -1249,7 +1753,7 @@
       "questionNumber": 5,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "\u2018Triclosan\u2019, consider harmful when exposed to high levels for a long time, is most likely present in which of the following?",
+      "question": "‘Triclosan’, consider harmful when exposed to high levels for a long time, is most likely present in which of the following?",
       "options": {
         "a": "Food preservatives",
         "b": "Fruit-ripening substances",
@@ -1257,7 +1761,16 @@
         "d": "Toiletries"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MAINS-CURRENT"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2021_058",
@@ -1279,7 +1792,16 @@
         "d": "Speed of light is always same."
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2021_059",
@@ -1301,7 +1823,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-BASIC-SCIENCE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2021_060",
@@ -1323,7 +1854,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_061",
@@ -1335,9 +1875,9 @@
       "microtheme": "Biology",
       "year": 2020,
       "questionNumber": 5,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "With reference to the current trends in the cultivation of sugarcane in India, consider the following statements: 1. A substantial saving in seed material is when \u2018bud chip settlings\u2019 are raised in a nursery and transplanted in the main field. 2. When direct planting of seeds is done, the germination percentage is better with single-budded sets as compared to sets with many buds. 3. If bad weather conditions prevail when seeds are directly planted, single-budded setts have better survival as compared to large sets. 4. Sugarcane can be cultivated using settlings prepared from tissue culture. Which of the statements given above is/are correct?",
+      "question": "With reference to the current trends in the cultivation of sugarcane in India, consider the following statements: 1. A substantial saving in seed material is when ‘bud chip settlings’ are raised in a nursery and transplanted in the main field. 2. When direct planting of seeds is done, the germination percentage is better with single-budded sets as compared to sets with many buds. 3. If bad weather conditions prevail when seeds are directly planted, single-budded setts have better survival as compared to large sets. 4. Sugarcane can be cultivated using settlings prepared from tissue culture. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 and 2 only",
         "b": "3 only",
@@ -1345,7 +1885,16 @@
         "d": "2, 3 and 4 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_062",
@@ -1357,7 +1906,7 @@
       "microtheme": "Biology",
       "year": 2020,
       "questionNumber": 6,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Which of the following statements are correct regarding the general difference between plant and animal cells? 1. Plant cells have cellulose cell walls whilst animal cells do not. 2. Plant cells do not have plasma membranes unlike animal cells which do. 3. Mature plant cell has one large vacuole whilst an animal cell has many small vacuoles. Select the correct answer using the code given below:",
       "options": {
@@ -1367,7 +1916,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_063",
@@ -1389,7 +1947,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_064",
@@ -1403,7 +1970,7 @@
       "questionNumber": 15,
       "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: 1. Genetic changes can be introduced in the cells that produce eggs or sperms of a prospective parent. 2. A person\u2019s genome can be edited before birth at the early embryonic stage. 3. Human induced pluripotent stem cells can be injected into the embryo of a pig. Which of the statements given above is/are correct?",
+      "question": "Consider the following statements: 1. Genetic changes can be introduced in the cells that produce eggs or sperms of a prospective parent. 2. A person’s genome can be edited before birth at the early embryonic stage. 3. Human induced pluripotent stem cells can be injected into the embryo of a pig. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 and 3 only",
@@ -1411,7 +1978,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.85,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 5,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_065",
@@ -1425,7 +2001,7 @@
       "questionNumber": 16,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "In the context of recent advances in human reproductive technology, \u2018Pronuclear Transfer\u201d is used for",
+      "question": "In the context of recent advances in human reproductive technology, ‘Pronuclear Transfer” is used for",
       "options": {
         "a": "Fertilization of egg in vitro by the donor sperm",
         "b": "Genetic modification of sperm producing cells",
@@ -1433,7 +2009,16 @@
         "d": "Prevention of mitochondrial diseases in offspring"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_066",
@@ -1447,7 +2032,7 @@
       "questionNumber": 10,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "In India, the term \u201cPublic Key Infrastructure\u201d is used in the context of",
+      "question": "In India, the term “Public Key Infrastructure” is used in the context of",
       "options": {
         "a": "Digital security infrastructure",
         "b": "Food security infrastructure",
@@ -1455,7 +2040,16 @@
         "d": "Telecommunication and transportation infrastructure"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_067",
@@ -1467,7 +2061,7 @@
       "microtheme": "Communication Technology",
       "year": 2020,
       "questionNumber": 11,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to visible light communication (VLC) technology, which of the following statements are correct? 1. VLC uses electromagnetic spectrum wavelengths 375 to 780nm 2. VLC is known as long-range optical wireless communication. 3. VLC can transmit large amounts of data faster than Bluetooth 4. VLC has no electromagnetic interference Select the correct answer using the code given below",
       "options": {
@@ -1477,7 +2071,16 @@
         "d": "2, 3 and 4 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Physics / Nuclear / Electronics",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_068",
@@ -1491,7 +2094,7 @@
       "questionNumber": 12,
       "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "With reference to \u201cBlockchain Technology\u201d, consider the following statements: 1. It is a public ledger that everyone can inspect but which no single user controls. 2. The structure and design of the blockchain is such that all the data in it are about cryptocurrency only. 3. Applications that depend on basic features of blockchain can be developed without anybody\u2019s permission. Which of the statements given above is/are correct?",
+      "question": "With reference to “Blockchain Technology”, consider the following statements: 1. It is a public ledger that everyone can inspect but which no single user controls. 2. The structure and design of the blockchain is such that all the data in it are about cryptocurrency only. 3. Applications that depend on basic features of blockchain can be developed without anybody’s permission. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "1 and 2 only",
@@ -1499,7 +2102,16 @@
         "d": "1 and 3 only"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Emerging Technologies",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_069",
@@ -1521,7 +2133,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-ENERGY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_070",
@@ -1543,7 +2164,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_071",
@@ -1565,7 +2195,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-DEFENCE",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_072",
@@ -1587,7 +2226,16 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-AI",
+      "topic": "Emerging Technologies",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2020_073",
@@ -1601,7 +2249,7 @@
       "questionNumber": 7,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "The experiment will employ a trio of spacecraft flying in formation in the shape of an equilateral triangle that has sides one million kilometers long, with lasers shining between the craft.\u201d The experiment in question refers to",
+      "question": "The experiment will employ a trio of spacecraft flying in formation in the shape of an equilateral triangle that has sides one million kilometers long, with lasers shining between the craft.” The experiment in question refers to",
       "options": {
         "a": "Voyager-2",
         "b": "New Horizons",
@@ -1609,7 +2257,16 @@
         "d": "Evolved LISA"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_074",
@@ -1621,7 +2278,7 @@
       "microtheme": "Biology",
       "year": 2019,
       "questionNumber": 7,
-      "questionType": "MCQ_SINGLE",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Which of the following statements is not correct?",
       "options": {
@@ -1631,7 +2288,16 @@
         "d": "Some of those infected with Hepatitis B and C viruses do not show the symptoms for many years."
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_075",
@@ -1653,7 +2319,16 @@
         "d": "2, 3 and 4 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_076",
@@ -1675,7 +2350,16 @@
         "d": "A herbicidal substance synthesized in generally modified crops."
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_077",
@@ -1697,7 +2381,16 @@
         "d": "1 and 4 only"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_078",
@@ -1719,7 +2412,16 @@
         "d": "Cells taken out from plants and animals can be made to undergo cell division in laboratory petri dishes."
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_079",
@@ -1741,7 +2443,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_080",
@@ -1763,7 +2474,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_081",
@@ -1775,7 +2495,7 @@
       "microtheme": "Communication Technology",
       "year": 2019,
       "questionNumber": 15,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "In the context of digital technologies for entertainment, consider the following statements: 1. In Augmented Reality (AR), a simulated environment is created, and the physical world is completely shut out. 2. In Virtual Reality (VR), images generated from the computer are projected onto real life objects or surroundings. 3. AR allows individuals to be present in the world and improves the experience using the camera of a smart-phone or PC. 4. VR closes the world, and transposes an individual, providing a complete immersion experience. Which of the statements given above is/are correct?",
       "options": {
@@ -1785,7 +2505,16 @@
         "d": "4 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_082",
@@ -1807,7 +2536,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_083",
@@ -1821,7 +2559,7 @@
       "questionNumber": 10,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "The word \u2018Denisovan\u2019 is sometimes mentioned in media in reference to:",
+      "question": "The word ‘Denisovan’ is sometimes mentioned in media in reference to:",
       "options": {
         "a": "fossil of a kind of dinosaur.",
         "b": "an early human species.",
@@ -1829,7 +2567,16 @@
         "d": "a geological period in the history of the Indian subcontinent."
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-MAINS-CURRENT"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_084",
@@ -1851,7 +2598,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IPR"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_085",
@@ -1873,7 +2629,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2019_086",
@@ -1887,15 +2652,24 @@
       "questionNumber": 9,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "Recently, scientists observed the merger of giant \u2018blackholes\u2019 billions of light-years away from the Earth. What is the significance of this observation?",
+      "question": "Recently, scientists observed the merger of giant ‘blackholes’ billions of light-years away from the Earth. What is the significance of this observation?",
       "options": {
-        "a": "\u2018Higgs boson particles\u2019 were detected.",
-        "b": "\u2018Gravitational waves\u2019 were detected.",
-        "c": "Possibility of intergalactic space travel through \u2018wormhole\u2019 was confirmed.",
-        "d": "It enabled scientists to understand \u2018singularity\u2019 ."
+        "a": "‘Higgs boson particles’ were detected.",
+        "b": "‘Gravitational waves’ were detected.",
+        "c": "Possibility of intergalactic space travel through ‘wormhole’ was confirmed.",
+        "d": "It enabled scientists to understand ‘singularity’ ."
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-SPACE"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2018_087",
@@ -1917,7 +2691,16 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2018_088",
@@ -1939,7 +2722,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2018_089",
@@ -1961,7 +2753,16 @@
         "d": "Virtual Private Network"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2018_090",
@@ -1983,7 +2784,16 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2018_091",
@@ -1995,7 +2805,7 @@
       "microtheme": "Miscellaneous",
       "year": 2018,
       "questionNumber": 13,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Terms sometimes seen in Context/Topic news 1. Belle II experiment Artificial Intelligence 2. Blockchain technology Digital/Cryptocurrency 3. CRISPR-Cas9 Particle Physics Which of the pairs given above is/are correctly matched?",
       "options": {
@@ -2005,7 +2815,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Emerging Technologies",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.85,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 4,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2018_092",
@@ -2027,7 +2846,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-SPACE"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2018_093",
@@ -2049,7 +2877,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2018_094",
@@ -2063,7 +2900,7 @@
       "questionNumber": 12,
       "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "With reference to India\u2019s satellite launch vehicles, consider the following statements: 1. PSLVs launch the satellites useful for Earth resources monitoring whereas GSLVs are designed mainly to launch communication satellites. 2. Satellites launched by PSLV appear to remain permanently fixed in the same position in the sky, as viewed from a particular location on Earth. 3. GSLV Mk III is a four-staged launch vehicle with the first and third stages l using solid rocket motors; and the second and fourth stages using liquid rocket engines. Which of the statements given above is/are correct?",
+      "question": "With reference to India’s satellite launch vehicles, consider the following statements: 1. PSLVs launch the satellites useful for Earth resources monitoring whereas GSLVs are designed mainly to launch communication satellites. 2. Satellites launched by PSLV appear to remain permanently fixed in the same position in the sky, as viewed from a particular location on Earth. 3. GSLV Mk III is a four-staged launch vehicle with the first and third stages l using solid rocket motors; and the second and fourth stages using liquid rocket engines. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 and 3 only",
@@ -2071,7 +2908,16 @@
         "d": "3 only"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.85,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 4,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2018_095",
@@ -2093,7 +2939,16 @@
         "d": "None"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2017_096",
@@ -2115,7 +2970,16 @@
         "d": "Production of organisms free of diseases"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2017_097",
@@ -2129,7 +2993,7 @@
       "questionNumber": 22,
       "questionType": "MCQ_MULTI_SELECT",
       "format": "text",
-      "question": "With reference to agriculture in India, how can the technique of \u2018genome sequencing', often seen in the news, be used in the immediate future? 1. Genome sequencing can be used to identify genetic markers for disease resistance and drought tolerance in various crop plants. 2. This technique helps in reducing the time required to develop new varieties of crop plants. 3. It can be used to decipher the host-pathogen relationships in crops. Select the correct answer using the code given below:",
+      "question": "With reference to agriculture in India, how can the technique of ‘genome sequencing', often seen in the news, be used in the immediate future? 1. Genome sequencing can be used to identify genetic markers for disease resistance and drought tolerance in various crop plants. 2. This technique helps in reducing the time required to develop new varieties of crop plants. 3. It can be used to decipher the host-pathogen relationships in crops. Select the correct answer using the code given below:",
       "options": {
         "a": "1 only",
         "b": "2 and 3 only",
@@ -2137,7 +3001,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2017_098",
@@ -2149,7 +3022,7 @@
       "microtheme": "Miscellaneous",
       "year": 2017,
       "questionNumber": 14,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Commonly Unwanted or controversial used/consumed chemicals likely to be found in them materials 1. Lipstick Lead 2. Soft drinks Brominated vegetable oils 3. Chinese fast food Monosodium glutamate Which of the pairs given above is/are correctly matched?",
       "options": {
@@ -2159,7 +3032,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2017_099",
@@ -2181,7 +3063,16 @@
         "d": "None of the above statements is correct"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2016_100",
@@ -2193,7 +3084,7 @@
       "microtheme": "Biology",
       "year": 2016,
       "questionNumber": 10,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Which of the following statements is/are correct? Viruses can infect 1. bacteria 2. fungi 3. plants Select the correct answer using the code given below.",
       "options": {
@@ -2203,7 +3094,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2016_101",
@@ -2217,7 +3117,7 @@
       "questionNumber": 23,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "In the context of the developments in Bioinformatics, the term \u2018transcriptome\u2019, sometimes seen in the news, refers to",
+      "question": "In the context of the developments in Bioinformatics, the term ‘transcriptome’, sometimes seen in the news, refers to",
       "options": {
         "a": "A range of enzymes used in genome editing",
         "b": "The full range of mRNA molecules expressed by an organism",
@@ -2225,7 +3125,16 @@
         "d": "A mechanism of genetic mutations taking place in cells"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2016_102",
@@ -2237,9 +3146,9 @@
       "microtheme": "Communication Technology",
       "year": 2016,
       "questionNumber": 18,
-      "questionType": "MCQ_SINGLE",
+      "questionType": "MCQ_2_STATEMENT",
       "format": "text",
-      "question": "With reference to \u2018LiFi\u2019, recently in the news, which of the following statements is/are correct? 1. It uses light as the medium for high-speed data transmission. 2. It is wireless technology and is several times faster than \u2018WiFi\u2019 . Select the correct answer using the codes given below:",
+      "question": "With reference to ‘LiFi’, recently in the news, which of the following statements is/are correct? 1. It uses light as the medium for high-speed data transmission. 2. It is wireless technology and is several times faster than ‘WiFi’ . Select the correct answer using the codes given below:",
       "options": {
         "a": "1 only",
         "b": "2 only",
@@ -2247,7 +3156,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2016_103",
@@ -2261,7 +3179,7 @@
       "questionNumber": 7,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "India is an important member of the \u2018International Thermonuclear Experimental Reactor\u2019. If this experiment succeeds, what is the immediate advantage for India?",
+      "question": "India is an important member of the ‘International Thermonuclear Experimental Reactor’. If this experiment succeeds, what is the immediate advantage for India?",
       "options": {
         "a": "It can use thorium in place of uranium for power generation",
         "b": "It can attain a global role in satellite navigation",
@@ -2269,7 +3187,16 @@
         "d": "It can build fusion reactors for power generation"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-NUCLEAR"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2016_104",
@@ -2281,9 +3208,9 @@
       "microtheme": "Space Science",
       "year": 2016,
       "questionNumber": 14,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_2_STATEMENT",
       "format": "text",
-      "question": "With reference to \u2018AstroSat\u2019, the astronomical observatory launched by India, which of the following statements is/are correct? 1. Other than the USA and Russia, India is the only country to have launched a similar observatory into space. 2. AstroSat is a 2000 kg satellite placed in an orbit at 1650 km above the surface of the Earth. Select the correct answer using the code given below.",
+      "question": "With reference to ‘AstroSat’, the astronomical observatory launched by India, which of the following statements is/are correct? 1. Other than the USA and Russia, India is the only country to have launched a similar observatory into space. 2. AstroSat is a 2000 kg satellite placed in an orbit at 1650 km above the surface of the Earth. Select the correct answer using the code given below.",
       "options": {
         "a": "1 only",
         "b": "2 only",
@@ -2291,7 +3218,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2016_105",
@@ -2313,7 +3249,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2015_106",
@@ -2325,9 +3270,9 @@
       "microtheme": "Communication Technology",
       "year": 2015,
       "questionNumber": 19,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "With reference to \u2018Near Field Communication (NFC) Technology\u2019, which of the following statements is/are correct? 1. It is a contactless communication technology that uses electromagnetic radio fields. 2. NFC is designed for use by devices which can be at distance of even a metre from each other. 3. NFC can use encryption when sending sensitive information. Select the correct answer using the code given below:",
+      "question": "With reference to ‘Near Field Communication (NFC) Technology’, which of the following statements is/are correct? 1. It is a contactless communication technology that uses electromagnetic radio fields. 2. NFC is designed for use by devices which can be at distance of even a metre from each other. 3. NFC can use encryption when sending sensitive information. Select the correct answer using the code given below:",
       "options": {
         "a": "1 and 2 only",
         "b": "3 only",
@@ -2335,7 +3280,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Physics / Nuclear / Electronics",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2015_107",
@@ -2349,7 +3303,7 @@
       "questionNumber": 8,
       "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "With reference to \u2018fuel cells\u2019 in which hydrogen-rich fuel and oxygen are used to generate electricity. Consider the following statements: 1. If pure hydrogen is used as a fuel, the fuel cell emits heat and water as by-products. 2. Fuel cells can be used for powering buildings and not for small devices like laptop computers. 3. Fuel cells produce electricity in the form of Alternating Current (AC). Which of the statements given above is/are correct?",
+      "question": "With reference to ‘fuel cells’ in which hydrogen-rich fuel and oxygen are used to generate electricity. Consider the following statements: 1. If pure hydrogen is used as a fuel, the fuel cell emits heat and water as by-products. 2. Fuel cells can be used for powering buildings and not for small devices like laptop computers. 3. Fuel cells produce electricity in the form of Alternating Current (AC). Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 and 3 only",
@@ -2357,7 +3311,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2015_108",
@@ -2369,7 +3332,7 @@
       "microtheme": "Miscellaneous",
       "year": 2015,
       "questionNumber": 16,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_2_STATEMENT",
       "format": "text",
       "question": "With reference to the use of nanotechnology in the health sector, which of the following statements is/are correct? 1. Targeted drug delivery is made possible by nanotechnology. 2. Nanotechnology can largely contribute to gene therapy. Select the correct answer using the code given below:",
       "options": {
@@ -2379,7 +3342,16 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2015_109",
@@ -2401,7 +3373,16 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2015_110",
@@ -2415,7 +3396,7 @@
       "questionNumber": 17,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "The term \u2018Goldilocks Zone\u2019 is often seen in the news in the context of",
+      "question": "The term ‘Goldilocks Zone’ is often seen in the news in the context of",
       "options": {
         "a": "the limits of habitable zone above the surface of the Earth",
         "b": "regions inside the Earth-like planets in outer space",
@@ -2423,7 +3404,16 @@
         "d": "search for meteorites containing precious metals"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-SPACE"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2015_111",
@@ -2437,7 +3427,7 @@
       "questionNumber": 18,
       "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "In the context of modern scientific research, consider the following statements about \u2018IceCube\u2019, a particle detector located at South Pole, which was recently in the news: 1. It is the world\u2019s largest neutrino detector, encompassing a cubic kilometre of ice. 2. It is a powerful telescope to search for dark matter. 3. It is buried deep in the ice. Which of the statements given above is/are correct?",
+      "question": "In the context of modern scientific research, consider the following statements about ‘IceCube’, a particle detector located at South Pole, which was recently in the news: 1. It is the world’s largest neutrino detector, encompassing a cubic kilometre of ice. 2. It is a powerful telescope to search for dark matter. 3. It is buried deep in the ice. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 and 3 only",
@@ -2445,7 +3435,16 @@
         "d": "1, 2 and 3 only"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Physics / Nuclear / Electronics",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2014_112",
@@ -2467,7 +3466,16 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2014_113",
@@ -2489,7 +3497,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2014_114",
@@ -2501,7 +3518,7 @@
       "microtheme": "Biology",
       "year": 2014,
       "questionNumber": 13,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Which of the following statements is/are correct regarding vegetative propagation of plants? 1. Vegetative propagation produces a clonal population. 2. Vegetative propagation helps in eliminating the virus. 3. Vegetative propagation can be practised most of the year. Select the correct answer using the code given below:",
       "options": {
@@ -2511,7 +3528,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2014_115",
@@ -2523,7 +3549,7 @@
       "microtheme": "Biology",
       "year": 2014,
       "questionNumber": 14,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Vitamin Deficiency Disease 1. Vitamin C Scurvy 2. Vitamin D Rickets 3. Vitamin E Night blindness Which of the pairs given above is/are correctly matched?",
       "options": {
@@ -2533,7 +3559,16 @@
         "d": "None"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2014_116",
@@ -2555,7 +3590,16 @@
         "d": "fungi and mosses"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2014_117",
@@ -2577,7 +3621,16 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2014_118",
@@ -2599,7 +3652,16 @@
         "d": "None"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2014_119",
@@ -2621,7 +3683,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-CYBERSECURITY",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2014_120",
@@ -2633,7 +3704,7 @@
       "microtheme": "Defence Technology",
       "year": 2014,
       "questionNumber": 8,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "With reference to Agni-IV Missile, which of the following statements is/are correct? 1. It is a surface-to-surface missile. 2. It is fuelled by liquid propellant only. 3. It can deliver one-tonne nuclear warheads about 7500 km away. Select the correct answer using the code given below:",
       "options": {
@@ -2643,7 +3714,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-DEFENCE"
+      "syllabusNodeId": "GS3-ST-DEFENCE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2014_121",
@@ -2665,7 +3745,16 @@
         "d": "None"
       },
       "answer": null,
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2014_122",
@@ -2687,7 +3776,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2013_123",
@@ -2709,7 +3807,16 @@
         "d": "there is an increase in humidity"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2013_124",
@@ -2731,7 +3838,16 @@
         "d": "leaves get damaged during transplantation"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2013_125",
@@ -2743,7 +3859,7 @@
       "microtheme": "Biology",
       "year": 2013,
       "questionNumber": 18,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Which of the following statements is/are correct? 1. Viruses lack enzymes necessary for the generation of energy. 2. Viruses can be cultured in any synthetic medium. 3. Viruses are transmitted from one organism to another by biological vectors only. Select the correct answer using the code given below:",
       "options": {
@@ -2753,7 +3869,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2013_126",
@@ -2775,7 +3900,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "b",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2013_127",
@@ -2797,7 +3931,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2013_128",
@@ -2819,7 +3962,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2013_129",
@@ -2841,7 +3993,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-BIOTECH"
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2013_130",
@@ -2863,7 +4024,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Space Technology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2013_131",
@@ -2885,7 +4055,16 @@
         "d": "None of the statements is correct"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2013_132",
@@ -2907,7 +4086,16 @@
         "d": "2, 3 and 5"
       },
       "answer": "c",
-      "syllabusNodeId": "GS3-ST-GENSCI-BIO"
+      "syllabusNodeId": "GS3-ST-SPACE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2013_133",
@@ -2929,7 +4117,16 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Biotechnology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_SCI_2013_134",
@@ -2951,7 +4148,16 @@
         "d": "Strong nuclear force holds protons and neutrons inside the nucleus of an atom"
       },
       "answer": "a",
-      "syllabusNodeId": "GS3-ST-IT-COMM"
+      "syllabusNodeId": "GS3-ST-MATERIALS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     }
   ]
 }

@@ -1,0 +1,34 @@
+{
+  "schema": "mainsAnswerAttempt",
+  "attemptId": "attempt_1775317349804_a315tv",
+  "createdAt": "2026-04-04T15:42:29.805Z",
+  "userId": "test_user_001",
+  "source": {
+    "year": 2023,
+    "paper": "GS1",
+    "questionMarks": 15,
+    "questionId": "GS1_2023_Q14"
+  },
+  "question": {
+    "wordLimit": 250,
+    "paper": "GS1",
+    "marks": 15,
+    "text": "Discuss the significance of women's participation in the freedom struggle of India. How did it transform the nature of the independence movement?"
+  },
+  "writingSession": {
+    "wordCount": 238,
+    "completedAt": "2026-04-04T20:18:00.000Z",
+    "durationMinutes": 18,
+    "startedAt": "2026-04-04T20:00:00.000Z"
+  },
+  "answerUpload": {
+    "extractedText": "Women played a pivotal role in India's freedom struggle...",
+    "method": "typed"
+  },
+  "extraction": {},
+  "selfReview": {
+    "selfNote": "Covered social dimensions but missed economic angle",
+    "selfScore": 10
+  },
+  "status": "saved"
+}

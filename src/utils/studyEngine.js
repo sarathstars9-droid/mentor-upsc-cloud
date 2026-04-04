@@ -237,6 +237,18 @@ export function buildTodayBlocksFromParsed(out) {
       // linked pyq
       linkedPyqs: item?.linkedPyqs || null,
       mapped: mapped || null,
+
+      // new Phase 2.5 fields
+      confidenceBadge: item?.confidenceBadge || "LOW",
+      isApproved: item?.isApproved ?? false,
+      mappingSource: item?.mappingSource || "UNKNOWN",
+      nodeId: item?.nodeId || "",
+      nodeName: item?.nodeName || "",
+      subjectId: item?.subjectId || "",
+      subjectCandidates: item?.subjectCandidates || [],
+      topicCandidates: item?.topicCandidates || [],
+      textQuality: item?.textQuality || "LOW",
+      resolverConfidence: item?.resolverConfidence || 0,
     };
   });
 }
@@ -387,6 +399,16 @@ export function buildScheduleBlocksPayload(blocks) {
       isNonStudy: block.IsNonStudy || "no",
       locked: block.Locked || "no",
       approvalRequired: block.ApprovalRequired || "yes",
+
+      // new Phase 2.5 fields
+      confidenceBadge: block.confidenceBadge || "LOW",
+      isApproved: block.isApproved ?? false,
+      mappingSource: block.mappingSource || "UNKNOWN",
+      nodeId: block.nodeId || "",
+      nodeName: block.nodeName || "",
+      subjectId: block.subjectId || "",
+      textQuality: block.textQuality || "LOW",
+      resolverConfidence: safeNumber(block.resolverConfidence, 0),
 
       // multi-mapping
       mappedNodesRaw:

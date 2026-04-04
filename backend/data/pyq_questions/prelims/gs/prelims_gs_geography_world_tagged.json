@@ -10,14 +10,14 @@
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: I. Without the atmosphere, temperature would be well below freezing point everywhere on the Earth\u2019s surface. II. Heat absorbed and trapped by the atmosphere maintains our planet\u2019s average temperature. III. Atmosphere\u2019s gases, like carbon dioxide, are particularly good at absorbing and trapping radiation. Which of the statements given above are correct?",
+      "question": "Consider the following statements: I. Without the atmosphere, temperature would be well below freezing point everywhere on the Earth’s surface. II. Heat absorbed and trapped by the atmosphere maintains our planet’s average temperature. III. Atmosphere’s gases, like carbon dioxide, are particularly good at absorbing and trapping radiation. Which of the statements given above are correct?",
       "options": {
         "a": "I and III only",
         "b": "I and II only",
@@ -25,19 +25,28 @@
         "d": "II and III only"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2025_002",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2025,
       "questionNumber": 2,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement I: The amount of dust particles in the atmosphere is more in subtropical and temperate areas than in equatorial and polar regions. Statement II: Subtropical and temperate areas have less dry winds. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -47,19 +56,28 @@
         "d": "Statement I is not correct but Statement II is correct"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2025_003",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2025,
       "questionNumber": 3,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement I: In January, in the Northern Hemisphere, the isotherms bend equatorward while crossing the landmasses, and poleward while crossing the oceans. Statement II: In January, the air over the oceans is warmer than that over the landmasses in the Northern Hemisphere. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -69,19 +87,28 @@
         "d": "Statement I is not correct but Statement II is correct"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Oceanography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2025_004",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Geomorphology",
       "microtheme": "Geomorphology",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_3_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement I: In the context of effect of water on rocks, chalk is known as a very permeable rock whereas clay is known as quite an impermeable or least permeable rock. Statement II: Chalk is porous and hence can absorb water. Statement III: Clay is not at all porous. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -91,14 +118,23 @@
         "d": "Neither Statement II nor Statement III is correct"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS"
+      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2025_005",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Geomorphology",
       "microtheme": "Geomorphology",
       "year": 2025,
@@ -113,21 +149,30 @@
         "d": "II and III only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS"
+      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS",
+      "topic": "Indian Geography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2025_006",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Geomorphology",
       "microtheme": "Geomorphology",
       "year": 2025,
       "questionNumber": 3,
-      "questionType": "MCQ_3_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: Statement I: Scientific studies suggest that a shift is taking place in the Earth\u2019s rotation and axis. Statement II: Solar flares and associated coronal mass ejections bombarded the Earth\u2019s outermost atmosphere with a tremendous amount of energy. Statement III: As the Earth\u2019s polar ice melts, the water tends to move towards the equator. Which one of the following is correct in respect of the above statements?",
+      "question": "Consider the following statements: Statement I: Scientific studies suggest that a shift is taking place in the Earth’s rotation and axis. Statement II: Solar flares and associated coronal mass ejections bombarded the Earth’s outermost atmosphere with a tremendous amount of energy. Statement III: As the Earth’s polar ice melts, the water tends to move towards the equator. Which one of the following is correct in respect of the above statements?",
       "options": {
         "a": "Both Statement II and Statement III are correct and both of them explain Statement I",
         "b": "Both Statement II and Statement III are correct but only one of them explains Statement I",
@@ -135,19 +180,28 @@
         "d": "Neither Statement II nor Statement III is correct"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2025_007",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Human and Economic Geography",
       "microtheme": "Human and Economic Geography",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Country : Resource-rich in I. Botswana : Diamond II. Chile : Lithium III. Indonesia : Nickel In how many of the above rows is the given information correctly matched?",
       "options": {
@@ -157,19 +211,28 @@
         "d": "None"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Resources & Agriculture",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2025_008",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "The Earth and the Universe",
       "microtheme": "The Earth and the Universe",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: I. Anadyr in Siberia and Nome in Alaska are a few kilometers from each other, but when people are waking up and getting set for breakfast in these cities, it would be different days. II. When it is Monday in Anadyr, it is Tuesday in Nome. Which of the statements given above is/are correct?",
       "options": {
@@ -179,14 +242,23 @@
         "d": "Neither I nor II"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE"
+      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2025_009",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "The Earth and the Universe",
       "microtheme": "The Earth and the Universe",
       "year": 2025,
@@ -201,19 +273,28 @@
         "d": "Only two"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE"
+      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2025_010",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2025,
       "questionNumber": 1,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Region : Country I. Mallorca : Italy II. Normandy : Spain III. Sardinia : France In how many of the above rows is the given information correctly matched?",
       "options": {
@@ -223,14 +304,23 @@
         "d": "None"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2025_011",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2025,
@@ -245,14 +335,23 @@
         "d": "Only five"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Indian Geography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2025_012",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2025,
@@ -267,21 +366,30 @@
         "d": "None"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_013",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2024,
       "questionNumber": 4,
-      "questionType": "MCQ_SINGLE",
+      "questionType": "MCQ_2_STATEMENT",
       "format": "text",
-      "question": "With reference to \u201cwater vapour\u201d, which of the following statements is/are correct? 1. It is a gas, the amount of which decreases with altitude. 2. Its percentage is maximum at the poles. Select the answer using the code given below:",
+      "question": "With reference to “water vapour”, which of the following statements is/are correct? 1. It is a gas, the amount of which decreases with altitude. 2. Its percentage is maximum at the poles. Select the answer using the code given below:",
       "options": {
         "a": "1 only",
         "b": "2 only",
@@ -289,14 +397,23 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_014",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2024,
@@ -311,19 +428,28 @@
         "d": "Marine West coast climate"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Climatology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_015",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2024,
       "questionNumber": 6,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement-I: The atmosphere is heated more by incoming solar radiation than by terrestrial radiation. Statement-II: Carbon dioxide and other greenhouse gasses in the atmosphere are good absorbers of long wave radiation. Which one of the following is correct in respect of the above statements ?",
       "options": {
@@ -333,14 +459,23 @@
         "d": "Statement-I is incorrect, but Statement-II is correct"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_016",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2024,
@@ -355,21 +490,30 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Oceanography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.85,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 4,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_017",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Geomorphology",
       "microtheme": "Geomorphology",
       "year": 2024,
       "questionNumber": 4,
-      "questionType": "MCQ_SINGLE",
+      "questionType": "MCQ_2_STATEMENT",
       "format": "text",
-      "question": "With reference to \u201cCoriolis force\u201d, which of the following statements is/are correct? 1. It increases with increase in wind velocity. 2. It is maximum at the poles and is absent at the equator. Select the answer using the code given below:",
+      "question": "With reference to “Coriolis force”, which of the following statements is/are correct? 1. It increases with increase in wind velocity. 2. It is maximum at the poles and is absent at the equator. Select the answer using the code given below:",
       "options": {
         "a": "1 only",
         "b": "2 only",
@@ -377,14 +521,23 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS"
+      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_018",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Geomorphology",
       "microtheme": "Geomorphology",
       "year": 2024,
@@ -399,19 +552,28 @@
         "d": "All four"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS"
+      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_019",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Geomorphology",
       "microtheme": "Geomorphology",
       "year": 2024,
       "questionNumber": 6,
-      "questionType": "MCQ_3_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement- I: Rainfall is one of the reasons for the weathering of rocks. Statement-II : Rain water contains carbon dioxide in solution. Statement-III : Rain water contains atmospheric oxygen. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -421,14 +583,23 @@
         "d": "Neither Statement-II nor Statement - III is correct"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS"
+      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_020",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Geomorphology",
       "microtheme": "Geomorphology",
       "year": 2024,
@@ -443,14 +614,23 @@
         "d": "All four"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS"
+      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS",
+      "topic": "Geomorphology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 3,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_021",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "The Earth and the Universe",
       "microtheme": "The Earth and the Universe",
       "year": 2024,
@@ -465,19 +645,28 @@
         "d": "2 and 4"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE"
+      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_022",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "The Earth and the Universe",
       "microtheme": "The Earth and the Universe",
       "year": 2024,
       "questionNumber": 4,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement- I: Thickness of the troposphere at the equator is much greater as compared to poles. Statement-II: At the equator heat is transported to great heights by strong convection currents. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -487,14 +676,23 @@
         "d": "Statement-I is incorrect, but Statement-II in correct"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS"
+      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_023",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Climatic Regions",
       "microtheme": "World Climatic Regions",
       "year": 2024,
@@ -509,21 +707,30 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Indian Geography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_024",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Climatic Regions",
       "microtheme": "World Climatic Regions",
       "year": 2024,
       "questionNumber": 2,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "One of the following regions has the world\u2019s largest tropical peatland, which holds about three years worth of global carbon emissions from fossil fuels; and the possible destruction of which can exert detrimental effects on the global climate. Which one of the following denotes that region?",
+      "question": "One of the following regions has the world’s largest tropical peatland, which holds about three years worth of global carbon emissions from fossil fuels; and the possible destruction of which can exert detrimental effects on the global climate. Which one of the following denotes that region?",
       "options": {
         "a": "Amazon Basin",
         "b": "Congo Basin",
@@ -531,14 +738,23 @@
         "d": "Rio de la Plata Basin"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Climatology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_025",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2024,
@@ -553,14 +769,23 @@
         "d": "Kazakhstan and Russian Federation"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2024_026",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2024,
@@ -575,19 +800,28 @@
         "d": "All four"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2023_027",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2023,
       "questionNumber": 8,
-      "questionType": "MCQ_2_STATEMENT",
+      "questionType": "MCQ_1_STATEMENT",
       "format": "text",
       "question": "Consider the following statements: Statement-I: The temperature contrast between continents and oceans is greater during summer than in winter. Statement-II: The specific heat of water is more than that of land surface. Which one of the following is correct in respect of the above statements?",
       "options": {
@@ -597,14 +831,23 @@
         "d": "Statement-I is incorrect but Statement-II is correct"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Oceanography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2023_028",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Geomorphology",
       "microtheme": "Geomorphology",
       "year": 2023,
@@ -619,19 +862,28 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS"
+      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2023_029",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Human and Economic Geography",
       "microtheme": "Human and Economic Geography",
       "year": 2023,
       "questionNumber": 2,
-      "questionType": "MCQ_COUNT_BASED",
+      "questionType": "MCQ_3_STATEMENT",
       "format": "text",
       "question": "Consider the following statements : 1. India has more arable area than China. 2. The proportion of irrigated area is more in India as compared to China. 3. The average productivity per hectare in Indian agriculture is higher than that in China. How many of the above statements are correct?",
       "options": {
@@ -641,14 +893,23 @@
         "d": "None"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-HEW-ACTIVITIES"
+      "syllabusNodeId": "GS1-GEO-HEW-ACTIVITIES",
+      "topic": "Resources & Agriculture",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2023_030",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Human and Economic Geography",
       "microtheme": "Human and Economic Geography",
       "year": 2023,
@@ -663,21 +924,30 @@
         "d": "Kazakhstan"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-HEW-ACTIVITIES"
+      "syllabusNodeId": "GS1-GEO-HEW-ACTIVITIES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2023_031",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "The Earth and the Universe",
       "microtheme": "The Earth and the Universe",
       "year": 2023,
       "questionNumber": 5,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "With reference to the Earth\u2019s atmosphere, which one of the following statements is correct?",
+      "question": "With reference to the Earth’s atmosphere, which one of the following statements is correct?",
       "options": {
         "a": "The total amount of insolation received at the equator is roughly about 10 times that received at the poles.",
         "b": "Infrared rays constitute roughly two-thirds of insolation.",
@@ -685,14 +955,23 @@
         "d": "Infrared waves are a part of the visible spectrum of electromagnetic waves of solar radiation."
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2023_032",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2023,
@@ -707,14 +986,23 @@
         "d": "Uganda"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2023_033",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2023,
@@ -729,21 +1017,30 @@
         "d": "Only five"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2022_034",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2022,
       "questionNumber": 9,
       "questionType": "MCQ_2_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: 1. High clouds primarily reflect solar radiation and cool the surface of the Earth. 2. Low clouds have a high absorption of infrared radiation emanating from the Earth\u2019s surface and thus cause a warming effect. Which of the statements given above is/are correct?",
+      "question": "Consider the following statements: 1. High clouds primarily reflect solar radiation and cool the surface of the Earth. 2. Low clouds have a high absorption of infrared radiation emanating from the Earth’s surface and thus cause a warming effect. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 only",
@@ -751,14 +1048,23 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2022_035",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "The Earth and the Universe",
       "microtheme": "The Earth and the Universe",
       "year": 2022,
@@ -773,14 +1079,23 @@
         "d": "Second half of the month of July"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE"
+      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2022_036",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "The Earth and the Universe",
       "microtheme": "The Earth and the Universe",
       "year": 2022,
@@ -795,19 +1110,28 @@
         "d": "1, 2, 3, 4, 5, 6 and 7"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE"
+      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2022_037",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2022,
       "questionNumber": 8,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Region often mentioned in the Country news 1. Anatolia Turkey 2. Amhara Ethiopia 3. Cabo Delgado Spain 4. Catalonia Italy How many pairs given above are correctly matched?",
       "options": {
@@ -817,14 +1141,23 @@
         "d": "All four pairs"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2022_038",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2022,
@@ -839,21 +1172,30 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2022_039",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2022,
       "questionNumber": 10,
       "questionType": "MAP_BASED",
       "format": "text",
-      "question": "The term \u201cLevant\u201d often heard in the news roughly corresponds to which of the following regions?",
+      "question": "The term “Levant” often heard in the news roughly corresponds to which of the following regions?",
       "options": {
         "a": "Region along the eastern Mediterranean shores",
         "b": "Region along North African shores stretching from Egypt to Morocco",
@@ -861,14 +1203,23 @@
         "d": "The entire coastal areas of Mediterranean Sea"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2022_040",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2022,
@@ -883,14 +1234,23 @@
         "d": "Lake Volta"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Indian Geography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2021_041",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Oceanography",
       "microtheme": "Oceanography",
       "year": 2021,
@@ -905,14 +1265,23 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS"
+      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS",
+      "topic": "Oceanography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2021_042",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Oceanography",
       "microtheme": "Oceanography",
       "year": 2021,
@@ -927,21 +1296,30 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS"
+      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS",
+      "topic": "Indian Geography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2020_043",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2020,
       "questionNumber": 10,
       "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: 1. Jet streams occur in the Northern Hemisphere only. 2. Only some cyclones develop an eye. 3. The temperature inside the eye of a cyclone is nearly 10\u00b0C less than that of the surroundings. Which of the statements given above is/are correct?",
+      "question": "Consider the following statements: 1. Jet streams occur in the Northern Hemisphere only. 2. Only some cyclones develop an eye. 3. The temperature inside the eye of a cyclone is nearly 10°C less than that of the surroundings. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 and 3 only",
@@ -949,21 +1327,30 @@
         "d": "1 and 3 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Climatology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.85,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 4,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2020_044",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Oceanography",
       "microtheme": "Oceanography",
       "year": 2020,
       "questionNumber": 3,
-      "questionType": "MCQ_MULTI_SELECT",
+      "questionType": "MCQ_2_STATEMENT",
       "format": "text",
-      "question": "With reference to Ocean Mean Temperature (OMT), which of the following statements is/are correct? 1. OMT is measured up to a depth of 26\u00b0C isotherm which is 129 metres in the south-western Indian Ocean during January \u2013 March. 2. OMT collected during January March can be used in assessing whether the amount of rainfall in monsoon will be less or more than a certain long-term mean Select the correct answer using the code given below",
+      "question": "With reference to Ocean Mean Temperature (OMT), which of the following statements is/are correct? 1. OMT is measured up to a depth of 26°C isotherm which is 129 metres in the south-western Indian Ocean during January – March. 2. OMT collected during January March can be used in assessing whether the amount of rainfall in monsoon will be less or more than a certain long-term mean Select the correct answer using the code given below",
       "options": {
         "a": "1 only",
         "b": "2 only",
@@ -971,19 +1358,28 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Climatology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2020_045",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "The Earth and the Universe",
       "microtheme": "The Earth and the Universe",
       "year": 2020,
       "questionNumber": 8,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Rivers Flows into 1. Mekong Andaman Sea 2. Thames Irish Sea 3. Volga Caspian Sea 4. Zambezi Indian Ocean Which of the pairs given above is/are correctly matched?",
       "options": {
@@ -993,14 +1389,23 @@
         "d": "1, 2 and 4 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS"
+      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS",
+      "topic": "Oceanography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2019_046",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2019,
@@ -1009,20 +1414,29 @@
       "format": "text",
       "question": "Why are dewdrops not formed on a cloudy night?",
       "options": {
-        "a": "Clouds absorb the radiation released from the Earth\u2019s surface.",
-        "b": "Clouds reflect back the Earth\u2019s radiation.",
-        "c": "The Earth\u2019s surface would have low temperatures on cloudy nights.",
+        "a": "Clouds absorb the radiation released from the Earth’s surface.",
+        "b": "Clouds reflect back the Earth’s radiation.",
+        "c": "The Earth’s surface would have low temperatures on cloudy nights.",
         "d": "Clouds deflect the blowing wind to ground level."
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2019_047",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "The Earth and the Universe",
       "microtheme": "The Earth and the Universe",
       "year": 2019,
@@ -1037,19 +1451,28 @@
         "d": "shines vertically overhead at the Tropic of Capricorn."
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE"
+      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2019_048",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2019,
       "questionNumber": 12,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Sea Bordering country 1. Adriatic Sea Albania 2. Black Sea Croatia 3. Caspian Sea Kazakhstan 4. Mediterranean Sea Morocco 5. Red Sea Syria Which of the pairs given above are correctly matched?",
       "options": {
@@ -1059,14 +1482,23 @@
         "d": "1, 2, 3, 4 and 5"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2018_049",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Oceanography",
       "microtheme": "Oceanography",
       "year": 2018,
@@ -1081,14 +1513,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS"
+      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS",
+      "topic": "Oceanography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2018_050",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Oceanography",
       "microtheme": "Oceanography",
       "year": 2018,
@@ -1103,21 +1544,30 @@
         "d": "1 and 3 only"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS"
+      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2018_051",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "The Earth and the Universe",
       "microtheme": "The Earth and the Universe",
       "year": 2018,
       "questionNumber": 10,
       "questionType": "MCQ_3_STATEMENT",
       "format": "text",
-      "question": "Consider the following statements: 1. The Earth\u2019s magnetic field has reversed every few hundred thousand years. 2. When the Earth was created more than 4000 million years ago, there was 54% oxygen and no carbon dioxide. 3. When living organisms originated, they modified the early atmosphere of the Earth. Which of the statements given above is/are correct?",
+      "question": "Consider the following statements: 1. The Earth’s magnetic field has reversed every few hundred thousand years. 2. When the Earth was created more than 4000 million years ago, there was 54% oxygen and no carbon dioxide. 3. When living organisms originated, they modified the early atmosphere of the Earth. Which of the statements given above is/are correct?",
       "options": {
         "a": "1 only",
         "b": "2 and 3 only",
@@ -1125,19 +1575,28 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2018_052",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2018,
       "questionNumber": 13,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Regions sometimes mentioned Country in news 1. Catalonia Spain 2. Crimea Hungary 3. Mindanao Philippines 4. Oromia Nigeria Which of the pairs given above are correctly matched?",
       "options": {
@@ -1147,19 +1606,28 @@
         "d": "2 and 4 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2018_053",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2018,
       "questionNumber": 14,
-      "questionType": "MATCHING",
+      "questionType": "PAIR_BASED",
       "format": "text",
       "question": "Consider the following pairs: Towns sometimes mentioned in Country news 1. Aleppo Syria 2. Kirkuk Y emen 3. Mosul Palestine 4. Mazar-i-sharif Afghanistan Which of the pairs given above are correctly matched?",
       "options": {
@@ -1169,14 +1637,23 @@
         "d": "3 and 4 only"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2017_054",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2017,
@@ -1191,14 +1668,23 @@
         "d": "1, 3 and 4 only"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2015_055",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Geomorphology",
       "microtheme": "Geomorphology",
       "year": 2015,
@@ -1213,14 +1699,23 @@
         "d": "Occurrence of the belt of calm near the equator"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS"
+      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2015_056",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Oceanography",
       "microtheme": "Oceanography",
       "year": 2015,
@@ -1235,14 +1730,23 @@
         "d": "Absence of land in those regions"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS"
+      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS",
+      "topic": "Climatology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2015_057",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Oceanography",
       "microtheme": "Oceanography",
       "year": 2015,
@@ -1257,14 +1761,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS"
+      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS",
+      "topic": "Oceanography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.7,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 2,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2015_058",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Climatic Regions",
       "microtheme": "World Climatic Regions",
       "year": 2015,
@@ -1279,14 +1792,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2015_059",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Climatic Regions",
       "microtheme": "World Climatic Regions",
       "year": 2015,
@@ -1301,14 +1823,23 @@
         "d": "Mediterranean"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2015_060",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2015,
@@ -1323,14 +1854,23 @@
         "d": "Israel"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2014_061",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "The Earth and the Universe",
       "microtheme": "The Earth and the Universe",
       "year": 2014,
@@ -1345,14 +1885,23 @@
         "d": "Neither 1 nor 2"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS"
+      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2014_062",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Climatic Regions",
       "microtheme": "World Climatic Regions",
       "year": 2014,
@@ -1367,14 +1916,23 @@
         "d": "All of the above climates"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2014_063",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2014,
@@ -1389,14 +1947,23 @@
         "d": "Gulf of Aqaba and Dead Sea"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2014_064",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2014,
@@ -1411,14 +1978,23 @@
         "d": "4-3-2-1"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2013_065",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2013,
@@ -1433,14 +2009,23 @@
         "d": "None of the above produces the thunder"
       },
       "answer": "a",
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2013_066",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Climatology",
       "microtheme": "Climatology",
       "year": 2013,
@@ -1455,14 +2040,23 @@
         "d": "1, 2, 3 and 4"
       },
       "answer": null,
-      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS"
+      "syllabusNodeId": "GS1-GEO-CLIM-SYSTEMS",
+      "topic": "Oceanography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2013_067",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Geomorphology",
       "microtheme": "Geomorphology",
       "year": 2013,
@@ -1477,14 +2071,23 @@
         "d": "1, 2, 3, 4, 5 and 6"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS"
+      "syllabusNodeId": "GS1-GEO-GM-LANDFORMS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2013_068",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Oceanography",
       "microtheme": "Oceanography",
       "year": 2013,
@@ -1499,14 +2102,23 @@
         "d": "exists as soil moisture"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS"
+      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2013_069",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "Oceanography",
       "microtheme": "Oceanography",
       "year": 2013,
@@ -1521,14 +2133,23 @@
         "d": "Continental shelf is undulating"
       },
       "answer": "c",
-      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS"
+      "syllabusNodeId": "GS1-GEO-OCE-MOTIONS",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2013_070",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "The Earth and the Universe",
       "microtheme": "The Earth and the Universe",
       "year": 2013,
@@ -1537,20 +2158,29 @@
       "format": "text",
       "question": "Variations in the length of daytime and night-time from season to season are due to",
       "options": {
-        "a": "the earth\u2019s rotation on its axis",
-        "b": "the earth\u2019s revolution around the sun in an elliptical manner",
+        "a": "the earth’s rotation on its axis",
+        "b": "the earth’s revolution around the sun in an elliptical manner",
         "c": "latitudinal position of the place",
         "d": "revolution of the earth on a tilted axis"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE"
+      "syllabusNodeId": "GS1-GEO-GEN-UNIVERSE",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2013_071",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Climatic Regions",
       "microtheme": "World Climatic Regions",
       "year": 2013,
@@ -1565,21 +2195,30 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Indian Geography",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2013_072",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Climatic Regions",
       "microtheme": "World Climatic Regions",
       "year": 2013,
       "questionNumber": 7,
       "questionType": "MCQ_SINGLE",
       "format": "text",
-      "question": "\u201cClimate is extreme, rainfall is scanty, and the people used to be nomadic herders.\u201d The above statement best describes which of the following regions?",
+      "question": "“Climate is extreme, rainfall is scanty, and the people used to be nomadic herders.” The above statement best describes which of the following regions?",
       "options": {
         "a": "African Savannah",
         "b": "Central Asian Steppe",
@@ -1587,14 +2226,23 @@
         "d": "Siberian Tundra"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Climatology",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.55,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 1,
+        "reviewFlag": "OK"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2013_073",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Climatic Regions",
       "microtheme": "World Climatic Regions",
       "year": 2013,
@@ -1609,14 +2257,23 @@
         "d": "1, 2 and 3"
       },
       "answer": "d",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     },
     {
       "id": "PRE_GS1_WGEO_2013_074",
       "exam": "UPSC_CSE",
       "stage": "Prelims",
       "paper": "GS1",
-      "subject": "World Geography",
+      "subject": "Geography",
       "section": "World Map",
       "microtheme": "World Map",
       "year": 2013,
@@ -1631,7 +2288,16 @@
         "d": "Okavango Basin Patagonia"
       },
       "answer": "b",
-      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES"
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES",
+      "topic": "Unmapped Topic",
+      "mappingAudit": {
+        "subjectConfidence": 0.99,
+        "topicConfidence": 0.2,
+        "microthemeConfidence": 0.99,
+        "subjectReason": "existing-subject",
+        "topicScore": 0,
+        "reviewFlag": "REVIEW_TOPIC"
+      }
     }
   ]
 }

@@ -1,0 +1,2124 @@
+{
+  "paper": "GS3",
+  "stage": "Mains",
+  "version": "2026-gs3-theme-layer-v3-phase25-lock-candidate",
+  "description": "GS3 Phase 2.5 lock candidate. Stronger coverage, cleaner hierarchy, resolver-friendly keywords, and canonical-node placeholders for final syllabusGraph alignment.",
+  "lockStatus": {
+    "status": "candidate",
+    "reason": "Theme structure is strong enough to freeze conceptually, but exact canonical node IDs still need final alignment with the user's syllabusGraph before full production lock."
+  },
+  "subjects": {
+    "Economy": {
+      "themes": [
+        {
+          "name": "LPG Reforms and Industrial Policy",
+          "subthemes": [
+            {
+              "name": "Manufacturing and Industrial Sector",
+              "mappedNodes": [
+                "GS3-ECO-INDPOL",
+                "GS3-ECO-SECT-INDLAB"
+              ],
+              "nodeHints": [
+                "gs3 economy manufacturing",
+                "gs3 economy industrial sector"
+              ],
+              "keywords": [
+                "PLI",
+                "manufacturing",
+                "industrial policy",
+                "MSME",
+                "labour-intensive exports",
+                "industrial growth",
+                "SEZ"
+              ]
+            },
+            {
+              "name": "Labour Reforms",
+              "mappedNodes": [
+                "GS3-ECO-SECT-INDLAB"
+              ],
+              "nodeHints": [
+                "gs3 economy labour reforms"
+              ],
+              "keywords": [
+                "labour codes",
+                "labour market reforms",
+                "labour reforms"
+              ]
+            },
+            {
+              "name": "Services Sector",
+              "mappedNodes": [
+                "GS3-ECO-SECT-INDLAB"
+              ],
+              "nodeHints": [
+                "gs3 economy services sector"
+              ],
+              "keywords": [
+                "services sector",
+                "agriculture to services shift",
+                "industry vs services"
+              ]
+            },
+            {
+              "name": "Liberalisation",
+              "mappedNodes": [
+                "GS3-ECO-INDPOL",
+                "GS3-ECO-PLAN-GROWTH"
+              ],
+              "nodeHints": [
+                "gs3 economy liberalisation"
+              ],
+              "keywords": [
+                "liberalization",
+                "post-reforms",
+                "LPG reforms",
+                "MNC competition"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Indian Economy and Issues",
+          "subthemes": [
+            {
+              "name": "Fiscal Policy and Budget",
+              "mappedNodes": [
+                "GS3-ECO-BUDGETING"
+              ],
+              "nodeHints": [
+                "gs3 economy fiscal policy",
+                "gs3 economy budget"
+              ],
+              "keywords": [
+                "Fiscal Health Index",
+                "fiscal policy",
+                "budget",
+                "public expenditure",
+                "state finances"
+              ]
+            },
+            {
+              "name": "Inclusive Growth",
+              "mappedNodes": [
+                "GS3-ECO-INCLUSIVE-GROWTH",
+                "GS3-ECO-PLAN-GROWTH"
+              ],
+              "nodeHints": [
+                "gs3 economy inclusive growth"
+              ],
+              "keywords": [
+                "inclusive growth",
+                "HDI",
+                "IHDI",
+                "equity",
+                "sustainable development"
+              ]
+            },
+            {
+              "name": "External Sector",
+              "mappedNodes": [
+                "GS3-ECO-FOREIGN-TRADE-IO"
+              ],
+              "nodeHints": [
+                "gs3 economy external sector"
+              ],
+              "keywords": [
+                "free trade",
+                "protectionism",
+                "bilateralism",
+                "multilateralism",
+                "world trade"
+              ]
+            },
+            {
+              "name": "Inflation",
+              "mappedNodes": [
+                "GS3-ECO-MONETARY-POLICY"
+              ],
+              "nodeHints": [
+                "gs3 economy inflation"
+              ],
+              "keywords": [
+                "food inflation",
+                "RBI",
+                "monetary policy",
+                "inflation"
+              ]
+            },
+            {
+              "name": "Digital Economy",
+              "mappedNodes": [
+                "GS3-ECO-PLAN-GROWTH"
+              ],
+              "nodeHints": [
+                "gs3 economy digital economy"
+              ],
+              "keywords": [
+                "digital economy",
+                "digitalization",
+                "digital payments",
+                "platform economy"
+              ]
+            },
+            {
+              "name": "Employment Related Issues",
+              "mappedNodes": [
+                "GS3-ECO-SECT-INDLAB"
+              ],
+              "nodeHints": [
+                "gs3 economy employment"
+              ],
+              "keywords": [
+                "unemployment",
+                "structural unemployment",
+                "jobless growth",
+                "labour productivity",
+                "employability"
+              ]
+            },
+            {
+              "name": "Care Economy",
+              "mappedNodes": [
+                "GS3-ECO-PLAN-GROWTH"
+              ],
+              "nodeHints": [
+                "gs3 economy care economy"
+              ],
+              "keywords": [
+                "care economy",
+                "monetized economy",
+                "women empowerment"
+              ]
+            },
+            {
+              "name": "National Income",
+              "mappedNodes": [
+                "GS3-ECO-PLAN-GROWTH"
+              ],
+              "nodeHints": [
+                "gs3 economy national income"
+              ],
+              "keywords": [
+                "GDP methodology",
+                "potential GDP",
+                "gross domestic product"
+              ]
+            },
+            {
+              "name": "Macroeconomic Indicators",
+              "mappedNodes": [
+                "GS3-ECO-PLAN-GROWTH"
+              ],
+              "nodeHints": [
+                "gs3 economy macro indicators"
+              ],
+              "keywords": [
+                "V-shaped recovery",
+                "GDP growth",
+                "low inflation",
+                "savings rate",
+                "macroeconomic stability"
+              ]
+            },
+            {
+              "name": "Financial Inclusion",
+              "mappedNodes": [
+                "GS3-ECO-MONETARY-POLICY"
+              ],
+              "nodeHints": [
+                "gs3 economy financial inclusion"
+              ],
+              "keywords": [
+                "PMJDY",
+                "financial inclusion",
+                "institutional finance"
+              ]
+            },
+            {
+              "name": "FDI",
+              "mappedNodes": [
+                "GS3-ECO-FOREIGN-TRADE-IO"
+              ],
+              "nodeHints": [
+                "gs3 economy FDI"
+              ],
+              "keywords": [
+                "FDI",
+                "MoUs",
+                "actual FDI",
+                "foreign investment"
+              ]
+            },
+            {
+              "name": "Growth and Development",
+              "mappedNodes": [
+                "GS3-ECO-PLAN-GROWTH",
+                "GS3-ECO-INCLUSIVE-GROWTH"
+              ],
+              "nodeHints": [
+                "gs3 economy growth and development"
+              ],
+              "keywords": [
+                "NITI Aayog",
+                "planning commission",
+                "energy access",
+                "SDGs"
+              ]
+            },
+            {
+              "name": "Banking and Financial Sector",
+              "mappedNodes": [
+                "GS3-ECO-MONETARY-POLICY"
+              ],
+              "nodeHints": [
+                "gs3 economy banking"
+              ],
+              "keywords": [
+                "banking",
+                "credit",
+                "financial system",
+                "institutional finance"
+              ]
+            },
+            {
+              "name": "Investment Models",
+              "mappedNodes": [
+                "GS3-ECO-SECT-INFRA"
+              ],
+              "nodeHints": [
+                "gs3 economy investment models"
+              ],
+              "keywords": [
+                "investment",
+                "capital formation",
+                "concession agreement",
+                "public private interface"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Agriculture and Land Reforms",
+          "subthemes": [
+            {
+              "name": "Food Processing",
+              "mappedNodes": [
+                "GS3-ECO-FOODPROC"
+              ],
+              "nodeHints": [
+                "gs3 agriculture food processing"
+              ],
+              "keywords": [
+                "food processing",
+                "employment opportunities",
+                "food processing industry"
+              ]
+            },
+            {
+              "name": "Cropping Pattern and Irrigation",
+              "mappedNodes": [
+                "GS3-ECO-SECT-AGRI"
+              ],
+              "nodeHints": [
+                "gs3 agriculture cropping pattern"
+              ],
+              "keywords": [
+                "groundwater",
+                "high value crops",
+                "irrigation system",
+                "millets",
+                "integrated farming",
+                "micro-irrigation",
+                "crop diversification",
+                "water conservation",
+                "rice-wheat system"
+              ]
+            },
+            {
+              "name": "Agriculture Marketing",
+              "mappedNodes": [
+                "GS3-ECO-SECT-AGRI"
+              ],
+              "nodeHints": [
+                "gs3 agriculture marketing"
+              ],
+              "keywords": [
+                "supply chain",
+                "agricultural commodities",
+                "APMC",
+                "marketing bottlenecks",
+                "transport and marketing",
+                "supermarkets"
+              ]
+            },
+            {
+              "name": "PDS and Buffer Stock",
+              "mappedNodes": [
+                "GS3-ECO-PDS-FOODSEC"
+              ],
+              "nodeHints": [
+                "gs3 agriculture PDS"
+              ],
+              "keywords": [
+                "buffer stocks",
+                "PDS",
+                "National Food Security Act",
+                "food grain distribution"
+              ]
+            },
+            {
+              "name": "Land Reforms",
+              "mappedNodes": [
+                "GS3-ECO-LANDREFORMS"
+              ],
+              "nodeHints": [
+                "gs3 agriculture land reforms"
+              ],
+              "keywords": [
+                "land reforms",
+                "land ceiling",
+                "land acquisition",
+                "contract farming",
+                "land leasing"
+              ]
+            },
+            {
+              "name": "Subsidies",
+              "mappedNodes": [
+                "GS3-ECO-SECT-AGRI",
+                "GS3-ECO-PR-SCHEMES"
+              ],
+              "nodeHints": [
+                "gs3 agriculture subsidies"
+              ],
+              "keywords": [
+                "farm subsidies",
+                "WTO",
+                "MSP",
+                "DBT",
+                "crop insurance",
+                "price subsidy"
+              ]
+            },
+            {
+              "name": "E-Technology in Aid of Farmers",
+              "mappedNodes": [
+                "GS3-ECO-SECT-AGRI"
+              ],
+              "nodeHints": [
+                "gs3 agriculture e-technology"
+              ],
+              "keywords": [
+                "e-technology",
+                "digital India",
+                "farm productivity",
+                "production and marketing"
+              ]
+            },
+            {
+              "name": "Animal Husbandry and Livestock",
+              "mappedNodes": [
+                "GS3-ECO-SECT-AGRI"
+              ],
+              "nodeHints": [
+                "gs3 agriculture livestock"
+              ],
+              "keywords": [
+                "livestock",
+                "animal husbandry",
+                "non-farm employment"
+              ]
+            },
+            {
+              "name": "Cooperatives and Rural Credit",
+              "mappedNodes": [
+                "GS3-ECO-SECT-AGRI"
+              ],
+              "nodeHints": [
+                "gs3 agriculture cooperatives"
+              ],
+              "keywords": [
+                "cooperative society",
+                "agriculture finance",
+                "rural credit"
+              ]
+            },
+            {
+              "name": "Schemes",
+              "mappedNodes": [
+                "GS3-ECO-PR-SCHEMES"
+              ],
+              "nodeHints": [
+                "gs3 agriculture schemes"
+              ],
+              "keywords": [
+                "PMFBY",
+                "Jal Shakti Abhiyan",
+                "government schemes"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Infrastructure and Investment",
+          "subthemes": [
+            {
+              "name": "Airports",
+              "mappedNodes": [
+                "GS3-ECO-SECT-INFRA"
+              ],
+              "nodeHints": [
+                "gs3 infrastructure airports"
+              ],
+              "keywords": [
+                "regional air connectivity",
+                "UDAN",
+                "airports",
+                "PPP airports"
+              ]
+            },
+            {
+              "name": "PPP in Railways",
+              "mappedNodes": [
+                "GS3-ECO-SECT-INFRA"
+              ],
+              "nodeHints": [
+                "gs3 infrastructure railways"
+              ],
+              "keywords": [
+                "PPP",
+                "railway stations",
+                "railways"
+              ]
+            },
+            {
+              "name": "Energy Infrastructure",
+              "mappedNodes": [
+                "GS3-ECO-SECT-INFRA"
+              ],
+              "nodeHints": [
+                "gs3 infrastructure energy"
+              ],
+              "keywords": [
+                "renewable energy",
+                "2030 energy target",
+                "LEDs",
+                "solar energy",
+                "fossil fuels",
+                "renewables"
+              ]
+            },
+            {
+              "name": "Infrastructure and Inclusive Growth",
+              "mappedNodes": [
+                "GS3-ECO-SECT-INFRA",
+                "GS3-ECO-INCLUSIVE-GROWTH"
+              ],
+              "nodeHints": [
+                "gs3 infrastructure inclusive growth"
+              ],
+              "keywords": [
+                "infrastructure investment",
+                "inclusive growth"
+              ]
+            },
+            {
+              "name": "Investment",
+              "mappedNodes": [
+                "GS3-ECO-SECT-INFRA",
+                "GS3-ECO-PLAN-GROWTH"
+              ],
+              "nodeHints": [
+                "gs3 economy investment"
+              ],
+              "keywords": [
+                "investment",
+                "capital formation",
+                "concession agreement"
+              ]
+            },
+            {
+              "name": "Urban Infrastructure",
+              "mappedNodes": [
+                "GS3-ECO-SECT-INFRA"
+              ],
+              "nodeHints": [
+                "gs3 infrastructure urban"
+              ],
+              "keywords": [
+                "smart cities",
+                "smart villages",
+                "urban development"
+              ]
+            },
+            {
+              "name": "Transport and Mobility",
+              "mappedNodes": [
+                "GS3-ECO-SECT-INFRA"
+              ],
+              "nodeHints": [
+                "gs3 infrastructure transport"
+              ],
+              "keywords": [
+                "National Urban Transport Policy",
+                "moving people",
+                "mobility"
+              ]
+            },
+            {
+              "name": "Defence Infrastructure",
+              "mappedNodes": [
+                "GS3-SEC-DEFENCE-MII"
+              ],
+              "nodeHints": [
+                "gs3 infrastructure defence"
+              ],
+              "keywords": [
+                "defence sector FDI"
+              ]
+            },
+            {
+              "name": "PPP in Infrastructure",
+              "mappedNodes": [
+                "GS3-ECO-SECT-INFRA"
+              ],
+              "nodeHints": [
+                "gs3 infrastructure PPP"
+              ],
+              "keywords": [
+                "PPP infrastructure",
+                "long gestation projects",
+                "liabilities"
+              ]
+            },
+            {
+              "name": "FDI",
+              "mappedNodes": [
+                "GS3-ECO-FOREIGN-TRADE-IO"
+              ],
+              "nodeHints": [
+                "gs3 economy FDI"
+              ],
+              "keywords": [
+                "multi-brand retail",
+                "FDI",
+                "commodity trade"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Public Finance",
+          "subthemes": [
+            {
+              "name": "Budget Terms",
+              "mappedNodes": [
+                "GS3-ECO-BUDGETING"
+              ],
+              "nodeHints": [
+                "gs3 economy budget"
+              ],
+              "keywords": [
+                "capital budget",
+                "revenue budget",
+                "budget terms",
+                "public expenditure management"
+              ]
+            },
+            {
+              "name": "Taxation",
+              "mappedNodes": [
+                "GS3-ECO-TAXATION"
+              ],
+              "nodeHints": [
+                "gs3 economy taxation"
+              ],
+              "keywords": [
+                "GST",
+                "LTCG",
+                "DDT",
+                "tax expenditure",
+                "GST compensation"
+              ]
+            },
+            {
+              "name": "Union Budget",
+              "mappedNodes": [
+                "GS3-ECO-BUDGETING"
+              ],
+              "nodeHints": [
+                "gs3 economy union budget"
+              ],
+              "keywords": [
+                "Union Budget",
+                "budget 2017-18"
+              ]
+            },
+            {
+              "name": "Gender Budgeting",
+              "mappedNodes": [
+                "GS3-ECO-BUDGETING"
+              ],
+              "nodeHints": [
+                "gs3 economy gender budgeting"
+              ],
+              "keywords": [
+                "gender budgeting"
+              ]
+            },
+            {
+              "name": "FRBM",
+              "mappedNodes": [
+                "GS3-ECO-BUDGETING"
+              ],
+              "nodeHints": [
+                "gs3 economy FRBM"
+              ],
+              "keywords": [
+                "FRBM Act",
+                "fiscal responsibility"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Science and Technology": {
+      "themes": [
+        {
+          "name": "Electronics, Robotics and IT",
+          "subthemes": [
+            {
+              "name": "Emerging Tech",
+              "mappedNodes": [
+                "GS3-ST-IT-COMM",
+                "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+                "GS3-ST-MAINS-CORE"
+              ],
+              "nodeHints": [
+                "gs3 science emerging tech"
+              ],
+              "keywords": [
+                "semiconductor",
+                "electronic toll collection",
+                "AI",
+                "Starlink",
+                "data storage center",
+                "digital signature",
+                "3D printing"
+              ]
+            },
+            {
+              "name": "Nobel Prize and Foundational Science",
+              "mappedNodes": [
+                "GS3-ST-MAINS-CORE"
+              ],
+              "nodeHints": [
+                "gs3 science nobel"
+              ],
+              "keywords": [
+                "Blue LEDs",
+                "Satyendra Nath Bose",
+                "Bose-Einstein Statistics"
+              ]
+            },
+            {
+              "name": "Science and Agriculture",
+              "mappedNodes": [
+                "GS3-ST-MAINS-CORE"
+              ],
+              "nodeHints": [
+                "gs3 science agriculture"
+              ],
+              "keywords": [
+                "science in agriculture",
+                "science-based technologies"
+              ]
+            },
+            {
+              "name": "Robotics",
+              "mappedNodes": [
+                "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+              ],
+              "nodeHints": [
+                "gs3 science robotics"
+              ],
+              "keywords": [
+                "robots",
+                "prohibitive labour",
+                "innovation"
+              ]
+            },
+            {
+              "name": "STEM Research",
+              "mappedNodes": [
+                "GS3-ST-MAINS-CORE"
+              ],
+              "nodeHints": [
+                "gs3 science research"
+              ],
+              "keywords": [
+                "scientific research",
+                "universities",
+                "science career"
+              ]
+            },
+            {
+              "name": "Science in Sports",
+              "mappedNodes": [
+                "GS3-ST-MAINS-CORE"
+              ],
+              "nodeHints": [
+                "gs3 science sports"
+              ],
+              "keywords": [
+                "DRS",
+                "cricket",
+                "technology in sports"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Nuclear Tech and Alternative Energy Resources",
+          "subthemes": [
+            {
+              "name": "Alternative Energy",
+              "mappedNodes": [
+                "GS3-ST-NUCLEAR",
+                "GS3-ST-MAINS-CORE"
+              ],
+              "nodeHints": [
+                "gs3 science alternative energy"
+              ],
+              "keywords": [
+                "energy independence",
+                "clean technology",
+                "biotechnology role"
+              ]
+            },
+            {
+              "name": "Nuclear Energy",
+              "mappedNodes": [
+                "GS3-ST-NUCLEAR"
+              ],
+              "nodeHints": [
+                "gs3 science nuclear"
+              ],
+              "keywords": [
+                "fusion energy",
+                "ITER",
+                "nuclear programme",
+                "fast breeder reactor"
+              ]
+            },
+            {
+              "name": "Bio Fuels",
+              "mappedNodes": [
+                "GS3-ST-BIOTECH"
+              ],
+              "nodeHints": [
+                "gs3 science biofuels"
+              ],
+              "keywords": [
+                "microorganisms",
+                "fuel shortage",
+                "bio fuels"
+              ]
+            },
+            {
+              "name": "Electric Vehicles",
+              "mappedNodes": [
+                "GS3-ST-MAINS-CORE"
+              ],
+              "nodeHints": [
+                "gs3 science EV"
+              ],
+              "keywords": [
+                "electric vehicles",
+                "carbon emissions"
+              ]
+            },
+            {
+              "name": "Solar Energy",
+              "mappedNodes": [
+                "GS3-ST-MAINS-CORE"
+              ],
+              "nodeHints": [
+                "gs3 science solar"
+              ],
+              "keywords": [
+                "electric energy from sunlight",
+                "government initiatives"
+              ]
+            },
+            {
+              "name": "Hydro Energy",
+              "mappedNodes": [
+                "GS3-ST-MAINS-CORE"
+              ],
+              "nodeHints": [
+                "gs3 science hydro"
+              ],
+              "keywords": [
+                "run-of-river hydroelectricity",
+                "hydroelectricity"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Space and Defence",
+          "subthemes": [
+            {
+              "name": "Space Missions",
+              "mappedNodes": [
+                "GS3-ST-SPACE"
+              ],
+              "nodeHints": [
+                "gs3 science space missions"
+              ],
+              "keywords": [
+                "moon mission",
+                "James Webb",
+                "space station",
+                "manned mission",
+                "Chandrayaan",
+                "Mars Orbiter"
+              ]
+            },
+            {
+              "name": "Private Sector in Space",
+              "mappedNodes": [
+                "GS3-ST-SPACE"
+              ],
+              "nodeHints": [
+                "gs3 science private space"
+              ],
+              "keywords": [
+                "private players",
+                "space-based applications"
+              ]
+            },
+            {
+              "name": "Defence",
+              "mappedNodes": [
+                "GS3-SEC-DEFENCE-MII"
+              ],
+              "nodeHints": [
+                "gs3 science defence"
+              ],
+              "keywords": [
+                "S-400",
+                "air defence system"
+              ]
+            },
+            {
+              "name": "Satellites",
+              "mappedNodes": [
+                "GS3-ST-SPACE"
+              ],
+              "nodeHints": [
+                "gs3 science satellites"
+              ],
+              "keywords": [
+                "GPS",
+                "IRNSS",
+                "precision positioning"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Nano and Biotech",
+          "subthemes": [
+            {
+              "name": "Nanotech",
+              "mappedNodes": [
+                "GS3-ST-MATERIALS-NANO-ROBOTICS-AI"
+              ],
+              "nodeHints": [
+                "gs3 science nanotech"
+              ],
+              "keywords": [
+                "nanotechnology",
+                "agriculture",
+                "health sector",
+                "Mission on Nanoscience"
+              ]
+            },
+            {
+              "name": "Applied Biotech",
+              "mappedNodes": [
+                "GS3-ST-BIOTECH"
+              ],
+              "nodeHints": [
+                "gs3 science biotech"
+              ],
+              "keywords": [
+                "applied biotechnology",
+                "poorer sections"
+              ]
+            },
+            {
+              "name": "Biotech Data Bank",
+              "mappedNodes": [
+                "GS3-ST-BIOTECH"
+              ],
+              "nodeHints": [
+                "gs3 science biotech data"
+              ],
+              "keywords": [
+                "Indian Biological Data Bank",
+                "indigenous data bank"
+              ]
+            },
+            {
+              "name": "Biotechnology and Farmers",
+              "mappedNodes": [
+                "GS3-ST-BIOTECH"
+              ],
+              "nodeHints": [
+                "gs3 science biotech farmers"
+              ],
+              "keywords": [
+                "farmers",
+                "living standards"
+              ]
+            },
+            {
+              "name": "Biopharma",
+              "mappedNodes": [
+                "GS3-ST-BIOTECH"
+              ],
+              "nodeHints": [
+                "gs3 science biopharma"
+              ],
+              "keywords": [
+                "biopharma"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Health",
+          "subthemes": [
+            {
+              "name": "Health Challenges",
+              "mappedNodes": [
+                "GS3-ST-MAINS-CORE"
+              ],
+              "nodeHints": [
+                "gs3 science health"
+              ],
+              "keywords": [
+                "life expectancy",
+                "newer health challenges"
+              ]
+            },
+            {
+              "name": "Vaccines",
+              "mappedNodes": [
+                "GS3-ST-BIOTECH"
+              ],
+              "nodeHints": [
+                "gs3 science vaccines"
+              ],
+              "keywords": [
+                "vaccine development",
+                "COVID-19 vaccines"
+              ]
+            },
+            {
+              "name": "Technology and COVID",
+              "mappedNodes": [
+                "GS3-ST-MAINS-CORE"
+              ],
+              "nodeHints": [
+                "gs3 science covid"
+              ],
+              "keywords": [
+                "pandemic management",
+                "technology and pandemic"
+              ]
+            },
+            {
+              "name": "Antimicrobial Resistance",
+              "mappedNodes": [
+                "GS3-ST-BIOTECH"
+              ],
+              "nodeHints": [
+                "gs3 science AMR"
+              ],
+              "keywords": [
+                "antibiotics",
+                "drug-resistant diseases"
+              ]
+            },
+            {
+              "name": "Fixed Dose Combinations",
+              "mappedNodes": [
+                "GS3-ST-BIOTECH"
+              ],
+              "nodeHints": [
+                "gs3 science pharma"
+              ],
+              "keywords": [
+                "FDCs",
+                "fixed dose drug combinations"
+              ]
+            },
+            {
+              "name": "Stem Cell Therapy",
+              "mappedNodes": [
+                "GS3-ST-BIOTECH"
+              ],
+              "nodeHints": [
+                "gs3 science stem cells"
+              ],
+              "keywords": [
+                "stem cell therapy",
+                "medical conditions"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "IPR",
+          "subthemes": [
+            {
+              "name": "Patent and IPR Issues",
+              "mappedNodes": [
+                "GS3-ST-IPR"
+              ],
+              "nodeHints": [
+                "gs3 science IPR"
+              ],
+              "keywords": [
+                "intellectual property rights",
+                "life materials",
+                "commercialization",
+                "traditional knowledge",
+                "TKDL",
+                "copyright",
+                "patents",
+                "trade secrets",
+                "section 3(d)",
+                "Glivec"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Environment": {
+      "themes": [
+        {
+          "name": "Environmental Pollution",
+          "subthemes": [
+            {
+              "name": "Water Pollution",
+              "mappedNodes": [
+                "GS3-ENV-CURR-POLLUTION",
+                "GS3-ENV-LAND-WATER"
+              ],
+              "nodeHints": [
+                "gs3 environment water pollution"
+              ],
+              "keywords": [
+                "river water pollution",
+                "Namami Gange",
+                "NMCG",
+                "National Water Policy",
+                "hazardous wastes"
+              ]
+            },
+            {
+              "name": "Marine Pollution",
+              "mappedNodes": [
+                "GS3-ENV-CURR-POLLUTION"
+              ],
+              "nodeHints": [
+                "gs3 environment marine pollution"
+              ],
+              "keywords": [
+                "oil pollution",
+                "marine ecosystem"
+              ]
+            },
+            {
+              "name": "Air Pollution",
+              "mappedNodes": [
+                "GS3-ENV-CURR-POLLUTION"
+              ],
+              "nodeHints": [
+                "gs3 environment air pollution"
+              ],
+              "keywords": [
+                "photochemical smog",
+                "Gothenburg protocol",
+                "AQGs",
+                "NCAP"
+              ]
+            },
+            {
+              "name": "Waste Management",
+              "mappedNodes": [
+                "GS3-ENV-CURR-POLLUTION"
+              ],
+              "nodeHints": [
+                "gs3 environment waste"
+              ],
+              "keywords": [
+                "solid waste",
+                "toxic waste"
+              ]
+            },
+            {
+              "name": "Land Pollution",
+              "mappedNodes": [
+                "GS3-ENV-CURR-POLLUTION",
+                "GS3-ENV-LAND-WATER"
+              ],
+              "nodeHints": [
+                "gs3 environment land pollution"
+              ],
+              "keywords": [
+                "illegal mining",
+                "go and no-go zones"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Ecosystems",
+          "subthemes": [
+            {
+              "name": "Coastal Ecosystem",
+              "mappedNodes": [
+                "GS3-ENV-BIOGEO",
+                "GS3-ENV-CONSERVATION"
+              ],
+              "nodeHints": [
+                "gs3 environment coastal ecosystems"
+              ],
+              "keywords": [
+                "seawater intrusion",
+                "coastal erosion",
+                "coastal sand mining"
+              ]
+            },
+            {
+              "name": "Wetlands",
+              "mappedNodes": [
+                "GS3-ENV-BIOGEO",
+                "GS3-ENV-CONSERVATION"
+              ],
+              "nodeHints": [
+                "gs3 environment wetlands"
+              ],
+              "keywords": [
+                "wetlands",
+                "Ramsar",
+                "wise use"
+              ]
+            },
+            {
+              "name": "Pollutant and Ecological Processes",
+              "mappedNodes": [
+                "GS3-ENV-ECO-CONCEPTS"
+              ],
+              "nodeHints": [
+                "gs3 environment ecology"
+              ],
+              "keywords": [
+                "cellulose",
+                "carbon dioxide",
+                "natural processes"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Climate Change",
+          "subthemes": [
+            {
+              "name": "UNFCCC and COP",
+              "mappedNodes": [
+                "GS3-ENV-GLOBALWARM",
+                "GS3-ENV-MAINS"
+              ],
+              "nodeHints": [
+                "gs3 environment UNFCCC"
+              ],
+              "keywords": [
+                "Paris Agreement",
+                "COP26",
+                "NDC",
+                "UNFCCC",
+                "carbon credit",
+                "CDM"
+              ]
+            },
+            {
+              "name": "Climate Change",
+              "mappedNodes": [
+                "GS3-ENV-GLOBALWARM",
+                "GS3-ENV-MAINS"
+              ],
+              "nodeHints": [
+                "gs3 environment climate change"
+              ],
+              "keywords": [
+                "climate change",
+                "India affected",
+                "Himalayan states",
+                "coastal states"
+              ]
+            },
+            {
+              "name": "Global Warming",
+              "mappedNodes": [
+                "GS3-ENV-GLOBALWARM"
+              ],
+              "nodeHints": [
+                "gs3 environment global warming"
+              ],
+              "keywords": [
+                "global warming",
+                "greenhouse gases",
+                "Kyoto Protocol"
+              ]
+            },
+            {
+              "name": "Sea Level Rise",
+              "mappedNodes": [
+                "GS3-ENV-GLOBALWARM"
+              ],
+              "nodeHints": [
+                "gs3 environment sea level rise"
+              ],
+              "keywords": [
+                "IPCC",
+                "sea level rise",
+                "Indian Ocean region"
+              ]
+            },
+            {
+              "name": "CCUS",
+              "mappedNodes": [
+                "GS3-ENV-GLOBALWARM"
+              ],
+              "nodeHints": [
+                "gs3 environment CCUS"
+              ],
+              "keywords": [
+                "carbon capture",
+                "utilization",
+                "storage"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sustainable Development",
+          "subthemes": [
+            {
+              "name": "Mining",
+              "mappedNodes": [
+                "GS3-ENV-RESOURCES",
+                "GS3-ENV-LAND-WATER"
+              ],
+              "nodeHints": [
+                "gs3 environment mining"
+              ],
+              "keywords": [
+                "mineral resources",
+                "environmental hazard",
+                "mining remedial measures"
+              ]
+            },
+            {
+              "name": "Water Resources",
+              "mappedNodes": [
+                "GS3-ENV-LAND-WATER",
+                "GS3-ENV-RESOURCES"
+              ],
+              "nodeHints": [
+                "gs3 environment water resources"
+              ],
+              "keywords": [
+                "Jal Shakti Abhiyan",
+                "water storage",
+                "river linking"
+              ]
+            },
+            {
+              "name": "Sustainable Energy",
+              "mappedNodes": [
+                "GS3-ENV-RESOURCES"
+              ],
+              "nodeHints": [
+                "gs3 environment sustainable energy"
+              ],
+              "keywords": [
+                "solar energy",
+                "renewable energy",
+                "LEDs",
+                "green energy corridor",
+                "run of the river"
+              ]
+            },
+            {
+              "name": "Sustainable Development and Ecosystem",
+              "mappedNodes": [
+                "GS3-ENV-ECO-CONCEPTS",
+                "GS3-ENV-MAINS"
+              ],
+              "nodeHints": [
+                "gs3 environment sustainable development"
+              ],
+              "keywords": [
+                "carrying capacity",
+                "ecosystem",
+                "sustainable development"
+              ]
+            },
+            {
+              "name": "Sustainable Planning",
+              "mappedNodes": [
+                "GS3-ENV-MAINS"
+              ],
+              "nodeHints": [
+                "gs3 environment planning"
+              ],
+              "keywords": [
+                "rehabilitation of human settlements",
+                "major projects"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "EIA",
+          "subthemes": [
+            {
+              "name": "Environmental Impact Assessment",
+              "mappedNodes": [
+                "GS3-ENV-ACTS",
+                "GS3-ENV-MAINS"
+              ],
+              "nodeHints": [
+                "gs3 environment EIA"
+              ],
+              "keywords": [
+                "EIA",
+                "EIA Notification 2020",
+                "coal-fired thermal plants",
+                "environmental NGOs and activists"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Agriculture and Environment",
+          "subthemes": [
+            {
+              "name": "Organic Farming",
+              "mappedNodes": [
+                "GS3-ENV-MAINS"
+              ],
+              "nodeHints": [
+                "gs3 environment organic farming"
+              ],
+              "keywords": [
+                "Sikkim",
+                "organic state"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Biodiversity and Protected Areas",
+          "subthemes": [
+            {
+              "name": "Biodiversity Conservation",
+              "mappedNodes": [
+                "GS3-ENV-CONSERVATION",
+                "GS3-ENV-BIOGEO"
+              ],
+              "nodeHints": [
+                "gs3 environment biodiversity"
+              ],
+              "keywords": [
+                "Biological Diversity Act 2002",
+                "flora and fauna"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Disaster Management",
+          "subthemes": [
+            {
+              "name": "Urban Floods",
+              "mappedNodes": [
+                "GS3-DM-DISASTERS"
+              ],
+              "nodeHints": [
+                "gs3 disaster floods"
+              ],
+              "keywords": [
+                "urban floods",
+                "climate-induced disaster",
+                "high intensity rainfall"
+              ]
+            },
+            {
+              "name": "Disaster Resilience",
+              "mappedNodes": [
+                "GS3-DM-PREP-MIT"
+              ],
+              "nodeHints": [
+                "gs3 disaster resilience"
+              ],
+              "keywords": [
+                "disaster resilience",
+                "resilience framework",
+                "Sendai Framework"
+              ]
+            },
+            {
+              "name": "Risk and Vulnerability",
+              "mappedNodes": [
+                "GS3-DM-PREP-MIT"
+              ],
+              "nodeHints": [
+                "gs3 disaster risk"
+              ],
+              "keywords": [
+                "risk assessment",
+                "vulnerability",
+                "pre-disaster management"
+              ]
+            },
+            {
+              "name": "Drought",
+              "mappedNodes": [
+                "GS3-DM-DISASTERS"
+              ],
+              "nodeHints": [
+                "gs3 disaster drought"
+              ],
+              "keywords": [
+                "drought",
+                "El Nino",
+                "La Nina"
+              ]
+            },
+            {
+              "name": "Earthquake",
+              "mappedNodes": [
+                "GS3-DM-DISASTERS"
+              ],
+              "nodeHints": [
+                "gs3 disaster earthquake"
+              ],
+              "keywords": [
+                "earthquake",
+                "preparedness",
+                "earthquake-related hazards"
+              ]
+            },
+            {
+              "name": "Cloudbursts",
+              "mappedNodes": [
+                "GS3-DM-DISASTERS"
+              ],
+              "nodeHints": [
+                "gs3 disaster cloudbursts"
+              ],
+              "keywords": [
+                "cloudburst",
+                "Uttarakhand",
+                "mechanism and occurrence"
+              ]
+            },
+            {
+              "name": "Tsunami",
+              "mappedNodes": [
+                "GS3-DM-DISASTERS"
+              ],
+              "nodeHints": [
+                "gs3 disaster tsunami"
+              ],
+              "keywords": [
+                "tsunami",
+                "NDMA",
+                "preparedness"
+              ]
+            },
+            {
+              "name": "Sendai Framework",
+              "mappedNodes": [
+                "GS3-DM-PREP-MIT"
+              ],
+              "nodeHints": [
+                "gs3 disaster Sendai"
+              ],
+              "keywords": [
+                "Sendai Framework",
+                "Hyogo Framework",
+                "DRR"
+              ]
+            },
+            {
+              "name": "Landslides",
+              "mappedNodes": [
+                "GS3-DM-DISASTERS"
+              ],
+              "nodeHints": [
+                "gs3 disaster landslides"
+              ],
+              "keywords": [
+                "hazard zonation mapping",
+                "National Landslide Risk Management Strategy"
+              ]
+            },
+            {
+              "name": "Generic",
+              "mappedNodes": [
+                "GS3-DM-DISASTERS",
+                "GS3-DM-PREP-MIT"
+              ],
+              "nodeHints": [
+                "gs3 disaster generic"
+              ],
+              "keywords": [
+                "recent measures in disaster management",
+                "reactive approach"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Internal Security": {
+      "themes": [
+        {
+          "name": "Kashmir Issue",
+          "subthemes": [
+            {
+              "name": "J&K",
+              "mappedNodes": [
+                "GS3-SEC-TERRORISM",
+                "GS3-SEC-CONTEMP",
+                "GS3-SEC-DEFENCE-MII"
+              ],
+              "nodeHints": [
+                "gs3 security J&K"
+              ],
+              "keywords": [
+                "winning hearts and minds",
+                "terrorism-affected areas",
+                "Jamaat-e-Islami",
+                "OGWs"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Border Management",
+          "subthemes": [
+            {
+              "name": "Maritime Security",
+              "mappedNodes": [
+                "GS3-SEC-MARITIME"
+              ],
+              "nodeHints": [
+                "gs3 security maritime"
+              ],
+              "keywords": [
+                "maritime security",
+                "coastal security",
+                "sea trade",
+                "piracy"
+              ]
+            },
+            {
+              "name": "Specific Border Issues",
+              "mappedNodes": [
+                "GS3-SEC-BORDER",
+                "GS3-SEC-DEFENCE-MII"
+              ],
+              "nodeHints": [
+                "gs3 security border issues"
+              ],
+              "keywords": [
+                "China border",
+                "Pakistan border",
+                "BADP",
+                "BIM",
+                "Myanmar border",
+                "LoC",
+                "CPEC",
+                "porous borders",
+                "surgical strikes"
+              ]
+            },
+            {
+              "name": "Technology in Border Management",
+              "mappedNodes": [
+                "GS3-SEC-BORDER"
+              ],
+              "nodeHints": [
+                "gs3 security border technology"
+              ],
+              "keywords": [
+                "UAVs",
+                "arms ferrying",
+                "drones"
+              ]
+            },
+            {
+              "name": "Border Area Locals",
+              "mappedNodes": [
+                "GS3-SEC-BORDER"
+              ],
+              "nodeHints": [
+                "gs3 security border locals"
+              ],
+              "keywords": [
+                "deny local support",
+                "manage favorable perception"
+              ]
+            },
+            {
+              "name": "Border Management and Organised Crime",
+              "mappedNodes": [
+                "GS3-SEC-BORDER"
+              ],
+              "nodeHints": [
+                "gs3 security organized crime"
+              ],
+              "keywords": [
+                "drug trafficking",
+                "gunrunning",
+                "money laundering",
+                "human trafficking"
+              ]
+            },
+            {
+              "name": "Airspace",
+              "mappedNodes": [
+                "GS3-SEC-MARITIME",
+                "GS3-SEC-BORDER"
+              ],
+              "nodeHints": [
+                "gs3 security airspace"
+              ],
+              "keywords": [
+                "airspace",
+                "civil aviation laws",
+                "sovereignty"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Role of Non-State Actors",
+          "subthemes": [
+            {
+              "name": "Investigative Agencies",
+              "mappedNodes": [
+                "GS3-SEC-GOV-MECH"
+              ],
+              "nodeHints": [
+                "gs3 security agencies"
+              ],
+              "keywords": [
+                "central intelligence",
+                "investigative agencies"
+              ]
+            },
+            {
+              "name": "Organized Crime",
+              "mappedNodes": [
+                "GS3-SEC-TERRORISM"
+              ],
+              "nodeHints": [
+                "gs3 security organized crime"
+              ],
+              "keywords": [
+                "organized crime",
+                "terrorist linkages"
+              ]
+            },
+            {
+              "name": "Generic",
+              "mappedNodes": [
+                "GS3-DM-DISASTERS"
+              ],
+              "nodeHints": [
+                "gs3 security non state actors"
+              ],
+              "keywords": [
+                "external state and non-state actors",
+                "internal security threats"
+              ]
+            },
+            {
+              "name": "Specific Issues",
+              "mappedNodes": [
+                "GS3-SEC-CONTEMP"
+              ],
+              "nodeHints": [
+                "gs3 security specific issues"
+              ],
+              "keywords": [
+                "CPEC",
+                "One Belt One Road"
+              ]
+            },
+            {
+              "name": "Non-State Actors and Technology",
+              "mappedNodes": [
+                "GS3-SEC-CYBERWAR"
+              ],
+              "nodeHints": [
+                "gs3 security technology misuse"
+              ],
+              "keywords": [
+                "internet misuse",
+                "social media misuse",
+                "subversive activities"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Terrorism and Radicalization",
+          "subthemes": [
+            {
+              "name": "Terrorism",
+              "mappedNodes": [
+                "GS3-SEC-TERRORISM"
+              ],
+              "nodeHints": [
+                "gs3 security terrorism"
+              ],
+              "keywords": [
+                "terrorism",
+                "counter measures"
+              ]
+            },
+            {
+              "name": "Narco-Terrorism",
+              "mappedNodes": [
+                "GS3-SEC-TERRORISM"
+              ],
+              "nodeHints": [
+                "gs3 security narco terrorism"
+              ],
+              "keywords": [
+                "narco-terrorism"
+              ]
+            },
+            {
+              "name": "Terror Financing",
+              "mappedNodes": [
+                "GS3-SEC-TERRORISM"
+              ],
+              "nodeHints": [
+                "gs3 security terror financing"
+              ],
+              "keywords": [
+                "terror funding",
+                "No Money for Terror"
+              ]
+            },
+            {
+              "name": "UAPA",
+              "mappedNodes": [
+                "GS3-SEC-GOV-MECH"
+              ],
+              "nodeHints": [
+                "gs3 security UAPA"
+              ],
+              "keywords": [
+                "UAPA",
+                "NIA Act",
+                "human rights organizations"
+              ]
+            },
+            {
+              "name": "Mob Violence",
+              "mappedNodes": [
+                "GS3-SEC-CONTEMP"
+              ],
+              "nodeHints": [
+                "gs3 security mob violence"
+              ],
+              "keywords": [
+                "mob violence"
+              ]
+            },
+            {
+              "name": "Radicalisation",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security radicalisation"
+              ],
+              "keywords": [
+                "radicalism",
+                "ISIS",
+                "digital media"
+              ]
+            },
+            {
+              "name": "Terrorism Industry",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security terrorism industry"
+              ],
+              "keywords": [
+                "competitive industry",
+                "terrorism as industry"
+              ]
+            },
+            {
+              "name": "Generic",
+              "mappedNodes": [
+                "GS3-DM-DISASTERS"
+              ],
+              "nodeHints": [
+                "gs3 security terrorism generic"
+              ],
+              "keywords": [
+                "complexity of terrorism",
+                "causes",
+                "linkages",
+                "nexus"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Cyber Security",
+          "subthemes": [
+            {
+              "name": "Social Media",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security social media"
+              ],
+              "keywords": [
+                "social media",
+                "encrypted messaging services",
+                "security implications",
+                "social networking sites"
+              ]
+            },
+            {
+              "name": "Cyber Security",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security cyber"
+              ],
+              "keywords": [
+                "DPDP Act 2023",
+                "cyber security elements",
+                "national cyber strategy"
+              ]
+            },
+            {
+              "name": "National Cyber Security Challenges",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security cyber strategy"
+              ],
+              "keywords": [
+                "National Cyber Security Strategy",
+                "challenges"
+              ]
+            },
+            {
+              "name": "Cyber Attacks",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security cyber attacks"
+              ],
+              "keywords": [
+                "cross-border cyber attacks",
+                "defensive measures",
+                "cyber attack framework"
+              ]
+            },
+            {
+              "name": "Cyber Crime",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security cyber crime"
+              ],
+              "keywords": [
+                "cyber crimes"
+              ]
+            },
+            {
+              "name": "Cyberdome",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security cyberdome"
+              ],
+              "keywords": [
+                "CyberDome Project"
+              ]
+            },
+            {
+              "name": "Data Security",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security data security"
+              ],
+              "keywords": [
+                "B.N. Srikrishna Committee",
+                "protection of personal data"
+              ]
+            },
+            {
+              "name": "National Cyber Security Policy",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security cyber policy"
+              ],
+              "keywords": [
+                "National Cyber Security Policy 2013",
+                "digital armed forces"
+              ]
+            },
+            {
+              "name": "Cloud Hosting",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security cloud"
+              ],
+              "keywords": [
+                "cloud hosting",
+                "government servers"
+              ]
+            },
+            {
+              "name": "Cyber Warfare",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security cyber warfare"
+              ],
+              "keywords": [
+                "cyber warfare",
+                "preparedness"
+              ]
+            },
+            {
+              "name": "Cyber Threats",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security cyber threats"
+              ],
+              "keywords": [
+                "digital signature",
+                "authentication"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Left Wing Extremism",
+          "subthemes": [
+            {
+              "name": "LWE and Naxalism",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security LWE"
+              ],
+              "keywords": [
+                "Left Wing Extremism",
+                "Naxalism",
+                "tribal displacement",
+                "Fifth Schedule",
+                "multilayered strategy"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Money Laundering",
+          "subthemes": [
+            {
+              "name": "Emerging Tech and Money Laundering",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security money laundering"
+              ],
+              "keywords": [
+                "emerging technologies",
+                "globalisation",
+                "money laundering"
+              ]
+            },
+            {
+              "name": "Generic",
+              "mappedNodes": [
+                "GS3-DM-DISASTERS"
+              ],
+              "nodeHints": [
+                "gs3 security money laundering generic"
+              ],
+              "keywords": [
+                "economic sovereignty",
+                "control menace"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "North East Insurgency",
+          "subthemes": [
+            {
+              "name": "North East Peace and Security",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security north east"
+              ],
+              "keywords": [
+                "North-Eastern states",
+                "peace accords",
+                "India-Myanmar border",
+                "armed insurgency"
+              ]
+            },
+            {
+              "name": "AFSPA",
+              "mappedNodes": [],
+              "nodeHints": [
+                "gs3 security AFSPA"
+              ],
+              "keywords": [
+                "AFSPA",
+                "human rights abuses",
+                "Apex Court"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "notes": [
+    "This GS3 theme layer has been strengthened using the full GS3 Theme-wise PYQ PDF (2013–2025).",
+    "It now captures the deeper GS3 PYQ structure across Economy, Science & Tech, Environment, and Internal Security.",
+    "mappedNodes remain intentionally empty until final canonical alignment with the user's syllabusGraph.",
+    "nodeHints are provisional alignment aids for the Phase 2.5 lock step."
+  ]
+}

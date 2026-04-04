@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(node -e ':*)",
+      "Bash(node backend/blockResolution/testResolveBlock.js)",
+      "Bash(node backend/scripts/buildMainsThemeIndex.js)"
+    ]
+  }
+}

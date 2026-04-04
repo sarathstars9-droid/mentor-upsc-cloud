@@ -1,0 +1,7 @@
+id: "GS3_ECON_2024_01"
+year: 2024
+questionNumber: 1
+directive: "Examine"
+theme: "Growth & Development"
+question: "Examine the pattern and trend of public expenditure on social services in the postreforms period in India. To what extent this has been in consonance with achieving the objective of inclusive growth?"
+syllabusNodeId: "GS3-ECO-INCLUSIVE-GROWTH"
