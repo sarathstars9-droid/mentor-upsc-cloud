@@ -641,11 +641,106 @@ function minutesToHHMM(totalMin) {
 }
 
 /**
+ * Infer the best PYQ syllabus node from a plain-text subject/topic label.
+ * Used when finalMapping.nodeId is empty or suppressed (MISC/GEN).
+ */
+const SUBJECT_KEYWORD_NODE_MAP = [
+  // Environment / Ecology
+  ["ecology",      "GS3-ENV"],
+  ["environment",  "GS3-ENV"],
+  ["biodiversity", "GS3-ENV"],
+  ["gs3-env",      "GS3-ENV"],
+  // Economy
+  ["economy",      "GS3-ECO"],
+  ["economics",    "GS3-ECO"],
+  ["inflation",    "GS3-ECO"],
+  ["gs3-eco",      "GS3-ECO"],
+  // Polity / Governance
+  ["polity",       "GS2-POL"],
+  ["governance",   "GS2-POL"],
+  ["constitution", "GS2-POL"],
+  ["gs2-pol",      "GS2-POL"],
+  ["gs-2",         "GS2-POL"],
+  ["gs2",          "GS2-POL"],
+  // History
+  ["history",      "GS1-HIS"],
+  ["ancient",      "GS1-HIS"],
+  ["medieval",     "GS1-HIS"],
+  ["modern",       "GS1-HIS"],
+  ["gs1-his",      "GS1-HIS"],
+  // Geography
+  ["geography",    "GS1-GEO"],
+  ["gs1-geo",      "GS1-GEO"],
+  // Science & Technology
+  ["science",      "GS3-ST"],
+  ["technology",   "GS3-ST"],
+  ["gs3-st",       "GS3-ST"],
+  // Ethics
+  ["ethics",       "GS4-ETH"],
+  ["gs4",          "GS4-ETH"],
+  // CSAT
+  ["csat",         "CSAT-BN"],
+  // Essay
+  ["essay",        "ESSAY"],
+  // GS1 broad fallback (must come after specific gs1 checks)
+  ["gs-1",         "GS1-HIS"],
+  ["gs1",          "GS1-HIS"],
+  // GS3 broad fallback
+  ["gs-3",         "GS3-ECO"],
+  ["gs3",          "GS3-ECO"],
+  // GS4 broad fallback
+  ["gs-4",         "GS4-ETH"],
+];
+
+function inferNodeFromKeyword(text = "") {
+  const lower = text.toLowerCase().trim();
+  if (!lower) return "";
+  for (const [kw, node] of SUBJECT_KEYWORD_NODE_MAP) {
+    if (lower.includes(kw)) return node;
+  }
+  return "";
+}
+
+/**
  * Build "View All PYQs" navigation path.
- * Driven ONLY by stage + gsPaper + topic.
- * No nodeId, no mapping fallbacks.
+ *
+ * Priority:
+ *   1.   Direct nodeId route  →  /pyq/topic/:nodeId  (always works, best UX)
+ *   1.5. Infer node from PlannedSubject/ActualSubject keywords
+ *   2.   Stage + paper params →  /pyq/topic?stage=...&paper=...&topic=...
+ *   3.   Return null if nothing useful
  */
 function getBlockPyqNavPath(block) {
+  // ── Priority 1: Use the resolved nodeId for a direct, reliable link ──────
+  const rawNodeId = block?.finalMapping?.nodeId || "";
+  const nodeId = normalizeMappingCode(rawNodeId);
+
+  if (nodeId && nodeId !== "MISC-GEN" && !nodeId.startsWith("MISC") && nodeId !== "GEN") {
+    const topic = (block?.PlannedTopic || block?.ActualTopic || "").trim();
+    const params = new URLSearchParams();
+    if (topic) params.set("topic", topic);
+    const qs = params.toString();
+    return `/pyq/topic/${encodeURIComponent(nodeId)}${qs ? `?${qs}` : ""}`;
+  }
+
+  // ── Priority 1.5: Infer node from subject/topic label keywords ────────────
+  const subjectText = [
+    block?._resolverData?.subjectLabel || "",
+    block?.finalMapping?.subjectName || "",
+    block?.PlannedSubject || "",
+    block?.ActualSubject || "",
+  ].join(" ").trim();
+
+  const inferredNode = inferNodeFromKeyword(subjectText);
+  if (inferredNode) {
+    const topic = (block?.PlannedTopic || block?.ActualTopic || "").trim();
+    const params = new URLSearchParams();
+    if (topic) params.set("topic", topic);
+    const qs = params.toString();
+    return `/pyq/topic/${encodeURIComponent(inferredNode)}${qs ? `?${qs}` : ""}`;
+  }
+
+  // ── Priority 2: Fall back to stage + paper + topic query params ───────────
   const stage = (
     block?._resolverData?.stage ||
     block?.StageLock ||
@@ -660,7 +755,6 @@ function getBlockPyqNavPath(block) {
 
   const topic = (block?.PlannedTopic || block?.ActualTopic || "").trim();
 
-  // Need at least one dimension to build a useful link
   if (!stage && !paper && !topic) return null;
 
   const params = new URLSearchParams();

@@ -457,14 +457,74 @@ function stageToFilter(stage = "") {
 }
 
 /** Map GS paper → broadest valid backend node for that paper */
-function paperToFetchNode(paper = "") {
+function paperToFetchNode(paper = "", stage = "") {
     const p = paper.toUpperCase().trim();
+    const s = stage.toLowerCase().trim();
+
+    // Explicit paper codes — always prefer these
     if (p === "GS1") return "GS1-HIS";
     if (p === "GS2") return "GS2-POL";
     if (p === "GS3") return "GS3-ECO";
     if (p === "GS4") return "GS4-ETH";
     if (p === "ESSAY") return "ESSAY";
     if (p === "CSAT") return "CSAT-BN";
+    if (p === "PRELIMS") return "GS1-HIS"; // broadest prelims GS node
+
+    // Stage fallback when paper is empty
+    if (s === "prelims") return "GS1-HIS";
+    if (s === "mains")   return "GS1-HIS";
+    if (s === "essay")   return "ESSAY";
+    if (s === "csat")    return "CSAT-BN";
+
+    return "";
+}
+
+/**
+ * Infer the best syllabus node from a topic/subject keyword string.
+ * Belt-and-suspenders fallback for bare ?topic= URLs.
+ */
+const TOPIC_KEYWORD_NODE_MAP = [
+    ["ecology",       "GS3-ENV"],
+    ["environment",   "GS3-ENV"],
+    ["biodiversity",  "GS3-ENV"],
+    ["gs3-env",       "GS3-ENV"],
+    ["economy",       "GS3-ECO"],
+    ["economics",     "GS3-ECO"],
+    ["inflation",     "GS3-ECO"],
+    ["gs3-eco",       "GS3-ECO"],
+    ["polity",        "GS2-POL"],
+    ["governance",    "GS2-POL"],
+    ["constitution",  "GS2-POL"],
+    ["gs2-pol",       "GS2-POL"],
+    ["gs-2",          "GS2-POL"],
+    ["gs2",           "GS2-POL"],
+    ["history",       "GS1-HIS"],
+    ["ancient",       "GS1-HIS"],
+    ["medieval",      "GS1-HIS"],
+    ["modern history","GS1-HIS"],
+    ["gs1-his",       "GS1-HIS"],
+    ["geography",     "GS1-GEO"],
+    ["gs1-geo",       "GS1-GEO"],
+    ["science",       "GS3-ST"],
+    ["technology",    "GS3-ST"],
+    ["gs3-st",        "GS3-ST"],
+    ["ethics",        "GS4-ETH"],
+    ["gs4",           "GS4-ETH"],
+    ["csat",          "CSAT-BN"],
+    ["essay",         "ESSAY"],
+    ["gs-1",          "GS1-HIS"],
+    ["gs1",           "GS1-HIS"],
+    ["gs-3",          "GS3-ECO"],
+    ["gs3",           "GS3-ECO"],
+    ["gs-4",          "GS4-ETH"],
+];
+
+function topicKeywordToNode(topic = "") {
+    const lower = topic.toLowerCase().trim();
+    if (!lower) return "";
+    for (const [kw, node] of TOPIC_KEYWORD_NODE_MAP) {
+        if (lower.includes(kw)) return node;
+    }
     return "";
 }
 
@@ -477,8 +537,16 @@ export default function PyqTopicPage() {
     const paperParam = searchParams.get("paper") || "";
     const topicParam = (searchParams.get("topic") || "").trim();
 
-    // Resolve which node to fetch: route param takes priority, then derive from paper
-    const syllabusNodeId = routeNodeId || paperToFetchNode(paperParam) || "";
+    // Resolve which node to fetch:
+    // 1. Route param (/:syllabusNodeId) — highest priority
+    // 2. Derive from paper + stage query params
+    // 3. Infer from topic keyword (e.g. "Ecology Biodiversity" → GS3-ENV, "GS-2 Mains" → GS2-POL)
+    // 4. Last resort: GS1-HIS only for truly unknown topics
+    const syllabusNodeId =
+        routeNodeId ||
+        paperToFetchNode(paperParam, stageParam) ||
+        topicKeywordToNode(topicParam) ||
+        (topicParam ? "GS1-HIS" : "");
 
     const [paperFilter, setPaperFilter] = useState(() => stageToFilter(stageParam));
     const [viewMode, setViewMode] = useState("quick");
