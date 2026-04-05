@@ -669,8 +669,33 @@ function calculateSubjectScore(text, subjectDef) {
   return Math.max(score, 0);
 }
 
-export function resolveSubject(cleanedText) {
+// Stage → GS paper prefix suffix map for boosting correct paper
+const GS_PAPER_PREFIX = {
+  GS1: 'GS1',
+  GS2: 'GS2',
+  GS3: 'GS3',
+  GS4: 'GS4',
+};
+
+// Stage-compatible subject IDs
+// prelims: ALL subjects are fair game (prelims is general)
+// mains: prefer GS1/GS2/GS3/GS4 subjects, suppress CSAT/CA for non-CA blocks
+const MAINS_ONLY_SUBJECTS = new Set(['GS1-HIS', 'GS1-GEO', 'GS1-CUL', 'GS1-SOC',
+  'GS2-POL', 'GS2-GOV', 'GS2-IR', 'GS3-ECO', 'GS3-ENV', 'GS3-ST', 'GS3-IS',
+  'GS3-DM', 'GS4-ETH']);
+
+/**
+ * Resolve subject from cleaned OCR text.
+ *
+ * @param {string} cleanedText  - Cleaned OCR text
+ * @param {Object} [ctx]        - Stage context from detectOcrStage
+ * @param {string} [ctx.stage]  - 'prelims'|'mains'|'csat'|'essay'|'general'
+ * @param {string|null} [ctx.gsPaper] - 'GS1'|'GS2'|'GS3'|'GS4'|null
+ * @returns {Object} - Subject resolution result
+ */
+export function resolveSubject(cleanedText, ctx = {}) {
   const normalizedText = normalizeText(cleanedText);
+  const { stage = 'general', gsPaper = null } = ctx;
 
   if (!normalizedText) {
     return {
@@ -685,18 +710,39 @@ export function resolveSubject(cleanedText) {
     };
   }
 
-  const scores = SUBJECT_DICT.map((sub) => ({
-    subjectId: sub.id,
-    subjectName: sub.name,
-    score: calculateSubjectScore(normalizedText, sub),
-  })).filter((s) => s.score > 0);
+  const scoreEntries = SUBJECT_DICT.map((sub) => {
+    let score = calculateSubjectScore(normalizedText, sub);
 
-  scores.sort((a, b) => {
+    // Stage-based boosting:
+    // If stage is 'prelims', suppress mains-specific subjects slightly
+    if (stage === 'prelims' && MAINS_ONLY_SUBJECTS.has(sub.id)) {
+      score = Math.max(score - 20, 0);
+    }
+
+    // If a GS paper is detected, boost the matching paper's subjects
+    if (gsPaper && sub.id.startsWith(GS_PAPER_PREFIX[gsPaper] || '__')) {
+      score += 30;
+    }
+
+    // If stage is 'mains', suppress CSAT and CA unless text matches them
+    if (stage === 'mains' && (sub.id === 'CSAT' || sub.id === 'CA')) {
+      score = Math.max(score - 40, 0);
+    }
+
+    // If stage is 'prelims', suppress mains-exclusive subjects
+    if (stage === 'prelims' && (sub.id === 'ESSAY')) {
+      score = Math.max(score - 40, 0);
+    }
+
+    return { subjectId: sub.id, subjectName: sub.name, score };
+  }).filter((s) => s.score > 0);
+
+  scoreEntries.sort((a, b) => {
     if (b.score !== a.score) return b.score - a.score;
     return a.subjectId.localeCompare(b.subjectId);
   });
 
-  if (scores.length === 0) {
+  if (scoreEntries.length === 0) {
     return {
       subjectId: null,
       subjectName: "Unmapped",
@@ -709,8 +755,8 @@ export function resolveSubject(cleanedText) {
     };
   }
 
-  const top = scores[0];
-  const second = scores[1] || null;
+  const top = scoreEntries[0];
+  const second = scoreEntries[1] || null;
 
   const confidenceScore = Math.min(top.score / 160, 1.0);
   const gapScore = second ? Math.max((top.score - second.score) / 160, 0) : 1.0;
@@ -731,7 +777,7 @@ export function resolveSubject(cleanedText) {
     confidenceScore,
     confidenceBadge,
     isLocked: !isAmbiguous,
-    candidates: scores.slice(0, 3),
+    candidates: scoreEntries.slice(0, 3),
     gapScore,
     reason: isAmbiguous ? "ambiguous_subject_match" : "subject_locked",
   };

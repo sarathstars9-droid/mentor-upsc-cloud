@@ -970,7 +970,7 @@ Output ONLY JSON.
       const item = { ...rawIt };
 
       const ocrInput = `${item.subject || ""} ${item.topic || ""}`.trim();
-      const mappingResult = processOcrText(ocrInput);
+      const mappingResult = processOcrText(ocrInput, { minutes: item.minutes || 0 });
 
       let linkedPyqs = { total: 0, mappedNodes: [] };
       // Try confirmed nodeId first, then scan all top candidates for best PYQ coverage
@@ -979,13 +979,11 @@ Output ONLY JSON.
         ...(mappingResult.topicCandidates || []).map(c => c.nodeId),
       ].filter(Boolean);
 
-      let bestLookupNodeId = null;
       for (const cid of candidateNodeIds) {
         try {
           const result = getPyqSummaryForNode(cid, 500);
           if (result.total > linkedPyqs.total) {
             linkedPyqs = result;
-            bestLookupNodeId = cid;
           }
           if (mappingResult.nodeId && cid === mappingResult.nodeId && linkedPyqs.total > 0) break; // confirmed match, stop
         } catch (e) {
@@ -996,7 +994,7 @@ Output ONLY JSON.
       if (linkedPyqs.total === 0 && mappingResult.subjectCandidates?.[0]?.subjectId) {
         try {
           const r = getPyqSummaryForNode(mappingResult.subjectCandidates[0].subjectId, 500);
-          if (r.total > 0) { linkedPyqs = r; bestLookupNodeId = mappingResult.subjectCandidates[0].subjectId; }
+          if (r.total > 0) { linkedPyqs = r; }
         } catch (e) { }
       }
       // Final fallback: walk parent prefixes of top candidate (e.g. GS3-ECO-BANKING-MT03 → GS3-ECO-BANKING → GS3-ECO)
@@ -1006,11 +1004,14 @@ Output ONLY JSON.
           const prefix = parts.slice(0, len).join("-");
           try {
             const r = getPyqSummaryForNode(prefix, 500);
-            if (r.total > 0) { linkedPyqs = r; bestLookupNodeId = prefix; break; }
+            if (r.total > 0) { linkedPyqs = r; break; }
           } catch (e) { }
         }
       }
-      const resolvedNodeId = mappingResult.nodeId || bestLookupNodeId || null;
+      // pyqNodeLinked must ONLY be the confidently-mapped node from the OCR pipeline.
+      // bestLookupNodeId is used only for linkedPyqs data (PYQ count/panel), never for display.
+      // Mains blocks, mixed PYQ blocks, or any block with ambiguous topic → nodeId = null.
+      const resolvedNodeId = mappingResult.nodeId || null;
 
       const finalMapping = {
         subjectId: mappingResult.subjectId,

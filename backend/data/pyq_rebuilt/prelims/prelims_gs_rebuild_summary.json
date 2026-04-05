@@ -1,10 +1,13 @@
 {
+  "rebuiltAt": "2026-04-05T06:49:22.421Z",
   "totalFiles": 12,
-  "inputRows": 1349,
-  "finalRows": 1349,
-  "reviewSummary": {
-    "REVIEW_TOPIC": 697,
-    "OK": 513,
-    "REVIEW_SUBJECT": 139
-  }
+  "totalQuestions": 1349,
+  "repairedQuestions": 867,
+  "invalidOldNodeIds": 85,
+  "unresolvedSections": 0,
+  "unmappedSectionsCount": 0,
+  "unmappedSectionsList": [],
+  "remainingUnmappedTopic": 0,
+  "remainingUnknown": 0,
+  "remainingInvalidNodeIds": 0
 }

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { BACKEND_URL } from "../config";
 import PyqTopicHeader from "../components/pyq/PyqTopicHeader";
 import PyqControlBar from "../components/pyq/PyqControlBar";
@@ -145,18 +145,32 @@ function humanizeNodeId(nodeId = "") {
     };
 }
 
+const GENERIC_THEME_VALUES = new Set([
+    "", "general", "general topic", "theme_general", "theme general",
+    "unmapped", "unmapped_topic", "unmapped topic", "unknown", "unknown topic",
+    "misc", "misc-gen", "misc gen", "miscellaneous",
+    "other", "others", "na", "n/a", "null", "none",
+]);
+
+function isGenericTheme(value) {
+    return GENERIC_THEME_VALUES.has(String(value || "").toLowerCase().trim());
+}
+
 function getMicroTheme(raw = {}) {
-    return (
-        raw.microTheme ||
-        raw.micro_theme ||
-        raw.mappedTopicName ||
-        raw.mapped_topic_name ||
-        raw.subtopic ||
-        raw.topic ||
-        raw.themeLabel ||
-        raw.subject ||
-        ""
-    );
+    const candidates = [
+        raw.microTheme,
+        raw.micro_theme,
+        raw.mappedTopicName,
+        raw.mapped_topic_name,
+        raw.subtopic,
+        raw.topic,
+        raw.themeLabel,
+        raw.subject,
+    ];
+    for (const v of candidates) {
+        if (v && !isGenericTheme(v)) return String(v).trim();
+    }
+    return "";
 }
 
 function normalizeQuestion(raw = {}) {
@@ -283,9 +297,20 @@ function normalizeQuestion(raw = {}) {
         options,
         answer: raw.answer || raw.correctAnswer || raw.correct_answer || raw.answerKey || "",
         questionText,
-        themeId: raw.themeId || raw.syllabusNodeId || "theme_general",
-        themeLabel: raw.themeLabel || raw.subject || raw.section || "General",
-        subtopic: raw.subtopic || raw.topic || raw.subject || raw.section || "",
+        themeId: (() => {
+            const v = raw.themeId || raw.syllabusNodeId || "";
+            return isGenericTheme(v) ? "theme_general" : (v || "theme_general");
+        })(),
+        themeLabel: (() => {
+            const candidates = [raw.themeLabel, raw.section];
+            const v = candidates.find(c => c && !isGenericTheme(c));
+            return v ? String(v).trim() : "";
+        })(),
+        subtopic: (() => {
+            const candidates = [raw.subtopic, raw.topic];
+            const v = candidates.find(c => c && !isGenericTheme(c));
+            return v ? String(v).trim() : "";
+        })(),
         microTheme,
         nature: raw.nature || "general",
         difficulty: raw.difficulty || "moderate",
@@ -297,14 +322,15 @@ function buildThemes(questions) {
     const map = new Map();
 
     for (const q of questions) {
-        const key = q.themeId || q.themeLabel || q.subtopic || "theme_general";
-        const label = q.themeLabel || q.subtopic || "General";
+        // Skip generic/placeholder theme IDs from the filter chips
+        const rawKey = q.themeId || q.themeLabel || q.subtopic || "";
+        if (!rawKey || isGenericTheme(rawKey)) continue;
 
-        if (!map.has(key)) {
-            map.set(key, { id: key, label, count: 0 });
+        const label = q.themeLabel || q.subtopic || rawKey;
+        if (!map.has(rawKey)) {
+            map.set(rawKey, { id: rawKey, label, count: 0 });
         }
-
-        map.get(key).count += 1;
+        map.get(rawKey).count += 1;
     }
 
     return [...map.values()].sort((a, b) => b.count - a.count);
@@ -419,15 +445,48 @@ function sortQuestions(items, sortMode) {
     return copy;
 }
 
-export default function PyqTopicPage() {
-    const { syllabusNodeId } = useParams();
+/** Map stage query param → paper filter value used by PyqControlBar */
+function stageToFilter(stage = "") {
+    const s = stage.toLowerCase();
+    if (s === "prelims") return "prelims";
+    if (s === "mains")   return "mains";
+    if (s === "essay")   return "essay";
+    if (s === "ethics")  return "ethics";
+    if (s === "csat")    return "csat";
+    return "both";
+}
 
-    const [paperFilter, setPaperFilter] = useState("both");
+/** Map GS paper → broadest valid backend node for that paper */
+function paperToFetchNode(paper = "") {
+    const p = paper.toUpperCase().trim();
+    if (p === "GS1") return "GS1-HIS";
+    if (p === "GS2") return "GS2-POL";
+    if (p === "GS3") return "GS3-ECO";
+    if (p === "GS4") return "GS4-ETH";
+    if (p === "ESSAY") return "ESSAY";
+    if (p === "CSAT") return "CSAT-BN";
+    return "";
+}
+
+export default function PyqTopicPage() {
+    const { syllabusNodeId: routeNodeId } = useParams();
+    const [searchParams] = useSearchParams();
+
+    // Query params passed from plan block "View All PYQs"
+    const stageParam = searchParams.get("stage") || "";
+    const paperParam = searchParams.get("paper") || "";
+    const topicParam = (searchParams.get("topic") || "").trim();
+
+    // Resolve which node to fetch: route param takes priority, then derive from paper
+    const syllabusNodeId = routeNodeId || paperToFetchNode(paperParam) || "";
+
+    const [paperFilter, setPaperFilter] = useState(() => stageToFilter(stageParam));
     const [viewMode, setViewMode] = useState("quick");
     const [sortMode, setSortMode] = useState("latest");
     const [selectedTheme, setSelectedTheme] = useState("all");
     const [timelineMode, setTimelineMode] = useState("normal");
     const [selectedYear, setSelectedYear] = useState("all");
+    const [topicSearch, setTopicSearch] = useState(topicParam);
 
     const [loading, setLoading] = useState(true);
     const [loadError, setLoadError] = useState("");
@@ -445,7 +504,11 @@ export default function PyqTopicPage() {
         async function loadPyqs() {
             if (!syllabusNodeId) {
                 setLoading(false);
-                setLoadError("Missing syllabus node id.");
+                setLoadError(
+                    stageParam || topicParam
+                        ? `No dataset found for${stageParam ? ` stage: ${stageParam}` : ""}${paperParam ? `, paper: ${paperParam}` : ""}. Try navigating from a specific topic block.`
+                        : "No topic selected."
+                );
                 setQuestions([]);
                 return;
             }
@@ -535,8 +598,39 @@ export default function PyqTopicPage() {
             items = items.filter((q) => Number(q.year) === Number(selectedYear));
         }
 
+        // Keyword search: matches questionText, microTheme, themeLabel, subtopic,
+        // tags, themeId nodeId-prefix, and keywords array
+        const kw = topicSearch.trim().toLowerCase();
+        if (kw) {
+            items = items.filter((q) => {
+                // nodeId prefix match: keyword matches beginning of themeId code
+                if (q.themeId && q.themeId.toUpperCase().startsWith(kw.toUpperCase())) return true;
+
+                // Tags array
+                const tagMatch = Array.isArray(q.tags) && q.tags.some(
+                    (t) => String(t).toLowerCase().includes(kw)
+                );
+                if (tagMatch) return true;
+
+                // Keywords array (some datasets carry a `keywords` field)
+                const kwMatch = Array.isArray(q.keywords) && q.keywords.some(
+                    (k) => String(k).toLowerCase().includes(kw)
+                );
+                if (kwMatch) return true;
+
+                // Text fields
+                return [
+                    q.questionText,
+                    q.microTheme,
+                    q.themeLabel,
+                    q.subtopic,
+                    q.nature,
+                ].some((f) => f && String(f).toLowerCase().includes(kw));
+            });
+        }
+
         return sortQuestions(items, sortMode);
-    }, [questions, paperFilter, selectedTheme, selectedYear, sortMode]);
+    }, [questions, paperFilter, selectedTheme, selectedYear, sortMode, topicSearch]);
 
     const pyqInsight = useMemo(() => {
         const years = filteredQuestions.map((q) => Number(q.year)).filter(Boolean);
@@ -647,6 +741,59 @@ export default function PyqTopicPage() {
                     sortMode={sortMode}
                     setSortMode={setSortMode}
                 />
+
+                {/* Stage / paper context badges + keyword search */}
+                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    {(stageParam || paperParam) && (
+                        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                            {stageParam && (
+                                <span style={{
+                                    padding: "4px 10px", borderRadius: 999, fontSize: 12, fontWeight: 700,
+                                    background: "rgba(59,130,246,0.14)", border: "1px solid rgba(96,165,250,0.28)",
+                                    color: "#dbeafe", textTransform: "capitalize",
+                                }}>
+                                    {stageParam}
+                                </span>
+                            )}
+                            {paperParam && (
+                                <span style={{
+                                    padding: "4px 10px", borderRadius: 999, fontSize: 12, fontWeight: 700,
+                                    background: "rgba(139,92,246,0.14)", border: "1px solid rgba(167,139,250,0.28)",
+                                    color: "#ede9fe",
+                                }}>
+                                    {paperParam}
+                                </span>
+                            )}
+                        </div>
+                    )}
+                    <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                        <input
+                            type="search"
+                            value={topicSearch}
+                            onChange={(e) => setTopicSearch(e.target.value)}
+                            placeholder="Filter by keyword, nodeId prefix, or theme…"
+                            style={{
+                                flex: 1, padding: "9px 14px", borderRadius: 10,
+                                border: "1px solid rgba(96,165,250,0.28)",
+                                background: "rgba(255,255,255,0.05)", color: "#f1f5f9",
+                                fontSize: 14, fontWeight: 600, outline: "none",
+                            }}
+                        />
+                        {topicSearch && (
+                            <button
+                                onClick={() => setTopicSearch("")}
+                                style={{
+                                    padding: "9px 14px", borderRadius: 10,
+                                    border: "1px solid rgba(255,255,255,0.10)",
+                                    background: "rgba(255,255,255,0.05)", color: "#94a3b8",
+                                    fontWeight: 700, cursor: "pointer", fontSize: 13,
+                                }}
+                            >
+                                Clear
+                            </button>
+                        )}
+                    </div>
+                </div>
 
                 {!loading && !loadError && (
                     <div

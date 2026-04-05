@@ -34,7 +34,11 @@ export default function BlockCard({
     onStop,
 }) {
     const status = getDisplayStatus(block.Status || "planned").toLowerCase();
-    const mappingCode = block.PyqNodeId || block.MappingCode || block.NodeId;
+    const isMiscGen = (v) => String(v || "").toUpperCase() === "MISC-GEN";
+    const mappingCode = (() => {
+        const raw = block.PyqNodeId || block.MappingCode || block.NodeId || "";
+        return isMiscGen(raw) ? "" : raw;
+    })();
 
     // Topic chips — split by comma if string, or use as array
     const topicChips = (() => {
@@ -46,11 +50,18 @@ export default function BlockCard({
         return [];
     })();
 
-    // Syllabus path line
-    const syllabusPath = block.SyllabusPath || block.ActualPath || block.SyllabusTop1Path || "";
+    // Syllabus path line — suppress generic MISC paths
+    const syllabusPath = (() => {
+        const raw = block.SyllabusPath || block.ActualPath || block.SyllabusTop1Path || "";
+        if (/^misc\s*(\/|>|\s)/i.test(raw)) return "";
+        return raw;
+    })();
 
-    // PYQ node linked
-    const pyqNodeLinked = block.PyqNodeId || block.PrimaryPyqNodeId || "";
+    // PYQ node linked — suppress MISC-GEN fallback
+    const pyqNodeLinked = (() => {
+        const raw = block.PyqNodeId || block.PrimaryPyqNodeId || "";
+        return isMiscGen(raw) ? "" : raw;
+    })();
 
     // Actual start / end
     const actualStart = block.ActualStart ? block.ActualStartFormatted || block.ActualStart : null;

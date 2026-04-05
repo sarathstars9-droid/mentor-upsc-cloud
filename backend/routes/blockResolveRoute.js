@@ -17,7 +17,7 @@ const router = express.Router();
 
 router.post('/resolve', (req, res) => {
   try {
-    const { input } = req.body ?? {};
+    const { input, minutes } = req.body ?? {};
 
     if (!input || typeof input !== 'string' || !input.trim()) {
       return res.status(400).json({
@@ -26,7 +26,10 @@ router.post('/resolve', (req, res) => {
       });
     }
 
-    const result = resolveBlock(input.trim());
+    const opts = {};
+    if (typeof minutes === 'number' && minutes > 0) opts.minutes = minutes;
+
+    const result = resolveBlock(input.trim(), opts);
     return res.json({ ok: true, ...result });
 
   } catch (err) {

@@ -35,23 +35,45 @@ function buildTimelineGroups(questions) {
     }));
 }
 
+const GENERIC_LABELS = new Set([
+  "", "general", "general topic", "theme_general",
+  "unmapped", "unmapped_topic", "unmapped topic",
+  "unknown", "unknown topic", "misc", "miscellaneous",
+  "other", "others",
+]);
+
+function cleanLabel(v) {
+  const s = String(v || "").trim();
+  return GENERIC_LABELS.has(s.toLowerCase()) ? "" : s;
+}
+
 function buildTopicGroups(questions) {
   const map = new Map();
+  const UNGROUPED = "__ungrouped__";
 
   for (const q of questions) {
-    const key = q.microTheme || q.subtopic || q.themeLabel || "General";
-    if (!map.has(key)) {
-      map.set(key, []);
-    }
+    const key =
+      cleanLabel(q.microTheme) ||
+      cleanLabel(q.subtopic) ||
+      cleanLabel(q.themeLabel) ||
+      UNGROUPED;
+
+    if (!map.has(key)) map.set(key, []);
     map.get(key).push(q);
   }
 
-  return [...map.entries()]
-    .map(([topic, items]) => ({
-      topic,
-      items,
-    }))
+  const groups = [...map.entries()]
+    .filter(([key]) => key !== UNGROUPED)
+    .map(([topic, items]) => ({ topic, items }))
     .sort((a, b) => b.items.length - a.items.length);
+
+  // Append ungrouped questions at the end without a misleading label
+  const ungrouped = map.get(UNGROUPED) || [];
+  if (ungrouped.length) {
+    groups.push({ topic: "Other Questions", items: ungrouped });
+  }
+
+  return groups;
 }
 
 function ActionButton({ active, children, onClick }) {
@@ -256,7 +278,7 @@ function QuestionCard({
           </span>
         ) : null}
 
-        {q.microTheme ? (
+        {cleanLabel(q.microTheme) ? (
           <span
             style={{
               fontSize: 11,
@@ -269,7 +291,7 @@ function QuestionCard({
               maxWidth: "100%",
             }}
           >
-            {String(q.microTheme).toUpperCase()}
+            {cleanLabel(q.microTheme).toUpperCase()}
           </span>
         ) : null}
 
@@ -442,6 +464,133 @@ function QuestionCard({
           </ActionButton>
         ) : null}
       </div>
+
+      {/* Ask ChatGPT — full-width prominent button, separate from action pills */}
+      <button
+        type="button"
+        onClick={() => {
+          const year = q.year ? String(q.year) : "";
+          const paperRaw = String(q.paper || "").toLowerCase();
+          const paperLabel = q.paper ? q.paper.charAt(0).toUpperCase() + q.paper.slice(1) : "";
+          const subject = q.themeLabel || q.subtopic || q.microTheme || "";
+
+          const optionLines = Array.isArray(q.options) && q.options.length
+            ? q.options.map((opt, i) => {
+                const letter = String.fromCharCode(65 + i);
+                const val = typeof opt === "object" ? (opt.value ?? opt.text ?? "") : opt;
+                return `  ${letter}. ${val}`;
+              }).join("\n")
+            : "";
+
+          const answerLine = q.answer ? `Correct Answer: ${String(q.answer).toUpperCase()}` : "";
+
+          const header = [
+            `UPSC PYQ | ${paperLabel}${year ? ` | ${year}` : ""}${subject ? ` | ${subject}` : ""}`,
+            "",
+            "Question:",
+            q.questionText || "",
+            ...(optionLines ? ["", "Options:", optionLines] : []),
+            ...(answerLine ? ["", answerLine] : []),
+            "",
+            "---",
+            "",
+          ].join("\n");
+
+          const isMains = paperRaw === "mains" || paperRaw === "essay" || paperRaw === "ethics";
+
+          const body = isMains
+            ? [
+                "You are an AIR-1 level UPSC CSE Mentor, Mains answer writing expert, and evaluator.",
+                "",
+                "Your role is NOT to just explain — but to TRAIN the aspirant to THINK, STRUCTURE, and WRITE like a UPSC topper under exam pressure.",
+                "",
+                "You must strictly follow UPSC standards (Laxmikanth, DD Basu, ARC, NCERT clarity, current affairs integration).",
+                "",
+                "---",
+                "",
+                "### 1. 🧠 CORE DEMAND BREAKDOWN",
+                "- Subject + Micro-topic (exact syllabus node)",
+                "- Static vs Dynamic components",
+                "- Directive decoding (what exactly UPSC wants)",
+                "- Hidden dimensions (what average aspirant misses)",
+                "- Convert to: \"What exactly should I write to get 8+ marks?\"",
+                "",
+                "### 2. ⚙️ THINK LIKE A TOPPER (MENTAL FLOW)",
+                "Simulate topper's brain in exam hall (30–40 seconds):",
+                "- Step-by-step thinking flow",
+                "- How they break the question and decide structure quickly",
+                "- What they prioritize / ignore",
+                "",
+                "### 3. 🧱 PERFECT ANSWER STRUCTURE",
+                "Give a ready-to-write framework:",
+                "- Intro (2–3 variations: definition / data / committee / current affairs hook)",
+                "- Body: dimension-wise structure (minimum 4–6 dimensions) with crisp 1-line UPSC sub-points",
+                "- Conclusion: forward-looking + constitutional + balanced",
+                "",
+                "### 4. ✍️ MODEL ANSWER (150–250 WORDS)",
+                "- UPSC-ready, structured, crisp, no fluff",
+                "- Use keywords, committees, reports, examples",
+                "",
+                "### 5. 🧠 VALUE ADDITION",
+                "- 5 must-use keywords",
+                "- 2 committee / report references",
+                "- 1 case study / example",
+                "- 1 data point (if possible)",
+                "- Diagram / flowchart suggestion (if applicable)",
+                "",
+                "### 6. ❌ COMMON MISTAKES",
+                "- What NOT to write",
+                "- Where aspirants go wrong",
+                "- Typical traps in this question",
+                "",
+                "### 7. ⚡ MEMORY HOOK",
+                "- Shortcut / mnemonic / structure to recall in exam",
+                "",
+                "### 8. 🔁 PYQ PATTERN LINKING",
+                "- Similar PYQs asked before",
+                "- How UPSC is repeating this theme",
+                "- Probability of repetition",
+                "",
+                "---",
+                "RULES: Be precise, not philosophical. Avoid generic content. Focus on marks maximization. Think like evaluator + mentor + topper combined.",
+              ].join("\n")
+            : [
+                "You are a UPSC CSE Prelims expert mentor. Analyze this question and teach me how to solve it in the exam.",
+                "",
+                "1. What core concept is being tested?",
+                "2. Why is the correct answer right?",
+                "3. Eliminate each wrong option using UPSC prelims logic.",
+                "4. How would a UPSC topper think through this under time pressure?",
+                "5. Give one memory trick or exam shortcut for this concept.",
+                "6. Does this pattern appear frequently in UPSC Prelims?",
+                "",
+                "Be accurate, concise, and exam-focused.",
+              ].join("\n");
+
+          const url = `https://chatgpt.com/?q=${encodeURIComponent(header + body)}`;
+          window.open(url, "_blank", "noopener,noreferrer");
+        }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 8,
+          width: "100%",
+          padding: "13px 20px",
+          marginBottom: 10,
+          borderRadius: 14,
+          border: "1px solid rgba(16,185,129,0.40)",
+          background: "linear-gradient(135deg, rgba(16,185,129,0.16) 0%, rgba(5,150,105,0.10) 100%)",
+          color: "#6ee7b7",
+          fontSize: 14,
+          fontWeight: 800,
+          letterSpacing: "0.02em",
+          cursor: "pointer",
+        }}
+      >
+        <span style={{ fontSize: 16 }}>✦</span>
+        Ask ChatGPT
+      </button>
 
       <div
         style={{

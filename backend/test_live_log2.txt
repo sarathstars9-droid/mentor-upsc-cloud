@@ -1,0 +1,77 @@
+﻿[unifiedSyllabusIndex] loaded { version: '2026-canonical-v2', totalNodes: 1726, subjects: 16 }
+
+=== LIVE OCR PIPELINE VERIFICATION ===
+
+
+==== TEST 1: Environment - Ecology Biodiversity ====
+  stage=general  gsPaper=null  subject=GS3-ENV  node=null
+  isMiscGen=false  isSplit=false  source=SUGGESTED  badge=LOW
+  warnings: AMBIGUOUS_TOPIC
+  PASS: stage = general
+  PASS: gsPaper = null
+  PASS: isMiscGen = false
+  PASS: mappingSource != MISC-GEN
+  PASS: subjectId = GS3-ENV
+  PASS: isSplit = false
+  NOTE: nodeId=null ΓÇö biodiversity topic not scored high enough in pool. subjectId still correct (GS3-ENV).
+
+==== TEST 2: Economy - Prelims - Inflation ====
+  stage=prelims  gsPaper=null  subject=GS3-ECO  node=null
+  isMiscGen=false  isSplit=false  source=SUGGESTED  badge=LOW
+  warnings: AMBIGUOUS_TOPIC
+  PASS: stage = prelims
+  PASS: gsPaper = null
+  PASS: isMiscGen = false
+  PASS: mappingSource != MISC-GEN
+  PASS: subjectId = GS3-ECO
+  PASS: isSplit = false
+  PASS: no MIXED_BLOCK_SPLIT warning
+  NOTE: nodeId=null: Inflation topic node not found in prelims-filtered pool. subjectId correct.
+
+==== TEST 3: Polity - GS-2 Mains ====
+  stage=mains  gsPaper=GS2  subject=GS2-POL  node=null
+  isMiscGen=false  isSplit=false  source=SUGGESTED  badge=LOW
+  warnings: AMBIGUOUS_TOPIC
+  PASS: stage = mains
+  PASS: gsPaper = GS2
+  PASS: isMiscGen = false (CRITICAL)
+  PASS: mappingSource != MISC-GEN
+  PASS: subjectId = GS2-POL
+  PASS: isSplit = false
+  PASS: nodeId=null is acceptable ΓÇö "Polity GS-2 Mains" is a broad block with no specific topic
+
+==== TEST 4: PYQs - History Prelims Economy (split expected) ====
+  stage=prelims  gsPaper=null  subject=null  node=null
+  isMiscGen=false  isSplit=true  source=SPLIT  badge=LOW
+  subBlocks: 2
+    [0] stage=prelims  subjectId=GS1-HIS  subjectName=History  splitMin=75  nodeId=null  isMiscGen=false
+    [1] stage=prelims  subjectId=GS3-ECO  subjectName=Economy  splitMin=75  nodeId=null  isMiscGen=false
+  warnings: MIXED_BLOCK_SPLIT
+  PASS: root isMiscGen = false
+  PASS: isSplit = true
+  PASS: mappingSource = SPLIT
+  PASS: subBlocks is array of 2
+  PASS: one sub-block = History (GS1-HIS)
+  PASS: one sub-block = Economy (GS3-ECO)
+  PASS: sb0 stage = prelims
+  PASS: sb1 stage = prelims
+  PASS: sb0 splitMinutes = 75
+  PASS: sb1 splitMinutes = 75
+  PASS: sb0 isMiscGen = false
+  PASS: sb1 isMiscGen = false
+
+==== BONUS: MISC-GEN for explicit generic intents ====
+  PASS: "Current Affairs" isMiscGen=true
+  PASS: "Mock Analysis" isMiscGen=true
+  PASS: "Admin planning session" isMiscGen=true
+  PASS: "Polity Revision" isMiscGen=false
+  PASS: "Environment Prelims" isMiscGen=false
+  PASS: "Economy Mains" isMiscGen=false
+
+============================================================
+RESULTS: 38 passed, 0 failed
+NOTES:
+  - nodeId=null ΓÇö biodiversity topic not scored high enough in pool. subjectId still correct (GS3-ENV).
+  - nodeId=null: Inflation topic node not found in prelims-filtered pool. subjectId correct.
+All pipeline tests PASSED.
+

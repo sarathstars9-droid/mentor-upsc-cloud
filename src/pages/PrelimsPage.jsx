@@ -1,7 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { BACKEND_URL } from "../config";
 import { PRELIMS_STRUCTURE } from "../data/prelimsStructure";
 import { recordTestAttempt, buildTestId } from "../utils/prelimsMistakeEngine";
+
+// Hard-coded userId for now (replace with auth when available)
+const CURRENT_USER_ID = "user_1";
 
 
 import PyqTestStart from "../components/Prelims/PyqTestStart";
@@ -356,6 +359,152 @@ async function analyzeAttemptWithBackend({
   return null;
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// TOPIC PROGRESS PANEL
+// ═══════════════════════════════════════════════════════════════════════════
+
+function TopicProgressPanel({ progress, loading, error, onContinue, onRetry, onRestart }) {
+  if (loading) {
+    return (
+      <div style={{ ...cardStyle, padding: 16, marginBottom: 12 }}>
+        <div style={{ color: "#93c5fd", fontWeight: 600, fontSize: 13 }}>Loading topic progress...</div>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div style={{ ...cardStyle, padding: 14, marginBottom: 12, borderColor: "rgba(239,68,68,0.22)", background: "rgba(127,29,29,0.1)" }}>
+        <div style={{ color: "#fca5a5", fontSize: 13 }}>{error}</div>
+      </div>
+    );
+  }
+  if (!progress) return null;
+
+  const { totalQuestions, servedCount, remainingCount, wrongCount, unattemptedCount,
+    canContinue, canRetryMistakes, isFullyCompleted } = progress;
+
+  const barPct = totalQuestions > 0 ? Math.round((servedCount / totalQuestions) * 100) : 0;
+
+  return (
+    <div style={{
+      ...cardStyle,
+      padding: 18,
+      marginBottom: 16,
+      background: "linear-gradient(135deg, rgba(14,165,233,0.06), rgba(168,85,247,0.06))",
+      border: "1px solid rgba(56,189,248,0.18)",
+    }}>
+      <div style={{ fontWeight: 700, color: "#e0f2fe", fontSize: 14, marginBottom: 12, letterSpacing: 0.3 }}>
+        📊 Topic Progress
+      </div>
+
+      {/* Stats row */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: 10, marginBottom: 14 }}>
+        {[
+          { label: "Total", value: totalQuestions, color: "#94a3b8" },
+          { label: "Served", value: servedCount, color: "#38bdf8" },
+          { label: "Remaining", value: remainingCount, color: "#22c55e" },
+          { label: "Wrong", value: wrongCount, color: "#f87171" },
+          { label: "Skipped", value: unattemptedCount, color: "#f59e0b" },
+        ].map(({ label, value, color }) => (
+          <div key={label} style={{
+            background: "rgba(15,23,42,0.7)",
+            borderRadius: 10,
+            padding: "10px 12px",
+            textAlign: "center",
+            border: "1px solid rgba(148,163,184,0.1)",
+          }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color }}>{value ?? 0}</div>
+            <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>{label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Progress bar */}
+      {totalQuestions > 0 && (
+        <div style={{ marginBottom: 14 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#64748b", marginBottom: 4 }}>
+            <span>Progress</span>
+            <span>{barPct}% complete</span>
+          </div>
+          <div style={{ background: "rgba(30,41,59,0.8)", borderRadius: 99, height: 8, overflow: "hidden" }}>
+            <div style={{
+              height: "100%",
+              width: `${barPct}%`,
+              background: isFullyCompleted
+                ? "linear-gradient(90deg, #22c55e, #16a34a)"
+                : "linear-gradient(90deg, #0ea5e9, #8b5cf6)",
+              borderRadius: 99,
+              transition: "width 0.4s ease",
+            }} />
+          </div>
+        </div>
+      )}
+
+      {/* Completion Banner */}
+      {isFullyCompleted && (
+        <div style={{
+          marginBottom: 14, padding: "10px 14px", borderRadius: 10,
+          background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.22)",
+          color: "#86efac", fontSize: 13, fontWeight: 600,
+        }}>
+          🎉 You've completed all questions in this topic!
+        </div>
+      )}
+
+      {/* Action Buttons */}
+      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+        {canContinue && (
+          <button
+            type="button"
+            id="topic-progress-continue-btn"
+            onClick={() => onContinue("continue")}
+            style={{
+              padding: "10px 18px", borderRadius: 10, border: "1px solid rgba(14,165,233,0.4)",
+              background: "linear-gradient(135deg, rgba(14,165,233,0.18), rgba(14,165,233,0.08))",
+              color: "#38bdf8", fontWeight: 700, fontSize: 13, cursor: "pointer",
+              transition: "all 0.2s",
+            }}
+          >
+            ▶ Continue ({remainingCount} left)
+          </button>
+        )}
+        {canRetryMistakes && (
+          <button
+            type="button"
+            id="topic-progress-retry-btn"
+            onClick={() => onContinue("retry_mistakes")}
+            style={{
+              padding: "10px 18px", borderRadius: 10, border: "1px solid rgba(248,113,113,0.4)",
+              background: "linear-gradient(135deg, rgba(239,68,68,0.12), rgba(239,68,68,0.06))",
+              color: "#fca5a5", fontWeight: 700, fontSize: 13, cursor: "pointer",
+              transition: "all 0.2s",
+            }}
+          >
+            🔁 Retry Wrong/Skipped ({wrongCount + unattemptedCount})
+          </button>
+        )}
+        <button
+          type="button"
+          id="topic-progress-restart-btn"
+          onClick={() => onContinue("restart")}
+          style={{
+            padding: "10px 18px", borderRadius: 10, border: "1px solid rgba(148,163,184,0.2)",
+            background: "rgba(30,41,59,0.6)",
+            color: "#94a3b8", fontWeight: 700, fontSize: 13, cursor: "pointer",
+            transition: "all 0.2s",
+          }}
+        >
+          🔄 Restart Topic
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MAIN PAGE COMPONENT
+// ═══════════════════════════════════════════════════════════════════════════
+
 export default function PrelimsPage() {
   const [testStage, setTestStage] = useState("start");
   const [testMode, setTestMode] = useState("sectional");
@@ -395,6 +544,14 @@ export default function PrelimsPage() {
 
   const [builderLoading, setBuilderLoading] = useState(false);
   const [builderError, setBuilderError] = useState("");
+
+  // ── Cross-device Topic Progress State ─────────────────────────────────────
+  const [topicProgress, setTopicProgress] = useState(null);
+  const [progressLoading, setProgressLoading] = useState(false);
+  const [progressError, setProgressError] = useState("");
+  const [activePracticeMode, setActivePracticeMode] = useState("continue");
+  // Tracks the topicNodeId used for the currently active progressive test
+  const [activeTopicNodeId, setActiveTopicNodeId] = useState("");
 
   // Fetch actual buildable GS counts from backend once on mount
   useEffect(() => {
@@ -502,6 +659,45 @@ export default function PrelimsPage() {
       }));
   }, [practicePaper, selectedSubjectId]);
 
+  // ── Fetch topic progress when topicNodeId is known ─────────────────────────
+  const fetchTopicProgress = useCallback(async (nodeId) => {
+    if (!nodeId) {
+      setTopicProgress(null);
+      return;
+    }
+    try {
+      setProgressLoading(true);
+      setProgressError("");
+      const resp = await fetch(
+        `${BACKEND_URL}/api/prelims/practice/progress/${encodeURIComponent(nodeId)}?userId=${encodeURIComponent(CURRENT_USER_ID)}`
+      );
+      if (!resp.ok) {
+        const json = await resp.json().catch(() => ({}));
+        throw new Error(json?.error || `Progress fetch failed (${resp.status})`);
+      }
+      const json = await resp.json();
+      setTopicProgress(json);
+    } catch (e) {
+      setProgressError(e.message || "Failed to load progress");
+      setTopicProgress(null);
+    } finally {
+      setProgressLoading(false);
+    }
+  }, []);
+
+  // Helper: resolve nodeId for current topic selection
+  function resolveCurrentTopicNodeId() {
+    const base = practicePaper === "GS" ? PRELIMS_STRUCTURE?.gs || [] : PRELIMS_STRUCTURE?.csat || [];
+    const subjectMeta = base.find((s) => s.id === selectedSubjectId);
+    if (!subjectMeta) return "";
+    if (practiceScope === "subject") return subjectMeta.nodeId || "";
+    const topicMeta = (subjectMeta.topics || []).find((t) => t.id === selectedTopicId);
+    if (!topicMeta) return subjectMeta.nodeId || "";
+    if (practiceScope === "topic") return topicMeta.nodeId || subjectMeta.nodeId || "";
+    const subtopicMeta = (topicMeta.subtopics || []).find((s) => selectedMicroThemeIds.includes(s.id));
+    return subtopicMeta?.nodeId || topicMeta.nodeId || subjectMeta.nodeId || "";
+  }
+
   const microThemes = useMemo(() => {
     const base =
       practicePaper === "GS"
@@ -545,12 +741,14 @@ export default function PrelimsPage() {
     setSelectedTopicId("");
     setSelectedMicroThemeIds([]);
     setBuilderError("");
+    setTopicProgress(null);
   }, [practicePaper]);
 
   useEffect(() => {
     setSelectedTopicId("");
     setSelectedMicroThemeIds([]);
     setBuilderError("");
+    setTopicProgress(null);
   }, [selectedSubjectId]);
 
   useEffect(() => {
@@ -573,6 +771,19 @@ export default function PrelimsPage() {
       practiceScope,
     });
   }, [selectedSubjectId, practicePaper, practiceScope]);
+
+  // Auto-fetch progress when a topic/subtopic is selected and we are in sectional mode
+  useEffect(() => {
+    if (testMode !== "sectional" || testStage !== "start") return;
+    if (!selectedSubjectId) { setTopicProgress(null); return; }
+    const nodeId = resolveCurrentTopicNodeId();
+    if (nodeId) {
+      fetchTopicProgress(nodeId);
+    } else {
+      setTopicProgress(null);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedSubjectId, selectedTopicId, selectedMicroThemeIds, practiceScope, testMode, testStage]);
 
   const recentHistory = useMemo(() => {
     const summary = dashboard?.summary || {};
@@ -678,6 +889,73 @@ export default function PrelimsPage() {
         (practiceScope === "subtopic" &&
           (!selectedMicroThemeIds.length || microThemes.length === 0))));
 
+  // ── Progressive test builder (Continue / Restart / Retry Mistakes) ─────────
+  async function buildProgressiveTest(mode = "continue") {
+    setBuilderError("");
+    const nodeId = resolveCurrentTopicNodeId();
+    if (!nodeId) {
+      setBuilderError("Cannot determine topic node ID for progress tracking. Select a subject and topic first.");
+      return;
+    }
+
+    try {
+      setBuilderLoading(true);
+      setResult(null);
+
+      const payload = {
+        userId: CURRENT_USER_ID,
+        topicNodeId: nodeId,
+        count: practiceQuestionCount,
+        mode,
+        stage: "prelims",
+      };
+
+      console.log("🚀 PROGRESSIVE BUILD PAYLOAD:", payload);
+
+      const response = await fetch(`${BACKEND_URL}/api/prelims/practice/build-progressive`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const json = await response.json();
+
+      if (!response.ok) {
+        // Surface the informative error (e.g. "fully completed")
+        throw new Error(json?.error || `Progressive build failed (${response.status})`);
+      }
+
+      const builtQuestions = Array.isArray(json?.questions) ? json.questions : [];
+      if (!builtQuestions.length) {
+        throw new Error(json?.error || "No questions returned from backend");
+      }
+
+      const safeScope = practiceScope === "subtopic" && selectedMicroThemeIds.length === 0 ? "topic" : practiceScope;
+      const nextTestId = `practice_progressive_${mode}_${selectedSubjectId || "na"}_${selectedTopicId || "na"}`;
+
+      setActiveTopicNodeId(nodeId);
+      setActivePracticeMode(mode);
+      setTestId(nextTestId);
+      setQuestions([...builtQuestions]);
+      setCurrentIndex(0);
+      setAnswersMap({});
+      setConfidenceMap({});
+      setResult(null);
+      setTestStage("attempt");
+
+      // Refresh progress panel after build (restart clears it)
+      if (json?.progress) setTopicProgress({ ...json.progress, topicNodeId: nodeId, userId: CURRENT_USER_ID });
+    } catch (error) {
+      console.error("Progressive build error:", error);
+      setBuilderError(error.message || "Failed to build progressive test");
+      // Refresh progress so user sees the completion banner
+      fetchTopicProgress(resolveCurrentTopicNodeId());
+    } finally {
+      setBuilderLoading(false);
+    }
+  }
+
+  // ── Original full-features practice builder (subject/full-length) ──────────
   async function buildPracticeOrFullLengthTest() {
     setBuilderError("");
 
@@ -735,59 +1013,30 @@ export default function PrelimsPage() {
         const selectedMicroThemeMetas = getSelectedMicroThemeMetas(topicMeta, selectedMicroThemeIds);
         const topicHintIds = (topicMeta?.subtopics || []).map((item) => item.id);
 
-        // Backend resolver is the single authority for prelims node resolution.
-        // Frontend should never invent or force node IDs here.
         let resolvedNodeId = "";
 
-        // subject
         if (safeScope === "subject") {
-          const subjectMeta = getSelectedSubjectMeta(
-            PRELIMS_STRUCTURE,
-            practicePaper,
-            selectedSubjectId
-          );
-          resolvedNodeId = subjectMeta?.nodeId || "";
+          const sM = getSelectedSubjectMeta(PRELIMS_STRUCTURE, practicePaper, selectedSubjectId);
+          resolvedNodeId = sM?.nodeId || "";
         }
-
-        // topic
         if (safeScope === "topic") {
-          const subjectMeta = getSelectedSubjectMeta(
-            PRELIMS_STRUCTURE,
-            practicePaper,
-            selectedSubjectId
-          );
-          const topicMeta = getSelectedTopicMeta(subjectMeta, selectedTopicId);
-          resolvedNodeId = topicMeta?.nodeId || "";
+          const sM = getSelectedSubjectMeta(PRELIMS_STRUCTURE, practicePaper, selectedSubjectId);
+          const tM = getSelectedTopicMeta(sM, selectedTopicId);
+          resolvedNodeId = tM?.nodeId || "";
         }
-
-        // subtopic
         if (safeScope === "subtopic") {
-          const subjectMeta = getSelectedSubjectMeta(
-            PRELIMS_STRUCTURE,
-            practicePaper,
-            selectedSubjectId
-          );
-          const topicMeta = getSelectedTopicMeta(subjectMeta, selectedTopicId);
-          const selectedMicroThemeMetas = getSelectedMicroThemeMetas(
-            topicMeta,
-            selectedMicroThemeIds
-          );
-          resolvedNodeId = selectedMicroThemeMetas?.[0]?.nodeId || "";
+          const sM = getSelectedSubjectMeta(PRELIMS_STRUCTURE, practicePaper, selectedSubjectId);
+          const tM = getSelectedTopicMeta(sM, selectedTopicId);
+          const sMM = getSelectedMicroThemeMetas(tM, selectedMicroThemeIds);
+          resolvedNodeId = sMM?.[0]?.nodeId || "";
         }
 
         const subjectHints = getSubjectBuildHints(selectedSubjectId, practicePaper);
 
         console.log("🚀 PRACTICE BUILD CONTEXT:", {
-          practicePaper,
-          practiceScope,
-          safeScope,
-          selectedSubjectId,
-          selectedTopicId,
-          selectedMicroThemeIds,
-          practiceQuestionCount,
+          practicePaper, practiceScope, safeScope, selectedSubjectId,
+          selectedTopicId, selectedMicroThemeIds, practiceQuestionCount,
         });
-
-        console.log("🧭 SUBJECT BUILD HINTS:", subjectHints);
 
         payload = {
           topicNodeId: resolvedNodeId,
@@ -795,12 +1044,9 @@ export default function PrelimsPage() {
           sort: "latest",
           practicePaper,
           practiceScope: safeScope,
-
           subjectId: subjectHints.subjectId,
           subjectAliases: subjectHints.subjectAliases,
           debugExpectedSubjects: subjectHints.debugExpectedSubjects,
-
-
           selectedSubjectId,
           selectedTopicId,
           selectedTopicLabel: topicMeta?.name || topicMeta?.label || "",
@@ -815,49 +1061,32 @@ export default function PrelimsPage() {
         console.log("🎯 FINAL NODE ID:", resolvedNodeId);
         console.log("📦 BUILD PAYLOAD:", payload);
         if (!resolvedNodeId) {
-          console.error("❌ NODE ID MISSING:", {
-            subjectId: selectedSubjectId,
-            topicId: selectedTopicId,
-            microThemeId: selectedMicroThemeIds[0],
-          });
+          console.error("❌ NODE ID MISSING:", { subjectId: selectedSubjectId, topicId: selectedTopicId, microThemeId: selectedMicroThemeIds[0] });
         }
       }
 
       const response = await fetch(`${BACKEND_URL}/api/prelims/practice/build`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
       const json = await response.json();
 
       console.log("✅ BUILDER RESPONSE META:", {
-        ok: response.ok,
-        status: response.status,
+        ok: response.ok, status: response.status,
         count: Array.isArray(json?.questions) ? json.questions.length : 0,
-        sampleIds: Array.isArray(json?.questions)
-          ? json.questions.slice(0, 5).map((q) => q?.id || q?.questionId)
-          : [],
-        sampleSubjects: Array.isArray(json?.questions)
-          ? json.questions.slice(0, 10).map((q) => q?.subject)
-          : [],
       });
 
       if (!response.ok) {
-        throw new Error(
-          json?.message || json?.error || `Practice build failed with status ${response.status}`
-        );
+        throw new Error(json?.message || json?.error || `Practice build failed with status ${response.status}`);
       }
 
       const builtQuestions = Array.isArray(json?.questions) ? json.questions : [];
-
-      if (!builtQuestions.length) {
-        throw new Error("No questions returned from backend");
-      }
+      if (!builtQuestions.length) throw new Error("No questions returned from backend");
 
       setTestId(nextTestId);
+      setActiveTopicNodeId(""); // Not a tracked progressive test
       setQuestions([...builtQuestions]);
       setCurrentIndex(0);
       setAnswersMap({});
@@ -867,9 +1096,7 @@ export default function PrelimsPage() {
     } catch (error) {
       console.error("Prelims practice build error:", error);
       setQuestions([]);
-      setBuilderError(
-        error.message || "Failed to build prelims practice test"
-      );
+      setBuilderError(error.message || "Failed to build prelims practice test");
     } finally {
       setBuilderLoading(false);
     }
@@ -1035,39 +1262,50 @@ export default function PrelimsPage() {
             )}
 
           {testStage === "start" && (
-            <PyqTestStart
-              testMode={testMode}
-              setTestMode={setTestMode}
-              fullLengthType={fullLengthType}
-              setFullLengthType={setFullLengthType}
-              fullLengthYear={fullLengthYear}
-              setFullLengthYear={setFullLengthYear}
-              institutionalForm={institutionalForm}
-              setInstitutionalForm={setInstitutionalForm}
-              practicePaper={practicePaper}
-              setPracticePaper={setPracticePaper}
-              practiceScope={practiceScope}
-              setPracticeScope={(nextScope) => {
-                setBuilderError("");
-                setPracticeScope(nextScope);
-              }}
-              selectedSubjectId={selectedSubjectId}
-              setSelectedSubjectId={setSelectedSubjectId}
-              selectedTopicId={selectedTopicId}
-              setSelectedTopicId={setSelectedTopicId}
-              selectedMicroThemeIds={selectedMicroThemeIds}
-              setSelectedMicroThemeIds={setSelectedMicroThemeIds}
-              practiceQuestionCount={practiceQuestionCount}
-              setPracticeQuestionCount={setPracticeQuestionCount}
-              subjects={subjects}
-              topics={topics}
-              microThemes={microThemes}
-              availableQuestionCount={availableQuestionCount}
-              onStart={buildPracticeOrFullLengthTest}
-              loading={builderLoading}
-              error={builderError || null}
-              disableStart={disableStart}
-            />
+            <>
+              {/* ── Topic Progress Panel (sectional mode only) ── */}
+              {testMode === "sectional" && selectedSubjectId && (
+                <TopicProgressPanel
+                  progress={topicProgress}
+                  loading={progressLoading}
+                  error={progressError}
+                  onContinue={buildProgressiveTest}
+                />
+              )}
+              <PyqTestStart
+                testMode={testMode}
+                setTestMode={setTestMode}
+                fullLengthType={fullLengthType}
+                setFullLengthType={setFullLengthType}
+                fullLengthYear={fullLengthYear}
+                setFullLengthYear={setFullLengthYear}
+                institutionalForm={institutionalForm}
+                setInstitutionalForm={setInstitutionalForm}
+                practicePaper={practicePaper}
+                setPracticePaper={setPracticePaper}
+                practiceScope={practiceScope}
+                setPracticeScope={(nextScope) => {
+                  setBuilderError("");
+                  setPracticeScope(nextScope);
+                }}
+                selectedSubjectId={selectedSubjectId}
+                setSelectedSubjectId={setSelectedSubjectId}
+                selectedTopicId={selectedTopicId}
+                setSelectedTopicId={setSelectedTopicId}
+                selectedMicroThemeIds={selectedMicroThemeIds}
+                setSelectedMicroThemeIds={setSelectedMicroThemeIds}
+                practiceQuestionCount={practiceQuestionCount}
+                setPracticeQuestionCount={setPracticeQuestionCount}
+                subjects={subjects}
+                topics={topics}
+                microThemes={microThemes}
+                availableQuestionCount={availableQuestionCount}
+                onStart={buildPracticeOrFullLengthTest}
+                loading={builderLoading}
+                error={builderError || null}
+                disableStart={disableStart}
+              />
+            </>
           )}
 
           {testStage === "attempt" && (
@@ -1113,9 +1351,48 @@ export default function PrelimsPage() {
                     answersMap,
                     confidenceMap
                   );
-                  // 🔍 DEBUG LOGS (ADD HERE)
+
                   console.log("ANSWERS MAP:", answersMap);
                   console.log("EVALUATED QUESTIONS:", evaluatedQuestions);
+
+                  // ── BACKEND PROGRESS SUBMIT (cross-device tracking) ─────────
+                  if (activeTopicNodeId) {
+                    try {
+                      const submitPayload = {
+                        userId: CURRENT_USER_ID,
+                        topicNodeId: activeTopicNodeId,
+                        stage: "prelims",
+                        mode: activePracticeMode,
+                        questionIds: questions.map((q) => q?.id || q?.questionId).filter(Boolean),
+                        questions: questions,
+                        answers: answersMap,
+                      };
+                      const submitResp = await fetch(`${BACKEND_URL}/api/prelims/practice/submit`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(submitPayload),
+                      });
+                      if (submitResp.ok) {
+                        const submitJson = await submitResp.json();
+                        if (submitJson?.updatedProgress) {
+                          setTopicProgress(prev => ({
+                            ...(prev || {}),
+                            ...submitJson.updatedProgress,
+                            topicNodeId: activeTopicNodeId,
+                            userId: CURRENT_USER_ID,
+                          }));
+                        }
+                        console.log("[Progress Submit] OK:", submitJson?.summary);
+                      } else {
+                        console.warn("[Progress Submit] Non-OK status:", submitResp.status);
+                      }
+                    } catch (submitErr) {
+                      console.error("[Progress Submit] Error:", submitErr);
+                      // Non-fatal: continue to show result
+                    }
+                  }
+                  // ── END BACKEND PROGRESS SUBMIT ────────────────────────────
+
                   const analyticsResult = await analyzeAttemptWithBackend({
                     testId,
                     testMode,
@@ -1212,6 +1489,8 @@ export default function PrelimsPage() {
                 setCurrentIndex(0);
                 setAnswersMap({});
                 setConfidenceMap({});
+                // Refresh progress so the panel shows updated stats
+                if (activeTopicNodeId) fetchTopicProgress(activeTopicNodeId);
               }}
               onReattempt={() => {
                 setTestStage("attempt");

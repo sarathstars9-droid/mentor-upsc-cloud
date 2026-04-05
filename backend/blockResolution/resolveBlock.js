@@ -2,15 +2,20 @@
  * resolveBlock.js
  * Main orchestrator for block resolution.
  *
- * Accepts a raw block label string and routes it through:
- *  1. Normalization
- *  2. Entity detection
- *  3. Activity detection
- *  4. Stage detection
- *  5. Domain-specific resolver (topic / practice / test / task)
+ * Resolution order (strict):
+ *  1. Normalize input
+ *  2. Stage lock (FIRST — determines which file pool to use)
+ *  3. GS paper lock (if applicable — narrows mains pool)
+ *  4. MISC-GEN whitelist check (only explicit generic intents → MISC-GEN)
+ *  5. Subject lock
+ *  6. Mixed-block split (if 2+ subjects detected → split before mapping)
+ *  7. Topic lock within subject+stage pool
+ *  8. Activity detection
+ *  9. Domain-specific resolver routing
  *
  * Returns a fully structured BlockResolution object.
- * This module is the ONLY public API of the blockResolution module.
+ * Unresolved syllabus blocks return null nodeId, NEVER MISC-GEN.
+ * MISC-GEN is only returned for explicit generic/admin/current-affairs intents.
  */
 
 import { normalizeBlockInput }  from './normalizeBlockInput.js';
@@ -21,7 +26,8 @@ import { resolveTopicBlock }    from './resolveTopicBlock.js';
 import { resolvePracticeIntent } from './resolvePracticeIntent.js';
 import { resolveTestBlock }     from './resolveTestBlock.js';
 import { resolveTaskBlock }     from './resolveTaskBlock.js';
-import { ENTITY_TYPES, ACTIVITY_TYPES, STAGES } from './constants.js';
+import { hasMixedSubjects, splitMixedBlock } from './splitMixedBlock.js';
+import { ENTITY_TYPES, ACTIVITY_TYPES, STAGES, MISC_GEN_ALLOWED_INTENTS } from './constants.js';
 
 /**
  * @typedef {Object} BlockResolution
@@ -32,24 +38,84 @@ import { ENTITY_TYPES, ACTIVITY_TYPES, STAGES } from './constants.js';
  * @property {Object}  detections      - Raw detection results for debugging
  * @property {number}  overallConfidence
  * @property {string}  resolvedAt      - ISO timestamp
+ * @property {boolean} isMiscGen       - True ONLY for explicit generic/admin/CA intents
+ * @property {Object[]|null} subBlocks - Set if block was split (mixed subjects)
  */
+
+/**
+ * Check if a block text matches explicit MISC-GEN allowed intents.
+ * MISC-GEN is ONLY returned for these explicit patterns — never for unknown syllabus blocks.
+ *
+ * @param {string} normalizedText
+ * @param {string} activityType
+ * @returns {boolean}
+ */
+function isMiscGenIntent(normalizedText, activityType) {
+  // Current affairs → always MISC-GEN allowed
+  if (
+    activityType === ACTIVITY_TYPES.CURRENT_AFFAIRS ||
+    activityType === ACTIVITY_TYPES.MOCK_ANALYSIS ||
+    activityType === ACTIVITY_TYPES.ADMIN
+  ) {
+    return true;
+  }
+
+  const text = normalizedText.toLowerCase();
+  return MISC_GEN_ALLOWED_INTENTS.some((intent) => text.includes(intent));
+}
 
 /**
  * Resolve a raw plan block label into a structured classification.
  *
  * @param {string} rawInput - Raw block label as entered in the plan.
+ * @param {Object} [opts]   - Optional context
+ * @param {number} [opts.minutes] - Block duration in minutes (needed for split blocks)
  * @returns {BlockResolution}
  */
-export function resolveBlock(rawInput) {
+export function resolveBlock(rawInput, opts = {}) {
   // ── Step 1: Normalize ─────────────────────────────────────────────────────
   const normalized = normalizeBlockInput(rawInput);
 
-  // ── Step 2: Detect entity, activity, stage ────────────────────────────────
+  // ── Step 2: Stage lock (FIRST — before subject/topic) ────────────────────
+  // Stage must be detected before entity type — determines which file pool to use.
+  const stageResult = detectStage(normalized, null);
+
+  // ── Step 3: Entity & activity detection (uses stage context) ──────────────
   const entityResult   = detectEntityType(normalized);
   const activityResult = detectActivityType(normalized);
-  const stageResult    = detectStage(normalized, entityResult.subjectSlug);
 
-  // ── Step 3: Route to correct resolver ────────────────────────────────────
+  // ── Step 4: MISC-GEN whitelist check ─────────────────────────────────────
+  // ONLY explicit generic/admin/CA intents may produce MISC-GEN.
+  // All normal syllabus blocks MUST NOT produce MISC-GEN.
+  const miscGenAllowed = isMiscGenIntent(normalized, activityResult.activityType);
+
+  // ── Step 5: Mixed-block split detection ──────────────────────────────────
+  // If block mentions 2+ subjects (e.g. "History Prelims Economy PYQ"),
+  // split it into equal sub-blocks BEFORE final mapping.
+  let subBlocks = null;
+  if (hasMixedSubjects(normalized)) {
+    const splitInput = {
+      text: normalized,
+      minutes: opts.minutes || 0,
+      stage: stageResult.stage,
+      gsPaper: stageResult.gsPaper,
+      activityType: activityResult.activityType,
+    };
+    const splitResult = splitMixedBlock(splitInput);
+    if (splitResult && splitResult.length >= 2) {
+      subBlocks = splitResult.map((sub) => resolveBlock(sub.text, { minutes: sub.minutes }));
+      // Annotate each sub-block with split metadata
+      subBlocks = subBlocks.map((sb, i) => ({
+        ...sb,
+        isSplitSubBlock: true,
+        splitIndex: i,
+        splitMinutes: splitResult[i].minutes,
+        splitSubjectLabel: splitResult[i].subjectLabel,
+      }));
+    }
+  }
+
+  // ── Step 6: Route to correct resolver ────────────────────────────────────
   let resolvedType;
   let resolution;
 
@@ -57,11 +123,6 @@ export function resolveBlock(rawInput) {
   const { activityType } = activityResult;
 
   // ── Essay-first override ──────────────────────────────────────────────────
-  // When the stage is essay and the activity is a planning/writing type (not a
-  // hard test-series match), treat the block as an essay task regardless of
-  // which subject keyword happened to score highest in entity detection.
-  // The detected subject (e.g. 'science_tech' in "essay outline – technology
-  // and society") is preserved as meta.topicSubjectSlug for optional UI use.
   if (
     stageResult.stage === STAGES.ESSAY &&
     entityType !== ENTITY_TYPES.TEST_SERIES &&
@@ -78,18 +139,16 @@ export function resolveBlock(rawInput) {
       confidence:   0.85,
     };
     resolution = resolveTaskBlock(normalized, essayEntityOverride, activityResult, stageResult);
-    // Preserve the originally detected topic subject as optional context
     if (entityResult.subjectSlug && entityResult.subjectSlug !== 'essay') {
       resolution.meta.topicSubjectSlug  = entityResult.subjectSlug;
       resolution.meta.topicSubjectLabel = entityResult.subjectLabel;
     }
+
   } else if (entityType === ENTITY_TYPES.TEST_SERIES || activityType === ACTIVITY_TYPES.TEST) {
-    // Test/FLT block
     resolvedType = 'test';
     resolution   = resolveTestBlock(normalized, entityResult, activityResult, stageResult);
 
   } else if (activityType === ACTIVITY_TYPES.PRACTICE) {
-    // Practice/PYQ block
     resolvedType = 'practice';
     resolution   = resolvePracticeIntent(normalized, entityResult, activityResult, stageResult);
 
@@ -100,7 +159,6 @@ export function resolveBlock(rawInput) {
     entityType   === ENTITY_TYPES.SKILL        ||
     entityType   === ENTITY_TYPES.MATERIAL
   ) {
-    // Task (writing, mapping, brainstorming, note-making)
     resolvedType = 'task';
     resolution   = resolveTaskBlock(normalized, entityResult, activityResult, stageResult);
 
@@ -110,18 +168,45 @@ export function resolveBlock(rawInput) {
     activityType === ACTIVITY_TYPES.REVISION ||
     activityType === ACTIVITY_TYPES.READING
   ) {
-    // Topic/subject study block
     resolvedType = 'topic';
     resolution   = resolveTopicBlock(normalized, entityResult, activityResult, stageResult);
 
+  } else if (miscGenAllowed) {
+    // Explicit generic/admin/CA block — MISC-GEN is allowed here
+    resolvedType = 'task';
+    resolution   = resolveTaskBlock(normalized, entityResult, activityResult, stageResult);
+    resolution.isMiscGen = true;
+
   } else {
-    // Fallback: attempt topic resolution even for unknowns
+    // Unknown syllabus block: return null nodeId, NOT MISC-GEN
+    // The block is unresolved — do not fabricate a fallback category.
     resolvedType = 'unknown';
-    resolution   = resolveTopicBlock(normalized, entityResult, activityResult, stageResult);
-    resolution.blockType = 'unknown';
+    resolution = {
+      blockType: 'unknown',
+      subjectSlug: null,
+      subjectLabel: null,
+      activityType,
+      stage: stageResult.stage,
+      gsPaper: stageResult.gsPaper || null,
+      suggestedAction: 'Study',
+      icon: '📚',
+      tags: [],
+      meta: {
+        rawText: normalized,
+        confidence: 0,
+        reason: 'unresolved_syllabus_block',
+      },
+      isMiscGen: false,
+    };
   }
 
-  // ── Step 4: Compute overall confidence ───────────────────────────────────
+  // Attach stage lock and GS paper to resolution for downstream consumers
+  if (resolution && typeof resolution === 'object') {
+    resolution.stageLock = stageResult.stage;
+    resolution.gsPaper   = stageResult.gsPaper || resolution.gsPaper || null;
+  }
+
+  // ── Step 7: Compute overall confidence ───────────────────────────────────
   const overallConfidence = parseFloat(
     (
       (entityResult.confidence   * 0.4) +
@@ -142,5 +227,7 @@ export function resolveBlock(rawInput) {
     },
     overallConfidence,
     resolvedAt: new Date().toISOString(),
+    isMiscGen: Boolean(resolution?.isMiscGen),
+    subBlocks,
   };
 }

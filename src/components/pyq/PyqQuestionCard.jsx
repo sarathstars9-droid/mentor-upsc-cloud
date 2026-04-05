@@ -386,6 +386,28 @@ export default function PyqQuestionCard({
         >
           {showAnswer ? "Hide Answer" : "Show Answer"}
         </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            const year = question.year ? `${question.year} ` : "";
+            const paper = paperLabel ? `(${paperLabel}) ` : "";
+            const prompt = `UPSC PYQ ${year}${paper}\n\n${question.questionText || ""}\n\nExplain the correct answer and key concepts for this UPSC question.`;
+            navigator.clipboard?.writeText(prompt).catch(() => {});
+            window.open("https://chatgpt.com/", "_blank", "noopener,noreferrer");
+          }}
+          style={{
+            padding: "10px 14px",
+            borderRadius: 12,
+            border: "1px solid rgba(16,185,129,0.28)",
+            background: "rgba(16,185,129,0.10)",
+            color: "#d1fae5",
+            fontWeight: 700,
+            cursor: "pointer",
+          }}
+        >
+          Ask ChatGPT
+        </button>
       </div>
 
       {showAnswer ? (

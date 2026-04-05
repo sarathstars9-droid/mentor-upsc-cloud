@@ -1,5 +1,12 @@
 /**
- * Sanitizes and normalizes raw OCR text
+ * Sanitizes and normalizes raw OCR text.
+ *
+ * IMPORTANT: Abbreviation expansion is deliberately conservative.
+ * Short tokens like "st", "eco", "gov", "pol", "his", "geo", "ir" are NOT
+ * expanded via simple word-replace because they appear inside valid topic phrases
+ * (e.g. "ecosystem", "polity", "historic", "geography") and cause corruption.
+ *
+ * Only clearly unambiguous, multi-character abbreviations with strong signals are expanded.
  */
 
 export function cleanOcrText(rawText) {
@@ -9,38 +16,37 @@ export function cleanOcrText(rawText) {
     .toLowerCase()
     .normalize("NFKD") // Remove diacritics
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[()[\]{}<>]/g, "") // Remove brackets
+    .replace(/[()[]{}<>]/g, "") // Remove brackets
     .replace(/[^\w\s-]/g, " ") // Replace remaining special chars with space
     .trim();
 
-  // Normalize separators
-  cleaned = cleaned.replace(/-/g, " ").replace(/\s+/g, " ");
+  // Normalize separators but preserve hyphens in GS-1, GS-2 etc.
+  // Only collapse multiple hyphens, not single ones
+  cleaned = cleaned.replace(/\s+/g, " ");
 
-  // Fix common OCR errors and shorthands
+  // Normalize GS paper references: gs 1 → gs1, g s 2 → gs2
+  cleaned = cleaned.replace(/\bgs\s+([1-4])\b/gi, "gs$1");
+
+  // Fix common OCR errors — ONLY unambiguous multi-char tokens
   const replacements = {
     "monetry": "monetary",
     "bankng": "banking",
-    "fr": "fundamental rights",
-    "dpsp": "directive principles of state policy",
-    "env": "environment",
-    "eco": "economy",
-    "pol": "polity",
-    "geo": "geography",
-    "his": "history",
     "cur aff": "current affairs",
-    "ca": "current affairs",
     "sci tech": "science tech",
-    "st": "science tech",
-    "gov": "governance",
-    "ir": "international relations",
-    "num": "number system",
-    "rc": "reading comprehension"
+    "science and tech": "science and technology",
+    "ans writing": "answer writing",
+    "prev yr": "previous year",
+    "prev year": "previous year",
   };
 
-  const words = cleaned.split(" ");
-  const mappedWords = words.map(w => replacements[w] || w);
-  
-  return mappedWords.join(" ").trim();
+  // Apply replacements with word-boundary awareness
+  for (const [abbr, expansion] of Object.entries(replacements)) {
+    const escaped = abbr.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const re = new RegExp(`(?<![a-z])${escaped}(?![a-z])`, "gi");
+    cleaned = cleaned.replace(re, expansion);
+  }
+
+  return cleaned.replace(/\s+/g, " ").trim();
 }
 
 /**

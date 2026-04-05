@@ -121,6 +121,7 @@ function AppRoutes({ onLogout }) {
         <Route path="/ethics" element={<EthicsPage />} />
         <Route path="/essay" element={<EssayPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/pyq/topic" element={<PyqTopicPage />} />
         <Route path="/pyq/topic/:syllabusNodeId" element={<PyqTopicPage />} />
         <Route path="*" element={<Navigate to="/plan" replace />} />
       </Routes>

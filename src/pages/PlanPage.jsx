@@ -228,14 +228,16 @@ async function loopDetect(payload) {
 }
 
 /* ---------------- Local Backend: Block Resolver ---------------- */
-async function resolveBlock(inputText) {
+async function resolveBlock(inputText, minutes) {
   const t = String(inputText || "").trim();
   if (!t) return null;
   try {
+    const body = { input: t };
+    if (typeof minutes === "number" && minutes > 0) body.minutes = minutes;
     const res = await fetch(`${BACKEND_URL}/api/blocks/resolve`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ input: t }),
+      body: JSON.stringify(body),
     });
     const text = await res.text();
     try { return JSON.parse(text); } catch { return null; }
@@ -412,26 +414,29 @@ function normalizeMappingCode(code = "") {
     "CSAT-APTITUDE": "CSAT-BN",
     "CSAT.NUMERACY": "CSAT-BN",
     "CSAT-BASIC-NUMERACY": "CSAT-BN",
-    "MISC-GEN": "GS3-ENV",
+    // NOTE: MISC-GEN removed — fake fallback to GS3-ENV caused false Environment labels
     "GEN": "GS3-ST",
   };
 
   if (exactMap[raw]) return exactMap[raw];
   if (exactMap[upper]) return exactMap[upper];
 
+  // Suppress MISC-* entirely — never let it reach UI or navigation
+  if (upper === "MISC-GEN" || upper.startsWith("MISC")) return "";
+
   if (upper === "CSAT") return "CSAT-BN";
   if (upper.startsWith("CSAT-BN")) return "CSAT-BN";
   if (upper.startsWith("CSAT-RC")) return "CSAT-RC";
   if (upper.startsWith("CSAT-LR")) return "CSAT-LR";
 
-  if (upper.includes("ENV")) return "GS3-ENV";
-  if (upper.includes("ECO")) return "GS3-ECO";
-  if (upper.includes("POL")) return "GS2-POL-CON";
+  if (upper.startsWith("GS3-ENV") || upper === "ENV") return "GS3-ENV";
+  if (upper.startsWith("GS3-ECO") || upper === "ECO") return "GS3-ECO";
+  if (upper.startsWith("GS2-POL") || upper === "POL") return "GS2-POL";
   if (upper.includes("MAURYA") || upper.includes("MAURYAN")) return "GS1-HIS-ANC-MAURYA";
-  if (upper.includes("ANCIENT")) return "GS1-HIS-ANC";
-  if (upper.includes("MEDIEVAL")) return "GS1-HIS-MED";
-  if (upper.includes("MODERN")) return "GS1-HIS-MOD";
-  if (upper.includes("HISTORY")) return "GS1-HIS";
+  if (upper.startsWith("GS1-HIS-ANC") || upper === "ANCIENT") return "GS1-HIS-ANC";
+  if (upper.startsWith("GS1-HIS-MED") || upper === "MEDIEVAL") return "GS1-HIS-MED";
+  if (upper.startsWith("GS1-HIS-MOD") || upper === "MODERN") return "GS1-HIS-MOD";
+  if (upper.startsWith("GS1-HIS") || upper === "HISTORY") return "GS1-HIS";
   return upper;
 }
 
@@ -568,7 +573,8 @@ function getBlockChipItems(block) {
   pushItem(block?.finalMapping?.nodeName || block?.ActualTopic || block?.PlannedTopic);
 
   const primaryCode = block?.finalMapping?.nodeId || "";
-  pushItem(humanizeMappingCode(primaryCode) || primaryCode);
+  const coded = humanizeMappingCode(primaryCode);
+  if (coded) pushItem(coded);
 
   return items.slice(0, 2);
 }
@@ -581,7 +587,14 @@ function getBlockBreadcrumb(block) {
     "";
 
   if (primaryPath) {
-    return primaryPath.replace(/\s*\/\s*/g, " > ");
+    const normalized = primaryPath.replace(/\s*\/\s*/g, " > ");
+    // Suppress generic MISC/GEN paths — fall through to subject/topic instead
+    if (/^misc\s*(>|\/)/i.test(normalized)) {
+      const subject = block?.PlannedSubject || block?.ActualSubject || "";
+      const topic = block?.PlannedTopic || block?.ActualTopic || "";
+      return [subject, topic].filter(Boolean).join(" > ");
+    }
+    return normalized;
   }
 
   const subject = block?.PlannedSubject || block?.ActualSubject || "";
@@ -591,8 +604,9 @@ function getBlockBreadcrumb(block) {
 
 function getBlockPyqNodeLabel(block) {
   const direct = getPrimaryPyqNodeId(block);
-  if (!direct) return "—";
-  return humanizeMappingCode(direct) || direct;
+  if (!direct || direct.toUpperCase() === "MISC-GEN") return "—";
+  const humanized = humanizeMappingCode(direct);
+  return humanized || direct;
 }
 
 /* Dynamic CTA label based on block activity type */
@@ -620,10 +634,41 @@ function getBlockCtaLabel(block) {
 }
 
 /* Derive a clean View-All-PYQs path from a block */
+function minutesToHHMM(totalMin) {
+  const h = Math.floor(totalMin / 60) % 24;
+  const m = totalMin % 60;
+  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+}
+
+/**
+ * Build "View All PYQs" navigation path.
+ * Driven ONLY by stage + gsPaper + topic.
+ * No nodeId, no mapping fallbacks.
+ */
 function getBlockPyqNavPath(block) {
-  const nodeId = getPrimaryPyqNodeId(block);
-  if (nodeId) return `/pyq/topic/${encodeURIComponent(nodeId)}`;
-  return null;
+  const stage = (
+    block?._resolverData?.stage ||
+    block?.StageLock ||
+    ""
+  ).toLowerCase().trim();
+
+  const paper = (
+    block?._resolverData?.gsPaper ||
+    block?.GsPaper ||
+    ""
+  ).toUpperCase().trim();
+
+  const topic = (block?.PlannedTopic || block?.ActualTopic || "").trim();
+
+  // Need at least one dimension to build a useful link
+  if (!stage && !paper && !topic) return null;
+
+  const params = new URLSearchParams();
+  if (stage && stage !== "general") params.set("stage", stage);
+  if (paper)                        params.set("paper", paper);
+  if (topic)                        params.set("topic", topic);
+
+  return `/pyq/topic?${params.toString()}`;
 }
 
 /* ─── Add Block Modal ───────────────────────────────────────────────────────
@@ -645,7 +690,11 @@ function AddBlockModal({ open, busy, onClose, onAdd }) {
     setResolving(true);
     setResolveError("");
     try {
-      const resolved = await resolveBlock(text.trim());
+      // Compute minutes so the resolver can split accurately
+      const sm = hhmmToMinutes(startTime);
+      const em = hhmmToMinutes(endTime);
+      const blockMinutes = (sm != null && em != null && em > sm) ? em - sm : 0;
+      const resolved = await resolveBlock(text.trim(), blockMinutes || undefined);
       onAdd({ text: text.trim(), startTime, endTime, resolved });
       setText(""); setStartTime(""); setEndTime("");
     } catch (err) {
@@ -1028,6 +1077,8 @@ export default function PlanPage() {
   const [spotlightOpen, setSpotlightOpen] = useState(false);
   const [stopConfirmOpen, setStopConfirmOpen] = useState(false);
   const [pendingStopBlock, setPendingStopBlock] = useState(null);
+  const [switchBlockConfirmOpen, setSwitchBlockConfirmOpen] = useState(false);
+  const [pendingStartRequest, setPendingStartRequest] = useState(null);
 
   const [date, setDate] = useState(getTodayLocalDate());
   const [planMin, setPlanMin] = useState(360);
@@ -1620,8 +1671,44 @@ export default function PlanPage() {
     setLoops(null);
   }
 
+  async function handleSwitchBlockConfirm() {
+    if (!pendingStartRequest) return;
+    setSwitchBlockConfirmOpen(false);
+
+    const activeBlock = todayBlocks.find(
+      (b) => getEffectiveBlockStatus(b) === BLOCK_STATUS.ACTIVE
+    );
+
+    if (activeBlock) {
+      setTodayBlocks((prev) =>
+        prev.map((b) =>
+          b.BlockId === activeBlock.BlockId
+            ? { ...b, Status: "review_pending" }
+            : b
+        )
+      );
+      setSpotlightOpen(false);
+      // activeReviewBlock intentionally NOT set — no review popup during switch
+    }
+
+    const { blockId, options } = pendingStartRequest;
+    setPendingStartRequest(null);
+    await handleStartBlock(blockId, options);
+  }
+
   async function handleStartBlock(blockId, options = {}) {
     const { openFocus = true } = options;
+
+    // Guard: if another block is already active, ask before switching
+    const existingActive = todayBlocks.find(
+      (b) => getEffectiveBlockStatus(b) === BLOCK_STATUS.ACTIVE && b.BlockId !== blockId
+    );
+    if (existingActive) {
+      setPendingStartRequest({ blockId, options });
+      setSwitchBlockConfirmOpen(true);
+      return;
+    }
+
     const nowIso = new Date().toISOString();
 
     if (openFocus) {
@@ -2532,50 +2619,92 @@ export default function PlanPage() {
         busy={busy}
         onClose={() => setAddBlockOpen(false)}
         onAdd={({ text, startTime, endTime, resolved }) => {
-          // Build a minimal manual block object; resolver data stored in _resolverData
           const now = new Date();
           const defaultStart = startTime || now.toTimeString().slice(0, 5);
           const defaultEnd = endTime || (() => {
             const d = new Date(now.getTime() + 60 * 60000);
             return d.toTimeString().slice(0, 5);
           })();
-          const startMin = hhmmToMinutes(defaultStart);
-          const endMin = hhmmToMinutes(defaultEnd);
-          const plannedMinutes = (startMin != null && endMin != null) ? Math.max(0, endMin - startMin) : 60;
+          const startMin = hhmmToMinutes(defaultStart) ?? 0;
+          const endMin = hhmmToMinutes(defaultEnd) ?? (startMin + 60);
+          const totalMinutes = Math.max(0, endMin - startMin);
 
-          // Resolver fields used for display only — never override core mapping
+          function makeBlock(subject, topic, pStart, pEnd, pMin, extra = {}) {
+            return {
+              BlockId: `manual_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+              PlannedSubject: subject || text,
+              PlannedTopic: topic || text,
+              PlannedStart: pStart,
+              PlannedEnd: pEnd,
+              PlannedMinutes: pMin,
+              ActualStart: "", ActualEnd: "", ActualMinutes: 0,
+              PauseCount: 0, TotalPauseMinutes: 0,
+              LastPauseAt: "", LastResumeAt: "",
+              Status: BLOCK_STATUS.PLANNED,
+              finalMapping: {
+                subjectId: "", subjectName: subject || text,
+                nodeId: "", nodeName: topic || text,
+                mappingSource: "MANUAL_RESOLVER", resolverConfidence: 0, isApproved: false,
+              },
+              mappedNodes: [],
+              _isManual: true,
+              ...extra,
+            };
+          }
+
+          // ── Split-block path: resolver detected 2+ subjects ───────────────
+          const subBlocks = Array.isArray(resolved?.subBlocks) && resolved.subBlocks.length >= 2
+            ? resolved.subBlocks
+            : null;
+
+          if (subBlocks) {
+            const perMin = Math.floor(totalMinutes / subBlocks.length);
+            const newBlocks = subBlocks.map((sub, i) => {
+              const subStartMin = startMin + i * perMin;
+              const subEndMin = i === subBlocks.length - 1 ? endMin : startMin + (i + 1) * perMin;
+              const subjectLabel = sub.splitSubjectLabel || sub.resolution?.subjectLabel || text;
+              const activityLabel = sub.resolution?.activityType || sub.resolution?.meta?.activityType || text;
+              const subNodeId = sub.resolution?.nodeId || "";
+              const subStage = sub.resolution?.stageLock || sub.detections?.stage?.stage || "";
+              const subPaper = sub.resolution?.gsPaper || "";
+              return makeBlock(
+                subjectLabel, activityLabel,
+                minutesToHHMM(subStartMin), minutesToHHMM(subEndMin),
+                subEndMin - subStartMin,
+                {
+                  _isSplit: true, _splitIndex: i,
+                  finalMapping: {
+                    subjectId: "", subjectName: subjectLabel,
+                    nodeId: subNodeId, nodeName: activityLabel,
+                    stageLock: subStage, gsPaper: subPaper,
+                    mappingSource: "SPLIT_RESOLVER",
+                    resolverConfidence: sub.overallConfidence || 0,
+                    isApproved: false,
+                  },
+                }
+              );
+            });
+            setTodayBlocks((prev) => [...prev, ...newBlocks]);
+            setAddBlockOpen(false);
+            setStatus(`✅ Split into ${newBlocks.length} blocks: ${subBlocks.map(s => s.splitSubjectLabel).join(" + ")}`);
+            return;
+          }
+
+          // ── Single-block path ─────────────────────────────────────────────
           const resolverData = resolved?.ok !== false ? {
-            subjectLabel: resolved?.classification?.subject || resolved?.subject || "",
-            activityType: resolved?.classification?.activityType || resolved?.activityType || text,
-            stage: resolved?.classification?.stage || resolved?.stage || "",
-            confidence: resolved?.classification?.confidence ?? resolved?.confidence ?? null,
-            tags: resolved?.classification?.tags || resolved?.tags || [],
+            subjectLabel: resolved?.resolution?.subjectLabel || resolved?.subject || "",
+            activityType: resolved?.resolution?.activityType || resolved?.activityType || text,
+            stage: resolved?.resolution?.stageLock || resolved?.stage || "",
+            confidence: resolved?.overallConfidence ?? null,
+            tags: resolved?.resolution?.tags || [],
           } : null;
 
-          const manualBlock = {
-            BlockId: `manual_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
-            PlannedSubject: resolverData?.subjectLabel || text,
-            PlannedTopic: resolverData?.activityType || text,
-            PlannedStart: defaultStart,
-            PlannedEnd: defaultEnd,
-            PlannedMinutes: plannedMinutes,
-            ActualStart: "", ActualEnd: "", ActualMinutes: 0,
-            PauseCount: 0, TotalPauseMinutes: 0,
-            LastPauseAt: "", LastResumeAt: "",
-            Status: BLOCK_STATUS.PLANNED,
-            finalMapping: {
-              subjectId: "",
-              subjectName: resolverData?.subjectLabel || text,
-              nodeId: "",
-              nodeName: resolverData?.activityType || text,
-              mappingSource: "MANUAL_RESOLVER",
-              resolverConfidence: resolverData?.confidence || 0,
-              isApproved: false,
-            },
-            mappedNodes: [],
-            _isManual: true,
-            _resolverData: resolverData,
-          };
+          const manualBlock = makeBlock(
+            resolverData?.subjectLabel, resolverData?.activityType,
+            defaultStart, defaultEnd, totalMinutes,
+            { _resolverData: resolverData }
+          );
+          manualBlock.finalMapping.resolverConfidence = resolverData?.confidence || 0;
 
           setTodayBlocks((prev) => [...prev, manualBlock]);
           setAddBlockOpen(false);
@@ -2611,6 +2740,30 @@ export default function PlanPage() {
           setPendingStopBlock(null);
         }}
       />
+
+      {switchBlockConfirmOpen && pendingStartRequest && (
+        <div className="focus-overlay" onClick={() => { setSwitchBlockConfirmOpen(false); setPendingStartRequest(null); }}>
+          <div className="focus-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="focus-kicker">Block Already Running</div>
+            <h2 className="focus-title">Switch active block?</h2>
+            <div className="focus-subtitle">
+              A block is already running. Stop it and start the new one?
+            </div>
+            <div className="focus-note">
+              Current block will be marked for review later. No review popup will appear now.
+            </div>
+            <div className="focus-actions">
+              <button onClick={handleSwitchBlockConfirm}>Yes, Switch Block</button>
+              <button
+                className="focus-close-btn"
+                onClick={() => { setSwitchBlockConfirmOpen(false); setPendingStartRequest(null); }}
+              >
+                Keep Current Block
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <FocusModeModal
         open={spotlightOpen}

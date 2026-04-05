@@ -111,8 +111,19 @@ function calculateTopicScore(text, node) {
 
 /* ---------------- MAIN RESOLVER ---------------- */
 
-export function resolveTopic(cleanedText, lockedSubjectId) {
+/**
+ * Resolve topic from cleaned OCR text within a locked subject + optional stage context.
+ *
+ * @param {string} cleanedText      - Cleaned OCR text
+ * @param {string} lockedSubjectId  - Subject ID locked from resolveSubject
+ * @param {Object} [ctx]            - Stage context
+ * @param {string} [ctx.stage]      - 'prelims'|'mains'|'general'|etc.
+ * @param {string|null} [ctx.gsPaper] - 'GS1'|'GS2'|'GS3'|'GS4'|null
+ * @returns {Object} - Topic resolution result
+ */
+export function resolveTopic(cleanedText, lockedSubjectId, ctx = {}) {
   const normalizedText = normalizeText(cleanedText);
+  const { stage = 'general', gsPaper = null } = ctx;
 
   if (!normalizedText || !lockedSubjectId) {
     return {
@@ -129,14 +140,34 @@ export function resolveTopic(cleanedText, lockedSubjectId) {
 
   const pool = getNodesBySubject(lockedSubjectId);
 
-  /* ---------- SCORING ---------- */
+  /* ---------- STAGE-FILTERED SCORING ---------- */
+  // Score all nodes but apply stage-based boosts/penalties to ensure
+  // prelims-tagged files are preferred for prelims blocks and vice versa.
 
-  const scores = pool.map(node => ({
-    nodeId: node.syllabusNodeId,
-    nodeName: node.microTheme || node.subtopic || node.topic || "Unknown",
-    score: calculateTopicScore(normalizedText, node),
-    isLeaf: isLeafNode(node.syllabusNodeId),
-  })).filter(s => s.score > 0);
+  const scores = pool.map(node => {
+    let score = calculateTopicScore(normalizedText, node);
+
+    // Stage-based adjustments
+    const nodeTags = Array.isArray(node.tags) ? node.tags.map(t => String(t).toLowerCase()) : [];
+    const nodeStage = String(node.stage || node.examStage || '').toLowerCase();
+
+    if (stage === 'prelims') {
+      if (nodeTags.includes('prelims') || nodeStage === 'prelims') score += 30;
+      if (nodeTags.includes('mains') || nodeStage === 'mains') score = Math.max(score - 20, 0);
+    } else if (stage === 'mains') {
+      if (nodeTags.includes('mains') || nodeStage === 'mains') score += 30;
+      if (nodeTags.includes('prelims') && !nodeTags.includes('mains') && nodeStage === 'prelims') {
+        score = Math.max(score - 20, 0);
+      }
+    }
+
+    return {
+      nodeId: node.syllabusNodeId,
+      nodeName: node.microTheme || node.subtopic || node.topic || "Unknown",
+      score,
+      isLeaf: isLeafNode(node.syllabusNodeId),
+    };
+  }).filter(s => s.score > 0);
 
   /* ---------- SORTING ---------- */
 
@@ -185,6 +216,8 @@ export function resolveTopic(cleanedText, lockedSubjectId) {
     candidates: scores.slice(0, 5),
     gap,
     isLeaf: top.isLeaf,
+    stage,
+    gsPaper,
     reason: isAmbiguous ? "ambiguous_match" : "resolved",
   };
 }
