@@ -1,14 +1,4 @@
-import { useMemo, useState } from "react";
-
-function readMistakes() {
-    try {
-        const raw = localStorage.getItem("prelims_mistake_log_v1");
-        return raw ? JSON.parse(raw) : [];
-    } catch (err) {
-        console.error("Failed to read prelims mistake log", err);
-        return [];
-    }
-}
+import { useEffect, useMemo, useState } from "react";
 
 function formatDate(value) {
     if (!value) return "-";
@@ -19,18 +9,73 @@ function formatDate(value) {
     }
 }
 
+function normalizeMistake(item) {
+    return {
+        ...item,
+        status: item.answer_status || item.status || "wrong",
+        sourceType: item.source_type || item.sourceType || "unknown",
+        actionTag: item.actionTag || (item.must_revise ? "must_revise" : "none"),
+        questionTextRaw: item.question_text || item.questionTextRaw || item.questionText || "",
+        selectedOption: item.selected_answer || item.selectedOption || item.latestUserAnswer || "—",
+        correctOption: item.correct_answer || item.correctOption || item.correctAnswer || "—",
+        subjectId: item.subject || item.subjectId || "—",
+        syllabusNodeId: item.node_id || item.syllabusNodeId || "—",
+        microThemeLabel: item.microThemeLabel || "—",
+        createdAt: item.created_at || item.createdAt || item.firstSeenAt || null,
+        testNumber: item.source_ref || item.testId || item.testNumber || "-",
+        questionNumber: item.question_id || item.questionId || item.questionNumber || "-",
+    };
+}
+
 export default function PrelimsMistakesPage() {
     const [statusFilter, setStatusFilter] = useState("all");
     const [sourceFilter, setSourceFilter] = useState("all");
     const [actionFilter, setActionFilter] = useState("all");
+    const [mistakes, setMistakes] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const mistakes = useMemo(() => readMistakes(), []);
+    useEffect(() => {
+        let isMounted = true;
+
+        async function loadMistakes() {
+            try {
+                const res = await fetch("http://localhost:8787/api/mistakes?userId=user_1");
+                if (!res.ok) throw new Error(`Failed to fetch mistakes: ${res.status}`);
+                const data = await res.json();
+                const normalized = Array.isArray(data.items) ? data.items.map(normalizeMistake) : [];
+                if (isMounted) setMistakes(normalized);
+            } catch (err) {
+                console.error("Failed to fetch prelims mistakes", err);
+                if (isMounted) setMistakes([]);
+            } finally {
+                if (isMounted) setLoading(false);
+            }
+        }
+
+        loadMistakes();
+        return () => {
+            isMounted = false;
+        };
+    }, []);
 
     const filtered = useMemo(() => {
         return mistakes.filter((item) => {
             const statusOk = statusFilter === "all" ? true : item.status === statusFilter;
-            const sourceOk = sourceFilter === "all" ? true : item.sourceType === sourceFilter;
+
+            const sourceNormalized =
+                item.sourceType === "sectional_test" ||
+                    item.sourceType === "topic_test" ||
+                    item.sourceType === "full_length" ||
+                    item.sourceType === "prelims_pyq" ||
+                    item.sourceType === "pyq"
+                    ? "pyq"
+                    : item.sourceType === "institutional" || item.sourceType === "prelims_institutional"
+                        ? "institutional"
+                        : item.sourceType;
+
+            const sourceOk = sourceFilter === "all" ? true : sourceNormalized === sourceFilter;
             const actionOk = actionFilter === "all" ? true : item.actionTag === actionFilter;
+
             return statusOk && sourceOk && actionOk;
         });
     }, [mistakes, statusFilter, sourceFilter, actionFilter]);
@@ -59,6 +104,35 @@ export default function PrelimsMistakesPage() {
             mustRetest,
         };
     }, [mistakes]);
+
+    if (loading) {
+        return (
+            <div
+                style={{
+                    minHeight: "100vh",
+                    background: "#0b1020",
+                    color: "#e5e7eb",
+                    padding: "24px 16px 56px",
+                }}
+            >
+                <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+                    <div
+                        style={{
+                            marginBottom: 20,
+                            padding: 20,
+                            borderRadius: 20,
+                            background: "rgba(255,255,255,0.04)",
+                            border: "1px solid rgba(255,255,255,0.08)",
+                        }}
+                    >
+                        <div style={{ fontSize: 12, opacity: 0.75, marginBottom: 8 }}>PHASE 4 FOUNDATION</div>
+                        <div style={{ fontSize: 28, fontWeight: 800, marginBottom: 8 }}>Prelims Mistake Console</div>
+                        <div style={{ fontSize: 14, opacity: 0.8 }}>Loading mistakes from database...</div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div

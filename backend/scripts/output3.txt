@@ -1,0 +1,27 @@
+﻿[unifiedSyllabusIndex] loaded { version: '2026-canonical-v2', totalNodes: 1726, subjects: 16 }
+ΓÅ│ Loading pyq_master_index.json...
+Γ£à Loaded 4328 questions from master index.
+
+
+=== REBUILD INDEX REPORT ===
+[PYQ BUILD] Total Processed Nodes: 1354
+[PYQ BUILD] Total Valid Questions Mapped: 4328
+[PYQ BUILD] Total PRELIMS: 1393
+[PYQ BUILD] Total MAINS: 725
+[PYQ BUILD] Total CSAT: 1105
+[PYQ BUILD] Total ESSAY: 213
+[PYQ BUILD] Total ETHICS: 176
+[PYQ BUILD] Total OPTIONAL: 716
+
+[PYQ BUILD] Top 10 High Volume Nodes:
+  1. CSAT-RC-ASSUMP-MT01 => 441 qs
+  2. CSAT-RC-ASSUMP-MT02 => 441 qs
+  3. CSAT-RC-CONCL-MT01 => 441 qs
+  4. CSAT-RC-CONCL-MT02 => 441 qs
+  5. CSAT-RC-FACT-MT01 => 441 qs
+  6. CSAT-RC-FACT-MT02 => 441 qs
+  7. CSAT-RC-INFER-MT01 => 441 qs
+  8. CSAT-RC-INFER-MT02 => 441 qs
+  9. CSAT-RC-MISC-MT01 => 441 qs
+  10. CSAT-RC-STRENGTH-MT01 => 441 qs
+Γ£à Rebuild complete! Fast lookup index generated at pyq_by_node.json

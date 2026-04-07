@@ -67,7 +67,7 @@ export default function PyqTestStart({
 
   const requiresSubtopics =
     practiceScope === "subtopic" ||
-    (practicePaper === "CSAT" && practiceScope === "topic");
+    (practicePaper === "CSAT" && practiceScope === "topic" && safeMicroThemes.length > 0);
 
   return (
     <div style={{ display: "grid", gap: 16 }}>
@@ -221,24 +221,35 @@ export default function PyqTestStart({
 
           <div
             style={{
-              padding: 14,
+              padding: "16px 18px",
               borderRadius: 14,
-              background: "rgba(99,102,241,0.08)",
-              border: "1px solid rgba(99,102,241,0.22)",
+              background: "linear-gradient(135deg, rgba(99,102,241,0.10), rgba(56,189,248,0.06))",
+              border: "1px solid rgba(99,102,241,0.28)",
+              display: "flex",
+              alignItems: "center",
+              gap: 18,
             }}
           >
-            <div style={{ fontSize: 12, opacity: 0.8, marginBottom: 6 }}>
-              Available Questions
-            </div>
-            <div style={{ fontSize: 22, fontWeight: 800 }}>
+            <div style={{
+              fontSize: 34,
+              fontWeight: 900,
+              color: "#a5b4fc",
+              lineHeight: 1,
+              fontVariantNumeric: "tabular-nums",
+            }}>
               {availableQuestionCount || 0}
             </div>
-            <div style={{ fontSize: 12, opacity: 0.72, marginTop: 6 }}>
-              {practiceScope === "subject"
-                ? "Questions available in the selected subject"
-                : requiresSubtopics
-                  ? "Questions available in the selected subtopics"
-                  : "Questions available in the selected topic"}
+            <div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", letterSpacing: 0.5, textTransform: "uppercase", marginBottom: 3 }}>
+                Available Questions
+              </div>
+              <div style={{ fontSize: 12, color: "#64748b", lineHeight: 1.5 }}>
+                {practiceScope === "subject"
+                  ? "PYQs in the selected subject"
+                  : requiresSubtopics
+                    ? "PYQs in the selected subtopics"
+                    : "PYQs in the selected topic"}
+              </div>
             </div>
           </div>
 
@@ -473,8 +484,8 @@ function SubModeChip({ active, onClick, label }) {
 
 function Field({ label, children }) {
   return (
-    <label style={{ display: "grid", gap: 8 }}>
-      <div style={{ fontSize: 13, opacity: 0.82 }}>{label}</div>
+    <label style={{ display: "grid", gap: 7 }}>
+      <div style={{ fontSize: 11, fontWeight: 700, color: "#64748b", letterSpacing: 0.5, textTransform: "uppercase" }}>{label}</div>
       {children}
     </label>
   );
@@ -486,22 +497,23 @@ function InfoBox({ title, lines = [] }) {
   return (
     <div
       style={{
-        padding: 14,
-        borderRadius: 14,
-        background: "rgba(255,255,255,0.03)",
+        padding: "12px 16px",
+        borderRadius: 12,
+        background: "rgba(255,255,255,0.025)",
         border: "1px solid rgba(255,255,255,0.06)",
+        borderLeft: "3px solid rgba(99,102,241,0.45)",
       }}
     >
-      <div style={{ fontSize: 13, fontWeight: 800, marginBottom: 8 }}>
+      <div style={{ fontSize: 12, fontWeight: 800, color: "#818cf8", letterSpacing: 0.5, textTransform: "uppercase", marginBottom: 8 }}>
         {title}
       </div>
-      <div style={{ display: "grid", gap: 6 }}>
+      <div style={{ display: "grid", gap: 5 }}>
         {safeLines.map((line, idx) => (
           <div
             key={`${title}_${idx}`}
-            style={{ fontSize: 12, opacity: 0.82, lineHeight: 1.6 }}
+            style={{ fontSize: 12, color: "#64748b", lineHeight: 1.65 }}
           >
-            • {line}
+            · {line}
           </div>
         ))}
       </div>
@@ -517,13 +529,15 @@ const grid2 = {
 
 const inputStyle = {
   width: "100%",
-  height: 44,
+  height: 46,
   borderRadius: 12,
   border: "1px solid rgba(255,255,255,0.10)",
-  background: "rgba(255,255,255,0.04)",
-  color: "#e5e7eb",
-  padding: "0 12px",
+  background: "rgba(15,23,42,0.65)",
+  color: "#e2e8f0",
+  padding: "0 14px",
   outline: "none",
+  fontSize: 14,
+  boxSizing: "border-box",
 };
 
 const fileInputStyle = {
@@ -579,16 +593,21 @@ const emptyHintStyle = {
 
 function modeChipStyle(active) {
   return {
-    height: 38,
+    height: 40,
     borderRadius: 999,
     border: active
-      ? "1px solid rgba(99,102,241,0.9)"
-      : "1px solid rgba(255,255,255,0.10)",
-    background: active ? "rgba(99,102,241,0.18)" : "rgba(255,255,255,0.05)",
-    color: "#e5e7eb",
-    fontWeight: 700,
-    padding: "0 14px",
+      ? "1px solid rgba(99,102,241,0.85)"
+      : "1px solid rgba(255,255,255,0.09)",
+    background: active
+      ? "linear-gradient(135deg, rgba(99,102,241,0.28), rgba(129,140,248,0.18))"
+      : "rgba(255,255,255,0.04)",
+    color: active ? "#c7d2fe" : "rgba(229,231,235,0.65)",
+    fontWeight: active ? 800 : 600,
+    fontSize: 14,
+    padding: "0 18px",
     cursor: "pointer",
+    boxShadow: active ? "0 0 14px rgba(99,102,241,0.18)" : "none",
+    letterSpacing: 0.2,
   };
 }
 
@@ -597,25 +616,33 @@ function subModeChipStyle(active) {
     height: 36,
     borderRadius: 999,
     border: active
-      ? "1px solid rgba(245,158,11,0.95)"
-      : "1px solid rgba(255,255,255,0.10)",
-    background: active ? "rgba(245,158,11,0.18)" : "rgba(255,255,255,0.05)",
-    color: "#e5e7eb",
-    fontWeight: 700,
+      ? "1px solid rgba(56,189,248,0.7)"
+      : "1px solid rgba(255,255,255,0.08)",
+    background: active
+      ? "linear-gradient(135deg, rgba(14,165,233,0.22), rgba(56,189,248,0.14))"
+      : "rgba(255,255,255,0.03)",
+    color: active ? "#7dd3fc" : "rgba(229,231,235,0.55)",
+    fontWeight: active ? 800 : 600,
+    fontSize: 13,
     padding: "0 14px",
     cursor: "pointer",
+    boxShadow: active ? "0 0 10px rgba(56,189,248,0.12)" : "none",
   };
 }
 
 function startBtn(disabled) {
   return {
-    height: 46,
+    height: 52,
     borderRadius: 14,
-    border: "none",
-    background: disabled ? "rgba(99,102,241,0.35)" : "#6366f1",
-    color: "white",
+    border: disabled ? "1px solid rgba(99,102,241,0.2)" : "1px solid rgba(99,102,241,0.5)",
+    background: disabled
+      ? "rgba(99,102,241,0.18)"
+      : "linear-gradient(135deg, #6366f1, #818cf8)",
+    color: disabled ? "rgba(255,255,255,0.4)" : "#ffffff",
     fontWeight: 800,
+    fontSize: 16,
+    letterSpacing: 0.3,
     cursor: disabled ? "not-allowed" : "pointer",
-    opacity: disabled ? 0.8 : 1,
+    boxShadow: disabled ? "none" : "0 4px 24px rgba(99,102,241,0.30)",
   };
 }

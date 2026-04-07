@@ -1,31 +1,33 @@
 /**
  * PRELIMS MISTAKE ENGINE
  * ─────────────────────────────────────────────────────────────
- * Two-layer storage architecture:
+ * Transitional architecture:
  *
  *   Layer 1 — Attempt records   → localStorage["prelims_attempts_v2"]
- *   Layer 2 — Mistake book      → localStorage["prelims_mistakes"]
+ *   Layer 2 — Mistake book      → PostgreSQL via /api/mistakes
  *
- * Each test attempt is stored whole (Layer 1).
- * Mistake book entries are aggregated across attempts (Layer 2),
- * supporting repeated questions, progress tracking, and revision engine data.
+ * Attempts are still stored locally for now.
+ * Mistake book reads come from the backend API.
+ * Mistake creation during test submission is written to the backend API.
  *
- * Design goals:
- *   • Same test can be attempted multiple times
- *   • Same question across attempts → one entry with full attemptHistory
- *   • Correct answers on later attempts → keep entry, update status
- *   • Structure is revision-engine ready (spaced-rep, weak-topic analysis)
+ * NOTE:
+ *   - Read APIs are async now.
+ *   - Any UI consuming mistake APIs must use await / useEffect.
+ *   - Manual status/revision mutation is currently cache-based until
+ *     dedicated PATCH endpoints are added on the backend.
  * ─────────────────────────────────────────────────────────────
  */
 
 // ───────────────────────────────────────────────────────
 // STORAGE KEYS
 // ───────────────────────────────────────────────────────
-const MISTAKES_KEY  = "prelims_mistakes";
-const ATTEMPTS_KEY  = "prelims_attempts_v2";
+const MISTAKES_KEY = "prelims_mistakes";
+const ATTEMPTS_KEY = "prelims_attempts_v2";
 
-const MAX_MISTAKES  = 2000;   // guard against localStorage overflow
-const MAX_ATTEMPTS  = 500;
+const MAX_MISTAKES = 2000;
+const MAX_ATTEMPTS = 500;
+const API_BASE = "http://localhost:8787/api/mistakes";
+const DEFAULT_USER_ID = "user_1";
 
 // ───────────────────────────────────────────────────────
 // INTERNAL HELPERS
@@ -55,6 +57,107 @@ function uid() {
     return `${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 7)}`;
 }
 
+function normalizeStatus(status) {
+    if (status === "correct" || status === "wrong" || status === "unattempted") {
+        return status;
+    }
+    return "wrong";
+}
+
+function normalizeMistakeType(status, confidence) {
+    if (status === "unattempted") return "unattempted";
+    if (status === "correct") return null;
+    if (confidence === "sure") return "overconfidence_trap";
+    if (confidence === "guess") return "guess_error";
+    return "conceptual_error";
+}
+
+function mapQuestionToApiPayload({
+    sourceType,
+    testId,
+    subject,
+    topic,
+    subtopic,
+    paper,
+    year,
+    question,
+}) {
+    const questionId = question.questionId || question.id || null;
+    const answerStatus = normalizeStatus(question.status);
+    const mistakeType =
+        question.mistakeType ||
+        normalizeMistakeType(answerStatus, question.confidence || "not_sure");
+
+    return {
+        user_id: DEFAULT_USER_ID,
+        source_type: sourceType || "prelims_pyq",
+        source_ref: testId || null,
+        question_id: questionId,
+        stage: "prelims",
+        subject: subject || null,
+        node_id: question.syllabusNodeId || question.nodeId || null,
+        question_text: question.questionText || question.question || "",
+        selected_answer: question.latestUserAnswer || question.userAnswer || null,
+        correct_answer: question.correctAnswer || question.answer || null,
+        answer_status: answerStatus,
+        error_type: mistakeType,
+        notes: "",
+        must_revise: answerStatus !== "correct",
+        meta: {
+            topic: topic || "",
+            subtopic: subtopic || "",
+            paper: paper || "GS",
+            year: year ? String(year) : null,
+            confidence: question.confidence || "not_sure",
+            timeTaken: question.timeTaken || null,
+        },
+    };
+}
+
+async function apiCreateMistake(payload) {
+    const res = await fetch(API_BASE, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+    });
+
+    const text = await res.text();
+    let data;
+
+    try {
+        data = text ? JSON.parse(text) : {};
+    } catch {
+        throw new Error(`Mistake create failed: non-JSON response (${res.status})`);
+    }
+
+    if (!res.ok || data?.success === false) {
+        throw new Error(data?.error || `Mistake create failed with status ${res.status}`);
+    }
+
+    return data.item;
+}
+
+async function apiFetchMistakes() {
+    const res = await fetch(`${API_BASE}?userId=${encodeURIComponent(DEFAULT_USER_ID)}`);
+    const text = await res.text();
+
+    try {
+        const data = text ? JSON.parse(text) : {};
+        if (!res.ok || data?.success === false) {
+            throw new Error(data?.error || `Fetch failed with status ${res.status}`);
+        }
+        return Array.isArray(data.items) ? data.items : [];
+    } catch (err) {
+        throw new Error(`Failed to fetch mistakes: ${err.message}`);
+    }
+}
+
+async function refreshMistakeCache() {
+    const items = await apiFetchMistakes();
+    safeWrite(MISTAKES_KEY, items);
+    return items;
+}
+
 // ───────────────────────────────────────────────────────
 // MISTAKE TYPE CLASSIFIER
 // ───────────────────────────────────────────────────────
@@ -65,10 +168,9 @@ function uid() {
  */
 function classifyMistakeType(status, confidence) {
     if (status === "unattempted") return "unattempted";
-    if (status === "correct")     return null; // not a mistake
-    // wrong below
-    if (confidence === "sure")     return "overconfidence_trap";
-    if (confidence === "guess")    return "guess_error";
+    if (status === "correct") return null;
+    if (confidence === "sure") return "overconfidence_trap";
+    if (confidence === "guess") return "guess_error";
     return "conceptual_error";
 }
 
@@ -76,26 +178,20 @@ function classifyMistakeType(status, confidence) {
 // TEST ID BUILDER  (stable, human-readable)
 // ───────────────────────────────────────────────────────
 
-/**
- * Build a stable testId from the test context.
- *
- * Examples:
- *   topic_test_economy_banking_monetary
- *   sectional_test_environment
- *   full_length_gs_2019
- *   full_length_csat_2021
- *   institutional_topic_polity_fundamental_rights
- */
 export function buildTestId({
-    sourceType,       // "topic_test" | "sectional_test" | "full_length" | "institutional"
-    paper = "GS",     // "GS" | "CSAT"
-    year,             // for full_length
+    sourceType,
+    paper = "GS",
+    year,
     subject,
     topic,
     subtopic,
-    customLabel,      // for institutional
+    customLabel,
 }) {
-    const safe = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+    const safe = (s) =>
+        String(s || "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "_")
+            .replace(/^_|_$/g, "");
 
     if (sourceType === "full_length") {
         return `full_length_${safe(paper)}_${safe(year)}`;
@@ -103,11 +199,13 @@ export function buildTestId({
     if (sourceType === "institutional") {
         const parts = ["institutional", safe(customLabel || "test")];
         if (subject) parts.push(safe(subject));
-        if (topic)   parts.push(safe(topic));
+        if (topic) parts.push(safe(topic));
         return parts.join("_");
     }
     if (sourceType === "topic_test") {
-        return ["topic_test", safe(subject), safe(topic), safe(subtopic)].filter(Boolean).join("_");
+        return ["topic_test", safe(subject), safe(topic), safe(subtopic)]
+            .filter(Boolean)
+            .join("_");
     }
     if (sourceType === "sectional_test") {
         return ["sectional_test", safe(subject)].filter(Boolean).join("_");
@@ -119,21 +217,6 @@ export function buildTestId({
 // LAYER 1 — ATTEMPT ENGINE
 // ───────────────────────────────────────────────────────
 
-/**
- * Save a full attempt record (Layer 1).
- *
- * @param {object} params
- * @param {string} params.testId        - stable test identifier
- * @param {string} params.sourceType    - "topic_test" | "sectional_test" | "full_length" | "institutional"
- * @param {string} params.paper         - "GS" | "CSAT"
- * @param {string|number} params.year   - for full-length only
- * @param {string} params.subject
- * @param {string} params.topic
- * @param {string} params.subtopic
- * @param {object[]} params.evaluatedQuestions  - from buildAttemptRows()
- * @param {object}  params.resultSummary        - { total, correct, wrong, unattempted, accuracy }
- * @returns {string} attemptId
- */
 export function saveAttempt({
     testId,
     sourceType,
@@ -149,12 +232,12 @@ export function saveAttempt({
     const createdAt = Date.now();
 
     const answers = evaluatedQuestions.map((q) => ({
-        questionId:    q.questionId || q.id,
-        userAnswer:    q.userAnswer  || "",
+        questionId: q.questionId || q.id,
+        userAnswer: q.userAnswer || "",
         correctAnswer: q.correctAnswer || q.answer || "",
-        confidence:    q.confidence  || "not_sure",
-        timeTaken:     q.timeTaken   || null,
-        result:        q.status,        // "correct" | "wrong" | "unattempted"
+        confidence: q.confidence || "not_sure",
+        timeTaken: q.timeTaken || null,
+        result: q.status,
     }));
 
     const record = {
@@ -162,7 +245,7 @@ export function saveAttempt({
         testId,
         sourceType,
         paper,
-        year:     year ? String(year) : null,
+        year: year ? String(year) : null,
         subject,
         topic,
         subtopic,
@@ -172,7 +255,7 @@ export function saveAttempt({
     };
 
     const existing = safeRead(ATTEMPTS_KEY, []);
-    const updated  = [record, ...existing].slice(0, MAX_ATTEMPTS);
+    const updated = [record, ...existing].slice(0, MAX_ATTEMPTS);
     safeWrite(ATTEMPTS_KEY, updated);
 
     return attemptId;
@@ -182,55 +265,31 @@ export function saveAttempt({
 // LAYER 2 — MISTAKE BOOK ENGINE
 // ───────────────────────────────────────────────────────
 
-/**
- * Merge new attempt mistakes into the mistake book.
- *
- * For each question that was wrong or unattempted:
- *   - If an entry with the same questionId already exists → update it (append history)
- *   - Otherwise → create a new entry
- *
- * If the user got it correct → if an existing entry exists, update lastSeenAt and
- * append to history (so revision engine can track improvement), but do NOT create
- * a new entry.
- *
- * @param {object} params
- * @param {string} params.attemptId
- * @param {string} params.testId
- * @param {string} params.sourceType
- * @param {string} params.paper
- * @param {string|number} params.year
- * @param {string} params.subject
- * @param {string} params.topic
- * @param {string} params.subtopic
- * @param {object[]} params.evaluatedQuestions  - ALL questions in the test, not just wrong
- */
 export function mergeMistakesFromAttempt({
     attemptId,
     testId,
     sourceType,
     paper = "GS",
-    year  = null,
+    year = null,
     subject = "",
-    topic   = "",
+    topic = "",
     subtopic = "",
     evaluatedQuestions = [],
 }) {
-    const now       = Date.now();
-    const nowIso    = new Date(now).toISOString();
-    const existing  = safeRead(MISTAKES_KEY, []);
+    const now = Date.now();
+    const nowIso = new Date(now).toISOString();
+    const existing = safeRead(MISTAKES_KEY, []);
 
-    // Index existing entries by questionId for O(1) lookup
     const indexById = new Map(existing.map((m, i) => [m.questionId, i]));
-
     const updated = [...existing];
 
     for (const q of evaluatedQuestions) {
-        const qid          = q.questionId || q.id;
-        const userAnswer   = q.userAnswer || null;   // null = truly not answered
+        const qid = q.questionId || q.id;
+        const userAnswer = q.userAnswer || null;
         const correctAnswer = q.correctAnswer || q.answer || "";
-        const confidence   = q.confidence  || "not_sure";
-        const status       = q.status;  // "correct" | "wrong" | "unattempted"
-        const mistakeType  = classifyMistakeType(status, confidence);
+        const confidence = q.confidence || "not_sure";
+        const status = normalizeStatus(q.status);
+        const mistakeType = classifyMistakeType(status, confidence);
 
         const historyEntry = {
             attemptId,
@@ -239,75 +298,62 @@ export function mergeMistakesFromAttempt({
             userAnswer,
             correctAnswer,
             confidence,
-            timeTaken:  q.timeTaken || null,
-            result:     status,    // "correct" | "wrong" | "unattempted"
+            timeTaken: q.timeTaken || null,
+            result: status,
         };
 
         const isError = status === "wrong" || status === "unattempted";
 
         if (indexById.has(qid)) {
-            // ── UPDATE existing entry ──────────────────────────
-            const idx   = indexById.get(qid);
+            const idx = indexById.get(qid);
             const entry = updated[idx];
-
             const prevHistory = Array.isArray(entry.attemptHistory) ? entry.attemptHistory : [];
-
-            // Append this attempt to history
             const newHistory = [...prevHistory, historyEntry];
 
             updated[idx] = {
                 ...entry,
                 latestUserAnswer: userAnswer,
-                latestResult:     status,
-                lastSeenAt:       nowIso,
-                totalSeenCount:   (entry.totalSeenCount || 0) + 1,
-                totalWrongCount:  isError
+                latestResult: status,
+                lastSeenAt: nowIso,
+                totalSeenCount: (entry.totalSeenCount || 0) + 1,
+                totalWrongCount: isError
                     ? (entry.totalWrongCount || 0) + 1
-                    : (entry.totalWrongCount || 0),
-                // Most recent mistake type (only if error)
-                mistakeType:      isError ? mistakeType : entry.mistakeType,
-                // If user got correct → advance status toward mastered
-                status:           isError
-                    ? (entry.status === "mastered" ? "revised" : entry.status)
+                    : entry.totalWrongCount || 0,
+                mistakeType: isError ? mistakeType : entry.mistakeType,
+                status: isError
+                    ? entry.status === "mastered"
+                        ? "revised"
+                        : entry.status
                     : advanceStatus(entry.status, status),
-                attemptHistory:   newHistory,
+                attemptHistory: newHistory,
             };
         } else if (isError) {
-            // ── CREATE new entry (only for errors) ────────────
             const newEntry = {
-                id:             uid(),
-                questionId:     qid,
-                nodeId:         q.syllabusNodeId || q.nodeId || "",
-
+                id: uid(),
+                questionId: qid,
+                nodeId: q.syllabusNodeId || q.nodeId || "",
                 subject,
                 topic,
                 subtopic,
-                year:           year ? String(year) : (q.year ? String(q.year) : null),
+                year: year ? String(year) : q.year ? String(q.year) : null,
                 paper,
-
-                questionText:   q.questionText || q.question || "",
-                options:        q.options || {},
-
+                questionText: q.questionText || q.question || "",
+                options: q.options || {},
                 latestUserAnswer: userAnswer,
-                latestResult:     status,
+                latestResult: status,
                 correctAnswer,
-
                 mistakeType,
                 sourceType,
                 testId,
-
-                status:           "new",        // new | learning | revised | mastered
-                revisionCount:    0,
-
-                createdAt:      nowIso,   // display-facing creation timestamp
-                firstSeenAt:    nowIso,   // revision engine timestamp
-                lastSeenAt:     nowIso,
+                status: "new",
+                revisionCount: 0,
+                createdAt: nowIso,
+                firstSeenAt: nowIso,
+                lastSeenAt: nowIso,
                 lastReviewedAt: null,
-
                 totalWrongCount: 1,
-                totalSeenCount:  1,
-
-                attemptHistory:  [historyEntry],
+                totalSeenCount: 1,
+                attemptHistory: [historyEntry],
             };
 
             updated.push(newEntry);
@@ -315,49 +361,40 @@ export function mergeMistakesFromAttempt({
         }
     }
 
-    // Newest entries first, cap size
     const sorted = updated
         .sort((a, b) => new Date(b.lastSeenAt || 0) - new Date(a.lastSeenAt || 0))
         .slice(0, MAX_MISTAKES);
 
     safeWrite(MISTAKES_KEY, sorted);
+    return sorted;
 }
 
-/**
- * Advance mistake status when user gets a question right.
- * new → learning → revised → mastered
- */
 function advanceStatus(currentStatus, result) {
     if (result !== "correct") return currentStatus;
-    const progression = { new: "learning", learning: "revised", revised: "mastered", mastered: "mastered" };
+    const progression = {
+        new: "learning",
+        learning: "revised",
+        revised: "mastered",
+        mastered: "mastered",
+    };
     return progression[currentStatus] || currentStatus;
 }
 
 // ───────────────────────────────────────────────────────
-// CONVENIENCE FUNCTION  — call once on test submit
+// CONVENIENCE FUNCTION — call once on test submit
 // ───────────────────────────────────────────────────────
 
-/**
- * Primary entry point. Call this on test submission.
- * Saves the attempt record AND merges mistakes into the book.
- *
- * @param {object} testContext  - { testId, sourceType, paper, year, subject, topic, subtopic }
- * @param {object[]} evaluatedQuestions  - output of buildAttemptRows()
- * @param {object}  resultSummary        - { total, correct, wrong, unattempted, accuracy }
- * @returns {string} attemptId
- */
-export function recordTestAttempt(testContext, evaluatedQuestions, resultSummary) {
+export async function recordTestAttempt(testContext, evaluatedQuestions, resultSummary) {
     const {
-        testId    = buildTestId(testContext),
+        testId = buildTestId(testContext),
         sourceType,
-        paper     = "GS",
-        year      = null,
-        subject   = "",
-        topic     = "",
-        subtopic  = "",
+        paper = "GS",
+        year = null,
+        subject = "",
+        topic = "",
+        subtopic = "",
     } = testContext;
 
-    // Layer 1: full attempt record
     const attemptId = saveAttempt({
         testId,
         sourceType,
@@ -370,7 +407,6 @@ export function recordTestAttempt(testContext, evaluatedQuestions, resultSummary
         resultSummary,
     });
 
-    // Layer 2: mistake book update
     mergeMistakesFromAttempt({
         attemptId,
         testId,
@@ -383,6 +419,39 @@ export function recordTestAttempt(testContext, evaluatedQuestions, resultSummary
         evaluatedQuestions,
     });
 
+    const mistakeQuestions = evaluatedQuestions.filter((q) => {
+        const status = normalizeStatus(q.status);
+        return status === "wrong" || status === "unattempted";
+    });
+
+    const settled = await Promise.allSettled(
+        mistakeQuestions.map((q) =>
+            apiCreateMistake(
+                mapQuestionToApiPayload({
+                    sourceType,
+                    testId,
+                    subject,
+                    topic,
+                    subtopic,
+                    paper,
+                    year,
+                    question: q,
+                })
+            )
+        )
+    );
+
+    const rejected = settled.filter((r) => r.status === "rejected");
+    if (rejected.length) {
+        console.error("[recordTestAttempt] failed to sync some mistakes", rejected);
+    }
+
+    try {
+        await refreshMistakeCache();
+    } catch (err) {
+        console.error("[recordTestAttempt] failed to refresh mistake cache", err);
+    }
+
     return attemptId;
 }
 
@@ -390,29 +459,32 @@ export function recordTestAttempt(testContext, evaluatedQuestions, resultSummary
 // READ API
 // ───────────────────────────────────────────────────────
 
-/** Return all mistake entries, newest first. */
-export function getAllMistakes() {
-    return safeRead(MISTAKES_KEY, []);
+export async function getAllMistakes() {
+    try {
+        return await refreshMistakeCache();
+    } catch (err) {
+        console.error(err.message || "Failed to fetch mistakes");
+        return safeRead(MISTAKES_KEY, []);
+    }
 }
 
-/** Return all attempt records, newest first. */
 export function getAllAttempts() {
     return safeRead(ATTEMPTS_KEY, []);
 }
 
-/** Return mistakes filtered by subject. */
-export function getMistakesBySubject(subjectId) {
-    const all = getAllMistakes();
+export async function getMistakesBySubject(subjectId) {
+    const all = await getAllMistakes();
     if (!subjectId || subjectId === "all") return all;
-    return all.filter((m) => (m.subject || "").toLowerCase() === subjectId.toLowerCase());
+    return all.filter(
+        (m) => (m.subject || "").toLowerCase() === String(subjectId).toLowerCase()
+    );
 }
 
-/** Return mistakes for a specific testId. */
-export function getMistakesByTest(testId) {
-    return getAllMistakes().filter((m) => m.testId === testId);
+export async function getMistakesByTest(testId) {
+    const all = await getAllMistakes();
+    return all.filter((m) => (m.source_ref || m.testId) === testId);
 }
 
-/** Return attempts for a specific testId. */
 export function getAttemptsByTest(testId) {
     return getAllAttempts().filter((a) => a.testId === testId);
 }
@@ -422,64 +494,89 @@ export function getAttemptsByTest(testId) {
 // ───────────────────────────────────────────────────────
 
 /**
- * Update the status of a mistake entry manually.
- * status: "new" | "learning" | "revised" | "mastered"
+ * Temporary cache-only mutation.
+ * Real persistence needs backend PATCH endpoint.
  */
-export function updateMistakeStatus(mistakeId, status) {
-    const all = getAllMistakes();
+export async function updateMistakeStatus(mistakeId, status) {
+    const all = await getAllMistakes();
     const updated = all.map((m) =>
         m.id === mistakeId
             ? { ...m, status, lastReviewedAt: new Date().toISOString() }
             : m
     );
     safeWrite(MISTAKES_KEY, updated);
+    return updated;
 }
 
 /**
- * Increment revisionCount for a mistake entry and update lastReviewedAt.
+ * Temporary cache-only mutation.
+ * Real persistence needs backend PATCH endpoint.
  */
-export function incrementRevision(mistakeId) {
-    const all = getAllMistakes();
+export async function incrementRevision(mistakeId) {
+    const all = await getAllMistakes();
     const updated = all.map((m) =>
         m.id === mistakeId
             ? {
                 ...m,
-                revisionCount:  (m.revisionCount || 0) + 1,
+                revisionCount: (m.revisionCount || 0) + 1,
                 lastReviewedAt: new Date().toISOString(),
-                status:         advanceStatus(m.status, "correct"),
-              }
+                status: advanceStatus(m.status, "correct"),
+            }
             : m
     );
     safeWrite(MISTAKES_KEY, updated);
+    return updated;
 }
 
-/**
- * Manually add mistake entries (e.g. from institutional tests without auto-evaluation).
- * Skips any question already present in the mistake book.
- */
-export function addMistakes(newMistakes = []) {
-    const all     = getAllMistakes();
-    const existing = new Set(all.map((m) => m.questionId));
+export async function addMistakes(newMistakes = []) {
+    if (!Array.isArray(newMistakes) || !newMistakes.length) return [];
 
-    const toAdd = newMistakes.filter(
-        (m) => m.questionId && !existing.has(m.questionId)
+    const existing = await getAllMistakes();
+    const existingIds = new Set(existing.map((m) => m.question_id || m.questionId));
+
+    const candidates = newMistakes.filter((m) => {
+        const qid = m.questionId || m.question_id;
+        return qid && !existingIds.has(qid);
+    });
+
+    if (!candidates.length) return [];
+
+    const settled = await Promise.allSettled(
+        candidates.map((m) =>
+            apiCreateMistake({
+                user_id: DEFAULT_USER_ID,
+                source_type: m.sourceType || m.source_type || "prelims_pyq",
+                source_ref: m.testId || m.source_ref || null,
+                question_id: m.questionId || m.question_id || null,
+                stage: m.stage || "prelims",
+                subject: m.subject || null,
+                node_id: m.nodeId || m.node_id || null,
+                question_text: m.questionText || m.question_text || "",
+                selected_answer: m.latestUserAnswer || m.selected_answer || null,
+                correct_answer: m.correctAnswer || m.correct_answer || null,
+                answer_status: normalizeStatus(m.latestResult || m.answer_status || "wrong"),
+                error_type: m.mistakeType || m.error_type || "conceptual_error",
+                notes: m.notes || "",
+                must_revise: Boolean(m.must_revise ?? true),
+            })
+        )
     );
 
-    if (!toAdd.length) return;
-    const merged = [...toAdd, ...all].slice(0, MAX_MISTAKES);
-    safeWrite(MISTAKES_KEY, merged);
+    try {
+        await refreshMistakeCache();
+    } catch (err) {
+        console.error("[addMistakes] failed to refresh mistake cache", err);
+    }
+
+    return settled;
 }
 
 // ───────────────────────────────────────────────────────
 // STATS HELPERS  (for future revision / performance engines)
 // ───────────────────────────────────────────────────────
 
-/**
- * Get weak subjects ranked by total wrong count.
- * Returns: [{ subject, totalWrong, totalSeen, errorRate }]
- */
-export function getWeakSubjects() {
-    const all = getAllMistakes();
+export async function getWeakSubjects() {
+    const all = await getAllMistakes();
     const map = new Map();
 
     for (const m of all) {
@@ -489,38 +586,37 @@ export function getWeakSubjects() {
         }
         const entry = map.get(sub);
         entry.totalWrong += m.totalWrongCount || 1;
-        entry.totalSeen  += m.totalSeenCount  || 1;
+        entry.totalSeen += m.totalSeenCount || 1;
     }
 
     return [...map.values()]
-        .map((e) => ({ ...e, errorRate: e.totalSeen ? e.totalWrong / e.totalSeen : 0 }))
+        .map((e) => ({
+            ...e,
+            errorRate: e.totalSeen ? e.totalWrong / e.totalSeen : 0,
+        }))
         .sort((a, b) => b.totalWrong - a.totalWrong);
 }
 
-/**
- * Get mistake type breakdown.
- * Returns: { conceptual_error: N, overconfidence_trap: N, guess_error: N, unattempted: N }
- */
-export function getMistakeTypeBreakdown() {
-    const all = getAllMistakes();
+export async function getMistakeTypeBreakdown() {
+    const all = await getAllMistakes();
     const counts = {
-        conceptual_error:    0,
+        conceptual_error: 0,
         overconfidence_trap: 0,
-        guess_error:         0,
-        unattempted:         0,
+        guess_error: 0,
+        unattempted: 0,
     };
+
     for (const m of all) {
-        const t = m.mistakeType || "conceptual_error";
+        const t = m.mistakeType || m.error_type || "conceptual_error";
         if (t in counts) counts[t]++;
     }
+
     return counts;
 }
 
-/**
- * Get questions that are "stuck" — seen 3+ times and still wrong.
- */
-export function getStuckQuestions(minSeen = 3) {
-    return getAllMistakes().filter(
+export async function getStuckQuestions(minSeen = 3) {
+    const all = await getAllMistakes();
+    return all.filter(
         (m) =>
             (m.totalSeenCount || 0) >= minSeen &&
             m.status !== "mastered" &&

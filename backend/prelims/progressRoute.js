@@ -1,126 +1,78 @@
 // backend/prelims/progressRoute.js
-// GET /api/prelims/progress/:topicNodeId?userId=...
-// Returns cross-device progress stats for a given topic.
+// GET /api/prelims/practice/progress/:topicNodeId?userId=...&stage=...
+// Returns cross-device progress stats for a given topic/subject scope.
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { getProgress } from "./topicProgressStore.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const DATA_DIR = path.join(__dirname, "..", "data", "pyq_questions");
-
-// ─── Count total available questions for a topicNodeId ────────────────────────
-
-function getAllJsonFilesRecursive(dir) {
-    let results = [];
-    if (!fs.existsSync(dir)) return results;
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
-    for (const entry of entries) {
-        const fullPath = path.join(dir, entry.name);
-        if (entry.isDirectory()) {
-            results = results.concat(getAllJsonFilesRecursive(fullPath));
-        } else if (entry.isFile() && entry.name.endsWith(".json")) {
-            results.push(fullPath);
-        }
-    }
-    return results;
-}
-
-function isTaggedPrelimsFile(filePath) {
-    const name = path.basename(filePath).toLowerCase();
-    return name.startsWith("prelims_") && name.endsWith("_tagged.json");
-}
-
-function countTotalQuestionsForTopic(topicNodeId) {
-    if (!topicNodeId) return 0;
-    const files = getAllJsonFilesRecursive(DATA_DIR).filter(isTaggedPrelimsFile);
-    const seen = new Set();
-
-    for (const file of files) {
-        try {
-            const json = JSON.parse(fs.readFileSync(file, "utf-8"));
-            const arr = Array.isArray(json) ? json : (Array.isArray(json?.questions) ? json.questions : []);
-            for (const q of arr) {
-                const id = q?.id || q?.questionId;
-                if (!id || seen.has(id)) continue;
-                const nodeId = q?.syllabusNodeId || q?.nodeId || "";
-                if (nodeId === topicNodeId || nodeId.startsWith(topicNodeId + "-") || nodeId.startsWith(topicNodeId + "_")) {
-                    seen.add(id);
-                }
-            }
-        } catch {
-            // skip unreadable files
-        }
-    }
-
-    return seen.size;
-}
+import { getProgress, computeAverageScore } from "./topicProgressStore.js";
+import { loadAllQuestionsForNodeId, computePoolCounts } from "./practiceBuilder.js";
 
 /**
- * GET /api/prelims/progress/:topicNodeId?userId=...
+ * GET /api/prelims/practice/progress/:topicNodeId?userId=&stage=
  *
- * Response:
- * {
- *   ok: true,
- *   topicNodeId: string,
- *   userId: string,
- *   totalQuestions: number,
- *   servedCount: number,
- *   remainingCount: number,
- *   wrongCount: number,
- *   unattemptedCount: number,
- *   canContinue: boolean,          // remainingCount > 0
- *   canRetryMistakes: boolean,     // wrongCount + unattemptedCount > 0
- *   canRestart: boolean,           // always true (reset is always allowed)
- *   isFullyCompleted: boolean      // servedCount >= totalQuestions
- * }
+ * Response includes:
+ *  - Pool counts (total, unseen, wrongOnly, mistakes, attempted)
+ *  - Progress stats (attemptsCount, bestScore, latestScore, averageScore, coveragePercent)
+ *  - Booleans: canContinue, canRetryMistakes, canRetryWrong, canRetryAttempted, canRestart
  */
 export default async function progressRouteHandler(req, res) {
     try {
         const topicNodeId = String(req.params?.topicNodeId || "").trim();
-        const userId = String(req.query?.userId || "").trim();
-        const stage = String(req.query?.stage || "prelims").trim();
+        const userId      = String(req.query?.userId       || "").trim();
+        const stage       = String(req.query?.stage        || "prelims").trim();
 
-        if (!topicNodeId) {
-            return res.status(400).json({ ok: false, error: "topicNodeId is required" });
-        }
-        if (!userId) {
-            return res.status(400).json({ ok: false, error: "userId query param is required" });
-        }
+        if (!topicNodeId) return res.status(400).json({ ok: false, error: "topicNodeId is required" });
+        if (!userId)      return res.status(400).json({ ok: false, error: "userId query param is required" });
 
         const progress = getProgress(userId, stage, topicNodeId);
-        const totalQuestions = countTotalQuestionsForTopic(topicNodeId);
 
-        const servedCount = progress.servedQuestionIds.length;
-        const wrongCount = progress.wrongQuestionIds.length;
-        const unattemptedCount = progress.unattemptedQuestionIds.length;
-        const remainingCount = Math.max(0, totalQuestions - servedCount);
-        const isFullyCompleted = servedCount >= totalQuestions && totalQuestions > 0;
+        // Count total questions for this scope
+        const allQuestions   = loadAllQuestionsForNodeId(topicNodeId);
+        const totalQuestions = allQuestions.length;
+
+        const poolCounts = computePoolCounts(allQuestions, progress);
+
+        const servedCount       = progress.servedQuestionIds?.length     || 0;
+        const wrongCount        = progress.wrongQuestionIds?.length       || 0;
+        const unattemptedCount  = progress.unattemptedQuestionIds?.length || 0;
+        const remainingCount    = Math.max(0, totalQuestions - servedCount);
+        const isFullyCompleted  = servedCount >= totalQuestions && totalQuestions > 0;
+        const averageScore      = computeAverageScore(progress);
 
         return res.json({
-            ok: true,
+            ok:           true,
             topicNodeId,
             userId,
             stage,
+
+            // Pool sizes
             totalQuestions,
             servedCount,
             remainingCount,
             wrongCount,
             unattemptedCount,
-            canContinue: remainingCount > 0,
-            canRetryMistakes: wrongCount + unattemptedCount > 0,
-            canRestart: true,  // always allowed
+            poolCounts,      // { total, unseen, wrongOnly, mistakes, attempted, entire }
+
+            // Mode availability flags
+            canContinue:       remainingCount > 0,
+            canRetryMistakes:  (wrongCount + unattemptedCount) > 0,
+            canRetryWrong:     wrongCount > 0,
+            canRetryAttempted: servedCount > 0,
+            canRestart:        true,   // always allowed
             isFullyCompleted,
+
+            // Scoring stats (new)
+            attemptsCount:  progress.attemptsCount  || 0,
+            bestScore:      progress.bestScore      ?? null,
+            latestScore:    progress.latestScore    ?? null,
+            averageScore:   averageScore            ?? null,
+            coveragePercent: progress.coveragePercent || 0,
+
             lastAttemptId: progress.lastAttemptId || null,
-            updatedAt: progress.updatedAt || null,
+            updatedAt:     progress.updatedAt      || null,
         });
     } catch (error) {
         console.error("[progressRoute] Error:", error);
         return res.status(500).json({
-            ok: false,
+            ok:    false,
             error: error.message || "Failed to fetch topic progress",
         });
     }

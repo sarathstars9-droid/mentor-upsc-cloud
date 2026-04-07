@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import { getNodeById, expandCanonicalOrLegacyToLeafNodeIds } from "../brain/unifiedSyllabusIndex.js";
+import { PYQ_NODE_ALIAS_MAP } from "../brain/pyqNodeAliasMap.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,7 +16,7 @@ const stages = ["prelims", "mains", "csat", "essay", "ethics", "optional"];
 
 async function rebuildIndexes() {
   console.log("⏳ Loading pyq_master_index.json...");
-  
+
   let masterIndexRaw;
   try {
     masterIndexRaw = await fs.readFile(MASTER_INDEX_PATH, "utf-8");
@@ -28,10 +29,10 @@ async function rebuildIndexes() {
   const totalIncoming = Object.keys(pyqMasterIndex).length;
 
   console.log(`✅ Loaded ${totalIncoming} questions from master index.`);
-  
+
   // The structure to be written
   const pyqByNode = {};
-  
+
   // Counters for debug log
   let skippedMissingNodeId = 0;
   let unknownNodeIds = 0;
@@ -48,6 +49,11 @@ async function rebuildIndexes() {
     }
   }
 
+  function isValidNode(nid) {
+    if (!nid) return false;
+    return expandCanonicalOrLegacyToLeafNodeIds(nid).length > 0;
+  }
+
   // Iterate over all questions in Master Index
   const questionsList = Object.values(pyqMasterIndex);
 
@@ -59,23 +65,32 @@ async function rebuildIndexes() {
   });
 
   for (const q of questionsList) {
-    const nodeId = q.syllabusNodeId || q.nodeId;
+    let nodeId = q.syllabusNodeId || q.nodeId;
     if (!nodeId) {
       skippedMissingNodeId++;
       continue;
     }
 
-    const stage = String(q.stage || "").toLowerCase();
+    if (!isValidNode(nodeId)) {
+      const alias = PYQ_NODE_ALIAS_MAP[nodeId];
+      if (alias && isValidNode(alias)) {
+        nodeId = alias;
+      }
+    }
 
-    // Ensure stage is a valid bucket
+    q.syllabusNodeId = nodeId;
+
+    let stage = String(q.stage || "").toLowerCase();
+    const paper = String(q.paper || "").toLowerCase();
+    const sourceFile = String(q.sourceFile || "").toLowerCase();
+    const qId = String(q.id || "").toUpperCase();
+
     let bucketStage = stage;
     if (!stages.includes(bucketStage)) {
-       // fallback generic bucket handling
-       if (stage.includes("csat")) bucketStage = "csat";
-       else if (stage.includes("prelims")) bucketStage = "prelims";
-       else if (stage.includes("mains")) bucketStage = "mains";
-       else continue; // Invalid stage, completely drops it. Wait, should we?
-       // Just put into optional by default if unknown? No, user explicitly said don't mix buckets.
+      if (stage.includes("csat")) bucketStage = "csat";
+      else if (stage.includes("prelims")) bucketStage = "prelims";
+      else if (stage.includes("mains")) bucketStage = "mains";
+      else continue;
     }
 
     // CRITICAL: Expand possibly legacy/parent nodes into their exact leaf canonical IDs
@@ -87,22 +102,31 @@ async function rebuildIndexes() {
     }
 
     const resolvedNodes = expandCanonicalOrLegacyToLeafNodeIds(lookupNodeId);
-    
+
+    // FALLBACK: if resolver fails, still keep raw syllabusNodeId alive in pyq_by_node
+    // We ALSO include the raw nodeId even if resolution succeeds, so that direct API lookups 
+    // for parent nodes like '1C.VA.ARCH' continue to return questions.
+    const finalNodes =
+      resolvedNodes && resolvedNodes.length > 0
+        ? Array.from(new Set([...resolvedNodes, nodeId]))
+        : [nodeId];
+
     if (!resolvedNodes || resolvedNodes.length === 0) {
-       unknownNodeIds++;
-       console.warn(`[WARNING] Orphan question ${q.id}: Cannot resolve "${nodeId}" to any valid leaf node in Syllabus. Skipping.`);
-       continue;
+      unknownNodeIds++;
+      console.warn(
+        `[WARNING] Unresolved node for ${q.id}: "${nodeId}". Falling back to raw node bucket.`
+      );
     }
 
     // Now safely map to every resolved canonical leaf node
-    for (const validNodeId of resolvedNodes) {
+    for (const validNodeId of finalNodes) {
       initNode(validNodeId);
 
       // Push explicitly only if not exist
       if (!pyqByNode[validNodeId][bucketStage].includes(q.id)) {
         pyqByNode[validNodeId][bucketStage].push(q.id);
         pyqByNode[validNodeId].total += 1;
-        
+
         const qYear = Number(q.year || 0);
         if (qYear > (pyqByNode[validNodeId].latestYear || 0)) {
           pyqByNode[validNodeId].latestYear = qYear;
@@ -111,10 +135,10 @@ async function rebuildIndexes() {
         // Track metric (only once per question per stage mapping, so we don't skew total count by multiplying leaf nodes)
       }
     }
-    
+
     // Increment metric for question mapping overall
     if (stageCounts[bucketStage] !== undefined) {
-        stageCounts[bucketStage]++;
+      stageCounts[bucketStage]++;
     }
   }
 
@@ -124,27 +148,27 @@ async function rebuildIndexes() {
   // Output required console debug metrics
   console.log("\n\n=== REBUILD INDEX REPORT ===");
   console.log(`[PYQ BUILD] Total Processed Nodes: ${Object.keys(pyqByNode).length}`);
-  console.log(`[PYQ BUILD] Total Valid Questions Mapped: ${Object.values(stageCounts).reduce((a,b)=>a+b, 0)}`);
-  
+  console.log(`[PYQ BUILD] Total Valid Questions Mapped: ${Object.values(stageCounts).reduce((a, b) => a + b, 0)}`);
+
   stages.forEach(s => {
-      console.log(`[PYQ BUILD] Total ${s.toUpperCase()}: ${stageCounts[s]}`);
+    console.log(`[PYQ BUILD] Total ${s.toUpperCase()}: ${stageCounts[s]}`);
   });
 
   if (skippedMissingNodeId > 0) {
-     console.log(`[PYQ BUILD] Ignored questions missing syllabusNodeId: ${skippedMissingNodeId}`);
+    console.log(`[PYQ BUILD] Ignored questions missing syllabusNodeId: ${skippedMissingNodeId}`);
   }
   if (unknownNodeIds > 0) {
-     console.log(`[PYQ BUILD] Mismatched/Skipped due to Invalid syllabusNodeId: ${unknownNodeIds}`);
+    console.log(`[PYQ BUILD] Mismatched/Skipped due to Invalid syllabusNodeId: ${unknownNodeIds}`);
   }
 
   // Top Nodes
   const nodeEntries = Object.entries(pyqByNode)
     .map(([nid, data]) => ({ nid, total: data.total }))
-    .sort((a,b) => b.total - a.total)
+    .sort((a, b) => b.total - a.total)
     .slice(0, 10);
-    
+
   console.log(`\n[PYQ BUILD] Top 10 High Volume Nodes:`);
-  nodeEntries.forEach((n, i) => console.log(`  ${i+1}. ${n.nid} => ${n.total} qs`));
+  nodeEntries.forEach((n, i) => console.log(`  ${i + 1}. ${n.nid} => ${n.total} qs`));
   console.log("✅ Rebuild complete! Fast lookup index generated at pyq_by_node.json");
 }
 

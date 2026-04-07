@@ -3,7 +3,6 @@ import { BACKEND_URL } from "../config";
 import { PRELIMS_STRUCTURE } from "../data/prelimsStructure";
 import { recordTestAttempt, buildTestId } from "../utils/prelimsMistakeEngine";
 
-// Hard-coded userId for now (replace with auth when available)
 const CURRENT_USER_ID = "user_1";
 
 
@@ -40,11 +39,11 @@ const sectionStyle = {
 };
 
 const cardStyle = {
-  background: "rgba(15, 23, 42, 0.92)",
-  border: "1px solid rgba(148, 163, 184, 0.16)",
+  background: "rgba(15, 23, 42, 0.88)",
+  border: "1px solid rgba(148, 163, 184, 0.10)",
   borderRadius: 18,
-  padding: 16,
-  boxShadow: "0 10px 24px rgba(2, 6, 23, 0.18)",
+  padding: 18,
+  boxShadow: "0 12px 32px rgba(2, 6, 23, 0.28)",
 };
 
 const chipRowStyle = {
@@ -121,6 +120,32 @@ function getSubjectBuildHints(selectedSubjectId, practicePaper) {
   );
 }
 
+function dedupeQuestions(arr = []) {
+  const seen = new Set();
+  return arr.filter((q) => {
+    const id = q?.id || q?.questionId || q?.qid;
+    if (!id) return true;
+    if (seen.has(id)) return false;
+    seen.add(id);
+    return true;
+  });
+}
+
+function normalizeQuestion(q) {
+  if (!q) return null;
+  return {
+    ...q,
+    id: q.id || q.questionId || q.qid || "",
+    question: q.question || q.questionText || q.prompt || q.stem || "",
+    options: q.options || q.choices || null,
+    passageText: q.passageText || q.passage || "",
+  };
+}
+
+function sanitizeQuestions(rawQuestions) {
+  return dedupeQuestions((rawQuestions || []).map(normalizeQuestion).filter(Boolean));
+}
+
 
 function ModeButton({ active, children, onClick, disabled = false }) {
   return (
@@ -129,17 +154,20 @@ function ModeButton({ active, children, onClick, disabled = false }) {
       onClick={onClick}
       disabled={disabled}
       style={{
-        padding: "10px 14px",
+        padding: "10px 20px",
         borderRadius: 999,
         border: active
-          ? "1px solid rgba(56, 189, 248, 0.45)"
-          : "1px solid rgba(148, 163, 184, 0.18)",
+          ? "1px solid rgba(56,189,248,0.6)"
+          : "1px solid rgba(148,163,184,0.12)",
         background: active
-          ? "rgba(14, 165, 233, 0.16)"
-          : "rgba(15, 23, 42, 0.9)",
-        color: disabled ? "#64748b" : active ? "#e0f2fe" : "#cbd5e1",
-        fontWeight: 700,
+          ? "linear-gradient(135deg, rgba(14,165,233,0.22), rgba(56,189,248,0.14))"
+          : "rgba(15,23,42,0.6)",
+        color: disabled ? "#334155" : active ? "#bae6fd" : "rgba(203,213,225,0.6)",
+        fontWeight: active ? 800 : 600,
+        fontSize: 14,
         cursor: disabled ? "not-allowed" : "pointer",
+        boxShadow: active ? "0 0 12px rgba(56,189,248,0.14)" : "none",
+        letterSpacing: 0.2,
       }}
     >
       {children}
@@ -152,23 +180,33 @@ function InfoBlock({ title, items, accent }) {
     <div
       style={{
         ...cardStyle,
-        padding: 14,
+        padding: "16px 18px",
+        borderTop: `2px solid ${accent}55`,
+        background: "rgba(15,23,42,0.75)",
       }}
     >
-      <div style={{ color: accent, fontWeight: 700, marginBottom: 8 }}>
+      <div style={{
+        color: accent,
+        fontWeight: 800,
+        marginBottom: 10,
+        fontSize: 13,
+        letterSpacing: 0.4,
+        textTransform: "uppercase",
+      }}>
         {title}
       </div>
       {items.length === 0 ? (
-        <div style={{ color: "#94a3b8", fontSize: 13 }}>
+        <div style={{ color: "#334155", fontSize: 12 }}>
           No updates available.
         </div>
       ) : (
         <ul
           style={{
             margin: 0,
-            paddingLeft: 18,
-            color: "#e2e8f0",
-            lineHeight: 1.7,
+            paddingLeft: 16,
+            color: "#94a3b8",
+            lineHeight: 1.75,
+            fontSize: 13,
           }}
         >
           {items.map((item, index) => (
@@ -360,14 +398,26 @@ async function analyzeAttemptWithBackend({
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// TOPIC PROGRESS PANEL
+// TOPIC PROGRESS PANEL  — enhanced start-flow with mode/count/pool display
 // ═══════════════════════════════════════════════════════════════════════════
 
-function TopicProgressPanel({ progress, loading, error, onContinue, onRetry, onRestart }) {
+const PRACTICE_MODES = [
+  { id: "continue", label: "Continue Unseen", poolKey: "unseen", color: "#38bdf8" },
+  { id: "retry_wrong", label: "Retry Wrong Only", poolKey: "wrongOnly", color: "#f87171" },
+  { id: "retry_attempted", label: "Retry Attempted", poolKey: "attempted", color: "#f59e0b" },
+  { id: "retry_entire", label: "Retry Entire Subject", poolKey: "entire", color: "#a78bfa" },
+];
+
+function TopicProgressPanel({
+  progress, loading, error,
+  selectedMode, setSelectedMode,
+  selectedCount, setSelectedCount,
+  onStart,
+}) {
   if (loading) {
     return (
       <div style={{ ...cardStyle, padding: 16, marginBottom: 12 }}>
-        <div style={{ color: "#93c5fd", fontWeight: 600, fontSize: 13 }}>Loading topic progress...</div>
+        <div style={{ color: "#93c5fd", fontWeight: 600, fontSize: 13 }}>Loading subject progress…</div>
       </div>
     );
   }
@@ -380,125 +430,185 @@ function TopicProgressPanel({ progress, loading, error, onContinue, onRetry, onR
   }
   if (!progress) return null;
 
-  const { totalQuestions, servedCount, remainingCount, wrongCount, unattemptedCount,
-    canContinue, canRetryMistakes, isFullyCompleted } = progress;
+  const pool = progress.poolCounts || {};
+  const total = pool.total ?? progress.totalQuestions ?? 0;
+  const unseen = pool.unseen ?? progress.remainingCount ?? 0;
+  const wrongOnly = pool.wrongOnly ?? progress.wrongCount ?? 0;
+  const attempted = pool.attempted ?? progress.servedCount ?? 0;
+  const mistakes = pool.mistakes ?? (wrongOnly + (progress.unattemptedCount || 0));
 
-  const barPct = totalQuestions > 0 ? Math.round((servedCount / totalQuestions) * 100) : 0;
+  const coverage = progress.coveragePercent || 0;
+  const bestScore = progress.bestScore ?? null;
+  const latestScore = progress.latestScore ?? null;
+  const avgScore = progress.averageScore ?? null;
+  const attempts = progress.attemptsCount || 0;
+
+  const activeMode = PRACTICE_MODES.find(m => m.id === selectedMode) || PRACTICE_MODES[0];
+  const poolForMode = pool[activeMode.poolKey] ?? (activeMode.id === "retry_entire" ? total : 0);
+  const maxCount = Math.max(poolForMode, 1);
+  const safeCount = Math.min(selectedCount, maxCount);
+
+  const COUNT_PRESETS = [10, 25, 50, 100].filter(n => n <= maxCount);
+  if (!COUNT_PRESETS.includes(maxCount) && maxCount > 0) COUNT_PRESETS.push(maxCount);
+
+  const canStart = poolForMode > 0;
 
   return (
     <div style={{
       ...cardStyle,
-      padding: 18,
-      marginBottom: 16,
-      background: "linear-gradient(135deg, rgba(14,165,233,0.06), rgba(168,85,247,0.06))",
+      padding: 20,
+      marginBottom: 18,
+      background: "linear-gradient(135deg, rgba(14,165,233,0.06), rgba(168,85,247,0.05))",
       border: "1px solid rgba(56,189,248,0.18)",
     }}>
-      <div style={{ fontWeight: 700, color: "#e0f2fe", fontSize: 14, marginBottom: 12, letterSpacing: 0.3 }}>
-        📊 Topic Progress
+
+      {/* ── Header ── */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8, marginBottom: 14 }}>
+        <div style={{ fontWeight: 800, color: "#e0f2fe", fontSize: 15, letterSpacing: 0.3 }}>Subject Progress</div>
+        {attempts > 0 && (
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            {bestScore != null && <span style={statPill("#22c55e")}>Best {bestScore}</span>}
+            {latestScore != null && <span style={statPill("#38bdf8")}>Last {latestScore}</span>}
+            {avgScore != null && <span style={statPill("#a78bfa")}>Avg {avgScore}</span>}
+            <span style={statPill("#94a3b8")}>{attempts} attempt{attempts !== 1 ? "s" : ""}</span>
+          </div>
+        )}
       </div>
 
-      {/* Stats row */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: 10, marginBottom: 14 }}>
+      {/* ── Pool counts ── */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(90px, 1fr))", gap: 8, marginBottom: 16 }}>
         {[
-          { label: "Total", value: totalQuestions, color: "#94a3b8" },
-          { label: "Served", value: servedCount, color: "#38bdf8" },
-          { label: "Remaining", value: remainingCount, color: "#22c55e" },
-          { label: "Wrong", value: wrongCount, color: "#f87171" },
-          { label: "Skipped", value: unattemptedCount, color: "#f59e0b" },
+          { label: "Total PYQs", value: total, color: "#94a3b8" },
+          { label: "Unseen", value: unseen, color: "#38bdf8" },
+          { label: "Wrong", value: wrongOnly, color: "#f87171" },
+          { label: "Attempted", value: attempted, color: "#f59e0b" },
+          { label: "Mistakes", value: mistakes, color: "#fb923c" },
         ].map(({ label, value, color }) => (
           <div key={label} style={{
-            background: "rgba(15,23,42,0.7)",
-            borderRadius: 10,
-            padding: "10px 12px",
-            textAlign: "center",
+            background: "rgba(15,23,42,0.75)", borderRadius: 10,
+            padding: "10px 8px", textAlign: "center",
             border: "1px solid rgba(148,163,184,0.1)",
           }}>
-            <div style={{ fontSize: 20, fontWeight: 800, color }}>{value ?? 0}</div>
+            <div style={{ fontSize: 22, fontWeight: 800, color }}>{value}</div>
             <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>{label}</div>
           </div>
         ))}
       </div>
 
-      {/* Progress bar */}
-      {totalQuestions > 0 && (
-        <div style={{ marginBottom: 14 }}>
+      {/* ── Coverage bar ── */}
+      {total > 0 && (
+        <div style={{ marginBottom: 16 }}>
           <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#64748b", marginBottom: 4 }}>
-            <span>Progress</span>
-            <span>{barPct}% complete</span>
+            <span>Subject coverage</span><span>{coverage}%</span>
           </div>
-          <div style={{ background: "rgba(30,41,59,0.8)", borderRadius: 99, height: 8, overflow: "hidden" }}>
+          <div style={{ background: "rgba(30,41,59,0.8)", borderRadius: 99, height: 7, overflow: "hidden" }}>
             <div style={{
-              height: "100%",
-              width: `${barPct}%`,
-              background: isFullyCompleted
+              height: "100%", width: `${coverage}%`,
+              background: coverage >= 100
                 ? "linear-gradient(90deg, #22c55e, #16a34a)"
                 : "linear-gradient(90deg, #0ea5e9, #8b5cf6)",
-              borderRadius: 99,
-              transition: "width 0.4s ease",
+              borderRadius: 99, transition: "width 0.4s",
             }} />
           </div>
         </div>
       )}
 
-      {/* Completion Banner */}
-      {isFullyCompleted && (
-        <div style={{
-          marginBottom: 14, padding: "10px 14px", borderRadius: 10,
-          background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.22)",
-          color: "#86efac", fontSize: 13, fontWeight: 600,
-        }}>
-          🎉 You've completed all questions in this topic!
+      {/* ── Mode selector ── */}
+      <div style={{ marginBottom: 14 }}>
+        <div style={{ fontSize: 12, color: "#64748b", fontWeight: 700, marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.5 }}>Practice Mode</div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 8 }}>
+          {PRACTICE_MODES.map(m => {
+            const modePool = pool[m.poolKey] ?? (m.id === "retry_entire" ? total : 0);
+            const active = selectedMode === m.id;
+            const disabled = modePool === 0 && m.id !== "retry_entire";
+            return (
+              <button
+                key={m.id} type="button"
+                disabled={disabled}
+                onClick={() => { setSelectedMode(m.id); setSelectedCount(Math.min(selectedCount, modePool || total || 10)); }}
+                style={{
+                  padding: "10px 12px", borderRadius: 10, textAlign: "left",
+                  border: active ? `1px solid ${m.color}55` : "1px solid rgba(148,163,184,0.15)",
+                  background: active ? `${m.color}18` : "rgba(15,23,42,0.6)",
+                  color: disabled ? "#334155" : active ? m.color : "#94a3b8",
+                  fontWeight: 700, fontSize: 13, cursor: disabled ? "not-allowed" : "pointer",
+                  transition: "all 0.15s",
+                }}
+              >
+                <div>{m.label}</div>
+                <div style={{ fontSize: 11, marginTop: 3, opacity: 0.8 }}>
+                  {modePool} available
+                </div>
+              </button>
+            );
+          })}
         </div>
-      )}
-
-      {/* Action Buttons */}
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-        {canContinue && (
-          <button
-            type="button"
-            id="topic-progress-continue-btn"
-            onClick={() => onContinue("continue")}
-            style={{
-              padding: "10px 18px", borderRadius: 10, border: "1px solid rgba(14,165,233,0.4)",
-              background: "linear-gradient(135deg, rgba(14,165,233,0.18), rgba(14,165,233,0.08))",
-              color: "#38bdf8", fontWeight: 700, fontSize: 13, cursor: "pointer",
-              transition: "all 0.2s",
-            }}
-          >
-            ▶ Continue ({remainingCount} left)
-          </button>
-        )}
-        {canRetryMistakes && (
-          <button
-            type="button"
-            id="topic-progress-retry-btn"
-            onClick={() => onContinue("retry_mistakes")}
-            style={{
-              padding: "10px 18px", borderRadius: 10, border: "1px solid rgba(248,113,113,0.4)",
-              background: "linear-gradient(135deg, rgba(239,68,68,0.12), rgba(239,68,68,0.06))",
-              color: "#fca5a5", fontWeight: 700, fontSize: 13, cursor: "pointer",
-              transition: "all 0.2s",
-            }}
-          >
-            🔁 Retry Wrong/Skipped ({wrongCount + unattemptedCount})
-          </button>
-        )}
-        <button
-          type="button"
-          id="topic-progress-restart-btn"
-          onClick={() => onContinue("restart")}
-          style={{
-            padding: "10px 18px", borderRadius: 10, border: "1px solid rgba(148,163,184,0.2)",
-            background: "rgba(30,41,59,0.6)",
-            color: "#94a3b8", fontWeight: 700, fontSize: 13, cursor: "pointer",
-            transition: "all 0.2s",
-          }}
-        >
-          🔄 Restart Topic
-        </button>
       </div>
+
+      {/* ── Count selector ── */}
+      <div style={{ marginBottom: 16 }}>
+        <div style={{ fontSize: 12, color: "#64748b", fontWeight: 700, marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.5 }}>
+          Questions — {canStart ? `${poolForMode} available for this mode` : "None available"}
+        </div>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+          {COUNT_PRESETS.map(n => (
+            <button key={n} type="button"
+              onClick={() => setSelectedCount(n)}
+              style={{
+                height: 36, padding: "0 16px", borderRadius: 99,
+                border: safeCount === n ? "1px solid rgba(56,189,248,0.5)" : "1px solid rgba(148,163,184,0.18)",
+                background: safeCount === n ? "rgba(14,165,233,0.16)" : "rgba(15,23,42,0.7)",
+                color: safeCount === n ? "#e0f2fe" : "#94a3b8",
+                fontWeight: 700, fontSize: 13, cursor: "pointer",
+              }}
+            >{n}</button>
+          ))}
+          {/* custom input */}
+          <input
+            type="number" min={1} max={maxCount}
+            value={selectedCount}
+            onChange={e => {
+              const v = Math.max(1, Math.min(Number(e.target.value) || 1, maxCount));
+              setSelectedCount(v);
+            }}
+            style={{
+              width: 72, height: 36, borderRadius: 10, textAlign: "center",
+              border: "1px solid rgba(148,163,184,0.2)", background: "rgba(15,23,42,0.8)",
+              color: "#e2e8f0", fontWeight: 700, fontSize: 13, padding: "0 8px",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* ── Start button ── */}
+      <button
+        type="button"
+        disabled={!canStart}
+        onClick={() => canStart && onStart(selectedMode)}
+        style={{
+          width: "100%", height: 50, borderRadius: 14,
+          border: canStart ? `1px solid ${activeMode.color}44` : "1px solid rgba(148,163,184,0.1)",
+          background: canStart
+            ? `linear-gradient(135deg, ${activeMode.color}22, ${activeMode.color}10)`
+            : "rgba(30,41,59,0.4)",
+          color: canStart ? activeMode.color : "#334155",
+          fontWeight: 800, fontSize: 15, cursor: canStart ? "pointer" : "not-allowed",
+          transition: "all 0.2s", letterSpacing: 0.3,
+        }}
+      >
+        {canStart
+          ? `▶  Start — ${activeMode.label} · ${safeCount} Questions`
+          : "No questions available for this mode"}
+      </button>
     </div>
   );
+}
+
+function statPill(color) {
+  return {
+    padding: "4px 10px", borderRadius: 99, fontSize: 11, fontWeight: 700,
+    background: `${color}18`, border: `1px solid ${color}33`, color,
+  };
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -512,6 +622,8 @@ export default function PrelimsPage() {
 
   // Live GS subject counts fetched from backend (authoritative buildable counts)
   const [gsCountsFromAPI, setGsCountsFromAPI] = useState(null);
+  // Live RC subtopic counts fetched from backend (classifier-based)
+  const [rcTopicCounts, setRcTopicCounts] = useState({});
 
   const [dashboard, setDashboard] = useState(null);
   const [dashboardLoading, setDashboardLoading] = useState(false);
@@ -553,6 +665,17 @@ export default function PrelimsPage() {
   // Tracks the topicNodeId used for the currently active progressive test
   const [activeTopicNodeId, setActiveTopicNodeId] = useState("");
 
+  // ── Start-flow selectors ──────────────────────────────────────────────────
+  const [selectedPracticeMode, setSelectedPracticeMode] = useState("continue");
+
+  // ── Timer state ───────────────────────────────────────────────────────────
+  const [testStartTime, setTestStartTime] = useState(null);
+  const [perQuestionTimeMap, setPerQuestionTimeMap] = useState({});
+  const [questionEnteredAt, setQuestionEnteredAt] = useState(null);
+
+  // ── Last submit data (UPSC score + subject progress for result screen) ────
+  const [lastSubmitData, setLastSubmitData] = useState(null);
+
   // Fetch actual buildable GS counts from backend once on mount
   useEffect(() => {
     let active = true;
@@ -562,6 +685,22 @@ export default function PrelimsPage() {
       .catch(() => { });
     return () => { active = false; };
   }, []);
+
+  // Fetch real RC subtopic counts when user selects CSAT → Reading Comprehension
+  useEffect(() => {
+    if (practicePaper !== "CSAT" || selectedSubjectId !== "csat_rc") return;
+    let active = true;
+    fetch(`${BACKEND_URL}/api/prelims/csat/rc-subtopics`)
+      .then((r) => r.json())
+      .then((json) => {
+        if (!active || !json?.ok || !Array.isArray(json.subtopics)) return;
+        const counts = {};
+        json.subtopics.forEach((s) => { counts[s.id] = s.count; });
+        setRcTopicCounts(counts);
+      })
+      .catch(() => { });
+    return () => { active = false; };
+  }, [practicePaper, selectedSubjectId]);
 
   useEffect(() => {
     let isMounted = true;
@@ -650,14 +789,24 @@ export default function PrelimsPage() {
         : PRELIMS_STRUCTURE?.csat || [];
 
     const subject = base.find((item) => item.id === selectedSubjectId);
+    const isLocalRC = practicePaper === "CSAT" && String(selectedSubjectId).includes("rc");
+
     return (subject?.topics || [])
-      .filter((topic) => (topic.count || 0) > 0)
-      .map((topic) => ({
-        id: topic.id,
-        name: topic.name || topic.label || topic.id,
-        count: topic.count || 0,
-      }));
-  }, [practicePaper, selectedSubjectId]);
+      .map((topic) => {
+        let countFromApi = undefined;
+        if (isLocalRC) {
+          const cleanId = topic.id.replace(/^rc_/, "").replace(/^rc-/, "");
+          const val = rcTopicCounts[topic.id] ?? rcTopicCounts[cleanId];
+          if (val !== undefined) countFromApi = val;
+        }
+        return {
+          id: topic.id,
+          name: topic.name || topic.label || topic.id,
+          count: countFromApi ?? topic.count ?? 0,
+        };
+      })
+      .filter((topic) => isLocalRC ? true : topic.count > 0);
+  }, [practicePaper, selectedSubjectId, rcTopicCounts]);
 
   // ── Fetch topic progress when topicNodeId is known ─────────────────────────
   const fetchTopicProgress = useCallback(async (nodeId) => {
@@ -706,8 +855,9 @@ export default function PrelimsPage() {
 
     const subject = base.find((item) => item.id === selectedSubjectId);
     const topic = (subject?.topics || []).find((item) => item.id === selectedTopicId);
+    const subtopics = topic?.subtopics || [];
 
-    return (topic?.subtopics || []).map((subtopic) => ({
+    return subtopics.map((subtopic) => ({
       id: subtopic.id,
       label: subtopic.label || subtopic.name || subtopic.id,
       count: subtopic.count || 0,
@@ -782,7 +932,7 @@ export default function PrelimsPage() {
     } else {
       setTopicProgress(null);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSubjectId, selectedTopicId, selectedMicroThemeIds, practiceScope, testMode, testStage]);
 
   const recentHistory = useMemo(() => {
@@ -889,6 +1039,14 @@ export default function PrelimsPage() {
         (practiceScope === "subtopic" &&
           (!selectedMicroThemeIds.length || microThemes.length === 0))));
 
+  // ── Timer helpers ─────────────────────────────────────────────────────────
+  function recordCurrentQuestionTime() {
+    const qid = questions[currentIndex]?.id || questions[currentIndex]?.questionId;
+    if (!qid || !questionEnteredAt) return;
+    const spent = Date.now() - questionEnteredAt;
+    setPerQuestionTimeMap(prev => ({ ...prev, [qid]: (prev[qid] || 0) + spent }));
+  }
+
   // ── Progressive test builder (Continue / Restart / Retry Mistakes) ─────────
   async function buildProgressiveTest(mode = "continue") {
     setBuilderError("");
@@ -936,11 +1094,25 @@ export default function PrelimsPage() {
       setActiveTopicNodeId(nodeId);
       setActivePracticeMode(mode);
       setTestId(nextTestId);
-      setQuestions([...builtQuestions]);
+
+      const sanitizedQuestions = sanitizeQuestions(builtQuestions);
+      console.log("[RAW BUILT QUESTIONS]", builtQuestions.length);
+      console.log("[SANITIZED QUESTIONS]", sanitizedQuestions.length);
+      console.log("[FIRST 5 IDS]", sanitizedQuestions.slice(0, 5).map(q => q.id));
+      setQuestions(sanitizedQuestions);
+
       setCurrentIndex(0);
       setAnswersMap({});
       setConfidenceMap({});
       setResult(null);
+      setLastSubmitData(null);
+
+      // ── Start timer ────────────────────────────────────────────────────────
+      const now = Date.now();
+      setTestStartTime(now);
+      setPerQuestionTimeMap({});
+      setQuestionEnteredAt(now);
+
       setTestStage("attempt");
 
       // Refresh progress panel after build (restart clears it)
@@ -1087,11 +1259,22 @@ export default function PrelimsPage() {
 
       setTestId(nextTestId);
       setActiveTopicNodeId(""); // Not a tracked progressive test
-      setQuestions([...builtQuestions]);
+
+      const sanitizedQuestions = sanitizeQuestions(builtQuestions);
+      console.log("[RAW BUILT QUESTIONS]", builtQuestions.length);
+      console.log("[SANITIZED QUESTIONS]", sanitizedQuestions.length);
+      console.log("[FIRST 5 IDS]", sanitizedQuestions.slice(0, 5).map(q => q.id));
+      setQuestions(sanitizedQuestions);
+
       setCurrentIndex(0);
       setAnswersMap({});
       setConfidenceMap({});
       setResult(null);
+      // Start timer for this practice path (mirrors buildProgressiveTest)
+      const now = Date.now();
+      setTestStartTime(now);
+      setPerQuestionTimeMap({});
+      setQuestionEnteredAt(now);
       setTestStage("attempt");
     } catch (error) {
       console.error("Prelims practice build error:", error);
@@ -1175,9 +1358,9 @@ export default function PrelimsPage() {
 
       <section style={sectionStyle}>
         <div style={{ ...cardStyle }}>
-          <div style={{ marginBottom: 12 }}>
-            <h2 style={{ margin: 0, fontSize: 20 }}>Test Mode Selector</h2>
-            <div style={{ color: "#94a3b8", fontSize: 13, marginTop: 4 }}>
+          <div style={{ marginBottom: 14 }}>
+            <h2 style={{ margin: 0, fontSize: 17, fontWeight: 800, letterSpacing: 0.2, color: "#e2e8f0" }}>Test Mode Selector</h2>
+            <div style={{ color: "#475569", fontSize: 12, marginTop: 4 }}>
               Keeps sectional, full-length, and institutional blocks intact
             </div>
           </div>
@@ -1221,10 +1404,10 @@ export default function PrelimsPage() {
 
       <section style={sectionStyle}>
         <div style={{ ...cardStyle }}>
-          <div style={{ marginBottom: 12 }}>
-            <h2 style={{ margin: 0, fontSize: 20 }}>PYQ Test Flow</h2>
-            <div style={{ color: "#94a3b8", fontSize: 13, marginTop: 4 }}>
-              Existing flow preserved. Start → Attempt → Result.
+          <div style={{ marginBottom: 14 }}>
+            <h2 style={{ margin: 0, fontSize: 17, fontWeight: 800, letterSpacing: 0.2, color: "#e2e8f0" }}>PYQ Test Flow</h2>
+            <div style={{ color: "#475569", fontSize: 12, marginTop: 4 }}>
+              Start → Attempt → Result
             </div>
           </div>
 
@@ -1263,15 +1446,7 @@ export default function PrelimsPage() {
 
           {testStage === "start" && (
             <>
-              {/* ── Topic Progress Panel (sectional mode only) ── */}
-              {testMode === "sectional" && selectedSubjectId && (
-                <TopicProgressPanel
-                  progress={topicProgress}
-                  loading={progressLoading}
-                  error={progressError}
-                  onContinue={buildProgressiveTest}
-                />
-              )}
+              {/* ── Topic Progress Panel (sectional mode only) disabled upon request ── */}
               <PyqTestStart
                 testMode={testMode}
                 setTestMode={setTestMode}
@@ -1316,13 +1491,29 @@ export default function PrelimsPage() {
                 paperType: practicePaper,
                 variant: practiceScope,
                 year: fullLengthYear,
-                label: testId,
+                label: (() => {
+                  if (testMode === "full_length") return `${practicePaper} Full Length${fullLengthYear ? ` · ${fullLengthYear}` : ""}`;
+                  const subjLabel = subjects?.find(s => s.id === selectedSubjectId)?.label || selectedSubjectId || "Mixed Practice";
+                  const prefix = practicePaper && !String(subjLabel).startsWith(practicePaper) ? `${practicePaper} ` : "";
+
+                  let scopeStr = "";
+                  if (practiceScope === "subject") scopeStr = "Full Subject";
+                  else if (practiceScope === "topic") scopeStr = "Topic Wise";
+                  else if (practiceScope === "subtopic") scopeStr = "Subtopic Wise";
+                  else if (practiceScope === "mixed") scopeStr = "Mixed Practice";
+
+                  const yearStr = fullLengthYear && fullLengthYear !== "na" ? String(fullLengthYear) : "Mixed Years";
+                  return [`${prefix}${subjLabel}`, scopeStr, yearStr].filter(Boolean).join(" · ");
+                })(),
               }}
               questions={questions}
               currentIndex={currentIndex}
               currentQuestion={questions[currentIndex]}
               answersMap={answersMap}
               confidenceMap={confidenceMap}
+              testStartTime={testStartTime}
+              practiceMode={selectedPracticeMode}
+              questionCount={practiceQuestionCount}
               onSetConfidence={(qid, level) => {
                 setConfidenceMap((prev) => ({ ...prev, [qid]: level }));
               }}
@@ -1336,33 +1527,50 @@ export default function PrelimsPage() {
                   return copy;
                 });
               }}
-              onPrev={() => setCurrentIndex((i) => Math.max(i - 1, 0))}
-              onNext={() =>
-                setCurrentIndex((i) => Math.min(i + 1, questions.length - 1))
-              }
-              onJumpTo={(i) => setCurrentIndex(i)}
+              onPrev={() => {
+                recordCurrentQuestionTime();
+                setQuestionEnteredAt(Date.now());
+                setCurrentIndex((i) => Math.max(i - 1, 0));
+              }}
+              onNext={() => {
+                recordCurrentQuestionTime();
+                setQuestionEnteredAt(Date.now());
+                setCurrentIndex((i) => Math.min(i + 1, questions.length - 1));
+              }}
+              onJumpTo={(i) => {
+                recordCurrentQuestionTime();
+                setQuestionEnteredAt(Date.now());
+                setCurrentIndex(i);
+              }}
               onSubmit={async () => {
                 try {
                   setBuilderLoading(true);
                   setBuilderError("");
 
-                  const evaluatedQuestions = buildAttemptRows(
-                    questions,
-                    answersMap,
-                    confidenceMap
-                  );
+                  // ── Finalise timing for last question ──────────────────────
+                  const finalQid = questions[currentIndex]?.id || questions[currentIndex]?.questionId;
+                  const finalTimeMap = { ...perQuestionTimeMap };
+                  if (finalQid && questionEnteredAt) {
+                    finalTimeMap[finalQid] = (finalTimeMap[finalQid] || 0) + (Date.now() - questionEnteredAt);
+                  }
+                  const totalTimeSpent = testStartTime ? Date.now() - testStartTime : 0;
+                  const timeValues = Object.values(finalTimeMap);
+                  const avgTimePerQuestion = timeValues.length
+                    ? Math.round(timeValues.reduce((a, b) => a + b, 0) / timeValues.length)
+                    : 0;
 
-                  console.log("ANSWERS MAP:", answersMap);
-                  console.log("EVALUATED QUESTIONS:", evaluatedQuestions);
+                  const evaluatedQuestions = buildAttemptRows(questions, answersMap, confidenceMap);
 
-                  // ── BACKEND PROGRESS SUBMIT (cross-device tracking) ─────────
+                  // ── BACKEND PROGRESS SUBMIT (locked core — no timing fields) ──
                   if (activeTopicNodeId) {
                     try {
+                      // Core submit: only answers + scoring fields (timing stripped out)
                       const submitPayload = {
                         userId: CURRENT_USER_ID,
                         topicNodeId: activeTopicNodeId,
                         stage: "prelims",
                         mode: activePracticeMode,
+                        paperType: practicePaper === "CSAT" ? "CSAT" : "GS",
                         questionIds: questions.map((q) => q?.id || q?.questionId).filter(Boolean),
                         questions: questions,
                         answers: answersMap,
@@ -1374,6 +1582,8 @@ export default function PrelimsPage() {
                       });
                       if (submitResp.ok) {
                         const submitJson = await submitResp.json();
+                        // Attach client-side timing to lastSubmitData for result display
+                        setLastSubmitData({ ...submitJson, totalTimeSpent, averageTimePerQuestion: avgTimePerQuestion });
                         if (submitJson?.updatedProgress) {
                           setTopicProgress(prev => ({
                             ...(prev || {}),
@@ -1382,7 +1592,22 @@ export default function PrelimsPage() {
                             userId: CURRENT_USER_ID,
                           }));
                         }
-                        console.log("[Progress Submit] OK:", submitJson?.summary);
+
+                        // ── TIMING EXTENSION (fire-and-forget, separate endpoint) ──
+                        if (submitJson?.attemptId && totalTimeSpent > 0) {
+                          fetch(`${BACKEND_URL}/api/prelims/practice/timing`, {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                              attemptId: submitJson.attemptId,
+                              userId: CURRENT_USER_ID,
+                              topicNodeId: activeTopicNodeId,
+                              totalTimeSpent,
+                              averageTimePerQuestion: avgTimePerQuestion,
+                              questionTimeMap: finalTimeMap,
+                            }),
+                          }).catch(e => console.warn("[Timing] Save failed (non-fatal):", e.message));
+                        }
                       } else {
                         console.warn("[Progress Submit] Non-OK status:", submitResp.status);
                       }
@@ -1393,43 +1618,30 @@ export default function PrelimsPage() {
                   }
                   // ── END BACKEND PROGRESS SUBMIT ────────────────────────────
 
-                  const analyticsResult = await analyzeAttemptWithBackend({
-                    testId,
-                    testMode,
-                    practicePaper,
-                    practiceScope,
-                    fullLengthType,
-                    fullLengthYear,
-                    evaluatedQuestions,
+                  await analyzeAttemptWithBackend({
+                    testId, testMode, practicePaper, practiceScope,
+                    fullLengthType, fullLengthYear, evaluatedQuestions,
                   });
 
                   const finalResult = buildLocalFallbackResult({
-                    evaluatedQuestions,
-                    testId,
-                    testMode,
-                    practicePaper,
-                    practiceScope,
-                    fullLengthYear,
+                    evaluatedQuestions, testId, testMode,
+                    practicePaper, practiceScope, fullLengthYear,
                   });
                   setResult(finalResult);
 
-                  // ── MISTAKE ENGINE: save attempt + update mistake book ──────
+                  // ── MISTAKE ENGINE ─────────────────────────────────────────
                   try {
                     const sourceType =
                       testMode === "full_length" ? "full_length"
-                      : practiceScope === "topic"   ? "topic_test"
-                      : practiceScope === "subtopic" ? "topic_test"
-                      : "sectional_test";
-
+                        : practiceScope === "topic" ? "topic_test"
+                          : practiceScope === "subtopic" ? "topic_test"
+                            : "sectional_test";
                     recordTestAttempt(
                       {
-                        testId,
-                        sourceType,
-                        paper:   practicePaper,
-                        year:    testMode === "full_length" ? fullLengthYear : null,
-                        subject: selectedSubjectId,
-                        topic:   selectedTopicId,
-                        subtopic: selectedMicroThemeIds[0] || "",
+                        testId, sourceType, paper: practicePaper,
+                        year: testMode === "full_length" ? fullLengthYear : null,
+                        subject: selectedSubjectId, topic: selectedTopicId,
+                        subtopic: selectedMicroThemeIds[0] || ""
                       },
                       evaluatedQuestions,
                       finalResult.summary || {}
@@ -1437,37 +1649,20 @@ export default function PrelimsPage() {
                   } catch (mistakeErr) {
                     console.error("[MistakeEngine] Failed to record attempt:", mistakeErr);
                   }
-                  // ── END MISTAKE ENGINE ─────────────────────────────────────
 
                   try {
-                    localStorage.setItem(
-                      "prelims_test_attempts_v1",
-                      JSON.stringify(finalResult)
-                    );
-                  } catch {
-                    // ignore localStorage write failure
-                  }
+                    localStorage.setItem("prelims_test_attempts_v1", JSON.stringify(finalResult));
+                  } catch { /* ignore */ }
 
                   setTestStage("result");
 
                 } catch (error) {
                   console.error("Prelims submit/analyze error:", error);
-
-                  const evaluatedQuestions = buildAttemptRows(
-                    questions,
-                    answersMap,
-                    confidenceMap
-                  );
-
+                  const evaluatedQuestions = buildAttemptRows(questions, answersMap, confidenceMap);
                   const fallbackResult = buildLocalFallbackResult({
-                    evaluatedQuestions,
-                    testId,
-                    testMode,
-                    practicePaper,
-                    practiceScope,
-                    fullLengthYear,
+                    evaluatedQuestions, testId, testMode,
+                    practicePaper, practiceScope, fullLengthYear,
                   });
-
                   setResult(fallbackResult);
                   setTestStage("result");
                 } finally {
@@ -1478,112 +1673,244 @@ export default function PrelimsPage() {
           )}
 
           {testStage === "result" && (
-            <PyqTestResult
-              result={result}
-              testId={testId}
-              testMode={testMode}
-              onRestart={() => {
-                setTestStage("start");
-                setResult(null);
-                setQuestions([]);
-                setCurrentIndex(0);
-                setAnswersMap({});
-                setConfidenceMap({});
-                // Refresh progress so the panel shows updated stats
-                if (activeTopicNodeId) fetchTopicProgress(activeTopicNodeId);
-              }}
-              onReattempt={() => {
-                setTestStage("attempt");
-                setCurrentIndex(0);
-                setAnswersMap({});
-                setConfidenceMap({});
-                setResult(null);
-              }}
-            />
+            <div style={{ display: "grid", gap: 18 }}>
+
+              {/* ── UPSC Score Card (this attempt) ── */}
+              {lastSubmitData?.summary && (
+                <div style={{
+                  ...cardStyle,
+                  background: "linear-gradient(135deg, rgba(14,165,233,0.08), rgba(168,85,247,0.06))",
+                  border: "1px solid rgba(56,189,248,0.22)",
+                  padding: 20,
+                }}>
+                  <div style={{ fontWeight: 800, fontSize: 15, color: "#e0f2fe", marginBottom: 14, letterSpacing: 0.3 }}>
+                    This Attempt — UPSC Score
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px,1fr))", gap: 10, marginBottom: 14 }}>
+                    {[
+                      { label: "Total", value: lastSubmitData.summary.total, color: "#94a3b8" },
+                      { label: "Correct", value: lastSubmitData.summary.correct, color: "#22c55e" },
+                      { label: "Wrong", value: lastSubmitData.summary.wrong, color: "#f87171" },
+                      { label: "Unanswered", value: lastSubmitData.summary.unattempted, color: "#f59e0b" },
+                      { label: "+Marks", value: `+${lastSubmitData.summary.positiveMarks}`, color: "#4ade80" },
+                      { label: "−Marks", value: `−${lastSubmitData.summary.negativeMarks}`, color: "#f87171" },
+                      { label: "Score", value: lastSubmitData.summary.finalScore, color: "#38bdf8" },
+                      { label: "Accuracy", value: `${lastSubmitData.summary.accuracy}%`, color: "#a78bfa" },
+                    ].map(({ label, value, color }) => (
+                      <div key={label} style={{
+                        background: "rgba(15,23,42,0.75)", borderRadius: 10,
+                        padding: "10px 8px", textAlign: "center",
+                        border: "1px solid rgba(148,163,184,0.1)",
+                      }}>
+                        <div style={{ fontSize: 20, fontWeight: 800, color }}>{value}</div>
+                        <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>{label}</div>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Timing row */}
+                  {lastSubmitData.totalTimeSpent > 0 && (
+                    <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                      <span style={statPill("#60a5fa")}>
+                        ⏱ {Math.round(lastSubmitData.totalTimeSpent / 1000)}s total
+                      </span>
+                      <span style={statPill("#818cf8")}>
+                        ~{Math.round(lastSubmitData.averageTimePerQuestion / 1000)}s avg / question
+                      </span>
+                      <span style={statPill("#94a3b8")}>
+                        Paper: {lastSubmitData.summary.paperType || "GS"}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* ── Overall Subject Progress Card ── */}
+              {lastSubmitData?.updatedProgress && (() => {
+                const p = lastSubmitData.updatedProgress;
+                const cov = p.coveragePercent || 0;
+                return (
+                  <div style={{
+                    ...cardStyle,
+                    background: "linear-gradient(135deg, rgba(34,197,94,0.06), rgba(168,85,247,0.04))",
+                    border: "1px solid rgba(34,197,94,0.18)",
+                    padding: 20,
+                  }}>
+                    <div style={{ fontWeight: 800, fontSize: 15, color: "#d1fae5", marginBottom: 14, letterSpacing: 0.3 }}>
+                      Overall Subject Progress
+                    </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(110px,1fr))", gap: 10, marginBottom: 14 }}>
+                      {[
+                        { label: "Unique Seen", value: p.servedQuestionIds?.length ?? 0, color: "#38bdf8" },
+                        { label: "Correct", value: p.correctQuestionIds?.length ?? 0, color: "#22c55e" },
+                        { label: "Wrong", value: p.wrongQuestionIds?.length ?? 0, color: "#f87171" },
+                        { label: "Coverage", value: `${cov}%`, color: "#a78bfa" },
+                        { label: "Attempts", value: p.attemptsCount ?? 0, color: "#94a3b8" },
+                        { label: "Best Score", value: p.bestScore ?? "—", color: "#4ade80" },
+                        { label: "Last Score", value: p.latestScore ?? "—", color: "#60a5fa" },
+                      ].map(({ label, value, color }) => (
+                        <div key={label} style={{
+                          background: "rgba(15,23,42,0.75)", borderRadius: 10,
+                          padding: "10px 8px", textAlign: "center",
+                          border: "1px solid rgba(148,163,184,0.1)",
+                        }}>
+                          <div style={{ fontSize: 20, fontWeight: 800, color }}>{value}</div>
+                          <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>{label}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ background: "rgba(30,41,59,0.8)", borderRadius: 99, height: 7, overflow: "hidden" }}>
+                      <div style={{
+                        height: "100%", width: `${cov}%`,
+                        background: cov >= 100 ? "linear-gradient(90deg,#22c55e,#16a34a)" : "linear-gradient(90deg,#0ea5e9,#8b5cf6)",
+                        borderRadius: 99, transition: "width 0.4s",
+                      }} />
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* ── Action buttons ── */}
+              {activeTopicNodeId && (
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  {[
+                    { mode: "continue", label: "▶ Continue Unseen", color: "#38bdf8" },
+                    { mode: "retry_wrong", label: "🔁 Retry Wrong", color: "#f87171" },
+                    { mode: "retry_attempted", label: "↩ Retry Attempted", color: "#f59e0b" },
+                  ].map(({ mode, label, color }) => (
+                    <button key={mode} type="button"
+                      onClick={() => {
+                        setTestStage("start");
+                        setResult(null);
+                        setLastSubmitData(null);
+                        setSelectedPracticeMode(mode);
+                        if (activeTopicNodeId) fetchTopicProgress(activeTopicNodeId);
+                      }}
+                      style={{
+                        height: 44, padding: "0 18px", borderRadius: 12,
+                        border: `1px solid ${color}44`,
+                        background: `${color}14`,
+                        color, fontWeight: 700, fontSize: 13, cursor: "pointer",
+                      }}
+                    >{label}</button>
+                  ))}
+                  <button type="button"
+                    onClick={() => {
+                      setTestStage("start");
+                      setResult(null);
+                      setLastSubmitData(null);
+                      if (activeTopicNodeId) fetchTopicProgress(activeTopicNodeId);
+                    }}
+                    style={{
+                      height: 44, padding: "0 18px", borderRadius: 12,
+                      border: "1px solid rgba(148,163,184,0.2)",
+                      background: "rgba(30,41,59,0.6)",
+                      color: "#94a3b8", fontWeight: 700, fontSize: 13, cursor: "pointer",
+                    }}
+                  >← Back to Subject</button>
+                </div>
+              )}
+
+              {/* ── Existing detailed result ── */}
+              <PyqTestResult
+                result={result}
+                testId={testId}
+                testMode={testMode}
+                onRestart={() => {
+                  setTestStage("start");
+                  setResult(null);
+                  setLastSubmitData(null);
+                  setQuestions([]);
+                  setCurrentIndex(0);
+                  setAnswersMap({});
+                  setConfidenceMap({});
+                  if (activeTopicNodeId) fetchTopicProgress(activeTopicNodeId);
+                }}
+                onReattempt={() => {
+                  setTestStage("attempt");
+                  setCurrentIndex(0);
+                  setAnswersMap({});
+                  setConfidenceMap({});
+                  setResult(null);
+                }}
+              />
+            </div>
           )}
         </div>
       </section>
 
-      <section style={sectionStyle}>
-        {dashboardLoading && (
-          <div style={cardStyle}>
-            <div style={{ color: "#93c5fd", fontWeight: 700 }}>
-              Loading AIR-1 intelligence dashboard...
+      {/* Dashboard + info panels — hidden during active attempt to keep focus */}
+      {testStage !== "attempt" && (
+        <>
+          <section style={sectionStyle}>
+            {dashboardLoading && (
+              <div style={cardStyle}>
+                <div style={{ color: "#93c5fd", fontWeight: 700 }}>
+                  Loading AIR-1 intelligence dashboard...
+                </div>
+              </div>
+            )}
+
+            {dashboardError && !dashboardLoading && (
+              <div
+                style={{
+                  ...cardStyle,
+                  border: "1px solid rgba(239, 68, 68, 0.22)",
+                  background: "rgba(127, 29, 29, 0.14)",
+                  color: "#fecaca",
+                }}
+              >
+                {dashboardError}
+              </div>
+            )}
+
+            {!dashboardLoading && !dashboardError && dashboard && (
+              <div style={{ display: "grid", gap: 18 }}>
+                <DashboardSummary
+                  summary={dashboard.summary}
+                  behaviour={dashboard.behaviour}
+                />
+
+                <WeakAreasPanel
+                  weakSubjects={dashboard.weakSubjects}
+                  weakNodes={dashboard.weakNodes}
+                  weakTypes={dashboard.weakTypes}
+                />
+
+                <TrapPanel
+                  trapAlerts={dashboard.trapAlerts}
+                  trapStats={dashboard.trapStats}
+                />
+
+                <RecommendationsPanel
+                  recommendations={dashboard.recommendations}
+                />
+
+                <StatsBreakdownPanel
+                  subjectStats={dashboard.subjectStats}
+                  typeStats={dashboard.typeStats}
+                  difficultyStats={dashboard.difficultyStats}
+                  nodeStats={dashboard.nodeStats}
+                />
+              </div>
+            )}
+          </section>
+
+          <section style={sectionStyle}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                gap: 14,
+              }}
+            >
+              <InfoBlock title="Recent History" items={recentHistory} accent="#38bdf8" />
+              <InfoBlock title="Mistake Book Signals" items={mistakeBookSignals} accent="#f59e0b" />
+              <InfoBlock title="Next Actions" items={nextActions} accent="#22c55e" />
+              <InfoBlock title="Insights" items={insights} accent="#a78bfa" />
             </div>
-          </div>
-        )}
-
-        {dashboardError && !dashboardLoading && (
-          <div
-            style={{
-              ...cardStyle,
-              border: "1px solid rgba(239, 68, 68, 0.22)",
-              background: "rgba(127, 29, 29, 0.14)",
-              color: "#fecaca",
-            }}
-          >
-            {dashboardError}
-          </div>
-        )}
-
-        {!dashboardLoading && !dashboardError && dashboard && (
-          <div style={{ display: "grid", gap: 18 }}>
-            <DashboardSummary
-              summary={dashboard.summary}
-              behaviour={dashboard.behaviour}
-            />
-
-            <WeakAreasPanel
-              weakSubjects={dashboard.weakSubjects}
-              weakNodes={dashboard.weakNodes}
-              weakTypes={dashboard.weakTypes}
-            />
-
-            <TrapPanel
-              trapAlerts={dashboard.trapAlerts}
-              trapStats={dashboard.trapStats}
-            />
-
-            <RecommendationsPanel
-              recommendations={dashboard.recommendations}
-            />
-
-            <StatsBreakdownPanel
-              subjectStats={dashboard.subjectStats}
-              typeStats={dashboard.typeStats}
-              difficultyStats={dashboard.difficultyStats}
-              nodeStats={dashboard.nodeStats}
-            />
-          </div>
-        )}
-      </section>
-
-      <section style={sectionStyle}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 14,
-          }}
-        >
-          <InfoBlock
-            title="Recent History"
-            items={recentHistory}
-            accent="#38bdf8"
-          />
-          <InfoBlock
-            title="Mistake Book Signals"
-            items={mistakeBookSignals}
-            accent="#f59e0b"
-          />
-          <InfoBlock
-            title="Next Actions"
-            items={nextActions}
-            accent="#22c55e"
-          />
-          <InfoBlock title="Insights" items={insights} accent="#a78bfa" />
-        </div>
-      </section>
+          </section>
+        </>
+      )}
     </div>
   );
 }

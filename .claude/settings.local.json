@@ -4,7 +4,11 @@
       "Bash(python3:*)",
       "Bash(node -e ':*)",
       "Bash(node backend/blockResolution/testResolveBlock.js)",
-      "Bash(node backend/scripts/buildMainsThemeIndex.js)"
+      "Bash(node backend/scripts/buildMainsThemeIndex.js)",
+      "Bash(ls /c/Projects/upsc-mentor-pwa/upsc-mentor-cloud-deploy/upsc-mentor-pwa/backend/*.js)",
+      "Bash(ls /c/Projects/upsc-mentor-pwa/upsc-mentor-cloud-deploy/upsc-mentor-pwa/backend/*.json)",
+      "Bash(node -e \"const d=require\\('/c/Projects/upsc-mentor-pwa/upsc-mentor-cloud-deploy/upsc-mentor-pwa/backend/data/pyq_questions/prelims/gs/prelims_gs_economy_tagged.json'\\); const qs=Array.isArray\\(d\\)?d:d.questions||[]; console.log\\(JSON.stringify\\(qs[0],null,2\\)\\)\")",
+      "Bash(node --input-type=module)"
     ]
   }
 }

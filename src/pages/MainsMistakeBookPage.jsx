@@ -1,13 +1,7 @@
 // src/pages/MainsMistakeBookPage.jsx
 // Mains Mistake Book — view, filter, and resolve mains writing mistakes.
 
-import React, { useState, useEffect, useCallback } from "react";
-import {
-    getAllMainsMistakes,
-    markMainsMistakeResolved,
-    toggleMustRevise,
-    getMainsWeakPatterns,
-} from "../utils/mainsMistakeEngine";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import MainsMistakeCard from "../components/mains/MainsMistakeCard";
 
 // ─── Theme ────────────────────────────────────────────────────────────────────
@@ -36,6 +30,79 @@ const label11 = (color = T.subtle) => ({
 });
 
 const PAPER_ACCENT = { GS1: T.amber, GS2: T.blue, GS3: T.green, All: T.purple };
+const API_URL = "http://localhost:8787/api/mistakes?userId=user_1";
+
+function inferPaper(mistake) {
+    if (mistake.paper) return String(mistake.paper).toUpperCase();
+    if (mistake.paper_type) return String(mistake.paper_type).toUpperCase();
+    if (mistake.source_ref) {
+        const ref = String(mistake.source_ref).toUpperCase();
+        if (ref.includes("GS1")) return "GS1";
+        if (ref.includes("GS2")) return "GS2";
+        if (ref.includes("GS3")) return "GS3";
+        if (ref.includes("GS4")) return "GS4";
+        if (ref.includes("ESSAY")) return "ESSAY";
+        if (ref.includes("ETHICS")) return "GS4";
+    }
+    return "GS1";
+}
+
+function inferStatus(mistake) {
+    if (mistake.status) return mistake.status;
+    if (mistake.resolved_at) return "resolved";
+    return "open";
+}
+
+function inferSeverity(mistake) {
+    if (mistake.severity) return mistake.severity;
+    const errorType = String(mistake.error_type || "").toLowerCase();
+    if (errorType.includes("structure") || errorType.includes("directive") || errorType.includes("core")) return "high";
+    if (errorType.includes("example") || errorType.includes("analysis") || errorType.includes("balance")) return "medium";
+    return "medium";
+}
+
+function normalizeMistake(m) {
+    return {
+        ...m,
+        questionText: m.question_text ?? m.questionText ?? "",
+        latestUserAnswer: m.selected_answer ?? m.latestUserAnswer ?? m.userAnswer ?? "",
+        userAnswer: m.selected_answer ?? m.userAnswer ?? "",
+        correctAnswer: m.correct_answer ?? m.correctAnswer ?? "",
+        latestResult: m.answer_status ?? m.latestResult ?? m.result ?? "",
+        result: m.answer_status ?? m.result ?? "",
+        sourceType: m.source_type ?? m.sourceType ?? "mains",
+        nodeId: m.node_id ?? m.nodeId ?? "",
+        createdAt: m.created_at ?? m.createdAt ?? null,
+        updatedAt: m.updated_at ?? m.updatedAt ?? null,
+        questionId: m.question_id ?? m.questionId ?? m.id,
+        mustRevise: Boolean(m.must_revise ?? m.mustRevise),
+        errorType: m.error_type ?? m.errorType ?? "other",
+        notes: m.notes ?? "",
+        stage: m.stage ?? "mains",
+        paper: inferPaper(m),
+        status: inferStatus(m),
+        severity: inferSeverity(m),
+    };
+}
+
+function buildWeakPatterns(items) {
+    if (!Array.isArray(items) || items.length === 0) return [];
+
+    const counts = items.reduce((acc, item) => {
+        const key = item.errorType || "other";
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+    }, {});
+
+    const total = items.length;
+    return Object.entries(counts)
+        .map(([type, count]) => ({
+            type,
+            count,
+            pct: Math.round((count / total) * 100),
+        }))
+        .sort((a, b) => b.count - a.count);
+}
 
 // ─── Filter pill button ───────────────────────────────────────────────────────
 function FilterPill({ label, active, accent = T.purple, onClick }) {
@@ -82,7 +149,7 @@ function WeakPatternBar({ patterns }) {
                             marginBottom: 4,
                         }}>
                             <span style={{ fontSize: 11, color: T.text, fontWeight: 600 }}>
-                                {p.type.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
+                                {p.type.replace(/_/g, " ").replace(/\w/g, c => c.toUpperCase())}
                             </span>
                             <span style={{ fontSize: 11, color: T.dim }}>
                                 {p.count} times · {p.pct}%
@@ -127,7 +194,7 @@ function StatPill({ label, value, accent }) {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function MainsMistakeBookPage() {
     const [mistakes, setMistakes] = useState([]);
-    const [patterns, setPatterns] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     // Filters
     const [filterPaper, setFilterPaper] = useState("All");
@@ -135,22 +202,60 @@ export default function MainsMistakeBookPage() {
     const [filterSeverity, setFilterSeverity] = useState("All");
     const [filterMustRevise, setFilterMustRevise] = useState(false);
 
-    const reload = useCallback(() => {
-        setMistakes(getAllMainsMistakes());
-        setPatterns(getMainsWeakPatterns());
+    const reload = useCallback(async () => {
+        setLoading(true);
+        try {
+            const res = await fetch(API_URL);
+            const payload = await res.json();
+            const items = Array.isArray(payload) ? payload : Array.isArray(payload?.items) ? payload.items : [];
+
+            const normalized = items
+                .map(normalizeMistake)
+                .filter((m) => (m.stage || "").toLowerCase() === "mains");
+
+            setMistakes(normalized);
+        } catch (error) {
+            console.error("[MainsMistakeBookPage] fetch failed", error);
+            setMistakes([]);
+        } finally {
+            setLoading(false);
+        }
     }, []);
 
     useEffect(() => { reload(); }, [reload]);
 
+    const patterns = useMemo(() => buildWeakPatterns(mistakes), [mistakes]);
+
     // Actions
-    const handleMarkResolved = (id) => {
-        markMainsMistakeResolved(id);
-        reload();
+    const handleMarkResolved = async (id) => {
+        setMistakes((prev) => prev.map((m) => (m.id === id ? { ...m, status: "resolved" } : m)));
+        try {
+            await fetch(`http://localhost:8787/api/mistakes/${id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ status: "resolved" }),
+            });
+        } catch (error) {
+            console.warn("[MainsMistakeBookPage] PATCH /resolved not available yet", error);
+        }
     };
 
-    const handleToggleMustRevise = (id) => {
-        toggleMustRevise(id);
-        reload();
+    const handleToggleMustRevise = async (id) => {
+        let nextValue = false;
+        setMistakes((prev) => prev.map((m) => {
+            if (m.id !== id) return m;
+            nextValue = !m.mustRevise;
+            return { ...m, mustRevise: nextValue };
+        }));
+        try {
+            await fetch(`http://localhost:8787/api/mistakes/${id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ must_revise: nextValue }),
+            });
+        } catch (error) {
+            console.warn("[MainsMistakeBookPage] PATCH /must_revise not available yet", error);
+        }
     };
 
     // ── Filtering ──────────────────────────────────────────────────────────────
@@ -163,11 +268,11 @@ export default function MainsMistakeBookPage() {
     });
 
     // ── Stats ──────────────────────────────────────────────────────────────────
-    const total     = mistakes.length;
-    const open      = mistakes.filter(m => m.status === "open").length;
-    const resolved  = mistakes.filter(m => m.status === "resolved").length;
+    const total = mistakes.length;
+    const open = mistakes.filter(m => m.status === "open").length;
+    const resolved = mistakes.filter(m => m.status === "resolved").length;
     const mustReviseCount = mistakes.filter(m => m.mustRevise).length;
-    const highSev   = mistakes.filter(m => m.severity === "high").length;
+    const highSev = mistakes.filter(m => m.severity === "high").length;
 
     return (
         <div style={{ minHeight: "100vh", background: T.bg, color: T.text, fontFamily: T.font }}>
@@ -216,11 +321,11 @@ export default function MainsMistakeBookPage() {
                 <div style={{
                     display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 24,
                 }}>
-                    <StatPill label="Total"       value={total}          accent={T.textBright} />
-                    <StatPill label="Open"         value={open}           accent={T.amber}      />
-                    <StatPill label="Resolved"     value={resolved}       accent={T.green}      />
-                    <StatPill label="Must Revise"  value={mustReviseCount} accent={T.purple}     />
-                    <StatPill label="High Severity" value={highSev}       accent={T.red}        />
+                    <StatPill label="Total" value={total} accent={T.textBright} />
+                    <StatPill label="Open" value={open} accent={T.amber} />
+                    <StatPill label="Resolved" value={resolved} accent={T.green} />
+                    <StatPill label="Must Revise" value={mustReviseCount} accent={T.purple} />
+                    <StatPill label="High Severity" value={highSev} accent={T.red} />
                 </div>
 
                 {/* ── Weak pattern bar ─────────────────────────────────────────── */}
@@ -247,9 +352,9 @@ export default function MainsMistakeBookPage() {
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                         <span style={{ ...label11(T.subtle), fontSize: 9, width: 52 }}>Status</span>
                         {[
-                            { key: "All",      label: "All",      accent: T.purple },
-                            { key: "open",     label: "Open",     accent: T.amber  },
-                            { key: "resolved", label: "Resolved", accent: T.green  },
+                            { key: "All", label: "All", accent: T.purple },
+                            { key: "open", label: "Open", accent: T.amber },
+                            { key: "resolved", label: "Resolved", accent: T.green },
                         ].map(s => (
                             <FilterPill
                                 key={s.key}
@@ -265,10 +370,10 @@ export default function MainsMistakeBookPage() {
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                         <span style={{ ...label11(T.subtle), fontSize: 9, width: 52 }}>Severity</span>
                         {[
-                            { key: "All",    label: "All",    accent: T.purple },
-                            { key: "low",    label: "Low",    accent: T.green  },
-                            { key: "medium", label: "Medium", accent: T.amber  },
-                            { key: "high",   label: "High",   accent: T.red    },
+                            { key: "All", label: "All", accent: T.purple },
+                            { key: "low", label: "Low", accent: T.green },
+                            { key: "medium", label: "Medium", accent: T.amber },
+                            { key: "high", label: "High", accent: T.red },
                         ].map(s => (
                             <FilterPill
                                 key={s.key}
@@ -297,12 +402,11 @@ export default function MainsMistakeBookPage() {
                     fontSize: 11, color: T.subtle, marginBottom: 16,
                     fontWeight: 600, letterSpacing: "0.04em",
                 }}>
-                    {filtered.length} result{filtered.length !== 1 ? "s" : ""}
-                    {filtered.length !== total ? ` (filtered from ${total})` : ""}
+                    {loading ? "Loading..." : `${filtered.length} result${filtered.length !== 1 ? "s" : ""}${filtered.length !== total ? ` (filtered from ${total})` : ""}`}
                 </div>
 
                 {/* ── Empty state ──────────────────────────────────────────────── */}
-                {filtered.length === 0 && (
+                {!loading && filtered.length === 0 && (
                     <div style={{
                         background: T.surface,
                         border: `1px solid ${T.border}`,

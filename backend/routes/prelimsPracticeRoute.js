@@ -4,12 +4,15 @@
 //   POST /api/prelims/practice/build-progressive — mode-aware builder (continue/restart/retry)
 //   POST /api/prelims/practice/submit            — submit + evaluate + update progress
 //   GET  /api/prelims/practice/progress/:topicNodeId?userId=... — get topic progress
+//   POST /api/prelims/practice/timing            — [EXTENSION] save attempt timing separately
+//   GET  /api/prelims/practice/timing/:attemptId — [EXTENSION] fetch attempt timing
 
 import express from "express";
 import buildPrelimsPracticeTest from "../api/buildPrelimsPracticeTest.js";
 import { buildProgressAwareTest } from "../prelims/practiceBuilder.js";
 import practiceSubmitHandler from "../prelims/practiceSubmit.js";
 import progressRouteHandler from "../prelims/progressRoute.js";
+import { saveTimingHandler, getTimingHandler } from "../prelims/timingRoute.js";
 
 const router = express.Router();
 
@@ -105,5 +108,11 @@ router.post("/submit", practiceSubmitHandler);
 // ── Topic progress ───────────────────────────────────────────────────────────
 // GET /api/prelims/practice/progress/:topicNodeId?userId=...
 router.get("/progress/:topicNodeId", progressRouteHandler);
+
+// ── Timing extension (separate from locked core) ─────────────────────────────
+// POST /api/prelims/practice/timing
+router.post("/timing", saveTimingHandler);
+// GET  /api/prelims/practice/timing/:attemptId
+router.get("/timing/:attemptId", getTimingHandler);
 
 export default router;

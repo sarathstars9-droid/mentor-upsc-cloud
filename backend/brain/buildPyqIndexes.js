@@ -20,12 +20,26 @@ function writeJson(filePath, data) {
 function getQuestionsArray(fileData) {
     if (Array.isArray(fileData)) return fileData;
     if (fileData && Array.isArray(fileData.questions)) return fileData.questions;
+    if (fileData && Array.isArray(fileData.topics)) return fileData.topics;
     return [];
 }
 
 function detectBucket(q) {
-    const stage = String(q.stage || "").toLowerCase();
-    const paper = String(q.paper || "").toLowerCase();
+    let stage = String(q.stage || "").toLowerCase().trim();
+    const paper = String(q.paper || "").toLowerCase().trim();
+    const nodeId = String(q.nodeId || q.syllabusNodeId || "").toUpperCase();
+
+    // 🔥 Detect GS4 using nodeId (most reliable in your system)
+    if (!stage || stage === "mains") {
+        if (nodeId.startsWith("GS4")) {
+            stage = "ethics";
+        } else if (paper === "essay" || nodeId.startsWith("ESSAY")) {
+            stage = "essay";
+        } else {
+            stage = "mains";
+        }
+    }
+
     const subject = String(q.subject || "").toLowerCase();
 
     if (paper.includes("essay") || subject.includes("essay")) return "essay";

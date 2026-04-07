@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import { buildMistakeExplanationPrompt } from "../utils/buildMistakeExplanationPrompt";
 import { openChatGptForMistake } from "../utils/openChatGptForMistake";
 import { MistakeBookReviewDrawer } from "../components/MistakeBookReviewDrawer";
@@ -19,10 +19,10 @@ const C = {
   fontSans: "'Arial', sans-serif",
 
   // source badge colors
-  sourcePyq:           "#38bdf8",  // sky blue
-  sourcePyqBg:         "rgba(56,189,248,0.1)",
+  sourcePyq: "#38bdf8",  // sky blue
+  sourcePyqBg: "rgba(56,189,248,0.1)",
   sourceInstitutional: "#a78bfa",  // violet
-  sourceInstBg:        "rgba(167,139,250,0.1)",
+  sourceInstBg: "rgba(167,139,250,0.1)",
 };
 
 const s = {
@@ -401,8 +401,8 @@ function MistakeCard({ mistake, isExpanded, onExpand, onCollapse }) {
         </div>
 
         {/* Rich Review Drawer */}
-        <MistakeBookReviewDrawer 
-          mistake={mistake} 
+        <MistakeBookReviewDrawer
+          mistake={mistake}
           onClose={onCollapse}
         />
       </div>
@@ -433,20 +433,20 @@ function MistakeCard({ mistake, isExpanded, onExpand, onCollapse }) {
             {paperDisplay}
           </span>
           {subject && <span style={s.tag}>{subject}</span>}
-          
+
           {/* Result badge on the right */}
           <span style={{
             ...s.tag,
             marginLeft: "auto",
             color: displayResult === "wrong" ? C.red : displayResult === "unattempted" ? "#f59e0b" : C.green,
             backgroundColor:
-              displayResult === "wrong" ? "rgba(224,82,82,0.1)" 
-              : displayResult === "unattempted" ? "rgba(245,158,11,0.1)" 
-              : "rgba(76,175,125,0.1)",
+              displayResult === "wrong" ? "rgba(224,82,82,0.1)"
+                : displayResult === "unattempted" ? "rgba(245,158,11,0.1)"
+                  : "rgba(76,175,125,0.1)",
             borderColor:
-              displayResult === "wrong" ? "rgba(224,82,82,0.3)" 
-              : displayResult === "unattempted" ? "rgba(245,158,11,0.3)" 
-              : "rgba(76,175,125,0.3)",
+              displayResult === "wrong" ? "rgba(224,82,82,0.3)"
+                : displayResult === "unattempted" ? "rgba(245,158,11,0.3)"
+                  : "rgba(76,175,125,0.3)",
           }}>
             {displayResult === "wrong" ? "✗" : displayResult === "unattempted" ? "⊘" : "✓"}
           </span>
@@ -534,23 +534,51 @@ function MistakeCard({ mistake, isExpanded, onExpand, onCollapse }) {
 
 export default function MistakeBookPage() {
   const [subjectFilter, setSubjectFilter] = useState("all");
-  const [sourceFilter, setSourceFilter]  = useState("all");  // "all" | "pyq" | "institutional"
-  const [paperFilter, setPaperFilter]    = useState("all");  // "all" | "GS" | "CSAT"
-  const [resultFilter, setResultFilter]  = useState("all");  // "all" | "wrong" | "unattempted"
-  const [searchText, setSearchText]      = useState("");
+  const [sourceFilter, setSourceFilter] = useState("all");  // "all" | "pyq" | "institutional"
+  const [paperFilter, setPaperFilter] = useState("all");  // "all" | "GS" | "CSAT"
+  const [resultFilter, setResultFilter] = useState("all");  // "all" | "wrong" | "unattempted"
+  const [searchText, setSearchText] = useState("");
   const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate]     = useState("");
+  const [toDate, setToDate] = useState("");
   const [openMistakeId, setOpenMistakeId] = useState(null);  // Track which card is expanded
 
-  const allMistakes = useMemo(() => {
-    try {
-      const raw = localStorage.getItem("prelims_mistakes");
-      if (!raw) return [];
-      const parsed = JSON.parse(raw);
-      return Array.isArray(parsed) ? parsed : [];
-    } catch {
-      return [];
+  const [allMistakes, setAllMistakes] = useState([]);
+
+  useEffect(() => {
+    async function fetchMistakes() {
+      try {
+        const res = await fetch("http://localhost:8787/api/mistakes?userId=user_1");
+        const data = await res.json();
+
+        if (!Array.isArray(data)) {
+          console.warn("[MistakeBook] Unexpected response", data);
+          setAllMistakes([]);
+          return;
+        }
+
+        const normalized = data.map((m) => ({
+          ...m,
+          questionText: m.question_text,
+          latestUserAnswer: m.selected_answer,
+          correctAnswer: m.correct_answer,
+          latestResult: m.answer_status,
+          sourceType: m.source_type,
+          nodeId: m.node_id,
+          createdAt: m.created_at,
+          subject: m.subject || "",
+          topic: m.topic || "",
+          questionId: m.question_id || m.id,
+          paper: m.paper || "GS",
+        }));
+
+        setAllMistakes(normalized);
+      } catch (err) {
+        console.error("[MistakeBook] Fetch failed", err);
+        setAllMistakes([]);
+      }
     }
+
+    fetchMistakes();
   }, []);
 
   const subjects = useMemo(() => {
@@ -578,7 +606,7 @@ export default function MistakeBookPage() {
 
   const filtered = useMemo(() => {
     const fromTs = fromDate ? new Date(fromDate).getTime() : null;
-    const toTs   = toDate   ? new Date(toDate + "T23:59:59").getTime() : null;
+    const toTs = toDate ? new Date(toDate + "T23:59:59").getTime() : null;
     const searchLower = searchText.toLowerCase();
 
     return allMistakes
@@ -594,7 +622,7 @@ export default function MistakeBookPage() {
           const raw = (m.sourceType || "").toLowerCase();
           const isInstitutional = raw === "institutional";
           const isPyq = !isInstitutional;
-          if (sourceFilter === "pyq"           && !isPyq)           return false;
+          if (sourceFilter === "pyq" && !isPyq) return false;
           if (sourceFilter === "institutional" && !isInstitutional) return false;
         }
 
@@ -608,7 +636,7 @@ export default function MistakeBookPage() {
         if (resultFilter !== "all") {
           const mResult = (m.latestResult || m.result || "").toLowerCase();
           const isUnattempted = mResult === "unattempted" || (!m.latestUserAnswer && !m.userAnswer && !mResult);
-          
+
           if (resultFilter === "wrong" && (mResult !== "wrong" || isUnattempted)) return false;
           if (resultFilter === "unattempted" && !isUnattempted) return false;
         }
@@ -619,12 +647,12 @@ export default function MistakeBookPage() {
           const subject = (m.subject || "").toLowerCase();
           const topic = (m.topic || "").toLowerCase();
           const qNum = String(m.questionNumber || "").toLowerCase();
-          
+
           const matches = questionText.includes(searchLower) ||
-                         subject.includes(searchLower) ||
-                         topic.includes(searchLower) ||
-                         qNum.includes(searchLower);
-          
+            subject.includes(searchLower) ||
+            topic.includes(searchLower) ||
+            qNum.includes(searchLower);
+
           if (!matches) return false;
         }
 
@@ -635,7 +663,7 @@ export default function MistakeBookPage() {
             : (m.firstSeenAt ? new Date(m.firstSeenAt).getTime() : null);
           if (!ts) return !fromTs;
           if (fromTs && ts < fromTs) return false;
-          if (toTs   && ts > toTs)   return false;
+          if (toTs && ts > toTs) return false;
         }
 
         return true;

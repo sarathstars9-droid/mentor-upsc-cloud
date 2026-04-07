@@ -1,7 +1,20 @@
 // backend/prelims/practiceBuilder.js
-// Mode-aware wrapper around the existing Prelims question loading infrastructure.
-// Supports: "continue" | "restart" | "retry_mistakes"
-// Does NOT modify the existing buildPrelimsPracticeTest.js structure.
+// Mode-aware Prelims question builder.
+//
+// Supported modes:
+//   "continue"          — serve only unseen questions (default)
+//   "retry_wrong"       — serve only previously wrong questions
+//   "retry_attempted"   — serve from all previously served (seen) questions
+//   "retry_entire"      — serve all questions in pool; does NOT reset history
+//   "restart"           — full reset then serve all questions
+//   "retry_mistakes"    — wrong + unattempted (legacy compat, same as retry_wrong+unattempted)
+//
+// Subject-level synthetic nodeIds:
+//   "SUBJ::GS::economy"  — loads all economy questions by subject field
+//   "SUBJ::GS::history"  — loads history questions (all sub-subjects)
+//   etc.
+//
+// Does NOT modify topicProgressStore.js or any existing builder outside this file.
 
 import fs from "fs";
 import path from "path";
@@ -9,11 +22,33 @@ import { fileURLToPath } from "url";
 import { getProgress, resetProgress } from "./topicProgressStore.js";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname  = path.dirname(__filename);
 
 const DATA_DIR = path.join(__dirname, "..", "data", "pyq_questions");
 
-// ─── Helpers (duplicated minimally to avoid breaking existing builder) ─────────
+// ─── Subject alias map ────────────────────────────────────────────────────────
+// Maps subjectId → canonical subject field values found in question JSON files.
+// Mirrors getSubjectBuildHints() in frontend/PrelimsPage.jsx.
+
+const GS_SUBJECT_ALIASES = {
+    culture:              ["Art & Culture", "Culture"],
+    economy:              ["Economy"],
+    environment:          ["Environment", "Ecology", "Env & Ecology"],
+    geography:            ["Geography"],
+    history:              ["Ancient History", "Medieval History", "Modern History", "History"],
+    polity:               ["Polity", "Indian Polity"],
+    science_tech:         ["Science & Technology", "ScienceTech", "Science and Technology", "Science Tech"],
+    ir:                   ["International Relations", "IR", "International Relation"],
+    current_affairs_misc: ["Current Affairs & Misc", "Current Affairs", "Miscellaneous", "Misc", "Current Affairs and Misc"],
+};
+
+// ─── Question loader cache ────────────────────────────────────────────────────
+// Avoids rescanning the entire question directory on every request.
+// Keys are topicNodeId strings; values are the deduped question arrays.
+// Safe to cache forever: question files don't change during server lifetime.
+const _questionCache = new Map();
+
+// ─── File helpers ─────────────────────────────────────────────────────────────
 
 function readJSON(filePath) {
     return JSON.parse(fs.readFileSync(filePath, "utf-8"));
@@ -60,20 +95,20 @@ function normalizeQuestion(q, sourceFile) {
     if (!question) return null;
     return {
         ...q,
-        id: String(id),
-        questionId: String(id),
+        id:           String(id),
+        questionId:   String(id),
         sourceFile,
-        answer: String(q.answer || "").trim().toUpperCase(),
+        answer:       String(q.answer || "").trim().toUpperCase(),
         syllabusNodeId: q.syllabusNodeId || q.nodeId || "",
-        sectionNorm: norm(q.section || ""),
-        microNorm: norm(q.microtheme || q.microTheme || ""),
-        moduleNorm: norm(q.module || ""),
+        sectionNorm:  norm(q.section || ""),
+        microNorm:    norm(q.microtheme || q.microTheme || ""),
+        moduleNorm:   norm(q.module || ""),
     };
 }
 
 function dedupeById(items) {
     const seen = new Set();
-    const out = [];
+    const out  = [];
     for (const item of items) {
         const id = item?.id || item?.questionId;
         if (!id || seen.has(id)) continue;
@@ -92,28 +127,32 @@ function shuffle(items) {
     return copy;
 }
 
-// ─── Question loader for a specific topicNodeId ───────────────────────────────
+// ─── Question loaders ─────────────────────────────────────────────────────────
 
 /**
- * Load ALL prelims questions that belong to a given topicNodeId (or its descendants).
- * topicNodeId is used as a prefix match against syllabusNodeId on each question.
+ * Load all prelims questions matching a syllabusNodeId prefix.
+ * Used for topic/subtopic scope.
  */
 function loadAllQuestionsForTopic(topicNodeId) {
     if (!topicNodeId) return [];
+    if (_questionCache.has(topicNodeId)) return _questionCache.get(topicNodeId);
 
     const files = getAllJsonFilesRecursive(DATA_DIR).filter(isTaggedPrelimsFile);
-    const all = [];
+    const all   = [];
 
     for (const file of files) {
         try {
             const json = readJSON(file);
-            const arr = Array.isArray(json) ? json : safeArray(json?.questions);
+            const arr  = Array.isArray(json) ? json : safeArray(json?.questions);
             for (const q of arr) {
                 const nq = normalizeQuestion(q, file);
                 if (!nq) continue;
                 const nodeId = nq.syllabusNodeId || "";
-                // Match exact or descendant (prefix)
-                if (nodeId === topicNodeId || nodeId.startsWith(topicNodeId + "-") || nodeId.startsWith(topicNodeId + "_")) {
+                if (
+                    nodeId === topicNodeId ||
+                    nodeId.startsWith(topicNodeId + "-") ||
+                    nodeId.startsWith(topicNodeId + "_")
+                ) {
                     all.push(nq);
                 }
             }
@@ -121,8 +160,82 @@ function loadAllQuestionsForTopic(topicNodeId) {
             console.warn("[PracticeBuilder] Skipping unreadable file:", file);
         }
     }
+    const result = dedupeById(all);
+    _questionCache.set(topicNodeId, result);
+    return result;
+}
 
-    return dedupeById(all);
+/**
+ * Load all prelims GS questions for a subject using the subject field.
+ * Used for synthetic nodeIds like "SUBJ::GS::economy".
+ */
+function loadAllQuestionsForSubjectId(subjectId) {
+    const cacheKey = `SUBJ::GS::${subjectId}`;
+    if (_questionCache.has(cacheKey)) return _questionCache.get(cacheKey);
+
+    const aliases = GS_SUBJECT_ALIASES[subjectId];
+    if (!aliases || !aliases.length) {
+        console.warn("[PracticeBuilder] Unknown subjectId for subject loading:", subjectId);
+        return [];
+    }
+    const normalizedAliases = new Set(aliases.map((a) => norm(a)));
+
+    const files = getAllJsonFilesRecursive(DATA_DIR).filter(isTaggedPrelimsFile);
+    const all   = [];
+
+    for (const file of files) {
+        // Skip CSAT files for GS subject loading
+        if (file.includes(path.sep + "csat" + path.sep)) continue;
+        try {
+            const json = readJSON(file);
+            const arr  = Array.isArray(json) ? json : safeArray(json?.questions);
+            for (const q of arr) {
+                const nq = normalizeQuestion(q, file);
+                if (!nq) continue;
+                // Exact match only: prevents short aliases ("ir") matching unrelated subjects
+                if (normalizedAliases.has(norm(q.subject || ""))) {
+                    all.push(nq);
+                }
+            }
+        } catch {
+            console.warn("[PracticeBuilder] Skipping unreadable file:", file);
+        }
+    }
+    const result = dedupeById(all);
+    _questionCache.set(cacheKey, result);
+    return result;
+}
+
+/**
+ * Parse synthetic subject nodeId: "SUBJ::GS::economy" → { paper:"GS", subjectId:"economy" }
+ * Returns null if not a synthetic nodeId.
+ */
+function parseSyntheticNodeId(topicNodeId) {
+    if (!topicNodeId || !topicNodeId.startsWith("SUBJ::")) return null;
+    const parts = topicNodeId.split("::");
+    if (parts.length < 3) return null;
+    return { paper: parts[1], subjectId: parts[2] };
+}
+
+// ─── Pool counts helper ───────────────────────────────────────────────────────
+
+/**
+ * Given all questions and current progress, compute pool sizes for each mode.
+ */
+export function computePoolCounts(allQuestions, progress) {
+    const served      = new Set(progress.servedQuestionIds      || []);
+    const wrong       = new Set(progress.wrongQuestionIds       || []);
+    const unattempted = new Set(progress.unattemptedQuestionIds || []);
+
+    let unseen = 0, wrongOnly = 0, mistakes = 0, attempted = 0;
+    for (const q of allQuestions) {
+        const id = q.id;
+        if (!served.has(id))                     unseen++;
+        if (wrong.has(id))                        wrongOnly++;
+        if (wrong.has(id) || unattempted.has(id)) mistakes++;
+        if (served.has(id))                       attempted++;
+    }
+    return { total: allQuestions.length, unseen, wrongOnly, mistakes, attempted, entire: allQuestions.length };
 }
 
 // ─── Main exported builder ────────────────────────────────────────────────────
@@ -132,54 +245,99 @@ function loadAllQuestionsForTopic(topicNodeId) {
  *
  * @param {object} params
  * @param {string} params.userId
- * @param {string} params.topicNodeId
+ * @param {string} params.topicNodeId      — may be synthetic "SUBJ::GS::economy"
  * @param {number} params.count
- * @param {"continue"|"restart"|"retry_mistakes"} params.practiceMode
+ * @param {"continue"|"retry_wrong"|"retry_attempted"|"retry_entire"|"restart"|"retry_mistakes"} params.practiceMode
  * @param {string} [params.stage]
- * @returns {{ questions: object[], progress: object, totalAvailable: number, mode: string }}
+ * @returns {{ questions, progress, totalAvailable, mode, poolCounts }}
  */
-export async function buildProgressAwareTest({
+export async function buildProgressAwareTest({userId, topicNodeId, count, practiceMode, stage}) { return await buildProgressAwareTestImpl({userId, topicNodeId, count, practiceMode, stage}); }
+export async function buildProgressAwareTestImpl({
     userId,
     topicNodeId,
     count = 10,
     practiceMode = "continue",
     stage = "prelims",
 }) {
-    if (!userId) throw new Error("userId is required");
+    if (!userId)      throw new Error("userId is required");
     if (!topicNodeId) throw new Error("topicNodeId is required");
 
-    const allQuestions = loadAllQuestionsForTopic(topicNodeId);
+    // ── Load all questions for this scope ──────────────────────────────────────
+    let allQuestions;
+    const parsed = parseSyntheticNodeId(topicNodeId);
+    if (parsed) {
+        // Subject-level synthetic nodeId → load by subject field
+        allQuestions = loadAllQuestionsForSubjectId(parsed.subjectId);
+    } else {
+        // Standard syllabusNodeId prefix match
+        allQuestions = loadAllQuestionsForTopic(topicNodeId);
+    }
     const totalAvailable = allQuestions.length;
 
-    // Load current progress
+    // ── Load current progress ──────────────────────────────────────────────────
     let progress = getProgress(userId, stage, topicNodeId);
 
+    // ── Build candidate pool based on mode ─────────────────────────────────────
     let candidatePool = [];
 
     if (practiceMode === "restart") {
-        // Full reset, start from scratch
+        // Full reset then serve everything
         progress = resetProgress(userId, stage, topicNodeId);
         candidatePool = allQuestions;
+
+    } else if (practiceMode === "retry_wrong") {
+        // Wrong answers only
+        const wrongSet = new Set(progress.wrongQuestionIds || []);
+        candidatePool = allQuestions.filter((q) => wrongSet.has(q.id));
+
     } else if (practiceMode === "retry_mistakes") {
-        // Only wrong + unattempted questions
+        // Legacy: wrong + unattempted (kept for backward compat)
         const mistakeSet = new Set([
-            ...progress.wrongQuestionIds,
-            ...progress.unattemptedQuestionIds,
+            ...(progress.wrongQuestionIds      || []),
+            ...(progress.unattemptedQuestionIds || []),
         ]);
         candidatePool = allQuestions.filter((q) => mistakeSet.has(q.id));
+
+    } else if (practiceMode === "retry_attempted") {
+        // All previously served questions (re-attempt seen set)
+        const servedSet = new Set(progress.servedQuestionIds || []);
+        candidatePool = allQuestions.filter((q) => servedSet.has(q.id));
+
+    } else if (practiceMode === "retry_entire") {
+        // Full subject pool WITHOUT resetting history
+        // Repeated questions won't inflate coverage because updateProgress deduplicates
+        candidatePool = allQuestions;
+
     } else {
-        // CONTINUE: exclude already-served questions
-        const servedSet = new Set(progress.servedQuestionIds);
+        // DEFAULT: "continue" — serve only unseen questions
+        const servedSet = new Set(progress.servedQuestionIds || []);
         candidatePool = allQuestions.filter((q) => !servedSet.has(q.id));
     }
 
-    // Pick N questions (shuffle to randomize order within pool)
-    const picked = shuffle(candidatePool).slice(0, Math.max(1, count));
+    // ── Pick N questions (shuffled within pool) ────────────────────────────────
+    const safeCount = Math.max(1, Math.min(count, candidatePool.length));
+    const picked    = shuffle(candidatePool).slice(0, safeCount);
+
+    // ── Compute pool counts for UI display ─────────────────────────────────────
+    const poolCounts = computePoolCounts(allQuestions, progress);
 
     return {
-        questions: picked,
+        questions:      picked,
         progress,
         totalAvailable,
-        mode: practiceMode,
+        mode:           practiceMode,
+        poolCounts,
+        candidateSize:  candidatePool.length,  // available for selected mode
     };
+}
+
+/**
+ * Standalone: load all questions for a nodeId or synthetic subject key.
+ * Used by progressRoute to count totalQuestions.
+ */
+export function loadAllQuestionsForNodeId(topicNodeId) {
+    if (!topicNodeId) return [];
+    const parsed = parseSyntheticNodeId(topicNodeId);
+    if (parsed) return loadAllQuestionsForSubjectId(parsed.subjectId);
+    return loadAllQuestionsForTopic(topicNodeId);
 }

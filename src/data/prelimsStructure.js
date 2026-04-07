@@ -800,54 +800,14 @@ export const PRELIMS_STRUCTURE = {
             label: "Reading Comprehension",
             count: 441,
             topics: [
-                {
-                    id: "rc_assumption",
-                    nodeId: "CSAT-RC-ASSUMP",
-                    name: "Assumption",
-                    count: 0,
-                },
-                {
-                    id: "rc_inference",
-                    nodeId: "CSAT-RC-INFER",
-                    name: "Inference",
-                    count: 0,
-                },
-                {
-                    id: "rc_conclusion",
-                    nodeId: "CSAT-RC-CONCL",
-                    name: "Conclusion",
-                    count: 0,
-                },
-                {
-                    id: "rc_fact",
-                    nodeId: "CSAT-RC-FACT",
-                    name: "Fact-Based",
-                    count: 0,
-                },
-                {
-                    id: "rc_tone",
-                    nodeId: "CSAT-RC-TONE",
-                    name: "Tone & Attitude",
-                    count: 0,
-                },
-                {
-                    id: "rc_theme",
-                    nodeId: "CSAT-RC-THEME",
-                    name: "Theme & Title",
-                    count: 0,
-                },
-                {
-                    id: "rc_strengthen",
-                    nodeId: "CSAT-RC-STRENGTH",
-                    name: "Strengthen / Weaken",
-                    count: 0,
-                },
-                {
-                    id: "rc_misc",
-                    nodeId: "CSAT-RC-MISC",
-                    name: "Miscellaneous RC",
-                    count: 441,
-                }
+                { id: "rc_assumption",       nodeId: "CSAT-RC-ASSUMP", name: "Assumption",         count: 0 },
+                { id: "rc_tone",             nodeId: "CSAT-RC-TONE",  name: "Tone & Attitude",     count: 0 },
+                { id: "rc_conclusion",       nodeId: "CSAT-RC-CONCL", name: "Logical Conclusion",  count: 0 },
+                { id: "rc_inference",        nodeId: "CSAT-RC-INFER", name: "Inference",           count: 0 },
+                { id: "rc_main_idea",        nodeId: "CSAT-RC-MAIN",  name: "Main Idea / Crux",   count: 0 },
+                { id: "rc_critical_message", nodeId: "CSAT-RC-CRIT",  name: "Critical Message",   count: 0 },
+                { id: "rc_statement",        nodeId: "CSAT-RC-STMT",  name: "Statement-Based",     count: 0 },
+                { id: "rc_mixed",            nodeId: "CSAT-RC-MIXED", name: "Mixed / General",     count: 0 },
             ]
         }
     ],

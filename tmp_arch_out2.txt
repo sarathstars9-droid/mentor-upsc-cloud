@@ -1,0 +1,32 @@
+﻿[unifiedSyllabusIndex] loaded { version: '2026-canonical-v2', totalNodes: 1726, subjects: 16 }
+
+=== MASTER INDEX ===
+Questions with raw 1C.VA.ARCH: 27
+Sample[0]: MAINS_GS1_ART_2024_002 | stage: mains | year: 2024 | syllabusNodeId: 1C.VA.ARCH
+
+=== PYQ_BY_NODE ARCH KEYS ===
+Count: 17
+  1C-VA-ARCH-MT01 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT02 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT03 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT04 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT05 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT06 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT07 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT08 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT09 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT10 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT11 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT12 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT13 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT14 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT15 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT16 => total: 27 | prelims: 16 | mains: 11
+  1C-VA-ARCH-MT17 => total: 27 | prelims: 16 | mains: 11
+
+=== DIRECT KEY LOOKUP ===
+1C.VA.ARCH present? false
+1C-VA-ARCH present? false
+
+=== RESOLVER RESULT for 1C.VA.ARCH ===
+Resolved: ["1C-VA-ARCH-MT01","1C-VA-ARCH-MT02","1C-VA-ARCH-MT03","1C-VA-ARCH-MT04","1C-VA-ARCH-MT05","1C-VA-ARCH-MT06","1C-VA-ARCH-MT07","1C-VA-ARCH-MT08","1C-VA-ARCH-MT09","1C-VA-ARCH-MT10","1C-VA-ARCH-MT11","1C-VA-ARCH-MT12","1C-VA-ARCH-MT13","1C-VA-ARCH-MT14","1C-VA-ARCH-MT15","1C-VA-ARCH-MT16","1C-VA-ARCH-MT17"]

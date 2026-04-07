@@ -1,6 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
+import { normalizePyqRecord } from "../brain/normalizePyqRecord.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,35 +34,7 @@ async function findJsonFiles(dir, fileList = []) {
   return fileList;
 }
 
-// Generate stage/bucket logically
-function determineStage(filename, q) {
-  const fName = filename.toLowerCase();
-  const qStage = String(q.stage || "").toLowerCase();
-  const qPaper = String(q.paper || "").toLowerCase();
-  const qSubject = String(q.subject || "").toLowerCase();
-
-  // Explicit csat checks
-  if (fName.includes("csat") || qPaper === "csat" || qSubject === "csat") {
-    return "csat";
-  }
-  // Mains checks
-  if (fName.includes("mains") || qStage === "mains") {
-    return "mains";
-  }
-  // Optional subjects
-  if (fName.includes("optional") || qPaper.includes("optional")) {
-    return "optional";
-  }
-  if (fName.includes("essay") || qPaper.includes("essay")) {
-    return "essay";
-  }
-  // Prelims checks
-  if (fName.includes("prelims") || qStage === "prelims") {
-    return "prelims";
-  }
-
-  return "unknown";
-}
+// Generate stage/bucket logically (deprecated by normalizePyqRecord but keeping signature for safety if needed internally, replaced below)
 
 async function buildMasterIndex() {
   await ensureDir(OUTPUT_DIR);
@@ -79,8 +52,14 @@ async function buildMasterIndex() {
     const raw = await fs.readFile(fileObj.path, "utf-8");
     try {
       const parsed = JSON.parse(raw);
-      // Data might be array or { questions: [] }
-      const qs = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.questions) ? parsed.questions : []);
+      function extractItems(parsed) {
+        if (Array.isArray(parsed)) return parsed;
+        if (parsed && Array.isArray(parsed.questions)) return parsed.questions;
+        if (parsed && Array.isArray(parsed.topics)) return parsed.topics;
+        return [];
+      }
+
+      const qs = extractItems(parsed);
 
       for (const q of qs) {
         if (!q.id) {
@@ -88,29 +67,12 @@ async function buildMasterIndex() {
           continue; // skip if absolutely no ID available
         }
 
-        const stage = determineStage(fileObj.name, q);
-        
-        // Build normalized item
-        const normalized = {
-          id: q.id,
-          questionText: q.question || "",
-          subject: q.subject || q.module || "",
-          stage: stage,
-          year: q.year || null,
-          nodeId: q.syllabusNodeId || null,
-          section: q.section || "",
-          microtheme: q.microtheme || "",
-          options: q.options || {},
-          answer: q.answer || "",
-          sourceFile: fileObj.name,
-          // Retain everything else implicitly if needed, but safe payload below:
-          ...q
-        };
+        const normalized = normalizePyqRecord(q, fileObj);
         
         masterIndex[q.id] = normalized;
         totalQuestions++;
 
-        if (stage === "csat") {
+        if (normalized.stage === "csat") {
           csatQuestions++;
         }
       }

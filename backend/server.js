@@ -28,6 +28,7 @@ import { buildDailyAdvice } from "./brain/adviceEngine.js";
 import prelimsPracticeRoute from "./routes/prelimsPracticeRoute.js";
 import prelimsDashboardRoute from "./routes/prelimsDashboardRoute.js";
 import prelimsRebuiltDatasetRoute from "./routes/prelimsRebuiltDatasetRoute.js";
+import { query } from "./db/index.js";
 import {
   mapPlanItemToMicroTheme,
   daysToPrelims,
@@ -59,8 +60,11 @@ import { autoResolveNodes } from "./brain/autoNodeResolver.js";
 import { resolvePrelimsNodes } from "./brain/prelimsNodeResolver.js";
 import { getGSCounts, loadGSData } from "./data/loaders/gsLoader.js";
 import { loadCSATData } from "./data/loaders/csatLoader.js";
+import { getRcSubtopicSummary, resetRcCache } from "./engines/rcSubtopicLoader.js";
 import { processOcrText } from "./ocrMapping/index.js";
 import { fileURLToPath } from "url";
+import mistakeRoutes from "./routes/mistakeRoutes.js";
+import revisionRoutes from "./routes/revisionRoutes.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config();
@@ -1291,6 +1295,23 @@ app.post("/api/sheets", async (req, res) => {
   }
 });
 
+/* ── RC SUBTOPICS ── classified RC subtopic buckets with real question counts ── */
+app.get("/api/prelims/csat/rc-subtopics", (_req, res) => {
+  try {
+    const subtopics = getRcSubtopicSummary();
+    return res.json({ ok: true, subtopics });
+  } catch (err) {
+    console.error("❌ getRcSubtopics error:", err);
+    return res.status(500).json({ ok: false, error: String(err?.message || err) });
+  }
+});
+
+app.post("/api/prelims/csat/rc-reset", (_req, res) => {
+  resetRcCache();
+  const subtopics = getRcSubtopicSummary();
+  return res.json({ ok: true, message: "RC cache rebuilt", subtopics });
+});
+
 /* ── GS COUNTS ── returns actual buildable question counts from raw files ── */
 app.get("/api/prelims/gs/counts", (_req, res) => {
   try {
@@ -1330,7 +1351,15 @@ app.get("/api/prelims/full-length/years", (_req, res) => {
     return res.status(500).json({ ok: false, error: String(err?.message || err) });
   }
 });
-
+app.get("/api/db-check", async (req, res) => {
+  try {
+    const result = await query("SELECT NOW() as now");
+    res.json({ success: true, now: result.rows[0].now });
+  } catch (err) {
+    console.error("[DB CHECK ERROR]", err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
 app.post("/api/prelims/practice/build", (req, res) => {
   try {
     function normalizeResolverSubject(value = "") {
@@ -1382,9 +1411,9 @@ app.post("/api/prelims/practice/build", (req, res) => {
     const practicePaper =
       rawPracticePaper ||
       (String(paper || "").toUpperCase() === "GS1" ? "GS" :
-       String(paper || "").toUpperCase() === "CSAT" ? "CSAT" :
-       String(paper || "").toUpperCase() === "GS" ? "GS" :
-       paper);
+        String(paper || "").toUpperCase() === "CSAT" ? "CSAT" :
+          String(paper || "").toUpperCase() === "GS" ? "GS" :
+            paper);
 
     const fullLengthYearFinal = fullLengthYear || year;
     console.log("[/api/prelims/practice/build] request body", {
@@ -1613,7 +1642,9 @@ const PORT = Number(process.env.PORT || 8787);
 const HOST = process.env.HOST || "0.0.0.0";
 
 console.log("[BOOT] about to listen", { HOST, PORT });
-
+app.use("/api/mistakes", mistakeRoutes);
+app.use("/api/revision-items", revisionRoutes);
 app.listen(PORT, HOST, () => {
   console.log(`backend running on http://${HOST}:${PORT}`);
 });
+

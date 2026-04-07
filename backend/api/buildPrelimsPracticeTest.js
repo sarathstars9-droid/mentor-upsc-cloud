@@ -7,6 +7,7 @@ import {
     getSubtopicConfig,
     getSubtopicLabels,
 } from "./prelimsSelectorMap.js";
+import { getRcQuestionsForTopic, TOPIC_TO_RC_TYPE } from "../engines/rcSubtopicLoader.js";
 console.log("[PHASE3A BUILDER VERSION] growth-dev-clean-v2");
 /* =========================
    PATHS
@@ -928,30 +929,8 @@ export default async function buildPrelimsPracticeTest(req, res) {
             });
         }
         if (practiceScope === "subject") {
-            let finalQuestions = shuffle(subjectQuestions).slice(0, count);
-            
-            // FOR CSAT RC: Group by passage to maintain integrity
-            let rcPassageGroups = null;
-            if (csatMode && selectedSubjectId && normalizeId(selectedSubjectId).includes("csat_rc")) {
-                const groups = groupRcQuestionsByPassage(finalQuestions);
-                if (groups.length > 0) {
-                    // Reconstruct questions from passage groups
-                    finalQuestions = [];
-                    for (const group of groups) {
-                        // Add passage as first "question" with special marker
-                        finalQuestions.push({
-                            id: `PASSAGE_${finalQuestions.length}`,
-                            passage: group.passage,
-                            isPassage: true,
-                            questionCount: group.size,
-                        });
-                        // Add all questions for this passage
-                        finalQuestions.push(...group.questions);
-                    }
-                    rcPassageGroups = groups;
-                }
-            }
-            
+            const finalQuestions = shuffle(subjectQuestions).slice(0, count);
+
             // Deduplicate final questions
             const { deduped: cleanQuestions, duplicates: dupCount } = validateAndDeduplicateQuestions(finalQuestions, `${selectedSubjectId}-subject`);
 
@@ -968,14 +947,47 @@ export default async function buildPrelimsPracticeTest(req, res) {
                         subject: selectedSubjectLabel || selectedSubjectId,
                         pool: subjectQuestions.length,
                         returned: cleanQuestions.length,
-                        rcPassageGroups: rcPassageGroups?.length || null,
                         duplicatesRemoved: dupCount.length,
                     },
                 })
             );
         }
 
-        // CSAT does not support topic/subtopic-level practice (no hierarchical structure)
+        // CSAT RC supports topic-level practice via question classification
+        const isRcTopicRequest =
+            csatMode &&
+            normalizeId(selectedSubjectId) === "csat_rc" &&
+            practiceScope === "topic" &&
+            selectedTopicId &&
+            TOPIC_TO_RC_TYPE[selectedTopicId];
+
+        if (isRcTopicRequest) {
+            const rcFiltered = getRcQuestionsForTopic(selectedTopicId);
+            if (!rcFiltered.length) {
+                return sendBuilderError(
+                    res,
+                    `No RC questions found for type "${selectedTopicId}". Try a different subtopic.`,
+                    { selectedSubjectId, selectedTopicId }
+                );
+            }
+            const finalRc = shuffle(rcFiltered).slice(0, count);
+            const { deduped: cleanRc } = validateAndDeduplicateQuestions(finalRc, `rc-${selectedTopicId}`);
+            console.log("[BUILDER - RC TOPIC]", {
+                topicId: selectedTopicId,
+                pool: rcFiltered.length,
+                returned: cleanRc.length,
+            });
+            return res.json(buildSuccessPayload({
+                mode: "practice",
+                paper: "CSAT",
+                scope: "topic",
+                year: null,
+                questions: cleanRc,
+                debug: { rcTopic: selectedTopicId, pool: rcFiltered.length, returned: cleanRc.length },
+            }));
+        }
+
+        // Other CSAT subjects do not support topic/subtopic-level practice
         if (csatMode && (practiceScope === "topic" || practiceScope === "subtopic")) {
             return sendBuilderError(
                 res,
