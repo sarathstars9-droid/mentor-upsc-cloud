@@ -455,10 +455,28 @@ function buildMappedObject(mapped, nonStudy, originalItem) {
 /* -------------------- APP INIT -------------------- */
 
 const app = express();
+
+// ── CORS ──────────────────────────────────────────────────────────────────────
+// Explicit allowed origins. PATCH must be listed for mistake/revision updates.
+const ALLOWED_ORIGINS = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://mentorupsc.in",
+  "https://www.mentorupsc.in",
+];
+
 app.use(cors({
-  origin: true,
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type"],
+  origin: (origin, callback) => {
+    // Allow requests with no origin (curl, Postman, Railway health checks)
+    if (!origin) return callback(null, true);
+    if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+    // In development fall through to allow all; in production, block unknown origins
+    if (process.env.NODE_ENV !== "production") return callback(null, true);
+    return callback(new Error(`CORS: origin ${origin} not allowed`));
+  },
+  methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
 }));
 
 // ✅ MUST BE HERE (TOP)
@@ -467,19 +485,16 @@ app.use(express.urlencoded({ extended: true }));
 
 /* -------------------- MIDDLEWARE -------------------- */
 app.use("/api/prelims-rebuilt", prelimsRebuiltDatasetRoute);
-app.use(
-  cors({
-    origin: true,
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
 app.use("/api/prelims", prelimsAnalyticsRoute);
 app.use("/api/prelims", prelimsDashboardRoute);
 app.use("/api", pyqRoutes);
 app.use("/api/prelims/practice", prelimsPracticeRoute);
 app.use("/api/prelims/pyq", prelimsPyqTestRoutes);
 app.use("/api/blocks", blockResolveRoute);        // isolated block classification — no PYQ/CSAT side-effects
+
+// ── Mistake & Revision routes (registered here, not at bottom) ───────────────
+app.use("/api/mistakes", mistakeRoutes);
+app.use("/api/revision-items", revisionRoutes);
 
 /* -------------------- MAINS GS1 QUESTIONS API -------------------- */
 
@@ -648,8 +663,81 @@ const openai = new OpenAI({
 
 /* -------------------- HEALTH ROUTE -------------------- */
 
-app.get("/health", (req, res) => {
-  res.json({ ok: true, message: "backend live" });
+app.get("/health", async (_req, res) => {
+  let dbOk = false;
+  let dbTime = null;
+  let dbError = null;
+  try {
+    const result = await query("SELECT NOW() AS now");
+    dbOk = true;
+    dbTime = result.rows[0].now;
+  } catch (err) {
+    dbError = err.message || err.code || String(err);
+  }
+  res.status(dbOk ? 200 : 503).json({
+    ok: dbOk,
+    message: dbOk ? "backend live, DB connected" : "backend live, DB ERROR",
+    db: { connected: dbOk, time: dbTime, error: dbError },
+    env: {
+      NODE_ENV: process.env.NODE_ENV || "(not set)",
+      RAILWAY_ENVIRONMENT: process.env.RAILWAY_ENVIRONMENT || "(not set)",
+      DATABASE_URL_set: Boolean(process.env.DATABASE_URL),
+      DB_SSL: process.env.DB_SSL || "(not set)",
+      PORT: process.env.PORT || "(not set)",
+    },
+  });
+});
+
+/* -------------------- DEBUG DB CHECK (temporary) -------------------- */
+
+app.get("/api/debug/db-check", async (req, res) => {
+  const results = {};
+
+  // 1) basic connection
+  try {
+    const r = await query("SELECT NOW() AS now");
+    results.connected = true;
+    results.server_time = r.rows[0].now;
+  } catch (err) {
+    results.connected = false;
+    results.connect_error = {
+      message: err.message || "(empty)",
+      code: err.code,
+      detail: err.detail,
+      hint: err.hint,
+    };
+    return res.status(503).json({ ok: false, ...results });
+  }
+
+  // 2) table existence + row counts
+  const tables = ["mistakes", "revision_items"];
+  results.tables = {};
+
+  for (const table of tables) {
+    try {
+      const exists = await query(
+        `SELECT EXISTS (
+           SELECT 1 FROM information_schema.tables
+           WHERE table_schema = 'public' AND table_name = $1
+         ) AS exists`,
+        [table]
+      );
+      const tableExists = exists.rows[0].exists;
+      results.tables[table] = { exists: tableExists };
+
+      if (tableExists) {
+        const count = await query(`SELECT COUNT(*) AS n FROM "${table}"`);
+        results.tables[table].row_count = Number(count.rows[0].n);
+      }
+    } catch (err) {
+      results.tables[table] = {
+        exists: "error",
+        error: err.message || err.code || String(err),
+      };
+    }
+  }
+
+  res.json({ ok: true, ...results });
 });
 
 app.post("/alexa/ping", (req, res) => {
@@ -1642,8 +1730,6 @@ const PORT = Number(process.env.PORT || 8787);
 const HOST = process.env.HOST || "0.0.0.0";
 
 console.log("[BOOT] about to listen", { HOST, PORT });
-app.use("/api/mistakes", mistakeRoutes);
-app.use("/api/revision-items", revisionRoutes);
 app.listen(PORT, HOST, () => {
   console.log(`backend running on http://${HOST}:${PORT}`);
 });
