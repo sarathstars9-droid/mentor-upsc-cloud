@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-const BASE_URL = "http://localhost:8787";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 const USER_ID = "user_1";
 
 /* ── Utility ── */
