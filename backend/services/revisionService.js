@@ -7,6 +7,33 @@ function getPriorityFromMistake(mistake) {
     return "low";
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Spaced repetition interval ladder.
+//
+// reviewCount is the value BEFORE this review (i.e. how many times the item
+// has been reviewed so far). The returned value is the number of days until
+// the next review should be shown.
+//
+// Priority tuning:
+//   high  → 0.7× (review sooner — high-priority items need more reinforcement)
+//   low   → 1.2× (review later  — low-priority items can wait longer)
+//   medium → 1.0× (no change)
+//
+// Minimum enforced at 1 day so next_review_at never moves backwards.
+// ─────────────────────────────────────────────────────────────────────────────
+function getNextIntervalDays(reviewCount, priority) {
+    const ladder = [1, 3, 7, 15, 30, 45, 60];
+    // reviewCount 0 → ladder[0]=1d, 1 → ladder[1]=3d … 5+ → ladder[6]=60d
+    const base = ladder[Math.min(reviewCount, ladder.length - 1)];
+
+    const multiplier =
+        priority === "high" ? 0.7 :
+        priority === "low"  ? 1.2 :
+        1.0;
+
+    return Math.max(1, Math.round(base * multiplier));
+}
+
 export async function ensureRevisionItemFromMistake(mistake) {
     if (!mistake?.user_id) {
         return null;
@@ -55,28 +82,28 @@ export async function getRevisionQueue(userId, options = {}) {
     return await repo.listRevisionItems(userId, options);
 }
 
-function getNextInterval(currentIntervalDays) {
-    const ladder = [1, 3, 7, 15, 30];
-    const current = Number(currentIntervalDays) || 1;
-    const next = ladder.find((n) => n > current);
-    return next || 30;
-}
-
 export async function markRevisionReviewed(id) {
     const item = await repo.getRevisionItemById(id);
     if (!item) return null;
 
+    // Use review_count (preferred) or fall back to revision_count for
+    // backward compatibility with rows created before the migration.
+    const currentReviewCount = item.review_count ?? item.revision_count ?? 0;
+    const newReviewCount = currentReviewCount + 1;
+
+    const intervalDays = getNextIntervalDays(currentReviewCount, item.priority);
+
     const now = new Date();
-    const nextInterval = getNextInterval(item.interval_days);
     const nextReview = new Date(now);
-    nextReview.setDate(nextReview.getDate() + nextInterval);
+    nextReview.setDate(nextReview.getDate() + intervalDays);
 
     return await repo.updateRevisionItem(id, {
-        status: "reviewed",
-        review_count: (item.review_count || 0) + 1,
-        interval_days: nextInterval,
+        status:           "reviewed",
+        review_count:     newReviewCount,
+        revision_count:   newReviewCount,   // keep both fields in sync
+        interval_days:    intervalDays,
         last_reviewed_at: now.toISOString(),
-        next_review_at: nextReview.toISOString(),
+        next_review_at:   nextReview.toISOString(),
     });
 }
 
