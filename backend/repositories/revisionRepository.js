@@ -169,12 +169,22 @@ export async function upsertRevisionItem(data) {
 // ─────────────────────────────────────────────────────────────────────────────
 // PUBLIC: findRevisionItemForMistake
 //
-// Tries each lookup path in priority order.
-// Gracefully handles columns that do not yet exist in the DB.
-// Returns the first matching row, or null if none found.
+// Deduplication key (in priority order):
+//   1. user_id + question_id + stage        ← always preferred when question_id present
+//   2. user_id + source_id + stage          ← original-schema fallback (only when no question_id)
+//
+// IMPORTANT: source_ref is intentionally NOT used for dedup.
+// A single source_ref (e.g. "practice_gs_subject_economy_na") belongs to one
+// sectional test and can produce many distinct wrong questions. Matching on
+// source_ref alone would collapse all of them into a single revision item.
+//
+// Gracefully handles columns that do not yet exist in the DB (schema errors
+// 42703 / 42P10 are caught and the next path is tried).
 // ─────────────────────────────────────────────────────────────────────────────
-export async function findRevisionItemForMistake(userId, questionId, sourceType, sourceRef, stage) {
+export async function findRevisionItemForMistake(userId, questionId, _sourceType, sourceRef, stage) {
   // 1. By question_id + stage  (requires migrated schema — column question_id)
+  //    This is the only correct key when question_id is present; do NOT fall
+  //    through to source_ref matching after this succeeds or finds nothing.
   if (questionId) {
     try {
       const result = await query(
@@ -185,34 +195,22 @@ export async function findRevisionItemForMistake(userId, questionId, sourceType,
          LIMIT 1`,
         [userId, questionId, stage || null]
       );
+      // Row found → it's a true duplicate for this question.
       if (result.rows[0]) return result.rows[0];
+      // Row NOT found → this question has no revision item yet; return null
+      // immediately. Do NOT continue to source_ref — that would incorrectly
+      // treat another question from the same test as a duplicate.
+      return null;
     } catch (err) {
       if (!isSchemaError(err)) throw err;
-      // column question_id doesn't exist yet — fall through to source_ref check
+      // column question_id doesn't exist yet — fall through to source_id check
     }
   }
 
-  // 2. By source_type + source_ref + stage  (requires migrated schema — column source_ref)
-  if (sourceRef) {
-    try {
-      const result = await query(
-        `SELECT * FROM revision_items
-         WHERE user_id = $1
-           AND source_type = $2
-           AND source_ref = $3
-           AND (stage = $4 OR ($4::text IS NULL AND stage IS NULL))
-         LIMIT 1`,
-        [userId, sourceType || null, sourceRef, stage || null]
-      );
-      if (result.rows[0]) return result.rows[0];
-    } catch (err) {
-      if (!isSchemaError(err)) throw err;
-      // column source_ref doesn't exist yet — fall through to source_id check
-    }
-  }
-
-  // 3. By source_id + stage  (original schema — always exists)
-  //    source_id stores source_ref || question_id, so it covers both cases above.
+  // 2. By source_id + stage  (original schema — always exists)
+  //    Only reached when question_id is absent OR the question_id column
+  //    doesn't exist yet in the DB.
+  //    source_id stores source_ref || question_id (set during insert).
   const sourceIdVal = sourceRef || questionId || null;
   if (sourceIdVal) {
     const result = await query(
