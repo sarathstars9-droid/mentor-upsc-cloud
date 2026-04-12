@@ -278,6 +278,7 @@ export async function updateRevisionItem(id, changes) {
     status:           changes.status,
     priority:         changes.priority,
     review_count:     changes.review_count,
+    revision_count:   changes.revision_count,   // kept in sync with review_count
     interval_days:    changes.interval_days,
     last_reviewed_at: changes.last_reviewed_at,
     next_review_at:   changes.next_review_at,
