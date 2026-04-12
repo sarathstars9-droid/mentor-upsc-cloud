@@ -298,10 +298,17 @@ export default function RevisionPage() {
   const stages = [...new Set(items.map(i => i.stage).filter(Boolean))].sort();
 
   const filtered = items.filter(item => {
+    // Queue sections only show active items by default.
+    // "reviewed" items are excluded unless the user explicitly selects the
+    // "reviewed" status pill — completing a review must remove it from the queue.
+    if (statusFilter === "all") {
+      if (item.status !== "pending" && item.status !== "snoozed") return false;
+    } else {
+      if (item.status !== statusFilter) return false;
+    }
     if (stageFilter !== "all" && item.stage !== stageFilter) return false;
     if (subjectFilter !== "all" && item.subject !== subjectFilter) return false;
     if (priorityFilter !== "all" && item.priority !== priorityFilter) return false;
-    if (statusFilter !== "all" && item.status !== statusFilter) return false;
     if (search.trim()) {
       const q = search.toLowerCase();
       const haystack = [item.title, item.question_text, item.subject, item.node_id, item.source_type].join(" ").toLowerCase();
