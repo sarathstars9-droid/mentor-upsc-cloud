@@ -4,10 +4,25 @@ export default function QuickActions({
     onLoopDetector,
 }) {
     return (
-        <div className="quick-nav-bar">
-            <button onClick={onStudyBlocks}>Today’s Study Blocks</button>
-            <button onClick={onNightReview}>Night Review</button>
-            <button onClick={onLoopDetector}>Loop Detector</button>
+        <div className="quick-nav-bar mos-quick-actions">
+            <button
+                className="mos-pill-btn mos-pill-btn--primary"
+                onClick={onStudyBlocks}
+            >
+                Today's Study Blocks
+            </button>
+            <button
+                className="mos-pill-btn"
+                onClick={onNightReview}
+            >
+                Night Review
+            </button>
+            <button
+                className="mos-pill-btn"
+                onClick={onLoopDetector}
+            >
+                Loop Detector
+            </button>
         </div>
     );
 }

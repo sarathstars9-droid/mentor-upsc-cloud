@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import MainsMistakeCard from "../components/mains/MainsMistakeCard";
+import { BACKEND_URL } from "../config";
 
 // ─── Theme ────────────────────────────────────────────────────────────────────
 const T = {
@@ -30,7 +31,7 @@ const label11 = (color = T.subtle) => ({
 });
 
 const PAPER_ACCENT = { GS1: T.amber, GS2: T.blue, GS3: T.green, All: T.purple };
-const API_URL = "http://localhost:8787/api/mistakes?userId=user_1";
+const API_URL = `${BACKEND_URL}/api/mistakes?userId=user_1`;
 
 function inferPaper(mistake) {
     if (mistake.paper) return String(mistake.paper).toUpperCase();
@@ -230,7 +231,7 @@ export default function MainsMistakeBookPage() {
     const handleMarkResolved = async (id) => {
         setMistakes((prev) => prev.map((m) => (m.id === id ? { ...m, status: "resolved" } : m)));
         try {
-            await fetch(`http://localhost:8787/api/mistakes/${id}`, {
+            await fetch(`${BACKEND_URL}/api/mistakes/${id}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ status: "resolved" }),
@@ -248,7 +249,7 @@ export default function MainsMistakeBookPage() {
             return { ...m, mustRevise: nextValue };
         }));
         try {
-            await fetch(`http://localhost:8787/api/mistakes/${id}`, {
+            await fetch(`${BACKEND_URL}/api/mistakes/${id}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ must_revise: nextValue }),

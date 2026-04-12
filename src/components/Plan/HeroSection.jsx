@@ -7,7 +7,7 @@ export default function HeroSection({
     alertPermission,
 }) {
     return (
-        <section className="dashboard-hero">
+        <section className="dashboard-hero mos-hero-card">
             <div className="hero-left">
                 <div className="hero-kicker">Daily Execution System</div>
 
@@ -27,7 +27,7 @@ export default function HeroSection({
                 </div>
             </div>
 
-            <div className="hero-right">
+            <div className="hero-right mos-hero-stat-block">
                 <div className="hero-stat-label">Today Completion</div>
                 <div className="hero-stat-value">{completionToday}%</div>
                 <div className="hero-stat-note">{dailyMotivation}</div>

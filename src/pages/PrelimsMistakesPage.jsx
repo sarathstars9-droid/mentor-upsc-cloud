@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { BACKEND_URL } from "../config";
 
 function formatDate(value) {
     if (!value) return "-";
@@ -39,10 +40,10 @@ export default function PrelimsMistakesPage() {
 
         async function loadMistakes() {
             try {
-                const res = await fetch("http://localhost:8787/api/mistakes?userId=user_1");
+                const res = await fetch(`${BACKEND_URL}/api/mistakes?userId=user_1`, { cache: "no-store" });
                 if (!res.ok) throw new Error(`Failed to fetch mistakes: ${res.status}`);
                 const data = await res.json();
-                const normalized = Array.isArray(data.items) ? data.items.map(normalizeMistake) : [];
+                const normalized = Array.isArray(data) ? data.map(normalizeMistake) : Array.isArray(data.items) ? data.items.map(normalizeMistake) : [];
                 if (isMounted) setMistakes(normalized);
             } catch (err) {
                 console.error("Failed to fetch prelims mistakes", err);

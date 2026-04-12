@@ -8,26 +8,47 @@ function getPriorityFromMistake(mistake) {
 }
 
 export async function ensureRevisionItemFromMistake(mistake) {
-    if (!mistake?.user_id || !mistake?.question_id) {
+    if (!mistake?.user_id) {
         return null;
     }
 
-    return await repo.upsertRevisionItem({
-        user_id: mistake.user_id,
-        source_type: mistake.source_type,
-        source_ref: mistake.source_ref,
-        question_id: mistake.question_id,
-        stage: mistake.stage,
-        subject: mistake.subject,
-        node_id: mistake.node_id,
-        question_text: mistake.question_text,
-        status: "pending",
-        priority: getPriorityFromMistake(mistake),
-        review_count: 0,
-        interval_days: 1,
-        last_reviewed_at: null,
-        next_review_at: new Date().toISOString(),
-    });
+    try {
+        // SELECT first — prevents duplicates without depending on DB unique index
+        const existing = await repo.findRevisionItemForMistake(
+            mistake.user_id,
+            mistake.question_id || null,
+            mistake.source_type || null,
+            mistake.source_ref || null,
+            mistake.stage || null
+        );
+        if (existing) return existing;
+
+        return await repo.upsertRevisionItem({
+            user_id: mistake.user_id,
+            source_type: mistake.source_type,
+            source_ref: mistake.source_ref,
+            question_id: mistake.question_id,
+            stage: mistake.stage,
+            subject: mistake.subject,
+            node_id: mistake.node_id,
+            question_text: mistake.question_text,
+            status: "pending",
+            priority: getPriorityFromMistake(mistake),
+            review_count: 0,
+            interval_days: 1,
+            last_reviewed_at: null,
+            next_review_at: new Date().toISOString(),
+        });
+    } catch (err) {
+        // Revision item creation must never break the mistake save flow.
+        // Log the error so it's visible in Railway logs, but do not rethrow.
+        console.error(
+            "[REVISION] ensureRevisionItemFromMistake failed — mistake was saved, revision item was not created:",
+            err?.message || err,
+            { userId: mistake.user_id, questionId: mistake.question_id, stage: mistake.stage }
+        );
+        return null;
+    }
 }
 
 export async function getRevisionQueue(userId, options = {}) {

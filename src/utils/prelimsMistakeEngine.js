@@ -26,7 +26,8 @@ const ATTEMPTS_KEY = "prelims_attempts_v2";
 
 const MAX_MISTAKES = 2000;
 const MAX_ATTEMPTS = 500;
-const API_BASE = "http://localhost:8787/api/mistakes";
+import { BACKEND_URL } from "../config";
+const API_BASE = `${BACKEND_URL}/api/mistakes`;
 const DEFAULT_USER_ID = "user_1";
 
 // ───────────────────────────────────────────────────────
@@ -146,7 +147,7 @@ async function apiFetchMistakes() {
         if (!res.ok || data?.success === false) {
             throw new Error(data?.error || `Fetch failed with status ${res.status}`);
         }
-        return Array.isArray(data.items) ? data.items : [];
+        return Array.isArray(data) ? data : Array.isArray(data.items) ? data.items : [];
     } catch (err) {
         throw new Error(`Failed to fetch mistakes: ${err.message}`);
     }

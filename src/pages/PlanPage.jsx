@@ -2431,6 +2431,7 @@ export default function PlanPage() {
 
   return (
     <div className="mentoros-content-inner">
+      <div className="mos-plan-wrapper">
       <HeroSection
         dPre={dPre}
         dMains={dMains}
@@ -2454,28 +2455,11 @@ export default function PlanPage() {
         onStop={requestStopBlock}
       />
 
-      <div className="plan-tabs-row">
-        <button
-          className="plan-tab plan-tab--active"
-          onClick={() => scrollToSection(studyBlocksRef)}
-        >
-          Today's Study Blocks
-        </button>
-
-        <button
-          className="plan-tab"
-          onClick={() => scrollToSection(nightReviewRef)}
-        >
-          Night Review
-        </button>
-
-        <button
-          className="plan-tab"
-          onClick={() => scrollToSection(loopDetectorRef)}
-        >
-          Loop Detector
-        </button>
-      </div>
+      <QuickActions
+        onStudyBlocks={() => scrollToSection(studyBlocksRef)}
+        onNightReview={() => scrollToSection(nightReviewRef)}
+        onLoopDetector={() => scrollToSection(loopDetectorRef)}
+      />
 
       <div className="mos-daily-actions">
         <div className="mos-card-label mos-card-label--saf">EXECUTION • DAILY ACTIONS</div>
@@ -2805,6 +2789,8 @@ export default function PlanPage() {
           setStatus(`✅ Block "${text}" added manually.`);
         }}
       />
+
+      </div>{/* /mos-plan-wrapper */}
 
       <BlockReviewModal
         open={!!activeReviewBlock}

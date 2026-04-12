@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-
-const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+import { BACKEND_URL as BASE_URL } from "../config";
 const USER_ID = "user_1";
 
 /* ── Utility ── */
@@ -228,12 +227,12 @@ export default function RevisionPage() {
   const [search, setSearch] = useState("");
   const [lastRefresh, setLastRefresh] = useState(null);
 
-  const fetchItems = useCallback(async () => {
-    setLoading(true);
+  const fetchItems = useCallback(async (silent = false) => {
+    if (!silent) setLoading(true);
     setError(null);
     try {
       const url = `${BASE_URL}/api/revision-items?userId=${USER_ID}${dueOnly ? "&dueOnly=true" : ""}`;
-      const res = await fetch(url);
+      const res = await fetch(url, { cache: "no-store" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       const arr = Array.isArray(data) ? data : (data.items || data.data || []);
@@ -269,7 +268,7 @@ export default function RevisionPage() {
     try {
       const res = await fetch(`${BASE_URL}/api/revision-items/${id}/review`, { method: "POST" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      await fetchItems();
+      setTimeout(() => { fetchItems(true); }, 150);
     } catch (e) {
       alert(`Review failed: ${e.message}`);
     } finally {
@@ -286,7 +285,7 @@ export default function RevisionPage() {
         body: JSON.stringify({ days })
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      await fetchItems();
+      setTimeout(() => { fetchItems(true); }, 150);
     } catch (e) {
       alert(`Snooze failed: ${e.message}`);
     } finally {

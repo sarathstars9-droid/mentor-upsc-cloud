@@ -18,7 +18,7 @@ export default function SpotlightCard({
     // ── EMPTY STATE ──────────────────────────────────────────
     if (!currentBlock) {
         return (
-            <section className="spotlight-card">
+            <section className="spotlight-card mos-spotlight-card">
                 <div className="spotlight-label-row">⚡ Current Block Spotlight</div>
                 <div className="spotlight-layout">
                     <div className="spotlight-left">
@@ -64,7 +64,7 @@ export default function SpotlightCard({
         onMarkDone || (onStop ? () => onStop(currentBlock) : undefined);
 
     return (
-        <section className="spotlight-card">
+        <section className="spotlight-card mos-spotlight-card">
             <div className="spotlight-label-row">⚡ Current Block Spotlight</div>
 
             <div className="spotlight-layout">

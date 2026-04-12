@@ -240,7 +240,7 @@ function formatMistakeDate(value) {
   });
 }
 
-export function MistakeBookReviewDrawer({ mistake, onClose }) {
+export function MistakeBookReviewDrawer({ mistake, onClose, onRefresh }) {
   const {
     questionText,
     options,
@@ -517,7 +517,7 @@ export function MistakeBookReviewDrawer({ mistake, onClose }) {
 
         <button
           type="button"
-          onClick={() => setIsRevised(true)}
+          onClick={() => { setIsRevised(true); if (onRefresh) onRefresh(); }}
           style={{
             ...s.button,
             ...s.buttonRevision,

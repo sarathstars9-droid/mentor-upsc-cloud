@@ -495,6 +495,7 @@ app.use("/api/blocks", blockResolveRoute);        // isolated block classificati
 // ── Mistake & Revision routes (registered here, not at bottom) ───────────────
 app.use("/api/mistakes", mistakeRoutes);
 app.use("/api/revision-items", revisionRoutes);
+app.use("/api/revision", revisionRoutes);   // alias — same router, both paths work
 
 /* -------------------- MAINS GS1 QUESTIONS API -------------------- */
 

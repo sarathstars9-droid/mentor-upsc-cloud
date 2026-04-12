@@ -1636,7 +1636,7 @@ export default function PrelimsPage() {
                         : practiceScope === "topic" ? "topic_test"
                           : practiceScope === "subtopic" ? "topic_test"
                             : "sectional_test";
-                    recordTestAttempt(
+                    await recordTestAttempt(
                       {
                         testId, sourceType, paper: practicePaper,
                         year: testMode === "full_length" ? fullLengthYear : null,

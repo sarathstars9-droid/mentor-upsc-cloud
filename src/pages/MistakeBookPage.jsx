@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback, useEffect } from "react";
 import { buildMistakeExplanationPrompt } from "../utils/buildMistakeExplanationPrompt";
 import { openChatGptForMistake } from "../utils/openChatGptForMistake";
 import { MistakeBookReviewDrawer } from "../components/MistakeBookReviewDrawer";
+import { BACKEND_URL } from "../config";
 
 const C = {
   bg: "#0f0f14",
@@ -321,7 +322,7 @@ function formatMistakeDate(value) {
     year: "numeric",
   });
 }
-function MistakeCard({ mistake, isExpanded, onExpand, onCollapse }) {
+function MistakeCard({ mistake, isExpanded, onExpand, onCollapse, onRefresh }) {
   const {
     questionText,
     options,
@@ -404,6 +405,7 @@ function MistakeCard({ mistake, isExpanded, onExpand, onCollapse }) {
         <MistakeBookReviewDrawer
           mistake={mistake}
           onClose={onCollapse}
+          onRefresh={onRefresh}
         />
       </div>
     );
@@ -543,43 +545,49 @@ export default function MistakeBookPage() {
   const [openMistakeId, setOpenMistakeId] = useState(null);  // Track which card is expanded
 
   const [allMistakes, setAllMistakes] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchMistakes = useCallback(async (silent = false) => {
+    if (!silent) setLoading(true);
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/mistakes?userId=user_1`, {
+        cache: "no-store",
+      });
+      const data = await res.json();
+
+      if (!Array.isArray(data)) {
+        console.warn("[MistakeBook] Unexpected response", data);
+        setAllMistakes([]);
+        return;
+      }
+
+      const normalized = data.map((m) => ({
+        ...m,
+        questionText: m.question_text,
+        latestUserAnswer: m.selected_answer,
+        correctAnswer: m.correct_answer,
+        latestResult: m.answer_status,
+        sourceType: m.source_type,
+        nodeId: m.node_id,
+        createdAt: m.created_at,
+        subject: m.subject || "",
+        topic: m.topic || "",
+        questionId: m.question_id || m.id,
+        paper: m.paper || "GS",
+      }));
+
+      setAllMistakes(normalized);
+    } catch (err) {
+      console.error("[MistakeBook] Fetch failed", err);
+      setAllMistakes([]);
+    } finally {
+      if (!silent) setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    async function fetchMistakes() {
-      try {
-        const res = await fetch("http://localhost:8787/api/mistakes?userId=user_1");
-        const data = await res.json();
-
-        if (!Array.isArray(data)) {
-          console.warn("[MistakeBook] Unexpected response", data);
-          setAllMistakes([]);
-          return;
-        }
-
-        const normalized = data.map((m) => ({
-          ...m,
-          questionText: m.question_text,
-          latestUserAnswer: m.selected_answer,
-          correctAnswer: m.correct_answer,
-          latestResult: m.answer_status,
-          sourceType: m.source_type,
-          nodeId: m.node_id,
-          createdAt: m.created_at,
-          subject: m.subject || "",
-          topic: m.topic || "",
-          questionId: m.question_id || m.id,
-          paper: m.paper || "GS",
-        }));
-
-        setAllMistakes(normalized);
-      } catch (err) {
-        console.error("[MistakeBook] Fetch failed", err);
-        setAllMistakes([]);
-      }
-    }
-
     fetchMistakes();
-  }, []);
+  }, [fetchMistakes]);
 
   const subjects = useMemo(() => {
     const map = new Map();
@@ -775,7 +783,7 @@ export default function MistakeBookPage() {
       {filtered.length === 0 ? (
         <div style={s.empty}>
           <div style={s.emptyIcon}>📘</div>
-          <p style={s.emptyTitle}>No Mistakes Found</p>
+          <p style={s.emptyTitle}>{loading && allMistakes.length === 0 ? "Loading…" : "No Mistakes Found"}</p>
           <p style={s.emptyText}>
             {subjectFilter !== "all" || sourceFilter !== "all" || paperFilter !== "all" || resultFilter !== "all" || searchText
               ? "Try adjusting your filters"
@@ -791,6 +799,7 @@ export default function MistakeBookPage() {
               isExpanded={openMistakeId === mistake.questionId}
               onExpand={() => setOpenMistakeId(mistake.questionId)}
               onCollapse={() => setOpenMistakeId(null)}
+              onRefresh={() => setTimeout(() => fetchMistakes(true), 150)}
             />
           ))}
         </div>
