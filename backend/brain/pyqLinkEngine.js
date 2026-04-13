@@ -279,6 +279,55 @@ function getBucketStageArrays(bucket) {
 import { getNodeById, getAllDescendantLeafNodeIds, isLeafNode } from "./unifiedSyllabusIndex.js";
 
 // ---------------------------------------------------------
+// PREFIX ALIAS CANONICALIZATION
+// ---------------------------------------------------------
+// Maps long-form node ID prefixes to their canonical short forms.
+// These mirror the explicit alias cases in getFamilyAnchor so the
+// resolver can handle inputs like GS2-POLITY-FR (user-facing label)
+// that should map to GS2-POL-FR (actual index key).
+// Keys must be already normalised (uppercase, hyphens only).
+const PREFIX_ALIAS = {
+  "GS1-HISTORY":                  "GS1-HIS",
+  "GS1-GEOGRAPHY":                "GS1-GEO",
+  "GS1-CULTURE":                  "GS1-CULT",
+  "GS1-SOCIETY":                  "GS1-SOC",
+  "GS2-POLITY":                   "GS2-POL",
+  "GS2-GOVERNANCE":               "GS2-GOV",
+  "GS2-INTERNATIONAL-RELATIONS":  "GS2-IR",
+  "GS3-ECONOMY":                  "GS3-ECO",
+  "GS3-ENVIRONMENT":              "GS3-ENV",
+  "GS3-SCIENCE-AND-TECHNOLOGY":   "GS3-ST",
+  "GS3-SCIENCETECH":              "GS3-ST",
+  "GS3-SCIENCEANDTECH":           "GS3-ST",
+  "GS3-SECURITY":                 "GS3-SEC",
+  "GS4-ETHICS":                   "GS4-ETH",
+  "CSAT-NUMERACY":                "CSAT-BN",
+  "CSAT-BASIC-NUMERACY":          "CSAT-BN",
+  "OPTIONAL-GEOGRAPHY":           "OPT-GEO",
+  "GEOGRAPHY-OPTIONAL":           "OPT-GEO",
+};
+
+// Attempt to canonicalize the leading prefix of a node ID using PREFIX_ALIAS.
+// Tries each prefix length (longest first) so compound subjects like
+// GS3-SCIENCE-AND-TECHNOLOGY-AI collapse to GS3-ST-AI before GS3 alone is tried.
+// Returns the canonical form if found, or the original node ID unchanged.
+function tryCanonicalizePrefix(nodeId) {
+  const parts = nodeId.split("-");
+  const maxPrefixLen = Math.min(4, parts.length - 1);
+
+  for (let len = maxPrefixLen; len >= 1; len--) {
+    const prefix = parts.slice(0, len).join("-");
+    const canonical = PREFIX_ALIAS[prefix];
+    if (canonical && canonical !== prefix) {
+      const rest = parts.slice(len);
+      return rest.length > 0 ? `${canonical}-${rest.join("-")}` : canonical;
+    }
+  }
+
+  return nodeId;
+}
+
+// ---------------------------------------------------------
 // REWRITTEN SAFE RESOLVER FOR RETRIEVAL
 // ---------------------------------------------------------
 export function resolveInputToLookupNodeIds(inputId) {
@@ -288,12 +337,19 @@ export function resolveInputToLookupNodeIds(inputId) {
   // 1. Is it a known node in the registry?
   const node = getNodeById(normalizedInput);
   if (!node) {
-    // If it's literally not in the syllabus, don't invent things.
-    // Try checking if it exists directly in PYQ index
+    // Direct hit in PYQ index?
     if (PYQ_NODE_KEY_SET.has(normalizedInput)) return [normalizedInput];
-    // Try prefix-descendant lookup (handles mismatched naming schemes)
+    // Prefix-descendant lookup (handles mismatched naming schemes)
     const descendantsByPrefix = getDescendantPyqNodeIds(normalizedInput);
     if (descendantsByPrefix.length > 0) return descendantsByPrefix;
+    // Subject prefix canonicalization: e.g. GS2-POLITY-FR → GS2-POL-FR.
+    // Fires only when the above two paths both fail, so it never overrides
+    // any node that already resolves correctly.
+    const canonical = tryCanonicalizePrefix(normalizedInput);
+    if (canonical !== normalizedInput) {
+      const canonicalResult = resolveInputToLookupNodeIds(canonical);
+      if (canonicalResult.length > 0) return canonicalResult;
+    }
     return [];
   }
 
@@ -617,11 +673,14 @@ export function getPyqCountForTopic(inputNodeId, options = {}) {
 }
 export function explainPyqResolution(inputNodeId) {
   const normalized = normalizeNodeId(inputNodeId);
+  const canonical = tryCanonicalizePrefix(normalized);
   const finalLookup = resolveInputToLookupNodeIds(normalized);
 
   return {
     input: inputNodeId,
     normalized,
+    // present only when prefix canonicalization was applied (e.g. GS2-POLITY-FR → GS2-POL-FR)
+    canonicalInput: canonical !== normalized ? canonical : undefined,
     finalLookupNodeIds: finalLookup,
   };
 }

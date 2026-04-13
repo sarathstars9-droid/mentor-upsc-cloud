@@ -45,6 +45,40 @@ const PRIORITY_COLOR = { high: "#ef4444", medium: "#f59e0b", low: "#6b7280" };
 const PRIORITY_BG = { high: "#1a0000", medium: "#1a1200", low: "#111" };
 const STATUS_COLOR = { pending: "#f59e0b", reviewed: "#22c55e", snoozed: "#6366f1", skipped: "#6b7280" };
 
+const RISK_COLOR = { low: "#6b7280", medium: "#f59e0b", high: "#f97316", critical: "#ef4444" };
+const RISK_BG    = { low: "#111",    medium: "#1a1200", high: "#1a0800", critical: "#1a0000" };
+
+/* ── lookupWeakness ──────────────────────────────────────────────────────────
+ * Given an item and the weaknessMap returned by /api/weakness/map, returns
+ * the matching weakness row (or null). Tries node_id::stage first, then
+ * node_id alone as a fallback for items without a stage.
+ * ─────────────────────────────────────────────────────────────────────────── */
+function lookupWeakness(item, weaknessMap) {
+  if (!item.node_id || !weaknessMap) return null;
+  return (
+    weaknessMap[`${item.node_id}::${item.stage || ""}`] ||
+    weaknessMap[item.node_id] ||
+    null
+  );
+}
+
+/* ── sortByWeakness ──────────────────────────────────────────────────────────
+ * Within a bucket, sort by weakness_score DESC then next_review_at ASC.
+ * Items with no matching weakness node score as 0 (fall to bottom).
+ * ─────────────────────────────────────────────────────────────────────────── */
+function sortByWeakness(items, weaknessMap) {
+  return [...items].sort((a, b) => {
+    const wa = lookupWeakness(a, weaknessMap);
+    const wb = lookupWeakness(b, weaknessMap);
+    const sa = wa ? Number(wa.weakness_score) : 0;
+    const sb = wb ? Number(wb.weakness_score) : 0;
+    if (sb !== sa) return sb - sa; // higher weakness first
+    const da = a.next_review_at ? new Date(a.next_review_at).getTime() : 0;
+    const db = b.next_review_at ? new Date(b.next_review_at).getTime() : 0;
+    return da - db; // earlier time first within same score
+  });
+}
+
 /* ── Sub-components ── */
 const Badge = ({ label, color, bg }) => (
   <span style={{
@@ -76,12 +110,111 @@ const FilterPill = ({ label, active, onClick }) => (
   }}>{label}</button>
 );
 
-function RevisionCard({ item, onReview, onSnooze, loadingId }) {
+/* ── WeakAreaPanel ───────────────────────────────────────────────────────────
+ * Compact top-5 weak nodes display. Matches existing dark monochrome style.
+ * Hidden when weaknessMap is empty (e.g. not yet computed or API unavailable).
+ * ─────────────────────────────────────────────────────────────────────────── */
+function WeakAreaPanel({ weaknessMap }) {
+  const nodes = Object.values(weaknessMap || {})
+    .sort((a, b) => Number(b.weakness_score) - Number(a.weakness_score))
+    .slice(0, 5);
+
+  if (nodes.length === 0) return null;
+
+  return (
+    <div style={{
+      background: "#0f0f0f", border: "1px solid #1e1e1e",
+      borderRadius: 10, padding: "16px 20px", marginBottom: 20
+    }}>
+      <div style={{
+        fontSize: 10, fontWeight: 700, color: "#555",
+        letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12
+      }}>
+        Top Weak Areas
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+        {nodes.map((node, idx) => {
+          const risk = node.risk_level || "low";
+          const score = Number(node.weakness_score) || 0;
+          const barWidth = Math.min(100, score);
+          return (
+            <div key={`${node.node_id}::${node.stage || ""}`} style={{
+              background: "#0c0c0c",
+              border: `1px solid ${RISK_COLOR[risk]}22`,
+              borderLeft: `3px solid ${RISK_COLOR[risk]}`,
+              borderRadius: 7, padding: "10px 14px",
+              display: "flex", alignItems: "center", gap: 12
+            }}>
+              {/* Rank */}
+              <span style={{
+                fontSize: 9, fontWeight: 700, color: "#333",
+                fontFamily: "monospace", minWidth: 14, textAlign: "right"
+              }}>
+                {idx + 1}
+              </span>
+
+              {/* Node info */}
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{
+                  fontSize: 10, fontWeight: 600, color: "#aaa",
+                  fontFamily: "monospace", letterSpacing: "0.03em",
+                  whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"
+                }}>
+                  {node.node_id}
+                </div>
+                {node.subject && (
+                  <div style={{ fontSize: 9, color: "#444", fontFamily: "monospace", marginTop: 1 }}>
+                    {node.subject}{node.stage ? ` · ${node.stage}` : ""}
+                  </div>
+                )}
+                {/* Score bar */}
+                <div style={{
+                  marginTop: 5, height: 2, background: "#1a1a1a",
+                  borderRadius: 2, overflow: "hidden"
+                }}>
+                  <div style={{
+                    width: `${barWidth}%`, height: "100%",
+                    background: RISK_COLOR[risk], borderRadius: 2,
+                    transition: "width 0.4s ease"
+                  }} />
+                </div>
+              </div>
+
+              {/* Score + risk badge */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4, flexShrink: 0 }}>
+                <span style={{
+                  fontSize: 14, fontWeight: 700, color: RISK_COLOR[risk],
+                  fontFamily: "monospace", lineHeight: 1
+                }}>
+                  {score}
+                </span>
+                <span style={{
+                  background: RISK_BG[risk],
+                  border: `1px solid ${RISK_COLOR[risk]}44`,
+                  color: RISK_COLOR[risk],
+                  fontSize: 8, fontWeight: 700, borderRadius: 3,
+                  padding: "1px 5px", letterSpacing: "0.08em",
+                  textTransform: "uppercase", fontFamily: "monospace"
+                }}>
+                  {risk}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function RevisionCard({ item, onReview, onSnooze, loadingId, weaknessMap }) {
   const [expanded, setExpanded] = useState(false);
   const isLoading = loadingId === item.id;
   const overdue = isOverdue(item);
   const due = isDue(item);
   const revToday = reviewedToday(item);
+  const weakness = lookupWeakness(item, weaknessMap);
 
   const urgencyBorder = overdue ? "#ef444422" : due ? "#f59e0b22" : "#1e1e1e";
   const urgencyLeft = overdue ? "#ef4444" : due ? "#f59e0b" : "#2a2a2a";
@@ -120,6 +253,13 @@ function RevisionCard({ item, onReview, onSnooze, loadingId }) {
         <div style={{ display: "flex", flexDirection: "column", gap: 4, alignItems: "flex-end", flexShrink: 0 }}>
           <Badge label={item.priority || "—"} color={PRIORITY_COLOR[item.priority || "low"]} bg={PRIORITY_BG[item.priority || "low"]} />
           <Badge label={item.status || "—"} color={STATUS_COLOR[item.status] || "#6b7280"} />
+          {weakness && (
+            <Badge
+              label={`W:${Number(weakness.weakness_score)}`}
+              color={RISK_COLOR[weakness.risk_level || "low"]}
+              bg={RISK_BG[weakness.risk_level || "low"]}
+            />
+          )}
         </div>
       </div>
 
@@ -226,16 +366,26 @@ export default function RevisionPage() {
   const [statusFilter, setStatusFilter] = useState("all");
   const [search, setSearch] = useState("");
   const [lastRefresh, setLastRefresh] = useState(null);
+  const [weaknessMap, setWeaknessMap] = useState({});
 
   const fetchItems = useCallback(async (silent = false) => {
     if (!silent) setLoading(true);
     setError(null);
     try {
-      const url = `${BASE_URL}/api/revision-items?userId=${USER_ID}${dueOnly ? "&dueOnly=true" : ""}`;
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      const arr = Array.isArray(data) ? data : (data.items || data.data || []);
+      const revisionUrl = `${BASE_URL}/api/revision-items?userId=${USER_ID}${dueOnly ? "&dueOnly=true" : ""}`;
+      const weaknessUrl = `${BASE_URL}/api/weakness/map?userId=${USER_ID}`;
+
+      // Fetch both in parallel; weakness failure must never break the revision load
+      const [revRes, weakRes] = await Promise.allSettled([
+        fetch(revisionUrl, { cache: "no-store" }),
+        fetch(weaknessUrl, { cache: "no-store" }),
+      ]);
+
+      // Handle revision items (primary — errors propagate)
+      if (revRes.status === "rejected") throw revRes.reason;
+      if (!revRes.value.ok) throw new Error(`HTTP ${revRes.value.status}`);
+      const revData = await revRes.value.json();
+      const arr = Array.isArray(revData) ? revData : (revData.items || revData.data || []);
       arr.sort((a, b) => {
         const da = a.next_review_at ? new Date(a.next_review_at).getTime() : 0;
         const db = b.next_review_at ? new Date(b.next_review_at).getTime() : 0;
@@ -243,6 +393,16 @@ export default function RevisionPage() {
       });
       setItems(arr);
       setLastRefresh(new Date());
+
+      // Handle weakness map (secondary — errors are silent)
+      if (weakRes.status === "fulfilled" && weakRes.value.ok) {
+        try {
+          const weakData = await weakRes.value.json();
+          setWeaknessMap(weakData.map || {});
+        } catch (_) {
+          // malformed JSON — keep existing map, don't error
+        }
+      }
     } catch (e) {
       setError(e.message);
     } finally {
@@ -317,9 +477,10 @@ export default function RevisionPage() {
     return true;
   });
 
-  const overdueItems = filtered.filter(i => isOverdue(i));
-  const dueNowItems = filtered.filter(i => isDue(i) && !isOverdue(i));
-  const upcomingItems = filtered.filter(i => !isDue(i));
+  // Split into buckets then sort each by weakness score (DESC) → time (ASC)
+  const overdueItems  = sortByWeakness(filtered.filter(i => isOverdue(i)), weaknessMap);
+  const dueNowItems   = sortByWeakness(filtered.filter(i => isDue(i) && !isOverdue(i)), weaknessMap);
+  const upcomingItems = sortByWeakness(filtered.filter(i => !isDue(i)), weaknessMap);
 
   const totalCount = items.length;
   const dueCount = items.filter(i => isDue(i)).length;
@@ -362,6 +523,9 @@ export default function RevisionPage() {
           <StatChip label="Reviewed Today" value={reviewedTodayCount} />
         </div>
       </div>
+
+      {/* TOP WEAK AREAS */}
+      <WeakAreaPanel weaknessMap={weaknessMap} />
 
       {/* FILTERS */}
       <div style={s.sectionCard}>
@@ -453,7 +617,7 @@ export default function RevisionPage() {
             <div style={{ marginBottom: 24 }}>
               <SectionHeader label="⚠ Overdue" count={overdueItems.length} />
               {overdueItems.map(item => (
-                <RevisionCard key={item.id} item={item} onReview={handleReview} onSnooze={handleSnooze} loadingId={loadingId} />
+                <RevisionCard key={item.id} item={item} onReview={handleReview} onSnooze={handleSnooze} loadingId={loadingId} weaknessMap={weaknessMap} />
               ))}
             </div>
           )}
@@ -463,7 +627,7 @@ export default function RevisionPage() {
             <div style={{ marginBottom: 24 }}>
               <SectionHeader label="● Due Now" count={dueNowItems.length} />
               {dueNowItems.map(item => (
-                <RevisionCard key={item.id} item={item} onReview={handleReview} onSnooze={handleSnooze} loadingId={loadingId} />
+                <RevisionCard key={item.id} item={item} onReview={handleReview} onSnooze={handleSnooze} loadingId={loadingId} weaknessMap={weaknessMap} />
               ))}
             </div>
           )}
@@ -473,7 +637,7 @@ export default function RevisionPage() {
             <div style={{ marginBottom: 24 }}>
               <SectionHeader label="Upcoming" count={upcomingItems.length} />
               {upcomingItems.map(item => (
-                <RevisionCard key={item.id} item={item} onReview={handleReview} onSnooze={handleSnooze} loadingId={loadingId} />
+                <RevisionCard key={item.id} item={item} onReview={handleReview} onSnooze={handleSnooze} loadingId={loadingId} weaknessMap={weaknessMap} />
               ))}
             </div>
           )}

@@ -823,15 +823,21 @@ export default function SyllabusPage() {
   }, [dashboard, filters]);
 
   const filteredWeakZones = useMemo(() => {
+    const riskOrder = { critical: 0, high: 1, medium: 2, low: 3 };
     const rows = dashboard?.weakZones || [];
     const q = String(filters.search || "").trim().toLowerCase();
 
-    return rows.filter((row) => {
-      if (filters.paper !== "ALL" && row.paperKey !== filters.paper) return false;
-      if (!q) return true;
-
-      return `${row.topicLabel || ""} ${row.reason || ""} ${row.nodeId || ""}`.toLowerCase().includes(q);
-    });
+    return rows
+      .filter((row) => {
+        if (filters.paper !== "ALL" && row.paperKey !== filters.paper) return false;
+        if (!q) return true;
+        return `${row.topicLabel || ""} ${row.reason || ""} ${row.nodeId || ""}`.toLowerCase().includes(q);
+      })
+      .sort((a, b) => {
+        const ra = riskOrder[String(a.priority || "low").toLowerCase()] ?? 3;
+        const rb = riskOrder[String(b.priority || "low").toLowerCase()] ?? 3;
+        return ra - rb;
+      });
   }, [dashboard, filters]);
 
   const filteredUntouchedZones = useMemo(() => {
@@ -955,6 +961,20 @@ export default function SyllabusPage() {
           </div>
 
           {/* WEAKNESS HEAT MAP — inserted between stat chips and filters */}
+          {Object.keys(weaknessMap).length > 0 && (
+            <div style={{
+              padding: "12px 18px",
+              borderRadius: 14,
+              background: "rgba(239,68,68,0.08)",
+              border: "1px solid rgba(239,68,68,0.2)",
+              fontSize: 13,
+              color: "#fca5a5",
+              fontWeight: 600,
+              letterSpacing: "0.01em",
+            }}>
+              If you fix these nodes, your score improves fastest.
+            </div>
+          )}
           <WeaknessHeatPanel weaknessMap={weaknessMap} />
 
           <SectionCard title="Filters">
@@ -1005,7 +1025,9 @@ export default function SyllabusPage() {
               gap: 16,
             }}
           >
-            <SectionCard title="Weak Zones">
+            <SectionCard
+              title={`Weak Zones — Auto-priority from your mistakes (${filteredWeakZones.length})`}
+            >
               <ListPanel
                 items={filteredWeakZones}
                 emptyLabel="No weak zones found for current filters."
@@ -1021,7 +1043,10 @@ export default function SyllabusPage() {
                 renderItem={(item) => {
                   const weakness = lookupWeakness(item.nodeId, null, weaknessMap);
                   return (
-                    <div style={{ display: "grid", gap: 8 }}>
+                    <div
+                      style={{ display: "grid", gap: 8, cursor: "pointer" }}
+                      onClick={() => { window.location.href = `/focus?nodeId=${item.nodeId}`; }}
+                    >
                       <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
                         <div style={{ fontWeight: 800 }}>{item.topicLabel || item.nodeId}</div>
                         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
@@ -1047,6 +1072,25 @@ export default function SyllabusPage() {
                       <div style={{ fontSize: 13 }}>
                         <b>Action:</b> {item.suggestedAction}
                       </div>
+                      <button
+                        style={{
+                          marginTop: 8,
+                          padding: "6px 10px",
+                          borderRadius: 8,
+                          background: "#ef4444",
+                          color: "#fff",
+                          fontWeight: 700,
+                          border: "none",
+                          cursor: "pointer",
+                          alignSelf: "flex-start",
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.location.href = `/focus?nodeId=${item.nodeId}`;
+                        }}
+                      >
+                        Fix Now
+                      </button>
                     </div>
                   );
                 }}
@@ -1069,7 +1113,10 @@ export default function SyllabusPage() {
                 renderItem={(item) => {
                   const weakness = lookupWeakness(item.nodeId, null, weaknessMap);
                   return (
-                    <div style={{ display: "grid", gap: 8 }}>
+                    <div
+                      style={{ display: "grid", gap: 8, cursor: "pointer" }}
+                      onClick={() => { window.location.href = `/focus?nodeId=${item.nodeId}`; }}
+                    >
                       <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
                         <div style={{ fontWeight: 800 }}>{item.topicLabel || item.nodeId}</div>
                         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>

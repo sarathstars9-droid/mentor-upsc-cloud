@@ -13,14 +13,11 @@ import cors from "cors";
 import multer from "multer";
 import OpenAI from "openai";
 import dotenv from "dotenv";
-import fs from "fs";
-import path from "path";
 import pyqRoutes from "./routes/pyqRoutes.js";
 import buildTopicTest from "./phase3a/builders/buildTopicTest.js";
 import {
   getPyqSummaryForNode,
-  getPyqsForTopic,
-  explainPyqResolution
+  explainPyqResolution,
 } from "./brain/pyqLinkEngine.js";
 import SYLLABUS_GRAPH_2026 from "./brain/syllabusGraph.js";
 import { detectLoops } from "./brain/loopDetector.js";
@@ -62,12 +59,9 @@ import { getGSCounts, loadGSData } from "./data/loaders/gsLoader.js";
 import { loadCSATData } from "./data/loaders/csatLoader.js";
 import { getRcSubtopicSummary, resetRcCache } from "./engines/rcSubtopicLoader.js";
 import { processOcrText } from "./ocrMapping/index.js";
-import { fileURLToPath } from "url";
 import mistakeRoutes from "./routes/mistakeRoutes.js";
 import revisionRoutes from "./routes/revisionRoutes.js";
 import weaknessRoutes from "./routes/weaknessRoutes.js";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 dotenv.config();
 
 console.log("[BOOT] server.js loaded");
@@ -317,83 +311,6 @@ function emptyLinkedPyqs(nodeId = "") {
   };
 }
 
-function getQuestionStage(q = {}) {
-  const id = String(q?.id || "").trim().toUpperCase();
-  const exam = String(q?.exam || "").trim().toLowerCase();
-  const paper = String(q?.paper || "").trim().toLowerCase();
-  const subject = String(q?.subject || "").trim().toLowerCase();
-
-  // 1) ID HAS HIGHEST PRIORITY
-  if (id.startsWith("PRE_CSAT_") || id.startsWith("CSAT_")) {
-    return "csat";
-  }
-
-  if (id.startsWith("PRE_")) {
-    return "prelims";
-  }
-
-  if (id.startsWith("ESSAY_")) {
-    return "essay";
-  }
-
-  if (id.startsWith("ETH_")) {
-    return "ethics";
-  }
-
-  if (id.startsWith("OPT_")) {
-    return "optional";
-  }
-
-  if (id.startsWith("MAINS_") || id.startsWith("MAIN_")) {
-    return "mains";
-  }
-
-  // Support mains ids like GS1_2020_Q1, GS2_2019_Q3, etc.
-  if (/^GS[1-4]_/.test(id)) {
-    if (id.startsWith("GS4_")) return "ethics";
-    return "mains";
-  }
-
-  // 2) EXAM FIELD NEXT
-  if (
-    exam === "prelims" ||
-    exam === "mains" ||
-    exam === "essay" ||
-    exam === "ethics" ||
-    exam === "optional" ||
-    exam === "csat"
-  ) {
-    return exam;
-  }
-
-  // 3) PAPER FIELD LAST
-  if (
-    paper === "prelims" ||
-    paper === "mains" ||
-    paper === "essay" ||
-    paper === "ethics" ||
-    paper === "optional" ||
-    paper === "csat"
-  ) {
-    return paper;
-  }
-
-  if (paper === "gs4") {
-    return "ethics";
-  }
-
-  // gs1/gs2/gs3 are ambiguous in your dataset,
-  // because prelims records also carry paper:"GS1".
-  // So do NOT force them unless you have stronger evidence.
-  if (
-    (paper === "gs1" || paper === "gs2" || paper === "gs3") &&
-    subject.includes("csat")
-  ) {
-    return "csat";
-  }
-
-  return "";
-}
 
 function buildMappedObject(mapped, nonStudy, originalItem) {
   if (nonStudy) {
@@ -770,37 +687,12 @@ app.post("/api/loop-detect", (req, res) => {
     return res.status(500).json({ ok: false, message: String(e?.message || e) });
   }
 });
-function collectNodeAndDescendantIds(pyqByNode, requestedNodeId) {
-  const matchingNodeIds = Object.keys(pyqByNode || {}).filter(
-    (id) => id === requestedNodeId || id.startsWith(`${requestedNodeId}-`)
-  );
 
-  const result = {
-    prelims: new Set(),
-    mains: new Set(),
-    essay: new Set(),
-    ethics: new Set(),
-    optional: new Set(),
-    csat: new Set(),
-  };
-
-  for (const matchedNodeId of matchingNodeIds) {
-    const bucket = pyqByNode?.[matchedNodeId] || {};
-    for (const stage of Object.keys(result)) {
-      const ids = Array.isArray(bucket?.[stage]) ? bucket[stage] : [];
-      for (const qid of ids) result[stage].add(qid);
-    }
-  }
-
-  return {
-    matchingNodeIds,
-    aggregated: Object.fromEntries(
-      Object.entries(result).map(([stage, set]) => [stage, Array.from(set)])
-    ),
-  };
-}
 /* -------------------- PYQ NODE API -------------------- */
-/* -------------------- PYQ NODE API -------------------- */
+// Uses getPyqSummaryForNode which goes through the full alias-aware
+// resolveInputToLookupNodeIds chain (family anchors, syllabus registry,
+// prefix-descendant map). This correctly resolves parent nodes like
+// GS2-POLITY-FR whose children may be stored under aliased keys.
 app.get("/api/pyq/node/:nodeId", (req, res) => {
   try {
     const { nodeId } = req.params;
@@ -812,72 +704,34 @@ app.get("/api/pyq/node/:nodeId", (req, res) => {
       });
     }
 
-    const pyqByNodePath = path.join(__dirname, "data", "pyq_index", "pyq_by_node.json");
-    const pyqByNode = JSON.parse(fs.readFileSync(pyqByNodePath, "utf8"));
-
-    const { matchingNodeIds } = collectNodeAndDescendantIds(pyqByNode, nodeId);
-
-    let questions = [];
-    const seen = new Set();
-
-    for (const matchedNodeId of matchingNodeIds) {
-      const nodeQuestions = getPyqsForTopic(matchedNodeId, 0);
-      for (const q of Array.isArray(nodeQuestions) ? nodeQuestions : []) {
-        const qid = String(q?.id || "").trim();
-        if (!qid || seen.has(qid)) continue;
-        seen.add(qid);
-        questions.push(q);
-      }
-    }
-
-    console.log("[PYQ AGG DEBUG]", {
-      requestedNodeId: nodeId,
-      matchingNodeIds,
-      totalQuestions: questions.length,
-    });
-
+    // getPyqSummaryForNode handles: exact match, family aliases, leaf descendants,
+    // prefix-descendant fallback. Limit 0 = return all questions.
+    const summary = getPyqSummaryForNode(nodeId, 0);
     const resolution = explainPyqResolution(nodeId);
 
-    const counts = {
-      total: questions.length,
-      prelims: 0,
-      mains: 0,
-      essay: 0,
-      ethics: 0,
-      optional: 0,
-      csat: 0,
-    };
-
-    for (const q of questions) {
-      const stage = getQuestionStage(q);
-      if (process.env.NODE_ENV !== "production") {
-        console.log("[PYQ NODE SUMMARY]", {
-          nodeId,
-          total: questions.length,
-          prelims: counts.prelims,
-          mains: counts.mains,
-          essay: counts.essay,
-          ethics: counts.ethics,
-          optional: counts.optional,
-          csat: counts.csat,
-        });
-      }
-
-      if (stage === "prelims") counts.prelims++;
-      else if (stage === "mains") counts.mains++;
-      else if (stage === "essay") counts.essay++;
-      else if (stage === "ethics") counts.ethics++;
-      else if (stage === "optional") counts.optional++;
-      else if (stage === "csat") counts.csat++;
-    }
+    console.log("[PYQ NODE API]", {
+      requestedNodeId: nodeId,
+      lookupNodeIds: summary.lookupNodeIds,
+      total: summary.total,
+    });
 
     return res.json({
       success: true,
       nodeId,
-      matchedNodeIds: matchingNodeIds,
-      counts,
+      matchedNodeId: summary.matchedNodeId,
+      matchedNodeIds: summary.lookupNodeIds,
+      counts: {
+        total:    summary.total,
+        prelims:  summary.prelimsCount,
+        mains:    summary.mainsCount,
+        essay:    summary.essayCount,
+        ethics:   summary.ethicsCount,
+        optional: summary.optionalCount,
+        csat:     summary.csatCount,
+      },
+      lastAskedYear: summary.lastAskedYear,
       resolution,
-      questions,
+      questions: summary.questions,
     });
   } catch (err) {
     console.error("PYQ node API failed:", err);
