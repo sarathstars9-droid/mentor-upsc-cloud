@@ -65,6 +65,7 @@ import { processOcrText } from "./ocrMapping/index.js";
 import { fileURLToPath } from "url";
 import mistakeRoutes from "./routes/mistakeRoutes.js";
 import revisionRoutes from "./routes/revisionRoutes.js";
+import weaknessRoutes from "./routes/weaknessRoutes.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config();
@@ -492,10 +493,11 @@ app.use("/api/prelims/practice", prelimsPracticeRoute);
 app.use("/api/prelims/pyq", prelimsPyqTestRoutes);
 app.use("/api/blocks", blockResolveRoute);        // isolated block classification — no PYQ/CSAT side-effects
 
-// ── Mistake & Revision routes (registered here, not at bottom) ───────────────
+// ── Mistake, Revision & Weakness routes ──────────────────────────────────────
 app.use("/api/mistakes", mistakeRoutes);
 app.use("/api/revision-items", revisionRoutes);
 app.use("/api/revision", revisionRoutes);   // alias — same router, both paths work
+app.use("/api/weakness", weaknessRoutes);
 
 /* -------------------- MAINS GS1 QUESTIONS API -------------------- */
 
