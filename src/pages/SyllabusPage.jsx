@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { BACKEND_URL } from "../config";
 
+const USER_ID = "user_1";
+
 const STATUS_COLORS = {
   critical: "#ff6b6b",
   lagging: "#f59e0b",
@@ -8,6 +10,10 @@ const STATUS_COLORS = {
   strong: "#22c55e",
   "exam ready": "#14b8a6",
 };
+
+// ── Weakness risk colors (consistent with RevisionPage) ──────────────────────
+const RISK_COLOR = { low: "#6b7280", medium: "#f59e0b", high: "#f97316", critical: "#ef4444" };
+const RISK_BG    = { low: "#111",    medium: "#1a1200",  high: "#1a0800",  critical: "#1a0000" };
 
 function safeNum(value, fallback = 0) {
   const n = Number(value);
@@ -46,6 +52,153 @@ function normalizeStatusLabel(status) {
 function statusColor(status) {
   const s = String(status || "").trim().toLowerCase().replace("_", " ");
   return STATUS_COLORS[s] || "#8b9bb4";
+}
+
+// ── lookupWeakness ────────────────────────────────────────────────────────────
+// Looks up a node_id (+ optional stage) in the weakness map.
+// Tries "node_id::stage" first, then plain "node_id" as fallback.
+// Returns the matching weakness row or null.
+function lookupWeakness(nodeId, stage, weaknessMap) {
+  if (!nodeId || !weaknessMap) return null;
+  return (
+    weaknessMap[`${nodeId}::${stage || ""}`] ||
+    weaknessMap[nodeId] ||
+    null
+  );
+}
+
+// ── WeaknessBadge ─────────────────────────────────────────────────────────────
+// Inline badge rendered next to a node label when weakness data exists.
+function WeaknessBadge({ weakness }) {
+  if (!weakness) return null;
+  const risk = weakness.risk_level || "low";
+  const score = Number(weakness.weakness_score) || 0;
+  if (score === 0) return null;
+  return (
+    <span style={{
+      background: RISK_BG[risk],
+      border: `1px solid ${RISK_COLOR[risk]}44`,
+      color: RISK_COLOR[risk],
+      fontSize: 10, fontWeight: 700, borderRadius: 4,
+      padding: "2px 7px", letterSpacing: "0.06em", textTransform: "uppercase",
+      fontFamily: "monospace", flexShrink: 0, whiteSpace: "nowrap",
+    }}>
+      W:{score} · {risk}
+    </span>
+  );
+}
+
+// ── WeaknessHeatPanel ─────────────────────────────────────────────────────────
+// Compact top-N weak nodes panel, shown above the Filters card.
+// Hidden when no weakness data is available.
+function WeaknessHeatPanel({ weaknessMap }) {
+  const nodes = useMemo(() => {
+    return Object.values(weaknessMap || {})
+      .filter(n => Number(n.weakness_score) > 0)
+      .sort((a, b) => Number(b.weakness_score) - Number(a.weakness_score))
+      .slice(0, 6);
+  }, [weaknessMap]);
+
+  if (nodes.length === 0) return null;
+
+  return (
+    <div style={{
+      padding: 20, borderRadius: 20,
+      background: "rgba(255,255,255,0.04)",
+      border: "1px solid rgba(255,255,255,0.08)",
+    }}>
+      <div style={{
+        display: "flex", justifyContent: "space-between", alignItems: "center",
+        gap: 12, marginBottom: 14,
+      }}>
+        <h3 style={{ margin: 0, fontSize: 18 }}>Weakness Heat Map</h3>
+        <span style={{ fontSize: 12, opacity: 0.56 }}>top {nodes.length} weak nodes · live from revision data</span>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 10 }}>
+        {nodes.map((node) => {
+          const risk = node.risk_level || "low";
+          const score = Number(node.weakness_score) || 0;
+          const barWidth = Math.min(100, score);
+          return (
+            <div
+              key={`${node.node_id}::${node.stage || ""}`}
+              onClick={() => { window.location.href = `/focus?nodeId=${encodeURIComponent(node.node_id)}`; }}
+              style={{
+                background: "rgba(0,0,0,0.3)",
+                border: `1px solid ${RISK_COLOR[risk]}33`,
+                borderLeft: `3px solid ${RISK_COLOR[risk]}`,
+                borderRadius: 12, padding: "12px 14px",
+                cursor: "pointer",
+              }}
+            >
+              {/* Node ID */}
+              <div style={{
+                fontSize: 11, fontWeight: 700, color: "#ccc",
+                fontFamily: "monospace", letterSpacing: "0.02em",
+                whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+                marginBottom: 3,
+              }}>
+                {node.node_id}
+              </div>
+
+              {/* Subject / stage */}
+              <div style={{ fontSize: 11, opacity: 0.52, marginBottom: 8, fontFamily: "monospace" }}>
+                {[node.subject, node.stage].filter(Boolean).join(" · ") || "—"}
+              </div>
+
+              {/* Score bar */}
+              <div style={{ height: 3, background: "rgba(255,255,255,0.06)", borderRadius: 2, overflow: "hidden", marginBottom: 8 }}>
+                <div style={{
+                  width: `${barWidth}%`, height: "100%",
+                  background: RISK_COLOR[risk], borderRadius: 2,
+                }} />
+              </div>
+
+              {/* Score + risk */}
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span style={{
+                  fontSize: 18, fontWeight: 800, color: RISK_COLOR[risk],
+                  fontFamily: "monospace", lineHeight: 1,
+                }}>
+                  {score}
+                </span>
+                <span style={{
+                  background: RISK_BG[risk],
+                  border: `1px solid ${RISK_COLOR[risk]}44`,
+                  color: RISK_COLOR[risk],
+                  fontSize: 9, fontWeight: 700, borderRadius: 4,
+                  padding: "2px 6px", letterSpacing: "0.08em",
+                  textTransform: "uppercase", fontFamily: "monospace",
+                }}>
+                  {risk}
+                </span>
+              </div>
+
+              {/* Sub-metrics */}
+              <div style={{ marginTop: 8, display: "flex", gap: 8, flexWrap: "wrap" }}>
+                {Number(node.mistake_count) > 0 && (
+                  <span style={{ fontSize: 9, color: "#ef444488", fontFamily: "monospace" }}>
+                    {node.mistake_count} mistakes
+                  </span>
+                )}
+                {Number(node.overdue_revision_count) > 0 && (
+                  <span style={{ fontSize: 9, color: "#f59e0b88", fontFamily: "monospace" }}>
+                    {node.overdue_revision_count} overdue
+                  </span>
+                )}
+                {Number(node.reviewed_count) > 0 && (
+                  <span style={{ fontSize: 9, color: "#22c55e88", fontFamily: "monospace" }}>
+                    {node.reviewed_count} reviewed
+                  </span>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 function ProgressBar({ label, value, subtext }) {
@@ -128,11 +281,35 @@ function SectionCard({ title, right, children }) {
   );
 }
 
-function PaperCard({ paper }) {
+function PaperCard({ paper, weaknessMap }) {
   const progress = paper?.progress || {};
   const totals = paper?.totals || {};
   const pyq = paper?.pyq || {};
   const status = normalizeStatusLabel(paper?.status);
+
+  // Count weak nodes belonging to this paper by matching paperKey prefix in node_id
+  // (node IDs follow a pattern like GS1_ECO_PRE_... so paperKey is a reliable prefix)
+  const paperKey = (paper?.paperKey || "").toLowerCase();
+  const weakNodeCount = useMemo(() => {
+    if (!weaknessMap || !paperKey) return 0;
+    return Object.values(weaknessMap).filter(n => {
+      const nid = (n.node_id || "").toLowerCase();
+      return nid.startsWith(paperKey) && Number(n.weakness_score) > 0;
+    }).length;
+  }, [weaknessMap, paperKey]);
+
+  const maxRisk = useMemo(() => {
+    if (!weaknessMap || !paperKey) return null;
+    const nodes = Object.values(weaknessMap).filter(n => {
+      return (n.node_id || "").toLowerCase().startsWith(paperKey) && Number(n.weakness_score) > 0;
+    });
+    if (!nodes.length) return null;
+    const order = ["critical", "high", "medium", "low"];
+    for (const r of order) {
+      if (nodes.some(n => n.risk_level === r)) return r;
+    }
+    return null;
+  }, [weaknessMap, paperKey]);
 
   return (
     <div
@@ -140,9 +317,14 @@ function PaperCard({ paper }) {
         padding: 18,
         borderRadius: 18,
         background: "rgba(255,255,255,0.04)",
-        border: "1px solid rgba(255,255,255,0.08)",
+        border: maxRisk
+          ? `1px solid ${RISK_COLOR[maxRisk]}44`
+          : "1px solid rgba(255,255,255,0.08)",
         display: "grid",
         gap: 14,
+        boxShadow: maxRisk && maxRisk !== "low"
+          ? `0 0 0 1px ${RISK_COLOR[maxRisk]}22`
+          : "none",
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "flex-start" }}>
@@ -155,18 +337,35 @@ function PaperCard({ paper }) {
           </div>
         </div>
 
-        <div
-          style={{
-            padding: "6px 10px",
-            borderRadius: 999,
-            fontSize: 12,
-            fontWeight: 700,
-            color: "#fff",
-            background: statusColor(paper?.status),
-            whiteSpace: "nowrap",
-          }}
-        >
-          {status}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
+          <div
+            style={{
+              padding: "6px 10px",
+              borderRadius: 999,
+              fontSize: 12,
+              fontWeight: 700,
+              color: "#fff",
+              background: statusColor(paper?.status),
+              whiteSpace: "nowrap",
+            }}
+          >
+            {status}
+          </div>
+          {weakNodeCount > 0 && maxRisk && (
+            <div style={{
+              padding: "4px 8px",
+              borderRadius: 999,
+              fontSize: 11,
+              fontWeight: 700,
+              color: RISK_COLOR[maxRisk],
+              background: RISK_BG[maxRisk],
+              border: `1px solid ${RISK_COLOR[maxRisk]}44`,
+              whiteSpace: "nowrap",
+              fontFamily: "monospace",
+            }}>
+              {weakNodeCount} weak node{weakNodeCount !== 1 ? "s" : ""}
+            </div>
+          )}
         </div>
       </div>
 
@@ -421,7 +620,7 @@ const cellStyleStrong = {
   fontWeight: 700,
 };
 
-function ListPanel({ items, renderItem, emptyLabel = "Nothing yet." }) {
+function ListPanel({ items, renderItem, emptyLabel = "Nothing yet.", getCardStyle }) {
   if (!items?.length) {
     return <div style={{ fontSize: 14, opacity: 0.66 }}>{emptyLabel}</div>;
   }
@@ -436,6 +635,7 @@ function ListPanel({ items, renderItem, emptyLabel = "Nothing yet." }) {
             borderRadius: 14,
             background: "rgba(255,255,255,0.03)",
             border: "1px solid rgba(255,255,255,0.06)",
+            ...(getCardStyle ? getCardStyle(item) : {}),
           }}
         >
           {renderItem(item, index)}
@@ -504,6 +704,7 @@ export default function SyllabusPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [dashboard, setDashboard] = useState(null);
+  const [weaknessMap, setWeaknessMap] = useState({});
   const [filters, setFilters] = useState({
     paper: "ALL",
     status: "ALL",
@@ -519,22 +720,35 @@ export default function SyllabusPage() {
       setError("");
 
       try {
-        const primary = await fetch(`${BACKEND_URL}/api/syllabus/dashboard`);
-        let data = null;
+        // Fetch dashboard and weakness map in parallel.
+        // Weakness failure must never break the main dashboard load.
+        const [dashResult, weakResult] = await Promise.allSettled([
+          (async () => {
+            const primary = await fetch(`${BACKEND_URL}/api/syllabus/dashboard`);
+            if (primary.ok) return primary.json();
+            const fallback = await fetch(`${BACKEND_URL}/api/syllabus`);
+            if (!fallback.ok) throw new Error("Failed to load syllabus dashboard");
+            return fallback.json();
+          })(),
+          fetch(`${BACKEND_URL}/api/weakness/map?userId=${USER_ID}`, { cache: "no-store" }),
+        ]);
 
-        if (primary.ok) {
-          data = await primary.json();
-        } else {
-          const fallback = await fetch(`${BACKEND_URL}/api/syllabus`);
-          if (!fallback.ok) {
-            throw new Error("Failed to load syllabus dashboard");
-          }
-          const raw = await fallback.json();
-          data = buildFallbackDashboard(raw);
+        if (dashResult.status === "rejected") {
+          throw dashResult.reason;
         }
 
         if (!ignore) {
-          setDashboard(buildFallbackDashboard(data));
+          setDashboard(buildFallbackDashboard(dashResult.value));
+        }
+
+        // Apply weakness map (secondary — silent on failure)
+        if (weakResult.status === "fulfilled" && weakResult.value.ok) {
+          try {
+            const weakData = await weakResult.value.json();
+            if (!ignore) setWeaknessMap(weakData.map || {});
+          } catch (_) {
+            // malformed JSON — leave map empty
+          }
         }
       } catch (err) {
         if (!ignore) {
@@ -740,6 +954,9 @@ export default function SyllabusPage() {
             />
           </div>
 
+          {/* WEAKNESS HEAT MAP — inserted between stat chips and filters */}
+          <WeaknessHeatPanel weaknessMap={weaknessMap} />
+
           <SectionCard title="Filters">
             <FiltersBar filters={filters} onChange={updateFilter} paperOptions={paperOptions} />
           </SectionCard>
@@ -756,7 +973,7 @@ export default function SyllabusPage() {
               }}
             >
               {filteredPapers.map((paper) => (
-                <PaperCard key={paper.paperKey} paper={paper} />
+                <PaperCard key={paper.paperKey} paper={paper} weaknessMap={weaknessMap} />
               ))}
             </div>
           </SectionCard>
@@ -792,32 +1009,47 @@ export default function SyllabusPage() {
               <ListPanel
                 items={filteredWeakZones}
                 emptyLabel="No weak zones found for current filters."
-                renderItem={(item) => (
-                  <div style={{ display: "grid", gap: 8 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}>
-                      <div style={{ fontWeight: 800 }}>{item.topicLabel || item.nodeId}</div>
-                      <div
-                        style={{
-                          padding: "4px 8px",
-                          borderRadius: 999,
-                          background: item.priority === "high" ? "rgba(255,107,107,0.18)" : "rgba(245,158,11,0.16)",
-                          color: "#fff",
-                          fontSize: 12,
-                          fontWeight: 700,
-                        }}
-                      >
-                        {String(item.priority || "medium").toUpperCase()}
+                getCardStyle={(item) => {
+                  const w = lookupWeakness(item.nodeId, null, weaknessMap);
+                  if (!w || Number(w.weakness_score) === 0) return {};
+                  const risk = w.risk_level || "low";
+                  return {
+                    border: `1px solid ${RISK_COLOR[risk]}33`,
+                    boxShadow: risk !== "low" ? `0 0 0 1px ${RISK_COLOR[risk]}22` : "none",
+                  };
+                }}
+                renderItem={(item) => {
+                  const weakness = lookupWeakness(item.nodeId, null, weaknessMap);
+                  return (
+                    <div style={{ display: "grid", gap: 8 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+                        <div style={{ fontWeight: 800 }}>{item.topicLabel || item.nodeId}</div>
+                        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                          <WeaknessBadge weakness={weakness} />
+                          <div
+                            style={{
+                              padding: "4px 8px",
+                              borderRadius: 999,
+                              background: item.priority === "high" ? "rgba(255,107,107,0.18)" : "rgba(245,158,11,0.16)",
+                              color: "#fff",
+                              fontSize: 12,
+                              fontWeight: 700,
+                            }}
+                          >
+                            {String(item.priority || "medium").toUpperCase()}
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ fontSize: 13, opacity: 0.72 }}>{item.reason}</div>
+                      <div style={{ fontSize: 12, opacity: 0.6 }}>
+                        {item.paperKey} • {item.nodeId} • {item.evidenceType}
+                      </div>
+                      <div style={{ fontSize: 13 }}>
+                        <b>Action:</b> {item.suggestedAction}
                       </div>
                     </div>
-                    <div style={{ fontSize: 13, opacity: 0.72 }}>{item.reason}</div>
-                    <div style={{ fontSize: 12, opacity: 0.6 }}>
-                      {item.paperKey} • {item.nodeId} • {item.evidenceType}
-                    </div>
-                    <div style={{ fontSize: 13 }}>
-                      <b>Action:</b> {item.suggestedAction}
-                    </div>
-                  </div>
-                )}
+                  );
+                }}
               />
             </SectionCard>
 
@@ -825,31 +1057,46 @@ export default function SyllabusPage() {
               <ListPanel
                 items={filteredUntouchedZones}
                 emptyLabel="No untouched zones found for current filters."
-                renderItem={(item) => (
-                  <div style={{ display: "grid", gap: 8 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}>
-                      <div style={{ fontWeight: 800 }}>{item.topicLabel || item.nodeId}</div>
-                      <div
-                        style={{
-                          padding: "4px 8px",
-                          borderRadius: 999,
-                          background: item.priority === "high" ? "rgba(255,107,107,0.18)" : "rgba(59,130,246,0.16)",
-                          color: "#fff",
-                          fontSize: 12,
-                          fontWeight: 700,
-                        }}
-                      >
-                        {String(item.priority || "medium").toUpperCase()}
+                getCardStyle={(item) => {
+                  const w = lookupWeakness(item.nodeId, null, weaknessMap);
+                  if (!w || Number(w.weakness_score) === 0) return {};
+                  const risk = w.risk_level || "low";
+                  return {
+                    border: `1px solid ${RISK_COLOR[risk]}33`,
+                    boxShadow: risk !== "low" ? `0 0 0 1px ${RISK_COLOR[risk]}22` : "none",
+                  };
+                }}
+                renderItem={(item) => {
+                  const weakness = lookupWeakness(item.nodeId, null, weaknessMap);
+                  return (
+                    <div style={{ display: "grid", gap: 8 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+                        <div style={{ fontWeight: 800 }}>{item.topicLabel || item.nodeId}</div>
+                        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                          <WeaknessBadge weakness={weakness} />
+                          <div
+                            style={{
+                              padding: "4px 8px",
+                              borderRadius: 999,
+                              background: item.priority === "high" ? "rgba(255,107,107,0.18)" : "rgba(59,130,246,0.16)",
+                              color: "#fff",
+                              fontSize: 12,
+                              fontWeight: 700,
+                            }}
+                          >
+                            {String(item.priority || "medium").toUpperCase()}
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ fontSize: 12, opacity: 0.66 }}>
+                        {item.paperKey} • {item.nodeId}
+                      </div>
+                      <div style={{ fontSize: 13, opacity: 0.76 }}>
+                        Linked PYQs: <b>{safeNum(item.linkedPyqCount)}</b> • Days pending: <b>{safeNum(item.daysPending)}</b> • Suggested block: <b>{safeNum(item.suggestedBlockMinutes)} min</b>
                       </div>
                     </div>
-                    <div style={{ fontSize: 12, opacity: 0.66 }}>
-                      {item.paperKey} • {item.nodeId}
-                    </div>
-                    <div style={{ fontSize: 13, opacity: 0.76 }}>
-                      Linked PYQs: <b>{safeNum(item.linkedPyqCount)}</b> • Days pending: <b>{safeNum(item.daysPending)}</b> • Suggested block: <b>{safeNum(item.suggestedBlockMinutes)} min</b>
-                    </div>
-                  </div>
-                )}
+                  );
+                }}
               />
             </SectionCard>
           </div>
