@@ -26,8 +26,6 @@ export default function PyqTestStart({
   fullLengthYear = "2020",
   setFullLengthYear = () => { },
 
-  institutionalForm = {},
-  setInstitutionalForm = () => { },
 
   practicePaper = "GS",
   setPracticePaper = () => { },
@@ -81,11 +79,6 @@ export default function PyqTestStart({
           active={testMode === "full_length"}
           onClick={() => setTestMode("full_length")}
           label="Full-Length"
-        />
-        <ModeChip
-          active={testMode === "institutional"}
-          onClick={() => setTestMode("institutional")}
-          label="Institutional"
         />
       </div>
 
@@ -314,123 +307,6 @@ export default function PyqTestStart({
         </div>
       )}
 
-      {testMode === "institutional" && (
-        <div
-          style={{
-            display: "grid",
-            gap: 14,
-            padding: 16,
-            borderRadius: 18,
-            border: "1px dashed rgba(250,204,21,0.35)",
-            background: "rgba(250,204,21,0.05)",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              gap: 12,
-              flexWrap: "wrap",
-            }}
-          >
-            <div>
-              <div style={{ fontSize: 16, fontWeight: 800 }}>
-                Institutional Test Upload
-              </div>
-              <div style={{ fontSize: 13, opacity: 0.75 }}>
-                UI ready now. Parser can be enabled next without redesign.
-              </div>
-            </div>
-            <span style={comingBadge}>Coming next</span>
-          </div>
-
-          <div style={grid2}>
-            <Field label="Institute Name">
-              <input
-                value={institutionalForm?.instituteName || ""}
-                onChange={(e) =>
-                  setInstitutionalForm((prev) => ({
-                    ...(prev || {}),
-                    instituteName: e.target.value,
-                  }))
-                }
-                placeholder="e.g. Vision IAS"
-                style={inputStyle}
-              />
-            </Field>
-
-            <Field label="Test Title">
-              <input
-                value={institutionalForm?.testTitle || ""}
-                onChange={(e) =>
-                  setInstitutionalForm((prev) => ({
-                    ...(prev || {}),
-                    testTitle: e.target.value,
-                  }))
-                }
-                placeholder="e.g. FLT-03"
-                style={inputStyle}
-              />
-            </Field>
-          </div>
-
-          <div style={grid2}>
-            <Field label="Question Paper">
-              <input
-                type="file"
-                accept=".pdf,.doc,.docx,.txt"
-                onChange={(e) =>
-                  setInstitutionalForm((prev) => ({
-                    ...(prev || {}),
-                    questionPaperFile: e.target.files?.[0] || null,
-                  }))
-                }
-                style={fileInputStyle}
-              />
-            </Field>
-
-            <Field label="Answer Key">
-              <input
-                type="file"
-                accept=".pdf,.doc,.docx,.txt"
-                onChange={(e) =>
-                  setInstitutionalForm((prev) => ({
-                    ...(prev || {}),
-                    answerKeyFile: e.target.files?.[0] || null,
-                  }))
-                }
-                style={fileInputStyle}
-              />
-            </Field>
-          </div>
-
-          <Field label="Optional Pasted Text">
-            <textarea
-              rows={5}
-              value={institutionalForm?.pastedText || ""}
-              onChange={(e) =>
-                setInstitutionalForm((prev) => ({
-                  ...(prev || {}),
-                  pastedText: e.target.value,
-                }))
-              }
-              placeholder="Paste readable institutional test text here..."
-              style={{
-                ...inputStyle,
-                resize: "vertical",
-                minHeight: 120,
-                paddingTop: 12,
-                paddingBottom: 12,
-              }}
-            />
-          </Field>
-
-          <div style={{ fontSize: 12, opacity: 0.75, lineHeight: 1.7 }}>
-            Supported later: text-based readable PDF, DOC, DOCX, TXT, and pasted
-            text. No OCR-first workflow. No image uploads.
-          </div>
-        </div>
-      )}
 
       {error ? (
         <div
@@ -453,14 +329,10 @@ export default function PyqTestStart({
             onStart();
           }
         }}
-        disabled={loading || testMode === "institutional" || disableStart}
-        style={startBtn(loading || testMode === "institutional" || disableStart)}
+        disabled={loading || disableStart}
+        style={startBtn(loading || disableStart)}
       >
-        {loading
-          ? "Loading Test..."
-          : testMode === "institutional"
-            ? "Institutional Parser Coming Next"
-            : "Start Test"}
+        {loading ? "Loading Test..." : "Start Test"}
       </button>
     </div>
   );

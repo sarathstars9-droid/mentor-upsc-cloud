@@ -260,7 +260,64 @@ const OPTIONAL_2026 = {
             schemes: []
           },
 
-          // 2. Settlement Geography
+          // 2. Economic Geography
+          {
+            id: "OPT-P1-ECOGEO",
+            name: "Economic Geography",
+            tags: ["OPT", "P1"],
+            microThemes: [
+              "World distribution of natural resources — minerals, energy, biotic, marine",
+              "Power resources — fossil fuels, hydro, nuclear, renewable",
+              "World industries — locational patterns (iron & steel, textiles, chemicals)",
+              "Agricultural systems of the world",
+              "World trade patterns — commodities and routes",
+              "Globalization and world economy"
+            ],
+            keywords: [
+              "natural resources", "mineral resources", "energy resources",
+              "power resources", "fossil fuel", "hydro power", "nuclear energy", "renewable energy",
+              "iron and steel industry", "textile industry", "chemical industry",
+              "industrial location", "world trade", "trade routes",
+              "agricultural system", "globalization", "world economy",
+              "venezuela oil", "opec", "economic geography"
+            ],
+            schemes: []
+          },
+
+          // 3. Models, Theories and Laws in Human Geography
+          {
+            id: "OPT-P1-MODELS",
+            name: "Models, Theories and Laws in Human Geography",
+            tags: ["OPT", "P1"],
+            microThemes: [
+              "Models of Development — Rostow's stages of growth",
+              "Central Place Theory — Christaller and Losch",
+              "Von Thunen's agricultural land use model",
+              "Weber's industrial location theory",
+              "Gravity model and potential model",
+              "Heartland and Rimland theories",
+              "Demographic transition model",
+              "Core-periphery model (Friedmann)",
+              "Bid-rent theory",
+              "Laws of retail gravitation (Reilly)"
+            ],
+            keywords: [
+              "rostow stages", "take off stage",
+              "central place theory", "christaller", "losch",
+              "von thunen", "agricultural location",
+              "weber location theory",
+              "gravity model", "potential model",
+              "heartland theory", "rimland theory",
+              "demographic transition",
+              "core periphery", "friedmann",
+              "bid rent",
+              "reilly retail gravitation",
+              "models human geography", "theories human geography"
+            ],
+            schemes: []
+          },
+
+          // 4. Settlement Geography
           {
             id: "OPT-P1-SETTLEMENT",
             name: "Settlement Geography",

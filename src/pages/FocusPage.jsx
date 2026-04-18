@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config";
+import FocusPyqSession from "../components/Prelims/FocusPyqSession";
 
 const USER_ID = "user_1";
 
@@ -208,6 +209,120 @@ function RevisionItemCard({ item, onReview, onSnooze, isFirst }) {
   );
 }
 
+// ── Mode Selection Modal ──────────────────────────────────────────────────────
+function PyqModeModal({ nodeId, allPrelimsMCQs, weakAreaQs, onStart, onClose }) {
+  const modes = [
+    {
+      id: "quick",
+      label: "Quick Drill",
+      sub: "5 most recent prelims questions",
+      count: Math.min(5, allPrelimsMCQs.length),
+      questions: allPrelimsMCQs.slice(0, 5),
+      color: "#f59e0b",
+    },
+    {
+      id: "full",
+      label: "Full Topic",
+      sub: `All prelims questions for this node`,
+      count: allPrelimsMCQs.length,
+      questions: allPrelimsMCQs,
+      color: "#38bdf8",
+    },
+    {
+      id: "weak",
+      label: "Weak Areas Only",
+      sub: "Questions you previously got wrong",
+      count: weakAreaQs.length,
+      questions: weakAreaQs,
+      color: "#ef4444",
+    },
+  ];
+
+  return (
+    <div style={{
+      position: "fixed", inset: 0,
+      background: "rgba(0,0,0,0.88)",
+      zIndex: 1000,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+    }}>
+      <div style={{
+        background: "#0c0c0c",
+        border: "1px solid #222",
+        borderRadius: 14,
+        padding: "28px 28px 22px",
+        width: "min(460px, 92vw)",
+      }}>
+        <div style={{ fontSize: 10, color: "#444", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 6 }}>
+          PYQ PRACTICE · {nodeId}
+        </div>
+        <div style={{ fontSize: 15, fontWeight: 800, color: "#e5e7eb", marginBottom: 20 }}>
+          Choose practice mode
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          {modes.map((m) => {
+            const disabled = m.count === 0;
+            return (
+              <button
+                key={m.id}
+                disabled={disabled}
+                onClick={() => !disabled && onStart(m.id, m.questions)}
+                style={{
+                  background: disabled ? "#0a0a0a" : "#111",
+                  border: `1px solid ${disabled ? "#1e1e1e" : m.color + "33"}`,
+                  borderRadius: 10,
+                  padding: "14px 16px",
+                  textAlign: "left",
+                  cursor: disabled ? "not-allowed" : "pointer",
+                  color: disabled ? "#333" : "#e5e7eb",
+                }}
+              >
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 3 }}>
+                  <span style={{
+                    fontSize: 13, fontWeight: 700, fontFamily: "monospace",
+                    color: disabled ? "#333" : m.color,
+                  }}>
+                    {m.label}
+                  </span>
+                  <span style={{
+                    fontSize: 11, fontWeight: 700, fontFamily: "monospace",
+                    color: disabled ? "#2a2a2a" : m.color,
+                  }}>
+                    {m.count} Q
+                  </span>
+                </div>
+                <div style={{ fontSize: 11, color: disabled ? "#2a2a2a" : "#555", fontFamily: "monospace" }}>
+                  {disabled ? "No questions available for this mode" : m.sub}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        <button
+          onClick={onClose}
+          style={{
+            marginTop: 18, background: "none", border: "none",
+            color: "#444", cursor: "pointer", fontSize: 11,
+            fontFamily: "monospace", padding: 0,
+          }}
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function isPrelimsMCQ(q) {
+  const id = String(q?.id || q?.questionId || "").toUpperCase();
+  if (id.startsWith("PRE_CSAT_") || id.startsWith("CSAT_")) return false;
+  if (id.startsWith("PRE_")) return true;
+  return String(q?.exam || "").toLowerCase() === "prelims";
+}
+
 // ── Main Page ─────────────────────────────────────────────────────────────────
 export default function FocusPage() {
   const [searchParams] = useSearchParams();
@@ -221,6 +336,8 @@ export default function FocusPage() {
   const [revisions, setRevisions] = useState([]);
   const [pyq, setPyq] = useState(null);
   const [actionMsg, setActionMsg] = useState("");
+  const [pyqSession, setPyqSession] = useState(null);
+  const [showModeModal, setShowModeModal] = useState(false);
 
   const load = useCallback(async () => {
     if (!nodeId) { setLoading(false); return; }
@@ -330,6 +447,13 @@ export default function FocusPage() {
     return y > acc ? y : acc;
   }, 0);
 
+  const allPrelimsMCQs = pyqQuestions.filter(isPrelimsMCQ);
+  const mistakeQids = new Set(mistakes.map((m) => m.question_id).filter(Boolean));
+  const weakAreaQs = allPrelimsMCQs.filter((q) => {
+    const id = String(q.id || q.questionId || "");
+    return id && mistakeQids.has(id);
+  });
+
   const nextStep = unresolvedTotal === 0
     ? "All clear. Take a practice test on this node."
     : revisions.length > 0
@@ -345,11 +469,39 @@ export default function FocusPage() {
     );
   }
 
+  if (pyqSession) {
+    return (
+      <FocusPyqSession
+        nodeId={nodeId}
+        questions={pyqSession.questions}
+        mode={pyqSession.mode}
+        onClose={() => {
+          setPyqSession(null);
+          load();
+        }}
+      />
+    );
+  }
+
   return (
     <div style={{
       background: "#080808", minHeight: "100vh", padding: "28px 32px",
       fontFamily: "'JetBrains Mono', 'Fira Code', monospace", color: "#e5e7eb",
     }}>
+
+      {/* ── MODE SELECTION MODAL ─────────────────────────────────────────────── */}
+      {showModeModal && (
+        <PyqModeModal
+          nodeId={nodeId}
+          allPrelimsMCQs={allPrelimsMCQs}
+          weakAreaQs={weakAreaQs}
+          onStart={(mode, questions) => {
+            setShowModeModal(false);
+            setPyqSession({ questions, mode });
+          }}
+          onClose={() => setShowModeModal(false)}
+        />
+      )}
 
       {/* Back */}
       <button
@@ -533,7 +685,11 @@ export default function FocusPage() {
                     setActionMsg("Finish revision items first.");
                     return;
                   }
-                  navigate(`/pyq/topic/${encodeURIComponent(nodeId)}`);
+                  if (allPrelimsMCQs.length === 0) {
+                    setActionMsg("No prelims questions available for this node.");
+                    return;
+                  }
+                  setShowModeModal(true);
                 }}
               />
               <ActionBtn
@@ -646,9 +802,15 @@ export default function FocusPage() {
                 )}
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <ActionBtn
-                    label={pyqTotal > 0 ? `Start ${Math.min(5, pyqTotal)} PYQs` : "Browse PYQs"}
+                    label={pyqPrelims > 0 ? `Start ${pyqPrelims} PYQs` : "Browse PYQs"}
                     variant="primary"
-                    onClick={() => navigate(`/pyq/topic/${encodeURIComponent(nodeId)}`)}
+                    onClick={() => {
+                      if (allPrelimsMCQs.length === 0) {
+                        setActionMsg("No prelims questions available for this node.");
+                        return;
+                      }
+                      setShowModeModal(true);
+                    }}
                   />
                   <ActionBtn
                     label="View All PYQs"

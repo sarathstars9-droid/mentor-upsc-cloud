@@ -26,3 +26,12 @@ backend/.env
 .env
 node_modules/
 backend/node_modules/
+
+# PYQ ingestion — ignore uploaded PDFs but track the folder via .gitkeep
+backend/uploads/pyq/*.pdf
+
+# PYQ ingestion — ignore temporary extraction JSONs but track the folder
+backend/data/ingestion/extracted/*.json
+
+# PYQ ingestion — ignore reviewed drafts but track the folder via .gitkeep
+backend/data/ingestion/reviewed/*.json

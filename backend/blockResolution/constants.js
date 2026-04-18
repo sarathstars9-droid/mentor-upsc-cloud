@@ -56,10 +56,19 @@ export const GS_PAPER_KEYWORDS = {
   'gs 2': 'GS2',
   'gs 3': 'GS3',
   'gs 4': 'GS4',
+  'gs iv': 'GS4',
+  'gs-iv': 'GS4',
   'paper 1': 'GS1',
   'paper 2': 'GS2',
   'paper 3': 'GS3',
   'paper 4': 'GS4',
+  'general studies 4': 'GS4',
+  'general studies iv': 'GS4',
+  'general studies paper 4': 'GS4',
+  'general studies paper iv': 'GS4',
+  'ethics': 'GS4',
+  'ethics integrity aptitude': 'GS4',
+  'ethics, integrity, aptitude': 'GS4',
 };
 
 // ─── Test Series Families ─────────────────────────────────────────────────────

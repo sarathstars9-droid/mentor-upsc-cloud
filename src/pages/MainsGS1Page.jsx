@@ -424,6 +424,188 @@ const TREND_DATA = [
   },
 ];
 
+// ─── Year-wise Full Test Panel ────────────────────────────────────────────────
+function YearTestPanel({ questions, onStart }) {
+  const pyqOnly = questions.filter(q => q.source === "PYQ" && q.year);
+  const years = [...new Set(pyqOnly.map(q => q.year))].sort((a, b) => b - a);
+  const [selectedYear, setSelectedYear] = React.useState(null);
+
+  const yearQs = selectedYear
+    ? pyqOnly.filter(q => q.year === selectedYear)
+    : [];
+
+  const totalMarks = yearQs.reduce((s, q) => s + (q.marks || 0), 0);
+
+  return (
+    <div style={{ marginBottom: 32, animation: "fadeSlideIn 0.25s ease" }}>
+      {/* Panel header */}
+      <div style={{
+        background: "linear-gradient(135deg, #0d1a0d 0%, #0a110a 100%)",
+        border: `1px solid ${T.green}33`, borderRadius: 16,
+        padding: "24px 28px", marginBottom: 20,
+        position: "relative", overflow: "hidden",
+      }}>
+        <div style={{
+          position: "absolute", top: -60, right: -40,
+          width: 200, height: 200, borderRadius: "50%",
+          background: `radial-gradient(circle, ${T.green}10 0%, transparent 70%)`,
+          pointerEvents: "none",
+        }} />
+        <div style={{ ...label11(T.green), marginBottom: 8 }}>Year-wise Practice</div>
+        <h2 style={{ fontSize: 22, fontWeight: 900, color: T.textBright, margin: "0 0 6px 0", letterSpacing: "-0.02em" }}>
+          Full Year Test
+        </h2>
+        <p style={{ fontSize: 13, color: T.dim, margin: "0 0 20px 0", maxWidth: 540, lineHeight: 1.6 }}>
+          Pick a year and practice <em style={{ color: T.text }}>all its questions</em> as a simulated paper — one by one in exam order.
+        </p>
+
+        {/* Year selector grid */}
+        {years.length === 0 ? (
+          <div style={{ fontSize: 12, color: T.muted }}>No PYQ year data available.</div>
+        ) : (
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {years.map(y => {
+              const cnt = pyqOnly.filter(q => q.year === y).length;
+              const active = selectedYear === y;
+              return (
+                <button
+                  key={y}
+                  onClick={() => setSelectedYear(prev => prev === y ? null : y)}
+                  style={{
+                    background: active ? T.green : T.surface,
+                    border: `1.5px solid ${active ? T.green : T.borderMid}`,
+                    borderRadius: 10, padding: "10px 16px",
+                    cursor: "pointer", fontFamily: T.font,
+                    textAlign: "center", transition: "all 0.12s",
+                    minWidth: 72, position: "relative",
+                  }}
+                >
+                  <div style={{ fontSize: 15, fontWeight: 900, color: active ? "#09090b" : T.textBright }}>
+                    {y}
+                  </div>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: active ? "#09090b" : T.green, marginTop: 2 }}>
+                    {cnt} Qs
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      {/* Selected year question list */}
+      {selectedYear && (
+        <div>
+          {/* Year test header */}
+          <div style={{
+            padding: "16px 18px",
+            background: T.surface, border: `1px solid ${T.green}33`,
+            borderRadius: 12, marginBottom: 16,
+          }}>
+            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 12, marginBottom: 0 }}>
+              <div>
+                <div style={{ fontSize: 16, fontWeight: 900, color: T.textBright }}>
+                  UPSC GS1 — {selectedYear} Paper
+                </div>
+                <div style={{ fontSize: 12, color: T.dim, marginTop: 2 }}>
+                  {yearQs.length} question{yearQs.length !== 1 ? "s" : ""}
+                  {totalMarks > 0 && ` · ${totalMarks} marks total`}
+                  {" "}· Practice one by one in order
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                {[10, 15].map(m => {
+                  const mc = yearQs.filter(q => q.marks === m).length;
+                  if (!mc) return null;
+                  return (
+                    <span key={m} style={{
+                      fontSize: 11, fontWeight: 700, color: T.amber,
+                      background: `${T.amber}10`, border: `1px solid ${T.amber}28`,
+                      borderRadius: 20, padding: "3px 12px",
+                    }}>
+                      {mc} × {m}M
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {yearQs.length === 0 ? (
+            <div style={{ padding: "24px", textAlign: "center", color: T.muted, fontSize: 13 }}>
+              No questions found for {selectedYear}.
+            </div>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {yearQs.map((q, idx) => (
+                <div key={q.id || idx} style={{
+                  background: T.surface,
+                  border: `1px solid ${T.border}`,
+                  borderRadius: 12, overflow: "hidden",
+                }}>
+                  <div style={{ height: 2, background: `linear-gradient(90deg, ${T.green}88, transparent)` }} />
+                  <div style={{ padding: "16px 20px" }}>
+                    {/* Meta row */}
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12, flexWrap: "wrap" }}>
+                      <span style={{
+                        fontSize: 11, fontWeight: 800, color: T.dim,
+                        background: T.surfaceHigh, border: `1px solid ${T.border}`,
+                        borderRadius: 5, padding: "2px 8px",
+                      }}>
+                        Q{idx + 1}
+                      </span>
+                      {q.marks != null && (
+                        <span style={{
+                          fontSize: 11, fontWeight: 800, color: T.textBright,
+                          background: T.bg, border: `1px solid ${T.borderMid}`,
+                          borderRadius: 5, padding: "2px 9px",
+                        }}>
+                          {q.marks}M
+                        </span>
+                      )}
+                      {q.theme && (
+                        <span style={{
+                          fontSize: 10, fontWeight: 700, color: ACCENT,
+                          background: `${ACCENT}10`, border: `1px solid ${ACCENT}28`,
+                          borderRadius: 5, padding: "2px 9px", textTransform: "uppercase",
+                          letterSpacing: "0.05em", marginLeft: "auto",
+                        }}>
+                          {q.theme}
+                        </span>
+                      )}
+                    </div>
+                    {/* Question text */}
+                    <div style={{
+                      fontSize: 14, fontWeight: 700, color: T.textBright,
+                      lineHeight: 1.7, marginBottom: 14,
+                    }}>
+                      {q.question}
+                    </div>
+                    {/* Start writing button */}
+                    <button
+                      onClick={() => onStart(q)}
+                      style={{
+                        background: T.green, color: "#09090b",
+                        border: "none", borderRadius: 8,
+                        fontWeight: 900, fontSize: 12,
+                        padding: "9px 20px", cursor: "pointer",
+                        fontFamily: T.font, letterSpacing: "0.04em",
+                        boxShadow: `0 0 14px ${T.green}28`,
+                      }}
+                    >
+                      ✏️&nbsp;&nbsp;Start Writing
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Year-wise Trends Panel ───────────────────────────────────────────────────
 function YearwiseTrendsPanel({ questions }) {
   const [openId, setOpenId] = useState(null);
@@ -837,13 +1019,13 @@ function QuestionCard({ q, onStart }) {
               UPSC {q.year}
             </span>
           )}
-          {q.marks && (
+          {q.marks != null && (
             <span style={{
               fontSize: 11, fontWeight: 800, color: T.textBright,
               background: T.bg, border: `1px solid ${T.borderMid}`,
               borderRadius: 5, padding: "2px 9px",
             }}>
-              {q.marks} Marks
+              {q.marks}M
             </span>
           )}
           <span style={{
@@ -857,10 +1039,24 @@ function QuestionCard({ q, onStart }) {
         </div>
         <div style={{
           fontSize: 14, fontWeight: 700, color: T.textBright,
-          lineHeight: 1.7, marginBottom: 14,
+          lineHeight: 1.7, marginBottom: q.subparts?.length ? 10 : 14,
         }}>
           {q.question}
         </div>
+        {q.subparts && q.subparts.length > 0 && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 14 }}>
+            {q.subparts.map((sp, i) => (
+              <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                <span style={{
+                  fontSize: 11, fontWeight: 800, color: ACCENT,
+                  background: `${ACCENT}12`, border: `1px solid ${ACCENT}28`,
+                  borderRadius: 4, padding: "1px 7px", flexShrink: 0, marginTop: 2,
+                }}>({sp.label})</span>
+                <span style={{ fontSize: 13, color: T.text, lineHeight: 1.65 }}>{sp.question}</span>
+              </div>
+            ))}
+          </div>
+        )}
         {q.focus && (
           <div style={{
             display: "flex", alignItems: "flex-start", gap: 8,
@@ -1308,36 +1504,28 @@ export default function MainsGS1Page() {
   const [sourceFilter,  setSourceFilter]  = useState("all");
   const [showAnalysis,  setShowAnalysis]  = useState(false);
   const [showTrends,    setShowTrends]    = useState(false);
+  const [showYearTest,  setShowYearTest]  = useState(false);
+
+  // Normalize new clean-dataset fields to what the UI expects
+  function normalizeQuestion(q) {
+    return {
+      ...q,
+      theme:     q.theme     || q.subject  || "",
+      source:    q.source    || "PYQ",
+      focus:     q.focus     || "",
+      structure: q.structure || "",
+    };
+  }
 
   async function fetchQuestions() {
     setLoading(true);
     setError(null);
     try {
-      // Fetch both endpoints in parallel; fail gracefully if topic endpoint is down
-      const [pyqRes, topicRes] = await Promise.allSettled([
-        fetch(`${BACKEND_URL}/api/mains/gs1/questions`),
-        fetch(`${BACKEND_URL}/api/mains/gs1/topic-questions`),
-      ]);
-
-      let pyqQs   = [];
-      let topicQs = [];
-
-      if (pyqRes.status === "fulfilled" && pyqRes.value.ok) {
-        const d = await pyqRes.value.json();
-        if (d.ok) pyqQs = Array.isArray(d.questions) ? d.questions : [];
-        else throw new Error(d.error || "PYQ endpoint error");
-      } else if (pyqRes.status === "rejected") {
-        throw new Error("Could not reach PYQ endpoint");
-      }
-
-      if (topicRes.status === "fulfilled" && topicRes.value.ok) {
-        const d = await topicRes.value.json();
-        if (d.ok) topicQs = Array.isArray(d.questions) ? d.questions : [];
-        // Topic endpoint failure is non-fatal — just log and continue
-        else console.warn("[GS1] Topic questions endpoint returned error:", d.error);
-      }
-
-      setQuestions([...pyqQs, ...topicQs]);
+      const res = await fetch(`${BACKEND_URL}/api/mains/questions?paper=GS1`);
+      if (!res.ok) throw new Error(`Server responded ${res.status}`);
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || "Unknown error");
+      setQuestions((data.questions || []).map(normalizeQuestion));
     } catch (err) {
       setError(err.message || "Could not connect to backend");
     } finally {
@@ -1356,19 +1544,33 @@ export default function MainsGS1Page() {
     });
   }, [questions, activeTheme, markFilter, sourceFilter]);
 
+  function normalizeQ(q) {
+    return {
+      id:             q.id || "",
+      paper:          "GS1",
+      year:           q.year || null,
+      question:       q.question || "",
+      marks:          q.marks != null ? String(q.marks) : "15",
+      structure:      q.structure || "",
+      focus:          q.focus || "",
+      priority:       q.source === "PYQ" ? "UPSC PYQ · High Priority" : `${q.theme || ""} · Topic Practice`,
+      subparts:       q.subparts || [],
+      syllabusNodeId: q.nodeId || "",
+    };
+  }
+
   function handleStart(q) {
+    const normList = filtered.map(normalizeQ);
+    const idx = normList.findIndex(item => item.id && item.id === (q.id || ""));
     navigate("/mains/answer-writing", {
       state: {
-        question: {
-          paper:     "GS1",
-          mode:      q.source,
-          marks:     q.marks != null ? String(q.marks) : "",
-          year:      q.year || null,
-          structure: q.structure || "",
-          focus:     q.focus || "",
-          priority:  q.source === "PYQ" ? "UPSC PYQ · High Priority" : `${q.theme} · Topic Practice`,
-          question:  q.question,
-        },
+        paper:          "GS1",
+        mode:           q.source || "PYQ",
+        year:           q.year || null,
+        topic:          q.theme || "",
+        syllabusNodeId: q.nodeId || "",
+        questions:      idx >= 0 ? normList : [normalizeQ(q)],
+        currentIndex:   idx >= 0 ? idx : 0,
       },
     });
   }
@@ -1446,7 +1648,7 @@ export default function MainsGS1Page() {
             <div style={{ display: "flex", flexDirection: "column", gap: 8, alignSelf: "flex-start", flexShrink: 0 }}>
               <button
                 id="pyq-analysis-toggle"
-                onClick={() => { setShowAnalysis(s => !s); setShowTrends(false); }}
+                onClick={() => { setShowAnalysis(s => !s); setShowTrends(false); setShowYearTest(false); }}
                 style={{
                   background: showAnalysis ? ACCENT : T.surfaceHigh,
                   color: showAnalysis ? "#09090b" : ACCENT,
@@ -1466,7 +1668,7 @@ export default function MainsGS1Page() {
               </button>
               <button
                 id="pyq-trends-toggle"
-                onClick={() => { setShowTrends(s => !s); setShowAnalysis(false); }}
+                onClick={() => { setShowTrends(s => !s); setShowAnalysis(false); setShowYearTest(false); }}
                 style={{
                   background: showTrends ? T.blue : T.surfaceHigh,
                   color: showTrends ? "#fff" : T.blue,
@@ -1484,6 +1686,26 @@ export default function MainsGS1Page() {
                 <span style={{ fontSize: 15 }}>📈</span>
                 {showTrends ? "Hide Trends" : "Year-wise Trends"}
               </button>
+              <button
+                id="year-test-toggle"
+                onClick={() => { setShowYearTest(s => !s); setShowAnalysis(false); setShowTrends(false); }}
+                style={{
+                  background: showYearTest ? T.green : T.surfaceHigh,
+                  color: showYearTest ? "#09090b" : T.green,
+                  border: `1.5px solid ${T.green}${showYearTest ? "ff" : "55"}`,
+                  borderRadius: 10,
+                  fontWeight: 800, fontSize: 12.5,
+                  padding: "10px 20px", cursor: "pointer",
+                  fontFamily: T.font, letterSpacing: "0.03em",
+                  boxShadow: showYearTest ? `0 0 20px ${T.green}30` : "none",
+                  transition: "all 0.15s ease",
+                  display: "flex", alignItems: "center", gap: 8,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <span style={{ fontSize: 15 }}>📅</span>
+                {showYearTest ? "Hide Year Test" : "Year-wise Test"}
+              </button>
             </div>
           </div>
         </div>
@@ -1493,6 +1715,9 @@ export default function MainsGS1Page() {
 
         {/* ── Year-wise Trends Panel ───────────────────────────────────────────── */}
         {showTrends && <YearwiseTrendsPanel questions={questions} />}
+
+        {/* ── Year-wise Full Test Panel ────────────────────────────────────────── */}
+        {showYearTest && <YearTestPanel questions={questions} onStart={handleStart} />}
 
         {/* ── Theme cards ──────────────────────────────────────────────────────── */}
         <div style={{ ...label11(T.subtle), marginBottom: 12 }}>Filter by Theme</div>
@@ -1526,7 +1751,7 @@ export default function MainsGS1Page() {
           <div style={label11(T.subtle)}>Filter:</div>
 
           <div style={{ display: "flex", gap: 6 }}>
-            {["all", "10", "15", "20"].map(m => (
+            {["all", "10", "15"].map(m => (
               <button
                 key={m}
                 onClick={() => setMarkFilter(m)}

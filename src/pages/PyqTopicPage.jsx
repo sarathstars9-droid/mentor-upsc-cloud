@@ -302,12 +302,14 @@ function normalizeQuestion(raw = {}) {
             return isGenericTheme(v) ? "theme_general" : (v || "theme_general");
         })(),
         themeLabel: (() => {
-            const candidates = [raw.themeLabel, raw.section];
+            // raw.theme covers optional dataset; raw.themeLabel / raw.section cover GS datasets
+            const candidates = [raw.themeLabel, raw.theme, raw.section];
             const v = candidates.find(c => c && !isGenericTheme(c));
             return v ? String(v).trim() : "";
         })(),
         subtopic: (() => {
-            const candidates = [raw.subtopic, raw.topic];
+            // raw.subTopic (capital T) covers optional dataset; raw.subtopic / raw.topic cover GS datasets
+            const candidates = [raw.subtopic, raw.subTopic, raw.topic];
             const v = candidates.find(c => c && !isGenericTheme(c));
             return v ? String(v).trim() : "";
         })(),
@@ -425,6 +427,16 @@ function getQuickActionMeta(progress, questionId) {
         isWeak: progress.weakIds.includes(questionId),
         isImportant: progress.importantIds.includes(questionId),
     };
+}
+
+/**
+ * Resolve the practice stage for filtering purposes.
+ * Optional paper items are Mains-type content and must match a "mains" filter.
+ */
+function getPracticeStage(q) {
+    const p = String(q.paper || "").toLowerCase();
+    if (p === "optional") return "mains";
+    return p; // prelims, mains, essay, ethics, csat
 }
 
 function sortQuestions(items, sortMode) {
@@ -565,6 +577,8 @@ export default function PyqTopicPage() {
         weakIds: [],
         importantIds: [],
     });
+    // Keyed by questionId → { explanation_text, source, ... }
+    const [explanationsMap, setExplanationsMap] = useState({});
 
     useEffect(() => {
         let ignore = false;
@@ -634,6 +648,45 @@ export default function PyqTopicPage() {
         savePyqProgress(syllabusNodeId, progress);
     }, [syllabusNodeId, progress]);
 
+    // Bulk-fetch saved explanations for all loaded questions (one request per topic load)
+    useEffect(() => {
+        if (!questions.length) return;
+        const ids = questions.map((q) => q.id).filter(Boolean);
+        if (!ids.length) return;
+
+        fetch(
+            `${BACKEND_URL}/api/pyq/explanations/bulk?userId=user_1&questionIds=${ids.join(",")}`
+        )
+            .then((r) => r.json())
+            .then((data) => {
+                if (data?.success && data.explanations) {
+                    setExplanationsMap(data.explanations);
+                }
+            })
+            .catch(() => {}); // non-fatal — UI degrades gracefully
+    }, [questions]);
+
+    // Hydrate weakIds from DB so "Revise Later" button state is correct on any device.
+    // DB is source of truth; localStorage is used as immediate optimistic state only.
+    useEffect(() => {
+        if (!syllabusNodeId) return;
+        fetch(`${BACKEND_URL}/api/revision-items?userId=user_1`)
+            .then((r) => r.json())
+            .then((data) => {
+                const items = Array.isArray(data) ? data : (data?.items ?? []);
+                const pyqWeakIds = items
+                    .filter((item) => item.source_type === "pyq_manual" && item.question_id)
+                    .map((item) => item.question_id);
+                if (pyqWeakIds.length) {
+                    setProgress((prev) => ({
+                        ...prev,
+                        weakIds: [...new Set([...prev.weakIds, ...pyqWeakIds])],
+                    }));
+                }
+            })
+            .catch(() => {}); // non-fatal
+    }, [syllabusNodeId]);
+
     useEffect(() => {
         if (viewMode !== "quick" && timelineMode !== "normal") {
             setTimelineMode("normal");
@@ -655,7 +708,8 @@ export default function PyqTopicPage() {
         let items = [...questions];
 
         if (paperFilter !== "both") {
-            items = items.filter((q) => q.paper === paperFilter);
+            // Use getPracticeStage so optional items (paper=="optional") match the "mains" filter
+            items = items.filter((q) => getPracticeStage(q) === paperFilter);
         }
 
         if (selectedTheme !== "all") {
@@ -703,16 +757,32 @@ export default function PyqTopicPage() {
     const pyqInsight = useMemo(() => {
         const years = filteredQuestions.map((q) => Number(q.year)).filter(Boolean);
 
-        const total = filteredQuestions.length;
+        // practiceCount = raw subquestion rows (every item in the filtered list)
+        const practiceCount = filteredQuestions.length;
+
+        // mainCount = deduplicated UPSC questions by year + paperNumber + questionNumber
+        const mainQuestions = Array.from(
+            new Map(
+                filteredQuestions.map((q) => [
+                    `${q.year}-${q.paperNumber ?? ""}-${q.questionNumber ?? ""}`,
+                    q,
+                ])
+            ).values()
+        );
+        const mainCount = mainQuestions.length;
+
+        // Use practiceCount for weightage label (reflects actual volume)
         const lastAsked = years.length ? Math.max(...years) : null;
         const firstAsked = years.length ? Math.min(...years) : null;
 
         return {
-            total,
+            total: practiceCount,
+            mainCount,
+            practiceCount,
             firstAsked,
             lastAsked,
             trend: getTrendLabel(years),
-            weightage: getWeightageLabel(total),
+            weightage: getWeightageLabel(practiceCount),
         };
     }, [filteredQuestions]);
 
@@ -729,16 +799,27 @@ export default function PyqTopicPage() {
     }, [filteredQuestions, progress]);
 
     const topic = useMemo(() => {
+        // Deduplicate all loaded questions by year + paperNumber + questionNumber
+        // so the header shows real UPSC question count, not inflated subquestion count
+        const allMainCount = Array.from(
+            new Map(
+                questions.map((q) => [
+                    `${q.year}-${q.paperNumber ?? ""}-${q.questionNumber ?? ""}`,
+                    q,
+                ])
+            ).values()
+        ).length;
+
         return {
             syllabusNodeId: syllabusNodeId || "",
             subject: meta.subject,
             topicName: meta.topicName,
             parentTopic: meta.parentTopic,
-            totalQuestions: summary.total || questions.length,
+            totalQuestions: allMainCount || questions.length,
             viewedCount,
             visibleCount: filteredQuestions.length,
         };
-    }, [syllabusNodeId, meta, summary.total, questions.length, viewedCount, filteredQuestions.length]);
+    }, [syllabusNodeId, meta, questions, viewedCount, filteredQuestions.length]);
 
     function toggleRead(questionId) {
         setProgress((prev) => {
@@ -984,10 +1065,33 @@ export default function PyqTopicPage() {
                                         marginBottom: 4,
                                     }}
                                 >
-                                    Frequency
+                                    Main Questions
                                 </div>
                                 <div style={{ fontSize: 20, fontWeight: 800, color: "#fff" }}>
-                                    {pyqInsight.total}
+                                    {pyqInsight.mainCount}
+                                </div>
+                            </div>
+
+                            <div
+                                style={{
+                                    padding: "12px 14px",
+                                    borderRadius: 14,
+                                    background: "rgba(255,255,255,0.04)",
+                                    border: "1px solid rgba(255,255,255,0.06)",
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        fontSize: 11,
+                                        color: "rgba(180,205,255,0.72)",
+                                        textTransform: "uppercase",
+                                        marginBottom: 4,
+                                    }}
+                                >
+                                    Practice Items
+                                </div>
+                                <div style={{ fontSize: 20, fontWeight: 800, color: "#fff" }}>
+                                    {pyqInsight.practiceCount}
                                 </div>
                             </div>
 
@@ -1101,6 +1205,8 @@ export default function PyqTopicPage() {
                         onToggleRead={toggleRead}
                         onToggleWeak={toggleWeak}
                         onToggleImportant={toggleImportant}
+                        explanationsMap={explanationsMap}
+                        nodeId={syllabusNodeId}
                     />
                 ) : (
                     <PyqAnalysisView

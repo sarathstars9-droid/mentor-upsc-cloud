@@ -4,7 +4,6 @@ const navItems = [
   { key: "performance", icon: "📊", label: "Performance" },
   { key: "revision", icon: "🔁", label: "Revision" },
   { key: "syllabus", icon: "📚", label: "Syllabus" },
-  { key: "csat", icon: "🔢", label: "CSAT" },
   { key: "optional", icon: "🗺️", label: "Optional (Geo)" },
   { key: "backlog", icon: "📦", label: "Backlog" },
   { key: "focus", icon: "⏱️", label: "Focus" },

@@ -1,19 +1,9 @@
 // backend/engines/rcSubtopicLoader.js
-// Loads prelims_csat_rc_tagged.json, classifies all 441 RC questions
-// into 8 buckets, and caches the result in memory.
+// Classifies all RC questions into 8 buckets and caches the result in memory.
+// Data comes from the canonical CSAT loader — no direct file reads here.
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
 import { classifyRcQuestion } from "./classifyRcQuestion.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const RC_FILE = path.resolve(
-    __dirname,
-    "../data/pyq_questions/prelims/csat/prelims_csat_rc_tagged.json"
-);
+import { loadCSATData } from "../data/loaders/csatLoader.js";
 
 // ── Topic ID → classifier type ────────────────────────────────────────────────
 export const TOPIC_TO_RC_TYPE = {
@@ -47,8 +37,7 @@ const SUBTOPIC_LABELS = {
 let _cache = null;
 
 function buildCache() {
-    const json = JSON.parse(fs.readFileSync(RC_FILE, "utf-8"));
-    const questions = Array.isArray(json) ? json : (json.questions || []);
+    const questions = loadCSATData().rc;
 
     const buckets = {};
     for (const topicId of Object.keys(TOPIC_TO_RC_TYPE)) {

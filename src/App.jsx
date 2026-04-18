@@ -11,9 +11,18 @@ import MainsGS2Page from "./pages/MainsGS2Page";
 import MainsGS3Page from "./pages/MainsGS3Page";
 import AnswerWritingPage from "./pages/AnswerWritingPage";
 import MainsMistakeBookPage from "./pages/MainsMistakeBookPage";
-import EthicsPage from "./pages/EthicsPage";
-import EssayPage from "./pages/EssayPage";
-import GeographyOptionalPage from "./pages/GeographyOptionalPage";
+import EthicsPage from "./pages/ethics/EthicsPage";
+import EthicsPyqPage from "./pages/ethics/EthicsPyqPage";
+import EthicsInstitutionalPage from "./pages/ethics/EthicsInstitutionalPage";
+import EthicsMistakePage from "./pages/ethics/EthicsMistakePage";
+import EssayPage from "./pages/essay/EssayPage";
+import EssayPyqPage from "./pages/essay/EssayPyqPage";
+import EssayInstitutionalPage from "./pages/essay/EssayInstitutionalPage";
+import EssayMistakePage from "./pages/essay/EssayMistakePage";
+import GeographyOptionalPage from "./pages/geographyOptional/GeographyOptionalPage";
+import GeographyOptionalPyqPage from "./pages/geographyOptional/GeographyOptionalPyqPage";
+import GeographyOptionalInstitutionalPage from "./pages/geographyOptional/GeographyOptionalInstitutionalPage";
+import GeographyOptionalMistakePage from "./pages/geographyOptional/GeographyOptionalMistakePage";
 import SettingsPage from "./pages/SettingsPage";
 import PyqTopicPage from "./pages/PyqTopicPage.jsx";
 import ExecutionPage from "./pages/ExecutionPage";
@@ -26,6 +35,7 @@ import PrelimsMistakesPage from "./pages/PrelimsMistakesPage";
 import MistakeBookPage from "./pages/MistakeBookPage";
 import PrelimsInstitutionalTestsPage from "./pages/PrelimsInstitutionalTestsPage";
 import MentorOSLayout from "./layouts/MentorOSLayout";
+import PyqIngestionPage from "./pages/admin/PyqIngestionPage";
 import { isLoggedIn, login, logout } from "./utils/auth";
 
 function AppRoutes({ onLogout }) {
@@ -43,6 +53,9 @@ function AppRoutes({ onLogout }) {
     "/syllabus": "syllabus",
     "/csat": "csat",
     "/geography-optional": "optional",
+    "/geography-optional/pyq": "optional",
+    "/geography-optional/institutional": "optional",
+    "/geography-optional/mistakes": "optional",
     "/backlog": "backlog",
     "/focus": "focus",
     "/prelims": "prelims",
@@ -52,7 +65,13 @@ function AppRoutes({ onLogout }) {
     "/mains/answer-writing": "mains",
     "/mains/mistakes": "mains_mistakes",
     "/ethics": "ethics",
+    "/ethics/pyq": "ethics",
+    "/ethics/institutional": "ethics",
+    "/ethics/mistakes": "ethics",
     "/essay": "essay",
+    "/essay/pyq": "essay",
+    "/essay/institutional": "essay",
+    "/essay/mistakes": "essay",
     "/settings": "settings",
   };
 
@@ -109,6 +128,9 @@ function AppRoutes({ onLogout }) {
         <Route path="/syllabus" element={<SyllabusPage />} />
         <Route path="/csat" element={<CsatPage />} />
         <Route path="/geography-optional" element={<GeographyOptionalPage />} />
+        <Route path="/geography-optional/pyq" element={<GeographyOptionalPyqPage />} />
+        <Route path="/geography-optional/institutional" element={<GeographyOptionalInstitutionalPage />} />
+        <Route path="/geography-optional/mistakes" element={<GeographyOptionalMistakePage />} />
         <Route path="/backlog" element={<BacklogPage />} />
         <Route path="/focus" element={<FocusPage />} />
         <Route path="/prelims" element={<PrelimsPage />} />
@@ -119,10 +141,18 @@ function AppRoutes({ onLogout }) {
         <Route path="/mains/answer-writing" element={<AnswerWritingPage />} />
         <Route path="/mains/mistakes" element={<MainsMistakeBookPage />} />
         <Route path="/ethics" element={<EthicsPage />} />
+        <Route path="/ethics/pyq" element={<EthicsPyqPage />} />
+        <Route path="/ethics/institutional" element={<EthicsInstitutionalPage />} />
+        <Route path="/ethics/mistakes" element={<EthicsMistakePage />} />
         <Route path="/essay" element={<EssayPage />} />
+        <Route path="/essay/pyq" element={<EssayPyqPage />} />
+        <Route path="/essay/institutional" element={<EssayInstitutionalPage />} />
+        <Route path="/essay/mistakes" element={<EssayMistakePage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/pyq/topic" element={<PyqTopicPage />} />
         <Route path="/pyq/topic/:syllabusNodeId" element={<PyqTopicPage />} />
+        {/* Admin-only utility routes — not in sidebar nav */}
+        <Route path="/admin/pyq-ingestion" element={<PyqIngestionPage />} />
         <Route path="*" element={<Navigate to="/plan" replace />} />
       </Routes>
     </MentorOSLayout>

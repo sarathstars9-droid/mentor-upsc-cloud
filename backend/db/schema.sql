@@ -71,6 +71,18 @@ created_at TIMESTAMPTZ DEFAULT NOW(),
 updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- PYQ EXPLANATIONS (AI-generated, user-saved)
+CREATE TABLE IF NOT EXISTS pyq_explanations (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+user_id TEXT NOT NULL,
+question_id TEXT NOT NULL,
+explanation_text TEXT NOT NULL,
+source TEXT DEFAULT 'chatgpt',
+created_at TIMESTAMPTZ DEFAULT NOW(),
+updated_at TIMESTAMPTZ DEFAULT NOW(),
+UNIQUE (user_id, question_id)
+);
+
 -- INDEXES
 CREATE INDEX IF NOT EXISTS idx_mistakes_user ON mistakes(user_id);
 CREATE INDEX IF NOT EXISTS idx_mistakes_node ON mistakes(node_id);
@@ -80,3 +92,6 @@ CREATE INDEX IF NOT EXISTS idx_revision_node ON revision_items(node_id);
 
 CREATE INDEX IF NOT EXISTS idx_mains_user ON mains_answers(user_id);
 CREATE INDEX IF NOT EXISTS idx_mains_node ON mains_answers(node_id);
+
+CREATE INDEX IF NOT EXISTS idx_pyq_explanations_user ON pyq_explanations(user_id);
+CREATE INDEX IF NOT EXISTS idx_pyq_explanations_question ON pyq_explanations(question_id);

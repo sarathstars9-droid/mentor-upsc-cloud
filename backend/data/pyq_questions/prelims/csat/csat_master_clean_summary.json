@@ -1,0 +1,100 @@
+{
+  "2011": {
+    "total": 47,
+    "Quant": 7,
+    "Reasoning": 11,
+    "RC": 29,
+    "missingTo80": 33
+  },
+  "2012": {
+    "total": 14,
+    "Quant": 3,
+    "Reasoning": 11,
+    "RC": 0,
+    "missingTo80": 66
+  },
+  "2013": {
+    "total": 24,
+    "Quant": 10,
+    "Reasoning": 14,
+    "RC": 0,
+    "missingTo80": 56
+  },
+  "2014": {
+    "total": 18,
+    "Quant": 7,
+    "Reasoning": 11,
+    "RC": 0,
+    "missingTo80": 62
+  },
+  "2015": {
+    "total": 19,
+    "Quant": 12,
+    "Reasoning": 7,
+    "RC": 0,
+    "missingTo80": 61
+  },
+  "2016": {
+    "total": 23,
+    "Quant": 12,
+    "Reasoning": 11,
+    "RC": 0,
+    "missingTo80": 57
+  },
+  "2017": {
+    "total": 25,
+    "Quant": 16,
+    "Reasoning": 9,
+    "RC": 0,
+    "missingTo80": 55
+  },
+  "2018": {
+    "total": 33,
+    "Quant": 23,
+    "Reasoning": 10,
+    "RC": 0,
+    "missingTo80": 47
+  },
+  "2019": {
+    "total": 29,
+    "Quant": 17,
+    "Reasoning": 12,
+    "RC": 0,
+    "missingTo80": 51
+  },
+  "2020": {
+    "total": 31,
+    "Quant": 29,
+    "Reasoning": 2,
+    "RC": 0,
+    "missingTo80": 49
+  },
+  "2021": {
+    "total": 32,
+    "Quant": 25,
+    "Reasoning": 7,
+    "RC": 0,
+    "missingTo80": 48
+  },
+  "2022": {
+    "total": 31,
+    "Quant": 23,
+    "Reasoning": 8,
+    "RC": 0,
+    "missingTo80": 49
+  },
+  "2023": {
+    "total": 47,
+    "Quant": 19,
+    "Reasoning": 7,
+    "RC": 21,
+    "missingTo80": 33
+  },
+  "2024": {
+    "total": 40,
+    "Quant": 7,
+    "Reasoning": 8,
+    "RC": 25,
+    "missingTo80": 40
+  }
+}

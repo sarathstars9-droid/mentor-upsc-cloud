@@ -7,7 +7,7 @@
   "paper": "CSAT",
   "subject": "CSAT",
   "module": "Logical Reasoning",
-  "totalQuestions": 280,
+  "totalQuestions": 298,
   "preservesOriginalQuestionObjects": true,
   "questions": [
     {
@@ -32,7 +32,7 @@
       "answer": "c",
       "module": "Reasoning",
       "id": "PRE_CSAT_ANALYTICAL_REASONING_2011_001",
-      "syllabusNodeId": "CSAT-LR-BLOOD"
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
     },
     {
       "section": "ANALYTICAL REASONING",
@@ -56,7 +56,7 @@
       "answer": "a",
       "module": "Reasoning",
       "id": "PRE_CSAT_ANALYTICAL_REASONING_2011_002",
-      "syllabusNodeId": "CSAT-LR-BLOOD"
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
     },
     {
       "section": "ANALYTICAL REASONING",
@@ -3042,30 +3042,6 @@
     },
     {
       "section": "NON VERBAL REASONING",
-      "year": 2013,
-      "questionNumber": 6,
-      "questionType": "NON_VERBAL",
-      "format": "text",
-      "question": "Problem Figure:",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "",
-        "b": "",
-        "c": "",
-        "d": ""
-      },
-      "answer": "b",
-      "module": "Reasoning",
-      "id": "PRE_CSAT_NON_VERBAL_REASONING_2013_006",
-      "syllabusNodeId": "CSAT-LR-VISUAL"
-    },
-    {
-      "section": "NON VERBAL REASONING",
       "year": 2014,
       "questionNumber": 7,
       "questionType": "NON_VERBAL",
@@ -5308,30 +5284,6 @@
     {
       "section": "PUZZLES",
       "year": 2018,
-      "questionNumber": 54,
-      "questionType": "ARRANGEMENT",
-      "format": "text",
-      "question": "Which one of the following statements is\ncorrect?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "Engineering college is located in Assam.",
-        "b": "City Q is situated in Assam.",
-        "c": "C is studying in Kerala.",
-        "d": "B is studying in Gujarat."
-      },
-      "answer": "a",
-      "module": "Reasoning",
-      "id": "PRE_CSAT_PUZZLES_2018_054",
-      "syllabusNodeId": "CSAT-LR-COMPLEX"
-    },
-    {
-      "section": "PUZZLES",
-      "year": 2018,
       "questionNumber": 55,
       "questionType": "ARRANGEMENT",
       "format": "text",
@@ -6654,30 +6606,6 @@
     },
     {
       "section": "DECISION MAKING AND PROBLEM SOLVING",
-      "year": 2025,
-      "questionNumber": 1,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "Consider the following statements:\nI. IfA ≤ B > C < D > E > F ≥ G = H; then B is always greater than\nE.\nII. If P > Q = R ≥ S = T ≤ U = V > W; then S is always less than V .\nWhich of the statements given above is/are correct?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "I only",
-        "b": "II only",
-        "c": "Both I and II",
-        "d": "Neither I nor II"
-      },
-      "answer": "d",
-      "module": "Decision",
-      "id": "PRE_CSAT_DECISION_MAKING_AND_PROBLEM_SOLVING_2025_001",
-      "syllabusNodeId": "CSAT-DM"
-    },
-    {
-      "section": "DECISION MAKING AND PROBLEM SOLVING",
       "year": 2018,
       "questionNumber": 2,
       "questionType": "MCQ_SINGLE",
@@ -7203,6 +7131,678 @@
       "module": "Decision",
       "id": "PRE_CSAT_DECISION_MAKING_AND_PROBLEM_SOLVING_2011_023",
       "syllabusNodeId": "CSAT-DM"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 31,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "P and Q walk along a circular track. They\nstart at 5:00 am from the same point in\nopposite directions. P walks at an average\nspeed of 5 rounds per hour and Q walks at\nan average speed of 3 rounds per hour. How\nmany times will they cross each other\nbetween 5:20 am and 7:00 am ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "12",
+        "b": "13",
+        "c": "14",
+        "d": "15"
+      },
+      "answer": "c",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_001",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 32,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "A tram overtakes 2 persons X and Y walking\nat an average speed of 3 km/h and 4 km/h in\nthe same direction and completely passes\nthem in 8 seconds and 9 seconds respectively.\nWhat is the length of the tram ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "15 m",
+        "b": "18 m",
+        "c": "20 m",
+        "d": "24 m\nTime and Work"
+      },
+      "answer": "c",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_002",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 33,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "A set ( X) of 20 pipes can fill 70% of a tank in 14\nminutes. Another set (Y) of 10 pipes fills 3\n8 th\nof the tank in 6 minutes. A third set (Z) of 16\npipes can empty half of the tank in\n20 minutes. If half of the pipes of set X are\nclosed and only half of the pipes of set Y are\nopen, and all pipes of the set (Z) are open, then\nhow long will it take to fill 50% of the tank ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "8 minutes",
+        "b": "10 minutes",
+        "c": "12 minutes",
+        "d": "16 minutes"
+      },
+      "answer": "d",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_003",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 34,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "X can complete one-third of a certain work in\n6 days, Y can complete one-third of the same\nwork in 8 days and Z can complete three-\nfourth of the same work in 12 days. All of them\nwork together for n days and then X and Z\nquit and Y alone finishes the remaining work\nin 28 3  days. What is n equal to ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "3",
+        "b": "4",
+        "c": "5",
+        "d": "6\nNumber Series"
+      },
+      "answer": "b",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_004",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 35,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "What comes at X and Y respectively in the\nfollowing sequence ?\nJanuary, January, December, October, X,\nMarch, October, Y, September.",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "July, May",
+        "b": "July, April",
+        "c": "June, May",
+        "d": "June, April"
+      },
+      "answer": "b",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_005",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 36,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "Consider the sequence :\nAB_CC_A_BCCC _BBC_C that follows a\ncertain pattern. Which one of the following\ncompletes the sequence ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "B, C, B, C, A",
+        "b": "A, C, B, C, A",
+        "c": "B, C, B, A, C",
+        "d": "C, B, B, A, C"
+      },
+      "answer": "c",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_006",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 37,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "What is X in the sequence\n24, X, 12, 18, 36, 90 ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "18",
+        "b": "12",
+        "c": "9",
+        "d": "6"
+      },
+      "answer": "b",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_007",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 38,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "What is X in the sequence\n1, 3, 6, 11, 18, X, 42 ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "26",
+        "b": "27",
+        "c": "29",
+        "d": "30\nMissing Terms"
+      },
+      "answer": "c",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_008",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 39,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "If 7 * 24 = 25 and 12 * 16 = 20, then what is\n16 * 63 equal to ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "70",
+        "b": "66",
+        "c": "65",
+        "d": "64"
+      },
+      "answer": "c",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_009",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 40,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "A solid cube is painted yellow on all its faces.\nThe cube is then cut into 60 smaller but equal\npieces by making the minimum number of\ncuts. Which of the following statements\nis/are correct ?\nI. The minimum number of cuts is 9.\nII. The number of smaller pieces which are\nnot painted on any face is 6.\nSelect the correct answer using the code given\nbelow:",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II\nBlood relation"
+      },
+      "answer": "c",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_010",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 41,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "P is the brother of Q and R. S is R's mother.\nT is P's father. How many of the following\nstatements are definitely true ?\nI. S and T are a couple.\nII. Q is T's son.\nIII. T is Q's father.\nIV. S is P's mother.\nV. R is T's daughter.\nVI. P is S's son.\nSelect the correct answer using the code given\nbelow:",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "Only two",
+        "b": "Only three",
+        "c": "Only four",
+        "d": "Only five"
+      },
+      "answer": "c",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_011",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 42,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "A question is given followed by two Statements\n1 and 2. Consider the Question and the\nStatements and mark the correct option.\nQuestion: How is Q related to P ?\nStatement-1: P has two sisters, R and S.\nStatement-2: R's father is the brother of Q.\nWhich one of the following is correct in respect\nof the above Question and the Statements ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "The Question can be answered by using one\nof the Statements alone, but cannot be\nanswered using the other Statement alone.",
+        "b": "The Question can be answered by using\neither Statement alone.",
+        "c": "The Question can be answered by using\nboth the Statements together, but cannot\nbe answered using either Statement alone.",
+        "d": "The Question cannot be answered even\nusing any of the Statements.\nDirection sense"
+      },
+      "answer": "d",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_012",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 43,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "There are 7 places A, B, C, D, E, F and G in\na city connected by various roads AB, AC,\nCD, DE, BF, EG and FG. A is 6 km south of\nB. A is 10 km west of C. D is 5 km east of E.\nC is 6 km north of D. F is 9 km west of B. F is\n12 km north of G. A person travels from D to\nF through these roads. What is the distance\ncovered by the person ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "20 km",
+        "b": "25 km",
+        "c": "31 km",
+        "d": "37 km\nCoding decoding"
+      },
+      "answer": "c",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_013",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 44,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "If NO is coded as 210, NOT is coded as 4200\nand NOTE is coded as 21000, then how is\nNOTES coded ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "399000",
+        "b": "420000",
+        "c": "440000",
+        "d": "630000"
+      },
+      "answer": "a",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_014",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 45,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "If FRANCE is coded as 654321 and\nGERMANY is coded as 9158437, then how\nis YEMEN coded ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "54321",
+        "b": "81913",
+        "c": "71913",
+        "d": "71813"
+      },
+      "answer": "d",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_015",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 46,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "In a certain code if 64 is written as 343 and\n216 is written as 729, then how is 512 written\nin that code ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "1000",
+        "b": "1331",
+        "c": "1728",
+        "d": "2197"
+      },
+      "answer": "b",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_016",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 47,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "If P = +, Q = -, R = ×, S = y, then insert the\nproper notations between the successive\nnumbers in the equation 60_15_3_20_4 = 20.",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "SPRQ",
+        "b": "QRPS",
+        "c": "QRSP",
+        "d": "SPQR\nPuzzle"
+      },
+      "answer": "b",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_017",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 48,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "Three teams P, Q, R participated in a\ntournament in which the teams play with one\nanother exactly once. A win fetches a team\n2 points and a draw 1 point. A team gets\nno point for a loss. Each team scored exactly\none goal in the tournament. The team P got\n3 points, Q got 2 points and R got 1 point.\nWhich of the following statements is/are\ncorrect ?\nI. The result of the match between P and Q\nis a draw with the score 0 - 0.\nII. The number of goals scored by R against\nQ is 1.\nWhich of the statements given above is/are\ncorrect ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "c",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_018",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 49,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "A question is given followed by two Statements\n1 and 2. Consider the Question and the\nStatements and mark the correct option.\nQuestion: In a football match, team P\nplaying against Q was behind\nby 3 goals with 10 minutes\nremaining. Does team P win\nthe match ?\nStatement-1: Team P scored 4 goals in the\nlast 10 minutes.\nStatement-2: Team Q scored a total of\n4 goals in the match.\nWhich one of the following is correct in respect\nof the above Question and the Statements ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "The Question can be answered by using one\nof the Statements alone, but cannot be\nanswered using the other Statement alone.",
+        "b": "The Question can be answered by using\neither Statement alone.",
+        "c": "The Question can be answered by using\nboth the Statements together, but cannot\nbe answered using either Statement alone.",
+        "d": "The Question cannot be answered even\nusing any of the Statements."
+      },
+      "answer": "d",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_019",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 50,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "A mobile phone has been stolen. There are\n3 suspects P, Q and R. They were questioned\nknowing that only one of them is guilty.\nTheir responses are as follows:\nP: I did not steal. Q stole it.\nQ: R did not steal. I did not steal.\nR: I did not steal. I do not know who did it.\nWho stole the mobile phone ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "P",
+        "b": "Q",
+        "c": "R",
+        "d": "Cannot be concluded"
+      },
+      "answer": "d",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_020",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
+    },
+    {
+      "year": 2025,
+      "questionNumber": 51,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "Consider the following statements :\nI. If A d B > C < D > E > F t G = H; then\nB is always greater than E.\nII. If P > Q = R t S = T d U = V > W; then\nS is always less than V.\nWhich of the statements given above is/are\ncorrect ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "d",
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": [],
+      "id": "PRE_CSAT_LOGICAL_REASONING_2025_021",
+      "module": "Logical Reasoning",
+      "syllabusNodeId": "CSAT-LR-ANALYTICAL"
     }
   ]
 }

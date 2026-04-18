@@ -41,6 +41,7 @@ import { loadGs2Questions } from "./api/mainsGs2Questions.js";
 import { loadGs3Questions } from "./api/mainsGs3Questions.js";
 import mainsThemeRoutes from "./routes/mainsThemeRoutes.js";
 import mainsReviewRoutes from "./routes/mainsReviewRoutes.js";
+import mainsRoutes from "./routes/mainsRoutes.js";
 import {
   computeSyllabusProgress,
 } from "./brain/syllabusProgressEngine.js";
@@ -62,6 +63,9 @@ import { processOcrText } from "./ocrMapping/index.js";
 import mistakeRoutes from "./routes/mistakeRoutes.js";
 import revisionRoutes from "./routes/revisionRoutes.js";
 import weaknessRoutes from "./routes/weaknessRoutes.js";
+import pyqExplanationRoutes from "./routes/pyqExplanationRoutes.js";
+import subjectPyqRoutes from "./routes/subjectPyqRoutes.js";
+import pyqIngestionRoutes from "./routes/pyqIngestionRoutes.js";
 dotenv.config();
 
 console.log("[BOOT] server.js loaded");
@@ -415,6 +419,12 @@ app.use("/api/mistakes", mistakeRoutes);
 app.use("/api/revision-items", revisionRoutes);
 app.use("/api/revision", revisionRoutes);   // alias — same router, both paths work
 app.use("/api/weakness", weaknessRoutes);
+app.use("/api/pyq", pyqExplanationRoutes);
+app.use("/api/subject-pyq", subjectPyqRoutes);
+
+// ── PYQ Ingestion pipeline (Step 1: upload only) ───────────────────────────
+// Isolated admin utility — does NOT touch existing PYQ master/index logic
+app.use("/api/pyq-ingestion", pyqIngestionRoutes);
 
 /* -------------------- MAINS GS1 QUESTIONS API -------------------- */
 
@@ -488,6 +498,11 @@ app.use("/api/mains", mainsThemeRoutes);
 // Handles: POST attempt/save, POST review/save, POST review/process, GET review/result
 // Safe mount — uses /api/mains/attempt/* and /api/mains/review/* (no conflict with theme/gs routes)
 app.use("/api/mains", mainsReviewRoutes);
+
+/* -------------------- MAINS CLEAN DATASET ROUTES -------------------- */
+// Backed by mains_master_clean_fixed.json via backend/loaders/mainsLoader.js
+// Safe mount — uses /api/mains/questions (no conflict with theme/review/gs* routes)
+app.use("/api/mains", mainsRoutes);
 
 app.get("/api/mains/gs3/questions", (req, res) => {
   try {
@@ -1264,6 +1279,23 @@ app.get("/api/prelims/gs/counts", (_req, res) => {
     return res.json({ ok: true, counts });
   } catch (err) {
     console.error("❌ getGSCounts error:", err);
+    return res.status(500).json({ ok: false, error: String(err?.message || err) });
+  }
+});
+
+app.get("/api/prelims/csat/counts", (_req, res) => {
+  try {
+    const { quant, lr, rc } = loadCSATData();
+    return res.json({
+      ok: true,
+      counts: {
+        csat_quant:     quant.length,
+        csat_reasoning: lr.length,
+        csat_rc:        rc.length,
+      },
+    });
+  } catch (err) {
+    console.error("❌ CSAT counts error:", err);
     return res.status(500).json({ ok: false, error: String(err?.message || err) });
   }
 });

@@ -19,14 +19,25 @@ const GS1_FILES = [
   { file: "mains_gs1_art_culture_tagged.json", theme: "Art & Culture" },
 ];
 
-// ─── Infer marks from wordLimit when marks field is null ─────────────────────
+// ─── Infer marks from explicit data only ─────────────────────────────────────
+// GS1 paper structure (2016 onwards): Q1–10 = 10M (150 words), Q11–20 = 15M (250 words).
+// NOTE: questionNumber in the subject files is per-subject (1–N within History,
+//       1–M within Geography, etc.) — NOT the overall paper question number (1–20).
+//       Using questionNumber as a proxy for 10M/15M produces wrong results and is
+//       now explicitly disabled. Only wordLimit (when present) and explicit marks
+//       fields are trusted.
 function inferMarks(marks, wordLimit) {
-  if (marks != null && Number.isFinite(Number(marks))) return Number(marks);
+  // Honour explicit marks if it is a valid GS value
+  if (marks != null && Number.isFinite(Number(marks)) && Number(marks) > 0) {
+    const m = Number(marks);
+    return m >= 6 ? 15 : 10;
+  }
+  // wordLimit is the next reliable signal (150 words = 10M, 250 words = 15M)
   const w = Number(wordLimit);
-  if (!w) return null;
-  if (w <= 100) return 10;
-  if (w <= 200) return 15;
-  return 20;
+  if (w >= 200) return 15;
+  if (w >= 100) return 10;
+  // Cannot reliably infer — return null rather than guess wrong
+  return null;
 }
 
 // ─── Derive structure hint from marks ────────────────────────────────────────

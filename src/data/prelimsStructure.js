@@ -607,7 +607,7 @@ export const PRELIMS_STRUCTURE = {
         {
             id: "csat_quant",
             label: "Quantitative Aptitude",
-            count: 384,
+            count: 363,
             topics: [
                 {
                     id: "number_system",
@@ -690,7 +690,7 @@ export const PRELIMS_STRUCTURE = {
         {
             id: "csat_reasoning",
             label: "Logical Reasoning",
-            count: 257,
+            count: 298,
             topics: [
                 {
                     id: "puzzles_complex",
@@ -798,7 +798,7 @@ export const PRELIMS_STRUCTURE = {
             id: "csat_rc",
             nodeId: "CSAT-RC",
             label: "Reading Comprehension",
-            count: 441,
+            count: 411,
             topics: [
                 { id: "rc_assumption",       nodeId: "CSAT-RC-ASSUMP", name: "Assumption",         count: 0 },
                 { id: "rc_tone",             nodeId: "CSAT-RC-TONE",  name: "Tone & Attitude",     count: 0 },

@@ -251,6 +251,19 @@ function RevisionCard({ item, onReview, onSnooze, loadingId, weaknessMap }) {
           )}
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 4, alignItems: "flex-end", flexShrink: 0 }}>
+          {item.source_type === "pyq_manual" && (
+            <span style={{
+              fontSize: 10, fontWeight: 800, padding: "3px 8px",
+              borderRadius: 999,
+              background: "rgba(6,182,212,0.12)",
+              border: "1px solid rgba(6,182,212,0.35)",
+              color: "#22d3ee",
+              letterSpacing: "0.06em",
+              whiteSpace: "nowrap",
+            }}>
+              📚 PYQ
+            </span>
+          )}
           <Badge label={item.priority || "—"} color={PRIORITY_COLOR[item.priority || "low"]} bg={PRIORITY_BG[item.priority || "low"]} />
           <Badge label={item.status || "—"} color={STATUS_COLOR[item.status] || "#6b7280"} />
           {weakness && (

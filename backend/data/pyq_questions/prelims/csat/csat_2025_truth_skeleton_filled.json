@@ -1,0 +1,2396 @@
+{
+  "schemaVersion": "csat-2025-truth-skeleton-v1",
+  "generatedAt": "2026-04-15T12:33:23.682Z",
+  "totalQuestions": 80,
+  "validation": {
+    "year": 2025,
+    "expectedTotal": 80,
+    "expectedBreakup": {
+      "Quant": 30,
+      "Reasoning": 21,
+      "Comprehension": 29
+    }
+  },
+  "questions": [
+    {
+      "year": 2025,
+      "questionNumber": 1,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Consider the following statements:\nI. IfA ≤ B > C < D > E > F ≥ G = H; then B is always greater than\nE.\nII. If P > Q = R ≥ S = T ≤ U = V > W; then S is always less than V .\nWhich of the statements given above is/are correct?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "d",
+      "topicTags": [
+        "DECISION MAKING AND PROBLEM SOLVING"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 2,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to above passage, the following assumptions have\nbeen made:\nI. No country needs to depend on ecosystems to boost national\nincome.\nII. Resource-rich countries need to share their resources with\nthose of scant resources so as to prevent the degradation of\necosystems,\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": null,
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 3,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the central\nidea of the passage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "Economies of scale is essential for transition to green growth.",
+        "b": "Modern technological progress is intensely linked to path-\ndependent innovations.",
+        "c": "Countries with large economies are in a better position to\nadopt green technologies.",
+        "d": "Timing plays a crucial role in the case of green technology\ndevelopment."
+      },
+      "answer": "b",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 4,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to the above passage, the following assumptions\nhave been made:\nI. Path-dependent green investments will eventually most likely\nbenefit growth as well as public finances in a country like\nIndia.\nII. If other green technologies follow the same pattern as that of\nsolar energy, there will most likely be an easy green transition.\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": null,
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 5,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the most\nlogical, rational and pragmatic message conveyed by the author of\nthe passage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "The mitigation and adaptation strategies to address/tackle the\nclimate change is essentially the responsibility of each State.",
+        "b": "India is too diverse to implement any effective strategy or\nprogramme to address/tackle the climate change.",
+        "c": "It is basically the responsibility of the Union Government\nto implement the climate action plans and ensure net zero\nComprehension1\n5Comprehension\nemissions.",
+        "d": "India needs to formulate effective climate change mitigation\nand adaptation strategies at the State/region"
+      },
+      "answer": "d",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 6,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to the passage, the following assumptions have\nbeen made:\nI. Green energy production can be linked to/integrated with the\nclimate change mitigation and adaptation strategies.\nII. Effects of climate change are much more severe in coastal and\nmountainous regions.\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "d",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 7,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the critical\nmessage conveyed by the passage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "India’s political executive should be aware that poverty and\nsocial inequality and the consequent sense of insecurity is the\nmain social problem.",
+        "b": "In India, poverty is the primary reason for social inequality\nand insecurity.",
+        "c": "Poverty and social inequality are so intricately linked that\nthey pose an unmanageable crisis for India.",
+        "d": "Insecurity, more than poverty, is the main economic issue that\nGovernment policies must address."
+      },
+      "answer": "d",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 8,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to the above passage, the following assumptions\nhave been made:\nI. People above the poverty line also are prone to suffer from\nanxiety about economic insecurity.\nII. Eradication of poverty can result in peace and social equality\nin the country.\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "a",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 9,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the corollary\nto the above passage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "The benefit of economic reforms percolates down more slowly\nto the agriculture sector than in other sectors of the economy.",
+        "b": "For India, the green revolution was not as useful as it was\nexpected to be.",
+        "c": "India lagged behind other countries in adapting mechanized\nand modern farming.",
+        "d": "Rural-to-urban migration resulted in the stagnant agriculture\nsector."
+      },
+      "answer": null,
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 10,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to the passage, the following assumptions have\nbeen made:\nThe growing divergence between the fortunes of the agricultural\nand non-agricultural economy in India could have been reduced/\ncontained by:\nI. adapting large-scale cultivation of commercial crops and\nviable corporate farming.\nII. providing free insurance for all crops and heavily subsidizing\nseeds, fertilizers, electricity and farm machinery at par with\ndeveloped countries.\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "d",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 11,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the most\nlogical and rational message conveyed by the author of the\npassage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "We need to free the handloom industry from the limited\nnarrative linked to preserving cultural heritage.",
+        "b": "Continued State support to the handloom industry ensures\nthe preservation of some of our glorious art forms and old\ntraditions.",
+        "c": "Household units of the handloom sector should be\nmodernized and made an economically viable organized\nindustry.",
+        "d": "Handloom products need to be converted to machine-made\ndesigner products so as to make them more popular."
+      },
+      "answer": null,
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 12,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to the above passage, the following assumptions\nhave been made:\nI. There is no need for the State to be involved in any manner in\nthe handloom sector.\nII. Handloom products are no longer appealing and attractive in\nthe rapidly changing modern world.\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": null,
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 13,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the central\nidea conveyed by the passage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "India does not have enough resources for promoting quality\neducation in its universities.",
+        "b": "The institutions of higher learning in the country should not\nbe under the control of the Government.",
+        "c": "Classroom approach to higher education should be done\naway with.",
+        "d": "Classroom needs to be reimagined and teaching needs to be\nre-invented."
+      },
+      "answer": "d",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 14,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to the above passage, the following assumptions\nhave been made:\nI. Higher education is a constantly evolving subject that needs\nto align towards new developments in all spheres of society.\nII. In our country, sufficient funds are not allocated for promoting\nhigher education.\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "d",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 15,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the crux of the\npassage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "There is an urgent need for a public policy to promote the\nconsumption of cereal-based foods in wealthier societies.",
+        "b": "Animal-based food is far less efficient than grain/plant-based\nfood in terms of production and utilization.",
+        "c": "Plant-based protein should replace animal-based protein in\nour daily diets.",
+        "d": "Inequality in food production and consumption is inevitable\nin any fast changing society."
+      },
+      "answer": "b",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 16,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to the above passage, the following assumptions\nhave been made:\nI. The food manufacturing and processing industries in every\ncountry should align their objectives and processes in\naccordance with the changing needs of the societies.\nII. Wealthier societies tend to incur great loss of calories of\nfood materials due to indirect utilization of their agricultural\nproduce.\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "b",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 17,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the central\nidea conveyed by the passage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "Moving to net-zero carbon is possible only by the reduction\nin household emissions.\n7Comprehension",
+        "b": "Low-carbon behaviour in people can be brought about by\nincentivising them.",
+        "c": "Cheaper goods and services can be made available to people\nby using low-carbon technologies.",
+        "d": "Manufacturing industries that use low-carbon technologies\nshould be provided with subsidies."
+      },
+      "answer": "b",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 18,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to the above passage, the following assumptions\nhave been made:\nI. Supply-side investments in companies can result in low-\ncarbon behaviour in people.\nII. People are not capable of adapting low-carbon behaviour\nwithout the involvement of Government and Companies.\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "a",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 19,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the most\nlogical, rational and pragmatic message conveyed by the passage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "Green economy is not possible without reusing critical\nminerals.",
+        "b": "Every sector of economy should adapt the reuse of material\nresources immediately.",
+        "c": "Circular economy can be beneficial for sustainable growth.",
+        "d": "Circular use of material resources is the only option for some\nindustries for their survival."
+      },
+      "answer": "c",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 20,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to the above passage, the following assumptions\nhave been made:\nI. Automobile factories are examples of the circular economy.\nII. Economic growth is compatible with circular use of mineral\nresources.\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "d",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 21,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the central\nidea conveyed by the passage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "Global climate change adversely affects the productivity of\ncrops.",
+        "b": "Our total dependence on genetically honed crops entails\npossible food insecurity.",
+        "c": "Our food security should not depend on agricultural\nproductivity alone.",
+        "d": "Genetically honed crops should be replaced with their wild\nvarieties in our present cultivation practices."
+      },
+      "answer": "c",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 22,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to the above passage, the following assumptions\nhave been made:\nI. Global climate change can result in the migration of several\nplant diseases to new areas.\nII. Scientific understanding of the wild relatives of our present\ncrops would enable us to strengthen food security.\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II\n“ A good statesman, like any other sensible human being, learns more\nfrom his opponents than from his fervent supporters. For his supporters\nwill push him to disaster unless his opponents show him where the\ndangers are. So if he is wise he will often pray to be delivered from his\nfriends, because they will ruin him. But, though it hurts, he ought also to\npray never to be left without opponents; for they keep him on the path of\nreason and good sense. The national unity of free people depends upon\na sufficiently even balance of political power to make it impracticable for\nthe administration to be arbitrary and for opposition to be revolutionary\nand irreconcilable. ”"
+      },
+      "answer": "c",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 23,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the critical\nmessage conveyed by the author of the passage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "Without opposition parties, the administration in a\ndemocracy gets to become more responsible.",
+        "b": "Democracy needs to have revolutionaries in opposition to\nkeep the government alert.",
+        "c": "Rulers in a democracy need the support of opposition for\ntheir political survival.",
+        "d": "In a democracy, the opposition is indispensable for the\nbalance of political power and good governance."
+      },
+      "answer": "d",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 24,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to the above passage, the following assumptions\nhave been made:\nI. In a democracy, a strong opposition is required only if the\nHead of Government is indifferent.\nII. The more aggressive the opposition, the better is the\ngovernance in a democracy.\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "d",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 25,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the critical\nmessage conveyed by the author of the passage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "Corporate capitalism is important for economic growth of a\nState and also for democracy.",
+        "b": "Corporate capitalism is imperative for a modern State to\nachieve its political objectives.",
+        "c": "No State can ensure its economic survival for long without the\nrole of corporate capitalism.",
+        "d": "Corporate capitalism and democracy have mutual\ndependence for their continued existence."
+      },
+      "answer": "a",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 26,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "With reference to the above passage, the following assumptions\nhave been made\nI. Corporate capitalism promotes the growth of labour force\nand provides more employment opportunities.\nII. Poor and marginalized sections of population are benefited by\ncorporate capitalism due to trickle-down effect.\nWhich of the above assumptions is/are valid?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "I only",
+        "b": "II only",
+        "c": "Both I and II",
+        "d": "Neither I nor II"
+      },
+      "answer": "c",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 27,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements reflects the best explanation\nof the above passage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "It emphasizes the inability of the State to enforce its will in\npractice against the opposition of certain groups within it.",
+        "b": "It is a cooperative organization for the promotion of the well-\nbeing and development of the personality of its members.",
+        "c": "It takes individuals out of a state of isolation and gives them a\nchance to participate in the common endeavour.",
+        "d": "It permits citizens to have a variety of loyalties and allegiance."
+      },
+      "answer": "a",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 28,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the most\nlogical, rational and crucial message conveyed by the passage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "We must use WPI exclusively in measuring price rise and CPI\nshould be done away with.",
+        "b": "The present calculation of inflation rate does not correctly\nmeasure price rise of individual item/commodity.",
+        "c": "Inflation data under-presents services in the consumption\nbasket.",
+        "d": "Knowledge of inflation rate is not really of any use to anybody\nin the country."
+      },
+      "answer": "b",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 29,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "Which one of the following statements best reflects the crux of the\npassage?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "Trustworthiness cannot be expected in entrepreneurship.",
+        "b": "Trustworthy people are the most vulnerable people.\n9Comprehension",
+        "c": "No economic activity is possible without being exposed to\nbetrayal.",
+        "d": "Trust is important though it entails risk."
+      },
+      "answer": "d",
+      "topicTags": [
+        "COMPREHENSION"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 30,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": "MCQ_SINGLE",
+      "format": "text",
+      "question": "The petrol price shot up by 10% as a result of the hike in crude oil prices. The price of petrol before the hike was Rs. 90 per litre. A person travels 2200 km every month and his car gives a mileage of 16 km per litre. By how many km should he reduce his travel if he wants to maintain his expenditure at the previous level ?",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "180 km",
+        "b": "200 km",
+        "c": "220 km",
+        "d": "240 km"
+      },
+      "answer": "b",
+      "topicTags": [
+        "percentage"
+      ],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 31,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 32,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 33,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 34,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 35,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 36,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 37,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 38,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 39,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 40,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 41,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 42,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 43,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 44,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 45,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 46,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 47,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 48,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 49,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 50,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 51,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 52,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 53,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 54,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 55,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 56,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 57,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 58,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 59,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 60,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 61,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 62,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 63,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 64,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 65,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 66,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 67,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 68,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 69,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 70,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 71,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 72,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 73,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 74,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 75,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 76,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 77,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 78,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 79,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 80,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    }
+  ]
+}

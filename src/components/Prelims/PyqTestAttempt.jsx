@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -126,6 +126,14 @@ export default function PyqTestAttempt({
     const [elapsedSeconds, setElapsedSeconds] = useState(0);
     const [isNavigatorOpen, setIsNavigatorOpen] = useState(false);
     const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
+    const confirmRef = useRef(null);
+
+    // Scroll confirm block into view as soon as it appears
+    useEffect(() => {
+        if (showSubmitConfirm && confirmRef.current) {
+            confirmRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+    }, [showSubmitConfirm]);
 
     useEffect(() => {
         if (!testStartTime) return undefined;
@@ -327,63 +335,25 @@ export default function PyqTestAttempt({
                     })}
                 </div>
 
-                {!showSubmitConfirm ? (
-                    <button
-                        type="button"
-                        onClick={() => setShowSubmitConfirm(true)}
-                        style={{
-                            width: "100%",
-                            height: 46,
-                            borderRadius: 12,
-                            border: "1px solid rgba(99,102,241,0.35)",
-                            background: "rgba(99,102,241,0.16)",
-                            color: "#e0e7ff",
-                            fontWeight: 800,
-                            cursor: "pointer",
-                        }}
-                    >
-                        Review & Submit
-                    </button>
-                ) : (
-                    <div
-                        style={{
-                            borderRadius: 14,
-                            border: "1px solid rgba(245,158,11,0.25)",
-                            background: "rgba(120,53,15,0.14)",
-                            padding: 14,
-                        }}
-                    >
-                        <div style={{ color: "#fef3c7", fontWeight: 800, marginBottom: 8 }}>Confirm submission</div>
-                        <div style={{ color: "#cbd5e1", fontSize: 13, lineHeight: 1.6, marginBottom: 12 }}>
-                            You answered {answeredQuestionCount} of {totalAnswerable || safeQuestions.length} answerable questions.
-                            {sureCount || unsureCount || guessCount
-                                ? ` Confidence marked — Sure: ${sureCount}, Unsure: ${unsureCount}, Guess: ${guessCount}.`
-                                : ""}
-                        </div>
-                        <div style={{ display: "flex", gap: 10 }}>
-                            <button
-                                type="button"
-                                onClick={() => setShowSubmitConfirm(false)}
-                                style={{ ...navBtn(false), flex: 1 }}
-                            >
-                                Go Back
-                            </button>
-                            <button
-                                type="button"
-                                onClick={onSubmit}
-                                style={{
-                                    ...navBtn(false),
-                                    flex: 1,
-                                    border: "1px solid rgba(16,185,129,0.35)",
-                                    background: "rgba(16,185,129,0.18)",
-                                    color: "#d1fae5",
-                                }}
-                            >
-                                Final Submit
-                            </button>
-                        </div>
-                    </div>
-                )}
+                <button
+                    type="button"
+                    onClick={() => {
+                        setIsNavigatorOpen(false);
+                        setShowSubmitConfirm(true);
+                    }}
+                    style={{
+                        width: "100%",
+                        height: 46,
+                        borderRadius: 12,
+                        border: "1px solid rgba(99,102,241,0.35)",
+                        background: "rgba(99,102,241,0.16)",
+                        color: "#e0e7ff",
+                        fontWeight: 800,
+                        cursor: "pointer",
+                    }}
+                >
+                    Review & Submit
+                </button>
             </aside>
 
             <div
@@ -610,14 +580,18 @@ export default function PyqTestAttempt({
                                     <button type="button" onClick={onPrev} disabled={isFirst} style={navBtn(isFirst)}>
                                         Previous
                                     </button>
-                                    <button type="button" onClick={onNext} disabled={isLast} style={primaryNextBtn(isLast)}>
-                                        Next →
-                                    </button>
+                                    {!isLast && (
+                                        <button type="button" onClick={onNext} style={primaryNextBtn(false)}>
+                                            Next →
+                                        </button>
+                                    )}
                                 </div>
                                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginLeft: "auto" }}>
-                                    <button type="button" onClick={() => { setIsNavigatorOpen(true); setShowSubmitConfirm(true); }} style={submitInlineBtnStyle}>
-                                        Submit
-                                    </button>
+                                    {!isLast && (
+                                        <button type="button" onClick={() => setShowSubmitConfirm(true)} style={submitInlineBtnStyle}>
+                                            Review & Submit
+                                        </button>
+                                    )}
                                     <button
                                         type="button"
                                         onClick={() => {
@@ -629,6 +603,78 @@ export default function PyqTestAttempt({
                                     </button>
                                 </div>
                             </div>
+
+                            {/* On the last question: prominent full-width submit CTA */}
+                            {isLast && (
+                                <button
+                                    type="button"
+                                    onClick={() => setShowSubmitConfirm(true)}
+                                    style={{
+                                        marginTop: 16,
+                                        width: "100%",
+                                        height: 52,
+                                        borderRadius: 14,
+                                        border: "1px solid rgba(34,197,94,0.55)",
+                                        background: "linear-gradient(135deg, rgba(34,197,94,0.22), rgba(16,185,129,0.18))",
+                                        color: "#86efac",
+                                        fontWeight: 900,
+                                        fontSize: 16,
+                                        cursor: "pointer",
+                                        letterSpacing: "0.04em",
+                                        boxShadow: "0 8px 24px rgba(34,197,94,0.18)",
+                                    }}
+                                >
+                                    ✓ Review & Submit Test
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                )}
+
+                {/* Inline submit confirm — appears in main content where user is already looking */}
+                {!isPassageCard && showSubmitConfirm && (
+                    <div
+                        ref={confirmRef}
+                        style={{
+                            marginTop: 16,
+                            borderRadius: 16,
+                            border: "1px solid rgba(245,158,11,0.30)",
+                            background: "linear-gradient(135deg, rgba(120,53,15,0.18), rgba(180,83,9,0.10))",
+                            padding: "18px 20px",
+                        }}
+                    >
+                        <div style={{ fontSize: 15, fontWeight: 800, color: "#fef3c7", marginBottom: 6 }}>
+                            Confirm Submission
+                        </div>
+                        <div style={{ color: "#cbd5e1", fontSize: 13, lineHeight: 1.65, marginBottom: 16 }}>
+                            You answered <strong style={{ color: "#fde68a" }}>{answeredQuestionCount}</strong> of{" "}
+                            <strong style={{ color: "#fde68a" }}>{totalAnswerable || safeQuestions.length}</strong> questions.
+                            {sureCount || unsureCount || guessCount
+                                ? ` Confidence — Sure: ${sureCount}, Unsure: ${unsureCount}, Guess: ${guessCount}.`
+                                : ""}
+                        </div>
+                        <div style={{ display: "flex", gap: 10 }}>
+                            <button
+                                type="button"
+                                onClick={() => setShowSubmitConfirm(false)}
+                                style={{ ...navBtn(false), flex: 1 }}
+                            >
+                                Go Back
+                            </button>
+                            <button
+                                type="button"
+                                onClick={onSubmit}
+                                style={{
+                                    ...navBtn(false),
+                                    flex: 1,
+                                    border: "1px solid rgba(16,185,129,0.45)",
+                                    background: "linear-gradient(135deg, rgba(16,185,129,0.24), rgba(34,197,94,0.18))",
+                                    color: "#d1fae5",
+                                    fontWeight: 900,
+                                }}
+                            >
+                                ✓ Final Submit
+                            </button>
                         </div>
                     </div>
                 )}
@@ -725,13 +771,14 @@ function clearBtnStyle(hasSelection) {
 }
 
 const submitInlineBtnStyle = {
-    height: 40,
+    height: 42,
     borderRadius: 10,
-    border: "1px solid rgba(34,197,94,0.28)",
-    background: "rgba(34,197,94,0.12)",
+    border: "1px solid rgba(34,197,94,0.45)",
+    background: "rgba(34,197,94,0.14)",
     color: "#86efac",
-    padding: "0 14px",
+    padding: "0 18px",
     fontWeight: 800,
+    fontSize: 13,
     cursor: "pointer",
 };
 

@@ -5,6 +5,8 @@ import {
     snoozeRevision,
     patchRevisionItem,
 } from "../services/revisionService.js";
+import { upsertRevisionItem } from "../repositories/revisionRepository.js";
+import { query } from "../db/index.js";
 
 const router = express.Router();
 
@@ -29,6 +31,66 @@ router.get("/", async (req, res) => {
         res.json(items);
     } catch (err) {
         console.error("[REVISION LIST ERROR]", err);
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// CREATE — called when user clicks "Revise Later" on a PYQ card
+router.post("/", async (req, res) => {
+    try {
+        const {
+            userId, questionId, questionText, stage,
+            subject, nodeId, year, paper, priority,
+        } = req.body || {};
+
+        if (!userId || !questionId) {
+            return res.status(400).json({ success: false, error: "userId and questionId are required" });
+        }
+
+        const title = questionText
+            ? (questionText.length > 120 ? questionText.slice(0, 120) + "…" : questionText)
+            : questionId;
+
+        const item = await upsertRevisionItem({
+            user_id: userId,
+            source_type: "pyq_manual",
+            source_ref: `pyq_${year || "na"}_${paper || stage || "prelims"}`,
+            question_id: questionId,
+            stage: stage || paper || "prelims",
+            subject: subject || nodeId || null,
+            node_id: nodeId || null,
+            title,
+            content: questionText || null,
+            question_text: questionText || null,
+            priority: priority || "medium",
+            status: "pending",
+        });
+
+        res.json({ success: true, item });
+    } catch (err) {
+        console.error("[REVISION CREATE ERROR]", err.message);
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// DELETE by questionId — called when user un-toggles "Revise Later"
+router.delete("/by-question/:questionId", async (req, res) => {
+    try {
+        const { questionId } = req.params;
+        const { userId } = req.query;
+
+        if (!userId || !questionId) {
+            return res.status(400).json({ success: false, error: "userId and questionId are required" });
+        }
+
+        const result = await query(
+            `DELETE FROM revision_items WHERE user_id = $1 AND question_id = $2 RETURNING id`,
+            [userId, questionId]
+        );
+
+        res.json({ success: true, deleted: result.rows.length > 0 });
+    } catch (err) {
+        console.error("[REVISION DELETE ERROR]", err.message);
         res.status(500).json({ success: false, error: err.message });
     }
 });

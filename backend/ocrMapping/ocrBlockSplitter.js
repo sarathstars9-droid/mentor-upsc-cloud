@@ -27,7 +27,7 @@ const SUBJECT_LIST = [
   { slug: 'polity', label: 'Polity', aliases: ['indian polity', 'constitution', 'governance', 'polity'] },
   { slug: 'economy', label: 'Economy', aliases: ['indian economy', 'economics', 'inflation', 'monetary policy', 'fiscal policy', 'economy'] },
   { slug: 'science_tech', label: 'Science & Technology', aliases: ['science and technology', 'science tech', 'technology', 'science'] },
-  { slug: 'ethics', label: 'Ethics', aliases: ['ethics integrity', 'ethics aptitude', 'ethics', 'gs4'] },
+  { slug: 'ethics', label: 'Ethics', aliases: ['ethics integrity aptitude', 'ethics integrity', 'ethics aptitude', 'general studies 4', 'general studies iv', 'general studies paper 4', 'gs iv', 'ethics', 'gs4', 'gs 4'] },
   { slug: 'internal_security', label: 'Internal Security', aliases: ['internal security', 'security'] },
   { slug: 'disaster_management', label: 'Disaster Management', aliases: ['disaster management', 'disaster'] },
   { slug: 'society', label: 'Society', aliases: ['indian society', 'social issues', 'society'] },

@@ -10,6 +10,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { GS4_2026 } from "./syllabusGS4.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -240,6 +241,54 @@ for (const [id, node] of Object.entries(byIdJson || {})) {
 for (const [id, node] of Object.entries(byIdFromMaster)) {
   mergedById[id] = node;
 }
+
+// ── GS4 syllabus registration ─────────────────────────────────────────────────
+// syllabusGS4.js defines the canonical GS4 node tree but was never wired into
+// the JSON-backed unified index. We flatten it here so that getNodeById() and
+// expandCanonicalOrLegacyToLeafNodeIds() resolve GS4-ETH-* IDs correctly.
+function flattenGS4Nodes(gs4) {
+  const nodes = [];
+  for (const section of gs4.sections || []) {
+    for (const topic of section.topics || []) {
+      nodes.push({
+        syllabusNodeId: topic.id,
+        rootPaper:      "GS4",
+        subject:        "Ethics",
+        section:        section.name,
+        topic:          topic.name,
+        subtopic:       "",
+        microTheme:     (topic.microThemes || [])[0] || "",
+        keywords:       topic.keywords || [],
+        tags:           topic.tags || [],
+        legacyIds:      [],
+        pathParts:      [section.id, topic.id],
+      });
+      for (const sub of topic.subTopics || []) {
+        nodes.push({
+          syllabusNodeId: sub.id,
+          rootPaper:      "GS4",
+          subject:        "Ethics",
+          section:        section.name,
+          topic:          topic.name,
+          subtopic:       sub.name,
+          microTheme:     (sub.microThemes || [])[0] || "",
+          keywords:       sub.keywords || [],
+          tags:           sub.tags || [],
+          legacyIds:      [],
+          pathParts:      [section.id, topic.id, sub.id],
+        });
+      }
+    }
+  }
+  return nodes;
+}
+
+for (const rawNode of flattenGS4Nodes(GS4_2026)) {
+  if (!mergedById[rawNode.syllabusNodeId]) {
+    mergedById[rawNode.syllabusNodeId] = enrichNode(rawNode);
+  }
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 const mergedBySubject = {};
 for (const [subject, ids] of Object.entries(bySubjectJson || {})) {

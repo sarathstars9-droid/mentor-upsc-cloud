@@ -24,12 +24,13 @@ const GS3_FILES = [
 ];
 
 // ─── GS3 questions have no marks field — infer from questionNumber ────────────
+// Each subject JSON numbers questions independently (1–N per subject file).
+// Within each subject section: Q1–5 = 10 marks, Q6+ = 15 marks.
+// GS papers have only 10M and 15M — no 20M questions.
 function inferMarksGS3(questionNumber) {
   const n = Number(questionNumber);
   if (!n) return 10;
-  if (n <= 10) return 10;
-  if (n <= 17) return 15;
-  return 20;
+  return n <= 5 ? 10 : 15;
 }
 
 function structureFromMarks(marks) {

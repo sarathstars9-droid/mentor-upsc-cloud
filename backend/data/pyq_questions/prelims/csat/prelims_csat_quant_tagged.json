@@ -7,7 +7,7 @@
   "paper": "CSAT",
   "subject": "CSAT",
   "module": "Quantitative Aptitude",
-  "totalQuestions": 384,
+  "totalQuestions": 363,
   "preservesOriginalQuestionObjects": true,
   "questions": [
     {
@@ -180,30 +180,6 @@
     },
     {
       "section": "AVERAGE",
-      "year": 2014,
-      "questionNumber": 2,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "A group of 630 children is seated in rows for a\ngroup photo session. Each row contains three less\nchildren then the row in front of it. Which one of\nthe following number of rows is not possible?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "3",
-        "b": "4",
-        "c": "5",
-        "d": "6"
-      },
-      "answer": "d",
-      "module": "Quant",
-      "id": "PRE_CSAT_AVERAGE_2014_002",
-      "syllabusNodeId": "CSAT-BN-AVG-MIX"
-    },
-    {
-      "section": "AVERAGE",
       "year": 2016,
       "questionNumber": 3,
       "questionType": "MCQ_SINGLE",
@@ -296,30 +272,6 @@
       "answer": "c",
       "module": "Quant",
       "id": "PRE_CSAT_AVERAGE_2017_006",
-      "syllabusNodeId": "CSAT-BN-AVG-MIX"
-    },
-    {
-      "section": "AVERAGE",
-      "year": 2017,
-      "questionNumber": 7,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "There are thirteen 2-digit consecutive odd\nnumbers. If 39 is the mean of the first five such\nnumbers, then what is the mean of all the thirteen\nnumbers?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "47",
-        "b": "49",
-        "c": "51",
-        "d": "45"
-      },
-      "answer": "a",
-      "module": "Quant",
-      "id": "PRE_CSAT_AVERAGE_2017_007",
       "syllabusNodeId": "CSAT-BN-AVG-MIX"
     },
     {
@@ -735,7 +687,7 @@
     },
     {
       "section": "DATA INTERPRETATION",
-      "year": 0,
+      "year": 2011,
       "questionNumber": 7,
       "questionType": "DI_GRAPH",
       "format": "figure",
@@ -754,7 +706,7 @@
       },
       "answer": "c",
       "module": "DI",
-      "id": "PRE_CSAT_DATA_INTERPRETATION_NA_007",
+      "id": "PRE_CSAT_DATA_INTERPRETATION_2011_007",
       "syllabusNodeId": "CSAT-DI-MIXED"
     },
     {
@@ -1023,102 +975,6 @@
     },
     {
       "section": "DATA INTERPRETATION",
-      "year": 0,
-      "questionNumber": 19,
-      "questionType": "DATA_INTERPRETATION",
-      "format": "text",
-      "question": "In which year is the average profit of A and B\nsame?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "1995",
-        "b": "1996",
-        "c": "1997",
-        "d": "1998"
-      },
-      "answer": "b",
-      "module": "DI",
-      "id": "PRE_CSAT_DATA_INTERPRETATION_NA_019",
-      "syllabusNodeId": "CSAT-DI-MIXED"
-    },
-    {
-      "section": "DATA INTERPRETATION",
-      "year": 1998,
-      "questionNumber": 20,
-      "questionType": "DATA_INTERPRETATION",
-      "format": "text",
-      "question": "What is the difference between the average\nprofit of B and A in the year 1998?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "- Rs. 100",
-        "b": "- Rs. 1,000",
-        "c": "+ Rs. 600",
-        "d": "- Rs. 300"
-      },
-      "answer": "c",
-      "module": "DI",
-      "id": "PRE_CSAT_DATA_INTERPRETATION_1998_020",
-      "syllabusNodeId": "CSAT-DI-MIXED"
-    },
-    {
-      "section": "DATA INTERPRETATION",
-      "year": 2000,
-      "questionNumber": 21,
-      "questionType": "DATA_INTERPRETATION",
-      "format": "text",
-      "question": "How much more average profit did A make in\nthe year 2000 than in the year 1999?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "Rs. 200",
-        "b": "Rs. 1,000",
-        "c": "Rs. 1,500",
-        "d": "Rs. 2,000"
-      },
-      "answer": "d",
-      "module": "DI",
-      "id": "PRE_CSAT_DATA_INTERPRETATION_2000_021",
-      "syllabusNodeId": "CSAT-DI-MIXED"
-    },
-    {
-      "section": "DATA INTERPRETATION",
-      "year": 1997,
-      "questionNumber": 22,
-      "questionType": "DATA_INTERPRETATION",
-      "format": "text",
-      "question": "What is the trend of the average profit of B\nfrom the year 1997 to the year 2000?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "Non-increasing",
-        "b": "Non-decreasing",
-        "c": "Steady",
-        "d": "Fluctuating"
-      },
-      "answer": "b",
-      "module": "DI",
-      "id": "PRE_CSAT_DATA_INTERPRETATION_1997_022",
-      "syllabusNodeId": "CSAT-DI-MIXED"
-    },
-    {
-      "section": "DATA INTERPRETATION",
       "year": 2014,
       "questionNumber": 23,
       "questionType": "DI_TABLE",
@@ -1236,54 +1092,6 @@
       "module": "DI",
       "id": "PRE_CSAT_DATA_INTERPRETATION_2015_027",
       "syllabusNodeId": "CSAT-DI-BAR"
-    },
-    {
-      "section": "DATA INTERPRETATION",
-      "year": 0,
-      "questionNumber": 28,
-      "questionType": "DATA_INTERPRETATION",
-      "format": "text",
-      "question": "If for a sample data Mean < Median < Mode\nthen the distribution is",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "symmetric",
-        "b": "skewed to the right",
-        "c": "neither symmetric nor skewed",
-        "d": "skewed to the left"
-      },
-      "answer": "d",
-      "module": "DI",
-      "id": "PRE_CSAT_DATA_INTERPRETATION_NA_028",
-      "syllabusNodeId": "CSAT-DI-MIXED"
-    },
-    {
-      "section": "DATA INTERPRETATION",
-      "year": 0,
-      "questionNumber": 29,
-      "questionType": "DI_GRAPH",
-      "format": "figure",
-      "question": "The figure drawn below gives the velocity\ngraphs of two vehicles A and B. The straight line\nOKP represents the velocity of vehicle A at any\ninstant, whereas the horizontal straight line CKD\nrepresents the velocity of vehicle B at any instant.\nIn the figure, D is the point where perpendicular\nfrom P meets the horizontal line CKD such that\nPD= 1/2 LD :\nWhat is the ratio between the distances covered by\nvehicles A and B in the time interval OL?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "1 : 2",
-        "b": "2 : 3",
-        "c": "3 : 4",
-        "d": "1 : 1"
-      },
-      "answer": "c",
-      "module": "DI",
-      "id": "PRE_CSAT_DATA_INTERPRETATION_NA_029",
-      "syllabusNodeId": "CSAT-DI-MIXED"
     },
     {
       "section": "DATA INTERPRETATION",
@@ -2830,30 +2638,6 @@
     },
     {
       "section": "NUMBER SYSTEM",
-      "year": 0,
-      "questionNumber": 17,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "How many five-digit prime numbers can be\nobtained by using all the digits 1, 2, 3, 4 and 5\nwithout repetition of digits?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "Zero",
-        "b": "One",
-        "c": "Nine",
-        "d": "Ten"
-      },
-      "answer": "a",
-      "module": "Quant",
-      "id": "PRE_CSAT_NUMBER_SYSTEM_NA_017",
-      "syllabusNodeId": "CSAT-BN-NS"
-    },
-    {
-      "section": "NUMBER SYSTEM",
       "year": 2020,
       "questionNumber": 18,
       "questionType": "MCQ_SINGLE",
@@ -3919,30 +3703,6 @@
       "answer": "a",
       "module": "Quant",
       "id": "PRE_CSAT_NUMBER_SYSTEM_2020_061",
-      "syllabusNodeId": "CSAT-BN-NS"
-    },
-    {
-      "section": "NUMBER SYSTEM",
-      "year": 2021,
-      "questionNumber": 62,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "If 3 2019 is divided by 10, then what is the\nremainder?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "1",
-        "b": "3",
-        "c": "7",
-        "d": "9"
-      },
-      "answer": "c",
-      "module": "Quant",
-      "id": "PRE_CSAT_NUMBER_SYSTEM_2021_062",
       "syllabusNodeId": "CSAT-BN-NS"
     },
     {
@@ -6758,30 +6518,6 @@
     {
       "section": "PERCENTAGE",
       "year": 2020,
-      "questionNumber": 25,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "A bottle contains 20 litres of liquid A. 4 litres\nof liquid A is taken out of it and replaced by same\nquantity of liquid B. Again 4 litres of the mixture is\ntaken out and replaced by same quantity of liquid B.\nWhat is the ratio of quantity of liquid A to that of\nliquid B in the final mixture?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "4:1",
-        "b": "5:1",
-        "c": "16:9",
-        "d": "17:8"
-      },
-      "answer": "c",
-      "module": "Quant",
-      "id": "PRE_CSAT_PERCENTAGE_2020_025",
-      "syllabusNodeId": "CSAT-BN-PERCENT"
-    },
-    {
-      "section": "PERCENTAGE",
-      "year": 2020,
       "questionNumber": 26,
       "questionType": "MCQ_SINGLE",
       "format": "text",
@@ -7166,30 +6902,6 @@
     {
       "section": "PERMUTATIONS & COMBINATIONS",
       "year": 2016,
-      "questionNumber": 6,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "How many numbers are there between 100 and\n300 which either begin with or end with 2?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "110",
-        "b": "111",
-        "c": "112",
-        "d": "None of the above"
-      },
-      "answer": "a",
-      "module": "Quant",
-      "id": "PRE_CSAT_PERMUTATIONS_AND_COMBINA_2016_006",
-      "syllabusNodeId": "CSAT-BN-PNC"
-    },
-    {
-      "section": "PERMUTATIONS & COMBINATIONS",
-      "year": 2016,
       "questionNumber": 7,
       "questionType": "MCQ_SINGLE",
       "format": "text",
@@ -7322,30 +7034,6 @@
       "answer": "c",
       "module": "Quant",
       "id": "PRE_CSAT_PERMUTATIONS_AND_COMBINA_2017_011",
-      "syllabusNodeId": "CSAT-BN-PNC"
-    },
-    {
-      "section": "PERMUTATIONS & COMBINATIONS",
-      "year": 2018,
-      "questionNumber": 12,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "There are 24 equally spaced points lying on\nthe circumference of a circle. What is the maximum\nnumber of equilateral triangles that can be drawn by\ntaking sets of three points as the vertices?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "4",
-        "b": "6",
-        "c": "8",
-        "d": "12"
-      },
-      "answer": "c",
-      "module": "Quant",
-      "id": "PRE_CSAT_PERMUTATIONS_AND_COMBINA_2018_012",
       "syllabusNodeId": "CSAT-BN-PNC"
     },
     {
@@ -7543,30 +7231,6 @@
     {
       "section": "PERMUTATIONS & COMBINATIONS",
       "year": 2020,
-      "questionNumber": 21,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "How many integers are there between 1 and\n100 which have 4 as a digit but are not divisible by\n4?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "5",
-        "b": "11",
-        "c": "12",
-        "d": "13"
-      },
-      "answer": "c",
-      "module": "Quant",
-      "id": "PRE_CSAT_PERMUTATIONS_AND_COMBINA_2020_021",
-      "syllabusNodeId": "CSAT-BN-PNC"
-    },
-    {
-      "section": "PERMUTATIONS & COMBINATIONS",
-      "year": 2020,
       "questionNumber": 22,
       "questionType": "MCQ_SINGLE",
       "format": "text",
@@ -7610,30 +7274,6 @@
       "answer": "b",
       "module": "Quant",
       "id": "PRE_CSAT_PERMUTATIONS_AND_COMBINA_2021_023",
-      "syllabusNodeId": "CSAT-BN-PNC"
-    },
-    {
-      "section": "PERMUTATIONS & COMBINATIONS",
-      "year": 2021,
-      "questionNumber": 24,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "Integers are listed from 700 to 1000. In how\nmany integers is the sum of the digits 10?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "6",
-        "b": "7",
-        "c": "8",
-        "d": "9"
-      },
-      "answer": "d",
-      "module": "Quant",
-      "id": "PRE_CSAT_PERMUTATIONS_AND_COMBINA_2021_024",
       "syllabusNodeId": "CSAT-BN-PNC"
     },
     {
@@ -8159,30 +7799,6 @@
       "syllabusNodeId": "CSAT-BN-PNC"
     },
     {
-      "section": "PERMUTATIONS & COMBINATIONS",
-      "year": 2023,
-      "questionNumber": 46,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "What is the sum of all 4-digit numbers less\nthan 2000 formed by the digits 1, 2, 3 and 4, where\nnone of the digits is repeated?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "7998",
-        "b": "8028",
-        "c": "8878",
-        "d": "9238"
-      },
-      "answer": "a",
-      "module": "Quant",
-      "id": "PRE_CSAT_PERMUTATIONS_AND_COMBINA_2023_046",
-      "syllabusNodeId": "CSAT-BN-PNC"
-    },
-    {
       "section": "PIPES & CISTERNS",
       "year": 2015,
       "questionNumber": 1,
@@ -8300,30 +7916,6 @@
       "answer": "b",
       "module": "Quant",
       "id": "PRE_CSAT_PROBLEMS_BASED_ON_AGES_2017_002",
-      "syllabusNodeId": "CSAT-BN-AGES"
-    },
-    {
-      "section": "PROBLEMS BASED ON AGES",
-      "year": 2017,
-      "questionNumber": 3,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "The age of Mr. X last year was the square of a\nnumber and it would be the cube of a number next\nyear. What is the least number of years he must wait\nfor his age to become the cube of a number again?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "42",
-        "b": "38",
-        "c": "25",
-        "d": "16"
-      },
-      "answer": "b",
-      "module": "Quant",
-      "id": "PRE_CSAT_PROBLEMS_BASED_ON_AGES_2017_003",
       "syllabusNodeId": "CSAT-BN-AGES"
     },
     {
@@ -8676,30 +8268,6 @@
     {
       "section": "PROFIT & LOSS",
       "year": 2024,
-      "questionNumber": 7,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "What percent of water must be mixed with\nhoney so as to gain 20% by selling the mixture at\nthe cost price of honey?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "20%",
-        "b": "10%",
-        "c": "5%",
-        "d": "4%"
-      },
-      "answer": "a",
-      "module": "Quant",
-      "id": "PRE_CSAT_PROFIT_AND_LOSS_2024_007",
-      "syllabusNodeId": "CSAT-BN-PLD"
-    },
-    {
-      "section": "PROFIT & LOSS",
-      "year": 2024,
       "questionNumber": 8,
       "questionType": "MCQ_SINGLE",
       "format": "text",
@@ -8849,78 +8417,6 @@
       "module": "Quant",
       "id": "PRE_CSAT_RATIO_AND_PROPORTION_2021_005",
       "syllabusNodeId": "CSAT-BN-RATIO"
-    },
-    {
-      "section": "RATIO & PROPORTION",
-      "year": 2022,
-      "questionNumber": 6,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "A person X wants to distribute some pens\namong 6 children A, B, C, D, E and F. Suppose A\ngets twice the number of pens received by B, three\ntimes that of C, four times that of D, five times that\nof E and six times that of F. What is the minimum\nnumber of pens X should buy so that the number of\npens each one gets is an even number?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "147",
-        "b": "150",
-        "c": "294",
-        "d": "300"
-      },
-      "answer": "c",
-      "module": "Quant",
-      "id": "PRE_CSAT_RATIO_AND_PROPORTION_2022_006",
-      "syllabusNodeId": "CSAT-BN-RATIO"
-    },
-    {
-      "section": "SIMPLE INTEREST & COMPOUND INTEREST",
-      "year": 2014,
-      "questionNumber": 1,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "As per agreement with a bank, a businessman\nhad to refund a loan in some equal installments\nwithout interest. After paying 18 installments he\nfound that 60 percent of his loan was refunded.\nHow many installments were there in the\nagreement?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "22",
-        "b": "24",
-        "c": "30",
-        "d": "33"
-      },
-      "answer": "c",
-      "module": "Quant",
-      "id": "PRE_CSAT_SIMPLE_INTEREST_AND_COMP_2014_001",
-      "syllabusNodeId": "CSAT-BN-INT"
-    },
-    {
-      "section": "SIMPLE INTEREST & COMPOUND INTEREST",
-      "year": 2018,
-      "questionNumber": 2,
-      "questionType": "MCQ_SINGLE",
-      "format": "text",
-      "question": "A person bought a refrigerator worth Rs.\n22,800 with 12.5% interest compounded yearly. At\nthe end of first year he paid Rs. 8,650 and at the end\nof second year Rs. 9,125. How much will he have to\npay at the end of third year to clear the debt?",
-      "passageId": null,
-      "passageText": null,
-      "statements": null,
-      "pairs": null,
-      "table": null,
-      "prompt": null,
-      "options": {
-        "a": "Rs. 9,990",
-        "b": "Rs. 10,000",
-        "c": "Rs. 10,590",
-        "d": "Rs. 11,250"
-      },
-      "answer": "d",
-      "module": "Quant",
-      "id": "PRE_CSAT_SIMPLE_INTEREST_AND_COMP_2018_002",
-      "syllabusNodeId": "CSAT-BN-INT"
     },
     {
       "section": "SIMPLE INTEREST & COMPOUND INTEREST",

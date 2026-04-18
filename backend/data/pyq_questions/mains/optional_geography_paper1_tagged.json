@@ -333,7 +333,7 @@
       "export"
     ],
     "source": "UPSC CSE Geography Optional 2013 Paper 1",
-    "syllabusNodeId": "OPT-P1-HG-PERSPECTIVES"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2013_05C",
@@ -401,7 +401,7 @@
       "contemporary"
     ],
     "source": "UPSC CSE Geography Optional 2013 Paper 1",
-    "syllabusNodeId": "OPT-P1-HG-PERSPECTIVES"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2013_06A",
@@ -469,7 +469,7 @@
       "model"
     ],
     "source": "UPSC CSE Geography Optional 2013 Paper 1",
-    "syllabusNodeId": "OPT-P1-SETTLEMENT"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2013_07A",
@@ -581,7 +581,7 @@
       "trade"
     ],
     "source": "UPSC CSE Geography Optional 2013 Paper 1",
-    "syllabusNodeId": "OPT-P1-HG-PERSPECTIVES"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2014_01A",
@@ -854,7 +854,7 @@
       "geomorphic"
     ],
     "source": "UPSC CSE Geography Optional 2014 Paper 1",
-    "syllabusNodeId": "OPT-P1-GEOM"
+    "syllabusNodeId": "OPT-P1-SETTLEMENT"
   },
   {
     "id": "OPTIONAL_GEO_P1_2014_04B",
@@ -988,7 +988,7 @@
       "development"
     ],
     "source": "UPSC CSE Geography Optional 2014 Paper 1",
-    "syllabusNodeId": "OPT-P1-HG-PERSPECTIVES"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2014_05E",
@@ -1032,7 +1032,7 @@
       "stage"
     ],
     "source": "UPSC CSE Geography Optional 2014 Paper 1",
-    "syllabusNodeId": "OPT-P1-HG-PERSPECTIVES"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2014_06B",
@@ -1463,7 +1463,7 @@
       "distribution"
     ],
     "source": "UPSC CSE Geography Optional 2015 Paper 1",
-    "syllabusNodeId": "OPT-P1-BIOGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2015_04A",
@@ -1509,7 +1509,7 @@
       "simplicity"
     ],
     "source": "UPSC CSE Geography Optional 2015 Paper 1",
-    "syllabusNodeId": "OPT-P1-GEOM"
+    "syllabusNodeId": "OPT-P1-SETTLEMENT"
   },
   {
     "id": "OPTIONAL_GEO_P1_2015_04C",
@@ -2429,7 +2429,7 @@
       "theory"
     ],
     "source": "UPSC CSE Geography Optional 2016 Paper 1",
-    "syllabusNodeId": "OPT-P1-SETTLEMENT"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2016_08B",
@@ -2700,7 +2700,7 @@
       "soils"
     ],
     "source": "UPSC CSE Geography Optional 2017 Paper 1",
-    "syllabusNodeId": "OPT-P1-BIOGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2017_03C",
@@ -2792,7 +2792,7 @@
       "pave"
     ],
     "source": "UPSC CSE Geography Optional 2017 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2017_05A",
@@ -2992,7 +2992,7 @@
       "theory"
     ],
     "source": "UPSC CSE Geography Optional 2017 Paper 1",
-    "syllabusNodeId": "OPT-P1-SETTLEMENT"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2017_07B",
@@ -3061,7 +3061,7 @@
       "once"
     ],
     "source": "UPSC CSE Geography Optional 2017 Paper 1",
-    "syllabusNodeId": "OPT-P1-HG-PERSPECTIVES"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2017_08B",
@@ -3194,7 +3194,7 @@
       "brief"
     ],
     "source": "UPSC CSE Geography Optional 2018 Paper 1",
-    "syllabusNodeId": "OPT-P1-BIOGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2018_01E",
@@ -3240,7 +3240,7 @@
       "explains"
     ],
     "source": "UPSC CSE Geography Optional 2018 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2018_02B",
@@ -3309,7 +3309,7 @@
       "monsoon"
     ],
     "source": "UPSC CSE Geography Optional 2018 Paper 1",
-    "syllabusNodeId": "OPT-P1-CLIM"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2018_03B",
@@ -3470,7 +3470,7 @@
       "factor"
     ],
     "source": "UPSC CSE Geography Optional 2018 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2018_05C",
@@ -3516,7 +3516,7 @@
       "perroux's"
     ],
     "source": "UPSC CSE Geography Optional 2018 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2018_05E",
@@ -3539,7 +3539,7 @@
       "described"
     ],
     "source": "UPSC CSE Geography Optional 2018 Paper 1",
-    "syllabusNodeId": "OPT-P1-HG-PERSPECTIVES"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2018_06A",
@@ -3927,7 +3927,7 @@
       "environmental"
     ],
     "source": "UPSC CSE Geography Optional 2019 Paper 1",
-    "syllabusNodeId": "OPT-P1-CLIM"
+    "syllabusNodeId": "OPT-P1-SETTLEMENT"
   },
   {
     "id": "OPTIONAL_GEO_P1_2019_03A",
@@ -3973,7 +3973,7 @@
       "fertility"
     ],
     "source": "UPSC CSE Geography Optional 2019 Paper 1",
-    "syllabusNodeId": "OPT-P1-BIOGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2019_03C",
@@ -4226,7 +4226,7 @@
       "outcome"
     ],
     "source": "UPSC CSE Geography Optional 2019 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2019_06C",
@@ -4249,7 +4249,7 @@
       "appropriate"
     ],
     "source": "UPSC CSE Geography Optional 2019 Paper 1",
-    "syllabusNodeId": "OPT-P1-CLIM"
+    "syllabusNodeId": "OPT-P1-SETTLEMENT"
   },
   {
     "id": "OPTIONAL_GEO_P1_2019_07A",
@@ -4272,7 +4272,7 @@
       "governance"
     ],
     "source": "UPSC CSE Geography Optional 2019 Paper 1",
-    "syllabusNodeId": "OPT-P1-CLIM"
+    "syllabusNodeId": "OPT-P1-SETTLEMENT"
   },
   {
     "id": "OPTIONAL_GEO_P1_2019_07B",
@@ -4318,7 +4318,7 @@
       "statement"
     ],
     "source": "UPSC CSE Geography Optional 2019 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2019_08A",
@@ -4341,7 +4341,7 @@
       "cost"
     ],
     "source": "UPSC CSE Geography Optional 2019 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2019_08B",
@@ -4386,7 +4386,7 @@
       "contemporary"
     ],
     "source": "UPSC CSE Geography Optional 2019 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2020_01A",
@@ -4795,7 +4795,7 @@
       "long"
     ],
     "source": "UPSC CSE Geography Optional 2020 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2020_05E",
@@ -4818,7 +4818,7 @@
       "location"
     ],
     "source": "UPSC CSE Geography Optional 2020 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2020_06A",
@@ -5160,7 +5160,7 @@
       "derived"
     ],
     "source": "UPSC CSE Geography Optional 2021 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2021_02B",
@@ -5206,7 +5206,7 @@
       "food"
     ],
     "source": "UPSC CSE Geography Optional 2021 Paper 1",
-    "syllabusNodeId": "OPT-P1-BIOGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2021_03A",
@@ -5458,7 +5458,7 @@
       "christaller"
     ],
     "source": "UPSC CSE Geography Optional 2021 Paper 1",
-    "syllabusNodeId": "OPT-P1-SETTLEMENT"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2021_06A",
@@ -5665,7 +5665,7 @@
       "weber"
     ],
     "source": "UPSC CSE Geography Optional 2021 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2022_01A",
@@ -5779,7 +5779,7 @@
       "exhibit"
     ],
     "source": "UPSC CSE Geography Optional 2022 Paper 1",
-    "syllabusNodeId": "OPT-P1-BIOGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2022_02A",
@@ -6029,7 +6029,7 @@
       "create"
     ],
     "source": "UPSC CSE Geography Optional 2022 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2022_05C",
@@ -6141,7 +6141,7 @@
       "labour"
     ],
     "source": "UPSC CSE Geography Optional 2022 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2022_06C",
@@ -6278,7 +6278,7 @@
       "agriculture-location"
     ],
     "source": "UPSC CSE Geography Optional 2022 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2022_08C",
@@ -6370,7 +6370,7 @@
       "food"
     ],
     "source": "UPSC CSE Geography Optional 2023 Paper 1",
-    "syllabusNodeId": "OPT-P1-BIOGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2023_01D",
@@ -6599,7 +6599,7 @@
       "mineral"
     ],
     "source": "UPSC CSE Geography Optional 2023 Paper 1",
-    "syllabusNodeId": "OPT-P1-BIOGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2023_04C",
@@ -6714,7 +6714,7 @@
       "contemporary"
     ],
     "source": "UPSC CSE Geography Optional 2023 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2023_05E",
@@ -6737,7 +6737,7 @@
       "spatial"
     ],
     "source": "UPSC CSE Geography Optional 2023 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2023_06A",
@@ -6829,7 +6829,7 @@
       "theory"
     ],
     "source": "UPSC CSE Geography Optional 2023 Paper 1",
-    "syllabusNodeId": "OPT-P1-SETTLEMENT"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2023_07B",
@@ -6875,7 +6875,7 @@
       "uneven"
     ],
     "source": "UPSC CSE Geography Optional 2023 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2023_08A",
@@ -7174,7 +7174,7 @@
       "explaining"
     ],
     "source": "UPSC CSE Geography Optional 2024 Paper 1",
-    "syllabusNodeId": "OPT-P1-BIOGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2024_03C",
@@ -7380,7 +7380,7 @@
       "growth"
     ],
     "source": "UPSC CSE Geography Optional 2024 Paper 1",
-    "syllabusNodeId": "OPT-P1-HG-PERSPECTIVES"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2024_06A",
@@ -7449,7 +7449,7 @@
       "geopolitical"
     ],
     "source": "UPSC CSE Geography Optional 2024 Paper 1",
-    "syllabusNodeId": "OPT-P1-HG-PERSPECTIVES"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2024_07A",
@@ -7495,7 +7495,7 @@
       "linkages"
     ],
     "source": "UPSC CSE Geography Optional 2024 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2024_07C",
@@ -7541,7 +7541,7 @@
       "settlements"
     ],
     "source": "UPSC CSE Geography Optional 2024 Paper 1",
-    "syllabusNodeId": "OPT-P1-SETTLEMENT"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2024_08B",
@@ -7564,7 +7564,7 @@
       "semiconductor"
     ],
     "source": "UPSC CSE Geography Optional 2024 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2024_08C",
@@ -7948,7 +7948,7 @@
       "extraction"
     ],
     "source": "UPSC CSE Geography Optional 2025 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2025_05C",
@@ -8109,7 +8109,7 @@
       "transition"
     ],
     "source": "UPSC CSE Geography Optional 2025 Paper 1",
-    "syllabusNodeId": "OPT-P1-HG-PERSPECTIVES"
+    "syllabusNodeId": "OPT-P1-ECOGEO"
   },
   {
     "id": "OPTIONAL_GEO_P1_2025_07B",
@@ -8178,7 +8178,7 @@
       "model"
     ],
     "source": "UPSC CSE Geography Optional 2025 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2025_08B",
@@ -8201,7 +8201,7 @@
       "variations"
     ],
     "source": "UPSC CSE Geography Optional 2025 Paper 1",
-    "syllabusNodeId": "OPT-P1-ENVGEO"
+    "syllabusNodeId": "OPT-P1-MODELS"
   },
   {
     "id": "OPTIONAL_GEO_P1_2025_08C",

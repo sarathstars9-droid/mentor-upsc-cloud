@@ -20,7 +20,18 @@ const GS_PAPER_MAP = [
   { patterns: [/\bgs[\s-]?1\b/i, /\bpaper[\s-]?1\b/i], paper: 'GS1' },
   { patterns: [/\bgs[\s-]?2\b/i, /\bpaper[\s-]?2\b/i], paper: 'GS2' },
   { patterns: [/\bgs[\s-]?3\b/i, /\bpaper[\s-]?3\b/i], paper: 'GS3' },
-  { patterns: [/\bgs[\s-]?4\b/i, /\bpaper[\s-]?4\b/i], paper: 'GS4' },
+  {
+    patterns: [
+      /\bgs[\s-]?4\b/i,
+      /\bpaper[\s-]?4\b/i,
+      /\bgs[\s-]?iv\b/i,
+      /\bgeneral[\s-]?studies[\s-]?4\b/i,
+      /\bgeneral[\s-]?studies[\s-]?iv\b/i,
+      /\bgeneral[\s-]?studies[\s-]?paper[\s-]?4\b/i,
+      /\bethics,?\s*(integrity,?\s*)?(aptitude)?\b/i,
+    ],
+    paper: 'GS4',
+  },
 ];
 
 // Explicit stage keyword → stage value

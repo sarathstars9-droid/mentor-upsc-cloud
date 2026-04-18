@@ -1,9 +1,8 @@
 // src/pages/AnswerWritingPage.jsx
-// Mains Answer Writing Workspace — v4
-// UPSC-accurate timer: 10M=7min · 15M=11min · 20M=13min
-// 5-second countdown before timer starts · audio bell on completion
-// ChatGPT-assisted manual extraction — no OCR, no backend, no APIs.
-// Multi-page answer upload (up to 5 pages).
+// Mains Answer Writing Workspace — v5
+// UPSC-accurate timer: 10M=6min · 15M=9min
+// Reads route state: { mode, paper, year, topic, syllabusNodeId, questions, currentIndex }
+// Prev/Next navigates within the passed questions array.
 
 import React, { useState, useRef, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -39,48 +38,32 @@ const T = {
     font: "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
 };
 
-// ─── UPSC-accurate time limits ────────────────────────────────────────────────
-const TIME_LIMITS = { "10": 7 * 60, "15": 11 * 60, "20": 13 * 60 };
-const WORD_TARGETS = { "10": 150, "15": 200, "20": 250 };
-
-// ─── Session context assembled from route state with safe fallback ────────────
-const FALLBACK_SESSION = {
-    paper: "GS1",
-    paperAccent: T.amber,
-    mode: "PYQ",
-    marks: "15",
-    year: 2023,
-    structure: "Intro + 4–5 pts + Concl",
-    focus: "Colonial impact on women — social reform context",
-    priority: "UPSC PYQ · High Priority",
-    question:
-        "Explain how the women's question was central to the 19th-century Indian renaissance. Discuss the role of social reformers in transforming the condition of women in Indian society.",
-};
+// ─── UPSC-accurate time limits (10M=6min · 15M=9min) ─────────────────────────
+const TIME_LIMITS = { "10": 6 * 60, "15": 9 * 60 };
+const WORD_TARGETS = { "10": 150, "15": 200 };
 
 const PAPER_ACCENT = {
     GS1: T.amber,
     GS2: T.blue,
     GS3: T.green,
+    GS4: T.purple,
 };
 
-function buildSession(routeState) {
-    if (!routeState) return FALLBACK_SESSION;
-    const q = routeState;
-    const accent = PAPER_ACCENT[q.paper] || T.amber;
-    return {
-        paper:       q.paper      || "GS1",
-        paperAccent: accent,
-        mode:        q.mode       || "PYQ",
-        marks:       String(q.marks || "15"),
-        year:        q.year       || null,
-        structure:   q.structure  || "Intro + 4–5 pts + Concl",
-        focus:       q.focus      || "",
-        priority:    q.priority   || "",
-        question:    q.question   || "",
-    };
-}
+// ─── Fallback when page opened without route state ───────────────────────────
+const FALLBACK_QUESTIONS = [
+    {
+        question:
+            "Explain how the women's question was central to the 19th-century Indian renaissance. Discuss the role of social reformers in transforming the condition of women in Indian society.",
+        marks: 15,
+        year: 2023,
+        focus: "Colonial impact on women — social reform context",
+        structure: "Intro + 4–5 pts + Concl",
+        priority: "UPSC PYQ · High Priority",
+        subparts: [],
+    },
+];
 
-// ─── ChatGPT extraction prompt — multi-page version ───────────────────────────
+// ─── ChatGPT extraction prompt ────────────────────────────────────────────────
 const CHATGPT_EXTRACTION_PROMPT = `I am uploading photos of my handwritten UPSC mains answer sheets, possibly across multiple pages.
 Extract the handwritten answer into clean editable text.
 
@@ -95,6 +78,36 @@ Rules:
 8. Return only the extracted answer text.
 
 This is for answer review, so accuracy matters more than polish.`;
+
+// ─── Build ChatGPT evaluation prompt ─────────────────────────────────────────
+function buildEvalPrompt(question, marks, wordTarget, extractedAnswer) {
+    return `You are a strict UPSC Mains evaluator. Evaluate the following answer strictly as per UPSC standards.
+
+QUESTION:
+${question}
+
+MARKS: ${marks} | WORD TARGET: ~${wordTarget} words
+
+CANDIDATE'S ANSWER:
+${extractedAnswer}
+
+Evaluate on these dimensions:
+1. Introduction — Contextual and crisp?
+2. Content Coverage — Are all key dimensions addressed?
+3. Analytical Depth — Analysis, not just description?
+4. Structure — Logical flow with appropriate headings/bullets?
+5. Conclusion — Forward-looking and decisive?
+6. Word Discipline — Within the expected range?
+
+Provide:
+- Score: X / ${marks}
+- Strengths (2–3 bullets)
+- Weaknesses (2–3 bullets)
+- One critical improvement tip
+- Verdict: Below Average / Average / Good / Excellent
+
+Be direct and strict. No softening.`;
+}
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const MAX_PAGES = 5;
@@ -112,7 +125,7 @@ const STATUSES = {
     SAVED: "Saved",
 };
 
-// ─── Audio bell (Web Audio API — no library needed) ──────────────────────────
+// ─── Audio bell ───────────────────────────────────────────────────────────────
 function ringBell(times = 3) {
     try {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -132,33 +145,29 @@ function ringBell(times = 3) {
             }, delayMs);
         };
         for (let i = 0; i < times; i++) ring(i * 950);
-    } catch (error) {
-        // audio not available — silent fallback
-        void error; // intentionally unused
+    } catch (e) {
+        void e;
     }
 }
 
-// ─── Shared style helpers ─────────────────────────────────────────────────────
+// ─── Style helpers ────────────────────────────────────────────────────────────
 const label11 = (color = T.subtle) => ({
     fontSize: 11, fontWeight: 700,
     letterSpacing: "0.11em", textTransform: "uppercase", color,
 });
 
-const outlineBtn = (accent, size = "md") => ({
-    background: "transparent", color: accent,
-    border: `1px solid ${accent}44`, borderRadius: 8,
-    fontWeight: 600,
-    fontSize: size === "sm" ? 11 : 13,
-    padding: size === "sm" ? "5px 12px" : "10px 20px",
-    cursor: "pointer", fontFamily: T.font,
-    letterSpacing: "0.03em", whiteSpace: "nowrap",
+const outlineBtn = (accent, disabled = false) => ({
+    background: "transparent", color: disabled ? T.muted : accent,
+    border: `1px solid ${disabled ? T.border : accent + "44"}`, borderRadius: 8,
+    fontWeight: 600, fontSize: 13, padding: "10px 20px",
+    cursor: disabled ? "not-allowed" : "pointer", fontFamily: T.font,
+    letterSpacing: "0.03em", whiteSpace: "nowrap", opacity: disabled ? 0.45 : 1,
 });
 
 const primaryBtn = (accent, disabled = false) => ({
     background: disabled ? T.muted : accent,
     color: "#09090b", border: "none", borderRadius: 8,
-    fontWeight: 900, fontSize: 13,
-    padding: "11px 26px",
+    fontWeight: 900, fontSize: 13, padding: "11px 26px",
     cursor: disabled ? "not-allowed" : "pointer",
     fontFamily: T.font, letterSpacing: "0.04em",
     opacity: disabled ? 0.45 : 1, whiteSpace: "nowrap",
@@ -173,9 +182,7 @@ function InfoPill({ label, value, accent }) {
             borderRadius: 8, padding: "8px 14px", minWidth: 72,
         }}>
             <span style={{ ...label11(T.subtle), fontSize: 9 }}>{label}</span>
-            <span style={{ fontSize: 13, fontWeight: 800, color: accent || T.textBright }}>
-                {value}
-            </span>
+            <span style={{ fontSize: 13, fontWeight: 800, color: accent || T.textBright }}>{value}</span>
         </div>
     );
 }
@@ -231,12 +238,10 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
     const bellFired = useRef(false);
     const domRef = useRef(null);
 
-    // expose the DOM node to parent via timerRef so parent can scroll to it
     useEffect(() => {
         if (timerRef) timerRef.current = domRef.current;
     }, [timerRef]);
 
-    // auto-start countdown when autoStart flips true
     useEffect(() => {
         if (autoStart && phase === "idle") {
             setCountdown(5);
@@ -316,8 +321,7 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
                 borderRadius: 12, padding: "16px 20px",
                 display: "flex", flexDirection: "column", gap: 12,
                 boxShadow: (phase === "running" || phase === "countdown")
-                    ? `0 0 24px ${accent}22`
-                    : "none",
+                    ? `0 0 24px ${accent}22` : "none",
                 transition: "border-color 0.3s, box-shadow 0.3s",
             }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -326,15 +330,14 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
                         Answer Timer · {marks}M ({Math.floor(timeLimit / 60)} min)
                     </div>
                     <div style={{ fontSize: 10, color: T.muted }}>
-                        UPSC standard — {marks === "10" ? "7 min" : marks === "15" ? "11 min" : "13 min"} per question
+                        UPSC standard — {marks === "10" ? "6 min" : "9 min"} per question
                     </div>
                 </div>
                 <div style={{ textAlign: "right" }}>
                     {phase === "countdown" ? (
                         <div style={{
-                            fontSize: 38, fontWeight: 900,
-                            color: T.amber, letterSpacing: "-0.02em",
-                            lineHeight: 1, fontVariantNumeric: "tabular-nums",
+                            fontSize: 38, fontWeight: 900, color: T.amber,
+                            letterSpacing: "-0.02em", lineHeight: 1, fontVariantNumeric: "tabular-nums",
                         }}>
                             {countdown}
                         </div>
@@ -342,8 +345,7 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
                         <div style={{
                             fontSize: 38, fontWeight: 900,
                             color: overTime ? T.red : phase === "done" ? T.red : T.textBright,
-                            letterSpacing: "-0.02em", lineHeight: 1,
-                            fontVariantNumeric: "tabular-nums",
+                            letterSpacing: "-0.02em", lineHeight: 1, fontVariantNumeric: "tabular-nums",
                         }}>
                             {overTime ? `+${fmt(elapsed - timeLimit)}` : fmt(remaining)}
                         </div>
@@ -410,7 +412,12 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
                     </div>
                 )}
                 {phase !== "idle" && (
-                    <button onClick={handleReset} style={{ ...outlineBtn(T.dim), padding: "10px 16px" }}>
+                    <button onClick={handleReset} style={{
+                        background: "transparent", color: T.dim,
+                        border: `1px solid ${T.border}`, borderRadius: 8,
+                        fontWeight: 600, fontSize: 13, padding: "10px 16px",
+                        cursor: "pointer", fontFamily: T.font,
+                    }}>
                         ↺ Reset
                     </button>
                 )}
@@ -437,61 +444,117 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function AnswerWritingPage() {
     const location = useLocation();
-    const SESSION = buildSession(location.state?.question);
+    const navigate = useNavigate();
 
-    const marks = SESSION.marks;
-    const timeLimit = TIME_LIMITS[marks] || TIME_LIMITS["15"];
-    const wordTarget = WORD_TARGETS[marks] || 200;
+    // ─── Route state ─────────────────────────────────────────────────────────
+    const rs = location.state || {};
+    const paper          = rs.paper          || "GS1";
+    const mode           = rs.mode           || "PYQ";
+    const year           = rs.year           || null;
+    const topic          = rs.topic          || "";
+    const syllabusNodeId = rs.syllabusNodeId || "";
+    const questions      = (rs.questions && rs.questions.length > 0) ? rs.questions : FALLBACK_QUESTIONS;
 
-    const [timerStatus, setTimerStatus] = useState(STATUSES.IDLE);
+    const [currentIndex, setCurrentIndex] = useState(rs.currentIndex || 0);
+    const safeIndex = Math.min(currentIndex, questions.length - 1);
+    const activeQ   = questions[safeIndex] || {};
+
+    // ─── Derived session ──────────────────────────────────────────────────────
+    const paperAccent = PAPER_ACCENT[paper] || T.amber;
+    const marks       = String(activeQ.marks || "15");
+    const timeLimit   = TIME_LIMITS[marks] || TIME_LIMITS["15"];
+    const wordTarget  = WORD_TARGETS[marks] || 200;
+
+    const SESSION = {
+        paper,
+        paperAccent,
+        mode,
+        marks,
+        year:        activeQ.year      || year,
+        question:    activeQ.question  || "",
+        subparts:    activeQ.subparts  || [],
+        focus:       activeQ.focus     || "",
+        structure:   activeQ.structure || "Intro + 4–5 pts + Concl",
+        priority:    activeQ.priority  || "",
+        topicNodeId: activeQ.syllabusNodeId || syllabusNodeId || "",
+    };
+
+    // ─── Per-question state ───────────────────────────────────────────────────
+    const [timerStatus, setTimerStatus]   = useState(STATUSES.IDLE);
     const [sessionStarted, setSessionStarted] = useState(false);
     const timerSectionRef = useRef(null);
 
-    // Multi-page upload — array of { file, preview } objects, max 5
     const [uploadedPages, setUploadedPages] = useState([]);
-    const [isDragging, setIsDragging] = useState(false);
+    const [isDragging, setIsDragging]       = useState(false);
     const fileInputRef = useRef();
     const hasPages = uploadedPages.length > 0;
 
-    // ChatGPT handoff state
-    const [promptCopied, setPromptCopied] = useState(false);
-    const [pastedText, setPastedText] = useState("");
+    const [promptCopied, setPromptCopied]         = useState(false);
+    const [pastedText, setPastedText]             = useState("");
     const hasPastedText = pastedText.trim().length > 20;
+    const [evaluationText, setEvaluationText]     = useState("");
+    const [evalPromptCopied, setEvalPromptCopied] = useState(false);
+    const hasEvaluationText = evaluationText.trim().length > 20;
 
-    const navigate = useNavigate();
-
-    // Attempt
-    const [saved, setSaved] = useState(false);
+    const [saved, setSaved]                     = useState(false);
     const [savedAttemptData, setSavedAttemptData] = useState(null);
-    const [pageStatus, setPageStatus] = useState(STATUSES.IDLE);
+    const [pageStatus, setPageStatus]           = useState(STATUSES.IDLE);
 
-    // ─── NEW: Mains review pipeline states ──────────────────────────────────
-    const [attemptId, setAttemptId] = useState(null);
-    const [reviewId, setReviewId] = useState(null);
+    const [attemptId, setAttemptId]   = useState(null);
+    const [reviewId, setReviewId]     = useState(null);
 
-    const [answerSaveState, setAnswerSaveState] = useState("idle"); // idle|saving|saved|error
+    const [answerSaveState, setAnswerSaveState] = useState("idle");
     const [answerSaveError, setAnswerSaveError] = useState("");
 
     const [externalReviewText, setExternalReviewText] = useState("");
-    const [reviewAgreement, setReviewAgreement] = useState("not_set"); // not_set|fully_agree|partly_agree|disagree
+    const [reviewAgreement, setReviewAgreement]       = useState("not_set");
     const [reviewAgreementNote, setReviewAgreementNote] = useState("");
 
-    const [reviewSaveState, setReviewSaveState] = useState("idle"); // idle|saving|saved|error
-    const [reviewSaveError, setReviewSaveError] = useState("");
-
-    const [reviewProcessState, setReviewProcessState] = useState("idle"); // idle|processing|processed|error
+    const [reviewSaveState, setReviewSaveState]       = useState("idle");
+    const [reviewSaveError, setReviewSaveError]       = useState("");
+    const [reviewProcessState, setReviewProcessState] = useState("idle");
     const [reviewProcessError, setReviewProcessError] = useState("");
 
     const [processedReviewResult, setProcessedReviewResult] = useState(null);
-    const [reviewResultData, setReviewResultData] = useState(null);
+    const [reviewResultData, setReviewResultData]           = useState(null);
 
     // eslint-disable-next-line no-unused-vars
     const [reviewUiMessage, setReviewUiMessage] = useState("");
-    const [reviewUiError, setReviewUiError] = useState("");
-    
+    const [reviewUiError, setReviewUiError]     = useState("");
     const [reviewPromptCopied, setReviewPromptCopied] = useState(false);
 
-    // Derived page status
+    // ─── Reset all per-question state when question changes ───────────────────
+    const firstRender = useRef(true);
+    useEffect(() => {
+        if (firstRender.current) { firstRender.current = false; return; }
+        uploadedPages.forEach((p) => URL.revokeObjectURL(p.preview));
+        setSessionStarted(false);
+        setUploadedPages([]);
+        setPastedText("");
+        setSaved(false);
+        setSavedAttemptData(null);
+        setPromptCopied(false);
+        setAttemptId(null);
+        setReviewId(null);
+        setAnswerSaveState("idle");
+        setAnswerSaveError("");
+        setExternalReviewText("");
+        setReviewAgreement("not_set");
+        setReviewAgreementNote("");
+        setReviewSaveState("idle");
+        setReviewSaveError("");
+        setReviewProcessState("idle");
+        setReviewProcessError("");
+        setProcessedReviewResult(null);
+        setReviewResultData(null);
+        setReviewPromptCopied(false);
+        setReviewUiMessage("");
+        setReviewUiError("");
+        setEvaluationText("");
+        setEvalPromptCopied(false);
+    }, [currentIndex]); // eslint-disable-line
+
+    // ─── Derived page status ──────────────────────────────────────────────────
     useEffect(() => {
         if (saved) setPageStatus(STATUSES.SAVED);
         else if (hasPastedText) setPageStatus(STATUSES.TEXT_PASTED);
@@ -500,19 +563,17 @@ export default function AnswerWritingPage() {
         else setPageStatus(timerStatus);
     }, [saved, hasPastedText, promptCopied, hasPages, timerStatus]);
 
-    // Open ChatGPT and copy prompt
-    const handleOpenChatGPT = async () => {
-        try {
-            await navigator.clipboard.writeText(CHATGPT_EXTRACTION_PROMPT);
-        // eslint-disable-next-line no-unused-vars
-        } catch (_) {
-            // clipboard blocked — silent
-        }
-        setPromptCopied(true);
-        window.open("https://chat.openai.com", "_blank", "noopener,noreferrer");
+    // ─── Navigation ──────────────────────────────────────────────────────────
+    const canPrev = currentIndex > 0;
+    const canNext = currentIndex < questions.length - 1;
+
+    const handlePrev = () => { if (canPrev) setCurrentIndex((i) => i - 1); };
+    const handleNext = () => {
+        if (canNext) setCurrentIndex((i) => i + 1);
+        else navigate(-1);
     };
 
-    // Add image files (up to MAX_PAGES total)
+    // ─── Upload handlers ──────────────────────────────────────────────────────
     const addFiles = (files) => {
         const images = Array.from(files).filter((f) => f.type.startsWith("image/"));
         setUploadedPages((prev) => {
@@ -548,6 +609,34 @@ export default function AnswerWritingPage() {
         setPromptCopied(false);
     };
 
+    // ─── ChatGPT evaluation ───────────────────────────────────────────────────
+    const handleEvaluateWithChatGPT = async () => {
+        const prompt = buildEvalPrompt(SESSION.question, marks, wordTarget, pastedText.trim());
+        try { await navigator.clipboard.writeText(prompt); } catch (_) {}
+        setEvalPromptCopied(true);
+        setTimeout(() => setEvalPromptCopied(false), 3000);
+        window.open("https://chat.openai.com", "_blank", "noopener,noreferrer");
+    };
+
+    // ─── ChatGPT extraction ───────────────────────────────────────────────────
+    const handleOpenChatGPT = async () => {
+        try {
+            await navigator.clipboard.writeText(CHATGPT_EXTRACTION_PROMPT);
+        // eslint-disable-next-line no-unused-vars
+        } catch (_) {}
+        setPromptCopied(true);
+        window.open("https://chat.openai.com", "_blank", "noopener,noreferrer");
+    };
+
+    // ─── Start session ────────────────────────────────────────────────────────
+    const handleStartSession = () => {
+        setSessionStarted(true);
+        setTimeout(() => {
+            timerSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 80);
+    };
+
+    // ─── Save attempt ─────────────────────────────────────────────────────────
     const handleSave = async () => {
         const wordCount = pastedText.trim() ? pastedText.trim().split(/\s+/).length : 0;
         const attempt = {
@@ -559,29 +648,26 @@ export default function AnswerWritingPage() {
             question:    SESSION.question,
             answerText:  pastedText,
             wordCount,
-            targetWords: WORD_TARGETS[SESSION.marks] || 200,
+            targetWords: wordTarget,
             createdAt:   new Date().toISOString(),
         };
-        // Persist to localStorage (always — safe fallback even if backend fails)
         try {
             const existing = JSON.parse(localStorage.getItem("mains_answer_attempts_v1") || "[]");
             localStorage.setItem("mains_answer_attempts_v1", JSON.stringify([attempt, ...existing]));
         // eslint-disable-next-line no-unused-vars
-        } catch (_) { /* storage unavailable */ }
+        } catch (_) {}
         setSavedAttemptData(attempt);
         setSaved(true);
-        // Also save to backend to get a real attemptId for the review pipeline
         await handleSaveAttemptWithBackend();
     };
 
-    // ─── NEW: Mains review pipeline handlers ──────────────────────────────────
-
+    // ─── Backend review pipeline ──────────────────────────────────────────────
     const handleSaveAttemptWithBackend = async () => {
         setAnswerSaveState("saving");
         setAnswerSaveError("");
         try {
             const payload = {
-                userId: "user_1", // TODO: replace with actual userId from auth context
+                userId: "user_1",
                 source: {
                     mode: "pyq",
                     paper: SESSION.paper,
@@ -589,11 +675,11 @@ export default function AnswerWritingPage() {
                     questionId: SESSION.question?.replace(/\s+/g, "_").substring(0, 10) || "unknown",
                     questionMarks: parseInt(SESSION.marks),
                     targetWords: wordTarget,
-                    upscTimeMinutes: Math.floor(TIME_LIMITS[SESSION.marks] / 60),
+                    upscTimeMinutes: Math.floor(timeLimit / 60),
                 },
                 question: {
                     text: SESSION.question,
-                    directiveWord: "", // TODO: extract directive word
+                    directiveWord: "",
                     focusLabel: SESSION.focus || "",
                     topicNodeId: SESSION.topicNodeId || "",
                     subjectTag: "general",
@@ -627,7 +713,7 @@ export default function AnswerWritingPage() {
             if (response?.ok && response?.attemptId) {
                 setAttemptId(response.attemptId);
                 setAnswerSaveState("saved");
-                setReviewUiMessage("Attempt saved successfully. Ready for evaluation.");
+                setReviewUiMessage("Attempt saved. Ready for evaluation.");
                 return response.attemptId;
             } else {
                 throw new Error("Invalid response");
@@ -641,30 +727,17 @@ export default function AnswerWritingPage() {
     };
 
     const handleSaveReview = async () => {
-        if (!attemptId) {
-            setReviewUiError("Save the answer attempt first.");
-            return;
-        }
-        if (externalReviewText.trim().length < 200) {
-            setReviewUiError("Review must be at least 200 characters.");
-            return;
-        }
-
+        if (!attemptId) { setReviewUiError("Save the answer attempt first."); return; }
+        if (externalReviewText.trim().length < 200) { setReviewUiError("Review must be at least 200 characters."); return; }
         setReviewSaveState("saving");
         setReviewSaveError("");
         try {
             const payload = {
                 attemptId,
-                userId: "user_1", // TODO: replace with actual userId
-                reviewSource: {
-                    type: "chatgpt_pasted",
-                    promptVersion: "mains-strict-review-v2",
-                },
+                userId: "user_1",
+                reviewSource: { type: "chatgpt_pasted", promptVersion: "mains-strict-review-v2" },
                 rawReviewText: externalReviewText,
-                userAgreement: {
-                    value: reviewAgreement,
-                    note: reviewAgreementNote,
-                },
+                userAgreement: { value: reviewAgreement, note: reviewAgreementNote },
             };
             const response = await saveMainsReview(payload);
             if (response?.ok && response?.reviewId) {
@@ -684,34 +757,19 @@ export default function AnswerWritingPage() {
     };
 
     const handleProcessReview = async () => {
-        if (!attemptId || !reviewId) {
-            setReviewUiError("Save both attempt and review first.");
-            return;
-        }
-
+        if (!attemptId || !reviewId) { setReviewUiError("Save both attempt and review first."); return; }
         setReviewProcessState("processing");
         setReviewProcessError("");
         try {
-            const payload = {
-                attemptId,
-                reviewId,
-                userId: "user_1", // TODO: replace with actual userId
-            };
-            const response = await processMainsReview(payload);
+            const response = await processMainsReview({ attemptId, reviewId, userId: "user_1" });
             if (response?.ok) {
                 setProcessedReviewResult(response);
                 setReviewProcessState("processed");
                 setReviewUiMessage("Review processed and synced to mistake/revision pipeline.");
-                
-                // Also fetch full result data
                 try {
                     const fullResult = await getMainsReviewResult(attemptId, reviewId);
-                    if (fullResult?.ok) {
-                        setReviewResultData(fullResult);
-                    }
-                } catch (e) {
-                    console.error("Error fetching full result:", e);
-                }
+                    if (fullResult?.ok) setReviewResultData(fullResult);
+                } catch (e) { console.error("Error fetching full result:", e); }
                 return response;
             } else {
                 throw new Error("Invalid response");
@@ -724,15 +782,6 @@ export default function AnswerWritingPage() {
         }
     };
 
-    const handleOpenMistakeBook = () => {
-        navigate("/mains/mistakes");
-    };
-
-    const handleOpenRevisionTasks = () => {
-        // Navigate to revision page or show revision tasks modal
-        navigate("/revision");
-    };
-
     const handleCopyReviewPrompt = () => {
         setReviewPromptCopied(true);
         setTimeout(() => setReviewPromptCopied(false), 3000);
@@ -742,44 +791,34 @@ export default function AnswerWritingPage() {
         window.open("https://chat.openai.com", "_blank", "noopener,noreferrer");
     };
 
-    const nextQuestion = () => {
-        navigate("/mains", { state: { loadNext: true } });
-    };
+    const handleOpenMistakeBook    = () => navigate("/mains/mistakes");
+    const handleOpenRevisionTasks  = () => navigate("/revision");
 
-    const handleStartSession = () => {
-        setSessionStarted(true);
-        // smooth scroll to timer after a brief tick so autoStart effect fires first
-        setTimeout(() => {
-            timerSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 80);
-    };
-
-    const wordCount = pastedText.trim() ? pastedText.trim().split(/\s+/).length : 0;
-    const wordPct = Math.min(Math.round((wordCount / wordTarget) * 100), 100);
-
-    // ─── NEW: Review pipeline validation helpers ────────────────────────────
-    const finalAnswerText = pastedText.trim();
+    // ─── Derived values ───────────────────────────────────────────────────────
+    const wordCount  = pastedText.trim() ? pastedText.trim().split(/\s+/).length : 0;
+    const wordPct    = Math.min(Math.round((wordCount / wordTarget) * 100), 100);
+    const finalAnswerText   = pastedText.trim();
     const canCopyReviewPrompt = !!SESSION.question && !!finalAnswerText;
-    const canSaveReview = !!attemptId && externalReviewText.trim().length >= 200;
-    const canProcessReview = !!attemptId && !!reviewId && reviewSaveState === "saved";
+    const canSaveReview     = !!attemptId && externalReviewText.trim().length >= 200;
+    const canProcessReview  = !!attemptId && !!reviewId && reviewSaveState === "saved";
 
-    // Journey step states
     const steps = [
-        { label: "Read question", done: true },
-        { label: "Write on paper", done: timerStatus === STATUSES.RUNNING || timerStatus === STATUSES.DONE },
-        { label: "Upload pages", done: hasPages },
-        { label: "Open ChatGPT", done: promptCopied },
-        { label: "Paste text", done: hasPastedText },
-        { label: "Save attempt", done: saved },
-        { label: "Copy AIR-1 prompt", done: reviewPromptCopied },
-        { label: "Paste review", done: reviewSaveState === "saved" },
-        { label: "Process review", done: reviewProcessState === "processed" },
+        { label: "Read question",   done: true },
+        { label: "Write on paper",  done: timerStatus === STATUSES.RUNNING || timerStatus === STATUSES.DONE },
+        { label: "Upload pages",    done: hasPages },
+        { label: "Extract text",    done: promptCopied },
+        { label: "Paste text",      done: hasPastedText },
+        { label: "Evaluate answer", done: hasEvaluationText },
+        { label: "Save attempt",    done: saved },
+        { label: "Paste review",    done: reviewSaveState === "saved" },
+        { label: "Process review",  done: reviewProcessState === "processed" },
     ];
 
+    // ─────────────────────────────────────────────────────────────────────────
     return (
         <div style={{ minHeight: "100vh", background: T.bg, color: T.text, fontFamily: T.font }}>
 
-            {/* ── Breadcrumb / topbar ─────────────────────────────────────────────── */}
+            {/* ── Topbar ─────────────────────────────────────────────────────────── */}
             <div style={{
                 borderBottom: `1px solid ${T.border}`,
                 padding: "13px 28px",
@@ -788,15 +827,60 @@ export default function AnswerWritingPage() {
                 background: T.bg, position: "sticky", top: 0, zIndex: 20,
             }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <button
+                        onClick={() => navigate(-1)}
+                        style={{
+                            background: "transparent", border: "none", color: T.dim,
+                            cursor: "pointer", fontSize: 13, fontFamily: T.font,
+                            padding: "2px 6px 2px 0", marginRight: 4,
+                        }}
+                    >←</button>
                     <span style={label11(T.subtle)}>Mains</span>
                     <span style={{ color: T.muted, fontSize: 11 }}>·</span>
                     <span style={label11(T.dim)}>Answer Writing</span>
                     <span style={{ color: T.muted, fontSize: 11 }}>·</span>
-                    <span style={{ fontSize: 11, fontWeight: 800, color: SESSION.paperAccent, letterSpacing: "0.06em" }}>
-                        {SESSION.paper}
+                    <span style={{ fontSize: 11, fontWeight: 800, color: paperAccent, letterSpacing: "0.06em" }}>
+                        {paper}
                     </span>
+                    {questions.length > 1 && (
+                        <>
+                            <span style={{ color: T.muted, fontSize: 11 }}>·</span>
+                            <span style={{ fontSize: 11, fontWeight: 700, color: T.dim }}>
+                                Q{currentIndex + 1} / {questions.length}
+                            </span>
+                        </>
+                    )}
                 </div>
-                <StatusChip status={pageStatus} />
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    {canPrev && (
+                        <button onClick={handlePrev} style={{
+                            background: "transparent", color: T.dim,
+                            border: `1px solid ${T.border}`, borderRadius: 6,
+                            fontSize: 12, fontWeight: 600, padding: "5px 12px",
+                            cursor: "pointer", fontFamily: T.font,
+                        }}>
+                            ← Prev
+                        </button>
+                    )}
+                    {canNext && (
+                        <button
+                            onClick={handleNext}
+                            disabled={!hasPastedText}
+                            style={{
+                                background: "transparent",
+                                color: hasPastedText ? paperAccent : T.muted,
+                                border: `1px solid ${hasPastedText ? paperAccent + "44" : T.border}`,
+                                borderRadius: 6, fontSize: 12, fontWeight: 600, padding: "5px 12px",
+                                cursor: hasPastedText ? "pointer" : "not-allowed", fontFamily: T.font,
+                                opacity: hasPastedText ? 1 : 0.45,
+                            }}
+                            title={hasPastedText ? undefined : "Paste extracted text first"}
+                        >
+                            Next →
+                        </button>
+                    )}
+                    <StatusChip status={pageStatus} />
+                </div>
             </div>
 
             <div style={{
@@ -807,24 +891,26 @@ export default function AnswerWritingPage() {
 
                 {/* ═══ 1. CONTEXT PILLS ════════════════════════════════════════════════ */}
                 <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                    <InfoPill label="Paper" value={SESSION.paper} accent={SESSION.paperAccent} />
-                    <InfoPill label="Mode" value={SESSION.mode} accent={T.purple} />
-                    <InfoPill label="Marker" value={`${marks}M`} accent={T.textBright} />
-                    <InfoPill label="Year" value={SESSION.year} accent={T.dim} />
-                    <InfoPill label="Target" value={`${wordTarget} words`} accent={T.blue} />
-                    <InfoPill label="UPSC time" value={`${Math.floor(timeLimit / 60)} min`} accent={T.amber} />
-                    <div style={{
-                        display: "flex", alignItems: "center", gap: 8,
-                        background: T.bg, border: `1px solid ${T.border}`,
-                        borderRadius: 8, padding: "8px 14px", flex: 1, minWidth: 200,
-                    }}>
-                        <span style={{ ...label11(T.subtle), fontSize: 9 }}>Structure</span>
-                        <span style={{ fontSize: 12, fontWeight: 700, color: T.text }}>{SESSION.structure}</span>
-                    </div>
+                    <InfoPill label="Paper"  value={SESSION.paper}              accent={paperAccent} />
+                    <InfoPill label="Mode"   value={SESSION.mode}               accent={T.purple} />
+                    <InfoPill label="Marker" value={`${marks}M`}               accent={T.textBright} />
+                    <InfoPill label="Year"   value={SESSION.year || "—"}        accent={T.dim} />
+                    <InfoPill label="Target" value={`${wordTarget} words`}      accent={T.blue} />
+                    <InfoPill label="Time"   value={`${Math.floor(timeLimit / 60)} min`} accent={T.amber} />
+                    {topic && (
+                        <div style={{
+                            display: "flex", alignItems: "center", gap: 8,
+                            background: T.bg, border: `1px solid ${T.border}`,
+                            borderRadius: 8, padding: "8px 14px", flex: 1, minWidth: 180,
+                        }}>
+                            <span style={{ ...label11(T.subtle), fontSize: 9 }}>Topic</span>
+                            <span style={{ fontSize: 12, fontWeight: 700, color: T.text }}>{topic}</span>
+                        </div>
+                    )}
                 </div>
 
                 {/* ═══ 2. QUESTION CARD ════════════════════════════════════════════════ */}
-                <SectionCard accentTop={SESSION.paperAccent}>
+                <SectionCard accentTop={paperAccent}>
                     <div style={{ padding: "22px 24px" }}>
                         {/* badges row */}
                         <div style={{
@@ -833,9 +919,9 @@ export default function AnswerWritingPage() {
                         }}>
                             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                                 <span style={{
-                                    fontSize: 12, fontWeight: 900, color: SESSION.paperAccent,
-                                    background: `${SESSION.paperAccent}15`,
-                                    border: `1px solid ${SESSION.paperAccent}33`,
+                                    fontSize: 12, fontWeight: 900, color: paperAccent,
+                                    background: `${paperAccent}15`,
+                                    border: `1px solid ${paperAccent}33`,
                                     borderRadius: 6, padding: "3px 10px", letterSpacing: "0.06em",
                                 }}>{SESSION.paper}</span>
                                 <span style={{
@@ -849,50 +935,112 @@ export default function AnswerWritingPage() {
                                     borderRadius: 6, padding: "3px 10px",
                                 }}>{marks} Marks</span>
                             </div>
-                            <span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>
-                                {SESSION.year ? `UPSC ${SESSION.year}` : ""}
-                            </span>
+                            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                                {SESSION.year && (
+                                    <span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>
+                                        UPSC {SESSION.year}
+                                    </span>
+                                )}
+                                {questions.length > 1 && (
+                                    <span style={{
+                                        fontSize: 11, fontWeight: 700, color: T.subtle,
+                                        background: T.surfaceHigh, border: `1px solid ${T.border}`,
+                                        borderRadius: 5, padding: "2px 8px",
+                                    }}>
+                                        {currentIndex + 1} / {questions.length}
+                                    </span>
+                                )}
+                            </div>
                         </div>
 
-                        {/* question */}
+                        {/* question text */}
                         <div style={{
-                            fontSize: 17, fontWeight: 700, color: T.textBright,
-                            lineHeight: 1.75, letterSpacing: "0.01em", marginBottom: 20,
+                            fontSize: 16, fontWeight: 700, color: T.textBright,
+                            lineHeight: 1.75, letterSpacing: "0.01em",
+                            marginBottom: SESSION.subparts.length > 0 ? 12 : 20,
                         }}>
                             {SESSION.question}
                         </div>
 
-                        {/* focus + priority */}
-                        <div style={{
-                            display: "flex", flexDirection: "column", gap: 8,
-                            paddingTop: 16, borderTop: `1px solid ${T.border}`,
-                        }}>
-                            {SESSION.focus && (
-                                <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                                    <span style={{
-                                        fontSize: 10, fontWeight: 700, color: T.amber,
-                                        letterSpacing: "0.08em", textTransform: "uppercase",
-                                        marginTop: 1, flexShrink: 0,
-                                    }}>Focus:</span>
-                                    <span style={{ fontSize: 12, color: T.text, lineHeight: 1.5 }}>{SESSION.focus}</span>
-                                </div>
-                            )}
-                            {SESSION.priority && (
-                                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                    <div style={{ width: 7, height: 7, borderRadius: "50%", background: T.green, flexShrink: 0 }} />
-                                    <span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>{SESSION.priority}</span>
-                                </div>
-                            )}
-                        </div>
+                        {/* subparts — (a), (b), ... */}
+                        {SESSION.subparts.length > 0 && (
+                            <div style={{
+                                display: "flex", flexDirection: "column", gap: 10,
+                                marginBottom: 20,
+                                padding: "14px 16px",
+                                background: `${paperAccent}07`,
+                                border: `1px solid ${paperAccent}20`,
+                                borderRadius: 10,
+                            }}>
+                                {SESSION.subparts.map((sp, i) => (
+                                    <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                                        <span style={{
+                                            fontSize: 11, fontWeight: 800, color: paperAccent,
+                                            background: `${paperAccent}15`,
+                                            border: `1px solid ${paperAccent}30`,
+                                            borderRadius: 4, padding: "2px 9px",
+                                            flexShrink: 0, marginTop: 2,
+                                            letterSpacing: "0.04em",
+                                        }}>
+                                            ({sp.label})
+                                        </span>
+                                        <div style={{ flex: 1 }}>
+                                            <span style={{ fontSize: 14, color: T.text, lineHeight: 1.7 }}>
+                                                {sp.question}
+                                            </span>
+                                            {(sp.marks || sp.wordLimit) && (
+                                                <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
+                                                    {sp.marks && (
+                                                        <span style={{ fontSize: 10, color: T.subtle, fontWeight: 600 }}>
+                                                            {sp.marks}M
+                                                        </span>
+                                                    )}
+                                                    {sp.wordLimit && (
+                                                        <span style={{ fontSize: 10, color: T.subtle }}>
+                                                            ~{sp.wordLimit} words
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
 
-                        {/* Start Writing Session button */}
-                        <div style={{ marginTop: 20, paddingTop: 16, borderTop: `1px solid ${T.border}` }}>
+                        {/* focus + priority */}
+                        {(SESSION.focus || SESSION.priority) && (
+                            <div style={{
+                                display: "flex", flexDirection: "column", gap: 8,
+                                paddingTop: 14, borderTop: `1px solid ${T.border}`, marginBottom: 4,
+                            }}>
+                                {SESSION.focus && (
+                                    <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                                        <span style={{
+                                            fontSize: 10, fontWeight: 700, color: T.amber,
+                                            letterSpacing: "0.08em", textTransform: "uppercase",
+                                            marginTop: 1, flexShrink: 0,
+                                        }}>Focus:</span>
+                                        <span style={{ fontSize: 12, color: T.text, lineHeight: 1.5 }}>{SESSION.focus}</span>
+                                    </div>
+                                )}
+                                {SESSION.priority && (
+                                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                        <div style={{ width: 7, height: 7, borderRadius: "50%", background: T.green, flexShrink: 0 }} />
+                                        <span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>{SESSION.priority}</span>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {/* Start Writing button */}
+                        <div style={{ marginTop: 18, paddingTop: 16, borderTop: `1px solid ${T.border}` }}>
                             <button
                                 onClick={handleStartSession}
                                 disabled={sessionStarted}
                                 style={{
-                                    ...primaryBtn(SESSION.paperAccent, sessionStarted),
-                                    boxShadow: !sessionStarted ? `0 0 16px ${SESSION.paperAccent}30` : "none",
+                                    ...primaryBtn(paperAccent, sessionStarted),
+                                    boxShadow: !sessionStarted ? `0 0 16px ${paperAccent}30` : "none",
                                 }}
                             >
                                 {sessionStarted ? "✓ Session Running" : "✍ Start Writing Session"}
@@ -900,26 +1048,26 @@ export default function AnswerWritingPage() {
                             <span style={{ fontSize: 11, color: T.subtle, marginLeft: 14 }}>
                                 {sessionStarted
                                     ? "Timer started — write your answer on paper."
-                                    : "Start the timer and begin writing your answer on paper."}
+                                    : "Start the timer and begin writing on paper."}
                             </span>
                         </div>
                     </div>
                 </SectionCard>
 
-                {/* ═══ 3. TIMER CARD ═════════════════════════════════════════════════════════ */}
+                {/* ═══ 3. TIMER ═══════════════════════════════════════════════════════ */}
+                {/* key=currentIndex forces full remount / reset on question change */}
                 <Timer
+                    key={currentIndex}
                     marks={marks}
-                    accent={SESSION.paperAccent}
+                    accent={paperAccent}
                     autoStart={sessionStarted}
                     timerRef={timerSectionRef}
                     onStatusChange={setTimerStatus}
                 />
 
-                {/* ═══ 4. UPLOAD WORKSPACE ═════════════════════════════════════════════ */}
+                {/* ═══ 4. UPLOAD WORKSPACE ════════════════════════════════════════════ */}
                 <SectionCard accentTop={T.blue}>
                     <div style={{ padding: "20px 24px" }}>
-
-                        {/* Section header row */}
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
                             <div style={label11(T.subtle)}>Answer Pages Upload</div>
                             {hasPages && (
@@ -927,75 +1075,54 @@ export default function AnswerWritingPage() {
                                     <span style={{ fontSize: 11, color: T.dim }}>
                                         {uploadedPages.length} / {MAX_PAGES} pages
                                     </span>
-                                    <button onClick={handleClearAll} style={{ ...outlineBtn(T.red, "sm") }}>
+                                    <button onClick={handleClearAll} style={{
+                                        background: "transparent", color: T.red,
+                                        border: `1px solid ${T.red}44`, borderRadius: 6,
+                                        fontSize: 11, fontWeight: 600, padding: "4px 10px",
+                                        cursor: "pointer", fontFamily: T.font,
+                                    }}>
                                         ✕ Clear All
                                     </button>
                                 </div>
                             )}
                         </div>
                         <div style={{ fontSize: 13, color: T.dim, marginBottom: 18 }}>
-                            Upload clear photos of all answer pages below, in order.
+                            Upload clear photos of all answer pages in order.
                         </div>
 
-                        {/* Page preview grid */}
                         {hasPages && (
                             <div style={{
                                 display: "grid",
                                 gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
-                                gap: 12,
-                                marginBottom: 16,
+                                gap: 12, marginBottom: 16,
                             }}>
                                 {uploadedPages.map((pg, idx) => (
                                     <div key={idx} style={{
-                                        background: T.bg,
-                                        border: `1px solid ${T.borderMid}`,
-                                        borderRadius: 10,
-                                        overflow: "hidden",
+                                        background: T.bg, border: `1px solid ${T.borderMid}`,
+                                        borderRadius: 10, overflow: "hidden",
                                     }}>
-                                        {/* Page label bar */}
                                         <div style={{
                                             display: "flex", alignItems: "center", justifyContent: "space-between",
-                                            padding: "6px 10px",
-                                            background: `${T.blue}10`,
+                                            padding: "6px 10px", background: `${T.blue}10`,
                                             borderBottom: `1px solid ${T.border}`,
                                         }}>
-                                            <span style={{
-                                                fontSize: 10, fontWeight: 800, color: T.blue,
-                                                letterSpacing: "0.07em", textTransform: "uppercase",
-                                            }}>
+                                            <span style={{ fontSize: 10, fontWeight: 800, color: T.blue, letterSpacing: "0.07em", textTransform: "uppercase" }}>
                                                 Page {idx + 1}
                                             </span>
                                             <button
                                                 onClick={() => handleRemovePage(idx)}
-                                                style={{
-                                                    background: "transparent", border: "none",
-                                                    color: T.dim, cursor: "pointer",
-                                                    fontSize: 13, lineHeight: 1, padding: "0 2px",
-                                                    fontFamily: T.font,
-                                                }}
-                                                title="Remove this page"
-                                            >
-                                                ✕
-                                            </button>
+                                                style={{ background: "transparent", border: "none", color: T.dim, cursor: "pointer", fontSize: 13, lineHeight: 1, padding: "0 2px", fontFamily: T.font }}
+                                                title="Remove"
+                                            >✕</button>
                                         </div>
-                                        {/* Thumbnail */}
                                         <div style={{ padding: "10px", background: T.bg, textAlign: "center" }}>
                                             <img
                                                 src={pg.preview}
                                                 alt={`Page ${idx + 1}`}
-                                                style={{
-                                                    maxWidth: "100%", maxHeight: 180,
-                                                    borderRadius: 6, objectFit: "contain",
-                                                    border: `1px solid ${T.border}`,
-                                                }}
+                                                style={{ maxWidth: "100%", maxHeight: 180, borderRadius: 6, objectFit: "contain", border: `1px solid ${T.border}` }}
                                             />
                                         </div>
-                                        {/* File name */}
-                                        <div style={{
-                                            padding: "5px 10px 8px",
-                                            fontSize: 10, color: T.subtle,
-                                            overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
-                                        }}>
+                                        <div style={{ padding: "5px 10px 8px", fontSize: 10, color: T.subtle, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                                             {pg.file.name}
                                         </div>
                                     </div>
@@ -1003,7 +1130,6 @@ export default function AnswerWritingPage() {
                             </div>
                         )}
 
-                        {/* Drop zone — always shown when under max */}
                         {uploadedPages.length < MAX_PAGES && (
                             <div
                                 onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
@@ -1015,16 +1141,12 @@ export default function AnswerWritingPage() {
                                     borderRadius: 12,
                                     background: isDragging ? `${T.blue}08` : T.bg,
                                     padding: hasPages ? "22px 24px" : "48px 24px",
-                                    textAlign: "center",
-                                    cursor: "pointer",
-                                    marginBottom: 16,
+                                    textAlign: "center", cursor: "pointer", marginBottom: 16,
                                 }}
                             >
                                 <div style={{ fontSize: hasPages ? 24 : 36, marginBottom: 8 }}>📷</div>
                                 <div style={{ fontSize: hasPages ? 13 : 15, fontWeight: 700, color: T.textBright, marginBottom: 5 }}>
-                                    {hasPages
-                                        ? `Add more pages (${uploadedPages.length}/${MAX_PAGES})`
-                                        : "Upload answer pages"}
+                                    {hasPages ? `Add more pages (${uploadedPages.length}/${MAX_PAGES})` : "Upload answer pages"}
                                 </div>
                                 <div style={{ fontSize: 12, color: T.dim, marginBottom: hasPages ? 10 : 16, lineHeight: 1.6 }}>
                                     Drag &amp; drop or click · JPG, PNG, HEIC, WebP · Up to {MAX_PAGES} pages
@@ -1032,54 +1154,36 @@ export default function AnswerWritingPage() {
                                 {!hasPages && (
                                     <div style={{
                                         display: "inline-block", background: T.surface,
-                                        border: `1px solid ${T.borderMid}`,
-                                        borderRadius: 8, padding: "8px 20px",
-                                        fontSize: 13, fontWeight: 700, color: T.text,
-                                    }}>
-                                        Choose Files
-                                    </div>
+                                        border: `1px solid ${T.borderMid}`, borderRadius: 8,
+                                        padding: "8px 20px", fontSize: 13, fontWeight: 700, color: T.text,
+                                    }}>Choose Files</div>
                                 )}
                                 <input
-                                    ref={fileInputRef}
-                                    type="file"
-                                    accept="image/*"
-                                    multiple
+                                    ref={fileInputRef} type="file" accept="image/*" multiple
                                     style={{ display: "none" }}
                                     onChange={(e) => { addFiles(e.target.files); e.target.value = ""; }}
                                 />
                             </div>
                         )}
 
-                        {/* ChatGPT handoff — shown once pages are uploaded */}
                         {hasPages && (
                             <div style={{
-                                padding: "16px 18px 18px",
-                                borderRadius: 10,
-                                border: `1px solid ${T.border}`,
-                                background: `${T.purple}07`,
-                                marginBottom: 12,
+                                padding: "16px 18px 18px", borderRadius: 10,
+                                border: `1px solid ${T.border}`, background: `${T.purple}07`, marginBottom: 12,
                             }}>
                                 <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginBottom: 10 }}>
                                     <button onClick={handleOpenChatGPT} style={primaryBtn(T.purple)}>
                                         🤖 Open ChatGPT for Extraction
                                     </button>
                                     {promptCopied && (
-                                        <span style={{
-                                            fontSize: 11, fontWeight: 700, color: T.green,
-                                            display: "flex", alignItems: "center", gap: 5,
-                                        }}>
-                                            <span style={{
-                                                width: 16, height: 16, borderRadius: "50%",
-                                                background: `${T.green}22`, border: `1px solid ${T.green}44`,
-                                                display: "inline-flex", alignItems: "center", justifyContent: "center",
-                                                fontSize: 10,
-                                            }}>✓</span>
+                                        <span style={{ fontSize: 11, fontWeight: 700, color: T.green, display: "flex", alignItems: "center", gap: 5 }}>
+                                            <span style={{ width: 16, height: 16, borderRadius: "50%", background: `${T.green}22`, border: `1px solid ${T.green}44`, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 10 }}>✓</span>
                                             Prompt copied
                                         </span>
                                     )}
                                 </div>
                                 <div style={{ fontSize: 12, color: T.dim, lineHeight: 1.6 }}>
-                                    Prompt is copied automatically. Paste it in ChatGPT, then upload all answer page images there in the correct order.
+                                    Prompt is copied automatically. Paste it in ChatGPT, then upload all answer pages in order.
                                 </div>
                                 {promptCopied && (
                                     <div style={{
@@ -1087,65 +1191,48 @@ export default function AnswerWritingPage() {
                                         background: T.bg, border: `1px solid ${T.border}`,
                                         borderRadius: 8, fontSize: 12, color: T.dim, lineHeight: 1.7,
                                     }}>
-                                        <span style={{ color: T.textBright, fontWeight: 700 }}>Next steps:</span>
-                                        {" "}Paste the prompt in ChatGPT → upload all {uploadedPages.length} answer page image{uploadedPages.length > 1 ? "s" : ""} in order → copy the combined extracted text → paste it in the section below.
+                                        <span style={{ color: T.textBright, fontWeight: 700 }}>Next:</span>
+                                        {" "}Paste prompt in ChatGPT → upload {uploadedPages.length} page image{uploadedPages.length > 1 ? "s" : ""} in order → copy the extracted text → paste below.
                                     </div>
                                 )}
                             </div>
                         )}
 
-                        {/* Tip */}
                         <div style={{ fontSize: 11, color: T.subtle, marginTop: 4 }}>
-                            💡 Tip: Use clear lighting, avoid shadows, keep text straight — upload all answer page images in ChatGPT in the same order.
+                            💡 Use clear lighting, avoid shadows, keep pages in order.
                         </div>
                     </div>
                 </SectionCard>
 
-                {/* ═══ 5. PASTE & REVIEW PANEL ═════════════════════════════════════════ */}
+                {/* ═══ 5. PASTE EXTRACTED TEXT ════════════════════════════════════════ */}
                 <SectionCard accentTop={T.purple}>
                     <div style={{ padding: "20px 24px" }}>
-                        <div style={{
-                            display: "flex", alignItems: "flex-start",
-                            justifyContent: "space-between", marginBottom: 18,
-                        }}>
+                        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 18 }}>
                             <div>
                                 <div style={{ ...label11(T.subtle), marginBottom: 4 }}>Paste Extracted Text</div>
                                 <div style={{ fontSize: 13, color: T.dim }}>
-                                    Copy the combined text from ChatGPT and paste it below. Review and correct before saving.
+                                    Copy combined text from ChatGPT, paste and correct before saving.
                                 </div>
                             </div>
-
                             {wordCount > 0 && (
                                 <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6, flexShrink: 0 }}>
                                     <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
-                                        <span style={{ fontSize: 18, fontWeight: 900, color: T.textBright }}>
-                                            {wordCount}
-                                        </span>
-                                        <span style={{ fontSize: 11, color: T.subtle, fontWeight: 600 }}>
-                                            / {wordTarget} words
-                                        </span>
+                                        <span style={{ fontSize: 18, fontWeight: 900, color: T.textBright }}>{wordCount}</span>
+                                        <span style={{ fontSize: 11, color: T.subtle, fontWeight: 600 }}>/ {wordTarget} words</span>
                                     </div>
-                                    {wordCount > 0 && wordCount < wordTarget * 0.7 && (
-                                        <span style={{ fontSize: 11, fontWeight: 700, color: T.red }}>
-                                            ✗ Too short — expand your points
-                                        </span>
+                                    {wordCount < wordTarget * 0.7 && (
+                                        <span style={{ fontSize: 11, fontWeight: 700, color: T.red }}>✗ Too short</span>
                                     )}
                                     {wordCount >= wordTarget * 0.7 && wordCount <= wordTarget * 1.1 && (
-                                        <span style={{ fontSize: 11, fontWeight: 700, color: T.green }}>
-                                            ✓ Optimal length
-                                        </span>
+                                        <span style={{ fontSize: 11, fontWeight: 700, color: T.green }}>✓ Optimal length</span>
                                     )}
                                     {wordCount > wordTarget * 1.2 && (
-                                        <span style={{ fontSize: 11, fontWeight: 700, color: T.amber }}>
-                                            ⚠ Too lengthy — trim for exam conditions
-                                        </span>
+                                        <span style={{ fontSize: 11, fontWeight: 700, color: T.amber }}>⚠ Too lengthy</span>
                                     )}
                                     <div style={{ width: 140, height: 3, background: T.muted, borderRadius: 3, overflow: "hidden" }}>
                                         <div style={{
                                             height: "100%", width: `${wordPct}%`,
-                                            background: wordCount < wordTarget * 0.7 ? T.red
-                                                : wordCount > wordTarget * 1.2 ? T.amber
-                                                    : T.green,
+                                            background: wordCount < wordTarget * 0.7 ? T.red : wordCount > wordTarget * 1.2 ? T.amber : T.green,
                                             borderRadius: 3,
                                         }} />
                                     </div>
@@ -1153,50 +1240,46 @@ export default function AnswerWritingPage() {
                             )}
                         </div>
 
-                        {/* Instruction strip */}
-                        {!hasPastedText && (
-                            <div style={{
-                                display: "flex", alignItems: "flex-start", gap: 14,
-                                padding: "14px 16px", marginBottom: 16,
-                                background: T.bg, border: `1px solid ${T.border}`,
-                                borderRadius: 10,
-                            }}>
-                                <div style={{
-                                    flexShrink: 0, width: 32, height: 32, borderRadius: 8,
-                                    background: `${T.purple}15`, border: `1px solid ${T.purple}33`,
-                                    display: "flex", alignItems: "center", justifyContent: "center",
-                                    fontSize: 16,
-                                }}>
-                                    🤖
+                        {/* Extraction CTA — always visible */}
+                        <div style={{
+                            display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap",
+                            padding: "14px 16px", marginBottom: 16,
+                            background: promptCopied ? `${T.green}08` : `${T.purple}08`,
+                            border: `1px solid ${promptCopied ? T.green + "33" : T.purple + "33"}`,
+                            borderRadius: 10,
+                        }}>
+                            <button
+                                onClick={handleOpenChatGPT}
+                                disabled={!hasPages}
+                                style={primaryBtn(T.purple, !hasPages)}
+                            >
+                                🤖 Open ChatGPT for Extraction
+                            </button>
+                            {promptCopied ? (
+                                <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                                    <span style={{ fontSize: 12, fontWeight: 700, color: T.green }}>✓ Prompt copied to clipboard</span>
+                                    <span style={{ fontSize: 11, color: T.dim }}>
+                                        Paste in ChatGPT → upload images in order → copy extracted text → paste below.
+                                    </span>
                                 </div>
-                                <div>
-                                    <div style={{ fontSize: 13, fontWeight: 700, color: T.textBright, marginBottom: 4 }}>
-                                        Waiting for ChatGPT extraction
-                                    </div>
-                                    <div style={{ fontSize: 12, color: T.dim, lineHeight: 1.65 }}>
-                                        Upload your answer page images in the panel above → click{" "}
-                                        <span style={{ color: T.purple, fontWeight: 700 }}>Open ChatGPT for Extraction</span>
-                                        {" "}→ paste the prompt → upload all answer page images in ChatGPT in order → copy the combined extracted text → paste below.
-                                    </div>
-                                </div>
-                            </div>
-                        )}
+                            ) : (
+                                <span style={{ fontSize: 12, color: hasPages ? T.dim : T.muted }}>
+                                    {hasPages
+                                        ? "Copies extraction prompt automatically. Open ChatGPT, paste prompt, upload your answer images."
+                                        : "Upload your answer pages above first."}
+                                </span>
+                            )}
+                        </div>
 
-                        {/* Ready-to-review label */}
                         {hasPastedText && (
                             <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 10 }}>
-                                <span style={{
-                                    fontSize: 10, fontWeight: 700, color: T.green,
-                                    background: `${T.green}15`, border: `1px solid ${T.green}33`,
-                                    borderRadius: 4, padding: "2px 8px", letterSpacing: "0.06em",
-                                }}>Ready for Review</span>
-                                <span style={{ fontSize: 12, color: T.dim }}>
-                                    Edit any errors directly in the text area below.
+                                <span style={{ fontSize: 10, fontWeight: 700, color: T.green, background: `${T.green}15`, border: `1px solid ${T.green}33`, borderRadius: 4, padding: "2px 8px", letterSpacing: "0.06em" }}>
+                                    Ready for Review
                                 </span>
+                                <span style={{ fontSize: 12, color: T.dim }}>Edit any errors directly below.</span>
                             </div>
                         )}
 
-                        {/* Paste textarea */}
                         <textarea
                             value={pastedText}
                             onChange={(e) => { setPastedText(e.target.value); setSaved(false); }}
@@ -1208,46 +1291,128 @@ export default function AnswerWritingPage() {
                                 borderRadius: 10, color: T.text, fontSize: 13.5,
                                 lineHeight: 1.8, padding: "16px 18px",
                                 fontFamily: T.font, resize: "vertical", outline: "none",
-                                letterSpacing: "0.01em",
-                                transition: "border-color 0.2s",
+                                letterSpacing: "0.01em", transition: "border-color 0.2s",
                             }}
                             placeholder="Paste extracted text from ChatGPT here…"
                         />
                         <div style={{ fontSize: 11, color: T.subtle, marginTop: 8 }}>
-                            ✎ You can edit freely — fix spacing, missed words, or formatting before saving.
+                            ✎ Fix spacing, missed words, or formatting before saving.
                         </div>
                     </div>
                 </SectionCard>
 
-                {/* ═══ 6. ACTION ROW ═══════════════════════════════════════════════════ */}
+                {/* ═══ 5.5. EVALUATE ANSWER ══════════════════════════════════════════ */}
+                <SectionCard accentTop={T.amber}>
+                    <div style={{ padding: "20px 24px" }}>
+                        <div style={{ marginBottom: 16 }}>
+                            <div style={{ ...label11(T.subtle), marginBottom: 4 }}>Evaluate Answer</div>
+                            <div style={{ fontSize: 13, color: T.dim }}>
+                                Send your extracted answer to ChatGPT for UPSC-standard evaluation, then paste the report here.
+                            </div>
+                        </div>
+
+                        <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginBottom: 14 }}>
+                            <button
+                                onClick={handleEvaluateWithChatGPT}
+                                disabled={!hasPastedText}
+                                style={primaryBtn(T.amber, !hasPastedText)}
+                                title={hasPastedText ? undefined : "Paste extracted text first"}
+                            >
+                                ✦ Evaluate with ChatGPT
+                            </button>
+                            {evalPromptCopied && (
+                                <span style={{ fontSize: 11, fontWeight: 700, color: T.green }}>
+                                    ✓ Evaluation prompt copied
+                                </span>
+                            )}
+                            {!hasPastedText && (
+                                <span style={{ fontSize: 12, color: T.muted }}>
+                                    Paste extracted text above to enable evaluation.
+                                </span>
+                            )}
+                        </div>
+
+                        {hasPastedText && (
+                            <div style={{
+                                padding: "10px 14px", marginBottom: 14,
+                                background: `${T.amber}08`, border: `1px solid ${T.amber}22`,
+                                borderRadius: 8, fontSize: 12, color: T.dim, lineHeight: 1.65,
+                            }}>
+                                <span style={{ color: T.textBright, fontWeight: 700 }}>How it works:</span>
+                                {" "}Click the button — your question + extracted answer are packaged into a strict UPSC evaluation prompt and copied automatically. Open ChatGPT, paste the prompt, then paste the evaluation report below.
+                            </div>
+                        )}
+
+                        <textarea
+                            value={evaluationText}
+                            onChange={(e) => setEvaluationText(e.target.value)}
+                            disabled={!hasPastedText}
+                            rows={10}
+                            style={{
+                                width: "100%", boxSizing: "border-box",
+                                background: T.bg,
+                                border: `1px solid ${hasEvaluationText ? T.amber + "55" : T.borderMid}`,
+                                borderRadius: 10,
+                                color: hasPastedText ? T.text : T.subtle,
+                                fontSize: 13.5, lineHeight: 1.8,
+                                padding: "16px 18px", fontFamily: T.font,
+                                resize: "vertical", outline: "none",
+                                letterSpacing: "0.01em", transition: "border-color 0.2s",
+                                opacity: hasPastedText ? 1 : 0.45,
+                                cursor: hasPastedText ? "text" : "not-allowed",
+                            }}
+                            placeholder={hasPastedText
+                                ? "Paste ChatGPT evaluation report here…"
+                                : "Extract your answer first to enable evaluation…"}
+                        />
+
+                        {hasEvaluationText && (
+                            <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 8 }}>
+                                <span style={{
+                                    fontSize: 10, fontWeight: 700, color: T.amber,
+                                    background: `${T.amber}15`, border: `1px solid ${T.amber}33`,
+                                    borderRadius: 4, padding: "2px 8px", letterSpacing: "0.06em",
+                                }}>
+                                    EVALUATION PASTED
+                                </span>
+                                <span style={{ fontSize: 12, color: T.dim }}>Save your attempt below to record this session.</span>
+                            </div>
+                        )}
+                    </div>
+                </SectionCard>
+
+                {/* ═══ 6. ACTION ROW ══════════════════════════════════════════════════ */}
                 <SectionCard>
                     <div style={{ padding: "18px 24px" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
                             <button
                                 disabled={!hasPastedText || saved}
                                 onClick={handleSave}
-                                style={primaryBtn(SESSION.paperAccent, !hasPastedText || saved)}
+                                style={primaryBtn(paperAccent, !hasPastedText || saved)}
                             >
                                 {saved ? "✓ Saved" : "💾  Save Attempt"}
                             </button>
-                            <button
-                                disabled={!hasPastedText}
-                                style={{
-                                    ...outlineBtn(T.blue),
-                                    opacity: !hasPastedText ? 0.4 : 1,
-                                    cursor: !hasPastedText ? "not-allowed" : "pointer",
-                                }}
-                            >
-                                ✉  Submit for Review
-                            </button>
-                            <button onClick={nextQuestion} style={outlineBtn(T.amber)}>
-                                → Next Question
-                            </button>
-                            {hasPages && (
-                                <button onClick={handleClearAll} style={outlineBtn(T.dim)}>
-                                    ✕  Clear Pages
+
+                            {canPrev && (
+                                <button onClick={handlePrev} style={outlineBtn(T.dim)}>
+                                    ← Previous
                                 </button>
                             )}
+                            <button
+                                onClick={handleNext}
+                                disabled={canNext && !hasPastedText}
+                                style={outlineBtn(T.amber, canNext && !hasPastedText)}
+                                title={canNext && !hasPastedText ? "Paste extracted text first" : undefined}
+                            >
+                                {canNext ? "→ Next Question" : "✓ Done"}
+                            </button>
+
+                            {hasPages && (
+                                <button onClick={handleClearAll} style={outlineBtn(T.dim)}>
+                                    ✕ Clear Pages
+                                </button>
+                            )}
+
                             <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 14 }}>
                                 <div style={{ textAlign: "right" }}>
                                     <div style={{ ...label11(T.subtle), fontSize: 9, marginBottom: 2 }}>Pages</div>
@@ -1259,44 +1424,27 @@ export default function AnswerWritingPage() {
                             </div>
                         </div>
 
-                        {/* ── API success / error banners ── */}
                         {answerSaveState === "saving" && (
-                            <div style={{
-                                marginTop: 12, padding: "10px 14px",
-                                background: `${T.amber}11`, border: `1px solid ${T.amber}33`,
-                                borderRadius: 8, fontSize: 12, color: T.amber, fontWeight: 600,
-                            }}>
+                            <div style={{ marginTop: 12, padding: "10px 14px", background: `${T.amber}11`, border: `1px solid ${T.amber}33`, borderRadius: 8, fontSize: 12, color: T.amber, fontWeight: 600 }}>
                                 ⏳ Saving to backend…
                             </div>
                         )}
                         {answerSaveState === "error" && answerSaveError && (
-                            <div style={{
-                                marginTop: 12, padding: "10px 14px",
-                                background: `${T.red}11`, border: `1px solid ${T.red}33`,
-                                borderRadius: 8, fontSize: 12, color: T.red, fontWeight: 600,
-                            }}>
+                            <div style={{ marginTop: 12, padding: "10px 14px", background: `${T.red}11`, border: `1px solid ${T.red}33`, borderRadius: 8, fontSize: 12, color: T.red, fontWeight: 600 }}>
                                 ⚠ {answerSaveError}
                             </div>
                         )}
 
                         {saved && (
                             <div style={{
-                                background: `${T.green}11`,
-                                border: `1px solid ${T.green}33`,
-                                padding: "14px",
-                                borderRadius: 10,
-                                fontWeight: 700,
-                                color: T.green,
-                                marginTop: 16,
-                                fontSize: 12,
-                                display: "flex", alignItems: "center", justifyContent: "space-between",
-                                flexWrap: "wrap", gap: 6,
+                                background: `${T.green}11`, border: `1px solid ${T.green}33`,
+                                padding: "14px", borderRadius: 10, fontWeight: 700, color: T.green,
+                                marginTop: 16, fontSize: 12,
+                                display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 6,
                             }}>
                                 <span>
                                     ✅ Attempt saved.
-                                    {attemptId
-                                        ? ` Backend ID: ${attemptId}`
-                                        : " (localStorage only — backend save pending)"}
+                                    {attemptId ? ` Backend ID: ${attemptId}` : " (localStorage — backend pending)"}
                                 </span>
                                 {attemptId && (
                                     <span style={{ fontSize: 11, fontWeight: 600, color: T.green, opacity: 0.75 }}>
@@ -1306,7 +1454,6 @@ export default function AnswerWritingPage() {
                             </div>
                         )}
 
-                        {/* ── Mistake Tagger — shown after save ── */}
                         {saved && savedAttemptData && (
                             <div style={{ marginTop: 20 }}>
                                 <MainsMistakeTagger
@@ -1318,15 +1465,12 @@ export default function AnswerWritingPage() {
                     </div>
                 </SectionCard>
 
-                {/* ═══ 7. AIR-1 REVIEW PROMPT SECTION ══════════════════════════════════ */}
+                {/* ═══ 7. EVALUATION PROMPT ═══════════════════════════════════════════ */}
                 {saved && finalAnswerText && (
                     <MainsReviewPromptCard
-                        currentQuestion={{
-                            text: SESSION.question,
-                            marks: parseInt(SESSION.marks),
-                        }}
+                        currentQuestion={{ text: SESSION.question, marks: parseInt(SESSION.marks) }}
                         finalAnswerText={finalAnswerText}
-                        papersAccent={SESSION.paperAccent}
+                        papersAccent={paperAccent}
                         wordTarget={wordTarget}
                         onCopyPrompt={handleCopyReviewPrompt}
                         onOpenChatGPT={handleOpenChatGPTReview}
@@ -1335,7 +1479,7 @@ export default function AnswerWritingPage() {
                     />
                 )}
 
-                {/* ═══ 8. PASTE EXTERNAL REVIEW SECTION ════════════════════════════════ */}
+                {/* ═══ 8. PASTE EVALUATION REPORT ════════════════════════════════════ */}
                 {saved && finalAnswerText && (
                     <MainsPasteReviewCard
                         externalReviewText={externalReviewText}
@@ -1353,88 +1497,65 @@ export default function AnswerWritingPage() {
                     />
                 )}
 
-                {/* ── Review pipeline inline banners ────────────────────────── */}
+                {/* ── Pipeline banners ───────────────────────────────────────────── */}
                 {saved && finalAnswerText && !attemptId && answerSaveState !== "saving" && (
-                    <div style={{
-                        padding: "10px 16px", borderRadius: 8,
-                        background: `${T.amber}11`, border: `1px solid ${T.amber}33`,
-                        fontSize: 12, color: T.amber, fontWeight: 600,
-                    }}>
+                    <div style={{ padding: "10px 16px", borderRadius: 8, background: `${T.amber}11`, border: `1px solid ${T.amber}33`, fontSize: 12, color: T.amber, fontWeight: 600 }}>
                         ⚠ Backend attempt ID not received — review pipeline unavailable. Try saving again.
                     </div>
                 )}
                 {reviewUiError && (
-                    <div style={{
-                        padding: "10px 16px", borderRadius: 8,
-                        background: `${T.red}11`, border: `1px solid ${T.red}33`,
-                        fontSize: 12, color: T.red, fontWeight: 600,
-                    }}>
+                    <div style={{ padding: "10px 16px", borderRadius: 8, background: `${T.red}11`, border: `1px solid ${T.red}33`, fontSize: 12, color: T.red, fontWeight: 600 }}>
                         ✗ {reviewUiError}
                     </div>
                 )}
                 {reviewSaveState === "error" && reviewSaveError && (
-                    <div style={{
-                        padding: "10px 16px", borderRadius: 8,
-                        background: `${T.red}11`, border: `1px solid ${T.red}33`,
-                        fontSize: 12, color: T.red, fontWeight: 600,
-                    }}>
+                    <div style={{ padding: "10px 16px", borderRadius: 8, background: `${T.red}11`, border: `1px solid ${T.red}33`, fontSize: 12, color: T.red, fontWeight: 600 }}>
                         ✗ Review save error: {reviewSaveError}
                     </div>
                 )}
                 {reviewProcessState === "error" && reviewProcessError && (
-                    <div style={{
-                        padding: "10px 16px", borderRadius: 8,
-                        background: `${T.red}11`, border: `1px solid ${T.red}33`,
-                        fontSize: 12, color: T.red, fontWeight: 600,
-                    }}>
+                    <div style={{ padding: "10px 16px", borderRadius: 8, background: `${T.red}11`, border: `1px solid ${T.red}33`, fontSize: 12, color: T.red, fontWeight: 600 }}>
                         ✗ Process error: {reviewProcessError}
                     </div>
                 )}
                 {reviewProcessState === "processing" && (
-                    <div style={{
-                        padding: "10px 16px", borderRadius: 8,
-                        background: `${T.amber}11`, border: `1px solid ${T.amber}33`,
-                        fontSize: 12, color: T.amber, fontWeight: 600,
-                    }}>
-                        ⏳ Running review pipeline — this usually takes 1–2 seconds…
+                    <div style={{ padding: "10px 16px", borderRadius: 8, background: `${T.amber}11`, border: `1px solid ${T.amber}33`, fontSize: 12, color: T.amber, fontWeight: 600 }}>
+                        ⏳ Running review pipeline…
                     </div>
                 )}
 
-                {/* ═══ 9. REVIEW RESULT SUMMARY SECTION ════════════════════════════════ */}
+                {/* ═══ 9. REVIEW RESULT ════════════════════════════════════════════════ */}
                 {processedReviewResult?.result && (
                     <MainsReviewResultCard
                         processedReviewResult={processedReviewResult.result}
                         reviewResultData={reviewResultData}
                         onOpenMistakes={handleOpenMistakeBook}
                         onOpenRevision={handleOpenRevisionTasks}
-                        onNextQuestion={nextQuestion}
+                        onNextQuestion={handleNext}
                     />
                 )}
 
-                {/* ═══ 10. JOURNEY TRACKER ═════════════════════════════════════════════ */}
+                {/* ═══ 10. JOURNEY TRACKER ════════════════════════════════════════════ */}
                 <div style={{ display: "flex", alignItems: "center", gap: 0, overflowX: "auto" }}>
                     {steps.map((s, i) => {
                         const isActive = !s.done && (i === 0 || steps[i - 1].done);
                         return (
                             <React.Fragment key={s.label}>
-                                <div style={{
-                                    display: "flex", flexDirection: "column",
-                                    alignItems: "center", gap: 5, minWidth: 90,
-                                }}>
+                                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5, minWidth: 90 }}>
                                     <div style={{
                                         width: 28, height: 28, borderRadius: "50%",
                                         display: "flex", alignItems: "center", justifyContent: "center",
                                         fontWeight: 900, fontSize: 12,
-                                        background: s.done ? T.green : isActive ? SESSION.paperAccent : T.surface,
+                                        background: s.done ? T.green : isActive ? paperAccent : T.surface,
                                         color: s.done || isActive ? "#09090b" : T.muted,
-                                        border: `2px solid ${s.done ? T.green : isActive ? SESSION.paperAccent : T.border}`,
+                                        border: `2px solid ${s.done ? T.green : isActive ? paperAccent : T.border}`,
                                     }}>
                                         {s.done ? "✓" : i + 1}
                                     </div>
                                     <span style={{
                                         fontSize: 10, fontWeight: 600, textAlign: "center",
                                         whiteSpace: "nowrap", letterSpacing: "0.02em",
-                                        color: s.done ? T.green : isActive ? SESSION.paperAccent : T.subtle,
+                                        color: s.done ? T.green : isActive ? paperAccent : T.subtle,
                                     }}>
                                         {s.label}
                                     </span>
@@ -1455,18 +1576,3 @@ export default function AnswerWritingPage() {
         </div>
     );
 }
-
-/*
- ─── WIRE-UP NOTES ─────────────────────────────────────────────────────────────
- 1.  SESSION object          → built from location.state?.question; falls back to FALLBACK_SESSION
- 2.  TIME_LIMITS             → driven by SESSION.marks; correct per UPSC standard
- 3.  ringBell()              → Web Audio API; works in all modern browsers without libs
- 4.  handleOpenChatGPT()     → copies CHATGPT_EXTRACTION_PROMPT to clipboard + opens ChatGPT tab
- 5.  uploadedPages           → array of { file, preview }; max MAX_PAGES (5)
- 6.  pastedText              → user pastes ChatGPT output; wire to POST /api/attempts
- 7.  handleSave()            → POST attempt { question, pastedText, marks, paper }
- 8.  "Submit for Review"     → PUT /api/attempts/:id/submit or push to Mistake Book
- 9.  → Next Question         → useNavigate() back to MainsPage / next question in queue
-10.  Timer reset on marks    → Timer remounts via key={marks} if SESSION.marks changes
- ──────────────────────────────────────────────────────────────────────────────
-*/

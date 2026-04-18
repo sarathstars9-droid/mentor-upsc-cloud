@@ -20,13 +20,14 @@ const GS2_FILES = [
 ];
 
 // ─── GS2 questions have no marks field — infer from questionNumber ────────────
-// UPSC GS2: Q1–10 are 10 marks, Q11–17 are 15 marks (approx), Q18–20 are 20 marks
+// Each subject JSON re-numbers questions 1–10 independently.
+// Within each subject: Q1–5 = 10 marks, Q6–10 = 15 marks.
+// This matches the actual UPSC GS2 Mains paper structure per section.
 function inferMarksGS2(questionNumber) {
   const n = Number(questionNumber);
   if (!n) return 10;
-  if (n <= 10) return 10;
-  if (n <= 17) return 15;
-  return 20;
+  if (n <= 5) return 10;
+  return 15;
 }
 
 function structureFromMarks(marks) {

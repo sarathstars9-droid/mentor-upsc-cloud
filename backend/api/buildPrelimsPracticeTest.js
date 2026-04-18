@@ -8,6 +8,7 @@ import {
     getSubtopicLabels,
 } from "./prelimsSelectorMap.js";
 import { getRcQuestionsForTopic, TOPIC_TO_RC_TYPE } from "../engines/rcSubtopicLoader.js";
+import { loadCSATData } from "../data/loaders/csatLoader.js";
 console.log("[PHASE3A BUILDER VERSION] growth-dev-clean-v2");
 /* =========================
    PATHS
@@ -250,82 +251,67 @@ function mapCsatSubjectToNodeIdPrefixes(subjectId) {
 }
 
 /**
- * STRICT: Load CSAT questions from correct files by subject
- * This bypasses the fuzzy filtering and uses source file restrictions
+ * STRICT: Load CSAT questions for a specific module.
+ * Uses the canonical csatLoader (backend/data/loaders/csatLoader.js) — no direct file reads.
  */
 function loadCsatQuestionsBySubject(subjectId) {
     const normId = normalizeId(subjectId || "");
-    
-    let targetFile = null;
-    // IMPORTANT: csat_reasoning is an alias for csat_lr
-    const fileMapping = {
-        csat_quant: "prelims_csat_quant_tagged.json",
-        csat_lr: "prelims_csat_lr_tagged.json",
-        csat_reasoning: "prelims_csat_lr_tagged.json",  // Alias for csat_lr
-        csat_rc: "prelims_csat_rc_tagged.json",
+
+    // csat_reasoning is an alias for csat_lr
+    const moduleMap = {
+        csat_quant:     { key: "quant", file: "prelims_csat_quant_tagged.json" },
+        csat_lr:        { key: "lr",    file: "prelims_csat_lr_tagged.json" },
+        csat_reasoning: { key: "lr",    file: "prelims_csat_lr_tagged.json" },
+        csat_rc:        { key: "rc",    file: "prelims_csat_rc_tagged.json" },
     };
-    
-    targetFile = fileMapping[normId];
-    if (!targetFile) {
+
+    const mapping = moduleMap[normId];
+    if (!mapping) {
         console.warn(`[CSAT LOADER] Unknown CSAT subject: ${subjectId}`);
         return { questions: [], validationLog: { error: "unknown_subject" } };
     }
-    
-    // Find the file
-    const allFiles = getTaggedPrelimsFiles();
-    const sourceFile = allFiles.find(f => path.basename(f) === targetFile);
-    
-    if (!sourceFile) {
-        console.warn(`[CSAT LOADER] File not found: ${targetFile}`);
-        return { questions: [], validationLog: { error: "file_not_found" } };
-    }
-    
-    console.log(`[CSAT LOADER] Loading from: ${targetFile}`);
-    
-    try {
-        const json = readJSON(sourceFile);
-        const rawQuestions = Array.isArray(json) ? json : safeArray(json?.questions);
-        
-        const validationLog = {
-            sourceFile: targetFile,
-            rawLoaded: rawQuestions.length,
-            expectedNodePrefixes: mapCsatSubjectToNodeIdPrefixes(subjectId),
-            afterNormalization: 0,
-            afterNodeValidation: 0,
-            rejected: { wrongNode: 0, missingData: 0 },
-        };
-        
-        const questions = [];
-        for (const q of rawQuestions) {
-            const nq = normalizeQuestion(q, sourceFile);
-            if (!nq) {
-                validationLog.rejected.missingData++;
-                continue;
-            }
-            
-            // STRICT: Validate nodeId belongs to this subject
-            const nodeId = nq.syllabusNodeId || nq.nodeId || "";
-            const expectedPrefixes = mapCsatSubjectToNodeIdPrefixes(subjectId);
-            const isValidNode = expectedPrefixes.some(prefix => nodeId.startsWith(prefix));
-            
-            if (!isValidNode) {
-                validationLog.rejected.wrongNode++;
-                console.warn(`[CSAT VALIDATION] Question ${nq.id} has wrong nodeId: ${nodeId}. Expected prefixes: ${expectedPrefixes.join(", ")}`);
-                continue;
-            }
-            
-            validationLog.afterNormalization++;
-            validationLog.afterNodeValidation++;
-            questions.push(nq);
+
+    console.log(`[CSAT LOADER] Loading ${mapping.key} via loader (${mapping.file})`);
+
+    const rawQuestions = loadCSATData()[mapping.key] || [];
+
+    const validationLog = {
+        sourceFile: mapping.file,
+        rawLoaded: rawQuestions.length,
+        expectedNodePrefixes: mapCsatSubjectToNodeIdPrefixes(subjectId),
+        afterNormalization: 0,
+        afterNodeValidation: 0,
+        rejected: { wrongNode: 0, missingData: 0 },
+    };
+
+    const questions = [];
+    for (const q of rawQuestions) {
+        // normalizeQuestion expects a sourceFile string for sourceBase/sourceNorm;
+        // pass the filename directly — path.basename of a bare filename is itself.
+        const nq = normalizeQuestion(q, mapping.file);
+        if (!nq) {
+            validationLog.rejected.missingData++;
+            continue;
         }
-        
-        console.log(`[CSAT LOADER SUMMARY]`, validationLog);
-        return { questions, validationLog };
-        
-    } catch (error) {
-        console.error(`[CSAT LOADER ERROR] Failed to load ${targetFile}:`, error.message);
-        return { questions: [], validationLog: { error: error.message } };
+
+        // STRICT: Validate nodeId belongs to this module
+        const nodeId = nq.syllabusNodeId || nq.nodeId || "";
+        const expectedPrefixes = mapCsatSubjectToNodeIdPrefixes(subjectId);
+        const isValidNode = expectedPrefixes.some(prefix => nodeId.startsWith(prefix));
+
+        if (!isValidNode) {
+            validationLog.rejected.wrongNode++;
+            console.warn(`[CSAT VALIDATION] Question ${nq.id} has wrong nodeId: ${nodeId}. Expected prefixes: ${expectedPrefixes.join(", ")}`);
+            continue;
+        }
+
+        validationLog.afterNormalization++;
+        validationLog.afterNodeValidation++;
+        questions.push(nq);
     }
+
+    console.log(`[CSAT LOADER SUMMARY]`, validationLog);
+    return { questions, validationLog };
 }
 
 /**

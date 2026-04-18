@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useCallback } from "react";
+import { useEffect, useMemo, useState, useCallback, useRef } from "react";
 import { BACKEND_URL } from "../config";
 import { PRELIMS_STRUCTURE } from "../data/prelimsStructure";
 import { recordTestAttempt, buildTestId } from "../utils/prelimsMistakeEngine";
@@ -9,6 +9,7 @@ const CURRENT_USER_ID = "user_1";
 import PyqTestStart from "../components/Prelims/PyqTestStart";
 import PyqTestAttempt from "../components/Prelims/PyqTestAttempt";
 import PyqTestResult from "../components/Prelims/PyqTestResult";
+import RcPassageBlock from "../components/Prelims/RcPassageBlock";
 
 import DashboardSummary from "../components/Prelims/DashboardSummary";
 import WeakAreasPanel from "../components/Prelims/WeakAreasPanel";
@@ -144,6 +145,23 @@ function normalizeQuestion(q) {
 
 function sanitizeQuestions(rawQuestions) {
   return dedupeQuestions((rawQuestions || []).map(normalizeQuestion).filter(Boolean));
+}
+
+function groupRcByPassage(items) {
+  const map = {};
+  const order = [];
+  (items || []).forEach((q) => {
+    // Use passageId when present; fall back to first-60-chars of passageText as key
+    const key = q.passageId ||
+      (q.passageText ? q.passageText.slice(0, 60).replace(/\s+/g, " ").trim() : null) ||
+      `passage_q_${q.id || q.questionId || Math.random()}`;
+    if (!map[key]) {
+      map[key] = { passageId: key, passageText: q.passageText || "", questions: [] };
+      order.push(key);
+    }
+    map[key].questions.push(q);
+  });
+  return order.map((k) => map[k]);
 }
 
 
@@ -622,6 +640,8 @@ export default function PrelimsPage() {
 
   // Live GS subject counts fetched from backend (authoritative buildable counts)
   const [gsCountsFromAPI, setGsCountsFromAPI] = useState(null);
+  // Live CSAT subject counts fetched from backend
+  const [csatCountsFromAPI, setCsatCountsFromAPI] = useState(null);
   // Live RC subtopic counts fetched from backend (classifier-based)
   const [rcTopicCounts, setRcTopicCounts] = useState({});
 
@@ -676,12 +696,27 @@ export default function PrelimsPage() {
   // ── Last submit data (UPSC score + subject progress for result screen) ────
   const [lastSubmitData, setLastSubmitData] = useState(null);
 
+  // ── RC grouped attempt: current passage index + timer ───────────────────
+  const [currentRcPassageIndex, setCurrentRcPassageIndex] = useState(0);
+  const [rcElapsedSeconds, setRcElapsedSeconds] = useState(0);
+  const rcTimerRef = useRef(null);
+
   // Fetch actual buildable GS counts from backend once on mount
   useEffect(() => {
     let active = true;
     fetch(`${BACKEND_URL}/api/prelims/gs/counts`)
       .then((r) => r.json())
       .then((json) => { if (active && json?.ok) setGsCountsFromAPI(json.counts); })
+      .catch(() => { });
+    return () => { active = false; };
+  }, []);
+
+  // Fetch live CSAT subject counts from backend once on mount
+  useEffect(() => {
+    let active = true;
+    fetch(`${BACKEND_URL}/api/prelims/csat/counts`)
+      .then((r) => r.json())
+      .then((json) => { if (active && json?.ok) setCsatCountsFromAPI(json.counts); })
       .catch(() => { });
     return () => { active = false; };
   }, []);
@@ -775,12 +810,14 @@ export default function PrelimsPage() {
     return base.map((item) => ({
       id: item.id,
       label: item.label || item.name || item.id,
-      // Use live API count for GS subjects when available; fall back to static
-      count: (practicePaper === "GS" && gsCountsFromAPI?.[item.id] != null)
+      // Use live API count when available; fall back to static
+      count: practicePaper === "GS" && gsCountsFromAPI?.[item.id] != null
         ? gsCountsFromAPI[item.id]
+        : practicePaper === "CSAT" && csatCountsFromAPI?.[item.id] != null
+        ? csatCountsFromAPI[item.id]
         : (item.count || 0),
     }));
-  }, [practicePaper, gsCountsFromAPI]);
+  }, [practicePaper, gsCountsFromAPI, csatCountsFromAPI]);
 
   const topics = useMemo(() => {
     const base =
@@ -886,6 +923,24 @@ export default function PrelimsPage() {
     selectedMicroThemeIds,
   ]);
 
+  // RC passage groups — only computed for CSAT RC sectional mode
+  const rcPassageGroups = useMemo(() => {
+    if (practicePaper !== "CSAT" || selectedSubjectId !== "csat_rc") return [];
+    return groupRcByPassage(questions);
+  }, [questions, practicePaper, selectedSubjectId]);
+
+  // RC timer — starts when RC attempt begins, stops when stage leaves "attempt"
+  const isRcAttempt = testStage === "attempt" && testMode === "sectional" && practicePaper === "CSAT" && selectedSubjectId === "csat_rc";
+  useEffect(() => {
+    if (isRcAttempt) {
+      setRcElapsedSeconds(0);
+      rcTimerRef.current = setInterval(() => setRcElapsedSeconds((s) => s + 1), 1000);
+    } else {
+      if (rcTimerRef.current) { clearInterval(rcTimerRef.current); rcTimerRef.current = null; }
+    }
+    return () => { if (rcTimerRef.current) { clearInterval(rcTimerRef.current); rcTimerRef.current = null; } };
+  }, [isRcAttempt]);
+
   useEffect(() => {
     setSelectedSubjectId("");
     setSelectedTopicId("");
@@ -912,6 +967,11 @@ export default function PrelimsPage() {
       return Math.min(prev || 1, max);
     });
   }, [availableQuestionCount]);
+
+  // Reset RC passage index whenever a new question set is loaded
+  useEffect(() => {
+    setCurrentRcPassageIndex(0);
+  }, [questions]);
 
   useEffect(() => {
     if (!selectedSubjectId) return;
@@ -1033,7 +1093,7 @@ export default function PrelimsPage() {
 
   const disableStart =
     builderLoading ||
-    (testMode !== "institutional" &&
+    (testMode === "sectional" &&
       (!selectedSubjectId ||
         (practiceScope !== "subject" && !selectedTopicId) ||
         (practiceScope === "subtopic" &&
@@ -1285,6 +1345,126 @@ export default function PrelimsPage() {
     }
   }
 
+  // ── Test submit handler — shared by PyqTestAttempt and RC grouped view ───────
+  async function handleTestSubmit() {
+    try {
+      setBuilderLoading(true);
+      setBuilderError("");
+
+      const finalQid = questions[currentIndex]?.id || questions[currentIndex]?.questionId;
+      const finalTimeMap = { ...perQuestionTimeMap };
+      if (finalQid && questionEnteredAt) {
+        finalTimeMap[finalQid] = (finalTimeMap[finalQid] || 0) + (Date.now() - questionEnteredAt);
+      }
+      const totalTimeSpent = testStartTime ? Date.now() - testStartTime : 0;
+      const timeValues = Object.values(finalTimeMap);
+      const avgTimePerQuestion = timeValues.length
+        ? Math.round(timeValues.reduce((a, b) => a + b, 0) / timeValues.length)
+        : 0;
+
+      const evaluatedQuestions = buildAttemptRows(questions, answersMap, confidenceMap);
+
+      if (activeTopicNodeId) {
+        try {
+          const submitPayload = {
+            userId: CURRENT_USER_ID,
+            topicNodeId: activeTopicNodeId,
+            stage: "prelims",
+            mode: activePracticeMode,
+            paperType: practicePaper === "CSAT" ? "CSAT" : "GS",
+            questionIds: questions.map((q) => q?.id || q?.questionId).filter(Boolean),
+            questions,
+            answers: answersMap,
+          };
+          const submitResp = await fetch(`${BACKEND_URL}/api/prelims/practice/submit`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(submitPayload),
+          });
+          if (submitResp.ok) {
+            const submitJson = await submitResp.json();
+            setLastSubmitData({ ...submitJson, totalTimeSpent, averageTimePerQuestion: avgTimePerQuestion });
+            if (submitJson?.updatedProgress) {
+              setTopicProgress(prev => ({
+                ...(prev || {}),
+                ...submitJson.updatedProgress,
+                topicNodeId: activeTopicNodeId,
+                userId: CURRENT_USER_ID,
+              }));
+            }
+            if (submitJson?.attemptId && totalTimeSpent > 0) {
+              fetch(`${BACKEND_URL}/api/prelims/practice/timing`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  attemptId: submitJson.attemptId,
+                  userId: CURRENT_USER_ID,
+                  topicNodeId: activeTopicNodeId,
+                  totalTimeSpent,
+                  averageTimePerQuestion: avgTimePerQuestion,
+                  questionTimeMap: finalTimeMap,
+                }),
+              }).catch(e => console.warn("[Timing] Save failed (non-fatal):", e.message));
+            }
+          } else {
+            console.warn("[Progress Submit] Non-OK status:", submitResp.status);
+          }
+        } catch (submitErr) {
+          console.error("[Progress Submit] Error:", submitErr);
+        }
+      }
+
+      await analyzeAttemptWithBackend({
+        testId, testMode, practicePaper, practiceScope,
+        fullLengthType, fullLengthYear, evaluatedQuestions,
+      });
+
+      const finalResult = buildLocalFallbackResult({
+        evaluatedQuestions, testId, testMode,
+        practicePaper, practiceScope, fullLengthYear,
+      });
+      setResult(finalResult);
+
+      try {
+        const sourceType =
+          testMode === "full_length" ? "full_length"
+            : practiceScope === "topic" ? "topic_test"
+              : practiceScope === "subtopic" ? "topic_test"
+                : "sectional_test";
+        await recordTestAttempt(
+          {
+            testId, sourceType, paper: practicePaper,
+            year: testMode === "full_length" ? fullLengthYear : null,
+            subject: selectedSubjectId, topic: selectedTopicId,
+            subtopic: selectedMicroThemeIds[0] || "",
+          },
+          evaluatedQuestions,
+          finalResult.summary || {}
+        );
+      } catch (mistakeErr) {
+        console.error("[MistakeEngine] Failed to record attempt:", mistakeErr);
+      }
+
+      try {
+        localStorage.setItem("prelims_test_attempts_v1", JSON.stringify(finalResult));
+      } catch { /* ignore */ }
+
+      setTestStage("result");
+
+    } catch (error) {
+      console.error("Prelims submit/analyze error:", error);
+      const evaluatedQuestions = buildAttemptRows(questions, answersMap, confidenceMap);
+      const fallbackResult = buildLocalFallbackResult({
+        evaluatedQuestions, testId, testMode,
+        practicePaper, practiceScope, fullLengthYear,
+      });
+      setResult(fallbackResult);
+      setTestStage("result");
+    } finally {
+      setBuilderLoading(false);
+    }
+  }
+
   return (
     <div style={pageStyle}>
       <div style={heroStyle}>
@@ -1388,16 +1568,6 @@ export default function PrelimsPage() {
               Full-Length
             </ModeButton>
 
-            <ModeButton
-              active={testMode === "institutional"}
-              onClick={() => {
-                setTestMode("institutional");
-                setTestStage("start");
-                setBuilderError("");
-              }}
-            >
-              Institutional
-            </ModeButton>
           </div>
         </div>
       </section>
@@ -1483,7 +1653,148 @@ export default function PrelimsPage() {
             </>
           )}
 
-          {testStage === "attempt" && (
+          {testStage === "attempt" && testMode === "sectional" && practicePaper === "CSAT" && selectedSubjectId === "csat_rc" && rcPassageGroups.length > 0 && (() => {
+            const totalQ = questions.length;
+            const answeredQ = Object.keys(answersMap).length;
+            const attemptedPassages = rcPassageGroups.filter(g =>
+              g.questions.some(q => answersMap[q.id || q.questionId || q.qid])
+            ).length;
+            const mm = String(Math.floor(rcElapsedSeconds / 60)).padStart(2, "0");
+            const ss = String(rcElapsedSeconds % 60).padStart(2, "0");
+
+            return (
+              <div>
+                {/* ── RC header: title + stats + timer ─────────────────────── */}
+                <div style={{
+                  marginBottom: 12, padding: "14px 18px",
+                  background: "rgba(15,23,42,0.88)",
+                  border: "1px solid rgba(148,163,184,0.12)",
+                  borderRadius: 14,
+                }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
+                    <div>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: "#e0f2fe" }}>
+                        CSAT · Reading Comprehension
+                      </div>
+                      <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>
+                        {rcPassageGroups.length} passages · {totalQ} questions
+                      </div>
+                    </div>
+                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+                      {/* Timer */}
+                      <span style={{
+                        fontSize: 13, fontWeight: 800, fontVariantNumeric: "tabular-nums",
+                        color: "#a78bfa", background: "rgba(167,139,250,0.1)",
+                        border: "1px solid rgba(167,139,250,0.25)",
+                        borderRadius: 8, padding: "4px 12px", letterSpacing: "0.05em",
+                      }}>
+                        ⏱ {mm}:{ss}
+                      </span>
+                      {/* Passage */}
+                      <span style={{
+                        fontSize: 12, fontWeight: 700, color: "#38bdf8",
+                        background: "rgba(56,189,248,0.1)", border: "1px solid rgba(56,189,248,0.25)",
+                        borderRadius: 8, padding: "4px 12px",
+                      }}>
+                        P {currentRcPassageIndex + 1}/{rcPassageGroups.length}
+                      </span>
+                      {/* Questions answered */}
+                      <span style={{
+                        fontSize: 12, fontWeight: 700,
+                        color: answeredQ === totalQ ? "#22c55e" : "#f59e0b",
+                        background: answeredQ === totalQ ? "rgba(34,197,94,0.1)" : "rgba(245,158,11,0.1)",
+                        border: `1px solid ${answeredQ === totalQ ? "rgba(34,197,94,0.25)" : "rgba(245,158,11,0.25)"}`,
+                        borderRadius: 8, padding: "4px 12px",
+                      }}>
+                        {answeredQ}/{totalQ} Q
+                      </span>
+                      {/* Passages attempted */}
+                      <span style={{
+                        fontSize: 12, fontWeight: 700, color: "#94a3b8",
+                        background: "rgba(148,163,184,0.08)", border: "1px solid rgba(148,163,184,0.18)",
+                        borderRadius: 8, padding: "4px 12px",
+                      }}>
+                        {attemptedPassages}/{rcPassageGroups.length} passages
+                      </span>
+                      {builderLoading && (
+                        <span style={{ fontSize: 12, color: "#f59e0b", fontWeight: 600 }}>Submitting…</span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* ── Passage palette ──────────────────────────────────── */}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                    {rcPassageGroups.map((grp, idx) => {
+                      const grpAnswered = grp.questions.filter(q => answersMap[q.id || q.questionId || q.qid]).length;
+                      const grpTotal = grp.questions.length;
+                      const isCurrent = idx === currentRcPassageIndex;
+                      const isFullyAnswered = grpAnswered === grpTotal && grpTotal > 0;
+                      const isPartial = grpAnswered > 0 && !isFullyAnswered;
+                      const color = isCurrent ? "#38bdf8" : isFullyAnswered ? "#22c55e" : isPartial ? "#f59e0b" : "#64748b";
+                      return (
+                        <button
+                          key={grp.passageId}
+                          type="button"
+                          onClick={() => setCurrentRcPassageIndex(idx)}
+                          style={{
+                            minWidth: 42, height: 32, borderRadius: 8,
+                            fontSize: 11, fontWeight: 800,
+                            border: `1px solid ${color}${isCurrent ? "88" : "44"}`,
+                            background: isCurrent ? `${color}20` : `${color}0a`,
+                            color,
+                            cursor: "pointer",
+                            fontFamily: "inherit",
+                            transition: "all 0.15s",
+                          }}
+                        >
+                          P{idx + 1}
+                          {grpAnswered > 0 && (
+                            <span style={{ fontSize: 9, marginLeft: 3, opacity: 0.85 }}>
+                              {grpAnswered}/{grpTotal}
+                            </span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* ── RcPassageBlock ────────────────────────────────────────── */}
+                <RcPassageBlock
+                  key={rcPassageGroups[currentRcPassageIndex]?.passageId}
+                  passage={rcPassageGroups[currentRcPassageIndex]?.passageText}
+                  questions={rcPassageGroups[currentRcPassageIndex]?.questions || []}
+                  passageIndex={currentRcPassageIndex}
+                  totalPassages={rcPassageGroups.length}
+                  answersMap={answersMap}
+                  onSelectOption={(qid, option) =>
+                    setAnswersMap((prev) => ({ ...prev, [qid]: option }))
+                  }
+                  onClearOption={(qid) =>
+                    setAnswersMap((prev) => {
+                      const copy = { ...prev };
+                      delete copy[qid];
+                      return copy;
+                    })
+                  }
+                  confidenceMap={confidenceMap}
+                  onSetConfidence={(qid, level) =>
+                    setConfidenceMap((prev) => ({ ...prev, [qid]: level }))
+                  }
+                  onPrevPassage={() =>
+                    setCurrentRcPassageIndex((i) => Math.max(0, i - 1))
+                  }
+                  onNextPassage={() =>
+                    setCurrentRcPassageIndex((i) => Math.min(rcPassageGroups.length - 1, i + 1))
+                  }
+                  onSubmit={handleTestSubmit}
+                  submitting={builderLoading}
+                />
+              </div>
+            );
+          })()}
+
+          {testStage === "attempt" && !(testMode === "sectional" && practicePaper === "CSAT" && selectedSubjectId === "csat_rc" && rcPassageGroups.length > 0) && (
             <PyqTestAttempt
               key={`${testId}_${selectedSubjectId}_${selectedTopicId}_${practiceScope}`}
               testMeta={{
@@ -1542,133 +1853,7 @@ export default function PrelimsPage() {
                 setQuestionEnteredAt(Date.now());
                 setCurrentIndex(i);
               }}
-              onSubmit={async () => {
-                try {
-                  setBuilderLoading(true);
-                  setBuilderError("");
-
-                  // ── Finalise timing for last question ──────────────────────
-                  const finalQid = questions[currentIndex]?.id || questions[currentIndex]?.questionId;
-                  const finalTimeMap = { ...perQuestionTimeMap };
-                  if (finalQid && questionEnteredAt) {
-                    finalTimeMap[finalQid] = (finalTimeMap[finalQid] || 0) + (Date.now() - questionEnteredAt);
-                  }
-                  const totalTimeSpent = testStartTime ? Date.now() - testStartTime : 0;
-                  const timeValues = Object.values(finalTimeMap);
-                  const avgTimePerQuestion = timeValues.length
-                    ? Math.round(timeValues.reduce((a, b) => a + b, 0) / timeValues.length)
-                    : 0;
-
-                  const evaluatedQuestions = buildAttemptRows(questions, answersMap, confidenceMap);
-
-                  // ── BACKEND PROGRESS SUBMIT (locked core — no timing fields) ──
-                  if (activeTopicNodeId) {
-                    try {
-                      // Core submit: only answers + scoring fields (timing stripped out)
-                      const submitPayload = {
-                        userId: CURRENT_USER_ID,
-                        topicNodeId: activeTopicNodeId,
-                        stage: "prelims",
-                        mode: activePracticeMode,
-                        paperType: practicePaper === "CSAT" ? "CSAT" : "GS",
-                        questionIds: questions.map((q) => q?.id || q?.questionId).filter(Boolean),
-                        questions: questions,
-                        answers: answersMap,
-                      };
-                      const submitResp = await fetch(`${BACKEND_URL}/api/prelims/practice/submit`, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(submitPayload),
-                      });
-                      if (submitResp.ok) {
-                        const submitJson = await submitResp.json();
-                        // Attach client-side timing to lastSubmitData for result display
-                        setLastSubmitData({ ...submitJson, totalTimeSpent, averageTimePerQuestion: avgTimePerQuestion });
-                        if (submitJson?.updatedProgress) {
-                          setTopicProgress(prev => ({
-                            ...(prev || {}),
-                            ...submitJson.updatedProgress,
-                            topicNodeId: activeTopicNodeId,
-                            userId: CURRENT_USER_ID,
-                          }));
-                        }
-
-                        // ── TIMING EXTENSION (fire-and-forget, separate endpoint) ──
-                        if (submitJson?.attemptId && totalTimeSpent > 0) {
-                          fetch(`${BACKEND_URL}/api/prelims/practice/timing`, {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({
-                              attemptId: submitJson.attemptId,
-                              userId: CURRENT_USER_ID,
-                              topicNodeId: activeTopicNodeId,
-                              totalTimeSpent,
-                              averageTimePerQuestion: avgTimePerQuestion,
-                              questionTimeMap: finalTimeMap,
-                            }),
-                          }).catch(e => console.warn("[Timing] Save failed (non-fatal):", e.message));
-                        }
-                      } else {
-                        console.warn("[Progress Submit] Non-OK status:", submitResp.status);
-                      }
-                    } catch (submitErr) {
-                      console.error("[Progress Submit] Error:", submitErr);
-                      // Non-fatal: continue to show result
-                    }
-                  }
-                  // ── END BACKEND PROGRESS SUBMIT ────────────────────────────
-
-                  await analyzeAttemptWithBackend({
-                    testId, testMode, practicePaper, practiceScope,
-                    fullLengthType, fullLengthYear, evaluatedQuestions,
-                  });
-
-                  const finalResult = buildLocalFallbackResult({
-                    evaluatedQuestions, testId, testMode,
-                    practicePaper, practiceScope, fullLengthYear,
-                  });
-                  setResult(finalResult);
-
-                  // ── MISTAKE ENGINE ─────────────────────────────────────────
-                  try {
-                    const sourceType =
-                      testMode === "full_length" ? "full_length"
-                        : practiceScope === "topic" ? "topic_test"
-                          : practiceScope === "subtopic" ? "topic_test"
-                            : "sectional_test";
-                    await recordTestAttempt(
-                      {
-                        testId, sourceType, paper: practicePaper,
-                        year: testMode === "full_length" ? fullLengthYear : null,
-                        subject: selectedSubjectId, topic: selectedTopicId,
-                        subtopic: selectedMicroThemeIds[0] || ""
-                      },
-                      evaluatedQuestions,
-                      finalResult.summary || {}
-                    );
-                  } catch (mistakeErr) {
-                    console.error("[MistakeEngine] Failed to record attempt:", mistakeErr);
-                  }
-
-                  try {
-                    localStorage.setItem("prelims_test_attempts_v1", JSON.stringify(finalResult));
-                  } catch { /* ignore */ }
-
-                  setTestStage("result");
-
-                } catch (error) {
-                  console.error("Prelims submit/analyze error:", error);
-                  const evaluatedQuestions = buildAttemptRows(questions, answersMap, confidenceMap);
-                  const fallbackResult = buildLocalFallbackResult({
-                    evaluatedQuestions, testId, testMode,
-                    practicePaper, practiceScope, fullLengthYear,
-                  });
-                  setResult(fallbackResult);
-                  setTestStage("result");
-                } finally {
-                  setBuilderLoading(false);
-                }
-              }}
+              onSubmit={handleTestSubmit}
             />
           )}
 

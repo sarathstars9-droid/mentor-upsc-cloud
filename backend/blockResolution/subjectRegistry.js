@@ -77,7 +77,7 @@ export const SUBJECT_REGISTRY = [
   {
     slug: 'ethics',
     label: 'Ethics, Integrity & Aptitude',
-    aliases: ['ethics', 'integrity', 'aptitude', 'attitude', 'moral', 'values', 'gs4', 'gs 4'],
+    aliases: ['ethics', 'integrity', 'aptitude', 'attitude', 'moral', 'values', 'gs4', 'gs 4', 'gs-4', 'gs iv', 'gs-iv', 'general studies 4', 'general studies iv', 'general studies paper 4', 'ethics integrity aptitude', 'ethics, integrity, aptitude'],
     stage: 'mains',
   },
   {

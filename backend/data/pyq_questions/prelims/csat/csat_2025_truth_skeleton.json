@@ -1,0 +1,2336 @@
+{
+  "schemaVersion": "csat-2025-truth-skeleton-v1",
+  "generatedAt": "2026-04-15T12:33:23.682Z",
+  "totalQuestions": 80,
+  "validation": {
+    "year": 2025,
+    "expectedTotal": 80,
+    "expectedBreakup": {
+      "Quant": 30,
+      "Reasoning": 21,
+      "Comprehension": 29
+    }
+  },
+  "questions": [
+    {
+      "year": 2025,
+      "questionNumber": 1,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 2,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 3,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 4,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 5,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 6,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 7,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 8,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 9,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 10,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 11,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 12,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 13,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 14,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 15,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 16,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 17,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 18,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 19,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 20,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 21,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 22,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 23,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 24,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 25,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 26,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 27,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 28,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 29,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 30,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Quant",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 31,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 32,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 33,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 34,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 35,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 36,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 37,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 38,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 39,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 40,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 41,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 42,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 43,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 44,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 45,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 46,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 47,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 48,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 49,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 50,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 51,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Reasoning",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 52,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 53,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 54,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 55,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 56,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 57,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 58,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 59,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 60,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 61,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 62,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 63,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 64,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 65,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 66,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 67,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 68,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 69,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 70,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 71,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 72,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 73,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 74,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 75,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 76,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 77,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 78,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 79,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    },
+    {
+      "year": 2025,
+      "questionNumber": 80,
+      "stage": "Prelims",
+      "paper": "CSAT",
+      "section": "Comprehension",
+      "questionType": null,
+      "format": null,
+      "question": "",
+      "prompt": null,
+      "passageId": null,
+      "passageText": null,
+      "statements": null,
+      "pairs": null,
+      "table": null,
+      "options": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "answer": null,
+      "topicTags": [],
+      "sourceFiles": [
+        "2025_pdf_truth"
+      ],
+      "originalIds": [],
+      "legacySyllabusNodeIds": []
+    }
+  ]
+}
