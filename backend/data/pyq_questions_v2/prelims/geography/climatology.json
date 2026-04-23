@@ -1,0 +1,1203 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "exam": "UPSC_CSE",
+  "stage": "Prelims",
+  "paper": "GS1",
+  "subject": "Geography",
+  "topicName": "Climatology",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "nodeId": "geo.climatology",
+  "microTheme": "atmosphere-weather-climate",
+  "questions": [
+    {
+      "id": "GEO_CLI_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement I: The amount of dust particles in the atmosphere is more in subtropical and temperate areas than in equatorial and polar regions. Statement II: Subtropical and temperate areas have less dry winds. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement I and Statement II are correct and Statement II explains Statement I",
+        "B": "Both Statement I and Statement II are correct but Statement II does not explain Statement I",
+        "C": "Statement I is correct but Statement II is not correct",
+        "D": "Statement I is not correct but Statement II is correct"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2025_Q2",
+      "questionNumber": 2,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: I. Without the atmosphere, temperature would be well below freezing point everywhere on the Earth's surface. II. Heat absorbed and trapped by the atmosphere maintains our planet's average temperature. III. Atmosphere's gases, like carbon dioxide, are particularly good at absorbing and trapping radiation. Which of the statements given above are correct?",
+      "options": {
+        "A": "I and III only",
+        "B": "I and II only",
+        "C": "I, II and III",
+        "D": "II and III only"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2025_Q3",
+      "questionNumber": 3,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Artificial way of causing rainfall to reduce air pollution makes use of",
+      "options": {
+        "A": "silver iodide and potassium iodide",
+        "B": "silver nitrate and potassium iodide",
+        "C": "silver iodide and potassium nitrate",
+        "D": "silver nitrate and potassium chloride"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2024_Q4",
+      "questionNumber": 4,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement-I: The atmosphere is heated more by incoming solar radiation than by terrestrial radiation. Statement-II: Carbon dioxide and other greenhouse gases in the atmosphere are good absorbers of long wave radiation. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I (",
+        "B": "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I (",
+        "C": "Statement-I is correct, but Statement-II is incorrect (",
+        "D": "Statement-I is incorrect, but Statement -II is correct"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2024_Q5",
+      "questionNumber": 5,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement-I: Thickness of the troposphere at the equator is much greater as compared to poles. Statement-II: At the equator, heat is transported to great heights by strong convectional currents. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I (",
+        "B": "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I (",
+        "C": "Statement-I is correct, but Statement-II is incorrect (",
+        "D": "Statement-I is incorrect, but Statement -II is correct"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2024_Q6",
+      "questionNumber": 6,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to \"water vapour\", which of the following statements is/are correct? 1. It is a gas, the amount of which decreases with altitude. 2. Its percentage is maximum at the poles. Select the answer using the code given below:",
+      "options": {
+        "A": "1 only (",
+        "B": "2 only (",
+        "C": "Both 1 and 2 (",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2024_Q7",
+      "questionNumber": 7,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following description: 1. Annual and daily range of temperatures is low. 2. Precipitation occurs throughout the year. 3. Precipitation varies between 50 cm - 250 cm. What is this type of climate?",
+      "options": {
+        "A": "Equatorial climate (",
+        "B": "China type climate (",
+        "C": "Humid subtropical climate (",
+        "D": "Marine West coast climate"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2024_Q8",
+      "questionNumber": 8,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to \"Coriolis force\", which of the following statements are correct? 1. It increases with increase in wind velocity. 2. It is maximum at the poles and is absent at the equator. Select the answer using the code given below:",
+      "options": {
+        "A": "1 Only (",
+        "B": "2 only (",
+        "C": "Both 1 and 2 (",
+        "D": "Neither I nor 2"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2023_Q9",
+      "questionNumber": 9,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Earth's atmosphere, which one of the following statements is correct?",
+      "options": {
+        "A": "The total amount of insolation received at the equator is roughly about 10 times of that received at the poles",
+        "B": "Infrared rays constitute roughly two -thirds of insolation",
+        "C": "Infrared waves are largely absorbed by water vapour that is concentrated in the lower atmosphere",
+        "D": "Infrared waves are a part of visible spectrum of electromagnetic waves of solar radiation"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2023_Q10",
+      "questionNumber": 10,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement-I: The soil in tropical rain forests is rich in nutrients. Statement-II: The high temperature and moisture of tropical rain forests cause dead organic matter in the soil to decompose quickly. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement -II is the correct explanation for Statement-I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2022_Q11",
+      "questionNumber": 11,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. High clouds primarily reflect solar radiation and cool the surface of the Earth. 2. Low clouds have a high absorption of infrared radiation emanating from the Earth's surface and thus cause a warming effect. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only (",
+        "B": "2 only (",
+        "C": "Both 1 and 2 (",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2021_Q12",
+      "questionNumber": 12,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "The vegetation of savannah consists of grassland with scattered small trees, but extensive areas have no trees. The forest development in such areas is generally kept in check by one or more or a combination of some conditions. Which of the following are such conditions? 1) Burrowing animals and termites 2) Fire 3) Grazing herbivores 4) Seasonal rainfall 5) Soil properties Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2",
+        "B": "4 and 5",
+        "C": "2, 3 and 4",
+        "D": "1, 3 and 5"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2021_Q13",
+      "questionNumber": 13,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "\"Leaf litter decomposes faster than in any other biome and as a result the soil surface is often almost bare. Apart from trees, the vegetation is largely composed of plant forms that reach up into the canopy vicariously, by climbing the trees or growing as epiphytes, rooted on the upper branches of trees\". This is the most likely description of:",
+      "options": {
+        "A": "Coniferous forest",
+        "B": "Dry deciduous forest",
+        "C": "Mangrove forest",
+        "D": "Tropical rainforest"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2020_Q14",
+      "questionNumber": 14,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Jet streams occur in the Northern Hemisphere only. 2. Only some cyclones develop an eye. 3. The temperature inside the eye of a cyclone is nearly 10oC lesser than that of the surroundings. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "2 only",
+        "D": "1 and 3 only"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2019_Q15",
+      "questionNumber": 15,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of which of the following do some scientists suggest the use of cirrus cloud thinning technique and the injection of sulphate aerosol into stratosphere?",
+      "options": {
+        "A": "Creating the artificial rains in some regions",
+        "B": "Reducing the frequency and intensity of tropical cyclones",
+        "C": "Reducing the adverse effects of solar wind on the Earth",
+        "D": "Reducing the global warming"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2019_Q16",
+      "questionNumber": 16,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Why are dewdrops not formed on a cloudy night?",
+      "options": {
+        "A": "Clouds absorb the radiation released from the Earth's surface",
+        "B": "Clouds reflect back the Earth's radiation",
+        "C": "The Earth's surface would have low temperature on cloudy nights",
+        "D": "Clouds deflect the blowing wind to ground level"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2017_Q17",
+      "questionNumber": 17,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to 'Indian Ocean Dipole (IOD)' sometimes mentioned in the news while forecasting Indian monsoon, which of the following statements is/are correct? 1. IOD phenomenon is characterised by a difference in sea surface temperature between tropical Western Indian Ocean and tropical Eastern Pacific Ocean. 2. An IOD phenomenon can influence an El Nino's impact on the monsoon. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2015_Q18",
+      "questionNumber": 18,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The winds which blow between 30 degrees N and 60 degrees S latitudes throughout the year are known as westerlies. 2. The moist air masses that cause winter rams in North-Western region of India are part of westerlies. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2015_Q19",
+      "questionNumber": 19,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "\"Each day is more or less the same, the morning is clear and bright with a sea breeze; as the sun climbs high in the sky, heat mounts up, dark clouds form, than rain comes with thunder and lightning. But rain is soon over.\": Which of the following regions is described in the above passage?",
+      "options": {
+        "A": "Savannah",
+        "B": "Equatorial",
+        "C": "Monsoon",
+        "D": "Mediterranean"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2015_Q20",
+      "questionNumber": 20,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the South Atlantic and South Eastern Pacific regions in tropical latitudes, cyclone does not originate. What is the reason?",
+      "options": {
+        "A": "Sea surface temperature is low",
+        "B": "Inter Tropical Convergence Zone seldom occurs",
+        "C": "Coriolis force is too weak",
+        "D": "Absence of land in those regions"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2014_Q21",
+      "questionNumber": 21,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "The seasonal reversal of winds is the typical characteristic of:",
+      "options": {
+        "A": "Equatorial climate",
+        "B": "Mediterranean climate",
+        "C": "Monsoon climate",
+        "D": "All of the above climates"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2013_Q22",
+      "questionNumber": 22,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following is/ are unique characteristic / characteristics of equatorial forests? 1. Presence of tall, closely set trees with crowns forming a continuous canopy 2. Coexistence of a large number of species 3. Presence of numerous varieties of epiphytes Select the correct answer using the codes given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2013_Q23",
+      "questionNumber": 23,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "During a thunderstorm, the thunder in the skies is produced by the: 1. Meeting of cumulonimbus clouds in the sky 2. Lightning that separates the nimbus clouds 3. Violent upward movement of air and water particles Select the correct answer using the codes given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3",
+        "C": "1 and 3",
+        "D": "None of the above produces the thunder"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2012_Q24",
+      "questionNumber": 24,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Normally, the temperature decreases with the increase in height from the Earth's surface, because: 1. The atmosphere can be heated upwards only from the Earth's surface 2. There is more moisture in the upper atmosphere 3. The air is less dense in the upper atmosphere Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 only",
+        "D": "1, 2 & 3"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2012_Q25",
+      "questionNumber": 25,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the characteristic climate of the Tropical Savannah Region?",
+      "options": {
+        "A": "Rainfall throughout the year",
+        "B": "Rainfall in winter only",
+        "C": "An extremely short dry season",
+        "D": "A definite dry and wet season"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2011_Q26",
+      "questionNumber": 26,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "La Nina is suspected to have caused recent floods in Australia. How is La Nina different from EI Nino? 1. La Nina is characterized by un-usually cold ocean temperature in equatorial Indian ocean whereas EI Nino is characterized by unusually warm ocean temperature in the equatorial pacific ocean. 2. EI Nino has adverse effect on south-west monsoon of India, but La Nina has no effect on monsoon climate. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2011_Q27",
+      "questionNumber": 27,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "Westerlies in southern hemisphere are stronger and persistent than in northern hemisphere. Why? 1. Southern hemisphere has less landmass as compared to northern hemisphere. 2. Coriolis force is higher in southern hemisphere as compared to northern hemisphere. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2011_Q28",
+      "questionNumber": 28,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "A layer in the earth's atmosphere called ionosphere facilities radio communication. Why? 1. Why presence of ozone causes the reflection of radio waves to earth. 2. Radio waves have a very long wavelength. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2011_Q29",
+      "questionNumber": 29,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "The jet aircrafts fly very easily and smoothly in the lower stratosphere. What could be the appropriate explanation? 1. There are no clouds or water vapour in the lower stratosphere. 2. There are no vertical winds in the lower stratosphere. Which of the statements given above is/are correct in this context?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2011_Q30",
+      "questionNumber": 30,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Biodiversity is normally greater in the lower latitudes as compared to the higher latitudes. 2. Along the mountain gradients, biodiversity is normally greater in the lower altitudes as compared to the higher altitudes. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2010_Q31",
+      "questionNumber": 31,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "A geographic region has the following distinct characteristics: 1. Warm and dry climate 2. Mild and wet winter 3. Evergreen oak trees The above features are the distinct characteristics of which one of the following regions?",
+      "options": {
+        "A": "Mediterranean",
+        "B": "Eastern China",
+        "C": "Central Asia",
+        "D": "Atlantic coast of North America"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2010_Q32",
+      "questionNumber": 32,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "What causes wind to defect toward left in the Southern hemisphere?",
+      "options": {
+        "A": "Temperature",
+        "B": "Magnetic field",
+        "C": "Rotation of the earth",
+        "D": "Pressure"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2010_Q33",
+      "questionNumber": 33,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of following reflects back more sunlight as compared to other three?",
+      "options": {
+        "A": "Sand desert",
+        "B": "Paddy crop land",
+        "C": "Land covered with fresh snow",
+        "D": "Prairie land"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2009_Q34",
+      "questionNumber": 34,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "A geographical area with an altitude of 400 metres has following characteristics: [2010] Month Average maximum temp. Celcius) Average minimum temp. Celcius) Rainfall mm) J 31 21 51 F 31 21 85 M 31 21 188 A 31 21 158 M 30 21 139 J 30 21 121 J 29 20 134 A 28 20 168 S 29 20 185 O 29 20 221 N 30 20 198 D 31 20 86 If this geographic area were to have a natural forest, which one of the following would it most likely be?",
+      "options": {
+        "A": "Moist temperate coniferous forest",
+        "B": "Montane subtropical forest",
+        "C": "Temperate forest",
+        "D": "Tropical rainforest pe of El Nino called El Nino Modoki appeared in the news, In this context, consider the following statements: [2010] 1. Normal El Nino forms in the Central Pacific Ocean whereas El Nino Modoki forms in Eastern Pacific Ocean. 2. Normal El Nino results in diminished hurricanes in the Atlantic Ocean but El Nino Modoki results in a greater number of hurricanes with greater frequency. Which of the statements given above is/are correct? a) 1 only b) 2 only c) Both 1 and 2 d) Neither 1 nor 2 36] Consider the following statements: 1. In the world, the tropical deserts occur along the western margins of continents within the trade wind belt"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2010_Q35",
+      "questionNumber": 35,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "A new type of El Nino called El Nino Modoki appeared in the news. In this context, consider the following statements: 1. Normal El Nino forms in the Central Pacific Ocean whereas El Nino Modoki forms in Eastern Pacific Ocean. 2. Normal El Nino results in diminished hurricanes in the Atlantic Ocean but El Nino Modoki results in a greater number of hurricanes with greater frequency. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2009_Q36",
+      "questionNumber": 36,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. In the world, the tropical deserts occur along the western margins of continents within the trade wind belt. 2. In India, the East Himalayan region gets high rainfall from north-east winds. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2009_Q37",
+      "questionNumber": 37,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following names: 1. Ike 2. Kate 3. Gustav Which of the above are the names of hurricanes that had occurred very recently?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2008_Q38",
+      "questionNumber": 38,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statement: 1. The albedo of an object determines its visual brightness when viewed with reflected light. 2. The albedo of Mercury is much greater than the albedo of the Earth. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 Nor 2"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2007_Q39",
+      "questionNumber": 39,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Either of the two belts over the oceans at about 30o to 35 o N and S Latitudes is known as Horse Latitude. 2. Horse latitudes are low pressure belts. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2006_Q40",
+      "questionNumber": 40,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Length of a terrestrial mile is lesser than that of a nautical mile. 2. Harmattan is a dusty land-wind of the East African Coast. 3. Greece and Albania from a part of the Iberian Peninsula. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "2 and 3, only",
+        "C": "3 only",
+        "D": "1 only"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2005_Q41",
+      "questionNumber": 41,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": Wind patterns are clockwise in the northern hemisphere and anticlockwise in the southern hemisphere.: Reason (R): The directions of wind patterns in the northern and the southern hemisphere are governed by the Coriolis effect",
+        "B": "Both (",
+        "C": "and (R) are individually true and R is the correct explanation of A",
+        "D": "Both (A) and (R) are individually true and R is not the correct explanation of A c) A is true but R is false d) A is false but R is true Option 2 also mentions both (A) and (R) are true but explanation by (R) for (A) is not correct. This is not the right answer as assertion (A) is false. Option 3 states that (A) is true and (R) is false, which contradicts the correct answer as (A) is factually incorrect. Option 4, the correct answer, asserts that (A) is false but (R) is true. This is correct as the wind patterns aren't always just clockwise in northern hemisphere and anticlockwise in southern hemisphere. However, the Coriolis effect does indeed strongly influence the direction of wind patterns on a global scale. So, the reason (R) is true, but the assertion (A) is false"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2004_Q42",
+      "questionNumber": 42,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements is correct?",
+      "options": {
+        "A": "Cirrus clouds are composed of ice crystals",
+        "B": "Cirrus clouds exhibit a flat base and have the appearance of rising domes",
+        "C": "Cumulus clouds are white and thin, and form delicate patches and give a fibrous and feathery appearance",
+        "D": "Cumulus clouds are classified as high clouds"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2004_Q43",
+      "questionNumber": 43,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": The thickness of the atmosphere is maximum over the Equator.: Reason (R): High insolation and strong convection currents occur over the Equator",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is not the correct explanation of A",
+        "D": "A is true but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2003_Q44",
+      "questionNumber": 44,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one among the following covers the highest percentage of forest area in the world?",
+      "options": {
+        "A": "Temperate Coniferous forests",
+        "B": "Temperate Deciduous forests",
+        "C": "Tropical Monsoon forests",
+        "D": "Tropical Rain forests"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2003_Q45",
+      "questionNumber": 45,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": The amount of moisture in the atmosphere is related to latitude.: Reason (R): The capacity to hold moisture in the form of water vapour is related to temperature",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "D": "A is true but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2003_Q46",
+      "questionNumber": 46,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": Areas lying within five to eight degrees latitude on either side of the equator receive rainfall throughout the year.: Reason (R): High temperatures and high humidity cause convectional rain to fall mostly in the afternoons near the equator",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "D": "A is true but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2003_Q47",
+      "questionNumber": 47,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": Unlike temperate forests, the tropical rain forests, if cleared, can yield productive farm land that can support intensive agriculture for several years even without chemical fertilizers.: Reason (R): The primary productivity of the tropical rain forest is very high when compared to that of the temperate forests",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "D": "A is true but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2002_Q48",
+      "questionNumber": 48,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following climatic and geographical phenomena: 1. Condensation 2. High temperature and humidity 3. Orography 4. Vertical wind Thunder Cloud development is due to which of these phenomena?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2, 3 and 4",
+        "C": "1, 3 and 4",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2002_Q49",
+      "questionNumber": 49,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "For short-term climate prediction, which one of the following events, detected in the last decade, is associated with occasional weak monsoon rains in the India subcontinent?",
+      "options": {
+        "A": "La Nina",
+        "B": "Movement of Jet Streams",
+        "C": "El Nino and Southern Oscillations",
+        "D": "Greenhouse effects on global level"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2002_Q50",
+      "questionNumber": 50,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. In equatorial regions, the year is divided into four main seasons 2. In Mediterranean region, summer receives more rain 3. In China type climate, rainfall occurs throughout the year 4. Tropical highlands exhibit vertical zonation of different climates Which of these statements are correct?",
+      "options": {
+        "A": "1, 2, 3 and 4",
+        "B": "1, 2 and 3",
+        "C": "1, 2 and 4",
+        "D": "3 and 4"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2002_Q51",
+      "questionNumber": 51,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following ecosystems: 1. Taiga 2. Tropical evergreen 3. Tropical deciduous 4. Tundra The correct sequence in decreasing order of the albedo values of these ecosystems is",
+      "options": {
+        "A": "1, 4, 3, 2",
+        "B": "4, 1, 2, 3",
+        "C": "4, 1, 3, 2",
+        "D": "1, 4, 2, 3"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2002_Q52",
+      "questionNumber": 52,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": 60° -65° latitudes in both the hemispheres have a low pressure belt instead of high pressure.: Reason (R): The low pressure areas are permanent over oceans rather than on land",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is not a correct explanation of A",
+        "D": "A is true but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2002_Q53",
+      "questionNumber": 53,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": The surface winds spiral inwards upon the centre of the cyclone.: Reason (R): Air descends in the centre of the cyclone",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is not a correct explanation of A",
+        "D": "A is true but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2001_Q54",
+      "questionNumber": 54,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "The temperature and rainfall of a meteorological station are given below: Month: Temperature (°",
+      "options": {
+        "A": "Rainfall (cm) J 9.4 12.2 F 10.6 9.1 M 11.7 7.9 A 12.2 2.5 M 13.3 1.8 J 13.9 0.3 J 13.9 - A 14.4 - S 15.6 0.8 O 15 2.5 N 13.3 6.1 D 10.6 11.7 Average Temperature: 12.8 °C Average Rainfall: 54.9 cm per annum Identify the region having the above climatic pattern from amongst the following:",
+        "B": "Mediterranean region",
+        "C": "Monsoon region",
+        "D": "Steppe region d) N.W. European region"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2001_Q55",
+      "questionNumber": 55,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: List I (Local Wind)List II (Region) I. Fohn",
+      "options": {
+        "A": "Argentina II. Samun",
+        "B": "Kurdistan III. Santa Ana",
+        "C": "California IV. Zonda",
+        "D": "Alps a) I-B, II-D, III-A, IV-C b) I-D, II-B, III-C, IV-A c) I-B, II-D, III-C, IV-A d) I-D, II-B, III-A, IV-C"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2001_Q56",
+      "questionNumber": 56,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": Anticyclonic conditions are formed in winter season when atmospheric pressure is high and air temperatures are low.: Reason (R): Winter rainfall in Northern India causes development of anticyclonic conditions with low temperatures",
+        "B": "Both A and R are individually true, and R is the correct explanation of A",
+        "C": "Both A and R are individually true, but R is NOT a correct explanation of A",
+        "D": "A is true, but R is false d) A is false, but R is true"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2001_Q57",
+      "questionNumber": 57,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Cloudy nights are warmer compared to clear cloudless nights, because clouds:",
+      "options": {
+        "A": "Prevent cold waves from the sky from descending on Earth",
+        "B": "Reflect back heat given off by Earth",
+        "C": "Produce heat and radiate it towards Earth",
+        "D": "Absorb heat from the atmosphere and send it towards Earth"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_2000_Q58",
+      "questionNumber": 58,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements about the 'Roaring Forties': I. They blow uninterrupted in the Northern and Southern Hemispheres. II. They blow with great strength and constancy. III. Their direction is generally from North - West to East in the Southern Hemisphere. IV. Overcast skies, rain and raw weather are generally associated with them. Which of these statements are correct?",
+      "options": {
+        "A": "I, II and III",
+        "B": "II, III and IV",
+        "C": "I, III and IV",
+        "D": "I, II and IV"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_1999_Q59",
+      "questionNumber": 59,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the areas marked as A, B, C and D in the given figure of the cyclone, witnesses heavy torrential short -duration rainfall accompanied by thunderstorms?",
+      "options": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_1999_Q60",
+      "questionNumber": 60,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following temperature and rainfall data: Month Temperature °C Rainfall cm. January 6.7 14 February 6.7 13.2 March 7.2 11.4 April 8.9 9.4 May 11.1 8.1 June 13.9 8.1 July 15 9.6 August 15 12.2 September 13.9 10.4 October 11.1 14.4 November 8.9 14 December 7.8 16.8 The climate to which this data pertains is",
+      "options": {
+        "A": "St. Lawrence type",
+        "B": "China type",
+        "C": "West European type",
+        "D": "Mediterranean type"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_1998_Q61",
+      "questionNumber": 61,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following climatic conditions northern hemisphere): Month Temperature °C Rainfall cm January 3.9 4.7 February 4.4 5.7 March 8.3 8.2 April 14.4 9.2 May 20 9.2 June 23.3 17.7 July 27.8 14.5 August 27.8 14 September 22.3 12.7 October 18.3 7 November 12.2 5 December 6.7 3.5 These are most likely to be found in the natural regions of",
+      "options": {
+        "A": "China type",
+        "B": "Equatorial type",
+        "C": "Hot desert type",
+        "D": "Monsoon type"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_1998_Q62",
+      "questionNumber": 62,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "The correct sequence of different layers of the atmosphere from the surface of the Earth upwards is:",
+      "options": {
+        "A": "Troposphere, Stratosphere, Ionosphere, Mesosphere",
+        "B": "Stratosphere, Troposphere, Ionosphere, Mesosphere",
+        "C": "Troposphere, Stratosphere, Mesosphere, Ionosphere",
+        "D": "Stratosphere, Troposphere, Mesosphere, Ionosphere"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_1997_Q63",
+      "questionNumber": 63,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "The January isotherm taken as a basis for dividing India into tropical and sub-tropical zones is:",
+      "options": {
+        "A": "21°C",
+        "B": "18°C",
+        "C": "12°C",
+        "D": "15°C"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_1997_Q64",
+      "questionNumber": 64,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Daily weather map showing isobars is an example of:",
+      "options": {
+        "A": "Choropleth map",
+        "B": "Isopleth map",
+        "C": "Chorochromatic map",
+        "D": "Choroschematic map"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_1996_Q65",
+      "questionNumber": 65,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following layers of the atmosphere is responsible for the deflection of radio waves?",
+      "options": {
+        "A": "Troposphere",
+        "B": "Stratosphere",
+        "C": "Mesosphere",
+        "D": "Ionosphere"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_1996_Q66",
+      "questionNumber": 66,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": Areas near the equator receive rainfall throughout the year.: Reason (R): High temperatures and high humidity cause convectional rain in most afternoons near the equator. In the context of the above two statements, which one of the following is correct?",
+        "B": "Both A and R are true and R is the correct explanation of A",
+        "C": "Both A and R are true but R is not a correct explanation of A",
+        "D": "A is true but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_1996_Q67",
+      "questionNumber": 67,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "High temperature and low pressure over the Indian Subcontinent during the summer season, draws air from the Indian Ocean leading to the in- blowing of the:",
+      "options": {
+        "A": "Southeast monsoon",
+        "B": "Southwest monsoon",
+        "C": "Trade winds",
+        "D": "Westerlies"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_1995_Q68",
+      "questionNumber": 68,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "The graph given below shows the mean average monthly temperatures (in °",
+      "options": {
+        "A": "and mean monthly rainfall (in cms) of a place: This graph is indicative of which one of the climatic zones of the world?",
+        "B": "Wet and dry tropical",
+        "C": "Rainy tropical",
+        "D": "Semi-arid tropical d) Temperate marine"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_1995_Q69",
+      "questionNumber": 69,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Willy-Willy is:",
+      "options": {
+        "A": "A type of tree grown in temperate regions",
+        "B": "A wind that blows in a desert",
+        "C": "A tropical cyclone of the north-west Australia",
+        "D": "A kind of common fish found near Lakshadweep islands"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    },
+    {
+      "id": "GEO_CLI_1995_Q70",
+      "questionNumber": 70,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "The clouds float in the atmosphere because of their low:",
+      "options": {
+        "A": "Temperature",
+        "B": "Velocity",
+        "C": "Pressure",
+        "D": "Density"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE",
+      "microTheme": "atmosphere-weather-climate",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE"
+    }
+  ]
+}

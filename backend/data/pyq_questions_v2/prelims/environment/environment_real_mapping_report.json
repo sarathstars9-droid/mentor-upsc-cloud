@@ -1,0 +1,136 @@
+{
+  "files": [
+    {
+      "fileName": "biodiversity_india_world.json",
+      "count": 35,
+      "sectionId": "GS3-ENV-BIODIV",
+      "flagged": 0
+    },
+    {
+      "fileName": "climate_change.json",
+      "count": 54,
+      "sectionId": "GS3-ENV-CLIMATE",
+      "flagged": 2
+    },
+    {
+      "fileName": "conservation_protected_areas.json",
+      "count": 24,
+      "sectionId": "GS3-ENV-BIODIV",
+      "flagged": 2
+    },
+    {
+      "fileName": "ecology_ecosystem.json",
+      "count": 39,
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "flagged": 1
+    },
+    {
+      "fileName": "environmental_laws_institutions.json",
+      "count": 82,
+      "sectionId": "GS3-ENV-LAWS",
+      "flagged": 4
+    },
+    {
+      "fileName": "environmental_pollution.json",
+      "count": 45,
+      "sectionId": "GS3-ENV-POLLUTION",
+      "flagged": 6
+    },
+    {
+      "fileName": "misc_environment.json",
+      "count": 20,
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "flagged": 1
+    },
+    {
+      "fileName": "species_in_news.json",
+      "count": 46,
+      "sectionId": "GS3-ENV-BIODIV",
+      "flagged": 4
+    }
+  ],
+  "totalQuestions": 345,
+  "duplicates": [],
+  "flaggedForReview": [
+    {
+      "file": "climate_change.docx",
+      "questionNumber": 3
+    },
+    {
+      "file": "climate_change.docx",
+      "questionNumber": 11
+    },
+    {
+      "file": "conservation_protected_areas.docx",
+      "questionNumber": 2
+    },
+    {
+      "file": "conservation_protected_areas.docx",
+      "questionNumber": 6
+    },
+    {
+      "file": "ecology_ecosystem.docx",
+      "questionNumber": 9
+    },
+    {
+      "file": "environmental_laws_institutions.docx",
+      "questionNumber": 15
+    },
+    {
+      "file": "environmental_laws_institutions.docx",
+      "questionNumber": 35
+    },
+    {
+      "file": "environmental_laws_institutions.docx",
+      "questionNumber": 68
+    },
+    {
+      "file": "environmental_laws_institutions.docx",
+      "questionNumber": 70
+    },
+    {
+      "file": "environmental_pollution.docx",
+      "questionNumber": 1
+    },
+    {
+      "file": "environmental_pollution.docx",
+      "questionNumber": 4
+    },
+    {
+      "file": "environmental_pollution.docx",
+      "questionNumber": 12
+    },
+    {
+      "file": "environmental_pollution.docx",
+      "questionNumber": 21
+    },
+    {
+      "file": "environmental_pollution.docx",
+      "questionNumber": 24
+    },
+    {
+      "file": "environmental_pollution.docx",
+      "questionNumber": 45
+    },
+    {
+      "file": "misc_environment.docx",
+      "questionNumber": 1
+    },
+    {
+      "file": "species_in_news.docx",
+      "questionNumber": 1
+    },
+    {
+      "file": "species_in_news.docx",
+      "questionNumber": 6
+    },
+    {
+      "file": "species_in_news.docx",
+      "questionNumber": 17
+    },
+    {
+      "file": "species_in_news.docx",
+      "questionNumber": 32
+    }
+  ]
+}

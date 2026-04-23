@@ -1,0 +1,1144 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Salient Features",
+  "topicId": "salient_features",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 42,
+  "questions": [
+    {
+      "id": "POL_SALIENT_FEATURES_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: With reference to the Constitution of India, if an area in a State is declared as Scheduled Area under the Fifth Schedule, I. the State Government loses its executive power in such areas and a local body assumes total administration. II. the Union Government can take over the total administration of such areas under certain circumstances on the recommendations of the Governor. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "I only",
+        "B": "II only",
+        "C": "Both I and II",
+        "D": "Neither I nor II"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Fifth Schedule",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2023_Q2",
+      "questionNumber": 2,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "In essence, what does ‘Due Process of Law’ mean?",
+      "options": {
+        "A": "The principle of natural justice",
+        "B": "The procedure established by law",
+        "C": "Fair application of Law",
+        "D": "Equality before law"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2023_Q3",
+      "questionNumber": 3,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements best reflects the Chief purpose of the ‘Constitution’ of a country?",
+      "options": {
+        "A": "It determines the objective for the making of necessary laws.",
+        "B": "It enables the creation of political offices and a government.",
+        "C": "It defines and limits the powers of government.",
+        "D": "It secures social justice, social equality and social security."
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2022_Q4",
+      "questionNumber": 4,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "If a particular area is brought under the Fifth Schedule of the Constitution of India, which one of the following statements best reflects the consequence of it?",
+      "options": {
+        "A": "This would prevent the transfer of land of tribal people to non-tribal people.",
+        "B": "This would create a local self-governing body in that area.",
+        "C": "This would convert that area into a Union Territory.",
+        "D": "The State having such areas would be declared a Special Category State."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Fifth Schedule",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2021_Q5",
+      "questionNumber": 5,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following best defines the term ‘State’?",
+      "options": {
+        "A": "A community of persons permanently occupying a definite territory independent of external control and possessing an organised government",
+        "B": "A politically organised people of a definite territory and possessing an authority to govern them, maintain law and order, protect their natural rights and safeguard their means of sustenance",
+        "C": "A number of persons who have been living in a definite territory for a very long time with their own culture, tradition and government",
+        "D": "A society permanently living in a definite territory with a central authority, an executive responsible to the central authority and an independent judiciary"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2021_Q6",
+      "questionNumber": 6,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following factors constitutes the best safeguard of liberty in a liberal democracy? a) A committed judiciary b) Centralization of powers c) Elected government d) Separation of powers",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2021_Q7",
+      "questionNumber": 7,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Constitutional government means:",
+      "options": {
+        "A": "A representative government of nation with federal structure",
+        "B": "A government whose Head enjoys nominal powers",
+        "C": "A government whose Head enjoys real powers",
+        "D": "A government limited by the terms of the Constitution"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2020_Q8",
+      "questionNumber": 8,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "One common agreement between Gandhism and Marxism is:",
+      "options": {
+        "A": "The final goal of a stateless society",
+        "B": "Class struggle",
+        "C": "Abolition of private property",
+        "D": "Economic determinism"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2020_Q9",
+      "questionNumber": 9,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "A constitutional government by definition is a:",
+      "options": {
+        "A": "Government by legislature",
+        "B": "Popular government",
+        "C": "Multi-party government",
+        "D": "Limited government"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "NITI Aayog",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2020_Q10",
+      "questionNumber": 10,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Constitution of India defines its ‘basic structure’ in terms of federalism, secularism, fundamental rights and democracy. 2. The Constitution of India provides for ‘judicial review’ to safeguard the citizens’ liberties and to preserve the ideals on which the Constitution is based. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Judicial Review",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2019_Q11",
+      "questionNumber": 11,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of polity, which one of the following would you accept as the most appropriate definition of liberty?",
+      "options": {
+        "A": "Protection against the tyranny of political rulers",
+        "B": "Absence of restraint",
+        "C": "Opportunity to do whatever one likes",
+        "D": "Opportunity to develop oneself fully"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "NITI Aayog",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2018_Q12",
+      "questionNumber": 12,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following reflects the most appropriate relationship between law and liberty?",
+      "options": {
+        "A": "If there are more laws, there is less Liberty.",
+        "B": "If there are no laws there is no liberty.",
+        "C": "If there is liberty, laws have to be made by people.",
+        "D": "If laws are changed too often liberty is in danger."
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2018_Q13",
+      "questionNumber": 13,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are regarded as the main feature of the “Rule of Law”? 1. Limitations of powers 2. Equality before law 3. People’s responsibility to the Government 4. Liberty and Civil Rights Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 and 4 only",
+        "C": "1, 2 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2017_Q14",
+      "questionNumber": 14,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "One of the implications of equality in society is the absence of:",
+      "options": {
+        "A": "Privileges",
+        "B": "Restraints",
+        "C": "Competition",
+        "D": "Ideology"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2017_Q15",
+      "questionNumber": 15,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements is correct?",
+      "options": {
+        "A": "Rights are claims of the State against the citizens.",
+        "B": "Rights are privileges which are incorporated in the Constitution of a State.",
+        "C": "Rights are claims of the citizens against the State.",
+        "D": "Rights are privileges of a few citizens against the many."
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2017_Q16",
+      "questionNumber": 16,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Democracy’s superior virtue lies in the fact that it calls into activity:",
+      "options": {
+        "A": "The intelligence and character of ordinary men and women.",
+        "B": "The methods for strengthening executive leadership.",
+        "C": "A superior individual with dynamism and vision.",
+        "D": "A band of dedicated party workers."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2017_Q17",
+      "questionNumber": 17,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "The main advantage of the parliamentary form of government is that:",
+      "options": {
+        "A": "The executive and legislature work independently.",
+        "B": "It provides continuity of policy and is more efficient.",
+        "C": "The executive remains responsible to the legislature.",
+        "D": "The head of the government cannot be changed without election."
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2017_Q18",
+      "questionNumber": 18,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Out of the following statements, choose the one that brings out the principle underlying the Cabinet form of Government:",
+      "options": {
+        "A": "An arrangement for minimizing the criticism against the Government whose responsibilities are complex and hard to carry out to the satisfaction of all.",
+        "B": "A mechanism for speeding up the activities of the Government whose responsibilities are increasing day by day.",
+        "C": "A mechanism of parliamentary democracy for ensuring collective responsibility of the Government to the people.",
+        "D": "A device for strengthening the hands of the head of the Government whose hold over the people is in a state of decline."
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2017_Q19",
+      "questionNumber": 19,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are not necessarily the consequences of the proclamation of the President’s rule in a State? 1. Dissolution of the State Legislative Assembly 2. Removal of the Council of Ministers in the State 3. Dissolution of the local bodies Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "1 and 3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2015_Q20",
+      "questionNumber": 20,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "The provisions in the Fifth Schedule and Sixth Schedule in the Constitution of India are made in order to:",
+      "options": {
+        "A": "Protect the interests of Scheduled Tribes",
+        "B": "Determine the boundaries between states",
+        "C": "Determine the powers, authorities, and responsibilities of Panchayats",
+        "D": "Protect the interests of all the border States"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Fifth Schedule",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2014_Q21",
+      "questionNumber": 21,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: A Constitutional Government is one which: 1. Places effective restrictions on individual liberty in the interest of State Authority. 2. Places effective restrictions on the Authority of the State in the interest of individual liberty. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2012_Q22",
+      "questionNumber": 22,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following can be said to be essentially the parts of Inclusive Governance? 1. Permitting the Non-Banking Financial Companies to do banking 2. Establishing effective District Planning Committees in all the districts 3. Increasing the government spending on public health 4. Strengthening the Mid-day Meal Scheme Choose the correct answer:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 and 4 only",
+        "C": "2,3 and 4 only",
+        "D": "1,2,3 and 4"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2012_Q23",
+      "questionNumber": 23,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following provisions of the Constitution of India have a bearing on Education? 1. Directive Principles of State Policy 2. Rural and Urban Local Bodies 3. Fifth Schedule 4. Sixth Schedule 5. Seventh Schedule Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "3, 4, & 5 Only",
+        "C": "1, 2 & 5 only",
+        "D": "1, 2, 3 ,4 & 5"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Fifth Schedule",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2011_Q24",
+      "questionNumber": 24,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "Karl Marx explained the process of class struggle with the help of which one of the following theories?",
+      "options": {
+        "A": "Empirical liberalism",
+        "B": "Existentialism",
+        "C": "Darwin’s theory of evolution",
+        "D": "Dialectical materialism"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2008_Q25",
+      "questionNumber": 25,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which schedule of the Constitution of India contains special provisions for the administration and control of Scheduled Areas in several States?",
+      "options": {
+        "A": "Third",
+        "B": "Fifth",
+        "C": "Seventh",
+        "D": "Ninth"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2006_Q26",
+      "questionNumber": 26,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who among the following wrote The Communist Manifesto along with Karl Marx?",
+      "options": {
+        "A": "Emile Durkheim",
+        "B": "Friedrich Engels",
+        "C": "Robert Owen",
+        "D": "Max Weber"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2006_Q27",
+      "questionNumber": 27,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. There is no provision in the Constitution of India to encourage equal pay for equal work for both men and women. 2. The constitution of India does not define backward classes. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2004_Q28",
+      "questionNumber": 28,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements correctly describes the Fourth Schedule of the Constitution of India?",
+      "options": {
+        "A": "It contains the scheme of the distribution of powers between the Union and the States.",
+        "B": "It contains the languages listed in the Constitution.",
+        "C": "It contains the provisions regarding the administration of tribal areas.",
+        "D": "It allocates seats in the Council of States."
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2003_Q29",
+      "questionNumber": 29,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following Articles of the Indian Constitution provides that ‘It shall be the duty of the Union to protect every State against external aggression and internal disturbance’?",
+      "options": {
+        "A": "Article 215",
+        "B": "Article 275",
+        "C": "Article 325",
+        "D": "Article 355"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2003_Q30",
+      "questionNumber": 30,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following schedules of the Indian Constitution lists the names of states and specifies their territories?",
+      "options": {
+        "A": "First",
+        "B": "Second",
+        "C": "Third",
+        "D": "Fourth"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2001_Q31",
+      "questionNumber": 31,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "If a new State of the Indian Union is to be created, which one of the following Schedules of the Constitution must be amended?",
+      "options": {
+        "A": "First",
+        "B": "Second",
+        "C": "Third",
+        "D": "Fifth"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2001_Q32",
+      "questionNumber": 32,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: List I (Article) List II (Content) I - Art 54 A) Election of the President of India II - Art 75 B) Appointment of the Prime Minister and Council of Ministers III - Art 155 C) Appointment of the Governor of a State D) Appointment of the Chief Minister and Council of Ministers of a State E) Composition of Legislative Assemblies Codes:",
+      "options": {
+        "A": "IA, IIB, IIIC, IVD",
+        "B": "IA, IIB, IIID, IVE",
+        "C": "IB, IIA, IIIC, IVE",
+        "D": "IB, IIA, IIID, IVC IV - Art 164"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2001_Q33",
+      "questionNumber": 33,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which Article of the Constitution provides that it shall be the endeavour of every State to provide adequate facility for instruction in the mother tongue at the primary stage of education?",
+      "options": {
+        "A": "Article 349",
+        "B": "Article 350",
+        "C": "Article 350A",
+        "D": "Article 351"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2001_Q34",
+      "questionNumber": 34,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements correctly describes the Fourth Schedule of the Constitution of India?",
+      "options": {
+        "A": "It lists the distribution of power between the Union and the States",
+        "B": "It contains the languages listed in the Constitution",
+        "C": "It contains the provisions regarding the administration of tribal areas",
+        "D": "It allocates seats in the Council of States"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_1999_Q35",
+      "questionNumber": 35,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Constitution of India recognises:",
+      "options": {
+        "A": "Only religious minorities",
+        "B": "Only linguistic minorities",
+        "C": "Religious and linguistic minorities",
+        "D": "Religious, linguistic and ethnic minorities"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_1998_Q36",
+      "questionNumber": 36,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following Schedules of the Constitution of India contains provisions regarding Anti Defection Act?",
+      "options": {
+        "A": "Second Schedule",
+        "B": "Fifth Schedule",
+        "C": "Eighth Schedule",
+        "D": "Tenth Schedule"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Anti-Defection",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_1997_Q37",
+      "questionNumber": 37,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Proportional representation is NOT necessary in a country where:",
+      "options": {
+        "A": "There are no reserved constituencies",
+        "B": "A two-party system has developed",
+        "C": "The first past post system prevails",
+        "D": "There is a fusion of Presidential and Parliamentary forms of governments"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_1997_Q38",
+      "questionNumber": 38,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "In which one of the following countries are 75 percent of seats in both Houses of Parliament filled on the basis of first past the post system and 25 per cent on the basis of Proportional Representation system of elections?",
+      "options": {
+        "A": "Germany",
+        "B": "Italy",
+        "C": "France",
+        "D": "Russia"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_1997_Q39",
+      "questionNumber": 39,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (A): The emergence of economic globalism does not imply the decline of socialist ideology. Reason (R): The ideology of Socialism believes in universalism and globalism. In the context of the above two statements, which one of the following is correct?",
+      "options": {
+        "A": "Both A and R are true and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_1996_Q40",
+      "questionNumber": 40,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Of the four forms of political protests mentioned below, which one is derived from the name of the person who used it as a political weapon for the first time?",
+      "options": {
+        "A": "Boycott",
+        "B": "Gherao",
+        "C": "Bandh",
+        "D": "Hartal"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_1996_Q41",
+      "questionNumber": 41,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following countries has more or less evolved a two-party system?",
+      "options": {
+        "A": "Sri Lanka",
+        "B": "Bangladesh",
+        "C": "Pakistan",
+        "D": "Myanmar"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_1995_Q42",
+      "questionNumber": 42,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the table given below providing some details of the results of the election to the Karnataka State Legislative: Assembly held in December, 1994. Percentage of popular votes obtained Political Party Number of seats secured Janata Dal 36 116 Congress 31 35 BJP 20.4 40 In terms of electoral analysis, the voter seat distortion is to be explained as the result of the adoption of the:",
+      "options": {
+        "A": "Hare system",
+        "B": "Cumulative vote system",
+        "C": "First past the post system",
+        "D": "Plural vote system"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Salient Features",
+      "topicId": "salient_features",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Salient Features",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

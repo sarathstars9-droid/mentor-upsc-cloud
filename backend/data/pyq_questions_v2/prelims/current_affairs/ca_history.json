@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "mentoros-ca-v1",
+  "fileName": "ca_history.json",
+  "questions": [
+    {
+      "id": "CA_HISTORY.JSON_None_Q1",
+      "year": null,
+      "question": "Question count: 8 Note: Best-effort structured extraction from a column-formatted source PDF. Where the source itself marked an answer as changed, that note is preserved.",
+      "options": {},
+      "answer": {
+        "correct_option": null,
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "low",
+      "reviewRequired": true
+    },
+    {
+      "id": "CA_HISTORY.JSON_2015_Q2",
+      "year": 2015,
+      "question": "Q1. (2015) Indira Gandhi Peace Prize for Peace, Disarmament and Development for 2014 was given to which of the following? [2015] Source ref: gk_part1 / Q59",
+      "options": {
+        "A": "Bhabha Atomic Research Centre",
+        "B": "Indian Institute of Science",
+        "C": "Indian Space Research Organization",
+        "D": "Tata Institute of Fundamental Research"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_HISTORY.JSON_2009_Q3",
+      "year": 2009,
+      "question": "Q2. (2009) Mahamastakabhisheka, a great religious event, is associated with and done for whom of the following? [2009] Source ref: gk_part2 / Q9",
+      "options": {
+        "A": "Bahubali",
+        "B": "Buddha",
+        "C": "Mahavir",
+        "D": "Nataraja"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_HISTORY.JSON_2009_Q4",
+      "year": 2009,
+      "question": "Q3. (2009) From which one of the following did Kosovo declare its independence? [2009] Source ref: gk_part2 / Q15",
+      "options": {
+        "A": "Bulgaria",
+        "B": "Croatia",
+        "C": "Macedonia",
+        "D": "Serbia"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_HISTORY.JSON_2008_Q5",
+      "year": 2008,
+      "question": "Q4. (2008) Rajiv Gandhi National Flying Institute is being established in which State? [2008] Source ref: gk_part2 / Q55",
+      "options": {
+        "A": "Karnataka",
+        "B": "Maharashtra",
+        "C": "Kerala",
+        "D": "Orissa"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_HISTORY.JSON_2006_Q6",
+      "year": 2006,
+      "question": "Q5. (2006) Claims to the historical Macedonian territory have been a bone of contention between which of the following countries? [2006] Source ref: gk_part3 / Q18",
+      "options": {
+        "A": "Portugal and Spain",
+        "B": "Bulgaria and Greece",
+        "C": "Romania and Bulgaria",
+        "D": "Portugal and Greece"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_HISTORY.JSON_2005_Q7",
+      "year": 2005,
+      "question": "Q6. (2005) Consider the following: [2005] 1. The constitution of the United States of America came into force in the year 1810. 2. All revenue bills must originate in the House of the Representatives of the US congress. 3. George W. Bush is the only President in the history of the United States of America whose father was also the president of the United States of America. Which of the above statements is/are correct? Source ref: gk_part3 / Q49",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "1 and 2",
+        "D": "2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_HISTORY.JSON_1998_Q8",
+      "year": 1998,
+      "question": "Q7. (1998) The recent Land Mines Conference to sign the historic treaty was held in the Capital city of: [1998] Source ref: gk_part4 / Q28",
+      "options": {
+        "A": "Canada",
+        "B": "Japan",
+        "C": "Sweden",
+        "D": "Zimbabwe"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_HISTORY.JSON_1998_Q9",
+      "year": 1998,
+      "question": "Q8. (1998) The discovery of Oak flora in 1966 added a new chapter to the history of Indian Sericulture. Which one of the following states is the leading producer of Oak Tasar silk? [1998] Source ref: gk_part4 / Q33",
+      "options": {
+        "A": "Assam",
+        "B": "Bihar",
+        "C": "Manipur",
+        "D": "Orissa"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    }
+  ],
+  "nodeId": "GS1-CA-HIST",
+  "topicName": "History"
+}

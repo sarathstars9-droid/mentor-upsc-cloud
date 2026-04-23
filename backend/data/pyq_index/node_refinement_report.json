@@ -1,0 +1,132 @@
+{
+  "generatedAt": "2026-04-23T18:30:14.440Z",
+  "sections": [
+    {
+      "title": "Questions still missing nodeId/syllabusNodeId",
+      "count": 0,
+      "items": []
+    },
+    {
+      "title": "Junk PDF-extraction header records (should be deleted when real data is available)",
+      "count": 3,
+      "items": [
+        {
+          "file": "current_affairs\\ca_sports.json",
+          "id": "CA_SPORTS.JSON_None_Q1",
+          "question": "Question count: 41 Note: Best-effort structured extraction from a column-formatted source PDF. Where",
+          "nodeId": "GS1-HIS-MOD"
+        },
+        {
+          "file": "current_affairs\\ca_misc_gk.json",
+          "id": "CA_MISC_GK.JSON_None_Q1",
+          "question": "Question count: 94 Note: Best-effort structured extraction from a column-formatted source PDF. Where",
+          "nodeId": "GS2-GOV-GOOD-GOV"
+        },
+        {
+          "file": "current_affairs\\ca_awards_books_personalities.json",
+          "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_None_Q1",
+          "question": "Question count: 27 Note: Best-effort structured extraction from a column-formatted source PDF. Where",
+          "nodeId": "GS2-GOV-GOOD-GOV"
+        }
+      ]
+    },
+    {
+      "title": "Semantically loose node assignments requiring human review",
+      "count": 4,
+      "items": [
+        {
+          "file": "current_affairs\\ca_sports.json",
+          "questions": 41,
+          "currentNode": "GS1-HIS-MOD",
+          "reason": "Sports GK questions assigned to GS1-HIS-MOD (Modern History). No dedicated UPSC sports node exists; human review may assign to GS2-GOV-GOOD-GOV.",
+          "sample": [
+            {
+              "id": "CA_SPORTS.JSON_2025_Q2",
+              "year": 2025,
+              "question": "Q1. (2025) Consider the following statements in respect of the Kho Kho World Cup: [2025] I. The even"
+            },
+            {
+              "id": "CA_SPORTS.JSON_2025_Q3",
+              "year": 2025,
+              "question": "Q2. (2025) Consider the following statements: [2025] I. In the finals of the 45th Chess Olympiad hel"
+            },
+            {
+              "id": "CA_SPORTS.JSON_2023_Q4",
+              "year": 2023,
+              "question": "Q3. (2023) Consider following statements: [2023] Statement-I: Israel has established diplomatic rela"
+            }
+          ]
+        },
+        {
+          "file": "current_affairs\\ca_misc_gk.json",
+          "questions": 94,
+          "currentNode": "GS2-GOV-GOOD-GOV",
+          "reason": "Miscellaneous GK questions (awards, cricket, UN years) assigned to GS2-GOV-GOOD-GOV. Some may fit GS3-ECO-INCLUSIVE-GROWTH or GS2-IR-INSTITUTIONS.",
+          "sample": [
+            {
+              "id": "CA_MISC_GK.JSON_2025_Q2",
+              "year": 2025,
+              "question": "Q1. (2025) Consider the following pairs: [2025] I. International Year of the Woman Farmer : 2026 II."
+            },
+            {
+              "id": "CA_MISC_GK.JSON_2021_Q3",
+              "year": 2021,
+              "question": "Q2. (2021) Consider the following statements in respect of the ICC World Test Championship: [2021] 1"
+            },
+            {
+              "id": "CA_MISC_GK.JSON_2016_Q4",
+              "year": 2016,
+              "question": "Q3. (2016) ‘Net metering’ is sometimes seen in the news in the context of promoting the: [2016] Sour"
+            }
+          ]
+        },
+        {
+          "file": "current_affairs\\ca_awards_books_personalities.json",
+          "questions": 27,
+          "currentNode": "GS2-GOV-GOOD-GOV",
+          "reason": "Awards/books/personalities assigned to GS2-GOV-GOOD-GOV. May fit GS1-HIS-MOD or subject-specific nodes depending on award context.",
+          "sample": [
+            {
+              "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2024_Q2",
+              "year": 2024,
+              "question": "Q1. (2024) Who of the following is the author of the books \"The India Way\" and \"Why Bharat Matters\"?"
+            },
+            {
+              "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2009_Q3",
+              "year": 2009,
+              "question": "Q2. (2009) Consider the following houses: [2009] 1. Christie's 2. Osian's 3. Soptheby's Which of the"
+            },
+            {
+              "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2009_Q4",
+              "year": 2009,
+              "question": "Q3. (2009) Who of the following is the author of the book \"The audacity of Hope''? [2009] Source ref"
+            }
+          ]
+        },
+        {
+          "file": "art_and_craft_india.json",
+          "questions": 35,
+          "currentNode": "GS1-HIS-ANC",
+          "reason": "35 placeholder stubs (question text 'Question N', empty options). Assigned GS1-HIS-ANC but contain no real content — should be replaced with actual PYQ data.",
+          "sample": [
+            {
+              "id": "PYQ_ART_001",
+              "year": null,
+              "question": "Question 1"
+            },
+            {
+              "id": "PYQ_ART_002",
+              "year": null,
+              "question": "Question 2"
+            },
+            {
+              "id": "PYQ_ART_003",
+              "year": null,
+              "question": "Question 3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

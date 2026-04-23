@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Science & Technology",
+  "topicName": "Robotics, Drones & Automation",
+  "topicId": "sci_robotics",
+  "sourceType": "UPSC_Science_Tech_PYQ",
+  "totalQuestions": 3,
+  "questions": [
+    {
+      "id": "SCI_SCI_ROBOTICS_2025_Q4",
+      "questionNumber": 4,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: I. Indian Railways have prepared a National Rail Plan (NRP) to create a future ready railway system by 2028. II. 'Kavach' is an Automatic Train Protection system developed in collaboration with Germany. III. 'Kavach' system consists of RFID tags fitted on track in station section. Which of the statements given above are not correct?",
+      "options": {
+        "A": "I and II only",
+        "B": "II and III only",
+        "C": "I and III only",
+        "D": "I, II and III"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Robotics, Drones & Automation",
+      "topicId": "sci_robotics",
+      "sectionId": "GS3-SCI-TECH-ROBOTICS",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ROBOTICS_2023_Q7",
+      "questionNumber": 7,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following actions: 1. Detection of car crash/collision which results in the deployment of airbags almost instantaneously 2. Detection of accidental free fall of a laptop towards the ground which results in the immediate turning off of the hard drive 3. Detection of the tilt of the smart - phone which results in the rotation of display between portrait and landscape mode In how many of the above actions is the function of accelerometer required?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Robotics, Drones & Automation",
+      "topicId": "sci_robotics",
+      "sectionId": "GS3-SCI-TECH-ROBOTICS",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ROBOTICS_2020_Q8",
+      "questionNumber": 8,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following activities: 1. Spraying pesticides on a crop field 2. Inspecting the craters of active volcanoes 3. Collecting breath samples from spouting whales for DNA analysis At the present level of technology, which of the above activities can be successfully carried out by using drones?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Robotics, Drones & Automation",
+      "topicId": "sci_robotics",
+      "sectionId": "GS3-SCI-TECH-ROBOTICS",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "microTheme": "Drone Applications",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    }
+  ]
+}

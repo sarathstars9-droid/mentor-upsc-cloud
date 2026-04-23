@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Finance Commission",
+  "topicId": "finance_commission",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 4,
+  "questions": [
+    {
+      "id": "POL_FINANCE_COMMISSION_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following statements with regard to recommendations of the 15th Finance Commission of India are correct? I. It has recommended grants of ₹4,800 crores from the year 2022–23 to the year 2025–26 for incentivizing States to enhance educational outcomes. II. 45% of the net proceeds of Union taxes are to be shared with States. III. ₹45,000 crores are to be kept as performance- based incentive for all States for carrying out agricultural reforms. IV. It reintroduced tax effort criteria to reward fiscal performance. Select the correct answer using the code given below.",
+      "options": {
+        "A": "I, II and III",
+        "B": "I, II and IV",
+        "C": "I, III and IV",
+        "D": "II, III and IV"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Finance Commission",
+      "topicId": "finance_commission",
+      "sectionId": "GS2-POL-BODIES",
+      "nodeId": "GS2-POL-BODIES",
+      "syllabusNodeId": "GS2-POL-BODIES",
+      "microTheme": "Finance Commission",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_FINANCE_COMMISSION_2023_Q2",
+      "questionNumber": 2,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Demographic performance 2. Forest and ecology 3. Governance reforms 4. Stable government 5. Tax and fiscal efforts For the horizontal tax devolution, the Fifteenth Finance Commission used how many of the above as criteria other than population area and income distance?",
+      "options": {
+        "A": "Only two",
+        "B": "Only three",
+        "C": "Only four",
+        "D": "All five"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Finance Commission",
+      "topicId": "finance_commission",
+      "sectionId": "GS2-POL-BODIES",
+      "nodeId": "GS2-POL-BODIES",
+      "syllabusNodeId": "GS2-POL-BODIES",
+      "microTheme": "Finance Commission",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_FINANCE_COMMISSION_2010_Q3",
+      "questionNumber": 3,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following authorities makes recommendations to the Governor of a State as to the principles for determining the taxes and duties which may be appropriated by the Panchayats in that particular State?",
+      "options": {
+        "A": "District Planning Committees.",
+        "B": "State Finance Commission.",
+        "C": "Finance Ministry of that State.",
+        "D": "Panchayati Raj Ministry of that States."
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Finance Commission",
+      "topicId": "finance_commission",
+      "sectionId": "GS2-POL-BODIES",
+      "nodeId": "GS2-POL-BODIES",
+      "syllabusNodeId": "GS2-POL-BODIES",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_FINANCE_COMMISSION_2000_Q4",
+      "questionNumber": 4,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "The primary function of the Finance Commission in India is to:",
+      "options": {
+        "A": "Distribute revenue between the Centre and the States",
+        "B": "Prepare the Annual Budget",
+        "C": "Advise the President on financial matters",
+        "D": "Allocate funds to various ministries of the Union and State Governments"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Finance Commission",
+      "topicId": "finance_commission",
+      "sectionId": "GS2-POL-BODIES",
+      "nodeId": "GS2-POL-BODIES",
+      "syllabusNodeId": "GS2-POL-BODIES",
+      "microTheme": "Finance Commission",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

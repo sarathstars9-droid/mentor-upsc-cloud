@@ -271,7 +271,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Physics",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Ball bearings are used in bicycles, cars, etc. because",
     "options": {
       "a": "The actual area of contact between the wheel and axle is increased",
@@ -403,7 +403,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Physics",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "Consider the following phenomena: 1. Size of the sun at dusk 2. Colour of the sun at dawn 3. Moon being visible at dawn 4. Twinkle of stars in the sky 5. Polestar being visible in the sky Which of the above are optical illusions?",
     "options": {
       "a": "1, 2 and 3",
@@ -601,7 +601,7 @@
     "topic": "Biotechnology",
     "microtheme": "Physics",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Rainbow is produced when sunlight falls on drops of rain. Which of the following physical phenomena are responsible for this? 1. Dispersion 2. Refraction 3. Internal reflection Select the correct answer using the code given below:",
     "options": {
       "a": "1 and 2 only",
@@ -865,7 +865,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Physics",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "The known forces of nature can be divided into four classes, viz., gravity, electromagnetism, weak nuclear force and strong nuclear force. With reference to them, which one of the following statements is not correct?",
     "options": {
       "a": "Gravity is the strongest of the four",
@@ -1888,7 +1888,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Fruits stored in a cold chamber exhibit longer storage life because",
     "options": {
       "a": "exposure to sunlight is prevented",
@@ -1954,7 +1954,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Many transplanted seedlings do not grow because",
     "options": {
       "a": "the new soil does not contain favourable minerals",
@@ -1987,7 +1987,7 @@
     "topic": "Space Technology",
     "microtheme": "Miscellaneous",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "The efforts to detect the existence of Higgs boson particles have become frequent news in the recent past. What is /are the importance/importance of discovering this particle? 1. It will enable us to understand why elementary particles have mass. 2. It will enable us in the near future to develop the technology to transfer matter from one point to another without traversing the physical space between them. 3. It will enable us to create better fuels for nuclear fission. Select the correct answer using the code given below:",
     "options": {
       "a": "1 only",
@@ -2152,7 +2152,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Which of the following diseases can be transmitted from one person to another through tattooing? 1. Chikungunya 2. Hepatitis B 3. HIV-AIDS Select the correct answer using the code given below:",
     "options": {
       "a": "1 only",
@@ -2185,7 +2185,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Consider the following minerals 1. Calcium 2. Iron 3. Sodium Which of the minerals given above is/are required by the human body for the contraction of muscles?",
     "options": {
       "a": "1 only",
@@ -4264,7 +4264,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Chemistry",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Which of the following is/are the example/examples of chemical change? 1. Crystallization of sodium chloride 2. Melting of ice 3. Souring of milk Select the correct answer using the code given below:",
     "options": {
       "a": "1 and 2 only",
@@ -4363,7 +4363,7 @@
     "topic": "Biotechnology",
     "microtheme": "Energy",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-BIOTECH",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "With reference to technology for solar power production, consider the following statements: 1. 'Photovoltaics' is a technology that generates electricity by direct conversion of light into electricity, while 'Solar Thermal' is a technology that utilises the Sun's rays to generate heat which is further used in the electricity generation process. 2. Photovoltaics generates Alternating Current (AC), while Solar Thermal generates Direct Current (DC). 3. India has a manufacturing base for Solar Thermal Technology but not for photovoltaics. Which of the statements given above is/are correct?",
     "options": {
       "a": "1 only",
@@ -4660,7 +4660,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Consider the following diseases 1. Diphtheria 2. Chickenpox 3. Smallpox Which of the above diseases has/have been eradicated in India?",
     "options": {
       "a": "1 and 2 only",
@@ -4759,7 +4759,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Consider the following statements: 1. Maize can be used for the production of starch. 2. Oil extracted from maize can be a feedstock for biodiesel. 3. Alcoholic beverages can be produced by using maize. Which of the statements given above is/are correct?",
     "options": {
       "a": "1 only",
@@ -4858,7 +4858,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Which of the following statements is/are correct regarding vegetative propagation of plants? 1. Vegetative propagation produces a clonal population. 2. Vegetative propagation helps in eliminating the virus. 3. Vegetative propagation can be practised most of the year. Select the correct answer using the code given below:",
     "options": {
       "a": "1 only",
@@ -4990,7 +4990,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "PAIR_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Consider the following pairs: Vitamin Deficiency Disease 1. Vitamin C Scurvy 2. Vitamin D Rickets 3. Vitamin E Night blindness Which of the pairs given above is/are correctly matched?",
     "options": {
       "a": "1 and 2 only",
@@ -5056,7 +5056,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Lichens, which are capable of initiating ecological succession even on a bare rock, are actually a symbiotic association of",
     "options": {
       "a": "algae and bacteria",
@@ -5386,7 +5386,7 @@
     "topic": "Space Technology",
     "microtheme": "Space Science",
     "questionType": "MAP_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "Which of the following pairs is/are correctly matched? Spacecraft Purpose 1. Cassini-Huygens Orbiting the Venus and transmitting data to the Earth 2. Messenger Mapping and investigating the Mercury 3. Voyager 1 and 2 Exploring the outer solar system Select the correct answer using the code given below:",
     "options": {
       "a": "1 only",
@@ -5452,7 +5452,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Communication Technology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "In addition to fingerprint scanning, which of the following can be used in the biometric identification of a person? 1. Iris scanning 2. Retinal scanning 3. Voice recognition Select the correct answer using the code given below:",
     "options": {
       "a": "1 only",
@@ -7498,7 +7498,7 @@
     "topic": "Biotechnology",
     "microtheme": "Energy",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-BIOTECH",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "With reference to 'fuel cells' in which hydrogen-rich fuel and oxygen are used to generate electricity. Consider the following statements: 1. If pure hydrogen is used as a fuel, the fuel cell emits heat and water as by-products. 2. Fuel cells can be used for powering buildings and not for small devices like laptop computers. 3. Fuel cells produce electricity in the form of Alternating Current (AC). Which of the statements given above is/are correct?",
     "options": {
       "a": "1 only",
@@ -8092,7 +8092,7 @@
     "topic": "Biotechnology",
     "microtheme": "Miscellaneous",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-BIOTECH",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "With reference to the use of nanotechnology in the health sector, which of the following statements is/are correct? 1. Targeted drug delivery is made possible by nanotechnology. 2. Nanotechnology can largely contribute to gene therapy. Select the correct answer using the code given below:",
     "options": {
       "a": "1 only",
@@ -8125,7 +8125,7 @@
     "topic": "Space Technology",
     "microtheme": "Space Science",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "In which of the following activities are Indian Remote Sensing (IRS) satellites used? 1. Assessment of crop productivity 2. Locating groundwater resources 3. Mineral exploration 4. Telecommunications 5. Traffic studies Select the correct answer using the code given below:",
     "options": {
       "a": "1, 2 and 3 only",
@@ -8290,7 +8290,7 @@
     "topic": "Physics / Nuclear / Electronics",
     "microtheme": "Space Science",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "In the context of modern scientific research, consider the following statements about 'IceCube', a particle detector located at South Pole, which was recently in the news: 1. It is the world's largest neutrino detector, encompassing a cubic kilometre of ice. 2. It is a powerful telescope to search for dark matter. 3. It is buried deep in the ice. Which of the statements given above is/are correct?",
     "options": {
       "a": "1 only",
@@ -8389,7 +8389,7 @@
     "topic": "Physics / Nuclear / Electronics",
     "microtheme": "Communication Technology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "With reference to 'Near Field Communication (NFC) Technology', which of the following statements is/are correct? 1. It is a contactless communication technology that uses electromagnetic radio fields. 2. NFC is designed for use by devices which can be at distance of even a metre from each other. 3. NFC can use encryption when sending sensitive information. Select the correct answer using the code given below:",
     "options": {
       "a": "1 and 2 only",
@@ -10567,7 +10567,7 @@
     "topic": "Biotechnology",
     "microtheme": "Energy",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-NUCLEAR",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "India is an important member of the 'International Thermonuclear Experimental Reactor'. If this experiment succeeds, what is the immediate advantage for India?",
     "options": {
       "a": "It can use thorium in place of uranium for power generation",
@@ -10864,7 +10864,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Which of the following statements is/are correct? Viruses can infect 1. bacteria 2. fungi 3. plants Select the correct answer using the code given below.",
     "options": {
       "a": "1 and 2 only",
@@ -11293,7 +11293,7 @@
     "topic": "Space Technology",
     "microtheme": "Space Science",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "With reference to 'AstroSat', the astronomical observatory launched by India, which of the following statements is/are correct? 1. Other than the USA and Russia, India is the only country to have launched a similar observatory into space. 2. AstroSat is a 2000 kg satellite placed in an orbit at 1650 km above the surface of the Earth. Select the correct answer using the code given below.",
     "options": {
       "a": "1 only",
@@ -11491,7 +11491,7 @@
     "topic": "Space Technology",
     "microtheme": "Space Science",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "Consider the following statements: The Mangalyaan launched by ISRO 1. is also called the Mars Orbiter Mission 2. made India the second country to have a spacecraft orbit the Mars after USA 3. made India the only country to be successful in making its spacecraft orbit the Mars in its very first attempt Which of the statements given above is/are correct?",
     "options": {
       "a": "1 only",
@@ -11887,7 +11887,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Communication Technology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "With reference to 'LiFi', recently in the news, which of the following statements is/are correct? 1. It uses light as the medium for high-speed data transmission. 2. It is wireless technology and is several times faster than 'WiFi' . Select the correct answer using the codes given below:",
     "options": {
       "a": "1 only",
@@ -14758,7 +14758,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Miscellaneous",
     "questionType": "PAIR_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Consider the following pairs: Commonly Unwanted or controversial used/consumed chemicals likely to be found in them materials 1. Lipstick Lead 2. Soft drinks Brominated vegetable oils 3. Chinese fast food Monosodium glutamate Which of the pairs given above is/are correctly matched?",
     "options": {
       "a": "1 only",
@@ -14989,7 +14989,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Miscellaneous",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Organic Light-Emitting Diodes (OLEDs) are used to create digital displays in many devices. What is/are the advantage of OLED displays over Liquid Crystal displays? 1. OLED displays can be fabricated on flexible plastic substrates. 2. Roll-up displays embedded in clothing can be made using OLEDs. 3. Transparent displays are possible using OLEDs. Select the correct answer using the codes given below:",
     "options": {
       "a": "1 and 3 only",
@@ -18421,7 +18421,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Consider the following: 1. Birds 2. Dust blowing 3. Rain 4. Wind blowing Which of the above spread plant diseases?",
     "options": {
       "a": "1 and 3 only",
@@ -18685,7 +18685,7 @@
     "topic": "Biotechnology",
     "microtheme": "Space Science",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-BIOTECH",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "Consider the following phenomena: 1. Light is affected by gravity. 2. The Universe is constantly expanding. 3. Matter warps its surrounding space-time. Which of the above is/are the predictions/predictions of Albert Einstein's General Theory of Relativity, often discussed in the media?",
     "options": {
       "a": "1 and 2 only",
@@ -18817,7 +18817,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Miscellaneous",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "\"3D printing\" has applications in which of the following? 1. Preparation of confectionery items 2. Manufacture of bionic ears 3. Automotive industry 4. Reconstructive surgeries 5. Data processing technologies Select the correct answer using the code given below:",
     "options": {
       "a": "1, 3 and 4 only",
@@ -18850,7 +18850,7 @@
     "topic": "Space Technology",
     "microtheme": "Space Science",
     "questionType": "MCQ_2_STATEMENT",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "With reference to India's satellite launch vehicles, consider the following statements: 1. PSLVs launch the satellites useful for Earth resources monitoring whereas GSLVs are designed mainly to launch communication satellites. 2. Satellites launched by PSLV appear to remain permanently fixed in the same position in the sky, as viewed from a particular location on Earth. 3. GSLV Mk III is a four-staged launch vehicle with the first and third stages l using solid rocket motors; and the second and fourth stages using liquid rocket engines. Which of the statements given above is/are correct?",
     "options": {
       "a": "1 only",
@@ -19048,7 +19048,7 @@
     "topic": "Emerging Technologies",
     "microtheme": "Miscellaneous",
     "questionType": "PAIR_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "Consider the following pairs: Terms sometimes seen in Context/Topic news 1. Belle II experiment Artificial Intelligence 2. Blockchain technology Digital/Cryptocurrency 3. CRISPR-Cas9 Particle Physics Which of the pairs given above is/are correctly matched?",
     "options": {
       "a": "1 and 3 only",
@@ -19081,7 +19081,7 @@
     "topic": "Space Technology",
     "microtheme": "Space Science",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "With reference to the Indian Regional Navigation Satellite System (IRNSS), consider the following statements: 1. IRNSS has three satellites in geostationary and four satellites in geosynchronous orbits. 2. IRNSS covers the entire India and about 5500 sq. km beyond its borders. 3. India will have its own satellite navigation system with full global coverage by the middle of 2021. Which of the statements given above is/are correct?",
     "options": {
       "a": "1 only",
@@ -19642,7 +19642,7 @@
     "topic": "Biotechnology",
     "microtheme": "Communication Technology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "When the alarm of your smartphone rings in the morning, you wake up and tap it to stop the alarm which causes your geyser to be switched on automatically. The smart mirror in your bathroom shows the day's weather and also indicates the level of water in your overhead tank. After you take some groceries from your refrigerator for making breakfast, it recognizes the shortage of stock in it and places an order for the supply of fresh grocery items. When you step out of your house and lock the door, all lights, fans, geysers and AC machines get switched off automatically. On your way to the office, your car warns you about traffic congestion ahead and suggests an alternative route, and if you are late for a meeting, it sends a- message to your office accordingly. In the context of emerging communication technologies, which one of the following terms best applies to the above scenario?",
     "options": {
       "a": "Border Gateway Protocol",
@@ -21424,7 +21424,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Which of the following statements is not correct?",
     "options": {
       "a": "Hepatitis B virus is transmitted much like HIV .",
@@ -21688,7 +21688,7 @@
     "topic": "Space Technology",
     "microtheme": "Space Science",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "For the measurement/estimation of which of the following are satellite images and remote sensing data is used? 1. Chlorophyll content in the vegetation of a specific location. 2. Greenhouse gas emission from rice paddies of a specific location. 3. Land surface temperature of a specific location. Select the correct answer using the code given below:",
     "options": {
       "a": "1 only",
@@ -22117,7 +22117,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Miscellaneous",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MAINS-CURRENT",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "The word 'Denisovan' is sometimes mentioned in media in reference to:",
     "options": {
       "a": "fossil of a kind of dinosaur.",
@@ -22348,7 +22348,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Miscellaneous",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IPR",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Consider the following statements: 1. According to the Indian Patent Act, a biological process to create a seed can be patented in India. 2. In India, there is no Intellectual Property Appellate Board. 3. Plant varieties are not eligible to be patented in India. Which of the statements given above is/are correct?",
     "options": {
       "a": "1 and 3 only",
@@ -22645,7 +22645,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Communication Technology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "In the context of wearable technology, which of the following tasks is/are accomplished by wearable devices? 1. Location identification of a person. 2. Sleep monitoring of a person. 3. Assisting the hearing-impaired person. Select the correct answer using the code given below:",
     "options": {
       "a": "1 only",
@@ -22843,7 +22843,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Communication Technology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "Consider the following statements about a digital signature: 1. An electronic record that identifies the certifying authority issuing it. 2. Used to serve as a proof of identity of an individual to access information from a server on the Internet. 3. An electronic method of signing an electronic document and ensuring that the original content is unchanged. Which of the statements given above is/are correct?",
     "options": {
       "a": "1 only",
@@ -23008,7 +23008,7 @@
     "topic": "Biotechnology",
     "microtheme": "Communication Technology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-BIOTECH",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "In the context of digital technologies for entertainment, consider the following statements: 1. In Augmented Reality (AR), a simulated environment is created, and the physical world is completely shut out. 2. In Virtual Reality (VR), images generated from the computer are projected onto real life objects or surroundings. 3. AR allows individuals to be present in the world and improves the experience using the camera of a smart-phone or PC. 4. VR closes the world, and transposes an individual, providing a complete immersion experience. Which of the statements given above is/are correct?",
     "options": {
       "a": "1 and 2 only",
@@ -23173,7 +23173,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Communication Technology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "With reference to communication technologies, what is/are the difference/differences between LTE (Long-Term Evolution) and VoLTE (Voice over Long-Term Evolution)? 1. LTE is commonly marketed as 3G and VoLTE is commonly marketed as advanced 3G. 2. LTE is data-only technology and VoLTE is voice-only technology. Select the correct answer using the code given below:",
     "options": {
       "a": "1 only",
@@ -24922,7 +24922,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "With reference to the current trends in the cultivation of sugarcane in India, consider the following statements: 1. A substantial saving in seed material is when 'bud chip settlings' are raised in a nursery and transplanted in the main field. 2. When direct planting of seeds is done, the germination percentage is better with single-budded sets as compared to sets with many buds. 3. If bad weather conditions prevail when seeds are directly planted, single-budded setts have better survival as compared to large sets. 4. Sugarcane can be cultivated using settlings prepared from tissue culture. Which of the statements given above is/are correct?",
     "options": {
       "a": "1 and 2 only",
@@ -25120,7 +25120,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Miscellaneous",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "With reference to solar water pumps, consider the following statements: 1. Solar power can be used for running surface pumps and not for submersible pumps, 2. Solar power can be used for running centrifugal pumps and not the ones with piston. Which of the statements given above is/are correct?",
     "options": {
       "a": "1 only",
@@ -25285,7 +25285,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Miscellaneous",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "With reference to the carbon nanotubes, consider the following statement: 1. They can be used as the carriers of drugs and antigens in the human body. 2. They can be made into artificial blood capillaries for an injured part of the human body. 3. They can be used in biochemical sensors. 4. Carbon nanotubes are biodegradable. Which of the statements given above are correct?",
     "options": {
       "a": "1 and 2 only",
@@ -25318,7 +25318,7 @@
     "topic": "Space Technology",
     "microtheme": "Space Science",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "The experiment will employ a trio of spacecraft flying in formation in the shape of an equilateral triangle that has sides one million kilometers long, with lasers shining between the craft.\" The experiment in question refers to",
     "options": {
       "a": "Voyager-2",
@@ -25549,7 +25549,7 @@
     "topic": "Biotechnology",
     "microtheme": "Miscellaneous",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-BIOTECH",
+    "syllabusNodeId": "GS3-ST-DEFENCE",
     "question": "Consider the following activities: 1. Spraying pesticides on a crop field 2. Inspecting the craters of active volcanoes 3. Collecting breath samples from spouting whales for DNA analysis At the present level of technology, which of the above activities can be successfully carried out by using drones?",
     "options": {
       "a": "1 and 2 only",
@@ -25747,7 +25747,7 @@
     "topic": "Emerging Technologies",
     "microtheme": "Miscellaneous",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-AI",
     "question": "With the present state of development, Artificial Intelligence can effectively do which of the following? 1. Bring down electricity consumption in industrial units. 2. Create meaningful short stories and songs. 3. Disease diagnosis. 4. Text-to-speech conversion. 5. Wireless transmission of electrical energy. Select the correct answer using the code given below:",
     "options": {
       "a": "1, 2, 3 and 5 only",
@@ -26011,7 +26011,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Communication Technology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "In India, the term \"Public Key Infrastructure\" is used in the context of",
     "options": {
       "a": "Digital security infrastructure",
@@ -26209,7 +26209,7 @@
     "topic": "Physics / Nuclear / Electronics",
     "microtheme": "Communication Technology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "With reference to visible light communication (VLC) technology, which of the following statements are correct? 1. VLC uses electromagnetic spectrum wavelengths 375 to 780nm 2. VLC is known as long-range optical wireless communication. 3. VLC can transmit large amounts of data faster than Bluetooth 4. VLC has no electromagnetic interference Select the correct answer using the code given below",
     "options": {
       "a": "1, 2 and 3 only",
@@ -26473,7 +26473,7 @@
     "topic": "Emerging Technologies",
     "microtheme": "Communication Technology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "With reference to \"Blockchain Technology\", consider the following statements: 1. It is a public ledger that everyone can inspect but which no single user controls. 2. The structure and design of the blockchain is such that all the data in it are about cryptocurrency only. 3. Applications that depend on basic features of blockchain can be developed without anybody's permission. Which of the statements given above is/are correct?",
     "options": {
       "a": "1 only",
@@ -27562,7 +27562,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Physics",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "Which one of the following is a reason why astronomical distances are measured in light-years?",
     "options": {
       "a": "Distances among stellar bodies do not change",
@@ -27826,7 +27826,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Physics",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "In a pressure cooker, the temperature at which the food is cooked depends mainly upon which of the following? 1. Area of the hole in the lid 2. Temperature of the flame 3. Weight of the lid Select the correct answer using the code given below.",
     "options": {
       "a": "1 and 2 only",
@@ -28189,7 +28189,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Physics",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "With reference to street-lighting, how do sodium lamps differ from LED lamps? 1. Sodium lamps produce light in 360 degrees but it is not so in the case of LED lamps. 2. As street-lights, sodium lamps have a longer lifespan than LED lamps. 3. The spectrum of visible light from sodium lamps is almost monochromatic while LED lamps offer significant colour advantages in street-lighting. Select the correct answer using the code given below.",
     "options": {
       "a": "3 only",
@@ -28486,7 +28486,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Miscellaneous",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MAINS-CURRENT",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Bisphenol A (BPA), a cause of concern, is a structural/key component in the manufacture of which of the following kinds of plastics?",
     "options": {
       "a": "Low-density polyethylene",
@@ -28717,7 +28717,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Miscellaneous",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MAINS-CURRENT",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "'Triclosan', consider harmful when exposed to high levels for a long time, is most likely present in which of the following?",
     "options": {
       "a": "Food preservatives",
@@ -29410,7 +29410,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Chemistry",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Water can dissolve more substances than any other liquid because",
     "options": {
       "a": "it is dipolar in nature",
@@ -31720,7 +31720,7 @@
     "topic": "Physics / Nuclear / Electronics",
     "microtheme": "Miscellaneous",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-MAINS-CURRENT",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Consider the following statements : 1. Other than those made by humans, nanoparticles do not exist in nature. 2. Nanoparticles of some metallic oxides are used in the manufacture of some cosmetics. 3. Nanoparticles of some commercial products which enter the environment are unsafe for humans. Which of the statements given above is/are correct ?",
     "options": {
       "a": "1 only",
@@ -32149,7 +32149,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Consider the following statements in respect of probiotics : 1. Probiotics are made of both bacteria and yeast. 2. The organisms in probiotics are found in foods we ingest but they do not naturally occur in our gut. 3. Probiotics help in the digestion of milk sugars. Which of the statements given above is/are correct?",
     "options": {
       "a": "1 only",
@@ -32578,7 +32578,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Communication Technology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "Consider the following communication technologies : 1. Closed-circuit Television 2. Radio Frequency Identification 3. Wireless Local Area Network Which of the above are considered Short-Range devices/ technologies ?",
     "options": {
       "a": "1 and 2 only",
@@ -32875,7 +32875,7 @@
     "topic": "Emerging Technologies",
     "microtheme": "Communication Technology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "With reference to Web 3.0, consider the following statements : 1. Web 3.0 technology enables people to control their own data. 2. In the Web 3.0 world, there can be blockchain based social networks. 3. Web 3.0 is operated by users collectively rather than a corporation. Which of the statements given above are correct?",
     "options": {
       "a": "1 and 2 only",
@@ -32908,7 +32908,7 @@
     "topic": "Space Technology",
     "microtheme": "Space Science",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-DEFENCE",
     "question": "Which one of the following statements best reflects the idea behind the \"Fractional Orbital Bombardment System\" often talked about in the media?",
     "options": {
       "a": "A hypersonic missile is launched into space to counter the asteroid approaching the Earth and explode it in space.",
@@ -33205,7 +33205,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Communication Technology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "With reference to \"Software as a Service (SaaS)\", consider the following statements : 1. SaaS buyers can customise the user interface and can change data fields. 2. SaaS users can access their data through their mobile devices. 3. Outlook, Hotmail and Y ahoo! Mail are forms of SaaS. Which of the statements given above are correct?",
     "options": {
       "a": "1 and 2 only",
@@ -33469,7 +33469,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Communication Technology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-QUANTUM",
     "question": "Which one of the following is the context in which the term \"qubit\" is mentioned?",
     "options": {
       "a": "Cloud Services",
@@ -33733,7 +33733,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Communication Technology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "Consider the following : 1. Aarogya Setu 2. CoWIN 3. DigiLocker 4. DIKSHA Which of the above are built on top of open-source digital platforms ?",
     "options": {
       "a": "1 and 2 only",
@@ -36175,7 +36175,7 @@
     "topic": "Space Technology",
     "microtheme": "Communication Technology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "Which one of the following countries has its own Satellite Navigation System?",
     "options": {
       "a": "Australia",
@@ -36637,7 +36637,7 @@
     "topic": "Space Technology",
     "microtheme": "Space Science",
     "questionType": "PAIR_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "Consider the following pairs: Objects in Description space 1. Cepheids : Giant clouds of dust and gas in space 2. Nebulae : Stars which brighten and dim periodically 3. Pulsars : Neutron stars that are formed when massive stars run out of fuel and collapse How many of the above pairs are correctly matched?",
     "options": {
       "a": "Only one",
@@ -39277,7 +39277,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Communication Technology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "Which one of the following words/phrases is most appropriately used to denote \"an interoperable network of 3D Virtual worlds that can be accessed simultaneously by millions of users, who can exert property rights over virtual items\"?",
     "options": {
       "a": "Big data analytics",
@@ -39310,7 +39310,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Energy",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Consider the following materials: 1. Agricultural residues 2. Corn grain 3. Wastewater treatment sludge 4. Wood mill waste Which of the above can be used as feedstock for producing Sustainable Aviation Fuel?",
     "options": {
       "a": "1 and 2 only",
@@ -39640,7 +39640,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Which one of the following is synthesised in the human body that dilates blood vessels and increases blood flow?",
     "options": {
       "a": "Nitric oxide",
@@ -39706,7 +39706,7 @@
     "topic": "Biotechnology",
     "microtheme": "Energy",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-BIOTECH",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "With reference to radioisotope thermoelectric generators (RTGs), consider the following statements: 1. RTGs are miniature fission reactors. 2. RTGs are used for powering the onboard systems of spacecraft. 3. RTGs can use Plutonium-238, which is a by-product of weapons development. Which of the statements given above are correct?",
     "options": {
       "a": "1 and 2 only",
@@ -40201,7 +40201,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Energy",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MAINS-CURRENT",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Which one of the following is the exhaust pipe emission from Fuel Cell Electric Vehicles, powered by hydrogen?",
     "options": {
       "a": "Hydrogen peroxide",
@@ -40564,7 +40564,7 @@
     "topic": "Biotechnology",
     "microtheme": "Defence Technology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-BIOTECH",
+    "syllabusNodeId": "GS3-ST-DEFENCE",
     "question": "Consider the following aircraft: 1. Rafael 2. MiG-29 3. Tejas MK-1 How many of the above are considered fifth Generation fighter aircraft?",
     "options": {
       "a": "Only one",
@@ -40597,7 +40597,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Energy",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MAINS-CURRENT",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Recently, the term\"pumped-storage hydropower\" is actually and appropriately discussed in the context of which one of the following?",
     "options": {
       "a": "Irrigation of terraced crop fields",
@@ -40828,7 +40828,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Chemistry",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "In which of the following are hydrogels used? 1. Controlled drug delivery in patients 2. Mobile air-conditioning systems 3. Preparation of industrial lubricants Select the correct answer using the code given below:",
     "options": {
       "a": "1 only",
@@ -40861,7 +40861,7 @@
     "topic": "Biotechnology",
     "microtheme": "Energy",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-BIOTECH",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Consider the following: 1. Battery storage 2. Biomass generators 3. Fuel cells 4. Rooftop solar photovoltaic units How many of the above are considered \"Distributed Energy Resources\"?",
     "options": {
       "a": "Only one",
@@ -42709,7 +42709,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "With reference to monoclonal antibodies, often mentioned in news, consider the following statements: I. They are man-made proteins. II. They stimulate immunological function due to their ability to bind to specific antigens. III. They are used in treating viral infections like that of Nipah virus. Which of the statements given above are correct?",
     "options": {
       "a": "I and II only",
@@ -42742,7 +42742,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Chemistry",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "In the context of electric vehicle batteries, consider the following elements: I. Cobalt II. Graphite III. Lithium IV . Nickel How many of the above usually make up battery cathodes?",
     "options": {
       "a": "Only one",
@@ -42775,7 +42775,7 @@
     "topic": "Emerging Technologies",
     "microtheme": "Communication Technology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-QUANTUM",
     "question": "Consider the following statements: I. It is expected that Majorana 1 chip will enable quantum computing. II. Majorana 1 chip has been introduced by Amazon Web Services (AWS). III. Deep learning is a subset of machine learning. Which of the statements given above are correct?",
     "options": {
       "a": "I and II only",
@@ -42841,7 +42841,7 @@
     "topic": "Biotechnology",
     "microtheme": "Energy",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Consider the following types of vehicles: I. Full battery electric vehicles II. Hydrogen fuel cell vehicles III. Fuel cell-electric hybrid vehicles How many of the above are considered as alternative powertrain vehicles?",
     "options": {
       "a": "Only one",
@@ -42874,7 +42874,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Miscellaneous",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "With reference to 'Direct Air Capture' an emerging technology, which of the following statements is/are correct? I. It can be used as a way of carbon sequestration. II. It can be a valuable approach for plastic production and in food processing. III. In aviation, it can be a source of carbon for combining with hydrogen to create low-carbon fuel. Select the correct answer using the code given below.",
     "options": {
       "a": "I and II only",
@@ -42907,7 +42907,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Space Science",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Consider the following statements: Statement I: Activated carbon is a good and an attractive tool to remove pollutants from effluent streams and to remediate contaminants from various industries. Statement II: Activated carbon exhibits a large surface area and a strong potential for adsorbing heavy metals. Statement III: Activated carbon can be easily synthesized from environmental wastes with high carbon content. Which one of the following is correct in respect of the above statements?",
     "options": {
       "a": "Both Statement II and Statement III are correct and both of them explain Statement I",
@@ -43666,7 +43666,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Biology",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-BIOTECH",
     "question": "Consider the following statements: I. No virus can survive in ocean waters. II. No virus can infect bacteria. III. No virus can change the cellular transcriptional activity in host cells. How many of the statements given above are correct?",
     "options": {
       "a": "Only one",
@@ -43699,7 +43699,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Chemistry",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Consider the following: I. Cigarette butts II. Eyeglass lenses III. Car tyres How many of them contain plastic?",
     "options": {
       "a": "Only one",
@@ -43732,7 +43732,7 @@
     "topic": "Biotechnology",
     "microtheme": "Defence Technology",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-BIOTECH",
+    "syllabusNodeId": "GS3-ST-DEFENCE",
     "question": "What is the common characteristic of the chemical substances generally known as CL-20, HMX and LLM-105, which are sometimes talked about in media",
     "options": {
       "a": "These are alternatives to hydro-fluorocarbon refrigerants",
@@ -43765,7 +43765,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Miscellaneous",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-CYBERSECURITY",
     "question": "Consider the following statements: I. Indian Railways have prepared a National Rail Plan (NRP) to create a 'future ready' railway system by 2028. II. 'Kavach' is an Automatic Train Protection system developed in collaboration with Germany. III. 'Kavach' system consists of RFID tags fitted on track in station section. Which of the statements given above are not correct?",
     "options": {
       "a": "I and II only",
@@ -43798,7 +43798,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Space Science",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "GPS-Aided Geo Augmented Navigation (GAGAN) uses a system of ground stations to provide necessary augmentation. Which of the following statements is/are correct in respect of GAGAN? I. It is designed to provide additional accuracy and integrity. II. It will allow more uniform and high quality air traffic management. III. It will provide benefits only in aviation but not in other modes of transportation. Select the correct answer using the code given below.",
     "options": {
       "a": "I, II and III",
@@ -44194,7 +44194,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Chemistry",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Consider the following substances: I. Ethanol II. Nitroglycerine III. Urea Coal gasification technology can be used in the production of how many of them?",
     "options": {
       "a": "Only one",
@@ -44260,7 +44260,7 @@
     "topic": "Space Technology",
     "microtheme": "Space Science",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-SPACE",
     "question": "Consider the following space missions: I. Axiom-4 II. SpaDeX III. Gaganyaan How many of the space missions given above encourage and support micro-gravity research?",
     "options": {
       "a": "Only one",
@@ -44425,7 +44425,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Chemistry",
     "questionType": "STATEMENT_BASED",
-    "syllabusNodeId": "GS3-ST-IT-COMM",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Consider the following statements: Statement I: Some rare earth elements are used in the manufacture of flat television screens and computer monitors. Statement II: Some rare earth elements have phosphorescent properties Which one of the following is correct in respect of the above statements?",
     "options": {
       "a": "Both Statement I and Statement II are correct and Statement II explains Statement I",
@@ -44491,7 +44491,7 @@
     "topic": "Unmapped Topic",
     "microtheme": "Chemistry",
     "questionType": "MCQ",
-    "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+    "syllabusNodeId": "GS3-ST-MATERIALS",
     "question": "Artificial way of causing rainfall to reduce air pollution makes use of",
     "options": {
       "a": "silver iodide and potassium iodide",

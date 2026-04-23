@@ -46,10 +46,12 @@ async function _upsertRevisionItemFull(data) {
       review_count,
       interval_days,
       last_reviewed_at,
-      next_review_at
+      next_review_at,
+      block_id,
+      mistake_id
     )
     VALUES (
-      $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18
+      $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20
     )
     ON CONFLICT (user_id, question_id, stage)
     DO UPDATE SET
@@ -62,6 +64,8 @@ async function _upsertRevisionItemFull(data) {
       content         = EXCLUDED.content,
       question_text   = EXCLUDED.question_text,
       priority        = EXCLUDED.priority,
+      block_id        = COALESCE(EXCLUDED.block_id, revision_items.block_id),
+      mistake_id      = COALESCE(EXCLUDED.mistake_id, revision_items.mistake_id),
       updated_at      = NOW()
     RETURNING *;
   `;
@@ -85,6 +89,8 @@ async function _upsertRevisionItemFull(data) {
     data.interval_days ?? 1,
     data.last_reviewed_at || null,
     data.next_review_at || new Date().toISOString(),
+    data.block_id || null,
+    data.mistake_id || null,
   ];
 
   const result = await query(sql, values);

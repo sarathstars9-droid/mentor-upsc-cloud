@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Centre-State Relations",
+  "topicId": "centre_state_relations",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 9,
+  "questions": [
+    {
+      "id": "POL_CENTRE_STATE_RELATIONS_2024_Q1",
+      "questionNumber": 1,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements is correct as per the Constitution of India?",
+      "options": {
+        "A": "Inter-State trade and commerce is a State subject under the State List",
+        "B": "Inter-State migration is a State subject under the State List",
+        "C": "Inter-State quarantine is a Union subject under the Union List",
+        "D": "Corporation tax is a State subject under the State List"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Centre-State Relations",
+      "topicId": "centre_state_relations",
+      "sectionId": "GS2-POL-CSREL",
+      "nodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-CSREL",
+      "microTheme": "Centre-State Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CENTRE_STATE_RELATIONS_2021_Q2",
+      "questionNumber": 2,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following in Indian polity is an essential feature that indicates that it is federal in character?",
+      "options": {
+        "A": "The independence of judiciary is safeguarded.",
+        "B": "The Union Legislature has elected representatives from constituent units",
+        "C": "The Union Cabinet can have elected representatives from regional parties",
+        "D": "The Fundamental Rights are enforceable by Courts of Law"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Centre-State Relations",
+      "topicId": "centre_state_relations",
+      "sectionId": "GS2-POL-CSREL",
+      "nodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-CSREL",
+      "microTheme": "Federalism",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CENTRE_STATE_RELATIONS_2021_Q3",
+      "questionNumber": 3,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to India, consider the following statements: 1) There is only ‘one citizenship and one domicile’. 2) A citizen by birth only can become the Head of State. 3) A foreigner once granted the citizenship cannot be deprived of it under any circumstances. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "1 and 3",
+        "D": "2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Centre-State Relations",
+      "topicId": "centre_state_relations",
+      "sectionId": "GS2-POL-CSREL",
+      "nodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-CSREL",
+      "microTheme": "Centre-State Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CENTRE_STATE_RELATIONS_2020_Q4",
+      "questionNumber": 4,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of India, which one of the following is the characteristic appropriate for bureaucracy?",
+      "options": {
+        "A": "An agency for widening the scope of parliamentary democracy",
+        "B": "An agency for strengthening the structure of federalism",
+        "C": "An agency for facilitating political stability and economic growth",
+        "D": "An agency or the implementation of public policy"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Centre-State Relations",
+      "topicId": "centre_state_relations",
+      "sectionId": "GS2-POL-CSREL",
+      "nodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-CSREL",
+      "microTheme": "Centre-State Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CENTRE_STATE_RELATIONS_2017_Q5",
+      "questionNumber": 5,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is not a feature of Indian federalism?",
+      "options": {
+        "A": "There is an independent judiciary in India.",
+        "B": "Powers have been clearly divided between the Centre and the States.",
+        "C": "The federating units have been given unequal representation in the Rajya Sabha.",
+        "D": "It is the result of an agreement among the federating units."
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Centre-State Relations",
+      "topicId": "centre_state_relations",
+      "sectionId": "GS2-POL-CSREL",
+      "nodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-CSREL",
+      "microTheme": "Federalism",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CENTRE_STATE_RELATIONS_2006_Q6",
+      "questionNumber": 6,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following subjects is under the Union List in the Seventh Schedule of the Constitution of India?",
+      "options": {
+        "A": "Regulation of labour and safety in mines and oilfields",
+        "B": "Agriculture",
+        "C": "Fisheries",
+        "D": "Public Health"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Centre-State Relations",
+      "topicId": "centre_state_relations",
+      "sectionId": "GS2-POL-CSREL",
+      "nodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-CSREL",
+      "microTheme": "Centre-State Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CENTRE_STATE_RELATIONS_2005_Q7",
+      "questionNumber": 7,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Articles 371 A to 371 I were inserted in the Constitution of India to meet regional demands of Nagaland, Assam, Manipur, Andhra Pradesh, Sikkim, Mizoram, Arunachal Pradesh and Goa. 2. Constitutions of India and the United States of America envisage a dual policy (The Union and the States) but a single citizenship. 3. A naturalised citizen of India can never be deprived of his citizenship. Which of the above statements is/are correct?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1 and 3",
+        "C": "3 only",
+        "D": "1 only"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Centre-State Relations",
+      "topicId": "centre_state_relations",
+      "sectionId": "GS2-POL-CSREL",
+      "nodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-CSREL",
+      "microTheme": "Centre-State Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CENTRE_STATE_RELATIONS_2004_Q8",
+      "questionNumber": 8,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Constitution of India, which one of the following pairs is not correctly matched?",
+      "options": {
+        "A": "Forests: Concurrent List",
+        "B": "Stock Exchanges: Concurrent List",
+        "C": "Post Office Saving Bank: Union List",
+        "D": "Public Health: State List"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Centre-State Relations",
+      "topicId": "centre_state_relations",
+      "sectionId": "GS2-POL-CSREL",
+      "nodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-CSREL",
+      "microTheme": "Centre-State Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CENTRE_STATE_RELATIONS_2003_Q9",
+      "questionNumber": 9,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I (Item in the Indian Constitution) with List II (Country from which it was derived) and select the correct answer using the codes given below the list. List II (Country from which it was derived) A. Directive Principles of State Policy 1. Australia List I (Item in the Indian Constitution) B. Fundamental Rights 2. Canada C. Concurrent List in Union State Relations 3. Ireland 4. United Kingdom 5. USA Codes: A B C D",
+      "options": {
+        "A": "5 4 1 2",
+        "B": "3 5 2 1",
+        "C": "5 4 2 1",
+        "D": "3 5 1 2 D. India as a Union of States with Greater Powers to Union"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Centre-State Relations",
+      "topicId": "centre_state_relations",
+      "sectionId": "GS2-POL-CSREL",
+      "nodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-CSREL",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

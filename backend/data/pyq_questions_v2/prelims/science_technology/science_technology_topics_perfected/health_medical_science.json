@@ -1,0 +1,1171 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Science & Technology",
+  "topicName": "Health & Medical Science",
+  "topicId": "sci_health",
+  "sourceType": "UPSC_Science_Tech_PYQ",
+  "totalQuestions": 40,
+  "questions": [
+    {
+      "id": "SCI_SCI_HEALTH_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: I. No virus can survive in ocean waters. II. No virus can infect bacteria. III. No virus can change the cellular transcriptional activity in host cells. Which of the statements given above are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All the three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Virology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2024_Q2",
+      "questionNumber": 2,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is synthesised in human body that dilates blood vessels and increases blood flow?",
+      "options": {
+        "A": "Nitric Oxide",
+        "B": "Nitrous Oxide",
+        "C": "Nitrogen Dioxide",
+        "D": "Nitrogen Pentoxide"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2022_Q3",
+      "questionNumber": 3,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements best describes the role of B cells and T cells in the human body?",
+      "options": {
+        "A": "They protect the body from environmental allergens.",
+        "B": "They alleviate the body's pain and inflammation",
+        "C": "They act as immunosuppressants in the body.",
+        "D": "They protect the body from diseases caused by pathogens."
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "D",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: B/T cells protect against pathogens"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2021_Q6",
+      "questionNumber": 6,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1) Adenoviruses have single-stranded DNA genomes whereas retroviruses have double -stranded DNA genomes. 2) Common cold is sometime caused by an adenovirus whereas AIDS is caused by a retrovirus. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Virology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2020_Q7",
+      "questionNumber": 7,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following statements are correct regarding the general difference between plant and animal cells? 1. Plant cells have cellulose cell walls whilst animal cells do not. 2. Plant cells do not have plasma membranes unlike animal cells which do. 3. Mature plant cell has one large vacuole whilst an animal cell has many small vacuoles. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2007_Q24",
+      "questionNumber": 24,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "In human body, which one of the following hormones regulates blood calcium and Phosphate?",
+      "options": {
+        "A": "Glucagon",
+        "B": "Growth hormone",
+        "C": "Parathyroid",
+        "D": "Thyroxine"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2006_Q32",
+      "questionNumber": 32,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the name of the vessel that delivers the nutrient rich blood from the stomach & small intestine to the liver?",
+      "options": {
+        "A": "Left hepatic artery",
+        "B": "Hepatic vein",
+        "C": "Right hepatic artery",
+        "D": "Hepatic portal vein"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2005_Q36",
+      "questionNumber": 36,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (A): The person with diabetes insipidus feels thirsty Reason (R): A person with diabetes insipidus suffers from excess secretion of vasopressin.",
+      "options": {
+        "A": "Both (A) and (R) are individually true and R is the correct explanation of A",
+        "B": "Both (A) and (R) are individually true and R is not the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2004_Q37",
+      "questionNumber": 37,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "The hormone insulin is a:",
+      "options": {
+        "A": "Glycolipid",
+        "B": "Fatty acid",
+        "C": "Peptide",
+        "D": "Steroidid"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2003_Q41",
+      "questionNumber": 41,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the work of human kidney, consider the following statements: 1. After the waste is removed in the kidney, the cleaner blood is sent back through renal artery. 2. From Bowman's capsule, the filtered liquid passes through tiny tubes where much of the glucose is reabsorbed and sent back to the blood in the renal vein. Which of these statements is/the correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2002_Q45",
+      "questionNumber": 45,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the blood in a normal person, which one of the following statements is correct?",
+      "options": {
+        "A": "Compared to arteries, veins are less numerous and hold less of the body's blood at any given time",
+        "B": "Blood cells constitute about 70 per cent of the total volume of the blood",
+        "C": "White Blood Cells (WBC) are made by lymph nodes only",
+        "D": "The blood has more platelets than WBC"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2001_Q65",
+      "questionNumber": 65,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "A man whose blood group is not known meets with a serious accident and needs blood transfusion immediately. Which one of the blood groups mentioned below and readily available in the hospital will be safe for transfusion?",
+      "options": {
+        "A": "O, Rh-",
+        "B": "O, Rh+",
+        "C": "AB, Rh-",
+        "D": "AB, Rh+"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2001_Q67",
+      "questionNumber": 67,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: List I (Substance) List II(Physiological role) I. Ptyalin A) Converts angiotensinogen in blood into angiotensin II. Pepsin B) Digests starch III. Renin C) Digests proteins IV. Oxytocin D) Hydrolyses fats E) Induces contraction of smooth muscles",
+      "options": {
+        "A": "I-B, II-C, III-A, IV-E",
+        "B": "I-C, II-D, III-B, IV-E",
+        "C": "I-B, II-C, IH-E, IV-A",
+        "D": "I-C, II-A, III-B, IV-D"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2000_Q70",
+      "questionNumber": 70,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I (Diseases) with List II (Types of disease) and select the correct answer using the codes given below the Lists: List I List II I. Haemophilia A) Deficiency disease II. Diabetes B) Genetic disease III. Rickets C) Hormonal disorder IV. Ringworm D) Fungal infection",
+      "options": {
+        "A": "I-B, II-C, III-D, IV-A",
+        "B": "I-B, II-C, III-A, IV-D",
+        "C": "I-C, II-B, III-A, IV-D",
+        "D": "I-C, II-B, III-D, IV-A"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Disease Science",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2000_Q71",
+      "questionNumber": 71,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "The blood glucose level is commonly expressed as:",
+      "options": {
+        "A": "mm of Hg",
+        "B": "milligram per decilitre",
+        "C": "parts per million",
+        "D": "grams per litre"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2000_Q73",
+      "questionNumber": 73,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I (Endocrine glands) with List II (Hormones secreted) and select the correct answer using the codes given below the Lists: List I List II I. Gonads A) Insulin II. Pituitary B) Progesterone III. Pancreas C) Growth hormones IV. Adrenal D) Cortisone",
+      "options": {
+        "A": "I-C, II-B, III-D, IV-A",
+        "B": "I-B, II-C, III-D, IV-A",
+        "C": "I-B, II-C, III-A, IV-D",
+        "D": "I-C, II-B, III-A, IV-D"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1999_Q80",
+      "questionNumber": 80,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match the hormones in List I with items in List II and select the correct answer using the codes given below the Lists: List I List II I. Adrenaline A) Anger, fear, danger II. Estrogen B) Attracting partners through sense of smell III. Insulin C) Females IV. Pheromones D) Glucose",
+      "options": {
+        "A": "I-C, II-A, III-D, IV-B",
+        "B": "I-A, II-C, III-B, IV-D",
+        "C": "I-A, II-C, III-D, IV-B",
+        "D": "I-C, II-A, III-B, IV-D"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1997_Q93",
+      "questionNumber": 93,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "The pituitary gland by virtue of its tropic hormones controls the secretory activity of other endocrine glands. Which one of the following endocrine glands can function independent of the pituitary gland?",
+      "options": {
+        "A": "Thyroid",
+        "B": "Gonads",
+        "C": "Adrenals",
+        "D": "Parathyroid"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1997_Q94",
+      "questionNumber": 94,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Oxygen transportation in a human body takes place through: I. Blood II. Lungs III. Tissue The correct sequence of transportation is",
+      "options": {
+        "A": "I, II, III",
+        "B": "III, I, II",
+        "C": "II, I, III",
+        "D": "I, III, II"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1997_Q101",
+      "questionNumber": 101,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Arteries supplying blood to the heart are called:",
+      "options": {
+        "A": "Carotid arteries",
+        "B": "Hepatic arteries",
+        "C": "Coronary arteries",
+        "D": "Pulmonary arteries"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1996_Q112",
+      "questionNumber": 112,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer by using codes given below the lists: List I List II I. Vitamin A) Pepsin II. Enzyme B) Carotene III. Hormone C) Keratin IV. Protein D) Progesterone",
+      "options": {
+        "A": "I - A, II - B, III - C, IV - D",
+        "B": "I - B, II - A, III - D, IV - C",
+        "C": "I - B, II - A, III - C, IV - D",
+        "D": "I - A, II - B, III - D, IV - C"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1995_Q121",
+      "questionNumber": 121,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following hormones contains iodine?",
+      "options": {
+        "A": "Thyroxine",
+        "B": "Testosterone",
+        "C": "Insulin",
+        "D": "Adrenaline"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1995_Q123",
+      "questionNumber": 123,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "A person with 'AB' blood group is sometimes called a universal recipient because of the:",
+      "options": {
+        "A": "Lack of antigen in his blood",
+        "B": "Lack of antibodies in his blood",
+        "C": "Lack of both antigens and antibodies in his blood",
+        "D": "Presence of antibodies in his blood"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2023_Q1",
+      "questionNumber": 1,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "'Wolbachia method' is sometimes talked about with reference to which one of the following?",
+      "options": {
+        "A": "Controlling the viral diseases spread by mosquitoes",
+        "B": "Converting crop residues into packing material",
+        "C": "Producing biodegradable plastics",
+        "D": "Producing biochar from thermo - chemical conversion of biomass."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2021_Q2",
+      "questionNumber": 2,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of hereditary diseases, consider the following statements: 1) Passing on mitochondrial diseases from parent to child can be prevented by mitochondrial replacement therapy either before or after in vitro fertilisation of the egg. 2) A child inherits mitochondrial diseases entirely from mother and not from father. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Disease Science",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2015_Q3",
+      "questionNumber": 3,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "H1N1 virus is sometimes mentioned in the news with reference to which one of the following diseases?",
+      "options": {
+        "A": "AIDS",
+        "B": "Bird flu",
+        "C": "Dengue",
+        "D": "Swine flu"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Disease Science",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2010_Q4",
+      "questionNumber": 4,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "With regard to the transmission of the Human Immunodeficiency Virus, which one of the following statements is not correct?",
+      "options": {
+        "A": "The chances of transmission from female to male are twice as likely as from male to female.",
+        "B": "The chances of transmission are more if a person suffers from other sexually transmitted infections.",
+        "C": "An infected mother can transmit the pregnancy, at childbirth and by breastfeeding.",
+        "D": "The risk of contracting infection from transfusion of infected blood is much higher than an exposure to contaminated needle."
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Virology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2010_Q5",
+      "questionNumber": 5,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Widespread resistance of malarial parasites to drugs like chloroquine has prompted attempts to develop a malaria vaccine to combat malaria. Why is it difficult to develope an effective malaria vaccine?",
+      "options": {
+        "A": "Malaria is caused by several species of Plasmodium.",
+        "B": "Man does not develop immunity to malaria during natural infection.",
+        "C": "Vaccines can be developed only against bacteria.",
+        "D": "Man is only an intermediate host and not the definitive host."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Vaccines",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2001_Q6",
+      "questionNumber": 6,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "\"Athlete's Foot\" is a disease caused by:",
+      "options": {
+        "A": "Bacteria",
+        "B": "Fungus",
+        "C": "Protozoan",
+        "D": "Nematode"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Disease Science",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1999_Q7",
+      "questionNumber": 7,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following genetic diseases is sex-linked?",
+      "options": {
+        "A": "Royal haemophilia",
+        "B": "Tay-Sachs disease",
+        "C": "Cystic fibrosis",
+        "D": "Hypertension"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Disease Science",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1999_Q8",
+      "questionNumber": 8,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Lathyrism is caused by excessive consumption of:",
+      "options": {
+        "A": "Kesari dal",
+        "B": "Mustard oil",
+        "C": "Polished rice",
+        "D": "Mushrooms"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1998_Q9",
+      "questionNumber": 9,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer using the codes given below the lists: List I (Disease) List II (Organism) I. Malaria A) Fungi II. Poliomyelitis B) Bacteria III. Tuberculosis C) Virus IV. Ringworm D) Protozoan",
+      "options": {
+        "A": "I-D, II-C, III-B, IV-A",
+        "B": "I-D, II-C, III-A, IV-B",
+        "C": "I-C, II-D, III-A, IV-B",
+        "D": "I-C, II-D, III-B, IV-A"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Disease Science",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1997_Q10",
+      "questionNumber": 10,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer by using the codes given below the lists: List I List II I. Malaria A) Bone marrow II. Filaria B) Brain III. Encephalitis C) Muscle IV. Leukaemia D) Lymph node E) Blood cells",
+      "options": {
+        "A": "I-E, II-C, III-B, IV-A",
+        "B": "I-E, II-D, III-B, IV-A",
+        "C": "I-D, II-C, III-E, IV-A",
+        "D": "I-E, II-D, III-A, IV-B"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1996_Q11",
+      "questionNumber": 11,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are associated with diabetes mellitus, a common disease in adults? I. Higher sugar level in blood 404 II. Lower sugar level in blood III. Lower insulin level in blood IV. Higher insulin level in blood Select the correct answer by using the codes given below:",
+      "options": {
+        "A": "II and IV",
+        "B": "I and II",
+        "C": "II and III",
+        "D": "I and III"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Disease Science",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1996_Q12",
+      "questionNumber": 12,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: AIDS is transmitted: I. By sexual intercourse. II. By blood transfusion. III. By mosquitoes and other blood sucking insects. IV. Across the placenta. Of these statements",
+      "options": {
+        "A": "I, II and III are correct",
+        "B": "I, II and IV are correct",
+        "C": "I, III and IV are correct",
+        "D": "I and III are correct"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1996_Q13",
+      "questionNumber": 13,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "People drinking water from a shallow hand pump are likely to suffer from all of the following diseases except:",
+      "options": {
+        "A": "Cholera",
+        "B": "Typhoid",
+        "C": "Jaundice",
+        "D": "Fluorosis"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Disease Science",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1995_Q14",
+      "questionNumber": 14,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following sets is correctly matched? 1) Diphtheria, Pneumonia and Leprosy: Hereditary 2) AIDS, Syphilis and Gonorrhoea: Bacterial 3) Colour blindness, Hemophilia and Sickle cell anaemia: Sex linked 4) Polio, JJJapanese B encephalitis and plague: Viral",
+      "options": {
+        "A": "only 2",
+        "B": "only 3",
+        "C": "1 and 4",
+        "D": "None of these"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1995_Q15",
+      "questionNumber": 15,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following antimicrobial drugs is suitable for treatment of both tuberculosis and leprosy?",
+      "options": {
+        "A": "Isoniazid",
+        "B": "p-aminosalicylic acid",
+        "C": "Streptomycin",
+        "D": "Rifampicin"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_1995_Q16",
+      "questionNumber": 16,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "\"It begins as a single cell and grows into a merciless disease that claims millions of lives year after year. But scientists are steadily unlocking its mysteries, and the fight against it may now have reached a dramatic turning point. New discoveries promise better therapies and hope in the war against ...\" The disease referred to in the above quotation is:",
+      "options": {
+        "A": "Cancer",
+        "B": "AIDS",
+        "C": "Tuberculosis",
+        "D": "Alzheimer's disease"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Disease Science",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_HEALTH_2019_Q17",
+      "questionNumber": 17,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements is not correct?",
+      "options": {
+        "A": "Hepatitis B virus is transmitted much like HIV.",
+        "B": "Hepatitis B. unlike Hepatitis C, does not have a vaccine.",
+        "C": "Globally, the number of people infected with Hepatitis B and C viruses arc several times more than those infected with HIV .",
+        "D": "Some of those infected with Hepatitis B and C viruses do not show the symptoms for many years."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Health & Medical Science",
+      "topicId": "sci_health",
+      "sectionId": "GS3-SCI-TECH-HEALTH",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    }
+  ]
+}

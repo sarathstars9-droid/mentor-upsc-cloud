@@ -1,0 +1,846 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "exam": "UPSC_CSE",
+  "stage": "Prelims",
+  "paper": "GS1",
+  "subject": "Geography",
+  "topicName": "World Mapping",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "nodeId": "geo.world-mapping",
+  "microTheme": "world-map-locations",
+  "questions": [
+    {
+      "id": "GEO_MAPW_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following water bodies: I. Lake Tanganyika II. Lake Tonlé Sap III. Patos Lagoon Through how many of them does the equator pass?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All the three",
+        "D": "None"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2025_Q2",
+      "questionNumber": 2,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: Region - Country I. Mallorca: Italy II. Normandy: Spain III. Sardinia: France In how many of the above rows is the given information correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All the three",
+        "D": "None"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2025_Q3",
+      "questionNumber": 3,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following countries: I. United Kingdom II. Denmark III. New Zealand IV. Australia V. Brazil How many of the above countries have more than four time zones?",
+      "options": {
+        "A": "All the five",
+        "B": "Only four",
+        "C": "Only three",
+        "D": "Only two"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2024_Q4",
+      "questionNumber": 4,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following countries: 1. Finland 2. Germany 3. Norway 4. Russia How many of the above countries have a border with the North Sea?",
+      "options": {
+        "A": "Only one (",
+        "B": "Only two (",
+        "C": "Only three (",
+        "D": "All four"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2024_Q5",
+      "questionNumber": 5,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "The longest border between any two countries in the world is between:",
+      "options": {
+        "A": "Canada and the United States of America (",
+        "B": "Chile and Argentina (",
+        "C": "China and India (",
+        "D": "Kazakhstan and Russian Federation"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2024_Q6",
+      "questionNumber": 6,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Red Sea receives very little precipitation in any form. 2. No water enters the Red Sea from rivers. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only (",
+        "B": "2 only (",
+        "C": "Both 1 and 2 (",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2023_Q7",
+      "questionNumber": 7,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following countries: 1. Bulgaria 2. Czech Republic 3. Hungary 4. Latvia 5. Lithuania 6. Romania How many of the above-mentioned countries share a land border with Ukraine?",
+      "options": {
+        "A": "Only two",
+        "B": "Only three",
+        "C": "Only four",
+        "D": "Only five"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2022_Q8",
+      "questionNumber": 8,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following countries: 1. Azerbaijan 2. Kyrgyzstan 3. Tajikistan 4. Turkmenistan 5. Uzbekistan Which of the above have borders with Afghanistan?",
+      "options": {
+        "A": "1, 2 & 5 only",
+        "B": "1, 2, 3 & 4 only",
+        "C": "3, 4 & 5 only",
+        "D": "1, 2, 3, & and 5"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2020_Q9",
+      "questionNumber": 9,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: River Flows into 1. Mekong - Andaman Sea 2. Thames - Irish Sea 3. Volga - Caspian Sea 4. Zambezi - Indian Ocean Which of the pairs given above is/are correctly matched?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "3 and 4 only",
+        "D": "1, 2 and 4 only"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2019_Q10",
+      "questionNumber": 10,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: Sea Bordering Country 1. Adriatic Sea - Albania 2. Black Sea - Croatia 3. Caspian Sea - Kazakhstan 4. Mediterranean Sea - Morocco 5. Red Sea - Syria Which of the pairs given above are correctly matched?",
+      "options": {
+        "A": "1, 2 and 4 only",
+        "B": "1, 3 and 4 only",
+        "C": "2 and 5 only",
+        "D": "1, 2, 3, 4 and 5"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2018_Q11",
+      "questionNumber": 11,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following has/have shrunk immensely/ dried up in the recent past due to human activities? 1. Aral Sea 2. Black Sea 3. Lake Baikal Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3",
+        "C": "2 only",
+        "D": "1 and 3"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2017_Q12",
+      "questionNumber": 12,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Mediterranean Sea is a border of which of the following countries? 1. Jordan 2. Iraq 3. Lebanon 4. Syria Select the correct answer using the code given below:",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "2 and 3 only",
+        "C": "3 and 4 only",
+        "D": "1, 3 and 4 only"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2015_Q13",
+      "questionNumber": 13,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following countries of South - West Asia does not open out to the Mediterranean Sea?",
+      "options": {
+        "A": "Syria",
+        "B": "Jordan",
+        "C": "Lebanon",
+        "D": "Israel"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2014_Q14",
+      "questionNumber": 14,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Turkey is located between:",
+      "options": {
+        "A": "Black Sea and Caspian Sea",
+        "B": "Black Sea and Mediterranean Sea",
+        "C": "Gulf of Suez and Mediterranean Sea",
+        "D": "Gulf of Aqaba and Dead Sea"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2014_Q15",
+      "questionNumber": 15,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the correct sequence of occurrence of the following cities in South -East Asia as one proceeds from south to north? 1. Bangkok 2. Hanoi 3. Jakarta 4. Singapore Select the correct answer using the code given below:",
+      "options": {
+        "A": "4-2-1-3",
+        "B": "3-2-4-1",
+        "C": "3-4-1-2",
+        "D": "4-3-2-1"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2011_Q16",
+      "questionNumber": 16,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "Between India and east Asia, the navigation - time and distance can be greatly reduced by which of the following? 1. Deepening the Malacca straits between Malaysia and Indonesia. 2. Opening a new canal across the kra isthmus between the gulf of Siam and Andaman sea. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2010_Q17",
+      "questionNumber": 17,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following can one come across if one travels through the Strait of Malacca:",
+      "options": {
+        "A": "Bali",
+        "B": "Brunei",
+        "C": "Java",
+        "D": "Singapore"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2009_Q18",
+      "questionNumber": 18,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following countries: 1. Australia 2. Namibia 3. Brazil 4. Chile Through which of the above does the Tropic of Capricorn pass?",
+      "options": {
+        "A": "1 only",
+        "B": "2, 3 and 4",
+        "C": "1, 2 and 3",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2008_Q19",
+      "questionNumber": 19,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following cities is nearest to the equator?",
+      "options": {
+        "A": "Colombo",
+        "B": "Jakarta",
+        "C": "Manila",
+        "D": "Singapore"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2008_Q20",
+      "questionNumber": 20,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following straits is nearest to the International Date Line?",
+      "options": {
+        "A": "Malacca Strait",
+        "B": "Bering Strait",
+        "C": "Strait of Florida",
+        "D": "Strait of Gibraltar"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2008_Q21",
+      "questionNumber": 21,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "In which one of the following is Malta located?",
+      "options": {
+        "A": "Baltic Sea",
+        "B": "Mediterranean",
+        "C": "Black Sea",
+        "D": "North Sea"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2008_Q22",
+      "questionNumber": 22,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following countries share borders with Moldova? 1. Ukraine 2. Romania 3. Belarus Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2 and 3"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2007_Q23",
+      "questionNumber": 23,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Through which one of the following Straits, does a tunnel connect the United Kingdom and France?",
+      "options": {
+        "A": "Davis Strait",
+        "B": "Denmark Strait",
+        "C": "Strait of dover",
+        "D": "Strait of Gibraltar"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2007_Q24",
+      "questionNumber": 24,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following cities does not have the same clock time as that of the other three cities at any given instant?",
+      "options": {
+        "A": "London (U.K)",
+        "B": "Lisbon (Portugal)",
+        "C": "Accra (Ghana)",
+        "D": "Addis Ababa (Ethiopia)"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2006_Q25",
+      "questionNumber": 25,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Other than India and China, which of the following groups of countries border Myanmar?",
+      "options": {
+        "A": "Bangladesh, Thailand and Vietnam",
+        "B": "Cambodia, Laos and Malaysia",
+        "C": "Thailand, Vietnam and Malaysia",
+        "D": "Thailand, Laos and Bangladesh"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2006_Q26",
+      "questionNumber": 26,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Through which one of the following groups of countries does the Equator pass?",
+      "options": {
+        "A": "Brazil, Zambia and Malaysia",
+        "B": "Colombia, Kenya and Indonesia",
+        "C": "Brazil, Sudan and Malaysia",
+        "D": "Venezuela, Ethiopia and Indonesia"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2006_Q27",
+      "questionNumber": 27,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Huangpu River flows through which one of the following cities?",
+      "options": {
+        "A": "Beijing",
+        "B": "Ho Chi Minh City",
+        "C": "Shanghai",
+        "D": "Manila"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2005_Q28",
+      "questionNumber": 28,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following countries does not have border with Lithuania?",
+      "options": {
+        "A": "Poland",
+        "B": "Ukraine",
+        "C": "Belarus",
+        "D": "Latvia"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2005_Q29",
+      "questionNumber": 29,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the correct sequence of the given town of Pakistan while moving from the North towards the South?",
+      "options": {
+        "A": "Islamabad-Gujranwala-Peshawar-Multan",
+        "B": "Peshawar-Gujranwala-Multan-Islamabad",
+        "C": "Peshawar-Islamabad-Gujranwala-Multan",
+        "D": "Islamabad-Multan-Peshawar-Gujranwala"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2004_Q30",
+      "questionNumber": 30,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Latvia does share its borders with which one of the following countries?",
+      "options": {
+        "A": "Russia",
+        "B": "Estonia",
+        "C": "Lithuania",
+        "D": "Poland"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2004_Q31",
+      "questionNumber": 31,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List-I (Sea) with List- II (Country) and select the correct answer using the codes given below the Lists: List-I (Sea) List-II (Country) A. Black Sea 1. Bulgaria B. Red Sea 2. China C. Yellow Sea 3. Eritrea D. Caspian Sea 4. Kazakhstan A B C D",
+      "options": {
+        "A": "1 4 2 3",
+        "B": "2 3 1 4",
+        "C": "1 3 2 4",
+        "D": "2 4 1 3"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2004_Q32",
+      "questionNumber": 32,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following does not border Panama?",
+      "options": {
+        "A": "Costa Rica",
+        "B": "Pacific Ocean",
+        "C": "Colombia",
+        "D": "Venezuela"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2003_Q33",
+      "questionNumber": 33,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following countries is land locked?",
+      "options": {
+        "A": "Bolivia",
+        "B": "Peru",
+        "C": "Suriname",
+        "D": "Uruguay"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2003_Q34",
+      "questionNumber": 34,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Israel has common borders with:",
+      "options": {
+        "A": "Lebanon, Syria. Jordan and Egypt",
+        "B": "Lebanon, Syria, Turkey and Jordan",
+        "C": "Cyprus, Turkey, Jordan and Egypt",
+        "D": "Turkey, Syria, Iraq and Yemen"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2003_Q35",
+      "questionNumber": 35,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following countries does NOT border the Caspian Sea?",
+      "options": {
+        "A": "Armenia",
+        "B": "Azerbaijan",
+        "C": "Kazakhstan",
+        "D": "Turkmenistan"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2002_Q36",
+      "questionNumber": 36,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following countries: 1. Albaina 2. Bosnia Herzegovina 3. Croatia 4. Macedonia Which of these countries has/have Adriatic Sea as a boundary?",
+      "options": {
+        "A": "1 and 2",
+        "B": "1, 2 and 3",
+        "C": "4 only",
+        "D": "3 and 4 only"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2001_Q37",
+      "questionNumber": 37,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "The given map shows four towns of the Central Asian region marked as 1, 2, 3, and 4. Identify these from the following list and select the correct answer using the codes given below: Towns: A. Bishkek B. Ashkhabad C. Tashkent D. Dushanbe",
+      "options": {
+        "A": "A-3, B-1, C-2, D-4",
+        "B": "A-3, B-1, C-4, D-2",
+        "C": "A-1, B-3, C-2, D-4",
+        "D": "A-1, B-3, C-4, D-2"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2000_Q38",
+      "questionNumber": 38,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following provinces of former Yugoslavia: I. Bosnia II. Croatia III. Slovenia IV. Yugoslavia. The correct sequence of these provinces from the east to the west is",
+      "options": {
+        "A": "IV, I, III, II",
+        "B": "IV, I, II, III",
+        "C": "I, IV, III, II",
+        "D": "I, IV, II, III A 38] b) IV, I, II, III - The correct sequence of provinces of former Yugoslavia from east to west is Yugoslavia, Bosnia, Croatia, and Slovenia"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_2000_Q39",
+      "questionNumber": 39,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following lakes forms an international boundary between Tanzania and Uganda?",
+      "options": {
+        "A": "Chad",
+        "B": "Malawi",
+        "C": "Victoria",
+        "D": "Zambezi"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_1999_Q40",
+      "questionNumber": 40,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match the cities labelled as A, B, C and D in the given map with the names of cities and select the correct answer using the codes given below the names of cities: Names of Cities: 1. Darwin 2. Kuala Lumpur 3. Lagos 4. Nairobi 5. Singapore Codes:",
+      "options": {
+        "A": "A-1, B-2, C-4, D-3",
+        "B": "A-2, B-1, C-4, D-3",
+        "C": "A-1, B-4, C-5, D-2",
+        "D": "A-4, B-3, C-5, D-2"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_1999_Q41",
+      "questionNumber": 41,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "The physical regions marked as 1, 2, 3 and 4 on the given map are respectively:",
+      "options": {
+        "A": "Andes, Brazilian Shield, Guyana Highlands and Amazon Basin",
+        "B": "Andes, Guyana Highlands, Brazilian Shield and Amazon Basin",
+        "C": "Amazon Basin, Guyana Highlands, Brazilian Shield and Andes",
+        "D": "Guyana Highlands, Brazilian Shield, Andes and Amazon Basin"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_1998_Q42",
+      "questionNumber": 42,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match rivers labelled A, B, C and D on the given map with their names given in the list and select the correct answer using the codes given below the list: 1. St. Lawrence 2. Orinoco 3. Mackenzie 4. Amazon 5. Yukon",
+      "options": {
+        "A": "A-4, B-3, C-2, D-1",
+        "B": "A-5, B-3, C-1, D-2",
+        "C": "A-5, B-4, C-1, D-3",
+        "D": "A-3, B-1, C-4, D-2"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_1997_Q43",
+      "questionNumber": 43,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the geographical details given in the following figure: The point marked by A in the above figure indicates a country in:",
+      "options": {
+        "A": "North America",
+        "B": "South America",
+        "C": "Europe",
+        "D": "Asia"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_1997_Q44",
+      "questionNumber": 44,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "One will NOT have to pass through the Suez Canal while going from Mumbai to:",
+      "options": {
+        "A": "Alexandria",
+        "B": "Suez",
+        "C": "Port Said",
+        "D": "Benghazi"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_1997_Q45",
+      "questionNumber": 45,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "During a flight from Delhi to Tokyo the following are the landing airports: I. Hong Kong II. Hanoi III. Taipei IV Bangkok The correct sequence of the landing at these airports during an onward journey is",
+      "options": {
+        "A": "I, II, III, IV",
+        "B": "IV, II, I, III",
+        "C": "III, IV, I, II",
+        "D": "IV, I, II, III"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_1996_Q46",
+      "questionNumber": 46,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "A rough outline map of northern Sri Lanka is shown in the figure. Jaffna is located at the point marked:",
+      "options": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_1996_Q47",
+      "questionNumber": 47,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "The rough outline map shows a portion of the Middle East. The countries labelled A, B, C and D are respectively:",
+      "options": {
+        "A": "Syria, Iraq, Jordan and Saudi Arabia",
+        "B": "Syria, Iraq, Saudi Arabia and Jordan",
+        "C": "Iraq, Syria, Saudi Arabia and Jordan",
+        "D": "Iraq, Syria, Jordan and Saudi Arabia"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_1995_Q48",
+      "questionNumber": 48,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Given below is a map of some countries which were parts of the erstwhile Soviet Union, with water bodies shown by shaded areas: The countries marked 1, 2, 3, 4 and 5 are respectively:",
+      "options": {
+        "A": "Tajikistan, Turkmenia, Uzbekistan, Kirgizia, Kazakhstan",
+        "B": "Turkmenia, Kirgizia, Tajikistan, Uzbekistan, Kazakhstan",
+        "C": "Kazakhstan, Uzbekistan, Tajikistan, Kirgizia, Turkmenia",
+        "D": "Kazakhstan, Turkmenia, Uzbekistan, Kirgizia, Tajikistan"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_MAPW_1995_Q49",
+      "questionNumber": 49,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the map given below indicating four places frequently figuring in the news: Which one of them is Chechenya? Choose the correct answer from the codes given below:",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "world-map-locations",
+      "syllabusNodeId": "GS1-GEO-IND"
+    }
+  ]
+}

@@ -1,0 +1,1227 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Environment",
+  "topicName": "Environmental Pollution",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "sectionId": "GS3-ENV-POLLUTION",
+  "sectionName": "Pollution & Waste Management",
+  "sourceFile": "environmental_pollution.docx",
+  "questions": [
+    {
+      "id": "ENV_POL_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement I: Activated carbon is a good and an attractive tool to remove pollutants from effluent streams and to remediate contaminants from various industries. Statement II: Activated carbon exhibits a large surface area and a strong potential for adsorbing heavy metals. Statement III: Activated carbon can be easily synthesized from environmental wastes with high carbon content. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement II and Statement III are correct and both of them explain Statement I",
+        "B": "Both Statement II and Statement III are correct but only one of them explains Statement I",
+        "C": "Only one of the Statements II and III is correct and that explains Statement I",
+        "D": "Neither Statement II nor Statement III is correct"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_POL_2025_Q2",
+      "questionNumber": 2,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: I. Cigarette butts II. Eyeglass lenses III. Car tyres How many of them contain plastic?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All the three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2024_Q3",
+      "questionNumber": 3,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Perfluoroalkyl and polyfluoroalkyl substances (PFAS) that are used in making many consumer products, consider the following statements: 1. PFAS are found to be widespread in drinking water, food and food packaging materials. 2. PFAS are not easily degraded in the environment. 3. Persistent exposure to PFAS can lead to bioaccumulation in animal bodies. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2024_Q4",
+      "questionNumber": 4,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement I: Many chewing gums found in the market are considered a source of environmental pollution. Statement-II: Many chewing gums contain plastic as gum base. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+        "B": "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+        "C": "Statement-I is correct, but Statement-II is incorrect",
+        "D": "Statement-I is incorrect, but Statement-II is correct"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_POL_2024_Q5",
+      "questionNumber": 5,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "According to the Environmental Protection Agency (EPA), which one of the following is the largest source of sulphur dioxide emissions?",
+      "options": {
+        "A": "Locomotives using fossil fuels",
+        "B": "Ships using fossil fuels",
+        "C": "Extraction of metals from ores",
+        "D": "Power plants using fossil fuels"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2024_Q6",
+      "questionNumber": 6,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "\"Membrane Bioreactors\" are often discussed in the context of:",
+      "options": {
+        "A": "Assisted reproductive technologies",
+        "B": "Drug delivery nanotechnologies",
+        "C": "Vaccine production technologies",
+        "D": "Wastewater treatment technologies"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2023_Q7",
+      "questionNumber": 7,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the role of biofilters in Recirculating Aquaculture System, consider the following statements: 1. Biofilters provide waste treatment by removing uneaten fish feed. 2. Biofilters convert ammonia present in fish waste to nitrate. 3. Biofilters increase phosphorus as nutrient for fish in water. How many of the statements given above are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2023_Q8",
+      "questionNumber": 8,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements regarding mercury pollution: 1. Gold mining activity is a source of mercury pollution in the world. 2. Coal-based thermal power plants cause mercury pollution. 3. There is no known safe level of exposure to mercury. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2022_Q9",
+      "questionNumber": 9,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Carbon monoxide 2. Nitrogen oxide 3. Ozone 4. Sulphur dioxide Excess of which of the above in the environment is/are the cause(s) of acid rain?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "2 and 4 only",
+        "C": "4 only",
+        "D": "1, 3 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2022_Q10",
+      "questionNumber": 10,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of WHO Air Quality Guidelines, consider the following statements: 1. The 24-hour mean of PM 2.5 should not exceed 15 pig/m3 and annual mean of PM2.5 should not exceed 5µg/m3. 2. In a year, the highest levels of ozone pollution occur during the periods of inclement weather. 3. PM 10 can penetrate the lung barrier and enter the bloodstream. 4. Excessive ozone in the air can trigger asthma. Which of the statements given above are correct?",
+      "options": {
+        "A": "1, 3 and 4",
+        "B": "1 and 4 only",
+        "C": "2, 3 and 4",
+        "D": "1 and 2 only"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2022_Q11",
+      "questionNumber": 11,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Other than those made by humans, nanoparticles do not exist in nature. 2. Nanoparticles of some metallic oxides are used in the manufacture of some cosmetics. 3. Nanoparticles of some commercial products which enter the environment are unsafe for humans. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "3 only",
+        "C": "1 and 2",
+        "D": "2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-LAWS",
+      "sectionName": "Environmental Governance & Laws",
+      "topicId": "GS3-ENV-ACTS",
+      "topicName": "Indian Environmental Acts",
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "nodeId": "GS3-ENV-ACTS",
+      "microTheme": "Indian Environmental Acts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2021_Q12",
+      "questionNumber": 12,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Magnetite particles suspected to cause neurodegenerative problems, are generated as environmental pollutants from which of the following? 1) Brakes of motor vehicles 2) Engines of motor vehicles 3) Microwave stoves within homes 4) Power plants 5) Telephone lines Select the correct answer using the code given below.",
+      "options": {
+        "A": "1, 2, 3 and 5 only",
+        "B": "1, 2 and 4 only",
+        "C": "3, 4 and 5 only",
+        "D": "1, 2, 3, 4 and 5"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_POL_2021_Q13",
+      "questionNumber": 13,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "'R2 Code of Practices' constitutes a tool available for promoting the adoption of:",
+      "options": {
+        "A": "Environmentally responsible practices in electronics recycling industry",
+        "B": "Ecological management of 'Wetlands of International Importance' under the Ramsar",
+        "C": "Sustainable practices in the cultivation of agricultural crops in degraded lands",
+        "D": "'Environmental Impact Assessment' in the exploitation of natural resources"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2021_Q14",
+      "questionNumber": 14,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Why is there a concern about copper smelting plants? 1) They may release lethal quantities of carbon monoxide into environment. 2) The copper slag can cause the leaching of some heavy metals into environment. 3) They may release sulphur dioxide as a pollutant. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2021_Q15",
+      "questionNumber": 15,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to furnace oil, consider the following statements: 1) It is a product of oil refineries. 2) Some industries use it to generate power 3) Its use causes sulphur emissions into environment. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2020_Q16",
+      "questionNumber": 16,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are the reasons/factors for exposure to benzene pollution? 1. Automobile exhaust 2. Tobacco smoke 3. Wood burning 4. Using varnished wooden furniture 5. Using products made of polyurethane Select the correct answer using the code given below:",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "2 and 4 only",
+        "C": "1, 3 and 4 only",
+        "D": "1, 2, 3, 4 and 5"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2020_Q17",
+      "questionNumber": 17,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Coal ash contains arsenic, lead and mercury. 2. Coal-fired power plants release sulphur dioxide and oxides of nitrogen into the environment. 3. High ash content is observed in Indian coal. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2020_Q18",
+      "questionNumber": 18,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Steel slag can be the material for which of the following? 1. Construction of base road 2. Improvement of agricultural soil 3. Production of cement Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2019_Q19",
+      "questionNumber": 19,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Why is there a great concern about the 'microbeads' that are released into environment?",
+      "options": {
+        "A": "They are considered harmful to marine ecosystems.",
+        "B": "They are considered to cause skin cancer in children.",
+        "C": "They are small enough to be absorbed by crop plants in irrigated fields.",
+        "D": "They are often found to be used as food adulterants."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2019_Q20",
+      "questionNumber": 20,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, the use of carbofuran, methyl parathion, phorate and triazophos is viewed with apprehension. These chemicals are used as:",
+      "options": {
+        "A": "Pesticides in agriculture",
+        "B": "Preservatives in processed foods",
+        "C": "Fruit-ripening agents",
+        "D": "Moisturising agents in cosmetics"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2019_Q21",
+      "questionNumber": 21,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: The Environment Protection Act, 1986 empowers the Government of India to 1. State the requirement of public participation in the process of environmental protection, and the procedure and manner in which it is sought 2. Lay down the standards for emission or discharge of environmental pollutants from various sources Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-LAWS",
+      "sectionName": "Environmental Governance & Laws",
+      "topicId": "GS3-ENV-ACTS",
+      "topicName": "Indian Environmental Acts",
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "nodeId": "GS3-ENV-ACTS",
+      "microTheme": "Indian Environmental Acts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_POL_2019_Q22",
+      "questionNumber": 22,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "As per the Solid Waste Management Rules, 2016 in India, which one of the following statements is correct?",
+      "options": {
+        "A": "Waste generator has to segregate waste into five categories.",
+        "B": "The Rules are applicable to notified urban local bodies, notified towns and all industrial townships only.",
+        "C": "The Rules provide for exact and elaborate criteria for the identification of sites for landfills and waste processing facilities.",
+        "D": "It is mandatory on the part of the waste generator that the waste generated in one district cannot be moved to another district."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2019_Q23",
+      "questionNumber": 23,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, 'extended producer responsibility' was introduced as an important feature in which of the following?",
+      "options": {
+        "A": "The Bio-medical Waste (Management and Handling) Rules, 1998",
+        "B": "The Recycled Plastic (Manufacturing and Usage) Rules, 1999",
+        "C": "The E-Waste (Management and Handling) Rules,",
+        "D": "The Food Safety and Standard Regulations, 2011"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2018_Q24",
+      "questionNumber": 24,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "How is the National Green Tribunal (NGT) different from Central Pollution Control Board (CPCB)? 1. The NGT has been established by an Act and CPCB has been created by an executive order of the government. 2. The NGT provides environmental justice and helps reducing the burden of litigation in the High Courts whereas the CPCB promotes the cleanliness of streams and wells , aims to improve the quality of air in the country. Which of the statement(s) given below is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-LAWS",
+      "sectionName": "Environmental Governance & Laws",
+      "topicId": "GS3-ENV-ACTS",
+      "topicName": "Indian Environmental Acts",
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "nodeId": "GS3-ENV-ACTS",
+      "microTheme": "Indian Environmental Acts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_POL_2017_Q25",
+      "questionNumber": 25,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of solving pollution problems, what is/are the advantage/advantages of bioremediation technique? 1. It is a technique for cleaning up pollution by enhancing the same biodegradation process that occurs in nature. 2. Any contaminant with heavy metals such as cadmium and lead can be readily and completely treated by bioremediation using microorganisms. 3. Genetic engineering can be used to create microorganisms specifically designed for bioremediation. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2017_Q26",
+      "questionNumber": 26,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Biological Oxygen Demand (BOD) is a standard criterion for:",
+      "options": {
+        "A": "Measuring oxygen levels in blood",
+        "B": "Computing oxygen levels in forest ecosystems",
+        "C": "Pollution assay in aquatic ecosystems",
+        "D": "Assessing oxygen levels in high altitude regions"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2016_Q27",
+      "questionNumber": 27,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the cities of our country, which among the following atmospheric gases are normally considered in calculating the value of the Air Quality Index? 1. Carbon dioxide 2. Carbon monoxide 3. Nitrogen dioxide 4. Sulphur dioxide 5. Methane Select the correct answer using the code given below.",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "2, 3 and 4 only",
+        "C": "1, 4 and 5 only",
+        "D": "1, 2, 3, 4 and 5"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2015_Q28",
+      "questionNumber": 28,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to bio-toilets used by the Indian Railways, consider the following statements: 1. The decomposition of human waste in the biotoilets is initiated by a fungal inoculum. 2. Ammonia and water vapour are the only end products in this decomposition which are released into the atmosphere. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2015_Q29",
+      "questionNumber": 29,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to 'fly ash' produced by the power plants using the coal as fuel, which of the following statements is/are correct? 1. Fly ash can be used in the production of bricks for building construction 2. Fly ash can be used as a replacement for some of the Portland cement contents of concrete 3. Fly ash is made up of silicon dioxide and calcium oxide only, and does not contain any toxic elements. Select the correct answer using the code given below",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "1 and 3",
+        "D": "3 only"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2014_Q30",
+      "questionNumber": 30,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are some important pollutants released by the steel industry in India? 1. Oxides of sulphur 2. Oxide of nitrogen 3. Carbon monoxide 4. Carbon dioxide Select the correct answer using the code given below.",
+      "options": {
+        "A": "1, 3 and 4 only",
+        "B": "2 and 3 only",
+        "C": "1 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2014_Q31",
+      "questionNumber": 31,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Brominated flame retardants are used in many household products like mattresses and upholstery. Why is there some concern about their use? 1. They are highly resistant to degradation in the environment. 2. They are able to accumulate in humans and animals. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2014_Q32",
+      "questionNumber": 32,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "There is some concern regarding the nanoparticles of some chemical elements that are used by the industry in the manufacture of various products. Why? 1. They can accumulate in the environment and contaminate water and soil. 2. They can enter the food chains. 3. They can trigger the production of free radicals. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2013_Q33",
+      "questionNumber": 33,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Due to improper / indiscriminate disposal of old and used computers or their parts, which of the following are released into the environment as ewaste? 1. Beryllium 2. Cadmium 3. Chromium 4. Heptachlor 5. Mercury 6. Lead 7. Plutonium Select the correct answer using the codes given below.",
+      "options": {
+        "A": "1, 3, 4, 6, and 7 only",
+        "B": "1, 2, 3, 5, and 6 only",
+        "C": "2, 4, 5 and 7 only",
+        "D": "1, 2, 3, 4, 5, 6, and 7"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2013_Q34",
+      "questionNumber": 34,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Acid rain is caused by the pollution of the environment by?",
+      "options": {
+        "A": "1 only",
+        "B": "Carbon monoxide and carbon dioxide",
+        "C": "2 and 3 only",
+        "D": "Nitrous oxide and sulphur dioxide"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2013_Q35",
+      "questionNumber": 35,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Photochemical smog is a resultant of the reaction among?",
+      "options": {
+        "A": "NO2, O3 and peroxyacetyl nitrate in the presence of sunlight",
+        "B": "CO, CO2 and peroxyacetyl nitrate in the presence of sunlight",
+        "C": "CO, CO2 and NO2 at low temperature",
+        "D": "High concentration of NO2, O3 and CO in the evening"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2013_Q36",
+      "questionNumber": 36,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following can be found as pollutants in the drinking water in some parts of India? 1. Arsenic 2. Sorbitol 3. Fluoride 4. Formaldehyde 5. Uranium Select the correct answer using the codes given below.",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2, 4 and 5 only",
+        "C": "1, 3, and 5 only",
+        "D": "1, 2, 3, 4, and 5"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2012_Q37",
+      "questionNumber": 37,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Lead, ingested or inhaled, is a health hazard. After the addition of lead to petrol has been banned, what still are the sources of lead poisoning? 1. Smelting units 2. Pens and pencils 3. Paints 4. Hair oils and cosmetics Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1,2 & 3 only",
+        "B": "1 and 3 only",
+        "C": "2 & 4 only",
+        "D": "1,2,3 & 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2011_Q38",
+      "questionNumber": 38,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "There is a concern over the increase in harmful algal blooms in the seawater of India. What could be the causative factors for this phenomenon? 1. Discharge of nutrients from the estuaries. 2. Run-off from the land during the monsoon. 3. Upwelling in the seas. Select the correct answer from the codes given below.",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2, and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-LAWS",
+      "sectionName": "Environmental Governance & Laws",
+      "topicId": "GS3-ENV-ACTS",
+      "topicName": "Indian Environmental Acts",
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "nodeId": "GS3-ENV-ACTS",
+      "microTheme": "Indian Environmental Acts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2011_Q39",
+      "questionNumber": 39,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Carbon dioxide. 2. Oxides of nitrogen. 3. Oxides of Sulphur Which of the above is/are the emission/emissions from coal combustion at thermal power plants?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2, and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2010_Q40",
+      "questionNumber": 40,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Indiscriminate disposal of used fluorescent electric lamps causes mercury pollution in the environment. Why is mercury used in the manufacture of these lamps?",
+      "options": {
+        "A": "A mercury coating on the inside of the lamp makes the light bright white.",
+        "B": "When the lamp is switched on, the mercury in the lamp causes the emission of ultra-violet radiations.",
+        "C": "When the lamp is switched on, it is the mercury which converts the ultra-violet energy into visible light.",
+        "D": "None of the statement given above is correct about the use of mercury in the manufacture of fluorescent lamps."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2010_Q41",
+      "questionNumber": 41,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which bacterial strain, developed from natural isolates by genetic manipulations, can be used for treating oil spills?",
+      "options": {
+        "A": "Agrobacterium",
+        "B": "Clostridium",
+        "C": "Nitrosomonas",
+        "D": "Pseudomonas"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-LAWS",
+      "sectionName": "Environmental Governance & Laws",
+      "topicId": "GS3-ENV-ACTS",
+      "topicName": "Indian Environmental Acts",
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "nodeId": "GS3-ENV-ACTS",
+      "microTheme": "Indian Environmental Acts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2003_Q42",
+      "questionNumber": 42,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (A): Coal-based thermal power stations contribute to acid-rain.: Reason (R): Oxides of carbon are emitted when the coal burns.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_2003_Q43",
+      "questionNumber": 43,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is produced during the formation of photochemical smog?",
+      "options": {
+        "A": "Hydrocarbons",
+        "B": "Nitrogen Oxides",
+        "C": "Ozone",
+        "D": "Methane"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_1998_Q44",
+      "questionNumber": 44,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "The water pollution in river is measured by the dissolved amount of:",
+      "options": {
+        "A": "Chlorine",
+        "B": "Ozone",
+        "C": "Nitrogen",
+        "D": "Oxygen"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_POL_1995_Q45",
+      "questionNumber": 45,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following fuels causes minimum environmental pollution?",
+      "options": {
+        "A": "Diesel",
+        "B": "Coal",
+        "C": "Hydrogen",
+        "D": "Kerosene"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    }
+  ],
+  "totalQuestions": 45
+}

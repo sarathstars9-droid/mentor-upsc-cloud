@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Anti-Defection Law",
+  "topicId": "anti_defection_law",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 3,
+  "questions": [
+    {
+      "id": "POL_ANTI_DEFECTION_LAW_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: I. If any question arises as to whether a Member of the House of the People has become subject to disqualification under the Tenth Schedule, the President’s decision in accordance with the opinion of the Council of Union Ministers shall be final. II. There is no mention of the word 'political party' in the Constitution of India. Which of the statements given above are correct?",
+      "options": {
+        "A": "I only",
+        "B": "II only",
+        "C": "Both I and II",
+        "D": "Neither I nor II"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Anti-Defection Law",
+      "topicId": "anti_defection_law",
+      "sectionId": "GS2-POL-ELECTIONS",
+      "nodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_ANTI_DEFECTION_LAW_2022_Q2",
+      "questionNumber": 2,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to anti-defection law in India, consider the following statements: 1. The law specifies that a nominated legislator cannot join any political party within six months of being appointed to the House. 2. The law does not provide any time-frame within which the presiding officer has to decide a defection case. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Anti-Defection Law",
+      "topicId": "anti_defection_law",
+      "sectionId": "GS2-POL-ELECTIONS",
+      "nodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "microTheme": "Anti-Defection",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_ANTI_DEFECTION_LAW_2014_Q3",
+      "questionNumber": 3,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following Schedules of the Constitution of India contains provisions regarding anti-defection?",
+      "options": {
+        "A": "Second Schedule",
+        "B": "Fifth Schedule",
+        "C": "Eighth Schedule",
+        "D": "Tenth Schedule"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Anti-Defection Law",
+      "topicId": "anti_defection_law",
+      "sectionId": "GS2-POL-ELECTIONS",
+      "nodeId": "GS2-POL-ELECTIONS",
+      "syllabusNodeId": "GS2-POL-ELECTIONS",
+      "microTheme": "Anti-Defection",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

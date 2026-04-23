@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "NHRC",
+  "topicId": "nhrc",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 2,
+  "questions": [
+    {
+      "id": "POL_NHRC_2023_Q1",
+      "questionNumber": 1,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following organizations /bodies in India: 1. The National Commission for Backward Classes 2. The National Human Rights Commission 3. The National Law Commission 4. The National Consumer Disputes Redressal Commission How many of the above are constitutional bodies?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "NHRC",
+      "topicId": "nhrc",
+      "sectionId": "GS2-POL-BODIES",
+      "nodeId": "GS2-POL-BODIES",
+      "syllabusNodeId": "GS2-POL-BODIES",
+      "microTheme": "Human Rights Bodies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_NHRC_1999_Q3",
+      "questionNumber": 3,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements regarding the National Human Rights Commission of India: I. Its Chairman must be a retired Chief Justice of India. II. It has formations in each state as State Human Rights Commission. III. Its powers are only recommendatory in nature. IV. It is mandatory to appoint a woman as a member of the Commission. Which of the above statements are correct?",
+      "options": {
+        "A": "I, II, III and IV",
+        "B": "II and IV",
+        "C": "II and III",
+        "D": "I and III"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "NHRC",
+      "topicId": "nhrc",
+      "sectionId": "GS2-POL-BODIES",
+      "nodeId": "GS2-POL-BODIES",
+      "syllabusNodeId": "GS2-POL-BODIES",
+      "microTheme": "Human Rights Bodies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

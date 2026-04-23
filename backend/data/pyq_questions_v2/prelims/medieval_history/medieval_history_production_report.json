@@ -1,0 +1,35 @@
+{
+  "files": [
+    {
+      "fileName": "advent_of_europeans_in_india.json",
+      "count": 13
+    },
+    {
+      "fileName": "art_architecture_literature.json",
+      "count": 18
+    },
+    {
+      "fileName": "politics_and_society.json",
+      "count": 65
+    },
+    {
+      "fileName": "religion_philosophy.json",
+      "count": 12
+    }
+  ],
+  "totalQuestions": 108,
+  "duplicateIds": 0,
+  "reviewRequired": 2,
+  "issues": [
+    {
+      "id": "HIS_MED_ART_1997_Q15",
+      "topic": "Art, Architecture and Literature",
+      "reason": "off-pattern or broad historical carry-over; review recommended"
+    },
+    {
+      "id": "HIS_MED_POL_2000_Q43",
+      "topic": "Politics and Society",
+      "reason": "off-pattern or broad historical carry-over; review recommended"
+    }
+  ]
+}

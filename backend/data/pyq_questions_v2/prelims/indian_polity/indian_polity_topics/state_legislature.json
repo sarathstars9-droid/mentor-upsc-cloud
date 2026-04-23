@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "State Legislature",
+  "topicId": "state_legislature",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 6,
+  "questions": [
+    {
+      "id": "POL_STATE_LEGISLATURE_2019_Q1",
+      "questionNumber": 1,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Legislative Assembly of a State in India, consider the following statements: 1. The Governor makes a customary address to Members of the House at the commencement of the first session of the year. 2. When a State Legislature does not have a rule on a particular matter, it follows the Lok Sabha rule on that matter. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "State Legislature",
+      "topicId": "state_legislature",
+      "sectionId": "GS2-POL-STATE-LEG",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_STATE_LEGISLATURE_2018_Q2",
+      "questionNumber": 2,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Speaker of the Legislative Assembly shall vacate his/her office if he/she ceases to be a member of the Assembly. 2. Whenever the Legislative Assembly is dissolved, the Speaker shall vacate his/her office immediately. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 and 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "State Legislature",
+      "topicId": "state_legislature",
+      "sectionId": "GS2-POL-STATE-LEG",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "Speaker",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_STATE_LEGISLATURE_2015_Q3",
+      "questionNumber": 3,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Legislative Council of a state in India can be larger in size than half of the Legislative Assembly of that particular state. 2. The Governor of a state nominates the Chairman of the Legislative Council of that particular state. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "State Legislature",
+      "topicId": "state_legislature",
+      "sectionId": "GS2-POL-STATE-LEG",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_STATE_LEGISLATURE_2008_Q4",
+      "questionNumber": 4,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: The Constitution of India Provides that 1. The Legislative Assembly of each State shall Consist of not more than 450 members chosen by direct election from territorial constituencies in the State 2. A person shall not be qualified to be chosen to fill a seat in the Legislative Assembly of a State if he/she is less than 25 years of age Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 Only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "State Legislature",
+      "topicId": "state_legislature",
+      "sectionId": "GS2-POL-STATE-LEG",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "State Legislature",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_STATE_LEGISLATURE_1995_Q5",
+      "questionNumber": 5,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following States of India does not have a Legislative Council so far even though the Constitution (Seventh Amendment) Act, 1956 provides for it?",
+      "options": {
+        "A": "Maharashtra",
+        "B": "Bihar",
+        "C": "Karnataka",
+        "D": "Madhya Pradesh"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "State Legislature",
+      "topicId": "state_legislature",
+      "sectionId": "GS2-POL-STATE-LEG",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "State Legislature",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_STATE_LEGISLATURE_1995_Q6",
+      "questionNumber": 6,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "If in an election to a State Legislative Assembly the candidate who is declared elected loses his deposit, it means that:",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "State Legislature",
+      "topicId": "state_legislature",
+      "sectionId": "GS2-POL-STATE-LEG",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "State Legislature",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

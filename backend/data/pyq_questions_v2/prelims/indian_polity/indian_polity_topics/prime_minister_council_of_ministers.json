@@ -1,0 +1,793 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Prime Minister and Council of Ministers",
+  "topicId": "prime_minister_council_of_ministers",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 29,
+  "questions": [
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2022_Q1",
+      "questionNumber": 1,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Constitution of India classifies the ministers into four ranks viz. Cabinet Minister, Minister of State with Independent Charge, Minister of State and Deputy Minister. 2. The total number of ministers in the Union Government, including the Prime Minister, shall not exceed 15 percent of the total number of members in the Lok Sabha. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2021_Q2",
+      "questionNumber": 2,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Union Government, consider the following statements: 1) Gopalaswamy Iyengar Committee suggested that a minister and a secretary be designated solely for pursuing the subject of administrative reform and promoting it. 2) In 1970, the Department of Personnel was constituted on the recommendation of the Administrative Reforms Commission, 1966, and this was placed under the Prime Minister’s charge. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2021_Q3",
+      "questionNumber": 3,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "At the national level, which ministry is nodal agency to ensure effective implementation of the Scheduled Tribes and Other Traditional Forest Dwellers (Recognition of Forest Rights) Act, 2006?",
+      "options": {
+        "A": "Ministry of Environment, Forest and Climate Change",
+        "B": "Ministry of Panchayati Raj",
+        "C": "Ministry of Rural Development",
+        "D": "Ministry of Tribal Affairs"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "NITI Aayog",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2016_Q4",
+      "questionNumber": 4,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Chief Secretary in a State is appointed by the Governor of that State. 2. The Chief Secretary in a State has a fixed tenure. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2015_Q5",
+      "questionNumber": 5,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Executive Power of the union of India is vested in the Prime Minister. 2. The Prime Minister is the ex-officio Chairman of the Civil Services Board. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2014_Q6",
+      "questionNumber": 6,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The President shall make rules for the more convenient transaction of the business of the Government of India, and for the allocation among Ministers of the said business. 2. All executive actions of the Government of India shall be expressed to be taken in the name of the Prime Minister. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2014_Q7",
+      "questionNumber": 7,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: Programme/Project Ministry 1 Drought-Prone Area Programme: Ministry of Agriculture 2. Desert Development Programme: Ministry of Environment and Forests 3. National Watershed Development Project for Rainfed Areas: Ministry of Rural Development Which of the above pairs is/are correctly matched?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1, 2 and 3",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2014_Q8",
+      "questionNumber": 8,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following is/are the function/functions of the Cabinet Secretariat? 1. Preparation of agenda for Cabinet Meetings 2. Secretariat assistance to Cabinet Committees 3. Allocation of financial resources to the Ministries Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 2 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2013_Q9",
+      "questionNumber": 9,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The council of Ministers in the centre shall be collectively responsible to the Parliament. 2. The Union Ministers shall hold the office during the pleasure of the president of India. 3. The Prime Minister shall communicate to the president about the proposals for legislation. Which of the statement(s) given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2012_Q10",
+      "questionNumber": 10,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Prime Minister of India, at the time of his/her appointment:",
+      "options": {
+        "A": "Need not necessarily be a member of one of the Houses of the Parliament but must become a member of one of the Houses within six months",
+        "B": "Need not necessarily be a member of one of the Houses of the Parliament but must become a member of the Lok Sabha within six months",
+        "C": "Must be a member of one of the Houses of the Parliament",
+        "D": "Must be a member of the Lok Sabha"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2009_Q11",
+      "questionNumber": 11,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Union Government, consider the following statements: 1. The Constitution of India provides that all Cabinet Ministers shall be compulsorily the sitting members of Lok Sabha only. 2. The Union Cabinet Secretariat operates under the direction of the Ministry of Parliamentary affairs. Which of the statements given above is/ are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2009_Q12",
+      "questionNumber": 12,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following Constitutional amendments states that the total number of Ministers, including the Prime Minister, in the Council of Ministers shall not exceed fifteen percent of the total number of members of the House of the People?",
+      "options": {
+        "A": "90th",
+        "B": "91st",
+        "C": "92nd",
+        "D": "93rd"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2009_Q13",
+      "questionNumber": 13,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Union Government, consider the following statements: 1. The number of Ministries at the Centre on 15th august 1947 was 18. 2 The number of Ministries at the Centre at present is 36. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2009_Q14",
+      "questionNumber": 14,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Union Government consider the following statements: 1. The Ministries and Departments of the Government of India are created by the Prime Minister on the advice of the Cabinet Secretary. 2. Each of the Ministries is assigned to a Minister by the President of India on the advice of the Prime Minister. Which of the statements given above is/ are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2009_Q15",
+      "questionNumber": 15,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "Under the administration of which one of the following is the Department of atomic Energy?",
+      "options": {
+        "A": "Prime Minister's Office",
+        "B": "Cabinet Secretariat",
+        "C": "Ministry of Power",
+        "D": "Ministry of Science and Technology"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2008_Q16",
+      "questionNumber": 16,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Department of Border Management is a Department of which one of the following Union Ministries?",
+      "options": {
+        "A": "Ministry of Defence",
+        "B": "Ministry Of Home Affairs",
+        "C": "Ministry of Shipping, Road Transport and Highways",
+        "D": "Ministry of Enviroment and Forests"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2007_Q17",
+      "questionNumber": 17,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following Constitution Amendment Acts seeks that the size of the Councils of Ministers at the Centre and in a State must not exceed 15 per cent of the total number of members in the Lok Sabha and the total numbers of members of the Legislative Assembly of that state,respectively?",
+      "options": {
+        "A": "91st",
+        "B": "93rd",
+        "C": "95th",
+        "D": "97th"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2007_Q18",
+      "questionNumber": 18,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Jawaharlal Nehru was in his fourth term as the Prime Minister of India at the time of his death. 2. Jawaharlal Nehru represented Rae Bareilly constituency as a Member of Parliament. 3. The first non-Congress Prime Minister of India assumed the Office in the year 1977. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "3 only",
+        "C": "1 only",
+        "D": "1 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2007_Q19",
+      "questionNumber": 19,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "MCA-21 is a major initiative taken up by the Government of India in which one of the following areas?",
+      "options": {
+        "A": "Foreign direct investment in India",
+        "B": "Attracting international tourists",
+        "C": "e-governance",
+        "D": "Modernization of airports"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "NITI Aayog",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2007_Q20",
+      "questionNumber": 20,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who among the following have been the Union Finance Ministers of India? 1. V.P. Singh 2. R. Venkattaraman 3. Y.B. Chavan 4. Pranab Mukherjee Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1,2 and 3 only",
+        "B": "1,3 and 4 only",
+        "C": "2 and 4 only",
+        "D": "1,2,3 and 4"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2005_Q21",
+      "questionNumber": 21,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Under which one of the Ministries of the Government of India does the food and nutrition board work?",
+      "options": {
+        "A": "Ministry of Agriculture",
+        "B": "Ministry of Health and Family Welfare",
+        "C": "Ministry of Human Resource Development",
+        "D": "Ministry of Rural Development"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2004_Q22",
+      "questionNumber": 22,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following pairs is correctly matched? Department Ministry of the Government of India: 1. Department of Women and Child Development: Ministry of Health and Family 2. Department of Official Language: Ministry of Human Resource 3. Department of Drinking Water Supply: Ministry of Water Resources Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2003_Q23",
+      "questionNumber": 23,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Genetic Engineering Approval Committee, whose permission is required for cultivation of any genetically modified crop such as BtCotton in India, is under the Union Minister of",
+      "options": {
+        "A": "Agriculture",
+        "B": "Environment and Forests",
+        "C": "Commerce and Industry",
+        "D": "Rural Development"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2001_Q24",
+      "questionNumber": 24,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following organisations: I. Atomic Minerals Directorate for Research and Exploration II. Heavy Water Board III. Indian Rare Earths Limited IV. Uranium Corporation of India Which of these is/are under the Department of Atomic Energy?",
+      "options": {
+        "A": "I only",
+        "B": "I and IV",
+        "C": "II, III and IV",
+        "D": "I, II, III and IV"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_2000_Q25",
+      "questionNumber": 25,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following functionaries: I. Cabinet Secretary II. Chief Election Commissioner III. Union Cabinet Ministers IV. Chief Justice of India Their correct sequence, in the Order of Precedence is",
+      "options": {
+        "A": "III, IV, II, I",
+        "B": "IV, III, I, II",
+        "C": "IV, III, II, I",
+        "D": "III, IV, I, II"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_1999_Q26",
+      "questionNumber": 26,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Transchart is the:",
+      "options": {
+        "A": "Chartering wing of the Ministry of Surface Transport",
+        "B": "Container service established by Indian Railways",
+        "C": "Training institute of maritime studies and research",
+        "D": "Passenger insurance scheme of Indian Railways"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_1997_Q27",
+      "questionNumber": 27,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer by using the codes given below the lists: List I (Functionaries) List II (Oaths or Affirmations) I. President of India A. Secrecy of Information II. Judges of Supreme Court B. Faithful Discharge of Duties III. Members of Parliament C. Faith and Allegiance to the Constitution of India IV. Ministers for the Union D. Upholding the Constitution and the Law",
+      "options": {
+        "A": "IC, IID, IIIA, IVB",
+        "B": "ID, IIC, IIIB, IVA",
+        "C": "IC, IID, IIIB, IVA",
+        "D": "ID, IIC, IIIA, IVB"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_1996_Q28",
+      "questionNumber": 28,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements is correct? The Prime Minister of India",
+      "options": {
+        "A": "Is free to choose his ministers only from among those who are members of either House of the Parliament",
+        "B": "Can choose his cabinet colleagues after due counselling by the President of India in this regard",
+        "C": "Has full discretion in the choice of persons who are to serve as ministers in his cabinet",
+        "D": "Has only limited powers in the choice of his cabinet colleagues because of the discretionary power vested with the President of India"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Prime Minister and Council of Ministers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRIME_MINISTER_COUNCIL_OF_MINISTERS_1995_Q29",
+      "questionNumber": 29,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is not explicitly stated in the Constitution of India but followed as a convention? a) The finance minister is to be a Member of the Lower House b) The Prime Minister has to resign if he loses majority in the Lower House c) All the parts of India are to be represented in the Council of Ministers d) In the event of both the President and the Vice- president demitting office simultaneously before the end of their tenure the Speaker of the Lower House of the Parliament will officiate as the President III. An Ordinance can come into effect from a back date. Which of the statements given above are correct?",
+      "options": {
+        "A": "I and II only",
+        "B": "II and III only",
+        "C": "I and III only",
+        "D": "I, II and III"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Prime Minister and Council of Ministers",
+      "topicId": "prime_minister_council_of_ministers",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Speaker",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

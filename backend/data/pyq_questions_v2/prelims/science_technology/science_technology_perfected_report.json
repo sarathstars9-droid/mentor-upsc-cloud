@@ -1,0 +1,23 @@
+{
+  "status": "science_dataset_perfected_best_effort",
+  "subject": "Science & Technology",
+  "totalTopicFilesBuilt": 8,
+  "totalQuestions": 415,
+  "manualCorrectionsCount": 72,
+  "nullifiedAmbiguousCount": 5,
+  "remainingReviewRequiredIds": [
+    "SCI_SCI_ELEC_IT_2018_Q13",
+    "SCI_SCI_SPACE_2025_Q3",
+    "SCI_SCI_SPACE_2022_Q6",
+    "SCI_SCI_BIOTECH_2024_Q2",
+    "SCI_SCI_BIOTECH_2007_Q19",
+    "SCI_SCI_GENERAL_2007_Q26",
+    "SCI_SCI_GENERAL_2007_Q26",
+    "SCI_SCI_GENERAL_1996_Q79"
+  ],
+  "notes": [
+    "Added stage and paper metadata.",
+    "Applied high-confidence manual corrections for obvious source-key errors.",
+    "Nullified a few corrupted questions instead of guessing."
+  ]
+}

@@ -65,6 +65,8 @@ export async function ensureRevisionItemFromMistake(mistake) {
             interval_days: 1,
             last_reviewed_at: null,
             next_review_at: new Date().toISOString(),
+            block_id: mistake.block_id || null,
+            mistake_id: mistake.id || null,
         });
     } catch (err) {
         // Revision item creation must never break the mistake save flow.

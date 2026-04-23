@@ -1,0 +1,3242 @@
+{
+  "exam": "UPSC_CSE",
+  "stage": "Prelims",
+  "paper": "CSAT",
+  "module": "Quantitative Aptitude",
+  "questions": [
+    {
+      "id": "csat_quant_2024_6",
+      "year": 2024,
+      "questionNumber": 6,
+      "topic": "Numbers",
+      "question": "In the expression 5 □ 4 □ 3 □ 2 □ 1, each □ is chosen from +, −, × at most two times. What is the smallest non-negative value of the expression?",
+      "options": {
+        "A": "3",
+        "B": "2",
+        "C": "1",
+        "D": "0"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2024_9",
+      "year": 2024,
+      "questionNumber": 9,
+      "topic": "Numbers",
+      "question": "How many consecutive zeros are there at the end of the integer obtained in the product 1^2 * 2^4 * 3^6 * 4^8 * ... * 25^50?",
+      "options": {
+        "A": "50",
+        "B": "55",
+        "C": "100",
+        "D": "200"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2024_10",
+      "year": 2024,
+      "questionNumber": 10,
+      "topic": "Numbers",
+      "question": "On January 1st, 2023, a person saved rupee 1. On January 2nd, 2023, he saved rupee 2 more than that on the previous day. On January 3rd, 2023 he saved 2 more than that on the previous day and so on. At the end of which date was his total savings a perfect square as well as a perfect cube?",
+      "options": {
+        "A": "7th January, 2023",
+        "B": "8th January, 2023",
+        "C": "9th January, 2023",
+        "D": "Not possible"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2024_15",
+      "year": 2024,
+      "questionNumber": 15,
+      "topic": "Numbers",
+      "question": "222333+ 333222 is divisible by which of the following numbers?",
+      "options": {
+        "A": "2 and 3 but not 37",
+        "B": "3 and 37 but not 2",
+        "C": "2 and 37 but not 3",
+        "D": "2, 3 and 37"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2024_17",
+      "year": 2024,
+      "questionNumber": 17,
+      "topic": "Numbers",
+      "question": "What is the rightmost digit preceding the zeros in the value of 30^30?",
+      "options": {
+        "A": "1",
+        "B": "3",
+        "C": "7",
+        "D": "9"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2024_18",
+      "year": 2024,
+      "questionNumber": 18,
+      "topic": "Numbers",
+      "question": "421 and 427, when divided by the same number, leave the same remainder 1. How many numbers can be used as the divisor in order to get the same remainder 1?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2024_20",
+      "year": 2024,
+      "questionNumber": 20,
+      "topic": "Numbers",
+      "question": "Consider the following statements in respect of the sum S = x+ y +z, where x, y and z are distinct prime numbers each less than 10: 1. The unit digit of S can be 0. 2. The unit digit of S can be 9. 3. The unit digit of S can be 5. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2024_30",
+      "year": 2024,
+      "questionNumber": 30,
+      "topic": "Numbers",
+      "question": "Consider the following:\n1. 1000 litres = 1 m^3\n2. 1 metric ton = 1000 kg\n3. 1 hectare = 10000 m^2\nWhich of the above are correct?",
+      "options": {
+        "A": "1, and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2 and 3"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2024_39",
+      "year": 2024,
+      "questionNumber": 39,
+      "topic": "Numbers",
+      "question": "Let p, q, r and s be distinct positive integers. Let p, q be odd and r, s be even.\nConsider the following statements:\n1. (p - r)^(2qs) is even\n2. (q - s)^(2s) is even\n3. (q + r)^(2(p + s)) is odd\nWhich of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2024_45",
+      "year": 2024,
+      "questionNumber": 45,
+      "topic": "Numbers",
+      "question": "What is the number of fives used in numbering a 260-page book?",
+      "options": {
+        "A": "55",
+        "B": "57",
+        "C": "56",
+        "D": "60"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2024_54",
+      "year": 2024,
+      "questionNumber": 54,
+      "topic": "Numbers",
+      "question": "3^25 + 2^27 is divisible by",
+      "options": {
+        "A": "3",
+        "B": "7",
+        "C": "10",
+        "D": "11"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2024_55",
+      "year": 2024,
+      "questionNumber": 55,
+      "topic": "Numbers",
+      "question": "Let p and q be positive integers satisfying p < q and p + q = k. What is the smallest value of k that does not determine p and q uniquely?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2024_75",
+      "year": 2024,
+      "questionNumber": 75,
+      "topic": "Numbers",
+      "question": "If a + b means a - b; a - b means a x b; a x b means a / b; and a / b means a + b, then what is the value of 10 + 30 - 100 x 50 / 25? (Operations are to be replaced simultaneously)",
+      "options": {
+        "A": "15",
+        "B": "0",
+        "C": "-15",
+        "D": "-25"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2024_80",
+      "year": 2024,
+      "questionNumber": 80,
+      "topic": "Numbers",
+      "question": "In some code, letters P, Q, R, S, T represent numbers 4, 5, 10, 12, 15. It is not known which letter represents which number. If Q - S = 2S and T = R + S + 3, then what is the value of P + R - T?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "Cannot be determined due to insufficient data"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2023_7",
+      "year": 2023,
+      "questionNumber": 7,
+      "topic": "Numbers",
+      "question": "What is the remainder when 85 x 87 x 89 x 91 x 95 x 96 is divided by 100?",
+      "options": {
+        "A": "0",
+        "B": "1",
+        "C": "2",
+        "D": "4"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2023_8",
+      "year": 2023,
+      "questionNumber": 8,
+      "topic": "Numbers",
+      "question": "What is the unit digit in the expansion of (57242)^9 * 7 * 5 * 3 * 1?",
+      "options": {
+        "A": "2",
+        "B": "4",
+        "C": "6",
+        "D": "8"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2023_14",
+      "year": 2023,
+      "questionNumber": 14,
+      "topic": "Numbers",
+      "question": "Three of the five positive integers p, q, r, s, t are even and two of them are odd (not necessarily in order). Consider the following: 1. p + q + r - s - t is definitely even. 2. 2p + q + 2r - 2s + t is definitely odd. Which of the above statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2023_15",
+      "year": 2023,
+      "questionNumber": 15,
+      "topic": "Numbers",
+      "question": "Consider the following in respect of prime number p and composite number c. 1. (p + c)/(p - c) can be even. 2. 2p + c can be odd. 3. p x c can be odd. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2023_17",
+      "year": 2023,
+      "questionNumber": 17,
+      "topic": "Numbers",
+      "question": "For any choices of values of X, Y and Z, the 6-digit number of the form XYZXYZ is divisible by?",
+      "options": {
+        "A": "7 and 11 only",
+        "B": "11 and 13 only",
+        "C": "7 and 13 only",
+        "D": "7, 11 and 13"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2023_19",
+      "year": 2023,
+      "questionNumber": 19,
+      "topic": "Numbers",
+      "question": "How many distinct 8-digit numbers can be formed by rearranging the digits of the number 11223344 such that odd digits occupy odd positions and even digits occupy even positions?",
+      "options": {
+        "A": "12",
+        "B": "18",
+        "C": "36",
+        "D": "72"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2023_24",
+      "year": 2023,
+      "questionNumber": 24,
+      "topic": "Numbers",
+      "question": "If 7@9@10=8, 9@11@30=5, 11@17@21=13 what is the value of 23@4@15?",
+      "options": {
+        "A": "6",
+        "B": "8",
+        "C": "13",
+        "D": "15"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2023_27",
+      "year": 2023,
+      "questionNumber": 27,
+      "topic": "Numbers",
+      "question": "A number N is formed by writing 9 for 99 times. What is the remainder if N is divided by 13?",
+      "options": {
+        "A": "11",
+        "B": "9",
+        "C": "7",
+        "D": "1"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2023_28",
+      "year": 2023,
+      "questionNumber": 28,
+      "topic": "Numbers",
+      "question": "Each digit of a 9-digit number is 1. It is multiplied by itself. What is the sum of the digits of the resulting number?",
+      "options": {
+        "A": "64",
+        "B": "80",
+        "C": "81",
+        "D": "100"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2023_45",
+      "year": 2023,
+      "questionNumber": 45,
+      "topic": "Numbers",
+      "question": "How many natural numbers are there which give a remainder of 31 when 1186 is divided by these natural numbers?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2023_46",
+      "year": 2023,
+      "questionNumber": 46,
+      "topic": "Numbers",
+      "question": "Let pp, qq and rr be 2-digit numbers where p < q < r. If pp + qq + rr = tto, where tto is a 3-digit number ending with zero, consider the following statements: 1. The number of possible values of p is 5. 2. The number of possible values of q is 6. Which of the above statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2023_49",
+      "year": 2023,
+      "questionNumber": 49,
+      "topic": "Numbers",
+      "question": "If today is Sunday, what day will it be on the 1010th day?",
+      "options": {
+        "A": "Wednesday",
+        "B": "Thursday",
+        "C": "Friday",
+        "D": "Saturday"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2023_74",
+      "year": 2023,
+      "questionNumber": 74,
+      "topic": "Numbers",
+      "question": "What is the remainder if 2^192 is divided by 6?",
+      "options": {
+        "A": "0",
+        "B": "1",
+        "C": "2",
+        "D": "4"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2022_5",
+      "year": 2022,
+      "questionNumber": 5,
+      "topic": "Numbers",
+      "question": "An Identity Card has the number ABCDEFG, not necessarily in that order, where each letter represents a distinct digit (1, 2, 4, 5, 7, 8, 9 only). The number is divisible by 9. After deleting the first digit from the right, the resulting number is divisible by 6. After deleting two digits from the right of original number, the resulting number is divisible by 5. After deleting three digits from the right of original number, the resulting number is divisible by 4. After deleting four digits from the right of original number, the resulting number is divisible by 3. After deleting five digits from the right of original number, the resulting number is divisible by 2. Which of the following is a possible value for the sum of the middle three digits of the number?",
+      "options": {
+        "A": "8",
+        "B": "9",
+        "C": "11",
+        "D": "12"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2022_9",
+      "year": 2022,
+      "questionNumber": 9,
+      "topic": "Numbers",
+      "question": "Which number amongst 2^40, 3^21, 4^18 and 8^12 is the smallest?",
+      "options": {
+        "A": "2^40",
+        "B": "3^21",
+        "C": "4^18",
+        "D": "8^12"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2022_28",
+      "year": 2022,
+      "questionNumber": 28,
+      "topic": "Numbers",
+      "question": "A has some coins. He gives half of the coins and 2 more to B. B gives half of the coins and 2 more to C. C gives half of the coins and 2 more to D. The number of coins D has now, is the smallest two- digit number. How many coins does A have in the beginning?",
+      "options": {
+        "A": "76",
+        "B": "68",
+        "C": "60",
+        "D": "52"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2022_35",
+      "year": 2022,
+      "questionNumber": 35,
+      "topic": "Numbers",
+      "question": "How many seconds in total are there in x weeks, x days, x hours, x minutes, and x seconds?",
+      "options": {
+        "A": "11580*x",
+        "B": "11581*x",
+        "C": "694860*x",
+        "D": "694861*x"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2022_58",
+      "year": 2022,
+      "questionNumber": 58,
+      "topic": "Numbers",
+      "question": "What is the remainder when 91 x 92 x 93 x 94 x 95 x 96 x 97 x 98 x 99 is divided by 1261?",
+      "options": {
+        "A": "3",
+        "B": "2",
+        "C": "1",
+        "D": "0"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2022_65",
+      "year": 2022,
+      "questionNumber": 65,
+      "topic": "Numbers",
+      "question": "What is the smallest number greater than 1000 that when divided by any one of the numbers 6, 9, 12, 15, 18 leaves a remainder of 3?",
+      "options": {
+        "A": "1063",
+        "B": "1073",
+        "C": "1083",
+        "D": "1183"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2022_67",
+      "year": 2022,
+      "questionNumber": 67,
+      "topic": "Numbers",
+      "question": "Consider the following statements in respect of two natural numbers p and q such that p is a prime number and q is a composite number. 1. p x q can be an odd number. 2. q/p can be a prime number. 3. p + q can be a prime number. Which of the above statements are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2022_74",
+      "year": 2022,
+      "questionNumber": 74,
+      "topic": "Numbers",
+      "question": "If 15 x 14 x 13 x... x 3 x 2 x 1 = 3^m x n where m and n are positive integers, then what is the maximum value of m?",
+      "options": {
+        "A": "7",
+        "B": "6",
+        "C": "5",
+        "D": "4"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2021_5",
+      "year": 2021,
+      "questionNumber": 5,
+      "topic": "Numbers",
+      "question": "If 3^2019 is divided by 10, then what is the remainder?",
+      "options": {
+        "A": "1",
+        "B": "3",
+        "C": "7",
+        "D": "9"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2021_6",
+      "year": 2021,
+      "questionNumber": 6,
+      "topic": "Numbers",
+      "question": "The number 3798125P369 is divisible by 7. What is the value of the digit P?",
+      "options": {
+        "A": "1",
+        "B": "6",
+        "C": "7",
+        "D": "9"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2021_8",
+      "year": 2021,
+      "questionNumber": 8,
+      "topic": "Numbers",
+      "question": "A biology class at high school predicted that a local population of animals will double in size every 12 years. The population at the beginning of the year 2021 was estimated to be 50 animals. If P represents the population after n years, then which one of the following equations represents the model of the class for the population?",
+      "options": {
+        "A": "P = 12 + 50*n",
+        "B": "P = 50 + 12*n",
+        "C": "P = 50 * (2)^(12*n)",
+        "D": "P = 50 * (2)^(n/12)"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2021_19",
+      "year": 2021,
+      "questionNumber": 19,
+      "topic": "Numbers",
+      "question": "Integers are listed from 700 to 1000. In how many integers is the sum of the digits 10?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2021_36",
+      "year": 2021,
+      "questionNumber": 36,
+      "topic": "Numbers",
+      "question": "Consider all 3-digit numbers (without repetition of digits) obtained using three non-zero digits which are multiples of 3. Let S be their sum. Which of the following is/are correct? 1. S is always divisible by 74. 2. S is always divisible by 9. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2021_50",
+      "year": 2021,
+      "questionNumber": 50,
+      "topic": "Numbers",
+      "question": "What is the value of 'X' in the sequence 2, 7, 22, 67, 202, X, 1822?",
+      "options": {
+        "A": "603",
+        "B": "605",
+        "C": "607",
+        "D": "608"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2021_79",
+      "year": 2021,
+      "questionNumber": 79,
+      "topic": "Numbers",
+      "question": "When a certain number is multiplied by 7, the product entirely comprises ones only (1111…). What is the smallest such number?",
+      "options": {
+        "A": "15713",
+        "B": "15723",
+        "C": "15783",
+        "D": "15873"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2020_7",
+      "year": 2020,
+      "questionNumber": 7,
+      "topic": "Numbers",
+      "question": "How many zeroes are there at the end of the following product 1 x 5 x 10 x 15 x 20 x 25 x 30 x 35 x 40 x 45 x 50 x 55 x 60?",
+      "options": {
+        "A": "10",
+        "B": "12",
+        "C": "14",
+        "D": "15"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2020_9",
+      "year": 2020,
+      "questionNumber": 9,
+      "topic": "Numbers",
+      "question": "Let p, q, r and s be natural numbers such that p-2016 = q + 2017 = r-2018 = s + 2019 Which one of the following is the largest natural number?",
+      "options": {
+        "A": "p",
+        "B": "q",
+        "C": "r",
+        "D": "s"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2020_10",
+      "year": 2020,
+      "questionNumber": 10,
+      "topic": "Numbers",
+      "question": "How many five-digit prime numbers can be obtained by using all the digits 1, 2, 3, 4 and 5 without repetition of digits?",
+      "options": {
+        "A": "Zero",
+        "B": "One",
+        "C": "Nine",
+        "D": "Ten"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2020_37",
+      "year": 2020,
+      "questionNumber": 37,
+      "topic": "Numbers",
+      "question": "How many integers are there between 1 and 100 which have 4 as a digit but are not divisible by 4?",
+      "options": {
+        "A": "5",
+        "B": "11",
+        "C": "12",
+        "D": "13"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2020_50",
+      "year": 2020,
+      "questionNumber": 50,
+      "topic": "Numbers",
+      "question": "What is the largest number among the following?",
+      "options": {
+        "A": "(1/2)^-6",
+        "B": "(1/4)^-3",
+        "C": "(1/3)^-4",
+        "D": "(1/6)^-2"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2020_51",
+      "year": 2020,
+      "questionNumber": 51,
+      "topic": "Numbers",
+      "question": "What is the greatest length x such that 3 1/2 m and 8 3/4 m are integral multiples of x?",
+      "options": {
+        "A": "1 1/2 m",
+        "B": "1 1/3 m",
+        "C": "1 1/4 m",
+        "D": "1 3/4 m"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2020_53",
+      "year": 2020,
+      "questionNumber": 53,
+      "topic": "Numbers",
+      "question": "The recurring decimal representation 1.272727... is equivalent to?",
+      "options": {
+        "A": "13/11",
+        "B": "14/11",
+        "C": "127/99",
+        "D": "137/99"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2020_54",
+      "year": 2020,
+      "questionNumber": 54,
+      "topic": "Numbers",
+      "question": "What is the least four-digit number when divided by 3, 4, 5 and 6 leaves a remainder 2 in each case?",
+      "options": {
+        "A": "1012",
+        "B": "1022",
+        "C": "1122",
+        "D": "1222"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2020_56",
+      "year": 2020,
+      "questionNumber": 56,
+      "topic": "Numbers",
+      "question": "What is the remainder when 51 x 27 x 35 x 62 x 75 is divided by 100?",
+      "options": {
+        "A": "50",
+        "B": "25",
+        "C": "5",
+        "D": "1"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2020_58",
+      "year": 2020,
+      "questionNumber": 58,
+      "topic": "Numbers",
+      "question": "For what value of n is the sum of digits in the number (10^n + 1) equal to 2?",
+      "options": {
+        "A": "For n = 0 only",
+        "B": "For any whole number n",
+        "C": "For any positive integer n only",
+        "D": "For any real number n"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2020_75",
+      "year": 2020,
+      "questionNumber": 75,
+      "topic": "Numbers",
+      "question": "How many pairs of natural numbers are there such that the difference of whose squares is 63?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "2"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2020_76",
+      "year": 2020,
+      "questionNumber": 76,
+      "topic": "Numbers",
+      "question": "Which one of the following will have minimum change in its value if 5 is added to both numerator and the denominator of the fractions 2/3, 3/4, 4/5 and 5/6?",
+      "options": {
+        "A": "2/3",
+        "B": "3/4",
+        "C": "4/5",
+        "D": "5/6"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2020_77",
+      "year": 2020,
+      "questionNumber": 77,
+      "topic": "Numbers",
+      "question": "A digit n > 3 is divisible by 3 but not divisible by 6. Which one of the following is divisible by 4?",
+      "options": {
+        "A": "2*n",
+        "B": "3*n",
+        "C": "2*n + 4",
+        "D": "3*n + 1"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2019_9",
+      "year": 2019,
+      "questionNumber": 9,
+      "topic": "Numbers",
+      "question": "The number of times the digit 5 will appear while writing the integers from 1 to 1000 is?",
+      "options": {
+        "A": "269",
+        "B": "271",
+        "C": "300",
+        "D": "302"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2019_15",
+      "year": 2019,
+      "questionNumber": 15,
+      "topic": "Numbers",
+      "question": "In a school every student is assigned a unique identification number. A student is a football player if and only if the identification number is divisible by 4, whereas a student is a cricketer if and only if the identification number is divisible by 6. If every number from 1 to 100 is assigned to a student, then how many of them play cricket as well as football?",
+      "options": {
+        "A": "4",
+        "B": "8",
+        "C": "10",
+        "D": "12"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2019_50",
+      "year": 2019,
+      "questionNumber": 50,
+      "topic": "Numbers",
+      "question": "If the numerator and denominator of a proper fraction are increased by the same positive quantity which is greater than zero, the resulting fraction is",
+      "options": {
+        "A": "always less than the original fraction",
+        "B": "always greater than the original fraction",
+        "C": "always equal to the original fraction",
+        "D": "such that nothing can be claimed definitely"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2019_53",
+      "year": 2019,
+      "questionNumber": 53,
+      "topic": "Numbers",
+      "question": "A printer numbers the pages of a book starting with 1 and uses 3089 digits in all. How many pages does the book have?",
+      "options": {
+        "A": "1040",
+        "B": "1048",
+        "C": "1049",
+        "D": "1050"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2019_60",
+      "year": 2019,
+      "questionNumber": 60,
+      "topic": "Numbers",
+      "question": "Number 136 is added to 5B7 and the sum obtained is 7A3, where A and B are integers. It is given that 7A3 is exactly divisible by 3. The only possible value of B is?",
+      "options": {
+        "A": "2",
+        "B": "5",
+        "C": "7",
+        "D": "8"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2019_69",
+      "year": 2019,
+      "questionNumber": 69,
+      "topic": "Numbers",
+      "question": "Sunita cuts a sheet of paper into three pieces. Length of first piece is equal to the average of the three single-digit odd prime numbers. Length of the second piece is equal to that of the first plus one-third the length of the third. The third piece is as long as the other two pieces together. The length of the original sheet of paper is",
+      "options": {
+        "A": "13 units",
+        "B": "15 units",
+        "C": "16 units",
+        "D": "30 units"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2019_75",
+      "year": 2019,
+      "questionNumber": 75,
+      "topic": "Numbers",
+      "question": "An 8-digit number 4252746B leaves remainder 0 when divided by 3. How many values of B are possible?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "6"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2018_2",
+      "year": 2018,
+      "questionNumber": 2,
+      "topic": "Numbers",
+      "question": "Consider the following sum:\n• + 1• + 2• + •3 + •1 = 21•\nIn the above sum, • stands for",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "8"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2018_23",
+      "year": 2018,
+      "questionNumber": 23,
+      "topic": "Numbers",
+      "question": "If X is between -3 and -1, and Y is between -1 and 1, then X^2 - Y^2 is in between which of the following?",
+      "options": {
+        "A": "-9 and 1",
+        "B": "-9 and-1",
+        "C": "0 and 8",
+        "D": "0 and 9"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2018_24",
+      "year": 2018,
+      "questionNumber": 24,
+      "topic": "Numbers",
+      "question": "X and Y are natural numbers other than 1, and Y is greater than X. Which of the following represents the largest number?",
+      "options": {
+        "A": "X^Y",
+        "B": "X/Y",
+        "C": "Y/X",
+        "D": "(X+Y)/(X*Y)"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2018_36",
+      "year": 2018,
+      "questionNumber": 36,
+      "topic": "Numbers",
+      "question": "While writing all the numbers from 700 to 1000, how many numbers occur in which the digit at hundred's place is greater than the digit at ten's place, and the digit at tens place is greater than the digit at unit's place?",
+      "options": {
+        "A": "61",
+        "B": "64",
+        "C": "85",
+        "D": "91"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2017_49",
+      "year": 2017,
+      "questionNumber": 49,
+      "topic": "Numbers",
+      "question": "Certain 3-digit numbers have following characteristics: 1. All the three digits are different. 2. The number is divisible by 7. 3. The number on reversing the digits is also divisible by 7. How many such 3-digit numbers are there?",
+      "options": {
+        "A": "2",
+        "B": "4",
+        "C": "6",
+        "D": "8"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2017_51",
+      "year": 2017,
+      "questionNumber": 51,
+      "topic": "Numbers",
+      "question": "How many numbers are there between 99 and 1000 such that the digit 8 occupies the units place?",
+      "options": {
+        "A": "64",
+        "B": "80",
+        "C": "90",
+        "D": "104"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2017_80",
+      "year": 2017,
+      "questionNumber": 80,
+      "topic": "Numbers",
+      "question": "What is the total number of digits printed, if a book containing 150 pages is to be numbered from 1 to 150?",
+      "options": {
+        "A": "262",
+        "B": "342",
+        "C": "360",
+        "D": "450"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2016_62",
+      "year": 2016,
+      "questionNumber": 62,
+      "topic": "Numbers",
+      "question": "If R and S are different integers both divisible by 5, then which of the following is not necessarily true?",
+      "options": {
+        "A": "R - S is divisible by 5",
+        "B": "R + S is divisible by 10",
+        "C": "R x S is divisible by 25",
+        "D": "R^2+ S^2is divisible by 5"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2016_63",
+      "year": 2016,
+      "questionNumber": 63,
+      "topic": "Numbers",
+      "question": "How many numbers are there between 100 and 300 which either begin with or end with 2?",
+      "options": {
+        "A": "110",
+        "B": "111",
+        "C": "112",
+        "D": "None of the above"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2024_36",
+      "year": 2024,
+      "questionNumber": 36,
+      "topic": "Averages",
+      "question": "Consider the following: Weight of 6 boys = Weight of 7 girls = Weight of 3 men = Weight of 4 women If the average weight of the women is 63 kg, then what is the average weight of the boys?",
+      "options": {
+        "A": "40 kg",
+        "B": "42 kg",
+        "C": "45 kg",
+        "D": "63 kg"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2023_65",
+      "year": 2023,
+      "questionNumber": 65,
+      "topic": "Averages",
+      "question": "In an examination, the maximum marks for each of the four papers namely P, Q, R and S are 100. Marks scored by the students are in integers. A student can score 99% in n different ways. What is the value of n?",
+      "options": {
+        "A": "16",
+        "B": "17",
+        "C": "23",
+        "D": "35"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2023_69",
+      "year": 2023,
+      "questionNumber": 69,
+      "topic": "Averages",
+      "question": "There are large number of silver coins weighing 2 gm, 5 gm, 10 gm, 25 gm, 50 gm each. Consider the following statements: 1. To buy 78 gm of coins one must buy at least 7 coins. 2. To weigh 78 gm using these coins one can use less than 7 coins. Which of the following statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2022_26",
+      "year": 2022,
+      "questionNumber": 26,
+      "topic": "Averages",
+      "question": "On one side of a 1.01 km long road, 101 plants are planted at equal distance from each other. What is the total distance between 5 consecutive plants?",
+      "options": {
+        "A": "40 m",
+        "B": "40.4 m",
+        "C": "50 m",
+        "D": "50.5 m"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2022_80",
+      "year": 2022,
+      "questionNumber": 80,
+      "topic": "Averages",
+      "question": "The average weight of A, B, C is 40 kg, the average weight of B, D, E is 42 kg and the weight of F is equal to that of B. What is the average weight of A, B, C, D, E and F?",
+      "options": {
+        "A": "40.5 Kg",
+        "B": "40.80 Kg",
+        "C": "41 Kg",
+        "D": "Cannot be determined as data is inadequate."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2021_37",
+      "year": 2021,
+      "questionNumber": 37,
+      "topic": "Averages",
+      "question": "There are two Classes A and B having 25 and 30 students respectively. In Class-A the highest score is 21 and lowest score is 17. In Class-B the highest score is 30 and lowest score is 22. Four students are shifted from Class-A to Class-B. Consider the following statements: 1. The average score of Class-B will definitely decrease. 2. The average score of Class-A will definitely increase. Which of the above statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2021_59",
+      "year": 2021,
+      "questionNumber": 59,
+      "topic": "Averages",
+      "question": "Consider the following addition problem: 3P + 4P + PP + PP = RQ2; where P, Q and R are different digits. What is the arithmetic mean of all such possible sums?",
+      "options": {
+        "A": "102",
+        "B": "120",
+        "C": "202",
+        "D": "220"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2020_18",
+      "year": 2020,
+      "questionNumber": 18,
+      "topic": "Averages",
+      "question": "Consider the following data.: Girls 8, Boys 7, Overall x. What is the value of x?",
+      "options": {
+        "A": "7.8",
+        "B": "7.6",
+        "C": "7.4",
+        "D": "7.2"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2020_39",
+      "year": 2020,
+      "questionNumber": 39,
+      "topic": "Averages",
+      "question": "The average age of a teacher and three students is 20 years. If all the three students are of the same age and the difference between the age of the teacher and each student is 20 years, then what is the age of the teacher?",
+      "options": {
+        "A": "25 years",
+        "B": "30 years",
+        "C": "35 years",
+        "D": "45 years"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2020_59",
+      "year": 2020,
+      "questionNumber": 59,
+      "topic": "Averages",
+      "question": "In a class, there are three groups A, B and C. If one student from group A and two students from group B are shifted to group C, then what happens to the average weight of the students of the class?",
+      "options": {
+        "A": "It increases.",
+        "B": "It decreases.",
+        "C": "It remains the same.",
+        "D": "No conclusion can be drawn due to insufficient data."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2020_69",
+      "year": 2020,
+      "questionNumber": 69,
+      "topic": "Averages",
+      "question": "The average score of a batsman after his 50th innings was 46.4. After 60th innings, his average Score increases by 2.6. What was his average score in the last ten innings?",
+      "options": {
+        "A": "122",
+        "B": "91",
+        "C": "62",
+        "D": "49"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2019_40",
+      "year": 2019,
+      "questionNumber": 40,
+      "topic": "Averages",
+      "question": "The average marks of 100 students are given to be 40. It was found later that marks of one student were 53 which were misread as 83. The corrected mean marks are",
+      "options": {
+        "A": "39",
+        "B": "39.7",
+        "C": "40",
+        "D": "40.3"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2017_28",
+      "year": 2017,
+      "questionNumber": 28,
+      "topic": "Averages",
+      "question": "Suppose the average weight of 9 persons is 50 kg. The average weight of the first 5 persons is 45 kg, whereas the average weight of the last 5 persons is 55 kg. Then the weight of the 5th person will be",
+      "options": {
+        "A": "45 kg",
+        "B": "47.5 kg",
+        "C": "50kg",
+        "D": "52.5 Kg"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2017_35",
+      "year": 2017,
+      "questionNumber": 35,
+      "topic": "Averages",
+      "question": "There are thirteen 2-digit consecutive odd numbers. If 39 is the mean of the first five such numbers, then what is the mean of all the thirteen numbers?",
+      "options": {
+        "A": "47",
+        "B": "49",
+        "C": "51",
+        "D": "45"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2017_52",
+      "year": 2017,
+      "questionNumber": 52,
+      "topic": "Averages",
+      "question": "If for a sample data Mean < Median < Mode then the distribution is",
+      "options": {
+        "A": "symmetric",
+        "B": "skewed to the right",
+        "C": "neither symmetric nor skewed",
+        "D": "skewed to the left"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2016_77",
+      "year": 2016,
+      "questionNumber": 77,
+      "topic": "Averages",
+      "question": "The average monthly income of a person in a certain family of 5 is Rs. 10,000. What will be the average monthly income of a person in the same family if the income of one person increased by Rs. 1,20,000 per year?",
+      "options": {
+        "A": "Rs. 12,000",
+        "B": "Rs. 16,000",
+        "C": "Rs. 20,000",
+        "D": "Rs. 34,000"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2014_38",
+      "year": 2014,
+      "questionNumber": 38,
+      "topic": "Averages",
+      "question": "The following table shows the marks obtained by two students in different subjects: Student A - English 60/100, Psychology 70/100, History 50/100, Sanskrit 30/50; Student B - English 80/150, Psychology 70/100, History 60/100, Sanskrit 15/25. The difference in the mean aggregate percentage marks of the students is:",
+      "options": {
+        "A": "2.5%",
+        "B": "13.75%",
+        "C": "1.25%",
+        "D": "Zero"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2013_49",
+      "year": 2013,
+      "questionNumber": 49,
+      "topic": "Averages",
+      "question": "Four cars are hired at the rate of Rs. 6 per km plus the cost of diesel at Rs. 40 a litre. The details are: Car A mileage 8 km/l, hours 20, total payment 2120; Car B mileage 10 km/l, hours 25, total payment 1950; Car C mileage 9 km/l, hours 24, total payment 2064; Car D mileage 11 km/l, hours 22, total payment 1812. Which car maintained the maximum average speed?",
+      "options": {
+        "A": "Car A",
+        "B": "Car B",
+        "C": "Car C",
+        "D": "Car D"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2011_49",
+      "year": 2011,
+      "questionNumber": 49,
+      "topic": "Averages",
+      "question": "A student on her first 3 tests receives on an average score of N points. If she exceeds her previous average score by 20 points on her fourth test, then what is the average score for the first 4 tests?",
+      "options": {
+        "A": "N + 20",
+        "B": "N + 10",
+        "C": "N + 4",
+        "D": "N + 5"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2024_25",
+      "year": 2024,
+      "questionNumber": 25,
+      "topic": "Percentage and Ratio",
+      "question": "Two persons P and Q enter into a business. P puts rupees 14,000 more than Q, but P has invested for 8 months and Q has invested for 10 months. If P's share is rupees 400 more than Q's share out of the total profit of rupees 2,000, what is the capital contributed by P?",
+      "options": {
+        "A": "Rupees 30,000",
+        "B": "Rupees 26,000",
+        "C": "Rupees 24,000",
+        "D": "Rupees 20,000"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2024_26",
+      "year": 2024,
+      "questionNumber": 26,
+      "topic": "Percentage and Ratio",
+      "question": "P's salary is 20% lower than Q's salary which is 20% lower than R's salary. By how much percent is R's salary more than P's salary?",
+      "options": {
+        "A": "48.75%",
+        "B": "56.25%",
+        "C": "60.50%",
+        "D": "62.25%"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2024_27",
+      "year": 2024,
+      "questionNumber": 27,
+      "topic": "Percentage and Ratio",
+      "question": "A number is mistakenly divided by 4 instead of multiplying by 4. What is the percentage change in the result due to this mistake?",
+      "options": {
+        "A": "25%",
+        "B": "50%",
+        "C": "72.75%",
+        "D": "93.75%"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2024_28",
+      "year": 2024,
+      "questionNumber": 28,
+      "topic": "Percentage and Ratio",
+      "question": "In an examination, 80% of students passed in English, 70% of students passed in Hindi and 15% failed in both the subjects. What is the percentage of students who failed in only one subject?",
+      "options": {
+        "A": "15%",
+        "B": "20%",
+        "C": "25%",
+        "D": "35%"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2024_47",
+      "year": 2024,
+      "questionNumber": 47,
+      "topic": "Percentage and Ratio",
+      "question": "A person buys three articles P, Q and R for rupees 3330. If P costs 25% more than R and R costs 20% more than Q, then what is the cost of P?",
+      "options": {
+        "A": "Rupees 1,000",
+        "B": "Rupees 1,200",
+        "C": "Rupees 1,250",
+        "D": "Rupees 1,350"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2022_20",
+      "year": 2022,
+      "questionNumber": 20,
+      "topic": "Percentage and Ratio",
+      "question": "The increase in the price of a certain item was 25%. Then the price was decreased by 20% and then again increased by 10%. What is the resultant increase in the price?",
+      "options": {
+        "A": "5%",
+        "B": "10%",
+        "C": "12.5%",
+        "D": "15%"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2022_60",
+      "year": 2022,
+      "questionNumber": 60,
+      "topic": "Percentage and Ratio",
+      "question": "When 70% of a number x is added to another number y, the sum becomes 165% of the value of y. When 60% of the number x is added to another number z, then the sum becomes 165% of the value of z. Which one of the following is correct?",
+      "options": {
+        "A": "z < x < y",
+        "B": "x < y < z",
+        "C": "y < x < z",
+        "D": "z < y < x"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2022_64",
+      "year": 2022,
+      "questionNumber": 64,
+      "topic": "Percentage and Ratio",
+      "question": "Two candidates x and Y contested an election. 80% of voters cast their vote and there were no invalid votes. There was no NOTA (None of the above) option. x got 56% of the votes cast and won by 1440 votes. What is the total number of voters in the voters list?",
+      "options": {
+        "A": "15000",
+        "B": "12000",
+        "C": "9600",
+        "D": "5000"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2022_70",
+      "year": 2022,
+      "questionNumber": 70,
+      "topic": "Percentage and Ratio",
+      "question": "A pie chart gives the expenditure on five different items A, B, C, D and E in a household. If B, C, D and E correspond to 90°, 50°, 45° and 75° respectively, then what is the percentage of expenditure on item A?",
+      "options": {
+        "A": "112/9",
+        "B": "125/6",
+        "C": "155/9",
+        "D": "250/9"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2021_9",
+      "year": 2021,
+      "questionNumber": 9,
+      "topic": "Percentage and Ratio",
+      "question": "In a class, 60% of students are from India and 50% of the students are girls. If 30% of the Indian students are girls, then what percentage of foreign students are boys?",
+      "options": {
+        "A": "45%",
+        "B": "40%",
+        "C": "30%",
+        "D": "20%"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2021_16",
+      "year": 2021,
+      "questionNumber": 16,
+      "topic": "Percentage and Ratio",
+      "question": "A boy plays with a ball and he drops it from a height of 1.5 m. Every time the ball hits the ground, it bounces back to attain a height 4/5 of the previous height. The ball does not bounce further if the previous height is less than 50 cm. What is the number of times the ball hits the ground before the ball stops bouncing?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2021_30",
+      "year": 2021,
+      "questionNumber": 30,
+      "topic": "Percentage and Ratio",
+      "question": "A student appeared in 6 papers. The maximum marks are the same for each paper. His marks in these papers are in the proportion of 5: 6: 7: 8: 9: 10. Overall he scored 60%. In how many numbers of papers did he score less than 60% of the maximum marks?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2021_70",
+      "year": 2021,
+      "questionNumber": 70,
+      "topic": "Percentage and Ratio",
+      "question": "An amount of money was distributed among A, B and C in the ratio p: q: r. Consider the following statements: 1. A gets the maximum share if p is greater than (q + r). 2. C gets the minimum share if r is less than (p + q). Which of the above statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2021_74",
+      "year": 2021,
+      "questionNumber": 74,
+      "topic": "Percentage and Ratio",
+      "question": "A pie diagram shows the percentage distribution of proteins, water, and other dry elements in the human body. Given that proteins correspond to 16% and water corresponds to 70%. If both proteins and the other dry elements correspond to p% then what is the central angle of the sector representing p on the pie diagram?",
+      "options": {
+        "A": "54°",
+        "B": "96°",
+        "C": "108°",
+        "D": "120°"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2021_78",
+      "year": 2021,
+      "questionNumber": 78,
+      "topic": "Percentage and Ratio",
+      "question": "If the price of an article is decreased by 20% and then the new price is increased by 25%, then what is the net change in the price?",
+      "options": {
+        "A": "0",
+        "B": "5% increase",
+        "C": "5% decrease",
+        "D": "Cannot be determined due to insufficient data."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2020_40",
+      "year": 2020,
+      "questionNumber": 40,
+      "topic": "Percentage and Ratio",
+      "question": "A person bought a car and sold it for Rs. 3,00,000. If he incurred a loss of 20%, then how much did he spend to buy the car?",
+      "options": {
+        "A": "Rs. 3, 60,000",
+        "B": "Rs. 3, 65,000",
+        "C": "Rs. 3, 70,000",
+        "D": "Rs. 3, 75,000"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2020_47",
+      "year": 2020,
+      "questionNumber": 47,
+      "topic": "Percentage and Ratio",
+      "question": "A shop owner offers the following discount options on an article to a customer: 1. Successive discounts or 10% and 20%, and then pay a service tax of 10% 2. Successive discounts of 20% and 10%, and then pay a service tax of 10% 3. Pay a service tax or 10% first, then successive discounts of 20% and 10% Which one of the following is correct?",
+      "options": {
+        "A": "1 only is the best option for the customer.",
+        "B": "2 only is the best option for the customer.",
+        "C": "3 only is the best option for the customer.",
+        "D": "All the options are equally good for the customer."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2020_55",
+      "year": 2020,
+      "questionNumber": 55,
+      "topic": "Percentage and Ratio",
+      "question": "In adult Population of a city, 40% men and 30% women are married. What is the percentage of married adult population if no man marries more than one woman and no woman marries more than one man; and there are no widows and widowers?",
+      "options": {
+        "A": "33 1/7%",
+        "B": "34%",
+        "C": "34 2/7%",
+        "D": "35%"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2020_57",
+      "year": 2020,
+      "questionNumber": 57,
+      "topic": "Percentage and Ratio",
+      "question": "A sum of Rs. 2,500 is distributed among X, Y and Z in the ratio 1/2: 3/4: 5/6. What is the difference between the maximum share and the minimum share?",
+      "options": {
+        "A": "Rs. 300",
+        "B": "Rs. 350",
+        "C": "Rs. 400",
+        "D": "Rs. 450"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2020_70",
+      "year": 2020,
+      "questionNumber": 70,
+      "topic": "Percentage and Ratio",
+      "question": "As a result of 25% hike in the price of rice per kg, a person is able to purchase 6 kg less rice for Rs. 1,200. What was the Original price of rice per kg?",
+      "options": {
+        "A": "Rs. 30",
+        "B": "Rs. 40",
+        "C": "Rs. 50",
+        "D": "Rs. 60"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2020_71",
+      "year": 2020,
+      "questionNumber": 71,
+      "topic": "Percentage and Ratio",
+      "question": "A person x can complete 20% of work in 8 days and another person y can complete 25% of the same work in 6 days. If they work together, in how many days will 40% of the work be completed?",
+      "options": {
+        "A": "6",
+        "B": "8",
+        "C": "10",
+        "D": "12"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2019_11",
+      "year": 2019,
+      "questionNumber": 11,
+      "topic": "Percentage and Ratio",
+      "question": "A and B are two heavy steel blocks. If B is placed on the top of A, the weight increases by 60%. How much weight will reduce with respect to the total weight of A and B, if B is removed from the top of A?",
+      "options": {
+        "A": "60%",
+        "B": "45.5%",
+        "C": "40%",
+        "D": "37.5%"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2019_16",
+      "year": 2019,
+      "questionNumber": 16,
+      "topic": "Percentage and Ratio",
+      "question": "When a runner was crossing the 12 km mark, she was informed that she had completed only 80% of the race. How many kilometres was the runner supposed to run in this event?",
+      "options": {
+        "A": "14",
+        "B": "15",
+        "C": "16",
+        "D": "16.5"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2019_17",
+      "year": 2019,
+      "questionNumber": 17,
+      "topic": "Percentage and Ratio",
+      "question": "Raju has Rs. 9000 with him and he wants to buy a mobile handset; but he finds that he has only 75% of the amount required to buy the handset. Therefore, he borrows 2000 from a friend. Then",
+      "options": {
+        "A": "Raju still does not have enough amount to buy the handset.",
+        "B": "Raju has exactly the same amount as required to buy the handset.",
+        "C": "Raju has enough amount to buy the handset and he will have 500 with him after buying the handset.",
+        "D": "Raju has enough amount to buy the handset and he will have 1000 with him after buying the handset."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2019_31",
+      "year": 2019,
+      "questionNumber": 31,
+      "topic": "Percentage and Ratio",
+      "question": "All members of a club went to Mumbai and stayed in a hotel. On the first day, 80% went for shopping and 50% went for sightseeing, whereas 10% took rest in the hotel Which of the following conclusion(s) can be drawn from the above data? 1. 40% members went for shopping as well as sightseeing. 2. 20% members went for only shopping. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2019_32",
+      "year": 2019,
+      "questionNumber": 32,
+      "topic": "Percentage and Ratio",
+      "question": "In a school, 60% students play cricket. A student who does not play cricket plays football. Every football player has got a two-wheeler. Which of the following conclusions cannot be drawn from the above data? 1. 60% of the students do not have two-wheelers. 2. No cricketer has a two-wheeler. 3. Cricket players do not play football. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2019_33",
+      "year": 2019,
+      "questionNumber": 33,
+      "topic": "Percentage and Ratio",
+      "question": "The ratio of a two-digit natural number to a number formed by reversing its digits is 4:7. The number of such pairs is",
+      "options": {
+        "A": "5",
+        "B": "4",
+        "C": "3",
+        "D": "2"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2019_39",
+      "year": 2019,
+      "questionNumber": 39,
+      "topic": "Percentage and Ratio",
+      "question": "Rakesh had money to buy 8 mobile handsets of a specific company. But the retailer offered very good discount on that particular handset. Rakesh could buy 10 mobile handsets with the amount he had. What was the discount the retailer offered?",
+      "options": {
+        "A": "15%",
+        "B": "20%",
+        "C": "25%",
+        "D": "30%"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2018_41",
+      "year": 2018,
+      "questionNumber": 41,
+      "topic": "Percentage and Ratio",
+      "question": "A student has to get 40% marks to pass in an examination. Suppose he gets 30 marks and fails by 30 marks, then what are the maximum marks in the examination?",
+      "options": {
+        "A": "100",
+        "B": "120",
+        "C": "150",
+        "D": "300"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2018_57",
+      "year": 2018,
+      "questionNumber": 57,
+      "topic": "Percentage and Ratio",
+      "question": "A shopkeeper sells an article at Rs. 40 and gets X% profit. However, when he sells it at Rs. 20, he faces same percentage of loss. What is the original cost of the article?",
+      "options": {
+        "A": "Rs. 10",
+        "B": "Rs. 20",
+        "C": "Rs. 30",
+        "D": "Rs. 40"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2017_12",
+      "year": 2017,
+      "questionNumber": 12,
+      "topic": "Percentage and Ratio",
+      "question": "If there is a policy that 1/3rd of population of a community has migrated every year from one place, to some other place, what is the leftover population of that community after the sixth year, if there is no further growth in the population during this period?",
+      "options": {
+        "A": "16/243rd part of the population",
+        "B": "32/243rd part of the population",
+        "C": "32/729th part of the population",
+        "D": "64/729th part of the population"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2017_20",
+      "year": 2017,
+      "questionNumber": 20,
+      "topic": "Percentage and Ratio",
+      "question": "Gopal bought a cell phone and sold it to Ram at 10% profit. Then Ram wanted to sell it back to Gopal at 10% loss. What will be Gopal's position if he agreed?",
+      "options": {
+        "A": "Neither loss nor gain",
+        "B": "Loss 1%",
+        "C": "Gain 1 %",
+        "D": "Gain 0.5%"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2017_30",
+      "year": 2017,
+      "questionNumber": 30,
+      "topic": "Percentage and Ratio",
+      "question": "P = (40% of A) + (65% of B) and Q = (50% of A) + (50% of B), where A is greater than B. In this context which of the following statement is correct?",
+      "options": {
+        "A": "P is greater than Q.",
+        "B": "Q is greater than P.",
+        "C": "P is equal to Q.",
+        "D": "None of the above can be concluded with certainty."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2017_32",
+      "year": 2017,
+      "questionNumber": 32,
+      "topic": "Percentage and Ratio",
+      "question": "In a city, 12% of households earn less than Rs. 30,000 per year, 6% households earn more than Rs. 2,00,000 per year, 22% households earn more than Rs.1,00,000 per year and 990 households earn between Rs. 30,000 and Rs. 1,00,000 per year. How many households earn between Rs.1,00,000 and Rs.2,00,000 per year?",
+      "options": {
+        "A": "250",
+        "B": "240",
+        "C": "230",
+        "D": "225"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2017_37",
+      "year": 2017,
+      "questionNumber": 37,
+      "topic": "Percentage and Ratio",
+      "question": "There is a milk sample with 50% water in it. If 1/3rd of this milk is added to equal amount of pure milk, then water in the new mixture will fall down to",
+      "options": {
+        "A": "25%",
+        "B": "30%",
+        "C": "35%",
+        "D": "40%"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2017_68",
+      "year": 2017,
+      "questionNumber": 68,
+      "topic": "Percentage and Ratio",
+      "question": "The average rainfall in a city for the first four days was recorded to be 0.40 inch. The rainfall on the last two days was in the ratio of 4: 3. The average of six days was 0.50 inch. What was the rainfall on the fifth day?",
+      "options": {
+        "A": "0.60 inch",
+        "B": "0.70 inch",
+        "C": "0.80 inch",
+        "D": "0.90 inch"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2017_74",
+      "year": 2017,
+      "questionNumber": 74,
+      "topic": "Percentage and Ratio",
+      "question": "The monthly incomes of x and Y are in the ratio of 4: 3 and their monthly expenses are in the ratio of 3:2. However, each saves Rs. 6,000 per month. What is their total monthly income?",
+      "options": {
+        "A": "Rs. 28,000",
+        "B": "Rs. 42,000",
+        "C": "Rs. 56,000",
+        "D": "Rs. 84,000"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2016_30",
+      "year": 2016,
+      "questionNumber": 30,
+      "topic": "Percentage and Ratio",
+      "question": "Anita's mathematics test had 70 problems carrying equal marks i.e., 10 arithmetic, 30 algebra and 30 geometries. Although she answered 70% of the arithmetic, 40% of the algebra and 60% of the geometry problems correctly, she did not pass the test because she got less than 60% marks. The number of more questions she would have to answer correctly to earn a 60% passing marks is:",
+      "options": {
+        "A": "1",
+        "B": "5",
+        "C": "7",
+        "D": "9"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2016_31",
+      "year": 2016,
+      "questionNumber": 31,
+      "topic": "Percentage and Ratio",
+      "question": "In a class, there are 18 very tall boys. If these constitute three-fourths of the boys and the total number of boys is two-thirds of the total number of students in the class, what is the number of girls in the class?",
+      "options": {
+        "A": "6",
+        "B": "12",
+        "C": "18",
+        "D": "21"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2016_33",
+      "year": 2016,
+      "questionNumber": 33,
+      "topic": "Percentage and Ratio",
+      "question": "The monthly average salary paid to all the employees of a company was Rs. 5000. The monthly average salary paid to male and female employees was Rs. 5200 and Rs. 4200 respectively. Then the percentage of males employed in the company is",
+      "options": {
+        "A": "75%",
+        "B": "80%",
+        "C": "85%",
+        "D": "90%"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2016_37",
+      "year": 2016,
+      "questionNumber": 37,
+      "topic": "Percentage and Ratio",
+      "question": "Two numbers x and Y are respectively 20% and 28% less than a third number Z. By what percentage is the number Y less than the number X?",
+      "options": {
+        "A": "12%",
+        "B": "10%",
+        "C": "9%",
+        "D": "8%"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2016_52",
+      "year": 2016,
+      "questionNumber": 52,
+      "topic": "Percentage and Ratio",
+      "question": "The total emoluments of two persons are the same, but one gets allowances to the extent of 65% of his basic pay and the other gets allowances to the extent of 80% of his basic pay. The ratio of the basic pay of the former to the basic pay of the latter is:",
+      "options": {
+        "A": "16: 13",
+        "B": "5: 4",
+        "C": "7: 5",
+        "D": "12: 11"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2016_80",
+      "year": 2016,
+      "questionNumber": 80,
+      "topic": "Percentage and Ratio",
+      "question": "A person allows 10% discount for cash payment from the marked price of a toy and still he makes a 10% gain. What is the cost price of the toy which is marked Rs. 770?",
+      "options": {
+        "A": "Rs. 610",
+        "B": "Rs. 620",
+        "C": "Rs. 630",
+        "D": "Rs. 640"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2015_15",
+      "year": 2015,
+      "questionNumber": 15,
+      "topic": "Percentage and Ratio",
+      "question": "In a test, a candidate attempted only 8 questions and secured 50% marks in each of the questions. If he obtained a total of 40% in the test and All questions in the test carried equal marks, how many questions were there in the test?",
+      "options": {
+        "A": "8",
+        "B": "10",
+        "C": "15",
+        "D": "16"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2015_31",
+      "year": 2015,
+      "questionNumber": 31,
+      "topic": "Percentage and Ratio",
+      "question": "In a town, 45% population read magazine A, 55% read magazine B, 40% read magazine C, 30% read magazines A and B, 15% read magazines B and C, 25% read magazines A and C; and 10% read all the three magazines. What percentage do not read any magazine?",
+      "options": {
+        "A": "10%",
+        "B": "15%",
+        "C": "20%",
+        "D": "25%"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2015_59",
+      "year": 2015,
+      "questionNumber": 59,
+      "topic": "Percentage and Ratio",
+      "question": "The proportion of expenditure on various items by two families A and B are represented as follows: Family A total expenditure Rs. 20,000 per month - Food 50%, Other items 30%, Education 20%; Family B total expenditure Rs. 1,00,000 per month - Food 10%, Other items 60%, Education 30%. From these data, we can conclude that",
+      "options": {
+        "A": "",
+        "B": "Family B spent more money on food than",
+        "C": "",
+        "D": "The expenditure on food by"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2015_70",
+      "year": 2015,
+      "questionNumber": 70,
+      "topic": "Percentage and Ratio",
+      "question": "The monthly incomes of Peter and Paul are in the ratio of 4: 3. Their expenses are in the ratio of 3: 2. If each saves 6,000 at the end of the month, their monthly incomes respectively are (in Rs.)",
+      "options": {
+        "A": "24,000 and 18,000",
+        "B": "28,000 and 21,000",
+        "C": "32,000 and 24,000",
+        "D": "34,000 and 26,000"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2015_80",
+      "year": 2015,
+      "questionNumber": 80,
+      "topic": "Percentage and Ratio",
+      "question": "Candidates in a competitive examination consisted of 60% men and 40% women. 70% men and 75% women cleared the qualifying test and entered the final test where 80% men and 70% women were successful. Which of the following statements is correct?",
+      "options": {
+        "A": "Success rate is higher for women.",
+        "B": "Overall success rate is below 50%.",
+        "C": "More men cleared the examination than women.",
+        "D": "Both (a) and (b) above are correct."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2014_20",
+      "year": 2014,
+      "questionNumber": 20,
+      "topic": "Percentage and Ratio",
+      "question": "A gardener increased the area of his rectangular garden by increasing its length by 40% and decreasing its width by 20%. The area of the new garden",
+      "options": {
+        "A": "has increased by 20%.",
+        "B": "has increased by 12%.",
+        "C": "has increased by 8%.",
+        "D": "is exactly the same as the old area."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2014_23",
+      "year": 2014,
+      "questionNumber": 23,
+      "topic": "Percentage and Ratio",
+      "question": "If Sohan, while selling two goats at the same price, makes a profit of 10% on one goat and suffers a loss of 10% on the other,",
+      "options": {
+        "A": "he makes no profit and no loss.",
+        "B": "he makes a profit of 1%.",
+        "C": "he suffers a loss of 1%.",
+        "D": "he suffers a loss of 2%"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2014_24",
+      "year": 2014,
+      "questionNumber": 24,
+      "topic": "Percentage and Ratio",
+      "question": "Out of a total of 120 musicians in a club, 5% can play all the three instruments, guitar, violin and flute. It so happens that the number of musicians Who can play any two and only two of the above instruments is 30. The number of musicians who can play the guitar alone is 40. What is the total number of those who can play violin alone or flute alone?",
+      "options": {
+        "A": "45",
+        "B": "44",
+        "C": "38",
+        "D": "30"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2014_49",
+      "year": 2014,
+      "questionNumber": 49,
+      "topic": "Percentage and Ratio",
+      "question": "As per agreement with a bank, a businessman had to refund a loan in some equal instalments without interest. After paying 18 instalments he found that 60 percent of his loan was refunded. How many instalments were there in the agreement?",
+      "options": {
+        "A": "22 30% Education",
+        "B": "24",
+        "C": "30",
+        "D": "33"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2013_63",
+      "year": 2013,
+      "questionNumber": 63,
+      "topic": "Percentage and Ratio",
+      "question": "Out of 120 applications for a post, 70 are male and 80 have a driver's license. What is the ratio between the minimum to maximum number of males having driver's license?",
+      "options": {
+        "A": "1 to 2",
+        "B": "2 to 3",
+        "C": "3 to 7",
+        "D": "5 to 7"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2011_42",
+      "year": 2011,
+      "questionNumber": 42,
+      "topic": "Percentage and Ratio",
+      "question": "There are 100 students in a particular class. 60% students play cricket, 30% students play football and 10% students play both the games. What is the number of students who play neither cricket nor football?",
+      "options": {
+        "A": "25",
+        "B": "20",
+        "C": "18",
+        "D": "15"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2011_50",
+      "year": 2011,
+      "questionNumber": 50,
+      "topic": "Percentage and Ratio",
+      "question": "In a group of persons, 70% of the persons are male and 30% of the persons are married. If two sevenths of males are married, what fraction of the females is single?",
+      "options": {
+        "A": "2/7",
+        "B": "1/3",
+        "C": "3/7",
+        "D": "2/3"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2024_16",
+      "year": 2024,
+      "questionNumber": 16,
+      "topic": "Mixture",
+      "question": "What percent of water must be mixed with honey so as to gain 20% by selling the mixture at the cost price of honey?",
+      "options": {
+        "A": "20%",
+        "B": "10%",
+        "C": "5%",
+        "D": "4%"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2022_69",
+      "year": 2022,
+      "questionNumber": 69,
+      "topic": "Mixture",
+      "question": "There are two containers x and Y. x contains 100 ml of milk and Y contains 100 ml of water. 20 ml of milk from x is transferred to Y. After mixing well, 20 ml of the mixture in Y is transferred back to X. If m denotes the proportion of milk in x and n denotes the proportion of water in Y, then which one of the following is correct?",
+      "options": {
+        "A": "m = n",
+        "B": "m > n",
+        "C": "m < n",
+        "D": "Cannot be determined due to insufficient data"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2020_68",
+      "year": 2020,
+      "questionNumber": 68,
+      "topic": "Mixture",
+      "question": "A bottle contains 20 litres of liquid A. 4 litres of liquid A is taken out of it and replaced by same quantity of liquid B. Again 4 litre of the mixture is taken out and replaced by same quantity of liquid B. What is the ratio of quantity of liquid A to that of liquid B in the final mixture?",
+      "options": {
+        "A": "4: 1",
+        "B": "5: 1",
+        "C": "16: 9",
+        "D": "17: 8"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2016_28",
+      "year": 2016,
+      "questionNumber": 28,
+      "topic": "Mixture",
+      "question": "30g of sugar was mixed in 180 ml water in a vessel A, 40 g of sugar was mixed in 280 ml of water in vessel B and 20 g of sugar was mixed in 100 ml of water in vessel C. The solution in vessel B is",
+      "options": {
+        "A": "sweeter than that in C",
+        "B": "sweeter than that in A",
+        "C": "as sweet as that in C",
+        "D": "less sweet than that in C"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2015_35",
+      "year": 2015,
+      "questionNumber": 35,
+      "topic": "Mixture",
+      "question": "Two equal glasses of same type are respectively 1/3 and 1/4 full of milk. They are then filled up with water and the contents are mixed in a pot. What is the ratio of milk and water in the pot?",
+      "options": {
+        "A": "7:17",
+        "B": "1:3",
+        "C": "9: 21",
+        "D": "11: 23"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2012_62",
+      "year": 2012,
+      "questionNumber": 62,
+      "topic": "Mixture",
+      "question": "Two glasses of equal volume are respectively half and three-fourths filled with milk. They are then filled to the brim by adding water. Their contents are then poured into another vessel. What will be the ratio of milk to water in this vessel?",
+      "options": {
+        "A": "1:3",
+        "B": "2:3",
+        "C": "3:2",
+        "D": "5:3"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2024_29",
+      "year": 2024,
+      "questionNumber": 29,
+      "topic": "Linear Equations",
+      "question": "A father said to his son, 'n years back I was as old as you are now. My present age is four times your age n years back.' If the sum of the present ages of the father and the son is 130 years, what is the difference of their ages?",
+      "options": {
+        "A": "30 years",
+        "B": "32 years",
+        "C": "34 years",
+        "D": "36 years"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2024_35",
+      "year": 2024,
+      "questionNumber": 35,
+      "topic": "Linear Equations",
+      "question": "Let x be a two-digit number and Y be another two-digit number formed by interchanging the digits of X. If (X + Y) is the greatest two-digit number, then what is the number of possible values of X?",
+      "options": {
+        "A": "2",
+        "B": "4",
+        "C": "6",
+        "D": "8"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2024_48",
+      "year": 2024,
+      "questionNumber": 48,
+      "topic": "Linear Equations",
+      "question": "If the sum of the two-digit numbers AB and CD is the three-digit number 1CE, where the letters A, B, C, D, E denote distinct digits, then what is the value of A?",
+      "options": {
+        "A": "9",
+        "B": "8",
+        "C": "7",
+        "D": "Cannot be determined due to insufficient data"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2024_49",
+      "year": 2024,
+      "questionNumber": 49,
+      "topic": "Linear Equations",
+      "question": "Three numbers x, y, z are selected from the set of the first seven natural numbers such that x > 3z. How many such distinct triplets (x, y, z) are possible?",
+      "options": {
+        "A": "One triplet",
+        "B": "Two triplets",
+        "C": "Three triplets",
+        "D": "Four triplets"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2024_50",
+      "year": 2024,
+      "questionNumber": 50,
+      "topic": "Linear Equations",
+      "question": "The total cost of 4 oranges, 6 mangoes and 8 apples is equal to twice the total cost of 1 orange, 2 mangoes and 5 apples. Consider the following statements: 1. The total cost of 3 oranges, 5 mangoes and 9 apples is equal to the total cost of 4 oranges, 6 mangoes and 8 apples. 2. The total cost of one orange and one mango is equal to the cost of one apple. Which of the statements given above is/ are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2023_9",
+      "year": 2023,
+      "questionNumber": 9,
+      "topic": "Linear Equations",
+      "question": "If ABC and DEF are both 3-digit numbers such that A, B, C, D, E and F are distinct non-zero digits such that ABC + DEF= 1111, then what is the value of A+B+C+D+E+F?",
+      "options": {
+        "A": "28",
+        "B": "29",
+        "C": "30",
+        "D": "31"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2023_10",
+      "year": 2023,
+      "questionNumber": 10,
+      "topic": "Linear Equations",
+      "question": "D is a 3-digit number such that the ratio of the number to the sum of its digits is least. What is the difference between the digit at the hundred's place and the digit at the unit's place of D?",
+      "options": {
+        "A": "0",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2023_16",
+      "year": 2023,
+      "questionNumber": 16,
+      "topic": "Linear Equations",
+      "question": "A 3-digit number ABC, on multiplication with D gives 37DD where A, B, C and D are different non-zero digits. What is the value of A+B+C?",
+      "options": {
+        "A": "18",
+        "B": "16",
+        "C": "15",
+        "D": "Cannot be determined due to insufficient data"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2023_25",
+      "year": 2023,
+      "questionNumber": 25,
+      "topic": "Linear Equations",
+      "question": "Let x be a positive integer such that 7x + 96 is divisible by x. How many values of x are possible?",
+      "options": {
+        "A": "10",
+        "B": "11",
+        "C": "12",
+        "D": "Infinitely many"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2023_26",
+      "year": 2023,
+      "questionNumber": 26,
+      "topic": "Linear Equations",
+      "question": "If p, q, r and s are distinct single-digit positive numbers, then what is the greatest value of (p + q) x (r + s)?",
+      "options": {
+        "A": "230",
+        "B": "225",
+        "C": "224",
+        "D": "221"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2023_29",
+      "year": 2023,
+      "questionNumber": 29,
+      "topic": "Linear Equations",
+      "question": "What is the sum of all digits which appear in all the integers from 10 to 100?",
+      "options": {
+        "A": "855",
+        "B": "856",
+        "C": "910",
+        "D": "911"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2023_76",
+      "year": 2023,
+      "questionNumber": 76,
+      "topic": "Linear Equations",
+      "question": "AB and CD are 2-digit numbers. Multiplying AB with CD results in a 3-digit number DEF. Adding DEF to another 3-digit number GHI results in 975. Further, A, B, C, D, E, F, G, H, I are distinct digits. If E = 0 and F = 8, then what is A + B + C equal to?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2022_8",
+      "year": 2022,
+      "questionNumber": 8,
+      "topic": "Linear Equations",
+      "question": "A bill of Rs. 1840 is paid in the denomination of Rs. 50. Rs. 20 and Rs. 10 notes. 50 notes in all are used. Consider the following statements. 1. 25 notes of Rs. 50 are used and the remaining are the denominations of Rs. 20 and Rs. 10 2. 35 notes of 20 are used and the remaining are in the denominations of Rs. 50 and Rs.10 3. 20 notes of Rs. 10 are used and the remaining are in the denominations of Rs. 50 and Rs. 20 Which of the above statements are not correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2022_45",
+      "year": 2022,
+      "questionNumber": 45,
+      "topic": "Linear Equations",
+      "question": "Five friends P, Q, X, Y and Z purchased notebooks. The relevant information is given below: 1. Z purchased 8 notebooks more than X did. 2. P and Q together purchased 21 notebooks. 3. Q purchased 5 notebooks less than P did. 4. X and Y together purchased 28 notebooks. 5. P purchased 5 notebooks more than X did. If each notebook is priced Rs. 40, then what is the total cost of all the notebooks?",
+      "options": {
+        "A": "Rs. 2,600",
+        "B": "Rs. 2,400",
+        "C": "Rs. 2,360",
+        "D": "Rs. 2,320"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2022_47",
+      "year": 2022,
+      "questionNumber": 47,
+      "topic": "Linear Equations",
+      "question": "A person X wants to distribute some pens among six children A, B, C, D, E and F. Suppose A gets twice the number of pens received by B, three times that of C, four times that of D, five times that of E and six times that of F. What is the minimum number of pens X should buy so that the number of pens each one gets is an even number?",
+      "options": {
+        "A": "147",
+        "B": "150",
+        "C": "294",
+        "D": "300"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2022_54",
+      "year": 2022,
+      "questionNumber": 54,
+      "topic": "Linear Equations",
+      "question": "Let A, B and C represent distinct non-zero digits. Suppose x is the sum of all possible 3-digit numbers formed by A, B and C without repetition. Consider the following statements: 1. The 4-digit least value of x is 1332. 2. The 3-digit greatest value of x is 888. Which of the above statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2022_66",
+      "year": 2022,
+      "questionNumber": 66,
+      "topic": "Linear Equations",
+      "question": "Let p be a two-digit number and q be the number consisting of same digits written in reverse order. If p x q = 2430, then what is the difference between p and q?",
+      "options": {
+        "A": "45",
+        "B": "27",
+        "C": "18",
+        "D": "9"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2021_53",
+      "year": 2021,
+      "questionNumber": 53,
+      "topic": "Linear Equations",
+      "question": "Jay and Vijay spent an equal amount of money to buy some pens and special pencils of the same quality from the same store. If Jay bought 3 pens and 5 pencils, and Vijay bought 2 pens and 7 pencils, then which one of the following is correct?",
+      "options": {
+        "A": "A pencil costs more than a pen",
+        "B": "The price of a pencil is equal to that of a pen",
+        "C": "The price of a pen is two times the price of a pencil",
+        "D": "The price of a pen is three times the price of a pencil"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2021_54",
+      "year": 2021,
+      "questionNumber": 54,
+      "topic": "Linear Equations",
+      "question": "P scored 40 marks more than Q in an examination. If Q scored 10% less marks than P, then how much did Q score?",
+      "options": {
+        "A": "360",
+        "B": "380",
+        "C": "400",
+        "D": "420"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2021_55",
+      "year": 2021,
+      "questionNumber": 55,
+      "topic": "Linear Equations",
+      "question": "A person P asks one of his three friends X as to how much money he had. X replied, \"If Y gives Rs. 40, then Y will have half as much as Z, but if Z gives Rs. 40, then three of us will have equal amount.\" What is the total amount of money that X, Y and Z have?",
+      "options": {
+        "A": "Rs. 420",
+        "B": "Rs. 360",
+        "C": "Rs. 300",
+        "D": "Rs. 270"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2021_58",
+      "year": 2021,
+      "questionNumber": 58,
+      "topic": "Linear Equations",
+      "question": "In an objective type test of 90 questions, 5 marks are allotted for every correct answer and 2 marks are deducted for every wrong answer. After attempting all the 90 questions, a student got a total of 387 marks. What is the number of incorrect responses?",
+      "options": {
+        "A": "9",
+        "B": "13",
+        "C": "27",
+        "D": "43"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2021_60",
+      "year": 2021,
+      "questionNumber": 60,
+      "topic": "Linear Equations",
+      "question": "Consider the following multiplication problem: (PQ) x 3 = RQQ, where P, Q and R are different digits and R != 0. What is the value of (P + R)/Q?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "5",
+        "D": "Cannot be determined due to insufficient data"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2021_63",
+      "year": 2021,
+      "questionNumber": 63,
+      "topic": "Linear Equations",
+      "question": "There are three points P, Q and R on a straight line such that PQ: QR= 3: 5. If n is the number of possible values of PQ: PR, then what is n equal to?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2021_67",
+      "year": 2021,
+      "questionNumber": 67,
+      "topic": "Linear Equations",
+      "question": "Consider the following statements: 1. The sum of 5 consecutive integers can be 100. 2. The product of three consecutive natural numbers can be equal to their sum. Which of the above statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2021_76",
+      "year": 2021,
+      "questionNumber": 76,
+      "topic": "Linear Equations",
+      "question": "The difference between a 2- digit number and the number obtained by interchanging the positions of the digits is 54. Consider the following statements: 1. The sum of the two digits of the number can be determined only if the product of the two digits is known. 2. The difference between the two digits of the number can be determined. Which of the above statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2021_77",
+      "year": 2021,
+      "questionNumber": 77,
+      "topic": "Linear Equations",
+      "question": "X said to Y, \"At the time of your birth I was twice as old as you are at present.\" If the present age of x is 42 years, then consider the following statements: 1. 8 years ago, the age of x was five times the age of Y. 2. After 14 years, the age of x would be two times the age of Y. Which of the above statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2020_8",
+      "year": 2020,
+      "questionNumber": 8,
+      "topic": "Linear Equations",
+      "question": "Let XYZ be a three-digit number, where (X + Y + Z) is not a multiple of 3. Then (XYZ + YZX + ZXY) is not divisible by",
+      "options": {
+        "A": "3",
+        "B": "9",
+        "C": "37",
+        "D": "(X+Y+Z)"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2020_11",
+      "year": 2020,
+      "questionNumber": 11,
+      "topic": "Linear Equations",
+      "question": "In the sum @ + 1@ + 5@ + @@ + @1 = 1@@, for which digit does the symbol @ stand?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2020_14",
+      "year": 2020,
+      "questionNumber": 14,
+      "topic": "Linear Equations",
+      "question": "One page is torn from a booklet whose pages are numbered in the usual manner starting from the first page as 1. The sum of the numbers on the remaining pages is 195. The torn page contains which of the following numbers?",
+      "options": {
+        "A": "5, 6",
+        "B": "7, 8",
+        "C": "9, 10",
+        "D": "11, 12"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2020_16",
+      "year": 2020,
+      "questionNumber": 16,
+      "topic": "Linear Equations",
+      "question": "Let A3BC and DE2F be four- digit numbers where each letter represents a different digit greater than 3. If the sum of the numbers is 15902, then what is the difference between the values of A and D?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2020_60",
+      "year": 2020,
+      "questionNumber": 60,
+      "topic": "Linear Equations",
+      "question": "How many different sums can be formed with the denominations Rs. 50, Rs. 100, Rs. 200, Rs. 500 and Rs. 2,000 taking at least three denominations at a time?",
+      "options": {
+        "A": "16",
+        "B": "15",
+        "C": "14",
+        "D": "10"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2020_79",
+      "year": 2020,
+      "questionNumber": 79,
+      "topic": "Linear Equations",
+      "question": "A vessel full of water weighs 40 kg. If it is If it is one-third filled, its weight becomes 20 kg. What is the weight of the empty vessel?",
+      "options": {
+        "A": "10 kg",
+        "B": "15 kg",
+        "C": "20 kg",
+        "D": "25 kg"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2020_80",
+      "year": 2020,
+      "questionNumber": 80,
+      "topic": "Linear Equations",
+      "question": "A frog tries to come out of a dried well 4.5 m deep with slippery walls. Every time the frog jumps 30 cm, it slides down 15 cm. What is the number of jumps required for the frog to come out of the well?",
+      "options": {
+        "A": "28",
+        "B": "29",
+        "C": "30",
+        "D": "31"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2019_18",
+      "year": 2019,
+      "questionNumber": 18,
+      "topic": "Linear Equations",
+      "question": "In 2002, Meenu's age was one-third of the age of Meera, whereas in 2010, Meenu's age was half the age of Meera. What is Meenu's year of birth?",
+      "options": {
+        "A": "1992",
+        "B": "1994",
+        "C": "1996",
+        "D": "1998"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2019_19",
+      "year": 2019,
+      "questionNumber": 19,
+      "topic": "Linear Equations",
+      "question": "Rakesh and Rajesh together bought 10 balls and 10 rackets. Rakesh spent Rs. 1300 and Rajesh spent Rs. 1500. If each racket costs three times what a ball does, then what is the price of a racket?",
+      "options": {
+        "A": "Rs. 70",
+        "B": "Rs. 90",
+        "C": "Rs. 210",
+        "D": "Rs. 240"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2019_20",
+      "year": 2019,
+      "questionNumber": 20,
+      "topic": "Linear Equations",
+      "question": "In a conference, out of a total 100 participants, 70 are Indians. If 60 of the total participants are vegetarian, then which of the following statements is/are correct? 1. At least 30 Indian participants are vegetarian. 2. At least 10 Indian participants are non-vegetarian. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2019_34",
+      "year": 2019,
+      "questionNumber": 34,
+      "topic": "Linear Equations",
+      "question": "In an examination, A has scored 20 marks more than B. If B has scored 5% less marks than A, how much has B scored?",
+      "options": {
+        "A": "360",
+        "B": "380",
+        "C": "400",
+        "D": "420"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2019_35",
+      "year": 2019,
+      "questionNumber": 35,
+      "topic": "Linear Equations",
+      "question": "Seeta and Geeta go for a swim after a gap of every 2 days and every 3 days respectively. If on 1st January both of them went for a swim together, when will they go together next?",
+      "options": {
+        "A": "7th January",
+        "B": "8th January",
+        "C": "12th January",
+        "D": "13th January"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2019_37",
+      "year": 2019,
+      "questionNumber": 37,
+      "topic": "Linear Equations",
+      "question": "If x is greater than or equal to 25 and y is less than or equal to 40, then which one of the following is always correct?",
+      "options": {
+        "A": "x is greater than y",
+        "B": "(y-x) is greater than 15",
+        "C": "(y-x) is less than or equal to 15",
+        "D": "(x + y) is greater than or equal to 65"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2019_38",
+      "year": 2019,
+      "questionNumber": 38,
+      "topic": "Linear Equations",
+      "question": "Ena was born 4 years after her parents' marriage. Her mother is three years younger than her father and 24 years older than Ena, who is 13 years old. At what age did Ena's father get married?",
+      "options": {
+        "A": "22 years",
+        "B": "23 years",
+        "C": "24 years",
+        "D": "25 years"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2019_56",
+      "year": 2019,
+      "questionNumber": 56,
+      "topic": "Linear Equations",
+      "question": "Suppose you have sufficient amount of rupee currency in three denominations: Rs. 1, Rs. 10 and Rs. 50. In how many different ways can you pay a bill of Rs. 107?",
+      "options": {
+        "A": "16",
+        "B": "17",
+        "C": "18",
+        "D": "19"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2019_73",
+      "year": 2019,
+      "questionNumber": 73,
+      "topic": "Linear Equations",
+      "question": "How many triplets (x, y, z) satisfy the equation x + y + z = 6, where x, y and z are natural numbers?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "9",
+        "D": "10"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2019_74",
+      "year": 2019,
+      "questionNumber": 74,
+      "topic": "Linear Equations",
+      "question": "If $ means 'divided by'; @ means 'multiplied by'; # means 'minus', then the value of 10#5@1$5 is",
+      "options": {
+        "A": "0",
+        "B": "1",
+        "C": "2",
+        "D": "9"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2018_34",
+      "year": 2018,
+      "questionNumber": 34,
+      "topic": "Linear Equations",
+      "question": "A number consists of three digits of which the middle one is zero and their sum is 4. If the number formed by interchanging the first and last digits is greater than the number itself by 198, then the difference between the first and last digits is",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2018_38",
+      "year": 2018,
+      "questionNumber": 38,
+      "topic": "Linear Equations",
+      "question": "A bookseller sold 'a' number of Geography textbooks at the rate of Rs. x per book, 'a + 2' number of History textbooks at the rate of Rs. (x + 2) per book and 'a - 2' number of Mathematics textbooks at the rate of Rs. (x - 2) per book. What is his total sale in Rs.?",
+      "options": {
+        "A": "3 * x + 3 * a",
+        "B": "3 * axx + 8",
+        "C": "9 * axx",
+        "D": "x^3 * a^3"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2018_68",
+      "year": 2018,
+      "questionNumber": 68,
+      "topic": "Linear Equations",
+      "question": "A lift has the capacity of 18 adults or 30 children. How many children can board the lift with 12 adults?",
+      "options": {
+        "A": "6",
+        "B": "10",
+        "C": "12",
+        "D": "15"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2018_77",
+      "year": 2018,
+      "questionNumber": 77,
+      "topic": "Linear Equations",
+      "question": "If x - y = 8, then which of the following must be true? 1. Both x and y must be positive for any value of x and y. 2. If x is positive, y must be negative for any value of x and y. 3. If x is negative, y must be positive for any value of x and y. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2 nor 3"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2017_11",
+      "year": 2017,
+      "questionNumber": 11,
+      "topic": "Linear Equations",
+      "question": "If second and fourth Saturdays and, all the Sundays are taken as only holidays for an office, what would be the minimum number of possible working days of any month of any year?",
+      "options": {
+        "A": "23",
+        "B": "22",
+        "C": "21",
+        "D": "20"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2017_14",
+      "year": 2017,
+      "questionNumber": 14,
+      "topic": "Linear Equations",
+      "question": "The sum of income of A and B is more than that of C and D taken together. The sum of income of A and C is the same as that of B and D taken together. Moreover, A earns half as much as the sum of the income of B and D. Whose income is the highest?",
+      "options": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2017_16",
+      "year": 2017,
+      "questionNumber": 16,
+      "topic": "Linear Equations",
+      "question": "There are three pillars X, Y and Z of different heights. Three spiders A, B and C start to climb on these pillars simultaneously. In one chance, A climbs on x by 6 cm but slips down 1 cm. B climbs on Y by 7 cm but slips down 3 cm. C climbs on Z by 6.5 cm but slips down 2 cm. If each of them requires 40 chances to reach the top of the pillars, what is the height of the shortest pillar?",
+      "options": {
+        "A": "161 cm",
+        "B": "163 cm",
+        "C": "182 cm",
+        "D": "210 cm"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2017_36",
+      "year": 2017,
+      "questionNumber": 36,
+      "topic": "Linear Equations",
+      "question": "Six boys A, B, C, D, E and F play a game of cards. Each has a pack of 10 cards. F borrows 2 cards from A and gives away 5 to C who in turn gives 3 to B while B gives 6 to D who passes 1 to E. Then the number of cards possessed by D and E is equal to the number of cards possessed by",
+      "options": {
+        "A": "A, B and C",
+        "B": "B, C and F",
+        "C": "A, B and F",
+        "D": "A, C and F"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2017_53",
+      "year": 2017,
+      "questionNumber": 53,
+      "topic": "Linear Equations",
+      "question": "The age of Mr. x last year was the square of a number and it would be the cube of a number next year. What is the least number of years he must wait for his age to become the cube of a number again?",
+      "options": {
+        "A": "42",
+        "B": "38",
+        "C": "25",
+        "D": "16"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2017_73",
+      "year": 2017,
+      "questionNumber": 73,
+      "topic": "Linear Equations",
+      "question": "A 2-digit number is reversed. The larger of the two numbers is divided by the smaller one. What is the largest possible remainder?",
+      "options": {
+        "A": "9",
+        "B": "27",
+        "C": "36",
+        "D": "45"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2017_79",
+      "year": 2017,
+      "questionNumber": 79,
+      "topic": "Linear Equations",
+      "question": "There are certain 2-digit numbers. The difference between the number and the one obtained on reversing it is always 27. How many such maximum 2-digit numbers are there?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "None of the above"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2016_27",
+      "year": 2016,
+      "questionNumber": 27,
+      "topic": "Linear Equations",
+      "question": "Four friends A, B, C and D need to cross a bridge. A maximum of two persons can cross it at a time. It is night and they just have one lamp. Persons that cross the bridge must carry the lamp to find the way. A pair must walk together at the speed of slower person. After crossing the bridge, the person having faster speed in the pair will return with the lamp each time to accompany another person in the group. Finally, the lamp has to be returned at the original place and the person who returns the lamp has to cross the bridge again without lamp. To cross the bridge, the time taken by them is as follows: A: 1 minute, B: 2 minutes, C: 7 minutes and D: 10 minutes. What is the total minimum time required by all the friends to cross the bridge?",
+      "options": {
+        "A": "23 minutes",
+        "B": "22 minutes",
+        "C": "21 minutes",
+        "D": "20 minutes"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2016_29",
+      "year": 2016,
+      "questionNumber": 29,
+      "topic": "Linear Equations",
+      "question": "In aid of charity, every student in a class contributes as many rupees as the number of students in that class. With the additional contribution of Rs. 2 by one student only, the total collection is Rs. 443. Then how many students are there in the class?",
+      "options": {
+        "A": "12",
+        "B": "21",
+        "C": "43",
+        "D": "45"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2016_50",
+      "year": 2016,
+      "questionNumber": 50,
+      "topic": "Linear Equations",
+      "question": "An agricultural field is in the form of a rectangle having length X1 meters and breadth X^2 meters (X1 and X^2 are variable). If X1 + X^2 = 40 meters, then the area of the agricultural field will not exceed which one of the following values?",
+      "options": {
+        "A": "400 sq m",
+        "B": "300 sq m",
+        "C": "200 sq m",
+        "D": "80 sq m"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2016_51",
+      "year": 2016,
+      "questionNumber": 51,
+      "topic": "Linear Equations",
+      "question": "The sum of the ages of 5 members comprising a family, 3 years ago was 80 years. The average age of the family today is the same as it was 3 years ago, because of an addition of a baby during the intervening period. How old is the baby?",
+      "options": {
+        "A": "6 months",
+        "B": "1 year",
+        "C": "2 years",
+        "D": "2 years and 6 months"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2016_78",
+      "year": 2016,
+      "questionNumber": 78,
+      "topic": "Linear Equations",
+      "question": "In a race, a competitor has to collect 6 apples which are kept in a straight line on a track and a bucket is placed at the beginning of the track which is a starting point. The condition is that the competitor can pick only one apple at a time, run back with it and drop it in the bucket. If he has to drop all the apples in the bucket, how much total distance he has to run if the bucket is 5 meters from the first apple and all other apples are placed 3 meters apart?",
+      "options": {
+        "A": "40 m",
+        "B": "50 m",
+        "C": "75 m",
+        "D": "150 m"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2015_16",
+      "year": 2015,
+      "questionNumber": 16,
+      "topic": "Linear Equations",
+      "question": "A father is nine times as old as his son and the mother is eight times as old as the son. The sum of the father's and the mother's age is 51 years. What is the age of the son?",
+      "options": {
+        "A": "7 years",
+        "B": "5 years",
+        "C": "4 years",
+        "D": "3 years"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2015_30",
+      "year": 2015,
+      "questionNumber": 30,
+      "topic": "Linear Equations",
+      "question": "Each of A, B, C and D has Rs.100. A pays 20 to B, who pays 10 to C, who gets 30 from D. In this context, which one of the following statements is not correct?",
+      "options": {
+        "A": "C is the richest.",
+        "B": "D is the poorest.",
+        "C": "C has more than what A and D have together.",
+        "D": "B is richer than D."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2015_38",
+      "year": 2015,
+      "questionNumber": 38,
+      "topic": "Linear Equations",
+      "question": "In a parking area, the total number of wheels of all the cars (four- wheelers) and scooters/ motorbikes (two-wheelers) is 100 more than twice the number of parked vehicles. The number of cars parked is",
+      "options": {
+        "A": "35",
+        "B": "45",
+        "C": "50",
+        "D": "55"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2015_50",
+      "year": 2015,
+      "questionNumber": 50,
+      "topic": "Linear Equations",
+      "question": "A person ordered 5 pairs of black socks and some pairs of brown socks. The price of a black pair was thrice that of a brown pair. While preparing the bill, the bill clerk interchanged the number of black and brown pairs by mistake which increased the bill by 100%. what was the number of pairs of brown socks in the original order?",
+      "options": {
+        "A": "10",
+        "B": "15",
+        "C": "20",
+        "D": "25"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2015_57",
+      "year": 2015,
+      "questionNumber": 57,
+      "topic": "Linear Equations",
+      "question": "If ABC x DEED = ABCABC, where A, B, C, D and E are different digits, what are the values of D and E?",
+      "options": {
+        "A": "D=2, E=0",
+        "B": "D=0, E=1",
+        "C": "D=1, E=0",
+        "D": "D=1, E=2"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2015_77",
+      "year": 2015,
+      "questionNumber": 77,
+      "topic": "Linear Equations",
+      "question": "A cow costs more than 4 goats but less than 5 goats. If a goat costs between 600 and 800, which of the following is a more valid conclusion?",
+      "options": {
+        "A": "A cow costs more than 2,500.",
+        "B": "A cow costs less than 3,600.",
+        "C": "A cow costs between 2,600 and 3,800.",
+        "D": "A cow costs between 2,400 and 4,000."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2015_79",
+      "year": 2015,
+      "questionNumber": 79,
+      "topic": "Linear Equations",
+      "question": "In a box of marbles, there are three less white marbles than the red ones and five more white marbles than the green ones. If there are a total of 10 white marbles, how many marbles are there in the box?",
+      "options": {
+        "A": "26",
+        "B": "28",
+        "C": "32",
+        "D": "36"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2014_7",
+      "year": 2014,
+      "questionNumber": 7,
+      "topic": "Linear Equations",
+      "question": "A group of 630 children is seated in rows for a group photo session. Each row contains three less children than the row in front of it. Which one of the following number of rows is not possible?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2014_22",
+      "year": 2014,
+      "questionNumber": 22,
+      "topic": "Linear Equations",
+      "question": "A straight-line segment is 36 cm long. Points are to be marked on the line from both the end points. From each end, the first point is at a distance of 1 cm from the end, the second point is at a distance of 2 cm from the first point and the third point is at a distance of 3 cm from the second point and so on. If the points on the ends are not counted and the common points are counted as one, what is the number of points?",
+      "options": {
+        "A": "10",
+        "B": "12",
+        "C": "14",
+        "D": "16"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2014_48",
+      "year": 2014,
+      "questionNumber": 48,
+      "topic": "Linear Equations",
+      "question": "A and B decide to travel from place x to place Y by bus. A has Rs. 10 with him and he finds that it is 80% of the bus fare for two persons. B finds that he has Rs. 3 with him and hands it over to A. In this context, which one of the following statements is correct?",
+      "options": {
+        "A": "Now the money A has is just enough to buy two tickets.",
+        "B": "A still needs Rs. 2 for buying the tickets.",
+        "C": "After buying the two tickets A will be left with 50 paise.",
+        "D": "The money A now has is still not sufficient to buy two tickets"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2014_65",
+      "year": 2014,
+      "questionNumber": 65,
+      "topic": "Linear Equations",
+      "question": "Four persons, Alok, Bhupesh, Chander and Dinesh have a total of 100 among themselves. Alok and Bhupesh between them have as much money as Chander and Dinesh between them, but Alok has more money than Bhupesh; and Chander has only half the money that Dinesh has. Alok has in fact Rs.5 more than Dinesh has. Who has the m aximum amount of money?",
+      "options": {
+        "A": "Alok",
+        "B": "Bhupesh",
+        "C": "Chander",
+        "D": "Dinesh"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2014_77",
+      "year": 2014,
+      "questionNumber": 77,
+      "topic": "Linear Equations",
+      "question": "For a charity show, the total tickets sold were 420. Half of these tickets were sold at the rate of Rs.5 each, one- third at the rate of Rs.3 each and the rest for Rs.2 each. What was the total amount received?",
+      "options": {
+        "A": "Rs. 900",
+        "B": "Rs. 1,540",
+        "C": "Rs. 1,610",
+        "D": "Rs. 2,000"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "id": "csat_quant_2013_10",
+      "year": 2013,
+      "questionNumber": 10,
+      "topic": "Linear Equations",
+      "question": "Four friends, A, B, C and D distribute some money among themselves in such a manner that A gets one less than B, C gets 5 more than D, D gets 3 more than B. Who gets the smallest amount?",
+      "options": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2013_31",
+      "year": 2013,
+      "questionNumber": 31,
+      "topic": "Linear Equations",
+      "question": "There are some balls of red, green and yellow colour lying on a table. There are as many red balls as there are yellow balls. There are twice as many yellow balls as there are green ones. The number of red balls",
+      "options": {
+        "A": "is equal to the sum of yellow and green balls.",
+        "B": "is double the number of green balls.",
+        "C": "is equal to yellow balls minus green balls.",
+        "D": "cannot be ascertained."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2013_60",
+      "year": 2013,
+      "questionNumber": 60,
+      "topic": "Linear Equations",
+      "question": "In a rare coin collection. there is one gold coin for every three non-gold coins. 10 more gold coins are added to the collection and the ratio of gold coins to non-gold coins would be 1: 2. Based on the information, the total number of coins in the collection now becomes",
+      "options": {
+        "A": "90",
+        "B": "80",
+        "C": "60",
+        "D": "50"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "id": "csat_quant_2013_61",
+      "year": 2013,
+      "questionNumber": 61,
+      "topic": "Linear Equations",
+      "question": "A gardener has 1000 plants. He wants to plant them in such a way that the number of rows and the number of columns remains the same. What is the minimum number of plants that he needs more for this purpose?",
+      "options": {
+        "A": "14",
+        "B": "24",
+        "C": "32",
+        "D": "34"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2013_62",
+      "year": 2013,
+      "questionNumber": 62,
+      "topic": "Linear Equations",
+      "question": "A sum of 700 has to be used to give seven cash prizes to the students of a school for their overall academic performance. If each prize is 20 less than its preceding prize, what is the least value of the prize?",
+      "options": {
+        "A": "Rs 30",
+        "B": "Rs 40",
+        "C": "Rs 60",
+        "D": "Rs 80"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2013_64",
+      "year": 2013,
+      "questionNumber": 64,
+      "topic": "Linear Equations",
+      "question": "In a garrison, there was food for 1000 soldiers for one month. After 10 days, 1000 more soldiers joined the garrison. How long would the soldiers be able to carry on with the remaining food?",
+      "options": {
+        "A": "25 days",
+        "B": "20 days",
+        "C": "15 days",
+        "D": "10 days"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2013_65",
+      "year": 2013,
+      "questionNumber": 65,
+      "topic": "Linear Equations",
+      "question": "The tank-full petrol in Arun's motor-cycle lasts for 10 days. If he starts using 25% more every day, how many days will the tank-full petrol last?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "id": "csat_quant_2011_35",
+      "year": 2011,
+      "questionNumber": 35,
+      "topic": "Linear Equations",
+      "question": "A contract on a construction job specifies a penalty for delay in completion of the work beyond a certain date as follows: Rs. 200 for the first day, Rs. 250 for the second day, Rs. 300 for the third day and so on, the penalty for each succeeding day being Rs. 50 more than that of the preceding day. How much penalty should the contractor pay if he delays the work by 10 days?",
+      "options": {
+        "A": "Rs. 4950",
+        "B": "Rs. 4250",
+        "C": "Rs. 3600",
+        "D": "Rs. 650"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "id": "csat_quant_2011_39",
+      "year": 2011,
+      "questionNumber": 39,
+      "topic": "Linear Equations",
+      "question": "A person has only Rs. 1 and Rs. 2 coins with her. If the total number of coins that she has is 50 and the amount of money with her is Rs. 75, then the number of Rs. 1 and Rs. 2 coins are, respectively",
+      "options": {
+        "A": "15 and 35",
+        "B": "35 and 15",
+        "C": "30 and 20",
+        "D": "25 and 25"
+      },
+      "correctAnswer": "D"
+    }
+  ]
+}

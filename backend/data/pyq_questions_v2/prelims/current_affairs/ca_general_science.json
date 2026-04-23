@@ -1,0 +1,333 @@
+{
+  "schemaVersion": "mentoros-ca-v1",
+  "fileName": "ca_general_science.json",
+  "questions": [
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_None_Q1",
+      "year": null,
+      "question": "Question count: 14 Note: Best-effort structured extraction from a column-formatted source PDF. Where the source itself marked an answer as changed, that note is preserved.",
+      "options": {},
+      "answer": {
+        "correct_option": null,
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "low",
+      "reviewRequired": true
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2021_Q2",
+      "year": 2021,
+      "question": "Q1. (2021) With reference to ‘palm oil’, consider the following statements: [2021] 1) The palm oil tree is native to Southeast Asia. 2) The palm oil is a raw material for some industries producing lipstick and perfumes. 3) The palm oil can be used to produce biodiesel. Which of the statements given above are correct? Source ref: gk_part1 / Q26",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2021_Q3",
+      "year": 2021,
+      "question": "Q2. (2021) The term ‘ACE2’ is talked about in the context of: [2021] Source ref: gk_part1 / Q27",
+      "options": {
+        "A": "Genes introduced in the genetically modified plants",
+        "B": "Development of India’s own satellite navigation system",
+        "C": "Radio collars for wildlife tracking",
+        "D": "Spread of viral diseases"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2021_Q4",
+      "year": 2021,
+      "question": "Q3. (2021) ‘Triclosan’, considered harmful when exposed to high levels for a long time, is most likely present in which of the following? [2021] Source ref: gk_part1 / Q28",
+      "options": {
+        "A": "Food preservatives",
+        "B": "Fruit-ripening substances",
+        "C": "Reused plastic containers",
+        "D": "Toiletries"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2016_Q5",
+      "year": 2016,
+      "question": "Q4. (2016) Recently, for the first time in our country, which of the following States has declared a particular butterfly as ‘State Butterfly’? [2016] Source ref: gk_part1 / Q47",
+      "options": {
+        "A": "Arunachal Pradesh",
+        "B": "Himachal Pradesh",
+        "C": "Karnataka",
+        "D": "Maharashtra"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2011_Q6",
+      "year": 2011,
+      "question": "Q5. (2011) Recently, “oil zapper’’ was in the news. What is it? [2011] Source ref: gk_part1 / Q63",
+      "options": {
+        "A": "It is an eco-friendly technology for the remediation of oily sludge and oil spills.",
+        "B": "It is the latest technology developed for under-sea oil exploration.",
+        "C": "It is a genetically engineered high biofuel-yielding maize variety.",
+        "D": "It is the latest technology to control the accidentally caused flames from oil wells."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2010_Q7",
+      "year": 2010,
+      "question": "Q6. (2010) With reference to the treatment of cancerous tumors, a tool called cyber knife has been making the news. In this context, which one of the following statements is not correct? [2010] Source ref: gk_part2 / Q1",
+      "options": {
+        "A": "It is a robotic image guided system.",
+        "B": "It delivers an extremely precise dose of radiation.",
+        "C": "It has the capability of achieving sub - millimeter accuracy.",
+        "D": "It can map the spread of tumour in the body."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2010_Q8",
+      "year": 2010,
+      "question": "Q7. (2010) Recently, LASIK (Laser Assisted In Situ Keratomileusis) procedure is being made popular for vision correction. Which one of the following statements in this context is not correct? [2010] Source ref: gk_part2 / Q2",
+      "options": {
+        "A": "LASIK procedure is used to correct refractive errors of the eye.",
+        "B": "It is a procedure that permanently changes the shapes of the cornea.",
+        "C": "It reduces a person’s dependence on glasses or contact lenses.",
+        "D": "It is a procedure that can be done on the person of any age."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2010_Q9",
+      "year": 2010,
+      "question": "Q8. (2010) Mon 863 is a variety of maize. It was in the news for the following reason: [2010] Source ref: gk_part2 / Q3",
+      "options": {
+        "A": "It is a genetically modified dwarf variety which is resistant to drought.",
+        "B": "It is a genetically modified variety which is past resistant.",
+        "C": "It is a genetically modified variety with ten times higher protein content than regular maize crop.",
+        "D": "It is a genetically modified variety used exclusively for bio - fuel production."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2009_Q10",
+      "year": 2009,
+      "question": "Q9. (2009) Consider the following: [2009] 1. Camphor 2. Chicory 3. Vanilla Which of the above is/are plant product (s)? Source ref: gk_part2 / Q41",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1 and 3 only",
+        "D": "1,2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2008_Q11",
+      "year": 2008,
+      "question": "Q10. (2008) The release of which one of the following into ponds and wells helps in controlling the mosquitoes? [2008] Source ref: gk_part2 / Q43",
+      "options": {
+        "A": "Crab",
+        "B": "Dogfish",
+        "C": "Gambusia fish",
+        "D": "Snail"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2006_Q12",
+      "year": 2006,
+      "question": "Q11. (2006) Which one of the following pairs is not correctly matched? [2006] Source ref: gk_part3 / Q20",
+      "options": {
+        "A": "Sigmund Freud: Psychoanalysis",
+        "B": "Anna Freud: Child psychiatry",
+        "C": "Milton Friedman: Economic",
+        "D": "Eric R. Kandel: Literature"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2005_Q13",
+      "year": 2005,
+      "question": "Q12. (2005) Which one of the following is the landmark performance of Dr. V. Mohan Reddy, an Indian born Doctor working in USA, during February, 2003? [2005] Source ref: gk_part3 / Q71",
+      "options": {
+        "A": "Research on human stem cell which is likely to revolutionise treatment of deadly disease like cancer.",
+        "B": "Successful open heart procedure called arterial switch performed on an infant.",
+        "C": "Research on genetic engineering which can help in treatment of deadly disease like AIDS.",
+        "D": "Successful brain surgery to revive the function of nearly dead brain of a premature born infant."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_2004_Q14",
+      "year": 2004,
+      "question": "Q13. (2004) Tarun Bharat Sangh, an organization based in a village near Alwar (Rajasthan), has become famous because of: [2004] Source ref: gk_part3 / Q91",
+      "options": {
+        "A": "Cultivation of genetically modified cotton",
+        "B": "Rehabilitation of women victims of AIDS",
+        "C": "Livelihood projects for destitute rural women",
+        "D": "Rain-water harvesting"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE.JSON_1995_Q15",
+      "year": 1995,
+      "question": "Q14. (1995) Coffee cultivation in Sri Lanka was abandoned because of the disease: [1995] Source ref: gk_part4 / Q54",
+      "options": {
+        "A": "Leaf blight",
+        "B": "Leaf spot",
+        "C": "Leaf rust",
+        "D": "Rot"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    }
+  ],
+  "nodeId": "GS3-CA-GENSCI",
+  "topicName": "GeneralScience"
+}

@@ -1,0 +1,442 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "High Court",
+  "topicId": "high_court",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 16,
+  "questions": [
+    {
+      "id": "POL_HIGH_COURT_2024_Q1",
+      "questionNumber": 1,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "A Writ of Prohibition is an order issued by the Supreme Court or High Courts to:",
+      "options": {
+        "A": "A government officer prohibiting hi particular action.",
+        "B": "The Parliament or legislative Assembly to pass a law on Prohibition.",
+        "C": "The lower court prohibiting continuation of proceedings in a case.",
+        "D": "The Government prohibiting it from following an unconstitutional policy."
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Writ Jurisdiction",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2022_Q2",
+      "questionNumber": 2,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Pursuant to the report of H.N. Sanyal Committee, the Contempt of Courts Act, 1971 was passed. 2. The Constitution of India empowers the Supreme Court and the High Courts to punish for contempt of themselves. 3. The Constitution of India defines Civil Contempt and Criminal Contempt. a) the polling was very poor b) the election was for a multi member constituency c) the elected candidate’s victory over his nearest rival was very marginal d) a very large number of candidates contested the election 4. In India, the Parliament is vested with the powers to make laws on Contempt of Court. Which of the statements given above is/are correct? m from taking a",
+      "options": {
+        "A": "1 and 2 onl y",
+        "B": "1, 2 and 4",
+        "C": "3 and 4 only",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2021_Q3",
+      "questionNumber": 3,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Indian judiciary, consider the following statements: 1) Any retired judge of the Supreme Court of India can be called back to sit and act as a Supreme Court judge by the Chief Justice of India with prior permission of the President of India. 2) A High Court in India has the power to review its own judgement as the Supreme Court does. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2019_Q4",
+      "questionNumber": 4,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Constitution of India, consider the following statements: 1. No High Court shall have the jurisdiction to declare any central law to be constitutionally invalid. 2. An amendment to the Constitution of India cannot be called into question by the Supreme Court of India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "High Court",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2009_Q5",
+      "questionNumber": 5,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The advocate General of a State in India is appointed by the President of India upon the recommendation of the Governor of the concerned State. 2. As provided in Civil Procedure Code, High Courts have original, appellate and advisory jurisdiction at the State level. Which of the above statements is/ are true?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2008_Q6",
+      "questionNumber": 6,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "How many high Courts in India have jurisdiction over more than one State (Union Territories not included)?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "High Court",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2007_Q7",
+      "questionNumber": 7,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The mode of removal of a Judge of a High Court in India is same as that of removal of a Judge of the Supreme Court. 2. After retirement from the office, a permanent Judge of a High Court cannot plead or act in any court or before any authority in India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "High Court",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2006_Q8",
+      "questionNumber": 8,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (A): In India, every state has a High Court in its territory. Reason (R): The Constitution of India provides for a High Court in each state.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A.",
+        "B": "Both A and R are individually true but R is not the correct explanation of A.",
+        "C": "A is True but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "High Court",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2006_Q9",
+      "questionNumber": 9,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. A person who has held office as a permanent Judge of a High Court cannot plead or act in any court or before any authority in India except the Supreme Court. 2. A person is not qualified for appointment as a Judge of a High Court in India unless he has for at least five years held a judicial office in the territory of India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "High Court",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2005_Q10",
+      "questionNumber": 10,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Parliament cannot enlarge the jurisdiction of the Supreme Court of India as its jurisdiction is limited to that conferred by the Constitution. 2. The officers and servants of the Supreme Court and High Courts are appointed by the concerned Chief Justice and the administrative expenses are charged on the Consolidated Fund of India. Which of the statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2005_Q11",
+      "questionNumber": 11,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statement: 1. There are 25 High Courts in India. 2. Punjab, Haryana and the Union Territory of Chandigarh have a common High Court. 3. National Ca pital Territory of Delhi has a High Court of its own. Which of the above statements is/are correct?",
+      "options": {
+        "A": "2 and 3",
+        "B": "1 and 2",
+        "C": "1, 2 and 3",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "High Court",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2004_Q12",
+      "questionNumber": 12,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The highest criminal court of the district is the Court of District and Sessions Judge. 2. The District Judges are appointed by the Governor in consultation with the High Court. 3. A person to be eligible for appointment as a District Judge should be an advocate or a pleader of seven years’ standing or more, or an officer in judicial service of the Union or the State. 4. When the Sessions Judge awards a death sentence, it must be confirmed by the High Court before it is carried out. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2, 3 and 4",
+        "C": "3 and 4",
+        "D": "1, 2, 3, and 4"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2003_Q13",
+      "questionNumber": 13,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following High Courts has the Territorial Jurisdiction over Andaman and Nicobar Islands?",
+      "options": {
+        "A": "Andhra Pradesh",
+        "B": "Calcutta",
+        "C": "Madras",
+        "D": "Orissa"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "High Court",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2002_Q14",
+      "questionNumber": 14,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "The salaries and allowances of the Judges of the High Court are charged do the:",
+      "options": {
+        "A": "Consolidated Fund of India",
+        "B": "Consolidated Fund of the State",
+        "C": "Contingency Fund of India",
+        "D": "Contingency Fund of the State"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "High Court",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_2001_Q15",
+      "questionNumber": 15,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements regarding the High Courts in India: I. There are eighteen High Courts in the country. II. Three of them have jurisdiction over more than one State. III. No Union Territory has a High Court of its own. IV. Judges of the High Court hold office till the age of 62. Which of these statements is/are correct?",
+      "options": {
+        "A": "II and IV",
+        "B": "II and III",
+        "C": "I and IV",
+        "D": "IV only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "High Court",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_HIGH_COURT_1996_Q16",
+      "questionNumber": 16,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "When the Chief Justice of a High Court acts in an administrative capacity, he is subject to:",
+      "options": {
+        "A": "The writ jurisdiction of any of the other judges of the High Court",
+        "B": "Special control exercised by the Chief Justice of India",
+        "C": "Discretionary powers of the Governor of the state",
+        "D": "Special powers provided to the Chief Minister in this regard"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "High Court",
+      "topicId": "high_court",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "High Court",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

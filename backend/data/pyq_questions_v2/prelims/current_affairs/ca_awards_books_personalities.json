@@ -1,0 +1,619 @@
+{
+  "schemaVersion": "mentoros-ca-v1",
+  "fileName": "ca_awards_books_personalities.json",
+  "questions": [
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_None_Q1",
+      "year": null,
+      "question": "Question count: 27 Note: Best-effort structured extraction from a column-formatted source PDF. Where the source itself marked an answer as changed, that note is preserved.",
+      "options": {},
+      "answer": {
+        "correct_option": null,
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "low",
+      "reviewRequired": true
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2024_Q2",
+      "year": 2024,
+      "question": "Q1. (2024) Who of the following is the author of the books \"The India Way\" and \"Why Bharat Matters\"? [2024] Source ref: gk_part1 / Q6",
+      "options": {
+        "A": "Bhupender Yadav",
+        "B": "Nalin Mehta",
+        "C": "Shashi Tharoor",
+        "D": "Subrahmanyam Jaishankar"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2009_Q3",
+      "year": 2009,
+      "question": "Q2. (2009) Consider the following houses: [2009] 1. Christie's 2. Osian's 3. Soptheby's Which of the above is/are auctioneer/ auctioneers? Source ref: gk_part2 / Q4",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2009_Q4",
+      "year": 2009,
+      "question": "Q3. (2009) Who of the following is the author of the book \"The audacity of Hope''? [2009] Source ref: gk_part2 / Q21",
+      "options": {
+        "A": "AI Gore",
+        "B": "Barack Obama",
+        "C": "Bill Clinton",
+        "D": "Hillary Clinton"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2009_Q5",
+      "year": 2009,
+      "question": "Q4. (2009) Match List I with List II and select the correct ANSWER using the code given below the lists: [2009] List I (Book) List II (Author) Source ref: gk_part2 / Q35",
+      "options": {
+        "A": "4",
+        "B": "4",
+        "C": "3",
+        "D": "3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2008_Q6",
+      "year": 2008,
+      "question": "Q5. (2008) How is Sarosh Zaiwalia well-Known as? [2008] Source ref: gk_part2 / Q66",
+      "options": {
+        "A": "A leading theater personality",
+        "B": "A leading wildiife photographer",
+        "C": "A leading International legal expert",
+        "D": "A leading orthopedic surgeon"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2008_Q7",
+      "year": 2008,
+      "question": "Q6. (2008) Kim Dae-Jung won the Nobel Prize for Peace. He is from which one of the following countries? [2008] Source ref: gk_part2 / Q74",
+      "options": {
+        "A": "Vietnam",
+        "B": "Cambodia",
+        "C": "South Korea",
+        "D": "Japan"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2008_Q8",
+      "year": 2008,
+      "question": "Q7. (2008) Consider the following statements: [2008] 1. Orange Prize is awarded to a work of published fiction in English by a woman. 2. Pulitzer Prize is awarded by the Commonwealth Foundation to a citizen of any Commonwealth country for any literary work in English. Which of the statements given above is/are correct? Source ref: gk_part2 / Q75",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2007_Q9",
+      "year": 2007,
+      "question": "Q8. (2007) Match List-I wish List-iI and select the correct answer using the code given below the lists: [2007] List-I (Writer) List-II (Book) A. V.S. Naipaul 1.The Siege of Krishnapur B. Salmman Rushdie 2. In a Free State C. Paul Scott 3. Midnight’s Children D. J.G Farrell 4. Staying On A B C D Source ref: gk_part2 / Q77",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2007_Q10",
+      "year": 2007,
+      "question": "Q9. (2007) Match List-I with List-II and select the correct answer using the code given below the lists: [2007] List-I (Person) List-II (Known as) A. John C. Mather 1. Co-founder of Microsoft B. Michael Griffin 2. Space Walker C. Paul G. Allen 3. Administrator of NASA D. Piers Sellers 4. Nobel Prize Winner,2006 in Physics A B C D Source ref: gk_part2 / Q83",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2007_Q11",
+      "year": 2007,
+      "question": "Q10. (2007) Match List-I with List-II and select the correct answer using the code given below the lists: [2007] List-I (Eminent Person) List-II (Known as) A. Bhanu Bharti 1. Music composer B. Mike Pandey 2. Poet and Literateur C. Mohd. Zahur Khayyam 3. Theatre director D. Vinda Karandikar 4. Wildlife film maker A B C D Source ref: gk_part2 / Q84",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2007_Q12",
+      "year": 2007,
+      "question": "Q11. (2007) For which one of the following books did Kiran Desai win the Man Booker Prize 2006? [2007] Source ref: gk_part2 / Q91",
+      "options": {
+        "A": "The Secret River",
+        "B": "In the Country of Men",
+        "C": "The Inheritance of Loss",
+        "D": "Mother’s Milk"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2007_Q13",
+      "year": 2007,
+      "question": "Q12. (2007) How is Gabriel Garcia Marquez well-known as? [2007] Source ref: gk_part2 / Q93",
+      "options": {
+        "A": "Known for research in agriculture",
+        "B": "A renowed football coach",
+        "C": "A great writer who won the Nobel Prize for literature",
+        "D": "Known for research in railway engineering"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2007_Q14",
+      "year": 2007,
+      "question": "Q13. (2007) Wangari Maathai, the Nobel Prizes winner from Kenya is known for her contribution to which one of the following? [2007] Source ref: gk_part2 / Q95",
+      "options": {
+        "A": "Jouralism",
+        "B": "International economics",
+        "C": "Sustainable development",
+        "D": "Child development"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2006_Q15",
+      "year": 2006,
+      "question": "Q14. (2006) Match List . I with Likst . II and select the correct answer using the code given below the lists: [2006] List I (Author) List II (Book) A. Amartya Sen 1. An Ordinary Person’s Guide to Empire B. Bimal Jalan 2. The Argumentative Indian C. Arundhati Roy 3. The Future of India D. Mani Shankar Aiyar 4. Confessions of a Secular Fundamentalist A B C D Source ref: gk_part3 / Q8",
+      "options": {
+        "A": "3 2 1 4",
+        "B": "3 2 4 1",
+        "C": "2 3 1 4",
+        "D": "2 3 4 1"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2006_Q16",
+      "year": 2006,
+      "question": "Q15. (2006) Who is Wole Soyinka? [2006] Source ref: gk_part3 / Q10",
+      "options": {
+        "A": "A well-known economist",
+        "B": "A well-known football player",
+        "C": "A well-known industrialist owning steel plants in many parts of the world.",
+        "D": "A Nobel Prize winner for literature."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2006_Q17",
+      "year": 2006,
+      "question": "Q16. (2006) In which country is the committee which selects winners for Nobel peace prize located? [2006] Source ref: gk_part3 / Q28",
+      "options": {
+        "A": "Norway",
+        "B": "Sweden",
+        "C": "Finland",
+        "D": "Denmark"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2006_Q18",
+      "year": 2006,
+      "question": "Q17. (2006) Consider the following statement: [2006] 1. The Nobel Prize Awarding Ceremony takes place on December 10 to every year. 2. The Nobel Prize for Literature was added later on to the other five areas. Physics, Chemistry, Physiology or Medicine, Peace and Economics. Which of the statements given above is/are correct? Source ref: gk_part3 / Q34",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2006_Q19",
+      "year": 2006,
+      "question": "Q18. (2006) In which one of the following films did the Nobel Laureate Pearl S. Buck Collaborate? [2006] Source ref: gk_part3 / Q37",
+      "options": {
+        "A": "Shatranj Ke Khilari",
+        "B": "Guide",
+        "C": "Lawrence of Arabia",
+        "D": "Titanic"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2005_Q20",
+      "year": 2005,
+      "question": "Q19. (2005) Who among the following is not a recipient of the Bharat Ratna Award? [2005] Source ref: gk_part3 / Q41",
+      "options": {
+        "A": "Ustad Bismillah Khan",
+        "B": "Satyajit Ray",
+        "C": "Lata Mangeshkar",
+        "D": "Raj Kapoor"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2005_Q21",
+      "year": 2005,
+      "question": "Q20. (2005) Consider the following statements: [2005] 1. The Man Booker Prize is awarded to citizen of any of the countries of the British Commonwealth or the Republic of Ireland. 2. A leading London-based software company underwrites the Man Booker Prize presently. 3. The winner of the Man Booker Prize in year 2004 is a South Asian. Which of the statements is/are correct? Source ref: gk_part3 / Q56",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 3",
+        "C": "2 and 3",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2005_Q22",
+      "year": 2005,
+      "question": "Q21. (2005) Whose autobiography is the book “My music. My Life”? [2005] Source ref: gk_part3 / Q68",
+      "options": {
+        "A": "Pandit Shiv Kumar Sharma",
+        "B": "Ustad Amjad Ali Khan",
+        "C": "Pandit Ravi Shankar",
+        "D": "Ustad Zakir Hussain"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2005_Q23",
+      "year": 2005,
+      "question": "Q22. (2005) Match List-I (Distinguished Person) with List-II (Achievement/Known as) and select the correct answer using the code given below the list: [2005] List I List II A. Guenter Grass 1. First woman Prime Minister of Canada B. Tevor Huddleston 2. Nobel Prize Winner for literature C. Dicky Dolma 3. Leading campaigner against apartheid in south Africa D. Kim Campbell 4. Youngest woman to climb the Mt. Everest 5. American violinist A B C D Source ref: gk_part3 / Q73",
+      "options": {
+        "A": "5 3 2 1",
+        "B": "2 3 4 1",
+        "C": "5 3 4 2",
+        "D": "2 4 1 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_2004_Q24",
+      "year": 2004,
+      "question": "Q23. (2004) Match List-I (Books) with List-II (Authors) and select the correct answer using the codes given below the Lists: [2004] List-I (Books) List-II (Authors) A. My Presidential Years 1. S. Radhakrishnan B. The Hindu View of Life 2. V. V. Giri C. Voice of Conscience 3. N. Sanjiva Reddy D. Without Fear or Favour 4. R. Venkataraman A B C D Source ref: gk_part3 / Q87",
+      "options": {
+        "A": "2 1 4 3",
+        "B": "4 3 2 1",
+        "C": "2 3 4 1",
+        "D": "4 1 2 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_1999_Q25",
+      "year": 1999,
+      "question": "Q24. (1999) Match List I with List II and select the correct answer using the codes given below the Lists: [1999] List I (Writers) List II (Books) I. Shashi Tharoor A) Clear Light of Day II. Amitav Ghosh B) Circle of Reason III. Anita Desai C) Love and Longing in Bombay IV. Vikram Chandra D) Show Business Source ref: gk_part4 / Q15",
+      "options": {
+        "A": "I-D, II-B, III-A, IV-C",
+        "B": "I-D, II-B, III-C, IV-A",
+        "C": "I-B, II-D, III-A, IV-C",
+        "D": "I-B, II-D, III-C, IV-A"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_1998_Q26",
+      "year": 1998,
+      "question": "Q25. (1998) Bharat Ratna was awarded in 1997 to: [1998] Source ref: gk_part4 / Q23",
+      "options": {
+        "A": "Dr. Homi Bhabha (Posthumous)",
+        "B": "Former President R. Venkataraman",
+        "C": "Satyajit Ray (Posthumous)",
+        "D": "Dr. Abdul Kalam"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_1998_Q27",
+      "year": 1998,
+      "question": "Q26. (1998) Nobel Prize in Economics for the year 1997 was awarded for contribution in the area of: [1998] Source ref: gk_part4 / Q34",
+      "options": {
+        "A": "International Economics",
+        "B": "Financial Economics",
+        "C": "Public Economics",
+        "D": "Development Economics"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES.JSON_1997_Q28",
+      "year": 1997,
+      "question": "Q27. (1997) Bishop Carlos Felipe Ximenes Belo and Jose Ramos-Horta who shared the 1996 Nobel Peace Prize are known for their work for the cause of: [1997] Source ref: gk_part4 / Q44",
+      "options": {
+        "A": "East Timor",
+        "B": "Guatemala",
+        "C": "Bosnia",
+        "D": "Barunda"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    }
+  ],
+  "nodeId": "CA-ABP",
+  "topicName": "AwardsBooks"
+}

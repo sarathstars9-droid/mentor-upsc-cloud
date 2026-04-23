@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Historical Background",
+  "topicId": "historical_background",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 1,
+  "questions": [
+    {
+      "id": "POL_HISTORICAL_BACKGROUND_2010_Q1",
+      "questionNumber": 1,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "The “Instrument of Instructions” contained in the Government of India Act 1935 have been incorporated in the Constitution of India in the year 1950 as:",
+      "options": {
+        "A": "Fundamental Rights",
+        "B": "Directive Principles of State Policy",
+        "C": "Extent of executive power of State",
+        "D": "Conduct of business of the Government of India."
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Historical Background",
+      "topicId": "historical_background",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Historical Background",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

@@ -1,0 +1,1234 @@
+{
+  "schemaVersion": "mentoros-ca-v1",
+  "fileName": "ca_economy_banking.json",
+  "questions": [
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_None_Q1",
+      "year": null,
+      "question": "Question count: 55 Note: Best-effort structured extraction from a column-formatted source PDF. Where the source itself marked an answer as changed, that note is preserved.",
+      "options": {},
+      "answer": {
+        "correct_option": null,
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "low",
+      "reviewRequired": true
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2025_Q2",
+      "year": 2025,
+      "question": "Q1. (2025) Consider the following statements in respect of the International Bank for Reconstruction and Development (IBRD): [2025] I. It provides loans and guarantees to middle income countries. II. It works single-handedly to help developing countries to reduce poverty. III. It was established to help Europe rebuild after the World War II. Which of the statements given above are correct? Source ref: intl_orgs / Q2",
+      "options": {
+        "A": "I and II only",
+        "B": "II and III only",
+        "C": "I and III only",
+        "D": "I, II and III"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2024_Q3",
+      "year": 2024,
+      "question": "Q2. (2024) Consider the following pairs: [2024] Country Reason for being in the news Argentina Worst economic crisis Sudan War between the country’s regular army and paramilitary forces Turkey Rescinded its membership of NATO How many of the pairs given above are correctly matched? Source ref: gk_part1 / Q7",
+      "options": {
+        "A": "Only one pair",
+        "B": "Only two pairs",
+        "C": "All three pairs",
+        "D": "None of the pairs"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2024_Q4",
+      "year": 2024,
+      "question": "Q3. (2024) Consider the following statements: [2024] Statement I: Recently, Venezuela has achieved a rapid recovery from its economic crisis and succeeded in preventing its people from fleeing/emigrating to other countries. Statement-II: Venezuela has the world's largest oil reserves. Which one of the following is correct in respect of the above statements? ( Source ref: gk_part1 / Q10",
+      "options": {
+        "A": "Statement-I and Statement-II are correct and Statement-II explains Statement-I (",
+        "B": "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I (",
+        "C": "Statement-I is correct, but Statement-II is incorrect (",
+        "D": "Statement-I is incorrect, but Statement-II is correct"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2023_Q5",
+      "year": 2023,
+      "question": "Q4. (2023) Consider the following statements: [2023] Statement-I: Recently, the United States of America (USA) and the European Union (EU) have launched the Trade and Technology Council'. Statement-II: The USA and the EU claim that through this they are trying to bring technological progress and physical productivity under their control. Which one of the following is correct in respect of the above statements? Source ref: gk_part1 / Q11",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-1 and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect Statement-II is correct"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2022_Q6",
+      "year": 2022,
+      "question": "Q5. (2022) Consider the following statements: [2022] 1. Vietnam has been one of the fastest growing economies in the world in recent years. 2. Vietnam is led by a multi-party political system. 3. Vietnam’s economic growth is linked to its integration with global supply chains and focus on exports. 4. For a long time Vietnam’s low labour costs and stable exchange rates have attracted global manufacturers. 5. Vietnam has the most productive e-service sector in the Indo-Pacific region. Which of the statements given above are correct? Source ref: gk_part1 / Q19",
+      "options": {
+        "A": "2 and 4",
+        "B": "3 and 5",
+        "D": "1 and 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2022_Q7",
+      "year": 2022,
+      "question": "Q6. (2022) Consider the following pairs: [2022] Country - Important reason for being in the news recently 1. Chad - Setting up of permanent military base by China Source ref: gk_part1 / Q21",
+      "options": {
+        "A": "Only one pair",
+        "B": "Only two pairs",
+        "C": "Only three pairs",
+        "D": "All four Pairs"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2020_Q8",
+      "year": 2020,
+      "question": "Q7. (2020) The term 'West Texas Intermediate', sometimes found in news, refers to a grade of: [2020] Source ref: gk_part1 / Q33",
+      "options": {
+        "A": "Crude oil",
+        "B": "Bullion",
+        "C": "Rare earth elements",
+        "D": "Uranium"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2020_Q9",
+      "year": 2020,
+      "question": "Q8. (2020) With reference to chemical fertilizers in India, consider the following statements: [2020] 1. At present, the retail price of chemical fertilizers is market-driven and not administered by the Government. 2. Ammonia, which is an input of urea, is produced from natural gas. 3. Sulphur, which is a raw material for phosphoric acid fertilizer, is a by-product of oil refineries. Which of the statements is/are correct? Source ref: gk_part1 / Q34",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "2 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2019_Q10",
+      "year": 2019,
+      "question": "Q9. (2019) The Global Competitiveness Report is published by the: [2019] Source ref: intl_orgs / Q17",
+      "options": {
+        "A": "International Monetary Fund",
+        "B": "United Nations Conference on Trade and Development",
+        "C": "World Economic Forum",
+        "D": "World Bank"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Economic Reports",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2017_Q11",
+      "year": 2017,
+      "question": "Q10. (2017) The term ‘Domestic Content Requirement’ is sometimes seen in the news with reference to: [2017] Source ref: gk_part1 / Q38",
+      "options": {
+        "A": "Developing solar power production in our country",
+        "B": "Granting licences to foreign T.V. channels in our country",
+        "C": "Exporting our food products to other countries",
+        "D": "Permitting foreign educational institutions to set up their campuses in our country"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2017_Q12",
+      "year": 2017,
+      "question": "Q11. (2017) Which of the following gives ‘Global Gender Gap Index’ ranking to the countries of the world? [2017] Source ref: intl_orgs / Q19",
+      "options": {
+        "A": "World Economic Forum",
+        "B": "UN Human Rights Council",
+        "C": "UN Women",
+        "D": "World Health Organization"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2016_Q13",
+      "year": 2016,
+      "question": "Q12. (2016) With reference to ‘Bitcoins’, sometimes seen in the news, which of the following statements is/are correct? [2016] 1. Bitcoins are tracked by the Central Banks of the countries. 2. Anyone with a Bitcoin address can send and receive Bitcoins from anyone else with a Bitcoin address. 3. Online payments can be sent without either side knowing the identity of the other. Select the correct answer using the code given below. Source ref: gk_part1 / Q43",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2016_Q14",
+      "year": 2016,
+      "question": "Q13. (2016) India’s ranking in the ‘Ease of Doing Business Index’ is sometimes seen in the news. Which of the following has declared that ranking? [2016] Source ref: intl_orgs / Q22",
+      "options": {
+        "A": "Organization for Economic Cooperation and Development (OECD)",
+        "B": "World Economic Forum",
+        "C": "World Bank",
+        "D": "World Trade Organization (WTO)"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Economic Reports",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2016_Q15",
+      "year": 2016,
+      "question": "Q14. (2016) Which of the following is/are the indicator/indicators used by IFPRI to compute the Global Hunger Index Report? [2016] 1. Undernourishment 2. Child stunting 3. Child mortality Select the correct answer using the code given below. Source ref: intl_orgs / Q25",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1, 2 and 3",
+        "D": "1 and 3 only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2015_Q16",
+      "year": 2015,
+      "question": "Q15. (2015) The substitution of steel for wooden ploughs in agricultural production is an example of: [2015] Source ref: gk_part1 / Q55",
+      "options": {
+        "A": "Labour-augmenting technological progress",
+        "B": "Capital-augmenting technological progress",
+        "C": "Capital-reducing technological progress",
+        "D": "None of the above"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2015_Q17",
+      "year": 2015,
+      "question": "Q16. (2015) Which one of the following issues the “Global Economic Prospects” report periodically? [2015] Source ref: intl_orgs / Q33",
+      "options": {
+        "A": "The Asian Development Bank",
+        "B": "The European Bank for Reconstruction and Development",
+        "C": "The US Federal Reserve Bank",
+        "D": "The World Bank"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Economic Reports",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2014_Q18",
+      "year": 2014,
+      "question": "Q17. (2014) Which of the following organizations brings out the publication known as 'World Economic Outlook? [2014] Source ref: intl_orgs / Q35",
+      "options": {
+        "A": "The International Monetary Fund",
+        "B": "The United Nations Development Programme",
+        "C": "The World Economic Forum",
+        "D": "The World Bank"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2012_Q19",
+      "year": 2012,
+      "question": "Q18. (2012) Recently, there has been a concern over the short supply of a group of elements called ‘rare earth metals’. Why? [2012] 1. China, which is the largest producer of these elements, has imposed some restrictions on their export. 2. Other than China, Australia, Canada and Chile, these elements are not found in any country. 3. Rare earth metals are essential for the manufacture of various kinds of electronic items and there is a growing demand for these elements. Which of the statements is/are correct? Source ref: gk_part1 / Q62",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 & 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2012_Q20",
+      "year": 2012,
+      "question": "Q19. (2012) The Multi-dimensional Poverty Index developed by Oxford Poverty and Human Development Initiative with UNDP support covers which of the following? [2012] 1. Deprivation of education, health, assets and services at household level 2. Purchasing power parity at national level 3. Extent of budget deficit and GDP growth rate at national level Select the correct answer using the codes given below: Source ref: intl_orgs / Q39",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1, 2 & 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2009_Q21",
+      "year": 2009,
+      "question": "Q20. (2009) To integrate cultural leaders into its meetings, which one of the following gives \"CrystaI Award”? [2009] Source ref: gk_part2 / Q13",
+      "options": {
+        "A": "Asia Pacific Economic Cooperation",
+        "B": "International Bank for Reconstruction and Development",
+        "C": "World Health Organization",
+        "D": "World Economic Forum"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2009_Q22",
+      "year": 2009,
+      "question": "Q21. (2009) In the context of Indian news in recent times, what is MCX - SX? [2009] Source ref: gk_part2 / Q18",
+      "options": {
+        "A": "A kind of supercomputer",
+        "B": "Title of Moon Impact Probe",
+        "C": "Stock Exchange",
+        "D": "Nuclear-Powered submarine"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2009_Q23",
+      "year": 2009,
+      "question": "Q22. (2009) Consider the following statements: [2009] 1. The Baglihar Power Project had been constructed within the parameters of the Indus Water Treaty. 2. The project was completely built by the Union Government with loans from Japan and the World Bank. Which of the above statements is/ are correct? Source ref: gk_part2 / Q19",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2009_Q24",
+      "year": 2009,
+      "question": "Q23. (2009) Which one of the following is not a drug/pharma company? [2009] Source ref: gk_part2 / Q20",
+      "options": {
+        "A": "Chevron",
+        "B": "Nicholas Piramal",
+        "C": "Pfizer",
+        "D": "Zydus Cadila"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2009_Q25",
+      "year": 2009,
+      "question": "Q24. (2009) Which one of the following pairs is not correctly matched? [2009] Source ref: gk_part2 / Q27",
+      "options": {
+        "A": "Japan: Nikkei",
+        "B": "Singapore: Shcomp",
+        "C": "UK: FISE",
+        "D": "USA: Nasdaq"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2009_Q26",
+      "year": 2009,
+      "question": "Q25. (2009) Consider the following pairs: [2009] 1. BMW: USA 2. Daimler: Sweden 3. Renault: France 4. Volkswagen: Germany Which of the pairs given above is/are correctly matched? Source ref: gk_part2 / Q31",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "3 and 4",
+        "C": "4 only",
+        "D": "1, 2 and 4"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2009_Q27",
+      "year": 2009,
+      "question": "Q26. (2009) Consider the following pairs: [2009] Large Bank Country of origin 1. ABN Amro Bank: USA 2. Barclays Bank: UK 3. Kookmin Bank: Japan Which of the above pairs is/are correctly matched? Source ref: gk_part2 / Q32",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "1 and 2",
+        "D": "2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2009_Q28",
+      "year": 2009,
+      "question": "Q27. (2009) In the context of global economy, which one of the following pairs is not correctly matched? [2009] Source ref: gk_part2 / Q39",
+      "options": {
+        "A": "JP Morgan Chase: Financial Services",
+        "B": "Roche Holding AG: Financial Services",
+        "C": "WL Ross & Co.: Private Equity Firm",
+        "D": "Warburg: Private Equity Firm"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2009_Q29",
+      "year": 2009,
+      "question": "Q28. (2009) NaMa-11 (Nama-11) group of countries frequently appears in the news in the context of the affairs of which one of the following? [2009] ap Source ref: intl_orgs / Q54",
+      "options": {
+        "A": "Nuclear Suppliers Group",
+        "B": "World Bank",
+        "C": "World Economic Forum",
+        "D": "W.T.O."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2009_Q30",
+      "year": 2009,
+      "question": "Q29. (2009) Who among the following is the founder of World Economic Forum? [2009] Source ref: intl_orgs / Q56",
+      "options": {
+        "A": "Klaus Schwab",
+        "B": "John Kenneth Galbraith",
+        "C": "Robert Zoellick",
+        "D": "Paul Krugman"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2008_Q31",
+      "year": 2008,
+      "question": "Q30. (2008) C.Rangarajan has been actively involved in the Pan- Asian Commission addressing to which one of the following issues? [2008] Source ref: gk_part2 / Q48",
+      "options": {
+        "A": "Promotion of tourism in the Asian region",
+        "B": "Impact of HIV / AIDS in the asian resign",
+        "C": "Promotion of free trade in the Asian region",
+        "D": "Higher technical education in the universities in the Asian region"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2008_Q32",
+      "year": 2008,
+      "question": "Q31. (2008) What does S & P 500 relate to? [2008] Source ref: gk_part2 / Q54",
+      "options": {
+        "A": "Supercomputer",
+        "B": "A new technique in e-business",
+        "C": "A new technique in bridge building",
+        "D": "An index of stocks of large companies"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2008_Q33",
+      "year": 2008,
+      "question": "Q32. (2008) How much is one barrel of oil approximately equal to? [2008] Source ref: gk_part2 / Q59",
+      "options": {
+        "A": "131 litres",
+        "B": "159 litres",
+        "C": "257 litres",
+        "D": "321 litres"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2007_Q34",
+      "year": 2007,
+      "question": "Q33. (2007) Match List-I wish List-II and select the correct answer using the code given below the lists: [2007] List-I (Company) List-II (Major Area/Product) A. Chevron 1. Wind energy B. A T & T 2. Oil C. AMD 3. Telephone, internet D. Enercon 4. Micro-processor A B C D Source ref: gk_part2 / Q86",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2006_Q35",
+      "year": 2006,
+      "question": "Q34. (2006) Which one of the following pairs is not correctly matched? [2006] Well known Company: Major Area of Work Source ref: gk_part3 / Q1",
+      "options": {
+        "A": "Adobe Systems India: Software",
+        "B": "Sasken: Communication technology",
+        "C": "Genpact: Power generation",
+        "D": "Sunthite: Export of spices"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2006_Q36",
+      "year": 2006,
+      "question": "Q35. (2006) Match List-I with List-II and select the correct answer using the code given below the lists: [2006] List-I List-II A. Harold Pinter 1. Director-General, Fao B. Jacques Diouf 2. President, European Commission C. Jose Manuel Barroso 3. World Bank appointed expert for Adjudicating on the Baglihar Hydel Project D. Raymond Lafitte 4. Literature A B C D Source ref: gk_part3 / Q19",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2006_Q37",
+      "year": 2006,
+      "question": "Q36. (2006) Projects and Development India Limited is Mainly engaged is design engineering, procurement and supervision of construction/commissioning in which area? [2006] Source ref: gk_part3 / Q21",
+      "options": {
+        "A": "Pharmaceutical plants",
+        "B": "Petroleum refineries and sugar factories",
+        "C": "Ship-building yard",
+        "D": "Fertilizer and allied chemical plants"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2006_Q38",
+      "year": 2006,
+      "question": "Q37. (2006) Match List .I with List-II and select the correct answer using the code given below the lists: [2006] List I (Person) List II (Organization / Area of work) A. Chanda Kochhar 1. Advertising B. Amrita Patel 2. Banking C. Indra Nooyi 3. Dairy Development D. Piysuh Pandey 4. Pepsi Co. Codes A B C D Source ref: gk_part3 / Q31",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2006_Q39",
+      "year": 2006,
+      "question": "Q38. (2006) Where is Davos- the venue of the annual meeting of World Economic Forum, located? [2006] Source ref: intl_orgs / Q68",
+      "options": {
+        "A": "France",
+        "B": "Germany",
+        "C": "Switzerland",
+        "D": "Luxembourg"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2005_Q40",
+      "year": 2005,
+      "question": "Q39. (2005) Virtual water trade is being looked at by experts as a solution to the world’s water crisis. What does virtual water (VW) imply? [2005] Source ref: gk_part3 / Q50",
+      "options": {
+        "A": "Volume of heavy water required to replace ordinary water.",
+        "B": "Volume of water required to produce a commodity",
+        "C": "Volume of water saved by using rainwater harvesting",
+        "D": "Volume of water utilized by an effective flood control."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2005_Q41",
+      "year": 2005,
+      "question": "Q40. (2005) Consider the following statements: [2005] 1. Second World Buddhist Summit was held in Bangkok in November-December, 2004. 2. World Punjabi Conference was held in Jalandhar in December, 2004 3. 4th Meeting of the SAARC Trade Ministers was held in Islamabad in November, 2004. Which of the statements is/are correct? Source ref: gk_part3 / Q51",
+      "options": {
+        "A": "3 only",
+        "B": "1 and 2",
+        "C": "2 and 3",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2005_Q42",
+      "year": 2005,
+      "question": "Q41. (2005) Consider the following: [2005] 1. Global Trust Bank has been amalgamated with the Punjab National Bank. 2. The Second report of the Kelkar Committee dealing with direct and indirect taxes has maintained its original recommendation including the abolition of exemptions relating to housing loans. Which of the statements is/are correct? Source ref: gk_part3 / Q59",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2005_Q43",
+      "year": 2005,
+      "question": "Q42. (2005) For which one of the following items, is Tirupur well-known as a huge exporter to many parts of the world? [2005] Source ref: gk_part3 / Q67",
+      "options": {
+        "A": "Gems and Jewellery",
+        "B": "Leather goods",
+        "C": "Knitted garments",
+        "D": "Handcrafts"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2005_Q44",
+      "year": 2005,
+      "question": "Q43. (2005) Match List-I (Distinguished Person) with List-II (Area of Work) and select the correct answer using the code given below the list: [2005] List I List II A. B. V. Rao 1. Automobile Manufacture B. C. K. Prahalad 2. Fisheries Economy C. John Kurien 3. Information Technology and Software D. Kiran Karnik 4. Poultry Farming 5. Management Science A B C D Source ref: gk_part3 / Q72",
+      "options": {
+        "A": "2 5 1 3",
+        "B": "4 3 2 5",
+        "C": "2 3 1 5",
+        "D": "4 5 2 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2004_Q45",
+      "year": 2004,
+      "question": "Q44. (2004) Which one of the following was the largest IT software and services exporter in India during the year 2002-03? [2004] Source ref: gk_part3 / Q85",
+      "options": {
+        "A": "Birlasoft",
+        "B": "Infosys Technologies",
+        "C": "Tata Consultancy Services",
+        "D": "Wipro Technologies"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2003_Q46",
+      "year": 2003,
+      "question": "Q45. (2003) As per the Human Development Index given by UNDP, which one of the following sequences of South Asian countries is correct, in the order of higher to lower development? [2003] Source ref: intl_orgs / Q74",
+      "options": {
+        "A": "India-Sri Lanka-Pakistan-Maldives",
+        "B": "Maldives-Sri Lanka-India-Pakistan",
+        "C": "Sri Lanka-Maldives-India-Pakistan",
+        "D": "Maldives-India-Pakistan-Sri Lanka"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2002_Q47",
+      "year": 2002,
+      "question": "Q46. (2002) “World Development Report” is an annual publication of: [2002] Source ref: intl_orgs / Q75",
+      "options": {
+        "A": "United Nations Development Programme",
+        "B": "International Bank of Reconstruction and Development",
+        "C": "World Trade Organisation",
+        "D": "International Monetary Fund"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Economic Reports",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2001_Q48",
+      "year": 2001,
+      "question": "Q47. (2001) The theme of the World Development Report, 2001 is: [2001] Source ref: intl_orgs / Q79",
+      "options": {
+        "A": "From Plan to Market",
+        "B": "Knowledge for Development",
+        "C": "Attacking Poverty",
+        "D": "The State in the Changing World"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Economic Reports",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2000_Q49",
+      "year": 2000,
+      "question": "Q48. (2000) Match List I with List II and select the correct answer using the codes given below the Lists: [2000] List I List II I. Development Programme A) UN India Human Development Report II. National Council of Applied Economic Research B) India Development Report III. Indira Gandhi Institute of Development Research C) World Development Report IV. World Bank D) Human Development Report Source ref: intl_orgs / Q83",
+      "options": {
+        "A": "I-D, II-A, III-B, IV-C",
+        "B": "I-D, II-B, III-A, IV-C",
+        "C": "I-B, II-C, III-D, IV-A",
+        "D": "I-B, II-A, III-D, IV-C"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_2000_Q50",
+      "year": 2000,
+      "question": "Q49. (2000) Which one of the following countries occupies the first place in the “Global Competitive Report” of World Economic Forum? [2000] Source ref: intl_orgs / Q85",
+      "options": {
+        "A": "USA",
+        "B": "Singapore",
+        "C": "Hong Kong",
+        "D": "France"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_1999_Q51",
+      "year": 1999,
+      "question": "Q50. (1999) The economic crisis in the latter half of 1990s most seriously affected Indonesia, Thailand, Malaysia and South Korea. The cause of the crisis was: [1999] Source ref: gk_part4 / Q4",
+      "options": {
+        "A": "Mismanagement of the financial resources and financial sector, in general",
+        "B": "The prolonged over-valuation of local currencies vis-a-vis the western currencies",
+        "C": "The downswing and recession in the western economies which earlier provided export market to these export- oriented countries",
+        "D": "None of the above"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_1999_Q52",
+      "year": 1999,
+      "question": "Q51. (1999) Match List I with List II and select the correct answer using the codes given below the Lists: [1999] List I List II I. WTO A) Provides loans to address short- term balance of payment problems II. IDA B) Multi-lateral trade negotiation body III. IMF C) Sanction of soft loans IV. IBRD D) Facilitating lendings and borrowings for reconstruction and development Source ref: intl_orgs / Q88",
+      "options": {
+        "A": "I-B, II-C, III-D, IV-A",
+        "B": "I-B, II-C, III-A, IV-D",
+        "C": "I-C, II-B, III-D, IV-A",
+        "D": "I-C, II-B, III-A, IV-D"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_1998_Q53",
+      "year": 1998,
+      "question": "Q52. (1998) Assertion (A): The United States of America has threatened to ask the World Trade Organisation (WTO) to apply sanctions against the developing countries for the non-observance of ILO conventions.: [1998] Reason (R): The United States of America itself has adopted and implemented those ILO conventions. Source ref: gk_part4 / Q25",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is NOT a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_1998_Q54",
+      "year": 1998,
+      "question": "Q53. (1998) Human Poverty Index was introduced in the Human Development Report of the year: [1998] Source ref: intl_orgs / Q91",
+      "options": {
+        "A": "1994",
+        "B": "1995",
+        "C": "1996",
+        "D": "1997"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Economic Reports",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_1998_Q55",
+      "year": 1998,
+      "question": "Q54. (1998) According to the World Development Report, low income economies are those for which the per capita GNP in 1994 was: [1998] Source ref: intl_orgs / Q93",
+      "options": {
+        "A": "US $ 925 or less",
+        "B": "US $ 825 or less",
+        "C": "US $ 725 or less",
+        "D": "US $ 525 or less"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Economic Reports",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ECONOMY_BANKING.JSON_1995_Q56",
+      "year": 1995,
+      "question": "Q55. (1995) Which of the following constitute the World Bank? [1995] I. International Bank for Reconstruction and Development II. International Finance Corporation III. International Development Association IV. International Monetary Fund. Choose the correct answer from the codes given below: Source ref: gk_part4 / Q57",
+      "options": {
+        "A": "I, II and III",
+        "B": "I and II",
+        "C": "III and IV",
+        "D": "I, II, III and IV"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    }
+  ],
+  "nodeId": "GS3-CA-ECO",
+  "topicName": "Economy"
+}

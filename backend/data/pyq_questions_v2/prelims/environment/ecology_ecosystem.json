@@ -1,0 +1,1065 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Environment",
+  "topicName": "Ecology & Ecosystem",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "sectionId": "GS3-ENV-ECOLOGY",
+  "sectionName": "Ecology Basics",
+  "sourceFile": "ecology_ecosystem.docx",
+  "questions": [
+    {
+      "id": "ENV_ECO_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the planet Earth, consider the following statements: I. Rain forests produce more oxygen than that produced by oceans. II. Marine phytoplankton and photosynthetic bacteria produce about 50% of world's oxygen. III. Well-oxygenated surface water contains several folds higher oxygen than that in atmospheric air. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "I and II",
+        "B": "II only",
+        "C": "I and III",
+        "D": "None of the above statements is correct]"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2024_Q2",
+      "questionNumber": 2,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Carabid beetles 2. Centipedes 3. Flies 4. Termites 5. Wasps Parasitoid species are found in how many of the above kind of organisms?",
+      "options": {
+        "A": "Only two",
+        "B": "Only three",
+        "C": "Only four",
+        "D": "All five"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2024_Q3",
+      "questionNumber": 3,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following plants: 1. Groundnut 2. Horse-gram 3. Soybean How many of the above belong to the pea family?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2024_Q4",
+      "questionNumber": 4,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "The organisms \"Cicada, Froghopper and Pond skater\" are:",
+      "options": {
+        "A": "Birds",
+        "B": "Fish",
+        "C": "Insects",
+        "D": "Reptiles"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2024_Q5",
+      "questionNumber": 5,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: Country-Animal round in its natural habitat 1. Brazil Indri 2. Indonesia Elk 3. Madagascar Bonobo How many of the pairs given above are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2024_Q6",
+      "questionNumber": 6,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Lions do not have a particular breeding season, 2. Unlike most other big cats, cheetahs do not roar. 3. Unlike male lions, male leopards do not proclaim their territory by scent marking. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2024_Q7",
+      "questionNumber": 7,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following shows a unique relationship with an insect that has co-evolved with it and that is the only insect that can pollinate this tree?",
+      "options": {
+        "A": "Fig",
+        "B": "Mahua",
+        "C": "Sandalwood",
+        "D": "Silk cotton"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2024_Q8",
+      "questionNumber": 8,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Butterflies 2. Fish 3. Frogs How many of the above have poisonous species among them?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2023_Q9",
+      "questionNumber": 9,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following organisms perform waggle dance for others of their kin to indicate the direction and the distance to a source of their food?",
+      "options": {
+        "A": "Butterflies",
+        "B": "Dragonflies",
+        "C": "Honeybees",
+        "D": "Wasps"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_ECO_2023_Q10",
+      "questionNumber": 10,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following makes a tool with a stick to scrape insects from a hole in a tree or a log of wood?",
+      "options": {
+        "A": "Fishing cat",
+        "B": "Orangutan",
+        "C": "Otter",
+        "D": "Sloth bear"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2023_Q11",
+      "questionNumber": 11,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider following statements: 1. Some mushrooms have medicinal properties. 2. Some mushrooms have psycho-active properties. 3. Some mushrooms have insecticidal properties. 4. Some mushrooms have bioluminescent properties. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2022_Q12",
+      "questionNumber": 12,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "\"If rainforests and tropical' forests are the lungs of the Earth, then surely. 'wetlands function as its kidneys.\" Which one of the following functions of wetlands best reflects the above statement?",
+      "options": {
+        "A": "The water cycle in wetlands involves surface runoff, subsoil percolation and evaporation.",
+        "B": "Algae form the nutrient base upon which fish, crustaceans, molluscs, birds, reptiles and mammals thrive.",
+        "C": "Wetlands play a vital role in maintaining sedimentation balance and soil stabilization.",
+        "D": "Aquatic plants absorb heavy metals and excess nutrients."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2021_Q13",
+      "questionNumber": 13,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following kinds of organisms: 1) Copepods 2) Cyanobacteria 3) Diatoms 4) Foraminifera Which of the above are primary producers in the food chains of oceans?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 and 3",
+        "C": "3 and 4",
+        "D": "1 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2021_Q14",
+      "questionNumber": 14,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "In case of which one of the following biogeochemical cycles the weathering of rocks is the main source of release of nutrient to enter the cycle?",
+      "options": {
+        "A": "Carbon cycle",
+        "B": "Nitrogen cycle",
+        "C": "Phosphorus cycle",
+        "D": "Sulphur cycle"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-BIOGEO",
+      "topicName": "Biogeochemical Cycles",
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "nodeId": "GS3-ENV-BIOGEO",
+      "microTheme": "Biogeochemical Cycles",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2021_Q15",
+      "questionNumber": 15,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are detritivores? 1) Earthworms 2) Jellyfish 3) Millipedes 4) Seahorses 5) Woodlice Select the correct answer using the code given below.",
+      "options": {
+        "A": "1, 2 & 4 only",
+        "B": "2, 3, 4 & 5 only",
+        "C": "1, 3 & 5 only",
+        "D": "1, 2, 3, 4 & 5"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2021_Q16",
+      "questionNumber": 16,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following have species that can establish symbiotic relationship with other organisms? 1) Cnidarians 2) Fungi 3) Protozoa Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2019_Q17",
+      "questionNumber": 17,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Some species of turtles are herbivores. 2. Some species of fish are herbivores. 3. Some species of marine mammals are herbivores. 4. Some species of snakes are viviparous. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2, 3 and 4 only",
+        "C": "2 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2018_Q18",
+      "questionNumber": 18,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following leaf modifications occur(s) in the desert areas to inhibit water loss? 1. Hard and waxy leaves 2. Tiny leaves 3. Thorns instead of leaves Select the correct answer using the code given below:",
+      "options": {
+        "A": "2 and 3 only",
+        "B": "2 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2017_Q19",
+      "questionNumber": 19,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Due to some reasons, if there is a huge fall in the population of species of butterflies, what could be its likely consequence/consequences? 1. Pollination of some plants could be adversely affected. 2. There could be a drastic increase in the fungal infections of some cultivated plants. 3. It could lead to a fall in the population of some species of wasps, spiders and birds. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2015_Q20",
+      "questionNumber": 20,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the best description of the term 'ecosystem'?",
+      "options": {
+        "A": "A community of organisms interacting with one another",
+        "B": "That part of the Earth which is inhabited by living organisms",
+        "C": "A community of organisms together with the environment in which they live.",
+        "D": "The flora and fauna of a geographical area."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2014_Q21",
+      "questionNumber": 21,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Lichens, which are capable of initiating ecological succession even on a bare rock, are actually a symbiotic association of:",
+      "options": {
+        "A": "Algae and bacteria",
+        "B": "Algae and fungi",
+        "C": "Bacteria and fungi",
+        "D": "Fungi and mosses"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2014_Q22",
+      "questionNumber": 22,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the correct sequence of a food chain?",
+      "options": {
+        "A": "Diatoms-Crustaceans-Herrings",
+        "B": "Crustaceans-Diatoms-Herrings",
+        "C": "Diatoms-Herrings-Crustaceans",
+        "D": "Crustaceans-Herrings-Diatoms"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2014_Q23",
+      "questionNumber": 23,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following adds/ads carbon dioxide to the carbon cycle on the planet Earth? 1. Volcanic action 2. Respiration 3. Photosynthesis 4. Decay of organic matter Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 only",
+        "C": "1, 2 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-BIOGEO",
+      "topicName": "Biogeochemical Cycles",
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "nodeId": "GS3-ENV-BIOGEO",
+      "microTheme": "Biogeochemical Cycles",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2013_Q24",
+      "questionNumber": 24,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following leaf modifications occurs/occur in desert areas to inhibit water loss? 1. Hard and waxy leaves 2. Tiny leaves or no leaves 3. Thorns instead of leaves Select the correct answer using the codes given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2013_Q25",
+      "questionNumber": 25,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to food chains in ecosystems, consider the following statements: 1. A food chain illustrates the order in which a chain of organisms feed upon each other. 2. Food chains are found within the population of a species. 3. A food chain illustrates the numbers of each organism which are eaten by others. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "1, 2 and 3",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2013_Q26",
+      "questionNumber": 26,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following adds/ adds nitrogen to the soil? 1. Excretion of Urea by animals 2. Burning of coal by man 3. Death of vegetation Select the correct answer using the codes given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2, and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2013_Q27",
+      "questionNumber": 27,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following terms describes not only the physical space occupied by an organism, but also its functional role in the community of organisms?",
+      "options": {
+        "A": "Ecotone",
+        "B": "Ecological niche",
+        "C": "Habitat",
+        "D": "Home range"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2013_Q28",
+      "questionNumber": 28,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the grasslands, trees do not replace the grasses as a part of an ecological succession because of___?",
+      "options": {
+        "A": "Insects and fungi",
+        "B": "Limited sunlight and paucity of nutrients",
+        "C": "Water limits and fire",
+        "D": "None of the above"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2013_Q29",
+      "questionNumber": 29,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the correct sequence of ecosystems in the order of decreasing productivity?",
+      "options": {
+        "A": "Oceans, lakes, grasslands, mangroves",
+        "B": "Mangroves, oceans, grasslands, lakes",
+        "C": "Mangroves, grasslands, lakes, oceans",
+        "D": "Oceans, mangroves, lakes, grasslands"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2013_Q30",
+      "questionNumber": 30,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the food chains in Ecosystems which of the following kinds of organism is/are known as decomposer organism/ organisms? 1. Virus 2. Fungi 3. Bacteria Select the correct answer using the codes given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2012_Q31",
+      "questionNumber": 31,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following kinds of organisms: 1. Bat 2. Bee 3. Bird Which of the above is/ are pollinating agent/agents?",
+      "options": {
+        "A": "1 & 2 only",
+        "B": "2 Only",
+        "C": "1 and 3 only",
+        "D": "1, 2 & 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2012_Q32",
+      "questionNumber": 32,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Millennium Ecosystem Assessment describes the following major categories of ecosystem servicesprovisioning, supporting, regulating, preserving and cultural.: Which one of the following is supporting service?",
+      "options": {
+        "A": "Production of food and water",
+        "B": "Control of climate and disease",
+        "C": "Nutrient cycling and crop pollination",
+        "D": "Maintenance of diversity"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2011_Q33",
+      "questionNumber": 33,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Photosynthesis. 2. Respiration. 3. Decay of organic matter. 4. Volcanic action. Which of the above add carbon dioxide to the carbon cycle on earth?",
+      "options": {
+        "A": "1 and 4 only",
+        "B": "2 and 3 only",
+        "C": "2, 3 and 4 only",
+        "D": "1,2,3 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-BIOGEO",
+      "topicName": "Biogeochemical Cycles",
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "nodeId": "GS3-ENV-BIOGEO",
+      "microTheme": "Biogeochemical Cycles",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2011_Q34",
+      "questionNumber": 34,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of ecosystem productivity, marine upwelling zones are important as they increase the marine productivity by bringing the? 1. Decomposer microorganisms to the surface. 2. Nutrients to the surface. 3. Bottom-dwelling organisms to the surface. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2011_Q35",
+      "questionNumber": 35,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "If a tropical rain forest is removed, it does not regenerate quickly as compared to a tropical deciduous forest. This is because?",
+      "options": {
+        "A": "The soil of rain forest is deficient in nutrients.",
+        "B": "Propagules of the trees in a rain forest have poor viability.",
+        "C": "The rain forest species are slow-growing.",
+        "D": "Exotic species invade the fertile soil of rain forest."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2010_Q36",
+      "questionNumber": 36,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "A pesticide which is a chlorinated hydrocarbon is sprayed on a food crop. The food chain is: Food crop-Rat-Snake-Hawk. In this food chain, the highest concentration of the pesticide would accumulate in which one of the following?",
+      "options": {
+        "A": "Food crop",
+        "B": "Rat",
+        "C": "Snake",
+        "D": "Hawk"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-ENERGY",
+      "topicName": "Ecosystem Functions & Energy Flow",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY",
+      "nodeId": "GS3-ENV-ECO-ENERGY",
+      "microTheme": "Ecosystem Functions & Energy Flow",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2010_Q37",
+      "questionNumber": 37,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Some species of plants are insectivorous. Why?",
+      "options": {
+        "A": "Their growth in shady and dark places does not allow them to undertake sufficient photosynthesis and thus they depend on insects for nutrition.",
+        "B": "They are adapted to grow in nitrogen deficient soils and thus depend on insects for sufficient nitrogenous nutrition.",
+        "C": "They cannot synthesize certain vitamins themselves and depend on the insects digested by them.",
+        "D": "They have remained in that particular stage of evolution as living fossils, a link between autotrophs and heterotrophs."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_2000_Q38",
+      "questionNumber": 38,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Within biological communities, some species are important in determining the ability of a large number of other species to persist in the community. Such species are called:",
+      "options": {
+        "A": "Keystone species",
+        "B": "Allopatric species",
+        "C": "Sympatric species",
+        "D": "Threatened species"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_ECO_1998_Q39",
+      "questionNumber": 39,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Estuaries possess distinct blooms of excessive growth of a pigmented dinoflagellates. These blooms are called:",
+      "options": {
+        "A": "Red tides",
+        "B": "Sea tides",
+        "C": "Black tides",
+        "D": "Sea flowers"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    }
+  ],
+  "totalQuestions": 39
+}

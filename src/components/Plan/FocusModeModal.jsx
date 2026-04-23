@@ -4,6 +4,7 @@ import { formatTimeOnly, getDisplayStatus } from "../../utils/studyEngine";
 export default function FocusModeModal({
     open,
     block,
+    liveElapsedSec,
     busy,
     onStart,
     onPause,
@@ -14,6 +15,14 @@ export default function FocusModeModal({
     if (!open || !block) return null;
 
     const status = getDisplayStatus(block.Status);
+
+    const liveTimerDisplay = liveElapsedSec != null && liveElapsedSec > 0
+        ? (() => {
+            const m = Math.floor(liveElapsedSec / 60);
+            const s = liveElapsedSec % 60;
+            return `${m}m ${String(s).padStart(2, "0")}s`;
+        })()
+        : null;
 
     return (
         <div className="focus-overlay" onClick={onClose}>
@@ -41,6 +50,10 @@ export default function FocusModeModal({
                         <span className="focus-chip">
                             Started {formatTimeOnly(block.ActualStart)}
                         </span>
+                    )}
+
+                    {liveTimerDisplay && (
+                        <span className="focus-chip">{liveTimerDisplay}</span>
                     )}
 
                     {Number(block.PauseCount || 0) > 0 && (

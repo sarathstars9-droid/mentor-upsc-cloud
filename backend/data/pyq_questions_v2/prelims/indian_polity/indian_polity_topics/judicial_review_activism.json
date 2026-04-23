@@ -1,0 +1,361 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Judicial Review and Activism",
+  "topicId": "judicial_review_activism",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 13,
+  "questions": [
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_2022_Q1",
+      "questionNumber": 1,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the writs issued by the Courts in India, consider the following statements: 1. Mandamus will not lie against a private organisation unless it is entrusted with a public duty. 2. Mandamus will not lie against a Company even though it may be a Government Company. 3. Any public minded person can be a petitioner to move the Court to obtain the writ of Quo Warranto. Which of the statements given is correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Writ Jurisdiction",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_2022_Q2",
+      "questionNumber": 2,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to India, consider the following statements: 1. Government law officers and legal firms are recognised as advocates, but corporate lawyers and patent attorneys are excluded from recognition as advocates. 2. ‘Bar Councils have the power to lay down the rules relating to legal education and recognition of law colleges. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "NITI Aayog",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_2017_Q3",
+      "questionNumber": 3,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, Judicial Review implies:",
+      "options": {
+        "A": "The power of the Judiciary to pronounce upon the constitutionality of laws and executive orders.",
+        "B": "The power of the Judiciary to question the wisdom of the laws enacted by the Legislatures.",
+        "C": "The power of the Judiciary to review all the legislative enactments before they are assented to by the President.",
+        "D": "The power of the Judiciary to review its own judgements given earlier in similar or different cases."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Judicial Review",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_2016_Q4",
+      "questionNumber": 4,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the ‘Gram Nyayalaya Act’, which of the following statements is/are correct? 1. As per the Act, Gram Nyayalayas can hear only civil cases and not criminal cases. 2. The Act allows local social activists as mediators/conciliators. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Judicial Review and Activism",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_2014_Q5",
+      "questionNumber": 5,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "The power of the Supreme Court of India to decide disputes between the Centre and the States falls under its: a) Advisory jurisdiction b) Appellate jurisdiction c) Original jurisdiction d) Writ jurisdiction",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Writ Jurisdiction",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_2010_Q6",
+      "questionNumber": 6,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Lok Adalats, which of the following statements is correct?",
+      "options": {
+        "A": "Lok Adalats have the jurisdiction to settle the matters at pre – litigation stage and not those matters pending before any court.",
+        "B": "Lok Adalats can deal with matters which are civil and not criminal in nature.",
+        "C": "Every Lok Adalats consists of either serving or retired judicial officers only and not any other person.",
+        "D": "None of the statements given above is correct."
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Judicial Review and Activism",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_2009_Q7",
+      "questionNumber": 7,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Lok Adalats, consider the following statements: 1. An award made by a Lok Adalat is deemed to be a decree of a civil court and no appeal lies against thereto before any court. 2. Matrimonial/Family disputes are not covered under Lok Adalat. Which of the statements given above is/ are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Judicial Review and Activism",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_2008_Q8",
+      "questionNumber": 8,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Justice V.R. Krishna Iyer was the Chief Justice of India. 2. Justice V.R. Krishna Iyer is considered as one of the progenitors of public interest litigation (PIL) in the Indian judicial system. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Judicial Review and Activism",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_2006_Q9",
+      "questionNumber": 9,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who was the Chief Justice of India when public interest litigation (PIL) was introduced to the Indian Judicial System?",
+      "options": {
+        "A": "M. Hidaatullah",
+        "B": "A.M. Ahmadi",
+        "C": "A.S. Anand",
+        "D": "P.N. Bhagwati"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Judicial Review and Activism",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_2005_Q10",
+      "questionNumber": 10,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Disputes with mobile cellular companies. 2. Motor accident cases 3. Pension cases For which of the above are Lok Adalats held?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2",
+        "C": "2 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Judicial Review and Activism",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_1997_Q11",
+      "questionNumber": 11,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "The concept of Public Interest Litigation originated in:",
+      "options": {
+        "A": "The United Kingdom",
+        "B": "Australia",
+        "C": "The United States",
+        "D": "Canada"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Judicial Review and Activism",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_1997_Q12",
+      "questionNumber": 12,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (A): Willful disobedience or non- compliance of Court Orders and use of derogatory language about judicial behaviour amounts to Contempt of Court. Reason (R): Judicial activism cannot be practised without arming the judiciary with punitive powers to punish contemptuous behaviour. In the context of the above two statements, which one of the following is correct?",
+      "options": {
+        "A": "Both A and R are true and R is the correct explanation of A",
+        "B": "Both A an d R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "NITI Aayog",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_JUDICIAL_REVIEW_ACTIVISM_1996_Q13",
+      "questionNumber": 13,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "According to the Constitution of India, the term ‘district judge’ shall not include:",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Judicial Review and Activism",
+      "topicId": "judicial_review_activism",
+      "sectionId": "GS2-POL-JUD",
+      "nodeId": "GS2-POL-JUD",
+      "syllabusNodeId": "GS2-POL-JUD",
+      "microTheme": "Judicial Review and Activism",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

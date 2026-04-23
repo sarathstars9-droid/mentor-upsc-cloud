@@ -1,0 +1,1470 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Environment",
+  "topicName": "Climate Change",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "sectionId": "GS3-ENV-CLIMATE",
+  "sectionName": "Climate Change",
+  "sourceFile": "climate_change.docx",
+  "questions": [
+    {
+      "id": "ENV_CLI_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "The World Bank warned that India could become one of the first places where wet-bulb temperatures routinely exceed 35 °C. Which of the following statements best reflect(s) the implication of the above-said report? I. Peninsular India will most likely suffer from flooding, tropical cyclones and droughts. II. The survival of animals including humans will be affected as shedding of their body heat through perspiration becomes difficult. Select the correct answer using the code given below.",
+      "options": {
+        "A": "I only",
+        "B": "II only",
+        "C": "Both I and II",
+        "D": "Neither I nor II"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-CLIMATEPHEN",
+      "topicName": "Climate Phenomena",
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "nodeId": "GS3-ENV-CLIMATEPHEN",
+      "microTheme": "Climate Phenomena",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2025_Q2",
+      "questionNumber": 2,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement I: Circular economy reduces the emissions of greenhouse gases. Statement II: Circular economy reduces the use of raw materials as inputs. Statement III: Circular economy reduces wastage in the production process. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement II and Statement III are correct and both of them explain Statement I",
+        "B": "Both Statement II and Statement III are correct but only one of them explains Statement I",
+        "C": "Only one of the Statements II and III is correct and that explains Statement I",
+        "D": "Neither Statement II nor Statement III is correct"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2025_Q3",
+      "questionNumber": 3,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement I: Studies indicate that carbon dioxide emissions from cement industry account for more than 5% of global carbon emissions. Statement II: Silica-bearing clay is mixed with limestone while manufacturing cement. Statement III: Limestone is converted into lime during clinker production for cement manufacturing. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_CLI_2025_Q4",
+      "questionNumber": 4,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Direct Air Capture, an emerging technology, which of the following statements is/are correct? I. It can be used as a way of carbon sequestration. II. It can be a valuable approach for plastic production and in food processing. III. In aviation, it can be a source of carbon for combining with hydrogen to create synthetic low-carbon fuel. Select the correct answer using the code given below.",
+      "options": {
+        "A": "I and II only",
+        "B": "III only",
+        "C": "I, II and III",
+        "D": "None of the above statements is correct"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2025_Q5",
+      "questionNumber": 5,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: I. Carbon dioxide (CO2) emissions in India are less than 0.5 t CO2/capita. II. In terms of CO2 emissions from fuel combustion, India ranks second in Asia-Pacific region. III. Electricity and heat producers are the largest sources of CO2 emissions in India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "I and III only",
+        "B": "II only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2024_Q6",
+      "questionNumber": 6,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "One of the following regions has the world's largest tropical peatland, which holds about three years' worth of global carbon emissions from fossil fuels; and the possible destruction of which can exert detrimental effect on the global climate. Which one of the following denotes that region?",
+      "options": {
+        "A": "Amazon Basin",
+        "B": "Congo Basin",
+        "C": "Kikori Basin",
+        "D": "Rio de la Plata Basin"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2023_Q7",
+      "questionNumber": 7,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Aerosols 2. Foam agents 3. Fire retardants 4. Lubricants In the making of how many of the above are hydrofluorocarbons used?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2023_Q8",
+      "questionNumber": 8,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following activities: 1. Spreading finely ground basalt rock on farmlands extensively 2. Increasing the alkalinity of oceans by adding lime 3. Capturing carbon dioxide released by various industries and pumping it into abandoned subterranean mines in the form of carbonated waters How many of the above activities are often considered and discussed for carbon capture and sequestration?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2022_Q9",
+      "questionNumber": 9,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Among the following crops, which one is the most important anthropogenic source of both methane and nitrous oxide?",
+      "options": {
+        "A": "Cotton",
+        "B": "Rice",
+        "C": "Sugarcane",
+        "D": "Wheat"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2021_Q10",
+      "questionNumber": 10,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is blue carbon?",
+      "options": {
+        "A": "Carbon captured by oceans and coastal ecosystems",
+        "B": "Carbon sequestered in forest biomass and agricultural soils",
+        "C": "Carbon contained in petroleum and natural gas",
+        "D": "Carbon present in atmosphere"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2020_Q11",
+      "questionNumber": 11,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "In rural road construction, the use of which of the following is preferred for ensuring environmental sustainability or to reduce carbon footprint? 1. Copper slag 2. Cold mix asphalt technology 3. Geotextiles 4. Hot mix asphalt technology 5. Portland cement Select the correct answer using the code given below:",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "2, 3 and 4 only",
+        "C": "4 and 5 only",
+        "D": "1 and 5 only"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_CLI_2020_Q12",
+      "questionNumber": 12,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following statements best describes the term 'Social Cost of Carbon'? It is a measure, in monetary value, of the",
+      "options": {
+        "A": "Long-term damage done by a tonne of CO2 emissions in a given year.",
+        "B": "Requirement of fossil fuels for a country to provide goods and services to its citizens, based on the burning of those fuels.",
+        "C": "Efforts put in by a climate refugee to adapt to live in a new place.",
+        "D": "Contribution of an individual person to the carbon footprint on the planet Earth."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2019_Q13",
+      "questionNumber": 13,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following statements are correct about the deposits of 'methane hydrate'? 1. Global warming might trigger the release of methane gas from these deposits. 2. Large deposits of 'methane hydrate' are found in Arctic Tundra and under the seafloor. 3. Methane in atmosphere oxidises to carbon dioxide after a decade or two. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2019_Q14",
+      "questionNumber": 14,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Carbon monoxide 2. Methane 3. Ozone 4. Sulphur dioxide Which of the above are released into atmosphere due to the burning of crop/biomass residue?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2, 3 and 4 only",
+        "C": "1 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2019_Q15",
+      "questionNumber": 15,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider following statements: 1. Agricultural soils release nitrogen oxides into the environment. 2. Cattle release ammonia into the environment. 3. Poultry industry releases reactive nitrogen compounds into the environment. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 and 3 only",
+        "C": "2 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-AIR",
+      "topicName": "Air Pollution",
+      "syllabusNodeId": "GS3-ENV-AIR",
+      "nodeId": "GS3-ENV-AIR",
+      "microTheme": "Air Pollution",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2019_Q16",
+      "questionNumber": 16,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of proposals to the use of hydrogen-enriched CNG (H-CNG) as fuel for buses in public transport, consider the following statements: 1. The main advantage of the use of H-CNG is the elimination of carbon monoxide emissions. 2. H-CNG as fuel reduces carbon dioxide and hydrocarbon emissions. 3. Hydrogen up to one-fifth by volume can be blended with CNG as fuel for buses. 4. H-CNG makes the fuel less expensive than CNG. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2018_Q17",
+      "questionNumber": 17,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following statements best describes 'carbon fertilization'?",
+      "options": {
+        "A": "Increased Plant growth due to increased concentration of carbon dioxide in the atmosphere",
+        "B": "Increased temperature of the earth due to increased concentration of carbon dioxide in the atmosphere",
+        "C": "Increased acidity of oceans as a result of increased concentration of carbon dioxide in the atmosphere",
+        "D": "Adaptation of living beings on Earth to the climate change brought about by the increased concentration of carbon dioxide in the atmosphere"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2018_Q18",
+      "questionNumber": 18,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "The term \"sixth mass extinction/sixth extinction\" is often mentioned in the news in the context of discussion of:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-CLIMATEPHEN",
+      "topicName": "Climate Phenomena",
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "nodeId": "GS3-ENV-CLIMATEPHEN",
+      "microTheme": "Climate Phenomena",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2017_Q19",
+      "questionNumber": 19,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of mitigating the impending global warming due to anthropogenic emissions of carbon dioxide, which of the following can be the potential sites for carbon sequestration? 1. Abandoned and uneconomic coal seams 2. Depleted oil and gas reservoirs 3. Subterranean deep saline formations Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2015_Q20",
+      "questionNumber": 20,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to an organization known as 'Birdlife International' which of the following statements is/are correct? 1. It is a Global Partnership of Conservation Organizations. 2. The concept of 'biodiversity hotspots' originated from this organization. 3. It identifies the sites known/referred to as 'Important Bird and Biodiversity Areas'. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-CONSERVATION",
+      "topicName": "Conservation Methods",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "Conservation Methods",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2015_Q21",
+      "questionNumber": 21,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the International Union for Conservation of Nature and Natural Resources (IUCN) and the Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES), which of the following statements is/are correct? 1. IUCN is an organ of the United Nations and CITES is an international agreement between governments. 2. IUCN runs thousands of field projects around the world to better manage natural environments. 3. CITES is legally binding on the States that have joined it, but this Convention does not take the place of national laws.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-LAWS",
+      "sectionName": "Environmental Governance & Laws",
+      "topicId": "GS3-ENV-INTL",
+      "topicName": "International Environmental Agreements",
+      "syllabusNodeId": "GS3-ENV-INTL",
+      "nodeId": "GS3-ENV-INTL",
+      "microTheme": "International Environmental Agreements",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2014_Q22",
+      "questionNumber": 22,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to a conservation organization called 'Wetlands International', which of the following statements is/are correct? 1. It is an intergovernmental organization formed by the countries which are signatories to Ramsar Convention. 2. It works at the field level to develop and mobilize knowledge, and use the practical experience to advocate for better policies. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-CONSERVATION",
+      "topicName": "Conservation Methods",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "Conservation Methods",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2014_Q23",
+      "questionNumber": 23,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "If a wetland of international importance is brought under the 'Montreux Record', what does it imply?",
+      "options": {
+        "A": "Changes in ecological character have occurred, are occurring or are likely to occur in the wetland as a result of human interference.",
+        "B": "The country in which the wetland is located should enact a low to prohibit any human activity within five kilometres from the edge of the wetland.",
+        "C": "The survival of the wetland depends on the cultural practices and traditions of certain communities living in its vicinity and therefore the cultural diversity therein should not be destroyed.",
+        "D": "It is given the status of 'World Heritage Site'."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-CONSERVATION",
+      "topicName": "Conservation Methods",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "Conservation Methods",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2014_Q24",
+      "questionNumber": 24,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "The scientific view is that the increase in global temperature should not exceed 2 degree Celsius above pre-industrial level. If the global temperature increases beyond 3 degree Celsius above the pre-industrial level, what can be its possible impact/impacts on the world? 1 Terrestrial biosphere tends toward a net carbon source. 2.Widespread coral mortality will occur. 3.All the global wetlands will permanently disappear. 4.Cultivation of cereals will not be possible anywhere in the world. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2, 3 and 4 only",
+        "D": "Increased temperature at polar region due to global warming."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2012_Q25",
+      "questionNumber": 25,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statement: Chlorofluorocarbons, known as ozone depleting substances, are used: 1. in the production of plastic foams 2. in the production of tubeless tyres 3. in cleaning certain electronic components 4. as pressurizing agents in aerosol cans Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1,2 and 3 only",
+        "B": "4 Only",
+        "C": "1,3 & 4 Only",
+        "D": "1,2,3 & 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2012_Q26",
+      "questionNumber": 26,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "The increasing amount of carbon dioxide in the air is slowly raising the temperature of the atmosphere, because it absorbs:",
+      "options": {
+        "A": "The water vapour of the air and retains its heat",
+        "B": "The ultraviolet part of the solar radiation",
+        "C": "All the solar radiations",
+        "D": "Infrared part of solar radiation"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2012_Q27",
+      "questionNumber": 27,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following agricultural practices: 1. Contour bunding 2. Relay cropping 3. Zero tillage In the context of global climate change, which of the above helps/help in carbon sequestration/storage in the soil?",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "3 Only",
+        "C": "1,2 & 3",
+        "D": "None of them"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2011_Q28",
+      "questionNumber": 28,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "The formation of ozone hole in the Antarctic region has been a cause of concern. What could be the reason for the formation of this hole?",
+      "options": {
+        "A": "Presence of prominent tropo-spheric turbulence; and inflow of chlorofluorocarbons.",
+        "B": "Presence of prominent polar front and stratospheric clouds; and inflow of chlorofluorocarbons.",
+        "C": "Absence of polar front and stratospheric clouds; and inflow of methane and chlorofluorocarbons.",
+        "D": "Increased temperature at polar region due to global warming."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2011_Q29",
+      "questionNumber": 29,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "Human activities in the recent past have caused the increased concentration of carbon dioxide in the atmosphere, but a lot of it does not remain in the lower atmosphere because of? 1. Its escape into the outer stratosphere. 2. The photosynthesis by phytoplankton in the oceans. 3. The trapping of air in the polar ice caps. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2011_Q30",
+      "questionNumber": 30,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "The 'Red Books'' published by the international union for conservation of nature and natural resources (IUCN) contain lists of? 1. Endemic plant and animal species present in the biodiversity hotspots. 2. Threatened plant and animal species. 3. Protected sites for conservation of nature and natural resources in various countries. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 and 3",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-LAWS",
+      "sectionName": "Environmental Governance & Laws",
+      "topicId": "GS3-ENV-INTL",
+      "topicName": "International Environmental Agreements",
+      "syllabusNodeId": "GS3-ENV-INTL",
+      "nodeId": "GS3-ENV-INTL",
+      "microTheme": "International Environmental Agreements",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2010_Q31",
+      "questionNumber": 31,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following which can be found in the ambient atmosphere: 1. Soot 2. Sulphur hexafluoride 3. Water vapour Which of the above contribute to the warming up of the atmosphere?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2010_Q32",
+      "questionNumber": 32,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Due to their extensive rice cultivation, some regions may be contributing to global warming. To what possible reason / reasons is this attributable? 1. The anaerobic conditions associated with rice cultivation cause the emission of methane. 2. When nitrogen-based fertilizers are used, nitrous oxide is emitted from the cultivated soil. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 4 only",
+        "B": "2 and 3 only",
+        "C": "1,2 and 3 only",
+        "D": "1,2,3 and"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2008_Q33",
+      "questionNumber": 33,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Rice fields 2. Coal mining 3. Domestic animals 4. Wetlands Which of the above are sources of methane, a major greenhouse gas?",
+      "options": {
+        "A": "1 and 4 only",
+        "B": "2 and 3 only",
+        "C": "1, 2 and 3 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2025_Q34",
+      "questionNumber": 34,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement I: Of the two major ethanol producers in the world, i.e., Brazil and the United States of America, the former produces more ethanol than the latter. Statement II: Unlike in the United States of America where corn is the principal feedstock for ethanol production, sugarcane is the principal feedstock for ethanol production in Brazil. Which of the statements given above are correct?",
+      "options": {
+        "A": "Both Statement I and Statement II are correct and Statement II explains Statement I",
+        "B": "Both Statement I and Statement II are correct but Statement II does not explain Statement I",
+        "C": "Statement I is correct but Statement II is not correct",
+        "D": "Statement I is not correct but Statement II is correct"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2025_Q35",
+      "questionNumber": 35,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following types of vehicles: I. Full battery electric vehicles II. Hydrogen fuel cell vehicles III. Fuel cell electric hybrid vehicles How many of the above are considered as alternative (powertrain) vehicles?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All the three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2025_Q36",
+      "questionNumber": 36,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements about 'PM Surya Ghar Muft Bijli Yojana': I. It targets installation of one crore solar rooftop panels in the residential sector. II. The Ministry of New and Renewable Energy aims to impart training on installation, operation, maintenance and repairs of solar rooftop systems at grassroot levels. III. It aims to create more than three lakhs skilled manpower through fresh skilling, and up-skilling, under scheme component of capacity building. Which of the statements given above are correct?",
+      "options": {
+        "A": "I and II only",
+        "B": "I and III only",
+        "C": "II and III only",
+        "D": "I, II and III"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-ENERGY",
+      "topicName": "Energy Resources (Renewable + Non-renewable)",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Energy Resources (Renewable + Non-renewable)",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2025_Q37",
+      "questionNumber": 37,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following substances: I. Ethanol II. Nitroglycerine III. Urea Coal gasification technology can be used in the production of how many of them?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All the three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-ENERGY",
+      "topicName": "Energy Resources (Renewable + Non-renewable)",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Energy Resources (Renewable + Non-renewable)",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2024_Q38",
+      "questionNumber": 38,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Battery storage 2. Biomass generators 3. Fuel cells 4. Rooftop solar photovoltaic units How many' of the above are considered \"Distributed Energy Resources\"?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-ENERGY",
+      "topicName": "Energy Resources (Renewable + Non-renewable)",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Energy Resources (Renewable + Non-renewable)",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2024_Q39",
+      "questionNumber": 39,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following materials: 1. Agricultural residues 2. Corn grain 3. Wastewater treatment sludge 4. Wood mill waste Which of the above can be used as feedstock for producing Sustainable Aviation Fuel?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "1 and 3",
+        "D": "3 only"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2024_Q40",
+      "questionNumber": 40,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "One of the following is the exhaust pipe emission from Fuel Cell Electric Vehicles, powered by hydrogen?",
+      "options": {
+        "A": "Hydrogen peroxide",
+        "B": "Hydronium",
+        "C": "Oxygen",
+        "D": "Water vapour"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-ENERGY-GOV",
+      "topicName": "Energy Governance (Policies/Institutions)",
+      "syllabusNodeId": "GS3-ENV-ENERGY-GOV",
+      "nodeId": "GS3-ENV-ENERGY-GOV",
+      "microTheme": "Energy Governance (Policies/Institutions)",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2024_Q41",
+      "questionNumber": 41,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Recently, the term \"pumped-storage hydropower\" is actually and appropriately discussed in the context of which one of the following?",
+      "options": {
+        "A": "Irrigation of terraced crop fields",
+        "B": "Lift irrigation of cereal crops",
+        "C": "Long duration energy storage",
+        "D": "Rainwater harvesting system"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2023_Q42",
+      "questionNumber": 42,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to green hydrogen, consider the following statements: 1. It can be used directly as a fuel for internal combustion. 2. It can be blended with natural gas and used as fuel for heat or power generation. 3. It can be used in the hydrogen fuel cell to run vehicles. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2023_Q43",
+      "questionNumber": 43,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following heavy industries: 1. Fertilizer plants 2. Oil refineries 3. Steel plants Green hydrogen is expected to play a significant role in decarbonizing how many of the above industries?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2022_Q44",
+      "questionNumber": 44,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Gujarat has the largest solar park in India. 2. Kerala has a fully solar powered International Airport. 3. Goa has the largest floating solar photovoltaic project in India. Which of the statements given below is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "1 and 3",
+        "D": "3 only"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-ENERGY",
+      "topicName": "Energy Resources (Renewable + Non-renewable)",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Energy Resources (Renewable + Non-renewable)",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2020_Q45",
+      "questionNumber": 45,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "According to India's National Policy on Biofuels, which of the following can be used as raw materials for the production of biofuels? 1. Cassava 2. Damaged wheat grains 3. Groundnut seeds 4. Horse gram 5. Rotten potatoes 6. Sugar beet Select the correct answer using the code given below:",
+      "options": {
+        "A": "1, 2, 5 and 6 only",
+        "B": "1, 3, 4 and 6 only",
+        "C": "2, 3, 4 and 5 only",
+        "D": "1, 2, 3, 4, 5 and 6"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2020_Q46",
+      "questionNumber": 46,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to solar water pumps, consider the following statements: 1. Solar power can be used for running surface pumps and not for submersible pumps. 2. Solar power can be used for running centrifugal pumps and not the ones with piston. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-ENERGY",
+      "topicName": "Energy Resources (Renewable + Non-renewable)",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Energy Resources (Renewable + Non-renewable)",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2017_Q47",
+      "questionNumber": 47,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "It is possible to produce algae-based biofuels, but what is/are the likely limitation(s) of developing countries in promoting this industry? 1. Production of algae-based biofuels is possible in seas only and not on continents. 2. Setting up and engineering the algae-based biofuel production requires high level of expertise/technology until the construction is completed. 3. Economically viable production necessitates the setting up of large-scale facilities which may raise ecological and social concerns. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2, and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-ENERGY",
+      "topicName": "Energy Resources (Renewable + Non-renewable)",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Energy Resources (Renewable + Non-renewable)",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2015_Q48",
+      "questionNumber": 48,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Indian Renewable Energy Development Agency Limited (IREDA), which of the following statements is/are correct? 1. It is a Public Limited Government Company. 2. It is a Non ' Banking Financial Company. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 or 2"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-ENERGY",
+      "topicName": "Energy Resources (Renewable + Non-renewable)",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Energy Resources (Renewable + Non-renewable)",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2012_Q49",
+      "questionNumber": 49,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Biomass gasification is considered to be one of the sustainable solutions to the power crisis in India. In this context, which of the following statements is/are correct? 1. Coconut shells, groundnut shells and rice husk can be used in biomass gasification. 2. The combustible gases generated from biomass gasification consist of hydrogen and carbon dioxide only. 3. The combustible gases generated from biomass gasification can be used for direct heat generation but not in internal combustion engines. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 & 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2011_Q50",
+      "questionNumber": 50,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "Microbial fuel cells are considered a source of sustainable energy. Why? 1. They use living organisms as catalysts to generate electricity from certain substrates. 2. They use a variety of inorganic materials as substrates. 3. They can be installed in waste water treatment plants to cleanse water and produce electricity. Which of the following statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2, and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-POLLUTION",
+      "sectionName": "Pollution & Waste Management",
+      "topicId": "GS3-ENV-WASTE",
+      "topicName": "Waste Management",
+      "syllabusNodeId": "GS3-ENV-WASTE",
+      "nodeId": "GS3-ENV-WASTE",
+      "microTheme": "Waste Management",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2010_Q51",
+      "questionNumber": 51,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Given below are the names of four energy crops. Which one of them can be cultivated for ethanol?",
+      "options": {
+        "A": "Jatropha",
+        "B": "Maize",
+        "C": "Pongania",
+        "D": "Sunflower"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2010_Q52",
+      "questionNumber": 52,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Other than Jatropha curcas, why is Pongamia pinnata also considered a good option for the production of bio-diesel in India? 1. Pongamia Pinnata grows naturally in most of the arid regions of India. 2. The seeds of Pongamia pinnata are rich in lipid content of which nearly half is oleic acid. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2009_Q53",
+      "questionNumber": 53,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of alternative sources of energy, ethanol as a viable bio-fuel can be obtained from:",
+      "options": {
+        "A": "Potato",
+        "B": "Rice",
+        "C": "Sugarcane",
+        "D": "Wheat"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_CLI_2008_Q54",
+      "questionNumber": 54,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following Union Ministries is implementing the Biodiesel Mission (as Noida Ministry)?",
+      "options": {
+        "A": "Ministry of Agriculture",
+        "B": "Ministry of Science and Technology",
+        "C": "Ministry of New and Renewable Energy",
+        "D": "Ministry of Rural Development"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-LAWS",
+      "sectionName": "Environmental Governance & Laws",
+      "topicId": "GS3-ENV-ACTS",
+      "topicName": "Indian Environmental Acts",
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "nodeId": "GS3-ENV-ACTS",
+      "microTheme": "Indian Environmental Acts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    }
+  ],
+  "totalQuestions": 54
+}

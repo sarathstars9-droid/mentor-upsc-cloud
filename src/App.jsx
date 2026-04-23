@@ -31,6 +31,7 @@ import SyllabusPage from "./pages/SyllabusPage";
 import CsatPage from "./pages/CSATPage";
 import BacklogPage from "./pages/BacklogPage";
 import FocusPage from "./pages/FocusPage";
+import ReportsPage from "./pages/ReportsPage";
 import PrelimsMistakesPage from "./pages/PrelimsMistakesPage";
 import MistakeBookPage from "./pages/MistakeBookPage";
 import PrelimsInstitutionalTestsPage from "./pages/PrelimsInstitutionalTestsPage";
@@ -58,6 +59,7 @@ function AppRoutes({ onLogout }) {
     "/geography-optional/mistakes": "optional",
     "/backlog": "backlog",
     "/focus": "focus",
+    "/reports":  "reports",
     "/prelims": "prelims",
     "/prelims/mistakes": "prelims_mistakes",
     "/prelims/institutional-tests": "prelims_institutional",
@@ -86,6 +88,7 @@ function AppRoutes({ onLogout }) {
     optional: "/geography-optional",
     backlog: "/backlog",
     focus: "/focus",
+    reports: "/reports",
     prelims: "/prelims",
     prelims_mistakes: "/mistakes",
     prelims_institutional: "/prelims/institutional-tests",
@@ -133,6 +136,7 @@ function AppRoutes({ onLogout }) {
         <Route path="/geography-optional/mistakes" element={<GeographyOptionalMistakePage />} />
         <Route path="/backlog" element={<BacklogPage />} />
         <Route path="/focus" element={<FocusPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
         <Route path="/prelims" element={<PrelimsPage />} />
         <Route path="/mains" element={<MainsPage />} />
         <Route path="/mains/gs1" element={<MainsGS1Page />} />

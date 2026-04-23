@@ -1,0 +1,179 @@
+{
+  "schemaVersion": "mentoros-ca-v1",
+  "fileName": "ca_art_culture.json",
+  "questions": [
+    {
+      "id": "CA_ART_CULTURE.JSON_None_Q1",
+      "year": null,
+      "question": "Question count: 7 Note: Best-effort structured extraction from a column-formatted source PDF. Where the source itself marked an answer as changed, that note is preserved.",
+      "options": {},
+      "answer": {
+        "correct_option": null,
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-ANC",
+      "syllabusNodeId": "GS1-HIS-ANC",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "low",
+      "reviewRequired": true
+    },
+    {
+      "id": "CA_ART_CULTURE.JSON_2015_Q2",
+      "year": 2015,
+      "question": "Q1. (2015) Which one of the following was given classical language status recently? [2015] Source ref: gk_part1 / Q53",
+      "options": {
+        "A": "Odia",
+        "B": "Konkani",
+        "C": "Bhojpuri",
+        "D": "Assamese"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-ANC",
+      "syllabusNodeId": "GS1-HIS-ANC",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ART_CULTURE.JSON_2009_Q3",
+      "year": 2009,
+      "question": "Q2. (2009) Recently, which one of the following was included in the UNESCO's World Heritage list? [2009] Source ref: gk_part2 / Q42",
+      "options": {
+        "A": "Dilwara Temple",
+        "B": "Kalka-Shimla Railway",
+        "C": "Bhiterkanika Mangrove area",
+        "D": "Visakhapatnam to araku valley railway line"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-ANC",
+      "syllabusNodeId": "GS1-HIS-ANC",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ART_CULTURE.JSON_2008_Q4",
+      "year": 2008,
+      "question": "Q3. (2008) Elizabeth Hawley is well-known for her writing relating to which one of the following? [2008] Source ref: gk_part2 / Q44",
+      "options": {
+        "A": "Historical monuments in India",
+        "B": "Regional dance in India",
+        "C": "Himalayan expeditions",
+        "D": "Wildlife in India"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-ANC",
+      "syllabusNodeId": "GS1-HIS-ANC",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ART_CULTURE.JSON_2006_Q5",
+      "year": 2006,
+      "question": "Q4. (2006) Match List-1 with List-II and select the correct, answer using the code given below the lists: [2006] List-I List-II A. E.C.G. Sudarshan 1. Theatre B. V. Shanta 2. Violin C. T.N. Krishnan 3. Research in Physics D. Mahesh Dattani 4. Cancer treatment 5. Water-harvesting A B C D Source ref: gk_part3 / Q12",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-ANC",
+      "syllabusNodeId": "GS1-HIS-ANC",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ART_CULTURE.JSON_2005_Q6",
+      "year": 2005,
+      "question": "Q5. (2005) Recently, to which of the following countries did India offer to build Buddha Temple? [2005] Source ref: gk_part3 / Q82",
+      "options": {
+        "A": "China",
+        "B": "Myanmar",
+        "C": "Thailand",
+        "D": "Vietnam"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-ANC",
+      "syllabusNodeId": "GS1-HIS-ANC",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ART_CULTURE.JSON_1999_Q7",
+      "year": 1999,
+      "question": "Q6. (1999) Match List I with List II and select the correct answer using the codes given below the Lists: [1999] List I List II I. Pandit Vishnu Digamber Paluskar A) Introduced the scheme of Raga classification of Indian music II. Venkatamahi B) Proponent of Carnatic music III. Shyama Shastri C) Proponent of the Khayal form of Hindustani music IV. Amir Khusru D) Wrote the music for the song ‘Vande Mataram’ Codes: Source ref: gk_part4 / Q2",
+      "options": {
+        "A": "I-D, II-A, III-C, IV-B",
+        "B": "I-D, II-A, III-B, IV-C",
+        "C": "I-A, II-D, III-C, IV-B",
+        "D": "I-A, II-D, III-B, IV-C"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-ANC",
+      "syllabusNodeId": "GS1-HIS-ANC",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ART_CULTURE.JSON_1996_Q8",
+      "year": 1996,
+      "question": "Q7. (1996) Which one of the following temples figured in the news regarding the institution of the Devadasis? [1996] Source ref: gk_part4 / Q47",
+      "options": {
+        "A": "Jagannath temple, Puri",
+        "B": "Pasupatinath temple, Kathmandu",
+        "C": "Kandariyamahadev temple, Khajuraho",
+        "D": "Chaunsathyogini temple, Bheraghat"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-ANC",
+      "syllabusNodeId": "GS1-HIS-ANC",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    }
+  ],
+  "nodeId": "GS1-CA-CULT",
+  "topicName": "ArtCulture"
+}

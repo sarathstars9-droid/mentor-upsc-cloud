@@ -8,6 +8,7 @@ export default function SpotlightCard({
     currentBlock,
     currentBlockPyq,
     currentBlockPyqNodeId,
+    liveElapsedSec,
     busy,
     onStart,
     onPause,
@@ -57,7 +58,18 @@ export default function SpotlightCard({
     const mainsCount = currentBlockPyq?.mainsCount || 0;
     const lastAskedYear = currentBlockPyq?.lastAskedYear;
     const mappedNode = currentBlockPyqNodeId || "Not mapped";
-    const momentum = currentBlock?.ActualMinutes || 0;
+    // Prefer live-computed elapsed seconds (updated every 1s by PlanPage timer).
+    // Falls back to stored ActualMinutes only if live data is unavailable.
+    const liveMomentumMin = liveElapsedSec != null && liveElapsedSec > 0
+      ? Math.floor(liveElapsedSec / 60)
+      : (currentBlock?.ActualMinutes || 0);
+    const liveElapsedDisplay = liveElapsedSec != null && liveElapsedSec > 0
+      ? (() => {
+          const m = Math.floor(liveElapsedSec / 60);
+          const s = liveElapsedSec % 60;
+          return `${m}m ${String(s).padStart(2, "0")}s`;
+        })()
+      : null;
     const canOpenPyq = Boolean(currentBlockPyqNodeId);
 
     const handleMarkDone =
@@ -117,7 +129,9 @@ export default function SpotlightCard({
 
                     <div className="sp-stat">
                         <div className="sp-stat-label">Momentum</div>
-                        <div className="sp-stat-value">{momentum} min</div>
+                        <div className="sp-stat-value">
+                            {liveElapsedDisplay || `${liveMomentumMin} min`}
+                        </div>
                         <div className="sp-stat-sub">Actual tracked time today</div>
                     </div>
 

@@ -66,6 +66,18 @@ import weaknessRoutes from "./routes/weaknessRoutes.js";
 import pyqExplanationRoutes from "./routes/pyqExplanationRoutes.js";
 import subjectPyqRoutes from "./routes/subjectPyqRoutes.js";
 import pyqIngestionRoutes from "./routes/pyqIngestionRoutes.js";
+import planBlockRoutes from "./routes/planBlockRoutes.js";
+import reportRoutes from "./routes/reportRoutes.js";
+import plannerRoutes from "./routes/plannerRoutes.js";
+import knowledgeLinkageRoutes from "./routes/knowledgeLinkageRoutes.js";
+import {
+  startBlock   as dbStartBlock,
+  pauseBlock   as dbPauseBlock,
+  resumeBlock  as dbResumeBlock,
+  completeBlock as dbCompleteBlock,
+  mergeLifecycleIntoGasBlocks,
+} from "./services/blockLifecycleService.js";
+import { syncBlockToCalendar } from "./services/calendarBridgeService.js";
 dotenv.config();
 
 console.log("[BOOT] server.js loaded");
@@ -421,6 +433,19 @@ app.use("/api/revision", revisionRoutes);   // alias — same router, both paths
 app.use("/api/weakness", weaknessRoutes);
 app.use("/api/pyq", pyqExplanationRoutes);
 app.use("/api/subject-pyq", subjectPyqRoutes);
+
+// ── Plan block lifecycle (PostgreSQL-backed, transaction-safe) ─────────────
+app.use("/api/plan/blocks", planBlockRoutes);
+
+// ── Study reports (PostgreSQL only, no Sheets / Calendar dependency) ────────
+app.use("/api/reports", reportRoutes);
+
+// ── Adaptive Planner Engine ──────────────────────────────────────────────────
+app.use("/api/planner", plannerRoutes);
+
+// ── Knowledge Linkage Engine (Phase 8) ───────────────────────────────────────
+// Connects Study → PYQs → Mistakes → Revision → Planner
+app.use("/api/knowledge", knowledgeLinkageRoutes);
 
 // ── PYQ Ingestion pipeline (Step 1: upload only) ───────────────────────────
 // Isolated admin utility — does NOT touch existing PYQ master/index logic
@@ -1216,39 +1241,119 @@ app.get("/api/day/:dayKey", (req, res) => {
 });
 
 /* -------------------- PROXY: FRONTEND -> BACKEND -> APPS SCRIPT (NO CORS) -------------------- */
+/* Lifecycle actions (startBlock / pauseBlock / resumeBlock / completeBlock) are intercepted     */
+/* here and routed to PostgreSQL instead of Google Sheets.  getBlocksForDate is enriched with    */
+/* PostgreSQL-derived timing values before being returned.  All other actions proxy to GAS.      */
+
+const LIFECYCLE_ACTIONS = new Set([
+  "startBlock", "pauseBlock", "resumeBlock", "completeBlock",
+]);
+const DEFAULT_PLAN_USER = process.env.DEFAULT_USER_ID || "moulika";
+
+async function proxyToGas(payload, scriptUrl) {
+  const body = new URLSearchParams();
+  body.set("data", JSON.stringify(payload));
+  const r = await fetch(scriptUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body,
+  });
+  const text = await r.text();
+  try { return JSON.parse(text); } catch { return { ok: true, raw: text }; }
+}
 
 app.post("/api/sheets", async (req, res) => {
   try {
     const scriptUrl = String(process.env.SCRIPT_URL || "").trim();
-    if (!scriptUrl) {
-      return res.status(500).json({
-        ok: false,
-        message: "Missing SCRIPT_URL in backend .env",
-      });
-    }
+    const payload   = req.body || {};
+    const action    = String(payload.action || "").trim();
 
-    const payload = req.body || {};
-    const action = String(payload.action || "").trim();
     if (!action) {
       return res.status(400).json({ ok: false, message: "Missing action" });
     }
 
-    const body = new URLSearchParams();
-    body.set("data", JSON.stringify(payload));
+    const userId = payload.userId || DEFAULT_PLAN_USER;
 
-    const r = await fetch(scriptUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body,
-    });
+    // ── INTERCEPT: lifecycle → PostgreSQL ────────────────────────────────────
+    if (LIFECYCLE_ACTIONS.has(action)) {
+      const p = payload.payload || {};   // frontend wraps args in payload.payload
+      const blockId = p.blockId;
+      const dayKey  = p.dayKey || (payload.date ? String(payload.date).slice(0, 10) : new Date().toISOString().slice(0, 10));
 
-    const text = await r.text();
+      if (!blockId) {
+        return res.status(400).json({ ok: false, message: "Missing blockId" });
+      }
 
-    try {
-      return res.status(200).json(JSON.parse(text));
-    } catch {
-      return res.status(200).json({ ok: true, raw: text });
+      try {
+        let block;
+        if (action === "startBlock") {
+          block = await dbStartBlock(userId, blockId, dayKey, {
+            title:          p.title    || "",
+            subject:        p.subject  || "",
+            topic:          p.topic    || "",
+            plannedStart:   p.plannedStart  || "",
+            plannedEnd:     p.plannedEnd    || "",
+            plannedMinutes: Number(p.plannedMinutes || 0),
+          });
+          syncBlockToCalendar(block, "start").catch(() => {});
+
+        } else if (action === "pauseBlock") {
+          block = await dbPauseBlock(userId, blockId, dayKey);
+          syncBlockToCalendar(block, "pause").catch(() => {});
+
+        } else if (action === "resumeBlock") {
+          block = await dbResumeBlock(userId, blockId, dayKey);
+          syncBlockToCalendar(block, "resume").catch(() => {});
+
+        } else if (action === "completeBlock") {
+          const reason = p.completionStatus || p.reason || "completed";
+          block = await dbCompleteBlock(userId, blockId, dayKey, { reason });
+          syncBlockToCalendar(block, "complete").catch(() => {});
+        }
+
+        // Also fire GAS in background so Sheets stay loosely in sync (analytics/logs)
+        if (scriptUrl) {
+          proxyToGas(payload, scriptUrl).catch((err) =>
+            console.warn("[sheets proxy] background GAS sync failed:", err.message)
+          );
+        }
+
+        return res.json({ ok: true, block });
+
+      } catch (err) {
+        console.error(`[sheets interceptor ${action}]`, err.message);
+        return res.status(err.code === "RACE_CONDITION" ? 409 : 500).json({
+          ok: false, message: err.message, code: err.code,
+        });
+      }
     }
+
+    // ── INTERCEPT: getBlocksForDate → enrich with PostgreSQL lifecycle ────────
+    if (action === "getBlocksForDate") {
+      if (!scriptUrl) {
+        return res.status(500).json({ ok: false, message: "Missing SCRIPT_URL in backend .env" });
+      }
+      const gasResult = await proxyToGas(payload, scriptUrl);
+      const dayKey = String(payload.date || new Date().toISOString().slice(0, 10)).slice(0, 10);
+
+      if (Array.isArray(gasResult?.blocks) && gasResult.blocks.length) {
+        try {
+          gasResult.blocks = await mergeLifecycleIntoGasBlocks(gasResult.blocks, userId, dayKey);
+        } catch (mergeErr) {
+          // Non-fatal: return un-merged GAS data rather than 500
+          console.error("[sheets getBlocksForDate merge]", mergeErr.message);
+        }
+      }
+      return res.status(200).json(gasResult);
+    }
+
+    // ── Default: proxy everything else to GAS ─────────────────────────────────
+    if (!scriptUrl) {
+      return res.status(500).json({ ok: false, message: "Missing SCRIPT_URL in backend .env" });
+    }
+    const result = await proxyToGas(payload, scriptUrl);
+    return res.status(200).json(result);
+
   } catch (e) {
     console.error("[api/sheets ERR]", e);
     return res.status(500).json({ ok: false, message: String(e?.message || e) });

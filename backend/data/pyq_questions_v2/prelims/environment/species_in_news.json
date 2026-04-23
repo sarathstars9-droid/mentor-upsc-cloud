@@ -1,0 +1,1254 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Environment",
+  "topicName": "Species in News",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "sectionId": "GS3-ENV-BIODIV",
+  "sectionName": "Biodiversity & Conservation",
+  "sourceFile": "species_in_news.docx",
+  "questions": [
+    {
+      "id": "ENV_SPC_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Regarding Peacock tarantula (Gooty tarantula), consider the following statements: I. It is an omnivorous crustacean. II. Its natural habitat in India is only limited to some forest areas. III. In its natural habitat, it is an arboreal species. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "I only",
+        "B": "I and III",
+        "C": "II only",
+        "D": "II and III"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_SPC_2025_Q2",
+      "questionNumber": 2,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following fruits: I. Papaya II. Pineapple III. Guava How many of the above were introduced in India by the Portuguese in the sixteenth and seventeenth centuries?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All the three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2025_Q3",
+      "questionNumber": 3,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: Plant-Description I. Cassava : Woody shrub II. Ginger : Herb with pseudostem III. Malabar spinach : Herbaceous climber IV. Mint : Annual shrub V. Papaya : Woody shrub How many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only two",
+        "B": "Only three",
+        "C": "Only four",
+        "D": "All the five"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2024_Q4",
+      "questionNumber": 4,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement I: The Indian Flying Fox is placed under the \"vermin\" category in the Wildlife (Protection) Act, 1972. Statement-II: The Indian Flying Fox feeds on the blood of other animals. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+        "B": "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+        "C": "Statement-I is correct, but Statement-II is incorrect",
+        "D": "Statement-I is incorrect, but Statement-II is correct"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2024_Q5",
+      "questionNumber": 5,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Cashew 2. Papaya 3. Red sanders How many of the above trees are actually native to India?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2023_Q6",
+      "questionNumber": 6,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following trees: 1. Jackfruit (Artocarpus heterophyllus) 2. Mahua (Madhuca indica) 3. Teak (Tectona grandis) How many of the above are deciduous trees?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_SPC_2023_Q7",
+      "questionNumber": 7,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following Fauna: 1. Lion-tailed Macaque 2. Malabar Civet 3. Sambar Deer How many of the above are generally nocturnal or most active after sunset?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2023_Q8",
+      "questionNumber": 8,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements regarding the Indian squirrels: 1. They build nests by making burrows in the ground. 2. They store their food materials like nuts and seeds in the ground. 3. They are omnivorous. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2022_Q9",
+      "questionNumber": 9,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to \"Gucchi\" sometimes mentioned in the news, consider the following statements: 1. It is a fungus. 2. It grows in some Himalayan Forest areas. 3. It is commercially cultivated in the Himalayan foothills of north-eastern India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "3 only",
+        "C": "1 and 2",
+        "D": "2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2022_Q10",
+      "questionNumber": 10,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following is not a bird?",
+      "options": {
+        "A": "Golden Mahseer",
+        "B": "Indian Nightjar",
+        "C": "Spoonbill",
+        "D": "White Ibis"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2021_Q11",
+      "questionNumber": 11,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following animals: 1) Hedgehog 2) Marmot 3) Pangolin To reduce the chance of being captured by predators which of the above organisms rolls up/roll up and protects/protect its/their vulnerable parts?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "3 only",
+        "D": "1 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2021_Q12",
+      "questionNumber": 12,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is used in preparing a natural mosquito repellent?",
+      "options": {
+        "A": "Congress grass",
+        "B": "Elephant grass",
+        "C": "Lemon grass",
+        "D": "Nut grass"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2020_Q13",
+      "questionNumber": 13,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Indian elephants, consider the following statements: 1. The leader of an elephant group is a female. 2. The maximum gestation period can be 22 months. 3. An elephant can normally go on calving till the age of 40 years only. 4. Among the States in India, the highest elephant population is in Kerala. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 4 only",
+        "C": "3 only",
+        "D": "1, 3 and 4 only"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2020_Q14",
+      "questionNumber": 14,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are the most likely places to find the musk deer in its natural habitat? 1. Askot Wildlife Sanctuary 2. Gangotri National Park 3. Kishanpur Wildlife Sanctuary 4. Manas National Park Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "3 and 4 only",
+        "D": "1 and 4 only"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2019_Q15",
+      "questionNumber": 15,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Asiatic lion is naturally found in India only. 2. Double-humped camel is naturally found in India only. 3. One-horned rhinoceros is naturally found in India only. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2019_Q16",
+      "questionNumber": 16,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: Wildlife: Naturally found in 1. Blue-finned Mahseer:Cauvery River 2. Irrawaddy Dolphin: Chambal River 3. Rusty-spotted Cat: Eastern Ghats Which of the pairs given correctly matched?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2019_Q17",
+      "questionNumber": 17,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Recently, there was a growing awareness in our country about the importance of Himalayan nettle (Girardinia diversifolia) because it is found to be a sustainable source of:",
+      "options": {
+        "A": "Anti-malarial drug",
+        "B": "Biodiesel",
+        "C": "Pulp for paper industry",
+        "D": "Textile fibre"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_SPC_2018_Q18",
+      "questionNumber": 18,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Why is a plant called Prosopis juliflora often mentioned in news?",
+      "options": {
+        "A": "Its extract is widely used in cosmetics.",
+        "B": "It tends to reduce the widely biodiversity in the area in which it grows.",
+        "C": "Its extract is used in the synthesis of pesticides.",
+        "D": "None of the above"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2016_Q19",
+      "questionNumber": 19,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "Recently, our scientists have discovered a new and distinct species of banana plant which attains a height of about 11 metres and has orange-coloured fruit pulp. In which part of India has it been discovered?",
+      "options": {
+        "A": "Andaman Islands",
+        "B": "Anaimalai Forests",
+        "C": "Maikala Hills",
+        "D": "Tropical rain forests of northeast"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2016_Q20",
+      "questionNumber": 20,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to 'Red Sanders', sometimes seen in the news, consider the following statements: 1. It is a tree species found in a part of South India. 2. It is one of the most important trees in the tropical rain forest areas of South India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2016_Q21",
+      "questionNumber": 21,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "In which of the following regions of India are you most likely to come across the `Great Indian Hornbill' in its natural habitat?",
+      "options": {
+        "A": "Sand deserts of northwest India",
+        "B": "Higher Himalayas of Jammu and Kashmir",
+        "C": "Salt marshes of western Gujarat",
+        "D": "Western Ghats"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2015_Q22",
+      "questionNumber": 22,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to 'dugong', a mammal found in India, which of the following statements is/are correct? 1. It is a herbivorous marine animal. 2. It is found along the entire coast of India 3. It is given legal protection under Schedule 1 of the Wildlife (Protection) Act, 1972. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "1 and 3",
+        "D": "3 only"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2015_Q23",
+      "questionNumber": 23,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the national aquatic animal of India?",
+      "options": {
+        "A": "Saltwater crocodile",
+        "B": "Olive ridley turtle",
+        "C": "Gangetic dolphin",
+        "D": "Gharial"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2014_Q24",
+      "questionNumber": 24,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, cluster bean (Guar) is traditionally used as a vegetable or animal feed, but recently the cultivation of this has assumed significance. Which one of the following statements is correct in this context?",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "2 and 4 only",
+        "C": "1 and 3 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2014_Q25",
+      "questionNumber": 25,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Neem tree, consider the following statements: 1. Neem oil can be used as a pesticide to control the proliferation of some species of insects and mites. 2. Neem seeds are used in the manufacture of biofuels and hospital detergents. 3. Neem oil has applications in pharmaceutical industry. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2014_Q26",
+      "questionNumber": 26,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Other than poaching, what are the possible reasons for the decline in the population of Gangas River Dolphins? 1. Construction of dams and barrages on rivers 2. Increase in the population of crocodiles in rivers. 3. Getting trapped in fishing nets accidentally 4. Use of synthetic fertilizers and other agricultural chemicals in crop-fields in the vicinity of rivers Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1, 3 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2013_Q27",
+      "questionNumber": 27,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following fauna of India___: 1. Gharial 2. Leatherback turtle 3. Swamp deer Which among the above is / are endangered?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 Only",
+        "C": "1, 2 & 3",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2013_Q28",
+      "questionNumber": 28,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "In which of the following states is lion-tailed macaque found in its natural Habitat? 1. Tamil Nadu 2. Kerala 3. Karnataka 4. Andhra Pradesh Select the correct answer using the codes given below.",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "2 only",
+        "C": "1, 3 and 4 only",
+        "D": "1, 2, 3, and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-ECOLOGY",
+      "sectionName": "Ecology Basics",
+      "topicId": "GS3-ENV-ECO-CONCEPTS",
+      "topicName": "Basic Ecology Concepts",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS",
+      "microTheme": "Basic Ecology Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2013_Q29",
+      "questionNumber": 29,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Star tortoise 2. Monitor lizard 3. Pygmy hog 4. Spider monkey Which of the above are naturally found in India?",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "2 and 3 only",
+        "C": "1 and 4 only",
+        "D": "1, 2, 3, and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2012_Q30",
+      "questionNumber": 30,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Government of India encourages the cultivation of 'sea buckthorn '. What is the importance of this plant? 1. It helps in controlling soil erosion and in preventing desertification. 2. It is a rich source of biodiesel. 3. It has nutritional value and is well-adapted to live in cold areas of high altitudes. 4. Its timber is of great commercial value. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2, 3 & 4 Only",
+        "C": "1 & 3 Only",
+        "D": "1, 2, 3 & 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2012_Q31",
+      "questionNumber": 31,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following groups of animals belongs to the category of endangered species?",
+      "options": {
+        "A": "Great Indian Bustard, Musk Deer, Red Panda and Asiatic Wild Ass",
+        "B": "Kashmir Stag, Cheetai, Blue Bull and Great Indian Bustard",
+        "C": "Snow Leopard, Swamp Deer, Rhesus Monkey and Saras (Crane)",
+        "D": "Lion-tailed Macaque, Blue Bull, Hanuman Langur and Cheetal"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2012_Q32",
+      "questionNumber": 32,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the difference between the antelopes Oryx and Chiru?",
+      "options": {
+        "A": "Oryx is adapted to live in hot and arid areas whereas Chiru is adapted to live in steppes and semi-desert areas of cold high mountains",
+        "B": "Oryx is poached for its antlers whereas Chiru is poached for its musk",
+        "C": "Oryx exists in western India only whereas Chiru exists in north-east India only",
+        "D": "None of the statements (a), (b) and (c) given above is correct"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_SPC_2012_Q33",
+      "questionNumber": 33,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Vultures which used to be very common in the Indian countryside some years ago are rarely seen nowadays. This is attributed to:",
+      "options": {
+        "A": "The destruction of their nesting sites by new invasive species",
+        "B": "A drug used by cattle owners for treating their diseased cattle",
+        "C": "Scarcity of food available to them",
+        "D": "A widespread, persistent and fatal disease among them"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2011_Q34",
+      "questionNumber": 34,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "A sandy and saline area is the natural habitat of an Indian animal species. The animal has no predators in that area but its existence is threatened due to the destruction of its habitat. Which one of the following could be that animal?",
+      "options": {
+        "A": "Indian wild buffalo",
+        "B": "Indian wild ass",
+        "C": "Indian wild boar",
+        "D": "Indian gazelle"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2010_Q35",
+      "questionNumber": 35,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "King Cobra is the only snake that makes its own nest. Why does it make its nest?",
+      "options": {
+        "A": "It is a snake-eater and the nest helps attract other snakes.",
+        "B": "It is a viviparous snake and needs a nest to give birth to its offspring.",
+        "C": "It is an oviparous snake and lays its eggs in the nest and guards the nest until they are hatched.",
+        "D": "It is a large, cold blooded animal and needs a nest to hibernate in the cold season."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2010_Q36",
+      "questionNumber": 36,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Taxus tree is naturally found in the Himalayas. 2. The Taxus tree is listed in the Red Data Book. 3. A drug called 'taxol' is obtained from Taxus trees and is effective against Parkinson's disease. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2009_Q37",
+      "questionNumber": 37,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "The marine animal called Dugong which is vulnerable to extinction is:",
+      "options": {
+        "A": "Amphibian",
+        "B": "Bony fish",
+        "C": "Shark",
+        "D": "Mammal"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2009_Q38",
+      "questionNumber": 38,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the contest of Indian wild life, the flying fox is a:",
+      "options": {
+        "A": "Bat",
+        "B": "Kite",
+        "C": "Stork",
+        "D": "Vulture"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2008_Q39",
+      "questionNumber": 39,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Among the following, which one is not an ape?",
+      "options": {
+        "A": "Gibbon",
+        "B": "Gorilla",
+        "C": "Langur",
+        "D": "Orangutan"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2008_Q40",
+      "questionNumber": 40,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "For which one of the following snakes is the diet mainly composed of other snakes?",
+      "options": {
+        "A": "Krait",
+        "B": "Russell's viper",
+        "C": "Rattlesnake",
+        "D": "King cobra"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2007_Q41",
+      "questionNumber": 41,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "The largest coral reef in the world is found near the coast of which one of the following countries?",
+      "options": {
+        "A": "Australia",
+        "B": "Cuba",
+        "C": "Ghana",
+        "D": "Philippines"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2004_Q42",
+      "questionNumber": 42,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Toothless mammals such as pangolins are not found in India. 2. Gibbon is the only ape found in India. Which of the statements given above is are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2003_Q43",
+      "questionNumber": 43,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following animals of India: 1. Crocodile 2. Elephant Which of these is/are endangered species?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2003_Q44",
+      "questionNumber": 44,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The common blue green algae Spirogyra and Ulothrix are found in both freshwater ponds and oceans. 2. The Chameleon can look ahead with one eye, and at the same time look behind with another. Which of these statements is/are correct?",
+      "options": {
+        "A": "Lion",
+        "B": "Elephant",
+        "C": "Tiger",
+        "D": "One-horned rhinoceros"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_2002_Q45",
+      "questionNumber": 45,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "The sea coast of which one of the following states has become famous as a nesting place for the giant Olive Ridley turtles from South America?",
+      "options": {
+        "A": "Goa",
+        "B": "Gujarat",
+        "C": "Orissa",
+        "D": "Tamil Nadu"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_SPC_1999_Q46",
+      "questionNumber": 46,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "'India has the largest population of the Asian X. Today, there are just about 20,000 to 25,000 X in their natural habitat spreading across the evergreen forests, dry thorn forests, swamps and grasslands. Their prime habitats are, however, the moist deciduous forests. The X population in India ranges from North-West India where they are found in the forest divisions of Dehradun, Bijnor and Nainital districts of UP to the Western Ghats in the states of Karnataka and Kerala and in Tamil Nadu. In Central India, their population is distributed in southern Bihar and Orissa. In the East, they are seen in North-Bengal, Assam and a few other states.' The animal 'X' referred to in this quotation is:",
+      "options": {
+        "A": "Lion",
+        "B": "Elephant",
+        "C": "Tiger",
+        "D": "One-horned rhinoceros"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    }
+  ],
+  "totalQuestions": 46
+}

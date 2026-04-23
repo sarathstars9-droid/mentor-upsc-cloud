@@ -1,0 +1,761 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "exam": "UPSC_CSE",
+  "stage": "Prelims",
+  "paper": "GS1",
+  "subject": "Geography",
+  "topicName": "Geomorphology",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "nodeId": "geo.geomorphology",
+  "microTheme": "earth-structure-landforms",
+  "questions": [
+    {
+      "id": "GEO_GEO_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: I. Anadyr in Siberia and Nome in Alaska are a few kilometers from each other, but when people are waking up and getting set for breakfast in these cities, it would be different days. II. When it is Monday in Anadyr, it is Tuesday in Nome. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "I only",
+        "B": "II only",
+        "C": "Both I and II",
+        "D": "Neither I nor II"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2025_Q2",
+      "questionNumber": 2,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are the evidences of the phenomenon of continental drift? I. The belt of ancient rocks from Brazil coast matches with those from Western Africa. II. The gold deposits of Ghana are derived from the Brazil plateau when the two continents lay side by side. III. The Gondwana system of sediments from India is known to have its counterparts in six different landmasses of the Southern Hemisphere. Select the correct answer using the code given below.",
+      "options": {
+        "A": "I and III only",
+        "B": "I and II only",
+        "C": "I, II and III",
+        "D": "II and III only"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2025_Q3",
+      "questionNumber": 3,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement I: Scientific studies suggest that a shift is taking place in the Earth's rotation and axis. Statement II: Solar flares and associated coronal mass ejections bombarded the Earth's outermost atmosphere with tremendous amount of energy. Statement III: As the Earth's polar ice melts, the water tends to move towards the equator. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement II and Statement III are correct and both of them explain Statement I",
+        "B": "Both Statement II and Statement III are correct but only one of them explains Statement I",
+        "C": "Only one of the Statements II and III is correct and that explains Statement I",
+        "D": "Neither Statement II nor Statement III is correct"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2025_Q4",
+      "questionNumber": 4,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement I: In the context of effect of water on rocks, chalk is known as a very permeable rock whereas clay is known as quite an impermeable or least permeable rock. Statement II: Chalk is porous and hence can absorb water. Statement III: Clay is not at all porous. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement II and Statement III are correct and both of them explain Statement I",
+        "B": "Both Statement II and Statement III are correct but only one of them explains Statement I",
+        "C": "Only one of the Statements II and III is correct and that explains Statement I",
+        "D": "Neither Statement II nor Statement III is correct"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2024_Q5",
+      "questionNumber": 5,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Pyroclastic debris 2. Ash and dust 3. Nitrogen compounds 4. Sulphur compounds How many of the above are products of volcanic eruptions?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2024_Q6",
+      "questionNumber": 6,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement-I: Rainfall is one of the reasons for weathering of rocks. Statement-II: Rain water contains carbon dioxide in solution. Statement-III: Rain water contains atmospheric oxygen. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-II and Statement -III are correct and both of them explain Statement-I (",
+        "B": "Both Statement-II and Statement -III are correct, but only one of them explains Statement-I (",
+        "C": "Only one of the Statements II and III is correct and that explains Statement-I (",
+        "D": "Neither Statement-II nor Statement-III is correct"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2024_Q7",
+      "questionNumber": 7,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "On June 21 every year, which of the following latitude(s) experience(s) a sunlight of more than 12 hours? 1. Equator 2. Tropic of Cancer 3. Tropic of Capricorn 4. Arctic Circle Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only (",
+        "B": "2 only (",
+        "C": "3 and 4 (",
+        "D": "2 and 4"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2023_Q8",
+      "questionNumber": 8,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Ilmenite and rutile, abundantly available in certain coastal tracts of India, are rich sources of which one of the following?",
+      "options": {
+        "A": "Aluminium",
+        "B": "Copper",
+        "C": "Iron",
+        "D": "Titanium"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2023_Q9",
+      "questionNumber": 9,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. In a seismograph, P waves recorded earlier than S waves. 2. In P waves, the individual particles vibrate to and fro in the direction of wave propagation whereas in S waves, the particles vibrate up and down at right angles to the direction of wave propagation. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2022_Q10",
+      "questionNumber": 10,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the northern hemisphere, the longest day of the year normally occurs in the:",
+      "options": {
+        "A": "First half of the month of June (",
+        "B": "Second half of the month of June (",
+        "C": "First half of the month of July (",
+        "D": "Second half of the month of July"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2019_Q11",
+      "questionNumber": 11,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "On 21st June, the Sun:",
+      "options": {
+        "A": "Does not set below the horizon at the Arctic Circle",
+        "B": "Does not set below the horizon at Antarctic Circle",
+        "C": "Shines vertically overhead at noon on the Equator",
+        "D": "Shines vertically overhead at the Tropic of Capricorn"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2019_Q12",
+      "questionNumber": 12,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "The word 'Denisovan' is sometimes mentioned in media in reference to:",
+      "options": {
+        "A": "Fossils of a kind of dinosaurs",
+        "B": "An early human species",
+        "C": "A cave system found in North-East India",
+        "D": "A geological period in the history of Indian subcontinent"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2018_Q13",
+      "questionNumber": 13,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the is/are the possible consequences of heavy sand mining in riverbeds? 1. Decreased salinity in the water 2. Pollution of groundwater 3. Lowering of the water table Select the correct answer using the code below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2014_Q14",
+      "questionNumber": 14,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following phenomena might have influenced the evolution of organisms? 1. Continental drift 2. Glacial cycles Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2013_Q15",
+      "questionNumber": 15,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Variations in the length of daytime and night-time from season to season are due to?",
+      "options": {
+        "A": "The earth's rotation on its axis",
+        "B": "The earth's revolution round the sun in an elliptical manner",
+        "C": "Latitudinal position of the place",
+        "D": "Revolution of the earth on a titled axis"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2013_Q16",
+      "questionNumber": 16,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "On the planet earth, most of the freshwater exists as ice caps and glaciers. Out of the remaining freshwater, the largest proportion?",
+      "options": {
+        "A": "Is found in atmosphere as moisture and clouds",
+        "B": "Is found in freshwater lakes and rivers",
+        "C": "Exists as groundwater",
+        "D": "Exists as soil moisture"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2013_Q17",
+      "questionNumber": 17,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: 1. Electromagnetic radiation 2. Geothermal energy 3. Gravitational force 4. Plate movements 5. Rotation of the earth 6. Revolution of the earth Which of the above are responsible for bringing dynamic changes on the surface of the earth?",
+      "options": {
+        "A": "1, 2, 3, and 4 only",
+        "B": "1, 3, 5 and 6 only",
+        "C": "2, 4, 5, and 6 only",
+        "D": "1, 2, 3, 4, 5, and 6"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2013_Q18",
+      "questionNumber": 18,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Contour Bunding is a method of soil conservation used in?",
+      "options": {
+        "A": "Desert margins, liable to strong wind action",
+        "B": "Low flat plains, close to stream courses, liable to flooding",
+        "C": "Scrublands, liable to spread of weed growth",
+        "D": "None of the above"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2012_Q19",
+      "questionNumber": 19,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following sets of elements was primarily responsible for the origin of life on the Earth?",
+      "options": {
+        "A": "Hydrogen, Oxygen, Sodium",
+        "B": "Carbon, Hydrogen, Nitrogen",
+        "C": "Oxygen, Calcium, Phosphorus",
+        "D": "Carbon, Hydrogen, Potassium"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2012_Q20",
+      "questionNumber": 20,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "A person stood alone in a desert on a dark night and wanted to reach his village which was situated 5 km east of the point where he was standing. He had no instruments to find the direction but he located the polestar. The most convenient way now to reach his village is to walk in the:",
+      "options": {
+        "A": "Direction facing the polestar",
+        "B": "Direction opposite to the polestar",
+        "C": "Direction keeping the polestar to his left",
+        "D": "Direction keeping the polestar to his right"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2010_Q21",
+      "questionNumber": 21,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the soil conservation, consider the following practices: 1. Crop rotation 2. Sand fences. 3. Terracing 4. Wind breaks Which of the above are considered appropriate methods for soil conservation in India?",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "2 and 4 only",
+        "C": "1, 3 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2009_Q22",
+      "questionNumber": 22,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the structure of planet Earth, below the mantle, the core is mainly made up of which one of the following?",
+      "options": {
+        "A": "Aluminium",
+        "B": "Chromium",
+        "C": "Iron",
+        "D": "Silicon"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2008_Q23",
+      "questionNumber": 23,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following pairs is/are correctly matched? Theory/Law Associated Scientist 1. Continental Drift: Edwin Hubble 2. Expansion of Universe: Alfred Wegener 3. Photoelectric Effect: Albert Einstein Select the correct answer using the code given below:",
+      "options": {
+        "A": "2 and 3 only",
+        "B": "3 only",
+        "C": "2 only",
+        "D": "1 only"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2008_Q24",
+      "questionNumber": 24,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "In order of their distance from the Sun, which of the following planets lie between Mars and Uranus?",
+      "options": {
+        "A": "Earth and Jupiter",
+        "B": "Jupiter and Saturn",
+        "C": "Saturn and Earth",
+        "D": "Saturn and Neptune"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2006_Q25",
+      "questionNumber": 25,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the approximate mean velocity with which the Earth moves round the Sun in its orbit?",
+      "options": {
+        "A": "20 km/s",
+        "B": "30 km/s",
+        "C": "40 km/s",
+        "D": "50 km/s"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2005_Q26",
+      "questionNumber": 26,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": The same face of the Moon is always presented to the Earth.: Reason (R): The Moon rotates about its own axis in 23 days which is about the same time that takes to orbit the Earth",
+        "B": "Both (",
+        "C": "and (R) are individually true and R is the correct explanation of A",
+        "D": "Both (A) and (R) are individually true and R is not the correct explanation of A c) A is true but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2005_Q27",
+      "questionNumber": 27,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": Existence of human life on Venus is highly improbable.: Reason (R): Venus has an extremely high level of carbon dioxide in its atmosphere",
+        "B": "Both (",
+        "C": "and (R) are individually true and R is the correct explanation of A",
+        "D": "Both (A) and (R) are individually true and R is not the correct explanation of A c) A is true but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2005_Q28",
+      "questionNumber": 28,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The axis of the earth magnetic field is inclined at 23 to the geographic axis of the earth. 2. The earth's magnetic pole in the northern hemisphere is located on a peninsula in northern Canada. 3. Earth's magnetic equator passes through Thumna in South India. Which of the statements is/are correct?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "2 and 3",
+        "C": "2 only",
+        "D": "3 only"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2005_Q29",
+      "questionNumber": 29,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1) Total land area of earth is approximately 1475 lakh square kilometres. 2) Ratio of land area to water area of earth is approximately 1: 4. 3) Maximum percentage of earth's water is in the Pacific Ocean. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 3",
+        "B": "2 and 3",
+        "C": "1 only",
+        "D": "3 only"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2005_Q30",
+      "questionNumber": 30,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the correct sequence of the given Continents in the decreasing order of their percentage of earth's land?",
+      "options": {
+        "A": "North America, Africa, South America, Europe",
+        "B": "Africa, North America, South America, Europe",
+        "C": "North America, Africa, Europe, South America",
+        "D": "Africa, North America, Europe, South America"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2004_Q31",
+      "questionNumber": 31,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following geological phenomena: 1. Development of a fault 2. Movement along a fault 3. Impact produced by a volcanic eruption 4. Folding of rocks Which of the above cause earthquakes?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "2 and 4",
+        "C": "1, 3 and 4",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2001_Q32",
+      "questionNumber": 32,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Identify the correct order of the processes of soil- erosion from the following:",
+      "options": {
+        "A": "Splash erosion, Sheet erosion, Rill erosion, Gully erosion",
+        "B": "Sheet erosion, Splash erosion, Gully erosion, Rill erosion",
+        "C": "Rill erosion, Gully erosion, Sheet erosion, Splash erosion",
+        "D": "Gully erosion, Rill erosion, Sheet erosion, Splash erosion"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2001_Q33",
+      "questionNumber": 33,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: I. Most magmas are a combination of liquid, solid and gas. II. Water vapour and carbon dioxide are the principal gases dissolved in a magma. III. Basaltic magma is hotter than the silicic magma. IV. The magma solidified between sedimentary rocks in a horizontal position is known as dike. Which of these statements are correct?",
+      "options": {
+        "A": "I, II and III",
+        "B": "II, III and IV",
+        "C": "I and IV",
+        "D": "I, II and IV"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2001_Q34",
+      "questionNumber": 34,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements regarding the earthquakes: I. The intensity of earthquake is measured on Mercalli scale. II. The magnitude of an earthquake is a measure of energy released. III. Earthquake magnitudes are based on direct measurements of the amplitude of seismic waves. IV. In the Richter scale, each whole number demonstrates a hundredfold increase in the amount of energy released. \"Which of these statements are correct?",
+      "options": {
+        "A": "I, II and III",
+        "B": "II, III and IV",
+        "C": "I and IV",
+        "D": "I and III"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2001_Q35",
+      "questionNumber": 35,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements made about the sedimentary rocks: I. Sedimentary rocks are formed at Earth's surface by the hydrological system. II. The formation of sedimentary rocks involves the weathering of preexisting rocks. III. Sedimentary rocks contain fossils. IV. Sedimentary rocks typically occur in layers. Which of these statements are correct?",
+      "options": {
+        "A": "I and II",
+        "B": "I and IV",
+        "C": "II, III and IV",
+        "D": "I, II, III and IV"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_2001_Q36",
+      "questionNumber": 36,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Volcanic eruptions do not occur in the:",
+      "options": {
+        "A": "Baltic Sea",
+        "B": "Black Sea",
+        "C": "Caribbean Sea",
+        "D": "Caspian Sea"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_1999_Q37",
+      "questionNumber": 37,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "A ship sailing from the western extremity of the Aleutian Islands to Dutch harbour crosses 180° meridian at 23.30 hrs on January 1, 1999. What time and date will be recorded by the captain of the ship in his diary after one hour journey from the point of crossing of the meridian?",
+      "options": {
+        "A": "January 1, 0030 hrs",
+        "B": "January 2, 0030 hrs",
+        "C": "January 3, 0030 hrs",
+        "D": "January 4, 0030 hrs"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_1999_Q38",
+      "questionNumber": 38,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following scholars suggests the earth's origin from gases and dust particles?",
+      "options": {
+        "A": "James Jeans",
+        "B": "H. Alfven",
+        "C": "F. Hoyle",
+        "D": "O. Schmidt"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_1999_Q39",
+      "questionNumber": 39,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following types of coal contains a higher percentage of carbon than the rest?",
+      "options": {
+        "A": "Bituminous coal",
+        "B": "Lignite",
+        "C": "Peat",
+        "D": "Anthracite"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_1999_Q40",
+      "questionNumber": 40,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "At which one of the following positions shown in the diagram will the height of the ocean tide be maximum?",
+      "options": {
+        "A": "M1",
+        "B": "M2",
+        "C": "M3",
+        "D": "M4"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_1998_Q41",
+      "questionNumber": 41,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "When there is noon at G. M.T. meridian people on another place of the Earth are taking their 6 o'clock morning tea. The longitude of the place is:",
+      "options": {
+        "A": "17° 30' E",
+        "B": "7° 30' W",
+        "C": "172° 30' E",
+        "D": "90° W"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_1997_Q42",
+      "questionNumber": 42,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "If the earth's direction of rotation is reversed, what would be the IST when it is noon at the International Date Line?",
+      "options": {
+        "A": "06.30 hrs",
+        "B": "05.30 hrs",
+        "C": "18.30 hrs",
+        "D": "17.30 hrs"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_1997_Q43",
+      "questionNumber": 43,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is present in the largest amount in terms of per cent by mass in the earth's crust?",
+      "options": {
+        "A": "Silicon",
+        "B": "Oxygen",
+        "C": "Carbon",
+        "D": "Calcium"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_GEO_1995_Q44",
+      "questionNumber": 44,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "The standard time of the following countries is ahead or behind Greenwich Mean Time depending on whether they are east or west of the longitude passing through Greenwich: I. Cuba II. Greece III. Iraq IV. Costa Rica V. Japan Which one of the following sequential orders gives the correct arrangement of the countries according to their standard time from ahead to behind GMT?",
+      "options": {
+        "A": "V, III, II, I, IV",
+        "B": "II, IV, I, III, V",
+        "C": "IV, I, III, II, V",
+        "D": "III, V, IV, I, II"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "earth-structure-landforms",
+      "syllabusNodeId": "GS1-GEO-IND"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "CAG",
+  "topicId": "cag",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 2,
+  "questions": [
+    {
+      "id": "POL_CAG_2012_Q1",
+      "questionNumber": 1,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, other than ensuring that public funds are used efficiently and for intended purpose, what is the importance of the office of the Comptroller and Auditor General (CAG)? 1. CAG exercises exchequer control on behalf of the Parliament when the President of India declares national emergency/financial emergency. 2. CAG reports on the execution of projects or programmes by the ministries are discussed by the Public Accounts Committee. 3. Information from CAG reports can be used by investigating agencies to press charges against those who have violated the law while managing public finances. 4. While dealing with the audit and accounting of government companies, CAG has certain judicial powers for prosecuting those who violate the law. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1,3 & 4 Only",
+        "B": "2 Only",
+        "C": "2 & 3 Only",
+        "D": "1,2, 3 & 4"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "CAG",
+      "topicId": "cag",
+      "sectionId": "GS2-POL-BODIES",
+      "nodeId": "GS2-POL-BODIES",
+      "syllabusNodeId": "GS2-POL-BODIES",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CAG_2001_Q2",
+      "questionNumber": 2,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following duties is NOT performed by the Comptroller and Auditor General of India?",
+      "options": {
+        "A": "To audit and report on all expenditure from the Consolidated Fund of India",
+        "B": "To audit and report on all expenditure from the Contingency Funds and Public Accounts",
+        "C": "To audit and report on all trading, manufacturing, profit and loss accounts",
+        "D": "To control the receipt and issue of public money, and to ensure that the public revenue is lodged in the exchequer"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "CAG",
+      "topicId": "cag",
+      "sectionId": "GS2-POL-BODIES",
+      "nodeId": "GS2-POL-BODIES",
+      "syllabusNodeId": "GS2-POL-BODIES",
+      "microTheme": "CAG",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

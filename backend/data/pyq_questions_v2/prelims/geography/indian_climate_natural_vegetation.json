@@ -1,0 +1,574 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "exam": "UPSC_CSE",
+  "stage": "Prelims",
+  "paper": "GS1",
+  "subject": "Geography",
+  "topicName": "Indian Geography",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "nodeId": "geo.indian-geography",
+  "microTheme": "indian-climate-location-forests",
+  "questions": [
+    {
+      "id": "GEO_INDCLI_2023_Q1",
+      "questionNumber": 1,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following is the best example of repeated falls in sea level, giving rise to present day extensive marshland?",
+      "options": {
+        "A": "Bhitarkanika Mangroves",
+        "B": "Marakkanam Salt Pans",
+        "C": "Naupada Swamp",
+        "D": "Rann of Kutch"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2019_Q2",
+      "questionNumber": 2,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following States: 1. Chhattisgarh 2. Madhya Pradesh 3. Maharashtra 4. Odisha With reference to the States mentioned above, in terms of percentage of forest cover to the total area of State, which one of the following is the correct ascending order?",
+      "options": {
+        "A": "2-3-1-4",
+        "B": "2-3-4-1",
+        "C": "3-2-4-1",
+        "D": "3-2-1-4"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2017_Q3",
+      "questionNumber": 3,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "At one of the places in India, if you stand on the seashore and watch the sea, you will find that the sea water recedes from the shore line a few kilometres and comes back to the shore, twice a day, and you can actually walk on the sea floor when the water recedes. This unique phenomenon is seen at:",
+      "options": {
+        "A": "Bhavnagar",
+        "B": "Bheemunipatnam",
+        "C": "Chandipur",
+        "D": "Nagapattinam"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2015_Q4",
+      "questionNumber": 4,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following States: 1. Arunachal Pradesh 2. Himachal Pradesh 3. Mizoram In which of the following states do \"Tropical Wet Evergreen Forests\" occur?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2015_Q5",
+      "questionNumber": 5,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, in which one of the following types of forests is teak a dominant tree species?",
+      "options": {
+        "A": "Tropical moist deciduous forest",
+        "B": "Tropical rain forest",
+        "C": "Tropical thorn scrub forest",
+        "D": "Temperate forest with grasslands"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2015_Q6",
+      "questionNumber": 6,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: Place of Pilgrimage: Location 1. Srisailam: Nallamala Hills 2. Omkareshwar: Satmala Hills 3. Pushkar: Mahadeo Hills Which of the above pairs is/are correctly matched?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2012_Q7",
+      "questionNumber": 7,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "A particular State in India has the following characteristics: 1. It is located on the same latitude which passes through northern Rajasthan. 2. It has over 80% of its area under forest cover. 3. Over 12% of forest cover constitutes Protected Area Network in this State. Which one among the following States has all the above characteristics?",
+      "options": {
+        "A": "Arunachal Pradesh",
+        "B": "Assam",
+        "C": "Himachal Pradesh",
+        "D": "Uttarakhand"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2012_Q8",
+      "questionNumber": 8,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The duration of the monsoon decreases from southern India to northern India. 2. The amount of annual rainfall in the northern plains of India decreases from east to west. Which of the statements given above is / are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 Only",
+        "C": "Both 1 & 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2011_Q9",
+      "questionNumber": 9,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "A state in India has the following characteristics: 1. Its northern part is arid and semi-arid. 2. Its central part produces cotton. 3. Cultivation of cash crops is predominant over food crops. Which one of the following states has all of the above characteristics?",
+      "options": {
+        "A": "Andhra Pradesh",
+        "B": "Gujarat",
+        "C": "Karnataka",
+        "D": "Tamil Nadu"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2010_Q10",
+      "questionNumber": 10,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "The approximate representations of land use classification in India is:",
+      "options": {
+        "A": "Net area sown 25%; forests 33%; other areas 42%",
+        "B": "Net area sown 58%; forests 17%; other areas 25%",
+        "C": "Net area sown 43%; forests 29%; other areas 28%",
+        "D": "Net area sown 47%; forests 23%; other areas 30%"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2010_Q11",
+      "questionNumber": 11,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, which type of forest among the following occupies the largest area?",
+      "options": {
+        "A": "Montane Wet, Temporate Forest",
+        "B": "Sub - tropical Dry Evergreen Forest",
+        "C": "Tropical Moist Deciduous Forest",
+        "D": "Tropical Wet Evergreen Forest"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2010_Q12",
+      "questionNumber": 12,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Following are the characteristics of an area in India: 1. Hot and humid climate. 2. Annual rainfall 200 cm. 3. Hill slopes up to an altitude of 1100 metres. 4. Annual range of temperature 15° C to 30° C. Which one among the following crops are you most likely to find in the area described above?",
+      "options": {
+        "A": "Mustard",
+        "B": "Cotton",
+        "C": "Pepper",
+        "D": "Virginia tobacco"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2005_Q13",
+      "questionNumber": 13,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the correct sequence of the given Indian Cities in the decreasing order of their normal annual rainfall?",
+      "options": {
+        "A": "Kochi, Kolkata, Delhi, Patna",
+        "B": "Kolkata, Kochi, Patna, Delhi",
+        "C": "Kochi, Kolkata, Patna, Delhi",
+        "D": "Kolkata, Kochi, Delhi, Patna"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2005_Q14",
+      "questionNumber": 14,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The forest cover in India constitutes around 20% of its geographical area. Out of the total forest cover, dense forest constitutes around 40%. 2. The National Forestry Action Programme aims at bringing one third of the area of India under tree/forest cover. Which of the statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2005_Q15",
+      "questionNumber": 15,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Silent Valley National Park is in the Nallamalai range. 2. Pathrakkadavu Hydroelectric project is proposed to be built near the Silent Valley National Park. 3. The Kunthi river originates in Silent Valley's rainforests. Which of the statements is/are correct?",
+      "options": {
+        "A": "1 and 3",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2004_Q16",
+      "questionNumber": 16,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Among the Indian States: 1. Andhra Pradesh has the longest coastline. 2. Gujarat has the highest number of airports. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2004_Q17",
+      "questionNumber": 17,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": Bangalore receives much higher average annual rainfall than that of Mangalore: Reason (R): Bangalore has the benefit of receiving rainfall both from south -west and north -east monsoons",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is not the correct explanation of A",
+        "D": "A is true but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2004_Q18",
+      "questionNumber": 18,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I (Beaches in India) with List II (States) and select the correct answer using the codes given below the Lists: List-I (Beaches in India) List-II (States) A. Gopnath Beach 1. Andhra Pradesh B. Lawsons Bay Beach 2. Kerala C. Devbagh Beach 3. Gujarat D. Sinquerim Beach 4. Goa 5. Karnataka A B C D",
+      "options": {
+        "A": "5 4 2 1",
+        "B": "3 1 5 4",
+        "C": "5 1 2 4",
+        "D": "3 4 5 1"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2004_Q19",
+      "questionNumber": 19,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Amongst the following Indian States which one has the minimum total forest cover?",
+      "options": {
+        "A": "Sikkim",
+        "B": "Goa",
+        "C": "Haryana",
+        "D": "Kerala"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2003_Q20",
+      "questionNumber": 20,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Among the following cities, which one is at the highest altitude above mean sea level?",
+      "options": {
+        "A": "Bangalore",
+        "B": "Delhi",
+        "C": "Jodhpur",
+        "D": "Nagpur"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2003_Q21",
+      "questionNumber": 21,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one among the following States is smallest in area?",
+      "options": {
+        "A": "Andhra Pradesh",
+        "B": "Gujarat",
+        "C": "Karnataka",
+        "D": "Tamil Nadu"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2002_Q22",
+      "questionNumber": 22,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to India, which one the following statements is not correct? 1) About one-third of the area of the country records more than 750 milli-meters of annual rainfall 2) The dominant source of irrigation in the country is wells 3) Alluvial soil is the predominant type of soil in the northern plains of the country 4) The mountain areas accounts for about thirty percent of the surface area of the country",
+      "options": {
+        "A": "1, 2, 3, 4",
+        "B": "1, 2, 3 only",
+        "C": "2, 3, 4 only",
+        "D": "4 only"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2002_Q23",
+      "questionNumber": 23,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "Open stunted forests with bushes and small trees having long roots and sharp thorns or spines are commonly found in:",
+      "options": {
+        "A": "Eastern Orissa",
+        "B": "North-Eastern Tamil Nadu",
+        "C": "Siwaliks an Terai region",
+        "D": "Western Andhra Pradesh"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2002_Q24",
+      "questionNumber": 24,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "The average annual temperature of a meteorological station is 26 oC, its average annual rainfall is 63 cm and the annual range of temperature is 9oC. The station in Q is:",
+      "options": {
+        "A": "Allahabad",
+        "B": "Chennai",
+        "C": "Cherrapunji",
+        "D": "Kolkata"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2001_Q25",
+      "questionNumber": 25,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the shaded area of the above map, the mean temperature for the month of July varies between:",
+      "options": {
+        "A": "22.5 °C - 25.0 °C",
+        "B": "25.0 °C - 27.5 °C",
+        "C": "27.5 °C - 30.0 °C",
+        "D": "30.0 °C - 32.5 °C"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_2000_Q26",
+      "questionNumber": 26,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Along which one of the following meridians did India experience the first light of the sunrise of the new millennium?",
+      "options": {
+        "A": "2° 30' W",
+        "B": "82° 30' E",
+        "C": "92° 30' W",
+        "D": "92° 30' E"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_1999_Q27",
+      "questionNumber": 27,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "If it is 10.00 a.m. I.S.T., then what would be the local time at Shillong on 92°E longitude?",
+      "options": {
+        "A": "9.38 a.m",
+        "B": "10.38 a.m",
+        "C": "10.22 a.m",
+        "D": "9.22 a.m"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_1997_Q28",
+      "questionNumber": 28,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer by using the codes given below the lists: List I(Climatic Conditions) List II(Reasons) I. Chennai is warmer than Calcutta",
+      "options": {
+        "A": "North-East Monsoon II. Snowfall in Himalayas",
+        "B": "Altitude III. Rainfall decreases from West Bengal to Punjab",
+        "C": "Western Depressions IV. Sutlej-Ganga Plain gets some rain in winter",
+        "D": "Distance from sea E) Latitude a) I-A, II-B, III-D, IV-E b) I-D, II-E, III-A, IV-C c) I-E, II-B, III-D, IV-C d) I-E, II-A, III-C, IV-D"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_1997_Q29",
+      "questionNumber": 29,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following pairs is correctly matched?",
+      "options": {
+        "A": "Teak: Jammu and Kashmir",
+        "B": "Deodar: Madhya Pradesh",
+        "C": "Sandalwood: Kerala",
+        "D": "Sundari: West Bengal"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_1995_Q30",
+      "questionNumber": 30,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Alpine vegetation in the western Himalayas is found only up to a height of 3000 metres, while in the eastern Himalayas it is found up to a height of 4000 metres. The reason for this variation in the same mountain range is that:",
+      "options": {
+        "A": "Eastern Himalayas are higher than western Himalayas",
+        "B": "Eastern Himalayas are nearer to the Equator and sea coast than western Himalayas",
+        "C": "Eastern Himalayas get more monsoon rainfall than the western Himalayas",
+        "D": "Eastern Himalayan rocks are more fertile than the western Himalayan rocks"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_1995_Q31",
+      "questionNumber": 31,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the map given below: The divisions along India's coastal region indicate:",
+      "options": {
+        "A": "Coastal pollution zones",
+        "B": "Salinity density isopleths",
+        "C": "The areas upto which sovereignty extends",
+        "D": "Underwater relief contours"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_1995_Q32",
+      "questionNumber": 32,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "The palaeomagnetic results obtained from India indicate that in the past, the Indian landmass has moved:",
+      "options": {
+        "A": "Northward",
+        "B": "Southward",
+        "C": "Eastward",
+        "D": "Westward"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDCLI_1995_Q33",
+      "questionNumber": 33,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Indian subcontinent was originally part of a huge landmass called:",
+      "options": {
+        "A": "Jurassic Land Mass",
+        "B": "Aryavarta",
+        "C": "Indiana",
+        "D": "Gondwana Continent"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "indian-climate-location-forests",
+      "syllabusNodeId": "GS1-GEO-IND"
+    }
+  ]
+}

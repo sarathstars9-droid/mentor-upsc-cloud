@@ -1,0 +1,799 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Science & Technology",
+  "topicName": "Biotechnology",
+  "topicId": "sci_biotech",
+  "sourceType": "UPSC_Science_Tech_PYQ",
+  "totalQuestions": 27,
+  "questions": [
+    {
+      "id": "SCI_SCI_BIOTECH_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to monoclonal antibodies, often mentioned in news, consider the following statements: I. They are man-made proteins. II. They stimulate immunological function due to their ability to bind to specific antigens. III. They are used in treating viral infections like that of Nipah virus. Which of the statements given above are correct?",
+      "options": {
+        "A": "I and II only",
+        "B": "II and III only",
+        "C": "I and III only",
+        "D": "I, II and III"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "Monoclonal Antibodies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2024_Q2",
+      "questionNumber": 2,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement I: India does not import apples from the United States of America. Statement-II: In India, the law prohibits the import of Genetically Modified food without the approval of the competent authority. Which one of the following is correct in respect of the above statements? ( a) Statement-I and Statement -II are correct and Statement-II explains Statement-I (b) Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I (c) Statement-I is correct, but Statement-II is incorrect (d) Statement-I is incorrect, but Statement -II is correct",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2023_Q3",
+      "questionNumber": 3,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "'Aerial metagenomics' best refers to which one of the following situations?",
+      "options": {
+        "A": "Collecting DNA samples from air in a habitat at one go",
+        "B": "Understanding the genetic makeup of avian species of a habitat",
+        "C": "Using air-borne devices to collect blood samples from moving animals",
+        "D": "Sending drones to inaccessible areas to collect plant and animal samples from land surfaces and water bodies"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2023_Q4",
+      "questionNumber": 4,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "'Microsatellite DNA' is used in the case of which one of the following?",
+      "options": {
+        "A": "Studying the evolutionary relationships among various species of fauna",
+        "B": "Stimulating 'stem cells' to transform into diverse functional tissues",
+        "C": "Promoting clonal horticultural plants propagation of horticulture plants",
+        "D": "Assessing the efficacy of drugs by conducting series of drug trials in a population"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "Satellites and Navigation",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2021_Q5",
+      "questionNumber": 5,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Bollgard I and Bollgard II technologies are mentioned in the context of:",
+      "options": {
+        "A": "Clonal propagation of crop plants",
+        "B": "Developing genetically modified crop plants",
+        "C": "Production of plant growth substances",
+        "D": "Production of biofertilizers"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "B",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: Bollgard = GM crop technology"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2021_Q6",
+      "questionNumber": 6,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to recent developments regarding 'Recombinant Vector Vaccines', consider the following statements: 1) Genetic engineering is applied in the development of these vaccines. 2) Bacteria and viruses are used as vectors. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "C",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "Vaccines",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: recombinant vector vaccines use genetic engineering and vectors"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2020_Q7",
+      "questionNumber": 7,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the importance of using Pneumococcal Conjugate Vaccines in India? 1. These vaccines are effective against pneumonia as well as meningitis and sepsis. 2. Dependence on antibiotics that are not effective against drug-resistant bacteria can be reduced. 3. These vaccines have no side effects and cause no allergic reactions. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "Vaccines",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2020_Q8",
+      "questionNumber": 8,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of recent advances of human reproductive technology, \"Pronuclear Transfer\" is used for:",
+      "options": {
+        "A": "Fertilization of egg in vitro by the donor sperm",
+        "B": "Genetic modification of sperm producing cells",
+        "C": "Development of stem cells into functional embryos",
+        "D": "Prevention of mitochondrial diseases in offspring"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2019_Q9",
+      "questionNumber": 9,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the recent developments in science, which one of the following statements is not correct?",
+      "options": {
+        "A": "Functional chromosomes can be created by joining segments of DNA taken from cells of different species.",
+        "B": "Pieces of artificial functional DNA can be created in laboratories.",
+        "C": "A piece of DNA taken out from an animal cell can be made to replicate outside a living cell in a laboratory. 360",
+        "D": "Cells taken out from plasma and animals can be made to undergo cell division in laboratory petri dishes."
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2019_Q10",
+      "questionNumber": 10,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is Cas9 protein that is often mentioned in news?",
+      "options": {
+        "A": "A molecular scissors used in targeted gene editing",
+        "B": "A biosensor used in the accurate detection of pathogens in patients",
+        "C": "A gene that makes plants pest-resistant",
+        "D": "A herbicidal substance synthesized in genetically modified crops"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "A",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "Gene Editing",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: Cas9 is molecular scissors"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2017_Q11",
+      "questionNumber": 11,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the application of Somatic Cell Nuclear Transfer Technology?",
+      "options": {
+        "A": "Production of biolarvicides",
+        "B": "Manufacture of biodegradable plastics",
+        "C": "Reproductive cloning of animals",
+        "D": "Production of organisms free of diseases"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2016_Q12",
+      "questionNumber": 12,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of the developments in Bioinformatics, the term 'transcriptome', sometimes seen in the news, refers to:",
+      "options": {
+        "A": "A range of enzymes used in genome editing",
+        "B": "The full range of mRNA molecules expressed by an organism",
+        "C": "The description of the mechanism of gene expression",
+        "D": "A mechanism of genetic mutations taking place in cells"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "B",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: transcriptome = full range of mRNA molecules"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2015_Q13",
+      "questionNumber": 13,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Genetic Engineering Appraisal Committee is constituted under the:",
+      "options": {
+        "A": "Food Safety and Standards Act, 2006",
+        "B": "Geographical Indications of Goods (Registration and Protection) Act, 1999",
+        "C": "Environment (Protection) Act, 1986",
+        "D": "Wildlife (Protection) Act, 1972"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "C",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: GEAC under Environment (Protection) Act"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2012_Q14",
+      "questionNumber": 14,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "What are the reasons for the people's resistance to the introduction of Bt brinjal in India? 1. Bt brinjal has been created by inserting a gene from a soil fungus into its genome. 2. The seeds of Bt brinjal are terminator seeds and therefore, the farmers have to buy the seeds before every season from the seed companies. 3. There is an apprehension that the consumption of Bt brinjal may have adverse impact on health. 4. There is some concern that the introduction of Bt brinjal may have adverse effect on the biodiversity. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1, 2 & 3 Only",
+        "B": "2 & 3 only",
+        "C": "3 & 4 only",
+        "D": "1,2,3 & 4"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "C",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: health and biodiversity concerns"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2011_Q15",
+      "questionNumber": 15,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "A genetically engineered form of brinjal, known as the Bt-brinjal, has been developed. The objective of this is?",
+      "options": {
+        "A": "To make it pest-resistant.",
+        "B": "To improve its taste and nutritive qualities.",
+        "C": "To make it drought-resistant.",
+        "D": "To make its shelf-life longer."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2011_Q16",
+      "questionNumber": 16,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "At present, scientists can determine the arrangement or relative positions of genes or DNA sequences on a chromosome. How does this knowledge benefit us? 1. It is possible to know the pedigree of livestock. 362 2. It is possible to understand the causes of all human diseases. 3. It is possible to develop disease-resistant animal breeds. Which of the statements give above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "1 and 3 only",
+        "D": "1,2, and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "Disease Science",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2010_Q17",
+      "questionNumber": 17,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Genetically modified 'golden rice' has been engineered to meet human nutritional requirements. Which one of the following statements best qualifies golden rice?",
+      "options": {
+        "A": "The grains have been fortified with genes to provide three times higher grain yield per acre than other high yielding varieties.",
+        "B": "Its grains contain pro - vitamin A which upon ingestion is converted to vitamin A in the human body.",
+        "C": "Its modified genes cause the synthesis of all the nine essential amino acids.",
+        "D": "Its modified genes cause the fortifications of its grains with vitamin D."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2008_Q18",
+      "questionNumber": 18,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Nobel Prize winning scientist James D. Watson is known for his work in which area?",
+      "options": {
+        "A": "Metallurgy",
+        "B": "Meteorology",
+        "C": "Environment protection",
+        "D": "Genetics"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2007_Q19",
+      "questionNumber": 19,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following types is used by computed tomography employed for visualization of the internal structure of human body? a) X-rays b) sound Waves c)Magnetic resonance d) Radioisotopes",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2004_Q20",
+      "questionNumber": 20,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following pairs is not correctly matched?",
+      "options": {
+        "A": "Reinhold Messner: Computer Technology",
+        "B": "Harlow Shapley: Astronomy",
+        "C": "Gregor Mendel: Hereditary Theory",
+        "D": "Godfrey Hounsfield: CT Scan"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2002_Q21",
+      "questionNumber": 21,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I (Scientists) with List II I (Achievement) and select the correct answer using the codes given below the lists: List I (Scientist) List II (Achievement) A. Arber and Smith 1. Developed transgenic plants with Agrobacterium T-DNA B. Feldman 2. Discovered endonuclease C. Mullis 3. Discovered reverse transcriptase D. Temin and Baltimore 4. Discovered polymerase chain reaction A B C D",
+      "options": {
+        "A": "2 1 4 3",
+        "B": "1 2 4 3",
+        "C": "2 1 3 4",
+        "D": "1 2 3 4"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_2000_Q22",
+      "questionNumber": 22,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Canola refers to special type of oil seed mustard varieties bred for human consumption. The main characteristic of these varieties is that the:",
+      "options": {
+        "A": "Seeds have very high oil content",
+        "B": "Oil is rich in unsaturated fatty acids",
+        "C": "Oil has long shelf-life",
+        "D": "Oil has very low Erucic acid content"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_1999_Q23",
+      "questionNumber": 23,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Barium in a suitable form is administered to patients before an X-ray examination of the stomach, because:",
+      "options": {
+        "A": "Barium allows X-rays to pass through the stomach on account of its transparency to X-rays",
+        "B": "Barium compound, like magnesium sulphate helps in cleaning the stomach before X-ray examination",
+        "C": "Barium is a good absorber of X-rays and this helps the stomach to appear clearly in contrast with the other regions in the picture",
+        "D": "Barium salts are white in colour and this helps the stomach to appear clearly in contrast with other regions in the picture"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_1999_Q24",
+      "questionNumber": 24,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Endoscopy, a technique used to explore the stomach or other inner parts of the body is based on the phenomenon of:",
+      "options": {
+        "A": "Total internal reflection",
+        "B": "Interference",
+        "C": "Diffractionc",
+        "D": "Polarisation"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_1999_Q25",
+      "questionNumber": 25,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (A): Insect resistant transgenic cotton has been produced by inserting Bt gene: Reason (R): The Bt gene is derived from a bacterium.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_1999_Q26",
+      "questionNumber": 26,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (A): Dolly was the first cloned mammal.: Reason (R): Dolly was produced by in vitro fertilization.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_BIOTECH_1997_Q27",
+      "questionNumber": 27,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following techniques can be used to establish the paternity of a child?",
+      "options": {
+        "A": "Protein analysis",
+        "B": "Chromosome counting",
+        "C": "Quantitative analysis of DNA",
+        "D": "DNA finger- printing"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Biotechnology",
+      "topicId": "sci_biotech",
+      "sectionId": "GS3-SCI-TECH-BIOTECH",
+      "nodeId": "GS3-ST-BIOTECH",
+      "syllabusNodeId": "GS3-ST-BIOTECH",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    }
+  ]
+}

@@ -1,0 +1,1015 @@
+{
+  "schemaVersion": "mentoros-ca-v1",
+  "fileName": "ca_science_tech.json",
+  "questions": [
+    {
+      "id": "CA_SCIENCE_TECH.JSON_None_Q1",
+      "year": null,
+      "question": "Question count: 45 Note: Best-effort structured extraction from a column-formatted source PDF. Where the source itself marked an answer as changed, that note is preserved.",
+      "options": {},
+      "answer": {
+        "correct_option": null,
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "low",
+      "reviewRequired": true
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2025_Q2",
+      "year": 2025,
+      "question": "Q1. (2025) With reference to India's defence, consider the following pairs: [2025] Aircraft type - Description I. Dornier-228 : Maritime patrol aircraft II. IL-76 : Supersonic combat aircraft III. C-17 Globemaster : Military transport aircraft How many of the pairs given above are correctly matched? Source ref: defence / Q1",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All the three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2025_Q3",
+      "year": 2025,
+      "question": "Q2. (2025) What is the common characteristic of the chemical substances generally known as CL-20, HMX and LLM- 105, which are sometimes talked about in media? [2025] Source ref: defence / Q2",
+      "options": {
+        "A": "These are alternatives to hydro-fluorocarbon refrigerants",
+        "B": "These are explosives in military weapons",
+        "C": "These are high-energy fuels for cruise missiles",
+        "D": "These are fuels for rocket propulsion"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2025_Q4",
+      "year": 2025,
+      "question": "Q3. (2025) Consider the following statements regarding AI Action Summit held in Grand Palais, Paris in February 2025: [2025] I. Co-chaired with India, the event builds on the advances made at the Bletchley Park Summit held in 2023 and the Seoul Summit held in 2024. II. Along with other countries, US and UK also signed the declaration on inclusive and sustainable AI. Which of the statements given above is/are correct? Source ref: gk_part1 / Q2",
+      "options": {
+        "A": "I only",
+        "B": "II only",
+        "C": "Both I and II",
+        "D": "Neither I nor II"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2024_Q5",
+      "year": 2024,
+      "question": "Q4. (2024) Consider the following aircraft: [2024] 1. Rafael 2. MiG-29 3. Tejas MK-I How many of the above are considered fifth generation fighter aircraft? Source ref: defence / Q3",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2024_Q6",
+      "year": 2024,
+      "question": "Q5. (2024) Which of the following is/are correctly matched in terms of equivalent rank in the three services of Indian Defence forces? [2024] Army Airforce Navy Brigadier Air Commodore Commander Major General Air Vice Marshal Vice Admiral Major Squadron Leader Lieutenant Commander Lieutenant Colonel Group Captain Captain Select the correct answer using the code given below: Source ref: defence / Q4",
+      "options": {
+        "A": "1 and 4",
+        "B": "1 and 3",
+        "C": "2, 3 and 4",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2024_Q7",
+      "year": 2024,
+      "question": "Q6. (2024) Which of the following statements about 'Exercise Mitra Shakti-2023' are correct? [2024] 1. This was a joint military exercise between India and Bangladesh. 2. It commenced in Aundh (Pune). 3. Joint response during counter-terrorism operations was a goal of this operation. 4. Indian Air Force was a part of this exercise. Select the answer using the code given below: Source ref: defence / Q7",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1, 2 and 4",
+        "C": "1, 3 and 4",
+        "D": "2, 3 and 4"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2023_Q8",
+      "year": 2023,
+      "question": "Q7. (2023) Consider the following statements: [2023] 1. Ballistic missiles are jet-propelled at subsonic speeds throughout their flights, while cruise missiles are rocket-powered only in the initial phase of flight. 2. Agni-V is a medium-range supersonic cruise missile, while BrahMos is a solid-fuelled intercontinental ballistic missile. Which of the statements given above is/are correct? Source ref: defence / Q8",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2018_Q9",
+      "year": 2018,
+      "question": "Q8. (2018) What is “Terminal High Altitude Area Defence (THAAD)”, sometimes seen in the news? [2018] Source ref: defence / Q9",
+      "options": {
+        "A": "An Israeli Radar System",
+        "B": "India’s indigenous anti-missile programme",
+        "C": "An American anti-missile system",
+        "D": "A defence collaboration between Japan and South Korea"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2017_Q10",
+      "year": 2017,
+      "question": "Q9. (2017) Which of the following statements is/are correct regarding Smart India Hackathon 2017? [2017] 1. It is a centrally sponsored scheme for developing every city of our country into Smart Cities in a decade. 2. It is an initiative to identify new digital technology innovations for solving the many problems faced by our country. 3. It is a programme aimed at making all the financial transactions in our country completely digital in a decade. Select the correct answer using the code given below: Source ref: gk_part1 / Q39",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 only",
+        "C": "3 only",
+        "D": "2 and 3 only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2016_Q11",
+      "year": 2016,
+      "question": "Q10. (2016) Which one of the following is the best description of ‘INS Astradharini’, that was in the news recently? [2016] Source ref: defence / Q10",
+      "options": {
+        "A": "Amphibious warfare ship",
+        "B": "Nuclear-powered submarine",
+        "C": "Torpedo launch and recovery vessel",
+        "D": "Nuclear-powered aircraft carrier"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2016_Q12",
+      "year": 2016,
+      "question": "Q11. (2016) ‘Project Loon’, sometimes seen in the news, is related to: [2016] Source ref: gk_part1 / Q40",
+      "options": {
+        "A": "Waste management technology",
+        "B": "Wireless communication technology",
+        "C": "Solar power production technology",
+        "D": "Water conservation technology"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2016_Q13",
+      "year": 2016,
+      "question": "Q12. (2016) Regarding DigiLocker’, sometimes seen in the news, which of the following statements is/are correct? [2016] 1. It is a digital locker system offered by the Government under Digital India Programme. 2. It allows you to access your e-documents irrespective of your physical location. Select the correct answer using the code given below. Source ref: gk_part1 / Q44",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2015_Q14",
+      "year": 2015,
+      "question": "Q13. (2015) The term ‘IndARC’ sometimes seen in the news, is the name of? [2015] Source ref: gk_part1 / Q51",
+      "options": {
+        "A": "An indigenously developed radar system inducted into Indian Defence",
+        "B": "India’s satellite to provide services to the countries of Indian Ocean Rim",
+        "C": "A scientific establishment set up by India in Antarctic region",
+        "D": "India’s underwater observatory to scientifically study the Arctic region"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2015_Q15",
+      "year": 2015,
+      "question": "Q14. (2015) ‘Beijing Declaration and Platform for Action’ often seen in the news, is: [2015] Source ref: gk_part1 / Q54",
+      "options": {
+        "A": "A strategy to tackle the regional terrorism, an outcome of a meeting of the Shanghai Cooperation Organization.",
+        "B": "A plan of action for sustainable economic growth in the Asia-Pacific Region, an outcome of deliberations of the Asia-Pacific Economic Forum",
+        "C": "An agenda for women’s empowerment, an outcome of a World Conference convened by the United Nations",
+        "D": "A strategy to combat wildlife trafficking, a declaration of the East Asia Summit"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2014_Q16",
+      "year": 2014,
+      "question": "Q15. (2014) With reference to Agni-IV Missile, which of the following statements is/are correct? [2014] 1. It is a surface-to-surface missile. 2. It is fuelled by liquid propellant only. 3. It can deliver one-tonne nuclear warheads about 7500 km away. Select the correct answer using the code given below. Source ref: defence / Q11",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2009_Q17",
+      "year": 2009,
+      "question": "Q16. (2009) In the context of Indian defence, consider the following statements: [2009] 1. The Shourya missile flies with a speed of more than 8 Mach. 2 The range of Shourya missile is more than 1600 km, Which of the statements given above is/ are correct? Source ref: defence / Q12",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2009_Q18",
+      "year": 2009,
+      "question": "Q17. (2009) Consider the following statements: [2009] 1. INS Sindhughosh is an aircraft carrier. 2. INS Viraat is a submarine. Which of the statements given above is/ are correct? Source ref: defence / Q13",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2009_Q19",
+      "year": 2009,
+      "question": "Q18. (2009) For outstanding contribution to which one of the following fields is Shanti Swarup Bhatnagar Prize given? [2009] Source ref: gk_part2 / Q6",
+      "options": {
+        "A": "Litera ture",
+        "B": "Performing arts",
+        "C": "Science",
+        "D": "Social service"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2008_Q20",
+      "year": 2008,
+      "question": "Q19. (2008) In the context of the Indian defence, what is ‘Dhruv’? [2008] Source ref: defence / Q14",
+      "options": {
+        "A": "Aircraft-carrying warship",
+        "B": "Missile-carrying Submarine",
+        "C": "Advanced light helicopter",
+        "D": "Intercontinental ballistic missile"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2008_Q21",
+      "year": 2008,
+      "question": "Q20. (2008) Hand-in-Hand 2007, a joint anti-terrorism military training was held by the officers of the Indian Army and officers of Army of which one of the following countries? [2008] Source ref: defence / Q15",
+      "options": {
+        "A": "China",
+        "B": "Japan",
+        "C": "Russia",
+        "D": "USA"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2008_Q22",
+      "year": 2008,
+      "question": "Q21. (2008) From which one of the following did India buy the Barak anti-missile defence systems? [2008] Source ref: defence / Q16",
+      "options": {
+        "A": "Israel",
+        "B": "France",
+        "C": "Russia",
+        "D": "USA"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2008_Q23",
+      "year": 2008,
+      "question": "Q22. (2008) Among the following, which one lays eggs and does not produce young ones directly? [2008] Source ref: gk_part2 / Q58",
+      "options": {
+        "A": "Echidna",
+        "B": "Kangaroo",
+        "C": "Porcupine",
+        "D": "Whale"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2008_Q24",
+      "year": 2008,
+      "question": "Q23. (2008) Which of the following pairs are correctly matched? [2008] Institute Location 1. National Centers for Cell Sciences: Mysore 2. Center for DNA Fingerprinting and Diagnostics: Hyderabad 3. National Brain Research Center: Gurgaon Select the correct answer using the code given below: Source ref: gk_part2 / Q64",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1 and 2 Only",
+        "C": "2 and 3 Only",
+        "D": "1 and 3 only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2008_Q25",
+      "year": 2008,
+      "question": "Q24. (2008) In the year 2007, an earthquake led to massive radioactive water leakage in the largest nuclear plant in the world. In which country did it occur? [2008] Source ref: gk_part2 / Q70",
+      "options": {
+        "A": "Germany",
+        "B": "Canada",
+        "C": "Japan",
+        "D": "USA"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2007_Q26",
+      "year": 2007,
+      "question": "Q25. (2007) Consider the following statements: [2007] 1. In November, 2006, DRDO successfully conducted the interception test using Prithvi-II missile. 2. Prithvi-II is a surface-to-surface missile and can be deployed to guard the metros against air attacks. Which of the statements given above is/are correct? Source ref: defence / Q17",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2007_Q27",
+      "year": 2007,
+      "question": "Q26. (2007) Where was the first conference of the Pugwash Conferences on Science and World Affairs held in the Year 1957? [2007] Source ref: gk_part2 / Q92",
+      "options": {
+        "A": "",
+        "B": "Rhode Island (USA)",
+        "C": "Nova Scotia (Canad",
+        "D": "Nagasaki (Japan)"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2006_Q28",
+      "year": 2006,
+      "question": "Q27. (2006) Who is the President of the Council of Scientific and Industrial Reseach? [2006] Source ref: gk_part3 / Q3",
+      "options": {
+        "A": "President of India",
+        "B": "Vice-President of India",
+        "C": "Prime Minister of India",
+        "D": "Minister of Science & Tech"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2006_Q29",
+      "year": 2006,
+      "question": "Q28. (2006) Which one among the following as awarded the CSIR. Diamond Jubilee Technology Award 2004 in September, 2005 by the Prime Minister of India? [2006] Source ref: gk_part3 / Q25",
+      "options": {
+        "A": "Infosys Technologies Ltd.",
+        "B": "Midas Communication Technologies",
+        "C": "Tata Consultancy Services",
+        "D": "Biocon India Ltd."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2006_Q30",
+      "year": 2006,
+      "question": "Q29. (2006) Match List . I (Indian Scientist/Scholar) with List-II (Area of work) and select the correct answer using the code given below the lists: [2006] List I List II A. C.N.R. Rao 1. Telecommunication B. Jagdish Bhagwati 2. Physics C. G.N. Ramchandran 3. Economics D. Ashok Jhunjhunwala 4. Solid State Chemistry and Material Science A B C D Source ref: gk_part3 / Q39",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2005_Q31",
+      "year": 2005,
+      "question": "Q30. (2005) Which of the following pairs is not correctly matched? [2005] Source ref: defence / Q18",
+      "options": {
+        "A": "Arjun: Indigenously produced Main Battle Tank (MBT)",
+        "B": "Phalcon: Cruise missile supplied by Russia to India",
+        "C": "Saras: Indigenously developed civilian passenger aircraft",
+        "D": "Operation Seabird: New Indian Naval Base at Karwar"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2005_Q32",
+      "year": 2005,
+      "question": "Q31. (2005) Which pairs is not correctly matched? [2005] Source ref: defence / Q19",
+      "options": {
+        "A": "South Air Command: Thiruvananthapuram",
+        "B": "Eastern Naval Command: Visakhapatnam",
+        "C": "Armoured Corps Centre and School: Jabalpur",
+        "D": "Army Medical Corps Centre and School: Lucknow"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2005_Q33",
+      "year": 2005,
+      "question": "Q32. (2005) Consider the following statements: [2005] 1. Vigyan rail is a science exhibition on wheels organized by the Council Scientific and industrial Research. 2. Vigyan Prasar is an autonomous body under the Ministry of Human Resource Development. 3. EDUSAT, the ISRO’s educational satellite was launched from French Guyana 2004. Which of the above statements are true? Source ref: gk_part3 / Q42",
+      "options": {
+        "A": "1, 2 & 3",
+        "B": "1 & 2",
+        "C": "2 & 3",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2005_Q34",
+      "year": 2005,
+      "question": "Q33. (2005) Match items in the List-I (Businesswoman) with those in the List-II (Company) and select the correct answer using the code given below the list: [2005] List I List II A. Zia Mody 1. Venkateshwara Hatcheries B. Anuradha J. Desai 2. AZB & Partners C. Villo Morawala Patell 3. Quantum Market Research D. Meena Kaushik 4. Avestha Gengraine Technologies 5. Biocon India A B C D Source ref: gk_part3 / Q66",
+      "options": {
+        "A": "4 1 5 3",
+        "B": "2 3 4 1",
+        "C": "4 3 5 1",
+        "D": "2 1 4 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2005_Q35",
+      "year": 2005,
+      "question": "Q34. (2005) Match List-I (Person) with List-II (Organisation) and select the correct answer using the code given below the list: [2005] List I List II A. V. R. S.Natrajan 1. Bharat Heavy Electricals Ltd. B. A. K. Puri 2. Air India C. V. Thulasidas 3. Maruti Udyog Limited D. Jagdish Kumar Bharat 4. Earth Movers Limited 5. ISRO A B C D Source ref: gk_part3 / Q75",
+      "options": {
+        "A": "2 3 5 1",
+        "B": "4 1 2 3",
+        "C": "2 1 5 3",
+        "D": "4 3 2 1"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2004_Q36",
+      "year": 2004,
+      "question": "Q35. (2004) INS Trishul acquired by the Indian Navy in 2003 has been built by: [2004] Source ref: defence / Q20",
+      "options": {
+        "A": "Israel",
+        "B": "USA",
+        "C": "Russia",
+        "D": "France"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2003_Q37",
+      "year": 2003,
+      "question": "Q36. (2003) With reference to Indian defence, which one of the following statements is not correct? [2003] Source ref: defence / Q21",
+      "options": {
+        "A": "With the induction of Prithvi II, the IAF is the only airforce in the world with surface-to-surface ballistic missiles under its command",
+        "B": "Sukhoi-30 MKI jet fighters can launch air-to-air and air-to-surface precision missiles",
+        "C": "Trishul is a supersonic surface to-air missile-vith a range of 30 km",
+        "D": "The indigenously built INS Prabal can launch surface-to-surface missiles"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2001_Q38",
+      "year": 2001,
+      "question": "Q37. (2001) The range of Agni-II missile is around: [2001] Source ref: defence / Q22",
+      "options": {
+        "A": "500 km",
+        "B": "2000 km",
+        "C": "3500 km",
+        "D": "5000 km"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_2001_Q39",
+      "year": 2001,
+      "question": "Q38. (2001) Consider the following statements regarding the Armed Forces: [2001] I. First batch of women pilots was commissioned in Indian Air Force in 1996. II. Officers’ Training Academy is located in Nagpur. III. Southern Command of Indian Navy has its Headquarters at Chennai. IV. One of the Regional Headquarters of Coast Guard is located at Port Blair. Which of these statements are correct? Source ref: defence / Q24",
+      "options": {
+        "A": "I, II, III and IV",
+        "B": "II, III and IV",
+        "C": "III only",
+        "D": "IV only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_1999_Q40",
+      "year": 1999,
+      "question": "Q39. (1999) The first feature film (talkie) to be produced in India was: [1999] Source ref: gk_part4 / Q3",
+      "options": {
+        "A": "Hatimtai",
+        "B": "Alam Ara",
+        "C": "Pundalik",
+        "D": "Raja Harishchandra"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_1999_Q41",
+      "year": 1999,
+      "question": "Q40. (1999) The given figure shows a portion of Southern India. The proposed site (Koodankulam) for the construction of two 1000 MW nuclear power plants has been labelled in the map as: [1999] Source ref: gk_part4 / Q7",
+      "options": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_1999_Q42",
+      "year": 1999,
+      "question": "Q41. (1999) Indian farmers are unhappy over the introduction of “Terminator Seed Technology” because the seeds produced by this technology are expected to: [1999] Source ref: gk_part4 / Q16",
+      "options": {
+        "A": "Show poor germination",
+        "B": "Form low-yielding plants despite the high quality",
+        "C": "Give rise to sexually sterile plants",
+        "D": "Give rise to plants incapable of forming viable seeds"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_1998_Q43",
+      "year": 1998,
+      "question": "Q42. (1998) Match the following research institutes A, B, C and D with their respective location labelled as 1 to 6 in the given rough outline map: [1998] A. Central Drug Research Institute B. National Atlas and Thematic Mapping Organisation C. National Institute of Ocean Technology D. Temperate Forest Research Centre Select the correct answer using the codes given below: Source ref: gk_part4 / Q22",
+      "options": {
+        "A": "A-4, B-3, C-2, D-6",
+        "B": "A-4, B-5, C-1, D-6",
+        "C": "A-2, B-3, C-4, D-5",
+        "D": "A-1, B-6, C-2, D-3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_1998_Q44",
+      "year": 1998,
+      "question": "Q43. (1998) Which of the following statements are true about the Indianb born woman astronaut Kalpana Chawla? [1998] I. She was born in Kamal. II. She flew on board the shuttle flight STS-87. III. She was trained at the Kennedy Space Centre. IV. She did a space-walk to retrieve the Spartan Satellite. Select the correct answer using the codes given below: Source ref: gk_part4 / Q24",
+      "options": {
+        "A": "I and II",
+        "B": "II and III",
+        "C": "I, II and III",
+        "D": "I, II and IV"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_1998_Q45",
+      "year": 1998,
+      "question": "Q44. (1998) The satellites of which one of the following countries have helped in the preparation of a detailed and complete map of Antarctica? [1998] Source ref: gk_part4 / Q31",
+      "options": {
+        "A": "Canada",
+        "B": "France",
+        "C": "Russia",
+        "D": "USA"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SCIENCE_TECH.JSON_1996_Q46",
+      "year": 1996,
+      "question": "Q45. (1996) Which one of the following is a modern tank? [1996] Source ref: defence / Q23",
+      "options": {
+        "A": "Bhim",
+        "B": "Akash",
+        "C": "Arjun",
+        "D": "Prithvi"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ST-GENSCI-BIO",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    }
+  ],
+  "nodeId": "GS3-CA-SCI",
+  "topicName": "ScienceTech"
+}

@@ -1,0 +1,1819 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Parliament",
+  "topicId": "parliament",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 67,
+  "questions": [
+    {
+      "id": "POL_PARLIAMENT_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: I. On the dissolution of the House of the People, the Speaker shall not vacate his/her office until immediately before the first meeting of the House of the People after the dissolution. II. According to the provisions of the Constitution of India, a Member of the House of the People on being elected as Speaker shall resign from his/her political party immediately. III. The Speaker of the House of the People may be removed from his/her office by a resolution of the House of the People passed by a majority of all the then Members of the House, provided that no resolution shall be moved unless at least fourteen days' notice has been given of the intention to move the resolution. Which of the statements given above are correct?",
+      "options": {
+        "A": "I and II only",
+        "B": "II and III only",
+        "C": "I and III only",
+        "D": "I, II and III"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Speaker",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2024_Q2",
+      "questionNumber": 2,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following statements are correct in respect of a Money Bill in the Parliament? 1. Article 109 mentions special procedure in respect of Money Bills. 2. A Money Bill shall not be introduced in the Council of States. 3. The Rajya Sabha can either approve the Bill or suggest changes but cannot reject it. 4. Amendments to a Money Bill suggested by the Rajya Sabha have to be accepted by the Lok Sabha. Select the answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1, 2 and 3",
+        "D": "1, 3 and 4"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Money Bill",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2024_Q3",
+      "questionNumber": 3,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following statements about the Ethics Committee in the Lok Sabha are correct? 1. Initially it was an ad-hoc Committee. 2. Only a Member of the Lok Sabha can make a complaint relating to unethical conduct of a member of the Lok Sabha. 3. This Committee cannot take up any matter which is sub-judice. Select the answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "NITI Aayog",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2024_Q4",
+      "questionNumber": 4,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Speaker of the Lok Sabha, consider the following statements: While any solution for the removal of the Speaker of the Lok Sabha is under consideration: 1. He/She shall not preside. 2. He/She shall not have the right to speak. 3. He/She shall not be entitled to vote on the resolution in the first instance. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Speaker",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2024_Q5",
+      "questionNumber": 5,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Indian Parliament consider the following statements: 1. A bill pending in the Lok Sabha lapses on its dissolution. 2. A bill passed by the Lok Sabha and pending in the Rajya Sabha lapses on the dissolution of the Lok Sabha. 3. A bill in regard to which the President of India notified his/her intention to summon the Houses to a joint sitting, lapses on the dissolution of the Lok Sabha. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2024_Q6",
+      "questionNumber": 6,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Parliament of India, consider the following statements: 1. Prorogation of a House by the President of India does not require the advice of the Council of Ministers 2. Prorogation of a House is generally done after the House is adjourned sine die but there no bar to the President of India prorogating the House which is in session. 3. Dissolution of the Lok Sabha is done by the President of India who, save in exceptional circumstances, does so on the advice of the Council of Ministers. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2023_Q7",
+      "questionNumber": 7,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Finance Bill and Money Bill in the Indian Parliament, consider the following statements: 1. When the Lok Sabha transmits Finance Bill to the Rajya Sabha, it can amend or reject the Bill. 2. When the Lok Sabha transmits Money Bill to the Rajya Sabha, it cannot amend or reject the Bill, it can only make recommendations. 3. In the case of disagreement between the Lok Sabha and the Rajya Sabha, there is no joint sitting for Money Bill, but a joint sitting becomes necessary for Finance Bill. How many of the above statements are correct.",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Money Bill",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2022_Q8",
+      "questionNumber": 8,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following is/are the exclusive power(s) of Lok Sabha? 1. To ratify the declaration of Emergency 2. To pass a motion of no-confidence against the Council of Ministers 3. To impeach the President of India Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "1 and 3",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2022_Q9",
+      "questionNumber": 9,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Deputy Speaker of Lok Sabha, consider the following statements: 1. As per the Rules of Procedure and Conduct of Business in Lok Sabha, the election of Deputy Speaker shall be held on such date as the Speaker may fix. 2. There is a mandatory provision that the election of a candidate as Deputy Speaker of Lok Sabha shall be from either the principal opposition party or the ruling party. 3. The Deputy Speaker has the same power as of the Speaker when presiding over the sitting of the House and no appeal lies against his rulings. 4. The well established parliamentary practice regarding the appointment of Deputy Speaker is that the motion is moved by the Speaker – and duly seconded by the Prime Minister. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "1, 2 and 3",
+        "C": "3 and 4 only",
+        "D": "2 and 4 only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Speaker",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2021_Q10",
+      "questionNumber": 10,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "We adopted parliamentary democracy based on the British model, but how does our model differ from that model? 1) As regards legislation, the British Parliament is supreme or sovereign but in India, the power of the Parliament to legislate is limited. 2) In India, matters related to the constitutionality of the Amendment of an Act of the Parliament are referred to the Constitution Bench by the Supreme Court. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2020_Q11",
+      "questionNumber": 11,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "A Parliamentary System of Government is one in which:",
+      "options": {
+        "A": "All political parties in the Parliament are represented in the Government",
+        "B": "The Government is responsible to the Parliament and can be removed by it",
+        "C": "The Government is elected by the people and can be removed by them",
+        "D": "The Government is chosen by the Parliament but cannot be removed by it before completion of a fixed term"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2020_Q12",
+      "questionNumber": 12,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The President of India can summon a session of the Parliament at such a place as he/she thinks fit. 2. The Constitution of India provides for three sessions of the Parliament in a year, but it is not mandatory to conduct all three sessions. 3. There is no minimum number of days that the Parliament is required to meet in a year. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "1 and 3 only",
+        "D": "2 and 3 only"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2020_Q13",
+      "questionNumber": 13,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Rajya Sabha has equal powers with Lok Sabha in:",
+      "options": {
+        "A": "The matter of creating new All India Services",
+        "B": "Amending the Constitution",
+        "C": "The removal of the government",
+        "D": "Making cut motions"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2020_Q14",
+      "questionNumber": 14,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the funds under Members of Parliament Local Area Development Scheme (MPLADS), which of the following correct? 1. MPLADS funds must be used to create durable assets like physical infrastructure for health, education, etc. 2. A specified portion of each MP’s fund must benefit SC/ST populations. 3. MPLADS funds are sanctioned on a yearly basis and the unused funds cannot be carried forward to the next year. 4. The district authority must inspect at least 10% of all works under implementation every year. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 and 4 only",
+        "C": "1, 2 and 3 only",
+        "D": "1, 2 and 4 only"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2019_Q15",
+      "questionNumber": 15,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Parliament (Prevention of Disqualification) Act, 1959 exempts several posts from disqualification on the grounds of ‘Office of Profit’. 2. The above-mentioned Act was amended five times. 3. The term ‘Office of Profit’ is well-defined in the Constitution of India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2019_Q16",
+      "questionNumber": 16,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, which of the following review the independent regulators in sectors like telecommunications, insurance, electricity, etc.? statements are 1. Ad Hoc Committees set up by the Parliament 2. Parliamentary Department Related Standing Committees 3. Finance Commission 4. Financial Sector Legislative Reforms Commission 5. NITI Aayog Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2",
+        "B": "1, 3 and 4",
+        "C": "3, 4 and 5",
+        "D": "2 and 5"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Finance Commission",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2018_Q17",
+      "questionNumber": 17,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Regarding Money Bill, which of the following statements is not correct?",
+      "options": {
+        "A": "A bill shall be deemed to be a Money Bill if it contains only provisions relating to imposition, abolition, remission, alteration or regulation of any tax.",
+        "B": "A Money Bill has provisions for the custody of the Consolidated Fund of India or the Contingency Fund of India.",
+        "C": "A Money Bill is concerned with the appropriation of moneys out of the Contingency Fund of India.",
+        "D": "A Money Bill deals with the regulation of borrowing of money or giving of any guarantee by the Government of India."
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Money Bill",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2018_Q18",
+      "questionNumber": 18,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. In the first Lok Sabha, the single largest party in the opposition was the Swatantra Party. 2. In the Lok Sabha, a \"Leader of the opposition\" was recognised for the first time in 1969. 3. In the Lok Sabha, if a party does not have a minimum of 75 members, its leader cannot be recognised as the Leader of the Opposition. Which of the statements is/are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2018_Q19",
+      "questionNumber": 19,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Parliament of India, which of the following Parliamentary Committees scrutinises and reports to the House whether the power to make regulations, rules , sub-rules, by-laws, etc. conferred by the Constitution or delegated by the Parliament are being properly exercised by the Executive within the scope of such delegation?",
+      "options": {
+        "A": "Committee on Government Assurances",
+        "B": "Committee on Subordinate Legislation",
+        "C": "Rules Committee",
+        "D": "Business Advisory Committee"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2017_Q20",
+      "questionNumber": 20,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Parliament of India, consider the following statements: 1. A private member’s bill is a bill presented by a Member of Parliament who is not elected but only nominated by the President of India. 2. Recently, a private member’s bill has been passed in the Parliament of India for the first time in its history. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2017_Q21",
+      "questionNumber": 21,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Parliament of India exercises control over the functions of the Council of Ministers through: 1. Adjournment motion 2. Question hour 3. Supplementary questions Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2017_Q22",
+      "questionNumber": 22,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. In the election for Lok Sabha or State Assembly, the winning candidate must get at least 50 percent of the votes polled, to be declared elected. 2. According to the provisions laid down in the Constitution of India, in Lok Sabha, the Speaker’s post goes to the majority party and the Deputy Speaker’s to the Opposition. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Speaker",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2016_Q23",
+      "questionNumber": 23,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Parliament of India acquires the power to legislate on any item in the State List in the national interest if a resolution to that effect is passed by the:",
+      "options": {
+        "A": "Lok Sabha by a simple majority of its total membership",
+        "B": "Lok Sabha by a majority of not less than two-thirds of its total membership",
+        "C": "Rajya Sabha by a simple majority of its total membership",
+        "D": "Rajya Sabha by a majority of not less than two- thirds of its members present and voting"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2016_Q24",
+      "questionNumber": 24,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following statements is/are correct? 1. A Bill pending in the Lok Sabha lapses on its prorogation. 2. A Bill pending in the Rajya Sabha, which has not been passed by the Lok Sabha, shall not lapse on dissolution of the Lok Sabha. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2015_Q25",
+      "questionNumber": 25,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "There is a Parliamentary System of Government in India because the",
+      "options": {
+        "A": "Lok Sabha is elected directly by the people",
+        "B": "Parliament can amend the constitution Model",
+        "C": "Rajya Sabha cannot be dissolved",
+        "D": "Council of Ministers is responsible to the Lok Sabha"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2015_Q26",
+      "questionNumber": 26,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Rajya Sabha has no power either to reject or to amend a Money Bill 2. The Rajya Sabha cannot vote on the Demands for Grants. 3. The Rajya Sabha cannot discuss the Annual Financial Statement. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Money Bill",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2015_Q27",
+      "questionNumber": 27,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "When a bill is referred to a joint sitting both the Houses of the Parliament, has to be passed by:",
+      "options": {
+        "A": "A simple majority of member present and voting",
+        "B": "Three-fourths majority of member present and voting",
+        "C": "Two-thirds majority of the House",
+        "D": "Absolute majority of the House"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2014_Q28",
+      "questionNumber": 28,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements regarding a No-Confidence Motion in India: 1. There is no mention of a No Confidence Motion in the Constitution of India. 2. A motion of No-Confidence can be introduced in the Lok Sabha only. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2014_Q29",
+      "questionNumber": 29,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the largest Committee of the Parliament?",
+      "options": {
+        "A": "The committee on Public Accounts",
+        "B": "The committee on Estimates",
+        "C": "The Committee on Public Undertakings",
+        "D": "The committee on Petitions"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2013_Q30",
+      "questionNumber": 30,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of India, which of the following principles is/are implied institutionally in the parliamentary government? 1. Members of the cabinet are members of the parliament. 2. Ministers hold the office till they enjoy confidence in the parliament. 3. Cabinet is headed by the head of the state. Select the correct answer using the codes given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2013_Q31",
+      "questionNumber": 31,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The chairman and the deputy chairman of the Rajya Sabha are not the members of that house. 2. While the nominated members of the two houses of the parliament have no voting right in the presidential election, they have the right to vote in the election of the vice President. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2013_Q32",
+      "questionNumber": 32,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "What will follow if a money bill is substantially amended by the Rajya Sabha?",
+      "options": {
+        "A": "The Lok Sabha may still proceed with the bill, accepting or not accepting the recommendations of the Rajya sabha",
+        "B": "The Lok sabha cannot consider the bill further",
+        "C": "The Lok sabha may send the bill to the Rajya Sabha for reconsideration",
+        "D": "The president may call a joint sitting for passing the bill"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Money Bill",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2013_Q33",
+      "questionNumber": 33,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "The parliament can make any law for whole or any part of India for implementing international treaties?",
+      "options": {
+        "A": "With the consent of all the states",
+        "B": "With the consent of the majority of states",
+        "C": "With the consent of the states concerned",
+        "D": "Without the consent of any states"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2013_Q34",
+      "questionNumber": 34,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: The parliamentary committee on public accounts: 1. Consists of not more than 25 members of the Lok Sabha 2. Scrutinizes appropriation and finance accounts of the government 3. Examines the report of the comptroller and auditor general of India Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2012_Q35",
+      "questionNumber": 35,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "A deadlock between the Lok Sabha and the Rajya Sabha calls for a joint sitting of the Parliament during the passage of: 1. Ordinary Legislation 2. Money Bill 3. Constitution Amendment Bill Select the correct answer using the codes given below:",
+      "options": {
+        "A": "Only 1",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1, 2 & 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Money Bill",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2012_Q36",
+      "questionNumber": 36,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following special powers have been conferred on the Rajya Sabha by the Constitution of India?",
+      "options": {
+        "A": "To change the existing territory of a State and to change the name of a State",
+        "B": "To pass a resolution empowering the Parliament to make laws in the State List and to create one or more All India Services",
+        "C": "To amend the election procedure of the President and to determine the pension of the President after his/her retirement",
+        "D": "To determine the functions of the Election Commission and to determine the number of Election Commissioners"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2012_Q37",
+      "questionNumber": 37,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the Parliament of India, the purpose of an adjournment motion is:",
+      "options": {
+        "A": "To allow a discussion on a definite matter of urgent public importance",
+        "B": "To let opposition collect information ministers members from the",
+        "C": "To allow a reduction of specific amount in demand for grant",
+        "D": "To postpone the proceedings to check the inappropriate or violent behaviour on the part of some members"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2012_Q38",
+      "questionNumber": 38,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Union Territories are not represented in the Rajya Sabha. 2. It is within the preview of Chief Election commissioner to adjudicate election disputes. 3. According to the Constitution of India, the Parliament consists of the Lok Sabha and the Rajya Sabha only. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3",
+        "C": "1 & 3",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2012_Q39",
+      "questionNumber": 39,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Regarding the office of the Lok Sabha Speaker, consider the following statements: 1. He/She holds the office during the pleasure of the President. 2. He/She need not be a member of the House at the time of his/her election but has to become a member of the House within six months from the date of his/her election. 3. If he/she intends to resign, the letter of his/her resignation has to be addressed to the Deputy Speaker. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "3 Only",
+        "C": "1, 2, & 3",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Speaker",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2008_Q40",
+      "questionNumber": 40,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the largest (area wise) Lok Sabha constituency?",
+      "options": {
+        "A": "Kangra",
+        "B": "Ladakh",
+        "C": "Kachchh",
+        "D": "Bhilwara"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2007_Q41",
+      "questionNumber": 41,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Chairman of the Committee on public Accounts is appointed by the Speaker of the Lok Sabha. 2. The Committee on public Accounts comprises Members of Lok Sabha, Members of Rajya Sabha and a few eminent persons of industry and trade. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Speaker",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2007_Q42",
+      "questionNumber": 42,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who was the Speaker of the first Lok Sabha?",
+      "options": {
+        "A": "Hukam singh",
+        "B": "G,V. Mavalankar",
+        "C": "K.M. Munshi",
+        "D": "U,N. Dhebar"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Speaker",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2007_Q43",
+      "questionNumber": 43,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (A): The Council of Ministers in the Union of India is collectively responsible both to the Lok Sabha and the Rajya Sabha. Reason (R): The Members of both the Lok Sabha and the Rajya Sabha are eligible to be the Ministers of the Union Government.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A.",
+        "B": "Both A and R are individually tru but R is not the correct explanation of A.",
+        "C": "A is True but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2006_Q44",
+      "questionNumber": 44,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Rajya Sabha alone has the power to declare that it would be in national interest for the Parliament to legislate with respect to a matter in the State List. 2. Resolutions approving the Proclamation of Emergency are passed only by the Lok Sabha. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2004_Q45",
+      "questionNumber": 45,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the correct sequence in the descending order of precedence in the warrant of precedence?",
+      "options": {
+        "A": "Attorney General of India, Judges of the supreme Court, Members of Parliament, Deputy Chairman of Rajya Sabha",
+        "B": "Judges of the Supreme Court, Deputy Chairman of Rajya Sabha, Attorney General of India, Members of Parliament",
+        "C": "Attorney General of India, Deputy Chairman of Rajya Sabha, Judges of the Supreme Court, Members of Parliament",
+        "D": "Judges of the Supreme Court, Attorney General of India, Deputy Chairman of Rajya Sabha, Members of Parliament"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2004_Q46",
+      "questionNumber": 46,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Speaker of Lok Sabha has the power to adjourn the House sine-die but, on prorogation, it is only the President who can summon the House. 2. Unless sooner dissolved or there is an extension of the term, there is an automatic dissolution of the Lok Sabha by efflux of time, at the end of the period of five years, even if no formal order of dissolution is issued by the President. 3. The Speaker of Lok Sabha continues in office even after the dissolution of the House and until ‘immediately before the first meeting of the House’. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 and 3",
+        "C": "1 and 3",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Speaker",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2004_Q47",
+      "questionNumber": 47,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements is not correct?",
+      "options": {
+        "A": "In Lok Sabha, a no confidence motion has to set out the grounds on which it is based.",
+        "B": "In the case of a no confidence motion in the Lok Sabha, no conditions of admissibility have been laid down in the Rules.",
+        "C": "A motion of no confidence, once admitted, has to be taken up within ten days of the leave being granted.",
+        "D": "Rajya Sabha is not empowered to entertain a motion of no confidence."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2004_Q48",
+      "questionNumber": 48,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Indian Parliament, which one of the following is not correct?",
+      "options": {
+        "A": "The Appropriation Bill must be passed by both Houses of Parliament before it can be enacted into law.",
+        "B": "No money shall be withdrawn from the Consolidated Fund of India except under the appropriation made by the Appropriation Act.",
+        "C": "Finance Bill is required for proposing new taxes but no another Bill/ Act is required for making changes in the rates of taxes which are already under operation.",
+        "D": "No Money Bill can be introduced except on the recommendation of the President."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2004_Q49",
+      "questionNumber": 49,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who among the following was never the Lok Sabha Speaker?",
+      "options": {
+        "A": "K. V. K. Sundaram",
+        "B": "G. S. Dhillon",
+        "C": "Baliram Bhagat",
+        "D": "Hukum Singh"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Speaker",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2003_Q50",
+      "questionNumber": 50,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "As per Indian Protocol, who among the following ranks highest in the order of precedence?",
+      "options": {
+        "A": "Deputy Prime Minister",
+        "B": "Former President",
+        "C": "Governor of a State within his state",
+        "D": "Speaker of Lok Sabha"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2003_Q51",
+      "questionNumber": 51,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. While members of the Rajya Sabha are associated with Committees on Public Accounts and Public Undertakings, Members of Committee on Estimates are drawn entirely from Lok Sabha. 2. The Ministry of Parliamentary Affairs works under the overall direction of the Cabinet Committee on Parliamentary Affairs. 3. The Minister of Parliamentary Affairs nominates members of Parliament on Committees, Councils, Boards and Commissions etc. set up by the Government of India in the various ministries. Which of these statements are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 and 3",
+        "C": "1 and 3",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2003_Q52",
+      "questionNumber": 52,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following Bills must be passed by each House of the Indian Parliament separately, by special majority?",
+      "options": {
+        "A": "Ordinary Bill",
+        "B": "Money Bill",
+        "C": "Finance Bill",
+        "D": "Constitution Amendment Bill"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2003_Q53",
+      "questionNumber": 53,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements is correct?",
+      "options": {
+        "A": "Only the Rajya Sabha and not the Lok Sabha can have nominated members",
+        "B": "There is a constitutional provision for nominating two members belonging to the AngloIndian community to the Rajya Sabha",
+        "C": "There is no constitutional bar for a nominated member to be appointed Union minister",
+        "D": "A nominated member can vote both in the Presidential and Vice-Presidential election."
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2003_Q54",
+      "questionNumber": 54,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The joint sitting of the two houses of the Parliament in India is sanctioned under Article 108 of the Constitution 2. The first joint sitting of Lok Sabha and Rajya Sabha was held in the year 1961 3. The second joint sitting of the two Houses of Indian Parliament was held to pass the Banking Service Commission (Repeal) Bill Which of these statements are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 and 3",
+        "C": "1 and 3",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2002_Q55",
+      "questionNumber": 55,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Consultative Committee of members of Parliament for Railway Zones in constituted by the:",
+      "options": {
+        "A": "President of India",
+        "B": "Ministry of Railways",
+        "C": "Ministry of Parliamentary Affairs",
+        "D": "Ministry of Transport"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2002_Q56",
+      "questionNumber": 56,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "The term of the Lok Sabha:",
+      "options": {
+        "A": "Cannot be extended under any circumstances",
+        "B": "Can be extended by six months at a time",
+        "C": "Can be extended by one year at a time during the proclamation of emergency",
+        "D": "Can be extended for two years at a time during the proclamation of emergency"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2001_Q57",
+      "questionNumber": 57,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "In what way does the Indian Parliament exercise control over the administration?",
+      "options": {
+        "A": "Through Consultative Committees of various ministries",
+        "B": "Through Parliamentary Committees",
+        "C": "By making the administrators send periodic reports",
+        "D": "By compelling the executive to issue writs"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2000_Q58",
+      "questionNumber": 58,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Speaker can ask a member of the House to stop speaking and let another member speak. This phenomenon is known as:",
+      "options": {
+        "A": "Decorum",
+        "B": "Crossing the floor",
+        "C": "Interpellation",
+        "D": "Yielding the floor"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Speaker",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2000_Q59",
+      "questionNumber": 59,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "The State which has the largest number of seats reserved for the Scheduled Tribes in Lok Sabha is:",
+      "options": {
+        "A": "Bihar",
+        "B": "Gujarat",
+        "C": "Uttar Pradesh",
+        "D": "Madhya Pradesh"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2000_Q60",
+      "questionNumber": 60,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Parliament can make any law for the whole or any part of India for implementing international treaties:",
+      "options": {
+        "A": "with the consent of all the States",
+        "B": "with the consent of the majority of States",
+        "C": "with the consent of the States concerned",
+        "D": "without the consent of any State"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_2000_Q61",
+      "questionNumber": 61,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements about a Money Bill is not correct?",
+      "options": {
+        "A": "A Money Bill can be tabled in either House of Parliament",
+        "B": "The Speaker of Lok Sabha is the final authority to decide whether a Bill is a Money Bill or not",
+        "C": "The Rajya Sabha must return a Money Bill passed by Lok Sabha and send it for consideration within 14 days",
+        "D": "The President cannot return a Money Bill to Lok Sabha for reconsideration"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Money Bill",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_1998_Q62",
+      "questionNumber": 62,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Indian parliamentary system is different from the British parliamentary system in that India has:",
+      "options": {
+        "A": "Both a real and a nominal executive",
+        "B": "A system of collective responsibility",
+        "C": "Bicameral legislature",
+        "D": "The system of judicial review Schedules to the Constitution, Constitution Amendment Scheme, Judicial Review, Basic Structure."
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_1997_Q63",
+      "questionNumber": 63,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "In which of the following countries will the no- confidence motion to bring down the government passed by the legislature be valid only when the legislature is able to simultaneously find a majority to elect a successor government?",
+      "options": {
+        "A": "France",
+        "B": "Germany",
+        "C": "Italy",
+        "D": "Portugal"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_1997_Q64",
+      "questionNumber": 64,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "If the Prime Minister of India belonged to the Upper House of Parliament:",
+      "options": {
+        "A": "He will not be able to vote in his favour in the event of a no confidence motion",
+        "B": "He will not be able to speak on the Budget in the Lower House",
+        "C": "He can make statements only on the Upper House",
+        "D": "He has to become a member of the Lower House within six months after being swornin as the Prime Minister"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_1996_Q65",
+      "questionNumber": 65,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "If the number of seats allocated to a state in the Lok Sabha is 42, then the number of seats reserved for the Scheduled Castes in that state will be:",
+      "options": {
+        "A": "21",
+        "B": "14",
+        "C": "17",
+        "D": "6"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_1995_Q66",
+      "questionNumber": 66,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the table given below: Which one of the following will fit in the place marked ‘X’?",
+      "options": {
+        "A": "Ministers who are not Members of Parliament but who have to get themselves elected to either House of Parliament within six months after assuming office",
+        "B": "Not more than 20 nominated members",
+        "C": "Not more than 20 representatives of Union Territories",
+        "D": "The Attorney General who has the right to speak and take part in the proceedings of either House of Parliament"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PARLIAMENT_1995_Q67",
+      "questionNumber": 67,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who among the following have the right to vote in the elections to both Lok Sabha and Rajya Sabha?",
+      "options": {
+        "A": "Elected members of the Lower House of the Parliament",
+        "B": "Elected members of the Upper House of the Parliament",
+        "C": "Elected members of the Upper House of the State Legislature",
+        "D": "Elected members of the Lower House of the State Legislature"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Parliament",
+      "topicId": "parliament",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

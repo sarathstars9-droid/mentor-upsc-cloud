@@ -14,6 +14,7 @@ const pageTitleMap = {
   optional: "Optional · Geography",
   backlog: "Backlog · Rescue Queue",
   focus: "Focus · Deep Work Mode",
+  reports: "Reports · Study Analytics",
   prelims: "Prelims · Practice & PYQs",
   prelims_institutional: "Prelims · Institutional Tests",
   mains: "Mains · Answer Writing",

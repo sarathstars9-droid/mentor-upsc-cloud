@@ -1,0 +1,119 @@
+{
+  "status": "production-ready",
+  "subject": "History",
+  "module": "Ancient History",
+  "generatedAt": "2026-04-22T07:38:06.658841Z",
+  "totals": {
+    "files": 13,
+    "questions": 182,
+    "duplicateIds": 0,
+    "reviewRequired": 0,
+    "nodesCovered": 16
+  },
+  "countsByFile": [
+    {
+      "fileName": "architecture.json",
+      "topicName": "Architecture",
+      "totalQuestions": 48
+    },
+    {
+      "fileName": "gupta_period.json",
+      "topicName": "Gupta Period",
+      "totalQuestions": 10
+    },
+    {
+      "fileName": "harsha_period.json",
+      "topicName": "Harsha Period",
+      "totalQuestions": 3
+    },
+    {
+      "fileName": "indus_valley.json",
+      "topicName": "Indus Valley Civilization",
+      "totalQuestions": 6
+    },
+    {
+      "fileName": "literature.json",
+      "topicName": "Literature",
+      "totalQuestions": 30
+    },
+    {
+      "fileName": "mahajanapadas.json",
+      "topicName": "Mahajanapadas",
+      "totalQuestions": 9
+    },
+    {
+      "fileName": "mauryan_period.json",
+      "topicName": "Mauryan Period",
+      "totalQuestions": 8
+    },
+    {
+      "fileName": "post_harsha.json",
+      "topicName": "Post Harsha",
+      "totalQuestions": 5
+    },
+    {
+      "fileName": "post_mauryan.json",
+      "topicName": "Post-Mauryan",
+      "totalQuestions": 5
+    },
+    {
+      "fileName": "prehistoric_age.json",
+      "topicName": "Prehistoric Age",
+      "totalQuestions": 1
+    },
+    {
+      "fileName": "religion_philosophy.json",
+      "topicName": "Religion & Philosophy",
+      "totalQuestions": 41
+    },
+    {
+      "fileName": "south_india.json",
+      "topicName": "South India",
+      "totalQuestions": 10
+    },
+    {
+      "fileName": "vedic_age.json",
+      "topicName": "Vedic Age",
+      "totalQuestions": 6
+    }
+  ],
+  "countsByNode": {
+    "GS1-HIS-ANC-BUD": 52,
+    "GS1-HIS-ANC-GUPTA": 21,
+    "GS1-HIS-ANC-HARSHA": 3,
+    "GS1-HIS-ANC-IVC": 9,
+    "GS1-HIS-ANC-JAIN": 15,
+    "GS1-HIS-ANC-MAHAJAN": 9,
+    "GS1-HIS-ANC-MAURYA": 14,
+    "GS1-HIS-ANC-POSTMAURYA": 7,
+    "GS1-HIS-ANC-PREHIST": 2,
+    "GS1-HIS-ANC-SANGAM": 3,
+    "GS1-HIS-ANC-VEDIC-LATER": 23,
+    "GS1-HIS-ANC-VEDIC-RIG": 8,
+    "GS1-HIS-MED-BHAKTI": 2,
+    "GS1-HIS-MED-CHOLA": 8,
+    "GS1-HIS-MED-REGIONAL": 5,
+    "GS1-HIS-MED-SUFI": 1
+  },
+  "reroutes": [
+    {
+      "from": "prehistoric_age.json",
+      "to": "south_india.json",
+      "year": 2023,
+      "questionNumber": 1,
+      "reason": "Sangam port-town question misfiled under prehistory"
+    },
+    {
+      "from": "prehistoric_age.json",
+      "to": "post_harsha.json",
+      "year": 2023,
+      "questionNumber": 2,
+      "reason": "Early medieval regional dynasties question misfiled under prehistory"
+    }
+  ],
+  "notes": [
+    "Dataset rebuilt directly from uploaded DOCX files.",
+    "Topic-level and question-level canonical syllabus mapping applied.",
+    "pyq_master_index and pyq_by_node indexes generated from corrected bundle."
+  ]
+}

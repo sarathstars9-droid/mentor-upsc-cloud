@@ -1,0 +1,421 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "exam": "UPSC_CSE",
+  "stage": "Prelims",
+  "paper": "GS1",
+  "subject": "Geography",
+  "topicName": "Industry/Resources",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "nodeId": "geo.industry-resources",
+  "microTheme": "projects-industry-resources",
+  "questions": [
+    {
+      "id": "GEO_INDUS_2009_Q1",
+      "questionNumber": 1,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Dul Hasti Power Station is based on which one of the following rivers?",
+      "options": {
+        "A": "Beas",
+        "B": "Chenab",
+        "C": "Ravi",
+        "D": "Sutlej"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2008_Q2",
+      "questionNumber": 2,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "With which one of the following rivers is the Omkareshwar Project associated?",
+      "options": {
+        "A": "Chambal",
+        "B": "Narmada",
+        "C": "Tapi",
+        "D": "Bhima"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2008_Q3",
+      "questionNumber": 3,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "On which one of the following rivers is the Tehri Hydropower Complex located?",
+      "options": {
+        "A": "Alaknanda",
+        "B": "Bhagirathi",
+        "C": "Dhauliganga",
+        "D": "Mandakini"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2008_Q4",
+      "questionNumber": 4,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following pairs are correctly matched? Irrigation Project State 1] Damanganga Gujarat 2] Girna Maharashtra 3] Pamba Kerala Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2 and 3"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2008_Q5",
+      "questionNumber": 5,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Where are Tapovan and Vishnugarh Hydroelectric Projects located?",
+      "options": {
+        "A": "Madhya Pradesh",
+        "B": "Uttar Pradesh",
+        "C": "Uttarakhand",
+        "D": "Rajasthan"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2007_Q6",
+      "questionNumber": 6,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List -I (Aluminium Company) with List -II Location) and select the correct answer using the code given below the lists: List-I List-II A. BALCO 1. Hirakud B. HINDALCO 2. Korba C. Indian Aluminium Company 3.Koraput D. NALCO 4. Renukoot A B C D",
+      "options": {
+        "A": "3 1 4 2",
+        "B": "2 4 1 3",
+        "C": "3 4 1 2",
+        "D": "2 1 4 3"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2006_Q7",
+      "questionNumber": 7,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Recently Uttar Pradesh and Madhya Pradesh governments signed a Memorandum of Understanding for the linking of two rivers as a link project. Which are these two rivers?",
+      "options": {
+        "A": "Betwa and Chambal",
+        "B": "Betwa and Ken",
+        "C": "Chambal and Son",
+        "D": "Ken and Narmada"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2005_Q8",
+      "questionNumber": 8,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Gandhi Sagar Dam is a part of which one of the following?",
+      "options": {
+        "A": "Chambal Project",
+        "B": "Kosi Project",
+        "C": "Damador Valley Project",
+        "D": "Bhakra Nangal Project"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2005_Q9",
+      "questionNumber": 9,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match items in the List I (Power Station) with those in the List II (State) and select the correct answer using the codes given below the list: List I List II A. Kothagudem 1. Andhra Pradesh B. Raichur 2. Gujarat C. Mettur 3. Karnataka D. Wanakbori 4. Tamil Nadu A B C D",
+      "options": {
+        "A": "4 2 1 3",
+        "B": "1 3 4 2",
+        "C": "4 3 1 2",
+        "D": "1 2 4 3"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2005_Q10",
+      "questionNumber": 10,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "For which one of the following, is Satara well - known?",
+      "options": {
+        "A": "Thermal power plant",
+        "B": "Wind energy plant",
+        "C": "Hydro electric plant",
+        "D": "Nuclear power plant"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2005_Q11",
+      "questionNumber": 11,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which pairs is not correctly matched? Project Company:",
+      "options": {
+        "A": "Integrated Steel Plant at Jaipur (Orissa): Steel Authority of India",
+        "B": "Power Plant at Jamnagar (Gujarat): Essar Power",
+        "C": "Nabinagar Power Plant (Bihar): Indian Railways",
+        "D": "Kayamkulom Power Plant (Kerala): National Thermal Power Corporation"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2005_Q12",
+      "questionNumber": 12,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements is not correct?",
+      "options": {
+        "A": "Rourkela Steel Plant, the first integrated steel plant in the Public sector of India was set up with the Soviet Union collaboration",
+        "B": "Salem Steel Plant is a premier producer of stainless steel in India",
+        "C": "Maharashtra Eletrosmelt Ltd is a subsidiary of the Steel Authority of India Ltd",
+        "D": "Visakhapatnam Steel Plant is a unit of the Rashtriya Ispat Nigam Ltd"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2004_Q13",
+      "questionNumber": 13,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Damodar Valley Corporation is the first multipurpose river valley project of independent India. 2. Damodar Valley Corporation includes thermal and gas power stations. Which of the statements given above is/ are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2003_Q14",
+      "questionNumber": 14,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "The thermal power plant of Bokaro is located in:",
+      "options": {
+        "A": "Bihar",
+        "B": "Chhattisgarh",
+        "C": "Jharkhand",
+        "D": "Orissa A 14] c) Jharkhand - The thermal power plant in Bokaro is situated in the state of Jharkhand"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_2002_Q15",
+      "questionNumber": 15,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "HINDALCO, an aluminium factory located at Renukut owes its site basically to:",
+      "options": {
+        "A": "Proximity of raw materials",
+        "B": "Abundant supply of power",
+        "C": "Efficient transport network",
+        "D": "Proximity to the market"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_1999_Q16",
+      "questionNumber": 16,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the given figure, the site of the Tehri dam has been labelled as:",
+      "options": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_1999_Q17",
+      "questionNumber": 17,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: List I (Rivers) List II (Dams) I. Cauvery",
+      "options": {
+        "A": "Alamatti II. Krishna",
+        "B": "Mettur III. Narmada",
+        "C": "Gandhi Sagar IV. Chambal",
+        "D": "Sardar Sarovar a) I-A, II-D, III-B, IV-C b) I-B, II-A, III-D, IV-C c) I-B, II-A, III-C, IV-D d) I-A, II-C, III-D, IV-B"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_1998_Q18",
+      "questionNumber": 18,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Commercial production of mineral oil has started recently in which one of the areas of India, labelled 1, 2, 3 and 4 in the rough map given below:",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_1998_Q19",
+      "questionNumber": 19,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "The rough outline map given shows centres of cement industry labelled 1, 2, 3 and 4. Match these centres with the following sets of names: Names:",
+      "options": {
+        "A": "Katni",
+        "B": "Tirunelveli",
+        "C": "Sikka",
+        "D": "Churk Select the correct answer using the codes given below: a) A-3, B-4, C-2, D-1 b) A-2, B-4, C-1, D-3 c) A-1, B-2, C-4, D-3 d) A-2, B-3. C-1, D-4"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_1997_Q20",
+      "questionNumber": 20,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Alamatti Dam is on the river:",
+      "options": {
+        "A": "Godavari",
+        "B": "Cauvery",
+        "C": "Krishna",
+        "D": "Mahanadi"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_1997_Q21",
+      "questionNumber": 21,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "The canal- carrying capacity of Farakka is:",
+      "options": {
+        "A": "75,000 cusecs",
+        "B": "70,000 cusecs",
+        "C": "40,000 cusecs",
+        "D": "35,000 cusecs"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_1996_Q22",
+      "questionNumber": 22,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following pairs are correctly matched? I. Idukki: Thermal power station II. Sabarigiri: Hydro-electric project III. Ghatprabha: Irrigation project IV. Ramganga: Multipurpose project Select the correct answer by using the codes given below:",
+      "options": {
+        "A": "II, III and IV",
+        "B": "I, II, III and IV",
+        "C": "III and IV",
+        "D": "I and II"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_1996_Q23",
+      "questionNumber": 23,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Local supply of coal is not available to:",
+      "options": {
+        "A": "TISCO, Jamshedpur",
+        "B": "VSL, Bhadravati",
+        "C": "HSL, Durgapur",
+        "D": "HSL, Bhilai"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_INDUS_1995_Q24",
+      "questionNumber": 24,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the map given below, three out of the four places marked indicate places where a thermal power station is located: The place where there is no thermal power station is marked:",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "projects-industry-resources",
+      "syllabusNodeId": "GS1-GEO-IND"
+    }
+  ]
+}

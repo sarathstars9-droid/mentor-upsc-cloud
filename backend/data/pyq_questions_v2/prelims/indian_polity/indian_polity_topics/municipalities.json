@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Municipalities",
+  "topicId": "municipalities",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 3,
+  "questions": [
+    {
+      "id": "POL_MUNICIPALITIES_2009_Q1",
+      "questionNumber": 1,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, the first Municipal Corporation was set up in _____ ?",
+      "options": {
+        "A": "Calcutta",
+        "B": "Madras",
+        "C": "Bombay",
+        "D": "Delhi"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Municipalities",
+      "topicId": "municipalities",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Municipalities",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_MUNICIPALITIES_2005_Q2",
+      "questionNumber": 2,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider following statements: 1. Part IX of the Constitution of India contains provisions for Panchayats and was inserted by the Constitution (73rd Amendment) Act, 1992. 2. Part IX A of the Constitution of India contains provisions for municipalities and the Article 243 Q envisages two types of municipalities a Municipal Council and a Municipal Corporation for every State. Which of the above statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Municipalities",
+      "topicId": "municipalities",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_MUNICIPALITIES_2000_Q3",
+      "questionNumber": 3,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "A college student desires to get elected to the Municipal Council of his city. The validity of his nomination would depend on the important condition, among others, that:",
+      "options": {
+        "A": "He obtains permission from the principal of his college",
+        "B": "He is a member of a political party",
+        "C": "His name figures in the Voters’ List",
+        "D": "He files a declaration owing allegiance to the Constitution of India"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Municipalities",
+      "topicId": "municipalities",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Municipalities",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Lokpal",
+  "topicId": "lokpal",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 1,
+  "questions": [
+    {
+      "id": "POL_LOKPAL_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements about Lokpal: I. The power of Lokpal applies to public servants of India, but not to the Indian public servants posted outside India. II. The Chairperson or a Member shall not be a Member of the Parliament or a Member of the Legislature of any State or Union Territory, and only the Chief Justice of India, whether incumbent or retired, has to be its Chairperson. III. The Chairperson or a Member shall not be a person of less than forty-five years of age on the date of assuming office as the Chairperson or Member, as the case may be. IV. Lokpal cannot inquire into the allegations of corruption against a sitting Prime Minister of India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "III only",
+        "B": "II and III",
+        "C": "I and IV",
+        "D": "None of the statements is correct"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Lokpal",
+      "topicId": "lokpal",
+      "sectionId": "GS2-POL-BODIES",
+      "nodeId": "GS2-POL-BODIES",
+      "syllabusNodeId": "GS2-POL-BODIES",
+      "microTheme": "Lokpal",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

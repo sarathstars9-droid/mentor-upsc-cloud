@@ -1,0 +1,155 @@
+{
+  "GS1-HIS-MED-18C": {
+    "questionIds": [
+      "HIS_MED_POL_2010_Q19",
+      "HIS_MED_POL_2004_Q26",
+      "HIS_MED_POL_2001_Q38"
+    ],
+    "count": 3
+  },
+  "GS1-HIS-MED-BHAKTI": {
+    "questionIds": [
+      "HIS_MED_REL_2019_Q1",
+      "HIS_MED_REL_2016_Q2",
+      "HIS_MED_REL_2013_Q3",
+      "HIS_MED_REL_2010_Q6",
+      "HIS_MED_REL_2006_Q7",
+      "HIS_MED_REL_2002_Q10"
+    ],
+    "count": 6
+  },
+  "GS1-HIS-MED-DELHI": {
+    "questionIds": [
+      "HIS_MED_ART_2002_Q10",
+      "HIS_MED_POL_2022_Q4",
+      "HIS_MED_POL_2019_Q10",
+      "HIS_MED_POL_2006_Q20",
+      "HIS_MED_POL_2004_Q24",
+      "HIS_MED_POL_2003_Q34",
+      "HIS_MED_POL_2002_Q37",
+      "HIS_MED_POL_1999_Q48",
+      "HIS_MED_POL_1998_Q50",
+      "HIS_MED_POL_1998_Q57",
+      "HIS_MED_POL_1997_Q59"
+    ],
+    "count": 11
+  },
+  "GS1-HIS-MED-EMPIRE": {
+    "questionIds": [
+      "HIS_MED_POL_2022_Q3",
+      "HIS_MED_POL_2015_Q14",
+      "HIS_MED_POL_2014_Q18",
+      "HIS_MED_POL_2006_Q22",
+      "HIS_MED_REL_2010_Q5",
+      "HIS_MED_REL_2004_Q8",
+      "HIS_MED_REL_1996_Q12"
+    ],
+    "count": 7
+  },
+  "GS1-HIS-MED-MUGHAL": {
+    "questionIds": [
+      "HIS_MED_ART_2019_Q3",
+      "HIS_MED_ART_2018_Q6",
+      "HIS_MED_ART_2014_Q7",
+      "HIS_MED_ART_2006_Q8",
+      "HIS_MED_ART_1998_Q14",
+      "HIS_MED_ART_1996_Q17",
+      "HIS_MED_POL_2019_Q9",
+      "HIS_MED_POL_2015_Q16",
+      "HIS_MED_POL_2003_Q31",
+      "HIS_MED_POL_2003_Q32",
+      "HIS_MED_POL_2002_Q36",
+      "HIS_MED_POL_2001_Q41",
+      "HIS_MED_POL_1999_Q49",
+      "HIS_MED_POL_1998_Q51",
+      "HIS_MED_POL_1998_Q52",
+      "HIS_MED_POL_1998_Q53",
+      "HIS_MED_POL_1998_Q54",
+      "HIS_MED_POL_1998_Q56",
+      "HIS_MED_POL_1997_Q60",
+      "HIS_MED_POL_1996_Q62"
+    ],
+    "count": 20
+  },
+  "GS1-HIS-MED-REGIONAL": {
+    "questionIds": [
+      "HIS_MED_ART_2022_Q1",
+      "HIS_MED_ART_2019_Q4",
+      "HIS_MED_ART_1999_Q11",
+      "HIS_MED_ART_1999_Q12",
+      "HIS_MED_ART_1997_Q15",
+      "HIS_MED_ART_1997_Q16",
+      "HIS_MED_ART_1995_Q18",
+      "HIS_MED_POL_2025_Q1",
+      "HIS_MED_POL_2022_Q5",
+      "HIS_MED_POL_2021_Q6",
+      "HIS_MED_POL_2020_Q8",
+      "HIS_MED_POL_2016_Q11",
+      "HIS_MED_POL_2016_Q12",
+      "HIS_MED_POL_2015_Q15",
+      "HIS_MED_POL_2015_Q17",
+      "HIS_MED_POL_2006_Q21",
+      "HIS_MED_POL_2004_Q25",
+      "HIS_MED_POL_2003_Q29",
+      "HIS_MED_POL_2003_Q30",
+      "HIS_MED_POL_2003_Q33",
+      "HIS_MED_POL_2002_Q35",
+      "HIS_MED_POL_2001_Q39",
+      "HIS_MED_POL_2001_Q40",
+      "HIS_MED_POL_2001_Q42",
+      "HIS_MED_POL_2000_Q43",
+      "HIS_MED_POL_2000_Q44",
+      "HIS_MED_POL_2000_Q47",
+      "HIS_MED_POL_1998_Q58",
+      "HIS_MED_POL_1996_Q61",
+      "HIS_MED_POL_1995_Q63",
+      "HIS_MED_POL_1995_Q64",
+      "HIS_MED_POL_1995_Q65"
+    ],
+    "count": 32
+  },
+  "GS1-HIS-MED-SUFI": {
+    "questionIds": [
+      "HIS_MED_ART_2003_Q9",
+      "HIS_MED_ART_1999_Q13",
+      "HIS_MED_REL_2012_Q4",
+      "HIS_MED_REL_2002_Q9",
+      "HIS_MED_REL_1997_Q11"
+    ],
+    "count": 5
+  },
+  "GS1-HIS-MED-VIJAYANAGARA": {
+    "questionIds": [
+      "HIS_MED_ART_2021_Q2",
+      "HIS_MED_ART_2019_Q5",
+      "HIS_MED_POL_2023_Q2",
+      "HIS_MED_POL_2021_Q7",
+      "HIS_MED_POL_2016_Q13",
+      "HIS_MED_POL_2006_Q23",
+      "HIS_MED_POL_2004_Q27",
+      "HIS_MED_POL_2003_Q28",
+      "HIS_MED_POL_2000_Q45",
+      "HIS_MED_POL_2000_Q46",
+      "HIS_MED_POL_1998_Q55"
+    ],
+    "count": 11
+  },
+  "GS1-HIS-MOD-EURO": {
+    "questionIds": [
+      "HIS_MED_EURO_2024_Q1",
+      "HIS_MED_EURO_2023_Q2",
+      "HIS_MED_EURO_2022_Q3",
+      "HIS_MED_EURO_2021_Q4",
+      "HIS_MED_EURO_2021_Q5",
+      "HIS_MED_EURO_2010_Q6",
+      "HIS_MED_EURO_2009_Q7",
+      "HIS_MED_EURO_2008_Q8",
+      "HIS_MED_EURO_2006_Q9",
+      "HIS_MED_EURO_2005_Q10",
+      "HIS_MED_EURO_2003_Q11",
+      "HIS_MED_EURO_2003_Q12",
+      "HIS_MED_EURO_1999_Q13"
+    ],
+    "count": 13
+  }
+}

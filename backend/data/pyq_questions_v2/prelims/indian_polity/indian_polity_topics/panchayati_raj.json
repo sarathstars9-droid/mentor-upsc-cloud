@@ -1,0 +1,442 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Panchayati Raj",
+  "topicId": "panchayati_raj",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 16,
+  "questions": [
+    {
+      "id": "POL_PANCHAYATI_RAJ_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: I. Panchayats at the intermediate level exist in all States. II. To be eligible to be a Member of a Panchayat at the intermediate level, a person should attain the age of thirty years. IV. The Constitution (Eighty Third Amendment) Act, 2000 D) Accepting the recommendations of the Tenth Finance Commission E) According the status of National Capital Territory to Delhi",
+      "options": {
+        "A": "I E, II A, III D, IV B",
+        "B": "I A, II E, III C, IV D",
+        "C": "I E, II A, III C, IV D",
+        "D": "I A, II E, III D, IV B"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Finance Commission",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2017_Q2",
+      "questionNumber": 2,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Local self-government can be best explained as an exercise in:",
+      "options": {
+        "A": "Federalism",
+        "B": "Democratic decentralisation",
+        "C": "Administrative delegation",
+        "D": "Direct democracy"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2016_Q3",
+      "questionNumber": 3,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider following statements: 1. The minimum age prescribed for any person to be a member of Panchayat is 25 years. 2. A Panchayat reconstituted after premature dissolution continues only for the remainder period. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2015_Q4",
+      "questionNumber": 4,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "The fundamental object of the Panchayati Raj system is to ensure which among the following? 1. People’s participation in development 2. Political accountability 3. Democratic decentralization 4. Financial mobilization Select the correct answer using the code given below",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "2 and 4 only",
+        "C": "1 and 3 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2013_Q5",
+      "questionNumber": 5,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "The government enacted the Panchayat extension to scheduled areas (PESA) act in 1996, which one of the following is not identified as its objectives?",
+      "options": {
+        "A": "To provide self-governance",
+        "B": "To recognise traditional rights",
+        "C": "To create autonomous regions in tribal areas",
+        "D": "To free tribal people from exploitation"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2012_Q6",
+      "questionNumber": 6,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the areas covered under the Panchayat (Extension to the Scheduled Areas) Act, 1996. What is the role/power of Gram Sabha? 1. Gram Sabha has the power to prevent alienation of land in the Scheduled Areas. 2. Gram Sabha has the ownership of minor forest produce. 3. Recommendation of Gram Sabha is required for granting prospecting licence or mining lease for any mineral in the Scheduled Areas. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "1 and 2 Only",
+        "C": "2 & 3 Only",
+        "D": "1,2, & 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2011_Q7",
+      "questionNumber": 7,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: In India, a Metropolitan Planning Committee: 1. Is constituted under the provisions of the Constitution of India. 2. Prepares the draft development plans for the metropolitan area. 3. Has the sole responsibility for implementing government sponsored schemes in the metropolitan area. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "1,3 only",
+        "D": "1,2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2011_Q8",
+      "questionNumber": 8,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "The constitution (seventy third amendment) act, 1992, which aims at promoting the panchayati raj institutions in the country, provides for which of the following? 1. Constitution of district planning committees. 2. State election commissions to conduct all panchayat elections. 3. Establishment of state finance commission. State the correct answer using the codes given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only.",
+        "C": "2 and 3 only",
+        "D": "1,2, and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Finance Commission",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2009_Q9",
+      "questionNumber": 9,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "If a Panchayat is dissolved, elections are to be held within:",
+      "options": {
+        "A": "1 month",
+        "B": "3 months",
+        "C": "6 months",
+        "D": "1 year"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2006_Q10",
+      "questionNumber": 10,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Government of India's various programmes, what is Nirmal Gram Puraskar?",
+      "options": {
+        "A": "It is an incentive scheme of scholarships for the single girl child in families in villages.",
+        "B": "It is an incentive scheme of scholarships for female sportspersons from villages who represent their states in any game.",
+        "C": "It is an incentive scheme for schools in the villages for computer education.",
+        "D": "It is an incentive scheme for Panchayati Raj institutions."
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2001_Q11",
+      "questionNumber": 11,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "In which one of the following areas does the State Government NOT have control over its local bodies? a) Citizen’s grievances b) Financial matters c) Legislation d) Personnel matters",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2000_Q12",
+      "questionNumber": 12,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: List I (Local bodies) List II (States as in 1999) I. Zila Parishads at the A) Andhra Pradesh sub divisional level II. Mandal Praja Parishad B) Assam III. Tribal Councils C) Mizoram IV. Absence of Village D) Meghalaya Panchayats",
+      "options": {
+        "A": "I B, II A, III D, IV C",
+        "B": "I A, II B, III D, IV C",
+        "C": "I C, II B, III A, IV D",
+        "D": "I B, II A, III C, IV D"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2000_Q13",
+      "questionNumber": 13,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "The 73rd Constitution Amendment Act, 1992 refers to the:",
+      "options": {
+        "A": "Generation of gainful employment for the unemployed and the underemployed men and women in rural area",
+        "B": "Generation of employment for the able-bodied adults who are in need and desirous of work during the lean agricultural season",
+        "C": "Laying the foundation for strong and vibrant Panchayati Raj Institutions in the country",
+        "D": "Guarantee of right to life, liberty and security of person, equality before law and equal protection without discrimination"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_1999_Q14",
+      "questionNumber": 14,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the new Panchayati Raj Bill enacted in 1993, there are several fresh provisions deviating from the past. Which one of the following is not such provision?",
+      "options": {
+        "A": "A number of added responsibilities in the area of agriculture, rural development, primary education and social forestry among others.",
+        "B": "Elections being made mandatory for all posts at the time they are due.",
+        "C": "A statutory representation for women in the panchayats, up-to a third of the strength.",
+        "D": "Regular remuneration to the panchayat members, so as to ensure their punctuality and accountability."
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_1998_Q15",
+      "questionNumber": 15,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Panchayati Raj was first introduced in India in October, 1959 in:",
+      "options": {
+        "A": "Rajasthan",
+        "B": "Tamil Nadu",
+        "C": "Kerala",
+        "D": "Karnataka"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_1997_Q16",
+      "questionNumber": 16,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following was NOT proposed by the 73rd Constitutional Amendment in the area of Panchayati Raj?",
+      "options": {
+        "A": "Thirty per cent seats in all elected rural local bodies will be reserved for women candidates at all levels",
+        "B": "The States will constitute their Finance Commissions to allocate resources to Panchayati Raj Institutions",
+        "C": "The Panchayati Raj elected functionaries will be disqualified to hold their offices if they have more than two children",
+        "D": "The elections will be held in six months’ time if Panchayati Raj bodies are superseded or dissolved by the State government"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Panchayati Raj",
+      "topicId": "panchayati_raj",
+      "sectionId": "GS2-POL-LOCAL",
+      "nodeId": "GS2-POL-LOCAL",
+      "syllabusNodeId": "GS2-POL-LOCAL",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

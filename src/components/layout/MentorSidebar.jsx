@@ -7,6 +7,7 @@ const navItems = [
   { key: "optional", icon: "🗺️", label: "Optional (Geo)" },
   { key: "backlog", icon: "📦", label: "Backlog" },
   { key: "focus", icon: "⏱️", label: "Focus" },
+  { key: "reports", icon: "📈", label: "Reports" },
   { key: "prelims", icon: "📝", label: "Prelims" },
   { key: "prelims_mistakes", icon: "📒", label: "Pre Mistakes" },
   { key: "prelims_institutional", icon: "🏛️", label: "Pre Inst.Test" },

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Inter-State Relations",
+  "topicId": "inter_state_relations",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 3,
+  "questions": [
+    {
+      "id": "POL_INTER_STATE_RELATIONS_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to India, consider the following: I. The Inter-State Council II. The National Security Council III. Zonal Councils How many of the above were established as per the provisions of the Constitution of India?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All the three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Inter-State Relations",
+      "topicId": "inter_state_relations",
+      "sectionId": "GS2-POL-CSREL",
+      "nodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-CSREL",
+      "microTheme": "Inter-State Council and Zonal Councils",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_INTER_STATE_RELATIONS_2013_Q9",
+      "questionNumber": 9,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following bodies does not/do not find mention in the constitution? 1. National Development Council 2. Planning Commission 3. Zonal Councils Select the correct answer using the codes given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Inter-State Relations",
+      "topicId": "inter_state_relations",
+      "sectionId": "GS2-POL-CSREL",
+      "nodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-CSREL",
+      "microTheme": "Inter-State Council and Zonal Councils",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_INTER_STATE_RELATIONS_1995_Q21",
+      "questionNumber": 21,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following is/are extra constitutional and extra legal device(s) for securing cooperation and coordination between the States in India? I. The National Development Council II. The Governors’ Conference III. Zonal Councils IV. The Inter State Council. Choose the correct answer from the codes given below:",
+      "options": {
+        "A": "I, II and III",
+        "B": "I, III and IV",
+        "C": "III and IV",
+        "D": "IV only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Inter-State Relations",
+      "topicId": "inter_state_relations",
+      "sectionId": "GS2-POL-CSREL",
+      "nodeId": "GS2-POL-CSREL",
+      "syllabusNodeId": "GS2-POL-CSREL",
+      "microTheme": "Inter-State Council and Zonal Councils",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

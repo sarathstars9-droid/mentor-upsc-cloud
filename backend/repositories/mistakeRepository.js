@@ -16,10 +16,11 @@ export async function upsertMistake(data) {
       answer_status,
       error_type,
       notes,
-      must_revise
+      must_revise,
+      block_id
     )
     VALUES (
-      $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14
+      $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15
     )
     ON CONFLICT (user_id, question_id)
     DO UPDATE SET
@@ -35,6 +36,7 @@ export async function upsertMistake(data) {
       error_type = EXCLUDED.error_type,
       notes = EXCLUDED.notes,
       must_revise = EXCLUDED.must_revise,
+      block_id = COALESCE(EXCLUDED.block_id, mistakes.block_id),
       updated_at = NOW()
     RETURNING *;
   `;
@@ -54,6 +56,7 @@ export async function upsertMistake(data) {
         data.error_type || null,
         data.notes || null,
         Boolean(data.must_revise),
+        data.block_id || null,
     ];
 
     const result = await query(sql, values);

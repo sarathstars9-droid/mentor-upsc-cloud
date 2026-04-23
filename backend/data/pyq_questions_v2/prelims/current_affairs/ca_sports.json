@@ -1,0 +1,927 @@
+{
+  "schemaVersion": "mentoros-ca-v1",
+  "fileName": "ca_sports.json",
+  "questions": [
+    {
+      "id": "CA_SPORTS.JSON_None_Q1",
+      "year": null,
+      "question": "Question count: 41 Note: Best-effort structured extraction from a column-formatted source PDF. Where the source itself marked an answer as changed, that note is preserved.",
+      "options": {},
+      "answer": {
+        "correct_option": null,
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "low",
+      "reviewRequired": true
+    },
+    {
+      "id": "CA_SPORTS.JSON_2025_Q2",
+      "year": 2025,
+      "question": "Q1. (2025) Consider the following statements in respect of the Kho Kho World Cup: [2025] I. The event was held in Delhi, India. II. Indian men beat Nepal with a score of 78-40 in the final to become the World Champion in men category. III. Indian women beat Nepal with a score of 54-36 in the final to become the World Champion in women category. Which of the statements given above is/are correct? Source ref: gk_part1 / Q1",
+      "options": {
+        "A": "I only",
+        "B": "II and III only",
+        "C": "I and III only",
+        "D": "I, II and III"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2025_Q3",
+      "year": 2025,
+      "question": "Q2. (2025) Consider the following statements: [2025] I. In the finals of the 45th Chess Olympiad held in 2024, Gukesh Dommaraju became the world's youngest winner after defeating the Russian player Ian Nepomniachtchi. II. Abhimanyu Mishra, an American chess player, holds the record of becoming world's youngest ever Grandmaster. Which of the statements given above is/are correct? Source ref: gk_part1 / Q4",
+      "options": {
+        "A": "I only",
+        "B": "II only",
+        "C": "Both I and II",
+        "D": "Neither I nor II"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2023_Q4",
+      "year": 2023,
+      "question": "Q3. (2023) Consider following statements: [2023] Statement-I: Israel has established diplomatic relations with some Arab States. Statement-II: The Arab Peace Initiative' mediated by Saudi Arabia was signed by Israel and Arab League. Which one of the following is correct in respect of the above statements? Source ref: gk_part1 / Q16",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-1 is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2023_Q5",
+      "year": 2023,
+      "question": "Q4. (2023) Consider the following pairs with regard to sports awards: [2023] 1. Major Dhyan Chand Khel Ratna Award: For the most spectacular and outstanding performance by a sportsperson over period of last four years 2. Arjuna Award: For the lifetime achievement by a sportsperson 3. Dronacharya Award: To honour eminent coaches who have successfully trained sportspersons or teams 4. Rashtriya Khel Protsahan Puraskar: To recognize the contribution made by sportspersons even after their retirement How many of the above pairs are correctly matched? Source ref: gk_part1 / Q17",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2023_Q6",
+      "year": 2023,
+      "question": "Q5. (2023) Consider the following statements in respect of the 44th Chess Olympiad, 2022: [2023] 1. It was the first time that Chess Olympiad was held in India. 2. The official mascot was named Thambi'. 3. The trophy for the winning team in the open section is the Vera Menchik Cup. 4. The trophy for the winning team in the women's section is the Hamilton-Russell Cup. How many of the statements given above are correct? Source ref: gk_part1 / Q18",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2021_Q7",
+      "year": 2021,
+      "question": "Q6. (2021) Consider the following statements in respect of the Laureus World Sports Award which was instituted in the year 2000: [2021] 1) American golfer Tiger Woods was the first winner of this award. 2) The award was received mostly by ‘Formula One’ players so far. 3) Roger Federer received this award maximum number of times compared to others. Which of the above statements are correct? Source ref: gk_part1 / Q29",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2021_Q8",
+      "year": 2021,
+      "question": "Q7. (2021) Consider the following statements in respect of the 32nd Summer Olympics: [2021] 1) The official motto for this Olympics is ‘A New World’. 2) Sport Climbing, Surfing, Skateboarding, Karate and Baseball are included in this Olympics. Which of the above statements is/are correct? Source ref: gk_part1 / Q30",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2020_Q9",
+      "year": 2020,
+      "question": "Q8. (2020) In India, the term “Public Key Infrastructure” is used in the context of: [2020] Source ref: gk_part1 / Q32",
+      "options": {
+        "A": "Digital security infrastructure",
+        "B": "Food security infrastructure",
+        "C": "Health care and education infrastructure",
+        "D": "Telecommunication and transportation infrastructure"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2009_Q10",
+      "year": 2009,
+      "question": "Q9. (2009) With reference to Sree Shakti Puraskar, for which one of the following is ''Devi Ahilya Bai Holkar Award\" given? [2009] Source ref: gk_part2 / Q25",
+      "options": {
+        "A": "Administrative skills",
+        "B": "Achievements in Scientific Research",
+        "C": "Achievements in Sports and games",
+        "D": "Courage and valour"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2009_Q11",
+      "year": 2009,
+      "question": "Q10. (2009) Consider the following pairs: [2009] Persons Sports Source ref: gk_part2 / Q37",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2009_Q12",
+      "year": 2009,
+      "question": "Q11. (2009) Which one of the following pairs is not correctly matched? [2009] Source ref: gk_part2 / Q40",
+      "options": {
+        "A": "Barbora Spotakova: Javelin throw",
+        "B": "Pamela Jelimo: Weightlifting",
+        "C": "Sanya Richards: Sprint",
+        "D": "Yelena Isinbayeva: Pole Vault"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2008_Q13",
+      "year": 2008,
+      "question": "Q12. (2008) Where was the first desalination plant in India to produce one lakhs litres freshwater per day based on low temperature thermal desalination principle Commissioned? [2008] Source ref: gk_part2 / Q45",
+      "options": {
+        "A": "Kavaratti",
+        "B": "Port Blair",
+        "C": "Mangalore",
+        "D": "Valsad"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2008_Q14",
+      "year": 2008,
+      "question": "Q13. (2008) Which one of the following is correct in respect of Indian football team’s Performance in the Olympic Games? [2008] Source ref: gk_part2 / Q47",
+      "options": {
+        "A": "India has never participated in the Olympic Football Tournament",
+        "B": "India played only in the First Round",
+        "C": "India entered only up to the Quarter Finals",
+        "D": "India entered the Semi finals"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2008_Q15",
+      "year": 2008,
+      "question": "Q14. (2008) Starting with the Australian Open Lawn Tennis tournament, which one of the following is the correct chronological order of the other three major Lawn Tennis Touraments? [2008] Source ref: gk_part2 / Q50",
+      "options": {
+        "A": "French Open- US Open- Wimbledon",
+        "B": "French Open- Wimbledon- US open",
+        "C": "Wimbledon- US Open- French Open",
+        "D": "Wimbledon- French Open - US Open"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2008_Q16",
+      "year": 2008,
+      "question": "Q15. (2008) Who among the following has been the Captain of the Indian team in Cricket Test Matches for the maximum number of times? [2008] Source ref: gk_part2 / Q56",
+      "options": {
+        "A": "Sunil Gavaskar",
+        "B": "Mansur Ali Khan Pataudi",
+        "C": "Saurav Ganguly",
+        "D": "Mohammad Azharuddin"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2008_Q17",
+      "year": 2008,
+      "question": "Q16. (2008) With which one of the following is BRIT (Government of Indi Source ref: gk_part2 / Q65",
+      "options": {
+        "A": "Railway Wagons",
+        "B": "Information Tecnology",
+        "C": "Isotope Technology",
+        "D": "Road Transport"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2008_Q18",
+      "year": 2008,
+      "question": "Q17. (2008) Ebraham Alkazi is an eminent Personality in which one of the following areas? [2008] Source ref: gk_part2 / Q67",
+      "options": {
+        "A": "Heart surgery",
+        "B": "Civil aviation",
+        "C": "Theatre",
+        "D": "Transport engineering"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2008_Q19",
+      "year": 2008,
+      "question": "Q18. (2008) Which one of the following countries won the Euro Football Tournament, 2004 held in Portugal? [2008] Source ref: gk_part2 / Q72",
+      "options": {
+        "A": "Italy",
+        "B": "France",
+        "C": "Greece",
+        "D": "Portugal"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2007_Q20",
+      "year": 2007,
+      "question": "Q19. (2007) Who among the following was chosen as the FIFA World Player of the Year for the Year 2006? [2007] Source ref: gk_part2 / Q82",
+      "options": {
+        "A": "Zinedine Zidane",
+        "B": "Fabio Cannavaro",
+        "C": "Ronaldinho",
+        "D": "Thierry Henry"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2007_Q21",
+      "year": 2007,
+      "question": "Q20. (2007) Who was Leander Paes’s partner when he won Doubles Final in the US Open Tennis Tournament 2006? [2007] Source ref: gk_part2 / Q89",
+      "options": {
+        "A": "Max Mirnyi",
+        "B": "Martin Damm",
+        "C": "Bob Bryan",
+        "D": "Mike Bryan"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2007_Q22",
+      "year": 2007,
+      "question": "Q21. (2007) The Pulitzer Prize is associated with which one of the following? [2007] Source ref: gk_part2 / Q90",
+      "options": {
+        "A": "Enviromental protection",
+        "B": "Olympic games",
+        "C": "Journalism",
+        "D": "Civil Aviation"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2007_Q23",
+      "year": 2007,
+      "question": "Q22. (2007) Who among the following bowlers have taken more than 500 wickets in Test Cricket? [2007] 1. Wasim Akram 2. Richard Hadlee 3. Glenn McGroth 4. Courtney Walsh Select the correct answer using the codes given below: Source ref: gk_part2 / Q97",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 and 4 only",
+        "C": "1,2 and 3 only",
+        "D": "1,2,3 and 4"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2006_Q24",
+      "year": 2006,
+      "question": "Q23. (2006) For which sport is the Val Barker Cup awarded in the Olympic Games? [2006] Source ref: gk_part3 / Q14",
+      "options": {
+        "A": "Swimming",
+        "B": "Boxing",
+        "C": "Long Jump",
+        "D": "High Jump"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2006_Q25",
+      "year": 2006,
+      "question": "Q24. (2006) Match List-I with List-II and select the correct answer using the code given below the lists: [2006] List-I List-II (Leading Woman Lawn Tennis Player) (Country) A Daniela Hantuchova 1. Russia B. Patty Schnyder 2. Slovakia C. Nadia Petrova 3. France D. Amelie Mauresmo 4. Switzerland A B C D Source ref: gk_part3 / Q17",
+      "options": {
+        "A": "2 1 4 3",
+        "B": "2 4 1 3",
+        "C": "3 4 1 2",
+        "D": "3 1 4 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2006_Q26",
+      "year": 2006,
+      "question": "Q25. (2006) In which Olympics games did India last win a Gold Medal? [2006] Source ref: gk_part3 / Q27",
+      "options": {
+        "A": "Montreal (1976)",
+        "B": "Moscow (1980)",
+        "C": "Los Angeles (1984)",
+        "D": "Atalanta (1996)"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2006_Q27",
+      "year": 2006,
+      "question": "Q26. (2006) Which one of the following countries is not a participating team in the Football World Cup-2006 to be held in Germany in July 2006? [2006] Source ref: gk_part3 / Q33",
+      "options": {
+        "A": "Russia",
+        "B": "Togo",
+        "C": "Ivory Coast",
+        "D": "Switzerland"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2006_Q28",
+      "year": 2006,
+      "question": "Q27. (2006) What is Medecins Sans Frontieres (MSF)? [2006] Source ref: gk_part3 / Q35",
+      "options": {
+        "A": "An agency formed by the International Olympic Committee (IOC) to check misuse of drugs by sports persons",
+        "B": "A non-governmental organization which specialized in international humanitarian aid and emergency medical assistance.",
+        "C": "An organization to develop applications of nanotechnology in medicine",
+        "D": "An organization of medical practitioners funded by the European Union which carries out research against spread of AIDS"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2005_Q29",
+      "year": 2005,
+      "question": "Q28. (2005) Match List-I (Famous Former Sports person) with List-II (Game/sports) and select the correct answer using the code given below the lists: [2005] List I List II A. Wally Gout 1. Swimming B. Eusebio 2. Lawn Tennis C. Rod Laver 3. Cricket D. Mark Spitz 4. Football 5. Basketball A B C D Source ref: gk_part3 / Q57",
+      "options": {
+        "A": "3 5 2 4",
+        "B": "2 4 3 1",
+        "C": "3 4 2 1",
+        "D": "2 5 3 4"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2005_Q30",
+      "year": 2005,
+      "question": "Q29. (2005) Match List-I (Lawn Tennis Tournament) with List- II (Winner of Women Singles) and select the correct answer using the code given below the list: [2005] List I List II A. French Open-2004 1. Svetlana Kunetsova B. Wimbledon-2004 2. Anastasia Myskina C. US Open-2004 3. Maria Sharapova D. Australian Open-20044. Serena Williams 5. Justine Henin Hardene A B C D Source ref: gk_part3 / Q58",
+      "options": {
+        "A": "5 1 4 2",
+        "B": "2 3 1 5",
+        "C": "5 3 1 2",
+        "D": "2 1 4 5"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2005_Q31",
+      "year": 2005,
+      "question": "Q30. (2005) Which one of the following games is Shanmugham Venkatesh an outstanding player? [2005] Source ref: gk_part3 / Q62",
+      "options": {
+        "A": "Table Tennis",
+        "B": "Hockey",
+        "C": "Football",
+        "D": "Basketball"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2005_Q32",
+      "year": 2005,
+      "question": "Q31. (2005) Which pairs are correctly matched? Publication Group: [2005] 1. Sportstar The Hindu publication 2. Business World ABP 3. The Week Malayala Manorama 4. Reader’s Digest Indian Express Select the correct answer: Source ref: gk_part3 / Q63",
+      "options": {
+        "A": "1, 2, 3 and 4",
+        "B": "1, 2 and 3",
+        "C": "2 and 4",
+        "D": "1 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2005_Q33",
+      "year": 2005,
+      "question": "Q32. (2005) Which countries played in the Lawn Tennis Davis Cup Final in the year 2004? [2005] Source ref: gk_part3 / Q69",
+      "options": {
+        "A": "Switzerland and United States of America",
+        "B": "Spain and United States of America",
+        "C": "Australia and Argentina",
+        "D": "Sweden and Belgium"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2005_Q34",
+      "year": 2005,
+      "question": "Q33. (2005) Consider the following statements concerning the Indian Railways.: [2005] 1. The Head Quarters of the North Western Railway are located at Jodhpur. 2. ‘Indrail pass’ - a travel-as-you- please ticket has been created especially for freedom and sports persons who have represented India in any game/sport. 3. Fairy Queen is a train using the world’s oldest working engine and the Indian railways conduct a journey of wildlife and heritage sites on it. Which of the above statements is/are correct? Source ref: gk_part3 / Q83",
+      "options": {
+        "A": "2 only",
+        "B": "3 only",
+        "C": "1 and 2",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2004_Q35",
+      "year": 2004,
+      "question": "Q34. (2004) Match List-I (Persons) with List-II (Positions) and select the correct answer using the codes given below the Lists: [2004] List-I (Persons) List-II (Positions) A) B.P. Mishra 1. Executive Director, IMF B) Suresh Kalamadi 2. Chairman, Steel Authority of India Ltd. C) PrafulPatel 3. President, Indian Olympic Association D) V. S. Jain 4. Vice-President, South Asian Region, World Bank A B C D Source ref: gk_part3 / Q90",
+      "options": {
+        "A": "4 2 1 3",
+        "B": "1 3 4 2",
+        "C": "4 3 1 2",
+        "D": "1 2 4 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2004_Q36",
+      "year": 2004,
+      "question": "Q35. (2004) Famous Golf player Vijay Singh is from which one of the following countries? [2004] Source ref: gk_part3 / Q94",
+      "options": {
+        "A": "Fiji",
+        "B": "Mauritius",
+        "C": "Malaysia",
+        "D": "Kenya"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_2004_Q37",
+      "year": 2004,
+      "question": "Q36. (2004) Consider the following statements: [2004] 1. P. V. Narasimha Rao’s government established diplomatic relations between India and Israel. 2. Ariel Sharon is the second Prime Minister of Israel to have visited India. Which of the statements give above is/ are correct? Source ref: gk_part3 / Q98",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_1999_Q38",
+      "year": 1999,
+      "question": "Q37. (1999) Which one of the following pairs is not correctly matched? [1999] Source ref: gk_part4 / Q11",
+      "options": {
+        "A": "Jim Laker: Highest number of wickets in a Cricket Test match",
+        "B": "Brian Lara: Highest score in an innings in Test Cricket",
+        "C": "Sanath Jayasurya & Roshan Mahanama: Highest partnership in an innings in Test Cricket",
+        "D": "Sunil M. Gavaskar: Highest aggregate of runs in Test Cricket"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_1999_Q39",
+      "year": 1999,
+      "question": "Q38. (1999) In order to win the Grand Slam in Tennis, a player must win which one of the following groups of tournaments? [1999] Source ref: gk_part4 / Q14",
+      "options": {
+        "A": "Australian Open, Wimbledon, French Open, US Open",
+        "B": "Wimbledon, French Open, US Open",
+        "C": "Wimbledon, French Open, Paegas Czech Open, US Open",
+        "D": "Davis Cup, Wimbledon, French Open"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_1998_Q40",
+      "year": 1998,
+      "question": "Q39. (1998) Olympics 2000 is to be held in: [1998] Source ref: gk_part4 / Q18",
+      "options": {
+        "A": "Johannesberg",
+        "B": "Capetown",
+        "C": "Rome",
+        "D": "Sydney"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_1996_Q41",
+      "year": 1996,
+      "question": "Q40. (1996) In the 1996 Cricket World Cup, the non-test playing countries which participated included: [1996] III. India had by then qualified for the Atlanta Olympics. Of these statements Source ref: gk_part4 / Q50",
+      "options": {
+        "A": "I, II and III are correct",
+        "B": "I and II are correct",
+        "C": "I and III are correct",
+        "D": "II and III are correct"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_SPORTS.JSON_1996_Q42",
+      "year": 1996,
+      "question": "Q41. (1996) Consider the following statements: Towards the close of 1995, the fortunes of Indian Hockey were believed to be on the upswing because: [1996] I. India had won the Azlan Shah Cup in ‘95’. II. India beat Pakistan in the South Asian Federation games final. Source ref: gk_part4 / Q51",
+      "options": {
+        "A": "II and IV and correct",
+        "B": "I, II and III are correct",
+        "C": "I, II and IV are correct",
+        "D": "III and IV are correct"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-HIS-MOD",
+      "syllabusNodeId": "GS1-HIS-MOD",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    }
+  ],
+  "nodeId": "CA-SPORT",
+  "topicName": "Sports"
+}

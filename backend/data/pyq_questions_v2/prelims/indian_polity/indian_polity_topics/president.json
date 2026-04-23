@@ -1,0 +1,388 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "President",
+  "topicId": "president",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 14,
+  "questions": [
+    {
+      "id": "POL_PRESIDENT_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Indian polity, consider the following statements: I. An Ordinance can amend any Central Act. II. An Ordinance can abridge a Fundamental Right.",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Ordinance",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_2025_Q2",
+      "questionNumber": 2,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements with regard to pardoning power of the President of India: I. The exercise of this power by the President can be subjected to limited judicial review. II. The President can exercise this power without the advice of the Central Government. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "I only",
+        "B": "II only",
+        "C": "Both I and II",
+        "D": "Neither I nor II"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Judicial Review",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_2023_Q3",
+      "questionNumber": 3,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. If the election of the President of India is declared void by the Supreme Court of India, all acts done by him/her in the performance of duties of his/her office of President before the date of decision become invalid. 2. Election for the post of the President of India can be postponed on the ground that some Legislative Assemblies have been dissolved and election are yet to take place. 3. When a Bill is presented to the President of India, the Constitution prescribes time limits within which he/she has to declare his/her assent. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_2023_Q4",
+      "questionNumber": 4,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements in respect of election to the President of India: 1. The members nominated to either House of the Parliament or the Legislative Assemblies of States are also eligible to be included in the Electoral College. 2. Higher the number of elective Assembly seats, higher is the value of vote of each MLA of that state. 3.The value of vote of each MLA of Madhya Pradesh is greater than that of Kerala. 4.The value of vote of each MLA of Puducherry is higher than that of Arunachal Pradesh because the ratio of total population to total number of elective seats in Puducherry is greater as compared to Arunachal Pradesh. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_2018_Q5",
+      "questionNumber": 5,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the election of the President of India, consider the following statements: 1. The value of the vote of each MLA varies from State to State. 2. The value of the vote of MPs of the Lok Sabha is more than the value of the vote of MPs of the Rajya Sabha. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 and 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_2012_Q6",
+      "questionNumber": 6,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "To the Constitution of India, it is the duty of the President of India to cause to be laid before the Parliament which of the following? 1. The Recommendations of the Union Finance Commission 2. The Report of the Public Accounts Committee 3. The Report of the Comptroller and Auditor General 4. The Report of the National Commission for Scheduled Castes Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 4 Only",
+        "C": "1, 3 & 4 Only",
+        "D": "1, 2, 3 & 4"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Finance Commission",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_2010_Q7",
+      "questionNumber": 7,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who of the following shall cause every recommendation made by the Finance Commission to be laid before each House of Parliament?",
+      "options": {
+        "A": "The President of India",
+        "B": "The Speaker of Lok Sabha",
+        "C": "The Prime Minister of India",
+        "D": "The Union Finance Minister"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Finance Commission",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_2004_Q8",
+      "questionNumber": 8,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "The resolution for removing the Vice-President of India can be moved in the:",
+      "options": {
+        "A": "Lok Sabha alone",
+        "B": "Either House of Parliament",
+        "C": "Joint Sitting of Parliament",
+        "D": "Rajya Sabha alone"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_2003_Q9",
+      "questionNumber": 9,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Under which Article of the Indian Constitution did the President give his assent to the ordinance on electoral reforms when it was sent back to him by the Union Cabinet without making any changes (in the year 2002)?",
+      "options": {
+        "A": "Article 121",
+        "B": "Article 122",
+        "C": "Article 123",
+        "D": "Article 124"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "Ordinance",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_2003_Q10",
+      "questionNumber": 10,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: In the electoral college for the Presidential Election in India. 1. The value of the vote of an elected Member of Legislative Assembly equals 2. The value of the vote of an elect parliament equals 3. There were more than 5000 members in the latest election Which of these statements is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "Only 2",
+        "C": "1 and 3",
+        "D": "Only 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_2002_Q11",
+      "questionNumber": 11,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following amendments to the Indian Constitution empowers the President to send back any matter for reconsideration by the Council of Ministers?",
+      "options": {
+        "A": "39th",
+        "B": "40th",
+        "C": "42nd",
+        "D": "44th"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_1997_Q12",
+      "questionNumber": 12,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Presidential election in India, every elected member of the Legislative Assembly of a State shall have as many votes as there are multiples of one thousand in the quotient obtained by dividing the population of the State by the total number of the elected members of the Assembly. As at present (1997) the expression “population” here means the population as ascertained by the:",
+      "options": {
+        "A": "1991 Census",
+        "B": "1981 Census",
+        "C": "1971 Census",
+        "D": "1961 Census"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_1997_Q13",
+      "questionNumber": 13,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following are/is stated in the Constitution of India? I. The President shall not be a member of either House of Parliament. II. The Parliament shall consist of the President and two Houses. Choose the correct answer from the codes given below:",
+      "options": {
+        "A": "Neither I nor II",
+        "B": "Both I and II",
+        "C": "I alone",
+        "D": "II alone"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PRESIDENT_1996_Q14",
+      "questionNumber": 14,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is part of the electoral college for the election of the President of India but does not form part of the forum for his impeachment?",
+      "options": {
+        "A": "Lok Sabha",
+        "B": "Rajya Sabha",
+        "C": "State Legislative Councils ed Member of",
+        "D": "State Legislative Assemblies"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "President",
+      "topicId": "president",
+      "sectionId": "GS2-POL-EXEC",
+      "nodeId": "GS2-POL-EXEC",
+      "syllabusNodeId": "GS2-POL-EXEC",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

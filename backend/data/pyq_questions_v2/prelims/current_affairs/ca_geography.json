@@ -1,0 +1,773 @@
+{
+  "schemaVersion": "mentoros-ca-v1",
+  "fileName": "ca_geography.json",
+  "questions": [
+    {
+      "id": "CA_GEOGRAPHY.JSON_None_Q1",
+      "year": null,
+      "question": "Question count: 34 Note: Best-effort structured extraction from a column-formatted source PDF. Where the source itself marked an answer as changed, that note is preserved.",
+      "options": {},
+      "answer": {
+        "correct_option": null,
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "low",
+      "reviewRequired": true
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2024_Q2",
+      "year": 2024,
+      "question": "Q1. (2024) Consider the following statements: [2024] Statement I: Sumed pipeline is a strategic route for Persian Gulf oil and natural gas shipments to Europe. Statement-II: Sumed pipeline connects the Red Sea with the Mediterranean Sea. Which one of the following is correct in respect of the above statements? ( Source ref: gk_part1 / Q8",
+      "options": {
+        "A": "Statement-I and Statement-II are correct and Statement-II explains Statement-I (",
+        "B": "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I (",
+        "C": "Statement-I is correct, but Statement-II is incorrect (",
+        "D": "Statement-I is incorrect, but Statement-II is correct"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Geopolitics",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2024_Q3",
+      "year": 2024,
+      "question": "Q2. (2024) Consider the following statements: [2024] Statement I: There is instability and worsening security situation in Sahel region. Statement-II: There have been military takeovers/coups d'état in several countries of the Sahel region in the recent past. Which one of the following is correct in respect of the above statements? ( Source ref: gk_part1 / Q9",
+      "options": {
+        "A": "Statement-I and Statement-II are correct and Statement-II explains Statement-I (",
+        "B": "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I (",
+        "C": "Statement-I is correct, but Statement-II is incorrect (",
+        "D": "Statement-I is incorrect, but Statement-II is correct"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2023_Q4",
+      "year": 2023,
+      "question": "Q3. (2023) Consider the following pairs: [2023] Regions often mentioned in news: Reason for being in news 1. North Kivu and Ituri: War between Armenia and Azerbaijan 2. Nagorno-Karabakh: Insurgency in Mozambique 3. Kherson and Zaporizhzhia: Dispute between Israel and Lebanon How many of the above pairs are correctly matched? Source ref: gk_part1 / Q12",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2023_Q5",
+      "year": 2023,
+      "question": "Q4. (2023) Consider the following pairs: [2023] Area of conflict mentioned : Country where it’s located in news 1. Donbas: Syria 2. Kachin: Ethiopia 3. Tigray: North Yemen How many of the above pairs are correctly matched? Source ref: gk_part1 / Q15",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2022_Q6",
+      "year": 2022,
+      "question": "Q5. (2022) The term “Levant” often heard in the news roughly corresponds to which of the following regions? [2022] Source ref: gk_part1 / Q20",
+      "options": {
+        "A": "Region along the eastern Mediterranean shores",
+        "B": "Region along North African shores stretching from Egypt to Morocco",
+        "C": "Region along Persian Gulf and Horn of Africa",
+        "D": "The entire coastal areas of Mediterranean Sea"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Geopolitics",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2022_Q7",
+      "year": 2022,
+      "question": "Q6. (2022) Consider the following pairs: [2022] Region often mentioned in the news - Country 1. Anatolia - Turkey 2. Amhara - Ethiopia 3. Cabo Delgado - Spain 4. Catalonia - Italy How many pairs given above are correctly matched? Source ref: gk_part1 / Q22",
+      "options": {
+        "A": "Only one pair",
+        "B": "Only two pairs",
+        "C": "Only three pairs",
+        "D": "All four pairs"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2022_Q8",
+      "year": 2022,
+      "question": "Q7. (2022) Which one of the following statements best reflects the issue which Senkaku Islands, sometimes mentioned in the news? [2022] Source ref: gk_part1 / Q23",
+      "options": {
+        "A": "It is generally believed that they are artificial islands made by a country around South China Sea.",
+        "B": "China and Japan engage in maritime disputes over these islands in East China Sea",
+        "C": "A permanent American military base has been set up there to help Taiwan to increase its defence capabilities.",
+        "D": "Through International Courts of Justice declared them as no man’s land, some South-East Asian countries claim them."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2018_Q9",
+      "year": 2018,
+      "question": "Q8. (2018) Consider the Following Pairs: [2018] Towns sometimes mentioned in the News - Country 1. Aleppo - Syria 2. Kirkuk - Yemen 3. Mosul - Palestine 4. Mazar-i-sharif - Afghanistan Which of the pairs given above are correctly matched? Source ref: gk_part1 / Q37",
+      "options": {
+        "A": "1 and 2",
+        "B": "1 and 4",
+        "C": "2 and 3",
+        "D": "3 and 4"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2016_Q10",
+      "year": 2016,
+      "question": "Q9. (2016) Recently, linking of which of the following rivers was undertaken? [2016] Source ref: gk_part1 / Q46",
+      "options": {
+        "A": "Cauvery and Tungabhadra",
+        "B": "Godavari and Krishna",
+        "C": "Mahanadi and Sone",
+        "D": "Narmada and Tapti"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2016_Q11",
+      "year": 2016,
+      "question": "Q10. (2016) Recently, which of the following States has explored the possibility of constructing an artificial inland port to be connected to sea by a long navigational channel? [2016] Source ref: gk_part1 / Q48",
+      "options": {
+        "A": "Andhra Pradesh",
+        "B": "Chhattisgarh",
+        "C": "Karnataka",
+        "D": "Rajasthan"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2015_Q12",
+      "year": 2015,
+      "question": "Q11. (2015) In a particular region in India, the local people train the roots of living tree into robust bridges across the streams. As the time passes these bridges become stronger. These unique ‘Living Root Bridges’ are found in: [2015] Source ref: gk_part1 / Q52",
+      "options": {
+        "A": "Meghalaya",
+        "B": "Himachal Pradesh",
+        "C": "Jharkhand",
+        "D": "Tamil Nadu"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2015_Q13",
+      "year": 2015,
+      "question": "Q12. (2015) The area known as ‘Golan Heights’ sometimes appears in the news in the context of the events related to: [2015] Source ref: gk_part1 / Q58",
+      "options": {
+        "A": "Central Asia",
+        "B": "Middle East",
+        "C": "South-East Asia",
+        "D": "Central Africa"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2014_Q14",
+      "year": 2014,
+      "question": "Q13. (2014) Consider the following pairs: [2014] Region often in news: Country 1. Chechnya: Russian Federation 2. Darfur: Mali 3. Swat Valley: Iraq Which of the pairs is/are correctly matched? Source ref: gk_part1 / Q61",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2011_Q15",
+      "year": 2011,
+      "question": "Q14. (2011) In the context of global oil prices, “Brent crude oil” is frequently referred to in the news. What does this term imply? [2011] 1. It is a major classification of crude oil. 2. It is sourced from North Sea. 3. It does not contain sulphur. Which of the statements given above is/are correct? Source ref: gk_part1 / Q64",
+      "options": {
+        "A": "2 only",
+        "B": "1 and 2 only",
+        "C": "1 and 3 only",
+        "D": "1,2, and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2011_Q16",
+      "year": 2011,
+      "question": "Q15. (2011) Southeast Asia has captivated the attention of global community over space and time as a geostrategic-ally significant region. Which among the following is the most convincing explanation for this global perspective? [2011] Source ref: gk_part1 / Q65",
+      "options": {
+        "A": "It was the hot theatre during the second world war.",
+        "B": "Its location between the Asian powers of China and India.",
+        "C": "It was the arena of superpower confrontation during the cold war period.",
+        "D": "Its location between the pacific and Indian oceans and its pre-eminent maritime character."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2009_Q17",
+      "year": 2009,
+      "question": "Q16. (2009) Among the following, which one is not a football club? [2009] Source ref: gk_part2 / Q5",
+      "options": {
+        "A": "Arsenal",
+        "B": "Aston Villa",
+        "C": "Chelsea",
+        "D": "Monte Carlo"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2009_Q18",
+      "year": 2009,
+      "question": "Q17. (2009) Which one of the following is the country's administrative capital/new federal administrative centre of Malaysia? [2009] Source ref: gk_part2 / Q10",
+      "options": {
+        "A": "Kota Bharu",
+        "B": "Kuala Terengganu",
+        "C": "Putrajaya",
+        "D": "Taiping"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2009_Q19",
+      "year": 2009,
+      "question": "Q18. (2009) Elephant Pass, which is frequently in the news, is mentioned in the context of the affairs of which one of the following? [2009] Source ref: gk_part2 / Q11",
+      "options": {
+        "A": "Bangladesh",
+        "B": "India",
+        "C": "Nepal",
+        "D": "Sri Lanka"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2009_Q20",
+      "year": 2009,
+      "question": "Q19. (2009) A very big refugee camp called Dadaab, recently in the news, is located in: [2009] Source ref: gk_part2 / Q12",
+      "options": {
+        "A": "Ethiopia",
+        "B": "Kenya",
+        "C": "Somalia",
+        "D": "Sudan"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2009_Q21",
+      "year": 2009,
+      "question": "Q20. (2009) In which one of the following States has India's largest private sector sea port been commissioned recently? [2009] Source ref: gk_part2 / Q14",
+      "options": {
+        "A": "Andhra Pradesh",
+        "B": "Karnataka",
+        "C": "Kerala",
+        "D": "Tamil Nadu"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2009_Q22",
+      "year": 2009,
+      "question": "Q21. (2009) Which one of the following pairs of countries fought wars over a region called Ogaden? [2009] Source ref: gk_part2 / Q16",
+      "options": {
+        "A": "Eritrea and Sudan",
+        "B": "Ethiopia and Somalia",
+        "C": "Kenya and Somalia",
+        "D": "Ethiopia and Sudan"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2009_Q23",
+      "year": 2009,
+      "question": "Q22. (2009) Consider the following countries: [2009] 1. Brunei Darussalam. 2. East Timor 3. Laos Which of the above is/are member/members of ASEAN? Source ref: gk_part2 / Q29",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2009_Q24",
+      "year": 2009,
+      "question": "Q23. (2009) Consider the following pairs: [2009] Famous place Country 1. Cannes France 2. Davos Denmark 3. Roland Garros The Netherlands Which of the pairs given above is/are correctly matched? Source ref: gk_part2 / Q33",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2008_Q25",
+      "year": 2008,
+      "question": "Q24. (2008) Which of the following pairs is/are correctly matched? [2008] 1. Francis Collins: Mapping human genome 2. Sergey Brin: Google Search Engine 3. Jimmy Wals: Wikipedia Select the answer using the code given below: Source ref: gk_part2 / Q53",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1,2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2008_Q26",
+      "year": 2008,
+      "question": "Q25. (2008) Ogaden region has been a source of conflict between which countries? [2008] Source ref: gk_part2 / Q73",
+      "options": {
+        "A": "Morocco and Algeria",
+        "B": "Nigeria and Cameroon",
+        "C": "Angola and Zambia",
+        "D": "Ethiopia and Somalia"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2007_Q27",
+      "year": 2007,
+      "question": "Q26. (2007) The Stilwell Road, built in 1940s, which was recently in news, connects which of the following? [2007] Source ref: gk_part2 / Q98",
+      "options": {
+        "A": "Agartala in India and Yangon in Myanmar via Bangladesh",
+        "B": "Ledo in India and Kunming in China via Myanmar",
+        "C": "Kalimpong in India and Lhasa in Tibet via Bhutan",
+        "D": "Imphal in India and Bangkok in Thailand via Myanmar"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2006_Q28",
+      "year": 2006,
+      "question": "Q27. (2006) Where is the Central Water and Power Research Station located? [2006] Source ref: gk_part3 / Q22",
+      "options": {
+        "A": "Khadakwasla",
+        "B": "Sileru",
+        "C": "Jamnagar",
+        "D": "Srisailam"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2005_Q29",
+      "year": 2005,
+      "question": "Q28. (2005) Which one of the following cities is the seat of Parliament of South Africa? [2005] Source ref: gk_part3 / Q43",
+      "options": {
+        "A": "Pretoria",
+        "B": "Durban",
+        "C": "Johannesburg",
+        "D": "Cape Town"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2005_Q30",
+      "year": 2005,
+      "question": "Q29. (2005) Consider the following statements: [2005] 1. Poverty Reduction and Growth Facility (PRGF) has been established by the International Development Association (IDA) to provide further assistance to low- income countries facing high level of indebtedness. 2. Singapore Regional Training Institute (STI) is one of the institutes that provides training in macroeconomic analysis and policy, and related subjects as a part of programme of the IMF institute. Which of the statements is/are correct? Source ref: gk_part3 / Q54",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2005_Q31",
+      "year": 2005,
+      "question": "Q30. (2005) Itaipu Dam built on the River Parana is one of the largest dams in the world. Which of the following two countries have this as a joint project? [2005] Source ref: gk_part3 / Q77",
+      "options": {
+        "A": "Brazil and Peru",
+        "B": "Paraguay and Ecuador",
+        "C": "Brazil and Paraguay",
+        "D": "Colombia and Paraguay"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2005_Q32",
+      "year": 2005,
+      "question": "Q31. (2005) Which one of the following cities is not a former capital of the given country (country given in the brackets)? [2005] Source ref: gk_part3 / Q78",
+      "options": {
+        "A": "",
+        "B": "Auckland (New Zealan",
+        "C": "Kyoto (Japan)",
+        "D": "Brisbane (Australi"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2004_Q33",
+      "year": 2004,
+      "question": "Q32. (2004) Which one of the following statements is not correct? [2004] Source ref: gk_part3 / Q86",
+      "options": {
+        "A": "The largest Buddhist monastery in India is in Assam",
+        "B": "The language Konyak is spoken in Nagaland",
+        "C": "The largest river island in the world is in Assam",
+        "D": "Sikkim is the least-populated state of the Indian Union"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_2004_Q34",
+      "year": 2004,
+      "question": "Q33. (2004) Param Padma, which was in the news recently, is: [2004] Source ref: gk_part3 / Q92",
+      "options": {
+        "A": "A new Civilian Award instituted by the Government of India",
+        "B": "The name of a supercomputer developed by India",
+        "C": "The name given to a proposed network of canals linking northern and southern rivers of India",
+        "D": "A software programme to facilitate e-governance in Madhya Pradesh"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_GEOGRAPHY.JSON_1999_Q35",
+      "year": 1999,
+      "question": "Q34. (1999) Which one of the following port cities in Venezuela has been developed as an oil port? [1999] Source ref: gk_part4 / Q1",
+      "options": {
+        "A": "Caracas",
+        "B": "Maracaibo",
+        "C": "Maracay",
+        "D": "Carupano"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS1-GEO-IND",
+      "syllabusNodeId": "GS1-GEO-IND",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    }
+  ],
+  "nodeId": "GS1-CA-GEO",
+  "topicName": "Geography"
+}

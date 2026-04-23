@@ -1,0 +1,563 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Science & Technology",
+  "topicName": "Electronics, IT & Emerging Tech",
+  "topicId": "sci_elec_it",
+  "sourceType": "UPSC_Science_Tech_PYQ",
+  "totalQuestions": 19,
+  "questions": [
+    {
+      "id": "SCI_SCI_ELEC_IT_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of electric vehicle batteries, consider the following elements: I. Cobalt II. Graphite III. Lithium IV. Nickel How many of the above usually make up battery cathodes?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All the four"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2025_Q2",
+      "questionNumber": 2,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement I: Some rare earth elements are used in the manufacture of flat television screens and computer monitors. Statement II: Some rare earth elements have phosphorescent properties. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement I and Statement II are correct and Statement II explains Statement I",
+        "B": "Both Statement I and Statement II are correct but Statement II does not explain Statement I",
+        "C": "Statement I is correct but Statement II is not correct",
+        "D": "Statement I is not correct but Statement II is correct"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "Rare Earth Applications",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2025_Q3",
+      "questionNumber": 3,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: I. It is expected that Majorana 1 chip will enable quantum computing. II. Majorana 1 chip has been introduced by Amazon Web Services (AWS). III. Deep learning is a subset of machine learning. Which of the statements given above are correct?",
+      "options": {
+        "A": "I and II only",
+        "B": "II and III only",
+        "C": "I and III only",
+        "D": "I, II and III"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "Quantum Computing",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2024_Q5",
+      "questionNumber": 5,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following activities: 1. Identification of narcotics on passengers at airports or in aircraft 2. Monitoring of precipitation 3. Tracking the migration of animals In how many of the above activities can the radars be used?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2024_Q6",
+      "questionNumber": 6,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following words/phrases is most appropriately used to denote \"an interoperable network of 3D virtual worlds that can be accessed simultaneously by millions of users, who can exert property rights over virtual items\"?",
+      "options": {
+        "A": "Big data analytics",
+        "B": "Cryptography",
+        "C": "Metaverse",
+        "D": "Virtual matrix"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2020_Q9",
+      "questionNumber": 9,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to \"Blockchain Technology\", consider the following statements: 1. It is a public ledger that everyone can inspect, but which no single user controls. 2. The structure and design of blockchain is such that all the data in it are about cryptocurrency only. 3. Applications that depend on basic features of blockchain can be developed without anybody's permission. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 only",
+        "D": "1 and 3 only"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "Blockchain",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2020_Q10",
+      "questionNumber": 10,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, under cyber insurance for individuals, which of the following benefits are generally covered, in addition to payment for the loss of funds and other benefits? 1. Cost of restoration of the computer system in case of malware disrupting access to one's computer 2. Cost of a new computer if some miscreant wilfully damages it, if proved so 3. Cost of hiring a specialised consultant to minimize the loss in case of cyber extortion 4. Cost of defence in the Court of Law if any third - party files a suit Select the correct answer using the code given below:",
+      "options": {
+        "A": "1, 2 & 4 only",
+        "B": "1, 3 & 4 only",
+        "C": "2 & 3 only",
+        "D": "1, 2, 3 & 4"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2019_Q11",
+      "questionNumber": 11,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of wearable technology, which of the following tasks is/are accomplished by wearable devices? 1. Location identification of a person 2. Sleep monitoring of a person 3. Assisting the hearing-impaired person Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3 Which of the statements given above is/are correct?"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2018_Q12",
+      "questionNumber": 12,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "The terms \"WannaCry, Petya and Eternal Blue\" sometimes mentioned in the news recently are related to:",
+      "options": {
+        "A": "Exoplanets",
+        "B": "Cryptocurrency",
+        "C": "Cyber-attacks",
+        "D": "Mini Satellites"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "C",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: WannaCry/Petya/EternalBlue are cyber-attacks"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2018_Q13",
+      "questionNumber": 13,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following is/are the aim/aims of \"Digital India\" Plan of the Government of India? 1. Formation of India's own internet companies like China did. 2. Establish a policy framework to encourage overseas multinational corporations that collect Big Data to build their vast data centres within our national geographical boundaries. 3. Connect many of our villages to the Internet and bring Wi-Fi to many of our schools, public places and major tourist centres. Select the correct answer using the code given below:",
+      "options": {
+        "A": "Border Gateway Protocol",
+        "B": "Internet Of Things",
+        "C": "Internet Protocol",
+        "D": "Visual Private Network"
+      },
+      "answer": {
+        "correct_option": null,
+        "status": "dropped_source_unclear"
+      },
+      "correctAnswer": null,
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Source options/question text too corrupted for safe answer retention."
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2011_Q14",
+      "questionNumber": 14,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the difference between blue -tooth and Wi-Fi devices?",
+      "options": {
+        "A": "Bluetooth uses 2.4 GHz radio frequency band, whereas Wi-Fi can use 2.4 GHz or 5 GHz frequency band.",
+        "B": "Bluetooth is used for wireless local area networks (WLAN) only, whereas Wi-Fi is used for wireless wide area networks (WWAN) only.",
+        "C": "When information is transmitted between two devices using blue-tooth technology , the devices have to be in the line of sight of each other, but when Wi-Fi technology is used the devices need not be in the line of sight of each other.",
+        "D": "The statements (a) and (b) given above are correct in this context."
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2011_Q15",
+      "questionNumber": 15,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is \"virtual private network\"?",
+      "options": {
+        "A": "It is a private computer network of an organization where the remote users can transmit encrypted information through the server of the organization.",
+        "B": "It is a computer network across a public internet the provides users access to their organizations network while maintaining the security of the information transmitted.",
+        "C": "It is a computer network in which users can access a shared pool of computing resources through a service provider .",
+        "D": "None of the statements (a), (b) and (c) given above is correct description of virtual private network."
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2010_Q16",
+      "questionNumber": 16,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which among the following do / does not belong / belongs to the GSM family of wireless technologies?",
+      "options": {
+        "A": "EDGE",
+        "B": "LTE",
+        "C": "DSL",
+        "D": "Both EDGE and LTE"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2009_Q17",
+      "questionNumber": 17,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "WIMaX is related to which one of the following?",
+      "options": {
+        "A": "Biotechnology",
+        "B": "Space technology",
+        "C": "Missile technology",
+        "D": "Communication technology"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2007_Q18",
+      "questionNumber": 18,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who among the following is considered as the inventor of the World Wide Web (WWW)?",
+      "options": {
+        "A": "Edward Kasner",
+        "B": "Bill Gates",
+        "C": "Tim Berners-Lee",
+        "D": "Vinod Dham"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2006_Q19",
+      "questionNumber": 19,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "What does the term Dolby B, or Dolby C. printed on tape recorders and other sound system refer to?",
+      "options": {
+        "A": "Frequency modulated system",
+        "B": "Amplitude Modulated system",
+        "C": "Noise reduction circuit",
+        "D": "Both DC and AC power can be used"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2004_Q20",
+      "questionNumber": 20,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Smart Card is a plastic card with an embedded microchip. 2. Digital technology is primarily used with new physical communication medium such as satellite and fibre optics transmission. 3. A digital library is a collection of documents in an organised electronic form available on the Internet only. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "3 only",
+        "B": "1 and 2",
+        "C": "2 and 3",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "Satellites and Navigation",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_2000_Q21",
+      "questionNumber": 21,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "The memory of a computer is commonly expressed in terms of Kilobytes or Megabytes. A byte is made up of:",
+      "options": {
+        "A": "eight binary digits",
+        "B": "eight decimal digits",
+        "C": "two binary digits",
+        "D": "two decimal digits"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ELEC_IT_1997_Q22",
+      "questionNumber": 22,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "The world's fastest computer has been able to perform (as of Dec. 1996):",
+      "options": {
+        "A": "106 operations per second",
+        "B": "109 operations per second",
+        "C": "1012 operations per second",
+        "D": "1015 operations per second"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Electronics, IT & Emerging Tech",
+      "topicId": "sci_elec_it",
+      "sectionId": "GS3-SCI-TECH-IT",
+      "nodeId": "GS3-ST-IT-COMM",
+      "syllabusNodeId": "GS3-ST-IT-COMM",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    }
+  ]
+}

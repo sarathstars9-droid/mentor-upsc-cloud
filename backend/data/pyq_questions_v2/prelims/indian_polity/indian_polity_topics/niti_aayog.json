@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "NITI Aayog",
+  "topicId": "niti_aayog",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 1,
+  "questions": [
+    {
+      "id": "POL_NITI_AAYOG_2015_Q2",
+      "questionNumber": 2,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Government of India has established NITI Aayog to replace the:",
+      "options": {
+        "A": "Human Rights Commission",
+        "B": "Finance Commission",
+        "C": "Law Commission",
+        "D": "Planning Commission"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "NITI Aayog",
+      "topicId": "niti_aayog",
+      "sectionId": "GS2-POL-BODIES",
+      "nodeId": "GS2-POL-BODIES",
+      "syllabusNodeId": "GS2-POL-BODIES",
+      "microTheme": "NITI Aayog replacing Planning Commission",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

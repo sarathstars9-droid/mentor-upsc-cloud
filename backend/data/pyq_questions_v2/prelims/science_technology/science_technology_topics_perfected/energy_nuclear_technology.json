@@ -1,0 +1,507 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Science & Technology",
+  "topicName": "Energy & Nuclear Technology",
+  "topicId": "sci_energy_nuclear",
+  "sourceType": "UPSC_Science_Tech_PYQ",
+  "totalQuestions": 17,
+  "questions": [
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2019_Q4",
+      "questionNumber": 4,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of which one of the following are the terms 'pyrolysis and plasma gasification' mentioned?",
+      "options": {
+        "A": "Extraction of rare earth elements",
+        "B": "Natural gas extraction technologies",
+        "C": "Hydrogen fuel-based automobiles",
+        "D": "Waste-to-energy technologies"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "D",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "General",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: pyrolysis/plasma gasification = waste-to-energy"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2010_Q7",
+      "questionNumber": 7,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Excessive release of the pollutant carbon monoxide (CO), into the air may produce a condition in which oxygen supply in the human body decreases. What causes this condition?",
+      "options": {
+        "A": "When inhaled into the human body, CO is converted into CO2.",
+        "B": "The inhaled CO has much higher affinity for haemoglobin as compared to oxygen.",
+        "C": "The inhaled CO destroys the chemical structure of haemoglobin.",
+        "D": "The inhaled CO adversely affects the respiratory centre in the brain."
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2010_Q8",
+      "questionNumber": 8,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Hydrogen fuel cell vehicles produce one of the following as \"exhaust\"",
+      "options": {
+        "A": "NH3",
+        "B": "CH4",
+        "C": "H2O",
+        "D": "H2O2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "C",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Hydrogen Technology",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: hydrogen fuel cell exhaust is water"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2005_Q24",
+      "questionNumber": 24,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Liquefied Natural Gas (LNG) is liquefied under extremely cold temperatures and high pressure to facilitate storage or transportation in specially designed vessels. 2. Fist LNG terminal in India was built in Hassan. 3. Natural Gas Liquids (NGL) are separated from LPG and these include ethane, propan e, butane and natural gasoline. Which of the statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 3",
+        "C": "2 and 3",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2004_Q26",
+      "questionNumber": 26,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List -I (Fuel Gases) with List -II (Major Constituents) and: select the correct answer using the codes given below the Lists: List-I (Fuel Gases) List-II (Major Constituents) A. CNG 1. Carbonmonoxide, Hydrogen B. Coal gas 2. Butane, Propane C. LPG 3. Methane, Ethane D. Water gas 4. Hydrogen, Methane, Carbon monoxide A B C D",
+      "options": {
+        "A": "2 1 3 4",
+        "B": "3 4 2 1",
+        "C": "2 4 3 1",
+        "D": "3 1 2 4"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Hydrogen Technology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2000_Q49",
+      "questionNumber": 49,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I (Industrial processes) with List II (Industry with which associated) and select the correct answer using the codes given below the Lists: List I List II I. Cracking A) Rubber II. Smelting B) Petroleum III. Hydrogenation C) Copper IV. Vulcanization D) Edible fats",
+      "options": {
+        "A": "I-C, II-B, III-A, IV-D",
+        "B": "I-B, II-C, III-D, IV-A",
+        "C": "I-B, II-C, III-A, IV-D",
+        "D": "I-C, II-B, III-D, IV-A"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Hydrogen Technology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_1998_Q59",
+      "questionNumber": 59,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Coke is one of the materials of the charge added to blast furnace for the production of steel/iron. Its function is to: I. Act as a reducing agent. II. Remove silica associated with the iron ore. III. Function as fuel, to supply heat. IV. Act as an oxidizing agent. Of these statements:",
+      "options": {
+        "A": "I and II are correct",
+        "B": "II and IV are correct",
+        "C": "I and III are correct",
+        "D": "III and IV are correct"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_1997_Q71",
+      "questionNumber": 71,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following has the highest fuel value?",
+      "options": {
+        "A": "Hydrogen",
+        "B": "Charcoal",
+        "C": "Natural Gas",
+        "D": "Gasoline"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2023_Q1",
+      "questionNumber": 1,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement-I: India, despite having Uranium deposits, depends on coal for most of its electricity production. Statement- II: Uranium, enriched to the extent of at least 60%, is required for the production of electricity. Which of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I.",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I.",
+        "C": "Statement-I is correct but Statement-II is incorrect.",
+        "D": "Statement-I is incorrect but Statement-II is correct."
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2016_Q5",
+      "questionNumber": 5,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "India is an important member of the 'International Thermonuclear Experimental Reactor'. If this experiment succeeds, what is the immediate advantage for India?",
+      "options": {
+        "A": "It can use thorium in place of uranium for power generation",
+        "B": "It can attain a global role in satellite navigation",
+        "C": "It can drastically improve the efficiency of its fission reactors in power generation",
+        "D": "It can build fusion reactors for power generation"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "D",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Nuclear Reactors",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: ITER success implies fusion reactors"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2013_Q8",
+      "questionNumber": 8,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "The efforts to detect the existence of Higgs boson particle have become frequent news in the recent past. What is/ are the importance of discovering this particle? 1. It will enable us to under -stand as to why elementary particles have mass. 2. It will enable us in the near future to develop the technology of transferring matter from one point to another without traversing the physical space between them. 3. It will enable us to create better fuels for nuclear fission. Select the correct answer using the codes given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2011_Q10",
+      "questionNumber": 10,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "The function of heavy water in a nuclear reactor is to?",
+      "options": {
+        "A": "Slow down the speed of neutrons.",
+        "B": "Increase the speed of neutrons.",
+        "C": "Cool down the reactor.",
+        "D": "Stop the nuclear reaction."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "A",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Nuclear Reactors",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: heavy water slows neutrons"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2008_Q23",
+      "questionNumber": 23,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who among the following discovered heavy water?",
+      "options": {
+        "A": "Heinrich Hertz",
+        "B": "H.C. Urey",
+        "C": "Bengali",
+        "D": "Malayalam"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2003_Q34",
+      "questionNumber": 34,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Steam at 100° C and boiling water at 100° C contain same amount of heat. 2. Latent heat of fusion of ice is equal to the latent heat of vaporization of water. 3. In an air-conditioner , heat is extracted from the room-air at the evaporator coils and is rejected out at the condenser coils. Which of these statements is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 and 3",
+        "C": "Only 2",
+        "D": "Only 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2003_Q36",
+      "questionNumber": 36,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Diffusion of light in the atmosphere takes place due to:",
+      "options": {
+        "A": "Remains horizontal",
+        "B": "Is inclined to the horizontal with smaller depth at the rear end",
+        "C": "Is inclined to the horizontal with larger depth at the rear end",
+        "D": "Assumes parabolic curve"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_2001_Q43",
+      "questionNumber": 43,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: In a nuclear reactor, self -sustained chain reaction is possible, because: I. More neutrons are released in each of the fission reactions. II. The neutrons immediately take part in the fission process. III. The fast neutrons are slowed down by Graphite. IV. Every neutron released in the fission reaction initiates further fission. Which of these statements are correct?",
+      "options": {
+        "A": "I, II and III",
+        "B": "I and III",
+        "C": "II and IV",
+        "D": "II, III and IV"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Nuclear Reactors",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_ENERGY_NUCLEAR_1998_Q70",
+      "questionNumber": 70,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following elements is essential for the construction of nuclear reactors?",
+      "options": {
+        "A": "I-C, II-E, III-B, IV-A",
+        "B": "I-B, II-A, III-D, IV-C",
+        "C": "I-B, II-E, III-D, IV-C",
+        "D": "I-C, II-A, III-D, IV-B"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Energy & Nuclear Technology",
+      "topicId": "sci_energy_nuclear",
+      "sectionId": "GS3-SCI-TECH-ENERGY",
+      "nodeId": "GS3-ENV-ENERGY",
+      "syllabusNodeId": "GS3-ENV-ENERGY",
+      "microTheme": "Nuclear Reactors",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    }
+  ]
+}

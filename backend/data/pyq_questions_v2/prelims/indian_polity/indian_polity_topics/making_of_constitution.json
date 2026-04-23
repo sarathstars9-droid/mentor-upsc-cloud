@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Making of Constitution",
+  "topicId": "making_of_constitution",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 2,
+  "questions": [
+    {
+      "id": "POL_MAKING_OF_CONSTITUTION_2023_Q1",
+      "questionNumber": 1,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements in respect of the Constitution Day: Statement-I: The Constitution Day is celebrated on 26th November every year to promote constitutional values among citizens. Statement-II: On 26th November, 1949, the Constituent Assembly of India set up a Drafting Committee under the Chairmanship of Dr. B. R. Ambedkar to prepare a Draft Constitution of India. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Making of Constitution",
+      "topicId": "making_of_constitution",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Constitution Day",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_MAKING_OF_CONSTITUTION_1997_Q2",
+      "questionNumber": 2,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the following quotation: “WE, THE PEOPLE OF INDIA, having solemnly resolved to constitute India into a Sovereign Socialist Secular Democratic Republic and to secure to all its citizens: JUSTICE, social, economic and political; LIBERTY of thought, expression, belief, faith and worship; EQUALITY of status and of opportunity; and to promote among them all; FRATERNITY assuring the dignity of the individual and the unity and integrity of the Nation; In our Constituent Assembly this ‘X’ .......... do hereby adopt, enact and give to ourselves this Constitution.” ‘X’ stands for a) Twenty sixth day of January, 1950 b) Twenty sixth day of November, 1949",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Making of Constitution",
+      "topicId": "making_of_constitution",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Making of Constitution",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

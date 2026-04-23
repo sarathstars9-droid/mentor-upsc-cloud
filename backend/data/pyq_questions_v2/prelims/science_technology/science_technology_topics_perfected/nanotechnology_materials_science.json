@@ -1,0 +1,244 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Science & Technology",
+  "topicName": "Nanotechnology & Materials Science",
+  "topicId": "sci_nano_materials",
+  "sourceType": "UPSC_Science_Tech_PYQ",
+  "totalQuestions": 8,
+  "questions": [
+    {
+      "id": "SCI_SCI_NANO_MATERIALS_2022_Q1",
+      "questionNumber": 1,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to polyethylene terephthalate, the use of which is so widespread in our daily lives, consider the following statements: 1. Its fibres can be blended with wool and cotton fibres to reinforce their properties. 2. Containers made of it can be used to store any alcoholic beverage. 3. Bottles made of it can be recycled into other products. 4. Articles made of it can be easily disposed of by incineration without causing greenhouse gas emissions. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 3",
+        "B": "2 and 4",
+        "C": "1 and. 4",
+        "D": "2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Nanotechnology & Materials Science",
+      "topicId": "sci_nano_materials",
+      "sectionId": "GS3-SCI-TECH-MATERIALS",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_NANO_MATERIALS_2021_Q2",
+      "questionNumber": 2,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Bisphenol A (BPA), a cause of concern, is a structural/key component in the manufacture of which of the following kinds of plastics?",
+      "options": {
+        "A": "Low-density polyethylene",
+        "B": "Polycarbonate",
+        "C": "Polyethylene terephthalate",
+        "D": "Polyvinyl chloride"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "B",
+      "topicName": "Nanotechnology & Materials Science",
+      "topicId": "sci_nano_materials",
+      "sectionId": "GS3-SCI-TECH-MATERIALS",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "microTheme": "Plastics and Polymers",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: BPA key component in polycarbonate"
+    },
+    {
+      "id": "SCI_SCI_NANO_MATERIALS_2008_Q15",
+      "questionNumber": 15,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "What are Rubies and Sapphires chemically known as?",
+      "options": {
+        "A": "Silicon dioxide",
+        "B": "Aluminum oxide",
+        "C": "Lead tetroxide",
+        "D": "Boron nitride"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok_manual_corrected"
+      },
+      "correctAnswer": "B",
+      "topicName": "Nanotechnology & Materials Science",
+      "topicId": "sci_nano_materials",
+      "sectionId": "GS3-SCI-TECH-MATERIALS",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "microTheme": "General",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3",
+      "manualCorrectionNote": "Manual correction: rubies and sapphires are aluminium oxide"
+    },
+    {
+      "id": "SCI_SCI_NANO_MATERIALS_2007_Q18",
+      "questionNumber": 18,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following types of glass can cut off ultraviolet rays?",
+      "options": {
+        "A": "Soda glass",
+        "B": "Pyrex glass",
+        "C": "Jena glass",
+        "D": "Crookes glass"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Nanotechnology & Materials Science",
+      "topicId": "sci_nano_materials",
+      "sectionId": "GS3-SCI-TECH-MATERIALS",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_NANO_MATERIALS_2006_Q21",
+      "questionNumber": 21,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (A): Cellulose is used in making shatter proof glass.: Reason (R): Polysaccharides are not soluble in water.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A.",
+        "B": "Both A and R are individually tru but R is not the correct explanation of A.",
+        "C": "A is True but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Nanotechnology & Materials Science",
+      "topicId": "sci_nano_materials",
+      "sectionId": "GS3-SCI-TECH-MATERIALS",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_NANO_MATERIALS_2001_Q34",
+      "questionNumber": 34,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (A): A piece of copper and a piece of glass are heated to the same temperature. When touched, thereafter, the copper piece appears hotter than the glass piece.: Reason (R): The density of copper is more than that of glass.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT a correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Nanotechnology & Materials Science",
+      "topicId": "sci_nano_materials",
+      "sectionId": "GS3-SCI-TECH-MATERIALS",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_NANO_MATERIALS_1999_Q56",
+      "questionNumber": 56,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Glass can be etched or scratched by: I. Diamond. II. Hydrofluoric acid. III. Aquaregia. IV. Conc. sulphuric acid. Which of these statements are correct?",
+      "options": {
+        "A": "I and IV",
+        "B": "II and III",
+        "C": "I and II",
+        "D": "II and IV"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Nanotechnology & Materials Science",
+      "topicId": "sci_nano_materials",
+      "sectionId": "GS3-SCI-TECH-MATERIALS",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCI_SCI_NANO_MATERIALS_1998_Q61",
+      "questionNumber": 61,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements about acetylene: I. It is used in welding industry. II. It is raw material for preparing plastics. III. It is easily obtained by mixing silicon carbide and water. Of these statements:",
+      "options": {
+        "A": "I and II are correct",
+        "B": "I and III are correct",
+        "C": "II and III are correct",
+        "D": "I, II and III are correct"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Nanotechnology & Materials Science",
+      "topicId": "sci_nano_materials",
+      "sectionId": "GS3-SCI-TECH-MATERIALS",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
+      "microTheme": "Plastics and Polymers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    }
+  ]
+}

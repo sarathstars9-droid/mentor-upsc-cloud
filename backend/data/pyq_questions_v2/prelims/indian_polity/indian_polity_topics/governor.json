@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Governor",
+  "topicId": "governor",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 9,
+  "questions": [
+    {
+      "id": "POL_GOVERNOR_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Indian polity, consider the following statements: I. The Governor of a State is not answerable to any court for the exercise and performance of the powers and duties of his/her office. II. No criminal proceedings shall be instituted or continued against the Governor during his/her term of office. III. Members of a State Legislature are not liable to any proceedings in any court in respect of anything said within the House. Which of the statements given above are correct?",
+      "options": {
+        "A": "I and II only",
+        "B": "II and III only",
+        "C": "I and III only",
+        "D": "I, II and III"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Governor",
+      "topicId": "governor",
+      "sectionId": "GS2-POL-STATE",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_GOVERNOR_2025_Q2",
+      "questionNumber": 2,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: I. The Constitution of India explicitly mentions that in certain spheres the Governor of a State acts in his/her own discretion. II. The President of India can, of his/her own, reserve a bill passed by a State Legislature for his/her consideration without it being forwarded by the Governor of the State concerned. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "I only",
+        "B": "II only",
+        "C": "Both I and II",
+        "D": "Neither I nor II"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Governor",
+      "topicId": "governor",
+      "sectionId": "GS2-POL-STATE",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_GOVERNOR_2024_Q3",
+      "questionNumber": 3,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. It is the Governor of the State who recognizes and declares any community of that State as a Scheduled Tribe. 2. A community declared as a Scheduled Tribe in a State need not be so in another State. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither I nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Governor",
+      "topicId": "governor",
+      "sectionId": "GS2-POL-STATE",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_GOVERNOR_2019_Q4",
+      "questionNumber": 4,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following suggested that the Governor should be an eminent person from outside the State and should be a detached figure without intense political links or should not have taken part in politics in the recent past?",
+      "options": {
+        "A": "First Administrative Reforms Commission (1966)",
+        "B": "Rajamannar Committee (1969)",
+        "C": "Sarkaria Commission (1983)",
+        "D": "National Commission to Review the Working of the Constitution (2000)"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Governor",
+      "topicId": "governor",
+      "sectionId": "GS2-POL-STATE",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_GOVERNOR_2018_Q5",
+      "questionNumber": 5,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. No criminal proceeding shall be instituted against the Governor of a state in any court during his terms of office. 2. The emoluments and allowances of the Governor of a state shall not be diminished during his terms of office. Which of the statement given above is /are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Governor",
+      "topicId": "governor",
+      "sectionId": "GS2-POL-STATE",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_GOVERNOR_2014_Q6",
+      "questionNumber": 6,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are the discretionary powers given to the Governor of a State? 1. Sending a report to the President of India for imposing the President’s rule 2. Appointing the Ministers 3. Reserving certain bills passed by the State Legislature for consideration of the President of India 4. Making the rules to conduct the business of the State Government Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "1 and 3 only",
+        "C": "2, 3 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Governor",
+      "topicId": "governor",
+      "sectionId": "GS2-POL-STATE",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_GOVERNOR_2013_Q7",
+      "questionNumber": 7,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements is correct?",
+      "options": {
+        "A": "In India, the same person cannot be appointed as governor for two or more states at the same time",
+        "B": "The judges of the high court of the states in India are appointed by the Governor of the state just as the judges of the Supreme Court are appointed by the president",
+        "C": "No procedure has been laid down in the constitution of India for the removal of a governor from his/her post",
+        "D": "In the case of a union territory having a legislative setup, the chief minister is appointed by the Lt. Governor on the basis of majority support"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Governor",
+      "topicId": "governor",
+      "sectionId": "GS2-POL-STATE",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "Governor",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_GOVERNOR_2009_Q8",
+      "questionNumber": 8,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "The following statements: 1. The Governor of Punjab is concurrently the administrator of Chandigarh 2 The Governor of Kerala is' concurrently the administrator of Lakshadweep Which of the above statements is/ are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "Both 1 and 2",
+        "D": "1,2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Governor",
+      "topicId": "governor",
+      "sectionId": "GS2-POL-STATE",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_GOVERNOR_1995_Q9",
+      "questionNumber": 9,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Article 156 of the Constitution of India provides that a Governor shall hold office for a term of five years from the date on which he enters upon his office. Which of the following can be deduced from this? I. No Governor can be removed from office till completion of his term. II. No Governor can continue in office beyond a period of five years. Select the correct answer from the codes given below:",
+      "options": {
+        "A": "I only",
+        "B": "II only",
+        "C": "Both I and II",
+        "D": "Neither I nor II"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Governor",
+      "topicId": "governor",
+      "sectionId": "GS2-POL-STATE",
+      "nodeId": "GS2-POL-STATE",
+      "syllabusNodeId": "GS2-POL-STATE",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

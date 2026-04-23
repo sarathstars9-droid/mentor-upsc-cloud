@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "mentoros-ca-v1",
+  "fileName": "ca_polity_governance.json",
+  "questions": [
+    {
+      "id": "CA_POLITY_GOVERNANCE.JSON_None_Q1",
+      "year": null,
+      "question": "Question count: 2 Note: Best-effort structured extraction from a column-formatted source PDF. Where the source itself marked an answer as changed, that note is preserved.",
+      "options": {},
+      "answer": {
+        "correct_option": null,
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "low",
+      "reviewRequired": true
+    },
+    {
+      "id": "CA_POLITY_GOVERNANCE.JSON_2024_Q2",
+      "year": 2024,
+      "question": "Q1. (2024) What are the duties of the Chief of Defence Staff (CDS) as Head of the Department of Military Affairs? [2024] 1. Permanent Chairman of Chiefs of Staff Committee 2. Exercise military command over the three Service Chiefs 3. Principal Military Advisor to Defence Minister on all tri-service matters Select the correct answer using the code given below: Source ref: defence / Q5",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1 and 3 only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_POLITY_GOVERNANCE.JSON_2024_Q3",
+      "year": 2024,
+      "question": "Q2. (2024) Operations undertaken by the Army towards upliftment of the local population in remote areas to include addressing of their basic needs is called: [2024] Source ref: defence / Q6",
+      "options": {
+        "A": "Operation Sankalp",
+        "B": "Operation Maitri",
+        "C": "Operation Sadbhavana",
+        "D": "Operation Madad"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-GOV-GOOD-GOV",
+      "syllabusNodeId": "GS2-GOV-GOOD-GOV",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    }
+  ],
+  "nodeId": "GS2-CA-GOV",
+  "topicName": "Governance"
+}

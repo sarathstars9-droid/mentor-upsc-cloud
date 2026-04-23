@@ -1,0 +1,2420 @@
+{
+  "schemaVersion": "mentoros-ca-v1",
+  "fileName": "ca_international_relations.json",
+  "questions": [
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_None_Q1",
+      "year": null,
+      "question": "Question count: 109 Note: Best-effort structured extraction from a column-formatted source PDF. Where the source itself marked an answer as changed, that note is preserved.",
+      "options": {},
+      "answer": {
+        "correct_option": null,
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "low",
+      "reviewRequired": true
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2025_Q2",
+      "year": 2025,
+      "question": "Q1. (2025) Consider the following countries: [2025] I. Austria II. Bulgaria III. Croatia IV. Serbia V. Sweden VI. North Macedonia How many of the above are members of the North Atlantic Treaty Organization? Source ref: intl_orgs / Q1",
+      "options": {
+        "A": "Only three",
+        "B": "Only four",
+        "C": "Only five",
+        "D": "All the six"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2024_Q3",
+      "year": 2024,
+      "question": "Q2. (2024) Consider the following countries: [2024] 1. Italy 2. Japan 3. Nigeria 4. South Korea 5. South Africa Which of the above countries are frequently mentioned in the media for their Iow birth rates, or ageing population or declining population? Source ref: gk_part1 / Q5",
+      "options": {
+        "A": "1, 2 and 4",
+        "B": "1, 3 and 5",
+        "C": "2 and 4 only",
+        "D": "3 and 5 only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2024_Q4",
+      "year": 2024,
+      "question": "Q3. (2024) Which one of the following is the correct description of \"100 Million Farmers\"? [2024] ( Source ref: intl_orgs / Q4",
+      "options": {
+        "A": "It is a platform for accelerating the transition towards food and water systems that are net-zero (carbon), nature-positive and that aims to increase farmer resilience. (",
+        "B": "It is an international alliance and a network of individuals and farming organisations interested in supporting and strengthening the development of the organic animal husbandry. (",
+        "C": "It is a digital platform fully integrated with service providers and built on blockchain that lets buyers. sellers and third parties trade fertilizers quickly and securely. (",
+        "D": "It is a platform with the mission of encouraging the farmers to form Farmer Product Organisations or Agribusiness Consortiums, thus facilitating the access to global open markets to sell their products."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2024_Q5",
+      "year": 2024,
+      "question": "Q4. (2024) Consider the following statements: [2024] 1. India is a member of the International Grains Council. 2. A country needs to be a member of the International Grains Council for exporting or importing rice and wheat. Which of the statements given above is/are correct? ( Source ref: intl_orgs / Q5",
+      "options": {
+        "A": "1 only (",
+        "B": "2 only (",
+        "C": "Both I and 2 (",
+        "D": "Neither I nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2023_Q6",
+      "year": 2023,
+      "question": "Q5. (2023) Which one of the following countries has been suffering from decades of civil strife and food shortages and was in news in the recent past for its very severe famine? [2023] Source ref: gk_part1 / Q14",
+      "options": {
+        "A": "Angola",
+        "B": "Costa Rica",
+        "C": "Ecuador",
+        "D": "Somalia"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2023_Q7",
+      "year": 2023,
+      "question": "Q6. (2023) Consider the following statements about G-20: [2023] 1. The G-20 group was originally established as a platform for the Finance Ministers and Central Bank Governors to discuss the international economic and financial issues. 2. Digital public infrastructure is one of India's G-20 priorities. Which of the statements given above is/are correct? Source ref: intl_orgs / Q6",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2023_Q8",
+      "year": 2023,
+      "question": "Q7. (2023) Consider the following infrastructure sectors: [2023] 1. Affordable housing 2. Mass rapid transport 3. Health care 4. Renewable energy On how many of the above does UNOPS Sustainable Investments in Infrastructure and Innovation (S3i) initiative focus for its investments? Source ref: intl_orgs / Q7",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2023_Q9",
+      "year": 2023,
+      "question": "Q8. (2023) Consider the following statements: [2023] 1. Recently, all the countries of the United Nations have adopted the first-ever compact for international migration, the 'Global Compact for Safe, Orderly and Regular Migration (GCM)'. 2. The objectives and commitments stated in the GCM are binding on the UN member countries. 3. The GCM addresses internal migration or internally displaced people also in its objectives and commitments. How many of the above statements are correct? Source ref: intl_orgs / Q9",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2023_Q10",
+      "year": 2023,
+      "question": "Q9. (2023) Consider the following statements: [2023] The 'Stability and Growth Pact' of the European Union is a treaty that 1. Limits the levels of the budgetary deficit of the countries of the European Union 2. Makes the countries of the European Union to share their infrastructure facilities 3. Enables the countries of the European Union to share their technologies How many of the above statements are correct? Source ref: intl_orgs / Q10",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2022_Q11",
+      "year": 2022,
+      "question": "Q10. (2022) Consider the following statements: [2022] 1. Bidibidi is a large refugee settlement in north- western Kenya. 2. Some people who fled from the South Sudan civil war live in Bidibidi. 3. Some people who fled from the civil war in Somalia live in the Dadaab refugee complex in Kenya. Which of the statements given above is/are correct? Source ref: gk_part1 / Q24",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2022_Q12",
+      "year": 2022,
+      "question": "Q11. (2022) With reference to the “United Nations Credentials Committee”, consider the following statements: [2022] 1. It is a committee set up by the UN Security Council and works under its supervision. 2. It traditionally meets in March, June and September every year. 3. It assesses the credentials of all UN members before submitting a report to the General Assembly for approval. Which of the statements given above is/are correct? Source ref: intl_orgs / Q11",
+      "options": {
+        "A": "3 only",
+        "B": "1 and 3",
+        "C": "2 and 3",
+        "D": "1 and 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2022_Q13",
+      "year": 2022,
+      "question": "Q12. (2022) Which one of the following statements best describes the ‘Polar Code’? [2022] Source ref: intl_orgs / Q12",
+      "options": {
+        "A": "It is the international code of safety for ships operating in polar waters.",
+        "B": "It is the agreement of the countries around the North Pole regarding the demarcation of their territories in the polar region.",
+        "C": "It is a set of norms to be followed by the countries whose scientists undertake research studies in the North Pole and South Pole.",
+        "D": "It is a trade and security agreement of the member countries of the Arctic Council."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2022_Q14",
+      "year": 2022,
+      "question": "Q13. (2022) With reference to the United Nations General Assembly, consider the following statements: [2022] 1. The UN General Assembly can grant observer status to the non-member States. 2. Inter-governmental organisations can seek observer status in the UN General Assembly. 3. Permanent Observers in the UN General Assembly can maintain missions at the UN headquarters. Which of the statements given above are correct? Source ref: intl_orgs / Q13",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2022_Q15",
+      "year": 2022,
+      "question": "Q14. (2022) Consider the following countries: [2022] 1. Armenia 2. Azerbaijan 3. Croatia 4. Romania 5. Uzbekistan Which of the above are members of the Organization of Turkic States? Source ref: intl_orgs / Q14",
+      "options": {
+        "A": "1, 2 and 4",
+        "B": "1 and 3",
+        "C": "2 and 5",
+        "D": "3, 4 and 5"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2022_Q16",
+      "year": 2022,
+      "question": "Q15. (2022) With reference to the United Nations Convention on the Law of Sea, consider the following statements: [2022] 1. A coastal state has the right to establish the breadth of its territorial sea up to a limit not exceeding 12 nautical miles, measured from baseline determined in accordance with the convention. 2. Ships of all states, whether coastal or land-locked, enjoy the right of innocent passage through the territorial sea. 3. The Exclusive Economic Zone shall not extend beyond 200 nautical miles from the baseline from which the breadth of the territorial sea is measured. Which of the statements given above are correct? Source ref: intl_orgs / Q15",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2020_Q17",
+      "year": 2020,
+      "question": "Q16. (2020) In India, why are some nuclear reactors kept under \"IAEA safeguards\" while others are not? [2020] Source ref: nuclear / Q1",
+      "options": {
+        "A": "Some use uranium and others use thorium",
+        "B": "Some use imported uranium and others use domestic supplies",
+        "C": "Some are operated by foreign enterprises and others are operated by domestic enterprises",
+        "D": "Some are State-owned and others are privately- owned"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2019_Q18",
+      "year": 2019,
+      "question": "Q17. (2019) Recently, India signed a deal known as ‘Action Plan for Prioritization and Implementation of Cooperation Areas in the Nuclear Field’ with which of the following countries? [2019] Source ref: nuclear / Q2",
+      "options": {
+        "A": "Japan",
+        "B": "Russia",
+        "C": "The United Kingdom",
+        "D": "The United States of America"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2018_Q19",
+      "year": 2018,
+      "question": "Q18. (2018) Very recently, in which of the following countries having lakhs of people either suffered from severe famine/acute malnutrition or died due to starvation caused by war/ethnic conflicts? [2018] Source ref: gk_part1 / Q35",
+      "options": {
+        "A": "Angola and Zambia",
+        "B": "Morocco and Tunisia",
+        "C": "Venezuela and Colombia",
+        "D": "Yemen and South Sudan"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2018_Q20",
+      "year": 2018,
+      "question": "Q19. (2018) The term “two state solution” is sometimes mentioned in the news in the context of the affairs of: [2018] Source ref: gk_part1 / Q36",
+      "options": {
+        "A": "China",
+        "B": "Israel",
+        "C": "Iraq",
+        "D": "Yemen"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2018_Q21",
+      "year": 2018,
+      "question": "Q20. (2018) \"Rule of the law Index” is released by which of the following? [2018] Source ref: intl_orgs / Q18",
+      "options": {
+        "A": "Amnesty International",
+        "B": "International Court of Justice",
+        "C": "The Office of UN Commissioner of Human Rights",
+        "D": "World Justice Project"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Economic Reports",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2018_Q22",
+      "year": 2018,
+      "question": "Q21. (2018) Which is /are the consequence / consequences of becoming a member of the ‘Nuclear supplier Group’? [2018] 1. It will have access to the latest and most effective nuclear technologies. 2. It automatically becomes a member of “The Treaty of non- proliferation of Nuclear weapons (NPT)” Which of the statements given below is/ are correct? Source ref: nuclear / Q3",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2017_Q23",
+      "year": 2017,
+      "question": "Q22. (2017) The term ‘Digital Single Market Strategy’ seen in the news refers to: [2017] Source ref: intl_orgs / Q20",
+      "options": {
+        "A": "ASEAN",
+        "B": "BRICS",
+        "C": "EU",
+        "D": "G20"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2017_Q24",
+      "year": 2017,
+      "question": "Q23. (2017) Consider the following in respect of Indian Ocean Naval Symposium (IONS): [2017] 1. Inaugural IONS was held in India in 2015 under the chairmanship of the Indian Navy. 2. IONS is a voluntary initiative that seeks to increase maritime co-operation among navies of the littoral states of the Indian Ocean Region. Which of the above statements is/are correct? Source ref: intl_orgs / Q21",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2017_Q25",
+      "year": 2017,
+      "question": "Q24. (2017) Consider the following statements: [2017] 1. The Nuclear Security Summits are periodically held under the aegis of the United Nations. 2. The International Panel on Fissile Materials is an organ of the International Atomic Energy Agency. Which of the statements given above is/are correct? Source ref: nuclear / Q4",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2016_Q26",
+      "year": 2016,
+      "question": "Q25. (2016) Doctors Without Borders (Medecins Sans Frontieres)’, often in the news, is: [2016] Source ref: gk_part1 / Q42",
+      "options": {
+        "A": "A division of World Health Organization",
+        "B": "A non-governmental international organization",
+        "C": "An inter-governmental agency sponsored by European Union",
+        "D": "A specialized agency of the United Nations"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2016_Q27",
+      "year": 2016,
+      "question": "Q26. (2016) ‘European Stability Mechanism’, sometimes seen in the news, is an: [2016] Source ref: intl_orgs / Q23",
+      "options": {
+        "A": "Agency created by EU to deal with the impact of millions of refugees arriving from Middle East",
+        "B": "Agency of EU that provides financial assistance to eurozone countries",
+        "C": "Agency of EU to deal with all the bilateral and multilateral agreements on trade",
+        "D": "Agency of EU to deal with the conflicts arising among the member countries"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2016_Q28",
+      "year": 2016,
+      "question": "Q27. (2016) With reference to ‘Organization for the Prohibition of Chemical Weapons (OPCW)’, consider the following statements: [2016] 1. It is an organization of European Union in working relation with NATO and WHO. 2. It monitors chemical industry to prevent new weapons from emerging. 3. It provides assistance and protection to States (Parties) against chemical weapons threats. Which of the statements given above is/are correct? Source ref: intl_orgs / Q26",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2015_Q29",
+      "year": 2015,
+      "question": "Q28. (2015) Amnesty International is: [2015] Source ref: intl_orgs / Q27",
+      "options": {
+        "A": "An agency of the United Nations to help refugees of civil wars",
+        "B": "A global Human Rights Movement",
+        "C": "A non-governmental voluntary organization to help very poor people",
+        "D": "An inter-governmental agency to cater to medical emergencies in war-ravaged regions"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2015_Q30",
+      "year": 2015,
+      "question": "Q29. (2015) India is a member of which of the following? [2015] 1. Asia-Pacific economic corporation. 2. Association of South-East Asian Nations. 3. East Asia Summit Select the correct answer using the code given below. Source ref: intl_orgs / Q28",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1, 2, and 3",
+        "D": "India is a member of none of them"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2015_Q31",
+      "year": 2015,
+      "question": "Q30. (2015) In the Mekong-Ganga Cooperation, an initiative of six countries, which of the following is/are not a participant/ participants? [2015] 1. Bangladesh 2. Cambodia 3. China 4. Myanmar 5. Thailand Select the correct answer using the code given below. Source ref: intl_orgs / Q29",
+      "options": {
+        "A": "1 only",
+        "B": "2, 3 and 4",
+        "C": "1 and 3",
+        "D": "1, 2 and 5"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2015_Q32",
+      "year": 2015,
+      "question": "Q31. (2015) With reference to ‘Indian Ocean Rim Association for Regional Cooperation (IOR-ARC)’, Consider the following statements: [2015] 1. It was established very recently in response to incidents of piracy and accidents of oil spills 2. It is an alliance meant for maritime security only Which of the following statements given above is/are correct? Source ref: intl_orgs / Q30",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Geopolitics",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2015_Q33",
+      "year": 2015,
+      "question": "Q32. (2015) Consider the following countries: [2015] 1. China 2. France 3. India 4. Israel 5. Pakistan Which among the above are Nuclear Weapons States as recognized by the Treaty on the Nonproliferation of Nuclear Weapons, commonly known as Nuclear Non-Proliferation Treaty (NPT)? Source ref: intl_orgs / Q31",
+      "options": {
+        "A": "1 & 2 only",
+        "B": "1, 3, 4 & 5 only",
+        "C": "2, 4 & 5 only",
+        "D": "1, 2, 3, 4 & 5"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2015_Q34",
+      "year": 2015,
+      "question": "Q33. (2015) The ‘Fortaleza Declaration’ recently in the news, is related to the affairs of: [2015] Source ref: intl_orgs / Q32",
+      "options": {
+        "A": "ASEAN",
+        "B": "BRICS",
+        "C": "OECD",
+        "D": "WTO"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2014_Q35",
+      "year": 2014,
+      "question": "Q34. (2014) Consider the following countries: [2014] 1. Denmark 2. Japan 3. Russian Federation 4. United Kingdom 5. United States of America Which of the above are the members of the 'Arctic Council'? Source ref: intl_orgs / Q34",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "2, 3 and 4",
+        "C": "1, 4 and 5",
+        "D": "1, 3 and 5"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2014_Q36",
+      "year": 2014,
+      "question": "Q35. (2014) With reference to a grouping of countries known as BRICS, consider the following statements: [2014] 1. The First Summit of BRICS was held in Rio de Janeiro in 2009 2. South Africa was the last to join the BRICS grouping. Which of the statements given above is/are correct? Source ref: intl_orgs / Q38",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2011_Q37",
+      "year": 2011,
+      "question": "Q36. (2011) Recently, the USA decided to support India’s membership in multi-lateral export control regimes called the “Australia group” and the “Wassenaar arrangement. What is the difference between them? [2011] 1. The Australia group is an informal arrangement which aims to allow exporting countries to minimize the risk of assisting chemical and biological weapons proliferation, whereas the Wassenaar arrangement is a formal group under the OECD holding identical objectives. 2. The Australia group comprises predominantly of Asian, African and north American countries, whereas the member countries of Wassenaar arrangement are pre-dominantly from the European union and American continents. Which of the statements given above is/are correct? Source ref: intl_orgs / Q40",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2011_Q38",
+      "year": 2011,
+      "question": "Q37. (2011) The “New START” treaty was in the news. What is this treaty? [2011] Source ref: intl_orgs / Q41",
+      "options": {
+        "A": "It is a bilateral strategic nuclear arms reduction treaty between the USA and the Russian federation",
+        "B": "It is a multilateral energy security cooperation treaty among the members of the east Asia summit",
+        "C": "It is a treaty between the Russian federation and the European union for the energy security cooperation",
+        "D": "It is a multilateral cooperation treaty among the BRICS countries for the promotion of trade"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2010_Q39",
+      "year": 2010,
+      "question": "Q38. (2010) Consider the following statements: [2010] 1. The Commonwealth has no charter, treaty or constitution. 2. All the territories / countries once under the British empire (jurisdiction / rule /mandate) automatically joined the commonwealth as its members. Which of the statement given above is/are correct? Source ref: intl_orgs / Q42",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2010_Q40",
+      "year": 2010,
+      "question": "Q39. (2010) In the context of bilateral trade negotiations between India and European Union, what is the difference between European Commission and European Council? [2010] 1. European Commission represents the EU in trade negotiations whereas European Council participates in the legislation of matters pertaining to economic policies of the European Union. 2. European Commission comprises the Heads of State or government of member countries whereas the European Council comprises of the persons nominated by European Parliament. Which of the statements given above is/are correct? Source ref: intl_orgs / Q43",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2010_Q41",
+      "year": 2010,
+      "question": "Q40. (2010) The International Development Association, a lending agency, is administered by the: [2010] Source ref: intl_orgs / Q44",
+      "options": {
+        "A": "International Bank for Reconstruction and Development.",
+        "B": "International Fund for Agricultural Development.",
+        "C": "United Nations Development Programme.",
+        "D": "United Nations Industrialized Development Organization."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2010_Q42",
+      "year": 2010,
+      "question": "Q41. (2010) As per the UN - Habitat’s Global Report on Human Settlement 2009, which one among the following regions has shown the fastest growth rate of urbanization in the last three decades? [2010] Source ref: intl_orgs / Q45",
+      "options": {
+        "A": "Asia",
+        "B": "Europe",
+        "C": "Latin America and Caribbean",
+        "D": "North America"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2010_Q43",
+      "year": 2010,
+      "question": "Q42. (2010) Consider the following statements: [2010] 1. Brazil. 2. Mexico. 3. South Africa. According to UNCTAD, which of the above is / are categorized as “Emerging Economies”? Source ref: intl_orgs / Q46",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2010_Q44",
+      "year": 2010,
+      "question": "Q43. (2010) Which one of the following is not related to United Nations? [2010] Source ref: intl_orgs / Q47",
+      "options": {
+        "A": "Multilateral Investment Guarantee Agency",
+        "B": "International Finance Corporation",
+        "C": "International Centre for Settlement of Investment Disputes",
+        "D": "Bank for International Settlements"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2010_Q45",
+      "year": 2010,
+      "question": "Q44. (2010) With reference to BRIC countries, consider the following statements: [2010] 1. At present, China’s GDP is more than the combined GDP of all the three other countries. 2. China’s population is more than the combined population of any two other countries. Which of the statements given above is/are correct? Source ref: intl_orgs / Q48",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2010_Q46",
+      "year": 2010,
+      "question": "Q45. (2010) As regards the use of international food safety standards as reference point for the dispute settlements, which one of the following does WTO collaborate with? [2010] Source ref: intl_orgs / Q50",
+      "options": {
+        "A": "Codex Alimentarius Commission.",
+        "B": "International Federation of Standards Users.",
+        "C": "International Organization for Standardization.",
+        "D": "World Standards Cooperation."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2009_Q47",
+      "year": 2009,
+      "question": "Q46. (2009) In the latter half of the year 2008, which one of the following countries pulled out of commonwealth of Independent States? [2009] Source ref: gk_part2 / Q7",
+      "options": {
+        "A": "Azerbaijan",
+        "B": "Belarus",
+        "C": "Georgia",
+        "D": "Kazakhstan"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2009_Q48",
+      "year": 2009,
+      "question": "Q47. (2009) Which one among the following South Asian countries has the highest population density? [2009] Source ref: gk_part2 / Q17",
+      "options": {
+        "A": "India",
+        "B": "Nepal",
+        "C": "Pakistan",
+        "D": "Sri-Lanka"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2009_Q49",
+      "year": 2009,
+      "question": "Q48. (2009) With reference to the United Nations, consider the following statements.: [2009] 1. The Economic and Social Council (ECOSOC) of UN consists of 24 member States 2. It is elected by a 2/3rd majority of the General assembly for a 3 year term. Which of the above statements is/ are correct? Source ref: gk_part2 / Q28",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2009_Q50",
+      "year": 2009,
+      "question": "Q49. (2009) Match List I with List II and select the correct ANSWER using the code given below the lists: [2009] List I (persons in news) List II (Countries they belong to) Source ref: gk_part2 / Q30",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "2",
+        "D": "1"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2009_Q51",
+      "year": 2009,
+      "question": "Q50. (2009) Other than Venezuela, which one among the following from South America is a member of OPEC? [2009] Source ref: intl_orgs / Q52",
+      "options": {
+        "A": "Argentina",
+        "B": "Brazil",
+        "C": "Ecuador",
+        "D": "Bolivia"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2009_Q52",
+      "year": 2009,
+      "question": "Q51. (2009) Consider the following countries: 1. Switzerland 2. Malta 3. Bulgaria Which of the above are members of European Union? [2009] Source ref: intl_orgs / Q53",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2009_Q53",
+      "year": 2009,
+      "question": "Q52. (2009) A present group of nations known as G-8 started first as G-7. Which one among the following was not one of them? [2009] Source ref: intl_orgs / Q55",
+      "options": {
+        "A": "Canada",
+        "B": "Italy",
+        "C": "Japan",
+        "D": "Russia"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2009_Q54",
+      "year": 2009,
+      "question": "Q53. (2009) The Security Council of UN consists of 5 permanent members, and the remaining 10 members are elected by the General assembly for a term of: [2009] Source ref: intl_orgs / Q57",
+      "options": {
+        "A": "1 year",
+        "B": "2 years",
+        "C": "3 years",
+        "D": "5 years"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2009_Q55",
+      "year": 2009,
+      "question": "Q54. (2009) Consider the following pairs: [2009] Organisation - Location of Headquarters 1. Asian Development Bank - Tokyo 2. Asia-Pacific Economic Cooperation Singapore 3. Association of South East Asian Nations Bangkok Which of the above pairs is/are correctly matched? Source ref: intl_orgs / Q58",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2008_Q56",
+      "year": 2008,
+      "question": "Q55. (2008) You Kippur War was fought between which sides/countries? [2008] Source ref: gk_part2 / Q46",
+      "options": {
+        "A": "Turkey and Greece",
+        "B": "Serbs and Croats",
+        "C": "Israel, and Arab countries led by Egypt and Syria",
+        "D": "iran and Iraq"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2008_Q57",
+      "year": 2008,
+      "question": "Q56. (2008) Match List-I with List -II and select the correct answer using the codes given below the lists: [2008] List-I (Service/Agency) List-II(Country) A. Foreign Intelligence service 1. Israel B. Ministry of State Security 2. Britain C. Secret Intelligence Service 3. China D. The Mossad 4. Russia A B C D Source ref: gk_part2 / Q49",
+      "options": {
+        "A": "4",
+        "B": "2",
+        "C": "4",
+        "D": "2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2008_Q58",
+      "year": 2008,
+      "question": "Q57. (2008) Which two countries follow China and India in the decreasing order of their populations? [2008] Source ref: gk_part2 / Q62",
+      "options": {
+        "A": "Brazil and USA",
+        "B": "USA and Indonesia",
+        "C": "Canada and Malaysia",
+        "D": "Russia and Nigeria"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2008_Q59",
+      "year": 2008,
+      "question": "Q58. (2008) Cristina Kirchner succeeded her husband to become President of a South American country. Which is that country? [2008] Source ref: gk_part2 / Q71",
+      "options": {
+        "A": "Chile",
+        "B": "Argentina",
+        "D": "Venezuela"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2008_Q60",
+      "year": 2008,
+      "question": "Q59. (2008) Match List-I with List-II and select the correct answer using the codes given below the lists: [2008] List-I List-II (Organization) (Associated Convention/Person/Plac e/Headquarters) A. Amnesty International 1. Visculi B. Common wealth of Independent States (CIS) 2. Paris C. Danube Commission 3. Peter Beneson D. European Space Agency 4. Belgrade Convention A B C D Source ref: intl_orgs / Q59",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2008_Q61",
+      "year": 2008,
+      "question": "Q60. (2008) Consider the following statements: [2008] 1. The Nuclear Suppliers Group has 24 countries as the members. 2. India is a member of the Nuclear Suppliers Group. Which of the statements given above is/are correct? Source ref: nuclear / Q5",
+      "options": {
+        "A": "1 Only",
+        "B": "2 Only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2008_Q62",
+      "year": 2008,
+      "question": "Q61. (2008) In which one of the following locations is the Internationals Thermonuclear Experimental Reactor (ITER) Project to be built? [2008] Source ref: nuclear / Q6",
+      "options": {
+        "A": "Northern Spain",
+        "B": "Southern France",
+        "C": "Eastern Germany",
+        "D": "Southern Italy"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2007_Q63",
+      "year": 2007,
+      "question": "Q62. (2007) Near the end of the year 2006, which one of the following countries was suspended from the Commonwealth after a military coup? [2007] Source ref: gk_part2 / Q79",
+      "options": {
+        "A": "Kenya",
+        "B": "Myanmar C) Fiji",
+        "D": "Tanzania"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2007_Q64",
+      "year": 2007,
+      "question": "Q63. (2007) Which one of the following countries recently upgraded its defence agency to a full defence ministry? [2007] Source ref: gk_part2 / Q81",
+      "options": {
+        "A": "Italy",
+        "B": "Japan",
+        "C": "Switzerland",
+        "D": "Thierry Henry"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2007_Q65",
+      "year": 2007,
+      "question": "Q64. (2007) In the latter half of the year 2006, in which one of the following countries did a military coup take place? [2007] Source ref: gk_part2 / Q85",
+      "options": {
+        "A": "Cambodia",
+        "B": "Laos",
+        "C": "Thailand",
+        "D": "Vietnam"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2007_Q66",
+      "year": 2007,
+      "question": "Q65. (2007) Consider the following statements: [2007] 1. China has the observer’s status at the South Asian Association for Regional Cooperation. 2. India has the observer’s status at the Shanghai Cooperation Organisation. Which of the statements given above is/are correct? Source ref: intl_orgs / Q60",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2007_Q67",
+      "year": 2007,
+      "question": "Q66. (2007) Where are the headquarters of the Organization of the Islamic Conference (OIC) located? [2007] Source ref: intl_orgs / Q61",
+      "options": {
+        "A": "Dubai",
+        "B": "Jeddah",
+        "C": "Islamabad",
+        "D": "Ankara"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2007_Q68",
+      "year": 2007,
+      "question": "Q67. (2007) Consider the following statements: [2007] 1. North Atlantic Co-operation Council (NACC) is the name of the new organization which has replaced the North Atlantic Treaty Organization (NATO). 2. The United States of America and the United Kingdom became the members of the NATO when it was formed in the year 1949. Which of the statements given above is/are correct? Source ref: intl_orgs / Q62",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2007_Q69",
+      "year": 2007,
+      "question": "Q68. (2007) Which one of the following is not a member of the Shanghai Cooperation Organisation? [2007] Source ref: intl_orgs / Q63",
+      "options": {
+        "A": "Russia",
+        "B": "Kazakhstan",
+        "C": "Ukraine",
+        "D": "Uzbekistan"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2007_Q70",
+      "year": 2007,
+      "question": "Q69. (2007) Which one of the following pairs of countries joined the European Union in January, 2007? [2007] Source ref: intl_orgs / Q64",
+      "options": {
+        "A": "Bulgaria and Romania",
+        "B": "Bulgaria and Belgium",
+        "C": "Romania and Slovenia",
+        "D": "Hungary and Croatia"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2007_Q71",
+      "year": 2007,
+      "question": "Q70. (2007) Recently, the European Union and other six countries including India signed the International Thermonuclear Experimental Reactor (ITER) Project. Which one of the following was not a signatory to it? [2007] Source ref: nuclear / Q7",
+      "options": {
+        "A": "Canada",
+        "B": "China",
+        "C": "Japan",
+        "D": "USA"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2006_Q72",
+      "year": 2006,
+      "question": "Q71. (2006) Whom did Croatia defeat in the Davis Cup- 2005 Finals to win the Davis Cup-2005? [2006] Source ref: gk_part3 / Q11",
+      "options": {
+        "A": "United States of America",
+        "B": "Slovak Republic",
+        "C": "Argentina",
+        "D": "Spain"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2006_Q73",
+      "year": 2006,
+      "question": "Q72. (2006) Recently with which country’s government did ONGC Mittal Energy Limited (OMEL) sign a joint, venture deal of $6 billion dealing with infrastructure, refinery and power? [2006] Source ref: gk_part3 / Q24",
+      "options": {
+        "A": "Colombia",
+        "B": "Venezuela",
+        "C": "Nigeria",
+        "D": "Saudi Arabia"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2006_Q74",
+      "year": 2006,
+      "question": "Q73. (2006) Which one of the following countries is not a member of the Nordic Council? [2006] Source ref: gk_part3 / Q38",
+      "options": {
+        "A": "Norway",
+        "B": "Denmark",
+        "C": "Iceland",
+        "D": "United Kingdom"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2006_Q75",
+      "year": 2006,
+      "question": "Q74. (2006) Which one of the following countries is not a member of the Commonwealth of Independence States (CIS)? [2006] Source ref: intl_orgs / Q65",
+      "options": {
+        "A": "Armenia",
+        "B": "Belarus",
+        "C": "Estonia",
+        "D": "Georgia"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2006_Q76",
+      "year": 2006,
+      "question": "Q75. (2006) Consider the following statements: [2006] 1. The agreement on South Asian FreeTrade Area (SAFTA) came into effect from 1st December, 2005. 2. As per SAFTA agreement terms, India, Pakistan and Sri Lanka have to decrease their custom duties to the level of 0 to 5 percent by the year 2013. Which of the statements given above is/are correct? Source ref: intl_orgs / Q66",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2006_Q77",
+      "year": 2006,
+      "question": "Q76. (2006) Which one of the following countries is not a member of ASEAN? [2006] Source ref: intl_orgs / Q67",
+      "options": {
+        "A": "Vietnam",
+        "B": "Brunel Darussalam",
+        "C": "Bangladesh",
+        "D": "Myanmar"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2006_Q78",
+      "year": 2006,
+      "question": "Q77. (2006) Consider the following statements: [2006] 1. Kofi Annan, the UN Secretary General is from Nigeria. 2. Kofi Annan is the first UN Secretary General to be appointed from the ranks of the United Nations staff. 3. Kofi Annan was appointed for a second term to the office of the UN Sectetary General. Which of the statements given above are correct? Source ref: intl_orgs / Q69",
+      "options": {
+        "A": "1, 2 and 3",
+        "C": "2 and 3, only",
+        "D": "1 and 3, only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2006_Q79",
+      "year": 2006,
+      "question": "Q78. (2006) In which one of the following areas did the Indira Gandhi Center for Atomic Research make significant progress in the year 2005? [2006] Source ref: nuclear / Q8",
+      "options": {
+        "A": "Reprocessing the uranium-plutonium mixed carbide fuel of the Fast Breeder test Reactor",
+        "B": "New applications of radioisotopes in metallurgy",
+        "C": "A new technology for production of heavy water",
+        "D": "A new technology for high level nuclear waste management"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2005_Q80",
+      "year": 2005,
+      "question": "Q79. (2005) In which one of the following countries did hundreds of people die in year 2004 as a result of flooding and mudslides triggered by Tropical Storm Jeanne? [2005] Source ref: gk_part3 / Q40",
+      "options": {
+        "A": "Colombia",
+        "B": "Haiti",
+        "C": "Sudan",
+        "D": "Ghana"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2005_Q81",
+      "year": 2005,
+      "question": "Q80. (2005) In which one of the following countries, is Tamil a major language? [2005] Source ref: gk_part3 / Q48",
+      "options": {
+        "A": "Myanmar",
+        "B": "Indonesia",
+        "C": "Mauritius",
+        "D": "Singapore"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2005_Q82",
+      "year": 2005,
+      "question": "Q81. (2005) In which country is Bandung, where the conference of African and Asian nations was held which led to establishing Non- Aligned Movement (NAM) situated? [2005] Source ref: gk_part3 / Q65",
+      "options": {
+        "A": "Thailand",
+        "B": "Egypt",
+        "C": "Indonesia",
+        "D": "Philippines"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2005_Q83",
+      "year": 2005,
+      "question": "Q82. (2005) Match items in the List-I (Country) with those in the List-II (Name of Parliament) and select the correct answer using the code given below the lists: [2005] List I List II A) Netherlands 1) Diet B) Ukraine 2) States General C) Poland 3) Supreme Council D) Japan 4) Sejm A B C D Source ref: gk_part3 / Q80",
+      "options": {
+        "A": "4 1 2 3",
+        "B": "2 3 4 1",
+        "C": "4 3 2 1",
+        "D": "2 1 4 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2005_Q84",
+      "year": 2005,
+      "question": "Q83. (2005) For which one of the following countries, is Spanish not an official language? [2005] Source ref: gk_part3 / Q81",
+      "options": {
+        "A": "Chile",
+        "B": "Colombia",
+        "C": "Republic of Congo",
+        "D": "Cuba"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2005_Q85",
+      "year": 2005,
+      "question": "Q84. (2005) Consider the following statements: [2005] 1. The Headquarters of the International Organisation for Standardization are located in Rome. 2. ISO 9000 is related to the quality management system and standards. 3. ISO 14000 relates to environmental management system standards. Which of the statements is/are correct? Source ref: intl_orgs / Q70",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "3 only",
+        "C": "2 and 3",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2005_Q86",
+      "year": 2005,
+      "question": "Q85. (2005) Consider the following statements: [2005] 1. The Charter of the United Nations Organization was adopted at Geneva, Switzerland in June, 1945. 2. India was admitted to the United Nations Organization in the year 1945. 3. The Trusteeship Council of the United Nations Organization was established to manage the affairs of territories detached from Japan and Italy after the Second World War or such territories not under the control of a country at that time. Which of the statements is/are correct? Source ref: intl_orgs / Q71",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2005_Q87",
+      "year": 2005,
+      "question": "Q86. (2005) Which one of the following is not an ASEAN member? [2005] Source ref: intl_orgs / Q72",
+      "options": {
+        "A": "Cambodia",
+        "B": "China",
+        "C": "Laos",
+        "D": "Philippines"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2005_Q88",
+      "year": 2005,
+      "question": "Q87. (2005) Match List-I (Atomic Power Plants/ Heavy Water Plants) with List-II (State) and select the correct answer using the code given below the list: [2005] List I List II A. Tarapur 1. Andhra Pradesh B. Manuguru 2. Gujarat C. Kakrapar 3. Maharashtra D. Kaiga 4. Rajasthan 5. Karnataka A B C D Source ref: nuclear / Q9",
+      "options": {
+        "A": "2 1 4 5",
+        "B": "3 5 2 1",
+        "C": "2 5 4 1",
+        "D": "3 1 2 5"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2004_Q89",
+      "year": 2004,
+      "question": "Q88. (2004) Consider the following statements: [2004] 1. Indira Gandhi Centre for Atomic Research uses fast reactor technology. 2. Atomic Minerals Directorate for Research and Exploration is engaged in heavy water production. 3. Indian Rare Earths Limited is engaged in the manufacture of Zircon for India’s Nuclear Programme beside other rare earth products. Which of the statements given above are correct? Source ref: nuclear / Q10",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1 and 2",
+        "C": "1 and 3",
+        "D": "2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2002_Q90",
+      "year": 2002,
+      "question": "Q89. (2002) Consider the following statements: [2002] 1. The World Intellectual Property Organisation (WIPO) is a specialised agency of United Nations System of Organisations 2. WIPO has its headquarters at Rome 3. The Trade Related Aspects of Intellectual Property Rights (TRIPS) Agreement is binding on all WTO members 4. Least developed country members of WTO are not required to apply the provisions of TRIPS Agreements for a period of 20 years from the general date of application of the Agreement Which of these statements are correct? Source ref: intl_orgs / Q76",
+      "options": {
+        "A": "1, 2, 3 and 4",
+        "B": "2, 3 and 4",
+        "C": "1, 2 and 4",
+        "D": "1 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2002_Q91",
+      "year": 2002,
+      "question": "Q90. (2002) Match List I (Organisation) with List II (Headquarters) and select the correct answer using the codes given below the lists: [2002] List I (Organisation) List II (Headquarters ) A. International Atomic Energy Agency 1. Brussels B. International Telecommunication Union 2. Geneva C. Council of the European Union 3. Paris D. Organisation for Economic Cooperation and Development 4. Vienna A B C D Source ref: intl_orgs / Q77",
+      "options": {
+        "A": "1 2 4 3",
+        "B": "1 3 4 2",
+        "C": "1 3 4 2",
+        "D": "4 2 1 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2002_Q92",
+      "year": 2002,
+      "question": "Q91. (2002) The Asia Pacific Economic Cooperation Forum was held in the year 2001 in: [2002] Source ref: intl_orgs / Q78",
+      "options": {
+        "A": "Bangkok",
+        "B": "Hongkong",
+        "C": "Jakarta",
+        "D": "Shanghai"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2001_Q93",
+      "year": 2001,
+      "question": "Q92. (2001) Mekong-Ganga Cooperation Project is: [2001] Source ref: intl_orgs / Q80",
+      "options": {
+        "A": "An irrigation project involving India and Myanmar",
+        "B": "A joint tourism initiative of some Asian countries",
+        "C": "A hydroelectric power project involving India, Bangladesh and Myanmar",
+        "D": "A defence and security agreement of India with its eastern neighbours"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2001_Q94",
+      "year": 2001,
+      "question": "Q93. (2001) Consider the following organisations: [2001] I. International Bank for Reconstruction and Development II. International Finance Corporation III. International Fund for Agricultural Development IV. International Monetary Fund Which of these are agencies of the United Nations? Source ref: intl_orgs / Q81",
+      "options": {
+        "A": "I and II",
+        "B": "II and III",
+        "C": "III and IV",
+        "D": "I, II, III and IV"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2001_Q95",
+      "year": 2001,
+      "question": "Q94. (2001) The earlier name of WTO was: [2001] Source ref: intl_orgs / Q82",
+      "options": {
+        "A": "UNCTAD",
+        "B": "GATT",
+        "C": "UNIDO",
+        "D": "OECD"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_2000_Q96",
+      "year": 2000,
+      "question": "Q95. (2000) Consider the following statements: The Ministerial Meeting of the WTO held in December 1999 was unsuccessful because it attempted to link trade with: [2000] I. Labour-related issues. II. Environment related issues. III. Terrorism related issues. IV. Debt-related issues. Which of these statements are correct? Source ref: intl_orgs / Q84",
+      "options": {
+        "A": "I, III and IV",
+        "B": "I and II",
+        "C": "II and III",
+        "D": "II and IV"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1999_Q97",
+      "year": 1999,
+      "question": "Q96. (1999) Which one of the following statements is not correct? Dinar/New dinar is the currency of: [1999] Source ref: gk_part4 / Q10",
+      "options": {
+        "A": "Sudan",
+        "B": "Yugoslavia",
+        "C": "UAE",
+        "D": "Tunisia"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1999_Q98",
+      "year": 1999,
+      "question": "Q97. (1999) Which one of the countries labelled as 1, 2, 3 and 4 on the given map was grantee membership of G -15 in its VII Summit at Kuala Lumpur? [1999] Source ref: intl_orgs / Q86",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1999_Q99",
+      "year": 1999,
+      "question": "Q98. (1999) Consider the following statements about the European Union: [1999] I. The European Union was known earlier as the European Community. II. The Single European Act (1986) and the Maastricht Treaty were milestones in its formation. III. Citizens of European Union countries enjoy dual citizenship. IV. Switzerland is a member of the European Union. Which of the above statements are correct? Source ref: intl_orgs / Q87",
+      "options": {
+        "A": "II and IV",
+        "B": "I and III",
+        "C": "III and IV",
+        "D": "I, II and III"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1998_Q100",
+      "year": 1998,
+      "question": "Q99. (1998) The meeting of G-15 countries held in Malayasia in 1997 was attended by: [1998] Source ref: intl_orgs / Q89",
+      "options": {
+        "A": "14 member countries",
+        "B": "15 member countries",
+        "C": "16 member countries",
+        "D": "17 member countries"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1998_Q101",
+      "year": 1998,
+      "question": "Q100. (1998) ‘MERCOSUR’ consists of group of countries of: [1998] Source ref: intl_orgs / Q90",
+      "options": {
+        "A": "Africa",
+        "B": "Asia",
+        "C": "Latin America",
+        "D": "South East Asia"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1998_Q102",
+      "year": 1998,
+      "question": "Q101. (1998) The economist who was associated with the WTO draft document is: [1998] Source ref: intl_orgs / Q92",
+      "options": {
+        "A": "A.K. Sen",
+        "B": "T.N. Srinivasan",
+        "C": "J.N. Bhagwati",
+        "D": "Avinash Dixit"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1997_Q103",
+      "year": 1997,
+      "question": "Q102. (1997) The economic and monetary union of 15 European Countries is proposed to be made by 1999. But the currencies of two countries, Franc, have already the same value and circulate freely in both the countries. The countries are: [1997] Source ref: gk_part4 / Q39",
+      "options": {
+        "A": "France and Switzerland",
+        "B": "Switzerland and Luxembourg",
+        "C": "Luxembourg and Belgium",
+        "D": "France and Belgium"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1997_Q104",
+      "year": 1997,
+      "question": "Q103. (1997) The Prime Minister of which one of the following countries is chosen by the ruling prince from a slate of three candidates put up to him by the President of France? [1997] Source ref: gk_part4 / Q41",
+      "options": {
+        "A": "San Marius",
+        "B": "Liechtenstein",
+        "C": "Malta",
+        "D": "Monaco"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1996_Q105",
+      "year": 1996,
+      "question": "Q104. (1996) According to the World Health Organisation, the disease which causes the death of the largest number of people today is: [1996] Source ref: intl_orgs / Q94",
+      "options": {
+        "A": "AIDS",
+        "B": "Tuberculosis",
+        "C": "Malaria",
+        "D": "Ebola"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1996_Q106",
+      "year": 1996,
+      "question": "Q105. (1996) The emerging trading blocs in the world, such as NAFTA, ASEAN and the like, are expected to: [1996] Source ref: intl_orgs / Q95",
+      "options": {
+        "A": "Act as constrictions in free trade across the world",
+        "B": "Promote free trade on the lines laid down by the WTO",
+        "C": "Permit transfer of technology between member countries",
+        "D": "Promote trade in agricultural commodities between countries of the North and South"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1996_Q107",
+      "year": 1996,
+      "question": "Q106. (1996) Which of the following were the aims behind the setting up of the World Trade Organization (WTO)? [1996] I. Promotion of free trade and resource flows across countries. II. Protection of intellectual property rights. III. Managing balanced trade between different countries. IV. Promotion of trade between the former East Bloc countries and the western world. Select the correct answer by using the codes given below: Source ref: intl_orgs / Q96",
+      "options": {
+        "A": "I, II, III and IV",
+        "B": "I and II",
+        "C": "II and III",
+        "D": "I and IV"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1996_Q108",
+      "year": 1996,
+      "question": "Q107. (1996) ‘They are fantastically diverse. They speak hundreds of languages and dialects. They comprise scores of ethnic groups. They include highly industrialised economies and up-and-coming economies. They span half the surface of the earth and are home to two-fifths of the world’s population.” The group of countries referred to here belongs to: [1996] Source ref: intl_orgs / Q97",
+      "options": {
+        "A": "SAPTA",
+        "B": "APEC",
+        "C": "EC",
+        "D": "CIS"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1995_Q109",
+      "year": 1995,
+      "question": "Q108. (1995) Which one of the following countries had in 1994 voted against joining the European Union? [1995] Source ref: gk_part4 / Q59",
+      "options": {
+        "A": "Norway",
+        "B": "Sweden",
+        "C": "Finland",
+        "D": "Austria"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS.JSON_1995_Q110",
+      "year": 1995,
+      "question": "Q109. (1995) The signatories to the treaty banning chemical weapons include: [1995] Source ref: intl_orgs / Q98",
+      "options": {
+        "A": "USA, Russia, India, Iran and Israel",
+        "B": "Iraq, Libya, India, Russia and China",
+        "C": "Brazil, Angola, North Korea, Pakistan and USA",
+        "D": "Syria, Sri Lanka, Japan, Singapore and France"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS2-IR-INSTITUTIONS",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    }
+  ],
+  "nodeId": "GS2-CA-IR",
+  "topicName": "International Relations"
+}

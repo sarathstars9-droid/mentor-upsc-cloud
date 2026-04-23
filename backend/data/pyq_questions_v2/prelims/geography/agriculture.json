@@ -1,0 +1,744 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "exam": "UPSC_CSE",
+  "stage": "Prelims",
+  "paper": "GS1",
+  "subject": "Geography",
+  "topicName": "Agriculture",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "nodeId": "geo.agriculture",
+  "microTheme": "cropping-agriculture",
+  "questions": [
+    {
+      "id": "GEO_AGR_2023_Q1",
+      "questionNumber": 1,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. India has more arable area than China 2. The proportion of irrigated area is more in India as compared to China 3. The average productivity per hectare in Indian agriculture is higher than that in China How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2022_Q2",
+      "questionNumber": 2,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following States: 1. Andhra Pradesh, 2. Kerala, 3. Himachal Pradesh, 4. Tripura How many of the above are generally known as tea - producing States?",
+      "options": {
+        "A": "Only one State",
+        "B": "Only two States",
+        "C": "Only three States",
+        "D": "All four States"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2021_Q3",
+      "questionNumber": 3,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1) Moringa (drumstick tree) is a leguminous evergreen tree. 2) Tamarind tree is endemic to South Asia. 3) In India, most of the tamarind is collected as minor forest produce. 4) India exports tamarind and seeds of moringa. 5) Seeds of moringa and tamarind can be used in the production of biofuels. Which of the statements given above are correct?",
+      "options": {
+        "A": "1, 2, 4 and 5",
+        "B": "3, 4 and 5",
+        "C": "1, 3 and 4",
+        "D": "1, 2, 3 and 5"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2021_Q4",
+      "questionNumber": 4,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "How is permaculture farming different from conventional chemical farming? 1) Permaculture farming discourages monocultural practices but in conventional chemical farming, monoculture practices are pre-dominant. 2) Conventional chemical farming can cause increase in soil salinity but the occurrence of such phenomenon is not observed in permaculture farming. 3) Conventional chemical farming is easily possible in semi-arid regions but permaculture farming is not so easily possible in such regions. 4) Practice of mulching is very important in permaculture farming but not necessarily so in conventional chemical farming. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 3",
+        "B": "1, 2 and 4",
+        "C": "4 only",
+        "D": "2 and 3"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2021_Q5",
+      "questionNumber": 5,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Among the following, which one is the least water- efficient crop?",
+      "options": {
+        "A": "Sugarcane",
+        "B": "Sunflower",
+        "C": "Pearl millet",
+        "D": "Red gram"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2020_Q6",
+      "questionNumber": 6,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "What are the advantages of fertigation in agriculture? 1. Controlling the alkalinity of irrigation water is possible. 2. Efficient application of Rock Phosphate and all other phosphatic fertilizers is possible. 3. Increased availability of nutrients to plants is possible. 4. Reduction in the leaching of chemical nutrients is possible. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "1, 2 and 4 only",
+        "C": "1, 3 and 4 only",
+        "D": "2, 3 and 4 only"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2020_Q7",
+      "questionNumber": 7,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to pulse production in India, consider the following statements: 1. Black gram can be cultivated as both kharif and rabi crop. 2. Green-gram alone accounts for nearly half of pulse production. 3. In the last three decades, while the production of kharif pulses has increased, the production of rabi pulses has decreased. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "2 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2020_Q8",
+      "questionNumber": 8,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "\"The crop is subtropical in nature. A hard frost is injurious to it. It requires at least 210 frost -free days and 50 to 100 centimeters of rainfall for its growth. A light well-drained soil capable of retaining moisture is ideally suited for the cultivation of the crop.\" Which one of the following is that crop?",
+      "options": {
+        "A": "Cotton",
+        "B": "Jute",
+        "C": "Sugarcane",
+        "D": "Tea"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2020_Q9",
+      "questionNumber": 9,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the current trends in the cultivation of sugarcane in India, consider the following statements: 1. A substantial saving in seed material is made when 'bud chip settlings' are raised in a nurse, and transplanted in the main field. 2. When direct planting of setts is done, the germination percentage is better with single-budded setts as compared to setts with many buds. 3. If bad weather conditions prevail when setts are directly planted, single -budded setts have better survival as compared to large setts. 4. Sugarcane can be cultivated using settlings prepared from tissue culture. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1 and 4 only",
+        "D": "2, 3 and 4 only"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2019_Q10",
+      "questionNumber": 10,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Among the following, which one is the largest exporter of rice in the world in the last five years?",
+      "options": {
+        "A": "China",
+        "B": "India",
+        "C": "Myanmar",
+        "D": "Vietnam"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2018_Q11",
+      "questionNumber": 11,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to agriculture soils consider the following statements: 1. A high content of organic matter drastically reduces its water holding capacity. 2. Soil does not play role in the sulphur cycle. 3. Irrigation over a period of time can contribute to the salinization of some agricultural lands. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2017_Q12",
+      "questionNumber": 12,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following practices can help in water conservation in agriculture? 1. Reduced or zero tillage of the land 2. Applying gypsum before irrigating the field 3. Allowing crop residue to remain in the field Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2014_Q13",
+      "questionNumber": 13,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: Region: Well-known for the production of 1. Kinnaur: Areca nut 2. Mewat: Mango 3. Coromandel: Soya bean Which of the above pairs is/are correctly matched?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1, 2 and 3",
+        "D": "None"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2013_Q14",
+      "questionNumber": 14,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following crops: 1. Cotton 2. Groundnut 3. Rice 4. Wheat Which of these are Kharif crops?",
+      "options": {
+        "A": "1 and 4",
+        "B": "2 and 3 only",
+        "C": "1, 2 and 3",
+        "D": "2, 3 and 4"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2012_Q15",
+      "questionNumber": 15,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following crops of India: 1. Groundnut 2. Sesamum 3. Pearl millet Which of the above is / are predominantly rainfed crop/crops?",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "2 & 3 Only",
+        "C": "3 Only",
+        "D": "1,2 & 3"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2012_Q16",
+      "questionNumber": 16,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following is the chief characteristic of 'mixed farming?",
+      "options": {
+        "A": "Cultivation of both cash crops and food crops",
+        "B": "Cultivation of two or more crops in the same field",
+        "C": "Rearing of animals and cultivation of crops together",
+        "D": "None of the above"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2012_Q17",
+      "questionNumber": 17,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following crops of India: 1. Cowpea 2. Green gram 3. Pigeon pea Which of the above is/are used as pulse, fodder and green manure?",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 & 3"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2011_Q18",
+      "questionNumber": 18,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "Among the following states, which one has the most suitable climatic conditions for the cultivation of a large variety of orchids with minimum cost of production, and can develop an export -oriented industry in this field?",
+      "options": {
+        "A": "Andhra Pradesh",
+        "B": "Arunachal Pradesh",
+        "C": "Madhya Pradesh",
+        "D": "Uttar Pradesh"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2011_Q19",
+      "questionNumber": 19,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "The lower Gangetic plain is characterised by humid climate with high temperature throughout the year. Which one among the following pairs of crops is most suitable for this region?",
+      "options": {
+        "A": "Paddy and cotton",
+        "B": "Wheat and jute",
+        "C": "Paddy and jute",
+        "D": "Wheat and cotton"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2010_Q20",
+      "questionNumber": 20,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Tamil Nadu is a leading producer of mill -made cotton yarn in the country. What could be the reason? 1. Black cotton soil is the predominant type of soil in the State. 2. Rich pool of skilled labour is available. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2010_Q21",
+      "questionNumber": 21,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Though coffee and tea both are cultivated on hill slopes, there is some difference between them regarding their cultivation. In this context, consider the following statements: 1. Coffee plant requires a hot and humid climate of tropical areas whereas tea can be cultivated in both tropical and subtropical areas. 2. Coffee is propagated by seeds but tea is propagated by stem cuttings only. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2008_Q22",
+      "questionNumber": 22,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Chikmangalur is well-known for sugar production. 2.Mandya is well-known as a coffee -production region. Which of the statements given above is/ are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2007_Q23",
+      "questionNumber": 23,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the correct sequence in the decreasing order of production (in million tonnes) of the given foodgrains in India?",
+      "options": {
+        "A": "Wheat-Rice-Pulses-Coarse cereals",
+        "B": "Rice-Wheat-Pulses-Coarse cereals",
+        "C": "Wheat-Rice-Coarse cereals-Pulses",
+        "D": "Rice-Wheat-Coarse cereals-Pulses"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2007_Q24",
+      "questionNumber": 24,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion(",
+      "options": {
+        "A": ": There are no tea plantations in any African country. Reason (R): Tea plants need fertile soil with high humus",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is not the correct explanation of A",
+        "D": "A is True but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2006_Q25",
+      "questionNumber": 25,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": The percentage of net sown area in the total area of Andhra Pradesh is less as compared to that of West Bengal. Reason (R): The soil of most of Andhra Pradesh is laterite",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is not the correct explanation of A",
+        "D": "A is True but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2005_Q26",
+      "questionNumber": 26,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. India is the only country in the world producing all the five known commercial varieties of silk. 2. India is the largest producer of sugar in the world. Which of the statements given above is/ are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2004_Q27",
+      "questionNumber": 27,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following crops: 1. Cotton 2. Groundnut 3. Maize 4. Mustard Which of the above are Kharif crops?",
+      "options": {
+        "A": "1 and 2",
+        "B": "1, 2 and 3",
+        "C": "3 and 4",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2004_Q28",
+      "questionNumber": 28,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": India does not export natural rubber.: Reason (R): About 97% of India's demand for natural rubber is met from domestic production",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is not the correct explanation of A",
+        "D": "A is true but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2003_Q29",
+      "questionNumber": 29,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Assertion (",
+      "options": {
+        "A": ": The eastern coast of India produces more rice than the western coast.: Reason (R): The eastern coast receives more rainfall than the western coast",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "D": "A is true but R is false d) A is false but R is true"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2002_Q30",
+      "questionNumber": 30,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Indian agriculture, which one of the following statements is correct?",
+      "options": {
+        "A": "About 90 per cent of the area under pulses in India is rainfed",
+        "B": "The share of pulses in the gross cropped area at the national level has doubled in the last two decades",
+        "C": "India accounts for about 15 per cent of the total area under rice in the world",
+        "D": "Rice occupies about 34 per cent of the gross cropped area of India"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2000_Q31",
+      "questionNumber": 31,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "The correct sequence in decreasing order of the four sugarcane producing States in India is:",
+      "options": {
+        "A": "Maharashtra, U.P., Tamil Nadu, Andhra Pradesh",
+        "B": "U.P., Maharashtra, Tamil Nadu, Andhra Pradesh",
+        "C": "Maharashtra, U.P., Andhra Pradesh, Tamil Nadu",
+        "D": "U.P., Maharashtra, Andhra Pradesh, Tamil Nadu"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_2000_Q32",
+      "questionNumber": 32,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: I. Maharashtra has the highest acreage under jawar in India. II. Gujarat is the largest producer of groundnut in India. III. Rajasthan has the largest area of cultivable wastelands in India. IV. Andhra Pradesh has the highest per hectare yield of maize in India. Which of these statements are correct?",
+      "options": {
+        "A": "I and IV",
+        "B": "II and III",
+        "C": "I and III",
+        "D": "II and IV"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_1999_Q33",
+      "questionNumber": 33,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: List I List II I. Cotton",
+      "options": {
+        "A": "Rainfall 1000 -1500 mm Temperature 40° - 60°C II. Flax",
+        "B": "Rainfall 1500 -2000 mm Temperature 25° - 35°C III. Sugarbeet",
+        "C": "Rainfall 600 - 800 mm Temperature 5° - 18°C IV. Jute",
+        "D": "Rainfall 500 - 1000 mm Temperature 18° - 22°C E) Rainfall 500 - 600 mm Temperature 18°- 22°C a) I-A, II-C, III-D, IV-B b) I-B, II-C, III-E, IV-D c) I-D, II-E, III-B, IV-A d) I-D, II-C, III-E, IV-B"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_1998_Q34",
+      "questionNumber": 34,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I (Agricultural products) with List II Foremost producer) and select the correct answer using the codes given below the lists: List I List II I. Cotton",
+      "options": {
+        "A": "Madhya Pradesh II. Gram",
+        "B": "Gujarat III. Black pepper",
+        "C": "West Bengal IV. Pineapple",
+        "D": "Kerala a) I-B, II-A, III-D, IV-C b) I-B, II-A, III-C, IV-D c) I-A, II-B, III-D, IV-C d) I-A, II-B, III-C, IV-D"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_1997_Q35",
+      "questionNumber": 35,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer by using the codes given below the lists: List I (Crops) List II (Geographical conditions) I. Barley",
+      "options": {
+        "A": "Hot and dry climate with poor soil II. Rice",
+        "B": "Cool climate with poorer soil III. Millets",
+        "C": "Warm and moist climate with high altitude IV. Tea",
+        "D": "Hot and moist climate with rich soil a) I-B, II-D, III-A, IV-C b) I-C, II-D, III-A, IV-B c) I-B, II-A, III-D, IV-C d) I-C, II-B, III-D, IV-A"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_1997_Q36",
+      "questionNumber": 36,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the map given below: The places marked A, B, C and D in the map are respectively known for the cultivation of:",
+      "options": {
+        "A": "groundnut, ragi, tobacco and sugarcane",
+        "B": "groundnut, sugarcane, ragi and tobacco",
+        "C": "ragi, sugarcane, groundnut and tobacco",
+        "D": "ragi, groundnut, sugarcane and tobacco"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_1997_Q37",
+      "questionNumber": 37,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "The following are the major oilseeds produced in India: I. Sesamum II. Mustard III. Groundnut IV. Soyabean Which one of the following is the correct sequence of the descending order of the quantity of their production?",
+      "options": {
+        "A": "I, II, III, IV",
+        "B": "III, II, IV, I",
+        "C": "II, IV, III, I",
+        "D": "IV, III, II, I"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_1996_Q38",
+      "questionNumber": 38,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following pairs of states and their important crops are correctly matched? I. Kerala: Tapioca II. Maharashtra: Cotton III. W. Bengal: Jute IV. Gujarat: Groundnut Select the correct answer using the codes given below:",
+      "options": {
+        "A": "I, II and III",
+        "B": "I, II and IV",
+        "C": "I, III and IV",
+        "D": "II, III and IV"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_1996_Q39",
+      "questionNumber": 39,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following sets of conditions is necessary for a good cultivation of wheat?",
+      "options": {
+        "A": "Moderate temperature and moderate rainfall",
+        "B": "High temperature and heavy rainfall",
+        "C": "High temperature and moderate rainfall",
+        "D": "Low temperature and low rainfall"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_1996_Q40",
+      "questionNumber": 40,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is an important crop of the Barak valley?",
+      "options": {
+        "A": "Jute",
+        "B": "Tea",
+        "C": "Sugarcane",
+        "D": "Cotton"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_1996_Q41",
+      "questionNumber": 41,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following areas of India produces largest amount of cotton?",
+      "options": {
+        "A": "North-western India and Gangetic West Bengal",
+        "B": "North-western and Western India",
+        "C": "Western and Southern India",
+        "D": "Plains of Northern India"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_1995_Q42",
+      "questionNumber": 42,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the map given below four areas are differently shaded, three of which indicate cereal crops production areas and one indicates non -cereal crop production area.: As per the index given, the non -cereal crop production area is:",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    },
+    {
+      "id": "GEO_AGR_1995_Q43",
+      "questionNumber": 43,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "In which one of the following crops international trade is low in the context of total produce?",
+      "options": {
+        "A": "Rice",
+        "B": "Coffee",
+        "C": "Rubber",
+        "D": "Wheat"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI",
+      "microTheme": "cropping-agriculture",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI"
+    }
+  ]
+}

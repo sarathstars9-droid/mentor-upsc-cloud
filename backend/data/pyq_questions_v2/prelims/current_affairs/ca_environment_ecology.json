@@ -1,0 +1,465 @@
+{
+  "schemaVersion": "mentoros-ca-v1",
+  "fileName": "ca_environment_ecology.json",
+  "questions": [
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_None_Q1",
+      "year": null,
+      "question": "Question count: 20 Note: Best-effort structured extraction from a column-formatted source PDF. Where the source itself marked an answer as changed, that note is preserved.",
+      "options": {},
+      "answer": {
+        "correct_option": null,
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "low",
+      "reviewRequired": true
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2024_Q2",
+      "year": 2024,
+      "question": "Q1. (2024) Consider the following statements regarding World Toilet Organization: [2024] 1. It is one of the agencies of the United Nations. 2. World Toilet Summit, World Toilet Day and World Toilet College are the initiatives of this organization, to inspire action to tackle the global sanitation crisis. 3. The main focus of its function is to grant funds to the least developed countries and developing countries to achieve the end of open defecation. Which of the statements given above is/are correct? Source ref: intl_orgs / Q3",
+      "options": {
+        "A": "2 only",
+        "B": "3 only",
+        "C": "1 and 2",
+        "D": "2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2023_Q3",
+      "year": 2023,
+      "question": "Q2. (2023) In the recent years Chad, Guinea, Mali and Sudan caught the international attention for which one of the following reasons common to all of them? [2023] Source ref: gk_part1 / Q13",
+      "options": {
+        "A": "Discovery of rich deposits of rare earth elements",
+        "B": "Establishment of Chinese military bases",
+        "C": "Southward expansion of Sahara Desert",
+        "D": "Successful coups"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2023_Q4",
+      "year": 2023,
+      "question": "Q3. (2023) Consider the following statements: [2023] Statement-I: According to the United Nations\" World Water Development Report, 2022', India extracts more than a quarter of the world's groundwater withdrawal each year. Statement-II: India needs to extract more than a quarter of the world's groundwater each year to satisfy the drinking water and sanitation needs of almost 18% of world's population living in its territory. Which one of the following is correct in respect of the above statements? Source ref: intl_orgs / Q8",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-l is incorrect but Statement-II is correct"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2022_Q5",
+      "year": 2022,
+      "question": "Q4. (2022) Which one of the following best describes the term “greenwashing”? [2022] Source ref: gk_part1 / Q25",
+      "options": {
+        "A": "Conveying a false impression that a company’s products are eco-friendly and environmentally sound",
+        "B": "Non-inclusion of ecological/environmental costs in the Annual Financial Statements of a country",
+        "C": "Ignoring the disastrous ecological consequences while undertaking infrastructure development",
+        "D": "Making mandatory provisions for environmental costs in a government project/programme"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2021_Q6",
+      "year": 2021,
+      "question": "Q5. (2021) Consider the following statements: [2021] Statement 1: The United Nations Capital Development Fund (UNCDF) and the Arbor Day Foundation have recently recognized Hyderabad as 2020 Tree City of the World. Statement 2: Hyderabad was selected for the recognition for a year following its commitment to grow and maintain the urban forests. Which one of the following is correct in respect of the above statements? Source ref: intl_orgs / Q16",
+      "options": {
+        "A": "Both Statement1 and Statement 2 are correct and Statement 2 is the correct and Statement 2 is the correct explanation for Statement 1",
+        "B": "Both Statement 1 and Statement 2 are correct but Statement 2 is not the correct explanation for Statement 1",
+        "C": "Statement 1 is correct but Statement 2 is not correct",
+        "D": "Statement 1 is not correct but Statement 2 is correct"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2016_Q7",
+      "year": 2016,
+      "question": "Q6. (2016) What is/are the importance/importances of the 'United Nations Convention to Combat Desertification'? [2016] 1. It aims to promote effective action through innovative national programmes and supportive inter-national partnerships. 2. It has a special/particular focus on South Asia and North Africa regions, and its Secretariat facilitates the allocation of major portion of financial resources to these regions. 3. It is committed to bottom-up approach, encouraging the participation of local people in combating the desertification. Select the correct answer using the code given below. Source ref: intl_orgs / Q24",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2015_Q8",
+      "year": 2015,
+      "question": "Q7. (2015) In the context of modern scientific research, consider the following statements about ‘IceCube’, a particle detector located at South Pole, which was recently in the news: [2015] 1. It is the world’s largest neutrino detector, encompassing a cubic kilometre of ice. 2. It is a powerful telescope to search for dark matter 3. It is buried deep in the ice. Which of the statements given above is/are correct? Source ref: gk_part1 / Q57",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3 only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2014_Q9",
+      "year": 2014,
+      "question": "Q8. (2014) Consider the following international agreements: [2014] 1. The international Treaty on Plant Genetic Resources for Food and Agriculture. 2. The United Nations Convention to Combat Desertification. 3. The World Heritage Convention Which of the above has/have a bearing on the biodiversity? Source ref: intl_orgs / Q36",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2014_Q10",
+      "year": 2014,
+      "question": "Q9. (2014) Consider the following statements regarding 'Earth Hour': [2014] 1. It is an initiative of UNEP and UNESCO 2. It is a movement in which the participants switch off the lights for one hour on a certain day every year. 3. It is a movement to raise the awareness about the climate change and the need to save the planet. Which of the statements given above is/are correct? Source ref: intl_orgs / Q37",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2010_Q11",
+      "year": 2010,
+      "question": "Q10. (2010) Stiglitz Commission established by the President of the United Nations General Assembly was in the international news. The commission was supposed to deal with: [2010] Source ref: intl_orgs / Q49",
+      "options": {
+        "A": "The challenges posed by the impending global climate change and prepare a road m",
+        "B": "The workings of the global financial systems and to explore ways and means to secure a more sustainable global order",
+        "C": "Global terrorism and prepare a global action plan for the mitigation of terrorism",
+        "D": "Expansion of the United Nations Security Council in the present global scenario"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2010_Q12",
+      "year": 2010,
+      "question": "Q11. (2010) In the context of the affairs of which of the following is the phrase “Special Safeguard Mechanisms” mentioned in the news frequently? [2010] Source ref: intl_orgs / Q51",
+      "options": {
+        "A": "United Nations Environment Programme",
+        "B": "World Trade Organization",
+        "C": "ASEAN - India Free Trade Agreement",
+        "D": "G - 20 Summits"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2009_Q13",
+      "year": 2009,
+      "question": "Q12. (2009) In the middle of the year 2008 the Parliament of which one of the following countries became the first in the world to enact a Climate act by passing ''The Climate Change accountability Bill\"? [2009] Source ref: gk_part2 / Q8",
+      "options": {
+        "A": "Australia",
+        "B": "Canada",
+        "C": "Germany",
+        "D": "Japan"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2007_Q14",
+      "year": 2007,
+      "question": "Q13. (2007) Where is Copacabana Beach located? [2007] Source ref: gk_part2 / Q88",
+      "options": {
+        "A": "Buenos Aires",
+        "B": "Hawaiian Islands",
+        "C": "Rio de Janeiro",
+        "D": "Valletta"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2007_Q15",
+      "year": 2007,
+      "question": "Q14. (2007) With reference to the international meeting held in the year 2006, which of the following pairs is/are correctly matched? [2007] 1. NAM Summit: Havana 2. APEC Meeting: Bangkok 3. EU-India Summit: Helsinki 4. Un Climate Change Conference: Geneva Select the correct answer using the codes given below: Source ref: gk_part2 / Q99",
+      "options": {
+        "A": "CLRI",
+        "B": "IARI",
+        "C": "NDDB",
+        "D": "NDRI"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2005_Q16",
+      "year": 2005,
+      "question": "Q15. (2005) Which pairs are correctly matched? [2005] 1. Champadevi Shukla: Goldman Environmental prize 2. Dr. P. Sri Ramachanrudu: Vachaspati Puraskar 3. Ela Ramesh Bhatt: Lal Bahadur Shastri National Award for Excellence in Public Administration, Academics and Management 4. Upamanyu Chatterjee: Lalit Kala Ratna Award Select the correct answer: Source ref: gk_part3 / Q55",
+      "options": {
+        "A": "1 and 2",
+        "B": "1, 2 and 3",
+        "C": "3 and 4",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "Emerging Tech",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2004_Q17",
+      "year": 2004,
+      "question": "Q16. (2004) The Ramon Magsaysay Award winner Shanta Sinha is known as: [2004] Source ref: gk_part3 / Q89",
+      "options": {
+        "A": "A campaigner for urban sanitation",
+        "B": "An anti-child labour activist",
+        "C": "An organiser of rain-water harvesting schemes",
+        "D": "An activist for the welfare of poor rural women"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_2004_Q18",
+      "year": 2004,
+      "question": "Q17. (2004) Match List-I (Agency) with List-II (Headquarters) and select the correct answer using the codes given below the Lists: [2004] List-I (Agency) List-II (Headquarters ) A. United Nations Development Programme 1. Nairobi B. United Nations Environment Programme 2. Vienna C. United Nations Industrial Development Organization (UNIDO) 3. Berne D. Universal Postal Union (UPU) 4. New York A B C D Source ref: intl_orgs / Q73",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_1998_Q19",
+      "year": 1998,
+      "question": "Q18. (1998) Indonesian forest fire in 1997 was caused by: [1998] Source ref: gk_part4 / Q21",
+      "options": {
+        "A": "Greenhouse effect",
+        "B": "Depletion of ozone layer",
+        "C": "El Nino effect",
+        "D": "None of the above"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_1998_Q20",
+      "year": 1998,
+      "question": "Q19. (1998) Forest areas have been labelled as 1, 2, 3 and 4 in the rough outline map given: [1998] Among these, those which were threatened in 1997 by a serious epidemic include Source ref: gk_part4 / Q32",
+      "options": {
+        "A": "Teak forests of 3 and 4",
+        "B": "Oaks forests of 1 and sal forests of 2",
+        "C": "Sal forests of 3",
+        "D": "Sandalwood forests of 4"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-CONSERVATION",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY.JSON_1995_Q21",
+      "year": 1995,
+      "question": "Q20. (1995) 'Monoculture of commercially viable trees is destroying the unique natural profile of ............Thoughtless exploitation of timber, deforesting vast tracts for palm cultivation, destruction of mangroves, illegal logging by tribals and poaching only compound the problem. Fresh water pockets are fast drying up due to deforestation and destruction of mangroves.' The place referred to in this quotation is: [1995] Source ref: gk_part4 / Q61",
+      "options": {
+        "A": "Sunderbans",
+        "B": "Kerala Coast",
+        "C": "Orissa Coast",
+        "D": "Andaman and Nicobar Islands"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "mapped"
+      },
+      "stage": "Prelims",
+      "paper": "GS",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Institutions",
+      "confidenceBand": "high",
+      "reviewRequired": false
+    }
+  ],
+  "nodeId": "GS3-CA-ENV",
+  "topicName": "Environment"
+}

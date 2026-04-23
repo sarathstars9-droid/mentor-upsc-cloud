@@ -1,0 +1,334 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Directive Principles",
+  "topicId": "directive_principles",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 12,
+  "questions": [
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_2021_Q1",
+      "questionNumber": 1,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Under the Indian Constitution, concentration of wealth violates:",
+      "options": {
+        "A": "The Right to Equality",
+        "B": "The Directive Principles of State Policy",
+        "C": "The Right to Freedom",
+        "D": "The Concept of Welfare"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Directive Principles",
+      "topicId": "directive_principles",
+      "sectionId": "GS2-POL-DPSP",
+      "nodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-DPSP",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_2020_Q2",
+      "questionNumber": 2,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which part of the Constitution of India declares the ideal of a Welfare State?",
+      "options": {
+        "A": "Directive Principles of State Policy",
+        "B": "Fundamental Rights",
+        "C": "Preamble",
+        "D": "Seventh Schedule"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Directive Principles",
+      "topicId": "directive_principles",
+      "sectionId": "GS2-POL-DPSP",
+      "nodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-DPSP",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_2020_Q3",
+      "questionNumber": 3,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the provisions contained in Part IV of the Constitution of India, which of the following statements is/are correct? 1. They shall be enforceable by courts. 2. They shall not be enforceable by any court. 3. The principles laid down in this part are to influence the making of laws by the State. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "1 and 3 only",
+        "D": "2 and 3 only"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Directive Principles",
+      "topicId": "directive_principles",
+      "sectionId": "GS2-POL-DPSP",
+      "nodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-DPSP",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_2017_Q4",
+      "questionNumber": 4,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which principle among the following was added to the Directive Principles of State Policy by the 42nd Amendment to the Constitution?",
+      "options": {
+        "A": "Equal pay for equal work for both men and women",
+        "B": "Participation of workers in the management of industries",
+        "C": "Right to work, education and public assistance",
+        "D": "Securing living wage and human conditions of work to workers"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Directive Principles",
+      "topicId": "directive_principles",
+      "sectionId": "GS2-POL-DPSP",
+      "nodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-DPSP",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_2017_Q5",
+      "questionNumber": 5,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: With reference to the Constitution of India, the Directive Principles of State Policy constitute limitations upon 1. Legislative function. 2. Executive function. Which of the above statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Directive Principles",
+      "topicId": "directive_principles",
+      "sectionId": "GS2-POL-DPSP",
+      "nodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-DPSP",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_2017_Q6",
+      "questionNumber": 6,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of India, which one of the following is the correct relationship between Rights and Duties?",
+      "options": {
+        "A": "Rights are correlative with Duties.",
+        "B": "Rights are personal and hence independent of society and Duties.",
+        "C": "Rights, not Duties, are important for the advancement of the personality of the citizen.",
+        "D": "Duties, not Rights, are important for the stability of the State."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Directive Principles",
+      "topicId": "directive_principles",
+      "sectionId": "GS2-POL-DPSP",
+      "nodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-DPSP",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_2015_Q7",
+      "questionNumber": 7,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "The ideal of “Welfare State” in the Indian Constitution is enshrined in its:",
+      "options": {
+        "A": "Preamble",
+        "B": "Directive Principles of State Policy",
+        "C": "Fundamental Rights",
+        "D": "Seventh Schedule"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Directive Principles",
+      "topicId": "directive_principles",
+      "sectionId": "GS2-POL-DPSP",
+      "nodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-DPSP",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_2015_Q8",
+      "questionNumber": 8,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following Statements regarding the DPSP/ Directive Principles of State Policy: 1. The Principles spell out the socio-economic democracy in the country 2. The provisions contained in these Principles are not enforceable by any court. Which of the statements given below are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 & 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Directive Principles",
+      "topicId": "directive_principles",
+      "sectionId": "GS2-POL-DPSP",
+      "nodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-DPSP",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_2012_Q9",
+      "questionNumber": 9,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following provisions under the Directive Principles of State Policy as enshrined in the Constitution of India: 1. Securing for citizens of India a uniform civil code 2. Organising village Panchayats 3. Promoting cottage industries in rural areas 4. Securing for all the workers reasonable leisure and cultural opportunities Which of the above Gandhian Principles reflected in the Directive of State Policy?",
+      "options": {
+        "A": "1,2 & 4 Only",
+        "B": "2 & 3 Only",
+        "C": "1,3 & 4 Only",
+        "D": "1,2 3 & 4"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Directive Principles",
+      "topicId": "directive_principles",
+      "sectionId": "GS2-POL-DPSP",
+      "nodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-DPSP",
+      "microTheme": "NITI Aayog",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_2008_Q10",
+      "questionNumber": 10,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following is/are included in the Directive Principles of State policy? 1. Prohibition of traffic in human beings and forced labour 2. Prohibition of Consumption except for medicinal purposes of intoxicating drinks and of other drugs which are injurious to health Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 Only",
+        "C": "Both 1 and 2 Only",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Directive Principles",
+      "topicId": "directive_principles",
+      "sectionId": "GS2-POL-DPSP",
+      "nodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-DPSP",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_2002_Q11",
+      "questionNumber": 11,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "The purpose of the inclusion of Directive Principles of State Policy in the Indian Constitution is to establish:",
+      "options": {
+        "A": "Political democracy",
+        "B": "Social democracy",
+        "C": "Gandhian democracy",
+        "D": "Social and economic democracy"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Directive Principles",
+      "topicId": "directive_principles",
+      "sectionId": "GS2-POL-DPSP",
+      "nodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-DPSP",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_2002_Q12",
+      "questionNumber": 12,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following Articles of the Directive Principles of State Policy deals with the promotion of international peace and security?",
+      "options": {
+        "A": "51",
+        "B": "48 A",
+        "C": "43 A",
+        "D": "41"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Directive Principles",
+      "topicId": "directive_principles",
+      "sectionId": "GS2-POL-DPSP",
+      "nodeId": "GS2-POL-DPSP",
+      "syllabusNodeId": "GS2-POL-DPSP",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

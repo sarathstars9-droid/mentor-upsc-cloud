@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Vice President",
+  "topicId": "vice_president",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 1,
+  "questions": [
+    {
+      "id": "POL_VICE_PRESIDENT_2008_Q1",
+      "questionNumber": 1,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who among the following have held the office of the Vice President of India? 1. Mohammad Hidayatullah 2. Fakhruddin Ali Ahmed 3. Neelam Sanjiva 4. Shankar Dayal Sharma Select the correct answer using the code given below: -",
+      "options": {
+        "A": "1,2,3 and 4",
+        "B": "1 and 4 only",
+        "C": "2 and 3 only",
+        "D": "3 and 4 only"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Vice President",
+      "topicId": "vice_president",
+      "sectionId": "GS2-POL-PARLIAMENT",
+      "nodeId": "GS2-POL-PARL",
+      "syllabusNodeId": "GS2-POL-PARL",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

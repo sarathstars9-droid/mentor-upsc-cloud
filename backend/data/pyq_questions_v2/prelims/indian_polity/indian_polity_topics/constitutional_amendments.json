@@ -1,0 +1,901 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Constitutional Amendments",
+  "topicId": "constitutional_amendments",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 33,
+  "questions": [
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following subjects under the Constitution of India: I. List I–Union List, in the Seventh Schedule II. Extent of the executive power of a State III. Conditions of the Governor’s office For a constitutional amendment with respect to which of the above, ratification by the Legislatures of not less than one-half of the States is required before presenting the bill to the President of India for assent?",
+      "options": {
+        "A": "I and II only",
+        "B": "II and III only",
+        "C": "I and III only",
+        "D": "I, II and III"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Governor Powers",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2024_Q2",
+      "questionNumber": 2,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "As per Article 368 of the Constitution of India, the Parliament may amend any provision of the Constitution by way of: 1. Addition 2. Variation 3. Repeal Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2024_Q3",
+      "questionNumber": 3,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following statements is/are correct about the Constitution of India? 1.Powers of the Municipalities are given in Part IX A of the Constitution. 2.Emergency provisions are given in Part XVIII of the Constitution. 3.Provisions related to the amendment of the Constitution are given in Part XX of the Constitution. Select the answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Municipalities",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2024_Q4",
+      "questionNumber": 4,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements regarding 'Nari Shakti Vandan Adhiniyam': 1. Provisions will come into effect from the 18th Lok Sabha. 2. This will be in force for 15 years after becoming an Act. 3. There are provisions for the reservation of seats for Scheduled Castes Women within the quota reserved for the Scheduled Castes. Which of the statements given above are correct?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1 and 3 only"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2024_Q5",
+      "questionNumber": 5,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Constitution (71st Amendment) Act, 1992 amends the Eighth Schedule to the Constitution to include which of the following languages? 1. Konkani 2. Manipuri 3. Nepali 4. Maithili Select the correct answer using the code given below:",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1, 2 and 4",
+        "C": "1, 3 and 4",
+        "D": "2, 3 and 4"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2023_Q6",
+      "questionNumber": 6,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, which one of the following Constitutional Amendments was widely believed to overcome the judicial interpretations of the Fundamental Rights?",
+      "options": {
+        "A": "1st Amendment",
+        "B": "42nd Amendment",
+        "C": "44th Amendment",
+        "D": "86th Amendment"
+      },
+      "answer": {
+        "correct_option": null,
+        "status": "dropped_source_unclear"
+      },
+      "correctAnswer": null,
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Fundamental Rights",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2023_Q7",
+      "questionNumber": 7,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Statement-I: In India, prisons are managed by State governments with their own rules and regulations for the day-to- day administration of prisons. Statement- II: In India, prisons are governed by the Prison Act, 1894 which expressly kept the subject of prisons in the control of Provincial Governments. Which of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement- II is incorrect.",
+        "D": "Statement-I is incorrect but Statement- II is correct."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2023_Q8",
+      "questionNumber": 8,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. According to the Constitution of India, the Central Government has a duty to protect States from internal disturbances. 2. The Constitution of India exempts the States from providing legal counsel to a person being held for preventive detention. 3. According to the Prevention of Terrorism Act, 2002, confession of the accused before the police cannot be used as evidence. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2023_Q9",
+      "questionNumber": 9,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Home Guards, consider the following statements: 1. Home Guards are raised under the Home Guards Act and Rules of the Central Government. The role of the Home Guards is to serve as an auxiliary force to the police in maintenance of internal security. 3. To prevent infiltration on the international border/coastal areas, the Border Wing Home Guards Battalions have been raised in some States. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2023_Q10",
+      "questionNumber": 10,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to India, consider the following pairs: Action: The Act under which it is covered 1. Unauthorized wearing of police or military uniforms : The Official Secrets Act, 1923 2. Knowingly misleading or otherwise interfering with a police officer or military officer when engaged in their duties: The Indian Evidence Act, 1872 3. Celebratory gunfire which can endanger the personal safety of others: The Arms (Amendment) Act, 2019 How many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2023_Q11",
+      "questionNumber": 11,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements in respect of the National Flag of India according to the Flag Code of India, 2002: Statement-I: One of the standard sizes of the National Flag of India is 600 mm x 400 mm. Statement-II: The ratio of the length to the height (width) of the Flag shall be 3:2. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-1 and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2022_Q12",
+      "questionNumber": 12,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. A bill amending the Constitution requires a prior recommendation of the President of India. 2. When a Constitution Amendment Bill is presented to the President of India, it is obligatory for the President of India to give his/her assent. 3. A Constitution Amendment Bill must be passed by both the Lok Sabha and the Rajya Sabha by a special majority and there is no provision for joint sitting. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2020_Q13",
+      "questionNumber": 13,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Aadhaar metadata cannot be stored for more than three months. 2. States cannot enter into any contract with private corporations for sharing Aadhaar data. 3. Aadhaar is mandatory for obtaining insurance products. 4. Aadhaar is mandatory for getting benefits funded out of the Consolidated Fund of India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 4 only",
+        "B": "2 and 4 only",
+        "C": "3 only",
+        "D": "1, 2 and 3 only"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2019_Q14",
+      "questionNumber": 14,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Ninth Schedule was introduced in the Constitution of India during the prime ministership of:",
+      "options": {
+        "A": "Jawaharlal Nehru",
+        "B": "Lal Bahadur Shastri",
+        "C": "Indira Gandhi",
+        "D": "Morarji Desai"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2019_Q15",
+      "questionNumber": 15,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Under which Schedule of the Constitution of India can the transfer of tribal land to private parties for mining be declared null and void?",
+      "options": {
+        "A": "Third Schedule",
+        "B": "Fifth Schedule",
+        "C": "Ninth Schedule",
+        "D": "Twelfth Schedule"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2019_Q16",
+      "questionNumber": 16,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. As per recent amendment to the Indian Forest Act, 1927, forest dwellers have the right to fell the bamboos grown on forest areas. 2. As per the Scheduled Tribes and Other Traditional Forest Dwellers (Recognition of Forest Rights) Act, 2006, bamboo is a minor forest produce. 3. The Scheduled Tribes and Other Traditional Forest Dwellers (Recognition of Forest Rights) Act, 2006 allows ownership of minor forest produce to forest dwellers. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "NITI Aayog",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2018_Q17",
+      "questionNumber": 17,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Parliament of India can place a particular law in the Ninth Schedule of the Constitution of India 2. The validity of law placed in Ninth Schedule cannot be examined by any court and no judgement can be made on it. Which of the statements given above is/ are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Parliament",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2018_Q18",
+      "questionNumber": 18,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Aadhar card can be used as a proof of citizenship or domicile. 2. Once issued, an Aadhar card can not be deactivated or omitted by the Issuing Authority. Which of the following statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2013_Q19",
+      "questionNumber": 19,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. An amendment to the constitution of India can be initiated by an introduction of a bill in the Lok sabha only. 2. If such an amendment seeks to make changes in the federal character of the constitution, the amendment also requires it to be ratified by the legislature of all the states of India. Which of statements given is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "NITI Aayog",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2013_Q20",
+      "questionNumber": 20,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Under the scheduled tribes and other traditional forest Dwellers (recognition of forest rights) act, 2006, who shall be the authority to initiate the process for determining the nature and extent of individual or community forest rights or both?",
+      "options": {
+        "A": "State forest department",
+        "B": "District collector / Deputy Commissioner",
+        "C": "Tahsildar / Block development officer/mandal remove officer",
+        "D": "Gram Sabha"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "NITI Aayog",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2008_Q21",
+      "questionNumber": 21,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "Under which one of the following Constitution Amendments Acts, four languages were added to the languages under the Eighth schedule of the Constitution of India, thereby raising their number to 22?",
+      "options": {
+        "A": "Constitution (Ninetieth Amendment) Act",
+        "B": "Constitution (Ninety-first Amendment) Act",
+        "C": "Constitution (Ninety-second Amendment) Act",
+        "D": "Constitution (Ninety-third Amendment) Act"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2007_Q22",
+      "questionNumber": 22,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1.The Judge (Inquiry) Bill 2006 contemplates establishing a Judicial Council which will receive complaints against Judges of the Supreme Court including Chief Justices of India, High Court Chief Justice and Judges. 2. Under the Protection of Women from Domestic Violence act, 2005, women from Domestic Violence act, 2005 a woman can file a petition before a 1st class Judicial magistrate. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2006_Q23",
+      "questionNumber": 23,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "What does the 104th Constitution Amendment Bill relate to?",
+      "options": {
+        "A": "Abolition of Legislative Councils in certain States",
+        "B": "Introduction of dual citizenship for persons of Indian origin living outside India",
+        "C": "Providing quota to socially and educationally backward classes in private educational institutions.",
+        "D": "Providing quota for religious minorities in the services under the Central Government."
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2006_Q24",
+      "questionNumber": 24,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Free and compulsory education to the children of 6-14 years age group by the state was made a Fundamental Right by the 76th Amendment to the Constitution of India. 2. Sarva Shiksha Abhiyan seeks to provide computer education even in rural areas. 3. Education was included in the Concurrent List by the 42nd Amendment, 1976 to the Constitution of India. Which of the statements given above are correct?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1 and 2, only",
+        "C": "2 and 3, only",
+        "D": "1 and 3, only"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2005_Q25",
+      "questionNumber": 25,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Constitution of India has 20 parts. 2. There are 390 articles in the Constitution of India in all. 3. Ninth, Tenth, Eleventh and Twelfth Schedules were added to the Constitution of India by the Constitution (Amendment)Acts. Which of the statements is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2002_Q26",
+      "questionNumber": 26,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: The Draft Electricity Bill, 2001 seeks to replace: 1. Indian Electricity Act, 1910 2. Electricity (Supply) Act, 1948 3. Electricity Regulatory Commission Act, 1998 4. State Electricity Boards Which of these statements are correct?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "2, 3 and 4",
+        "C": "1, 2 and 4",
+        "D": "1, 3 and 4"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2002_Q27",
+      "questionNumber": 27,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "The 93rd Constitutional Amendment Bill deals with the:",
+      "options": {
+        "A": "continuation of reservation for backward classes in government employment",
+        "B": "free and compulsory education for all children between the age of 6 and 14 years",
+        "C": "reservation of 30 per cent posts for women in government recruitments",
+        "D": "allocation of more number of parliamentary seats for recently created States"
+      },
+      "answer": {
+        "correct_option": null,
+        "status": "dropped_source_unclear"
+      },
+      "correctAnswer": null,
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_1999_Q28",
+      "questionNumber": 28,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "An amendment of the Constitution of India can be initiated by the: I. Lok Sabha II. Rajya Sabha III. State Legislatures IV. President. Choose the correct option",
+      "options": {
+        "A": "I alone",
+        "B": "I, II and III",
+        "C": "II, III and IV",
+        "D": "I and II"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "NITI Aayog",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_1996_Q29",
+      "questionNumber": 29,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the system of governance in the Panchayati Raj setup?",
+      "options": {
+        "A": "Single tier structure of local self-government at the village level",
+        "B": "Two tier system of local self-government at the village and block levels",
+        "C": "Three tier structure of local self-government, at the village, block and district levels",
+        "D": "Four tier system of local self-government at the village, block, district and state levels"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_1996_Q30",
+      "questionNumber": 30,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the Indian context the term Denotified tribes’ refers to:",
+      "options": {
+        "A": "Tribes which are aboriginals",
+        "B": "Nomadic tribes",
+        "C": "Tribes practising shifting cultivation",
+        "D": "Tribes which were earlier classified as criminal tribes"
+      },
+      "answer": {
+        "correct_option": null,
+        "status": "dropped_source_unclear"
+      },
+      "correctAnswer": null,
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Constitutional Amendments",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_1995_Q31",
+      "questionNumber": 31,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are matters on which a constitutional amendment is possible only with the ratification of the legislatures of not less than one half of the States? I. Election of the President II. Representation of States in Parliament III. Any of the Lists in the 7th Schedule IV. Abolition of the Legislative Council of a State Choose the correct answer from the codes given below: a) I, II and III b) I, II and IV c) I, III and IV d) II, III and IV Which of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement- II is incorrect.",
+        "D": "Statement-I is incorrect but Statement- II is correct."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "President",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_1995_Q32",
+      "questionNumber": 32,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following is incorrect respect to Indian Local Government? a) According to the Indian Constitution, local government is not an independent tier in the federal system b) 30% of the seats in local bodies are reserved for women c) Local government finances are to be provided by a Commission d) Elections to local bodies are to be determined by a Commission How many of the above are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Federalism",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_1995_Q33",
+      "questionNumber": 33,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "In which one of the following States of India is it legal for a Hindu male and illegal for a Muslim male to have more than one living wife? a) Nagaland b) Mizoram c) Goa d) Arunachal Pradesh III. The Chief Minister of a State constitutes a commission to review the financial position of Panchayats at the intermediate levels and to make recommendations regarding the distribution of net proceeds of taxes and duties, leviable by the State, between the State and Panchayats at the intermediate level. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 c a X a b* b b d b b b d d a c c -- c -- 20 21 22 23 24 25 26 * disputed c a -- -- a d c -- no more relevant X - UPSC dropped the que. Which of the statements given above are not correct?",
+      "options": {
+        "A": "I and II only",
+        "B": "II and III only",
+        "C": "I and III only",
+        "D": "I, II and III"
+      },
+      "answer": {
+        "correct_option": null,
+        "status": "dropped_source_unclear"
+      },
+      "correctAnswer": null,
+      "topicName": "Constitutional Amendments",
+      "topicId": "constitutional_amendments",
+      "sectionId": "GS2-POL-AMEND",
+      "nodeId": "GS2-POL-AMEND",
+      "syllabusNodeId": "GS2-POL-AMEND",
+      "microTheme": "Panchayati Raj",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

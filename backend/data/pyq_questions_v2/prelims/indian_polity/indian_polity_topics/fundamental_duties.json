@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Fundamental Duties",
+  "topicId": "fundamental_duties",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 9,
+  "questions": [
+    {
+      "id": "POL_FUNDAMENTAL_DUTIES_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: Provision in the Constitution of India: Stated under I. Separation of Judiciary from the Executive in the public services of the State : The Directive Principles of the State Policy II. Valuing and preserving of the rich heritage of our composite culture : The Fundamental Duties III. Prohibition of employment of children below the age of 14 years in factories : The Fundamental Rights How many of the above pairs are correctly matched? a) Only one b) Only two",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Fundamental Duties",
+      "topicId": "fundamental_duties",
+      "sectionId": "GS2-POL-FD",
+      "nodeId": "GS2-POL-FD",
+      "syllabusNodeId": "GS2-POL-FD",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_FUNDAMENTAL_DUTIES_2020_Q2",
+      "questionNumber": 2,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Other than the Fundamental Rights, which of the following part(s) of the Constitution of India reflect the principles and provisions of the Universal Declaration of Human Rights (1948)? 1. Preamble 2. Directive Principles of State Policy 3. Fundamental Duties Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Fundamental Duties",
+      "topicId": "fundamental_duties",
+      "sectionId": "GS2-POL-FD",
+      "nodeId": "GS2-POL-FD",
+      "syllabusNodeId": "GS2-POL-FD",
+      "microTheme": "Human Rights Bodies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_FUNDAMENTAL_DUTIES_2017_Q3",
+      "questionNumber": 3,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following statements is/are true of the Fundamental Duties of an Indian citizen? 1. A legislative process has been provided to enforce these duties. 2. They are correlative to legal duties. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Fundamental Duties",
+      "topicId": "fundamental_duties",
+      "sectionId": "GS2-POL-FD",
+      "nodeId": "GS2-POL-FD",
+      "syllabusNodeId": "GS2-POL-FD",
+      "microTheme": "Fundamental Duties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_FUNDAMENTAL_DUTIES_2015_Q4",
+      "questionNumber": 4,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "“To uphold and protect the Sovereignty Unity and Integrity of India” is a provision made in the:",
+      "options": {
+        "A": "Preamble of the Constitution",
+        "B": "Directive Principles of State Policy",
+        "C": "Fundamental Rights",
+        "D": "Fundamental Duties"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Fundamental Duties",
+      "topicId": "fundamental_duties",
+      "sectionId": "GS2-POL-FD",
+      "nodeId": "GS2-POL-FD",
+      "syllabusNodeId": "GS2-POL-FD",
+      "microTheme": "Fundamental Duties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_FUNDAMENTAL_DUTIES_2014_Q5",
+      "questionNumber": 5,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the Constitution of India, promotion of international peace and security is included in the:",
+      "options": {
+        "A": "Preamble to the constitution",
+        "B": "Directive Principles of State Policy",
+        "C": "Fundamental Duties",
+        "D": "Ninth Schedule"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Fundamental Duties",
+      "topicId": "fundamental_duties",
+      "sectionId": "GS2-POL-FD",
+      "nodeId": "GS2-POL-FD",
+      "syllabusNodeId": "GS2-POL-FD",
+      "microTheme": "Fundamental Duties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_FUNDAMENTAL_DUTIES_2013_Q6",
+      "questionNumber": 6,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "According to the constitution of India, which of the following are fundamental for the governance of the country?",
+      "options": {
+        "A": "Fundamental rights",
+        "B": "Fundamental duties",
+        "C": "Directive principles of state policy",
+        "D": "Fundamental rights and fundamental duties"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Fundamental Duties",
+      "topicId": "fundamental_duties",
+      "sectionId": "GS2-POL-FD",
+      "nodeId": "GS2-POL-FD",
+      "syllabusNodeId": "GS2-POL-FD",
+      "microTheme": "Fundamental Duties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_FUNDAMENTAL_DUTIES_2012_Q7",
+      "questionNumber": 7,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following is/are among the Fundamental Duties, laid down in the Indian Constitution? 1. To preserve the rich heritage of our composite culture 2. To protect the weaker sections from social injustice 3. To develop the scientific temper and spirit of inquiry 4. To strive towards excellence in all spheres of individual and collective activity Select the correct answer, using the codes below:",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "2 Only",
+        "C": "1, 3, & 4 Only",
+        "D": "1, 2, 3 & 4"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Fundamental Duties",
+      "topicId": "fundamental_duties",
+      "sectionId": "GS2-POL-FD",
+      "nodeId": "GS2-POL-FD",
+      "syllabusNodeId": "GS2-POL-FD",
+      "microTheme": "Fundamental Duties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_FUNDAMENTAL_DUTIES_2011_Q8",
+      "questionNumber": 8,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "Under the constitution of India, which one of the following is not a fundamental duty?",
+      "options": {
+        "A": "To vote in public elections.",
+        "B": "To develop the scientific temper.",
+        "C": "To safeguard public property.",
+        "D": "To abide by the constitution and respect its ideals."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Fundamental Duties",
+      "topicId": "fundamental_duties",
+      "sectionId": "GS2-POL-FD",
+      "nodeId": "GS2-POL-FD",
+      "syllabusNodeId": "GS2-POL-FD",
+      "microTheme": "Fundamental Duties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_FUNDAMENTAL_DUTIES_2010_Q9",
+      "questionNumber": 9,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Constitution of India, consider the following: 1. Fundamental Rights. 2. Fundamental Duties. 3. Directive Principles of State Policy. Which of the above provisions of the Constitution of India is / are fulfilled by the National Social Assistance Programme launched by the Government of India?",
+      "options": {
+        "A": "1 only",
+        "B": "3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Fundamental Duties",
+      "topicId": "fundamental_duties",
+      "sectionId": "GS2-POL-FD",
+      "nodeId": "GS2-POL-FD",
+      "syllabusNodeId": "GS2-POL-FD",
+      "microTheme": "Directive Principles",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

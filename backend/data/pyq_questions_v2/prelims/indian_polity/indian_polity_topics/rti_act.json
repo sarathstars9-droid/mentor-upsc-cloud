@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "RTI Act",
+  "topicId": "rti_act",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 2,
+  "questions": [
+    {
+      "id": "POL_RTI_ACT_2019_Q1",
+      "questionNumber": 1,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The 44th Amendment to the Constitution of India introduced an Article placing the election of the Prime Minister beyond judicial review. 2. The Supreme Court of India struck down the 99th Amendment to the Constitution of India as being violative of the independence of judiciary. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "RTI Act",
+      "topicId": "rti_act",
+      "sectionId": "GS2-POL-BODIES",
+      "nodeId": "GS2-POL-BODIES",
+      "syllabusNodeId": "GS2-POL-BODIES",
+      "microTheme": "Judicial Review",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ",
+      "sourceNote": "Uploaded source file title appears mismatched to question topic; included without guessing."
+    },
+    {
+      "id": "POL_RTI_ACT_2012_Q2",
+      "questionNumber": 2,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "The National Green Tribunal Act, 2010 was enacted in consonance with which of the following provisions of the Constitution of India? 1. Right to healthy environment, construed as a part of Right to life under Article 21 2. Provision of grants for raising the level of administration in the Scheduled Areas for the welfare of Scheduled Tribes under Article 275(1) 3. Powers and functions of Gram Sabha as mentioned under Article 243(A) Select the correct answer:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 only",
+        "D": "1,2 & 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "RTI Act",
+      "topicId": "rti_act",
+      "sectionId": "GS2-POL-BODIES",
+      "nodeId": "GS2-POL-BODIES",
+      "syllabusNodeId": "GS2-POL-BODIES",
+      "microTheme": "Tribunals",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ",
+      "sourceNote": "Uploaded source file title appears mismatched to question topic; included without guessing."
+    }
+  ]
+}

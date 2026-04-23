@@ -1213,6 +1213,9 @@ export default function PlanPage() {
   const [ocrDraftBlocks, setOcrDraftBlocks] = useState([]);
   const [ocrPreviewReminderBlocks, setOcrPreviewReminderBlocks] = useState([]);
 
+  // Phase 8: Knowledge Linkage — PYQ recommendation after block completion
+  const [pyqRecommendation, setPyqRecommendation] = useState(null);
+
   const [activeReviewBlock, setActiveReviewBlock] = useState(null);
   const streakToday = getRealStreakFromBlocks(todayBlocks, doneMin);
 
@@ -1230,6 +1233,48 @@ export default function PlanPage() {
   const currentBlock = useMemo(() => {
     return selectCurrentBlock(todayBlocks, getEffectiveBlockStatus, BLOCK_STATUS);
   }, [todayBlocks]);
+
+  // Live elapsed timer.
+  // Seeds from ActualSeconds (backend-derived, returned by the PostgreSQL merge layer)
+  // then ticks forward every second locally — display only, never becomes state truth.
+  // On each 10-second poll the backend value re-anchors the seed, correcting any drift.
+  const [liveElapsedSec, setLiveElapsedSec] = useState(0);
+  useEffect(() => {
+    function computeElapsed() {
+      if (!currentBlock?.ActualStart) { setLiveElapsedSec(0); return; }
+      const status = getEffectiveBlockStatus(currentBlock);
+      if (status !== BLOCK_STATUS.ACTIVE && status !== BLOCK_STATUS.PAUSED) {
+        setLiveElapsedSec(0); return;
+      }
+
+      // Prefer backend-computed ActualSeconds (set by PostgreSQL merge layer).
+      // Fall back to local timestamp arithmetic for the 1-second ticks between polls.
+      const backendSec = Number(currentBlock.ActualSeconds || 0);
+      if (backendSec > 0 && status === BLOCK_STATUS.PAUSED) {
+        // Paused: timer is frozen — use backend value directly
+        setLiveElapsedSec(backendSec);
+        return;
+      }
+
+      const startMs = new Date(currentBlock.ActualStart).getTime();
+      if (isNaN(startMs)) { setLiveElapsedSec(0); return; }
+      // TotalPauseSeconds from PostgreSQL merge (accurate); fall back to minutes * 60
+      const totalPauseSec = Number(currentBlock.TotalPauseSeconds || 0)
+        || Number(currentBlock.TotalPauseMinutes || 0) * 60;
+
+      if (status === BLOCK_STATUS.PAUSED) {
+        const pausedAtMs = currentBlock.LastPauseAt
+          ? new Date(currentBlock.LastPauseAt).getTime()
+          : Date.now();
+        setLiveElapsedSec(Math.max(0, Math.floor((pausedAtMs - startMs) / 1000) - totalPauseSec));
+      } else {
+        setLiveElapsedSec(Math.max(0, Math.floor((Date.now() - startMs) / 1000) - totalPauseSec));
+      }
+    }
+    computeElapsed();
+    const id = setInterval(computeElapsed, 1000);
+    return () => clearInterval(id);
+  }, [currentBlock]);
 
   const currentBlockPyqNodeId = useMemo(() => {
     return getPrimaryPyqNodeId(currentBlock);
@@ -1481,7 +1526,28 @@ export default function PlanPage() {
           ).values()
         );
 
-        setTodayBlocks(dedupedMapped);
+        // Safety guard: if multiple ACTIVE blocks exist (legacy/race condition), keep only
+        // the one with the latest ActualStart and mark the rest back to PLANNED.
+        const activeBlocks = dedupedMapped.filter((b) => b.Status === BLOCK_STATUS.ACTIVE);
+        let safeBlocks = dedupedMapped;
+        if (activeBlocks.length > 1) {
+          const latestActive = activeBlocks.reduce((latest, b) => {
+            const bMs = b.ActualStart ? new Date(b.ActualStart).getTime() : 0;
+            const lMs = latest.ActualStart ? new Date(latest.ActualStart).getTime() : 0;
+            return bMs > lMs ? b : latest;
+          });
+          safeBlocks = dedupedMapped.map((b) =>
+            b.Status === BLOCK_STATUS.ACTIVE && b.BlockId !== latestActive.BlockId
+              ? { ...b, Status: BLOCK_STATUS.PLANNED }
+              : b
+          );
+          console.warn("[PlanPage] Multiple ACTIVE blocks detected — kept latest, reset others to PLANNED", {
+            kept: latestActive.BlockId,
+            reset: activeBlocks.filter((b) => b.BlockId !== latestActive.BlockId).map((b) => b.BlockId),
+          });
+        }
+
+        setTodayBlocks(safeBlocks);
 
         setReminderState((prev) => {
           const next = {};
@@ -1598,9 +1664,12 @@ export default function PlanPage() {
   useEffect(() => {
     if (!date) return;
 
+    // 10-second poll keeps lifecycle state (status, timer, pauses) accurate across
+    // refresh, multiple tabs, and mobile. Backend /api/sheets now enriches each
+    // getBlocksForDate response with PostgreSQL-derived actualSeconds / status.
     const id = setInterval(() => {
       loadBlocksForDate(date);
-    }, 20000);
+    }, 10000);
 
     return () => clearInterval(id);
   }, [date, loadBlocksForDate]);
@@ -1793,14 +1862,23 @@ export default function PlanPage() {
   async function handleStartBlock(blockId, options = {}) {
     const { openFocus = true } = options;
 
-    // Guard: if another block is already active, ask before switching
+    // Single-active enforcement: auto-stop any running block before starting a new one.
+    // Marks it as review_pending (no review popup) so the user can review it later.
     const existingActive = todayBlocks.find(
       (b) => getEffectiveBlockStatus(b) === BLOCK_STATUS.ACTIVE && b.BlockId !== blockId
     );
     if (existingActive) {
-      setPendingStartRequest({ blockId, options });
-      setSwitchBlockConfirmOpen(true);
-      return;
+      setTodayBlocks((prev) =>
+        prev.map((b) =>
+          b.BlockId === existingActive.BlockId ? { ...b, Status: "review_pending" } : b
+        )
+      );
+      setSpotlightOpen(false);
+      // Best-effort backend pause for the stopped block (fire-and-forget)
+      updateBlockAction("pauseBlock", {
+        blockId: existingActive.BlockId,
+        pausedAt: new Date().toISOString(),
+      }).catch(() => {});
     }
 
     const nowIso = new Date().toISOString();
@@ -1894,17 +1972,21 @@ export default function PlanPage() {
 
   async function handleResumeBlock(blockId) {
     const nowIso = new Date().toISOString();
+    const nowMs = Date.now();
 
     setTodayBlocks((prev) =>
-      prev.map((b) =>
-        b.BlockId === blockId
-          ? {
-            ...b,
-            Status: BLOCK_STATUS.ACTIVE,
-            LastResumeAt: nowIso,
-          }
-          : b
-      )
+      prev.map((b) => {
+        if (b.BlockId !== blockId) return b;
+        // Accumulate the duration of the current pause into TotalPauseMinutes
+        const pauseStartMs = b.LastPauseAt ? new Date(b.LastPauseAt).getTime() : nowMs;
+        const addedPauseMin = Math.max(0, (nowMs - pauseStartMs) / 60000);
+        return {
+          ...b,
+          Status: BLOCK_STATUS.ACTIVE,
+          LastResumeAt: nowIso,
+          TotalPauseMinutes: Number(b.TotalPauseMinutes || 0) + addedPauseMin,
+        };
+      })
     );
 
     try {
@@ -2026,6 +2108,20 @@ export default function PlanPage() {
       setTimeout(() => {
         setStatus("✅ Block review saved.");
       }, 0);
+
+      // Phase 8: Knowledge Linkage — fetch PYQ recommendation (non-blocking)
+      if (res?.block?.id) {
+        fetch(`${BACKEND_URL}/api/knowledge/block/${res.block.id}`)
+          .then(r => r.json())
+          .then(data => {
+            if (data?.ok && data?.recommendation?.hasRecommendation) {
+              setPyqRecommendation(data.recommendation);
+              // Auto-dismiss after 15 seconds
+              setTimeout(() => setPyqRecommendation(null), 15000);
+            }
+          })
+          .catch(() => {}); // Non-blocking: ignore errors
+      }
     } catch (e) {
       console.error("completeBlock failed", e);
       setStatus("❌ completeBlock failed");
@@ -2448,6 +2544,7 @@ export default function PlanPage() {
         currentBlockPyqLoading={currentBlockPyqLoading}
         currentBlockPyqError={currentBlockPyqError}
         spotlightMessage={spotlightMessage}
+        liveElapsedSec={liveElapsedSec}
         busy={busy}
         onStart={handleStartBlock}
         onPause={handlePauseBlock}
@@ -2502,6 +2599,62 @@ export default function PlanPage() {
       </div>
 
       {status && <div className="mos-status-box">{status}</div>}
+
+      {/* Phase 8: Knowledge Linkage — PYQ Recommendation Banner */}
+      {pyqRecommendation && (
+        <div
+          className="knowledge-linkage-banner"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 12,
+            padding: "12px 18px",
+            marginTop: 10,
+            background: "linear-gradient(135deg, rgba(16,185,129,0.15), rgba(59,130,246,0.10))",
+            border: "1px solid rgba(16,185,129,0.30)",
+            borderRadius: 12,
+            backdropFilter: "blur(8px)",
+            animation: "fadeIn 0.4s ease-out",
+          }}
+        >
+          <span style={{ fontSize: 14, color: "rgba(226,232,240,0.9)" }}>
+            📝 <b>{pyqRecommendation.questionCount}</b> PYQs available for this topic
+          </span>
+          <div style={{ display: "flex", gap: 8, flexShrink: 0 }}>
+            <a
+              href={`/pyq/topic/${encodeURIComponent(pyqRecommendation.nodeId || "")}`}
+              style={{
+                padding: "6px 14px",
+                borderRadius: 8,
+                background: "rgba(16,185,129,0.25)",
+                color: "#10b981",
+                fontWeight: 600,
+                fontSize: 13,
+                textDecoration: "none",
+                border: "1px solid rgba(16,185,129,0.35)",
+              }}
+            >
+              Solve PYQs →
+            </a>
+            <button
+              onClick={() => setPyqRecommendation(null)}
+              style={{
+                padding: "6px 12px",
+                borderRadius: 8,
+                background: "rgba(148,163,184,0.12)",
+                color: "rgba(226,232,240,0.6)",
+                fontWeight: 500,
+                fontSize: 13,
+                border: "1px solid rgba(148,163,184,0.2)",
+                cursor: "pointer",
+              }}
+            >
+              Later
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* ── Today's Study Blocks ────────────────────────────────────────── */}
       <div
@@ -2848,6 +3001,7 @@ export default function PlanPage() {
       <FocusModeModal
         open={spotlightOpen}
         block={currentBlock}
+        liveElapsedSec={liveElapsedSec}
         busy={busy}
         onStart={() => currentBlock && handleStartBlock(currentBlock.BlockId, { openFocus: true })}
         onPause={() => currentBlock && handlePauseBlock(currentBlock.BlockId)}

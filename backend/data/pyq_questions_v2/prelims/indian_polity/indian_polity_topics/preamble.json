@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Indian Polity",
+  "topicName": "Preamble",
+  "topicId": "preamble",
+  "sourceType": "UPSC_Polity_PYQ",
+  "totalQuestions": 6,
+  "questions": [
+    {
+      "id": "POL_PREAMBLE_2021_Q1",
+      "questionNumber": 1,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "What was the exact constitutional status of India on 26th January, 1950?",
+      "options": {
+        "A": "A Democratic Republic",
+        "B": "A Sovereign Democratic Republic",
+        "C": "A Sovereign Secular Democratic Republic",
+        "D": "A Sovereign Socialist Secular Democratic Republic"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Preamble",
+      "topicId": "preamble",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Preamble",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PREAMBLE_2020_Q2",
+      "questionNumber": 2,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "The Preamble to the Constitution of India is:",
+      "options": {
+        "A": "A part of the Constitution but has no legal effect",
+        "B": "Not a part of the Constitution and has no legal effect either",
+        "C": "A part of the Constitution and has the same legal effect as any other part",
+        "D": "A part of the Constitution but has no legal effect independently of other parts"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Preamble",
+      "topicId": "preamble",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Preamble",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PREAMBLE_2020_Q3",
+      "questionNumber": 3,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, separation of judiciary from the executive is enjoined by:",
+      "options": {
+        "A": "the Preamble of the Constitution",
+        "B": "a Directive Principle of State Policy",
+        "C": "the Seventh Schedule",
+        "D": "the conventional practice"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Preamble",
+      "topicId": "preamble",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Preamble",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PREAMBLE_2017_Q4",
+      "questionNumber": 4,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following objectives is not embodied in the Preamble to the Constitution of India? a) Liberty of thought b) Economic liberty c) Liberty of expression d) Liberty of belief",
+      "options": {
+        "A": "",
+        "B": "",
+        "C": "",
+        "D": ""
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Preamble",
+      "topicId": "preamble",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Preamble",
+      "confidenceBand": "low",
+      "reviewRequired": true,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PREAMBLE_2017_Q5",
+      "questionNumber": 5,
+      "year": 2017,
+      "questionType": "MCQ_SINGLE",
+      "question": "The mind of the makers of the Constitution of India is reflected in which of the following?",
+      "options": {
+        "A": "The Preamble",
+        "B": "The Fundamental Rights",
+        "C": "The Directive Principles of State Policy",
+        "D": "The Fundamental Duties"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Preamble",
+      "topicId": "preamble",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Preamble",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    },
+    {
+      "id": "POL_PREAMBLE_2013_Q6",
+      "questionNumber": 6,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Economic justice as one of the objectives of the Indian constitution has been provided in?",
+      "options": {
+        "A": "The preamble and the fundamental rights",
+        "B": "The preamble and the directive principles of state policy",
+        "C": "The fundamental rights and the directive principles of state policy",
+        "D": "None of the above"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Preamble",
+      "topicId": "preamble",
+      "sectionId": "GS2-POL-EVOL",
+      "nodeId": "GS2-POL-EVOL",
+      "syllabusNodeId": "GS2-POL-EVOL",
+      "microTheme": "Preamble",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Polity_PYQ"
+    }
+  ]
+}

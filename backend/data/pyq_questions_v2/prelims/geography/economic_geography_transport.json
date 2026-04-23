@@ -1,0 +1,353 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "exam": "UPSC_CSE",
+  "stage": "Prelims",
+  "paper": "GS1",
+  "subject": "Geography",
+  "topicName": "Economic Geography",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "nodeId": "geo.economic-geography",
+  "microTheme": "transport-ports-airports",
+  "questions": [
+    {
+      "id": "GEO_ECO_2024_Q1",
+      "questionNumber": 1,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following airports: 1. Donyi Polo Airport 2. Kushinagar International Airport 3. Vijayawada International Airport In the recent past, which of the above have been constructed as Greenfield projects?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_2023_Q2",
+      "questionNumber": 2,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to India's projects on connectivity, consider the following statements: 1. East-West Corridor under Golden Quadrilateral Project connects Dibrugarh and Surat. 2. Trilateral Highway connects Moreh in Manipur and Chiang Mai in Thailand via Myanmar. 3. Bangladesh- China- India- Myanmar Economic Corridor connects Varanasi in Uttar Pradesh with Kunming in China. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_2023_Q3",
+      "questionNumber": 3,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: Port Well known as 1. Kamarajar Port First major port in India registered as a company 2. Mundra Port Largest privately owned port in India 3. Vishakhapatnam Port Largest container port in India How many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one pair",
+        "B": "Only two pairs",
+        "C": "All three pairs",
+        "D": "None of the pairs"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_2014_Q4",
+      "questionNumber": 4,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: National Highway: Cities connected 1. NH4: Chennai and Hyderabad 2. NH6: Mumbai and Kolkata 3. NH15: Ahmedabad and Jodhpur Which of the above pairs is/are correctly matched?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1, 2 and 3",
+        "D": "None"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_2009_Q5",
+      "questionNumber": 5,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, the ports are categorized as major and non-major ports. Which one of the following is a non- major port?",
+      "options": {
+        "A": "Kochi (Cochin)",
+        "B": "Dahej",
+        "C": "Paradip",
+        "D": "New Mangalore"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_2007_Q6",
+      "questionNumber": 6,
+      "year": 2007,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following National Highways passes through Maharashtra Chhattisgarh and Orissa?",
+      "options": {
+        "A": "NH 4",
+        "B": "NH 5",
+        "C": "NH 6",
+        "D": "NH 7"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_2006_Q7",
+      "questionNumber": 7,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following pairs is not correctly matched? Railway Zone - Headquarters",
+      "options": {
+        "A": "North Eastern Railway - Gorakhpur",
+        "B": "South Eastern Railway - Bhubaneshwar",
+        "C": "Eastern Railway- Kolkata",
+        "D": "South East Central Railway - Bilaspur"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_2004_Q8",
+      "questionNumber": 8,
+      "year": 2004,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which among the following National Highway routes is the longest?",
+      "options": {
+        "A": "Agra-Mumbai",
+        "B": "Chennai-Thane",
+        "C": "Kolkata-Hajira",
+        "D": "Pune-Machilipatnam"
+      },
+      "correctAnswer": "C",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_2003_Q9",
+      "questionNumber": 9,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one among the following has the largest shipyard in India?",
+      "options": {
+        "A": "Kolkata",
+        "B": "Kochi",
+        "C": "Mumbai",
+        "D": "Visakhapatnam"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_2002_Q10",
+      "questionNumber": 10,
+      "year": 2002,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Indian transport systems, consider the following statements: 1. Indian railways system is the largest in the world. 2. National Highways cater to 45 per cent of the total road transport demand. 3. Among the states, Kerala has the highest density of surface road. 4. National Highway No. 6 is the longest in the country. Which of these statements are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "1 and 3",
+        "C": "2 and 3",
+        "D": "2, 3 and 4"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_2000_Q11",
+      "questionNumber": 11,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match the locations of ports labelled as A, B, C and D in the given map with the names of those ports and select the correct answer using the codes given below the names of the ports: Names of Ports 1. Kakinada 2. Karwar 3. Mangalore 4. Tuticorin 5. Veraval",
+      "options": {
+        "A": "A-4, B-2, C-3, D-5",
+        "B": "A-5, B-2, C-4, D-1",
+        "C": "A-1, B-3, C-4, D-2",
+        "D": "A-5, B-3, C-2, D-1"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_2000_Q12",
+      "questionNumber": 12,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following ports of India handles the highest tonnage of import cargo?",
+      "options": {
+        "A": "Calcutta",
+        "B": "Kandla",
+        "C": "Mumbai",
+        "D": "Visakhapatnam"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_2000_Q13",
+      "questionNumber": 13,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match the different ports of Union Territory of Pondicherry labelled as A, B, C and D in the given map with their respective names and select the correct answer using the codes given below the list of ports: List (Ports of Pondicherry) 1. Karaikal 2. Mahe 3. Pondicherry 4. Yanam",
+      "options": {
+        "A": "A-2, B-1, C-3, D-4",
+        "B": "A-1, B-2, C-3, D-4",
+        "C": "A-2, B-1, C-4, D-3",
+        "D": "A-1, B-2, C-4, D-3"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_1999_Q14",
+      "questionNumber": 14,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements is not true of the Konkan Railway?",
+      "options": {
+        "A": "The total length is about 760 km",
+        "B": "It runs through the states of Karnataka, Goa, Maharashtra and Kerala",
+        "C": "It is the only rail route that cuts across the Western Ghats",
+        "D": "The Konkan Railway Construction Company which came into being raised money through Public Issues"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_1998_Q15",
+      "questionNumber": 15,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "The four railway junctions shown by numerals 1, 2, 3, 4 on the rough outline map of Gujarat are respectively:",
+      "options": {
+        "A": "Palanpur, Mahesana, Ahmedabad and Vadodara",
+        "B": "Mahesana, Surendranagar, Rajkot and Junagadh",
+        "C": "Palanpur, Kanda, Bhuj and Okla",
+        "D": "Ahmedabad, Vadodara, Bhavnagar and Broach"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_1998_Q16",
+      "questionNumber": 16,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the correct sequence of the following Indian states in descending order of their length of surface roads per 100 km2 of their area? I. Haryana II. Maharashtra III. Punjab IV. Tamil Nadu Select the correct answer:",
+      "options": {
+        "A": "IV, I, III, II",
+        "B": "IV, III, I, II",
+        "C": "III, IV, I, II",
+        "D": "III, IV, II, I"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_1998_Q17",
+      "questionNumber": 17,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following sets of states stands to benefit the most from the Konkan Railway?",
+      "options": {
+        "A": "Goa, Karnataka, Maharashtra, Kerala",
+        "B": "Madhya Pradesh, Maharashtra, Tamil Nadu, Kerala",
+        "C": "Tamil Nadu, Kerala, Goa, Maharashtra",
+        "D": "Gujarat, Maharashtra, Goa, Tamil Nadu"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_1998_Q18",
+      "questionNumber": 18,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following ports shown on the rough outline map of India is a riverine port?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correctAnswer": "D",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_1995_Q19",
+      "questionNumber": 19,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Of the four places marked 1, 2, 3 and 4 on the map, the one indicating a tidal port is:",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correctAnswer": "A",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    },
+    {
+      "id": "GEO_ECO_1995_Q20",
+      "questionNumber": 20,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "The national highway from Delhi to Calcutta via Mathura and Varanasi is numbered:",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "4",
+        "D": "8"
+      },
+      "correctAnswer": "B",
+      "nodeId": "GS1-GEO-IND",
+      "microTheme": "transport-ports-airports",
+      "syllabusNodeId": "GS1-GEO-IND"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { getNodeById, expandCanonicalOrLegacyToLeafNodeIds } from "../brain/unifiedSyllabusIndex.js";
+import { expandCanonicalOrLegacyToLeafNodeIds } from "../brain/unifiedSyllabusIndex.js";
 import { PYQ_NODE_ALIAS_MAP } from "../brain/pyqNodeAliasMap.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -80,17 +80,32 @@ async function rebuildIndexes() {
 
     q.syllabusNodeId = nodeId;
 
-    let stage = String(q.stage || "").toLowerCase();
-    const paper = String(q.paper || "").toLowerCase();
-    const sourceFile = String(q.sourceFile || "").toLowerCase();
-    const qId = String(q.id || "").toUpperCase();
-
+    const stage = String(q.stage || "").toLowerCase();
     let bucketStage = stage;
     if (!stages.includes(bucketStage)) {
       if (stage.includes("csat")) bucketStage = "csat";
       else if (stage.includes("prelims")) bucketStage = "prelims";
       else if (stage.includes("mains")) bucketStage = "mains";
       else continue;
+    }
+
+    // ── CSAT questions: never expand to leaf nodes ─────────────────────────────
+    // CSAT parent nodes (CSAT-RC, CSAT-LR, CSAT-BN) each expand to 19-61 leaf
+    // microtheme nodes, which would assign every RC/LR/quant question to dozens
+    // of buckets simultaneously — causing a question-count explosion.
+    // For CSAT we keep the exact assigned module-level node (one bucket only).
+    if (bucketStage === "csat") {
+      initNode(nodeId);
+      if (!pyqByNode[nodeId][bucketStage].includes(q.id)) {
+        pyqByNode[nodeId][bucketStage].push(q.id);
+        pyqByNode[nodeId].total += 1;
+        const qYear = Number(q.year || 0);
+        if (qYear > (pyqByNode[nodeId].latestYear || 0)) {
+          pyqByNode[nodeId].latestYear = qYear;
+        }
+      }
+      if (stageCounts[bucketStage] !== undefined) stageCounts[bucketStage]++;
+      continue;
     }
 
     // CRITICAL: Expand possibly legacy/parent nodes into their exact leaf canonical IDs
@@ -103,11 +118,20 @@ async function rebuildIndexes() {
 
     const resolvedNodes = expandCanonicalOrLegacyToLeafNodeIds(lookupNodeId);
 
+    // Expansion guard: only expand when the leaf set is small (question is specific).
+    // A large leaf count means the nodeId is a broad parent tag — expanding it
+    // would insert the question into every microtheme bucket under that parent,
+    // creating artificial count inflation (same pattern as the CSAT-RC explosion).
+    // Threshold: ≤ 6 leaves → expand (specific enough).
+    //            > 6 leaves → keep the exact nodeId only (broad parent tag).
+    const EXPAND_LEAF_THRESHOLD = 6;
+    const canExpand = resolvedNodes && resolvedNodes.length > 0 && resolvedNodes.length <= EXPAND_LEAF_THRESHOLD;
+
     // FALLBACK: if resolver fails, still keep raw syllabusNodeId alive in pyq_by_node
-    // We ALSO include the raw nodeId even if resolution succeeds, so that direct API lookups 
+    // We ALSO include the raw nodeId even if resolution succeeds, so that direct API lookups
     // for parent nodes like '1C.VA.ARCH' continue to return questions.
     const finalNodes =
-      resolvedNodes && resolvedNodes.length > 0
+      canExpand
         ? Array.from(new Set([...resolvedNodes, nodeId]))
         : [nodeId];
 

@@ -1,0 +1,552 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Environment",
+  "topicName": "Misc Environment",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "sectionId": "GS3-ENV-RES-ENERGY",
+  "sectionName": "Resources & Energy",
+  "sourceFile": "misc_environment.docx",
+  "questions": [
+    {
+      "id": "ENV_MISC_2022_Q1",
+      "questionNumber": 1,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are nitrogen-fixing plants? 1. Alfalfa 2. Amaranth 3. Chickpea 4. Clover 5. Purslane (Kulfa) 6. Spinach Select the correct answer using the code given below:",
+      "options": {
+        "A": "1, 3 and 4 only",
+        "B": "1, 3, 5 and 6 only",
+        "C": "2, 4, 5 and 6 only",
+        "D": "1, 2, 4, 5 and 6"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "ENV_MISC_2022_Q2",
+      "questionNumber": 2,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "\"System of Rice Intensification\" of cultivation, in which alternate wetting and drying of rice fields is practised, results in: 1. Reduced seed requirement 2. Reduced methane production 3. Reduced electricity consumption Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2021_Q3",
+      "questionNumber": 3,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of India's preparation for ClimateSmart Agriculture, consider the following statements: 1) The 'Climate-Smart Village' approach in India is a part of a project led by the Climate Change, Agriculture and Food Security (CCAFS), an international research programme. 2) The project of CCAFS is carried out under Consultative Group on International Agricultural Research (CGIAR) headquartered in France. 3) The International Crops Research Institute for the Semi-Arid Tropics (ICRISAT) in India is one of the CGIAR's research centres. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2020_Q4",
+      "questionNumber": 4,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is/are the advantage/advantages of zero tillage in agriculture? 1. Sowing of wheat without burning the residue of previous crop. 2. Without the need for nursery of rice saplings, direct planting of paddy seeds in the wet soil is possible. 3. Carbon sequestration in the soil is possible Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2020_Q5",
+      "questionNumber": 5,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of India, which of the following is/are considered to be practice(s) of eco-friendly agriculture? 1. Crop diversification 2. Legume intensification 3. Tensiometer use 4. Vertical farming Select the correct answer using the code given below:",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "3 only",
+        "C": "4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2020_Q6",
+      "questionNumber": 6,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the use of biochar in farming? 1. Biochar can be used as a part of the growing medium in vertical farming. 2. When biochar is a part of the growing medium, it promotes the growth of nitrogen-fixing microorganisms. 3. When biochar is a part of the growing medium, it enables the growing medium to retain water for longer time. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2018_Q7",
+      "questionNumber": 7,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the 'Global Alliance for Climate Smart Agriculture (GACSA)', which of the following statements is/are correct? 1. GACSA is an outcome of the climate summit held in Paris in 2015. 2. Membership of GACSA does not create any binding obligations. 3. India was instrumental in the creation of GACSA. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2018_Q8",
+      "questionNumber": 8,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "With references to organic farming in India, consider the following statements: 1. 'The National Programme for Organic Production'(NPOP) is operated under the guidelines and directions of the Union Ministry Of the Rural Development. 2. 'The Agricultural and Processed and Products Export Development Authority'(APEDA) functions as the Secretariat for the implementation of NPOP. 3. Sikkim has become India's first fully organic State. Which of the following given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-LAWS",
+      "sectionName": "Environmental Governance & Laws",
+      "topicId": "GS3-ENV-ACTS",
+      "topicName": "Indian Environmental Acts",
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "nodeId": "GS3-ENV-ACTS",
+      "microTheme": "Indian Environmental Acts",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2016_Q9",
+      "questionNumber": 9,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following is/are the advantage /advantages of practising drip irrigation? 1. Reduction in weed 2. Reduction in soil salinity 3. Reduction in soil erosion Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1 and 3 only",
+        "D": "None of the above is an advantage of practising drip irrigation"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2016_Q10",
+      "questionNumber": 10,
+      "year": 2016,
+      "questionType": "MCQ_SINGLE",
+      "question": "Why does the Government of India promote the use of Neem-coated Urea' in agriculture?",
+      "options": {
+        "A": "Release of Neem oil in the soil increases nitrogen fixation by the soil microorganisms",
+        "B": "Neem coating slows down the rate of dissolution of urea in the soil",
+        "C": "Nitrous oxide, which is a greenhouse gas, is not at all released into atmosphere by crop fields",
+        "D": "Six is a combination of a weedicide and a fertilizer for particular crops"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2015_Q11",
+      "questionNumber": 11,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "What can be the impact of excessive/inappropriate use of nitrogenous fertilizers in agriculture? 1. Proliferation of nitrogen-fixing microorganisms in soil can occur. 2. Increase in the acidity of soil can take place 3. Leaching of nitrate to the ground-water can occur. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2015_Q12",
+      "questionNumber": 12,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. The Accelerated Irrigation Benefits Programme was launched during 1996-97 to provide loan assistance to poor farmers. 2. The Command Area Development Programme was launched in 1974-75 for the development of wateruse efficiency. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2014_Q13",
+      "questionNumber": 13,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1. Maize can be used for the production of starch. 2. Oil extracted from maize can be a feedstock for biodiesel. 3. Alcoholic beverages can be produced by using maize. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-LAWS",
+      "sectionName": "Environmental Governance & Laws",
+      "topicId": "GS3-ENV-ACTS",
+      "topicName": "Indian Environmental Acts",
+      "syllabusNodeId": "GS3-ENV-ACTS",
+      "nodeId": "GS3-ENV-ACTS",
+      "microTheme": "Indian Environmental Acts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2014_Q14",
+      "questionNumber": 14,
+      "year": 2014,
+      "questionType": "MCQ_SINGLE",
+      "question": "What are the significances of a practical approach to sugarcane production known as 'Sustainable Sugarcane Initiative'? 1. Seed cost is very low in this compared to the conventional method of cultivation. 2. Drip irrigation can be practiced very effectively in this. 3. There is no application of chemical/inorganic fertilizers at all in this. 4. The scope for intercropping is more in this compared to the conventional method of cultivation. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "1, 2 and 4 only",
+        "C": "2, 3 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2013_Q15",
+      "questionNumber": 15,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following organisms: 1. Agaricus 2. Nostoc 3. Spirogyra Which of the above is/are used as biofertilizer/ biofertilizers?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2012_Q16",
+      "questionNumber": 16,
+      "year": 2012,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following kinds of organisms: 1. Bacteria 2. Fungi 3. Flowering plants Some species of which of the above kinds of organisms are employed as biopesticides?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 & 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-BIODIV",
+      "sectionName": "Biodiversity & Conservation",
+      "topicId": "GS3-ENV-SPECIES",
+      "topicName": "Species Concepts",
+      "syllabusNodeId": "GS3-ENV-SPECIES",
+      "nodeId": "GS3-ENV-SPECIES",
+      "microTheme": "Species Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2011_Q17",
+      "questionNumber": 17,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to micro-irrigation, which of the following statements is/are correct? 1. Fertilizer/nutrient loss can be reduced. 2. It is the only means of irrigation in dry land farming. 3. In some areas of farming, receding of ground water table can be checked. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2011_Q18",
+      "questionNumber": 18,
+      "year": 2011,
+      "questionType": "MCQ_SINGLE",
+      "question": "Salinization occurs when the irrigation water accumulated in the soil evapo-rates, leaving behind salts and minerals. What are the effects of Salinization on the irrigated land?",
+      "options": {
+        "A": "It greatly increases the crop production.",
+        "B": "It makes some soils impermeable.",
+        "C": "It raises the water table.",
+        "D": "It fills the air spaces in the soil with water."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "high",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_2010_Q19",
+      "questionNumber": 19,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which features of some species of blue-green algae helps promote them as bio-fertilizers?",
+      "options": {
+        "A": "They convert atmospheric methane into ammonia which the crop plants can absorb readily.",
+        "B": "They induce the crop plants to produce the enzymes which help convert atmospheric nitrogen to nitrates.",
+        "C": "They have the mechanism to convert atmospheric nitrogen into a form that the crop plants can absorb readily.",
+        "D": "They induce the roots of the crop plants to absorb the soil nitrates in larger quantities."
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-RES-ENERGY",
+      "sectionName": "Resources & Energy",
+      "topicId": "GS3-ENV-LAND-WATER",
+      "topicName": "Land, Forest & Water Resources",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER",
+      "nodeId": "GS3-ENV-LAND-WATER",
+      "microTheme": "Land, Forest & Water Resources",
+      "confidenceBand": "medium",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "ENV_MISC_1999_Q20",
+      "questionNumber": 20,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following agricultural practices is eco-friendly?",
+      "options": {
+        "A": "Organic farming",
+        "B": "Shifting cultivation",
+        "C": "Cultivation of high-yielding varieties",
+        "D": "Growing plants in glass-houses"
+      },
+      "correctAnswer": "A",
+      "sectionId": "GS3-ENV-CLIMATE",
+      "sectionName": "Climate Change",
+      "topicId": "GS3-ENV-GLOBALWARM",
+      "topicName": "Global Warming Concepts",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM",
+      "nodeId": "GS3-ENV-GLOBALWARM",
+      "microTheme": "Global Warming Concepts",
+      "confidenceBand": "low",
+      "mappedBy": [
+        "SUBJECT_LOCK",
+        "KEYWORD_TOPIC_MATCH"
+      ],
+      "reviewRequired": false
+    }
+  ],
+  "totalQuestions": 20
+}
