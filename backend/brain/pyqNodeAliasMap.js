@@ -1,108 +1,184 @@
-// backend/brain/pyqNodeAliasMap.js
-//
-// Maps non-canonical or legacy syllabusNodeId values to the nearest valid
-// canonical node in unifiedSyllabusIndex.
-//
-// Rules:
-//   1. Only map to nodes that expandCanonicalOrLegacyToLeafNodeIds resolves.
-//   2. Prefer the most specific canonical ancestor available.
-//   3. CA-xxx / CA-SPORT / CA-ABP / CA-MISC have no canonical anchor —
-//      they are intentionally omitted so they fall through as raw buckets
-//      (still queryable directly; just not leaf-expanded).
-
 export const PYQ_NODE_ALIAS_MAP = {
-  // ── GS2 / GS3 existing aliases ────────────────────────────────────────────
-  "GS2-POL-FED":                    "GS2-POL-CSREL",
-  "GS2-POL-GOV":                    "GS2-GOV-GOOD-GOV",
-  "GS2-POL-CONTEMP":                "GS2-POL-PARL",
-  "GS2-IR-CONTEMP":                 "GS2-IR-INSTITUTIONS",
-  "GS3-ST-MATERIALS":               "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
-  "GS3-ST-ENERGY":                  "GS3-ENV-ENERGY",
-  "GS3-ST-CYBERSECURITY":           "GS3-SEC-CYBER-BASICS",
-  "GS3-ST-QUANTUM":                 "GS3-ST-IT-COMM",
-  "GS3-ST-AI":                      "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
-  "GS3-ST-ENV-TECH":                "GS3-ENV-CONSERVATION",
-  "GS3-ST-INFRA-TRANSPORT-TECH":    "GS3-ECO-SECT-INFRA",
-  "GS3-ENV-MAINS":                  "GS3-ENV-CONSERVATION",
-  "GS3-ENV-RESOURCES":              "GS3-ENV-LAND-WATER",
-  "GS3-SEC-CONTEMP":                "GS3-SEC-TERRORISM",
-  "GS1-HIS-WORLD-INDUSTRIAL":       "GS1-HIS-WORLD-REV",
-  "CSAT-DM":                        "CSAT-LR-MISC",
-  "GS3-ST-BASIC-SCIENCE":           "GS3-ST-GENSCI-BIO",
+  "GS2-POL-FED": "GS2-POL-CSREL-MT02",
+  "GS2-POL-GOV": "GS2-GOV-GOOD-GOV-MT01",
+  "GS2-POL-CONTEMP": "GS2-POL-PARL-MT01",
+  "GS2-IR-CONTEMP": "GS2-IR-INSTITUTIONS-MT04",
+  "GS3-ST-MATERIALS": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT03",
+  "GS3-ST-ENERGY": "GS3-ENV-ENERGY-GOV-MT01",
+  "GS3-ST-CYBERSECURITY": "GS3-SEC-CYBER-BASICS-MT01",
+  "GS3-ST-QUANTUM": "GS3-ST-IT-COMM-MT02",
+  "GS3-ST-AI": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT03",
+  "GS3-ST-ENV-TECH": "GS3-ENV-CONSERVATION-MT03",
+  "GS3-ST-INFRA-TRANSPORT-TECH": "GS3-ECO-SECT-INFRA-MT03",
+  "GS3-ENV-MAINS": "GS3-ENV-CONSERVATION-MT03",
+  "GS3-ENV-RESOURCES": "GS3-ENV-LAND-WATER-MT03",
+  "GS3-SEC-CONTEMP": "GS3-SEC-TERRORISM-MT01",
+  "GS1-HIS-WORLD-INDUSTRIAL": "GS1-HIS-WORLD-REV-MT02",
+  "CSAT-DM": "CSAT-LR-MISC-MT01",
+  "GS3-ST-BASIC-SCIENCE": "GS3-ST-GENSCI-BIO-MT04",
+  "GS4-ETH-HUM": "GS4-ETH-HV",
+  "GS4-ETH-FOUND": "GS4-ETH-APT",
+  "GS4-ETH-ATTITUDE": "GS4-ETH-ATT",
+  "GS4-ETH-CONFLICT": "GS4-ETH-GOV",
+  "GS4-CASE-HUM": "GS4-ETH-CS",
+  "GS4-CASE-FOUND": "GS4-ETH-CS",
+  "GS4-CASE-GOV": "GS4-ETH-CS",
+  "GS4-CASE-CONFLICT": "GS4-ETH-CS",
+  "GS4-CASE-EI": "GS4-ETH-CS",
+  "GS4-CASE-PROB": "GS4-ETH-CS",
+  "CSAT-LR-ANALYTICAL": "CSAT-LR-SYL-MT02",
+  "GS2-POL-PARLIAMENT": "GS2-POL-PARL-MT01",
+  "GS2-POL-STATE-LEG": "GS2-POL-STATE-MT01",
+  "GS2-CA-IR": "GS2-IR-INSTITUTIONS-MT04",
+  "GS2-CA-GOV": "GS2-GOV-GOOD-GOV-MT01",
+  "GS2-GOV-SECURITY-GOVERNANCE": "GS2-GOV-GOOD-GOV-MT01",
+  "GS1-CA-CULT": "GS1-HIS-MED-18C-MT04",
+  "GS1-CA-HIST": "GS1-HIS-MOD-ADMIN-MT01",
+  "GS1-CA-GEO": "GS1-GEO-IND-AGRI-MT01",
+  "GS3-ECO": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+  "GS3-ECO-INDUSTRY": "GS3-ECO-SECT-INDLAB-MT14",
+  "GS3-CA-ECO": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+  "GS3-CA-ENV": "GS3-ENV-SPECIES-MT05",
+  "GS3-CA-SCI": "GS3-ST-GENSCI-BIO-MT04",
+  "GS3-CA-GENSCI": "GS3-ST-GENSCI-BIO-MT04",
+  "GS3-SCI-TECH-SPACE": "GS3-ST-SPACE-MT01",
+  "GS3-SCI-TECH-BIOTECH": "GS3-ST-BIOTECH-MT01",
+  "GS3-SCI-TECH-IT": "GS3-ST-IT-COMM-MT02",
+  "GS3-SCI-TECH-GENERAL": "GS3-ST-GENSCI-BIO-MT04",
+  "GS3-SCI-TECH-HEALTH": "GS3-ST-GENSCI-BIO-MT04",
+  "GS3-SCI-TECH-MATERIALS": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT03",
+  "GS3-SCI-TECH-ROBOTICS": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT03",
+  "GS3-SCI-TECH-ENERGY": "GS3-ENV-ENERGY-GOV-MT01",
+  "geo.climatology": "GS1-GEO-IND-CLIMATE-MT04",
+  "geo.agriculture": "GS1-GEO-IND-AGRI-MT01",
+  "CA-MISC-GK": "1C-MISC-SCHEMES-MT04",
+  "CA-SPORTS": "1C-MISC-INST-MT01",
+  "CA-AWARDS-BOOKS-PERSONALITIES": "1C-MISC-INST-MT01",
+  "GS2-POL-MISC": "GS2-POL-EVOL-CA-MT02",
+  "GS2-IR-GEOPOLITICS": "GS2-IR-GROUPINGS-MT01",
+  "GS2-IR-CURRENT": "GS2-IR-GROUPINGS-MT01",
+  "GS2-IR-INTL-ORG": "GS2-IR-INSTITUTIONS-MT04",
+  "GS2-IR-INTERNATIONAL-ORGANISATIONS": "GS2-IR-INSTITUTIONS-MT04",
+  "GS2-IR-BILATERAL-REGIONAL": "GS2-IR-NEIGHBOURS-MT03",
+  "GS2-IR-GLOBAL-CURRENT-AFFAIRS": "GS2-IR-GROUPINGS-MT01",
+  "GS2-IR-PLACES-IN-NEWS": "GS2-IR-NEIGHBOURS-MT03",
+  "GS2-IR-SECURITY": "GS2-IR-TERRORISM-MT01",
+  "GS3-ST-ICT": "GS3-ST-IT-COMM-MT02",
+  "GS3-ST-BIOLOGY": "GS3-ST-BIOTECH-MT01",
+  "GS3-ST-BIOTECH-HEALTH": "GS3-ST-BIOTECH-MT01",
+  "GS3-ST-GENSCI": "GS3-ST-GENSCI-BIO-MT04",
+  "GS3-ST-PHYSICS": "GS3-ST-NUCLEAR-MT01",
+  "GS3-ST-CHEMISTRY": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+  "GS3-ST-HEALTH-DISEASES": "GS3-ST-BIOTECH-MT01",
+  "GS3-ST-DIGITAL-TECH": "GS3-ST-IT-COMM-MT02",
+  "GS3-ECO-CURRENT": "GS3-ECO-PRE-BASICS-MACRO-MT01",
+  "GS3-ECO-BANKING-FINANCE": "GS3-ECO-BANKING-MT04",
+  "GS3-ECO-EXTERNAL-SECTOR": "GS3-ECO-FOREIGN-TRADE-IO-MT03",
+  "GS1-GEO-CURRENT": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+  "GS1-GEO-MAPPING-PLACES": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+  "GS3-ENV-BIODIVERSITY": "GS3-ENV-CONSERVATION-MT03",
+  "GS1-HISTORY-CURRENT": "GS1-HIS-MOD-NATIONAL-MT05",
+  "GS1-ART-CULTURE-CURRENT": "GS1-HIS-MED-BHAKTI-MT02",
+  "GS1-HIS-MED-SOCIETY": "GS1-HIS-MED-REGIONAL-MT08",
+  "GS1-HIS-MED-EURO": "GS1-HIS-MED-REGIONAL-MT08",
+  "GS1-HIS-MED-ART": "GS1-HIS-MED-REGIONAL-MT08",
+  "GS1-HIS-MED-REL":              "GS1-HIS-MED-BHAKTI-MT02",
 
-  // ── GS4 theory aliases ────────────────────────────────────────────────────
-  "GS4-ETH-HUM":                    "GS4-ETH-HV",
-  "GS4-ETH-FOUND":                  "GS4-ETH-APT",
-  "GS4-ETH-ATTITUDE":               "GS4-ETH-ATT",
-  "GS4-ETH-CONFLICT":               "GS4-ETH-GOV",
+  // ── Ancient History ──────────────────────────────────────────────────────────
+  "GS1-HIS-ANC":                  "GS1-HIS-ANC-IVC-MT04",
+  "GS1-HIS-ANC-IVC":              "GS1-HIS-ANC-IVC-MT04",
+  "GS1-HIS-ANC-VEDIC-RIG":        "GS1-HIS-ANC-VEDIC-RIG-MT05",
+  "GS1-HIS-ANC-VEDIC-LATER":      "GS1-HIS-ANC-VEDIC-LATER-MT04",
+  "GS1-HIS-ANC-BUD":              "GS1-HIS-ANC-BUD-MT01",
+  "GS1-HIS-ANC-JAIN":             "GS1-HIS-ANC-JAIN-MT01",
+  "GS1-HIS-ANC-MAURYA":           "GS1-HIS-ANC-MAURYA-MT06",
+  "GS1-HIS-ANC-GUPTA":            "GS1-HIS-ANC-GUPTA-MT02",
+  "GS1-HIS-ANC-MAHAJAN":          "GS1-HIS-ANC-MAHAJAN-MT01",
+  "GS1-HIS-ANC-POSTMAURYA":       "GS1-HIS-ANC-POSTMAURYA-MT01",
+  "GS1-HIS-ANC-HARSHA":           "GS1-HIS-ANC-HARSHA-MT01",
+  "GS1-HIS-ANC-SANGAM":           "GS1-HIS-ANC-SANGAM-MT01",
+  "GS1-HIS-ANC-PREHIST":          "GS1-HIS-ANC-PREHIST-MT01",
 
-  // ── GS4 case study aliases ────────────────────────────────────────────────
-  "GS4-CASE-HUM":                   "GS4-ETH-CS",
-  "GS4-CASE-FOUND":                 "GS4-ETH-CS",
-  "GS4-CASE-GOV":                   "GS4-ETH-CS",
-  "GS4-CASE-CONFLICT":              "GS4-ETH-CS",
-  "GS4-CASE-EI":                    "GS4-ETH-CS",
-  "GS4-CASE-PROB":                  "GS4-ETH-CS",
+  // ── Medieval History ─────────────────────────────────────────────────────────
+  "GS1-HIS-MED-MUGHAL":           "GS1-HIS-MED-MUGHAL-MT01",
+  "GS1-HIS-MED-DELHI":            "GS1-HIS-MED-DELHI-MT01",
+  "GS1-HIS-MED-CHOLA":            "GS1-HIS-MED-CHOLA-MT01",
+  "GS1-HIS-MED-VIJAYANAGARA":     "GS1-HIS-MED-VIJAYANAGARA-MT01",
+  "GS1-HIS-MED-BHAKTI":           "GS1-HIS-MED-BHAKTI-MT01",
+  "GS1-HIS-MED-SUFI":             "GS1-HIS-MED-SUFI-MT01",
+  "GS1-HIS-MED-18C":              "GS1-HIS-MED-18C-MT01",
 
-  // ── CSAT LR analytical alias ──────────────────────────────────────────────
-  "CSAT-LR-ANALYTICAL":             "CSAT-LR-SYL",
+  // ── Modern History ───────────────────────────────────────────────────────────
+  "GS1-HIS-MOD-NATIONAL":         "GS1-HIS-MOD-NATIONAL-MT01",
+  "GS1-HIS-MOD-CONSTDEV":         "GS1-HIS-MOD-CONSTDEV-MT01",
+  "GS1-HIS-MOD-EXPANSION":        "GS1-HIS-MOD-EXPANSION-MT01",
+  "GS1-HIS-MOD-REFORM":           "GS1-HIS-MOD-REFORM-MT01",
+  "GS1-HIS-MOD-1857":             "GS1-HIS-MOD-1857-MT01",
+  "GS1-HIS-MOD-ADMIN":            "GS1-HIS-MOD-ADMIN-MT01",
+  "GS1-HIS-POSTIND-INTEGRATION":  "GS1-HIS-POSTIND-POL-MT01",
 
-  // ── v2 GS2 Polity — renamed from v2 format to canonical ──────────────────
-  // v2 uses GS2-POL-PARLIAMENT; canonical is GS2-POL-PARL
-  "GS2-POL-PARLIAMENT":             "GS2-POL-PARL",
-  // v2 uses GS2-POL-STATE-LEG; canonical parent for state legislature
-  "GS2-POL-STATE-LEG":              "GS2-POL-STATE",
+  // ── Geography ────────────────────────────────────────────────────────────────
+  "GS1-GEO-IND":                  "GS1-GEO-IND-PHYSIO-MT01",
+  "GS1-GEO-IND-CLIMATE":          "GS1-GEO-IND-CLIMATE-MT01",
+  "GS1-GEO-IND-AGRI":             "GS1-GEO-IND-AGRI-MT01",
 
-  // ── v2 GS2 IR / Governance current-affairs nodes ─────────────────────────
-  "GS2-CA-IR":                      "GS2-IR-INSTITUTIONS",
-  "GS2-CA-GOV":                     "GS2-GOV-GOOD-GOV",
+  // ── Polity ───────────────────────────────────────────────────────────────────
+  "GS2-POL-PARL":                 "GS2-POL-PARL-MT01",
+  "GS2-POL-EVOL":                 "GS2-POL-EVOL-CA-MT02",
+  "GS2-POL-EXEC":                 "GS2-POL-EXEC-MT01",
+  "GS2-POL-JUD":                  "GS2-POL-JUD-MT01",
+  "GS2-POL-LOCAL":                "GS2-POL-LOCAL-MT01",
+  "GS2-POL-STATE":                "GS2-POL-STATE-MT01",
+  "GS2-POL-AMEND":                "GS2-POL-AMEND-MT01",
+  "GS2-POL-BODIES":               "GS2-POL-BODIES-MT01",
+  "GS2-POL-DPSP":                 "GS2-POL-DPSP-MT01",
+  "GS2-POL-FR":                   "GS2-POL-FR-MT01",
+  "GS2-POL-CSREL":                "GS2-POL-CSREL-MT01",
+  "GS2-POL-FD":                   "GS2-POL-FD-MT01",
+  "GS2-POL-ELECTIONS":            "GS2-POL-ELECTIONS-MT01",
+  "GS2-POL-EMER":                 "GS2-POL-EMER-MT01",
 
-  // ── v2 GS1 current-affairs history / culture / geography ─────────────────
-  // CA art & culture → medieval history node (covers arts/architecture/music)
-  "GS1-CA-CULT":                    "GS1-HIS-MED",
-  // CA history current affairs → modern history node
-  "GS1-CA-HIST":                    "GS1-HIS-MOD",
-  // CA geography current affairs → Indian geography parent node
-  "GS1-CA-GEO":                     "GS1-GEO-IND",
+  // ── Economy (GS3) ────────────────────────────────────────────────────────────
+  "GS3-ECO-INCLUSIVE-GROWTH":     "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+  "GS3-ECO-FOREIGN-TRADE-IO":     "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+  "GS3-ECO-SECT-INDLAB":          "GS3-ECO-SECT-INDLAB-MT01",
+  "GS3-ECO-FINANCIAL-SYSTEM":     "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+  "GS3-ECO-PRE-RBI":              "GS3-ECO-PRE-RBI-MT01",
+  "GS3-ECO-SECT-AGRI":            "GS3-ECO-SECT-AGRI-MT01",
+  "GS3-ECO-PRE-BANKING-STRUCTURE":"GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+  "GS3-ECO-PRE-BUDGET":           "GS3-ECO-PRE-BUDGET-MT01",
+  "GS3-ECO-MONETARY-POLICY":      "GS3-ECO-MONETARY-POLICY-MT01",
+  "GS3-ECO-TAXATION":             "GS3-ECO-TAXATION-MT01",
+  "GS3-ECO-INVESTMENT-MODELS":    "GS3-ECO-INVESTMENT-MODELS-MT01",
+  "GS3-ECO-BANKING":              "GS3-ECO-BANKING-MT01",
+  "GS3-ECO-BANKING-FINANCE":      "GS3-ECO-BANKING-MT04",
+  "GS3-ECO-FISCAL-POLICY":        "GS3-ECO-FISCAL-POLICY-MT01",
+  "GS3-ECO-PRE-MONEY-BASICS":     "GS3-ECO-PRE-MONEY-BASICS-MT01",
+  "GS3-ECO-PRE-FIN-MARKETS":      "GS3-ECO-PRE-FIN-MARKETS-MT01",
+  "GS3-ECO-SECT-INFRA":           "GS3-ECO-SECT-INFRA-MT03",
 
-  // ── v2 GS3 Economy parent + industry alias ────────────────────────────────
-  // GS3-ECO is the unmapped parent; route to the broadest valid child
-  "GS3-ECO":                        "GS3-ECO-INCLUSIVE-GROWTH",
-  "GS3-ECO-INDUSTRY":               "GS3-ECO-SECT-INDLAB",
+  // ── Science & Technology ─────────────────────────────────────────────────────
+  "GS3-ST-SPACE":                 "GS3-ST-SPACE-MT01",
+  "GS3-ST-BIOTECH":               "GS3-ST-BIOTECH-MT01",
+  "GS3-ST-DEFENCE":               "GS3-ST-DEFENCE-MT01",
 
-  // ── v2 GS3 Economy current-affairs nodes ─────────────────────────────────
-  "GS3-CA-ECO":                     "GS3-ECO-INCLUSIVE-GROWTH",
-
-  // ── v2 GS3 Environment current-affairs nodes ─────────────────────────────
-  "GS3-CA-ENV":                     "GS3-ENV-SPECIES",
-
-  // ── v2 GS3 Science & Technology current-affairs nodes ────────────────────
-  "GS3-CA-SCI":                     "GS3-ST-GENSCI-BIO",
-  "GS3-CA-GENSCI":                  "GS3-ST-GENSCI-BIO",
-
-  // ── v2 Science & Technology node format → canonical GS3-ST-* format ──────
-  "GS3-SCI-TECH-SPACE":             "GS3-ST-SPACE",
-  "GS3-SCI-TECH-BIOTECH":           "GS3-ST-BIOTECH",
-  "GS3-SCI-TECH-IT":                "GS3-ST-IT-COMM",
-  "GS3-SCI-TECH-GENERAL":           "GS3-ST-GENSCI-BIO",
-  "GS3-SCI-TECH-HEALTH":            "GS3-ST-GENSCI-BIO",
-  "GS3-SCI-TECH-MATERIALS":         "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
-  "GS3-SCI-TECH-ROBOTICS":          "GS3-ST-MATERIALS-NANO-ROBOTICS-AI",
-  // Energy in sci-tech context → environment energy node (nuclear/renewable)
-  "GS3-SCI-TECH-ENERGY":            "GS3-ENV-ENERGY",
-
-  // ── v2 Geography node format → canonical GS1-GEO-* format ────────────────
-  // Dot-notation used in v2 geography folder files.
-  //
-  // IMPORTANT: Only alias to SPECIFIC (non-parent) canonical nodes to avoid
-  // fan-out explosion. Broad "geo.xxx" tags that have no precise canonical
-  // mapping are deliberately omitted — they fall through to raw node buckets
-  // (still queryable, just not expanded across all leaf microthemes).
-  // Aliasing geo.indian-geography → GS1-GEO-IND (20 children) would fan every
-  // broad geography question into all 20 subtopic leaf nodes — the same
-  // explosion pattern as the old CSAT-RC bug.
-  "geo.climatology":                "GS1-GEO-IND-CLIMATE",  // 4 leaf nodes
-  "geo.agriculture":                "GS1-GEO-IND-AGRI",     // 4 leaf nodes
-  // geo.indian-geography, geo.geomorphology, geo.oceanography, geo.world-mapping,
-  // geo.world-regions, geo.economic-geography, geo.industry-resources → raw buckets
+  // ── Environment ──────────────────────────────────────────────────────────────
+  "GS3-ENV-SPECIES":              "GS3-ENV-SPECIES-MT01",
+  "GS3-ENV-CONSERVATION":         "GS3-ENV-CONSERVATION-MT01",
+  "GS3-ENV-GLOBALWARM":           "GS3-ENV-GLOBALWARM-MT01",
+  "GS3-ENV-ACTS":                 "GS3-ENV-ACTS-MT01",
+  "GS3-ENV-INTL":                 "GS3-ENV-INTL-MT01",
+  "GS3-ENV-LAND-WATER":           "GS3-ENV-LAND-WATER-MT01",
+  "GS3-ENV-ECO-CONCEPTS":         "GS3-ENV-ECO-CONCEPTS-MT01",
+  "GS3-ENV-ECO-ENERGY":           "GS3-ENV-ECO-ENERGY-MT01",
+  "GS3-ENV-AIR":                  "GS3-ENV-AIR-MT01",
+  "GS3-ENV-WASTE":                "GS3-ENV-WASTE-MT01",
+  "GS3-ENV-CLIMATE":              "GS3-ENV-CLIMATEPHEN-MT01",
+  "GS3-ENV-CURRENT":              "GS3-ENV-CURR-RIVERS-MT01",
 };
+
+export function normalizePyqNodeId(rawNodeId) {
+  if (!rawNodeId) return null;
+  const clean = String(rawNodeId).trim();
+  return PYQ_NODE_ALIAS_MAP[clean] || clean;
+}
