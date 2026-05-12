@@ -1019,7 +1019,7 @@ export default function ReportsPage() {
           Study Reports
         </div>
         <div style={{ fontSize: 13, color: C.muted, marginTop: 4 }}>
-          PostgreSQL-backed · what I actually studied
+          Review your study progress, consistency, and completed work
         </div>
 
         {/* ── Tab bar ────────────────────────────────────────────────────── */}
