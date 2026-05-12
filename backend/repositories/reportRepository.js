@@ -21,6 +21,31 @@
 
 import { pool } from '../db/index.js';
 
+// ── block_id column guard ─────────────────────────────────────────────────────
+// Production databases created from older migrations may not have the block_id
+// TEXT column on study_blocks. We check once at first use and fall back to
+// id::TEXT so the Reports API never crashes with "column does not exist".
+let _blockIdColExists = null; // null = unchecked, true/false after first check
+
+async function hasBlockIdColumn() {
+  if (_blockIdColExists !== null) return _blockIdColExists;
+  try {
+    const { rows } = await pool.query(
+      `SELECT 1 FROM information_schema.columns
+       WHERE table_schema = 'public'
+         AND table_name   = 'study_blocks'
+         AND column_name  = 'block_id'
+       LIMIT 1`
+    );
+    _blockIdColExists = rows.length > 0;
+    console.log(`[reportRepository] study_blocks.block_id exists: ${_blockIdColExists}`);
+  } catch (e) {
+    console.warn('[reportRepository] Could not check block_id column:', e.message);
+    _blockIdColExists = false;
+  }
+  return _blockIdColExists;
+}
+
 // ── Reusable SQL fragment ─────────────────────────────────────────────────────
 
 const ACTUAL_SECONDS_EXPR = `
@@ -42,9 +67,12 @@ const ACTUAL_SECONDS_EXPR = `
   END
 `.trim();
 
-const STUDIED_BLOCK_SELECT = `
+// NOTE: block_id column may be missing from older production study_blocks tables
+// that were created before migration 008. Built dynamically via hasBlockIdColumn().
+function buildStudiedBlockSelect(blockIdExists) {
+  return `
   id,
-  block_id,
+  ${blockIdExists ? 'block_id' : "id::TEXT AS block_id"},
   day_key,
   subject,
   topic,
@@ -61,6 +89,7 @@ const STUDIED_BLOCK_SELECT = `
   (${ACTUAL_SECONDS_EXPR})                    AS actual_seconds,
   ROUND((${ACTUAL_SECONDS_EXPR}) / 60.0, 1)   AS actual_minutes_decimal
 `.trim();
+}
 
 // ── Daily aggregate ───────────────────────────────────────────────────────────
 
@@ -84,6 +113,8 @@ export async function getDayAggregate(userId, dayKey) {
 // ── Studied block list for a date range ──────────────────────────────────────
 
 export async function getStudiedBlocks(userId, startDayKey, endDayKey) {
+  const blockIdExists = await hasBlockIdColumn();
+  const STUDIED_BLOCK_SELECT = buildStudiedBlockSelect(blockIdExists);
   const { rows } = await pool.query(
     `SELECT ${STUDIED_BLOCK_SELECT}
      FROM public.study_blocks
