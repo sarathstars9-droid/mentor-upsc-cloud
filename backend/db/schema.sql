@@ -125,17 +125,46 @@ CREATE TABLE IF NOT EXISTS public.study_blocks (
 );
 
 -- ── Safety patch for older production DBs ────────────────────────────────────
--- If study_blocks already existed before block_id was introduced, the CREATE
--- TABLE IF NOT EXISTS above is a no-op and the column would be missing.
--- This ALTER TABLE is idempotent (ADD COLUMN IF NOT EXISTS) and ensures the
--- column is present before any index that references it is created.
+-- CREATE TABLE IF NOT EXISTS is a no-op when the table already exists.
+-- Any columns added after the original table creation are therefore missing
+-- on older Railway deployments.  These ALTER TABLE statements are fully
+-- idempotent (ADD COLUMN IF NOT EXISTS) and safe to run repeatedly.
+-- They must appear BEFORE any index that references the added columns.
 ALTER TABLE public.study_blocks
-  ADD COLUMN IF NOT EXISTS block_id TEXT;
+  ADD COLUMN IF NOT EXISTS block_id              TEXT,
+  ADD COLUMN IF NOT EXISTS subject               TEXT,
+  ADD COLUMN IF NOT EXISTS subject_id            TEXT,
+  ADD COLUMN IF NOT EXISTS topic                 TEXT,
+  ADD COLUMN IF NOT EXISTS topic_id              TEXT,
+  ADD COLUMN IF NOT EXISTS node_id               TEXT,
+  ADD COLUMN IF NOT EXISTS stage                 TEXT,
+  ADD COLUMN IF NOT EXISTS block_type            TEXT,
+  ADD COLUMN IF NOT EXISTS source_type           TEXT,
+  ADD COLUMN IF NOT EXISTS planned_start         TEXT,
+  ADD COLUMN IF NOT EXISTS planned_end           TEXT,
+  ADD COLUMN IF NOT EXISTS actual_minutes        INTEGER     DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS started_at            TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS paused_at             TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS last_resumed_at       TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS ended_at              TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS completed_at          TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS total_pause_seconds   INTEGER     DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS pauses_count          INTEGER     DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS completion_reason     TEXT,
+  ADD COLUMN IF NOT EXISTS calendar_event_id     TEXT,
+  ADD COLUMN IF NOT EXISTS calendar_html_link    TEXT,
+  ADD COLUMN IF NOT EXISTS calendar_sync_status  TEXT        DEFAULT 'pending',
+  ADD COLUMN IF NOT EXISTS linkage_pending       BOOLEAN     DEFAULT FALSE,
+  ADD COLUMN IF NOT EXISTS updated_at            TIMESTAMPTZ DEFAULT NOW();
 
-UPDATE public.study_blocks
-SET    block_id = id::TEXT
-WHERE  block_id IS NULL;
+-- Backfill safe defaults for columns that are now NOT NULL in code logic
+UPDATE public.study_blocks SET block_id            = id::TEXT  WHERE block_id            IS NULL;
+UPDATE public.study_blocks SET total_pause_seconds = 0         WHERE total_pause_seconds IS NULL;
+UPDATE public.study_blocks SET pauses_count        = 0         WHERE pauses_count        IS NULL;
+UPDATE public.study_blocks SET actual_minutes      = 0         WHERE actual_minutes      IS NULL;
+UPDATE public.study_blocks SET calendar_sync_status= 'pending' WHERE calendar_sync_status IS NULL;
 -- ─────────────────────────────────────────────────────────────────────────────
+
 
 CREATE UNIQUE INDEX IF NOT EXISTS uniq_active_block_per_user
   ON public.study_blocks(user_id) WHERE status = 'active';
