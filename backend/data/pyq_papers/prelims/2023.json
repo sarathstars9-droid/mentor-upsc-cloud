@@ -1,0 +1,2532 @@
+{
+  "year": 2023,
+  "paper": "GS",
+  "source": "pyq_master_index",
+  "totalQuestions": 106,
+  "questions": [
+    {
+      "id": "ECO_INTTRA_2023_Q1",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 1,
+      "originalQuestionNumber": 1,
+      "subject": "Economy",
+      "sourceFile": "international_trade.json",
+      "question": "Consider the following statements: Statement-I: India accounts for 32% of global export of goods. Statement-II: Many local companies and some foreign companies operating in India have taken advantage of India's 'Production -linked Incentive' scheme. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIFUNMON_2023_Q1",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 2,
+      "originalQuestionNumber": 1,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "Which of the following activities of Reserve Bank of India is considered to be part of 'Sterilization'?",
+      "options": {
+        "A": "Conducting 'Open Market Operations'",
+        "B": "Oversight of settlement and payment systems",
+        "C": "Debt and cash management for Central and State Governments",
+        "D": "Regulating the functions of Non-banking Financial Institutions"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-RBI-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS3-ECO-PRE-RBI-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi",
+            "banking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_BIO_2023_Q1",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 3,
+      "originalQuestionNumber": 1,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "Consider the following statements: Statement-I: Marsupials are not naturally found in India. Statement-II: Marsupials can thrive only in Montane grasslands with no predators. Which of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for StatementI",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_LAW_2023_Q1",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 4,
+      "originalQuestionNumber": 1,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "Consider the following statements: Once the Central Government notifies an area as a ‘Community Reserve’ 1. The Chief Wildlife Warden of the State becomes the governing authority of such forest 2. Hunting is not allowed in such area 3. People of such area are allowed to collect non-timber forest produce 4. People of such area are allowed traditional agricultural practices How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-ACTS-MT01",
+      "syllabusNodeId": "GS3-ENV-ACTS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_AGR_2023_Q1",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 5,
+      "originalQuestionNumber": 1,
+      "subject": null,
+      "sourceFile": "agriculture.json",
+      "question": "Consider the following statements: 1. India has more arable area than China 2. The proportion of irrigated area is more in India as compared to China 3. The average productivity per hectare in Indian agriculture is higher than that in China How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDCLI_2023_Q1",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 6,
+      "originalQuestionNumber": 1,
+      "subject": null,
+      "sourceFile": "indian_climate_natural_vegetation.json",
+      "question": "Which of the following is the best example of repeated falls in sea level, giving rise to present day extensive marshland?",
+      "options": {
+        "A": "Bhitarkanika Mangroves",
+        "B": "Marakkanam Salt Pans",
+        "C": "Naupada Swamp",
+        "D": "Rann of Kutch"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "mangrove"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_INDMTN_2023_Q1",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 7,
+      "originalQuestionNumber": 1,
+      "subject": null,
+      "sourceFile": "indian_physical_geography_mountains.json",
+      "question": "Consider the following statements: 1. Amarkantak Hills are at the confluence of Vindhya and Sahyadri Ranges 2. Biligirirangan Hills constitute the easternmost part of Satpura Range 3. Seshachalam Hills constitute the southernmost part of Western Ghats How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_PREHIST_2023_Q1",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 8,
+      "originalQuestionNumber": 1,
+      "subject": "History",
+      "sourceFile": "prehistoric_age.json",
+      "question": "With reference to ancient South India, Korkai, Poompuhar, and Muchiri were well known as:",
+      "options": {
+        "A": "Capital cities",
+        "B": "Ports",
+        "C": "Centres of iron-and-steel making",
+        "D": "Shrines of Jain Tirthankaras"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-ANC-JAIN-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-JAIN-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2023_Q1_CONGRESS",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 9,
+      "originalQuestionNumber": 1,
+      "subject": null,
+      "sourceFile": "congress_1885_1907.json",
+      "question": "Consider the following statements: Statement-I: 7th August is declared as the National Handloom Day. Statement-II: It was in 1905 that the Swadeshi Movement was launched on the same day. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_MAKING_OF_CONSTITUTION_2023_Q1",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 10,
+      "originalQuestionNumber": 1,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements in respect of the Constitution Day: Statement-I: The Constitution Day is celebrated on 26th November every year to promote constitutional values among citizens. Statement-II: On 26th November, 1949, the Constituent Assembly of India set up a Drafting Committee under the Chairmanship of Dr. B. R. Ambedkar to prepare a Draft Constitution of India. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II arc correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_NHRC_2023_Q1",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 11,
+      "originalQuestionNumber": 1,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following organizations /bodies in India: 1. The National Commission for Backward Classes 2. The National Human Rights Commission 3. The National Law Commission 4. The National Consumer Disputes Redressal Commission How many of the above are constitutional bodies?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-BODIES-MT01",
+      "syllabusNodeId": "GS2-POL-BODIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIDISEASES_2023_Q1",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 12,
+      "originalQuestionNumber": 1,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_diseases.json",
+      "question": "'Wolbachia method' is sometimes talked about with reference to which one of the following?",
+      "options": {
+        "A": "Controlling the viral diseases spread by mosquitoes",
+        "B": "Converting crop residues into packing material",
+        "C": "Producing biodegradable plastics",
+        "D": "Producing biochar from thermo-chemical conversion of biomass."
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2023_Q1",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 13,
+      "originalQuestionNumber": 1,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Consider the following statements: Statement-I: India, despite having Uranium deposits, depends on coal for most of its electricity production. Statement- II: Uranium, enriched to the extent of at least 60%, is required for the production of electricity. Which of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I.",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I.",
+        "C": "Statement-I is correct but Statement-II is incorrect.",
+        "D": "Statement-I is incorrect but Statement-II is correct."
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY_2023_Q2",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 14,
+      "originalQuestionNumber": 2,
+      "subject": null,
+      "sourceFile": "ca_environment_ecology.json",
+      "question": "In the recent years Chad, Guinea, Mali and Sudan caught the international attention for which one of the following reasons common to all of them? [2023]",
+      "options": {
+        "A": "Discovery of rich deposits of rare earth elements",
+        "B": "Establishment of Chinese military bases",
+        "C": "Southward expansion of Sahara Desert",
+        "D": "Successful coups"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-CURR-RIVERS-MT01",
+      "syllabusNodeId": "GS3-ENV-CURR-RIVERS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2023_Q2",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 15,
+      "originalQuestionNumber": 2,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "Consider the following statements: Statement-I: India's public sector health care system largely focuses on curative care with limited preventive, promotive and rehabilitative care. Statement-II : Under India's decentralized approach to health care delivery, the States are primarily responsible for organizing health services. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_LAW_2023_Q2",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 16,
+      "originalQuestionNumber": 2,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "With reference to ‘Scheduled Areas’ in India, consider the following statements : 1. Within a State, the notification of an area as Scheduled Area takes place through an order of the President. 2. The largest administrative unit forming the Scheduled Area is the District and the lowest is the cluster of villages in the Block. 3. The Chief Ministers of the concerned State are required to submit annual reports to the Union Home Ministry on the administration of Schedule Areas in the States. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-ACTS-MT01",
+      "syllabusNodeId": "GS3-ENV-ACTS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_ECO_2023_Q2",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 17,
+      "originalQuestionNumber": 2,
+      "subject": null,
+      "sourceFile": "economic_geography_transport.json",
+      "question": "With reference to India's projects on connectivity, consider the following statements: 1. East-West Corridor under Golden Quadrilateral Project connects Dibrugarh and Surat. 2. Trilateral Highway connects Moreh in Manipur and Chiang Mai in Thailand via Myanmar. 3. Bangladesh- China- India- Myanmar Economic Corridor connects Varanasi in Uttar Pradesh with Kunming in China. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_ARCH_2023_Q2",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 18,
+      "originalQuestionNumber": 2,
+      "subject": "History",
+      "sourceFile": "architecture.json",
+      "question": "Consider the following pairs: Site : Well known for 1. Besnagar : Shaivite cave shrine 2. Bhaja : Buddhist cave shrine 3. Sittanavasal: Jain cave shrine How many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-ANC-JAIN-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-JAIN-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_PREHIST_2023_Q2",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 19,
+      "originalQuestionNumber": 2,
+      "subject": "History",
+      "sourceFile": "prehistoric_age.json",
+      "question": "Consider the following dynasties: 1. Hoysala 2. Gahadavala 3. Kakatiya 4. Yadava How many of the above dynasties established their kingdoms in early eighth century AD?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MED-REGIONAL",
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_RELPH_2023_Q2",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 20,
+      "originalQuestionNumber": 2,
+      "subject": "History",
+      "sourceFile": "religion_philosophy.json",
+      "question": "“Souls are not only the property of animal and plant life, but also of rocks, running water and many other natural objects not looked on as living by other religious sects.” The above statement reflects one of the core beliefs of which one of the following religious sects of ancient India?",
+      "options": {
+        "A": "Buddhism",
+        "B": "Jainism",
+        "C": "Shaivism",
+        "D": "Vaishnavism"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-ANC-JAIN-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-JAIN-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_EURO_2023_Q2",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 21,
+      "originalQuestionNumber": 2,
+      "subject": "History",
+      "sourceFile": "advent_of_europeans_in_india.json",
+      "question": "Who among the following rulers of medieval Gujarat surrendered Diu to Portuguese?",
+      "options": {
+        "A": "Ahmad Shah",
+        "B": "Mahmud Begarha",
+        "C": "Bahadur Shah",
+        "D": "Muhammad Shah"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2023_Q2",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 22,
+      "originalQuestionNumber": 2,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "Who among the following rulers of Vijayanagara Empire constructed a large dam across Tungabhadra River and a canal-cum-aqueduct several kilometers long from the river to the capital city?",
+      "options": {
+        "A": "Devaraya I",
+        "B": "Mallikarjuna",
+        "C": "Vira Vijaya",
+        "D": "Virupaksha"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MED-VIJAYANAGARA-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2023_Q2_ESTABLIS",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 23,
+      "originalQuestionNumber": 2,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "By which one of the following Acts was the Governor General of Bengal designated as the Governor General of India?",
+      "options": {
+        "A": "The Regulating Act",
+        "B": "The Pitt's India Act",
+        "C": "The Charter Act of 1793",
+        "D": "The Charter Act of 1833"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_FINANCE_COMMISSION_2023_Q2",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 24,
+      "originalQuestionNumber": 2,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following: 1. Demographic performance 2. Forest and ecology 3. Governance reforms 4. Stable government 5. Tax and fiscal efforts For the horizontal tax devolution, the Fifteenth Finance Commission used how many of the above as criteria other than population area and income distance?",
+      "options": {
+        "A": "Only two",
+        "B": "Only three",
+        "C": "Only four",
+        "D": "All five"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-CSREL-MT01",
+      "syllabusNodeId": "GS2-POL-CSREL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-BODIES-MT01",
+          "toNodeId": "GS2-POL-CSREL-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-BODIES-MT01 based on keywords.",
+          "matchedKeywords": [
+            "finance commission"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_FUNDAMENTAL_RIGHTS_2023_Q2",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 25,
+      "originalQuestionNumber": 2,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: Statement-I: The Supreme Court of India has held in some judgements that the reservation policies made under Article 16(4) of the Constitution of India would be limited by Article 335 for maintenance of efficiency of administration. Statement-II: Article 335 of the Constitution of India defines the term ‘efficiency of administration’.",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+        "B": "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+        "C": "Statement-I is correct, but Statement-II is incorrect",
+        "D": "Statement-I is incorrect, but Statement-II is correct"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-JUD-MT01",
+      "syllabusNodeId": "GS2-POL-JUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-FR-MT01",
+          "toNodeId": "GS2-POL-JUD-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-FR-MT01 based on keywords.",
+          "matchedKeywords": [
+            "supreme court"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2023_Q2",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 26,
+      "originalQuestionNumber": 2,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "In essence, what does ‘Due Process of Law’ mean?",
+      "options": {
+        "A": "The principle of natural justice",
+        "B": "The procedure established by law",
+        "C": "Fair application of Law",
+        "D": "Equality before law"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 27,
+      "originalQuestionNumber": 3,
+      "subject": null,
+      "sourceFile": "ca_environment_ecology.json",
+      "question": "Consider the following statements: [2023] Statement-I: According to the United Nations\" World Water Development Report, 2022', India extracts more than a quarter of the world's groundwater withdrawal each year. Statement-II: India needs to extract more than a quarter of the world's groundwater each year to satisfy the drinking water and sanitation needs of almost 18% of world's population living in its territory. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-l is incorrect but Statement-II is correct"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-CURR-RIVERS-MT01",
+      "syllabusNodeId": "GS3-ENV-CURR-RIVERS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_GEOGRAPHY_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 28,
+      "originalQuestionNumber": 3,
+      "subject": null,
+      "sourceFile": "ca_geography.json",
+      "question": "Consider the following pairs: [2023] Regions often mentioned in news: Reason for being in news 1. North Kivu and Ituri: War between Armenia and Azerbaijan 2. Nagorno-Karabakh: Insurgency in Mozambique 3. Kherson and Zaporizhzhia: Dispute between Israel and Lebanon How many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_SPORTS_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 29,
+      "originalQuestionNumber": 3,
+      "subject": null,
+      "sourceFile": "ca_sports.json",
+      "question": "Consider following statements: [2023] Statement-I: Israel has established diplomatic relations with some Arab States. Statement-II: The Arab Peace Initiative' mediated by Saudi Arabia was signed by Israel and Arab League. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-1 is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "C",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 30,
+      "originalQuestionNumber": 3,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "Consider the following statements in relation to Janani Suraksha Yojana: 1. It is a safe motherhood intervention of the State Health Departments. 2. Its objective is to reduce maternal and neonatal mortality among poor pregnant women. 3. It aims to promote institutional delivery among poor pregnant women, 4. Its objective includes providing public health facilities to sick infants up to one year of age. How many of the statements given above are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_LAW_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 31,
+      "originalQuestionNumber": 3,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "Consider the following statements: 1. In India, the Biodiversity Management Committees are key to the realization of the objectives of the Nagoya Protocol. 2. The Biodiversity Management Committees have important functions in determining access and benefit sharing, including the power to levy collection fees on the access of biological resources within its jurisdiction. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 or 2"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-ACTS-MT01",
+      "syllabusNodeId": "GS3-ENV-ACTS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_ECO_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 32,
+      "originalQuestionNumber": 3,
+      "subject": null,
+      "sourceFile": "economic_geography_transport.json",
+      "question": "Consider the following pairs: Port Well known as 1. Kamarajar Port First major port in India registered as a company 2. Mundra Port Largest privately owned port in India 3. Vishakhapatnam Port Largest container port in India How many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one pair",
+        "B": "Only two pairs",
+        "C": "All three pairs",
+        "D": "None of the pairs"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRIV_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 33,
+      "originalQuestionNumber": 3,
+      "subject": null,
+      "sourceFile": "indian_rivers_drainage.json",
+      "question": "Consider the following statements: 1. Jhelum River passes through Wular Lake 2. Krishna River directly feeds Kolleru Lake 3. Meandering of Gandak River formed Kanwar Lake How many of the statements given above are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river",
+            "krishna"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_OCE_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 34,
+      "originalQuestionNumber": 3,
+      "subject": null,
+      "sourceFile": "oceanography.json",
+      "question": "Consider the following statements: Statement-I: The temperature contrast between continents and oceans is greater during summer than in winter. Statement-II: The specific heat of water is more than that of land surface. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_ARCH_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 35,
+      "originalQuestionNumber": 3,
+      "subject": "History",
+      "sourceFile": "architecture.json",
+      "question": "With reference to the Indian History, Alexander Rea, A.H. Longhurst, Robert Sewell, James Burgess and Walter Elliot were associated with?",
+      "options": {
+        "A": "Archaeological excavations",
+        "B": "Establishment of English Press in Colonial India",
+        "C": "Establishment of Churches in Princely States",
+        "D": "Construction of railways in Colonial India"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-ANC-BUD-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-BUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_RELPH_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 36,
+      "originalQuestionNumber": 3,
+      "subject": "History",
+      "sourceFile": "religion_philosophy.json",
+      "question": "In which one of the following regions was Dhanyakataka, which flourished as a prominent Buddhist center under the Mahasanghikas, located?",
+      "options": {
+        "A": "Andhra",
+        "B": "Gandhara",
+        "C": "Kalinga",
+        "D": "Magadha"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-ANC-BUD-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-BUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PRESIDENT_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 37,
+      "originalQuestionNumber": 3,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1. If the election of the President of India is declared void by the Supreme Court of India, all acts done by him/her in the performance of duties of his/her office of President before the date of decision become invalid. 2. Election for the post of the President of India can be postponed on the ground that some Legislative Assemblies have been dissolved and election are yet to take place. 3. When a Bill is presented to the President of India, the Constitution prescribes time limits within which he/she has to declare his/her assent. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-JUD-MT01",
+      "syllabusNodeId": "GS2-POL-JUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-EXEC-MT01",
+          "toNodeId": "GS2-POL-JUD-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-EXEC-MT01 based on keywords.",
+          "matchedKeywords": [
+            "supreme court"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 38,
+      "originalQuestionNumber": 3,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which one of the following statements best reflects the Chief purpose of the ‘Constitution’ of a country?",
+      "options": {
+        "A": "It determines the objective for the making of necessary laws.",
+        "B": "It enables the creation of political offices and a government.",
+        "C": "It defines and limits the powers of government.",
+        "D": "It secures social justice, social equality and social security."
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOTECH_2023_Q3",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 39,
+      "originalQuestionNumber": 3,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biotech.json",
+      "question": "'Aerial metagenomics' best refers to which one of the following situations?",
+      "options": {
+        "A": "Collecting DNA samples from air in a habitat at one go",
+        "B": "Understanding the genetic makeup of avian species of a habitat",
+        "C": "Using air-borne devices to collect blood samples from moving animals",
+        "D": "Sending drones to inaccessible areas to collect plant and animal samples from land surfaces and water bodies"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_ECONOMY_BANKING_2023_Q4",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 40,
+      "originalQuestionNumber": 4,
+      "subject": null,
+      "sourceFile": "ca_economy_banking.json",
+      "question": "Consider the following statements: [2023] Statement-I: Recently, the United States of America (USA) and the European Union (EU) have launched the Trade and Technology Council'. Statement-II: The USA and the EU claim that through this they are trying to bring technological progress and physical productivity under their control. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-1 and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect Statement-II is correct"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT03",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT03",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_GEOGRAPHY_2023_Q4",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 41,
+      "originalQuestionNumber": 4,
+      "subject": null,
+      "sourceFile": "ca_geography.json",
+      "question": "Consider the following pairs: [2023] Area of conflict mentioned : Country where it's located in news 1. Donbas: Syria 2. Kachin: Ethiopia 3. Tigray: North Yemen How many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_SPORTS_2023_Q4",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 42,
+      "originalQuestionNumber": 4,
+      "subject": null,
+      "sourceFile": "ca_sports.json",
+      "question": "Consider the following pairs with regard to sports awards: [2023] 1. Major Dhyan Chand Khel Ratna Award: For the most spectacular and outstanding performance by a sportsperson over period of last four years 2. Arjuna Award: For the lifetime achievement by a sportsperson 3. Dronacharya Award: To honour eminent coaches who have successfully trained sportspersons or teams 4. Rashtriya Khel Protsahan Puraskar: To recognize the contribution made by sportspersons even after their retirement How many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "B",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_AGR_2023_Q4",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 43,
+      "originalQuestionNumber": 4,
+      "subject": "Economy",
+      "sourceFile": "agriculture.json",
+      "question": "Which one of the following best describes the concept of 'Small Farmer Large Field'?",
+      "options": {
+        "A": "Resettlement of a large number of people, uprooted from their countries due to war, by giving them a large cultivable land which they cultivate collectively and share the produce",
+        "B": "Many marginal farmers in an area organize themselves into groups and synchronize and harmonize selected agricultural operations",
+        "C": "Many marginal farmers in an area together make a contract with a corporate body and surrender their land to the corporate body for a fixed term for which the corporate body makes a payment of agreed amount to the farmers",
+        "D": "A company extends loans, technical knowledge and material inputs to a number of small farmers in an area so that they produce the agricultural commodity required by the company for its manufacturing process and commercial production"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-SECT-AGRI-MT01",
+          "toNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-SECT-AGRI-MT01 based on keywords.",
+          "matchedKeywords": [
+            "manufacturing"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_MAC_2023_Q4",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 44,
+      "originalQuestionNumber": 4,
+      "subject": "Economy",
+      "sourceFile": "macroeconomy.json",
+      "question": "Consider the following statements: Statement-I: In the post-pandemic recent past, many Central Banks worldwide had carried out interest rate hikes. Statement-II: Central Banks generally assume that they have the ability to counteract the rising consumer prices via monetary policy means Which of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2023_Q4",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 45,
+      "originalQuestionNumber": 4,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "Consider the following statements in the context of interventions being undertaken under Anaemia Mukt Bharat Strategy: 1. It provides prophylactic calcium supplementation for pre -school children, adolescents and pregnant women. 2. It runs a campaign for delayed cord clamping at the time of child- birth. 3. It provides for periodic deworming to children and adolescents. 4. It addresses non-nutritional causes of anaemia in endemic pockets with special focus on malaria, hemoglobinopathies and fluorosis. How many of the statements given above are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_ARCH_2023_Q4",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 46,
+      "originalQuestionNumber": 4,
+      "subject": "History",
+      "sourceFile": "architecture.json",
+      "question": "With reference to ancient India, consider the following statements: 1. The concept of Stupa is Buddhist in origin. 2. Stupa was generally a repository of relics. 3. Stupa was a votive and commemorative structure in Buddhist tradition. How many of the statements given above are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-ANC-BUD-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-BUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PRESIDENT_2023_Q4",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 47,
+      "originalQuestionNumber": 4,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements in respect of election to the President of India: 1. The members nominated to either House of the Parliament or the Legislative Assemblies of States are also eligible to be included in the Electoral College. 2. Higher the number of elective Assembly seats, higher is the value of vote of each MLA of that state. 3.The value of vote of each MLA of Madhya Pradesh is greater than that of Kerala. 4.The value of vote of each MLA of Puducherry is higher than that of Arunachal Pradesh because the ratio of total population to total number of elective seats in Puducherry is greater as compared to Arunachal Pradesh. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-EXEC-MT01",
+      "syllabusNodeId": "GS2-POL-EXEC-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOTECH_2023_Q4",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 48,
+      "originalQuestionNumber": 4,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biotech.json",
+      "question": "'Microsatellite DNA' is used in the case of which one of the following?",
+      "options": {
+        "A": "Studying the evolutionary relationships among various species of fauna",
+        "B": "Stimulating 'stem cells' to transform into diverse functional tissues",
+        "C": "Promoting clonal horticultural plants propagation of horticulture plants",
+        "D": "Assessing the efficacy of drugs by conducting series of drug trials in a population"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "cell",
+            "tissue"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2023_Q5",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 49,
+      "originalQuestionNumber": 5,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Which one of the following countries has been suffering from decades of civil strife and food shortages and was in news in the recent past for its very severe famine? [2023]",
+      "options": {
+        "A": "Angola",
+        "B": "Costa Rica",
+        "C": "Ecuador",
+        "D": "Somalia"
+      },
+      "answer": "D",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_SPORTS_2023_Q5",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 50,
+      "originalQuestionNumber": 5,
+      "subject": null,
+      "sourceFile": "ca_sports.json",
+      "question": "Consider the following statements in respect of the 44th Chess Olympiad, 2022: [2023] 1. It was the first time that Chess Olympiad was held in India. 2. The official mascot was named Thambi'. 3. The trophy for the winning team in the open section is the Vera Menchik Cup. 4. The trophy for the winning team in the women's section is the Hamilton-Russell Cup. How many of the statements given above are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "B",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_AGR_2023_Q5",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 51,
+      "originalQuestionNumber": 5,
+      "subject": "Economy",
+      "sourceFile": "agriculture.json",
+      "question": "Consider the following statements: 1. The Government of India provides Minimum Support Price for niger (Guizotia abyssinica) seeds. 2. Niger is cultivated as a Kharif crop 3. Some tribal people in India use niger seed oil for cooking. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-SECT-AGRI-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_WRLD_2023_Q5",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 52,
+      "originalQuestionNumber": 5,
+      "subject": null,
+      "sourceFile": "countries_regions_world_features.json",
+      "question": "About three -fourth of world's Cobalt, a metal required for the manufacture of batteries for electric motor vehicles, is produced by:",
+      "options": {
+        "A": "Argentina",
+        "B": "Botswana",
+        "C": "The Democratic Republic of the Congo",
+        "D": "Kazakhstan"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_LIT_2023_Q5",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 53,
+      "originalQuestionNumber": 5,
+      "subject": "History",
+      "sourceFile": "literature.json",
+      "question": "With reference to ancient Indian History, consider the following pairs: Literary Work : Author 1. Devichandragupta : Bilhana 2. Hammira-Mahakavya : Nayachandra Suri 3. Milinda-panha : Nagarjuna 4. Nitivakyamrita : Somadeva Suri How many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-ANC-VEDIC-LATER-MT04",
+      "syllabusNodeId": "GS1-HIS-ANC-VEDIC-LATER-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCISPACETECH_2023_Q5",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 54,
+      "originalQuestionNumber": 5,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_space_tech.json",
+      "question": "Which one of the following countries has its own Satellite Navigation System?",
+      "options": {
+        "A": "Australia",
+        "B": "Canada",
+        "C": "Israel",
+        "D": "apan"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-SPACE-MT01",
+      "syllabusNodeId": "GS3-ST-SPACE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2023_Q6",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 55,
+      "originalQuestionNumber": 6,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Consider the following statements about G-20: [2023] 1. The G-20 group was originally established as a platform for the Finance Ministers and Central Bank Governors to discuss the international economic and financial issues. 2. Digital public infrastructure is one of India's G-20 priorities. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CORANDIND_2023_Q6",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 56,
+      "originalQuestionNumber": 6,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "Consider the following statements: Statement-I: Interest income from the deposits in Infrastructure Investment Trusts (InvITs) distributed to their investors is exempted from tax, but the dividend is taxable. Statement-II: InvITs are recognized as borrowers under the 'Securitization and Reconstruction of Financial Assets and Enforcement of Security Interest Act, 2002' Which of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-TAXATION-MT01",
+      "syllabusNodeId": "GS3-ECO-TAXATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+          "toNodeId": "GS3-ECO-TAXATION-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-SECT-INDLAB-MT01 based on keywords.",
+          "matchedKeywords": [
+            "tax"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_SPC_2023_Q6",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 57,
+      "originalQuestionNumber": 6,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "Consider the following trees: 1. Jackfruit (Artocarpus heterophyllus) 2. Mahua (Madhuca indic",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_WRLD_2023_Q6",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 58,
+      "originalQuestionNumber": 6,
+      "subject": null,
+      "sourceFile": "countries_regions_world_features.json",
+      "question": "Which one of the following is part of the Congo Basin?",
+      "options": {
+        "A": "Cameroon",
+        "B": "Nigeria",
+        "C": "South Sudan",
+        "D": "Uganda"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_LIT_2023_Q6",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 59,
+      "originalQuestionNumber": 6,
+      "subject": "History",
+      "sourceFile": "literature.json",
+      "question": "Which one of the following explains the practice of ‘Vattakirutal’ as mentioned in the Sangam poems?",
+      "options": {
+        "A": "Kings employing women bodyguards",
+        "B": "Learned persons assembling in royal courts to discuss religious and philosophical matters",
+        "C": "Young girls keeping watch over agricultural fields and driving away birds and animals",
+        "D": "A king defeated in a battle committing ritual suicide by starving himself to death"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-ANC-SANGAM-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-SANGAM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2023_Q6",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 60,
+      "originalQuestionNumber": 6,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "In India, which one of the following Constitutional Amendments was widely believed to overcome the judicial interpretations of the Fundamental Rights?",
+      "options": {
+        "A": "1st Amendment",
+        "B": "42nd Amendment",
+        "C": "44th Amendment",
+        "D": "86th Amendment"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-FR-MT01",
+      "syllabusNodeId": "GS2-POL-FR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-AMEND-MT01",
+          "toNodeId": "GS2-POL-FR-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-AMEND-MT01 based on keywords.",
+          "matchedKeywords": [
+            "fundamental rights"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2023_Q7",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 61,
+      "originalQuestionNumber": 7,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Consider the following infrastructure sectors: [2023] 1. Affordable housing 2. Mass rapid transport 3. Health care 4. Renewable energy On how many of the above does UNOPS Sustainable Investments in Infrastructure and Innovation (S3i) initiative focus for its investments?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "C",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2023_Q7",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 62,
+      "originalQuestionNumber": 7,
+      "subject": null,
+      "sourceFile": "ca_science_tech.json",
+      "question": "Consider the following statements: [2023] 1. Ballistic missiles are jet-propelled at subsonic speeds throughout their flights, while cruise missiles are rocket-powered only in the initial phase of flight. 2. Agni-V is a medium-range supersonic cruise missile, while BrahMos is a solid-fuelled intercontinental ballistic missile. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-DEFENCE-MT01",
+      "syllabusNodeId": "GS3-ST-DEFENCE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CORANDIND_2023_Q7",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 63,
+      "originalQuestionNumber": 7,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "Consider the investments in the following assets: 1. Brand recognition 2. Inventory 3. Intellectual property 4. Mailing list of clients How many of the above are considered intangible investments?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT14",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT14",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIINDBAN_2023_Q7",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 64,
+      "originalQuestionNumber": 7,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "Consider the following statements with reference to India: 1. According to the 'Micro, Small and Medium Enterprises Development (MSMED) Act, 2006', the 'medium enterprises' are those with investments in plant and machinery between 15 crore and 25 crore. 2. All bank loans to the Micro, Small and Medium Enterprises qualify under the priority sector . Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CLI_2023_Q7",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 65,
+      "originalQuestionNumber": 7,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "Consider the following: 1. Aerosols 2. Foam agents 3. Fire retardants 4. Lubricants In the making of how many of the above are hydrofluorocarbons used?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_POL_2023_Q7",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 66,
+      "originalQuestionNumber": 7,
+      "subject": null,
+      "sourceFile": "environmental_pollutioncorrected.json",
+      "question": "With reference to the role of biofilters in Recirculating Aquaculture System, consider the following statements: 1. Biofilters provide waste treatment by removing uneaten fish feed. 2. Biofilters convert ammonia present in fish waste to nitrate. 3. Biofilters increase phosphorus as nutrient for fish in water. How many of the statements given above are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-WASTE-MT01",
+      "syllabusNodeId": "GS3-ENV-WASTE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2023_Q7",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 67,
+      "originalQuestionNumber": 7,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "Consider the following Fauna: 1. Lion-tailed Macaque 2. Malabar Civet 3. Sambar Deer How many of the above are generally nocturnal or most active after sunset?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_MAPW_2023_Q7",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 68,
+      "originalQuestionNumber": 7,
+      "subject": null,
+      "sourceFile": "world_mapping.json",
+      "question": "Consider the following countries: 1. Bulgaria 2. Czech Republic 3. Hungary 4. Latvia 5. Lithuania 6. Romania How many of the above-mentioned countries share a land border with Ukraine?",
+      "options": {
+        "A": "Only two",
+        "B": "Only three",
+        "C": "Only four",
+        "D": "Only five"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_WRLD_2023_Q7",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 69,
+      "originalQuestionNumber": 7,
+      "subject": null,
+      "sourceFile": "countries_regions_world_features.json",
+      "question": "Consider the following statements: Statement-I: Switzerland is one of the leading exporters of gold in terms of value. Statement-II: Switzerland has the second largest gold reserves in the world. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-1 is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2023_Q7",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 70,
+      "originalQuestionNumber": 7,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: Statement-I: In India, prisons are managed by State governments with their own rules and regulations for the day-to- day administration of prisons. Statement- II: In India, prisons are governed by the Prison Act, 1894 which expressly kept the subject of prisons in the control of Provisional Governments. Which of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement- II is incorrect.",
+        "D": "Statement-I is incorrect but Statement- II is correct."
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-AMEND-MT01",
+      "syllabusNodeId": "GS2-POL-AMEND-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2023_Q7",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 71,
+      "originalQuestionNumber": 7,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "With reference to Finance Bill and Money Bill in the Indian Parliament, consider the following statements: 1. When the Lok Sabha transmits Finance Bill to the Rajya Sabha, it can amend or reject the Bill. 2. When the Lok Sabha transmits Money Bill to the Rajya Sabha, it cannot amend or reject the Bill, it can only make recommendations. 3. In the case of disagreement between the Lok Sabha and the Rajya Sabha, there is no joint sitting for Money Bill, but a joint sitting becomes necessary for Finance Bill. How many of the above statements are correct.",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIELECTRONICSIT_2023_Q7",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 72,
+      "originalQuestionNumber": 7,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_electronics_it.json",
+      "question": "Consider the following actions: 1. Detection of car crash/collision which results in the deployment of airbags almost instantaneously 2. Detection of accidental free fall of a laptop towards the ground which results in the immediate turning off of the hard drive 3. Detection of the tilt of the smart-phone which results in the rotation of display between portrait and landscape mode In how many of the above actions is the function of accelerometer required?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-IT-COMM-MT02",
+      "syllabusNodeId": "GS3-ST-IT-COMM-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2023_Q8",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 73,
+      "originalQuestionNumber": 8,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Consider the following statements: [2023] 1. Recently, all the countries of the United Nations have adopted the first-ever compact for international migration, the 'Global Compact for Safe, Orderly and Regular Migration (GCM)'. 2. The objectives and commitments stated in the GCM are binding on the UN member countries. 3. The GCM addresses internal migration or internally displaced people also in its objectives and commitments. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CORANDIND_2023_Q8",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 74,
+      "originalQuestionNumber": 8,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "With reference to coal -based thermal power plants in India, consider the following statements: 1. None of them uses seawater. 2. None of them is set up in water-stressed district. 3. None of them is privately owned. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIINDBAN_2023_Q8",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 75,
+      "originalQuestionNumber": 8,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "With reference to Central Bank digital currencies, consider the following statements: 1. It is possible to make payments in a digital currency without using US dollar or SWIFT system. 2. A digital currency can be distributed with a condition programmed into it such as a time - frame for spending it. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-MONEY-BASICS-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-MONEY-BASICS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_CLI_2023_Q8",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 76,
+      "originalQuestionNumber": 8,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "Consider the following activities: 1. Spreading finely ground basalt rock on farmlands extensively 2. Increasing the alkalinity of oceans by adding lime 3. Capturing carbon dioxide released by various industries and pumping it into abandoned subterranean mines in the form of carbonated waters How many of the above activities are often considered and discussed for carbon capture and sequestration?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_POL_2023_Q8",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 77,
+      "originalQuestionNumber": 8,
+      "subject": null,
+      "sourceFile": "environmental_pollutioncorrected.json",
+      "question": "Consider the following statements regarding mercury pollution: 1. Gold mining activity is a source of mercury pollution in the world. 2. Coal-based thermal power plants cause mercury pollution. 3. There is no known safe level of exposure to mercury. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-AIR-MT01",
+      "syllabusNodeId": "GS3-ENV-AIR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2023_Q8",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 78,
+      "originalQuestionNumber": 8,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "Consider the following statements regarding the Indian squirrels: 1. They build nests by making burrows in the ground. 2. They store their food materials like nuts and seeds in the ground. 3. They are omnivorous. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_GEO_2023_Q8",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 79,
+      "originalQuestionNumber": 8,
+      "subject": null,
+      "sourceFile": "geomorphology.json",
+      "question": "Ilmenite and rutile, abundantly available in certain coastal tracts of India, are rich sources of which one of the following?",
+      "options": {
+        "A": "Aluminium",
+        "B": "Copper",
+        "C": "Iron",
+        "D": "Titanium"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2023_Q8",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 80,
+      "originalQuestionNumber": 8,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1. According to the Constitution of India, the Central Government has a duty to protect States from internal disturbances. 2. The Constitution of India exempts the States from providing legal counsel to a person being held for preventive detention. 3. According to the Prevention of Terrorism Act, 2002, confession of the accused before the police cannot be used as evidence. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-AMEND-MT01",
+      "syllabusNodeId": "GS2-POL-AMEND-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2023_Q9",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 81,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Consider the following statements: [2023] The 'Stability and Growth Pact' of the European Union is a treaty that 1. Limits the levels of the budgetary deficit of the countries of the European Union 2. Makes the countries of the European Union to share their infrastructure facilities 3. Enables the countries of the European Union to share their technologies How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "A",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_CAPMARMON_2023_Q9",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 82,
+      "originalQuestionNumber": 9,
+      "subject": "Economy",
+      "sourceFile": "capital_market_money_market_fdi.json",
+      "question": "Consider the following markets: 1. Government Bond Market 2. Call Money Market 3. Treasury Bill Market 4. Stock Market How many of the above are included in capital markets?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+          "toNodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS3-ECO-FINANCIAL-SYSTEM-MT01 based on keywords.",
+          "matchedKeywords": [
+            "bond",
+            "money market"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_RBIINDBAN_2023_Q9",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 83,
+      "originalQuestionNumber": 9,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "Consider the following statements: 1. The Self -Help Group (SHG) programme was originally initiated by the State Bank of India by providing microcredit to the financially deprived. 2. In an SHG, all members of a group take responsibility for a loan that an individual member takes. 3. The Regional Rural Banks and Scheduled Commercial Banks support SHGS. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-BANKING-STRUCTURE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_ECO_2023_Q9",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 84,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "ecology_ecosystemcorrected.json",
+      "question": "Which of the following organisms perform waggle dance for others of their kin to indicate the direction and the distance to a source of their food?",
+      "options": {
+        "A": "Butterflies",
+        "B": "Dragonflies",
+        "C": "Honeybees",
+        "D": "Wasps"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS-MT01",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_CLI_2023_Q9",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 85,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "With reference to the Earth's atmosphere, which one of the following statements is correct?",
+      "options": {
+        "A": "The total amount of insolation received at the equator is roughly about 10 times of that received at the poles",
+        "B": "Infrared rays constitute roughly two -thirds of insolation",
+        "C": "Infrared waves are largely absorbed by water vapour that is concentrated in the lower atmosphere",
+        "D": "Infrared waves are a part of visible spectrum of electromagnetic waves of solar radiation"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_GEO_2023_Q9",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 86,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "geomorphology.json",
+      "question": "Consider the following statements: 1. In a seismograph, P waves recorded earlier than S waves. 2. In P waves, the individual particles vibrate to and fro in the direction of wave propagation whereas in S waves, the particles vibrate up and down at right angles to the direction of wave propagation. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2023_Q9",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 87,
+      "originalQuestionNumber": 9,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "With reference to Home Guards, consider the following statements: 1. Home Guards are raised under the Home Guards Act and Rules of the Central Government. The role of the Home Guards is to serve as an auxiliary force to the police in maintenance of internal security. 3. To prevent infiltration on the international border/coastal areas, the Border Wing Home Guards Battalions have been raised in some States. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-AMEND-MT01",
+      "syllabusNodeId": "GS2-POL-AMEND-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CAPMARMON_2023_Q10",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 88,
+      "originalQuestionNumber": 10,
+      "subject": "Economy",
+      "sourceFile": "capital_market_money_market_fdi.json",
+      "question": "In the context of finance, the term 'beta' refers to:",
+      "options": {
+        "A": "The process of simultaneous buying and selling of an asset from different platforms",
+        "B": "An investment strategy of a portfolio manager to balance risk versus reward",
+        "C": "A type of systemic risk that arises where perfect hedging is not possible",
+        "D": "A numeric value that measures the fluctuations of a stock to changes in the overall stock market"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "syllabusNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_ECO_2023_Q10",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 89,
+      "originalQuestionNumber": 10,
+      "subject": null,
+      "sourceFile": "ecology_ecosystemcorrected.json",
+      "question": "Which of the following makes a tool with a stick to scrape insects from a hole in a tree or a log of wood?",
+      "options": {
+        "A": "Fishing cat",
+        "B": "Orangutan",
+        "C": "Otter",
+        "D": "Sloth bear"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS-MT01",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_CLI_2023_Q10",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 90,
+      "originalQuestionNumber": 10,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "Consider the following statements: Statement-I: The soil in tropical rain forests is rich in nutrients. Statement-II: The high temperature and moisture of tropical rain forests cause dead organic matter in the soil to decompose quickly. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement -II is the correct explanation for Statement-I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+          "toNodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-CLIMATE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "soil",
+            "forest"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2023_Q10",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 91,
+      "originalQuestionNumber": 10,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "With reference to India, consider the following pairs: Action: The Act under which it is covered 1. Unauthorized wearing of police or military uniforms : The Official Secrets Act, 1923 2. Knowingly misleading or otherwise interfering with a police officer or military officer when engaged in their duties: The Indian Evidence Act, 1872 3. Celebratory gunfire which can endanger the personal safety of others: The Arms (Amendment) Act, 2019 How many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-AMEND-MT01",
+      "syllabusNodeId": "GS2-POL-AMEND-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_ECO_2023_Q11",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 92,
+      "originalQuestionNumber": 11,
+      "subject": null,
+      "sourceFile": "ecology_ecosystemcorrected.json",
+      "question": "Consider following statements: 1. Some mushrooms have medicinal properties. 2. Some mushrooms have psycho-active properties. 3. Some mushrooms have insecticidal properties. 4. Some mushrooms have bioluminescent properties. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS-MT01",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2023_Q11",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 93,
+      "originalQuestionNumber": 11,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements in respect of the National Flag of India according to the Flag Code of India, 2002: Statement-I: One of the standard sizes of the National Flag of India is 600 mm x 400 mm. Statement-II: The ratio of the length to the height (width) of the Flag shall be 3:2. Which one of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-1 and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-AMEND-MT01",
+      "syllabusNodeId": "GS2-POL-AMEND-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CLI_2023_Q42",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 94,
+      "originalQuestionNumber": 42,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "With reference to green hydrogen, consider the following statements: 1. It can be used directly as a fuel for internal combustion. 2. It can be blended with natural gas and used as fuel for heat or power generation. 3. It can be used in the hydrogen fuel cell to run vehicles. How many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CLI_2023_Q43",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 95,
+      "originalQuestionNumber": 43,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "Consider the following heavy industries: 1. Fertilizer plants 2. Oil refineries 3. Steel plants Green hydrogen is expected to play a significant role in decarbonizing how many of the above industries?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_LAW_2023_Q43",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 96,
+      "originalQuestionNumber": 43,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "‘Invasive Species Specialist Group’ (that develops Global Invasive Species Database) belongs to which one of the following organizations?",
+      "options": {
+        "A": "The International Union for Conservation of Nature",
+        "B": "The United Nations Environment Programme",
+        "C": "2, 3 and 5 only",
+        "D": "The World-Wide Fund for Nature"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_LAW_2023_Q44",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 97,
+      "originalQuestionNumber": 44,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "Consider the following statements: Statement-I: Carbon markets are likely to be one of the most widespread tools in the fight against climate change. Statement-II: Carbon market transfer resources from private sector to the State. Which of the following is correct in respect of the above statements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for StatementI.",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I.",
+        "C": "Statement-I is correct but Statement-II is incorrect.",
+        "D": "Statement-I is incorrect but Statement-II is correct."
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2023_Q011",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 98,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "11. Consider the following pairs: (2023)\nArea of conflict Country Where it is Located\n1. Donbas Syria\n2. Kachin Ethiopia\n3. Tigray North Yemen\nHow many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "syllabusNodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2023_Q012",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 99,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "12. Consider the following pairs: (2023)\nRegions Often in\nNews\nReason for Being Mentioned in\nNews\n1. North Kivu and Ituri War between Armenia and Azerbaijan\n2. Nagorno-Karabakh Insurgency in Mozambique\n3. Kherson and Zaporizhzhia\nDispute between Israel and Lebanon\nHow many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "syllabusNodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2023_Q013",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 100,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "13. Consider the following statements: (2023)\nStatement-I: Israel has established diplomatic relations with\nsome Arab States.\nStatement-II: The ‘Arab Peace Initiative’ mediated by Saudi Arabia was signed by Israel and Arab League.\nWhich one of the following is correct in respect of the above\nstatements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and StatementII is the correct explanation for Statement-I",
+        "B": "Both Statement-I and Statement-II are correct and StatementII is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "C",
+      "nodeId": "GS2-IR-GROUPINGS-MT01",
+      "syllabusNodeId": "GS2-IR-GROUPINGS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2023_Q014",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 101,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "14. In recent years Chad, Guinea, Mali and Sudan\ncaught the international attention for which one of the\nfollowing reasons common to all of them? (2023)",
+      "options": {
+        "A": "Discovery of rich deposits of rare earth elements",
+        "B": "Establishment of Chinese military bases",
+        "C": "Southward expansion of Sahara Desert",
+        "D": "Successful coups"
+      },
+      "answer": "D",
+      "nodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "syllabusNodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2023_Q015",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 102,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "15. Consider the following statements about G-20:\n (2023)\n1. \nThe G-20 group was originally established as a platform for\nthe Finance Ministers and Central Bank Governors to discuss\ninternational economic and financial issues.\n2. \nDigital public infrastructure is one of India’s G-20 priorities.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2023_Q016",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 103,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "16. Consider the following statements: (2023)\nStatement-I: Recently, the United States of America (USA) and\nthe European Union (EU) have launched the Trade and Technology Council.\nStatement-II: The USA and the EU claim that through this they\nare trying to bring technological progress and physical productivity under their control.\nWhich one of the following is correct in respect of the above\nstatements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and StatementII is the correct explanation for Statement-I",
+        "B": "Both Statement-I and Statement-II are correct and StatementII is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": "C",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2023_Q017",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 104,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "17. Consider the following statements: (2023)\nThe ‘Stability and Growth Pact’ of the European Union is a treaty\nthat\n1. \nlimits the levels of the budgetary deficit of the countries of the\nEuropean Union\n2. \nmakes the countries of the European Union to share their infrastructure facilities\n3. \nenables the countries of the European Union to share their\ntechnologies\nHow many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "A",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2023_Q018",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 105,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "18. Consider the following statements: (2023)\n1. \nRecently, all the countries of the United Nations have adopted\nthe first-ever compact for international migration, the ‘Global\nCompact for Safe, Orderly and Regular Migration (GCM)’.\n2. The objectives and commitments stated in the GCM are binding\non the UN member countries.\n3. \nThe GCM addresses internal migration or internally displaced\npeople also in its objectives and commitments.\nHow many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2023_Q019",
+      "year": 2023,
+      "paper": "GS",
+      "questionNumber": 106,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "19. Which one of the following countries has been\nsuffering from decades of civil strife and food shortages\nand was in news in the recent past for its very severe\nfamine? (2023)",
+      "options": {
+        "A": "Angola",
+        "B": "Costa Rica",
+        "C": "Ecuador",
+        "D": "Somalia"
+      },
+      "answer": "D",
+      "nodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "syllabusNodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    }
+  ]
+}

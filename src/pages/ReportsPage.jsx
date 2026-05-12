@@ -31,8 +31,8 @@ const TAB = { TODAY: "today", WEEK: "week", MONTH: "month", SUGGEST: "suggest" }
 async function fetchReport(type, params = {}) {
   const qs = new URLSearchParams(params).toString();
   const res = await fetch(`${BACKEND_URL}/api/reports/${type}?${qs}`, { cache: "no-store" });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const data = await res.json();
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.message || `Server error ${res.status}`);
   if (!data.ok) throw new Error(data.message || "Report fetch failed");
   return data.report;
 }

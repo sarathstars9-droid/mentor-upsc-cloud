@@ -1,0 +1,2570 @@
+{
+  "year": 2000,
+  "paper": "GS",
+  "source": "pyq_master_index",
+  "totalQuestions": 107,
+  "questions": [
+    {
+      "id": "POL_MUNICIPALITIES_2000_Q3",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 1,
+      "originalQuestionNumber": 3,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "A college student desires to get elected to the Municipal Council of his city. The validity of his nomination would depend on the important condition, among others, that:",
+      "options": {
+        "A": "He obtains permission from the principal of his college",
+        "B": "He is a member of a political party",
+        "C": "His name figures in the Voters’ List",
+        "D": "He files a declaration owing allegiance to the Constitution of India"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-LOCAL-MT01",
+      "syllabusNodeId": "GS2-POL-LOCAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_FINANCE_COMMISSION_2000_Q4",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 2,
+      "originalQuestionNumber": 4,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "The primary function of the Finance Commission in India is to:",
+      "options": {
+        "A": "Distribute revenue between the Centre and the States",
+        "B": "Prepare the Annual Budget",
+        "C": "Advise the President on financial matters",
+        "D": "Allocate funds to various ministries of the Union and State Governments"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-CSREL-MT01",
+      "syllabusNodeId": "GS2-POL-CSREL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-BODIES-MT01",
+          "toNodeId": "GS2-POL-CSREL-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-BODIES-MT01 based on keywords.",
+          "matchedKeywords": [
+            "finance commission"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_ANC_MAURYA_2000_Q5",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 3,
+      "originalQuestionNumber": 5,
+      "subject": "History",
+      "sourceFile": "mauryan_period.json",
+      "question": "Which one of the following dynasties was ruling over North India at the time of Alexander’s invasion?",
+      "options": {
+        "A": "Nanda",
+        "B": "Maurya",
+        "C": "Sunga",
+        "D": "Kanva"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-ANC-MAURYA-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-HIS-ANC-MAHAJAN-MT01",
+          "toNodeId": "GS1-HIS-ANC-MAURYA-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-HIS-ANC-MAHAJAN-MT01 based on keywords.",
+          "matchedKeywords": [
+            "maurya"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2000_Q5_REVOLT_O",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 4,
+      "originalQuestionNumber": 5,
+      "subject": null,
+      "sourceFile": "revolt_of_1857.json",
+      "question": "\"In this instance we could not play off the Mohammedans against the Hindus\". To which one of the following events did this remark of Aitchison relate?",
+      "options": {
+        "A": "",
+        "B": "Champaran Satyagraha (1917)",
+        "C": "Khilafat and Non Cooperation Movement (1919 22)",
+        "D": "August Movement of 1942"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-1857-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-1857-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_GUPTA_2000_Q6",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 5,
+      "originalQuestionNumber": 6,
+      "subject": "History",
+      "sourceFile": "gupta_period.json",
+      "question": "Assertion (A): The origin of the feudal system in ancient India can be traced to military campaigns. Reason (R): There was considerable expansion of the feudal system during the Gupta period.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-ANC-GUPTA-MT02",
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_MAURYA_2000_Q6",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 6,
+      "originalQuestionNumber": 6,
+      "subject": "History",
+      "sourceFile": "mauryan_period.json",
+      "question": "Assertion (A): Ashoka annexed Kalinga to the Mauryan Empire. Reason (R): Kalinga controlled the land and sea routes to South India.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-ANC-MAURYA-MT06",
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA-MT06",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2000_Q7_REVOLUTI",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 7,
+      "originalQuestionNumber": 7,
+      "subject": null,
+      "sourceFile": "revolutionaries_and_revolutionary_movement.json",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: List I List II I. Chittagong Armoury Raid",
+      "options": {
+        "A": "Kalpana Dutt II. Abhinav Bharat",
+        "B": "Guru Ram Singh III. Anushilan Samiti",
+        "C": "Vikram Damodar Savarkar IV. Kuka Movement",
+        "D": "Aurobindo Ghosh a) IA, IIC, IIID, IVB b) IA, IIC, IIIB, IVD c) IC, IIA, IIIB, IVD d) IC, IIA, IIID, IVB"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_ECO_2000_Q11",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 8,
+      "originalQuestionNumber": 11,
+      "subject": null,
+      "sourceFile": "economic_geography_transport.json",
+      "question": "Match the locations of ports labelled as A, B, C and D in the given map with the names of those ports and select the correct answer using the codes given below the names of the ports: Names of Ports 1. Kakinada 2. Karwar 3. Mangalore 4. Tuticorin 5. Veraval",
+      "options": {
+        "A": "A-4, B-2, C-3, D-5",
+        "B": "A-5, B-2, C-4, D-1",
+        "C": "A-1, B-3, C-4, D-2",
+        "D": "A-5, B-3, C-2, D-1"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_ECO_2000_Q12",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 9,
+      "originalQuestionNumber": 12,
+      "subject": null,
+      "sourceFile": "economic_geography_transport.json",
+      "question": "Which one of the following ports of India handles the highest tonnage of import cargo?",
+      "options": {
+        "A": "Calcutta",
+        "B": "Kandla",
+        "C": "Mumbai",
+        "D": "Visakhapatnam"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2000_Q12",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 10,
+      "originalQuestionNumber": 12,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: List I (Local bodies) List II (States as in 1999) I. Zila Parishads at the",
+      "options": {
+        "A": "Andhra Pradesh sub divisional level II. Mandal Praja Parishad I B, II A, III D, IV C",
+        "B": "Assam III. Tribal Councils I A, II B, III D, IV C",
+        "C": "Mizoram IV. Absence of Village I C, II B, III A, IV D",
+        "D": "Meghalaya Panchayats I B, II A, III C, IV D"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-LOCAL-MT01",
+      "syllabusNodeId": "GS2-POL-LOCAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_ECO_2000_Q13",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 11,
+      "originalQuestionNumber": 13,
+      "subject": null,
+      "sourceFile": "economic_geography_transport.json",
+      "question": "Match the different ports of Union Territory of Pondicherry labelled as A, B, C and D in the given map with their respective names and select the correct answer using the codes given below the list of ports: List (Ports of Pondicherry) 1. Karaikal 2. Mahe 3. Pondicherry 4. Yanam",
+      "options": {
+        "A": "A-2, B-1, C-3, D-4",
+        "B": "A-1, B-2, C-3, D-4",
+        "C": "A-2, B-1, C-4, D-3",
+        "D": "A-1, B-2, C-4, D-3"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2000_Q13",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 12,
+      "originalQuestionNumber": 13,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "The 73rd Constitution Amendment Act, 1992 refers to the:",
+      "options": {
+        "A": "Generation of gainful employment for the unemployed and the underemployed men and women in rural area",
+        "B": "Generation of employment for the able-bodied adults who are in need and desirous of work during the lean agricultural season",
+        "C": "Laying the foundation for strong and vibrant Panchayati Raj Institutions in the country",
+        "D": "Guarantee of right to life, liberty and security of person, equality before law and equal protection without discrimination"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-LOCAL-MT01",
+      "syllabusNodeId": "GS2-POL-LOCAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_EMPSKIDEV_2000_Q15",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 13,
+      "originalQuestionNumber": 15,
+      "subject": "Economy",
+      "sourceFile": "employment_skill_development.json",
+      "question": "The Swarna Jayanti Shahari Rozgar Yojana which came into operation from Dec. 1, 1997 aims to provide gainful employment to the urban unemployed or underemployed poor but does not include:",
+      "options": {
+        "A": "Nehru Rozgar Yojana",
+        "B": "Urban Basic Services Programme",
+        "C": "Prime Minister's Integrated Urban Poverty Eradication Programme",
+        "D": "Prime Minister's Rozgar Yojana Which of the statements given above is/are correct?"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+          "toNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-SECT-INDLAB-MT01 based on keywords.",
+          "matchedKeywords": [
+            "poverty"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2000_Q16_EVENTS_1",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 14,
+      "originalQuestionNumber": 16,
+      "subject": null,
+      "sourceFile": "events_1933_1939.json",
+      "question": "Which one of the following is not a feature of the Government of India Act of 1935?",
+      "options": {
+        "A": "All India federation",
+        "B": "Dyarchy in the provinces",
+        "C": "Dyarchy in the centre",
+        "D": "Provincial autonomy"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTTRA_2000_Q17",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 15,
+      "originalQuestionNumber": 17,
+      "subject": "Economy",
+      "sourceFile": "international_trade.json",
+      "question": "Assertion (A): The rate of growth of India's exports has shown an appreciable increase after 1991: Reason (R): The Govt. of India has resorted to devaluation.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_LIT_2000_Q17",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 16,
+      "originalQuestionNumber": 17,
+      "subject": "History",
+      "sourceFile": "literature.json",
+      "question": "Assertion (A): The Aham and Puram poems of the Padinen Kilukanakku group formed a continuation of the Sangam composition. Reason (R): They were included under the Post Sangam works as against the Sangam works proper.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-ANC-SANGAM-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-SANGAM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2000_Q17_EVENTS_1",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 17,
+      "originalQuestionNumber": 17,
+      "subject": null,
+      "sourceFile": "events_1857_1885.json",
+      "question": "That the per capita income in India was Rs. 20 in 1867-68, was ascertained for the first time by:",
+      "options": {
+        "A": "M. G. Ranade",
+        "B": "Sir W . Hunter",
+        "C": "R. C. Dutta",
+        "D": "Dadabhai Naoroji"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INDTAXSYS_2000_Q18",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 18,
+      "originalQuestionNumber": 18,
+      "subject": "Economy",
+      "sourceFile": "indian_taxation_system.json",
+      "question": "The Standing Committee of State Finance Ministers recommended in January 2000 uniform rates across the States in respect of:",
+      "options": {
+        "A": "Value added tax",
+        "B": "Sales tax",
+        "C": "Stamp duty and registration fees",
+        "D": "Agricultural income tax"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-TAXATION-MT01",
+      "syllabusNodeId": "GS3-ECO-TAXATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_MISC_POLITY_2000_Q19",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 19,
+      "originalQuestionNumber": 19,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements about the Attorney General of India: I. He is appointed by the President of India. II. He must have the same qualifications as are required for a Judge of the Supreme Court. III. He must be a member of either House of Parliament. IV. He can be removed by impeachment by Parliament. Which of these statements are correct?",
+      "options": {
+        "A": "I and II",
+        "B": "I and III",
+        "C": "II, III and IV",
+        "D": "III and IV"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2000_Q20_CONGRESS",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 20,
+      "originalQuestionNumber": 20,
+      "subject": null,
+      "sourceFile": "congress_1885_1907.json",
+      "question": "Consider the following statements about the Indian National Congress: I. Sarojini Naidu was the first woman to be the President of the Congress. II. C.R. Das was in prison when he functioned as the President of the Congress. III. The first Britisher to become the President of the Congress was Alan Octavian Hume. IV. Alfred Webb was the President of the Congress in 1894. Which of these statements are correct?",
+      "options": {
+        "A": "I and III",
+        "B": "II and IV",
+        "C": "II, III and IV",
+        "D": "I, II, III and IV"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2000_Q21_CONGRESS",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 21,
+      "originalQuestionNumber": 21,
+      "subject": null,
+      "sourceFile": "congress_1885_1907.json",
+      "question": "The native State of Tripura became involved in the Freedom Movement early in the 20th century because:",
+      "options": {
+        "A": "The kings of Tripura were always anti-British",
+        "B": "The Bengal revolutionaries took shelter in Tripura",
+        "C": "The tribes of the State were fiercely freedom loving",
+        "D": "There were already some groups fighting against the kingship and its protector, the British."
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIELECTRONICSIT_2000_Q21",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 22,
+      "originalQuestionNumber": 21,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_electronics_it.json",
+      "question": "The memory of a computer is commonly expressed in terms of Kilobytes or Megabytes. A byte is made up of:",
+      "options": {
+        "A": "eight binary digits",
+        "B": "eight decimal digits",
+        "C": "two binary digits",
+        "D": "two decimal digits"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-IT-COMM-MT02",
+      "syllabusNodeId": "GS3-ST-IT-COMM-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2000_Q22_CONGRESS",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 23,
+      "originalQuestionNumber": 22,
+      "subject": null,
+      "sourceFile": "congress_1885_1907.json",
+      "question": "Assertion (A): The basic weakness of the early nationalist movement lay in its narrow social base: Reason (R): It fought for the narrow interests of the social groups which joined it.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOTECH_2000_Q22",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 24,
+      "originalQuestionNumber": 22,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biotech.json",
+      "question": "Canola refers to special type of oil seed mustard varieties bred for human consumption. The main characteristic of these varieties is that the:",
+      "options": {
+        "A": "Seeds have very high oil content",
+        "B": "Oil is rich in unsaturated fatty acids",
+        "C": "Oil has long shelf-life",
+        "D": "Oil has very low Erucic acid content"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PRIME_MINISTER_AND_COUNCIL_OF_MINISTERS_2000_Q25",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 25,
+      "originalQuestionNumber": 25,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following functionaries: I. Cabinet Secretary II. Chief Election Commissioner III. Union Cabinet Ministers IV. Chief Justice of India Their correct sequence, in the Order of Precedence is",
+      "options": {
+        "A": "III, IV, II, I",
+        "B": "IV, III, I, II",
+        "C": "IV, III, II, I",
+        "D": "III, IV, I, II"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-EXEC-MT01",
+      "syllabusNodeId": "GS2-POL-EXEC-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDCLI_2000_Q26",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 26,
+      "originalQuestionNumber": 26,
+      "subject": null,
+      "sourceFile": "indian_climate_natural_vegetation.json",
+      "question": "Along which one of the following meridians did India experience the first light of the sunrise of the new millennium?",
+      "options": {
+        "A": "2° 30' W",
+        "B": "82° 30' E",
+        "C": "92° 30' W",
+        "D": "92° 30' E"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_WRLD_2000_Q28",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 27,
+      "originalQuestionNumber": 28,
+      "subject": null,
+      "sourceFile": "countries_regions_world_features.json",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: List I (Oceanic Trench) List II (Location) I. Aleutian",
+      "options": {
+        "A": "Indian Ocean II. Kermadec",
+        "B": "North Pacific Ocean III. Sunda",
+        "C": "South Pacific Ocean IV. S. Sandwich",
+        "D": "South Atlantic Ocean a) I-B, II-D, III-A, IV-C b) I-B, II-C, III-A, IV-D c) I-A, II-C, III-B, IV-D d) I-A, II-D, III-B, IV-C"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POPDEM_2000_Q29",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 28,
+      "originalQuestionNumber": 29,
+      "subject": "Economy",
+      "sourceFile": "population_demography.json",
+      "question": "Consider the following statements about the megacities of India: I. Population of each megacity is more than 5 million. II. All the megacities are important sea ports. III. Megacities are either national or State capitals. Which of these statements are correct?",
+      "options": {
+        "A": "I, II and III",
+        "B": "I and II",
+        "C": "II and III",
+        "D": "I and III"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_WRLD_2000_Q29",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 29,
+      "originalQuestionNumber": 29,
+      "subject": null,
+      "sourceFile": "countries_regions_world_features.json",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: List I (Minerals) List II (Major producer) I. Mineral oil",
+      "options": {
+        "A": "Zambia II. Copper",
+        "B": "Guyana III. Manganese",
+        "C": "Venezuela IV. Bauxite",
+        "D": "Gabon a) I-C, II-A, III-D, IV-B b) I-C, II-A, III-B, IV-D c) I-A, II-C, III-B, IV-D d) I-A, II-C, III-D, IV-B"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-RESOURCES-MT02",
+      "syllabusNodeId": "GS1-GEO-IND-RESOURCES-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-RESOURCES-MT02",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "minerals",
+            "bauxite",
+            "manganese"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_POPDEM_2000_Q30",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 30,
+      "originalQuestionNumber": 30,
+      "subject": "Economy",
+      "sourceFile": "population_demography.json",
+      "question": "Which one of the following statements is true according to 1991 Census data?",
+      "options": {
+        "A": "U.P . has the highest density of population in India",
+        "B": "Himachal Pradesh has the highest female to male sex ratio in India",
+        "C": "West Bengal has the highest growth rate of population in India",
+        "D": "Bihar has the lowest literacy rate in India"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_WRLD_2000_Q30",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 31,
+      "originalQuestionNumber": 30,
+      "subject": null,
+      "sourceFile": "countries_regions_world_features.json",
+      "question": "Which one of the following is known as the \"Coffee port\" of the world?",
+      "options": {
+        "A": "Sao Paulo",
+        "B": "Santos",
+        "C": "Rio de Janeiro",
+        "D": "Buenos Aires"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2000_Q30_ESTABLIS",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 32,
+      "originalQuestionNumber": 30,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "Who among the following streamlined the Maratha administration after Sambhaji?",
+      "options": {
+        "A": "Raja Ram",
+        "B": "Balaji Viswanath",
+        "C": "Ganga Bai",
+        "D": "Nanaji Deshmukh"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_AGR_2000_Q31",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 33,
+      "originalQuestionNumber": 31,
+      "subject": null,
+      "sourceFile": "agriculture.json",
+      "question": "The correct sequence in decreasing order of the four sugarcane producing States in India is:",
+      "options": {
+        "A": "Maharashtra, U.P., Tamil Nadu, Andhra Pradesh",
+        "B": "U.P., Maharashtra, Tamil Nadu, Andhra Pradesh",
+        "C": "Maharashtra, U.P., Andhra Pradesh, Tamil Nadu",
+        "D": "U.P., Maharashtra, Andhra Pradesh, Tamil Nadu"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_RELPH_2000_Q31",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 34,
+      "originalQuestionNumber": 31,
+      "subject": "History",
+      "sourceFile": "religion_philosophy.json",
+      "question": "Assertion (A): The emphasis of Jainism on non- violence (ahimsa) prevented agriculturalists from embracing Jainism. Reason (R): Cultivation involved killing of insects and pests.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-ANC-JAIN-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-JAIN-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2000_Q31_ESTABLIS",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 35,
+      "originalQuestionNumber": 31,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "The last major extension of British Indian territory took place during the time of:",
+      "options": {
+        "A": "Dufferin",
+        "B": "Dalhousie",
+        "C": "Lytton",
+        "D": "Curzon"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_AGR_2000_Q32",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 36,
+      "originalQuestionNumber": 32,
+      "subject": null,
+      "sourceFile": "agriculture.json",
+      "question": "Consider the following statements: I. Maharashtra has the highest acreage under jawar in India. II. Gujarat is the largest producer of groundnut in India. III. Rajasthan has the largest area of cultivable wastelands in India. IV. Andhra Pradesh has the highest per hectare yield of maize in India. Which of these statements are correct?",
+      "options": {
+        "A": "I and IV",
+        "B": "II and III",
+        "C": "I and III",
+        "D": "II and IV"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2000_Q32_ESTABLIS",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 37,
+      "originalQuestionNumber": 32,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists:",
+      "options": {
+        "A": "I A, II C, III B, IV D",
+        "B": "I A, II D, III B, IV C",
+        "C": "I C, II D, III A, IV B",
+        "D": "I B, II A, III C, IV D"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2000_Q34_LAST_PHA",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 38,
+      "originalQuestionNumber": 34,
+      "subject": null,
+      "sourceFile": "last_phase_1940_1950.json",
+      "question": "At the time of partition of India, which one of the following provinces of British India came forward with a plan for a united and independent existence?",
+      "options": {
+        "A": "Punjab",
+        "B": "Assam",
+        "C": "Bengal",
+        "D": "Bihar"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2000_Q35",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 39,
+      "originalQuestionNumber": 35,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "\".........instil into the vast millions of workers, men and women, who actually do the job, a sense of partnership and of cooperative performance....\": The above passage relates to",
+      "options": {
+        "A": "Planned Development",
+        "B": "Community Development",
+        "C": "Panchayati Raj System",
+        "D": "Integrated Development Programme"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2000_Q35_LAST_PHA",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 40,
+      "originalQuestionNumber": 35,
+      "subject": null,
+      "sourceFile": "last_phase_1940_1950.json",
+      "question": "The Balkan Plan for fragmentation of India was the brainchild of:",
+      "options": {
+        "A": "W. Churchill",
+        "B": "M. A. Jinnah",
+        "C": "Lord Mountbatten",
+        "D": "V. P . Menon"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CAPMARMON_2000_Q36",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 41,
+      "originalQuestionNumber": 36,
+      "subject": "Economy",
+      "sourceFile": "capital_market_money_market_fdi.json",
+      "question": "Gilt-edged market means?",
+      "options": {
+        "A": "Bullion market",
+        "B": "Market of Government securities",
+        "C": "Market of guns",
+        "D": "Market of pure metals"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "syllabusNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2000_Q36",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 42,
+      "originalQuestionNumber": 36,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "Indian Human Development Report does not give for each sample village:",
+      "options": {
+        "A": "Infrastructure and Amenities Index",
+        "B": "Education Related Index",
+        "C": "Health Related Index",
+        "D": "Unemployment Related Index"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2000_Q36_GANDHIAN",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 43,
+      "originalQuestionNumber": 36,
+      "subject": null,
+      "sourceFile": "gandhian_phase_1917_1925.json",
+      "question": "After returning from South Africa, Gandhiji launched his first successful Satyagraha in:",
+      "options": {
+        "A": "ChauriChaura",
+        "B": "Dandi",
+        "C": "Champaran",
+        "D": "Bardoli"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2000_Q36_LAST_PHA",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 44,
+      "originalQuestionNumber": 36,
+      "subject": null,
+      "sourceFile": "last_phase_1940_1950.json",
+      "question": "As an alternative to the partition of India, Gandhiji suggested to Mountbatten that he:",
+      "options": {
+        "A": "Postpone granting of independence",
+        "B": "Invite Jinnah to form the government",
+        "C": "Invite Nehru and Jinnah to form the government together",
+        "D": "Invite the army to take over for some time"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CAPMARMON_2000_Q37",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 45,
+      "originalQuestionNumber": 37,
+      "subject": "Economy",
+      "sourceFile": "capital_market_money_market_fdi.json",
+      "question": "Resurgent India Bonds were issued in US Dollar, Pound Sterling and:",
+      "options": {
+        "A": "Japanese Yen",
+        "B": "Deutsche Mark",
+        "C": "Euro",
+        "D": "French Franc"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+          "toNodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-FINANCIAL-SYSTEM-MT01 based on keywords.",
+          "matchedKeywords": [
+            "bond"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_MAC_2000_Q37",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 46,
+      "originalQuestionNumber": 37,
+      "subject": "Economy",
+      "sourceFile": "macroeconomy.json",
+      "question": "The growth rate of per capita income at current prices is higher than that of per capita income at constant prices, because the latter takes into account the rate of:",
+      "options": {
+        "A": "Growth of population",
+        "B": "Increase in price level",
+        "C": "Growth of money supply",
+        "D": "Increase in the wage rate"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+      "syllabusNodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2000_Q37",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 47,
+      "originalQuestionNumber": 37,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "The first Indian State to have its Human Development Report prepared and released by Amartya Kumar Sen in Delhi is:",
+      "options": {
+        "A": "West Bengal",
+        "B": "Kerala",
+        "C": "Madhya Pradesh",
+        "D": "Andhra Pradesh"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+      "syllabusNodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+          "toNodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-INCLUSIVE-GROWTH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "repo"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2000_Q37_LAST_PHA",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 48,
+      "originalQuestionNumber": 37,
+      "subject": null,
+      "sourceFile": "last_phase_1940_1950.json",
+      "question": "The Indian National Army (INA) came into existence in 1943 in:",
+      "options": {
+        "A": "Japan",
+        "B": "Burma",
+        "C": "Singapore",
+        "D": "Malaya"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CAPMARMON_2000_Q38",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 49,
+      "originalQuestionNumber": 38,
+      "subject": "Economy",
+      "sourceFile": "capital_market_money_market_fdi.json",
+      "question": "The upper part of the given graph is a hypothetical movement in the BSE Sensex over a few months and the lower part is the fluctuation in the average value of automobile shares in the same period (actual values not given). Which one of the following inferences can be drawn from the graphs?",
+      "options": {
+        "A": "The automobile share market has been as unstable as BSE Sensex in that period:",
+        "B": "There has been a major political change in June/July",
+        "C": "Automobile shares have shown a steady improvement in price, unaffected by large fluctuations in BSE Sensex",
+        "D": "None of the above"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_MAC_2000_Q38",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 50,
+      "originalQuestionNumber": 38,
+      "subject": "Economy",
+      "sourceFile": "macroeconomy.json",
+      "question": "The new Gross Domestic Product (GDP) series released by the Central Statistical Organisation (CSO) in February 1999 is with reference to base price of:",
+      "options": {
+        "A": "1991-92",
+        "B": "1992-93",
+        "C": "1993-94",
+        "D": "1994-95"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_ECO_2000_Q38",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 51,
+      "originalQuestionNumber": 38,
+      "subject": null,
+      "sourceFile": "ecology_ecosystemcorrected.json",
+      "question": "Within biological communities, some species are important in determining the ability of a large number of other species to persist in the community. Such species are called:",
+      "options": {
+        "A": "Keystone species",
+        "B": "Allopatric species",
+        "C": "Sympatric species",
+        "D": "Threatened species"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRIV_2000_Q38",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 52,
+      "originalQuestionNumber": 38,
+      "subject": null,
+      "sourceFile": "indian_rivers_drainage.json",
+      "question": "Match the drainage basins labelled as A, B, C and D with the names listed below and select the correct answer using the codes given below the names of the drainage basins. Names of drainage basins: 1. Ganga Brahmaputra 2. Indus 3. Parana 4. Zambezi",
+      "options": {
+        "A": "A3, B1, C2, D4",
+        "B": "A1, B3, C4, D2",
+        "C": "A1, B3, C2, D4",
+        "D": "A3, B1, C4, D2"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "drainage",
+            "ganga",
+            "brahmaputra"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_MAPW_2000_Q38",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 53,
+      "originalQuestionNumber": 38,
+      "subject": null,
+      "sourceFile": "world_mapping.json",
+      "question": "Consider the following provinces of former Yugoslavia: I. Bosnia II. Croatia III. Slovenia IV. Yugoslavia. The correct sequence of these provinces from the east to the west is",
+      "options": {
+        "A": "IV, I, III, II",
+        "B": "IV, I, II, III",
+        "C": "I, IV, III, II",
+        "D": "I, IV, II, III A 38] b) IV, I, II, III - The correct sequence of provinces of former Yugoslavia from east to west is Yugoslavia, Bosnia, Croatia, and Slovenia"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CAPMARMON_2000_Q39",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 54,
+      "originalQuestionNumber": 39,
+      "subject": "Economy",
+      "sourceFile": "capital_market_money_market_fdi.json",
+      "question": "A rise in 'SENSEX' means?",
+      "options": {
+        "A": "A rise in prices of shares of all companies registered with Bombay Stock Exchange",
+        "B": "A rise in prices of shares of all companies registered with National Stock Exchange",
+        "C": "An overall rise in prices of shares of group of companies registered with Bombay Stock Exchange",
+        "D": "A rise in prices of shares of all companies belonging to a group of companies registered with Bombay Stock Exchange"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+          "toNodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS3-ECO-FINANCIAL-SYSTEM-MT01 based on keywords.",
+          "matchedKeywords": [
+            "stock exchange"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_MAC_2000_Q39",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 55,
+      "originalQuestionNumber": 39,
+      "subject": "Economy",
+      "sourceFile": "macroeconomy.json",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: List I List II I. Boo m",
+      "options": {
+        "A": "Business activity at high level with increasing income, output and employment at macro level II. Rece ssion",
+        "B": "Gradual fall of income, output and employment with business activity in a low gear III. Depr essio n",
+        "C": "Unprecedented level of under employment and unemployment, drastic fall in income, output and employment IV. Reco very",
+        "D": "Steady rise in the general level of prices, income, output and employment a) I-A, II-B, III-C, IV-D b) I-A, II-B, III-D, IV-C c) I-B, II-A, III-D, IV-C d) I-B, II-A, III-C, IV-D"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRIV_2000_Q39",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 56,
+      "originalQuestionNumber": 39,
+      "subject": null,
+      "sourceFile": "indian_rivers_drainage.json",
+      "question": "Which one of the following statements is not true?",
+      "options": {
+        "A": "Ghaggar's water is utilised in the Indira Gandhi Canal",
+        "B": "Narmada rises from Amarkantak region",
+        "C": "Nizam Sagar is situated on the Manjra river",
+        "D": "Penganga is a tributary of the Godavari"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river",
+            "tributary",
+            "ganga",
+            "godavari",
+            "narmada"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_MAPW_2000_Q39",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 57,
+      "originalQuestionNumber": 39,
+      "subject": null,
+      "sourceFile": "world_mapping.json",
+      "question": "Which one of the following lakes forms an international boundary between Tanzania and Uganda?",
+      "options": {
+        "A": "Chad",
+        "B": "Malawi",
+        "C": "Victoria",
+        "D": "Zambezi"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_MAC_2000_Q40",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 58,
+      "originalQuestionNumber": 40,
+      "subject": "Economy",
+      "sourceFile": "macroeconomy.json",
+      "question": "In an open economy, the national income (Y) of the economy is: (C, I, G, X, M stand for Consumption, Investment, Govt. Expenditure, total exports and total imports respectively:",
+      "options": {
+        "A": "Y = C + I + G + X",
+        "B": "Y = C + I + G - X + M",
+        "C": "Y = C + I + G + (X - M)",
+        "D": "Y = C + I - G + X - M"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRIV_2000_Q40",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 59,
+      "originalQuestionNumber": 40,
+      "subject": null,
+      "sourceFile": "indian_rivers_drainage.json",
+      "question": "Assertion (",
+      "options": {
+        "A": ": The frequency of floods in North Indian plains has increased during the last couple of decades.: Reason (R): There has been reduction in the depth of river valleys due to deposition of silt",
+        "B": "Both A and R are true, and R is the correct explanation of A",
+        "C": "Both A and R are true, but R is not a correct explanation of A",
+        "D": "A is true, but R is false d) A is false, but R is true"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MED_POL_2000_Q43",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 60,
+      "originalQuestionNumber": 43,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "The practice of military governorship was first introduced in India by the:",
+      "options": {
+        "A": "Greeks",
+        "B": "Shakas",
+        "C": "Parthians",
+        "D": "Mughals"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2000_Q43",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 61,
+      "originalQuestionNumber": 43,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Most of the explosions in mines occur due to the mixing of:",
+      "options": {
+        "A": "Hydrogen with oxygen",
+        "B": "Oxygen with acetylene",
+        "C": "Methane with air",
+        "D": "Carbon dioxide with ethane"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCISPACETECH_2000_Q43",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 62,
+      "originalQuestionNumber": 43,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_space_tech.json",
+      "question": "A 'black hole' is a body in space which does not allow any radiation to come out. This property is due to its:",
+      "options": {
+        "A": "Very small size",
+        "B": "Very large size",
+        "C": "Very high density",
+        "D": "Very low density"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-SPACE-MT01",
+      "syllabusNodeId": "GS3-ST-SPACE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2000_Q44",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 63,
+      "originalQuestionNumber": 44,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "The given map refers to the kingdom of",
+      "options": {
+        "A": "Akbar at the time of capture of Khandesh in 1601",
+        "B": "Akbar at the time of his death in 1605",
+        "C": "Aurangzeb at the time of capture of Hyderabad",
+        "D": "Aurangzeb at the time of his death in 1707"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2000_Q44",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 64,
+      "originalQuestionNumber": 44,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Match List I with List II and select the correct answer using the codes given below the lists: List I List II I. German Silver",
+      "options": {
+        "A": "Tin II. Solder",
+        "B": "Nickel III. Bleaching Powder",
+        "C": "Sodium IV. Hypo",
+        "D": "Chlorine 384 a) I-A, II-B, III-D, IV-C b) I-B, II-A, III-C, IV-D c) I-A, II-B, III-C, IV-D d) I-B, II-A, III-D, IV-C"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2000_Q45",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 65,
+      "originalQuestionNumber": 45,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "Consider the following events: I. Reign of Krishna Deva Raya of Vijayanagara. II. Construction of Qutab Minar . III. Arrival of Portuguese in India. IV. Death of Firoz Tughlaq.",
+      "options": {
+        "A": "II, IV, III, I",
+        "B": "II, IV, I, III",
+        "C": "IV, II, I, III",
+        "D": "IV, II, III, I The correct chronological sequence of these events is :"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2000_Q45",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 66,
+      "originalQuestionNumber": 45,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Which one of the following materials is very hard and very ductile?",
+      "options": {
+        "A": "Carborundum",
+        "B": "Tungsten",
+        "C": "Cast iron",
+        "D": "Nichrome"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2000_Q46",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 67,
+      "originalQuestionNumber": 46,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: List I List II I. Iqta A) Marathas II. Jagir B) Delhi Sultans III. Amaram C) Mughals IV. Mokasa D) Vijayanagara",
+      "options": {
+        "A": "I-C, II-B, III-A, IV-D",
+        "B": "I-B, II-C, III-D, IV-A",
+        "C": "I-B, II-C, III-A, IV-D",
+        "D": "I-C, II-B, III-D, IV-A"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-HIS-MED-VIJAYANAGARA-MT01",
+          "toNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-HIS-MED-VIJAYANAGARA-MT01 based on keywords.",
+          "matchedKeywords": [
+            "mughal"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCICHEMISTRY_2000_Q46",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 68,
+      "originalQuestionNumber": 46,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Soft drinks such as colas contain significant quantities of:",
+      "options": {
+        "A": "Caffeine",
+        "B": "Nicotine",
+        "C": "Tannin",
+        "D": "Renin"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2000_Q47",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 69,
+      "originalQuestionNumber": 47,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "Which one of the following Muslim rulers was hailed as the 'Jagadguru' by his Muslim subjects because of his belief in secularism?",
+      "options": {
+        "A": "Husain Shah",
+        "B": "Zain-ul-Abidin",
+        "C": "Ibrahim Adil Shah",
+        "D": "Mahmud II"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2000_Q47",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 70,
+      "originalQuestionNumber": 47,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Aluminium surfaces are often 'anodized'. This means the deposition of a layer of:",
+      "options": {
+        "A": "Chromium oxide",
+        "B": "Aluminium oxide",
+        "C": "Nickel oxide",
+        "D": "Zinc oxide"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_ECONOMY_BANKING_2000_Q48",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 71,
+      "originalQuestionNumber": 48,
+      "subject": null,
+      "sourceFile": "ca_economy_banking.json",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: [2000] List I List II I. Development Programme A) UN India Human Development Report II. National Council of Applied Economic Research B) India Development Report III. Indira Gandhi Institute of Development Research C) World Development Report IV. World Bank D) Human Development Report",
+      "options": {
+        "A": "I-D, II-A, III-B, IV-C",
+        "B": "I-D, II-B, III-A, IV-C",
+        "C": "I-B, II-C, III-D, IV-A",
+        "D": "I-B, II-A, III-D, IV-C"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-BANKING-MT04",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2000_Q48",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 72,
+      "originalQuestionNumber": 48,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "A small pouch containing silica gel is often found in bottles of medicine in tablet or powder form because silica gel:",
+      "options": {
+        "A": "Kills bacteria",
+        "B": "Kills germs and spores",
+        "C": "Absorbs moisture",
+        "D": "Absorbs all gases present inside the bottle"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_ECONOMY_BANKING_2000_Q49",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 73,
+      "originalQuestionNumber": 49,
+      "subject": null,
+      "sourceFile": "ca_economy_banking.json",
+      "question": "Which one of the following countries occupies the first place in the \"Global Competitive Report\" of World Economic Forum? [2000]",
+      "options": {
+        "A": "USA",
+        "B": "Singapore",
+        "C": "Hong Kong",
+        "D": "France"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-PRE-BASICS-MACRO-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BASICS-MACRO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2000_Q49",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 74,
+      "originalQuestionNumber": 49,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Match List I (Industrial processes) with List II (Industry with which associated) and select the correct answer using the codes given below the Lists: List I List II I. Cracking",
+      "options": {
+        "A": "Rubber II. Smelting",
+        "B": "Petroleum III. Hydrogenation",
+        "C": "Copper IV. Vulcanization",
+        "D": "Edible fats a) I-C, II-B, III-A, IV-D b) I-B, II-C, III-D, IV-A c) I-B, II-C, III-A, IV-D d) I-C, II-B, III-D, IV-A"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CORANDIND_2000_Q50",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 75,
+      "originalQuestionNumber": 50,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "Match List I (Power generation plant) with List II (Feed material) and select the correct answer using the codes given below the Lists: List I List II I. M/s Gowthami Solvents Oil Limited, Andhra Pradesh",
+      "options": {
+        "A": "Rice husk II. M/s KM. Sugar Mills, Uttar Pradesh",
+        "B": "Slaughter - house waste III. M/s Satia Paper Mills, Punjab",
+        "C": "Distillery spent wash IV. M/s Al Kabeer Exports Limited, Andhra Pradesh",
+        "D": "Black liquor Codes: a) I-C, II-A, III-B, IV-D b) I-C, II-A, III-D, IV-B c) I-A, II-C, III-D, IV-B d) I-A, II-C, III-B, IV-D"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-SECT-INFRA-MT03",
+      "syllabusNodeId": "GS3-ECO-SECT-INFRA-MT03",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2000_Q50",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 76,
+      "originalQuestionNumber": 50,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Assertion (A): Large cold storage plants use ammonia as refrigerant while domestic refrigerators use chlorofluorocarbons.: Reason (R): Ammonia can be liquified at ambient temperatures at low pressures.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CORANDIND_2000_Q51",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 77,
+      "originalQuestionNumber": 51,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "Economic liberalisation in India started with:",
+      "options": {
+        "A": "Substantial changes in industrial licensing policy",
+        "B": "The convertibility of Indian rupee",
+        "C": "Doing away with procedural formalities for foreign direct investment",
+        "D": "Significant reduction in tax rates"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT14",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT14",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2000_Q51",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 78,
+      "originalQuestionNumber": 51,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "The stones formed in human kidney consist mostly of:",
+      "options": {
+        "A": "Calcium oxalate",
+        "B": "Sodium acetate",
+        "C": "Magnesium sulphate",
+        "D": "Calcium"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2000_Q52",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 79,
+      "originalQuestionNumber": 52,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Consider the following: Hard water is not suitable for: I. Drinking. II. Washing cloths with soap. III. Use in boilers. IV. Irrigating crops. Which of these statements are correct?",
+      "options": {
+        "A": "I and III",
+        "B": "II and III",
+        "C": "I, II and IV",
+        "D": "I, II, III and IV"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2000_Q54",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 80,
+      "originalQuestionNumber": 54,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Which one of the following does a TV remote control unit use to operate a TV set?",
+      "options": {
+        "A": "Light waves",
+        "B": "Sound waves",
+        "C": "Micro waves",
+        "D": "Radio waves"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIFUNMON_2000_Q55",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 81,
+      "originalQuestionNumber": 55,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "Consider the following statements: The Indian rupee is fully convertible: I. In respect of Current Account of Balance of Payment. II. In respect of Capital Account of Balance of Payment. III. Into gold. Which of these statements is/are correct?",
+      "options": {
+        "A": "I alone",
+        "B": "III alone",
+        "C": "I and II",
+        "D": "I, II and III"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-FOREIGN-TRADE-IO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIPHYSICS_2000_Q55",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 82,
+      "originalQuestionNumber": 55,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "A noise level of 100 decibels would correspond to:",
+      "options": {
+        "A": "Just audible sound",
+        "B": "Ordinary conversation",
+        "C": "Sound from a noisy street",
+        "D": "Noise from a machine-shop"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2000_Q56",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 83,
+      "originalQuestionNumber": 56,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Consider the following features of newer models of motor cars: I. Radial tyres II. Streamlined body III. Multipoint fuel injection IV. Catalytic converter with exhaust Which of these features make the newer models of motor cars more fuel efficient?",
+      "options": {
+        "A": "I and II",
+        "B": "II and III",
+        "C": "II, III and IV",
+        "D": "I, III and IV"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2000_Q57",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 84,
+      "originalQuestionNumber": 57,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Fluorescent tubes are fitted with a choke. The choke coil:",
+      "options": {
+        "A": "Steps up the line voltage",
+        "B": "Steps down the line voltage",
+        "C": "Reduce current in the circuit",
+        "D": "Chokes low frequency currents"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_CLI_2000_Q58",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 85,
+      "originalQuestionNumber": 58,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "Consider the following statements about the 'Roaring Forties': I. They blow uninterrupted in the Northern and Southern Hemispheres. II. They blow with great strength and constancy. III. Their direction is generally from North - West to East in the Southern Hemisphere. IV. Overcast skies, rain and raw weather are generally associated with them. Which of these statements are correct?",
+      "options": {
+        "A": "I, II and III",
+        "B": "II, III and IV",
+        "C": "I, III and IV",
+        "D": "I, II and IV"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2000_Q58",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 86,
+      "originalQuestionNumber": 58,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Speaker can ask a member of the House to stop speaking and let another member speak. This phenomenon is known as:",
+      "options": {
+        "A": "Decorum",
+        "B": "Crossing the floor",
+        "C": "Interpellation",
+        "D": "Yielding the floor"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2000_Q58",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 87,
+      "originalQuestionNumber": 58,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "For reproducing sound, a CD (Compact Disc) audio player uses a:",
+      "options": {
+        "A": "Quartz crystal",
+        "B": "Titanium needle",
+        "C": "Laser beam",
+        "D": "Barium titanate ceramic"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2000_Q59",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 88,
+      "originalQuestionNumber": 59,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "The State which has the largest number of seats reserved for the Scheduled Tribes in Lok Sabha is:",
+      "options": {
+        "A": "Bihar",
+        "B": "Gujarat",
+        "C": "Uttar Pradesh",
+        "D": "Madhya Pradesh"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2000_Q59",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 89,
+      "originalQuestionNumber": 59,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "When a CD (Compact Disc used in audio and video systems) is seen in sunlight, rainbow like colours are seen. This can be explained on the basis of the phenomenon of:",
+      "options": {
+        "A": "reflection and diffraction",
+        "B": "reflection and transmission",
+        "C": "diffraction and transmission",
+        "D": "refraction, diffraction and transmission"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2000_Q60",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 90,
+      "originalQuestionNumber": 60,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "The Parliament can make any law for the whole or any part of India for implementing international treaties:",
+      "options": {
+        "A": "with the consent of all the States",
+        "B": "with the consent of the majority of States",
+        "C": "with the consent of the States concerned",
+        "D": "without the consent of any State"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2000_Q60",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 91,
+      "originalQuestionNumber": 60,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Assertion (A): A man standing on a completely frictionless surface can propel himself by whistling.: Reason (R): If no external force acts on a system, its momentum cannot change.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2000_Q61",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 92,
+      "originalQuestionNumber": 61,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which one of the following statements about a Money Bill is not correct?",
+      "options": {
+        "A": "A Money Bill can be tabled in either House of Parliament",
+        "B": "The Speaker of Lok Sabha is the final authority to decide whether a Bill is a Money Bill or not",
+        "C": "The Rajya Sabha must return a Money Bill passed by Lok Sabha and send it for consideration within 14 days",
+        "D": "The President cannot return a Money Bill to Lok Sabha for reconsideration"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2000_Q61",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 93,
+      "originalQuestionNumber": 61,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Assertion (A): In a motion picture, usually 24 frames are projected every second over the whole length of the film.: Reason (R): An image formed on the retina of eye persists for about 0.1 s after the removal of stimulus.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2000_Q62",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 94,
+      "originalQuestionNumber": 62,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Assertion (A): Small glass beads fixed on traffic signals glow brightly when light falls upon them.: Reason (R): Light is totally reflected when the angle of incidence exceeds a certain critical value and light travelling in a denser medium is reflected from a rarer medium.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_MISC_GK_2000_Q65",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 95,
+      "originalQuestionNumber": 65,
+      "subject": null,
+      "sourceFile": "ca_misc_gk.json",
+      "question": "The following news item appeared in a National daily dated 1-12-1999: \"...Parliament today rejected a Bill to grant women the right to vote and stand for office in parliamentary elections, by a margin of 32 to 30. The National Assembly was split between liberal, pro-government and Shiite Muslim deputies who were in favour of women's rights, while the opposition camp grouped Sunni Muslim fundamentalists and tribal MPs… A total of 64 MPs and Ministers were present, of whom two abstained.\" [2000] The Parliament referred to in this quotation is that of",
+      "options": {
+        "A": "Kuwait",
+        "B": "Iran",
+        "C": "Bahrain",
+        "D": "Saudi Arabia"
+      },
+      "answer": "A",
+      "nodeId": "1C-MISC-SCHEMES-MT04",
+      "syllabusNodeId": "1C-MISC-SCHEMES-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2000_Q68",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 96,
+      "originalQuestionNumber": 68,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Which one of the following organisms can serve as a biofertiliser for rice crop?",
+      "options": {
+        "A": "Blue-green algae",
+        "B": "Rhizobium sp",
+        "C": "Mycorrhizal fungi",
+        "D": "Azotobacter sp"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology",
+            "organ"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIBIOLOGY_2000_Q69",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 97,
+      "originalQuestionNumber": 69,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "At which stage in its life-cycle does the silkworm yield the fibre of commerce?",
+      "options": {
+        "A": "Egg",
+        "B": "Larva",
+        "C": "Pupa",
+        "D": "Imago"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIBIOLOGY_2000_Q70",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 98,
+      "originalQuestionNumber": 70,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Match List I (Diseases) with List II (Types of disease) and select the correct answer using the codes given below the Lists: List I List II I. Haemophilia",
+      "options": {
+        "A": "Deficiency disease II. Diabetes",
+        "B": "Genetic disease III. Rickets",
+        "C": "Hormonal disorder IV. Ringworm",
+        "D": "Fungal infection a) I-B, II-C, III-D, IV-A b) I-B, II-C, III-A, IV-D c) I-C, II-B, III-A, IV-D d) I-C, II-B, III-D, IV-A"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2000_Q71",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 99,
+      "originalQuestionNumber": 71,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "The blood glucose level is commonly expressed as:",
+      "options": {
+        "A": "mm of Hg",
+        "B": "milligram per decilitre",
+        "C": "parts per million",
+        "D": "grams per litre"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology",
+            "blood"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIBIOLOGY_2000_Q72",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 100,
+      "originalQuestionNumber": 72,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Phytotron is a facility to:",
+      "options": {
+        "A": "Grow plants under disease-free conditions",
+        "B": "Conserve endangered species of plants",
+        "C": "Grow plants under controlled conditions",
+        "D": "Induce mutations"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2000_Q73",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 101,
+      "originalQuestionNumber": 73,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Match List I (Endocrine glands) with List II (Hormones secreted) and select the correct answer using the codes given below the Lists: List I List II I. Gonads",
+      "options": {
+        "A": "Insulin II. Pituitary",
+        "B": "Progesterone III. Pancreas",
+        "C": "Growth hormones IV. Adrenal",
+        "D": "Cortisone a) I-C, II-B, III-D, IV-A b) I-B, II-C, III-D, IV-A c) I-B, II-C, III-A, IV-D d) I-C, II-B, III-A, IV-D"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIBIOLOGY_2000_Q74",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 102,
+      "originalQuestionNumber": 74,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Insect-resistant cotton plants have been genetically engineered by inserting a gene from a/an:",
+      "options": {
+        "A": "Virus",
+        "B": "Bacterium",
+        "C": "Insect",
+        "D": "Plant"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2000_Q75",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 103,
+      "originalQuestionNumber": 75,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Hybridoma technology is a new biotechnological approach for commercial production of:",
+      "options": {
+        "A": "Monoclonal antibodies",
+        "B": "Interferon",
+        "C": "Antibodies",
+        "D": "Alcohol"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIBIOLOGY_2000_Q76",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 104,
+      "originalQuestionNumber": 76,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "The sensation of fatigue in the muscles after prolonged strenuous physical work is caused by:",
+      "options": {
+        "A": "A decrease in the supply of oxygen",
+        "B": "Minor wear and tear of muscle fibres",
+        "C": "The depletion of glucose",
+        "D": "The accumulation of lactic acid"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2000_Q77",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 105,
+      "originalQuestionNumber": 77,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Assertion (A): In human beings, the females play a major role in determining the sex of the offspring.: Reason (R): Women have two- 'X' chromosomes.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIBIOLOGY_2000_Q78",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 106,
+      "originalQuestionNumber": 78,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Assertion (A): \"DNA Finger- printing\" has become a powerful tool to establish paternity and identity of criminals in rape and assault cases.: Reason (R): Trace evidences such as hairs, saliva and dried semen are adequate for DNA analysis.",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2000_Q95",
+      "year": 2000,
+      "paper": "GS",
+      "questionNumber": 107,
+      "originalQuestionNumber": 95,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Consider the following statements: The Ministerial Meeting of the WTO held in December 1999 was unsuccessful because it attempted to link trade with: [2000] I. Labour-related issues. II. Environment related issues. III. Terrorism related issues. IV. Debt-related issues. Which of these statements are correct?",
+      "options": {
+        "A": "I, III and IV",
+        "B": "I and II",
+        "C": "II and III",
+        "D": "II and IV"
+      },
+      "answer": "B",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    }
+  ]
+}

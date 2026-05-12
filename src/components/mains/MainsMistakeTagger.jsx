@@ -3,7 +3,7 @@
 // Allows the aspirant to tag mistake types, severity, notes, and push to Mistake Book.
 
 import React, { useState } from "react";
-import { saveMainsMistake } from "../../utils/mainsMistakeEngine";
+// import { saveMainsMistake } from "../../utils/mainsMistakeEngine";
 
 // ─── Theme (matches AnswerWritingPage) ────────────────────────────────────────
 const T = {
@@ -67,27 +67,31 @@ export default function MainsMistakeTagger({ attemptData, onMistakeSaved }) {
         );
     };
 
-    const handleSave = () => {
+    const handleSave = async () => {
         if (!selectedTypes.length) return;
-        const entry = saveMainsMistake({
-            attemptId:     attemptData?.id        || null,
+        const entry = {
+            user_id:       "user_1",
+            mistake_type:  "mains_mistake",
             paper:         attemptData?.paper      || "GS1",
-            mode:          attemptData?.mode       || "PYQ",
-            marks:         attemptData?.marks      || "15",
-            year:          attemptData?.year       || null,
-            question:      attemptData?.question   || "",
-            answerText:    attemptData?.answerText  || "",
-            wordCount:     attemptData?.wordCount  || 0,
-            targetWords:   attemptData?.targetWords || 200,
-            timeSpentSec:  attemptData?.timeSpentSec || 0,
-            mistakeTypes:  selectedTypes,
-            severity,
-            notes,
-            mustRevise,
-            source:        "self_review",
-        });
-        setSavedOk(true);
-        onMistakeSaved?.(entry);
+            source_type:   attemptData?.mode       || "PYQ",
+            question_text: attemptData?.question   || "",
+            error_type:    selectedTypes.join(", "),
+            severity:      severity,
+            notes:         notes,
+            revision_flag: mustRevise,
+        };
+
+        try {
+            await fetch(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/api/mistakes`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(entry),
+            });
+            setSavedOk(true);
+            onMistakeSaved?.(entry);
+        } catch (err) {
+            console.error("Failed to save mistake", err);
+        }
     };
 
     if (savedOk) {

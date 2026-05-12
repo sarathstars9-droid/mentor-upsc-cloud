@@ -1,0 +1,2358 @@
+{
+  "year": 2011,
+  "paper": "GS",
+  "source": "pyq_master_index",
+  "totalQuestions": 99,
+  "questions": [
+    {
+      "id": "HIS_ANC_VEDIC_2011_Q3",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 1,
+      "originalQuestionNumber": 3,
+      "subject": "History",
+      "sourceFile": "vedic_age.json",
+      "question": "The “dharma” and “Rita” depict a central Idea of ancient Vedic civilization of India. In this context, consider the following statements: 1. Dharma was a conception of obligations and of the discharge of one’s duties to oneself and to others. 2. Rita was the fundamental moral law governing the functioning of the universe and all it contained. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-ANC-VEDIC-LATER-MT04",
+      "syllabusNodeId": "GS1-HIS-ANC-VEDIC-LATER-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2011_Q3_REVOLUTI",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 2,
+      "originalQuestionNumber": 3,
+      "subject": null,
+      "sourceFile": "revolutionaries_and_revolutionary_movement.json",
+      "question": "With reference to the Indian freedom struggle, Usha Mehta is well-known for?",
+      "options": {
+        "A": "Running the secret congress radio in the wake of the quit India movement.",
+        "B": "Participating in the second round table conference.",
+        "C": "Leading a contingent of Indian national army.",
+        "D": "Assisting in the formation of Interim government under Pandit Jawaharlal Nehru."
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_IVC_2011_Q4",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 3,
+      "originalQuestionNumber": 4,
+      "subject": "History",
+      "sourceFile": "indus_valley_civilization.json",
+      "question": "Regarding the Indus Valley civilization, consider the following statements? 1. It was predominantly a secular civilization and the religious element, though present, did not dominate the scene. 2. During this period, cotton was used for manufacturing textiles in India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-ANC-IVC-MT04",
+      "syllabusNodeId": "GS1-HIS-ANC-IVC-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_SOUTH_2011_Q4",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 4,
+      "originalQuestionNumber": 4,
+      "subject": "History",
+      "sourceFile": "south_india.json",
+      "question": "India maintained its early cultural contacts and trade links with southeast Asia across the bay of Bengal. For this pre-eminence of the early maritime history of the Bay of Bengal, which of the following could be the most convincing explanation/explanations?",
+      "options": {
+        "A": "As compared to other countries, India had better ship-building technology in ancient and medieval times",
+        "B": "The rulers of southern India always patronised traders , Brahmin priests and Buddhist monks in this context",
+        "C": "Monsoon winds across the bay of Bengal facilitated sea voyages",
+        "D": "Both (a) and (b) are convincing explanations in this context"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-ANC-BUD-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-BUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE_2011_Q5",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 5,
+      "originalQuestionNumber": 5,
+      "subject": null,
+      "sourceFile": "ca_general_science.json",
+      "question": "Recently, \"oil zapper'' was in the news. What is it? [2011]",
+      "options": {
+        "A": "It is an eco-friendly technology for the remediation of oily sludge and oil spills.",
+        "B": "It is the latest technology developed for under-sea oil exploration.",
+        "C": "It is a genetically engineered high biofuel-yielding maize variety.",
+        "D": "It is the latest technology to control the accidentally caused flames from oil wells."
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT04",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2011_Q6_LITERATU",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 6,
+      "originalQuestionNumber": 6,
+      "subject": null,
+      "sourceFile": "literature.json",
+      "question": "Mahatma Gandhi said that some of his deepest convictions were reflected in a book titled, \"Unto this Last'' and the book transformed his life. What was the message from the book that transformed Mahatma Gandhi?",
+      "options": {
+        "A": "Uplifting the oppressed and poor is the moral responsibility of an educated man",
+        "B": "The good of individual is contained in the good of all.",
+        "C": "The life of celibacy and spiritual pursuit are essential for a noble life.",
+        "D": "All the statements a), b) and c) are correct in this context."
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2011_Q6",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 7,
+      "originalQuestionNumber": 6,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Aspartame is an artificial sweetener sold in the market. It consists of amino acids and provides calories like other amino acids. Yet, it is used as a low- calorie sweetening agent in food items. What is the basis of this use?",
+      "options": {
+        "A": "Aspartame is as sweet as table sugar, but unlike table sugar, it is not readily oxidized in human body due to lack of requisite enzymes.",
+        "B": "When aspartame is used in food processing, the sweet taste remains, but it becomes resistant to oxidation.",
+        "C": "Aspartame is as sweet as sugar, but after ingestion into the body, it is converted into metabolites that yield no calories.",
+        "D": "Aspartame is several times sweeter than table sugar, hence food items made with small quantities of aspartame yield fewer calories on oxidation."
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POPDEM_2011_Q7",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 8,
+      "originalQuestionNumber": 7,
+      "subject": "Economy",
+      "sourceFile": "population_demography.json",
+      "question": "India is regarded as a country with \"Demographic Dividend''. This is due to?",
+      "options": {
+        "A": "Its high population in the age group below 15 years",
+        "B": "Its high population in the age group of 15-64 years",
+        "C": "Its high population in the age group above 65 years",
+        "D": "Its high total population"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2011_Q7",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 9,
+      "originalQuestionNumber": 7,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: In India, a Metropolitan Planning Committee: 1. Is constituted under the provisions of the Constitution of India. 2. Prepares the draft development plans for the metropolitan area. 3. Has the sole responsibility for implementing government sponsored schemes in the metropolitan area. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "1,3 only",
+        "D": "1,2 and 3"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-LOCAL-MT01",
+      "syllabusNodeId": "GS2-POL-LOCAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_FUNDAMENTAL_DUTIES_2011_Q8",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 10,
+      "originalQuestionNumber": 8,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Under the constitution of India, which one of the following is not a fundamental duty?",
+      "options": {
+        "A": "To vote in public elections.",
+        "B": "To develop the scientific temper.",
+        "C": "To safeguard public property.",
+        "D": "To abide by the constitution and respect its ideals."
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-FD-MT01",
+      "syllabusNodeId": "GS2-POL-FD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2011_Q8",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 11,
+      "originalQuestionNumber": 8,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "The constitution (seventy third amendment) act, 1992, which aims at promoting the panchayati raj institutions in the country, provides for which of the following? 1. Constitution of district planning committees. 2. State election commissions to conduct all panchayat elections. 3. Establishment of state finance commission. State the correct answer using the codes given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only.",
+        "C": "2 and 3 only",
+        "D": "1,2, and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-CSREL-MT01",
+      "syllabusNodeId": "GS2-POL-CSREL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-LOCAL-MT01",
+          "toNodeId": "GS2-POL-CSREL-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-LOCAL-MT01 based on keywords.",
+          "matchedKeywords": [
+            "finance commission"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_INDTAXSYS_2011_Q9",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 12,
+      "originalQuestionNumber": 9,
+      "subject": "Economy",
+      "sourceFile": "indian_taxation_system.json",
+      "question": "Which one of the following is not a feature of \"value added tax\"?",
+      "options": {
+        "A": "It is multi -point destination -based system of taxation",
+        "B": "It is a tax levied on value addition at each stage of transaction in the production-distribution chain",
+        "C": "It is a tax on the final consumption of goods or services and must ultimately be borne by the consumer",
+        "D": "It is basically a subject of the central government and the state governments are only a facilitator for its successful implementation"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-TAXATION-MT01",
+      "syllabusNodeId": "GS3-ECO-TAXATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDCLI_2011_Q9",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 13,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "indian_climate_natural_vegetation.json",
+      "question": "A state in India has the following characteristics: 1. Its northern part is arid and semi-arid. 2. Its central part produces cotton. 3. Cultivation of cash crops is predominant over food crops. Which one of the following states has all of the above characteristics?",
+      "options": {
+        "A": "Andhra Pradesh",
+        "B": "Gujarat",
+        "C": "Karnataka",
+        "D": "Tamil Nadu"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-AGRI-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "crop",
+            "cotton"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2011_Q9_CONGRESS",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 14,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "congress_1885_1907.json",
+      "question": "What was the purpose with which Sir William Wedderburn and W .S. Caine had set up the Indian parliamentary committee in 1893?",
+      "options": {
+        "A": "To agitate for Indian political reforms in the house of commons.",
+        "B": "To campaign for the entry of Indians into the imperial judiciary.",
+        "C": "To facilitate a discussion on India's independence in the British parliament.",
+        "D": "To agitate for the entry of eminent Indians into the British parliament."
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_EMPSKIDEV_2011_Q10",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 15,
+      "originalQuestionNumber": 10,
+      "subject": "Economy",
+      "sourceFile": "employment_skill_development.json",
+      "question": "Among the following who are eligible to benefit from the \"mahatma Gandhi national rural employment guarantee act\"?",
+      "options": {
+        "A": "Adult members of only the scheduled caste and scheduled tribe households",
+        "B": "Adult members of below poverty line (BPL) households.'",
+        "C": "Adult members of households of all backward communities",
+        "D": "Adult members of any household"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+          "toNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-SECT-INDLAB-MT01 based on keywords.",
+          "matchedKeywords": [
+            "poverty"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2011_Q10_EVENTS_1",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 16,
+      "originalQuestionNumber": 10,
+      "subject": null,
+      "sourceFile": "events_1857_1885.json",
+      "question": "With reference to the period of colonial rule in India, \"Home Charges \" formed an important part of the drain of wealth from India. Which of the following funds constituted \"Home Charges''? 1. Funds used to support the India office in London. 2. Funds used to pay salaries and pensions of British personnel engaged in India. 3. Funds used for waging wars outside India by the British.",
+      "options": {
+        "A": "1 only.",
+        "B": "1 and 2 only.",
+        "C": "2 and 3 only.",
+        "D": "1, 2,and 3."
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2011_Q10",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 17,
+      "originalQuestionNumber": 10,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "The function of heavy water in a nuclear reactor is to?",
+      "options": {
+        "A": "Slow down the speed of neutrons.",
+        "B": "Increase the speed of neutrons.",
+        "C": "Cool down the reactor.",
+        "D": "Stop the nuclear reaction."
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2011_Q11_ESTABLIS",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 18,
+      "originalQuestionNumber": 11,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "The tendency for increased litigation was visible after the introduction of the land settlement system of lord Cornwallis in 1793. The reason for this is normally traced to which of the following provisions?",
+      "options": {
+        "A": "Making zamindar's position stronger vis-à-vis the ryot.",
+        "B": "Making east India company an overlord of zamindars.",
+        "C": "Making judicial system more efficient.",
+        "D": "None of the a), b) and c) above."
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2011_Q11",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 19,
+      "originalQuestionNumber": 11,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "What is the difference between a CFL and an LED lamp? 1) To produce light, a CFL uses mercury vapour and phosphor while an LED lamp uses semi -conductor material. 2) The average life span of a CFL is much longer than that of an LED lamp. 3) A CFL is less energy-efficient as compared to an LED lamp. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2, and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2011_Q12_CIVIL_DI",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 20,
+      "originalQuestionNumber": 12,
+      "subject": null,
+      "sourceFile": "civil_disobedience_1926_1932.json",
+      "question": "With reference to the period of Indian freedom struggle, which of the following was/were recommended by the Nehru report? 1. Complete independence for India. 2. Joint electorates for reservation of seats for minorities. 3. Provision of fundamental rights for the people of India in the constitution. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2 and 3"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2011_Q12",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 21,
+      "originalQuestionNumber": 12,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "The surface of a lake is frozen in severe winter, but the water at its bottom is still liquid. What is the reason?",
+      "options": {
+        "A": "Ice is a bad conductor of heat.",
+        "B": "Since the surface of the lake is at the same temperature as the air, no heat is lost.",
+        "C": "The density of water is maximum at 4°c.",
+        "D": "None of the statements (a), (b) and (c) given is correct."
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_OCE_2011_Q13",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 22,
+      "originalQuestionNumber": 13,
+      "subject": null,
+      "sourceFile": "oceanography.json",
+      "question": "What could be the main reason/reasons for the formation of African and Eurasian desert belt? 1. It is located in the sub-tropical high-pressure cells. 2. It is under the influence of warm ocean currents. Which of the statements given above is/are correct in this context?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2011_Q13_LAST_PHA",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 23,
+      "originalQuestionNumber": 13,
+      "subject": null,
+      "sourceFile": "last_phase_1940_1950.json",
+      "question": "Which one of the following observations is not true about the quit India movement of 1942?",
+      "options": {
+        "A": "It was a non-violent movement.",
+        "B": "It was led by mahatma Gandhi.",
+        "C": "It was a spontaneous movement.",
+        "D": "It did not attract the labour class in general."
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_GEOGRAPHY_2011_Q14",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 24,
+      "originalQuestionNumber": 14,
+      "subject": null,
+      "sourceFile": "ca_geography.json",
+      "question": "In the context of global oil prices, \"Brent crude oil\" is frequently referred to in the news. What does this term imply? [2011] 1. It is a major classification of crude oil. 2. It is sourced from North Sea. 3. It does not contain sulphur. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "2 only",
+        "B": "1 and 2 only",
+        "C": "1 and 3 only",
+        "D": "1,2, and 3"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+          "toNodeId": "GS1-GEO-IND-AGRI-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-PRE-REGIONAL-PLACES-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rice"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_FUNDAMENTAL_RIGHTS_2011_Q14",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 25,
+      "originalQuestionNumber": 14,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following: 1. Right to education. 2. Right to equal access to public service. 3. Right to food. Which of the above is/are human rights/human rights under “universal declaration of human rights’’?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "3 only",
+        "D": "1, 2, and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-FR-MT01",
+      "syllabusNodeId": "GS2-POL-FR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2011_Q14",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 26,
+      "originalQuestionNumber": 14,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Regular intake of fresh fruits and vegetables is recommended in the diet since they are a good source of antioxidants. How do antioxidants help a person maintain health and promote longevity?",
+      "options": {
+        "A": "They activate the enzymes necessary for vitamin synthesis in the body and help prevent vitamin deficiency.",
+        "B": "They prevent excessive oxidation of carbohydrates, fats and proteins in the body and help avoid unnecessary wastage of energy.",
+        "C": "They neutralize the free radicals produced in the body during metabolism.",
+        "D": "They activate certain genes in the cells of the body and help delay the ageing process. -"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology",
+            "cell",
+            "vitamin"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIELECTRONICSIT_2011_Q14",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 27,
+      "originalQuestionNumber": 14,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_electronics_it.json",
+      "question": "What is the difference between blue -tooth and Wi-Fi devices?",
+      "options": {
+        "A": "Bluetooth uses 2.4 GHz radio frequency band, whereas Wi-Fi can use 2.4 GHz or 5 GHz frequency band.",
+        "B": "Bluetooth is used for wireless local area networks (WLAN) only, whereas Wi-Fi is used for wireless wide area networks (WWAN) only.",
+        "C": "When information is transmitted between two devices using blue-tooth technology , the devices have to be in the line of sight of each other, but when Wi-Fi technology is used the devices need not be in the line of sight of each other.",
+        "D": "The statements (a) and (b) given above are correct in this context."
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-IT-COMM-MT02",
+      "syllabusNodeId": "GS3-ST-IT-COMM-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_GEOGRAPHY_2011_Q15",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 28,
+      "originalQuestionNumber": 15,
+      "subject": null,
+      "sourceFile": "ca_geography.json",
+      "question": "Southeast Asia has captivated the attention of global community over space and time as a geostrategic-ally significant region. Which among the following is the most convincing explanation for this global perspective? [2011]",
+      "options": {
+        "A": "It was the hot theatre during the second world war.",
+        "B": "Its location between the Asian powers of China and India.",
+        "C": "It was the arena of superpower confrontation during the cold war period.",
+        "D": "Its location between the pacific and Indian oceans and its pre-eminent maritime character."
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2011_Q15_GANDHIAN",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 29,
+      "originalQuestionNumber": 15,
+      "subject": null,
+      "sourceFile": "gandhian_phase_1917_1925.json",
+      "question": "What was the reason for mahatma Gandhi to organise a satyagraha on behalf of the peasants of Kheda? 1. The administration did not suspend the land revenue collection in spite of a drought. 2. The administration proposed to introduce permanent settlement in Gujarat. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_FUNDAMENTAL_RIGHTS_2011_Q15",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 30,
+      "originalQuestionNumber": 15,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "In India, if a religious sect/community is given the status of a national minority, what special advantages is it entitled to? 1. It can establish and administer exclusive educational institutions. 2. The president of India automatically nominates a representative of the community to Lok Sabha. 3. It can derive benefits from the prime minister’s 15- point programme. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only.",
+        "C": "1 and 3 only",
+        "D": "1,2 and 3"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-EXEC-MT01",
+      "syllabusNodeId": "GS2-POL-EXEC-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-FR-MT01",
+          "toNodeId": "GS2-POL-EXEC-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS2-POL-FR-MT01 based on keywords.",
+          "matchedKeywords": [
+            "president",
+            "prime minister"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIBIOLOGY_2011_Q15",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 31,
+      "originalQuestionNumber": 15,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "When the bark of a tree is removed in a circular fashion all around near its base, it gradually dries up and dies because?",
+      "options": {
+        "A": "Water from soil cannot rise to aerial parts.",
+        "B": "Roots are starved of energy.",
+        "C": "Tree is infected by soil microbes.",
+        "D": "Roots do not receive oxygen for respiration."
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOTECH_2011_Q15",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 32,
+      "originalQuestionNumber": 15,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biotech.json",
+      "question": "A genetically engineered form of brinjal, known as the Bt-brinjal, has been developed. The objective of this is?",
+      "options": {
+        "A": "To make it pest-resistant.",
+        "B": "To improve its taste and nutritive qualities.",
+        "C": "To make it drought-resistant.",
+        "D": "To make its shelf-life longer."
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIELECTRONICSIT_2011_Q15",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 33,
+      "originalQuestionNumber": 15,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_electronics_it.json",
+      "question": "What is \"virtual private network\"?",
+      "options": {
+        "A": "It is a private computer network of an organization where the remote users can transmit encrypted information through the server of the organization.",
+        "B": "It is a computer network across a public internet the provides users access to their organizations network while maintaining the security of the information transmitted.",
+        "C": "It is a computer network in which users can access a shared pool of computing resources through a service provider.",
+        "D": "None of the statements (a), (b) and (c) given above is correct description of virtual private network."
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-IT-COMM-MT02",
+      "syllabusNodeId": "GS3-ST-IT-COMM-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_MAPW_2011_Q16",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 34,
+      "originalQuestionNumber": 16,
+      "subject": null,
+      "sourceFile": "world_mapping.json",
+      "question": "Between India and east Asia, the navigation - time and distance can be greatly reduced by which of the following? 1. Deepening the Malacca straits between Malaysia and Indonesia. 2. Opening a new canal across the kra isthmus between the gulf of Siam and Andaman sea. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOTECH_2011_Q16",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 35,
+      "originalQuestionNumber": 16,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biotech.json",
+      "question": "At present, scientists can determine the arrangement or relative positions of genes or DNA sequences on a chromosome. How does this knowledge benefit us? 1. It is possible to know the pedigree of livestock. 362 2. It is possible to understand the causes of all human diseases. 3. It is possible to develop disease-resistant animal breeds. Which of the statements give above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "1 and 3 only",
+        "D": "1,2, and 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_ECOINSLAW_2011_Q17",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 36,
+      "originalQuestionNumber": 17,
+      "subject": "Economy",
+      "sourceFile": "economic_institutions_laws_policies.json",
+      "question": "With reference to the finance commission of India, which of the following statements is correct?",
+      "options": {
+        "A": "It encourages the inflow of foreign capital for infrastructure development",
+        "B": "It facilities the proper distributor of finances among the public section undertakings",
+        "C": "It ensures transparency in financial administration",
+        "D": "None of the statements a), b) and c) given above is correct in his context"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "syllabusNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_GOVBUDGOV_2011_Q17",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 37,
+      "originalQuestionNumber": 17,
+      "subject": "Economy",
+      "sourceFile": "government_budgeting_govt_accounts.json",
+      "question": "What is the difference between \"vote -on- account\" and interim budget? 1.The provision of a \"vote -on-account'' is used by a regular government, while an \"interim budget\" is a provision used by a caretaker government. 2.A \"vote -on-account'' only deals with the expenditure in government is budget, while an \"interim budget'' includes both expenditure and receipts. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor2"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_MISC_2011_Q17",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 38,
+      "originalQuestionNumber": 17,
+      "subject": null,
+      "sourceFile": "misc_environmentcorrected.json",
+      "question": "With reference to micro-irrigation, which of the following statements is/are correct? 1. Fertilizer/nutrient loss can be reduced. 2. It is the only means of irrigation in dry land farming. 3. In some areas of farming, receding of ground water table can be checked. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-LAND-WATER-MT01",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_GOVBUDGOV_2011_Q18",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 39,
+      "originalQuestionNumber": 18,
+      "subject": "Economy",
+      "sourceFile": "government_budgeting_govt_accounts.json",
+      "question": "In the union budget 2011 -12, a full exemption from the basic customs duty was extended to the bio- based asphalt (biosphalt). What is the importance of this material? 1. Unlike traditional asphalt, bio-asphalt is not based on fossil fuels. 2. Biosphalt can be made from non -renewable resources. 3. Bioasphalt can be made from organic waste materials. 4. It is eco-friendly to use bioasphalt for surfacing of the roads. Which the correct answer using the codes given below?",
+      "options": {
+        "A": "1,2, and 3 only",
+        "B": "1,3 and 4 only",
+        "C": "2 and 4 only",
+        "D": "1,2,3, and 4"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_MISC_2011_Q18",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 40,
+      "originalQuestionNumber": 18,
+      "subject": null,
+      "sourceFile": "misc_environmentcorrected.json",
+      "question": "Salinization occurs when the irrigation water accumulated in the soil evapo-rates, leaving behind salts and minerals. What are the effects of Salinization on the irrigated land?",
+      "options": {
+        "A": "It greatly increases the crop production.",
+        "B": "It makes some soils impermeable.",
+        "C": "It raises the water table.",
+        "D": "It fills the air spaces in the soil with water."
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-LAND-WATER-MT01",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_AGR_2011_Q18",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 41,
+      "originalQuestionNumber": 18,
+      "subject": null,
+      "sourceFile": "agriculture.json",
+      "question": "Among the following states, which one has the most suitable climatic conditions for the cultivation of a large variety of orchids with minimum cost of production, and can develop an export -oriented industry in this field?",
+      "options": {
+        "A": "Andhra Pradesh",
+        "B": "Arunachal Pradesh",
+        "C": "Madhya Pradesh",
+        "D": "Uttar Pradesh"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCISPACETECH_2011_Q18",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 42,
+      "originalQuestionNumber": 18,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_space_tech.json",
+      "question": "An artificial satellite orbiting around the earth does not fall down. This is so because the attraction of earth?",
+      "options": {
+        "A": "Does not exist at such distance.",
+        "B": "Is neutralized by the attraction of the moon.",
+        "C": "Provides the necessary speed for its steady motion.",
+        "D": "Provides the necessary acceleration for its motion."
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-SPACE-MT01",
+      "syllabusNodeId": "GS3-ST-SPACE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_GOVBUDGOV_2011_Q19",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 43,
+      "originalQuestionNumber": 19,
+      "subject": "Economy",
+      "sourceFile": "government_budgeting_govt_accounts.json",
+      "question": "Which one of the following statements appropriately describes the \"fiscal stimulus\"?",
+      "options": {
+        "A": "It is a massive investment by the government in manufacturing sector to ensure the supply of goods to meet the demand surge caused by rapid economic growth",
+        "B": "It is an intense affirmative action of the government to boost economic activity in the country",
+        "C": "It is government's intensive action on financial institutions to ensure disbursement of loans to agriculture and allied sectors to promote greater food production and contain food inflation",
+        "D": "It is an extreme affirmative action by the government to pursue its policy of financial inclusion"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_BIO_2011_Q19",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 44,
+      "originalQuestionNumber": 19,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "Biodiversity forms the basis for human existence in the following ways: 1. Soil formation. 2. Prevention of soil erosion. 3. Recycling of waste. 4. Pollination of crops. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1,2, and 3 only",
+        "B": "2,3 and 4 only",
+        "C": "1 and 4 only",
+        "D": "1,2,3 and 4 only"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-WASTE-MT01",
+      "syllabusNodeId": "GS3-ENV-WASTE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_AGR_2011_Q19",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 45,
+      "originalQuestionNumber": 19,
+      "subject": null,
+      "sourceFile": "agriculture.json",
+      "question": "The lower Gangetic plain is characterised by humid climate with high temperature throughout the year. Which one among the following pairs of crops is most suitable for this region?",
+      "options": {
+        "A": "Paddy and cotton",
+        "B": "Wheat and jute",
+        "C": "Paddy and jute",
+        "D": "Wheat and cotton"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRIV_2011_Q19",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 46,
+      "originalQuestionNumber": 19,
+      "subject": null,
+      "sourceFile": "indian_rivers_drainage.json",
+      "question": "Two important rivers - one with its source in Jharkhand (and known by a different name in odisha), and another, with its source in odisha - merge at a place only a short distance from the coast of bay of Bengal before flowing into the sea. This is an important site of wildlife and biodiversity and a protected area. Which one of the following could be this?",
+      "options": {
+        "A": "Bhitarkanika",
+        "B": "Chandipur-on-sea",
+        "C": "Gopalpur-on-sea",
+        "D": "Simlipal"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_GOVBUDGOV_2011_Q20",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 47,
+      "originalQuestionNumber": 20,
+      "subject": "Economy",
+      "sourceFile": "government_budgeting_govt_accounts.json",
+      "question": "The authorization for the withdrawal of funds from the consolidated fund of India must come from?",
+      "options": {
+        "A": "The president of India",
+        "B": "The parliament of India",
+        "C": "The prime minister of India",
+        "D": "The union finance minister"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_BIO_2011_Q20",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 48,
+      "originalQuestionNumber": 20,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "Which one of the following is not a site for in-situ method of conservation of flora?",
+      "options": {
+        "A": "Biosphere reserve",
+        "B": "Botanical Garden",
+        "C": "National park",
+        "D": "Wildlife sanctuary"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-CONSERVATION-MT01",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRIV_2011_Q20",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 49,
+      "originalQuestionNumber": 20,
+      "subject": null,
+      "sourceFile": "indian_rivers_drainage.json",
+      "question": "The Brahmaputra, Irrawaddy and Mekong rivers originate in Tibet narrow and parallel mountain ranges in their upper reaches. Of these rivers, Brahmaputra makes a \"U\" turn in its course to flow into India. This \"U\" turn is due to?",
+      "options": {
+        "A": "Uplift of folded Himalayan series.'",
+        "B": "Syntaxial bending of geologically young Himalayas",
+        "C": "Geo-tectonic disturbance in the tertiary folded mountain chains",
+        "D": "Both (a) and (b) above"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river",
+            "brahmaputra"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_GOVBUDGOV_2011_Q21",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 50,
+      "originalQuestionNumber": 21,
+      "subject": "Economy",
+      "sourceFile": "government_budgeting_govt_accounts.json",
+      "question": "All revenues received by the union government by way of taxes and other receipts for the conduct of government business are credited to the?",
+      "options": {
+        "A": "Contingency fund of India",
+        "B": "Public Account",
+        "C": "Consolidated fund of India",
+        "D": "Deposits and advances fund"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-TAXATION-MT01",
+      "syllabusNodeId": "GS3-ECO-TAXATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-BUDGET-MT01",
+          "toNodeId": "GS3-ECO-TAXATION-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-BUDGET-MT01 based on keywords.",
+          "matchedKeywords": [
+            "tax"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_MAC_2011_Q21",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 51,
+      "originalQuestionNumber": 21,
+      "subject": "Economy",
+      "sourceFile": "macroeconomy.json",
+      "question": "In the context of Indian economy, consider the following statements? 1. The growth rate of GDP has steadily increased in the last five years. 2. The growth rate in per capita income has steadily increased in the last five years. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_BIO_2011_Q21",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 52,
+      "originalQuestionNumber": 21,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "The 2004 Tsunami made people realize that mangroves can serve as a reliable safety hedge against coastal calamities. How do mangroves function as a safety hedge?",
+      "options": {
+        "A": "The mangrove swamps separate the human settlements from the sea by a wide zone in which people neither live nor venture out.",
+        "B": "The mangroves provide both food and medicines which people are in need of after any natural disaster.",
+        "C": "The mangrove trees are tall with dense canopies and serve as an excellent shelter during a cyclone or Tsunami.",
+        "D": "The mangrove trees do not get uprooted by storms and tides because of their extensive roots."
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-CLIMATEPHEN",
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_GOVBUDGOV_2011_Q22",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 53,
+      "originalQuestionNumber": 22,
+      "subject": "Economy",
+      "sourceFile": "government_budgeting_govt_accounts.json",
+      "question": "When the annual budget is not passed by the Lok sabha?",
+      "options": {
+        "A": "The budget is modified and presented again",
+        "B": "The budget is referred to the Rajya sabha for suggestions",
+        "C": "The union finance minister is asked to resign",
+        "D": "The prime minister submits the resignation of council of ministers"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_MAC_2011_Q22",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 54,
+      "originalQuestionNumber": 22,
+      "subject": "Economy",
+      "sourceFile": "macroeconomy.json",
+      "question": "Economic growth is usually coupled with?",
+      "options": {
+        "A": "Deflation",
+        "B": "Inflation",
+        "C": "Stagflation",
+        "D": "Hyperinflation"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+      "syllabusNodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_BIO_2011_Q22",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 55,
+      "originalQuestionNumber": 22,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "The Himalayan Range is very rich in species diversity. Which one among the following is the most appropriate reason for this phenomenon?",
+      "options": {
+        "A": "It has a high rainfall that supports luxuriant vegetative growth.",
+        "B": "It is a confluence of different biogeographical zones.",
+        "C": "Exotic and invasive species have not been invasive species have not been introduced in this region.",
+        "D": "It has less human interference."
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTECOORG_2011_Q23",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 56,
+      "originalQuestionNumber": 23,
+      "subject": "Economy",
+      "sourceFile": "international_economic_organizations.json",
+      "question": "Regarding the international monetary fund, which one of the following statements is correct?",
+      "options": {
+        "A": "It can grant to any country",
+        "B": "It can grant loans to only developed countries",
+        "C": "It grants loans to only member countries",
+        "D": "It can grant loans to the central bank of a country"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_MAC_2011_Q23",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 57,
+      "originalQuestionNumber": 23,
+      "subject": "Economy",
+      "sourceFile": "macroeconomy.json",
+      "question": "A 'closed economy'' is an economy in which?",
+      "options": {
+        "A": "The money supply is fully controlled",
+        "B": "Deficit financing takes place",
+        "C": "Only exports take place",
+        "D": "Neither exports nor imports take place"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+      "syllabusNodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2011_Q23",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 58,
+      "originalQuestionNumber": 23,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "Which of the following can aid in furthering the government's objective of inclusive growth? 1. Promoting self-help groups. 2. Promoting micro. Small and medium enterprises. 3. Implementing the right to education act. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1,2 and 3 only"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_BIO_2011_Q23",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 59,
+      "originalQuestionNumber": 23,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "Three of the following criteria have contributed to the recognition of western Ghats , Sri Lanka and Indo-Burma regions as hotspots of biodiversity: 1. Species richness. 2. Vegetation density. 3. Endemism. 4. Ethno-botanical importance. 5. Threat perception. 6. Adaption of flora and fauna to warm and humid conditions. Which three of the above are correct criteria in this context?",
+      "options": {
+        "A": "1,2, and 6.",
+        "B": "2,4 and 6.",
+        "C": "1,3 and 5.",
+        "D": "3,4 and 6."
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2011_Q24",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 60,
+      "originalQuestionNumber": 24,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "With reference to \"Aam Admi Bima Yojna'' consider the following statements? 1. The member insured under the scheme must be the head of the family or an earning member of the family in a rural landless house-hold. 2. The member insured must be in the age group of 30 to 65 years. 3. There is a provision for free scholarship insured who are studying between classes 9 and 12. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2 and 3"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_RELPH_2011_Q24",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 61,
+      "originalQuestionNumber": 24,
+      "subject": "History",
+      "sourceFile": "religion_philosophy.json",
+      "question": "The Jain philosophy holds that the world is created and maintained by?",
+      "options": {
+        "A": "Universal law",
+        "B": "Universal truth",
+        "C": "Universal faith",
+        "D": "Universal soul"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-ANC-JAIN-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-JAIN-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2011_Q24",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 62,
+      "originalQuestionNumber": 24,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Karl Marx explained the process of class struggle with the help of which one of the following theories?",
+      "options": {
+        "A": "Empirical liberalism",
+        "B": "Existentialism",
+        "C": "Darwin’s theory of evolution",
+        "D": "Dialectical materialism"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_AGR_2011_Q25",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 63,
+      "originalQuestionNumber": 25,
+      "subject": "Economy",
+      "sourceFile": "agriculture.json",
+      "question": "With what purpose is the government of India promoting the concept of 'Mega food parks'? 1. To provide good infrastructure facilities for the food processing industry. 2. To increase the processing of perishable items and reduce wastage. 3. To provide emerging and eco -friendly food processing technologies to entrepreneurs. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1,2 and 3"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-SECT-AGRI-MT01",
+          "toNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-SECT-AGRI-MT01 based on keywords.",
+          "matchedKeywords": [
+            "industry"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_CAPMARMON_2011_Q25",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 64,
+      "originalQuestionNumber": 25,
+      "subject": "Economy",
+      "sourceFile": "capital_market_money_market_fdi.json",
+      "question": "Both foreign direct investment (FDI) and foreign institutional investor (FII) are related to investment in a country. Which one of the following statements best represents an important difference between the two?",
+      "options": {
+        "A": "FII helps bring better management skills and technology. While FDM only brings in capital",
+        "B": "FII helps in increasing capital availability in general, while FDI only targets specific sectors",
+        "C": "FDI flows only into the secondary market, in general, while FDI only targets specific sectors",
+        "D": "FII is considered to be more stable than FDI"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-INVESTMENT-MODELS-MT01",
+      "syllabusNodeId": "GS3-ECO-INVESTMENT-MODELS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2011_Q25",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 65,
+      "originalQuestionNumber": 25,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "India is home to lakhs of person with disabilities, what are the benefits available to them under the law? 1. Free schooling till the age of 18 years in government- run schools. 2. Preferential allotment of land for setting up business. 3. Ramps in public buildings. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2 and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_LAW_2011_Q25",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 66,
+      "originalQuestionNumber": 25,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "With reference to India, consider the following central acts: 1. Import and export (control) act, 1947. 2. Mining, and mineral development (regulation) act, 1957. 3. Customs act, 1962. 4. Indian forest act, 1927. Which of the above acts have relevance to/bearing on the biodiversity conservation in the country?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2,3 and 4 only",
+        "C": "1,2,3 and 4",
+        "D": "None of the above acts"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-ACTS-MT01",
+      "syllabusNodeId": "GS3-ENV-ACTS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_CLI_2011_Q26",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 67,
+      "originalQuestionNumber": 26,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "La Nina is suspected to have caused recent floods in Australia. How is La Nina different from EI Nino? 1. La Nina is characterized by un-usually cold ocean temperature in equatorial Indian ocean whereas EI Nino is characterized by unusually warm ocean temperature in the equatorial pacific ocean. 2. EI Nino has adverse effect on south-west monsoon of India, but La Nina has no effect on monsoon climate. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CORANDIND_2011_Q27",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 68,
+      "originalQuestionNumber": 27,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "Why is the government of India disinvesting its equity in the central public sector enterprises (CPSEs)? 1. The government intends to use the revenue earned from the disinvestment mainly to pay back the external debt. 2. The government no longer intends to retain the management control of the CPSEs. Which the correct statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT14",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT14",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_CLI_2011_Q27",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 69,
+      "originalQuestionNumber": 27,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "Westerlies in southern hemisphere are stronger and persistent than in northern hemisphere. Why? 1. Southern hemisphere has less landmass as compared to northern hemisphere. 2. Coriolis force is higher in southern hemisphere as compared to northern hemisphere. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CLI_2011_Q28",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 70,
+      "originalQuestionNumber": 28,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "The formation of ozone hole in the Antarctic region has been a cause of concern. What could be the reason for the formation of this hole?",
+      "options": {
+        "A": "Presence of prominent tropo-spheric turbulence; and inflow of chlorofluorocarbons.",
+        "B": "Presence of prominent polar front and stratospheric clouds; and inflow of chlorofluorocarbons.",
+        "C": "Absence of polar front and stratospheric clouds; and inflow of methane and chlorofluorocarbons.",
+        "D": "Increased temperature at polar region due to global warming."
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_CLI_2011_Q28",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 71,
+      "originalQuestionNumber": 28,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "A layer in the earth's atmosphere called ionosphere facilities radio communication. Why? 1. Why presence of ozone causes the reflection of radio waves to earth. 2. Radio waves have a very long wavelength. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CLI_2011_Q29",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 72,
+      "originalQuestionNumber": 29,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "Human activities in the recent past have caused the increased concentration of carbon dioxide in the atmosphere, but a lot of it does not remain in the lower atmosphere because of? 1. Its escape into the outer stratosphere. 2. The photosynthesis by phytoplankton in the oceans. 3. The trapping of air in the polar ice caps. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_CLI_2011_Q29",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 73,
+      "originalQuestionNumber": 29,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "The jet aircrafts fly very easily and smoothly in the lower stratosphere. What could be the appropriate explanation? 1. There are no clouds or water vapour in the lower stratosphere. 2. There are no vertical winds in the lower stratosphere. Which of the statements given above is/are correct in this context?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CLI_2011_Q30",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 74,
+      "originalQuestionNumber": 30,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "The 'Red Books'' published by the international union for conservation of nature and natural resources (IUCN) contain lists of? 1. Endemic plant and animal species present in the biodiversity hotspots. 2. Threatened plant and animal species. 3. Protected sites for conservation of nature and natural resources in various countries. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 and 3",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ENV-INTL-MT01",
+          "toNodeId": "GS3-ENV-SPECIES-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS3-ENV-INTL-MT01 based on keywords.",
+          "matchedKeywords": [
+            "species",
+            "endemic"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_CLI_2011_Q30",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 75,
+      "originalQuestionNumber": 30,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "Consider the following statements: 1. Biodiversity is normally greater in the lower latitudes as compared to the higher latitudes. 2. Along the mountain gradients, biodiversity is normally greater in the lower altitudes as compared to the higher altitudes. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_ECO_2011_Q33",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 76,
+      "originalQuestionNumber": 33,
+      "subject": null,
+      "sourceFile": "ecology_ecosystemcorrected.json",
+      "question": "Consider the following: 1. Photosynthesis. 2. Respiration. 3. Decay of organic matter. 4. Volcanic action. Which of the above add carbon dioxide to the carbon cycle on earth?",
+      "options": {
+        "A": "1 and 4 only",
+        "B": "2 and 3 only",
+        "C": "2, 3 and 4 only",
+        "D": "1,2,3 and 4"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-BIOGEO",
+      "syllabusNodeId": "GS3-ENV-BIOGEO",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_ECO_2011_Q34",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 77,
+      "originalQuestionNumber": 34,
+      "subject": null,
+      "sourceFile": "ecology_ecosystemcorrected.json",
+      "question": "In the context of ecosystem productivity, marine upwelling zones are important as they increase the marine productivity by bringing the? 1. Decomposer microorganisms to the surface. 2. Nutrients to the surface. 3. Bottom-dwelling organisms to the surface. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-ECO-ENERGY-MT01",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2011_Q34",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 78,
+      "originalQuestionNumber": 34,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "A sandy and saline area is the natural habitat of an Indian animal species. The animal has no predators in that area but its existence is threatened due to the destruction of its habitat. Which one of the following could be that animal?",
+      "options": {
+        "A": "Indian wild buffalo",
+        "B": "Indian wild ass",
+        "C": "Indian wild boar",
+        "D": "Indian gazelle"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_ECO_2011_Q35",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 79,
+      "originalQuestionNumber": 35,
+      "subject": null,
+      "sourceFile": "ecology_ecosystemcorrected.json",
+      "question": "If a tropical rain forest is removed, it does not regenerate quickly as compared to a tropical deciduous forest. This is because?",
+      "options": {
+        "A": "The soil of rain forest is deficient in nutrients.",
+        "B": "Propagules of the trees in a rain forest have poor viability.",
+        "C": "The rain forest species are slow-growing.",
+        "D": "Exotic species invade the fertile soil of rain forest."
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2011_Q36",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 80,
+      "originalQuestionNumber": 36,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Recently, the USA decided to support India's membership in multi-lateral export control regimes called the \"Australia group\" and the \"Wassenaar arrangement. What is the difference between them? [2011] 1. The Australia group is an informal arrangement which aims to allow exporting countries to minimize the risk of assisting chemical and biological weapons proliferation, whereas the Wassenaar arrangement is a formal group under the OECD holding identical objectives. 2. The Australia group comprises predominantly of Asian, African and north American countries, whereas the member countries of Wassenaar arrangement are pre-dominantly from the European union and American continents. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2011_Q37",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 81,
+      "originalQuestionNumber": 37,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "The \"New START\" treaty was in the news. What is this treaty? [2011]",
+      "options": {
+        "A": "It is a bilateral strategic nuclear arms reduction treaty between the USA and the Russian federation",
+        "B": "It is a multilateral energy security cooperation treaty among the members of the east Asia summit",
+        "C": "It is a treaty between the Russian federation and the European union for the energy security cooperation",
+        "D": "It is a multilateral cooperation treaty among the BRICS countries for the promotion of trade"
+      },
+      "answer": "A",
+      "nodeId": "GS2-IR-GROUPINGS-MT01",
+      "syllabusNodeId": "GS2-IR-GROUPINGS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIFUNMON_2011_Q38",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 82,
+      "originalQuestionNumber": 38,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "India has experienced persistent and high food inflation in the recent past. What could be the reasons? 1.Due to a gradual switchover to the cultivation of commercial crops, the area under the cultivation of food grains has steadily decreased in the last five years by about 30%. 2.As a consequence of increasing incomes, the consumption patterns of the people have undergone a significant change. 3.The food supply chain has structural constraints. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2, and 3"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-PRE-RBI-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-RBI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_POL_2011_Q38",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 83,
+      "originalQuestionNumber": 38,
+      "subject": null,
+      "sourceFile": "environmental_pollutioncorrected.json",
+      "question": "There is a concern over the increase in harmful algal blooms in the seawater of India. What could be the causative factors for this phenomenon? 1. Discharge of nutrients from the estuaries. 2. Run-off from the land during the monsoon. 3. Upwelling in the seas. Select the correct answer from the codes given below.",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2, and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-ACTS-MT01",
+      "syllabusNodeId": "GS3-ENV-ACTS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIFUNMON_2011_Q39",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 84,
+      "originalQuestionNumber": 39,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "In terms of economy, the visit by foreign nationals to witness the XIX common wealth games in India amounted to?",
+      "options": {
+        "A": "Export",
+        "B": "Import",
+        "C": "Production",
+        "D": "Consumption"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-MONETARY-POLICY-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_POL_2011_Q39",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 85,
+      "originalQuestionNumber": 39,
+      "subject": null,
+      "sourceFile": "environmental_pollutioncorrected.json",
+      "question": "Consider the following: 1. Carbon dioxide. 2. Oxides of nitrogen. 3. Oxides of Sulphur Which of the above is/are the emission/emissions from coal combustion at thermal power plants?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2, and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIFUNMON_2011_Q40",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 86,
+      "originalQuestionNumber": 40,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "Consider the following actions which the government can take: 1. Devaluing the domestic currency. 2. Reduction in the export subsidy. 3. Adopting suitable policies which attract greater FDI and more funds from FIIs. Which of the above action/actions can help in reducing the current account deficit?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 and 3",
+        "C": "3 only",
+        "D": "1 and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIFUNMON_2011_Q41",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 87,
+      "originalQuestionNumber": 41,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "A rapid increase in the rate of inflation is sometimes attributed to the 'base effect'. What is 'base effect'?",
+      "options": {
+        "A": "It is the impact of drastic deficiency in supply due to failure of crops",
+        "B": "It is the impact of the surge in demand due to rapid economic growth",
+        "C": "It is the impact of the price levels of previous year on the calculation of inflation rate",
+        "D": "None of the statements a), b) and c) given above is correct in this context"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-PRE-RBI-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-RBI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIFUNMON_2011_Q42",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 88,
+      "originalQuestionNumber": 42,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "The lowering of bank rate by the reserve bank of India leads to?",
+      "options": {
+        "A": "More liquidity in the market",
+        "B": "Less liquidity in the market",
+        "C": "No change in the liquidity in the market",
+        "D": "Mobilization of more deposits by commercial banks"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS3-ECO-MONETARY-POLICY-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi",
+            "bank rate"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_RBIINDBAN_2011_Q45",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 89,
+      "originalQuestionNumber": 45,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "Why is the offering of 'teaser loans'' by commercial banks a cause of economic concern? 1. The teaser loans are considered to be an aspect of sub-prime lending and banks may be exposed to the risk of defaulters in future. 2. In India, the teaser loans are mostly given to inexperienced entrepreneurs to set up manufacturing or export units. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIINDBAN_2011_Q46",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 90,
+      "originalQuestionNumber": 46,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "In India, which of the following have the highest share in the disbursement of credit to agriculture and allied activities?",
+      "options": {
+        "A": "Commercial banks",
+        "B": "Cooperative banks",
+        "C": "Regional rural banks",
+        "D": "Microfinance institutions"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIINDBAN_2011_Q47",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 91,
+      "originalQuestionNumber": 47,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "Microfinance is the provision of financial services to people of low -income groups. This includes both the consumers and the self -employed. The service/services rendered under micro - finance is/are: 1. Credit facilities. 2. Savings faculties. 3. Insurance facilities. 4. Fund transfer faculties. Select the correct answer using the codes given the lists?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 4 only",
+        "C": "2 and 3 only",
+        "D": "1,2 ,3 and 4"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CLI_2011_Q50",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 92,
+      "originalQuestionNumber": 50,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "Microbial fuel cells are considered a source of sustainable energy. Why? 1. They use living organisms as catalysts to generate electricity from certain substrates. 2. They use a variety of inorganic materials as substrates. 3. They can be installed in waste water treatment plants to cleanse water and produce electricity. Which of the following statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2, and 3"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-WASTE-MT01",
+      "syllabusNodeId": "GS3-ENV-WASTE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_LAW_2011_Q69",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 93,
+      "originalQuestionNumber": 69,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "Regarding 'carbon credits'' , which one of the following statements is not correct ?",
+      "options": {
+        "A": "The carbon credit system was ratified in conjunction with the Kyoto protocol.",
+        "B": "Carbon credits are awarded to countries or groups that have reduced greenhouse gases below their emission quota.",
+        "C": "The goal of the carbon credit system is to limit the increase of carbon dioxide emission.",
+        "D": "Carbon credits are traded at a price fixed from time to time by the United Nations environment programs."
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2011_Q079",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 94,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "79. Recently, a series of uprisings of people referred to\nas ‘Arab Spring’ originally started from",
+      "options": {
+        "A": "Egypt",
+        "B": "Lebanon",
+        "C": "Syria",
+        "D": "Tunisia"
+      },
+      "answer": "D",
+      "nodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "syllabusNodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2011_Q083",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 95,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "83. The “New START” treaty was in the news. What is\nthis treaty? (2011)",
+      "options": {
+        "A": "It is a bilateral strategic nuclear arms reduction treaty between\nthe USA and the Russian Federation",
+        "B": "It is a multilateral energy security cooperation treaty among\nthe members of the East Asia Summit",
+        "C": "It is a treaty between the Russian Federation and the European\nUnion for the energy security cooperation",
+        "D": "It is a multilateral cooperation treaty among the BRICS\ncountries for the promotion of trade"
+      },
+      "answer": "A",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2011_Q084",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 96,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "84. Southeast Asia has captivated the attention of global\ncommunity over space and time as a geostrategically\nsignificant region. Which among the following is the\nmost convincing explanation for this global perspective? (2011)",
+      "options": {
+        "A": "It was the hot theatre during the Second World War",
+        "B": "Its location between the Asian powers of China and India",
+        "C": "It was the arena of superpower confrontation during the Cold\nWar period",
+        "D": "Its location between the Pacific and Indian oceans and its preeminent maritime character"
+      },
+      "answer": "D",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_IR_2011_Q085",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 97,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "85. With reference to “Look East Policy” of India,\nconsider the following statements: (2011)\n1. \nIndia wants to establish itself as an important regional player\nin East Asian affairs.\n2. \nIndia wants to plug the vacuum created by the termination of\nthe Cold War.\n3. \nIndia wants to restore the historical and cultural ties with its\nneighbours in Southeast and East Asia.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "B",
+      "nodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "syllabusNodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2011_Q086",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 98,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "86. Recently, the USA decided to support India’s membership in multi-lateral export control regimes called the\n“Australia Group” and the “Wassenaar Arran-gement”.\nWhat is the difference between them (2011)\n1. \nThe Australia Group is an informal arrangement which aims\nto allow exporting countries to minimize the risk of assisting\nchemical and biological weapons proliferation, whereas the\nWassenaar Arrangement is a formal group under the OECD\nholding identical objectives.\n2. \nThe Australia Group comprises predominantly of Asian, African and North American countries, whereas the member countries of Wassenaar Arrangement are pre-dominantly from the\nEuropean Union and American continents.\nWhich of the statements given above is/are correct ?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2011_Q087",
+      "year": 2011,
+      "paper": "GS",
+      "questionNumber": 99,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "87. Between India and East Asia, the navigation time\nand distance can be greatly reduced by which of the\nfollowing? (2011)\n1. \nDeepening the Malacca straits between Malaysia and Indonesia.\n2. \nOpening a new canal across the Kra isthmus between the Gulf\nof Siam and Andaman Sea.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "syllabusNodeId": "GS2-IR-NEIGHBOURS-MT03",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    }
+  ]
+}

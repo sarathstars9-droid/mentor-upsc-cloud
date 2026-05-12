@@ -1,0 +1,2553 @@
+{
+  "schemaVersion": "mentoros-ca-v2",
+  "datasetName": "Current Affairs - International Relations",
+  "datasetMode": "PDF_FULL_39P_IR_SECTION_STRICT_1_TO_1",
+  "sourceFile": "ir.pdf",
+  "sourcePages": 39,
+  "extractionScope": "Section 1: INTERNATIONAL RELATIONS only; stops before Section 2: CURRENT AFFAIRS",
+  "totalQuestions": 87,
+  "yearRange": {
+    "min": 2011,
+    "max": 2024
+  },
+  "yearWiseCounts": {
+    "2024": 10,
+    "2023": 9,
+    "2022": 12,
+    "2021": 1,
+    "2020": 3,
+    "2019": 4,
+    "2018": 7,
+    "2017": 10,
+    "2016": 11,
+    "2015": 10,
+    "2014": 3,
+    "2012": 1,
+    "2011": 6
+  },
+  "questions": [
+    {
+      "id": "CA_IR_2024_Q001",
+      "sourceQuestionNo": 1,
+      "year": 2024,
+      "question": "1. Consider the following countries: (2024)\n1. Italy 2. Japan\n3. Nigeria 4. South Korea\n5. South Africa\nWhich of the above countries are frequently mentioned in the\nmedia for their low birth rates, or ageing population or declining\npopulation?",
+      "options": {
+        "A": "1, 2 and 4",
+        "B": "1, 3 and 5",
+        "C": "2 and 4 only",
+        "D": "3 and 5 only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a)\nOptions 1, 2 and 4 are correct:\n Italy has a low birth rate and ageing population. The\ncountry has one of the lowest fertility rates in the world\nat around 1.3 children per woman (well below the\nreplacement rate of 2.1). This has led to a rapidly ageing\npopulation, with a significant proportion of the population\nover 65 years old.\n Japan is often highlighted for its aging population and\ndeclining population. The country has one of the oldest\npopulations in the world with over 28% of its population\naged 65 or older. Japan’s birth rate is also very low, at around\n1.4 children per woman leading to a shrinking population.\n South Korea is frequently mentioned for its extremely low\nbirth rate, which is the lowest in the world at around 0.70.8 children per woman. This has led to concerns about a\nrapidly ageing population and a declining workforce.\nOptions 3 and 5 are incorrect:\n Nigeria has one of the highest fertility rates in the world\nat around 4.5-5.3 children per woman and a very young\npopulation. The median age in Nigeria is approximately 18\nyears which makes it one of the youngest countries globally.\n South Africa is not typically associated with low birth rates\nor an ageing population. Fertility rate remains at around 2.2-",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2024_Q002",
+      "sourceQuestionNo": 2,
+      "year": 2024,
+      "question": "2.4 children per woman which is more than the replacement\nrate. The country also has a relatively young population\nwith a median age of approximately 28 years.\n2. Which of the following statements about ‘Exercise\nMitra Shakti-2023’ are correct ? (2024)\n1. \nThis was a joint military exercise between India and Bangladesh.\n2. \nIt commenced in Aundh (Pune).\n3. Joint response during counter-terrorism operations was a goal\nof this operation.\n4. \nThe Indian Air Force was a part of this exercise.\nSelect the answer using the code given below:",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1, and 4",
+        "C": "1, 3 and 4",
+        "D": "2, 3 and 4"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) Statement 1 is incorrect: Exercise Mitra Shakti-2023\nwas a joint military exercise between India and Sri Lanka, not\nBangladesh.\nStatement 2 is correct : The ninth edition of the Joint Military\nexercise “Exercise MITRA SHAKTI-2023” was held at the Foreign Training Node in Aundh, Pune.\nStatement 3 is correct : The primary objective of the exercise\nwas to rehearse sub-conventional operations under Chapter VII\nof the United Nations Charter focusing on joint responses during\ncounter-terrorism operations. Activities included raids, searchand-destroy missions, and heliborne operations. The Scope of\nthe exercise included synergising joint responses during counter-terrorist operations.\nStatement 4 is correct : Indian Air Force was part of this as both\nsides practiced tactical actions such as raid, search and destroy\nmissions, heliborne operations, etc. For the first time, Exercise\nMitra Shakti-2023 included participation from the Indian Air\nForce (15 personnel) and the Sri Lankan Air Force (5 personnel)\nmaking it a bi-service exercise.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "syllabusNodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "microTheme": "India & Neighbourhood / Regional Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2024_Q003",
+      "sourceQuestionNo": 3,
+      "year": 2024,
+      "question": "3. Consider the following pairs: (2024)\nCountry Reason for Being in the News\n1. Argentina Worst economic crisis\n2. Sudan War between the country’s regular army and\nparamilitary forces\n3. Turkey Rescinded its membership of NATO\nHow many of the pairs given above are correctly matched?",
+      "options": {
+        "A": "Only one pair",
+        "B": "Only two pairs",
+        "C": "All three pairs",
+        "D": "None of the pairs"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Pair 1 is correctly matched : Argentina has been experiencing a severe economic crisis characterized by hyperinflation, a depreciating peso, and fiscal instability. Persistent\nfiscal deficits and chronic inflation are longstanding issues in\nArgentina. The inflation rate averaged 190% between 1944 and\n2023, and the government defaulted on its sovereign debt nine\ntimes (of which three occurred during the past two decades).\nPair 2 is correctly matched : Since April 2023, Sudan has been\nembroiled in a violent conflict between the Sudanese Armed\nForces (SAF) and the paramilitary Rapid Support Forces\n(RSF). This civil war has resulted in significant casualties and\ndisplacement of civilians.\nPair 3 is incorrectly matched : As of February 2025, Turkey\nremains a member of the North Atlantic Treaty Organization\n(NATO). It plays a strategic role in the alliance particularly due to\nits geographic location bridging Europe and Asia.\n10\nInternational Relations\nand Current Affairs\n \n \n\fUPSC GS Paper-I PYQs\n642",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2024_Q004",
+      "sourceQuestionNo": 4,
+      "year": 2024,
+      "question": "4. Consider the following statements: (2024)\nStatement-I : Sumed pipeline is a strategic route for Persian Gulf\noil and natural gas shipments to Europe.\nStatement-II : Sumed pipeline connects the Red Sea with the\nMediterranean Sea.\nWhich one of the following is correct in respect of the above\nstatements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and StatementII explains Statement-I.",
+        "B": "Both Statement-I and Statement-II are correct, but StatementII does not explain Statement-I.",
+        "C": "Statement-I is correct, but Statement-II is incorrect.",
+        "D": "Statement-I is incorrect, but Statement-II is correct."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) Statement I is correct: The Sumed Pipeline serves as\na crucial conduit for transporting oil from the Persian Gulf to\nEurope especially when transit through the Suez Canal is not\nfeasible. It provides an alternative route, ensuring the continuous flow of energy supplies to European markets.\nStatement II is correct: The Sumed Pipeline runs through\nEgypt, linking the Ain Sukhna terminal on the Red Sea coast\nto the Sidi Kerir terminal on the Mediterranean coast. This\nconnection facilitates the movement of oil between these two significant bodies of water.\nBoth Statement-I and Statement-II are correct, and Statement-II explains Statement-I: The pipeline’s connection between the Red Sea and the Mediterranean Sea is the reason it\nserves as a strategic route for Persian Gulf oil shipments to\nEurope.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2024_Q005",
+      "sourceQuestionNo": 5,
+      "year": 2024,
+      "question": "5. Consider the following statements : (2024)\n1. India is a member of the International Grains Council.\n2. \nA country needs to be a member of the International Grains\nCouncil for exporting or importing rice and wheat.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) The International Grains Council (IGC) is an intergovernmental organization established in 1949 to promote\ncooperation and stability in the global grain trade. It operates under the Grains Trade Convention (GTC), 1995, which\naims to enhance market transparency and international policy coordination. Headquartered in London, United Kingdom,\nthe IGC has 30 member countries, including India, the USA,\nthe EU, China, and Russia, working together to monitor grain\nsupply, demand, and trade policies worldwide.\nStatement 1 is correct : The IGC is an intergovernmental organization that promotes cooperation in the global grain trade. India,\nalong with 29 other countries, is a member of the International\nGrains Council (IGC).\nStatement 2 is incorrect : A country does not need to be a\nmember of the IGC to export or import rice and wheat. Membership in the IGC is not a prerequisite for engaging in international trade of grains. Many countries actively participate in the\nglobal grains market without being members of the IGC.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2024_Q006",
+      "sourceQuestionNo": 6,
+      "year": 2024,
+      "question": "6. Consider the following statements: (2024)\nStatement-1: There is instability and a worsening security situation in the Sahel region.\nStatement-II: There have been military takeovers/coups d’état\nin several countries of the Sahel region in the recent past.\nWhich one of the following is correct in respect of the above\nstatements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and StatementII explains Statement-I.",
+        "B": "Both Statement-I and Statement-II are correct, but StatementII does not explain Statement-I",
+        "C": "Statement-I is correct, but Statement-II is incorrect.",
+        "D": "Statement-I is incorrect, but Statement-II is correct."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) Statement I is correct: The Sahel region has been experiencing escalating instability and poor security situation due\nto a combination of factors, including violent extremism, weak\ngovernance, climate change, and displacement crises. Terrorist\ngroups such as Jama’at Nusrat al-Islam wal-Muslimin (JNIM)\nand Islamic State Sahel Province (IS Sahel) have expanded\ntheir influence, leading to widespread violence and insecurity\nacross countries like Mali, Burkina Faso, and Niger.\nStatement II is correct : Over the last three years, the African\nSahel region has witnessed a wave of coups d’état in seven countries that extend from Guinea on the Atlantic Ocean to Sudan on\nthe Red Sea. Five military coups succeeded in five countries, in\nMali, Burkina Faso, Guinea, Niger, and Gabon, while three\nother nations—Tunisia, Chad, and Sudan—had constitutional\ncoups.\nThese coups have further destabilized the region by weakening\ngovernance structures and creating power vacuums that terrorist groups have exploited. The coups disrupted counterterrorism\nefforts, weakened state institutions, and led to the withdrawal of\nforeign military support (e.g., France’s Operation Barkhane),\nall of which have emboldened extremist groups to expand their\nactivities.\nThus, both Statement-I and Statement-II are correct, and\nStatement-II correctly explains Statement-I.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2024_Q007",
+      "sourceQuestionNo": 7,
+      "year": 2024,
+      "question": "7. Consider the following statements: (2024)\nStatement-I: The European Parliament approved The Net-Zero\nIndustry Act recently.\nStatement-II: The European Union intends to achieve carbon\nneutrality by 2040 and therefore aims to develop all of its own\nclean technology by that time.\nWhich one of the following is correct in respect of the above\nstatements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and StatementII explains Statement-I.",
+        "B": "Both Statement-I and Statement-II are correct, but StatementII does not explain Statement-I",
+        "C": "Statement-I is correct, but Statement-II is incorrect",
+        "D": "Statement-I is incorrect, but Statement-II is correct"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Statement I is correct : The European Parliament recently approved the Net-Zero Industry Act (NZIA) to bolster\nEU production in technologies needed for decarbonization. The\n“Net-Zero Industry Act”, sets a target for Europe to produce 40%\nof its annual deployment needs in net-zero technologies by\n2030, based on National Energy and Climate Plans (NECPs).\nStatement 2 is incorrect: The European Union aims to be\ncarbon-neutral by 2050, not 2040, an economy with net-zero\ngreenhouse gas emissions. By 2040, the EU aims to reduce net\ngreenhouse gas emissions by 90% compared to 1990 levels, as\npart of its interim climate goals. This objective is at the heart of\nthe European Green Deal, and is a legally binding target thanks to\nthe European Climate Law.\n \n \n\fInternational Relations and Current Affairs 643",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2024_Q008",
+      "sourceQuestionNo": 8,
+      "year": 2024,
+      "question": "8. Consider the following statements: (2024)\nStatement-I: Recently, Venezuela has achieved a rapid recovery\nfrom its economic crisis and succeeded in preventing its people\nfrom fleeing/emigrating to other countries.\nStatement-II: Venezuela has the world’s largest oil reserves\nWhich one of the following is correct in respect of the above\nstatements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and StatementII explains Statement-I",
+        "B": "Both Statement-I and Statement-II are correct, but StatementII does not explain Statement-I",
+        "C": "Statement-I is correct, but Statement-II is incorrect",
+        "D": "Statement-I is incorrect, but Statement-II is correct"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) Venezuela is an example of a petrostate, where the\ngovernment is highly dependent on fossil fuel income, power is\nconcentrated, and corruption is widespread. Petrostates are vulnerable to what economists call Dutch disease, in which a government develops an unhealthy dependence on natural resource\nexports to the detriment of other sectors.\nStatement I is incorrect: While Venezuela has shown modest\neconomic growth in recent years, it is far from achieving a full recovery from its prolonged economic crisis. Poverty, hyperinflation, and deteriorating public services persist, and millions of\nVenezuelans continue to emigrate due to poor living conditions\nand political instability. As of 2025, more than 7.7 million Venezuelans have fled the country, making it one of the largest refugee\ncrises in the world.\nStatement II is correct: Venezuela has the largest amount\nof oil reserves in the world with more than 300 billion barrels\nin reserve. Saudi Arabia has the second-largest amount of oil reserves in the world with 297.5 billion barrels.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2024_Q009",
+      "sourceQuestionNo": 9,
+      "year": 2024,
+      "question": "9. Consider the following statements regarding World\nToilet Organization : (2024)\n1. It is one of the agencies of the United Nations.\n2. \nWorld Toilet Summit, World Toilet Day and World Toilet College are the initiatives of this organization, to inspire action to\ntackle the global sanitation crisis.\n3. \nThe main focus of its function is to grant funds to the least developed countries and developing countries to achieve the end\nof open defecation.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "2 only",
+        "B": "3 only",
+        "C": "1 and 2",
+        "D": "2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) Statement 1 is incorrect: The World Toilet Organization (WTO) is an independent global non-profit organisation\ncommitted to improving toilet and sanitation conditions worldwide. It was founded in 2001. It is not an agency of the United\nNations but it was granted consultative status with the United\nNations Economic and Social Council in 2013.\nStatement 2 is correct: Through its initiatives, such as World\nToilet Day, World Toilet Summit, World Toilet College and\nSaniShop, WTO continues to mobilise an international network\nof partners, supporters, donors, governments and international\norganisations to advocate for effective sanitation policies to ensure health, dignity and well-being for everyone, everywhere.\nThe World Toilet Summit and World Toilet Day were launched\nin 2001, and the World Toilet College was introduced in 2005 to\naddress sanitation challenges through education and training.\nStatement 3 is incorrect: The main focus of the organisation is\nto continue to build the global sanitation movement through\ncollaborative action. The WTO’s primary focus is on advocacy,\neducation, and capacity building rather than directly granting\nfunds. It provides a platform for stakeholders to collaborate and\nexchange knowledge but does not primarily act as a funding body.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2024_Q010",
+      "sourceQuestionNo": 10,
+      "year": 2024,
+      "question": "10. Which one of the following is the correct description of “100 Million Farmers”? (2024)",
+      "options": {
+        "A": "It is a platform for accelerating the transition towards food and\nwater systems that are net-zero (carbon), nature-positive and\nthat aims to increase farmer resilience.",
+        "B": "It is an international alliance and a network of individuals\nand farming organisations interested in supporting and\nstrengthening the development of organic animal husbandry.",
+        "C": "It is a digital platform fully integrated with service providers\nand built on blockchain that lets buyers, sellers and third\nparties trade fertilizers quickly and securely.",
+        "D": "It is a platform with the mission of encouraging the farmers\nto form Farmer Product Organisations or Agribusiness\nConsortiums, thus facilitating the access to global open\nmarkets to sell their products."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) The “100 Million Farmers” initiative, spearheaded\nby the World Economic Forum, aims to revolutionize global\nfood systems by encouraging sustainable agricultural practices.\nIts key goals include achieving net-zero carbon emissions, improving biodiversity, and strengthening farmers’ resilience\nto the effects of climate change. The platform unites diverse\nstakeholders—such as businesses, governments, farmers, international organizations, and innovators—to collaboratively\nadvance this transformation.\nBy prioritizing regenerative agriculture and climate adaptation strategies, the initiative seeks to help farmers transition to\nsustainable practices through innovative financial models and\npartnerships. It also aims to position food systems and farmers\nat the forefront of global efforts to address climate and environmental challenges, aligning with broader sustainability objectives.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2023_Q011",
+      "sourceQuestionNo": 11,
+      "year": 2023,
+      "question": "11. Consider the following pairs: (2023)\nArea of conflict Country Where it is Located\n1. Donbas Syria\n2. Kachin Ethiopia\n3. Tigray North Yemen\nHow many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) Pair 1 is incorrectly matched: The Donbas region in\neastern Ukraine includes Donetsk and Luhansk, which border\nRussia. These areas host the Russia-backed separatist entities,\nthe Donetsk People’s Republic (DPR) and Luhansk People’s Republic (LPR). Collectively, the entire region, including these territories, is referred to as Donbas.\nPair 2 is incorrectly matched: Kachin Region lies in the northern part of Myanmar. The Kachin Independence Army (KIA)\nhas been fighting against Myanmar’s military for greater autonomy.\nPair 3 is incorrectly matched: Tigray is not located in North\nYemen. It is a region in northern Ethiopia where a conflict\nerupted in November 2020 between the Ethiopian federal government and the Tigray People’s Liberation Front (TPLF).\n \n \n\fUPSC GS Paper-I PYQs\n644",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2023_Q012",
+      "sourceQuestionNo": 12,
+      "year": 2023,
+      "question": "12. Consider the following pairs: (2023)\nRegions Often in\nNews\nReason for Being Mentioned in\nNews\n1. North Kivu and Ituri War between Armenia and Azerbaijan\n2. Nagorno-Karabakh Insurgency in Mozambique\n3. Kherson and Zaporizhzhia\nDispute between Israel and Lebanon\nHow many of the above pairs are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) Pair 1 is incorrectly matched : North Kivu and Ituri\nare located in the eastern region of the Democratic Republic of\nCongo. In these two provinces a “State of Siege” was declared in\nresponse to escalating violence.\nPair 2 is incorrectly matched: Nagorno-Karabakh is a landlocked, mountainous region at the heart of a long-standing\nconflict between Azerbaijan and its predominantly Armenian\npopulation, which is backed by neighboring Armenia. Although\ninternationally recognized as part of Azerbaijan, the region remains a source of ongoing dispute.\nPair 3 is incorrectly matched: Russia has disclosed voting results indicating significant backing from four Ukrainian provinces— Donetsk, Luhansk, Zaporizhzhia, and Kherson to unite\nwith Russia.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2023_Q013",
+      "sourceQuestionNo": 13,
+      "year": 2023,
+      "question": "13. Consider the following statements: (2023)\nStatement-I: Israel has established diplomatic relations with\nsome Arab States.\nStatement-II: The ‘Arab Peace Initiative’ mediated by Saudi Arabia was signed by Israel and Arab League.\nWhich one of the following is correct in respect of the above\nstatements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and StatementII is the correct explanation for Statement-I",
+        "B": "Both Statement-I and Statement-II are correct and StatementII is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Statement 1 is correct : Israel has established diplomatic relations with several Arab states over the years.\nEgypt was the first Arab country to sign a peace treaty with Israel\nin 1979, followed by Jordan in 1994.\nThe Abraham Accords of 2020 led to normalization agreements\nbetween Israel and the United Arab Emirates, Bahrain, Sudan,\nand Morocco. These agreements marked significant milestones\nin Arab-Israeli relations.\nStatement 2 is incorrect : The Arab Peace Initiative (API) was\nproposed by Saudi Arabia in 2002 and endorsed by the Arab\nLeague but it was not signed by Israel. The API offered normalization of relations between Arab states and Israel in exchange\nfor Israel’s withdrawal from occupied territories, the establishment of a Palestinian state, and a “just solution” for Palestinian\nrefugees.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2023_Q014",
+      "sourceQuestionNo": 14,
+      "year": 2023,
+      "question": "14. In recent years Chad, Guinea, Mali and Sudan\ncaught the international attention for which one of the\nfollowing reasons common to all of them? (2023)",
+      "options": {
+        "A": "Discovery of rich deposits of rare earth elements",
+        "B": "Establishment of Chinese military bases",
+        "C": "Southward expansion of Sahara Desert",
+        "D": "Successful coups"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) In recent years, several African nations have experienced military takeovers. In Chad, after President Idriss Déby’s death in 2021, his son led a military coup and established\na Transitional Military Council. In Sudan, General Abdel Fattah\nal-Burhan led a 2021 coup, dissolving the civilian government\nand sparking protests.\nMali saw two military coups in 2020 and 2021, with Colonel Assimi Goita overthrowing President Ibrahim Boubacar Keïta and\nlater taking power himself. In Guinea, Colonel Mamady Doumbouya led a 2021 coup, ousting President Alpha Conde after his\ncontroversial bid for a third term.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2023_Q015",
+      "sourceQuestionNo": 15,
+      "year": 2023,
+      "question": "15. Consider the following statements about G-20:\n (2023)\n1. \nThe G-20 group was originally established as a platform for\nthe Finance Ministers and Central Bank Governors to discuss\ninternational economic and financial issues.\n2. \nDigital public infrastructure is one of India’s G-20 priorities.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Statement 1 is correct : The G-20 was established in\n1999 in response to the financial crises of the late 1990s. It began as a forum for Finance Ministers and Central Bank Governors from major economies to discuss international economic\nand financial issues. The primary aim was to bring together\nboth developed and emerging economies to promote international financial stability.\nStatement 2 is correct : During its G-20 presidency in 2023,\nIndia has prioritized digital public infrastructure (DPI) as a\nkey agenda item. India has been a global leader in developing\nand implementing DPI such as the Aadhaar biometric identification system, the Unified Payments Interface (UPI), and\nthe DigiLocker platform. India aims to share its expertise and\npromote the adoption of DPI globally to foster inclusive growth\nand digital transformation.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2023_Q016",
+      "sourceQuestionNo": 16,
+      "year": 2023,
+      "question": "16. Consider the following statements: (2023)\nStatement-I: Recently, the United States of America (USA) and\nthe European Union (EU) have launched the Trade and Technology Council.\nStatement-II: The USA and the EU claim that through this they\nare trying to bring technological progress and physical productivity under their control.\nWhich one of the following is correct in respect of the above\nstatements?",
+      "options": {
+        "A": "Both Statement-I and Statement-II are correct and StatementII is the correct explanation for Statement-I",
+        "B": "Both Statement-I and Statement-II are correct and StatementII is not the correct explanation for Statement-I",
+        "C": "Statement-I is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Statement-I is correct: The U.S.-EU Trade and Technology Council (TTC) was launched in June 2021 as a forum\nto strengthen transatlantic cooperation on trade, technology, and supply chain issues. The TTC aims to address shared\nchallenges such as climate change, digital governance, and global\ntrade standards and counter the influence of non-market economies like China.\nStatement-II is incorrect : The primary goal of the U.S.-EU Trade\nand Technology Council is not to bring technological progress\nand physical productivity “under their control.” The TTC focuses on fostering collaboration in areas such as:\n \n \n\fInternational Relations and Current Affairs 645\n Setting global standards for emerging technologies (e.g., AI,\nsemiconductors).\n Ensuring secure and resilient supply chains.\n Promoting democratic values in technology governance.\n Addressing unfair trade practices and economic coercion.\nThe TTC emphasizes cooperation and shared governance, not unilateral control.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2023_Q017",
+      "sourceQuestionNo": 17,
+      "year": 2023,
+      "question": "17. Consider the following statements: (2023)\nThe ‘Stability and Growth Pact’ of the European Union is a treaty\nthat\n1. \nlimits the levels of the budgetary deficit of the countries of the\nEuropean Union\n2. \nmakes the countries of the European Union to share their infrastructure facilities\n3. \nenables the countries of the European Union to share their\ntechnologies\nHow many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) Statement 1 is correct : The Stability and Growth\nPact (SGP) is an agreement among the member states of the\nEuropean Union (EU) to facilitate and maintain the stability of\nthe Economic and Monetary Union (EMU). It sets limits on\nthe budgetary deficits and public debt of EU member states.\nIt requires countries to keep their budget deficits below 3% of\nGDP and public debt below 60% of GDP or to be working towards these targets.\nStatements 2 and 3 are incorrect :\n The Stability and Growth Pact does not mandate or\ninvolve sharing infrastructure facilities among EU\nmember states. It is purely focused on fiscal discipline and\neconomic stability.\n The Stability and Growth Pact does not directly deal\nwith technology sharing or cooperation in technological\ndevelopment.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2023_Q018",
+      "sourceQuestionNo": 18,
+      "year": 2023,
+      "question": "18. Consider the following statements: (2023)\n1. \nRecently, all the countries of the United Nations have adopted\nthe first-ever compact for international migration, the ‘Global\nCompact for Safe, Orderly and Regular Migration (GCM)’.\n2. The objectives and commitments stated in the GCM are binding\non the UN member countries.\n3. \nThe GCM addresses internal migration or internally displaced\npeople also in its objectives and commitments.\nHow many of the above statements are correct?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) Statement 1 is incorrect: The Global Compact for\nSafe, Orderly and Regular Migration (GCM) was adopted by\nmost UN member states in December 2018 but not all. Countries like the US, Hungary, Poland, Israel, and the Czech Republic\ndid not endorse it. It is the first global framework on international migration.\nStatement 2 is incorrect: The GCM is a non-binding agreement. It is a cooperative framework that provides guidelines and\nbest practices for managing international migration but does not\nimpose legally binding obligations on UN member states. It\nrespects the sovereignty of states and is intended to foster international cooperation.\nStatement 3 is incorrect: The GCM specifically focuses on\ninternational migration and does not address internal migration or internally displaced people (IDPs). Internal displacement is covered by other frameworks such as the Guiding\nPrinciples on Internal Displacement.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2023_Q019",
+      "sourceQuestionNo": 19,
+      "year": 2023,
+      "question": "19. Which one of the following countries has been\nsuffering from decades of civil strife and food shortages\nand was in news in the recent past for its very severe\nfamine? (2023)",
+      "options": {
+        "A": "Angola",
+        "B": "Costa Rica",
+        "C": "Ecuador",
+        "D": "Somalia"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) Somalia, the Eastern African nation has endured decades of civil strife and political instability since its central\ngovernment collapsed in 1991, leading to widespread violence\nand displacement. Recurring droughts exacerbated by climate change and conflict have caused severe food shortages\nand famine. In 2022 and 2023 Somalia faced one of its worst\ndroughts resulting in a humanitarian crisis. Organizations like\nthe United Nations and the World Food Programme have highlighted the dire situation, calling for urgent aid. The combination\nof prolonged conflict, economic challenges, and environmental\nfactors has made Somalia a focal point of global attention for its\nsevere famine conditions.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2022_Q020",
+      "sourceQuestionNo": 20,
+      "year": 2022,
+      "question": "20. With reference to the United Nations Convention\non the Law of Sea, consider the following statements:\n (2022)\n1. \nA coastal state has the right to establish the breadth of its territorial sea up to a limit not exceeding 12 nautical miles, measured from baseline determined in accordance with the convention.\n2. \nShips of all states, whether coastal or land-locked, enjoy the\nright of innocent passage through the territorial sea.\n3. \nThe Exclusive Economic Zone shall not extend beyond 200\nnautical miles from the baseline from which the breadth of the\nterritorial sea is measured.\nWhich of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) The United Nations Convention on the Law of the Sea\n(UNCLOS), 1982, defines maritime zones and rights of coastal\nand landlocked states.\nStatement 1 is correct: According to Article 3 of the United\nNations Convention on the Law of the Sea (UNCLOS), every\ncoastal state has the right to establish its territorial sea up to a\nmaximum breadth of 12 nautical miles from baselines determined under the convention. The state exercises full sovereignty over this zone, including its airspace and seabed.\nStatement 2 is correct: Article 17 of UNCLOS provides that all\nstates, including landlocked ones, have the right of “innocent\npassage” through the territorial sea of a coastal state. Innocent passage means passing through the sea without harming\nthe security, peace, or environment of the coastal state.\nStatement 3 is correct: Article 57 of UNCLOS specifies that an\nExclusive Economic Zone (EEZ) extends up to 200 nautical\nmiles from the baseline used to measure the territorial sea. In\nthis zone, the coastal state has special rights over marine resources (fishing, oil exploration, etc.) but it cannot prohibit\nnavigation or overflight by foreign states.\n \n \n\fUPSC GS Paper-I PYQs\n646",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2022_Q021",
+      "sourceQuestionNo": 21,
+      "year": 2022,
+      "question": "21. Consider the following countries: (2022)\n1. Armenia 2. Azerbaijan\n3. Croatia 4. Romania\n5. Uzbekistan\nWhich of the above are members of the Organization of Turkic\nStates?",
+      "options": {
+        "A": "1, 2 and 4",
+        "B": "1 and 3",
+        "C": "2 and 5",
+        "D": "3, 4 and 5"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Organization of Turkic States (OTS) formerly known\nas the Turkic Council was established in 2009 under the Nakhchivan Agreement. Its primary objective is to promote comprehensive cooperation among Turkic-speaking countries, fostering\ncollaboration based on shared history, culture, and language. Full\nMembers include Azerbaijan, Kazakhstan, Kyrgyzstan, Türkiye\nand Uzbekistan and Observer States are Hungary, Turkmenistan, and the Turkish Republic of Northern Cyprus (TRNC). The\nOTS Secretariat is headquartered in Istanbul, Türkiye.\nOptions (c) is correct:\n Azerbaijan is a full member of OTS. It has strong ethnic,\nlinguistic, and cultural ties with Turkey and other Turkic\nnations.\n Uzbekistan is a full member of OTS, joining officially in\n2019. It is a Turkic-speaking Central Asian country with\nhistorical connections to the Turkic world.\nArmenia is not a Turkic country and is not a member of OTS.\nIt has historical conflicts with Azerbaijan, especially over Nagorno-Karabakh.\nCroatia is not a Turkic-speaking country and not a member\nof OTS. It is part of the European Union (EU) and NATO.\nRomania is not a Turkic-speaking country and not a member\nof OTS. It has cultural ties with Hungary and the Balkans but\nnot with the Turkic world.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2022_Q022",
+      "sourceQuestionNo": 22,
+      "year": 2022,
+      "question": "22. Consider the following statements: (2022)\n1. \nBidibidi is a large refugee settlement in north-western Kenya.\n2. Some people who fled from South Sudan civil war live in Bidibidi.\n3. \nSome people who fled from civil war in Somalia live in Dadaab\nrefugee complex in Kenya.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Statement 1 is incorrect: Bidibidi is not in Kenya. It\nis one of the largest refugee settlements in the world located\nin north-western Uganda, near the border with South Sudan.\nStatement 2 is correct: Bidibidi was established in 2016 to accommodate refugees fleeing the civil war in South Sudan. Bidibidi refugee settlement in Uganda shelters people displaced\nby the South Sudan civil war (2013–2018). Uganda hosts over\n1 million South Sudanese refugees with Bidibidi being the\nlargest settlement.\nStatement 3 is correct: The Dadaab refugee complex, located in north-eastern Kenya, has been a major shelter for Somali\nrefugees since the outbreak of civil war in Somalia in 1991. It\nremains one of the largest and longest-standing refugee camps\nglobally.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2022_Q023",
+      "sourceQuestionNo": 23,
+      "year": 2022,
+      "question": "23. With reference to the United Nations General\nAssembly, consider the following statements : (2022)\n1. \nThe UN General Assembly can grant observer status to the\nnon-member States.\n2. \nInter-governmental organisations can seek observer status in\nthe UN General Assembly.\n3. \nPermanent Observers in the UN General Assembly can maintain missions at the UN headquarters.\nWhich of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) The United Nations General Assembly (UNGA) is\none of the six principal organs of the United Nations (UN). It\nis responsible for granting observer status to non-member entities including states and intergovernmental organizations\n(IGOs).\nStatement 1 is correct: The UNGA can grant observer status\nto non-member states. Having observer status allows them to\nparticipate in its sessions and work without voting rights.\nFor example, the Holy See (Vatican City) and Palestine have\nPermanent Observer status in the UN.\nStatement 2 is correct: Inter-governmental organizations\n(IGOs) can apply for observer status in the UNGA. Examples:\nEuropean Union (EU), African Union (AU) and International\nOrganization for Migration (IOM) have observer status at the\nUN.\nStatement 3 is correct: Permanent Observers at the UNGA\ncan establish diplomatic missions at the UN Headquarters\nin New York. Example: The Holy See and Palestine maintain\nPermanent Observer Missions at the UN.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2022_Q024",
+      "sourceQuestionNo": 24,
+      "year": 2022,
+      "question": "24. With reference to the “United Nations Credentials\nCommittee”, consider the following statements: \n(2022)\n1. \nIt is a committee set up by the UN Security Council and works\nunder its supervision.\n2. It traditionally meets in March, June and September every year.\n3. \nIt assesses the credentials of all UN members before submitting a report to the General Assembly for approval.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "3 only",
+        "B": "1 and 3",
+        "C": "2 and 3",
+        "D": "1 and 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) The United Nations Credentials Committee is a subsidiary committee of the UN General Assembly (UNGA) and\nnot the UN Security Council. It is responsible for reviewing the\ncredentials of representatives of UN member states and reporting its findings to the General Assembly.\nStatement 1 is incorrect: The Credentials Committee is established by the UN General Assembly (UNGA), not the UN Security Council (UNSC). It operates independently of the UNSC\nand reports directly to the General Assembly.\nStatement 2 is incorrect: There is no fixed schedule for the\nCredentials Committee. It usually meets before the annual General Assembly session in September and whenever necessary. The statement that it meets three times a year (March,\nJune, and September) is not correct.\nStatement 3 is correct: The committee reviews and validates\nthe credentials of representatives of all UN member states.\nIt then submits a report to the General Assembly which then\nvotes on whether to accept or reject the credentials. This process\nensures that only legitimate representatives of member states\nparticipate in UN meetings and decisions.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2022_Q025",
+      "sourceQuestionNo": 25,
+      "year": 2022,
+      "question": "25. Consider the following: (2022)\n1. Asian Infrastructure Investment Bank\n2. Missile Technology Control Regime\n3. Shanghai Cooperation Organisation\nIndia is a member of which of the above?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3\n \n \n\fInternational Relations and Current Affairs 647"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) Option 1 is correct : Asian Infrastructure Investment\nBank (AIIB) is a multilateral development bank headquartered in Beijing, China. It focuses on infrastructure financing in\nthe Asia-Pacific region. India is a founding member (member\nsince 2016) and the second-largest shareholder after China.\nOption 2 is correct : Missile Technology Control Regime\n(MTCR) is an informal political agreement among 35 member countries to prevent the proliferation of missile technology capable of carrying WMDs (weapons of mass destruction).\nIndia became a full member in 2016, helping strengthen its\nmissile development programs.\nOption 3 is correct: Shanghai Cooperation Organisation\n(SCO) is a Eurasian political, economic, and security alliance\noriginally led by China and Russia. India joined as a full member\nin 2017 alongside Pakistan.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2022_Q026",
+      "sourceQuestionNo": 26,
+      "year": 2022,
+      "question": "26. Consider the following statements: (2022)\n1. \nVietnam has been one of the fastest-growing economies in the\nworld in the recent years.\n2. \nVietnam is led by a multi-party political system.\n3. \nVietnam’s economic growth is linked to its integration with\nglobal supply chains and focus on exports.\n4. For a long time, Vietnam’s low labour costs and stable exchange\nrates have attracted global manufacturers.\n5. \nVietnam has the most productive e-service sector in the Indo-Pacific region.\nWhich of the statements given above are correct?",
+      "options": {
+        "A": "2 and 4",
+        "B": "3 and 5",
+        "C": "1, 3 and 4",
+        "D": "1 and 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Statement 1 is correct: Vietnam has been one of the\nfastest-growing economies in recent years, with GDP growth\naveraging 6-7% annually. Strong manufacturing, exports,\nand foreign direct investment (FDI) have driven growth.\nStatement 2 is incorrect: Vietnam is a one-party communist\nstate led by the Communist Party of Vietnam (CPV). There is\nno multi-party system in the country.\nStatement 3 is correct: Vietnam’s economic growth is highly\nlinked to its role in global supply chains, particularly in electronics, textiles, and manufacturing. It is a key exporter to the\nUS, China, and the EU.\nStatement 4 is correct: Vietnam has long attracted global\nmanufacturers due to low labour costs, a skilled workforce,\nand currency stability. Major companies like Samsung, Apple\n(via suppliers), and Nike have expanded production in Vietnam.\nStatement 5 is incorrect: While Vietnam has a growing digital\neconomy, it does not have the most productive e-service sector in the Indo-Pacific. Countries like India and Singapore lead\nin e-services and digital innovation in the region.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "syllabusNodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "microTheme": "India & Neighbourhood / Regional Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2022_Q027",
+      "sourceQuestionNo": 27,
+      "year": 2022,
+      "question": "27. The term “Levant” often heard in the news roughly\ncorresponds to which of the following regions? (2022)",
+      "options": {
+        "A": "Region along the eastern Mediterranean shores",
+        "B": "Region along North African shores stretching from Egypt to\nMorocco",
+        "C": "Region along Persian Gulf and Horn of Africa",
+        "D": "The entire coastal areas of Mediterranean Sea"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) The Levant refers to the eastern Mediterranean region\ncovering Syria, Lebanon, Jordan, Israel, Palestine and parts\nof Turkey and Egypt (Sinai Peninsula). It is derived from the\nFrench word lever (to rise) and signifies the eastward direction\nof the rising sun. This region has been historically significant for\ntrade, ancient civilizations, and conflicts. The term is also associated with the Islamic State of Iraq and the Levant (ISIL), a\ndesignated terrorist organization.\nOption (b) is incorrect : Region along North African shores\nstretching from Egypt to Morocco is generally referred to as\nthe Maghreb, not the Levant. The Maghreb includes Morocco,\nAlgeria, Tunisia, Libya, and Mauritania with Egypt sometimes\nincluded in broader definitions.\nOption (c) is incorrect : Region along Persian Gulf and Horn\nof Africa includes countries such as Saudi Arabia, UAE, Oman,\nYemen (Persian Gulf), and Somalia, Djibouti, Eritrea (Horn\nof Africa).\nOption (d) is incorrect : The Mediterranean coastline includes\nregions from Southern Europe, North Africa, and the Levant\nbut the term “Levant” does not cover the entire Mediterranean.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2022_Q028",
+      "sourceQuestionNo": 28,
+      "year": 2022,
+      "question": "28. With reference to the “G20 Common Framework”,\nconsider the following statements : (2022)\n1. \nIt is an initiative endorsed by the G20 together with the Paris\nClub.\n2. \nIt is an initiative to support Low Income Countries with unsustainable debt.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) The G20 Common Framework for Debt Treatments\nbeyond the Debt Service Suspension Initiative (DSSI) was\nintroduced in November 2020 to help low-income countries\n(LICs) manage unsustainable debt burdens caused by economic shocks like the COVID-19 pandemic.\nStatement 1 is correct: The G20 Common Framework was\njointly developed by the G20 and the Paris Club, a group of major creditor nations that coordinate debt relief efforts. It aims to\nprovide debt restructuring, relief, and sustainability measures for eligible countries.\nStatement 2 is correct: The Common Framework focuses\non low-income countries (LICs) with high debt burdens, particularly those eligible for the International Development\nAssociation (IDA) assistance. It allows for case-by-case debt\nrestructuring, ensuring that LICs can stabilize their economies\nand recover from financial crises.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2022_Q029",
+      "sourceQuestionNo": 29,
+      "year": 2022,
+      "question": "29. Consider the following pairs: (2022)\nCountry Region Often Mentioned in the News\n1. Anatolia – Turkey\n2. Amhara – Ethiopia\n3. Cabo Delgado – Spain\n4. Catalonia – Italy\nHow many pairs given above are correctly matched?",
+      "options": {
+        "A": "Only one pair",
+        "B": "Only two pairs",
+        "C": "Only three pairs",
+        "D": "All four pairs"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Pair 1 is correctly matched : Anatolia is a historical\nand geographical region covering most of modern-day Turkiye. It is often in the news due to geopolitical issues, earthquakes, and archaeological discoveries.\nPair 2 is correctly matched : Amhara is a region in Ethiopia\nthat has been in the news due to conflicts involving the Ethiopian government and Tigray forces. It is one of the major\nethnic regions in Ethiopia.\nPair 3 is incorrectly matched : Cabo Delgado is in Mozambique, not Spain. It has been in the news due to Islamist insurgencies and attacks by terrorist groups in northern Mozambique.\n \n \n\fUPSC GS Paper-I PYQs\n648\nPair 4 is incorrectly matched: Catalonia is in Spain, not Italy.\nIt is a region in northeastern Spain that has been in the news due\nto independence movements and political conflicts with the\nSpanish government.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2022_Q030",
+      "sourceQuestionNo": 30,
+      "year": 2022,
+      "question": "30. Consider the following pairs: (2022)\nCountry\nImportant Reason for Being in the News\nRecently\n1. Chad — Setting up of a permanent military base\nby China\n2. Guinea — Suspension of Constitution and Government by military\n3. Lebanon — Severe and prolonged economic depression\n4. Tunisia — Suspension of Parliament by President\nHow many pairs given above are correctly matched?",
+      "options": {
+        "A": "Only one pair",
+        "B": "Only two pairs",
+        "C": "Only three pairs",
+        "D": "All four pairs"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Pair 1 is incorrectly matched : There is no confirmed\nreport of China establishing a permanent military base in\nChad. China has increased its influence in Africa through economic investments and Belt and Road Initiative (BRI) projects but not through a military base in Chad. The only confirmed Chinese overseas military base is in Djibouti.\nPair 2 is correctly matched : In September 2021 Guinea’s military staged a coup by overthrowing President Alpha Condé and\nsuspending the constitution and government. The coup was\nled by Colonel Mamady Doumbouya citing political instability, corruption, and economic issues.\nPair 3 is correctly matched : Lebanon has been facing a deep\neconomic crisis since 2019, marked by: Hyperinflation and\ncurrency collapse, mass unemployment, energy and food shortages, Political instability. The World Bank described Lebanon’s\ncrisis as one of the worst economic collapses since the 19th\ncentury.\nPair 4 is correctly matched : In July 2021 Tunisia’s President\nKais Saied suspended the Parliament and dismissed the Prime\nMinister citing emergency powers due to political and economic instability.In 2022, a new constitution was introduced which\nfurther consolidating Saied’s power and reducing parliamentary authority.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2022_Q031",
+      "sourceQuestionNo": 31,
+      "year": 2022,
+      "question": "31. Which one of the following statements best reflects\nthe issue with Senkaku Islands, sometimes mentioned\nin the news? (2022)",
+      "options": {
+        "A": "It is generally believed that they are artificial islands made by\na country around the South China Sea.",
+        "B": "China and Japan engage in maritime disputes over these\nislands in the East China Sea.",
+        "C": "A permanent American military base has been set up there to\nhelp Taiwan to increase its defence capabilities.",
+        "D": "Though the International Court of Justice declared them as no\nman’s land, some South-East Asian countries claim them."
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) The Senkaku Islands (called “Diaoyu Islands” by\nChina) are a group of uninhabited islands in the East China Sea\nwhich is controlled by Japan but also claimed by China and Taiwan. The islands are located northeast of Taiwan, east of China,\nand southwest of Japan’s Okinawa Prefecture. They cover around\n7 square kilometers and are strategically important due to their\nrich fishing grounds and potential oil and gas reserves. Japan\nclaims it incorporated the islands in 1895 considering them terra\nnullius (land belonging to no one). China claims historical sovereignty over the islands, citing maps and records dating back to\nthe Ming Dynasty. Taiwan also claims the islands and refers to\nthem as Tiaoyutai.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2021_Q032",
+      "sourceQuestionNo": 32,
+      "year": 2021,
+      "question": "32. Consider the following statements: (2021)\n1. \nThe Global Ocean Commission grants licences for seabed exploration and mining in international waters.\n2. \nIndia has received licences for seabed mineral exploration in\ninternational waters.\n3. \n‘Rare earth minerals’ are present on the seafloor in international waters.\nWhich of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Statement 1 is incorrect: The Global Ocean Commission (GOC) does not grant licenses for seabed mining. The International Seabed Authority (ISA) established under the United\nNations Convention on the Law of the Sea (UNCLOS) is responsible for granting licenses for seabed exploration and mining in\ninternational waters.\nStatement 2 is correct: India has been granted licenses by the\nInternational Seabed Authority (ISA) for seabed mineral exploration in international waters. India has received a contract\nto explore polymetallic sulfides in the Indian Ocean Ridge.\nThe Indian Ministry of Earth Sciences and NIOT (National Institute of Ocean Technology) are leading the project.\nStatement 3 is correct: Rare earth elements (REEs) are found\nin deep-sea sediments, polymetallic nodules, and hydrothermal\nvents in international waters. These include elements like neodymium, yttrium, and dysprosium, which are essential for\nelectronics, renewable energy, and defense industries.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2020_Q033",
+      "sourceQuestionNo": 33,
+      "year": 2020,
+      "question": "33. In which one of the following groups are all the four\ncountries members of G20 ? (2020)",
+      "options": {
+        "A": "Argentina, Mexico, South Africa and Turkey",
+        "B": "Australia, Canada, Malaysia and New Zealand",
+        "C": "Brazil, Iran, Saudi Arabia and Vietnam",
+        "D": "Indonesia, Japan, Singapore and South Korea"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) The G20 (Group of Twenty) is an international forum\nconsisting of 19 countries, African Union and the European\nUnion. It represents the world’s largest economies, including\nboth industrialized and developing nations. The G20 focuses on\nglobal economic issues, financial stability, and sustainable development.\n \n \n\fInternational Relations and Current Affairs 649\nG20 Member Countries include Argentina, Australia, Brazil,\nCanada; China, France, Germany, India; Indonesia, Italy, Japan,\nRepublic of Korea (South Korea), Mexico,Russia, Saudi Arabia,\nSouth Africa, Turkiye, United Kingdom, United States, European Union and African Union.\nOption (a) is correct: Argentina, Mexico, South Africa, and Turkey all are members of G20\nOption (b) is incorrect: Malaysia and New Zealand are not a part\nof G20\nOption (c) is incorrect: Iran & Vietnam are not a part of G20\nOption (d) is incorrect: Singapore is not a member of G20.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2020_Q034",
+      "sourceQuestionNo": 34,
+      "year": 2020,
+      "question": "34. Consider the following statements : (2020)\n1. The value of Indo-Sri Lanka trade has consistently increased in\nthe last decade.\n2. \n“Textile and textile articles” constitute an important item of\ntrade between India and Bangladesh.\n3. In the last five years, Nepal has been the largest trading partner\nof India in South Asia.\nWhich of the statements given above is/are correct ?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Statement 1 is incorrect: While India-Sri Lanka trade\nhas grown over time but it has not shown consistent growth every year. Trade fluctuated due to factors such as economic slowdowns, policy changes, and the COVID-19 pandemic.\nStatement 2 is correct: Textiles and textile articles form a\nmajor component of India’s exports to Bangladesh. Bangladesh is a leading global exporter of garments, and it imports raw\nmaterials (cotton, yarn, and fabric) from India for its textile and\napparel industry. Textiles and made-ups account for 56% of Indian imports from Bangladesh.\nStatement 3 is incorrect: Bangladesh, not Nepal, has been India’s largest trading partner in South Asia over the past five\nyears. In the fiscal year 2022-23 India’s exports to Bangladesh\nwere valued at US$ 13.84 billion which makes it one of India’s top\nexport destinations.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "syllabusNodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "microTheme": "India & Neighbourhood / Regional Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2020_Q035",
+      "sourceQuestionNo": 35,
+      "year": 2020,
+      "question": "35. Consider the following pairs : (2020)\nInternational Agreement/Set-up Subject\n1. \nAlma-Ata Declaration Healthcare of the people\n2. Hague Convention Biological and chemical\nweapons\n3. Talanoa Dialogue Global climate change\n4. Under 2 Coalition Child rights\nWhich of the pairs given above is/are correctly matched ?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "4 only",
+        "C": "1 and 3 only",
+        "D": "2, 3 and 4 only"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Pair 1 is correctly matched: The Alma-Ata Declaration (1978) was adopted at the International Conference on\nPrimary Health Care (PHC) in Alma-Ata (now Almaty, Kazakhstan). It emphasized “Health for All” and the importance\nof primary healthcare.\nPair 2 is incorrectly matched: The Hague Conventions of\n1899 and 1907 primarily focus on the laws of war and the conduct of hostilities including the prohibition of certain means of\nwarfare. The control of biological and chemical weapons is covered by the Biological Weapons Convention (BWC) and Chemical\nWeapons Convention (CWC), not the Hague Convention.\nPair 3 is correctly matched: The Talanoa Dialogue was\nlaunched by Fiji during its presidency of the 23rd Conference of the Parties (COP23) to the United Nations Framework\nConvention on Climate Change (UNFCCC) in 2017. It is a facilitative dialogue aimed at encouraging countries to enhance their\nclimate action and ambition under the Paris Agreement. The\nterm “Talanoa” refers to a traditional Pacific Island approach to\ninclusive and participatory dialogue.\nPair 4 is incorrectly matched: The Under2 Coalition is an initiative for climate action which brings together subnational\ngovernments (states, provinces, and cities) to limit global\nwarming below 2°C and not on child rights. Child rights are addressed by other organizations and agreements such as the United Nations Convention on the Rights of the Child (UNCRC).",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2019_Q036",
+      "sourceQuestionNo": 36,
+      "year": 2019,
+      "question": "36. Consider the following statements: (2019)\n1. \nThe United Nations Convention against Corruption (UNCAC)\nhas a ‘Protocol against the Smuggling of Migrants by Land, Sea\nand Air’.\n2. \nThe UNCAC is the ever-first legally binding global anti-corruption instrument.\n3. \nA highlight of the United Nations Convention against Transnational Organized Crime (UNTOC) is the inclusion of a specific\nchapter aimed at returning assets to their rightful owners from\nwhom they had been taken illicitly.\n4. \nThe United Nations Office on Drugs and Crime (UNODC) is\nmandated by its member States to assist in the implementation of both UNCAC and UNTOC.\nWhich of the statements given above are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2, 3 and 4 only",
+        "C": "2 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Statement 1 is incorrect: The Protocol against the\nSmuggling of Migrants by Land, Sea and Air is not part of the\nUnited Nations Convention against Corruption (UNCAC). It\nis a supplementary protocol to the United Nations Convention\nagainst Transnational Organized Crime (UNTOC) adopted in\n2000. The UNCAC was adopted in 2003 and focuses specifically\non combating corruption and does not include provisions related to migrant smuggling.\nStatement 2 is correct: The UNCAC adopted in 2003 is the\nfirst legally binding global instrument to combat corruption.\nIt provides a comprehensive framework for preventing and criminalizing corruption, promoting international cooperation, and\nrecovering illicitly acquired assets. It has been ratified by nearly\nall UN member states.\nStatement 3 is incorrect: The UNTOC primarily focuses on\ncombating transnational organized crime, including human trafficking, migrant smuggling, and illicit arms trafficking. It includes\nprovisions for international cooperation and asset recovery but\nit does not have a specific chapter dedicated to returning assets\nto their rightful owners. This is a key feature of the UNCAC,\nwhich has a detailed chapter (Chapter V) on asset recovery.\nStatement 4 is correct: The United Nations Office on Drugs\nand Crime (UNODC) is responsible for helping countries implement both UNCAC and UNTOC. UNODC provides technical assistance, legal advice, and training to strengthen anti-corruption\nand anti-crime efforts.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2019_Q037",
+      "sourceQuestionNo": 37,
+      "year": 2019,
+      "question": "37. The Global Competitiveness Report is published by\nthe: (2019)",
+      "options": {
+        "A": "International Monetary Fund",
+        "B": "United Nations Conference on Trade and Development",
+        "C": "World Economic Forum",
+        "D": "World Bank\n \n \n\fUPSC GS Paper-I PYQs\n650"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Option (a) is incorrect: The IMF focuses on global financial stability and publishes reports like the World Economic\nOutlook (WEO) and Global Financial Stability Report (GFSR).\nOption (b) is incorrect: UNCTAD publishes reports on trade\nand development such as the World Investment Report (WIR)\nand Trade and Development Report (TDR).\nOption (c) is correct: The World Economic Forum’s annual\nGlobal Competitiveness Report (GCR) ranks economies using the Global Competitiveness Index (GCI). It evaluates factors like infrastructure, innovation, and market efficiency.\nOption (d) is incorrect: The World Bank publishes reports like\nthe World Development Report (WDR). However, this report\nhas been discontinued recently.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2019_Q038",
+      "sourceQuestionNo": 38,
+      "year": 2019,
+      "question": "38. Recently, India signed a deal known as ‘Action Plan\nfor Prioritization and Implementation of Cooperation\nAreas in the Nuclear Field’ with which of the following\ncountries? (2019)",
+      "options": {
+        "A": "Japan",
+        "B": "Russia",
+        "C": "The United Kingdom",
+        "D": "TheUnitedStatesofAmerica"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Option (b) is correct: The Action Plan for Prioritization and Implementation of Cooperation Areas in the Nuclear\nField was signed between India and Russia in 2018. This agreement is part of the long-standing strategic partnership between\nIndia and Russia in the field of civil nuclear energy. The deal aims\nto enhance cooperation in areas such as nuclear power plant\nconstruction, nuclear fuel supply, and joint research and development in nuclear technology. The agreement was signed during\nthe 19th India-Russia Annual Summit in New Delhi between\nPrime Minister Narendra Modi and Russian President Vladimir Putin.\nKey areas of cooperation included :\n Construction of more nuclear power plants in India (like\nKudankulam in Tamil Nadu).\n Localization of nuclear component manufacturing in\nIndia.\n Joint collaboration in third-country nuclear projects.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-SECURITY",
+      "syllabusNodeId": "GS2-IR-SECURITY",
+      "microTheme": "Security / Strategic Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2019_Q039",
+      "sourceQuestionNo": 39,
+      "year": 2019,
+      "question": "39. Which of the following adopted a law on data\nprotection and privacy for its citizens known as\n‘General Data Protection Regulation’ in April 2016 and\nstarted implementation of it from 25th May, 2018?\n (2019)",
+      "options": {
+        "A": "Australia",
+        "B": "Canada",
+        "C": "The European Union",
+        "D": "TheUnitedStatesofAmerica"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Option (a) is incorrect: Australia has its own privacy\nregulations under the Privacy Act of 1988. While it does have\nlaws to protect personal data, they are not as comprehensive or\nas strict as the GDPR.\nOption (b) is incorrect: Canada follows the Personal Information Protection and Electronic Documents Act (PIPEDA),\nwhich also protects data privacy but is not as extensive as the\nGDPR. PIPEDA regulates the handling of personal information in\nthe private sector, but it is not as stringent or comprehensive as\nthe GDPR.\nOption (c) is correct: The General Data Protection Regulation (GDPR) is a law on data protection and privacy adopted by\nthe European Union (EU) It is one of the most comprehensive\nand stringent data protection laws globally, aimed at enhancing\nindividuals’ control over their personal data and regulating how\nbusinesses process and store personal information. It includes\nrights such as data portability, the right to be forgotten, and\nthe right to access personal data.\nOption (d) is incorrect: The United States of America has a\nmore fragmented approach to data privacy, with sector-specific regulations such as the California Consumer Privacy Act\n(CCPA). There is no single overarching federal law like the GDPR\nin the US.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2018_Q040",
+      "sourceQuestionNo": 40,
+      "year": 2018,
+      "question": "40. Consider the following countries : (2018)\n1. Australia 2. Canada 3. China 4. India\n5. Japan 6. USA\nWhich of the above are among the ‘free-trade partners’ of ASEAN\n?",
+      "options": {
+        "A": "1, 2, 4 and 5",
+        "B": "3, 4, 5 and 6",
+        "C": "1, 3, 4 and 5",
+        "D": "2, 3, 4 and 6"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Free Trade Agreements (FTAs) are international treaties between two or more countries designed to reduce or eliminate barriers to trade and investment, ASEAN has established\nFree Trade Agreements (FTAs) with multiple countries . Its FTA\npartners include Australia, China, India, Japan, New Zealand,\nand South Korea.\nCanada and the USA have not signed FTA with ASEAN.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2018_Q041",
+      "sourceQuestionNo": 41,
+      "year": 2018,
+      "question": "41. In the Indian context, what is the implication of\nratifyingthe‘AdditionalProtocol’withthe‘International\nAtomic Energy Agency (IAEA)’? (2018)",
+      "options": {
+        "A": "The civilian nuclear reactors come under IAEA safeguards.",
+        "B": "The military nuclear installations come under the inspection\nof IAEA.",
+        "C": "The country will have the privilege to buy uranium from the\nNuclear Suppliers Group (NSG).",
+        "D": "The country automatically becomes a member of the NSG."
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) The Additional Protocol (AP) is a legal agreement between a country and the International Atomic Energy Agency\n(IAEA) that strengthens the IAEA’s ability to verify that nuclear materials are not being diverted for non-peaceful purposes.\nIt expands the IAEA’s access to nuclear facilities and provides\nadditional transparency measures. India signed the Additional\nProtocol with the IAEA in 2009, and it came into force in 2014.\nOption (a) is correct : The Additional Protocol strengthens\nIAEA oversight over India’s civilian nuclear reactors, ensuring\nnon-diversion of nuclear material for military purposes. India\nvoluntarily placed 14 civilian reactors under IAEA safeguards\nas part of the Indo-US Nuclear Deal (2008).\nOption (b) is incorrect : India’s military nuclear installations\nare not subject to IAEA safeguards as India is not a signatory to\nthe Nuclear Non-Proliferation Treaty (NPT).\nOption (c) is incorrect : While ratifying the protocol demonstrates India’s commitment to non-proliferation but it does not\ndirectly grant the privilege to buy uranium from NSG countries. However, it played a role in securing an NSG waiver in\n2008 which allowed India to access nuclear technology and materials despite not being an NPT signatory\nOption (d) is incorrect : Ratifying the Additional Protocol\ndoes not automatically make India a member of the Nuclear\nSuppliers Group (NSG). NSG membership requires a consensus\namong all member states, and India’s membership has faced opposition due to its non-signatory status to the Nuclear Non-Proliferation Treaty (NPT).\n \n \n\fInternational Relations and Current Affairs 651\nPW ONLYIAS EXTRA EDGE :\nThe International Atomic Energy Agency (IAEA), established in 1957 and headquartered in Vienna, Austria, is an\nindependent organization within the UN system. It promotes\nthe safe, secure, and peaceful use of nuclear energy while preventing its misuse for military purposes.\nThe IAEA focuses on three main areas:\n Nuclear safety and security\n Science and technology\n Safeguards and verification\nIt assists member states with nuclear research, ensures promotion of Nuclear Non-Proliferation Treaty (NPT), and fosters international cooperation. The agency was awarded the\nNobel Peace Prize in 2005 for its efforts in promoting nuclear\nsafety and non-proliferation.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2018_Q042",
+      "sourceQuestionNo": 42,
+      "year": 2018,
+      "question": "42. International Labour Organization’s Conventions\n138 and 182 are related to: (2018)",
+      "options": {
+        "A": "Child labour",
+        "B": "Adaptation of agricultural practices to global climate change",
+        "C": "Regulation of food prices and food security",
+        "D": "Gender parity at the workplace"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) The International Labour Organization (ILO) has\ntwo key conventions focused on child labour :\n ILO Convention 138 (Minimum Age Convention, 1973)\nfocuses on the abolition of child labour by setting a\nminimum age for employment or work, which should not be\nless than the age of completion of compulsory schooling\nand, in any case, for most of the countries, not less than\n15 years. It aims to ensure that children are not employed in\nwork that jeopardizes their health, safety, or morals.\n ILO Convention 182 (Worst Forms of Child Labour\nConvention, 1999) aims to eliminate the worst forms of\nchild labour, including slavery, trafficking, debt bondage,\nforced labour, and hazardous work. It is recognized as one\nof the core ILO conventions, widely ratified by countries\nworldwide.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2018_Q043",
+      "sourceQuestionNo": 43,
+      "year": 2018,
+      "question": "43. The term “two-state solution” is sometimes\nmentioned in the news in the context of the affairs of\n (2018)",
+      "options": {
+        "A": "China",
+        "B": "Israel",
+        "C": "Iraq",
+        "D": "Yemen"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Option (b) is correct: The Israel-Palestine conflict is\nthe primary context where the “two-state solution” is discussed.\nThe “two-state solution” refers to the proposal for resolving the\nIsrael-Palestine conflict by creating two independent states:\n Israel as a Jewish state.\n Palestine as a separate sovereign state, comprising the West\nBank and Gaza Strip.\nThe two-state solution is widely supported by the United\nNations, USA, and European Union as a way to bring peace to\nthe region. However, territorial disputes, Israeli settlements\nin the West Bank, and political disagreements have hindered\nits implementation.\nOptions (a) (c), and (d) are incorrect:\n Chinahasterritorialdisputes(e.g.,Taiwan,Tibet,SouthChina\nSea), but the “two-state solution” is not related to China.\n Iraq has internal conflicts (e.g., Sunni-Shia tensions,\nKurdish independence), but not a two-state issue.\n Yemen is dealing with a civil war, not a two-state conflict.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2018_Q044",
+      "sourceQuestionNo": 44,
+      "year": 2018,
+      "question": "44. “Rule of Law Index” is released by which of the\nfollowing ? (2018)",
+      "options": {
+        "A": "Amnesty International",
+        "B": "International Court of Justice",
+        "C": "The Office of UN Commissioner for Human Rights",
+        "D": "World Justice Project"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) The “Rule of Law Index” is an annual report published\nby the World Justice Project (WJP). It evaluates countries based\non their adherence to the rule of law using factors such as:\n Constraints on government powers\n Absence of corruption\n Open government\n Fundamental rights\n Order and security\n Regulatory enforcement\n Civil and criminal justice\nThe index ranks countries based on data collected from experts\nand surveys to assess how well nations uphold legal principles.\nThe index is widely used by governments, policymakers, and civil\nsociety organizations to identify strengths and weaknesses in the\nrule of law and to guide reforms.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2018_Q045",
+      "sourceQuestionNo": 45,
+      "year": 2018,
+      "question": "45. What is/are the consequence/consequences of a\ncountrybecomingthemember ofthe‘Nuclear Suppliers\nGroup’ ? (2018)\n1. \nIt will have access to the latest and most efficient nuclear technologies.\n2. \nIt automatically becomes a member of “The Treaty on the\nNon-Proliferation of Nuclear Weapons (NPT)”.\nWhich of the statements given above is/are correct ?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) Statement 1 is correct : NSG members can engage in\nnuclear trade and obtain access to advanced nuclear technology and materials. This includes technologies for peaceful uses\nsuch as medicine, energy production, and research. India\nseeks NSG membership to improve its access to civilian nuclear technology and fuel for energy generation.\nStatement 2 is incorrect : NSG membership does not automatically grant NPT membership. Adherence to NPT principles is often considered during NSG membership discussions but\nsigning the NPT is not a mandatory requirement for joining\nthe NSG. For instance, India seeks NSG membership without being an NPT signatory. China has blocked India’s entry into NSG\nby citing India’s non-signatory status in NPT.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2018_Q046",
+      "sourceQuestionNo": 46,
+      "year": 2018,
+      "question": "46. Very recently, in which of the following countries\nhave lakhs of people either suffered from severe\nfamine/acute malnutrition or died due to starvation\ncaused by war/ethnic conflicts? (2018)",
+      "options": {
+        "A": "Angola and Zambia",
+        "B": "Morocco and Tunisia",
+        "C": "Venezuela and Colombia",
+        "D": "Yemen and South Sudan"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) Yemen and South Sudan have experienced severe humanitarian crises in recent years, with millions of people suffering from famine, acute malnutrition, and starvation, primarily\ncaused by ongoing wars and ethnic conflicts.\n Yemen has been experiencing one of the world’s worst\nhumanitarian crises due to a prolonged conflict since 2015.\nThe war, combined with a blockade, has led to widespread\nfamine-like conditions, with millions of people suffering\nfrom acute malnutrition and starvation. Over 80% of the\npopulation requires humanitarian aid, and millions are at\nrisk of famine.\n \n \n\fUPSC GS Paper-I PYQs\n652\n Since its civil war began in 2013, South Sudan has faced\nsevere food insecurity and famine conditions. Conflict\nhas displaced millions, disrupted agricultural activities, and\ncaused widespread hunger. In 2017, a famine was officially\ndeclared in parts of South Sudan, and even now, half the\npopulation faces extreme hunger.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2017_Q047",
+      "sourceQuestionNo": 47,
+      "year": 2017,
+      "question": "47. ‘Broad-based Trade Investment and Agreement\n(BTIA)’ is sometimes seen in the news in the context of\nnegotiations held between India and: (2017)",
+      "options": {
+        "A": "European Union",
+        "B": "Gulf Cooperation Council",
+        "C": "Organization for Economic Cooperation and Development",
+        "D": "Shanghai Cooperation Organization"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) Option (a) is correct : The Broad-based Investment\nTrade and Agreement (BTIA) refers to a trade agreement being negotiated between India and the European Union (EU).\nThe aim of this agreement is to enhance trade relations, investment flows, and cooperation across various sectors between India and the EU.\nOption (b) is incorrect : The Gulf Cooperation Council (GCC) is\na political and economic union of six Arab countries, but the BTIA\nis not related to negotiations between India and the GCC. India’s\ntrade with the Gulf Cooperation Council (GCC) is significant, with\nbilateral trade exceeding $154 billion. The GCC is India’s largest\ntrading bloc and a key supplier of crude oil and natural gas, ensuring energy security. India exports petroleum products, textiles, and machinery to GCC nations, while ongoing Free Trade\nAgreement (FTA) negotiations aim to deepen economic ties.\nOption (c) is incorrect : The Organization for Economic Cooperation and Development (OECD) is an international organization focused on economic policy, but BTIA negotiations are specifically between India and the European Union. India has been\na Key Partner of the Organization for Economic Cooperation\nand Development (OECD) since 2007, collaborating on areas\nlike anti-corruption, taxation, and trade. Though not a member,\nIndia benefits from OECD’s technical expertise and data analysis\nto support domestic reforms. It also participates in initiatives like\nthe Global Forum on Transparency and Exchange of Information for Tax Purposes.\nOption (d) is incorrect: The Shanghai Cooperation Organization (SCO) is a multilateral organization, but BTIA is not related to negotiations within the SCO. As a member of the Shanghai\nCooperation Organization (SCO) since 2017, India focuses on\nstrengthening trade with Central Asia in energy, agriculture, and\ninfrastructure. The SCO also serves as a platform for regional\ncooperation in counterterrorism, economic integration, and\naddressing strategic challenges.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "syllabusNodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "microTheme": "India & Neighbourhood / Regional Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2017_Q048",
+      "sourceQuestionNo": 48,
+      "year": 2017,
+      "question": "48. Consider the following statements : (2017)\n1. \nIndia has ratified the Trade Facilitation Agreement (TFA) of\nWTO.\n2. \nTFA is a part of WTO’s Bali Ministerial Package of 2013.\n3. \nTFA came into force in January 2016.\nWhich of the statements given above is/are correct ?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "1 and 3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) The Trade Facilitation Agreement (TFA) is a key part\nof the World Trade Organization (WTO) agreements, aimed at\nstreamlining customs procedures and reducing trade barriers.\nStatement 1 is correct: India has ratified the Trade Facilitation Agreement (TFA) of WTO in April 2016, making it one\nof the WTO members committed to simplifying customs procedures and reducing trade barriers.\nStatement 2 is correct: The TFA is a part of the WTO’s Bali\nMinisterial Package of 2013. This was one of the major outcomes of the Bali Ministerial Conference, which aimed to improve global trade efficiency.\nStatement 3 is incorrect: The Trade Facilitation Agreement\n(TFA) of the World Trade Organization (WTO) came into\nforce on 22 February 2017. While the agreement was finalized\nin 2013 and ratified by enough countries to be implemented, the\nofficial entry into force of TFA happened later, after the ratification process was completed. This occurred after two-thirds of\nWTO member countries ratified the agreement, marking a significant milestone in global trade by aiming to simplify and expedite\ninternational trade processes.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2017_Q049",
+      "sourceQuestionNo": 49,
+      "year": 2017,
+      "question": "49.WhatistheimportanceofdevelopingChabaharPort\nby India ? (2017)",
+      "options": {
+        "A": "India’s trade with African countries will enormously increase.",
+        "B": "India’s relations with oil-producing Arab countries will be\nstrengthened.",
+        "C": "India will not depend on Pakistan for access to Afghanistan\nand Central Asia.",
+        "D": "Pakistan will facilitate and protect the installation of a gas\npipeline between Iraq and India."
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Option (c) is correct: Developing the Chabahar Port\nin Iran is strategically important for India as it provides an alternative route to access Afghanistan and Central Asia, bypassing Pakistan, thus enhancing India’s trade and connectivity\nwith the region while also serving as a counterpoint to China’s\ngrowing influence in the area through the Gwadar Port in Pakistan; it also acts as a gateway to the International NorthSouth Transport Corridor (INSTC), further boosting trade with\nRussia and Eurasia.\nOptions (a), (b) and (d) are incorrect:\n Chabahar is important for trade with Iran, Afghanistan,\nand Central Asia, but it does not significantly impact\nIndia’s trade with Africa.\n India already has strong ties with Gulf nations for oil\nimports, and Chabahar is not directly linked to improving\nthese relations.\n Pakistan is unlikely to facilitate any strategic project\nfor India, especially in the energy sector. Instead, India is\npursuing the Iran-India undersea gas pipeline project to\navoid transit through Pakistan.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "syllabusNodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "microTheme": "India & Neighbourhood / Regional Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2017_Q050",
+      "sourceQuestionNo": 50,
+      "year": 2017,
+      "question": "50. Consider the following in respect of Indian Ocean\nNaval Symposium (IONS): (2017)\n1. \nInaugural IONS was held in India in 2015 under the chairmanship of the Indian Navy.\n2. \nIONS is a voluntary initiative that seeks to increase maritime\nco-operation among navies of the littoral states of the Indian\nOcean Region.\nWhich of the above statements is/are correct ?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) The Indian Ocean Naval Symposium (IONS) is a voluntary initiative established by the Indian Navy in 2008 to\nenhance maritime cooperation among the littoral states of the\nIndian Ocean Region (IOR). It provides an open and inclusive\nplatform for discussing regional maritime issues, fostering\ncollaboration, and promoting security. IONS focuses on humanitarian assistance, disaster relief (HADR), and countering regional challenges like piracy and terrorism.\n \n \n\fInternational Relations and Current Affairs 653\nIt includes 25 member nations grouped into four sub-regions\n(South Asia, West Asia, East Africa, and Southeast Asia &\nAustralia) and 9 observer nations. The chairmanship rotates biennially, with India set to chair from 2025-2027.\nStatement 1 is incorrect: The Indian Ocean Naval Symposium\n(IONS) was inaugurated in 2008, not 2015. The first meeting\nwas held in New Delhi, India, in 2008, under the chairmanship of the Indian Navy.\nStatement 2 is correct: IONS is a series of biennial meetings\n& voluntary initiative that promotes maritime cooperation\namong navies of the Indian Ocean littoral states. It enhances regional security and stability by fostering dialogue, joint exercises, and naval cooperation.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2017_Q051",
+      "sourceQuestionNo": 51,
+      "year": 2017,
+      "question": "51. With reference to the role of UN-Habitat in the\nUnited Nations programme working towards a better\nurban future, which of the statements is/are correct?\n (2017)\n1. \nUN-Habitat has been mandated by the United Nations General\nAssembly to promote socially and environmentally sustainable\ntowns and cities to provide adequate shelter for all.\n2. \nIts partners are either governments or local urban authorities\nonly.\n3. \nUN-Habitat contributes to the overall objective of the United\nNations system to reduce poverty and to promote access to\nsafe drinking water and basic sanitation.\nSelect the correct answer using the code given below:",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1 and 3 only",
+        "C": "2 and 3 only",
+        "D": "1 only"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Statement 1 is correct : UN-Habitat (United Nations\nHuman Settlements Programme) was established in 1978 and\nis mandated by the UN General Assembly. Its primary goal is\nto promote socially and environmentally sustainable human\nsettlements and ensure adequate shelter for all. It works towards sustainable urban development, slum upgrading, and\nsmart cities.\nStatement 2 is incorrect : UN-Habitat partners with a wide\nrange of stakeholders, including NGOs, civil society organizations, academic institutions, private sector entities, and\ninternational development agencies, not just governments\nor local authorities.\nStatement 3 is correct : UN-Habitat contributes to reducing\npoverty by supporting inclusive urban planning, slum rehabilitation, and sustainable housing solutions. It also promotes\naccess to clean drinking water and basic sanitation, especially in developing countries, through initiatives like the Water and\nSanitation Trust Fund.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2017_Q052",
+      "sourceQuestionNo": 52,
+      "year": 2017,
+      "question": "52. The Global Infrastructure Facility is a/an: (2017)",
+      "options": {
+        "A": "ASEAN initiative to upgrade infrastructure in Asia and financed\nby credit from the Asian Development Bank.",
+        "B": "World Bank collaboration that facilitates the preparation\nstructuring of complex infrastructure Public-Private Partnerships (PPPs) to enable mobilization of private sector and\ninstitutional investor capital.",
+        "C": "Collaborationamongthemajorbanksoftheworldworkingwith\nthe OECD and focused on expanding the set of infrastructure\nprojects that have the potential to mobilize private investment.",
+        "D": "UNCTAD funded initiative that seeks to finance and facilitate\ninfrastructure development in the world."
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) The Global Infrastructure Facility (GIF) is a World\nBank-led initiative that helps governments develop complex\ninfrastructure projects through Public-Private Partnerships\n(PPPs) by attracting private sector and institutional investor\ncapital.\nLaunched in 2014, GIF offers comprehensive project support\nthrough the combined expertise of its technical and advisory\npartners. This group, which includes commercial banks and\ninstitutional investors, ensures that infrastructure projects\nare structured effectively and are financially viable, meeting the\nlong-term needs of governments and users. Funding partners\ncontribute financially to the GIF.\nFunctions:\n The Global Infrastructure Facility (GIF) mobilizes private\nsector investment by de-risking projects and promoting\ninnovative financing mechanisms.\n The GIF emphasizes sustainable infrastructure by integrating\nenvironmental, social, and governance (ESG) principles, with\na focus on climate-smart projects.\n It also builds capacity in partner countries through technical\nassistance and knowledge sharing.\n Acting as a global collaboration platform, the GIF connects\ngovernments, Multilateral Development Banks (MDBs),\nand private investors to address the infrastructure\nfinancing gap in emerging economies.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2017_Q053",
+      "sourceQuestionNo": 53,
+      "year": 2017,
+      "question": "53.Withreferenceto‘AsiaPacificMinisterialConference\non Housing and Urban Development (APMCHUD)’,\nconsider the following statements: (2017)\n1. \nThe first APMCHUD was held in India in 2006 on the theme\n‘Emerging Urban Forms - Policy Responses and Governance\nStructure’.\n2. \nIndia hosts all the Annual Ministerial Conferences in partnership with ADB, APEC and ASEAN.\nWhich of the statements given above is/are correct ?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) The Asia Pacific Ministerial Conference on Housing\nand Urban Development (APMCHUD) is an intergovernmental initiative established in 2006 under the auspices of UN-Habitat. It serves as a platform for collaboration among Asia-Pacific\ncountries to address challenges in housing and urban development. APMCHUD is a biennial conference that convenes ministers and senior government officials from the Asia-Pacific region\nto discuss and exchange experiences on housing and urban development policies and strategies.\nStatement 1 is incorrect: The first APMCHUD was indeed\nheld in India (New Delhi) in 2006, but the theme mentioned\nin the statement is incorrect. The actual theme was “A Vision\nfor Sustainable Urbanization in the Asia-Pacific by 2020”,\nnot “Emerging Urban Forms - Policy Responses and Governance\nStructure”.\nStatement 2 is incorrect: APMCHUD conferences are hosted\nby different countries in the Asia-Pacific region, not exclusively by India. It is a UN-Habitat initiative, not a partnership with\nADB (Asian Development Bank), APEC (Asia-Pacific Economic\nCooperation), or ASEAN (Association of Southeast Asian Nations). Since India does not host all APMCHUD meetings and the\npartnerships are incorrect.\n \n \n\fUPSC GS Paper-I PYQs\n654",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2017_Q054",
+      "sourceQuestionNo": 54,
+      "year": 2017,
+      "question": "54. Consider the following statements : (2017)\n1. \nThe Nuclear Security Summits are periodically held under the\naegis of the United Nations.\n2. \nThe International Panel on Fissile Materials is an organ of the\nInternational Atomic Energy Agency.\nWhich of the statements given above is/are correct ?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) Statement 1 is incorrect : The Nuclear Security Summit (NSS) was not organized by the United Nations (UN). It\nwas a global initiative launched by the United States under\nPresident Barack Obama in 2010 to prevent nuclear terrorism by securing nuclear materials.\n The summits were held in 2010 (Washington, D.C.), 2012\n(Seoul), 2014 (The Hague), and 2016 (Washington, D.C.).\n These summits aimed at addressing nuclear terrorism and\nsecuring vulnerable nuclear materials but were independent\nof the UN framework. The UN, IAEA, and Interpol were\ninvolved in discussions.\nStatement 2 is incorrect : The International Panel on Fissile\nMaterials (IPFM) is an independent group of experts focused\non policy research related to nuclear disarmament and fissile material production. It works to reduce and secure global\nstocks of fissile materials like highly enriched uranium and plutonium but operates as a non-governmental organization.\nIt is not an official organ of the International Atomic Energy\nAgency (IAEA). The IAEA deals with nuclear safeguards and\nmonitoring, but IPFM operates separately as an independent\nresearch body.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2017_Q055",
+      "sourceQuestionNo": 55,
+      "year": 2017,
+      "question": "55. The term ‘Digital Single Market Strategy’ seen in the\nnews refers to: (2017)",
+      "options": {
+        "A": "ASEAN",
+        "B": "BRICS",
+        "C": "EU",
+        "D": "G20"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Option (c) is correct: The Digital Single Market\n(DSM) Strategy is an initiative of the European Union (EU),\ncreated by EU in 2015. It is aimed at removing digital trade\nbarriers among EU member states to create a unified and efficient digital economy. The strategy aims to remove barriers to\ncross-border online activities, enhance digital connectivity, and\npromote fair competition. The DSM Strategy is a key part of the\nEU’s Digital Decade Policy for global digital leadership.\nIt focuses on three key pillars:\n Improving access to digital goods and services,\n Creating an environment for digital networks and services to\nthrive, and\n Maximizing the growth potential of the digital economy.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2017_Q056",
+      "sourceQuestionNo": 56,
+      "year": 2017,
+      "question": "56. Which of the following gives ‘Global Gender Gap\nIndex’ ranking to the countries of the world ? (2017)",
+      "options": {
+        "A": "World Economic Forum",
+        "B": "UN Human Rights Council",
+        "C": "UN Women",
+        "D": "World Health Organization"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) It (GGGI) is published annually by the World Economic\nForum (WEF).\nGlobal Gender Gap Index was introduced in 2006 by the World\nEconomic Forum (WEF). The Index ranks countries based on\ngender parity (0 = complete inequality, 1 = complete equality). It measures gender equality across four key areas:\n Economic Participation and Opportunity\n Educational Attainment\n Health and Survival\n Political Empowerment",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2016_Q057",
+      "sourceQuestionNo": 57,
+      "year": 2016,
+      "question": "57. Consider the following statements: (2016)\n1. \nThe International Solar Alliance was launched at the United\nNations Climate Change Conference in 2015.\n2. \nThe Alliance includes all the member countries of the United\nNations.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) Statement 1 is correct: The International Solar Alliance\n(ISA) was launched on November 30, 2015, at the COP21 (United Nations Climate Change Conference) in Paris, France.\nStatement 2 is incorrect: ISA does not include all UN member\nstates. Initially, it was focused on solar-rich countries between\nthe Tropics of Cancer and Capricorn. However, in 2018, its\nmembership was expanded to include all member states of the\nUnited Nations. While all UN member states are eligible to join,\nnot all have done so.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2016_Q058",
+      "sourceQuestionNo": 58,
+      "year": 2016,
+      "question": "58. Which of the following is not a member of `Gulf\nCooperation Council’? (2016)",
+      "options": {
+        "A": "Iran",
+        "B": "Saudi Arabia",
+        "C": "Oman",
+        "D": "Kuwait"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) GCC Member Countries are listed as under:\n1. Saudi Arabia 2. United Arab Emirates (UAE)\n3. Kuwait 4. Qatar\n5. Bahrain 6. Oman\nClearly, Iran is NOT a member of the GCC because it is a\nnon-Arab country and has historical tensions with several GCC\nmembers.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2016_Q059",
+      "sourceQuestionNo": 59,
+      "year": 2016,
+      "question": "59. With reference to ‘Organization for the Prohibition\nof Chemical Weapons (OPCW)’, consider the following\nstatements: (2016)\n1. \nIt is an organisation of European Union in working relation\nwith NATO and WHO.\n2. \nIt monitors the chemical industry to prevent new weapons\nfrom emerging.\n3. It provides assistance and protection to States (Parties) against\nchemical weapons threats.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Statement 1 is incorrect: The OPCW is not an EU organization. The Organisation for the Prohibition of Chemical\nWeapons (OPCW) is an independent, autonomous international\norganization established in 1997 to implement the Chemical\nWeapons Convention (CWC). While OPCW collaborates with\nthe UN, WHO, and other international agencies, it is not directly linked to NATO or the EU.\nStatement 2 is correct: OPCW verifies and inspects chemical\nindustries worldwide to ensure compliance with the Chemical Weapons Convention. It prevents the development and\nstockpiling of chemical weapons by monitoring the production and trade of dual-use chemicals.\nStatement 3 is correct: OPCW helps member states (States\nParties) with protective measures against chemical weapon\nthreats. It provides technical and logistical assistance in case\nof chemical attacks or threats.\n \n \n\fInternational Relations and Current Affairs 655",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2016_Q060",
+      "sourceQuestionNo": 60,
+      "year": 2016,
+      "question": "60. Consider the following statements: (2016)\nThe India-Africa Summit\n1. Held in 2015 was the third such Summit\n2. Was actually initiated by Jawaharlal Nehru in 1951\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) Statement 1 is correct : The Third India-Africa Forum Summit (IAFS) was held in 2015 in New Delhi, India. The\nfirst Summit was held in 2008 (New Delhi, India), and the second was in 2011 (Addis Ababa, Ethiopia).\nStatement 2 is incorrect : The India-Africa Forum Summit\n(IAFS) was first initiated in 2008, not in 1951. Jawaharlal\nNehru did not start this summit; however, he played an important role in strengthening India-Africa relations through the\nNon-Aligned Movement (NAM). The India-Africa Forum Summit (IAFS) began in 2008 under the leadership of Prime Minister\nDr. Manmohan Singh as a formal platform to strengthen relations\nbetween India and African nations.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "syllabusNodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "microTheme": "India & Neighbourhood / Regional Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2016_Q061",
+      "sourceQuestionNo": 61,
+      "year": 2016,
+      "question": "61. With reference to the ‘Trans-Pacific Partnership’,\nconsider the following statements: (2016)\n1. \nIt is an agreement among all the Pacific Rim countries except\nChina and Russia.\n2. \nIt is a strategic alliance for the purpose of maritime security\nonly.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) Statement 1 is incorrect: The Trans-Pacific Partnership (TPP) was a trade agreement, not a security alliance. Not\nall Pacific Rim countries were part of TPP. The TPP originally\nincluded 12 countries: United States, Canada, Mexico, Peru,\nChile, Japan, Malaysia, Singapore, Vietnam, Brunei, Australia, and New Zealand.\n China and Russia were excluded, but many Pacific\nRim countries like Indonesia, South Korea, and the\nPhilippines were also not part of TPP.\n In 2017, the U.S. withdrew from TPP, and the remaining\n11 countries renegotiated it as the Comprehensive and\nProgressive Agreement for Trans-Pacific Partnership\n(CPTPP). In 2024, the United Kingdom became the first\nEuropean country to join the CPTPP.\nStatement 2 is incorrect: The TPP was purely a trade and\neconomic agreement, focusing on reducing tariffs, setting\ntrade rules, and boosting investment. It was not related with\nmaritime security or military alliances.\n Maritime security issues in the Pacific are mainly handled\nby ASEAN, APEC, and military alliances like AUKUS and the\nQuad, not by TPP.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2016_Q062",
+      "sourceQuestionNo": 62,
+      "year": 2016,
+      "question": "62. Which of the following is/are the indicator/\nindicators used by IFPRI to compute the Global Hunger\nIndex Report? (2016)\n1. Undernourishment\n2. Child stunting\n3. Child mortality\nSelect the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1, 2 and 3",
+        "D": "1 and 3 only"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) The Global Hunger Index (GHI) is an annual report\npublished by IFPRI (International Food Policy Research Institute) until 2018, and now by Concern Worldwide and Welthungerhilfe. It measures and tracks hunger at global, regional,\nand national levels using the following four key indicators :\n� Undernourishment � Child Wasting\n� Child Stunting � Child Mortality",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2016_Q063",
+      "sourceQuestionNo": 63,
+      "year": 2016,
+      "question": "63. ‘European Stability Mechanism’, sometimes seen in\nthe news, is an (2016)",
+      "options": {
+        "A": "Agency created by EU to deal with the impact of millions of\nrefugees arriving from the Middle East",
+        "B": "Agency of EU that provides financial assistance to eurozone\ncountries",
+        "C": "Agency of EU to deal with all the bilateral and multilateral\nagreements on trade",
+        "D": "Agency of EU to deal with the conflicts arising among the\nmember countries"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) The European Stability Mechanism (ESM) is a permanent crisis resolution mechanism for the eurozone. It was\nestablished in 2012 to provide financial assistance to eurozone countries experiencing severe economic difficulties. The\nESM offers loans, purchases bonds, and provides credit lines\nto stabilize member economies and prevent financial contagion within the euro area. The European Stability Mechanism\n(ESM), headquartered in Luxembourg, was established to replace the European Financial Stability Facility (EFSF) and is\nfunded by eurozone member states. It acts as a ‘lender of last\nresort’ for eurozone countries, offering loans and other types of\nsupport under strict conditions, such as implementing economic\nreforms.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2016_Q064",
+      "sourceQuestionNo": 64,
+      "year": 2016,
+      "question": "64. The term ‘Regional Comprehensive Economic\nPartnership’ often appears in the news in the context\nof the affairs of a group of countries known as: (2016)",
+      "options": {
+        "A": "G20",
+        "B": "ASEAN",
+        "C": "SCO",
+        "D": "SAARC"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) RCEP is a free trade agreement between ASEAN’s 10\nmember states and their five trade partners—Australia, China, Japan, New Zealand, and South Korea—aiming to boost\ntrade, investment, and economic cooperation across Asia-Pacific.\nRCEP covers trade in goods and services, investment, e-commerce, intellectual property, dispute settlement, and SMEs,\nfostering regional economic integration. The agreement gradually eliminates tariffs, enhances market access for goods\nand services, and simplifies rules of origin, benefiting global\nsupply chains.\nRCEP promotes cross-border data flows, online consumer\nprotection, and cybersecurity while improving investment\nprotection and economic cooperation through capacity\nbuilding and technology transfer. Ensuring equitable benefits, bridging economic disparities, and maintaining transparency remain key challenges. Despite this, RCEP represents a\nmajor milestone in global trade and economic collaboration.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2016_Q065",
+      "sourceQuestionNo": 65,
+      "year": 2016,
+      "question": "65. ‘Global Financial Stability Report’ is prepared by\nthe: (2016)",
+      "options": {
+        "A": "European Central Bank",
+        "B": "International Monetary Fund",
+        "C": "International Bank for Reconstruction and Development",
+        "D": "Organisation for Economic Cooperation and Development\n \n \n\fUPSC GS Paper-I PYQs\n656"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) The Global Financial Stability Report (GFSR) is a biannual publication by the International Monetary Fund (IMF)\nthat assesses global financial stability, systemic risks, and\nvulnerabilities in the international financial system. The report\nexamines macroeconomic conditions, financial markets, regulatory developments, and emerging risks. It provides policy insights to help policymakers and financial institutions\nmitigate potential crises. The IMF conducts quantitative and\nqualitative analysis, including stress tests and scenario evaluations, consulting with financial regulators and market experts for a comprehensive risk assessment.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2016_Q066",
+      "sourceQuestionNo": 66,
+      "year": 2016,
+      "question": "66. ‘Belt and Road Initiative’ is sometimes mentioned\nin the news in the context of the affairs of: (2016)",
+      "options": {
+        "A": "African Union",
+        "B": "Brazil",
+        "C": "European Union",
+        "D": "China"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) The Belt and Road Initiative (BRI) is a China-led\nglobal infrastructure and investment project aimed at enhancing trade and connectivity across Asia, Europe, and Africa. It consists of the Silk Road Economic Belt (land routes)\nand the Maritime Silk Road (sea routes), involving railways,\nroads, ports, power plants, and telecom infrastructure.\nBRI projects are financed by Chinese state-owned banks, the\nAsian Infrastructure Investment Bank (AIIB), and the Silk\nRoad Fund. However, concerns about debt sustainability and\nfinancial transparency persist.\nSupporters highlight economic growth, trade facilitation, and\nregional integration, while critics warn of debt traps, environmental risks, and China’s geopolitical influence.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2016_Q067",
+      "sourceQuestionNo": 67,
+      "year": 2016,
+      "question": "67. ‘Doctors Without Borders (Medecins Sans Frontieres)’, often in the news, is: (2016)",
+      "options": {
+        "A": "A division of World Health Organization",
+        "B": "A non-governmental international organisation",
+        "C": "An inter-governmental agency sponsored by the European\nUnion",
+        "D": "A specialised agency of the United Nations"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Doctors Without Borders (Médecins Sans Frontières -\nMSF)\nMSF is a non-governmental, independent organization providing emergency medical aid in conflict zones, epidemics, natural disasters, and areas with limited healthcare access. Its teams\ninclude doctors, nurses, surgeons, logisticians, and administrators, working in high-risk environments to deliver critical healthcare services, including surgery, infectious disease\ntreatment, maternal care, and mental health support.\nMSF relies primarily on private donations, ensuring neutrality\nand operational autonomy. It maintains strict financial transparency, publishing detailed reports on its funding and expenditures.\nBeyond medical aid, MSF raises awareness about humanitarian crises, neglected diseases, and human rights abuses. It\nadvocates for improved healthcare access and humanitarian\npolicies, using on-the-ground experience to influence public\nand policymaker decisions.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2015_Q068",
+      "sourceQuestionNo": 68,
+      "year": 2015,
+      "question": "68. Consider the following countries: (2015)\n1. China 2. France\n3. India 4. Israel\n5. Pakistan\nWhich among the above are Nuclear Weapons States as recognized by the Treaty on the Non-Proliferation of Nuclear Weapons,\ncommonly known as Nuclear Non-Proliferation Treaty (NPT)?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "1, 3, 4 and 5 only",
+        "C": "2, 4 and 5 only",
+        "D": "1, 2, 3, 4 and 5"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) The Treaty on the Non-Proliferation of Nuclear\nWeapons (NPT) classifies Nuclear-Weapon States (NWS) as\nthose that tested nuclear weapons before January 1, 1967.\nThese include China (Tested in 1964), France (Tested in 1960),\nRussia (formerly Soviet Union, 1949), United Kingdom (Tested\nin 1952) and United States (Tested in 1945).",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2015_Q069",
+      "sourceQuestionNo": 69,
+      "year": 2015,
+      "question": "69. Beijing Declaration and Platform for Action’, often\nseen in the news, is: (2015)",
+      "options": {
+        "A": "A strategy to tackle the regional terrorism, an outcome of a\nmeeting of the Shanghai Cooperation Organization",
+        "B": "A plan of action for sustainable economic growth in the AsiaPacific Region, an outcome of the deliberations of the AsiaPacific Economic Forum",
+        "C": "An agenda for women’s empowerment, an outcome of a World\nConference convened by the United Nations",
+        "D": "A strategy to combat wildlife trafficking, a declaration of the\nEast Asia Summit"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Option (c) is correct: The Beijing Declaration and\nPlatform for Action (BPfA) is a landmark international agenda\nfor gender equality and women’s empowerment. It was adopted at the Fourth World Conference on Women in Beijing\nin 1995, organized by the United Nations.\nIt is recognized as one of the most comprehensive global commitments to advancing women’s rights. The BPfA serves as a\nguiding framework for national and international efforts to\nachieve gender equality.\nOptions (a), (b) and (d) are incorrect:\nThe Shanghai Cooperation Organization (SCO) focuses on security and economic cooperation.\nAPEC (Asia-Pacific Economic Cooperation) deals with trade\nand economic policies, not gender equality.\nWildlife trafficking is addressed under CITES (Convention on\nInternational Trade in Endangered Species) and the East\nAsia Summit, but this is unrelated to the Beijing Declaration.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2015_Q070",
+      "sourceQuestionNo": 70,
+      "year": 2015,
+      "question": "70. With reference to Indian Ocean Rim Association for\nRegionalCooperation(IOR-ARC),considerthefollowing\nstatements : (2015)\n1. \nIt was established very recently in response to incidents of piracy and accidents of oil spills.\n2. \nIt is an alliance meant for maritime security only.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) Statement 1 is incorrect : The Indian Ocean Rim Association (IORA), formerly IOR-ARC, was established in 1997.\nIt was not formed in response to piracy or oil spills but to\npromote regional economic cooperation, trade, and development among Indian Ocean nations. Piracy and maritime\nsecurity became important issues later, but they were not the\nprimary reason for formation of IOR-ARC.\nStatement 2 is incorrect : IORA is not just about maritime security; it covers a broad range of areas, including: Trade and\ninvestment facilitation, Fisheries management, Disaster\nrisk reduction, Academic and scientific cooperation, Tourism and cultural exchanges.\n \n \n\fInternational Relations and Current Affairs 657",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-SECURITY",
+      "syllabusNodeId": "GS2-IR-SECURITY",
+      "microTheme": "Security / Strategic Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2015_Q071",
+      "sourceQuestionNo": 71,
+      "year": 2015,
+      "question": "71. In the Mekong-Ganga Cooperation, an initiative\nof six countries, which of the following is/are not a\nparticipant/participants? (2015)\n1. Bangladesh 2. Cambodia\n3. China 4. Myanmar\n5. Thailand\nSelect the correct answer by using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2, 3 and 4",
+        "C": "1 and 3",
+        "D": "1, 2 and 5"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) The Mekong-Ganga Cooperation (MGC) is a regional\ncooperation initiative launched in 2000 to strengthen ties\nbetween India and five Southeast Asian countries along the\nMekong River and the Ganges River. MGC Member Countries\ninclude India, Thailand, Myanmar, Laos, Cambodia, Vietnam.\nClearly, Bangladesh and China are not participants in MGC.\nPW ONLYIAS EXTRA EDGE:\nObjectives of MGC include :\n Strengthening economic collaboration and trade\nbetween member nations,\n Advancing cultural interactions and people-to-people\nconnections, and\n Encouraging dialogue and partnership on shared concerns.\nThe MGC’s four core cooperation areas encompass tourism,\nculture, education, and transport & communication. Additionally, it has broadened its scope to cover emerging fields\nsuch as health and traditional medicine, agriculture and allied\nindustries, small and medium enterprises, water resource\nmanagement, science and technology, skill enhancement, and\ncapacity development.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "syllabusNodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "microTheme": "India & Neighbourhood / Regional Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2015_Q072",
+      "sourceQuestionNo": 72,
+      "year": 2015,
+      "question": "72. India is a member of which among the following?\n (2015)\n1. Asia-Pacific Economic Cooperation\n2. Association of South-East Asian Nations\n3. East Asia Summit\nSelect the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1, 2 and 3",
+        "D": "India is a member of none\n of them"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Statement 1 is incorrect: APEC is a 21-member economic forum focused on promoting free trade and economic cooperation in the Asia-Pacific region. India has been seeking APEC\nmembership, but it has not yet been admitted.\nStatement 2 is incorrect: ASEAN is a regional group of 10\nSoutheast Asian countries. However, India has strong ties with\nASEAN and is a part of the ASEAN+6 framework but is not a full\nmember.\nStatement 3 is correct: India is a member of the East Asia\nSummit (EAS). EAS includes 18 countries, including ASEAN\nmembers + India, China, Japan, South Korea, Australia, New\nZealand, Russia, and the US. It focuses on political, security, and\neconomic issues in the Indo-Pacific region. It promotes peace,\nstability, connectivity, and cooperation on global challenges such\nas climate change and health security.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2015_Q073",
+      "sourceQuestionNo": 73,
+      "year": 2015,
+      "question": "73. Amnesty International is : (2015)",
+      "options": {
+        "A": "An agency of the United Nations to help refugees of civil wars",
+        "B": "A global Human Rights Movement",
+        "C": "A non-governmental voluntary organization to help very poor\npeople",
+        "D": "An inter-governmental agency to cater to medical emergencies\nin war-ravaged regions"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Option (a) is incorrect: Amnesty International is NOT\na UN agency. UNHCR (United Nations High Commissioner for Refugees) is the actual UN body responsible for refugee assistance.\nOption (b) is correct : Amnesty International fights for human\nrights globally hence, is the correct answer.\nOption (c) is incorrect: Amnesty focuses on human rights, not\npoverty alleviation. Organizations like Oxfam and ActionAid\nfocus on helping the poor.\nOption (d) is incorrect: Amnesty International is not intergovernmental. Medecins Sans Frontieres (Doctors Without Borders) deals with medical emergencies.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2015_Q074",
+      "sourceQuestionNo": 74,
+      "year": 2015,
+      "question": "74. The area known as ‘Golan Heights’ sometimes\nappears in the news in the context of the events related\nto: (2015)",
+      "options": {
+        "A": "Central Asia",
+        "B": "Middle East",
+        "C": "South-East Asia",
+        "D": "Central Africa"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Option (a) is incorrect: Central Asia includes Kazakhstan, Uzbekistan, Turkmenistan, Kyrgyzstan, and Tajikistan,\nand Golan Heights is not in this region.\nOption (b) is correct: Golan Heights is in the Middle East, contested between Israel and Syria.\nOption (c) is incorrect: Southeast Asia includes countries\nlike Thailand, Vietnam, Indonesia, and Myanmar, but Golan\nHeights is unrelated to this region.\nOption (d) is incorrect: Central Africa includes DR Congo,\nChad, and the Central African Republic, not related to the\nGolan Heights.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2015_Q075",
+      "sourceQuestionNo": 75,
+      "year": 2015,
+      "question": "75. The ‘Fortaleza Declaration’, recently in the news, is\nrelated to the affairs of (2015)",
+      "options": {
+        "A": "ASEAN",
+        "B": "BRICS",
+        "C": "OECD",
+        "D": "WTO"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) The Fortaleza Declaration was adopted during the 6th\nBRICS Summit held in Fortaleza, Brazil, in July 2014.\nThe BRICS Summit brought together the five member countries:\n1. Brazil 2. Russia\n3. India 4. China\n5. South Africa\nPW ONLYIAS EXTRA EDGE:\nKey Outcomes of the Fortaleza Declaration:\n Establishment of the New Development Bank (NDB),\nalso known as the BRICS Bank, to fund infrastructure\nprojects in developing countries.\n CreationoftheBRICSContingentReserveArrangement\n(CRA) to provide financial stability in times of crisis.\n Commitment to multilateralism, sustainable development, and global economic stability.\nRecent Information: Egypt, Ethiopia, Iran, and the United\nArab Emirates officially joined BRICS, increasing the group’s\nmembership to nine nations.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2015_Q076",
+      "sourceQuestionNo": 76,
+      "year": 2015,
+      "question": "76. Which one of the following issues the ‘Global\nEconomic Prospects’ report periodically? (2015)",
+      "options": {
+        "A": "The Asian Development Bank",
+        "B": "The European Bank for Reconstruction and Development",
+        "C": "The US Federal Reserve Bank",
+        "D": "The World Bank\n \n \n\fUPSC GS Paper-I PYQs\n658"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) The World Bank is the publisher of the Global Economic Prospects report, a flagship publication that provides\ncomprehensive analyses of the global economic landscape. This\nreport is released twice a year, typically in January and June,\nand offers in-depth assessments of current economic conditions,\nemerging trends, and potential risks to the global economy. It\nserves as a key resource for policymakers.\nIt focuses on the challenges faced by emerging markets and\ndeveloping economies (EMDEs). The report highlights key issues such as trade restrictions, inflation, debt, and geopolitical tensions, while offering policy recommendations to foster\nsustainable growth. For 2025-26, global growth is projected to\nremain at 2.7%, with EMDEs contributing significantly to global\nGDP. The GEP emphasizes the need for investment, fiscal reforms,\nand international cooperation to address climate change, trade\ngovernance, and economic disparities.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2015_Q077",
+      "sourceQuestionNo": 77,
+      "year": 2015,
+      "question": "77. Among the following, which were frequently\nmentioned in the news for the outbreak of Ebola virus\nrecently? (2015)",
+      "options": {
+        "A": "Syria and Jordan",
+        "B": "Guinea, Sierra Leone and Liberia",
+        "C": "Philippines and Papua New Guinea",
+        "D": "Jamaica, Haiti and Surinam"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) The 2014-2016 Ebola outbreak devastated West Africa, with Guinea, Sierra Leone, and Liberia at its epicenter.\nThis was the largest Ebola epidemic ever recorded, exposing critical weaknesses in regional healthcare systems and requiring a\nmassive international response. The rapid spread and high mortality rate highlighted the global importance of infectious disease\npreparedness.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2014_Q078",
+      "sourceQuestionNo": 78,
+      "year": 2014,
+      "question": "78. With reference to a grouping of countries known as\nBRICS, consider the following statements:\n1. The First Summit of BRICS was held in Rio de Janeiro in 2009.\n2. South Africa was the last to join the BRICS grouping.\nWhich of the statements given above is/are correct ?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Statement 1 is incorrect: While Rio de Janeiro has\nsubsequently hosted BRICS summits, the first gathering of the\nBRIC nations (before South Africa’s inclusion) occurred in\nYekaterinburg, Russia, in June 2009. This inaugural summit\nlaid the groundwork for the BRICS partnership, establishing the\ninitial framework for cooperation among the member states.\nTherefore, the claim that Rio de Janeiro hosted the first summit\nis a misstatement of historical fact.\nStatement 2 is correct: The bloc initially comprised Brazil,\nRussia, India, and China, collectively known as BRIC. South\nAfrica’s accession to the group occurred in 2010, formally expanding the partnership to become BRICS. This expansion signified a broadening of the group’s representation and influence,\nincorporating a key player from the African continent.\nPW ONLYIAS EXTRA EDGE:\n BRICS, initially comprising Brazil, Russia, India, China,\nand South Africa, is a prominent grouping of emerging\neconomiesaimingtofosterglobaleconomiccooperation\nand sustainable development. Its vision emphasizes\ninclusive growth, poverty eradication, technological\ninnovation,andmultipolarglobalgovernance.Thegroup\nrespects national sovereignty, promotes multilateralism,\nand opposes unilateral sanctions.\n The BRICS headquarters is located in Shanghai, China,\nsymbolizing its commitment to economic collaboration.\nRecently, BRICS expanded its membership to include\nSaudi Arabia, Egypt, UAE, Ethiopia, Iran, and Indonesia,\nbringing the total membership to 10 countries as of 2025.\n BRICS collectively represents about 41% of the global\npopulation and over 30% of GDP (PPP), making it a\ncritical bloc for shaping international economic policies\nand fostering partnerships in trade, technology, and\nsustainable development.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2011_Q079",
+      "sourceQuestionNo": 79,
+      "year": 2011,
+      "question": "79. Recently, a series of uprisings of people referred to\nas ‘Arab Spring’ originally started from",
+      "options": {
+        "A": "Egypt",
+        "B": "Lebanon",
+        "C": "Syria",
+        "D": "Tunisia"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) The Arab Spring began in Tunisia on December 17,\n2010. The catalyst for this wave of protests was the self-immolation of Mohamed Bouazizi, a street vendor in Sidi Bouzid,\nTunisia, on December 17, 2010. Bouazizi’s desperate act, a response to the confiscation of his wares and the humiliation he\nsuffered at the hands of local officials, ignited widespread public\nanger against the Ben Ali regime. This act of defiance resonated\ndeeply with Tunisians who were already frustrated with high unemployment, corruption, and a lack of political freedom.\nThe protests that followed Bouazizi’s death quickly escalated,\nspreading from Sidi Bouzid to other cities across Tunisia. Demonstrators demanded political reforms, economic opportunities, and an end to the authoritarian rule of President Zine\nEl Abidine Ben Ali. The Tunisian government’s attempts to quell\nthe protests through force proved ineffective, and the movement\ngained momentum, fueled by social media and satellite television. After weeks of unrest, Ben Ali was forced to flee the country\non January 14, 2011, marking the end of his 23-year rule. This\nTunisian revolution served as an inspiration for similar uprisings across the Arab world (Middle East and North Africa), collectively known as the Arab Spring.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-PLACES-IN-NEWS",
+      "syllabusNodeId": "GS2-IR-PLACES-IN-NEWS",
+      "microTheme": "Places in News / Conflicts",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2014_Q080",
+      "sourceQuestionNo": 80,
+      "year": 2014,
+      "question": "80. Consider the following countries: (2014)\n1. Denmark 2. Japan\n3. Russian Federation 4. United Kingdom\n5. United States of America\nWhich of the above are the members of the ‘Arctic Council’ ?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "2, 3 and 4",
+        "C": "1, 4 and 5",
+        "D": "1, 3 and 5"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) The Arctic Council is an intergovernmental forum that\nincludes the following eight member states:\n1. Canada\n2. Denmark (including Greenland and the Faroe Islands)\n3. Finland\n4. Iceland\n5. Norway\n6. Russia (Russian Federation)\n7. Sweden\n8. United States (United States of America)\nJapan and the United Kingdom are not full member states.\nThey hold observer status in the Council.\nThe Arctic Council was established in 1996 through the Ottawa\nDeclaration. Its primary mandate is to promote cooperation,\ncoordination, and interaction among the Arctic States, particularly on matters of sustainable development and environmental protection in the Arctic region. The Council serves as\na platform for these eight member states to address the unique\nchallenges and opportunities presented by the Arctic’s changing\nenvironment and the increasing interest in its resources.\n \n \n\fInternational Relations and Current Affairs 659\nIn addition to the core members and Indigenous Permanent Participants, other states, intergovernmental organizations, and\nnon-governmental organizations can hold observer status, allowing them to engage with the Council’s work and contribute\ntheir expertise. This inclusive structure fosters a collaborative approach to addressing the complex issues facing the Arctic region.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2014_Q081",
+      "sourceQuestionNo": 81,
+      "year": 2014,
+      "question": "81. Consider the following pairs : (2014)\nRegion often in news Country\n1. Chechnya : Russian Federation\n2. Darfur : Mali\n3. Swat Valley : Iraq\nWhich of the above pairs is/are correctly matched ?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) Pair 1 is correctly matched : Chechnya is a federal\nsubject of Russia, officially designated as the Chechen Republic.\nLocated in the North Caucasus region, Chechnya has a complex\nhistory marked by periods of conflict and separatism. Following\nthe collapse of the Soviet Union, Chechnya declared independence, leading to two devastating wars with Russia in the 1990s\nand early 2000s. Currently, Chechnya remains a part of the\nRussian Federation, though it enjoys a degree of autonomy.\nPair 2 is incorrectly matched : Darfur is a region located in\nwestern Sudan, not in Mali. The Darfur region has been the site\nof a prolonged and complex conflict, marked by widespread violence, displacement, and humanitarian crisis. The conflict, which\nbegan in 2003, involved various armed groups, including the Sudanese Armed Forces and the Janjaweed militia, and has resulted in significant human rights abuses. Mali, on the other hand,\nis a country located in West Africa, distinct geographically and\npolitically from the Darfur region.\nPair 3 is incorrectly matched: The Swat Valley is situated in\nthe Khyber Pakhtunkhwa province of Pakistan, not in Iraq.\nKnown for its scenic beauty, the Swat Valley has also experienced\nperiods of instability, particularly in the late 2000s when it was\ntemporarily under the control of the Taliban.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2012_Q082",
+      "sourceQuestionNo": 82,
+      "year": 2012,
+      "question": "82. Recently, there has been a concern over the short\nsupply of a group of elements called ‘rare earth metals’.\nWhy? (2012)\n1. \nChina, which is the largest producer of these elements, has imposed some restrictions on their export.\n2. \nOther than China, Australia, Canada and Chile, these elements\nare not found in any country.\n3. \nRare earth metals are essential for the manufacture of various\nkinds of electronic items and there is a growing demand for\nthese elements.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "C",
+      "explanation": "Ans: (c) Statement 1 is correct: China has historically been the\ndominant global producer of rare earth elements, accounting for\na significant share of the world’s supply. Concerns about supply\ndisruptions have arisen due to China’s implementation of export\nrestrictions, quotas, and other regulatory measures. These\nactions have included limiting export volumes, imposing export tariffs, and consolidating its rare earth mining industry.\nThese policies, while potentially aimed at domestic industrial\ndevelopment and resource conservation, have had significant\nimpacts on global markets, creating price volatility and raising\nconcerns about access to these crucial materials for other countries.\nStatement 2 is incorrect: China, Australia, Canada, and Chile\ndominate the rare earth element market, but reserves are also\nfound in Asia, Africa, Europe, and South America. Other countries like the USA, India, Russia, Brazil, Vietnam, and Myanmar also have significant rare earth deposits. While China remains the largest producer, global exploration and development\nefforts are underway to diversify supply due to challenges in\nmining operations elsewhere.\nStatement 3 is correct: Rare earth metals are crucial for electronics, used in magnets, batteries, displays, and more. As global\ndemand for electronic products and renewable energy grows,\nthe need for these elements has risen, heightening concerns\nabout supply security and their strategic economic importance.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2011_Q083",
+      "sourceQuestionNo": 83,
+      "year": 2011,
+      "question": "83. The “New START” treaty was in the news. What is\nthis treaty? (2011)",
+      "options": {
+        "A": "It is a bilateral strategic nuclear arms reduction treaty between\nthe USA and the Russian Federation",
+        "B": "It is a multilateral energy security cooperation treaty among\nthe members of the East Asia Summit",
+        "C": "It is a treaty between the Russian Federation and the European\nUnion for the energy security cooperation",
+        "D": "It is a multilateral cooperation treaty among the BRICS\ncountries for the promotion of trade"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "A",
+      "explanation": "Ans: (a) New START (Strategic Arms Reduction Treaty) is a\nbilateral nuclear arms control agreement between the United\nStates and Russia, signed in 2010 and enforced from 2011. The\ntreaty caps the number of deployed strategic nuclear warheads\nat 1,550 per country and imposes limits on intercontinental ballistic missiles (ICBMs), submarine-launched ballistic missiles\n(SLBMs), and heavy bombers. Serving as a successor to the\noriginal START I treaty (1991), it continued the nuclear arms\ncontrol initiatives established during the Cold War. In 2021, the\ntreaty was extended for an additional five years, remaining in\neffect until Feb 4th, 2026.\nOption (b) is incorrect: The East Asia Summit deals with regional economic and security issues, but New START is unrelated to energy security or multilateral agreements.\nOption (c) is incorrect: Russia and the EU have energy agreements, but New START is strictly a nuclear arms control\ntreaty between Russia and the USA.\nOption (d) is incorrect: BRICS (Brazil, Russia, India, China,\nSouth Africa) focuses on economic cooperation, not nuclear\narms reduction.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2011_Q084",
+      "sourceQuestionNo": 84,
+      "year": 2011,
+      "question": "84. Southeast Asia has captivated the attention of global\ncommunity over space and time as a geostrategically\nsignificant region. Which among the following is the\nmost convincing explanation for this global perspective? (2011)",
+      "options": {
+        "A": "It was the hot theatre during the Second World War",
+        "B": "Its location between the Asian powers of China and India",
+        "C": "It was the arena of superpower confrontation during the Cold\nWar period",
+        "D": "Its location between the Pacific and Indian oceans and its preeminent maritime character"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) The most geostrategically significant factor about\nSoutheast Asia is its location between the Pacific and Indian\nOceans and its dominance in maritime trade routes, particularly through the Strait of Malacca, Sunda Strait, and Lombok\nStrait.\n \n \n\fUPSC GS Paper-I PYQs\n660\n The Strait of Malacca, one of the world’s most crucial\nmaritime chokepoints, is vital for global shipping, making\nSoutheast Asia central to global trade and security.\nSoutheast Asia serves as a critical link between major global\neconomies such as China, India, Japan, and the USA. It controls some of the world’s busiest sea lanes, with a significant\nportion of global trade and energy supplies passing through\nthe region.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "syllabusNodeId": "GS2-IR-GLOBAL-CURRENT-AFFAIRS",
+      "microTheme": "Global Current Affairs",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2011_Q085",
+      "sourceQuestionNo": 85,
+      "year": 2011,
+      "question": "85. With reference to “Look East Policy” of India,\nconsider the following statements: (2011)\n1. \nIndia wants to establish itself as an important regional player\nin East Asian affairs.\n2. \nIndia wants to plug the vacuum created by the termination of\nthe Cold War.\n3. \nIndia wants to restore the historical and cultural ties with its\nneighbours in Southeast and East Asia.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Statement 1 is correct : One of the key goals of the Look\nEast Policy was to strengthen India’s presence and influence\nin East and Southeast Asia, aligning with major economies like\nASEAN, Japan, and South Korea. It aimed at enhancing trade,\ninvestment, defense cooperation, and connectivity in the region.\nStatement 2 is incorrect : The end of the Cold War led to a\nshift in global power dynamics, but the Look East Policy was\nnot specifically aimed at filling a power vacuum. Instead, it\nwas driven by India’s need for economic liberalization, regional integration, and diversification of foreign policy.\nStatement 3 is correct: India has deep-rooted cultural and\nhistorical links with Southeast and East Asian countries, particularly through Buddhism, Hinduism, and trade routes. The\npolicy is aimed at reviving these traditional ties to strengthen\ndiplomatic and economic partnerships.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "syllabusNodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "microTheme": "India & Neighbourhood / Regional Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2011_Q086",
+      "sourceQuestionNo": 86,
+      "year": 2011,
+      "question": "86. Recently, the USA decided to support India’s membership in multi-lateral export control regimes called the\n“Australia Group” and the “Wassenaar Arran-gement”.\nWhat is the difference between them (2011)\n1. \nThe Australia Group is an informal arrangement which aims\nto allow exporting countries to minimize the risk of assisting\nchemical and biological weapons proliferation, whereas the\nWassenaar Arrangement is a formal group under the OECD\nholding identical objectives.\n2. \nThe Australia Group comprises predominantly of Asian, African and North American countries, whereas the member countries of Wassenaar Arrangement are pre-dominantly from the\nEuropean Union and American continents.\nWhich of the statements given above is/are correct ?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "D",
+      "explanation": "Ans: (d) Statement 1 is incorrect: The Australia Group (AG) is\nindeed an informal arrangement that aims to prevent the proliferation of chemical and biological weapons. However, the\nWassenaar Arrangement (WA) is also an informal group, not\na formal OECD body. The Wassenaar Arrangement focuses\non the control of conventional arms and dual-use goods and\ntechnologies, not chemical or biological weapons.\nStatement 2 is incorrect: The Australia Group consists of 42\nmembers (including the USA, European countries, Australia,\nand Japan). It does not primarily comprise Asian, African, or\nNorth American nations. The Wassenaar Arrangement consists of 42 members, mainly from Europe, North America, and\nsome Asian countries (including India, Japan, and South Korea). However, it is not exclusive to European and American\ncontinents.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "syllabusNodeId": "GS2-IR-INTERNATIONAL-ORGANISATIONS",
+      "microTheme": "International Organisations / Treaties",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    },
+    {
+      "id": "CA_IR_2011_Q087",
+      "sourceQuestionNo": 87,
+      "year": 2011,
+      "question": "87. Between India and East Asia, the navigation time\nand distance can be greatly reduced by which of the\nfollowing? (2011)\n1. \nDeepening the Malacca straits between Malaysia and Indonesia.\n2. \nOpening a new canal across the Kra isthmus between the Gulf\nof Siam and Andaman Sea.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "pdf_extracted"
+      },
+      "correctAnswer": "B",
+      "explanation": "Ans: (b) Statement 1 is incorrect: The Strait of Malacca is already a deep and navigable waterway between Malaysia and\nIndonesia and is one of the busiest maritime routes in the\nworld. Deepening the Malacca Strait would not significantly reduce navigation time because ships already use this route\neffectively.\nThe real challenge is congestion and piracy, not depth.\nStatement 2 is correct : The Kra Canal (proposed) would create a shortcut through Thailand’s Kra Isthmus, connecting the\nGulf of Thailand (Siam) with the Andaman Sea. This would\nallow ships to bypass the long detour through the Malacca\nStrait, reducing both travel time and distance between India\nand East Asia. However, the canal has not yet been constructed, though discussions and feasibility studies have taken place.",
+      "stage": "Prelims",
+      "paper": "GS",
+      "subject": "Current Affairs",
+      "topicName": "International Relations",
+      "nodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "syllabusNodeId": "GS2-IR-BILATERAL-REGIONAL",
+      "microTheme": "India & Neighbourhood / Regional Relations",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceFile": "ir.pdf",
+      "sourceType": "PDF_FULL_39_PAGES_STRICT_1_TO_1"
+    }
+  ]
+}

@@ -1,0 +1,2642 @@
+{
+  "year": 2007,
+  "paper": "GS",
+  "source": "pyq_master_index",
+  "totalQuestions": 107,
+  "questions": [
+    {
+      "id": "POL_EMERGENCY_PROVISIONS_2007_Q2",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 1,
+      "originalQuestionNumber": 2,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements in respect of financial emergency under Article 360 of the Constitution of India: 1. A Proclamation of financial emergency issued shall cease to operate at the expiration of Two months, unless before the expiration of that period it has been approved by the resolution of both houses of Parliament. 2. If any proclamation of financial emergency is in operation, it is competent for the president of India to issue directions for the reduction of salaries and allowances of all or any class of persons serving in connection with the affairs of the Union but excluding the Judges of the Supreme Court and the High Courts. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-JUD-MT01",
+      "syllabusNodeId": "GS2-POL-JUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-EMER-MT01",
+          "toNodeId": "GS2-POL-JUD-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS2-POL-EMER-MT01 based on keywords.",
+          "matchedKeywords": [
+            "supreme court",
+            "high court"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_ECO_2007_Q6",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 2,
+      "originalQuestionNumber": 6,
+      "subject": null,
+      "sourceFile": "economic_geography_transport.json",
+      "question": "Which one of the following National Highways passes through Maharashtra Chhattisgarh and Orissa?",
+      "options": {
+        "A": "NH 4",
+        "B": "NH 5",
+        "C": "NH 6",
+        "D": "NH 7"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDUS_2007_Q6",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 3,
+      "originalQuestionNumber": 6,
+      "subject": null,
+      "sourceFile": "industry_resources.json",
+      "question": "Match List -I (Aluminium Company) with List -II Location) and select the correct answer using the code given below the lists: List-I List-II A. BALCO 1. Hirakud B. HINDALCO 2. Korba C. Indian Aluminium Company 3.Koraput D. NALCO 4. Renukoot A B C D",
+      "options": {
+        "A": "3 1 4 2",
+        "B": "2 4 1 3",
+        "C": "3 4 1 2",
+        "D": "2 1 4 3"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_HIGH_COURT_2007_Q7",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 4,
+      "originalQuestionNumber": 7,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1. The mode of removal of a Judge of a High Court in India is same as that of removal of a Judge of the Supreme Court. 2. After retirement from the office, a permanent Judge of a High Court canot plead or act in any court or before any authority in India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-JUD-MT01",
+      "syllabusNodeId": "GS2-POL-JUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES_2007_Q8",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 5,
+      "originalQuestionNumber": 8,
+      "subject": null,
+      "sourceFile": "ca_awards_books_personalities.json",
+      "question": "Match List-I wish List-iI and select the correct answer using the code given below the lists: [2007] List-I (Writer) List-II (Book) A. V.S. Naipaul 1.The Siege of Krishnapur B. Salmman Rushdie 2. In a Free State C. Paul Scott 3. Midnight's Children D. J.G Farrell 4. Staying On A B C D",
+      "options": {
+        "A": "Code A",
+        "B": "Code B",
+        "C": "Code C",
+        "D": "Code D"
+      },
+      "answer": "A",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES_2007_Q9",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 6,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "ca_awards_books_personalities.json",
+      "question": "Match List-I with List-II and select the correct answer using the code given below the lists: [2007] List-I (Person) List-II (Known as) A. John C. Mather 1. Co-founder of Microsoft B. Michael Griffin 2. Space Walker C. Paul G. Allen 3. Administrator of NASA D. Piers Sellers 4. Nobel Prize Winner,2006 in Physics A B C D",
+      "options": {
+        "A": "Code A",
+        "B": "Code B",
+        "C": "Code C",
+        "D": "Code D"
+      },
+      "answer": "C",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_MAP_2007_Q9",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 7,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "indian_geography_map_based.json",
+      "question": "Which one among the following major Indian cities is most eastward located?",
+      "options": {
+        "A": "Hyderabad",
+        "B": "Bhopal",
+        "C": "Lucknow",
+        "D": "Bengaluru (Bangalore)"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES_2007_Q10",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 8,
+      "originalQuestionNumber": 10,
+      "subject": null,
+      "sourceFile": "ca_awards_books_personalities.json",
+      "question": "Match List-I with List-II and select the correct answer using the code given below the lists: [2007] List-I (Eminent Person) List-II (Known as) A. Bhanu Bharti 1. Music composer B. Mike Pandey 2. Poet and Literateur C. Mohd. Zahur Khayyam 3. Theatre director D. Vinda Karandikar 4. Wildlife film maker A B C D",
+      "options": {
+        "A": "Code A",
+        "B": "Code B",
+        "C": "Code C",
+        "D": "Code D"
+      },
+      "answer": "D",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDMTN_2007_Q10",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 9,
+      "originalQuestionNumber": 10,
+      "subject": null,
+      "sourceFile": "indian_physical_geography_mountains.json",
+      "question": "In which State is the Guru Shikhar Peak located?",
+      "options": {
+        "A": "Rajasthan",
+        "B": "Gujarat",
+        "C": "Madhya Pradesh",
+        "D": "Maharashtra"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_MAP_2007_Q10",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 10,
+      "originalQuestionNumber": 10,
+      "subject": null,
+      "sourceFile": "indian_geography_map_based.json",
+      "question": "Out of the four southern States: Andhra Pradesh, Karnataka, Kerala and Tamil Nadu, which shares boundaries with the maximum number of Indian States?",
+      "options": {
+        "A": "Andhra Pradesh Only",
+        "B": "Karnataka Only",
+        "C": "Each of Andhra Pradesh and Karnataka",
+        "D": "Each of Tamil Nadu and Kerala"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES_2007_Q11",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 11,
+      "originalQuestionNumber": 11,
+      "subject": null,
+      "sourceFile": "ca_awards_books_personalities.json",
+      "question": "For which one of the following books did Kiran Desai win the Man Booker Prize 2006? [2007]",
+      "options": {
+        "A": "The Secret River",
+        "B": "In the Country of Men",
+        "C": "The Inheritance of Loss",
+        "D": "Mother's Milk"
+      },
+      "answer": "C",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDMTN_2007_Q11",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 12,
+      "originalQuestionNumber": 11,
+      "subject": null,
+      "sourceFile": "indian_physical_geography_mountains.json",
+      "question": "Where were Shevaroy Hills located?",
+      "options": {
+        "A": "Andhra Pradesh",
+        "B": "Karnataka",
+        "C": "Kerala",
+        "D": "Tamil Nadu"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2007_Q11_EVENTS_1",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 13,
+      "originalQuestionNumber": 11,
+      "subject": null,
+      "sourceFile": "events_1857_1885.json",
+      "question": "The first factory Act restricting the working hours of women and children, and authorising local governments to make necessary rules was adopted during whose time?",
+      "options": {
+        "A": "Lord Lytton",
+        "B": "Lord Bentinck",
+        "C": "Lord Ripon",
+        "D": "Lord Canning"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2007_Q11_LITERATU",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 14,
+      "originalQuestionNumber": 11,
+      "subject": null,
+      "sourceFile": "literature.json",
+      "question": "The song 'Amar Sonar Bangla' written during the Swadeshi Movement of India inspired the liberation struggle of Bangladesh. Who wrote this song?",
+      "options": {
+        "A": "Rajni Kanta Sen",
+        "B": "Dwijendralal Ray",
+        "C": "Mukunda Das",
+        "D": "Rabindranath Tagore"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES_2007_Q12",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 15,
+      "originalQuestionNumber": 12,
+      "subject": null,
+      "sourceFile": "ca_awards_books_personalities.json",
+      "question": "How is Gabriel Garcia Marquez well-known as? [2007]",
+      "options": {
+        "A": "Known for research in agriculture",
+        "B": "A renowed football coach",
+        "C": "A great writer who won the Nobel Prize for literature",
+        "D": "Known for research in railway engineering"
+      },
+      "answer": "C",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDMTN_2007_Q12",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 16,
+      "originalQuestionNumber": 12,
+      "subject": null,
+      "sourceFile": "indian_physical_geography_mountains.json",
+      "question": "Which one of the following Himalayan passes was reopened around in the middle of the year 2006 to facilitate trade between India and China?",
+      "options": {
+        "A": "Chang La",
+        "B": "Jara La",
+        "C": "Nathu La",
+        "D": "Shipki La"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2007_Q12_LITERATU",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 17,
+      "originalQuestionNumber": 12,
+      "subject": null,
+      "sourceFile": "literature.json",
+      "question": "Who among the following wrote the book Babuvivah?",
+      "options": {
+        "A": "Raja Rammohan Roy",
+        "B": "Ishwar Chandra Vidyasagar",
+        "C": "Pandita Rambai",
+        "D": "Rabindranath Tagore"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_AWARDS_BOOKS_PERSONALITIES_2007_Q13",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 18,
+      "originalQuestionNumber": 13,
+      "subject": null,
+      "sourceFile": "ca_awards_books_personalities.json",
+      "question": "Wangari Maathai, the Nobel Prizes winner from Kenya is known for her contribution to which one of the following? [2007]",
+      "options": {
+        "A": "Jouralism",
+        "B": "International economics",
+        "C": "Sustainable development",
+        "D": "Child development"
+      },
+      "answer": "C",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY_2007_Q13",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 19,
+      "originalQuestionNumber": 13,
+      "subject": null,
+      "sourceFile": "ca_environment_ecology.json",
+      "question": "Where is Copacabana Beach located? [2007]",
+      "options": {
+        "A": "Buenos Aires",
+        "B": "Hawaiian Islands",
+        "C": "Rio de Janeiro",
+        "D": "Valletta"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-INTL-MT01",
+      "syllabusNodeId": "GS3-ENV-INTL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ENV-CLIMATEPHEN-MT01",
+          "toNodeId": "GS3-ENV-INTL-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ENV-CLIMATEPHEN-MT01 based on keywords.",
+          "matchedKeywords": [
+            "cop"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2007_Q13_LITERATU",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 20,
+      "originalQuestionNumber": 13,
+      "subject": null,
+      "sourceFile": "literature.json",
+      "question": "Who among the following started the newspaper - Shome Prakash?",
+      "options": {
+        "A": "Dayanand Saraswati",
+        "B": "Ishwar Chandra Vidyasagar",
+        "C": "Raja Rammohan Roy",
+        "D": "Surendranath Banerjee"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_ENVIRONMENT_ECOLOGY_2007_Q14",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 21,
+      "originalQuestionNumber": 14,
+      "subject": null,
+      "sourceFile": "ca_environment_ecology.json",
+      "question": "With reference to the international meeting held in the year 2006, which of the following pairs is/are correctly matched? [2007] 1. NAM Summit: Havana 2. APEC Meeting: Bangkok 3. EU-India Summit: Helsinki 4. Un Climate Change Conference: Geneva Select the correct answer using the codes given below:",
+      "options": {
+        "A": "CLRI",
+        "B": "IARI",
+        "C": "NDDB",
+        "D": "NDRI"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-CLIMATEPHEN-MT01",
+      "syllabusNodeId": "GS3-ENV-CLIMATEPHEN-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2007_Q14_ESTABLIS",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 22,
+      "originalQuestionNumber": 14,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "The ruler of which one of the following States was removed from power by the British on the pretext of misgovernance?",
+      "options": {
+        "A": "Awadh",
+        "B": "Jhansi",
+        "C": "French",
+        "D": "Satara"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_OCE_2007_Q15",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 23,
+      "originalQuestionNumber": 15,
+      "subject": null,
+      "sourceFile": "oceanography.json",
+      "question": "Consider the following statements: 1. The annual range of temperature is greater in the Pacific Ocean than that in the Atlantic Ocean. 2. The annual range of temperature is greater in the Northern Hemisphere than that in the Southern Hemisphere. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_WRLD_2007_Q15",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 24,
+      "originalQuestionNumber": 15,
+      "subject": null,
+      "sourceFile": "countries_regions_world_features.json",
+      "question": "Match List -I with List -II and select the correct answer using the code given below the lists: List I (City) List-II (River) A. Bangkok 1. Irrawaddy B. Phnom-penh 2. Mekong C. Hanoi 3. Menam (chao phraya) D. Yangon 4. Red River A B C D",
+      "options": {
+        "A": "3 2 4 1",
+        "B": "4 1 3 2",
+        "C": "3 1 4 2",
+        "D": "4 2 3 1"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2007_Q15_ESTABLIS",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 25,
+      "originalQuestionNumber": 15,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "Who among the following Europeans were the last to come to pre independence India as traders?",
+      "options": {
+        "A": "Dutch",
+        "B": "English",
+        "C": "French",
+        "D": "Portuguese"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POPDEM_2007_Q16",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 26,
+      "originalQuestionNumber": 16,
+      "subject": "Economy",
+      "sourceFile": "population_demography.json",
+      "question": "Which one among the following States of India has the Lowest density of population?",
+      "options": {
+        "A": "Himachal Pradesh",
+        "B": "Meghalaya",
+        "C": "Arunachal Pradesh",
+        "D": "Sikkim"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CONS_2007_Q16",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 27,
+      "originalQuestionNumber": 16,
+      "subject": null,
+      "sourceFile": "conservation_protected_areascorrected.json",
+      "question": "Which one of the following is located is located in the Bastar region?",
+      "options": {
+        "A": "Bandhavgarh National Park",
+        "B": "Dundeli Sanctuary",
+        "C": "Rajai National Park",
+        "D": "Indravati National Park"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-CONSERVATION-MT01",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRES_2007_Q16",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 28,
+      "originalQuestionNumber": 16,
+      "subject": null,
+      "sourceFile": "natural_vegetation_soils_minerals.json",
+      "question": "Consider the following statements: 1. Balaghat is known for its diamond mines. 2. Majhgawan is known for its manganese deposits. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-RESOURCES-MT02",
+      "syllabusNodeId": "GS1-GEO-IND-RESOURCES-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-RESOURCES-MT02",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "manganese"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_WRLD_2007_Q16",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 29,
+      "originalQuestionNumber": 16,
+      "subject": null,
+      "sourceFile": "countries_regions_world_features.json",
+      "question": "Which one among the following rivers is the longest?",
+      "options": {
+        "A": "Amazon",
+        "B": "Amur",
+        "C": "Congo",
+        "D": "Lena"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2007_Q16_ESTABLIS",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 30,
+      "originalQuestionNumber": 16,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "Consider the following statements: 1. Robert Clive was the first Governor -General of Bengal. 2. William Bentinck was the first Governor-General of India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2007_Q16",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 31,
+      "originalQuestionNumber": 16,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Which one among the following is called philosopher's wool?",
+      "options": {
+        "A": "Zinc bromide",
+        "B": "Zinc nitrate",
+        "C": "Zinc oxide",
+        "D": "Zinc chloride"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CONS_2007_Q17",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 32,
+      "originalQuestionNumber": 17,
+      "subject": null,
+      "sourceFile": "conservation_protected_areascorrected.json",
+      "question": "Which one of the following is also known as Top Slip?",
+      "options": {
+        "A": "Simlipal National Park",
+        "B": "Periyar Wilddlife Sanctuary",
+        "C": "manjira Wildlife Sanctuary",
+        "D": "Indira Gandhi Wildlife Sanctuary and National Park"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-CONSERVATION-MT01",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2007_Q17_ESTABLIS",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 33,
+      "originalQuestionNumber": 17,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "Which one of the following was the first fort constructed by the British in India?",
+      "options": {
+        "A": "Fort William",
+        "B": "Fort St. George",
+        "C": "Fort St. David",
+        "D": "Fort St. Angelo"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PRIME_MINISTER_AND_COUNCIL_OF_MINISTERS_2007_Q17",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 34,
+      "originalQuestionNumber": 17,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which of the following Constitution Amendment Acts seeks that the size of the Councils of Ministers at the Centre and in a State must not exceed 15 per cent of the total number of members in the Lok Sabha and the total numbers of members of the Legislative Assembly of that state,respectively?",
+      "options": {
+        "A": "91st",
+        "B": "93rd",
+        "C": "95th",
+        "D": "97th"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-EXEC-MT01",
+          "toNodeId": "GS2-POL-PARL-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-EXEC-MT01 based on keywords.",
+          "matchedKeywords": [
+            "lok sabha"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCICHEMISTRY_2007_Q17",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 35,
+      "originalQuestionNumber": 17,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Which one of the following does not contain silver?",
+      "options": {
+        "A": "Horn Silver",
+        "B": "German silver",
+        "C": "Ruby silver",
+        "D": "Lunar caustic"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PRIME_MINISTER_AND_COUNCIL_OF_MINISTERS_2007_Q18",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 36,
+      "originalQuestionNumber": 18,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1. Jawaharlal Nehru was in his fourth term as the Prime Minister of India at the time of his death. 2. Jawaharlal Nehru represented Rae Bareilly constituency as a Member of Parliament. 3. The first non-Congress Prime Minister of India assumed the Office in the year 1977. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "3 only",
+        "C": "1 only",
+        "D": "1 and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-EXEC-MT01",
+      "syllabusNodeId": "GS2-POL-EXEC-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2007_Q18",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 37,
+      "originalQuestionNumber": 18,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Which one of the following types of glass can cut off ultraviolet rays?",
+      "options": {
+        "A": "Soda glass",
+        "B": "Pyrex glass",
+        "C": "Jena glass",
+        "D": "Crookes glass"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIELECTRONICSIT_2007_Q18",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 38,
+      "originalQuestionNumber": 18,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_electronics_it.json",
+      "question": "Who among the following is considered as the inventor of the World Wide Web (WWW)?",
+      "options": {
+        "A": "Edward Kasner",
+        "B": "Bill Gates",
+        "C": "Tim Berners-Lee",
+        "D": "Vinod Dham"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-IT-COMM-MT02",
+      "syllabusNodeId": "GS3-ST-IT-COMM-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_SPORTS_2007_Q19",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 39,
+      "originalQuestionNumber": 19,
+      "subject": null,
+      "sourceFile": "ca_sports.json",
+      "question": "Who among the following was chosen as the FIFA World Player of the Year for the Year 2006? [2007]",
+      "options": {
+        "A": "Zinedine Zidane",
+        "B": "Fabio Cannavaro",
+        "C": "Ronaldinho",
+        "D": "Thierry Henry"
+      },
+      "answer": "B",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PRIME_MINISTER_AND_COUNCIL_OF_MINISTERS_2007_Q19",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 40,
+      "originalQuestionNumber": 19,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "MCA-21 is a major initiative taken up by the Government of India in which one of the following areas?",
+      "options": {
+        "A": "Foreign direct investment in India",
+        "B": "Attracting international tourists",
+        "C": "e-governance",
+        "D": "Modernization of airports"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-EXEC-MT01",
+      "syllabusNodeId": "GS2-POL-EXEC-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOTECH_2007_Q19",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 41,
+      "originalQuestionNumber": 19,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biotech.json",
+      "question": "Which of the following types is used by computed tomography employed for visualization of the internal structure of human body?",
+      "options": {
+        "A": "X-rays",
+        "B": "sound Waves",
+        "C": "Magnetic resonance",
+        "D": "Radioisotopes"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2007_Q19",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 42,
+      "originalQuestionNumber": 19,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Which one of the following non -metals is not a poor conductor of electricity?",
+      "options": {
+        "A": "Sulphur",
+        "B": "Selenium",
+        "C": "Bromine",
+        "D": "Phosphorus"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_SPORTS_2007_Q20",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 43,
+      "originalQuestionNumber": 20,
+      "subject": null,
+      "sourceFile": "ca_sports.json",
+      "question": "Who was Leander Paes's partner when he won Doubles Final in the US Open Tennis Tournament 2006? [2007]",
+      "options": {
+        "A": "Max Mirnyi",
+        "B": "Martin Damm",
+        "C": "Bob Bryan",
+        "D": "Mike Bryan"
+      },
+      "answer": "B",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PRIME_MINISTER_AND_COUNCIL_OF_MINISTERS_2007_Q20",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 44,
+      "originalQuestionNumber": 20,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Who among the following have been the Union Finance Ministers of India? 1. V.P. Singh 2. R. Venkattaraman 3. Y.B. Chavan 4. Pranab Mukherjee Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1,2 and 3 only",
+        "B": "1,3 and 4 only",
+        "C": "2 and 4 only",
+        "D": "1,2,3 and 4"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-EXEC-MT01",
+      "syllabusNodeId": "GS2-POL-EXEC-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2007_Q20",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 45,
+      "originalQuestionNumber": 20,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Which one of the following is another name of RDX?",
+      "options": {
+        "A": "Cyanohydrin",
+        "B": "Selenium",
+        "C": "Cyclohexane",
+        "D": "Cyclonite"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_SPORTS_2007_Q21",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 46,
+      "originalQuestionNumber": 21,
+      "subject": null,
+      "sourceFile": "ca_sports.json",
+      "question": "The Pulitzer Prize is associated with which one of the following? [2007]",
+      "options": {
+        "A": "Enviromental protection",
+        "B": "Olympic games",
+        "C": "Journalism",
+        "D": "Civil Aviation"
+      },
+      "answer": "C",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2007_Q21_GANDHIAN",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 47,
+      "originalQuestionNumber": 21,
+      "subject": null,
+      "sourceFile": "gandhian_phase_1917_1925.json",
+      "question": "Which one of the following aroused a wave of popular indignation that led to the massacre by the British at Jallianwala Bagh?",
+      "options": {
+        "A": "The arms Act",
+        "B": "The Public Safety Act",
+        "C": "The Rowlatt Act",
+        "D": "The Vernacular Press Act"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_SPORTS_2007_Q22",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 48,
+      "originalQuestionNumber": 22,
+      "subject": null,
+      "sourceFile": "ca_sports.json",
+      "question": "Who among the following bowlers have taken more than 500 wickets in Test Cricket? [2007] 1. Wasim Akram 2. Richard Hadlee 3. Glenn McGroth 4. Courtney Walsh Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 and 4 only",
+        "C": "1,2 and 3 only",
+        "D": "1,2,3 and 4"
+      },
+      "answer": "B",
+      "nodeId": "1C-MISC-INST-MT01",
+      "syllabusNodeId": "1C-MISC-INST-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2007_Q22_GANDHIAN",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 49,
+      "originalQuestionNumber": 22,
+      "subject": null,
+      "sourceFile": "gandhian_phase_1917_1925.json",
+      "question": "At which one of the following place, did Mahatma Gandhi first start his Satyagraha in India?",
+      "options": {
+        "A": "Ahmedabad",
+        "B": "Bardoli",
+        "C": "Champaran",
+        "D": "kheda"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2007_Q22",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 50,
+      "originalQuestionNumber": 22,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1.The Judge (Inquiry) Bill 2006 contemplates establishing a Judicial Council which will receive complaints against Judges of the Supreme Court including Chief Justices of India, High Court Chief Justice and Judges. 2. Under the Protection of Women from Domestic Violence act, 2005, women from Domestic Violence act, 2005 a woman can file a petition before a 1st class Judicial magistrate. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-JUD-MT01",
+      "syllabusNodeId": "GS2-POL-JUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-AMEND-MT01",
+          "toNodeId": "GS2-POL-JUD-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS2-POL-AMEND-MT01 based on keywords.",
+          "matchedKeywords": [
+            "supreme court",
+            "high court"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_AGR_2007_Q23",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 51,
+      "originalQuestionNumber": 23,
+      "subject": null,
+      "sourceFile": "agriculture.json",
+      "question": "Which one of the following is the correct sequence in the decreasing order of production (in million tonnes) of the given foodgrains in India?",
+      "options": {
+        "A": "Wheat-Rice-Pulses-Coarse cereals",
+        "B": "Rice-Wheat-Pulses-Coarse cereals",
+        "C": "Wheat-Rice-Coarse cereals-Pulses",
+        "D": "Rice-Wheat-Coarse cereals-Pulses"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_MAPW_2007_Q23",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 52,
+      "originalQuestionNumber": 23,
+      "subject": null,
+      "sourceFile": "world_mapping.json",
+      "question": "Through which one of the following Straits, does a tunnel connect the United Kingdom and France?",
+      "options": {
+        "A": "Davis Strait",
+        "B": "Denmark Strait",
+        "C": "Strait of dover",
+        "D": "Strait of Gibraltar"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2007_Q23_LAST_PHA",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 53,
+      "originalQuestionNumber": 23,
+      "subject": null,
+      "sourceFile": "last_phase_1940_1950.json",
+      "question": "Assertion(A): According to the Wavell Plan, the number of Hindu and Muslim members in the Executive Council were to be equal. Reason(R): Wavell thought that this arrangement would have avoided the partition of India.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A.",
+        "B": "Both A and R are individually true but R is not the correct explanation of A.",
+        "C": "A is True but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2007_Q23",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 54,
+      "originalQuestionNumber": 23,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Which one of the following is the correct sequence in the order of decreasing length of the three structural parts given below of small intestine in the human body?",
+      "options": {
+        "A": "Jejunum-Duodenum- Ileum",
+        "B": "Ileum-Duodenum- Duodenum",
+        "C": "Jejunum-Ileum- Duodenum",
+        "D": "Ileum- Jejunum- Duodenum"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_AGR_2007_Q24",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 55,
+      "originalQuestionNumber": 24,
+      "subject": null,
+      "sourceFile": "agriculture.json",
+      "question": "Assertion(",
+      "options": {
+        "A": ": There are no tea plantations in any African country. Reason (R): Tea plants need fertile soil with high humus",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is not the correct explanation of A",
+        "D": "A is True but R is false d) A is false but R is true"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-AGRI-MT01",
+          "toNodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-AGRI-MT01 based on keywords.",
+          "matchedKeywords": [
+            "soil"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_MAPW_2007_Q24",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 56,
+      "originalQuestionNumber": 24,
+      "subject": null,
+      "sourceFile": "world_mapping.json",
+      "question": "Which one of the following cities does not have the same clock time as that of the other three cities at any given instant?",
+      "options": {
+        "A": "London (U.K)",
+        "B": "Lisbon (Portugal)",
+        "C": "Accra (Ghana)",
+        "D": "Addis Ababa (Ethiopia)"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2007_Q24",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 57,
+      "originalQuestionNumber": 24,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "In human body, which one of the following harmones regulates blood calcium and Phosphate?",
+      "options": {
+        "A": "Glucagon",
+        "B": "Growth hormone",
+        "C": "Parathyroid",
+        "D": "Thyroxine"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology",
+            "blood"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIPHYSICS_2007_Q24",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 58,
+      "originalQuestionNumber": 24,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Consider the following statements: 1. A flute of smaller length produces waves of lower frequency. 2. Sound travels in rocks in the form of longitudinal elastic waves only. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_MISC_GK_2007_Q25",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 59,
+      "originalQuestionNumber": 25,
+      "subject": null,
+      "sourceFile": "ca_misc_gk.json",
+      "question": "Consider the following statements: [2007] 1. The series of the International Paper Sizes is based on A0 size Whose area is 0.5 square meter (approximately). 2. The area of A4 size paper is 1/8th of that of the A0 size paper. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "1C-MISC-SCHEMES-MT04",
+      "syllabusNodeId": "1C-MISC-SCHEMES-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2007_Q25",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 60,
+      "originalQuestionNumber": 25,
+      "subject": null,
+      "sourceFile": "ca_science_tech.json",
+      "question": "Consider the following statements: [2007] 1. In November, 2006, DRDO successfully conducted the interception test using Prithvi-II missile. 2. Prithvi-II is a surface-to-surface missile and can be deployed to guard the metros against air attacks. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-IT-COMM-MT02",
+      "syllabusNodeId": "GS3-ST-IT-COMM-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2007_Q25",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 61,
+      "originalQuestionNumber": 25,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Which one of the following parts of the pitcher plant becomes modified into a pitcher?",
+      "options": {
+        "A": "Stem",
+        "B": "Leaf",
+        "C": "Stipule",
+        "D": "Petiole"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIPHYSICS_2007_Q25",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 62,
+      "originalQuestionNumber": 25,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Four wires of same material and of dimensions as under as stretched by a load of same magnitude separately. Which one of them will be elongated maximum?",
+      "options": {
+        "A": "Wire of 1 m length and 2 mm diameter",
+        "B": "Wire of 2 m length and 2 mm diameter",
+        "C": "Wire of 3 m length and 1.5 mm diameter",
+        "D": "Wire 1 m length and 1 mm diameter"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_GEOGRAPHY_2007_Q26",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 63,
+      "originalQuestionNumber": 26,
+      "subject": null,
+      "sourceFile": "ca_geography.json",
+      "question": "The Stilwell Road, built in 1940s, which was recently in news, connects which of the following? [2007]",
+      "options": {
+        "A": "Agartala in India and Yangon in Myanmar via Bangladesh",
+        "B": "Ledo in India and Kunming in China via Myanmar",
+        "C": "Kalimpong in India and Lhasa in Tibet via Bhutan",
+        "D": "Imphal in India and Bangkok in Thailand via Myanmar"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+      "syllabusNodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_MISC_GK_2007_Q26",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 64,
+      "originalQuestionNumber": 26,
+      "subject": null,
+      "sourceFile": "ca_misc_gk.json",
+      "question": "Shahgarh area in Jaisalmer district of Rajasthan was in news in the year 2006 because of which one of the following? [2007]",
+      "options": {
+        "A": "Finding high quality gas reserves",
+        "B": "Finding uranium deposits",
+        "C": "Finding Zinc deposits",
+        "D": "Installation of wind power units"
+      },
+      "answer": "A",
+      "nodeId": "1C-MISC-SCHEMES-MT04",
+      "syllabusNodeId": "1C-MISC-SCHEMES-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2007_Q26",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 65,
+      "originalQuestionNumber": 26,
+      "subject": null,
+      "sourceFile": "ca_science_tech.json",
+      "question": "Where was the first conference of the Pugwash Conferences on Science and World Affairs held in the Year 1957? [2007]",
+      "options": {
+        "A": "b) Rhode Island (USA)",
+        "B": "Option B",
+        "C": "Nova Scotia (Canad",
+        "D": "Nagasaki (Japan)"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-IT-COMM-MT02",
+      "syllabusNodeId": "GS3-ST-IT-COMM-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTECOORG_2007_Q26",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 66,
+      "originalQuestionNumber": 26,
+      "subject": "Economy",
+      "sourceFile": "international_economic_organizations.json",
+      "question": "Who among the following served as the Chief Economist of the International Monetary Fund?",
+      "options": {
+        "A": "Ashok Lahiri",
+        "B": "Sumantra Ghoshal",
+        "C": "Saumitra Chaudhuri",
+        "D": "Raghuram Rajan"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2007_Q26",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 67,
+      "originalQuestionNumber": 26,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "How do most insects respire?",
+      "options": {
+        "A": "Cervix",
+        "B": "Fallopian tube",
+        "C": "Lower part of uterus",
+        "D": "Upper part of uterus"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIPHYSICS_2007_Q26",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 68,
+      "originalQuestionNumber": 26,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Assertion (A): A jet aircraft moving at Mach number equal to 1, travels faster at an altitude of 15 km than while moving at Mach number equal to 1 at sea level.: Reason (R): the velocity of sound depends on the temperature of the surrounding medium.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A.",
+        "B": "Both A and R are individually tru but R is not the correct explanation of A.",
+        "C": "A is True but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_MISC_GK_2007_Q27",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 69,
+      "originalQuestionNumber": 27,
+      "subject": null,
+      "sourceFile": "ca_misc_gk.json",
+      "question": "Which one of the following cities has been the venue of the Asian Games for the maximum number of times from the year 1951 to the year 2006? [2007]",
+      "options": {
+        "A": "Delhi",
+        "B": "Bangkok",
+        "C": "Rio de janeiro",
+        "D": "Beijing"
+      },
+      "answer": "B",
+      "nodeId": "1C-MISC-SCHEMES-MT04",
+      "syllabusNodeId": "1C-MISC-SCHEMES-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2007_Q27",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 70,
+      "originalQuestionNumber": 27,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Which one of the following parts of human brain is the regulating centre for swallowing and vomiting?",
+      "options": {
+        "A": "Cerebellum",
+        "B": "Cerebrum",
+        "C": "Medulla oblongata",
+        "D": "Pons"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_MISC_GK_2007_Q28",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 71,
+      "originalQuestionNumber": 28,
+      "subject": null,
+      "sourceFile": "ca_misc_gk.json",
+      "question": "Robert Webster is known for his work associated with which one of the following? [2007]",
+      "options": {
+        "A": "Cardiology",
+        "B": "Influenza virus",
+        "C": "HIV/AIDS",
+        "D": "Alzheimer"
+      },
+      "answer": "B",
+      "nodeId": "1C-MISC-SCHEMES-MT04",
+      "syllabusNodeId": "1C-MISC-SCHEMES-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CAPMARMON_2007_Q28",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 72,
+      "originalQuestionNumber": 28,
+      "subject": "Economy",
+      "sourceFile": "capital_market_money_market_fdi.json",
+      "question": "Participatory Notes (PNs) are associated with which one of the following?",
+      "options": {
+        "A": "Consolidated Fund of India",
+        "B": "Foreign Institutional Investors",
+        "C": "United Nations Development Programme",
+        "D": "Kyoto Protocol"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2007_Q28",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 73,
+      "originalQuestionNumber": 28,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Production of which one of the following is a function of the liver?",
+      "options": {
+        "A": "Lipase",
+        "B": "Urea",
+        "C": "Mucus",
+        "D": "Hydrochloric acid"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCISPACETECH_2007_Q28",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 74,
+      "originalQuestionNumber": 28,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_space_tech.json",
+      "question": "What is the Galileo Project which has been in news recently?",
+      "options": {
+        "A": "An intercountry programme of missile shield developed by the United States of America",
+        "B": "A Project developed by India with assistance from Canada",
+        "C": "An environmental protection project being developed by Japan",
+        "D": "A multi -satellite navigation project being developed by the European Union"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-SPACE-MT01",
+      "syllabusNodeId": "GS3-ST-SPACE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_MISC_GK_2007_Q29",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 75,
+      "originalQuestionNumber": 29,
+      "subject": null,
+      "sourceFile": "ca_misc_gk.json",
+      "question": "Match Kist-I and Select the correct answer using the code given below the lists: [2007] List-I (Person) List-II (Company) A. Vishwapati Trivedi 1. Essar Group B. Tulsi R. Tanti 2. Info Edge India (nakuri.com) C. Shashi Ruia 3. Indian (Indian Airlines) D. S. Bikhchandani 4. Suzlon Energy A B C D",
+      "options": {
+        "A": "Code A",
+        "B": "Code B",
+        "C": "Code C",
+        "D": "Code D"
+      },
+      "answer": "D",
+      "nodeId": "1C-MISC-SCHEMES-MT04",
+      "syllabusNodeId": "1C-MISC-SCHEMES-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_MAC_2007_Q29",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 76,
+      "originalQuestionNumber": 29,
+      "subject": "Economy",
+      "sourceFile": "macroeconomy.json",
+      "question": "Which one of the following is the correct sequence in the decreasing order of contribution of different sectors to the Gross Domestic Product of India.?",
+      "options": {
+        "A": "Service- Industry- Agriculture",
+        "B": "Service-Agriculture-Industry",
+        "C": "Industry- Services-Agriculture",
+        "D": "Industry-Agriculture-Services"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRIV_2007_Q29",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 77,
+      "originalQuestionNumber": 29,
+      "subject": null,
+      "sourceFile": "indian_rivers_drainage.json",
+      "question": "Match List-I (Town) with List-II (River Nearer to it) and select the correct answer using the code given below the lists: List-I List-II A. Betul 1. Indravati B. Jagdalpur 2.Narmada C. Jabalpur 3.Shipra D. Ujjain 4.Tapti A B C D",
+      "options": {
+        "A": "1 4 2 3",
+        "B": "4 1 2 3",
+        "C": "4 1 3 2",
+        "D": "1 4 3 2"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river",
+            "narmada"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIBIOLOGY_2007_Q29",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 78,
+      "originalQuestionNumber": 29,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Which one of the following is not a digestive enzyme in the human systems?",
+      "options": {
+        "A": "Trypsin",
+        "B": "Gastrin",
+        "C": "Ptylin",
+        "D": "Pepsin"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCISPACETECH_2007_Q29",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 79,
+      "originalQuestionNumber": 29,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_space_tech.json",
+      "question": "Which one of the following pairs is not correctly matched?",
+      "options": {
+        "A": "Cosmic Background Explore(COBE)-Satellite programme",
+        "B": "Falcon-Under-sea cable system",
+        "C": "Discovery-Space Shuttle",
+        "D": "Atlantis-Space Shuttle"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-SPACE-MT01",
+      "syllabusNodeId": "GS3-ST-SPACE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2007_Q30",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 80,
+      "originalQuestionNumber": 30,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "Consider the following statement: 1. The nation-wide scheme of the National Child Labour Projects (NCLP) is run by Union Ministry of Social Justice amd Empowerment. 2. Gurupadswamy Committee dealt with the issue of child labour . Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+          "toNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-INCLUSIVE-GROWTH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "labour"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_BIO_2007_Q30",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 81,
+      "originalQuestionNumber": 30,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "Consider the following statements: 1. In India, Red Panda is naturally found in the Western Himalayas only. 2. In India, Slow Loris lives in the dense forests of the North East. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRIV_2007_Q30",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 82,
+      "originalQuestionNumber": 30,
+      "subject": null,
+      "sourceFile": "indian_rivers_drainage.json",
+      "question": "Which one of the following rivers originates at Amarkantak?",
+      "options": {
+        "A": "Damodar",
+        "B": "Mahanadi",
+        "C": "Narmada",
+        "D": "Tapti"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river",
+            "narmada"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIBIOLOGY_2007_Q30",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 83,
+      "originalQuestionNumber": 30,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Which of the following types of light are strongly absorbed by plants?",
+      "options": {
+        "A": "Violet and orange",
+        "B": "Blue and red",
+        "C": "Indigo and yellow",
+        "D": "Yellow and violet"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCISPACETECH_2007_Q30",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 84,
+      "originalQuestionNumber": 30,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_space_tech.json",
+      "question": "NASA'S Deep Impact space mission was employed to take detailed pictures of which comet nucleus?",
+      "options": {
+        "A": "Halley's Comet",
+        "B": "Hale-Bopp",
+        "C": "Hyakutake",
+        "D": "Tempel 1"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-SPACE-MT01",
+      "syllabusNodeId": "GS3-ST-SPACE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_BIO_2007_Q31",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 85,
+      "originalQuestionNumber": 31,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "Dalbergia species is associated with which one of the following?",
+      "options": {
+        "A": "Cashew nut",
+        "B": "Coffee",
+        "C": "Tea",
+        "D": "Rosewood"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2007_Q31",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 86,
+      "originalQuestionNumber": 31,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "In the human body, which structure is the appendix attached to?",
+      "options": {
+        "A": "The large intestine",
+        "B": "the small intestine",
+        "C": "The gall bladder",
+        "D": "The stomach"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCISPACETECH_2007_Q31",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 87,
+      "originalQuestionNumber": 31,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_space_tech.json",
+      "question": "What is the average distance (approximate) between the Sun and the Earth?",
+      "options": {
+        "A": "70x105km",
+        "B": "100x105km",
+        "C": "110x106km",
+        "D": "150x106km"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-SPACE-MT01",
+      "syllabusNodeId": "GS3-ST-SPACE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_ECONOMY_BANKING_2007_Q33",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 88,
+      "originalQuestionNumber": 33,
+      "subject": null,
+      "sourceFile": "ca_economy_banking.json",
+      "question": "Match List-I wish List-II and select the correct answer using the code given below the lists: [2007] List-I (Company) List-II (Major Area/Product) A. Chevron 1. Wind energy B. A T & T 2. Oil C. AMD 3. Telephone, internet D. Enercon 4. Micro-processor A B C D",
+      "options": {
+        "A": "Code A",
+        "B": "Code B",
+        "C": "Code C",
+        "D": "Code D"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-BASICS-MACRO-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-BASICS-MACRO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "banking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_CORANDIND_2007_Q36",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 89,
+      "originalQuestionNumber": 36,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "With reference to the steel industry in India in the recent times, consider the following statements: 1. Vizag Steel Plant (RINL) has been declared Mini Ratna. 2. Merger of IISO with SAIL has been completed. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_CLI_2007_Q39",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 90,
+      "originalQuestionNumber": 39,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "Consider the following statements: 1. Either of the two belts over the oceans at about 30o to 35 o N and S Latitudes is known as Horse Latitude. 2. Horse latitudes are low pressure belts. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2007_Q41",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 91,
+      "originalQuestionNumber": 41,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "The largest coral reef in the world is found near the coast of which one of the following countries?",
+      "options": {
+        "A": "Australia",
+        "B": "Cuba",
+        "C": "Ghana",
+        "D": "Philippines"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2007_Q41",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 92,
+      "originalQuestionNumber": 41,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1. The Chairman of the Committee on public Accounts is appointed by the Speaker of the Lok Sabha. 2. The Committee on public Accounts comprises Members of Lok Sabha, Members of Rajya Sabha and a few eminent persons of industry and trade. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2007_Q42",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 93,
+      "originalQuestionNumber": 42,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Who was the Speaker of the first Lok Sabha?",
+      "options": {
+        "A": "Hukam singh",
+        "B": "G,V. Mavalankar",
+        "C": "K.M. Munshi",
+        "D": "U,N. Dhebar"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2007_Q43",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 94,
+      "originalQuestionNumber": 43,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Assertion (A): The Council of Ministers in the Union of India is collectively responsible both to the Lok Sabha and the Rajya Sabha. Reason (R): The Members of both the Lok Sabha and the Rajya Sabha are eligible to be the Ministers of the Union Government.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A.",
+        "B": "Both A and R are individually tru but R is not the correct explanation of A.",
+        "C": "A is True but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIFUNMON_2007_Q45",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 95,
+      "originalQuestionNumber": 45,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "Tarapore Committee was associated with which one of the following?",
+      "options": {
+        "A": "Special Economic Zones",
+        "B": "Fuller capital account convertibility",
+        "C": "Foreign exchange reserves",
+        "D": "Effect of oil-prices on the Indian economy"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-FOREIGN-TRADE-IO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_RBIFUNMON_2007_Q46",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 96,
+      "originalQuestionNumber": 46,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "Consider the following statements: 1. The repo rate is the rate at which other banks borrow from the Reserve Bank of India. 2. A value of 1 or Gini Coefficient in a country implies that there is perfectly equal income for everyone in its population. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-PRE-RBI-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-RBI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIINDBAN_2007_Q55",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 97,
+      "originalQuestionNumber": 55,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "Basel II relates to which one of the following?",
+      "options": {
+        "A": "International standards for safety in civil aviation",
+        "B": "Measures against cyber crimes",
+        "C": "Measures against drug abuse by sportspersons",
+        "D": "International standards for measuring the adequacy of a bank's capital"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-BANKING-STRUCTURE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_RBIINDBAN_2007_Q56",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 98,
+      "originalQuestionNumber": 56,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "The National Housing Bank was set up in India as a wholly -owned subsidiary of which one of the following?",
+      "options": {
+        "A": "State Bank of India",
+        "B": "Reserve Bank of India",
+        "C": "ICICI Bank",
+        "D": "Life Insurance Corporation of India"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-RBI-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-RBI-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2007_Q62",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 99,
+      "originalQuestionNumber": 62,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Near the end of the year 2006, which one of the following countries was suspended from the Commonwealth after a military coup? [2007]",
+      "options": {
+        "A": "Kenya",
+        "B": "Myanmar C) Fiji",
+        "C": "Option C",
+        "D": "Tanzania"
+      },
+      "answer": "C",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2007_Q63",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 100,
+      "originalQuestionNumber": 63,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Which one of the following countries recently upgraded its defence agency to a full defence ministry? [2007]",
+      "options": {
+        "A": "Italy",
+        "B": "Japan",
+        "C": "Switzerland",
+        "D": "Thierry Henry"
+      },
+      "answer": "B",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2007_Q64",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 101,
+      "originalQuestionNumber": 64,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "In the latter half of the year 2006, in which one of the following countries did a military coup take place? [2007]",
+      "options": {
+        "A": "Cambodia",
+        "B": "Laos",
+        "C": "Thailand",
+        "D": "Vietnam"
+      },
+      "answer": "C",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2007_Q65",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 102,
+      "originalQuestionNumber": 65,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Consider the following statements: [2007] 1. China has the observer's status at the South Asian Association for Regional Cooperation. 2. India has the observer's status at the Shanghai Cooperation Organisation. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS2-IR-GROUPINGS-MT01",
+      "syllabusNodeId": "GS2-IR-GROUPINGS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2007_Q66",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 103,
+      "originalQuestionNumber": 66,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Where are the headquarters of the Organization of the Islamic Conference (OIC) located? [2007]",
+      "options": {
+        "A": "Dubai",
+        "B": "Jeddah",
+        "C": "Islamabad",
+        "D": "Ankara"
+      },
+      "answer": "B",
+      "nodeId": "GS2-IR-GROUPINGS-MT01",
+      "syllabusNodeId": "GS2-IR-GROUPINGS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2007_Q67",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 104,
+      "originalQuestionNumber": 67,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Consider the following statements: [2007] 1. North Atlantic Co-operation Council (NACC) is the name of the new organization which has replaced the North Atlantic Treaty Organization (NATO). 2. The United States of America and the United Kingdom became the members of the NATO when it was formed in the year 1949. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2007_Q68",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 105,
+      "originalQuestionNumber": 68,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Which one of the following is not a member of the Shanghai Cooperation Organisation? [2007]",
+      "options": {
+        "A": "Russia",
+        "B": "Kazakhstan",
+        "C": "Ukraine",
+        "D": "Uzbekistan"
+      },
+      "answer": "C",
+      "nodeId": "GS2-IR-GROUPINGS-MT01",
+      "syllabusNodeId": "GS2-IR-GROUPINGS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2007_Q69",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 106,
+      "originalQuestionNumber": 69,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Which one of the following pairs of countries joined the European Union in January, 2007? [2007]",
+      "options": {
+        "A": "Bulgaria and Romania",
+        "B": "Bulgaria and Belgium",
+        "C": "Romania and Slovenia",
+        "D": "Hungary and Croatia"
+      },
+      "answer": "A",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2007_Q70",
+      "year": 2007,
+      "paper": "GS",
+      "questionNumber": 107,
+      "originalQuestionNumber": 70,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Recently, the European Union and other six countries including India signed the International Thermonuclear Experimental Reactor (ITER) Project. Which one of the following was not a signatory to it? [2007]",
+      "options": {
+        "A": "Canada",
+        "B": "China",
+        "C": "Japan",
+        "D": "USA"
+      },
+      "answer": "A",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "mentoros-ca-air1-v1",
+  "subject": "Current Affairs + GK",
+  "mode": "Option B",
+  "productionStatus": "AIR1_FINAL",
+  "topicName": "History",
+  "topicId": "ca_history",
+  "totalQuestions": 8,
+  "questions": [
+    {
+      "id": "CA_HISTORY_2015_Q1",
+      "questionNumber": 1,
+      "year": 2015,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Indira Gandhi Peace Prize for Peace, Disarmament and Development for 2014 was given to which of the following? [2015]",
+      "options": {
+        "A": "Bhabha Atomic Research Centre",
+        "B": "Indian Institute of Science",
+        "C": "Indian Space Research Organization",
+        "D": "Tata Institute of Fundamental Research"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "History",
+      "topicId": "ca_history",
+      "nodeId": "GS1-HISTORY-CURRENT",
+      "syllabusNodeId": "GS1-HISTORY-CURRENT",
+      "microTheme": "awards-honours",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part1 / Q59"
+    },
+    {
+      "id": "CA_HISTORY_2009_Q2",
+      "questionNumber": 2,
+      "year": 2009,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Mahamastakabhisheka, a great religious event, is associated with and done for whom of the following? [2009]",
+      "options": {
+        "A": "Bahubali",
+        "B": "Buddha",
+        "C": "Mahavir",
+        "D": "Nataraja"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "History",
+      "topicId": "ca_history",
+      "nodeId": "GS1-HISTORY-CURRENT",
+      "syllabusNodeId": "GS1-HISTORY-CURRENT",
+      "microTheme": "history",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q9"
+    },
+    {
+      "id": "CA_HISTORY_2009_Q3",
+      "questionNumber": 3,
+      "year": 2009,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "From which one of the following did Kosovo declare its independence? [2009]",
+      "options": {
+        "A": "Bulgaria",
+        "B": "Croatia",
+        "C": "Macedonia",
+        "D": "Serbia"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "History",
+      "topicId": "ca_history",
+      "nodeId": "GS1-HISTORY-CURRENT",
+      "syllabusNodeId": "GS1-HISTORY-CURRENT",
+      "microTheme": "history",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q15"
+    },
+    {
+      "id": "CA_HISTORY_2008_Q4",
+      "questionNumber": 4,
+      "year": 2008,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Rajiv Gandhi National Flying Institute is being established in which State? [2008]",
+      "options": {
+        "A": "Karnataka",
+        "B": "Maharashtra",
+        "C": "Kerala",
+        "D": "Orissa"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "History",
+      "topicId": "ca_history",
+      "nodeId": "GS1-HISTORY-CURRENT",
+      "syllabusNodeId": "GS1-HISTORY-CURRENT",
+      "microTheme": "history",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q55"
+    },
+    {
+      "id": "CA_HISTORY_2006_Q5",
+      "questionNumber": 5,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Claims to the historical Macedonian territory have been a bone of contention between which of the following countries? [2006]",
+      "options": {
+        "A": "Portugal and Spain",
+        "B": "Bulgaria and Greece",
+        "C": "Romania and Bulgaria",
+        "D": "Portugal and Greece"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "History",
+      "topicId": "ca_history",
+      "nodeId": "GS1-HISTORY-CURRENT",
+      "syllabusNodeId": "GS1-HISTORY-CURRENT",
+      "microTheme": "places-in-news",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q18"
+    },
+    {
+      "id": "CA_HISTORY_2005_Q6",
+      "questionNumber": 6,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following: [2005] 1. The constitution of the United States of America came into force in the year 1810. 2. All revenue bills must originate in the House of the Representatives of the US congress. 3. George W. Bush is the only President in the history of the United States of America whose father was also the president of the United States of America. Which of the above statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "1 and 2",
+        "D": "2 and 3"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "History",
+      "topicId": "ca_history",
+      "nodeId": "GS1-HISTORY-CURRENT",
+      "syllabusNodeId": "GS1-HISTORY-CURRENT",
+      "microTheme": "history",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q49"
+    },
+    {
+      "id": "CA_HISTORY_1998_Q7",
+      "questionNumber": 7,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The recent Land Mines Conference to sign the historic treaty was held in the Capital city of: [1998]",
+      "options": {
+        "A": "Canada",
+        "B": "Japan",
+        "C": "Sweden",
+        "D": "Zimbabwe"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "History",
+      "topicId": "ca_history",
+      "nodeId": "GS1-HISTORY-CURRENT",
+      "syllabusNodeId": "GS1-HISTORY-CURRENT",
+      "microTheme": "history",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q28"
+    },
+    {
+      "id": "CA_HISTORY_1998_Q8",
+      "questionNumber": 8,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The discovery of Oak flora in 1966 added a new chapter to the history of Indian Sericulture. Which one of the following states is the leading producer of Oak Tasar silk? [1998]",
+      "options": {
+        "A": "Assam",
+        "B": "Bihar",
+        "C": "Manipur",
+        "D": "Orissa"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "History",
+      "topicId": "ca_history",
+      "nodeId": "GS1-HISTORY-CURRENT",
+      "syllabusNodeId": "GS1-HISTORY-CURRENT",
+      "microTheme": "history",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q33"
+    }
+  ]
+}

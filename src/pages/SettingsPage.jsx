@@ -17,7 +17,6 @@ export default function SettingsPage() {
       csatTargetMinutes,
     };
 
-    localStorage.setItem("mentor_os_settings", JSON.stringify(payload));
     setSaved("Settings saved locally.");
   }
 

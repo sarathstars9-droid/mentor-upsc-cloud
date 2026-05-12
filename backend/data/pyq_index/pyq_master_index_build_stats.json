@@ -1,0 +1,660 @@
+{
+  "generatedAt": "2026-04-27T10:13:38.403Z",
+  "totalFiles": 133,
+  "totalRead": 6433,
+  "totalIndexed": 4524,
+  "inserted": 4524,
+  "replaced": 949,
+  "skippedDuplicate": 960,
+  "autoIds": 0,
+  "csatQuestions": 1153,
+  "answersFound": 4519,
+  "answersMissing": 5,
+  "fileStats": [
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\architecture.json",
+      "total": 48,
+      "withAnswer": 48
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\art_and_craft_india.json",
+      "total": 35,
+      "withAnswer": 35
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\gupta_period.json",
+      "total": 10,
+      "withAnswer": 10
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\harsha_period.json",
+      "total": 3,
+      "withAnswer": 3
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\indus_valley_civilization.json",
+      "total": 6,
+      "withAnswer": 6
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\literature.json",
+      "total": 30,
+      "withAnswer": 30
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\mahajanapadas.json",
+      "total": 9,
+      "withAnswer": 9
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\mauryan_period.json",
+      "total": 8,
+      "withAnswer": 8
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\post_harsha.json",
+      "total": 4,
+      "withAnswer": 4
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\post_mauryan.json",
+      "total": 5,
+      "withAnswer": 5
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\prehistoric_age.json",
+      "total": 3,
+      "withAnswer": 3
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\religion_philosophy.json",
+      "total": 41,
+      "withAnswer": 41
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\south_india.json",
+      "total": 9,
+      "withAnswer": 9
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\ancient_history\\vedic_age.json",
+      "total": 6,
+      "withAnswer": 6
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\csat\\csat_logical_reasoning_FIXED_COUNT_COMPLETE.json",
+      "total": 238,
+      "withAnswer": 238
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\csat\\csat_quantitative_aptitude_FIXED_COUNT_COMPLETE.json",
+      "total": 467,
+      "withAnswer": 464
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\csat\\csat_reading_comprehension_VALIDATED.json",
+      "total": 415,
+      "withAnswer": 415
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\csat\\prelims_csat_2025.json",
+      "total": 80,
+      "withAnswer": 80
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_air1_master_index.json",
+      "total": 456,
+      "withAnswer": 456
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_art_culture.json",
+      "total": 7,
+      "withAnswer": 7
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_awards_books_personalities.json",
+      "total": 27,
+      "withAnswer": 27
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_economy_banking.json",
+      "total": 55,
+      "withAnswer": 55
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_environment_ecology.json",
+      "total": 20,
+      "withAnswer": 20
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_general_science.json",
+      "total": 14,
+      "withAnswer": 14
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_geography.json",
+      "total": 34,
+      "withAnswer": 34
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_history.json",
+      "total": 8,
+      "withAnswer": 8
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_international_relations.json",
+      "total": 109,
+      "withAnswer": 109
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_misc_gk.json",
+      "total": 94,
+      "withAnswer": 94
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_polity_governance.json",
+      "total": 2,
+      "withAnswer": 2
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_science_tech.json",
+      "total": 45,
+      "withAnswer": 45
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\current affairs\\ca_sports.json",
+      "total": 41,
+      "withAnswer": 41
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\agriculture.json",
+      "total": 42,
+      "withAnswer": 42
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\capital_market_money_market_fdi.json",
+      "total": 42,
+      "withAnswer": 42
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\corporates_and_industries.json",
+      "total": 61,
+      "withAnswer": 61
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\economic_institutions_laws_policies.json",
+      "total": 31,
+      "withAnswer": 31
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\employment_skill_development.json",
+      "total": 17,
+      "withAnswer": 17
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\five_year_plans.json",
+      "total": 12,
+      "withAnswer": 12
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\government_budgeting_govt_accounts.json",
+      "total": 42,
+      "withAnswer": 42
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\indian_taxation_system.json",
+      "total": 21,
+      "withAnswer": 21
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\international_economic_organizations.json",
+      "total": 29,
+      "withAnswer": 29
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\international_trade.json",
+      "total": 24,
+      "withAnswer": 24
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\macroeconomy.json",
+      "total": 47,
+      "withAnswer": 47
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\population_demography.json",
+      "total": 43,
+      "withAnswer": 43
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\poverty_development_health_education.json",
+      "total": 46,
+      "withAnswer": 46
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "total": 65,
+      "withAnswer": 65
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\economy\\topics\\rbi_indian_banking_finance_system.json",
+      "total": 65,
+      "withAnswer": 65
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\environment\\topics\\biodiversity_india_worldcorrected.json",
+      "total": 35,
+      "withAnswer": 35
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\environment\\topics\\climate_changecorrected.json",
+      "total": 54,
+      "withAnswer": 54
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\environment\\topics\\conservation_protected_areascorrected.json",
+      "total": 24,
+      "withAnswer": 24
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\environment\\topics\\ecology_ecosystemcorrected.json",
+      "total": 39,
+      "withAnswer": 39
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\environment\\topics\\environmental_laws_institutionscorrected.json",
+      "total": 82,
+      "withAnswer": 82
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\environment\\topics\\environmental_pollutioncorrected.json",
+      "total": 45,
+      "withAnswer": 45
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\environment\\topics\\misc_environmentcorrected.json",
+      "total": 20,
+      "withAnswer": 20
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\environment\\topics\\species_in_newscorrected.json",
+      "total": 46,
+      "withAnswer": 46
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\agriculture.json",
+      "total": 43,
+      "withAnswer": 43
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\climatology.json",
+      "total": 70,
+      "withAnswer": 70
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\countries_regions_world_features.json",
+      "total": 38,
+      "withAnswer": 38
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\economic_geography_transport.json",
+      "total": 20,
+      "withAnswer": 20
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\geomorphology.json",
+      "total": 44,
+      "withAnswer": 44
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\indian_climate_natural_vegetation.json",
+      "total": 33,
+      "withAnswer": 33
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\indian_geography_map_based.json",
+      "total": 19,
+      "withAnswer": 19
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\indian_physical_geography_mountains.json",
+      "total": 24,
+      "withAnswer": 24
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\indian_rivers_drainage.json",
+      "total": 46,
+      "withAnswer": 46
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\industry_resources.json",
+      "total": 24,
+      "withAnswer": 24
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\natural_vegetation_soils_minerals.json",
+      "total": 24,
+      "withAnswer": 24
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\oceanography.json",
+      "total": 21,
+      "withAnswer": 21
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\geography\\world_mapping.json",
+      "total": 49,
+      "withAnswer": 49
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\indian_polity_master.json",
+      "total": 383,
+      "withAnswer": 383
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\indian_polity_pyq_master_index.json",
+      "total": 383,
+      "withAnswer": 383
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\anti_defection_law.json",
+      "total": 3,
+      "withAnswer": 3
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\cag.json",
+      "total": 2,
+      "withAnswer": 2
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\centre_state_relations.json",
+      "total": 9,
+      "withAnswer": 9
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\constitutional_amendments.json",
+      "total": 33,
+      "withAnswer": 33
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\directive_principles_of_state_policy.json",
+      "total": 12,
+      "withAnswer": 12
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\election_commission.json",
+      "total": 21,
+      "withAnswer": 21
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\emergency_provisions.json",
+      "total": 3,
+      "withAnswer": 3
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\finance_commission.json",
+      "total": 4,
+      "withAnswer": 4
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\fundamental_duties.json",
+      "total": 9,
+      "withAnswer": 9
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\fundamental_rights.json",
+      "total": 23,
+      "withAnswer": 23
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\governor.json",
+      "total": 9,
+      "withAnswer": 9
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\high_court.json",
+      "total": 16,
+      "withAnswer": 16
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\historical_background.json",
+      "total": 1,
+      "withAnswer": 1
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\judicial_review_and_activism.json",
+      "total": 13,
+      "withAnswer": 13
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\lokpal.json",
+      "total": 1,
+      "withAnswer": 1
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\making_of_constitution.json",
+      "total": 2,
+      "withAnswer": 2
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\misc_polity.json",
+      "total": 22,
+      "withAnswer": 22
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\municipalities.json",
+      "total": 3,
+      "withAnswer": 3
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\nhrc.json",
+      "total": 3,
+      "withAnswer": 3
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\panchayati_raj.json",
+      "total": 16,
+      "withAnswer": 16
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\parliament.json",
+      "total": 67,
+      "withAnswer": 67
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\preamble.json",
+      "total": 6,
+      "withAnswer": 6
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\president.json",
+      "total": 14,
+      "withAnswer": 14
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\prime_minister_and_council_of_ministers.json",
+      "total": 29,
+      "withAnswer": 29
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\rti_act.json",
+      "total": 2,
+      "withAnswer": 2
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\salient_features.json",
+      "total": 42,
+      "withAnswer": 42
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\state_legislature.json",
+      "total": 6,
+      "withAnswer": 6
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\supreme_court.json",
+      "total": 10,
+      "withAnswer": 10
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\tribunals.json",
+      "total": 1,
+      "withAnswer": 1
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\indian_polity\\topics\\vice_president.json",
+      "total": 1,
+      "withAnswer": 1
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\international_relations\\ca_international_relations_FULL_PDF_STRICT.json",
+      "total": 87,
+      "withAnswer": 87
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\international_relations\\ca_international_relations_master_index_FULL_PDF_STRICT.json",
+      "total": 87,
+      "withAnswer": 87
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\medieval_history\\advent_of_europeans_in_india.json",
+      "total": 13,
+      "withAnswer": 13
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\medieval_history\\art_architecture_literature.json",
+      "total": 18,
+      "withAnswer": 18
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\medieval_history\\medieval_history_pyq_master_index.json",
+      "total": 108,
+      "withAnswer": 108
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\medieval_history\\politics_and_society.json",
+      "total": 65,
+      "withAnswer": 65
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\medieval_history\\religion_philosophy.json",
+      "total": 12,
+      "withAnswer": 12
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\civil_disobedience_1926_1932.json",
+      "total": 33,
+      "withAnswer": 32
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\congress_1885_1907.json",
+      "total": 31,
+      "withAnswer": 31
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\development_of_modern_education_system.json",
+      "total": 10,
+      "withAnswer": 10
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\establishment_of_british_rule.json",
+      "total": 44,
+      "withAnswer": 43
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\events_1857_1885.json",
+      "total": 20,
+      "withAnswer": 20
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\events_1933_1939.json",
+      "total": 17,
+      "withAnswer": 17
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\gandhian_phase_1917_1925.json",
+      "total": 44,
+      "withAnswer": 44
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\last_phase_1940_1950.json",
+      "total": 54,
+      "withAnswer": 54
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\literature.json",
+      "total": 21,
+      "withAnswer": 21
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\pre_gandhian_phase_1908_1917.json",
+      "total": 7,
+      "withAnswer": 7
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\revolt_of_1857.json",
+      "total": 6,
+      "withAnswer": 6
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\revolutionaries_and_revolutionary_movement.json",
+      "total": 12,
+      "withAnswer": 12
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\social_reforms_and_reformers.json",
+      "total": 11,
+      "withAnswer": 11
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\modern_history\\modern_history_prod\\tribal_and_peasant_movements.json",
+      "total": 7,
+      "withAnswer": 7
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\patches\\gs_2014_missing_patch.json",
+      "total": 17,
+      "withAnswer": 17
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\science_tech\\science_tech_master_index.json",
+      "total": 422,
+      "withAnswer": 422
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\science_tech\\topics\\sci_biology.json",
+      "total": 124,
+      "withAnswer": 124
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\science_tech\\topics\\sci_biotech.json",
+      "total": 27,
+      "withAnswer": 27
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\science_tech\\topics\\sci_chemistry.json",
+      "total": 79,
+      "withAnswer": 79
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\science_tech\\topics\\sci_diseases.json",
+      "total": 17,
+      "withAnswer": 17
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\science_tech\\topics\\sci_electronics_it.json",
+      "total": 22,
+      "withAnswer": 22
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\science_tech\\topics\\sci_physics.json",
+      "total": 98,
+      "withAnswer": 98
+    },
+    {
+      "file": "pyq_questions_v2\\prelims\\science_tech\\topics\\sci_space_tech.json",
+      "total": 55,
+      "withAnswer": 55
+    }
+  ]
+}

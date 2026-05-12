@@ -7,9 +7,13 @@ import {
     getSubtopicConfig,
     getSubtopicLabels,
 } from "./prelimsSelectorMap.js";
+import { normalizePyqNodeId } from "../brain/pyqNodeAliasMap.js";
 import { getRcQuestionsForTopic, TOPIC_TO_RC_TYPE } from "../engines/rcSubtopicLoader.js";
 import { loadCSATData } from "../data/loaders/csatLoader.js";
-console.log("[PHASE3A BUILDER VERSION] growth-dev-clean-v2");
+import { loadGSData } from "../data/loaders/gsLoader.js";
+import { loadAllPrelimsQuestions as loadUnifiedPrelimsQuestions } from "../loaders/prelimsUnifiedLoader.js";
+import { resolveSubjectAlias } from "../brain/subjectAliasMap.js";
+console.log("[PHASE3A BUILDER VERSION] unified-count-lock-v1");
 /* =========================
    PATHS
 ========================= */
@@ -237,16 +241,16 @@ function normalizeQuestion(q, sourceFile) {
  */
 function mapCsatSubjectToNodeIdPrefixes(subjectId) {
     const normId = normalizeId(subjectId || "");
-    
+
     // Map to exact nodeId prefixes used in data files
     // IMPORTANT: csat_reasoning, csat_lr both map to same LR nodeId prefixes
     const mapping = {
         csat_quant: ["CSAT-BN", "CSAT-DI"],           // Basic Numerals + Data Interpretation
         csat_lr: ["CSAT-LR", "CSAT-DM"],              // Logical Reasoning + Decision Making
         csat_reasoning: ["CSAT-LR", "CSAT-DM"],       // Alias for csat_lr
-        csat_rc: ["CSAT-COMP"],                       // Comprehension/RC
+        csat_rc: ["CSAT-COMP", "CSAT-RC"],             // Comprehension/RC (legacy + canonical)
     };
-    
+
     return mapping[normId] || [];
 }
 
@@ -259,10 +263,10 @@ function loadCsatQuestionsBySubject(subjectId) {
 
     // csat_reasoning is an alias for csat_lr
     const moduleMap = {
-        csat_quant:     { key: "quant", file: "prelims_csat_quant_tagged.json" },
-        csat_lr:        { key: "lr",    file: "prelims_csat_lr_tagged.json" },
-        csat_reasoning: { key: "lr",    file: "prelims_csat_lr_tagged.json" },
-        csat_rc:        { key: "rc",    file: "prelims_csat_rc_tagged.json" },
+        csat_quant: { key: "quant", file: "prelims_csat_quant_tagged.json" },
+        csat_lr: { key: "lr", file: "prelims_csat_lr_tagged.json" },
+        csat_reasoning: { key: "lr", file: "prelims_csat_lr_tagged.json" },
+        csat_rc: { key: "rc", file: "prelims_csat_rc_tagged.json" },
     };
 
     const mapping = moduleMap[normId];
@@ -294,20 +298,23 @@ function loadCsatQuestionsBySubject(subjectId) {
             continue;
         }
 
-        // STRICT: Validate nodeId belongs to this module
+        // STRICT: Validate nodeId belongs to this module — BUT only when nodeId is present.
+        // Many CSAT questions have no nodeId field (legacy data); don't reject them.
         const nodeId = nq.syllabusNodeId || nq.nodeId || "";
-        const expectedPrefixes = mapCsatSubjectToNodeIdPrefixes(subjectId);
-        const isValidNode = expectedPrefixes.some(prefix => nodeId.startsWith(prefix));
-
-        if (!isValidNode) {
-            validationLog.rejected.wrongNode++;
-            console.warn(`[CSAT VALIDATION] Question ${nq.id} has wrong nodeId: ${nodeId}. Expected prefixes: ${expectedPrefixes.join(", ")}`);
-            continue;
+        if (nodeId) {
+            const expectedPrefixes = mapCsatSubjectToNodeIdPrefixes(subjectId);
+            const isValidNode = !expectedPrefixes.length || expectedPrefixes.some(prefix => nodeId.startsWith(prefix));
+            if (!isValidNode) {
+                validationLog.rejected.wrongNode++;
+                console.warn(`[CSAT VALIDATION] Question ${nq.id} has wrong nodeId: ${nodeId}. Expected prefixes: ${expectedPrefixes.join(", ")}`);
+                continue;
+            }
         }
 
         validationLog.afterNormalization++;
         validationLog.afterNodeValidation++;
         questions.push(nq);
+
     }
 
     console.log(`[CSAT LOADER SUMMARY]`, validationLog);
@@ -321,23 +328,23 @@ function loadCsatQuestionsBySubject(subjectId) {
 function groupRcQuestionsByPassage(questions) {
     const groups = [];
     const passageMap = new Map();
-    
+
     for (const q of questions) {
         const passageId = q.passageText || null;
-        
+
         // If question has no passage, discard it (RC questions MUST have passages)
         if (!passageId) {
             console.warn(`[RC VALIDATOR] Discarding RC question with missing passage: ${q.id}`);
             continue;
         }
-        
+
         // Add to passage group
         if (!passageMap.has(passageId)) {
             passageMap.set(passageId, []);
         }
         passageMap.get(passageId).push(q);
     }
-    
+
     // Convert to groups
     for (const [passageText, qs] of passageMap) {
         if (qs.length > 0) {
@@ -348,7 +355,7 @@ function groupRcQuestionsByPassage(questions) {
             });
         }
     }
-    
+
     console.log(`[RC GROUPING] Grouped ${questions.length} RC questions into ${groups.length} passage groups`);
     return groups;
 }
@@ -360,11 +367,11 @@ function validateAndDeduplicateQuestions(questions, context = "") {
     const seen = new Set();
     const duplicates = [];
     const deduped = [];
-    
+
     for (const q of questions) {
         const id = q?.id || q?.questionId;
         if (!id) continue;
-        
+
         if (seen.has(id)) {
             duplicates.push(id);
         } else {
@@ -372,11 +379,11 @@ function validateAndDeduplicateQuestions(questions, context = "") {
             deduped.push(q);
         }
     }
-    
+
     if (duplicates.length > 0) {
         console.warn(`[DEDUP WARNING] ${context}: Found ${duplicates.length} duplicate questions`, duplicates.slice(0, 5));
     }
-    
+
     return { deduped, duplicates };
 }
 
@@ -417,7 +424,7 @@ function isCsatRequest(practicePaper, selectedSubjectId, selectedSubjectLabel, f
 
 const SUBJECT_RULES = {
     culture: {
-        ids: ["culture"],
+        ids: ["culture", "art_culture"],
         labels: ["art and culture", "art & culture", "culture"],
         files: ["prelims_gs_art_culture_tagged.json"],
     },
@@ -672,6 +679,32 @@ function filterTopicStrict(questions, topicLabel, topicId, subjectId) {
     });
 }
 
+function getQuestionNodeId(q) {
+    return normalizePyqNodeId(
+        q.nodeId ||
+        q.node_id ||
+        q.syllabusNodeId ||
+        q.syllabus_node_id ||
+        q.topicNodeId ||
+        q.topic_node_id ||
+        ""
+    );
+}
+
+/**
+ * Filter questions by canonical leaf nodeId.
+ * Normalizes both the requested nodeId and each question's syllabusNodeId via
+ * normalizePyqNodeId so that parent nodes (GS1-HIS-ANC-IVC) match leaf nodes
+ * (GS1-HIS-ANC-IVC-MT04) correctly.
+ */
+function filterByNodeId(questions, requestedNodeId) {
+    if (!requestedNodeId) return [];
+    const canonical = normalizePyqNodeId(requestedNodeId);
+    return questions.filter((q) => {
+        return getQuestionNodeId(q) === canonical;
+    });
+}
+
 function filterSubtopicsStrict(
     questions,
     selectedMicroThemeLabels,
@@ -711,6 +744,32 @@ function filterSubtopicsStrict(
         return false;
     });
 }
+/* =========================
+   YEAR FILTER
+========================= */
+
+/**
+ * applyYearFilter — optional post-subject filter for sectional practice.
+ * Called ONLY in sectional mode; full_length uses filterYearStrict separately.
+ * No change in behavior when year / yearFrom / yearTo are all absent.
+ */
+function applyYearFilter(questions, year, yearFrom, yearTo) {
+    const exact = Number(year || 0);
+    const from = Number(yearFrom || 0);
+    const to = Number(yearTo || 0);
+    if (!exact && !from && !to) return questions; // ← no filter supplied, unchanged
+
+    return questions.filter((q) => {
+        const y = Number(q.year || 0);
+        if (!y) return false; // questions with no year are excluded when a filter is active
+        if (exact) return y === exact;
+        if (from && to) return y >= from && y <= to;
+        if (from) return y >= from;
+        if (to) return y <= to;
+        return true;
+    });
+}
+
 /* =========================
    RESPONSE HELPERS
 ========================= */
@@ -759,9 +818,24 @@ export default async function buildPrelimsPracticeTest(req, res) {
         const selectedSubjectId = body.selectedSubjectId || body.subjectId || "";
         const selectedTopicId = body.selectedTopicId || body.topicId || "";
         const selectedMicroThemeIds = safeArray(body.selectedMicroThemeIds || body.microThemeIds);
+        const topicNodeId = String(body.topicNodeId || "").trim();
+        const nodeId = String(body.nodeId || "").trim();
+        const requestedNodeId = normalizePyqNodeId(topicNodeId || nodeId);
+
+        if ((practiceScope === "topic" || practiceScope === "subtopic") && !requestedNodeId) {
+            return sendBuilderError(
+                res,
+                "A valid topicNodeId or nodeId is required for topic/subtopic practice."
+            );
+        }
 
         const fullLengthType = body.fullLengthType || "";
         const fullLengthYear = body.fullLengthYear || body.year || "";
+
+        // Sectional year filter params — no-op when absent; full_length uses fullLengthYear
+        const yearFilter = mode !== "full_length" ? (body.year || body.yearFilter || "") : "";
+        const yearFrom = body.yearFrom || "";
+        const yearTo = body.yearTo || "";
 
         const {
             selectedSubjectLabel,
@@ -784,66 +858,92 @@ export default async function buildPrelimsPracticeTest(req, res) {
         }
 
         if (mode === "full_length") {
-            // CSAT full-length: Use strict nodeId-based loading
-            let fullLengthQuestions = questions;
+            let fullLengthQuestions;
             let flValidationLog = { csatMode, year: fullLengthYear, stage: "full_length" };
-            
+
             if (csatMode) {
-                // Load strictly by CSAT subject from correct file
-                const { questions: csatQs, validationLog: csatLog } = loadCsatQuestionsBySubject(fullLengthType || "csat_quant");
-                fullLengthQuestions = csatQs;
-                flValidationLog = { ...flValidationLog, ...csatLog };
+                const csatData = loadCSATData();
+                fullLengthQuestions = [
+                    ...(csatData.quant || []),
+                    ...(csatData.lr || []),
+                    ...(csatData.rc || []),
+                ]
+                    .map((q) => normalizeQuestion(q, q.sourceFile || "csat_full_length"))
+                    .filter(Boolean);
+                flValidationLog = { ...flValidationLog, source: "loadCSATData_combined" };
+            } else {
+                // GS: load from v2 dataset — flatten all subject buckets, drop null-year records
+                const gsData = loadGSData();
+                fullLengthQuestions = Object.values(gsData)
+                    .flat()
+                    .filter((q) => q && Number(q.year) > 1980);
             }
-            
+
             const byYear = filterYearStrict(fullLengthQuestions, fullLengthYear);
 
             if (!byYear.length) {
                 return sendBuilderError(
                     res,
                     `No ${csatMode ? "CSAT" : "GS"} prelims questions found for year ${fullLengthYear}.`,
-                    { 
-                        mode, 
-                        paper: csatMode ? "CSAT" : "GS", 
+                    {
+                        mode,
+                        paper: csatMode ? "CSAT" : "GS",
                         year: fullLengthYear,
                         validationLog: flValidationLog,
                     }
                 );
             }
 
-            const expected = csatMode ? 80 : 100;
-            const finalQuestions = shuffle(byYear).slice(0, expected);
-            
-            // Deduplicate
-            const { deduped: cleanFL, duplicates: dupFL } = validateAndDeduplicateQuestions(finalQuestions, `Full-Length-${fullLengthYear}`);
+            const requested = csatMode ? 80 : count;
+            const { deduped: cleanFL, duplicates: dupFL } = validateAndDeduplicateQuestions(
+                shuffle(byYear).slice(0, requested),
+                `Full-Length-${fullLengthYear}`
+            );
+
+            const warning = cleanFL.length < requested
+                ? `Only ${cleanFL.length} ${csatMode ? "CSAT" : "GS"} questions available for ${fullLengthYear} in current dataset.`
+                : null;
+
+            console.log("[FULL LENGTH CSAT DEBUG]", {
+                mode,
+                csatMode,
+                fullLengthYear,
+                totalPool: fullLengthQuestions.length,
+                byYear: byYear.length,
+                requested,
+                returned: cleanFL.length,
+                duplicateRemoved: dupFL.length,
+            });
 
             console.log("[BUILDER VALIDATION - FULL LENGTH]", {
                 mode: "full_length",
                 csatMode,
                 year: fullLengthYear,
-                initialPool: fullLengthQuestions.length,
+                poolSize: fullLengthQuestions.length,
                 afterYearFilter: byYear.length,
-                expected,
+                requested,
                 returned: cleanFL.length,
                 duplicatesRemoved: dupFL.length,
+                warning,
             });
 
-            return res.json(
-                buildSuccessPayload({
-                    mode: "full_length",
-                    paper: csatMode ? "CSAT" : "GS",
-                    scope: fullLengthType || "yearwise",
-                    year: fullLengthYear,
-                    questions: cleanFL,
-                    debug: {
-                        stage: "prelims",
-                        paperFilter: csatMode ? "csat" : "gs1",
-                        exactYear: Number(fullLengthYear),
-                        found: byYear.length,
-                        returned: cleanFL.length,
-                        duplicatesRemoved: dupFL.length,
-                    },
-                })
-            );
+            const payload = buildSuccessPayload({
+                mode: "full_length",
+                paper: csatMode ? "CSAT" : "GS",
+                scope: fullLengthType || "yearwise",
+                year: fullLengthYear,
+                questions: cleanFL,
+                debug: {
+                    stage: "prelims",
+                    paperFilter: csatMode ? "csat" : "gs",
+                    exactYear: Number(fullLengthYear),
+                    found: byYear.length,
+                    returned: cleanFL.length,
+                    duplicatesRemoved: dupFL.length,
+                },
+            });
+            if (warning) payload.warning = warning;
+            return res.json(payload);
         }
 
         const subjectRule = resolveSubjectRule({
@@ -866,13 +966,13 @@ export default async function buildPrelimsPracticeTest(req, res) {
             csatMode,
             stage: "subject_loading",
         };
-        
+
         if (csatMode) {
             // CSAT: Load strictly from correct file by subject ID
             const { questions: csatQs, validationLog: csatLog } = loadCsatQuestionsBySubject(selectedSubjectId);
             subjectQuestions = csatQs;
             builderValidationLog = { ...builderValidationLog, ...csatLog };
-            
+
             console.log("[BUILDER VALIDATION - CSAT]", {
                 requestedNode: selectedSubjectId,
                 totalFetched: csatQs.length,
@@ -884,15 +984,21 @@ export default async function buildPrelimsPracticeTest(req, res) {
             subjectQuestions = filterSubjectStrict(questions, subjectRule);
         }
 
-        if (!subjectQuestions.length) {
+        // ── Optional year filter (sectional mode) — no-op when params absent ─────
+        subjectQuestions = applyYearFilter(subjectQuestions, yearFilter, yearFrom, yearTo);
+
+        if (!subjectQuestions.length && practiceScope !== "subject") {
             return sendBuilderError(
                 res,
-                `No exact PYQs are tagged for selected subtopic "${selectedMicroThemeLabels[0] || selectedMicroThemeIds[0] || "Unknown"}" under topic "${selectedTopicLabel || selectedTopicId}". Topic-level questions exist, but subtopic-level tagging is not available yet.`,
+                `No questions found for subject "${selectedSubjectLabel || selectedSubjectId || "unknown"}". ` +
+                `${csatMode
+                    ? `Ensure the CSAT subject ID is one of: csat_quant, csat_reasoning, csat_rc.`
+                    : `Check that the subject data files are loaded correctly.`}`,
                 {
                     selectedSubjectId,
                     selectedSubjectLabel,
-                    matchedFiles: subjectRule.files,
-                    matchedLabels: subjectRule.labels,
+                    csatMode,
+                    matchedFiles: subjectRule?.files,
                     builderLog: builderValidationLog,
                 }
             );
@@ -915,7 +1021,77 @@ export default async function buildPrelimsPracticeTest(req, res) {
             });
         }
         if (practiceScope === "subject") {
-            const finalQuestions = shuffle(subjectQuestions).slice(0, count);
+            let pool;
+
+            // Resolve canonical subject key using central alias map
+            const canonicalSubject = resolveSubjectAlias(selectedSubjectId);
+
+            if (!csatMode) {
+                // GS: Load from unified loader — same data source as /health endpoint
+                // that provides the available-question count shown in the UI.
+                const { questions: unifiedPool } = loadUnifiedPrelimsQuestions();
+
+                if (canonicalSubject === "art_culture") {
+                    pool = unifiedPool.filter(q => {
+                        const node = q.nodeId || q.syllabusNodeId || "";
+                        const micro = q.microTheme || "";
+                        const subj = (q.subject || "").toLowerCase();
+                        return (
+                            subj === "art_culture" ||
+                            subj === "culture" ||
+                            node.startsWith("GS1-ART") ||
+                            node.includes("ART-CULTURE") ||
+                            /\b(art|culture|heritage|architecture|sculpture|painting|craft|festival|folk|classical)\b/i.test(q.topic || "") ||
+                            /\b(art|culture|heritage|architecture|sculpture|painting|craft|festival|folk|classical)\b/i.test(q.topicName || "") ||
+                            /\b(art|culture|heritage|architecture|sculpture|painting|craft|festival|folk|classical)\b/i.test(micro)
+                        );
+                    });
+                } else {
+                    pool = unifiedPool.filter(q => {
+                        const qSubject = (q.subject || "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+                        return qSubject === canonicalSubject;
+                    });
+                }
+
+                console.log("[SUBJECT-SCOPE UNIFIED]", {
+                    selectedSubjectId,
+                    canonicalSubject,
+                    unifiedTotal: unifiedPool.length,
+                    matched: pool.length,
+                });
+
+                // Apply optional year filter
+                pool = applyYearFilter(pool, yearFilter, yearFrom, yearTo);
+            } else {
+                // CSAT: Load directly from CSAT loader — same source as /counts endpoint.
+                // Do NOT use the nodeId-validated subjectQuestions (which rejects 50 quant
+                // questions with CSAT-LR-CAL nodeIds), use raw loader data instead.
+                const csatData = loadCSATData();
+                const CSAT_MODULE_MAP = {
+                    csat_quant: csatData.quant,
+                    csat_lr: csatData.lr,
+                    csat_rc: csatData.rc,
+                };
+                const rawCsat = CSAT_MODULE_MAP[canonicalSubject] || [];
+                // Normalize through builder's normalizeQuestion for consistent schema
+                pool = rawCsat.map(q => normalizeQuestion(q, `csat_${canonicalSubject}`)).filter(Boolean);
+
+                console.log("[SUBJECT-SCOPE CSAT]", {
+                    selectedSubjectId,
+                    canonicalSubject,
+                    rawCount: rawCsat.length,
+                    afterNormalize: pool.length,
+                });
+            }
+
+            if (!pool.length) {
+                return sendBuilderError(
+                    res,
+                    `No questions found for subject "${selectedSubjectLabel || selectedSubjectId}".`
+                );
+            }
+
+            const finalQuestions = shuffle(pool).slice(0, count);
 
             // Deduplicate final questions
             const { deduped: cleanQuestions, duplicates: dupCount } = validateAndDeduplicateQuestions(finalQuestions, `${selectedSubjectId}-subject`);
@@ -929,11 +1105,13 @@ export default async function buildPrelimsPracticeTest(req, res) {
                     questions: cleanQuestions,
                     debug: {
                         stage: "prelims",
-                        paperFilter: csatMode ? "csat" : "gs1",
+                        paperFilter: csatMode ? "csat" : "gs",
                         subject: selectedSubjectLabel || selectedSubjectId,
-                        pool: subjectQuestions.length,
+                        canonicalSubject,
+                        pool: pool.length,
                         returned: cleanQuestions.length,
                         duplicatesRemoved: dupCount.length,
+                        source: csatMode ? "csat_loader" : "unified_loader",
                     },
                 })
             );
@@ -986,105 +1164,69 @@ export default async function buildPrelimsPracticeTest(req, res) {
             );
         }
 
-        const topicQuestions = filterTopicStrict(
-            subjectQuestions,
-            selectedTopicLabel,
-            selectedTopicId,
-            selectedSubjectId
-        );
+        // ── Topic filtering: try canonical nodeId first, fall back to text matching ──
+        let topicQuestions = [];
+        let nodeDebug = null;
 
-        if (!topicQuestions.length) {
-            console.log("[TOPIC DEBUG]", {
+        if (requestedNodeId) {
+            nodeDebug = getQuestionsByNodeId({
+                nodeId: requestedNodeId,
+                subjectId: selectedSubjectId,
+                fallbackPool: subjectQuestions,
+            });
+
+            topicQuestions = nodeDebug.questions;
+        }
+
+        const nodeFilterUsed = topicQuestions.length > 0;
+
+        if (!nodeFilterUsed) {
+            topicQuestions = filterTopicStrict(
+                subjectQuestions,
+                selectedTopicLabel,
+                selectedTopicId,
+                selectedSubjectId
+            );
+        }
+
+        console.log("[NODEID TOPIC ENGINE]", {
+            selectedSubjectId,
+            selectedTopicId,
+            requestedNodeId,
+            nodeFilterUsed,
+            nodeSource: nodeDebug?.source || "text_fallback",
+            nodeMatched: nodeDebug?.questions?.length || 0,
+            textFallbackMatched: !nodeFilterUsed ? topicQuestions.length : 0,
+            sampleNodes: subjectQuestions.slice(0, 5).map((q) => ({
+                id: q.id,
+                nodeId: getQuestionNodeId(q),
+            })),
+        });
+
+        // Cleaned up broken leftover code
+
+    if (!topicQuestions.length) {
+        return sendBuilderError(
+            res,
+            `No questions found for selected topic "${selectedTopicLabel || selectedTopicId}" inside subject "${selectedSubjectLabel || selectedSubjectId}".`,
+            {
                 selectedSubjectId,
                 selectedSubjectLabel,
                 selectedTopicId,
                 selectedTopicLabel,
-                topicPool: topicQuestions.length,
-                sampleSubjectQuestions: subjectQuestions.slice(0, 5).map((q) => ({
-                    section: q.section,
-                    microtheme: q.microtheme,
-                    module: q.module,
-                    subject: q.subject,
-                    sourceBase: q.sourceBase,
-                })),
-            });
-            return sendBuilderError(
-                res,
-                `No questions found for selected topic "${selectedTopicLabel || selectedTopicId}" inside subject "${selectedSubjectLabel || selectedSubjectId}".`,
-                {
-                    selectedSubjectId,
-                    selectedSubjectLabel,
-                    selectedTopicId,
-                    selectedTopicLabel,
-                }
-            );
-        }
-
-        if (practiceScope === "topic") {
-            const finalQuestions = shuffle(topicQuestions).slice(0, count);
-
-            return res.json(
-                buildSuccessPayload({
-                    mode: "practice",
-                    paper: csatMode ? "CSAT" : "GS",
-                    scope: "topic",
-                    year: null,
-                    questions: finalQuestions,
-                    debug: {
-                        stage: "prelims",
-                        paperFilter: csatMode ? "csat" : "gs1",
-                        subject: selectedSubjectLabel || selectedSubjectId,
-                        topic: selectedTopicLabel || selectedTopicId,
-                        pool: topicQuestions.length,
-                        returned: finalQuestions.length,
-                    },
-                })
-            );
-        }
-
-        const subtopicQuestions = filterSubtopicsStrict(
-            topicQuestions,
-            selectedMicroThemeLabels,
-            selectedMicroThemeIds,
-            selectedSubjectId
+                requestedNodeId,
+            }
         );
+    }
 
-        if (!subtopicQuestions.length) {
-            console.log("[SUBTOPIC DEBUG]", {
-                selectedSubjectId,
-                selectedTopicId,
-                selectedMicroThemeIds,
-                selectedMicroThemeLabels,
-                subtopicPool: subtopicQuestions.length,
-                sampleTopicQuestions: topicQuestions.slice(0, 5).map((q) => ({
-                    section: q.section,
-                    microtheme: q.microtheme,
-                    module: q.module,
-                    subject: q.subject,
-                    sourceBase: q.sourceBase,
-                })),
-            });
-            return sendBuilderError(
-                res,
-                `No exact PYQs are tagged for selected subtopic "${selectedMicroThemeLabels[0] || selectedMicroThemeIds[0] || "Unknown"}" under topic "${selectedTopicLabel || selectedTopicId}". Topic-level questions exist, but subtopic-level tagging is not available yet.`,
-                {
-                    selectedSubjectId,
-                    selectedSubjectLabel,
-                    selectedTopicId,
-                    selectedTopicLabel,
-                    selectedMicroThemeIds,
-                    selectedMicroThemeLabels,
-                }
-            );
-        }
-
-        const finalQuestions = shuffle(subtopicQuestions).slice(0, count);
+    if (practiceScope === "topic") {
+        const finalQuestions = shuffle(topicQuestions).slice(0, count);
 
         return res.json(
             buildSuccessPayload({
                 mode: "practice",
                 paper: csatMode ? "CSAT" : "GS",
-                scope: "subtopic",
+                scope: "topic",
                 year: null,
                 questions: finalQuestions,
                 debug: {
@@ -1092,19 +1234,76 @@ export default async function buildPrelimsPracticeTest(req, res) {
                     paperFilter: csatMode ? "csat" : "gs1",
                     subject: selectedSubjectLabel || selectedSubjectId,
                     topic: selectedTopicLabel || selectedTopicId,
-                    subtopics: selectedMicroThemeLabels.length
-                        ? selectedMicroThemeLabels
-                        : selectedMicroThemeIds,
-                    pool: subtopicQuestions.length,
+                    pool: topicQuestions.length,
                     returned: finalQuestions.length,
                 },
             })
         );
-    } catch (error) {
-        console.error("buildPrelimsPracticeTest error:", error);
-        return res.status(500).json({
-            success: false,
-            error: error.message || "Failed to build prelims practice test",
-        });
     }
+
+    const subtopicQuestions = filterSubtopicsStrict(
+        topicQuestions,
+        selectedMicroThemeLabels,
+        selectedMicroThemeIds,
+        selectedSubjectId
+    );
+
+    if (!subtopicQuestions.length) {
+        console.log("[SUBTOPIC DEBUG]", {
+            selectedSubjectId,
+            selectedTopicId,
+            selectedMicroThemeIds,
+            selectedMicroThemeLabels,
+            subtopicPool: subtopicQuestions.length,
+            sampleTopicQuestions: topicQuestions.slice(0, 5).map((q) => ({
+                section: q.section,
+                microtheme: q.microtheme,
+                module: q.module,
+                subject: q.subject,
+                sourceBase: q.sourceBase,
+            })),
+        });
+        return sendBuilderError(
+            res,
+            `No exact PYQs are tagged for selected subtopic "${selectedMicroThemeLabels[0] || selectedMicroThemeIds[0] || "Unknown"}" under topic "${selectedTopicLabel || selectedTopicId}". Topic-level questions exist, but subtopic-level tagging is not available yet.`,
+            {
+                selectedSubjectId,
+                selectedSubjectLabel,
+                selectedTopicId,
+                selectedTopicLabel,
+                selectedMicroThemeIds,
+                selectedMicroThemeLabels,
+            }
+        );
+    }
+
+    const finalQuestions = shuffle(subtopicQuestions).slice(0, count);
+
+    return res.json(
+        buildSuccessPayload({
+            mode: "practice",
+            paper: csatMode ? "CSAT" : "GS",
+            scope: "subtopic",
+            year: null,
+            questions: finalQuestions,
+            debug: {
+                stage: "prelims",
+                paperFilter: csatMode ? "csat" : "gs1",
+                subject: selectedSubjectLabel || selectedSubjectId,
+                topic: selectedTopicLabel || selectedTopicId,
+                subtopics: selectedMicroThemeLabels.length
+                    ? selectedMicroThemeLabels
+                    : selectedMicroThemeIds,
+                pool: subtopicQuestions.length,
+                returned: finalQuestions.length,
+            },
+        })
+    );
+} catch (error) {
+    console.error("buildPrelimsPracticeTest error:", error);
+    return res.status(500).json({
+        success: false,
+        error: error.message || "Failed to build prelims practice test",
+    });
+}
 }

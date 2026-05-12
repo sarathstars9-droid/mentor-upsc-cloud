@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "mentoros-ca-by-node-v2",
+  "datasetName": "Current Affairs - International Relations",
+  "sourceFile": "ir.pdf",
+  "nodes": {
+    "GS2-IR-GLOBAL-CURRENT-AFFAIRS": {
+      "prelims": [
+        "CA_IR_2024_Q001",
+        "CA_IR_2024_Q004",
+        "CA_IR_2024_Q010",
+        "CA_IR_2023_Q013",
+        "CA_IR_2021_Q032",
+        "CA_IR_2019_Q037",
+        "CA_IR_2019_Q039",
+        "CA_IR_2018_Q043",
+        "CA_IR_2018_Q044",
+        "CA_IR_2017_Q050",
+        "CA_IR_2017_Q052",
+        "CA_IR_2017_Q055",
+        "CA_IR_2017_Q056",
+        "CA_IR_2016_Q057",
+        "CA_IR_2016_Q062",
+        "CA_IR_2016_Q063",
+        "CA_IR_2016_Q064",
+        "CA_IR_2016_Q065",
+        "CA_IR_2016_Q066",
+        "CA_IR_2016_Q067",
+        "CA_IR_2015_Q069",
+        "CA_IR_2015_Q073",
+        "CA_IR_2015_Q075",
+        "CA_IR_2015_Q076",
+        "CA_IR_2015_Q077",
+        "CA_IR_2014_Q081",
+        "CA_IR_2012_Q082",
+        "CA_IR_2011_Q084"
+      ],
+      "count": 28,
+      "microTheme": "Global Current Affairs"
+    },
+    "GS2-IR-BILATERAL-REGIONAL": {
+      "prelims": [
+        "CA_IR_2024_Q002",
+        "CA_IR_2022_Q026",
+        "CA_IR_2020_Q034",
+        "CA_IR_2017_Q047",
+        "CA_IR_2017_Q049",
+        "CA_IR_2016_Q060",
+        "CA_IR_2015_Q071",
+        "CA_IR_2011_Q085",
+        "CA_IR_2011_Q087"
+      ],
+      "count": 9,
+      "microTheme": "India & Neighbourhood / Regional Relations"
+    },
+    "GS2-IR-INTERNATIONAL-ORGANISATIONS": {
+      "prelims": [
+        "CA_IR_2024_Q003",
+        "CA_IR_2024_Q005",
+        "CA_IR_2024_Q007",
+        "CA_IR_2024_Q009",
+        "CA_IR_2023_Q015",
+        "CA_IR_2023_Q016",
+        "CA_IR_2023_Q017",
+        "CA_IR_2023_Q018",
+        "CA_IR_2022_Q020",
+        "CA_IR_2022_Q021",
+        "CA_IR_2022_Q023",
+        "CA_IR_2022_Q024",
+        "CA_IR_2022_Q025",
+        "CA_IR_2022_Q028",
+        "CA_IR_2022_Q029",
+        "CA_IR_2020_Q033",
+        "CA_IR_2020_Q035",
+        "CA_IR_2019_Q036",
+        "CA_IR_2018_Q040",
+        "CA_IR_2018_Q041",
+        "CA_IR_2018_Q042",
+        "CA_IR_2018_Q045",
+        "CA_IR_2017_Q048",
+        "CA_IR_2017_Q051",
+        "CA_IR_2017_Q053",
+        "CA_IR_2017_Q054",
+        "CA_IR_2016_Q058",
+        "CA_IR_2016_Q059",
+        "CA_IR_2016_Q061",
+        "CA_IR_2015_Q068",
+        "CA_IR_2015_Q072",
+        "CA_IR_2014_Q078",
+        "CA_IR_2014_Q080",
+        "CA_IR_2011_Q083",
+        "CA_IR_2011_Q086"
+      ],
+      "count": 35,
+      "microTheme": "International Organisations / Treaties"
+    },
+    "GS2-IR-PLACES-IN-NEWS": {
+      "prelims": [
+        "CA_IR_2024_Q006",
+        "CA_IR_2024_Q008",
+        "CA_IR_2023_Q011",
+        "CA_IR_2023_Q012",
+        "CA_IR_2023_Q014",
+        "CA_IR_2023_Q019",
+        "CA_IR_2022_Q022",
+        "CA_IR_2022_Q027",
+        "CA_IR_2022_Q030",
+        "CA_IR_2022_Q031",
+        "CA_IR_2018_Q046",
+        "CA_IR_2015_Q074",
+        "CA_IR_2011_Q079"
+      ],
+      "count": 13,
+      "microTheme": "Places in News / Conflicts"
+    },
+    "GS2-IR-SECURITY": {
+      "prelims": [
+        "CA_IR_2019_Q038",
+        "CA_IR_2015_Q070"
+      ],
+      "count": 2,
+      "microTheme": "Security / Strategic Affairs"
+    }
+  }
+}

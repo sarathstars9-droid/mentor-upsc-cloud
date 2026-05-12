@@ -1,0 +1,102 @@
+[
+  {
+    "id": "csat_quant_2013_28",
+    "year": 2013,
+    "questionNumber": 28,
+    "paper": "CSAT",
+    "stage": "csat",
+    "subject": "Quantitative Aptitude",
+    "nodeId": "CSAT-BN",
+    "syllabusNodeId": "CSAT-BN",
+    "sourceFile": "csat_quantitative_aptitude_FIXED_COUNT_COMPLETE.json",
+    "answer": null,
+    "normalizedAnswer": null,
+    "question": "There are five hobby clubs in a college viz. photography, yachting, chess, electronics, and gardening. The gardening group meets every second day, the electronics group meets every",
+    "options": {
+      "A": "3",
+      "B": "5",
+      "C": "10",
+      "D": "18"
+    }
+  },
+  {
+    "id": "csat_quant_2011_24",
+    "year": 2011,
+    "questionNumber": 24,
+    "paper": "CSAT",
+    "stage": "csat",
+    "subject": "Quantitative Aptitude",
+    "nodeId": "CSAT-BN",
+    "syllabusNodeId": "CSAT-BN",
+    "sourceFile": "csat_quantitative_aptitude_FIXED_COUNT_COMPLETE.json",
+    "answer": null,
+    "normalizedAnswer": null,
+    "question": "Consider the following figures: What is the missing number?",
+    "options": {
+      "A": "7",
+      "B": "8",
+      "C": "9",
+      "D": "10"
+    }
+  },
+  {
+    "id": "csat_quant_2013_47",
+    "year": 2013,
+    "questionNumber": 47,
+    "paper": "CSAT",
+    "stage": "csat",
+    "subject": "Quantitative Aptitude",
+    "nodeId": "CSAT-BN",
+    "syllabusNodeId": "CSAT-BN",
+    "sourceFile": "csat_quantitative_aptitude_FIXED_COUNT_COMPLETE.json",
+    "answer": null,
+    "normalizedAnswer": null,
+    "question": "Consider the following diagrams: x men, working at constant speed, do a certain job in y days. Which one of these diagrams shows the relation between x and y?",
+    "options": {
+      "A": "Diagram I",
+      "B": "Diagram II",
+      "C": "Diagram III",
+      "D": "Diagram IV 1 2 3 4 5 6 7 8 9 10 11 C C A D D A C C D B D"
+    }
+  },
+  {
+    "id": "HIS_MOD_2020_Q3_CIVIL_DI",
+    "year": 2020,
+    "questionNumber": 3,
+    "paper": "GS",
+    "stage": "prelims",
+    "subject": null,
+    "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+    "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+    "sourceFile": "civil_disobedience_1926_1932.json",
+    "answer": null,
+    "normalizedAnswer": null,
+    "question": "The Gandhi -Irwin Pact included which of the following? 1. Invitation to Congress to participate in the Round Table Conference 2. Withdrawal of Ordinances promulgated in connection",
+    "options": {
+      "A": "1 only",
+      "B": "1, 2 and 4 only",
+      "C": "3 only",
+      "D": "2, 3 and 4 only"
+    }
+  },
+  {
+    "id": "HIS_MOD_2024_Q1_ESTABLIS",
+    "year": 2024,
+    "questionNumber": 1,
+    "paper": "GS",
+    "stage": "prelims",
+    "subject": null,
+    "nodeId": "GS1-HIS-MOD-ADMIN-MT01",
+    "syllabusNodeId": "GS1-HIS-MOD-ADMIN-MT01",
+    "sourceFile": "establishment_of_british_rule.json",
+    "answer": null,
+    "normalizedAnswer": null,
+    "question": "With reference to revenue collection by Cornwallis, consider the following statements: 1. Under the Ryotwari Settlement of revenue collection, the peasants were exempted from reven",
+    "options": {
+      "A": "1 only",
+      "B": "2 only",
+      "C": "Both 1 and 2",
+      "D": "Neither 1 nor 2"
+    }
+  }
+]

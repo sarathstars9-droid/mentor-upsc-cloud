@@ -1,0 +1,30 @@
+{
+  "sourceFile": "ir.pdf",
+  "scope": "Section 1: INTERNATIONAL RELATIONS, Q1-Q87",
+  "totalExtracted": 87,
+  "expectedBySequentialQuestionNumbers": "1-87",
+  "missingSourceQuestionNumbers": [],
+  "yearWiseCounts": {
+    "2024": 10,
+    "2023": 9,
+    "2022": 12,
+    "2021": 1,
+    "2020": 3,
+    "2019": 4,
+    "2018": 7,
+    "2017": 10,
+    "2016": 11,
+    "2015": 10,
+    "2014": 3,
+    "2012": 1,
+    "2011": 6
+  },
+  "optionParseIssues": [],
+  "answerParseIssues": [],
+  "reviewRequiredCount": 0,
+  "notes": [
+    "Built from the 39-page full IR PDF only.",
+    "The uploaded 39-page PDF's International Relations section contains 87 questions and covers 2011-2024.",
+    "1995-2010 and 2025 are not present inside the IR section of this 39-page PDF; they were present/partially present only in other uploaded sources."
+  ]
+}

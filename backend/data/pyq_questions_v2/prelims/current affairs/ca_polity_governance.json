@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "mentoros-ca-air1-v1",
+  "subject": "Current Affairs + GK",
+  "mode": "Option B",
+  "productionStatus": "AIR1_FINAL",
+  "topicName": "Polity & Governance",
+  "topicId": "ca_polity_governance",
+  "totalQuestions": 2,
+  "questions": [
+    {
+      "id": "CA_POLITY_GOVERNANCE_2024_Q1",
+      "questionNumber": 1,
+      "year": 2024,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "What are the duties of the Chief of Defence Staff (CDS) as Head of the Department of Military Affairs? [2024] 1. Permanent Chairman of Chiefs of Staff Committee 2. Exercise military command over the three Service Chiefs 3. Principal Military Advisor to Defence Minister on all tri-service matters Select the correct answer using the code given below:",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1 and 3 only"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Polity & Governance",
+      "topicId": "ca_polity_governance",
+      "nodeId": "GS2-GOV-SECURITY-GOVERNANCE",
+      "syllabusNodeId": "GS2-GOV-SECURITY-GOVERNANCE",
+      "microTheme": "defence-technology",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "defence / Q5"
+    },
+    {
+      "id": "CA_POLITY_GOVERNANCE_2024_Q2",
+      "questionNumber": 2,
+      "year": 2024,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Operations undertaken by the Army towards upliftment of the local population in remote areas to include addressing of their basic needs is called: [2024]",
+      "options": {
+        "A": "Operation Sankalp",
+        "B": "Operation Maitri",
+        "C": "Operation Sadbhavana",
+        "D": "Operation Madad"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Polity & Governance",
+      "topicId": "ca_polity_governance",
+      "nodeId": "GS2-GOV-SECURITY-GOVERNANCE",
+      "syllabusNodeId": "GS2-GOV-SECURITY-GOVERNANCE",
+      "microTheme": "defence-technology",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "defence / Q6"
+    }
+  ]
+}

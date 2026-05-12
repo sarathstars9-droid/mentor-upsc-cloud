@@ -28,8 +28,11 @@ const __dirname  = path.dirname(__filename);
 
 const GS_V2_DIR = path.resolve(__dirname, "../pyq_questions_v2/prelims");
 
-// Files whose names match this pattern are metadata/aggregate files — skip them
-const META_FILE_RE = /(_master|_report|_index|_by_node|_all_topics|_production|_perfection|_zero_ambiguity)/i;
+// Files whose names match this pattern are metadata/aggregate files — skip them.
+// _change_log files (e.g. environment_correction_change_log.json) have id fields that
+// match real question IDs and would poison seenIds if included.
+// _audit files (e.g. IR_REBUILD_AUDIT.json) are diagnostic outputs, not question arrays.
+const META_FILE_RE = /(_master|_report|_index|_by_node|_all_topics|_production|_perfection|_zero_ambiguity|_change_log|_audit)/i;
 
 const STANDARD_SUBJECT_KEYS = [
     "culture", "economy", "environment", "geography",
@@ -78,7 +81,9 @@ function deriveSubjectKey(subject, module, filePath) {
     // Safety — should be filtered at walk time but guard here too
     if (fp.includes("/csat/")) return null;
 
-    if (fp.includes("/current_affairs/")) return "current_affairs_misc";
+    if (fp.includes("/current_affairs/") || fp.includes("/current affairs/")) return "current_affairs_misc";
+    // IR file has no subject field in its metadata; derive from folder path
+    if (fp.includes("/international_relations/")) return "ir";
 
     if (s.includes("economy") || s.includes("economic")) return "economy";
     if (s.includes("environment") || s.includes("ecology")) return "environment";
@@ -99,6 +104,35 @@ function deriveSubjectKey(subject, module, filePath) {
 function fingerprint(q) {
     const text = (q.question || "").toLowerCase().replace(/\s+/g, " ").trim().slice(0, 80);
     return `${q.year ?? "?"}|${q.questionNumber ?? "?"}|${text}`;
+}
+
+// ── Options normalisation ─────────────────────────────────────────────────────
+// Ensures every question has options: { a, b, c, d } with lowercase keys.
+// JSON files store uppercase A/B/C/D; all UI consumers expect lowercase.
+
+function normalizeOptions(q) {
+    const raw = q.options;
+
+    if (Array.isArray(raw)) {
+        return {
+            a: raw[0] ?? "",
+            b: raw[1] ?? "",
+            c: raw[2] ?? "",
+            d: raw[3] ?? "",
+        };
+    }
+
+    if (raw && typeof raw === "object") {
+        return {
+            a: raw.a ?? raw.A ?? "",
+            b: raw.b ?? raw.B ?? "",
+            c: raw.c ?? raw.C ?? "",
+            d: raw.d ?? raw.D ?? "",
+        };
+    }
+
+    console.warn("[gsLoader] Missing options:", q.id ?? "(no id)");
+    return { a: "", b: "", c: "", d: "" };
 }
 
 // ── Core loader ───────────────────────────────────────────────────────────────
@@ -152,6 +186,7 @@ function loadAll() {
                 stage:   q.stage   || meta.stage   || "Prelims",
                 paper:   (q.paper && q.paper !== "CSAT") ? q.paper : (meta.paper && meta.paper !== "CSAT") ? meta.paper : "GS",
                 subject: q.subject || meta.subject,
+                options: normalizeOptions(q),
             });
         }
     }

@@ -1,0 +1,173 @@
+{
+  "status": "audited-fixed",
+  "sourceTruth": "15 uploaded Economy topic DOCX files",
+  "subject": "Economy",
+  "totalQuestions": 587,
+  "topicCounts": [
+    {
+      "topicId": "agriculture",
+      "topicName": "Agriculture",
+      "fileName": "agriculture.json",
+      "questions": 42
+    },
+    {
+      "topicId": "capital_market_money_market_fdi",
+      "topicName": "Capital Market, Money Market and FDI",
+      "fileName": "capital_market_money_market_fdi.json",
+      "questions": 42
+    },
+    {
+      "topicId": "corporates_and_industries",
+      "topicName": "Corporates and Industries",
+      "fileName": "corporates_and_industries.json",
+      "questions": 61
+    },
+    {
+      "topicId": "economic_institutions_laws_policies",
+      "topicName": "Economic Institutions, Laws and Policies",
+      "fileName": "economic_institutions_laws_policies.json",
+      "questions": 31
+    },
+    {
+      "topicId": "employment_skill_development",
+      "topicName": "Employment and Skill Development",
+      "fileName": "employment_skill_development.json",
+      "questions": 17
+    },
+    {
+      "topicId": "five_year_plans",
+      "topicName": "Five Year Plans",
+      "fileName": "five_year_plans.json",
+      "questions": 12
+    },
+    {
+      "topicId": "government_budgeting_govt_accounts",
+      "topicName": "Government Budgeting and Govt. Accounts",
+      "fileName": "government_budgeting_govt_accounts.json",
+      "questions": 42
+    },
+    {
+      "topicId": "indian_taxation_system",
+      "topicName": "Indian Taxation System",
+      "fileName": "indian_taxation_system.json",
+      "questions": 21
+    },
+    {
+      "topicId": "international_economic_organizations",
+      "topicName": "International Economic Organizations",
+      "fileName": "international_economic_organizations.json",
+      "questions": 29
+    },
+    {
+      "topicId": "international_trade",
+      "topicName": "International Trade",
+      "fileName": "international_trade.json",
+      "questions": 24
+    },
+    {
+      "topicId": "macroeconomy",
+      "topicName": "Macroeconomy",
+      "fileName": "macroeconomy.json",
+      "questions": 47
+    },
+    {
+      "topicId": "population_demography",
+      "topicName": "Population and Demography",
+      "fileName": "population_demography.json",
+      "questions": 43
+    },
+    {
+      "topicId": "poverty_development_health_education",
+      "topicName": "Poverty, Development, Health and Education",
+      "fileName": "poverty_development_health_education.json",
+      "questions": 46
+    },
+    {
+      "topicId": "rbi_functions_money_supply_monetary_policy_forex_bop",
+      "topicName": "RBI Functions - Money Supply, Monetary Policy, Forex Management & Balance of Payment",
+      "fileName": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "questions": 65
+    },
+    {
+      "topicId": "rbi_indian_banking_finance_system",
+      "topicName": "RBI and Indian Banking and Finance System",
+      "fileName": "rbi_indian_banking_finance_system.json",
+      "questions": 65
+    }
+  ],
+  "yearCounts": {
+    "2025": 17,
+    "2024": 16,
+    "2023": 16,
+    "2022": 20,
+    "2021": 15,
+    "2020": 20,
+    "2019": 28,
+    "2018": 25,
+    "2017": 27,
+    "2016": 28,
+    "2015": 20,
+    "2014": 11,
+    "2013": 22,
+    "2012": 17,
+    "2011": 28,
+    "2010": 32,
+    "2009": 13,
+    "2008": 15,
+    "2007": 10,
+    "2006": 12,
+    "2005": 8,
+    "2004": 16,
+    "2003": 21,
+    "2002": 23,
+    "2001": 21,
+    "2000": 19,
+    "1999": 21,
+    "1998": 12,
+    "1997": 21,
+    "1996": 13,
+    "1995": 20
+  },
+  "duplicateIds": [],
+  "badAnswersRemaining": [],
+  "badOptionsRemaining": [],
+  "reviewRequiredRemaining": [],
+  "exactDuplicateQuestionTextGroups": [
+    [
+      "ECO_CORANDIND_2003_Q42",
+      "ECO_POVDEVHEA_2004_Q31"
+    ],
+    [
+      "ECO_RBIFUNMON_2021_Q9",
+      "ECO_RBIFUNMON_2019_Q16"
+    ]
+  ],
+  "fixesApplied": [
+    {
+      "id": "ECO_CORANDIND_1997_Q59",
+      "fix": "Completed missing option D = 20; answer A retained."
+    },
+    {
+      "id": "ECO_POPDEM_2008_Q10",
+      "fix": "Completed missing option D = 2055; answer C retained."
+    },
+    {
+      "id": "ECO_INTTRA_2020_Q3",
+      "fix": "Answer set to D."
+    },
+    {
+      "id": "ECO_RBIINDBAN_2024_Q5",
+      "fix": "Answer set to C."
+    },
+    {
+      "id": "ECO_RBIFUNMON_2022_Q3",
+      "fix": "Answer set to A; OCR typos corrected."
+    }
+  ],
+  "notes": [
+    "No questions were added or removed.",
+    "All 587 DOCX-sourced questions are retained.",
+    "Review flags cleared after audit.",
+    "Two repeated stem groups remain because they are distinct DOCX entries/options/year records."
+  ]
+}

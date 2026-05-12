@@ -8,20 +8,19 @@ const STORAGE_KEY = "prelims_institutional_tests";
 
 export function loadTests() {
     try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return [];
-        const parsed = JSON.parse(raw);
-        return Array.isArray(parsed) ? parsed : [];
-    } catch {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+        console.error("Failed to load institutional tests", e);
         return [];
     }
 }
 
 export function saveTests(tests) {
     try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(tests));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tests || []));
     } catch (e) {
-        console.error("[InstitutionalStore] Failed to save:", e);
+        console.error("Failed to save institutional tests", e);
     }
 }
 

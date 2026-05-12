@@ -690,13 +690,7 @@ export default function GeoOptionalAnswerWritingPage() {
       createdAt: new Date().toISOString(),
     };
     try {
-      const existing = JSON.parse(
-        localStorage.getItem("geo_optional_answer_attempts_v1") || "[]"
-      );
-      localStorage.setItem(
-        "geo_optional_answer_attempts_v1",
-        JSON.stringify([attempt, ...existing])
-      );
+      // Local storage fallback removed
     } catch (_) {}
     setSaved(true);
   };

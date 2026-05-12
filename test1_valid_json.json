@@ -1,0 +1,5 @@
+{
+  "userId": "user_1",
+  "answerAttemptId": "00000000-0000-0000-0000-000000000001",
+  "rawEvaluation": "{\"totalScore\":6,\"maxScore\":10,\"componentScores\":{\"intro\":6,\"structure\":6,\"content\":5,\"examples\":4,\"analysis\":5,\"conclusion\":6,\"directiveHandling\":6,\"presentation\":6},\"strengths\":[\"Clear structure\"],\"weaknesses\":[\"Weak examples\"],\"missingDimensions\":[\"Economic angle\"],\"improvementActions\":[\"Add one data point\"],\"oneLineDiagnosis\":\"Good attempt\",\"rewriteTask\":\"Improve examples\"}"
+}

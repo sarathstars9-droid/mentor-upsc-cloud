@@ -91,7 +91,7 @@ async function createTestBlock() {
   const dayKey = new Date().toISOString().slice(0, 10);
   
   const result = await pool.query(
-    `INSERT INTO plan_blocks (
+    `INSERT INTO study_blocks (
        user_id, block_id, day_key, subject, topic, node_id, stage,
        planned_start, planned_minutes, status, created_at, updated_at
      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW(), NOW())
@@ -104,7 +104,7 @@ async function createTestBlock() {
 
 async function getBlockState(blockId) {
   const result = await pool.query(
-    `SELECT * FROM plan_blocks WHERE id = $1`,
+    `SELECT * FROM study_blocks WHERE id = $1`,
     [blockId]
   );
   return result.rows[0] || null;
@@ -115,7 +115,7 @@ async function completedBlockHelper(nodeId = 'POL-CONST-BASIC') {
   
   // Complete the block
   const updateResult = await pool.query(
-    `UPDATE plan_blocks SET status='completed', ended_at=NOW(), linkage_pending=TRUE, updated_at=NOW() WHERE id=$1 RETURNING *`,
+    `UPDATE study_blocks SET status='completed', ended_at=NOW(), linkage_pending=TRUE, updated_at=NOW() WHERE id=$1 RETURNING *`,
     [dbId]
   );
   
@@ -192,9 +192,9 @@ async function runAllTests() {
     assert(exists, 'block_pyq_links table missing — migration needs to run');
   });
 
-  await test('plan_blocks has linkage_pending column', async () => {
-    const exists = await getColumnExists('plan_blocks', 'linkage_pending');
-    assert(exists, 'linkage_pending column missing from plan_blocks');
+  await test('study_blocks has linkage_pending column', async () => {
+    const exists = await getColumnExists('study_blocks', 'linkage_pending');
+    assert(exists, 'linkage_pending column missing from study_blocks');
   });
 
   await test('mistakes has block_id column', async () => {
@@ -347,7 +347,7 @@ async function runAllTests() {
     
     // Update to generic block
     await pool.query(
-      `UPDATE plan_blocks SET node_id='MISC-GEN' WHERE id=$1`,
+      `UPDATE study_blocks SET node_id='MISC-GEN' WHERE id=$1`,
       [genericBlockId]
     );
     
@@ -368,13 +368,13 @@ async function runAllTests() {
     const { dbId } = await createTestBlock();
     
     // Set pending
-    await pool.query(`UPDATE plan_blocks SET linkage_pending=TRUE, status='completed' WHERE id=$1`, [dbId]);
+    await pool.query(`UPDATE study_blocks SET linkage_pending=TRUE, status='completed' WHERE id=$1`, [dbId]);
     
     let state = await getBlockState(dbId);
     assert(state.linkage_pending === true, 'Flag not set');
     
     // Clear flag
-    await pool.query(`UPDATE plan_blocks SET linkage_pending=FALSE WHERE id=$1`, [dbId]);
+    await pool.query(`UPDATE study_blocks SET linkage_pending=FALSE WHERE id=$1`, [dbId]);
     
     state = await getBlockState(dbId);
     assert(state.linkage_pending === false, 'Flag not cleared');

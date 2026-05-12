@@ -11,44 +11,15 @@ function getPyqProgressKey(syllabusNodeId) {
 }
 
 function loadPyqProgress(syllabusNodeId) {
-    try {
-        const raw = localStorage.getItem(getPyqProgressKey(syllabusNodeId));
-        if (!raw) {
-            return {
-                readIds: [],
-                weakIds: [],
-                importantIds: [],
-            };
-        }
-
-        const parsed = JSON.parse(raw);
-        return {
-            readIds: Array.isArray(parsed.readIds) ? parsed.readIds : [],
-            weakIds: Array.isArray(parsed.weakIds) ? parsed.weakIds : [],
-            importantIds: Array.isArray(parsed.importantIds) ? parsed.importantIds : [],
-        };
-    } catch {
-        return {
-            readIds: [],
-            weakIds: [],
-            importantIds: [],
-        };
-    }
+    return {
+        readIds: [],
+        weakIds: [],
+        importantIds: [],
+    };
 }
 
 function savePyqProgress(syllabusNodeId, progress) {
-    try {
-        localStorage.setItem(
-            getPyqProgressKey(syllabusNodeId),
-            JSON.stringify({
-                readIds: Array.isArray(progress.readIds) ? progress.readIds : [],
-                weakIds: Array.isArray(progress.weakIds) ? progress.weakIds : [],
-                importantIds: Array.isArray(progress.importantIds) ? progress.importantIds : [],
-            })
-        );
-    } catch {
-        // ignore localStorage errors
-    }
+    // localStorage removed as per instructions
 }
 
 function getTrendLabel(years) {
@@ -269,10 +240,10 @@ function normalizeQuestion(raw = {}) {
                                 Array.isArray(raw?.mcq?.options) ? raw.mcq.options :
                                     Array.isArray(raw?.question?.options) ? raw.question.options :
                                         raw.options && typeof raw.options === "object" ? [
-                                            raw.options.a,
-                                            raw.options.b,
-                                            raw.options.c,
-                                            raw.options.d,
+                                            raw.options.a ?? raw.options.A,
+                                            raw.options.b ?? raw.options.B,
+                                            raw.options.c ?? raw.options.C,
+                                            raw.options.d ?? raw.options.D,
                                         ].filter(Boolean) :
                                             raw.optionA || raw.optionB || raw.optionC || raw.optionD ? [
                                                 raw.optionA,
@@ -566,6 +537,8 @@ export default function PyqTopicPage() {
     const [selectedTheme, setSelectedTheme] = useState("all");
     const [timelineMode, setTimelineMode] = useState("normal");
     const [selectedYear, setSelectedYear] = useState("all");
+    const [yearFrom, setYearFrom] = useState("");
+    const [yearTo, setYearTo] = useState("");
     const [topicSearch, setTopicSearch] = useState(topicParam);
 
     const [loading, setLoading] = useState(true);
@@ -718,6 +691,17 @@ export default function PyqTopicPage() {
 
         if (selectedYear !== "all") {
             items = items.filter((q) => Number(q.year) === Number(selectedYear));
+        } else if (yearFrom || yearTo) {
+            const from = Number(yearFrom || 0);
+            const to   = Number(yearTo   || 0);
+            items = items.filter((q) => {
+                const y = Number(q.year || 0);
+                if (!y) return false;
+                if (from && to) return y >= from && y <= to;
+                if (from) return y >= from;
+                if (to)   return y <= to;
+                return true;
+            });
         }
 
         // Keyword search: matches questionText, microTheme, themeLabel, subtopic,
@@ -752,7 +736,7 @@ export default function PyqTopicPage() {
         }
 
         return sortQuestions(items, sortMode);
-    }, [questions, paperFilter, selectedTheme, selectedYear, sortMode, topicSearch]);
+    }, [questions, paperFilter, selectedTheme, selectedYear, yearFrom, yearTo, sortMode, topicSearch]);
 
     const pyqInsight = useMemo(() => {
         const years = filteredQuestions.map((q) => Number(q.year)).filter(Boolean);
@@ -890,6 +874,52 @@ export default function PyqTopicPage() {
                     sortMode={sortMode}
                     setSortMode={setSortMode}
                 />
+
+                {/* Year range filter — only shown when all-years view is active */}
+                {selectedYear === "all" && timeline.length > 1 && (() => {
+                    const yearOptions = timeline.map((t) => String(t.year));
+                    const selectStyle = {
+                        padding: "6px 10px", borderRadius: 8, fontSize: 13, fontWeight: 600,
+                        background: "rgba(15,23,42,0.8)", color: "#cbd5e1",
+                        border: "1px solid rgba(96,165,250,0.28)", outline: "none", cursor: "pointer",
+                    };
+                    const hasRange = yearFrom || yearTo;
+                    return (
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                            <span style={{ fontSize: 12, color: "#64748b", fontWeight: 700 }}>YEAR RANGE</span>
+                            <select value={yearFrom} onChange={(e) => setYearFrom(e.target.value)} style={selectStyle}>
+                                <option value="">From…</option>
+                                {yearOptions.map((y) => <option key={y} value={y}>{y}</option>)}
+                            </select>
+                            <span style={{ color: "#475569", fontSize: 12 }}>–</span>
+                            <select value={yearTo} onChange={(e) => setYearTo(e.target.value)} style={selectStyle}>
+                                <option value="">To…</option>
+                                {yearOptions.map((y) => <option key={y} value={y}>{y}</option>)}
+                            </select>
+                            {hasRange && (
+                                <button
+                                    onClick={() => { setYearFrom(""); setYearTo(""); }}
+                                    style={{
+                                        padding: "5px 12px", borderRadius: 8, fontSize: 12, fontWeight: 700,
+                                        background: "rgba(239,68,68,0.12)", border: "1px solid rgba(239,68,68,0.3)",
+                                        color: "#fca5a5", cursor: "pointer",
+                                    }}
+                                >
+                                    ✕ Clear
+                                </button>
+                            )}
+                            {hasRange && (
+                                <span style={{
+                                    fontSize: 12, fontWeight: 700, color: "#38bdf8",
+                                    background: "rgba(56,189,248,0.1)", border: "1px solid rgba(56,189,248,0.25)",
+                                    borderRadius: 8, padding: "4px 10px",
+                                }}>
+                                    {filteredQuestions.length} questions
+                                </span>
+                            )}
+                        </div>
+                    );
+                })()}
 
                 {/* Stage / paper context badges + keyword search */}
                 <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -1201,7 +1231,7 @@ export default function PyqTopicPage() {
                         timelineMode={timelineMode}
                         setTimelineMode={setTimelineMode}
                         selectedYear={selectedYear}
-                        setSelectedYear={setSelectedYear}
+                        setSelectedYear={(y) => { setSelectedYear(y); setYearFrom(""); setYearTo(""); }}
                         onToggleRead={toggleRead}
                         onToggleWeak={toggleWeak}
                         onToggleImportant={toggleImportant}

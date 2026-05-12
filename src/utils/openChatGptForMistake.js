@@ -29,7 +29,9 @@ async function copyToClipboard(text) {
     el.focus();
     el.select();
     const ok = document.execCommand("copy");
-    document.body.removeChild(el);
+    if (el && el.parentNode) {
+        el.parentNode.removeChild(el);
+    }
     return ok;
 }
 

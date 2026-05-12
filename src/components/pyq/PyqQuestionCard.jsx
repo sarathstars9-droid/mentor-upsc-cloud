@@ -24,11 +24,11 @@ function normalizeOptions(question) {
   if (rawOptions && typeof rawOptions === "object" && !Array.isArray(rawOptions)) {
     const orderedKeys = ["a", "b", "c", "d", "e"];
     return orderedKeys
-      .filter((key) => rawOptions[key] != null && rawOptions[key] !== "")
+      .filter((key) => (rawOptions[key] ?? rawOptions[key.toUpperCase()]) != null && (rawOptions[key] ?? rawOptions[key.toUpperCase()]) !== "")
       .map((key) => ({
         key,
         label: key.toUpperCase(),
-        value: rawOptions[key],
+        value: rawOptions[key] ?? rawOptions[key.toUpperCase()],
       }));
   }
 
@@ -785,11 +785,11 @@ function normalizeOptions(question) {
   if (rawOptions && typeof rawOptions === "object" && !Array.isArray(rawOptions)) {
     const orderedKeys = ["a", "b", "c", "d", "e"];
     return orderedKeys
-      .filter((key) => rawOptions[key] != null && rawOptions[key] !== "")
+      .filter((key) => (rawOptions[key] ?? rawOptions[key.toUpperCase()]) != null && (rawOptions[key] ?? rawOptions[key.toUpperCase()]) !== "")
       .map((key) => ({
         key,
         label: key.toUpperCase(),
-        value: rawOptions[key],
+        value: rawOptions[key] ?? rawOptions[key.toUpperCase()],
       }));
   }
 

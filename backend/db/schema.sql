@@ -24,6 +24,10 @@ answer_status TEXT NOT NULL,
 error_type TEXT,
 notes TEXT,
 must_revise BOOLEAN DEFAULT FALSE,
+revision_flag BOOLEAN DEFAULT FALSE,
+is_important BOOLEAN DEFAULT FALSE,
+is_weak BOOLEAN DEFAULT FALSE,
+is_read BOOLEAN DEFAULT FALSE,
 created_at TIMESTAMPTZ DEFAULT NOW(),
 updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -84,76 +88,78 @@ UNIQUE (user_id, question_id)
 );
 
 -- ── Plan block lifecycle ─────────────────────────────────────────────────────
--- See full migration in backend/db/migrations/001_plan_blocks.sql
-CREATE TABLE IF NOT EXISTS plan_blocks (
+-- Renamed from plan_blocks to study_blocks
+CREATE TABLE IF NOT EXISTS public.study_blocks (
   id                    UUID         PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id               TEXT         NOT NULL,
   block_id              TEXT         NOT NULL,
   day_key               TEXT         NOT NULL,
   title                 TEXT,
+  subject_id            TEXT,
   subject               TEXT,
+  topic_id              TEXT,
   topic                 TEXT,
+  node_id               TEXT,
+  stage                 TEXT,
+  block_type            TEXT,
+  source_type           TEXT,
   planned_start         TEXT,
   planned_end           TEXT,
   planned_minutes       INTEGER      NOT NULL DEFAULT 0,
+  actual_minutes        INTEGER      NOT NULL DEFAULT 0,
   status                TEXT         NOT NULL DEFAULT 'planned',
   started_at            TIMESTAMPTZ,
   paused_at             TIMESTAMPTZ,
   last_resumed_at       TIMESTAMPTZ,
   ended_at              TIMESTAMPTZ,
+  completed_at          TIMESTAMPTZ,
   total_pause_seconds   INTEGER      NOT NULL DEFAULT 0,
   pauses_count          INTEGER      NOT NULL DEFAULT 0,
   completion_reason     TEXT,
   calendar_event_id     TEXT,
   calendar_html_link    TEXT,
   calendar_sync_status  TEXT         NOT NULL DEFAULT 'pending',
+  linkage_pending       BOOLEAN      DEFAULT FALSE,
   created_at            TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
   updated_at            TIMESTAMPTZ  NOT NULL DEFAULT NOW()
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS uniq_active_block_per_user
-  ON plan_blocks(user_id) WHERE status = 'active';
+  ON public.study_blocks(user_id) WHERE status = 'active';
 
 CREATE UNIQUE INDEX IF NOT EXISTS uniq_block_per_user_day
-  ON plan_blocks(user_id, block_id, day_key);
+  ON public.study_blocks(user_id, block_id, day_key);
 
-CREATE INDEX IF NOT EXISTS idx_plan_blocks_user_day
-  ON plan_blocks(user_id, day_key);
+CREATE INDEX IF NOT EXISTS idx_study_blocks_user_day
+  ON public.study_blocks(user_id, day_key);
 
-CREATE INDEX IF NOT EXISTS idx_plan_blocks_status
-  ON plan_blocks(user_id, status);
+CREATE INDEX IF NOT EXISTS idx_study_blocks_status
+  ON public.study_blocks(user_id, status);
 
--- Reporting metadata (added in migration 002)
--- These ALTER TABLE statements are idempotent via ADD COLUMN IF NOT EXISTS
-DO $$
-BEGIN
-  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='plan_blocks' AND column_name='node_id') THEN
-    ALTER TABLE plan_blocks ADD COLUMN node_id TEXT;
-  END IF;
-  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='plan_blocks' AND column_name='stage') THEN
-    ALTER TABLE plan_blocks ADD COLUMN stage TEXT;
-  END IF;
-  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='plan_blocks' AND column_name='source_type') THEN
-    ALTER TABLE plan_blocks ADD COLUMN source_type TEXT;
-  END IF;
-END $$;
+CREATE INDEX IF NOT EXISTS idx_study_blocks_node
+  ON public.study_blocks(user_id, node_id);
+
 
 -- ── Audit event log ───────────────────────────────────────────────────────────
-CREATE TABLE IF NOT EXISTS plan_block_events (
-  id          UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id     TEXT        NOT NULL,
-  block_id    UUID        REFERENCES plan_blocks(id) ON DELETE CASCADE,
-  event_type  TEXT        NOT NULL,
-  event_time  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  metadata    JSONB       NOT NULL DEFAULT '{}',
-  created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+CREATE TABLE IF NOT EXISTS public.plan_block_events (
+  id             UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id        TEXT        NOT NULL,
+  block_id       UUID        REFERENCES public.study_blocks(id) ON DELETE CASCADE,
+  event_type     TEXT        NOT NULL,
+  event_time     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  event_payload  JSONB       NOT NULL DEFAULT '{}'::jsonb,
+  metadata       JSONB       NOT NULL DEFAULT '{}'::jsonb,
+  created_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 CREATE INDEX IF NOT EXISTS idx_plan_block_events_user_time
-  ON plan_block_events(user_id, event_time DESC);
+  ON public.plan_block_events(user_id, event_time DESC);
 
 CREATE INDEX IF NOT EXISTS idx_plan_block_events_block_id
-  ON plan_block_events(block_id);
+  ON public.plan_block_events(block_id);
+
+CREATE INDEX IF NOT EXISTS idx_plan_block_events_type
+  ON public.plan_block_events(user_id, event_type);
 
 -- INDEXES
 CREATE INDEX IF NOT EXISTS idx_mistakes_user ON mistakes(user_id);

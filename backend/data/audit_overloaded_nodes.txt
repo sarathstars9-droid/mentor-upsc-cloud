@@ -1,0 +1,896 @@
+======================================================================
+         PYQ OVERLOADED NODE AUDIT REPORT
+======================================================================
+pyq_by_node questions indexed : 162 nodes
+pyq_master_index total         : 4524 questions
+
+──────────────────────────────────────────────────────────────────────
+TOP 20 OVERLOADED NODES (by prelims count in pyq_by_node.json)
+──────────────────────────────────────────────────────────────────────
+ 1. CSAT-BN                                     467 total
+ 2. CSAT-RC                                     400 total
+ 3. CSAT-LR                                     236 total
+ 4. GS1-GEO-IND-PHYSIO-MT01                     224 total ◀ FOCUS
+ 5. GS1-HIS-MOD-NATIONAL-MT01                   215 total ◀ FOCUS
+ 6. GS2-IR-INSTITUTIONS-MT04                    143 total ◀ FOCUS
+ 7. GS3-ECO-BANKING-MT01                        114 total
+ 8. GS3-ST-GENSCI-BIO-MT01                      110 total
+ 9. GS3-ECO-INCLUSIVE-GROWTH-MT01               105 total
+10. GS3-ST-NUCLEAR-MT01                          96 total
+11. 1C-MISC-SCHEMES-MT04                         92 total
+12. GS3-ENV-SPECIES-MT01                         81 total
+13. GS2-POL-PARL-MT01                            81 total
+14. GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01       77 total
+15. GS2-POL-EVOL-CA-MT02                         73 total
+16. GS3-ST-BIOTECH-MT01                          72 total
+17. 1C-MISC-INST-MT01                            67 total
+18. GS1-GEO-IND-CLIMATE-MT01                     67 total
+19. GS1-GEO-IND-DRAINAGE-MT01                    65 total
+20. GS2-POL-EXEC-MT01                            57 total
+
+══════════════════════════════════════════════════════════════════════
+FOCUS NODE: GS1-GEO-IND-PHYSIO-MT01
+Total prelims questions : 224   (found in qMap: 224)
+══════════════════════════════════════════════════════════════════════
+
+  Orig nodeId → count (before normalization):
+    GS1-GEO-IND-PHYSIO-MT01                  : 224
+
+  SAMPLE QUESTIONS (20 of 224):
+
+  ── Sample  1 ──────────────────────────────────
+  ID       : GEO_WRLD_2025_Q1
+  Year     : 2025
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following pairs: Country - Resource-rich in I. Botswana: Diamond II. Chile: Lithium III. Indonesia: Nickel In how many of the above rows is the given information correctly matched?
+  Options  : A) Only one  |  B) Only two  |  C) All the three  |  D) None
+  Mapper   : (none)
+
+  ── Sample  2 ──────────────────────────────────
+  ID       : GEO_WRLD_2025_Q2
+  Year     : 2025
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following countries: I. Bolivia II. Brazil III. Colombia IV. Ecuador V. Paraguay VI. Venezuela Andes mountains pass through how many of the above countries?
+  Options  : A) Only two  |  B) Only three  |  C) Only four  |  D) Only five
+  Mapper   : (none)
+
+  ── Sample  3 ──────────────────────────────────
+  ID       : GEO_GEO_2025_Q1
+  Year     : 2025
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following statements: I. Anadyr in Siberia and Nome in Alaska are a few kilometers from each other, but when people are waking up and getting set for breakfast in these cities, it would b
+  Options  : A) I only  |  B) II only  |  C) Both I and II  |  D) Neither I nor II
+  Mapper   : (none)
+
+  ── Sample  4 ──────────────────────────────────
+  ID       : GEO_GEO_2025_Q2
+  Year     : 2025
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Which of the following are the evidences of the phenomenon of continental drift? I. The belt of ancient rocks from Brazil coast matches with those from Western Africa. II. The gold deposits of Ghana a
+  Options  : A) I and III only  |  B) I and II only  |  C) I, II and III  |  D) II and III only
+  Mapper   : (none)
+
+  ── Sample  5 ──────────────────────────────────
+  ID       : GEO_GEO_2025_Q3
+  Year     : 2025
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following statements: Statement I: Scientific studies suggest that a shift is taking place in the Earth's rotation and axis. Statement II: Solar flares and associated coronal mass ejectio
+  Options  : A) Both Statement II and Statement III are correct and bot  |  B) Both Statement II and Statement III are correct but onl  |  C) Only one of the Statements II and III is correct and th  |  D) Neither Statement II nor Statement III is correct
+  Mapper   : (none)
+
+  ── Sample  6 ──────────────────────────────────
+  ID       : GEO_GEO_2025_Q4
+  Year     : 2025
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following statements: Statement I: In the context of effect of water on rocks, chalk is known as a very permeable rock whereas clay is known as quite an impermeable or least permeable roc
+  Options  : A) Both Statement II and Statement III are correct and bot  |  B) Both Statement II and Statement III are correct but onl  |  C) Only one of the Statements II and III is correct and th  |  D) Neither Statement II nor Statement III is correct
+  Mapper   : (none)
+
+  ── Sample  7 ──────────────────────────────────
+  ID       : GEO_OCE_2025_Q1
+  Year     : 2025
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following statements: Statement I: In January, in the Northern Hemisphere, the isotherms bend equatorward while crossing the landmasses, and poleward while crossing the oceans. Statement 
+  Options  : A) Both Statement I and Statement II are correct and State  |  B) Both Statement I and Statement II are correct but State  |  C) Statement I is correct but Statement II is not correct  |  D) Statement I is not correct but Statement II is correct
+  Mapper   : (none)
+
+  ── Sample  8 ──────────────────────────────────
+  ID       : GEO_MAPW_2025_Q1
+  Year     : 2025
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following water bodies: I. Lake Tanganyika II. Lake Tonlé Sap III. Patos Lagoon Through how many of them does the equator pass?
+  Options  : A) Only one  |  B) Only two  |  C) All the three  |  D) None
+  Mapper   : (none)
+
+  ── Sample  9 ──────────────────────────────────
+  ID       : GEO_MAPW_2025_Q2
+  Year     : 2025
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following pairs: Region - Country I. Mallorca: Italy II. Normandy: Spain III. Sardinia: France In how many of the above rows is the given information correctly matched?
+  Options  : A) Only one  |  B) Only two  |  C) All the three  |  D) None
+  Mapper   : (none)
+
+  ── Sample 10 ──────────────────────────────────
+  ID       : GEO_MAPW_2025_Q3
+  Year     : 2025
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following countries: I. United Kingdom II. Denmark III. New Zealand IV. Australia V. Brazil How many of the above countries have more than four time zones?
+  Options  : A) All the five  |  B) Only four  |  C) Only three  |  D) Only two
+  Mapper   : (none)
+
+  ── Sample 11 ──────────────────────────────────
+  ID       : GEO_WRLD_2024_Q3
+  Year     : 2024
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Which of the following countries are well known as the two largest cocoa producers in the world?
+  Options  : A) Algeria and Morocco (  |  B) Botswana and Namibia (  |  C) Cote d'Ivoire and Ghana (  |  D) Madagascar and Mozambique
+  Mapper   : (none)
+
+  ── Sample 12 ──────────────────────────────────
+  ID       : GEO_WRLD_2024_Q4
+  Year     : 2024
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following information: Region Name of the mountain range Type of Mountain Central Asia Vosges Fold mountain Europe Alps Block mountain North America Appalachians Fold mountain South Ameri
+  Options  : A) Only one (  |  B) Only two (  |  C) Only three (  |  D) All four
+  Mapper   : (none)
+
+  ── Sample 13 ──────────────────────────────────
+  ID       : GEO_ECO_2024_Q1
+  Year     : 2024
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following airports: 1. Donyi Polo Airport 2. Kushinagar International Airport 3. Vijayawada International Airport In the recent past, which of the above have been constructed as Greenfiel
+  Options  : A) 1 and 2 only  |  B) 2 and 3 only  |  C) 1 and 3 only  |  D) 1, 2 and 3
+  Mapper   : (none)
+
+  ── Sample 14 ──────────────────────────────────
+  ID       : GEO_GEO_2024_Q5
+  Year     : 2024
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following: 1. Pyroclastic debris 2. Ash and dust 3. Nitrogen compounds 4. Sulphur compounds How many of the above are products of volcanic eruptions?
+  Options  : A) Only one  |  B) Only two  |  C) Only three  |  D) All four
+  Mapper   : (none)
+
+  ── Sample 15 ──────────────────────────────────
+  ID       : GEO_GEO_2024_Q7
+  Year     : 2024
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : On June 21 every year, which of the following latitude(s) experience(s) a sunlight of more than 12 hours? 1. Equator 2. Tropic of Cancer 3. Tropic of Capricorn 4. Arctic Circle Select the correct answ
+  Options  : A) 1 only (  |  B) 2 only (  |  C) 3 and 4 (  |  D) 2 and 4
+  Mapper   : (none)
+
+  ── Sample 16 ──────────────────────────────────
+  ID       : GEO_OCE_2024_Q2
+  Year     : 2024
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Which of the following is/are correct inference/inferences from isothermal maps in the month of January? 1. The isotherms deviate to the north over the ocean and to the south over the continent. 2. Th
+  Options  : A) 1 only  |  B) 2 only  |  C) Both 1 and 2  |  D) Neither 1 nor 2
+  Mapper   : (none)
+
+  ── Sample 17 ──────────────────────────────────
+  ID       : GEO_MAPW_2024_Q4
+  Year     : 2024
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Consider the following countries: 1. Finland 2. Germany 3. Norway 4. Russia How many of the above countries have a border with the North Sea?
+  Options  : A) Only one (  |  B) Only two (  |  C) Only three (  |  D) All four
+  Mapper   : (none)
+
+  ── Sample 18 ──────────────────────────────────
+  ID       : GEO_MAPW_2024_Q5
+  Year     : 2024
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : The longest border between any two countries in the world is between:
+  Options  : A) Canada and the United States of America (  |  B) Chile and Argentina (  |  C) China and India (  |  D) Kazakhstan and Russian Federation
+  Mapper   : (none)
+
+  ── Sample 19 ──────────────────────────────────
+  ID       : GEO_WRLD_2023_Q5
+  Year     : 2023
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : About three -fourth of world's Cobalt, a metal required for the manufacture of batteries for electric motor vehicles, is produced by:
+  Options  : A) Argentina  |  B) Botswana  |  C) The Democratic Republic of the Congo  |  D) Kazakhstan
+  Mapper   : (none)
+
+  ── Sample 20 ──────────────────────────────────
+  ID       : GEO_WRLD_2023_Q6
+  Year     : 2023
+  OrigNode : GS1-GEO-IND-PHYSIO-MT01
+  SylNode  : GS1-GEO-IND-PHYSIO-MT01
+  Question : Which one of the following is part of the Congo Basin?
+  Options  : A) Cameroon  |  B) Nigeria  |  C) South Sudan  |  D) Uganda
+  Mapper   : (none)
+
+══════════════════════════════════════════════════════════════════════
+FOCUS NODE: GS1-HIS-MOD-NATIONAL-MT01
+Total prelims questions : 215   (found in qMap: 215)
+══════════════════════════════════════════════════════════════════════
+
+  Orig nodeId → count (before normalization):
+    GS1-HIS-MOD-NATIONAL-MT01                : 215
+
+  SAMPLE QUESTIONS (20 of 215):
+
+  ── Sample  1 ──────────────────────────────────
+  ID       : HIS_MOD_2025_Q1_CIVIL_DI
+  Year     : 2025
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : Subsequent to which one of the following events, Gandhiji, who consistently opposed untouchability and appealed for its eradication from all spheres, decided to include the upliftment of 'Harijans' in
+  Options  : A) The Poona Pact  |  B) The Gandhi-Irwin Agreement (Delhi Pact)  |  C) Arrest of Congress leadership at the time of the Quit I  |  D) Promulgation of the Government of India Act,
+  Mapper   : (none)
+
+  ── Sample  2 ──────────────────────────────────
+  ID       : HIS_MOD_2025_Q2_CIVIL_DI
+  Year     : 2025
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : 'Sedition has become my religion' was the famous statement given by Gandhiji at the time of:
+  Options  : A) the Champaran Satyagraha  |  B) publicly violating Salt Law at Dandi  |  C) attending the Second Round Table Conference in London  |  D) the launch of the Quit India Movement
+  Mapper   : (none)
+
+  ── Sample  3 ──────────────────────────────────
+  ID       : HIS_MOD_2025_Q1_GANDHIAN
+  Year     : 2025
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : Consider the following subjects with regard to Non-Cooperation Programme: I. Boycott of law-courts and foreign cloth II. Observance of strict non-violence III. Retention of titles and honours without 
+  Options  : A) Only one  |  B) Only two  |  C) Only three  |  D) All the four
+  Mapper   : (none)
+
+  ── Sample  4 ──────────────────────────────────
+  ID       : HIS_MOD_2025_Q2_GANDHIAN
+  Year     : 2025
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : Consider the following statements in respect of the Non-Cooperation Movement: I. The Congress declared the attainment of 'Swaraj' by all legitimate and peaceful means to be its objective. II. It was t
+  Options  : A) I only  |  B) II only  |  C) Both I and II  |  D) Neither I nor II
+  Mapper   : (none)
+
+  ── Sample  5 ──────────────────────────────────
+  ID       : HIS_MOD_2025_Q3_GANDHIAN
+  Year     : 2025
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : Who provided legal defence to the people arrested in the aftermath of Chauri Chaura incident?
+  Options  : A) C. R. Das  |  B) Madan Mohan Malaviya and Krishna Kant  |  C) Dr. Saifuddin Kitchlew and Khwaja Hasan Nizami  |  D) M. A. Jinnah
+  Mapper   : (none)
+
+  ── Sample  6 ──────────────────────────────────
+  ID       : HIS_MOD_2024_Q1_EVENTS_1
+  Year     : 2024
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : With reference to the Government of India Act, 1935, consider the following statements: 1. It provided for the establishment of an All-India Federation based on the union of the British Indian Provinc
+  Options  : A) 1 only  |  B) 2 only  |  C) Both 1 and 2  |  D) Neither 1 nor 2
+  Mapper   : (none)
+
+  ── Sample  7 ──────────────────────────────────
+  ID       : HIS_MOD_2023_Q1_CONGRESS
+  Year     : 2023
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : Consider the following statements: Statement-I: 7th August is declared as the National Handloom Day. Statement-II: It was in 1905 that the Swadeshi Movement was launched on the same day. Which one of 
+  Options  : A) Both Statement-I and Statement-II are correct and State  |  B) Both Statement-I and Statement-II are correct and State  |  C) Statement-I is correct Statement-II is incorrect  |  D) Statement-I is incorrect but Statement-II is correct
+  Mapper   : (none)
+
+  ── Sample  8 ──────────────────────────────────
+  ID       : HIS_MOD_2022_Q1_REVOLUTI
+  Year     : 2022
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : Consider the following freedom fighters: 1. Barindra Kumar Ghosh 2. Jogesh Chandra Chatterjee 3. Rash Behari Bose Who of the above was/were actively associated with the Ghadar Party?
+  Options  : A) 1 and 2  |  B) 2 only  |  C) 1 and 3  |  D) 3 only
+  Mapper   : (none)
+
+  ── Sample  9 ──────────────────────────────────
+  ID       : HIS_MOD_2021_Q3_LAST_PHA
+  Year     : 2021
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : With reference to 8th August, 1942 in Indian history, which one of the following statements is correct?
+  Options  : A) The Quit India Resolution was adopted by the AICC.  |  B) The Viceroy's Executive Council was expanded to include  |  C) The Congress ministries resigned in seven provinces.  |  D) Cripps proposed an Indian Union with full Dominion Stat
+  Mapper   : from=GS1-HIS-MOD-CONSTDEV-MT01  to=GS1-HIS-MOD-NATIONAL-MT01  conf=100  kw=["congress","quit india"]
+
+  ── Sample 10 ──────────────────────────────────
+  ID       : HIS_MOD_2021_Q4_LAST_PHA
+  Year     : 2021
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : In the context of Colonial India, Shah Nawaz Khan, Prem Kumar Sehgal and Gurbaksh Singh Dhillion are remembered as:
+  Options  : A) Leaders of Swadeshi and Boycott Movement  |  B) Members of the Interim Government in 1946  |  C) Members of the Drafting Committee in the Constituent As  |  D) Officers of the Indian National Army
+  Mapper   : from=GS1-HIS-MOD-CONSTDEV-MT01  to=GS1-HIS-MOD-NATIONAL-MT01  conf=90  kw=["swadeshi"]
+
+  ── Sample 11 ──────────────────────────────────
+  ID       : HIS_MOD_2021_Q1_LITERATU
+  Year     : 2021
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : Who among the following is associated with 'Songs from Prison', a translation of ancient Indian Religious lyrics in English?
+  Options  : A) Bal Gangadhar Tilak  |  B) Jawaharlal Nehru  |  C) MK Gandhi  |  D) Sarojini Naidu
+  Mapper   : (none)
+
+  ── Sample 12 ──────────────────────────────────
+  ID       : HIS_MOD_2021_Q2_LITERATU
+  Year     : 2021
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : With reference to Madanapalle of Andhra Pradesh, which one of the following statements is correct?
+  Options  : A) Pingali Venkayya designed the tricolour Indian National  |  B) Pattabhi Sitaramaiah led the Quit India Movement of And  |  C) Rabindranath Tagore translated the National Anthem from  |  D) Madame Blavatsky and Colonel Olcott set up headquarters
+  Mapper   : (none)
+
+  ── Sample 13 ──────────────────────────────────
+  ID       : HIS_MOD_2020_Q3_CIVIL_DI
+  Year     : 2020
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : The Gandhi -Irwin Pact included which of the following? 1. Invitation to Congress to participate in the Round Table Conference 2. Withdrawal of Ordinances promulgated in connection with the Civil Diso
+  Options  : A) 1 only  |  B) 1, 2 and 4 only  |  C) 3 only  |  D) 2, 3 and 4 only
+  Mapper   : (none)
+
+  ── Sample 14 ──────────────────────────────────
+  ID       : HIS_MOD_2020_Q1_EVENTS_1
+  Year     : 2020
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : In the context of Indian history, the Rakhmabai case of 1884 revolved around: 1. Women's right to gain education 2. Age of consent 3. Restitution of conjugal rights Select the correct answer using the
+  Options  : A) 1 and 2 only  |  B) 2 and 3 only  |  C) 1 and 3 only  |  D) 1, 2 and 3
+  Mapper   : (none)
+
+  ── Sample 15 ──────────────────────────────────
+  ID       : HIS_MOD_2020_Q3_LITERATU
+  Year     : 2020
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : With reference to the book 'Desher Katha' written by Sakharam Ganesh Deuskar during the freedom struggle, consider the following statements: 1. It warned against the Colonial State's hypnotic conquest
+  Options  : A) 1 and 2 only  |  B) 2 and 3 only  |  C) 1 and 3 only  |  D) 1, 2 and 3
+  Mapper   : (none)
+
+  ── Sample 16 ──────────────────────────────────
+  ID       : HIS_MOD_2020_Q3_SOCIAL_R
+  Year     : 2020
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : The Vital-Vidhwansak, the first monthly journal to have the untouchable people as its target audience was published by:
+  Options  : A) Gopal Baba Walangkar  |  B) Jyotiba Phule  |  C) Mohandas Karamchand Gandhi  |  D) Bhimrao Ranji Ambedkar
+  Mapper   : from=GS1-HIS-MOD-REFORM-MT01  to=GS1-HIS-MOD-NATIONAL-MT01  conf=90  kw=["gandhi"]
+
+  ── Sample 17 ──────────────────────────────────
+  ID       : HIS_MOD_2020_Q1_TRIBAL_A
+  Year     : 2020
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : Indigo cultivation in India declined by the beginning of the 20th century because of:
+  Options  : A) Peasant resistance to the oppressive conduct of planter  |  B) Its unprofitability in the world market because of new   |  C) National leaders' opposition to the cultivation if indi  |  D) Government control over the planters
+  Mapper   : (none)
+
+  ── Sample 18 ──────────────────────────────────
+  ID       : HIS_MOD_2019_Q4_CIVIL_DI
+  Year     : 2019
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : With reference to the British colonial rule in India, consider the following statements: 1. Mahatma Gandhi was instrumental in the abolition of the system of 'indentured labour' 2. In Lord Chelmsford'
+  Options  : A) 1 and 2 only  |  B) 1 and 3 only  |  C) 2 and 3 only  |  D) 1, 2 and 3
+  Mapper   : (none)
+
+  ── Sample 19 ──────────────────────────────────
+  ID       : HIS_MOD_2019_Q2_CONGRESS
+  Year     : 2019
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : With reference to Swadeshi Movement, consider the following statements: 1. It contributed to the revival of the indigenous artisan crafts and industries. From Establishment to Split of Congress (1885-
+  Options  : A) 1 only  |  B) 2 only  |  C) Both 1 and 2  |  D) 
+  Mapper   : (none)
+
+  ── Sample 20 ──────────────────────────────────
+  ID       : HIS_MOD_2019_Q4_SOCIAL_R
+  Year     : 2019
+  OrigNode : GS1-HIS-MOD-NATIONAL-MT01
+  SylNode  : GS1-HIS-MOD-NATIONAL-MT01
+  Question : Consider the following pairs: Movement/Organization Leader 1. All India Anti - Untouchability League Mahatma Gandhi 2. All India Kisan Sabha Swami Sahajanand Saraswati 3. Self-Respect Movement Naicker
+  Options  : A) 1 only  |  B) 1 and 2 only  |  C) 2 and 3 only  |  D) 1, 2 and 3
+  Mapper   : from=GS1-HIS-MOD-REFORM-MT01  to=GS1-HIS-MOD-NATIONAL-MT01  conf=90  kw=["gandhi"]
+
+══════════════════════════════════════════════════════════════════════
+FOCUS NODE: GS3-ST-GENSCI-BIO-MT04
+Total prelims questions : 22   (found in qMap: 22)
+══════════════════════════════════════════════════════════════════════
+
+  Orig nodeId → count (before normalization):
+    GS3-ST-GENSCI-BIO-MT04                   : 22
+
+  SAMPLE QUESTIONS (20 of 22):
+
+  ── Sample  1 ──────────────────────────────────
+  ID       : CA_GENERAL_SCIENCE_2021_Q3
+  Year     : 2021
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : 'Triclosan', considered harmful when exposed to high levels for a long time, is most likely present in which of the following? [2021]
+  Options  : A) Food preservatives  |  B) Fruit-ripening substances  |  C) Reused plastic containers  |  D) Toiletries
+  Mapper   : (none)
+
+  ── Sample  2 ──────────────────────────────────
+  ID       : CA_SCIENCE_TECH_2016_Q10
+  Year     : 2016
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : Which one of the following is the best description of 'INS Astradharini', that was in the news recently? [2016]
+  Options  : A) Amphibious warfare ship  |  B) Nuclear-powered submarine  |  C) Torpedo launch and recovery vessel  |  D) Nuclear-powered aircraft carrier
+  Mapper   : (none)
+
+  ── Sample  3 ──────────────────────────────────
+  ID       : CA_SCIENCE_TECH_2016_Q11
+  Year     : 2016
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : 'Project Loon', sometimes seen in the news, is related to: [2016]
+  Options  : A) Waste management technology  |  B) Wireless communication technology  |  C) Solar power production technology  |  D) Water conservation technology
+  Mapper   : (none)
+
+  ── Sample  4 ──────────────────────────────────
+  ID       : CA_GENERAL_SCIENCE_2016_Q4
+  Year     : 2016
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : Recently, for the first time in our country, which of the following States has declared a particular butterfly as 'State Butterfly'? [2016]
+  Options  : A) Arunachal Pradesh  |  B) Himachal Pradesh  |  C) Karnataka  |  D) Maharashtra
+  Mapper   : (none)
+
+  ── Sample  5 ──────────────────────────────────
+  ID       : CA_SCIENCE_TECH_2015_Q14
+  Year     : 2015
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : 'Beijing Declaration and Platform for Action' often seen in the news, is: [2015]
+  Options  : A) A strategy to tackle the regional terrorism, an outcome  |  B) A plan of action for sustainable economic growth in the  |  C) An agenda for women's empowerment, an outcome of a Worl  |  D) A strategy to combat wildlife trafficking, a declaratio
+  Mapper   : (none)
+
+  ── Sample  6 ──────────────────────────────────
+  ID       : CA_GENERAL_SCIENCE_2011_Q5
+  Year     : 2011
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : Recently, "oil zapper'' was in the news. What is it? [2011]
+  Options  : A) It is an eco-friendly technology for the remediation of  |  B) It is the latest technology developed for under-sea oil  |  C) It is a genetically engineered high biofuel-yielding ma  |  D) It is the latest technology to control the accidentally
+  Mapper   : (none)
+
+  ── Sample  7 ──────────────────────────────────
+  ID       : CA_GENERAL_SCIENCE_2010_Q6
+  Year     : 2010
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : With reference to the treatment of cancerous tumors, a tool called cyber knife has been making the news. In this context, which one of the following statements is not correct? [2010]
+  Options  : A) It is a robotic image guided system.  |  B) It delivers an extremely precise dose of radiation.  |  C) It has the capability of achieving sub - millimeter acc  |  D) It can map the spread of tumour in the body.
+  Mapper   : (none)
+
+  ── Sample  8 ──────────────────────────────────
+  ID       : CA_GENERAL_SCIENCE_2010_Q7
+  Year     : 2010
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : Recently, LASIK (Laser Assisted In Situ Keratomileusis) procedure is being made popular for vision correction. Which one of the following statements in this context is not correct? [2010]
+  Options  : A) LASIK procedure is used to correct refractive errors of  |  B) It is a procedure that permanently changes the shapes o  |  C) It reduces a person's dependence on glasses or contact   |  D) It is a procedure that can be done on the person of any
+  Mapper   : (none)
+
+  ── Sample  9 ──────────────────────────────────
+  ID       : CA_SCIENCE_TECH_2009_Q18
+  Year     : 2009
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : For outstanding contribution to which one of the following fields is Shanti Swarup Bhatnagar Prize given? [2009]
+  Options  : A) Litera ture  |  B) Performing arts  |  C) Science  |  D) Social service
+  Mapper   : (none)
+
+  ── Sample 10 ──────────────────────────────────
+  ID       : CA_GENERAL_SCIENCE_2009_Q9
+  Year     : 2009
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : Consider the following: [2009] 1. Camphor 2. Chicory 3. Vanilla Which of the above is/are plant product (s)?
+  Options  : A) 1 and 2 only  |  B) 3 only  |  C) 1 and 3 only  |  D) 1,2 and 3
+  Mapper   : (none)
+
+  ── Sample 11 ──────────────────────────────────
+  ID       : CA_SCIENCE_TECH_2008_Q24
+  Year     : 2008
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : In the year 2007, an earthquake led to massive radioactive water leakage in the largest nuclear plant in the world. In which country did it occur? [2008]
+  Options  : A) Germany  |  B) Canada  |  C) Japan  |  D) USA
+  Mapper   : (none)
+
+  ── Sample 12 ──────────────────────────────────
+  ID       : CA_GENERAL_SCIENCE_2008_Q10
+  Year     : 2008
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : The release of which one of the following into ponds and wells helps in controlling the mosquitoes? [2008]
+  Options  : A) Crab  |  B) Dogfish  |  C) Gambusia fish  |  D) Snail
+  Mapper   : (none)
+
+  ── Sample 13 ──────────────────────────────────
+  ID       : CA_SCIENCE_TECH_2006_Q27
+  Year     : 2006
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : Who is the President of the Council of Scientific and Industrial Reseach? [2006]
+  Options  : A) President of India  |  B) Vice-President of India  |  C) Prime Minister of India  |  D) Minister of Science & Tech
+  Mapper   : (none)
+
+  ── Sample 14 ──────────────────────────────────
+  ID       : CA_SCIENCE_TECH_2006_Q28
+  Year     : 2006
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : Which one among the following as awarded the CSIR. Diamond Jubilee Technology Award 2004 in September, 2005 by the Prime Minister of India? [2006]
+  Options  : A) Infosys Technologies Ltd.  |  B) Midas Communication Technologies  |  C) Tata Consultancy Services  |  D) Biocon India Ltd.
+  Mapper   : (none)
+
+  ── Sample 15 ──────────────────────────────────
+  ID       : CA_SCIENCE_TECH_2006_Q29
+  Year     : 2006
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : Match List . I (Indian Scientist/Scholar) with List-II (Area of work) and select the correct answer using the code given below the lists: [2006] List I List II A. C.N.R. Rao 1. Telecommunication B. Ja
+  Options  : A) Code A  |  B) Code B  |  C) Code C  |  D) Code D
+  Mapper   : (none)
+
+  ── Sample 16 ──────────────────────────────────
+  ID       : CA_GENERAL_SCIENCE_2005_Q12
+  Year     : 2005
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : Which one of the following is the landmark performance of Dr. V. Mohan Reddy, an Indian born Doctor working in USA, during February, 2003? [2005]
+  Options  : A) Research on human stem cell which is likely to revoluti  |  B) Successful open heart procedure called arterial switch   |  C) Research on genetic engineering which can help in treat  |  D) Successful brain surgery to revive the function of near
+  Mapper   : (none)
+
+  ── Sample 17 ──────────────────────────────────
+  ID       : CA_SCIENCE_TECH_2004_Q35
+  Year     : 2004
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : INS Trishul acquired by the Indian Navy in 2003 has been built by: [2004]
+  Options  : A) Israel  |  B) USA  |  C) Russia  |  D) France
+  Mapper   : (none)
+
+  ── Sample 18 ──────────────────────────────────
+  ID       : CA_GENERAL_SCIENCE_2004_Q13
+  Year     : 2004
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : Tarun Bharat Sangh, an organization based in a village near Alwar (Rajasthan), has become famous because of: [2004]
+  Options  : A) Cultivation of genetically modified cotton  |  B) Rehabilitation of women victims of AIDS  |  C) Livelihood projects for destitute rural women  |  D) Rain-water harvesting
+  Mapper   : (none)
+
+  ── Sample 19 ──────────────────────────────────
+  ID       : CA_SCIENCE_TECH_1999_Q39
+  Year     : 1999
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : The first feature film (talkie) to be produced in India was: [1999]
+  Options  : A) Hatimtai  |  B) Alam Ara  |  C) Pundalik  |  D) Raja Harishchandra
+  Mapper   : (none)
+
+  ── Sample 20 ──────────────────────────────────
+  ID       : CA_SCIENCE_TECH_1999_Q40
+  Year     : 1999
+  OrigNode : GS3-ST-GENSCI-BIO-MT04
+  SylNode  : GS3-ST-GENSCI-BIO-MT04
+  Question : The given figure shows a portion of Southern India. The proposed site (Koodankulam) for the construction of two 1000 MW nuclear power plants has been labelled in the map as: [1999]
+  Options  : A) A  |  B) B  |  C) C  |  D) D
+  Mapper   : (none)
+
+══════════════════════════════════════════════════════════════════════
+FOCUS NODE: GS2-IR-INSTITUTIONS-MT04
+Total prelims questions : 143   (found in qMap: 143)
+══════════════════════════════════════════════════════════════════════
+
+  Orig nodeId → count (before normalization):
+    GS2-IR-INSTITUTIONS-MT04                 : 143
+
+  SAMPLE QUESTIONS (20 of 143):
+
+  ── Sample  1 ──────────────────────────────────
+  ID       : CA_INTERNATIONAL_RELATIONS_2025_Q1
+  Year     : 2025
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : Consider the following countries: [2025] I. Austria II. Bulgaria III. Croatia IV. Serbia V. Sweden VI. North Macedonia How many of the above are members of the North Atlantic Treaty Organization?
+  Options  : A) Only three  |  B) Only four  |  C) Only five  |  D) All the six
+  Mapper   : from=GS2-IR-GROUPINGS-MT01  to=GS2-IR-INSTITUTIONS-MT04  conf=90  kw=["un"]
+
+  ── Sample  2 ──────────────────────────────────
+  ID       : CA_INTERNATIONAL_RELATIONS_2024_Q2
+  Year     : 2024
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : Consider the following countries: [2024] 1. Italy 2. Japan 3. Nigeria 4. South Korea 5. South Africa Which of the above countries are frequently mentioned in the media for their Iow birth rates, or ag
+  Options  : A) 1, 2 and 4  |  B) 1, 3 and 5  |  C) 2 and 4 only  |  D) 3 and 5 only
+  Mapper   : from=GS2-IR-GROUPINGS-MT01  to=GS2-IR-INSTITUTIONS-MT04  conf=90  kw=["un"]
+
+  ── Sample  3 ──────────────────────────────────
+  ID       : CA_INTERNATIONAL_RELATIONS_2024_Q4
+  Year     : 2024
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : Consider the following statements: [2024] 1. India is a member of the International Grains Council. 2. A country needs to be a member of the International Grains Council for exporting or importing ric
+  Options  : A) 1 only (  |  B) 2 only (  |  C) Both I and 2 (  |  D) Neither I nor 2
+  Mapper   : (none)
+
+  ── Sample  4 ──────────────────────────────────
+  ID       : CA_IR_2024_Q001
+  Year     : 2024
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : 1. Consider the following countries: (2024)
+1. Italy 2. Japan
+3. Nigeria 4. South Korea
+5. South Africa
+Which of the above countries are frequently mentioned in the
+media for their low birth rates, or
+  Options  : A) 1, 2 and 4  |  B) 1, 3 and 5  |  C) 2 and 4 only  |  D) 3 and 5 only
+  Mapper   : from=GS2-IR-GROUPINGS-MT01  to=GS2-IR-INSTITUTIONS-MT04  conf=90  kw=["un"]
+
+  ── Sample  5 ──────────────────────────────────
+  ID       : CA_IR_2024_Q003
+  Year     : 2024
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : 3. Consider the following pairs: (2024)
+Country Reason for Being in the News
+1. Argentina Worst economic crisis
+2. Sudan War between the country’s regular army and
+paramilitary forces
+3. Turkey Rescin
+  Options  : A) Only one pair  |  B) Only two pairs  |  C) All three pairs  |  D) None of the pairs
+  Mapper   : (none)
+
+  ── Sample  6 ──────────────────────────────────
+  ID       : CA_IR_2024_Q005
+  Year     : 2024
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : 5. Consider the following statements : (2024)
+1. India is a member of the International Grains Council.
+2. 
+A country needs to be a member of the International Grains
+Council for exporting or importin
+  Options  : A) 1 only  |  B) 2 only  |  C) Both 1 and 2  |  D) Neither 1 nor 2
+  Mapper   : (none)
+
+  ── Sample  7 ──────────────────────────────────
+  ID       : CA_IR_2024_Q007
+  Year     : 2024
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : 7. Consider the following statements: (2024)
+Statement-I: The European Parliament approved The Net-Zero
+Industry Act recently.
+Statement-II: The European Union intends to achieve carbon
+neutrality by 
+  Options  : A) Both Statement-I and Statement-II are correct and State  |  B) Both Statement-I and Statement-II are correct, but Stat  |  C) Statement-I is correct, but Statement-II is incorrect  |  D) Statement-I is incorrect, but Statement-II is correct
+  Mapper   : (none)
+
+  ── Sample  8 ──────────────────────────────────
+  ID       : CA_IR_2024_Q009
+  Year     : 2024
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : 9. Consider the following statements regarding World
+Toilet Organization : (2024)
+1. It is one of the agencies of the United Nations.
+2. 
+World Toilet Summit, World Toilet Day and World Toilet College
+  Options  : A) 2 only  |  B) 3 only  |  C) 1 and 2  |  D) 2 and 3
+  Mapper   : (none)
+
+  ── Sample  9 ──────────────────────────────────
+  ID       : CA_INTERNATIONAL_RELATIONS_2023_Q5
+  Year     : 2023
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : Which one of the following countries has been suffering from decades of civil strife and food shortages and was in news in the recent past for its very severe famine? [2023]
+  Options  : A) Angola  |  B) Costa Rica  |  C) Ecuador  |  D) Somalia
+  Mapper   : from=GS2-IR-GROUPINGS-MT01  to=GS2-IR-INSTITUTIONS-MT04  conf=90  kw=["un"]
+
+  ── Sample 10 ──────────────────────────────────
+  ID       : CA_INTERNATIONAL_RELATIONS_2023_Q6
+  Year     : 2023
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : Consider the following statements about G-20: [2023] 1. The G-20 group was originally established as a platform for the Finance Ministers and Central Bank Governors to discuss the international econom
+  Options  : A) 1 only  |  B) 2 only  |  C) Both 1 and 2  |  D) Neither 1 nor 2
+  Mapper   : (none)
+
+  ── Sample 11 ──────────────────────────────────
+  ID       : CA_INTERNATIONAL_RELATIONS_2023_Q7
+  Year     : 2023
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : Consider the following infrastructure sectors: [2023] 1. Affordable housing 2. Mass rapid transport 3. Health care 4. Renewable energy On how many of the above does UNOPS Sustainable Investments in In
+  Options  : A) Only one  |  B) Only two  |  C) Only three  |  D) All four
+  Mapper   : from=GS2-IR-GROUPINGS-MT01  to=GS2-IR-INSTITUTIONS-MT04  conf=90  kw=["un"]
+
+  ── Sample 12 ──────────────────────────────────
+  ID       : CA_INTERNATIONAL_RELATIONS_2023_Q8
+  Year     : 2023
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : Consider the following statements: [2023] 1. Recently, all the countries of the United Nations have adopted the first-ever compact for international migration, the 'Global Compact for Safe, Orderly an
+  Options  : A) Only one  |  B) Only two  |  C) All three  |  D) None
+  Mapper   : (none)
+
+  ── Sample 13 ──────────────────────────────────
+  ID       : CA_INTERNATIONAL_RELATIONS_2023_Q9
+  Year     : 2023
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : Consider the following statements: [2023] The 'Stability and Growth Pact' of the European Union is a treaty that 1. Limits the levels of the budgetary deficit of the countries of the European Union 2.
+  Options  : A) Only one  |  B) Only two  |  C) All three  |  D) None
+  Mapper   : from=GS2-IR-GROUPINGS-MT01  to=GS2-IR-INSTITUTIONS-MT04  conf=90  kw=["un"]
+
+  ── Sample 14 ──────────────────────────────────
+  ID       : CA_IR_2023_Q015
+  Year     : 2023
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : 15. Consider the following statements about G-20:
+ (2023)
+1. 
+The G-20 group was originally established as a platform for
+the Finance Ministers and Central Bank Governors to discuss
+international econ
+  Options  : A) 1 only  |  B) 2 only  |  C) Both 1 and 2  |  D) Neither 1 nor 2
+  Mapper   : (none)
+
+  ── Sample 15 ──────────────────────────────────
+  ID       : CA_IR_2023_Q016
+  Year     : 2023
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : 16. Consider the following statements: (2023)
+Statement-I: Recently, the United States of America (USA) and
+the European Union (EU) have launched the Trade and Technology Council.
+Statement-II: The US
+  Options  : A) Both Statement-I and Statement-II are correct and State  |  B) Both Statement-I and Statement-II are correct and State  |  C) Statement-I is correct but Statement-II is incorrect  |  D) Statement-I is incorrect but Statement-II is correct
+  Mapper   : (none)
+
+  ── Sample 16 ──────────────────────────────────
+  ID       : CA_IR_2023_Q017
+  Year     : 2023
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : 17. Consider the following statements: (2023)
+The ‘Stability and Growth Pact’ of the European Union is a treaty
+that
+1. 
+limits the levels of the budgetary deficit of the countries of the
+European Uni
+  Options  : A) Only one  |  B) Only two  |  C) All three  |  D) None
+  Mapper   : (none)
+
+  ── Sample 17 ──────────────────────────────────
+  ID       : CA_IR_2023_Q018
+  Year     : 2023
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : 18. Consider the following statements: (2023)
+1. 
+Recently, all the countries of the United Nations have adopted
+the first-ever compact for international migration, the ‘Global
+Compact for Safe, Order
+  Options  : A) Only one  |  B) Only two  |  C) All three  |  D) None
+  Mapper   : (none)
+
+  ── Sample 18 ──────────────────────────────────
+  ID       : CA_INTERNATIONAL_RELATIONS_2022_Q10
+  Year     : 2022
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : Consider the following statements: [2022] 1. Bidibidi is a large refugee settlement in north- western Kenya. 2. Some people who fled from the South Sudan civil war live in Bidibidi. 3. Some people who
+  Options  : A) 1 and 2  |  B) 2 only  |  C) 2 and 3  |  D) 3 only
+  Mapper   : (none)
+
+  ── Sample 19 ──────────────────────────────────
+  ID       : CA_INTERNATIONAL_RELATIONS_2022_Q11
+  Year     : 2022
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : With reference to the "United Nations Credentials Committee", consider the following statements: [2022] 1. It is a committee set up by the UN Security Council and works under its supervision. 2. It tr
+  Options  : A) 3 only  |  B) 1 and 3  |  C) 2 and 3  |  D) 1 and 2
+  Mapper   : (none)
+
+  ── Sample 20 ──────────────────────────────────
+  ID       : CA_INTERNATIONAL_RELATIONS_2022_Q12
+  Year     : 2022
+  OrigNode : GS2-IR-INSTITUTIONS-MT04
+  SylNode  : GS2-IR-INSTITUTIONS-MT04
+  Question : Which one of the following statements best describes the 'Polar Code'? [2022]
+  Options  : A) It is the international code of safety for ships operat  |  B) It is the agreement of the countries around the North P  |  C) It is a set of norms to be followed by the countries wh  |  D) It is a trade and security agreement of the member coun
+  Mapper   : from=GS2-IR-GROUPINGS-MT01  to=GS2-IR-INSTITUTIONS-MT04  conf=100  kw=["un","who"]
+
+══════════════════════════════════════════════════════════════════════
+DIAGNOSIS SUMMARY
+══════════════════════════════════════════════════════════════════════
+
+▶ GS3-ST-GENSCI-BIO-MT04  (22 total)
+  [GS3-ST-PHYSICS                         ×  97]
+     → Suspected better node : GS3-ST-GENSCI-PHY-MT01
+     → Reason                : Physics questions (nuclear energy, quantum computing, lasers, etc.) incorrectly mapped to Biology node. Rule: GS3-ST-PHYSICS → GS3-ST-GENSCI-PHY-MT01
+  [GS3-ST-CHEMISTRY                       ×  79]
+     → Suspected better node : GS3-ST-GENSCI-CHE-MT02
+     → Reason                : Chemistry questions (polymers, compounds, elements, etc.) incorrectly mapped to Biology node. Rule: GS3-ST-CHEMISTRY → GS3-ST-GENSCI-CHE-MT02
+  [GS3-ST-GENSCI                          ×  22]
+     → Suspected better node : GS3-ST-GENSCI-BIO-MT04
+     → Reason                : Generic general science — biology is a reasonable fallback IF the question has no physics/chemistry content. Needs per-question keyword analysis.
+
+▶ GS2-IR-INSTITUTIONS-MT04  (143 total)
+  [GS2-IR-GEOPOLITICS                     ×  44]
+     → Suspected better node : GS2-IR-GEOPOLITICS-MT01
+     → Reason                : Geopolitics questions (bilateral relations, territorial disputes, alliances) are not about international institutions. Need a separate leaf node.
+  [GS2-IR-CURRENT                         ×  28]
+     → Suspected better node : GS2-IR-CURRENT-MT03
+     → Reason                : Current IR events mapped to Institutions — they are dynamic affairs, not org/institution trivia. Need separate leaf.
+  [GS2-IR-GLOBAL-CURRENT-AFFAIRS          ×  28]
+     → Suspected better node : GS2-IR-CURRENT-MT03
+     → Reason                : Same as IR-CURRENT — global CA questions are not about institutions.
+  [GS2-IR-INTL-ORG                        ×  37]
+     → Suspected better node : GS2-IR-INSTITUTIONS-MT04
+     → Reason                : International organisations are legitimately about institutions. This mapping is CORRECT.
+  [GS2-IR-INTERNATIONAL-ORGANISATIONS     ×  35]
+     → Suspected better node : GS2-IR-INSTITUTIONS-MT04
+     → Reason                : Same as INTL-ORG — this mapping is CORRECT.
+  [GS2-IR-SECURITY                        ×   2]
+     → Suspected better node : GS2-IR-SECURITY-MT02
+     → Reason                : Security questions (terrorism, defence treaties) should not be under Institutions.
+
+▶ GS1-GEO-IND-PHYSIO-MT01  (224 total)
+  [GS1-GEO-IND                            × 231]
+     → Suspected better node : various geography leaves
+     → Reason                : Parent node GS1-GEO-IND is mapped to PHYSIO-MT01 (Physical Geography of India) as default catch-all. This dumps ALL 231 uncategorized India geography questions here — rivers (→ DRAINAGE), climate (→ CLIMATE), agriculture (→ AGRI), world geography (→ GS1-GEO-WORLD). Needs keyword-based intelligent splitter, not a single alias.
+
+▶ GS1-HIS-MOD-NATIONAL-MT01  (215 total)
+  [GS1-HIS-MOD-NATIONAL                   × 203]
+     → Suspected better node : MT01..MT06 phase leaves
+     → Reason                : Parent GS1-HIS-MOD-NATIONAL maps to MT01 (National Movement) as default. Questions about constitutional development (→ CONSTDEV-MT01), British expansion (→ EXPANSION-MT01), social reform movements (→ REFORM-MT01), economic critique (→ ECONOMIC-MT01) are all incorrectly lumped here. Needs keyword-based phase splitter.
+
+══════════════════════════════════════════════════════════════════════
+SUGGESTED ALIAS RULE ADDITIONS (do not add until questions are verified)
+══════════════════════════════════════════════════════════════════════
+
+  // Physics questions should NOT go to the Biology node
+  "GS3-ST-PHYSICS":                "GS3-ST-GENSCI-PHY-MT01",  // was: GS3-ST-GENSCI-BIO-MT04
+  "GS3-ST-CHEMISTRY":              "GS3-ST-GENSCI-CHE-MT02",  // was: GS3-ST-GENSCI-BIO-MT04
+
+  // Geopolitics / current IR events should NOT go to the Institutions node
+  "GS2-IR-GEOPOLITICS":            "GS2-IR-GEOPOLITICS-MT01", // was: GS2-IR-INSTITUTIONS-MT04
+  "GS2-IR-CURRENT":                "GS2-IR-CURRENT-MT03",     // was: GS2-IR-INSTITUTIONS-MT04
+  "GS2-IR-GLOBAL-CURRENT-AFFAIRS": "GS2-IR-CURRENT-MT03",     // was: GS2-IR-INSTITUTIONS-MT04
+  "GS2-IR-SECURITY":               "GS2-IR-SECURITY-MT02",    // was: GS2-IR-INSTITUTIONS-MT04
+
+  // GS1-GEO-IND parent → keep PHYSIO only as last resort; needs per-question
+  //  intelligent splitter (keyword: river/drainage, climate/monsoon, soil/agri,
+  //  world/global → GS1-GEO-WORLD)
+
+  // GS1-HIS-MOD-NATIONAL parent → split by phase keywords:
+  //  1857/mutiny/great uprising → EXPANSION; Tilak/Lal-Bal-Pal/partition
+  //  → NATIONAL-MT02; Gandhi/swaraj/hartals → NATIONAL-MT01; reforms/
+  //  education/social → REFORM; constitutional/act/dyarchy → CONSTDEV

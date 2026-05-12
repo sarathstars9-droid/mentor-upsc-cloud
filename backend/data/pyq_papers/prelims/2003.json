@@ -1,0 +1,2212 @@
+{
+  "year": 2003,
+  "paper": "GS",
+  "source": "pyq_master_index",
+  "totalQuestions": 94,
+  "questions": [
+    {
+      "id": "HIS_ANC_HARSHA_2003_Q2",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 1,
+      "originalQuestionNumber": 2,
+      "subject": "History",
+      "sourceFile": "harsha_period.json",
+      "question": "Emperor Harsha's southward march was stopped on the Narmada River by:",
+      "options": {
+        "A": "Pulakesin I",
+        "B": "Pulakesin II",
+        "C": "Vikramaditya I",
+        "D": "Vikramaditya II"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-ANC-HARSHA-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-HARSHA-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_MAURYA_2003_Q4",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 2,
+      "originalQuestionNumber": 4,
+      "subject": "History",
+      "sourceFile": "mauryan_period.json",
+      "question": "Consider the following statements: 1. The last Mauryan ruler, Brihadratha was assassinated by his commander in chief, Pushyamitra Sunga. 2. The last Sunga king, Devabhuti was assassinated by his Brahmana minister Vasudeva Kanva who usurped the throne 3. The last ruler of the Kanva dynasty was deposed by the Andhras. Which of these statements is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "Only 2",
+        "C": "Only 3",
+        "D": "1, 2 and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-ANC-MAURYA-MT06",
+      "syllabusNodeId": "GS1-HIS-ANC-MAURYA-MT06",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_SOUTH_2003_Q5",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 3,
+      "originalQuestionNumber": 5,
+      "subject": "History",
+      "sourceFile": "south_india.json",
+      "question": "Consider the following statements: 1. The Cholas defeated Pandya and Chera rulers and established their domination over peninsular India in early medieval times. 2. The Cholas sent an expedition against the Sailendra empire of South-East Asia and conquered some of the areas. Which of these statements is/are correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-ANC-SANGAM-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-SANGAM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2003_Q7_DEVELOPM",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 4,
+      "originalQuestionNumber": 7,
+      "subject": null,
+      "sourceFile": "development_of_modern_education_system.json",
+      "question": "The aim of education as stated by the Wood's Dispatch of 1854 was:",
+      "options": {
+        "A": "The creation of employment opportunities for native Indians",
+        "B": "The spread of western culture in India",
+        "C": "The promotion of literacy among the people using English medium of language",
+        "D": "The introduction of scientific research and rationalism in the traditional Indian education"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-REFORM-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-REFORM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_SUPREME_COURT_2003_Q8",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 5,
+      "originalQuestionNumber": 8,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "The power to enlarge the jurisdiction of the Supreme Court of India with respect to any matter included in the Union List of Legislative Powers rests with:",
+      "options": {
+        "A": "The President of India",
+        "B": "The Chief Justice of India",
+        "C": "The Parliament",
+        "D": "The Union Ministry of Law, justice and Company Affairs"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-JUD-MT01",
+      "syllabusNodeId": "GS2-POL-JUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTTRA_2003_Q9",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 6,
+      "originalQuestionNumber": 9,
+      "subject": "Economy",
+      "sourceFile": "international_trade.json",
+      "question": "Consider the following statements: 1. India's import of crude and petroleum product during the year 2001-02 accounted for about 27% of India's total imports. 2. During the year, 2001 -02, India's exports had increased by 10% as compared to the previous year Which of these statements is/are correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_ECO_2003_Q9",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 7,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "economic_geography_transport.json",
+      "question": "Which one among the following has the largest shipyard in India?",
+      "options": {
+        "A": "Kolkata",
+        "B": "Kochi",
+        "C": "Mumbai",
+        "D": "Visakhapatnam"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_ART_2003_Q9",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 8,
+      "originalQuestionNumber": 9,
+      "subject": "History",
+      "sourceFile": "art_architecture_literature.json",
+      "question": "Consider the following statement: 1. Kitab I Nauras, a collection of songs in praise of Hindu deities and Muslim saints, was written by Ibrahim Adil Shah II 2. Amir Khusrau was the originator in India of the early form of the musical style known as Qawwali. Which of these statements is/are correct?",
+      "options": {
+        "A": "Only",
+        "B": "Only",
+        "C": "Both 1 and",
+        "D": "Neither 1 nor"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_CENTRE_STATE_RELATIONS_2003_Q9",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 9,
+      "originalQuestionNumber": 9,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Match List I (Item in the Indian Constitution) with List II (Country from which it was derived) and select the correct answer using the codes given below the list. List II (Country from which it was derived) A. Directive Principles of State Policy 1. Australia List I (Item in the Indian Constitution) B. Fundamental Rights 2. Canada C. Concurrent List in Union State Relations 3. Ireland 4. United Kingdom 5. USA Codes: A B C D",
+      "options": {
+        "A": "5 4 1 2",
+        "B": "3 5 2 1",
+        "C": "5 4 2 1",
+        "D": "3 5 1 2 D. India as a Union of States with Greater Powers to Union"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-CSREL-MT01",
+      "syllabusNodeId": "GS2-POL-CSREL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PRESIDENT_2003_Q9",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 10,
+      "originalQuestionNumber": 9,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Under which Article of the Indian Constitution did the President give his assent to the ordinance on electoral reforms when it was sent back to him by the Union Cabinet without making any changes (in the year 2002)?",
+      "options": {
+        "A": "Article 121",
+        "B": "Article 122",
+        "C": "Article 123",
+        "D": "Article 124"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-EXEC-MT01",
+      "syllabusNodeId": "GS2-POL-EXEC-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTTRA_2003_Q10",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 11,
+      "originalQuestionNumber": 10,
+      "subject": "Economy",
+      "sourceFile": "international_trade.json",
+      "question": "Consider the following statements: 1. India ranks first in the world in fruit production. 2. India ranks second in the world in the export of tobacco. Which of these statements is/are correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PRESIDENT_2003_Q10",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 12,
+      "originalQuestionNumber": 10,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: In the electoral college for the Presidential Election in India. 1. The value of the vote of an elected Member of Legislative Assembly equals 2. The value of the vote of an elect parliament equals 3. There were more than 5000 members in the latest election Which of these statements is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "Only 2",
+        "C": "1 and 3",
+        "D": "Only 3"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-EXEC-MT01",
+      "syllabusNodeId": "GS2-POL-EXEC-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTTRA_2003_Q11",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 13,
+      "originalQuestionNumber": 11,
+      "subject": "Economy",
+      "sourceFile": "international_trade.json",
+      "question": "Consider the following statements: 1. In the last five years, Indian software exports have increased at a compound annual growth rate of about 60% 2. The software and service industry in India registered an overall growth of about 28% in rupee terms during the year 2001-2002. Which of these statements is/are correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+          "toNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-FOREIGN-TRADE-IO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "industry"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MED_EURO_2003_Q11",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 14,
+      "originalQuestionNumber": 11,
+      "subject": "History",
+      "sourceFile": "advent_of_europeans_in_india.json",
+      "question": "In India, among the following locations, the Dutch established their earliest factory at:",
+      "options": {
+        "A": "Surat",
+        "B": "Pulicat",
+        "C": "Cochin",
+        "D": "Cassimbazar"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTTRA_2003_Q12",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 15,
+      "originalQuestionNumber": 12,
+      "subject": "Economy",
+      "sourceFile": "international_trade.json",
+      "question": "Assertion (A): During the year 2001-02, the value of India's total exports declined, registering a negative growth of 2.17%.: Reason (R): During the year 2001-02, negative growth in exports was witnessed in respect of iron and steel, coffee, textiles and marine products.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_EURO_2003_Q12",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 16,
+      "originalQuestionNumber": 12,
+      "subject": "History",
+      "sourceFile": "advent_of_europeans_in_india.json",
+      "question": "With reference to the entry of European powers into India, which one of the following statements is not correct?",
+      "options": {
+        "A": "The Portuguese captured Goa in 1499",
+        "B": "The English opened their first factory in South India at Masulipatam",
+        "C": "In Eastern India, the English Company opened its first factory in Orissa in 1633",
+        "D": "Under the leadership of Dupleix, the French occupied Madras in 1746"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_ELECTION_COMMISSION_2003_Q12",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 17,
+      "originalQuestionNumber": 12,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Under which Article of the Indian Constitution did the President make a reference to the Supreme Court to seek the Court’s opinion on the Constitutional validity of the Election Commission’s decision on deferring the Gujarat Assembly elections (in the year 2002)?",
+      "options": {
+        "A": "Article 142",
+        "B": "Article 143",
+        "C": "Article 144",
+        "D": "Article 145"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-ELECTIONS-MT01",
+      "syllabusNodeId": "GS2-POL-ELECTIONS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTTRA_2003_Q13",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 18,
+      "originalQuestionNumber": 13,
+      "subject": "Economy",
+      "sourceFile": "international_trade.json",
+      "question": "Assertion (A): The new EXIM Policy is liberal, market oriented and favours global trade.: Reason (R): GATT has played a significant role in the liberalisation of economy.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_MAP_2003_Q13",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 19,
+      "originalQuestionNumber": 13,
+      "subject": null,
+      "sourceFile": "indian_geography_map_based.json",
+      "question": "Consider the following statements: 1. Longitude of Jabalpur's location is between those of Indore and Bhopal 2. Latitude of Aurangabad's location is between those of Vadodara and Pune 3. Bangalore is situated more southward than Chennai. Which of these statements is/are?",
+      "options": {
+        "A": "1 and 3",
+        "B": "Only 2",
+        "C": "2 and 3",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_HIGH_COURT_2003_Q13",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 20,
+      "originalQuestionNumber": 13,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which one of the following High Courts has the Territorial Jurisdiction over Andaman and Nicobar Islands?",
+      "options": {
+        "A": "Andhra Pradesh",
+        "B": "Calcutta",
+        "C": "Madras",
+        "D": "Orissa"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-JUD-MT01",
+      "syllabusNodeId": "GS2-POL-JUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTTRA_2003_Q14",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 21,
+      "originalQuestionNumber": 14,
+      "subject": "Economy",
+      "sourceFile": "international_trade.json",
+      "question": "Among the following commodities imported by India during the year 2001 -02, which one was the highest in terms of Rupee value?",
+      "options": {
+        "A": "Edible oil",
+        "B": "Fertilizers",
+        "C": "Organic and inorganic chemicals",
+        "D": "Pearls, precious and semi-precious stones"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDUS_2003_Q14",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 22,
+      "originalQuestionNumber": 14,
+      "subject": null,
+      "sourceFile": "industry_resources.json",
+      "question": "The thermal power plant of Bokaro is located in:",
+      "options": {
+        "A": "Bihar",
+        "B": "Chhattisgarh",
+        "C": "Jharkhand",
+        "D": "Orissa A 14] c) Jharkhand - The thermal power plant in Bokaro is situated in the state of Jharkhand"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2003_Q14_EVENTS_1",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 23,
+      "originalQuestionNumber": 14,
+      "subject": null,
+      "sourceFile": "events_1857_1885.json",
+      "question": "With reference to colonial rule in India, what was sought by the Ilbert Bill in 1883?",
+      "options": {
+        "A": "To bring Indians and Europeans on par as far as the criminal jurisdiction of courts was concerned",
+        "B": "To impose severe restrictions on the freedom of the native press as it was perceived to be hostile to colonial rulers",
+        "C": "To encourage the native Indians to appear for civil service examinations by conduction them in India",
+        "D": "To allow native Indians to possess arms by amending the Arms Act"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INDTAXSYS_2003_Q15",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 24,
+      "originalQuestionNumber": 15,
+      "subject": "Economy",
+      "sourceFile": "indian_taxation_system.json",
+      "question": "Consider the following statements: In India, stamp duties on financial transactions are: 1. Levied and collected by the State Government 2. Appropriated by the Union Government. Which of these statements is/are correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-TAXATION-MT01",
+      "syllabusNodeId": "GS3-ECO-TAXATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_LIT_2003_Q15",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 25,
+      "originalQuestionNumber": 15,
+      "subject": "History",
+      "sourceFile": "literature.json",
+      "question": "‘Mrichchhakatika’ an ancient Indian book written by Shudraka deals with:",
+      "options": {
+        "A": "The love affair of a rich merchant with the daughter of a courtesan",
+        "B": "The victory of Chandragupta II over the Shaka Kshatrapas of western India",
+        "C": "The military expeditions and exploits of Samudragupta",
+        "D": "The love affair between a Gupta King and a princess of Kamarupa"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-ANC-GUPTA-MT02",
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_MISC_POLITY_2003_Q15",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 26,
+      "originalQuestionNumber": 15,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which of the following Constitutional Amendments are related to raising the number of Members of Lok Sabha to be elected from the States?",
+      "options": {
+        "A": "6th and 22nd",
+        "B": "13th and 38th",
+        "C": "7th and 31st",
+        "D": "11th and 42nd"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INDTAXSYS_2003_Q16",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 27,
+      "originalQuestionNumber": 16,
+      "subject": "Economy",
+      "sourceFile": "indian_taxation_system.json",
+      "question": "The Kelkar proposals which were in the news recently were the:",
+      "options": {
+        "A": "Recommendations for reforms in the power sector",
+        "B": "Recommendations for tax reforms",
+        "C": "Guidelines for the privatisation",
+        "D": "Guidelines for reducing vehicular pollution, and the promotion of CNG use"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-TAXATION-MT01",
+      "syllabusNodeId": "GS3-ECO-TAXATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_MISC_POLITY_2003_Q16",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 28,
+      "originalQuestionNumber": 16,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "The Ninth Schedule to the Indian Constitution was added by:",
+      "options": {
+        "A": "First Amendment",
+        "B": "Eighth Amendment",
+        "C": "Ninth Amendment",
+        "D": "Forty second Amendment"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDMTN_2003_Q17",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 29,
+      "originalQuestionNumber": 17,
+      "subject": null,
+      "sourceFile": "indian_physical_geography_mountains.json",
+      "question": "Nanda Devi peak forms a part of:",
+      "options": {
+        "A": "Assam Himalayas",
+        "B": "Kumaon Himalayas",
+        "C": "Nepal Himalayas",
+        "D": "Punjab Himalayas"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDCLI_2003_Q20",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 30,
+      "originalQuestionNumber": 20,
+      "subject": null,
+      "sourceFile": "indian_climate_natural_vegetation.json",
+      "question": "Among the following cities, which one is at the highest altitude above mean sea level?",
+      "options": {
+        "A": "Bangalore",
+        "B": "Delhi",
+        "C": "Jodhpur",
+        "D": "Nagpur"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2003_Q20_CIVIL_DI",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 31,
+      "originalQuestionNumber": 20,
+      "subject": null,
+      "sourceFile": "civil_disobedience_1926_1932.json",
+      "question": "With reference to Indian freedom struggle, which one of the following statements is NOT correct?",
+      "options": {
+        "A": "The Rowlatt Act aroused a wave of popular indignation and led to the Jallianwala Bagh massacre",
+        "B": "Subhash Chandra Bose formed the Forward Bloc",
+        "C": "Bhagat Singh was one of the founders of Hindustan Republican Socialist Association",
+        "D": "In 1931, the Congress Session at Karachi opposed Gandhi Irwin pact"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDCLI_2003_Q21",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 32,
+      "originalQuestionNumber": 21,
+      "subject": null,
+      "sourceFile": "indian_climate_natural_vegetation.json",
+      "question": "Which one among the following States is smallest in area?",
+      "options": {
+        "A": "Andhra Pradesh",
+        "B": "Gujarat",
+        "C": "Karnataka",
+        "D": "Tamil Nadu"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2003_Q21_CIVIL_DI",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 33,
+      "originalQuestionNumber": 21,
+      "subject": null,
+      "sourceFile": "civil_disobedience_1926_1932.json",
+      "question": "The leader of the Bardoli Satyagraha (1928) was:",
+      "options": {
+        "A": "Sardar Vallabhbhai Patel",
+        "B": "Mahatma Gandhi",
+        "C": "Vithalbhai J Patel",
+        "D": "Mahadev Desai"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2003_Q22_CIVIL_DI",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 34,
+      "originalQuestionNumber": 22,
+      "subject": null,
+      "sourceFile": "civil_disobedience_1926_1932.json",
+      "question": "During the colonial period in India, what was the purpose of the Whitley Commission?",
+      "options": {
+        "A": "To review the fitness of India for further political reforms",
+        "B": "To report on the existing conditions of labour and to make recommendations",
+        "C": "To draw up a plan for financial reforms for India",
+        "D": "To develop a comprehensive scheme for Civil Services in India"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2003_Q23_ESTABLIS",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 35,
+      "originalQuestionNumber": 23,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "Assertion (A): Marathas emerged as the strongest native power in India after the decline of Mughal empire. Reason (R): Marathas were the first to have a clear concept of a united Indian nation.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+          "toNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-HIS-MOD-EXPANSION-MT01 based on keywords.",
+          "matchedKeywords": [
+            "mughal"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_PRIME_MINISTER_AND_COUNCIL_OF_MINISTERS_2003_Q23",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 36,
+      "originalQuestionNumber": 23,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "The Genetic Engineering Approval Committee, whose permission is required for cultivation of any genetically modified crop such as BtCotton in India, is under the Union Minister of",
+      "options": {
+        "A": "Agriculture",
+        "B": "Environment and Forests",
+        "C": "Commerce and Industry",
+        "D": "Rural Development"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-EXEC-MT01",
+      "syllabusNodeId": "GS2-POL-EXEC-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_ECOINSLAW_2003_Q24",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 37,
+      "originalQuestionNumber": 24,
+      "subject": "Economy",
+      "sourceFile": "economic_institutions_laws_policies.json",
+      "question": "The government holding in BPCL is:",
+      "options": {
+        "A": "More than 70%",
+        "B": "Between 60% and 70%",
+        "C": "Between 50% and 60%",
+        "D": "Less than 50%"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "syllabusNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POPDEM_2003_Q24",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 38,
+      "originalQuestionNumber": 24,
+      "subject": "Economy",
+      "sourceFile": "population_demography.json",
+      "question": "Which one among the following State has the highest female literacy rate as per the Census 2001?",
+      "options": {
+        "A": "Chhattisgarh",
+        "B": "Madhya Pradesh",
+        "C": "Orissa",
+        "D": "Rajasthan"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_ECOINSLAW_2003_Q25",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 39,
+      "originalQuestionNumber": 25,
+      "subject": "Economy",
+      "sourceFile": "economic_institutions_laws_policies.json",
+      "question": "Consider the following statements: The function(s) of the Finance Commission is/are: 1. To allow the withdrawal of money out of the Consolidated Fund of India. 2. To allocate between the States the shares of proceeds of taxes. 3. To consider applications for grants -in-aid from States. 4. To supervise and report on whether the Union and State governments are levying taxes in accordance with the budgetary provisions. Which of these statements is/are correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "2 and 3",
+        "C": "3 and 4",
+        "D": "1, 2 and 4"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "syllabusNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POPDEM_2003_Q25",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 40,
+      "originalQuestionNumber": 25,
+      "subject": "Economy",
+      "sourceFile": "population_demography.json",
+      "question": "Which amongst the following States has the highest population density as per Census 2001?",
+      "options": {
+        "A": "Kerala",
+        "B": "Madhya Pradesh",
+        "C": "Uttar Pradesh",
+        "D": "West Bengal"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-TAXATION-MT01",
+      "syllabusNodeId": "GS3-ECO-TAXATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+          "toNodeId": "GS3-ECO-TAXATION-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-INCLUSIVE-GROWTH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "gst"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2003_Q25_ESTABLIS",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 41,
+      "originalQuestionNumber": 25,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "Which one of the following provisions was NOT made in the Charter Act of 1833?",
+      "options": {
+        "A": "The trading activities of the East India Company were to be abolished",
+        "B": "The designation of the supreme authority was to be changed as the Governor General of India in Council",
+        "C": "All law -making powers to be conferred on Governor General in Council",
+        "D": "An Indian was to be appointed as a Law Member in the Governor General's Council"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_ECOINSLAW_2003_Q26",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 42,
+      "originalQuestionNumber": 26,
+      "subject": "Economy",
+      "sourceFile": "economic_institutions_laws_policies.json",
+      "question": "Survey of India is under the Ministry of:",
+      "options": {
+        "A": "Defence",
+        "B": "Environment and forests",
+        "C": "Home Affairs",
+        "D": "Science and Technology"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "syllabusNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_WRLD_2003_Q26",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 43,
+      "originalQuestionNumber": 26,
+      "subject": null,
+      "sourceFile": "countries_regions_world_features.json",
+      "question": "The waterfall 'Victoria' is associated with the river:",
+      "options": {
+        "A": "Amazon",
+        "B": "Missouri",
+        "C": "St Lawrence",
+        "D": "Zambezi"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_ANC_RELPH_2003_Q27",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 44,
+      "originalQuestionNumber": 27,
+      "subject": "History",
+      "sourceFile": "religion_philosophy.json",
+      "question": "Consider the following statements: 1. Vardhamana Mahavira’s mother was the daughter of Lichchhavi chief Chetaka. 2. Goutama Buddha’s mother was a princess from the Koshalan dynasty. 3. Parshvanatha, the 23rd Tirthankara, belonged to Banaras. Which of these statements is/are correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "2 and 3",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-ANC-JAIN-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-JAIN-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_RELPH_2003_Q28",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 45,
+      "originalQuestionNumber": 28,
+      "subject": "History",
+      "sourceFile": "religion_philosophy.json",
+      "question": "In ancient Indian Buddhist monasteries, a ceremony called Pavarana used to be held. It was the:",
+      "options": {
+        "A": "Occasion to elect the Sanghaparinayaka and two speakers one on Dhamma and the other on Vinaya",
+        "B": "Confession by monks of their offences committed during their stay in the monasteries during the rainy season",
+        "C": "Ceremony of initiation of a new person into the Buddhist Sangha in which the head is shaved and yellow robes are offered",
+        "D": "Gathering of Buddhist monks on the next day to the full moon day of Ashadha when they take up affixed abode for the next four months or rainy season"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-ANC-BUD-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-BUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2003_Q28",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 46,
+      "originalQuestionNumber": 28,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "Assertion (A): Saluva Narasimha put an end to the old dynasty and assumed the royal title.: Reason (R): He wanted to save the kingdom from further degeneration and disintegration.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2003_Q28",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 47,
+      "originalQuestionNumber": 28,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Assertion (A): In the periodic table of chemical elements, electron affinity is always found to increase from top to bottom in a group. Reason (R): In a group, the atomic radial generally increase from top to bottom.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_AGR_2003_Q29",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 48,
+      "originalQuestionNumber": 29,
+      "subject": null,
+      "sourceFile": "agriculture.json",
+      "question": "Assertion (",
+      "options": {
+        "A": ": The eastern coast of India produces more rice than the western coast.: Reason (R): The eastern coast receives more rainfall than the western coast",
+        "B": "Both A and R are individually true and R is the correct explanation of A",
+        "C": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "D": "A is true but R is false d) A is false but R is true"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2003_Q29",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 49,
+      "originalQuestionNumber": 29,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "Alam Khan, one of those who invited Babar to invade India was:",
+      "options": {
+        "A": "An uncle of Ibrahim Lodi and a pretender to the throne of Delhi",
+        "B": "A cousin of Ibrahim Lodi who was ill treated and expelled form the country",
+        "C": "The father of Dilawar Khan to whom cruel treatment was meted out by Ibrahim Lodi",
+        "D": "A high official in Punjab province who was very much discontented with Ibrahim Lodi's treatment to his tribe."
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MED-DELHI-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-DELHI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2003_Q29_LAST_PHA",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 50,
+      "originalQuestionNumber": 29,
+      "subject": null,
+      "sourceFile": "last_phase_1940_1950.json",
+      "question": "An important aspect of the Cripps Mission of 1942 was:",
+      "options": {
+        "A": "That all Indian States should join the Indian Union as a condition to consider any degree of autonomy for India",
+        "B": "The creation of an Indian Union with Dominion status very soon after the Second World War",
+        "C": "The active participation and cooperation of the Indian people, communities and political parties in the British war effort as a condition for granting independence with full sovereign status to India after war.",
+        "D": "The framing of a constitution for the entire Indian Union, with no separate constitution for any province, and a Union Constitution to be accepted by all provinces"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2003_Q29",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 51,
+      "originalQuestionNumber": 29,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which one of the following Articles of the Indian Constitution provides that ‘It shall be the duty of the Union to protect every State against external aggression and internal disturbance’?",
+      "options": {
+        "A": "Article 215",
+        "B": "Article 275",
+        "C": "Article 325",
+        "D": "Article 355"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2003_Q29",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 52,
+      "originalQuestionNumber": 29,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "Assertion (A): Unsaturated fats are more reactive compared with the saturated fats.: Reason (R): Unsaturated fats have only single bonds in their structure.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_MAC_2003_Q30",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 53,
+      "originalQuestionNumber": 30,
+      "subject": "Economy",
+      "sourceFile": "macroeconomy.json",
+      "question": "Which one among the following countries has the lowest GDP per capita?",
+      "options": {
+        "A": "China",
+        "B": "India",
+        "C": "Indonesia",
+        "D": "Sri Lanka"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2003_Q30",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 54,
+      "originalQuestionNumber": 30,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "The Battle of Dharmat was fought between:",
+      "options": {
+        "A": "Muhammad Gori and Jai Chand",
+        "B": "Babar and the Afghans",
+        "C": "Aurangzeb and Dara Shikoh",
+        "D": "Ahmad Shah Durrani and the Marathas"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2003_Q30_LAST_PHA",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 55,
+      "originalQuestionNumber": 30,
+      "subject": null,
+      "sourceFile": "last_phase_1940_1950.json",
+      "question": "Who headed the Interim Cabinet formed in 1946?",
+      "options": {
+        "A": "Rajendra Prasad",
+        "B": "Jawaharlal Nehru",
+        "C": "Sardar Vallabhbhai Patel",
+        "D": "Rajagopalachari"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2003_Q30",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 56,
+      "originalQuestionNumber": 30,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which one of the following schedules of the Indian Constitution lists the names of states and specifies their territories?",
+      "options": {
+        "A": "First",
+        "B": "Second",
+        "C": "Third",
+        "D": "Fourth"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2003_Q31",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 57,
+      "originalQuestionNumber": 31,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "How did the Mughal Emperor Jahandar Shah's reign come to an early end?",
+      "options": {
+        "A": "He was deposed by his wazir",
+        "B": "He died due to a slip while climbing down steps",
+        "C": "He was defeated by his nephew in a battle",
+        "D": "He died of sickness due to too much consumption of wine"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2003_Q31_GANDHIAN",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 58,
+      "originalQuestionNumber": 31,
+      "subject": null,
+      "sourceFile": "gandhian_phase_1917_1925.json",
+      "question": "Assertion (A): In 1916, Mualana Mohammad Ali and Abul Kalam Azad resigned from the Legislative Council.: Reason (R): The Rowlatt Act was passed by the government in spite of being opposed by all Indian members of the Legislative Council.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CAPMARMON_2003_Q32",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 59,
+      "originalQuestionNumber": 32,
+      "subject": "Economy",
+      "sourceFile": "capital_market_money_market_fdi.json",
+      "question": "Debenture holders of a company are its:",
+      "options": {
+        "A": "Shareholders",
+        "B": "Creditors",
+        "C": "Debtors",
+        "D": "Directors A 32] b) Creditors - Debenture holders lend money to the company and receive a fixed return in the form of interest, without ownership or voting rights, making them creditors rather than shareholders or managers"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-FIN-MARKETS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2003_Q32",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 60,
+      "originalQuestionNumber": 32,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "Assertion (A): Emperor Akbar marched towards Afghanistan in 1581 with a huge army. Reason (R): He was on his way to reclaim his ancestral country of Ferghana in Central Asia.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2003_Q32_GANDHIAN",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 61,
+      "originalQuestionNumber": 32,
+      "subject": null,
+      "sourceFile": "gandhian_phase_1917_1925.json",
+      "question": "When Congress leaders condemned the Montagu-Chelmsford Report, many moderates left party to from the:",
+      "options": {
+        "A": "Swarajya Party",
+        "B": "Indian Freedom Party",
+        "C": "Independence Federation of India",
+        "D": "Indian Liberal Federation"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CAPMARMON_2003_Q33",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 62,
+      "originalQuestionNumber": 33,
+      "subject": "Economy",
+      "sourceFile": "capital_market_money_market_fdi.json",
+      "question": "With reference to Government of India's decisions regarding Foreign Direct Investment (FDI) during the year 2001 - 02, consider the following statements: 1. Out of the 100% FDI allowed by India in tea sector, the foreign firm would have to disinvest 33% of the equity in favour of an Indian partner within four years. 2. Regarding the FDI in print media in India, the single largest Indian shareholder should have a holding higher than 26% Which of these statements is/are correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-INVESTMENT-MODELS-MT01",
+      "syllabusNodeId": "GS3-ECO-INVESTMENT-MODELS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_MAPW_2003_Q33",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 63,
+      "originalQuestionNumber": 33,
+      "subject": null,
+      "sourceFile": "world_mapping.json",
+      "question": "Which one of the following countries is land locked?",
+      "options": {
+        "A": "Bolivia",
+        "B": "Peru",
+        "C": "Suriname",
+        "D": "Uruguay"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2003_Q33",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 64,
+      "originalQuestionNumber": 33,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "Assertion (A): Shah Alam II spent the initial years as an Emperor far away from his capital. Reason (R): There was always a lurking danger of foreign invasion from the north west frontier .",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2003_Q33",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 65,
+      "originalQuestionNumber": 33,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "A hydrogen-inflated polythene balloon is released from the surface of the earth. As the balloon rises to an altitude up in the atmosphere, it will:",
+      "options": {
+        "A": "Decrease in size",
+        "B": "Flatten into a disc-like shape",
+        "C": "Increase in size",
+        "D": "Maintain the same size and shape"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_MAPW_2003_Q34",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 66,
+      "originalQuestionNumber": 34,
+      "subject": null,
+      "sourceFile": "world_mapping.json",
+      "question": "Israel has common borders with:",
+      "options": {
+        "A": "Lebanon, Syria. Jordan and Egypt",
+        "B": "Lebanon, Syria, Turkey and Jordan",
+        "C": "Cyprus, Turkey, Jordan and Egypt",
+        "D": "Turkey, Syria, Iraq and Yemen"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2003_Q34",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 67,
+      "originalQuestionNumber": 34,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "How did Sultan Qutb ud din Aibak die?",
+      "options": {
+        "A": "He was treacherously stabbed to death by one of his ambitious nobles",
+        "B": "He was killed in a battle with Taj u din Yildiz, the ruler of Ghazni who entered into a contest with him over the capture of Punjab",
+        "C": "He sustained injuries while besieging the fortress of Kalinjar in Bundelkhand and succumbed to death later",
+        "D": "He died after a fall from his horse while playing Chaugan"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "syllabusNodeId": "GS1-HIS-MED-REGIONAL-MT08",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2003_Q34",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 68,
+      "originalQuestionNumber": 34,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Consider the following statements: 1. Steam at 100° C and boiling water at 100° C contain same amount of heat. 2. Latent heat of fusion of ice is equal to the latent heat of vaporization of water. 3. In an air-conditioner , heat is extracted from the room-air at the evaporator coils and is rejected out at the condenser coils. Which of these statements is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 and 3",
+        "C": "Only 2",
+        "D": "Only 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRIV_2003_Q35",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 69,
+      "originalQuestionNumber": 35,
+      "subject": null,
+      "sourceFile": "indian_rivers_drainage.json",
+      "question": "What is the correct sequence of the rivers - Godavari, Mahanadi, Narmada and Tapi in the descending order of their lengths?",
+      "options": {
+        "A": "Godavari-Mahanadi-Narmada-Tapi",
+        "B": "Godavari-Narmada-Mahanadi-Tapi",
+        "C": "Narmada-Godavari-Tapi-Mahanadi",
+        "D": "Narmada-Tapi-Godavari-Mahanadi"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river",
+            "godavari",
+            "narmada"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_MAPW_2003_Q35",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 70,
+      "originalQuestionNumber": 35,
+      "subject": null,
+      "sourceFile": "world_mapping.json",
+      "question": "Which one of the following countries does NOT border the Caspian Sea?",
+      "options": {
+        "A": "Armenia",
+        "B": "Azerbaijan",
+        "C": "Kazakhstan",
+        "D": "Turkmenistan"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCISPACETECH_2003_Q35",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 71,
+      "originalQuestionNumber": 35,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_space_tech.json",
+      "question": "Consider the following statements: 1. India launched its first full-fledged meteorological satellite (METSAT) in September 2002. 2. For the first time, the space vehicle PSLV-C4 carried a payload of more than 1000 kg into a geosynchronous orbit. Which of these statements is/are correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-SPACE-MT01",
+      "syllabusNodeId": "GS3-ST-SPACE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2003_Q36",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 72,
+      "originalQuestionNumber": 36,
+      "subject": null,
+      "sourceFile": "ca_science_tech.json",
+      "question": "With reference to Indian defence, which one of the following statements is not correct? [2003]",
+      "options": {
+        "A": "With the induction of Prithvi II, the IAF is the only airforce in the world with surface-to-surface ballistic missiles under its command",
+        "B": "Sukhoi-30 MKI jet fighters can launch air-to-air and air-to-surface precision missiles",
+        "C": "Trishul is a supersonic surface to-air missile-vith a range of 30 km",
+        "D": "The indigenously built INS Prabal can launch surface-to-surface missiles"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-DEFENCE-MT01",
+      "syllabusNodeId": "GS3-ST-DEFENCE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2003_Q36",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 73,
+      "originalQuestionNumber": 36,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Diffusion of light in the atmosphere takes place due to:",
+      "options": {
+        "A": "Remains horizontal",
+        "B": "Is inclined to the horizontal with smaller depth at the rear end",
+        "C": "Is inclined to the horizontal with larger depth at the rear end",
+        "D": "Assumes parabolic curve"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCISPACETECH_2003_Q36",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 74,
+      "originalQuestionNumber": 36,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_space_tech.json",
+      "question": "Among the following which planet takes maximum time for one revolution around the Sun?",
+      "options": {
+        "A": "Earth",
+        "B": "Jupiter",
+        "C": "Mars",
+        "D": "Venus"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-SPACE-MT01",
+      "syllabusNodeId": "GS3-ST-SPACE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2003_Q38",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 75,
+      "originalQuestionNumber": 38,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Regarding the atom of a chemical element, the magnetic quantum number refers to:",
+      "options": {
+        "A": "orientation",
+        "B": "shape",
+        "C": "size",
+        "D": "spin"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2003_Q39",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 76,
+      "originalQuestionNumber": 39,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Assertion (A): The weight of a body decreases with the increase of latitude on earth: Reason (R): The earth is not perfect sphere",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2003_Q40",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 77,
+      "originalQuestionNumber": 40,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Octopus is:",
+      "options": {
+        "A": "An arthropod",
+        "B": "An echinoderm",
+        "C": "A heimchordate",
+        "D": "A mollusc"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_CORANDIND_2003_Q41",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 78,
+      "originalQuestionNumber": 41,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "During the year 2000 -01, which one of the following industries recorded highest growth rate in India?",
+      "options": {
+        "A": "Cement",
+        "B": "Coal",
+        "C": "Electricity",
+        "D": "Steel"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2003_Q41",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 79,
+      "originalQuestionNumber": 41,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "With reference to the work of human kidney, consider the following statements: 1. After the waste is removed in the kidney, the cleaner blood is sent back through renal artery. 2. From Bowman's capsule, the filtered liquid passes through tiny tubes where much of the glucose is reabsorbed and sent back to the blood in the renal vein. Which of these statements is/the correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology",
+            "blood"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_CORANDIND_2003_Q42",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 80,
+      "originalQuestionNumber": 42,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "Which one of the following statements is correct?",
+      "options": {
+        "A": "India is the second largest producer of nitrogenous fertilisers in the world",
+        "B": "India is the ninth largest steel producing county in the world",
+        "C": "India is the second largest producer of silk in the world",
+        "D": "India ranks third in the world in coal production"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_POL_2003_Q42",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 81,
+      "originalQuestionNumber": 42,
+      "subject": null,
+      "sourceFile": "environmental_pollutioncorrected.json",
+      "question": "Assertion (A): Coal-based thermal power stations contribute to acid-rain.: Reason (R): Oxides of carbon are emitted when the coal burns.",
+      "options": {
+        "A": "Both A and R are individually true and R is the correct explanation of A",
+        "B": "Both A and R are individually true but R is NOT the correct explanation of A",
+        "C": "A is true but R is false",
+        "D": "A is false but R is true"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOLOGY_2003_Q42",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 82,
+      "originalQuestionNumber": 42,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biology.json",
+      "question": "Which one of the following statements is not correct?",
+      "options": {
+        "A": "Milk contains none of the B-vitamins",
+        "B": "Vitamin-A (retinal) deficiency leads to dry and scaly skin",
+        "C": "One of the symptoms of scurvy is pain in the joints",
+        "D": "Vitamin B1 (thiamine) deficiency can lead to heart failure"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ST-BIOTECH-MT01",
+          "toNodeId": "GS3-ST-GENSCI-BIO-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS3-ST-BIOTECH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "biology",
+            "vitamin"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_POL_2003_Q43",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 83,
+      "originalQuestionNumber": 43,
+      "subject": null,
+      "sourceFile": "environmental_pollutioncorrected.json",
+      "question": "Which one of the following is produced during the formation of photochemical smog?",
+      "options": {
+        "A": "Hydrocarbons",
+        "B": "Nitrogen Oxides",
+        "C": "Ozone",
+        "D": "Methane"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-AIR-MT01",
+      "syllabusNodeId": "GS3-ENV-AIR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2003_Q43",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 84,
+      "originalQuestionNumber": 43,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "Consider the following animals of India: 1. Crocodile 2. Elephant Which of these is/are endangered species?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2003_Q44",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 85,
+      "originalQuestionNumber": 44,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "Consider the following statements: 1. The common blue green algae Spirogyra and Ulothrix are found in both freshwater ponds and oceans. 2. The Chameleon can look ahead with one eye, and at the same time look behind with another. Which of these statements is/are correct?",
+      "options": {
+        "A": "Lion",
+        "B": "Elephant",
+        "C": "Tiger",
+        "D": "One-horned rhinoceros"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_CLI_2003_Q44",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 86,
+      "originalQuestionNumber": 44,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "Which one among the following covers the highest percentage of forest area in the world?",
+      "options": {
+        "A": "Temperate Coniferous forests",
+        "B": "Temperate Deciduous forests",
+        "C": "Tropical Monsoon forests",
+        "D": "Tropical Rain forests"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_ECONOMY_BANKING_2003_Q45",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 87,
+      "originalQuestionNumber": 45,
+      "subject": null,
+      "sourceFile": "ca_economy_banking.json",
+      "question": "As per the Human Development Index given by UNDP, which one of the following sequences of South Asian countries is correct, in the order of higher to lower development? [2003]",
+      "options": {
+        "A": "India-Sri Lanka-Pakistan-Maldives",
+        "B": "Maldives-Sri Lanka-India-Pakistan",
+        "C": "Sri Lanka-Maldives-India-Pakistan",
+        "D": "Maldives-India-Pakistan-Sri Lanka"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-BASICS-MACRO-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-BASICS-MACRO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "banking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_RBIFUNMON_2003_Q49",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 88,
+      "originalQuestionNumber": 49,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "Which one of the following statements is correct with reference to FEMA in India?",
+      "options": {
+        "A": "The Foreign Exchange Regulation Act (FERA), was replaced by Foreign Exchange Management Act (FEMA) in the year 2001",
+        "B": "FERA was given a sunset clause of one year till 31st May 2002 to enable Enforcement Directorate to complete the investigation of pending issues",
+        "C": "Under FEMA, violation of foreign exchange rules has ceased to be a criminal offence",
+        "D": "As per the new dispensation, Enforcement Directorate can arrest and prosecute the people for the violation of foreign exchange rules"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-FOREIGN-TRADE-IO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_PARLIAMENT_2003_Q50",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 89,
+      "originalQuestionNumber": 50,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "As per Indian Protocol, who among the following ranks highest in the order of precedence?",
+      "options": {
+        "A": "Deputy Prime Minister",
+        "B": "Former President",
+        "C": "Governor of a State within his state",
+        "D": "Speaker of Lok Sabha"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2003_Q51",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 90,
+      "originalQuestionNumber": 51,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1. While members of the Rajya Sabha are associated with Committees on Public Accounts and Public Undertakings, Members of Committee on Estimates are drawn entirely from Lok Sabha. 2. The Ministry of Parliamentary Affairs works under the overall direction of the Cabinet Committee on Parliamentary Affairs. 3. The Minister of Parliamentary Affairs nominates members of Parliament on Committees, Councils, Boards and Commissions etc. set up by the Government of India in the various ministries. Which of these statements are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 and 3",
+        "C": "1 and 3",
+        "D": "1, 2 and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2003_Q52",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 91,
+      "originalQuestionNumber": 52,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which one of the following Bills must be passed by each House of the Indian Parliament separately, by special majority?",
+      "options": {
+        "A": "Ordinary Bill",
+        "B": "Money Bill",
+        "C": "Finance Bill",
+        "D": "Constitution Amendment Bill"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2003_Q54",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 92,
+      "originalQuestionNumber": 54,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1. The joint sitting of the two houses of the Parliament in India is sanctioned under Article 108 of the Constitution 2. The first joint sitting of Lok Sabha and Rajya Sabha was held in the year 1961 3. The second joint sitting of the two Houses of Indian Parliament was held to pass the Banking Service Commission (Repeal) Bill Which of these statements are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 and 3",
+        "C": "1 and 3",
+        "D": "1, 2 and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIINDBAN_2003_Q60",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 93,
+      "originalQuestionNumber": 60,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "In India, the first bank of limited liability managed by Indians and founded in 1881 was:",
+      "options": {
+        "A": "Hindustan Commercial Bank",
+        "B": "Oudh Commercial Bank",
+        "C": "Punjab National Bank",
+        "D": "Punjab and Sind Bank"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-BANKING-STRUCTURE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_RBIINDBAN_2003_Q61",
+      "year": 2003,
+      "paper": "GS",
+      "questionNumber": 94,
+      "originalQuestionNumber": 61,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "Consider the following statements: 1. The maximum limit of shareholding of Indian promoters in private sector banks in India is 49 per cent of the paid up capital. 2. Foreign Direct Investment up to 49 per cent from all sources is permitted in private sector banks in India under the automatic route. Which to these statements is/are correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-BANKING-STRUCTURE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    }
+  ]
+}

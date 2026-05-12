@@ -1,0 +1,359 @@
+[
+    {
+        "id": "OFF_GS_2014_Q26_FRUIT_TREE_CAMPAIGN",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 26,
+        "type": "MCQ",
+        "question": "Every year, a month-long ecologically important campaign/festival is held during which certain communities/tribes plant saplings of fruit-bearing trees. Which of the following are such communities/tribes?",
+        "options": {
+            "A": "Bhutia and Lepcha",
+            "B": "Gond and Korku",
+            "C": "Irula and Toda",
+            "D": "Sahariya and Agariya"
+        },
+        "answer": "B",
+        "subject": "Environment",
+        "nodeId": "GS3-ENV-CONSERVATION-MT01",
+        "syllabusNodeId": "GS3-ENV-CONSERVATION-MT01",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q84_SAKA_CALENDAR",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 84,
+        "type": "MCQ",
+        "question": "Chaitra 1 of the national calendar based on the Saka Era corresponds to which one of the following dates of the Gregorian calendar in a normal year of 365 days?",
+        "options": {
+            "A": "22nd March (or 21st March)",
+            "B": "15th May (or 16th May)",
+            "C": "31st March (or 30th March)",
+            "D": "21st April (or 20th April)"
+        },
+        "answer": "A",
+        "subject": "Culture",
+        "nodeId": "1C.RLL.LANG",
+        "syllabusNodeId": "1C.RLL.LANG",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q86_KALARIPAYATTU",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 86,
+        "type": "MCQ",
+        "question": "With reference to India's culture and tradition, what is 'Kalaripayattu'?",
+        "options": {
+            "A": "It is an ancient Bhakti cult of Shaivism still prevalent in some parts of South India.",
+            "B": "It is an ancient style of bronze and brasswork still found in southern part of Coromandel area.",
+            "C": "It is an ancient form of dance-drama and a living tradition in the northern part of Malabar.",
+            "D": "It is an ancient martial art and a living tradition in some parts of South India."
+        },
+        "answer": "D",
+        "subject": "Culture",
+        "nodeId": "1C.PA.SPORTS",
+        "syllabusNodeId": "1C.PA.SPORTS",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q87_DANCE_PAIRS",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 87,
+        "type": "MCQ",
+        "question": "Consider the following pairs: 1. Garba : Gujarat 2. Mohiniattam : Odisha 3. Yakshagana : Karnataka Which of the pairs given above is/are correctly matched?",
+        "options": {
+            "A": "1 only",
+            "B": "2 and 3 only",
+            "C": "1 and 3 only",
+            "D": "1, 2 and 3"
+        },
+        "answer": "C",
+        "subject": "Culture",
+        "nodeId": "1C.PA.DANCE",
+        "syllabusNodeId": "1C.PA.DANCE",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q90_MANGANIYARS",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 90,
+        "type": "MCQ",
+        "question": "A community of people called Manganiyars is well-known for their",
+        "options": {
+            "A": "martial arts in North-East India",
+            "B": "musical tradition in North-West India",
+            "C": "classical vocal music in South India",
+            "D": "pietra dura tradition in Central India"
+        },
+        "answer": "B",
+        "subject": "Culture",
+        "nodeId": "1C.PA.MUSIC",
+        "syllabusNodeId": "1C.PA.MUSIC",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q37_VITAMIN_DEFICIENCY",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 37,
+        "type": "MCQ",
+        "question": "Consider the following pairs: Vitamin : Deficiency disease 1. Vitamin C : Scurvy 2. Vitamin D : Rickets 3. Vitamin E : Night blindness Which of the pairs given above is/are correctly matched?",
+        "options": {
+            "A": "1 and 2 only",
+            "B": "3 only",
+            "C": "1, 2 and 3",
+            "D": "None"
+        },
+        "answer": "A",
+        "subject": "Science and Technology",
+        "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q66_BIOMETRIC_IDENTIFICATION",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 66,
+        "type": "MCQ",
+        "question": "In addition to fingerprint scanning, which of the following can be used in the biometric identification of a person? 1. Iris scanning 2. Retinal scanning 3. Voice recognition Select the correct answer using the code given below.",
+        "options": {
+            "A": "1 only",
+            "B": "2 and 3 only",
+            "C": "1 and 3 only",
+            "D": "1, 2 and 3"
+        },
+        "answer": "D",
+        "subject": "Science and Technology",
+        "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q67_VEGETATIVE_PROPAGATION",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 67,
+        "type": "MCQ",
+        "question": "Which of the following statements is/are correct regarding vegetative propagation of plants? 1. Vegetative propagation produces clonal population. 2. Vegetative propagation helps in eliminating the virus. 3. Vegetative propagation can be practiced most of the year. Select the correct answer using the code given below.",
+        "options": {
+            "A": "1 only",
+            "B": "2 and 3 only",
+            "C": "1 and 3 only",
+            "D": "1, 2 and 3"
+        },
+        "answer": "C",
+        "subject": "Science and Technology",
+        "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q68_SPACECRAFT_PAIRS",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 68,
+        "type": "MCQ",
+        "question": "Which of the following pairs is/are correctly matched? Spacecraft : Purpose 1. Cassini-Huygens : Orbiting the Venus and transmitting data to the Earth 2. Messenger : Mapping and investigating the Mercury 3. Voyager 1 and 2 : Exploring the outer solar system Select the correct answer using the code given below.",
+        "options": {
+            "A": "1 only",
+            "B": "2 and 3 only",
+            "C": "1 and 3 only",
+            "D": "1, 2 and 3"
+        },
+        "answer": "B",
+        "subject": "Science and Technology",
+        "nodeId": "GS3-ST-SPACE-MT01",
+        "syllabusNodeId": "GS3-ST-SPACE-MT01",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q70_CHEMICAL_CHANGE",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 70,
+        "type": "MCQ",
+        "question": "Which of the following is/are the example/examples of chemical change? 1. Crystallization of sodium chloride 2. Melting of ice 3. Souring of milk Select the correct answer using the code given below.",
+        "options": {
+            "A": "1 and 2 only",
+            "B": "3 only",
+            "C": "1, 2 and 3",
+            "D": "None"
+        },
+        "answer": "B",
+        "subject": "Science and Technology",
+        "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q72_TRANSGENIC_CROPS",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 72,
+        "type": "MCQ",
+        "question": "Consider the following techniques/phenomena: 1. Budding and grafting in fruit plants 2. Cytoplasmic male sterility 3. Gene silencing Which of the above is/are used to create transgenic crops?",
+        "options": {
+            "A": "1 only",
+            "B": "2 and 3",
+            "C": "1 and 3",
+            "D": "None"
+        },
+        "answer": "B",
+        "subject": "Science and Technology",
+        "nodeId": "GS3-ST-BIOTECH-MT01",
+        "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q76_TRADITIONAL_SAREES_FABRIC",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 76,
+        "type": "MCQ",
+        "question": "Consider the following towns of India: 1. Bhadrachalam 2. Chanderi 3. Kancheepuram 4. Karnal Which of the towns given above are famous for the production of traditional sarees/fabric?",
+        "options": {
+            "A": "1 and 2 only",
+            "B": "2 and 3 only",
+            "C": "1, 2 and 3",
+            "D": "1, 3 and 4"
+        },
+        "answer": "B",
+        "subject": "Culture",
+        "nodeId": "1C.MISC.GI",
+        "syllabusNodeId": "1C.MISC.GI",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q7_SOLAR_POWER_TECH",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 7,
+        "type": "MCQ",
+        "question": "With reference to technologies for solar power production, consider the following statements: 1. 'Photovoltaics' is a technology that generates electricity by direct conversion of light into electricity, while 'Solar Thermal' is a technology that utilizes the Sun's rays to generate heat which is further used in electricity generation process. 2. Photovoltaics generate Alternating Current (AC), while Solar Thermal generates Direct Current (DC). 3. India has manufacturing base for Solar Thermal technology, but not for Photovoltaics. Which of the statements given above is/are correct?",
+        "options": {
+            "A": "1 only",
+            "B": "2 and 3 only",
+            "C": "1, 2 and 3",
+            "D": "None"
+        },
+        "answer": "A",
+        "subject": "Science and Technology",
+        "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q8_CLASSICAL_LANGUAGES",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 8,
+        "type": "MCQ",
+        "question": "Consider the following languages: 1. Gujarati 2. Kannada 3. Telugu Which of the above has/have been declared as 'Classical Language/Languages' by the Government?",
+        "options": {
+            "A": "1 and 2 only",
+            "B": "3 only",
+            "C": "2 and 3 only",
+            "D": "1, 2 and 3"
+        },
+        "answer": "C",
+        "subject": "Culture",
+        "nodeId": "1C.RLL.LANG",
+        "syllabusNodeId": "1C.RLL.LANG",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q12_DISEASES_ERADICATED",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 12,
+        "type": "MCQ",
+        "question": "Consider the following diseases: 1. Diphtheria 2. Chickenpox 3. Smallpox Which of the above diseases has/have been eradicated in India?",
+        "options": {
+            "A": "1 and 2 only",
+            "B": "3 only",
+            "C": "1, 2 and 3",
+            "D": "None"
+        },
+        "answer": "B",
+        "subject": "Science and Technology",
+        "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q17_HIBERNATION",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 17,
+        "type": "MCQ",
+        "question": "Consider the following: 1. Bats 2. Bears 3. Rodents The phenomenon of hibernation can be observed in which of the above kinds of animals?",
+        "options": {
+            "A": "1 and 2 only",
+            "B": "2 only",
+            "C": "1, 2 and 3",
+            "D": "Hibernation cannot be observed in any of the above"
+        },
+        "answer": "C",
+        "subject": "Science and Technology",
+        "nodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "syllabusNodeId": "GS3-ST-GENSCI-BIO-MT01",
+        "sourceFile": "gs_2014_missing_patch.json"
+    },
+    {
+        "id": "OFF_GS_2014_Q54_SATYAMEVA_JAYATE",
+        "exam": "UPSC CSE",
+        "stage": "prelims",
+        "paper": "GS",
+        "year": 2014,
+        "questionNumber": 54,
+        "type": "MCQ",
+        "question": "The national motto of India, 'Satyameva Jayate' inscribed below the Emblem of India is taken from",
+        "options": {
+            "A": "Katha Upanishad",
+            "B": "Chandogya Upanishad",
+            "C": "Aitareya Upanishad",
+            "D": "Mundaka Upanishad"
+        },
+        "answer": "D",
+        "subject": "Culture",
+        "nodeId": "1C.RLL.RELIGION",
+        "syllabusNodeId": "1C.RLL.RELIGION",
+        "sourceFile": "gs_2014_missing_patch.json"
+    }
+]

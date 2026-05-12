@@ -1,0 +1,173 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "History",
+  "module": "Modern History",
+  "topicName": "Tribal and Peasant Movements",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "sectionId": "GS1-HIS-MOD",
+  "topicId": "tribal_and_peasant_movements",
+  "defaultNodeId": "GS1-HIS-MOD-NATIONAL",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "Indigo cultivation in India declined by the beginning of the 20th century because of:",
+      "options": {
+        "A": "Peasant resistance to the oppressive conduct of planters",
+        "B": "Its unprofitability in the world market because of new inventions",
+        "C": "National leaders' opposition to the cultivation if indigo",
+        "D": "Government control over the planters"
+      },
+      "correctAnswer": "B",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2020_Q1_TRIBAL_A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "tribal_and_peasant_movements",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Peasant and Tribal Resistance",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 2,
+      "year": 2020,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the history of India, \"Ulgulan'' or the Great Tumult is the description of which of the following events?",
+      "options": {
+        "A": "The Revolt of 1857",
+        "B": "The Mappila Rebellion of 1921",
+        "C": "The Indigo Revolt of 1859-60",
+        "D": "Birsa Munda's Revolt of 1899-1900"
+      },
+      "correctAnswer": "D",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2020_Q2_TRIBAL_A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "tribal_and_peasant_movements",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Peasant and Tribal Resistance",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 3,
+      "year": 2018,
+      "questionType": "MCQ_SINGLE",
+      "question": "After the Santhal rising subsided, what were the measures taken by the colonial Government? 1. The territories called 'Santhal Paraganas' were created. 2. It became illegal for a Santhal to transfer land to a Non Santhal. Select the correct answer using a code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "C",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2018_Q3_TRIBAL_A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "tribal_and_peasant_movements",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Peasant and Tribal Resistance",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 4,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "The demand for the Tebhaga Peasant Movement in Bengal was for___?",
+      "options": {
+        "A": "The reduction of the share of the landlords from one-half of the crop to one-third",
+        "B": "The grant of ownership of land to peasants as they were the actual cultivators of the land",
+        "C": "The uprooting of Zamindari system and the end of serfdom",
+        "D": "Writing off all peasant debts"
+      },
+      "correctAnswer": "A",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2013_Q4_TRIBAL_A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "tribal_and_peasant_movements",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Peasant and Tribal Resistance",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 5,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following revolts was made famous by Bankim Chandra Chatterjee in his novel Anand Math?",
+      "options": {
+        "A": "Bhil uprising",
+        "B": "Rangpur and Dinapur uprising",
+        "C": "Bishnupur and Birbhum rebellion",
+        "D": "Sanyasi rebellion"
+      },
+      "correctAnswer": "D",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2006_Q5_TRIBAL_A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "tribal_and_peasant_movements",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Peasant and Tribal Resistance",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 6,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following events: I. Indigo Revolt II. Santhal Rebellion III. Deccan Riot IV. Mutiny of the Sepoys The chronological sequence of these events is:",
+      "options": {
+        "A": "IV, II, I, III",
+        "B": "IV, II, III, I",
+        "C": "II, IV, III, I",
+        "D": "II, IV, I, III"
+      },
+      "correctAnswer": "D",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_1999_Q6_TRIBAL_A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "tribal_and_peasant_movements",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Peasant and Tribal Resistance",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 7,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer by using the codes given below the lists: List I List II I. Moplah revolt",
+      "options": {
+        "A": "Kerala II. Pabna revolt",
+        "B": "Bihar III. Eka Movement",
+        "C": "Bengal IV. Birsa Munda revolt",
+        "D": "Awadh a) IA, IIC, IIID, IVB b) IB, IIC, IIID, IVA c) IA, IIB, IIIC, IVD d) IC, IID, IIIA, IVB"
+      },
+      "correctAnswer": "A",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_1997_Q7_TRIBAL_A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "tribal_and_peasant_movements",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Peasant and Tribal Resistance",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    }
+  ]
+}

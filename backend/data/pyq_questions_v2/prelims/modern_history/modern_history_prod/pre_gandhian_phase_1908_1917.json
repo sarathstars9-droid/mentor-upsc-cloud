@@ -1,0 +1,173 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "History",
+  "module": "Modern History",
+  "topicName": "Pre Gandhian Phase 1908-1917",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "sectionId": "GS1-HIS-MOD",
+  "topicId": "pre_gandhian_phase_1908_1917",
+  "defaultNodeId": "GS1-HIS-MOD-NATIONAL",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "year": 2013,
+      "questionType": "MCQ_SINGLE",
+      "question": "Annie Besant was: 1. Responsible for starting the Home Rule Movement 2. The founder of the Theosophical Society 3. Once the President of the Indian National Congress Select the correct statement / statements using the codes given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "correctAnswer": "C",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2013_Q1_PRE_GAND",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "pre_gandhian_phase_1908_1917",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Home Rule and Pre-Gandhian Nationalism",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 2,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "What was Komagata Maru?",
+      "options": {
+        "A": "A political party based in Taiwan",
+        "B": "Peasant communist leader of China",
+        "C": "A naval ship on voyage to Canada",
+        "D": "A Chinese village where Mao Tse Tung began his Long march"
+      },
+      "correctAnswer": "C",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2005_Q2_PRE_GAND",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "pre_gandhian_phase_1908_1917",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Home Rule and Pre-Gandhian Nationalism",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 3,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "A London branch of the All India Muslim League was established in 1908 under the presidency of:",
+      "options": {
+        "A": "Agha Khan",
+        "B": "Ameer Ali",
+        "C": "Liaquat Ali Khan",
+        "D": "M.A. Jinnah"
+      },
+      "correctAnswer": "B",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2001_Q3_PRE_GAND",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "pre_gandhian_phase_1908_1917",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Home Rule and Pre-Gandhian Nationalism",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 4,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "The most shortlived of all of Britain's constitutional experiments in India was the:",
+      "options": {
+        "A": "Indian Councils Act of 1861",
+        "B": "Indian Councils Act of 1892",
+        "C": "Indian Councils Act of 1909",
+        "D": "Government of India Act of 1919"
+      },
+      "correctAnswer": "C",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_1999_Q4_PRE_GAND",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "pre_gandhian_phase_1908_1917",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Home Rule and Pre-Gandhian Nationalism",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 5,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the correct sequence of the following events? I. Tilak's Home Rule League II. Komagata Maru Incident III. Mahatma Gandhi's arrival in India Select the correct answer using the codes given below:",
+      "options": {
+        "A": "I, II, III",
+        "B": "III, II, I",
+        "C": "II, I, III",
+        "D": "II, III, I"
+      },
+      "correctAnswer": "D",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_1998_Q5_PRE_GAND",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "pre_gandhian_phase_1908_1917",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Home Rule and Pre-Gandhian Nationalism",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 6,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following was used as a chemical weapon in the First World War?",
+      "options": {
+        "A": "Carbon monoxide",
+        "B": "Hydrogen cyanide",
+        "C": "Mustard gas",
+        "D": "Water gas"
+      },
+      "correctAnswer": "C",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_1997_Q6_PRE_GAND",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "pre_gandhian_phase_1908_1917",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Home Rule and Pre-Gandhian Nationalism",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 7,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who among the following was a proponent of Fabianism as a movement?",
+      "options": {
+        "A": "Annie Beasant",
+        "B": "A. O. Hume",
+        "C": "Michael Madhusudan Dutt",
+        "D": "R. Palme Dutt"
+      },
+      "correctAnswer": "A",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2005_Q7_PRE_GAND",
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL",
+      "topicId": "pre_gandhian_phase_1908_1917",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Home Rule and Pre-Gandhian Nationalism",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    }
+  ]
+}

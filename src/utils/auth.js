@@ -1,16 +1,30 @@
 const AUTH_KEY = "mentor_os_logged_in";
 const APP_PASSWORD = "mentor2026";
 
+// Fallback to memory since localStorage is removed
+let isLoggedInMemory = false;
+
 export function isLoggedIn() {
-  return localStorage.getItem(AUTH_KEY) === "true";
+  // Try to use sessionStorage instead if possible, else memory
+  try {
+    return sessionStorage.getItem(AUTH_KEY) === "true" || isLoggedInMemory;
+  } catch {
+    return isLoggedInMemory;
+  }
 }
 
 export function login() {
-  localStorage.setItem(AUTH_KEY, "true");
+  isLoggedInMemory = true;
+  try {
+    sessionStorage.setItem(AUTH_KEY, "true");
+  } catch {}
 }
 
 export function logout() {
-  localStorage.removeItem(AUTH_KEY);
+  isLoggedInMemory = false;
+  try {
+    sessionStorage.removeItem(AUTH_KEY);
+  } catch {}
 }
 
 export function checkPassword(value) {

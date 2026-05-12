@@ -1,0 +1,78 @@
+{
+  "files": [
+    {
+      "fileName": "civil_disobedience_1926_1932.json",
+      "count": 33,
+      "reviewRequired": 1
+    },
+    {
+      "fileName": "congress_1885_1907.json",
+      "count": 31,
+      "reviewRequired": 1
+    },
+    {
+      "fileName": "development_of_modern_education_system.json",
+      "count": 10,
+      "reviewRequired": 0
+    },
+    {
+      "fileName": "establishment_of_british_rule.json",
+      "count": 44,
+      "reviewRequired": 1
+    },
+    {
+      "fileName": "events_1857_1885.json",
+      "count": 20,
+      "reviewRequired": 1
+    },
+    {
+      "fileName": "events_1933_1939.json",
+      "count": 17,
+      "reviewRequired": 0
+    },
+    {
+      "fileName": "gandhian_phase_1917_1925.json",
+      "count": 44,
+      "reviewRequired": 0
+    },
+    {
+      "fileName": "last_phase_1940_1950.json",
+      "count": 54,
+      "reviewRequired": 0
+    },
+    {
+      "fileName": "literature.json",
+      "count": 21,
+      "reviewRequired": 0
+    },
+    {
+      "fileName": "pre_gandhian_phase_1908_1917.json",
+      "count": 7,
+      "reviewRequired": 0
+    },
+    {
+      "fileName": "revolt_of_1857.json",
+      "count": 6,
+      "reviewRequired": 0
+    },
+    {
+      "fileName": "revolutionaries_and_revolutionary_movement.json",
+      "count": 12,
+      "reviewRequired": 1
+    },
+    {
+      "fileName": "social_reforms_and_reformers.json",
+      "count": 11,
+      "reviewRequired": 0
+    },
+    {
+      "fileName": "tribal_and_peasant_movements.json",
+      "count": 7,
+      "reviewRequired": 0
+    }
+  ],
+  "totalQuestions": 317,
+  "duplicateIds": 0,
+  "reviewRequired": 5,
+  "nullAnswers": 2
+}

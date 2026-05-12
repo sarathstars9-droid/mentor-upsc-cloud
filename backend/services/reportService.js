@@ -277,12 +277,12 @@ export async function getDailyReport(userId = DEFAULT_USER, date) {
   const dayKey = String(date || new Date().toISOString().slice(0, 10)).slice(0, 10);
 
   const [agg, blocks, subjectSplit, topicSplit, stageSplit, sourceSplit] = await Promise.all([
-    getDayAggregate(userId, dayKey),
-    getStudiedBlocks(userId, dayKey, dayKey),
-    getSubjectWiseSplit(userId, dayKey, dayKey),
-    getTopicWiseSplit(userId, dayKey, dayKey),
-    getStageWiseSplit(userId, dayKey, dayKey),
-    getSourceTypeSplit(userId, dayKey, dayKey),
+    getDayAggregate(userId, dayKey).catch(e => { throw new Error(`getDayAggregate: ${e.message}`); }),
+    getStudiedBlocks(userId, dayKey, dayKey).catch(e => { throw new Error(`getStudiedBlocks: ${e.message}`); }),
+    getSubjectWiseSplit(userId, dayKey, dayKey).catch(e => { throw new Error(`getSubjectWiseSplit: ${e.message}`); }),
+    getTopicWiseSplit(userId, dayKey, dayKey).catch(e => { throw new Error(`getTopicWiseSplit: ${e.message}`); }),
+    getStageWiseSplit(userId, dayKey, dayKey).catch(e => { throw new Error(`getStageWiseSplit: ${e.message}`); }),
+    getSourceTypeSplit(userId, dayKey, dayKey).catch(e => { throw new Error(`getSourceTypeSplit: ${e.message}`); }),
   ]);
 
   const a = coerce(agg);

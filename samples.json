@@ -1,0 +1,1032 @@
+{
+  "GS1-GEO-IND-PHYSIO-MT01": [
+    {
+      "id": "CA_GEOGRAPHY_2022_Q5",
+      "year": 2022,
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "text": "The term \"Levant\" often heard in the news roughly corresponds to which of the following regions? [2022]",
+      "opt": {
+        "A": "Region along the eastern Mediterranean shores",
+        "B": "Region along North African shores stretching from Egypt to Morocco",
+        "C": "Region along Persian Gulf and Horn of Africa",
+        "D": "The entire coastal areas of Mediterranean Sea"
+      },
+      "audit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+          "toNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-PRE-REGIONAL-PLACES-MT01 based on keywords.",
+          "matchedKeywords": [
+            "coast"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_GEOGRAPHY_2022_Q7",
+      "year": 2022,
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "text": "Which one of the following statements best reflects the issue which Senkaku Islands, sometimes mentioned in the news? [2022]",
+      "opt": {
+        "A": "It is generally believed that they are artificial islands made by a country around South China Sea.",
+        "B": "China and Japan engage in maritime disputes over these islands in East China Sea",
+        "C": "A permanent American military base has been set up there to help Taiwan to increase its defence capabilities.",
+        "D": "Through International Courts of Justice declared them as no man's land, some South-East Asian countries claim them."
+      },
+      "audit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
+          "toNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-PRE-REGIONAL-PLACES-MT01 based on keywords.",
+          "matchedKeywords": [
+            "island"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_CLI_2009_Q36",
+      "year": 2009,
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "text": "Consider the following statements: 1. In the world, the tropical deserts occur along the western margins of continents within the trade wind belt. 2. In India, the East Himalayan region gets high rainfall from north-east winds. Which of the statements given above is/are correct?",
+      "opt": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "audit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+          "toNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-CLIMATE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "himalaya",
+            "desert"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_CLI_2006_Q40",
+      "year": 2006,
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "text": "Consider the following statements: 1. Length of a terrestrial mile is lesser than that of a nautical mile. 2. Harmattan is a dusty land-wind of the East African Coast. 3. Greece and Albania from a part of the Iberian Peninsula. Which of the statements given above is/are correct?",
+      "opt": {
+        "A": "1, 2 and 3",
+        "B": "2 and 3, only",
+        "C": "3 only",
+        "D": "1 only"
+      },
+      "audit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+          "toNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-CLIMATE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "coast"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_CLI_1995_Q69",
+      "year": 1995,
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "text": "Willy-Willy is:",
+      "opt": {
+        "A": "A type of tree grown in temperate regions",
+        "B": "A wind that blows in a desert",
+        "C": "A tropical cyclone of the north-west Australia",
+        "D": "A kind of common fish found near Lakshadweep islands"
+      },
+      "audit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+          "toNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-CLIMATE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "island",
+            "desert"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_WRLD_2025_Q1",
+      "year": 2025,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Consider the following pairs: Country - Resource-rich in I. Botswana: Diamond II. Chile: Lithium III. Indonesia: Nickel In how many of the above rows is the given information correctly matched?",
+      "opt": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All the three",
+        "D": "None"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2025_Q2",
+      "year": 2025,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Consider the following countries: I. Bolivia II. Brazil III. Colombia IV. Ecuador V. Paraguay VI. Venezuela Andes mountains pass through how many of the above countries?",
+      "opt": {
+        "A": "Only two",
+        "B": "Only three",
+        "C": "Only four",
+        "D": "Only five"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2024_Q3",
+      "year": 2024,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Which of the following countries are well known as the two largest cocoa producers in the world?",
+      "opt": {
+        "A": "Algeria and Morocco (",
+        "B": "Botswana and Namibia (",
+        "C": "Cote d'Ivoire and Ghana (",
+        "D": "Madagascar and Mozambique"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2024_Q4",
+      "year": 2024,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Consider the following information: Region Name of the mountain range Type of Mountain Central Asia Vosges Fold mountain Europe Alps Block mountain North America Appalachians Fold mountain South America Andes Fold mountain In how many of the above rows is the given information correctly matched?",
+      "opt": {
+        "A": "Only one (",
+        "B": "Only two (",
+        "C": "Only three (",
+        "D": "All four"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2023_Q5",
+      "year": 2023,
+      "nodeId": "GS1-GEO-IND",
+      "text": "About three -fourth of world's Cobalt, a metal required for the manufacture of batteries for electric motor vehicles, is produced by:",
+      "opt": {
+        "A": "Argentina",
+        "B": "Botswana",
+        "C": "The Democratic Republic of the Congo",
+        "D": "Kazakhstan"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2023_Q6",
+      "year": 2023,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Which one of the following is part of the Congo Basin?",
+      "opt": {
+        "A": "Cameroon",
+        "B": "Nigeria",
+        "C": "South Sudan",
+        "D": "Uganda"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2023_Q7",
+      "year": 2023,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Consider the following statements: Statement-I: Switzerland is one of the leading exporters of gold in terms of value. Statement-II: Switzerland has the second largest gold reserves in the world. Which one of the following is correct in respect of the above statements?",
+      "opt": {
+        "A": "Both Statement-I and Statement-II are correct and Statement-II is the correct explanation for Statement- I",
+        "B": "Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I",
+        "C": "Statement-1 is correct but Statement-II is incorrect",
+        "D": "Statement-I is incorrect but Statement-II is correct"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2022_Q8",
+      "year": 2022,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Which one of the following lakes of West Africa has become dry and turned into a desert?",
+      "opt": {
+        "A": "Lake Victoria",
+        "B": "Lake Faguibine",
+        "C": "Lake Oguta",
+        "D": "Lake Volta"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2018_Q10",
+      "year": 2018,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Consider the following pairs: Regions sometimes mentioned in the news - Country 1. Catalonia - Spain 2. Crimea - Hungary 3. Mindanao - Philippines 4. Oromia - Nigeria Which of the pairs given below above are correctly matched?",
+      "opt": {
+        "A": "1, 2 and 3",
+        "B": "3 and 4 only",
+        "C": "1 and 3 only",
+        "D": "2 and 4 only"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2013_Q11",
+      "year": 2013,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Which of the following pairs is correctly matched?",
+      "opt": {
+        "A": "Abyssinian Plateau: Arabia",
+        "B": "Altas Mountains:: North-Western Africa",
+        "C": "Guiana Highlands: South-western Africa",
+        "D": "Okavango Basin: Patagonia"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2009_Q12",
+      "year": 2009,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Which among the following has the world's largest reserves of Uranium?",
+      "opt": {
+        "A": "Australia",
+        "B": "Canada",
+        "C": "Russian Federation",
+        "D": "USA"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2009_Q14",
+      "year": 2009,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Match List I With List II and select the correct ANSWER using the code given below the lists: List I (Geographic feature) List II (Country)",
+      "opt": {
+        "A": "Great Victoria Desert 1. Australia",
+        "B": "Grand Canyon 2. Canada",
+        "C": "Lake Winnipeg 3. New Zealand",
+        "D": "Southern Alps 4. USA A B C D a) 1 2 4 3 b) 1 4 2 3 c) 3 2 4 1 d) 3 4 2 1"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2006_Q17",
+      "year": 2006,
+      "nodeId": "GS1-GEO-IND",
+      "text": "In which one of the following oceans is Diamantina Trench situated?",
+      "opt": {
+        "A": "Pacific Ocean",
+        "B": "Atlantic Ocean",
+        "C": "Indian Ocean",
+        "D": "Arctic Ocean"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2006_Q18",
+      "year": 2006,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Which one of the following pairs is not correctly matched? Well-known Place Country:",
+      "opt": {
+        "A": "Baikonur: Russia",
+        "B": "Kourou: French Guiana",
+        "C": "Borobudur: Indonesia",
+        "D": "Cannes: France"
+      }
+    },
+    {
+      "id": "GEO_WRLD_2006_Q19",
+      "year": 2006,
+      "nodeId": "GS1-GEO-IND",
+      "text": "Which one of the following countries is the leading producer of Uranium?",
+      "opt": {
+        "A": "United States of America",
+        "B": "Canada",
+        "C": "Germany",
+        "D": "Zambia"
+      }
+    }
+  ],
+  "GS1-HIS-MOD-NATIONAL-MT01": [
+    {
+      "id": "HIS_MOD_2025_Q1_CIVIL_DI",
+      "year": 2025,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "Subsequent to which one of the following events, Gandhiji, who consistently opposed untouchability and appealed for its eradication from all spheres, decided to include the upliftment of 'Harijans' in his political and social programme?",
+      "opt": {
+        "A": "The Poona Pact",
+        "B": "The Gandhi-Irwin Agreement (Delhi Pact)",
+        "C": "Arrest of Congress leadership at the time of the Quit India Movement",
+        "D": "Promulgation of the Government of India Act,"
+      }
+    },
+    {
+      "id": "HIS_MOD_2025_Q2_CIVIL_DI",
+      "year": 2025,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "'Sedition has become my religion' was the famous statement given by Gandhiji at the time of:",
+      "opt": {
+        "A": "the Champaran Satyagraha",
+        "B": "publicly violating Salt Law at Dandi",
+        "C": "attending the Second Round Table Conference in London",
+        "D": "the launch of the Quit India Movement"
+      }
+    },
+    {
+      "id": "HIS_MOD_2020_Q3_CIVIL_DI",
+      "year": 2020,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "The Gandhi -Irwin Pact included which of the following? 1. Invitation to Congress to participate in the Round Table Conference 2. Withdrawal of Ordinances promulgated in connection with the Civil Disobedience Movement 3. Acceptance of Gandhiji's suggestion for enquiry into police excesses 4. Release of only those prisoners who were not charged with violence Select the answer using the code given below:",
+      "opt": {
+        "A": "1 only",
+        "B": "1, 2 and 4 only",
+        "C": "3 only",
+        "D": "2, 3 and 4 only"
+      }
+    },
+    {
+      "id": "HIS_MOD_2019_Q4_CIVIL_DI",
+      "year": 2019,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "With reference to the British colonial rule in India, consider the following statements: 1. Mahatma Gandhi was instrumental in the abolition of the system of 'indentured labour' 2. In Lord Chelmsford's 'War Conference', Mahatma Gandhi did not support the resolution on recruiting Indians for World War. 3. Consequent upon the breaking of Salt Law by Indian people, the Indian National Congress was declared illegal by the colonial rulers. Which of the statements given above are correct?",
+      "opt": {
+        "A": "1 and 2 only",
+        "B": "1 and 3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      }
+    },
+    {
+      "id": "HIS_MOD_2017_Q6_CIVIL_DI",
+      "year": 2017,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "The object of the Butler Committee of 1927 was to?",
+      "opt": {
+        "A": "Define the jurisdiction of the Central and Provincial Governments.",
+        "B": "Define the powers of the Secretary of State for India.",
+        "C": "Impose censorship on national press.",
+        "D": "Improve the relationship between the Government of India and the Indian States."
+      }
+    },
+    {
+      "id": "HIS_MOD_2015_Q7_CIVIL_DI",
+      "year": 2015,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "Who of the following organized a march on the Tanjore coast to break the Salt Law in April 1930?",
+      "opt": {
+        "A": "V.O. Chidambaram Pillai",
+        "B": "C. Rajagopalachari",
+        "C": "K. Kamaraj",
+        "D": "Annie Besant"
+      }
+    },
+    {
+      "id": "HIS_MOD_2014_Q8_CIVIL_DI",
+      "year": 2014,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "The 1929 Session of Indian National Congress is on significance in the history of the Freedom Movement because the:",
+      "opt": {
+        "A": "Attainment of Self-Government was declared as the objective of the Congress.",
+        "B": "Attainment of Poorna Swaraj was adopted as the goal of the Congress.",
+        "C": "Non-Cooperation Movement was launched.",
+        "D": "Decision to participate in the Round Table Conference in London was taken."
+      }
+    },
+    {
+      "id": "HIS_MOD_2013_Q9_CIVIL_DI",
+      "year": 2013,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "The people of India agitated against the arrival of the Simon commission because?",
+      "opt": {
+        "A": "Indians never wanted the review of the working of the act of 1919",
+        "B": "Simon commission recommended the abolition of Dyarchy (Diarchy) in the provinces",
+        "C": "There was no Indian member in the Simon commission",
+        "D": "The Simon commission suggested the partition of the country"
+      }
+    },
+    {
+      "id": "HIS_MOD_2012_Q10_CIVIL_DI",
+      "year": 2012,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "The Lahore Session of the Indian National Congress (1929) is very important in history, because: 1. The Congress passed a resolution demanding complete independence 2. The rift between the extremists and moderates was resolved in that Session 3. A resolution was passed rejecting the two-nation theory in that Session Which of the statements given above is/are correct?",
+      "opt": {
+        "A": "1 Only",
+        "B": "2 & 3",
+        "C": "1 & 3",
+        "D": "None of the above"
+      }
+    },
+    {
+      "id": "HIS_MOD_2012_Q11_CIVIL_DI",
+      "year": 2012,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "Mahatma Gandhi undertook fast unto death in 1932, mainly because:",
+      "opt": {
+        "A": "Round Table Conference failed to satisfy Indian political aspirations",
+        "B": "Congress and Muslim League had differences of opinion",
+        "C": "Ramsay Macdonald announced the Communal Award",
+        "D": "None of the statements a), b) and c) given above is correct in this context"
+      }
+    },
+    {
+      "id": "HIS_MOD_2011_Q12_CIVIL_DI",
+      "year": 2011,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "With reference to the period of Indian freedom struggle, which of the following was/were recommended by the Nehru report? 1. Complete independence for India. 2. Joint electorates for reservation of seats for minorities. 3. Provision of fundamental rights for the people of India in the constitution. Select the correct answer using the codes given below:",
+      "opt": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2 and 3"
+      }
+    },
+    {
+      "id": "HIS_MOD_2010_Q13_CIVIL_DI",
+      "year": 2010,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "For the Karachi session of Indian National Congress in 1931, presided over by Sardar Patel, who drafted the Resolution on Fundamental Rights and Economic Programme?",
+      "opt": {
+        "A": "Mahatma Gandhi",
+        "B": "Pandit Jawaharlal Nehru",
+        "C": "Dr. Rajendra Prasad",
+        "D": "Dr. B. R. Ambedkar"
+      }
+    },
+    {
+      "id": "HIS_MOD_2010_Q14_CIVIL_DI",
+      "year": 2010,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "With reference to the Simon Commission's recommendations, which one of the following statements is correct?",
+      "opt": {
+        "A": "It recommended the replacement of diarchy with responsible government in the province.",
+        "B": "It proposed the setting up of inter -provincial council under the Home Department.",
+        "C": "It suggested the abolition of bicameral legislature at the Centre.",
+        "D": "It recommended the creation of Indian Police Service with a provision for increased pay and allowances for British recruits and compared to Indian recruits."
+      }
+    },
+    {
+      "id": "HIS_MOD_2009_Q15_CIVIL_DI",
+      "year": 2009,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "One of the following began with the Dandi March?",
+      "opt": {
+        "A": "Home Rule Movement",
+        "B": "Non - Cooperation Movement",
+        "C": "Civil Disobedience Movement",
+        "D": "Quit India Movement"
+      }
+    },
+    {
+      "id": "HIS_MOD_2006_Q16_CIVIL_DI",
+      "year": 2006,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "Under whose presidency was the Lahore Session of the Indian National Congress held in the year 1929 wherein a resolution was adopted to gain complete independence from the British?",
+      "opt": {
+        "A": "Bal Gangadhar Tilak",
+        "B": "Gopal Krishna Gokhale",
+        "C": "Jawaharlal Nehru",
+        "D": "Motilal Nehru"
+      }
+    },
+    {
+      "id": "HIS_MOD_2005_Q17_CIVIL_DI",
+      "year": 2005,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "Consider the following statements: 1. In the First Round Table Conference, Dr . Ambedkar demanded separate electorates for the depressed classes. 2. In the Poona Act, special provisions for representation of the depressed people in the local bodies and civil services were made. 3. The Indian National Congress did not take part in the Third Round Table Conference. Which of the statements is/are correct?",
+      "opt": {
+        "A": "1 and 2",
+        "B": "2 and 3",
+        "C": "1 and 3",
+        "D": "1, 2 and 3"
+      }
+    },
+    {
+      "id": "HIS_MOD_2005_Q18_CIVIL_DI",
+      "year": 2005,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "At which Congress Session was the Working Committee authorised to launch a programme of Civil Disobedience?",
+      "opt": {
+        "A": "Bombay",
+        "B": "Lahore",
+        "C": "Lucknow",
+        "D": "Tripuri"
+      }
+    },
+    {
+      "id": "HIS_MOD_2005_Q19_CIVIL_DI",
+      "year": 2005,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "Who among the following drafted the resolution of fundamental rights for the Karachi Session of Congress in 1931?",
+      "opt": {
+        "A": "Dr. B. R. Ambedkar",
+        "B": "Pandit Jawaharlal Nehru",
+        "C": "Dr. Rajendra Prasad",
+        "D": "Sardar Vallabhbhai Patel"
+      }
+    },
+    {
+      "id": "HIS_MOD_2003_Q20_CIVIL_DI",
+      "year": 2003,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "With reference to Indian freedom struggle, which one of the following statements is NOT correct?",
+      "opt": {
+        "A": "The Rowlatt Act aroused a wave of popular indignation and led to the Jallianwala Bagh massacre",
+        "B": "Subhash Chandra Bose formed the Forward Bloc",
+        "C": "Bhagat Singh was one of the founders of Hindustan Republican Socialist Association",
+        "D": "In 1931, the Congress Session at Karachi opposed Gandhi Irwin pact"
+      }
+    },
+    {
+      "id": "HIS_MOD_2003_Q21_CIVIL_DI",
+      "year": 2003,
+      "nodeId": "GS1-HIS-MOD-NATIONAL",
+      "text": "The leader of the Bardoli Satyagraha (1928) was:",
+      "opt": {
+        "A": "Sardar Vallabhbhai Patel",
+        "B": "Mahatma Gandhi",
+        "C": "Vithalbhai J Patel",
+        "D": "Mahadev Desai"
+      }
+    }
+  ],
+  "GS3-ST-GENSCI-BIO-MT04": [
+    {
+      "id": "CA_GENERAL_SCIENCE_2021_Q3",
+      "year": 2021,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "'Triclosan', considered harmful when exposed to high levels for a long time, is most likely present in which of the following? [2021]",
+      "opt": {
+        "A": "Food preservatives",
+        "B": "Fruit-ripening substances",
+        "C": "Reused plastic containers",
+        "D": "Toiletries"
+      }
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE_2016_Q4",
+      "year": 2016,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "Recently, for the first time in our country, which of the following States has declared a particular butterfly as 'State Butterfly'? [2016]",
+      "opt": {
+        "A": "Arunachal Pradesh",
+        "B": "Himachal Pradesh",
+        "C": "Karnataka",
+        "D": "Maharashtra"
+      }
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE_2011_Q5",
+      "year": 2011,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "Recently, \"oil zapper'' was in the news. What is it? [2011]",
+      "opt": {
+        "A": "It is an eco-friendly technology for the remediation of oily sludge and oil spills.",
+        "B": "It is the latest technology developed for under-sea oil exploration.",
+        "C": "It is a genetically engineered high biofuel-yielding maize variety.",
+        "D": "It is the latest technology to control the accidentally caused flames from oil wells."
+      }
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE_2010_Q6",
+      "year": 2010,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "With reference to the treatment of cancerous tumors, a tool called cyber knife has been making the news. In this context, which one of the following statements is not correct? [2010]",
+      "opt": {
+        "A": "It is a robotic image guided system.",
+        "B": "It delivers an extremely precise dose of radiation.",
+        "C": "It has the capability of achieving sub - millimeter accuracy.",
+        "D": "It can map the spread of tumour in the body."
+      }
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE_2010_Q7",
+      "year": 2010,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "Recently, LASIK (Laser Assisted In Situ Keratomileusis) procedure is being made popular for vision correction. Which one of the following statements in this context is not correct? [2010]",
+      "opt": {
+        "A": "LASIK procedure is used to correct refractive errors of the eye.",
+        "B": "It is a procedure that permanently changes the shapes of the cornea.",
+        "C": "It reduces a person's dependence on glasses or contact lenses.",
+        "D": "It is a procedure that can be done on the person of any age."
+      }
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE_2009_Q9",
+      "year": 2009,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "Consider the following: [2009] 1. Camphor 2. Chicory 3. Vanilla Which of the above is/are plant product (s)?",
+      "opt": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1 and 3 only",
+        "D": "1,2 and 3"
+      }
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE_2008_Q10",
+      "year": 2008,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "The release of which one of the following into ponds and wells helps in controlling the mosquitoes? [2008]",
+      "opt": {
+        "A": "Crab",
+        "B": "Dogfish",
+        "C": "Gambusia fish",
+        "D": "Snail"
+      }
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE_2005_Q12",
+      "year": 2005,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "Which one of the following is the landmark performance of Dr. V. Mohan Reddy, an Indian born Doctor working in USA, during February, 2003? [2005]",
+      "opt": {
+        "A": "Research on human stem cell which is likely to revolutionise treatment of deadly disease like cancer.",
+        "B": "Successful open heart procedure called arterial switch performed on an infant.",
+        "C": "Research on genetic engineering which can help in treatment of deadly disease like AIDS.",
+        "D": "Successful brain surgery to revive the function of nearly dead brain of a premature born infant."
+      }
+    },
+    {
+      "id": "CA_GENERAL_SCIENCE_2004_Q13",
+      "year": 2004,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "Tarun Bharat Sangh, an organization based in a village near Alwar (Rajasthan), has become famous because of: [2004]",
+      "opt": {
+        "A": "Cultivation of genetically modified cotton",
+        "B": "Rehabilitation of women victims of AIDS",
+        "C": "Livelihood projects for destitute rural women",
+        "D": "Rain-water harvesting"
+      }
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2016_Q10",
+      "year": 2016,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "Which one of the following is the best description of 'INS Astradharini', that was in the news recently? [2016]",
+      "opt": {
+        "A": "Amphibious warfare ship",
+        "B": "Nuclear-powered submarine",
+        "C": "Torpedo launch and recovery vessel",
+        "D": "Nuclear-powered aircraft carrier"
+      }
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2016_Q11",
+      "year": 2016,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "'Project Loon', sometimes seen in the news, is related to: [2016]",
+      "opt": {
+        "A": "Waste management technology",
+        "B": "Wireless communication technology",
+        "C": "Solar power production technology",
+        "D": "Water conservation technology"
+      }
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2015_Q14",
+      "year": 2015,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "'Beijing Declaration and Platform for Action' often seen in the news, is: [2015]",
+      "opt": {
+        "A": "A strategy to tackle the regional terrorism, an outcome of a meeting of the Shanghai Cooperation Organization.",
+        "B": "A plan of action for sustainable economic growth in the Asia-Pacific Region, an outcome of deliberations of the Asia-Pacific Economic Forum",
+        "C": "An agenda for women's empowerment, an outcome of a World Conference convened by the United Nations",
+        "D": "A strategy to combat wildlife trafficking, a declaration of the East Asia Summit"
+      }
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2009_Q18",
+      "year": 2009,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "For outstanding contribution to which one of the following fields is Shanti Swarup Bhatnagar Prize given? [2009]",
+      "opt": {
+        "A": "Litera ture",
+        "B": "Performing arts",
+        "C": "Science",
+        "D": "Social service"
+      }
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2008_Q24",
+      "year": 2008,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "In the year 2007, an earthquake led to massive radioactive water leakage in the largest nuclear plant in the world. In which country did it occur? [2008]",
+      "opt": {
+        "A": "Germany",
+        "B": "Canada",
+        "C": "Japan",
+        "D": "USA"
+      }
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2006_Q27",
+      "year": 2006,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "Who is the President of the Council of Scientific and Industrial Reseach? [2006]",
+      "opt": {
+        "A": "President of India",
+        "B": "Vice-President of India",
+        "C": "Prime Minister of India",
+        "D": "Minister of Science & Tech"
+      }
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2006_Q28",
+      "year": 2006,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "Which one among the following as awarded the CSIR. Diamond Jubilee Technology Award 2004 in September, 2005 by the Prime Minister of India? [2006]",
+      "opt": {
+        "A": "Infosys Technologies Ltd.",
+        "B": "Midas Communication Technologies",
+        "C": "Tata Consultancy Services",
+        "D": "Biocon India Ltd."
+      }
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2006_Q29",
+      "year": 2006,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "Match List . I (Indian Scientist/Scholar) with List-II (Area of work) and select the correct answer using the code given below the lists: [2006] List I List II A. C.N.R. Rao 1. Telecommunication B. Jagdish Bhagwati 2. Physics C. G.N. Ramchandran 3. Economics D. Ashok Jhunjhunwala 4. Solid State Chemistry and Material Science A B C D",
+      "opt": {
+        "A": "Code A",
+        "B": "Code B",
+        "C": "Code C",
+        "D": "Code D"
+      }
+    },
+    {
+      "id": "CA_SCIENCE_TECH_2004_Q35",
+      "year": 2004,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "INS Trishul acquired by the Indian Navy in 2003 has been built by: [2004]",
+      "opt": {
+        "A": "Israel",
+        "B": "USA",
+        "C": "Russia",
+        "D": "France"
+      }
+    },
+    {
+      "id": "CA_SCIENCE_TECH_1999_Q39",
+      "year": 1999,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "The first feature film (talkie) to be produced in India was: [1999]",
+      "opt": {
+        "A": "Hatimtai",
+        "B": "Alam Ara",
+        "C": "Pundalik",
+        "D": "Raja Harishchandra"
+      }
+    },
+    {
+      "id": "CA_SCIENCE_TECH_1999_Q40",
+      "year": 1999,
+      "nodeId": "GS3-ST-GENSCI",
+      "text": "The given figure shows a portion of Southern India. The proposed site (Koodankulam) for the construction of two 1000 MW nuclear power plants has been labelled in the map as: [1999]",
+      "opt": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D"
+      }
+    }
+  ],
+  "GS2-IR-INSTITUTIONS-MT04": [
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2025_Q1",
+      "year": 2025,
+      "nodeId": "GS2-IR-GEOPOLITICS",
+      "text": "Consider the following countries: [2025] I. Austria II. Bulgaria III. Croatia IV. Serbia V. Sweden VI. North Macedonia How many of the above are members of the North Atlantic Treaty Organization?",
+      "opt": {
+        "A": "Only three",
+        "B": "Only four",
+        "C": "Only five",
+        "D": "All the six"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2024_Q2",
+      "year": 2024,
+      "nodeId": "GS2-IR-GEOPOLITICS",
+      "text": "Consider the following countries: [2024] 1. Italy 2. Japan 3. Nigeria 4. South Korea 5. South Africa Which of the above countries are frequently mentioned in the media for their Iow birth rates, or ageing population or declining population?",
+      "opt": {
+        "A": "1, 2 and 4",
+        "B": "1, 3 and 5",
+        "C": "2 and 4 only",
+        "D": "3 and 5 only"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2024_Q3",
+      "year": 2024,
+      "nodeId": "GS2-IR-CURRENT",
+      "text": "Which one of the following is the correct description of \"100 Million Farmers\"? [2024] (",
+      "opt": {
+        "A": "It is a platform for accelerating the transition towards food and water systems that are net-zero (carbon), nature-positive and that aims to increase farmer resilience. (",
+        "B": "It is an international alliance and a network of individuals and farming organisations interested in supporting and strengthening the development of the organic animal husbandry. (",
+        "C": "It is a digital platform fully integrated with service providers and built on blockchain that lets buyers. sellers and third parties trade fertilizers quickly and securely. (",
+        "D": "It is a platform with the mission of encouraging the farmers to form Farmer Product Organisations or Agribusiness Consortiums, thus facilitating the access to global open markets to sell their products."
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2024_Q4",
+      "year": 2024,
+      "nodeId": "GS2-IR-INTL-ORG",
+      "text": "Consider the following statements: [2024] 1. India is a member of the International Grains Council. 2. A country needs to be a member of the International Grains Council for exporting or importing rice and wheat. Which of the statements given above is/are correct? (",
+      "opt": {
+        "A": "1 only (",
+        "B": "2 only (",
+        "C": "Both I and 2 (",
+        "D": "Neither I nor 2"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2023_Q5",
+      "year": 2023,
+      "nodeId": "GS2-IR-GEOPOLITICS",
+      "text": "Which one of the following countries has been suffering from decades of civil strife and food shortages and was in news in the recent past for its very severe famine? [2023]",
+      "opt": {
+        "A": "Angola",
+        "B": "Costa Rica",
+        "C": "Ecuador",
+        "D": "Somalia"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2023_Q6",
+      "year": 2023,
+      "nodeId": "GS2-IR-INTL-ORG",
+      "text": "Consider the following statements about G-20: [2023] 1. The G-20 group was originally established as a platform for the Finance Ministers and Central Bank Governors to discuss the international economic and financial issues. 2. Digital public infrastructure is one of India's G-20 priorities. Which of the statements given above is/are correct?",
+      "opt": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2023_Q7",
+      "year": 2023,
+      "nodeId": "GS2-IR-CURRENT",
+      "text": "Consider the following infrastructure sectors: [2023] 1. Affordable housing 2. Mass rapid transport 3. Health care 4. Renewable energy On how many of the above does UNOPS Sustainable Investments in Infrastructure and Innovation (S3i) initiative focus for its investments?",
+      "opt": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All four"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2023_Q8",
+      "year": 2023,
+      "nodeId": "GS2-IR-INTL-ORG",
+      "text": "Consider the following statements: [2023] 1. Recently, all the countries of the United Nations have adopted the first-ever compact for international migration, the 'Global Compact for Safe, Orderly and Regular Migration (GCM)'. 2. The objectives and commitments stated in the GCM are binding on the UN member countries. 3. The GCM addresses internal migration or internally displaced people also in its objectives and commitments. How many of the above statements are correct?",
+      "opt": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2023_Q9",
+      "year": 2023,
+      "nodeId": "GS2-IR-GEOPOLITICS",
+      "text": "Consider the following statements: [2023] The 'Stability and Growth Pact' of the European Union is a treaty that 1. Limits the levels of the budgetary deficit of the countries of the European Union 2. Makes the countries of the European Union to share their infrastructure facilities 3. Enables the countries of the European Union to share their technologies How many of the above statements are correct?",
+      "opt": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "All three",
+        "D": "None"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2022_Q10",
+      "year": 2022,
+      "nodeId": "GS2-IR-INTL-ORG",
+      "text": "Consider the following statements: [2022] 1. Bidibidi is a large refugee settlement in north- western Kenya. 2. Some people who fled from the South Sudan civil war live in Bidibidi. 3. Some people who fled from the civil war in Somalia live in the Dadaab refugee complex in Kenya. Which of the statements given above is/are correct?",
+      "opt": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "3 only"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2022_Q11",
+      "year": 2022,
+      "nodeId": "GS2-IR-INTL-ORG",
+      "text": "With reference to the \"United Nations Credentials Committee\", consider the following statements: [2022] 1. It is a committee set up by the UN Security Council and works under its supervision. 2. It traditionally meets in March, June and September every year. 3. It assesses the credentials of all UN members before submitting a report to the General Assembly for approval. Which of the statements given above is/are correct?",
+      "opt": {
+        "A": "3 only",
+        "B": "1 and 3",
+        "C": "2 and 3",
+        "D": "1 and 2"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2022_Q12",
+      "year": 2022,
+      "nodeId": "GS2-IR-CURRENT",
+      "text": "Which one of the following statements best describes the 'Polar Code'? [2022]",
+      "opt": {
+        "A": "It is the international code of safety for ships operating in polar waters.",
+        "B": "It is the agreement of the countries around the North Pole regarding the demarcation of their territories in the polar region.",
+        "C": "It is a set of norms to be followed by the countries whose scientists undertake research studies in the North Pole and South Pole.",
+        "D": "It is a trade and security agreement of the member countries of the Arctic Council."
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2022_Q13",
+      "year": 2022,
+      "nodeId": "GS2-IR-INTL-ORG",
+      "text": "With reference to the United Nations General Assembly, consider the following statements: [2022] 1. The UN General Assembly can grant observer status to the non-member States. 2. Inter-governmental organisations can seek observer status in the UN General Assembly. 3. Permanent Observers in the UN General Assembly can maintain missions at the UN headquarters. Which of the statements given above are correct?",
+      "opt": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2022_Q14",
+      "year": 2022,
+      "nodeId": "GS2-IR-GEOPOLITICS",
+      "text": "Consider the following countries: [2022] 1. Armenia 2. Azerbaijan 3. Croatia 4. Romania 5. Uzbekistan Which of the above are members of the Organization of Turkic States?",
+      "opt": {
+        "A": "1, 2 and 4",
+        "B": "1 and 3",
+        "C": "2 and 5",
+        "D": "3, 4 and 5"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2022_Q15",
+      "year": 2022,
+      "nodeId": "GS2-IR-INTL-ORG",
+      "text": "With reference to the United Nations Convention on the Law of Sea, consider the following statements: [2022] 1. A coastal state has the right to establish the breadth of its territorial sea up to a limit not exceeding 12 nautical miles, measured from baseline determined in accordance with the convention. 2. Ships of all states, whether coastal or land-locked, enjoy the right of innocent passage through the territorial sea. 3. The Exclusive Economic Zone shall not extend beyond 200 nautical miles from the baseline from which the breadth of the territorial sea is measured. Which of the statements given above are correct?",
+      "opt": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2020_Q16",
+      "year": 2020,
+      "nodeId": "GS2-IR-INTL-ORG",
+      "text": "In India, why are some nuclear reactors kept under \"IAEA safeguards\" while others are not? [2020]",
+      "opt": {
+        "A": "Some use uranium and others use thorium",
+        "B": "Some use imported uranium and others use domestic supplies",
+        "C": "Some are operated by foreign enterprises and others are operated by domestic enterprises",
+        "D": "Some are State-owned and others are privately- owned"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2019_Q17",
+      "year": 2019,
+      "nodeId": "GS2-IR-GEOPOLITICS",
+      "text": "Recently, India signed a deal known as 'Action Plan for Prioritization and Implementation of Cooperation Areas in the Nuclear Field' with which of the following countries? [2019]",
+      "opt": {
+        "A": "Japan",
+        "B": "Russia",
+        "C": "The United Kingdom",
+        "D": "The United States of America"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2018_Q18",
+      "year": 2018,
+      "nodeId": "GS2-IR-GEOPOLITICS",
+      "text": "Very recently, in which of the following countries having lakhs of people either suffered from severe famine/acute malnutrition or died due to starvation caused by war/ethnic conflicts? [2018]",
+      "opt": {
+        "A": "Angola and Zambia",
+        "B": "Morocco and Tunisia",
+        "C": "Venezuela and Colombia",
+        "D": "Yemen and South Sudan"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2018_Q19",
+      "year": 2018,
+      "nodeId": "GS2-IR-CURRENT",
+      "text": "The term \"two state solution\" is sometimes mentioned in the news in the context of the affairs of: [2018]",
+      "opt": {
+        "A": "China",
+        "B": "Israel",
+        "C": "Iraq",
+        "D": "Yemen"
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2018_Q20",
+      "year": 2018,
+      "nodeId": "GS2-IR-CURRENT",
+      "text": "\"Rule of the law Index\" is released by which of the following? [2018]",
+      "opt": {
+        "A": "Amnesty International",
+        "B": "International Court of Justice",
+        "C": "The Office of UN Commissioner of Human Rights",
+        "D": "World Justice Project"
+      }
+    }
+  ]
+}

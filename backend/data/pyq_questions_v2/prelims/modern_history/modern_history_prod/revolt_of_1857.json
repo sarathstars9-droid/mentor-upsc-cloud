@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "History",
+  "module": "Modern History",
+  "topicName": "Revolt of 1857",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "sectionId": "GS1-HIS-MOD",
+  "topicId": "revolt_of_1857",
+  "defaultNodeId": "GS1-HIS-MOD-1857",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who was the Governor General of India during the Sepoy Mutiny?",
+      "options": {
+        "A": "Lord Canning",
+        "B": "Lord Dalhousie",
+        "C": "Lord Hardinge",
+        "D": "Lord Lytton"
+      },
+      "correctAnswer": "A",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2006_Q1_REVOLT_O",
+      "nodeId": "GS1-HIS-MOD-1857",
+      "syllabusNodeId": "GS1-HIS-MOD-1857",
+      "topicId": "revolt_of_1857",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Revolt of 1857",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 2,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the revolt of the year 1857, who of the following was betrayed by a friend captured and put to death by the British?",
+      "options": {
+        "A": "Nana Sahib",
+        "B": "Kunwar Singh",
+        "C": "Khan Bahadur Khan",
+        "D": "Tantia Tope"
+      },
+      "correctAnswer": "D",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2006_Q2_REVOLT_O",
+      "nodeId": "GS1-HIS-MOD-1857",
+      "syllabusNodeId": "GS1-HIS-MOD-1857",
+      "topicId": "revolt_of_1857",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Revolt of 1857",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 3,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following places did Kunwar Singh, a prominent leader of the belong to?",
+      "options": {
+        "A": "Bihar",
+        "B": "Madhya Pradesh",
+        "C": "Rajasthan",
+        "D": "Uttar Pradesh"
+      },
+      "correctAnswer": "A",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2005_Q3_REVOLT_O",
+      "nodeId": "GS1-HIS-MOD-1857",
+      "syllabusNodeId": "GS1-HIS-MOD-1857",
+      "topicId": "revolt_of_1857",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Revolt of 1857",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 4,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following territories was not affected by the ?",
+      "options": {
+        "A": "Jhansi",
+        "B": "Chittor",
+        "C": "Jagdishpur",
+        "D": "Lucknow B) The The , Centres, Leaders and other Political Events associated with it, including the Suppression of Revolt"
+      },
+      "correctAnswer": "B",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2005_Q4_REVOLT_O",
+      "nodeId": "GS1-HIS-MOD-1857",
+      "syllabusNodeId": "GS1-HIS-MOD-1857",
+      "topicId": "revolt_of_1857",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Revolt of 1857",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 5,
+      "year": 2000,
+      "questionType": "MCQ_SINGLE",
+      "question": "\"In this instance we could not play off the Mohammedans against the Hindus\". To which one of the following events did this remark of Aitchison relate?",
+      "options": {
+        "A": "",
+        "B": "Champaran Satyagraha (1917)",
+        "C": "Khilafat and Non Cooperation Movement (1919 22)",
+        "D": "August Movement of 1942"
+      },
+      "correctAnswer": "A",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_2000_Q5_REVOLT_O",
+      "nodeId": "GS1-HIS-MOD-1857",
+      "syllabusNodeId": "GS1-HIS-MOD-1857",
+      "topicId": "revolt_of_1857",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Revolt of 1857",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    },
+    {
+      "questionNumber": 6,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "The educated middle class in India:",
+      "options": {
+        "A": "Opposed the",
+        "B": "Supported the",
+        "C": "Remained neutral to the",
+        "D": "Fought against native rulers"
+      },
+      "correctAnswer": "C",
+      "reviewRequired": false,
+      "_notes": [],
+      "id": "HIS_MOD_1998_Q6_REVOLT_O",
+      "nodeId": "GS1-HIS-MOD-1857",
+      "syllabusNodeId": "GS1-HIS-MOD-1857",
+      "topicId": "revolt_of_1857",
+      "sectionId": "GS1-HIS-MOD",
+      "microTheme": "Revolt of 1857",
+      "confidenceBand": "high",
+      "source": "UPSC PYQ"
+    }
+  ]
+}

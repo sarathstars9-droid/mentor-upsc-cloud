@@ -74,7 +74,7 @@ export async function getDayAggregate(userId, dayKey) {
        SUM(${ACTUAL_SECONDS_EXPR})                                AS total_actual_seconds,
        SUM(total_pause_seconds)                                   AS total_pause_seconds,
        COUNT(DISTINCT subject) FILTER (WHERE started_at IS NOT NULL) AS subjects_studied
-     FROM study_blocks
+     FROM public.study_blocks
      WHERE user_id = $1 AND day_key = $2`,
     [userId, dayKey]
   );
@@ -86,7 +86,7 @@ export async function getDayAggregate(userId, dayKey) {
 export async function getStudiedBlocks(userId, startDayKey, endDayKey) {
   const { rows } = await pool.query(
     `SELECT ${STUDIED_BLOCK_SELECT}
-     FROM study_blocks
+     FROM public.study_blocks
      WHERE user_id = $1
        AND day_key >= $2
        AND day_key <= $3
@@ -107,7 +107,7 @@ export async function getSubjectWiseSplit(userId, startDayKey, endDayKey) {
        COUNT(*) FILTER (WHERE status IN ('completed','partial'))  AS completed_count,
        SUM(planned_minutes)                                       AS planned_minutes,
        SUM(${ACTUAL_SECONDS_EXPR})                                AS actual_seconds
-     FROM study_blocks
+     FROM public.study_blocks
      WHERE user_id = $1
        AND day_key >= $2
        AND day_key <= $3
@@ -131,7 +131,7 @@ export async function getTopicWiseSplit(userId, startDayKey, endDayKey) {
        COUNT(*)                                                   AS block_count,
        COUNT(*) FILTER (WHERE status IN ('completed','partial'))  AS completed_count,
        SUM(${ACTUAL_SECONDS_EXPR})                                AS actual_seconds
-     FROM study_blocks
+     FROM public.study_blocks
      WHERE user_id = $1
        AND day_key >= $2
        AND day_key <= $3
@@ -151,7 +151,7 @@ export async function getStageWiseSplit(userId, startDayKey, endDayKey) {
        COALESCE(stage, 'unspecified')                             AS stage,
        COUNT(*)                                                   AS block_count,
        SUM(${ACTUAL_SECONDS_EXPR})                                AS actual_seconds
-     FROM study_blocks
+     FROM public.study_blocks
      WHERE user_id = $1
        AND day_key >= $2
        AND day_key <= $3
@@ -171,7 +171,7 @@ export async function getSourceTypeSplit(userId, startDayKey, endDayKey) {
        COALESCE(source_type, 'unspecified')                       AS source_type,
        COUNT(*)                                                   AS block_count,
        SUM(${ACTUAL_SECONDS_EXPR})                                AS actual_seconds
-     FROM study_blocks
+     FROM public.study_blocks
      WHERE user_id = $1
        AND day_key >= $2
        AND day_key <= $3
@@ -195,7 +195,7 @@ export async function getDayWiseBreakdown(userId, startDayKey, endDayKey) {
        SUM(planned_minutes)                                       AS planned_minutes,
        SUM(${ACTUAL_SECONDS_EXPR})                                AS actual_seconds,
        SUM(total_pause_seconds)                                   AS pause_seconds
-     FROM study_blocks
+     FROM public.study_blocks
      WHERE user_id = $1
        AND day_key >= $2
        AND day_key <= $3
@@ -217,7 +217,7 @@ export async function getWeeklyBreakdown(userId, monthStart, monthEnd) {
        COUNT(*) FILTER (WHERE started_at IS NOT NULL)            AS started_blocks,
        COUNT(*) FILTER (WHERE status IN ('completed','partial'))  AS completed_blocks,
        SUM(${ACTUAL_SECONDS_EXPR})                                AS actual_seconds
-     FROM study_blocks
+     FROM public.study_blocks
      WHERE user_id = $1
        AND day_key >= $2
        AND day_key <= $3
@@ -240,14 +240,14 @@ export async function getStreak(userId, endDayKey) {
   const { rows } = await pool.query(
     `WITH study_days AS (
        SELECT DISTINCT day_key::DATE AS d
-       FROM study_blocks
+       FROM public.study_blocks
        WHERE user_id = $1
          AND started_at IS NOT NULL
          AND day_key <= $2
      ),
      ranked AS (
        SELECT d,
-              d - (ROW_NUMBER() OVER (ORDER BY d DESC) * INTERVAL '1 day') AS grp
+              d - (ROW_NUMBER() OVER (ORDER BY d DESC)::INTEGER * INTERVAL '1 day') AS grp
        FROM study_days
      ),
      groups AS (
@@ -280,7 +280,7 @@ export async function getRangeAggregate(userId, startDayKey, endDayKey) {
        SUM(${ACTUAL_SECONDS_EXPR})                                 AS total_actual_seconds,
        SUM(total_pause_seconds)                                    AS total_pause_seconds,
        COUNT(DISTINCT subject) FILTER (WHERE started_at IS NOT NULL) AS subjects_studied
-     FROM study_blocks
+     FROM public.study_blocks
      WHERE user_id = $1 AND day_key >= $2 AND day_key <= $3`,
     [userId, startDayKey, endDayKey]
   );
@@ -292,7 +292,7 @@ export async function getRangeAggregate(userId, startDayKey, endDayKey) {
 export async function countStudyDays(userId, startDayKey, endDayKey) {
   const { rows } = await pool.query(
     `SELECT COUNT(DISTINCT day_key) AS study_days
-     FROM study_blocks
+     FROM public.study_blocks
      WHERE user_id = $1
        AND day_key >= $2
        AND day_key <= $3
@@ -314,7 +314,7 @@ export async function getMissedBlocks(userId, startDayKey, endDayKey) {
        day_key,
        status,
        planned_minutes
-     FROM study_blocks
+     FROM public.study_blocks
      WHERE user_id = $1
        AND day_key >= $2
        AND day_key <= $3

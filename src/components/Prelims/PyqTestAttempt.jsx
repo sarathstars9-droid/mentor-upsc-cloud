@@ -57,10 +57,6 @@ function buildRcDisplayMeta(items = []) {
     let questionNo = 0;
     let passageNo = 0;
     return items.map((item, index) => {
-        if (item?.isPassage) {
-            passageNo += 1;
-            return { index, isPassage: true, passageNo, questionNo: null, displayLabel: `P${passageNo}` };
-        }
         questionNo += 1;
         return { index, isPassage: false, passageNo: null, questionNo, displayLabel: String(questionNo) };
     });
@@ -144,6 +140,10 @@ export default function PyqTestAttempt({
     }, [testStartTime]);
 
     const safeQuestions = Array.isArray(questions) ? questions : [];
+    console.log("[ATTEMPT QUESTIONS COUNT]", {
+        received: questions?.length,
+        normalized: safeQuestions?.length,
+    });
     const displayMeta = useMemo(() => buildRcDisplayMeta(safeQuestions), [safeQuestions]);
     const totalAnswerable = displayMeta.filter((m) => !m.isPassage).length;
 
@@ -199,6 +199,8 @@ export default function PyqTestAttempt({
             </div>
         );
     }
+
+    console.log("[RENDER COUNT]", safeQuestions.length);
 
     return (
         <div style={{ position: "relative", minWidth: 0 }}>

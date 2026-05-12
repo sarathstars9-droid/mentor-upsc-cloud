@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "mentoros-global-audit-v1",
+  "generatedAt": "2026-04-24T13:34:40.471Z",
+  "totalFiles": 155,
+  "loadedFiles": 121,
+  "skippedFiles": 34,
+  "totalLoaded": 4063,
+  "skippedQuestions": 1,
+  "duplicatesRemoved": 172,
+  "subjectsFound": [
+    "ancient_history",
+    "csat",
+    "current_affairs",
+    "economy",
+    "environment",
+    "geography",
+    "indian_polity",
+    "international_relations",
+    "medieval_history",
+    "modern_history",
+    "science_tech"
+  ],
+  "bySubject": {
+    "ancient_history": 217,
+    "csat": 771,
+    "current_affairs": 439,
+    "economy": 583,
+    "environment": 344,
+    "geography": 433,
+    "indian_polity": 378,
+    "international_relations": 87,
+    "medieval_history": 106,
+    "modern_history": 299,
+    "science_tech": 406
+  },
+  "fileErrors": []
+}

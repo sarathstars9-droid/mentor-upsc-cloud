@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "mentoros-ca-air1-validation-v1",
+  "totalQuestions": 456,
+  "topicFiles": 12,
+  "yearRange": {
+    "min": 1995,
+    "max": 2025
+  },
+  "yearWiseCounts": {
+    "1995": 10,
+    "1996": 12,
+    "1997": 7,
+    "1998": 27,
+    "1999": 18,
+    "2000": 4,
+    "2001": 6,
+    "2002": 4,
+    "2003": 2,
+    "2004": 18,
+    "2005": 51,
+    "2006": 45,
+    "2007": 30,
+    "2008": 40,
+    "2009": 48,
+    "2010": 13,
+    "2011": 5,
+    "2012": 2,
+    "2014": 8,
+    "2015": 16,
+    "2016": 17,
+    "2017": 6,
+    "2018": 6,
+    "2019": 2,
+    "2020": 4,
+    "2021": 7,
+    "2022": 12,
+    "2023": 14,
+    "2024": 14,
+    "2025": 8
+  },
+  "duplicateIds": 0,
+  "badAnswers": 0,
+  "badAnswerIds": [],
+  "emptyOptions": 0,
+  "emptyOptionIds": [],
+  "reviewRequired": 0,
+  "reviewRequiredIds": [],
+  "matchingQuestions": 46,
+  "codeOnlyMatchingQuestions": 14,
+  "codeOnlyMatchingIds": [
+    "CA_INTERNATIONAL_RELATIONS_2008_Q59",
+    "CA_ECONOMY_BANKING_2007_Q33",
+    "CA_ECONOMY_BANKING_2006_Q35",
+    "CA_ECONOMY_BANKING_2006_Q37",
+    "CA_ENVIRONMENT_ECOLOGY_2004_Q17",
+    "CA_SCIENCE_TECH_2006_Q29",
+    "CA_ART_CULTURE_2006_Q4",
+    "CA_AWARDS_BOOKS_PERSONALITIES_2007_Q8",
+    "CA_AWARDS_BOOKS_PERSONALITIES_2007_Q9",
+    "CA_AWARDS_BOOKS_PERSONALITIES_2007_Q10",
+    "CA_MISC_GK_2008_Q22",
+    "CA_MISC_GK_2007_Q29",
+    "CA_MISC_GK_2006_Q41",
+    "CA_MISC_GK_2005_Q46"
+  ],
+  "topicReports": [
+    {
+      "file": "ca_polity_governance.json",
+      "topicName": "Polity & Governance",
+      "count": 2,
+      "matchingQuestions": 0,
+      "normalizedCodeOnlyMatching": 0
+    },
+    {
+      "file": "ca_international_relations.json",
+      "topicName": "International Relations",
+      "count": 109,
+      "matchingQuestions": 6,
+      "normalizedCodeOnlyMatching": 1
+    },
+    {
+      "file": "ca_economy_banking.json",
+      "topicName": "Economy & Banking",
+      "count": 55,
+      "matchingQuestions": 6,
+      "normalizedCodeOnlyMatching": 3
+    },
+    {
+      "file": "ca_environment_ecology.json",
+      "topicName": "Environment & Ecology",
+      "count": 20,
+      "matchingQuestions": 1,
+      "normalizedCodeOnlyMatching": 1
+    },
+    {
+      "file": "ca_science_tech.json",
+      "topicName": "Science & Technology",
+      "count": 45,
+      "matchingQuestions": 3,
+      "normalizedCodeOnlyMatching": 1
+    },
+    {
+      "file": "ca_geography.json",
+      "topicName": "Geography",
+      "count": 34,
+      "matchingQuestions": 0,
+      "normalizedCodeOnlyMatching": 0
+    },
+    {
+      "file": "ca_art_culture.json",
+      "topicName": "Art & Culture",
+      "count": 7,
+      "matchingQuestions": 2,
+      "normalizedCodeOnlyMatching": 1
+    },
+    {
+      "file": "ca_history.json",
+      "topicName": "History",
+      "count": 8,
+      "matchingQuestions": 0,
+      "normalizedCodeOnlyMatching": 0
+    },
+    {
+      "file": "ca_awards_books_personalities.json",
+      "topicName": "Awards, Books & Personalities",
+      "count": 27,
+      "matchingQuestions": 8,
+      "normalizedCodeOnlyMatching": 3
+    },
+    {
+      "file": "ca_sports.json",
+      "topicName": "Sports",
+      "count": 41,
+      "matchingQuestions": 4,
+      "normalizedCodeOnlyMatching": 0
+    },
+    {
+      "file": "ca_general_science.json",
+      "topicName": "General Science",
+      "count": 14,
+      "matchingQuestions": 0,
+      "normalizedCodeOnlyMatching": 0
+    },
+    {
+      "file": "ca_misc_gk.json",
+      "topicName": "Misc GK",
+      "count": 94,
+      "matchingQuestions": 16,
+      "normalizedCodeOnlyMatching": 4
+    }
+  ],
+  "notes": [
+    "Rebuilt from DOCX source truth, not old JSON.",
+    "Fake metadata rows removed.",
+    "Answers are taken from DOCX answer keys.",
+    "Matching questions restored as MATCHING. Where DOCX did not preserve code-row text, Code A-D labels are retained with matchingNote.",
+    "Microthemes and nodeIds upgraded to AIR-1 level heuristics."
+  ]
+}

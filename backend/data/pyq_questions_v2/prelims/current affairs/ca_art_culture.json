@@ -1,0 +1,222 @@
+{
+  "schemaVersion": "mentoros-ca-air1-v1",
+  "subject": "Current Affairs + GK",
+  "mode": "Option B",
+  "productionStatus": "AIR1_FINAL",
+  "topicName": "Art & Culture",
+  "topicId": "ca_art_culture",
+  "totalQuestions": 7,
+  "questions": [
+    {
+      "id": "CA_ART_CULTURE_2015_Q1",
+      "questionNumber": 1,
+      "year": 2015,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following was given classical language status recently? [2015]",
+      "options": {
+        "A": "Odia",
+        "B": "Konkani",
+        "C": "Bhojpuri",
+        "D": "Assamese"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Art & Culture",
+      "topicId": "ca_art_culture",
+      "nodeId": "GS1-ART-CULTURE-CURRENT",
+      "syllabusNodeId": "GS1-ART-CULTURE-CURRENT",
+      "microTheme": "art-and-culture",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part1 / Q53"
+    },
+    {
+      "id": "CA_ART_CULTURE_2009_Q2",
+      "questionNumber": 2,
+      "year": 2009,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Recently, which one of the following was included in the UNESCO's World Heritage list? [2009]",
+      "options": {
+        "A": "Dilwara Temple",
+        "B": "Kalka-Shimla Railway",
+        "C": "Bhiterkanika Mangrove area",
+        "D": "Visakhapatnam to araku valley railway line"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Art & Culture",
+      "topicId": "ca_art_culture",
+      "nodeId": "GS1-ART-CULTURE-CURRENT",
+      "syllabusNodeId": "GS1-ART-CULTURE-CURRENT",
+      "microTheme": "heritage-unesco",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q42"
+    },
+    {
+      "id": "CA_ART_CULTURE_2008_Q3",
+      "questionNumber": 3,
+      "year": 2008,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Elizabeth Hawley is well-known for her writing relating to which one of the following? [2008]",
+      "options": {
+        "A": "Historical monuments in India",
+        "B": "Regional dance in India",
+        "C": "Himalayan expeditions",
+        "D": "Wildlife in India"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Art & Culture",
+      "topicId": "ca_art_culture",
+      "nodeId": "GS1-ART-CULTURE-CURRENT",
+      "syllabusNodeId": "GS1-ART-CULTURE-CURRENT",
+      "microTheme": "art-and-culture",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q44"
+    },
+    {
+      "id": "CA_ART_CULTURE_2006_Q4",
+      "questionNumber": 4,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List-1 with List-II and select the correct, answer using the code given below the lists: [2006] List-I List-II A. E.C.G. Sudarshan 1. Theatre B. V. Shanta 2. Violin C. T.N. Krishnan 3. Research in Physics D. Mahesh Dattani 4. Cancer treatment 5. Water-harvesting A B C D",
+      "options": {
+        "A": "Code A",
+        "B": "Code B",
+        "C": "Code C",
+        "D": "Code D"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Art & Culture",
+      "topicId": "ca_art_culture",
+      "nodeId": "GS1-ART-CULTURE-CURRENT",
+      "syllabusNodeId": "GS1-ART-CULTURE-CURRENT",
+      "microTheme": "art-and-culture",
+      "type": "current_affairs_gk",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q12",
+      "matchingNote": "Source DOCX did not preserve code-row text; normalized as Code A-D while preserving answer key."
+    },
+    {
+      "id": "CA_ART_CULTURE_2005_Q5",
+      "questionNumber": 5,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Recently, to which of the following countries did India offer to build Buddha Temple? [2005]",
+      "options": {
+        "A": "China",
+        "B": "Myanmar",
+        "C": "Thailand",
+        "D": "Vietnam"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Art & Culture",
+      "topicId": "ca_art_culture",
+      "nodeId": "GS1-ART-CULTURE-CURRENT",
+      "syllabusNodeId": "GS1-ART-CULTURE-CURRENT",
+      "microTheme": "places-in-news",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q82"
+    },
+    {
+      "id": "CA_ART_CULTURE_1999_Q6",
+      "questionNumber": 6,
+      "year": 1999,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: [1999] List I List II I. Pandit Vishnu Digamber Paluskar A) Introduced the scheme of Raga classification of Indian music II. Venkatamahi B) Proponent of Carnatic music III. Shyama Shastri C) Proponent of the Khayal form of Hindustani music IV. Amir Khusru D) Wrote the music for the song 'Vande Mataram' Codes:",
+      "options": {
+        "A": "I-D, II-A, III-C, IV-B",
+        "B": "I-D, II-A, III-B, IV-C",
+        "C": "I-A, II-D, III-C, IV-B",
+        "D": "I-A, II-D, III-B, IV-C"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Art & Culture",
+      "topicId": "ca_art_culture",
+      "nodeId": "GS1-ART-CULTURE-CURRENT",
+      "syllabusNodeId": "GS1-ART-CULTURE-CURRENT",
+      "microTheme": "art-and-culture",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q2"
+    },
+    {
+      "id": "CA_ART_CULTURE_1996_Q7",
+      "questionNumber": 7,
+      "year": 1996,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following temples figured in the news regarding the institution of the Devadasis? [1996]",
+      "options": {
+        "A": "Jagannath temple, Puri",
+        "B": "Pasupatinath temple, Kathmandu",
+        "C": "Kandariyamahadev temple, Khajuraho",
+        "D": "Chaunsathyogini temple, Bheraghat"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Art & Culture",
+      "topicId": "ca_art_culture",
+      "nodeId": "GS1-ART-CULTURE-CURRENT",
+      "syllabusNodeId": "GS1-ART-CULTURE-CURRENT",
+      "microTheme": "art-and-culture",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q47"
+    }
+  ]
+}

@@ -18,6 +18,8 @@
  * ─────────────────────────────────────────────────────────────
  */
 
+import { BACKEND_URL } from "../config";
+
 // ───────────────────────────────────────────────────────
 // STORAGE KEYS
 // ───────────────────────────────────────────────────────
@@ -26,7 +28,6 @@ const ATTEMPTS_KEY = "prelims_attempts_v2";
 
 const MAX_MISTAKES = 2000;
 const MAX_ATTEMPTS = 500;
-import { BACKEND_URL } from "../config";
 const API_BASE = `${BACKEND_URL}/api/mistakes`;
 const DEFAULT_USER_ID = "user_1";
 
@@ -35,23 +36,13 @@ const DEFAULT_USER_ID = "user_1";
 // ───────────────────────────────────────────────────────
 
 function safeRead(key, fallback) {
-    try {
-        const raw = localStorage.getItem(key);
-        if (!raw) return fallback;
-        const parsed = JSON.parse(raw);
-        return Array.isArray(parsed) ? parsed : fallback;
-    } catch {
-        return fallback;
-    }
+    // localStorage removed
+    return fallback;
 }
 
 function safeWrite(key, value) {
-    try {
-        localStorage.setItem(key, JSON.stringify(value));
-        return true;
-    } catch {
-        return false;
-    }
+    // localStorage removed
+    return false;
 }
 
 function uid() {
@@ -179,195 +170,51 @@ function classifyMistakeType(status, confidence) {
 // TEST ID BUILDER  (stable, human-readable)
 // ───────────────────────────────────────────────────────
 
-export function buildTestId({
-    sourceType,
-    paper = "GS",
-    year,
-    subject,
-    topic,
-    subtopic,
-    customLabel,
-}) {
-    const safe = (s) =>
-        String(s || "")
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, "_")
-            .replace(/^_|_$/g, "");
-
-    if (sourceType === "full_length") {
-        return `full_length_${safe(paper)}_${safe(year)}`;
-    }
-    if (sourceType === "institutional") {
-        const parts = ["institutional", safe(customLabel || "test")];
-        if (subject) parts.push(safe(subject));
-        if (topic) parts.push(safe(topic));
-        return parts.join("_");
-    }
-    if (sourceType === "topic_test") {
-        return ["topic_test", safe(subject), safe(topic), safe(subtopic)]
-            .filter(Boolean)
-            .join("_");
-    }
-    if (sourceType === "sectional_test") {
-        return ["sectional_test", safe(subject)].filter(Boolean).join("_");
-    }
-    return safe(customLabel || sourceType || "unknown_test");
+export function buildTestId(ctx) {
+    const parts = [ctx.paper || "GS", ctx.year || "", ctx.subject || "", ctx.topic || ""]
+        .filter(Boolean);
+    return parts.join("_").toLowerCase().replace(/\s+/g, "_") || uid();
 }
 
 // ───────────────────────────────────────────────────────
-// LAYER 1 — ATTEMPT ENGINE
+// MISTAKE BOOK ENGINE (API BACKED)
 // ───────────────────────────────────────────────────────
 
-export function saveAttempt({
-    testId,
-    sourceType,
-    paper = "GS",
-    year = null,
-    subject = "",
-    topic = "",
-    subtopic = "",
-    evaluatedQuestions = [],
-    resultSummary = {},
-}) {
-    const attemptId = uid();
-    const createdAt = Date.now();
+export async function addMistakes(newMistakes = []) {
+    if (!Array.isArray(newMistakes) || !newMistakes.length) return [];
 
-    const answers = evaluatedQuestions.map((q) => ({
-        questionId: q.questionId || q.id,
-        userAnswer: q.userAnswer || "",
-        correctAnswer: q.correctAnswer || q.answer || "",
-        confidence: q.confidence || "not_sure",
-        timeTaken: q.timeTaken || null,
-        result: q.status,
+    const candidates = newMistakes.filter((m) => m.questionId || m.question_id);
+    if (!candidates.length) return [];
+
+    const payload = candidates.map((m) => ({
+        user_id: DEFAULT_USER_ID,
+        source_type: m.sourceType || m.source_type || "prelims_pyq",
+        source_ref: m.testId || m.source_ref || null,
+        question_id: m.questionId || m.question_id || null,
+        stage: m.stage || "prelims",
+        subject: m.subject || null,
+        node_id: m.nodeId || m.node_id || null,
+        question_text: m.questionText || m.question_text || "",
+        selected_answer: m.latestUserAnswer || m.selected_answer || null,
+        correct_answer: m.correctAnswer || m.correct_answer || null,
+        answer_status: normalizeStatus(m.latestResult || m.answer_status || "wrong"),
+        error_type: m.mistakeType || m.error_type || "conceptual_error",
+        notes: m.notes || "",
+        must_revise: Boolean(m.must_revise ?? true),
     }));
 
-    const record = {
-        attemptId,
-        testId,
-        sourceType,
-        paper,
-        year: year ? String(year) : null,
-        subject,
-        topic,
-        subtopic,
-        createdAt,
-        answers,
-        resultSummary,
-    };
-
-    const existing = safeRead(ATTEMPTS_KEY, []);
-    const updated = [record, ...existing].slice(0, MAX_ATTEMPTS);
-    safeWrite(ATTEMPTS_KEY, updated);
-
-    return attemptId;
-}
-
-// ───────────────────────────────────────────────────────
-// LAYER 2 — MISTAKE BOOK ENGINE
-// ───────────────────────────────────────────────────────
-
-export function mergeMistakesFromAttempt({
-    attemptId,
-    testId,
-    sourceType,
-    paper = "GS",
-    year = null,
-    subject = "",
-    topic = "",
-    subtopic = "",
-    evaluatedQuestions = [],
-}) {
-    const now = Date.now();
-    const nowIso = new Date(now).toISOString();
-    const existing = safeRead(MISTAKES_KEY, []);
-
-    const indexById = new Map(existing.map((m, i) => [m.questionId, i]));
-    const updated = [...existing];
-
-    for (const q of evaluatedQuestions) {
-        const qid = q.questionId || q.id;
-        const userAnswer = q.userAnswer || null;
-        const correctAnswer = q.correctAnswer || q.answer || "";
-        const confidence = q.confidence || "not_sure";
-        const status = normalizeStatus(q.status);
-        const mistakeType = classifyMistakeType(status, confidence);
-
-        const historyEntry = {
-            attemptId,
-            testId,
-            createdAt: nowIso,
-            userAnswer,
-            correctAnswer,
-            confidence,
-            timeTaken: q.timeTaken || null,
-            result: status,
-        };
-
-        const isError = status === "wrong" || status === "unattempted";
-
-        if (indexById.has(qid)) {
-            const idx = indexById.get(qid);
-            const entry = updated[idx];
-            const prevHistory = Array.isArray(entry.attemptHistory) ? entry.attemptHistory : [];
-            const newHistory = [...prevHistory, historyEntry];
-
-            updated[idx] = {
-                ...entry,
-                latestUserAnswer: userAnswer,
-                latestResult: status,
-                lastSeenAt: nowIso,
-                totalSeenCount: (entry.totalSeenCount || 0) + 1,
-                totalWrongCount: isError
-                    ? (entry.totalWrongCount || 0) + 1
-                    : entry.totalWrongCount || 0,
-                mistakeType: isError ? mistakeType : entry.mistakeType,
-                status: isError
-                    ? entry.status === "mastered"
-                        ? "revised"
-                        : entry.status
-                    : advanceStatus(entry.status, status),
-                attemptHistory: newHistory,
-            };
-        } else if (isError) {
-            const newEntry = {
-                id: uid(),
-                questionId: qid,
-                nodeId: q.syllabusNodeId || q.nodeId || "",
-                subject,
-                topic,
-                subtopic,
-                year: year ? String(year) : q.year ? String(q.year) : null,
-                paper,
-                questionText: q.questionText || q.question || "",
-                options: q.options || {},
-                latestUserAnswer: userAnswer,
-                latestResult: status,
-                correctAnswer,
-                mistakeType,
-                sourceType,
-                testId,
-                status: "new",
-                revisionCount: 0,
-                createdAt: nowIso,
-                firstSeenAt: nowIso,
-                lastSeenAt: nowIso,
-                lastReviewedAt: null,
-                totalWrongCount: 1,
-                totalSeenCount: 1,
-                attemptHistory: [historyEntry],
-            };
-
-            updated.push(newEntry);
-            indexById.set(qid, updated.length - 1);
-        }
+    try {
+        const res = await fetch(`${API_BASE}/bulk-sync`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ items: payload })
+        });
+        const data = await res.json();
+        return data.items || [];
+    } catch (err) {
+        console.error("[addMistakes] bulk-sync failed", err);
+        return [];
     }
-
-    const sorted = updated
-        .sort((a, b) => new Date(b.lastSeenAt || 0) - new Date(a.lastSeenAt || 0))
-        .slice(0, MAX_MISTAKES);
-
-    safeWrite(MISTAKES_KEY, sorted);
-    return sorted;
 }
 
 function advanceStatus(currentStatus, result) {
@@ -386,6 +233,7 @@ function advanceStatus(currentStatus, result) {
 // ───────────────────────────────────────────────────────
 
 export async function recordTestAttempt(testContext, evaluatedQuestions, resultSummary) {
+    const attemptId = uid(); // local reference 
     const {
         testId = buildTestId(testContext),
         sourceType,
@@ -396,63 +244,29 @@ export async function recordTestAttempt(testContext, evaluatedQuestions, resultS
         subtopic = "",
     } = testContext;
 
-    const attemptId = saveAttempt({
-        testId,
-        sourceType,
-        paper,
-        year,
-        subject,
-        topic,
-        subtopic,
-        evaluatedQuestions,
-        resultSummary,
-    });
-
-    mergeMistakesFromAttempt({
-        attemptId,
-        testId,
-        sourceType,
-        paper,
-        year,
-        subject,
-        topic,
-        subtopic,
-        evaluatedQuestions,
-    });
-
     const mistakeQuestions = evaluatedQuestions.filter((q) => {
         const status = normalizeStatus(q.status);
         return status === "wrong" || status === "unattempted";
     });
 
-    const settled = await Promise.allSettled(
-        mistakeQuestions.map((q) =>
-            apiCreateMistake(
-                mapQuestionToApiPayload({
-                    sourceType,
-                    testId,
-                    subject,
-                    topic,
-                    subtopic,
-                    paper,
-                    year,
-                    question: q,
-                })
-            )
-        )
-    );
+    const itemsToSync = mistakeQuestions.map(q => ({
+        sourceType,
+        testId,
+        subject,
+        topic,
+        subtopic,
+        paper,
+        year,
+        questionId: q.questionId || q.id,
+        nodeId: q.syllabusNodeId || q.nodeId,
+        questionText: q.questionText || q.question,
+        latestUserAnswer: q.userAnswer,
+        correctAnswer: q.correctAnswer || q.answer,
+        latestResult: normalizeStatus(q.status),
+        mistakeType: classifyMistakeType(normalizeStatus(q.status), q.confidence || "not_sure"),
+    }));
 
-    const rejected = settled.filter((r) => r.status === "rejected");
-    if (rejected.length) {
-        console.error("[recordTestAttempt] failed to sync some mistakes", rejected);
-    }
-
-    try {
-        await refreshMistakeCache();
-    } catch (err) {
-        console.error("[recordTestAttempt] failed to refresh mistake cache", err);
-    }
-
+    await addMistakes(itemsToSync);
     return attemptId;
 }
 
@@ -462,15 +276,12 @@ export async function recordTestAttempt(testContext, evaluatedQuestions, resultS
 
 export async function getAllMistakes() {
     try {
-        return await refreshMistakeCache();
+        const res = await fetch(`${API_BASE}?userId=${encodeURIComponent(DEFAULT_USER_ID)}`);
+        return await res.json();
     } catch (err) {
-        console.error(err.message || "Failed to fetch mistakes");
-        return safeRead(MISTAKES_KEY, []);
+        console.error("Failed to fetch mistakes");
+        return [];
     }
-}
-
-export function getAllAttempts() {
-    return safeRead(ATTEMPTS_KEY, []);
 }
 
 export async function getMistakesBySubject(subjectId) {
@@ -486,91 +297,31 @@ export async function getMistakesByTest(testId) {
     return all.filter((m) => (m.source_ref || m.testId) === testId);
 }
 
-export function getAttemptsByTest(testId) {
-    return getAllAttempts().filter((a) => a.testId === testId);
-}
-
 // ───────────────────────────────────────────────────────
 // MUTATION API
 // ───────────────────────────────────────────────────────
 
 /**
- * Temporary cache-only mutation.
- * Real persistence needs backend PATCH endpoint.
+ * Backend PATCH endpoints 
  */
 export async function updateMistakeStatus(mistakeId, status) {
-    const all = await getAllMistakes();
-    const updated = all.map((m) =>
-        m.id === mistakeId
-            ? { ...m, status, lastReviewedAt: new Date().toISOString() }
-            : m
-    );
-    safeWrite(MISTAKES_KEY, updated);
-    return updated;
-}
-
-/**
- * Temporary cache-only mutation.
- * Real persistence needs backend PATCH endpoint.
- */
-export async function incrementRevision(mistakeId) {
-    const all = await getAllMistakes();
-    const updated = all.map((m) =>
-        m.id === mistakeId
-            ? {
-                ...m,
-                revisionCount: (m.revisionCount || 0) + 1,
-                lastReviewedAt: new Date().toISOString(),
-                status: advanceStatus(m.status, "correct"),
-            }
-            : m
-    );
-    safeWrite(MISTAKES_KEY, updated);
-    return updated;
-}
-
-export async function addMistakes(newMistakes = []) {
-    if (!Array.isArray(newMistakes) || !newMistakes.length) return [];
-
-    const existing = await getAllMistakes();
-    const existingIds = new Set(existing.map((m) => m.question_id || m.questionId));
-
-    const candidates = newMistakes.filter((m) => {
-        const qid = m.questionId || m.question_id;
-        return qid && !existingIds.has(qid);
+    const res = await fetch(`${API_BASE}/${mistakeId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answer_status: status }),
     });
-
-    if (!candidates.length) return [];
-
-    const settled = await Promise.allSettled(
-        candidates.map((m) =>
-            apiCreateMistake({
-                user_id: DEFAULT_USER_ID,
-                source_type: m.sourceType || m.source_type || "prelims_pyq",
-                source_ref: m.testId || m.source_ref || null,
-                question_id: m.questionId || m.question_id || null,
-                stage: m.stage || "prelims",
-                subject: m.subject || null,
-                node_id: m.nodeId || m.node_id || null,
-                question_text: m.questionText || m.question_text || "",
-                selected_answer: m.latestUserAnswer || m.selected_answer || null,
-                correct_answer: m.correctAnswer || m.correct_answer || null,
-                answer_status: normalizeStatus(m.latestResult || m.answer_status || "wrong"),
-                error_type: m.mistakeType || m.error_type || "conceptual_error",
-                notes: m.notes || "",
-                must_revise: Boolean(m.must_revise ?? true),
-            })
-        )
-    );
-
-    try {
-        await refreshMistakeCache();
-    } catch (err) {
-        console.error("[addMistakes] failed to refresh mistake cache", err);
-    }
-
-    return settled;
+    return await res.json();
 }
+
+export async function incrementRevision(mistakeId) {
+    const res = await fetch(`${API_BASE}/${mistakeId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ revision_flag: true }),
+    });
+    return await res.json();
+}
+
 
 // ───────────────────────────────────────────────────────
 // STATS HELPERS  (for future revision / performance engines)

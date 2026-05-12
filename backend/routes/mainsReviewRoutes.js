@@ -25,6 +25,7 @@ import {
   saveReviewRecord,
 } from "../mainsReview/saveMainsReviewRecord.js";
 import { runReviewPipeline } from "../mainsReview/mainsReviewPipeline.js";
+import { buildAir1Prompt } from "../mainsReview/buildAir1Prompt.js";
 
 const router = Router();
 
@@ -187,6 +188,29 @@ router.get("/review/result", (req, res) => {
     console.error("[mainsReview] review/result error:", err);
     return res.status(500).json({ ok: false, error: String(err?.message || err) });
   }
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// POST /api/mains/air1-prompt
+// Body: payload containing question and answer details
+// Returns: { ok: true, prompt: <string> }
+// ────────────────────────────────────────────────────────────────────────────
+router.post("/air1-prompt", async (req, res) => {
+  try {
+    const prompt = buildAir1Prompt(req.body || {});
+    return res.json({ ok: true, prompt });
+  } catch (error) {
+    console.error("AIR-1 prompt build failed:", error);
+    return res.status(500).json({
+      ok: false,
+      error: "Failed to build AIR-1 prompt",
+      details: error.message
+    });
+  }
+});
+
+router.get("/debug-air1", (req, res) => {
+  res.json({ ok: true, route: "mainsReviewRoutes active" });
 });
 
 export default router;

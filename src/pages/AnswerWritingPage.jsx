@@ -10,18 +10,22 @@ import MainsMistakeTagger from "../components/mains/MainsMistakeTagger";
 import MainsReviewPromptCard from "../components/mains/MainsReviewPromptCard";
 import MainsPasteReviewCard from "../components/mains/MainsPasteReviewCard";
 import MainsReviewResultCard from "../components/mains/MainsReviewResultCard";
+import Air1ReviewResult from "../components/mains/air1Review/Air1ReviewResult";
+import { parseAir1ReviewJson } from "../lib/mains/parseAir1ReviewJson.js";
 import {
     saveMainsAttempt,
     saveMainsReview,
     processMainsReview,
     getMainsReviewResult,
+    evaluateMainsAnswerApi,
 } from "../utils/mainsReviewApi.js";
 
 // ─── Theme tokens ─────────────────────────────────────────────────────────────
-const T = {
-    bg: "#09090b",
-    surface: "#111113",
-    surfaceHigh: "#18181b",
+const darkTokens = {
+    // Core palette
+    bg: "#070B14",
+    surface: "#111827",
+    surfaceHigh: "#131A2B",
     border: "#1f1f23",
     borderMid: "#27272a",
     muted: "#3f3f46",
@@ -29,6 +33,11 @@ const T = {
     dim: "#71717a",
     text: "#e4e4e7",
     textBright: "#f4f4f5",
+    // Accent palette
+    primaryAccent: "#4F7CFF",
+    secondaryAccent: "#5B8CFF",
+    tertiaryAccent: "#3B82F6",
+    // Existing semantic colors
     amber: "#f59e0b",
     amberDim: "#d97706",
     blue: "#3b82f6",
@@ -36,18 +45,55 @@ const T = {
     red: "#ef4444",
     purple: "#8b5cf6",
     font: "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
+    btnText: "#09090b",
+    innerGlow: "rgba(255,255,255,0.02)",
+    shadow: "rgba(79, 70, 229, 0.15)",
+    primaryGradient: "linear-gradient(135deg, #2563EB, #4F46E5)",
+    improvedBg: "#052D3D",
+    improvedText: "#BBF7D0",
 };
+
+const lightTokens = {
+    bg: "#F6F8FC",
+    surface: "#FFFFFF",
+    surfaceHigh: "#F8FAFF",
+    border: "#E2E8F0",
+    borderMid: "#CBD5E1",
+    muted: "#94A3B8",
+    subtle: "#64748B",
+    dim: "#475569",
+    text: "#0F172A",
+    textBright: "#020617",
+    primaryAccent: "#2563EB",
+    secondaryAccent: "#4F46E5",
+    tertiaryAccent: "#3B82F6",
+    amber: "#D97706",
+    amberDim: "#B45309",
+    blue: "#2563EB",
+    green: "#059669",
+    red: "#DC2626",
+    purple: "#7C3AED",
+    font: "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
+    btnText: "#ffffff",
+    innerGlow: "rgba(255,255,255,0.6)",
+    shadow: "rgba(37, 99, 235, 0.12)",
+    primaryGradient: "linear-gradient(135deg, #2563EB, #4F46E5)",
+    improvedBg: "#D1FAE5",
+    improvedText: "#065F46",
+};
+
+let T = { ...darkTokens };
 
 // ─── UPSC-accurate time limits (10M=6min · 15M=9min) ─────────────────────────
 const TIME_LIMITS = { "10": 6 * 60, "15": 9 * 60 };
 const WORD_TARGETS = { "10": 150, "15": 200 };
 
-const PAPER_ACCENT = {
+const getPaperAccent = (paper) => ({
     GS1: T.amber,
     GS2: T.blue,
     GS3: T.green,
     GS4: T.purple,
-};
+}[paper] || T.amber);
 
 // ─── Fallback when page opened without route state ───────────────────────────
 const FALLBACK_QUESTIONS = [
@@ -165,8 +211,8 @@ const outlineBtn = (accent, disabled = false) => ({
 });
 
 const primaryBtn = (accent, disabled = false) => ({
-    background: disabled ? T.muted : accent,
-    color: "#09090b", border: "none", borderRadius: 8,
+    background: disabled ? T.muted : T.primaryGradient,
+    color: "#ffffff", border: "none", borderRadius: 8,
     fontWeight: 900, fontSize: 13, padding: "11px 26px",
     cursor: disabled ? "not-allowed" : "pointer",
     fontFamily: T.font, letterSpacing: "0.04em",
@@ -177,12 +223,14 @@ const primaryBtn = (accent, disabled = false) => ({
 function InfoPill({ label, value, accent }) {
     return (
         <div style={{
-            display: "flex", flexDirection: "column", gap: 3,
-            background: T.bg, border: `1px solid ${T.border}`,
-            borderRadius: 8, padding: "8px 14px", minWidth: 72,
+            display: "flex", flexDirection: "column", gap: 4,
+            background: `linear-gradient(145deg, ${T.surfaceHigh}, ${T.bg})`, 
+            border: `1px solid ${T.borderMid}`,
+            borderRadius: 10, padding: "10px 16px", minWidth: 72,
+            boxShadow: `inset 0 1px 0 ${T.innerGlow}`
         }}>
-            <span style={{ ...label11(T.subtle), fontSize: 9 }}>{label}</span>
-            <span style={{ fontSize: 13, fontWeight: 800, color: accent || T.textBright }}>{value}</span>
+            <span style={{ fontSize: 9, fontWeight: 700, color: T.subtle, letterSpacing: "0.08em", textTransform: "uppercase" }}>{label}</span>
+            <span style={{ fontSize: 13, fontWeight: 800, color: accent || T.textBright, letterSpacing: "0.02em" }}>{value}</span>
         </div>
     );
 }
@@ -214,17 +262,294 @@ function StatusChip({ status }) {
 function SectionCard({ accentTop, children, style: extraStyle = {} }) {
     return (
         <div style={{
-            background: T.surface, border: `1px solid ${T.border}`,
-            borderRadius: 14, overflow: "hidden", ...extraStyle,
-        }}>
+            background: T.surfaceHigh,
+            border: `1px solid ${T.borderMid}`,
+            borderRadius: 14,
+            overflow: "hidden",
+            boxShadow: `0 4px 12px ${T.shadow}`,
+            transition: "transform 0.2s, box-shadow 0.2s",
+            ...extraStyle,
+        }}
+        onMouseEnter={e => e.currentTarget.style.transform = "translateY(-2px)"}
+        onMouseLeave={e => e.currentTarget.style.transform = "translateY(0)"}
+        >
             {accentTop && (
                 <div style={{
-                    height: 2,
-                    background: `linear-gradient(90deg, ${accentTop}, ${accentTop}44, ${T.border})`,
+                    height: 3,
+                    background: `linear-gradient(90deg, ${accentTop}, ${accentTop}44, ${T.borderMid})`,
                 }} />
             )}
             {children}
         </div>
+    );
+}
+
+function LockedCard({ title, message }) {
+    return (
+        <div style={{
+            background: `linear-gradient(145deg, ${T.surfaceHigh}, ${T.bg})`, 
+            border: `1px solid ${T.borderMid}`, borderRadius: 12, padding: "16px 20px",
+            display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14, opacity: 0.9,
+            boxShadow: `inset 0 1px 0 ${T.innerGlow}`
+        }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                <span style={{ fontSize: 18, filter: "grayscale(100%)", opacity: 0.5 }}>🔒</span>
+                <div>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: T.textBright, letterSpacing: "0.02em" }}>{title}</div>
+                    <div style={{ fontSize: 12, color: T.dim }}>{message}</div>
+                </div>
+            </div>
+            <div style={{ 
+                fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em",
+                color: T.dim, background: `${T.dim}15`, padding: "4px 8px", borderRadius: 6, border: `1px solid ${T.dim}33`
+            }}>
+                Locked
+            </div>
+        </div>
+    );
+}
+
+// ─── Mains Intelligence Card ──────────────────────────────────────────────────
+function MainsIntelligenceCard({ refreshTrigger }) {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    useEffect(() => {
+        let isMounted = true;
+        async function fetchIntel() {
+            setLoading(true);
+            try {
+                const [sumRes, recRes] = await Promise.all([
+                    fetch("http://localhost:8787/api/mains-patterns/weakness-summary?userId=moulika"),
+                    fetch("http://localhost:8787/api/mains-patterns/recommendations?userId=moulika")
+                ]);
+                const sumData = await sumRes.json();
+                const recData = await recRes.json();
+                
+                if (isMounted && sumData.success && recData.success) {
+                    setData({
+                        summary: sumData,
+                        recommendations: recData.recommendations
+                    });
+                }
+            } catch (e) {
+                console.error("Failed to fetch Mains Intelligence", e);
+            } finally {
+                if (isMounted) setLoading(false);
+            }
+        }
+        fetchIntel();
+        return () => { isMounted = false; };
+    }, [refreshTrigger]);
+
+    if (loading && !data) return null;
+
+    if (!data || data.summary.totalEvaluations === 0 || !data.summary.weaknessSummary?.length) {
+        return (
+            <SectionCard accentTop={T.purple}>
+                <div style={{ padding: "20px 24px", display: "flex", alignItems: "center", gap: 14 }}>
+                    <div style={{ fontSize: 24 }}>🧠</div>
+                    <div>
+                        <div style={{ fontSize: 14, fontWeight: 800, color: T.textBright, marginBottom: 4 }}>Mains Intelligence</div>
+                        <div style={{ fontSize: 13, color: T.dim }}>Write and evaluate a few answers to unlock Mains Intelligence.</div>
+                    </div>
+                </div>
+            </SectionCard>
+        );
+    }
+
+    const { summary, recommendations } = data;
+    const top3Weaknesses = (summary.weaknessSummary || []).slice(0, 3);
+    const top3Drills = (recommendations || []).slice(0, 3);
+    const focusThisWeek = top3Drills[0] || null;
+
+    const averageScoreRaw = summary?.averageScore;
+    const hasAverageScore = averageScoreRaw !== null && averageScoreRaw !== undefined;
+    const averageScoreDisplay = !hasAverageScore ? "—" : (typeof averageScoreRaw === "string" && averageScoreRaw.includes("/")) ? averageScoreRaw : `${averageScoreRaw}/10`;
+
+    const lastEvaluatedTs = (summary.weaknessSummary || []).reduce((latest, item) => {
+        const ts = item?.lastSeen ? Date.parse(item.lastSeen) : NaN;
+        if (Number.isNaN(ts)) return latest;
+        return Math.max(latest, ts);
+    }, Number.NEGATIVE_INFINITY);
+    const lastEvaluatedDisplay = Number.isFinite(lastEvaluatedTs)
+        ? new Intl.DateTimeFormat("en-IN", { day: "2-digit", month: "short", year: new Date(lastEvaluatedTs).getFullYear() === new Date().getFullYear() ? undefined : "numeric" }).format(new Date(lastEvaluatedTs))
+        : "—";
+
+    const severityTone = {
+        low: { color: T.blue, bg: `${T.blue}15`, border: `${T.blue}40` },
+        medium: { color: T.amber, bg: `${T.amber}1a`, border: `${T.amber}44` },
+        high: { color: "#f97316", bg: "rgba(249, 115, 22, 0.15)", border: "rgba(249, 115, 22, 0.35)" },
+        critical: { color: T.red, bg: `${T.red}1a`, border: `${T.red}44` },
+        default: { color: T.dim, bg: `${T.dim}14`, border: `${T.dim}33` },
+    };
+
+    const confidenceTone = {
+        emerging: { color: "#0ea5e9", bg: "rgba(14, 165, 233, 0.12)", border: "rgba(14, 165, 233, 0.34)" },
+        probable: { color: T.amber, bg: `${T.amber}1a`, border: `${T.amber}44` },
+        confirmed: { color: "#22c55e", bg: "rgba(34, 197, 94, 0.14)", border: "rgba(34, 197, 94, 0.35)" },
+        default: { color: T.dim, bg: `${T.dim}14`, border: `${T.dim}33` },
+    };
+
+    return (
+        <SectionCard accentTop={T.blue}>
+            <div 
+                style={{ padding: isExpanded ? "24px 28px" : "16px 20px", cursor: isExpanded ? "default" : "pointer", transition: "padding 0.2s" }}
+                onClick={() => !isExpanded && setIsExpanded(true)}
+            >
+                {/* Header row */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: isExpanded ? 20 : 0 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+                        <div style={{
+                            width: isExpanded ? 32 : 28, height: isExpanded ? 32 : 28, borderRadius: 8,
+                            background: `linear-gradient(135deg, ${T.primaryAccent}33, ${T.primaryAccent}11)`,
+                            border: `1px solid ${T.primaryAccent}44`,
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                            fontSize: isExpanded ? 16 : 14, boxShadow: `0 0 12px ${T.primaryAccent}22`,
+                            transition: "all 0.2s"
+                        }}>
+                            🧠
+                        </div>
+                        <span style={{ fontSize: isExpanded ? 16 : 14, fontWeight: 800, color: T.textBright, letterSpacing: "0.02em" }}>
+                            Mains Intelligence
+                        </span>
+                    </div>
+
+                    {!isExpanded && focusThisWeek && (
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 11, flex: 1, minWidth: 0, marginLeft: 16, overflow: "hidden" }}>
+                            <span style={{ color: T.textBright, fontWeight: 700, flexShrink: 0, padding: "3px 10px", background: `linear-gradient(145deg, ${T.surfaceHigh}, ${T.bg})`, border: `1px solid ${T.borderMid}`, borderRadius: 12 }}>
+                                ⚡ Focus: {focusThisWeek.focusArea}
+                            </span>
+                            {top3Weaknesses.slice(0, 2).map((w, i) => (
+                                <span key={i} style={{ 
+                                    whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: 110,
+                                    color: (severityTone[w.severity] || severityTone.default).color, 
+                                    background: (severityTone[w.severity] || severityTone.default).bg, 
+                                    border: `1px solid ${(severityTone[w.severity] || severityTone.default).border}88`, 
+                                    padding: "3px 10px", borderRadius: 12, fontWeight: 600, flexShrink: 0
+                                }}>
+                                    {w.weakness}
+                                </span>
+                            ))}
+                            <span style={{ color: T.dim, fontWeight: 600, flexShrink: 0, borderLeft: `1px solid ${T.borderMid}`, paddingLeft: 8 }}>
+                                +{top3Drills.length} Drills
+                            </span>
+                        </div>
+                    )}
+
+                    <div style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
+                        {isExpanded ? (
+                            <div style={{ display: "flex", alignItems: "center", gap: 16, background: `linear-gradient(145deg, ${T.surfaceHigh}, ${T.bg})`, padding: "8px 16px", borderRadius: 10, border: `1px solid ${T.borderMid}`, boxShadow: `inset 0 1px 0 ${T.innerGlow}` }}>
+                                <div style={{ textAlign: "right" }}>
+                                    <div style={{ fontSize: 10, color: T.subtle, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Avg Score</div>
+                                    <div style={{ fontSize: 15, fontWeight: 900, color: T.primaryAccent }}>{averageScoreDisplay}</div>
+                                </div>
+                                <div style={{ width: 1, height: 24, background: T.border }} />
+                                <div style={{ textAlign: "right" }}>
+                                    <div style={{ fontSize: 10, color: T.subtle, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Evaluations</div>
+                                    <div style={{ fontSize: 15, fontWeight: 900, color: T.textBright }}>{summary.totalEvaluations}</div>
+                                </div>
+                                <div style={{ width: 1, height: 24, background: T.border }} />
+                                <div style={{ textAlign: "right" }}>
+                                    <div style={{ fontSize: 10, color: T.subtle, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Last Evaluated</div>
+                                    <div style={{ fontSize: 13, fontWeight: 800, color: T.text }}>{lastEvaluatedDisplay}</div>
+                                </div>
+                            </div>
+                        ) : (
+                            <div style={{ display: "flex", alignItems: "center", gap: 12, textAlign: "right", borderRight: `1px solid ${T.borderMid}`, paddingRight: 12 }}>
+                                <div style={{ display: "flex", flexDirection: "column" }}>
+                                    <span style={{ fontSize: 9, color: T.subtle, fontWeight: 700, textTransform: "uppercase", lineHeight: 1 }}>Avg</span>
+                                    <span style={{ fontSize: 12, fontWeight: 900, color: T.primaryAccent, lineHeight: 1, marginTop: 2 }}>{averageScoreDisplay}</span>
+                                </div>
+                                <div style={{ display: "flex", flexDirection: "column" }}>
+                                    <span style={{ fontSize: 9, color: T.subtle, fontWeight: 700, textTransform: "uppercase", lineHeight: 1 }}>Evals</span>
+                                    <span style={{ fontSize: 12, fontWeight: 900, color: T.textBright, lineHeight: 1, marginTop: 2 }}>{summary.totalEvaluations}</span>
+                                </div>
+                            </div>
+                        )}
+                        <button 
+                            onClick={(e) => { e.stopPropagation(); setIsExpanded(!isExpanded); }} 
+                            style={{ 
+                                background: "transparent", border: `1px solid ${T.borderMid}`, color: isExpanded ? T.dim : T.primaryAccent, 
+                                fontSize: 11, fontWeight: 700, cursor: "pointer", padding: "4px 10px", borderRadius: 6
+                            }}
+                        >
+                            {isExpanded ? "Collapse ↑" : "Expand ↓"}
+                        </button>
+                    </div>
+                </div>
+
+                {isExpanded && (
+                    <>
+                        {focusThisWeek && (
+                            <div style={{
+                                marginBottom: 20, display: "flex", alignItems: "flex-start", gap: 12,
+                                background: `linear-gradient(90deg, ${T.primaryAccent}1a, ${T.primaryAccent}08)`, border: `1px solid ${T.primaryAccent}33`,
+                                boxShadow: `inset 0 1px 0 ${T.primaryAccent}15`, borderRadius: 12, padding: "14px 16px",
+                            }}>
+                                <div style={{ width: 28, height: 28, borderRadius: "50%", background: T.surface, border: `1px solid ${T.primaryAccent}44`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, flexShrink: 0 }}>⚡</div>
+                                <div style={{ minWidth: 0, flex: 1 }}>
+                                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                                        <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: T.primaryAccent }}>Focus This Week</div>
+                                        <span style={{ fontSize: 9, fontWeight: 700, padding: "2px 6px", borderRadius: 4, background: `${T.primaryAccent}15`, color: T.primaryAccent }}>PRIORITY</span>
+                                    </div>
+                                    <div style={{ fontSize: 13, color: T.text, lineHeight: 1.5 }}><span style={{ fontWeight: 700, color: T.textBright }}>{focusThisWeek.focusArea}: </span>{focusThisWeek.recommendedExercise}</div>
+                                </div>
+                            </div>
+                        )}
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
+                            <div style={{ flex: "1 1 280px" }}>
+                                <div style={{ ...label11(T.subtle), marginBottom: 12 }}>Primary Weaknesses</div>
+                                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                                    {top3Weaknesses.map((w, i) => {
+                                        const basicEvaluation = w?.sources?.basicEvaluation ?? w?.basicEvaluation ?? w?.count ?? 0;
+                                        const air1Review = w?.sources?.air1Review ?? w?.air1Review ?? 0;
+                                        const isCritical = w.severity === "high" || w.severity === "critical";
+                                        return (
+                                            <div key={i} style={{ 
+                                                background: `linear-gradient(145deg, ${T.surfaceHigh}, ${T.bg})`, border: `1px solid ${isCritical ? severityTone[w.severity].border : "transparent"}`, 
+                                                boxShadow: isCritical ? `0 4px 12px ${severityTone[w.severity].color}15` : `inset 0 1px 0 ${T.innerGlow}`,
+                                                padding: "12px 14px", borderRadius: 10, position: "relative", overflow: "hidden"
+                                            }}>
+                                                {isCritical && <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: severityTone[w.severity].color, boxShadow: `0 0 8px ${severityTone[w.severity].color}` }} />}
+                                                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 }}>
+                                                    <span style={{ fontSize: 13, color: T.textBright, fontWeight: 700, lineHeight: 1.4 }}>{w.weakness}</span>
+                                                    <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", justifyContent: "flex-end", flexShrink: 0 }}>
+                                                        <span style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: (severityTone[w.severity] || severityTone.default).color, background: (severityTone[w.severity] || severityTone.default).bg, border: `1px solid ${(severityTone[w.severity] || severityTone.default).border}`, padding: "3px 8px", borderRadius: 6 }}>{w.severity}</span>
+                                                    </div>
+                                                </div>
+                                                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 10 }}>
+                                                    <div style={{ display: "flex", gap: 12 }}>
+                                                        <div style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 6, height: 6, borderRadius: "50%", background: T.dim }} /><span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>Basic: {basicEvaluation}</span></div>
+                                                        <div style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 6, height: 6, borderRadius: "50%", background: T.primaryAccent, boxShadow: `0 0 4px ${T.primaryAccent}` }} /><span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>AIR-1: {air1Review}</span></div>
+                                                    </div>
+                                                    <span style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", color: (confidenceTone[w.confidenceLevel] || confidenceTone.default).color, background: (confidenceTone[w.confidenceLevel] || confidenceTone.default).bg, border: `1px solid ${(confidenceTone[w.confidenceLevel] || confidenceTone.default).border}`, padding: "2px 6px", borderRadius: 4 }}>{w.confidenceLevel || "emerging"}</span>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                            <div style={{ flex: "1 1 280px" }}>
+                                <div style={{ ...label11(T.subtle), marginBottom: 12 }}>Recommended Drills</div>
+                                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                                    {top3Drills.map((d, i) => (
+                                        <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, background: `linear-gradient(145deg, ${T.primaryAccent}08, transparent)`, border: `1px solid ${T.primaryAccent}22`, padding: "12px 14px", borderRadius: 10 }}>
+                                            <div style={{ width: 24, height: 24, borderRadius: "50%", background: `${T.primaryAccent}11`, border: `1px solid ${T.primaryAccent}33`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, flexShrink: 0 }}>🎯</div>
+                                            <div style={{ minWidth: 0, flex: 1 }}>
+                                                <div style={{ fontSize: 11, fontWeight: 800, color: T.primaryAccent, letterSpacing: "0.02em", marginBottom: 4 }}>{d.focusArea}</div>
+                                                <div style={{ fontSize: 13, color: T.textBright, lineHeight: 1.5 }}>{d.recommendedExercise}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
+            </div>
+        </SectionCard>
     );
 }
 
@@ -306,7 +631,7 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
     const barColor = phase === "done" || overTime ? T.red
         : pct > 80 ? T.red
             : pct > 60 ? T.amber
-                : T.green;
+                : T.primaryAccent;
 
     return (
         <div
@@ -315,19 +640,23 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
                 background: T.surface,
                 border: `1px solid ${
                     phase === "done" ? T.red + "55"
-                    : phase === "running" || phase === "countdown" ? accent + "55"
+                    : phase === "running" || phase === "countdown" ? (phase === "countdown" ? T.amber : barColor) + "55"
                     : T.border
                 }`,
                 borderRadius: 12, padding: "16px 20px",
                 display: "flex", flexDirection: "column", gap: 12,
                 boxShadow: (phase === "running" || phase === "countdown")
-                    ? `0 0 24px ${accent}22` : "none",
+                    ? `0 0 24px ${(phase === "countdown" ? T.amber : barColor)}22` : "none",
                 transition: "border-color 0.3s, box-shadow 0.3s",
             }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div>
-                    <div style={{ ...label11(T.subtle), marginBottom: 4 }}>
-                        Answer Timer · {marks}M ({Math.floor(timeLimit / 60)} min)
+                    <div style={{ ...label11(T.subtle), marginBottom: 4, display: "flex", alignItems: "center", gap: 6 }}>
+                        <span>Answer Timer</span>
+                        <span style={{ color: T.borderMid }}>•</span>
+                        <span>{marks}M</span>
+                        <span style={{ color: T.borderMid }}>•</span>
+                        <span style={{ color: T.primaryAccent }}>Target: {Math.floor(timeLimit / 60)} min</span>
                     </div>
                     <div style={{ fontSize: 10, color: T.muted }}>
                         UPSC standard — {marks === "10" ? "6 min" : "9 min"} per question
@@ -379,15 +708,15 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
             </div>
 
             <div style={{ display: "flex", gap: 8 }}>
-                {phase !== "done" && (
+                {phase !== "done" && phase !== "idle" && (
                     <button
                         onClick={handleStart}
                         disabled={phase === "countdown"}
                         style={{
                             flex: 1,
-                            background: phase === "idle" ? accent : T.surface,
-                            color: phase === "idle" ? "#09090b" : T.text,
-                            border: phase === "idle" ? "none" : `1px solid ${T.borderMid}`,
+                            background: T.primaryGradient,
+                            color: "#ffffff",
+                            border: "none",
                             borderRadius: 8, fontWeight: 900, fontSize: 13,
                             padding: "10px 0",
                             cursor: phase === "countdown" ? "not-allowed" : "pointer",
@@ -395,8 +724,7 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
                             opacity: phase === "countdown" ? 0.6 : 1,
                         }}
                     >
-                        {phase === "idle" ? "▶  Start (5s countdown)"
-                            : phase === "countdown" ? `Starting in ${countdown}…`
+                        {phase === "countdown" ? `Starting in ${countdown}…`
                                 : phase === "running" ? "▐▐  Pause"
                                     : "▶  Resume"}
                     </button>
@@ -446,6 +774,16 @@ export default function AnswerWritingPage() {
     const location = useLocation();
     const navigate = useNavigate();
 
+    // ─── Theme state ─────────────────────────────────────────────────────────
+    const [theme, setThemeState] = useState(() => localStorage.getItem("mentoros_theme") || "dark");
+    const toggleTheme = () => {
+        const newTheme = theme === "dark" ? "light" : "dark";
+        localStorage.setItem("mentoros_theme", newTheme);
+        setThemeState(newTheme);
+    };
+
+    Object.assign(T, theme === "light" ? lightTokens : darkTokens);
+
     // ─── Route state ─────────────────────────────────────────────────────────
     const rs = location.state || {};
     const paper          = rs.paper          || "GS1";
@@ -460,7 +798,7 @@ export default function AnswerWritingPage() {
     const activeQ   = questions[safeIndex] || {};
 
     // ─── Derived session ──────────────────────────────────────────────────────
-    const paperAccent = PAPER_ACCENT[paper] || T.amber;
+    const paperAccent = getPaperAccent(paper);
     const marks       = String(activeQ.marks || "15");
     const timeLimit   = TIME_LIMITS[marks] || TIME_LIMITS["15"];
     const wordTarget  = WORD_TARGETS[marks] || 200;
@@ -495,6 +833,7 @@ export default function AnswerWritingPage() {
     const [evaluationText, setEvaluationText]     = useState("");
     const [evalPromptCopied, setEvalPromptCopied] = useState(false);
     const hasEvaluationText = evaluationText.trim().length > 20;
+    const [isEvaluating, setIsEvaluating]         = useState(false);
 
     const [saved, setSaved]                     = useState(false);
     const [savedAttemptData, setSavedAttemptData] = useState(null);
@@ -509,6 +848,22 @@ export default function AnswerWritingPage() {
     const [externalReviewText, setExternalReviewText] = useState("");
     const [reviewAgreement, setReviewAgreement]       = useState("not_set");
     const [reviewAgreementNote, setReviewAgreementNote] = useState("");
+
+    // AIR-1 JSON review paste + parse state
+    const [air1JsonText, setAir1JsonText] = useState("");
+    const [air1ParseResult, setAir1ParseResult] = useState(null);
+    const [air1ParseError, setAir1ParseError] = useState("");
+    const [analyzingAir1, setAnalyzingAir1] = useState(false);
+    const [showRawReview, setShowRawReview] = useState(false);
+
+    // Fix Mode state
+    const [fixModeActive, setFixModeActive] = useState(false);
+    const [fixDraft, setFixDraft] = useState("");
+    const [fixTask, setFixTask] = useState("");
+    const [fixSaving, setFixSaving] = useState(false);
+    const [isImproved, setIsImproved] = useState(false);
+    const [fixOriginalSnippet, setFixOriginalSnippet] = useState("");
+    const [lastImprovement, setLastImprovement] = useState(null);
 
     const [reviewSaveState, setReviewSaveState]       = useState("idle");
     const [reviewSaveError, setReviewSaveError]       = useState("");
@@ -552,6 +907,10 @@ export default function AnswerWritingPage() {
         setReviewUiError("");
         setEvaluationText("");
         setEvalPromptCopied(false);
+        setIsEvaluating(false);
+        setFixOriginalSnippet("");
+        setLastImprovement(null);
+        setIsImproved(false);
     }, [currentIndex]); // eslint-disable-line
 
     // ─── Derived page status ──────────────────────────────────────────────────
@@ -609,13 +968,44 @@ export default function AnswerWritingPage() {
         setPromptCopied(false);
     };
 
-    // ─── ChatGPT evaluation ───────────────────────────────────────────────────
-    const handleEvaluateWithChatGPT = async () => {
-        const prompt = buildEvalPrompt(SESSION.question, marks, wordTarget, pastedText.trim());
-        try { await navigator.clipboard.writeText(prompt); } catch (_) {}
-        setEvalPromptCopied(true);
-        setTimeout(() => setEvalPromptCopied(false), 3000);
-        window.open("https://chat.openai.com", "_blank", "noopener,noreferrer");
+    // ─── Gemini Basic Review ──────────────────────────────────────────────────
+    const handleBasicReview = async () => {
+        setIsEvaluating(true);
+        setReviewUiError("");
+        try {
+            const payload = {
+                userId: "user_1",
+                question: SESSION.question,
+                answer: pastedText.trim(),
+                paper: SESSION.paper,
+                marks: parseInt(SESSION.marks),
+                wordLimit: wordTarget,
+                sourceYear: SESSION.year,
+                topic: SESSION.topicNodeId || topic,
+                mode: SESSION.mode
+            };
+            const result = await evaluateMainsAnswerApi(payload);
+            
+            if (result && result.success && result.evaluation) {
+                const evalData = result.evaluation;
+                const formattedReview = [
+                    `📊 Score: ${evalData.score} / ${evalData.max_score}`,
+                    `\n📌 Verdict: ${evalData.verdict}`,
+                    evalData.strengths && evalData.strengths.length > 0 ? `\n✅ Strengths:\n- ${evalData.strengths.join('\n- ')}` : '',
+                    evalData.major_weaknesses && evalData.major_weaknesses.length > 0 ? `\n⚠️ Weaknesses:\n- ${evalData.major_weaknesses.join('\n- ')}` : '',
+                    evalData.improvement_tasks && evalData.improvement_tasks.length > 0 ? `\n🚀 Improvement Suggestions:\n- ${evalData.improvement_tasks.join('\n- ')}` : ''
+                ].filter(Boolean).join('\n');
+                
+                setEvaluationText(formattedReview);
+            } else {
+                setReviewUiError("Basic Review failed. Please try again.");
+            }
+        } catch (error) {
+            console.error(error);
+            setReviewUiError("Basic Review failed. Please try again.");
+        } finally {
+            setIsEvaluating(false);
+        }
     };
 
     // ─── ChatGPT extraction ───────────────────────────────────────────────────
@@ -652,8 +1042,7 @@ export default function AnswerWritingPage() {
             createdAt:   new Date().toISOString(),
         };
         try {
-            const existing = JSON.parse(localStorage.getItem("mains_answer_attempts_v1") || "[]");
-            localStorage.setItem("mains_answer_attempts_v1", JSON.stringify([attempt, ...existing]));
+            // Local storage fallback removed
         // eslint-disable-next-line no-unused-vars
         } catch (_) {}
         setSavedAttemptData(attempt);
@@ -791,6 +1180,176 @@ export default function AnswerWritingPage() {
         window.open("https://chat.openai.com", "_blank", "noopener,noreferrer");
     };
 
+    const handleAnalyzeAir1Review = () => {
+        setAir1ParseError("");
+        setAir1ParseResult(null);
+        if (!air1JsonText || !air1JsonText.trim()) {
+            setAir1ParseError("Paste ChatGPT JSON result first.");
+            return;
+        }
+        setAnalyzingAir1(true);
+        try {
+            const res = parseAir1ReviewJson(air1JsonText);
+            if (res.ok) {
+                setAir1ParseResult(res.data);
+            } else {
+                setAir1ParseError(res.error || "Invalid JSON or schema");
+            }
+        } catch (e) {
+            setAir1ParseError(e?.message || String(e));
+        } finally {
+            setAnalyzingAir1(false);
+        }
+    };
+
+    // ─── Fix Mode handlers ─────────────────────────────────────────────────
+    const handleStartFix = (fixNowObj) => {
+        // fixNowObj may be the full object { mainTask, replacementLines, nextPracticeTask }
+        const mainTaskText = fixNowObj && typeof fixNowObj === "object" && fixNowObj.mainTask ? fixNowObj.mainTask : (typeof fixNowObj === "string" ? fixNowObj : "");
+        const replacementLines = fixNowObj && Array.isArray(fixNowObj.replacementLines) ? fixNowObj.replacementLines : [];
+        const maxLines = 5;
+        let draft = "";
+        if (replacementLines && replacementLines.length > 0) {
+            draft = replacementLines.slice(0, maxLines).map(r => (r || "").replace(/\r/g, "").replace(/\n/g, " ")).join("\n");
+        } else if (pastedText && pastedText.trim()) {
+            draft = pastedText.split(/\r?\n/).slice(0, maxLines).join("\n");
+        }
+        setFixTask(mainTaskText || "");
+        setFixDraft(draft);
+        setFixOriginalSnippet(draft);
+        setFixModeActive(true);
+        // Do not render the full review while fixing (UI will hide it when fixModeActive===true)
+    };
+
+    const handleCancelFix = () => {
+        setFixModeActive(false);
+        setFixDraft("");
+        setFixTask("");
+    };
+
+    const handleSaveImprovedAttempt = async (draftText) => {
+        setAnswerSaveState("saving");
+        setAnswerSaveError("");
+        try {
+            const payload = {
+                userId: "user_1",
+                source: {
+                    mode: "pyq",
+                    paper: SESSION.paper,
+                    examYear: SESSION.year || new Date().getFullYear(),
+                    questionId: SESSION.question?.replace(/\s+/g, "_").substring(0, 10) || "unknown",
+                    questionMarks: parseInt(SESSION.marks),
+                    targetWords: wordTarget,
+                    upscTimeMinutes: Math.floor(timeLimit / 60),
+                },
+                question: {
+                    text: SESSION.question,
+                    directiveWord: "",
+                    focusLabel: SESSION.focus || "",
+                    topicNodeId: SESSION.topicNodeId || "",
+                    subjectTag: "general",
+                },
+                writingSession: {
+                    startedAt: new Date().toISOString(),
+                    endedAt: new Date().toISOString(),
+                    timeTakenSeconds: 0,
+                },
+                answerUpload: {
+                    pageCount: uploadedPages.length,
+                    pages: uploadedPages.map((pg, idx) => ({
+                        pageNo: idx + 1,
+                        fileName: pg.file?.name || `page_${idx + 1}.jpg`,
+                        storagePath: pg.preview || "",
+                    })),
+                },
+                extraction: {
+                    method: "manual_fix",
+                    promptVersion: "mains-fix-v1",
+                    extractedText: draftText,
+                },
+                selfReview: {
+                    mistakeTypes: [],
+                    severity: "medium",
+                    mustRevise: false,
+                    note: "",
+                },
+                improved: true,
+                improvedAt: new Date().toISOString(),
+                originalAttemptId: attemptId || null,
+            };
+            const response = await saveMainsAttempt(payload);
+            if (response?.ok && response?.attemptId) {
+                setAttemptId(response.attemptId);
+                setAnswerSaveState("saved");
+                setReviewUiMessage("Improved answer saved.");
+                return response.attemptId;
+            } else {
+                throw new Error("Invalid response");
+            }
+        } catch (error) {
+            console.error("Error saving improved attempt:", error);
+            setAnswerSaveState("error");
+            setAnswerSaveError("Could not save improved answer.");
+            return null;
+        }
+    };
+
+    const handleSubmitFix = async () => {
+        if (!fixDraft || !fixDraft.trim()) { setReviewUiError("Improved answer cannot be empty."); return; }
+        setFixSaving(true);
+        setReviewUiError("");
+        try {
+            // Update local answer text
+            setPastedText(fixDraft);
+            const attempt = {
+                id: savedAttemptData?.id || `mains_attempt_${Date.now()}`,
+                paper: SESSION.paper,
+                mode: SESSION.mode,
+                marks: SESSION.marks,
+                year: SESSION.year,
+                question: SESSION.question,
+                answerText: fixDraft,
+                wordCount: fixDraft.trim().split(/\s+/).length,
+                targetWords: wordTarget,
+                createdAt: new Date().toISOString(),
+                improved: true,
+                improvedAt: new Date().toISOString(),
+            };
+            setSavedAttemptData(attempt);
+            setSaved(true);
+            setIsImproved(true);
+
+            // Persist to backend
+            const savedId = await handleSaveImprovedAttempt(fixDraft);
+
+            if (savedId) {
+                // compute small before/after single-line comparison
+                const firstNonEmpty = (s) => {
+                    if (!s) return "";
+                    const lines = s.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+                    return lines.length ? lines[0] : (s.split(/\r?\n/)[0] || "");
+                };
+                const before = firstNonEmpty(fixOriginalSnippet || "");
+                const after = firstNonEmpty(fixDraft || "");
+                setLastImprovement({ before, after });
+
+                // Mark improved and scroll to top so user sees badge/comparison
+                setIsImproved(true);
+                setTimeout(() => { try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (_) {} }, 80);
+            }
+
+            // Exit fix mode and hide review
+            setFixModeActive(false);
+            setFixDraft("");
+            setFixTask("");
+        } catch (e) {
+            console.error(e);
+            setReviewUiError("Could not save improved answer.");
+        } finally {
+            setFixSaving(false);
+        }
+    };
+
     const handleOpenMistakeBook    = () => navigate("/mains/mistakes");
     const handleOpenRevisionTasks  = () => navigate("/revision");
 
@@ -802,16 +1361,10 @@ export default function AnswerWritingPage() {
     const canSaveReview     = !!attemptId && externalReviewText.trim().length >= 200;
     const canProcessReview  = !!attemptId && !!reviewId && reviewSaveState === "saved";
 
-    const steps = [
-        { label: "Read question",   done: true },
-        { label: "Write on paper",  done: timerStatus === STATUSES.RUNNING || timerStatus === STATUSES.DONE },
-        { label: "Upload pages",    done: hasPages },
-        { label: "Extract text",    done: promptCopied },
-        { label: "Paste text",      done: hasPastedText },
-        { label: "Evaluate answer", done: hasEvaluationText },
-        { label: "Save attempt",    done: saved },
-        { label: "Paste review",    done: reviewSaveState === "saved" },
-        { label: "Process review",  done: reviewProcessState === "processed" },
+    const compactSteps = [
+        { label: "Start Writing",      done: sessionStarted },
+        { label: "Upload & Extract",   done: hasEvaluationText },
+        { label: "AIR-1 Review & Save", done: !!attemptId || saved },
     ];
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -879,15 +1432,72 @@ export default function AnswerWritingPage() {
                             Next →
                         </button>
                     )}
+                    <button
+                        onClick={toggleTheme}
+                        style={{
+                            background: T.surfaceHigh, border: `1px solid ${T.borderMid}`,
+                            color: T.textBright, borderRadius: 6, width: 32, height: 32,
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                            cursor: "pointer", fontSize: 16
+                        }}
+                        title={`Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`}
+                    >
+                        {theme === "dark" ? "☀️" : "🌙"}
+                    </button>
                     <StatusChip status={pageStatus} />
                 </div>
             </div>
+
+            {/* ── Compact Progress Tracker ──────────────────────────────────────── */}
+            <div style={{
+                padding: "16px 28px", borderBottom: `1px solid ${T.borderMid}`, background: T.surfaceHigh,
+                display: "flex", justifyContent: "space-between", alignItems: "center", overflow: "hidden"
+            }}>
+                {compactSteps.map((s, i) => {
+                    const isActive = !s.done && (i === 0 || compactSteps[i - 1].done);
+                    return (
+                        <div key={s.label} style={{ display: "flex", alignItems: "center", gap: 8, flex: 1 }}>
+                            <div style={{
+                                width: 24, height: 24, borderRadius: "50%",
+                                display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 800,
+                                background: s.done ? T.green : isActive ? T.primaryGradient : T.surface,
+                                color: s.done || isActive ? "#ffffff" : T.dim,
+                                border: `1px solid ${s.done ? T.green : isActive ? "transparent" : T.border}`,
+                            }}>
+                                {s.done ? "✓" : i + 1}
+                            </div>
+                            <span style={{ fontSize: 11, fontWeight: s.done || isActive ? 700 : 500, color: s.done ? T.green : isActive ? T.textBright : T.subtle, whiteSpace: "nowrap" }}>
+                                {s.label}
+                            </span>
+                            {i < compactSteps.length - 1 && (
+                                <div style={{ flex: 1, height: 1, background: compactSteps[i].done ? T.green : T.border, margin: "0 12px" }} />
+                            )}
+                        </div>
+                    );
+                })}
+            </div>
+
+            {lastImprovement && (
+                <div style={{ maxWidth: 960, margin: "8px auto 0", padding: "8px 20px", display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ background: T.improvedBg, color: T.improvedText, padding: "6px 10px", borderRadius: 8, fontWeight: 800, fontSize: 12 }}>
+                        Improved ✔
+                    </div>
+                    <div style={{ background: T.surface, border: `1px solid ${T.border}`, padding: "8px 12px", borderRadius: 8, fontSize: 13, color: T.text }}>
+                        <div style={{ fontSize: 12, color: T.subtle }}>Before: <span style={{ fontWeight: 800 }}>{(lastImprovement.before || "").slice(0, 140)}</span></div>
+                        <div style={{ height: 6 }} />
+                        <div style={{ fontSize: 12, color: T.subtle }}>After: <span style={{ fontWeight: 800 }}>{(lastImprovement.after || "").slice(0, 140)}</span></div>
+                    </div>
+                </div>
+            )}
 
             <div style={{
                 padding: "24px 28px 48px",
                 maxWidth: 960, margin: "0 auto",
                 display: "flex", flexDirection: "column", gap: 20,
             }}>
+
+                {/* ═══ 0. MAINS INTELLIGENCE CARD ════════════════════════════════════════════ */}
+                <MainsIntelligenceCard refreshTrigger={saved} />
 
                 {/* ═══ 1. CONTEXT PILLS ════════════════════════════════════════════════ */}
                 <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
@@ -900,52 +1510,71 @@ export default function AnswerWritingPage() {
                     {topic && (
                         <div style={{
                             display: "flex", alignItems: "center", gap: 8,
-                            background: T.bg, border: `1px solid ${T.border}`,
-                            borderRadius: 8, padding: "8px 14px", flex: 1, minWidth: 180,
+                            background: `linear-gradient(145deg, ${T.surfaceHigh}, ${T.bg})`,
+                            border: `1px solid ${T.borderMid}`, boxShadow: `inset 0 1px 0 ${T.innerGlow}`,
+                            borderRadius: 10, padding: "10px 16px", flex: 1, minWidth: 180,
                         }}>
-                            <span style={{ ...label11(T.subtle), fontSize: 9 }}>Topic</span>
-                            <span style={{ fontSize: 12, fontWeight: 700, color: T.text }}>{topic}</span>
+                            <span style={{ fontSize: 9, fontWeight: 700, color: T.subtle, letterSpacing: "0.08em", textTransform: "uppercase" }}>Topic</span>
+                            <span style={{ fontSize: 13, fontWeight: 800, color: T.textBright, letterSpacing: "0.02em" }}>{topic}</span>
                         </div>
                     )}
                 </div>
 
                 {/* ═══ 2. QUESTION CARD ════════════════════════════════════════════════ */}
-                <SectionCard accentTop={paperAccent}>
-                    <div style={{ padding: "22px 24px" }}>
+                <SectionCard 
+                    accentTop={T.primaryAccent} 
+                    style={{ 
+                        borderLeft: `3px solid ${T.primaryAccent}`, // Left accent rail
+                        background: `linear-gradient(145deg, ${T.surfaceHigh}, ${T.surface})` // Subtle depth gradient
+                    }}
+                >
+                    <div style={{ padding: "18px 24px" }}>
                         {/* badges row */}
                         <div style={{
                             display: "flex", alignItems: "center",
                             justifyContent: "space-between", marginBottom: 16,
+                            flexWrap: "wrap", gap: 12
                         }}>
-                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                                 <span style={{
-                                    fontSize: 12, fontWeight: 900, color: paperAccent,
-                                    background: `${paperAccent}15`,
-                                    border: `1px solid ${paperAccent}33`,
-                                    borderRadius: 6, padding: "3px 10px", letterSpacing: "0.06em",
+                                    fontSize: 12, fontWeight: 900, color: T.primaryAccent,
+                                    background: `${T.primaryAccent}15`,
+                                    borderRadius: 6, padding: "4px 12px", letterSpacing: "0.06em",
                                 }}>{SESSION.paper}</span>
                                 <span style={{
-                                    fontSize: 10, fontWeight: 700, color: T.purple,
-                                    background: `${T.purple}15`, border: `1px solid ${T.purple}33`,
-                                    borderRadius: 6, padding: "3px 9px", letterSpacing: "0.06em", textTransform: "uppercase",
+                                    fontSize: 11, fontWeight: 800, color: T.purple,
+                                    background: `${T.purple}15`,
+                                    borderRadius: 6, padding: "4px 10px", letterSpacing: "0.06em", textTransform: "uppercase",
                                 }}>{SESSION.mode}</span>
                                 <span style={{
-                                    fontSize: 11, fontWeight: 800, color: T.textBright,
-                                    background: T.surfaceHigh, border: `1px solid ${T.borderMid}`,
-                                    borderRadius: 6, padding: "3px 10px",
+                                    fontSize: 12, fontWeight: 800, color: T.textBright,
+                                    background: T.bg,
+                                    borderRadius: 6, padding: "4px 12px",
                                 }}>{marks} Marks</span>
+                                {(SESSION.priority && SESSION.priority.includes("High Priority")) && (
+                                     <span style={{
+                                        fontSize: 11, fontWeight: 800, color: T.green, // Emerald green
+                                        background: `${T.green}26`,
+                                        borderRadius: 6, padding: "4px 10px", letterSpacing: "0.05em", textTransform: "uppercase",
+                                        display: "flex", alignItems: "center", gap: 4
+                                    }}>
+                                        <span style={{ fontSize: 13 }}>✦</span> AIR-1 Priority
+                                    </span>
+                                )}
                             </div>
-                            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                                 {SESSION.year && (
-                                    <span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>
+                                    <span style={{ 
+                                        fontSize: 12, color: T.text, fontWeight: 700,
+                                        background: T.bg, padding: "4px 10px", borderRadius: 6
+                                    }}>
                                         UPSC {SESSION.year}
                                     </span>
                                 )}
                                 {questions.length > 1 && (
                                     <span style={{
-                                        fontSize: 11, fontWeight: 700, color: T.subtle,
-                                        background: T.surfaceHigh, border: `1px solid ${T.border}`,
-                                        borderRadius: 5, padding: "2px 8px",
+                                        fontSize: 12, fontWeight: 700, color: T.subtle,
+                                        background: T.surfaceHigh, padding: "4px 10px", borderRadius: 6
                                     }}>
                                         {currentIndex + 1} / {questions.length}
                                     </span>
@@ -955,9 +1584,9 @@ export default function AnswerWritingPage() {
 
                         {/* question text */}
                         <div style={{
-                            fontSize: 16, fontWeight: 700, color: T.textBright,
-                            lineHeight: 1.75, letterSpacing: "0.01em",
-                            marginBottom: SESSION.subparts.length > 0 ? 12 : 20,
+                            fontSize: 20, fontWeight: 800, color: T.textBright,
+                            lineHeight: 1.5,
+                            marginBottom: SESSION.subparts.length > 0 ? 16 : 24,
                         }}>
                             {SESSION.question}
                         </div>
@@ -968,16 +1597,16 @@ export default function AnswerWritingPage() {
                                 display: "flex", flexDirection: "column", gap: 10,
                                 marginBottom: 20,
                                 padding: "14px 16px",
-                                background: `${paperAccent}07`,
-                                border: `1px solid ${paperAccent}20`,
+                                background: `${T.primaryAccent}07`,
+                                border: `1px solid ${T.primaryAccent}20`,
                                 borderRadius: 10,
                             }}>
                                 {SESSION.subparts.map((sp, i) => (
                                     <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                                         <span style={{
-                                            fontSize: 11, fontWeight: 800, color: paperAccent,
-                                            background: `${paperAccent}15`,
-                                            border: `1px solid ${paperAccent}30`,
+                                            fontSize: 11, fontWeight: 800, color: T.primaryAccent,
+                                            background: `${T.primaryAccent}15`,
+                                            border: `1px solid ${T.primaryAccent}30`,
                                             borderRadius: 4, padding: "2px 9px",
                                             flexShrink: 0, marginTop: 2,
                                             letterSpacing: "0.04em",
@@ -1011,65 +1640,71 @@ export default function AnswerWritingPage() {
                         {/* focus + priority */}
                         {(SESSION.focus || SESSION.priority) && (
                             <div style={{
-                                display: "flex", flexDirection: "column", gap: 8,
-                                paddingTop: 14, borderTop: `1px solid ${T.border}`, marginBottom: 4,
+                                display: "flex", flexDirection: "column", gap: 10,
+                                paddingTop: 16, borderTop: `1px solid ${T.borderMid}`, marginBottom: 8,
                             }}>
                                 {SESSION.focus && (
                                     <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                                        <span style={{
-                                            fontSize: 10, fontWeight: 700, color: T.amber,
-                                            letterSpacing: "0.08em", textTransform: "uppercase",
-                                            marginTop: 1, flexShrink: 0,
-                                        }}>Focus:</span>
-                                        <span style={{ fontSize: 12, color: T.text, lineHeight: 1.5 }}>{SESSION.focus}</span>
+                                        <div style={{
+                                            fontSize: 10, fontWeight: 800, color: T.amber,
+                                            letterSpacing: "0.06em", textTransform: "uppercase",
+                                            marginTop: 2, flexShrink: 0, padding: "2px 6px",
+                                            background: `${T.amber}11`, border: `1px solid ${T.amber}33`, borderRadius: 4
+                                        }}>FOCUS</div>
+                                        <span style={{ fontSize: 13, color: T.textBright, lineHeight: 1.5, fontWeight: 500 }}>{SESSION.focus}</span>
                                     </div>
                                 )}
                                 {SESSION.priority && (
                                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                        <div style={{ width: 7, height: 7, borderRadius: "50%", background: T.green, flexShrink: 0 }} />
-                                        <span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>{SESSION.priority}</span>
+                                        <div style={{ width: 8, height: 8, borderRadius: "50%", background: T.green, flexShrink: 0, boxShadow: `0 0 6px ${T.green}` }} />
+                                        <span style={{ fontSize: 12, color: T.text, fontWeight: 600, letterSpacing: "0.01em" }}>{SESSION.priority}</span>
                                     </div>
                                 )}
                             </div>
                         )}
 
                         {/* Start Writing button */}
-                        <div style={{ marginTop: 18, paddingTop: 16, borderTop: `1px solid ${T.border}` }}>
-                            <button
-                                onClick={handleStartSession}
-                                disabled={sessionStarted}
-                                style={{
-                                    ...primaryBtn(paperAccent, sessionStarted),
-                                    boxShadow: !sessionStarted ? `0 0 16px ${paperAccent}30` : "none",
-                                }}
-                            >
-                                {sessionStarted ? "✓ Session Running" : "✍ Start Writing Session"}
-                            </button>
-                            <span style={{ fontSize: 11, color: T.subtle, marginLeft: 14 }}>
-                                {sessionStarted
-                                    ? "Timer started — write your answer on paper."
-                                    : "Start the timer and begin writing on paper."}
-                            </span>
-                        </div>
+                        {!sessionStarted && (
+                            <div style={{ marginTop: 24, paddingTop: 20, borderTop: `1px solid ${T.borderMid}` }}>
+                                <button
+                                    onClick={handleStartSession}
+                                    style={{
+                                        ...primaryBtn(T.primaryAccent, sessionStarted),
+                                        boxShadow: `0 4px 16px ${T.primaryAccent}40`,
+                                        fontSize: 14, padding: "12px 32px"
+                                    }}
+                                >
+                                    ✍ Start Writing Session
+                                </button>
+                                <span style={{ fontSize: 12, color: T.dim, marginLeft: 16, fontWeight: 500 }}>
+                                    Start the timer and begin writing on paper.
+                                </span>
+                            </div>
+                        )}
                     </div>
                 </SectionCard>
 
-                {/* ═══ 3. TIMER ═══════════════════════════════════════════════════════ */}
-                {/* key=currentIndex forces full remount / reset on question change */}
-                <Timer
-                    key={currentIndex}
-                    marks={marks}
-                    accent={paperAccent}
-                    autoStart={sessionStarted}
-                    timerRef={timerSectionRef}
-                    onStatusChange={setTimerStatus}
-                />
+                {/* ═══ TIMER (Auto-starts inside writing phase) ════════════════════════ */}
+                {sessionStarted && (
+                    <Timer
+                        key={currentIndex}
+                        marks={marks}
+                        accent={paperAccent}
+                        autoStart={sessionStarted}
+                        timerRef={timerSectionRef}
+                        onStatusChange={setTimerStatus}
+                    />
+                )}
 
-                {/* ═══ 4. UPLOAD WORKSPACE ════════════════════════════════════════════ */}
-                <SectionCard accentTop={T.blue}>
+                {/* ═══ STEP 2: UPLOAD & EXTRACT ANSWER + BASIC REVIEW ══════════════════ */}
+                {sessionStarted && (
+                    <SectionCard accentTop={T.blue}>
                     <div style={{ padding: "20px 24px" }}>
-                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
-                            <div style={label11(T.subtle)}>Answer Pages Upload</div>
+                        <div style={{ fontSize: 13, fontWeight: 800, color: T.textBright, letterSpacing: "0.02em", marginBottom: 20 }}>
+                            Step 2: Upload & Extract Answer + Basic Review
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                            <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, letterSpacing: "0.08em", textTransform: "uppercase" }}>Answer Pages Upload</div>
                             {hasPages && (
                                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                                     <span style={{ fontSize: 11, color: T.dim }}>
@@ -1086,7 +1721,7 @@ export default function AnswerWritingPage() {
                                 </div>
                             )}
                         </div>
-                        <div style={{ fontSize: 13, color: T.dim, marginBottom: 18 }}>
+                        <div style={{ fontSize: 13, color: T.dim, marginBottom: 18, fontWeight: 500 }}>
                             Upload clear photos of all answer pages in order.
                         </div>
 
@@ -1140,11 +1775,11 @@ export default function AnswerWritingPage() {
                                     border: `2px dashed ${isDragging ? T.blue : T.borderMid}`,
                                     borderRadius: 12,
                                     background: isDragging ? `${T.blue}08` : T.bg,
-                                    padding: hasPages ? "22px 24px" : "48px 24px",
+                                    padding: hasPages ? "16px 24px" : "32px 24px",
                                     textAlign: "center", cursor: "pointer", marginBottom: 16,
                                 }}
                             >
-                                <div style={{ fontSize: hasPages ? 24 : 36, marginBottom: 8 }}>📷</div>
+                                <div style={{ fontSize: hasPages ? 20 : 28, marginBottom: 8 }}>📷</div>
                                 <div style={{ fontSize: hasPages ? 13 : 15, fontWeight: 700, color: T.textBright, marginBottom: 5 }}>
                                     {hasPages ? `Add more pages (${uploadedPages.length}/${MAX_PAGES})` : "Upload answer pages"}
                                 </div>
@@ -1201,16 +1836,14 @@ export default function AnswerWritingPage() {
                         <div style={{ fontSize: 11, color: T.subtle, marginTop: 4 }}>
                             💡 Use clear lighting, avoid shadows, keep pages in order.
                         </div>
-                    </div>
-                </SectionCard>
 
-                {/* ═══ 5. PASTE EXTRACTED TEXT ════════════════════════════════════════ */}
-                <SectionCard accentTop={T.purple}>
-                    <div style={{ padding: "20px 24px" }}>
-                        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 18 }}>
+                        {/* ═══ PASTE EXTRACTED TEXT (Inside Step 2) ════════════════════════════════════════ */}
+                        {hasPages && (
+                            <div style={{ marginTop: 24, paddingTop: 20, borderTop: `1px solid ${T.borderMid}` }}>
+                                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 18 }}>
                             <div>
-                                <div style={{ ...label11(T.subtle), marginBottom: 4 }}>Paste Extracted Text</div>
-                                <div style={{ fontSize: 13, color: T.dim }}>
+                                <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 }}>Paste Extracted Text</div>
+                                <div style={{ fontSize: 13, color: T.dim, fontWeight: 500 }}>
                                     Copy combined text from ChatGPT, paste and correct before saving.
                                 </div>
                             </div>
@@ -1298,27 +1931,27 @@ export default function AnswerWritingPage() {
                         <div style={{ fontSize: 11, color: T.subtle, marginTop: 8 }}>
                             ✎ Fix spacing, missed words, or formatting before saving.
                         </div>
-                    </div>
-                </SectionCard>
+                            </div>
+                        )}
 
-                {/* ═══ 5.5. EVALUATE ANSWER ══════════════════════════════════════════ */}
-                <SectionCard accentTop={T.amber}>
-                    <div style={{ padding: "20px 24px" }}>
-                        <div style={{ marginBottom: 16 }}>
-                            <div style={{ ...label11(T.subtle), marginBottom: 4 }}>Evaluate Answer</div>
-                            <div style={{ fontSize: 13, color: T.dim }}>
+                        {/* ═══ EVALUATE ANSWER (Inside Step 2) ══════════════════════════════════════════ */}
+                        {hasPastedText && (
+                            <div style={{ marginTop: 24, paddingTop: 20, borderTop: `1px solid ${T.borderMid}` }}>
+                                <div style={{ marginBottom: 16 }}>
+                            <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 }}>Evaluate Answer</div>
+                            <div style={{ fontSize: 13, color: T.dim, fontWeight: 500 }}>
                                 Send your extracted answer to ChatGPT for UPSC-standard evaluation, then paste the report here.
                             </div>
                         </div>
 
                         <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginBottom: 14 }}>
                             <button
-                                onClick={handleEvaluateWithChatGPT}
-                                disabled={!hasPastedText}
-                                style={primaryBtn(T.amber, !hasPastedText)}
+                                onClick={handleBasicReview}
+                                disabled={!hasPastedText || isEvaluating}
+                                style={primaryBtn(T.primaryAccent, !hasPastedText || isEvaluating)}
                                 title={hasPastedText ? undefined : "Paste extracted text first"}
                             >
-                                ✦ Evaluate with ChatGPT
+                                {isEvaluating ? "⏳ Generating Basic Review..." : "✦ Basic Review"}
                             </button>
                             {evalPromptCopied && (
                                 <span style={{ fontSize: 11, fontWeight: 700, color: T.green }}>
@@ -1332,14 +1965,14 @@ export default function AnswerWritingPage() {
                             )}
                         </div>
 
-                        {hasPastedText && (
+                        {hasPastedText && !hasEvaluationText && !isEvaluating && (
                             <div style={{
                                 padding: "10px 14px", marginBottom: 14,
-                                background: `${T.amber}08`, border: `1px solid ${T.amber}22`,
+                                background: `${T.primaryAccent}08`, border: `1px solid ${T.primaryAccent}22`,
                                 borderRadius: 8, fontSize: 12, color: T.dim, lineHeight: 1.65,
                             }}>
                                 <span style={{ color: T.textBright, fontWeight: 700 }}>How it works:</span>
-                                {" "}Click the button — your question + extracted answer are packaged into a strict UPSC evaluation prompt and copied automatically. Open ChatGPT, paste the prompt, then paste the evaluation report below.
+                                {" "}Click the button — your question + extracted answer will be sent to the MentorOS Gemini backend for an instant strict UPSC evaluation. The report will appear below.
                             </div>
                         )}
 
@@ -1362,7 +1995,7 @@ export default function AnswerWritingPage() {
                                 cursor: hasPastedText ? "text" : "not-allowed",
                             }}
                             placeholder={hasPastedText
-                                ? "Paste ChatGPT evaluation report here…"
+                                ? (isEvaluating ? "Generating evaluation... please wait..." : "Gemini evaluation report will appear here…")
                                 : "Extract your answer first to enable evaluation…"}
                         />
 
@@ -1378,17 +2011,44 @@ export default function AnswerWritingPage() {
                                 <span style={{ fontSize: 12, color: T.dim }}>Save your attempt below to record this session.</span>
                             </div>
                         )}
+                                </div>
+                        )}
                     </div>
                 </SectionCard>
+                )}
 
-                {/* ═══ 6. ACTION ROW ══════════════════════════════════════════════════ */}
-                <SectionCard>
-                    <div style={{ padding: "18px 24px" }}>
+                {/* ═══ STEP 3: AIR-1 REVIEW & SAVE ════════════════════════════════════ */}
+                {hasPastedText && (
+                    <SectionCard accentTop={T.green}>
+                    <div style={{ padding: "20px 24px" }}>
+                        <div style={{ fontSize: 13, fontWeight: 800, color: T.textBright, letterSpacing: "0.02em", marginBottom: 16 }}>
+                            Step 3: AIR-1 Review & Save
+                        </div>
+                        {finalAnswerText && (
+                            <MainsReviewPromptCard
+                                currentQuestion={{ 
+                                    text: SESSION.question, 
+                                    marks: parseInt(SESSION.marks),
+                                    paper: SESSION.paper,
+                                    topic: topic,
+                                    syllabusNode: syllabusNodeId
+                                }}
+                                finalAnswerText={finalAnswerText}
+                                papersAccent={paperAccent}
+                                wordTarget={wordTarget}
+                                onCopyPrompt={handleCopyReviewPrompt}
+                                onOpenChatGPT={handleOpenChatGPTReview}
+                                canCopyReviewPrompt={canCopyReviewPrompt}
+                                promptCopied={reviewPromptCopied}
+                            />
+                        )}
+
+                        <div style={{ marginTop: 24, paddingTop: 20, borderTop: `1px solid ${T.borderMid}` }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
                             <button
                                 disabled={!hasPastedText || saved}
                                 onClick={handleSave}
-                                style={primaryBtn(paperAccent, !hasPastedText || saved)}
+                                style={primaryBtn(T.primaryAccent, !hasPastedText || saved)}
                             >
                                 {saved ? "✓ Saved" : "💾  Save Attempt"}
                             </button>
@@ -1401,7 +2061,7 @@ export default function AnswerWritingPage() {
                             <button
                                 onClick={handleNext}
                                 disabled={canNext && !hasPastedText}
-                                style={outlineBtn(T.amber, canNext && !hasPastedText)}
+                                style={outlineBtn(T.primaryAccent, canNext && !hasPastedText)}
                                 title={canNext && !hasPastedText ? "Paste extracted text first" : undefined}
                             >
                                 {canNext ? "→ Next Question" : "✓ Done"}
@@ -1463,38 +2123,158 @@ export default function AnswerWritingPage() {
                             </div>
                         )}
                     </div>
-                </SectionCard>
+                    </div>
 
-                {/* ═══ 7. EVALUATION PROMPT ═══════════════════════════════════════════ */}
+                {/* ═══ 8. AIR-1 JSON REVIEW (NEW) ════════════════════════════════════ */}
                 {saved && finalAnswerText && (
-                    <MainsReviewPromptCard
-                        currentQuestion={{ text: SESSION.question, marks: parseInt(SESSION.marks) }}
-                        finalAnswerText={finalAnswerText}
-                        papersAccent={paperAccent}
-                        wordTarget={wordTarget}
-                        onCopyPrompt={handleCopyReviewPrompt}
-                        onOpenChatGPT={handleOpenChatGPTReview}
-                        canCopyReviewPrompt={canCopyReviewPrompt}
-                        promptCopied={reviewPromptCopied}
-                    />
+                    <div style={{ borderTop: `1px solid ${T.borderMid}` }}>
+                        <div style={{ padding: "20px 24px" }}>
+                            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 18 }}>
+                                <div>
+                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 }}>Paste AIR-1 JSON Review</div>
+                                    <div style={{ fontSize: 13, color: T.dim, fontWeight: 500 }}>Paste the JSON output from ChatGPT (AIR-1 format). Click <strong>Analyze</strong> to render MentorOS cards.</div>
+                                </div>
+                                <div style={{ display: "flex", gap: 8 }}>
+                                </div>
+                            </div>
+
+                            <textarea
+                                value={air1JsonText}
+                                onChange={(e) => setAir1JsonText(e.target.value)}
+                                rows={10}
+                                style={{
+                                    width: "100%", boxSizing: "border-box",
+                                    background: T.bg,
+                                    border: `1px solid ${air1JsonText.trim() ? T.purple + "55" : T.borderMid}`,
+                                    borderRadius: 10, color: T.text, fontSize: 13.5,
+                                    lineHeight: 1.8, padding: "16px 18px", fontFamily: T.font,
+                                    resize: "vertical", outline: "none",
+                                    letterSpacing: "0.01em", transition: "border-color 0.2s",
+                                }}
+                                placeholder="Paste ChatGPT JSON result here…"
+                            />
+
+                            <div style={{ display: "flex", gap: 12, marginTop: 12 }}>
+                                <button
+                                    onClick={handleAnalyzeAir1Review}
+                                    disabled={!air1JsonText.trim()}
+                                    style={{ ...primaryBtn(T.purple, !air1JsonText.trim()) }}
+                                >
+                                    {analyzingAir1 ? "Analyzing…" : "Analyze Review"}
+                                </button>
+                                <button
+                                    onClick={() => { setAir1JsonText(""); setAir1ParseResult(null); setAir1ParseError(""); }}
+                                    style={{ ...outlineBtn(T.borderMid) }}
+                                >
+                                    Clear
+                                </button>
+                                <button
+                                    onClick={() => setShowRawReview(v => !v)}
+                                    style={{ ...outlineBtn(T.dim) }}
+                                >
+                                    {showRawReview ? "Hide Raw Review" : "View Raw Review"}
+                                </button>
+                            </div>
+
+                            {air1ParseError && (
+                                <div style={{ marginTop: 12, color: T.red }}>{air1ParseError}</div>
+                            )}
+
+                            {air1ParseResult && (
+                                <div style={{ marginTop: 12 }}>
+                                    {!fixModeActive ? (
+                                        <Air1ReviewResult data={air1ParseResult} rawReviewText={externalReviewText} onStartFix={handleStartFix} />
+                                    ) : (
+                                        <SectionCard accentTop={T.purple}>
+                                            <div style={{ padding: "16px 18px" }}>
+                                                <div style={{ fontSize: 13, fontWeight: 900, color: T.text, marginBottom: 8 }}>Fix: one task</div>
+                                                <div style={{ fontSize: 13, color: T.text, marginBottom: 12 }}>{fixTask}</div>
+
+                                                <textarea
+                                                    value={fixDraft}
+                                                    onChange={(e) => {
+                                                        const val = e.target.value;
+                                                        const maxLines = 5;
+                                                        const lines = val.split(/\r?\n/);
+                                                        if (lines.length > maxLines) {
+                                                            setFixDraft(lines.slice(0, maxLines).join("\n"));
+                                                        } else {
+                                                            setFixDraft(val);
+                                                        }
+                                                    }}
+                                                    rows={5}
+                                                    style={{
+                                                        width: "100%", boxSizing: "border-box",
+                                                        background: T.bg,
+                                                        border: `1px solid ${T.border}`,
+                                                        borderRadius: 8, color: T.text, fontSize: 13.5,
+                                                        lineHeight: 1.5, padding: "10px 12px", fontFamily: T.font,
+                                                        resize: "vertical", outline: "none",
+                                                    }}
+                                                    placeholder="Rewrite your improved answer here"
+                                                />
+
+                                                <div style={{ fontSize: 12, color: T.subtle, marginTop: 8 }}>
+                                                    Only rewrite the weak part, not full answer — max 5 lines.
+                                                </div>
+
+                                                <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
+                                                    <button
+                                                        onClick={handleSubmitFix}
+                                                        disabled={fixSaving}
+                                                        style={{
+                                                            background: T.purple, color: T.btnText, border: "none",
+                                                            borderRadius: 8, padding: "10px 14px", cursor: fixSaving ? "not-allowed" : "pointer", fontWeight: 800,
+                                                        }}
+                                                    >
+                                                        {fixSaving ? "Saving…" : "Save Attempt"}
+                                                    </button>
+                                                    <button
+                                                        onClick={handleCancelFix}
+                                                        disabled={fixSaving}
+                                                        style={{
+                                                            background: "transparent", color: T.dim, border: `1px solid ${T.border}`,
+                                                            borderRadius: 8, padding: "10px 14px", cursor: fixSaving ? "not-allowed" : "pointer", fontWeight: 700,
+                                                        }}
+                                                    >
+                                                        Cancel
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </SectionCard>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    </div>
                 )}
 
-                {/* ═══ 8. PASTE EVALUATION REPORT ════════════════════════════════════ */}
+                {/* Advanced: keep raw review area available but hidden by default */}
                 {saved && finalAnswerText && (
-                    <MainsPasteReviewCard
-                        externalReviewText={externalReviewText}
-                        setExternalReviewText={setExternalReviewText}
-                        reviewAgreement={reviewAgreement}
-                        setReviewAgreement={setReviewAgreement}
-                        reviewAgreementNote={reviewAgreementNote}
-                        setReviewAgreementNote={setReviewAgreementNote}
-                        onSaveReview={handleSaveReview}
-                        onProcessReview={handleProcessReview}
-                        canSaveReview={canSaveReview}
-                        canProcessReview={canProcessReview}
-                        reviewSaveState={reviewSaveState}
-                        reviewProcessState={reviewProcessState}
-                    />
+                    <div style={{ marginTop: 12 }}>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                            <div style={{ fontSize: 12, color: T.dim }}>Advanced: Raw ChatGPT review (optional)</div>
+                            <button onClick={() => setShowRawReview(!showRawReview)} style={{ ...outlineBtn(T.blue, "sm") }}>
+                                {showRawReview ? "Hide Raw Review" : "View Raw Review"}
+                            </button>
+                        </div>
+                        {showRawReview && (
+                            <MainsPasteReviewCard
+                                externalReviewText={externalReviewText}
+                                setExternalReviewText={setExternalReviewText}
+                                reviewAgreement={reviewAgreement}
+                                setReviewAgreement={setReviewAgreement}
+                                reviewAgreementNote={reviewAgreementNote}
+                                setReviewAgreementNote={setReviewAgreementNote}
+                                onSaveReview={handleSaveReview}
+                                onProcessReview={handleProcessReview}
+                                canSaveReview={canSaveReview}
+                                canProcessReview={canProcessReview}
+                                reviewSaveState={reviewSaveState}
+                                reviewProcessState={reviewProcessState}
+                            />
+                        )}
+                    </div>
                 )}
 
                 {/* ── Pipeline banners ───────────────────────────────────────────── */}
@@ -1534,43 +2314,8 @@ export default function AnswerWritingPage() {
                         onNextQuestion={handleNext}
                     />
                 )}
-
-                {/* ═══ 10. JOURNEY TRACKER ════════════════════════════════════════════ */}
-                <div style={{ display: "flex", alignItems: "center", gap: 0, overflowX: "auto" }}>
-                    {steps.map((s, i) => {
-                        const isActive = !s.done && (i === 0 || steps[i - 1].done);
-                        return (
-                            <React.Fragment key={s.label}>
-                                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5, minWidth: 90 }}>
-                                    <div style={{
-                                        width: 28, height: 28, borderRadius: "50%",
-                                        display: "flex", alignItems: "center", justifyContent: "center",
-                                        fontWeight: 900, fontSize: 12,
-                                        background: s.done ? T.green : isActive ? paperAccent : T.surface,
-                                        color: s.done || isActive ? "#09090b" : T.muted,
-                                        border: `2px solid ${s.done ? T.green : isActive ? paperAccent : T.border}`,
-                                    }}>
-                                        {s.done ? "✓" : i + 1}
-                                    </div>
-                                    <span style={{
-                                        fontSize: 10, fontWeight: 600, textAlign: "center",
-                                        whiteSpace: "nowrap", letterSpacing: "0.02em",
-                                        color: s.done ? T.green : isActive ? paperAccent : T.subtle,
-                                    }}>
-                                        {s.label}
-                                    </span>
-                                </div>
-                                {i < steps.length - 1 && (
-                                    <div style={{
-                                        flex: 1, height: 2, minWidth: 20,
-                                        background: steps[i].done ? T.green : T.border,
-                                        marginBottom: 18,
-                                    }} />
-                                )}
-                            </React.Fragment>
-                        );
-                    })}
-                </div>
+                    </SectionCard>
+                )}
 
             </div>
         </div>

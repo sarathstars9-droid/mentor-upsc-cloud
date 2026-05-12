@@ -294,6 +294,50 @@ export async function completeBlock(
   return computeBlockState(rows[0]);
 }
 
+// ── STOP ───────────────────────────────────────────────────────────────
+// Stops the block without triggering knowledge linkage or full completion.
+// Used when user stops an active session manually without reviewing.
+
+export async function stopBlock(
+  userId = DEFAULT_USER, blockId, dayKey
+) {
+  const { rows } = await pool.query(
+    `UPDATE study_blocks
+     SET status              = 'partial',
+         ended_at            = NOW(),
+         total_pause_seconds = total_pause_seconds
+                               + CASE WHEN paused_at IS NOT NULL
+                                      THEN GREATEST(0,
+                                             EXTRACT(EPOCH FROM (NOW() - paused_at))::INTEGER)
+                                      ELSE 0
+                                 END,
+         paused_at           = NULL,
+         completion_reason   = 'stopped',
+         calendar_sync_status = 'pending',
+         updated_at          = NOW()
+     WHERE user_id = $1 AND block_id = $2 AND day_key = $3
+       AND status IN ('active','paused')
+     RETURNING *`,
+    [userId, blockId, dayKey]
+  );
+
+  if (!rows.length) {
+    const { rows: current } = await pool.query(
+      `SELECT * FROM study_blocks WHERE user_id=$1 AND block_id=$2 AND day_key=$3`,
+      [userId, blockId, dayKey]
+    );
+    if (current.length) return computeBlockState(current[0]);
+    throw Object.assign(
+      new Error(`stopBlock: block ${blockId} not found or not in stoppable state`),
+      { code: 'NOT_STOPPABLE' }
+    );
+  }
+
+  try { invalidateSuggestionsCache(userId); } catch {}
+
+  return computeBlockState(rows[0]);
+}
+
 // ── FETCH ─────────────────────────────────────────────────────────────────────
 
 export async function getBlocksForDay(userId = DEFAULT_USER, dayKey) {

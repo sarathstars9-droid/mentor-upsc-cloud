@@ -112,6 +112,22 @@ export async function updateMistake(id, changes) {
             typeof changes.must_revise === "boolean"
                 ? changes.must_revise
                 : undefined,
+        revision_flag:
+            typeof changes.revision_flag === "boolean"
+                ? changes.revision_flag
+                : undefined,
+        is_important:
+            typeof changes.is_important === "boolean"
+                ? changes.is_important
+                : undefined,
+        is_weak:
+            typeof changes.is_weak === "boolean"
+                ? changes.is_weak
+                : undefined,
+        is_read:
+            typeof changes.is_read === "boolean"
+                ? changes.is_read
+                : undefined,
     };
 
     const entries = Object.entries(allowed).filter(([, value]) => value !== undefined);

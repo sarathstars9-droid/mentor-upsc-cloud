@@ -1,124 +1,93 @@
-// src/utils/mainsMistakeEngine.js
-// Mains Mistake Book — localStorage engine
-// Key: mains_mistakes_v1
+import { BACKEND_URL } from "../config";
 
-const STORAGE_KEY = "mains_mistakes_v1";
+const API_BASE = `${BACKEND_URL}/api/mistakes`;
+const DEFAULT_USER_ID = "user_1";
 
-// ─── Read / write helpers ────────────────────────────────────────────────────
-function readAll() {
-    try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-    } catch {
-        return [];
-    }
-}
-
-function writeAll(data) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
-// ─── CRUD ─────────────────────────────────────────────────────────────────────
-
-/**
- * Save a new mains mistake entry.
- * @param {Object} entry — partial; safe defaults applied for missing fields.
- * @returns {Object} the saved entry with generated id.
- */
-export function saveMainsMistake(entry = {}) {
-    const all = readAll();
-    const mistake = {
-        id:                  crypto.randomUUID?.() || `mm_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
-        attemptId:           entry.attemptId        || null,
-        createdAt:           new Date().toISOString(),
-        paper:               entry.paper            || "GS1",
-        mode:                entry.mode             || "PYQ",
-        marks:               entry.marks            || "15",
-        year:                entry.year             || null,
-        question:            entry.question         || "",
-        topic:               entry.topic            || "",
-        subtopic:            entry.subtopic         || "",
-        answerText:          entry.answerText        || "",
-        wordCount:           entry.wordCount        || 0,
-        targetWords:         entry.targetWords      || 200,
-        timeSpentSec:        entry.timeSpentSec     || 0,
-        mistakeTypes:        entry.mistakeTypes     || [],
-        severity:            entry.severity         || "medium",
-        source:              entry.source           || "self_review",
-        notes:               entry.notes            || "",
-        mustRevise:          entry.mustRevise       ?? false,
-        status:              entry.status           || "open",
-        linkedRevisionType:  entry.linkedRevisionType || null,
+export async function saveMainsMistake(entry = {}) {
+    const payload = {
+        user_id: DEFAULT_USER_ID,
+        stage: "mains",
+        source_type: "mains",
+        source_ref: entry.attemptId || null,
+        question_id: crypto.randomUUID?.() || `mm_${Date.now()}`,
+        paper: entry.paper || "GS1",
+        subject: entry.topic || "",
+        node_id: entry.subtopic || "",
+        question_text: entry.question || "",
+        selected_answer: entry.answerText || "",
+        answer_status: entry.status || "open",
+        error_type: entry.mistakeTypes?.[0] || entry.severity || "medium",
+        notes: entry.notes || "",
+        must_revise: entry.mustRevise ?? false
     };
-    all.unshift(mistake);
-    writeAll(all);
-    return mistake;
+
+    const res = await fetch(API_BASE, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    return data.item;
 }
 
-/**
- * Get all mistakes, newest first.
- */
-export function getAllMainsMistakes() {
-    return readAll();
+export async function getAllMainsMistakes() {
+    const res = await fetch(`${API_BASE}?userId=${DEFAULT_USER_ID}&stage=mains`);
+    const items = await res.json();
+    return items.map(m => ({
+        id: m.id,
+        attemptId: m.source_ref,
+        createdAt: m.created_at,
+        paper: m.paper || "GS1",
+        question: m.question_text,
+        topic: m.subject,
+        subtopic: m.node_id,
+        answerText: m.selected_answer,
+        status: m.answer_status,
+        mustRevise: m.must_revise,
+        mistakeTypes: m.error_type ? [m.error_type] : [],
+        notes: m.notes
+    }));
 }
 
-/**
- * Get only open (unresolved) mistakes.
- */
-export function getOpenMainsMistakes() {
-    return readAll().filter((m) => m.status === "open");
+export async function getOpenMainsMistakes() {
+    const all = await getAllMainsMistakes();
+    return all.filter((m) => m.status === "open");
 }
 
-/**
- * Get mistakes filtered by paper (GS1, GS2, GS3, etc).
- */
-export function getMistakesByPaper(paper) {
-    return readAll().filter((m) => m.paper === paper);
+export async function getMistakesByPaper(paper) {
+    const all = await getAllMainsMistakes();
+    return all.filter((m) => m.paper === paper);
 }
 
-/**
- * Mark a mistake as resolved.
- */
-export function markMainsMistakeResolved(id) {
-    const all = readAll();
-    const idx = all.findIndex((m) => m.id === id);
-    if (idx === -1) return null;
-    all[idx].status = "resolved";
-    all[idx].resolvedAt = new Date().toISOString();
-    writeAll(all);
-    return all[idx];
+export async function markMainsMistakeResolved(id) {
+    const res = await fetch(`${API_BASE}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answer_status: "resolved" }),
+    });
+    return await res.json();
 }
 
-/**
- * Toggle mustRevise flag.
- */
-export function toggleMustRevise(id) {
-    const all = readAll();
-    const idx = all.findIndex((m) => m.id === id);
-    if (idx === -1) return null;
-    all[idx].mustRevise = !all[idx].mustRevise;
-    writeAll(all);
-    return all[idx];
+export async function toggleMustRevise(id, currentVal) {
+    const res = await fetch(`${API_BASE}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ must_revise: !currentVal }),
+    });
+    return await res.json();
 }
 
-/**
- * Reopen a previously resolved mistake.
- */
-export function reopenMainsMistake(id) {
-    const all = readAll();
-    const idx = all.findIndex((m) => m.id === id);
-    if (idx === -1) return null;
-    all[idx].status = "open";
-    delete all[idx].resolvedAt;
-    writeAll(all);
-    return all[idx];
+export async function reopenMainsMistake(id) {
+    const res = await fetch(`${API_BASE}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answer_status: "open" }),
+    });
+    return await res.json();
 }
 
-/**
- * Analyse weak patterns across all open mistakes.
- * Returns an array sorted by frequency: [{ type, count, pct }].
- */
-export function getMainsWeakPatterns() {
-    const open = getOpenMainsMistakes();
+export async function getMainsWeakPatterns() {
+    const open = await getOpenMainsMistakes();
     if (!open.length) return [];
 
     const freq = {};
@@ -137,10 +106,11 @@ export function getMainsWeakPatterns() {
         .sort((a, b) => b.count - a.count);
 }
 
-/**
- * Delete a mistake permanently.
- */
-export function deleteMainsMistake(id) {
-    const all = readAll();
-    writeAll(all.filter((m) => m.id !== id));
+export async function deleteMainsMistake(id) {
+    // We can PATCH status to "deleted" or implement DELETE in backend
+    await fetch(`${API_BASE}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answer_status: "deleted" }),
+    });
 }

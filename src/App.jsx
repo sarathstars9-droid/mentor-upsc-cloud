@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import PlanPage from "./pages/PlanPage";
 import LoginPage from "./pages/LoginPage";
@@ -37,6 +37,9 @@ import MistakeBookPage from "./pages/MistakeBookPage";
 import PrelimsInstitutionalTestsPage from "./pages/PrelimsInstitutionalTestsPage";
 import MentorOSLayout from "./layouts/MentorOSLayout";
 import PyqIngestionPage from "./pages/admin/PyqIngestionPage";
+import PrelimsTestPage from "./pages/PrelimsTestPage";
+import PrelimsTestAttemptPage from "./pages/PrelimsTestAttemptPage";
+import PrelimsTestResultPage from "./pages/PrelimsTestResultPage";
 import { isLoggedIn, login, logout } from "./utils/auth";
 
 function AppRoutes({ onLogout }) {
@@ -123,7 +126,7 @@ function AppRoutes({ onLogout }) {
         <Route path="/" element={<Navigate to="/plan" replace />} />
         <Route path="/prelims/mistakes" element={<PrelimsMistakesPage />} />
         <Route path="/prelims/institutional-tests" element={<PrelimsInstitutionalTestsPage />} />
-        <Route path="/plan" element={<PlanPage />} />
+        <Route path="/plan" element={<ErrorBoundary><PlanPage /></ErrorBoundary>} />
         <Route path="/execution" element={<ExecutionPage />} />
         <Route path="/mistakes" element={<MistakeBookPage />} />
         <Route path="/performance" element={<PerformancePage />} />
@@ -157,10 +160,44 @@ function AppRoutes({ onLogout }) {
         <Route path="/pyq/topic/:syllabusNodeId" element={<PyqTopicPage />} />
         {/* Admin-only utility routes — not in sidebar nav */}
         <Route path="/admin/pyq-ingestion" element={<PyqIngestionPage />} />
+        {/* Prelims Test Engine */}
+        <Route path="/prelims/test" element={<PrelimsTestPage />} />
+        <Route path="/prelims/test/:attemptId" element={<PrelimsTestAttemptPage />} />
+        <Route path="/prelims/test/result/:attemptId" element={<PrelimsTestResultPage />} />
         <Route path="*" element={<Navigate to="/plan" replace />} />
       </Routes>
     </MentorOSLayout>
   );
+}
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, info) {
+    console.error("[ErrorBoundary]", error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: 24 }}>
+          <h2>Something went wrong.</h2>
+          <pre style={{ whiteSpace: "pre-wrap", background: "#111", color: "#fff", padding: 12, borderRadius: 8 }}>{String(this.state.error)}</pre>
+          <div style={{ marginTop: 12 }}>
+            <button onClick={() => this.setState({ hasError: false, error: null })}>Dismiss</button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
 }
 
 export default function App() {

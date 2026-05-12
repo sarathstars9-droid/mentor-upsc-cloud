@@ -167,7 +167,7 @@ Classify the answer under these labels wherever applicable:
 - weak presentation
 - poor balance
 - weak analysis
-- missed core demand
+- Missed core demand
 
 I. Final Verdict
 Choose one:
@@ -177,4 +177,42 @@ Choose one:
 - Good but not ranker level
 - Strong answer
 - Ranker-grade answer`;
+}
+
+/**
+ * Build Deep AIR-1 review prompt dynamically via Backend
+ * POST /api/mains/air1-prompt
+ */
+export async function buildAir1Prompt(payload) {
+    try {
+        const response = await fetch(`${BACKEND_URL}/api/mains/air1-prompt`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error("buildAir1Prompt error:", error);
+        throw error;
+    }
+}
+
+/**
+ * Basic Review: Evaluate Mains Answer directly using Gemini API on the backend
+ * POST /api/evaluate-answer
+ */
+export async function evaluateMainsAnswerApi(payload) {
+    try {
+        const response = await fetch(`${BACKEND_URL}/api/evaluate-answer`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error("evaluateMainsAnswerApi error:", error);
+        throw error;
+    }
 }

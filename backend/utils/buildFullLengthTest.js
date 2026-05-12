@@ -208,6 +208,7 @@ export function buildFullLengthTest(allQuestions, options = {}) {
         return stage === "PRELIMS";
     });
 
+    // First pass: strict match on paper + year
     const exactMatches = prelimsQuestions.filter((question) => {
         const year = extractYearFromQuestion(question);
         const paper = extractPaperFromQuestion(question);
@@ -215,8 +216,25 @@ export function buildFullLengthTest(allQuestions, options = {}) {
         return year === selectedYear && paper === selectedPaper;
     });
 
-    const uniqueMatches = dedupeQuestions(exactMatches);
+    let uniqueMatches = dedupeQuestions(exactMatches);
+
+    // Fallback for older years (pre-2011): CSAT didn't exist, so all prelims
+    // questions for that year are GS. If strict paper matching found nothing,
+    // retry with year-only matching (paper-agnostic).
+    if (!uniqueMatches.length && selectedPaper === "GS" && selectedYear < 2011) {
+        const yearOnlyMatches = prelimsQuestions.filter((question) => {
+            const year = extractYearFromQuestion(question);
+            return year === selectedYear;
+        });
+        uniqueMatches = dedupeQuestions(yearOnlyMatches);
+        if (uniqueMatches.length) {
+            console.log(`[buildFullLengthTest] Pre-2011 fallback: ${uniqueMatches.length} questions for ${selectedYear} via year-only match`);
+        }
+    }
+
     const sortedMatches = sortQuestionsForStableOrder(uniqueMatches);
+
+    console.log(`[buildFullLengthTest] ${selectedPaper} ${selectedYear}: ${sortedMatches.length} questions (expected ${expectedCount})`);
 
     if (!sortedMatches.length) {
         throw new Error(
@@ -231,13 +249,12 @@ export function buildFullLengthTest(allQuestions, options = {}) {
     return sortedMatches;
 }
 
-export function getAvailableFullLengthYears(allQuestions, paperType) {
+export function getAvailableFullLengthYears(allQuestions, paperType, { minQuestions = 1 } = {}) {
     if (!Array.isArray(allQuestions)) return [];
 
     const selectedPaper = normalizePaper(paperType);
     if (selectedPaper !== "GS" && selectedPaper !== "CSAT") return [];
 
-    const expectedCount = selectedPaper === "GS" ? 100 : 80;
     const countsByYear = new Map();
 
     for (const question of allQuestions) {
@@ -257,10 +274,14 @@ export function getAvailableFullLengthYears(allQuestions, paperType) {
         countsByYear.get(year).push(question);
     }
 
-    return [...countsByYear.entries()]
-        .filter(([, questions]) => dedupeQuestions(questions).length >= expectedCount)
+    const result = [...countsByYear.entries()]
+        .filter(([, questions]) => dedupeQuestions(questions).length >= minQuestions)
         .map(([year]) => year)
         .sort((a, b) => a - b);
+
+    console.log(`[getAvailableFullLengthYears] ${selectedPaper}: ${result.length} years found (min=${minQuestions}):`, result);
+
+    return result;
 }
 
 export function debugFullLengthSummary(allQuestions, paperType) {

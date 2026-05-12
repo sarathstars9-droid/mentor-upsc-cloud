@@ -1,0 +1,2254 @@
+{
+  "year": 2012,
+  "paper": "GS",
+  "source": "pyq_master_index",
+  "totalQuestions": 93,
+  "questions": [
+    {
+      "id": "POL_CAG_2012_Q1",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 1,
+      "originalQuestionNumber": 1,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "In India, other than ensuring that public funds are used efficiently and for intended purpose, what is the importance of the office of the Comptroller and Auditor General (CAG)? 1. CAG exercises exchequer control on behalf of the Parliament when the President of India declares national emergency/financial emergency. 2. CAG reports on the execution of projects or programmes by the ministries are discussed by the Public Accounts Committee. 3. Information from CAG reports can be used by investigating agencies to press charges against those who have violated the law while managing public finances. 4. While dealing with the audit and accounting of government companies, CAG has certain judicial powers for prosecuting those who violate the law. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1,3 & 4 Only",
+        "B": "2 Only",
+        "C": "2 & 3 Only",
+        "D": "1,2, 3 & 4"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-BODIES-MT01",
+      "syllabusNodeId": "GS2-POL-BODIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_VEDIC_2012_Q2",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 2,
+      "originalQuestionNumber": 2,
+      "subject": "History",
+      "sourceFile": "vedic_age.json",
+      "question": "The religion of early Vedic Aryans was primarily of:",
+      "options": {
+        "A": "Bhakti",
+        "B": "Image Worship and Yajnas",
+        "C": "Worship of Nature and Yajnas",
+        "D": "Worship of Nature and Bhakti"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-ANC-VEDIC-RIG-MT05",
+      "syllabusNodeId": "GS1-HIS-ANC-VEDIC-RIG-MT05",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_RTI_ACT_2012_Q2",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 3,
+      "originalQuestionNumber": 2,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "The National Green Tribunal Act, 2010 was enacted in consonance with which of the following provisions of the Constitution of India? 1. Right to healthy environment, construed as a part of Right to life under Article 21 2. Provision of grants for raising the level of administration in the Scheduled Areas for the welfare of Scheduled Tribes under Article 275(1) 3. Powers and functions of Gram Sabha as mentioned under Article 243(A) Select the correct answer:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 only",
+        "D": "1,2 & 3"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-FR-MT01",
+      "syllabusNodeId": "GS2-POL-FR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-BODIES-MT01",
+          "toNodeId": "GS2-POL-FR-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-BODIES-MT01 based on keywords.",
+          "matchedKeywords": [
+            "article 21"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_ANC_GUPTA_2012_Q4",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 4,
+      "originalQuestionNumber": 4,
+      "subject": "History",
+      "sourceFile": "gupta_period.json",
+      "question": "With reference to the guilds (Shreni) of ancient India that played a very important role in the country’s economy, which of the following statements is/are correct? 1. Every guild was registered with the central authority of the State and the king was the chief administrative authority on them. 2. The wages, rules of work, standards and prices were fixed by the guild. 3. The guild had judicial powers over its own members. Choose the correct option:",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "3 Only",
+        "C": "2 & 3 Only",
+        "D": "1,2, & 3"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-ANC-GUPTA-MT02",
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_REL_2012_Q4",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 5,
+      "originalQuestionNumber": 4,
+      "subject": "History",
+      "sourceFile": "religion_philosophy.json",
+      "question": "With reference to the religious history of medieval India, the Sufi mystics were known to pursue which of the following practices? 1. Meditation and control of breath 2. Severe ascetic exercises in a lonely place 3. Recitation of holy songs to arouse a state of ecstasy in their audience Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "2 & 3 Only",
+        "C": "3 Only",
+        "D": "1,2 &"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MED-BHAKTI-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-BHAKTI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-HIS-MED-SUFI-MT01",
+          "toNodeId": "GS1-HIS-MED-BHAKTI-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-HIS-MED-SUFI-MT01 based on keywords.",
+          "matchedKeywords": [
+            "sufi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2012_Q5_EVENTS_1",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 6,
+      "originalQuestionNumber": 5,
+      "subject": null,
+      "sourceFile": "events_1933_1939.json",
+      "question": "The distribution of powers between the Centre and the States in the Indian Constitution is based on the scheme provided in the:",
+      "options": {
+        "A": "Morley-Minto Reforms, 1909",
+        "B": "Montagu-Chelmsford Act, 1919",
+        "C": "Government of India Act, 1935",
+        "D": "Indian Independence Act, 1947"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_SUPREME_COURT_2012_Q5",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 7,
+      "originalQuestionNumber": 5,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "What is the provision to safeguard the autonomy of the Supreme Court of India? 1. While appointing the Supreme Court Judges, the President of India has to consult the Chief Justice of India. 2. The Supreme Court Judges can be removed by the Chief Justice of India only. 3. The salaries of the Judges are charged on the Consolidated Fund of India to which the legislature does not have to vote. 4. All appointments of officers and staffs of the Supreme court the Government only after consulting the Chief Justice of India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 & 3 Only",
+        "B": "3 & 4 Only",
+        "C": "4 Only",
+        "D": "1, 2, 3 & 4"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-JUD-MT01",
+      "syllabusNodeId": "GS2-POL-JUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2012_Q5",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 8,
+      "originalQuestionNumber": 5,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "What is the role of ultraviolet (UV) radiation in the water purification systems? 1. It inactivates/kills the harmful microorganisms in water. 2. It removes all the undesirable odours from the water. 3. It quickens the sedimentation of solid particles, removes turbidity and improves the clarity of water. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 & 3"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POPDEM_2012_Q6",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 9,
+      "originalQuestionNumber": 6,
+      "subject": "Economy",
+      "sourceFile": "population_demography.json",
+      "question": "Consider the following specific stages of demographic transition associated with economic development: 1. Low birth rate with low death rate 2. High birthrate with high death rate 3. High birthrate with low death rate Select the correct order of the above stages using the codes given below:",
+      "options": {
+        "A": "1 2 3",
+        "B": "2 1 3",
+        "C": "2 3 1",
+        "D": "3 2 1"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2012_Q6_EVENTS_1",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 10,
+      "originalQuestionNumber": 6,
+      "subject": null,
+      "sourceFile": "events_1933_1939.json",
+      "question": "The Congress ministries resigned in the seven provinces in 1939, because:",
+      "options": {
+        "A": "The Congress could not form ministries in the other four provinces",
+        "B": "Emergence of a left wing' in the Congress made the working of the ministries impossible",
+        "C": "There were widespread communal disturbances in their provinces",
+        "D": "None of the statements a), b),c) and (d) given above is correct"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2012_Q6_SOCIAL_R",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 11,
+      "originalQuestionNumber": 6,
+      "subject": null,
+      "sourceFile": "social_reforms_and_reformers.json",
+      "question": "Which of the following parties 'were established by Dr. B. R. Ambedkar? 1. The Peasants and Workers Party of India 2. All India Scheduled Castes Federation 3. The Independent Labour Party Select the correct answer the codes given below:",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1, 2 & 3"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-REFORM-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-REFORM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_ELECTION_COMMISSION_2012_Q6",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 12,
+      "originalQuestionNumber": 6,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "With reference to the Delimitation Commission, consider the following statements: 1. The orders of the Delimitation Commission cannot be challenged in a Court of Law. 2. When the orders of the Delimitation Commission are laid before the Lok Sabha or State Legislative Assembly, they cannot affect any modifications in the orders. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "Only 1",
+        "B": "Only 2",
+        "C": "Both 1 & 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-ELECTIONS-MT01",
+          "toNodeId": "GS2-POL-PARL-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-ELECTIONS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "lok sabha"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_PANCHAYATI_RAJ_2012_Q6",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 13,
+      "originalQuestionNumber": 6,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "In the areas covered under the Panchayat (Extension to the Scheduled Areas) Act, 1996. What is the role/power of Gram Sabha? 1. Gram Sabha has the power to prevent alienation of land in the Scheduled Areas. 2. Gram Sabha has the ownership of minor forest produce. 3. Recommendation of Gram Sabha is required for granting prospecting licence or mining lease for any mineral in the Scheduled Areas. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "1 and 2 Only",
+        "C": "2 & 3 Only",
+        "D": "1,2, & 3"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-LOCAL-MT01",
+      "syllabusNodeId": "GS2-POL-LOCAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PRESIDENT_2012_Q6",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 14,
+      "originalQuestionNumber": 6,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "To the Constitution of India, it is the duty of the President of India to cause to be laid before the Parliament which of the following? 1. The Recommendations of the Union Finance Commission 2. The Report of the Public Accounts Committee 3. The Report of the Comptroller and Auditor General 4. The Report of the National Commission for Scheduled Castes Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 4 Only",
+        "C": "1, 3 & 4 Only",
+        "D": "1, 2, 3 & 4"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-CSREL-MT01",
+      "syllabusNodeId": "GS2-POL-CSREL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-EXEC-MT01",
+          "toNodeId": "GS2-POL-CSREL-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-EXEC-MT01 based on keywords.",
+          "matchedKeywords": [
+            "finance commission"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_SUPREME_COURT_2012_Q6",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 15,
+      "originalQuestionNumber": 6,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which of the following are included in the original jurisdiction of the Supreme Court? 1. A dispute between the Government of India and one or more States 2. A dispute regarding elections to either House of the Parliament or that of Legislature of a State 3. A dispute between the Government of India and a Union territory 4. A dispute between two or more States Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 & 2",
+        "B": "2 & 3",
+        "C": "1 & 4",
+        "D": "3 & 4"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-JUD-MT01",
+      "syllabusNodeId": "GS2-POL-JUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDCLI_2012_Q7",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 16,
+      "originalQuestionNumber": 7,
+      "subject": null,
+      "sourceFile": "indian_climate_natural_vegetation.json",
+      "question": "A particular State in India has the following characteristics: 1. It is located on the same latitude which passes through northern Rajasthan. 2. It has over 80% of its area under forest cover. 3. Over 12% of forest cover constitutes Protected Area Network in this State. Which one among the following States has all the above characteristics?",
+      "options": {
+        "A": "Arunachal Pradesh",
+        "B": "Assam",
+        "C": "Himachal Pradesh",
+        "D": "Uttarakhand"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "forest"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_INDMTN_2012_Q7",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 17,
+      "originalQuestionNumber": 7,
+      "subject": null,
+      "sourceFile": "indian_physical_geography_mountains.json",
+      "question": "When you travel in Himalayas, you will see the following: 1. Deep gorges 2. U-turn river courses 3. Parallel mountain ranges 4. Steep gradients causing land sliding Which of the above can be said to be the evidences for Himalayas being young fold mountains?",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "1, 2 & 4 Only",
+        "C": "3 & 4 Only",
+        "D": "1,2, 3 & 4"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2012_Q7_SOCIAL_R",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 18,
+      "originalQuestionNumber": 7,
+      "subject": null,
+      "sourceFile": "social_reforms_and_reformers.json",
+      "question": "Which of the following statements is / are correct regarding Brahmo Samaj? 1. It opposed idolatry. 2. It denied the need for a priestly class for interpreting the religious texts. 3. It popularized the doctrine that the Vedas are infallible Select the correct answer:",
+      "options": {
+        "A": "1 Only",
+        "B": "1 & 2 Only",
+        "C": "3 Only",
+        "D": "1,2, & 3"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-REFORM-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-REFORM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_FUNDAMENTAL_DUTIES_2012_Q7",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 19,
+      "originalQuestionNumber": 7,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which of the following is/are among the Fundamental Duties, laid down in the Indian Constitution? 1. To preserve the rich heritage of our composite culture 2. To protect the weaker sections from social injustice 3. To develop the scientific temper and spirit of inquiry 4. To strive towards excellence in all spheres of individual and collective activity Select the correct answer, using the codes below:",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "2 Only",
+        "C": "1, 3, & 4 Only",
+        "D": "1, 2, 3 & 4"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-FD-MT01",
+      "syllabusNodeId": "GS2-POL-FD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDCLI_2012_Q8",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 20,
+      "originalQuestionNumber": 8,
+      "subject": null,
+      "sourceFile": "indian_climate_natural_vegetation.json",
+      "question": "Consider the following statements: 1. The duration of the monsoon decreases from southern India to northern India. 2. The amount of annual rainfall in the northern plains of India decreases from east to west. Which of the statements given above is / are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 Only",
+        "C": "Both 1 & 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "monsoon",
+            "rainfall"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2012_Q8_CONGRESS",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 21,
+      "originalQuestionNumber": 8,
+      "subject": null,
+      "sourceFile": "congress_1885_1907.json",
+      "question": "During the Indian freedom struggle, the National Social Conference was formed. What was the reason for its formation?",
+      "options": {
+        "A": "Different social reform groups or organisations of Bengal region united to form a single body to discuss the issues of larger interest and to prepare appropriate petitions/representations to the government",
+        "B": "Indian National Congress did not want to include social reforms in its deliberations and decided to form a separate body for such a purpose",
+        "C": "Behramji Malabari and M. G. Ranade decided to bring together all the social reform groups of the country under one organisation",
+        "D": "None of the statements a), b) and c) given above is correct in this context"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-REFORM-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-REFORM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+          "toNodeId": "GS1-HIS-MOD-REFORM-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS1-HIS-MOD-NATIONAL-MT01 based on keywords.",
+          "matchedKeywords": [
+            "social reform"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_EMPSKIDEV_2012_Q9",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 22,
+      "originalQuestionNumber": 9,
+      "subject": "Economy",
+      "sourceFile": "employment_skill_development.json",
+      "question": "Consider the following: 1. Hotels and restaurants 2. Motor transport undertakings 3. Newspaper establishments 4. Private medical institutions The employees of which of the above can have the 'Social Security' coverage under \"Employees' State Insurance Scheme'?",
+      "options": {
+        "A": "Only 1, 2 & 3",
+        "B": "4 Only",
+        "C": "1, 3 & 4 Only",
+        "D": "1, 2, 3 & 4"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRES_2012_Q9",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 23,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "natural_vegetation_soils_minerals.json",
+      "question": "Despite having large reserves of coal, why does India import millions of tonnes of coal? 1. It is the policy of India to save its own coal reserves for future, and import it from other countries for the present use. 2. Most of the power plants in India are coal-based and they are not able to get sufficient supplies of coal from within the country. 3. Steel companies need large quantity of coking coal which has to be imported. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2, & 3"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-RESOURCES-MT02",
+      "syllabusNodeId": "GS1-GEO-IND-RESOURCES-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-RESOURCES-MT02",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "coal"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2012_Q9_ESTABLIS",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 24,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "Consider the following: 1. Assessment of land revenue on the basis of nature of the soil and the quality of crops 2. Use of mobile cannons in warfare 3. Cultivation of tobacco and red chillies Which of the above was/were introduced into India by the English?",
+      "options": {
+        "A": "1 Only",
+        "B": "1 & 2",
+        "C": "2 & 3",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-EXPANSION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2012_Q9_EVENTS_1",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 25,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "events_1857_1885.json",
+      "question": "Consider the following statements: The most effective contribution made by Dadabhai Naoroji to the cause of Indian National Movement was that he 1. Exposed the economic exploitation of India by the British 2. Interpreted the ancient Indian texts and restored the self-confidence of Indians 3. Stressed the need for eradication of all the social evils before anything else Which among the above statements is/ are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1, 2 & 3"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_DIRECTIVE_PRINCIPLES_OF_STATE_POLICY_2012_Q9",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 26,
+      "originalQuestionNumber": 9,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following provisions under the Directive Principles of State Policy as enshrined in the Constitution of India: 1. Securing for citizens of India a uniform civil code 2. Organising village Panchayats 3. Promoting cottage industries in rural areas 4. Securing for all the workers reasonable leisure and cultural opportunities Which of the above Gandhian Principles reflected in the Directive of State Policy?",
+      "options": {
+        "A": "1,2 & 4 Only",
+        "B": "2 & 3 Only",
+        "C": "1,3 & 4 Only",
+        "D": "1,2 3 & 4"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-DPSP-MT01",
+      "syllabusNodeId": "GS2-POL-DPSP-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIPHYSICS_2012_Q9",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 27,
+      "originalQuestionNumber": 9,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_physics.json",
+      "question": "Consider the following statements If there were no phenomenon of capillarity: 1. It would be difficult to use a kerosene lamp 2. One would not be able to use a straw to consume a soft drink 3. The blotting paper would fail to function 4. The big trees that we see around would not have grown on the Earth Which of the statements given above are correct?",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "1, 3 and 4 only",
+        "C": "2 and 4 only",
+        "D": "1, 2, 3 & 4"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-NUCLEAR-MT01",
+      "syllabusNodeId": "GS3-ST-NUCLEAR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2012_Q10_CIVIL_DI",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 28,
+      "originalQuestionNumber": 10,
+      "subject": null,
+      "sourceFile": "civil_disobedience_1926_1932.json",
+      "question": "The Lahore Session of the Indian National Congress (1929) is very important in history, because: 1. The Congress passed a resolution demanding complete independence 2. The rift between the extremists and moderates was resolved in that Session 3. A resolution was passed rejecting the two-nation theory in that Session Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3",
+        "C": "1 & 3",
+        "D": "None of the above"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2012_Q10_ESTABLIS",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 29,
+      "originalQuestionNumber": 10,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "With reference to Ryotwari Settlement, consider the statements: 1. The rent was paid directly by the peasants to the Government. 2. The Government gave Pattas to the Ryats. 3. The lands were surveyed and assessed before being taxed. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "1 & 2 Only",
+        "C": "1, 2 & 3",
+        "D": "None"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-ADMIN-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-ADMIN-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_MISC_POLITY_2012_Q10",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 30,
+      "originalQuestionNumber": 10,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "With reference to consumers’ rights/ privileges under the provisions of law in India, which of the following statements is/arc correct? 1. Consumers are empowered to take samples for food testing. 2. When a consumer files a complaint in any consumer forum, no fee is required to be paid. 3. In case of death of a consumer, his/her legal heir can file a complaint in the consumer forum on his / her behalf. Select the correct answer using the codes given below",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 & 3"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PRIME_MINISTER_AND_COUNCIL_OF_MINISTERS_2012_Q10",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 31,
+      "originalQuestionNumber": 10,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "The Prime Minister of India, at the time of his/her appointment:",
+      "options": {
+        "A": "Need not necessarily be a member of one of the Houses of the Parliament but must become a member of one of the Houses within six months",
+        "B": "Need not necessarily be a member of one of the Houses of the Parliament but must become a member of the Lok Sabha within six months",
+        "C": "Must be a member of one of the Houses of the Parliament",
+        "D": "Must be a member of the Lok Sabha"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-EXEC-MT01",
+          "toNodeId": "GS2-POL-PARL-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS2-POL-EXEC-MT01 based on keywords.",
+          "matchedKeywords": [
+            "parliament",
+            "lok sabha"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2012_Q11_CIVIL_DI",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 32,
+      "originalQuestionNumber": 11,
+      "subject": null,
+      "sourceFile": "civil_disobedience_1926_1932.json",
+      "question": "Mahatma Gandhi undertook fast unto death in 1932, mainly because:",
+      "options": {
+        "A": "Round Table Conference failed to satisfy Indian political aspirations",
+        "B": "Congress and Muslim League had differences of opinion",
+        "C": "Ramsay Macdonald announced the Communal Award",
+        "D": "None of the statements a), b) and c) given above is correct in this context"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CONS_2012_Q12",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 33,
+      "originalQuestionNumber": 12,
+      "subject": null,
+      "sourceFile": "conservation_protected_areascorrected.json",
+      "question": "With reference to the wetlands of India, consider the following statements: 1. The country's total geographical area under the category of wetlands is recorded more in Gujarat as compared to other States. 2. In India, the total geographical area of coastal wetlands is larger than that of inland wetlands. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-CONSERVATION-MT01",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_OCE_2012_Q12",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 34,
+      "originalQuestionNumber": 12,
+      "subject": null,
+      "sourceFile": "oceanography.json",
+      "question": "Consider the following factors: 1. Rotation of the Earth 2. Air pressure and wind 3. Density of ocean water 4. Revolution of the Earth Which of the above factors influence the ocean currents?",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "1, 2, 3",
+        "C": "1 & 4",
+        "D": "2, 3 & 4"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-POP-URBAN-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-POP-URBAN-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-POP-URBAN-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "density"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_MOD_2012_Q13_GANDHIAN",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 35,
+      "originalQuestionNumber": 13,
+      "subject": null,
+      "sourceFile": "gandhian_phase_1917_1925.json",
+      "question": "The Rowlatt Act aimed at:",
+      "options": {
+        "A": "Compulsory economic support to war efforts",
+        "B": "Imprisonment without trial and summary procedures for trial",
+        "C": "Suppression of the Khilafat Movement",
+        "D": "Imposition of restrictions on freedom of the press"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2012_Q14_GANDHIAN",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 36,
+      "originalQuestionNumber": 14,
+      "subject": null,
+      "sourceFile": "gandhian_phase_1917_1925.json",
+      "question": "Which of the following is/are the principal feature(s) of the Government of India Act, 1919? 1. Introduction of dyarchy in the executive government of the provinces 2. Introduction of separate communal electorates for Muslims 3. Devolution of legislative authority by the centre to the provinces Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 & 3"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOTECH_2012_Q14",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 37,
+      "originalQuestionNumber": 14,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biotech.json",
+      "question": "What are the reasons for the people's resistance to the introduction of Bt brinjal in India? 1. Bt brinjal has been created by inserting a gene from a soil fungus into its genome. 2. The seeds of Bt brinjal are terminator seeds and therefore, the farmers have to buy the seeds before every season from the seed companies. 3. There is an apprehension that the consumption of Bt brinjal may have adverse impact on health. 4. There is some concern that the introduction of Bt brinjal may have adverse effect on the biodiversity. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1, 2 & 3 Only",
+        "B": "2 & 3 only",
+        "C": "3 & 4 only",
+        "D": "1,2,3 & 4"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_BIO_2012_Q15",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 38,
+      "originalQuestionNumber": 15,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "Consider the following: 1. Black-necked crane 2. Cheetah 3. Flying squirrel 4. Snow leopard Which of the above are naturally found in India?",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "1, 3 and 4 only",
+        "C": "2 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_AGR_2012_Q15",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 39,
+      "originalQuestionNumber": 15,
+      "subject": null,
+      "sourceFile": "agriculture.json",
+      "question": "Consider the following crops of India: 1. Groundnut 2. Sesamum 3. Pearl millet Which of the above is / are predominantly rainfed crop/crops?",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "2 & 3 Only",
+        "C": "3 Only",
+        "D": "1,2 & 3"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_ECOINSLAW_2012_Q16",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 40,
+      "originalQuestionNumber": 16,
+      "subject": "Economy",
+      "sourceFile": "economic_institutions_laws_policies.json",
+      "question": "Which of the following is / are among the noticeable features of the recommendations of the Thirteenth Finance Commission? 1. A design for the Goods and Services Tax, and a compensation package linked to adherence to the proposed design 2. A design for the creation of lakhs of jobs in the next ten years in consonance with India's demographic dividend 3. Devolution of a specified share of central taxes to local bodies as grants Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1, 2 & 3"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-TAXATION-MT01",
+      "syllabusNodeId": "GS3-ECO-TAXATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+          "toNodeId": "GS3-ECO-TAXATION-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-FINANCIAL-SYSTEM-MT01 based on keywords.",
+          "matchedKeywords": [
+            "tax"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_GOVBUDGOV_2012_Q16",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 41,
+      "originalQuestionNumber": 16,
+      "subject": "Economy",
+      "sourceFile": "government_budgeting_govt_accounts.json",
+      "question": "Which of the following are the methods of Parliamentary control over public finance in India: 1. Placing Annual Financial Statement before the Parliament 2. Withdrawal of moneys from Consolidated Fund of India only after passing the Appropriation Bill 3. Provisions of supplementary grants and vote-an- account 4. A periodic or at least a mid -year review of programme of the Government against macroeconomic forecasts and expenditure by a Parliamentary Budget Office 5. Introducing Finance Bill in the Parliament Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1, 2, 3 & 5 Only",
+        "B": "1, 2 & 4 only",
+        "C": "3, 4 & 5 Only",
+        "D": "1, 2, 3 , 4 & 5 Only"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_BIO_2012_Q16",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 42,
+      "originalQuestionNumber": 16,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "What would happen if phytoplankton of an ocean is completely destroyed for some reason? 1. The ocean as a carbon sink would be adversely affected 2. The food chains in the ocean would be adversely affected. 3. The density of ocean water would drastically decrease Select the correct answer:",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "2 Only",
+        "C": "3 Only",
+        "D": "1, 2 & 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-ECO-ENERGY-MT01",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_MISC_2012_Q16",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 43,
+      "originalQuestionNumber": 16,
+      "subject": null,
+      "sourceFile": "misc_environmentcorrected.json",
+      "question": "Consider the following kinds of organisms: 1. Bacteria 2. Fungi 3. Flowering plants Some species of which of the above kinds of organisms are employed as biopesticides?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 & 3"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_AGR_2012_Q16",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 44,
+      "originalQuestionNumber": 16,
+      "subject": null,
+      "sourceFile": "agriculture.json",
+      "question": "Which of the following is the chief characteristic of 'mixed farming?",
+      "options": {
+        "A": "Cultivation of both cash crops and food crops",
+        "B": "Cultivation of two or more crops in the same field",
+        "C": "Rearing of animals and cultivation of crops together",
+        "D": "None of the above"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCISPACETECH_2012_Q16",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 45,
+      "originalQuestionNumber": 16,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_space_tech.json",
+      "question": "Which of the following is/are cited by the scientists as evidence/ evidences for the 'continued expansion of universe? 1. Detection of microwaves in space 2. Observation of redshift phenomenon in space 3. Movement of asteroids in space 4. Occurrence of supernova explosions in space Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 Only",
+        "C": "1,3 & 4",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-SPACE-MT01",
+      "syllabusNodeId": "GS3-ST-SPACE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_BIO_2012_Q17",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 46,
+      "originalQuestionNumber": 17,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "The acidification of Oceans is increasing. Why is this phenomenon a cause of concern? 1. The growth and survival of calcareous phytoplankton will be adversely affected. 2. The growth and survival of coral reefs will be adversely affected. 3. Survival of some animals that have phytoplanktonic larve will be adversely affected. 4. The cloud seeding and formation of clouds will be adversely affected Which among the statements given above is / are correct?",
+      "options": {
+        "A": "1,2 & 3 only",
+        "B": "2 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 3 & 4"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-ECO-ENERGY-MT01",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_AGR_2012_Q17",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 47,
+      "originalQuestionNumber": 17,
+      "subject": null,
+      "sourceFile": "agriculture.json",
+      "question": "Consider the following crops of India: 1. Cowpea 2. Green gram 3. Pigeon pea Which of the above is/are used as pulse, fodder and green manure?",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 & 3"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCISPACETECH_2012_Q17",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 48,
+      "originalQuestionNumber": 17,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_space_tech.json",
+      "question": "Electrically charged particles from space travelling at speeds of several hundred km/sec can severely harm living beings if they reach the surface of the Earth. What prevents them from reaching the surface of the Earth?",
+      "options": {
+        "A": "The Earth's magnetic field diverts them towards its poles",
+        "B": "Ozone layer around the Earth reflects them back to outer space",
+        "C": "Moisture in the upper layers of atmosphere prevents them from reaching the surface of the Earth",
+        "D": "None of the statements (a), (b) and (e) given above is correct"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-SPACE-MT01",
+      "syllabusNodeId": "GS3-ST-SPACE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_ECONOMY_BANKING_2012_Q18",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 49,
+      "originalQuestionNumber": 18,
+      "subject": null,
+      "sourceFile": "ca_economy_banking.json",
+      "question": "Recently, there has been a concern over the short supply of a group of elements called 'rare earth metals'. Why? [2012] 1. China, which is the largest producer of these elements, has imposed some restrictions on their export. 2. Other than China, Australia, Canada and Chile, these elements are not found in any country. 3. Rare earth metals are essential for the manufacture of various kinds of electronic items and there is a growing demand for these elements. Which of the statements is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 & 3"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT03",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT03",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2012_Q18",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 50,
+      "originalQuestionNumber": 18,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "The endeavour of 'Janani Suraksha Yojana' Programme is: 1. To promote institutional deliveries 2. To provide monetary assistance to the mother to meet the cost of delivery 3. To provide for wage loss due to pregnancy and confinement Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "2 Only",
+        "C": "3 Only",
+        "D": "1, 2, & 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_BIO_2012_Q18",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 51,
+      "originalQuestionNumber": 18,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "Which of the following can be threats to the biodiversity of a geographical area? 1. Global warming 2. Fragmentation of habitat 3. Invasion of alien species 4. Promotion of vegetarianism Choose the correct answer:",
+      "options": {
+        "A": "1,2 & 3",
+        "B": "2 & 3",
+        "C": "1 & 4",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ENV-SPECIES-MT01",
+          "toNodeId": "GS3-ENV-GLOBALWARM-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS3-ENV-SPECIES-MT01 based on keywords.",
+          "matchedKeywords": [
+            "global warming"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_ECONOMY_BANKING_2012_Q19",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 52,
+      "originalQuestionNumber": 19,
+      "subject": null,
+      "sourceFile": "ca_economy_banking.json",
+      "question": "The Multi-dimensional Poverty Index developed by Oxford Poverty and Human Development Initiative with UNDP support covers which of the following? [2012] 1. Deprivation of education, health, assets and services at household level 2. Purchasing power parity at national level 3. Extent of budget deficit and GDP growth rate at national level Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1, 2 & 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-PRE-BASICS-MACRO-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BASICS-MACRO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2012_Q19",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 53,
+      "originalQuestionNumber": 19,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "How do District Rural Development Agencies (DRDAs) help in the reduction of rural poverty in India? 1. DRDAs act as Panchayati Raj Institutions in certain specified backward regions of the country. 2. DRDAs undertake area-specific scientific study of the causes of poverty and malnutrition and prepare detailed remedial measures. 3. DRDAs secure inter -sectoral and inter - departmental coordination and cooperation for effective implementation of anti -poverty programmes. 4. DRDAs watch over and ensure effective utilization of the funds intended for anti-poverty programmes. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1, 2 & 3 Only",
+        "B": "3 & 4 Only",
+        "C": "4 Only",
+        "D": "1, 2, 3 & 4"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_GEO_2012_Q19",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 54,
+      "originalQuestionNumber": 19,
+      "subject": null,
+      "sourceFile": "geomorphology.json",
+      "question": "Which one of the following sets of elements was primarily responsible for the origin of life on the Earth?",
+      "options": {
+        "A": "Hydrogen, Oxygen, Sodium",
+        "B": "Carbon, Hydrogen, Nitrogen",
+        "C": "Oxygen, Calcium, Phosphorus",
+        "D": "Carbon, Hydrogen, Potassium"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_MAC_2012_Q20",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 55,
+      "originalQuestionNumber": 20,
+      "subject": "Economy",
+      "sourceFile": "macroeconomy.json",
+      "question": "Under which of the following circumstances may 'capital gains' arise? 1. When there is an increase in the sales of a product 2. When there is a natural increase in the value of the property owned 3. When you purchase a painting and there is a growth in its value due to increase in its popularity Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "2 Only",
+        "D": "1,2 & 3 Only"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT07",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2012_Q20",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 56,
+      "originalQuestionNumber": 20,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "With reference to National Rural Health Mission, which of the following are the jobs of 'ASHA', a trained community health worker? 1. Accompanying women to the health facility for antenatal care checkup 2. Using pregnancy test kits for early detection of pregnancy 3. Providing information on nutrition and immunization 4. Conducting the delivery of baby Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1, 2 and 3 only",
+        "B": "2 and 4 Only",
+        "C": "1 and 3 only",
+        "D": "1, 2, 3 & 4"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_GEO_2012_Q20",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 57,
+      "originalQuestionNumber": 20,
+      "subject": null,
+      "sourceFile": "geomorphology.json",
+      "question": "A person stood alone in a desert on a dark night and wanted to reach his village which was situated 5 km east of the point where he was standing. He had no instruments to find the direction but he located the polestar. The most convenient way now to reach his village is to walk in the:",
+      "options": {
+        "A": "Direction facing the polestar",
+        "B": "Direction opposite to the polestar",
+        "C": "Direction keeping the polestar to his left",
+        "D": "Direction keeping the polestar to his right"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2012_Q21",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 58,
+      "originalQuestionNumber": 21,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "How does the National Rural Livelihood Mission seek to improve livelihood options of rural poor? 1. By setting up a large number of new manufacturing industries and agri-business centres in rural areas 2. By strengthening 'self-help groups' and providing skill development 3. By supplying seeds, fertilizers, diesel pump -sets and micro -irrigation equipment free of cost to farmers Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 & 2",
+        "B": "2 Only",
+        "C": "1 & 3 Only",
+        "D": "1, 2 & 3"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTECOORG_2012_Q22",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 59,
+      "originalQuestionNumber": 22,
+      "subject": "Economy",
+      "sourceFile": "international_economic_organizations.json",
+      "question": "Consider the following statements: The price of any currency in international market is decided by the 1. World Bank 2. Demand for provided by concerned goods/services the country 3. Stability of the government of the concerned country 4. Economic potential of the country in question Which of the statements given above are correct?",
+      "options": {
+        "A": "1, 2, 3 & 4",
+        "B": "2 & 3 Only",
+        "C": "3 & 4 Only",
+        "D": "1 & 4 Only"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2012_Q22",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 60,
+      "originalQuestionNumber": 22,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "If National Water Mission is properly and completely implemented, how will it impact the country? 1. Part of the water needs of urban areas will be met through recycling of wastewater. 2. The water requirements of coastal cities with inadequate alternative sources of water will be met by adopting appropriate technologies that allow for the use of ocean water. 3. All the rivers of Himalayan origin will be linked to the rivers of peninsular India. 4. The expenses incurred by farmers for digging bore- wells a and for installing motors and pump -sets to draw groundwater will be completely reimbursed by the Government. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "1 & 2 Only",
+        "C": "3 & 4 Only",
+        "D": "1,2,3 & 4"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_LAW_2012_Q22",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 61,
+      "originalQuestionNumber": 22,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "Consider the following protected areas;: 1. Bandipur 2. Bhitarkanika 3. Manas 4. Sunderbans Which of the above are declared Tiger Reserves?",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "1, 3 and 4 Only",
+        "C": "2, 3 and 4 only",
+        "D": "1,2, 3 & 4"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ENV-CONSERVATION-MT01",
+          "toNodeId": "GS3-ENV-SPECIES-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ENV-CONSERVATION-MT01 based on keywords.",
+          "matchedKeywords": [
+            "tiger"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_ANC_ARCH_2012_Q22",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 62,
+      "originalQuestionNumber": 22,
+      "subject": "History",
+      "sourceFile": "architecture.json",
+      "question": "The Nagara, the Dravida and the Vesara are the:",
+      "options": {
+        "A": "Three main racial groups of the Indian subcontinent",
+        "B": "Three main linguistic divisions into which the languages of India can be classified",
+        "C": "Three main styles of Indian temple architecture",
+        "D": "Three main musical gharanas prevalent in India"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-ANC-BUD-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-BUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_RELPH_2012_Q22",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 63,
+      "originalQuestionNumber": 22,
+      "subject": "History",
+      "sourceFile": "religion_philosophy.json",
+      "question": "Lord Buddha’s image is sometimes shown with the hand gesture called ‘Bhumisparsha Mudra’. It symbolizes:",
+      "options": {
+        "A": "Buddha’s calling of the Earth to watch over Mara and to prevent Mara from disturbing his meditation",
+        "B": "Buddha’s calling of the Earth to witness his purity and chastity despite the temptations of Mara",
+        "C": "Buddha’s reminder to his followers that they all arise from the Earth and finally dissolve into the Earth, and thus this life is transitory",
+        "D": "Both the statements a) and b) are correct in this context"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-ANC-BUD-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-BUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2012_Q22",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 64,
+      "originalQuestionNumber": 22,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which of the following can be said to be essentially the parts of Inclusive Governance? 1. Permitting the Non-Banking Financial Companies to do banking 2. Establishing effective District Planning Committees in all the districts 3. Increasing the government spending on public health 4. Strengthening the Mid-day Meal Scheme Choose the correct answer:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 and 4 only",
+        "C": "2,3 and 4 only",
+        "D": "1,2,3 and 4"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_LAW_2012_Q23",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 65,
+      "originalQuestionNumber": 23,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "How does National Biodiversity Authority (NBA) help in protecting the Indian agriculture? 1. NBA checks the biopiracy and protects the indigenous and traditional genetic resources. 2. NBA directly monitors and supervises the scientific research on genetic modification of crop plants. 3. Application for Intellectual Property Rights related to resources genetic/biological cannot be made without approval of NBA. Which of the statements given a above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 & 3"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-ACTS-MT01",
+      "syllabusNodeId": "GS3-ENV-ACTS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_RELPH_2012_Q23",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 66,
+      "originalQuestionNumber": 23,
+      "subject": "History",
+      "sourceFile": "religion_philosophy.json",
+      "question": "With reference to the history of ancient India, which of the following was/were common to both Buddhism and Jainism? 1) Avoidance of extremities of penance and enjoyment 2) Indifference to the authority of the Vedas 3) Denial of efficacy of rituals Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1,2 & 3"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-ANC-VEDIC-LATER-MT04",
+      "syllabusNodeId": "GS1-HIS-ANC-VEDIC-LATER-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2012_Q23",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 67,
+      "originalQuestionNumber": 23,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which of the following provisions of the Constitution of India have a bearing on Education? 1. Directive Principles of State Policy 2. Rural and Urban Local Bodies 3. Fifth Schedule 4. Sixth Schedule 5. Seventh Schedule Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "3, 4, & 5 Only",
+        "C": "1, 2 & 5 only",
+        "D": "1, 2, 3,4 & 5"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CAPMARMON_2012_Q24",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 68,
+      "originalQuestionNumber": 24,
+      "subject": "Economy",
+      "sourceFile": "capital_market_money_market_fdi.json",
+      "question": "Which of the following would include Foreign Direct Investment in India? 1. Subsidiaries of foreign companies in India 2. Majority foreign equity holding in Indian companies 3. Companies exclusively financed by foreign companies 4. Portfolio investment Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1,2, 3 & 4",
+        "B": "2 & 4 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 & 3 Only"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-INVESTMENT-MODELS-MT01",
+      "syllabusNodeId": "GS3-ECO-INVESTMENT-MODELS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_LAW_2012_Q24",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 69,
+      "originalQuestionNumber": 24,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "In which one among the following categories of protected areas in India are local people are not allowed to collect and use the biomass?",
+      "options": {
+        "A": "Biosphere Reserves",
+        "B": "National Parks",
+        "C": "Wetlands declared under Ramsar Convention",
+        "D": "Wildlife Sanctuaries"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-CONSERVATION-MT01",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_CLI_2012_Q24",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 70,
+      "originalQuestionNumber": 24,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "Normally, the temperature decreases with the increase in height from the Earth's surface, because: 1. The atmosphere can be heated upwards only from the Earth's surface 2. There is more moisture in the upper atmosphere 3. The air is less dense in the upper atmosphere Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 only",
+        "D": "1, 2 & 3"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CORANDIND_2012_Q25",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 71,
+      "originalQuestionNumber": 25,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "What is/are the recent policy initiative(s) of Government of India to promote the growth of manufacturing sector? 1. Setting up of National Investment and Manufacturing Zones 2. Providing the benefit of 'single window clearance' 3. Establishing the Technology Acquisition and Development Fund Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1, 2 & 3"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT14",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT14",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CLI_2012_Q25",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 72,
+      "originalQuestionNumber": 25,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "Consider the following statement: Chlorofluorocarbons, known as ozone depleting substances, are used: 1. in the production of plastic foams 2. in the production of tubeless tyres 3. in cleaning certain electronic components 4. as pressurizing agents in aerosol cans Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1,2 and 3 only",
+        "B": "4 Only",
+        "C": "1,3 & 4 Only",
+        "D": "1,2,3 & 4"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-AIR-MT01",
+      "syllabusNodeId": "GS3-ENV-AIR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ENV-GLOBALWARM-MT01",
+          "toNodeId": "GS3-ENV-AIR-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ENV-GLOBALWARM-MT01 based on keywords.",
+          "matchedKeywords": [
+            "ozone"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_CLI_2012_Q25",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 73,
+      "originalQuestionNumber": 25,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "Which one of the following is the characteristic climate of the Tropical Savannah Region?",
+      "options": {
+        "A": "Rainfall throughout the year",
+        "B": "Rainfall in winter only",
+        "C": "An extremely short dry season",
+        "D": "A definite dry and wet season"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CORANDIND_2012_Q26",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 74,
+      "originalQuestionNumber": 26,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "In India, in the overall Index of Industrial Production, the Indices of Eight Core Industries have a combined weight of 37.90%. Which of the following are among those Eight Core Industries? 1. Cement 2. Fertilizers 3. Natural gas 4. Refinery products 5. Textiles Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 & 5 Only",
+        "B": "2, 3 & 4 Only",
+        "C": "1, 2, 3 & 4 Only",
+        "D": "1, 2, 3 4 & 5"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CLI_2012_Q26",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 75,
+      "originalQuestionNumber": 26,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "The increasing amount of carbon dioxide in the air is slowly raising the temperature of the atmosphere, because it absorbs:",
+      "options": {
+        "A": "The water vapour of the air and retains its heat",
+        "B": "The ultraviolet part of the solar radiation",
+        "C": "All the solar radiations",
+        "D": "Infrared part of solar radiation"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CLI_2012_Q27",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 76,
+      "originalQuestionNumber": 27,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "Consider the following agricultural practices: 1. Contour bunding 2. Relay cropping 3. Zero tillage In the context of global climate change, which of the above helps/help in carbon sequestration/storage in the soil?",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "3 Only",
+        "C": "1,2 & 3",
+        "D": "None of them"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2012_Q30",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 77,
+      "originalQuestionNumber": 30,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "The Government of India encourages the cultivation of 'sea buckthorn '. What is the importance of this plant? 1. It helps in controlling soil erosion and in preventing desertification. 2. It is a rich source of biodiesel. 3. It has nutritional value and is well-adapted to live in cold areas of high altitudes. 4. Its timber is of great commercial value. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2, 3 & 4 Only",
+        "C": "1 & 3 Only",
+        "D": "1, 2, 3 & 4"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-LAND-WATER-MT01",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_ECO_2012_Q31",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 78,
+      "originalQuestionNumber": 31,
+      "subject": null,
+      "sourceFile": "ecology_ecosystemcorrected.json",
+      "question": "Consider the following kinds of organisms: 1. Bat 2. Bee 3. Bird Which of the above is/ are pollinating agent/agents?",
+      "options": {
+        "A": "1 & 2 only",
+        "B": "2 Only",
+        "C": "1 and 3 only",
+        "D": "1, 2 & 3"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-ECO-CONCEPTS-MT01",
+      "syllabusNodeId": "GS3-ENV-ECO-CONCEPTS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2012_Q31",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 79,
+      "originalQuestionNumber": 31,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "Which one of the following groups of animals belongs to the category of endangered species?",
+      "options": {
+        "A": "Great Indian Bustard, Musk Deer, Red Panda and Asiatic Wild Ass",
+        "B": "Kashmir Stag, Cheetai, Blue Bull and Great Indian Bustard",
+        "C": "Snow Leopard, Swamp Deer, Rhesus Monkey and Saras (Crane)",
+        "D": "Lion-tailed Macaque, Blue Bull, Hanuman Langur and Cheetal"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_ECO_2012_Q32",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 80,
+      "originalQuestionNumber": 32,
+      "subject": null,
+      "sourceFile": "ecology_ecosystemcorrected.json",
+      "question": "The Millennium Ecosystem Assessment describes the following major categories of ecosystem servicesprovisioning, supporting, regulating, preserving and cultural.: Which one of the following is supporting service?",
+      "options": {
+        "A": "Production of food and water",
+        "B": "Control of climate and disease",
+        "C": "Nutrient cycling and crop pollination",
+        "D": "Maintenance of diversity"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-ECO-ENERGY-MT01",
+      "syllabusNodeId": "GS3-ENV-ECO-ENERGY-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2012_Q32",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 81,
+      "originalQuestionNumber": 32,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "What is the difference between the antelopes Oryx and Chiru?",
+      "options": {
+        "A": ", (",
+        "B": "and ' given above is correct",
+        "C": "Oryx exists in western India only whereas Chiru exists in north-cast India only",
+        "D": "None of the statements ("
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2012_Q33",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 82,
+      "originalQuestionNumber": 33,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "Vultures which used to be very common in the Indian countryside some years ago are rarely seen nowadays. This is attributed to:",
+      "options": {
+        "A": "The destruction of their nesting sites by new invasive species",
+        "B": "A drug used by cattle owners for treating their diseased cattle",
+        "C": "Scarcity of food available to them",
+        "D": "A widespread, persistent and fatal disease among them"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2012_Q35",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 83,
+      "originalQuestionNumber": 35,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "A deadlock between the Lok Sabha and the Rajya Sabha calls for a joint sitting of the Parliament during the passage of: 1. Ordinary Legislation 2. Money Bill 3. Constitution Amendment Bill Select the correct answer using the codes given below:",
+      "options": {
+        "A": "Only 1",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1, 2 & 3"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2012_Q36",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 84,
+      "originalQuestionNumber": 36,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which of the following special powers have been conferred on the Rajya Sabha by the Constitution of India?",
+      "options": {
+        "A": "To change the existing territory of a State and to change the name of a State",
+        "B": "To pass a resolution empowering the Parliament to make laws in the State List and to create one or more All India Services",
+        "C": "To amend the election procedure of the President and to determine the pension of the President after his/her retirement",
+        "D": "To determine the functions of the Election Commission and to determine the number of Election Commissioners"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIFUNMON_2012_Q37",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 85,
+      "originalQuestionNumber": 37,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "Which of the following measures would result in an increase in the money supply in the economy? 1. Purchase of government securities from the public by the Central Bank 2. Deposit of currency in the commercial banks by the public 3. Borrowing by the government from the Central Bank 4. Sale of government securities to the public by the Central Bank Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 4 Only",
+        "C": "1 & 3",
+        "D": "2, 3 & 4"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-MONEY-BASICS-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-MONEY-BASICS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_POL_2012_Q37",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 86,
+      "originalQuestionNumber": 37,
+      "subject": null,
+      "sourceFile": "environmental_pollutioncorrected.json",
+      "question": "Lead, ingested or inhaled, is a health hazard. After the addition of lead to petrol has been banned, what still are the sources of lead poisoning? 1. Smelting units 2. Pens and pencils 3. Paints 4. Hair oils and cosmetics Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1,2 & 3 only",
+        "B": "1 and 3 only",
+        "C": "2 & 4 only",
+        "D": "1,2,3 & 4"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-AIR-MT01",
+      "syllabusNodeId": "GS3-ENV-AIR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2012_Q37",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 87,
+      "originalQuestionNumber": 37,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "In the Parliament of India, the purpose of an adjournment motion is:",
+      "options": {
+        "A": "To allow a discussion on a definite matter of urgent public importance",
+        "B": "To let opposition collect information ministers members from the",
+        "C": "To allow a reduction of specific amount in demand for grant",
+        "D": "To postpone the proceedings to check the inappropriate or violent behaviour on the part of some members"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2012_Q38",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 88,
+      "originalQuestionNumber": 38,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1. Union Territories are not represented in the Rajya Sabha. 2. It is within the preview of Chief Election commissioner to adjudicate election disputes. 3. According to the Constitution of India, the Parliament consists of the Lok Sabha and the Rajya Sabha only. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3",
+        "C": "1 & 3",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2012_Q39",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 89,
+      "originalQuestionNumber": 39,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Regarding the office of the Lok Sabha Speaker, consider the following statements: 1. He/She holds the office during the pleasure of the President. 2. He/She need not be a member of the House at the time of his/her election but has to become a member of the House within six months from the date of his/her election. 3. If he/she intends to resign, the letter of his/her resignation has to be addressed to the Deputy Speaker. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 & 2 Only",
+        "B": "3 Only",
+        "C": "1, 2, & 3",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIINDBAN_2012_Q43",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 90,
+      "originalQuestionNumber": 43,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "The Reserve Bank of India (RBI) acts as a bankers' bank. This would imply which of the following? 1. Other banks retain their deposits with the RBI. 2. The RBI lends funds to the commercial banks in times of need. 3. The RBI advises the commercial banks on monetary matters. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "2 & 3 Only",
+        "B": "1 & 2 Only",
+        "C": "1 & 3 Only",
+        "D": "1, 2 & 3"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-RBI-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-RBI-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_RBIINDBAN_2012_Q44",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 91,
+      "originalQuestionNumber": 44,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "The basic aim of Lead Bank Scheme is that:",
+      "options": {
+        "A": "Big banks should try to open offices in each district",
+        "B": "There should be stiff competition among the various nationalized banks",
+        "C": "Individual banks should adopt particular districts for intensive development",
+        "D": "All the banks should make intensive efforts to mobilize deposits"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-BANKING-STRUCTURE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_CLI_2012_Q49",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 92,
+      "originalQuestionNumber": 49,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "Biomass gasification is considered to be one of the sustainable solutions to the power crisis in India. In this context, which of the following statements is/are correct? 1. Coconut shells, groundnut shells and rice husk can be used in biomass gasification. 2. The combustible gases generated from biomass gasification consist of hydrogen and carbon dioxide only. 3. The combustible gases generated from biomass gasification can be used for direct heat generation but not in internal combustion engines. Select the correct answer using the codes given below:",
+      "options": {
+        "A": "1 Only",
+        "B": "2 & 3 Only",
+        "C": "1 & 3 Only",
+        "D": "1,2 & 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2012_Q082",
+      "year": 2012,
+      "paper": "GS",
+      "questionNumber": 93,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "82. Recently, there has been a concern over the short\nsupply of a group of elements called ‘rare earth metals’.\nWhy? (2012)\n1. \nChina, which is the largest producer of these elements, has imposed some restrictions on their export.\n2. \nOther than China, Australia, Canada and Chile, these elements\nare not found in any country.\n3. \nRare earth metals are essential for the manufacture of various\nkinds of electronic items and there is a growing demand for\nthese elements.\nWhich of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "status": "fixed-production-ready",
+  "subject": "History",
+  "module": "Ancient History",
+  "generatedAt": "2026-04-24T04:36:10.206047Z",
+  "totals": {
+    "files": 13,
+    "questions": 182,
+    "duplicateIds": 0,
+    "reviewRequired": 0,
+    "nodesCovered": 16
+  },
+  "countsByFile": [
+    {
+      "fileName": "harsha_period.json",
+      "topicName": "Harsha Period",
+      "totalQuestions": 3,
+      "declaredInDocx": 3,
+      "status": "MATCH"
+    },
+    {
+      "fileName": "indus_valley_civilization.json",
+      "topicName": "Indus Valley Civilization",
+      "totalQuestions": 6,
+      "declaredInDocx": 6,
+      "status": "MATCH"
+    },
+    {
+      "fileName": "literature.json",
+      "topicName": "Literature",
+      "totalQuestions": 30,
+      "declaredInDocx": 30,
+      "status": "MATCH"
+    },
+    {
+      "fileName": "mahajanapadas.json",
+      "topicName": "Mahajanapadas",
+      "totalQuestions": 9,
+      "declaredInDocx": 9,
+      "status": "MATCH"
+    },
+    {
+      "fileName": "mauryan_period.json",
+      "topicName": "Mauryan Period",
+      "totalQuestions": 8,
+      "declaredInDocx": 8,
+      "status": "MATCH"
+    },
+    {
+      "fileName": "post_harsha.json",
+      "topicName": "Post Harsha",
+      "totalQuestions": 4,
+      "declaredInDocx": 4,
+      "status": "MATCH"
+    },
+    {
+      "fileName": "post_mauryan.json",
+      "topicName": "Post-Mauryan",
+      "totalQuestions": 5,
+      "declaredInDocx": 5,
+      "status": "MATCH"
+    },
+    {
+      "fileName": "prehistoric_age.json",
+      "topicName": "Prehistoric Age",
+      "totalQuestions": 3,
+      "declaredInDocx": 3,
+      "status": "MATCH"
+    },
+    {
+      "fileName": "religion_philosophy.json",
+      "topicName": "Religion & Philosophy",
+      "totalQuestions": 41,
+      "declaredInDocx": 41,
+      "status": "MATCH"
+    },
+    {
+      "fileName": "south_india.json",
+      "topicName": "South India",
+      "totalQuestions": 9,
+      "declaredInDocx": 9,
+      "status": "MATCH"
+    },
+    {
+      "fileName": "vedic_age.json",
+      "topicName": "Vedic Age",
+      "totalQuestions": 6,
+      "declaredInDocx": 6,
+      "status": "MATCH"
+    },
+    {
+      "fileName": "architecture.json",
+      "topicName": "Architecture",
+      "totalQuestions": 48,
+      "declaredInDocx": 48,
+      "status": "MATCH"
+    },
+    {
+      "fileName": "gupta_period.json",
+      "topicName": "Gupta Period",
+      "totalQuestions": 10,
+      "declaredInDocx": 10,
+      "status": "MATCH"
+    }
+  ],
+  "sourceTruthFixes": [
+    "Rebuilt per-topic JSON from DOCX source-truth order and counts",
+    "Moved Korkai and early-eighth-century dynasties questions into Prehistoric Age to match DOCX",
+    "Removed those leaked questions from South India/Post Harsha topic files",
+    "Regenerated all_topics, master_index and by_node indexes from corrected topic files"
+  ],
+  "reassignedIds": [
+    {
+      "oldId": "HIS_ANC_SOUTH_2023_Q1",
+      "newId": "HIS_ANC_PREHIST_2023_Q1",
+      "topic": "Prehistoric Age",
+      "year": 2023,
+      "reason": "Aligned id/topic file with DOCX source-truth distribution"
+    },
+    {
+      "oldId": "HIS_ANC_POSTH_2023_Q2",
+      "newId": "HIS_ANC_PREHIST_2023_Q2",
+      "topic": "Prehistoric Age",
+      "year": 2023,
+      "reason": "Aligned id/topic file with DOCX source-truth distribution"
+    }
+  ]
+}

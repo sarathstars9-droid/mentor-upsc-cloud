@@ -1,0 +1,2422 @@
+{
+  "year": 2019,
+  "paper": "GS",
+  "source": "pyq_master_index",
+  "totalQuestions": 96,
+  "questions": [
+    {
+      "id": "ECO_FIVYEAPLA_2019_Q1",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 1,
+      "originalQuestionNumber": 1,
+      "subject": "Economy",
+      "sourceFile": "five_year_plans.json",
+      "question": "With reference to India's Five-Year Plans, which of the following statements is/are correct? 1. From the Second Five -Year Plan, there was a determined thrust towards substitution of basic and capital good industries. 2. The Fourth Five-Year Plan adopted the objective of correcting the earlier trend of increased concentration of wealth and economic power. 3. In the Fifth Five-Year Plan, for the first time, the financial sector was included as an integral part of the Plan. Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_REL_2019_Q1",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 2,
+      "originalQuestionNumber": 1,
+      "subject": "History",
+      "sourceFile": "religion_philosophy.json",
+      "question": "Consider the following statements: 1. Saint Nimbarka was a contemporary of Akbar. 2. Saint Kabir was greatly influenced by Shaikh Ahmad Sirhindi. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and",
+        "D": "Neither 1 nor"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_RTI_ACT_2019_Q1",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 3,
+      "originalQuestionNumber": 1,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1. The 44th Amendment to the Constitution of India introduced an Article placing the election of the Prime Minister beyond judicial review. 2. The Supreme Court of India struck down the 99th Amendment to the Constitution of India as being violative of the independence of judiciary. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-JUD-MT01",
+      "syllabusNodeId": "GS2-POL-JUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-BODIES-MT01",
+          "toNodeId": "GS2-POL-JUD-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS2-POL-BODIES-MT01 based on keywords.",
+          "matchedKeywords": [
+            "supreme court",
+            "judicial review"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_STATE_LEGISLATURE_2019_Q1",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 4,
+      "originalQuestionNumber": 1,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "With reference to the Legislative Assembly of a State in India, consider the following statements: 1. The Governor makes a customary address to Members of the House at the commencement of the first session of the year. 2. When a State Legislature does not have a rule on a particular matter, it follows the Lok Sabha rule on that matter. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-STATE-MT01",
+          "toNodeId": "GS2-POL-PARL-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-STATE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "lok sabha"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_SUPREME_COURT_2019_Q1",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 5,
+      "originalQuestionNumber": 1,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1. The motion to impeach a Judge of the Supreme Court of India cannot be rejected by the Speaker of the Lok Sabha as per the Judges (Inquiry) Act 1968. 2. The Constitution of India defines and gives details or what constitutes ‘incapacity and proved misbehaviour’ of the Judges of the Supreme Court of India. 3. The details of the process of impeachment of the Judges of the Supreme Court of India are given in 4 the Judges (Inquiry) Act, 1968. 4. If the motion for the impeachment of a Judge is taken up for voting, the law requires the motion to be backed by each House of the Parliament and supported by a majority of total membership of that House and by not less than two-thirds of total members of that House present and voting. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2",
+        "B": "3 only",
+        "C": "3 and 4 only",
+        "D": "1, 3 and 4"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-JUD-MT01",
+          "toNodeId": "GS2-POL-PARL-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS2-POL-JUD-MT01 based on keywords.",
+          "matchedKeywords": [
+            "parliament",
+            "lok sabha",
+            "speaker"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_ECOINSLAW_2019_Q2",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 6,
+      "originalQuestionNumber": 2,
+      "subject": "Economy",
+      "sourceFile": "economic_institutions_laws_policies.json",
+      "question": "Which of the following statements is/are correct regarding the Maternity Benefit (Amendment) Act, 2017? 1. Pregnant women are entitled for three months pre-delivery and three months post -delivery paid leave. 2. Enterprises with creches must allow the mother minimum six creche visits daily. 3. Women with two children get reduced entitlements. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "syllabusNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POPDEM_2019_Q2",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 7,
+      "originalQuestionNumber": 2,
+      "subject": "Economy",
+      "sourceFile": "population_demography.json",
+      "question": "In the context of any country, which one of the following would be considered as part of its social capital?",
+      "options": {
+        "A": "The proportion of literates in the population",
+        "B": "The stock of its buildings, other infrastructure and machines",
+        "C": "The size of population in the working age group",
+        "D": "The level of mutual trust and harmony in the society"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDCLI_2019_Q2",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 8,
+      "originalQuestionNumber": 2,
+      "subject": null,
+      "sourceFile": "indian_climate_natural_vegetation.json",
+      "question": "Consider the following States: 1. Chhattisgarh 2. Madhya Pradesh 3. Maharashtra 4. Odisha With reference to the States mentioned above, in terms of percentage of forest cover to the total area of State, which one of the following is the correct ascending order?",
+      "options": {
+        "A": "2-3-1-4",
+        "B": "2-3-4-1",
+        "C": "3-2-4-1",
+        "D": "3-2-1-4"
+      },
+      "answer": "C",
+      "nodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "forest"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_ANC_IVC_2019_Q2",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 9,
+      "originalQuestionNumber": 2,
+      "subject": "History",
+      "sourceFile": "indus_valley_civilization.json",
+      "question": "Which one of the following is not a Harappan site?",
+      "options": {
+        "A": "Chanhudaro",
+        "B": "Kot Diji",
+        "C": "Sohgaura",
+        "D": "Desalpur"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-ANC-IVC-MT04",
+      "syllabusNodeId": "GS1-HIS-ANC-IVC-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2019_Q2_CONGRESS",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 10,
+      "originalQuestionNumber": 2,
+      "subject": null,
+      "sourceFile": "congress_1885_1907.json",
+      "question": "With reference to Swadeshi Movement, consider the following statements: 1. It contributed to the revival of the indigenous artisan crafts and industries. From Establishment to Split of Congress (1885-1907) 2. The National Council of Education was established as a part of Swadeshi Movement. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": ""
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_SUPREME_COURT_2019_Q2",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 11,
+      "originalQuestionNumber": 2,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "With reference to the Constitution of India, prohibitions or limitations or provisions contained in ordinary laws cannot act as prohibitions or limitations on the constitutional powers under Article 142. It could mean which one of the following?",
+      "options": {
+        "A": "The decisions taken by the. Election Commission of India while discharging its duties cannot be challenged in any court of law.",
+        "B": "The Supreme Court of India is not constrained in the exercise of its powers by the laws made by Parliament.",
+        "C": "In the event of grave financial crisis in the country, the President of India can declare Financial Emergency without the counsel from the Cabinet.",
+        "D": "State Legislatures cannot make laws on certain matters without the concurrence of Union Legislature."
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-JUD-MT01",
+      "syllabusNodeId": "GS2-POL-JUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_ECOINSLAW_2019_Q3",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 12,
+      "originalQuestionNumber": 3,
+      "subject": "Economy",
+      "sourceFile": "economic_institutions_laws_policies.json",
+      "question": "Consider the following statements: 1. According to the Indian Patents Act, a biological process to create a seed can be patented in India. 2. In India, there is no Intellectual Property Appellate Board. 3. Plant varieties are not eligible to be patented in India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_EMPSKIDEV_2019_Q3",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 13,
+      "originalQuestionNumber": 3,
+      "subject": "Economy",
+      "sourceFile": "employment_skill_development.json",
+      "question": "Consider the following statements: As per the Industrial Employment (Standing Orders) Central (Amendment) Rules, 2018 1. If rules for fixed -term employment are implemented, it becomes easier for the firms/companies to lay off workers 2. No notice of termination of employment shall be necessary in the case of temporary workman Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POPDEM_2019_Q3",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 14,
+      "originalQuestionNumber": 3,
+      "subject": "Economy",
+      "sourceFile": "population_demography.json",
+      "question": "Consider the following statements about Particularly Vulnerable Tribal Groups (PVTGs) in India: 1. PVTGs reside in 18 States and one Union Territory. 2. A stagnant or declining population is one of the criteria for determining PVTG status. 3. There are 95 PVTGs officially notified in the country so far. 4. Irular and Konda Reddi tribes are included in the list of PVTGs. Which of the statements given above are correct?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "2, 3 and 4",
+        "C": "1, 2 and 4",
+        "D": "1, 3 and 4"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CONS_2019_Q3",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 15,
+      "originalQuestionNumber": 3,
+      "subject": null,
+      "sourceFile": "conservation_protected_areascorrected.json",
+      "question": "Which one of the following National Parks lies completely in the temperate alpine zone?",
+      "options": {
+        "A": "Manas National Park",
+        "B": "Namdapha National Park",
+        "C": "Neora Valley National Park",
+        "D": "Valley of Flowers National Park"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-CONSERVATION-MT01",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_GUPTA_2019_Q3",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 16,
+      "originalQuestionNumber": 3,
+      "subject": "History",
+      "sourceFile": "gupta_period.json",
+      "question": "With reference to forced labour (Vishti) in India during the Gupta period, which one of the following statements is correct?",
+      "options": {
+        "A": "It was considered a source of income for the State, a sort of tax paid by the people",
+        "B": "It was totally absent in the Madhya Pradesh and Kathiawar regions of the Gupta Empire",
+        "C": "The forced labourer was entitled to weekly wages",
+        "D": "The eldest son of the labourer was sent as the forced labourer"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-ANC-GUPTA-MT02",
+      "syllabusNodeId": "GS1-HIS-ANC-GUPTA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_ART_2019_Q3",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 17,
+      "originalQuestionNumber": 3,
+      "subject": "History",
+      "sourceFile": "art_architecture_literature.json",
+      "question": "With reference to Mian Tansen, which one of the following statements is not correct?",
+      "options": {
+        "A": "Tansen was the title given to him by Emperor Akbar.",
+        "B": "Tansen composed Dhrupads on Hindu gods and goddesses.",
+        "C": "Tansen composed songs for his patrons.",
+        "D": "Tansen invented many Ragas."
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_ART_2019_Q4",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 18,
+      "originalQuestionNumber": 4,
+      "subject": "History",
+      "sourceFile": "art_architecture_literature.json",
+      "question": "Who among the following Mughal Emperors shifted emphasis from illustrated manuscripts to album and individual portrait?",
+      "options": {
+        "A": "Humayun",
+        "B": "Akbar",
+        "C": "Jahangir",
+        "D": "Shah Jahan"
+      },
+      "answer": "C",
+      "nodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2019_Q4_CIVIL_DI",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 19,
+      "originalQuestionNumber": 4,
+      "subject": null,
+      "sourceFile": "civil_disobedience_1926_1932.json",
+      "question": "With reference to the British colonial rule in India, consider the following statements: 1. Mahatma Gandhi was instrumental in the abolition of the system of 'indentured labour' 2. In Lord Chelmsford's 'War Conference', Mahatma Gandhi did not support the resolution on recruiting Indians for World War. 3. Consequent upon the breaking of Salt Law by Indian people, the Indian National Congress was declared illegal by the colonial rulers. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "1 and 3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "B",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2019_Q4_SOCIAL_R",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 20,
+      "originalQuestionNumber": 4,
+      "subject": null,
+      "sourceFile": "social_reforms_and_reformers.json",
+      "question": "Consider the following pairs: Movement/Organization Leader 1. All India Anti - Untouchability League Mahatma Gandhi 2. All India Kisan Sabha Swami Sahajanand Saraswati 3. Self-Respect Movement Naicker E.V . Ramaswami Which of the pairs given above is/are correctly matched?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-HIS-MOD-REFORM-MT01",
+          "toNodeId": "GS1-HIS-MOD-NATIONAL-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-HIS-MOD-REFORM-MT01 based on keywords.",
+          "matchedKeywords": [
+            "gandhi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_GOVERNOR_2019_Q4",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 21,
+      "originalQuestionNumber": 4,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which one of the following suggested that the Governor should be an eminent person from outside the State and should be a detached figure without intense political links or should not have taken part in politics in the recent past?",
+      "options": {
+        "A": "First Administrative Reforms Commission (1966)",
+        "B": "Rajamannar Committee (1969)",
+        "C": "Sarkaria Commission (1983)",
+        "D": "National Commission to Review the Working of the Constitution (2000)"
+      },
+      "answer": "C",
+      "nodeId": "GS2-POL-EXEC-MT01",
+      "syllabusNodeId": "GS2-POL-EXEC-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-STATE-MT01",
+          "toNodeId": "GS2-POL-EXEC-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-POL-STATE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "governor"
+          ]
+        }
+      }
+    },
+    {
+      "id": "POL_HIGH_COURT_2019_Q4",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 22,
+      "originalQuestionNumber": 4,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "With reference to the Constitution of India, consider the following statements: 1. No High Court shall have the jurisdiction to declare any central law to be constitutionally invalid. 2. An amendment to the Constitution of India cannot be called into question by the Supreme Court of India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-JUD-MT01",
+      "syllabusNodeId": "GS2-POL-JUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCICHEMISTRY_2019_Q4",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 23,
+      "originalQuestionNumber": 4,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_chemistry.json",
+      "question": "In the context of which one of the following are the terms 'pyrolysis and plasma gasification' mentioned?",
+      "options": {
+        "A": "Extraction of rare earth elements",
+        "B": "Natural gas extraction technologies",
+        "C": "Hydrogen fuel-based automobiles",
+        "D": "Waste-to-energy technologies"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "syllabusNodeId": "GS3-ST-MATERIALS-NANO-ROBOTICS-AI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTTRA_2019_Q5",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 24,
+      "originalQuestionNumber": 5,
+      "subject": "Economy",
+      "sourceFile": "international_trade.json",
+      "question": "Among the agricultural commodities imported by India, which one of the following accounts for the highest imports in terms of value in the last five years?",
+      "options": {
+        "A": "Spices",
+        "B": "Fresh fruits",
+        "C": "Pulses",
+        "D": "Vegetable oils"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_ART_2019_Q5",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 25,
+      "originalQuestionNumber": 5,
+      "subject": "History",
+      "sourceFile": "art_architecture_literature.json",
+      "question": "Building Kalyaana Mandapas was a notable feature in the temple construction in the kingdom of:",
+      "options": {
+        "A": "Chalukya",
+        "B": "Chandela",
+        "C": "Rashtrakuta",
+        "D": "Vijayanagara"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MED-VIJAYANAGARA-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2019_Q5_ESTABLIS",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 26,
+      "originalQuestionNumber": 5,
+      "subject": null,
+      "sourceFile": "establishment_of_british_rule.json",
+      "question": "Consider the following statements about 'the Charter Act of 1813': 1. It ended the trade monopoly of the East India Company in India except for trade in tea and trade with China. 2. It asserted the sovereignty of the British Crown over the Indian territories held by the Company. 3. The revenues of India were now controlled by the British Parliament. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MOD_2019_Q5_LAST_PHA",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 27,
+      "originalQuestionNumber": 5,
+      "subject": null,
+      "sourceFile": "last_phase_1940_1950.json",
+      "question": "With reference to Indian National Movement, consider the following pairs: Person Position held 1. Sir Tej Bahadur Sapru President, All India Liberal Federation 2. K.C. Neogy Member The Constituent Assembly 3. P .C. Joshi General Secretary, Communist Party of India Which of the pairs given above is/are correctly matched?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "syllabusNodeId": "GS1-HIS-MOD-CONSTDEV-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTECOORG_2019_Q6",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 28,
+      "originalQuestionNumber": 6,
+      "subject": "Economy",
+      "sourceFile": "international_economic_organizations.json",
+      "question": "With reference to Asian Infrastructure Investment Bank (AIIB), consider the following statements: 1. AIIB has more than 80 member nations. 2. India is the largest shareholder in AIIB. 3. AIIB does not have any members from outside Asia. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_BIO_2019_Q6",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 29,
+      "originalQuestionNumber": 6,
+      "subject": null,
+      "sourceFile": "biodiversity_india_worldcorrected.json",
+      "question": "Which one of the following groups of plants was domesticated in the 'New World' and introduced into the 'Old World'?",
+      "options": {
+        "A": "Tobacco, cocoa and rubber",
+        "B": "Tobacco, cotton and rubber",
+        "C": "Cotton, coffee and sugarcane",
+        "D": "Rubber, coffee and wheat"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-LAND-WATER-MT01",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_INTECOORG_2019_Q7",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 30,
+      "originalQuestionNumber": 7,
+      "subject": "Economy",
+      "sourceFile": "international_economic_organizations.json",
+      "question": "Which one of the following is not a sub -index of the World Bank's 'Ease of Doing Business Index'?",
+      "options": {
+        "A": "Maintenance of law and order",
+        "B": "Paying taxes",
+        "C": "Registering property",
+        "D": "Dealing with construction permits"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-TAXATION-MT01",
+      "syllabusNodeId": "GS3-ECO-TAXATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+          "toNodeId": "GS3-ECO-TAXATION-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-FOREIGN-TRADE-IO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "tax"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_POVDEVHEA_2019_Q7",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 31,
+      "originalQuestionNumber": 7,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "Atal Innovation Mission is set up under the:",
+      "options": {
+        "A": "Department of Science and Technology",
+        "B": "Ministry of Labour and Employment",
+        "C": "NITI Aayog",
+        "D": "Ministry of Skill Development and Entrepreneurship"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+          "toNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-INCLUSIVE-GROWTH-MT01 based on keywords.",
+          "matchedKeywords": [
+            "labour"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_GOVBUDGOV_2019_Q8",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 32,
+      "originalQuestionNumber": 8,
+      "subject": "Economy",
+      "sourceFile": "government_budgeting_govt_accounts.json",
+      "question": "Consider the following statements: 1. Most of India's external debt is owed by governmental entities. 2. All of India's external debt is denominated in US dollars. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_POVDEVHEA_2019_Q8",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 33,
+      "originalQuestionNumber": 8,
+      "subject": "Economy",
+      "sourceFile": "poverty_development_health_education.json",
+      "question": "In a given year in India, official poverty lines are higher in some States than in others because:",
+      "options": {
+        "A": "Poverty rates vary from State to State",
+        "B": "Price levels vary from State to State",
+        "C": "Gross State Product varies from State to State",
+        "D": "Quality of public distribution varies from State to State"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "syllabusNodeId": "GS3-ECO-INCLUSIVE-GROWTH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIFUNMON_2019_Q8",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 34,
+      "originalQuestionNumber": 8,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "In the context of India, which of the following factors is/are contributor/contributors to reducing the risk of a currency crisis? 1. The foreign currency earnings of India's IT sector 2. Increasing the government expenditure 3. Remittances from Indians abroad Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 3 only",
+        "C": "2 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-FOREIGN-TRADE-IO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_ECONOMY_BANKING_2019_Q9",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 35,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "ca_economy_banking.json",
+      "question": "The Global Competitiveness Report is published by the: [2019]",
+      "options": {
+        "A": "International Monetary Fund",
+        "B": "United Nations Conference on Trade and Development",
+        "C": "World Economic Forum",
+        "D": "World Bank"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-PRE-BASICS-MACRO-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BASICS-MACRO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_MAC_2019_Q9",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 36,
+      "originalQuestionNumber": 9,
+      "subject": "Economy",
+      "sourceFile": "macroeconomy.json",
+      "question": "Consider the following statements: 1. Purchasing Power Parity (PPP) exchange rates are calculated by comparing the prices of the same basket of goods and services in different countries. 2. In terms of PPP dollars, India is the sixth largest economy in the world. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "syllabusNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+          "toNodeId": "GS3-ECO-FOREIGN-TRADE-IO-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS3-ECO-MONETARY-POLICY-MT01 based on keywords.",
+          "matchedKeywords": [
+            "exchange rate"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_LAW_2019_Q9",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 37,
+      "originalQuestionNumber": 9,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "Which of the following are in Agasthyamala Biosphere Reserve?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-CONSERVATION-MT01",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2019_Q9",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 38,
+      "originalQuestionNumber": 9,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "With reference to Mughal India, what is/are the difference/differences between Jagirdar and Zamindar? 1. Jagirdars were holders of land assignments in lieu of judicial and police duties, whereas Zamindars were holders of revenue rights without obligation to perform any duty other than revenue collection. 2. Land assignments to Jagirdars were hereditary and revenue rights of Zamindars were not hereditary. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and",
+        "D": "Neither 1 nor"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_FUNDAMENTAL_RIGHTS_2019_Q9",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 39,
+      "originalQuestionNumber": 9,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Which Article of the Constitution of India safeguards one’s right to marry the person of one’s choice?",
+      "options": {
+        "A": "Article 19",
+        "B": "Article 21",
+        "C": "Article 25",
+        "D": "Article 29"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-FR-MT01",
+      "syllabusNodeId": "GS2-POL-FR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIBIOTECH_2019_Q9",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 40,
+      "originalQuestionNumber": 9,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biotech.json",
+      "question": "With reference to the recent developments in science, which one of the following statements is not correct?",
+      "options": {
+        "A": "Functional chromosomes can be created by joining segments of DNA taken from cells of different species.",
+        "B": "Pieces of artificial functional DNA can be created in laboratories.",
+        "C": "A piece of DNA taken out from an animal cell can be made to replicate outside a living cell in a laboratory. 360",
+        "D": "Cells taken out from plasma and animals can be made to undergo cell division in laboratory petri dishes."
+      },
+      "answer": "B",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_LAW_2019_Q10",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 41,
+      "originalQuestionNumber": 10,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "Consider following statements: 1. Under Ramsar Convention, it is mandatory on the part of the Government of India to protect and conserve all the wetlands in the territory of India. 2. The Wetlands (Conservation and Management) Rules, 2010 were framed by the Government of India based on the recommendations of Ramsar Convention. 3. The Wetlands (Conservation and Management) Rules, 2010 also encompass the drainage area or catchment regions of the wetlands as determined by the authority. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-CONSERVATION-MT01",
+      "syllabusNodeId": "GS3-ENV-CONSERVATION-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_AGR_2019_Q10",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 42,
+      "originalQuestionNumber": 10,
+      "subject": null,
+      "sourceFile": "agriculture.json",
+      "question": "Among the following, which one is the largest exporter of rice in the world in the last five years?",
+      "options": {
+        "A": "China",
+        "B": "India",
+        "C": "Myanmar",
+        "D": "Vietnam"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-AGRI-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRIV_2019_Q10",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 43,
+      "originalQuestionNumber": 10,
+      "subject": null,
+      "sourceFile": "indian_rivers_drainage.json",
+      "question": "What is common to the places known as Aliyar, Isapur and Kangsabati?",
+      "options": {
+        "A": "Recently discovered uranium deposits",
+        "B": "Tropical rain forests",
+        "C": "Underground cave systems",
+        "D": "Water reservoirs"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-SOILS-VEG-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "forest"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_MAPW_2019_Q10",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 44,
+      "originalQuestionNumber": 10,
+      "subject": null,
+      "sourceFile": "world_mapping.json",
+      "question": "Consider the following pairs: Sea Bordering Country 1. Adriatic Sea - Albania 2. Black Sea - Croatia 3. Caspian Sea - Kazakhstan 4. Mediterranean Sea - Morocco 5. Red Sea - Syria Which of the pairs given above are correctly matched?",
+      "options": {
+        "A": "1, 2 and 4 only",
+        "B": "1, 3 and 4 only",
+        "C": "2 and 5 only",
+        "D": "1, 2, 3, 4 and 5"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_ANC_ARCH_2019_Q10",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 45,
+      "originalQuestionNumber": 10,
+      "subject": "History",
+      "sourceFile": "architecture.json",
+      "question": "In which of the following relief sculpture inscriptions is ‘Ranyo Ashoka’ (King Ashoka) mentioned along with the stone portrait of Ashoka?",
+      "options": {
+        "A": "Kanganahalli",
+        "B": "Sanchi",
+        "C": "Shahbazagrhi",
+        "D": "Sohgaura"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-ANC-IVC-MT04",
+      "syllabusNodeId": "GS1-HIS-ANC-IVC-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "HIS_MED_POL_2019_Q10",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 46,
+      "originalQuestionNumber": 10,
+      "subject": "History",
+      "sourceFile": "politics_and_society.json",
+      "question": "Consider the following statements: 1. In the revenue administration of Delhi Sultanate, the in-charge of revenue collection was known as Amil. 2. The Iqta system of Sultans of Delhi was an ancient indigenous institution. 3. The office of Mir Bakshi came into existence during the reign of Khalji Sultans of Delhi. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "3 only",
+        "D": "1, 2 and"
+      },
+      "answer": "A",
+      "nodeId": "GS1-HIS-MED-DELHI-MT01",
+      "syllabusNodeId": "GS1-HIS-MED-DELHI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-HIS-MED-MUGHAL-MT01",
+          "toNodeId": "GS1-HIS-MED-DELHI-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS1-HIS-MED-MUGHAL-MT01 based on keywords.",
+          "matchedKeywords": [
+            "delhi sultanate"
+          ]
+        }
+      }
+    },
+    {
+      "id": "SCIBIOTECH_2019_Q10",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 47,
+      "originalQuestionNumber": 10,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_biotech.json",
+      "question": "What is Cas9 protein that is often mentioned in news?",
+      "options": {
+        "A": "A molecular scissors used in targeted gene editing",
+        "B": "A biosensor used in the accurate detection of pathogens in patients",
+        "C": "A gene that makes plants pest-resistant",
+        "D": "A herbicidal substance synthesized in genetically modified crops"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCISPACETECH_2019_Q10",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 48,
+      "originalQuestionNumber": 10,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_space_tech.json",
+      "question": "Recently, Scientists observed the merger of giant blackholes' billions of light -years away from the Earth. What is the significance of this observation?",
+      "options": {
+        "A": "'Higgs boson particles' were detected.",
+        "B": "'Gravitational waves' were detected.",
+        "C": "Possibility of inter-galactic space travel through 'wormhole' was confirmed.",
+        "D": "It enabled the scientists to understand 'singularity'."
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-SPACE-MT01",
+      "syllabusNodeId": "GS3-ST-SPACE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_AGR_2019_Q11",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 49,
+      "originalQuestionNumber": 11,
+      "subject": "Economy",
+      "sourceFile": "agriculture.json",
+      "question": "With reference to land reforms in independent India, which one of the following statements is correct?",
+      "options": {
+        "A": "The ceiling laws were aimed at family holdings and not individual holdings",
+        "B": "The major aim of land reforms was providing agricultural land to all the landless",
+        "C": "It resulted in cultivation of cash crops as a predominant form of cultivation",
+        "D": "Land reforms permitted no exemptions to the ceiling limits"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-SECT-AGRI-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_LAW_2019_Q11",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 50,
+      "originalQuestionNumber": 11,
+      "subject": null,
+      "sourceFile": "environmental_laws_institutionscorrected.json",
+      "question": "Consider the following statements: 1. As per law, the Compensatory Afforestation Fund Management and Planning Authority exists at both National and State levels. 2. People's participation is mandatory in the compensatory afforestation programmes carried out under the Compensatory Afforestation Fund Act, 2016. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-ACTS-MT01",
+      "syllabusNodeId": "GS3-ENV-ACTS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_GEO_2019_Q11",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 51,
+      "originalQuestionNumber": 11,
+      "subject": null,
+      "sourceFile": "geomorphology.json",
+      "question": "On 21st June, the Sun:",
+      "options": {
+        "A": "Does not set below the horizon at the Arctic Circle",
+        "B": "Does not set below the horizon at Antarctic Circle",
+        "C": "Shines vertically overhead at noon on the Equator",
+        "D": "Shines vertically overhead at the Tropic of Capricorn"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRIV_2019_Q11",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 52,
+      "originalQuestionNumber": 11,
+      "subject": null,
+      "sourceFile": "indian_rivers_drainage.json",
+      "question": "Consider the following pairs: Famous place River 1. Pandharpur - Chandrabhaga 2. Tiruchirappalli - Cauvery 3. Hampi - Malaprabha Which of the pairs given above are correctly matched?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river"
+          ]
+        }
+      }
+    },
+    {
+      "id": "HIS_ANC_RELPH_2019_Q11",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 53,
+      "originalQuestionNumber": 11,
+      "subject": "History",
+      "sourceFile": "religion_philosophy.json",
+      "question": "Consider the following: 1) Deification of the Buddha 2) Treading the path of Bodhisattvas 3) Image worship and rituals Which of the above is/are the feature/ features of Mahayana Buddhism?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS1-HIS-ANC-BUD-MT01",
+      "syllabusNodeId": "GS1-HIS-ANC-BUD-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_SALIENT_FEATURES_2019_Q11",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 54,
+      "originalQuestionNumber": 11,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "In the context of polity, which one of the following would you accept as the most appropriate definition of liberty?",
+      "options": {
+        "A": "Protection against the tyranny of political rulers",
+        "B": "Absence of restraint",
+        "C": "Opportunity to do whatever one likes",
+        "D": "Opportunity to develop oneself fully"
+      },
+      "answer": "D",
+      "nodeId": "GS2-POL-EVOL-CA-MT02",
+      "syllabusNodeId": "GS2-POL-EVOL-CA-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIELECTRONICSIT_2019_Q11",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 55,
+      "originalQuestionNumber": 11,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_electronics_it.json",
+      "question": "In the context of wearable technology, which of the following tasks is/are accomplished by wearable devices? 1. Location identification of a person 2. Sleep monitoring of a person 3. Assisting the hearing-impaired person Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3 Which of the statements given above is/are correct?"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ST-IT-COMM-MT02",
+      "syllabusNodeId": "GS3-ST-IT-COMM-MT02",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_AGR_2019_Q12",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 56,
+      "originalQuestionNumber": 12,
+      "subject": "Economy",
+      "sourceFile": "agriculture.json",
+      "question": "The economic cost of food grains to the Food Corporation of India is Minimum Support Price and bonus (if any) paid to the farmers plus:",
+      "options": {
+        "A": "Transportation cost only",
+        "B": "Interest cost only",
+        "C": "Procurement incidentals and distribution cost",
+        "D": "Procurement incidentals and charges for godowns"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ECO-AGR-CORE-MT01",
+      "syllabusNodeId": "GS3-ECO-AGR-CORE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-SECT-AGRI-MT01",
+          "toNodeId": "GS3-ECO-AGR-CORE-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-SECT-AGRI-MT01 based on keywords.",
+          "matchedKeywords": [
+            "procurement"
+          ]
+        }
+      }
+    },
+    {
+      "id": "GEO_GEO_2019_Q12",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 57,
+      "originalQuestionNumber": 12,
+      "subject": null,
+      "sourceFile": "geomorphology.json",
+      "question": "The word 'Denisovan' is sometimes mentioned in media in reference to:",
+      "options": {
+        "A": "Fossils of a kind of dinosaurs",
+        "B": "An early human species",
+        "C": "A cave system found in North-East India",
+        "D": "A geological period in the history of Indian subcontinent"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_INDRIV_2019_Q12",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 58,
+      "originalQuestionNumber": 12,
+      "subject": null,
+      "sourceFile": "indian_rivers_drainage.json",
+      "question": "Consider the following pairs: Glacier - River 1. Bandarpunch - Yamuna 2. Bara Shigri - Chenab 3. Milam - Mandakini 4. Siachen - Nubra 5. Zemu - Manas Which of the pairs correctly matched?",
+      "options": {
+        "A": "1, 2 and 4",
+        "B": "1, 3 and 4",
+        "C": "2 and 5",
+        "D": "3 and 5"
+      },
+      "answer": "A",
+      "nodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS1-GEO-IND-PHYSIO-MT01",
+          "toNodeId": "GS1-GEO-IND-DRAINAGE-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS1-GEO-IND-PHYSIO-MT01 based on keywords.",
+          "matchedKeywords": [
+            "river"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_AGR_2019_Q13",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 59,
+      "originalQuestionNumber": 13,
+      "subject": "Economy",
+      "sourceFile": "agriculture.json",
+      "question": "With reference to the cultivation of Kharif crops in India in the last five years, consider the following statements: 1. Area under rice cultivation is the highest. 2. Area under the cultivation of jowar is more than that of oilseeds. 3. Area of cotton cultivation is more than that of sugarcane. 4. Area under sugarcane cultivation has steadily decreased. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2, 3 and 4 only",
+        "C": "2 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-SECT-AGRI-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-AGRI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CORANDIND_2019_Q13",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 60,
+      "originalQuestionNumber": 13,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "Consider the following statements: 1. Petroleum and Natural Gas Regulatory Board (PNGRB) is the first regulatory body set up by the Government of India. 2. One of the tasks of PNGRB is to ensure competitive markets for gas. 3. Appeals against the decisions of PNGRB go before the Appellate Tribunals for Electricity. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CLI_2019_Q13",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 61,
+      "originalQuestionNumber": 13,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "Which of the following statements are correct about the deposits of 'methane hydrate'? 1. Global warming might trigger the release of methane gas from these deposits. 2. Large deposits of 'methane hydrate' are found in Arctic Tundra and under the seafloor. 3. Methane in atmosphere oxidises to carbon dioxide after a decade or two. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_CORANDIND_2019_Q14",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 62,
+      "originalQuestionNumber": 14,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "Consider the following statements: 1. Coal sector was nationalized by the Government of India under Indira Gandhi. 2. Now, coal blocks are allocated on lottery basis. 3. Till recently, India imported coal to meet the shortages of domestic supply, but now India is self - sufficient in coal production. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_CLI_2019_Q14",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 63,
+      "originalQuestionNumber": 14,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "Consider the following: 1. Carbon monoxide 2. Methane 3. Ozone 4. Sulphur dioxide Which of the above are released into atmosphere due to the burning of crop/biomass residue?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2, 3 and 4 only",
+        "C": "1 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-AIR-MT01",
+      "syllabusNodeId": "GS3-ENV-AIR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2019_Q14",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 64,
+      "originalQuestionNumber": 14,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "The Ninth Schedule was introduced in the Constitution of India during the prime ministership of:",
+      "options": {
+        "A": "Jawaharlal Nehru",
+        "B": "Lal Bahadur Shastri",
+        "C": "Indira Gandhi",
+        "D": "Morarji Desai"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-EXEC-MT01",
+      "syllabusNodeId": "GS2-POL-EXEC-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-AMEND-MT01",
+          "toNodeId": "GS2-POL-EXEC-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-AMEND-MT01 based on keywords.",
+          "matchedKeywords": [
+            "prime minister"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_CORANDIND_2019_Q15",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 65,
+      "originalQuestionNumber": 15,
+      "subject": "Economy",
+      "sourceFile": "corporates_and_industries.json",
+      "question": "With reference to the management of minor minerals in India, consider the following statements: 1. Sand is a minor mineral' according to the prevailing law in the country. 2. State Governments have the power to grant mining leases of minor minerals, but the powers regarding the formation of rules related to the grant of minor minerals lie with the Central Government. 3. Stale Governments have the power to frame rules to prevent illegal mining of minor minerals. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "syllabusNodeId": "GS3-ECO-SECT-INDLAB-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIFUNMON_2019_Q15",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 66,
+      "originalQuestionNumber": 15,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "Which one of the following is not the most likely measure the Government/RBI takes to stop the slide of Indian rupee?",
+      "options": {
+        "A": "Curbing imports of non -essential goods and promoting exports",
+        "B": "Encouraging Indian borrowers to issue rupee denominated Masala Bonds",
+        "C": "Easing conditions relating to external commercial borrowing",
+        "D": "Following an expansionary monetary policy"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+      "syllabusNodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-RBI-MT01",
+          "toNodeId": "GS3-ECO-MONETARY-POLICY-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS3-ECO-PRE-RBI-MT01 based on keywords.",
+          "matchedKeywords": [
+            "monetary policy"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_RBIINDBAN_2019_Q15",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 67,
+      "originalQuestionNumber": 15,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "The Service Area Approach was implemented under the purview of:",
+      "options": {
+        "A": "Integrated Rural Development Programme",
+        "B": "Lead Bank Scheme",
+        "C": "Mahatma Gandhi National Rural Employment Guarantee Scheme",
+        "D": "National Skill Development Mission"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-BANKING-STRUCTURE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_CLI_2019_Q15",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 68,
+      "originalQuestionNumber": 15,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "Consider following statements: 1. Agricultural soils release nitrogen oxides into the environment. 2. Cattle release ammonia into the environment. 3. Poultry industry releases reactive nitrogen compounds into the environment. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 and 3 only",
+        "C": "2 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-AIR-MT01",
+      "syllabusNodeId": "GS3-ENV-AIR-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2019_Q15",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 69,
+      "originalQuestionNumber": 15,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "Consider the following statements: 1. Asiatic lion is naturally found in India only. 2. Double-humped camel is naturally found in India only. 3. One-horned rhinoceros is naturally found in India only. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_CLI_2019_Q15",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 70,
+      "originalQuestionNumber": 15,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "In the context of which of the following do some scientists suggest the use of cirrus cloud thinning technique and the injection of sulphate aerosol into stratosphere?",
+      "options": {
+        "A": "Creating the artificial rains in some regions",
+        "B": "Reducing the frequency and intensity of tropical cyclones",
+        "C": "Reducing the adverse effects of solar wind on the Earth",
+        "D": "Reducing the global warming"
+      },
+      "answer": "D",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2019_Q15",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 71,
+      "originalQuestionNumber": 15,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Under which Schedule of the Constitution of India can the transfer of tribal land to private parties for mining be declared null and void?",
+      "options": {
+        "A": "Third Schedule",
+        "B": "Fifth Schedule",
+        "C": "Ninth Schedule",
+        "D": "Twelfth Schedule"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-AMEND-MT01",
+      "syllabusNodeId": "GS2-POL-AMEND-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2019_Q15",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 72,
+      "originalQuestionNumber": 15,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1. The Parliament (Prevention of Disqualification) Act, 1959 exempts several posts from disqualification on the grounds of ‘Office of Profit’. 2. The above-mentioned Act was amended five times. 3. The term ‘Office of Profit’ is well-defined in the Constitution of India. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-PARL-MT01",
+      "syllabusNodeId": "GS2-POL-PARL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIFUNMON_2019_Q16",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 73,
+      "originalQuestionNumber": 16,
+      "subject": "Economy",
+      "sourceFile": "rbi_functions_money_supply_monetary_policy_forex_bop.json",
+      "question": "The money multiplier in an economy increases with which one of the following?",
+      "options": {
+        "A": "Increase in the cash reserve ratio",
+        "B": "Increase in the banking habit of the population",
+        "C": "Increase in the statutory liquidity ratio",
+        "D": "Increase in the population of the country"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-MONEY-BASICS-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS3-ECO-PRE-MONEY-BASICS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi",
+            "banking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_RBIINDBAN_2019_Q16",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 74,
+      "originalQuestionNumber": 16,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "Which of the following is not included in the assets of a commercial bank in India?",
+      "options": {
+        "A": "Advances",
+        "B": "Deposits",
+        "C": "Investments",
+        "D": "Money at call and short notice"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-BANKING-STRUCTURE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_CLI_2019_Q16",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 75,
+      "originalQuestionNumber": 16,
+      "subject": null,
+      "sourceFile": "climate_changecorrected.json",
+      "question": "In the context of proposals to the use of hydrogen-enriched CNG (H-CNG) as fuel for buses in public transport, consider the following statements: 1. The main advantage of the use of H-CNG is the elimination of carbon monoxide emissions. 2. H-CNG as fuel reduces carbon dioxide and hydrocarbon emissions. 3. Hydrogen up to one-fifth by volume can be blended with CNG as fuel for buses. 4. H-CNG makes the fuel less expensive than CNG. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "syllabusNodeId": "GS3-ENV-GLOBALWARM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2019_Q16",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 76,
+      "originalQuestionNumber": 16,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "Consider the following pairs: Wildlife: Naturally found in 1. Blue-finned Mahseer:Cauvery River 2. Irrawaddy Dolphin: Chambal River 3. Rusty-spotted Cat: Eastern Ghats Which of the pairs given correctly matched?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "GEO_CLI_2019_Q16",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 77,
+      "originalQuestionNumber": 16,
+      "subject": null,
+      "sourceFile": "climatology.json",
+      "question": "Why are dewdrops not formed on a cloudy night?",
+      "options": {
+        "A": "Clouds absorb the radiation released from the Earth's surface",
+        "B": "Clouds reflect back the Earth's radiation",
+        "C": "The Earth's surface would have low temperature on cloudy nights",
+        "D": "Clouds deflect the blowing wind to ground level"
+      },
+      "answer": "B",
+      "nodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "syllabusNodeId": "GS1-GEO-IND-CLIMATE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_CONSTITUTIONAL_AMENDMENTS_2019_Q16",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 78,
+      "originalQuestionNumber": 16,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "Consider the following statements: 1. As per recent amendment to the Indian Forest Act, 1927, forest dwellers have the right to fell the bamboos grown on forest areas. 2. As per the Scheduled Tribes and Other Traditional Forest Dwellers (Recognition of Forest Rights) Act, 2006, bamboo is a minor forest produce. 3. The Scheduled Tribes and Other Traditional Forest Dwellers (Recognition of Forest Rights) Act, 2006 allows ownership of minor forest produce to forest dwellers. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "B",
+      "nodeId": "GS2-POL-AMEND-MT01",
+      "syllabusNodeId": "GS2-POL-AMEND-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "POL_PARLIAMENT_2019_Q16",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 79,
+      "originalQuestionNumber": 16,
+      "subject": "Indian Polity",
+      "sourceFile": "indian_polity_master.json",
+      "question": "In India, which of the following review the independent regulators in sectors like telecommunications, insurance, electricity, etc.? statements are 1. Ad Hoc Committees set up by the Parliament 2. Parliamentary Department Related Standing Committees 3. Finance Commission 4. Financial Sector Legislative Reforms Commission 5. NITI Aayog Select the correct answer using the code given below:",
+      "options": {
+        "A": "1 and 2",
+        "B": "1, 3 and 4",
+        "C": "3, 4 and 5",
+        "D": "2 and 5"
+      },
+      "answer": "A",
+      "nodeId": "GS2-POL-CSREL-MT01",
+      "syllabusNodeId": "GS2-POL-CSREL-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-POL-PARL-MT01",
+          "toNodeId": "GS2-POL-CSREL-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS2-POL-PARL-MT01 based on keywords.",
+          "matchedKeywords": [
+            "finance commission"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_INTERNATIONAL_RELATIONS_2019_Q17",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 80,
+      "originalQuestionNumber": 17,
+      "subject": null,
+      "sourceFile": "ca_international_relations.json",
+      "question": "Recently, India signed a deal known as 'Action Plan for Prioritization and Implementation of Cooperation Areas in the Nuclear Field' with which of the following countries? [2019]",
+      "options": {
+        "A": "Japan",
+        "B": "Russia",
+        "C": "The United Kingdom",
+        "D": "The United States of America"
+      },
+      "answer": "B",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_ECO_2019_Q17",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 81,
+      "originalQuestionNumber": 17,
+      "subject": null,
+      "sourceFile": "ecology_ecosystemcorrected.json",
+      "question": "Consider the following statements: 1. Some species of turtles are herbivores. 2. Some species of fish are herbivores. 3. Some species of marine mammals are herbivores. 4. Some species of snakes are viviparous. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2, 3 and 4 only",
+        "C": "2 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_SPC_2019_Q17",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 82,
+      "originalQuestionNumber": 17,
+      "subject": null,
+      "sourceFile": "species_in_newscorrected.json",
+      "question": "Recently, there was a growing awareness in our country about the importance of Himalayan nettle (Girardinia diversifoli",
+      "options": {
+        "A": "Anti-malarial drug",
+        "B": "Biodiesel",
+        "C": "Pulp for paper industry",
+        "D": "Textile fibre"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ENV-SPECIES-MT01",
+      "syllabusNodeId": "GS3-ENV-SPECIES-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "SCIDISEASES_2019_Q17",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 83,
+      "originalQuestionNumber": 17,
+      "subject": "Science & Technology",
+      "sourceFile": "sci_diseases.json",
+      "question": "Which one of the following statements is not correct?",
+      "options": {
+        "A": "Hepatitis B virus is transmitted much like HIV.",
+        "B": "Hepatitis B. unlike Hepatitis C, does not have a vaccine.",
+        "C": "Globally, the number of people infected with Hepatitis B and C viruses arc several times more than those infected with HIV.",
+        "D": "Some of those infected with Hepatitis B and C viruses do not show the symptoms for many years."
+      },
+      "answer": "A",
+      "nodeId": "GS3-ST-BIOTECH-MT01",
+      "syllabusNodeId": "GS3-ST-BIOTECH-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIINDBAN_2019_Q18",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 84,
+      "originalQuestionNumber": 18,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "What was the purpose of Inter -Creditor Agreement signed by Indian banks and financial institutions recently?",
+      "options": {
+        "A": "To lessen the Government of India's perennial burden of fiscal deficit and current account deficit",
+        "B": "To support the infrastructure projects of Central and State Governments",
+        "C": "To act as independent regulator in case of applications for loans of RS 50 crore or more",
+        "D": "To aim at faster resolution of stressed assets of Rs 50 crore or more which are under consortium lending"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-BUDGET-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-BANKING-STRUCTURE-MT01",
+          "toNodeId": "GS3-ECO-PRE-BUDGET-MT01",
+          "confidence": 92.5,
+          "reason": "Intelligently refined from GS3-ECO-PRE-BANKING-STRUCTURE-MT01 based on keywords.",
+          "matchedKeywords": [
+            "fiscal deficit"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ECO_CAPMARMON_2019_Q19",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 85,
+      "originalQuestionNumber": 19,
+      "subject": "Economy",
+      "sourceFile": "capital_market_money_market_fdi.json",
+      "question": "Which of the following is issued by registered foreign portfolio investors to overseas investors who want to be part of the Indian stock market without registering themselves directly?",
+      "options": {
+        "A": "Certificate of Deposit",
+        "B": "Commercial Paper",
+        "C": "Promissory Note",
+        "D": "Participatory Note"
+      },
+      "answer": "D",
+      "nodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "syllabusNodeId": "GS3-ECO-FINANCIAL-SYSTEM-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIINDBAN_2019_Q19",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 86,
+      "originalQuestionNumber": 19,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "The Chairmen of public sector banks are selected by the:",
+      "options": {
+        "A": "Banks Board Bureau",
+        "B": "Reserve Bank of India",
+        "C": "Union Ministry of Finance",
+        "D": "Management of concerned bank"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-BANKING-MT01",
+      "syllabusNodeId": "GS3-ECO-BANKING-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS3-ECO-PRE-RBI-MT01",
+          "toNodeId": "GS3-ECO-BANKING-MT01",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS3-ECO-PRE-RBI-MT01 based on keywords.",
+          "matchedKeywords": [
+            "rbi"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ENV_POL_2019_Q19",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 87,
+      "originalQuestionNumber": 19,
+      "subject": null,
+      "sourceFile": "environmental_pollutioncorrected.json",
+      "question": "Why is there a great concern about the 'microbeads' that are released into environment?",
+      "options": {
+        "A": "They are considered harmful to marine ecosystems.",
+        "B": "They are considered to cause skin cancer in children.",
+        "C": "They are small enough to be absorbed by crop plants in irrigated fields.",
+        "D": "They are often found to be used as food adulterants."
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-WASTE-MT01",
+      "syllabusNodeId": "GS3-ENV-WASTE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ECO_RBIINDBAN_2019_Q20",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 88,
+      "originalQuestionNumber": 20,
+      "subject": "Economy",
+      "sourceFile": "rbi_indian_banking_finance_system.json",
+      "question": "Consider the following statements: The Reserve Bank of India's recent directives relating to 'Storage of Payment System Data, popularly known as data diktat, command the payment system providers that 1. they shall ensure that entire data relating to payment systems operated by them are stored in a system only in India 2. they shall ensure that the systems are owned and operated by public sector enterprises 3. they shall submit the consolidated system audit report to the Comptroller and Auditor General of India by the end of the calendar year Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ECO-PRE-RBI-MT01",
+      "syllabusNodeId": "GS3-ECO-PRE-RBI-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_POL_2019_Q20",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 89,
+      "originalQuestionNumber": 20,
+      "subject": null,
+      "sourceFile": "environmental_pollutioncorrected.json",
+      "question": "In India, the use of carbofuran, methyl parathion, phorate and triazophos is viewed with apprehension. These chemicals are used as:",
+      "options": {
+        "A": "Pesticides in agriculture",
+        "B": "Preservatives in processed foods",
+        "C": "Fruit-ripening agents",
+        "D": "Moisturising agents in cosmetics"
+      },
+      "answer": "A",
+      "nodeId": "GS3-ENV-LAND-WATER-MT01",
+      "syllabusNodeId": "GS3-ENV-LAND-WATER-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_POL_2019_Q21",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 90,
+      "originalQuestionNumber": 21,
+      "subject": null,
+      "sourceFile": "environmental_pollutioncorrected.json",
+      "question": "Consider the following statements: The Environment Protection Act, 1986 empowers the Government of India to 1. State the requirement of public participation in the process of environmental protection, and the procedure and manner in which it is sought 2. Lay down the standards for emission or discharge of environmental pollutants from various sources Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": "GS3-ENV-ACTS-MT01",
+      "syllabusNodeId": "GS3-ENV-ACTS-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_POL_2019_Q22",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 91,
+      "originalQuestionNumber": 22,
+      "subject": null,
+      "sourceFile": "environmental_pollutioncorrected.json",
+      "question": "As per the Solid Waste Management Rules, 2016 in India, which one of the following statements is correct?",
+      "options": {
+        "A": "Waste generator has to segregate waste into five categories.",
+        "B": "The Rules are applicable to notified urban local bodies, notified towns and all industrial townships only.",
+        "C": "The Rules provide for exact and elaborate criteria for the identification of sites for landfills and waste processing facilities.",
+        "D": "It is mandatory on the part of the waste generator that the waste generated in one district cannot be moved to another district."
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-WASTE-MT01",
+      "syllabusNodeId": "GS3-ENV-WASTE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "ENV_POL_2019_Q23",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 92,
+      "originalQuestionNumber": 23,
+      "subject": null,
+      "sourceFile": "environmental_pollutioncorrected.json",
+      "question": "In India, 'extended producer responsibility' was introduced as an important feature in which of the following?",
+      "options": {
+        "A": "The Bio-medical Waste (Management and Handling) Rules, 1998",
+        "B": "The Recycled Plastic (Manufacturing and Usage) Rules, 1999",
+        "C": "The E-Waste (Management and Handling) Rules,",
+        "D": "The Food Safety and Standard Regulations, 2011"
+      },
+      "answer": "C",
+      "nodeId": "GS3-ENV-WASTE-MT01",
+      "syllabusNodeId": "GS3-ENV-WASTE-MT01",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2019_Q036",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 93,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "36. Consider the following statements: (2019)\n1. \nThe United Nations Convention against Corruption (UNCAC)\nhas a ‘Protocol against the Smuggling of Migrants by Land, Sea\nand Air’.\n2. \nThe UNCAC is the ever-first legally binding global anti-corruption instrument.\n3. \nA highlight of the United Nations Convention against Transnational Organized Crime (UNTOC) is the inclusion of a specific\nchapter aimed at returning assets to their rightful owners from\nwhom they had been taken illicitly.\n4. \nThe United Nations Office on Drugs and Crime (UNODC) is\nmandated by its member States to assist in the implementation of both UNCAC and UNTOC.\nWhich of the statements given above are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2, 3 and 4 only",
+        "C": "2 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": "C",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": null
+    },
+    {
+      "id": "CA_IR_2019_Q037",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 94,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "37. The Global Competitiveness Report is published by\nthe: (2019)",
+      "options": {
+        "A": "International Monetary Fund",
+        "B": "United Nations Conference on Trade and Development",
+        "C": "World Economic Forum",
+        "D": "World Bank\n \n \n\fUPSC GS Paper-I PYQs\n650"
+      },
+      "answer": "C",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 100,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un",
+            "world bank"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_IR_2019_Q038",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 95,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "38. Recently, India signed a deal known as ‘Action Plan\nfor Prioritization and Implementation of Cooperation\nAreas in the Nuclear Field’ with which of the following\ncountries? (2019)",
+      "options": {
+        "A": "Japan",
+        "B": "Russia",
+        "C": "The United Kingdom",
+        "D": "TheUnitedStatesofAmerica"
+      },
+      "answer": "B",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-TERRORISM-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-TERRORISM-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CA_IR_2019_Q039",
+      "year": 2019,
+      "paper": "GS",
+      "questionNumber": 96,
+      "originalQuestionNumber": null,
+      "subject": "Current Affairs",
+      "sourceFile": "ca_international_relations_FULL_PDF_STRICT.json",
+      "question": "39. Which of the following adopted a law on data\nprotection and privacy for its citizens known as\n‘General Data Protection Regulation’ in April 2016 and\nstarted implementation of it from 25th May, 2018?\n (2019)",
+      "options": {
+        "A": "Australia",
+        "B": "Canada",
+        "C": "The European Union",
+        "D": "TheUnitedStatesofAmerica"
+      },
+      "answer": "C",
+      "nodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "syllabusNodeId": "GS2-IR-INSTITUTIONS-MT04",
+      "microthemes": [],
+      "keywords": [],
+      "mappingAudit": {
+        "intelligentMapper": {
+          "applied": true,
+          "fromNodeId": "GS2-IR-GROUPINGS-MT01",
+          "toNodeId": "GS2-IR-INSTITUTIONS-MT04",
+          "confidence": 90,
+          "reason": "Intelligently refined from GS2-IR-GROUPINGS-MT01 based on keywords.",
+          "matchedKeywords": [
+            "un"
+          ]
+        }
+      }
+    }
+  ]
+}

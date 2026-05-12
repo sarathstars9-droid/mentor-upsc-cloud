@@ -1,0 +1,84 @@
+{
+  "totalQuestions": 422,
+  "topicCounts": [
+    {
+      "file": "sci_biology.json",
+      "topic": "Biology",
+      "count": 124,
+      "flagged": 0
+    },
+    {
+      "file": "sci_biotech.json",
+      "topic": "Biotechnology",
+      "count": 27,
+      "flagged": 0
+    },
+    {
+      "file": "sci_chemistry.json",
+      "topic": "Chemistry",
+      "count": 79,
+      "flagged": 0
+    },
+    {
+      "file": "sci_diseases.json",
+      "topic": "Diseases",
+      "count": 17,
+      "flagged": 0
+    },
+    {
+      "file": "sci_electronics_it.json",
+      "topic": "Electronics, IT & Emerging Technologies",
+      "count": 22,
+      "flagged": 0
+    },
+    {
+      "file": "sci_physics.json",
+      "topic": "Physics",
+      "count": 98,
+      "flagged": 0
+    },
+    {
+      "file": "sci_space_tech.json",
+      "topic": "Space Technology & Astrophysics",
+      "count": 55,
+      "flagged": 0
+    }
+  ],
+  "yearCounts": {
+    "1995": 28,
+    "1996": 32,
+    "1997": 30,
+    "1998": 25,
+    "1999": 22,
+    "2000": 33,
+    "2001": 37,
+    "2002": 22,
+    "2003": 15,
+    "2004": 10,
+    "2005": 8,
+    "2006": 9,
+    "2007": 23,
+    "2008": 15,
+    "2009": 14,
+    "2010": 13,
+    "2011": 11,
+    "2012": 5,
+    "2013": 7,
+    "2014": 2,
+    "2015": 3,
+    "2016": 3,
+    "2017": 3,
+    "2018": 3,
+    "2019": 6,
+    "2020": 7,
+    "2021": 11,
+    "2022": 5,
+    "2023": 6,
+    "2024": 5,
+    "2025": 9
+  },
+  "duplicateIds": [],
+  "reviewRequiredCount": 0,
+  "badOptionsCount": 0,
+  "badAnswersCount": 0
+}

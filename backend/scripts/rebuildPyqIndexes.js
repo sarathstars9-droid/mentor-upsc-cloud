@@ -1,8 +1,8 @@
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { expandCanonicalOrLegacyToLeafNodeIds } from "../brain/unifiedSyllabusIndex.js";
-import { PYQ_NODE_ALIAS_MAP } from "../brain/pyqNodeAliasMap.js";
+import { expandCanonicalOrLegacyToLeafNodeIds, UNIFIED_NODES_BY_ID } from "../brain/unifiedSyllabusIndex.js";
+import { PYQ_NODE_ALIAS_MAP, normalizePyqNodeId } from "../brain/pyqNodeAliasMap.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -34,9 +34,27 @@ async function rebuildIndexes() {
   const pyqByNode = {};
 
   // Counters for debug log
+  const stats = {
+    totalQuestions: totalIncoming,
+    directlyResolved: 0,
+    aliasResolved: 0,
+    unresolved: 0,
+    unresolvedByNode: {},
+  };
   let skippedMissingNodeId = 0;
-  let unknownNodeIds = 0;
   const stageCounts = Object.fromEntries(stages.map(s => [s, 0]));
+
+  // Validate alias map targets
+  const invalidAliases = [];
+  for (const [from, to] of Object.entries(PYQ_NODE_ALIAS_MAP)) {
+    if (!UNIFIED_NODES_BY_ID[to]) {
+      invalidAliases.push({ from, to });
+    }
+  }
+  if (invalidAliases.length) {
+    console.error("❌ Invalid PYQ_NODE_ALIAS_MAP targets (they do not exist in UNIFIED_NODES_BY_ID):", invalidAliases);
+    throw new Error("PYQ_NODE_ALIAS_MAP contains invalid canonical leaf node targets.");
+  }
 
   // Helper to init node
   function initNode(nid) {
@@ -65,17 +83,18 @@ async function rebuildIndexes() {
   });
 
   for (const q of questionsList) {
-    let nodeId = q.syllabusNodeId || q.nodeId;
-    if (!nodeId) {
+    const rawNodeId = q.syllabusNodeId || q.nodeId;
+    if (!rawNodeId) {
       skippedMissingNodeId++;
       continue;
     }
 
-    if (!isValidNode(nodeId)) {
-      const alias = PYQ_NODE_ALIAS_MAP[nodeId];
-      if (alias && isValidNode(alias)) {
-        nodeId = alias;
-      }
+    const nodeId = normalizePyqNodeId(rawNodeId);
+
+    if (rawNodeId !== nodeId && isValidNode(nodeId)) {
+      stats.aliasResolved++;
+    } else if (isValidNode(nodeId)) {
+      stats.directlyResolved++;
     }
 
     q.syllabusNodeId = nodeId;
@@ -136,10 +155,8 @@ async function rebuildIndexes() {
         : [nodeId];
 
     if (!resolvedNodes || resolvedNodes.length === 0) {
-      unknownNodeIds++;
-      console.warn(
-        `[WARNING] Unresolved node for ${q.id}: "${nodeId}". Falling back to raw node bucket.`
-      );
+      stats.unresolved++;
+      stats.unresolvedByNode[rawNodeId] = (stats.unresolvedByNode[rawNodeId] || 0) + 1;
     }
 
     // Now safely map to every resolved canonical leaf node
@@ -181,8 +198,19 @@ async function rebuildIndexes() {
   if (skippedMissingNodeId > 0) {
     console.log(`[PYQ BUILD] Ignored questions missing syllabusNodeId: ${skippedMissingNodeId}`);
   }
-  if (unknownNodeIds > 0) {
-    console.log(`[PYQ BUILD] Mismatched/Skipped due to Invalid syllabusNodeId: ${unknownNodeIds}`);
+
+  console.log("\n[PYQ INDEX REBUILD SUMMARY]");
+  console.log(`  Total Processed : ${stats.totalQuestions}`);
+  console.log(`  Directly Resolved : ${stats.directlyResolved}`);
+  console.log(`  Alias Resolved : ${stats.aliasResolved}`);
+  console.log(`  Unresolved (Fallback) : ${stats.unresolved}`);
+
+  if (stats.unresolved > 0) {
+    console.log(`\n[PYQ BUILD] Top Unresolved Nodes:`);
+    const unresolvedEntries = Object.entries(stats.unresolvedByNode)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 30);
+    console.table(unresolvedEntries.map(([node, count]) => ({ RawNodeID: node, Count: count })));
   }
 
   // Top Nodes

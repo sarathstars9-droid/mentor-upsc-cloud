@@ -174,83 +174,74 @@ const PRACTICE_QUESTIONS = {
   },
 };
 
-// ─── Real recent attempts — loaded from localStorage ─────────────────────────
+// ─── Real recent attempts — loaded from API ─────────────────────────
 function useRecentAttempts(limit = 3) {
   const [attempts, setAttempts] = useState([]);
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem("mains_answer_attempts_v1");
-      const all = raw ? JSON.parse(raw) : [];
-      // Sort newest first by createdAt, then take top N
-      const sorted = [...all].sort((a, b) => {
-        const ta = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-        const tb = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-        return tb - ta;
-      });
-      setAttempts(sorted.slice(0, limit));
-    } catch {
-      setAttempts([]);
-    }
+    fetch(`${BACKEND_URL}/api/mains-answers?userId=user_1`, { cache: "no-store" })
+      .then(res => res.json())
+      .then(data => {
+        const all = Array.isArray(data) ? data : [];
+        const sorted = [...all].sort((a, b) => {
+          const ta = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+          const tb = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+          return tb - ta;
+        });
+        setAttempts(sorted.slice(0, limit));
+      })
+      .catch(() => setAttempts([]));
   }, [limit]);
   return attempts;
 }
 
-// ─── Dynamic weak areas — derived from mains_mistakes_v1 ────────────────────────
+// ─── Dynamic weak areas — derived from API ────────────────────────
 const SEV_RANK = { high: 0, medium: 1, low: 2 };
 
 function useWeakAreas() {
   const [areas, setAreas] = useState({ GS1: [], GS2: [], GS3: [] });
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem("mains_mistakes_v1");
-      const all = raw ? JSON.parse(raw) : [];
+    fetch(`${BACKEND_URL}/api/mistakes?userId=user_1&stage=mains`, { cache: "no-store" })
+      .then(res => res.json())
+      .then(data => {
+        const all = Array.isArray(data) ? data : [];
+        const open = all.filter((m) => m.answer_status !== "resolved" && m.status !== "resolved");
 
-      // Filter unresolved only
-      const open = all.filter((m) => m.status !== "resolved");
+        const grouped = { GS1: [], GS2: [], GS3: [] };
+        open.forEach((m) => {
+          const key = (m.paper || "").toUpperCase();
+          if (grouped[key]) grouped[key].push(m);
+        });
 
-      // Group by paper
-      const grouped = { GS1: [], GS2: [], GS3: [] };
-      open.forEach((m) => {
-        const key = (m.paper || "").toUpperCase();
-        if (grouped[key]) grouped[key].push(m);
-      });
+        const pick = (list) =>
+          [...list]
+            .sort((a, b) => {
+              if (a.must_revise !== b.must_revise) return a.must_revise ? -1 : 1;
+              const sa = SEV_RANK[(a.severity || "medium").toLowerCase()] ?? 1;
+              const sb = SEV_RANK[(b.severity || "medium").toLowerCase()] ?? 1;
+              if (sa !== sb) return sa - sb;
+              return new Date(b.created_at || b.createdAt || 0) - new Date(a.created_at || a.createdAt || 0);
+            })
+            .slice(0, 3)
+            .map((m) => {
+              const base = m.topic || (m.question_text || m.question ? (m.question_text || m.question).slice(0, 60) + "\u2026" : "Untitled");
+              const tag  = (m.error_type || m.mistakeTypes?.[0]) || "";
+              return tag ? `${base} — ${tag}` : base;
+            });
 
-      // Sort and pick top 3 per paper
-      const pick = (list) =>
-        [...list]
-          .sort((a, b) => {
-            // mustRevise first
-            if (a.mustRevise !== b.mustRevise) return a.mustRevise ? -1 : 1;
-            // severity High > Medium > Low
-            const sa = SEV_RANK[(a.severity || "medium").toLowerCase()] ?? 1;
-            const sb = SEV_RANK[(b.severity || "medium").toLowerCase()] ?? 1;
-            if (sa !== sb) return sa - sb;
-            // newest first
-            return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
-          })
-          .slice(0, 3)
-          .map((m) => {
-            // Build a human-readable label from topic / mistakeTypes / question snippet
-            const base = m.topic || (m.question ? m.question.slice(0, 60) + "\u2026" : "Untitled");
-            const tag  = (m.mistakeTypes || [])[0] || "";
-            return tag ? `${base} — ${tag}` : base;
-          });
-
-      setAreas({
-        GS1: pick(grouped.GS1),
-        GS2: pick(grouped.GS2),
-        GS3: pick(grouped.GS3),
-      });
-    } catch {
-      setAreas({ GS1: [], GS2: [], GS3: [] });
-    }
+        setAreas({
+          GS1: pick(grouped.GS1),
+          GS2: pick(grouped.GS2),
+          GS3: pick(grouped.GS3),
+        });
+      })
+      .catch(() => setAreas({ GS1: [], GS2: [], GS3: [] }));
   }, []);
 
   return areas;
 }
 
-// ─── Mains dashboard stats — derived from both localStorage keys ────────────────
+// ─── Mains dashboard stats — derived from API ────────────────
 function useMainsStats() {
   const [stats, setStats] = useState({
     total: 0, thisWeek: 0,
@@ -259,18 +250,19 @@ function useMainsStats() {
   });
 
   useEffect(() => {
-    try {
-      // ─ Attempts ─
-      const attRaw  = localStorage.getItem("mains_answer_attempts_v1");
-      const allAtt  = attRaw ? JSON.parse(attRaw) : [];
-      const total   = allAtt.length;
+    Promise.all([
+      fetch(`${BACKEND_URL}/api/mains-answers?userId=user_1`, { cache: "no-store" }).then(r => r.json()).catch(() => []),
+      fetch(`${BACKEND_URL}/api/mistakes?userId=user_1&stage=mains`, { cache: "no-store" }).then(r => r.json()).catch(() => [])
+    ]).then(([attData, misData]) => {
+      const allAtt = Array.isArray(attData) ? attData : [];
+      const allMis = Array.isArray(misData) ? misData : [];
 
+      const total = allAtt.length;
       const weekAgo = Date.now() - 7 * 24 * 3600 * 1000;
       const thisWeek = allAtt.filter(
         (a) => a.createdAt && new Date(a.createdAt).getTime() >= weekAgo
       ).length;
 
-      // Strongest paper = most attempts
       const attByPaper = {};
       allAtt.forEach((a) => {
         const p = (a.paper || "").toUpperCase();
@@ -280,13 +272,9 @@ function useMainsStats() {
         (a, b) => attByPaper[b] - attByPaper[a]
       )[0] || "—";
 
-      // ─ Mistakes ─
-      const misRaw  = localStorage.getItem("mains_mistakes_v1");
-      const allMis  = misRaw ? JSON.parse(misRaw) : [];
-      const openMis = allMis.filter((m) => m.status !== "resolved");
+      const openMis = allMis.filter((m) => m.answer_status !== "resolved" && m.status !== "resolved");
       const openMistakes = openMis.length;
 
-      // Weakest paper = paper with most open mistakes
       const misByPaper = {};
       openMis.forEach((m) => {
         const p = (m.paper || "").toUpperCase();
@@ -297,30 +285,26 @@ function useMainsStats() {
       )[0] || "—";
 
       setStats({ total, thisWeek, strongestPaper, weakestPaper, openMistakes });
-    } catch {
-      // keep defaults
-    }
+    });
   }, []);
 
   return stats;
 }
 
-// ─── Per-paper stats — derived from localStorage ──────────────────────────────
+// ─── Per-paper stats — derived from API ──────────────────────────────
 function usePerPaperStats() {
   const PAPERS = ["GS1", "GS2", "GS3"];
   const empty  = () => ({ answersWritten: 0, openWeakAreas: 0 });
   const [data, setData] = useState({ GS1: empty(), GS2: empty(), GS3: empty() });
 
   useEffect(() => {
-    try {
-      // Attempts
-      const attRaw = localStorage.getItem("mains_answer_attempts_v1");
-      const allAtt = attRaw ? JSON.parse(attRaw) : [];
-
-      // Mistakes — open only
-      const misRaw = localStorage.getItem("mains_mistakes_v1");
-      const allMis = misRaw ? JSON.parse(misRaw) : [];
-      const openMis = allMis.filter((m) => m.status !== "resolved");
+    Promise.all([
+      fetch(`${BACKEND_URL}/api/mains-answers?userId=user_1`, { cache: "no-store" }).then(r => r.json()).catch(() => []),
+      fetch(`${BACKEND_URL}/api/mistakes?userId=user_1&stage=mains`, { cache: "no-store" }).then(r => r.json()).catch(() => [])
+    ]).then(([attData, misData]) => {
+      const allAtt = Array.isArray(attData) ? attData : [];
+      const allMis = Array.isArray(misData) ? misData : [];
+      const openMis = allMis.filter((m) => m.answer_status !== "resolved" && m.status !== "resolved");
 
       const result = {};
       for (const p of PAPERS) {
@@ -331,9 +315,7 @@ function usePerPaperStats() {
         };
       }
       setData(result);
-    } catch {
-      // keep zeros
-    }
+    });
   }, []);
 
   return data;

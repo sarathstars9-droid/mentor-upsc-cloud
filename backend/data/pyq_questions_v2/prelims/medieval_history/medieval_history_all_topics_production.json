@@ -6,8 +6,10 @@
       "subject": "History",
       "module": "Medieval Indian History",
       "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
       "sourceType": "UPSC_Prelims_PYQ",
-      "sectionId": "GS1-HIS-MOD",
+      "sectionId": "GS1-HIS-MED",
+      "totalQuestions": 13,
       "questions": [
         {
           "id": "HIS_MED_EURO_2024_Q1",
@@ -21,17 +23,23 @@
             "C": "Muhammad Shah III",
             "D": "Yusuf Adil Shah"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "Portuguese and Other European Settlements",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_EURO_2023_Q2",
@@ -45,17 +53,23 @@
             "C": "Bahadur Shah",
             "D": "Muhammad Shah"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "Portuguese and Other European Settlements",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_EURO_2022_Q3",
@@ -65,21 +79,27 @@
           "question": "With reference to Indian history, consider the following statements: 1. The Dutch established their factories/ warehouses on the east coast on lands granted to them by Gajapati rulers. 2. Alfonso de Albuquerque captured Goa from the Bijapur Sultanate. 3. The English East India Company established a factory at Madras on a plot of land leased from a representative of the Vijayanagara empire. Which of the statements given above are correct?",
           "options": {
             "A": "1 and 2 only",
-            "B": "2 and 3 only 52",
+            "B": "2 and 3 only",
             "C": "1 and 3 only",
-            "D": "1, 2 and 3"
+            "D": "1, 2 and"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "European Factories and Mughal Permissions",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_EURO_2021_Q4",
@@ -89,21 +109,27 @@
           "question": "In the first quarter of seventeenth century, in which of the following was/were the factory/factories of the English East India Company located? 1) Broach 2) Chicacole 3) Trichinopoly Select the correct answer using the code given below.",
           "options": {
             "A": "1 only",
-            "B": "1 and 2",
+            "B": "1 and",
             "C": "3 only",
-            "D": "2 and 3"
+            "D": "2 and"
+          },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
           },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "European Factories and Mughal Permissions",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_EURO_2021_Q5",
@@ -115,19 +141,25 @@
             "A": "1 and 2 only",
             "B": "2 and 3 only",
             "C": "1 and 3 only",
-            "D": "1, 2 and 3"
+            "D": "1, 2 and"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "Portuguese and Other European Settlements",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_EURO_2010_Q6",
@@ -139,19 +171,25 @@
             "A": "1 only",
             "B": "2 and 3 only",
             "C": "3 only",
-            "D": "1, 2 and 3"
+            "D": "1, 2 and"
+          },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
           },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "Portuguese and Other European Settlements",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_EURO_2009_Q7",
@@ -165,17 +203,23 @@
             "C": "Shahjahan",
             "D": "Aurangzeb"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "European Factories and Mughal Permissions",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_EURO_2008_Q8",
@@ -189,17 +233,23 @@
             "C": "Jahangir",
             "D": "Aurangzeb"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "European Factories and Mughal Permissions",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_EURO_2006_Q9",
@@ -213,17 +263,23 @@
             "C": "Masulipatnam",
             "D": "Surat"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "European Factories and Mughal Permissions",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_EURO_2005_Q10",
@@ -232,22 +288,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "Which one of the following is the correct statement?",
           "options": {
-            "A": "The modern Kochi was a Dutch colony till India's independence",
-            "B": "The Dutch defeated the Portuguese and built Fort Williams in the modern Kochi",
-            "C": "The modern Kochi was first a Dutch colony before the Portuguese took over from them",
-            "D": "Modern Kochi never became a part of the British colony"
+            "A": "The modern Kochi was a Dutch colony till India's independence.",
+            "B": "The Dutch defeated the Portuguese and built Fort Williams in the modern Kochi.",
+            "C": "The modern Kochi was first a Dutch colony before the Portuguese took over from them.",
+            "D": "Modern Kochi never became a part of the British colony."
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "European Trading Companies and Early Factories",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_EURO_2003_Q11",
@@ -261,17 +323,23 @@
             "C": "Cochin",
             "D": "Cassimbazar"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "European Factories and Mughal Permissions",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_EURO_2003_Q12",
@@ -285,17 +353,23 @@
             "C": "In Eastern India, the English Company opened its first factory in Orissa in 1633",
             "D": "Under the leadership of Dupleix, the French occupied Madras in 1746"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "European Trading Companies and Early Factories",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_EURO_1999_Q13",
@@ -309,17 +383,23 @@
             "C": "Shahjahan: Tavernier",
             "D": "Aurangzeb: Manucci"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MOD-EURO",
-          "nodeId": "GS1-HIS-MOD-EURO",
-          "syllabusNodeId": "GS1-HIS-MOD-EURO",
-          "microTheme": "European Trading Companies and Early Factories",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Advent of Europeans in India",
-          "source": "UPSC PYQ"
+          "topicId": "advent_of_europeans_in_india",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         }
       ]
     }
@@ -331,8 +411,10 @@
       "subject": "History",
       "module": "Medieval Indian History",
       "topicName": "Art, Architecture and Literature",
+      "topicId": "art_architecture_literature",
       "sourceType": "UPSC_Prelims_PYQ",
       "sectionId": "GS1-HIS-MED",
+      "totalQuestions": 18,
       "questions": [
         {
           "id": "HIS_MED_ART_2022_Q1",
@@ -346,17 +428,23 @@
             "C": "Shahjahan",
             "D": "Aurangzeb"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Courts and Literary Patronage",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_2021_Q2",
@@ -368,19 +456,25 @@
             "A": "1, 2 and 3 only",
             "B": "1, 3 and 4 only",
             "C": "2 and 4 only",
-            "D": "1, 2, 3 and 4"
+            "D": "1, 2, 3 and"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-VIJAYANAGARA",
-          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "microTheme": "Vijayanagara Art and Temple Architecture",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_2019_Q3",
@@ -389,22 +483,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "With reference to Mian Tansen, which one of the following statements is not correct?",
           "options": {
-            "A": "Tansen was the title given to him by Emperor Akbar",
-            "B": "Tansen composed Dhrupads on Hindu gods and goddesses",
-            "C": "Tansen composed songs for his patrons",
-            "D": "Tansen invented many Ragas"
+            "A": "Tansen was the title given to him by Emperor Akbar.",
+            "B": "Tansen composed Dhrupads on Hindu gods and goddesses.",
+            "C": "Tansen composed songs for his patrons.",
+            "D": "Tansen invented many Ragas."
+          },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
           },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Art, Architecture and Court Culture",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_2019_Q4",
@@ -418,17 +518,23 @@
             "C": "Jahangir",
             "D": "Shah Jahan"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Medieval Art, Architecture and Literature",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_2019_Q5",
@@ -442,17 +548,23 @@
             "C": "Rashtrakuta",
             "D": "Vijayanagara"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-VIJAYANAGARA",
-          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "microTheme": "Vijayanagara Art and Temple Architecture",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
+          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
+          "microTheme": "vijayanagara-polity-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_2018_Q6",
@@ -463,20 +575,26 @@
           "options": {
             "A": "1 only",
             "B": "2 only",
-            "C": "Both 1 and 2",
-            "D": "Neither 1 nor 2"
+            "C": "Both 1 and",
+            "D": "Neither 1 nor"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Art, Architecture and Court Culture",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-ART",
+          "syllabusNodeId": "GS1-HIS-MED-ART",
+          "microTheme": "medieval-art-architecture-literature",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_2014_Q7",
@@ -486,21 +604,27 @@
           "question": "Ibadat Khana at Fatehpur Sikri was:",
           "options": {
             "A": "The mosque for the use of Royal Family",
-            "B": "Akbar's private prayer chamber",
-            "C": "The hall in which Akbar held discussions with scholars of various religions",
-            "D": "The room in which the nobles belonging in different religions gathered to discuss religious affairs"
+            "B": "Akbar's private prayer chamber.",
+            "C": "The hall in which Akbar held discussions with scholars of various religions.",
+            "D": "The room in which the nobles belonging in different religions gathered to discuss religious affairs."
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Art, Architecture and Court Culture",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_2006_Q8",
@@ -514,17 +638,23 @@
             "C": "An important noble and confidant of Aurangzeb",
             "D": "A chronicler and poet during the reign of Muhammad Shah"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Art, Architecture and Court Culture",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_2003_Q9",
@@ -533,22 +663,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "Consider the following statement: 1. Kitab I Nauras, a collection of songs in praise of Hindu deities and Muslim saints, was written by Ibrahim Adil Shah II 2. Amir Khusrau was the originator in India of the early form of the musical style known as Qawwali. Which of these statements is/are correct?",
           "options": {
-            "A": "Only 1",
-            "B": "Only 2",
-            "C": "Both 1 and 2",
-            "D": "Neither 1 nor 2 54"
+            "A": "Only",
+            "B": "Only",
+            "C": "Both 1 and",
+            "D": "Neither 1 nor"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-SUFI",
-          "nodeId": "GS1-HIS-MED-SUFI",
-          "syllabusNodeId": "GS1-HIS-MED-SUFI",
-          "microTheme": "Persianate and Sufi Literary Culture",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-ART",
+          "syllabusNodeId": "GS1-HIS-MED-ART",
+          "microTheme": "medieval-art-architecture-literature",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_2002_Q10",
@@ -562,17 +698,23 @@
             "C": "The Sultan supplemented the Muslim law by framing his own regulations",
             "D": "Religious freedom was accorded to non-Muslims"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-DELHI",
-          "nodeId": "GS1-HIS-MED-DELHI",
-          "syllabusNodeId": "GS1-HIS-MED-DELHI",
-          "microTheme": "Delhi Sultanate Literary and Architectural Traditions",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-ART",
+          "syllabusNodeId": "GS1-HIS-MED-ART",
+          "microTheme": "medieval-art-architecture-literature",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_1999_Q11",
@@ -586,17 +728,23 @@
             "C": "II and III",
             "D": "I and III"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Medieval Art, Architecture and Literature",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-ART",
+          "syllabusNodeId": "GS1-HIS-MED-ART",
+          "microTheme": "medieval-art-architecture-literature",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_1999_Q12",
@@ -610,17 +758,23 @@
             "C": "Muhammad-bin Tughlaq",
             "D": "Feroze Shah Tughlak"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Medieval Art, Architecture and Literature",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_1999_Q13",
@@ -634,17 +788,23 @@
             "C": "Bahadur Shah Zafar",
             "D": "Faiz"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-SUFI",
-          "nodeId": "GS1-HIS-MED-SUFI",
-          "syllabusNodeId": "GS1-HIS-MED-SUFI",
-          "microTheme": "Persianate and Sufi Literary Culture",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_1998_Q14",
@@ -658,17 +818,23 @@
             "C": "I, III, II, IV",
             "D": "I, III, IV, II"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Art, Architecture and Court Culture",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_1997_Q15",
@@ -682,17 +848,23 @@
             "C": "Negroids",
             "D": "Mongoloids"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Ethnographic Descriptions in Medieval Sources",
-          "confidenceBand": "low",
-          "reviewRequired": true,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_1997_Q16",
@@ -706,17 +878,23 @@
             "C": "Raskhan",
             "D": "Abul Fazl"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Medieval Art, Architecture and Literature",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-ART",
+          "syllabusNodeId": "GS1-HIS-MED-ART",
+          "microTheme": "medieval-art-architecture-literature",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_1996_Q17",
@@ -730,17 +908,23 @@
             "C": "Jahangir",
             "D": "Shahjahan"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Art, Architecture and Court Culture",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_ART_1995_Q18",
@@ -754,17 +938,23 @@
             "C": "Tomb of Ghiyasuddin Tughlaq, Delhi",
             "D": "Gol Gumbaz, Bijapur"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Medieval Art, Architecture and Literature",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Art, Architecture and Literature",
-          "source": "UPSC PYQ"
+          "topicId": "art_architecture_literature",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         }
       ]
     }
@@ -776,8 +966,10 @@
       "subject": "History",
       "module": "Medieval Indian History",
       "topicName": "Politics and Society",
+      "topicId": "politics_and_society",
       "sourceType": "UPSC_Prelims_PYQ",
       "sectionId": "GS1-HIS-MED",
+      "totalQuestions": 65,
       "questions": [
         {
           "id": "HIS_MED_POL_2025_Q1",
@@ -791,17 +983,23 @@
             "C": "a larger earthen pot driven by bullocks",
             "D": "a large water bucket pulled up by rope directly by hand"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-economy-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2023_Q2",
@@ -815,17 +1013,23 @@
             "C": "Vira Vijaya",
             "D": "Virupaksha"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-VIJAYANAGARA",
-          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "microTheme": "Vijayanagara Administration and Society",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
+          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
+          "microTheme": "vijayanagara-polity-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2022_Q3",
@@ -839,17 +1043,23 @@
             "C": "Ornaments",
             "D": "Weapons"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-EMPIRE",
-          "nodeId": "GS1-HIS-MED-EMPIRE",
-          "syllabusNodeId": "GS1-HIS-MED-EMPIRE",
-          "microTheme": "Early Medieval Polity and Feudal Structures",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-economy-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2022_Q4",
@@ -858,22 +1068,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "With reference to 'Indian history, consider the following statements: 1. The first Mongol invasion of India happened during the reign of Jalal-ud-din Khalji. 2. During the reign of Ala-ud-din Khalji, one Mongol assault marched up to Delhi and besieged the city. 3. Muhammad-bin-Tughlaq temporarily lost portions of north-west of his kingdom to Mongols. Which of the statements given above is/are correct?",
           "options": {
-            "A": "1 and 2",
+            "A": "1 and",
             "B": "2 only",
-            "C": "1 and 3",
+            "C": "1 and",
             "D": "3 only"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-DELHI",
-          "nodeId": "GS1-HIS-MED-DELHI",
-          "syllabusNodeId": "GS1-HIS-MED-DELHI",
-          "microTheme": "Delhi Sultanate Administration and Politics",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2022_Q5",
@@ -887,17 +1103,23 @@
             "C": "Persian calligraphists",
             "D": "Sayyids"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-politics-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2021_Q6",
@@ -911,17 +1133,23 @@
             "C": "Suba, Sarkar, Paragana",
             "D": "Paragana, Suba, Sarkar"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-politics-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2021_Q7",
@@ -931,21 +1159,27 @@
           "question": "Consider the following statements: 1) It was during the reign of Iltutmish that Chengiz Khan reached the Indus in pursuit of the fugitive Khwarezm prince. 2) It was during the reign of Muhammad bin Tughluq that Taimur occupied Multan and crossed the Indus. 3) It was during the reign of Deva Raya II of Vijayanagara Empire that Vasco da Gama reached the coast of Kerala. Which of the statements given above is/are correct?",
           "options": {
             "A": "1 only",
-            "B": "1 and 2",
+            "B": "1 and",
             "C": "3 only",
-            "D": "2 and 3"
+            "D": "2 and"
+          },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
           },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-VIJAYANAGARA",
-          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "microTheme": "Vijayanagara Administration and Society",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
+          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
+          "microTheme": "vijayanagara-polity-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2020_Q8",
@@ -955,21 +1189,27 @@
           "question": "With reference to the history of India, consider the following pairs: 1. Aurang: In-charge of treasury of the State 2. Banian: Indian agent of the East India Company 3. Mirasidar: Designated revenue payer to the State Which of the pairs given above is/are correctly matched?",
           "options": {
             "A": "1 and 2 only",
-            "B": "2 and 3 only",
+            "B": "2 and 3 only ged the city.",
             "C": "3 only",
-            "D": "1, 2 and 3"
+            "D": "1, 2 and"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-economy-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2019_Q9",
@@ -980,44 +1220,56 @@
           "options": {
             "A": "1 only",
             "B": "2 only",
-            "C": "Both 1 and 2",
-            "D": "Neither 1 nor 2"
+            "C": "Both 1 and",
+            "D": "Neither 1 nor"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2019_Q10",
           "questionNumber": 10,
           "year": 2019,
           "questionType": "MCQ_SINGLE",
-          "question": "Consider the following statements: 1. In the revenue administration of Delhi Sultanate, the in -charge of revenue collection was known as Amil. 2. The Iqta system of Sultans of Delhi was an ancient indigenous institution. 3. The office of Mir Bakshi came into existence during the reign of Khalji Sultans of Delhi. Which of the statements given above is/are correct?",
+          "question": "Consider the following statements: 1. In the revenue administration of Delhi Sultanate, the in-charge of revenue collection was known as Amil. 2. The Iqta system of Sultans of Delhi was an ancient indigenous institution. 3. The office of Mir Bakshi came into existence during the reign of Khalji Sultans of Delhi. Which of the statements given above is/are correct?",
           "options": {
             "A": "1 only",
             "B": "1 and 2 only",
             "C": "3 only",
-            "D": "1, 2 and 3"
+            "D": "1, 2 and"
+          },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
           },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-DELHI",
-          "nodeId": "GS1-HIS-MED-DELHI",
-          "syllabusNodeId": "GS1-HIS-MED-DELHI",
-          "microTheme": "Delhi Sultanate Administration and Politics",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2016_Q11",
@@ -1031,17 +1283,23 @@
             "C": "Weavers",
             "D": "Traders"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-economy-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2016_Q12",
@@ -1055,17 +1313,23 @@
             "C": "Waterwheel used in the irrigation of land",
             "D": "Wasteland and converted to cultivated land"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-economy-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2016_Q13",
@@ -1076,20 +1340,26 @@
           "options": {
             "A": "1 only",
             "B": "2 only",
-            "C": "Both 1 and 2",
-            "D": "Neither 1 nor 2"
+            "C": "Both 1 and",
+            "D": "Neither 1 nor"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-VIJAYANAGARA",
-          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "microTheme": "Vijayanagara Administration and Society",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-economy-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2015_Q14",
@@ -1101,19 +1371,25 @@
             "A": "1 and 2 only",
             "B": "2 and 3 only",
             "C": "3 only",
-            "D": "1, 2 and 3"
+            "D": "1, 2 and"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-EMPIRE",
-          "nodeId": "GS1-HIS-MED-EMPIRE",
-          "syllabusNodeId": "GS1-HIS-MED-EMPIRE",
-          "microTheme": "Early Medieval Polity and Feudal Structures",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-economy-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2015_Q15",
@@ -1122,22 +1398,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "Consider the following pairs: Medieval Indian State: Present Region 1. Champaka: Central India 2. Durgara: Jammu 3. Kuluta: Malabar Which of the above pairs is/are correctly matched?",
           "options": {
-            "A": "1 and 2",
+            "A": "1 and",
             "B": "2 only",
-            "C": "1 and 3",
+            "C": "1 and",
             "D": "3 only"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-politics-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2015_Q16",
@@ -1149,19 +1431,25 @@
             "A": "1 and 2 only",
             "B": "3 only",
             "C": "1 and 3 only",
-            "D": "1,2 and 3"
+            "D": "1,2 and"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2015_Q17",
@@ -1175,17 +1463,23 @@
             "C": "Harihara I",
             "D": "Prataparudra II"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
+          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
+          "microTheme": "vijayanagara-polity-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2014_Q18",
@@ -1199,17 +1493,23 @@
             "C": "Specialists in Vedic rituals",
             "D": "Chiefs of craft guilds"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-EMPIRE",
-          "nodeId": "GS1-HIS-MED-EMPIRE",
-          "syllabusNodeId": "GS1-HIS-MED-EMPIRE",
-          "microTheme": "Early Medieval Polity and Feudal Structures",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-economy-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2010_Q19",
@@ -1218,22 +1518,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "What was the immediate reason for Ahmad Shah Abdali to invade India and fight the Third Battle of Panipat?",
           "options": {
-            "A": "He wanted to avenge the expulsion by Marathas of his viceroy Timur Shah from Lahore",
-            "B": "The frustrated governor of Jullundhar Adina Beg Khan invited him to invade Punjab. 46",
-            "C": "He wanted to punish Mughal administration for non-payment of the revenues of the Chahar Mahal (Gujarat, Aurangabad, Sialkot and Pasrur)",
-            "D": "He wanted to annex all the fertile plains of Punjab up to the borders of Delhi to his kingdom"
+            "A": "He wanted to avenge the expulsion by Marathas of his viceroy Timur Shah from Lahore.",
+            "B": "The frustrated governor of Jullundhar Adina Beg Khan invited him to invade Punjab.",
+            "C": "He wanted to punish Mughal administration for non-payment of the revenues of the Chahar Mahal (Gujarat, Aurangabad, Sialkot and Pasrur).",
+            "D": "He wanted to annex all the fertile plains of Punjab up to the borders of Delhi to his kingdom."
+          },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
           },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-18C",
-          "nodeId": "GS1-HIS-MED-18C",
-          "syllabusNodeId": "GS1-HIS-MED-18C",
-          "microTheme": "18th Century India and Successor States",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2006_Q20",
@@ -1242,22 +1548,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "Assertion (A): Muhammad bin Tughlaq issued a new gold coin which was called Dinar by Ibn Batutah. Reason (R): Muhammad bin Tughlaq wanted to issue token currency in gold coins to Promote trade with West Asian and North African countries.",
           "options": {
-            "A": "Both A and R are individually true and R is the correct explanation of A",
-            "B": "Both A and R are individually true but R is not the correct explanation of A",
+            "A": "Both A and R are individually true and R is the correct explanation of A.",
+            "B": "Both A and R are individually true but R is not the correct explanation of A.",
             "C": "A is True but R is false",
             "D": "A is false but R is true"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-DELHI",
-          "nodeId": "GS1-HIS-MED-DELHI",
-          "syllabusNodeId": "GS1-HIS-MED-DELHI",
-          "microTheme": "Delhi Sultanate Administration and Politics",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2006_Q21",
@@ -1271,17 +1583,23 @@
             "C": "Bahlol Khan Lodi, Sikandar Shah, Ibrahim Lodi",
             "D": "Bahlol Khan Lodi, Ibrahim Lodi, Sikandar Shah"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2006_Q22",
@@ -1295,17 +1613,23 @@
             "C": "Dhruva",
             "D": "Krishna"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-EMPIRE",
-          "nodeId": "GS1-HIS-MED-EMPIRE",
-          "syllabusNodeId": "GS1-HIS-MED-EMPIRE",
-          "microTheme": "Early Medieval Polity and Feudal Structures",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-politics-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2006_Q23",
@@ -1319,17 +1643,23 @@
             "C": "Ranga II",
             "D": "Venkata II"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-VIJAYANAGARA",
-          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "microTheme": "Vijayanagara Administration and Society",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-18C",
+          "syllabusNodeId": "GS1-HIS-MED-18C",
+          "microTheme": "eighteenth-century-successor-states",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2004_Q24",
@@ -1343,17 +1673,23 @@
             "C": "Nasir ud din Mahmud",
             "D": "Nasrat Shah"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-DELHI",
-          "nodeId": "GS1-HIS-MED-DELHI",
-          "syllabusNodeId": "GS1-HIS-MED-DELHI",
-          "microTheme": "Delhi Sultanate Administration and Politics",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2004_Q25",
@@ -1362,22 +1698,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "How did the dynasty of Nizam Shahis of Ahmadnagar come to an end?",
           "options": {
-            "A": "Ahmadnagar was annexed into the Mughal empire and Husain Shah was consigned to life imprisonment",
-            "B": "Mughal troops destroyed Daulatabad fort and killed Nizam ul Mulk of Ahmadnagar",
-            "C": "Fateh Khan usurped the throne from Nizam ul Mulk",
-            "D": "Malik Ambar was defeated in a battle with Mughals in 1631 and the entire royal family was killed by the Mughal troops"
+            "A": "Ahmadnagar was annexed into the Mughal empire and Husain Shah was consigned to life imprisonment.",
+            "B": "Mughal troops destroyed Daulatabad fort and killed Nizam ul Mulk of Ahmadnagar.",
+            "C": "Fateh Khan usurped the throne from Nizam ul Mulk.",
+            "D": "Malik Ambar was defeated in a battle with Mughals in 1631 and the entire royal family was killed by the Mughal troops."
+          },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
           },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2004_Q26",
@@ -1386,22 +1728,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "Consider the following statements: 1. In the Third Battle of Panipat, Ahmed Shah Abdali defeated Ibrahim Lodi. 2. Tipu Sultan was killed in the Third Anglo Mysore War. 3. Mir Jafar entered into a conspiracy with the English for the defeat of Nawab Siraj-ud-daulah in the Battle of Plassey. Which of the statements given above is/are correct?",
           "options": {
-            "A": "1, 2 and 3",
+            "A": "1, 2 and",
             "B": "3 only",
-            "C": "2 and 3",
+            "C": "2 and",
             "D": "None"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-18C",
-          "nodeId": "GS1-HIS-MED-18C",
-          "syllabusNodeId": "GS1-HIS-MED-18C",
-          "microTheme": "18th Century India and Successor States",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2004_Q27",
@@ -1410,22 +1758,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "Consider the following statements: 1. Narasimha Saluva ended the Sangama dynasty and seized the throne for himself and started the Saluva dynasty. 2. Vira Narasi mha deposed the last Saluva ruler and seized the throne for himself. 3. Vira Narasimha was succeeded by his younger brother, Krishnadeva Raya. 4. Krishnadeva Raya was succeeded by his half - brother, Achyuta Raya. Which of the statements given above are correct?",
           "options": {
-            "A": "1, 2 and 3",
-            "B": "2, 3 and 4",
-            "C": "1 and 4",
-            "D": "1, 2, 3, and 4"
+            "A": "1, 2 and",
+            "B": "2, 3 and",
+            "C": "1 and",
+            "D": "1, 2, 3, and"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-VIJAYANAGARA",
-          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "microTheme": "Vijayanagara Administration and Society",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
+          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
+          "microTheme": "vijayanagara-polity-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2003_Q28",
@@ -1439,17 +1793,23 @@
             "C": "A is true but R is false",
             "D": "A is false but R is true"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-VIJAYANAGARA",
-          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "microTheme": "Vijayanagara Administration and Society",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-politics-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2003_Q29",
@@ -1461,19 +1821,25 @@
             "A": "An uncle of Ibrahim Lodi and a pretender to the throne of Delhi",
             "B": "A cousin of Ibrahim Lodi who was ill treated and expelled form the country",
             "C": "The father of Dilawar Khan to whom cruel treatment was meted out by Ibrahim Lodi",
-            "D": "A high official in Punjab province who was very much discontented with Ibrahim Lodi's treatment to his tribe"
+            "D": "A high official in Punjab province who was very much discontented with Ibrahim Lodi's treatment to his tribe."
+          },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
           },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2003_Q30",
@@ -1487,17 +1853,23 @@
             "C": "Aurangzeb and Dara Shikoh",
             "D": "Ahmad Shah Durrani and the Marathas"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2003_Q31",
@@ -1511,17 +1883,23 @@
             "C": "He was defeated by his nephew in a battle",
             "D": "He died of sickness due to too much consumption of wine"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2003_Q32",
@@ -1535,17 +1913,23 @@
             "C": "A is true but R is false",
             "D": "A is false but R is true"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2003_Q33",
@@ -1559,17 +1943,23 @@
             "C": "A is true but R is false",
             "D": "A is false but R is true"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-politics-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2003_Q34",
@@ -1583,17 +1973,23 @@
             "C": "He sustained injuries while besieging the fortress of Kalinjar in Bundelkhand and succumbed to death later",
             "D": "He died after a fall from his horse while playing Chaugan"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-DELHI",
-          "nodeId": "GS1-HIS-MED-DELHI",
-          "syllabusNodeId": "GS1-HIS-MED-DELHI",
-          "microTheme": "Delhi Sultanate Administration and Politics",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-ART",
+          "syllabusNodeId": "GS1-HIS-MED-ART",
+          "microTheme": "medieval-art-architecture-literature",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2002_Q35",
@@ -1607,17 +2003,23 @@
             "C": "Muhammad bin Tughlaq was succeeded by his uncle to the Delhi throne",
             "D": "Firuz Tughlaq set up a separate department of slaves"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2002_Q36",
@@ -1631,17 +2033,23 @@
             "C": "Fix the Mughal frontier on the scientific line, the Amu Daria",
             "D": "Expand the Mughal Empire beyond the subcontinent"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2002_Q37",
@@ -1655,17 +2063,23 @@
             "C": "A is true but R is false",
             "D": "A is false but R is true"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-DELHI",
-          "nodeId": "GS1-HIS-MED-DELHI",
-          "syllabusNodeId": "GS1-HIS-MED-DELHI",
-          "microTheme": "Delhi Sultanate Administration and Politics",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2001_Q38",
@@ -1679,17 +2093,23 @@
             "C": "A is true, but R is false",
             "D": "A is false, but R is true"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-18C",
-          "nodeId": "GS1-HIS-MED-18C",
-          "syllabusNodeId": "GS1-HIS-MED-18C",
-          "microTheme": "18th Century India and Successor States",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2001_Q39",
@@ -1703,17 +2123,23 @@
             "C": "Shah Jahan",
             "D": "Aurangzeb"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2001_Q40",
@@ -1727,17 +2153,23 @@
             "C": "Iltutmish",
             "D": "Muhammad bin Tughlaq"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2001_Q41",
@@ -1751,17 +2183,23 @@
             "C": "Cambay",
             "D": "Surat"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2001_Q42",
@@ -1775,17 +2213,23 @@
             "C": "Dewan-i-Kohi - Alauddin Khilji",
             "D": "Dewan-i-Arz - Muhammad Tughlaq"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2000_Q43",
@@ -1799,17 +2243,23 @@
             "C": "Parthians",
             "D": "Mughals"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Legacy Institutions and Political Forms",
-          "confidenceBand": "low",
-          "reviewRequired": true,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2000_Q44",
@@ -1823,17 +2273,23 @@
             "C": "Aurangzeb at the time of capture of Hyderabad",
             "D": "Aurangzeb at the time of his death in 1707"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2000_Q45",
@@ -1847,17 +2303,23 @@
             "C": "IV, II, I, III",
             "D": "IV, II, III, I The correct chronological sequence of these events is :"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-VIJAYANAGARA",
-          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "microTheme": "Vijayanagara Administration and Society",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-EURO",
+          "syllabusNodeId": "GS1-HIS-MED-EURO",
+          "microTheme": "european-trading-companies",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2000_Q46",
@@ -1871,17 +2333,23 @@
             "C": "I-B, II-C, III-A, IV-D",
             "D": "I-C, II-B, III-D, IV-A"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-VIJAYANAGARA",
-          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "microTheme": "Vijayanagara Administration and Society",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
+          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
+          "microTheme": "vijayanagara-polity-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_2000_Q47",
@@ -1895,17 +2363,23 @@
             "C": "Ibrahim Adil Shah",
             "D": "Mahmud II"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-politics-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1999_Q48",
@@ -1919,17 +2393,23 @@
             "C": "Ibrahim Lodi, Jaunpur",
             "D": "Ibrahim Lodi, Aligarh"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-DELHI",
-          "nodeId": "GS1-HIS-MED-DELHI",
-          "syllabusNodeId": "GS1-HIS-MED-DELHI",
-          "microTheme": "Delhi Sultanate Administration and Politics",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1999_Q49",
@@ -1943,17 +2423,23 @@
             "C": "A is true, but R is false",
             "D": "A is false, but R is true"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1998_Q50",
@@ -1967,17 +2453,23 @@
             "C": "A is true, but R is false",
             "D": "A is false, but R is true"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-DELHI",
-          "nodeId": "GS1-HIS-MED-DELHI",
-          "syllabusNodeId": "GS1-HIS-MED-DELHI",
-          "microTheme": "Delhi Sultanate Administration and Politics",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1998_Q51",
@@ -1986,22 +2478,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "Assertion (A): During the reign of Shahjahan, Dara Sikoh was sent on expedition to Balkha, Badakh-shan and Qandahar. Reason (R): The expedition sent by Shahjahan to the Middle East was a marvellous success.",
           "options": {
-            "A": "Both A and R are true, and R is the correct explanation of A",
+            "A": "Both A an d R are true, and R is the correct explanation of A",
             "B": "Both A and R are true, but R is NOT a correct explanation of A",
             "C": "A is true, but R is false",
             "D": "A is false, but R is true"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-politics-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1998_Q52",
@@ -2015,17 +2513,23 @@
             "C": "II and III are correct",
             "D": "I and IV are correct"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-politics-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1998_Q53",
@@ -2039,17 +2543,23 @@
             "C": "I-E, II-B, III-A, IV-D",
             "D": "I-A, II-E, III-C, IV-B"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1998_Q54",
@@ -2063,17 +2573,23 @@
             "C": "Akbar in 1605: (A) Gondwana (B) Multan",
             "D": "Akbar in 1605: (A) Gondwana (B) Lahore"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1998_Q55",
@@ -2087,17 +2603,23 @@
             "C": "Pandit Rao",
             "D": "Sumant"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-VIJAYANAGARA",
-          "nodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "syllabusNodeId": "GS1-HIS-MED-VIJAYANAGARA",
-          "microTheme": "Vijayanagara Administration and Society",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-politics-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1998_Q56",
@@ -2111,17 +2633,23 @@
             "C": "Communication",
             "D": "Strategic stronghold"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1998_Q57",
@@ -2135,17 +2663,23 @@
             "C": "Excess amount paid to the exchequer by the iqtadars",
             "D": "Illegal exactions extracted from the peasants"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-DELHI",
-          "nodeId": "GS1-HIS-MED-DELHI",
-          "syllabusNodeId": "GS1-HIS-MED-DELHI",
-          "microTheme": "Delhi Sultanate Administration and Politics",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1998_Q58",
@@ -2159,17 +2693,23 @@
             "C": "Feroz Shah Tughlaq",
             "D": "Sikandar Lodi"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1997_Q59",
@@ -2183,17 +2723,23 @@
             "C": "Zil-i-Ilahi",
             "D": "Din-i-Ilahi"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-DELHI",
-          "nodeId": "GS1-HIS-MED-DELHI",
-          "syllabusNodeId": "GS1-HIS-MED-DELHI",
-          "microTheme": "Delhi Sultanate Administration and Politics",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1997_Q60",
@@ -2207,17 +2753,23 @@
             "C": "Mir Saman",
             "D": "Bakshi"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1996_Q61",
@@ -2231,17 +2783,23 @@
             "C": "A cess levied by the Mughal rulers",
             "D": "A manual of code of conduct for the Ulemas"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1996_Q62",
@@ -2255,17 +2813,23 @@
             "C": "Ensuring religious harmony",
             "D": "Effecting clean administration"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-MUGHAL",
-          "nodeId": "GS1-HIS-MED-MUGHAL",
-          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
-          "microTheme": "Mughal Administration and Expansion",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-economy-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1995_Q63",
@@ -2279,17 +2843,23 @@
             "C": "I, II and IV",
             "D": "I and IV"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-politics-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1995_Q64",
@@ -2303,17 +2873,23 @@
             "C": "In the Vijayanagar Administration",
             "D": "In the Maratha Administration"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-18C",
+          "syllabusNodeId": "GS1-HIS-MED-18C",
+          "microTheme": "eighteenth-century-successor-states",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_POL_1995_Q65",
@@ -2327,17 +2903,23 @@
             "C": "Rajendra Chola",
             "D": "Malik Kafur"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-REGIONAL",
-          "nodeId": "GS1-HIS-MED-REGIONAL",
-          "syllabusNodeId": "GS1-HIS-MED-REGIONAL",
-          "microTheme": "Regional Kingdoms and Medieval Society",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Politics and Society",
-          "source": "UPSC PYQ"
+          "topicId": "politics_and_society",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SOCIETY",
+          "syllabusNodeId": "GS1-HIS-MED-SOCIETY",
+          "microTheme": "medieval-politics-society",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         }
       ]
     }
@@ -2349,8 +2931,10 @@
       "subject": "History",
       "module": "Medieval Indian History",
       "topicName": "Religion and Philosophy",
+      "topicId": "religion_philosophy",
       "sourceType": "UPSC_Prelims_PYQ",
       "sectionId": "GS1-HIS-MED",
+      "totalQuestions": 12,
       "questions": [
         {
           "id": "HIS_MED_REL_2019_Q1",
@@ -2361,20 +2945,26 @@
           "options": {
             "A": "1 only",
             "B": "2 only",
-            "C": "Both 1 and 2",
-            "D": "Neither 1 nor 2"
+            "C": "Both 1 and",
+            "D": "Neither 1 nor"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-BHAKTI",
-          "nodeId": "GS1-HIS-MED-BHAKTI",
-          "syllabusNodeId": "GS1-HIS-MED-BHAKTI",
-          "microTheme": "Bhakti Saints and Movements",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Religion and Philosophy",
-          "source": "UPSC PYQ"
+          "topicId": "religion_philosophy",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_REL_2016_Q2",
@@ -2385,20 +2975,26 @@
           "options": {
             "A": "1 only",
             "B": "2 only",
-            "C": "Both 1 and 2",
-            "D": "Neither 1 nor 2"
+            "C": "Both 1 and",
+            "D": "Neither 1 nor"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-BHAKTI",
-          "nodeId": "GS1-HIS-MED-BHAKTI",
-          "syllabusNodeId": "GS1-HIS-MED-BHAKTI",
-          "microTheme": "Bhakti Saints and Movements",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Religion and Philosophy",
-          "source": "UPSC PYQ"
+          "topicId": "religion_philosophy",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-DELHI",
+          "syllabusNodeId": "GS1-HIS-MED-DELHI",
+          "microTheme": "delhi-sultanate-polity",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_REL_2013_Q3",
@@ -2407,22 +3003,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "Consider the following Bhakti saints: 1. Dadu Dayal 2. Guru Nanak 3. Tyagaraja Who among the above was/were preaching when the Lodi dynasty fell and Babur took over?",
           "options": {
-            "A": "1 and 3",
+            "A": "1 and",
             "B": "2 only",
-            "C": "2 and 3",
-            "D": "1 and 2"
+            "C": "2 and",
+            "D": "1 and"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-BHAKTI",
-          "nodeId": "GS1-HIS-MED-BHAKTI",
-          "syllabusNodeId": "GS1-HIS-MED-BHAKTI",
-          "microTheme": "Bhakti Saints and Movements",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Religion and Philosophy",
-          "source": "UPSC PYQ"
+          "topicId": "religion_philosophy",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_REL_2012_Q4",
@@ -2434,19 +3036,25 @@
             "A": "1 & 2 Only",
             "B": "2 & 3 Only",
             "C": "3 Only",
-            "D": "1,2 & 3"
+            "D": "1,2 &"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-SUFI",
-          "nodeId": "GS1-HIS-MED-SUFI",
-          "syllabusNodeId": "GS1-HIS-MED-SUFI",
-          "microTheme": "Sufi Orders and Practices",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Religion and Philosophy",
-          "source": "UPSC PYQ"
+          "topicId": "religion_philosophy",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SUFI",
+          "syllabusNodeId": "GS1-HIS-MED-SUFI",
+          "microTheme": "sufi-orders-practices",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_REL_2010_Q5",
@@ -2458,19 +3066,25 @@
             "A": "1 only",
             "B": "1 and 3 only",
             "C": "2 and 3 only",
-            "D": "1, 2 and 3"
+            "D": "1, 2 and"
+          },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
           },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-EMPIRE",
-          "nodeId": "GS1-HIS-MED-EMPIRE",
-          "syllabusNodeId": "GS1-HIS-MED-EMPIRE",
-          "microTheme": "Religious Change in Early Medieval India",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Religion and Philosophy",
-          "source": "UPSC PYQ"
+          "topicId": "religion_philosophy",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-REL",
+          "syllabusNodeId": "GS1-HIS-MED-REL",
+          "microTheme": "religion-philosophy",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_REL_2010_Q6",
@@ -2484,17 +3098,23 @@
             "C": "Tyagraja",
             "D": "Vallabhacharya"
           },
+          "answer": {
+            "correct_option": "A",
+            "status": "ok"
+          },
           "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-BHAKTI",
-          "nodeId": "GS1-HIS-MED-BHAKTI",
-          "syllabusNodeId": "GS1-HIS-MED-BHAKTI",
-          "microTheme": "Bhakti Saints and Movements",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Religion and Philosophy",
-          "source": "UPSC PYQ"
+          "topicId": "religion_philosophy",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-BHAKTI",
+          "syllabusNodeId": "GS1-HIS-MED-BHAKTI",
+          "microTheme": "bhakti-saints-movement",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_REL_2006_Q7",
@@ -2508,17 +3128,23 @@
             "C": "Jahangir",
             "D": "Aurangzeb"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-BHAKTI",
-          "nodeId": "GS1-HIS-MED-BHAKTI",
-          "syllabusNodeId": "GS1-HIS-MED-BHAKTI",
-          "microTheme": "Bhakti Saints and Movements",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Religion and Philosophy",
-          "source": "UPSC PYQ"
+          "topicId": "religion_philosophy",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_REL_2004_Q8",
@@ -2528,21 +3154,27 @@
           "question": "Consider the following statements about Sikh Gurus: 1. Banda Bahadur was appointed as the military leader of the Sikhs by Guru Tegh Bahadur. 2. Guru Arjan Dev became the Sikh Guru after Guru Ram Das. 3. Guru Arjan Dev gave to Sikhs their own script Gurumukhi. Which one of the statements given above is/are correct?",
           "options": {
             "A": "1 only",
-            "B": "2 and 3",
-            "C": "1 and 3",
-            "D": "1 and 2"
+            "B": "2 and",
+            "C": "1 and",
+            "D": "1 and"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-EMPIRE",
-          "nodeId": "GS1-HIS-MED-EMPIRE",
-          "syllabusNodeId": "GS1-HIS-MED-EMPIRE",
-          "microTheme": "Religious Change in Early Medieval India",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Religion and Philosophy",
-          "source": "UPSC PYQ"
+          "topicId": "religion_philosophy",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-REL",
+          "syllabusNodeId": "GS1-HIS-MED-REL",
+          "microTheme": "religion-philosophy",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_REL_2002_Q9",
@@ -2551,22 +3183,28 @@
           "questionType": "MCQ_SINGLE",
           "question": "With reference to Sufism in Indian history, consider the following statements: 1. Shaikh Ahmad Sarhandi was a contemporary of Ibrahim Lodi 2. Shiakh Nasiruddin Chirag i Dehlavi was a disciple of Shaikh Nizamuddin Auliya 3. Aurangzeb was contemporary of Shaikh Salim Chisti 4. The Qadiri order of Sufis was first introduced in India by Shaikh Niamtullah and Makhdum Muhammad Jilani Which of these statements are correct?",
           "options": {
-            "A": "1 and 2",
-            "B": "1 and 3",
-            "C": "2 and 3",
-            "D": "2 and 4"
+            "A": "1 and",
+            "B": "1 and",
+            "C": "2 and",
+            "D": "2 and"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-SUFI",
-          "nodeId": "GS1-HIS-MED-SUFI",
-          "syllabusNodeId": "GS1-HIS-MED-SUFI",
-          "microTheme": "Sufi Orders and Practices",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "D",
+            "status": "ok"
+          },
+          "correctAnswer": "D",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Religion and Philosophy",
-          "source": "UPSC PYQ"
+          "topicId": "religion_philosophy",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-MUGHAL",
+          "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+          "microTheme": "mughal-administration-culture",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_REL_2002_Q10",
@@ -2580,17 +3218,23 @@
             "C": "Ramananda",
             "D": "Tulsidas"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-BHAKTI",
-          "nodeId": "GS1-HIS-MED-BHAKTI",
-          "syllabusNodeId": "GS1-HIS-MED-BHAKTI",
-          "microTheme": "Bhakti Saints and Movements",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Religion and Philosophy",
-          "source": "UPSC PYQ"
+          "topicId": "religion_philosophy",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-BHAKTI",
+          "syllabusNodeId": "GS1-HIS-MED-BHAKTI",
+          "microTheme": "bhakti-saints-movement",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_REL_1997_Q11",
@@ -2604,17 +3248,23 @@
             "C": "A is true, but R is false",
             "D": "A is false, but R is true"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-SUFI",
-          "nodeId": "GS1-HIS-MED-SUFI",
-          "syllabusNodeId": "GS1-HIS-MED-SUFI",
-          "microTheme": "Sufi Orders and Practices",
-          "confidenceBand": "high",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "C",
+            "status": "ok"
+          },
+          "correctAnswer": "C",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Religion and Philosophy",
-          "source": "UPSC PYQ"
+          "topicId": "religion_philosophy",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-SUFI",
+          "syllabusNodeId": "GS1-HIS-MED-SUFI",
+          "microTheme": "sufi-orders-practices",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         },
         {
           "id": "HIS_MED_REL_1996_Q12",
@@ -2628,17 +3278,23 @@
             "C": "Guru Ram Das - Dal Khalsa",
             "D": "Guru Gobind Singh - Manji"
           },
-          "correctAnswer": "A",
-          "sectionId": "GS1-HIS-MED",
-          "topicId": "GS1-HIS-MED-EMPIRE",
-          "nodeId": "GS1-HIS-MED-EMPIRE",
-          "syllabusNodeId": "GS1-HIS-MED-EMPIRE",
-          "microTheme": "Religious Change in Early Medieval India",
-          "confidenceBand": "medium",
-          "reviewRequired": false,
+          "answer": {
+            "correct_option": "B",
+            "status": "ok"
+          },
+          "correctAnswer": "B",
+          "subject": "History",
           "module": "Medieval Indian History",
           "topicName": "Religion and Philosophy",
-          "source": "UPSC PYQ"
+          "topicId": "religion_philosophy",
+          "sectionId": "GS1-HIS-MED",
+          "nodeId": "GS1-HIS-MED-REL",
+          "syllabusNodeId": "GS1-HIS-MED-REL",
+          "microTheme": "religion-philosophy",
+          "confidenceBand": "high",
+          "reviewRequired": false,
+          "sourceType": "UPSC_Prelims_PYQ",
+          "source": "DOCX source truth rebuild"
         }
       ]
     }

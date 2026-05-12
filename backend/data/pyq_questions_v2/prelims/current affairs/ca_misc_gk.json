@@ -1,0 +1,2835 @@
+{
+  "schemaVersion": "mentoros-ca-air1-v1",
+  "subject": "Current Affairs + GK",
+  "mode": "Option B",
+  "productionStatus": "AIR1_FINAL",
+  "topicName": "Misc GK",
+  "topicId": "ca_misc_gk",
+  "totalQuestions": 94,
+  "questions": [
+    {
+      "id": "CA_MISC_GK_2025_Q1",
+      "questionNumber": 1,
+      "year": 2025,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: [2025] I. International Year of the Woman Farmer : 2026 II. International Year of Sustainable and Resilient Tourism : 2027 III. International Year of Peace and Trust : 2025 IV. International Year of Asteroid Awareness and Planetary Defence : 2029 How many of the pairs given above are correctly matched?",
+      "options": {
+        "A": "Only one",
+        "B": "Only two",
+        "C": "Only three",
+        "D": "All the four"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "defence-technology",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part1 / Q3"
+    },
+    {
+      "id": "CA_MISC_GK_2021_Q2",
+      "questionNumber": 2,
+      "year": 2021,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements in respect of the ICC World Test Championship: [2021] 1) The finalists were decided by the number of matches they won. 2) New Zealand was ranked ahead of England because it won more matches than England. Which of the above statements is/are correct?",
+      "options": {
+        "A": "1only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "sports-events",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part1 / Q31"
+    },
+    {
+      "id": "CA_MISC_GK_2016_Q3",
+      "questionNumber": 3,
+      "year": 2016,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "'Net metering' is sometimes seen in the news in the context of promoting the: [2016]",
+      "options": {
+        "A": "Production and use of solar energy by the households/consumers",
+        "B": "Use of piped natural gas in the kitchens of households",
+        "C": "Installation of CNG kits in motor-cars",
+        "D": "Installation of water meters in urban households"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part1 / Q41"
+    },
+    {
+      "id": "CA_MISC_GK_2016_Q4",
+      "questionNumber": 4,
+      "year": 2016,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "On which of the following can you find the Bureau of Energy Efficiency Star Label? [2016] 1. Ceiling fans 2. Electric geysers 3. Tubular fluorescent lamps Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part1 / Q45"
+    },
+    {
+      "id": "CA_MISC_GK_2016_Q5",
+      "questionNumber": 5,
+      "year": 2016,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: [2016] Community sometimes mentioned in the news: In the affairs of 1. Kurd: Bangladesh 2. Madhesi: Nepal 3. Rohingya: Myanmar Which of the pairs given above is/are correctly matched?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 only",
+        "C": "2 and 3",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part1 / Q49"
+    },
+    {
+      "id": "CA_MISC_GK_2016_Q6",
+      "questionNumber": 6,
+      "year": 2016,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "A recent movie titled The Man Who Knew Infinity is based on the biography of: [2016]",
+      "options": {
+        "A": "S. Ramanujan",
+        "B": "S. Chandrasekhar",
+        "C": "S. N. Bose",
+        "D": "C. V. Raman"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part1 / Q50"
+    },
+    {
+      "id": "CA_MISC_GK_2015_Q7",
+      "questionNumber": 7,
+      "year": 2015,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Among the following which were frequently mentioned in the news for the outbreak of Ebola virus recently? [2015]",
+      "options": {
+        "A": "Syria and Jordan",
+        "B": "Guinea, Sierra Leone and Liberia",
+        "C": "Philippines and Papua New Guinea",
+        "D": "Jamaica, Haiti and Surinam"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part1 / Q56"
+    },
+    {
+      "id": "CA_MISC_GK_2014_Q8",
+      "questionNumber": 8,
+      "year": 2014,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Recently, a series of uprisings of people referred to as 'Arab Spring' originally started from: [2014]",
+      "options": {
+        "A": "Egypt",
+        "B": "Lebanon",
+        "C": "Syria",
+        "D": "Tunisia"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part1 / Q60"
+    },
+    {
+      "id": "CA_MISC_GK_2009_Q9",
+      "questionNumber": 9,
+      "year": 2009,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "When Leander Paes won the \"mixed doubles\" at the U.S. Open in the year 2008, who of the following was his partner? [2009]",
+      "options": {
+        "A": "Ana Ivanovic",
+        "B": "Cara Black",
+        "C": "Dinara Safina",
+        "D": "Jelena Jankovic"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q22"
+    },
+    {
+      "id": "CA_MISC_GK_2009_Q10",
+      "questionNumber": 10,
+      "year": 2009,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following Statements: [2009] 1. V.K Krishna Menon Foundation is based in New Delhi. 2 The first recipient of the V.K Krishna Menon award is the Chief Justice of India, KG Balakrishnan. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "awards-honours",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q23"
+    },
+    {
+      "id": "CA_MISC_GK_2009_Q11",
+      "questionNumber": 11,
+      "year": 2009,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Who of the following is a football player? [2009]",
+      "options": {
+        "A": "Fernando alonso",
+        "B": "Kimi Raikkonen",
+        "C": "Lewis Hamiiton",
+        "D": "Nicolas Anelka"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q24"
+    },
+    {
+      "id": "CA_MISC_GK_2009_Q12",
+      "questionNumber": 12,
+      "year": 2009,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: [2009] 1. The first telegraph line in India was laid between Kolkata (formerly Calcutt",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q26"
+    },
+    {
+      "id": "CA_MISC_GK_2009_Q13",
+      "questionNumber": 13,
+      "year": 2009,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List I and List II and select the correct ANSWER using the code given below the lists: [2009] List I (Person) List II(Organization)",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q34"
+    },
+    {
+      "id": "CA_MISC_GK_2009_Q14",
+      "questionNumber": 14,
+      "year": 2009,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List I and List II and select the correct ANSWER using the code given below the lists: [2009] List I (Famous person) List II (Well-known as)",
+      "options": {
+        "A": "1",
+        "B": "1",
+        "C": "3",
+        "D": "3"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q36"
+    },
+    {
+      "id": "CA_MISC_GK_2009_Q15",
+      "questionNumber": 15,
+      "year": 2009,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following pairs: [2009]",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q38"
+    },
+    {
+      "id": "CA_MISC_GK_2008_Q16",
+      "questionNumber": 16,
+      "year": 2008,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List-I with List-II and select the correct answer using the codes given below the lists: [2008] List-I (Boar",
+      "options": {
+        "A": "2",
+        "B": "1",
+        "C": "2",
+        "D": "1"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q51"
+    },
+    {
+      "id": "CA_MISC_GK_2008_Q17",
+      "questionNumber": 17,
+      "year": 2008,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the correct sequences in respect of the Roman numerals-C,D,L and M? [2008]",
+      "options": {
+        "A": "C > D > L > M",
+        "B": "M < L > D >C",
+        "C": "M > D > C > L",
+        "D": "L > C < D > M"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q52"
+    },
+    {
+      "id": "CA_MISC_GK_2008_Q18",
+      "questionNumber": 18,
+      "year": 2008,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Who among the following wrote the poem, Subh- e Azadi? [2008]",
+      "options": {
+        "A": "Sahir Ludhiyani",
+        "B": "Faiz Ahmed Faiz",
+        "C": "Muhammad Iqbal",
+        "D": "Maulana Abul Kalam Azad"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q57"
+    },
+    {
+      "id": "CA_MISC_GK_2008_Q19",
+      "questionNumber": 19,
+      "year": 2008,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The term \"prisoner's Dilemma\" is associated with which one of the following? [2008]",
+      "options": {
+        "A": "A technique in glass manufacture",
+        "B": "A term used in shipping industry",
+        "C": "A situation under the Game Theory",
+        "D": "Name of a supercomputer"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q60"
+    },
+    {
+      "id": "CA_MISC_GK_2008_Q20",
+      "questionNumber": 20,
+      "year": 2008,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the Agent Orange? [2008]",
+      "options": {
+        "A": "An ace spying group trained by the Police in London",
+        "B": "A Weed-killing chemical used by the US Military in the Vietnam War",
+        "C": "A technique used in the advanced railway safety procedure",
+        "D": "A special chemical used in making alloy steel"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q61"
+    },
+    {
+      "id": "CA_MISC_GK_2008_Q21",
+      "questionNumber": 21,
+      "year": 2008,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List-I with List-II and select the correct answer using the codes given below the lists: [2008] List-I (Person) List-II (Are",
+      "options": {
+        "A": "4",
+        "B": "3",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q63"
+    },
+    {
+      "id": "CA_MISC_GK_2008_Q22",
+      "questionNumber": 22,
+      "year": 2008,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List-I with List-II and select the correct answer using the codes given below the lists: [2008] List-I (Person) List-II (Are",
+      "options": {
+        "A": "Code A",
+        "B": "Code B",
+        "C": "Code C",
+        "D": "Code D"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q68",
+      "matchingNote": "Source DOCX did not preserve code-row text; normalized as Code A-D while preserving answer key."
+    },
+    {
+      "id": "CA_MISC_GK_2008_Q23",
+      "questionNumber": 23,
+      "year": 2008,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: [2008] 1. Ajman is one of the seven Emirates of the UAE. 2. Ras al-khaimah was the last Sheikhdom to join the UAE. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q69"
+    },
+    {
+      "id": "CA_MISC_GK_2008_Q24",
+      "questionNumber": 24,
+      "year": 2008,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "What is Bisphenol A (BPA)? [2008]",
+      "options": {
+        "A": "A Medical test for detecting cancer",
+        "B": "A test for Testing the use of drugs to improve performance by athletes",
+        "C": "A chemical used for the development of food- packaging materials",
+        "D": "a special type of alloy steel"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q76"
+    },
+    {
+      "id": "CA_MISC_GK_2007_Q25",
+      "questionNumber": 25,
+      "year": 2007,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: [2007] 1. The series of the International Paper Sizes is based on A0 size Whose area is 0.5 square meter (approximately). 2. The area of A4 size paper is 1/8th of that of the A0 size paper. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q78"
+    },
+    {
+      "id": "CA_MISC_GK_2007_Q26",
+      "questionNumber": 26,
+      "year": 2007,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Shahgarh area in Jaisalmer district of Rajasthan was in news in the year 2006 because of which one of the following? [2007]",
+      "options": {
+        "A": "Finding high quality gas reserves",
+        "B": "Finding uranium deposits",
+        "C": "Finding Zinc deposits",
+        "D": "Installation of wind power units"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q80"
+    },
+    {
+      "id": "CA_MISC_GK_2007_Q27",
+      "questionNumber": 27,
+      "year": 2007,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following cities has been the venue of the Asian Games for the maximum number of times from the year 1951 to the year 2006? [2007]",
+      "options": {
+        "A": "Delhi",
+        "B": "Bangkok",
+        "C": "Rio de janeiro",
+        "D": "Beijing"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q87"
+    },
+    {
+      "id": "CA_MISC_GK_2007_Q28",
+      "questionNumber": 28,
+      "year": 2007,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Robert Webster is known for his work associated with which one of the following? [2007]",
+      "options": {
+        "A": "Cardiology",
+        "B": "Influenza virus",
+        "C": "HIV/AIDS",
+        "D": "Alzheimer"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q94"
+    },
+    {
+      "id": "CA_MISC_GK_2007_Q29",
+      "questionNumber": 29,
+      "year": 2007,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match Kist-I and Select the correct answer using the code given below the lists: [2007] List-I (Person) List-II (Company) A. Vishwapati Trivedi 1. Essar Group B. Tulsi R. Tanti 2. Info Edge India (nakuri.com) C. Shashi Ruia 3. Indian (Indian Airlines) D. S. Bikhchandani 4. Suzlon Energy A B C D",
+      "options": {
+        "A": "Code A",
+        "B": "Code B",
+        "C": "Code C",
+        "D": "Code D"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part2 / Q96",
+      "matchingNote": "Source DOCX did not preserve code-row text; normalized as Code A-D while preserving answer key."
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q30",
+      "questionNumber": 30,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the new administrative capital proposed for Myanmar? [2006]",
+      "options": {
+        "A": "Bassein",
+        "B": "Mandalay",
+        "C": "Myitkyina",
+        "D": "Pyinmana"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q2"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q31",
+      "questionNumber": 31,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: [2006] 1. Petronet LNG Ltd. Is setting up another LNG terminal at Mangalore. 2. The Head Office of the Dredging Corporation of India is at Visakhapatnam. 3. The Narwapahar Mine is operated by the Uranium Corporation of Indian Limited. Which of the statements given above are correct?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1 and 2, only",
+        "C": "2 and 3, only",
+        "D": "1 and 3, only"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q4"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q32",
+      "questionNumber": 32,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Zayed bin Sultan-al-Nahyan was a long serving President of which of the following? [2006]",
+      "options": {
+        "A": "Oman",
+        "B": "Kuwait",
+        "C": "United Arab Emirates",
+        "D": "Saudi Arabia"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q5"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q33",
+      "questionNumber": 33,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "What was the main reason for which Niger was in the news in recent times? [2006]",
+      "options": {
+        "A": "Many deaths due to AIDS",
+        "B": "Fierce civil war",
+        "C": "Intense fighting with Algeria.",
+        "D": "Famine and starvation"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q6"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q34",
+      "questionNumber": 34,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: [2006] 1. Meningococcal Meningitis is transmitted from person to person by mosquito bites. 2. Vomiting and neck pain are two of the symptoms of Meningococcal meningitis. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2 One of the signs and symptoms of Meningococcal Meningitis indeed are vomiting and neck pain. Other symptoms can include headache, fever, sensitivity to light, and altered mental state."
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q7"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q35",
+      "questionNumber": 35,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following pairs is not correctly matched? [2006]",
+      "options": {
+        "A": "Slovenia: Bratislava",
+        "B": "Seychelles: Victoria",
+        "C": "Sierra Leone: Freetown",
+        "D": "Uzbekistan: Tashkent"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q9"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q36",
+      "questionNumber": 36,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "What is the Universal Product Code (UPC) adopted for? [2006]",
+      "options": {
+        "A": "Fire safely code in buildings",
+        "B": "Earthquake-resistant buildings code",
+        "C": "Bar code",
+        "D": "Against aduiteration eatables"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q13"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q37",
+      "questionNumber": 37,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one among the following was the first to legalize euthanasia? [2006]",
+      "options": {
+        "A": "Austria",
+        "B": "Switzerland",
+        "C": "Netherlands",
+        "D": "Canada"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q15"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q38",
+      "questionNumber": 38,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is not a Central University? [2006]",
+      "options": {
+        "A": "Pondicherry University",
+        "B": "Maulana Azad National Urdu University, Hyderabad",
+        "C": "Visva Bhati, Shanti Niketan",
+        "D": "University of Madras, Chennai"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q16"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q39",
+      "questionNumber": 39,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following companies is associated with the exploration and commercial production of oil in Barmer-Sanchore basin of Rajasthan? [2006]",
+      "options": {
+        "A": "Cairn Energy",
+        "B": "Unocal Corporation",
+        "C": "Reliance Energy Ventures",
+        "D": "ONGC"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q23"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q40",
+      "questionNumber": 40,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Who among the following directed the film chosen as India's official entry for the year 2006 Academy Awards? [2006]",
+      "options": {
+        "A": "Adodor Gopalakrishnan",
+        "B": "Amol Palekar",
+        "C": "Sanjay Leela Bhansali",
+        "D": "Kunal Kohli"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "awards-honours",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q26"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q41",
+      "questionNumber": 41,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List-I with List-II and select the correct answer using the code given below the lists: [2006] List I (Person) List-II (Area of work) A. Ela Bhatt 1. Theatre training B. Mahashweta Devi 2. Womens. labour sector C. Ebrahim Alkazi 3. Management teaching D. Vijay Govindarajan 4. Literrateur and Social Worker for the country's tribal communities A B C D",
+      "options": {
+        "A": "Code A",
+        "B": "Code B",
+        "C": "Code C",
+        "D": "Code D"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "places-in-news",
+      "type": "current_affairs_gk",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q29",
+      "matchingNote": "Source DOCX did not preserve code-row text; normalized as Code A-D while preserving answer key."
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q42",
+      "questionNumber": 42,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Lectures from Colombo to Almora. is based on the experiences of which one of the following? [2006]",
+      "options": {
+        "A": "Veer Savarkar",
+        "B": "Annie Besant",
+        "C": "Ramkrishna Paramhansa",
+        "D": "Swami Vivekanand"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q30"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q43",
+      "questionNumber": 43,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "To which one of the following processes is term CMYK related? [2006]",
+      "options": {
+        "A": "Railway Signalling",
+        "B": "Navigation",
+        "C": "Offset printing",
+        "D": "Electronic voting machine"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q32"
+    },
+    {
+      "id": "CA_MISC_GK_2006_Q44",
+      "questionNumber": 44,
+      "year": 2006,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Bermuda triangle extends up to which of the following places? [2006] 1. Southern Florida 2. Puerto Rico 3. Hawaii Islands Select the correct answer using the code given below:",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1 and 3 only"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q36"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q45",
+      "questionNumber": 45,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following pairs is not correctly matched? British Prime Minister: Political Party [2005]",
+      "options": {
+        "A": "John Major - Conservative Party",
+        "B": "James Callaghan - Labour Party",
+        "C": "Harold Wilson - Conservative Party",
+        "D": "Margaret Thatcher - Conservative Party"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q44"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q46",
+      "questionNumber": 46,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match items in the List -I (Location) with those in the List -II (Known for/in News for) and select the 919866 correct answer using the codes given below the lists: [2005] List-I List-II A. Kakinanda 1. Skybus Metro rail Test-run B. Dundigal Unit 2. ITC paper board C. Margao 3. Bio-diesal plant D. Bhadrachalam 4. Indian Air Force Academy A B C D",
+      "options": {
+        "A": "Code A",
+        "B": "Code B",
+        "C": "Code C",
+        "D": "Code D"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "un-system",
+      "type": "current_affairs_gk",
+      "confidenceBand": "medium",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q45",
+      "matchingNote": "Source DOCX did not preserve code-row text; normalized as Code A-D while preserving answer key."
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q47",
+      "questionNumber": 47,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Where do the Sahariya Tribals, who were recently in the news, live? [2005]",
+      "options": {
+        "A": "Andhra Pradesh",
+        "B": "Assam",
+        "C": "Rajasthan",
+        "D": "Orissa"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q46"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q48",
+      "questionNumber": 48,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following statements is not correct? [2005]",
+      "options": {
+        "A": "There is no definition of the Scheduled Tribe in the Constitution of India.",
+        "B": "North-East India accounts for a little over half of the country's tribal population.",
+        "C": "The people known as Todas live in the Nilgiri area.",
+        "D": "Lotha is a language spoken in Nagaland."
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q47"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q49",
+      "questionNumber": 49,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: [2005] 1. The Parliament of Russia is called Federal Assembly. 2. Council of the Federation in the Russian Parliament is the lower house. 3. The name of the upper house in the Russian Parliament is State Duma. Which of the statements is/are correct?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1 and 2",
+        "C": "2 and 3",
+        "D": "1 only"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q52"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q50",
+      "questionNumber": 50,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: [2005] 1. Great Britain Comprises England, Wales, Scotland and Northern Ireland. 2. England coves less than 60% of the total area of the United Kingdom. Which of the statements is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q53"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q51",
+      "questionNumber": 51,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Where was world's largest ever Meet on HIV/AIDS held in July, 2004? [2005]",
+      "options": {
+        "A": "Bangkok",
+        "B": "Singapore",
+        "C": "New York",
+        "D": "Rome"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q60"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q52",
+      "questionNumber": 52,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which pairs is not correctly matched? Current Name Old Name: [2005]",
+      "options": {
+        "A": "Harare - Salisbury",
+        "B": "Ethiopia - Abyssinia",
+        "C": "Ghana - Dutch Guiana",
+        "D": "Kinshasa - Leopoldville"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q61"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q53",
+      "questionNumber": 53,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which pairs are correctly matched? Enterprises Industrial Group: [2005] 1. VSNL - Bharti Group 2. Mundra Special Economic Ltd. Sone - Adani Group 3. CMC Ltd. - Tata Group 4. IPCL - Reliance Group Select the correct answer:",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "3 and 4",
+        "C": "1, 2 and 4",
+        "D": "2, 3 and 4"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q64"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q54",
+      "questionNumber": 54,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Pneumoconiosis afflicts the workers who works mainly in: [2005]",
+      "options": {
+        "A": "Tanneries",
+        "B": "Coal mining industry",
+        "C": "Distilleries",
+        "D": "Glass industry"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q70"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q55",
+      "questionNumber": 55,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following airports in India is the first to be owned by public limited company? [2005]",
+      "options": {
+        "A": "Dambolin Airport, Goa",
+        "B": "Cochin Airport",
+        "C": "Hyderabad Airport",
+        "D": "Bangalore Airport"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q74"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q56",
+      "questionNumber": 56,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following companies has started a rural marketing network called 'e- chaupals'? [2005]",
+      "options": {
+        "A": "ITC",
+        "B": "Dabur",
+        "C": "Proctor & Gamble",
+        "D": "Hindustan Lever"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q76"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q57",
+      "questionNumber": 57,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following pairs is not correctly matched? [2005]",
+      "options": {
+        "A": "Seikan Rail Tunnel: China",
+        "B": "Petronas Tower: Malaysia",
+        "C": "Apalachian Trail: United States of America",
+        "D": "Rogun Dam: Tajikistan"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q79"
+    },
+    {
+      "id": "CA_MISC_GK_2005_Q58",
+      "questionNumber": 58,
+      "year": 2005,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: [2005] 1. The number of post offices in India is in excess of 1.3 lakhs 2. Bharat Sanchar Nigam Limited (BSNL) was formed in the year 1997. 3. Telecom Regulatory Authority of India (TRAI) was established in the year 2000. Which of the statements is/are correct?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "1 and 2",
+        "C": "1 only",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "books-authors",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q84"
+    },
+    {
+      "id": "CA_MISC_GK_2004_Q59",
+      "questionNumber": 59,
+      "year": 2004,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "What was the reason for 5 lakh people of Hong Kong to make a demonstration around the middle of 2003? [2004]",
+      "options": {
+        "A": "They were demanding tax relief.",
+        "B": "They were against the Hong Kong Government's plan to impose an internal security law.",
+        "C": "They were the members of Falun Gong group who were demanding religious freedom.",
+        "D": "They were demanding more direct elections in Hong Kong."
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q88"
+    },
+    {
+      "id": "CA_MISC_GK_2004_Q60",
+      "questionNumber": 60,
+      "year": 2004,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: [2004] 1. Hema Malini is the Chairperson of the Children's Film Society, India. 2. Yash Chopra is the Chairman of the Central Board of Film Certification of India. 3. Dilip Kumar, Raj Kapoor and Dev Anand have all been recipients of Dada Saheb Phalke Award. Which of the statements given above is/ are correct?",
+      "options": {
+        "A": "1 and 3",
+        "B": "2 and 3",
+        "C": "2 only",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "awards-honours",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q93"
+    },
+    {
+      "id": "CA_MISC_GK_2004_Q61",
+      "questionNumber": 61,
+      "year": 2004,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: [2004] 1. The Islamic Calendar is twelve days shorter than the Gregorian Calendar. 2. The Islamic Calendar began in AD 632. 3. The Gregorian Calendar is a solar calendar. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2",
+        "C": "1 and 3",
+        "D": "3 only"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q95"
+    },
+    {
+      "id": "CA_MISC_GK_2004_Q62",
+      "questionNumber": 62,
+      "year": 2004,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "World's longest ruling head of government is from: [2004]",
+      "options": {
+        "A": "Switzerland",
+        "B": "Cuba",
+        "C": "Zimbabwe",
+        "D": "New Zealand"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q96"
+    },
+    {
+      "id": "CA_MISC_GK_2004_Q63",
+      "questionNumber": 63,
+      "year": 2004,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Liberia was in the international news in the recent times for: [2004]",
+      "options": {
+        "A": "Harbouring terrorists associated with religious fundamentalism",
+        "B": "Supplying raw uranium to North Korea",
+        "C": "Its long-running civil war killing or displacing thousands of people",
+        "D": "Cultivation of drug-yielding crops and smuggling of drugs"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q97"
+    },
+    {
+      "id": "CA_MISC_GK_2004_Q64",
+      "questionNumber": 64,
+      "year": 2004,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The reason for Chechnya to be in the news recently is: [2004]",
+      "options": {
+        "A": "Both A and R are true, and R is the correct explanation of A",
+        "B": "Both A and R are true, but R is not a correct explanation of A",
+        "C": "A is true, but R is false",
+        "D": "A is false, but R is true"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part3 / Q99"
+    },
+    {
+      "id": "CA_MISC_GK_2000_Q65",
+      "questionNumber": 65,
+      "year": 2000,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The following news item appeared in a National daily dated 1-12-1999: \"...Parliament today rejected a Bill to grant women the right to vote and stand for office in parliamentary elections, by a margin of 32 to 30. The National Assembly was split between liberal, pro-government and Shiite Muslim deputies who were in favour of women's rights, while the opposition camp grouped Sunni Muslim fundamentalists and tribal MPs… A total of 64 MPs and Ministers were present, of whom two abstained.\" [2000] The Parliament referred to in this quotation is that of",
+      "options": {
+        "A": "Kuwait",
+        "B": "Iran",
+        "C": "Bahrain",
+        "D": "Saudi Arabia"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q9"
+    },
+    {
+      "id": "CA_MISC_GK_1999_Q66",
+      "questionNumber": 66,
+      "year": 1999,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "A person of mixed European and Indian blood in Latin America is called a: [1999]",
+      "options": {
+        "A": "Mulatto",
+        "B": "Mestizo",
+        "C": "Meiji",
+        "D": "Mau Mau"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q5"
+    },
+    {
+      "id": "CA_MISC_GK_1999_Q67",
+      "questionNumber": 67,
+      "year": 1999,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: [1999] List I (Library) List II (Location) I. Saraswati Mahal Library A) Patna II. Library of Tibetan Work and Archives B) Dharamsala III. Raza Library C) Thanjavur IV. Khuda Baksh Oriental Public Library D) Rampur",
+      "options": {
+        "A": "I-C, II-B, III-D, IV-A",
+        "B": "I-C, II-B, III-A, IV-D",
+        "C": "I-B, II-C, III-A, IV-D",
+        "D": "I-B, II-C, III-D, IV-A"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q6"
+    },
+    {
+      "id": "CA_MISC_GK_1999_Q68",
+      "questionNumber": 68,
+      "year": 1999,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: [1999] List I (Resorts) List II (States) I. Chakrata A) Assam II. Haflong B) West Bengal III. Kalimpong C) Uttar Pradesh IV. Kufri D) Himachal Pradesh",
+      "options": {
+        "A": "I-A, II-C, III-B, IV-D",
+        "B": "I-C, II-A, III-D, IV-B",
+        "C": "I-C, II-A, III-B, IV-D",
+        "D": "I-A, II-C, III-D, IV-B"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q8"
+    },
+    {
+      "id": "CA_MISC_GK_1999_Q69",
+      "questionNumber": 69,
+      "year": 1999,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List I with List II and select the correct answer using the codes given below the Lists: [1999] List I (Industry) List II (Industrial Centre) I. Pearl fishing A) Pune II. Automobiles B) Tuticorin III. Ship-building C) Pinjore IV. Engineering goods D) Marmagao",
+      "options": {
+        "A": "I-B, II-A, III-D, IV-C",
+        "B": "I-B, II-A, III-C, IV-D",
+        "C": "I-A, II-B, III-D, IV-C",
+        "D": "I-A, II-B, III-C, IV-D"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q12"
+    },
+    {
+      "id": "CA_MISC_GK_1999_Q70",
+      "questionNumber": 70,
+      "year": 1999,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The language spoken by the largest number of people in the world is: [1999]",
+      "options": {
+        "A": "Hindi",
+        "B": "English",
+        "C": "Mandarin",
+        "D": "Spanish"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q13"
+    },
+    {
+      "id": "CA_MISC_GK_1998_Q71",
+      "questionNumber": 71,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The damage to the Spektr Module of the Russian Space Station Mir was due to: [1998]",
+      "options": {
+        "A": "Collision with a Soyuz cargo ship",
+        "B": "Faulty material design of the Spektr Module",
+        "C": "Explosion inside the space station",
+        "D": "Collision with an asteroid"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "space-technology",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q17"
+    },
+    {
+      "id": "CA_MISC_GK_1998_Q72",
+      "questionNumber": 72,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The currency of the proposed European Monetary Union will be: [1998]",
+      "options": {
+        "A": "Dollar",
+        "B": "Euro",
+        "C": "Guilder",
+        "D": "Mark"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q19"
+    },
+    {
+      "id": "CA_MISC_GK_1998_Q73",
+      "questionNumber": 73,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following was the venue for the preliminary talks between the Sri Lankan Government and representatives of Tamil United Liberation Front and other militant groups? [1998]",
+      "options": {
+        "A": "New Delhi",
+        "B": "Colombo",
+        "C": "Thimphu",
+        "D": "Chennai"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q20"
+    },
+    {
+      "id": "CA_MISC_GK_1998_Q74",
+      "questionNumber": 74,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following pairs of cities has recently been connected through a 6-lane express way? [1998]",
+      "options": {
+        "A": "Ahmedabad: Vadodara",
+        "B": "Dhaka: Chittagong",
+        "C": "Islamabad: Lahore",
+        "D": "Mumbai: Pune"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q26"
+    },
+    {
+      "id": "CA_MISC_GK_1998_Q75",
+      "questionNumber": 75,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List I with List II and select the correct answer using the codes given below the lists: [1998] List I List II I. Ringgit A) Indonesia II. Baht B) South Korea III. Rupiah C) Thailand IV. Won D) Malayasia",
+      "options": {
+        "A": "I-A, II-C, III-D, IV-B",
+        "B": "I-D, II-C, III-A, IV-B",
+        "C": "I-A, II-B, III-D, IV-C",
+        "D": "I-D, II-B, III-A, IV-C"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q27"
+    },
+    {
+      "id": "CA_MISC_GK_1998_Q76",
+      "questionNumber": 76,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following pairs are correctly matched? [1998] I. Dow Jones: New York II. Hang Seng: Seoul III. FTSE - 100: London Select the correct answer using the codes given below:",
+      "options": {
+        "A": "I, II and III",
+        "B": "II and III",
+        "C": "I and II",
+        "D": "I and III"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q29"
+    },
+    {
+      "id": "CA_MISC_GK_1998_Q77",
+      "questionNumber": 77,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The number of economically active women (excluding students and those doing domestic duties in their homes) as a percentage of all women of working age (generally those aged 15-64 years) was the highest in 1996 in: [1998]",
+      "options": {
+        "A": "USA",
+        "B": "China",
+        "C": "Russia",
+        "D": "S. Korea"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q30"
+    },
+    {
+      "id": "CA_MISC_GK_1998_Q78",
+      "questionNumber": 78,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "In the vicinity of Mumbai, a number of specialised towns have been developed. Match the lists of specialisation with towns and select the correct answer using the codes given below the lists: [1998] List I (Towns) List II (Specialisation) I. Alibag A) Fishing Centre II. Balapur B) Holiday resort III. Nhava Sheva C) Petro-chemical complex IV. Ratnagiri D) Port",
+      "options": {
+        "A": "I-A, II-C, III-B, IV-D",
+        "B": "I-B, II-C, III-D, IV-A",
+        "C": "I-C, II-D, III-B, IV-A",
+        "D": "I-B, II-A, III-D, IV-C"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q35"
+    },
+    {
+      "id": "CA_MISC_GK_1998_Q79",
+      "questionNumber": 79,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Some people in Manipur live in houses built on floating islands of weeds and decaying vegetation held together by suspended silt. These islands are called: [1998]",
+      "options": {
+        "A": "Tipis",
+        "B": "Barkhans",
+        "C": "Phoomdis",
+        "D": "Izba"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q36"
+    },
+    {
+      "id": "CA_MISC_GK_1998_Q80",
+      "questionNumber": 80,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the correct sequence of decreasing order of the given currencies in terms of their value in Indian Rupees? [1998]",
+      "options": {
+        "A": "US dollar, Canadian dollar, New Zealand dollar, Hong Kong dollar",
+        "B": "US dollar, New Zealand dollar, Canadian dollar, Hong Kong dollar",
+        "C": "US dollar, Hong Kong dollar, New Zealand dollar, Canadian dollar",
+        "D": "US dollar, Hong Kong dollar, Canadian dollar, New Zealand dollar"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q37"
+    },
+    {
+      "id": "CA_MISC_GK_1998_Q81",
+      "questionNumber": 81,
+      "year": 1998,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "What are the official languages of the U.N.O.? [1998]",
+      "options": {
+        "A": "English, French and Russian",
+        "B": "English, French, German and Russian",
+        "C": "English, French, Russian, Chinese and Hindi",
+        "D": "English, French, Chinese, Russian, Arabian and Spanish"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q38"
+    },
+    {
+      "id": "CA_MISC_GK_1997_Q82",
+      "questionNumber": 82,
+      "year": 1997,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following States of India has passed a legislation (in 1996) making the maintenance of one's parents mandatory? [1997]",
+      "options": {
+        "A": "Kerala",
+        "B": "West Bengal",
+        "C": "Maharashtra",
+        "D": "Himachal Pradesh"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q40"
+    },
+    {
+      "id": "CA_MISC_GK_1997_Q83",
+      "questionNumber": 83,
+      "year": 1997,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The Basque separatist organisation is active in: [1997]",
+      "options": {
+        "A": "Russia",
+        "B": "Cyprus",
+        "C": "Portugal",
+        "D": "Spain"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q42"
+    },
+    {
+      "id": "CA_MISC_GK_1997_Q84",
+      "questionNumber": 84,
+      "year": 1997,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The film 'The Making of the Mahatma' has been directed by: [1997]",
+      "options": {
+        "A": "Peter Ustinov",
+        "B": "Richard Attenborough",
+        "C": "Shyam Benegal",
+        "D": "Mira Nair"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q43"
+    },
+    {
+      "id": "CA_MISC_GK_1997_Q85",
+      "questionNumber": 85,
+      "year": 1997,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List I with List II and select the correct answer by using the codes given below the lists: [1997] List I - (Hazardous industries using child labour leading to the filing of a public interest petition in the Supreme Court) List I List II (Located at) I. Glass industry A) Moradabad II. Brassware industry B) Marakpur III. Slate industry C) Ferozabad IV. Hand-made carpet industry D) Mirzapur",
+      "options": {
+        "A": "I-C, II-A, III-B, IV-D",
+        "B": "I-A, II-C, III-D, IV-B",
+        "C": "I-C, II-A, III-D, IV-B",
+        "D": "I-A, II-C, III-B, IV-D"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q45"
+    },
+    {
+      "id": "CA_MISC_GK_1996_Q86",
+      "questionNumber": 86,
+      "year": 1996,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following works has recently been made into a full length feature film? [1996]",
+      "options": {
+        "A": "R. K. Narayans Malgudi Days",
+        "B": "Salman Rushdie's Midnight's Children",
+        "C": "Vikram Seth's A Suitable Boy",
+        "D": "Upamanyu Chatterjee's English August."
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q46"
+    },
+    {
+      "id": "CA_MISC_GK_1996_Q87",
+      "questionNumber": 87,
+      "year": 1996,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following has legalised euthanasia? [1996]",
+      "options": {
+        "A": "Texas in the USA",
+        "B": "Northern Territory in Australia",
+        "C": "Quebec in Canada",
+        "D": "Maharashtra in India"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q48"
+    },
+    {
+      "id": "CA_MISC_GK_1996_Q88",
+      "questionNumber": 88,
+      "year": 1996,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: Most international agencies which fund development programmes in India on intergovernmental bilateral agreements, mainly provide: [1996] I. Technical assistance. II. Soft loans which are required to be paid back with interest. III. Grants, not required to be paid back. IV. Food assistance to alleviate poverty. Of these statements",
+      "options": {
+        "A": "UAE, Kenya and Canada",
+        "B": "UAE, Kenya and Hong Kong",
+        "C": "UAE, Kenya and Holland",
+        "D": "Canada, Kenya and Hong Kong"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q49"
+    },
+    {
+      "id": "CA_MISC_GK_1996_Q89",
+      "questionNumber": 89,
+      "year": 1996,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The following advertisement: [1996] THE MARVEL OF THE CENTURY THE WONDER OF THE WORLD LIVING PHOTOGRAPHIC PICTURES IN LIFE-SIZED REPRODUCTIONS BYMESSERS LUMIERE BROTHERS CINEMATOGRAPHIE A FEW EXHIBITIONS WILL BE GIVEN AT WATSONS HOTEL TONIGHT appeared in the Times of India dated 7th August,",
+      "options": {
+        "A": "1931",
+        "B": "1929",
+        "C": "1921",
+        "D": "1896"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q52"
+    },
+    {
+      "id": "CA_MISC_GK_1995_Q90",
+      "questionNumber": 90,
+      "year": 1995,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List I with List II and select the correct answer by using the codes given below the lists.: [1995] List I List II I. European transcontinental railway A) Paris to Istanbul II. Trans-Andean railway B) Leningrad to Vladivostok III. Trans-Siberian railway C) Leningrad to Volgograd IV. Orient Express D) Buenos Aires to Valparaiso E) Paris to Warsaw",
+      "options": {
+        "A": "I-E, II-D, III-B, IV-A",
+        "B": "I-A, II-D, III-C, IV-B",
+        "C": "I-E, II-A, III-B, IV-C",
+        "D": "I-A, II-B, III-C, IV-D"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q53"
+    },
+    {
+      "id": "CA_MISC_GK_1995_Q91",
+      "questionNumber": 91,
+      "year": 1995,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MATCHING",
+      "question": "Match List I with List II and select the correct answer by using the codes given below the lists: [1995] List I List II I. Ernesto Zedillo A) Uruguay II. Alberto Fujimori B) Brazil III. Julio Maria Sanguinetti C) Mexico IV. Fernando H. Cardoso D) Bolivia E) Peru",
+      "options": {
+        "A": "I-C, II-E, III-A IV-B",
+        "B": "I-D, II-E, III-C, IV-A",
+        "C": "I-C, II-D, III-V, IV-B",
+        "D": "I-E, II-C, III-A, IV-D"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q55"
+    },
+    {
+      "id": "CA_MISC_GK_1995_Q92",
+      "questionNumber": 92,
+      "year": 1995,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The lead character in the film The Bandit Queen has been played by: [1995]",
+      "options": {
+        "A": "Pratibha Sinha",
+        "B": "Rupa Ganguly",
+        "C": "Seema Biswas",
+        "D": "Shabana Azmi"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q56"
+    },
+    {
+      "id": "CA_MISC_GK_1995_Q93",
+      "questionNumber": 93,
+      "year": 1995,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are correctly matched? [1995] I. Hamas-Palestinian extremist group II. Sinn Fein-IRA's political wing III. True Path Party-A major constituent of the ruling coalition in Turkey Choose the correct answer from the codes given below:",
+      "options": {
+        "A": "I and II",
+        "B": "I and III",
+        "C": "I, II and III",
+        "D": "II and III"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q58"
+    },
+    {
+      "id": "CA_MISC_GK_1995_Q94",
+      "questionNumber": 94,
+      "year": 1995,
+      "stage": "Prelims",
+      "paper": "GS",
+      "questionType": "MCQ_SINGLE",
+      "question": "The only snake that builds a nest is: [1995]",
+      "options": {
+        "A": "Chain viper",
+        "B": "King Cobra",
+        "C": "Krait",
+        "D": "Saw-scaled viper"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "topicName": "Misc GK",
+      "topicId": "ca_misc_gk",
+      "nodeId": "CA-MISC-GK",
+      "syllabusNodeId": "CA-MISC-GK",
+      "microTheme": "misc-gk",
+      "type": "current_affairs_gk",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_CA_GK_PYQ",
+      "sourceRef": "gk_part4 / Q60"
+    }
+  ]
+}

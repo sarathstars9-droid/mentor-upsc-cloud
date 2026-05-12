@@ -1,0 +1,164 @@
+
+
+=== SAMPLES FOR: GS1-GEO-IND-PHYSIO-MT01 ===
+
+--- Sample 1 ---
+ID: CA_GEOGRAPHY_2022_Q5
+Year: 2022
+Current Node: GS1-GEO-IND-PHYSIO-MT01
+Question: The term "Levant" often heard in the news roughly corresponds to which of the following regions? [2022]
+Options: {"A":"Region along the eastern Mediterranean shores","B":"Region along North African shores stretching from Egypt to Morocco","C":"Region along Persian Gulf and Horn of Africa","D":"The entire coastal areas of Mediterranean Sea"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-GEO-PRE-REGIONAL-PLACES-MT01","toNodeId":"GS1-GEO-IND-PHYSIO-MT01","confidence":90,"reason":"Intelligently refined from GS1-GEO-PRE-REGIONAL-PLACES-MT01 based on keywords.","matchedKeywords":["coast"]}
+
+--- Sample 2 ---
+ID: CA_GEOGRAPHY_2022_Q7
+Year: 2022
+Current Node: GS1-GEO-IND-PHYSIO-MT01
+Question: Which one of the following statements best reflects the issue which Senkaku Islands, sometimes mentioned in the news? [2022]
+Options: {"A":"It is generally believed that they are artificial islands made by a country around South China Sea.","B":"China and Japan engage in maritime disputes over these islands in East China Sea","C":"A permanent American military base has been set up there to help Taiwan to increase its defence capabilities.","D":"Through International Courts of Justice declared them as no man's land, some South-East Asian countries claim them."}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-GEO-PRE-REGIONAL-PLACES-MT01","toNodeId":"GS1-GEO-IND-PHYSIO-MT01","confidence":90,"reason":"Intelligently refined from GS1-GEO-PRE-REGIONAL-PLACES-MT01 based on keywords.","matchedKeywords":["island"]}
+
+--- Sample 3 ---
+ID: GEO_CLI_2009_Q36
+Year: 2009
+Current Node: GS1-GEO-IND-PHYSIO-MT01
+Question: Consider the following statements: 1. In the world, the tropical deserts occur along the western margins of continents within the trade wind belt. 2. In India, the East Himalayan region gets high rainfall from north-east winds. Which of the statements given above is/are correct?
+Options: {"A":"1 only","B":"2 only","C":"Both 1 and 2","D":"Neither 1 nor 2"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-GEO-IND-CLIMATE-MT01","toNodeId":"GS1-GEO-IND-PHYSIO-MT01","confidence":100,"reason":"Intelligently refined from GS1-GEO-IND-CLIMATE-MT01 based on keywords.","matchedKeywords":["himalaya","desert"]}
+
+--- Sample 4 ---
+ID: GEO_CLI_2006_Q40
+Year: 2006
+Current Node: GS1-GEO-IND-PHYSIO-MT01
+Question: Consider the following statements: 1. Length of a terrestrial mile is lesser than that of a nautical mile. 2. Harmattan is a dusty land-wind of the East African Coast. 3. Greece and Albania from a part of the Iberian Peninsula. Which of the statements given above is/are correct?
+Options: {"A":"1, 2 and 3","B":"2 and 3, only","C":"3 only","D":"1 only"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-GEO-IND-CLIMATE-MT01","toNodeId":"GS1-GEO-IND-PHYSIO-MT01","confidence":90,"reason":"Intelligently refined from GS1-GEO-IND-CLIMATE-MT01 based on keywords.","matchedKeywords":["coast"]}
+
+--- Sample 5 ---
+ID: GEO_CLI_1995_Q69
+Year: 1995
+Current Node: GS1-GEO-IND-PHYSIO-MT01
+Question: Willy-Willy is:
+Options: {"A":"A type of tree grown in temperate regions","B":"A wind that blows in a desert","C":"A tropical cyclone of the north-west Australia","D":"A kind of common fish found near Lakshadweep islands"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-GEO-IND-CLIMATE-MT01","toNodeId":"GS1-GEO-IND-PHYSIO-MT01","confidence":100,"reason":"Intelligently refined from GS1-GEO-IND-CLIMATE-MT01 based on keywords.","matchedKeywords":["island","desert"]}
+
+
+=== SAMPLES FOR: GS1-HIS-MOD-NATIONAL-MT01 ===
+
+--- Sample 1 ---
+ID: HIS_MOD_2021_Q3_LAST_PHA
+Year: 2021
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: With reference to 8th August, 1942 in Indian history, which one of the following statements is correct?
+Options: {"A":"The Quit India Resolution was adopted by the AICC.","B":"The Viceroy's Executive Council was expanded to include more Indians.","C":"The Congress ministries resigned in seven provinces.","D":"Cripps proposed an Indian Union with full Dominion Status once the Second World War was over ."}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-CONSTDEV-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":100,"reason":"Intelligently refined from GS1-HIS-MOD-CONSTDEV-MT01 based on keywords.","matchedKeywords":["congress","quit india"]}
+
+--- Sample 2 ---
+ID: HIS_MOD_2021_Q4_LAST_PHA
+Year: 2021
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: In the context of Colonial India, Shah Nawaz Khan, Prem Kumar Sehgal and Gurbaksh Singh Dhillion are remembered as:
+Options: {"A":"Leaders of Swadeshi and Boycott Movement","B":"Members of the Interim Government in 1946","C":"Members of the Drafting Committee in the Constituent Assembly","D":"Officers of the Indian National Army"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-CONSTDEV-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":90,"reason":"Intelligently refined from GS1-HIS-MOD-CONSTDEV-MT01 based on keywords.","matchedKeywords":["swadeshi"]}
+
+--- Sample 3 ---
+ID: HIS_MOD_2013_Q11_LAST_PHA
+Year: 2013
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: Quit India movement was launched in response to?
+Options: {"A":"Cabinet mission plan","B":"Cripps proposals","C":"Simon Commission report","D":"Wavell plan"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-CONSTDEV-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":92.5,"reason":"Intelligently refined from GS1-HIS-MOD-CONSTDEV-MT01 based on keywords.","matchedKeywords":["quit india"]}
+
+--- Sample 4 ---
+ID: HIS_MOD_2013_Q12_LAST_PHA
+Year: 2013
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: With reference to Indian history, the members of the constituent assembly from the provinces were?
+Options: {"A":"Directly elected by the people of those provinces","B":"Nominated by the Indian national congress and the Muslim league","C":"Elected by the provincial legislative assemblies","D":"Selected by the government for their expertise in constitutional matters"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-CONSTDEV-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":90,"reason":"Intelligently refined from GS1-HIS-MOD-CONSTDEV-MT01 based on keywords.","matchedKeywords":["congress"]}
+
+--- Sample 5 ---
+ID: HIS_MOD_2010_Q14_LAST_PHA
+Year: 2010
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: Who among the following were official Congress negotiators with the Cripps Mission?
+Options: {"A":"Mahatma Gandhi and Sardar Patel","B":"Acharya J. B. Kripalani and C. Rajagopalachari","C":"Pandit Nehru and Maulana Azad","D":"Dr. Rajendra Prasad and Rafi Ahmed Kidwai"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-CONSTDEV-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":100,"reason":"Intelligently refined from GS1-HIS-MOD-CONSTDEV-MT01 based on keywords.","matchedKeywords":["congress","gandhi"]}
+
+--- Sample 6 ---
+ID: HIS_MOD_2002_Q32_LAST_PHA
+Year: 2002
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: The members of the Constituent Assembly which drafted the Constitution of India were:
+Options: {"A":"Nominated by the British Parliament","B":"Nominated by the Governor General","C":"Elected by the Legislative Assemblies of various provinces","D":"Elected by the Indian National Congress and Muslim League"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-CONSTDEV-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":90,"reason":"Intelligently refined from GS1-HIS-MOD-CONSTDEV-MT01 based on keywords.","matchedKeywords":["congress"]}
+
+--- Sample 7 ---
+ID: HIS_MOD_1999_Q38_LAST_PHA
+Year: 1999
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: "It made its proposals in May. It still wanted a united India. There was to be a Federal Union composed of British provinces." The above quotation is related to:
+Options: {"A":"Simon Commission","B":"Gandhi-Irwin Pact","C":"Cripps Mission","D":"Cabinet Mission"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-CONSTDEV-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":90,"reason":"Intelligently refined from GS1-HIS-MOD-CONSTDEV-MT01 based on keywords.","matchedKeywords":["gandhi"]}
+
+--- Sample 8 ---
+ID: HIS_MOD_1999_Q40_LAST_PHA
+Year: 1999
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: Which one of the following leaders of the Congress was totally in favour of the Cabinet Mission Plan?
+Options: {"A":"Mahatma Gandhi","B":"Jawaharlal Nehru","C":"Sardar Patel","D":"Maulana Abul Kalam Azad"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-CONSTDEV-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":100,"reason":"Intelligently refined from GS1-HIS-MOD-CONSTDEV-MT01 based on keywords.","matchedKeywords":["congress","gandhi"]}
+
+--- Sample 9 ---
+ID: HIS_MOD_1998_Q43_LAST_PHA
+Year: 1998
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: Assertion (A): The Congress rejected the Cripps proposals.: Reason (R): The Cripps Mission consisted solely of whites.
+Options: {"A":"Both A and R are true, and R is the correct explanation of A","B":"Both A and R are true, but R is NOT a correct explanation of A","C":"A is true, but R is false","D":"A is false, but R is true"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-CONSTDEV-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":90,"reason":"Intelligently refined from GS1-HIS-MOD-CONSTDEV-MT01 based on keywords.","matchedKeywords":["congress"]}
+
+--- Sample 10 ---
+ID: HIS_MOD_1996_Q48_LAST_PHA
+Year: 1996
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: Consider the following statements about Jawaharlal Nehru: I. He was the President of the Congress Party in 1947. II. He presided over the Constituent Assembly. III. He formed the first Congress Ministry in United Province before India's independence. Of these statements:
+Options: {"A":"I, II and III are correct","B":"I and III are correct","C":"I and II are correct","D":"None is correct"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-CONSTDEV-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":90,"reason":"Intelligently refined from GS1-HIS-MOD-CONSTDEV-MT01 based on keywords.","matchedKeywords":["congress"]}
+
+--- Sample 11 ---
+ID: HIS_MOD_1996_Q51_LAST_PHA
+Year: 1996
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: Which one of the following first mooted the idea of a constituent assembly to frame a constitution for India?
+Options: {"A":"Swaraj Party in 1934","B":"Congress Party in 1936","C":"Muslim League in 1942","D":"All Parties Conference in 1946"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-CONSTDEV-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":90,"reason":"Intelligently refined from GS1-HIS-MOD-CONSTDEV-MT01 based on keywords.","matchedKeywords":["congress"]}
+
+--- Sample 12 ---
+ID: HIS_MOD_2020_Q3_SOCIAL_R
+Year: 2020
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: The Vital-Vidhwansak, the first monthly journal to have the untouchable people as its target audience was published by:
+Options: {"A":"Gopal Baba Walangkar","B":"Jyotiba Phule","C":"Mohandas Karamchand Gandhi","D":"Bhimrao Ranji Ambedkar"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-REFORM-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":90,"reason":"Intelligently refined from GS1-HIS-MOD-REFORM-MT01 based on keywords.","matchedKeywords":["gandhi"]}
+
+--- Sample 13 ---
+ID: HIS_MOD_2019_Q4_SOCIAL_R
+Year: 2019
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: Consider the following pairs: Movement/Organization Leader 1. All India Anti - Untouchability League Mahatma Gandhi 2. All India Kisan Sabha Swami Sahajanand Saraswati 3. Self-Respect Movement Naicker E.V . Ramaswami Which of the pairs given above is/are correctly matched?
+Options: {"A":"1 only","B":"1 and 2 only","C":"2 and 3 only","D":"1, 2 and 3"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-REFORM-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":90,"reason":"Intelligently refined from GS1-HIS-MOD-REFORM-MT01 based on keywords.","matchedKeywords":["gandhi"]}
+
+--- Sample 14 ---
+ID: HIS_MOD_1995_Q10_SOCIAL_R
+Year: 1995
+Current Node: GS1-HIS-MOD-NATIONAL-MT01
+Question: The word Adivasi was used for the first time to refer to the tribal people by
+Options: {"A":"Mahatma Gandhi","B":"Thakkar Bappa","C":"Jyotiba Phule","D":"B.R. Ambedkar"}
+Intelligent Mapper: {"applied":true,"fromNodeId":"GS1-HIS-MOD-REFORM-MT01","toNodeId":"GS1-HIS-MOD-NATIONAL-MT01","confidence":90,"reason":"Intelligently refined from GS1-HIS-MOD-REFORM-MT01 based on keywords.","matchedKeywords":["gandhi"]}
+
+
+=== SAMPLES FOR: GS3-ST-GENSCI-BIO-MT04 ===
+
+
+=== SAMPLES FOR: GS2-IR-INSTITUTIONS-MT04 ===

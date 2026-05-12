@@ -11,7 +11,6 @@ import BlockReviewModal from "../components/Plan/BlockReviewModal.jsx";
 import { humanizeMappingCode } from "../utils/mappingUtils";
 import HeroSection from "../components/Plan/HeroSection.jsx";
 import SpotlightCard from "../components/Plan/SpotlightCard.jsx";
-import QuickActions from "../components/Plan/QuickActions.jsx";
 import { getCurrentBlock as selectCurrentBlock } from "../components/Plan/planSelectors.js";
 import PlanRightRail from "../components/Plan/PlanRightRail.jsx";
 import "../styles/mentoros-plan.css";
@@ -134,6 +133,7 @@ async function post(action, payload = {}) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ action, ...payload }),
+    cache: "no-store",
   });
 
   const text = await res.text();
@@ -151,6 +151,7 @@ async function loadSyllabusRadar(blocks) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ blocks }),
+    cache: "no-store",
   });
 
   const data = await res.json();
@@ -166,6 +167,7 @@ async function mapTextToSyllabus(text) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text: t }),
+    cache: "no-store",
   });
 
   const outText = await res.text();
@@ -185,6 +187,7 @@ async function parsePlanPhoto(file, date) {
   const res = await fetch(`${BACKEND_URL}/api/plan-photo`, {
     method: "POST",
     body: form,
+    cache: "no-store",
   });
 
   const text = await res.text();
@@ -201,6 +204,7 @@ async function analyzeDay(payload) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
+    cache: "no-store",
   });
 
   const text = await res.text();
@@ -217,6 +221,7 @@ async function loopDetect(payload) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
+    cache: "no-store",
   });
 
   const text = await res.text();
@@ -238,6 +243,7 @@ async function resolveBlock(inputText, minutes) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
+      cache: "no-store",
     });
     const text = await res.text();
     try { return JSON.parse(text); } catch { return null; }
@@ -452,9 +458,11 @@ function MappedNodesChips({ nodes = [] }) {
         marginTop: 10,
       }}
     >
-      {nodes.map((node, idx) => (
+      {nodes.map((node) => (
         <span
-          key={`${node?.syllabusNodeId || node?.code || node?.label || "node"}-${idx}`}
+          key={
+            node?.syllabusNodeId || node?.path || node?.code || node?.label || node?.microTheme || String(node?.id || "node")
+          }
           style={{
             padding: "6px 10px",
             borderRadius: 999,
@@ -879,281 +887,205 @@ function StudyBlockCard({
   onStop,
 }) {
   const statusValue = getEffectiveBlockStatus(block);
-  const badgeTone =
-    statusValue === BLOCK_STATUS.ACTIVE
-      ? "active"
-      : statusValue === BLOCK_STATUS.PAUSED
-        ? "paused"
-        : statusValue === BLOCK_STATUS.COMPLETED
-          ? "completed"
-          : statusValue === BLOCK_STATUS.PARTIAL
-            ? "partial"
-            : statusValue === BLOCK_STATUS.MISSED || statusValue === BLOCK_STATUS.SKIPPED
-              ? "missed"
-              : "planned";
 
-  const statusLabel =
-    statusValue === BLOCK_STATUS.ACTIVE
-      ? "active"
-      : statusValue === BLOCK_STATUS.PAUSED
-        ? "paused"
-        : statusValue === BLOCK_STATUS.COMPLETED
-          ? "completed"
-          : statusValue === BLOCK_STATUS.PARTIAL
-            ? "partial"
-            : statusValue === BLOCK_STATUS.MISSED
-              ? "missed"
-              : statusValue === BLOCK_STATUS.SKIPPED
-                ? "skipped"
-                : "planned";
+  const isActive    = statusValue === BLOCK_STATUS.ACTIVE;
+  const isPaused    = statusValue === BLOCK_STATUS.PAUSED;
+  const isDone      = isFinishedStatus(statusValue);
+  const isPlanned   = statusValue === BLOCK_STATUS.PLANNED;
 
-  const mappingLabel = getBlockMappingLabel(block);
-  const chips = getBlockChipItems(block);
-  const breadcrumb = getBlockBreadcrumb(block);
-  const pyqNodeLabel = getBlockPyqNodeLabel(block);
+  const SC_MAP = {
+    active:    { bg: "rgba(249,115,22,0.10)",  border: "rgba(249,115,22,0.30)",  color: "#f97316", dot: "#f97316", label: "ACTIVE"   },
+    paused:    { bg: "rgba(234,179,8,0.09)",   border: "rgba(234,179,8,0.28)",   color: "#eab308", dot: "#eab308", label: "PAUSED"   },
+    completed: { bg: "rgba(100,116,139,0.07)", border: "rgba(100,116,139,0.18)", color: "#475569", dot: "#334155", label: "DONE"     },
+    partial:   { bg: "rgba(234,179,8,0.06)",   border: "rgba(234,179,8,0.16)",   color: "#ca8a04", dot: "#ca8a04", label: "PARTIAL"  },
+    missed:    { bg: "rgba(239,68,68,0.06)",   border: "rgba(239,68,68,0.14)",   color: "#ef4444", dot: "#ef4444", label: "MISSED"   },
+    skipped:   { bg: "rgba(100,116,139,0.05)", border: "rgba(100,116,139,0.12)", color: "#475569", dot: "#334155", label: "SKIPPED"  },
+    planned:   { bg: "rgba(148,163,184,0.06)", border: "rgba(148,163,184,0.14)", color: "#475569", dot: "#1e2d4a", label: "PLANNED"  },
+  };
+  const sc = SC_MAP[statusValue] || SC_MAP.planned;
+
+  // Title: most specific non-subject candidate wins
+  const subjectStr = String(block?.finalMapping?.subjectName || block?.PlannedSubject || block?.ActualSubject || "").trim();
+  const topicStr   = String(block?.PlannedTopic || block?.ActualTopic || "").trim();
+  const mappedStr  = String(block?.finalMapping?.nodeName || "").trim();
+  const cardTitle = (() => {
+    for (const c of [topicStr, mappedStr]) {
+      if (c && c.toLowerCase() !== subjectStr.toLowerCase()) return c;
+    }
+    return subjectStr || "Study Block";
+  })();
+
+  // Paper label from node id
+  const nodeId = String(block?.finalMapping?.nodeId || block?.SyllabusNodeId || block?.SyllabusTop1Code || "").trim();
+  const paper = (() => {
+    const e = String(block?.GsPaper || "").trim().toUpperCase();
+    if (e) return e;
+    const m = nodeId.match(/^(GS\d)/i);
+    return m ? m[1].toUpperCase() : "";
+  })();
+
+  const subtitle = (() => {
+    const base = paper && subjectStr ? `${paper} · ${subjectStr}` : subjectStr;
+    return base.toLowerCase() === cardTitle.toLowerCase() ? "" : base;
+  })();
+
+  const nodeTag = (() => {
+    if (!nodeId || /^misc/i.test(nodeId)) return null;
+    const parts = nodeId.split("-");
+    return parts.length > 2 ? parts.slice(1).join("-") : null;
+  })();
+
   const ctaLabel = getBlockCtaLabel(block);
   const pyqNavPath = getBlockPyqNavPath(block);
 
-  // Resolver-enriched display chips (for manual blocks)
-  const resolverSubject = block?._resolverData?.subjectLabel || "";
-  const resolverActivity = block?._resolverData?.activityType || "";
-  const resolverStage = block?._resolverData?.stage || "";
-  const resolverLowConf = block?._resolverData?.confidence != null && block._resolverData.confidence < 0.5;
-  const isManualBlock = Boolean(block?._isManual);
+  const totalMin = Number(block?.PlannedMinutes || 0);
+  const doneMin  = Math.floor(Number(block?.ActualMinutes || 0));
+  const leftMin  = Math.max(0, totalMin - doneMin);
+  const pct      = totalMin > 0 ? Math.min(100, Math.round((doneMin / totalMin) * 100)) : 0;
+  const pyqCount = Number(block?.linkedPyqs?.total || block?.PyqCount || 0);
+  const pyqLabel = pyqCount > 0 ? `${pyqCount} PYQs →` : "PYQs →";
 
-  // Cleaner title / subtitle logic
-  const cardTitle =
-    block?._resolverData?.subjectLabel ||
-    block?.finalMapping?.subjectName ||
-    block?.PlannedSubject ||
-    "Study Block";
-
-  const cardSubtitle = (() => {
-    const topic = getBlockPrimaryTopic(block);
-    const subject = block?.finalMapping?.subjectName || block?.PlannedSubject || "";
-    // Avoid repeating subject as subtitle when topic === subject
-    if (topic && topic !== subject) return topic;
-    if (resolverActivity) return resolverActivity;
-    return "";
-  })();
-
-  // Current Affairs: de-duplicate noisy display
-  const isCurrentAffairs = (
-    cardTitle.toLowerCase().includes("current") ||
-    resolverActivity.toLowerCase().includes("current affairs")
-  );
-
-  const startedAt = formatBlockClock(block?.ActualStart);
-  const endedAt = formatBlockClock(block?.ActualEnd);
-  const actualMinutes = Number(block?.ActualMinutes || 0);
-  const pauseMinutes = Number(block?.TotalPauseMinutes || 0);
-  const pauseCount = Number(block?.PauseCount || 0);
-  const isStarted = Boolean(block?.ActualStart);
-  const canStart = statusValue === BLOCK_STATUS.PLANNED;
-  const canPause = statusValue === BLOCK_STATUS.ACTIVE;
-  const canResume = statusValue === BLOCK_STATUS.PAUSED;
-  const canStop = statusValue === BLOCK_STATUS.ACTIVE || statusValue === BLOCK_STATUS.PAUSED;
+  const B = {
+    base: {
+      display: "inline-flex", alignItems: "center", justifyContent: "center",
+      height: 30, padding: "0 12px", borderRadius: 7,
+      fontWeight: 700, fontSize: 11, cursor: "pointer",
+      border: "none", letterSpacing: "-0.01em", whiteSpace: "nowrap",
+    },
+    primary: { background: "#f97316", color: "#fff", boxShadow: "0 2px 8px rgba(249,115,22,0.25)" },
+    muted:   { background: "transparent", color: "#475569", border: "1px solid #1a2740" },
+    stop:    { background: "transparent", color: "#ef4444", border: "1px solid rgba(239,68,68,0.20)" },
+    pyq:     { background: "transparent", color: "#64748b", border: "1px solid #1a2740", textDecoration: "none" },
+  };
 
   return (
-    <article
-      className="study-block-rich-card"
-      style={{
-        borderRadius: 14,
-        border: statusValue === BLOCK_STATUS.ACTIVE
-          ? "1px solid rgba(99,179,150,0.32)"
-          : "1px solid rgba(255,255,255,0.07)",
-        background:
-          statusValue === BLOCK_STATUS.ACTIVE
-            ? "linear-gradient(180deg, #1e2636 0%, #19202f 100%)"
-            : "linear-gradient(180deg, #1a1d2b 0%, #161922 100%)",
-        boxShadow:
-          statusValue === BLOCK_STATUS.ACTIVE
-            ? "0 12px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)"
-            : "0 8px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)",
-        padding: "16px 18px",
-        minHeight: "unset",
-        display: "flex",
-        flexDirection: "column",
-        gap: 10,
-      }}
-    >
-      {/* ── Row 1: Title + time block ─────────────────────────────────────── */}
-      <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: 16, alignItems: "start" }}>
-        <div style={{ minWidth: 0 }}>
-          <div style={{ color: "#f8fafc", fontSize: 20, fontWeight: 800, lineHeight: 1.05, letterSpacing: "-0.02em" }}>
-            {cardTitle}
-          </div>
-          <div style={{ color: "rgba(241,245,249,0.88)", fontSize: 14, marginTop: 3, opacity: 0.85, lineHeight: 1.3 }}>
-            {isCurrentAffairs ? "Daily Current Affairs" : (cardSubtitle || "\u00a0")}
-          </div>
+    <article style={{
+      background: isActive ? "linear-gradient(160deg,#0e1828 0%,#080c18 100%)" : "#0a0e1a",
+      border: `1px solid ${isActive ? "rgba(249,115,22,0.22)" : "#141e30"}`,
+      borderTop: `2px solid ${isActive ? "#f97316" : isDone ? "#141e30" : "#1a2740"}`,
+      borderRadius: 16,
+      padding: "14px 16px",
+      display: "flex",
+      flexDirection: "column",
+      gap: 8,
+      overflow: "hidden",
+      boxShadow: isActive ? "0 0 24px rgba(249,115,22,0.07)" : "none",
+      opacity: isDone ? 0.7 : 1,
+    }}>
+      {/* ROW 1: title + time range */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8 }}>
+        <div style={{
+          fontSize: 15, fontWeight: 800, color: '#e2e8f0',
+          letterSpacing: '-0.025em', lineHeight: 1.2,
+          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0,
+        }}>
+          {cardTitle}
         </div>
-        <div style={{ textAlign: "right", whiteSpace: "nowrap" }}>
-          <div style={{ color: "#f8fafc", fontSize: 14, fontWeight: 800, letterSpacing: "-0.01em" }}>
-            {block?.PlannedStart || "—"} → {block?.PlannedEnd || "—"}
-          </div>
-          <div style={{ color: "rgba(226,232,240,0.72)", fontSize: 13, fontWeight: 700, opacity: 0.6, marginTop: 2 }}>
-            {Number(block?.PlannedMinutes || 0)} min
-          </div>
+        <div style={{
+          fontFamily: 'var(--mono,monospace)', fontSize: 11, fontWeight: 600,
+          color: '#475569', whiteSpace: 'nowrap', flexShrink: 0,
+        }}>
+          {block?.PlannedStart} {"→"} {block?.PlannedEnd}
         </div>
       </div>
 
-      {/* ── Row 2: Status badge (left) + Mapping label (right) ───────────────── */}
-      <div style={{ display: "grid", gridTemplateColumns: "auto minmax(0,1fr)", gap: 16, alignItems: "center" }}>
-        <span style={{
-          display: "inline-flex", alignItems: "center",
-          padding: "8px 16px", borderRadius: 999,
-          fontSize: 13, fontWeight: 800, textTransform: "lowercase", letterSpacing: "0.01em",
-          background:
-            badgeTone === "active" ? "rgba(148,163,184,0.55)"
-              : badgeTone === "completed" ? "rgba(148,163,184,0.7)"
-                : badgeTone === "paused" ? "rgba(245,158,11,0.22)"
-                  : "rgba(15,23,42,0.32)",
-          color: badgeTone === "paused" ? "#fde68a" : "#ffffff",
-        }}>
-          {statusLabel}
-        </span>
+      {/* ROW 2: subtitle + duration */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ fontSize: 11, color: '#334155', fontWeight: 500 }}>
+          {subtitle || ' '}
+        </div>
+        <div style={{ fontFamily: 'var(--mono,monospace)', fontSize: 11, color: '#1e2d4a' }}>
+          {totalMin > 0 ? `${totalMin} min` : ''}
+        </div>
+      </div>
 
-        {/* Mapping label on right — hidden for CA */}
-        {!isCurrentAffairs && mappingLabel && (
-          <div style={{ color: "#e5e7eb", fontSize: 13, textAlign: "right", lineHeight: 1.35 }}>
-            <span style={{ opacity: 0.72 }}>Mapping: </span>
-            <span style={{ fontWeight: 800, color: "#f8fafc" }}>{mappingLabel}</span>
-            {resolverLowConf && (
-              <span style={{
-                marginLeft: 8, fontSize: 10, fontWeight: 700,
-                color: "#fca5a5", opacity: 0.85,
-              }}>(low conf)</span>
+      {/* ROW 3: status chip + node tag */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: 5,
+          padding: '2px 9px', borderRadius: 20,
+          background: sc.bg, border: `1px solid ${sc.border}`,
+        }}>
+          <span style={{
+            width: 5, height: 5, borderRadius: '50%', background: sc.dot,
+            boxShadow: isActive ? `0 0 4px ${sc.dot}` : 'none', flexShrink: 0,
+          }} />
+          <span style={{
+            fontSize: 9, fontWeight: 700, letterSpacing: '0.1em',
+            color: sc.color, fontFamily: 'var(--mono,monospace)',
+          }}>
+            {sc.label}
+          </span>
+        </div>
+        {nodeTag && (
+          <span style={{ fontSize: 10, color: '#1e2d4a', fontFamily: 'var(--mono,monospace)', fontWeight: 600 }}>
+            {nodeTag}
+          </span>
+        )}
+      </div>
+
+      {/* ROW 4: progress bar OR starts-at */}
+      {(isActive || isPaused || isDone) && totalMin > 0 ? (
+        <div>
+          <div style={{ height: 2, borderRadius: 2, background: '#0f1826', overflow: 'hidden', marginBottom: 4 }}>
+            <div style={{
+              height: '100%', borderRadius: 2, width: `${pct}%`,
+              background: isActive ? '#f97316' : isPaused ? '#eab308' : '#1e2d4a',
+              transition: 'width 1s linear', minWidth: pct > 0 ? 2 : 0,
+            }} />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <span style={{ fontSize: 10, color: '#334155', fontFamily: 'var(--mono,monospace)' }}>
+              {doneMin > 0 ? `${doneMin} min done · ${leftMin} min left` : `${totalMin} min left`}
+            </span>
+            {pct > 0 && (
+              <span style={{ fontSize: 10, color: '#1e2d4a', fontFamily: 'var(--mono,monospace)' }}>{pct}%</span>
             )}
           </div>
-        )}
-      </div>
-
-      {/* ── Row 3: Topic chips ───────────────────────────────────────────────── */}
-      {!isCurrentAffairs && chips.filter((chip) => !/→/.test(chip) && !/^[A-Z0-9]+([-][A-Z0-9]+){2,}$/.test(chip)).length > 0 && (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-          {chips
-            .filter((chip) => !/→/.test(chip) && !/^[A-Z0-9]+([-][A-Z0-9]+){2,}$/.test(chip))
-            .map((chip) => (
-              <span
-                key={`${block?.BlockId}-${chip}`}
-                style={{
-                  display: "inline-flex", alignItems: "center",
-                  padding: "8px 14px", borderRadius: 999,
-                  border: "1px solid rgba(96,165,250,0.34)",
-                  background: "rgba(59,130,246,0.10)",
-                  color: "#dbeafe", fontSize: 13, fontWeight: 700,
-                  maxWidth: 260, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
-                }}
-              >
-                {chip}
-              </span>
-            ))}
         </div>
-      )}
+      ) : isPlanned && block?.PlannedStart ? (
+        <div style={{ fontSize: 10, color: '#1e2d4a', fontFamily: 'var(--mono,monospace)' }}>
+          Starts at {block.PlannedStart}
+        </div>
+      ) : null}
 
-      {/* ── Row 4: Session stats ─────────────────────────────────────────────── */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "10px 18px", color: "#e5e7eb", fontSize: 14, lineHeight: 1.35 }}>
-        {startedAt ? (
-          <span>
-            <span style={{ opacity: 0.78 }}>Started:</span>{" "}
-            <span style={{ fontWeight: 800, color: "#f8fafc" }}>{startedAt}</span>
-          </span>
-        ) : null}
-        {endedAt ? (
-          <span>
-            <span style={{ opacity: 0.78 }}>Ended:</span>{" "}
-            <span style={{ fontWeight: 800, color: "#f8fafc" }}>{endedAt}</span>
-          </span>
-        ) : null}
-        <span>
-          <span style={{ opacity: 0.78 }}>Actual:</span>{" "}
-          <span style={{ fontWeight: 800, color: "#f8fafc" }}>{actualMinutes} min</span>
-        </span>
-        <span>
-          <span style={{ opacity: 0.78 }}>Pause:</span>{" "}
-          <span style={{ fontWeight: 800, color: "#f8fafc" }}>{pauseMinutes} min</span>
-        </span>
-        <span>
-          <span style={{ opacity: 0.78 }}>Pauses:</span>{" "}
-          <span style={{ fontWeight: 800, color: "#f8fafc" }}>{pauseCount}</span>
-        </span>
-        {!isStarted && statusValue === BLOCK_STATUS.PLANNED ? (
-          <span style={{ opacity: 0.78 }}>Planned session</span>
-        ) : null}
-      </div>
-
-      {/* ── Row 5: Breadcrumb · PYQ node linked ─────────────────────────────── */}
-      {!isCurrentAffairs && (
-        <>
-          {breadcrumb && (
-            <div style={{ color: "rgba(226,232,240,0.86)", fontSize: 14, lineHeight: 1.35 }}>
-              {breadcrumb}
-            </div>
-          )}
-          {pyqNodeLabel !== "—" && (
-            <div style={{ color: "rgba(226,232,240,0.86)", fontSize: 14, lineHeight: 1.35 }}>
-              <span style={{ opacity: 0.8 }}>PYQ node linked:</span>{" "}
-              <span style={{ fontWeight: 700, color: "#f8fafc" }}>{pyqNodeLabel}</span>
-            </div>
-          )}
-        </>
-      )}
-
-      {/* ── Row 6: Action buttons ────────────────────────────────────────────── */}
-      <div style={{ marginTop: "auto", display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
-        {canStart ? (
-          <button
-            className="btn btn-primary"
-            disabled={busy}
-            onClick={() => onStart(block.BlockId, { openFocus: true })}
-            style={{ minWidth: 118 }}
-          >
+      {/* ROW 5: action buttons + PYQ link */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, paddingTop: 2 }}>
+        {isPlanned && (
+          <button disabled={busy} onClick={() => onStart?.(block.BlockId, { openFocus: true })}
+            style={{ ...B.base, ...B.primary }}>
             {ctaLabel}
           </button>
-        ) : null}
-
-        {canPause ? (
-          <button className="btn" disabled={busy} onClick={() => onPause(block.BlockId)} style={{ minWidth: 118 }}>
-            ❚❚ Pause
-          </button>
-        ) : null}
-
-        {canResume ? (
-          <button className="btn" disabled={busy} onClick={() => onResume(block.BlockId)} style={{ minWidth: 118 }}>
-            ▶ Resume
-          </button>
-        ) : null}
-
-        {canStop ? (
-          <button
-            className="btn"
-            disabled={busy}
-            onClick={() => onStop(block)}
-            style={{ minWidth: 118, borderColor: "rgba(244,63,94,0.35)", color: "#fecdd3" }}
-          >
-            ■ Stop
-          </button>
-        ) : null}
-
-        {/* View All PYQs — secondary, only when PYQ node linked */}
-        {pyqNavPath && (
-          <a
-            href={pyqNavPath}
-            style={{
-              display: "inline-flex", alignItems: "center", gap: 5,
-              padding: "8px 16px", borderRadius: 8,
-              border: "1px solid rgba(96,165,250,0.32)",
-              background: "rgba(59,130,246,0.08)",
-              color: "#93c5fd", fontSize: 13, fontWeight: 700,
-              textDecoration: "none", whiteSpace: "nowrap",
-            }}
-          >
-            📚 View All PYQs
-          </a>
         )}
-
-        {statusValue === BLOCK_STATUS.ACTIVE && (
-          <span style={{ color: "#6ee7b7", fontWeight: 700, fontSize: 12, marginLeft: 4 }}>● Active</span>
+        {isActive && (
+          <>
+            <button disabled={busy} onClick={() => onPause?.(block.BlockId)}
+              style={{ ...B.base, ...B.muted }}>
+              Pause
+            </button>
+            <button disabled={busy} onClick={() => onStop?.(block)}
+              style={{ ...B.base, ...B.stop }}>
+              Stop
+            </button>
+          </>
+        )}
+        {isPaused && (
+          <>
+            <button disabled={busy} onClick={() => onResume?.(block.BlockId)}
+              style={{ ...B.base, ...B.primary }}>
+              Resume
+            </button>
+            <button disabled={busy} onClick={() => onStop?.(block)}
+              style={{ ...B.base, ...B.stop }}>
+              Stop
+            </button>
+          </>
+        )}
+        {pyqNavPath && (
+          <a href={pyqNavPath} target='_blank' rel='noopener noreferrer'
+            style={{ ...B.base, ...B.pyq, marginLeft: 'auto' }}>
+            {pyqLabel}
+          </a>
         )}
       </div>
     </article>
@@ -1206,6 +1138,12 @@ export default function PlanPage() {
   const [loops, setLoops] = useState(null);
 
   const [todayBlocks, setTodayBlocks] = useState([]);
+  const todayBlocksRef = useRef([]);
+  useEffect(() => { todayBlocksRef.current = todayBlocks; }, [todayBlocks]);
+  // Tracks blocks that handleStartBlock has been called on, synchronously — used by the
+  // reminder interval to suppress "Please begin" notifications even before todayBlocksRef
+  // is updated (which only happens after the next React commit via useEffect).
+  const startedBlocksRef = useRef(new Set());
   const [currentBlockPyqLive, setCurrentBlockPyqLive] = useState(null);
   const [currentBlockPyqLoading, setCurrentBlockPyqLoading] = useState(false);
   const [currentBlockPyqError, setCurrentBlockPyqError] = useState("");
@@ -1272,8 +1210,13 @@ export default function PlanPage() {
       }
     }
     computeElapsed();
-    const id = setInterval(computeElapsed, 1000);
-    return () => clearInterval(id);
+    let id = setInterval(computeElapsed, 1000);
+    // ✅ CLEANUP: Clear interval when currentBlock changes or component unmounts
+    // If not cleared → timer will tick in background even after STOP
+    return () => {
+      clearInterval(id);
+      id = null;
+    };
   }, [currentBlock]);
 
   const currentBlockPyqNodeId = useMemo(() => {
@@ -1356,7 +1299,7 @@ export default function PlanPage() {
     (async () => {
       try {
         for (const nodeId of candidateNodeIds) {
-          const res = await fetch(`${BACKEND_URL}/api/pyq/node/${encodeURIComponent(nodeId)}`);
+          const res = await fetch(`${BACKEND_URL}/api/pyq/node/${encodeURIComponent(nodeId)}`, { cache: "no-store" });
           const data = await res.json();
           if (ignore) return;
 
@@ -1565,6 +1508,8 @@ export default function PlanPage() {
               blockStatus === BLOCK_STATUS.MISSED ||
               blockStatus === BLOCK_STATUS.SKIPPED
             ) {
+              // Backend confirmed terminal status — remove from startedBlocksRef
+              startedBlocksRef.current.delete(blockId);
               next[blockId] = {
                 start_now: true,
                 not_started_3: true,
@@ -1575,6 +1520,9 @@ export default function PlanPage() {
             }
 
             if (blockStatus === BLOCK_STATUS.ACTIVE) {
+              // Backend confirmed block is active — remove from startedBlocksRef
+              // (todayBlocksRef.current will now have ActualStart, so the ref is no longer needed)
+              startedBlocksRef.current.delete(blockId);
               next[blockId] = {
                 ...old,
                 start_now: true,
@@ -1586,6 +1534,7 @@ export default function PlanPage() {
             }
 
             if (blockStatus === BLOCK_STATUS.PAUSED) {
+              startedBlocksRef.current.delete(blockId);
               next[blockId] = {
                 ...old,
                 start_now: true,
@@ -1688,6 +1637,24 @@ export default function PlanPage() {
         let changed = false;
 
         function fireStartReminder(block, stage) {
+          // Final guard: re-check the block's latest status right before firing.
+          // This catches the case where handleStartBlock ran AFTER isAlreadyHandled was
+          // evaluated but BEFORE the updater reached this point (stale todayBlocksRef window).
+          // startedBlocksRef is a synchronous ref updated before any awaits in handleStartBlock.
+          const bid = block.BlockId;
+          if (startedBlocksRef.current.has(bid)) {
+            console.log("[ReminderGuard] startedBlocksRef hit", block.id);
+            return;
+          }
+          const latestBlock = todayBlocksRef.current.find((b) => b.BlockId === bid);
+          if (latestBlock) {
+            const latestStatus = getEffectiveBlockStatus(latestBlock);
+            if (
+              latestBlock.ActualStart ||
+              ["active", "paused", "completed", "partial", "done", "missed", "skipped"].includes(latestStatus)
+            ) return;
+          }
+
           const subject = block.PlannedSubject || "Study";
           const topic = block.PlannedTopic || "No topic";
 
@@ -1716,7 +1683,7 @@ export default function PlanPage() {
           setStatus(`⏰ ${speechText}`);
         }
 
-        for (const block of todayBlocks) {
+        for (const block of todayBlocksRef.current) {
           if (!block?.BlockId) continue;
 
           const blockId = block.BlockId;
@@ -1733,17 +1700,17 @@ export default function PlanPage() {
 
           const blockStatus = getEffectiveBlockStatus(block);
 
-          const hasStarted =
-            blockStatus === BLOCK_STATUS.ACTIVE ||
-            blockStatus === BLOCK_STATUS.PAUSED ||
-            blockStatus === BLOCK_STATUS.COMPLETED ||
-            blockStatus === BLOCK_STATUS.PARTIAL ||
-            blockStatus === BLOCK_STATUS.MISSED ||
-            blockStatus === BLOCK_STATUS.SKIPPED ||
-            blockStatus === "skipped" ||
-            !!block.ActualStart;
+          // startedBlocksRef is updated synchronously in handleStartBlock before any await,
+          // so it's reliable even when todayBlocksRef.current still shows the old PLANNED status.
+          const isAlreadyHandled =
+            startedBlocksRef.current.has(blockId) ||
+            ["active", "paused", "completed", "done", "partial", "missed", "skipped"].includes(String(block.Status || blockStatus || "").toLowerCase()) ||
+            block.started_at ||
+            block.startedAt ||
+            block.ActualStart ||
+            block.actual_start_time;
 
-          if (!hasStarted && blockStatus === BLOCK_STATUS.PLANNED) {
+          if (!isAlreadyHandled) {
             if (delta >= 0 && !current.start_now) {
               fireStartReminder(block, "start_now");
               current.start_now = true;
@@ -1882,6 +1849,13 @@ export default function PlanPage() {
     }
 
     const nowIso = new Date().toISOString();
+
+    // Mark this block as started SYNCHRONOUSLY before any React state update or await.
+    // The reminder interval reads startedBlocksRef inside its setReminderState updater,
+    // which runs during the render phase — after this synchronous code has already run.
+    // This prevents "Please begin" notifications during the stale-ref window between
+    // handleStartBlock being called and todayBlocksRef.current reflecting the new ACTIVE status.
+    startedBlocksRef.current.add(blockId);
 
     if (openFocus) {
       setSpotlightOpen(true);
@@ -2025,41 +1999,80 @@ export default function PlanPage() {
     setStopConfirmOpen(true);
   }
 
-  function handleStopBlock(block) {
+  async function handleStopBlock(block) {
     if (!block) return;
 
     const blockId = block.BlockId;
+    console.log("[StopBlock] clicked", block);
 
+    // 1. Close modal + clear ALL execution state immediately for responsive UI
+    console.log("[StopBlock] clearing execution state");
     setStopConfirmOpen(false);
     setPendingStopBlock(null);
     setSpotlightOpen(false);
+    setActiveReviewBlock(null);  // close review popup immediately (also repeated at step 5)
 
+    // 2. Optimistic local update — mark stopped so UI reflects immediately
+    // currentBlock useMemo recomputes to null/next-planned block, which triggers
+    // the timer useEffect cleanup → clearInterval fires → no ghost timer
     setTodayBlocks((prev) =>
       prev.map((b) =>
         b.BlockId === blockId
-          ? {
-            ...b,
-            Status: "review_pending",
-          }
+          ? { ...b, Status: BLOCK_STATUS.PARTIAL, ActualEnd: new Date().toISOString() }
           : b
       )
     );
-
-    setActiveReviewBlock({
-      ...block,
-      Status: "review_pending",
+    setLiveElapsedSec(0);
+    console.log("[StopBlock] active states after clear", {
+      spotlightOpen: false,
+      activeReviewBlock: null,
+      pendingStopBlock: null,
+      stopConfirmOpen: false,
+      liveElapsedSec: 0,
     });
 
-    setReviewForm({
-      completionStatus: "",
-      topicMatchStatus: "",
-      outputType: "",
-      outputCount: 0,
-      focusRating: "",
-      interruptionReason: "",
-      reviewNotes: "",
-      backlogBucket: "",
-    });
+    // 3. Persist STOP to backend (PostgreSQL) — STOP ≠ COMPLETE
+    // STOP sets status='partial' (not 'completed'), no revision/knowledge linkage triggers
+    try {
+      // ⚠️ CRITICAL: Must include dayKey so backend finds correct block on correct day
+      const dayKey = date ? String(date).slice(0, 10) : new Date().toISOString().slice(0, 10);
+      
+      const payload = {
+        blockId,
+        dayKey,
+        status: "partial",
+        endedAt: new Date().toISOString(),
+        elapsedSec: liveElapsedSec
+      };
+      
+      console.log("[StopBlock] payload", payload);
+
+      const result = await updateBlockAction("stopBlock", payload);
+      
+      console.log("[StopBlock] backend response", result);
+      console.log("[StopBlock] backend status", result?.status ? result.status : (result?.ok ? 200 : 400));
+
+      if (!result?.ok) {
+        setStatus(`❌ Stop failed: ${result?.message || "unknown"}`);
+      } else {
+        setStatus("✅ Block stopped.");
+      }
+    } catch (e) {
+      console.error("[StopBlock] backend call failed", e);
+      setStatus("❌ Stop failed — please retry.");
+    }
+
+    // 4. Refetch blocks from backend to get authoritative state
+    // (This re-anchors the timer and ensures UI is in sync)
+    await loadBlocksForDate(date);
+
+    // 5. STOP cleanup: belt-and-suspenders after refetch — block is PARTIAL so
+    // currentBlock useMemo returns null/next, but reset explicitly to be safe
+    // ✅ NO revision trigger — STOP ≠ COMPLETE
+    // ✅ NO knowledge linkage — STOP is user-initiated abort
+    // ✅ NO PYQ auto-open — STOP doesn't generate new knowledge
+    setLiveElapsedSec(0);
+    setActiveReviewBlock(null);
   }
 
   async function handleSubmitReview() {
@@ -2111,7 +2124,7 @@ export default function PlanPage() {
 
       // Phase 8: Knowledge Linkage — fetch PYQ recommendation (non-blocking)
       if (res?.block?.id) {
-        fetch(`${BACKEND_URL}/api/knowledge/block/${res.block.id}`)
+        fetch(`${BACKEND_URL}/api/knowledge/block/${res.block.id}`, { cache: "no-store" })
           .then(r => r.json())
           .then(data => {
             if (data?.ok && data?.recommendation?.hasRecommendation) {
@@ -2286,15 +2299,55 @@ export default function PlanPage() {
       }
 
       setStatus("Syncing approved calendar events...");
-      const calOut = await post("syncCalendarFromBlocks", { date });
-      if (!calOut?.ok) {
-        console.warn("syncCalendarFromBlocks failed:", calOut);
+
+      const selectedDate = date;
+      console.log("[Plan Sync] selectedDate used:", selectedDate);
+
+      try {
+        const calOut = await post("syncCalendarFromBlocks", { date: selectedDate });
+        const calFailed =
+          calOut?.success === false ||
+          calOut?.ok === false ||
+          Number(calOut?.errors || 0) > 0;
+
+        const calSynced = Number(calOut?.synced || 0);
+        const calSkipped = Number(calOut?.skipped || 0);
+        const calTotal = calSynced + calSkipped;
+        const calSkippedRatio = calTotal > 0 ? calSkipped / calTotal : 0;
+
+        if (calFailed) {
+          console.error("syncCalendarFromBlocks failed:", calOut);
+        } else if (calTotal >= 20 && calSkippedRatio > 0.9) {
+          console.warn("High skip ratio in calendar sync:", calOut);
+        } else {
+          console.log("syncCalendarFromBlocks success:", calOut);
+        }
+      } catch (err) {
+        console.error("syncCalendarFromBlocks failed:", err);
       }
 
       setStatus("Syncing fixed reminders...");
-      const fixedOut = await post("syncFixedReminders", { date });
-      if (!fixedOut?.ok) {
-        console.warn("syncFixedReminders failed:", fixedOut);
+      try {
+        const fixedOut = await post("syncFixedReminders", { date: selectedDate });
+        const fixedFailed =
+          fixedOut?.success === false ||
+          fixedOut?.ok === false ||
+          Number(fixedOut?.errors || 0) > 0;
+
+        const fixedSynced = Number(fixedOut?.synced || 0);
+        const fixedSkipped = Number(fixedOut?.skipped || 0);
+        const fixedTotal = fixedSynced + fixedSkipped;
+        const fixedSkippedRatio = fixedTotal > 0 ? fixedSkipped / fixedTotal : 0;
+
+        if (fixedFailed) {
+          console.error("syncFixedReminders failed:", fixedOut);
+        } else if (fixedTotal >= 20 && fixedSkippedRatio > 0.9) {
+          console.warn("High skip ratio in reminders sync:", fixedOut);
+        } else {
+          console.log("syncFixedReminders success:", fixedOut);
+        }
+      } catch (err) {
+        console.error("syncFixedReminders failed:", err);
       }
 
       if (reminderBlocksToRegister.length > 0) {
@@ -2307,6 +2360,7 @@ export default function PlanPage() {
             userId: "moulika",
             blocks: reminderBlocksToRegister,
           }),
+          cache: "no-store",
         });
 
         const regText = await regRes.text();
@@ -2552,129 +2606,82 @@ export default function PlanPage() {
         onStop={requestStopBlock}
       />
 
-      <QuickActions
-        onStudyBlocks={() => scrollToSection(studyBlocksRef)}
-        onNightReview={() => scrollToSection(nightReviewRef)}
-        onLoopDetector={() => scrollToSection(loopDetectorRef)}
-      />
-
-      <div className="mos-daily-actions">
-        <div className="mos-card-label mos-card-label--saf">EXECUTION • DAILY ACTIONS</div>
-
-        <div className="mos-section-title">Daily Actions</div>
-
-        <div className="mos-section-sub">
-          Protect the day with clean actions and low friction.
-        </div>
-
-        <div className="mos-actions-row">
-          <button className="btn" disabled={busy} onClick={onSetup}>
-            Setup Sheets
-          </button>
-
-          <button className="btn btn-primary" disabled={busy} onClick={onSaveDaily}>
-            Save Daily Log
-          </button>
-
-          <button className="btn" disabled={busy} onClick={onAnalyzeOnly}>
-            Analyze Day Only
-          </button>
-
-          <button className="btn" disabled={busy} onClick={onWeeklyRollup}>
-            Weekly Rollup
-          </button>
-
-          <button
-            className="btn"
-            disabled={busy}
-            onClick={async () => {
-              const perm = await ensureNotificationPermission();
-              setAlertPermission(perm);
-              setStatus(`Notification permission: ${perm}`);
-            }}
-          >
-            Enable Alerts
-          </button>
-        </div>
-      </div>
-
       {status && <div className="mos-status-box">{status}</div>}
 
       {/* Phase 8: Knowledge Linkage — PYQ Recommendation Banner */}
       {pyqRecommendation && (
         <div
-          className="knowledge-linkage-banner"
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             gap: 12,
-            padding: "12px 18px",
-            marginTop: 10,
-            background: "linear-gradient(135deg, rgba(16,185,129,0.15), rgba(59,130,246,0.10))",
-            border: "1px solid rgba(16,185,129,0.30)",
-            borderRadius: 12,
-            backdropFilter: "blur(8px)",
-            animation: "fadeIn 0.4s ease-out",
+            padding: "10px 16px",
+            background: "rgba(249,115,22,0.06)",
+            border: "1px solid rgba(249,115,22,0.18)",
+            borderRadius: 10,
           }}
         >
-          <span style={{ fontSize: 14, color: "rgba(226,232,240,0.9)" }}>
-            📝 <b>{pyqRecommendation.questionCount}</b> PYQs available for this topic
+          <span style={{ fontSize: 13, color: "#94a3b8", fontFamily: "var(--mono,monospace)" }}>
+            <b style={{ color: "#f97316" }}>{pyqRecommendation.questionCount}</b> PYQs linked to this topic
           </span>
           <div style={{ display: "flex", gap: 8, flexShrink: 0 }}>
             <a
               href={`/pyq/topic/${encodeURIComponent(pyqRecommendation.nodeId || "")}`}
+              onClick={() => {
+                if (pyqRecommendation.linkId) {
+                  fetch(`${BACKEND_URL}/api/pyq-linkage/${pyqRecommendation.linkId}`, {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ status: "started" }),
+                  }).catch(() => {});
+                }
+              }}
               style={{
-                padding: "6px 14px",
-                borderRadius: 8,
-                background: "rgba(16,185,129,0.25)",
-                color: "#10b981",
-                fontWeight: 600,
-                fontSize: 13,
+                padding: "5px 13px", borderRadius: 7,
+                background: "rgba(249,115,22,0.12)",
+                color: "#f97316", fontWeight: 700, fontSize: 12,
                 textDecoration: "none",
-                border: "1px solid rgba(16,185,129,0.35)",
+                border: "1px solid rgba(249,115,22,0.24)",
+                fontFamily: "var(--mono,monospace)",
               }}
             >
-              Solve PYQs →
+              Practice →
             </a>
             <button
               onClick={() => setPyqRecommendation(null)}
               style={{
-                padding: "6px 12px",
-                borderRadius: 8,
-                background: "rgba(148,163,184,0.12)",
-                color: "rgba(226,232,240,0.6)",
-                fontWeight: 500,
-                fontSize: 13,
-                border: "1px solid rgba(148,163,184,0.2)",
-                cursor: "pointer",
+                padding: "5px 11px", borderRadius: 7,
+                background: "transparent",
+                color: "#475569", fontWeight: 500, fontSize: 12,
+                border: "1px solid #1a2740", cursor: "pointer",
               }}
             >
-              Later
+              Dismiss
             </button>
           </div>
         </div>
       )}
 
-      {/* ── Today's Study Blocks ────────────────────────────────────────── */}
+      {/* ── Today’s Study Blocks ────────────────────────────────────────── */}
       <div
         ref={studyBlocksRef}
         style={{
           display: "flex", alignItems: "center", justifyContent: "space-between",
-          marginTop: 24, marginBottom: 4,
+          marginBottom: 8,
         }}
       >
-        <h2 className="mos-block-section-title" style={{ margin: 0 }}>
+        <h2 className="mos-block-section-title">
           Today’s Study Blocks
           {todayBlocks.length > 0 && (
-            <span style={{ fontSize: 13, fontWeight: 600, color: "rgba(226,232,240,0.52)", marginLeft: 10 }}>
-              {todayBlocks.length} block{todayBlocks.length !== 1 ? "s" : ""}
+            <span style={{ fontSize: 12, fontWeight: 500, color: "#334155", marginLeft: 10, fontFamily: "var(--mono,monospace)" }}>
+              {todayBlocks.length}
             </span>
           )}
         </h2>
         <button
           className="btn btn-primary"
-          style={{ fontSize: 13, padding: "8px 18px", whiteSpace: "nowrap" }}
+          style={{ fontSize: 12, padding: "7px 16px", whiteSpace: "nowrap" }}
           onClick={() => setAddBlockOpen(true)}
         >
           + Add Block
@@ -2682,16 +2689,7 @@ export default function PlanPage() {
       </div>
 
       {todayBlocks.length > 0 && (
-        <div
-          className="blocks-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: 16,
-            marginTop: 12,
-            marginBottom: 8,
-          }}
-        >
+        <div className="blocks-grid" style={{ marginTop: 0 }}>
           {todayBlocks.map((block) => (
             <StudyBlockCard
               key={block.BlockId || `${block.PlannedStart}-${block.PlannedSubject}-${block.PlannedTopic}`}
@@ -2708,14 +2706,36 @@ export default function PlanPage() {
 
       {todayBlocks.length === 0 && (
         <div style={{
-          marginTop: 12, marginBottom: 8,
-          padding: "24px 20px", textAlign: "center",
-          border: "1px dashed rgba(146,155,176,0.22)", borderRadius: 14,
-          color: "rgba(226,232,240,0.42)", fontSize: 14,
+          padding: "20px", textAlign: "center",
+          border: "1px dashed #141e30", borderRadius: 12,
+          color: "#334155", fontSize: 13,
+          fontFamily: "var(--mono,monospace)",
         }}>
-          No blocks yet. Parse a plan photo or click <strong>+ Add Block</strong> to begin.
+          No blocks scheduled. Click <b style={{ color: "#475569" }}>+ Add Block</b> to begin.
         </div>
       )}
+
+      <details className="adv-controls">
+        <summary className="adv-controls-summary">
+          <span>Advanced Controls</span>
+          <span className="adv-controls-chevron">›</span>
+        </summary>
+        <div className="adv-controls-body">
+
+        <div className="mos-daily-actions">
+          <div className="mos-card-label mos-card-label--saf">EXECUTION • DAILY ACTIONS</div>
+          <div className="mos-actions-row">
+            <button className="btn" disabled={busy} onClick={onSetup}>Setup Sheets</button>
+            <button className="btn btn-primary" disabled={busy} onClick={onSaveDaily}>Save Daily Log</button>
+            <button className="btn" disabled={busy} onClick={onAnalyzeOnly}>Analyze Day Only</button>
+            <button className="btn" disabled={busy} onClick={onWeeklyRollup}>Weekly Rollup</button>
+            <button className="btn" disabled={busy} onClick={async () => {
+              const perm = await ensureNotificationPermission();
+              setAlertPermission(perm);
+              setStatus(`Notification permission: ${perm}`);
+            }}>Enable Alerts</button>
+          </div>
+        </div>
 
       <div className="mos-plan-grid">
         <section className="mos-plan-left">
@@ -2843,7 +2863,9 @@ export default function PlanPage() {
           todayTriggered={todayTriggered}
           BACKEND_URL={BACKEND_URL}
         />
-      </div>
+      </div>{/* /mos-plan-grid */}
+        </div>{/* /adv-controls-body */}
+      </details>{/* /adv-controls */}
 
       <AddBlockModal
         open={addBlockOpen}

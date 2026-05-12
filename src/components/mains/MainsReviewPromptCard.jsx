@@ -1,8 +1,8 @@
 // src/components/mains/MainsReviewPromptCard.jsx
 // AIR-1 Review Prompt Card – Copy & Open ChatGPT for external review
 
-import React from "react";
-import { buildAir1ReviewPrompt } from "../../utils/mainsReviewApi.js";
+import React, { useState } from "react";
+import { buildAir1ReviewPrompt, buildAir1Prompt } from "../../utils/mainsReviewApi.js";
 
 const T = {
     bg:          "#09090b",
@@ -58,27 +58,53 @@ function MainsReviewPromptCard({
     canCopyReviewPrompt,
     promptCopied,
 }) {
+    const [isBuildingPrompt, setIsBuildingPrompt] = useState(false);
+
     if (!finalAnswerText?.trim()) {
         return null; // Don't show until answer is pasted
     }
 
     const handleCopyPrompt = async () => {
-        const prompt = buildAir1ReviewPrompt({
-            questionText: currentQuestion?.text || "",
-            marks: currentQuestion?.marks || "15",
-            wordLimit: wordTarget || "200",
-            answerText: finalAnswerText,
-        });
+        setIsBuildingPrompt(true);
         try {
-            await navigator.clipboard.writeText(prompt);
-            onCopyPrompt?.();
+            const payload = {
+                paper: currentQuestion?.paper || "GS",
+                subject: currentQuestion?.subject || "",
+                topic: currentQuestion?.topic || "",
+                syllabusNode: currentQuestion?.syllabusNode || currentQuestion?.nodeId || "",
+                question: currentQuestion?.text || "",
+                marks: currentQuestion?.marks || 15,
+                wordLimit: wordTarget || 200,
+                candidateAnswer: finalAnswerText || "",
+                basicReview: currentQuestion?.basicReview || "",
+                attemptHistory: currentQuestion?.attemptHistory || "",
+                mentorOsPyqMatches: currentQuestion?.mentorOsPyqMatches || "",
+                currentAffairsNotes: currentQuestion?.currentAffairsNotes || ""
+            };
+
+            const response = await buildAir1Prompt(payload);
+            
+            if (response && response.ok && response.prompt) {
+                await navigator.clipboard.writeText(response.prompt);
+                onCopyPrompt?.(); // triggers state update in parent
+                
+                // Show prompt success logic handled by parent via promptCopied
+                // Open ChatGPT
+                window.open("https://chatgpt.com", "_blank", "noopener,noreferrer");
+                onOpenChatGPT?.();
+            } else {
+                throw new Error("Failed to get prompt from backend");
+            }
         } catch (error) {
             console.error("Failed to copy prompt:", error);
+            alert("Failed to build AIR-1 prompt. Check console.");
+        } finally {
+            setIsBuildingPrompt(false);
         }
     };
 
     const handleOpenChatGPT = () => {
-        window.open("https://chat.openai.com", "_blank", "noopener,noreferrer");
+        window.open("https://chatgpt.com", "_blank", "noopener,noreferrer");
         onOpenChatGPT?.();
     };
 
@@ -98,7 +124,7 @@ function MainsReviewPromptCard({
             <div style={{ padding: "20px 24px" }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
                     <div>
-                        <div style={{ ...label11(T.subtle), marginBottom: 4 }}>AIR-1 Review Prompt</div>
+                        <div style={{ ...label11(T.subtle), marginBottom: 4 }}>Advanced AIR-1 Review</div>
                         <div style={{ fontSize: 13, color: T.dim }}>
                             Generate a strict external review of your answer using our AIR-1 evaluation framework.
                         </div>
@@ -111,12 +137,12 @@ function MainsReviewPromptCard({
                 }}>
                     <button
                         onClick={handleCopyPrompt}
-                        disabled={!canCopyReviewPrompt}
+                        disabled={!canCopyReviewPrompt || isBuildingPrompt}
                         style={{
-                            ...primaryBtn(T.purple, !canCopyReviewPrompt),
+                            ...primaryBtn(T.purple, !canCopyReviewPrompt || isBuildingPrompt),
                         }}
                     >
-                        {promptCopied ? "✓ Copied" : "📋 Copy AIR-1 Review Prompt"}
+                        {isBuildingPrompt ? "⏳ Generating..." : (promptCopied ? "✓ Copied" : "📋 Deep AIR-1 Review")}
                     </button>
                     <button
                         onClick={handleOpenChatGPT}
@@ -136,10 +162,36 @@ function MainsReviewPromptCard({
                     border: `1px solid ${T.border}`, borderRadius: 10,
                     fontSize: 12, color: T.dim, lineHeight: 1.65,
                 }}>
-                    <span style={{ color: T.textBright, fontWeight: 700 }}>Next steps:</span>
-                    {" "}Copy the prompt above → paste it in ChatGPT → let ChatGPT evaluate your answer → copy the
-                    complete review → paste in the section below.
+                    {!promptCopied ? (
+                        <div>
+                            <span style={{ color: T.textBright, fontWeight: 700 }}>Next steps:</span>
+                            {" "}Clicking the button will build the deep review prompt, copy it, and open ChatGPT.
+                        </div>
+                    ) : (
+                        <div style={{ color: T.textBright, fontWeight: 700 }}>Prompt copied. ChatGPT opened. Paste it there and copy the final review back.</div>
+                    )}
                 </div>
+
+                <details style={{ marginTop: 10, background: 'transparent' }}>
+                    <summary style={{ cursor: 'pointer', color: T.dim, fontSize: 12 }}>Advanced: Legacy prompt</summary>
+                    <div style={{ marginTop: 8, display: 'flex', gap: 8, alignItems: 'center' }}>
+                        <button
+                            onClick={async () => {
+                                const legacy = buildAir1ReviewPrompt({
+                                    questionText: currentQuestion?.text || "",
+                                    marks: currentQuestion?.marks || "15",
+                                    wordLimit: wordTarget || "200",
+                                    answerText: finalAnswerText,
+                                });
+                                try { await navigator.clipboard.writeText(legacy); } catch (e) { /* ignore */ }
+                            }}
+                            style={{ ...outlineBtn(T.purple) }}
+                        >
+                            Copy Legacy Prompt
+                        </button>
+                        <div style={{ fontSize: 12, color: T.dim }}>Legacy prompt preserved for advanced use only.</div>
+                    </div>
+                </details>
             </div>
         </div>
     );

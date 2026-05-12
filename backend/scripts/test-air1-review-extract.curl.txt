@@ -1,0 +1,9 @@
+curl -X POST "http://localhost:8787/api/air1-review/extract" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "userId": "moulika",
+    "question": "Discuss the role of pressure groups in Indian democracy.",
+    "studentAnswer": "Pressure groups influence policy by lobbying and mobilizing public opinion, but can also skew priorities toward organized interests.",
+    "air1Review": "The answer has decent basic understanding but remains generic. Introduction is brief and body lacks concrete Indian examples like farmer unions or industry associations. Conclusion is present but not forward-looking. Add stakeholder-wise analysis and one constitutional linkage for higher marks.",
+    "paper": "GS2"
+  }'

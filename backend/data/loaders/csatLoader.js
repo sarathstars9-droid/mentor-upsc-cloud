@@ -32,9 +32,12 @@ const CSAT_V2_DIR = path.resolve(__dirname, "../pyq_questions_v2/prelims/csat");
 const MODULE_TO_BUCKET = {
     "logical reasoning":     "lr",
     "reasoning":             "lr",
+    "decision making":       "lr",
     "quantitative aptitude": "quant",
+    "basic numeracy":        "quant",
     "mathematics":           "quant",
     "quant":                 "quant",
+    "data interpretation":   "quant",
     "reading comprehension": "rc",
     "comprehension":         "rc",
     "rc":                    "rc",
@@ -54,10 +57,13 @@ function filenameToBucket(filename) {
 
 // ── Directory walker ──────────────────────────────────────────────────────────
 
+const BACKUP_DIR_RE = /^(backup_old|_backup|old|archive)$/i;
+
 function walkDir(dir) {
     const results = [];
     if (!fs.existsSync(dir)) return results;
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        if (BACKUP_DIR_RE.test(entry.name)) continue;
         const fullPath = path.join(dir, entry.name);
         if (entry.isDirectory()) {
             results.push(...walkDir(fullPath));
@@ -105,7 +111,125 @@ function fingerprint(q) {
     return `${q.year ?? "?"}|${q.questionNumber ?? "?"}|${text}`;
 }
 
-// ── Core loader ───────────────────────────────────────────────────────────────
+// ── Options normalisation ─────────────────────────────────────────────────────
+
+function normalizeOptions(q) {
+    const raw = q.options;
+
+    if (Array.isArray(raw)) {
+        return {
+            a: raw[0] ?? "",
+            b: raw[1] ?? "",
+            c: raw[2] ?? "",
+            d: raw[3] ?? "",
+        };
+    }
+
+    if (raw && typeof raw === "object") {
+        return {
+            a: raw.a ?? raw.A ?? "",
+            b: raw.b ?? raw.B ?? "",
+            c: raw.c ?? raw.C ?? "",
+            d: raw.d ?? raw.D ?? "",
+        };
+    }
+
+    console.warn("[csatLoader] Missing options:", q.id ?? "(no id)");
+    return { a: "", b: "", c: "", d: "" };
+}
+
+// ── CSAT topic → canonical nodeId map ────────────────────────────────────────
+// Used to retroactively assign nodeIds to questions that only carry a `topic` field.
+const CSAT_TOPIC_TO_NODE_ID = {
+    // Quantitative Aptitude / Basic Numeracy
+    "Numbers":                             "CSAT-BN-NS",
+    "Number System":                       "CSAT-BN-NS",
+    "LCM-HCF":                             "CSAT-BN-LCMHCF",
+    "LCM – HCF":                           "CSAT-BN-LCMHCF",
+    "Ratio":                               "CSAT-BN-RATIO",
+    "Ratio – Proportion and Variations":   "CSAT-BN-RATIO",
+    "Percentage and Ratio":                "CSAT-BN-PERCENT",
+    "Percentages":                         "CSAT-BN-PERCENT",
+    "Percentage":                          "CSAT-BN-PERCENT",
+    "Profit-Loss":                         "CSAT-BN-PLD",
+    "Profit – Loss and Discounts":         "CSAT-BN-PLD",
+    "Interest":                            "CSAT-BN-INT",
+    "Simple Interest":                     "CSAT-BN-INT",
+    "Compound Interest":                   "CSAT-BN-INT",
+    "Time and Work":                       "CSAT-BN-TWP",
+    "Time, Work and Pipes":                "CSAT-BN-TWP",
+    "Time Speed Distance":                 "CSAT-BN-TSD",
+    "Time – Speed – Distance":             "CSAT-BN-TSD",
+    "Average":                             "CSAT-BN-AVG-MIX",
+    "Averages":                            "CSAT-BN-AVG-MIX",
+    "Average – Mixtures and Allegations":  "CSAT-BN-AVG-MIX",
+    "Mixtures":                            "CSAT-BN-AVG-MIX",
+    "Mixture":                             "CSAT-BN-AVG-MIX",
+    "Ages":                                "CSAT-BN-AGES",
+    "Simple Equations":                    "CSAT-BN-EQN",
+    "Linear Equations":                    "CSAT-BN-EQN",
+    "Permutations and Combinations":       "CSAT-BN-PNC",
+    "Probability":                         "CSAT-BN-PROB",
+    "Mensuration":                         "CSAT-BN-MENS",
+    "AP-GP":                               "CSAT-BN-APGP",
+    "AP – GP":                             "CSAT-BN-APGP",
+    "Trains":                              "CSAT-BN-TRAINS",
+    // Reading Comprehension
+    "Reading Comprehension":               "CSAT-RC-MISC",
+    "Theme":                               "CSAT-RC-THEME",
+    "Main Idea":                           "CSAT-RC-THEME",
+    "Central Idea":                        "CSAT-RC-THEME",
+    "Tone":                                "CSAT-RC-TONE",
+    "Summary":                             "CSAT-RC-TONE",
+    "Assumptions":                         "CSAT-RC-ASSUMP",
+    "Inference":                           "CSAT-RC-INFER",
+    "Inferences":                          "CSAT-RC-INFER",
+    "Conclusions":                         "CSAT-RC-CONCL",
+    "Factual Question":                    "CSAT-RC-FACT",
+    "Strengthening the Argument":          "CSAT-RC-STRENGTH",
+    "Weakening the Argument":              "CSAT-RC-WEAKEN",
+    // Logical Reasoning
+    "Directions":                          "CSAT-LR-DIR",
+    "Direction Sense":                     "CSAT-LR-DIR",
+    "Coding-Decoding":                     "CSAT-LR-CODE",
+    "Coding Decoding":                     "CSAT-LR-CODE",
+    "Inequalities":                        "CSAT-LR-INEQ",
+    "Syllogism":                           "CSAT-LR-SYL",
+    "Blood Relations":                     "CSAT-LR-BLOOD",
+    "Relationship Puzzles":                "CSAT-LR-BLOOD",
+    "Seating Arrangement":                 "CSAT-LR-SEAT",
+    "Sitting Arrangement":                 "CSAT-LR-SEAT",
+    "Puzzles":                             "CSAT-LR-PUZZLE",
+    "Ranking Puzzles":                     "CSAT-LR-PUZZLE",
+    "Multiple Correlation Puzzles":        "CSAT-LR-PUZZLE",
+    "Calendar":                            "CSAT-LR-CAL",
+    "Clock":                               "CSAT-LR-CLOCK",
+    "Series":                              "CSAT-LR-SERIES",
+    "Logical Reasoning":                   "CSAT-LR-MISC",
+    "Data Sufficiency":                    "CSAT-LR-MISC",
+    "Deductive Reasoning":                 "CSAT-LR-MISC",
+};
+
+/** Resolve canonical nodeId for a CSAT question using topic field as fallback. */
+function resolveCSATNodeId(q) {
+    if (q.nodeId)          return q.nodeId;
+    if (q.canonicalNodeId) return q.canonicalNodeId;
+    const topic = q.topic || q.subtopic || q.section || "";
+    if (!topic) return null;
+    // Exact match first
+    if (CSAT_TOPIC_TO_NODE_ID[topic]) return CSAT_TOPIC_TO_NODE_ID[topic];
+    // Case-insensitive fallback
+    const lower = topic.toLowerCase();
+    for (const [k, v] of Object.entries(CSAT_TOPIC_TO_NODE_ID)) {
+        if (k.toLowerCase() === lower) return v;
+    }
+    return null;
+}
+
+/** Export the map so other modules (routes, frontend utils) can reuse it. */
+export { CSAT_TOPIC_TO_NODE_ID };
+
+
 
 let _cache = null;
 
@@ -116,6 +240,7 @@ function loadAll() {
 
     const seenIds          = new Set();
     const seenFingerprints = new Set();
+    const seenBucketSlots  = new Set(); // bucket|year|questionNumber dedup
 
     const result = { quant: [], lr: [], rc: [] };
 
@@ -137,17 +262,11 @@ function loadAll() {
         for (const q of questions) {
             if (!q || typeof q !== "object") continue;
 
-            // Dedup by id first
-            if (q.id) {
-                if (seenIds.has(q.id)) continue;
-                seenIds.add(q.id);
-            } else {
-                const fp = fingerprint(q);
-                if (seenFingerprints.has(fp)) continue;
-                seenFingerprints.add(fp);
-            }
+            // ── Field normalisation ──────────────────────────────────────────
+            const questionText   = q.questionText   || q.question   || "";
+            const correctAnswer  = q.correctAnswer  || q.answer     || q.correct_answer || "";
 
-            // Determine bucket from question module, then file-level module, then filename
+            // Determine bucket early (needed for slot-dedup key)
             const bucket =
                 moduleToBucket(q.module) ||
                 moduleToBucket(meta.module) ||
@@ -158,14 +277,45 @@ function loadAll() {
                 continue;
             }
 
+            // ── Dedup by id ──────────────────────────────────────────────────
+            if (q.id) {
+                if (seenIds.has(q.id)) continue;
+                seenIds.add(q.id);
+            } else {
+                // Dedup by bucket|year|questionNumber (structural dedup)
+                const year   = q.year ?? "?";
+                const qNum   = q.questionNumber ?? "?";
+                if (year !== "?" && qNum !== "?") {
+                    const slot = `${bucket}|${year}|${qNum}`;
+                    if (seenBucketSlots.has(slot)) continue;
+                    seenBucketSlots.add(slot);
+                } else {
+                    // Fall back to text fingerprint when slot can't be determined
+                    const fp = fingerprint({ ...q, question: questionText });
+                    if (seenFingerprints.has(fp)) continue;
+                    seenFingerprints.add(fp);
+                }
+            }
+
+            const resolvedNodeId = resolveCSATNodeId(q);
             result[bucket].push({
                 ...q,
-                exam:    q.exam    || meta.exam    || "UPSC_CSE",
-                stage:   q.stage   || meta.stage   || "Prelims",
-                paper:   q.paper   || meta.paper   || "CSAT",
-                subject: q.subject || meta.subject || "CSAT",
-                module:  q.module  || meta.module,
+                question:       questionText,
+                questionText,
+                correctAnswer,
+                options:        normalizeOptions(q),
+                exam:           q.exam    || meta.exam    || "UPSC_CSE",
+                stage:          q.stage   || meta.stage   || "Prelims",
+                paper:          q.paper   || meta.paper   || "CSAT",
+                subject:        q.subject || meta.subject || "CSAT",
+                module:         q.module  || meta.module,
+                // Normalize nodeId from topic field so backend filters work
+                nodeId:         resolvedNodeId || undefined,
+                canonicalNodeId: resolvedNodeId || undefined,
+                // microTheme = subtopic > topic (never "Unknown")
+                microTheme:     q.microTheme || q.subtopic || q.topic || undefined,
             });
+
         }
     }
 

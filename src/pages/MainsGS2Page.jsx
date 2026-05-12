@@ -1104,18 +1104,21 @@ function QuestionCard({ q, onStart }) {
   });
 
   React.useEffect(() => {
-    try {
-      const attempts = JSON.parse(localStorage.getItem("mains_answer_attempts_v1") || "[]");
-      const matchingAttempt = attempts.find(a =>
-        a.question?.substring(0, 50) === q.question?.substring(0, 50)
-      );
-      if (matchingAttempt) {
-        setQuestionState({
-          hasAttempt: true, hasSavedAnswer: !!matchingAttempt.answerText,
-          hasExternalReview: false, hasProcessedReview: false,
-        });
-      }
-    } catch (e) {}
+    fetch(`${BACKEND_URL}/api/mains-answers?userId=user_1`, { cache: "no-store" })
+      .then(res => res.json())
+      .then(data => {
+        const attempts = Array.isArray(data) ? data : [];
+        const matchingAttempt = attempts.find(a =>
+          a.question?.substring(0, 50) === q.question?.substring(0, 50)
+        );
+        if (matchingAttempt) {
+          setQuestionState({
+            hasAttempt: true, hasSavedAnswer: !!matchingAttempt.answerText,
+            hasExternalReview: false, hasProcessedReview: false,
+          });
+        }
+      })
+      .catch(() => {});
   }, [q.question]);
 
   const { hasSavedAnswer, hasProcessedReview } = questionState;

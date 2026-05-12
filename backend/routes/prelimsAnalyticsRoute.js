@@ -97,4 +97,24 @@ router.post("/analyze-attempt", (req, res) => {
     }
 });
 
+import { buildAdaptiveTest } from "../services/pyqIntelligenceService.js";
+
+router.post("/adaptive-test", async (req, res) => {
+    try {
+        const { userId = "user_1", subjectId, count = 25 } = req.body || {};
+        const { questions, debug } = await buildAdaptiveTest({ userId, subjectId, count });
+        res.json({
+            success: true,
+            questions,
+            debug
+        });
+    } catch (error) {
+        console.error("Adaptive test build error:", error);
+        res.status(500).json({
+            success: false,
+            error: error.message || "Failed to build adaptive test"
+        });
+    }
+});
+
 export default router;

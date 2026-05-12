@@ -13,6 +13,9 @@ import cors from "cors";
 import multer from "multer";
 import OpenAI from "openai";
 import dotenv from "dotenv";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import pyqRoutes from "./routes/pyqRoutes.js";
 import buildTopicTest from "./phase3a/builders/buildTopicTest.js";
 import {
@@ -42,6 +45,12 @@ import { loadGs3Questions } from "./api/mainsGs3Questions.js";
 import mainsThemeRoutes from "./routes/mainsThemeRoutes.js";
 import mainsReviewRoutes from "./routes/mainsReviewRoutes.js";
 import mainsRoutes from "./routes/mainsRoutes.js";
+import mainsIntelligenceRoutes from "./routes/mainsIntelligenceRoutes.js";
+import testGeminiRoute from "./routes/testGemini.js";
+import evaluateAnswerRoute from "./routes/evaluateAnswerRoute.js";
+import air1ReviewRoutes from "./routes/air1ReviewRoutes.js";
+import mainsPatternRoutes from "./routes/mainsPatternRoutes.js";
+import mainsRecommendationRoutes from "./routes/mainsRecommendationRoutes.js";
 import {
   computeSyllabusProgress,
 } from "./brain/syllabusProgressEngine.js";
@@ -70,19 +79,80 @@ import planBlockRoutes from "./routes/planBlockRoutes.js";
 import reportRoutes from "./routes/reportRoutes.js";
 import plannerRoutes from "./routes/plannerRoutes.js";
 import knowledgeLinkageRoutes from "./routes/knowledgeLinkageRoutes.js";
+import pyqLinkageRoutes from "./routes/pyqLinkageRoutes.js";
+import pyqIntelligenceRoutes from "./routes/pyqIntelligenceRoutes.js";
+import adaptiveRoutes from "./routes/adaptiveRoutes.js";
+import prelimsUnifiedRoutes from "./routes/prelimsUnifiedRoutes.js";
+import prelimsTestRoutes from "./routes/prelimsTestRoutes.js";
 import {
   startBlock   as dbStartBlock,
   pauseBlock   as dbPauseBlock,
   resumeBlock  as dbResumeBlock,
   completeBlock as dbCompleteBlock,
+  stopBlock    as dbStopBlock,
   mergeLifecycleIntoGasBlocks,
 } from "./services/blockLifecycleService.js";
 import { syncBlockToCalendar } from "./services/calendarBridgeService.js";
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const PRELIMS_FULL_LENGTH_DIR = path.join(__dirname, "data", "pyq_papers", "prelims");
+
 console.log("[BOOT] server.js loaded");
 
 /* -------------------- HELPERS -------------------- */
+
+function readPrelimsFullLengthPapers() {
+  if (!fs.existsSync(PRELIMS_FULL_LENGTH_DIR)) return [];
+
+  return fs.readdirSync(PRELIMS_FULL_LENGTH_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
+    .map((entry) => {
+      const match =
+        entry.name.match(/^(\d{4})\.json$/) ||
+        entry.name.match(/^prelims_(\d{4})_/);
+      if (!match) return null;
+
+      const year = Number(match[1]);
+      const paperId = entry.name.replace(/\.json$/i, "");
+      const filePath = path.join(PRELIMS_FULL_LENGTH_DIR, entry.name);
+      let questionCount = 0;
+
+      try {
+        const paper = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+        questionCount = Number(paper?.totalQuestions) || (Array.isArray(paper?.questions) ? paper.questions.length : 0);
+      } catch (error) {
+        console.warn("[Prelims FullLength] failed reading paper catalog item", {
+          file: entry.name,
+          error: String(error?.message || error),
+        });
+      }
+
+      return { year, paperId, questionCount };
+    })
+    .filter(Boolean)
+    .sort((a, b) => b.year - a.year || a.paperId.localeCompare(b.paperId));
+}
+
+function readPrelimsFullLengthPaperById(paperId) {
+  const safePaperId = String(paperId || "").trim();
+  if (!/^(?:\d{4}|prelims_\d{4}_[a-z0-9_]+)$/i.test(safePaperId)) return null;
+
+  const filePath = path.join(PRELIMS_FULL_LENGTH_DIR, `${safePaperId}.json`);
+  if (!fs.existsSync(filePath)) return null;
+
+  const paper = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  const questions = Array.isArray(paper?.questions) ? paper.questions : [];
+
+  return {
+    paperId: safePaperId,
+    year: Number(paper?.year) || Number(safePaperId.match(/\d{4}/)?.[0]),
+    paper: paper?.paper || "GS",
+    questionCount: Number(paper?.totalQuestions) || questions.length,
+    questions,
+  };
+}
 
 function normalizeOcrSubject(subject = "", topic = "") {
   const s = String(subject || "").trim().toLowerCase().replace(/\s+/g, " ");
@@ -428,6 +498,11 @@ app.use("/api/blocks", blockResolveRoute);        // isolated block classificati
 
 // ── Mistake, Revision & Weakness routes ──────────────────────────────────────
 app.use("/api/mistakes", mistakeRoutes);
+app.use("/api/test-gemini", testGeminiRoute);
+app.use("/api/evaluate-answer", evaluateAnswerRoute);
+app.use("/api/air1-review", air1ReviewRoutes);
+app.use("/api/mains-patterns", mainsPatternRoutes);
+app.use("/api/mains-patterns", mainsRecommendationRoutes);
 app.use("/api/revision-items", revisionRoutes);
 app.use("/api/revision", revisionRoutes);   // alias — same router, both paths work
 app.use("/api/weakness", weaknessRoutes);
@@ -446,6 +521,11 @@ app.use("/api/planner", plannerRoutes);
 // ── Knowledge Linkage Engine (Phase 8) ───────────────────────────────────────
 // Connects Study → PYQs → Mistakes → Revision → Planner
 app.use("/api/knowledge", knowledgeLinkageRoutes);
+app.use("/api/pyq-linkage", pyqLinkageRoutes);
+app.use("/api/pyq-intelligence", pyqIntelligenceRoutes);
+app.use("/api/adaptive", adaptiveRoutes);
+app.use("/api/prelims-unified", prelimsUnifiedRoutes);
+app.use("/api/prelims-tests", prelimsTestRoutes);
 
 // ── PYQ Ingestion pipeline (Step 1: upload only) ───────────────────────────
 // Isolated admin utility — does NOT touch existing PYQ master/index logic
@@ -528,6 +608,12 @@ app.use("/api/mains", mainsReviewRoutes);
 // Backed by mains_master_clean_fixed.json via backend/loaders/mainsLoader.js
 // Safe mount — uses /api/mains/questions (no conflict with theme/review/gs* routes)
 app.use("/api/mains", mainsRoutes);
+
+/* -------------------- MAINS INTELLIGENCE ROUTES -------------------- */
+// Handles: POST /api/mains/evaluate for manual ChatGPT evaluation parsing and saving
+// Saves to PostgreSQL mains_answer_evaluations table
+// Safe mount — uses /api/mains/evaluate (no conflict with other mains routes)
+app.use("/api/mains", mainsIntelligenceRoutes);
 
 app.get("/api/mains/gs3/questions", (req, res) => {
   try {
@@ -1246,7 +1332,7 @@ app.get("/api/day/:dayKey", (req, res) => {
 /* PostgreSQL-derived timing values before being returned.  All other actions proxy to GAS.      */
 
 const LIFECYCLE_ACTIONS = new Set([
-  "startBlock", "pauseBlock", "resumeBlock", "completeBlock",
+  "startBlock", "pauseBlock", "resumeBlock", "completeBlock", "stopBlock",
 ]);
 const DEFAULT_PLAN_USER = process.env.DEFAULT_USER_ID || "moulika";
 
@@ -1308,6 +1394,9 @@ app.post("/api/sheets", async (req, res) => {
         } else if (action === "completeBlock") {
           const reason = p.completionStatus || p.reason || "completed";
           block = await dbCompleteBlock(userId, blockId, dayKey, { reason });
+          syncBlockToCalendar(block, "complete").catch(() => {});
+        } else if (action === "stopBlock") {
+          block = await dbStopBlock(userId, blockId, dayKey);
           syncBlockToCalendar(block, "complete").catch(() => {});
         }
 
@@ -1410,6 +1499,9 @@ app.get("/api/prelims/full-length/years", (_req, res) => {
   try {
     const gsData = loadGSData();
     const csatData = loadCSATData();
+    const fullLengthPapers = readPrelimsFullLengthPapers();
+    const availableFullLengthYears = [...new Set(fullLengthPapers.map((paper) => paper.year))]
+      .sort((a, b) => b - a);
 
     // Flatten GS data
     const allGSQuestions = [];
@@ -1427,9 +1519,37 @@ app.get("/api/prelims/full-length/years", (_req, res) => {
       ok: true,
       gs: gsYears.sort((a, b) => a - b),
       csat: csatYears.sort((a, b) => a - b),
+      availableFullLengthYears,
+      fullLengthPapers,
     });
   } catch (err) {
     console.error("❌ getAvailableYears error:", err);
+    return res.status(500).json({ ok: false, error: String(err?.message || err) });
+  }
+});
+
+app.get("/api/prelims/years", (_req, res) => {
+  try {
+    const csatData = loadCSATData();
+    const fullLengthPapers = readPrelimsFullLengthPapers();
+    const availableFullLengthYears = [...new Set(fullLengthPapers.map((paper) => paper.year))]
+      .sort((a, b) => b - a);
+    const allCSAT = [...csatData.lr, ...csatData.quant, ...csatData.rc];
+    const csatYears = [...new Set(
+      allCSAT.map((q) => Number(q.year)).filter((year) => Number.isFinite(year) && year > 1980)
+    )].sort((a, b) => a - b);
+
+    console.log("[Prelims FullLength] API years:", availableFullLengthYears);
+
+    return res.json({
+      ok: true,
+      gs: [...availableFullLengthYears].sort((a, b) => a - b),
+      csat: csatYears,
+      availableFullLengthYears,
+      fullLengthPapers,
+    });
+  } catch (err) {
+    console.error("/api/prelims/years error:", err);
     return res.status(500).json({ ok: false, error: String(err?.message || err) });
   }
 });
@@ -1485,6 +1605,7 @@ app.post("/api/prelims/practice/build", (req, res) => {
       practicePaper: rawPracticePaper,
       mode,
       fullLengthYear,
+      fullLengthPaperId,
       paper,
       year,
     } = req.body || {};
@@ -1635,7 +1756,40 @@ app.post("/api/prelims/practice/build", (req, res) => {
         console.log("🚀 FULL LENGTH MODE HIT", {
           year: fullLengthYearFinal,
           paper: normalizedPaper,
+          paperId: fullLengthPaperId || null,
         });
+
+        if (normalizedPaper === "GS") {
+          const fullPaper = readPrelimsFullLengthPaperById(fullLengthPaperId || String(fullLengthYearFinal));
+
+          if (fullPaper?.questions?.length) {
+            const requestedCount = Number(count) || 100;
+            const questions = fullPaper.questions.slice(0, requestedCount).map((question) => ({
+              ...question,
+              stage: question.stage || "prelims",
+              paper: question.paper || "GS",
+              year: question.year || fullPaper.year,
+            }));
+
+            console.log("[Prelims FullLength] selected paper:", {
+              year: fullPaper.year,
+              paperId: fullPaper.paperId,
+              questionCount: fullPaper.questionCount,
+              returned: questions.length,
+            });
+
+            return res.json({
+              ok: true,
+              questions,
+              total: questions.length,
+              mode: "full_length",
+              year: fullPaper.year,
+              paper: "GS",
+              paperId: fullPaper.paperId,
+              questionCount: fullPaper.questionCount,
+            });
+          }
+        }
 
         // Load from correct prelims data sources
         let allQuestions = [];

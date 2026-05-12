@@ -1,0 +1,93 @@
+{
+  "status": "corrected_against_docx_source_truth",
+  "sourceTruth": "envi.docx",
+  "totalQuestionsDocx": 345,
+  "totalQuestionsJson": 345,
+  "difference": 0,
+  "duplicates": [],
+  "postCorrectionMismatches": [],
+  "topicCounts": {
+    "Biodiversity (India + World)": 35,
+    "Climate Change": 54,
+    "Conservation & Protected Areas": 24,
+    "Ecology & Ecosystem": 39,
+    "Environmental Laws & Institutions": 82,
+    "Environmental Pollution": 45,
+    "Misc Environment": 20,
+    "Species in News": 46
+  },
+  "yearWiseCounts": {
+    "2025": 19,
+    "2024": 19,
+    "2023": 18,
+    "2022": 17,
+    "2021": 15,
+    "2020": 18,
+    "2019": 18,
+    "2018": 12,
+    "2017": 14,
+    "2016": 16,
+    "2015": 18,
+    "2014": 25,
+    "2013": 17,
+    "2012": 20,
+    "2011": 19,
+    "2010": 19,
+    "2009": 9,
+    "2008": 12,
+    "2007": 5,
+    "2006": 3,
+    "2005": 4,
+    "2004": 3,
+    "2003": 4,
+    "2002": 3,
+    "2001": 2,
+    "2000": 1,
+    "1999": 5,
+    "1998": 5,
+    "1996": 3,
+    "1995": 2
+  },
+  "fixSummary": {
+    "answerKeysCorrected": 265,
+    "questionTextsCorrected": 25,
+    "optionsCorrected": 22,
+    "reviewFlagsCleared": 20
+  },
+  "answerCorrectionsByTopic": {
+    "Biodiversity (India + World)": 23,
+    "Climate Change": 46,
+    "Conservation & Protected Areas": 19,
+    "Ecology & Ecosystem": 32,
+    "Environmental Laws & Institutions": 59,
+    "Environmental Pollution": 37,
+    "Misc Environment": 17,
+    "Species in News": 32
+  },
+  "questionTextCorrectionsByTopic": {
+    "Biodiversity (India + World)": 2,
+    "Climate Change": 4,
+    "Conservation & Protected Areas": 3,
+    "Ecology & Ecosystem": 1,
+    "Environmental Laws & Institutions": 8,
+    "Misc Environment": 2,
+    "Species in News": 5
+  },
+  "optionCorrectionsByTopic": {
+    "Climate Change": 3,
+    "Ecology & Ecosystem": 2,
+    "Environmental Laws & Institutions": 12,
+    "Species in News": 5
+  },
+  "reviewFlagsClearedByTopic": {
+    "Climate Change": 2,
+    "Conservation & Protected Areas": 2,
+    "Ecology & Ecosystem": 1,
+    "Environmental Laws & Institutions": 4,
+    "Environmental Pollution": 6,
+    "Misc Environment": 1,
+    "Species in News": 4
+  },
+  "unmatchedJsonQuestions": [],
+  "generatedAt": "2026-04-24"
+}

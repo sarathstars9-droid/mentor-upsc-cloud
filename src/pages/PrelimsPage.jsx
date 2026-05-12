@@ -1,10 +1,61 @@
 import { useEffect, useMemo, useState, useCallback, useRef } from "react";
 import { BACKEND_URL } from "../config";
+import {
+  fetchUnifiedQuestions,
+  normalizeUnifiedQuestion,
+  PRELIMS_TO_UNIFIED_SUBJECT,
+  fetchUnifiedTopics,
+} from "../utils/prelimsUnifiedFetcher";
 import { PRELIMS_STRUCTURE } from "../data/prelimsStructure";
 import { recordTestAttempt, buildTestId } from "../utils/prelimsMistakeEngine";
 
 const CURRENT_USER_ID = "user_1";
 
+const SUBJECT_LABEL_MAP = {
+  ancient_history: "Ancient History",
+  ancient: "Ancient History",
+  medieval_history: "Medieval History",
+  medieval: "Medieval History",
+  modern_history: "Modern History",
+  modern: "Modern History",
+  history: "Modern History",
+  art_culture: "Art & Culture",
+  art_and_culture: "Art & Culture",
+  culture: "Art & Culture",
+  art: "Art & Culture",
+  polity: "Polity",
+  indian_polity: "Polity",
+  constitution: "Polity",
+  economy: "Economy",
+  economics: "Economy",
+  indian_economy: "Economy",
+  geography: "Geography",
+  geo: "Geography",
+  physical_geography: "Geography",
+  environment: "Environment",
+  env: "Environment",
+  ecology: "Environment",
+  science_tech: "Science & Tech",
+  science: "Science & Tech",
+  science_and_technology: "Science & Tech",
+  technology: "Science & Tech",
+  international_relations: "International Relations",
+  ir: "International Relations",
+  current_affairs: "Current Affairs",
+  csat_rc: "CSAT – RC",
+  csat_quant: "CSAT – Quant",
+  csat_reasoning: "CSAT – Reasoning",
+};
+
+function prettyNodeName(nodeId) {
+  if (!nodeId) return "";
+  return nodeId
+    .replace(/^GS\d[-_]/, "")
+    .replace(/[-_]MT\d+$/, "")
+    .replace(/[-_]/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase())
+    .trim();
+}
 
 import PyqTestStart from "../components/Prelims/PyqTestStart";
 import PyqTestAttempt from "../components/Prelims/PyqTestAttempt";
@@ -20,31 +71,28 @@ import StatsBreakdownPanel from "../components/Prelims/StatsBreakdownPanel";
 const pageStyle = {
   minHeight: "100%",
   padding: 20,
-  background:
-    "radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 22%), radial-gradient(circle at top left, rgba(168, 85, 247, 0.08), transparent 24%), #020617",
-  color: "#f8fafc",
+  background: "#06091a",
+  color: "#f1f5f9",
 };
 
 const heroStyle = {
-  background:
-    "linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.92))",
-  border: "1px solid rgba(148, 163, 184, 0.18)",
-  borderRadius: 24,
+  background: "#0d1224",
+  border: "1px solid #1e2a45",
+  borderRadius: 16,
   padding: 22,
-  marginBottom: 18,
-  boxShadow: "0 20px 50px rgba(2, 6, 23, 0.32)",
+  marginBottom: 16,
+  boxShadow: "0 1px 0 rgba(99,102,241,0.12) inset",
 };
 
 const sectionStyle = {
-  marginTop: 18,
+  marginTop: 16,
 };
 
 const cardStyle = {
-  background: "rgba(15, 23, 42, 0.88)",
-  border: "1px solid rgba(148, 163, 184, 0.10)",
-  borderRadius: 18,
+  background: "#0d1224",
+  border: "1px solid #1e2a45",
+  borderRadius: 14,
   padding: 18,
-  boxShadow: "0 12px 32px rgba(2, 6, 23, 0.28)",
 };
 
 const chipRowStyle = {
@@ -134,12 +182,22 @@ function dedupeQuestions(arr = []) {
 
 function normalizeQuestion(q) {
   if (!q) return null;
+  const ca =
+    q.correctAnswer ||
+    q.answer?.correct_option ||
+    (typeof q.answer === "string" && /^[A-Da-d]$/.test(q.answer) ? q.answer : null);
   return {
     ...q,
-    id: q.id || q.questionId || q.qid || "",
-    question: q.question || q.questionText || q.prompt || q.stem || "",
-    options: q.options || q.choices || null,
-    passageText: q.passageText || q.passage || "",
+    id:            q.id || q.questionId || q.qid || "",
+    question:      q.question || q.questionText || q.prompt || q.stem || "",
+    options:       q.options || q.choices || null,
+    passageText:   q.passageText || q.passage || "",
+    correctAnswer: ca ? String(ca).toUpperCase() : (q.correctAnswer || null),
+    nodeId:        q.nodeId || q.syllabusNodeId || q.sectionId || "",
+    syllabusNodeId: q.syllabusNodeId || q.nodeId || "",
+    microTheme:    q.microTheme || "",
+    year:          q.year || null,
+    questionType:  q.questionType || (q.options ? "MCQ_SINGLE" : ""),
   };
 }
 
@@ -648,17 +706,35 @@ export default function PrelimsPage() {
   const [dashboard, setDashboard] = useState(null);
   const [dashboardLoading, setDashboardLoading] = useState(false);
   const [dashboardError, setDashboardError] = useState("");
+  const [smartRec, setSmartRec] = useState(null);
+
+  // ── Adaptive Next Actions state ─────────────────────────────────────────
+  const [adaptiveActions, setAdaptiveActions] = useState([]);
+  const [adaptiveActionsLoading, setAdaptiveActionsLoading] = useState(false);
 
   const [practicePaper, setPracticePaper] = useState("GS");
   const [practiceScope, setPracticeScope] = useState("subject");
 
   const [selectedSubjectId, setSelectedSubjectId] = useState("");
   const [selectedTopicId, setSelectedTopicId] = useState("");
+  const [selectedTopicNodeId, setSelectedTopicNodeId] = useState(""); // canonical nodeId for API calls
   const [selectedMicroThemeIds, setSelectedMicroThemeIds] = useState([]);
   const [practiceQuestionCount, setPracticeQuestionCount] = useState(10);
 
   const [fullLengthType, setFullLengthType] = useState("gs_yearwise");
   const [fullLengthYear, setFullLengthYear] = useState("2020");
+
+  // Year-filter state for sectional mode
+  const [availableYears, setAvailableYears] = useState({
+    gs: [],
+    csat: [],
+    availableFullLengthYears: [],
+    fullLengthPapers: [],
+  });
+  const [sectionYearMode, setSectionYearMode] = useState("all");
+  const [sectionYear, setSectionYear] = useState("");
+  const [sectionYearFrom, setSectionYearFrom] = useState("");
+  const [sectionYearTo, setSectionYearTo] = useState("");
 
   const [institutionalForm, setInstitutionalForm] = useState({
     instituteName: "",
@@ -676,6 +752,7 @@ export default function PrelimsPage() {
 
   const [builderLoading, setBuilderLoading] = useState(false);
   const [builderError, setBuilderError] = useState("");
+  const [builderWarning, setBuilderWarning] = useState("");
 
   // ── Cross-device Topic Progress State ─────────────────────────────────────
   const [topicProgress, setTopicProgress] = useState(null);
@@ -700,6 +777,12 @@ export default function PrelimsPage() {
   const [currentRcPassageIndex, setCurrentRcPassageIndex] = useState(0);
   const [rcElapsedSeconds, setRcElapsedSeconds] = useState(0);
   const rcTimerRef = useRef(null);
+  const [customizeOpen, setCustomizeOpen] = useState(false);
+
+  // ── Unified dynamic topics (GS subjects) ────────────────────────────────
+  const [unifiedTopics, setUnifiedTopics] = useState([]);
+  const [unifiedTopicsLoading, setUnifiedTopicsLoading] = useState(false);
+  const [unifiedTopicsError, setUnifiedTopicsError] = useState("");
 
   // Fetch actual buildable GS counts from backend once on mount
   useEffect(() => {
@@ -711,6 +794,29 @@ export default function PrelimsPage() {
     return () => { active = false; };
   }, []);
 
+  // Fetch available years from backend once on mount
+  useEffect(() => {
+    let active = true;
+    fetch(`${BACKEND_URL}/api/prelims/years`)
+      .then((r) => r.json())
+      .then((json) => {
+        if (active && json?.ok) {
+          const years = {
+            gs: json.gs || [],
+            csat: json.csat || [],
+            availableFullLengthYears: json.availableFullLengthYears || [],
+            fullLengthPapers: json.fullLengthPapers || [],
+          };
+          console.log("[Prelims FullLength] API years:", years.availableFullLengthYears);
+          console.log("[PrelimsPage] availableYears fetched — GS:", years.gs.length, "years, range:", years.gs[0], "–", years.gs[years.gs.length - 1],
+            "| CSAT:", years.csat.length, "years");
+          setAvailableYears(years);
+        }
+      })
+      .catch((err) => { console.warn("[PrelimsPage] Failed to fetch available years:", err); });
+    return () => { active = false; };
+  }, []);
+
   // Fetch live CSAT subject counts from backend once on mount
   useEffect(() => {
     let active = true;
@@ -719,6 +825,21 @@ export default function PrelimsPage() {
       .then((json) => { if (active && json?.ok) setCsatCountsFromAPI(json.counts); })
       .catch(() => { });
     return () => { active = false; };
+  }, []);
+
+  // Fetch authoritative subject counts from unified health endpoint
+  const [subjectCounts, setSubjectCounts] = useState({});
+  useEffect(() => {
+    async function loadCounts() {
+      try {
+        const res = await fetch(`${BACKEND_URL}/api/prelims-unified/health`);
+        const data = await res.json();
+        setSubjectCounts(data.bySubject || {});
+      } catch (e) {
+        console.warn("Failed to load subject counts", e);
+      }
+    }
+    loadCounts();
   }, []);
 
   // Fetch real RC subtopic counts when user selects CSAT → Reading Comprehension
@@ -801,25 +922,258 @@ export default function PrelimsPage() {
     };
   }, [testId]);
 
-  const subjects = useMemo(() => {
-    const base =
-      practicePaper === "GS"
-        ? PRELIMS_STRUCTURE?.gs || []
-        : PRELIMS_STRUCTURE?.csat || [];
+  useEffect(() => {
+    let alive = true;
+    async function fetchSmartRec() {
+      try {
+        const [weakRes, histRes] = await Promise.all([
+          fetch(`${BACKEND_URL}/api/weakness/top?userId=${encodeURIComponent(CURRENT_USER_ID)}&limit=3`),
+          fetch(`${BACKEND_URL}/api/prelims-tests/history?userId=${encodeURIComponent(CURRENT_USER_ID)}&limit=10`),
+        ]);
+        const weakJson = weakRes.ok ? await weakRes.json() : {};
+        const histJson = histRes.ok ? await histRes.json() : {};
+        const nodes = Array.isArray(weakJson?.nodes) ? weakJson.nodes : [];
+        const attempts = Array.isArray(histJson?.attempts) ? histJson.attempts : [];
 
-    return base.map((item) => ({
-      id: item.id,
-      label: item.label || item.name || item.id,
-      // Use live API count when available; fall back to static
-      count: practicePaper === "GS" && gsCountsFromAPI?.[item.id] != null
-        ? gsCountsFromAPI[item.id]
-        : practicePaper === "CSAT" && csatCountsFromAPI?.[item.id] != null
-        ? csatCountsFromAPI[item.id]
-        : (item.count || 0),
-    }));
-  }, [practicePaper, gsCountsFromAPI, csatCountsFromAPI]);
+        if (!nodes.length) {
+          // Fallback: Compute from available data
+          let fallbackComputed = false;
+          try {
+            const [revRes, mEngine] = await Promise.all([
+              fetch(`${BACKEND_URL}/api/revision?userId=${encodeURIComponent(CURRENT_USER_ID)}&stage=prelims`),
+              import("../utils/prelimsMistakeEngine").catch(() => null)
+            ]);
+            const revItems = revRes.ok ? await revRes.json() : [];
+            const localMistakes = mEngine ? await mEngine.getAllMistakes() : [];
+
+            const stats = {};
+            const addStat = (id, type, val, date) => {
+              if (!id || id === 'Unknown') return;
+              if (!stats[id]) stats[id] = { mistakes: 0, revCount: 0, accuracySum: 0, testCount: 0, lastRevised: null, isNode: false };
+              if (type === 'mistake') stats[id].mistakes += val;
+              if (type === 'rev') stats[id].revCount += val;
+              if (type === 'acc') {
+                stats[id].accuracySum += val;
+                stats[id].testCount += 1;
+              }
+              if (date) {
+                const d = new Date(date);
+                if (!stats[id].lastRevised || d > stats[id].lastRevised) stats[id].lastRevised = d;
+              }
+            };
+
+            attempts.forEach(a => {
+              if (a.node_id) { addStat(a.node_id, 'acc', Number(a.accuracy || 0), a.created_at || a.started_at); stats[a.node_id].isNode = true; }
+              else if (a.subject) addStat(a.subject, 'acc', Number(a.accuracy || 0), a.created_at || a.started_at);
+            });
+
+            localMistakes.forEach(m => {
+              if (m.nodeId) { addStat(m.nodeId, 'mistake', 1, m.timestamp || m.created_at); stats[m.nodeId].isNode = true; }
+              else if (m.subjectId) addStat(m.subjectId, 'mistake', 1, m.timestamp || m.created_at);
+            });
+
+            (Array.isArray(revItems) ? revItems : []).forEach(r => {
+              if (r.node_id) { addStat(r.node_id, 'rev', 1, r.updated_at || r.created_at); stats[r.node_id].isNode = true; }
+              else if (r.subject) addStat(r.subject, 'rev', 1, r.updated_at || r.created_at);
+            });
+
+            const sorted = Object.keys(stats).sort((a, b) => {
+              const sA = stats[a];
+              const sB = stats[b];
+              const scoreA = sA.mistakes * 5 + sA.revCount * 3 + (sA.testCount > 0 ? (100 - (sA.accuracySum/sA.testCount)) : 0);
+              const scoreB = sB.mistakes * 5 + sB.revCount * 3 + (sB.testCount > 0 ? (100 - (sB.accuracySum/sB.testCount)) : 0);
+              return scoreB - scoreA;
+            });
+
+            if (sorted.length > 0 && (stats[sorted[0]].mistakes > 0 || stats[sorted[0]].revCount > 0 || stats[sorted[0]].testCount > 0)) {
+              const topId = sorted[0];
+              const s = stats[topId];
+              const isNode = s.isNode || topId.includes("MT");
+              const avgAcc = s.testCount > 0 ? Math.round(s.accuracySum / s.testCount) : null;
+              const lastRevisedDays = s.lastRevised ? Math.floor((Date.now() - s.lastRevised.getTime()) / 86400000) : null;
+
+              const whyBullets = [];
+              if (s.mistakes > 0) whyBullets.push(`You have ${s.mistakes} recorded mistake${s.mistakes > 1 ? "s" : ""} in this area`);
+              if (s.revCount > 0) whyBullets.push(`${s.revCount} item${s.revCount > 1 ? "s" : ""} pending for revision`);
+              if (lastRevisedDays != null) whyBullets.push(`Last revision was ${lastRevisedDays} day${lastRevisedDays !== 1 ? "s" : ""} ago`);
+              if (avgAcc != null && avgAcc < 50) whyBullets.push(`Accuracy is low (${avgAcc}%)`);
+              if (whyBullets.length === 0) whyBullets.push("Needs more practice based on recent data");
+
+              if (alive) {
+                setSmartRec({
+                  hasData: true,
+                  subject: isNode ? "Practice" : (SUBJECT_LABEL_MAP[topId] || topId),
+                  subjectId: isNode ? "" : topId,
+                  topic: isNode ? prettyNodeName(topId) : "General Review",
+                  nodeId: isNode ? topId : "",
+                  accuracy: avgAcc,
+                  previousAccuracy: null,
+                  lastRevisedDays,
+                  mistakes: s.mistakes,
+                  priority: (avgAcc != null && avgAcc < 40) || s.mistakes > 5 ? "Critical" : "High",
+                  weaknessScore: null,
+                  whyBullets
+                });
+                fallbackComputed = true;
+              }
+            }
+          } catch (e) {
+            console.error("Fallback weak area error:", e);
+          }
+
+          if (!fallbackComputed && alive) setSmartRec(null);
+          return;
+        }
+
+        const top = nodes[0];
+
+        let topicLabel = "";
+        try {
+          const nResp = await fetch(
+            `${BACKEND_URL}/api/prelims-unified/node/${encodeURIComponent(top.node_id)}?limit=1`
+          );
+          if (nResp.ok) {
+            const nJson = await nResp.json();
+            const mt = nJson?.questions?.[0]?.microTheme || "";
+            topicLabel = (mt && mt.toLowerCase() !== "general") ? mt : "";
+          }
+        } catch { /* ignore */ }
+        if (!topicLabel) topicLabel = prettyNodeName(top.node_id);
+        if (topicLabel.toLowerCase() === "general") topicLabel = "";
+
+        const subjectAttempts = attempts.filter(
+          (a) => (a.subject === top.subject || a.node_id === top.node_id) && a.accuracy != null
+        );
+        const accuracy = subjectAttempts[0] != null ? Math.round(Number(subjectAttempts[0].accuracy)) : null;
+        const previousAccuracy = subjectAttempts[1] != null ? Math.round(Number(subjectAttempts[1].accuracy)) : null;
+
+        const lastRevisedDays = top.last_activity_at
+          ? Math.floor((Date.now() - new Date(top.last_activity_at).getTime()) / 86_400_000)
+          : null;
+
+        const priorityMap = { critical: "Critical", high: "High", medium: "Medium", low: "Low" };
+        const priority = priorityMap[top.risk_level] || "High";
+
+        const whyBullets = [];
+        if (top.mistake_count > 0)
+          whyBullets.push(`You made ${top.mistake_count} mistake${top.mistake_count > 1 ? "s" : ""} in ${topicLabel || "this topic"}`);
+        if (top.repeat_mistake_count > 0)
+          whyBullets.push(`${top.repeat_mistake_count} repeated mistake${top.repeat_mistake_count > 1 ? "s" : ""} — patterns need fixing`);
+        if (lastRevisedDays != null)
+          whyBullets.push(`Last revision was ${lastRevisedDays} day${lastRevisedDays !== 1 ? "s" : ""} ago`);
+        if (top.overdue_revision_count > 0)
+          whyBullets.push(`${top.overdue_revision_count} overdue revision item${top.overdue_revision_count > 1 ? "s" : ""} need attention`);
+        if (whyBullets.length < 3)
+          whyBullets.push("High weightage topic in Prelims");
+
+        if (alive) setSmartRec({
+          hasData: true,
+          subject: SUBJECT_LABEL_MAP[top.subject] || top.subject || "Practice",
+          subjectId: top.subject || "",
+          topic: topicLabel,
+          nodeId: top.node_id || "",
+          accuracy,
+          previousAccuracy,
+          lastRevisedDays,
+          mistakes: top.mistake_count || 0,
+          priority,
+          weaknessScore: top.weakness_score || 0,
+          whyBullets,
+        });
+      } catch {
+        if (alive) setSmartRec(null);
+      }
+    }
+    fetchSmartRec();
+    return () => { alive = false; };
+  }, []);
+
+  // ── Fetch adaptive next actions from backend ────────────────────────────
+  useEffect(() => {
+    let alive = true;
+    async function fetchAdaptiveActions() {
+      try {
+        setAdaptiveActionsLoading(true);
+        const resp = await fetch(
+          `${BACKEND_URL}/api/adaptive/next-actions?userId=${encodeURIComponent(CURRENT_USER_ID)}&stage=prelims&limit=3`
+        );
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const json = await resp.json();
+        if (alive && json?.ok && Array.isArray(json.recommendations)) {
+          setAdaptiveActions(json.recommendations);
+        }
+      } catch (e) {
+        console.warn("[ADAPTIVE] Failed to fetch next actions:", e.message);
+        if (alive) setAdaptiveActions([]);
+      } finally {
+        if (alive) setAdaptiveActionsLoading(false);
+      }
+    }
+    fetchAdaptiveActions();
+    return () => { alive = false; };
+  }, []);
+
+  // Normalise a subject id to the key used in the unified bySubject map
+  const normalizeSubjectId = (id) =>
+    PRELIMS_TO_UNIFIED_SUBJECT[id] || id.toLowerCase().replace(/\s+/g, "_");
+
+  // Proper UPSC GS subject list — replaces merged/incorrect PRELIMS_STRUCTURE GS list
+  const GS_SUBJECTS = [
+    { id: "ancient_history",       label: "Ancient History" },
+    { id: "medieval_history",      label: "Medieval History" },
+    { id: "modern_history",        label: "Modern History" },
+    { id: "art_culture",           label: "Art & Culture" },
+    { id: "polity",                label: "Polity" },
+    { id: "economy",               label: "Economy" },
+    { id: "geography",             label: "Geography" },
+    { id: "environment",           label: "Environment" },
+    { id: "science_tech",          label: "Science & Tech" },
+    { id: "international_relations", label: "International Relations" },
+    { id: "current_affairs",       label: "Current Affairs" },
+  ];
+
+  const subjects = useMemo(() => {
+    if (practicePaper === "GS") {
+      return GS_SUBJECTS.map((item) => {
+        const resolvedCount =
+          subjectCounts?.[item.id] ??
+          subjectCounts?.[item.id === "polity" ? "indian_polity" : item.id] ??
+          item.count ??
+          0;
+        return { id: item.id, label: item.label, count: resolvedCount };
+      });
+    }
+
+    // CSAT — use csatCountsFromAPI which has per-module counts (quant/reasoning/rc).
+    // Do NOT use subjectCounts from unified health: it only tracks a single 'csat' key
+    // (total=771) which would make all three CSAT subjects show the same inflated count.
+    return (PRELIMS_STRUCTURE?.csat || []).map((item) => {
+      const count =
+        csatCountsFromAPI?.[item.id] != null
+          ? csatCountsFromAPI[item.id]
+          : (item.count || 0);
+      return { id: item.id, label: item.label || item.name || item.id, count };
+    });
+  }, [practicePaper, gsCountsFromAPI, csatCountsFromAPI, subjectCounts]);
 
   const topics = useMemo(() => {
+    // For GS subjects: use live unified topics when available
+    if (practicePaper !== "CSAT" && unifiedTopics.length > 0) {
+      return unifiedTopics.map((t) => {
+        const rawNodeId = t.originalNodeId || t.nodeId || "";
+        console.log("[TOPIC NODE DEBUG]", {
+          topicLabel: t.label,
+          nodeId: rawNodeId,
+        });
+        return {
+          id: t.id,
+          name: t.label,
+          count: t.count,
+          nodeId: rawNodeId,   // ← preserve raw dataset nodeId for API calls
+        };
+      });
+    }
+
     const base =
       practicePaper === "GS"
         ? PRELIMS_STRUCTURE?.gs || []
@@ -843,7 +1197,7 @@ export default function PrelimsPage() {
         };
       })
       .filter((topic) => isLocalRC ? true : topic.count > 0);
-  }, [practicePaper, selectedSubjectId, rcTopicCounts]);
+  }, [practicePaper, selectedSubjectId, rcTopicCounts, unifiedTopics]);
 
   // ── Fetch topic progress when topicNodeId is known ─────────────────────────
   const fetchTopicProgress = useCallback(async (nodeId) => {
@@ -875,13 +1229,15 @@ export default function PrelimsPage() {
   function resolveCurrentTopicNodeId() {
     const base = practicePaper === "GS" ? PRELIMS_STRUCTURE?.gs || [] : PRELIMS_STRUCTURE?.csat || [];
     const subjectMeta = base.find((s) => s.id === selectedSubjectId);
-    if (!subjectMeta) return "";
+    // When unified topics are active, PRELIMS_STRUCTURE won't have the topic —
+    // use the canonical nodeId synced from the selected topic's nodeId field.
+    if (!subjectMeta) return selectedTopicNodeId || "";
     if (practiceScope === "subject") return subjectMeta.nodeId || "";
     const topicMeta = (subjectMeta.topics || []).find((t) => t.id === selectedTopicId);
-    if (!topicMeta) return subjectMeta.nodeId || "";
-    if (practiceScope === "topic") return topicMeta.nodeId || subjectMeta.nodeId || "";
+    if (!topicMeta) return selectedTopicNodeId || subjectMeta.nodeId || "";
+    if (practiceScope === "topic") return topicMeta.nodeId || selectedTopicNodeId || subjectMeta.nodeId || "";
     const subtopicMeta = (topicMeta.subtopics || []).find((s) => selectedMicroThemeIds.includes(s.id));
-    return subtopicMeta?.nodeId || topicMeta.nodeId || subjectMeta.nodeId || "";
+    return subtopicMeta?.nodeId || topicMeta.nodeId || selectedTopicNodeId || subjectMeta.nodeId || "";
   }
 
   const microThemes = useMemo(() => {
@@ -947,19 +1303,114 @@ export default function PrelimsPage() {
     setSelectedMicroThemeIds([]);
     setBuilderError("");
     setTopicProgress(null);
+    setSectionYearMode("all");
+    setSectionYear("");
+    setSectionYearFrom("");
+    setSectionYearTo("");
   }, [practicePaper]);
 
   useEffect(() => {
     setSelectedTopicId("");
+    setSelectedTopicNodeId("");
     setSelectedMicroThemeIds([]);
     setBuilderError("");
     setTopicProgress(null);
   }, [selectedSubjectId]);
 
+  // Keep selectedTopicNodeId in sync when topic changes
+  useEffect(() => {
+    if (!selectedTopicId) { setSelectedTopicNodeId(""); return; }
+    const found = topics.find((t) => t.id === selectedTopicId);
+    setSelectedTopicNodeId(found?.nodeId || "");
+  }, [selectedTopicId, topics]);
+
+  // ── Load dynamic topics from unified engine for GS subjects ───────────────
+  useEffect(() => {
+    let alive = true;
+    async function loadUnifiedTopics() {
+      if (!selectedSubjectId || practicePaper === "CSAT") {
+        if (alive) { setUnifiedTopics([]); setUnifiedTopicsError(""); }
+        return;
+      }
+      setUnifiedTopicsLoading(true);
+      setUnifiedTopicsError("");
+      try {
+        const fetched = await fetchUnifiedTopics({ subject: selectedSubjectId });
+        if (!alive) return;
+        setUnifiedTopics(fetched || []);
+      } catch (err) {
+        if (!alive) return;
+        console.warn("[PrelimsPage] unified topics fetch failed", err);
+        setUnifiedTopics([]);
+        setUnifiedTopicsError("Unified topics unavailable; using fallback topics.");
+      } finally {
+        if (alive) setUnifiedTopicsLoading(false);
+      }
+    }
+    loadUnifiedTopics();
+    return () => { alive = false; };
+  }, [selectedSubjectId, practicePaper]);
+
+  // ── Fetch authoritative topic counts from the backend engine ──────────────
+  useEffect(() => {
+    let alive = true;
+    if (!selectedSubjectId || practicePaper === "CSAT" || unifiedTopics.length === 0) return;
+
+    // To prevent infinite loop since we update unifiedTopics inside
+    const needsCounts = unifiedTopics.some(t => t.countSource !== "topic_count_engine");
+    if (!needsCounts) return;
+
+    async function loadTopicCounts() {
+      try {
+        const payload = {
+          subjectId: selectedSubjectId,
+          topics: unifiedTopics.map(t => ({
+            id: t.id,
+            label: t.label,
+            nodeId: t.originalNodeId || t.nodeId || ""
+          }))
+        };
+
+        const res = await fetch(`${BACKEND_URL}/api/prelims/topic-counts`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+
+        if (alive && json.success && Array.isArray(json.topics)) {
+          setUnifiedTopics(prev =>
+            prev.map(topic => {
+              const found = json.topics.find(x => x.id === topic.id);
+              return {
+                ...topic,
+                count: found?.count ?? topic.count ?? 0,
+                countSource: found?.source || "topic_count_engine"
+              };
+            })
+          );
+        }
+      } catch (err) {
+        console.warn("[PrelimsPage] Backend topic counts failed, falling back to local counts:", err);
+      }
+    }
+
+    loadTopicCounts();
+    return () => { alive = false; };
+  }, [selectedSubjectId, practicePaper, unifiedTopics.length]);
+
   useEffect(() => {
     setSelectedMicroThemeIds([]);
     setBuilderError("");
   }, [selectedTopicId]);
+
+  // Clear stale error banner whenever user changes scope (Full Subject / Topic-wise / Subtopic-wise)
+  useEffect(() => {
+    setBuilderError("");
+  }, [practiceScope, testMode]);
+
 
   useEffect(() => {
     setPracticeQuestionCount((prev) => {
@@ -1087,6 +1538,29 @@ export default function PrelimsPage() {
     ];
   }, [dashboard]);
 
+  const weakAreaSuggestion = useMemo(() => {
+    if (smartRec?.hasData) return smartRec;
+    const weakSubjects = Array.isArray(dashboard?.weakSubjects) ? dashboard.weakSubjects : [];
+    const weakNodes = Array.isArray(dashboard?.weakNodes) ? dashboard.weakNodes : [];
+    if (weakSubjects.length > 0) {
+      const ws = weakSubjects[0];
+      const subjectId = typeof ws === "object" ? (ws?.subjectId || ws?.id || "") : "";
+      const rawSubject = typeof ws === "string" ? ws : (ws?.name || ws?.subject || "");
+      const subject = SUBJECT_LABEL_MAP[subjectId] || SUBJECT_LABEL_MAP[rawSubject] || rawSubject;
+      const accuracy = typeof ws === "object" ? (ws?.accuracy ?? ws?.score ?? null) : null;
+      const topic = weakNodes.length > 0
+        ? (typeof weakNodes[0] === "string" ? weakNodes[0] : (weakNodes[0]?.name || weakNodes[0]?.nodeName || ""))
+        : "";
+      const nodeId = weakNodes.length > 0 && typeof weakNodes[0] === "object" ? (weakNodes[0]?.nodeId || "") : "";
+      return {
+        hasData: true, subject, topic, accuracy,
+        previousAccuracy: null, lastRevisedDays: null, mistakes: null,
+        priority: "High", subjectId, nodeId, whyBullets: [], weaknessScore: null,
+      };
+    }
+    return { hasData: false };
+  }, [smartRec, dashboard]);
+
   const subtopicDisabled =
     practiceScope === "subtopic" &&
     (!selectedTopicId || microThemes.length === 0);
@@ -1105,6 +1579,47 @@ export default function PrelimsPage() {
     if (!qid || !questionEnteredAt) return;
     const spent = Date.now() - questionEnteredAt;
     setPerQuestionTimeMap(prev => ({ ...prev, [qid]: (prev[qid] || 0) + spent }));
+  }
+
+  // ── Unified API fallback: fetch questions from /api/prelims-unified ──────────
+  // Called when the main builder returns 0 questions. Returns sanitized array.
+  async function loadFromUnifiedAPI({ subjectId, nodeId: topicNodeId, microThemeId, limit = 50 } = {}) {
+    const isUnifiedTopicsActive = unifiedTopics.length > 0 && practicePaper !== "CSAT";
+
+    // ── Resolve nodeId: prefer canonical nodeId over raw selectedTopicId ──────
+    // selectedTopicId (from unifiedTopics) = microTheme string, NOT a canonical nodeId.
+    // selectedTopicNodeId holds the real canonical nodeId (e.g. GS1-HIS-ANC-IVC-MT04).
+    const canonicalNodeId = topicNodeId
+      || (practiceScope !== "subject" ? selectedTopicNodeId : undefined)
+      || undefined;
+
+    // Fall back to microTheme string only when no canonical nodeId is available
+    const rawMicroTheme = microThemeId
+      || (isUnifiedTopicsActive && !canonicalNodeId && selectedTopicId ? selectedTopicId : undefined)
+      || (practiceScope === "subtopic" && selectedMicroThemeIds[0] ? selectedMicroThemeIds[0] : undefined);
+
+    const effectiveMicroTheme =
+      rawMicroTheme && rawMicroTheme !== "Unknown" ? rawMicroTheme : "";
+
+    // ── Build API params — nodeId takes strict priority over microTheme ────────
+    const effectiveSubjectId = subjectId || selectedSubjectId;
+    const params = { subject: effectiveSubjectId, limit };
+
+    if (canonicalNodeId) {
+      // nodeId is available — use ONLY nodeId, never send microTheme
+      params.nodeId = canonicalNodeId;
+    } else if (effectiveMicroTheme) {
+      // No canonical nodeId — fall back to microTheme string
+      params.microTheme = effectiveMicroTheme;
+    }
+
+    if (!params.nodeId && !params.microTheme && !PRELIMS_TO_UNIFIED_SUBJECT[params.subject]) return [];
+    let { questions: raw } = await fetchUnifiedQuestions(params);
+
+
+
+    console.log("[FILTER]", { nodeId: params.nodeId, microTheme: params.microTheme, returned: raw.length });
+    return sanitizeQuestions(raw.map(normalizeUnifiedQuestion));
   }
 
   // ── Progressive test builder (Continue / Restart / Retry Mistakes) ─────────
@@ -1143,9 +1658,14 @@ export default function PrelimsPage() {
         throw new Error(json?.error || `Progressive build failed (${response.status})`);
       }
 
-      const builtQuestions = Array.isArray(json?.questions) ? json.questions : [];
+      let builtQuestions = Array.isArray(json?.questions) ? json.questions : [];
       if (!builtQuestions.length) {
-        throw new Error(json?.error || "No questions returned from backend");
+        // Fallback: try unified question library before surfacing error
+        builtQuestions = await loadFromUnifiedAPI({ limit: practiceQuestionCount || 50 });
+        if (!builtQuestions.length) {
+          throw new Error(json?.error || "No questions returned from backend or unified library");
+        }
+        setBuilderWarning("Loaded from unified question library — progress tracking unavailable for this session.");
       }
 
       const safeScope = practiceScope === "subtopic" && selectedMicroThemeIds.length === 0 ? "topic" : practiceScope;
@@ -1198,7 +1718,7 @@ export default function PrelimsPage() {
       return;
     }
 
-    if (subtopicDisabled) {
+    if (subtopicDisabled && testMode !== "full_length") {
       setBuilderError(
         "Select a topic that has subtopics, then choose at least one subtopic."
       );
@@ -1208,6 +1728,7 @@ export default function PrelimsPage() {
     try {
       setBuilderLoading(true);
       setResult(null);
+      setBuilderWarning("");
 
       let payload;
       let nextTestId;
@@ -1215,17 +1736,26 @@ export default function PrelimsPage() {
       if (testMode === "full_length") {
         const paperCode =
           fullLengthType === "csat_yearwise" ? "CSAT" : "GS";
+        const selectedFullLengthPaper = paperCode === "GS"
+          ? (availableYears?.fullLengthPapers || []).find((paper) => String(paper.year) === String(fullLengthYear))
+          : null;
 
-        nextTestId = `prelims_${fullLengthYear}_${paperCode.toLowerCase()}`;
+        nextTestId = selectedFullLengthPaper?.paperId || `prelims_${fullLengthYear}_${paperCode.toLowerCase()}`;
 
         payload = {
           mode: "full_length",
           fullLengthYear: String(fullLengthYear),
+          ...(selectedFullLengthPaper?.paperId ? { fullLengthPaperId: selectedFullLengthPaper.paperId } : {}),
           practicePaper: paperCode,
           count: fullLengthType === "csat_yearwise" ? 80 : 100,
         };
 
-        console.log("🚀 FULL LENGTH BUILD PAYLOAD:", payload);
+        console.log("[Prelims FullLength] selected paper:", selectedFullLengthPaper || {
+          year: fullLengthYear,
+          paperId: nextTestId,
+          questionCount: null,
+        });
+        console.log("[FULL LENGTH BUILD PAYLOAD]", payload);
       } else {
         const safeScope =
           practiceScope === "subtopic" && selectedMicroThemeIds.length === 0
@@ -1263,11 +1793,39 @@ export default function PrelimsPage() {
           resolvedNodeId = sMM?.[0]?.nodeId || "";
         }
 
+        // Final fallback: when unified topics active, PRELIMS_STRUCTURE lookup returns ""
+        // because selectedTopicId is a microTheme string. Use canonical nodeId instead.
+        if (!resolvedNodeId && unifiedTopics.length > 0 && practicePaper !== "CSAT") {
+          resolvedNodeId = selectedTopicNodeId || "";
+        }
+
+        console.log("[PYQ START DEBUG]", {
+          safeScope,
+          practiceScope,
+          selectedSubjectId,
+          selectedTopicId,
+          resolvedNodeId,
+          selectedTopicNodeId,
+        });
+
+        if (!resolvedNodeId && safeScope !== "subject") {
+          console.error("❌ NODE ID MISSING:", {
+            selectedSubjectId,
+            selectedTopicId,
+            selectedTopicNodeId,
+            safeScope,
+          });
+          setBuilderError("Cannot determine topic node ID. Please select a valid topic.");
+          return;
+        }
+
         const subjectHints = getSubjectBuildHints(selectedSubjectId, practicePaper);
 
-        console.log("🚀 PRACTICE BUILD CONTEXT:", {
-          practicePaper, practiceScope, safeScope, selectedSubjectId,
-          selectedTopicId, selectedMicroThemeIds, practiceQuestionCount,
+        console.log("🎯 BUILD PAYLOAD:", {
+          topicNodeId: resolvedNodeId,
+          label: selectedTopicId,
+          selectedTopicNodeId,
+          unifiedTopicsActive: unifiedTopics.length > 0,
         });
 
         payload = {
@@ -1280,21 +1838,11 @@ export default function PrelimsPage() {
           subjectAliases: subjectHints.subjectAliases,
           debugExpectedSubjects: subjectHints.debugExpectedSubjects,
           selectedSubjectId,
-          selectedTopicId,
-          selectedTopicLabel: topicMeta?.name || topicMeta?.label || "",
-          selectedMicroThemeIds:
-            safeScope === "topic" ? topicHintIds : selectedMicroThemeIds,
-          selectedMicroThemeLabels:
-            safeScope === "topic"
-              ? (topicMeta?.subtopics || []).map((item) => item.label || item.name || item.id)
-              : selectedMicroThemeMetas.map((item) => item.label || item.name || item.id),
+          selectedTopicLabel: topicMeta?.name || topicMeta?.label || selectedTopicId || "",
+          ...(sectionYearMode === "single" && sectionYear ? { year: sectionYear } : {}),
+          ...(sectionYearMode === "range" && sectionYearFrom ? { yearFrom: sectionYearFrom } : {}),
+          ...(sectionYearMode === "range" && sectionYearTo ? { yearTo: sectionYearTo } : {}),
         };
-
-        console.log("🎯 FINAL NODE ID:", resolvedNodeId);
-        console.log("📦 BUILD PAYLOAD:", payload);
-        if (!resolvedNodeId) {
-          console.error("❌ NODE ID MISSING:", { subjectId: selectedSubjectId, topicId: selectedTopicId, microThemeId: selectedMicroThemeIds[0] });
-        }
       }
 
       const response = await fetch(`${BACKEND_URL}/api/prelims/practice/build`, {
@@ -1310,12 +1858,48 @@ export default function PrelimsPage() {
         count: Array.isArray(json?.questions) ? json.questions.length : 0,
       });
 
-      if (!response.ok) {
-        throw new Error(json?.message || json?.error || `Practice build failed with status ${response.status}`);
+      if (testMode === "full_length") {
+        console.log("[FULL LENGTH BUILD RESPONSE]", {
+          total: json?.total,
+          questions: json?.questions?.length,
+          debug: json?.debug,
+        });
       }
 
-      const builtQuestions = Array.isArray(json?.questions) ? json.questions : [];
-      if (!builtQuestions.length) throw new Error("No questions returned from backend");
+      let builtQuestions = Array.isArray(json?.questions) ? json.questions : [];
+
+      // On non-OK response (e.g. 400 "No questions found"), attempt unified fallback
+      // before surfacing an error to the user.
+      if (!response.ok || !builtQuestions.length) {
+        const backendMsg = json?.message || json?.error || "";
+
+        // ── CSAT yearwise fallback ───────────────────────────────────────────
+        if (!builtQuestions.length && testMode === "full_length" && fullLengthType === "csat_yearwise" && fullLengthYear) {
+          const { questions: unifiedRaw } = await fetchUnifiedQuestions({
+            subject: "csat",
+            year: fullLengthYear,
+            limit: 80,
+          });
+          builtQuestions = sanitizeQuestions((unifiedRaw || []).map(normalizeUnifiedQuestion));
+          if (builtQuestions.length) {
+            setBuilderWarning(`Loaded ${builtQuestions.length} CSAT ${fullLengthYear} questions from unified library.`);
+          }
+        }
+
+        // ── Generic unified fallback ─────────────────────────────────────────
+        if (!builtQuestions.length) {
+          builtQuestions = await loadFromUnifiedAPI({ limit: practiceQuestionCount || 50 });
+          if (builtQuestions.length) {
+            setBuilderWarning("Loaded from unified question library.");
+          }
+        }
+
+        if (!builtQuestions.length) {
+          throw new Error(backendMsg || `Practice build failed (${response.status})`);
+        }
+      }
+
+      if (json?.warning) setBuilderWarning(json.warning);
 
       setTestId(nextTestId);
       setActiveTopicNodeId(""); // Not a tracked progressive test
@@ -1325,6 +1909,7 @@ export default function PrelimsPage() {
       console.log("[SANITIZED QUESTIONS]", sanitizedQuestions.length);
       console.log("[FIRST 5 IDS]", sanitizedQuestions.slice(0, 5).map(q => q.id));
       setQuestions(sanitizedQuestions);
+      console.log("[FINAL QUESTIONS BEFORE NAV]", sanitizedQuestions.length);
 
       setCurrentIndex(0);
       setAnswersMap({});
@@ -1338,6 +1923,39 @@ export default function PrelimsPage() {
       setTestStage("attempt");
     } catch (error) {
       console.error("Prelims practice build error:", error);
+
+      // ── CSAT full-length unified fallback on builder error ────────────────
+      if (testMode === "full_length" && fullLengthType === "csat_yearwise" && fullLengthYear) {
+        try {
+          const { questions: unifiedRaw } = await fetchUnifiedQuestions({
+            subject: "csat",
+            year: fullLengthYear,
+            limit: 80,
+          });
+          const fallbackQs = sanitizeQuestions((unifiedRaw || []).map(normalizeUnifiedQuestion));
+          if (fallbackQs.length) {
+            const nextTestId = `prelims_${fullLengthYear}_csat`;
+            setTestId(nextTestId);
+            setActiveTopicNodeId("");
+            setQuestions(fallbackQs);
+            setCurrentIndex(0);
+            setAnswersMap({});
+            setConfidenceMap({});
+            setResult(null);
+            const now = Date.now();
+            setTestStartTime(now);
+            setPerQuestionTimeMap({});
+            setQuestionEnteredAt(now);
+            setBuilderWarning(`Loaded ${fallbackQs.length} CSAT ${fullLengthYear} questions from unified library.`);
+            setBuilderError("");
+            setTestStage("attempt");
+            return;
+          }
+        } catch (fallbackErr) {
+          console.error("CSAT unified fallback also failed:", fallbackErr);
+        }
+      }
+
       setQuestions([]);
       setBuilderError(error.message || "Failed to build prelims practice test");
     } finally {
@@ -1446,7 +2064,38 @@ export default function PrelimsPage() {
       }
 
       try {
-        localStorage.setItem("prelims_test_attempts_v1", JSON.stringify(finalResult));
+        await fetch(`${BACKEND_URL}/api/pyq-intelligence/attempts/bulk`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userId: "user_1",
+            testId,
+            attempts: questions.map((q) => {
+              const selectedAnswer = answersMap[q.id];
+              const correctAnswer = q.correctAnswer || q.answer;
+
+              return {
+                questionId: q.id,
+                nodeId: q.nodeId || q.syllabusNodeId,
+                subjectId: q.subject,
+                year: q.year,
+                selectedAnswer,
+                correctAnswer,
+                isCorrect:
+                  String(selectedAnswer || "").toUpperCase() ===
+                  String(correctAnswer || "").toUpperCase(),
+                timeTakenSec: timeSpentByQuestion?.[q.id] || 0,
+                sourceType: testMode === "full_length" ? "full_length_pyq" : "topic_pyq",
+              };
+            }),
+          }),
+        });
+      } catch (pyqIntelErr) {
+        console.error("[PyqIntelligence] Failed to record attempts:", pyqIntelErr);
+      }
+
+      try {
+        // localStorage removed
       } catch { /* ignore */ }
 
       setTestStage("result");
@@ -1465,136 +2114,498 @@ export default function PrelimsPage() {
     }
   }
 
+  async function startWeakAreaFix(subjectId, nodeId, count = 10) {
+    setBuilderError("");
+    setBuilderLoading(true);
+    setResult(null);
+    setBuilderWarning("");
+    try {
+      const nextTestId = `smart_fix_${subjectId || "general"}_${Date.now()}`;
+      setTestId(nextTestId);
+      setActiveTopicNodeId(nodeId || "");
+      setActivePracticeMode("continue");
+      const unifiedSubject = PRELIMS_TO_UNIFIED_SUBJECT[subjectId] || subjectId || undefined;
+      const { questions: unifiedRaw } = await fetchUnifiedQuestions({
+        subject: unifiedSubject,
+        nodeId: nodeId || undefined,
+        limit: count,
+      });
+      const sanitized = sanitizeQuestions(unifiedRaw || []).slice(0, count);
+      if (!sanitized.length) {
+        setBuilderError("No questions found. Use the builder below to configure a test.");
+        return;
+      }
+      setQuestions(sanitized);
+      setCurrentIndex(0);
+      setAnswersMap({});
+      setConfidenceMap({});
+      setTestStartTime(Date.now());
+      setQuestionEnteredAt(Date.now());
+      setTestStage("attempt");
+    } catch (err) {
+      setBuilderError("Could not start the test. Use the builder below.");
+    } finally {
+      setBuilderLoading(false);
+    }
+  }
+
+  async function startAdaptiveTest() {
+    setBuilderError("");
+    setBuilderLoading(true);
+    setResult(null);
+    setBuilderWarning("");
+    try {
+      const payload = {
+        userId: "user_1",
+        subjectId: selectedSubjectId || null,
+        count: 25
+      };
+
+      const resp = await fetch(`${BACKEND_URL}/api/prelims/adaptive-test`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      
+      const data = await resp.json();
+      
+      if (!resp.ok || !data.success) {
+        throw new Error(data.error || "Failed to load adaptive test");
+      }
+      
+      console.log("[ADAPTIVE TEST]", {
+        count: data.questions?.length,
+        debug: data.debug
+      });
+      
+      if (!data.questions || data.questions.length === 0) {
+        setBuilderError("No questions returned for adaptive test.");
+        return;
+      }
+
+      const nextTestId = `adaptive_test_${selectedSubjectId || "general"}_${Date.now()}`;
+      setTestId(nextTestId);
+      setActiveTopicNodeId("");
+      setActivePracticeMode("adaptive");
+      
+      const sanitized = sanitizeQuestions(data.questions);
+      setQuestions(sanitized);
+      setCurrentIndex(0);
+      setAnswersMap({});
+      setConfidenceMap({});
+      setTestStartTime(Date.now());
+      setQuestionEnteredAt(Date.now());
+      setTestStage("attempt");
+    } catch (err) {
+      setBuilderError(err.message || "Could not start the adaptive test.");
+    } finally {
+      setBuilderLoading(false);
+    }
+  }
+
   return (
     <div style={pageStyle}>
-      <div style={heroStyle}>
-        <div
-          style={{
+      {testStage === "start" && (
+        <>
+          {/* ── Intelligence card: Weak Area Recommendation ── */}
+          <div style={{
+            background: "#0d1224",
+            border: "1px solid #2d3a5c",
+            borderTop: "1px solid #4338ca",
+            borderRadius: 14,
+            padding: "20px 22px",
+            marginBottom: 16,
+            position: "relative",
+          }}>
+
+            {weakAreaSuggestion.hasData ? (
+              <div>
+                {/* Label row */}
+                <div style={{ fontSize: 10, fontWeight: 700, color: "#6366f1", letterSpacing: 2.5, textTransform: "uppercase", marginBottom: 12, display: "flex", alignItems: "center", gap: 5 }}>
+                  <span style={{ fontSize: 12 }}>◎</span> Your Next Best Test
+                </div>
+
+                {/* Subject + target (side by side) */}
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 14 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 22, fontWeight: 800, color: "#f1f5f9", lineHeight: 1.2, marginBottom: weakAreaSuggestion.topic ? 4 : 0 }}>
+                      {weakAreaSuggestion.subject}
+                    </div>
+                    {weakAreaSuggestion.topic && (
+                      <div style={{ fontSize: 13, fontWeight: 500, color: "#818cf8", lineHeight: 1.35, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                        {weakAreaSuggestion.topic}
+                      </div>
+                    )}
+                  </div>
+                  <div style={{ textAlign: "right", flexShrink: 0 }}>
+                    <div style={{ fontSize: 11, color: "#475569", letterSpacing: 0.5, textTransform: "uppercase", marginBottom: 2 }}>Target</div>
+                    <div style={{ fontSize: 18, fontWeight: 900, color: "#f1f5f9", lineHeight: 1 }}>85%+</div>
+                  </div>
+                </div>
+
+                {/* Stats pills row — compact inline */}
+                <div style={{ display: "flex", gap: 8, marginBottom: 14, flexWrap: "wrap" }}>
+                  {weakAreaSuggestion.accuracy != null && (
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, background: "#131d38", border: "1px solid #2d3a5c", borderRadius: 8, padding: "6px 10px" }}>
+                      <div style={{
+                        width: 36, height: 36, borderRadius: "50%", flexShrink: 0,
+                        background: `conic-gradient(#818cf8 ${weakAreaSuggestion.accuracy * 3.6}deg, #1e2a45 0deg)`,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                      }}>
+                        <div style={{ width: 26, height: 26, borderRadius: "50%", background: "#0d1224", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                          <span style={{ fontSize: 10, fontWeight: 800, color: "#a78bfa" }}>{weakAreaSuggestion.accuracy}%</span>
+                        </div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: 11, color: "#94a3b8", lineHeight: 1 }}>Your Accuracy</div>
+                        {weakAreaSuggestion.previousAccuracy != null && (
+                          <div style={{ fontSize: 10, color: weakAreaSuggestion.accuracy >= weakAreaSuggestion.previousAccuracy ? "#4ade80" : "#f87171", fontWeight: 700, lineHeight: 1, marginTop: 2 }}>
+                            {weakAreaSuggestion.accuracy >= weakAreaSuggestion.previousAccuracy ? "↑" : "↓"} from {weakAreaSuggestion.previousAccuracy}%
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  {weakAreaSuggestion.lastRevisedDays != null && (
+                    <div style={{ background: "#131d38", border: "1px solid #2d3a5c", borderRadius: 8, padding: "6px 12px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "#e2e8f0", lineHeight: 1 }}>{weakAreaSuggestion.lastRevisedDays} Days</div>
+                      <div style={{ fontSize: 10, color: "#64748b", marginTop: 2 }}>Last Revised</div>
+                    </div>
+                  )}
+                  {weakAreaSuggestion.priority && (
+                    <div style={{
+                      background: weakAreaSuggestion.priority === "Critical" ? "#1f1020" : "#1a1608",
+                      border: `1px solid ${weakAreaSuggestion.priority === "Critical" ? "#7f1d1d" : "#78350f"}`,
+                      borderRadius: 8, padding: "6px 12px", display: "flex", flexDirection: "column", justifyContent: "center",
+                    }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: weakAreaSuggestion.priority === "Critical" ? "#f87171" : "#fbbf24", lineHeight: 1 }}>{weakAreaSuggestion.priority}</div>
+                      <div style={{ fontSize: 10, color: "#475569", marginTop: 2 }}>Priority (AI)</div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Why this test? */}
+                {weakAreaSuggestion.whyBullets?.length > 0 && (
+                  <div style={{ marginBottom: 16, paddingLeft: 0 }}>
+                    <div style={{ fontSize: 11, fontWeight: 600, color: "#475569", letterSpacing: 0.5, marginBottom: 6 }}>Why this test?</div>
+                    <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                      {weakAreaSuggestion.whyBullets.map((b, i) => (
+                        <li key={i} style={{ fontSize: 12, color: "#64748b", marginBottom: 4, display: "flex", alignItems: "flex-start", gap: 7, lineHeight: 1.4 }}>
+                          <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#6366f1", marginTop: 4, flexShrink: 0 }} />
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* CTA row */}
+                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                  <button
+                    type="button"
+                    onClick={() => startWeakAreaFix(weakAreaSuggestion.subjectId, weakAreaSuggestion.nodeId, 10)}
+                    disabled={builderLoading}
+                    style={{
+                      background: builderLoading ? "rgba(99,102,241,0.2)" : "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)",
+                      color: "#fff", border: "none", borderRadius: 10,
+                      padding: "11px 28px", fontWeight: 700, fontSize: 14,
+                      cursor: builderLoading ? "not-allowed" : "pointer",
+                      boxShadow: builderLoading ? "none" : "0 4px 16px rgba(99,102,241,0.35)",
+                      letterSpacing: 0.2, fontFamily: "inherit", whiteSpace: "nowrap",
+                    }}
+                  >
+                    {builderLoading ? "Loading…" : "Start Smart Test →"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCustomizeOpen(true)}
+                    style={{
+                      background: "none", border: "none", color: "#6366f1",
+                      fontSize: 12, fontWeight: 600, cursor: "pointer",
+                      padding: 0, fontFamily: "inherit",
+                      textDecoration: "underline", textUnderlineOffset: 3,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    ◎ Preview 10 Questions
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "#38bdf8", letterSpacing: 2.5, textTransform: "uppercase", marginBottom: 10 }}>
+                  Recommended Next Test
+                </div>
+                <div style={{ fontSize: 20, fontWeight: 800, color: "#f1f5f9", lineHeight: 1.2, marginBottom: 6 }}>
+                  {selectedSubjectId
+                    ? `Start with ${subjects.find(s => s.id === selectedSubjectId)?.label || selectedSubjectId}`
+                    : "Take your first test"}
+                </div>
+                <div style={{ fontSize: 12, color: "#475569", marginBottom: 16, lineHeight: 1.5 }}>
+                  {selectedSubjectId ? "Continue practising PYQs from this subject." : "Complete a test and your AI weak-area card unlocks here."}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => startWeakAreaFix(selectedSubjectId || "ancient_history", "", 10)}
+                  disabled={builderLoading}
+                  style={{
+                    background: builderLoading ? "rgba(14,165,233,0.15)" : "linear-gradient(135deg, #0284c7, #0ea5e9)",
+                    color: "#fff", border: "none", borderRadius: 10,
+                    padding: "11px 28px", fontWeight: 700, fontSize: 14,
+                    cursor: builderLoading ? "not-allowed" : "pointer",
+                    boxShadow: builderLoading ? "none" : "0 4px 16px rgba(14,165,233,0.28)",
+                    letterSpacing: 0.2, fontFamily: "inherit",
+                  }}
+                >
+                  {builderLoading ? "Loading…" : "Start Smart Test →"}
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* ── Adaptive Weakness Test Card ── */}
+          <div style={{
+            background: "#0d1224",
+            border: "1px solid #2d3a5c",
+            borderLeft: "4px solid #ec4899",
+            borderRadius: 14,
+            padding: "20px 22px",
+            marginBottom: 16,
             display: "flex",
+            alignItems: "center",
             justifyContent: "space-between",
-            gap: 16,
             flexWrap: "wrap",
-          }}
-        >
-          <div>
-            <div
-              style={{
-                color: "#38bdf8",
-                fontWeight: 800,
-                fontSize: 13,
-                letterSpacing: 0.4,
-              }}
-            >
-              UPSC MENTOR OS · PHASE 3A
+            gap: 16
+          }}>
+            <div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: "#f1f5f9", marginBottom: 4 }}>
+                Adaptive Weakness Test
+              </div>
+              <div style={{ fontSize: 12, color: "#94a3b8" }}>
+                Take a customized test targeting your weakest areas first.
+              </div>
             </div>
-            <h1
+            <button
+              type="button"
+              onClick={startAdaptiveTest}
+              disabled={builderLoading}
               style={{
-                margin: "8px 0 6px 0",
-                fontSize: 30,
-                lineHeight: 1.1,
+                background: builderLoading ? "rgba(236,72,153,0.2)" : "linear-gradient(135deg, #db2777 0%, #be185d 100%)",
+                color: "#fff", border: "none", borderRadius: 10,
+                padding: "10px 24px", fontWeight: 700, fontSize: 13,
+                cursor: builderLoading ? "not-allowed" : "pointer",
+                boxShadow: builderLoading ? "none" : "0 4px 12px rgba(236,72,153,0.3)",
+                letterSpacing: 0.2, fontFamily: "inherit", whiteSpace: "nowrap",
               }}
             >
-              Prelims Test Intelligence
-            </h1>
-            <div
-              style={{
-                color: "#94a3b8",
-                maxWidth: 760,
-                lineHeight: 1.7,
-                fontSize: 14,
-              }}
-            >
-              End-to-end intelligence layer for prelims test analysis:
-              accuracy, behavioural risk, weak nodes, trap alerts, and
-              next-best revision actions.
-            </div>
+              {builderLoading ? "Loading…" : "Start Adaptive Test"}
+            </button>
           </div>
 
-          <div
-            style={{
-              minWidth: 260,
-              ...cardStyle,
-              padding: 14,
-              background: "rgba(2, 6, 23, 0.55)",
-            }}
-          >
-            <div style={{ color: "#94a3b8", fontSize: 12 }}>Active Test</div>
-            <div
-              style={{
-                fontSize: 20,
-                fontWeight: 800,
-                color: "#f8fafc",
-                marginTop: 6,
-              }}
-            >
-              {testId}
-            </div>
-            <div style={{ color: "#64748b", fontSize: 12, marginTop: 8 }}>
-              Dashboard source: {BACKEND_URL}/api/prelims/dashboard
-            </div>
-          </div>
-        </div>
-      </div>
+          {/* ── Adaptive Next Actions card ── */}
+          {adaptiveActions.length > 0 && (
+            <div style={{
+              background: "#0d1224",
+              border: "1px solid #2d3a5c",
+              borderTop: "2px solid #10b981",
+              borderRadius: 14,
+              padding: "20px 22px",
+              marginBottom: 16,
+            }}>
+              <div style={{
+                fontSize: 10, fontWeight: 700, color: "#10b981",
+                letterSpacing: 2.5, textTransform: "uppercase", marginBottom: 14,
+                display: "flex", alignItems: "center", gap: 6,
+              }}>
+                <span style={{ fontSize: 13 }}>⚡</span> Adaptive Next Actions
+              </div>
 
-      <section style={sectionStyle}>
-        <div style={{ ...cardStyle }}>
-          <div style={{ marginBottom: 14 }}>
-            <h2 style={{ margin: 0, fontSize: 17, fontWeight: 800, letterSpacing: 0.2, color: "#e2e8f0" }}>Test Mode Selector</h2>
-            <div style={{ color: "#475569", fontSize: 12, marginTop: 4 }}>
-              Keeps sectional, full-length, and institutional blocks intact
-            </div>
-          </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                {adaptiveActions.slice(0, 3).map((action, idx) => {
+                  const levelColors = {
+                    critical: { bg: "#1f1020", border: "#7f1d1d", text: "#f87171", chipBg: "rgba(248,113,113,0.15)" },
+                    weak: { bg: "#1a1608", border: "#78350f", text: "#fbbf24", chipBg: "rgba(251,191,36,0.15)" },
+                    needs_revision: { bg: "#0c1a2e", border: "#1e3a5f", text: "#38bdf8", chipBg: "rgba(56,189,248,0.15)" },
+                    stable: { bg: "#0d1a12", border: "#14532d", text: "#4ade80", chipBg: "rgba(74,222,128,0.15)" },
+                  };
+                  const lc = levelColors[action.weaknessLevel] || levelColors.stable;
+                  const nodeName = prettyNodeName(action.nodeId);
 
-          <div style={chipRowStyle}>
-            <ModeButton
-              active={testMode === "sectional"}
-              onClick={() => {
-                setTestMode("sectional");
-                setTestStage("start");
-                setBuilderError("");
-              }}
-            >
-              Sectional
-            </ModeButton>
-
-            <ModeButton
-              active={testMode === "full_length"}
-              onClick={() => {
-                setTestMode("full_length");
-                setTestStage("start");
-                setBuilderError("");
-              }}
-            >
-              Full-Length
-            </ModeButton>
-
-          </div>
-        </div>
-      </section>
-
-      <section style={sectionStyle}>
-        <div style={{ ...cardStyle }}>
-          <div style={{ marginBottom: 14 }}>
-            <h2 style={{ margin: 0, fontSize: 17, fontWeight: 800, letterSpacing: 0.2, color: "#e2e8f0" }}>PYQ Test Flow</h2>
-            <div style={{ color: "#475569", fontSize: 12, marginTop: 4 }}>
-              Start → Attempt → Result
-            </div>
-          </div>
-
-          {builderError && testStage === "start" && (
-            <div
-              style={{
-                marginBottom: 14,
-                padding: 12,
-                borderRadius: 12,
-                border: "1px solid rgba(239, 68, 68, 0.22)",
-                background: "rgba(127, 29, 29, 0.14)",
-                color: "#fecaca",
-              }}
-            >
-              {builderError}
+                  return (
+                    <div key={action.nodeId || idx} style={{
+                      background: lc.bg,
+                      border: `1px solid ${lc.border}`,
+                      borderRadius: 10,
+                      padding: "12px 14px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: 12,
+                      flexWrap: "wrap",
+                    }}>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, flexWrap: "wrap" }}>
+                          <span style={{
+                            fontSize: 14, fontWeight: 700, color: "#e2e8f0",
+                            whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: 220,
+                          }}>
+                            {nodeName || action.subject || `Node ${idx + 1}`}
+                          </span>
+                          <span style={{
+                            padding: "2px 8px", borderRadius: 99, fontSize: 10,
+                            fontWeight: 700, background: lc.chipBg,
+                            color: lc.text, border: `1px solid ${lc.border}`,
+                            textTransform: "uppercase", letterSpacing: 0.5,
+                          }}>
+                            {(action.weaknessLevel || "").replace("_", " ")}
+                          </span>
+                        </div>
+                        <div style={{ fontSize: 11, color: "#94a3b8", lineHeight: 1.4 }}>
+                          {action.actionText}
+                        </div>
+                        <div style={{ fontSize: 10, color: "#475569", marginTop: 3 }}>
+                          Score: {action.weaknessScore} · Accuracy: {action.accuracyPercent}% · Wrong: {action.wrongCount}
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (action.nodeId) {
+                            window.location.href = `/pyq/topic/${encodeURIComponent(action.nodeId)}`;
+                          }
+                        }}
+                        style={{
+                          background: `linear-gradient(135deg, ${lc.text}22, ${lc.text}10)`,
+                          border: `1px solid ${lc.text}44`,
+                          borderRadius: 8,
+                          padding: "8px 16px",
+                          color: lc.text,
+                          fontWeight: 700, fontSize: 12,
+                          cursor: "pointer",
+                          fontFamily: "inherit",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        Practice Now
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           )}
+          {adaptiveActionsLoading && (
+            <div style={{
+              background: "#0d1224", border: "1px solid #1e2a45", borderRadius: 14,
+              padding: "16px 22px", marginBottom: 16,
+            }}>
+              <div style={{ fontSize: 12, color: "#64748b" }}>Loading adaptive recommendations…</div>
+            </div>
+          )}
+
+          {/* ── Quick Start tiles ── */}
+          <div style={{ marginBottom: 16 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "#64748b", letterSpacing: 2, textTransform: "uppercase", marginBottom: 10 }}>
+              Practice Command Center
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 10, marginBottom: 10 }}>
+              <button
+                type="button"
+                onClick={() => startWeakAreaFix(
+                  weakAreaSuggestion.hasData ? weakAreaSuggestion.subjectId : (selectedSubjectId || "ancient_history"),
+                  weakAreaSuggestion.hasData ? weakAreaSuggestion.nodeId : "",
+                  10
+                )}
+                disabled={builderLoading}
+                style={{
+                  background: "#131d38", border: "1px solid #3d2e10",
+                  borderLeft: "3px solid #d97706",
+                  borderRadius: 12, padding: "14px 16px", textAlign: "left",
+                  cursor: builderLoading ? "not-allowed" : "pointer",
+                  color: "#f1f5f9", fontFamily: "inherit",
+                }}
+              >
+                <div style={{ fontWeight: 700, fontSize: 13, color: "#f59e0b", marginBottom: 3 }}>AI Weak Area</div>
+                <div style={{ fontSize: 11, color: "#64748b", lineHeight: 1.4 }}>Let AI pick weak areas for you automatically</div>
+              </button>
+              <button
+                type="button"
+                onClick={() => { setPracticeScope("subject"); setTestMode("sectional"); setCustomizeOpen(true); }}
+                style={{
+                  background: "#131d38", border: "1px solid #1e2a45",
+                  borderLeft: "3px solid #3b82f6",
+                  borderRadius: 12, padding: "14px 16px", textAlign: "left",
+                  cursor: "pointer", color: "#f1f5f9", fontFamily: "inherit",
+                }}
+              >
+                <div style={{ fontWeight: 700, fontSize: 13, color: "#93c5fd", marginBottom: 3 }}>Full Subject</div>
+                <div style={{ fontSize: 11, color: "#64748b", lineHeight: 1.4 }}>Practice all topics from the subject</div>
+              </button>
+              <button
+                type="button"
+                onClick={() => { setPracticeScope("topic"); setCustomizeOpen(true); }}
+                style={{
+                  background: "#131d38", border: "1px solid #1e2a45",
+                  borderLeft: "3px solid #22c55e",
+                  borderRadius: 12, padding: "14px 16px", textAlign: "left",
+                  cursor: "pointer", color: "#f1f5f9", fontFamily: "inherit",
+                }}
+              >
+                <div style={{ fontWeight: 700, fontSize: 13, color: "#86efac", marginBottom: 3 }}>Topic-wise</div>
+                <div style={{ fontSize: 11, color: "#64748b", lineHeight: 1.4 }}>Practice a specific topic in depth</div>
+              </button>
+              <button
+                type="button"
+                onClick={() => { setPracticeScope("subtopic"); setCustomizeOpen(true); }}
+                style={{
+                  background: "#131d38", border: "1px solid #1e2a45",
+                  borderLeft: "3px solid #a78bfa",
+                  borderRadius: 12, padding: "14px 16px", textAlign: "left",
+                  cursor: "pointer", color: "#f1f5f9", fontFamily: "inherit",
+                }}
+              >
+                <div style={{ fontWeight: 700, fontSize: 13, color: "#c4b5fd", marginBottom: 3 }}>Subtopic-wise</div>
+                <div style={{ fontSize: 11, color: "#64748b", lineHeight: 1.4 }}>Focus on micro topics for better accuracy</div>
+              </button>
+            </div>
+          </div>
+        </>
+      )}
+
+      <section style={sectionStyle}>
+        <div style={{ ...cardStyle }}>
+          {testStage !== "start" && (
+            <div style={{ marginBottom: 14 }}>
+              <h2 style={{ margin: 0, fontSize: 17, fontWeight: 800, letterSpacing: 0.2, color: "#e2e8f0" }}>PYQ Test Flow</h2>
+              <div style={{ color: "#475569", fontSize: 12, marginTop: 4 }}>
+                Start → Attempt → Result
+              </div>
+            </div>
+          )}
+
+          {builderError && testStage === "start" && (() => {
+            // Suppress legacy "Unknown subtopic" errors for CSAT —
+            // the unified API fallback handles CSAT loading, so the old builder error is noise.
+            const isStaleCSATUnknown =
+              practicePaper === "CSAT" &&
+              (builderError.includes('"Unknown"') || builderError.includes("Unknown"));
+            if (isStaleCSATUnknown) return null;
+            return (
+              <div
+                style={{
+                  marginBottom: 14,
+                  padding: 12,
+                  borderRadius: 12,
+                  border: "1px solid rgba(239, 68, 68, 0.22)",
+                  background: "rgba(127, 29, 29, 0.14)",
+                  color: "#fecaca",
+                }}
+              >
+                {builderError}
+              </div>
+            );
+          })()}
+
 
           {practiceScope === "subtopic" &&
             selectedTopicId &&
@@ -1615,9 +2626,25 @@ export default function PrelimsPage() {
             )}
 
           {testStage === "start" && (
-            <>
-              {/* ── Topic Progress Panel (sectional mode only) disabled upon request ── */}
-              <PyqTestStart
+            <div>
+              <button
+                type="button"
+                onClick={() => setCustomizeOpen(v => !v)}
+                style={{
+                  width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
+                  background: customizeOpen ? "rgba(15,23,42,0.8)" : "rgba(30,41,59,0.5)",
+                  border: "1px solid rgba(148,163,184,0.15)",
+                  borderRadius: customizeOpen ? "12px 12px 0 0" : 12,
+                  padding: "12px 18px", cursor: "pointer", color: "#94a3b8",
+                  fontWeight: 700, fontSize: 13, fontFamily: "inherit", marginBottom: 0,
+                }}
+              >
+                <span>⚙ Customize Test</span>
+                <span style={{ fontSize: 12, color: "#64748b" }}>{customizeOpen ? "▲ Collapse" : "▼ Expand"}</span>
+              </button>
+              {customizeOpen && (
+                <div style={{ border: "1px solid rgba(148,163,184,0.15)", borderTop: "none", borderRadius: "0 0 12px 12px", padding: "16px 0 4px 0" }}>
+                  <PyqTestStart
                 testMode={testMode}
                 setTestMode={setTestMode}
                 fullLengthType={fullLengthType}
@@ -1643,14 +2670,44 @@ export default function PrelimsPage() {
                 setPracticeQuestionCount={setPracticeQuestionCount}
                 subjects={subjects}
                 topics={topics}
+                topicsHint={
+                  unifiedTopicsLoading
+                    ? "Loading live topics…"
+                    : unifiedTopicsError
+                    ? unifiedTopicsError
+                    : unifiedTopics.length > 0 && practicePaper !== "CSAT"
+                    ? `${unifiedTopics.length} live topics from question library`
+                    : ""
+                }
                 microThemes={microThemes}
                 availableQuestionCount={availableQuestionCount}
                 onStart={buildPracticeOrFullLengthTest}
                 loading={builderLoading}
                 error={builderError || null}
                 disableStart={disableStart}
-              />
-            </>
+                availableYears={availableYears}
+                sectionYearMode={sectionYearMode}
+                setSectionYearMode={setSectionYearMode}
+                sectionYear={sectionYear}
+                setSectionYear={setSectionYear}
+                sectionYearFrom={sectionYearFrom}
+                setSectionYearFrom={setSectionYearFrom}
+                sectionYearTo={sectionYearTo}
+                setSectionYearTo={setSectionYearTo}
+                  />
+                </div>
+              )}
+            </div>
+          )}
+
+          {testStage === "attempt" && builderWarning && (
+            <div style={{
+              padding: "10px 14px", borderRadius: 12, marginBottom: 4,
+              background: "rgba(234,179,8,0.1)", border: "1px solid rgba(234,179,8,0.3)",
+              color: "#fef08a", fontSize: 13, fontWeight: 600,
+            }}>
+              ⚠ {builderWarning}
+            </div>
           )}
 
           {testStage === "attempt" && testMode === "sectional" && practicePaper === "CSAT" && selectedSubjectId === "csat_rc" && rcPassageGroups.length > 0 && (() => {
@@ -2080,20 +3137,22 @@ export default function PrelimsPage() {
             )}
           </section>
 
-          <section style={sectionStyle}>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-                gap: 14,
-              }}
-            >
-              <InfoBlock title="Recent History" items={recentHistory} accent="#38bdf8" />
-              <InfoBlock title="Mistake Book Signals" items={mistakeBookSignals} accent="#f59e0b" />
-              <InfoBlock title="Next Actions" items={nextActions} accent="#22c55e" />
-              <InfoBlock title="Insights" items={insights} accent="#a78bfa" />
-            </div>
-          </section>
+          {dashboard && (
+            <section style={sectionStyle}>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                  gap: 14,
+                }}
+              >
+                <InfoBlock title="Recent History" items={recentHistory} accent="#38bdf8" />
+                <InfoBlock title="Mistake Book Signals" items={mistakeBookSignals} accent="#f59e0b" />
+                <InfoBlock title="Next Actions" items={nextActions} accent="#22c55e" />
+                <InfoBlock title="Insights" items={insights} accent="#a78bfa" />
+              </div>
+            </section>
+          )}
         </>
       )}
     </div>

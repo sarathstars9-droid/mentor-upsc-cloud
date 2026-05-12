@@ -26,78 +26,135 @@ function getSearchText(q) {
 // Uses broader keyword sets than RULES; safe because they are gated on the
 // specific parent nodeId so they cannot fire for other subjects.
 
-const GEO_IND_PARENT_SPLITS = [
-  // ── India geography nodes ─────────────────────────────────────────────────
-  { nodeId: "GS1-GEO-IND-DRAINAGE-MT01",
-    keywords: ["river", "tributary", "ganga", "brahmaputra", "yamuna", "godavari",
-               "krishna", "narmada", "drainage", "watershed", "dam", "reservoir",
-               "lake", "wetland", "lagoon"] },
-  // "lake" restored. West Africa lake has "west africa"(2pts) in PRE-REGIONAL-PLACES
-  // which outscores DRAINAGE "lake"(1pt), so no false tie.
-  { nodeId: "GS1-GEO-IND-CLIMATE-MT01",
-    keywords: ["monsoon", "rainfall", "climate", "el nino", "la nina", "drought",
-               "cyclone", "temperature", "precipitation", "western disturbance", "jet stream",
-               "isotherm", "ocean temperature", "specific heat", "wind pattern"] },
-  { nodeId: "GS1-GEO-IND-SOILS-VEG-MT01",
-    keywords: ["soil", "black soil", "laterite", "alluvial", "vegetation", "forest",
-               "mangrove", "black cotton", "soil conservation", "terracing"] },
-  { nodeId: "GS1-GEO-IND-AGRI-MT01",
-    keywords: ["crop", "agriculture", "rice", "wheat", "cotton", "jute", "irrigation",
-               "millet", "farming", "sugarcane", "crop rotation"] },
-  // "crop rotation"(2pts) ensures AGRI always beats LATLON-MT02 "rotation"(1pt)
-  { nodeId: "GS1-GEO-IND-RESOURCES-MT02",
-    keywords: ["coal", "mineral", "minerals", "petroleum", "natural gas", "iron ore",
-               "bauxite", "manganese", "mining", "ilmenite", "rutile", "monazite",
-               "rare earth", "thorium", "zircon", "sillimanite", "tungsten",
-               "titanium", "aluminium", "hydroelectric", "hydro-electric",
-               "power project", "power station"] },
-  // "uranium" removed — it causes ties with world-country questions
-  // ── India transport / economic geography ─────────────────────────────────
-  { nodeId: "GS1-GEO-HEW-TRANSPORT-TRADE-MT01",
-    keywords: ["national highway", "railway zone", "konkan railway",
-               "international airport", "golden quadrilateral"] },
-  { nodeId: "GS1-GEO-HEW-TRANSPORT-TRADE-MT02",
-    keywords: ["major port", "non-major port", "shipyard", "largest port"] },
-  // ── World physical geography nodes ───────────────────────────────────────
-  { nodeId: "GS1-GEO-GM-EQ-VOL-MT01",
-    keywords: ["seismograph", "seismic wave", "p wave", "s wave", "shadow zone",
-               "richter", "epicentre"] },
-  { nodeId: "GS1-GEO-GM-EQ-VOL-MT03",
-    keywords: ["pyroclastic", "lava", "caldera", "volcano", "volcanic", "magma"] },
-  { nodeId: "GS1-GEO-GM-INTERIOR-MT01",
-    keywords: ["mantle", "asthenosphere", "lithosphere"] },
-  { nodeId: "GS1-GEO-OCE-MOTIONS-MT03",
-    keywords: ["tides", "tide", "ocean current", "counter-current", "gulf stream",
-               "kuroshio", "upwelling", "spring tide", "neap tide"] },
-  // ── Lat-lon, time, Earth motions ─────────────────────────────────────────
-  { nodeId: "GS1-GEO-GEN-LATLON-MT04",
-    keywords: ["time zone", "international date line", "standard time", "local time",
-               "clock time"] },
-  { nodeId: "GS1-GEO-GEN-LATLON-MT02",
-    keywords: ["solstice", "equinox", "longest day", "shortest day",
-               "rotation", "revolution", "daytime"] },
-  { nodeId: "GS1-GEO-GEN-LATLON-MT01",
-    keywords: ["equator", "tropic of cancer", "tropic of capricorn", "arctic circle",
-               "latitude", "longitude", "meridian", "prime meridian", "antarctic circle"] },
-  // "latitude"/"longitude"/"meridian" moved here from PRE-REGIONAL-PLACES-MT01
-  { nodeId: "GS1-GEO-GEN-MAGNETIC-MT01",
-    keywords: ["magnetic field", "geomagnetic", "magnetic axis",
-               "declination", "inclination", "magnetic pole", "magnetic"] },
-  { nodeId: "GS1-GEO-GEN-UNIVERSE-MT03",
-    keywords: ["solar system", "mars", "saturn", "jupiter", "asteroid",
-               "comet", "uranus", "neptune", "orbit"] },
-  // ── World places/facts ───────────────────────────────────────────────────
-  { nodeId: "GS1-GEO-PRE-REGIONAL-PLACES-MT02",
-    keywords: ["strait"] },
-  { nodeId: "GS1-GEO-PRE-REGIONAL-PLACES-MT01",
-    keywords: ["country", "countries", "continent", "global", "andes", "amazon",
-               "nile", "sahara", "congo", "atlantic", "pacific", "europe", "africa",
-               "mediterranean", "which country", "world map",
-               "north sea", "red sea", "border with", "share a border",
-               "west africa", "east asia", "boundary between",
-               "south-east asia", "siberia", "alaska", "switzerland"] },
-  // "west africa"(2pts) beats DRAINAGE "lake"(1pt) for African lake questions
-];
+// ── GS1-GEO-IND: Dimension-based splitter ────────────────────────────────────
+// Dimensions checked in strict priority order; first keyword match wins.
+// After all dimension checks, India-specific nodes use competitive scoring.
+function geoIndDimensionSplit(searchText) {
+  function firstMatch(keys, nodeId) {
+    if (!UNIFIED_NODES_BY_ID[nodeId]) return null;
+    const matched = keys.filter(k => searchText.includes(k));
+    if (matched.length === 0) return null;
+    return { nodeId, confidence: 85, reason: "GEO_DIMENSION_SPLIT", matchedKeywords: matched };
+  }
+
+  // D1: World / Location (highest priority)
+  const r1 = firstMatch([
+    "which country", "which continent", "nearest to", "located in",
+    "which of the following cities",
+    "country", "countries", "continent", "global",
+    "andes", "amazon", "nile", "sahara", "congo",
+    "atlantic", "pacific", "europe", "africa", "mediterranean",
+    "north sea", "red sea", "border with", "share a border",
+    "west africa", "east asia", "boundary between",
+    "south-east asia", "siberia", "alaska", "switzerland",
+    "strait", "sea", "island", "lake",
+    "desert", "tropical desert", "willy-willy",
+    // "port" omitted — conflicts with TRANSPORT-MT02 "major port"/"largest port"
+  ], "GS1-GEO-PRE-REGIONAL-PLACES-MT01");
+  if (r1) return r1;
+
+  // D2a: Time zones / clocks
+  const r2a = firstMatch([
+    "time zone", "international date line", "standard time", "local time", "clock time",
+    "sunrise", "day length",
+  ], "GS1-GEO-GEN-LATLON-MT04");
+  if (r2a) return r2a;
+
+  // D2b: Earth motions / seasons
+  const r2b = firstMatch([
+    "solstice", "equinox", "longest day", "shortest day",
+    "rotation", "revolution", "daytime", "axis",
+  ], "GS1-GEO-GEN-LATLON-MT02");
+  if (r2b) return r2b;
+
+  // D2c: Lat-lon coordinates
+  const r2c = firstMatch([
+    "equator", "tropic of cancer", "tropic of capricorn", "arctic circle",
+    "latitude", "longitude", "meridian", "prime meridian", "antarctic circle",
+  ], "GS1-GEO-GEN-LATLON-MT01");
+  if (r2c) return r2c;
+
+  // D2d: General lat-lon / earth rotation (broader catch)
+  const r2d = firstMatch([
+    "equator", "latitude", "longitude", "time zone", "day length",
+    "sunrise", "rotation", "revolution",
+  ], "GS1-GEO-GEN-LATLON-MT01");
+  if (r2d) return r2d;
+
+  // D3a: Seismic / earthquake geomorphology
+  const r3a = firstMatch([
+    "seismograph", "seismic wave", "p wave", "s wave", "shadow zone",
+    "richter", "epicentre", "earthquake", "seismic", "plate tectonics",
+    "continental drift", "rock", "weathering",
+  ], "GS1-GEO-GM-EQ-VOL-MT01");
+  if (r3a) return r3a;
+
+  // D3b: Volcanic geomorphology
+  const r3b = firstMatch([
+    "pyroclastic", "lava", "caldera", "volcano", "volcanic", "magma",
+  ], "GS1-GEO-GM-EQ-VOL-MT03");
+  if (r3b) return r3b;
+
+  // D3c: Earth interior
+  const r3c = firstMatch([
+    "mantle", "asthenosphere", "lithosphere",
+  ], "GS1-GEO-GM-INTERIOR-MT01");
+  if (r3c) return r3c;
+
+  // D4: Ocean — FIX 3: boosted keyword set
+  const r4 = firstMatch([
+    "ocean", "sea", "tides", "tide", "ocean current", "counter-current", "gulf stream",
+    "kuroshio", "upwelling", "spring tide", "neap tide",
+    "salinity", "temperature distribution", "current", "wave",
+  ], "GS1-GEO-OCE-MOTIONS-MT03");
+  if (r4) return r4;
+
+  // D5: Minerals / Resources
+  const r5 = firstMatch([
+    "coal", "mineral", "minerals", "petroleum", "natural gas", "iron ore",
+    "bauxite", "manganese", "mining", "ilmenite", "rutile", "monazite",
+    "rare earth", "thorium", "zircon", "sillimanite", "tungsten",
+    "titanium", "aluminium", "hydroelectric", "hydro-electric",
+    "power project", "power station", "uranium", "resource",
+  ], "GS1-GEO-IND-RESOURCES-MT02");
+  if (r5) return r5;
+
+  // India-specific nodes: competitive scoring (handles ties among similar India topics)
+  return scoreParentSplits([
+    { nodeId: "GS1-GEO-IND-DRAINAGE-MT01",
+      keywords: ["river", "tributary", "ganga", "brahmaputra", "yamuna", "godavari",
+                 "krishna", "narmada", "drainage", "watershed", "dam", "reservoir",
+                 "wetland", "lagoon"] },
+    { nodeId: "GS1-GEO-IND-CLIMATE-MT01",
+      keywords: ["monsoon", "rainfall", "climate", "el nino", "la nina", "drought",
+                 "cyclone", "temperature", "precipitation", "western disturbance", "jet stream",
+                 "isotherm", "ocean temperature", "specific heat", "wind pattern"] },
+    { nodeId: "GS1-GEO-IND-SOILS-VEG-MT01",
+      keywords: ["soil", "black soil", "laterite", "alluvial", "vegetation", "forest",
+                 "mangrove", "black cotton", "soil conservation", "terracing"] },
+    { nodeId: "GS1-GEO-IND-AGRI-MT01",
+      keywords: ["crop", "agriculture", "rice", "wheat", "cotton", "jute", "irrigation",
+                 "millet", "farming", "sugarcane", "crop rotation"] },
+    { nodeId: "GS1-GEO-HEW-TRANSPORT-TRADE-MT01",
+      keywords: ["national highway", "railway zone", "konkan railway",
+                 "international airport", "golden quadrilateral"] },
+    { nodeId: "GS1-GEO-HEW-TRANSPORT-TRADE-MT02",
+      keywords: ["major port", "non-major port", "shipyard", "largest port"] },
+    { nodeId: "GS1-GEO-GEN-MAGNETIC-MT01",
+      keywords: ["magnetic field", "geomagnetic", "magnetic axis",
+                 "declination", "inclination", "magnetic pole", "magnetic"] },
+    { nodeId: "GS1-GEO-GEN-UNIVERSE-MT03",
+      keywords: ["solar system", "mars", "saturn", "jupiter", "asteroid",
+                 "comet", "uranus", "neptune", "orbit"] },
+    // D6: India Physio — only true India landform questions (last resort)
+    // Removed: "river system" (overrides DRAINAGE), "coast"/"island" (WORLD/PLACES), "desert" (WORLD)
+    // FIX 6: PHYSIO only runs after all other dimension checks above — guaranteed by chain
+    { nodeId: "GS1-GEO-IND-PHYSIO-MT01",
+      keywords: ["himalaya", "ghats", "western ghats", "eastern ghats", "plateau",
+                 "glacier", "mountain", "deccan", "thar", "physiography",
+                 "relief", "landform"] },
+  ], searchText, "GS1-GEO-IND", 1);  // score >= 1 required: one keyword match needed to assign PHYSIO
+}
 
 const HIS_NATIONAL_PARENT_SPLITS = [
   // Constitutional development history (separate from national movement)
@@ -131,7 +188,9 @@ const HIS_NATIONAL_PARENT_SPLITS = [
 
 // Score and pick the best matching split rule. Longer keyword phrases score more.
 // Returns a refinement result object if a confident winner is found, else null.
-function scoreParentSplits(splits, searchText, fromNodeId) {
+// minScore: minimum score required to return a result (default 1). Set higher (e.g. 2)
+//   for the last-resort fallback rule (PHYSIO) to prevent zero-match defaults.
+function scoreParentSplits(splits, searchText, fromNodeId, minScore = 1) {
   let bestScore = 0;
   let secondBestScore = 0;
   let bestNode = null;
@@ -156,7 +215,7 @@ function scoreParentSplits(splits, searchText, fromNodeId) {
     }
   }
 
-  if (bestScore >= 1 && bestNode && UNIFIED_NODES_BY_ID[bestNode] && bestScore > secondBestScore) {
+  if (bestScore >= minScore && bestNode && UNIFIED_NODES_BY_ID[bestNode] && bestScore > secondBestScore) {
     return {
       nodeId: bestNode,
       confidence: 80 + Math.min(20, bestScore * 5),
@@ -174,7 +233,8 @@ const RULES = [
   { nodeId: "GS1-GEO-IND-SOILS-VEG-MT01", keywords: ["soil", "black soil", "alluvial soil", "laterite", "red soil", "forest", "vegetation", "mangrove"], weight: 2 },
   { nodeId: "GS1-GEO-IND-AGRI-MT01", keywords: ["crop", "rice", "wheat", "sugarcane", "cotton", "jute", "millet", "irrigation", "cropping pattern"], weight: 2 },
   { nodeId: "GS1-GEO-IND-RESOURCES-MT02", keywords: ["coal", "petroleum", "natural gas", "minerals", "iron ore", "bauxite", "manganese", "energy resources"], weight: 2 },
-  { nodeId: "GS1-GEO-IND-PHYSIO-MT01", keywords: ["island", "coast", "himalaya", "western ghats", "eastern ghats", "plateau", "desert", "physiography"], weight: 2 },
+  // FIX 1: removed "island", "coast", "desert" — they belong to WORLD/PLACES, not PHYSIO
+  { nodeId: "GS1-GEO-IND-PHYSIO-MT01", keywords: ["himalaya", "western ghats", "eastern ghats", "plateau", "physiography", "relief", "landform"], weight: 2 },
   { nodeId: "GS1-GEO-IND-POP-URBAN-MT01", keywords: ["population", "census", "literacy", "sex ratio", "density", "urbanization"], weight: 2 },
 
   // ENVIRONMENT
@@ -258,9 +318,17 @@ export function refinePyqNodeId(q) {
 
   // ── Parent-node splitters (run before general isBroad logic) ─────────────
   // Only fires when the source question had a known broad parent nodeId.
-  if (rawNodeId === "GS1-GEO-IND") {
-    const result = scoreParentSplits(GEO_IND_PARENT_SPLITS, searchText, rawNodeId);
-    if (result) return result;
+  if (rawNodeId === "GS1-GEO-IND" || rawNodeId === "GS1-GEO-IND-PHYSIO-MT01") {
+    const result = geoIndDimensionSplit(searchText);
+    // If no dimension keyword matched, keep the rawNodeId as-is.
+    // For PHYSIO-MT01 source questions this preserves correct PHYSIO assignment
+    // when no world-geography keyword fires.
+    return result ?? {
+      nodeId: rawNodeId,
+      confidence: 0,
+      reason: "GEO-IND: no dimension keyword matched; kept raw node.",
+      matchedKeywords: [],
+    };
   }
 
   if (rawNodeId === "GS1-HIS-MOD-NATIONAL") {

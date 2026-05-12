@@ -1,0 +1,537 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "Science & Technology",
+  "topicName": "Diseases",
+  "topicId": "sci_diseases",
+  "sourceType": "UPSC_Science_Tech_PYQ",
+  "totalQuestions": 17,
+  "questions": [
+    {
+      "id": "SCIDISEASES_2023_Q1",
+      "questionNumber": 1,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "'Wolbachia method' is sometimes talked about with reference to which one of the following?",
+      "options": {
+        "A": "Controlling the viral diseases spread by mosquitoes",
+        "B": "Converting crop residues into packing material",
+        "C": "Producing biodegradable plastics",
+        "D": "Producing biochar from thermo-chemical conversion of biomass."
+      },
+      "correctAnswer": "A",
+      "answer": {
+        "correct_option": "A",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_2021_Q2",
+      "questionNumber": 2,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the context of hereditary diseases, consider the following statements: 1) Passing on mitochondrial diseases from parent to child can be prevented by mitochondrial replacement therapy either before or after in vitro fertilisation of the egg. 2) A child inherits mitochondrial diseases entirely from mother and not from father. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "correctAnswer": "C",
+      "answer": {
+        "correct_option": "C",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Diseases and Microbiology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_2015_Q3",
+      "questionNumber": 3,
+      "year": 2015,
+      "questionType": "MCQ_SINGLE",
+      "question": "H1N1 virus is sometimes mentioned in the news with reference to which one of the following diseases?",
+      "options": {
+        "A": "AIDS",
+        "B": "Bird flu",
+        "C": "Dengue",
+        "D": "Swine flu"
+      },
+      "correctAnswer": "C",
+      "answer": {
+        "correct_option": "C",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Diseases and Microbiology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_2010_Q4",
+      "questionNumber": 4,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "With regard to the transmission of the Human Immunodeficiency Virus, which one of the following statements is not correct?",
+      "options": {
+        "A": "The chances of transmission from female to male are twice as likely as from male to female.",
+        "B": "The chances of transmission are more if a person suffers from other sexually transmitted infections.",
+        "C": "An infected mother can transmit the pregnancy, at childbirth and by breastfeeding.",
+        "D": "The risk of contracting infection from transfusion of infected blood is much higher than an exposure to contaminated needle."
+      },
+      "correctAnswer": "D",
+      "answer": {
+        "correct_option": "D",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Diseases and Microbiology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_2010_Q5",
+      "questionNumber": 5,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "Widespread resistance of malarial parasites to drugs like chloroquine has prompted attempts to develop a malaria vaccine to combat malaria. Why is it difficult to develope an effective malaria vaccine?",
+      "options": {
+        "A": "Malaria is caused by several species of Plasmodium.",
+        "B": "Man does not develop immunity to malaria during natural infection.",
+        "C": "Vaccines can be developed only against bacteria.",
+        "D": "Man is only an intermediate host and not the definitive host."
+      },
+      "correctAnswer": "A",
+      "answer": {
+        "correct_option": "A",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Vaccines and Immunology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_2001_Q6",
+      "questionNumber": 6,
+      "year": 2001,
+      "questionType": "MCQ_SINGLE",
+      "question": "\"Athlete's Foot\" is a disease caused by:",
+      "options": {
+        "A": "Bacteria",
+        "B": "Fungus",
+        "C": "Protozoan",
+        "D": "Nematode"
+      },
+      "correctAnswer": "B",
+      "answer": {
+        "correct_option": "B",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Diseases and Microbiology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_1999_Q7",
+      "questionNumber": 7,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following genetic diseases is sex-linked?",
+      "options": {
+        "A": "Royal haemophilia",
+        "B": "Tay-Sachs disease",
+        "C": "Cystic fibrosis",
+        "D": "Hypertension"
+      },
+      "correctAnswer": "B",
+      "answer": {
+        "correct_option": "B",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Genetics and Biotechnology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_1999_Q8",
+      "questionNumber": 8,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Lathyrism is caused by excessive consumption of:",
+      "options": {
+        "A": "Kesari dal",
+        "B": "Mustard oil",
+        "C": "Polished rice",
+        "D": "Mushrooms"
+      },
+      "correctAnswer": "C",
+      "answer": {
+        "correct_option": "C",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_1998_Q9",
+      "questionNumber": 9,
+      "year": 1998,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer using the codes given below the lists: List I (Disease) List II (Organism) I. Malaria",
+      "options": {
+        "A": "Fungi II. Poliomyelitis",
+        "B": "Bacteria III. Tuberculosis",
+        "C": "Virus IV. Ringworm",
+        "D": "Protozoan a) I-D, II-C, III-B, IV-A b) I-D, II-C, III-A, IV-B c) I-C, II-D, III-A, IV-B d) I-C, II-D, III-B, IV-A"
+      },
+      "correctAnswer": "B",
+      "answer": {
+        "correct_option": "B",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Diseases and Microbiology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_1997_Q10",
+      "questionNumber": 10,
+      "year": 1997,
+      "questionType": "MCQ_SINGLE",
+      "question": "Match List I with List II and select the correct answer by using the codes given below the lists: List I List II I. Malaria",
+      "options": {
+        "A": "Bone marrow II. Filaria",
+        "B": "Brain III. Encephalitis",
+        "C": "Muscle IV. Leukaemia",
+        "D": "Lymph node E) Blood cells a) I-E, II-C, III-B, IV-A b) I-E, II-D, III-B, IV-A c) I-D, II-C, III-E, IV-A d) I-E, II-D, III-A, IV-B"
+      },
+      "correctAnswer": "A",
+      "answer": {
+        "correct_option": "A",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Diseases and Microbiology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_1996_Q11",
+      "questionNumber": 11,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which of the following are associated with diabetes mellitus, a common disease in adults? I. Higher sugar level in blood 404 II. Lower sugar level in blood III. Lower insulin level in blood IV. Higher insulin level in blood Select the correct answer by using the codes given below:",
+      "options": {
+        "A": "II and IV",
+        "B": "I and II",
+        "C": "II and III",
+        "D": "I and III"
+      },
+      "correctAnswer": "A",
+      "answer": {
+        "correct_option": "A",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Diseases and Microbiology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_1996_Q12",
+      "questionNumber": 12,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: AIDS is transmitted: I. By sexual intercourse. II. By blood transfusion. III. By mosquitoes and other blood sucking insects. IV. Across the placenta. Of these statements",
+      "options": {
+        "A": "I, II and III are correct",
+        "B": "I, II and IV are correct",
+        "C": "I, III and IV are correct",
+        "D": "I and III are correct"
+      },
+      "correctAnswer": "B",
+      "answer": {
+        "correct_option": "B",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Diseases and Microbiology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_1996_Q13",
+      "questionNumber": 13,
+      "year": 1996,
+      "questionType": "MCQ_SINGLE",
+      "question": "People drinking water from a shallow hand pump are likely to suffer from all of the following diseases except:",
+      "options": {
+        "A": "Cholera",
+        "B": "Typhoid",
+        "C": "Jaundice",
+        "D": "Fluorosis"
+      },
+      "correctAnswer": "D",
+      "answer": {
+        "correct_option": "D",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Diseases and Microbiology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_1995_Q14",
+      "questionNumber": 14,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following sets is correctly matched? 1) Diphtheria, Pneumonia and Leprosy: Hereditary 2) AIDS, Syphilis and Gonorrhoea: Bacterial 3) Colour blindness, Hemophilia and Sickle cell anaemia: Sex linked 4) Polio, Japanese B encephalitis and plague: Viral",
+      "options": {
+        "A": "only 2",
+        "B": "only 3",
+        "C": "1 and 4",
+        "D": "None of these"
+      },
+      "correctAnswer": "B",
+      "answer": {
+        "correct_option": "B",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Diseases and Microbiology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_1995_Q15",
+      "questionNumber": 15,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following antimicrobial drugs is suitable for treatment of both tuberculosis and leprosy?",
+      "options": {
+        "A": "Isoniazid",
+        "B": "p-aminosalicylic acid",
+        "C": "Streptomycin",
+        "D": "Rifampicin"
+      },
+      "correctAnswer": "A",
+      "answer": {
+        "correct_option": "A",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_1995_Q16",
+      "questionNumber": 16,
+      "year": 1995,
+      "questionType": "MCQ_SINGLE",
+      "question": "\"It begins as a single cell and grows into a merciless disease that claims millions of lives year after year. But scientists are steadily unlocking its mysteries, and the fight against it may now have reached a dramatic turning point. New discoveries promise better therapies and hope in the war against...\" The disease referred to in the above quotation is:",
+      "options": {
+        "A": "Cancer",
+        "B": "AIDS",
+        "C": "Tuberculosis",
+        "D": "Alzheimer's disease"
+      },
+      "correctAnswer": "A",
+      "answer": {
+        "correct_option": "A",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "Diseases and Microbiology",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    },
+    {
+      "id": "SCIDISEASES_2019_Q17",
+      "questionNumber": 17,
+      "year": 2019,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following statements is not correct?",
+      "options": {
+        "A": "Hepatitis B virus is transmitted much like HIV.",
+        "B": "Hepatitis B. unlike Hepatitis C, does not have a vaccine.",
+        "C": "Globally, the number of people infected with Hepatitis B and C viruses arc several times more than those infected with HIV.",
+        "D": "Some of those infected with Hepatitis B and C viruses do not show the symptoms for many years."
+      },
+      "correctAnswer": "A",
+      "answer": {
+        "correct_option": "A",
+        "status": "source_key"
+      },
+      "subject": "Science & Technology",
+      "topicName": "Diseases",
+      "topicId": "sci_diseases",
+      "sectionId": "GS3-SCI-TECH",
+      "nodeId": "GS3-ST-HEALTH-DISEASES",
+      "syllabusNodeId": "GS3-ST-HEALTH-DISEASES",
+      "microTheme": "General",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "reviewFlags": [],
+      "sourceType": "UPSC_Science_Tech_PYQ",
+      "stage": "Prelims",
+      "paper": "GS3"
+    }
+  ]
+}

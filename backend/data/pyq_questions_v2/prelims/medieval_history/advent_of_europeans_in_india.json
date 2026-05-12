@@ -1,0 +1,402 @@
+{
+  "schemaVersion": "mentoros-pyq-v1",
+  "subject": "History",
+  "module": "Medieval Indian History",
+  "topicName": "Advent of Europeans in India",
+  "topicId": "advent_of_europeans_in_india",
+  "sourceType": "UPSC_Prelims_PYQ",
+  "sectionId": "GS1-HIS-MED",
+  "totalQuestions": 13,
+  "questions": [
+    {
+      "id": "HIS_MED_EURO_2024_Q1",
+      "questionNumber": 1,
+      "year": 2024,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who of the following rulers of medieval India gave permission to the Portuguese to build a fort at Bhatkal?",
+      "options": {
+        "A": "Krishnadevaraya",
+        "B": "Narasimha Saluva",
+        "C": "Muhammad Shah III",
+        "D": "Yusuf Adil Shah"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-EURO",
+      "syllabusNodeId": "GS1-HIS-MED-EURO",
+      "microTheme": "european-trading-companies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    },
+    {
+      "id": "HIS_MED_EURO_2023_Q2",
+      "questionNumber": 2,
+      "year": 2023,
+      "questionType": "MCQ_SINGLE",
+      "question": "Who among the following rulers of medieval Gujarat surrendered Diu to Portuguese?",
+      "options": {
+        "A": "Ahmad Shah",
+        "B": "Mahmud Begarha",
+        "C": "Bahadur Shah",
+        "D": "Muhammad Shah"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-EURO",
+      "syllabusNodeId": "GS1-HIS-MED-EURO",
+      "microTheme": "european-trading-companies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    },
+    {
+      "id": "HIS_MED_EURO_2022_Q3",
+      "questionNumber": 3,
+      "year": 2022,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to Indian history, consider the following statements: 1. The Dutch established their factories/ warehouses on the east coast on lands granted to them by Gajapati rulers. 2. Alfonso de Albuquerque captured Goa from the Bijapur Sultanate. 3. The English East India Company established a factory at Madras on a plot of land leased from a representative of the Vijayanagara empire. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-EURO",
+      "syllabusNodeId": "GS1-HIS-MED-EURO",
+      "microTheme": "european-trading-companies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    },
+    {
+      "id": "HIS_MED_EURO_2021_Q4",
+      "questionNumber": 4,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the first quarter of seventeenth century, in which of the following was/were the factory/factories of the English East India Company located? 1) Broach 2) Chicacole 3) Trichinopoly Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "1 and",
+        "C": "3 only",
+        "D": "2 and"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-EURO",
+      "syllabusNodeId": "GS1-HIS-MED-EURO",
+      "microTheme": "european-trading-companies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    },
+    {
+      "id": "HIS_MED_EURO_2021_Q5",
+      "questionNumber": 5,
+      "year": 2021,
+      "questionType": "MCQ_SINGLE",
+      "question": "Consider the following statements: 1) Francis Xavier was one of the founding members of the Jesuit Order. 2) Francis Xavier died in Goa and a church is dedicated to him there. 3) The Feast of St. Francis Xavier is celebrated in Goa each year. Which of the statements given above are correct?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-EURO",
+      "syllabusNodeId": "GS1-HIS-MED-EURO",
+      "microTheme": "european-trading-companies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    },
+    {
+      "id": "HIS_MED_EURO_2010_Q6",
+      "questionNumber": 6,
+      "year": 2010,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the Pondicherry (now Puducherry), consider the following statements: 1. The first European power to occupy Pondicherry were the Portuguese. 2. The second European power to occupy Pondicherry were the French. 3. The English never occupied Pondicherry. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-EURO",
+      "syllabusNodeId": "GS1-HIS-MED-EURO",
+      "microTheme": "european-trading-companies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    },
+    {
+      "id": "HIS_MED_EURO_2009_Q7",
+      "questionNumber": 7,
+      "year": 2009,
+      "questionType": "MCQ_SINGLE",
+      "question": "With whose permission did the English set up their first factory in Surat?",
+      "options": {
+        "A": "Akbar",
+        "B": "Jahangir",
+        "C": "Shahjahan",
+        "D": "Aurangzeb"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-EURO",
+      "syllabusNodeId": "GS1-HIS-MED-EURO",
+      "microTheme": "european-trading-companies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    },
+    {
+      "id": "HIS_MED_EURO_2008_Q8",
+      "questionNumber": 8,
+      "year": 2008,
+      "questionType": "MCQ_SINGLE",
+      "question": "During the time of which Mughal Emperor did the English East India Company establish its first factory in India?",
+      "options": {
+        "A": "Akbar",
+        "B": "Shahjahan",
+        "C": "Jahangir",
+        "D": "Aurangzeb"
+      },
+      "answer": {
+        "correct_option": "C",
+        "status": "ok"
+      },
+      "correctAnswer": "C",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-EURO",
+      "syllabusNodeId": "GS1-HIS-MED-EURO",
+      "microTheme": "european-trading-companies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    },
+    {
+      "id": "HIS_MED_EURO_2006_Q9",
+      "questionNumber": 9,
+      "year": 2006,
+      "questionType": "MCQ_SINGLE",
+      "question": "In the year 1613, where was the English East India Company given permission to set up a factory (trading post)?",
+      "options": {
+        "A": "Bangalore",
+        "B": "Madras",
+        "C": "Masulipatnam",
+        "D": "Surat"
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-EURO",
+      "syllabusNodeId": "GS1-HIS-MED-EURO",
+      "microTheme": "european-trading-companies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    },
+    {
+      "id": "HIS_MED_EURO_2005_Q10",
+      "questionNumber": 10,
+      "year": 2005,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following is the correct statement?",
+      "options": {
+        "A": "The modern Kochi was a Dutch colony till India's independence.",
+        "B": "The Dutch defeated the Portuguese and built Fort Williams in the modern Kochi.",
+        "C": "The modern Kochi was first a Dutch colony before the Portuguese took over from them.",
+        "D": "Modern Kochi never became a part of the British colony."
+      },
+      "answer": {
+        "correct_option": "D",
+        "status": "ok"
+      },
+      "correctAnswer": "D",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-EURO",
+      "syllabusNodeId": "GS1-HIS-MED-EURO",
+      "microTheme": "european-trading-companies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    },
+    {
+      "id": "HIS_MED_EURO_2003_Q11",
+      "questionNumber": 11,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "In India, among the following locations, the Dutch established their earliest factory at:",
+      "options": {
+        "A": "Surat",
+        "B": "Pulicat",
+        "C": "Cochin",
+        "D": "Cassimbazar"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-EURO",
+      "syllabusNodeId": "GS1-HIS-MED-EURO",
+      "microTheme": "european-trading-companies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    },
+    {
+      "id": "HIS_MED_EURO_2003_Q12",
+      "questionNumber": 12,
+      "year": 2003,
+      "questionType": "MCQ_SINGLE",
+      "question": "With reference to the entry of European powers into India, which one of the following statements is not correct?",
+      "options": {
+        "A": "The Portuguese captured Goa in 1499",
+        "B": "The English opened their first factory in South India at Masulipatam",
+        "C": "In Eastern India, the English Company opened its first factory in Orissa in 1633",
+        "D": "Under the leadership of Dupleix, the French occupied Madras in 1746"
+      },
+      "answer": {
+        "correct_option": "A",
+        "status": "ok"
+      },
+      "correctAnswer": "A",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-EURO",
+      "syllabusNodeId": "GS1-HIS-MED-EURO",
+      "microTheme": "european-trading-companies",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    },
+    {
+      "id": "HIS_MED_EURO_1999_Q13",
+      "questionNumber": 13,
+      "year": 1999,
+      "questionType": "MCQ_SINGLE",
+      "question": "Which one of the following pairs is not correctly matched?",
+      "options": {
+        "A": "Jahangir: William Hawkins",
+        "B": "Akbar: Sir Thomas Roe",
+        "C": "Shahjahan: Tavernier",
+        "D": "Aurangzeb: Manucci"
+      },
+      "answer": {
+        "correct_option": "B",
+        "status": "ok"
+      },
+      "correctAnswer": "B",
+      "subject": "History",
+      "module": "Medieval Indian History",
+      "topicName": "Advent of Europeans in India",
+      "topicId": "advent_of_europeans_in_india",
+      "sectionId": "GS1-HIS-MED",
+      "nodeId": "GS1-HIS-MED-MUGHAL",
+      "syllabusNodeId": "GS1-HIS-MED-MUGHAL",
+      "microTheme": "mughal-administration-culture",
+      "confidenceBand": "high",
+      "reviewRequired": false,
+      "sourceType": "UPSC_Prelims_PYQ",
+      "source": "DOCX source truth rebuild"
+    }
+  ]
+}

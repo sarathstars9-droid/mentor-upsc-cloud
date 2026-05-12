@@ -1,0 +1,825 @@
+{
+  "year": 2014,
+  "officialCount": 100,
+  "existingCount": 84,
+  "missingCount": 51,
+  "warning": "Questions with image/table content may need manual verification from official UPSC PDF.",
+  "missing": [
+    {
+      "id": "OFFICIAL_GS_2014_Q4",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 4,
+      "question": "Consider the following pairs: Which of the above pairs is/are correctly matched",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1, 2 and 3",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q5",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 5,
+      "question": "With reference to Bombay Natural History Society (BNHS), consider the following statements : (1). It is an autonomous organization under the Ministry of Environment and Forests. (2). It strives to conserve nature through action-based research, education and public awareness. (3). It organizes and conducts nature trails and camps for the general public. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q7",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 7,
+      "question": "With reference to technologies for solar power production, consider the following statements: (1).’Photovoltaics’ is a technology that generates electricity by direct conversion of light into electricity, while ‘Solar Thermal’ is a technology that utilizes the Sun’s rays to generate heat which is further used in electricity generation process. (2). Photovoltaics generate Alternating Current (AC), while Solar Thermal generates Direct Current (DC). (3). India has manufacturing base for Solar Thermal technology, but not for Photovoltaics. Which of the statements given above is / are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1, 2 and 3",
+        "D": "None"
+      },
+      "answer": "A",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q8",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 8,
+      "question": "Consider the following languages : (1). Gujarati (2). Kannada (3). Telugu Which of the above has/have been declared as ‘Classical Language / Languages’ by the Government?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q9",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 9,
+      "question": "Consider the following pairs Which of the above pairs is / are correctly matched?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q11",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 11,
+      "question": "With reference to a grouping of countries known as BRICS, consider the following statements: (1). The First Summit of BRICS was held in Rio de Janeiro in 2009. (2). South Africa was the last to join the BRICS grouping. Which of the statements given above is / are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q12",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 12,
+      "question": "Consider the following diseases (1). Diphtheria (2). Chickenpox (3). Smallpox Which of the above diseases has/have been eradicated in India?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1, 2 and 3",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q14",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 14,
+      "question": "Other than poaching, what are the possible reasons for the decline in the population of Ganges River Dolphins? (1). Construction of dams and barrages on rivers (2). Increase in the population of crocodiles in rivers (3). Getting trapped in fishing nets accidentally (4). Use of synthetic fertilizers and other agricultural chemicals in crop-fields in the vicinity of rivers Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1, 3 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q17",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 17,
+      "question": "Consider the following : (1). Bats (2). Bears (3). Rodents The phenomenon of hibernation can be observed in which of the above kinds of animals?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 only",
+        "C": "1, 2 and 3",
+        "D": "Hibernation cannot be observed in any of the above"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q19",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 19,
+      "question": "Which of the following adds/add carbon dioxide to the carbon cycle on the planet Earth? (1). Volcanic action (2). Respiration (3). Photosynthesis (4). Decay of organic matter Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 only",
+        "C": "1, 2 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q24",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 24,
+      "question": "Which of the following are some important pollutants released by steel industry in India? (1). Oxides of sulphur (2). Oxides of nitrogen (3). Carbon monoxide (4). Carbon dioxide Select the correct answer using the code given below.",
+      "options": {
+        "A": "1, 3 and 4 only",
+        "B": "2 and 3 only",
+        "C": "1 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": "D",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q26",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 26,
+      "question": "Every year, a month long ecologically important campaign/festival is held during which certain communities/ tribes plant saplings of fruit-bearing trees. Which of the following are such communities/tribes?",
+      "options": {
+        "A": "Bhutia and Lepcha",
+        "B": "Gond and Korku",
+        "C": "lrula and Toda",
+        "D": "Sahariya and Agariya"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q29",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 29,
+      "question": "The main objective of the 12th Five-Year Plan is",
+      "options": {
+        "A": "Inclusive growth and poverty reductions",
+        "B": "Inclusive and sustainable growth",
+        "C": "Sustainable and inclusive growth to reduce unemployment",
+        "D": "Faster, sustainable and more inclusive growth."
+      },
+      "answer": "D",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q34",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 34,
+      "question": "Recently, a series of uprisings of people referred to as ‘Arab Spring’ originally started from",
+      "options": {
+        "A": "Egypt",
+        "B": "Lebanono",
+        "C": "Syria",
+        "D": "Tunisia"
+      },
+      "answer": "D",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q35",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 35,
+      "question": "Consider the following countries : (1). Denmark (2). Japan (3). Russian Federation (4). United Kingdom (5). United States of America Which of the above are the members of the ‘Arctic Council ‘?",
+      "options": {
+        "A": "1, 2 and 3",
+        "B": "2, 3 and 4",
+        "C": "1, 4 and 5",
+        "D": "1, 3 and 5"
+      },
+      "answer": "D",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q36",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 36,
+      "question": "Consider the following pairs: Which of the above pairs is/are correctly matched?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q37",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 37,
+      "question": "Which reference to Agni-IV Missile, which of the following statements is/are correct? (1). It is a surface-to-surface missile. (2). It is fuelled by liquid propellant only. (3). It can deliver one-tonne nuclear warheads about 7500 km away. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q38",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 38,
+      "question": "With reference to two non-conventional energy sources called ‘coalbed methane’ and ‘shale gas’, consider the following ‘statements: (1). Coalbed methane is the pure methane gas extracted from coal seams, while shale gas is a mixture of propane and butane only that can be extracted from fine-grained sedimentary rocks. (2). In India abundant coalbed methane sources exist, but so far no shale gas sources have been found. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "D",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q39",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 39,
+      "question": "With reference to ‘Changpa’ community of India, consider the following statement : (1). They live mainly in the State of Uttarakhand. (2). They rear the Pashmina goats that yield a fine wool. (3). They are kept in the category of Scheduled Tribes. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q45",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 45,
+      "question": "Consider the following rivers: (1). Barak (2). Lohit (3). Subansiri Which of the above flows / flow through Arunachal Pradesh?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q46",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 46,
+      "question": "Consider the following pairs: Which of the above pairs is/are correctly matched?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "A",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q48",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 48,
+      "question": "Consider the following pairs: Which of the above pairs are correctly matched?",
+      "options": {
+        "A": "1 and 2",
+        "B": "2 and 3",
+        "C": "3 and 4",
+        "D": "2 and 4"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q52",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 52,
+      "question": "What is the correct sequence of occurrence of the following cities in South-East Asia as one proceeds from south to north? (1). Bangkok (2). Hanoi (3). Jakarta (4). Singapore Select the correct answer using the code given below.",
+      "options": {
+        "A": "4-2-1-3",
+        "B": "3-2-4-1",
+        "C": "3-4-1-2",
+        "D": "4-3-2-1"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q53",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 53,
+      "question": "The scientific view is that the increase in global temperature should not exceed 2 °C above pre-industrial level. If the global temperature increases beyond 3 °C above the pre-industrial level, what can be its possible impact/impacts on the world? (1). Terrestrial biosphere tends toward a net carbon source (2). Widespread coral mortality will occur. (3). All the global wetlands will permanently disappear. (4). Cultivation of cereals will not be possible anywhere in the world. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2, 3 and 4 only",
+        "D": "1, 2, 3 and 4"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q54",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 54,
+      "question": "The national motto of India, ‘Satyameva Jayate’ inscribed below the Emblem of India is taken from",
+      "options": {
+        "A": "Katha Upanishad",
+        "B": "Chandogya Upanishad",
+        "C": "Aitareya Upanishad",
+        "D": "Mundaka Upanishad"
+      },
+      "answer": "D",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q58",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 58,
+      "question": "Which of the following is / are the function / functions of the Cabinet Secretariat? (1). Preparation of agenda for Cabinet Meetings (2). Secretarial assistance to Cabinet Committees (3). Allocation of financial resources to the Ministries Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 2 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q59",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 59,
+      "question": "Consider the following statements:",
+      "options": {
+        "A": "Constitutional Government is one which (1). places effective restrictions on individual liberty in the interest of State Authority (2). places effective restrictions on the Authority of the State in the interest of individual liberty Which of the statements given above is / are correct? a) 1 only",
+        "B": "2 only.",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q63",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 63,
+      "question": "Consider the following statements regarding a No-Confidence Motion in India: (1) There is no mention of a No-Confidence Motion in the Constitution of India. (2) A Motion of No-Confidence can be introduced in the Lok Sabha only. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "2 only",
+        "C": "Both 1 and 2",
+        "D": "Neither 1 nor 2"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q66",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 66,
+      "question": "In addition to fingerprint scanning, which of the following can be used in the biometric identification of a person? (1). Iris scanning (2). Retinal scanning (3). Voice recognition Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "D",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q67",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 67,
+      "question": "Which of the following statements is / are correct regarding vegetative propagation of plants? (1). Vegetative propagation produces clonal population. (2). Vegetative propagation helps in eliminating the virus. (3). Vegetative propagation can be practiced most of the year. Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q68",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 68,
+      "question": "Which of the following pair is/are correctly matched? Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q69",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 69,
+      "question": "Consider the following pairs: Which of the above pairs is/are correctly matched?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1, 2 and 3",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q70",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 70,
+      "question": "Which of the following is/are the example/examples of chemical change? (1). Crystallization of sodium chloride (2). Melting of ice (3). Souring of milk Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1, 2 and 3",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q72",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 72,
+      "question": "Consider the following techniques/phenomena: (1). Budding and grafting in fruit plants (2). Cytoplasmic male sterility (3). Gene silencing Which of the above is/are used to create transgenic crops?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3",
+        "C": "1 and 3",
+        "D": "None"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q73",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 73,
+      "question": "Consider the following statements : (1). Maize can be used for the production of starch. (2). Oil extracted from maize can be a feedstock for biodiesel. (3). Alcoholic beverages can be produced by using maize. Which of the statements given above is/are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "D",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q74",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 74,
+      "question": "Among the following organisms, which one does not belong to the class of the other three?",
+      "options": {
+        "A": "Crab",
+        "B": "Mite",
+        "C": "Scorpion",
+        "D": "Spider"
+      },
+      "answer": "A",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q76",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 76,
+      "question": "Consider the following towns of India: (1) Bhadrachalam (2) Chanderi (3) Kancheepuram (4) Karnal Which of the towns given above are famous for the production of traditional sarees/fabric?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "2 and 3 only",
+        "C": "1, 2 and 3",
+        "D": "1, 3 and 4"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q77",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 77,
+      "question": "Consider the following international agreements: (1). The International Treaty on Plant Genetic Resources for Food and Agriculture (2). The United Nations Convention to Combat Desertification (3). The World Heritage Convention Which of the above has / have a bearing on the biodiversity?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": null,
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q78",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 78,
+      "question": "Consider the following statements regarding ‘Earth Hour’: (1). It is an initiative of UNEP and UNESCO. (2). It is a movement in which the participants switch off the lights for one hour on a certain day every year. (3). It is a movement to raise the awareness about the climate change and the need to save the planet. Which of the statements given above is / are correct?",
+      "options": {
+        "A": "1 and 3 only",
+        "B": "2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q81",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 81,
+      "question": "The 1929 Session of Indian National Congress is of significance in the history of the Freedom Movement because the",
+      "options": {
+        "A": "Attainment of Self-Government was declared as the objective of the Congress",
+        "B": "Attainment of Poorna Swaraj Was adopted as the goal of the Congress",
+        "C": "Non-Cooperation Movement was launched",
+        "D": "Decision to participate in the Round Table Conference in London was taken"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q82",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 82,
+      "question": "With reference to the famous Sattriya dance, consider the following statements: (1) Sattriya is a combination of music, dance and drama. (2) It is a centuries-old living tradition of Vaishnavites of Assam. (3) It is based on classical Ragas and Talas of devotional songs composed by Tulsidas, Kabir and Mirabai. Which of the statements given above is /are correct?",
+      "options": {
+        "A": "1 only",
+        "B": "1 and 2 only",
+        "C": "2 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q83",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 83,
+      "question": "Chaitra 1 of the national calendar based on the Saka Era corresponds to which one of the following dates of the Gregorian calendar in a normal year of 365 days?",
+      "options": {
+        "A": "22 March (or 21st March)",
+        "B": "15th May (or 16th May)",
+        "C": "31st March (or 30th March)",
+        "D": "21st April (or 20th April"
+      },
+      "answer": "A",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q84",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 84,
+      "question": "With reference to the Indian history of art and culture, consider the following pairs: Which of the pairs given above is/ are correctly matched?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q86",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 86,
+      "question": "With reference to India’s culture and tradition, what is ‘Kalaripayattu’?",
+      "options": {
+        "A": "It is an ancient Bhakti cult of Shaivism still prevalent in some parts of South India.",
+        "B": "It is an ancient style bronze and brasswork still found in southern part of Coromandel area.",
+        "C": "It is an ancient form of dance-drama and a living tradition in the northern part of Malabar.",
+        "D": "It is an ancient martial art and a living tradition in some parts of South India. e) None of the above/More than one of the above"
+      },
+      "answer": "D",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q87",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 87,
+      "question": "Consider the following pairs: Which of the pairs given above is/are correctly matched?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q88",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 88,
+      "question": "With reference to Buddhist history, tradition and culture in India, consider the following pairs: Which of the pairs given above is/are correctly matched?",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1 and 3 only",
+        "D": "1, 2 and 3"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q90",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 90,
+      "question": "A community of people called Manganiyars is well-known for their",
+      "options": {
+        "A": "martial arts in North-East India",
+        "B": "musical tradition in North-West India",
+        "C": "classical vocal music in South India",
+        "D": "pietra dura tradition in Central India"
+      },
+      "answer": "B",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q96",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 96,
+      "question": "Consider the following pairs: Which of the pairs given above is/are correctly matched?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1, 2 and 3",
+        "D": "None"
+      },
+      "answer": "A",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q98",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 98,
+      "question": "Which of the following organizations brings out the publication known as ‘World Economic Outlook’?",
+      "options": {
+        "A": "The International Monetary Fund",
+        "B": "The United Nations Development Programme",
+        "C": "The World Economic Forum",
+        "D": "The World Bank"
+      },
+      "answer": "A",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q99",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 99,
+      "question": "With reference to Union Budget, which of the following, is/are covered under Non-Plan Expenditure? (1). Defence-expenditure (2). Interest payments (3). Salaries and pensions (4). Subsidies Select the correct answer using the code given below.",
+      "options": {
+        "A": "1 only",
+        "B": "2 and 3 only",
+        "C": "1, 2, 3 and 4",
+        "D": "None"
+      },
+      "answer": "C",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    },
+    {
+      "id": "OFFICIAL_GS_2014_Q100",
+      "year": 2014,
+      "paper": "GS",
+      "questionNumber": 100,
+      "question": "Consider the following pairs: Which of the above pairs is/are correctly matched?",
+      "options": {
+        "A": "1 and 2 only",
+        "B": "3 only",
+        "C": "1,2 and 3",
+        "D": "None"
+      },
+      "answer": "D",
+      "nodeId": null,
+      "source": "https://www.upscprep.com/untitled-2/"
+    }
+  ]
+}
