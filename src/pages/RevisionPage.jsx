@@ -399,12 +399,29 @@ export default function RevisionPage() {
       if (!revRes.value.ok) throw new Error(`HTTP ${revRes.value.status}`);
       const revData = await revRes.value.json();
       const arr = Array.isArray(revData) ? revData : (revData.items || revData.data || []);
-      arr.sort((a, b) => {
+      
+      const normalizedArr = arr.map(item => {
+        const nextRev = item.nextReviewAt || item.next_review_at || item.due_at || item.created_at || null;
+        return {
+          ...item,
+          title: item.title || item.question_text || item.questionText || "Untitled",
+          subject: String(item.subject || "unknown").toLowerCase(),
+          stage: String(item.stage || "prelims").toLowerCase(),
+          priority: String(item.priority || "medium").toLowerCase(),
+          status: String(item.status || "pending").toLowerCase(),
+          next_review_at: nextRev,
+          question_text: item.question_text || item.questionText || ""
+        };
+      });
+
+      normalizedArr.sort((a, b) => {
         const da = a.next_review_at ? new Date(a.next_review_at).getTime() : 0;
         const db = b.next_review_at ? new Date(b.next_review_at).getTime() : 0;
         return da - db;
       });
-      setItems(arr);
+      
+      console.log(`[RevisionPage] raw items: ${arr.length}, normalized: ${normalizedArr.length}`);
+      setItems(normalizedArr);
       setLastRefresh(new Date());
 
       // Handle weakness map (secondary — errors are silent)
@@ -471,13 +488,8 @@ export default function RevisionPage() {
   const stages = [...new Set(items.map(i => i.stage).filter(Boolean))].sort();
 
   const filtered = items.filter(item => {
-    // Queue sections only show active items by default.
-    // "reviewed" items are excluded unless the user explicitly selects the
-    // "reviewed" status pill — completing a review must remove it from the queue.
-    if (statusFilter === "all") {
-      if (item.status !== "pending" && item.status !== "snoozed") return false;
-    } else {
-      if (item.status !== statusFilter) return false;
+    if (statusFilter !== "all" && item.status !== statusFilter) {
+      return false;
     }
     if (stageFilter !== "all" && item.stage !== stageFilter) return false;
     if (subjectFilter !== "all" && item.subject !== subjectFilter) return false;
@@ -489,6 +501,8 @@ export default function RevisionPage() {
     }
     return true;
   });
+
+  console.log(`[RevisionPage] filtered items count: ${filtered.length}, active filters: { stage: '${stageFilter}', subject: '${subjectFilter}', priority: '${priorityFilter}', status: '${statusFilter}', dueOnly: ${dueOnly} }`);
 
   // Split into buckets then sort each by weakness score (DESC) → time (ASC)
   const overdueItems  = sortByWeakness(filtered.filter(i => isOverdue(i)), weaknessMap);
