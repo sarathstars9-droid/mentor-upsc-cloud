@@ -33,6 +33,15 @@ CREATE TABLE IF NOT EXISTS public.study_blocks (
   updated_at            TIMESTAMPTZ  NOT NULL DEFAULT NOW()
 );
 
+-- Safety patch: if study_blocks already existed without block_id, add it now
+-- before any index referencing it is created.  Idempotent.
+ALTER TABLE public.study_blocks
+  ADD COLUMN IF NOT EXISTS block_id TEXT;
+
+UPDATE public.study_blocks
+SET    block_id = id::TEXT
+WHERE  block_id IS NULL;
+
 CREATE UNIQUE INDEX IF NOT EXISTS uniq_active_block_per_user
   ON public.study_blocks(user_id) WHERE status = 'active';
 
