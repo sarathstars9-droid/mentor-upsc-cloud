@@ -216,3 +216,26 @@ export async function evaluateMainsAnswerApi(payload) {
         throw error;
     }
 }
+
+/**
+ * Extract handwritten answer from uploaded images using Gemini Vision
+ * POST /api/mains/extract-answer
+ */
+export async function extractAnswerFromImagesApi(files) {
+    try {
+        const formData = new FormData();
+        files.forEach(file => {
+            formData.append("pages", file);
+        });
+
+        const response = await fetch(`${BACKEND_URL}/api/mains/extract-answer`, {
+            method: "POST",
+            body: formData,
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error("extractAnswerFromImagesApi error:", error);
+        throw error;
+    }
+}

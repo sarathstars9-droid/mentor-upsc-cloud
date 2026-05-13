@@ -26,6 +26,11 @@ import {
 } from "../mainsReview/saveMainsReviewRecord.js";
 import { runReviewPipeline } from "../mainsReview/mainsReviewPipeline.js";
 import { buildAir1Prompt } from "../mainsReview/buildAir1Prompt.js";
+import { saveAir1ReviewIntelligence } from "../repositories/air1ReviewRepository.js";
+import multer from "multer";
+import { extractHandwrittenAnswer } from "../services/ai/extractHandwrittenAnswer.js";
+
+const upload = multer({ storage: multer.memoryStorage() });
 
 const router = Router();
 
@@ -34,7 +39,7 @@ const router = Router();
 // Body: mainsAnswerAttempt payload (source, question, writingSession, etc.)
 // Returns: { ok: true, attemptId }
 // ────────────────────────────────────────────────────────────────────────────
-router.post("/attempt/save", (req, res) => {
+router.post("/attempt/save", async (req, res) => {
   try {
     const payload = req.body || {};
 
@@ -56,8 +61,33 @@ router.post("/attempt/save", (req, res) => {
       });
     }
 
+    let air1ReviewSaved = false;
+
+    if (record.air1Review?.rawText) {
+      try {
+        const parsedJson = record.air1Review.parsedJson;
+        await saveAir1ReviewIntelligence({
+          userId: record.userId,
+          question: record.question?.text || "",
+          studentAnswer: record.extraction?.extractedText || record.extraction?.text || "",
+          air1ReviewText: record.air1Review.rawText,
+          paper: record.source?.paper || record.question?.paper || null,
+          extractedJson: parsedJson || null,
+          overallLevel: parsedJson?.level || parsedJson?.overallLevel || null,
+          estimatedScore: parsedJson?.score || parsedJson?.estimatedScore || null,
+          coreWeaknesses: parsedJson?.mistakeTypes || parsedJson?.coreWeaknesses || parsedJson?.missingDimensions || [],
+          focusAreas: parsedJson?.revisionTasks || parsedJson?.focusAreas || []
+        });
+        air1ReviewSaved = true;
+        console.log(`[mainsReview] Saved AIR-1 review to DB for attempt ${attemptId}`);
+      } catch (dbErr) {
+        console.error(`[mainsReview] Failed to save AIR-1 review to DB for attempt ${attemptId}:`, dbErr);
+        // We don't block the overall save if DB insert fails
+      }
+    }
+
     console.log(`[mainsReview] POST attempt/save → ${attemptId}`);
-    return res.json({ ok: true, attemptId });
+    return res.json({ ok: true, attemptId, air1ReviewSaved });
   } catch (err) {
     console.error("[mainsReview] attempt/save error:", err);
     return res.status(500).json({ ok: false, error: String(err?.message || err) });
@@ -206,6 +236,33 @@ router.post("/air1-prompt", async (req, res) => {
       error: "Failed to build AIR-1 prompt",
       details: error.message
     });
+  }
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// POST /api/mains/extract-answer
+// Multipart form with up to 5 image files under 'pages' field.
+// Returns: { ok: true, text: "extracted answer text" }
+// ────────────────────────────────────────────────────────────────────────────
+router.post("/extract-answer", upload.array("pages", 5), async (req, res) => {
+  try {
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ ok: false, error: "No pages uploaded" });
+    }
+
+    const images = req.files.map(file => ({
+      inlineData: {
+        data: file.buffer.toString("base64"),
+        mimeType: file.mimetype
+      }
+    }));
+
+    const text = await extractHandwrittenAnswer(images);
+
+    return res.json({ ok: true, text });
+  } catch (err) {
+    console.error("[mainsReview] extract-answer error:", err);
+    return res.status(500).json({ ok: false, error: String(err?.message || err) });
   }
 });
 

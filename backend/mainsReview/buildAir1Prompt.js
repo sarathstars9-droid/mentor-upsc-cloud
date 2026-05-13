@@ -75,6 +75,25 @@ Length Control:
 - Keep line correction focused only on weak, incorrect, generic, unclear, or high-impact lines.
 - Do not over-expand current affairs or PYQ linkage. Give only the most relevant items.
 - Keep the review concise. For 10-marker answers, complete the entire review in about 900–1200 words unless the answer is very complex. For 15-marker answers, keep it around 1200–1600 words. Avoid unnecessary expansion.
+- STRICT INSTRUCTION: Do not leave \`modelAnswer\`, \`improvedAnswer\`, \`examinerImpression\`, \`whyMarksLost\`, or \`lineCorrections\` empty unless the candidate answer is completely missing or unreadable.
+- Line-by-Line Improvement is mandatory. Compare the candidate answer with AIR-1 standard line by line or idea by idea. Provide at least 3 corrections wherever the candidate answer has enough content.
+- For lineCorrections, you must quote or paraphrase actual user answer lines.
+- Do not give generic weakness tags as lineCorrections.
+- If the answer is short, create idea-level corrections instead of sentence-level corrections, but still base them on what the user actually wrote.
+- Minimum: 3 lineCorrections wherever possible.
+- For Line-by-Line Improvement, return: User line / idea, Issue, Better version, Why this improves marks.
+- Ensure you provide a fully Improved User Answer.
+- Ensure you provide a full, standalone AIR-1 Model Answer.
+
+Answer Architecture Review:
+- Evaluate Introduction, Body structure, Conclusion, Subheadings, Diagram/map/flowchart possibility, and Presentation quality.
+- GS1: check chronology, social/economic/cultural dimensions, maps/flowcharts where useful.
+- GS2: check constitutional articles, judgments, committees, institutional structure.
+- GS3: check data, reports, schemes, feasibility, flowcharts.
+- GS4: check stakeholders, values, ethical issues, options, justification.
+- Geography Optional: diagram/map/model/scholar check is mandatory.
+- Essay: check thesis, flow, originality, examples, philosophical maturity; avoid making it look like GS answer.
+- STRICT RULE: Do not leave structureReview empty. Even if the answer is weak, give a better intro/body/conclusion suggestion.
 
 Now produce:
 1. 30-second examiner impression
@@ -104,6 +123,7 @@ At the end, return machine-readable JSON only between these exact tags. The JSON
   "score": 0,
   "potentialScore": 0,
   "level": "",
+  "examinerImpression": "",
   "paper": "",
   "subject": "",
   "topic": "",
@@ -115,12 +135,49 @@ At the end, return machine-readable JSON only between these exact tags. The JSON
   "questionDemand": [],
   "didAnswerDemand": "",
   "marksBreakdown": [],
+  "whyMarksLost": [],
   "mistakeTypes": [],
   "factualErrors": [],
   "genericLines": [],
+  "lineCorrections": [
+    {
+      "userLine": "",
+      "problem": "",
+      "correction": "",
+      "whyItImprovesMarks": ""
+    }
+  ],
+  "structureReview": {
+    "introduction": {
+      "level": "",
+      "issue": "",
+      "betterIntro": ""
+    },
+    "body": {
+      "level": "",
+      "issue": "",
+      "betterStructure": []
+    },
+    "conclusion": {
+      "level": "",
+      "issue": "",
+      "betterConclusion": ""
+    }
+  },
+  "subheadingSuggestions": [],
+  "diagramSuggestions": [
+    {
+      "recommended": false,
+      "type": "",
+      "whereToPlace": "",
+      "whatToDraw": "",
+      "labels": [],
+      "whyItImprovesMarks": ""
+    }
+  ],
+  "presentationAdvice": [],
   "missingDimensions": [],
   "valueAdditions": [],
-  "diagramSuggestions": [],
   "relatedPYQs": [],
   "sourceFinder": {
     "preparationSource": [],
@@ -130,6 +187,8 @@ At the end, return machine-readable JSON only between these exact tags. The JSON
     "confidence": ""
   },
   "currentAffairsLinks": [],
+  "improvedAnswer": "",
+  "modelAnswer": "",
   "revisionTasks": [],
   "mistakeBookEntries": [],
   "nextAttemptStrategy": "",

@@ -1,0 +1,209 @@
+{
+  "schema": "mainsAnswerAttempt",
+  "attemptId": "attempt_1778599563369_qbq5l5",
+  "createdAt": "2026-05-12T15:26:03.369Z",
+  "userId": "user_1",
+  "source": {
+    "mode": "pyq",
+    "paper": "GS1",
+    "examYear": 2024,
+    "questionId": "Underline_",
+    "questionMarks": 10,
+    "targetWords": 150,
+    "upscTimeMinutes": 6
+  },
+  "question": {
+    "text": "Underline the changes in the field of society and economy from the Rig Vedic to the later Vedic period",
+    "directiveWord": "",
+    "focusLabel": "",
+    "topicNodeId": "",
+    "subjectTag": "general"
+  },
+  "writingSession": {
+    "startedAt": "2026-05-12T15:26:03.008Z",
+    "endedAt": "2026-05-12T15:26:03.008Z",
+    "timeTakenSeconds": 0
+  },
+  "answerUpload": {
+    "pageCount": 2,
+    "pages": [
+      {
+        "pageNo": 1,
+        "fileName": "WhatsApp Image 2026-05-12 at 8.43.15 PM.jpeg",
+        "storagePath": "blob:http://localhost:5173/8c1965fe-298c-45a2-aaa2-02d43083aff8"
+      },
+      {
+        "pageNo": 2,
+        "fileName": "WhatsApp Image 2026-05-212 at 8.43.15 PM.jpeg",
+        "storagePath": "blob:http://localhost:5173/b303d33b-1561-42b0-980d-188d3a7ce03f"
+      }
+    ]
+  },
+  "extraction": {
+    "method": "chatgpt_manual_paste",
+    "promptVersion": "mains-answer-extraction-v1",
+    "extractedText": "Underline the changes in field of Society and Economy from Rigvedic to later vedic period.\n\nVedic society/Age was divided in to Early vedic and Later vedic on basis of development in Socio-Economic and cultural spheres.\n\nEarly Vedic/Rigvedic Society\n- Varna system started with 3 Varnas\n- It was egalitarian Society, where Varna is based on profession and one can change it\n- Women here enjoyed freedom, there were scholars like gargi lopamudra who wore sacred thread\n- No Practice of Antouchability in Rigvedic age\n\nLater Vedic Society\n- Chaturvarna System started which is rigid.\n- It was highly orthodox Society\n- Strict implementation of Varna ashrama Dharmas\n- Women lost their freedom, social evils entered like dowry, childmarriage\n- Sudras were given varna status and seen as untouchables\n\nSimilar to social aspects, there were differencs in Economicaspects as well\n\nRig vedic Economy\n- It was Pastoral Economy\n- Primitive tools used & subsistence Agriculture practiced\n- Cattle were seen as wealth. Cow was sacred called Duhitri\n- cultivation of rice wheat, Barley is observed\n- It was Rural Economy\n- Small trade exists called Panis\n\nLater Vedic Economy.\n- Transition from Pastoral to Agriculture\n- Use of Iron Started called 'krishnayas'\n- Sudras became Agriculturists\n- Rise of trade and commerce\n- Guilds were formed called Srenis.\n- They used painted grey ware. called Neela Whita\n\nThus, Rig vedic to Later vedic period a huge transition is observed."
+  },
+  "selfReview": {
+    "mistakeTypes": [],
+    "severity": "medium",
+    "mustRevise": false,
+    "note": ""
+  },
+  "air1Review": {
+    "rawText": "Based on the uploaded MentorOS evaluation input, here is the AIR-1 style review. \n\n## 1. 30-second examiner impression\n\nThe answer is **well-structured but factually shaky**. You correctly separated **society** and **economy** and compared Rig Vedic with Later Vedic phases. However, for a GS1 History 10-marker, the answer loses marks due to **wrong terms, overstatements, and missing transition logic**. It reads like notes, not an analytical comparison.\n\nBest part: clear headings.\nWeakest part: factual accuracy and historical nuance.\n\n## 2. Question Intelligence\n\n**Syllabus mapping:** GS1 – Ancient Indian History – Vedic Age – socio-economic transformations.\n**Likely source:** Old NCERT Ancient India, R.S. Sharma, Tamil Nadu Class 11 Ancient History.\n**PYQ pattern:** UPSC often asks changes/continuities in ancient Indian society, economy, culture, and institutions.\n**Current affairs linkage:** Not needed. This is a static-history question.\n\n## 3. Demand decoding\n\nThe question asks to **underline changes**, meaning comparison must show:\n\nRig Vedic → Later Vedic transition in:\n\n1. Kin-based tribal society to varna-based hierarchy\n2. Pastoral economy to agrarian economy\n3. Fluid social order to ritual-orthodox order\n4. Women’s relatively better position to decline\n5. Simple subsistence economy to surplus, crafts, trade, taxation\n\nYour answer covers the broad demand but does not explain the **causal transition** clearly.\n\n## 4. Strict score\n\n**Score: 4.25 / 10**\n**Potential score: 7.25 / 10**\n**Answer level: Average-minus**\n\nThis answer would not fail because it has relevant content, but factual errors prevent it from crossing average marks.\n\n## 5. Paper-specific marks breakdown\n\n| Component               |         Marks |\n| ----------------------- | ------------: |\n| Demand understanding    |      1.25 / 2 |\n| Society points          |    1.25 / 2.5 |\n| Economy points          |    1.25 / 2.5 |\n| Factual accuracy        |      0.75 / 2 |\n| Presentation/conclusion |      0.75 / 1 |\n| **Total**               | **4.25 / 10** |\n\n## 6. Exact reasons marks were lost\n\nYou lost marks because:\n\n1. You gave **separate notes**, not a sharp comparative answer.\n2. Several factual errors reduce credibility.\n3. You missed major themes like **tribal polity to territorial kingdoms**, **Brahmanical ritual dominance**, **taxation/bali**, **surplus**, **craft specialization**, and **patriarchy**.\n4. Conclusion is too generic.\n5. Some terms are wrongly used: *duhitri*, *krishnayas*, *neela whita*.\n\n## 7. Weak / incorrect / generic line correction\n\n**Your line:** “Varna system started with 3 Varnas.”\n**Correction:** Rig Vedic society had social differentiation, but varna divisions were fluid; the Purusha Sukta reference to four varnas is considered a later layer.\n\n**Your line:** “Gargi Lopamudra wore sacred thread.”\n**Correction:** Lopamudra is associated with Rig Vedic tradition, while Gargi belongs to the Upanishadic/Later Vedic phase. Sacred thread claim needs caution.\n\n**Your line:** “Sudras were given varna status and seen as untouchables.”\n**Correction:** Shudras became the lowest varna, but untouchability as a developed institution belongs to a later period.\n\n**Your line:** “Cow was sacred called Duhitri.”\n**Correction:** Cow was a measure of wealth and called *aghnya* in Vedic context; *duhitri* means daughter, not cow.\n\n**Your line:** “Use of Iron started called krishnayas.”\n**Correction:** The term is **krishna ayas**, meaning black metal, usually identified with iron.\n\n**Your line:** “Guilds were formed called Srenis.”\n**Correction:** Occupational specialization increased, but full-fledged guilds became prominent later, especially in the post-Vedic/urban phase.\n\n## 8. Factual errors\n\n1. Gargi placed in Rig Vedic society — inaccurate.\n2. Duhitri used for cow — wrong.\n3. Untouchability in Later Vedic period — overstated.\n4. Krishnayas — incorrect term; should be **krishna ayas**.\n5. Painted Grey Ware called “Neela Whita” — incorrect.\n6. Guilds in Later Vedic period — needs caution.\n7. Rice/wheat/barley all under Rig Vedic economy — barley was dominant; rice became more visible in Later Vedic period.\n\n## 9. Missing dimensions\n\nYou should have added:\n\n1. **Tribal to territorial life:** jana to janapada tendency.\n2. **Family structure:** patriarchal family strengthened.\n3. **Gotra system:** became important in Later Vedic period.\n4. **Ritualism:** Brahmanical sacrifices became more elaborate.\n5. **Agrarian surplus:** led to social stratification.\n6. **Taxation:** bali became more regular.\n7. **Crafts:** carpentry, metalwork, pottery, weaving.\n8. **Political economy:** kingship became stronger due to surplus and territory.\n\n## 10. Paper-specific value additions\n\nUseful keywords:\n\n* Rig Vedic: pastoralism, cattle wealth, tribal society, fluid varna, sabha-samiti, gavishti.\n* Later Vedic: agrarian expansion, krishna ayas, Painted Grey Ware, surplus, ritual hierarchy, Brahmana dominance, janapada formation.\n* Continuity: cattle remained important, agriculture expanded gradually.\n\n## 11. Diagram / flowchart suggestion\n\nUse a simple comparative flowchart:\n\n**Rig Vedic**\nPastoral + tribal + fluid society\n↓\nUse of iron, agriculture, surplus\n↓\n**Later Vedic**\nAgrarian + territorial + hierarchical society\n\nOr a 2-column table: **Society** and **Economy** with Rig Vedic vs Later Vedic.\n\n## 12. Improved user answer\n\nThe Rig Vedic to Later Vedic period marked a gradual shift from a relatively simple tribal-pastoral order to a more stratified agrarian society.\n\nIn society, Rig Vedic life was largely tribal and kin-based. Varna distinctions existed but were fluid, and women enjoyed comparatively better status, participating in education and rituals. In the Later Vedic period, the varna system became more rigid, Brahmanical rituals gained dominance, patriarchy strengthened, and the status of women and Shudras declined.\n\nEconomically, the Rig Vedic period was mainly pastoral, with cattle as the chief wealth, though limited agriculture and barter existed. In the Later Vedic period, agriculture expanded due to the use of iron tools, especially in the Ganga-Yamuna doab. Surplus production encouraged crafts, trade, taxation and social differentiation.\n\nThus, the transition was from pastoral-tribal fluidity to agrarian, ritualistic and hierarchical society.\n\n## 13. Full AIR-1 model answer\n\nThe Rig Vedic to Later Vedic transition represents a shift from a semi-nomadic pastoral society to a settled agrarian and hierarchical order.\n\nIn the **social sphere**, Rig Vedic society was largely tribal, kin-based and relatively egalitarian. Varna distinctions were not rigid, and women enjoyed better status, with examples like Lopamudra. In the Later Vedic period, society became more stratified. The four-fold varna order hardened, Brahmanical rituals became dominant, patriarchy strengthened, gotra norms emerged, and the position of women and Shudras declined.\n\nIn the **economic sphere**, Rig Vedic economy was mainly pastoral, with cattle as the main measure of wealth, though barley cultivation and barter existed. Later Vedic economy became agriculture-oriented, aided by **krishna ayas** or iron tools. Settled agriculture, surplus production, crafts, trade, bali/taxation and Painted Grey Ware culture indicate increasing complexity.\n\nThus, the period saw movement from pastoral-tribal fluidity to agrarian, surplus-based and hierarchical society.\n\n## 14. Extra value-add notes\n\nUse these in revision:\n\n* **Gavishti** = search for cows/war for cattle.\n* **Aghnya** = cow as not to be killed.\n* **Krishna ayas** = black metal/iron.\n* **Painted Grey Ware** = associated with Later Vedic culture.\n* **Bali** = voluntary offering becoming more regular.\n* **Jana to janapada** = tribal to territorial shift.\n\n## 15. Read-this-source-next list\n\n1. Old NCERT Ancient India – R.S. Sharma: Vedic Age chapter\n2. Tamil Nadu Class 11 Ancient History: Early and Later Vedic society\n3. Upinder Singh: Vedic and Later Vedic socio-economic changes\n4. Class notes table: Rig Vedic vs Later Vedic comparison\n\n## 16. MentorOS revision tasks\n\n1. Make a one-page table: Rig Vedic vs Later Vedic society and economy.\n2. Revise key Vedic terms: jana, vis, gavishti, bali, krishna ayas, PGW.\n3. Prepare a 150-word model answer and write it twice.\n4. Create a factual-error flashcard for: Gargi, duhitri, untouchability, sreni, krishna ayas.\n\n## 17. Mistake Book entries\n\n| Mistake                           | Correction                                                      |\n| --------------------------------- | --------------------------------------------------------------- |\n| Duhitri = cow                     | Duhitri means daughter; cow is linked with aghnya/cattle wealth |\n| Gargi in Rig Vedic                | Gargi is Upanishadic/Later Vedic                                |\n| Untouchability in Later Vedic     | Shudra status declined, but untouchability developed later      |\n| Krishnayas                        | Correct term: krishna ayas                                      |\n| Sreni fully formed in Later Vedic | Guilds became prominent later                                   |\n\n## 18. Next attempt strategy\n\nWrite in a **comparative transition format**, not separate notes. Start with one-line thesis, use 2-column comparison, add 5–6 precise keywords, avoid doubtful claims, and end with “pastoral-tribal to agrarian-hierarchical transition.”\n\n<MENTOROS_JSON>\n{\n\"score\": 4.25,\n\"potentialScore\": 7.25,\n\"level\": \"average_minus\",\n\"paper\": \"GS1\",\n\"subject\": \"Ancient History\",\n\"topic\": \"Rig Vedic to Later Vedic socio-economic changes\",\n\"syllabusNode\": \"GS1-Ancient History-Vedic Age\",\n\"confidenceLevel\": \"high\",\n\"ocrIssues\": [],\n\"questionType\": [\n\"comparative\",\n\"socio-economic transformation\",\n\"static history\"\n],\n\"syllabusMapping\": [\n\"GS1 Indian Heritage and Culture, History and Geography of the World and Society\",\n\"Ancient Indian History\",\n\"Vedic Age\",\n\"Society and Economy\"\n],\n\"questionDemand\": [\n\"Compare Rig Vedic and Later Vedic society\",\n\"Compare Rig Vedic and Later Vedic economy\",\n\"Show transition rather than listing isolated facts\",\n\"Use precise historical terms\"\n],\n\"didAnswerDemand\": \"Partially. The answer covers society and economy separately, but it lacks transition logic and contains several factual errors.\",\n\"marksBreakdown\": [\n{\n\"component\": \"Demand understanding\",\n\"marksAwarded\": 1.25,\n\"maxMarks\": 2\n},\n{\n\"component\": \"Society content\",\n\"marksAwarded\": 1.25,\n\"maxMarks\": 2.5\n},\n{\n\"component\": \"Economy content\",\n\"marksAwarded\": 1.25,\n\"maxMarks\": 2.5\n},\n{\n\"component\": \"Factual accuracy\",\n\"marksAwarded\": 0.75,\n\"maxMarks\": 2\n},\n{\n\"component\": \"Presentation and conclusion\",\n\"marksAwarded\": 0.75,\n\"maxMarks\": 1\n}\n],\n\"mistakeTypes\": [\n\"factual_error\",\n\"overstatement\",\n\"weak_comparison\",\n\"missing_keywords\",\n\"generic_conclusion\"\n],\n\"factualErrors\": [\n\"Gargi is wrongly placed in Rig Vedic society; she is associated with the Upanishadic/Later Vedic phase.\",\n\"Duhitri does not mean cow; it means daughter.\",\n\"Untouchability as a developed practice should not be attributed to the Later Vedic period.\",\n\"Krishnayas is incorrect; the proper term is krishna ayas.\",\n\"Painted Grey Ware is not called Neela Whita.\",\n\"Full-fledged guilds or srenis became prominent later, not clearly in the Later Vedic phase.\"\n],\n\"genericLines\": [\n\"Thus, Rig vedic to Later vedic period a huge transition is observed.\",\n\"It was highly orthodox Society.\",\n\"Rise of trade and commerce.\"\n],\n\"missingDimensions\": [\n\"Tribal to territorial transformation\",\n\"Jana to janapada tendency\",\n\"Gotra system\",\n\"Brahmanical ritual dominance\",\n\"Agrarian surplus\",\n\"Bali or taxation\",\n\"Craft specialization\",\n\"Patriarchal family structure\",\n\"Continuity of cattle importance\"\n],\n\"valueAdditions\": [\n\"gavishti\",\n\"aghnya\",\n\"krishna ayas\",\n\"Painted Grey Ware\",\n\"bali\",\n\"jana to janapada\",\n\"pastoral to agrarian transition\"\n],\n\"diagramSuggestions\": [\n\"Use a two-column Rig Vedic versus Later Vedic comparison table.\",\n\"Use a flowchart showing pastoral tribal society to iron-aided agrarian surplus to hierarchical society.\"\n],\n\"relatedPYQs\": [],\n\"sourceFinder\": {\n\"preparationSource\": [\n\"Old NCERT Ancient India by R.S. Sharma\",\n\"Tamil Nadu Class 11 Ancient History\",\n\"Upinder Singh Ancient and Early Medieval India\"\n],\n\"questionSource\": [\n\"Static Ancient Indian History\",\n\"Vedic Age socio-economic transformation\"\n],\n\"currentTrigger\": [],\n\"pyqPatternSource\": [\n\"UPSC GS1 static history questions on ancient Indian society, economy and cultural transformation\"\n],\n\"confidence\": \"high\"\n},\n\"currentAffairsLinks\": [],\n\"revisionTasks\": [\n\"Prepare a one-page table comparing Rig Vedic and Later Vedic society and economy.\",\n\"Revise key Vedic terms: jana, vis, gavishti, bali, krishna ayas, Painted Grey Ware.\",\n\"Rewrite the answer in 150 words using transition-based structure.\",\n\"Create flashcards for factual corrections: Gargi, duhitri, untouchability, sreni, krishna ayas.\"\n],\n\"mistakeBookEntries\": [\n{\n\"mistake\": \"Duhitri used as term for cow\",\n\"correction\": \"Duhitri means daughter; cow is better linked with aghnya and cattle wealth.\"\n},\n{\n\"mistake\": \"Gargi mentioned as Rig Vedic woman scholar\",\n\"correction\": \"Gargi belongs to the Upanishadic or Later Vedic context.\"\n},\n{\n\"mistake\": \"Untouchability attributed to Later Vedic period\",\n\"correction\": \"Shudra status declined, but untouchability developed in a later historical phase.\"\n},\n{\n\"mistake\": \"Krishnayas used for iron\",\n\"correction\": \"Correct term is krishna ayas.\"\n},\n{\n\"mistake\": \"Srenis treated as fully formed guilds in Later Vedic period\",\n\"correction\": \"Occupational specialization increased, but guilds became prominent in later urban phases.\"\n}\n],\n\"nextAttemptStrategy\": \"Use a comparative transition structure: one-line introduction, society comparison, economy comparison, keywords, and a precise conclusion showing movement from pastoral-tribal fluidity to agrarian-hierarchical society.\",\n\"verificationWarnings\": [\n\"No MentorOS PYQ matches were provided.\",\n\"No MentorOS current affairs notes were provided.\",\n\"Some candidate claims require correction using standard ancient history sources.\"\n]\n}\n</MENTOROS_JSON>",
+    "parsedJson": {
+      "score": 4.25,
+      "potentialScore": 7.25,
+      "level": "average_minus",
+      "paper": "GS1",
+      "subject": "Ancient History",
+      "topic": "Rig Vedic to Later Vedic socio-economic changes",
+      "syllabusNode": "GS1-Ancient History-Vedic Age",
+      "confidenceLevel": "high",
+      "ocrIssues": [],
+      "questionType": [
+        "comparative",
+        "socio-economic transformation",
+        "static history"
+      ],
+      "syllabusMapping": [
+        "GS1 Indian Heritage and Culture, History and Geography of the World and Society",
+        "Ancient Indian History",
+        "Vedic Age",
+        "Society and Economy"
+      ],
+      "questionDemand": [
+        "Compare Rig Vedic and Later Vedic society",
+        "Compare Rig Vedic and Later Vedic economy",
+        "Show transition rather than listing isolated facts",
+        "Use precise historical terms"
+      ],
+      "didAnswerDemand": "Partially. The answer covers society and economy separately, but it lacks transition logic and contains several factual errors.",
+      "marksBreakdown": [
+        {
+          "component": "Demand understanding",
+          "marksAwarded": 1.25,
+          "maxMarks": 2
+        },
+        {
+          "component": "Society content",
+          "marksAwarded": 1.25,
+          "maxMarks": 2.5
+        },
+        {
+          "component": "Economy content",
+          "marksAwarded": 1.25,
+          "maxMarks": 2.5
+        },
+        {
+          "component": "Factual accuracy",
+          "marksAwarded": 0.75,
+          "maxMarks": 2
+        },
+        {
+          "component": "Presentation and conclusion",
+          "marksAwarded": 0.75,
+          "maxMarks": 1
+        }
+      ],
+      "mistakeTypes": [
+        "factual_error",
+        "overstatement",
+        "weak_comparison",
+        "missing_keywords",
+        "generic_conclusion"
+      ],
+      "factualErrors": [
+        "Gargi is wrongly placed in Rig Vedic society; she is associated with the Upanishadic/Later Vedic phase.",
+        "Duhitri does not mean cow; it means daughter.",
+        "Untouchability as a developed practice should not be attributed to the Later Vedic period.",
+        "Krishnayas is incorrect; the proper term is krishna ayas.",
+        "Painted Grey Ware is not called Neela Whita.",
+        "Full-fledged guilds or srenis became prominent later, not clearly in the Later Vedic phase."
+      ],
+      "genericLines": [
+        "Thus, Rig vedic to Later vedic period a huge transition is observed.",
+        "It was highly orthodox Society.",
+        "Rise of trade and commerce."
+      ],
+      "missingDimensions": [
+        "Tribal to territorial transformation",
+        "Jana to janapada tendency",
+        "Gotra system",
+        "Brahmanical ritual dominance",
+        "Agrarian surplus",
+        "Bali or taxation",
+        "Craft specialization",
+        "Patriarchal family structure",
+        "Continuity of cattle importance"
+      ],
+      "valueAdditions": [
+        "gavishti",
+        "aghnya",
+        "krishna ayas",
+        "Painted Grey Ware",
+        "bali",
+        "jana to janapada",
+        "pastoral to agrarian transition"
+      ],
+      "diagramSuggestions": [
+        "Use a two-column Rig Vedic versus Later Vedic comparison table.",
+        "Use a flowchart showing pastoral tribal society to iron-aided agrarian surplus to hierarchical society."
+      ],
+      "relatedPYQs": [],
+      "sourceFinder": {
+        "preparationSource": [
+          "Old NCERT Ancient India by R.S. Sharma",
+          "Tamil Nadu Class 11 Ancient History",
+          "Upinder Singh Ancient and Early Medieval India"
+        ],
+        "questionSource": [
+          "Static Ancient Indian History",
+          "Vedic Age socio-economic transformation"
+        ],
+        "currentTrigger": [],
+        "pyqPatternSource": [
+          "UPSC GS1 static history questions on ancient Indian society, economy and cultural transformation"
+        ],
+        "confidence": "high"
+      },
+      "currentAffairsLinks": [],
+      "revisionTasks": [
+        "Prepare a one-page table comparing Rig Vedic and Later Vedic society and economy.",
+        "Revise key Vedic terms: jana, vis, gavishti, bali, krishna ayas, Painted Grey Ware.",
+        "Rewrite the answer in 150 words using transition-based structure.",
+        "Create flashcards for factual corrections: Gargi, duhitri, untouchability, sreni, krishna ayas."
+      ],
+      "mistakeBookEntries": [
+        {
+          "mistake": "Duhitri used as term for cow",
+          "correction": "Duhitri means daughter; cow is better linked with aghnya and cattle wealth."
+        },
+        {
+          "mistake": "Gargi mentioned as Rig Vedic woman scholar",
+          "correction": "Gargi belongs to the Upanishadic or Later Vedic context."
+        },
+        {
+          "mistake": "Untouchability attributed to Later Vedic period",
+          "correction": "Shudra status declined, but untouchability developed in a later historical phase."
+        },
+        {
+          "mistake": "Krishnayas used for iron",
+          "correction": "Correct term is krishna ayas."
+        },
+        {
+          "mistake": "Srenis treated as fully formed guilds in Later Vedic period",
+          "correction": "Occupational specialization increased, but guilds became prominent in later urban phases."
+        }
+      ],
+      "nextAttemptStrategy": "Use a comparative transition structure: one-line introduction, society comparison, economy comparison, keywords, and a precise conclusion showing movement from pastoral-tribal fluidity to agrarian-hierarchical society.",
+      "verificationWarnings": [
+        "No MentorOS PYQ matches were provided.",
+        "No MentorOS current affairs notes were provided.",
+        "Some candidate claims require correction using standard ancient history sources."
+      ]
+    }
+  },
+  "status": "saved"
+}

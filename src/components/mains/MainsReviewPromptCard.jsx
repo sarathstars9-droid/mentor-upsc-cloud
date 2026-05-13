@@ -90,7 +90,7 @@ function MainsReviewPromptCard({
                 
                 // Show prompt success logic handled by parent via promptCopied
                 // Open ChatGPT
-                window.open("https://chatgpt.com", "_blank", "noopener,noreferrer");
+                window.open("https://chatgpt.com/g/g-p-69b58b47f99c8191a602da2b21e83eda-pyq-upsc/project", "_blank", "noopener,noreferrer");
                 onOpenChatGPT?.();
             } else {
                 throw new Error("Failed to get prompt from backend");
@@ -104,7 +104,7 @@ function MainsReviewPromptCard({
     };
 
     const handleOpenChatGPT = () => {
-        window.open("https://chatgpt.com", "_blank", "noopener,noreferrer");
+        window.open("https://chatgpt.com/g/g-p-69b58b47f99c8191a602da2b21e83eda-pyq-upsc/project", "_blank", "noopener,noreferrer");
         onOpenChatGPT?.();
     };
 
@@ -142,7 +142,7 @@ function MainsReviewPromptCard({
                             ...primaryBtn(T.purple, !canCopyReviewPrompt || isBuildingPrompt),
                         }}
                     >
-                        {isBuildingPrompt ? "⏳ Generating..." : (promptCopied ? "✓ Copied" : "📋 Deep AIR-1 Review")}
+                        {isBuildingPrompt ? "⏳ Generating..." : (promptCopied ? "✓ Copied" : "📋 AIR-1 Deep Review")}
                     </button>
                     <button
                         onClick={handleOpenChatGPT}
@@ -153,7 +153,7 @@ function MainsReviewPromptCard({
                             cursor: !canCopyReviewPrompt ? "not-allowed" : "pointer",
                         }}
                     >
-                        🤖 Open ChatGPT for Review
+                        🤖 Open AIR-1 Evaluator
                     </button>
                 </div>
 
@@ -165,10 +165,10 @@ function MainsReviewPromptCard({
                     {!promptCopied ? (
                         <div>
                             <span style={{ color: T.textBright, fontWeight: 700 }}>Next steps:</span>
-                            {" "}Clicking the button will build the deep review prompt, copy it, and open ChatGPT.
+                            {" "}Clicking the button will build the deep review prompt, copy it, and open the AIR-1 Evaluator.
                         </div>
                     ) : (
-                        <div style={{ color: T.textBright, fontWeight: 700 }}>Prompt copied. ChatGPT opened. Paste it there and copy the final review back.</div>
+                        <div style={{ color: T.textBright, fontWeight: 700 }}>AIR-1 prompt copied. Opening AIR-1 Evaluator... Paste it there and copy the final review back.</div>
                     )}
                 </div>
 

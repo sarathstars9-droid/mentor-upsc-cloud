@@ -126,6 +126,7 @@ export function buildAttemptRecord(payload, attemptId) {
     answerUpload:   payload.answerUpload || {},
     extraction:     payload.extraction || {},
     selfReview:     payload.selfReview || {},
+    air1Review:     payload.air1Review || null,
     status: "saved",
   };
 }
