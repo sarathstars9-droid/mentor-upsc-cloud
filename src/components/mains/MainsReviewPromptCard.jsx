@@ -132,14 +132,16 @@ function MainsReviewPromptCard({
                 </div>
 
                 <div style={{
-                    display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap",
-                    marginBottom: 12,
+                    display: "flex", alignItems: "stretch", gap: 12, flexWrap: "wrap",
+                    marginBottom: 12, flexDirection: typeof window !== "undefined" && window.innerWidth < 768 ? "column" : "row"
                 }}>
                     <button
                         onClick={handleCopyPrompt}
                         disabled={!canCopyReviewPrompt || isBuildingPrompt}
                         style={{
                             ...primaryBtn(T.purple, !canCopyReviewPrompt || isBuildingPrompt),
+                            width: typeof window !== "undefined" && window.innerWidth < 768 ? "100%" : "auto",
+                            whiteSpace: "normal"
                         }}
                     >
                         {isBuildingPrompt ? "⏳ Generating..." : (promptCopied ? "✓ Copied" : "📋 AIR-1 Deep Review")}
@@ -151,6 +153,8 @@ function MainsReviewPromptCard({
                             ...outlineBtn(T.purple),
                             opacity: !canCopyReviewPrompt ? 0.4 : 1,
                             cursor: !canCopyReviewPrompt ? "not-allowed" : "pointer",
+                            width: typeof window !== "undefined" && window.innerWidth < 768 ? "100%" : "auto",
+                            whiteSpace: "normal"
                         }}
                     >
                         🤖 Open AIR-1 Evaluator
@@ -160,7 +164,7 @@ function MainsReviewPromptCard({
                 <div style={{
                     padding: "14px 16px", background: T.bg,
                     border: `1px solid ${T.border}`, borderRadius: 10,
-                    fontSize: 12, color: T.dim, lineHeight: 1.65,
+                    fontSize: typeof window !== "undefined" && window.innerWidth < 768 ? 14 : 12, color: T.dim, lineHeight: 1.65, wordWrap: "break-word"
                 }}>
                     {!promptCopied ? (
                         <div>

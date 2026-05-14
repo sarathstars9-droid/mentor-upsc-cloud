@@ -38,7 +38,17 @@ Field rules:
 6. upscStructure: Array of the ideal answer structure.
 7. improvedIntro: One UPSC-ready introduction (max 45 words).
 8. improvedConclusion: One UPSC-ready conclusion (max 45 words).
-9. memoryMnemonic: One simple mnemonic (e.g., "SEPR: Society, Economy, Polity, Religion").
+9. memoryMnemonic: Return one memorable, theme-based sentence, not an acronym list.
+   - Do NOT use acronym-only hooks like SEP-R, VEST, VESTW, PEARL, etc.
+   - Do NOT just list dimensions.
+   - Use a story-like memory sentence connected to the question theme.
+   - For transformation/change questions, use "From X to Y" pattern.
+   - For comparison questions, use contrast pairs.
+   - For causes/factors questions, use a cause-chain sentence.
+   - For distribution questions, use a location-flow sentence.
+   - Keep it under 30 words.
+   - Make it easy to revise before exam.
+   - If the memory hook looks like an acronym or plain list, regenerate it internally before returning JSON.
 10. finalAdvice: One practical next action before rewriting.
 
 Strict quality rules:
@@ -78,36 +88,101 @@ Strict quality rules:
   try {
     rawText = result.response.text();
     
-    // Defensive parsing
-    let cleanText = rawText.trim();
-    if (cleanText.startsWith("\`\`\`json")) {
-      cleanText = cleanText.substring(7);
+    const jsonCandidate = extractJsonObject(rawText);
+    let parsed;
+    try {
+      parsed = JSON.parse(jsonCandidate);
+    } catch (err) {
+      console.warn("[evaluate-answer] Failed to parse Gemini JSON", { error: err.message });
+      
+      return {
+        score: "N/A",
+        level: "Format Issue",
+        examinerImpression: "Review completed, but structured formatting failed. Showing raw mentor notes below.",
+        topFixes: [],
+        missingDimensions: [],
+        upscStructure: [],
+        improvedIntro: "",
+        improvedConclusion: "",
+        memoryMnemonic: "",
+        finalAdvice: "Review the mentor notes and rerun Quick Review if needed.",
+        rawOutput: rawText
+      };
     }
-    if (cleanText.startsWith("\`\`\`")) {
-      cleanText = cleanText.substring(3);
-    }
-    if (cleanText.endsWith("\`\`\`")) {
-      cleanText = cleanText.substring(0, cleanText.length - 3);
-    }
-    cleanText = cleanText.trim();
 
-    return JSON.parse(cleanText);
+    // Validate memoryMnemonic
+    let memoryHook = parsed.memoryMnemonic || "";
+    if (memoryHook) {
+      const isBadPattern = 
+        /^[A-Z](-[A-Z])+/.test(memoryHook) || 
+        /^[A-Z]{3,}:\s/.test(memoryHook) || 
+        (memoryHook.split(",").length >= 3 && memoryHook.split(" ").length < 15) || 
+        /Society,\s*Economy,\s*Polity/i.test(memoryHook);
+      
+      if (isBadPattern) {
+        if (/Vedic/i.test(question || "")) {
+          memoryHook = "From cattle to crops, clans to kingdoms, simple worship to sacrifices, and flexible varna to fixed hierarchy.";
+        } else {
+          memoryHook = "From old pattern to new pattern: economy, society, polity and culture changed together.";
+        }
+      }
+    }
+
+    // Schema normalization
+    return {
+      score: parsed.score || "N/A",
+      level: parsed.level || "Format Issue",
+      examinerImpression: parsed.examinerImpression || "Evaluation completed.",
+      topFixes: Array.isArray(parsed.topFixes) ? parsed.topFixes.slice(0, 3) : [],
+      missingDimensions: Array.isArray(parsed.missingDimensions) ? parsed.missingDimensions : [],
+      upscStructure: Array.isArray(parsed.upscStructure) ? parsed.upscStructure : (parsed.upscStructure ? [parsed.upscStructure] : []),
+      improvedIntro: parsed.improvedIntro || "",
+      improvedConclusion: parsed.improvedConclusion || "",
+      memoryMnemonic: memoryHook,
+      finalAdvice: parsed.finalAdvice || ""
+    };
+
   } catch (error) {
-    console.error("[evaluateMainsAnswer] Error or Failed to parse JSON.");
-    console.error("Raw Output:", rawText);
-    
-    // Return safe fallback instead of crashing
+    console.warn("[evaluate-answer] Failed to read Gemini response", { error: error.message });
     return {
       score: "N/A",
-      level: "Error",
-      examinerImpression: "Evaluation completed but AI failed to format the response properly.",
+      level: "Format Issue",
+      examinerImpression: "Review completed, but structured formatting failed. Showing raw mentor notes below.",
       topFixes: [],
       missingDimensions: [],
       upscStructure: [],
       improvedIntro: "",
       improvedConclusion: "",
       memoryMnemonic: "",
-      finalAdvice: "Raw AI Output:\n" + rawText
+      finalAdvice: "Review the mentor notes and rerun Quick Review if needed.",
+      rawOutput: rawText
     };
   }
+}
+
+function extractJsonObject(rawText) {
+  if (!rawText || typeof rawText !== "string") return null;
+
+  let text = rawText.trim();
+
+  // Remove markdown fences
+  text = text
+    .replace(/^```json\s*/i, "")
+    .replace(/^```\s*/i, "")
+    .replace(/```$/i, "")
+    .trim();
+
+  // Remove common prefixes if Gemini adds them
+  text = text.replace(/^Raw AI Output:\s*/i, "").trim();
+  text = text.replace(/^JSON:\s*/i, "").trim();
+
+  // Extract JSON object between first { and last }
+  const firstBrace = text.indexOf("{");
+  const lastBrace = text.lastIndexOf("}");
+
+  if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+    text = text.slice(firstBrace, lastBrace + 1).trim();
+  }
+
+  return text;
 }

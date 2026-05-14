@@ -776,6 +776,14 @@ export default function AnswerWritingPage() {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     // ─── Theme state ─────────────────────────────────────────────────────────
     const [theme, setThemeState] = useState(() => localStorage.getItem("mentoros_theme") || "dark");
     const toggleTheme = () => {
@@ -1042,8 +1050,8 @@ export default function AnswerWritingPage() {
                         evalData.major_weaknesses && evalData.major_weaknesses.length > 0 ? `\n⚠️ Weaknesses:\n- ${evalData.major_weaknesses.join('\n- ')}` : '',
                         evalData.improvement_tasks && evalData.improvement_tasks.length > 0 ? `\n🚀 Improvement Suggestions:\n- ${evalData.improvement_tasks.join('\n- ')}` : ''
                     ].filter(Boolean).join('\n');
-                } else if (evalData.level === "Error" && evalData.finalAdvice) {
-                    formattedReview = evalData.finalAdvice;
+                } else if (evalData.level === "Format Issue" || evalData.level === "Error") {
+                    formattedReview = evalData.rawOutput || evalData.finalAdvice || JSON.stringify(evalData, null, 2);
                 } else {
                     formattedReview = JSON.stringify(evalData, null, 2);
                 }
@@ -1526,30 +1534,30 @@ export default function AnswerWritingPage() {
                 </div>
             </div>
 
-            <div style={{ maxWidth: 1200, margin: "0 auto", padding: "32px 24px" }}>
+            <div style={{ maxWidth: "100%", margin: "0 auto", padding: isMobile ? "24px 16px" : "32px 24px", overflowX: "hidden", boxSizing: "border-box" }}>
                 
                 {/* 2. Hero Summary Card */}
                 {sessionStarted && (
-                    <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, padding: 24, marginBottom: 32, display: "flex", flexWrap: "wrap", gap: 24, justifyContent: "space-between", alignItems: "center", boxShadow: isDark ? "none" : "0 4px 6px -1px rgba(0, 0, 0, 0.05)" }}>
-                        <div style={{ display: "flex", gap: 32 }}>
+                    <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, padding: isMobile ? 16 : 24, marginBottom: 32, display: "flex", flexDirection: isMobile ? "column" : "row", flexWrap: "wrap", gap: 24, justifyContent: "space-between", alignItems: isMobile ? "stretch" : "center", boxShadow: isDark ? "none" : "0 4px 6px -1px rgba(0, 0, 0, 0.05)" }}>
+                        <div style={{ display: "flex", gap: isMobile ? 16 : 32, flexDirection: isMobile ? "column" : "row" }}>
                             <div>
-                                <div style={{ fontSize: 12, fontWeight: 800, color: T.subtle, textTransform: "uppercase" }}>Current Score</div>
-                                <div style={{ fontSize: 32, fontWeight: 900, color: hasEvaluationText ? T.primaryAccent : T.dim }}>{parsedAir1Json?.score || (hasEvaluationText ? "?" : "—")}</div>
+                                <div style={{ fontSize: 12, fontWeight: 800, color: T.subtle, textTransform: "uppercase" }}>{parsedAir1Json?.score ? "Current Score" : evaluationData?.score ? "Quick Score" : "Current Score"}</div>
+                                <div style={{ fontSize: 32, fontWeight: 900, color: parsedAir1Json?.score ? T.primaryAccent : evaluationData?.score ? T.amber : T.dim }}>{parsedAir1Json?.score || evaluationData?.score || (hasEvaluationText ? "?" : "—")}</div>
                             </div>
                             <div>
                                 <div style={{ fontSize: 12, fontWeight: 800, color: T.subtle, textTransform: "uppercase" }}>Target Score</div>
                                 <div style={{ fontSize: 32, fontWeight: 900, color: T.textBright }}>{parsedAir1Json?.potentialScore || (hasEvaluationText ? "?" : "—")}</div>
                             </div>
                         </div>
-                        <div style={{ flex: 1, minWidth: 280, padding: "0 24px", borderLeft: `1px solid ${T.borderMid}`, borderRight: `1px solid ${T.borderMid}` }}>
+                        <div style={{ flex: 1, minWidth: 0, padding: isMobile ? "16px 0" : "0 24px", borderLeft: isMobile ? "none" : `1px solid ${T.borderMid}`, borderRight: isMobile ? "none" : `1px solid ${T.borderMid}`, borderTop: isMobile ? `1px solid ${T.borderMid}` : "none", borderBottom: isMobile ? `1px solid ${T.borderMid}` : "none" }}>
                             <div style={{ fontSize: 12, fontWeight: 800, color: T.purple, textTransform: "uppercase", marginBottom: 8 }}>Examiner Impression</div>
                             <div style={{ fontSize: 14, color: parsedAir1Json?.examinerImpression ? T.textBright : T.dim, fontStyle: "italic", lineHeight: 1.5 }}>
                                 {parsedAir1Json?.examinerImpression ? `"${parsedAir1Json.examinerImpression}"` : "Awaiting detailed AIR-1 evaluation..."}
                             </div>
                         </div>
-                        <div style={{ textAlign: "right", minWidth: 240 }}>
+                        <div style={{ textAlign: isMobile ? "left" : "right", minWidth: 0 }}>
                             <div style={{ fontSize: 12, fontWeight: 800, color: T.subtle, textTransform: "uppercase", marginBottom: 8 }}>Next Action</div>
-                            <button onClick={nextAction.action} style={{ background: nextAction.primary ? T.primaryAccent : T.surfaceHigh, color: nextAction.primary ? "#fff" : T.textBright, border: `1px solid ${nextAction.primary ? T.primaryAccent : T.borderMid}`, padding: "10px 20px", borderRadius: 8, fontWeight: 700, cursor: "pointer", width: "100%", transition: "all 0.2s" }}>
+                            <button onClick={nextAction.action} style={{ background: nextAction.primary ? T.primaryAccent : T.surfaceHigh, color: nextAction.primary ? "#fff" : T.textBright, border: `1px solid ${nextAction.primary ? T.primaryAccent : T.borderMid}`, padding: "10px 20px", borderRadius: 8, fontWeight: 700, cursor: "pointer", width: "100%", transition: "all 0.2s", whiteSpace: "normal" }}>
                                 {nextAction.cta}
                             </button>
                             <div style={{ fontSize: 11, color: T.dim, marginTop: 8 }}>{nextAction.text}</div>
@@ -1558,10 +1566,10 @@ export default function AnswerWritingPage() {
                 )}
 
                 {/* 3. Two-Column Layout */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: 32, alignItems: "start" }}>
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 340px", gap: isMobile ? 24 : 32, alignItems: "start", width: "100%", maxWidth: "100%" }}>
                     
                     {/* Left Column */}
-                    <div style={{ display: "flex", flexDirection: "column", gap: 24, minWidth: 0 }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 24, minWidth: 0, gridColumn: "1", gridRow: isMobile ? "auto" : "1", maxWidth: "100%" }}>
                         
                         {/* Question Card */}
                         <SectionCard accentTop={T.primaryAccent}>
@@ -1571,7 +1579,7 @@ export default function AnswerWritingPage() {
                                     <span style={{ fontSize: 12, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "4px 10px", borderRadius: 6 }}>{marks} Marks</span>
                                     <span style={{ fontSize: 12, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "4px 10px", borderRadius: 6 }}>{wordTarget} Words</span>
                                 </div>
-                                <div style={{ fontSize: 18, fontWeight: 800, color: T.textBright, lineHeight: 1.6 }}>{SESSION.question}</div>
+                                <div style={{ fontSize: isMobile ? 16 : 18, fontWeight: 800, color: T.textBright, lineHeight: 1.6, whiteSpace: "normal", wordBreak: "normal", overflowWrap: "break-word", minWidth: 0 }}>{SESSION.question}</div>
                                 {!sessionStarted && (
                                     <button onClick={handleStartSession} style={{ background: T.primaryAccent, color: "#fff", padding: "12px 24px", borderRadius: 8, fontWeight: 800, border: "none", cursor: "pointer", width: "fit-content", marginTop: 8 }}>
                                         Start Attempt Timer
@@ -1592,7 +1600,7 @@ export default function AnswerWritingPage() {
                                             <span style={{ fontSize: 12, color: T.dim, fontWeight: 600 }}>Pages ({uploadedPages.length}/{MAX_PAGES})</span>
                                             {hasPages && <button onClick={handleClearAll} style={{ background: "none", border: "none", color: T.red, fontSize: 12, cursor: "pointer", fontWeight: 600 }}>Clear All</button>}
                                         </div>
-                                        <div style={{ display: "flex", gap: 12, overflowX: "auto", paddingBottom: 8, paddingTop: 4 }}>
+                                        <div style={{ display: "flex", gap: 12, overflowX: "auto", paddingBottom: 8, paddingTop: 4, flexWrap: isMobile ? "wrap" : "nowrap" }}>
                                             {uploadedPages.map((pg, i) => (
                                                 <div
                                                     key={i}
@@ -1704,7 +1712,11 @@ export default function AnswerWritingPage() {
                                 </div>
                             </SectionCard>
                         )}
+                        
+                    </div> {/* End Left Column */}
 
+                    {/* Full-width container for Reviews */}
+                    <div style={{ gridColumn: "1 / -1", width: "100%", maxWidth: 1040, margin: "0 auto", display: "flex", flexDirection: "column", gap: 32 }}>
                         {/* Basic Review Card */}
                         {hasPastedText && (
                             <SectionCard accentTop={T.amber}>
@@ -1719,22 +1731,22 @@ export default function AnswerWritingPage() {
                                         </button>
                                     </div>
                                     
-                                    {evaluationData && (evaluationData.examinerImpression || evaluationData.topFixes || evaluationData.level) ? (
+                                    {evaluationData && evaluationData.level !== "Format Issue" && evaluationData.level !== "Error" && (evaluationData.examinerImpression || evaluationData.topFixes || evaluationData.level) ? (
                                         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                                             {/* Top Summary Strip */}
-                                            <div style={{ display: "flex", gap: 16, background: T.surfaceHigh, padding: "16px 24px", borderRadius: 12, border: `1px solid ${T.borderMid}`, alignItems: "center", flexWrap: "wrap" }}>
-                                                <div style={{ flex: "1 1 120px" }}>
+                                            <div style={{ display: "flex", gap: 16, background: T.surfaceHigh, padding: isMobile ? "16px" : "16px 24px", borderRadius: 12, border: `1px solid ${T.borderMid}`, alignItems: isMobile ? "flex-start" : "center", flexDirection: isMobile ? "column" : "row", flexWrap: "wrap" }}>
+                                                <div style={{ flex: isMobile ? "none" : "1 1 120px", width: "100%" }}>
                                                     <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Score</div>
                                                     <div style={{ fontSize: 24, fontWeight: 900, color: T.amber, lineHeight: 1 }}>{evaluationData.score}</div>
                                                 </div>
-                                                <div style={{ flex: "1 1 120px", borderLeft: `1px solid ${T.borderMid}`, paddingLeft: 16 }}>
-                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Level</div>
-                                                    <div style={{ fontSize: 16, fontWeight: 700, color: T.textBright }}>{evaluationData.level || "Beginner"}</div>
+                                                <div style={{ flex: isMobile ? "none" : "1 1 120px", borderLeft: isMobile ? "none" : `1px solid ${T.borderMid}`, borderTop: isMobile ? `1px solid ${T.borderMid}` : "none", paddingLeft: isMobile ? 0 : 16, paddingTop: isMobile ? 12 : 0, width: "100%" }}>
+                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Level</div>
+                                                    <div style={{ fontSize: 13, fontWeight: 700, color: T.textBright, background: T.bg, padding: "4px 10px", borderRadius: 12, border: `1px solid ${T.borderMid}`, width: "fit-content" }}>{evaluationData.level || "Beginner"}</div>
                                                 </div>
                                                 {evaluationData.finalAdvice && (
-                                                <div style={{ flex: "2 1 200px", borderLeft: `1px solid ${T.borderMid}`, paddingLeft: 16 }}>
+                                                <div style={{ flex: isMobile ? "none" : "2 1 200px", borderLeft: isMobile ? "none" : `1px solid ${T.borderMid}`, borderTop: isMobile ? `1px solid ${T.borderMid}` : "none", paddingLeft: isMobile ? 0 : 16, paddingTop: isMobile ? 12 : 0, width: "100%" }}>
                                                     <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Next Action</div>
-                                                    <div style={{ fontSize: 14, color: T.textBright, fontWeight: 600, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{evaluationData.finalAdvice}</div>
+                                                    <div style={{ fontSize: 14, color: T.textBright, fontWeight: 600, lineHeight: 1.5, overflowWrap: "break-word" }}>{evaluationData.finalAdvice}</div>
                                                 </div>
                                                 )}
                                             </div>
@@ -1743,7 +1755,7 @@ export default function AnswerWritingPage() {
                                             {evaluationData.examinerImpression && (
                                                 <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
                                                     <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>30-Second Examiner Impression</div>
-                                                    <div style={{ fontSize: 15, color: T.textBright, lineHeight: 1.6 }}>{evaluationData.examinerImpression}</div>
+                                                    <div style={{ fontSize: 15, color: T.textBright, lineHeight: 1.65 }}>{evaluationData.examinerImpression}</div>
                                                 </div>
                                             )}
 
@@ -1766,7 +1778,7 @@ export default function AnswerWritingPage() {
                                             {evaluationData.upscStructure && Array.isArray(evaluationData.upscStructure) && evaluationData.upscStructure.length > 0 && (
                                                 <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
                                                     <div style={{ fontSize: 11, fontWeight: 800, color: T.blue, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 16 }}>Suggested Answer Structure</div>
-                                                    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                                                    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                                                         {evaluationData.upscStructure.map((struct, i) => (
                                                             <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                                                                 <div style={{ background: T.bg, color: T.blue, width: 20, height: 20, borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0, marginTop: 2 }}>{i + 1}</div>
@@ -1784,14 +1796,19 @@ export default function AnswerWritingPage() {
                                             )}
 
                                             {/* Rewrite Toolkit Grid */}
-                                            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
+                                            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
                                                 {/* Missing Dimensions */}
                                                 {evaluationData.missingDimensions && evaluationData.missingDimensions.length > 0 && (
                                                     <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
-                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.amber, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Missing UPSC Dimensions</div>
-                                                        <ul style={{ margin: 0, paddingLeft: 20, fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>
-                                                            {evaluationData.missingDimensions.map((dim, i) => <li key={i}>{dim}</li>)}
-                                                        </ul>
+                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.amber, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 16 }}>Missing UPSC Dimensions</div>
+                                                        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                                                            {evaluationData.missingDimensions.map((dim, i) => (
+                                                                <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                                                                    <span style={{ color: T.amber, fontSize: 14 }}>•</span>
+                                                                    <span style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{dim}</span>
+                                                                </div>
+                                                            ))}
+                                                        </div>
                                                     </div>
                                                 )}
                                                 
@@ -1811,10 +1828,10 @@ export default function AnswerWritingPage() {
                                                     </div>
                                                 )}
 
-                                                {/* Memory Mnemonic */}
+                                                {/* Memory Hook */}
                                                 {evaluationData.memoryMnemonic && (
                                                     <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
-                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.purple, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Memory Mnemonic</div>
+                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.purple, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Memory Hook</div>
                                                         <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{evaluationData.memoryMnemonic}</div>
                                                     </div>
                                                 )}
@@ -1905,10 +1922,10 @@ export default function AnswerWritingPage() {
                             </SectionCard>
                         )}
                         
-                    </div>
+                    </div> {/* End Full-width container */}
 
                     {/* Right Column: Sticky Panel */}
-                    <div style={{ position: "sticky", top: 100, display: "flex", flexDirection: "column", gap: 24, minWidth: 0 }}>
+                    <div style={{ position: isMobile ? "static" : "sticky", top: 100, display: "flex", flexDirection: "column", gap: 24, minWidth: 0, gridColumn: isMobile ? "1" : "2", gridRow: isMobile ? "auto" : "1", maxWidth: "100%" }}>
                         {sessionStarted && (
                             <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, overflow: "hidden", boxShadow: isDark ? "none" : "0 4px 6px -1px rgba(0, 0, 0, 0.05)" }}>
                                 <Timer key={currentIndex} marks={marks} accent={paperAccent} autoStart={sessionStarted} timerRef={timerSectionRef} onStatusChange={setTimerStatus} />
