@@ -1,0 +1,55 @@
+{
+  "schema": "mainsAnswerAttempt",
+  "attemptId": "attempt_1778739725333_zhpdhj",
+  "createdAt": "2026-05-14T06:22:05.333Z",
+  "userId": "user_1",
+  "source": {
+    "mode": "pyq",
+    "paper": "GS1",
+    "examYear": 2024,
+    "questionId": "Underline_",
+    "questionMarks": 10,
+    "targetWords": 150,
+    "upscTimeMinutes": 6
+  },
+  "question": {
+    "text": "Underline the changes in the field of society and economy from the Rig Vedic to the later Vedic period",
+    "directiveWord": "",
+    "focusLabel": "",
+    "topicNodeId": "",
+    "subjectTag": "general"
+  },
+  "writingSession": {
+    "startedAt": "2026-05-14T06:22:05.013Z",
+    "endedAt": "2026-05-14T06:22:05.013Z",
+    "timeTakenSeconds": 0
+  },
+  "answerUpload": {
+    "pageCount": 2,
+    "pages": [
+      {
+        "pageNo": 1,
+        "fileName": "WhatsApp Image 2026-05-12 at 8.43.15 PM.jpeg",
+        "storagePath": "blob:http://localhost:5173/bd85f3f5-46c4-4719-9957-2cd8572f592c"
+      },
+      {
+        "pageNo": 2,
+        "fileName": "WhatsApp Image 2026-05-212 at 8.43.15 PM.jpeg",
+        "storagePath": "blob:http://localhost:5173/5de11674-98ab-4d83-bef8-785183685371"
+      }
+    ]
+  },
+  "extraction": {
+    "method": "chatgpt_manual_paste",
+    "promptVersion": "mains-answer-extraction-v1",
+    "extractedText": "Underline the changes in field of Society and Economy from Rigvedic to later vedic period.\n\nVedic Society/Age was divided into Early vedic and later vedic on basis of development in Socio-Economic and cultural spheres.\n\nEarly Vedic/Rigvedic Society | Later vedic Society\n------------------------------|--------------------\n-Varna system started with 3 Varnas | -Chaturvarna System started which is rigid.\n-It was egalitarian Society, where Varna is based on profession and one can change it. | -It was highly orthodox Society.\n-Women here enjoyed freedom, there were Scholars like gargi lopamudra who wore sacred thread. | -Strict implementa-tion of Varna ashrama Dharmas. -Women lost their freedom, social evils entered like dowry, childmarriage.\n-No practice of Antouchability in Rigvedic age. | -Sudras were given varna status and seen as untouchables.\n\nSimilar to social aspects, there were differenes in Economicaspects as well.\n\nRig vedic Economy | Later Vedic Economy.\n-------------------|--------------------\n-It was Pastoral Economy | -Transition from Pastoral to Agriculture\n-Primitive tools used & subsistence Agriculture practiced. | -Use of Iron Started called krishna ayas\"\n-Cattle were seen as wealth. Cow was sacred called Duhitri | -Sudras became Agriculturists\n-cultivation of Rice wheat, Barley is observed | -Rise of trade and commerce\n-It was Rural Economy as Rigved-ic mention puram only once. | -Guilds wereformed called Srenis.\n-Small trade exists called Panis | -They used painted grey ware. called Neela Lohita\n\nThus, Rig vedic to Later vedic period a huge transition is observed."
+  },
+  "selfReview": {
+    "mistakeTypes": [],
+    "severity": "medium",
+    "mustRevise": false,
+    "note": ""
+  },
+  "air1Review": null,
+  "status": "saved"
+}

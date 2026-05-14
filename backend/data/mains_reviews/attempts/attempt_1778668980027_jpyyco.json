@@ -1,0 +1,44 @@
+{
+  "schema": "mainsAnswerAttempt",
+  "attemptId": "attempt_1778668980027_jpyyco",
+  "createdAt": "2026-05-13T10:43:00.027Z",
+  "userId": "user_1",
+  "source": {
+    "mode": "pyq",
+    "paper": "GS1",
+    "examYear": 2023,
+    "questionId": "Explain_ho",
+    "questionMarks": 15,
+    "targetWords": 200,
+    "upscTimeMinutes": 9
+  },
+  "question": {
+    "text": "Explain how the women's question was central to the 19th-century Indian renaissance. Discuss the role of social reformers in transforming the condition of women in Indian society.",
+    "directiveWord": "",
+    "focusLabel": "Colonial impact on women — social reform context",
+    "topicNodeId": "",
+    "subjectTag": "general"
+  },
+  "writingSession": {
+    "startedAt": "2026-05-13T10:42:59.708Z",
+    "endedAt": "2026-05-13T10:42:59.708Z",
+    "timeTakenSeconds": 0
+  },
+  "answerUpload": {
+    "pageCount": 0,
+    "pages": []
+  },
+  "extraction": {
+    "method": "chatgpt_manual_paste",
+    "promptVersion": "mains-answer-extraction-v1",
+    "extractedText": "The Electoral reforms in India have been a longstanding debate. The Election Commission has played a vital role in ensuring free and fair elections through Model Code of Conduct, EVMs, and voter registration. However challenges remain in money power, criminalization of politics, and low voter turnout. The Supreme Court has also contributed through landmark judgments. India needs comprehensive reforms including state funding of elections and simultaneous elections."
+  },
+  "selfReview": {
+    "mistakeTypes": [],
+    "severity": "medium",
+    "mustRevise": false,
+    "note": ""
+  },
+  "air1Review": null,
+  "status": "saved"
+}

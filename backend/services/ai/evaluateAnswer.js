@@ -1,8 +1,10 @@
 import { geminiModel } from "./geminiClient.js";
 
 export async function evaluateMainsAnswer({ question, answer, paper, marks, wordLimit }) {
-  const prompt = `You are an expert UPSC Mains evaluator. 
-Evaluate the following answer to the given question.
+  const prompt = `Return STRICT JSON only. No markdown. No explanation outside JSON.
+Evaluate the UPSC Mains answer as a strict but helpful UPSC mentor.
+The output must be easy for an aspirant to understand within 30 seconds.
+
 Paper: ${paper}
 Marks: ${marks}
 Word Limit: ${wordLimit}
@@ -13,26 +15,39 @@ ${question}
 Student Answer:
 ${answer}
 
-Return ONLY a valid JSON object with the following structure, with no markdown formatting, no \`\`\`json blocks, and no text before or after:
+Return this JSON shape exactly:
 {
-  "score": <number out of ${marks}>,
-  "max_score": ${marks},
-  "verdict": "<string: brief overall verdict>",
-  "intro_quality": <number 0 to 10>,
-  "structure_quality": <number 0 to 10>,
-  "analysis_depth": <number 0 to 10>,
-  "multidimensionality": <number 0 to 10>,
-  "examples_usage": <number 0 to 10>,
-  "current_affairs_usage": <boolean>,
-  "committee_or_report_usage": <boolean>,
-  "constitutional_support": <boolean>,
-  "stakeholder_analysis": <boolean>,
-  "conclusion_quality": <number 0 to 10>,
-  "major_weaknesses": ["<string>", ...],
-  "strengths": ["<string>", ...],
-  "improvement_tasks": ["<string>", ...],
-  "weakness_tags": ["<string>", ...]
-}`;
+  "score": "",
+  "level": "",
+  "examinerImpression": "",
+  "topFixes": [],
+  "missingDimensions": [],
+  "upscStructure": [],
+  "improvedIntro": "",
+  "improvedConclusion": "",
+  "memoryMnemonic": "",
+  "finalAdvice": ""
+}
+
+Field rules:
+1. score: Use realistic UPSC marks (e.g. "4.5/10" or "6/15"). Do not inflate.
+2. level: Use one of "Poor", "Below Average", "Average", "Good", "Excellent".
+3. examinerImpression: Under 60 words. 30-second impression on relevance, structure, factual accuracy.
+4. topFixes: Exactly 3 points. Specific and actionable (e.g., "Convert the answer into a direct comparison...").
+5. missingDimensions: 3 to 6 points. Exact missing UPSC dimensions (e.g., "Political transformation: tribal polity to territorial kingdoms").
+6. upscStructure: Array of the ideal answer structure.
+7. improvedIntro: One UPSC-ready introduction (max 45 words).
+8. improvedConclusion: One UPSC-ready conclusion (max 45 words).
+9. memoryMnemonic: One simple mnemonic (e.g., "SEPR: Society, Economy, Polity, Religion").
+10. finalAdvice: One practical next action before rewriting.
+
+Strict quality rules:
+- Do not produce generic feedback.
+- Do not give long essay-like review.
+- Do not invent fake facts or scholars.
+- If the answer has factual errors, mention them clearly.
+- Language must be simple and mentor-like.
+- The output must be parseable JSON. No markdown outside JSON. No trailing commas.`;
 
   let rawText = "";
   let result;
@@ -80,7 +95,19 @@ Return ONLY a valid JSON object with the following structure, with no markdown f
   } catch (error) {
     console.error("[evaluateMainsAnswer] Error or Failed to parse JSON.");
     console.error("Raw Output:", rawText);
-    console.error("Error Detail:", error);
-    throw error;
+    
+    // Return safe fallback instead of crashing
+    return {
+      score: "N/A",
+      level: "Error",
+      examinerImpression: "Evaluation completed but AI failed to format the response properly.",
+      topFixes: [],
+      missingDimensions: [],
+      upscStructure: [],
+      improvedIntro: "",
+      improvedConclusion: "",
+      memoryMnemonic: "",
+      finalAdvice: "Raw AI Output:\n" + rawText
+    };
   }
 }

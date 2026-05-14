@@ -833,6 +833,7 @@ export default function AnswerWritingPage() {
     const [pastedText, setPastedText]             = useState("");
     const hasPastedText = pastedText.trim().length > 20;
     const [evaluationText, setEvaluationText]     = useState("");
+    const [evaluationData, setEvaluationData]     = useState(null);
     const [evalPromptCopied, setEvalPromptCopied] = useState(false);
     const hasEvaluationText = evaluationText.trim().length > 20;
     const [isEvaluating, setIsEvaluating]         = useState(false);
@@ -916,6 +917,7 @@ export default function AnswerWritingPage() {
         setReviewUiMessage("");
         setReviewUiError("");
         setEvaluationText("");
+        setEvaluationData(null);
         setEvalPromptCopied(false);
         setIsEvaluating(false);
         setFixOriginalSnippet("");
@@ -1031,15 +1033,23 @@ export default function AnswerWritingPage() {
             
             if (result && result.success && result.evaluation) {
                 const evalData = result.evaluation;
-                const formattedReview = [
-                    `📊 Score: ${evalData.score} / ${evalData.max_score}`,
-                    `\n📌 Verdict: ${evalData.verdict}`,
-                    evalData.strengths && evalData.strengths.length > 0 ? `\n✅ Strengths:\n- ${evalData.strengths.join('\n- ')}` : '',
-                    evalData.major_weaknesses && evalData.major_weaknesses.length > 0 ? `\n⚠️ Weaknesses:\n- ${evalData.major_weaknesses.join('\n- ')}` : '',
-                    evalData.improvement_tasks && evalData.improvement_tasks.length > 0 ? `\n🚀 Improvement Suggestions:\n- ${evalData.improvement_tasks.join('\n- ')}` : ''
-                ].filter(Boolean).join('\n');
+                let formattedReview = "";
+                if (evalData.strengths || evalData.verdict) {
+                    formattedReview = [
+                        `📊 Score: ${evalData.score} / ${evalData.max_score}`,
+                        `\n📌 Verdict: ${evalData.verdict}`,
+                        evalData.strengths && evalData.strengths.length > 0 ? `\n✅ Strengths:\n- ${evalData.strengths.join('\n- ')}` : '',
+                        evalData.major_weaknesses && evalData.major_weaknesses.length > 0 ? `\n⚠️ Weaknesses:\n- ${evalData.major_weaknesses.join('\n- ')}` : '',
+                        evalData.improvement_tasks && evalData.improvement_tasks.length > 0 ? `\n🚀 Improvement Suggestions:\n- ${evalData.improvement_tasks.join('\n- ')}` : ''
+                    ].filter(Boolean).join('\n');
+                } else if (evalData.level === "Error" && evalData.finalAdvice) {
+                    formattedReview = evalData.finalAdvice;
+                } else {
+                    formattedReview = JSON.stringify(evalData, null, 2);
+                }
                 
                 setEvaluationText(formattedReview);
+                setEvaluationData(evalData);
             } else {
                 setReviewUiError("Evaluation failed. Please try again.");
             }
@@ -1582,15 +1592,96 @@ export default function AnswerWritingPage() {
                                             <span style={{ fontSize: 12, color: T.dim, fontWeight: 600 }}>Pages ({uploadedPages.length}/{MAX_PAGES})</span>
                                             {hasPages && <button onClick={handleClearAll} style={{ background: "none", border: "none", color: T.red, fontSize: 12, cursor: "pointer", fontWeight: 600 }}>Clear All</button>}
                                         </div>
-                                        <div style={{ display: "flex", gap: 12, overflowX: "auto", paddingBottom: 8 }}>
+                                        <div style={{ display: "flex", gap: 12, overflowX: "auto", paddingBottom: 8, paddingTop: 4 }}>
                                             {uploadedPages.map((pg, i) => (
-                                                <div key={i} style={{ width: 100, height: 140, background: T.surfaceHigh, border: `1px solid ${T.borderMid}`, borderRadius: 8, overflow: "hidden", position: "relative", flexShrink: 0 }}>
-                                                    <img src={pg.preview} alt={`Page ${i+1}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                                                    <button onClick={() => handleRemovePage(i)} style={{ position: "absolute", top: 4, right: 4, background: "rgba(0,0,0,0.5)", color: "#fff", border: "none", borderRadius: "50%", width: 20, height: 20, fontSize: 10, cursor: "pointer" }}>✕</button>
+                                                <div
+                                                    key={i}
+                                                    className="awp-img-card"
+                                                    style={{
+                                                        width: 100, height: 140,
+                                                        background: "#f8fafc",
+                                                        border: "1px solid #e2e8f0",
+                                                        borderRadius: 12,
+                                                        overflow: "visible",
+                                                        position: "relative",
+                                                        flexShrink: 0,
+                                                        boxShadow: "0 2px 8px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06)",
+                                                        transition: "transform 0.18s ease, box-shadow 0.18s ease",
+                                                    }}
+                                                >
+                                                    <img
+                                                        src={pg.preview}
+                                                        alt={`Page ${i+1}`}
+                                                        style={{
+                                                            width: "100%", height: "100%",
+                                                            objectFit: "cover",
+                                                            borderRadius: 12,
+                                                            display: "block",
+                                                        }}
+                                                    />
+                                                    {/* Premium circular close button */}
+                                                    <button
+                                                        className="awp-close-btn"
+                                                        onClick={() => handleRemovePage(i)}
+                                                        title="Remove page"
+                                                        style={{
+                                                            position: "absolute",
+                                                            top: -10, right: -10,
+                                                            width: 34, height: 34,
+                                                            minWidth: 34, minHeight: 34,
+                                                            borderRadius: "999px",
+                                                            background: "#ffffff",
+                                                            border: "1.5px solid #fecaca",
+                                                            color: "#ef4444",
+                                                            fontSize: 14,
+                                                            fontWeight: 700,
+                                                            cursor: "pointer",
+                                                            display: "flex",
+                                                            alignItems: "center",
+                                                            justifyContent: "center",
+                                                            boxShadow: "0 2px 8px rgba(239,68,68,0.18), 0 1px 3px rgba(0,0,0,0.10)",
+                                                            zIndex: 20,
+                                                            padding: 0,
+                                                            lineHeight: 1,
+                                                            transition: "transform 0.15s ease, box-shadow 0.15s ease",
+                                                        }}
+                                                    >✕</button>
+                                                    {/* Page label */}
+                                                    <div style={{
+                                                        position: "absolute", bottom: 6, left: 0, right: 0,
+                                                        textAlign: "center",
+                                                        fontSize: 10, fontWeight: 700,
+                                                        color: "#fff",
+                                                        textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                                                        pointerEvents: "none",
+                                                    }}>pg {i+1}</div>
                                                 </div>
                                             ))}
                                             {uploadedPages.length < MAX_PAGES && (
-                                                <div onClick={() => fileInputRef.current?.click()} style={{ width: 100, height: 140, background: T.surfaceHigh, border: `2px dashed ${T.borderMid}`, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", flexShrink: 0, color: T.subtle, fontSize: 24 }}>+</div>
+                                                <div
+                                                    className="awp-upload-slot"
+                                                    onClick={() => fileInputRef.current?.click()}
+                                                    style={{
+                                                        width: 100, height: 140,
+                                                        background: "#f8fafc",
+                                                        border: "2px dashed #cbd5e1",
+                                                        borderRadius: 12,
+                                                        display: "flex",
+                                                        flexDirection: "column",
+                                                        alignItems: "center",
+                                                        justifyContent: "center",
+                                                        cursor: "pointer",
+                                                        flexShrink: 0,
+                                                        gap: 6,
+                                                        transition: "border-color 0.18s, background 0.18s",
+                                                        userSelect: "none",
+                                                    }}
+                                                >
+                                                    <span style={{ fontSize: 28, color: "#94a3b8", lineHeight: 1 }}>+</span>
+                                                    <span style={{ fontSize: 10, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                                                        {hasPages ? "Add Page" : "Upload"}
+                                                    </span>
+                                                </div>
                                             )}
                                         </div>
                                         <input ref={fileInputRef} type="file" accept="image/*" multiple style={{ display: "none" }} onChange={(e) => { addFiles(e.target.files); e.target.value = ""; }} />
@@ -1599,7 +1690,7 @@ export default function AnswerWritingPage() {
                                     {/* Text Extraction */}
                                     <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
                                         <button onClick={handleExtractAnswer} disabled={!hasPages || isExtracting} style={{ flex: 1, background: T.surfaceHigh, color: T.textBright, border: `1px solid ${T.borderMid}`, padding: "10px", borderRadius: 8, fontWeight: 700, cursor: hasPages ? "pointer" : "not-allowed" }}>
-                                            {isExtracting ? "Extracting..." : "Auto-Extract Text"}
+                                            {isExtracting ? "Extracting..." : "Extract Answer Text"}
                                         </button>
                                     </div>
                                     <textarea
@@ -1618,19 +1709,146 @@ export default function AnswerWritingPage() {
                         {hasPastedText && (
                             <SectionCard accentTop={T.amber}>
                                 <div style={{ padding: 24 }}>
-                                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-                                        <div style={{ fontSize: 16, fontWeight: 800, color: T.textBright }}>Basic Evaluation</div>
-                                        <button onClick={handleBasicReview} disabled={isEvaluating} style={{ background: T.surfaceHigh, border: `1px solid ${T.borderMid}`, color: T.textBright, padding: "6px 12px", borderRadius: 6, fontWeight: 600, cursor: "pointer", fontSize: 12 }}>
-                                            {isEvaluating ? "Evaluating..." : "Run Evaluation"}
+                                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24, gap: 16, flexWrap: "wrap" }}>
+                                        <div>
+                                            <div style={{ fontSize: 16, fontWeight: 800, color: T.textBright }}>Quick Mentor Review</div>
+                                            <div style={{ fontSize: 13, color: T.dim, marginTop: 4 }}>Understand your score, missing dimensions, and rewrite direction in 30 seconds.</div>
+                                        </div>
+                                        <button onClick={handleBasicReview} disabled={isEvaluating} style={{ background: T.surfaceHigh, border: `1px solid ${T.borderMid}`, color: T.textBright, padding: "8px 16px", borderRadius: 8, fontWeight: 700, cursor: "pointer", fontSize: 13, boxShadow: "0 2px 4px rgba(0,0,0,0.05)" }}>
+                                            {isEvaluating ? "Evaluating..." : "Run Quick Review"}
                                         </button>
                                     </div>
-                                    <textarea
-                                        value={evaluationText}
-                                        onChange={(e) => setEvaluationText(e.target.value)}
-                                        rows={6}
-                                        style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 16, fontFamily: T.font, fontSize: 14, lineHeight: 1.6, resize: "vertical", outline: "none" }}
-                                        placeholder="Basic evaluation report..."
-                                    />
+                                    
+                                    {evaluationData && (evaluationData.examinerImpression || evaluationData.topFixes || evaluationData.level) ? (
+                                        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                                            {/* Top Summary Strip */}
+                                            <div style={{ display: "flex", gap: 16, background: T.surfaceHigh, padding: "16px 24px", borderRadius: 12, border: `1px solid ${T.borderMid}`, alignItems: "center", flexWrap: "wrap" }}>
+                                                <div style={{ flex: "1 1 120px" }}>
+                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Score</div>
+                                                    <div style={{ fontSize: 24, fontWeight: 900, color: T.amber, lineHeight: 1 }}>{evaluationData.score}</div>
+                                                </div>
+                                                <div style={{ flex: "1 1 120px", borderLeft: `1px solid ${T.borderMid}`, paddingLeft: 16 }}>
+                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Level</div>
+                                                    <div style={{ fontSize: 16, fontWeight: 700, color: T.textBright }}>{evaluationData.level || "Beginner"}</div>
+                                                </div>
+                                                {evaluationData.finalAdvice && (
+                                                <div style={{ flex: "2 1 200px", borderLeft: `1px solid ${T.borderMid}`, paddingLeft: 16 }}>
+                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Next Action</div>
+                                                    <div style={{ fontSize: 14, color: T.textBright, fontWeight: 600, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{evaluationData.finalAdvice}</div>
+                                                </div>
+                                                )}
+                                            </div>
+
+                                            {/* Examiner Impression */}
+                                            {evaluationData.examinerImpression && (
+                                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>30-Second Examiner Impression</div>
+                                                    <div style={{ fontSize: 15, color: T.textBright, lineHeight: 1.6 }}>{evaluationData.examinerImpression}</div>
+                                                </div>
+                                            )}
+
+                                            {/* Top 3 Fixes */}
+                                            {evaluationData.topFixes && evaluationData.topFixes.length > 0 && (
+                                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.red, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 16 }}>Top 3 Fixes</div>
+                                                    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                                                        {evaluationData.topFixes.map((fix, i) => (
+                                                            <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start", background: T.bg, padding: 12, borderRadius: 8, border: `1px solid ${T.borderMid}` }}>
+                                                                <div style={{ background: T.surfaceHigh, color: T.red, width: 24, height: 24, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 800, flexShrink: 0 }}>{i + 1}</div>
+                                                                <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{fix}</div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* UPSC Structure */}
+                                            {evaluationData.upscStructure && Array.isArray(evaluationData.upscStructure) && evaluationData.upscStructure.length > 0 && (
+                                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.blue, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 16 }}>Suggested Answer Structure</div>
+                                                    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                                                        {evaluationData.upscStructure.map((struct, i) => (
+                                                            <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                                                                <div style={{ background: T.bg, color: T.blue, width: 20, height: 20, borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0, marginTop: 2 }}>{i + 1}</div>
+                                                                <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{struct}</div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+                                            {evaluationData.upscStructure && typeof evaluationData.upscStructure === 'string' && (
+                                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.blue, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Suggested Answer Structure</div>
+                                                    <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6, whiteSpace: "pre-wrap" }}>{evaluationData.upscStructure}</div>
+                                                </div>
+                                            )}
+
+                                            {/* Rewrite Toolkit Grid */}
+                                            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
+                                                {/* Missing Dimensions */}
+                                                {evaluationData.missingDimensions && evaluationData.missingDimensions.length > 0 && (
+                                                    <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.amber, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Missing UPSC Dimensions</div>
+                                                        <ul style={{ margin: 0, paddingLeft: 20, fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>
+                                                            {evaluationData.missingDimensions.map((dim, i) => <li key={i}>{dim}</li>)}
+                                                        </ul>
+                                                    </div>
+                                                )}
+                                                
+                                                {/* Improved Intro */}
+                                                {evaluationData.improvedIntro && (
+                                                    <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.green, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Improved Introduction</div>
+                                                        <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{evaluationData.improvedIntro}</div>
+                                                    </div>
+                                                )}
+                                                
+                                                {/* Improved Conclusion */}
+                                                {evaluationData.improvedConclusion && (
+                                                    <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.green, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Improved Conclusion</div>
+                                                        <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{evaluationData.improvedConclusion}</div>
+                                                    </div>
+                                                )}
+
+                                                {/* Memory Mnemonic */}
+                                                {evaluationData.memoryMnemonic && (
+                                                    <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.purple, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Memory Mnemonic</div>
+                                                        <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{evaluationData.memoryMnemonic}</div>
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            {/* Final Advice */}
+                                            {evaluationData.finalAdvice && (
+                                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}`, borderLeft: `4px solid ${T.amber}` }}>
+                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Before rewriting, do this</div>
+                                                    <div style={{ fontSize: 15, color: T.textBright, lineHeight: 1.6, fontWeight: 600 }}>{evaluationData.finalAdvice}</div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    ) : evaluationText ? (
+                                        <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                            <div style={{ fontSize: 14, fontWeight: 800, color: T.textBright, marginBottom: 4 }}>Mentor Notes</div>
+                                            <div style={{ fontSize: 12, color: T.dim, marginBottom: 16 }}>Structured review was not available, so showing raw mentor feedback.</div>
+                                            <div style={{ 
+                                                fontSize: 14, 
+                                                color: T.textBright, 
+                                                lineHeight: 1.7, 
+                                                whiteSpace: "pre-wrap", 
+                                                maxHeight: "400px", 
+                                                overflowY: "auto",
+                                                fontFamily: T.font
+                                            }}>
+                                                {evaluationText}
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div style={{ padding: 32, textAlign: "center", color: T.dim, fontSize: 14, background: T.surfaceHigh, borderRadius: 12, border: `1px dashed ${T.borderMid}` }}>
+                                            Paste your answer text and click "Run Quick Review" to get a mentor evaluation.
+                                        </div>
+                                    )}
                                 </div>
                             </SectionCard>
                         )}
@@ -1661,8 +1879,26 @@ export default function AnswerWritingPage() {
                                         />
                                     </div>
                                     {parsedAir1Json && (
-                                        <button onClick={() => setReviewModeActive(true)} style={{ background: T.purple, color: "#fff", padding: "12px 24px", borderRadius: 8, border: "none", fontWeight: 800, cursor: "pointer", width: "100%", marginTop: 16, fontSize: 15 }}>
-                                            View Premium Report
+                                        <button
+                                            className="awp-premium-btn"
+                                            onClick={() => setReviewModeActive(true)}
+                                            style={{
+                                                background: "linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%)",
+                                                color: "#fff",
+                                                padding: "14px 24px",
+                                                borderRadius: 10,
+                                                border: "none",
+                                                fontWeight: 800,
+                                                cursor: "pointer",
+                                                width: "100%",
+                                                marginTop: 16,
+                                                fontSize: 15,
+                                                letterSpacing: "0.01em",
+                                                boxShadow: "0 6px 20px rgba(124, 58, 237, 0.40), 0 2px 6px rgba(0,0,0,0.12)",
+                                                transition: "transform 0.15s ease, box-shadow 0.15s ease",
+                                            }}
+                                        >
+                                            ✨ View Premium Report
                                         </button>
                                     )}
                                 </div>
@@ -1712,7 +1948,31 @@ export default function AnswerWritingPage() {
                             )}
 
                             <div style={{ marginTop: 24 }}>
-                                <button onClick={handleSave} disabled={!hasPastedText || saved} style={{ background: saved ? T.green : T.textBright, color: saved ? "#fff" : "#000", border: "none", padding: "12px", borderRadius: 8, fontWeight: 800, cursor: hasPastedText && !saved ? "pointer" : "not-allowed", width: "100%", fontSize: 14 }}>
+                                <button
+                                    className="awp-finalize-btn"
+                                    onClick={handleSave}
+                                    disabled={!hasPastedText || saved}
+                                    style={{
+                                        background: saved
+                                            ? "linear-gradient(135deg, #059669 0%, #10b981 100%)"
+                                            : hasPastedText
+                                                ? "linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)"
+                                                : "#e2e8f0",
+                                        color: hasPastedText || saved ? "#ffffff" : "#94a3b8",
+                                        border: "none",
+                                        padding: "13px 16px",
+                                        borderRadius: 10,
+                                        fontWeight: 800,
+                                        cursor: hasPastedText && !saved ? "pointer" : "not-allowed",
+                                        width: "100%",
+                                        fontSize: 14,
+                                        letterSpacing: "0.01em",
+                                        boxShadow: hasPastedText && !saved
+                                            ? "0 4px 14px rgba(124, 58, 237, 0.35), 0 1px 3px rgba(0,0,0,0.10)"
+                                            : "none",
+                                        transition: "transform 0.15s ease, box-shadow 0.15s ease",
+                                    }}
+                                >
                                     {saved ? "✓ Finalized" : "💾 Finalize Attempt"}
                                 </button>
                                 {!saved && <div style={{ fontSize: 11, color: T.dim, marginTop: 8, textAlign: "center" }}>Saves answer to your timeline.</div>}
@@ -1722,6 +1982,36 @@ export default function AnswerWritingPage() {
                     
                 </div>
             </div>
+
+            {/* ── AWP Premium Interaction Styles ── */}
+            <style>{`
+                .awp-img-card:hover {
+                    transform: translateY(-3px) scale(1.02) !important;
+                    box-shadow: 0 8px 24px rgba(0,0,0,0.14), 0 2px 6px rgba(0,0,0,0.08) !important;
+                }
+                .awp-close-btn:hover {
+                    transform: scale(1.18) !important;
+                    box-shadow: 0 4px 14px rgba(239,68,68,0.38) !important;
+                    background: #fff5f5 !important;
+                }
+                .awp-upload-slot:hover {
+                    border-color: #7c3aed !important;
+                    background: #f3e8ff !important;
+                }
+                .awp-upload-slot:hover span {
+                    color: #7c3aed !important;
+                }
+                .awp-finalize-btn:not(:disabled):hover {
+                    transform: translateY(-2px) !important;
+                    box-shadow: 0 8px 22px rgba(124,58,237,0.45), 0 2px 6px rgba(0,0,0,0.12) !important;
+                }
+                .awp-finalize-btn:not(:disabled):active { transform: translateY(0) !important; }
+                .awp-premium-btn:hover {
+                    transform: translateY(-2px) !important;
+                    box-shadow: 0 12px 32px rgba(124,58,237,0.52), 0 3px 8px rgba(0,0,0,0.14) !important;
+                }
+                .awp-premium-btn:active { transform: translateY(0) !important; }
+            `}</style>
         </div>
     );
 }

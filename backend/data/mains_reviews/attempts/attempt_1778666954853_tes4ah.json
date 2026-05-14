@@ -1,0 +1,44 @@
+{
+  "schema": "mainsAnswerAttempt",
+  "attemptId": "attempt_1778666954853_tes4ah",
+  "createdAt": "2026-05-13T10:09:14.853Z",
+  "userId": "user_1",
+  "source": {
+    "mode": "pyq",
+    "paper": "GS2",
+    "examYear": 2013,
+    "questionId": "The_role_o",
+    "questionMarks": 10,
+    "targetWords": 150,
+    "upscTimeMinutes": 6
+  },
+  "question": {
+    "text": "The role of individual MPs (Members of Parliament) has diminished over the years and as a result healthy constructive debates on policy issues are not usually witnessed. How far can this be attributed to the anti-defection law, which was legislated but wit h a different intention?",
+    "directiveWord": "",
+    "focusLabel": "",
+    "topicNodeId": "",
+    "subjectTag": "general"
+  },
+  "writingSession": {
+    "startedAt": "2026-05-13T10:09:14.536Z",
+    "endedAt": "2026-05-13T10:09:14.536Z",
+    "timeTakenSeconds": 0
+  },
+  "answerUpload": {
+    "pageCount": 0,
+    "pages": []
+  },
+  "extraction": {
+    "method": "chatgpt_manual_paste",
+    "promptVersion": "mains-answer-extraction-v1",
+    "extractedText": "The Electoral reforms in India have been a longstanding debate. The Election Commission has played a vital role in ensuring free and fair elections through Model Code of Conduct, EVMs, and voter registration. However challenges remain in money power, criminalization of politics, and low voter turnout in certain regions. The Supreme Court has also contributed through landmark judgments. India needs comprehensive reforms including state funding of elections, stricter candidate disclosures, and simultaneous elections to reduce poll fatigue and expenditure."
+  },
+  "selfReview": {
+    "mistakeTypes": [],
+    "severity": "medium",
+    "mustRevise": false,
+    "note": ""
+  },
+  "air1Review": null,
+  "status": "saved"
+}
