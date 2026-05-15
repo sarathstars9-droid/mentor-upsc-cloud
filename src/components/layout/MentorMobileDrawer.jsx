@@ -105,7 +105,7 @@ export default function MentorMobileDrawer({ open, currentPage, onNavigate, onCl
                       aria-current={isActive ? "page" : undefined}
                     >
                       <span className="mos-nav-item-left-v2">
-                        <span className="mos-nav-item-icon-v2"><Icon size={19} strokeWidth={1.9} /></span>
+                        <span className="mos-nav-item-icon-v2"><Icon size={18} strokeWidth={1.8} /></span>
                         <span className="mos-nav-item-label-v2">{item.label}</span>
                       </span>
                     </button>
