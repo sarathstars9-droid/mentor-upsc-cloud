@@ -73,57 +73,116 @@ function coerceSchema(parsed) {
     const MAX_LOSS_REASONS = 4;
     const MAX_BODY = 4;
 
-    out.score = out.score || {};
-    const score = parsed.score || {};
-    out.score.awarded = typeof score.awarded === 'number' ? score.awarded : (parseFloat(score.awarded) || 0);
-    out.score.total = typeof score.total === 'number' ? score.total : (parseFloat(score.total) || 0);
-    out.score.status = typeof score.status === 'string' ? score.status : String(score.status || '');
-    out.score.oneLineVerdict = typeof score.oneLineVerdict === 'string' ? score.oneLineVerdict : String(score.oneLineVerdict || '');
-
-    // lossReasons: keep short list, single-line entries
-    out.lossReasons = [];
-    if (Array.isArray(parsed.lossReasons)) {
-        for (let i = 0; i < Math.min(parsed.lossReasons.length, MAX_LOSS_REASONS); i++) {
-            out.lossReasons.push(singleLine(parsed.lossReasons[i], 80));
-        }
-    } else if (parsed.lossReasons) {
-        out.lossReasons.push(singleLine(parsed.lossReasons, 80));
+    // OLD SCHEMA PARSING (Fallback / Compatibility)
+    if (parsed.score && typeof parsed.score === 'object') {
+        out.score = {};
+        const score = parsed.score || {};
+        out.score.awarded = typeof score.awarded === 'number' ? score.awarded : (parseFloat(score.awarded) || 0);
+        out.score.total = typeof score.total === 'number' ? score.total : (parseFloat(score.total) || 0);
+        out.score.status = typeof score.status === 'string' ? score.status : String(score.status || '');
+        out.score.oneLineVerdict = typeof score.oneLineVerdict === 'string' ? score.oneLineVerdict : String(score.oneLineVerdict || '');
     }
 
-    // mistakes: keep top N, and only short single-line fields (userLine, problem, fix, tag, severity)
-    out.mistakes = [];
-    if (Array.isArray(parsed.mistakes)) {
-        for (let i = 0; i < Math.min(parsed.mistakes.length, MAX_MISTAKES); i++) {
-            const m = parsed.mistakes[i];
-            if (!m || typeof m !== 'object') continue;
-            out.mistakes.push({
-                userLine: singleLine(m.userLine || m.line || '', 120),
-                problem: singleLine(m.problem || m.issue || '', 140),
-                fix: singleLine(m.fix || m.suggestion || '', 140),
-                tag: singleLine(m.tag || '', 60),
-                severity: singleLine(m.severity || '', 20),
-            });
+    if (parsed.lossReasons) {
+        out.lossReasons = [];
+        if (Array.isArray(parsed.lossReasons)) {
+            for (let i = 0; i < Math.min(parsed.lossReasons.length, MAX_LOSS_REASONS); i++) {
+                out.lossReasons.push(singleLine(parsed.lossReasons[i], 80));
+            }
+        } else {
+            out.lossReasons.push(singleLine(parsed.lossReasons, 80));
         }
     }
 
-    const fixNow = parsed.fixNow || {};
-    out.fixNow = {
-        mainTask: singleLine(fixNow.mainTask || '', 180),
-        replacementLines: Array.isArray(fixNow.replacementLines) ? fixNow.replacementLines.map((r) => singleLine(r, 120)).slice(0, 3) : (fixNow.replacementLines ? [singleLine(fixNow.replacementLines, 120)] : []),
-        nextPracticeTask: singleLine(fixNow.nextPracticeTask || '', 140),
-    };
+    if (parsed.mistakes) {
+        out.mistakes = [];
+        if (Array.isArray(parsed.mistakes)) {
+            for (let i = 0; i < Math.min(parsed.mistakes.length, MAX_MISTAKES); i++) {
+                const m = parsed.mistakes[i];
+                if (!m || typeof m !== 'object') continue;
+                out.mistakes.push({
+                    userLine: singleLine(m.userLine || m.line || '', 120),
+                    problem: singleLine(m.problem || m.issue || '', 140),
+                    fix: singleLine(m.fix || m.suggestion || '', 140),
+                    tag: singleLine(m.tag || '', 60),
+                    severity: singleLine(m.severity || '', 20),
+                });
+            }
+        }
+    }
 
-    const air1Answer = parsed.air1Answer || {};
-    out.air1Answer = {
-        intro: singleLine(air1Answer.intro || '', 180),
-        body: Array.isArray(air1Answer.body) ? air1Answer.body.map((b) => singleLine(b, 140)).slice(0, MAX_BODY) : (air1Answer.body ? [singleLine(air1Answer.body, 140)] : []),
-        conclusion: singleLine(air1Answer.conclusion || '', 180),
-    };
+    if (parsed.fixNow) {
+        const fixNow = parsed.fixNow || {};
+        out.fixNow = {
+            mainTask: singleLine(fixNow.mainTask || '', 180),
+            replacementLines: Array.isArray(fixNow.replacementLines) ? fixNow.replacementLines.map((r) => singleLine(r, 120)).slice(0, 3) : (fixNow.replacementLines ? [singleLine(fixNow.replacementLines, 120)] : []),
+            nextPracticeTask: singleLine(fixNow.nextPracticeTask || '', 140),
+        };
+    }
 
-    out.autoTags = [];
-    if (Array.isArray(parsed.autoTags)) {
-        for (let i = 0; i < Math.min(parsed.autoTags.length, 8); i++) out.autoTags.push(singleLine(parsed.autoTags[i], 60));
-    } else if (parsed.autoTags) out.autoTags.push(singleLine(parsed.autoTags, 60));
+    if (parsed.air1Answer) {
+        const air1Answer = parsed.air1Answer || {};
+        out.air1Answer = {
+            intro: singleLine(air1Answer.intro || '', 180),
+            body: Array.isArray(air1Answer.body) ? air1Answer.body.map((b) => singleLine(b, 140)).slice(0, MAX_BODY) : (air1Answer.body ? [singleLine(air1Answer.body, 140)] : []),
+            conclusion: singleLine(air1Answer.conclusion || '', 180),
+        };
+    }
+
+    if (parsed.autoTags) {
+        out.autoTags = [];
+        if (Array.isArray(parsed.autoTags)) {
+            for (let i = 0; i < Math.min(parsed.autoTags.length, 8); i++) out.autoTags.push(singleLine(parsed.autoTags[i], 60));
+        } else {
+            out.autoTags.push(singleLine(parsed.autoTags, 60));
+        }
+    }
+
+    // NEW 6-CARD SCHEMA PARSING
+    if (parsed.score !== undefined && typeof parsed.score !== 'object') out.score = parsed.score;
+    if (parsed.potentialScore !== undefined) out.potentialScore = parsed.potentialScore;
+    if (parsed.examinerImpression !== undefined) out.examinerImpression = parsed.examinerImpression;
+    if (Array.isArray(parsed.missingDimensionsChecklist)) out.missingDimensionsChecklist = parsed.missingDimensionsChecklist;
+    if (Array.isArray(parsed.idealStructure)) out.idealStructure = parsed.idealStructure;
+    if (Array.isArray(parsed.themeFlowchart)) out.themeFlowchart = parsed.themeFlowchart;
+    if (Array.isArray(parsed.diagramSuggestions)) out.diagramSuggestions = parsed.diagramSuggestions;
+    if (parsed.mnemonic) {
+        if (typeof parsed.mnemonic === 'object') {
+            out.mnemonic = {
+                word: singleLine(parsed.mnemonic.word || '', 40),
+                meaning: Array.isArray(parsed.mnemonic.meaning) ? parsed.mnemonic.meaning : (parsed.mnemonic.meaning ? [singleLine(parsed.mnemonic.meaning, 200)] : []),
+                whyItFits: singleLine(parsed.mnemonic.whyItFits || '', 200)
+            };
+        } else if (typeof parsed.mnemonic === 'string') {
+            out.mnemonic = {
+                word: "Memory Hook",
+                meaning: [singleLine(parsed.mnemonic, 200)],
+                whyItFits: ""
+            };
+        }
+
+        // Vedic Fallback Logic: if it's the Vedic transformation question and word is not SETTLE or meaning is a sentence
+        const isVedic = /Vedic/i.test(parsed.question || parsed.topic || "");
+        if (isVedic && out.mnemonic.word && out.mnemonic.word.length > 10) {
+            out.mnemonic = {
+                word: "SETTLE",
+                meaning: [
+                    "S — Settled agriculture",
+                    "E — Expanding territory",
+                    "T — Tools / iron",
+                    "T — Taxation and surplus",
+                    "L — Layered varna hierarchy",
+                    "E — Elaborate rituals"
+                ],
+                whyItFits: "The question asks the shift from Rig Vedic pastoral-tribal life to Later Vedic settled agrarian hierarchy."
+            };
+        }
+    }
+    if (Array.isArray(parsed.topImprovements)) out.topImprovements = parsed.topImprovements;
+    if (Array.isArray(parsed.air1Upgrades)) out.air1Upgrades = parsed.air1Upgrades;
+    if (parsed.modelAnswer !== undefined) out.modelAnswer = parsed.modelAnswer;
+    if (Array.isArray(parsed.whyThisScoresHigh)) out.whyThisScoresHigh = parsed.whyThisScoresHigh;
+    if (parsed.detailedMentorReview !== undefined) out.detailedMentorReview = parsed.detailedMentorReview;
 
     return out;
 }

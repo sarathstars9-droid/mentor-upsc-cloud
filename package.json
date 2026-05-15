@@ -11,6 +11,7 @@
     "build:pyq": "node backend/scripts/buildPyqMasterIndex.js && node backend/scripts/rebuildPyqIndexes.js && node backend/scripts/validatePyqIndexes.js"
   },
   "dependencies": {
+    "lucide-react": "^0.268.0",
     "pdf-parse": "^2.4.5",
     "react": "18.3.1",
     "react-dom": "18.3.1",

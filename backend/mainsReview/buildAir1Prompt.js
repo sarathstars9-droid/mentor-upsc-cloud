@@ -64,7 +64,7 @@ ${currentAffairsNotes}
 
 Output Requirements (6 Cards):
 1. QUICK EVALUATION: Give an estimated score and potential score. Examiner impression (max 3 lines). Missing dimensions checklist (e.g. Diagram, Governance angle, Data, Committee/report, Multi-dimensional impacts).
-2. HOW TO IMPROVE: Give an Ideal UPSC Structure. A Theme-Based Flowchart (step-by-step logic, e.g. Urbanization -> Encroachment -> Flooding). Diagram Suggestions (placement, type, labels, why it helps - do NOT generate actual images). Mnemonic for Dimensions (e.g., SCOPE: Social, Constitutional...). Top 5 Improvements ONLY. Do not overwhelm with 20+ corrections.
+2. HOW TO IMPROVE: Give an Ideal UPSC Structure. A Theme-Based Flowchart (step-by-step logic, e.g. Urbanization -> Encroachment -> Flooding). Diagram Suggestions: Should be UPSC-ready, not vague. For comparison/history, prefer A. Two-column comparison table (e.g., Rig Vedic | Later Vedic) or B. Flowchart (Cattle wealth -> Iron tools -> Agriculture -> Surplus -> Varna rigidity -> Janapadas). Include placement (After intro/before conclusion), exact diagram/table type to draw, exact labels, and one short reason why it helps. Final Memory Hook: Return one topic-specific, question-specific mnemonic word and its meaning. Rules: The mnemonic must be one word only. word should be meaningful or easy to remember and directly connected to the question theme. meaning must be an array where each entry expands one letter of the word clearly. whyItFits must explicitly connect the mnemonic to the question demand. Example for Rig Vedic to Later Vedic transformation: word: SETTLE, meaning: ["S — Settled agriculture", "E — Expanding territory", "T — Tools / iron", "T — Taxation and surplus", "L — Layered varna hierarchy", "E — Elaborate rituals"], whyItFits: "The question asks the shift from Rig Vedic pastoral-tribal life to Later Vedic settled agrarian hierarchy." Top 5 Improvements ONLY. Do not overwhelm with 20+ corrections.
 3. AIR-1 UPGRADES: Compare ONLY the intro, ONE body paragraph, and the conclusion. Format: Your Line -> AIR-1 Upgrade -> Why Better.
 4. AIR-1 MODEL ANSWER: A clean, topper-style coaching material answer. Use headings, structured bullets, clean hierarchy. Length: ~150 words for 10m, ~250 for 15m.
 5. WHY THIS SCORES HIGH: A checklist explaining why the model answer is good (teach topper thinking subconsciously).
@@ -102,7 +102,8 @@ Return strictly parseable JSON inside <MENTOROS_JSON> tags. Use double quotes. N
   ],
   "mnemonic": {
     "word": "",
-    "dimensions": [""]
+    "meaning": [""],
+    "whyItFits": ""
   },
   "topImprovements": [
     ""

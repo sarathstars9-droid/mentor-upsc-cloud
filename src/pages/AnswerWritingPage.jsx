@@ -20,45 +20,47 @@ import {
     getMainsReviewResult,
     evaluateMainsAnswerApi,
     extractAnswerFromImagesApi,
+    saveMainsAttemptToDB,
+    fetchMainsAttempt,
 } from "../utils/mainsReviewApi.js";
 
 // ─── Theme tokens ─────────────────────────────────────────────────────────────
 const darkTokens = {
-    // Core palette
+    // Core palette: Deep navy-charcoal AI workspace
     bg: "#070B14",
     surface: "#111827",
     surfaceHigh: "#131A2B",
-    border: "#1f1f23",
-    borderMid: "#27272a",
-    muted: "#3f3f46",
-    subtle: "#52525b",
-    dim: "#71717a",
-    text: "#e4e4e7",
-    textBright: "#f4f4f5",
+    border: "#1E293B",
+    borderMid: "#334155",
+    muted: "#475569",
+    subtle: "#64748B",
+    dim: "#94A3B8",
+    text: "#E2E8F0",
+    textBright: "#F8FAFC",
     // Accent palette
     primaryAccent: "#4F7CFF",
     secondaryAccent: "#5B8CFF",
     tertiaryAccent: "#3B82F6",
     // Existing semantic colors
-    amber: "#f59e0b",
-    amberDim: "#d97706",
-    blue: "#3b82f6",
-    green: "#22c55e",
-    red: "#ef4444",
-    purple: "#8b5cf6",
+    amber: "#F59E0B",
+    amberDim: "#D97706",
+    blue: "#3B82F6",
+    green: "#10B981",
+    red: "#EF4444",
+    purple: "#8B5CF6",
     font: "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
     btnText: "#09090b",
-    innerGlow: "rgba(255,255,255,0.02)",
-    shadow: "rgba(79, 70, 229, 0.15)",
-    primaryGradient: "linear-gradient(135deg, #2563EB, #4F46E5)",
-    improvedBg: "#052D3D",
-    improvedText: "#BBF7D0",
+    innerGlow: "rgba(79, 124, 255, 0.04)",
+    shadow: "rgba(0, 0, 0, 0.3)",
+    primaryGradient: "linear-gradient(135deg, #3B82F6, #4F7CFF)",
+    improvedBg: "#0B1020",
+    improvedText: "#4F7CFF",
 };
 
 const lightTokens = {
-    bg: "#F6F8FC",
+    bg: "#F8FAFC",
     surface: "#FFFFFF",
-    surfaceHigh: "#F8FAFF",
+    surfaceHigh: "#F1F5F9",
     border: "#E2E8F0",
     borderMid: "#CBD5E1",
     muted: "#94A3B8",
@@ -264,11 +266,11 @@ function StatusChip({ status }) {
 function SectionCard({ accentTop, children, style: extraStyle = {} }) {
     return (
         <div style={{
-            background: T.surfaceHigh,
+            background: `linear-gradient(180deg, ${T.surface}, ${T.bg})`,
             border: `1px solid ${T.borderMid}`,
-            borderRadius: 14,
+            borderRadius: 16,
             overflow: "hidden",
-            boxShadow: `0 4px 12px ${T.shadow}`,
+            boxShadow: `0 8px 32px ${T.shadow}, inset 0 1px 0 ${T.innerGlow}`,
             transition: "transform 0.2s, box-shadow 0.2s",
             ...extraStyle,
         }}
@@ -277,8 +279,9 @@ function SectionCard({ accentTop, children, style: extraStyle = {} }) {
         >
             {accentTop && (
                 <div style={{
-                    height: 3,
-                    background: `linear-gradient(90deg, ${accentTop}, ${accentTop}44, ${T.borderMid})`,
+                    height: 4,
+                    background: `linear-gradient(90deg, ${accentTop}, ${accentTop}88, transparent)`,
+                    boxShadow: `0 2px 8px ${accentTop}40`
                 }} />
             )}
             {children}
@@ -401,35 +404,39 @@ function MainsIntelligenceCard({ refreshTrigger }) {
                 onClick={() => !isExpanded && setIsExpanded(true)}
             >
                 {/* Header row */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: isExpanded ? 20 : 0 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: isExpanded ? 24 : 0 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
                         <div style={{
-                            width: isExpanded ? 32 : 28, height: isExpanded ? 32 : 28, borderRadius: 8,
-                            background: `linear-gradient(135deg, ${T.primaryAccent}33, ${T.primaryAccent}11)`,
+                            width: isExpanded ? 38 : 32, height: isExpanded ? 38 : 32, borderRadius: 10,
+                            background: `linear-gradient(135deg, ${T.primaryAccent}33, #7C3AED33)`,
                             border: `1px solid ${T.primaryAccent}44`,
                             display: "flex", alignItems: "center", justifyContent: "center",
-                            fontSize: isExpanded ? 16 : 14, boxShadow: `0 0 12px ${T.primaryAccent}22`,
-                            transition: "all 0.2s"
+                            fontSize: isExpanded ? 18 : 16, boxShadow: `0 0 20px ${T.primaryAccent}25`,
+                            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
                         }}>
-                            🧠
+                            ✨
                         </div>
-                        <span style={{ fontSize: isExpanded ? 16 : 14, fontWeight: 800, color: T.textBright, letterSpacing: "0.02em" }}>
-                            Mains Intelligence
-                        </span>
+                        <div style={{ display: "flex", flexDirection: "column" }}>
+                            <span style={{ fontSize: isExpanded ? 18 : 16, fontWeight: 900, color: T.textBright, letterSpacing: "-0.01em", lineHeight: 1.2 }}>
+                                AI Mentor Command Center
+                            </span>
+                            {isExpanded && <span style={{ fontSize: 11, color: T.primaryAccent, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", marginTop: 2 }}>AIR-1 Intelligence Active</span>}
+                        </div>
                     </div>
 
                     {!isExpanded && focusThisWeek && (
-                        <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 11, flex: 1, minWidth: 0, marginLeft: 16, overflow: "hidden" }}>
-                            <span style={{ color: T.textBright, fontWeight: 700, flexShrink: 0, padding: "3px 10px", background: `linear-gradient(145deg, ${T.surfaceHigh}, ${T.bg})`, border: `1px solid ${T.borderMid}`, borderRadius: 12 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 11, flex: 1, minWidth: 0, marginLeft: 20, overflow: "hidden" }}>
+                            <span style={{ color: T.textBright, fontWeight: 800, flexShrink: 0, padding: "4px 12px", background: `linear-gradient(145deg, ${T.surfaceHigh}, ${T.bg})`, border: `1px solid ${T.borderMid}`, borderRadius: 12, boxShadow: `inset 0 1px 0 ${T.innerGlow}` }}>
                                 ⚡ Focus: {focusThisWeek.focusArea}
                             </span>
                             {top3Weaknesses.slice(0, 2).map((w, i) => (
                                 <span key={i} style={{ 
-                                    whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: 110,
+                                    whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: 120,
                                     color: (severityTone[w.severity] || severityTone.default).color, 
                                     background: (severityTone[w.severity] || severityTone.default).bg, 
-                                    border: `1px solid ${(severityTone[w.severity] || severityTone.default).border}88`, 
-                                    padding: "3px 10px", borderRadius: 12, fontWeight: 600, flexShrink: 0
+                                    border: `1px solid ${(severityTone[w.severity] || severityTone.default).border}`, 
+                                    padding: "4px 12px", borderRadius: 12, fontWeight: 700, flexShrink: 0,
+                                    boxShadow: `0 2px 8px ${(severityTone[w.severity] || severityTone.default).color}15`
                                 }}>
                                     {w.weakness}
                                 </span>
@@ -510,23 +517,33 @@ function MainsIntelligenceCard({ refreshTrigger }) {
                                         const isCritical = w.severity === "high" || w.severity === "critical";
                                         return (
                                             <div key={i} style={{ 
-                                                background: `linear-gradient(145deg, ${T.surfaceHigh}, ${T.bg})`, border: `1px solid ${isCritical ? severityTone[w.severity].border : "transparent"}`, 
-                                                boxShadow: isCritical ? `0 4px 12px ${severityTone[w.severity].color}15` : `inset 0 1px 0 ${T.innerGlow}`,
-                                                padding: "12px 14px", borderRadius: 10, position: "relative", overflow: "hidden"
+                                                background: `linear-gradient(180deg, ${T.surface}, ${T.bg})`, border: `1px solid ${isCritical ? severityTone[w.severity].border : T.borderMid}`, 
+                                                boxShadow: isCritical ? `0 4px 16px ${severityTone[w.severity].color}25` : `inset 0 1px 0 ${T.innerGlow}, 0 2px 8px rgba(0,0,0,0.2)`,
+                                                padding: "16px 20px", borderRadius: 12, position: "relative", overflow: "hidden"
                                             }}>
-                                                {isCritical && <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: severityTone[w.severity].color, boxShadow: `0 0 8px ${severityTone[w.severity].color}` }} />}
+                                                {isCritical && <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 4, background: severityTone[w.severity].color, boxShadow: `0 0 12px ${severityTone[w.severity].color}` }} />}
                                                 <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 }}>
-                                                    <span style={{ fontSize: 13, color: T.textBright, fontWeight: 700, lineHeight: 1.4 }}>{w.weakness}</span>
+                                                    <span style={{ fontSize: 14, color: T.textBright, fontWeight: 800, lineHeight: 1.4, letterSpacing: "-0.01em" }}>{w.weakness}</span>
                                                     <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", justifyContent: "flex-end", flexShrink: 0 }}>
-                                                        <span style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: (severityTone[w.severity] || severityTone.default).color, background: (severityTone[w.severity] || severityTone.default).bg, border: `1px solid ${(severityTone[w.severity] || severityTone.default).border}`, padding: "3px 8px", borderRadius: 6 }}>{w.severity}</span>
+                                                        <span style={{ fontSize: 10, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.06em", color: (severityTone[w.severity] || severityTone.default).color, background: (severityTone[w.severity] || severityTone.default).bg, border: `1px solid ${(severityTone[w.severity] || severityTone.default).border}`, padding: "4px 8px", borderRadius: 6 }}>{w.severity}</span>
                                                     </div>
                                                 </div>
-                                                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 10 }}>
-                                                    <div style={{ display: "flex", gap: 12 }}>
-                                                        <div style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 6, height: 6, borderRadius: "50%", background: T.dim }} /><span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>Standard: {basicEvaluation}</span></div>
-                                                        <div style={{ display: "flex", alignItems: "center", gap: 4 }}><span style={{ width: 6, height: 6, borderRadius: "50%", background: T.primaryAccent, boxShadow: `0 0 4px ${T.primaryAccent}` }} /><span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>AIR-1: {air1Review}</span></div>
+                                                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 14 }}>
+                                                    <div style={{ display: "flex", gap: 16 }}>
+                                                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}><span style={{ width: 6, height: 6, borderRadius: "50%", background: T.muted }} /><span style={{ fontSize: 11, color: T.dim, fontWeight: 700 }}>Basic: {basicEvaluation}</span></div>
+                                                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}><span style={{ width: 8, height: 8, borderRadius: "50%", background: T.primaryAccent, boxShadow: `0 0 8px ${T.primaryAccent}` }} /><span style={{ fontSize: 11, color: T.text, fontWeight: 800 }}>AIR-1: {air1Review}</span></div>
                                                     </div>
-                                                    <span style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", color: (confidenceTone[w.confidenceLevel] || confidenceTone.default).color, background: (confidenceTone[w.confidenceLevel] || confidenceTone.default).bg, border: `1px solid ${(confidenceTone[w.confidenceLevel] || confidenceTone.default).border}`, padding: "2px 6px", borderRadius: 4 }}>{w.confidenceLevel || "emerging"}</span>
+                                                    
+                                                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                                        <div style={{ display: "flex", gap: 3 }}>
+                                                            <div style={{ width: 4, height: 12, borderRadius: 2, background: (confidenceTone[w.confidenceLevel] || confidenceTone.default).color, opacity: w.confidenceLevel === "emerging" || w.confidenceLevel === "probable" || w.confidenceLevel === "confirmed" ? 1 : 0.2 }} />
+                                                            <div style={{ width: 4, height: 12, borderRadius: 2, background: (confidenceTone[w.confidenceLevel] || confidenceTone.default).color, opacity: w.confidenceLevel === "probable" || w.confidenceLevel === "confirmed" ? 1 : 0.2 }} />
+                                                            <div style={{ width: 4, height: 12, borderRadius: 2, background: (confidenceTone[w.confidenceLevel] || confidenceTone.default).color, opacity: w.confidenceLevel === "confirmed" ? 1 : 0.2, boxShadow: w.confidenceLevel === "confirmed" ? `0 0 8px ${(confidenceTone[w.confidenceLevel] || confidenceTone.default).color}` : "none" }} />
+                                                        </div>
+                                                        <span style={{ fontSize: 10, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.04em", color: (confidenceTone[w.confidenceLevel] || confidenceTone.default).color }}>
+                                                            {w.confidenceLevel || "emerging"}
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         );
@@ -854,6 +871,10 @@ export default function AnswerWritingPage() {
     const [attemptId, setAttemptId]   = useState(null);
     const [reviewId, setReviewId]     = useState(null);
 
+    // Finalize state for PostgreSQL persistence
+    const [finalizeState, setFinalizeState] = useState("idle"); // idle | saving | saved | error
+    const [finalizeError, setFinalizeError] = useState("");
+
     const [answerSaveState, setAnswerSaveState] = useState("idle");
     const [answerSaveError, setAnswerSaveError] = useState("");
 
@@ -935,6 +956,42 @@ export default function AnswerWritingPage() {
         setParsedAir1Json(null);
         setAir1JsonParseWarning("");
     }, [currentIndex]); // eslint-disable-line
+
+    // ─── Restore attempt on page load (from localStorage pointer → DB fetch) ──
+    useEffect(() => {
+        const storedId = localStorage.getItem("current_mains_attempt_id");
+        if (!storedId) return;
+        console.log("[mains-attempt] restoring", storedId);
+        fetchMainsAttempt(storedId)
+            .then(res => {
+                if (!res?.ok || !res?.attempt) return;
+                const a = res.attempt;
+                if (a.finalAnswerText || a.extractedText) {
+                    setPastedText(a.finalAnswerText || a.extractedText || "");
+                }
+                if (a.basicReview) {
+                    setEvaluationData(a.basicReview);
+                }
+                if (a.air1ParsedJson) {
+                    setParsedAir1Json(a.air1ParsedJson);
+                }
+                if (a.air1RawReview) {
+                    setAir1ReviewText(a.air1RawReview);
+                }
+                if (a.attemptId) {
+                    setAttemptId(a.attemptId);
+                }
+                if (a.status === "finalized") {
+                    setSaved(true);
+                    setFinalizeState("saved");
+                }
+                if (a.finalAnswerText || a.extractedText) {
+                    setSessionStarted(true);
+                }
+            })
+            .catch(err => console.warn("[mains-attempt] restore failed", err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // ─── Derived page status ──────────────────────────────────────────────────
     useEffect(() => {
@@ -1465,6 +1522,69 @@ export default function AnswerWritingPage() {
         }
     };
 
+    // ─── Finalize Attempt → save to PostgreSQL ────────────────────────────────
+    const handleFinalize = async () => {
+        if (finalizeState === "saving") return;
+        setFinalizeState("saving");
+        setFinalizeError("");
+
+        // Derive a stable attemptId (reuse existing or generate new)
+        const existingAttemptId = attemptId
+            || localStorage.getItem("current_mains_attempt_id")
+            || `mains_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+
+        const payload = {
+            attemptId:          existingAttemptId,
+            userId:             "user_1",
+            questionText:       SESSION.question,
+            paper:              SESSION.paper,
+            subject:            topic || "",
+            topic:              SESSION.topicNodeId || topic || "",
+            marks:              parseInt(SESSION.marks),
+            wordLimit:          wordTarget,
+            finalAnswerText:    pastedText.trim(),
+            extractedText:      pastedText.trim(),
+            answerSource:       hasPages ? "uploaded" : "typed",
+            uploadedPagesMeta:  uploadedPages.map((pg, idx) => ({ pageNo: idx + 1, fileName: pg.file?.name || `page_${idx+1}.jpg` })),
+            basicReview:        evaluationData || null,
+            air1RawReview:      air1ReviewText || "",
+            air1ParsedJson:     parsedAir1Json || null,
+            currentScore:       String(parsedAir1Json?.score || evaluationData?.score || ""),
+            targetScore:        String(parsedAir1Json?.potentialScore || ""),
+            status:             "finalized",
+        };
+
+        console.log("[mains-attempt] saving", { userId: payload.userId, attemptId: payload.attemptId, status: payload.status });
+
+        try {
+            const res = await saveMainsAttemptToDB(payload);
+            if (res?.ok && res?.attemptId) {
+                console.log("[mains-attempt] saved", res);
+                localStorage.setItem("current_mains_attempt_id", res.attemptId);
+                setAttemptId(res.attemptId);
+                setSaved(true);
+                setFinalizeState("saved");
+                
+                if (res.loopStatus === "generated") {
+                    setReviewUiMessage("Saved to Mistake Book and Revision Queue.");
+                } else if (res.loopStatus === "failed") {
+                    setReviewUiMessage("Attempt saved. Learning loop sync pending.");
+                } else {
+                    setReviewUiMessage("Attempt saved successfully.");
+                }
+
+                // Also run the old backend pipeline save (for intelligence/patterns)
+                handleSaveAttemptWithBackend().catch(() => {});
+            } else {
+                throw new Error(res?.error || "Unknown error");
+            }
+        } catch (err) {
+            console.error("[mains-attempt] save failed", err);
+            setFinalizeState("error");
+            setFinalizeError("Save failed. Please retry.");
+        }
+    };
+
     const handleOpenMistakeBook    = () => navigate("/mains/mistakes");
     const handleOpenRevisionTasks  = () => navigate("/revision");
 
@@ -1491,6 +1611,7 @@ export default function AnswerWritingPage() {
                 rawReviewText={air1ReviewText} 
                 uploadedPages={uploadedPages} 
                 finalAnswerText={finalAnswerText}
+                marks={marks}
                 onFinalize={() => { setReviewModeActive(false); handleSave(); }}
                 onExit={() => setReviewModeActive(false)}
             />
@@ -1506,7 +1627,7 @@ export default function AnswerWritingPage() {
         if (!hasPastedText) return { text: "Extract text from pages or paste manually.", cta: "Prepare Text", action: handleExtractAnswer, primary: true };
         if (!hasEvaluationText) return { text: "Run basic evaluation to get initial scores.", cta: "Evaluate Answer", action: handleBasicReview, primary: true };
         if (!parsedAir1Json && !air1ReviewText) return { text: "Copy prompt, run in AIR-1 Evaluator, and paste review back.", cta: "Generate AIR-1 Prompt", action: handleCopyReviewPrompt, primary: true };
-        if (!saved) return { text: "Finalize this attempt to save intelligence to your profile.", cta: "Finalize Attempt", action: handleSave, primary: true };
+        if (!saved) return { text: "Finalize this attempt to save intelligence to your profile.", cta: finalizeState === "saving" ? "Saving…" : "Finalize Attempt", action: handleFinalize, primary: true };
         return { text: "Attempt completed successfully. Great job!", cta: "Next Question", action: handleNext, primary: false };
     };
 
@@ -1571,28 +1692,84 @@ export default function AnswerWritingPage() {
                     {/* Left Column */}
                     <div style={{ display: "flex", flexDirection: "column", gap: 24, minWidth: 0, gridColumn: "1", gridRow: isMobile ? "auto" : "1", maxWidth: "100%" }}>
                         
+                        {/* Mission Stepper */}
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: `linear-gradient(180deg, ${T.surface}, ${T.bg})`, border: `1px solid ${T.borderMid}`, borderRadius: 16, padding: "20px 24px", boxShadow: `inset 0 1px 0 ${T.innerGlow}, 0 4px 12px ${T.shadow}` }}>
+                            {compactSteps.map((step, idx) => {
+                                const isActive = !step.done && (idx === 0 || compactSteps[idx-1].done);
+                                const isDone = step.done;
+                                return (
+                                    <React.Fragment key={idx}>
+                                        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                                            <div style={{
+                                                width: 32, height: 32, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center",
+                                                fontSize: 14, fontWeight: 800,
+                                                background: isDone ? T.green : isActive ? `linear-gradient(135deg, ${T.primaryAccent}, #7C3AED)` : T.surfaceHigh,
+                                                color: isDone || isActive ? "#fff" : T.subtle,
+                                                border: `2px solid ${isDone ? T.green : isActive ? "transparent" : T.borderMid}`,
+                                                boxShadow: isActive ? `0 0 16px ${T.primaryAccent}40` : "none",
+                                                transition: "all 0.3s"
+                                            }}>
+                                                {isDone ? "✓" : (idx + 1)}
+                                            </div>
+                                            <span style={{ fontSize: 13, fontWeight: isActive || isDone ? 800 : 600, color: isDone ? T.textBright : isActive ? T.primaryAccent : T.dim, letterSpacing: "0.02em" }}>
+                                                {step.label}
+                                            </span>
+                                        </div>
+                                        {idx < compactSteps.length - 1 && (
+                                            <div style={{ flex: 1, height: 2, background: isDone ? T.green : T.borderMid, opacity: 0.5, margin: "0 16px", borderRadius: 2 }} />
+                                        )}
+                                    </React.Fragment>
+                                );
+                            })}
+                        </div>
+
                         {/* Question Card */}
-                        <SectionCard accentTop={T.primaryAccent}>
-                            <div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: 16 }}>
-                                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                                    <span style={{ fontSize: 12, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "4px 10px", borderRadius: 6 }}>{SESSION.paper}</span>
-                                    <span style={{ fontSize: 12, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "4px 10px", borderRadius: 6 }}>{marks} Marks</span>
-                                    <span style={{ fontSize: 12, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "4px 10px", borderRadius: 6 }}>{wordTarget} Words</span>
+                        <div style={{ 
+                            background: `linear-gradient(180deg, ${T.surface}, ${T.bg})`,
+                            border: `1px solid ${T.borderMid}`,
+                            borderLeft: `4px solid ${T.primaryAccent}`,
+                            borderRadius: 16,
+                            overflow: "hidden",
+                            boxShadow: `0 8px 32px ${T.shadow}, inset 0 1px 0 ${T.innerGlow}`
+                        }}>
+                            <div style={{ padding: "32px", display: "flex", flexDirection: "column", gap: 24 }}>
+                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+                                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                                        <span style={{ fontSize: 13, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "6px 14px", borderRadius: 8, border: `1px solid ${T.borderMid}` }}>{SESSION.paper}</span>
+                                        <span style={{ fontSize: 13, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "6px 14px", borderRadius: 8, border: `1px solid ${T.borderMid}` }}>{SESSION.year || "UPSC PYQ"}</span>
+                                        <span style={{ fontSize: 13, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "6px 14px", borderRadius: 8, border: `1px solid ${T.borderMid}` }}>{marks}M / {wordTarget} W</span>
+                                    </div>
+                                    {SESSION.priority && (
+                                        <span style={{ fontSize: 11, fontWeight: 900, color: "#fff", background: `linear-gradient(135deg, ${T.primaryAccent}, #7C3AED)`, padding: "6px 14px", borderRadius: 20, letterSpacing: "0.06em", textTransform: "uppercase", boxShadow: `0 2px 12px ${T.primaryAccent}40` }}>
+                                            ✨ AIR-1 Priority
+                                        </span>
+                                    )}
                                 </div>
-                                <div style={{ fontSize: isMobile ? 16 : 18, fontWeight: 800, color: T.textBright, lineHeight: 1.6, whiteSpace: "normal", wordBreak: "normal", overflowWrap: "break-word", minWidth: 0 }}>{SESSION.question}</div>
+                                <div style={{ 
+                                    fontSize: isMobile ? 18 : 22, 
+                                    fontWeight: 700, 
+                                    color: T.textBright, 
+                                    lineHeight: 1.6, 
+                                    whiteSpace: "normal", 
+                                    wordBreak: "normal", 
+                                    overflowWrap: "break-word", 
+                                    minWidth: 0,
+                                    maxWidth: "92%",
+                                    letterSpacing: "-0.01em",
+                                }}>{SESSION.question}</div>
                                 {!sessionStarted && (
-                                    <button onClick={handleStartSession} style={{ background: T.primaryAccent, color: "#fff", padding: "12px 24px", borderRadius: 8, fontWeight: 800, border: "none", cursor: "pointer", width: "fit-content", marginTop: 8 }}>
+                                    <button onClick={handleStartSession} style={{ background: `linear-gradient(135deg, ${T.primaryAccent}, #4F46E5)`, color: "#fff", padding: "14px 28px", borderRadius: 10, fontWeight: 800, border: "none", cursor: "pointer", width: "fit-content", marginTop: 8, fontSize: 15, boxShadow: `0 4px 16px ${T.primaryAccent}40`, transition: "all 0.2s", letterSpacing: "0.02em" }}>
                                         Start Attempt Timer
                                     </button>
                                 )}
                             </div>
-                        </SectionCard>
+                        </div>
 
                         {/* Candidate Answer Card */}
                         {sessionStarted && (
                             <SectionCard accentTop={T.blue}>
-                                <div style={{ padding: 24 }}>
-                                    <div style={{ fontSize: 16, fontWeight: 800, color: T.textBright, marginBottom: 16 }}>Your Answer</div>
+                                <div style={{ padding: 32 }}>
+                                    <div style={{ fontSize: 20, fontWeight: 900, color: T.textBright, marginBottom: 24, letterSpacing: "-0.01em" }}>Your Answer</div>
                                     
                                     {/* Uploading */}
                                     <div style={{ marginBottom: 24 }}>
@@ -1720,11 +1897,11 @@ export default function AnswerWritingPage() {
                         {/* Basic Review Card */}
                         {hasPastedText && (
                             <SectionCard accentTop={T.amber}>
-                                <div style={{ padding: 24 }}>
-                                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24, gap: 16, flexWrap: "wrap" }}>
+                                <div style={{ padding: 32 }}>
+                                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 32, gap: 16, flexWrap: "wrap" }}>
                                         <div>
-                                            <div style={{ fontSize: 16, fontWeight: 800, color: T.textBright }}>Quick Mentor Review</div>
-                                            <div style={{ fontSize: 13, color: T.dim, marginTop: 4 }}>Understand your score, missing dimensions, and rewrite direction in 30 seconds.</div>
+                                            <div style={{ fontSize: 20, fontWeight: 900, color: T.textBright, letterSpacing: "-0.01em" }}>Quick Mentor Review</div>
+                                            <div style={{ fontSize: 14, color: T.dim, marginTop: 6, lineHeight: 1.5 }}>Understand your score, missing dimensions, and rewrite direction in 30 seconds.</div>
                                         </div>
                                         <button onClick={handleBasicReview} disabled={isEvaluating} style={{ background: T.surfaceHigh, border: `1px solid ${T.borderMid}`, color: T.textBright, padding: "8px 16px", borderRadius: 8, fontWeight: 700, cursor: "pointer", fontSize: 13, boxShadow: "0 2px 4px rgba(0,0,0,0.05)" }}>
                                             {isEvaluating ? "Evaluating..." : "Run Quick Review"}
@@ -1828,13 +2005,7 @@ export default function AnswerWritingPage() {
                                                     </div>
                                                 )}
 
-                                                {/* Memory Hook */}
-                                                {evaluationData.memoryMnemonic && (
-                                                    <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
-                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.purple, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Memory Hook</div>
-                                                        <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{evaluationData.memoryMnemonic}</div>
-                                                    </div>
-                                                )}
+
                                             </div>
 
                                             {/* Final Advice */}
@@ -1873,8 +2044,8 @@ export default function AnswerWritingPage() {
                         {/* Advanced AIR-1 Review Card */}
                         {hasEvaluationText && (
                             <SectionCard accentTop={T.purple}>
-                                <div style={{ padding: 24 }}>
-                                    <div style={{ fontSize: 16, fontWeight: 800, color: T.textBright, marginBottom: 16 }}>Advanced AIR-1 Review</div>
+                                <div style={{ padding: 32 }}>
+                                    <div style={{ fontSize: 20, fontWeight: 900, color: T.textBright, marginBottom: 24, letterSpacing: "-0.01em" }}>Advanced AIR-1 Review</div>
                                     <MainsReviewPromptCard
                                         currentQuestion={{ text: SESSION.question, marks: parseInt(SESSION.marks), paper: SESSION.paper, topic: topic, syllabusNode: syllabusNodeId }}
                                         finalAnswerText={finalAnswerText}

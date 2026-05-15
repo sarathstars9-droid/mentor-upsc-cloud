@@ -239,3 +239,36 @@ export async function extractAnswerFromImagesApi(files) {
         throw error;
     }
 }
+/**
+ * Save/upsert mains attempt to PostgreSQL (durable, survives refresh)
+ * POST /api/mains/attempts/save
+ */
+export async function saveMainsAttemptToDB(payload) {
+    try {
+        const response = await fetch(`${BACKEND_URL}/api/mains/attempts/save`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error("saveMainsAttemptToDB error:", error);
+        throw error;
+    }
+}
+
+/**
+ * Fetch a saved mains attempt from PostgreSQL by attemptId
+ * GET /api/mains/attempts/:attemptId
+ */
+export async function fetchMainsAttempt(attemptId) {
+    try {
+        const response = await fetch(`${BACKEND_URL}/api/mains/attempts/${encodeURIComponent(attemptId)}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error("fetchMainsAttempt error:", error);
+        throw error;
+    }
+}

@@ -12,6 +12,7 @@
   --saf-d: rgba(255, 140, 0, 0.13);
   --saf-g: rgba(255, 140, 0, 0.07);
   --saf-b: rgba(255, 140, 0, 0.28);
+  --saf-muted: rgba(255, 200, 140, 0.16);
   --grn: #00d47e;
   --grn-d: rgba(0, 212, 126, 0.10);
   --blu: #5b9eff;
@@ -28,7 +29,7 @@
   --mono: 'JetBrains Mono', monospace;
   --sans: 'Instrument Sans', sans-serif;
   --disp: 'Instrument Sans', sans-serif;
-  --sb: 224px;
+  --sb: 292px;
   --topbar: 52px;
 }
 

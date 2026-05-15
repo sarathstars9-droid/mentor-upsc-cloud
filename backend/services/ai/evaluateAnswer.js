@@ -38,17 +38,7 @@ Field rules:
 6. upscStructure: Array of the ideal answer structure.
 7. improvedIntro: One UPSC-ready introduction (max 45 words).
 8. improvedConclusion: One UPSC-ready conclusion (max 45 words).
-9. memoryMnemonic: Return one memorable, theme-based sentence, not an acronym list.
-   - Do NOT use acronym-only hooks like SEP-R, VEST, VESTW, PEARL, etc.
-   - Do NOT just list dimensions.
-   - Use a story-like memory sentence connected to the question theme.
-   - For transformation/change questions, use "From X to Y" pattern.
-   - For comparison questions, use contrast pairs.
-   - For causes/factors questions, use a cause-chain sentence.
-   - For distribution questions, use a location-flow sentence.
-   - Keep it under 30 words.
-   - Make it easy to revise before exam.
-   - If the memory hook looks like an acronym or plain list, regenerate it internally before returning JSON.
+9. memoryMnemonic: Must be an empty string. Final mnemonic is generated only in AIR-1 Review.
 10. finalAdvice: One practical next action before rewriting.
 
 Strict quality rules:
@@ -85,16 +75,26 @@ Strict quality rules:
     }
   }
 
+  rawText = result.response.text();
+  let parsed;
+
   try {
-    rawText = result.response.text();
-    
     const jsonCandidate = extractJsonObject(rawText);
-    let parsed;
+    parsed = JSON.parse(jsonCandidate);
+  } catch (firstErr) {
+    console.warn("[evaluate-answer] JSON parse failed on first attempt", {
+      error: firstErr.message,
+      preview: rawText?.slice(0, 500),
+    });
     try {
-      parsed = JSON.parse(jsonCandidate);
-    } catch (err) {
-      console.warn("[evaluate-answer] Failed to parse Gemini JSON", { error: err.message });
-      
+      const repairedCandidate = repairJsonCandidate(rawText);
+      parsed = JSON.parse(repairedCandidate);
+    } catch (secondErr) {
+      console.warn("[evaluate-answer] Failed to parse Gemini JSON after repair", {
+        firstError: firstErr.message,
+        secondError: secondErr.message,
+        preview: rawText?.slice(0, 500),
+      });
       return {
         score: "N/A",
         level: "Format Issue",
@@ -105,59 +105,26 @@ Strict quality rules:
         improvedIntro: "",
         improvedConclusion: "",
         memoryMnemonic: "",
-        finalAdvice: "Review the mentor notes and rerun Quick Review if needed.",
+        finalAdvice: "Rerun Quick Review once.",
         rawOutput: rawText
       };
     }
-
-    // Validate memoryMnemonic
-    let memoryHook = parsed.memoryMnemonic || "";
-    if (memoryHook) {
-      const isBadPattern = 
-        /^[A-Z](-[A-Z])+/.test(memoryHook) || 
-        /^[A-Z]{3,}:\s/.test(memoryHook) || 
-        (memoryHook.split(",").length >= 3 && memoryHook.split(" ").length < 15) || 
-        /Society,\s*Economy,\s*Polity/i.test(memoryHook);
-      
-      if (isBadPattern) {
-        if (/Vedic/i.test(question || "")) {
-          memoryHook = "From cattle to crops, clans to kingdoms, simple worship to sacrifices, and flexible varna to fixed hierarchy.";
-        } else {
-          memoryHook = "From old pattern to new pattern: economy, society, polity and culture changed together.";
-        }
-      }
-    }
-
-    // Schema normalization
-    return {
-      score: parsed.score || "N/A",
-      level: parsed.level || "Format Issue",
-      examinerImpression: parsed.examinerImpression || "Evaluation completed.",
-      topFixes: Array.isArray(parsed.topFixes) ? parsed.topFixes.slice(0, 3) : [],
-      missingDimensions: Array.isArray(parsed.missingDimensions) ? parsed.missingDimensions : [],
-      upscStructure: Array.isArray(parsed.upscStructure) ? parsed.upscStructure : (parsed.upscStructure ? [parsed.upscStructure] : []),
-      improvedIntro: parsed.improvedIntro || "",
-      improvedConclusion: parsed.improvedConclusion || "",
-      memoryMnemonic: memoryHook,
-      finalAdvice: parsed.finalAdvice || ""
-    };
-
-  } catch (error) {
-    console.warn("[evaluate-answer] Failed to read Gemini response", { error: error.message });
-    return {
-      score: "N/A",
-      level: "Format Issue",
-      examinerImpression: "Review completed, but structured formatting failed. Showing raw mentor notes below.",
-      topFixes: [],
-      missingDimensions: [],
-      upscStructure: [],
-      improvedIntro: "",
-      improvedConclusion: "",
-      memoryMnemonic: "",
-      finalAdvice: "Review the mentor notes and rerun Quick Review if needed.",
-      rawOutput: rawText
-    };
   }
+
+
+
+  return {
+    score: parsed.score || "N/A",
+    level: parsed.level || "Format Issue",
+    examinerImpression: parsed.examinerImpression || "Evaluation completed.",
+    topFixes: Array.isArray(parsed.topFixes) ? parsed.topFixes.slice(0, 3) : [],
+    missingDimensions: Array.isArray(parsed.missingDimensions) ? parsed.missingDimensions : [],
+    upscStructure: Array.isArray(parsed.upscStructure) ? parsed.upscStructure : [],
+    improvedIntro: parsed.improvedIntro || "",
+    improvedConclusion: parsed.improvedConclusion || "",
+    memoryMnemonic: "",
+    finalAdvice: parsed.finalAdvice || ""
+  };
 }
 
 function extractJsonObject(rawText) {
@@ -165,24 +132,62 @@ function extractJsonObject(rawText) {
 
   let text = rawText.trim();
 
-  // Remove markdown fences
+  // Strip markdown fences
   text = text
     .replace(/^```json\s*/i, "")
     .replace(/^```\s*/i, "")
     .replace(/```$/i, "")
     .trim();
 
-  // Remove common prefixes if Gemini adds them
+  // Strip common Gemini prefixes
   text = text.replace(/^Raw AI Output:\s*/i, "").trim();
   text = text.replace(/^JSON:\s*/i, "").trim();
 
-  // Extract JSON object between first { and last }
+  // Extract first JSON object
   const firstBrace = text.indexOf("{");
-  const lastBrace = text.lastIndexOf("}");
-
+  const lastBrace  = text.lastIndexOf("}");
   if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
-    text = text.slice(firstBrace, lastBrace + 1).trim();
+    return text.slice(firstBrace, lastBrace + 1).trim();
   }
 
   return text;
+}
+
+function repairJsonCandidate(rawText) {
+  if (!rawText || typeof rawText !== "string") return rawText;
+
+  let repaired = rawText.trim();
+
+  // Strip markdown fences
+  repaired = repaired
+    .replace(/^```json\s*/i, "")
+    .replace(/^```\s*/i, "")
+    .replace(/```$/i, "")
+    .trim();
+
+  // Extract first JSON object
+  const firstBrace = repaired.indexOf("{");
+  const lastBrace  = repaired.lastIndexOf("}");
+  if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+    repaired = repaired.slice(firstBrace, lastBrace + 1);
+  }
+
+  // Remove trailing commas before } or ]
+  repaired = repaired.replace(/,\s*([}\]])/g, "$1");
+
+  // Normalize smart/curly quotes to straight quotes
+  repaired = repaired
+    .replace(/[\u201c\u201d]/g, '"')
+    .replace(/[\u2018\u2019]/g, "'");
+
+  // Fix invalid score format like "4./10"
+  repaired = repaired.replace(/"score"\s*:\s*"(\d+)\.\/( \d+)"/, '"score":"$1/$2"');
+
+  // Strip control characters that break JSON
+  repaired = repaired.replace(/[\u0000-\u001F\u007F]/g, (ch) => {
+    if (ch === "\n" || ch === "\r" || ch === "\t") return " ";
+    return "";
+  });
+
+  return repaired;
 }

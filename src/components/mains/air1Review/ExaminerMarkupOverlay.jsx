@@ -3,17 +3,19 @@
 // Surgically added — does NOT replace any existing component
 
 import React, { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 // ─── Severity config ──────────────────────────────────────────────────────────
 const SEVERITY_MAP = {
-    critical:    { color: "#ef4444", bg: "rgba(239, 68, 68, 0.12)", border: "rgba(239, 68, 68, 0.3)",  label: "Critical",    icon: "🔴" },
-    high:        { color: "#ef4444", bg: "rgba(239, 68, 68, 0.10)", border: "rgba(239, 68, 68, 0.25)", label: "Critical",    icon: "🔴" },
-    medium:      { color: "#f59e0b", bg: "rgba(245, 158, 11, 0.12)", border: "rgba(245, 158, 11, 0.3)", label: "Moderate",   icon: "🟠" },
-    moderate:    { color: "#f59e0b", bg: "rgba(245, 158, 11, 0.12)", border: "rgba(245, 158, 11, 0.3)", label: "Moderate",   icon: "🟠" },
-    low:         { color: "#3b82f6", bg: "rgba(59, 130, 246, 0.10)", border: "rgba(59, 130, 246, 0.25)", label: "Improvement", icon: "🔵" },
-    improvement: { color: "#3b82f6", bg: "rgba(59, 130, 246, 0.10)", border: "rgba(59, 130, 246, 0.25)", label: "Improvement", icon: "🔵" },
-    good:        { color: "#22c55e", bg: "rgba(34, 197, 94, 0.10)",  border: "rgba(34, 197, 94, 0.25)",  label: "Good Point", icon: "🟢" },
-    strength:    { color: "#22c55e", bg: "rgba(34, 197, 94, 0.10)",  border: "rgba(34, 197, 94, 0.25)",  label: "Good Point", icon: "🟢" },
+    // FIX 2: Softer opacities for highlights to make it less visually exhausting.
+    critical:    { color: "#ef4444", bg: "rgba(239, 68, 68, 0.15)", border: "rgba(239, 68, 68, 0.35)",  label: "Critical",    icon: "🔴" },
+    high:        { color: "#ef4444", bg: "rgba(239, 68, 68, 0.15)", border: "rgba(239, 68, 68, 0.35)", label: "Critical",    icon: "🔴" },
+    medium:      { color: "#f59e0b", bg: "rgba(245, 158, 11, 0.15)", border: "rgba(245, 158, 11, 0.35)", label: "Moderate",   icon: "🟠" },
+    moderate:    { color: "#f59e0b", bg: "rgba(245, 158, 11, 0.15)", border: "rgba(245, 158, 11, 0.35)", label: "Moderate",   icon: "🟠" },
+    low:         { color: "#3b82f6", bg: "rgba(59, 130, 246, 0.12)", border: "rgba(59, 130, 246, 0.30)", label: "Improvement", icon: "🔵" },
+    improvement: { color: "#3b82f6", bg: "rgba(59, 130, 246, 0.12)", border: "rgba(59, 130, 246, 0.30)", label: "Improvement", icon: "🔵" },
+    good:        { color: "#22c55e", bg: "rgba(34, 197, 94, 0.12)",  border: "rgba(34, 197, 94, 0.30)",  label: "Good Point", icon: "🟢" },
+    strength:    { color: "#22c55e", bg: "rgba(34, 197, 94, 0.12)",  border: "rgba(34, 197, 94, 0.30)",  label: "Good Point", icon: "🟢" },
 };
 
 const getSeverityStyle = (severity) => {
@@ -132,43 +134,58 @@ function deriveCorrections(data, answerText) {
 }
 
 // ─── Text matching utility ────────────────────────────────────────────────────
+// FIX 1: Extended with 4-word ngram sliding window so paraphrased AI lines
+//         still anchor to the student's answer text instead of silently failing.
 function findBestMatch(text, phrase) {
     if (!text || !phrase || phrase.length < 8) return -1;
     const textLower = text.toLowerCase();
     const phraseLower = phrase.toLowerCase().trim();
     
-    // Direct match
+    // Pass 1 — Direct exact match
     const directIdx = textLower.indexOf(phraseLower);
     if (directIdx !== -1) return directIdx;
     
-    // Partial match — first 25 chars
+    // Pass 2 — Partial match on first 25 chars (catches truncated quotes)
     const partial = phraseLower.substring(0, Math.min(25, phraseLower.length));
     const partialIdx = textLower.indexOf(partial);
     if (partialIdx !== -1) return partialIdx;
     
-    // Word overlap match
+    // Pass 3 — Word overlap: find window where most significant words cluster
     const phraseWords = phraseLower.split(/\s+/).filter(w => w.length > 4);
-    if (phraseWords.length === 0) return -1;
-    
-    // Find the position where most words cluster
-    let bestPos = -1;
-    let bestScore = 0;
-    for (let i = 0; i < textLower.length - 20; i += 10) {
-        const window = textLower.substring(i, i + 80);
-        let score = 0;
-        for (const w of phraseWords) {
-            if (window.includes(w)) score++;
+    if (phraseWords.length > 0) {
+        let bestPos = -1;
+        let bestScore = 0;
+        for (let i = 0; i < textLower.length - 20; i += 10) {
+            const window = textLower.substring(i, i + 80);
+            let score = 0;
+            for (const w of phraseWords) {
+                if (window.includes(w)) score++;
+            }
+            if (score > bestScore && score >= Math.min(2, phraseWords.length)) {
+                bestScore = score;
+                bestPos = i;
+            }
         }
-        if (score > bestScore && score >= Math.min(2, phraseWords.length)) {
-            bestScore = score;
-            bestPos = i;
+        if (bestPos !== -1) return bestPos;
+    }
+
+    // Pass 4 — Ngram sliding window (FIX 1 core)
+    // When the AI paraphrases instead of quoting, this catches any 4→2 word
+    // sequence that still exists verbatim in the student's text.
+    const allWords = phraseLower.split(/\s+/).filter(w => w.length > 2);
+    for (let n = 4; n >= 2; n--) {
+        for (let i = 0; i <= allWords.length - n; i++) {
+            const ngram = allWords.slice(i, i + n).join(" ");
+            const ngramIdx = textLower.indexOf(ngram);
+            if (ngramIdx !== -1) return ngramIdx;
         }
     }
-    return bestPos;
+
+    return -1;
 }
 
 // ─── Correction Popup Card ────────────────────────────────────────────────────
-function CorrectionPopup({ correction, onClose, T }) {
+function CorrectionPopup({ correction, onClose, T, anchorPos }) {
     const sev = getSeverityStyle(correction.severity);
     const popupRef = useRef(null);
 
@@ -179,28 +196,81 @@ function CorrectionPopup({ correction, onClose, T }) {
             }
         };
         const handleEsc = (e) => { if (e.key === "Escape") onClose(); };
-        document.addEventListener("mousedown", handleClickOutside);
+        // POPUP FIX: defer listener by one tick so the opening click/mousedown
+        // is fully consumed before we start watching for outside clicks.
+        // Without this, the same mousedown that opened the popup immediately
+        // triggers handleClickOutside and closes it before paint.
+        const timer = setTimeout(() => {
+            document.addEventListener("mousedown", handleClickOutside);
+        }, 50);
         document.addEventListener("keydown", handleEsc);
         return () => {
+            clearTimeout(timer);
             document.removeEventListener("mousedown", handleClickOutside);
             document.removeEventListener("keydown", handleEsc);
         };
     }, [onClose]);
 
-    return (
+    const isMobile = window.innerWidth <= 768;
+    
+    let style = {
+        position: "fixed",
+        background: T.surface, border: `1px solid ${sev.border}`,
+        borderRadius: 20, padding: 0,
+        zIndex: 9999,
+        boxShadow: `0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px ${sev.border}`,
+        overflow: "hidden auto",
+    };
+
+    if (isMobile) {
+        style = { ...style, bottom: 0, left: 0, right: 0, width: "100%", maxHeight: "80vh", borderBottomLeftRadius: 0, borderBottomRightRadius: 0, animation: "examinerSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)" };
+    } else {
+        // FIX 1: Smart positioning: try to place to the right of anchor, or left if no space
+        let leftPos = "50%";
+        let topPos = "50%";
+        let transformStr = "translate(-50%, -50%)";
+        let transformOrigin = "center center";
+        
+        if (anchorPos) {
+            const popupWidth = 380;
+            const popupHeight = 350; // estimated max height
+            const spaceRight = window.innerWidth - anchorPos.right;
+            const spaceLeft = anchorPos.left;
+            
+            // vertical positioning: center relative to anchor, but clamped to screen
+            topPos = anchorPos.top - (popupHeight / 2) + 20;
+            topPos = Math.max(20, Math.min(topPos, window.innerHeight - popupHeight - 20));
+            
+            if (spaceRight > popupWidth + 20) {
+                // place right
+                leftPos = anchorPos.right + 12;
+                transformStr = "none";
+                transformOrigin = "center left";
+            } else if (spaceLeft > popupWidth + 20) {
+                // place left
+                leftPos = anchorPos.left - popupWidth - 12;
+                transformStr = "none";
+                transformOrigin = "center right";
+            } else {
+                // fallback to bottom center
+                topPos = Math.min(anchorPos.bottom + 12, window.innerHeight - popupHeight - 20);
+                leftPos = "50%";
+                transformStr = "translateX(-50%)";
+                transformOrigin = "top center";
+            }
+        }
+        
+        style = { ...style, top: topPos, left: leftPos, transform: transformStr, width: 380, maxHeight: "80vh", animation: "examinerFadeInScale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)", transformOrigin };
+    }
+
+    const content = (
         <>
             <div style={{
-                position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", zIndex: 9998,
+                position: "fixed", inset: 0, background: isMobile ? "rgba(0,0,0,0.4)" : "transparent", zIndex: 9998,
                 animation: "examinerFadeIn 0.15s ease"
             }} onClick={onClose} />
-            <div ref={popupRef} style={{
-                position: "fixed", bottom: "5vh", left: "50%", transform: "translateX(-50%)",
-                background: T.surface, border: `1.5px solid ${sev.border}`,
-                borderRadius: 20, padding: 0, width: "92%", maxWidth: 480, zIndex: 9999,
-                boxShadow: `0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px ${sev.border}`,
-                animation: "examinerSlideUp 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
-                overflow: "hidden"
-            }}>
+            {/* FIX 4: maxHeight + overflowY so popup never clips on small screens */}
+            <div ref={popupRef} style={style}>
                 {/* Header strip */}
                 <div style={{
                     background: sev.bg, padding: "14px 20px",
@@ -283,7 +353,6 @@ function CorrectionPopup({ correction, onClose, T }) {
                             <span style={{
                                 fontSize: 14, fontWeight: 800,
                                 color: correction.marksImpact.includes("-") ? (T.red || "#ef4444") : (T.green || "#22c55e"),
-                                marginLeft: "auto"
                             }}>
                                 {correction.marksImpact}
                             </span>
@@ -293,6 +362,11 @@ function CorrectionPopup({ correction, onClose, T }) {
             </div>
         </>
     );
+
+    if (typeof document !== "undefined") {
+        return createPortal(content, document.body);
+    }
+    return content;
 }
 
 
@@ -300,6 +374,7 @@ function CorrectionPopup({ correction, onClose, T }) {
 export default function ExaminerMarkupOverlay({ answerText, data, T }) {
     const [corrections, setCorrections] = useState([]);
     const [selectedCorrection, setSelectedCorrection] = useState(null);
+    const [popupAnchor, setPopupAnchor] = useState(null);
     const [revealedCount, setRevealedCount] = useState(0);
     const [isRevealing, setIsRevealing] = useState(true);
 
@@ -444,15 +519,15 @@ export default function ExaminerMarkupOverlay({ answerText, data, T }) {
             <div style={{
                 position: "relative",
                 fontFamily: "Georgia, 'Times New Roman', serif",
-                fontSize: 15, lineHeight: 2.0,
+                fontSize: 16, lineHeight: "36px", whiteSpace: "pre-wrap",
                 color: T.textBright,
-                padding: "28px 32px",
-                background: T.surfaceHigh,
+                padding: "32px 40px",
+                background: `${T.surfaceHigh} url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.03"/></svg>')`,
                 borderRadius: 14,
                 border: `1px solid ${T.borderMid}`,
-                // Paper-like background effect
-                backgroundImage: `repeating-linear-gradient(transparent, transparent 31px, ${T.border} 31px, ${T.border} 32px)`,
-                backgroundPosition: "0 28px",
+                backgroundImage: `repeating-linear-gradient(transparent, transparent 35px, ${T.border}30 35px, ${T.border}30 36px), url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.04"/></svg>')`,
+                backgroundPosition: "0 32px, 0 0",
+                boxShadow: "inset 0 0 20px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.03)"
             }}>
                 {/* Red margin line */}
                 <div style={{
@@ -469,12 +544,20 @@ export default function ExaminerMarkupOverlay({ answerText, data, T }) {
                         const sev = getSeverityStyle(seg.correction.severity);
                         return (
                             <span key={i} style={{ position: "relative", display: "inline" }}>
+                                {/* POPUP FIX: e.stopPropagation() prevents the click from bubbling
+                                    to any parent scroll handler or document mousedown listener */}
                                 <span
-                                    onClick={() => setSelectedCorrection(seg.correction)}
+                                    onClick={(e) => { 
+                                        e.stopPropagation(); 
+                                        const rect = e.currentTarget.getBoundingClientRect();
+                                        setPopupAnchor({ top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right });
+                                        setSelectedCorrection(seg.correction); 
+                                    }}
+                                    onMouseDown={(e) => e.stopPropagation()}
                                     style={{
                                         background: sev.bg,
-                                        borderBottom: `2.5px solid ${sev.color}`,
-                                        padding: "1px 2px",
+                                        borderBottom: `2px solid ${sev.color}`,
+                                        padding: "2px 4px",
                                         borderRadius: 3,
                                         cursor: "pointer",
                                         transition: "all 0.2s ease",
@@ -482,28 +565,34 @@ export default function ExaminerMarkupOverlay({ answerText, data, T }) {
                                         animation: `examinerHighlightPulse 2s ease-in-out`,
                                     }}
                                     onMouseEnter={(e) => {
-                                        e.target.style.background = sev.border;
-                                        e.target.style.boxShadow = `0 0 8px ${sev.color}40`;
+                                        e.currentTarget.style.background = sev.border;
+                                        e.currentTarget.style.boxShadow = `0 0 10px ${sev.color}60`;
                                     }}
                                     onMouseLeave={(e) => {
-                                        e.target.style.background = sev.bg;
-                                        e.target.style.boxShadow = "none";
+                                        e.currentTarget.style.background = sev.bg;
+                                        e.currentTarget.style.boxShadow = "none";
                                     }}
                                     title={`${sev.label}: ${seg.correction.examinerComment || "Click for details"}`}
                                 >
                                     {seg.content}
                                 </span>
                                 <span
-                                    onClick={() => setSelectedCorrection(seg.correction)}
+                                    onClick={(e) => { 
+                                        e.stopPropagation(); 
+                                        const rect = e.currentTarget.getBoundingClientRect();
+                                        setPopupAnchor({ top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right });
+                                        setSelectedCorrection(seg.correction); 
+                                    }}
+                                    onMouseDown={(e) => e.stopPropagation()}
                                     style={{
                                         display: "inline-flex", alignItems: "center",
                                         justifyContent: "center", verticalAlign: "middle",
                                         background: sev.color, color: "#fff",
                                         fontSize: 9, fontWeight: 800,
-                                        width: 18, height: 18, borderRadius: 9,
+                                        width: 14, height: 14, borderRadius: 7,
                                         marginLeft: 4, cursor: "pointer",
                                         fontFamily: T.font,
-                                        boxShadow: `0 2px 6px ${sev.color}40`,
+                                        boxShadow: `0 2px 4px ${sev.color}30`,
                                         animation: "examinerBubblePop 0.3s ease",
                                     }}
                                     title="Click for correction details"
@@ -522,6 +611,7 @@ export default function ExaminerMarkupOverlay({ answerText, data, T }) {
                     correction={selectedCorrection}
                     onClose={() => setSelectedCorrection(null)}
                     T={T}
+                    anchorPos={popupAnchor}
                 />
             )}
 
@@ -541,9 +631,13 @@ export default function ExaminerMarkupOverlay({ answerText, data, T }) {
                     from { opacity: 0; }
                     to { opacity: 1; }
                 }
+                @keyframes examinerFadeInScale {
+                    from { opacity: 0; transform: scale(0.95); }
+                    to { opacity: 1; transform: scale(1); }
+                }
                 @keyframes examinerSlideUp {
-                    from { opacity: 0; transform: translateX(-50%) translateY(40px); }
-                    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+                    from { opacity: 0; transform: translateY(40px); }
+                    to { opacity: 1; transform: translateY(0); }
                 }
             `}</style>
         </div>
