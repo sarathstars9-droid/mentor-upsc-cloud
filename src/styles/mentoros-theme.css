@@ -1,38 +1,142 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');
+
+/* ============================================================
+   MENTOROS GLOBAL THEME SYSTEM
+   ============================================================ */
 
 :root {
-  --bg: #08080d;
-  --surf: #0f0f17;
-  --s2: #14141e;
-  --s3: #1a1a27;
-  --s4: #20202f;
-  --border: rgba(255, 255, 255, 0.07);
-  --bx: rgba(255, 255, 255, 0.12);
-  --saf: #ff8c00;
-  --saf-d: rgba(255, 140, 0, 0.13);
-  --saf-g: rgba(255, 140, 0, 0.07);
-  --saf-b: rgba(255, 140, 0, 0.28);
-  --saf-muted: rgba(255, 200, 140, 0.16);
-  --grn: #00d47e;
-  --grn-d: rgba(0, 212, 126, 0.10);
-  --blu: #5b9eff;
-  --blu-d: rgba(91, 158, 255, 0.10);
-  --red: #ff4d6a;
-  --red-d: rgba(255, 77, 106, 0.10);
-  --ylw: #ffd166;
-  --ylw-d: rgba(255, 209, 102, 0.10);
-  --pur: #a78bfa;
-  --pur-d: rgba(167, 139, 250, 0.10);
-  --txt: rgba(255, 255, 255, 0.92);
-  --mid: rgba(255, 255, 255, 0.52);
-  --dim: rgba(255, 255, 255, 0.26);
-  --mono: 'JetBrains Mono', monospace;
-  --sans: 'Instrument Sans', sans-serif;
-  --disp: 'Instrument Sans', sans-serif;
+  /* Common spacing / sizing tokens */
   --sb: 292px;
   --topbar: 52px;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Inter', 'Instrument Sans', sans-serif;
+  --disp: 'Inter', 'Instrument Sans', sans-serif;
 }
 
+/* ------------------------------------------------------------
+   DARK MODE (Deep Navy/Charcoal AIR-1 Command)
+   ------------------------------------------------------------ */
+:root[data-theme="dark"],
+:root:not([data-theme="light"]) {
+  --mos-bg: #0a0b10;
+  --mos-bg-soft: #0d0e14;
+  --mos-surface: #12131a;
+  --mos-surface-raised: #181922;
+  --mos-sidebar-bg: linear-gradient(180deg, #0a0b0d, #101114);
+  
+  --mos-border: rgba(255, 255, 255, 0.06);
+  --mos-border-strong: rgba(255, 255, 255, 0.12);
+  
+  --mos-text: rgba(255, 255, 255, 0.96);
+  --mos-text-soft: rgba(255, 255, 255, 0.62);
+  --mos-muted: rgba(255, 255, 255, 0.28);
+  
+  --mos-accent: #f59e0b; /* Amber/Gold */
+  --mos-accent-soft: rgba(245, 158, 11, 0.12);
+  
+  --mos-danger: #ef4444;
+  --mos-danger-soft: rgba(239, 68, 68, 0.08);
+  --mos-danger-brd: rgba(239, 68, 68, 0.2);
+  
+  --mos-success: #10b981;
+  --mos-success-soft: rgba(16, 185, 129, 0.08);
+  --mos-success-brd: rgba(16, 185, 129, 0.2);
+  
+  --mos-warning: #f59e0b;
+  --mos-warning-soft: rgba(245, 158, 11, 0.08);
+  --mos-warning-brd: rgba(245, 158, 11, 0.2);
+
+  --mos-stable: #f59e0b;
+  --mos-stable-soft: rgba(245, 158, 11, 0.05);
+  --mos-stable-brd: rgba(245, 158, 11, 0.15);
+  
+  --mos-shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --mos-card-bg: linear-gradient(180deg, #12131a, #181922);
+  --mos-input-bg: #0d0e14;
+  --mos-button-bg: #181922;
+
+  /* Legacy Mapping (to prevent breakage) */
+  --bg: var(--mos-bg);
+  --surf: var(--mos-surface);
+  --s2: var(--mos-surface-raised);
+  --s3: #1c1d28;
+  --s4: #242533;
+  --border: var(--mos-border);
+  --bx: var(--mos-border-strong);
+  --txt: var(--mos-text);
+  --mid: var(--mos-text-soft);
+  --dim: var(--mos-muted);
+  --saf: var(--mos-accent);
+  --saf-d: var(--mos-accent-soft);
+  --saf-b: rgba(245, 158, 11, 0.28);
+  --saf-g: rgba(245, 158, 11, 0.06);
+  --grn: var(--mos-success);
+  --red: var(--mos-danger);
+}
+
+/* ------------------------------------------------------------
+   LIGHT MODE (Warm Ivory / Premium Study Desk)
+   ------------------------------------------------------------ */
+:root[data-theme="light"] {
+  --mos-bg: #f9f8f4; /* Warm Ivory / Paper */
+  --mos-bg-soft: #f2f1eb;
+  --mos-surface: #ffffff;
+  --mos-surface-raised: #fbfbf9;
+  --mos-sidebar-bg: linear-gradient(180deg, #f2f1eb, #e8e7e1);
+  
+  --mos-border: rgba(90, 70, 50, 0.08); /* Subtle warm brown opacity */
+  --mos-border-strong: rgba(90, 70, 50, 0.15);
+  
+  --mos-text: #1a1b1e; /* Deep Charcoal */
+  --mos-text-soft: #5a5c60;
+  --mos-muted: #9a9ca0;
+  
+  --mos-accent: #b45309; /* Mature Amber/Gold */
+  --mos-accent-soft: rgba(180, 83, 9, 0.08);
+  
+  --mos-danger: #dc2626;
+  --mos-danger-soft: rgba(220, 38, 38, 0.06);
+  --mos-danger-brd: rgba(220, 38, 38, 0.15);
+  
+  --mos-success: #059669;
+  --mos-success-soft: rgba(5, 150, 105, 0.06);
+  --mos-success-brd: rgba(5, 150, 105, 0.15);
+  
+  --mos-warning: #d97706;
+  --mos-warning-soft: rgba(217, 119, 6, 0.06);
+  --mos-warning-brd: rgba(217, 119, 6, 0.15);
+
+  --mos-stable: #b45309;
+  --mos-stable-soft: rgba(180, 83, 9, 0.04);
+  --mos-stable-brd: rgba(180, 83, 9, 0.12);
+  
+  --mos-shadow-soft: 0 4px 18px rgba(90, 70, 50, 0.06);
+  --mos-card-bg: #ffffff;
+  --mos-input-bg: #fdfdfc;
+  --mos-button-bg: #ffffff;
+
+  /* Legacy Mapping */
+  --bg: var(--mos-bg);
+  --surf: var(--mos-surface);
+  --s2: var(--mos-bg-soft);
+  --s3: #ebeae4;
+  --s4: #e1e0d8;
+  --border: var(--mos-border);
+  --bx: var(--mos-border-strong);
+  --txt: var(--mos-text);
+  --mid: var(--mos-text-soft);
+  --dim: var(--mos-muted);
+  --saf: var(--mos-accent);
+  --saf-d: var(--mos-accent-soft);
+  --saf-b: rgba(180, 83, 9, 0.2);
+  --saf-g: rgba(180, 83, 9, 0.04);
+  --grn: var(--mos-success);
+  --red: var(--mos-danger);
+}
+
+/* ============================================================
+   GLOBAL RESETS & BASE STYLES
+   ============================================================ */
 *,
 *::before,
 *::after {
@@ -49,22 +153,23 @@ html {
 body,
 #root {
   font-family: var(--sans);
-  background: var(--bg);
-  color: var(--txt);
+  background: var(--mos-bg);
+  color: var(--mos-text);
   min-height: 100vh;
   overflow-x: hidden;
   font-feature-settings: "liga" 1, "kern" 1;
   letter-spacing: -0.01em;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 ::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--s4);
-  border-radius: 3px;
+  background: var(--mos-border-strong);
+  border-radius: 4px;
 }
 
 button {
@@ -76,17 +181,27 @@ input,
 select,
 textarea {
   font-family: var(--sans);
+  background-color: var(--mos-input-bg);
+  color: var(--mos-text);
+  border: 1px solid var(--mos-border);
 }
 
+/* Common Components */
 .card {
-  background: linear-gradient(180deg, var(--s2), var(--s3));
-  border: 1px solid var(--border);
+  background: var(--mos-card-bg);
+  border: 1px solid var(--mos-border);
   border-radius: 16px;
   padding: 20px;
   transition: all .25s ease;
+  box-shadow: var(--mos-shadow-soft);
 }
 
 .card:hover {
-  border-color: var(--saf-b);
-  box-shadow: 0 0 20px rgba(255, 140, 0, 0.08);
+  border-color: var(--mos-accent-soft);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .card:hover {
+  border-color: var(--mos-accent-soft);
+  box-shadow: 0 8px 32px rgba(90, 70, 50, 0.08);
 }

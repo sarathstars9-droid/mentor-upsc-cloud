@@ -68,7 +68,12 @@ const navGroups = [
   },
 ];
 
+import { useTheme } from "../../context/ThemeContext";
+import { Sun, Moon } from "lucide-react";
+
 export default function MentorMobileDrawer({ open, currentPage, onNavigate, onClose }) {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <>
       {open && <div className="mos-drawer-overlay" onClick={onClose} />}
@@ -80,6 +85,13 @@ export default function MentorMobileDrawer({ open, currentPage, onNavigate, onCl
             <div className="mos-header-title-v2">MENTORSHIP OS</div>
             <div className="mos-header-sub-v2">AIR-1 Execution System</div>
           </div>
+          <button 
+            className="mos-theme-toggle-v2" 
+            onClick={toggleTheme} 
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </header>
 
         <div className="mos-nav-scroll-v2">
