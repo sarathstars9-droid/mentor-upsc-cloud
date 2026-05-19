@@ -6,18 +6,38 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const { question, answer, paper, marks, wordLimit } = req.body;
+    const { 
+      userId,
+      attemptId,
+      paper,
+      subject,
+      topic,
+      questionText,
+      candidateAnswer,
+      marks,
+      wordLimit,
+      sourceType,
+      questionSourceType,
+      answerSourceType 
+    } = req.body;
 
-    if (!question || !answer) {
+    if (!questionText) {
       return res.status(400).json({
         success: false,
-        error: "Missing required fields: question and answer are mandatory.",
+        error: "questionText is required",
+      });
+    }
+
+    if (!candidateAnswer) {
+      return res.status(400).json({
+        success: false,
+        error: "candidateAnswer is required",
       });
     }
 
     const evaluation = await evaluateMainsAnswer({
-      question,
-      answer,
+      question: questionText,
+      answer: candidateAnswer,
       paper: paper || "General Studies",
       marks: marks || 10,
       wordLimit: wordLimit || 150,
@@ -30,9 +50,9 @@ router.post("/", async (req, res) => {
       const finalScore = isNaN(parsedScore) ? null : parsedScore;
 
       const savedRow = await saveBasicEvaluation({
-        userId: req.body.userId || 'moulika',
-        question,
-        answer,
+        userId: userId || 'user_1',
+        question: questionText,
+        answer: candidateAnswer,
         paper: paper || "General Studies",
         marks: marks || 10,
         wordLimit: wordLimit || 150,
@@ -59,3 +79,4 @@ router.post("/", async (req, res) => {
 });
 
 export default router;
+

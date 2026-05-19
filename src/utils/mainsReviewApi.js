@@ -209,7 +209,14 @@ export async function evaluateMainsAnswerApi(payload) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
         });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        if (!response.ok) {
+            let errMsg = `HTTP ${response.status}`;
+            try {
+                const errData = await response.json();
+                if (errData && errData.error) errMsg = errData.error;
+            } catch (_) {}
+            throw new Error(errMsg);
+        }
         return await response.json();
     } catch (error) {
         console.error("evaluateMainsAnswerApi error:", error);
@@ -269,6 +276,24 @@ export async function fetchMainsAttempt(attemptId) {
         return await response.json();
     } catch (error) {
         console.error("fetchMainsAttempt error:", error);
+        throw error;
+    }
+}
+
+/**
+ * Fetch the latest saved mains attempt for one exact question key.
+ * GET /api/mains/attempts/latest-for-question?userId=...&questionKey=...
+ */
+export async function fetchLatestMainsAttemptForQuestion(userId, questionKey) {
+    try {
+        const url = new URL(`${BACKEND_URL}/api/mains/attempts/latest-for-question`);
+        url.searchParams.append("userId", userId || "user_1");
+        url.searchParams.append("questionKey", questionKey || "");
+        const response = await fetch(url.toString());
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error("fetchLatestMainsAttemptForQuestion error:", error);
         throw error;
     }
 }

@@ -4,7 +4,7 @@
 // Reads route state: { mode, paper, year, topic, syllabusNodeId, questions, currentIndex }
 // Prev/Next navigates within the passed questions array.
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import MainsMistakeTagger from "../components/mains/MainsMistakeTagger";
 import MainsReviewPromptCard from "../components/mains/MainsReviewPromptCard";
@@ -21,8 +21,49 @@ import {
     evaluateMainsAnswerApi,
     extractAnswerFromImagesApi,
     saveMainsAttemptToDB,
-    fetchMainsAttempt,
+    fetchLatestMainsAttemptForQuestion,
 } from "../utils/mainsReviewApi.js";
+
+function extractQuestionText(value) {
+    if (!value) return "";
+    if (typeof value === "string") return value.trim();
+    if (Array.isArray(value)) return value.map(extractQuestionText).filter(Boolean).join(" ").trim();
+    if (typeof value === "object") {
+        return extractQuestionText(
+            value.question ||
+            value.questionText ||
+            value.question_text ||
+            value.text ||
+            value.title ||
+            ""
+        );
+    }
+    return String(value).trim();
+}
+
+function normalizeQuestionText(value) {
+    return extractQuestionText(value)
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}]+/gu, " ")
+        .trim()
+        .replace(/\s+/g, " ");
+}
+
+function hashQuestionKey(value) {
+    let hash = 5381;
+    for (let i = 0; i < value.length; i += 1) {
+        hash = ((hash << 5) + hash) ^ value.charCodeAt(i);
+    }
+    return (hash >>> 0).toString(36);
+}
+
+function buildQuestionKey({ paper, year, questionText }) {
+    const normalizedQuestion = normalizeQuestionText(questionText);
+    const normalizedPaper = String(paper || "GS1").trim().toLowerCase();
+    const normalizedYear = String(year || "").trim().toLowerCase();
+    const slug = normalizedQuestion.slice(0, 80).replace(/\s+/g, "-") || "unknown-question";
+    return [normalizedPaper, normalizedYear || "unknown-year", hashQuestionKey(normalizedQuestion), slug].join(":");
+}
 
 // ─── Theme tokens ─────────────────────────────────────────────────────────────
 const darkTokens = {
@@ -812,7 +853,31 @@ export default function AnswerWritingPage() {
     Object.assign(T, theme === "light" ? lightTokens : darkTokens);
 
     // ─── Route state ─────────────────────────────────────────────────────────
-    const rs = location.state || {};
+    const [rs, setRs] = useState(() => {
+        let initialRs = location.state;
+        if (!initialRs || Object.keys(initialRs).length === 0) {
+            try {
+                const savedState = sessionStorage.getItem("active_mains_rs");
+                if (savedState) {
+                    initialRs = JSON.parse(savedState);
+                }
+            } catch (e) {
+                console.error("Failed to parse sessionStorage active_mains_rs", e);
+            }
+        }
+        return initialRs || {};
+    });
+
+    useEffect(() => {
+        if (location.state && Object.keys(location.state).length > 0) {
+            setRs(location.state);
+            try {
+                sessionStorage.setItem("active_mains_rs", JSON.stringify(location.state));
+            } catch (e) {
+                console.error("Failed to save location.state to sessionStorage", e);
+            }
+        }
+    }, [location.state]);
     const paper          = rs.paper          || "GS1";
     const mode           = rs.mode           || "PYQ";
     const year           = rs.year           || null;
@@ -820,9 +885,23 @@ export default function AnswerWritingPage() {
     const syllabusNodeId = rs.syllabusNodeId || "";
     const questions      = (rs.questions && rs.questions.length > 0) ? rs.questions : FALLBACK_QUESTIONS;
 
-    const [currentIndex, setCurrentIndex] = useState(rs.currentIndex || 0);
+    const [currentIndex, setCurrentIndex] = useState(() => {
+        return rs.currentIndex || 0;
+    });
+
+    useEffect(() => {
+        if (rs && Object.keys(rs).length > 0) {
+            try {
+                const stateToSave = { ...rs, currentIndex };
+                sessionStorage.setItem("active_mains_rs", JSON.stringify(stateToSave));
+            } catch (e) {
+                console.error("Failed to update sessionStorage active_mains_rs", e);
+            }
+        }
+    }, [currentIndex, rs]);
     const safeIndex = Math.min(currentIndex, questions.length - 1);
     const activeQ   = questions[safeIndex] || {};
+    const currentQuestion = activeQ;
 
     // ─── Derived session ──────────────────────────────────────────────────────
     const paperAccent = getPaperAccent(paper);
@@ -840,14 +919,74 @@ export default function AnswerWritingPage() {
         subparts:    activeQ.subparts  || [],
         focus:       activeQ.focus     || "",
         structure:   activeQ.structure || "Intro + 4–5 pts + Concl",
+
         priority:    activeQ.priority  || "",
         topicNodeId: activeQ.syllabusNodeId || syllabusNodeId || "",
     };
+
+    function getCurrentQuestionContext() {
+        const q = activeQ || currentQuestion || questions?.[currentIndex] || SESSION;
+
+        const questionText = extractQuestionText(
+            q?.question ||
+            q?.questionText ||
+            q?.text ||
+            q?.title ||
+            SESSION?.question
+        );
+
+        const ctxPaper = q?.paper || SESSION?.paper || "GS1";
+        const ctxYear = q?.year || q?.questionYear || SESSION?.year || "";
+        const ctxMarks = q?.marks || SESSION?.marks;
+        const ctxWordLimit = q?.wordLimit || SESSION?.wordLimit || wordTarget;
+        const questionId = q?.id || q?.questionId || q?.question_id || null;
+
+        const questionKey = buildQuestionKey({
+            paper: ctxPaper,
+            year: ctxYear,
+            questionText
+        });
+
+        return {
+            raw: q,
+            paper: ctxPaper,
+            year: ctxYear,
+            marks: ctxMarks,
+            wordLimit: ctxWordLimit,
+            questionId,
+            mode: SESSION.mode,
+            focus: q?.focus || SESSION.focus || "",
+            topicNodeId: q?.syllabusNodeId || q?.topicNodeId || SESSION.topicNodeId || "",
+            structure: q?.structure || SESSION.structure || "",
+            priority: q?.priority || SESSION.priority || "",
+            questionText,
+            question: questionText,
+            questionKey,
+            question_key: questionKey
+        };
+    }
+
+    const currentCtx = getCurrentQuestionContext();
+    const displayedPaper = currentCtx.paper;
+    const displayedYear = currentCtx.year;
+    const displayedQuestionText = currentCtx.questionText;
+
+    console.log("[DISPLAY QUESTION SOURCE]", {
+        currentIndex,
+        displayedPaper,
+        displayedYear,
+        displayedQuestionText,
+        activeQ,
+        currentQuestion,
+        SESSION
+    });
 
     // ─── Per-question state ───────────────────────────────────────────────────
     const [timerStatus, setTimerStatus]   = useState(STATUSES.IDLE);
     const [sessionStarted, setSessionStarted] = useState(false);
     const timerSectionRef = useRef(null);
+    // Phase 2: tracks which question the current answer belongs to
+    const answerQuestionKeyRef = useRef(null);
 
     const [uploadedPages, setUploadedPages] = useState([]);
     const [isDragging, setIsDragging]       = useState(false);
@@ -869,6 +1008,7 @@ export default function AnswerWritingPage() {
     const [pageStatus, setPageStatus]           = useState(STATUSES.IDLE);
 
     const [attemptId, setAttemptId]   = useState(null);
+    const [dbAttempt, setDbAttempt]   = useState(null);
     const [reviewId, setReviewId]     = useState(null);
 
     // Finalize state for PostgreSQL persistence
@@ -918,19 +1058,27 @@ export default function AnswerWritingPage() {
     const [reviewUiError, setReviewUiError]     = useState("");
     const [reviewPromptCopied, setReviewPromptCopied] = useState(false);
 
-    // ─── Reset all per-question state when question changes ───────────────────
-    const firstRender = useRef(true);
-    useEffect(() => {
-        if (firstRender.current) { firstRender.current = false; return; }
+    const clearVisibleAttemptState = () => {
         uploadedPages.forEach((p) => URL.revokeObjectURL(p.preview));
-        setSessionStarted(false);
-        setUploadedPages([]);
         setPastedText("");
+        setUploadedPages([]);
+        setEvaluationData(null);
+        setEvaluationText("");
+        setAir1ReviewText("");
+        setAir1JsonText("");
+        setAir1ParseResult(null);
+        setAir1ParseError("");
+        setParsedAir1Json(null);
+        setAir1JsonParseWarning("");
         setSaved(false);
         setSavedAttemptData(null);
-        setPromptCopied(false);
+        setSessionStarted(false);
         setAttemptId(null);
+        setDbAttempt(null);
         setReviewId(null);
+        setPromptCopied(false);
+        setEvalPromptCopied(false);
+        setReviewPromptCopied(false);
         setAnswerSaveState("idle");
         setAnswerSaveError("");
         setExternalReviewText("");
@@ -942,56 +1090,82 @@ export default function AnswerWritingPage() {
         setReviewProcessError("");
         setProcessedReviewResult(null);
         setReviewResultData(null);
-        setReviewPromptCopied(false);
         setReviewUiMessage("");
         setReviewUiError("");
-        setEvaluationText("");
-        setEvaluationData(null);
-        setEvalPromptCopied(false);
         setIsEvaluating(false);
         setFixOriginalSnippet("");
         setLastImprovement(null);
         setIsImproved(false);
-        setAir1ReviewText("");
-        setParsedAir1Json(null);
-        setAir1JsonParseWarning("");
-    }, [currentIndex]); // eslint-disable-line
+        setFixModeActive(false);
+        setFixDraft("");
+        setFixTask("");
+        setFinalizeState("idle");
+        setFinalizeError("");
+        setReviewModeActive(false);
+        answerQuestionKeyRef.current = null;
+    };
 
-    // ─── Restore attempt on page load (from localStorage pointer → DB fetch) ──
-    useEffect(() => {
-        const storedId = localStorage.getItem("current_mains_attempt_id");
-        if (!storedId) return;
-        console.log("[mains-attempt] restoring", storedId);
-        fetchMainsAttempt(storedId)
+    const isSameQuestion = (attempt, ctx) => {
+        if (!attempt || !ctx) return false;
+        const dbQuestionKey = attempt.questionKey || attempt.question_key || buildQuestionKey({
+            paper: attempt.paper || ctx.paper,
+            year: attempt.year || attempt.sourceYear || ctx.year,
+            questionText: attempt.questionText || attempt.question || ""
+        });
+        return dbQuestionKey === ctx.questionKey;
+    };
+
+    // ─── Restore exact displayed question from DB ─────────────────────────────
+    useLayoutEffect(() => {
+        let cancelled = false;
+        const restoreCtx = getCurrentQuestionContext();
+
+        clearVisibleAttemptState();
+        console.log("[RESTORE USING DISPLAYED QUESTION]", restoreCtx);
+
+        fetchLatestMainsAttemptForQuestion("user_1", restoreCtx.questionKey)
             .then(res => {
-                if (!res?.ok || !res?.attempt) return;
-                const a = res.attempt;
-                if (a.finalAnswerText || a.extractedText) {
-                    setPastedText(a.finalAnswerText || a.extractedText || "");
+                if (cancelled || !res?.ok || !res?.attempt) return;
+                const attempt = res.attempt;
+                const sameQuestion = isSameQuestion(attempt, restoreCtx);
+                console.log("[RESTORE DB ATTEMPT QUESTION]", {
+                    dbQuestionText: attempt.questionText || attempt.question,
+                    dbQuestionKey: attempt.questionKey || attempt.question_key,
+                    currentQuestionText: restoreCtx.questionText,
+                    currentQuestionKey: restoreCtx.questionKey,
+                    isSame: sameQuestion
+                });
+
+                if (!sameQuestion) return;
+
+                if (attempt.finalAnswerText || attempt.extractedText) {
+                    setPastedText(attempt.finalAnswerText || attempt.extractedText || "");
+                    setSessionStarted(true);
+                    answerQuestionKeyRef.current = restoreCtx.questionKey;
                 }
-                if (a.basicReview) {
-                    setEvaluationData(a.basicReview);
+                if (attempt.basicReview) {
+                    setEvaluationData(attempt.basicReview);
                 }
-                if (a.air1ParsedJson) {
-                    setParsedAir1Json(a.air1ParsedJson);
+                if (attempt.air1ParsedJson) {
+                    setParsedAir1Json(attempt.air1ParsedJson);
                 }
-                if (a.air1RawReview) {
-                    setAir1ReviewText(a.air1RawReview);
+                if (attempt.air1RawReview) {
+                    setAir1ReviewText(attempt.air1RawReview);
                 }
-                if (a.attemptId) {
-                    setAttemptId(a.attemptId);
+                setDbAttempt(attempt);
+                if (attempt.attemptId) {
+                    setAttemptId(attempt.attemptId);
                 }
-                if (a.status === "finalized") {
+                if (attempt.status === "finalized") {
                     setSaved(true);
                     setFinalizeState("saved");
                 }
-                if (a.finalAnswerText || a.extractedText) {
-                    setSessionStarted(true);
-                }
             })
             .catch(err => console.warn("[mains-attempt] restore failed", err));
+
+        return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [currentIndex, currentCtx.questionKey]);
 
     // ─── Derived page status ──────────────────────────────────────────────────
     useEffect(() => {
@@ -1001,6 +1175,17 @@ export default function AnswerWritingPage() {
         else if (hasPages) setPageStatus(STATUSES.UPLOADED);
         else setPageStatus(timerStatus);
     }, [saved, hasPastedText, promptCopied, hasPages, timerStatus]);
+
+    // ─── Phase 2: sync answerQuestionKeyRef whenever answer text changes ─────
+    useEffect(() => {
+        if (pastedText && pastedText.trim()) {
+            const ctx = getCurrentQuestionContext();
+            if (ctx.questionKey && !ctx.questionKey.includes('[object')) {
+                answerQuestionKeyRef.current = ctx.questionKey;
+            }
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pastedText]);
 
     // ─── Navigation ──────────────────────────────────────────────────────────
     const canPrev = currentIndex > 0;
@@ -1071,8 +1256,33 @@ export default function AnswerWritingPage() {
         }
     };
 
+    // ─── Phase 2: Save guard helper ────────────────────────────────────────────
+    function validateSaveContext(ctx) {
+        if (!ctx.questionKey || ctx.questionKey.includes('[object')) {
+            return { ok: false, reason: `[SAVE BLOCKED] invalid question key: "${String(ctx.questionKey).slice(0, 80)}"` };
+        }
+        if (!ctx.questionText || ctx.questionText.includes('[object Object]')) {
+            return { ok: false, reason: '[SAVE BLOCKED] invalid question text' };
+        }
+        if (answerQuestionKeyRef.current && answerQuestionKeyRef.current !== ctx.questionKey) {
+            return {
+                ok: false,
+                reason: `[SAVE BLOCKED] answer belongs to different question — answerKey: "${String(answerQuestionKeyRef.current).slice(0, 60)}", currentKey: "${ctx.questionKey.slice(0, 60)}"`
+            };
+        }
+        return { ok: true };
+    }
+
     // ─── Gemini Basic Review ──────────────────────────────────────────────────
     const handleBasicReview = async () => {
+        const ctx = getCurrentQuestionContext();
+        // Phase 2 guard: block if question context is invalid
+        const ctxGuard = validateSaveContext(ctx);
+        if (!ctxGuard.ok) {
+            console.warn(ctxGuard.reason, ctx);
+            setReviewUiError("Cannot evaluate: question context is invalid. Navigate away and back, then retry.");
+            return;
+        }
         // Guard: block if user accidentally pasted the extraction prompt
         if (isExtractionPromptAccidentallyPasted(pastedText)) {
             setReviewUiError(
@@ -1082,20 +1292,50 @@ export default function AnswerWritingPage() {
         }
         setIsEvaluating(true);
         setReviewUiError("");
+        const questionKeyAtStart = ctx.questionKey;
         try {
-            const payload = {
-                userId: "user_1",
-                question: SESSION.question,
-                answer: pastedText.trim(),
-                paper: SESSION.paper,
-                marks: parseInt(SESSION.marks),
-                wordLimit: wordTarget,
-                sourceYear: SESSION.year,
-                topic: SESSION.topicNodeId || topic,
-                mode: SESSION.mode
-            };
+            let payload;
+            if (attemptId && dbAttempt) {
+                payload = {
+                    userId: dbAttempt.userId || "user_1",
+                    attemptId: attemptId,
+                    paper: dbAttempt.paper || "GS1",
+                    subject: dbAttempt.subject || dbAttempt.topic || "",
+                    topic: dbAttempt.topic || "",
+                    questionText: dbAttempt.questionText || dbAttempt.question || "",
+                    candidateAnswer: dbAttempt.finalAnswerText || dbAttempt.answerText || dbAttempt.extractedText || pastedText.trim(),
+                    marks: parseInt(dbAttempt.marks || 15),
+                    wordLimit: parseInt(dbAttempt.wordLimit || dbAttempt.word_limit || 200),
+                    sourceType: dbAttempt.answerSource || "typed",
+                    questionSourceType: dbAttempt.mode || "PYQ",
+                    answerSourceType: dbAttempt.answerSource || "typed",
+                };
+            } else {
+                payload = {
+                    userId: "user_1",
+                    attemptId: attemptId || undefined,
+                    paper: ctx.paper,
+                    subject: ctx.topicNodeId || topic || "",
+                    topic: ctx.topicNodeId || topic || "",
+                    questionText: ctx.questionText,
+                    candidateAnswer: pastedText.trim(),
+                    marks: parseInt(ctx.marks),
+                    wordLimit: parseInt(ctx.wordLimit || wordTarget),
+                    sourceType: hasPages ? "uploaded" : "typed",
+                    questionSourceType: ctx.mode || "PYQ",
+                    answerSourceType: hasPages ? "uploaded" : "typed",
+                };
+            }
+
+            console.log("[EVALUATE PAYLOAD]", payload);
+
             const result = await evaluateMainsAnswerApi(payload);
             
+            // Phase 3: discard if question changed during async call
+            if (getCurrentQuestionContext().questionKey !== questionKeyAtStart) {
+                console.warn("[ASYNC RESULT IGNORED] question changed during basic review");
+                return;
+            }
             if (result && result.success && result.evaluation) {
                 const evalData = result.evaluation;
                 let formattedReview = "";
@@ -1129,6 +1369,8 @@ export default function AnswerWritingPage() {
     // ─── Extraction (Gemini Vision) ───────────────────────────────────────────
     const handleExtractAnswer = async () => {
         if (!hasPages) return;
+        // Phase 3: capture question key before async operation
+        const questionKeyAtStart = getCurrentQuestionContext().questionKey;
         setIsExtracting(true);
         setReviewUiError("");
         try {
@@ -1139,7 +1381,13 @@ export default function AnswerWritingPage() {
                 return;
             }
             const res = await extractAnswerFromImagesApi(files);
+            // Phase 3: discard result if question changed during async call
+            if (getCurrentQuestionContext().questionKey !== questionKeyAtStart) {
+                console.warn("[ASYNC RESULT IGNORED] question changed during extract");
+                return;
+            }
             if (res.ok && res.text) {
+                answerQuestionKeyRef.current = questionKeyAtStart;
                 setPastedText(res.text);
             } else {
                 setReviewUiError(res.error || "Extraction failed.");
@@ -1162,14 +1410,27 @@ export default function AnswerWritingPage() {
 
     // ─── Save attempt ─────────────────────────────────────────────────────────
     const handleSave = async () => {
+        const ctx = getCurrentQuestionContext();
+        // Phase 2 guard
+        const ctxGuard = validateSaveContext(ctx);
+        if (!ctxGuard.ok) {
+            console.warn(ctxGuard.reason, ctx);
+            return;
+        }
         const wordCount = pastedText.trim() ? pastedText.trim().split(/\s+/).length : 0;
         const attempt = {
             id:          `mains_attempt_${Date.now()}`,
-            paper:       SESSION.paper,
-            mode:        SESSION.mode,
-            marks:       SESSION.marks,
-            year:        SESSION.year,
-            question:    SESSION.question,
+            paper:       ctx.paper,
+            mode:        ctx.mode,
+            marks:       ctx.marks,
+            year:        ctx.year,
+            question:    ctx.questionText,
+            questionText: ctx.questionText,
+            question_text: ctx.questionText,
+            questionKey: ctx.questionKey,
+            question_key: ctx.questionKey,
+            questionId: ctx.questionId,
+            question_id: ctx.questionId,
             answerText:  pastedText,
             wordCount,
             targetWords: wordTarget,
@@ -1188,25 +1449,48 @@ export default function AnswerWritingPage() {
 
     // ─── Backend review pipeline ──────────────────────────────────────────────
     const handleSaveAttemptWithBackend = async () => {
+        const ctx = getCurrentQuestionContext();
+        // Phase 2 guard
+        const ctxGuard = validateSaveContext(ctx);
+        if (!ctxGuard.ok) {
+            console.warn(ctxGuard.reason, ctx);
+            return null;
+        }
+        const questionKeyAtStart = ctx.questionKey;
         setAnswerSaveState("saving");
         setAnswerSaveError("");
         try {
             const payload = {
                 userId: "user_1",
+                questionText: ctx.questionText,
+                question_text: ctx.questionText,
+                questionKey: ctx.questionKey,
+                question_key: ctx.questionKey,
+                questionId: ctx.questionId,
+                question_id: ctx.questionId,
+                paper: ctx.paper,
+                year: ctx.year,
+                marks: parseInt(ctx.marks),
+                wordLimit: ctx.wordLimit,
                 source: {
                     mode: "pyq",
-                    paper: SESSION.paper,
-                    examYear: SESSION.year || new Date().getFullYear(),
-                    questionId: SESSION.question?.replace(/\s+/g, "_").substring(0, 10) || "unknown",
-                    questionMarks: parseInt(SESSION.marks),
+                    paper: ctx.paper,
+                    examYear: ctx.year || new Date().getFullYear(),
+                    questionId: ctx.questionId || ctx.questionKey,
+                    questionKey: ctx.questionKey,
+                    questionMarks: parseInt(ctx.marks),
                     targetWords: wordTarget,
                     upscTimeMinutes: Math.floor(timeLimit / 60),
                 },
                 question: {
-                    text: SESSION.question,
+                    text: ctx.questionText,
+                    questionText: ctx.questionText,
+                    question_key: ctx.questionKey,
+                    questionKey: ctx.questionKey,
+                    id: ctx.questionId,
                     directiveWord: "",
-                    focusLabel: SESSION.focus || "",
-                    topicNodeId: SESSION.topicNodeId || "",
+                    focusLabel: ctx.focus || "",
+                    topicNodeId: ctx.topicNodeId || "",
                     subjectTag: "general",
                 },
                 writingSession: {
@@ -1241,6 +1525,11 @@ export default function AnswerWritingPage() {
                 },
             };
             const response = await saveMainsAttempt(payload);
+            // Phase 3: discard if question changed during async save
+            if (getCurrentQuestionContext().questionKey !== questionKeyAtStart) {
+                console.warn("[ASYNC RESULT IGNORED] question changed during saveAttemptWithBackend");
+                return null;
+            }
             if (response?.ok && response?.attemptId) {
                 setAttemptId(response.attemptId);
                 setAnswerSaveState("saved");
@@ -1400,25 +1689,49 @@ export default function AnswerWritingPage() {
     };
 
     const handleSaveImprovedAttempt = async (draftText) => {
+        const ctx = getCurrentQuestionContext();
+        // Phase 2 guard
+        const ctxGuard = validateSaveContext(ctx);
+        if (!ctxGuard.ok) {
+            console.warn(ctxGuard.reason, ctx);
+            setAnswerSaveError("Cannot save: question context is invalid.");
+            return null;
+        }
+        const questionKeyAtStart = ctx.questionKey;
         setAnswerSaveState("saving");
         setAnswerSaveError("");
         try {
             const payload = {
                 userId: "user_1",
+                questionText: ctx.questionText,
+                question_text: ctx.questionText,
+                questionKey: ctx.questionKey,
+                question_key: ctx.questionKey,
+                questionId: ctx.questionId,
+                question_id: ctx.questionId,
+                paper: ctx.paper,
+                year: ctx.year,
+                marks: parseInt(ctx.marks),
+                wordLimit: ctx.wordLimit,
                 source: {
                     mode: "pyq",
-                    paper: SESSION.paper,
-                    examYear: SESSION.year || new Date().getFullYear(),
-                    questionId: SESSION.question?.replace(/\s+/g, "_").substring(0, 10) || "unknown",
-                    questionMarks: parseInt(SESSION.marks),
+                    paper: ctx.paper,
+                    examYear: ctx.year || new Date().getFullYear(),
+                    questionId: ctx.questionId || ctx.questionKey,
+                    questionKey: ctx.questionKey,
+                    questionMarks: parseInt(ctx.marks),
                     targetWords: wordTarget,
                     upscTimeMinutes: Math.floor(timeLimit / 60),
                 },
                 question: {
-                    text: SESSION.question,
+                    text: ctx.questionText,
+                    questionText: ctx.questionText,
+                    question_key: ctx.questionKey,
+                    questionKey: ctx.questionKey,
+                    id: ctx.questionId,
                     directiveWord: "",
-                    focusLabel: SESSION.focus || "",
-                    topicNodeId: SESSION.topicNodeId || "",
+                    focusLabel: ctx.focus || "",
+                    topicNodeId: ctx.topicNodeId || "",
                     subjectTag: "general",
                 },
                 writingSession: {
@@ -1450,6 +1763,11 @@ export default function AnswerWritingPage() {
                 originalAttemptId: attemptId || null,
             };
             const response = await saveMainsAttempt(payload);
+            // Phase 3: discard if question changed during async save
+            if (getCurrentQuestionContext().questionKey !== questionKeyAtStart) {
+                console.warn("[ASYNC RESULT IGNORED] question changed during saveImprovedAttempt");
+                return null;
+            }
             if (response?.ok && response?.attemptId) {
                 setAttemptId(response.attemptId);
                 setAnswerSaveState("saved");
@@ -1467,6 +1785,7 @@ export default function AnswerWritingPage() {
     };
 
     const handleSubmitFix = async () => {
+        const ctx = getCurrentQuestionContext();
         if (!fixDraft || !fixDraft.trim()) { setReviewUiError("Improved answer cannot be empty."); return; }
         setFixSaving(true);
         setReviewUiError("");
@@ -1475,11 +1794,17 @@ export default function AnswerWritingPage() {
             setPastedText(fixDraft);
             const attempt = {
                 id: savedAttemptData?.id || `mains_attempt_${Date.now()}`,
-                paper: SESSION.paper,
-                mode: SESSION.mode,
-                marks: SESSION.marks,
-                year: SESSION.year,
-                question: SESSION.question,
+                paper: ctx.paper,
+                mode: ctx.mode,
+                marks: ctx.marks,
+                year: ctx.year,
+                question: ctx.questionText,
+                questionText: ctx.questionText,
+                question_text: ctx.questionText,
+                questionKey: ctx.questionKey,
+                question_key: ctx.questionKey,
+                questionId: ctx.questionId,
+                question_id: ctx.questionId,
                 answerText: fixDraft,
                 wordCount: fixDraft.trim().split(/\s+/).length,
                 targetWords: wordTarget,
@@ -1525,23 +1850,38 @@ export default function AnswerWritingPage() {
     // ─── Finalize Attempt → save to PostgreSQL ────────────────────────────────
     const handleFinalize = async () => {
         if (finalizeState === "saving") return;
+        const ctx = getCurrentQuestionContext();
+        // Phase 2 guard: block invalid question context
+        const ctxGuard = validateSaveContext(ctx);
+        if (!ctxGuard.ok) {
+            console.warn(ctxGuard.reason, ctx);
+            setFinalizeError("Cannot save: question context is invalid. Navigate away and back, then retry.");
+            return;
+        }
+        const questionKeyAtStart = ctx.questionKey;
         setFinalizeState("saving");
         setFinalizeError("");
 
         // Derive a stable attemptId (reuse existing or generate new)
         const existingAttemptId = attemptId
-            || localStorage.getItem("current_mains_attempt_id")
             || `mains_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 
         const payload = {
             attemptId:          existingAttemptId,
             userId:             "user_1",
-            questionText:       SESSION.question,
-            paper:              SESSION.paper,
+            question:           ctx.questionText,
+            questionText:       ctx.questionText,
+            question_text:      ctx.questionText,
+            questionKey:        ctx.questionKey,
+            question_key:       ctx.questionKey,
+            questionId:         ctx.questionId,
+            question_id:        ctx.questionId,
+            paper:              ctx.paper,
+            year:               ctx.year,
             subject:            topic || "",
-            topic:              SESSION.topicNodeId || topic || "",
-            marks:              parseInt(SESSION.marks),
-            wordLimit:          wordTarget,
+            topic:              ctx.topicNodeId || topic || "",
+            marks:              parseInt(ctx.marks),
+            wordLimit:          ctx.wordLimit,
             finalAnswerText:    pastedText.trim(),
             extractedText:      pastedText.trim(),
             answerSource:       hasPages ? "uploaded" : "typed",
@@ -1558,10 +1898,16 @@ export default function AnswerWritingPage() {
 
         try {
             const res = await saveMainsAttemptToDB(payload);
+            // Phase 3: discard if question changed during async finalize
+            if (getCurrentQuestionContext().questionKey !== questionKeyAtStart) {
+                console.warn("[ASYNC RESULT IGNORED] question changed during finalize");
+                setFinalizeState("idle");
+                return;
+            }
             if (res?.ok && res?.attemptId) {
                 console.log("[mains-attempt] saved", res);
-                localStorage.setItem("current_mains_attempt_id", res.attemptId);
                 setAttemptId(res.attemptId);
+                setDbAttempt(payload);
                 setSaved(true);
                 setFinalizeState("saved");
                 
@@ -1592,7 +1938,7 @@ export default function AnswerWritingPage() {
     const wordCount  = pastedText.trim() ? pastedText.trim().split(/\s+/).length : 0;
     const wordPct    = Math.min(Math.round((wordCount / wordTarget) * 100), 100);
     const finalAnswerText   = pastedText.trim();
-    const canCopyReviewPrompt = !!SESSION.question && !!finalAnswerText;
+    const canCopyReviewPrompt = !!currentCtx.questionText && !!finalAnswerText;
     const canSaveReview     = !!attemptId && externalReviewText.trim().length >= 200;
     const canProcessReview  = !!attemptId && !!reviewId && reviewSaveState === "saved";
 
@@ -1611,8 +1957,8 @@ export default function AnswerWritingPage() {
                 rawReviewText={air1ReviewText} 
                 uploadedPages={uploadedPages} 
                 finalAnswerText={finalAnswerText}
-                marks={marks}
-                onFinalize={() => { setReviewModeActive(false); handleSave(); }}
+                marks={currentCtx.marks}
+                onFinalize={() => { setReviewModeActive(false); handleFinalize(); }}
                 onExit={() => setReviewModeActive(false)}
             />
         );
@@ -1735,11 +2081,11 @@ export default function AnswerWritingPage() {
                             <div style={{ padding: "32px", display: "flex", flexDirection: "column", gap: 24 }}>
                                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
                                     <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                                        <span style={{ fontSize: 13, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "6px 14px", borderRadius: 8, border: `1px solid ${T.borderMid}` }}>{SESSION.paper}</span>
-                                        <span style={{ fontSize: 13, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "6px 14px", borderRadius: 8, border: `1px solid ${T.borderMid}` }}>{SESSION.year || "UPSC PYQ"}</span>
+                                        <span style={{ fontSize: 13, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "6px 14px", borderRadius: 8, border: `1px solid ${T.borderMid}` }}>{currentCtx.paper}</span>
+                                        <span style={{ fontSize: 13, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "6px 14px", borderRadius: 8, border: `1px solid ${T.borderMid}` }}>{currentCtx.year || "UPSC PYQ"}</span>
                                         <span style={{ fontSize: 13, fontWeight: 800, color: T.textBright, background: T.surfaceHigh, padding: "6px 14px", borderRadius: 8, border: `1px solid ${T.borderMid}` }}>{marks}M / {wordTarget} W</span>
                                     </div>
-                                    {SESSION.priority && (
+                                    {currentCtx.priority && (
                                         <span style={{ fontSize: 11, fontWeight: 900, color: "#fff", background: `linear-gradient(135deg, ${T.primaryAccent}, #7C3AED)`, padding: "6px 14px", borderRadius: 20, letterSpacing: "0.06em", textTransform: "uppercase", boxShadow: `0 2px 12px ${T.primaryAccent}40` }}>
                                             ✨ AIR-1 Priority
                                         </span>
@@ -1756,7 +2102,7 @@ export default function AnswerWritingPage() {
                                     minWidth: 0,
                                     maxWidth: "92%",
                                     letterSpacing: "-0.01em",
-                                }}>{SESSION.question}</div>
+                                }}>{currentCtx.questionText}</div>
                                 {!sessionStarted && (
                                     <button onClick={handleStartSession} style={{ background: `linear-gradient(135deg, ${T.primaryAccent}, #4F46E5)`, color: "#fff", padding: "14px 28px", borderRadius: 10, fontWeight: 800, border: "none", cursor: "pointer", width: "fit-content", marginTop: 8, fontSize: 15, boxShadow: `0 4px 16px ${T.primaryAccent}40`, transition: "all 0.2s", letterSpacing: "0.02em" }}>
                                         Start Attempt Timer
@@ -2047,7 +2393,7 @@ export default function AnswerWritingPage() {
                                 <div style={{ padding: 32 }}>
                                     <div style={{ fontSize: 20, fontWeight: 900, color: T.textBright, marginBottom: 24, letterSpacing: "-0.01em" }}>Advanced AIR-1 Review</div>
                                     <MainsReviewPromptCard
-                                        currentQuestion={{ text: SESSION.question, marks: parseInt(SESSION.marks), paper: SESSION.paper, topic: topic, syllabusNode: syllabusNodeId }}
+                                        currentQuestion={{ text: currentCtx.questionText, marks: parseInt(currentCtx.marks), paper: currentCtx.paper, topic: topic, syllabusNode: syllabusNodeId }}
                                         finalAnswerText={finalAnswerText}
                                         papersAccent={paperAccent}
                                         wordTarget={wordTarget}
@@ -2138,7 +2484,7 @@ export default function AnswerWritingPage() {
                             <div style={{ marginTop: 24 }}>
                                 <button
                                     className="awp-finalize-btn"
-                                    onClick={handleSave}
+                                    onClick={handleFinalize}
                                     disabled={!hasPastedText || saved}
                                     style={{
                                         background: saved

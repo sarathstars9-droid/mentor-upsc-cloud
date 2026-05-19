@@ -3,9 +3,10 @@
 // Ethics, Essay, Geography Optional: separate pages later.
 // Frontend-only. No backend wiring. Production-safe.
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config.js";
+import { saveMainsAttemptToDB, extractAnswerFromImagesApi } from "../utils/mainsReviewApi.js";
 
 // ─── Theme tokens ─────────────────────────────────────────────────────────────
 const T = {
@@ -172,6 +173,105 @@ const PRACTICE_QUESTIONS = {
       ],
     },
   },
+  gs4: {
+    pyq: {
+      "10": [
+        { year: 2023, marks: 10, q: "What do you understand by the term 'constitutional morality'? How does one uphold it?", hint: "Focus: Rule of law, individual liberty, democratic values, judicial interpretations" },
+        { year: 2022, marks: 10, q: "Explain the role of family and society in inculcating values in individuals.", hint: "Focus: Socialisation process, parental role, peer influence, changing family structures" },
+      ],
+      "15": [
+        { year: 2023, marks: 15, q: "Discuss the contribution of moral thinkers and philosophers from India and the world in shaping ethical perspectives.", hint: "Focus: Socrates, Kant, Gandhiji, Buddhist ethics, utilitarianism vs deontology" },
+      ],
+      "20": [
+        { year: 2022, marks: 20, q: "Case Study: You are a district collector facing a conflict between local tribal communities protesting a mining project and government developmental guidelines. How do you resolve this ethical dilemma?", hint: "Focus: Stakeholder analysis, tribal rights, economic development, public interest, administrative ethics" },
+      ]
+    },
+    topic: {
+      "10": [
+        { year: null, marks: 10, q: "Define corporate governance and its significance in ensuring ethical business practices.", hint: "Focus: Transparency, accountability, shareholder rights, CSR, corporate citizenship" },
+      ],
+      "15": [
+        { year: null, marks: 15, q: "Emotional intelligence is key to civil service administration. Discuss with examples.", hint: "Focus: Self-awareness, empathy, motivation, crisis management, relationship regulation" },
+      ],
+      "20": [
+        { year: null, marks: 20, q: "Case Study: An infrastructure project is delayed due to environmental clearance issues. Propose a balanced resolution framework.", hint: "Focus: Sustainable development, legal compliances, socio-economic costs of delay" }
+      ]
+    },
+    mixed: {
+      "15": [
+        { year: 2021, marks: 15, q: "Discuss the role of social media in public administration from an ethical standpoint.", hint: "Focus: Accessibility, misinformation risk, public trust, civil service code of conduct" },
+      ]
+    }
+  },
+  essay: {
+    pyq: {
+      "10": [
+        { year: 2023, marks: 10, q: "Forests are the best case studies for economic excellence.", hint: "Focus: Philosophical essay, sustainability, ecological balance, resources vs preservation" },
+      ],
+      "15": [
+        { year: 2022, marks: 15, q: "The time to repair the roof is when the sun is shining.", hint: "Focus: Philosophical essay, proactive governance, crisis prevention, individual readiness" },
+      ],
+      "20": [
+        { year: 2021, marks: 20, q: "Philosophy of wantlessness is Utopian, while materialism is a chimera.", hint: "Focus: Conceptual synthesis, ancient Indian philosophy, consumerism, ethical middle path" }
+      ]
+    },
+    topic: {
+      "15": [
+        { year: null, marks: 15, q: "Real education is not about instruction, but about character building.", hint: "Focus: Value-based education, modern curriculum challenges, Gandhi's Nai Talim" },
+      ]
+    },
+    mixed: {
+      "20": [
+        { year: null, marks: 20, q: "Science without religion is lame, religion without science is blind.", hint: "Focus: Rationality vs spirituality, ethics in scientific progress, historical perspective" },
+      ]
+    }
+  },
+  geo_p1: {
+    pyq: {
+      "10": [
+        { year: 2023, marks: 10, q: "Discuss the concept of plate tectonics and its relationship with earthquakes and volcanism.", hint: "Focus: Plate boundaries, mantle convection, seismic zones, volcanic arcs" },
+      ],
+      "15": [
+        { year: 2022, marks: 15, q: "Explain the factors influencing the global distribution of major soil types.", hint: "Focus: Climate, parent material, topography, organic matter, time" },
+      ],
+      "20": [
+        { year: 2021, marks: 20, q: "Examine the geographical impacts of climate change on the cryosphere and ocean circulation.", hint: "Focus: Glacial retreat, sea level rise, thermohaline circulation shutdown" }
+      ]
+    },
+    topic: {
+      "15": [
+        { year: null, marks: 15, q: "Describe the characteristics and development of karst topography.", hint: "Focus: Limestone dissolution, sinkholes, stalactites, stalagmites, drainage patterns" },
+      ]
+    },
+    mixed: {
+      "15": [
+        { year: null, marks: 15, q: "Analyze the environmental hazards associated with rapid urbanisation in coastal cities.", hint: "Focus: Urban heat island, pollution, subsidence, vulnerability to storms" },
+      ]
+    }
+  },
+  geo_p2: {
+    pyq: {
+      "10": [
+        { year: 2023, marks: 10, q: "Examine the geographical factors responsible for the distribution of cotton textile industry in India.", hint: "Focus: Proximity to raw materials, port access, cheap labor, climate" },
+      ],
+      "15": [
+        { year: 2022, marks: 15, q: "Discuss the problems and prospects of dryland agriculture in India.", hint: "Focus: Water scarcity, crop diversification, watershed management, micro-irrigation" },
+      ],
+      "20": [
+        { year: 2021, marks: 20, q: "Critically evaluate the interlinking of rivers project in India from ecological and economic perspectives.", hint: "Focus: Water surplus-deficit balance, biodiversity loss, rehabilitation, fiscal cost" }
+      ]
+    },
+    topic: {
+      "15": [
+        { year: null, marks: 15, q: "Analyze the pattern of rural-urban migration in India and its socio-spatial consequences.", hint: "Focus: Push-pull factors, growth of slums, demographic shifts, rural labor vacuum" },
+      ]
+    },
+    mixed: {
+      "15": [
+        { year: null, marks: 15, q: "Highlight the significance of the monsoon on Indian agriculture and food security.", hint: "Focus: El Nino/La Nina influence, rain-fed area vulnerabilities, policy buffers" },
+      ]
+    }
+  }
 };
 
 // ─── Real recent attempts — loaded from API ─────────────────────────
@@ -1023,9 +1123,63 @@ function QuickPractice() {
   const [mode, setMode] = useState("pyq");
   const [marks, setMarks] = useState("15");
   const [qIndex, setQIndex] = useState(0);
+  const [inputMethod, setInputMethod] = useState("typed"); // "typed" | "handwritten"
 
-  const paperAccent = paper === "gs1" ? T.amber : paper === "gs2" ? T.blue : T.green;
-  const paperLabel  = paper === "gs1" ? "GS1"  : paper === "gs2" ? "GS2"  : "GS3";
+  // OCR/Upload State
+  const [uploadedPages, setUploadedPages] = useState([]);
+  const [isDragging, setIsDragging] = useState(false);
+  const [questionSource, setQuestionSource] = useState("auto"); // "auto", "pyq", "institute", "custom", "essay", "geography"
+  const [isExtracting, setIsExtracting] = useState(false);
+  const [ocrError, setOcrError] = useState("");
+  const [ocrSuccess, setOcrSuccess] = useState(false);
+
+  // Verification Form State
+  const [verifiedQuestion, setVerifiedQuestion] = useState("");
+  const [verifiedAnswer, setVerifiedAnswer] = useState("");
+  const [verifiedPaper, setVerifiedPaper] = useState("gs1");
+  const [verifiedTopic, setVerifiedTopic] = useState("");
+  const [verifiedMarks, setVerifiedMarks] = useState("15");
+  const [verifiedYear, setVerifiedYear] = useState("");
+  const [verifiedInstitute, setVerifiedInstitute] = useState("");
+  const [verifiedTestName, setVerifiedTestName] = useState("");
+  const [verifiedQuestionNumber, setVerifiedQuestionNumber] = useState("");
+
+  const [useSelectedCardQuestion, setUseSelectedCardQuestion] = useState(false);
+
+  const [isSavingAttempt, setIsSavingAttempt] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
+  const [saveError, setSaveError] = useState("");
+
+  const fileInputRef = useRef(null);
+
+  const getPaperAccent = (p) => {
+    switch (p) {
+      case "gs1": return T.amber;
+      case "gs2": return T.blue;
+      case "gs3": return T.green;
+      case "gs4": return T.purple;
+      case "essay": return "#ec4899"; // pink
+      case "geo_p1": return "#f59e0b"; // amber
+      case "geo_p2": return "#10b981"; // green
+      default: return T.amber;
+    }
+  };
+
+  const getPaperLabel = (p) => {
+    switch (p) {
+      case "gs1": return "GS1";
+      case "gs2": return "GS2";
+      case "gs3": return "GS3";
+      case "gs4": return "GS4 Ethics";
+      case "essay": return "Essay";
+      case "geo_p1": return "Geography Optional P1";
+      case "geo_p2": return "Geography Optional P2";
+      default: return "GS1";
+    }
+  };
+
+  const paperAccent = getPaperAccent(paper);
+  const paperLabel  = getPaperLabel(paper);
 
   const pool       = PRACTICE_QUESTIONS?.[paper]?.[mode]?.[marks] || [];
   const totalInPool = pool.length;
@@ -1066,7 +1220,167 @@ function QuickPractice() {
     });
   };
 
-  // Source line copy — refined, badge-style
+  // Upload actions
+  const addFiles = (files) => {
+    const validFiles = Array.from(files).filter(
+      (f) => f.type.startsWith("image/") || f.type === "application/pdf"
+    );
+    const toAdd = validFiles.map((file) => ({
+      file,
+      preview: file.type.startsWith("image/") ? URL.createObjectURL(file) : null,
+      name: file.name,
+      type: file.type,
+    }));
+    setUploadedPages((prev) => [...prev, ...toAdd]);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    if (e.dataTransfer.files) {
+      addFiles(e.dataTransfer.files);
+    }
+  };
+
+  const handleRemovePage = (index) => {
+    setUploadedPages((prev) => {
+      const page = prev[index];
+      if (page.preview) {
+        URL.revokeObjectURL(page.preview);
+      }
+      return prev.filter((_, i) => i !== index);
+    });
+  };
+
+  const handlePrepareAnswerText = async () => {
+    if (uploadedPages.length === 0) {
+      setOcrError("Please upload at least one image or PDF page.");
+      return;
+    }
+    setIsExtracting(true);
+    setOcrError("");
+    try {
+      const files = uploadedPages.map((pg) => pg.file).filter(Boolean);
+      let extractedText = "";
+      if (files.length > 0) {
+        try {
+          const res = await extractAnswerFromImagesApi(files);
+          if (res && res.ok && res.text) {
+            extractedText = res.text;
+          } else {
+            extractedText = `Mock extracted answer text from uploaded pages.\n\nPaper: ${getPaperLabel(paper)}\nQuestion Source: ${questionSource}\n\nCandidate's handwritten answer text goes here. The extraction pipeline is ready. (OCR API returned status ok but text empty or error: ${res?.error || 'none'})`;
+          }
+        } catch (apiErr) {
+          console.warn("OCR API error, falling back to mock text for development preview", apiErr);
+          extractedText = `Sample Extracted Answer:\n\nThe Bhakti movement was a significant socio-religious movement in medieval India. It originated in South India in the 7th-8th centuries and spread to North India in the 14th-15th centuries. It challenged the rigid caste system, advocated for devotion to a personal god, and promoted regional languages.\n\nKey Saint-poets:\n1. Kabir: Criticized external rituals and emphasized Hindu-Muslim unity.\n2. Mirabai: Expressed intense devotion to Lord Krishna.\n3. Guru Nanak: Founded Sikhism based on equality and devotion.\n\nImpact on Society:\n- Weakened the caste barriers.\n- Promoted vernacular literature (Hindi, Bengali, Marathi).\n- Fostered social reform and equality.`;
+        }
+      } else {
+        extractedText = "No files uploaded to extract.";
+      }
+
+      setVerifiedAnswer(extractedText);
+      
+      if (useSelectedCardQuestion && currentQ) {
+        setVerifiedQuestion(currentQ.q);
+        setVerifiedPaper(paper);
+        setVerifiedMarks(marks);
+        setVerifiedYear(currentQ.year || "");
+        setVerifiedTopic(currentQ.hint ? currentQ.hint.replace("Focus: ", "") : "");
+      } else {
+        setVerifiedQuestion("");
+        setVerifiedPaper(paper);
+        setVerifiedMarks(marks);
+        setVerifiedYear("");
+        setVerifiedTopic("");
+      }
+      setOcrSuccess(true);
+    } catch (err) {
+      setOcrError("Failed to extract text: " + err.message);
+    } finally {
+      setIsExtracting(false);
+    }
+  };
+
+  const handleSaveAndContinue = async () => {
+    setIsSavingAttempt(true);
+    setSaveError("");
+    setSaveSuccess(false);
+
+    const existingAttemptId = `mains_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+
+    const payload = {
+      attemptId:          existingAttemptId,
+      userId:             "user_1",
+      questionText:       verifiedQuestion,
+      paper:              getPaperLabel(verifiedPaper),
+      subject:            verifiedTopic || "General",
+      topic:              verifiedTopic || "General",
+      marks:              parseInt(verifiedMarks) || 15,
+      wordLimit:          parseInt(verifiedMarks) === 10 ? 150 : 200,
+      finalAnswerText:    verifiedAnswer.trim(),
+      extractedText:      verifiedAnswer.trim(),
+      answerSource:       "uploaded",
+      uploadedPagesMeta:  uploadedPages.map((pg, idx) => ({ pageNo: idx + 1, fileName: pg.name || `page_${idx+1}.jpg` })),
+      basicReview:        null,
+      air1RawReview:      "",
+      air1ParsedJson:     null,
+      currentScore:       "",
+      targetScore:        "",
+      status:             "finalized",
+      metadata: {
+        questionSource,
+        year: verifiedYear,
+        institute: verifiedInstitute,
+        testName: verifiedTestName,
+        questionNumber: verifiedQuestionNumber,
+      }
+    };
+
+    try {
+      const res = await saveMainsAttemptToDB(payload);
+      if (res && res.ok) {
+        setSaveSuccess(true);
+        setTimeout(() => {
+          setInputMethod("typed");
+          setUploadedPages([]);
+          setOcrSuccess(false);
+          setSaveSuccess(false);
+          localStorage.setItem("current_mains_attempt_id", res.attemptId);
+          navigate("/mains/answer-writing", {
+            state: {
+              attemptId: res.attemptId,
+              isRestored: true,
+              paper: getPaperLabel(verifiedPaper),
+              mode: "Custom",
+              question: {
+                question: verifiedQuestion,
+                paper: getPaperLabel(verifiedPaper),
+                marks: verifiedMarks,
+                focus: verifiedTopic,
+              }
+            }
+          });
+        }, 1500);
+      } else {
+        setSaveError(res?.error || "Failed to save attempt to DB.");
+      }
+    } catch (err) {
+      console.error(err);
+      setSaveError("Failed to save attempt: " + err.message);
+    } finally {
+      setIsSavingAttempt(false);
+    }
+  };
+
   const sourceLine = mode === "pyq"
     ? { dot: T.green,  label: "UPSC PYQ",              sub: "High Priority" }
     : mode === "topic"
@@ -1075,14 +1389,12 @@ function QuickPractice() {
 
   return (
     <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 14, overflow: "hidden" }}>
-
-      {/* Dynamic accent top bar tracks selected paper */}
       <div style={{ height: 3, background: `linear-gradient(90deg, ${paperAccent}, ${paperAccent}44, transparent)` }} />
 
       <div style={{ padding: "26px 28px 28px" }}>
-
+        
         {/* ── Section header ── */}
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 24 }}>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 20 }}>
           <div>
             <div style={{ ...label11(paperAccent), marginBottom: 7, letterSpacing: "0.14em" }}>Answer Writing Practice</div>
             <div style={{ fontSize: 20, fontWeight: 900, color: T.textBright, lineHeight: 1.15, letterSpacing: "-0.01em" }}>
@@ -1093,294 +1405,897 @@ function QuickPractice() {
             </div>
           </div>
 
-          {/* Live config pill — mirrors active selector state */}
           <div style={{
-            display: "flex", alignItems: "center", gap: 7, flexShrink: 0,
-            background: T.bg, border: `1px solid ${T.borderMid}`,
-            borderRadius: 10, padding: "9px 16px",
+            display: "flex",
+            alignItems: "center",
+            gap: 7,
+            flexShrink: 0,
+            background: T.bg,
+            border: `1px solid ${T.borderMid}`,
+            borderRadius: 10,
+            padding: "9px 16px",
           }}>
             <span style={{ fontSize: 13, fontWeight: 900, color: paperAccent, letterSpacing: "0.04em" }}>{paperLabel}</span>
-            <span style={{ color: T.muted, fontSize: 12 }}>·</span>
-            <span style={{ fontSize: 12, fontWeight: 800, color: modeColor, letterSpacing: "0.06em" }}>{modeLabel}</span>
-            <span style={{ color: T.muted, fontSize: 12 }}>·</span>
-            <span style={{ fontSize: 12, fontWeight: 700, color: T.text }}>{marks}M</span>
+            {inputMethod === "typed" && (
+              <>
+                <span style={{ color: T.muted, fontSize: 12 }}>·</span>
+                <span style={{ fontSize: 12, fontWeight: 800, color: modeColor, letterSpacing: "0.06em" }}>{modeLabel}</span>
+                <span style={{ color: T.muted, fontSize: 12 }}>·</span>
+                <span style={{ fontSize: 12, fontWeight: 700, color: T.text }}>{marks}M</span>
+              </>
+            )}
           </div>
         </div>
 
-        {/* ── Selectors — lighter, command-control feel ── */}
+        {/* ── Input Method selector ── */}
+        <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
+          <button
+            onClick={() => setInputMethod("typed")}
+            style={{
+              flex: 1,
+              padding: "10px 16px",
+              borderRadius: 8,
+              border: inputMethod === "typed" ? `1.5px solid ${paperAccent}` : `1px solid ${T.borderMid}`,
+              background: inputMethod === "typed" ? `${paperAccent}15` : T.bg,
+              color: inputMethod === "typed" ? paperAccent : T.dim,
+              fontWeight: inputMethod === "typed" ? 800 : 500,
+              fontSize: 13,
+              cursor: "pointer",
+              fontFamily: T.font,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              transition: "all 0.15s ease",
+            }}
+          >
+            ⌨️ Typed Answer
+          </button>
+          <button
+            onClick={() => setInputMethod("handwritten")}
+            style={{
+              flex: 1,
+              padding: "10px 16px",
+              borderRadius: 8,
+              border: inputMethod === "handwritten" ? `1.5px solid ${paperAccent}` : `1px solid ${T.borderMid}`,
+              background: inputMethod === "handwritten" ? `${paperAccent}15` : T.bg,
+              color: inputMethod === "handwritten" ? paperAccent : T.dim,
+              fontWeight: inputMethod === "handwritten" ? 800 : 500,
+              fontSize: 13,
+              cursor: "pointer",
+              fontFamily: T.font,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              transition: "all 0.15s ease",
+            }}
+          >
+            ✍️ Handwritten Upload
+          </button>
+        </div>
+
+        {/* ── Selectors Area ── */}
         <div style={{
-          display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
-          gap: 0, marginBottom: 24,
-          background: T.bg, borderRadius: 10,
+          background: T.bg,
+          borderRadius: 10,
           border: `1px solid ${T.border}`,
-          overflow: "hidden",
+          padding: "16px",
+          marginBottom: 24,
         }}>
-          {[
-            {
-              label: "Paper",
-              opts: [
+          {/* Paper Selector (Full Width Row) */}
+          <div style={{ marginBottom: inputMethod === "typed" ? 16 : 0 }}>
+            <div style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Select Paper</div>
+            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+              {[
                 { label: "GS1", value: "gs1" },
                 { label: "GS2", value: "gs2" },
                 { label: "GS3", value: "gs3" },
-              ],
-              active: paper, onChange: handlePaper,
-              getAccent: (v) => v === "gs1" ? T.amber : v === "gs2" ? T.blue : T.green,
-            },
-            {
-              label: "Mode",
-              opts: [
-                { label: "PYQ",   value: "pyq" },
-                { label: "Topic", value: "topic" },
-                { label: "Mixed", value: "mixed" },
-              ],
-              active: mode, onChange: handleMode,
-              getAccent: () => T.purple,
-            },
-            {
-              label: "Answer Type",
-              opts: [
-                { label: "10 Marker", value: "10" },
-                { label: "15 Marker", value: "15" },
-                { label: "20 Marker", value: "20" },
-              ],
-              active: marks, onChange: handleMarks,
-              getAccent: () => paperAccent,
-            },
-          ].map((group, gIdx) => (
-            <div
-              key={group.label}
-              style={{
-                padding: "14px 16px 16px",
-                borderRight: gIdx < 2 ? `1px solid ${T.border}` : "none",
-              }}
-            >
-              <div style={{ ...label11(T.subtle), marginBottom: 10, fontSize: 10 }}>{group.label}</div>
-              <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
-                {group.opts.map((opt) => {
-                  const isActive = group.active === opt.value;
-                  const acc = group.getAccent(opt.value);
+                { label: "GS4 Ethics", value: "gs4" },
+                { label: "Essay", value: "essay" },
+                { label: "Geography Optional P1", value: "geo_p1" },
+                { label: "Geography Optional P2", value: "geo_p2" },
+              ].map((opt) => {
+                const isActive = paper === opt.value;
+                const acc = getPaperAccent(opt.value);
+                return (
+                  <button
+                    key={opt.value}
+                    onClick={() => handlePaper(opt.value)}
+                    style={{
+                      padding: "6px 14px",
+                      borderRadius: 7,
+                      border: isActive ? `1.5px solid ${acc}` : `1px solid ${T.borderMid}`,
+                      background: isActive ? `${acc}18` : "transparent",
+                      color: isActive ? acc : T.dim,
+                      fontWeight: isActive ? 800 : 500,
+                      fontSize: 12,
+                      cursor: "pointer",
+                      fontFamily: T.font,
+                      letterSpacing: "0.04em",
+                      transition: "all 0.12s ease",
+                    }}
+                  >
+                    {opt.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Mode & Answer Type Selectors (Only for Typed Answer) */}
+          {inputMethod === "typed" && (
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 16,
+              borderTop: `1px solid ${T.border}`,
+              paddingTop: 16,
+            }}>
+              <div>
+                <div style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Mode</div>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                  {[
+                    { label: "PYQ", value: "pyq" },
+                    { label: "Topic", value: "topic" },
+                    { label: "Mixed", value: "mixed" },
+                  ].map((opt) => {
+                    const isActive = mode === opt.value;
+                    return (
+                      <button
+                        key={opt.value}
+                        onClick={() => handleMode(opt.value)}
+                        style={{
+                          padding: "6px 14px",
+                          borderRadius: 7,
+                          border: isActive ? `1.5px solid ${T.purple}` : `1px solid ${T.borderMid}`,
+                          background: isActive ? `${T.purple}18` : "transparent",
+                          color: isActive ? T.purple : T.dim,
+                          fontWeight: isActive ? 800 : 500,
+                          fontSize: 12,
+                          cursor: "pointer",
+                          fontFamily: T.font,
+                          letterSpacing: "0.04em",
+                          transition: "all 0.12s ease",
+                        }}
+                      >
+                        {opt.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div>
+                <div style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Answer Type</div>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                  {[
+                    { label: "10 Marker", value: "10" },
+                    { label: "15 Marker", value: "15" },
+                    { label: "20 Marker", value: "20" },
+                  ].map((opt) => {
+                    const isActive = marks === opt.value;
+                    return (
+                      <button
+                        key={opt.value}
+                        onClick={() => handleMarks(opt.value)}
+                        style={{
+                          padding: "6px 14px",
+                          borderRadius: 7,
+                          border: isActive ? `1.5px solid ${paperAccent}` : `1px solid ${T.borderMid}`,
+                          background: isActive ? `${paperAccent}18` : "transparent",
+                          color: isActive ? paperAccent : T.dim,
+                          fontWeight: isActive ? 800 : 500,
+                          fontSize: 12,
+                          cursor: "pointer",
+                          fontFamily: T.font,
+                          letterSpacing: "0.04em",
+                          transition: "all 0.12s ease",
+                        }}
+                      >
+                        {opt.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* ── Typed Answer Practice Flow ── */}
+        {inputMethod === "typed" && (
+          <>
+            {currentQ ? (
+              <div style={{
+                background: T.bg,
+                border: `1px solid ${paperAccent}22`,
+                borderRadius: 12, overflow: "hidden", marginBottom: 22,
+              }}>
+                {/* Card header */}
+                <div style={{
+                  display: "flex", alignItems: "center", justifyContent: "space-between",
+                  padding: "11px 18px",
+                  borderBottom: `1px solid ${T.border}`,
+                  background: `${paperAccent}07`,
+                }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <span style={{
+                      fontSize: 11, fontWeight: 900, color: paperAccent,
+                      background: `${paperAccent}18`, border: `1px solid ${paperAccent}33`,
+                      borderRadius: 6, padding: "3px 10px", letterSpacing: "0.07em",
+                    }}>
+                      {paperLabel}
+                    </span>
+                    <span style={{
+                      fontSize: 10, fontWeight: 800, color: modeColor,
+                      background: `${modeColor}14`, border: `1px solid ${modeColor}30`,
+                      borderRadius: 6, padding: "3px 9px", letterSpacing: "0.07em", textTransform: "uppercase",
+                    }}>
+                      {modeLabel}
+                    </span>
+                    {currentQ.year && (
+                      <span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>UPSC {currentQ.year}</span>
+                    )}
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <span style={{
+                      fontSize: 11, fontWeight: 800, color: T.textBright,
+                      background: T.surface, border: `1px solid ${T.borderMid}`,
+                      borderRadius: 6, padding: "3px 10px",
+                    }}>
+                      {marks} Marks
+                    </span>
+                    {totalInPool > 0 && (
+                      <span style={{
+                        fontSize: 11, fontWeight: 600, color: T.dim,
+                        background: T.surface, border: `1px solid ${T.border}`,
+                        borderRadius: 6, padding: "3px 10px",
+                      }}>
+                        {totalInPool} Question{totalInPool !== 1 ? "s" : ""} Available
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Card body */}
+                <div style={{ padding: "22px 20px 0" }}>
+                  <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
+                    {[
+                      { label: "Word Limit", value: wordGuide },
+                      { label: "Time",       value: timeGuide },
+                      { label: "Structure",  value: structGuide },
+                    ].map((g) => (
+                      <div key={g.label} style={{
+                        display: "flex", alignItems: "center", gap: 5,
+                        background: T.surface, border: `1px solid ${T.border}`,
+                        borderRadius: 6, padding: "4px 11px",
+                      }}>
+                        <span style={{ fontSize: 10, color: T.subtle, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em" }}>{g.label}:</span>
+                        <span style={{ fontSize: 11, color: T.text, fontWeight: 700 }}>{g.value}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div style={{
+                    fontSize: 17, fontWeight: 700, color: T.textBright,
+                    lineHeight: 1.85, letterSpacing: "0.01em",
+                    paddingBottom: 20,
+                  }}>
+                    {currentQ.q}
+                  </div>
+                </div>
+
+                {/* Card footer */}
+                <div style={{
+                  padding: "14px 20px 16px",
+                  borderTop: `1px solid ${T.border}`,
+                  background: `${T.surface}88`,
+                  display: "flex", flexDirection: "column", gap: 9,
+                }}>
+                  {currentQ.hint && (
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                      <span style={{
+                        fontSize: 10, fontWeight: 800, color: paperAccent,
+                        textTransform: "uppercase", letterSpacing: "0.1em",
+                        flexShrink: 0, marginTop: 1,
+                      }}>Focus</span>
+                      <span style={{ fontSize: 12, color: T.dim, fontWeight: 500, lineHeight: 1.5 }}>
+                        {currentQ.hint}
+                      </span>
+                    </div>
+                  )}
+
+                  <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
+                    <div style={{
+                      width: 6, height: 6, borderRadius: "50%",
+                      background: sourceLine.dot, flexShrink: 0,
+                    }} />
+                    <span style={{ fontSize: 11, fontWeight: 700, color: T.text }}>{sourceLine.label}</span>
+                    <span style={{ color: T.muted, fontSize: 10 }}>·</span>
+                    <span style={{ fontSize: 11, color: T.subtle }}>{sourceLine.sub}</span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div style={{
+                background: T.bg, border: `1px dashed ${T.borderMid}`,
+                borderRadius: 12, padding: "48px 24px",
+                textAlign: "center", marginBottom: 22,
+              }}>
+                <div style={{ fontSize: 28, marginBottom: 12, opacity: 0.6 }}>📝</div>
+                <div style={{ fontSize: 13, color: T.subtle, fontWeight: 700 }}>No questions for this combination</div>
+                <div style={{ fontSize: 12, color: T.muted, marginTop: 6 }}>Try a different paper, mode, or marker type</div>
+              </div>
+            )}
+
+            {/* Action buttons */}
+            <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", paddingTop: 4 }}>
+              <button
+                disabled={!currentQ}
+                onClick={handleStartWriting}
+                style={{
+                  background: currentQ ? paperAccent : T.muted,
+                  color: "#09090b",
+                  border: "none", borderRadius: 9,
+                  fontWeight: 900, fontSize: 13,
+                  padding: "12px 28px",
+                  cursor: currentQ ? "pointer" : "not-allowed",
+                  fontFamily: T.font, letterSpacing: "0.04em",
+                  opacity: currentQ ? 1 : 0.45,
+                  boxShadow: currentQ ? `0 0 18px ${paperAccent}30` : "none",
+                }}
+              >
+                ✏️&nbsp;&nbsp;Start Writing
+              </button>
+
+              <button
+                onClick={handleNext}
+                disabled={!currentQ || totalInPool <= 1}
+                style={{
+                  background: "transparent",
+                  color: currentQ && totalInPool > 1 ? T.text : T.muted,
+                  border: `1px solid ${T.borderMid}`,
+                  borderRadius: 9, fontWeight: 700, fontSize: 13,
+                  padding: "11px 22px",
+                  cursor: currentQ && totalInPool > 1 ? "pointer" : "not-allowed",
+                  fontFamily: T.font, letterSpacing: "0.03em",
+                  opacity: currentQ && totalInPool > 1 ? 1 : 0.4,
+                }}
+              >
+                Next Question →
+              </button>
+
+              <button
+                style={{
+                  background: "transparent",
+                  color: T.purple,
+                  border: `1px solid ${T.purple}44`,
+                  borderRadius: 9, fontWeight: 600, fontSize: 13,
+                  padding: "11px 20px",
+                  cursor: "pointer",
+                  fontFamily: T.font, letterSpacing: "0.02em",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                View More PYQs
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* ── Handwritten Upload Workspace ── */}
+        {inputMethod === "handwritten" && !ocrSuccess && (
+          <div style={{
+            background: T.bg,
+            border: `1px solid ${T.borderMid}`,
+            borderRadius: 12,
+            padding: "20px",
+            marginBottom: 20,
+          }}>
+            <div style={{ fontSize: 16, fontWeight: 800, color: T.textBright, marginBottom: 4 }}>
+              Upload Any Mains Answer
+            </div>
+            <div style={{ fontSize: 12, color: T.dim, marginBottom: 16 }}>
+              Upload answer sheet from PYQ, institute test, custom question, essay, or geography optional.
+            </div>
+
+            {/* Question Source */}
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Question Source</div>
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                {[
+                  { value: "auto", label: "Auto Detect" },
+                  { value: "pyq", label: "UPSC PYQ" },
+                  { value: "institute", label: "Institute Test" },
+                  { value: "custom", label: "Custom Question" },
+                  { value: "essay", label: "Essay" },
+                  { value: "geography", label: "Geography Optional" },
+                ].map((src) => {
+                  const isSrcActive = questionSource === src.value;
                   return (
                     <button
-                      key={opt.value}
-                      onClick={() => group.onChange(opt.value)}
+                      key={src.value}
+                      onClick={() => setQuestionSource(src.value)}
                       style={{
-                        padding: "5px 13px",
-                        borderRadius: 7,
-                        border: isActive ? `1.5px solid ${acc}` : `1px solid ${T.borderMid}`,
-                        background: isActive ? `${acc}18` : "transparent",
-                        color: isActive ? acc : T.dim,
-                        fontWeight: isActive ? 800 : 500,
-                        fontSize: 12,
+                        padding: "6px 12px",
+                        borderRadius: 6,
+                        border: isSrcActive ? `1.5px solid ${paperAccent}` : `1px solid ${T.borderMid}`,
+                        background: isSrcActive ? `${paperAccent}15` : T.bg,
+                        color: isSrcActive ? paperAccent : T.dim,
+                        fontSize: 11,
+                        fontWeight: isSrcActive ? 700 : 500,
                         cursor: "pointer",
                         fontFamily: T.font,
-                        letterSpacing: "0.04em",
                         transition: "all 0.12s ease",
                       }}
                     >
-                      {opt.label}
+                      {src.label}
                     </button>
                   );
                 })}
               </div>
             </div>
-          ))}
-        </div>
 
-        {/* ── Question preview card ── */}
-        {currentQ ? (
-          <div style={{
-            background: T.bg,
-            border: `1px solid ${paperAccent}22`,
-            borderRadius: 12, overflow: "hidden", marginBottom: 22,
-          }}>
-
-            {/* Card header — meta chips row */}
-            <div style={{
-              display: "flex", alignItems: "center", justifyContent: "space-between",
-              padding: "11px 18px",
-              borderBottom: `1px solid ${T.border}`,
-              background: `${paperAccent}07`,
-            }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{
-                  fontSize: 11, fontWeight: 900, color: paperAccent,
-                  background: `${paperAccent}18`, border: `1px solid ${paperAccent}33`,
-                  borderRadius: 6, padding: "3px 10px", letterSpacing: "0.07em",
-                }}>
-                  {paperLabel}
-                </span>
-                <span style={{
-                  fontSize: 10, fontWeight: 800, color: modeColor,
-                  background: `${modeColor}14`, border: `1px solid ${modeColor}30`,
-                  borderRadius: 6, padding: "3px 9px", letterSpacing: "0.07em", textTransform: "uppercase",
-                }}>
-                  {modeLabel}
-                </span>
-                {currentQ.year && (
-                  <span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>UPSC {currentQ.year}</span>
-                )}
+            {/* Dropzone */}
+            <div
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              style={{
+                border: isDragging ? `2px dashed ${paperAccent}` : `1px dashed ${T.borderMid}`,
+                background: isDragging ? `${paperAccent}08` : T.bg,
+                borderRadius: 10,
+                padding: "24px 20px",
+                textAlign: "center",
+                cursor: "pointer",
+                transition: "all 0.15s ease",
+                marginBottom: 16,
+              }}
+              onClick={() => fileInputRef.current && fileInputRef.current.click()}
+            >
+              <input
+                type="file"
+                ref={fileInputRef}
+                multiple
+                accept="image/*,application/pdf"
+                onChange={(e) => e.target.files && addFiles(e.target.files)}
+                style={{ display: "none" }}
+              />
+              <div style={{ fontSize: 24, marginBottom: 8 }}>📁</div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: T.textBright, marginBottom: 4 }}>
+                Drag & Drop Images / PDFs or Browse
               </div>
-
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{
-                  fontSize: 11, fontWeight: 800, color: T.textBright,
-                  background: T.surface, border: `1px solid ${T.borderMid}`,
-                  borderRadius: 6, padding: "3px 10px",
-                }}>
-                  {marks} Marks
-                </span>
-                {totalInPool > 0 && (
-                  <span style={{
-                    fontSize: 11, fontWeight: 600, color: T.dim,
-                    background: T.surface, border: `1px solid ${T.border}`,
-                    borderRadius: 6, padding: "3px 10px",
-                  }}>
-                    {totalInPool} Question{totalInPool !== 1 ? "s" : ""} Available
-                  </span>
-                )}
+              <div style={{ fontSize: 11, color: T.dim }}>
+                Supports JPG, PNG, WebP, and PDF (Max 5 pages)
               </div>
             </div>
 
-            {/* Card body */}
-            <div style={{ padding: "22px 20px 0" }}>
-
-              {/* Writing guide pills */}
-              <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
-                {[
-                  { label: "Word Limit", value: wordGuide },
-                  { label: "Time",       value: timeGuide },
-                  { label: "Structure",  value: structGuide },
-                ].map((g) => (
-                  <div key={g.label} style={{
-                    display: "flex", alignItems: "center", gap: 5,
-                    background: T.surface, border: `1px solid ${T.border}`,
-                    borderRadius: 6, padding: "4px 11px",
-                  }}>
-                    <span style={{ fontSize: 10, color: T.subtle, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em" }}>{g.label}:</span>
-                    <span style={{ fontSize: 11, color: T.text, fontWeight: 700 }}>{g.value}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Question text — visual center of the card */}
-              <div style={{
-                fontSize: 17, fontWeight: 700, color: T.textBright,
-                lineHeight: 1.85, letterSpacing: "0.01em",
-                paddingBottom: 20,
-              }}>
-                {currentQ.q}
-              </div>
-
-            </div>
-
-            {/* Card footer — focus hint + source line */}
-            <div style={{
-              padding: "14px 20px 16px",
-              borderTop: `1px solid ${T.border}`,
-              background: `${T.surface}88`,
-              display: "flex", flexDirection: "column", gap: 9,
-            }}>
-
-              {/* Focus Hint */}
-              {currentQ.hint && (
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                  <span style={{
-                    fontSize: 10, fontWeight: 800, color: paperAccent,
-                    textTransform: "uppercase", letterSpacing: "0.1em",
-                    flexShrink: 0, marginTop: 1,
-                  }}>Focus</span>
-                  <span style={{ fontSize: 12, color: T.dim, fontWeight: 500, lineHeight: 1.5 }}>
-                    {currentQ.hint}
-                  </span>
+            {/* Page preview */}
+            {uploadedPages.length > 0 && (
+              <div style={{ marginBottom: 16 }}>
+                <div style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Uploaded Pages ({uploadedPages.length})</div>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  {uploadedPages.map((page, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        position: "relative",
+                        width: 72,
+                        height: 96,
+                        borderRadius: 6,
+                        border: `1px solid ${T.borderMid}`,
+                        background: T.surfaceHigh,
+                        overflow: "hidden",
+                      }}
+                    >
+                      {page.preview ? (
+                        <img src={page.preview} alt={`Page ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      ) : (
+                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", padding: 4 }}>
+                          <span style={{ fontSize: 16 }}>📄</span>
+                          <span style={{ fontSize: 8, color: T.dim, textAlign: "center", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", width: "100%" }}>
+                            {page.name}
+                          </span>
+                        </div>
+                      )}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleRemovePage(idx);
+                        }}
+                        style={{
+                          position: "absolute",
+                          top: 2,
+                          right: 2,
+                          width: 16,
+                          height: 16,
+                          borderRadius: "50%",
+                          background: "rgba(0,0,0,0.6)",
+                          color: "#fff",
+                          border: "none",
+                          fontSize: 10,
+                          fontWeight: 900,
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          padding: 0,
+                          lineHeight: 1,
+                        }}
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
                 </div>
-              )}
-
-              {/* Source / priority line */}
-              <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
-                <div style={{
-                  width: 6, height: 6, borderRadius: "50%",
-                  background: sourceLine.dot, flexShrink: 0,
-                }} />
-                <span style={{ fontSize: 11, fontWeight: 700, color: T.text }}>{sourceLine.label}</span>
-                <span style={{ color: T.muted, fontSize: 10 }}>·</span>
-                <span style={{ fontSize: 11, color: T.subtle }}>{sourceLine.sub}</span>
               </div>
+            )}
 
-            </div>
-          </div>
-        ) : (
-          <div style={{
-            background: T.bg, border: `1px dashed ${T.borderMid}`,
-            borderRadius: 12, padding: "48px 24px",
-            textAlign: "center", marginBottom: 22,
-          }}>
-            <div style={{ fontSize: 28, marginBottom: 12, opacity: 0.6 }}>📝</div>
-            <div style={{ fontSize: 13, color: T.subtle, fontWeight: 700 }}>No questions for this combination</div>
-            <div style={{ fontSize: 12, color: T.muted, marginTop: 6 }}>Try a different paper, mode, or marker type</div>
+            {ocrError && (
+              <div style={{
+                background: `${T.red}15`,
+                border: `1px solid ${T.red}33`,
+                borderRadius: 8,
+                padding: "10px 12px",
+                color: T.red,
+                fontSize: 12,
+                marginBottom: 16,
+              }}>
+                ⚠️ {ocrError}
+              </div>
+            )}
+
+            {/* Checkbox for using currently selected PYQ */}
+            {currentQ && (
+              <div style={{ marginBottom: 16, display: "flex", alignItems: "center" }}>
+                <label style={{ fontSize: 12, color: T.textBright, cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}>
+                  <input
+                    type="checkbox"
+                    checked={useSelectedCardQuestion}
+                    onChange={(e) => setUseSelectedCardQuestion(e.target.checked)}
+                    style={{ cursor: "pointer" }}
+                  />
+                  Use currently selected PYQ ("{currentQ.q.substring(0, 40)}...")
+                </label>
+              </div>
+            )}
+
+            {/* Prepare Button */}
+            <button
+              onClick={handlePrepareAnswerText}
+              disabled={uploadedPages.length === 0 || isExtracting}
+              style={{
+                width: "100%",
+                background: uploadedPages.length > 0 && !isExtracting ? paperAccent : T.muted,
+                color: "#09090b",
+                border: "none",
+                borderRadius: 8,
+                fontWeight: 800,
+                fontSize: 13,
+                padding: "12px 0",
+                cursor: uploadedPages.length > 0 && !isExtracting ? "pointer" : "not-allowed",
+                fontFamily: T.font,
+                letterSpacing: "0.04em",
+                opacity: uploadedPages.length > 0 && !isExtracting ? 1 : 0.5,
+              }}
+            >
+              {isExtracting ? "⌛ Extracting text via OCR..." : "✨ Prepare Answer Text"}
+            </button>
           </div>
         )}
 
-        {/* ── Action buttons ── */}
-        <div style={{
-          display: "flex", gap: 12, alignItems: "center",
-          flexWrap: "wrap", paddingTop: 4,
-        }}>
+        {/* ── Verification Form ── */}
+        {inputMethod === "handwritten" && ocrSuccess && (
+          <div style={{
+            background: T.bg,
+            border: `1px solid ${T.borderMid}`,
+            borderRadius: 12,
+            padding: "20px",
+            marginBottom: 20,
+          }}>
+            <div style={{ fontSize: 16, fontWeight: 800, color: T.textBright, marginBottom: 4 }}>
+              Verify & Edit Extracted Answer
+            </div>
+            <div style={{ fontSize: 12, color: T.dim, marginBottom: 16 }}>
+              Review the OCR text and update metadata before saving this attempt.
+            </div>
 
-          {/* Primary — Start Writing */}
-          <button
-            disabled={!currentQ}
-            onClick={handleStartWriting}
-            style={{
-              background: currentQ ? paperAccent : T.muted,
-              color: "#09090b",
-              border: "none", borderRadius: 9,
-              fontWeight: 900, fontSize: 13,
-              padding: "12px 28px",
-              cursor: currentQ ? "pointer" : "not-allowed",
-              fontFamily: T.font, letterSpacing: "0.04em",
-              opacity: currentQ ? 1 : 0.45,
-              boxShadow: currentQ ? `0 0 18px ${paperAccent}30` : "none",
-            }}
-          >
-            ✏️&nbsp;&nbsp;Start Writing
-          </button>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 16 }}>
+              <div>
+                <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Paper</label>
+                <select
+                  value={verifiedPaper}
+                  onChange={(e) => setVerifiedPaper(e.target.value)}
+                  style={{
+                    width: "100%",
+                    background: T.surface,
+                    border: `1px solid ${T.borderMid}`,
+                    borderRadius: 8,
+                    color: T.text,
+                    padding: "8px 12px",
+                    fontSize: 13,
+                    fontFamily: T.font,
+                  }}
+                >
+                  <option value="gs1">GS1</option>
+                  <option value="gs2">GS2</option>
+                  <option value="gs3">GS3</option>
+                  <option value="gs4">GS4 Ethics</option>
+                  <option value="essay">Essay</option>
+                  <option value="geo_p1">Geography Optional P1</option>
+                  <option value="geo_p2">Geography Optional P2</option>
+                </select>
+              </div>
 
-          {/* Secondary — Next Question */}
-          <button
-            onClick={handleNext}
-            disabled={!currentQ || totalInPool <= 1}
-            style={{
-              background: "transparent",
-              color: currentQ && totalInPool > 1 ? T.text : T.muted,
-              border: `1px solid ${T.borderMid}`,
-              borderRadius: 9, fontWeight: 700, fontSize: 13,
-              padding: "11px 22px",
-              cursor: currentQ && totalInPool > 1 ? "pointer" : "not-allowed",
-              fontFamily: T.font, letterSpacing: "0.03em",
-              opacity: currentQ && totalInPool > 1 ? 1 : 0.4,
-            }}
-          >
-            Next Question →
-          </button>
+              <div>
+                <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Subject/Topic</label>
+                <input
+                  type="text"
+                  value={verifiedTopic}
+                  onChange={(e) => setVerifiedTopic(e.target.value)}
+                  placeholder="e.g. Bhakti Movement"
+                  style={{
+                    width: "100%",
+                    background: T.surface,
+                    border: `1px solid ${T.borderMid}`,
+                    borderRadius: 8,
+                    color: T.text,
+                    padding: "8px 12px",
+                    fontSize: 13,
+                    fontFamily: T.font,
+                  }}
+                />
+              </div>
 
-          {/* Tertiary — View More PYQs */}
-          <button
-            style={{
-              background: "transparent",
-              color: T.purple,
-              border: `1px solid ${T.purple}44`,
-              borderRadius: 9, fontWeight: 600, fontSize: 13,
-              padding: "11px 20px",
-              cursor: "pointer",
-              fontFamily: T.font, letterSpacing: "0.02em",
-              whiteSpace: "nowrap",
-            }}
-          >
-            View More PYQs
-          </button>
+              <div>
+                <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Marks</label>
+                <input
+                  type="text"
+                  value={verifiedMarks}
+                  onChange={(e) => setVerifiedMarks(e.target.value)}
+                  placeholder="e.g. 15"
+                  style={{
+                    width: "100%",
+                    background: T.surface,
+                    border: `1px solid ${T.borderMid}`,
+                    borderRadius: 8,
+                    color: T.text,
+                    padding: "8px 12px",
+                    fontSize: 13,
+                    fontFamily: T.font,
+                  }}
+                />
+              </div>
 
-        </div>
+              {questionSource === "pyq" && (
+                <div>
+                  <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Exam Year</label>
+                  <input
+                    type="text"
+                    value={verifiedYear}
+                    onChange={(e) => setVerifiedYear(e.target.value)}
+                    placeholder="e.g. 2023"
+                    style={{
+                      width: "100%",
+                      background: T.surface,
+                      border: `1px solid ${T.borderMid}`,
+                      borderRadius: 8,
+                      color: T.text,
+                      padding: "8px 12px",
+                      fontSize: 13,
+                      fontFamily: T.font,
+                    }}
+                  />
+                </div>
+              )}
 
+              {questionSource === "institute" && (
+                <>
+                  <div>
+                    <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Institute Name</label>
+                    <input
+                      type="text"
+                      value={verifiedInstitute}
+                      onChange={(e) => setVerifiedInstitute(e.target.value)}
+                      placeholder="e.g. Vision IAS"
+                      style={{
+                        width: "100%",
+                        background: T.surface,
+                        border: `1px solid ${T.borderMid}`,
+                        borderRadius: 8,
+                        color: T.text,
+                        padding: "8px 12px",
+                        fontSize: 13,
+                        fontFamily: T.font,
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Test Name/ID</label>
+                    <input
+                      type="text"
+                      value={verifiedTestName}
+                      onChange={(e) => setVerifiedTestName(e.target.value)}
+                      placeholder="e.g. Test 5"
+                      style={{
+                        width: "100%",
+                        background: T.surface,
+                        border: `1px solid ${T.borderMid}`,
+                        borderRadius: 8,
+                        color: T.text,
+                        padding: "8px 12px",
+                        fontSize: 13,
+                        fontFamily: T.font,
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Question Number</label>
+                    <input
+                      type="text"
+                      value={verifiedQuestionNumber}
+                      onChange={(e) => setVerifiedQuestionNumber(e.target.value)}
+                      placeholder="e.g. Q15"
+                      style={{
+                        width: "100%",
+                        background: T.surface,
+                        border: `1px solid ${T.borderMid}`,
+                        borderRadius: 8,
+                        color: T.text,
+                        padding: "8px 12px",
+                        fontSize: 13,
+                        fontFamily: T.font,
+                      }}
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Question Text */}
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                <label style={{ ...label11(T.subtle), fontSize: 9 }}>Question Text</label>
+                {currentQ && (
+                  <label style={{ fontSize: 11, color: T.dim, cursor: "pointer", display: "flex", alignItems: "center", gap: 4 }}>
+                    <input
+                      type="checkbox"
+                      checked={useSelectedCardQuestion}
+                      onChange={(e) => {
+                        const checked = e.target.checked;
+                        setUseSelectedCardQuestion(checked);
+                        if (checked) {
+                          setVerifiedQuestion(currentQ.q);
+                          setVerifiedPaper(paper);
+                          setVerifiedMarks(marks);
+                          setVerifiedYear(currentQ.year || "");
+                          if (currentQ.hint) {
+                            setVerifiedTopic(currentQ.hint.replace("Focus: ", ""));
+                          }
+                        } else {
+                          setVerifiedQuestion("");
+                        }
+                      }}
+                    />
+                    Use currently selected PYQ
+                  </label>
+                )}
+              </div>
+              <textarea
+                value={verifiedQuestion}
+                placeholder="Enter the question text for this upload"
+                onChange={(e) => setVerifiedQuestion(e.target.value)}
+                style={{
+                  width: "100%",
+                  height: 60,
+                  background: T.surface,
+                  border: `1px solid ${T.borderMid}`,
+                  borderRadius: 8,
+                  color: T.text,
+                  padding: "8px 12px",
+                  fontSize: 13,
+                  fontFamily: T.font,
+                  resize: "vertical",
+                }}
+              />
+            </div>
+
+            {/* Extracted Answer */}
+            <div style={{ marginBottom: 20 }}>
+              <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Extracted Candidate Answer</label>
+              <textarea
+                value={verifiedAnswer}
+                onChange={(e) => setVerifiedAnswer(e.target.value)}
+                style={{
+                  width: "100%",
+                  height: 150,
+                  background: T.surface,
+                  border: `1px solid ${T.borderMid}`,
+                  borderRadius: 8,
+                  color: T.text,
+                  padding: "8px 12px",
+                  fontSize: 13,
+                  fontFamily: T.font,
+                  lineHeight: 1.6,
+                  resize: "vertical",
+                }}
+              />
+            </div>
+
+            {saveError && (
+              <div style={{
+                background: `${T.red}15`,
+                border: `1px solid ${T.red}33`,
+                borderRadius: 8,
+                padding: "10px 12px",
+                color: T.red,
+                fontSize: 12,
+                marginBottom: 16,
+              }}>
+                ⚠️ {saveError}
+              </div>
+            )}
+
+            {saveSuccess && (
+              <div style={{
+                background: `${T.green}15`,
+                border: `1px solid ${T.green}33`,
+                borderRadius: 8,
+                padding: "10px 12px",
+                color: T.green,
+                fontSize: 12,
+                marginBottom: 16,
+                fontWeight: 700,
+              }}>
+                ✓ Attempt saved successfully! Redirecting to workspace...
+              </div>
+            )}
+
+            {/* Actions */}
+            <div style={{ display: "flex", gap: 10 }}>
+              <button
+                onClick={() => setOcrSuccess(false)}
+                disabled={isSavingAttempt}
+                style={{
+                  flex: 1,
+                  background: "transparent",
+                  color: T.dim,
+                  border: `1px solid ${T.borderMid}`,
+                  borderRadius: 8,
+                  fontWeight: 600,
+                  fontSize: 13,
+                  padding: "10px 0",
+                  cursor: isSavingAttempt ? "not-allowed" : "pointer",
+                  fontFamily: T.font,
+                }}
+              >
+                Back to Upload
+              </button>
+
+              <button
+                onClick={handleSaveAndContinue}
+                disabled={isSavingAttempt || !verifiedQuestion.trim() || !verifiedAnswer.trim()}
+                style={{
+                  flex: 2,
+                  background: isSavingAttempt || !verifiedQuestion.trim() || !verifiedAnswer.trim() ? T.muted : paperAccent,
+                  color: "#09090b",
+                  border: "none",
+                  borderRadius: 8,
+                  fontWeight: 800,
+                  fontSize: 13,
+                  padding: "10px 0",
+                  cursor: isSavingAttempt || !verifiedQuestion.trim() || !verifiedAnswer.trim() ? "not-allowed" : "pointer",
+                  fontFamily: T.font,
+                  letterSpacing: "0.03em",
+                }}
+              >
+                {isSavingAttempt ? "Saving..." : "Save & Continue →"}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

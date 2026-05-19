@@ -605,10 +605,8 @@ app.use("/api/mains", mainsThemeRoutes);
 // Safe mount — uses /api/mains/attempt/* and /api/mains/review/* (no conflict with theme/gs routes)
 app.use("/api/mains", mainsReviewRoutes);
 
-/* -------------------- MAINS ATTEMPTS (PostgreSQL persistence) -------------------- */
-// UPSERT + fetch for mains_answer_attempts table (durable, refresh-safe)
-// Must be mounted BEFORE other /api/mains routes to avoid param collision
 app.use("/api/mains/attempts", mainsAttemptsRoute);
+app.use("/api/mains-answers", mainsAttemptsRoute);
 
 /* -------------------- MAINS CLEAN DATASET ROUTES -------------------- */
 // Backed by mains_master_clean_fixed.json via backend/loaders/mainsLoader.js

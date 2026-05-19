@@ -13,6 +13,7 @@ export async function upsertMainsAttempt(data) {
     INSERT INTO mains_answer_attempts (
       attempt_id,
       user_id,
+      question_key,
       question_text,
       paper,
       subject,
@@ -32,8 +33,9 @@ export async function upsertMainsAttempt(data) {
       updated_at,
       finalized_at
     )
-    VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,NOW(),$19)
+    VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,NOW(),$20)
     ON CONFLICT (attempt_id) DO UPDATE SET
+      question_key        = EXCLUDED.question_key,
       question_text       = EXCLUDED.question_text,
       paper               = EXCLUDED.paper,
       subject             = EXCLUDED.subject,
@@ -60,6 +62,7 @@ export async function upsertMainsAttempt(data) {
   const values = [
     data.attemptId,
     data.userId || "user_1",
+    data.questionKey || data.question_key || null,
     data.questionText || null,
     data.paper || null,
     data.subject || null,
@@ -112,4 +115,35 @@ export async function getLatestMainsAttempt(userId) {
   `;
   const result = await query(sql, [userId || "user_1"]);
   return result.rows[0] || null;
+}
+
+/**
+ * Fetch the latest attempt for a user and exact question key.
+ * Returns null if no attempts found.
+ */
+export async function getLatestMainsAttemptForQuestion(userId, questionKey) {
+  const sql = `
+    SELECT *
+    FROM mains_answer_attempts
+    WHERE user_id = $1
+      AND question_key = $2
+    ORDER BY updated_at DESC
+    LIMIT 1
+  `;
+  const result = await query(sql, [userId || "user_1", questionKey]);
+  return result.rows[0] || null;
+}
+
+/**
+ * Fetch all attempts for a user, sorted by updated_at descending.
+ */
+export async function getMainsAttempts(userId) {
+  const sql = `
+    SELECT *
+    FROM mains_answer_attempts
+    WHERE user_id = $1
+    ORDER BY updated_at DESC
+  `;
+  const result = await query(sql, [userId || "user_1"]);
+  return result.rows;
 }
