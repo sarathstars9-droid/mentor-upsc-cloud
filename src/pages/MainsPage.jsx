@@ -6,7 +6,7 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config.js";
-import { saveMainsAttemptToDB, extractAnswerFromImagesApi } from "../utils/mainsReviewApi.js";
+import { saveMainsAttemptToDB, extractAnswerFromImagesApi, extractQuestionAnswerFromImagesApi } from "../utils/mainsReviewApi.js";
 
 // ─── Theme tokens ─────────────────────────────────────────────────────────────
 const T = {
@@ -1435,10 +1435,10 @@ function QuickPractice() {
               flex: 1,
               padding: "10px 16px",
               borderRadius: 8,
-              border: inputMethod === "typed" ? `1.5px solid ${paperAccent}` : `1px solid ${T.borderMid}`,
-              background: inputMethod === "typed" ? `${paperAccent}15` : T.bg,
-              color: inputMethod === "typed" ? paperAccent : T.dim,
-              fontWeight: inputMethod === "typed" ? 800 : 500,
+              border: `1.5px solid ${paperAccent}`,
+              background: `${paperAccent}15`,
+              color: paperAccent,
+              fontWeight: 800,
               fontSize: 13,
               cursor: "pointer",
               fontFamily: T.font,
@@ -1450,28 +1450,6 @@ function QuickPractice() {
             }}
           >
             ⌨️ Typed Answer
-          </button>
-          <button
-            onClick={() => setInputMethod("handwritten")}
-            style={{
-              flex: 1,
-              padding: "10px 16px",
-              borderRadius: 8,
-              border: inputMethod === "handwritten" ? `1.5px solid ${paperAccent}` : `1px solid ${T.borderMid}`,
-              background: inputMethod === "handwritten" ? `${paperAccent}15` : T.bg,
-              color: inputMethod === "handwritten" ? paperAccent : T.dim,
-              fontWeight: inputMethod === "handwritten" ? 800 : 500,
-              fontSize: 13,
-              cursor: "pointer",
-              fontFamily: T.font,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 8,
-              transition: "all 0.15s ease",
-            }}
-          >
-            ✍️ Handwritten Upload
           </button>
         </div>
 
@@ -1785,144 +1763,465 @@ function QuickPractice() {
           </>
         )}
 
-        {/* ── Handwritten Upload Workspace ── */}
-        {inputMethod === "handwritten" && !ocrSuccess && (
-          <div style={{
-            background: T.bg,
-            border: `1px solid ${T.borderMid}`,
-            borderRadius: 12,
-            padding: "20px",
-            marginBottom: 20,
-          }}>
-            <div style={{ fontSize: 16, fontWeight: 800, color: T.textBright, marginBottom: 4 }}>
-              Upload Any Mains Answer
-            </div>
-            <div style={{ fontSize: 12, color: T.dim, marginBottom: 16 }}>
-              Upload answer sheet from PYQ, institute test, custom question, essay, or geography optional.
-            </div>
 
-            {/* Question Source */}
-            <div style={{ marginBottom: 16 }}>
-              <div style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Question Source</div>
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                {[
-                  { value: "auto", label: "Auto Detect" },
-                  { value: "pyq", label: "UPSC PYQ" },
-                  { value: "institute", label: "Institute Test" },
-                  { value: "custom", label: "Custom Question" },
-                  { value: "essay", label: "Essay" },
-                  { value: "geography", label: "Geography Optional" },
-                ].map((src) => {
-                  const isSrcActive = questionSource === src.value;
+      </div>
+    </div>
+  );
+}
+
+// ─── Upload Answer Review Card ───────────────────────────────────────────────
+function UploadAnswerReviewCard() {
+  const navigate = useNavigate();
+  const [sourceOption, setSourceOption] = useState("pyq"); // pyq | institute | custom
+  const [paper, setPaper] = useState("GS1");
+  const [year, setYear] = useState("");
+  const [questionNumber, setQuestionNumber] = useState("");
+  const [marks, setMarks] = useState("15");
+  const [wordLimit, setWordLimit] = useState("250");
+  const [instituteName, setInstituteName] = useState("");
+  const [testName, setTestName] = useState("");
+  const [subjectTopic, setSubjectTopic] = useState("");
+  const [showAdvanced, setShowAdvanced] = useState(false);
+
+  const [uploadedPages, setUploadedPages] = useState([]);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isExtracting, setIsExtracting] = useState(false);
+  const [error, setError] = useState("");
+
+  const fileInputRef = useRef(null);
+
+  const handleMarksChange = (val) => {
+    setMarks(val);
+    if (val === "10") {
+      setWordLimit("150");
+    } else if (val === "15" || val === "20") {
+      setWordLimit("250");
+    }
+  };
+
+  const addFiles = (files) => {
+    const valid = Array.from(files).filter(
+      (f) => f.type.startsWith("image/") || f.type === "application/pdf"
+    );
+    const toAdd = valid.map((file) => ({
+      file,
+      preview: file.type.startsWith("image/") ? URL.createObjectURL(file) : null,
+      name: file.name
+    }));
+    setUploadedPages((prev) => {
+      const remaining = 5 - prev.length;
+      return [...prev, ...toAdd.slice(0, remaining)];
+    });
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    addFiles(e.dataTransfer.files);
+  };
+
+  const handleRemovePage = (idx) => {
+    setUploadedPages((prev) => {
+      if (prev[idx].preview) {
+        URL.revokeObjectURL(prev[idx].preview);
+      }
+      return prev.filter((_, i) => i !== idx);
+    });
+  };
+
+  const handleExtract = async () => {
+    if (uploadedPages.length === 0) {
+      setError("Please upload at least one image or PDF page.");
+      return;
+    }
+    setIsExtracting(true);
+    setError("");
+    try {
+      const files = uploadedPages.map((pg) => pg.file).filter(Boolean);
+      const res = await extractQuestionAnswerFromImagesApi(files);
+      if (res.success) {
+        const newAttemptId = `mains_upload_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
+        const finalPaper = res.detectedMetadata?.paper || paper;
+        const finalSubjectTopic = res.detectedMetadata?.topic || res.detectedMetadata?.subject || subjectTopic;
+
+        let finalWordLimit = res.detectedMetadata?.wordLimit;
+        if (!finalWordLimit) {
+          if (finalPaper === "Essay") {
+            finalWordLimit = "1000";
+          } else if (marks === "10") {
+            finalWordLimit = "150";
+          } else {
+            finalWordLimit = "250";
+          }
+        } else {
+          finalWordLimit = String(finalWordLimit);
+        }
+
+        const finalMeta = {
+          sourceOption: res.detectedMetadata?.sourceType || sourceOption,
+          paper: finalPaper,
+          year: res.detectedMetadata?.year || year,
+          questionNumber: res.detectedMetadata?.questionNumber || questionNumber,
+          marks: marks,
+          wordLimit: finalWordLimit,
+          instituteName: res.detectedMetadata?.instituteName || instituteName,
+          testName: res.detectedMetadata?.testName || testName,
+          subjectTopic: finalSubjectTopic,
+          detectedSubject: res.detectedMetadata?.subject || "",
+          detectedTopic: res.detectedMetadata?.topic || "",
+          detectedMicrotheme: res.detectedMetadata?.microtheme || "",
+          confidence: res.confidence || null
+        };
+
+        const uploadedPagesMeta = uploadedPages.map((pg, idx) => ({ pageNo: idx + 1, fileName: pg.name || `page_${idx+1}.jpg` }));
+
+        navigate("/mains/answer-writing", {
+          state: {
+            practiceMode: "upload",
+            ocrExtracted: true,
+            verifiedQuestionText: res.questionText || "",
+            pastedText: res.answerText || "",
+            uploadMeta: finalMeta,
+            attemptId: newAttemptId,
+            sessionStarted: true,
+            uploadedPagesMeta: uploadedPagesMeta
+          }
+        });
+      } else {
+        setError(res.error || "Failed to extract text from the sheet.");
+      }
+    } catch (err) {
+      console.error(err);
+      setError(err?.message || "Extraction failed. Please try again.");
+    } finally {
+      setIsExtracting(false);
+    }
+  };
+
+  const [winWidth, setWinWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => setWinWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isMobile = winWidth < 768;
+
+  const containerGridStyle = {
+    display: "grid",
+    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+    gap: 24,
+    marginTop: 20
+  };
+
+  return (
+    <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 14, overflow: "hidden", marginBottom: 28 }}>
+      <div style={{ height: 3, background: `linear-gradient(90deg, ${T.purple}, ${T.purple}44, transparent)` }} />
+      <div style={{ padding: "26px 28px 28px" }}>
+        
+        <div>
+          <div style={{ ...label11(T.purple), marginBottom: 7, letterSpacing: "0.14em" }}>Handwritten Sheet Review</div>
+          <div style={{ fontSize: 20, fontWeight: 900, color: T.textBright, lineHeight: 1.15, letterSpacing: "-0.01em" }}>
+            Upload Answer Sheet for Review
+          </div>
+          <div style={{ fontSize: 13, color: T.dim, marginTop: 6, lineHeight: 1.5 }}>
+            Upload one image/PDF containing both the question and your written answer. MentorOS will extract, split, verify, evaluate, and generate AIR-1 review.
+          </div>
+        </div>
+
+        <div style={containerGridStyle}>
+          {/* Left Panel: Metadata */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div>
+              <div style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Marks</div>
+              <div style={{ display: "flex", gap: 8 }}>
+                {["10", "15", "20"].map((m) => {
+                  const isActive = marks === m;
                   return (
                     <button
-                      key={src.value}
-                      onClick={() => setQuestionSource(src.value)}
+                      key={m}
+                      type="button"
+                      onClick={() => handleMarksChange(m)}
                       style={{
-                        padding: "6px 12px",
-                        borderRadius: 6,
-                        border: isSrcActive ? `1.5px solid ${paperAccent}` : `1px solid ${T.borderMid}`,
-                        background: isSrcActive ? `${paperAccent}15` : T.bg,
-                        color: isSrcActive ? paperAccent : T.dim,
-                        fontSize: 11,
-                        fontWeight: isSrcActive ? 700 : 500,
+                        padding: "8px 16px",
+                        borderRadius: 8,
+                        border: isActive ? `1.5px solid ${T.purple}` : `1px solid ${T.borderMid}`,
+                        background: isActive ? `${T.purple}18` : T.bg,
+                        color: isActive ? T.purple : T.dim,
+                        fontWeight: isActive ? 800 : 500,
+                        fontSize: 12,
                         cursor: "pointer",
-                        fontFamily: T.font,
-                        transition: "all 0.12s ease",
+                        fontFamily: T.font
                       }}
                     >
-                      {src.label}
+                      {m} Marks
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            {/* Dropzone */}
-            <div
-              onDragOver={handleDragOver}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-              style={{
-                border: isDragging ? `2px dashed ${paperAccent}` : `1px dashed ${T.borderMid}`,
-                background: isDragging ? `${paperAccent}08` : T.bg,
-                borderRadius: 10,
-                padding: "24px 20px",
-                textAlign: "center",
-                cursor: "pointer",
-                transition: "all 0.15s ease",
-                marginBottom: 16,
-              }}
-              onClick={() => fileInputRef.current && fileInputRef.current.click()}
-            >
-              <input
-                type="file"
-                ref={fileInputRef}
-                multiple
-                accept="image/*,application/pdf"
-                onChange={(e) => e.target.files && addFiles(e.target.files)}
-                style={{ display: "none" }}
-              />
-              <div style={{ fontSize: 24, marginBottom: 8 }}>📁</div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: T.textBright, marginBottom: 4 }}>
-                Drag & Drop Images / PDFs or Browse
+            <div>
+              <button
+                type="button"
+                onClick={() => setShowAdvanced(!showAdvanced)}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: T.purple,
+                  fontSize: 12,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 4,
+                  padding: "4px 0",
+                  outline: "none"
+                }}
+              >
+                {showAdvanced ? "▼ Hide Advanced details" : "▶ Show Advanced details"}
+              </button>
+            </div>
+
+            {showAdvanced && (
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 16,
+                padding: 16,
+                background: T.bg,
+                border: `1px solid ${T.borderMid}`,
+                borderRadius: 10
+              }}>
+                <div>
+                  <div style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Source Type</div>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    {[
+                      { label: "UPSC PYQ", value: "pyq" },
+                      { label: "Institute Test", value: "institute" },
+                      { label: "Custom Practice", value: "custom" }
+                    ].map((opt) => {
+                      const isActive = sourceOption === opt.value;
+                      return (
+                        <button
+                          key={opt.value}
+                          type="button"
+                          onClick={() => setSourceOption(opt.value)}
+                          style={{
+                            padding: "6px 14px",
+                            borderRadius: 8,
+                            border: isActive ? `1.5px solid ${T.purple}` : `1px solid ${T.borderMid}`,
+                            background: isActive ? `${T.purple}18` : T.bg,
+                            color: isActive ? T.purple : T.dim,
+                            fontWeight: isActive ? 800 : 500,
+                            fontSize: 11,
+                            cursor: "pointer",
+                            fontFamily: T.font
+                          }}
+                        >
+                          {opt.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 12 }}>
+                  {sourceOption === "pyq" && (
+                    <>
+                      <div>
+                        <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Paper</label>
+                        <select
+                          value={paper}
+                          onChange={(e) => setPaper(e.target.value)}
+                          style={{ width: "100%", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
+                        >
+                          {["GS1", "GS2", "GS3", "GS4", "Essay", "Ethics", "Optional"].map((p) => (
+                            <option key={p} value={p}>{p}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Year</label>
+                        <input
+                          type="number"
+                          placeholder="e.g. 2023"
+                          value={year}
+                          onChange={(e) => setYear(e.target.value)}
+                          style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Question No.</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. 3a"
+                          value={questionNumber}
+                          onChange={(e) => setQuestionNumber(e.target.value)}
+                          style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
+                        />
+                      </div>
+                    </>
+                  )}
+
+                  {sourceOption === "institute" && (
+                    <>
+                      <div style={{ gridColumn: isMobile ? "span 1" : "span 2" }}>
+                        <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Institute Name</label>
+                        <input
+                          type="text"
+                          placeholder="Vision IAS, Forum IAS..."
+                          value={instituteName}
+                          onChange={(e) => setInstituteName(e.target.value)}
+                          style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
+                        />
+                      </div>
+                      <div style={{ gridColumn: isMobile ? "span 1" : "span 2" }}>
+                        <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Test Name / Code</label>
+                        <input
+                          type="text"
+                          placeholder="Mains Test 4..."
+                          value={testName}
+                          onChange={(e) => setTestName(e.target.value)}
+                          style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Paper</label>
+                        <select
+                          value={paper}
+                          onChange={(e) => setPaper(e.target.value)}
+                          style={{ width: "100%", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
+                        >
+                          {["GS1", "GS2", "GS3", "GS4", "Essay", "Ethics", "Optional"].map((p) => (
+                            <option key={p} value={p}>{p}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Question No.</label>
+                        <input
+                          type="text"
+                          value={questionNumber}
+                          onChange={(e) => setQuestionNumber(e.target.value)}
+                          style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
+                        />
+                      </div>
+                    </>
+                  )}
+
+                  {sourceOption === "custom" && (
+                    <>
+                      <div style={{ gridColumn: isMobile ? "span 1" : "span 2" }}>
+                        <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Subject / Topic</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. Art & Culture, Internal Security"
+                          value={subjectTopic}
+                          onChange={(e) => setSubjectTopic(e.target.value)}
+                          style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Paper</label>
+                        <select
+                          value={paper}
+                          onChange={(e) => setPaper(e.target.value)}
+                          style={{ width: "100%", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
+                        >
+                          {["GS1", "GS2", "GS3", "GS4", "Essay", "Ethics", "Optional"].map((p) => (
+                            <option key={p} value={p}>{p}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </>
+                  )}
+
+                  <div>
+                    <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Word Limit</label>
+                    <select
+                      value={wordLimit}
+                      onChange={(e) => setWordLimit(e.target.value)}
+                      style={{ width: "100%", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
+                    >
+                      {["150", "250", "1000", "2000"].map((w) => (
+                        <option key={w} value={w}>{w} Words</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
               </div>
-              <div style={{ fontSize: 11, color: T.dim }}>
-                Supports JPG, PNG, WebP, and PDF (Max 5 pages)
+            )}
+          </div>
+
+          {/* Right Panel: Uploader & Button */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div>
+              <label style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Upload Question + Answer Sheet</label>
+              <div
+                onClick={() => fileInputRef.current.click()}
+                onDragOver={(e) => e.preventDefault()}
+                onDragEnter={() => setIsDragging(true)}
+                onDragLeave={() => setIsDragging(false)}
+                onDrop={handleDrop}
+                style={{
+                  border: `2px dashed ${isDragging ? T.purple : T.borderMid}`,
+                  borderRadius: 12,
+                  padding: "36px 20px",
+                  textAlign: "center",
+                  cursor: "pointer",
+                  background: isDragging ? `${T.purple}08` : T.bg,
+                  transition: "all 0.2s"
+                }}
+              >
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  multiple
+                  accept="image/*,application/pdf"
+                  onChange={(e) => addFiles(e.target.files)}
+                  style={{ display: "none" }}
+                />
+                <div style={{ fontSize: 28, marginBottom: 8 }}>📤</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: T.textBright }}>
+                  Drag & drop image/PDF here or click to select
+                </div>
+                <div style={{ fontSize: 11, color: T.dim, marginTop: 4 }}>
+                  Supports multiple pages (max 5 pages)
+                </div>
               </div>
             </div>
 
-            {/* Page preview */}
             {uploadedPages.length > 0 && (
-              <div style={{ marginBottom: 16 }}>
-                <div style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Uploaded Pages ({uploadedPages.length})</div>
-                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                  {uploadedPages.map((page, idx) => (
-                    <div
-                      key={idx}
-                      style={{
-                        position: "relative",
-                        width: 72,
-                        height: 96,
-                        borderRadius: 6,
-                        border: `1px solid ${T.borderMid}`,
-                        background: T.surfaceHigh,
-                        overflow: "hidden",
-                      }}
-                    >
-                      {page.preview ? (
-                        <img src={page.preview} alt={`Page ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <div>
+                <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", marginBottom: 8 }}>Uploaded Pages ({uploadedPages.length})</div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+                  {uploadedPages.map((pg, idx) => (
+                    <div key={idx} style={{ position: "relative", width: 70, height: 70, borderRadius: 8, overflow: "hidden", border: `1px solid ${T.borderMid}` }}>
+                      {pg.file?.type === "application/pdf" ? (
+                        <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: T.surfaceHigh, fontSize: 12, fontWeight: 800, color: T.red }}>PDF</div>
                       ) : (
-                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", padding: 4 }}>
-                          <span style={{ fontSize: 16 }}>📄</span>
-                          <span style={{ fontSize: 8, color: T.dim, textAlign: "center", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", width: "100%" }}>
-                            {page.name}
-                          </span>
-                        </div>
+                        <img src={pg.preview} alt={`Page ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                       )}
                       <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleRemovePage(idx);
-                        }}
+                        type="button"
+                        onClick={() => handleRemovePage(idx)}
                         style={{
                           position: "absolute",
                           top: 2,
                           right: 2,
-                          width: 16,
-                          height: 16,
-                          borderRadius: "50%",
-                          background: "rgba(0,0,0,0.6)",
+                          background: T.red,
                           color: "#fff",
                           border: "none",
-                          fontSize: 10,
-                          fontWeight: 900,
-                          cursor: "pointer",
+                          borderRadius: "50%",
+                          width: 18,
+                          height: 18,
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          padding: 0,
-                          lineHeight: 1,
+                          fontSize: 10,
+                          cursor: "pointer",
+                          fontWeight: "bold"
                         }}
                       >
                         ×
@@ -1933,369 +2232,35 @@ function QuickPractice() {
               </div>
             )}
 
-            {ocrError && (
-              <div style={{
-                background: `${T.red}15`,
-                border: `1px solid ${T.red}33`,
-                borderRadius: 8,
-                padding: "10px 12px",
-                color: T.red,
-                fontSize: 12,
-                marginBottom: 16,
-              }}>
-                ⚠️ {ocrError}
+            {error && (
+              <div style={{ background: `${T.red}15`, border: `1px solid ${T.red}33`, borderRadius: 8, padding: 12, fontSize: 13, color: T.red }}>
+                ⚠️ {error}
               </div>
             )}
 
-            {/* Checkbox for using currently selected PYQ */}
-            {currentQ && (
-              <div style={{ marginBottom: 16, display: "flex", alignItems: "center" }}>
-                <label style={{ fontSize: 12, color: T.textBright, cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}>
-                  <input
-                    type="checkbox"
-                    checked={useSelectedCardQuestion}
-                    onChange={(e) => setUseSelectedCardQuestion(e.target.checked)}
-                    style={{ cursor: "pointer" }}
-                  />
-                  Use currently selected PYQ ("{currentQ.q.substring(0, 40)}...")
-                </label>
-              </div>
-            )}
-
-            {/* Prepare Button */}
             <button
-              onClick={handlePrepareAnswerText}
-              disabled={uploadedPages.length === 0 || isExtracting}
+              type="button"
+              disabled={isExtracting || uploadedPages.length === 0}
+              onClick={handleExtract}
               style={{
                 width: "100%",
-                background: uploadedPages.length > 0 && !isExtracting ? paperAccent : T.muted,
-                color: "#09090b",
+                background: isExtracting ? T.muted : `linear-gradient(135deg, ${T.purple} 0%, #4f46e5 100%)`,
+                color: "#ffffff",
                 border: "none",
                 borderRadius: 8,
-                fontWeight: 800,
-                fontSize: 13,
-                padding: "12px 0",
-                cursor: uploadedPages.length > 0 && !isExtracting ? "pointer" : "not-allowed",
-                fontFamily: T.font,
-                letterSpacing: "0.04em",
-                opacity: uploadedPages.length > 0 && !isExtracting ? 1 : 0.5,
+                fontWeight: 950,
+                fontSize: 14,
+                padding: "14px 20px",
+                cursor: isExtracting || uploadedPages.length === 0 ? "not-allowed" : "pointer",
+                boxShadow: uploadedPages.length > 0 && !isExtracting ? `0 4px 14px ${T.purple}40` : "none",
+                transition: "all 0.2s"
               }}
             >
-              {isExtracting ? "⌛ Extracting text via OCR..." : "✨ Prepare Answer Text"}
+              {isExtracting ? "🔍 Extracting Question & Answer (Gemini OCR)..." : "🔍 Extract & Verify"}
             </button>
           </div>
-        )}
+        </div>
 
-        {/* ── Verification Form ── */}
-        {inputMethod === "handwritten" && ocrSuccess && (
-          <div style={{
-            background: T.bg,
-            border: `1px solid ${T.borderMid}`,
-            borderRadius: 12,
-            padding: "20px",
-            marginBottom: 20,
-          }}>
-            <div style={{ fontSize: 16, fontWeight: 800, color: T.textBright, marginBottom: 4 }}>
-              Verify & Edit Extracted Answer
-            </div>
-            <div style={{ fontSize: 12, color: T.dim, marginBottom: 16 }}>
-              Review the OCR text and update metadata before saving this attempt.
-            </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 16 }}>
-              <div>
-                <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Paper</label>
-                <select
-                  value={verifiedPaper}
-                  onChange={(e) => setVerifiedPaper(e.target.value)}
-                  style={{
-                    width: "100%",
-                    background: T.surface,
-                    border: `1px solid ${T.borderMid}`,
-                    borderRadius: 8,
-                    color: T.text,
-                    padding: "8px 12px",
-                    fontSize: 13,
-                    fontFamily: T.font,
-                  }}
-                >
-                  <option value="gs1">GS1</option>
-                  <option value="gs2">GS2</option>
-                  <option value="gs3">GS3</option>
-                  <option value="gs4">GS4 Ethics</option>
-                  <option value="essay">Essay</option>
-                  <option value="geo_p1">Geography Optional P1</option>
-                  <option value="geo_p2">Geography Optional P2</option>
-                </select>
-              </div>
-
-              <div>
-                <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Subject/Topic</label>
-                <input
-                  type="text"
-                  value={verifiedTopic}
-                  onChange={(e) => setVerifiedTopic(e.target.value)}
-                  placeholder="e.g. Bhakti Movement"
-                  style={{
-                    width: "100%",
-                    background: T.surface,
-                    border: `1px solid ${T.borderMid}`,
-                    borderRadius: 8,
-                    color: T.text,
-                    padding: "8px 12px",
-                    fontSize: 13,
-                    fontFamily: T.font,
-                  }}
-                />
-              </div>
-
-              <div>
-                <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Marks</label>
-                <input
-                  type="text"
-                  value={verifiedMarks}
-                  onChange={(e) => setVerifiedMarks(e.target.value)}
-                  placeholder="e.g. 15"
-                  style={{
-                    width: "100%",
-                    background: T.surface,
-                    border: `1px solid ${T.borderMid}`,
-                    borderRadius: 8,
-                    color: T.text,
-                    padding: "8px 12px",
-                    fontSize: 13,
-                    fontFamily: T.font,
-                  }}
-                />
-              </div>
-
-              {questionSource === "pyq" && (
-                <div>
-                  <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Exam Year</label>
-                  <input
-                    type="text"
-                    value={verifiedYear}
-                    onChange={(e) => setVerifiedYear(e.target.value)}
-                    placeholder="e.g. 2023"
-                    style={{
-                      width: "100%",
-                      background: T.surface,
-                      border: `1px solid ${T.borderMid}`,
-                      borderRadius: 8,
-                      color: T.text,
-                      padding: "8px 12px",
-                      fontSize: 13,
-                      fontFamily: T.font,
-                    }}
-                  />
-                </div>
-              )}
-
-              {questionSource === "institute" && (
-                <>
-                  <div>
-                    <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Institute Name</label>
-                    <input
-                      type="text"
-                      value={verifiedInstitute}
-                      onChange={(e) => setVerifiedInstitute(e.target.value)}
-                      placeholder="e.g. Vision IAS"
-                      style={{
-                        width: "100%",
-                        background: T.surface,
-                        border: `1px solid ${T.borderMid}`,
-                        borderRadius: 8,
-                        color: T.text,
-                        padding: "8px 12px",
-                        fontSize: 13,
-                        fontFamily: T.font,
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Test Name/ID</label>
-                    <input
-                      type="text"
-                      value={verifiedTestName}
-                      onChange={(e) => setVerifiedTestName(e.target.value)}
-                      placeholder="e.g. Test 5"
-                      style={{
-                        width: "100%",
-                        background: T.surface,
-                        border: `1px solid ${T.borderMid}`,
-                        borderRadius: 8,
-                        color: T.text,
-                        padding: "8px 12px",
-                        fontSize: 13,
-                        fontFamily: T.font,
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Question Number</label>
-                    <input
-                      type="text"
-                      value={verifiedQuestionNumber}
-                      onChange={(e) => setVerifiedQuestionNumber(e.target.value)}
-                      placeholder="e.g. Q15"
-                      style={{
-                        width: "100%",
-                        background: T.surface,
-                        border: `1px solid ${T.borderMid}`,
-                        borderRadius: 8,
-                        color: T.text,
-                        padding: "8px 12px",
-                        fontSize: 13,
-                        fontFamily: T.font,
-                      }}
-                    />
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Question Text */}
-            <div style={{ marginBottom: 16 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                <label style={{ ...label11(T.subtle), fontSize: 9 }}>Question Text</label>
-                {currentQ && (
-                  <label style={{ fontSize: 11, color: T.dim, cursor: "pointer", display: "flex", alignItems: "center", gap: 4 }}>
-                    <input
-                      type="checkbox"
-                      checked={useSelectedCardQuestion}
-                      onChange={(e) => {
-                        const checked = e.target.checked;
-                        setUseSelectedCardQuestion(checked);
-                        if (checked) {
-                          setVerifiedQuestion(currentQ.q);
-                          setVerifiedPaper(paper);
-                          setVerifiedMarks(marks);
-                          setVerifiedYear(currentQ.year || "");
-                          if (currentQ.hint) {
-                            setVerifiedTopic(currentQ.hint.replace("Focus: ", ""));
-                          }
-                        } else {
-                          setVerifiedQuestion("");
-                        }
-                      }}
-                    />
-                    Use currently selected PYQ
-                  </label>
-                )}
-              </div>
-              <textarea
-                value={verifiedQuestion}
-                placeholder="Enter the question text for this upload"
-                onChange={(e) => setVerifiedQuestion(e.target.value)}
-                style={{
-                  width: "100%",
-                  height: 60,
-                  background: T.surface,
-                  border: `1px solid ${T.borderMid}`,
-                  borderRadius: 8,
-                  color: T.text,
-                  padding: "8px 12px",
-                  fontSize: 13,
-                  fontFamily: T.font,
-                  resize: "vertical",
-                }}
-              />
-            </div>
-
-            {/* Extracted Answer */}
-            <div style={{ marginBottom: 20 }}>
-              <label style={{ ...label11(T.subtle), display: "block", marginBottom: 6, fontSize: 9 }}>Extracted Candidate Answer</label>
-              <textarea
-                value={verifiedAnswer}
-                onChange={(e) => setVerifiedAnswer(e.target.value)}
-                style={{
-                  width: "100%",
-                  height: 150,
-                  background: T.surface,
-                  border: `1px solid ${T.borderMid}`,
-                  borderRadius: 8,
-                  color: T.text,
-                  padding: "8px 12px",
-                  fontSize: 13,
-                  fontFamily: T.font,
-                  lineHeight: 1.6,
-                  resize: "vertical",
-                }}
-              />
-            </div>
-
-            {saveError && (
-              <div style={{
-                background: `${T.red}15`,
-                border: `1px solid ${T.red}33`,
-                borderRadius: 8,
-                padding: "10px 12px",
-                color: T.red,
-                fontSize: 12,
-                marginBottom: 16,
-              }}>
-                ⚠️ {saveError}
-              </div>
-            )}
-
-            {saveSuccess && (
-              <div style={{
-                background: `${T.green}15`,
-                border: `1px solid ${T.green}33`,
-                borderRadius: 8,
-                padding: "10px 12px",
-                color: T.green,
-                fontSize: 12,
-                marginBottom: 16,
-                fontWeight: 700,
-              }}>
-                ✓ Attempt saved successfully! Redirecting to workspace...
-              </div>
-            )}
-
-            {/* Actions */}
-            <div style={{ display: "flex", gap: 10 }}>
-              <button
-                onClick={() => setOcrSuccess(false)}
-                disabled={isSavingAttempt}
-                style={{
-                  flex: 1,
-                  background: "transparent",
-                  color: T.dim,
-                  border: `1px solid ${T.borderMid}`,
-                  borderRadius: 8,
-                  fontWeight: 600,
-                  fontSize: 13,
-                  padding: "10px 0",
-                  cursor: isSavingAttempt ? "not-allowed" : "pointer",
-                  fontFamily: T.font,
-                }}
-              >
-                Back to Upload
-              </button>
-
-              <button
-                onClick={handleSaveAndContinue}
-                disabled={isSavingAttempt || !verifiedQuestion.trim() || !verifiedAnswer.trim()}
-                style={{
-                  flex: 2,
-                  background: isSavingAttempt || !verifiedQuestion.trim() || !verifiedAnswer.trim() ? T.muted : paperAccent,
-                  color: "#09090b",
-                  border: "none",
-                  borderRadius: 8,
-                  fontWeight: 800,
-                  fontSize: 13,
-                  padding: "10px 0",
-                  cursor: isSavingAttempt || !verifiedQuestion.trim() || !verifiedAnswer.trim() ? "not-allowed" : "pointer",
-                  fontFamily: T.font,
-                  letterSpacing: "0.03em",
-                }}
-              >
-                {isSavingAttempt ? "Saving..." : "Save & Continue →"}
-              </button>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
@@ -2447,6 +2412,9 @@ export default function MainsPage() {
             )}
           </div>
         </div>
+
+        {/* ═══ UPLOAD REVIEW CARD ══════════════════════════════════════════════ */}
+        <UploadAnswerReviewCard />
 
         {/* ═══ QUICK PRACTICE ══════════════════════════════════════════════════ */}
         <QuickPractice />

@@ -29,6 +29,7 @@ import { buildAir1Prompt } from "../mainsReview/buildAir1Prompt.js";
 import { saveAir1ReviewIntelligence } from "../repositories/air1ReviewRepository.js";
 import multer from "multer";
 import { extractHandwrittenAnswer } from "../services/ai/extractHandwrittenAnswer.js";
+import { extractQuestionAnswerFromImages } from "../services/ai/extractQuestionAnswer.js";
 
 const upload = multer({ storage: multer.memoryStorage() });
 
@@ -250,6 +251,17 @@ router.post("/extract-answer", upload.array("pages", 5), async (req, res) => {
       return res.status(400).json({ ok: false, error: "No pages uploaded" });
     }
 
+    const type = req.query.type || req.body.type || "answer";
+    let customPrompt = null;
+    if (type === "question") {
+      customPrompt = `You are extracting a UPSC Mains question from an uploaded image or PDF document.
+Rules:
+1. Extract only the question text cleanly and accurately. Do not add metadata, tags, comments, or answers.
+2. Maintain paragraph breaks, numbering, and subparts exactly as printed.
+3. If a word is unreadable, write [unclear].
+4. Return only the extracted question text.`;
+    }
+
     const images = req.files.map(file => ({
       inlineData: {
         data: file.buffer.toString("base64"),
@@ -257,12 +269,44 @@ router.post("/extract-answer", upload.array("pages", 5), async (req, res) => {
       }
     }));
 
-    const text = await extractHandwrittenAnswer(images);
+    const text = await extractHandwrittenAnswer(images, customPrompt);
 
     return res.json({ ok: true, text });
   } catch (err) {
     console.error("[mainsReview] extract-answer error:", err);
     return res.status(500).json({ ok: false, error: String(err?.message || err) });
+  }
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// POST /api/mains/extract-question-answer
+// Multipart form with up to 5 image/PDF files under 'pages' field.
+// Returns: strict JSON { success, questionText, answerText, detectedMetadata, confidence, warnings }
+// ────────────────────────────────────────────────────────────────────────────
+router.post("/extract-question-answer", upload.array("pages", 5), async (req, res) => {
+  console.log("[extract-question-answer] files:", req.files?.length);
+  console.log("[extract-question-answer] body:", req.body);
+  try {
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ success: false, error: "No pages uploaded" });
+    }
+
+    const images = req.files.map(file => ({
+      inlineData: {
+        data: file.buffer.toString("base64"),
+        mimeType: file.mimetype
+      }
+    }));
+
+    const result = await extractQuestionAnswerFromImages(images);
+    return res.json(result);
+  } catch (err) {
+    console.error("[extract-question-answer] failed:", err);
+    return res.status(500).json({
+      success: false,
+      error: err.message || "Extraction failed",
+      stack: process.env.NODE_ENV === "development" ? err.stack : undefined
+    });
   }
 });
 

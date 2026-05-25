@@ -1,7 +1,7 @@
 import { geminiModel } from './geminiClient.js';
 
-export async function extractHandwrittenAnswer(images) {
-  const prompt = `You are extracting a handwritten UPSC Mains answer from uploaded answer sheet images.
+export async function extractHandwrittenAnswer(images, customPrompt) {
+  const prompt = customPrompt || `You are extracting a handwritten UPSC Mains answer from uploaded answer sheet images.
 
 Rules:
 1. Extract only the student's answer text.

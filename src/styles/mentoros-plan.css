@@ -161,8 +161,8 @@
 .field-label input,
 .field-label textarea,
 .field-label select {
-  background: #1A1A1A;
-  border: 1px solid #2A2A2A;
+  background: var(--mos-input-bg, #1A1A1A);
+  border: 1px solid var(--mos-border, #2A2A2A);
   border-radius: 8px;
   padding: 9px 13px;
   color: var(--txt);
@@ -188,7 +188,7 @@
 /* ── MINI STAT (inside Daily Log card) ── */
 .mos-mini-stat {
   background: var(--s2);
-  border: 1px solid #2A2A2A;
+  border: 1px solid var(--mos-border, #2A2A2A);
   border-radius: 10px;
   padding: 14px 16px;
 }
@@ -232,35 +232,43 @@
 
 /* ── ADVANCED CONTROLS COLLAPSIBLE ── */
 .adv-controls {
-  border: 1px solid #141e30;
+  border: 1px solid var(--mos-border);
   border-radius: 14px;
   overflow: hidden;
+  background: var(--mos-surface);
 }
 
 .adv-controls-summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 18px;
+  padding: 14px 20px;
   cursor: pointer;
   list-style: none;
-  background: #080c18;
+  background: var(--mos-bg-soft);
   font-family: var(--mono, monospace);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #334155;
+  color: var(--mos-text-soft);
   user-select: none;
-  transition: color 0.15s;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid transparent;
 }
 .adv-controls-summary::-webkit-details-marker { display: none; }
-.adv-controls-summary:hover { color: #475569; }
+.adv-controls-summary:hover {
+  color: var(--mos-text);
+}
+
+details.adv-controls[open] .adv-controls-summary {
+  border-bottom-color: var(--mos-border);
+}
 
 .adv-controls-chevron {
   font-size: 16px;
   font-weight: 400;
-  color: #1e2d4a;
+  color: var(--mos-text-soft);
   transition: transform 0.2s;
   display: inline-block;
 }
@@ -270,11 +278,10 @@ details.adv-controls[open] .adv-controls-chevron {
 
 .adv-controls-body {
   padding: 20px;
-  background: #060a14;
+  background: var(--mos-surface);
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  border-top: 1px solid #0f1826;
+  gap: 24px;
 }
 
 /* ── OCR APPROVAL OVERLAY / MODAL ── */
@@ -417,8 +424,11 @@ details.adv-controls[open] .adv-controls-chevron {
 .mos-plan-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px; /* Comfortable vertical spacing between sections */
   padding-bottom: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* Neutralise layout.css margin-bottom on dashboard-hero so wrapper gap is the sole spacing */
@@ -426,16 +436,23 @@ details.adv-controls[open] .adv-controls-chevron {
   margin-bottom: 0;
 }
 
-/* ── Hero card: gradient dark background, rounded, spaced ── */
+/* ── Hero card: light surface background, rounded, soft borders ── */
 .mos-hero-card {
+  background: var(--mos-surface);
+  border: 1px solid var(--mos-border);
+  border-top: 2px solid var(--mos-accent);
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: var(--mos-shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .mos-hero-card {
   background: linear-gradient(135deg, #0d1020 0%, #0a0e1a 60%, #080c18 100%);
   border: 1px solid #141e30;
   border-top: 2px solid rgba(249, 115, 22, 0.35);
-  border-radius: 16px;
-  padding: 24px 28px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-  position: relative;
-  overflow: hidden;
 }
 
 .mos-hero-card::before {
@@ -449,8 +466,53 @@ details.adv-controls[open] .adv-controls-chevron {
   align-items: flex-end;
   justify-content: center;
   gap: 4px;
-  padding-left: 24px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: var(--mos-bg-soft);
+  border: 1px solid var(--mos-border);
 }
+
+[data-theme="dark"] .mos-hero-stat-block {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mos-hero-card .hero-title {
+  color: var(--mos-text) !important;
+}
+
+.mos-hero-card .hero-highlight {
+  color: var(--mos-accent) !important;
+}
+
+.mos-hero-card .hero-sub {
+  color: var(--mos-text-soft) !important;
+}
+
+.mos-hero-card .hero-stat-value {
+  color: var(--mos-accent) !important;
+}
+
+.mos-hero-card .hero-stat-label {
+  color: var(--mos-text-soft) !important;
+}
+
+.mos-hero-card .hero-stat-note {
+  color: var(--mos-text-soft) !important;
+}
+
+.mos-hero-card .chip {
+  background: var(--mos-bg-soft) !important;
+  border: 1px solid var(--mos-border) !important;
+  color: var(--mos-text-soft) !important;
+}
+
+.mos-hero-card .chip.primary {
+  background: var(--mos-accent-soft) !important;
+  color: var(--mos-accent) !important;
+  border: 1px solid var(--mos-accent-soft) !important;
+}
+
 
 /* ── Spotlight card: elevated, more padding, rounded ── */
 .mos-spotlight-card {

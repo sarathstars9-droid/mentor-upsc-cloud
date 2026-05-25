@@ -1,0 +1,171 @@
+{
+  "schema": "mainsAnswerAttempt",
+  "attemptId": "attempt_1779271325621_72m9e7",
+  "createdAt": "2026-05-20T10:02:05.622Z",
+  "userId": "user_1",
+  "source": {
+    "mode": "pyq",
+    "paper": "GS1",
+    "examYear": 2021,
+    "questionId": "MAINS_GS1_2021_014",
+    "questionKey": "gs1:2021:15o3jm8:briefly-mention-the-alignment-of-major-mountain-ranges-of-the-world-and-explain-",
+    "questionMarks": 15,
+    "targetWords": 200,
+    "upscTimeMinutes": 9
+  },
+  "question": {
+    "text": "Briefly mention the alignment of major mountain ranges of the world and explain their impact on local weather conditions, with examples",
+    "questionText": "Briefly mention the alignment of major mountain ranges of the world and explain their impact on local weather conditions, with examples",
+    "question_key": "gs1:2021:15o3jm8:briefly-mention-the-alignment-of-major-mountain-ranges-of-the-world-and-explain-",
+    "questionKey": "gs1:2021:15o3jm8:briefly-mention-the-alignment-of-major-mountain-ranges-of-the-world-and-explain-",
+    "id": "MAINS_GS1_2021_014",
+    "directiveWord": "",
+    "focusLabel": "",
+    "topicNodeId": "",
+    "subjectTag": "general"
+  },
+  "writingSession": {
+    "startedAt": "2026-05-20T10:02:05.615Z",
+    "endedAt": "2026-05-20T10:02:05.615Z",
+    "timeTakenSeconds": 0
+  },
+  "answerUpload": {
+    "pageCount": 3,
+    "pages": [
+      {
+        "pageNo": 1,
+        "fileName": "01 geog1.jpeg",
+        "storagePath": "blob:http://localhost:5173/bd8e036b-57f7-41d7-aa8c-efefc576e911"
+      },
+      {
+        "pageNo": 2,
+        "fileName": "2geo2.jpeg",
+        "storagePath": "blob:http://localhost:5173/0536427c-d822-4e03-8ca2-3777e667325b"
+      },
+      {
+        "pageNo": 3,
+        "fileName": "3geo3.jpeg",
+        "storagePath": "blob:http://localhost:5173/b6e4ee32-4850-402c-b813-fcc9f9819ca4"
+      }
+    ]
+  },
+  "extraction": {
+    "method": "chatgpt_manual_paste",
+    "promptVersion": "mains-answer-extraction-v1",
+    "extractedText": "Mountain ranges across the world\nare responsible for reshaping landforms\nand Vegetation primarily and also\nhave significant role shaping weather\nconditions.\n\nMountain Ranges - Their Impact on\nweather\n1. Himalayas\nin India, Nepal\n- 1. Responsible for\nMonsoon in ganga\nplains.\n2. They stop cold\nwinds from central\nasia.\n2. Ural Mountains.\nin Asia\n3. These ranges are\nhome for various\nRiver systems and\nalso curtail the\nspread of grasslands\n3. Rockies in\nNorth America\n4. During winters\ndry winds from\nRockies descends towards\nRockies in great plains and\nNorth America\nhelps agriculture\n4. Andes Mountains\nin South America\n5. Andes acts as\nbarrier and\ncurtails spread\nof Atacama desert\n5. Westernghats\nin India\n6. Very much\nresponsible for\nMonsoon rain in\nwest coast of India\nand makes its\nleeward side dry\nregion.\n6. Alps in\nEurope\n7 Similar to dry air\ndescending rockies\nalps also contribute\nto agriculture in\nEurope region.\n7. Atlas Mountains\nin Africa\n8 spreading accross\nNorth west Africa, these\nranges support vegetation\nand moderate local\nweather.\n\nThus, Mountains acts as Natural barrier\nHome for rivers, facilitate agriculture\nandsattlement and finally helps shaping\nlocal weather patterns, which in turn\ninfluence population distribution and\nRegional development."
+  },
+  "selfReview": {
+    "mistakeTypes": [],
+    "severity": "medium",
+    "mustRevise": false,
+    "note": ""
+  },
+  "air1Review": {
+    "rawText": "Source used: uploaded candidate answer + MentorOS JSON requirement. \n\n<MENTOROS_JSON>\n{\n\"score\": 5,\n\"potentialScore\": 9,\n\"examinerImpression\": \"The answer shows awareness that mountains influence weather and gives several examples. However, the core demand of 'alignment' is mostly missing, and some impacts are vague or inaccurate. With a small world-map/table structure and precise weather mechanisms, this can reach 8-9/15.\",\n\"missingDimensionsChecklist\": [\n{\n\"dimension\": \"Alignment of ranges\",\n\"status\": \"majorly missed\"\n},\n{\n\"dimension\": \"World map/rough sketch\",\n\"status\": \"missed\"\n},\n{\n\"dimension\": \"Mechanisms like orographic rain, rain shadow, foehn/chinook, monsoon barrier\",\n\"status\": \"partly present\"\n},\n{\n\"dimension\": \"Accuracy of examples\",\n\"status\": \"needs correction\"\n},\n{\n\"dimension\": \"Balanced global coverage\",\n\"status\": \"partly present\"\n}\n],\n\"idealStructure\": [\n\"Intro: Define mountain alignment as linear/arc-shaped arrangement of ranges along tectonic belts and explain that it modifies wind, rainfall and temperature.\",\n\"Body 1: Mention alignments in a compact table: Himalayas E-W, Andes N-S, Rockies NW-SE/N-S, Alps arc E-W, Urals N-S, Great Dividing Range N-S.\",\n\"Body 2: Explain weather impacts through mechanisms: orographic rainfall, rain-shadow effect, cold-wind barrier, local warm winds, monsoon deflection.\",\n\"Body 3: Add precise examples: Himalayas-monsoon and cold winds; Western Ghats-rain shadow; Andes-Atacama; Rockies-Chinook; Alps-Foehn.\",\n\"Conclusion: Mountains are climatic dividers, not just landform barriers; they shape agriculture, settlements and regional ecosystems.\"\n],\n\"themeFlowchart\": [\n\"Mountain alignment\",\n\"Intercepts wind systems\",\n\"Forces air uplift\",\n\"Orographic rainfall on windward side\",\n\"Dry descending air on leeward side\",\n\"Rain shadow/deserts/local winds\",\n\"Impact on agriculture, settlements and ecosystems\"\n],\n\"diagramSuggestions\": [\n{\n\"placement\": \"After introduction\",\n\"type\": \"Mini world map showing major mountain belts\",\n\"labels\": \"Himalayas: E-W; Andes: N-S west South America; Rockies: N-S/NW-SE west North America; Alps: E-W arc Europe; Urals: N-S; Great Dividing Range: N-S east Australia\",\n\"whyItHelps\": \"Directly answers the 'alignment' part, which is the biggest missing demand.\"\n},\n{\n\"placement\": \"Before conclusion\",\n\"type\": \"Windward-leeward cross-section diagram\",\n\"labels\": \"Moist wind -> uplift -> condensation/rainfall -> crest -> descending dry air -> rain shadow\",\n\"whyItHelps\": \"Shows the weather mechanism visually and can add 1-1.5 marks.\"\n}\n],\n\"mnemonic\": {\n\"word\": \"RAINS\",\n\"meaning\": [\n\"R — Rainfall through orographic uplift\",\n\"A — Alignment of mountain belts\",\n\"I — Interception of winds and air masses\",\n\"N — Natural barrier to cold/dry winds\",\n\"S — Shadow zones and local winds\"\n],\n\"whyItFits\": \"The question asks how the alignment of mountain ranges changes local weather; RAINS captures both spatial alignment and climatic mechanisms.\"\n},\n\"topImprovements\": [\n\"Start with alignment first; do not jump directly to impacts.\",\n\"Use a compact table: Range | Alignment | Weather impact | Example.\",\n\"Correct the Andes point: Andes help create/maintain the Atacama rain-shadow condition rather than 'curtail spread' of the desert.\",\n\"Replace vague points like 'supports vegetation' with mechanisms such as orographic rainfall, rain shadow, Chinook/Foehn winds.\",\n\"Add one simple world map or windward-leeward diagram.\"\n],\n\"air1Upgrades\": [\n{\n\"section\": \"Introduction\",\n\"yourLine\": \"Mountain ranges across the world are responsible for reshaping landforms and Vegetation primarily and also have significant role shaping weather conditions.\",\n\"air1Upgrade\": \"Major mountain ranges, aligned as linear or arc-shaped belts along tectonic zones, act as climatic barriers by modifying winds, rainfall, temperature and local pressure conditions.\",\n\"whyBetter\": \"It directly links alignment with weather, which is the demand of the question.\"\n},\n{\n\"section\": \"Body paragraph\",\n\"yourLine\": \"Western Ghats in India are very much responsible for Monsoon rain in west coast of India and makes its leeward side dry region.\",\n\"air1Upgrade\": \"The Western Ghats, aligned nearly north-south parallel to India’s west coast, force Arabian Sea monsoon winds to rise, causing heavy windward rainfall in Konkan-Malabar and a rain-shadow over interior Deccan.\",\n\"whyBetter\": \"It adds alignment, mechanism, location and example in one compact point.\"\n},\n{\n\"section\": \"Conclusion\",\n\"yourLine\": \"Thus, Mountains acts as Natural barrier Home for rivers, facilitate agriculture and settlement and finally helps shaping local weather patterns.\",\n\"air1Upgrade\": \"Thus, mountain ranges are not merely relief features; their alignment makes them climatic dividers that shape rainfall regimes, deserts, local winds, agriculture and settlement patterns.\",\n\"whyBetter\": \"It gives a sharper geography conclusion and returns to the question demand.\"\n}\n],\n\"modelAnswer\": \"Mountain ranges are linear or arc-shaped relief barriers whose alignment strongly controls local weather by intercepting winds and air masses. Major alignments include: Himalayas — east-west across Asia; Andes — north-south along western South America; Rockies — north-south/NW-SE in western North America; Alps — east-west arc in Europe; Urals — north-south in Russia; Western Ghats — north-south parallel to India’s west coast. Their weather impact is seen through five mechanisms. First, orographic rainfall: Western Ghats cause heavy rainfall on the Konkan-Malabar coast while creating a rain-shadow over interior Deccan. Second, climatic barrier effect: Himalayas block cold Central Asian winds and help maintain monsoonal rainfall over the Indo-Gangetic plain. Third, rain-shadow deserts: Andes block moisture, contributing to the aridity of the Atacama and Patagonia margins. Fourth, local warm winds: Rockies generate Chinook winds on eastern slopes, while Alps produce Foehn winds, raising temperature and aiding snowmelt/agriculture. Fifth, regional moderation: Atlas Mountains receive Mediterranean moisture on windward slopes and influence vegetation in northwest Africa. Thus, the alignment of mountains controls wind movement, rainfall distribution, temperature contrasts and settlement-agriculture patterns.\"\n,\n\"whyThisScoresHigh\": [\n\"It answers both parts: alignment and local weather impact.\",\n\"It uses precise geographical mechanisms instead of generic statements.\",\n\"It gives global examples across Asia, Europe, Africa, North America and South America.\",\n\"It corrects common errors by linking each range to windward/leeward effects.\",\n\"It is diagram-friendly and examiner-friendly for a 15-marker.\"\n],\n\"detailedMentorReview\": \"This is a sincere but incomplete answer. Your strongest point is that you remembered many mountain ranges and attempted examples. The main weakness is that the question begins with 'alignment', but your answer mostly lists ranges without saying whether they are east-west, north-south, arc-shaped or coast-parallel. In Geography, spatial orientation itself is a scoring point. Second, the answer needs mechanisms. For example, 'Alps help agriculture' is too vague; write 'Foehn winds descend on leeward slopes, raising temperature and aiding snowmelt.' Similarly, Rockies should be linked with Chinook winds, Western Ghats with orographic rainfall and rain-shadow, Andes with Atacama rain-shadow, Himalayas with monsoon barrier and protection from cold winds. Avoid weak examples like Urals unless you can clearly connect them to weather. For next attempt, use a 4-column table: Mountain Range | Alignment | Weather Mechanism | Example. Add a small world map or windward-leeward diagram. This alone can lift the answer from 5/15 to around 8-9/15.\"\n}\n</MENTOROS_JSON>",
+    "parsedJson": {
+      "score": 5,
+      "potentialScore": 9,
+      "examinerImpression": "The answer shows awareness that mountains influence weather and gives several examples. However, the core demand of 'alignment' is mostly missing, and some impacts are vague or inaccurate. With a small world-map/table structure and precise weather mechanisms, this can reach 8-9/15.",
+      "missingDimensionsChecklist": [
+        {
+          "dimension": "Alignment of ranges",
+          "status": "majorly missed"
+        },
+        {
+          "dimension": "World map/rough sketch",
+          "status": "missed"
+        },
+        {
+          "dimension": "Mechanisms like orographic rain, rain shadow, foehn/chinook, monsoon barrier",
+          "status": "partly present"
+        },
+        {
+          "dimension": "Accuracy of examples",
+          "status": "needs correction"
+        },
+        {
+          "dimension": "Balanced global coverage",
+          "status": "partly present"
+        }
+      ],
+      "idealStructure": [
+        "Intro: Define mountain alignment as linear/arc-shaped arrangement of ranges along tectonic belts and explain that it modifies wind, rainfall and temperature.",
+        "Body 1: Mention alignments in a compact table: Himalayas E-W, Andes N-S, Rockies NW-SE/N-S, Alps arc E-W, Urals N-S, Great Dividing Range N-S.",
+        "Body 2: Explain weather impacts through mechanisms: orographic rainfall, rain-shadow effect, cold-wind barrier, local warm winds, monsoon deflection.",
+        "Body 3: Add precise examples: Himalayas-monsoon and cold winds; Western Ghats-rain shadow; Andes-Atacama; Rockies-Chinook; Alps-Foehn.",
+        "Conclusion: Mountains are climatic dividers, not just landform barriers; they shape agriculture, settlements and regional ecosystems."
+      ],
+      "themeFlowchart": [
+        "Mountain alignment",
+        "Intercepts wind systems",
+        "Forces air uplift",
+        "Orographic rainfall on windward side",
+        "Dry descending air on leeward side",
+        "Rain shadow/deserts/local winds",
+        "Impact on agriculture, settlements and ecosystems"
+      ],
+      "diagramSuggestions": [
+        {
+          "placement": "After introduction",
+          "type": "Mini world map showing major mountain belts",
+          "labels": "Himalayas: E-W; Andes: N-S west South America; Rockies: N-S/NW-SE west North America; Alps: E-W arc Europe; Urals: N-S; Great Dividing Range: N-S east Australia",
+          "whyItHelps": "Directly answers the 'alignment' part, which is the biggest missing demand."
+        },
+        {
+          "placement": "Before conclusion",
+          "type": "Windward-leeward cross-section diagram",
+          "labels": "Moist wind -> uplift -> condensation/rainfall -> crest -> descending dry air -> rain shadow",
+          "whyItHelps": "Shows the weather mechanism visually and can add 1-1.5 marks."
+        }
+      ],
+      "mnemonic": {
+        "word": "RAINS",
+        "meaning": [
+          "R — Rainfall through orographic uplift",
+          "A — Alignment of mountain belts",
+          "I — Interception of winds and air masses",
+          "N — Natural barrier to cold/dry winds",
+          "S — Shadow zones and local winds"
+        ],
+        "whyItFits": "The question asks how the alignment of mountain ranges changes local weather; RAINS captures both spatial alignment and climatic mechanisms."
+      },
+      "topImprovements": [
+        "Start with alignment first; do not jump directly to impacts.",
+        "Use a compact table: Range | Alignment | Weather impact | Example.",
+        "Correct the Andes point: Andes help create/maintain the Atacama rain-shadow condition rather than 'curtail spread' of the desert.",
+        "Replace vague points like 'supports vegetation' with mechanisms such as orographic rainfall, rain shadow, Chinook/Foehn winds.",
+        "Add one simple world map or windward-leeward diagram."
+      ],
+      "air1Upgrades": [
+        {
+          "section": "Introduction",
+          "yourLine": "Mountain ranges across the world are responsible for reshaping landforms and Vegetation primarily and also have significant role shaping weather conditions.",
+          "air1Upgrade": "Major mountain ranges, aligned as linear or arc-shaped belts along tectonic zones, act as climatic barriers by modifying winds, rainfall, temperature and local pressure conditions.",
+          "whyBetter": "It directly links alignment with weather, which is the demand of the question."
+        },
+        {
+          "section": "Body paragraph",
+          "yourLine": "Western Ghats in India are very much responsible for Monsoon rain in west coast of India and makes its leeward side dry region.",
+          "air1Upgrade": "The Western Ghats, aligned nearly north-south parallel to India’s west coast, force Arabian Sea monsoon winds to rise, causing heavy windward rainfall in Konkan-Malabar and a rain-shadow over interior Deccan.",
+          "whyBetter": "It adds alignment, mechanism, location and example in one compact point."
+        },
+        {
+          "section": "Conclusion",
+          "yourLine": "Thus, Mountains acts as Natural barrier Home for rivers, facilitate agriculture and settlement and finally helps shaping local weather patterns.",
+          "air1Upgrade": "Thus, mountain ranges are not merely relief features; their alignment makes them climatic dividers that shape rainfall regimes, deserts, local winds, agriculture and settlement patterns.",
+          "whyBetter": "It gives a sharper geography conclusion and returns to the question demand."
+        }
+      ],
+      "modelAnswer": "Mountain ranges are linear or arc-shaped relief barriers whose alignment strongly controls local weather by intercepting winds and air masses. Major alignments include: Himalayas — east-west across Asia; Andes — north-south along western South America; Rockies — north-south/NW-SE in western North America; Alps — east-west arc in Europe; Urals — north-south in Russia; Western Ghats — north-south parallel to India’s west coast. Their weather impact is seen through five mechanisms. First, orographic rainfall: Western Ghats cause heavy rainfall on the Konkan-Malabar coast while creating a rain-shadow over interior Deccan. Second, climatic barrier effect: Himalayas block cold Central Asian winds and help maintain monsoonal rainfall over the Indo-Gangetic plain. Third, rain-shadow deserts: Andes block moisture, contributing to the aridity of the Atacama and Patagonia margins. Fourth, local warm winds: Rockies generate Chinook winds on eastern slopes, while Alps produce Foehn winds, raising temperature and aiding snowmelt/agriculture. Fifth, regional moderation: Atlas Mountains receive Mediterranean moisture on windward slopes and influence vegetation in northwest Africa. Thus, the alignment of mountains controls wind movement, rainfall distribution, temperature contrasts and settlement-agriculture patterns.",
+      "whyThisScoresHigh": [
+        "It answers both parts: alignment and local weather impact.",
+        "It uses precise geographical mechanisms instead of generic statements.",
+        "It gives global examples across Asia, Europe, Africa, North America and South America.",
+        "It corrects common errors by linking each range to windward/leeward effects.",
+        "It is diagram-friendly and examiner-friendly for a 15-marker."
+      ],
+      "detailedMentorReview": "This is a sincere but incomplete answer. Your strongest point is that you remembered many mountain ranges and attempted examples. The main weakness is that the question begins with 'alignment', but your answer mostly lists ranges without saying whether they are east-west, north-south, arc-shaped or coast-parallel. In Geography, spatial orientation itself is a scoring point. Second, the answer needs mechanisms. For example, 'Alps help agriculture' is too vague; write 'Foehn winds descend on leeward slopes, raising temperature and aiding snowmelt.' Similarly, Rockies should be linked with Chinook winds, Western Ghats with orographic rainfall and rain-shadow, Andes with Atacama rain-shadow, Himalayas with monsoon barrier and protection from cold winds. Avoid weak examples like Urals unless you can clearly connect them to weather. For next attempt, use a 4-column table: Mountain Range | Alignment | Weather Mechanism | Example. Add a small world map or windward-leeward diagram. This alone can lift the answer from 5/15 to around 8-9/15."
+    }
+  },
+  "status": "saved"
+}

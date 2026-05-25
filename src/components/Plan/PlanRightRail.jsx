@@ -28,7 +28,7 @@ export default function PlanRightRail({
                         Click <b>Weekly Rollup</b> to generate the weekly row. (See it in Google Sheet.)
                     </div>
                 ) : (
-                    <div className="footer-note" style={{ fontSize: 14, color: "#F3F2EE" }}>
+                    <div className="footer-note" style={{ fontSize: 14, color: "var(--mos-text)" }}>
                         {weekly.message}
                     </div>
                 )}
@@ -120,7 +120,7 @@ export default function PlanRightRail({
                         </>
                     )}
 
-                    <button disabled={busy} onClick={onSaveNightReview}>
+                    <button className="btn btn-primary" style={{ width: "100%", marginTop: 8 }} disabled={busy} onClick={onSaveNightReview}>
                         Save Night Review + Loops + Analyze Day
                     </button>
                 </div>
@@ -137,7 +137,7 @@ export default function PlanRightRail({
                     <>
                         <div
                             className="footer-note"
-                            style={{ marginBottom: 12, fontSize: 14, color: "#F3F2EE" }}
+                            style={{ marginBottom: 12, fontSize: 14, color: "var(--mos-text)" }}
                         >
                             Active loops: <b>{flags.length}</b> | Window days:{" "}
                             <b>{loops.windowDays ?? "NA"}</b>

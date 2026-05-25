@@ -1,0 +1,170 @@
+{
+  "schema": "mainsAnswerAttempt",
+  "attemptId": "attempt_1779692859550_ukhvbc",
+  "createdAt": "2026-05-25T07:07:39.550Z",
+  "userId": "user_1",
+  "source": {
+    "mode": "pyq",
+    "paper": "GS1",
+    "examYear": "2015",
+    "questionId": "mains_upload_1779689428148_b14g7j",
+    "questionKey": "gs1:2015:13m6f0a:how-far-do-you-agree-that-the-behaviour-of-indian-monsoon-has-been-changing-due-",
+    "questionMarks": 15,
+    "targetWords": 250,
+    "upscTimeMinutes": 9
+  },
+  "question": {
+    "text": "How far do you agree that the behaviour of Indian monsoon has been changing due to humanising Landscape? Discuss. 2015",
+    "questionText": "How far do you agree that the behaviour of Indian monsoon has been changing due to humanising Landscape? Discuss. 2015",
+    "question_key": "gs1:2015:13m6f0a:how-far-do-you-agree-that-the-behaviour-of-indian-monsoon-has-been-changing-due-",
+    "questionKey": "gs1:2015:13m6f0a:how-far-do-you-agree-that-the-behaviour-of-indian-monsoon-has-been-changing-due-",
+    "id": "mains_upload_1779689428148_b14g7j",
+    "directiveWord": "",
+    "focusLabel": "Indian Monsoon and Climate Change",
+    "topicNodeId": "",
+    "subjectTag": "general"
+  },
+  "writingSession": {
+    "startedAt": "2026-05-25T07:07:39.514Z",
+    "endedAt": "2026-05-25T07:07:39.514Z",
+    "timeTakenSeconds": 0
+  },
+  "answerUpload": {
+    "pageCount": 2,
+    "pages": [
+      {
+        "pageNo": 1,
+        "fileName": "new g1.jpeg",
+        "storagePath": ""
+      },
+      {
+        "pageNo": 2,
+        "fileName": "new g2.jpeg",
+        "storagePath": ""
+      }
+    ]
+  },
+  "extraction": {
+    "method": "chatgpt_manual_paste",
+    "promptVersion": "mains-answer-extraction-v1",
+    "extractedText": "Indian Monsoon is not only a seasonal wind system but a landscape guided climatic mechanism. Physical features Orient the behaviour of Monsoon.\nI can agree to larger extent that humanised landscape definitely impact Monsoon.\n1. Deforestation and land use change near western ghats and other critical Regions has led to reduced Moisture affecting Rainfall pattern.\n2. Urbanisation and Urban heat Island led to altered Rainfall pattern resulting in urban floods in Mumbai, delhi\n3. Wetland and floodplain encroachment changed monsoon impact where a normal Rainfall leading to drainage collapse water logging.\n4. Hill slope modification like Roads tourism, hydropower projects resulted in turning monsoon as disaster like Hasfloods, landslides.\nHowever, Monsoon behaviour is also controlled by Indian Oceandipole Elnino, jetstreams and Seasurface temperature anomalies\nHumanising landscape acts as modifier\nIndia needs Monsoon-Sensitive landscape planning."
+  },
+  "selfReview": {
+    "mistakeTypes": [],
+    "severity": "medium",
+    "mustRevise": false,
+    "note": ""
+  },
+  "air1Review": {
+    "rawText": "<MENTOROS_JSON>\n{\n\"score\": 5.5,\n\"potentialScore\": 10.5,\n\"examinerImpression\": \"Good conceptual direction: you understood that monsoon is landscape-guided and humans are modifying its local expression. But the answer is too brief for 15 marks, lacks spatial examples, diagram, balanced evaluation and clear mechanism. With better structure and 2 Indian map-based examples, this can reach 9.5-10.5/15.\",\n\"missingDimensionsChecklist\": [\n{\n\"dimension\": \"Small India map showing monsoon branches and humanised hotspots\",\n\"status\": \"missed\"\n},\n{\n\"dimension\": \"Clear 'how far' judgement: larger extent locally, partial extent nationally\",\n\"status\": \"missed\"\n},\n{\n\"dimension\": \"Mechanism: land-use change, aerosols, albedo, evapotranspiration, urban heat island\",\n\"status\": \"missed\"\n},\n{\n\"dimension\": \"Regional examples: Western Ghats, Indo-Gangetic plains, Mumbai/Chennai, Himalayas, Meghalaya\",\n\"status\": \"partial\"\n},\n{\n\"dimension\": \"External climatic controls: ENSO, IOD, jet streams, SST, Himalayan snow\",\n\"status\": \"partial\"\n},\n{\n\"dimension\": \"Way forward: monsoon-sensitive land-use planning and urban drainage\",\n\"status\": \"partial\"\n}\n],\n\"idealStructure\": [\n\"Intro: Start with India’s physical relief guiding monsoon behaviour: Western Ghats force orographic rainfall, Himalayas block and redirect winds, Aravallis influence west-east movement, Meghalaya hills funnel Bay branch.\",\n\"Body 1: Explain how humanising landscapes modifies monsoon behaviour: deforestation, urbanisation, wetland loss, slope cutting, cropping/irrigation changes and aerosols.\",\n\"Body 2: Give spatial examples: Mumbai/Delhi urban floods, Western Ghats land-use change, Himalayan roads/hydropower landslides, floodplain encroachment in Indo-Gangetic cities.\",\n\"Body 3: Balance the answer: monsoon is still primarily controlled by ocean-atmosphere systems like ENSO, IOD, SST, ITCZ shift and jet streams.\",\n\"Conclusion: Give a calibrated judgement: humanised landscape is not the original driver of monsoon, but it strongly alters its local rainfall intensity, runoff, flood and disaster behaviour.\"\n],\n\"themeFlowchart\": [\n\"Natural relief: Western Ghats + Himalayas + Meghalaya hills + Aravallis -> channel and lift monsoon winds\",\n\"Humanising landscape: deforestation + urbanisation + floodplain encroachment + slope cutting + aerosols\",\n\"Surface change: lower infiltration + altered evapotranspiration + higher heat island effect + unstable slopes\",\n\"Monsoon response: spatial shift in rainfall + intense local downpours + flash floods + landslides + drainage failure\",\n\"Final judgement: global/oceanic controls drive monsoon, but humanised landscapes amplify and distort its regional behaviour\"\n],\n\"diagramSuggestions\": [\n{\n\"placement\": \"After introduction\",\n\"type\": \"Small outline map of India with SW monsoon branches and humanised landscape hotspots\",\n\"labels\": \"Arabian Sea branch, Bay of Bengal branch, Western Ghats - deforestation/orographic rainfall, Mumbai - urban flood, Delhi/IGP - heat island/floodplain encroachment, Himalayas - roads/hydropower/landslides, Meghalaya - funnel effect\",\n\"whyItHelps\": \"It immediately makes the answer geographical, spatial and examiner-friendly instead of looking like a generic environment answer.\"\n},\n{\n\"placement\": \"Before conclusion\",\n\"type\": \"Cause-effect flowchart\",\n\"labels\": \"Urbanisation -> impervious surfaces -> low infiltration -> high runoff -> urban floods; Deforestation -> low evapotranspiration -> moisture recycling decline -> rainfall variability; Hill cutting -> slope instability -> landslides/cloudburst impact\",\n\"whyItHelps\": \"It shows the exact mechanism by which humanised landscape changes monsoon impact and behaviour.\"\n}\n],\n\"mnemonic\": {\n\"word\": \"MONSOON\",\n\"meaning\": [\n\"M — Mountain-guided monsoon flow\",\n\"O — Oceanic controls like ENSO, IOD and SST\",\n\"N — New urban heat islands\",\n\"S — Slope cutting and hydropower disturbance\",\n\"O — Overbuilt floodplains and wetlands\",\n\"O — Open forest loss and land-use change\",\n\"N — Need for monsoon-sensitive planning\"\n],\n\"whyItFits\": \"The question asks whether Indian monsoon behaviour is changing due to humanising landscape; MONSOON helps remember both sides: natural-oceanic controls and human-made landscape modifiers.\"\n},\n\"topImprovements\": [\n\"Begin with natural physical features first, then shift to humanising landscape; this matches the core demand of the question.\",\n\"Use the phrase 'I agree to a considerable extent, but not completely' to answer 'How far do you agree?' directly.\",\n\"Add mechanisms, not only examples: evapotranspiration, infiltration, albedo, aerosols, heat island and runoff.\",\n\"Make it spatial with 4 regions: Western Ghats, Himalayas, Indo-Gangetic floodplains, urban megacities.\",\n\"End with planning solutions: wetland protection, sponge cities, slope zoning, afforestation and monsoon-sensitive land-use planning.\"\n],\n\"air1Upgrades\": [\n{\n\"section\": \"Introduction\",\n\"yourLine\": \"Indian Monsoon is not only a seasonal wind system but a landscape guided climatic mechanism. Physical features Orient the behaviour of Monsoon.\",\n\"air1Upgrade\": \"The Indian monsoon is not merely a seasonal wind reversal; it is a relief-guided climatic system. The Western Ghats force orographic rainfall, the Himalayas block and redirect moisture-laden winds, while Meghalaya hills and river valleys locally funnel the Bay branch.\",\n\"whyBetter\": \"It adds precise physical geography, spatial examples and a stronger conceptual opening.\"\n},\n{\n\"section\": \"Body paragraph\",\n\"yourLine\": \"Urbanisation and Urban heat Island led to altered Rainfall pattern resulting in urban floods in Mumbai, delhi\",\n\"air1Upgrade\": \"Urbanisation modifies monsoon behaviour through impervious surfaces, heat islands and drainage obstruction. Thus, even moderate-to-heavy rainfall in Mumbai, Delhi, Chennai or Bengaluru quickly translates into waterlogging and flash floods rather than natural infiltration.\",\n\"whyBetter\": \"It explains the mechanism and avoids making urban floods look like only a rainfall problem.\"\n},\n{\n\"section\": \"Conclusion\",\n\"yourLine\": \"Humanising landscape acts as modifier India needs Monsoon-Sensitive landscape planning.\",\n\"air1Upgrade\": \"Thus, humanised landscapes may not be the primary cause of monsoon variability, but they are powerful local modifiers of rainfall intensity, runoff and disaster potential. India therefore needs monsoon-sensitive land-use, wetland protection, slope regulation and climate-resilient urban planning.\",\n\"whyBetter\": \"It gives a balanced 'how far' judgement and a mature way forward.\"\n}\n],\n\"modelAnswer\": \"The Indian monsoon is not merely a seasonal wind reversal; it is a relief-guided climatic system. The Western Ghats force orographic rainfall, the Himalayas block and redirect moisture-laden winds, Aravallis influence the west-east movement, while Meghalaya hills funnel the Bay branch. Hence, when landscapes are humanised, monsoon behaviour and impact also change.\\n\\nI agree to a considerable extent. First, deforestation and land-use change in the Western Ghats, Himalayas and central India reduce interception, evapotranspiration and slope stability, altering local moisture recycling and increasing runoff. Second, urbanisation creates heat islands and impervious surfaces; cities such as Mumbai, Delhi, Chennai and Bengaluru face intense waterlogging because rainfall is converted into flash runoff. Third, floodplain and wetland encroachment in the Indo-Gangetic plains and coastal cities reduces natural drainage, turning normal monsoon spells into floods. Fourth, hill-road construction, hydropower projects and tourism infrastructure in Himalayan states intensify landslides and flash floods during heavy monsoon rainfall. Fifth, aerosols and pollution can influence cloud microphysics and local rainfall distribution.\\n\\nHowever, monsoon behaviour is not shaped by humanised landscapes alone. Large-scale controls such as ENSO, Indian Ocean Dipole, sea-surface temperature, ITCZ shift, jet streams and Himalayan snow cover continue to determine onset, strength and breaks.\\n\\nThus, humanised landscapes are not the original driver of the monsoon, but they are powerful regional modifiers. India needs monsoon-sensitive land-use planning, wetland protection, sponge cities, slope zoning and afforestation.\",\n\"whyThisScoresHigh\": [\n\"It directly answers 'How far do you agree?' with a balanced judgement.\",\n\"It begins with India’s physical features, making the answer geographically rooted.\",\n\"It explains mechanisms, not just examples: runoff, evapotranspiration, heat island, drainage, slope instability.\",\n\"It covers both sides: human landscape modification and larger ocean-atmosphere controls.\",\n\"It gives spatial examples across India and ends with practical planning solutions.\"\n],\n\"detailedMentorReview\": \"Your answer has the right skeleton but not enough UPSC depth for 15 marks. The strongest part is your opening idea that monsoon is landscape-guided and your balanced line that humanising landscape acts as a modifier. The weakness is compression: each point is only a statement, not a developed explanation. For 15 marks, each point should follow: human action -> physical mechanism -> monsoon/rainfall impact -> Indian example. For example, do not just say urbanisation changes rainfall; write that urban heat islands enhance convection, impervious surfaces reduce infiltration, and blocked drains convert rainfall into urban floods. Also, the question uses 'behaviour of monsoon', so include onset, intensity, spatial distribution, runoff, floods, landslides and dry spells. Add a small India map after the intro; this single diagram can improve examiner perception strongly. Final strategy: write 2 lines on natural monsoon orientation, 5 humanising landscape points, 1 balancing paragraph on ENSO/IOD/SST/jet streams, and 1 planning-based conclusion.\"\n}\n</MENTOROS_JSON>",
+    "parsedJson": {
+      "score": 5.5,
+      "potentialScore": 10.5,
+      "examinerImpression": "Good conceptual direction: you understood that monsoon is landscape-guided and humans are modifying its local expression. But the answer is too brief for 15 marks, lacks spatial examples, diagram, balanced evaluation and clear mechanism. With better structure and 2 Indian map-based examples, this can reach 9.5-10.5/15.",
+      "missingDimensionsChecklist": [
+        {
+          "dimension": "Small India map showing monsoon branches and humanised hotspots",
+          "status": "missed"
+        },
+        {
+          "dimension": "Clear 'how far' judgement: larger extent locally, partial extent nationally",
+          "status": "missed"
+        },
+        {
+          "dimension": "Mechanism: land-use change, aerosols, albedo, evapotranspiration, urban heat island",
+          "status": "missed"
+        },
+        {
+          "dimension": "Regional examples: Western Ghats, Indo-Gangetic plains, Mumbai/Chennai, Himalayas, Meghalaya",
+          "status": "partial"
+        },
+        {
+          "dimension": "External climatic controls: ENSO, IOD, jet streams, SST, Himalayan snow",
+          "status": "partial"
+        },
+        {
+          "dimension": "Way forward: monsoon-sensitive land-use planning and urban drainage",
+          "status": "partial"
+        }
+      ],
+      "idealStructure": [
+        "Intro: Start with India’s physical relief guiding monsoon behaviour: Western Ghats force orographic rainfall, Himalayas block and redirect winds, Aravallis influence west-east movement, Meghalaya hills funnel Bay branch.",
+        "Body 1: Explain how humanising landscapes modifies monsoon behaviour: deforestation, urbanisation, wetland loss, slope cutting, cropping/irrigation changes and aerosols.",
+        "Body 2: Give spatial examples: Mumbai/Delhi urban floods, Western Ghats land-use change, Himalayan roads/hydropower landslides, floodplain encroachment in Indo-Gangetic cities.",
+        "Body 3: Balance the answer: monsoon is still primarily controlled by ocean-atmosphere systems like ENSO, IOD, SST, ITCZ shift and jet streams.",
+        "Conclusion: Give a calibrated judgement: humanised landscape is not the original driver of monsoon, but it strongly alters its local rainfall intensity, runoff, flood and disaster behaviour."
+      ],
+      "themeFlowchart": [
+        "Natural relief: Western Ghats + Himalayas + Meghalaya hills + Aravallis -> channel and lift monsoon winds",
+        "Humanising landscape: deforestation + urbanisation + floodplain encroachment + slope cutting + aerosols",
+        "Surface change: lower infiltration + altered evapotranspiration + higher heat island effect + unstable slopes",
+        "Monsoon response: spatial shift in rainfall + intense local downpours + flash floods + landslides + drainage failure",
+        "Final judgement: global/oceanic controls drive monsoon, but humanised landscapes amplify and distort its regional behaviour"
+      ],
+      "diagramSuggestions": [
+        {
+          "placement": "After introduction",
+          "type": "Small outline map of India with SW monsoon branches and humanised landscape hotspots",
+          "labels": "Arabian Sea branch, Bay of Bengal branch, Western Ghats - deforestation/orographic rainfall, Mumbai - urban flood, Delhi/IGP - heat island/floodplain encroachment, Himalayas - roads/hydropower/landslides, Meghalaya - funnel effect",
+          "whyItHelps": "It immediately makes the answer geographical, spatial and examiner-friendly instead of looking like a generic environment answer."
+        },
+        {
+          "placement": "Before conclusion",
+          "type": "Cause-effect flowchart",
+          "labels": "Urbanisation -> impervious surfaces -> low infiltration -> high runoff -> urban floods; Deforestation -> low evapotranspiration -> moisture recycling decline -> rainfall variability; Hill cutting -> slope instability -> landslides/cloudburst impact",
+          "whyItHelps": "It shows the exact mechanism by which humanised landscape changes monsoon impact and behaviour."
+        }
+      ],
+      "mnemonic": {
+        "word": "MONSOON",
+        "meaning": [
+          "M — Mountain-guided monsoon flow",
+          "O — Oceanic controls like ENSO, IOD and SST",
+          "N — New urban heat islands",
+          "S — Slope cutting and hydropower disturbance",
+          "O — Overbuilt floodplains and wetlands",
+          "O — Open forest loss and land-use change",
+          "N — Need for monsoon-sensitive planning"
+        ],
+        "whyItFits": "The question asks whether Indian monsoon behaviour is changing due to humanising landscape; MONSOON helps remember both sides: natural-oceanic controls and human-made landscape modifiers."
+      },
+      "topImprovements": [
+        "Begin with natural physical features first, then shift to humanising landscape; this matches the core demand of the question.",
+        "Use the phrase 'I agree to a considerable extent, but not completely' to answer 'How far do you agree?' directly.",
+        "Add mechanisms, not only examples: evapotranspiration, infiltration, albedo, aerosols, heat island and runoff.",
+        "Make it spatial with 4 regions: Western Ghats, Himalayas, Indo-Gangetic floodplains, urban megacities.",
+        "End with planning solutions: wetland protection, sponge cities, slope zoning, afforestation and monsoon-sensitive land-use planning."
+      ],
+      "air1Upgrades": [
+        {
+          "section": "Introduction",
+          "yourLine": "Indian Monsoon is not only a seasonal wind system but a landscape guided climatic mechanism. Physical features Orient the behaviour of Monsoon.",
+          "air1Upgrade": "The Indian monsoon is not merely a seasonal wind reversal; it is a relief-guided climatic system. The Western Ghats force orographic rainfall, the Himalayas block and redirect moisture-laden winds, while Meghalaya hills and river valleys locally funnel the Bay branch.",
+          "whyBetter": "It adds precise physical geography, spatial examples and a stronger conceptual opening."
+        },
+        {
+          "section": "Body paragraph",
+          "yourLine": "Urbanisation and Urban heat Island led to altered Rainfall pattern resulting in urban floods in Mumbai, delhi",
+          "air1Upgrade": "Urbanisation modifies monsoon behaviour through impervious surfaces, heat islands and drainage obstruction. Thus, even moderate-to-heavy rainfall in Mumbai, Delhi, Chennai or Bengaluru quickly translates into waterlogging and flash floods rather than natural infiltration.",
+          "whyBetter": "It explains the mechanism and avoids making urban floods look like only a rainfall problem."
+        },
+        {
+          "section": "Conclusion",
+          "yourLine": "Humanising landscape acts as modifier India needs Monsoon-Sensitive landscape planning.",
+          "air1Upgrade": "Thus, humanised landscapes may not be the primary cause of monsoon variability, but they are powerful local modifiers of rainfall intensity, runoff and disaster potential. India therefore needs monsoon-sensitive land-use, wetland protection, slope regulation and climate-resilient urban planning.",
+          "whyBetter": "It gives a balanced 'how far' judgement and a mature way forward."
+        }
+      ],
+      "modelAnswer": "The Indian monsoon is not merely a seasonal wind reversal; it is a relief-guided climatic system. The Western Ghats force orographic rainfall, the Himalayas block and redirect moisture-laden winds, Aravallis influence the west-east movement, while Meghalaya hills funnel the Bay branch. Hence, when landscapes are humanised, monsoon behaviour and impact also change.\n\nI agree to a considerable extent. First, deforestation and land-use change in the Western Ghats, Himalayas and central India reduce interception, evapotranspiration and slope stability, altering local moisture recycling and increasing runoff. Second, urbanisation creates heat islands and impervious surfaces; cities such as Mumbai, Delhi, Chennai and Bengaluru face intense waterlogging because rainfall is converted into flash runoff. Third, floodplain and wetland encroachment in the Indo-Gangetic plains and coastal cities reduces natural drainage, turning normal monsoon spells into floods. Fourth, hill-road construction, hydropower projects and tourism infrastructure in Himalayan states intensify landslides and flash floods during heavy monsoon rainfall. Fifth, aerosols and pollution can influence cloud microphysics and local rainfall distribution.\n\nHowever, monsoon behaviour is not shaped by humanised landscapes alone. Large-scale controls such as ENSO, Indian Ocean Dipole, sea-surface temperature, ITCZ shift, jet streams and Himalayan snow cover continue to determine onset, strength and breaks.\n\nThus, humanised landscapes are not the original driver of the monsoon, but they are powerful regional modifiers. India needs monsoon-sensitive land-use planning, wetland protection, sponge cities, slope zoning and afforestation.",
+      "whyThisScoresHigh": [
+        "It directly answers 'How far do you agree?' with a balanced judgement.",
+        "It begins with India’s physical features, making the answer geographically rooted.",
+        "It explains mechanisms, not just examples: runoff, evapotranspiration, heat island, drainage, slope instability.",
+        "It covers both sides: human landscape modification and larger ocean-atmosphere controls.",
+        "It gives spatial examples across India and ends with practical planning solutions."
+      ],
+      "detailedMentorReview": "Your answer has the right skeleton but not enough UPSC depth for 15 marks. The strongest part is your opening idea that monsoon is landscape-guided and your balanced line that humanising landscape acts as a modifier. The weakness is compression: each point is only a statement, not a developed explanation. For 15 marks, each point should follow: human action -> physical mechanism -> monsoon/rainfall impact -> Indian example. For example, do not just say urbanisation changes rainfall; write that urban heat islands enhance convection, impervious surfaces reduce infiltration, and blocked drains convert rainfall into urban floods. Also, the question uses 'behaviour of monsoon', so include onset, intensity, spatial distribution, runoff, floods, landslides and dry spells. Add a small India map after the intro; this single diagram can improve examiner perception strongly. Final strategy: write 2 lines on natural monsoon orientation, 5 humanising landscape points, 1 balancing paragraph on ENSO/IOD/SST/jet streams, and 1 planning-based conclusion."
+    }
+  },
+  "status": "saved"
+}

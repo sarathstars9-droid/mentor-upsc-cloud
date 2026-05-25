@@ -1,0 +1,109 @@
+{
+  "attempt_id": "attempt_1779269233571_3eun2v",
+  "current_score": "5.5",
+  "target_score": "7.5",
+  "air1_parsed_json": {
+    "score": 5.5,
+    "mnemonic": {
+      "word": "MAGMA",
+      "meaning": [
+        "M — Molten origin from magma or lava",
+        "A — Absence of fossils",
+        "G — Granular or crystalline texture",
+        "M — Massive and non-layered structure",
+        "A — Acidic to basic composition"
+      ],
+      "whyItFits": "The question asks the characteristics and types of primary rocks, and MAGMA directly reminds the origin, texture, structure, fossil absence, and composition of igneous rocks."
+    },
+    "modelAnswer": "Primary rocks, also called igneous rocks, are formed by the cooling and solidification of magma or lava. They are regarded as the original rocks from which other rock types evolve through the rock cycle.\n\nCharacteristics:\n1. Molten origin: Formed from magma below the surface or lava on the surface.\n2. Crystalline texture: Slow cooling produces coarse crystals, e.g., granite; rapid cooling produces fine or glassy texture, e.g., basalt and obsidian.\n3. Hard and compact: They are generally massive, resistant and durable.\n4. Non-fossiliferous: Fossils are absent due to high temperature of formation.\n5. Non-stratified: They usually lack layering unlike sedimentary rocks.\n6. Mineral-rich: Many contain metallic minerals such as iron, copper, nickel and gold.\n\nTypes:\nA. By place of cooling: Intrusive or plutonic, e.g., granite; hypabyssal, e.g., dolerite; extrusive or volcanic, e.g., basalt, pumice.\nB. By composition: Acidic, e.g., granite; intermediate, e.g., diorite; basic, e.g., basalt; ultrabasic, e.g., peridotite.\n\nThus, primary rocks form the foundation of the rock cycle and are important for landforms and mineral resources.",
+    "air1Upgrades": [
+      {
+        "section": "Introduction",
+        "yourLine": "Primary Rocks also known as Igneous Rocks formed due to solidification of Molten magma.",
+        "whyBetter": "It adds location of cooling, uses precise terminology, and gives geographical significance.",
+        "air1Upgrade": "Primary rocks, or igneous rocks, are formed by the cooling and solidification of magma below the surface or lava on the surface, making them the first-formed rocks of the lithosphere."
+      },
+      {
+        "section": "Body Paragraph",
+        "yourLine": "if cooling is slow- Large crystals are formed and if cooling is fast small crystals are formed",
+        "whyBetter": "It links process, texture, location, and examples in one mature line.",
+        "air1Upgrade": "Their texture depends on the rate of cooling: slow underground cooling forms coarse crystals as in granite, while rapid surface cooling forms fine-grained or glassy rocks such as basalt and obsidian."
+      },
+      {
+        "section": "Conclusion",
+        "yourLine": "Primary Rocks are earliest and foundation of entire Rock cycle, Economically they are source of valuable minerals like Iron, copper, nickel, gold",
+        "whyBetter": "It adds landform example, spatial relevance, and a stronger UPSC-style ending.",
+        "air1Upgrade": "Thus, primary rocks are not only the starting point of the rock cycle but also form major landforms such as the Deccan Traps and mineral-bearing shield regions, making them geomorphologically and economically significant."
+      }
+    ],
+    "idealStructure": [
+      "Intro: Define primary/igneous rocks in one line.",
+      "Body 1: Characteristics — origin, crystalline texture, hardness, non-fossiliferous, non-stratified, mineral-rich.",
+      "Body 2: Types — based on place of cooling and chemical composition.",
+      "Diagram: Small flowchart of igneous rock classification.",
+      "Conclusion: Link primary rocks to rock cycle, landforms, and mineral economy."
+    ],
+    "potentialScore": 7.5,
+    "themeFlowchart": [
+      "Magma/Lava",
+      "Cooling and solidification",
+      "Crystal formation",
+      "Igneous/Primary rocks",
+      "Intrusive or Extrusive",
+      "Mineral resources and rock cycle foundation"
+    ],
+    "topImprovements": [
+      "Add one classification flowchart instead of only writing scattered types.",
+      "Mention texture types: coarse-grained granite, fine-grained basalt, glassy obsidian, vesicular pumice.",
+      "Add hypabyssal rocks as a bridge between intrusive and extrusive, with dolerite as example.",
+      "Expand chemical classification: acidic, intermediate, basic, ultrabasic.",
+      "Write a sharper conclusion linking primary rocks to Deccan Traps, shield areas, minerals, and rock cycle."
+    ],
+    "whyThisScoresHigh": [
+      "It directly answers both parts: characteristics and types.",
+      "It uses process-based explanation, not only memorized points.",
+      "It adds examples for every major point.",
+      "It includes complete classification: place of cooling and composition.",
+      "It ends with geographical and economic significance, which improves examiner impression."
+    ],
+    "diagramSuggestions": [
+      {
+        "type": "Classification flowchart",
+        "labels": "Primary Rocks → By place of cooling: Intrusive/Plutonic, Hypabyssal, Extrusive/Volcanic; By composition: Acidic, Intermediate, Basic, Ultrabasic",
+        "placement": "After introduction",
+        "whyItHelps": "It converts a descriptive answer into a visual geography answer and shows complete classification."
+      },
+      {
+        "type": "Small rock cycle arrow diagram",
+        "labels": "Magma → Igneous rocks → Weathering → Sediments → Sedimentary rocks → Metamorphism → Metamorphic rocks → Melting → Magma",
+        "placement": "Before conclusion",
+        "whyItHelps": "It supports the conclusion that primary rocks form the foundation of the rock cycle."
+      }
+    ],
+    "examinerImpression": "The answer has correct basic content and good classification attempt. However, it remains list-like and misses texture, mineral composition, mode of occurrence, and a simple diagram. With better hierarchy and one labelled diagram, this can cross 7/10.",
+    "detailedMentorReview": "The answer is fundamentally correct and would not be penalized heavily for wrong content. The main issue is incompleteness and presentation. The candidate has covered origin, crystalline nature, hardness, fossil absence, layering, and basic classification. However, the classification is not fully mature because it misses hypabyssal as a separate mode of occurrence and intermediate/ultrabasic categories under composition. The point on Deccan Plateau should be written as Deccan Traps/basaltic lava flows, not simply as an example of hardness. The answer needs a small diagram because geography answers score better when classification or process is visually represented. Language also needs polishing: write 'do not' instead of 'donot', 'non-stratified' instead of 'non-layered', and 'magma below the surface/lava above the surface' for precision. To reach 7+, keep the same content but reorganize it into definition, characteristics, types, diagram, and significance.",
+    "missingDimensionsChecklist": [
+      {
+        "status": "missed",
+        "dimension": "Simple igneous rock classification diagram"
+      },
+      {
+        "status": "partly covered",
+        "dimension": "Texture: coarse/fine/glassy/vesicular"
+      },
+      {
+        "status": "missed",
+        "dimension": "Mode of occurrence: plutonic, hypabyssal, volcanic"
+      },
+      {
+        "status": "missed",
+        "dimension": "Intermediate and ultrabasic types"
+      },
+      {
+        "status": "covered briefly",
+        "dimension": "Economic significance"
+      }
+    ]
+  },
+  "air1_raw_review": "Source prompt reviewed: \n\n<MENTOROS_JSON>\n{\n\"score\": 5.5,\n\"potentialScore\": 7.5,\n\"examinerImpression\": \"The answer has correct basic content and good classification attempt. However, it remains list-like and misses texture, mineral composition, mode of occurrence, and a simple diagram. With better hierarchy and one labelled diagram, this can cross 7/10.\",\n\"missingDimensionsChecklist\": [\n{\"dimension\": \"Simple igneous rock classification diagram\", \"status\": \"missed\"},\n{\"dimension\": \"Texture: coarse/fine/glassy/vesicular\", \"status\": \"partly covered\"},\n{\"dimension\": \"Mode of occurrence: plutonic, hypabyssal, volcanic\", \"status\": \"missed\"},\n{\"dimension\": \"Intermediate and ultrabasic types\", \"status\": \"missed\"},\n{\"dimension\": \"Economic significance\", \"status\": \"covered briefly\"}\n],\n\"idealStructure\": [\n\"Intro: Define primary/igneous rocks in one line.\",\n\"Body 1: Characteristics — origin, crystalline texture, hardness, non-fossiliferous, non-stratified, mineral-rich.\",\n\"Body 2: Types — based on place of cooling and chemical composition.\",\n\"Diagram: Small flowchart of igneous rock classification.\",\n\"Conclusion: Link primary rocks to rock cycle, landforms, and mineral economy.\"\n],\n\"themeFlowchart\": [\n\"Magma/Lava\",\n\"Cooling and solidification\",\n\"Crystal formation\",\n\"Igneous/Primary rocks\",\n\"Intrusive or Extrusive\",\n\"Mineral resources and rock cycle foundation\"\n],\n\"diagramSuggestions\": [\n{\n\"placement\": \"After introduction\",\n\"type\": \"Classification flowchart\",\n\"labels\": \"Primary Rocks → By place of cooling: Intrusive/Plutonic, Hypabyssal, Extrusive/Volcanic; By composition: Acidic, Intermediate, Basic, Ultrabasic\",\n\"whyItHelps\": \"It converts a descriptive answer into a visual geography answer and shows complete classification.\"\n},\n{\n\"placement\": \"Before conclusion\",\n\"type\": \"Small rock cycle arrow diagram\",\n\"labels\": \"Magma → Igneous rocks → Weathering → Sediments → Sedimentary rocks → Metamorphism → Metamorphic rocks → Melting → Magma\",\n\"whyItHelps\": \"It supports the conclusion that primary rocks form the foundation of the rock cycle.\"\n}\n],\n\"mnemonic\": {\n\"word\": \"MAGMA\",\n\"meaning\": [\n\"M — Molten origin from magma or lava\",\n\"A — Absence of fossils\",\n\"G — Granular or crystalline texture\",\n\"M — Massive and non-layered structure\",\n\"A — Acidic to basic composition\"\n],\n\"whyItFits\": \"The question asks the characteristics and types of primary rocks, and MAGMA directly reminds the origin, texture, structure, fossil absence, and composition of igneous rocks.\"\n},\n\"topImprovements\": [\n\"Add one classification flowchart instead of only writing scattered types.\",\n\"Mention texture types: coarse-grained granite, fine-grained basalt, glassy obsidian, vesicular pumice.\",\n\"Add hypabyssal rocks as a bridge between intrusive and extrusive, with dolerite as example.\",\n\"Expand chemical classification: acidic, intermediate, basic, ultrabasic.\",\n\"Write a sharper conclusion linking primary rocks to Deccan Traps, shield areas, minerals, and rock cycle.\"\n],\n\"air1Upgrades\": [\n{\n\"section\": \"Introduction\",\n\"yourLine\": \"Primary Rocks also known as Igneous Rocks formed due to solidification of Molten magma.\",\n\"air1Upgrade\": \"Primary rocks, or igneous rocks, are formed by the cooling and solidification of magma below the surface or lava on the surface, making them the first-formed rocks of the lithosphere.\",\n\"whyBetter\": \"It adds location of cooling, uses precise terminology, and gives geographical significance.\"\n},\n{\n\"section\": \"Body Paragraph\",\n\"yourLine\": \"if cooling is slow- Large crystals are formed and if cooling is fast small crystals are formed\",\n\"air1Upgrade\": \"Their texture depends on the rate of cooling: slow underground cooling forms coarse crystals as in granite, while rapid surface cooling forms fine-grained or glassy rocks such as basalt and obsidian.\",\n\"whyBetter\": \"It links process, texture, location, and examples in one mature line.\"\n},\n{\n\"section\": \"Conclusion\",\n\"yourLine\": \"Primary Rocks are earliest and foundation of entire Rock cycle, Economically they are source of valuable minerals like Iron, copper, nickel, gold\",\n\"air1Upgrade\": \"Thus, primary rocks are not only the starting point of the rock cycle but also form major landforms such as the Deccan Traps and mineral-bearing shield regions, making them geomorphologically and economically significant.\",\n\"whyBetter\": \"It adds landform example, spatial relevance, and a stronger UPSC-style ending.\"\n}\n],\n\"modelAnswer\": \"Primary rocks, also called igneous rocks, are formed by the cooling and solidification of magma or lava. They are regarded as the original rocks from which other rock types evolve through the rock cycle.\\n\\nCharacteristics:\\n1. Molten origin: Formed from magma below the surface or lava on the surface.\\n2. Crystalline texture: Slow cooling produces coarse crystals, e.g., granite; rapid cooling produces fine or glassy texture, e.g., basalt and obsidian.\\n3. Hard and compact: They are generally massive, resistant and durable.\\n4. Non-fossiliferous: Fossils are absent due to high temperature of formation.\\n5. Non-stratified: They usually lack layering unlike sedimentary rocks.\\n6. Mineral-rich: Many contain metallic minerals such as iron, copper, nickel and gold.\\n\\nTypes:\\nA. By place of cooling: Intrusive or plutonic, e.g., granite; hypabyssal, e.g., dolerite; extrusive or volcanic, e.g., basalt, pumice.\\nB. By composition: Acidic, e.g., granite; intermediate, e.g., diorite; basic, e.g., basalt; ultrabasic, e.g., peridotite.\\n\\nThus, primary rocks form the foundation of the rock cycle and are important for landforms and mineral resources.\",\n\"whyThisScoresHigh\": [\n\"It directly answers both parts: characteristics and types.\",\n\"It uses process-based explanation, not only memorized points.\",\n\"It adds examples for every major point.\",\n\"It includes complete classification: place of cooling and composition.\",\n\"It ends with geographical and economic significance, which improves examiner impression.\"\n],\n\"detailedMentorReview\": \"The answer is fundamentally correct and would not be penalized heavily for wrong content. The main issue is incompleteness and presentation. The candidate has covered origin, crystalline nature, hardness, fossil absence, layering, and basic classification. However, the classification is not fully mature because it misses hypabyssal as a separate mode of occurrence and intermediate/ultrabasic categories under composition. The point on Deccan Plateau should be written as Deccan Traps/basaltic lava flows, not simply as an example of hardness. The answer needs a small diagram because geography answers score better when classification or process is visually represented. Language also needs polishing: write 'do not' instead of 'donot', 'non-stratified' instead of 'non-layered', and 'magma below the surface/lava above the surface' for precision. To reach 7+, keep the same content but reorganize it into definition, characteristics, types, diagram, and significance.\"\n}\n</MENTOROS_JSON>\n"
+}

@@ -78,49 +78,49 @@
    LIGHT MODE (Warm Ivory / Premium Study Desk)
    ------------------------------------------------------------ */
 :root[data-theme="light"] {
-  --mos-bg: #f9f8f4; /* Warm Ivory / Paper */
-  --mos-bg-soft: #f2f1eb;
+  --mos-bg: #F7F5EF; /* Warm off-white */
+  --mos-bg-soft: #EFECE3;
   --mos-surface: #ffffff;
-  --mos-surface-raised: #fbfbf9;
-  --mos-sidebar-bg: linear-gradient(180deg, #f2f1eb, #e8e7e1);
+  --mos-surface-raised: #ffffff;
+  --mos-sidebar-bg: #ffffff;
   
-  --mos-border: rgba(90, 70, 50, 0.08); /* Subtle warm brown opacity */
-  --mos-border-strong: rgba(90, 70, 50, 0.15);
+  --mos-border: rgba(15, 23, 42, 0.08); /* Modern slate border */
+  --mos-border-strong: rgba(15, 23, 42, 0.12);
   
-  --mos-text: #1a1b1e; /* Deep Charcoal */
-  --mos-text-soft: #5a5c60;
-  --mos-muted: #9a9ca0;
+  --mos-text: #111827; /* Deep slate */
+  --mos-text-soft: #6B7280; /* Neutral grey */
+  --mos-muted: #9CA3AF;
   
-  --mos-accent: #b45309; /* Mature Amber/Gold */
-  --mos-accent-soft: rgba(180, 83, 9, 0.08);
+  --mos-accent: #C2410C; /* Copper / Burnt Orange */
+  --mos-accent-soft: rgba(194, 65, 12, 0.08);
   
-  --mos-danger: #dc2626;
-  --mos-danger-soft: rgba(220, 38, 38, 0.06);
-  --mos-danger-brd: rgba(220, 38, 38, 0.15);
+  --mos-danger: #ef4444;
+  --mos-danger-soft: rgba(239, 68, 68, 0.06);
+  --mos-danger-brd: rgba(239, 68, 68, 0.15);
   
-  --mos-success: #059669;
-  --mos-success-soft: rgba(5, 150, 105, 0.06);
-  --mos-success-brd: rgba(5, 150, 105, 0.15);
+  --mos-success: #10b981;
+  --mos-success-soft: rgba(16, 185, 129, 0.06);
+  --mos-success-brd: rgba(16, 185, 129, 0.15);
   
-  --mos-warning: #d97706;
-  --mos-warning-soft: rgba(217, 119, 6, 0.06);
-  --mos-warning-brd: rgba(217, 119, 6, 0.15);
+  --mos-warning: #f59e0b;
+  --mos-warning-soft: rgba(245, 158, 11, 0.06);
+  --mos-warning-brd: rgba(245, 158, 11, 0.15);
 
-  --mos-stable: #b45309;
-  --mos-stable-soft: rgba(180, 83, 9, 0.04);
-  --mos-stable-brd: rgba(180, 83, 9, 0.12);
+  --mos-stable: #C2410C;
+  --mos-stable-soft: rgba(194, 65, 12, 0.04);
+  --mos-stable-brd: rgba(194, 65, 12, 0.12);
   
-  --mos-shadow-soft: 0 4px 18px rgba(90, 70, 50, 0.06);
+  --mos-shadow-soft: 0 1px 3px rgba(15, 23, 42, 0.03), 0 1px 2px rgba(15, 23, 42, 0.06);
   --mos-card-bg: #ffffff;
-  --mos-input-bg: #fdfdfc;
+  --mos-input-bg: #ffffff;
   --mos-button-bg: #ffffff;
 
   /* Legacy Mapping */
   --bg: var(--mos-bg);
   --surf: var(--mos-surface);
   --s2: var(--mos-bg-soft);
-  --s3: #ebeae4;
-  --s4: #e1e0d8;
+  --s3: #E4E0D5;
+  --s4: #D9D4C7;
   --border: var(--mos-border);
   --bx: var(--mos-border-strong);
   --txt: var(--mos-text);
@@ -128,8 +128,8 @@
   --dim: var(--mos-muted);
   --saf: var(--mos-accent);
   --saf-d: var(--mos-accent-soft);
-  --saf-b: rgba(180, 83, 9, 0.2);
-  --saf-g: rgba(180, 83, 9, 0.04);
+  --saf-b: rgba(194, 65, 12, 0.25);
+  --saf-g: rgba(194, 65, 12, 0.04);
   --grn: var(--mos-success);
   --red: var(--mos-danger);
 }

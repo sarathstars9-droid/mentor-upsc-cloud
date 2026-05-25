@@ -1,0 +1,177 @@
+{
+  "schema": "mainsAnswerAttempt",
+  "attemptId": "attempt_1779540598541_p1tdmw",
+  "createdAt": "2026-05-23T12:49:58.541Z",
+  "userId": "user_1",
+  "source": {
+    "mode": "pyq",
+    "paper": "GS1",
+    "examYear": "2022",
+    "questionId": "mains_upload_1779540272513_js44xw",
+    "questionKey": "gs1:2022:1vqrl5q:describe-the-characteristics-and-types-of-primary-rocks-2022",
+    "questionMarks": 15,
+    "targetWords": 250,
+    "upscTimeMinutes": 9
+  },
+  "question": {
+    "text": "Describe the characteristics and types of Primary Rocks. (2022)",
+    "questionText": "Describe the characteristics and types of Primary Rocks. (2022)",
+    "question_key": "gs1:2022:1vqrl5q:describe-the-characteristics-and-types-of-primary-rocks-2022",
+    "questionKey": "gs1:2022:1vqrl5q:describe-the-characteristics-and-types-of-primary-rocks-2022",
+    "id": "mains_upload_1779540272513_js44xw",
+    "directiveWord": "",
+    "focusLabel": "Physical Geography",
+    "topicNodeId": "",
+    "subjectTag": "general"
+  },
+  "writingSession": {
+    "startedAt": "2026-05-23T12:49:58.535Z",
+    "endedAt": "2026-05-23T12:49:58.535Z",
+    "timeTakenSeconds": 0
+  },
+  "answerUpload": {
+    "pageCount": 2,
+    "pages": [
+      {
+        "pageNo": 1,
+        "fileName": "01 geo.jpeg",
+        "storagePath": ""
+      },
+      {
+        "pageNo": 2,
+        "fileName": "01 geo01.jpeg",
+        "storagePath": ""
+      }
+    ]
+  },
+  "extraction": {
+    "method": "chatgpt_manual_paste",
+    "promptVersion": "mains-answer-extraction-v1",
+    "extractedText": "Primary Rocks also known as Igneous Rocks formed due to solidification of Molten magma.\nCharacteristics of Primary Rocks\n1. Formed from magma (or) Lava\nEX:- Granite, basalt formed when molten magma cools.\n2. Crystalline in nature\nif cooling is slow- Large crystals are formed and if cooling is fast small crystals are formed\nEx:- Granite has large crystals\nBasalt has fine crystals.\n3. Hard and compact\nPrimary rocks are usually hard, massive and resistant to erosion.\nEx. Deccan plateau\n4. Do not contain fossil\nRocks formed out of Molten magma so fossils are absent.\n5. Usually Non layered\nUnlike sedimentary, Primary Rocks donot have layers.\nTypes Of Primary Rocks\nBased on Place of cooling\n→ Intrusive Igneous\nEx granite\nDolerite at shallow depths.\n→ Extrusive Igneous\nEx. Basalt, obsidian\nPumice\n\nBased on Chemical composition\n→ Acidic\n- granite\nRhyolite\nhigh Silica content\n→ Basic\nhigh Iron, Magnesium\nEx. Basalt, Gabbro\n\nPrimary Rocks are earliest and foundation of entire Rock cycle, Economically they are source of valuable minerals like Iron, copper, nickel, gold"
+  },
+  "selfReview": {
+    "mistakeTypes": [],
+    "severity": "medium",
+    "mustRevise": false,
+    "note": ""
+  },
+  "air1Review": {
+    "rawText": "Source note: The uploaded prompt asks for a strict MentorOS JSON review of the candidate’s answer on “Primary Rocks / Igneous Rocks.”  The PYQ database identifies this as GS1 Geography, 2022, “Describe the characteristics and types of primary rocks.” \n\n<MENTOROS_JSON>\n{\n\"score\": 7,\n\"potentialScore\": 11.5,\n\"examinerImpression\": \"The answer is factually safe and covers the basic demand: definition, characteristics and broad types. However, it feels like a school-level list, not a high-scoring UPSC geography answer. It misses classification depth, texture/mineral basis, diagram/table and better examples.\",\n\"missingDimensionsChecklist\": [\n{\n\"dimension\": \"Clear definition of primary/igneous rocks\",\n\"status\": \"covered\"\n},\n{\n\"dimension\": \"Classification by place of cooling: plutonic, hypabyssal, volcanic\",\n\"status\": \"partial\"\n},\n{\n\"dimension\": \"Classification by silica/composition: acidic, intermediate, basic, ultrabasic\",\n\"status\": \"partial\"\n},\n{\n\"dimension\": \"Texture-based features: glassy, vesicular, porphyritic, coarse/fine grained\",\n\"status\": \"missed\"\n},\n{\n\"dimension\": \"Diagram or table for quick examiner recall\",\n\"status\": \"missed\"\n},\n{\n\"dimension\": \"Rock-cycle and economic significance\",\n\"status\": \"partial\"\n}\n],\n\"idealStructure\": [\n\"Intro: Define primary rocks as igneous rocks formed by cooling and solidification of magma/lava; mention why they are called primary.\",\n\"Body 1: Characteristics: crystalline, hard/compact, non-stratified, fossil-free, texture depends on cooling rate, mineral-rich.\",\n\"Body 2: Types by mode of occurrence: intrusive/plutonic, hypabyssal, extrusive/volcanic with examples.\",\n\"Body 3: Types by chemical composition: acidic, intermediate, basic, ultrabasic with examples.\",\n\"Value addition: Add small cross-section diagram or classification table.\",\n\"Conclusion: Link to rock cycle, landform formation and mineral/economic significance.\"\n],\n\"themeFlowchart\": [\n\"Magma generation\",\n\"Cooling and solidification\",\n\"Cooling rate decides crystal size\",\n\"Place of cooling decides intrusive/extrusive type\",\n\"Silica and mineral content decide acidic/basic nature\",\n\"Primary rocks become parent material for sedimentary and metamorphic rocks\"\n],\n\"diagramSuggestions\": [\n{\n\"placement\": \"After the introduction\",\n\"type\": \"Small flowchart\",\n\"labels\": \"Magma/Lava → Cooling → Igneous Rock → Intrusive / Extrusive → Examples: Granite, Gabbro / Basalt, Obsidian\",\n\"whyItHelps\": \"It directly answers formation and types in one visual frame.\"\n},\n{\n\"placement\": \"Before conclusion\",\n\"type\": \"Two-column classification table\",\n\"labels\": \"Basis | Type | Features | Examples; rows: Place of cooling, Chemical composition, Texture\",\n\"whyItHelps\": \"It converts a list answer into a structured geography answer.\"\n},\n{\n\"placement\": \"Optional margin diagram\",\n\"type\": \"Volcano-pluton cross-section\",\n\"labels\": \"Magma chamber, Batholith/Granite, Dyke/Dolerite, Lava flow/Basalt, Crater\",\n\"whyItHelps\": \"Shows spatial understanding of intrusive and extrusive rocks.\"\n}\n],\n\"mnemonic\": {\n\"word\": \"MAGMAS\",\n\"meaning\": [\n\"M — Molten origin from magma or lava\",\n\"A — Absence of fossils\",\n\"G — Granular or crystalline texture\",\n\"M — Massive and non-layered structure\",\n\"A — Acidic to basic composition\",\n\"S — Solidification rate decides crystal size\"\n],\n\"whyItFits\": \"The question asks the characteristics and types of primary rocks, and MAGMAS captures their origin, structure, fossil absence, texture, composition and cooling-based variation.\"\n},\n\"topImprovements\": [\n\"Do not stop at intrusive and extrusive; add plutonic, hypabyssal and volcanic classification for maturity.\",\n\"Add silica-based classification fully: acidic, intermediate, basic and ultrabasic with examples.\",\n\"Mention texture: coarse-grained, fine-grained, glassy, vesicular and porphyritic.\",\n\"Use a compact table instead of only bullet points; it improves examiner readability.\",\n\"Conclusion should link primary rocks to parent material, landforms, minerals and rock cycle.\"\n],\n\"air1Upgrades\": [\n{\n\"section\": \"Intro\",\n\"yourLine\": \"Primary Rocks also known as Igneous Rocks formed due to solidification of Molten magma.\",\n\"air1Upgrade\": \"Primary rocks, or igneous rocks, are the first-formed rocks of the earth’s crust, produced by cooling and solidification of magma below the surface or lava at the surface.\",\n\"whyBetter\": \"It explains why they are called primary and immediately introduces the intrusive-extrusive distinction.\"\n},\n{\n\"section\": \"Body paragraph\",\n\"yourLine\": \"Based on Place of cooling → Intrusive Igneous Ex granite Dolerite at shallow depths. → Extrusive Igneous Ex. Basalt, obsidian Pumice.\",\n\"air1Upgrade\": \"On the basis of place of cooling, igneous rocks are classified into plutonic rocks such as granite and gabbro formed at depth, hypabyssal rocks such as dolerite formed in shallow intrusions, and volcanic rocks such as basalt, obsidian and pumice formed at or near the surface.\",\n\"whyBetter\": \"It adds the missing hypabyssal category and gives a cleaner process-example link.\"\n},\n{\n\"section\": \"Conclusion\",\n\"yourLine\": \"Primary Rocks are earliest and foundation of entire Rock cycle, Economically they are source of valuable minerals like Iron, copper, nickel, gold\",\n\"air1Upgrade\": \"Thus, primary rocks are not merely the oldest crustal rocks but also the parent material of the rock cycle, shaping landforms like the Deccan Traps and hosting metallic minerals such as iron, copper, nickel and gold.\",\n\"whyBetter\": \"It combines geological, geomorphological and economic significance in one polished closing line.\"\n}\n],\n\"modelAnswer\": \"Primary rocks, also called igneous rocks, are formed by the cooling and solidification of magma below the earth’s surface or lava on the surface. They are called primary because they form the original crustal material from which other rocks may later develop.\\n\\nCharacteristics:\\n1. Molten origin: They originate from magma or lava, e.g., granite and basalt.\\n2. Crystalline nature: Slow cooling produces large crystals as in granite, while rapid cooling produces fine or glassy texture as in basalt and obsidian.\\n3. Hard and compact: They are generally massive, resistant and form landforms such as the Deccan Traps.\\n4. Non-stratified and fossil-free: Since they form from molten material, they usually lack layers and fossils.\\n5. Mineral-rich: They are associated with metallic minerals such as iron, copper, nickel and gold.\\n\\nTypes:\\nA. Based on place of cooling:\\n1. Plutonic/intrusive: Formed deep inside the earth; coarse-grained; granite, gabbro.\\n2. Hypabyssal: Formed at shallow depths; dolerite, pegmatite.\\n3. Volcanic/extrusive: Formed at surface; fine or glassy; basalt, obsidian, pumice.\\n\\nB. Based on composition:\\n1. Acidic: High silica; granite, rhyolite.\\n2. Intermediate: Andesite, diorite.\\n3. Basic: Rich in iron and magnesium; basalt, gabbro.\\n4. Ultrabasic: Very low silica; peridotite.\\n\\nThus, primary rocks form the foundation of the rock cycle and have immense geomorphological and economic significance.\",\n\"whyThisScoresHigh\": [\n\"It defines the term and explains why igneous rocks are called primary rocks.\",\n\"It separates characteristics and types clearly, matching the question demand.\",\n\"It adds full classification: place of cooling and chemical composition.\",\n\"It uses examples after every classification, which gives concreteness.\",\n\"It adds value through rock-cycle, landform and mineral significance.\"\n],\n\"detailedMentorReview\": \"This is a decent base answer, but it currently sits around the average-to-good zone because it is too linear and under-classified for a 15-mark/250-word demand. The best part is that the candidate knows the basic definition, characteristics and common examples. The answer also correctly mentions absence of fossils, non-layered structure, hardness and economic minerals. However, UPSC geography answers need classification maturity. The answer should not simply say intrusive and extrusive; it should show plutonic, hypabyssal and volcanic rocks. Chemical classification should include acidic, intermediate, basic and ultrabasic. Texture should be added because cooling rate is central to igneous rocks: coarse-grained, fine-grained, glassy, vesicular and porphyritic. The answer also needs a small diagram or table. For next attempt, use this structure: definition, five characteristics, two classifications, examples, diagram/table and conclusion. This will push the answer from 7/15 to 11+/15.\"\n}\n</MENTOROS_JSON>",
+    "parsedJson": {
+      "score": 7,
+      "potentialScore": 11.5,
+      "examinerImpression": "The answer is factually safe and covers the basic demand: definition, characteristics and broad types. However, it feels like a school-level list, not a high-scoring UPSC geography answer. It misses classification depth, texture/mineral basis, diagram/table and better examples.",
+      "missingDimensionsChecklist": [
+        {
+          "dimension": "Clear definition of primary/igneous rocks",
+          "status": "covered"
+        },
+        {
+          "dimension": "Classification by place of cooling: plutonic, hypabyssal, volcanic",
+          "status": "partial"
+        },
+        {
+          "dimension": "Classification by silica/composition: acidic, intermediate, basic, ultrabasic",
+          "status": "partial"
+        },
+        {
+          "dimension": "Texture-based features: glassy, vesicular, porphyritic, coarse/fine grained",
+          "status": "missed"
+        },
+        {
+          "dimension": "Diagram or table for quick examiner recall",
+          "status": "missed"
+        },
+        {
+          "dimension": "Rock-cycle and economic significance",
+          "status": "partial"
+        }
+      ],
+      "idealStructure": [
+        "Intro: Define primary rocks as igneous rocks formed by cooling and solidification of magma/lava; mention why they are called primary.",
+        "Body 1: Characteristics: crystalline, hard/compact, non-stratified, fossil-free, texture depends on cooling rate, mineral-rich.",
+        "Body 2: Types by mode of occurrence: intrusive/plutonic, hypabyssal, extrusive/volcanic with examples.",
+        "Body 3: Types by chemical composition: acidic, intermediate, basic, ultrabasic with examples.",
+        "Value addition: Add small cross-section diagram or classification table.",
+        "Conclusion: Link to rock cycle, landform formation and mineral/economic significance."
+      ],
+      "themeFlowchart": [
+        "Magma generation",
+        "Cooling and solidification",
+        "Cooling rate decides crystal size",
+        "Place of cooling decides intrusive/extrusive type",
+        "Silica and mineral content decide acidic/basic nature",
+        "Primary rocks become parent material for sedimentary and metamorphic rocks"
+      ],
+      "diagramSuggestions": [
+        {
+          "placement": "After the introduction",
+          "type": "Small flowchart",
+          "labels": "Magma/Lava → Cooling → Igneous Rock → Intrusive / Extrusive → Examples: Granite, Gabbro / Basalt, Obsidian",
+          "whyItHelps": "It directly answers formation and types in one visual frame."
+        },
+        {
+          "placement": "Before conclusion",
+          "type": "Two-column classification table",
+          "labels": "Basis | Type | Features | Examples; rows: Place of cooling, Chemical composition, Texture",
+          "whyItHelps": "It converts a list answer into a structured geography answer."
+        },
+        {
+          "placement": "Optional margin diagram",
+          "type": "Volcano-pluton cross-section",
+          "labels": "Magma chamber, Batholith/Granite, Dyke/Dolerite, Lava flow/Basalt, Crater",
+          "whyItHelps": "Shows spatial understanding of intrusive and extrusive rocks."
+        }
+      ],
+      "mnemonic": {
+        "word": "MAGMAS",
+        "meaning": [
+          "M — Molten origin from magma or lava",
+          "A — Absence of fossils",
+          "G — Granular or crystalline texture",
+          "M — Massive and non-layered structure",
+          "A — Acidic to basic composition",
+          "S — Solidification rate decides crystal size"
+        ],
+        "whyItFits": "The question asks the characteristics and types of primary rocks, and MAGMAS captures their origin, structure, fossil absence, texture, composition and cooling-based variation."
+      },
+      "topImprovements": [
+        "Do not stop at intrusive and extrusive; add plutonic, hypabyssal and volcanic classification for maturity.",
+        "Add silica-based classification fully: acidic, intermediate, basic and ultrabasic with examples.",
+        "Mention texture: coarse-grained, fine-grained, glassy, vesicular and porphyritic.",
+        "Use a compact table instead of only bullet points; it improves examiner readability.",
+        "Conclusion should link primary rocks to parent material, landforms, minerals and rock cycle."
+      ],
+      "air1Upgrades": [
+        {
+          "section": "Intro",
+          "yourLine": "Primary Rocks also known as Igneous Rocks formed due to solidification of Molten magma.",
+          "air1Upgrade": "Primary rocks, or igneous rocks, are the first-formed rocks of the earth’s crust, produced by cooling and solidification of magma below the surface or lava at the surface.",
+          "whyBetter": "It explains why they are called primary and immediately introduces the intrusive-extrusive distinction."
+        },
+        {
+          "section": "Body paragraph",
+          "yourLine": "Based on Place of cooling → Intrusive Igneous Ex granite Dolerite at shallow depths. → Extrusive Igneous Ex. Basalt, obsidian Pumice.",
+          "air1Upgrade": "On the basis of place of cooling, igneous rocks are classified into plutonic rocks such as granite and gabbro formed at depth, hypabyssal rocks such as dolerite formed in shallow intrusions, and volcanic rocks such as basalt, obsidian and pumice formed at or near the surface.",
+          "whyBetter": "It adds the missing hypabyssal category and gives a cleaner process-example link."
+        },
+        {
+          "section": "Conclusion",
+          "yourLine": "Primary Rocks are earliest and foundation of entire Rock cycle, Economically they are source of valuable minerals like Iron, copper, nickel, gold",
+          "air1Upgrade": "Thus, primary rocks are not merely the oldest crustal rocks but also the parent material of the rock cycle, shaping landforms like the Deccan Traps and hosting metallic minerals such as iron, copper, nickel and gold.",
+          "whyBetter": "It combines geological, geomorphological and economic significance in one polished closing line."
+        }
+      ],
+      "modelAnswer": "Primary rocks, also called igneous rocks, are formed by the cooling and solidification of magma below the earth’s surface or lava on the surface. They are called primary because they form the original crustal material from which other rocks may later develop.\n\nCharacteristics:\n1. Molten origin: They originate from magma or lava, e.g., granite and basalt.\n2. Crystalline nature: Slow cooling produces large crystals as in granite, while rapid cooling produces fine or glassy texture as in basalt and obsidian.\n3. Hard and compact: They are generally massive, resistant and form landforms such as the Deccan Traps.\n4. Non-stratified and fossil-free: Since they form from molten material, they usually lack layers and fossils.\n5. Mineral-rich: They are associated with metallic minerals such as iron, copper, nickel and gold.\n\nTypes:\nA. Based on place of cooling:\n1. Plutonic/intrusive: Formed deep inside the earth; coarse-grained; granite, gabbro.\n2. Hypabyssal: Formed at shallow depths; dolerite, pegmatite.\n3. Volcanic/extrusive: Formed at surface; fine or glassy; basalt, obsidian, pumice.\n\nB. Based on composition:\n1. Acidic: High silica; granite, rhyolite.\n2. Intermediate: Andesite, diorite.\n3. Basic: Rich in iron and magnesium; basalt, gabbro.\n4. Ultrabasic: Very low silica; peridotite.\n\nThus, primary rocks form the foundation of the rock cycle and have immense geomorphological and economic significance.",
+      "whyThisScoresHigh": [
+        "It defines the term and explains why igneous rocks are called primary rocks.",
+        "It separates characteristics and types clearly, matching the question demand.",
+        "It adds full classification: place of cooling and chemical composition.",
+        "It uses examples after every classification, which gives concreteness.",
+        "It adds value through rock-cycle, landform and mineral significance."
+      ],
+      "detailedMentorReview": "This is a decent base answer, but it currently sits around the average-to-good zone because it is too linear and under-classified for a 15-mark/250-word demand. The best part is that the candidate knows the basic definition, characteristics and common examples. The answer also correctly mentions absence of fossils, non-layered structure, hardness and economic minerals. However, UPSC geography answers need classification maturity. The answer should not simply say intrusive and extrusive; it should show plutonic, hypabyssal and volcanic rocks. Chemical classification should include acidic, intermediate, basic and ultrabasic. Texture should be added because cooling rate is central to igneous rocks: coarse-grained, fine-grained, glassy, vesicular and porphyritic. The answer also needs a small diagram or table. For next attempt, use this structure: definition, five characteristics, two classifications, examples, diagram/table and conclusion. This will push the answer from 7/15 to 11+/15."
+    }
+  },
+  "status": "saved"
+}

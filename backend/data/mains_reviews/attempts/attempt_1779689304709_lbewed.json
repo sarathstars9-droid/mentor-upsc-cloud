@@ -1,0 +1,214 @@
+{
+  "schema": "mainsAnswerAttempt",
+  "attemptId": "attempt_1779689304709_lbewed",
+  "createdAt": "2026-05-25T06:08:24.709Z",
+  "userId": "user_1",
+  "source": {
+    "mode": "pyq",
+    "paper": "GS1",
+    "examYear": "2017",
+    "questionId": "mains_upload_1779541144266_k5j8m1",
+    "questionKey": "gs1:2017:18bebfb:what-characteristic-can-be-assigned-to-monsoon-climate-that-succeeds-in-feeding-",
+    "questionMarks": 15,
+    "targetWords": 250,
+    "upscTimeMinutes": 9
+  },
+  "question": {
+    "text": "What characteristic can be assigned to monsoon climate that succeeds in feeding more than 50% of world population residing in monsoon asia. (2017)",
+    "questionText": "What characteristic can be assigned to monsoon climate that succeeds in feeding more than 50% of world population residing in monsoon asia. (2017)",
+    "question_key": "gs1:2017:18bebfb:what-characteristic-can-be-assigned-to-monsoon-climate-that-succeeds-in-feeding-",
+    "questionKey": "gs1:2017:18bebfb:what-characteristic-can-be-assigned-to-monsoon-climate-that-succeeds-in-feeding-",
+    "id": "mains_upload_1779541144266_k5j8m1",
+    "directiveWord": "",
+    "focusLabel": "Climatology",
+    "topicNodeId": "",
+    "subjectTag": "general"
+  },
+  "writingSession": {
+    "startedAt": "2026-05-25T06:08:24.704Z",
+    "endedAt": "2026-05-25T06:08:24.704Z",
+    "timeTakenSeconds": 0
+  },
+  "answerUpload": {
+    "pageCount": 2,
+    "pages": [
+      {
+        "pageNo": 1,
+        "fileName": "NEW 1.jpeg",
+        "storagePath": ""
+      },
+      {
+        "pageNo": 2,
+        "fileName": "NEW 2.jpeg",
+        "storagePath": ""
+      }
+    ]
+  },
+  "extraction": {
+    "method": "chatgpt_manual_paste",
+    "promptVersion": "mains-answer-extraction-v1",
+    "extractedText": "Monsoon climate can be characterised as climate of Seasonal wind reversal concentrated Summer rainfall, dry winters and high agricultural productivity attributing to feeding more than 50% of World population.\nClimate of Seasonal Wind Reversal\nassociated with high temperature and winds blowing from sea to land in summer, bringing rain all these climatic characteristics supports Rice cultivation.\nConcentrated Summer rainfall\nRainfall occurs between June to September which is crop growing season. and this provides conducive conditions for Crop growth\nDry winters\nDuring winters the monsoon withdraw allowing winds from land to sea and this climate help in harvesting and storage.\nHigh Agricultural Productivity\nAs Rainfall coincides with growing season and dry winter helps harvest it supports intensive agriculture. especially Rice cultivation.\nHigh temperature, in tropical areas allows biological activity and high diversity crops like wheat, Sugarcane jute, tea, pulses\nThus, Monsoon climate may be called a \"Rice supporting, population sustaining Seasonal 'y Rhythmic climate\"."
+  },
+  "selfReview": {
+    "mistakeTypes": [],
+    "severity": "medium",
+    "mustRevise": false,
+    "note": ""
+  },
+  "air1Review": {
+    "rawText": "<MENTOROS_JSON>\n{\n\"score\": 6.0,\n\"potentialScore\": 9.0,\n\"sourceCitation\": \"\",\n\"card1_quickEvaluation\": {\n\"estimatedScore\": \"6/15\",\n\"potentialScore\": \"9/15\",\n\"examinerImpression\": [\n\"The answer understands the basic monsoon features: seasonal reversal, summer rainfall, dry winter and rice support.\",\n\"However, it is too India-centric and repetitive; the question demands Monsoon Asia and population-sustaining characteristics.\",\n\"Missing spatial examples, intensive farming logic, river valleys/deltas, crop diversity and risks of monsoon variability.\"\n],\n\"missingDimensionsChecklist\": {\n\"diagram\": \"Missing — draw a simple Monsoon Asia map/rainfall belt.\",\n\"spatialExamples\": \"Missing — Ganga-Brahmaputra, Mekong, Yangtze, Irrawaddy, Red River, Java plains.\",\n\"populationAngle\": \"Weak — connect climate to dense settlement and labour-intensive agriculture.\",\n\"agricultureAngle\": \"Partial — rice mentioned, but double cropping, wet paddy, fisheries, alluvial plains missing.\",\n\"limitations\": \"Missing — floods, droughts, variability, cyclones, El Nino risk.\",\n\"conclusion\": \"Good phrase, but needs balanced final line on productivity plus vulnerability.\"\n}\n},\n\"card2_howToImprove\": {\n\"idealUPSCStructure\": [\n\"Intro: Define monsoon climate as a seasonal rhythm of wind, rain and heat supporting dense agrarian civilizations of Asia.\",\n\"Body 1: Climatic characteristics — seasonal wind reversal, concentrated rainfall, high temperature, humid summers, dry winters.\",\n\"Body 2: Food-population link — rice ecology, alluvial plains, river deltas, multiple cropping, labour absorption, water availability.\",\n\"Body 3: Regional examples — South Asia, Southeast Asia, East Asia.\",\n\"Body 4: Balanced note — monsoon variability creates floods, droughts and food insecurity.\",\n\"Conclusion: Monsoon climate is a rhythmic, rice-supporting and population-sustaining climate, but needs climate-resilient agriculture.\"\n],\n\"themeBasedFlowchart\": {\n\"title\": \"How Monsoon Climate Feeds Dense Population\",\n\"flow\": [\n\"Seasonal wind reversal\",\n\"Moisture-laden summer winds\",\n\"Heavy June-September rainfall\",\n\"Waterlogged fields + alluvial plains\",\n\"Rice cultivation + multiple cropping\",\n\"High food output + labour absorption\",\n\"Dense population support in Monsoon Asia\"\n]\n},\n\"diagramSuggestions\": [\n{\n\"placement\": \"After introduction\",\n\"type\": \"Simple map of Monsoon Asia\",\n\"exactLabels\": [\n\"South Asia\",\n\"Southeast Asia\",\n\"East Asia\",\n\"Ganga-Brahmaputra Delta\",\n\"Mekong Delta\",\n\"Yangtze Basin\",\n\"Summer monsoon arrows\",\n\"Rice belt\"\n],\n\"reason\": \"Immediately shows the examiner that the answer is about Monsoon Asia, not only India.\"\n},\n{\n\"placement\": \"Before conclusion\",\n\"type\": \"Flowchart\",\n\"exactLabels\": [\n\"Rainfall seasonality\",\n\"Wet paddy ecology\",\n\"Alluvial deltas\",\n\"Double cropping\",\n\"Food surplus\",\n\"Dense population\"\n],\n\"reason\": \"Converts scattered points into clear cause-effect geography.\"\n}\n],\n\"finalMemoryHook\": {\n\"word\": \"RHYTHM\",\n\"meaning\": [\n\"R — Reversal of seasonal winds\",\n\"H — High temperature and humidity\",\n\"Y — Yearly concentration of summer rainfall\",\n\"T — Tropical wet-rice farming\",\n\"H — Harvest-friendly dry winter\",\n\"M — Multiple cropping supporting dense population\"\n],\n\"whyItFits\": \"The question asks the characteristic of monsoon climate that feeds more than 50% of world population in Monsoon Asia; RHYTHM captures its seasonal, agricultural and population-sustaining nature.\"\n},\n\"top5ImprovementsOnly\": [\n\"Do not only list characteristics; connect each characteristic to food production and population support.\",\n\"Add Monsoon Asia examples: India, Bangladesh, China, Vietnam, Indonesia, Myanmar.\",\n\"Mention river valleys and deltas because dense population is concentrated there.\",\n\"Add double cropping, wet-rice ecology and labour-intensive agriculture.\",\n\"End with a balanced line on monsoon variability causing floods, droughts and crop risk.\"\n]\n},\n\"card3_air1Upgrades\": {\n\"introComparison\": {\n\"yourLine\": \"Monsoon climate can be characterised as climate of Seasonal wind reversal concentrated Summer rainfall, dry winters and high agricultural productivity attributing to feeding more than 50% of World population.\",\n\"air1Upgrade\": \"Monsoon climate is a seasonal rhythm of wind reversal, summer rainfall, heat and dry winter which has created the wet-rice civilizations of Monsoon Asia, supporting dense populations from the Ganga-Brahmaputra plains to the Mekong and Yangtze basins.\",\n\"whyBetter\": \"It directly links climate, agriculture, population and regional examples in one opening line.\"\n},\n\"bodyParagraphComparison\": {\n\"yourLine\": \"Rainfall occurs between June to September which is crop growing season and this provides conducive conditions for crop growth.\",\n\"air1Upgrade\": \"The coincidence of high temperature with 3-4 months of concentrated rainfall creates ideal conditions for paddy cultivation, transplantation, fishing and multiple cropping in alluvial plains and deltas such as Bengal, Mekong, Irrawaddy and Yangtze.\",\n\"whyBetter\": \"It adds process, crop ecology, economic use and spatial examples.\"\n},\n\"conclusionComparison\": {\n\"yourLine\": \"Thus, Monsoon climate may be called a Rice supporting, population sustaining Seasonal Rhythmic climate.\",\n\"air1Upgrade\": \"Thus, monsoon climate is best described as a rhythmic, rice-supporting and population-sustaining climate; however, its same seasonality also makes Monsoon Asia vulnerable to floods, droughts and food-security shocks.\",\n\"whyBetter\": \"It preserves your strong phrase but adds balance, which is essential for higher marks.\"\n}\n},\n\"card4_air1ModelAnswer\": {\n\"answer\": \"Monsoon climate may be called a seasonal, rhythmic and rice-supporting climate. Its importance lies in the fact that Monsoon Asia, covering South, Southeast and East Asia, supports one of the densest population belts of the world.\\n\\nIts first characteristic is seasonal wind reversal. Moist maritime winds blow from ocean to land in summer and bring rainfall, while dry offshore winds dominate winter. This produces a clear agricultural calendar.\\n\\nSecond, rainfall is concentrated in the warm season. The coincidence of high temperature and abundant moisture creates ideal conditions for wet-rice cultivation, especially in the Ganga-Brahmaputra, Mekong, Irrawaddy, Red River and Yangtze basins.\\n\\nThird, dry winters help harvesting, storage, rabi cultivation in some regions and settlement stability. The alluvial plains and deltas of Monsoon Asia allow intensive farming, irrigation, fisheries and multiple cropping. Since rice cultivation is labour-intensive, it also absorbs large rural populations.\\n\\nHowever, the same monsoon is marked by variability, floods, droughts and cyclones, making agriculture vulnerable.\\n\\nThus, monsoon climate feeds dense populations because it combines heat, water, fertile plains and a seasonal rhythm, but its future productivity depends on climate-resilient agriculture.\"\n},\n\"card5_whyThisScoresHigh\": {\n\"checklist\": [\n\"Directly answers the keyword 'characteristic' instead of writing a general monsoon note.\",\n\"Links climate features with food production and population density.\",\n\"Uses Monsoon Asia examples beyond India.\",\n\"Adds geographical processes: wind reversal, rainfall seasonality, wet-rice ecology, alluvial deltas and double cropping.\",\n\"Includes a balanced limitation: variability, floods, droughts and cyclones.\",\n\"Has a clean intro-body-conclusion flow suitable for a 15-marker.\"\n]\n},\n\"card6_detailedMentorReview\": {\n\"strengths\": [\n\"You identified the core climatic traits correctly: seasonal reversal, summer rainfall and dry winter.\",\n\"You understood the rice-population link.\",\n\"The concluding phrase is memorable and can be retained.\"\n],\n\"majorIssues\": [\n\"The answer repeats the same points without expanding the population-support mechanism.\",\n\"Monsoon Asia is not properly covered; the answer reads mostly like an Indian monsoon note.\",\n\"You did not mention alluvial plains, river valleys, deltas, irrigation and multiple cropping.\",\n\"No diagram or map was suggested, which is a major loss in Geography Optional-style answers.\",\n\"The negative side of monsoon variability is absent.\"\n],\n\"contentCorrections\": [\n{\n\"candidateClaim\": \"High temperature allows crops like wheat, sugarcane, jute, tea and pulses.\",\n\"issue\": \"This is broadly correct but weakly organised. Wheat is more linked to winter/rabi and irrigation in many monsoon regions, not simply high tropical temperature.\",\n\"upscSafeCorrection\": \"Write: 'High temperature and moisture support rice, jute, sugarcane and tea, while dry winters and irrigation allow rabi crops such as wheat in parts of South Asia.'\"\n},\n{\n\"candidateClaim\": \"Rainfall occurs between June to September.\",\n\"issue\": \"This is India-specific. Monsoon Asia has regional variation.\",\n\"upscSafeCorrection\": \"Write: 'Rainfall is concentrated in the warm season, though timing and intensity vary across South, Southeast and East Asia.'\"\n}\n],\n\"examinerThinking\": \"The examiner will give credit for basic understanding, but higher marks need geographical range, spatial examples and food-population causality. A map plus one process flow would immediately lift the answer.\",\n\"nextAttemptFormula\": \"Feature + Process + Region + Food Link + Population Link + Limitation\",\n\"oneLineTargetForNextAttempt\": \"Monsoon Asia feeds dense populations not merely because it rains, but because heat, seasonal rainfall, alluvial plains and wet-rice ecology combine into an intensive agricultural system.\"\n}\n}\n</MENTOROS_JSON>",
+    "parsedJson": {
+      "score": 6,
+      "potentialScore": 9,
+      "sourceCitation": "",
+      "card1_quickEvaluation": {
+        "estimatedScore": "6/15",
+        "potentialScore": "9/15",
+        "examinerImpression": [
+          "The answer understands the basic monsoon features: seasonal reversal, summer rainfall, dry winter and rice support.",
+          "However, it is too India-centric and repetitive; the question demands Monsoon Asia and population-sustaining characteristics.",
+          "Missing spatial examples, intensive farming logic, river valleys/deltas, crop diversity and risks of monsoon variability."
+        ],
+        "missingDimensionsChecklist": {
+          "diagram": "Missing — draw a simple Monsoon Asia map/rainfall belt.",
+          "spatialExamples": "Missing — Ganga-Brahmaputra, Mekong, Yangtze, Irrawaddy, Red River, Java plains.",
+          "populationAngle": "Weak — connect climate to dense settlement and labour-intensive agriculture.",
+          "agricultureAngle": "Partial — rice mentioned, but double cropping, wet paddy, fisheries, alluvial plains missing.",
+          "limitations": "Missing — floods, droughts, variability, cyclones, El Nino risk.",
+          "conclusion": "Good phrase, but needs balanced final line on productivity plus vulnerability."
+        }
+      },
+      "card2_howToImprove": {
+        "idealUPSCStructure": [
+          "Intro: Define monsoon climate as a seasonal rhythm of wind, rain and heat supporting dense agrarian civilizations of Asia.",
+          "Body 1: Climatic characteristics — seasonal wind reversal, concentrated rainfall, high temperature, humid summers, dry winters.",
+          "Body 2: Food-population link — rice ecology, alluvial plains, river deltas, multiple cropping, labour absorption, water availability.",
+          "Body 3: Regional examples — South Asia, Southeast Asia, East Asia.",
+          "Body 4: Balanced note — monsoon variability creates floods, droughts and food insecurity.",
+          "Conclusion: Monsoon climate is a rhythmic, rice-supporting and population-sustaining climate, but needs climate-resilient agriculture."
+        ],
+        "themeBasedFlowchart": {
+          "title": "How Monsoon Climate Feeds Dense Population",
+          "flow": [
+            "Seasonal wind reversal",
+            "Moisture-laden summer winds",
+            "Heavy June-September rainfall",
+            "Waterlogged fields + alluvial plains",
+            "Rice cultivation + multiple cropping",
+            "High food output + labour absorption",
+            "Dense population support in Monsoon Asia"
+          ]
+        },
+        "diagramSuggestions": [
+          {
+            "placement": "After introduction",
+            "type": "Simple map of Monsoon Asia",
+            "exactLabels": [
+              "South Asia",
+              "Southeast Asia",
+              "East Asia",
+              "Ganga-Brahmaputra Delta",
+              "Mekong Delta",
+              "Yangtze Basin",
+              "Summer monsoon arrows",
+              "Rice belt"
+            ],
+            "reason": "Immediately shows the examiner that the answer is about Monsoon Asia, not only India."
+          },
+          {
+            "placement": "Before conclusion",
+            "type": "Flowchart",
+            "exactLabels": [
+              "Rainfall seasonality",
+              "Wet paddy ecology",
+              "Alluvial deltas",
+              "Double cropping",
+              "Food surplus",
+              "Dense population"
+            ],
+            "reason": "Converts scattered points into clear cause-effect geography."
+          }
+        ],
+        "finalMemoryHook": {
+          "word": "RHYTHM",
+          "meaning": [
+            "R — Reversal of seasonal winds",
+            "H — High temperature and humidity",
+            "Y — Yearly concentration of summer rainfall",
+            "T — Tropical wet-rice farming",
+            "H — Harvest-friendly dry winter",
+            "M — Multiple cropping supporting dense population"
+          ],
+          "whyItFits": "The question asks the characteristic of monsoon climate that feeds more than 50% of world population in Monsoon Asia; RHYTHM captures its seasonal, agricultural and population-sustaining nature."
+        },
+        "top5ImprovementsOnly": [
+          "Do not only list characteristics; connect each characteristic to food production and population support.",
+          "Add Monsoon Asia examples: India, Bangladesh, China, Vietnam, Indonesia, Myanmar.",
+          "Mention river valleys and deltas because dense population is concentrated there.",
+          "Add double cropping, wet-rice ecology and labour-intensive agriculture.",
+          "End with a balanced line on monsoon variability causing floods, droughts and crop risk."
+        ]
+      },
+      "card3_air1Upgrades": {
+        "introComparison": {
+          "yourLine": "Monsoon climate can be characterised as climate of Seasonal wind reversal concentrated Summer rainfall, dry winters and high agricultural productivity attributing to feeding more than 50% of World population.",
+          "air1Upgrade": "Monsoon climate is a seasonal rhythm of wind reversal, summer rainfall, heat and dry winter which has created the wet-rice civilizations of Monsoon Asia, supporting dense populations from the Ganga-Brahmaputra plains to the Mekong and Yangtze basins.",
+          "whyBetter": "It directly links climate, agriculture, population and regional examples in one opening line."
+        },
+        "bodyParagraphComparison": {
+          "yourLine": "Rainfall occurs between June to September which is crop growing season and this provides conducive conditions for crop growth.",
+          "air1Upgrade": "The coincidence of high temperature with 3-4 months of concentrated rainfall creates ideal conditions for paddy cultivation, transplantation, fishing and multiple cropping in alluvial plains and deltas such as Bengal, Mekong, Irrawaddy and Yangtze.",
+          "whyBetter": "It adds process, crop ecology, economic use and spatial examples."
+        },
+        "conclusionComparison": {
+          "yourLine": "Thus, Monsoon climate may be called a Rice supporting, population sustaining Seasonal Rhythmic climate.",
+          "air1Upgrade": "Thus, monsoon climate is best described as a rhythmic, rice-supporting and population-sustaining climate; however, its same seasonality also makes Monsoon Asia vulnerable to floods, droughts and food-security shocks.",
+          "whyBetter": "It preserves your strong phrase but adds balance, which is essential for higher marks."
+        }
+      },
+      "card4_air1ModelAnswer": {
+        "answer": "Monsoon climate may be called a seasonal, rhythmic and rice-supporting climate. Its importance lies in the fact that Monsoon Asia, covering South, Southeast and East Asia, supports one of the densest population belts of the world.\n\nIts first characteristic is seasonal wind reversal. Moist maritime winds blow from ocean to land in summer and bring rainfall, while dry offshore winds dominate winter. This produces a clear agricultural calendar.\n\nSecond, rainfall is concentrated in the warm season. The coincidence of high temperature and abundant moisture creates ideal conditions for wet-rice cultivation, especially in the Ganga-Brahmaputra, Mekong, Irrawaddy, Red River and Yangtze basins.\n\nThird, dry winters help harvesting, storage, rabi cultivation in some regions and settlement stability. The alluvial plains and deltas of Monsoon Asia allow intensive farming, irrigation, fisheries and multiple cropping. Since rice cultivation is labour-intensive, it also absorbs large rural populations.\n\nHowever, the same monsoon is marked by variability, floods, droughts and cyclones, making agriculture vulnerable.\n\nThus, monsoon climate feeds dense populations because it combines heat, water, fertile plains and a seasonal rhythm, but its future productivity depends on climate-resilient agriculture."
+      },
+      "card5_whyThisScoresHigh": {
+        "checklist": [
+          "Directly answers the keyword 'characteristic' instead of writing a general monsoon note.",
+          "Links climate features with food production and population density.",
+          "Uses Monsoon Asia examples beyond India.",
+          "Adds geographical processes: wind reversal, rainfall seasonality, wet-rice ecology, alluvial deltas and double cropping.",
+          "Includes a balanced limitation: variability, floods, droughts and cyclones.",
+          "Has a clean intro-body-conclusion flow suitable for a 15-marker."
+        ]
+      },
+      "card6_detailedMentorReview": {
+        "strengths": [
+          "You identified the core climatic traits correctly: seasonal reversal, summer rainfall and dry winter.",
+          "You understood the rice-population link.",
+          "The concluding phrase is memorable and can be retained."
+        ],
+        "majorIssues": [
+          "The answer repeats the same points without expanding the population-support mechanism.",
+          "Monsoon Asia is not properly covered; the answer reads mostly like an Indian monsoon note.",
+          "You did not mention alluvial plains, river valleys, deltas, irrigation and multiple cropping.",
+          "No diagram or map was suggested, which is a major loss in Geography Optional-style answers.",
+          "The negative side of monsoon variability is absent."
+        ],
+        "contentCorrections": [
+          {
+            "candidateClaim": "High temperature allows crops like wheat, sugarcane, jute, tea and pulses.",
+            "issue": "This is broadly correct but weakly organised. Wheat is more linked to winter/rabi and irrigation in many monsoon regions, not simply high tropical temperature.",
+            "upscSafeCorrection": "Write: 'High temperature and moisture support rice, jute, sugarcane and tea, while dry winters and irrigation allow rabi crops such as wheat in parts of South Asia.'"
+          },
+          {
+            "candidateClaim": "Rainfall occurs between June to September.",
+            "issue": "This is India-specific. Monsoon Asia has regional variation.",
+            "upscSafeCorrection": "Write: 'Rainfall is concentrated in the warm season, though timing and intensity vary across South, Southeast and East Asia.'"
+          }
+        ],
+        "examinerThinking": "The examiner will give credit for basic understanding, but higher marks need geographical range, spatial examples and food-population causality. A map plus one process flow would immediately lift the answer.",
+        "nextAttemptFormula": "Feature + Process + Region + Food Link + Population Link + Limitation",
+        "oneLineTargetForNextAttempt": "Monsoon Asia feeds dense populations not merely because it rains, but because heat, seasonal rainfall, alluvial plains and wet-rice ecology combine into an intensive agricultural system."
+      }
+    }
+  },
+  "status": "saved"
+}

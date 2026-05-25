@@ -894,13 +894,13 @@ function StudyBlockCard({
   const isPlanned   = statusValue === BLOCK_STATUS.PLANNED;
 
   const SC_MAP = {
-    active:    { bg: "rgba(249,115,22,0.10)",  border: "rgba(249,115,22,0.30)",  color: "#f97316", dot: "#f97316", label: "ACTIVE"   },
-    paused:    { bg: "rgba(234,179,8,0.09)",   border: "rgba(234,179,8,0.28)",   color: "#eab308", dot: "#eab308", label: "PAUSED"   },
-    completed: { bg: "rgba(100,116,139,0.07)", border: "rgba(100,116,139,0.18)", color: "#475569", dot: "#334155", label: "DONE"     },
-    partial:   { bg: "rgba(234,179,8,0.06)",   border: "rgba(234,179,8,0.16)",   color: "#ca8a04", dot: "#ca8a04", label: "PARTIAL"  },
-    missed:    { bg: "rgba(239,68,68,0.06)",   border: "rgba(239,68,68,0.14)",   color: "#ef4444", dot: "#ef4444", label: "MISSED"   },
-    skipped:   { bg: "rgba(100,116,139,0.05)", border: "rgba(100,116,139,0.12)", color: "#475569", dot: "#334155", label: "SKIPPED"  },
-    planned:   { bg: "rgba(148,163,184,0.06)", border: "rgba(148,163,184,0.14)", color: "#475569", dot: "#1e2d4a", label: "PLANNED"  },
+    active:    { bg: "rgba(194, 65, 12, 0.15)",  border: "rgba(194, 65, 12, 0.3)",  color: "#FF7A45", dot: "#FF7A45", label: "ACTIVE"   },
+    paused:    { bg: "rgba(234, 179, 8, 0.12)",   border: "rgba(234, 179, 8, 0.24)",   color: "#D97706", dot: "#D97706", label: "PAUSED"   },
+    completed: { bg: "rgba(16, 185, 129, 0.08)", border: "rgba(16, 185, 129, 0.2)", color: "#059669", dot: "#059669", label: "DONE"     },
+    partial:   { bg: "rgba(245, 158, 11, 0.05)", border: "rgba(245, 158, 11, 0.15)", color: "#B45309", dot: "#B45309", label: "PARTIAL"  },
+    missed:    { bg: "rgba(239, 68, 68, 0.06)",   border: "rgba(239, 68, 68, 0.15)",   color: "#DC2626", dot: "#DC2626", label: "MISSED"   },
+    skipped:   { bg: "rgba(107, 114, 128, 0.06)", border: "rgba(107, 114, 128, 0.15)", color: "#4B5563", dot: "#4B5563", label: "SKIPPED"  },
+    planned:   { bg: "var(--mos-bg-soft)", border: "var(--mos-border)", color: "var(--mos-text-soft)", dot: "var(--mos-text-soft)", label: "PLANNED"  },
   };
   const sc = SC_MAP[statusValue] || SC_MAP.planned;
 
@@ -951,31 +951,41 @@ function StudyBlockCard({
       height: 30, padding: "0 12px", borderRadius: 7,
       fontWeight: 700, fontSize: 11, cursor: "pointer",
       border: "none", letterSpacing: "-0.01em", whiteSpace: "nowrap",
+      transition: "all 0.15s ease",
     },
-    primary: { background: "#f97316", color: "#fff", boxShadow: "0 2px 8px rgba(249,115,22,0.25)" },
-    muted:   { background: "transparent", color: "#475569", border: "1px solid #1a2740" },
-    stop:    { background: "transparent", color: "#ef4444", border: "1px solid rgba(239,68,68,0.20)" },
-    pyq:     { background: "transparent", color: "#64748b", border: "1px solid #1a2740", textDecoration: "none" },
+    primary: { background: "var(--mos-accent)", color: "#fff", boxShadow: "0 2px 6px rgba(194, 65, 12, 0.15)" },
+    muted:   {
+      background: isActive ? "rgba(255, 255, 255, 0.08)" : "var(--mos-bg-soft)",
+      color: isActive ? "#E5E7EB" : "var(--mos-text)",
+      border: `1px solid ${isActive ? "rgba(255, 255, 255, 0.12)" : "var(--mos-border)"}`
+    },
+    stop:    { background: "rgba(239, 68, 68, 0.08)", color: "#ef4444", border: "1px solid rgba(239,68,68,0.15)" },
+    pyq:     {
+      background: isActive ? "rgba(255, 255, 255, 0.04)" : "var(--mos-bg-soft)",
+      color: isActive ? "#9CA3AF" : "var(--mos-text-soft)",
+      border: `1px solid ${isActive ? "rgba(255, 255, 255, 0.08)" : "var(--mos-border)"}`,
+      textDecoration: "none"
+    },
   };
 
   return (
     <article style={{
-      background: isActive ? "linear-gradient(160deg,#0e1828 0%,#080c18 100%)" : "#0a0e1a",
-      border: `1px solid ${isActive ? "rgba(249,115,22,0.22)" : "#141e30"}`,
-      borderTop: `2px solid ${isActive ? "#f97316" : isDone ? "#141e30" : "#1a2740"}`,
+      background: isActive ? "#0B1220" : "var(--mos-surface)",
+      border: `1px solid ${isActive ? "rgba(194,65,12,0.30)" : "var(--mos-border)"}`,
+      borderTop: `2px solid ${isActive ? "#C2410C" : isDone ? "var(--mos-border)" : "var(--mos-border-strong)"}`,
       borderRadius: 16,
       padding: "14px 16px",
       display: "flex",
       flexDirection: "column",
       gap: 8,
       overflow: "hidden",
-      boxShadow: isActive ? "0 0 24px rgba(249,115,22,0.07)" : "none",
-      opacity: isDone ? 0.7 : 1,
+      boxShadow: isActive ? "0 4px 12px rgba(194,65,12,0.08)" : "var(--mos-shadow-soft)",
+      opacity: isDone ? 0.75 : 1,
     }}>
       {/* ROW 1: title + time range */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8 }}>
         <div style={{
-          fontSize: 15, fontWeight: 800, color: '#e2e8f0',
+          fontSize: 15, fontWeight: 800, color: isActive ? '#FFFFFF' : 'var(--mos-text)',
           letterSpacing: '-0.025em', lineHeight: 1.2,
           overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0,
         }}>
@@ -983,7 +993,7 @@ function StudyBlockCard({
         </div>
         <div style={{
           fontFamily: 'var(--mono,monospace)', fontSize: 11, fontWeight: 600,
-          color: '#475569', whiteSpace: 'nowrap', flexShrink: 0,
+          color: isActive ? '#9CA3AF' : 'var(--mos-text-soft)', whiteSpace: 'nowrap', flexShrink: 0,
         }}>
           {block?.PlannedStart} {"→"} {block?.PlannedEnd}
         </div>
@@ -991,10 +1001,10 @@ function StudyBlockCard({
 
       {/* ROW 2: subtitle + duration */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div style={{ fontSize: 11, color: '#334155', fontWeight: 500 }}>
+        <div style={{ fontSize: 11, color: isActive ? '#9CA3AF' : 'var(--mos-text-soft)', fontWeight: 500 }}>
           {subtitle || ' '}
         </div>
-        <div style={{ fontFamily: 'var(--mono,monospace)', fontSize: 11, color: '#1e2d4a' }}>
+        <div style={{ fontFamily: 'var(--mono,monospace)', fontSize: 11, color: isActive ? '#E5E7EB' : 'var(--mos-text)' }}>
           {totalMin > 0 ? `${totalMin} min` : ''}
         </div>
       </div>
@@ -1018,7 +1028,7 @@ function StudyBlockCard({
           </span>
         </div>
         {nodeTag && (
-          <span style={{ fontSize: 10, color: '#1e2d4a', fontFamily: 'var(--mono,monospace)', fontWeight: 600 }}>
+          <span style={{ fontSize: 10, color: isActive ? '#9CA3AF' : 'var(--mos-text-soft)', fontFamily: 'var(--mono,monospace)', fontWeight: 600 }}>
             {nodeTag}
           </span>
         )}
@@ -1027,24 +1037,24 @@ function StudyBlockCard({
       {/* ROW 4: progress bar OR starts-at */}
       {(isActive || isPaused || isDone) && totalMin > 0 ? (
         <div>
-          <div style={{ height: 2, borderRadius: 2, background: '#0f1826', overflow: 'hidden', marginBottom: 4 }}>
+          <div style={{ height: 2, borderRadius: 2, background: isActive ? '#1F2937' : 'var(--mos-bg-soft)', overflow: 'hidden', marginBottom: 4 }}>
             <div style={{
               height: '100%', borderRadius: 2, width: `${pct}%`,
-              background: isActive ? '#f97316' : isPaused ? '#eab308' : '#1e2d4a',
+              background: isActive ? '#C2410C' : isPaused ? 'var(--mos-warning)' : 'var(--mos-text-soft)',
               transition: 'width 1s linear', minWidth: pct > 0 ? 2 : 0,
             }} />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <span style={{ fontSize: 10, color: '#334155', fontFamily: 'var(--mono,monospace)' }}>
+            <span style={{ fontSize: 10, color: isActive ? '#9CA3AF' : 'var(--mos-text-soft)', fontFamily: 'var(--mono,monospace)' }}>
               {doneMin > 0 ? `${doneMin} min done · ${leftMin} min left` : `${totalMin} min left`}
             </span>
             {pct > 0 && (
-              <span style={{ fontSize: 10, color: '#1e2d4a', fontFamily: 'var(--mono,monospace)' }}>{pct}%</span>
+              <span style={{ fontSize: 10, color: isActive ? '#E5E7EB' : 'var(--mos-text)', fontFamily: 'var(--mono,monospace)' }}>{pct}%</span>
             )}
           </div>
         </div>
       ) : isPlanned && block?.PlannedStart ? (
-        <div style={{ fontSize: 10, color: '#1e2d4a', fontFamily: 'var(--mono,monospace)' }}>
+        <div style={{ fontSize: 10, color: 'var(--mos-text-soft)', fontFamily: 'var(--mono,monospace)' }}>
           Starts at {block.PlannedStart}
         </div>
       ) : null}
@@ -2819,7 +2829,7 @@ export default function PlanPage() {
               onChange={(e) => setPlanPhoto(e.target.files?.[0] || null)}
             />
             <div style={{ marginTop: 12 }}>
-              <button disabled={busy} onClick={onParsePhoto}>
+              <button className="btn" disabled={busy} onClick={onParsePhoto}>
                 Parse Plan Photo (Review + Approve + Save)
               </button>
             </div>

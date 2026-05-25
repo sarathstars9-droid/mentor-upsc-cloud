@@ -1,9 +1,9 @@
 import { getDisplayStatus } from "../../utils/studyEngine";
 
 const STATUS_CFG = {
-  active:  { bg: "rgba(249,115,22,0.08)",  border: "rgba(249,115,22,0.26)",  color: "#f97316", dot: "#f97316", label: "ACTIVE"  },
-  paused:  { bg: "rgba(234,179,8,0.08)",   border: "rgba(234,179,8,0.24)",   color: "#eab308", dot: "#eab308", label: "PAUSED"  },
-  planned: { bg: "rgba(148,163,184,0.05)", border: "rgba(148,163,184,0.14)", color: "#475569", dot: "#334155", label: "READY"   },
+  active:  { bg: "rgba(194, 65, 12, 0.15)",  border: "rgba(194, 65, 12, 0.3)",  color: "#FF7A45", dot: "#FF7A45", label: "ACTIVE"  },
+  paused:  { bg: "rgba(234, 179, 8, 0.12)",   border: "rgba(234, 179, 8, 0.24)",   color: "#FACC15", dot: "#FACC15", label: "PAUSED"  },
+  planned: { bg: "rgba(255, 255, 255, 0.05)", border: "rgba(255, 255, 255, 0.1)", color: "#9CA3AF", dot: "#6B7280", label: "READY"   },
 };
 
 const btnBase = {
@@ -11,6 +11,7 @@ const btnBase = {
   height: 38, padding: "0 18px", borderRadius: 10,
   fontWeight: 700, fontSize: 14, cursor: "pointer",
   border: "none", letterSpacing: "-0.01em", whiteSpace: "nowrap",
+  transition: "all 0.15s ease",
 };
 
 export default function SpotlightCard({
@@ -28,10 +29,14 @@ export default function SpotlightCard({
   if (!currentBlock) {
     return (
       <div style={{
-        background: "#080c18", border: "1px dashed #141e30", borderRadius: 16,
-        padding: "20px 24px", textAlign: "center",
+        background: "var(--mos-surface)",
+        border: "1px dashed var(--mos-border)",
+        borderRadius: 16,
+        padding: "24px",
+        textAlign: "center",
+        boxShadow: "var(--mos-shadow-soft)",
       }}>
-        <div style={{ fontSize: 13, color: "#334155" }}>
+        <div style={{ fontSize: 13, color: "var(--mos-text-soft)", fontFamily: "var(--mono,monospace)" }}>
           No active block — start one below
         </div>
       </div>
@@ -94,23 +99,21 @@ export default function SpotlightCard({
   return (
     <section style={{
       position: "relative",
-      background: isActive
-        ? "linear-gradient(160deg, #0e1828 0%, #080c18 100%)"
-        : "linear-gradient(160deg, #0a0e1a 0%, #080c18 100%)",
-      border: `1px solid ${isActive ? "rgba(249,115,22,0.20)" : "#141e30"}`,
-      borderTop: `2px solid ${isActive ? "#f97316" : "#1a2740"}`,
+      background: "#0B1220", /* Premium dark color */
+      border: `1px solid ${isActive ? "rgba(194,65,12,0.30)" : "rgba(255,255,255,0.08)"}`,
+      borderTop: `2px solid ${isActive ? "#C2410C" : "rgba(255,255,255,0.12)"}`,
       borderRadius: 16,
       padding: "20px 24px 18px",
       boxShadow: isActive
-        ? "0 0 32px rgba(249,115,22,0.08), 0 2px 12px rgba(0,0,0,0.4)"
-        : "0 2px 8px rgba(0,0,0,0.3)",
+        ? "0 4px 20px rgba(194,65,12,0.12), 0 8px 30px rgba(0,0,0,0.4)"
+        : "0 4px 12px rgba(0,0,0,0.3)",
       overflow: "hidden",
     }}>
 
       {/* decorative glow — no interaction */}
       <div style={{
         position: "absolute", top: -40, right: -40, width: 180, height: 180,
-        background: "radial-gradient(circle, rgba(249,115,22,0.05) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(194,65,12,0.08) 0%, transparent 70%)",
         pointerEvents: "none",
       }} />
 
@@ -118,7 +121,7 @@ export default function SpotlightCard({
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
         <span style={{
           fontFamily: "var(--mono,monospace)", fontSize: 10, letterSpacing: "0.12em",
-          textTransform: "uppercase", color: "#475569", fontWeight: 600,
+          textTransform: "uppercase", color: "#64748B", fontWeight: 600,
         }}>
           Current Block
         </span>
@@ -144,7 +147,7 @@ export default function SpotlightCard({
       {/* ── Row 2: title ── */}
       <div style={{ marginBottom: subtitle ? 2 : 12 }}>
         <div style={{
-          fontSize: 24, fontWeight: 800, color: "#f1f5f9",
+          fontSize: 24, fontWeight: 800, color: "#FFFFFF",
           letterSpacing: "-0.035em", lineHeight: 1.15,
         }}>
           {mainTitle}
@@ -153,7 +156,7 @@ export default function SpotlightCard({
 
       {/* ── Row 3: subtitle (only if non-redundant) ── */}
       {subtitle && (
-        <div style={{ fontSize: 13, color: "#475569", fontWeight: 500, marginBottom: 12, letterSpacing: "-0.01em" }}>
+        <div style={{ fontSize: 13, color: "#9CA3AF", fontWeight: 500, marginBottom: 12, letterSpacing: "-0.01em" }}>
           {subtitle}
         </div>
       )}
@@ -164,17 +167,17 @@ export default function SpotlightCard({
         marginBottom: showProgress ? 10 : 16,
         fontFamily: "var(--mono,monospace)",
       }}>
-        <span style={{ fontSize: 14, fontWeight: 700, color: "#cbd5e1" }}>
+        <span style={{ fontSize: 14, fontWeight: 700, color: "#E5E7EB" }}>
           {currentBlock.PlannedStart} → {currentBlock.PlannedEnd}
         </span>
-        <span style={{ color: "#1e2d4a" }}>·</span>
-        <span style={{ fontSize: 13, color: "#475569", fontWeight: 600 }}>
+        <span style={{ color: "#374151" }}>·</span>
+        <span style={{ fontSize: 13, color: "#9CA3AF", fontWeight: 600 }}>
           {totalMin} min
         </span>
         {timerStr && (
           <>
-            <span style={{ color: "#1e2d4a" }}>·</span>
-            <span style={{ fontSize: 13, color: "#f97316", fontWeight: 700 }}>
+            <span style={{ color: "#374151" }}>·</span>
+            <span style={{ fontSize: 13, color: "#FF7A45", fontWeight: 700 }}>
               ⏱ {timerStr}
             </span>
           </>
@@ -184,21 +187,21 @@ export default function SpotlightCard({
       {/* ── Row 5: progress bar + label ── */}
       {showProgress && (
         <div style={{ marginBottom: 16 }}>
-          <div style={{ height: 4, borderRadius: 4, background: "#0f1826", overflow: "hidden", marginBottom: 6 }}>
+          <div style={{ height: 4, borderRadius: 4, background: "#1F2937", overflow: "hidden", marginBottom: 6 }}>
             <div style={{
               height: "100%", borderRadius: 4,
               width: `${pct}%`,
-              background: isActive ? "linear-gradient(90deg, #f97316, #fb923c)" : isPaused ? "#eab308" : "#334155",
+              background: isActive ? "#C2410C" : isPaused ? "#D97706" : "#4B5563",
               transition: "width 1s linear",
               minWidth: pct > 0 ? 4 : 0,
             }} />
           </div>
           {progressLabel && (
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span style={{ fontSize: 11, color: "#475569", fontFamily: "var(--mono,monospace)" }}>
+              <span style={{ fontSize: 11, color: "#9CA3AF", fontFamily: "var(--mono,monospace)" }}>
                 {progressLabel}
               </span>
-              <span style={{ fontSize: 11, color: "#334155", fontFamily: "var(--mono,monospace)" }}>
+              <span style={{ fontSize: 11, color: "#E5E7EB", fontFamily: "var(--mono,monospace)" }}>
                 {pct}%
               </span>
             </div>
@@ -211,8 +214,8 @@ export default function SpotlightCard({
 
         {isPlanned && (
           <button disabled={busy} onClick={() => onStart?.(currentBlock.BlockId)} style={{
-            ...btnBase, background: "#f97316", color: "#fff",
-            boxShadow: "0 3px 12px rgba(249,115,22,0.30)",
+            ...btnBase, background: "#C2410C", color: "#FFFFFF",
+            boxShadow: "0 2px 8px rgba(194, 65, 12, 0.25)",
             padding: "0 22px",
           }}>
             ▶ Start
@@ -222,22 +225,22 @@ export default function SpotlightCard({
         {isActive && (
           <>
             <button disabled={busy} onClick={handleMarkDone} style={{
-              ...btnBase, background: "#f97316", color: "#fff",
-              boxShadow: "0 3px 12px rgba(249,115,22,0.30)",
+              ...btnBase, background: "#C2410C", color: "#FFFFFF",
+              boxShadow: "0 2px 8px rgba(194, 65, 12, 0.25)",
               padding: "0 22px",
             }}>
               ✓ Done
             </button>
             <button disabled={busy} onClick={() => onPause?.(currentBlock.BlockId)} style={{
-              ...btnBase, background: "#0f1826", color: "#64748b",
-              border: "1px solid #1a2740",
+              ...btnBase, background: "rgba(255, 255, 255, 0.08)", color: "#E5E7EB",
+              border: "1px solid rgba(255, 255, 255, 0.12)",
             }}>
               ⏸ Pause
             </button>
             <button disabled={busy} onClick={() => onStop?.(currentBlock)} style={{
               ...btnBase,
-              background: "rgba(239,68,68,0.07)", color: "#f87171",
-              border: "1px solid rgba(239,68,68,0.18)",
+              background: "rgba(239, 68, 68, 0.12)", color: "#FCA5A5",
+              border: "1px solid rgba(239, 68, 68, 0.25)",
             }}>
               ■ Stop
             </button>
@@ -247,16 +250,16 @@ export default function SpotlightCard({
         {isPaused && (
           <>
             <button disabled={busy} onClick={() => onResume?.(currentBlock.BlockId)} style={{
-              ...btnBase, background: "#f97316", color: "#fff",
-              boxShadow: "0 3px 12px rgba(249,115,22,0.30)",
+              ...btnBase, background: "#C2410C", color: "#FFFFFF",
+              boxShadow: "0 2px 8px rgba(194, 65, 12, 0.25)",
               padding: "0 22px",
             }}>
               ▶ Resume
             </button>
             <button disabled={busy} onClick={() => onStop?.(currentBlock)} style={{
               ...btnBase,
-              background: "rgba(239,68,68,0.07)", color: "#f87171",
-              border: "1px solid rgba(239,68,68,0.18)",
+              background: "rgba(239, 68, 68, 0.12)", color: "#FCA5A5",
+              border: "1px solid rgba(239, 68, 68, 0.25)",
             }}>
               ■ Stop
             </button>
@@ -272,9 +275,9 @@ export default function SpotlightCard({
               ...btnBase,
               marginLeft: "auto",
               textDecoration: "none",
-              background: "transparent",
-              border: "1px solid #1a2740",
-              color: "#64748b", fontSize: 13,
+              background: "rgba(255, 255, 255, 0.04)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              color: "#9CA3AF", fontSize: 13,
             }}
           >
             {pyqTotal > 0 ? `${pyqTotal} PYQs →` : "PYQs →"}
@@ -285,7 +288,7 @@ export default function SpotlightCard({
       {/* ── Row 7: microcopy — only show when active or paused ── */}
       {(isActive || isPaused) && (
         <div style={{
-          fontSize: 11, color: "#334155",
+          fontSize: 11, color: "#9CA3AF",
           fontFamily: "var(--mono,monospace)", letterSpacing: "0.01em",
         }}>
           {isActive ? "Stay focused. Every minute compounds." : "Paused. Resume when ready."}
@@ -294,3 +297,4 @@ export default function SpotlightCard({
     </section>
   );
 }
+

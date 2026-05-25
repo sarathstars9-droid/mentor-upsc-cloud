@@ -1088,15 +1088,15 @@
 
 .plan-card {
   background: var(--surf);
-  border: 1px solid #252525;
+  border: 1px solid var(--mos-border, #252525);
   border-radius: 12px;
   padding: 22px 26px;
   margin-bottom: 20px;
 }
 
 .field {
-  background: #1A1A1A;
-  border: 1px solid #2A2A2A;
+  background: var(--mos-input-bg, #1A1A1A);
+  border: 1px solid var(--mos-border, #2A2A2A);
   border-radius: 8px;
   padding: 10px 14px;
   color: var(--txt);

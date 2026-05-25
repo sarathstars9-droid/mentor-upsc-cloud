@@ -55,7 +55,7 @@ export default function MentorOSLayout({
   }
 
   return (
-    <div className="mentoros-shell">
+    <div className="mentoros-shell" id="air1-full-screenshot-export-area">
       <MentorSidebar
         currentPage={currentPage}
         onNavigate={handleNavigate}

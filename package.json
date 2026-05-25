@@ -11,6 +11,9 @@
     "build:pyq": "node backend/scripts/buildPyqMasterIndex.js && node backend/scripts/rebuildPyqIndexes.js && node backend/scripts/validatePyqIndexes.js"
   },
   "dependencies": {
+    "html2canvas": "^1.4.1",
+    "jsdom": "^29.1.1",
+    "jspdf": "^4.2.1",
     "lucide-react": "^0.268.0",
     "pdf-parse": "^2.4.5",
     "react": "18.3.1",

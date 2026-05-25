@@ -197,11 +197,6 @@ export async function buildAir1Prompt(payload) {
         throw error;
     }
 }
-
-/**
- * Basic Review: Evaluate Mains Answer directly using Gemini API on the backend
- * POST /api/evaluate-answer
- */
 export async function evaluateMainsAnswerApi(payload) {
     try {
         const response = await fetch(`${BACKEND_URL}/api/evaluate-answer`, {
@@ -225,17 +220,17 @@ export async function evaluateMainsAnswerApi(payload) {
 }
 
 /**
- * Extract handwritten answer from uploaded images using Gemini Vision
+ * Extract handwritten answer or printed question from uploaded images/PDFs using Gemini Vision
  * POST /api/mains/extract-answer
  */
-export async function extractAnswerFromImagesApi(files) {
+export async function extractAnswerFromImagesApi(files, type = "answer") {
     try {
         const formData = new FormData();
         files.forEach(file => {
             formData.append("pages", file);
         });
 
-        const response = await fetch(`${BACKEND_URL}/api/mains/extract-answer`, {
+        const response = await fetch(`${BACKEND_URL}/api/mains/extract-answer?type=${encodeURIComponent(type)}`, {
             method: "POST",
             body: formData,
         });
@@ -246,6 +241,39 @@ export async function extractAnswerFromImagesApi(files) {
         throw error;
     }
 }
+
+/**
+ * Extract question and answer from same uploaded image/PDF sheet using Gemini Vision OCR
+ * POST /api/mains/extract-question-answer
+ */
+export async function extractQuestionAnswerFromImagesApi(files) {
+    try {
+        const formData = new FormData();
+        files.forEach(file => {
+            formData.append("pages", file);
+        });
+
+        const response = await fetch(`${BACKEND_URL}/api/mains/extract-question-answer`, {
+            method: "POST",
+            body: formData,
+        });
+        if (!response.ok) {
+            let errMsg = `HTTP ${response.status}`;
+            try {
+                const errData = await response.json();
+                if (errData && errData.error) {
+                    errMsg = errData.error;
+                }
+            } catch (e) {}
+            throw new Error(errMsg);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("extractQuestionAnswerFromImagesApi error:", error);
+        throw error;
+    }
+}
+
 /**
  * Save/upsert mains attempt to PostgreSQL (durable, survives refresh)
  * POST /api/mains/attempts/save

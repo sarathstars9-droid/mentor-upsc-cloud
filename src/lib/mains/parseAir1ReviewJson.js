@@ -184,6 +184,18 @@ function coerceSchema(parsed) {
     if (Array.isArray(parsed.whyThisScoresHigh)) out.whyThisScoresHigh = parsed.whyThisScoresHigh;
     if (parsed.detailedMentorReview !== undefined) out.detailedMentorReview = parsed.detailedMentorReview;
 
+    if (parsed.cards !== undefined) out.cards = parsed.cards;
+    if (parsed.quickEvaluation !== undefined) out.quickEvaluation = parsed.quickEvaluation;
+    if (parsed.howToImprove !== undefined) out.howToImprove = parsed.howToImprove;
+    if (parsed.air1ModelAnswer !== undefined) out.air1ModelAnswer = parsed.air1ModelAnswer;
+
+    if (parsed.card1_quickEvaluation !== undefined) out.card1_quickEvaluation = parsed.card1_quickEvaluation;
+    if (parsed.card2_howToImprove !== undefined) out.card2_howToImprove = parsed.card2_howToImprove;
+    if (parsed.card3_air1Upgrades !== undefined) out.card3_air1Upgrades = parsed.card3_air1Upgrades;
+    if (parsed.card4_air1ModelAnswer !== undefined) out.card4_air1ModelAnswer = parsed.card4_air1ModelAnswer;
+    if (parsed.card5_whyThisScoresHigh !== undefined) out.card5_whyThisScoresHigh = parsed.card5_whyThisScoresHigh;
+    if (parsed.card6_detailedMentorReview !== undefined) out.card6_detailedMentorReview = parsed.card6_detailedMentorReview;
+
     return out;
 }
 
