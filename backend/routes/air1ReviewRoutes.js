@@ -40,7 +40,8 @@ router.post("/extract", async (req, res) => {
     console.error("[air1ReviewRoutes] extract failed:", error);
     return res.status(500).json({
       success: false,
-      error: "Failed to extract AIR-1 intelligence.",
+      message: "AI extraction temporarily unavailable. Please retry.",
+      error: "AI extraction temporarily unavailable. Please retry."
     });
   }
 });

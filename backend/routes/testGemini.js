@@ -17,12 +17,11 @@ router.get("/", async (req, res) => {
         });
 
     } catch (error) {
-
-        console.error(error);
-
+        console.error("[test-gemini] failed:", error);
         res.status(500).json({
             success: false,
-            error: error.message
+            message: "AI extraction temporarily unavailable. Please retry.",
+            error: "AI extraction temporarily unavailable. Please retry."
         });
     }
 });

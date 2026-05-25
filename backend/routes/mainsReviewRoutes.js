@@ -274,7 +274,11 @@ Rules:
     return res.json({ ok: true, text });
   } catch (err) {
     console.error("[mainsReview] extract-answer error:", err);
-    return res.status(500).json({ ok: false, error: String(err?.message || err) });
+    return res.status(500).json({
+      success: false,
+      message: "AI extraction temporarily unavailable. Please retry.",
+      error: "AI extraction temporarily unavailable. Please retry."
+    });
   }
 });
 
@@ -304,8 +308,8 @@ router.post("/extract-question-answer", upload.array("pages", 5), async (req, re
     console.error("[extract-question-answer] failed:", err);
     return res.status(500).json({
       success: false,
-      error: err.message || "Extraction failed",
-      stack: process.env.NODE_ENV === "development" ? err.stack : undefined
+      message: "AI extraction temporarily unavailable. Please retry.",
+      error: "AI extraction temporarily unavailable. Please retry."
     });
   }
 });

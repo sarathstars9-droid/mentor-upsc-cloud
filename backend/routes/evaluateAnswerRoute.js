@@ -73,7 +73,8 @@ router.post("/", async (req, res) => {
     console.error("[evaluateAnswerRoute] Error evaluating answer:", error);
     return res.status(500).json({
       success: false,
-      error: "Failed to evaluate answer. Please check logs for details.",
+      message: "AI extraction temporarily unavailable. Please retry.",
+      error: "AI extraction temporarily unavailable. Please retry."
     });
   }
 });
