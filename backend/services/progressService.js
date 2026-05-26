@@ -1,5 +1,6 @@
 import { query } from '../db/index.js';
 import { computeSyllabusProgress } from '../brain/syllabusProgressEngine.js';
+import { getPrelimsDaysLeft, getMainsDaysLeft } from '../config/examCalendar.js';
 
 // Helper to determine Monday of the current week in Asia/Kolkata timezone
 export function getMondayOfCurrentWeek() {
@@ -441,4 +442,390 @@ export async function getMainsAnswerStatus(userId) {
     }))
   };
 }
+
+// Helper: Match study blocks to GS1/GS2/GS3 sub-areas dynamically
+function getSubAreaMatch(block, subAreas, parentSubject) {
+  const subtopic = (block.subtopic || '').toLowerCase().trim();
+  const subject = (block.subject || '').toLowerCase().trim();
+  const topic = (block.topic || '').toLowerCase().trim();
+  const combined = `${subject} ${topic} ${subtopic}`;
+
+  // 1. Exact or include match on subtopic/subject against subAreas
+  for (const area of subAreas) {
+    const lowerArea = area.toLowerCase();
+    if (subtopic && (subtopic === lowerArea || subtopic.includes(lowerArea))) {
+      return area;
+    }
+  }
+
+  // 2. Specific keyword rules
+  if (parentSubject === 'GS1') {
+    if (combined.includes('art') || combined.includes('culture')) return 'Art & Culture';
+    if (combined.includes('post-independence') || combined.includes('post independence')) return 'Post-Independence India';
+    if (combined.includes('world history')) return 'World History';
+    if (combined.includes('society')) return 'Indian Society';
+    if (combined.includes('physical geography')) return 'Physical Geography GS Level';
+    if (combined.includes('modern')) return 'Modern History';
+    if (combined.includes('geography')) return 'Indian & World Geography';
+    if (combined.includes('pyq') || combined.includes('answer writing') || combined.includes('mains')) return 'GS1 Mains PYQ + Answer Writing';
+    if (combined.includes('revision') || combined.includes('diagram') || combined.includes('sheet')) return 'Revision Sheets + Diagrams';
+  } else if (parentSubject === 'GS2') {
+    if (combined.includes('governance')) return 'Governance';
+    if (combined.includes('social justice') || combined.includes('justice')) return 'Social Justice';
+    if (combined.includes('welfare') || combined.includes('scheme')) return 'Welfare Schemes';
+    if (combined.includes('international') || combined.includes('ir ') || combined.includes('relations')) return 'International Relations';
+    if (combined.includes('judgment') || combined.includes('committee') || combined.includes('report') || combined.includes('commission')) return 'Judgments/Committees/Reports';
+    if (combined.includes('polity') || combined.includes('constitution') || combined.includes('static')) return 'Polity & Constitution Static';
+    if (combined.includes('pyq') || combined.includes('answer writing') || combined.includes('mains')) return 'GS2 Mains PYQ + Answer Writing';
+    if (combined.includes('revision') || combined.includes('sheet')) return 'Polity & Constitution Static';
+  } else if (parentSubject === 'GS3') {
+    if (combined.includes('agriculture') || combined.includes('agri')) return 'Agriculture';
+    if (combined.includes('environment') || combined.includes('env')) return 'Environment';
+    if (combined.includes('science') || combined.includes('technology') || combined.includes('s&t')) return 'Science & Technology';
+    if (combined.includes('security')) return 'Internal Security';
+    if (combined.includes('disaster') || combined.includes('management')) return 'Disaster Management';
+    if (combined.includes('infrastructure') || combined.includes('industry') || combined.includes('energy')) return 'Infrastructure/Industry/Energy';
+    if (combined.includes('economy')) return 'Economy';
+    if (combined.includes('pyq') || combined.includes('answer writing') || combined.includes('mains')) return 'GS3 Mains PYQ + Answer Writing';
+    if (combined.includes('revision') || combined.includes('error') || combined.includes('log')) return 'Revision + Error Log';
+  }
+
+  // 3. Fallback to generic sub-area matching
+  for (const area of subAreas) {
+    const words = area.toLowerCase().split(/\s+/).filter(w => w.length > 3 && w !== 'mains' && w !== 'sheets' && w !== 'writing');
+    for (const w of words) {
+      if (combined.includes(w)) {
+        return area;
+      }
+    }
+  }
+
+  // 4. Ultimate default based on parent
+  if (parentSubject === 'GS1') return 'Revision Sheets + Diagrams';
+  if (parentSubject === 'GS2') return 'Polity & Constitution Static';
+  if (parentSubject === 'GS3') return 'Revision + Error Log';
+  return subAreas[0];
+}
+
+// 9. Get sub-targets progress for a parent subject (GS1/GS2/GS3)
+export async function getSubjectSubTargetsProgress(userId, parentSubject) {
+  // Fetch sub-targets configuration
+  const targetsRes = await query(
+    `SELECT sub_area, target_hours, study_flow, roi_priority 
+     FROM public.subject_sub_targets 
+     WHERE user_id = $1 AND parent_subject = $2
+     ORDER BY sub_area ASC`,
+    [userId, parentSubject]
+  );
+  
+  if (targetsRes.rows.length === 0) {
+    return [];
+  }
+
+  const subAreas = targetsRes.rows.map(r => r.sub_area);
+
+  // Fetch all completed/partial study blocks for this user
+  const blocksRes = await query(
+    `SELECT subject, subject_id, topic, subtopic, actual_minutes 
+     FROM public.study_blocks 
+     WHERE user_id = $1 AND status IN ('completed', 'partial') AND started_at IS NOT NULL`,
+    [userId]
+  );
+
+  const subAreaMinutes = {};
+  for (const area of subAreas) {
+    subAreaMinutes[area] = 0;
+  }
+
+  for (const block of blocksRes.rows) {
+    const blockParent = mapBlockToTargetArea(block);
+    if (blockParent === parentSubject) {
+      const matchedSubArea = getSubAreaMatch(block, subAreas, parentSubject);
+      if (subAreaMinutes[matchedSubArea] !== undefined) {
+        subAreaMinutes[matchedSubArea] += block.actual_minutes;
+      }
+    }
+  }
+
+  return targetsRes.rows.map(t => {
+    const targetHours = Number(t.target_hours);
+    const completedHours = (subAreaMinutes[t.sub_area] || 0) / 60.0;
+    const remainingHours = Math.max(0, targetHours - completedHours);
+    return {
+      sub_area: t.sub_area,
+      target_hours: targetHours,
+      completed_hours: Number(completedHours.toFixed(1)),
+      remaining_hours: Number(remainingHours.toFixed(1)),
+      completion_percent: targetHours > 0 ? Number(((completedHours / targetHours) * 100.0).toFixed(1)) : 0,
+      study_flow: t.study_flow,
+      roi_priority: t.roi_priority
+    };
+  });
+}
+
+// 10. Get daily night report data
+export async function getDailyNightReportData(userId, todayKey) {
+  const { rows: blocks } = await query(
+    `SELECT * FROM public.study_blocks 
+     WHERE user_id = $1 AND day_key = $2`,
+    [userId, todayKey]
+  );
+
+  let totalPlannedMins = 0;
+  let totalActualMins = 0;
+  let completedCount = 0;
+  let missedCount = 0;
+  let outputsCreated = 0;
+  const subjectsStudied = new Set();
+
+  for (const b of blocks) {
+    totalPlannedMins += b.planned_minutes || 0;
+
+    let actualMins = 0;
+    if (b.started_at) {
+      let actualSec = 0;
+      if (['completed', 'partial', 'missed', 'skipped'].includes(b.status) && b.ended_at) {
+        actualSec = Math.max(0, Math.floor((new Date(b.ended_at).getTime() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
+      } else if (b.status === 'paused' && b.paused_at) {
+        actualSec = Math.max(0, Math.floor((new Date(b.paused_at).getTime() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
+      } else if (b.status === 'active') {
+        actualSec = Math.max(0, Math.floor((Date.now() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
+      }
+      actualMins = Math.round(actualSec / 60.0);
+    }
+    totalActualMins += actualMins;
+
+    if (['completed', 'partial'].includes(b.status)) {
+      completedCount++;
+      subjectsStudied.add(normalizeSubjectLabel(b.subject || b.subject_id));
+
+      const subLower = (b.subject || '').toLowerCase();
+      const topicLower = (b.topic || '').toLowerCase();
+      if (
+        subLower.includes('answer') || topicLower.includes('answer') ||
+        subLower.includes('test') || topicLower.includes('test') ||
+        subLower.includes('notes') || topicLower.includes('notes') ||
+        subLower.includes('output') || topicLower.includes('output')
+      ) {
+        outputsCreated++;
+      } else if (actualMins >= 30) {
+        // Fallback: any substantial study block counts as output effort
+        outputsCreated++;
+      }
+    }
+
+    if (b.status === 'missed') {
+      missedCount++;
+    }
+  }
+
+  // Revision Due count
+  const revRes = await query(
+    `SELECT COUNT(*) as count FROM public.revision_items 
+     WHERE user_id = $1 AND status = 'pending' AND next_review_at <= NOW()`,
+    [userId]
+  );
+  const revisionDueCount = Number(revRes.rows[0]?.count || 0);
+
+  const plannedHours = totalPlannedMins / 60.0;
+  const actualHours = totalActualMins / 60.0;
+  const deficit = plannedHours - actualHours;
+
+  // Tomorrow correction recommendation
+  let tomorrowCorrection = "Stick to the first study block schedule on time.";
+  if (missedCount > 0) {
+    const missed = blocks.find(b => b.status === 'missed');
+    if (missed) {
+      tomorrowCorrection = `Catch up on the missed ${normalizeSubjectLabel(missed.subject || missed.subject_id)} block.`;
+    }
+  } else if (revisionDueCount > 10) {
+    tomorrowCorrection = "Clear the pending revision backlog first.";
+  } else if (deficit > 2.0) {
+    tomorrowCorrection = "Reduce planned block lengths tomorrow to ensure execution.";
+  } else {
+    tomorrowCorrection = "Fantastic rhythm. Keep consistency alive!";
+  }
+
+  return {
+    date: todayKey,
+    target_hours: Number(plannedHours.toFixed(1)),
+    actual_hours: Number(actualHours.toFixed(1)),
+    deficit: Number((Math.max(0, deficit)).toFixed(1)),
+    subjects_completed: Array.from(subjectsStudied),
+    outputs_created: outputsCreated,
+    missed_blocks: missedCount,
+    revision_due: revisionDueCount,
+    tomorrow_correction: tomorrowCorrection
+  };
+}
+
+// 11. Get monthly progress report
+export async function getMonthlyProgressReport(userId, monthKey) {
+  const startDayKey = `${monthKey}-01`;
+  const [yyyy, mm] = monthKey.split('-').map(Number);
+  const lastDay = new Date(yyyy, mm, 0).getDate();
+  const endDayKey = `${monthKey}-${String(lastDay).padStart(2, '0')}`;
+
+  // 1. Total Planned & Actual Minutes
+  const blocksRes = await query(
+    `SELECT status, planned_minutes, actual_minutes, subject, subject_id 
+     FROM public.study_blocks 
+     WHERE user_id = $1 AND day_key >= $2 AND day_key <= $3`,
+    [userId, startDayKey, endDayKey]
+  );
+
+  let totalPlannedMins = 0;
+  let totalActualMins = 0;
+  const subjectMinutes = {};
+
+  for (const b of blocksRes.rows) {
+    totalPlannedMins += b.planned_minutes || 0;
+    if (['completed', 'partial'].includes(b.status)) {
+      totalActualMins += b.actual_minutes || 0;
+      const subLabel = normalizeSubjectLabel(b.subject || b.subject_id);
+      subjectMinutes[subLabel] = (subjectMinutes[subLabel] || 0) + (b.actual_minutes || 0);
+    }
+  }
+
+  // 2. Consistency Stats
+  const consistencyRes = await query(
+    `SELECT status, COUNT(*) as count 
+     FROM public.daily_consistency 
+     WHERE user_id = $1 AND day_key >= $2 AND day_key <= $3 
+     GROUP BY status`,
+    [userId, startDayKey, endDayKey]
+  );
+
+  let strongDays = 0;
+  let partialDays = 0;
+  let weakDays = 0;
+
+  for (const row of consistencyRes.rows) {
+    if (row.status === 'strong') strongDays = Number(row.count);
+    else if (row.status === 'partial') partialDays = Number(row.count);
+    else if (row.status === 'weak') weakDays = Number(row.count);
+  }
+
+  const subjectBreakdown = Object.entries(subjectMinutes)
+    .map(([subject, mins]) => ({
+      subject,
+      hours: Number((mins / 60.0).toFixed(1))
+    }))
+    .sort((a, b) => b.hours - a.hours);
+
+  return {
+    month_key: monthKey,
+    total_planned_hours: Number((totalPlannedMins / 60.0).toFixed(1)),
+    total_actual_hours: Number((totalActualMins / 60.0).toFixed(1)),
+    strong_days: strongDays,
+    partial_days: partialDays,
+    weak_days: weakDays,
+    subject_breakdown: subjectBreakdown
+  };
+}
+
+// 12. Get good morning report data
+export async function getGoodMorningReportData(userId) {
+  const now = new Date();
+  
+  // 1. Get Kolkata timezone details
+  const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+  const d = new Date(kolkataStr);
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  const todayKey = `${yyyy}-${mm}-${dd}`;
+
+  // Get yesterday's key
+  const prevDate = new Date(d);
+  prevDate.setDate(d.getDate() - 1);
+  const yKey = `${prevDate.getFullYear()}-${String(prevDate.getMonth() + 1).padStart(2, '0')}-${String(prevDate.getDate()).padStart(2, '0')}`;
+
+  // 2. Fetch target configs to compute mission start & end dates, target hours
+  const targetRes = await query(
+    `SELECT MIN(mission_start_date) as start_date, MAX(mission_end_date) as end_date, SUM(target_hours) as total_target
+     FROM public.subject_targets 
+     WHERE user_id = $1 AND sub_area IS NULL`,
+    [userId]
+  );
+  
+  const startDateStr = targetRes.rows[0]?.start_date ? new Date(targetRes.rows[0].start_date).toISOString().slice(0, 10) : '2026-05-25';
+  const endDateStr = targetRes.rows[0]?.end_date ? new Date(targetRes.rows[0].end_date).toISOString().slice(0, 10) : '2027-04-15';
+  const totalTargetHours = Number(targetRes.rows[0]?.total_target || 3500);
+
+  // 3. Compute mission day
+  const missionStart = new Date(`${startDateStr}T00:00:00+05:30`);
+  const currentDay = new Date(`${todayKey}T00:00:00+05:30`);
+  const diffTime = currentDay.getTime() - missionStart.getTime();
+  const missionDay = Math.max(1, Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1);
+
+  // 4. Days left for exams
+  const prelimsDays = getPrelimsDaysLeft();
+  const mainsDays = getMainsDaysLeft();
+
+  // 5. Total completed hours (all time)
+  const blocksRes = await query(
+    `SELECT SUM(actual_minutes) as completed_mins 
+     FROM public.study_blocks 
+     WHERE user_id = $1 AND status IN ('completed', 'partial') AND started_at IS NOT NULL`,
+    [userId]
+  );
+  const completedMins = Number(blocksRes.rows[0]?.completed_mins || 0);
+  const completedHours = completedMins / 60.0;
+  const remainingHours = Math.max(0, totalTargetHours - completedHours);
+
+  // 6. Today required pace
+  const missionEnd = new Date(`${endDateStr}T00:00:00+05:30`);
+  const totalDaysLeft = Math.max(1, Math.ceil((missionEnd.getTime() - currentDay.getTime()) / (1000 * 60 * 60 * 24)));
+  const todayRequiredPace = remainingHours / totalDaysLeft;
+
+  // 7. Yesterday short summary
+  const yesterdayBlocks = await query(
+    `SELECT status, planned_minutes, actual_minutes, subject, subject_id 
+     FROM public.study_blocks 
+     WHERE user_id = $1 AND day_key = $2`,
+    [userId, yKey]
+  );
+  
+  let yPlannedMins = 0;
+  let yActualMins = 0;
+  let yCompleted = 0;
+  for (const b of yesterdayBlocks.rows) {
+    yPlannedMins += b.planned_minutes || 0;
+    if (['completed', 'partial'].includes(b.status)) {
+      yActualMins += b.actual_minutes || 0;
+      yCompleted++;
+    }
+  }
+  const yesterdaySummary = yesterdayBlocks.rows.length > 0
+    ? `Completed ${yCompleted}/${yesterdayBlocks.rows.length} blocks (${Number((yActualMins/60.0).toFixed(1))}h actual vs ${Number((yPlannedMins/60.0).toFixed(1))}h planned)`
+    : "No study blocks registered yesterday.";
+
+  // 8. Today's first correction
+  let todayCorrection = "Focus on starting your first scheduled study block exactly on time.";
+  const { rows: todayBlocks } = await query(
+    `SELECT subject, subject_id, planned_start FROM public.study_blocks 
+     WHERE user_id = $1 AND day_key = $2 ORDER BY planned_start ASC LIMIT 1`,
+    [userId, todayKey]
+  );
+  if (todayBlocks.length > 0) {
+    const earliest = todayBlocks[0];
+    const subLabel = normalizeSubjectLabel(earliest.subject || earliest.subject_id);
+    todayCorrection = `Ensure you start your first block (${subLabel}) at ${earliest.planned_start} AM sharp.`;
+  }
+
+  return {
+    mission_day: missionDay,
+    prelims_days_left: prelimsDays,
+    mains_days_left: mainsDays,
+    target_hours: totalTargetHours,
+    completed_hours: Number(completedHours.toFixed(1)),
+    remaining_hours: Number(remainingHours.toFixed(1)),
+    today_required_pace: Number(todayRequiredPace.toFixed(2)),
+    yesterday_summary: yesterdaySummary,
+    today_first_correction: todayCorrection
+  };
+}
+
+
 

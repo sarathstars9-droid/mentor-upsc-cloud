@@ -90,9 +90,13 @@ ${userName}, here is your study report for today (${dateStr}).
 
 • Streak: ${data.streak} days 🔥
 • Blocks: ${data.completed_blocks}/${data.total_blocks} completed
-• Studied: ${formatHoursAndMins(data.total_actual_hours)} (Planned: ${formatHoursAndMins(data.total_planned_hours)})
+• Studied: ${formatHoursAndMins(data.total_actual_hours)} (Planned: ${formatHoursAndMins(data.total_planned_hours)})`;
 
-*Execution log:*`;
+  if (data.total_planned_hours > 12) {
+    report += `\n⚠️ *Today’s plan is overloaded. Keep the execution target near 11h. Prioritize the top 5 blocks.*`;
+  }
+
+  report += `\n\n*Execution log:*`;
 
   for (const b of data.blocks) {
     const statusIcon = 
@@ -325,3 +329,64 @@ ${userName}, here is your high-level syllabus progress:`;
 
   return report;
 }
+
+// 9. Good morning report generator
+export function generateGoodMorningReport(data, userName = "Moulika") {
+  const percent = data.target_hours > 0 ? ((data.completed_hours / data.target_hours) * 100).toFixed(1) : 0;
+  return `🌅 *Good morning ${userName}*
+
+*Mission Day:* ${data.mission_day} / 325 🚀
+*Days left for Prelims:* ${data.prelims_days_left}
+*Days left for Mains:* ${data.mains_days_left}
+
+📊 *Mission Progress:*
+• Target: ${formatHoursAndMins(data.target_hours)}
+• Completed: ${formatHoursAndMins(data.completed_hours)} (${percent}%)
+• Remaining: ${formatHoursAndMins(data.remaining_hours)}
+• Today required pace: ${data.today_required_pace}h/day
+
+Yesterday: ${data.yesterday_summary}
+
+🎯 *Today’s first correction:*
+${data.today_first_correction}`;
+}
+
+// 10. Daily night report generator
+export function generateDailyNightReport(data, userName = "Moulika") {
+  return `🌌 *Daily Night Report: ${userName}*
+
+• target hours: ${formatHoursAndMins(data.target_hours)}
+• actual hours: ${formatHoursAndMins(data.actual_hours)}
+• deficit: ${formatHoursAndMins(data.deficit)}
+
+📚 *subjects completed:* ${data.subjects_completed.length > 0 ? data.subjects_completed.join(', ') : 'None'}
+📝 *outputs created:* ${data.outputs_created}
+❌ *missed blocks:* ${data.missed_blocks}
+📅 *revision due:* ${data.revision_due} items
+
+💡 *tomorrow correction:*
+${data.tomorrow_correction}`;
+}
+
+// 11. Monthly report generator
+export function generateMonthlyReport(data, userName = "Moulika") {
+  return `📊 *Monthly Mentor Report: ${data.month_key}*
+
+${userName}, here is your text summary for the month:
+
+• Planned hours: ${formatHoursAndMins(data.total_planned_hours)}
+• Actual hours: ${formatHoursAndMins(data.total_actual_hours)}
+
+🔥 *Consistency Stats:*
+• ✅ Strong Days: ${data.strong_days}
+• 🟡 Partial Days: ${data.partial_days}
+• 🔴 Weak/Missed Days: ${data.weak_days}
+
+📚 *Subject Breakdown:*
+${data.subject_breakdown.map((s, i) => `${i + 1}. ${s.subject}: ${formatHoursAndMins(s.hours)}`).join('\n')}
+
+*Mentor note:*
+This is your baseline. Analyze weak days and adjust pacing for next month!`;
+}
+
+

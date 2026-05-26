@@ -1051,11 +1051,50 @@ Output ONLY JSON.
     const tr = daysToPrelims(new Date());
     const kill = killSwitchMode(tr);
 
+    function inferStudyMode(subj = "", top = "") {
+      const text = `${subj} ${top}`.toLowerCase();
+      
+      if (text.includes("news") || text.includes("hindu") || text.includes("current affairs") || text.includes("newspaper") || text.includes("ca ")) {
+        return "current_affairs_tagging";
+      }
+      if (text.includes("revision") || text.includes("revise") || text.includes("recall") || text.includes("sheet")) {
+        return "revision";
+      }
+      if (text.includes("pyq")) {
+        if (text.includes("practice") || text.includes("solve")) return "practice";
+        return "pyq_revision";
+      }
+      if (
+        text.includes("practice") ||
+        text.includes("solve") ||
+        text.includes("drill") ||
+        text.includes("mcq") ||
+        text.includes("test") ||
+        text.includes("mock") ||
+        text.includes("writing") ||
+        text.includes("answer")
+      ) {
+        return "practice";
+      }
+      return "study";
+    }
+
     const enrichedItems = items.map((rawIt, itemIndex) => {
       const item = { ...rawIt };
 
       const ocrInput = `${item.subject || ""} ${item.topic || ""}`.trim();
       const mappingResult = processOcrText(ocrInput, { minutes: item.minutes || 0 });
+
+      // Guard: Do not force vague generic entries into specific nodes
+      const genericTerms = ["pyq", "pyqs", "revision", "the hindu", "news", "current affairs", "ca", "day revision", "practice", "mcq", "newspaper", "daily"];
+      const isGenericText = genericTerms.some(t => ocrInput.toLowerCase().includes(t)) && ocrInput.split(" ").length <= 5;
+      
+      if (isGenericText && (mappingResult.confidenceBadge === "LOW" || mappingResult.confidenceBadge === "MEDIUM")) {
+        mappingResult.nodeId = null;
+        mappingResult.nodeName = "Unmapped";
+        mappingResult.resolverConfidence = 0;
+        mappingResult.confidenceBadge = "LOW";
+      }
 
       let linkedPyqs = { total: 0, mappedNodes: [] };
       // Try confirmed nodeId first, then scan all top candidates for best PYQ coverage
@@ -1108,6 +1147,32 @@ Output ONLY JSON.
         isApproved: mappingResult.isApproved,
       };
 
+      const itemMode = inferStudyMode(item.subject, item.topic);
+      let itemOutputExpected = "";
+      if (itemMode === "practice") {
+        itemOutputExpected = "Questions solved and reviewed";
+      } else if (itemMode === "revision") {
+        itemOutputExpected = "Key concepts revised";
+      } else {
+        itemOutputExpected = "Study goals completed";
+      }
+
+      const rawText = `${item.startTime || ""} - ${item.endTime || ""} ${item.subject || ""} - ${item.topic || ""}`.trim();
+
+      // Log Stage 1 OCR parsed block
+      if (itemIndex === 0) {
+        console.log("[STAGE 1] OCR parsed block:", {
+          startTime: item.startTime,
+          endTime: item.endTime,
+          subject: item.subject,
+          topic: item.topic,
+          minutes: item.minutes,
+          mode: itemMode,
+          rawText,
+          syllabusNodeId: resolvedNodeId
+        });
+      }
+
       return {
         ...item,
         subject: item.subject && item.subject !== "Unknown" ? item.subject : (mappingResult.subjectName || "Unknown"), // Preserve text recognized by OCR, fallback to resolved
@@ -1116,7 +1181,13 @@ Output ONLY JSON.
         topicCandidates: mappingResult.topicCandidates,
         textQuality: mappingResult.textQuality,
         confidenceBadge: mappingResult.confidenceBadge,
-        linkedPyqs
+        linkedPyqs,
+        // Phase 2A fields
+        mode: itemMode,
+        outputExpected: itemOutputExpected,
+        rawText,
+        subtopic: mappingResult.nodeName !== "Unmapped" ? mappingResult.nodeName : "",
+        syllabusNodeId: resolvedNodeId
       };
     });
 
@@ -1369,6 +1440,31 @@ app.post("/api/sheets", async (req, res) => {
     }
 
     const userId = payload.userId || DEFAULT_PLAN_USER;
+
+    // ── INTERCEPT: saveScheduleBlocks → PostgreSQL ───────────────────────────
+    if (action === "saveScheduleBlocks") {
+      const { date, items = [] } = payload;
+      if (!date || !Array.isArray(items)) {
+        return res.status(400).json({ ok: false, message: "Missing date or items array" });
+      }
+
+      try {
+        console.log("[DEBUG PLAN] Backend received block preview (first item):", items[0]);
+        const { savePlanBlocksAndLogEvents } = await import("./services/blockLifecycleService.js");
+        await savePlanBlocksAndLogEvents(userId, date, items);
+
+        if (scriptUrl) {
+          proxyToGas(payload, scriptUrl).catch((err) =>
+            console.warn("[sheets proxy] saveScheduleBlocks background GAS sync failed:", err.message)
+          );
+        }
+
+        return res.json({ ok: true, message: "Blocks saved to database and events logged." });
+      } catch (err) {
+        console.error("[sheets interceptor saveScheduleBlocks]", err.message);
+        return res.status(500).json({ ok: false, message: err.message });
+      }
+    }
 
     // ── INTERCEPT: lifecycle → PostgreSQL ────────────────────────────────────
     if (LIFECYCLE_ACTIONS.has(action)) {
