@@ -85,6 +85,9 @@ import adaptiveRoutes from "./routes/adaptiveRoutes.js";
 import mainsAttemptsRoute from "./routes/mainsAttemptsRoute.js";
 import prelimsUnifiedRoutes from "./routes/prelimsUnifiedRoutes.js";
 import prelimsTestRoutes from "./routes/prelimsTestRoutes.js";
+import progressRoutes from "./routes/progressRoutes.js";
+import { registerEnvChatId, startTelegramPolling } from "./services/telegramService.js";
+import { initNotificationScheduler } from "./services/notificationScheduler.js";
 import {
   startBlock   as dbStartBlock,
   pauseBlock   as dbPauseBlock,
@@ -531,6 +534,9 @@ app.use("/api/prelims-tests", prelimsTestRoutes);
 // ── PYQ Ingestion pipeline (Step 1: upload only) ───────────────────────────
 // Isolated admin utility — does NOT touch existing PYQ master/index logic
 app.use("/api/pyq-ingestion", pyqIngestionRoutes);
+
+// ── Progress & Notification Engine ──────────────────────────────────────────
+app.use("/api", progressRoutes);
 
 /* -------------------- MAINS GS1 QUESTIONS API -------------------- */
 
@@ -1884,5 +1890,15 @@ const HOST = process.env.HOST || "0.0.0.0";
 console.log("[BOOT] about to listen", { HOST, PORT });
 app.listen(PORT, HOST, () => {
   console.log(`backend running on http://${HOST}:${PORT}`);
+  
+  // Register environment-configured Telegram Chat ID, start polling, and initialize scheduler
+  registerEnvChatId()
+    .then(() => {
+      startTelegramPolling();
+      initNotificationScheduler('moulika');
+    })
+    .catch(err => {
+      console.error("[BOOT] Failed to initialize Telegram / Notifications:", err);
+    });
 });
 
