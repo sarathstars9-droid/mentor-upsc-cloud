@@ -25,7 +25,7 @@ export default function MentorTopbar({ title, clock, onMenuClick }) {
             <span>{clock}</span>
           </div>
           <div className="chip">🔥 0 Day Streak</div>
-          <div className="chip">📅 26 Mar 2026</div>
+          <div className="chip">📅 {new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
         </div>
       </div>
     </>

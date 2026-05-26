@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import { BACKEND_URL } from "../config";
+import { ACTIVE_EXAM } from "../config/examCalendar";
 import { BLOCK_STATUS } from "../blockConstants";
 import { getRealStreakFromBlocks } from "../utils/dashboard";
 import SyllabusRadar from "../components/Plan/SyllabusRadar.jsx";
@@ -254,8 +255,8 @@ async function resolveBlock(inputText, minutes) {
 }
 
 /* ---------------- Dates ---------------- */
-const DEFAULT_PRELIMS = "2026-05-24";
-const DEFAULT_MAINS = "2026-08-21";
+const DEFAULT_PRELIMS = ACTIVE_EXAM.prelims.date.slice(0, 10);
+const DEFAULT_MAINS = ACTIVE_EXAM.mains.startDate.slice(0, 10);
 
 function getTodayLocalDate() {
   const now = new Date();

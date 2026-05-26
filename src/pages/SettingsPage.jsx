@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { ACTIVE_ATTEMPT_YEAR } from "../config/examCalendar";
 
 export default function SettingsPage() {
-  const [attemptYear, setAttemptYear] = useState("2026");
+  const [attemptYear, setAttemptYear] = useState(String(ACTIVE_ATTEMPT_YEAR));
   const [wakeupTime, setWakeupTime] = useState("04:30");
   const [dailyTargetHours, setDailyTargetHours] = useState("8");
   const [csatTargetMinutes, setCsatTargetMinutes] = useState("60");

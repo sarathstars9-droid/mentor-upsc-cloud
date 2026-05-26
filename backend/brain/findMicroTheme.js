@@ -2,6 +2,7 @@
 // K2S Mapper (Keyword-to-Syllabus) — ESM, stable, supports chunk mapping + enriched Phase 2 fields
 
 import { UNIFIED_SYLLABUS_INDEX } from "./unifiedSyllabusIndex.js";
+import { ACTIVE_EXAM } from "../config/examCalendar.js";
 
 export function mapPlanItemToMicroTheme(topic, subject, extra = {}) {
   const clean = String(topic || "").toLowerCase().trim();
@@ -1379,7 +1380,7 @@ export function findMicroTheme(userText = "", subject = "") {
 
 /* -------------------- SERVER-EXPECTED HELPERS -------------------- */
 export function daysToPrelims(fromDate = new Date()) {
-  const prelimsDate = new Date("2026-05-24T00:00:00");
+  const prelimsDate = new Date(ACTIVE_EXAM.prelims.date);
   const diffMs = prelimsDate.getTime() - fromDate.getTime();
   return Math.max(0, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
 }
