@@ -48,6 +48,92 @@ async function runSQL(label, relativePath) {
   }
 }
 
+/**
+ * Migration 005 guard: only run the destructive PK-repair SQL if the DB
+ * is actually in the broken half-migrated state (id=TEXT, new_id=UUID).
+ *
+ * On an evolved Railway DB the primary key study_blocks_pkey already sits
+ * on the UUID id column and dependent FKs exist (focus_sessions, block_logs,
+ * study_events). Dropping that constraint would fail and break everything.
+ *
+ * Correct behaviour:
+ *   1. If study_blocks.id is already UUID and is the PK → skip, log.
+ *   2. If study_blocks.id is TEXT and new_id exists     → run repair SQL.
+ *   3. Anything else                                    → skip with warning.
+ */
+async function run005RepairStudyBlocksPK() {
+  const label = '005 Repair study_blocks PK';
+  console.log(`  → ${label} (guarded check)...`);
+
+  try {
+    // Check 1: what data-type is study_blocks.id?
+    const idColRes = await query(`
+      SELECT data_type
+      FROM information_schema.columns
+      WHERE table_schema = 'public'
+        AND table_name   = 'study_blocks'
+        AND column_name  = 'id'
+    `);
+
+    if (idColRes.rows.length === 0) {
+      console.warn(`    ⚠  ${label} — study_blocks.id column not found; skipping.`);
+      return;
+    }
+
+    const idType = idColRes.rows[0].data_type; // 'uuid' | 'text' | …
+
+    // Check 2: is study_blocks_pkey already on id?
+    const pkRes = await query(`
+      SELECT kcu.column_name
+      FROM information_schema.table_constraints tc
+      JOIN information_schema.key_column_usage kcu
+        ON tc.constraint_name = kcu.constraint_name
+       AND tc.table_schema    = kcu.table_schema
+      WHERE tc.table_schema    = 'public'
+        AND tc.table_name      = 'study_blocks'
+        AND tc.constraint_name = 'study_blocks_pkey'
+        AND tc.constraint_type = 'PRIMARY KEY'
+    `);
+
+    const pkColumn = pkRes.rows.length > 0 ? pkRes.rows[0].column_name : null;
+
+    // ── Case A: PK is already on id and id is UUID → already valid, skip ────
+    if (pkColumn === 'id' && idType === 'uuid') {
+      console.log(`    ✅ ${label} — skipped: study_blocks primary key already valid.`);
+      return;
+    }
+
+    // ── Case B: id is TEXT and new_id column exists → run repair SQL ─────────
+    const newIdRes = await query(`
+      SELECT column_name
+      FROM information_schema.columns
+      WHERE table_schema = 'public'
+        AND table_name   = 'study_blocks'
+        AND column_name  = 'new_id'
+    `);
+
+    if (idType !== 'text' || newIdRes.rows.length === 0) {
+      console.warn(
+        `    ⚠  ${label} — unexpected schema state ` +
+        `(id type=${idType}, new_id exists=${newIdRes.rows.length > 0}); skipping to be safe.`
+      );
+      return;
+    }
+
+    // Actually run the repair SQL
+    console.log(`    ℹ  ${label} — half-migrated state detected; running repair SQL...`);
+    const sql = readSQL('migrations/005_repair_study_blocks_pk.sql');
+    if (!sql) return;
+    const cleanSQL = stripVerifySelects(sql);
+    await query(cleanSQL);
+    console.log(`    ✅ ${label} — done`);
+
+  } catch (err) {
+    console.error(`    ❌ ${label} — FAILED: ${err.message}`);
+    if (err.detail) console.error(`       Detail: ${err.detail}`);
+  }
+}
+
 // ── Main ────────────────────────────────────────────────────────────────────
 async function runAllMigrations() {
   console.log('');
@@ -72,7 +158,7 @@ async function runAllMigrations() {
     ['002 Plan blocks reporting',                       'migrations/002_plan_blocks_reporting.sql'],
     ['003 Planner suggestions log',                     'migrations/003_planner_suggestions_log.sql'],
     ['004 Knowledge linkage (block_pyq_links)',          'migrations/004_knowledge_linkage.sql'],
-    ['005 Repair study_blocks PK',                       'migrations/005_repair_study_blocks_pk.sql'],
+    // 005 is handled below with a guard — see run005RepairStudyBlocksPK()
     ['006 Prelims tests (prelims_test_attempts)',        'migrations/006_prelims_tests.sql'],
     ['006b PYQ intelligence',                            'migrations/006_pyq_intelligence.sql'],
     ['008 Create study_blocks & events',                 'migrations/008_create_study_blocks_and_events.sql'],
@@ -93,11 +179,16 @@ async function runAllMigrations() {
     ['023 Subject targets dates',                        'migrations/023_subject_targets_dates.sql'],
     ['024 Tracking foundation',                          'migrations/024_tracking_foundation.sql'],
     ['025 Subject sub-targets + daily_consistency',      'migrations/025_subject_sub_targets.sql'],
+    ['028 Behaviour signals',                            'migrations/028_behaviour_signals.sql'],
   ];
 
-  for (const [label, file] of migrations) {
+  // Run 001-004 via standard runner
+  for (const [label, file] of migrations.filter(([l]) => !l.startsWith('005'))) {
     await runSQL(label, file);
   }
+
+  // 005 has a custom guard — never blindly drop the PK
+  await run005RepairStudyBlocksPK();
 
   // ── Phase 3: Standalone SQL files (node_weakness tables) ──────────────────
   console.log('');
