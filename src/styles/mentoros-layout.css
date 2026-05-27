@@ -423,6 +423,18 @@
   color: var(--txt);
 }
 
+/* When drawer is open, show the X button in an active/amber state */
+.ham--open {
+  background: rgba(255, 140, 0, 0.12);
+  border-color: rgba(255, 140, 0, 0.3);
+  color: var(--saf, #f97316);
+}
+
+.ham--open:hover {
+  background: rgba(255, 140, 0, 0.2);
+  color: var(--saf, #f97316);
+}
+
 .mobile-page-title {
   font-family: var(--mono);
   font-weight: 700;
@@ -442,6 +454,32 @@
 
 .mentoros-overlay.open {
   display: block;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE — ≤768px
+   Main content takes full width; drawer handles nav.
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Reset main layout so content is not pushed behind hidden sidebar */
+  .mentoros-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Show the mobile ham bar, hide the desktop topbar */
+  .mentoros-mob-bar {
+    display: flex;
+  }
+
+  .mentoros-topbar {
+    display: none;
+  }
+
+  /* Reduce content padding on small screens */
+  .mentoros-content {
+    padding: 20px 16px 80px;
+  }
 }
 
 /* ============================================================
@@ -875,14 +913,14 @@
 }
 
 .btn-spotlight.btn-danger {
-  color: var(--red);
-  border-color: rgba(239, 68, 68, 0.3);
+  color: var(--mo-danger);
+  border-color: var(--mo-danger-border);
   background: transparent;
 }
 
 .btn-spotlight.btn-danger:hover {
-  background: var(--red-d);
-  border-color: var(--red);
+  background: var(--mo-danger-soft);
+  border-color: var(--mo-danger);
 }
 
 /* ============================================================
@@ -1035,14 +1073,14 @@
 }
 
 .btn-danger {
-  color: var(--red);
-  border-color: rgba(239, 68, 68, 0.3);
+  color: var(--mo-danger);
+  border-color: var(--mo-danger-border);
   background: transparent;
 }
 
 .btn-danger:hover {
-  background: var(--red-d);
-  border-color: var(--red);
+  background: var(--mo-danger-soft);
+  border-color: var(--mo-danger);
 }
 
 .badge {
@@ -1075,9 +1113,9 @@
 }
 
 .badge-red {
-  background: var(--red-d);
-  color: var(--red);
-  border: 1px solid rgba(239, 68, 68, 0.28);
+  background: var(--mo-danger-soft);
+  color: var(--mo-danger);
+  border: 1px solid var(--mo-danger-border);
 }
 
 .badge-ylw {

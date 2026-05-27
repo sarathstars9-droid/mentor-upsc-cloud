@@ -11,6 +11,42 @@
   --mono: 'JetBrains Mono', monospace;
   --sans: 'Inter', 'Instrument Sans', sans-serif;
   --disp: 'Inter', 'Instrument Sans', sans-serif;
+
+  /* Premium Theme Tokens */
+  --mo-bg: #05070d;
+  --mo-bg-soft: #080c14;
+
+  --mo-surface: #0f1724;
+  --mo-surface-2: #121927;
+  --mo-surface-3: #1a2230;
+
+  --mo-input: #070a11;
+  --mo-input-border: rgba(255, 255, 255, 0.08);
+
+  --mo-border: rgba(255, 255, 255, 0.09);
+  --mo-border-soft: rgba(255, 255, 255, 0.06);
+  --mo-border-amber: rgba(245, 158, 11, 0.35);
+
+  --mo-text: #f8fafc;
+  --mo-text-soft: #cbd5e1;
+  --mo-text-muted: #8b93a3;
+  --mo-text-faint: #5f6675;
+
+  --mo-amber: #f59e0b;
+  --mo-amber-2: #fb923c;
+  --mo-amber-soft: rgba(245, 158, 11, 0.12);
+  --mo-amber-border: rgba(245, 158, 11, 0.32);
+
+  --mo-danger: #ef4444;
+  --mo-danger-soft: rgba(239, 68, 68, 0.12);
+  --mo-danger-border: rgba(239, 68, 68, 0.35);
+
+  --mo-radius-lg: 22px;
+  --mo-radius-md: 14px;
+  --mo-radius-sm: 10px;
+
+  --mo-shadow-premium: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --mo-shadow-amber: 0 0 30px rgba(245, 158, 11, 0.18);
 }
 
 /* ------------------------------------------------------------

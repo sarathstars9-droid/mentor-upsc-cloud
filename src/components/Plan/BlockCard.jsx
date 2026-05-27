@@ -45,10 +45,10 @@ const B = {
     fontWeight: 700, fontSize: 12, cursor: "pointer",
     border: "none", letterSpacing: "-0.01em", whiteSpace: "nowrap",
   },
-  primary: { background: "#f97316", color: "#fff", boxShadow: "0 2px 8px rgba(249,115,22,0.25)" },
-  muted:   { background: "transparent", color: "#475569", border: "1px solid #1a2740" },
-  stop:    { background: "transparent", color: "#ef4444", border: "1px solid rgba(239,68,68,0.20)" },
-  pyq:     { background: "transparent", color: "#64748b", border: "1px solid #1a2740", textDecoration: "none" },
+  primary: { background: "linear-gradient(135deg, var(--mo-amber), var(--mo-amber-2))", color: "#111827", boxShadow: "0 12px 35px rgba(245, 158, 11, 0.25)", border: "none" },
+  muted:   { background: "rgba(255,255,255,0.06)", color: "var(--mo-text-soft)", border: "1px solid var(--mo-border)" },
+  stop:    { background: "transparent", color: "var(--mo-danger)", border: "1px solid var(--mo-danger-border)" },
+  pyq:     { background: "transparent", color: "var(--mo-text-muted)", border: "1px solid var(--mo-border)", textDecoration: "none" },
 };
 
 // ── component ─────────────────────────────────────────────────────────────────
@@ -93,17 +93,16 @@ export default function BlockCard({ block, busy, onStart, onPause, onResume, onS
 
   return (
     <article style={{
-      background: isActive ? "linear-gradient(160deg,#0e1828 0%,#080c18 100%)" : "#0a0e1a",
-      border: `1px solid ${isActive ? "rgba(249,115,22,0.22)" : "#141e30"}`,
-      borderTop: `2px solid ${isActive ? "#f97316" : isDone ? "#141e30" : "#1a2740"}`,
-      borderRadius: 16,
+      background: isActive ? "linear-gradient(145deg, var(--mo-surface), var(--mo-surface-2))" : "linear-gradient(145deg, var(--mo-surface), var(--mo-bg-soft))",
+      border: `1px solid ${isActive ? "var(--mo-border-amber)" : "var(--mo-border)"}`,
+      borderRadius: 22,
       padding: "14px 16px",
       display: "flex",
       flexDirection: "column",
       gap: 8,
       position: "relative",
       overflow: "hidden",
-      boxShadow: isActive ? "0 0 24px rgba(249,115,22,0.07)" : "none",
+      boxShadow: isActive ? "var(--mo-shadow-amber)" : "0 4px 20px rgba(0,0,0,0.2)",
       opacity: isDone ? 0.7 : 1,
     }}>
 

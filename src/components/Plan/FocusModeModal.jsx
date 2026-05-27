@@ -37,14 +37,14 @@ export default function FocusModeModal({
 
                 <h2 className="focus-title">{block.PlannedSubject || "Study Block"}</h2>
 
-                <div className="focus-subtitle">{block.PlannedTopic || "No topic"}</div>
+                <div className="focus-topic">{block.PlannedTopic || "No topic"}</div>
 
                 <div className="focus-chips">
                     <span className="focus-chip">
                         {block.PlannedStart || "--:--"} → {block.PlannedEnd || "--:--"}
                     </span>
                     <span className="focus-chip">{block.PlannedMinutes || 0} min</span>
-                    <span className="focus-chip">{status}</span>
+                    <span className="focus-chip active">{status}</span>
 
                     {block.ActualStart && (
                         <span className="focus-chip">
@@ -61,9 +61,9 @@ export default function FocusModeModal({
                     )}
                 </div>
 
-                <div className="focus-note">
+                <div className="focus-guidance">
                     {status === BLOCK_STATUS.ACTIVE
-                        ? "Stay with this block. Pause only if needed. Stop only when you are ready to review."
+                        ? "Stay with this block. Pause only if needed. Stop only when ready to review."
                         : status === BLOCK_STATUS.PAUSED
                             ? "Resume this block and recover momentum calmly."
                             : "Start this block with full attention. The rest of the day can wait."}
@@ -71,17 +71,17 @@ export default function FocusModeModal({
 
                 <div className="focus-actions">
                     {status === BLOCK_STATUS.PLANNED && (
-                        <button disabled={busy} onClick={onStart}>
+                        <button className="focus-btn-primary" disabled={busy} onClick={onStart}>
                             {busy ? "Processing..." : "Start Now"}
                         </button>
                     )}
 
                     {status === BLOCK_STATUS.ACTIVE && (
                         <>
-                            <button disabled={busy} onClick={onPause}>
+                            <button className="focus-btn-primary" disabled={busy} onClick={onPause}>
                                 {busy ? "Processing..." : "Pause"}
                             </button>
-                            <button disabled={busy} onClick={onStop}>
+                            <button className="focus-btn-stop" disabled={busy} onClick={onStop}>
                                 Stop
                             </button>
                         </>
@@ -89,16 +89,16 @@ export default function FocusModeModal({
 
                     {status === BLOCK_STATUS.PAUSED && (
                         <>
-                            <button disabled={busy} onClick={onResume}>
+                            <button className="focus-btn-primary" disabled={busy} onClick={onResume}>
                                 {busy ? "Processing..." : "Resume"}
                             </button>
-                            <button disabled={busy} onClick={onStop}>
+                            <button className="focus-btn-stop" disabled={busy} onClick={onStop}>
                                 Stop
                             </button>
                         </>
                     )}
 
-                    <button className="focus-close-btn" onClick={onClose}>
+                    <button className="focus-btn-secondary" onClick={onClose}>
                         Close
                     </button>
                 </div>

@@ -7,6 +7,7 @@ import SyllabusRadar from "../components/Plan/SyllabusRadar.jsx";
 import FocusModeModal from "../components/Plan/FocusModeModal.jsx";
 import { theme } from "../theme/theme";
 import StopConfirmModal from "../components/Plan/StopConfirmModal.jsx";
+import BehaviourSignalModal from "../components/Plan/BehaviourSignalModal.jsx";
 import PyqSummaryPanel from "../components/PyqSummaryPanel.jsx";
 import BlockReviewModal from "../components/Plan/BlockReviewModal.jsx";
 import { humanizeMappingCode } from "../utils/mappingUtils";
@@ -3030,16 +3031,17 @@ export default function PlanPage() {
         }}
       />
 
-      <StopConfirmModal
+      <BehaviourSignalModal
         open={stopConfirmOpen && !!(pendingStopBlock || currentBlock)}
         block={pendingStopBlock || currentBlock}
-        onConfirm={() => {
+        BACKEND_URL={BACKEND_URL}
+        onSignalSaved={() => {
           const stopTarget = pendingStopBlock || currentBlock;
           if (stopTarget) {
             handleStopBlock(stopTarget);
           }
         }}
-        onCancel={() => {
+        onClose={() => {
           setStopConfirmOpen(false);
           setPendingStopBlock(null);
         }}

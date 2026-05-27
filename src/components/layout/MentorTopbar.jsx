@@ -1,9 +1,15 @@
-export default function MentorTopbar({ title, clock, onMenuClick }) {
+export default function MentorTopbar({ title, clock, onMenuClick, mobileOpen }) {
   return (
     <>
       <div className="mentoros-mob-bar">
-        <button className="ham" type="button" onClick={onMenuClick}>
-          ☰
+        <button
+          className={`ham${mobileOpen ? " ham--open" : ""}`}
+          type="button"
+          onClick={onMenuClick}
+          aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={mobileOpen ? "true" : "false"}
+        >
+          {mobileOpen ? "✕" : "☰"}
         </button>
 
         <div className="mobile-page-title">

@@ -48,12 +48,12 @@ const S = {
     width: "min(1060px, 95vw)",
     maxHeight: "92vh",
     overflowY: "auto",
-    background: "linear-gradient(180deg, #353943 0%, #2d3038 100%)",
-    border: "1px solid rgba(255,255,255,0.09)",
+    background: "linear-gradient(145deg, var(--mo-surface), var(--mo-surface-2))",
+    border: "1px solid var(--mo-border-amber)",
     borderRadius: "26px",
-    boxShadow: "0 36px 100px rgba(0,0,0,0.55)",
+    boxShadow: "var(--mo-shadow-premium), var(--mo-shadow-amber)",
     padding: "28px 30px 26px",
-    color: "#f4f4f5",
+    color: "var(--mo-text)",
     fontFamily: "'Inter', sans-serif",
     animation: "ocrZoomIn 0.22s ease",
     position: "relative",
@@ -234,13 +234,13 @@ const S = {
     alignItems: "flex-start",
     gap: "12px",
     padding: "14px 18px",
-    background: "rgba(240,112,112,0.10)",
-    border: "1px solid rgba(240,112,112,0.28)",
-    borderLeft: "4px solid #f07070",
+    background: "var(--mo-danger-soft)",
+    border: "1px solid var(--mo-danger-border)",
+    borderLeft: "4px solid var(--mo-danger)",
     borderRadius: "14px",
     marginBottom: "16px",
     fontSize: "14px",
-    color: "#f4c5c5",
+    color: "var(--mo-text)",
     lineHeight: 1.5,
   },
   divider: {
@@ -292,19 +292,19 @@ const S = {
   },
   btnPrimary: (disabled) => ({
     flex: "1 1 auto",
-    minWidth: "130px",
+    minWidth: "110px",
     padding: "13px 20px",
     borderRadius: "13px",
     fontWeight: 700,
-    fontSize: "15px",
+    fontSize: "14px",
     cursor: disabled ? "not-allowed" : "pointer",
     opacity: disabled ? 0.5 : 1,
     border: "none",
     background: disabled
       ? "rgba(255,255,255,0.08)"
-      : "linear-gradient(180deg, #4e9a7e, #3d7d64)",
-    color: "#ffffff",
-    boxShadow: disabled ? "none" : "0 8px 22px rgba(78,154,126,0.30)",
+      : "linear-gradient(135deg, var(--mo-amber), var(--mo-amber-2))",
+    color: "#111827",
+    boxShadow: disabled ? "none" : "0 12px 35px rgba(245, 158, 11, 0.25)",
     transition: "all 0.18s ease",
   }),
   btnSecondary: {
@@ -315,10 +315,10 @@ const S = {
     fontWeight: 600,
     fontSize: "14px",
     cursor: "pointer",
-    border: "1px solid rgba(255,255,255,0.10)",
-    background: "linear-gradient(180deg, #4d535f, #41464f)",
-    color: "#e8eaef",
-    boxShadow: "0 6px 16px rgba(0,0,0,0.22)",
+    border: "1px solid var(--mo-border)",
+    background: "rgba(255,255,255,0.06)",
+    color: "var(--mo-text-soft)",
+    boxShadow: "none",
     transition: "all 0.18s ease",
   },
   btnDanger: {
@@ -329,9 +329,9 @@ const S = {
     fontWeight: 600,
     fontSize: "14px",
     cursor: "pointer",
-    border: "1px solid rgba(240,112,112,0.22)",
-    background: "rgba(240,112,112,0.10)",
-    color: "#f07070",
+    border: "1px solid var(--mo-danger-border)",
+    background: "transparent",
+    color: "var(--mo-danger)",
     boxShadow: "none",
     transition: "all 0.18s ease",
   },
@@ -574,9 +574,9 @@ export default function OcrReviewModal({
         .ocr-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         .ocr-alt-chip:hover { background: rgba(255,255,255,0.09) !important; color: #f4f4f5 !important; }
         .ocr-close-btn:hover { background: rgba(255,255,255,0.12) !important; color: #f4f4f5 !important; }
-        .ocr-btn-secondary:hover:not(:disabled) { background: linear-gradient(180deg,#565c6a,#474c58) !important; }
-        .ocr-btn-danger:hover:not(:disabled) { background: rgba(240,112,112,0.18) !important; }
-        .ocr-btn-primary:hover:not(:disabled) { background: linear-gradient(180deg,#5aad8e,#468f74) !important; box-shadow: 0 10px 26px rgba(78,154,126,0.38) !important; }
+        .ocr-btn-secondary:hover:not(:disabled) { background: rgba(255,255,255,0.1) !important; color: var(--mo-text) !important; }
+        .ocr-btn-danger:hover:not(:disabled) { background: var(--mo-danger-soft) !important; border-color: var(--mo-danger) !important; }
+        .ocr-btn-primary:hover:not(:disabled) { transform: scale(0.98); }
         @media (max-width: 680px) {
           .ocr-two-col { grid-template-columns: 1fr !important; }
           .ocr-modal-inner { padding: 20px 16px 18px !important; }
@@ -618,7 +618,7 @@ export default function OcrReviewModal({
             <div style={S.warningBanner}>
               <span style={{ fontSize: "18px", flexShrink: 0 }}>⚠</span>
               <div>
-                <strong style={{ color: "#f07070" }}>Manual review required.</strong>{" "}
+                <strong style={{ color: "var(--mo-danger)" }}>Manual review required.</strong>{" "}
                 The classifier confidence is too low to auto-save. Please verify the
                 subject, section, and resolved node below before confirming.
               </div>

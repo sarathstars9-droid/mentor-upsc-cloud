@@ -74,12 +74,12 @@ export default function BlockReviewModal({
         zIndex: 1000000,
         width: "min(960px, calc(100vw - 48px))",
         maxHeight: "calc(100vh - 72px)",
-        background: "#11141c",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
-        borderRadius: "20px",
-        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+        background: "linear-gradient(145deg, var(--mo-surface), var(--mo-surface-2))",
+        border: "1px solid var(--mo-border-amber)",
+        borderRadius: "24px",
+        boxShadow: "var(--mo-shadow-premium), var(--mo-shadow-amber)",
         margin: "0",
-        color: "#fff",
+        color: "var(--mo-text)",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden"
@@ -102,31 +102,32 @@ export default function BlockReviewModal({
                 .dense-field {
                     display: grid;
                     gap: 4px;
-                    color: rgba(255,255,255,0.85);
+                    color: var(--mo-text-soft);
                     font-size: 13px;
                     font-weight: 500;
                 }
                 .dense-input {
                     height: 36px;
-                    background: rgba(0,0,0,0.25);
-                    border: 1px solid rgba(255,255,255,0.1);
-                    border-radius: 8px;
-                    color: #fff;
+                    background: var(--mo-input);
+                    border: 1px solid var(--mo-input-border);
+                    border-radius: 12px;
+                    color: var(--mo-text);
                     padding: 0 10px;
                     font-size: 14px;
                     outline: none;
                     transition: border-color 0.2s;
                 }
                 .dense-input:focus {
-                    border-color: rgba(255,255,255,0.3);
+                    border-color: var(--mo-border-amber);
+                    box-shadow: 0 0 0 3px var(--mo-amber-soft);
                 }
                 .dense-textarea {
                     min-height: 56px;
                     max-height: 56px;
-                    background: rgba(0,0,0,0.25);
-                    border: 1px solid rgba(255,255,255,0.1);
-                    border-radius: 8px;
-                    color: #fff;
+                    background: var(--mo-input);
+                    border: 1px solid var(--mo-input-border);
+                    border-radius: 12px;
+                    color: var(--mo-text);
                     padding: 8px 10px;
                     font-size: 14px;
                     resize: none;
@@ -134,11 +135,12 @@ export default function BlockReviewModal({
                     transition: border-color 0.2s;
                 }
                 .dense-textarea:focus {
-                    border-color: rgba(255,255,255,0.3);
+                    border-color: var(--mo-border-amber);
+                    box-shadow: 0 0 0 3px var(--mo-amber-soft);
                 }
                 .review-section {
-                    background: rgba(255,255,255,0.02);
-                    border: 1px solid rgba(255,255,255,0.04);
+                    background: var(--mo-surface-3);
+                    border: 1px solid var(--mo-border-soft);
                     padding: 12px;
                     border-radius: 12px;
                     display: flex;
@@ -157,14 +159,14 @@ export default function BlockReviewModal({
 
             <div style={modalStyle} ref={modalRef} tabIndex="-1">
                 {/* Header */}
-                <div style={{ padding: "20px 24px", borderBottom: "1px solid rgba(255,255,255,0.05)", flexShrink: 0 }}>
+                <div style={{ padding: "20px 24px", borderBottom: "1px solid var(--mo-border-soft)", flexShrink: 0 }}>
                     <h2 style={{ fontSize: "20px", fontWeight: 700, margin: "0 0 4px 0", lineHeight: 1.2 }}>
                         Review Your Session
                     </h2>
-                    <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.7)" }}>
+                    <div style={{ fontSize: "14px", color: "var(--mo-text-soft)" }}>
                         {block?.PlannedSubject || "Study Block"} &ndash; {block?.PlannedTopic || "No topic"}
                     </div>
-                    <div style={{ marginTop: "4px", fontSize: "13px", color: "#f97316", fontWeight: 500 }}>
+                    <div style={{ marginTop: "4px", fontSize: "13px", color: "var(--mo-amber)", fontWeight: 500 }}>
                         Capture the session in 30 seconds.
                     </div>
                 </div>
@@ -312,18 +314,18 @@ export default function BlockReviewModal({
                 </div>
 
                 {/* Footer */}
-                <div style={{ padding: "16px 24px", borderTop: "1px solid rgba(255,255,255,0.05)", flexShrink: 0, display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(0,0,0,0.1)" }}>
+                <div style={{ padding: "16px 24px", borderTop: "1px solid var(--mo-border-soft)", flexShrink: 0, display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--mo-bg-soft)" }}>
                     <button 
-                        style={{ padding: "10px 16px", borderRadius: "8px", background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.6)", border: "none", fontWeight: 600, cursor: "pointer", fontSize: "14px", transition: "all 0.2s" }} 
+                        style={{ padding: "12px 24px", borderRadius: "14px", background: "rgba(255,255,255,0.06)", color: "var(--mo-text-soft)", border: "1px solid var(--mo-border)", fontWeight: 600, cursor: "pointer", fontSize: "14px", transition: "all 0.2s" }} 
                         onClick={onCancel}
-                        onMouseOver={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; e.currentTarget.style.color = "#fff"; }}
-                        onMouseOut={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.05)"; e.currentTarget.style.color = "rgba(255,255,255,0.6)"; }}
+                        onMouseOver={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; e.currentTarget.style.color = "var(--mo-text)"; }}
+                        onMouseOut={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.color = "var(--mo-text-soft)"; }}
                     >
                         Skip Review
                     </button>
                     
                     <button 
-                        style={{ padding: "10px 24px", borderRadius: "8px", background: "#f97316", color: "#fff", border: "none", fontWeight: 600, cursor: "pointer", fontSize: "14px", boxShadow: "0 4px 12px rgba(249, 115, 22, 0.3)", transition: "transform 0.1s" }} 
+                        style={{ padding: "12px 24px", borderRadius: "14px", background: "linear-gradient(135deg, var(--mo-amber), var(--mo-amber-2))", color: "#111827", border: "none", fontWeight: 700, cursor: "pointer", fontSize: "14px", boxShadow: "0 12px 35px rgba(245, 158, 11, 0.25)", transition: "transform 0.1s" }} 
                         onClick={onSubmit}
                         onMouseDown={(e) => e.currentTarget.style.transform = "scale(0.97)"}
                         onMouseUp={(e) => e.currentTarget.style.transform = "scale(1)"}

@@ -676,8 +676,8 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
 
                   .mentoros-main {
                     margin-left: 0 !important;
-                    width: 100vw !important;
-                    max-width: 100vw !important;
+                    width: 100% !important;
+                    max-width: 100% !important;
                     overflow-x: hidden !important;
                   }
 

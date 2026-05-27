@@ -118,6 +118,8 @@
   gap: 2px;
   scrollbar-width: thin;
   overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch; /* momentum scrolling on iOS/Samsung */
+  touch-action: pan-y;
 }
 
 .mos-nav-section-v2 {
@@ -153,9 +155,9 @@
 }
 
 .mos-nav-item-v2:hover {
-  background: var(--mos-accent-soft);
-  border-color: var(--mos-accent-soft);
-  color: var(--mos-text);
+  background: var(--mo-amber-soft);
+  border-color: var(--mo-border-amber);
+  color: var(--mo-text);
 }
 
 /* thin accent left rail */
@@ -167,7 +169,7 @@
   bottom: 8px;
   width: 0px;
   border-radius: 0 4px 4px 0;
-  background: var(--mos-accent);
+  background: var(--mo-amber);
   transition: width 0.16s ease;
 }
 
@@ -176,9 +178,9 @@
 }
 
 .mos-nav-item-v2.active {
-  background: var(--mos-accent-soft);
-  color: var(--mos-text);
-  border: 1px solid var(--mos-accent-soft);
+  background: var(--mo-amber-soft);
+  color: var(--mo-text);
+  border: 1px solid var(--mo-border-amber);
   font-weight: 600;
 }
 
@@ -203,7 +205,7 @@
 .mos-nav-item-v2:hover .mos-nav-item-icon-v2 svg,
 .mos-nav-item-v2.active .mos-nav-item-icon-v2 svg {
   opacity: 1;
-  color: var(--mos-accent);
+  color: var(--mo-amber);
 }
 
 .mos-nav-item-label-v2 {
@@ -271,8 +273,8 @@
 
 /* Mobile drawer variant */
 .mos-drawer-v2 {
-  width: min(86vw, var(--mos-width));
-  max-width: var(--mos-width);
+  width: min(82vw, 320px);
+  max-width: 320px;
   height: 100vh;
   background: var(--mos-sidebar-bg);
   border-right: 1px solid var(--mos-border);
@@ -282,17 +284,19 @@
   left: 0;
   top: 0;
   bottom: 0;
-  z-index: 260;
+  z-index: 10200; /* above PyqQuickView(10001), ExaminerMarkupOverlay(9999) */
   transform: translateX(-100%);
   transition: transform 0.28s ease, background 0.3s ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* Samsung Chrome momentum scroll */
+  touch-action: pan-y; /* allow vertical swipe inside drawer */
 }
 
 .mos-drawer-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  z-index: 250;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 10100; /* just below drawer, above all page modals */
 }
 
 [data-theme="dark"] .mos-drawer-overlay {
@@ -301,6 +305,37 @@
 
 .mos-drawer-v2.open {
   transform: translateX(0);
+}
+
+/* Close button inside the drawer header */
+.mos-drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10300; /* above the drawer itself */
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid var(--mos-border);
+  color: var(--mos-text-soft);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.mos-drawer-close:hover {
+  background: var(--mos-border);
+  color: var(--mos-text);
+}
+
+/* Body scroll lock when drawer is open */
+body.mos-drawer-open {
+  overflow: hidden;
 }
 
 /* internal scroll behavior */
@@ -315,9 +350,13 @@
   border-radius: 4px;
 }
 
+/* ============================================================
+   MOBILE — hide desktop sidebar, let MentorMobileDrawer handle it
+   ============================================================ */
 @media (max-width: 768px) {
+  /* The desktop sidebar must not render on mobile */
   .mos-sidebar-v2 {
-    width: min(86vw, var(--mos-width));
+    display: none !important;
   }
 }
 
@@ -343,9 +382,9 @@
 /* 2. Flat active state */
 .mos-sidebar-v2 .mos-nav-item-v2.active,
 .mos-drawer-v2 .mos-nav-item-v2.active {
-  background: var(--mos-accent-soft) !important;
+  background: var(--mo-amber-soft) !important;
   border-color: transparent !important;
-  color: var(--mos-accent) !important;
+  color: var(--mo-text) !important;
   box-shadow: none !important;
   transform: none !important;
   font-weight: 600;
@@ -354,10 +393,10 @@
 /* 3. Handle active hover */
 .mos-sidebar-v2 .mos-nav-item-v2.active:hover,
 .mos-drawer-v2 .mos-nav-item-v2.active:hover {
-  background: var(--mos-accent-soft) !important;
+  background: var(--mo-amber-soft) !important;
   opacity: 0.95;
   border-color: transparent !important;
-  color: var(--mos-accent) !important;
+  color: var(--mo-text) !important;
   box-shadow: none !important;
 }
 

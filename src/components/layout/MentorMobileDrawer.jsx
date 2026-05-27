@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Calendar,
   Play,
@@ -12,9 +13,11 @@ import {
   PieChart,
   Clock,
   Settings,
-  User,
-  LogOut,
+  Sun,
+  Moon,
+  X,
 } from "lucide-react";
+import { useTheme } from "../../context/ThemeContext";
 import "../../styles/mos-sidebar-v2.css";
 
 const navGroups = [
@@ -68,29 +71,50 @@ const navGroups = [
   },
 ];
 
-import { useTheme } from "../../context/ThemeContext";
-import { Sun, Moon } from "lucide-react";
+
 
 export default function MentorMobileDrawer({ open, currentPage, onNavigate, onClose }) {
   const { theme, toggleTheme } = useTheme();
+
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add("mos-drawer-open");
+    } else {
+      document.body.classList.remove("mos-drawer-open");
+    }
+    return () => {
+      document.body.classList.remove("mos-drawer-open");
+    };
+  }, [open]);
 
   return (
     <>
       {open && <div className="mos-drawer-overlay" onClick={onClose} />}
 
       <aside className={`mos-drawer-v2 ${open ? "open" : ""}`} role="dialog" aria-modal="true">
-        <header className="mos-sidebar-header-v2">
+        <header className="mos-sidebar-header-v2" style={{ position: "relative" }}>
           <div className="mos-logo-tile-v2">M</div>
           <div>
             <div className="mos-header-title-v2">MENTORSHIP OS</div>
             <div className="mos-header-sub-v2">AIR-1 Execution System</div>
           </div>
-          <button 
-            className="mos-theme-toggle-v2" 
-            onClick={toggleTheme} 
+          <button
+            className="mos-theme-toggle-v2"
+            onClick={toggleTheme}
             title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            style={{ marginLeft: "auto" }}
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          {/* Dedicated close button — always accessible */}
+          <button
+            type="button"
+            className="mos-drawer-close"
+            onClick={onClose}
+            aria-label="Close navigation"
+          >
+            <X size={18} />
           </button>
         </header>
 

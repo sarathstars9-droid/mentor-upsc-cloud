@@ -47,19 +47,20 @@
 
 /* ── DAILY ACTIONS CARD ── */
 .mos-daily-actions {
-  background: var(--surf);
-  border: 1px solid #252525;
-  border-radius: 14px;
+  background: var(--mo-surface);
+  border: 1px solid var(--mo-border);
+  border-radius: var(--mo-radius-md, 14px);
   padding: 22px 26px;
   margin-bottom: 20px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 .mos-daily-actions::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--saf), transparent 50%);
+  background: linear-gradient(90deg, var(--mo-amber), transparent 50%);
 }
 
 /* ── SHARED CARD LABEL (replaces kicker / section labels) ── */
@@ -161,11 +162,11 @@
 .field-label input,
 .field-label textarea,
 .field-label select {
-  background: var(--mos-input-bg, #1A1A1A);
-  border: 1px solid var(--mos-border, #2A2A2A);
-  border-radius: 8px;
+  background: var(--mo-input, #070a11);
+  border: 1px solid var(--mo-input-border);
+  border-radius: 12px;
   padding: 9px 13px;
-  color: var(--txt);
+  color: var(--mo-text);
   font-family: var(--sans);
   font-size: 0.88rem;
   width: 100%;
@@ -177,12 +178,12 @@
 .field-label input:focus,
 .field-label textarea:focus,
 .field-label select:focus {
-  border-color: var(--saf);
-  box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.07);
+  border-color: var(--mo-border-amber);
+  box-shadow: 0 0 0 3px var(--mo-amber-soft);
 }
 .field-label input::placeholder,
 .field-label textarea::placeholder {
-  color: var(--dim);
+  color: var(--mo-text-muted);
 }
 
 /* ── MINI STAT (inside Daily Log card) ── */
@@ -232,10 +233,10 @@
 
 /* ── ADVANCED CONTROLS COLLAPSIBLE ── */
 .adv-controls {
-  border: 1px solid var(--mos-border);
+  border: 1px solid var(--mo-border);
   border-radius: 14px;
   overflow: hidden;
-  background: var(--mos-surface);
+  background: var(--mo-surface);
 }
 
 .adv-controls-summary {
@@ -299,18 +300,19 @@ details.adv-controls[open] .adv-controls-chevron {
 
 .mos-focus-modal {
   /* applied via inline style on the div — width handled there */
-  background: #181818;
-  border: 1px solid #2A2A2A;
-  border-radius: 16px;
+  background: linear-gradient(145deg, #101827, #0b1220);
+  border: 1px solid var(--mo-border-amber);
+  border-radius: 24px;
   padding: 32px 36px;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--mo-shadow-premium), var(--mo-shadow-amber);
 }
 .mos-focus-modal::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--saf), transparent 50%);
+  background: linear-gradient(90deg, var(--mo-amber), transparent 50%);
 }
 
 .mos-focus-kicker {
@@ -383,15 +385,15 @@ details.adv-controls[open] .adv-controls-chevron {
 
 /* ── OCR BLOCK CARD (inside approval modal) ── */
 .mos-ocr-block-card {
-  background: var(--s2);
-  border: 1px solid #2A2A2A;
+  background: var(--mo-surface-2);
+  border: 1px solid var(--mo-border);
   border-radius: 12px;
   padding: 18px 20px;
   transition: border-color 0.15s;
 }
 .mos-ocr-block-card--active {
-  border-color: rgba(34, 197, 94, 0.35);
-  background: rgba(34, 197, 94, 0.04);
+  border-color: var(--mo-border-amber);
+  background: var(--mo-amber-soft);
 }
 
 /* ── RESPONSIVE ── */
@@ -438,21 +440,21 @@ details.adv-controls[open] .adv-controls-chevron {
 
 /* ── Hero card: light surface background, rounded, soft borders ── */
 .mos-hero-card {
-  background: var(--mos-surface);
-  border: 1px solid var(--mos-border);
-  border-top: 2px solid var(--mos-accent);
+  background: var(--mo-surface);
+  border: 1px solid var(--mo-border);
+  border-top: 2px solid var(--mo-amber);
   border-radius: 16px;
   padding: 24px 28px;
-  box-shadow: var(--mos-shadow-soft);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
 }
 
 [data-theme="dark"] .mos-hero-card {
-  background: linear-gradient(135deg, #0d1020 0%, #0a0e1a 60%, #080c18 100%);
-  border: 1px solid #141e30;
-  border-top: 2px solid rgba(249, 115, 22, 0.35);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, var(--mo-surface), var(--mo-surface-2));
+  border: 1px solid var(--mo-border);
+  border-top: 2px solid var(--mo-amber);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
 }
 
 .mos-hero-card::before {
@@ -468,13 +470,13 @@ details.adv-controls[open] .adv-controls-chevron {
   gap: 4px;
   padding: 16px 20px;
   border-radius: 12px;
-  background: var(--mos-bg-soft);
-  border: 1px solid var(--mos-border);
+  background: var(--mo-bg-soft);
+  border: 1px solid var(--mo-border);
 }
 
 [data-theme="dark"] .mos-hero-stat-block {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--mo-bg-soft);
+  border: 1px solid var(--mo-border-soft);
 }
 
 .mos-hero-card .hero-title {
@@ -516,13 +518,11 @@ details.adv-controls[open] .adv-controls-chevron {
 
 /* ── Spotlight card: elevated, more padding, rounded ── */
 .mos-spotlight-card {
-  background: linear-gradient(160deg, #13131c 0%, #1a1a27 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(160deg, var(--mo-surface), var(--mo-surface-2));
+  border: 1px solid var(--mo-border);
   border-radius: 16px;
   padding: 24px 28px;
-  box-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 140, 0, 0.04) inset;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* ── QuickActions pill bar ── */

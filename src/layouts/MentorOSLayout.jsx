@@ -44,6 +44,11 @@ export default function MentorOSLayout({
     return () => window.clearInterval(id);
   }, []);
 
+  // Close drawer on any route change (covers external/programmatic navigation)
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [currentPage]);
+
   const title = useMemo(
     () => pageTitleMap[currentPage] || "Plan · Daily Execution",
     [currentPage]
@@ -66,7 +71,8 @@ export default function MentorOSLayout({
         <MentorTopbar
           title={title}
           clock={clock}
-          onMenuClick={() => setMobileOpen(true)}
+          mobileOpen={mobileOpen}
+          onMenuClick={() => setMobileOpen((prev) => !prev)}
         />
 
         <div className="mentoros-content">{children}</div>
