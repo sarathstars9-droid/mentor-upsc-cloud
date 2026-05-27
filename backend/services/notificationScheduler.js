@@ -8,13 +8,17 @@ let schedulerInterval = null;
 
 // Initialize the scheduler background timer
 export function initNotificationScheduler(userId = 'moulika') {
-  if (process.env.ENABLE_NOTIFICATION_SCHEDULER !== "true") {
-    console.log("[NotificationScheduler] Scheduler is disabled via ENABLE_NOTIFICATION_SCHEDULER. Skipping startup.");
+  const schedulerEnabled = process.env.ENABLE_NOTIFICATION_SCHEDULER;
+  console.log(`[NotificationScheduler Diagnostics]`);
+  console.log(`- ENABLE_NOTIFICATION_SCHEDULER: ${schedulerEnabled}`);
+
+  if (schedulerEnabled !== "true") {
+    console.log("[NotificationScheduler] Notification scheduler disabled.");
     return;
   }
   if (schedulerInterval) return;
   
-  console.log(`[NotificationScheduler] Initializing notification scheduler for user: ${userId}`);
+  console.log("[NotificationScheduler] Notification scheduler started.");
   
   // Tick every 60 seconds
   schedulerInterval = setInterval(async () => {
@@ -233,11 +237,21 @@ async function detectAndProcessMissedBlocks(userId, now) {
       );
       
       // 2. Log study_event in plan_block_events
-      await query(
-        `INSERT INTO public.plan_block_events (user_id, block_id, event_type, metadata)
-         VALUES ($1, $2, 'BLOCK_MISSED', $3)`,
-        [userId, b.id, JSON.stringify({ block_id: b.block_id, subject: b.subject, planned_end: b.planned_end })]
+      // Verify block exists to prevent FK violation
+      const checkRes = await query(
+        `SELECT id FROM public.study_blocks WHERE id = $1 OR block_id = $1::text`,
+        [b.id]
       );
+      if (checkRes.rows.length === 0) {
+        console.log(`[NotificationScheduler] Skipping missed event; block not persisted yet (${b.id})`);
+      } else {
+        const actualDbId = checkRes.rows[0].id; // Ensure we use the UUID if FK expects it
+        await query(
+          `INSERT INTO public.plan_block_events (user_id, block_id, event_type, metadata)
+           VALUES ($1, $2, 'BLOCK_MISSED', $3)`,
+          [userId, actualDbId, JSON.stringify({ block_id: b.block_id, subject: b.subject, planned_end: b.planned_end })]
+        );
+      }
 
       // 3. Send MISSED_BLOCK_ALERT via notificationService
       const alertText = `⚠️ *Missed Block Alert*
