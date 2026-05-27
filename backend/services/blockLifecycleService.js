@@ -385,28 +385,27 @@ export async function completeBlock(
     [calculatedMins, rows[0].id]
   );
 
+  const numericConfidence = toNumericConfidence(confidence);
+  const confidenceLabel = toConfidenceLabel(confidence);
+
+  const insertParams = [
+      rows[0].id, userId, rows[0].started_at || new Date(), rows[0].ended_at || new Date(),
+      calculatedMins, finalStatus, outputType, outputCount || 0, accuracy, score, numericConfidence, weaknessNote
+  ];
+  console.log(`[completeBlock] Executing block_logs INSERT with params:`, JSON.stringify(insertParams));
+
   await pool.query(
     `INSERT INTO public.block_logs (
        block_id, user_id, started_at, ended_at, actual_minutes, completion_status,
        output_type, output_count, accuracy, score, confidence, weakness_note
      )
      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
-    [
-      rows[0].id, userId, rows[0].started_at || new Date(), rows[0].ended_at || new Date(),
-      calculatedMins, finalStatus, outputType, outputCount || 0, accuracy, score, confidence, weaknessNote
-    ]
+    insertParams
   );
 
   try {
     const { logStudyEvent } = await import('./eventService.js');
-    await logStudyEvent({
-      userId,
-      eventType: 'BLOCK_COMPLETED',
-      subject: rows[0].subject,
-      topic: rows[0].topic,
-      syllabusNodeId: rows[0].node_id,
-      blockId: rows[0].id,
-      metadata: {
+    const studyEventMetadata = {
         actual_minutes: calculatedMins,
         completion_status: finalStatus,
         output_type: outputType,
@@ -414,8 +413,19 @@ export async function completeBlock(
         weakness_note: weaknessNote,
         accuracy,
         score,
-        confidence
-      }
+        confidence_label: confidenceLabel,
+        confidence: numericConfidence
+      };
+    console.log(`[completeBlock] Executing study_events INSERT via logStudyEvent with metadata:`, JSON.stringify(studyEventMetadata));
+
+    await logStudyEvent({
+      userId,
+      eventType: 'BLOCK_COMPLETED',
+      subject: rows[0].subject,
+      topic: rows[0].topic,
+      syllabusNodeId: rows[0].node_id,
+      blockId: rows[0].id,
+      metadata: studyEventMetadata
     });
   } catch (e) {
     console.error('[blockLifecycle] completeBlock event log failed:', e.message);
@@ -706,6 +716,33 @@ export async function repairLegacyActiveBlocks(targetUserId = null) {
   }
 }
 
+// Helper functions for confidence normalization
+function toNumericConfidence(val) {
+  if (typeof val === 'number') return val;
+  if (typeof val === 'string') {
+    const v = val.toLowerCase().trim();
+    if (v === 'high' || v === 'strong') return 1.0;
+    if (v === 'medium' || v === 'partial') return 0.5;
+    if (v === 'low' || v === 'weak') return 0.2;
+    const parsed = parseFloat(v);
+    if (!isNaN(parsed)) return parsed;
+  }
+  return 1.0; // Default
+}
+
+function toConfidenceLabel(val) {
+  if (typeof val === 'string') {
+    const v = val.toLowerCase().trim();
+    if (['high', 'medium', 'low'].includes(v)) return v;
+  }
+  if (typeof val === 'number') {
+    if (val >= 0.8) return 'high';
+    if (val >= 0.4) return 'medium';
+    return 'low';
+  }
+  return 'high'; // Default
+}
+
 export async function savePlanBlocksAndLogEvents(userId, date, items) {
   const client = await pool.connect();
   try {
@@ -747,7 +784,9 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
       const paper = (b.paper || b.gsPaper || '').trim();
 
       // 1. Fallback mapping step if nodeId is missing/null and topic exists
-      let mappingConfidence = b.mapping_confidence || b.mappingConfidence || 'high';
+      const rawMappingConfidence = b.mapping_confidence || b.mappingConfidence || b.confidenceBadge || b.confidence || 'high';
+      let confidenceLabel = toConfidenceLabel(rawMappingConfidence);
+      let numericConfidence = toNumericConfidence(rawMappingConfidence);
 
       if (!nodeId && topic && subject) {
         try {
@@ -755,18 +794,22 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
           const fallbackMap = mapPlanItemToMicroTheme(topic, subject);
           if (fallbackMap && fallbackMap.matched && fallbackMap.syllabusNodeId) {
             nodeId = fallbackMap.syllabusNodeId;
-            mappingConfidence = fallbackMap.confidenceBand || 'medium';
-            console.log(`[savePlanBlocks fallback] Mapped "${topic}" (${subject}) -> ${nodeId} (${mappingConfidence})`);
+            confidenceLabel = toConfidenceLabel(fallbackMap.confidenceBand || 'medium');
+            numericConfidence = toNumericConfidence(fallbackMap.confidenceBand || 'medium');
+            console.log(`[savePlanBlocks fallback] Mapped "${topic}" (${subject}) -> ${nodeId} (${confidenceLabel})`);
           } else {
-            mappingConfidence = 'low';
+            confidenceLabel = 'low';
+            numericConfidence = 0.2;
             console.log(`[savePlanBlocks fallback] Failed to map "${topic}" (${subject})`);
           }
         } catch (err) {
           console.error(`[savePlanBlocks fallback] Error running fallback mapper:`, err.message);
-          mappingConfidence = 'low';
+          confidenceLabel = 'low';
+          numericConfidence = 0.2;
         }
       } else if (!nodeId) {
-        mappingConfidence = 'low';
+        confidenceLabel = 'low';
+        numericConfidence = 0.2;
       }
 
       // Infer mode if missing
@@ -816,6 +859,13 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
       }
 
       // 2. Insert/update the study block record
+      const insertParams = [
+          userId, existingBlockId, date, topic || subject, subject, topic,
+          b.startTime || b.plannedStart || '', b.endTime || b.end || '', plannedMinutes,
+          paper, subtopic, nodeId, finalMode, outputExpected, finalRawText, numericConfidence
+      ];
+      console.log(`[savePlanBlocks] Executing study_blocks UPSERT with params:`, JSON.stringify(insertParams));
+
       await client.query(
         `INSERT INTO public.study_blocks (
            user_id, block_id, day_key, title, subject, topic,
@@ -843,11 +893,7 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
            mapping_confidence = EXCLUDED.mapping_confidence,
            updated_at      = NOW()
          WHERE study_blocks.status = 'planned'`,
-        [
-          userId, existingBlockId, date, topic || subject, subject, topic,
-          b.startTime || b.plannedStart || '', b.endTime || b.end || '', plannedMinutes,
-          paper, subtopic, nodeId, finalMode, outputExpected, finalRawText, mappingConfidence
-        ]
+        insertParams
       );
 
       // Fetch block database id and row
@@ -884,6 +930,19 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
       );
 
       if (existingPlanEventRes.rows.length === 0) {
+        const studyEventMetadata = { 
+            blockId: existingBlockId, 
+            date,
+            planned_minutes: plannedMinutes,
+            source_type: 'uploaded_plan',
+            raw_text: finalRawText,
+            mode: finalMode,
+            output_expected: outputExpected,
+            confidence_label: confidenceLabel,
+            mapping_confidence: numericConfidence
+          };
+          console.log(`[savePlanBlocks] Executing study_events INSERT via logStudyEvent with metadata:`, JSON.stringify(studyEventMetadata));
+
         await logStudyEvent({
           userId,
           eventType: 'PLAN_ACCEPTED',
@@ -891,21 +950,13 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
           topic,
           syllabusNodeId: nodeId,
           blockId: dbBlockId,
-          metadata: { 
-            blockId: existingBlockId, 
-            date,
-            planned_minutes: plannedMinutes,
-            source_type: 'uploaded_plan',
-            raw_text: finalRawText,
-            mode: finalMode,
-            output_expected: outputExpected
-          },
+          metadata: studyEventMetadata,
           client
         });
       }
 
       // 4. Log PYQ_SEEN event if node has linked PYQs (only if not logged for this block already)
-      if (nodeId && mappingConfidence !== 'low') {
+      if (nodeId && numericConfidence > 0) {
         try {
           const { getPyqSummaryForNode } = await import('../brain/pyqLinkEngine.js');
           const pyqSummary = getPyqSummaryForNode(nodeId, 500);
@@ -940,8 +991,7 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
         }
       }
 
-      // 5. Update syllabus_node_progress for mapped nodes
-      if (nodeId && mappingConfidence !== 'low') {
+      if (nodeId && numericConfidence > 0) {
         try {
           const { recalculateSyllabusNodeProgress } = await import('./trackingFoundationService.js');
           await recalculateSyllabusNodeProgress(userId, nodeId, client);
