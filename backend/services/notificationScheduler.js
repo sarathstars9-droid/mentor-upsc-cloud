@@ -223,9 +223,27 @@ async function detectAndProcessMissedBlocks(userId, now) {
     
     // If current time is past planned_end and it's still marked planned
     if (now.getTime() > plannedEndDate.getTime()) {
-      console.log(`[NotificationScheduler] Block ${b.block_id} has passed end time (${b.planned_end}) without start. Marking missed.`);
+      const stableBlockId = b.block_id;
+      console.log(`[NotificationScheduler] Block ${stableBlockId} has passed end time (${b.planned_end}) without start. Marking missed.`);
       
-      // 1. Update block status in PostgreSQL database
+      // 3. Resolve to the real study_blocks.id
+      const dbCheckRes = await query(
+        `SELECT id FROM public.study_blocks 
+         WHERE user_id = $1 
+         AND (block_id = $2 OR (day_key = $3 AND subject = $4 AND planned_start = $5))
+         LIMIT 1`,
+        [userId, stableBlockId, b.day_key, b.subject, b.planned_start]
+      );
+
+      // 4. If no DB study_blocks row exists yet, skip
+      if (dbCheckRes.rows.length === 0) {
+        console.log(`[NotificationScheduler] Skipped missed event because study block row not found for stable id: ${stableBlockId}`);
+        continue;
+      }
+
+      const realDbId = dbCheckRes.rows[0].id;
+
+      // 6. Ensure missed status update also uses the correct DB block row
       await query(
         `UPDATE public.study_blocks 
          SET status = 'missed', 
@@ -233,24 +251,24 @@ async function detectAndProcessMissedBlocks(userId, now) {
              completion_reason = 'missed', 
              updated_at = NOW() 
          WHERE id = $1`,
-        [b.id]
+        [realDbId]
       );
       
-      // 2. Log study_event in plan_block_events
-      // Verify block exists to prevent FK violation
-      const checkRes = await query(
-        `SELECT id FROM public.study_blocks WHERE id = $1 OR block_id = $1::text`,
-        [b.id]
+      // 5. Add idempotency check for plan_block_events
+      const eventCheckRes = await query(
+        `SELECT id FROM public.plan_block_events 
+         WHERE user_id = $1 AND block_id = $2 AND event_type = 'BLOCK_MISSED' LIMIT 1`,
+        [userId, realDbId]
       );
-      if (checkRes.rows.length === 0) {
-        console.log(`[NotificationScheduler] Skipping missed event; block not persisted yet (${b.id})`);
-      } else {
-        const actualDbId = checkRes.rows[0].id; // Ensure we use the UUID if FK expects it
+
+      if (eventCheckRes.rows.length === 0) {
         await query(
           `INSERT INTO public.plan_block_events (user_id, block_id, event_type, metadata)
            VALUES ($1, $2, 'BLOCK_MISSED', $3)`,
-          [userId, actualDbId, JSON.stringify({ block_id: b.block_id, subject: b.subject, planned_end: b.planned_end })]
+          [userId, realDbId, JSON.stringify({ block_id: stableBlockId, subject: b.subject, planned_end: b.planned_end })]
         );
+      } else {
+        console.log(`[NotificationScheduler] Missed event already exists for block ${realDbId}, skipping insert.`);
       }
 
       // 3. Send MISSED_BLOCK_ALERT via notificationService
@@ -261,9 +279,9 @@ Moulika, your *${b.subject}* block (planned for ${b.planned_start} - ${b.planned
         userId,
         'MISSED_BLOCK_ALERT',
         'block',
-        String(b.id),
+        String(realDbId),
         alertText,
-        { block_id: b.id, subject: b.subject }
+        { block_id: realDbId, subject: b.subject }
       );
     }
   }
