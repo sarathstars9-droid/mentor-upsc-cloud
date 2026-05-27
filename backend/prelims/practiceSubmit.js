@@ -153,6 +153,37 @@ export default async function practiceSubmitHandler(req, res) {
             totalQuestionsInPool,
         });
 
+        // ── Step 5b: Log Study Event ───────────────────────────────────────────
+        try {
+            const isPyq = questionIds.some(id => 
+                String(id).startsWith("PRE_") || 
+                String(id).startsWith("CSAT_") || 
+                String(id).startsWith("MAINS_") || 
+                String(id).startsWith("ETH_") ||
+                String(id).startsWith("OPT_") ||
+                String(id).startsWith("ESSAY_")
+            );
+            const { logStudyEvent } = await import("../services/eventService.js");
+            await logStudyEvent({
+                userId,
+                eventType: isPyq ? "PYQ_ATTEMPTED" : "MCQ_ATTEMPTED",
+                subject: paperType,
+                paper: paperType,
+                topic: `Practice session for node ${topicNodeId}`,
+                syllabusNodeId: topicNodeId,
+                metadata: {
+                    attemptId: attempt.attemptId,
+                    totalCount: total,
+                    correctCount: correct,
+                    wrongCount: wrong,
+                    accuracy,
+                    finalScore
+                }
+            });
+        } catch (e) {
+            console.error("[practiceSubmitHandler] failed logging study event:", e.message);
+        }
+
         // ── Step 6: Return result ──────────────────────────────────────────────
         return res.json({
             ok:         true,

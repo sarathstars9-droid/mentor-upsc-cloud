@@ -148,6 +148,69 @@ router.post("/save", async (req, res) => {
     });
 
     console.log("[mains-attempt] saved", { attemptId: saved.attempt_id, questionKey });
+
+    const targetNode = body.syllabusNodeId || body.syllabus_node_id || null;
+
+    // Log study events
+    if (status === "finalized") {
+      try {
+        const { logStudyEvent } = await import("../services/eventService.js");
+        await logStudyEvent({
+          userId: saved.user_id || body.userId || "user_1",
+          eventType: "MAINS_ANSWER_SUBMITTED",
+          subject: body.subject || null,
+          paper: body.paper || null,
+          topic: questionText || null,
+          syllabusNodeId: targetNode,
+          metadata: {
+            attempt_id: saved.attempt_id
+          }
+        });
+      } catch (e) {
+        console.error("[mainsAttemptsRoute] failed logging MAINS_ANSWER_SUBMITTED:", e.message);
+      }
+    }
+
+    if (body.air1RawReview) {
+      try {
+        const { logStudyEvent } = await import("../services/eventService.js");
+        await logStudyEvent({
+          userId: saved.user_id || body.userId || "user_1",
+          eventType: "AIR1_REVIEW_SAVED",
+          subject: body.subject || null,
+          paper: body.paper || null,
+          topic: questionText || null,
+          syllabusNodeId: targetNode,
+          metadata: {
+            attempt_id: saved.attempt_id,
+            score: body.air1ParsedJson?.score || body.air1ParsedJson?.estimatedScore || null
+          }
+        });
+      } catch (e) {
+        console.error("[mainsAttemptsRoute] failed logging AIR1_REVIEW_SAVED:", e.message);
+      }
+    }
+
+    if (body.basicReview || body.basicReviewJson) {
+      const basicScore = body.basicReview?.score || body.basicReviewJson?.score || null;
+      try {
+        const { logStudyEvent } = await import("../services/eventService.js");
+        await logStudyEvent({
+          userId: saved.user_id || body.userId || "user_1",
+          eventType: "BASIC_REVIEW_DONE",
+          subject: body.subject || null,
+          paper: body.paper || null,
+          topic: questionText || null,
+          syllabusNodeId: targetNode,
+          metadata: {
+            attempt_id: saved.attempt_id,
+            score: basicScore
+          }
+        });
+      } catch (e) {
+        console.error("[mainsAttemptsRoute] failed logging BASIC_REVIEW_DONE:", e.message);
+      }
+    }
     
     let loopStatus = "skipped";
     if (status === "finalized") {

@@ -18,7 +18,9 @@ router.post("/", async (req, res) => {
       wordLimit,
       sourceType,
       questionSourceType,
-      answerSourceType 
+      answerSourceType,
+      syllabusNodeId,
+      syllabus_node_id
     } = req.body;
 
     if (!questionText) {
@@ -61,6 +63,26 @@ router.post("/", async (req, res) => {
         weaknessTags: evaluation.weakness_tags || [],
       });
       console.log("[evaluateAnswerRoute] Successfully saved to DB. Row ID:", savedRow?.id);
+
+      // Log BASIC_REVIEW_DONE study event
+      try {
+        const { logStudyEvent } = await import("../services/eventService.js");
+        await logStudyEvent({
+          userId: userId || "user_1",
+          eventType: "BASIC_REVIEW_DONE",
+          subject: subject || null,
+          paper: paper || "General Studies",
+          topic: questionText || null,
+          syllabusNodeId: syllabusNodeId || syllabus_node_id || null,
+          metadata: {
+            evaluation_id: savedRow?.id,
+            score: finalScore,
+            attempt_id: attemptId || null
+          }
+        });
+      } catch (eventErr) {
+        console.error("[evaluateAnswerRoute] logStudyEvent failed:", eventErr.message);
+      }
     } catch (dbError) {
       console.error("[evaluateAnswerRoute] DB save failed:", dbError);
     }

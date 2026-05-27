@@ -1012,6 +1012,18 @@ const K2S_FAST_LANE = {
   "number system": "CSAT-BN-NS",
   numbersystem: "CSAT-BN-NS",
 
+  // Target UPSC topics mapping overrides
+  bhakti: "GS1-HIS-MED-BHAKTI-MT01",
+  "bhakti movement": "GS1-HIS-MED-BHAKTI-MT01",
+  federalism: "GS2-POL-CSREL-MT01",
+  "federal structure": "GS2-POL-CSREL-MT01",
+  "cooperative federalism": "GS2-POL-CSREL-MT01",
+  "csat rc": "CSAT-RC-MISC-MT01",
+  "reading comprehension": "CSAT-RC-MISC-MT01",
+  "rc practice": "CSAT-RC-MISC-MT01",
+  inflation: "GS3-ECO-PRE-INFLATION-MT01",
+  biodiversity: "GS3-ENV-CONSERVATION-MT03",
+
   ancient: "GS1-HIS-ANC",
   medieval: "GS1-HIS-MED",
   modern: "GS1-HIS-MOD",

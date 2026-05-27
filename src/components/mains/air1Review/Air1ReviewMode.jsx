@@ -190,6 +190,14 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
         ? themeBasedFlowchart.steps
         : [];
 
+    const normalizedThemeFlowchartSteps =
+      themeFlowchartSteps.length === 1 && typeof themeFlowchartSteps[0] === "string"
+        ? themeFlowchartSteps[0]
+            .split(/(?:->|→|➜|=>)/)
+            .map((s) => s.trim())
+            .filter(Boolean)
+        : themeFlowchartSteps;
+
     const diagramSuggestions =
       Array.isArray(howToImprove.diagramSuggestions)
         ? howToImprove.diagramSuggestions
@@ -342,8 +350,8 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
 
     const hasData = (arr) => Array.isArray(arr) && arr.length > 0;
 
-    const Card = ({ children, style }) => (
-        <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, padding: "24px 28px", boxShadow: isDark ? "none" : "0 4px 6px -1px rgba(0,0,0,0.03)", ...style }}>
+    const Card = ({ children, style, className }) => (
+        <div className={`air1-card ${className || ""}`} style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, padding: "24px 28px", boxShadow: isDark ? "none" : "0 4px 6px -1px rgba(0,0,0,0.03)", ...style }}>
             {children}
         </div>
     );
@@ -638,6 +646,10 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
                   gap: 14px;
                 }
 
+                .flow-arrow-mobile {
+                  display: none;
+                }
+
                 @media (max-width: 900px) {
                   .flowchart-canvas,
                   .diagram-grid,
@@ -656,11 +668,157 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
                     display: none;
                   }
                 }
+
+                @media (max-width: 768px) {
+                  .mos-sidebar-v2 {
+                    display: none !important;
+                  }
+
+                  .mentoros-main {
+                    margin-left: 0 !important;
+                    width: 100vw !important;
+                    max-width: 100vw !important;
+                    overflow-x: hidden !important;
+                  }
+
+                  .mentoros-content {
+                    padding: 10px !important;
+                  }
+
+                  body {
+                    overflow-x: hidden;
+                  }
+
+                  .air1-review-container {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    min-width: 0 !important;
+                    padding: 12px !important;
+                  }
+
+                  .air1-card {
+                    padding: 16px !important;
+                    border-radius: 16px !important;
+                  }
+
+                  .air1-topbar-outer {
+                    padding: 8px 12px !important;
+                  }
+
+                  .air1-topbar {
+                    display: flex !important;
+                    flex-wrap: wrap !important;
+                    gap: 8px !important;
+                    justify-content: space-between !important;
+                  }
+
+                  .air1-topbar button {
+                    font-size: 11.5px !important;
+                    padding: 6px 10px !important;
+                    white-space: nowrap;
+                  }
+
+                  .air1-action-bar {
+                    display: flex !important;
+                    gap: 6px !important;
+                    justify-content: flex-end !important;
+                  }
+
+                  .air1-score-pills {
+                    order: 2;
+                    width: 100%;
+                    display: flex;
+                    gap: 8px;
+                    margin-top: 4px;
+                  }
+
+                  .air1-score-pills > div {
+                    flex: 1 !important;
+                    justify-content: center !important;
+                  }
+
+                  .air1-card-grid,
+                  .air1-upgrade-row,
+                  .diagram-grid,
+                  .why-scores-high-grid {
+                    grid-template-columns: 1fr !important;
+                  }
+
+                  .air1-upgrade-your-line {
+                    border-right: none !important;
+                    border-bottom: 1px solid ${T.border} !important;
+                  }
+
+                  .flowchart-canvas {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    gap: 10px !important;
+                    padding: 14px !important;
+                  }
+
+                  .flow-node {
+                    width: 100% !important;
+                    min-height: auto !important;
+                    padding: 12px 12px 12px 44px !important;
+                    grid-column: auto !important;
+                    grid-row: auto !important;
+                  }
+
+                  .flow-node p {
+                    font-size: 13px !important;
+                    line-height: 1.45 !important;
+                    word-break: normal !important;
+                  }
+
+                  .flow-arrow {
+                    display: none !important;
+                  }
+
+                  .flow-arrow-mobile {
+                    display: block !important;
+                    text-align: center !important;
+                    font-size: 18px !important;
+                    color: ${isDark ? "#a78bfa" : "#6d28d9"} !important;
+                    margin: -2px 0 !important;
+                  }
+
+                  .diagram-card {
+                    padding: 14px !important;
+                  }
+
+                  .diagram-labels span {
+                    font-size: 11.5px !important;
+                    padding: 5px 8px !important;
+                  }
+
+                  .diagram-reason {
+                    font-size: 12.5px !important;
+                  }
+
+                  .memory-hook-premium {
+                    gap: 12px !important;
+                    padding: 14px !important;
+                  }
+
+                  .memory-hook-grid {
+                    grid-template-columns: 1fr !important;
+                  }
+
+                  .model-answer-card,
+                  .air1-model-answer {
+                    width: 100% !important;
+                  }
+
+                  .model-answer-body {
+                    font-size: 14px !important;
+                    line-height: 1.7 !important;
+                  }
+                }
             ` }} />
 
             {/* ── STICKY TOP BAR ─────────────────────────────────────────── */}
-            <div style={{ position: "sticky", top: 0, background: isDark ? "rgba(15,23,42,0.97)" : "rgba(248,250,252,0.97)", backdropFilter: "blur(16px)", borderBottom: `1px solid ${T.border}`, zIndex: 110, padding: "12px 24px" }}>
-                <div style={{ maxWidth: 1000, margin: "0 auto", display: "flex", alignItems: "center", gap: 12 }}>
+            <div className="air1-topbar-outer" style={{ position: "sticky", top: 0, background: isDark ? "rgba(15,23,42,0.97)" : "rgba(248,250,252,0.97)", backdropFilter: "blur(16px)", borderBottom: `1px solid ${T.border}`, zIndex: 110, padding: "12px 24px" }}>
+                <div className="air1-topbar" style={{ maxWidth: 1000, margin: "0 auto", display: "flex", alignItems: "center", gap: 12 }}>
 
                     {/* Back */}
                     <button onClick={onExit} style={{ background: "transparent", border: `1px solid ${T.borderMid}`, color: T.text, padding: "7px 14px", borderRadius: 8, cursor: "pointer", fontWeight: 700, fontSize: 13, whiteSpace: "nowrap", flexShrink: 0 }}>
@@ -668,7 +826,7 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
                     </button>
 
                     {/* Score chips — centre */}
-                    <div style={{ flex: 1, display: "flex", justifyContent: "center", gap: 10 }}>
+                    <div className="air1-score-pills" style={{ flex: 1, display: "flex", justifyContent: "center", gap: 10 }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 6, background: isDark ? "rgba(248,113,113,0.12)" : "#fee2e2", border: `1px solid ${T.red}40`, borderRadius: 10, padding: "6px 14px" }}>
                             <span style={{ fontSize: 11, fontWeight: 600, color: T.red, textTransform: "uppercase", letterSpacing: "0.04em" }}>Score</span>
                             <span style={{ fontSize: 20, fontWeight: 800, color: T.red, lineHeight: 1 }}>{displayScore ?? "—"}</span>
@@ -682,7 +840,7 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
                     </div>
 
                     {/* Actions */}
-                    <div style={{ display: "flex", gap: 8, alignItems: "center", flexShrink: 0 }}>
+                    <div className="air1-action-bar" style={{ display: "flex", gap: 8, alignItems: "center", flexShrink: 0 }}>
                         <button onClick={() => setTheme(isDark ? "light" : "dark")} style={{ background: T.surfaceHigh, border: `1px solid ${T.borderMid}`, color: T.text, padding: "7px 12px", borderRadius: 8, cursor: "pointer", fontSize: 13, fontWeight: 600 }}>
                             {isDark ? "☀️" : "🌙"}
                         </button>
@@ -697,7 +855,7 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
             </div>
 
             {/* ── CARDS ──────────────────────────────────────────────────── */}
-            <div id="air1-review-export-area" style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 24px", display: "flex", flexDirection: "column", gap: 26 }}>
+            <div id="air1-review-export-area" className="air1-review-container" style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 24px", display: "flex", flexDirection: "column", gap: 26 }}>
 
                 {/* ── CARD 1: QUICK EVALUATION ─────────────────────────── */}
                 <div data-air1-pdf-section="summary">
@@ -744,7 +902,7 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
                 <div data-air1-pdf-section="fixes">
                 <Card>
                     <div style={{ fontSize: 11, fontWeight: 600, color: T.blue, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Card 2 · Immediate Fixes</div>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+                    <div className="air1-card-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
                         {/* Left: Ideal UPSC Structure */}
                         <div>
                             <div style={{ fontSize: 14.5, fontWeight: 700, color: T.textBright, marginBottom: 12 }}>Ideal UPSC Structure</div>
@@ -786,7 +944,7 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
                 <section className="air1-card air1-visual-card" style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, boxShadow: isDark ? "none" : "0 4px 6px -1px rgba(0,0,0,0.03)" }}>
                   <div className="air1-card-kicker green" style={{ fontSize: 11, fontWeight: 600, color: T.green, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>CARD 3 · VISUAL VALUE ADDITION</div>
 
-                  {themeFlowchartSteps.length > 0 && (
+                  {normalizedThemeFlowchartSteps.length > 0 && (
                     <div className="visual-section">
                       <div className="visual-section-head">
                         <span className="visual-eyebrow">Theme Flowchart</span>
@@ -794,23 +952,27 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
                       </div>
 
                       <div className="flowchart-canvas" style={{ border: `1px solid ${T.border}` }}>
-                        {themeFlowchartSteps.map((step, index) => (
-                          <div
-                            key={`${step}-${index}`}
-                            className={`flow-node flow-node-${index + 1} ${index === themeFlowchartSteps.length - 1 ? "flow-node-last" : ""}`}
-                            style={{ background: T.surface, border: `1px solid ${T.border}`, boxShadow: isDark ? "none" : undefined }}
-                          >
-                            <span className="flow-node-number" style={{ background: T.amberBg, color: T.amber }}>{index + 1}</span>
-                            <p style={{ color: T.textBright }}>{step}</p>
-                          </div>
+                        {normalizedThemeFlowchartSteps.map((step, index) => (
+                          <React.Fragment key={`${step}-${index}`}>
+                            <div
+                              className={`flow-node flow-node-${index + 1} ${index === normalizedThemeFlowchartSteps.length - 1 ? "flow-node-last" : ""}`}
+                              style={{ background: T.surface, border: `1px solid ${T.border}`, boxShadow: isDark ? "none" : undefined }}
+                            >
+                              <span className="flow-node-number" style={{ background: T.amberBg, color: T.amber }}>{index + 1}</span>
+                              <p style={{ color: T.textBright }}>{step}</p>
+                            </div>
+                            {index < normalizedThemeFlowchartSteps.length - 1 && (
+                              <span className="flow-arrow-mobile">↓</span>
+                            )}
+                          </React.Fragment>
                         ))}
 
-                        {themeFlowchartSteps.length >= 2 && <span className="flow-arrow arrow-1">→</span>}
-                        {themeFlowchartSteps.length >= 3 && <span className="flow-arrow arrow-2">→</span>}
-                        {themeFlowchartSteps.length >= 4 && <span className="flow-arrow arrow-3">↓</span>}
-                        {themeFlowchartSteps.length >= 5 && <span className="flow-arrow arrow-4">←</span>}
-                        {themeFlowchartSteps.length >= 6 && <span className="flow-arrow arrow-5">←</span>}
-                        {themeFlowchartSteps.length >= 7 && <span className="flow-arrow arrow-6">↓</span>}
+                        {normalizedThemeFlowchartSteps.length >= 2 && <span className="flow-arrow arrow-1">→</span>}
+                        {normalizedThemeFlowchartSteps.length >= 3 && <span className="flow-arrow arrow-2">→</span>}
+                        {normalizedThemeFlowchartSteps.length >= 4 && <span className="flow-arrow arrow-3">↓</span>}
+                        {normalizedThemeFlowchartSteps.length >= 5 && <span className="flow-arrow arrow-4">←</span>}
+                        {normalizedThemeFlowchartSteps.length >= 6 && <span className="flow-arrow arrow-5">←</span>}
+                        {normalizedThemeFlowchartSteps.length >= 7 && <span className="flow-arrow arrow-6">↓</span>}
                       </div>
                     </div>
                   )}
@@ -901,8 +1063,8 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
                                     <div style={{ background: T.surfaceHigh, padding: "10px 18px", borderBottom: `1px solid ${T.border}`, fontSize: 14, fontWeight: 700, color: T.textBright }}>
                                         {u.section || `Upgrade ${i + 1}`}
                                     </div>
-                                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
-                                        <div style={{ padding: "16px 18px", borderRight: `1px solid ${T.border}` }}>
+                                    <div className="air1-upgrade-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
+                                        <div className="air1-upgrade-your-line" style={{ padding: "16px 18px", borderRight: `1px solid ${T.border}` }}>
                                             <div style={{ fontSize: 11, fontWeight: 600, color: T.amber, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6, display: "flex", alignItems: "center", gap: 5 }}>
                                                 <span style={{ width: 6, height: 6, borderRadius: 3, background: T.amber, display: "inline-block" }} />Your Line
                                             </div>
@@ -942,7 +1104,7 @@ export default function Air1ReviewMode({ data, rawReviewText, uploadedPages, fin
                         )}
                     </div>
                     {modelAnswer ? (
-                        <div style={{ fontSize: "14.5px", color: T.text, lineHeight: 1.75, fontWeight: 400, maxWidth: "880px" }}>
+                        <div className="model-answer-body" style={{ fontSize: "14.5px", color: T.text, lineHeight: 1.75, fontWeight: 400, maxWidth: "880px" }}>
                             {renderModelAnswerText(modelAnswer)}
                         </div>
                     ) : (

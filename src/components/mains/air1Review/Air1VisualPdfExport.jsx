@@ -118,6 +118,14 @@ export default function Air1VisualPdfExport({ data, questionText, marks, paper, 
       ? themeBasedFlowchart.steps
       : [];
 
+  const normalizedThemeFlowchartSteps =
+    themeFlowchartSteps.length === 1 && typeof themeFlowchartSteps[0] === "string"
+      ? themeFlowchartSteps[0]
+          .split(/(?:->|→|➜|=>)/)
+          .map((s) => s.trim())
+          .filter(Boolean)
+      : themeFlowchartSteps;
+
   const diagramSuggestions =
     Array.isArray(howToImprove.diagramSuggestions)
       ? howToImprove.diagramSuggestions
@@ -432,7 +440,7 @@ export default function Air1VisualPdfExport({ data, questionText, marks, paper, 
           </div>
         )}
 
-        {themeFlowchartSteps.length > 0 && (
+        {normalizedThemeFlowchartSteps.length > 0 && (
           <div style={{ ...cardStyle, backgroundColor: "#f8fafc", borderColor: "#e2e8f0" }}>
             <div style={{ fontSize: "14px", fontWeight: "bold", color: "#0f172a", marginBottom: "12px" }}>
               Theme Flowchart: {themeFlowchartTitle}
@@ -449,7 +457,7 @@ export default function Air1VisualPdfExport({ data, questionText, marks, paper, 
               border: "1px solid rgba(15, 23, 42, 0.08)",
               background: "radial-gradient(circle at top left, rgba(124, 58, 237, 0.04), transparent 34%), linear-gradient(135deg, rgba(248, 250, 252, 0.95), rgba(241, 245, 249, 0.95))"
             }}>
-              {themeFlowchartSteps.map((step, index) => {
+              {normalizedThemeFlowchartSteps.map((step, index) => {
                 let gridColumn = "auto";
                 let gridRow = "auto";
                 if (index === 0) { gridColumn = "1"; gridRow = "1"; }
@@ -501,7 +509,7 @@ export default function Air1VisualPdfExport({ data, questionText, marks, paper, 
                 );
               })}
 
-              {themeFlowchartSteps.length >= 6 && (
+              {normalizedThemeFlowchartSteps.length >= 6 && (
                 <>
                   <span style={{ position: "absolute", zIndex: 1, fontSize: "20px", fontWeight: "900", color: "#64748b", top: "36px", left: "30.5%" }}>→</span>
                   <span style={{ position: "absolute", zIndex: 1, fontSize: "20px", fontWeight: "900", color: "#64748b", top: "36px", left: "65%" }}>→</span>

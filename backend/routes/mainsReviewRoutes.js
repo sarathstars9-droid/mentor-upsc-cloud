@@ -62,6 +62,25 @@ router.post("/attempt/save", async (req, res) => {
       });
     }
 
+    // Log MAINS_ANSWER_SUBMITTED event
+    try {
+      const { logStudyEvent } = await import("../services/eventService.js");
+      await logStudyEvent({
+        userId: record.userId || "user_1",
+        eventType: "MAINS_ANSWER_SUBMITTED",
+        subject: record.source?.subject || record.question?.subjectTag || null,
+        paper: record.source?.paper || record.question?.paper || null,
+        topic: record.question?.text || null,
+        syllabusNodeId: record.question?.topicNodeId || record.question?.syllabus_node_id || null,
+        metadata: {
+          attempt_id: attemptId,
+          source: record.source
+        }
+      });
+    } catch (e) {
+      console.error("[mainsReview] failed logging MAINS_ANSWER_SUBMITTED event:", e.message);
+    }
+
     let air1ReviewSaved = false;
 
     if (record.air1Review?.rawText) {
@@ -81,6 +100,25 @@ router.post("/attempt/save", async (req, res) => {
         });
         air1ReviewSaved = true;
         console.log(`[mainsReview] Saved AIR-1 review to DB for attempt ${attemptId}`);
+
+        // Log AIR1_REVIEW_SAVED event
+        try {
+          const { logStudyEvent } = await import("../services/eventService.js");
+          await logStudyEvent({
+            userId: record.userId || "user_1",
+            eventType: "AIR1_REVIEW_SAVED",
+            subject: record.source?.subject || record.question?.subjectTag || null,
+            paper: record.source?.paper || record.question?.paper || null,
+            topic: record.question?.text || null,
+            syllabusNodeId: record.question?.topicNodeId || record.question?.syllabus_node_id || null,
+            metadata: {
+              attempt_id: attemptId,
+              score: parsedJson?.score || parsedJson?.estimatedScore || null
+            }
+          });
+        } catch (e) {
+          console.error("[mainsReview] failed logging AIR1_REVIEW_SAVED event:", e.message);
+        }
       } catch (dbErr) {
         console.error(`[mainsReview] Failed to save AIR-1 review to DB for attempt ${attemptId}:`, dbErr);
         // We don't block the overall save if DB insert fails

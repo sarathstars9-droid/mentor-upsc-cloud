@@ -1083,7 +1083,31 @@ Output ONLY JSON.
       const item = { ...rawIt };
 
       const ocrInput = `${item.subject || ""} ${item.topic || ""}`.trim();
-      const mappingResult = processOcrText(ocrInput, { minutes: item.minutes || 0 });
+      let mappingResult;
+      try {
+        mappingResult = processOcrText(ocrInput, { minutes: item.minutes || 0 });
+      } catch (err) {
+        console.error(`[processOcrText ERR] Failed to parse input: "${ocrInput}"`, err);
+        mappingResult = {
+          rawText: ocrInput,
+          cleanedText: ocrInput,
+          stage: "general",
+          gsPaper: null,
+          subjectId: null,
+          subjectName: item.subject || "Unknown",
+          nodeId: null,
+          nodeName: "Unmapped",
+          resolverConfidence: 0,
+          confidenceBadge: "LOW",
+          mappingSource: "NONE",
+          isApproved: false,
+          isMiscGen: false,
+          subjectCandidates: [],
+          topicCandidates: [],
+          textQuality: "ACCEPTABLE",
+          warnings: ["PARSE_EXCEPTION"],
+        };
+      }
 
       // Guard: Do not force vague generic entries into specific nodes
       const genericTerms = ["pyq", "pyqs", "revision", "the hindu", "news", "current affairs", "ca", "day revision", "practice", "mcq", "newspaper", "daily"];

@@ -32,6 +32,9 @@ import { splitOcrBlock } from "./ocrBlockSplitter.js";
  * @returns {Object} - Fully resolved block mapping result
  */
 export function processOcrText(rawText, opts = {}) {
+  const depth = opts.depth || 0;
+  const isSubBlock = opts.isSubBlock || false;
+
   /* ---------------- CLEAN ---------------- */
   const cleanedText = cleanOcrText(rawText);
   const isTextAcceptable = assessTextQuality(cleanedText);
@@ -73,10 +76,15 @@ export function processOcrText(rawText, opts = {}) {
 
   /* ---------------- MULTI-SUBJECT SPLIT ---------------- */
   // Detect if block contains 2+ subjects. If yes, split and recurse.
-  const splitResult = splitOcrBlock(cleanedText, { stage, gsPaper, minutes: opts.minutes || 0 });
+  // Guard split checking to prevent infinite recursion on sub-blocks or high depth
+  let splitResult = null;
+  if (!isSubBlock && depth < 3) {
+    splitResult = splitOcrBlock(cleanedText, { stage, gsPaper, minutes: opts.minutes || 0 });
+  }
+
   if (splitResult && splitResult.subBlocks && splitResult.subBlocks.length >= 2) {
     const resolvedSubBlocks = splitResult.subBlocks.map((sub) =>
-      processOcrText(sub.text, { minutes: sub.minutes })
+      processOcrText(sub.text, { minutes: sub.minutes, depth: depth + 1, isSubBlock: true })
     );
     return {
       rawText,

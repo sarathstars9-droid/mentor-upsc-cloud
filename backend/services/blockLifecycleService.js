@@ -111,6 +111,44 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
          WHERE id = $1`,
         [row.id, foldPauseSec]
       );
+      
+      try {
+        const startedAt = row.started_at ? new Date(row.started_at).getTime() : Date.now();
+        const endedAt = Date.now();
+        const pauseSec = (row.total_pause_seconds || 0) + foldPauseSec;
+        const actualMinutes = Math.max(0, Math.round((endedAt - startedAt - (pauseSec * 1000)) / 60000));
+
+        await client.query(
+          `UPDATE study_blocks SET actual_minutes = $1 WHERE id = $2`,
+          [actualMinutes, row.id]
+        );
+
+        await client.query(
+          `INSERT INTO public.block_logs (
+             block_id, user_id, started_at, ended_at, actual_minutes, completion_status, confidence
+           )
+           VALUES ($1, $2, $3, NOW(), $4, 'completed', 'auto_stopped_on_new_start')`,
+          [row.id, userId, row.started_at || new Date(), actualMinutes]
+        );
+
+        const { logStudyEvent } = await import('./eventService.js');
+        await logStudyEvent({
+          userId,
+          eventType: 'BLOCK_COMPLETED',
+          subject: row.subject,
+          topic: row.topic,
+          syllabusNodeId: row.node_id,
+          blockId: row.id,
+          metadata: {
+            actual_minutes: actualMinutes,
+            completion_status: 'completed',
+            completion_reason: 'auto_stopped_on_new_start'
+          }
+        });
+      } catch (e) {
+        console.error('[blockLifecycle] Auto-completed block log/event failed:', e.message);
+      }
+
       console.log(
         `[blockLifecycle] Auto-completed block ${row.block_id} (${row.id})` +
         ` to allow new block ${blockId} for user ${userId}`
@@ -151,6 +189,23 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
     await client.query('COMMIT');
     // Invalidate only after commit is confirmed — never on rollback path
     try { invalidateSuggestionsCache(userId); } catch {}
+
+    // Event Ledger Hook
+    try {
+      const { logStudyEvent } = await import('./eventService.js');
+      await logStudyEvent({
+        userId,
+        eventType: 'BLOCK_STARTED',
+        subject: targetRow.subject,
+        topic: targetRow.topic,
+        syllabusNodeId: targetRow.node_id,
+        blockId: targetRow.id,
+        metadata
+      });
+    } catch (e) {
+      console.error('[blockLifecycle] startBlock event log failed:', e.message);
+    }
+
     return computeBlockState(updated[0]);
 
   } catch (err) {
@@ -195,6 +250,21 @@ export async function pauseBlock(userId = DEFAULT_USER, blockId, dayKey) {
     );
   }
 
+  // Event Ledger Hook
+  try {
+    const { logStudyEvent } = await import('./eventService.js');
+    await logStudyEvent({
+      userId,
+      eventType: 'BLOCK_PAUSED',
+      subject: rows[0].subject,
+      topic: rows[0].topic,
+      syllabusNodeId: rows[0].node_id,
+      blockId: rows[0].id
+    });
+  } catch (e) {
+    console.error('[blockLifecycle] pauseBlock event log failed:', e.message);
+  }
+
   try { invalidateSuggestionsCache(userId); } catch {}
   return computeBlockState(rows[0]);
 }
@@ -230,6 +300,21 @@ export async function resumeBlock(userId = DEFAULT_USER, blockId, dayKey) {
     );
   }
 
+  // Event Ledger Hook
+  try {
+    const { logStudyEvent } = await import('./eventService.js');
+    await logStudyEvent({
+      userId,
+      eventType: 'BLOCK_RESUMED',
+      subject: rows[0].subject,
+      topic: rows[0].topic,
+      syllabusNodeId: rows[0].node_id,
+      blockId: rows[0].id
+    });
+  } catch (e) {
+    console.error('[blockLifecycle] resumeBlock event log failed:', e.message);
+  }
+
   try { invalidateSuggestionsCache(userId); } catch {}
   return computeBlockState(rows[0]);
 }
@@ -240,7 +325,16 @@ export async function resumeBlock(userId = DEFAULT_USER, blockId, dayKey) {
 
 export async function completeBlock(
   userId = DEFAULT_USER, blockId, dayKey,
-  { reason = 'completed' } = {}
+  {
+    reason = 'completed',
+    actualMinutes = null,
+    outputType = null,
+    outputCount = 0,
+    accuracy = null,
+    score = null,
+    confidence = null,
+    weaknessNote = null
+  } = {}
 ) {
   const validReasons = new Set(['completed', 'partial', 'missed', 'skipped']);
   const finalStatus = validReasons.has(reason) ? reason : 'completed';
@@ -278,6 +372,55 @@ export async function completeBlock(
     );
   }
 
+  let calculatedMins = actualMinutes;
+  if (calculatedMins == null) {
+    const startedAt = rows[0].started_at ? new Date(rows[0].started_at).getTime() : Date.now();
+    const endedAt = rows[0].ended_at ? new Date(rows[0].ended_at).getTime() : Date.now();
+    const pauseSec = rows[0].total_pause_seconds || 0;
+    calculatedMins = Math.max(0, Math.round((endedAt - startedAt - (pauseSec * 1000)) / 60000));
+  }
+
+  await pool.query(
+    `UPDATE study_blocks SET actual_minutes = $1 WHERE id = $2`,
+    [calculatedMins, rows[0].id]
+  );
+
+  await pool.query(
+    `INSERT INTO public.block_logs (
+       block_id, user_id, started_at, ended_at, actual_minutes, completion_status,
+       output_type, output_count, accuracy, score, confidence, weakness_note
+     )
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
+    [
+      rows[0].id, userId, rows[0].started_at || new Date(), rows[0].ended_at || new Date(),
+      calculatedMins, finalStatus, outputType, outputCount || 0, accuracy, score, confidence, weaknessNote
+    ]
+  );
+
+  try {
+    const { logStudyEvent } = await import('./eventService.js');
+    await logStudyEvent({
+      userId,
+      eventType: 'BLOCK_COMPLETED',
+      subject: rows[0].subject,
+      topic: rows[0].topic,
+      syllabusNodeId: rows[0].node_id,
+      blockId: rows[0].id,
+      metadata: {
+        actual_minutes: calculatedMins,
+        completion_status: finalStatus,
+        output_type: outputType,
+        output_count: outputCount,
+        weakness_note: weaknessNote,
+        accuracy,
+        score,
+        confidence
+      }
+    });
+  } catch (e) {
+    console.error('[blockLifecycle] completeBlock event log failed:', e.message);
+  }
+
   try { invalidateSuggestionsCache(userId); } catch {}
 
   // Phase 8: Knowledge Linkage — durable async processing.
@@ -299,7 +442,13 @@ export async function completeBlock(
 // Used when user stops an active session manually without reviewing.
 
 export async function stopBlock(
-  userId = DEFAULT_USER, blockId, dayKey
+  userId = DEFAULT_USER, blockId, dayKey,
+  {
+    outputType = null,
+    outputCount = 0,
+    weaknessNote = null,
+    actualMinutes = null
+  } = {}
 ) {
   const { rows } = await pool.query(
     `UPDATE study_blocks
@@ -331,6 +480,52 @@ export async function stopBlock(
       new Error(`stopBlock: block ${blockId} not found or not in stoppable state`),
       { code: 'NOT_STOPPABLE' }
     );
+  }
+
+  let calculatedMins = actualMinutes;
+  if (calculatedMins == null) {
+    const startedAt = rows[0].started_at ? new Date(rows[0].started_at).getTime() : Date.now();
+    const endedAt = rows[0].ended_at ? new Date(rows[0].ended_at).getTime() : Date.now();
+    const pauseSec = rows[0].total_pause_seconds || 0;
+    calculatedMins = Math.max(0, Math.round((endedAt - startedAt - (pauseSec * 1000)) / 60000));
+  }
+
+  await pool.query(
+    `UPDATE study_blocks SET actual_minutes = $1 WHERE id = $2`,
+    [calculatedMins, rows[0].id]
+  );
+
+  await pool.query(
+    `INSERT INTO public.block_logs (
+       block_id, user_id, started_at, ended_at, actual_minutes, completion_status,
+       output_type, output_count, weakness_note
+     )
+     VALUES ($1, $2, $3, $4, $5, 'partial', $6, $7, $8)`,
+    [
+      rows[0].id, userId, rows[0].started_at || new Date(), rows[0].ended_at || new Date(),
+      calculatedMins, outputType, outputCount || 0, weaknessNote
+    ]
+  );
+
+  try {
+    const { logStudyEvent } = await import('./eventService.js');
+    await logStudyEvent({
+      userId,
+      eventType: 'BLOCK_COMPLETED',
+      subject: rows[0].subject,
+      topic: rows[0].topic,
+      syllabusNodeId: rows[0].node_id,
+      blockId: rows[0].id,
+      metadata: {
+        actual_minutes: calculatedMins,
+        completion_status: 'partial',
+        output_type: outputType,
+        output_count: outputCount,
+        weakness_note: weaknessNote
+      }
+    });
+  } catch (e) {
+    console.error('[blockLifecycle] stopBlock event log failed:', e.message);
   }
 
   try { invalidateSuggestionsCache(userId); } catch {}
@@ -506,6 +701,262 @@ export async function repairLegacyActiveBlocks(targetUserId = null) {
     await client.query('ROLLBACK');
     console.error('[repair] ERROR', err.message);
     return { ok: false, error: err.message };
+  } finally {
+    client.release();
+  }
+}
+
+export async function savePlanBlocksAndLogEvents(userId, date, items) {
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+
+    // 1. Log overall PLAN_ACCEPTED event (only if not logged for this date already)
+    const existingOverallRes = await client.query(
+      `SELECT id FROM public.study_events 
+       WHERE user_id = $1 
+         AND event_type = 'PLAN_ACCEPTED' 
+         AND block_id IS NULL 
+         AND (metadata_json->>'date') = $2 LIMIT 1`,
+      [userId, date]
+    );
+
+    const { logStudyEvent } = await import('./eventService.js');
+    if (existingOverallRes.rows.length === 0) {
+      await logStudyEvent({
+        userId,
+        eventType: 'PLAN_ACCEPTED',
+        metadata: { date, block_count: items.length },
+        client
+      });
+    }
+
+    for (const b of items) {
+      if (!b.blockId) continue;
+      
+      const plannedMinutes = Number(b.planned_minutes || b.plannedMinutes || b.minutes || 0);
+      const subject = b.subject || b.paper || '';
+      const topic = b.topic || '';
+      const rawNodeId = b.syllabus_node_id || b.syllabusNodeId || b.nodeId || '';
+      let nodeId = rawNodeId && rawNodeId !== 'MISC-GEN' && !rawNodeId.startsWith('MISC') ? rawNodeId : null;
+      
+      const mode = (b.mode || '').trim();
+      const outputExpected = (b.output_expected || b.outputExpected || '').trim();
+      const rawText = (b.raw_text || b.rawText || '').trim();
+      const subtopic = (b.subtopic || b.subTopic || '').trim();
+      const paper = (b.paper || b.gsPaper || '').trim();
+
+      // 1. Fallback mapping step if nodeId is missing/null and topic exists
+      let mappingConfidence = b.mapping_confidence || b.mappingConfidence || 'high';
+
+      if (!nodeId && topic && subject) {
+        try {
+          const { mapPlanItemToMicroTheme } = await import('../brain/findMicroTheme.js');
+          const fallbackMap = mapPlanItemToMicroTheme(topic, subject);
+          if (fallbackMap && fallbackMap.matched && fallbackMap.syllabusNodeId) {
+            nodeId = fallbackMap.syllabusNodeId;
+            mappingConfidence = fallbackMap.confidenceBand || 'medium';
+            console.log(`[savePlanBlocks fallback] Mapped "${topic}" (${subject}) -> ${nodeId} (${mappingConfidence})`);
+          } else {
+            mappingConfidence = 'low';
+            console.log(`[savePlanBlocks fallback] Failed to map "${topic}" (${subject})`);
+          }
+        } catch (err) {
+          console.error(`[savePlanBlocks fallback] Error running fallback mapper:`, err.message);
+          mappingConfidence = 'low';
+        }
+      } else if (!nodeId) {
+        mappingConfidence = 'low';
+      }
+
+      // Infer mode if missing
+      let finalMode = mode;
+      if (!finalMode) {
+        const cleanText = `${subject} ${topic} ${rawText}`.toLowerCase();
+        if (cleanText.includes("revision") || cleanText.includes("revise") || cleanText.includes("recall") || cleanText.includes("sheet")) {
+          finalMode = "revision";
+        } else if (
+          cleanText.includes("practice") ||
+          cleanText.includes("solve") ||
+          cleanText.includes("drill") ||
+          cleanText.includes("mcq") ||
+          cleanText.includes("test") ||
+          cleanText.includes("mock") ||
+          cleanText.includes("pyq") ||
+          cleanText.includes("writing") ||
+          cleanText.includes("answer")
+        ) {
+          finalMode = "practice";
+        } else {
+          finalMode = "study";
+        }
+      }
+
+      let finalRawText = rawText;
+      if (!finalRawText) {
+        finalRawText = `${topic || subject}`.trim();
+      }
+
+      // Deduplication rule: Check if a block with the same user, date, and raw_text (or details) already exists
+      let existingBlockId = b.blockId;
+      if ((finalRawText && finalRawText.trim()) || (subject && topic)) {
+        const dupRes = await client.query(
+          `SELECT block_id FROM public.study_blocks 
+           WHERE user_id = $1 AND day_key = $2 
+             AND (
+               ($3 <> '' AND raw_text = $3)
+               OR (subject = $4 AND topic = $5 AND COALESCE(mode, '') = $6 AND planned_minutes = $7)
+             )
+           LIMIT 1`,
+          [userId, date, finalRawText.trim(), subject, topic, finalMode, plannedMinutes]
+        );
+        if (dupRes.rows.length > 0) {
+          existingBlockId = dupRes.rows[0].block_id;
+        }
+      }
+
+      // 2. Insert/update the study block record
+      await client.query(
+        `INSERT INTO public.study_blocks (
+           user_id, block_id, day_key, title, subject, topic,
+           planned_start, planned_end, planned_minutes, status,
+           date, paper, subtopic, syllabus_node_id, mode, output_expected, raw_text,
+           source_type, mapping_confidence, created_at, updated_at
+         )
+         VALUES ($1, $2, $3::TEXT, $4, $5, $6, $7, $8, $9, 'planned', $3::DATE, $10, $11, $12, $13, $14, $15, 'uploaded_plan', $16, NOW(), NOW())
+         ON CONFLICT (user_id, block_id, day_key)
+         DO UPDATE SET
+           title           = EXCLUDED.title,
+           subject         = EXCLUDED.subject,
+           topic           = EXCLUDED.topic,
+           planned_start   = EXCLUDED.planned_start,
+           planned_end     = EXCLUDED.planned_end,
+           planned_minutes = EXCLUDED.planned_minutes,
+           date            = EXCLUDED.date,
+           paper           = EXCLUDED.paper,
+           subtopic        = EXCLUDED.subtopic,
+           syllabus_node_id= EXCLUDED.syllabus_node_id,
+           mode            = EXCLUDED.mode,
+           output_expected = EXCLUDED.output_expected,
+           raw_text        = EXCLUDED.raw_text,
+           source_type     = EXCLUDED.source_type,
+           mapping_confidence = EXCLUDED.mapping_confidence,
+           updated_at      = NOW()
+         WHERE study_blocks.status = 'planned'`,
+        [
+          userId, existingBlockId, date, topic || subject, subject, topic,
+          b.startTime || b.plannedStart || '', b.endTime || b.end || '', plannedMinutes,
+          paper, subtopic, nodeId, finalMode, outputExpected, finalRawText, mappingConfidence
+        ]
+      );
+
+      // Fetch block database id and row
+      const dbBlockRes = await client.query(
+        `SELECT * FROM public.study_blocks WHERE user_id = $1 AND block_id = $2 AND day_key = $3 LIMIT 1`,
+        [userId, existingBlockId, date]
+      );
+      const insertedBlockRow = dbBlockRes.rows[0];
+      const dbBlockId = insertedBlockRow?.id || null;
+
+      if (insertedBlockRow) {
+        console.log("[STAGE 5] Final inserted study_blocks row:", {
+          id: insertedBlockRow.id,
+          block_id: insertedBlockRow.block_id,
+          day_key: insertedBlockRow.day_key,
+          subject: insertedBlockRow.subject,
+          topic: insertedBlockRow.topic,
+          syllabus_node_id: insertedBlockRow.syllabus_node_id,
+          mode: insertedBlockRow.mode,
+          raw_text: insertedBlockRow.raw_text,
+          output_expected: insertedBlockRow.output_expected,
+          paper: insertedBlockRow.paper,
+          subtopic: insertedBlockRow.subtopic,
+          planned_minutes: insertedBlockRow.planned_minutes,
+          mapping_confidence: insertedBlockRow.mapping_confidence
+        });
+      }
+
+      // 3. Log PLAN_ACCEPTED event for each block (only if not logged for this block already)
+      const existingPlanEventRes = await client.query(
+        `SELECT id FROM public.study_events 
+         WHERE user_id = $1 AND event_type = 'PLAN_ACCEPTED' AND block_id = $2 LIMIT 1`,
+         [userId, dbBlockId]
+      );
+
+      if (existingPlanEventRes.rows.length === 0) {
+        await logStudyEvent({
+          userId,
+          eventType: 'PLAN_ACCEPTED',
+          subject,
+          topic,
+          syllabusNodeId: nodeId,
+          blockId: dbBlockId,
+          metadata: { 
+            blockId: existingBlockId, 
+            date,
+            planned_minutes: plannedMinutes,
+            source_type: 'uploaded_plan',
+            raw_text: finalRawText,
+            mode: finalMode,
+            output_expected: outputExpected
+          },
+          client
+        });
+      }
+
+      // 4. Log PYQ_SEEN event if node has linked PYQs (only if not logged for this block already)
+      if (nodeId && mappingConfidence !== 'low') {
+        try {
+          const { getPyqSummaryForNode } = await import('../brain/pyqLinkEngine.js');
+          const pyqSummary = getPyqSummaryForNode(nodeId, 500);
+          if (pyqSummary && pyqSummary.total > 0) {
+            const existingPyqEventRes = await client.query(
+              `SELECT id FROM public.study_events 
+               WHERE user_id = $1 AND event_type = 'PYQ_SEEN' AND block_id = $2 LIMIT 1`,
+              [userId, dbBlockId]
+            );
+
+            if (existingPyqEventRes.rows.length === 0) {
+              await logStudyEvent({
+                userId,
+                eventType: 'PYQ_SEEN',
+                subject,
+                topic,
+                syllabusNodeId: nodeId,
+                blockId: dbBlockId,
+                metadata: {
+                  prelims_pyq_count: pyqSummary.prelimsCount + pyqSummary.csatCount,
+                  mains_pyq_count: pyqSummary.mainsCount + pyqSummary.ethicsCount + pyqSummary.essayCount,
+                  optional_pyq_count: pyqSummary.optionalCount,
+                  pyq_ids: pyqSummary.questions.map(q => q.id),
+                  purpose: 'revision_exposure'
+                },
+                client
+              });
+            }
+          }
+        } catch (err) {
+          console.error(`[savePlanBlocks] Failed to log PYQ_SEEN for node ${nodeId}:`, err.message);
+        }
+      }
+
+      // 5. Update syllabus_node_progress for mapped nodes
+      if (nodeId && mappingConfidence !== 'low') {
+        try {
+          const { recalculateSyllabusNodeProgress } = await import('./trackingFoundationService.js');
+          await recalculateSyllabusNodeProgress(userId, nodeId, client);
+        } catch (err) {
+          console.error(`[savePlanBlocks] Failed to recalculate progress for node ${nodeId}:`, err.message);
+        }
+      }
+    }
+
+    await client.query('COMMIT');
+    return { ok: true };
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error('[savePlanBlocksAndLogEvents] Transaction failed:', err.message);
+    throw err;
   } finally {
     client.release();
   }

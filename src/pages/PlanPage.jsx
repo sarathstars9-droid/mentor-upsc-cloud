@@ -2276,6 +2276,19 @@ export default function PlanPage() {
     }
 
     const blocksPayload = buildScheduleBlocksPayload(approvedBlocks);
+    // Stage 3: Debug log for first payload item
+    if (blocksPayload.length > 0) {
+      console.log("[STAGE 3] Payload sent to saveScheduleBlocks (first item):", {
+        blockId: blocksPayload[0].blockId,
+        subject: blocksPayload[0].subject,
+        topic: blocksPayload[0].topic,
+        mode: blocksPayload[0].mode,
+        rawText: blocksPayload[0].rawText,
+        syllabusNodeId: blocksPayload[0].syllabusNodeId,
+        outputExpected: blocksPayload[0].outputExpected,
+        subtopic: blocksPayload[0].subtopic,
+      });
+    }
     const reminderBlocksToRegister = approvedBlocks.map((block, index) => {
       const existing = ocrPreviewReminderBlocks[index] || {};
       return {
@@ -2427,17 +2440,42 @@ export default function PlanPage() {
 
       const draftBlocks = buildTodayBlocksFromParsed(out).map((block, index) => {
         const src = parsedItems[index] || {};
-        return {
+        const enrichedBlock = {
           ...block,
           linkedPyqs: src.linkedPyqs || safePyq(),
           mapped: src.mapped || null,
           mappedNodes: src.mappedNodes || src?.linkedPyqs?.mappedNodes || [],
           finalMapping: src.finalMapping || null,
-          nodeId: src.finalMapping?.nodeId || "",
+          nodeId: src.finalMapping?.nodeId || src.syllabusNodeId || "",
           nodeName: src.finalMapping?.nodeName || "",
           isApproved: src.finalMapping?.isApproved || false,
           confidenceBadge: src.finalMapping?.confidenceBadge || src.confidenceBadge || "UNKNOWN",
+          // Phase 2A fields — copy directly from backend-parsed item
+          mode: src.mode || block.mode || "",
+          Mode: src.mode || block.Mode || "",
+          rawText: src.rawText || block.rawText || "",
+          RawText: src.rawText || block.RawText || "",
+          outputExpected: src.outputExpected || block.outputExpected || "",
+          OutputExpected: src.outputExpected || block.OutputExpected || "",
+          subtopic: src.subtopic || block.subtopic || "",
+          Subtopic: src.subtopic || block.Subtopic || "",
+          syllabusNodeId: src.syllabusNodeId || src.finalMapping?.nodeId || block.syllabusNodeId || "",
+          SyllabusNodeId: src.syllabusNodeId || src.finalMapping?.nodeId || block.SyllabusNodeId || "",
         };
+        // Stage 2: Debug log for first approved block
+        if (index === 0) {
+          console.log("[STAGE 2] Draft block (first):", {
+            BlockId: enrichedBlock.BlockId,
+            subject: enrichedBlock.PlannedSubject,
+            topic: enrichedBlock.PlannedTopic,
+            mode: enrichedBlock.mode,
+            rawText: enrichedBlock.rawText,
+            syllabusNodeId: enrichedBlock.syllabusNodeId,
+            outputExpected: enrichedBlock.outputExpected,
+            subtopic: enrichedBlock.subtopic,
+          });
+        }
+        return enrichedBlock;
       });
 
       setOcrDraftBlocks(draftBlocks);

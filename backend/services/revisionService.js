@@ -99,7 +99,7 @@ export async function markRevisionReviewed(id) {
     const nextReview = new Date(now);
     nextReview.setDate(nextReview.getDate() + intervalDays);
 
-    return await repo.updateRevisionItem(id, {
+    const updated = await repo.updateRevisionItem(id, {
         status:           "reviewed",
         review_count:     newReviewCount,
         revision_count:   newReviewCount,   // keep both fields in sync
@@ -107,6 +107,29 @@ export async function markRevisionReviewed(id) {
         last_reviewed_at: now.toISOString(),
         next_review_at:   nextReview.toISOString(),
     });
+
+    if (updated) {
+        try {
+            const { logStudyEvent } = await import("./eventService.js");
+            await logStudyEvent({
+                userId: updated.user_id,
+                eventType: "REVISION_COMPLETED",
+                subject: updated.subject,
+                topic: updated.title,
+                syllabusNodeId: updated.node_id,
+                blockId: updated.block_id || null,
+                metadata: {
+                    revision_id: updated.id,
+                    review_count: updated.review_count,
+                    interval_days: updated.interval_days
+                }
+            });
+        } catch (e) {
+            console.error("[markRevisionReviewed] failed logging event:", e.message);
+        }
+    }
+
+    return updated;
 }
 
 export async function snoozeRevision(id, days = 1) {

@@ -31,6 +31,25 @@ router.post("/extract", async (req, res) => {
       extractedJson: intelligence,
     });
 
+    // Log AIR1_REVIEW_SAVED study event
+    try {
+      const { logStudyEvent } = await import("../services/eventService.js");
+      await logStudyEvent({
+        userId: userId || "moulika",
+        eventType: "AIR1_REVIEW_SAVED",
+        subject: null,
+        paper: paper || null,
+        topic: question || null,
+        syllabusNodeId: req.body.syllabusNodeId || req.body.syllabus_node_id || null,
+        metadata: {
+          air1_review_id: saved?.id || saved?.id,
+          score: intelligence?.estimatedMarks?.scored || null
+        }
+      });
+    } catch (e) {
+      console.error("[air1ReviewRoutes] failed logging AIR1_REVIEW_SAVED event:", e.message);
+    }
+
     return res.json({
       success: true,
       intelligence,

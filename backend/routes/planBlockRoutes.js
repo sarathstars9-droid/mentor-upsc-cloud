@@ -125,16 +125,19 @@ router.post('/resume', async (req, res) => {
   }
 });
 
-// ── POST /api/plan/blocks/complete ────────────────────────────────────────────
-
 router.post('/complete', async (req, res) => {
-  const { blockId, dayKey, reason } = req.body || {};
+  const {
+    blockId, dayKey, reason,
+    actualMinutes, outputType, outputCount, accuracy, score, confidence, weaknessNote
+  } = req.body || {};
   if (!blockId) return res.status(400).json({ ok: false, message: 'blockId is required' });
 
   try {
     const uid   = userId(req);
     const day   = dayKey || todayKey();
-    const block = await completeBlock(uid, blockId, day, { reason });
+    const block = await completeBlock(uid, blockId, day, {
+      reason, actualMinutes, outputType, outputCount, accuracy, score, confidence, weaknessNote
+    });
 
     syncBlockToCalendar(block, 'complete').catch(() => {});
 

@@ -242,13 +242,25 @@ export function buildTodayBlocksFromParsed(out) {
       confidenceBadge: item?.confidenceBadge || "LOW",
       isApproved: item?.isApproved ?? false,
       mappingSource: item?.mappingSource || "UNKNOWN",
-      nodeId: item?.nodeId || "",
+      nodeId: item?.nodeId || item?.syllabusNodeId || "",
       nodeName: item?.nodeName || "",
       subjectId: item?.subjectId || "",
       subjectCandidates: item?.subjectCandidates || [],
       topicCandidates: item?.topicCandidates || [],
       textQuality: item?.textQuality || "LOW",
       resolverConfidence: item?.resolverConfidence || 0,
+
+      // Phase 2A fields
+      Mode: item?.mode || "",
+      mode: item?.mode || "",
+      OutputExpected: item?.outputExpected || "",
+      outputExpected: item?.outputExpected || "",
+      RawText: item?.rawText || "",
+      rawText: item?.rawText || "",
+      Subtopic: item?.subtopic || "",
+      subtopic: item?.subtopic || "",
+      SyllabusNodeId: item?.syllabusNodeId || mapped?.syllabusNodeId || mapped?.code || "",
+      syllabusNodeId: item?.syllabusNodeId || mapped?.syllabusNodeId || mapped?.code || "",
     };
   });
 }
@@ -421,6 +433,12 @@ export function buildScheduleBlocksPayload(blocks) {
           .map((n) => n.label || n.microTheme || n.topic)
           .filter(Boolean)
           .join(" | "),
+
+      // Phase 2A fields
+      mode: block.Mode || block.mode || "",
+      outputExpected: block.OutputExpected || block.outputExpected || "",
+      rawText: block.RawText || block.rawText || "",
+      subtopic: block.Subtopic || block.subtopic || "",
     };
   });
 }
