@@ -538,6 +538,27 @@ app.use("/api/pyq-ingestion", pyqIngestionRoutes);
 // ── Progress & Notification Engine ──────────────────────────────────────────
 app.use("/api", progressRoutes);
 
+import { sendTelegramMessage } from "./services/telegramService.js";
+
+app.post("/api/notifications/test-telegram", async (req, res) => {
+  try {
+    const chatId = process.env.TELEGRAM_CHAT_ID;
+    if (!chatId) {
+      return res.status(400).json({ ok: false, error: "TELEGRAM_CHAT_ID not configured in .env" });
+    }
+    
+    const success = await sendTelegramMessage(chatId, "🧪 *Test Message*\nThis is a test notification from UPSC Mentor.");
+    if (success) {
+      return res.json({ ok: true, message: "Test message sent to Telegram" });
+    } else {
+      return res.status(500).json({ ok: false, error: "Failed to send test message" });
+    }
+  } catch (err) {
+    console.error("Test Telegram Error:", err);
+    return res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 /* -------------------- MAINS GS1 QUESTIONS API -------------------- */
 
 // Cache on first call — no file I/O on every request
@@ -1486,7 +1507,7 @@ app.post("/api/sheets", async (req, res) => {
         return res.json({ ok: true, message: "Blocks saved to database and events logged." });
       } catch (err) {
         console.error("[sheets interceptor saveScheduleBlocks]", err.message);
-        return res.status(500).json({ ok: false, message: err.message });
+        return res.status(500).json({ ok: false, message: err.message, dbError: err.message, stack: err.stack });
       }
     }
 
@@ -1542,7 +1563,7 @@ app.post("/api/sheets", async (req, res) => {
       } catch (err) {
         console.error(`[sheets interceptor ${action}]`, err.message);
         return res.status(err.code === "RACE_CONDITION" ? 409 : 500).json({
-          ok: false, message: err.message, code: err.code,
+          ok: false, message: err.message, code: err.code, dbError: err.message, stack: err.stack
         });
       }
     }
@@ -1575,7 +1596,7 @@ app.post("/api/sheets", async (req, res) => {
 
   } catch (e) {
     console.error("[api/sheets ERR]", e);
-    return res.status(500).json({ ok: false, message: String(e?.message || e) });
+    return res.status(500).json({ ok: false, message: String(e?.message || e), dbError: String(e?.message || e), stack: e?.stack });
   }
 });
 

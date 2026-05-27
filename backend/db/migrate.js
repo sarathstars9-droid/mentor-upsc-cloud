@@ -10,6 +10,11 @@ async function run() {
     const sql = fs.readFileSync(path.join(__dirname, "schema.sql"), "utf8");
     await query(sql);
     console.log("✅ Schema applied");
+
+    const studyEventsSql = fs.readFileSync(path.join(__dirname, "migrations", "026_study_events.sql"), "utf8");
+    await query(studyEventsSql);
+    console.log("✅ Migration 026_study_events applied");
+
     process.exit(0);
 }
 
