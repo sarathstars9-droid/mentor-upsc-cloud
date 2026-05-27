@@ -956,7 +956,7 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
       }
 
       // 4. Log PYQ_SEEN event if node has linked PYQs (only if not logged for this block already)
-      if (nodeId && numericConfidence > 0) {
+      if (nodeId && numericConfidence >= 0.5) {
         try {
           const { getPyqSummaryForNode } = await import('../brain/pyqLinkEngine.js');
           const pyqSummary = getPyqSummaryForNode(nodeId, 500);
@@ -991,7 +991,7 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
         }
       }
 
-      if (nodeId && numericConfidence > 0) {
+      if (nodeId && numericConfidence >= 0.5) {
         try {
           const { recalculateSyllabusNodeProgress } = await import('./trackingFoundationService.js');
           await recalculateSyllabusNodeProgress(userId, nodeId, client);
@@ -1002,6 +1002,31 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
     }
 
     await client.query('COMMIT');
+
+    // Trigger Telegram notification for PLAN_ACCEPTED_SUMMARY
+    try {
+      const { getYesterdayStudySummary, auditTodayPlan } = await import('./progressService.js');
+      const { generatePlanAcceptedSummaryReport } = await import('./reportGeneratorService.js');
+      const { sendNotification } = await import('./notificationService.js');
+      const userRes = await pool.query(`SELECT name FROM public.users WHERE id = $1`, [userId]);
+      const userName = userRes.rows[0]?.name || "Moulika";
+
+      const yesterdaySummary = await getYesterdayStudySummary(userId);
+      const todayAudit = await auditTodayPlan(userId, date);
+      const messageText = generatePlanAcceptedSummaryReport(yesterdaySummary, todayAudit, userName);
+
+      await sendNotification(
+        userId,
+        'PLAN_ACCEPTED_SUMMARY',
+        'study_events',
+        `plan_summary_${date}`,
+        messageText,
+        { date }
+      );
+    } catch (notifyErr) {
+      console.error('[savePlanBlocks] Failed to send PLAN_ACCEPTED_SUMMARY notification:', notifyErr.message);
+    }
+
     return { ok: true };
   } catch (err) {
     await client.query('ROLLBACK');

@@ -280,7 +280,7 @@ This is not failure. These are unfinished promises. We’ll convert them into a 
 }
 
 // 7. Mains answer status report
-export function generateMainsStatusReport(data, userName = "Moulika") {
+export function generateMainsAnswerStatusReport(data, userName = "Moulika") {
   let greeting = `${userName}, here is your Mains answer writing snapshot.`;
   
   let report = `📝 *Mains Answer Writing*
@@ -389,4 +389,172 @@ ${data.subject_breakdown.map((s, i) => `${i + 1}. ${s.subject}: ${formatHoursAnd
 This is your baseline. Analyze weak days and adjust pacing for next month!`;
 }
 
+// 12. Plan Accepted Summary
+export function generatePlanAcceptedSummaryReport(yesterdaySummary, todayAudit, userName = "Moulika") {
+  let report = `Plan received ✅\n\n${userName}, today’s plan is saved. Before starting, here is the correction from yesterday.\n\n`;
 
+  // Yesterday Summary
+  report += `Yesterday:\n`;
+  const hrs = Math.floor(yesterdaySummary.studied_mins_total / 60);
+  const mins = yesterdaySummary.studied_mins_total % 60;
+  report += `• Studied: ${hrs}h ${mins}m / ${yesterdaySummary.planned_hours}h\n`;
+  report += `• Strong: ${yesterdaySummary.strong_subject}\n`;
+  const missedStr = yesterdaySummary.missed_subjects.length > 0 ? yesterdaySummary.missed_subjects.join(', ') : 'None';
+  report += `• Missed: ${missedStr}\n`;
+  if (yesterdaySummary.output_count > 0) {
+    report += `• Output: ${yesterdaySummary.output_count} outputs generated\n`;
+  }
+  report += `• Pending: ${yesterdaySummary.revision_pending} revision items\n\n`;
+
+  // Today's Check
+  report += `Today’s plan check:\n`;
+  report += todayAudit.has_geo ? `✅ Geography Optional included\n` : `⚠️ Geography Optional missing\n`;
+  report += todayAudit.has_csat ? `✅ CSAT included\n` : `⚠️ No CSAT block found\n`;
+  report += todayAudit.has_pyq_mcq ? `✅ PYQ/MCQ included\n` : `⚠️ No PYQ/MCQ block found\n`;
+  report += todayAudit.has_revision ? `✅ Revision included\n` : `⚠️ No revision block found\n`;
+  report += todayAudit.has_answer_writing ? `✅ Answer writing included\n` : `⚠️ No answer writing block found\n`;
+
+  // Mentor Correction
+  report += `\nMentor correction:\n\n`;
+  const corrections = [];
+  
+  if (!todayAudit.has_csat) corrections.push(`Add 60–75 min CSAT block`);
+  if (!todayAudit.has_answer_writing) corrections.push(`Add one 45-minute answer writing block`);
+  if (!todayAudit.has_revision) corrections.push(`Add 30–45 min revision block for pending items`);
+  
+  if (todayAudit.total_planned_hours > 12) {
+    corrections.push(`Keep today’s target realistic: plan is overloaded (${todayAudit.total_planned_hours}h)`);
+  } else if (todayAudit.total_planned_hours < 8 && todayAudit.total_planned_hours > 0) {
+    corrections.push(`Plan is too light (${todayAudit.total_planned_hours}h) for 3500h mission, add more blocks`);
+  }
+
+  if (corrections.length === 0) {
+    corrections.push(`Great plan today, execute with full focus.`);
+  }
+
+  corrections.forEach((c, idx) => {
+    report += `${idx + 1}. ${c}\n`;
+  });
+
+  return report;
+}
+
+// 13. Generate Weekly Mentor Report
+export function generateWeeklyMentorReport(summary, userName = "Moulika") {
+  const weeklyMissionTarget = formatHoursAndMins(summary.weekly_mission_target);
+  const recoveryPace = formatHoursAndMins(summary.required_recovery_pace);
+  const deficit = summary.deficit;
+
+  // Show deficit vs surplus relative to mission weekly target
+  let deficitText = "";
+  if (deficit > 0) {
+    deficitText = `This week deficit: ${formatHoursAndMins(deficit)} behind mission pace`;
+  } else {
+    deficitText = `Surplus: ${formatHoursAndMins(Math.abs(deficit))} ahead this week`;
+  }
+
+  // Show recovery pace only if behind (recovery > mission target means you need extra effort)
+  let recoverLine = "";
+  if (summary.required_recovery_pace > summary.weekly_mission_target + 0.5) {
+    recoverLine = `\n• Required recovery pace: ${recoveryPace}/wk (mission pace is ${weeklyMissionTarget}/wk)`;
+  }
+    
+  let report = `📊 *Weekly Mentor Report*
+
+${userName}, here is your weekly progress overview:
+
+• Weekly mission target: ${weeklyMissionTarget}/wk
+• Planned this week: ${formatHoursAndMins(summary.weekly_planned)}
+• Executed this week: ${formatHoursAndMins(summary.weekly_executed)}
+• Execution rate: ${summary.execution_rate}%
+• ${deficitText}${recoverLine}
+• Output count: ${summary.output_count}
+
+*Top 3 strong areas:*
+${summary.strong_subjects.length > 0 ? summary.strong_subjects.map((s, i) => `${i + 1}. ${s}`).join('\n') : 'None yet this week'}
+
+*Top 3 areas at risk:*
+${summary.weak_subjects.length > 0 ? summary.weak_subjects.map((s, i) => `${i + 1}. ${s}`).join('\n') : 'None — all subjects on track!'}
+
+*Mentor:*
+${summary.next_action}
+
+Send \`subject breakdown\` to see all subjects.`;
+
+  return report;
+}
+
+// 14. Generate Weekly Subject Breakdown Report
+export function generateWeeklySubjectBreakdownReport(data, userName = "Moulika") {
+  let report = `📊 *Weekly Subject Breakdown*\n\n`;
+  
+  for (const s of data) {
+    const showWarning = s.weekly_deficit > 0.5 && s.completed_hours > 0;
+    const paceIcon = showWarning ? '⚠️' : '✅';
+    
+    report += `\n*${s.subject}* ${paceIcon}
+• Annual target: ${formatHoursAndMins(s.target_hours)}
+• Completed till now: ${formatHoursAndMins(s.completed_hours)}
+• Remaining: ${formatHoursAndMins(s.remaining_hours)}
+• This week planned: ${formatHoursAndMins(s.this_week_planned)}
+• This week executed: ${formatHoursAndMins(s.this_week_completed)}
+• Weekly ${s.weekly_deficit > 0 ? 'deficit' : 'surplus'}: ${formatHoursAndMins(Math.abs(s.weekly_deficit))}
+• Future pace needed: ${formatHoursAndMins(s.required_future_pace)}/wk\n`;
+  }
+  return report;
+}
+
+// 15. Generate Prelims Status Report
+export function generatePrelimsStatusReport(data, userName = "Moulika") {
+  let report = `🎯 *Prelims Status*\n\n`;
+  if (data.length === 0) return report + "No Prelims targets found.";
+  
+  for (const s of data) {
+    report += `\n*${s.subject}*
+• Target: ${formatHoursAndMins(s.target_hours)} | Completed: ${formatHoursAndMins(s.completed_hours)}
+• Remaining: ${formatHoursAndMins(s.remaining_hours)}
+• Required pace: ${formatHoursAndMins(s.required_future_pace)}/wk\n`;
+  }
+  return report;
+}
+
+// 16. Generate Mains Status Report
+export function generateMainsStatusReport(data, userName = "Moulika") {
+  let report = `📝 *Mains Status*\n\n`;
+  if (data.length === 0) return report + "No Mains targets found.";
+  
+  for (const s of data) {
+    report += `\n*${s.subject}*
+• Target: ${formatHoursAndMins(s.target_hours)} | Completed: ${formatHoursAndMins(s.completed_hours)}
+• Remaining: ${formatHoursAndMins(s.remaining_hours)}
+• Required pace: ${formatHoursAndMins(s.required_future_pace)}/wk\n`;
+  }
+  return report;
+}
+
+// 17. Generate Monthly Mentor Text Report
+export function generateMonthlyMentorTextReport(data, userName = "Moulika") {
+  return `📊 *Monthly Mentor Report: ${data.month_key}*
+
+${userName}, here is your monthly summary:
+
+• Mission target: 3500h
+• Mission completed: ${data.mission_completed_percent}%
+• Monthly planned: ${formatHoursAndMins(data.total_planned_hours)}
+• Monthly executed: ${formatHoursAndMins(data.total_actual_hours)}
+• Execution rate: ${data.execution_rate}%
+
+🔥 *Consistency Heatmap:*
+• ✅ Strong Days: ${data.strong_days}
+• 🟡 Partial Days: ${data.partial_days}
+• 🔴 Weak/Missed Days: ${data.weak_days}
+
+📚 *Top 3 Strong Subjects:*
+${data.top3_strong.length > 0 ? data.top3_strong.map((s, i) => `${i + 1}. ${s}`).join('\n') : 'None'}
+
+⚠️ *Top 3 Weak Subjects:*
+${data.top3_weak.length > 0 ? data.top3_weak.map((s, i) => `${i + 1}. ${s}`).join('\n') : 'None'}
+
+*Next month prescription:*
+${data.next_month_prescription}`;
+}

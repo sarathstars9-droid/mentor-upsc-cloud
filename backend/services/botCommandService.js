@@ -39,6 +39,10 @@ I’m your MentorOS progress mentor.
 You can ask me:
 • geography optional status
 • weekly report
+• subject breakdown
+• prelims status
+• mains status
+• monthly report
 • syllabus track
 • revision due
 • backlog
@@ -62,6 +66,10 @@ I’ll help you know what is completed, what is pending, and what to correct nex
         replyText = `👋 *Available commands:*
 • geography optional status
 • weekly report
+• subject breakdown
+• prelims status
+• mains status
+• monthly report
 • syllabus track
 • revision due
 • backlog
@@ -94,18 +102,49 @@ I’ll help you know what is completed, what is pending, and what to correct nex
         break;
       }
 
+      case 'today plan audit': {
+        const now = new Date();
+        const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(kolkataStr);
+        const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        
+        const yesterdaySummary = await progressService.getYesterdayStudySummary(userId);
+        const todayAudit = await progressService.auditTodayPlan(userId, dateStr);
+        replyText = reportGeneratorService.generatePlanAcceptedSummaryReport(yesterdaySummary, todayAudit, userName);
+        break;
+      }
+
       case 'weekly report': {
-        const data = await progressService.getWeeklyProgressReport(userId);
-        replyText = reportGeneratorService.generateWeeklyReport(data, userName, { fullBreakdown: false });
+        const data = await progressService.getWeeklyExecutionSummary(userId);
+        replyText = reportGeneratorService.generateWeeklyMentorReport(data, userName);
         break;
       }
 
       case 'subject breakdown':
+      case 'weekly subject breakdown':
       case 'full weekly report':
       case 'full weekly breakdown':
       case 'all subjects': {
-        const data = await progressService.getWeeklyProgressReport(userId);
-        replyText = reportGeneratorService.generateWeeklyReport(data, userName, { fullBreakdown: true });
+        const data = await progressService.getWeeklySubjectBreakdown(userId);
+        replyText = reportGeneratorService.generateWeeklySubjectBreakdownReport(data, userName);
+        break;
+      }
+
+      case 'prelims status': {
+        const data = await progressService.getPrelimsStatus(userId);
+        replyText = reportGeneratorService.generatePrelimsStatusReport(data, userName);
+        break;
+      }
+      
+      case 'mains status': {
+        const data = await progressService.getMainsStatus(userId);
+        replyText = reportGeneratorService.generateMainsStatusReport(data, userName);
+        break;
+      }
+      
+      case 'monthly report': {
+        const data = await progressService.getMonthlyMentorSummary(userId);
+        replyText = reportGeneratorService.generateMonthlyMentorTextReport(data, userName);
         break;
       }
 
@@ -135,7 +174,7 @@ I’ll help you know what is completed, what is pending, and what to correct nex
 
       case 'mains answer status': {
         const data = await progressService.getMainsAnswerStatus(userId);
-        replyText = reportGeneratorService.generateMainsStatusReport(data, userName);
+        replyText = reportGeneratorService.generateMainsAnswerStatusReport(data, userName);
         break;
       }
 
@@ -294,6 +333,10 @@ I’m your MentorOS progress mentor.
 You can ask me:
 • geography optional status
 • weekly report
+• subject breakdown
+• prelims status
+• mains status
+• monthly report
 • syllabus track
 • revision due
 • backlog

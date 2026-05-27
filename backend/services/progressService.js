@@ -172,10 +172,10 @@ export async function getAreaProgress(userId, area) {
   };
 }
 
-// 2. Get progress for all seeded subjects
+// 2. Get progress for all seeded subjects (top-level only, sub_area IS NULL to avoid double-counting)
 export async function getAllSubjectProgress(userId) {
   const targetsRes = await query(
-    `SELECT subject FROM public.subject_targets WHERE user_id = $1 ORDER BY subject ASC`,
+    `SELECT subject FROM public.subject_targets WHERE user_id = $1 AND sub_area IS NULL ORDER BY subject ASC`,
     [userId]
   );
   const progressList = [];
@@ -827,5 +827,329 @@ export async function getGoodMorningReportData(userId) {
   };
 }
 
+// 13. Get yesterday study summary (for plan audit)
+export async function getYesterdayStudySummary(userId) {
+  const now = new Date();
+  const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+  const d = new Date(kolkataStr);
+  const prevDate = new Date(d);
+  prevDate.setDate(d.getDate() - 1);
+  const yKey = `${prevDate.getFullYear()}-${String(prevDate.getMonth() + 1).padStart(2, '0')}-${String(prevDate.getDate()).padStart(2, '0')}`;
 
+  const { rows: blocks } = await query(
+    `SELECT subject, subject_id, planned_minutes, actual_minutes, status, output_expected 
+     FROM public.study_blocks 
+     WHERE user_id = $1 AND day_key = $2`,
+    [userId, yKey]
+  );
 
+  let totalPlannedMins = 0;
+  let totalActualMins = 0;
+  let outputCount = 0;
+  const missedSubjects = new Set();
+  const strongSubjects = {}; 
+
+  for (const b of blocks) {
+    totalPlannedMins += b.planned_minutes || 0;
+    const actual = b.actual_minutes || 0;
+
+    if (['completed', 'partial'].includes(b.status)) {
+      totalActualMins += actual;
+      if (actual >= 30 || b.output_expected) {
+        outputCount++;
+      }
+      const subLabel = normalizeSubjectLabel(b.subject || b.subject_id);
+      strongSubjects[subLabel] = (strongSubjects[subLabel] || 0) + actual;
+    } else if (b.status === 'missed') {
+      missedSubjects.add(normalizeSubjectLabel(b.subject || b.subject_id));
+    }
+  }
+
+  const revRes = await query(
+    `SELECT COUNT(*) as count FROM public.revision_items 
+     WHERE user_id = $1 AND status = 'pending' AND next_review_at <= NOW()`,
+    [userId]
+  );
+  const revisionDueCount = Number(revRes.rows[0]?.count || 0);
+
+  let bestSubject = "None";
+  let maxMins = 0;
+  for (const [sub, mins] of Object.entries(strongSubjects)) {
+    if (mins > maxMins) {
+      maxMins = mins;
+      bestSubject = sub;
+    }
+  }
+
+  return {
+    date: yKey,
+    studied_hours: Number((totalActualMins / 60.0).toFixed(1)),
+    studied_mins_total: totalActualMins,
+    planned_hours: Number((totalPlannedMins / 60.0).toFixed(1)),
+    strong_subject: maxMins > 0 ? bestSubject : "None",
+    missed_subjects: Array.from(missedSubjects),
+    output_count: outputCount,
+    revision_pending: revisionDueCount
+  };
+}
+
+// 14. Audit today's plan
+export async function auditTodayPlan(userId, dateStr) {
+  const { rows: blocks } = await query(
+    `SELECT subject, subject_id, topic, mode, planned_minutes 
+     FROM public.study_blocks 
+     WHERE user_id = $1 AND day_key = $2`,
+    [userId, dateStr]
+  );
+
+  let hasGeo = false;
+  let hasCsat = false;
+  let hasPyqMcq = false;
+  let hasRevision = false;
+  let hasAnswerWriting = false;
+  let totalPlannedMins = 0;
+
+  for (const b of blocks) {
+    totalPlannedMins += b.planned_minutes || 0;
+    const subLabel = normalizeSubjectLabel(b.subject || b.subject_id);
+    const text = `${b.subject || ''} ${b.topic || ''} ${b.mode || ''}`.toLowerCase();
+
+    if (subLabel === "Geography Optional") hasGeo = true;
+    if (subLabel === "CSAT" || text.includes('csat')) hasCsat = true;
+    if (text.includes('pyq') || text.includes('mcq') || text.includes('test') || subLabel === "Prelims GS MCQ + PYQ") hasPyqMcq = true;
+    if (text.includes('revision') || text.includes('revise') || text.includes('recall') || b.mode === 'revision' || subLabel === "Revision/Buffer") hasRevision = true;
+    if (text.includes('answer') || text.includes('writing') || text.includes('mains') || subLabel === "Mains Answer Writing") hasAnswerWriting = true;
+  }
+
+  return {
+    date: dateStr,
+    total_planned_hours: Number((totalPlannedMins / 60.0).toFixed(1)),
+    has_geo: hasGeo,
+    has_csat: hasCsat,
+    has_pyq_mcq: hasPyqMcq,
+    has_revision: hasRevision,
+    has_answer_writing: hasAnswerWriting
+  };
+}
+
+// 15. Get weekly execution summary
+export async function getWeeklyExecutionSummary(userId) {
+  const subjects = await getAllSubjectProgress(userId);
+
+  let thisWeekPlanned = 0;
+  let thisWeekCompleted = 0;
+
+  const mondayStr = getMondayOfCurrentWeek();
+  const blocksRes = await query(
+    `SELECT subject, subject_id, planned_minutes, actual_minutes, status 
+     FROM public.study_blocks 
+     WHERE user_id = $1 AND day_key >= $2`,
+    [userId, mondayStr]
+  );
+  
+  let outputCount = 0;
+
+  for (const block of blocksRes.rows) {
+    if (block.status !== 'missed' && block.status !== 'skipped') {
+      thisWeekPlanned += (block.planned_minutes || 0) / 60.0;
+    }
+    if (['completed', 'partial'].includes(block.status)) {
+      if ((block.actual_minutes || 0) >= 30) {
+         outputCount++;
+      }
+    }
+  }
+
+  for (const s of subjects) {
+    thisWeekCompleted += s.this_week_completed;
+  }
+
+  // Compute weekly mission target from top-level targets only (sub_area IS NULL)
+  // This gives the true pace needed per week: totalTarget / totalMissionWeeks
+  const targetRes = await query(
+    `SELECT SUM(target_hours) as total_target, MIN(mission_start_date) as start_date, MAX(mission_end_date) as end_date 
+     FROM public.subject_targets WHERE user_id = $1 AND sub_area IS NULL`,
+    [userId]
+  );
+  const totalMissionHours = Number(targetRes.rows[0]?.total_target || 3500);
+  const missionStart = new Date(targetRes.rows[0]?.start_date || '2026-05-25');
+  const missionEnd = new Date(targetRes.rows[0]?.end_date || '2027-04-15');
+  const totalMissionWeeks = Math.max(1, (missionEnd.getTime() - missionStart.getTime()) / (1000 * 60 * 60 * 24 * 7));
+  const weeklyMissionTarget = totalMissionHours / totalMissionWeeks;  // ~75.4h/week
+
+  // Required recovery pace: remaining hours / remaining weeks (from subjects)
+  const totalCompleted = subjects.reduce((acc, s) => acc + s.completed_hours, 0);
+  const totalRemaining = subjects.reduce((acc, s) => acc + s.remaining_hours, 0);
+  const nowKolkata = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+  const remainingWeeks = Math.max(1, (missionEnd.getTime() - nowKolkata.getTime()) / (1000 * 60 * 60 * 24 * 7));
+  const requiredRecoveryPace = totalRemaining / remainingWeeks;
+
+  // Deficit = mission weekly target - what was executed this week
+  const deficit = weeklyMissionTarget - thisWeekCompleted;
+  
+  const executionRate = thisWeekPlanned > 0 ? (thisWeekCompleted / thisWeekPlanned) * 100 : 0;
+
+  const sortedByPace = [...subjects].sort((a, b) => b.this_week_completed - a.this_week_completed);
+  const strongSubjects = sortedByPace.slice(0, 3).filter(s => s.this_week_completed > 0).map(s => s.subject);
+  
+  const sortedByDeficit = [...subjects].filter(s => s.weekly_deficit > 0).sort((a, b) => b.weekly_deficit - a.weekly_deficit);
+  const weakSubjects = sortedByDeficit.slice(0, 3).map(s => s.subject);
+  
+  // Smart next_action: based on execution rate and plan vs execute gap
+  let nextAction;
+  if (executionRate === 0 && thisWeekPlanned === 0) {
+    nextAction = "Plan is too light for the 3500h mission. Add one high-impact block today.";
+  } else if (executionRate < 40) {
+    nextAction = "This is not failure. This is correction data. Start with one rescue block today.";
+  } else if (thisWeekPlanned > 0 && executionRate < 70) {
+    nextAction = `Plan less, execute more. Keep tomorrow near 10h 45m–11h.`;
+  } else if (executionRate >= 85 && deficit < 5) {
+    nextAction = "Maintain your current pace! You are on track.";
+  } else if (weakSubjects.length > 0) {
+    nextAction = `Focus on recovering ${weakSubjects[0]} first.`;
+  } else {
+    nextAction = "This is not failure. This is correction data. Start with one rescue block today.";
+  }
+
+  return {
+    weekly_mission_target: Number(weeklyMissionTarget.toFixed(1)),  // ~75h/week, fixed mission target
+    required_recovery_pace: Number(requiredRecoveryPace.toFixed(1)), // current pace needed to finish by deadline
+    weekly_planned: Number(thisWeekPlanned.toFixed(1)),
+    weekly_executed: Number(thisWeekCompleted.toFixed(1)),
+    execution_rate: Number(executionRate.toFixed(1)),
+    deficit: Number(deficit.toFixed(1)),
+    output_count: outputCount,
+    strong_subjects: strongSubjects,
+    weak_subjects: weakSubjects,
+    next_action: nextAction
+  };
+}
+
+// 16. Get weekly subject breakdown
+export async function getWeeklySubjectBreakdown(userId) {
+  const subjects = await getAllSubjectProgress(userId);
+  const mondayStr = getMondayOfCurrentWeek();
+  
+  const blocksRes = await query(
+    `SELECT subject, subject_id, planned_minutes, status 
+     FROM public.study_blocks 
+     WHERE user_id = $1 AND day_key >= $2`,
+    [userId, mondayStr]
+  );
+  
+  const plannedPerSubject = {};
+  for (const b of blocksRes.rows) {
+    if (b.status !== 'missed' && b.status !== 'skipped') {
+      const area = mapBlockToTargetArea(b);
+      plannedPerSubject[area] = (plannedPerSubject[area] || 0) + (b.planned_minutes || 0);
+    }
+  }
+
+  return subjects.map(s => {
+    return {
+      ...s,
+      this_week_planned: Number(((plannedPerSubject[s.subject] || 0) / 60.0).toFixed(1))
+    };
+  });
+}
+
+// 17. Get Prelims Status
+export async function getPrelimsStatus(userId) {
+  const subjects = await getAllSubjectProgress(userId);
+  const prelimsSubjects = ["CSAT", "Prelims GS MCQ + PYQ", "Current Affairs"];
+  return subjects.filter(s => prelimsSubjects.includes(s.subject));
+}
+
+// 18. Get Mains Status
+export async function getMainsStatus(userId) {
+  const subjects = await getAllSubjectProgress(userId);
+  const mainsSubjects = ["Geography Optional", "GS1", "GS2", "GS3", "GS4 Ethics", "Essay", "Mains Answer Writing"];
+  return subjects.filter(s => mainsSubjects.includes(s.subject));
+}
+
+// 19. Get Monthly Mentor Summary
+export async function getMonthlyMentorSummary(userId) {
+  const now = new Date();
+  const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+  const d = new Date(kolkataStr);
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const monthKey = `${yyyy}-${mm}`;
+  const startDayKey = `${monthKey}-01`;
+  const lastDay = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+  const endDayKey = `${monthKey}-${String(lastDay).padStart(2, '0')}`;
+  
+  const report = await getMonthlyProgressReport(userId, monthKey);
+  
+  const targetRes = await query(
+    `SELECT SUM(target_hours) as total_target FROM public.subject_targets WHERE user_id = $1 AND sub_area IS NULL`,
+    [userId]
+  );
+  const totalTargetHours = Number(targetRes.rows[0]?.total_target || 3500);
+  
+  const blocksRes = await query(
+    `SELECT SUM(actual_minutes) as completed_mins 
+     FROM public.study_blocks 
+     WHERE user_id = $1 AND status IN ('completed', 'partial') AND started_at IS NOT NULL`,
+    [userId]
+  );
+  const totalCompletedHours = Number(blocksRes.rows[0]?.completed_mins || 0) / 60.0;
+  const missionCompletedPercent = totalTargetHours > 0 ? (totalCompletedHours / totalTargetHours) * 100 : 0;
+  
+  const executionRate = report.total_planned_hours > 0 ? (report.total_actual_hours / report.total_planned_hours) * 100 : 0;
+  
+  // Strong subjects: sorted by actual hours executed (only those with > 0 actual hours)
+  const sortedSubjects = [...report.subject_breakdown].sort((a, b) => b.hours - a.hours);
+  const top3Strong = sortedSubjects.filter(s => s.hours > 0).slice(0, 3).map(s => s.subject);
+
+  // Weak subjects: if no execution data, fall back to planned-but-not-executed subjects
+  let top3Weak = [];
+  if (sortedSubjects.filter(s => s.hours > 0).length === 0 && report.total_planned_hours > 0) {
+    // No execution yet but plan exists — show highest planned subjects as 'at risk'
+    const plannedSubjectsRes = await query(
+      `SELECT 
+         COALESCE(subject, subject_id) AS raw_subject,
+         SUM(planned_minutes) AS planned_mins
+       FROM public.study_blocks
+       WHERE user_id = $1 AND day_key >= $2 AND day_key <= $3
+       GROUP BY raw_subject
+       ORDER BY planned_mins DESC
+       LIMIT 5`,
+      [userId, startDayKey, endDayKey]
+    );
+    // Normalize and de-dup by area
+    const seen = new Set();
+    for (const row of plannedSubjectsRes.rows) {
+      const area = normalizeSubjectLabel(row.raw_subject);
+      if (!seen.has(area)) {
+        seen.add(area);
+        top3Weak.push(area);
+      }
+      if (top3Weak.length >= 3) break;
+    }
+  } else if (sortedSubjects.length > 0) {
+    // Execution exists — show lowest-hour subjects (worst performers)
+    const withHours = sortedSubjects.filter(s => s.hours >= 0);
+    top3Weak = withHours.slice(-3).map(s => s.subject).reverse();
+  }
+  
+  let prescription = "Keep going steadily.";
+  if (executionRate === 0 && report.total_planned_hours === 0) {
+    prescription = "Not enough study data yet. Upload and execute today's plan.";
+  } else if (executionRate === 0 && report.total_planned_hours > 0) {
+    prescription = "Plan exists but execution is zero this month. Start with one block today — that's the only correction needed right now.";
+  } else if (report.weak_days > report.strong_days) {
+    prescription = "Your consistency has dropped. Focus on 1-hour minimum blocks every single day next month.";
+  } else if (executionRate < 70) {
+    prescription = "You are over-planning. Plan 20% less next month to increase execution rate.";
+  }
+  
+  return {
+    ...report,
+    execution_rate: Number(executionRate.toFixed(1)),
+    mission_completed_percent: Number(missionCompletedPercent.toFixed(1)),
+    top3_strong: top3Strong,
+    top3_weak: top3Weak,
+    next_month_prescription: prescription
+  };
+}
