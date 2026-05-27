@@ -86,6 +86,7 @@ import mainsAttemptsRoute from "./routes/mainsAttemptsRoute.js";
 import prelimsUnifiedRoutes from "./routes/prelimsUnifiedRoutes.js";
 import prelimsTestRoutes from "./routes/prelimsTestRoutes.js";
 import progressRoutes from "./routes/progressRoutes.js";
+import behaviourRoutes from "./routes/behaviourRoutes.js";
 import { registerEnvChatId, startTelegramPolling } from "./services/telegramService.js";
 import { initNotificationScheduler } from "./services/notificationScheduler.js";
 import {
@@ -537,6 +538,7 @@ app.use("/api/pyq-ingestion", pyqIngestionRoutes);
 
 // ── Progress & Notification Engine ──────────────────────────────────────────
 app.use("/api", progressRoutes);
+app.use("/api/behaviour", behaviourRoutes);
 
 import { sendTelegramMessage } from "./services/telegramService.js";
 
@@ -2032,10 +2034,19 @@ console.log("[BOOT] about to listen", { HOST, PORT });
 app.listen(PORT, HOST, () => {
   console.log(`backend running on http://${HOST}:${PORT}`);
   
-  // Register environment-configured Telegram Chat ID, start polling, and initialize scheduler
+  // ── Boot sequence: register chat ID → start polling → start scheduler ──────
+  // startTelegramPolling() has a module-level singleton guard (pollingLoopStarted).
+  // Even if this callback fires more than once, only one polling loop will run.
+  // startTelegramPolling() is async (awaits deleteWebhook pre-flight) but the
+  // polling loop itself runs forever inside it, so we intentionally do NOT await
+  // the full call — we just let it run in the background.
   registerEnvChatId()
     .then(() => {
-      startTelegramPolling();
+      // Kick off polling (non-blocking). The singleton guard prevents duplicates.
+      startTelegramPolling().catch(err => {
+        console.error("[BOOT] startTelegramPolling error:", err);
+      });
+      // Scheduler runs independently of polling
       initNotificationScheduler('moulika');
     })
     .catch(err => {
