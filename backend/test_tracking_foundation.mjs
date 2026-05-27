@@ -172,6 +172,16 @@ async function runTests() {
   });
   console.log('✔ All Mains events successfully logged');
 
+  console.log('\n--- Test 8.5: Defensive Normalization of Priority/Confidence ---');
+  const normalizedEvent = await logStudyEvent({
+    userId,
+    eventType: 'EDGE_CASE_TEST',
+    subject: 'GS1',
+    metadata: { priority: 'high', confidence: 3, score: 75.5 }
+  });
+  console.log('✔ Edge case event logged with priority:', normalizedEvent.metadata_json.priority, 'and confidence:', normalizedEvent.metadata_json.confidence);
+
+
   console.log('\n--- Test 9: Syllabus Node Progress Recalculation & Status Ladder Validation ---');
   // Trigger a recalculation manually
   await recalculateSyllabusNodeProgress(userId, 'gs1-art-culture-1');

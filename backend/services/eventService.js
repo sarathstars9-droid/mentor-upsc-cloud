@@ -15,6 +15,21 @@ export async function logStudyEvent({
   metadata = {},
   client = null
 }) {
+  // Defensive normalization: map numeric priority/confidence to text, or normalize text
+  if (metadata) {
+    if (metadata.priority) {
+      if (metadata.priority === 3) metadata.priority = 'high';
+      else if (metadata.priority === 2) metadata.priority = 'medium';
+      else if (metadata.priority === 1) metadata.priority = 'low';
+      else metadata.priority = String(metadata.priority).toLowerCase();
+    }
+    if (metadata.confidence) {
+      if (metadata.confidence === 3) metadata.confidence = 'high';
+      else if (metadata.confidence === 2) metadata.confidence = 'medium';
+      else if (metadata.confidence === 1) metadata.confidence = 'low';
+      else metadata.confidence = String(metadata.confidence).toLowerCase();
+    }
+  }
   if (!userId || !eventType) {
     throw new Error('userId and eventType are required to log a study event');
   }
