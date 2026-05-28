@@ -575,11 +575,23 @@ export async function getDailyNightReportData(userId, todayKey) {
   let totalActualMins = 0;
   let completedCount = 0;
   let missedCount = 0;
+  let startedCount = 0;
   let outputsCreated = 0;
   const subjectsStudied = new Set();
 
   for (const b of blocks) {
-    totalPlannedMins += b.planned_minutes || 0;
+    let blockPlanned = b.planned_minutes || 0;
+    if (blockPlanned === 0 && b.planned_start && b.planned_end) {
+      const [sh, sm] = b.planned_start.split(':').map(Number);
+      const [eh, em] = b.planned_end.split(':').map(Number);
+      const diff = (eh * 60 + em) - (sh * 60 + sm);
+      if (diff > 0) blockPlanned = diff;
+    }
+    totalPlannedMins += blockPlanned;
+
+    if (b.started_at) {
+      startedCount++;
+    }
 
     let actualMins = 0;
     if (b.started_at) {
@@ -631,9 +643,24 @@ export async function getDailyNightReportData(userId, todayKey) {
   const actualHours = totalActualMins / 60.0;
   const deficit = plannedHours - actualHours;
 
+  let day_state = 'ACTIVE';
+  if (blocks.length === 0) {
+    day_state = 'NOT_STARTED';
+  } else if (startedCount === 0) {
+    day_state = 'PLAN_UPLOADED_NOT_STARTED';
+  } else if (missedCount > 2 || deficit > 3.0) {
+    day_state = 'SLIPPING';
+  } else if (completedCount >= Math.floor(blocks.length * 0.7)) {
+    day_state = 'COMPLETED';
+  }
+
   // Tomorrow correction recommendation
   let tomorrowCorrection = "Stick to the first study block schedule on time.";
-  if (missedCount > 0) {
+  if (day_state === 'NOT_STARTED') {
+    tomorrowCorrection = "Upload plan before 6 AM and start the first block on time.";
+  } else if (day_state === 'PLAN_UPLOADED_NOT_STARTED') {
+    tomorrowCorrection = "Start the first scheduled block immediately. Momentum matters more than perfect planning.";
+  } else if (missedCount > 0) {
     const missed = blocks.find(b => b.status === 'missed');
     if (missed) {
       tomorrowCorrection = `Catch up on the missed ${normalizeSubjectLabel(missed.subject || missed.subject_id)} block.`;
@@ -642,15 +669,22 @@ export async function getDailyNightReportData(userId, todayKey) {
     tomorrowCorrection = "Clear the pending revision backlog first.";
   } else if (deficit > 2.0) {
     tomorrowCorrection = "Reduce planned block lengths tomorrow to ensure execution.";
-  } else {
+  } else if (actualHours > 0 && completedCount >= Math.floor(blocks.length * 0.7)) {
     tomorrowCorrection = "Fantastic rhythm. Keep consistency alive!";
+  } else {
+    tomorrowCorrection = "Keep pushing forward. Consistency is key.";
   }
+
+  console.log(`[NightReport] date=${todayKey}, state=${day_state}, total_blocks=${blocks.length}, started_blocks=${startedCount}, completed_blocks=${completedCount}, planned_minutes=${totalPlannedMins}, actual_minutes=${totalActualMins}`);
 
   return {
     date: todayKey,
-    target_hours: Number(plannedHours.toFixed(1)),
+    day_state,
+    total_blocks: blocks.length,
+    started_blocks: startedCount,
+    target_hours: day_state === 'NOT_STARTED' ? 0 : Number(plannedHours.toFixed(1)),
     actual_hours: Number(actualHours.toFixed(1)),
-    deficit: Number((Math.max(0, deficit)).toFixed(1)),
+    deficit: day_state === 'NOT_STARTED' ? 0 : Number((Math.max(0, deficit)).toFixed(1)),
     subjects_completed: Array.from(subjectsStudied),
     outputs_created: outputsCreated,
     missed_blocks: missedCount,

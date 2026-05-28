@@ -368,11 +368,42 @@ ${todayCorrection}`;
 
 // 10. Daily night report generator
 export function generateDailyNightReport(data, userName = "Moulika") {
-  return `🌌 *Daily Night Report: ${userName}*
+  if (data.day_state === 'NOT_STARTED') {
+    return `⚠️ Daily Accountability Report — ${userName}
 
+• Plan uploaded: No
+• Study tracked: No
+• Target hours: Not available
+• Actual hours: 0m
+• Deficit: Not calculated
+
+MentorOS could not evaluate today’s preparation because no study plan was uploaded.
+
+🎯 Tomorrow correction:
+${data.tomorrow_correction}`;
+  }
+
+  if (data.day_state === 'PLAN_UPLOADED_NOT_STARTED') {
+    return `⚠️ Plan Created But Execution Missing — ${userName}
+
+• Planned: ${formatHoursAndMins(data.target_hours)}
+• Actual: 0m
+• Blocks started: 0/${data.total_blocks}
+
+Main issue:
+Plan was created, but execution did not begin.
+
+🎯 Tomorrow correction:
+${data.tomorrow_correction}`;
+  }
+
+  return `📘 Daily Night Report — ${userName}
+
+━━━━━━━━━━━━━━
 • target hours: ${formatHoursAndMins(data.target_hours)}
 • actual hours: ${formatHoursAndMins(data.actual_hours)}
 • deficit: ${formatHoursAndMins(data.deficit)}
+━━━━━━━━━━━━━━
 
 📚 *subjects completed:* ${data.subjects_completed.length > 0 ? data.subjects_completed.join(', ') : 'None'}
 📝 *outputs created:* ${data.outputs_created}
