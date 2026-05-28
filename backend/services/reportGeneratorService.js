@@ -332,23 +332,38 @@ ${userName}, here is your high-level syllabus progress:`;
 
 // 9. Good morning report generator
 export function generateGoodMorningReport(data, userName = "Moulika") {
-  const percent = data.target_hours > 0 ? ((data.completed_hours / data.target_hours) * 100).toFixed(1) : 0;
-  return `🌅 *Good morning ${userName}*
+  let yesterdayText = "No study blocks registered yesterday.";
+  let mentorNote = "";
+  let todayCorrection = data.today_first_correction;
 
-*Mission Day:* ${data.mission_day} / 325 🚀
-*Days left for Prelims:* ${data.prelims_days_left}
-*Days left for Mains:* ${data.mains_days_left}
+  if (data.yesterday_summary && data.yesterday_summary.has_data) {
+    const ys = data.yesterday_summary;
+    const executedStr = ys.actual_hours > 0 ? formatHoursAndMins(ys.actual_hours) : "0h 0m";
+    yesterdayText = `• Planned: ${ys.planned_hours}h\n• Executed: ${executedStr}\n• Execution rate: ${ys.execution_rate}%\n• Blocks touched/completed: ${ys.blocks_touched} / ${ys.blocks_completed}`;
 
-📊 *Mission Progress:*
-• Target: ${formatHoursAndMins(data.target_hours)}
-• Completed: ${formatHoursAndMins(data.completed_hours)} (${percent}%)
+    if (ys.execution_rate < 40) {
+      mentorNote = `\nMentor note:\nThis is not failure. This is correction data.\n`;
+      todayCorrection = `Complete one full 60-minute block before thinking about the whole day.`;
+    }
+  }
+
+  return `Good morning ${userName} 🌅
+
+Mission Day: ${data.mission_day} / 325
+Days left for Prelims: ${data.prelims_days_left}
+Days left for Mains: ${data.mains_days_left}
+
+Mission Progress:
+• Target: ${data.target_hours}h
+• Completed: ${formatHoursAndMins(data.completed_hours)}
 • Remaining: ${formatHoursAndMins(data.remaining_hours)}
-• Today required pace: ${data.today_required_pace}h/day
+• Today’s required pace: ${formatHoursAndMins(data.today_required_pace)}
 
-Yesterday: ${data.yesterday_summary}
-
-🎯 *Today’s first correction:*
-${data.today_first_correction}`;
+Yesterday:
+${yesterdayText}
+${mentorNote}
+Today’s first correction:
+${todayCorrection}`;
 }
 
 // 10. Daily night report generator

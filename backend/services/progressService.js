@@ -790,16 +790,27 @@ export async function getGoodMorningReportData(userId) {
   let yPlannedMins = 0;
   let yActualMins = 0;
   let yCompleted = 0;
+  let yTouched = 0;
   for (const b of yesterdayBlocks.rows) {
     yPlannedMins += b.planned_minutes || 0;
+    if (['completed', 'partial'].includes(b.status) || (b.actual_minutes && b.actual_minutes > 0)) {
+      yTouched++;
+    }
     if (['completed', 'partial'].includes(b.status)) {
       yActualMins += b.actual_minutes || 0;
       yCompleted++;
     }
   }
-  const yesterdaySummary = yesterdayBlocks.rows.length > 0
-    ? `Completed ${yCompleted}/${yesterdayBlocks.rows.length} blocks (${Number((yActualMins/60.0).toFixed(1))}h actual vs ${Number((yPlannedMins/60.0).toFixed(1))}h planned)`
-    : "No study blocks registered yesterday.";
+  const yesterdaySummary = {
+    planned_hours: Number((yPlannedMins / 60.0).toFixed(1)),
+    actual_hours: Number((yActualMins / 60.0).toFixed(1)),
+    actual_mins_total: yActualMins,
+    blocks_touched: yTouched,
+    blocks_completed: yCompleted,
+    blocks_total: yesterdayBlocks.rows.length,
+    execution_rate: yPlannedMins > 0 ? Number(((yActualMins / yPlannedMins) * 100).toFixed(1)) : 0,
+    has_data: yesterdayBlocks.rows.length > 0
+  };
 
   // 8. Today's first correction
   let todayCorrection = "Focus on starting your first scheduled study block exactly on time.";

@@ -95,8 +95,17 @@ async function tickScheduler(userId) {
       if (!(await hasEvent(userId, 'PLAN_NOT_UPLOADED', todayKey))) {
         const { rows } = await query(`SELECT id FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [userId, todayKey]);
         if (rows.length === 0) {
-          const text = `⚠️ *Plan Not Uploaded*
-Moulika, it's 6 AM and your daily plan is missing. Please upload your study blocks for today!`;
+          const text = `Moulika, today’s plan is not uploaded yet ⚠️
+
+Without a plan, the day becomes reactive.
+
+Upload today’s blocks now:
+
+1. Geography Optional
+2. CSAT
+3. PYQ/MCQ
+4. Revision
+5. One answer-writing block`;
           await notificationService.sendNotification(userId, 'PLAN_NOT_UPLOADED', 'daily_date', todayKey, text, {});
           await recordEvent(userId, 'PLAN_NOT_UPLOADED', todayKey);
         }
