@@ -304,18 +304,8 @@ async function detectAndProcessMissedBlocks(userId, now) {
         console.log(`[NotificationScheduler] Missed event already exists for block ${realDbId}, skipping insert.`);
       }
 
-      // 3. Send MISSED_BLOCK_ALERT via notificationService
-      const alertText = `⚠️ *Missed Block Alert*
-Moulika, your *${b.subject}* block (planned for ${b.planned_start} - ${b.planned_end}) was missed. Keep focus and adjust your schedule!`;
-      
-      await notificationService.sendNotification(
-        userId,
-        'MISSED_BLOCK_ALERT',
-        'block',
-        String(realDbId),
-        alertText,
-        { block_id: realDbId, subject: b.subject }
-      );
+      // 3. (REMOVED) MISSED_BLOCK_ALERT is no longer sent per block to avoid spam.
+      // Group missed blocks in night report or backlog report instead.
     }
   }
 }
@@ -392,26 +382,79 @@ async function detectAndProcessDelayedBlocks(userId, now) {
       }
     }
 
-    // CURRENT_BLOCK_NOT_STARTED
+    console.log('[BlockReminder] checking block reminders');
+    let eligibleStartCount = 0;
+    let eligibleNotStartedCount = 0;
+
     for (const b of todayBlocks) {
       if (!b.planned_start) continue;
+      
       const [startH, startM] = b.planned_start.split(':').map(Number);
       const blockStartDate = new Date(d);
       blockStartDate.setHours(startH, startM, 0, 0);
-      
-      if (b.status === 'planned' || b.status === 'upcoming') {
-        if (d.getTime() > blockStartDate.getTime() + 15 * 60 * 1000) {
-           if (b.id === earliest.id && actualMinutesToday === 0 && startedOrDoneBlocks === 0) continue;
 
-           const alreadySentCurrent = await hasEvent(userId, 'CURRENT_BLOCK_NOT_STARTED', String(b.id));
-           if (!alreadySentCurrent) {
-             const alertText = `⚠️ *Block Not Started*\nMoulika, the ${b.subject || 'study'} block scheduled at ${b.planned_start} has not started yet. Start a 25-minute rescue version now.`;
-             await notificationService.sendNotification(userId, 'CURRENT_BLOCK_NOT_STARTED', 'block', String(b.id), alertText, { block_id: b.id });
-             await recordEvent(userId, 'CURRENT_BLOCK_NOT_STARTED', String(b.id));
-           }
-        }
+      const blockEndDate = b.planned_end ? new Date(d) : new Date(blockStartDate.getTime() + (b.planned_minutes || 60) * 60000);
+      if (b.planned_end) {
+         const [endH, endM] = b.planned_end.split(':').map(Number);
+         blockEndDate.setHours(endH, endM, 0, 0);
+      }
+      
+      const actualMins = b.actual_minutes || 0;
+      const isCompletedOrActive = ['completed', 'done', 'partial', 'active', 'paused', 'missed', 'skipped'].includes(b.status) || actualMins > 0;
+      
+      if (isCompletedOrActive) {
+         // Skip but only log if we are inside a reminder window to avoid spamming the logs endlessly
+         const timeDiffMins = (d.getTime() - blockStartDate.getTime()) / 60000;
+         const endsInMins = (blockEndDate.getTime() - d.getTime()) / 60000;
+         if ((timeDiffMins >= 0 && timeDiffMins <= 10) || (timeDiffMins >= 15 && endsInMins > 0)) {
+             console.log(`[BlockReminder] skipped block_id=${b.id} reason=completed/active/actual_minutes>0`);
+         }
+         continue;
+      }
+      
+      if (!['planned', 'upcoming', 'ready'].includes(b.status)) continue;
+
+      const timeDiffMins = (d.getTime() - blockStartDate.getTime()) / 60000;
+      const endsInMins = (blockEndDate.getTime() - d.getTime()) / 60000;
+
+      // 1. BLOCK_START_REMINDER
+      if (timeDiffMins >= 0 && timeDiffMins <= 10) {
+         eligibleStartCount++;
+         const alreadySentStart = await hasEvent(userId, 'BLOCK_START_REMINDER', String(b.id));
+         if (!alreadySentStart) {
+            const titleOrTopic = b.title || b.topic || b.subject;
+            const alertText = `▶️ *Start Now: ${titleOrTopic} — ${b.subject}*\nScheduled: ${b.planned_start}–${b.planned_end || '?'}\nDuration: ${b.planned_minutes || 0} min\n\nMoulika, start this block now.\nDon’t think about the whole day. Win this block.`;
+            await notificationService.sendNotification(userId, 'BLOCK_START_REMINDER', 'block', String(b.id), alertText, { block_id: b.id });
+            await recordEvent(userId, 'BLOCK_START_REMINDER', String(b.id));
+            console.log(`[BlockReminder] sent BLOCK_START_REMINDER for block_id=${b.id}`);
+         } else {
+            console.log(`[BlockReminder] skipped block_id=${b.id} reason=already_sent`);
+         }
+      }
+
+      // 2. CURRENT_BLOCK_NOT_STARTED
+      if (timeDiffMins >= 15 && endsInMins > 0) {
+         // Skip if it's the very first block and we already qualify for PLAN_NOT_STARTED
+         if (b.id === earliest.id && actualMinutesToday === 0 && startedOrDoneBlocks === 0) {
+             continue;
+         }
+
+         eligibleNotStartedCount++;
+         const alreadySentCurrent = await hasEvent(userId, 'CURRENT_BLOCK_NOT_STARTED', String(b.id));
+         if (!alreadySentCurrent) {
+            const titleOrTopic = b.title || b.topic || b.subject;
+            const alertText = `⚠️ *${titleOrTopic} not started*\n\nThis ${b.subject} block was scheduled at ${b.planned_start}.\nStart a 25-minute rescue version now.`;
+            await notificationService.sendNotification(userId, 'CURRENT_BLOCK_NOT_STARTED', 'block', String(b.id), alertText, { block_id: b.id });
+            await recordEvent(userId, 'CURRENT_BLOCK_NOT_STARTED', String(b.id));
+            console.log(`[BlockReminder] sent CURRENT_BLOCK_NOT_STARTED for block_id=${b.id}`);
+         } else {
+            console.log(`[BlockReminder] skipped block_id=${b.id} reason=already_sent`);
+         }
       }
     }
+    
+    console.log(`[BlockReminder] eligible start reminders count: ${eligibleStartCount}`);
+    console.log(`[BlockReminder] eligible not-started count: ${eligibleNotStartedCount}`);
   }
 
   // 2. Paused-too-long & Paused-too-many check:
