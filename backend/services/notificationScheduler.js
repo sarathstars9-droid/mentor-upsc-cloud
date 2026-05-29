@@ -502,7 +502,7 @@ async function detectAndProcessDayDiscipline(userId, now) {
       }
     }
   }
-
+}
 
 // Helper: Query notification_events to see if a notification was already sent
 async function hasEvent(userId, notificationType, sourceId) {
