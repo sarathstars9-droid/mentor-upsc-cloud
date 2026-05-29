@@ -278,29 +278,12 @@ async function runAllMigrations() {
     }
 
     console.log('  → Seeding notification_preferences...');
-    const notificationTypes = [
-      'GOOD_MORNING_MISSION',
-      'PLAN_NOT_UPLOADED',
-      'PLAN_NOT_STARTED',
-      'BLOCK_PAUSED_TOO_LONG',
-      'MISSED_BLOCK_ALERT',
-      'REVISION_DUE_ALERT',
-      'DAILY_NIGHT_REPORT',
-      'WEEKLY_MENTOR_REPORT',
-      'MONTHLY_MENTOR_REPORT',
-      'END_OF_DAY_REPORT',
-      'SYLLABUS_TRACK_REPLY',
-      'BACKLOG_ALERT',
-    ];
+    const { seedDefaultPreferences } = await import('../services/notificationService.js');
     for (const u of users) {
-      for (const type of notificationTypes) {
-        await query(`
-          INSERT INTO public.notification_preferences (user_id, notification_type, channel_type, is_enabled)
-          VALUES ($1, $2, 'TELEGRAM', TRUE)
-          ON CONFLICT (user_id, notification_type, channel_type) DO UPDATE SET is_enabled = TRUE;
-        `, [u, type]);
-      }
+      console.log(`    [Migration] Seeding notification preferences for ${u}`);
+      await seedDefaultPreferences(u);
     }
+    console.log('    [Migration] Notification preferences seeded');
 
     console.log('    ✅ Seeding — done');
   } catch (err) {

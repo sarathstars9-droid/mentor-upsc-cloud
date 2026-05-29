@@ -26,9 +26,46 @@ export function isInQuietHours(startStr, endStr) {
   }
 }
 
+export async function seedDefaultPreferences(userId) {
+  const defaults = [
+    { type: 'BLOCK_STARTED', enabled: true },
+    { type: 'BLOCK_COMPLETED', enabled: true },
+    { type: 'BLOCK_STOPPED', enabled: true },
+    { type: 'BLOCK_SKIPPED', enabled: true },
+    { type: 'BLOCK_PAUSED_TOO_LONG', enabled: true },
+    { type: 'PLAN_NOT_STARTED', enabled: true },
+    { type: 'CURRENT_BLOCK_NOT_STARTED', enabled: true },
+    { type: 'MISSED_BLOCK_ALERT', enabled: true },
+    { type: 'GOOD_MORNING_MISSION', enabled: true },
+    { type: 'PLAN_NOT_UPLOADED', enabled: true },
+    { type: 'DAILY_NIGHT_REPORT', enabled: true },
+    { type: 'WEEKLY_MENTOR_REPORT', enabled: true },
+    { type: 'MONTHLY_MENTOR_REPORT', enabled: true },
+    { type: 'MONTHLY_MENTOR_REPORT_PDF', enabled: true },
+    { type: 'REVISION_DUE_ALERT', enabled: true },
+    { type: 'END_OF_DAY_REPORT', enabled: true },
+    { type: 'SYLLABUS_TRACK_REPLY', enabled: true },
+    { type: 'BACKLOG_ALERT', enabled: true },
+    { type: 'BLOCK_PAUSED', enabled: false },
+    { type: 'BLOCK_RESUMED', enabled: false }
+  ];
+
+  for (const pref of defaults) {
+    await query(
+      `INSERT INTO public.notification_preferences 
+       (user_id, notification_type, channel_type, is_enabled) 
+       VALUES ($1, $2, 'TELEGRAM', $3)
+       ON CONFLICT (user_id, notification_type, channel_type) DO NOTHING`,
+      [userId, pref.type, pref.enabled]
+    ).catch(e => console.error('[NotificationService] Seed error:', e.message));
+  }
+}
+
 // Main notification dispatcher with preference checks, quiet hour filters, and database deduplication
 export async function sendNotification(userId, notificationType, sourceType, sourceId, messageText, payload = {}) {
   try {
+    await seedDefaultPreferences(userId);
+
     // 1. Fetch enabled preferences for this notification type
     const prefRes = await query(
       `SELECT channel_type, quiet_hours_start, quiet_hours_end 
