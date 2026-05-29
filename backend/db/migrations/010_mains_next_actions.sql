@@ -27,6 +27,22 @@ CREATE TABLE IF NOT EXISTS mains_next_actions (
     UNIQUE (user_id, action_type, source_weakness_label)
 );
 
+-- Idempotent schema repair: ensure columns exist if table was created before
+ALTER TABLE mains_next_actions
+  ADD COLUMN IF NOT EXISTS action_type TEXT DEFAULT 'practice_pyq',
+  ADD COLUMN IF NOT EXISTS title TEXT DEFAULT '',
+  ADD COLUMN IF NOT EXISTS description TEXT DEFAULT '',
+  ADD COLUMN IF NOT EXISTS priority TEXT DEFAULT 'medium',
+  ADD COLUMN IF NOT EXISTS source_weakness_label TEXT DEFAULT '',
+  ADD COLUMN IF NOT EXISTS source_weakness_type TEXT DEFAULT 'component',
+  ADD COLUMN IF NOT EXISTS source_severity NUMERIC(4,1) NOT NULL DEFAULT 1,
+  ADD COLUMN IF NOT EXISTS paper TEXT,
+  ADD COLUMN IF NOT EXISTS subject TEXT,
+  ADD COLUMN IF NOT EXISTS topic TEXT,
+  ADD COLUMN IF NOT EXISTS is_done BOOLEAN NOT NULL DEFAULT FALSE,
+  ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW();
+
 CREATE INDEX IF NOT EXISTS idx_mains_next_actions_user
   ON mains_next_actions(user_id);
 
