@@ -329,10 +329,27 @@ async function detectAndProcessDelayedBlocks(userId, now) {
   const dd = String(d.getDate()).padStart(2, '0');
   const todayKey = `${yyyy}-${mm}-${dd}`;
 
-  // 1. Plan not started check:
-  // If today's study_blocks exist but no block is active/completed within 15 minutes after first planned_start
+  // 1. Plan not started check & Current Block Not Started:
+  const { rows: todayBlocksStats } = await query(
+    `SELECT
+      COUNT(*) AS total_blocks,
+      COALESCE(SUM(COALESCE(actual_minutes, 0)), 0) AS actual_minutes_today,
+      COUNT(*) FILTER (
+        WHERE LOWER(status) IN ('active','completed','partial','done')
+      ) AS started_or_done_blocks,
+      MIN(planned_start) AS first_planned_start
+    FROM public.study_blocks
+    WHERE user_id = $1
+      AND day_key = $2`,
+    [userId, todayKey]
+  );
+
+  const stats = todayBlocksStats[0];
+  const actualMinutesToday = Number(stats.actual_minutes_today);
+  const startedOrDoneBlocks = Number(stats.started_or_done_blocks);
+
   const { rows: todayBlocks } = await query(
-    `SELECT id, planned_start, status FROM public.study_blocks 
+    `SELECT id, subject, planned_start, status FROM public.study_blocks 
      WHERE user_id = $1 AND day_key = $2
      ORDER BY planned_start ASC`,
     [userId, todayKey]
@@ -345,13 +362,12 @@ async function detectAndProcessDelayedBlocks(userId, now) {
       const plannedStartDate = new Date(d);
       plannedStartDate.setHours(startH, startM, 0, 0);
 
+      // PLAN_NOT_STARTED
       if (d.getTime() > plannedStartDate.getTime() + 15 * 60 * 1000) {
-        const startedOrDone = todayBlocks.some(b => ['active', 'completed', 'partial', 'paused'].includes(b.status));
-        if (!startedOrDone) {
+        if (actualMinutesToday === 0 && startedOrDoneBlocks === 0) {
           const alreadySent15 = await hasEvent(userId, 'PLAN_NOT_STARTED', todayKey);
           if (!alreadySent15) {
-            const alertText = `⚠️ *Plan Not Started*
-Moulika, your study plan for today was scheduled to start at ${earliest.planned_start}. It has been more than 15 minutes and you haven't started yet. Let's start the engine!`;
+            const alertText = `⚠️ *Plan Not Started*\nMoulika, your study plan for today was scheduled to start at ${earliest.planned_start}. It has been more than 15 minutes and you haven't started yet. Let's start the engine!`;
             await notificationService.sendNotification(userId, 'PLAN_NOT_STARTED', 'daily_date', todayKey, alertText, {});
             await recordEvent(userId, 'PLAN_NOT_STARTED', todayKey);
           }
@@ -375,6 +391,27 @@ Moulika, your study plan for today was scheduled to start at ${earliest.planned_
         }
       }
     }
+
+    // CURRENT_BLOCK_NOT_STARTED
+    for (const b of todayBlocks) {
+      if (!b.planned_start) continue;
+      const [startH, startM] = b.planned_start.split(':').map(Number);
+      const blockStartDate = new Date(d);
+      blockStartDate.setHours(startH, startM, 0, 0);
+      
+      if (b.status === 'planned' || b.status === 'upcoming') {
+        if (d.getTime() > blockStartDate.getTime() + 15 * 60 * 1000) {
+           if (b.id === earliest.id && actualMinutesToday === 0 && startedOrDoneBlocks === 0) continue;
+
+           const alreadySentCurrent = await hasEvent(userId, 'CURRENT_BLOCK_NOT_STARTED', String(b.id));
+           if (!alreadySentCurrent) {
+             const alertText = `⚠️ *Block Not Started*\nMoulika, the ${b.subject || 'study'} block scheduled at ${b.planned_start} has not started yet. Start a 25-minute rescue version now.`;
+             await notificationService.sendNotification(userId, 'CURRENT_BLOCK_NOT_STARTED', 'block', String(b.id), alertText, { block_id: b.id });
+             await recordEvent(userId, 'CURRENT_BLOCK_NOT_STARTED', String(b.id));
+           }
+        }
+      }
+    }
   }
 
   // 2. Paused-too-long & Paused-too-many check:
@@ -394,16 +431,13 @@ Moulika, your study plan for today was scheduled to start at ${earliest.planned_
     const pauseCount = b.pauses_count || 0;
 
     if (pauseCount >= 3 || totalPausedMinutes >= 30) {
-      const alreadySent = await hasEvent(userId, 'BLOCK_TOO_MUCH_PAUSED', String(b.id));
+      const alreadySent = await hasEventRecent(userId, 'BLOCK_TOO_MUCH_PAUSED', String(b.id), 30);
       if (!alreadySent) {
         let severity = 'mild';
         if (pauseCount >= 5 || totalPausedMinutes >= 45) severity = 'high';
         else if (pauseCount >= 3 || totalPausedMinutes >= 30) severity = 'medium';
 
-        const alertText = `⚠️ *Block Friction Detected*
-This block (*${b.subject || 'Study'}*) has been paused too many times (${pauseCount} pauses, ${totalPausedMinutes}m total).
-
-Choose an action below to regain control:`;
+        const alertText = `⚠️ *Block Friction Detected*\nThis block (*${b.subject || 'Study'}*) has been paused too many times (${pauseCount} pauses, ${totalPausedMinutes}m total).\n\nChoose an action below to regain control:`;
         
         const { sendTelegramMessage } = await import('./telegramService.js');
         const chatId = process.env.TELEGRAM_CHAT_ID;
@@ -434,7 +468,7 @@ async function detectAndProcessDayDiscipline(userId, now) {
   const dd = String(d.getDate()).padStart(2, '0');
   const todayKey = `${yyyy}-${mm}-${dd}`;
 
-  const { rows } = await query(`SELECT id, status, planned_minutes, completed_minutes FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [userId, todayKey]);
+  const { rows } = await query(`SELECT id, status, planned_minutes, actual_minutes FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [userId, todayKey]);
   const hasPlan = rows.length > 0;
 
   // DAY_NOT_STARTED WhatsApp Alerts (8:30, 10:30, 12:30, 15:00)
@@ -473,10 +507,10 @@ async function detectAndProcessDayDiscipline(userId, now) {
     for (const b of rows) {
       totalPlanned += (b.planned_minutes || 0);
       if (b.status === 'completed' || b.status === 'partial') {
-        totalCompleted += (b.completed_minutes || b.planned_minutes || 0);
+        totalCompleted += (b.actual_minutes || b.planned_minutes || 0);
       } else if (b.status === 'active' || b.status === 'paused') {
          // rough estimate
-         totalCompleted += (b.completed_minutes || 0);
+         totalCompleted += (b.actual_minutes || 0);
       }
     }
     
@@ -504,14 +538,32 @@ async function detectAndProcessDayDiscipline(userId, now) {
   }
 }
 
-// Helper: Query notification_events to see if a notification was already sent
-async function hasEvent(userId, notificationType, sourceId) {
+// Helper: Check if an event was logged recently in plan_block_events
+async function hasEventRecent(userId, eventType, sourceId, minutes) {
   const { rows } = await query(
+    `SELECT id FROM public.plan_block_events 
+     WHERE user_id = $1 AND event_type = $2 AND (metadata->>'source_id') = $3
+     AND created_at > NOW() - INTERVAL '${minutes} minutes'`,
+    [userId, eventType, sourceId]
+  );
+  return rows.length > 0;
+}
+
+// Helper: Query notification_events or plan_block_events to see if a notification was already sent
+async function hasEvent(userId, notificationType, sourceId) {
+  const { rows: r1 } = await query(
     `SELECT id FROM public.notification_events 
      WHERE user_id = $1 AND notification_type = $2 AND source_id = $3 AND status = 'sent'`,
     [userId, notificationType, sourceId]
   );
-  return rows.length > 0;
+  if (r1.length > 0) return true;
+
+  const { rows: r2 } = await query(
+    `SELECT id FROM public.plan_block_events 
+     WHERE user_id = $1 AND event_type = $2 AND (metadata->>'source_id') = $3`,
+    [userId, notificationType, sourceId]
+  );
+  return r2.length > 0;
 }
 
 // Helper: Record event in plan_block_events for audit
