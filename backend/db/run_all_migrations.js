@@ -180,6 +180,8 @@ async function runAllMigrations() {
     ['024 Tracking foundation',                          'migrations/024_tracking_foundation.sql'],
     ['025 Subject sub-targets + daily_consistency',      'migrations/025_subject_sub_targets.sql'],
     ['028 Behaviour signals',                            'migrations/028_behaviour_signals.sql'],
+    ['029 Discipline and rescue',                        'migrations/029_discipline_and_rescue.sql'],
+    ['030 Add stop feedback',                            'migrations/030_add_stop_feedback.sql'],
   ];
 
   // Run 001-004 via standard runner

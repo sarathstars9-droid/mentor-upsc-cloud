@@ -87,6 +87,8 @@ import prelimsUnifiedRoutes from "./routes/prelimsUnifiedRoutes.js";
 import prelimsTestRoutes from "./routes/prelimsTestRoutes.js";
 import progressRoutes from "./routes/progressRoutes.js";
 import behaviourRoutes from "./routes/behaviourRoutes.js";
+import whatsappWebhookRoutes from "./routes/whatsappWebhookRoutes.js";
+import disciplineRoutes from "./routes/disciplineRoutes.js";
 import { registerEnvChatId, startTelegramPolling } from "./services/telegramService.js";
 import { initNotificationScheduler } from "./services/notificationScheduler.js";
 import {
@@ -539,6 +541,10 @@ app.use("/api/pyq-ingestion", pyqIngestionRoutes);
 // ── Progress & Notification Engine ──────────────────────────────────────────
 app.use("/api", progressRoutes);
 app.use("/api/behaviour", behaviourRoutes);
+
+// ── Discipline & Rescue System ────────────────────────────────────────────────
+app.use("/api", whatsappWebhookRoutes);
+app.use("/api/discipline", disciplineRoutes);
 
 import { sendTelegramMessage } from "./services/telegramService.js";
 

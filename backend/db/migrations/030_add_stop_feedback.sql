@@ -1,0 +1,1 @@
+ALTER TABLE study_blocks ADD COLUMN IF NOT EXISTS stop_reason VARCHAR(255); ALTER TABLE study_blocks ADD COLUMN IF NOT EXISTS stop_feedback TEXT; ALTER TABLE study_blocks ADD COLUMN IF NOT EXISTS productivity_status VARCHAR(50);

@@ -101,14 +101,18 @@ async function run() {
 
   const genericTerms = ["pyq", "pyqs", "revision", "the hindu", "news", "current affairs", "ca", "day revision", "practice", "mcq", "newspaper", "daily"];
   let overSpecificCount = 0;
+  let acceptableGenericCount = 0;
   
   const ocrRows = ocrBlocks.map(r => {
-    const isGenericText = genericTerms.some(t => (r.raw_text || '').toLowerCase().includes(t)) && (r.raw_text || '').split(" ").length <= 5;
+    const isGenericText = genericTerms.some(t => (r.raw_text || '').toLowerCase().includes(t)) && (r.raw_text || '').split(" ").length <= 7;
     const isSpecificNode = r.syllabus_node_id && (r.syllabus_node_id.includes('-MT') || r.syllabus_node_id.split('-').length >= 4);
     const isLowMedConf = r.mapping_confidence === 'low' || r.mapping_confidence === 'medium';
     
     const isOverSpecific = isGenericText && isSpecificNode && isLowMedConf;
     if (isOverSpecific) overSpecificCount++;
+
+    const isAcceptableGeneric = isGenericText && !isSpecificNode;
+    if (isAcceptableGeneric) acceptableGenericCount++;
 
     return {
       'Day Key'     : r.day_key,
@@ -118,7 +122,7 @@ async function run() {
       'Raw Text'    : r.raw_text ? r.raw_text.slice(0, 22) + '…' : '❌ BLANK',
       'Out Expected': r.output_expected ? '✔' : '—',
       'Confidence'  : r.mapping_confidence || '—',
-      'Warning'     : isOverSpecific ? '⚠ Over-specific' : '—'
+      'Warning'     : isOverSpecific ? '⚠ Over-specific' : (isAcceptableGeneric ? '✔ Generic OK' : '—')
     };
   });
 
@@ -134,7 +138,11 @@ async function run() {
 
   console.log('\n  ── Uploaded Plan / OCR blocks ──────────────────────────────');
   console.log(`     Total uploaded_plan blocks : ${totalOcr}`);
-  console.log(`     Mapping completeness       : ${mappingPct}%  (${ocrWithNode}/${totalOcr} have syllabus_node_id)`);
+  
+  const targetForMapping = totalOcr - acceptableGenericCount;
+  const effectivePct = targetForMapping > 0 ? ((ocrWithNode / targetForMapping) * 100).toFixed(1) : 'N/A';
+  console.log(`     Mapping completeness       : ${effectivePct}%  (${ocrWithNode}/${targetForMapping} specific blocks mapped)`);
+  
   console.log(`     Missing syllabus_node_id   : ${ocrMissingNode}`);
   console.log(`     Blank mode                 : ${ocrBlankMode}`);
   console.log(`     Blank raw_text             : ${ocrBlankRawText}`);

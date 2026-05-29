@@ -114,6 +114,7 @@ I’ll help you know what is completed, what is pending, and what to correct nex
         break;
       }
 
+      case 'test weekly report':
       case 'weekly report': {
         const data = await progressService.getWeeklyExecutionSummary(userId);
         replyText = reportGeneratorService.generateWeeklyMentorReport(data, userName);
@@ -146,6 +147,21 @@ I’ll help you know what is completed, what is pending, and what to correct nex
         const data = await progressService.getMonthlyMentorSummary(userId);
         replyText = reportGeneratorService.generateMonthlyMentorTextReport(data, userName);
         break;
+      }
+
+      case 'monthly pdf':
+      case 'test monthly pdf': {
+        const now = new Date();
+        const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(kolkataStr);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const monthKey = `${yyyy}-${mm}`;
+        
+        await telegramService.sendTelegramMessage(destinationId, `Generating PDF for ${monthKey}... Please wait.`);
+        const { sendMonthlyPdfReport } = await import('./monthlyPdfReportService.js');
+        await sendMonthlyPdfReport(userId, monthKey, destinationId);
+        return; // Early return since we send document directly
       }
 
       case 'revision due': {
@@ -353,4 +369,21 @@ _${err.message || String(err)}_`;
 
   // Send the reply back to the user
   await telegramService.sendTelegramMessage(destinationId, replyText);
+}
+
+export async function handleCallbackQuery(userId, destinationId, cb) {
+  const payload = cb.data;
+  console.log(`[BotCommandService] Routing callback: "${payload}" for user ${userId}`);
+  
+  // Example for BLOCK_TOO_MUCH_PAUSED options
+  if (payload === 'CONTINUE_BLOCK_25') {
+    await telegramService.sendTelegramMessage(destinationId, "Excellent. Put your phone away and focus for 25 minutes without pause.");
+  } else if (payload === 'REDUCE_BLOCK') {
+    await telegramService.sendTelegramMessage(destinationId, "Okay. End the current block in the app and create a smaller 25-minute block. Take a 5-minute break first.");
+  } else if (payload === 'START_RESCUE_MODE') {
+    // Dynamic import to avoid circular dependency
+    const { startRescueMode } = await import('./rescueModeService.js');
+    await startRescueMode(userId);
+    await telegramService.sendTelegramMessage(destinationId, "Rescue Mode started. Check the app for your 3 strict blocks.");
+  }
 }

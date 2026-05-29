@@ -22,7 +22,7 @@ export function convertMarkdownToHtml(md) {
 }
 
 // ── Send message ─────────────────────────────────────────────────────────────
-export async function sendTelegramMessage(chatId, text) {
+export async function sendTelegramMessage(chatId, text, options = {}) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   if (!token) {
     console.warn(`[TelegramService] Cannot send message: TELEGRAM_BOT_TOKEN is missing. Chat ID: ${chatId}`);
@@ -32,14 +32,18 @@ export async function sendTelegramMessage(chatId, text) {
   try {
     const htmlText = convertMarkdownToHtml(text);
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
+    
+    const bodyPayload = {
+      chat_id: chatId,
+      text: htmlText,
+      parse_mode: 'HTML',
+      ...options
+    };
+
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: htmlText,
-        parse_mode: 'HTML'
-      })
+      body: JSON.stringify(bodyPayload)
     });
     
     if (!res.ok) {
@@ -198,6 +202,19 @@ function sleep(ms) {
 
 // ── Handle incoming update ────────────────────────────────────────────────────
 async function handleIncomingUpdate(update) {
+  if (update.callback_query) {
+    const cb = update.callback_query;
+    const chatId = String(cb.message?.chat?.id);
+    console.log(`[TelegramService] Incoming Callback: "${cb.data}" from chat_id: ${chatId}`);
+    try {
+      await botCommandService.handleCallbackQuery('moulika', chatId, cb);
+      await answerTelegramCallback(cb.id);
+    } catch (err) {
+      console.error("[TelegramService handleCallbackQuery failed]", err);
+    }
+    return;
+  }
+
   const message = update.message;
   if (!message || !message.text || !message.chat || !message.chat.id) return;
   
@@ -220,5 +237,68 @@ async function handleIncomingUpdate(update) {
     await botCommandService.handleCommand('moulika', chatId, text);
   } catch (err) {
     console.error("[TelegramService handleIncomingUpdate failed]", err);
+  }
+}
+
+export async function answerTelegramCallback(callbackQueryId, text = '') {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  if (!token) return;
+  try {
+    const url = `https://api.telegram.org/bot${token}/answerCallbackQuery`;
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        callback_query_id: callbackQueryId,
+        text: text
+      })
+    });
+  } catch (err) {
+    console.error("[TelegramService] Failed to answer callback query:", err);
+  }
+}
+
+// ── Send document ────────────────────────────────────────────────────────────
+export async function sendTelegramDocument(chatId, filePath, caption = '') {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  if (!token) {
+    console.warn(`[TelegramService] Cannot send document: TELEGRAM_BOT_TOKEN is missing. Chat ID: ${chatId}`);
+    return false;
+  }
+  
+  try {
+    const { readFileSync } = await import('fs');
+    const { Blob } = await import('buffer');
+    const { basename } = await import('path');
+    
+    const fileBuffer = readFileSync(filePath);
+    const fileBlob = new Blob([fileBuffer]);
+    const fileName = basename(filePath);
+    
+    const formData = new FormData();
+    formData.append('document', fileBlob, fileName);
+    formData.append('chat_id', chatId);
+    if (caption) {
+      formData.append('caption', caption);
+    }
+    
+    const url = `https://api.telegram.org/bot${token}/sendDocument`;
+    
+    const res = await fetch(url, {
+      method: 'POST',
+      body: formData
+    });
+    
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error(`[TelegramService] Bot document send failed to ${chatId}. Status: ${res.status}. Response: ${errText}`);
+      return false;
+    }
+    
+    console.log(`[TelegramService] Bot document sent to ${chatId}`);
+    return true;
+  } catch (err) {
+    console.error(`[TelegramService ERROR] Failed to send document to ${chatId}:`, err);
+    return false;
   }
 }

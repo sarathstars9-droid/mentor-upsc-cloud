@@ -66,11 +66,18 @@ async function tickScheduler(userId) {
     console.error("[NotificationScheduler] missed blocks check failed:", err.message);
   }
 
-  // ── 1.a Active/Paused Blocks Alert ──────────────────────────────────────────
+  // ── 1.a Active/Paused Blocks & Plan Started Alert ───────────────────────────
   try {
     await detectAndProcessDelayedBlocks(userId, now);
   } catch (err) {
     console.error("[NotificationScheduler] delayed blocks check failed:", err.message);
+  }
+
+  // ── 1.b Discipline Checks (DAY_NOT_STARTED, SLIPPING) ──────────────────────
+  try {
+    await detectAndProcessDayDiscipline(userId, now);
+  } catch (err) {
+    console.error("[NotificationScheduler] discipline checks failed:", err.message);
   }
 
   // ── 1.b Good Morning Mission (05:00 AM) ────────────────────────────────────
@@ -164,8 +171,8 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
   if (dayOfWeek === 0 && hour === 21 && minute === 0) {
     try {
       if (!(await hasEvent(userId, 'WEEKLY_MENTOR_REPORT', todayKey))) {
-        const data = await progressService.getWeeklyProgressReport(userId);
-        const text = reportGeneratorService.generateWeeklyReport(data, "Moulika", { fullBreakdown: false });
+        const data = await progressService.getWeeklyExecutionSummary(userId);
+        const text = reportGeneratorService.generateWeeklyMentorReport(data, "Moulika");
         await notificationService.sendNotification(
           userId, 
           'WEEKLY_MENTOR_REPORT', 
@@ -190,8 +197,8 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
     try {
       const monthKey = `${yyyy}-${mm}`;
       if (!(await hasEvent(userId, 'MONTHLY_MENTOR_REPORT', monthKey))) {
-        const data = await progressService.getMonthlyProgressReport(userId, monthKey);
-        const text = reportGeneratorService.generateMonthlyReport(data, "Moulika");
+        const data = await progressService.getMonthlyMentorSummary(userId);
+        const text = reportGeneratorService.generateMonthlyMentorTextReport(data, "Moulika");
         await notificationService.sendNotification(
           userId, 
           'MONTHLY_MENTOR_REPORT', 
@@ -201,6 +208,23 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
           {}
         );
         await recordEvent(userId, 'MONTHLY_MENTOR_REPORT', monthKey);
+      }
+      
+      if (!(await hasEvent(userId, 'MONTHLY_MENTOR_REPORT_PDF', monthKey))) {
+        const { sendMonthlyPdfReport } = await import('./monthlyPdfReportService.js');
+        // Retrieve telegram chat id
+        const { rows: channels } = await query(
+          `SELECT destination_id FROM public.notification_channels 
+           WHERE user_id = $1 AND channel_type = 'TELEGRAM' AND is_enabled = TRUE LIMIT 1`,
+          [userId]
+        );
+        if (channels.length > 0) {
+          const chatId = channels[0].destination_id;
+          await sendMonthlyPdfReport(userId, monthKey, chatId);
+          await recordEvent(userId, 'MONTHLY_MENTOR_REPORT_PDF', monthKey);
+        } else {
+          console.log("[NotificationScheduler] Monthly PDF skipped, no telegram channel for user:", userId);
+        }
       }
     } catch (err) {
       console.error("[NotificationScheduler] monthly report failed:", err.message);
@@ -321,45 +345,164 @@ async function detectAndProcessDelayedBlocks(userId, now) {
       const plannedStartDate = new Date(d);
       plannedStartDate.setHours(startH, startM, 0, 0);
 
-      // 15 minutes window
       if (d.getTime() > plannedStartDate.getTime() + 15 * 60 * 1000) {
         const startedOrDone = todayBlocks.some(b => ['active', 'completed', 'partial', 'paused'].includes(b.status));
         if (!startedOrDone) {
-          const alreadySent = await hasEvent(userId, 'PLAN_NOT_STARTED', todayKey);
-          if (!alreadySent) {
+          const alreadySent15 = await hasEvent(userId, 'PLAN_NOT_STARTED', todayKey);
+          if (!alreadySent15) {
             const alertText = `⚠️ *Plan Not Started*
 Moulika, your study plan for today was scheduled to start at ${earliest.planned_start}. It has been more than 15 minutes and you haven't started yet. Let's start the engine!`;
             await notificationService.sendNotification(userId, 'PLAN_NOT_STARTED', 'daily_date', todayKey, alertText, {});
             await recordEvent(userId, 'PLAN_NOT_STARTED', todayKey);
+          }
+          
+          // PLAN_UPLOADED_NOT_STARTED (30+ mins) via WhatsApp
+          if (d.getTime() > plannedStartDate.getTime() + 30 * 60 * 1000) {
+            const alreadySent30 = await hasEvent(userId, 'PLAN_UPLOADED_NOT_STARTED', todayKey);
+            if (!alreadySent30) {
+              const { sendWhatsAppButtons } = await import('./whatsappService.js');
+              await sendWhatsAppButtons('91YOURNUMBER', 
+                "MentorOS Alert\n\nPlan is uploaded, but execution has not started yet.\n\nA plan without starting becomes mental load.\n\nChoose one:", 
+                [
+                  { id: 'START_BLOCK_1', title: 'Start Block 1' },
+                  { id: 'OPEN_PLAN', title: 'Open Plan' },
+                  { id: 'START_RESCUE_MODE', title: 'Rescue Mode' }
+                ]
+              );
+              await recordEvent(userId, 'PLAN_UPLOADED_NOT_STARTED', todayKey);
+            }
           }
         }
       }
     }
   }
 
-  // 2. Paused-too-long check:
-  // If block status = paused and paused duration > 20 minutes
-  const { rows: pausedBlocks } = await query(
-    `SELECT id, subject, topic, paused_at FROM public.study_blocks 
-     WHERE user_id = $1 AND status = 'paused'`,
+  // 2. Paused-too-long & Paused-too-many check:
+  const { rows: activeOrPausedBlocks } = await query(
+    `SELECT id, subject, topic, paused_at, status, pauses_count, total_pause_seconds FROM public.study_blocks 
+     WHERE user_id = $1 AND status IN ('active', 'paused')`,
     [userId]
   );
 
-  for (const pb of pausedBlocks) {
-    if (pb.paused_at) {
-      const pausedTime = new Date(pb.paused_at).getTime();
-      if (now.getTime() - pausedTime > 20 * 60 * 1000) {
-        const alreadySent = await hasEvent(userId, 'BLOCK_PAUSED_TOO_LONG', String(pb.id));
-        if (!alreadySent) {
-          const alertText = `⏸️ *Block Paused Too Long*
-Moulika, your study block *${pb.subject || 'Study'}* (topic: ${pb.topic || 'unspecified'}) has been paused for more than 20 minutes. Let's resume and lock this in!`;
-          await notificationService.sendNotification(userId, 'BLOCK_PAUSED_TOO_LONG', 'block', String(pb.id), alertText, {});
-          await recordEvent(userId, 'BLOCK_PAUSED_TOO_LONG', String(pb.id));
+  for (const b of activeOrPausedBlocks) {
+    let currentPauseMinutes = 0;
+    if (b.status === 'paused' && b.paused_at) {
+      currentPauseMinutes = (now.getTime() - new Date(b.paused_at).getTime()) / 60000;
+    }
+    
+    const totalPausedMinutes = Math.floor((b.total_pause_seconds || 0) / 60) + Math.floor(currentPauseMinutes);
+    const pauseCount = b.pauses_count || 0;
+
+    if (pauseCount >= 3 || totalPausedMinutes >= 30) {
+      const alreadySent = await hasEvent(userId, 'BLOCK_TOO_MUCH_PAUSED', String(b.id));
+      if (!alreadySent) {
+        let severity = 'mild';
+        if (pauseCount >= 5 || totalPausedMinutes >= 45) severity = 'high';
+        else if (pauseCount >= 3 || totalPausedMinutes >= 30) severity = 'medium';
+
+        const alertText = `⚠️ *Block Friction Detected*
+This block (*${b.subject || 'Study'}*) has been paused too many times (${pauseCount} pauses, ${totalPausedMinutes}m total).
+
+Choose an action below to regain control:`;
+        
+        const { sendTelegramMessage } = await import('./telegramService.js');
+        const chatId = process.env.TELEGRAM_CHAT_ID;
+        if (chatId) {
+          await sendTelegramMessage(chatId, alertText, {
+            reply_markup: {
+              inline_keyboard: [
+                [{ text: "Continue 25m without pause", callback_data: "CONTINUE_BLOCK_25" }],
+                [{ text: "Reduce to smaller block", callback_data: "REDUCE_BLOCK" }],
+                [{ text: "Move to Rescue Mode", callback_data: "START_RESCUE_MODE" }]
+              ]
+            }
+          });
         }
+        await recordEvent(userId, 'BLOCK_TOO_MUCH_PAUSED', String(b.id));
       }
     }
   }
 }
+
+async function detectAndProcessDayDiscipline(userId, now) {
+  const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+  const d = new Date(kolkataStr);
+  const hour = d.getHours();
+  const minute = d.getMinutes();
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  const todayKey = `${yyyy}-${mm}-${dd}`;
+
+  const { rows } = await query(`SELECT id, status, planned_minutes, completed_minutes FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [userId, todayKey]);
+  const hasPlan = rows.length > 0;
+
+  // DAY_NOT_STARTED WhatsApp Alerts (8:30, 10:30, 12:30, 15:00)
+  if (!hasPlan) {
+    const timePoints = [
+      { h: 8, m: 30, level: 'soft' },
+      { h: 10, m: 30, level: 'medium' },
+      { h: 12, m: 30, level: 'high' },
+      { h: 15, m: 0, level: 'critical' },
+      { h: 20, m: 30, level: 'closure' } // 8:30 PM
+    ];
+
+    for (const tp of timePoints) {
+      if (hour === tp.h && minute === tp.m) {
+        const eventCode = `DAY_NOT_STARTED_${tp.level.toUpperCase()}`;
+        if (!(await hasEvent(userId, eventCode, todayKey))) {
+          const { sendWhatsAppButtons } = await import('./whatsappService.js');
+          await sendWhatsAppButtons('91YOURNUMBER', 
+            `MentorOS Alert\n\nToday’s plan is not uploaded yet (${tp.h}:${tp.m === 0 ? '00' : tp.m}).\n\nAre you studying without uploading the plan?\n\nChoose one:`, 
+            [
+              { id: 'I_AM_STUDYING', title: 'I am studying' },
+              { id: 'UPLOAD_PLAN', title: 'Upload plan now' },
+              { id: 'START_RESCUE_MODE', title: 'Start Rescue Mode' }
+            ]
+          );
+          await recordEvent(userId, eventCode, todayKey);
+        }
+      }
+    }
+  }
+
+  // DAY_SLIPPING_BADLY
+  if (hasPlan && hour >= 15) {
+    let totalPlanned = 0;
+    let totalCompleted = 0;
+    for (const b of rows) {
+      totalPlanned += (b.planned_minutes || 0);
+      if (b.status === 'completed' || b.status === 'partial') {
+        totalCompleted += (b.completed_minutes || b.planned_minutes || 0);
+      } else if (b.status === 'active' || b.status === 'paused') {
+         // rough estimate
+         totalCompleted += (b.completed_minutes || 0);
+      }
+    }
+    
+    const plannedHours = totalPlanned / 60;
+    const completedHours = totalCompleted / 60;
+    const executionRate = totalPlanned > 0 ? (totalCompleted / totalPlanned) : 0;
+
+    if (
+      (executionRate < 0.30) ||
+      (plannedHours >= 6 && completedHours <= 1.5)
+    ) {
+      if (!(await hasEvent(userId, 'DAY_SLIPPING_BADLY', todayKey))) {
+        const { sendWhatsAppButtons } = await import('./whatsappService.js');
+        await sendWhatsAppButtons('91YOURNUMBER', 
+          `MentorOS Rescue Alert\n\nToday is slipping, but it is not lost.\n\nDo not try to complete the full plan now.\nStart Rescue Mode: only 3 serious blocks for the remaining day.\n\nChoose one:`, 
+          [
+            { id: 'START_RESCUE_MODE', title: 'Start Rescue Mode' },
+            { id: 'CONTINUE_CURRENT_PLAN', title: 'Continue Plan' },
+            { id: 'NEED_RESET', title: 'Need Reset' }
+          ]
+        );
+        await recordEvent(userId, 'DAY_SLIPPING_BADLY', todayKey);
+      }
+    }
+  }
+
 
 // Helper: Query notification_events to see if a notification was already sent
 async function hasEvent(userId, notificationType, sourceId) {

@@ -457,12 +457,15 @@ export async function stopBlock(
     outputType = null,
     outputCount = 0,
     weaknessNote = null,
-    actualMinutes = null
+    actualMinutes = null,
+    feedback = null,
+    reason = null,
+    productivityStatus = null
   } = {}
 ) {
   const { rows } = await pool.query(
     `UPDATE study_blocks
-     SET status              = 'partial',
+     SET status              = 'stopped',
          ended_at            = NOW(),
          total_pause_seconds = total_pause_seconds
                                + CASE WHEN paused_at IS NOT NULL
@@ -472,12 +475,15 @@ export async function stopBlock(
                                  END,
          paused_at           = NULL,
          completion_reason   = 'stopped',
+         stop_feedback       = $4,
+         stop_reason         = $5,
+         productivity_status = $6,
          calendar_sync_status = 'pending',
          updated_at          = NOW()
      WHERE user_id = $1 AND block_id = $2 AND day_key = $3
        AND status IN ('active','paused')
      RETURNING *`,
-    [userId, blockId, dayKey]
+    [userId, blockId, dayKey, feedback, reason, productivityStatus]
   );
 
   if (!rows.length) {

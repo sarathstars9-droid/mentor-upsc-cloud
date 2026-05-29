@@ -49,6 +49,58 @@ export function mapPlanItemToMicroTheme(topic, subject, extra = {}) {
       },
     };
   }
+
+  // --- GENERIC MAPPING GUARD ---
+  let stripped = clean;
+  const genericTerms = ["pyq", "pyqs", "revision", "the hindu", "news", "current affairs", "ca", "day revision", "practice", "mcq", "newspaper", "daily", "answer writing", "mock", "test", "read", "study"];
+  for (const t of genericTerms) {
+    stripped = stripped.replace(new RegExp(`\\b${t}\\b`, 'g'), '');
+  }
+  stripped = stripped.replace(/[^a-z0-9\s]/g, '').trim();
+
+  const broadSubjects = ["geography", "history", "polity", "economy", "csat", "science", "environment", "ethics", "gs1", "gs2", "gs3", "gs4", "art", "culture", "ir", "society"];
+  const strippedWords = stripped.split(/\s+/).filter(Boolean);
+  const isGeneric = strippedWords.length === 0 || strippedWords.every(w => broadSubjects.includes(w));
+
+  if (isGeneric && clean.split(/\s+/).length <= 7) {
+    let safeNodeId = null;
+    let code = null;
+    let gsPaper = null;
+    let fallbackMacro = "";
+    
+    const combinedCtx = `${clean} ${String(subject || "").toLowerCase()}`;
+    if (combinedCtx.includes('geography')) { safeNodeId = 'GS1-GEO'; code = 'GS1-GEO'; gsPaper = 'GS1'; fallbackMacro = "Geography"; }
+    else if (combinedCtx.includes('polity')) { safeNodeId = 'GS2-POL'; code = 'GS2-POL'; gsPaper = 'GS2'; fallbackMacro = "Polity"; }
+    else if (combinedCtx.includes('economy') || combinedCtx.includes('eco')) { safeNodeId = 'GS3-ECO'; code = 'GS3-ECO'; gsPaper = 'GS3'; fallbackMacro = "Economy"; }
+    else if (combinedCtx.includes('history')) { safeNodeId = 'GS1-HIS'; code = 'GS1-HIS'; gsPaper = 'GS1'; fallbackMacro = "History"; }
+    else if (combinedCtx.includes('csat') || combinedCtx.includes('aptitude')) { safeNodeId = 'CSAT'; code = 'CSAT'; gsPaper = 'CSAT'; fallbackMacro = "CSAT"; }
+    else if (combinedCtx.includes('science')) { safeNodeId = 'GS3-ST'; code = 'GS3-ST'; gsPaper = 'GS3'; fallbackMacro = "ScienceTech"; }
+    else if (combinedCtx.includes('environment')) { safeNodeId = 'GS3-ENV'; code = 'GS3-ENV'; gsPaper = 'GS3'; fallbackMacro = "Environment"; }
+    else if (combinedCtx.includes('ethics')) { safeNodeId = 'GS4'; code = 'GS4'; gsPaper = 'GS4'; fallbackMacro = "Ethics"; }
+
+    return {
+      matched: !!safeNodeId,
+      confidence: 0.2, // Low confidence
+      confidenceBand: "low",
+      subjectKey: safeNodeId ? fallbackMacro.toLowerCase() : null,
+      syllabusNodeId: safeNodeId,
+      code: code,
+      gsPaper: gsPaper,
+      subjectGroup: null,
+      macroTheme: fallbackMacro,
+      microTheme: topic,
+      mappedTopicName: topic,
+      matchedBy: ["GENERIC_GUARD"],
+      aliasesTriggered: [],
+      candidateCount: safeNodeId ? 1 : 0,
+      alternativeNodeIds: [],
+      reviewRequired: true,
+      phaseHints: { mode: "plan" },
+      analyticsHints: { topScore: 0.2 },
+      pyqs: { prelims: [], mains: [], essay: [], ethics: [], optional: [], csat: [] },
+      pyqStats: { prelims: 0, mains: 0, essay: 0, ethics: 0, optional: 0, csat: 0, total: 0 }
+    };
+  }
   const mapped = findMicroTheme(topic, subject, extra);
 
   const normalizedMapped = mapped?.found
