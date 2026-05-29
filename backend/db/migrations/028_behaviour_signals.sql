@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS public.behaviour_signals (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id TEXT NOT NULL,
-  block_id UUID,
+  block_id TEXT,
   stable_block_id TEXT,
   day_key DATE NOT NULL,
   subject TEXT,
@@ -29,3 +29,5 @@ CREATE UNIQUE INDEX IF NOT EXISTS behaviour_signals_upsert_idx ON public.behavio
 
 -- Index for fast retrieval by user and day
 CREATE INDEX IF NOT EXISTS behaviour_signals_user_day_idx ON public.behaviour_signals(user_id, day_key);
+
+

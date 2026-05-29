@@ -182,6 +182,7 @@ async function runAllMigrations() {
     ['028 Behaviour signals',                            'migrations/028_behaviour_signals.sql'],
     ['029 Discipline and rescue',                        'migrations/029_discipline_and_rescue.sql'],
     ['030 Add stop feedback',                            'migrations/030_add_stop_feedback.sql'],
+    ['031 Behaviour signals block id text',              'migrations/031_behaviour_signals_block_id_text.sql'],
   ];
 
   // Run 001-004 via standard runner
@@ -320,3 +321,4 @@ runAllMigrations().catch(err => {
   console.error('💥 Migration runner crashed:', err);
   process.exit(1);
 });
+

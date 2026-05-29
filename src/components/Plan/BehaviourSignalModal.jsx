@@ -76,19 +76,24 @@ export default function BehaviourSignalModal({
             };
 
             const url = `${BACKEND_URL || ""}/api/behaviour/signals`;
-            const res = await fetch(url, {
+            
+            // Best-effort telemetry - do not block lifecycle
+            fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
+            })
+            .then(async (res) => {
+                if (!res.ok) console.error("Failed to save behaviour signal", await res.text());
+            })
+            .catch(err => {
+                console.warn("Behaviour signal save failed, continuing stop lifecycle", err);
             });
             
-            if (res.ok) {
-                if (onSignalSaved) onSignalSaved();
-                handleClose();
-            } else {
-                console.error("Failed to save behaviour signal", await res.text());
-                handleClose();
-            }
+            // Always execute primary block lifecycle (stopBlock)
+            if (onSignalSaved) onSignalSaved(payload);
+            handleClose();
+
         } catch (e) {
             console.error("Error saving behaviour signal", e);
             handleClose();
