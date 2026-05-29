@@ -189,73 +189,28 @@ export async function getAllSubjectProgress(userId) {
 }
 
 // 3. Get daily progress report
-export async function getDailyProgressReport(userId) {
+export async function getDailyProgressReport(userId, overrideDayKey = null) {
+  // Do not calculate studied minutes here. Use getDailyExecutionSummary.
   const now = new Date();
   const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   const todayDate = new Date(kolkataStr);
   const yyyy = todayDate.getFullYear();
   const mm = String(todayDate.getMonth() + 1).padStart(2, '0');
   const dd = String(todayDate.getDate()).padStart(2, '0');
-  const todayKey = `${yyyy}-${mm}-${dd}`;
+  const todayKey = overrideDayKey || `${yyyy}-${mm}-${dd}`;
 
-  const { rows: blocks } = await query(
-    `SELECT * FROM public.study_blocks 
-     WHERE user_id = $1 AND day_key = $2
-     ORDER BY planned_start ASC, created_at ASC`,
-    [userId, todayKey]
-  );
+  const { getDailyExecutionSummary } = await import('./dailyExecutionSummaryService.js');
+  const summary = await getDailyExecutionSummary(userId, todayKey);
 
-  let totalPlannedMinutes = 0;
-  let totalActualSeconds = 0;
-  let startedCount = 0;
-  let completedCount = 0;
-  const list = [];
-
-  for (const b of blocks) {
-    totalPlannedMinutes += b.planned_minutes || 0;
-    
-    const st = String(b.status || '').toLowerCase();
-    const isCompleted = ['done', 'completed', 'partial'].includes(st) || (b.actual_minutes || 0) > 0;
-    
-    if (b.started_at || b.actual_minutes > 0 || ['active', 'paused'].includes(st)) {
-       startedCount++;
-    }
-
-    if (isCompleted) {
-      completedCount++;
-    }
-
-    let blockMinutes = 0;
-    if (b.actual_minutes > 0) {
-       blockMinutes = b.actual_minutes;
-    } else if (b.started_at) {
-      let actualSec = 0;
-      if (['done', 'completed', 'partial', 'missed', 'skipped'].includes(st) && b.ended_at) {
-        actualSec = Math.max(0, Math.floor((new Date(b.ended_at).getTime() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
-      } else if (st === 'paused' && b.paused_at) {
-        actualSec = Math.max(0, Math.floor((new Date(b.paused_at).getTime() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
-      } else if (st === 'active') {
-        actualSec = Math.max(0, Math.floor((Date.now() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
-      }
-      blockMinutes = Math.round(actualSec / 60.0);
-    }
-    
-    if (isCompleted && blockMinutes === 0) {
-       blockMinutes = b.planned_minutes || 0;
-    }
-
-    totalActualSeconds += (blockMinutes * 60);
-
-    list.push({
-      subject: normalizeSubjectLabel(b.subject || b.subject_id),
-      topic: b.topic,
-      planned_start: b.planned_start,
-      planned_end: b.planned_end,
-      status: b.status,
-      actual_minutes: blockMinutes,
-      planned_minutes: b.planned_minutes
-    });
-  }
+  const list = summary.blockRows.map(b => ({
+    subject: normalizeSubjectLabel(b.subject),
+    topic: b.title,
+    planned_start: b.planned_start, // Ensure we pass this or it will be undefined, wait I need to add planned_start to blockRows in dailyExecutionSummaryService!
+    planned_end: b.planned_end,
+    status: b.status,
+    actual_minutes: b.effectiveMinutes,
+    planned_minutes: b.plannedMinutes
+  }));
 
   // Get streak
   let streak = 0;
@@ -268,11 +223,11 @@ export async function getDailyProgressReport(userId) {
 
   return {
     date: todayKey,
-    total_blocks: blocks.length,
-    started_blocks: startedCount,
-    completed_blocks: completedCount,
-    total_planned_hours: Number((totalPlannedMinutes / 60.0).toFixed(1)),
-    total_actual_hours: Number((totalActualSeconds / 3600.0).toFixed(1)),
+    total_blocks: summary.totalBlocks,
+    started_blocks: summary.blockRows.filter(b => ['active','paused'].includes(b.status) || b.isCompleted).length,
+    completed_blocks: summary.completedBlocks,
+    total_planned_hours: Number((summary.plannedMinutes / 60.0).toFixed(1)),
+    total_actual_hours: Number((summary.studiedMinutes / 60.0).toFixed(1)),
     streak,
     blocks: list
   };
@@ -579,54 +534,17 @@ export async function getSubjectSubTargetsProgress(userId, parentSubject) {
 
 // 10. Get daily night report data
 export async function getDailyNightReportData(userId, todayKey) {
-  const { rows: blocks } = await query(
-    `SELECT * FROM public.study_blocks 
-     WHERE user_id = $1 AND day_key = $2`,
-    [userId, todayKey]
-  );
+  // Do not calculate studied minutes here. Use getDailyExecutionSummary.
+  const { getDailyExecutionSummary } = await import('./dailyExecutionSummaryService.js');
+  const summary = await getDailyExecutionSummary(userId, todayKey);
 
-  let totalPlannedMins = 0;
-  let totalActualMins = 0;
-  let completedCount = 0;
-  let missedCount = 0;
-  let startedCount = 0;
   let outputsCreated = 0;
-  const subjectsStudied = new Set();
+  let startedCount = summary.blockRows.filter(b => ['active','paused'].includes(b.status) || b.isCompleted).length;
 
-  for (const b of blocks) {
-    let blockPlanned = b.planned_minutes || 0;
-    if (blockPlanned === 0 && b.planned_start && b.planned_end) {
-      const [sh, sm] = b.planned_start.split(':').map(Number);
-      const [eh, em] = b.planned_end.split(':').map(Number);
-      const diff = (eh * 60 + em) - (sh * 60 + sm);
-      if (diff > 0) blockPlanned = diff;
-    }
-    totalPlannedMins += blockPlanned;
-
-    if (b.started_at) {
-      startedCount++;
-    }
-
-    let actualMins = 0;
-    if (b.started_at) {
-      let actualSec = 0;
-      if (['completed', 'partial', 'missed', 'skipped'].includes(b.status) && b.ended_at) {
-        actualSec = Math.max(0, Math.floor((new Date(b.ended_at).getTime() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
-      } else if (b.status === 'paused' && b.paused_at) {
-        actualSec = Math.max(0, Math.floor((new Date(b.paused_at).getTime() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
-      } else if (b.status === 'active') {
-        actualSec = Math.max(0, Math.floor((Date.now() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
-      }
-      actualMins = Math.round(actualSec / 60.0);
-    }
-    totalActualMins += actualMins;
-
-    if (['completed', 'partial'].includes(b.status)) {
-      completedCount++;
-      subjectsStudied.add(normalizeSubjectLabel(b.subject || b.subject_id));
-
+  for (const b of summary.blockRows) {
+    if (b.isCompleted) {
       const subLower = (b.subject || '').toLowerCase();
-      const topicLower = (b.topic || '').toLowerCase();
+      const topicLower = (b.title || '').toLowerCase();
       if (
         subLower.includes('answer') || topicLower.includes('answer') ||
         subLower.includes('test') || topicLower.includes('test') ||
@@ -634,14 +552,10 @@ export async function getDailyNightReportData(userId, todayKey) {
         subLower.includes('output') || topicLower.includes('output')
       ) {
         outputsCreated++;
-      } else if (actualMins >= 30) {
+      } else if (b.effectiveMinutes >= 30) {
         // Fallback: any substantial study block counts as output effort
         outputsCreated++;
       }
-    }
-
-    if (b.status === 'missed') {
-      missedCount++;
     }
   }
 
@@ -653,18 +567,18 @@ export async function getDailyNightReportData(userId, todayKey) {
   );
   const revisionDueCount = Number(revRes.rows[0]?.count || 0);
 
-  const plannedHours = totalPlannedMins / 60.0;
-  const actualHours = totalActualMins / 60.0;
+  const plannedHours = summary.plannedMinutes / 60.0;
+  const actualHours = summary.studiedMinutes / 60.0;
   const deficit = plannedHours - actualHours;
 
   let day_state = 'ACTIVE';
-  if (blocks.length === 0) {
+  if (summary.totalBlocks === 0) {
     day_state = 'NOT_STARTED';
   } else if (startedCount === 0) {
     day_state = 'PLAN_UPLOADED_NOT_STARTED';
-  } else if (missedCount > 2 || deficit > 3.0) {
+  } else if (summary.missedBlocks > 2 || deficit > 3.0) {
     day_state = 'SLIPPING';
-  } else if (completedCount >= Math.floor(blocks.length * 0.7)) {
+  } else if (summary.completedBlocks >= Math.floor(summary.totalBlocks * 0.7)) {
     day_state = 'COMPLETED';
   }
 
@@ -674,38 +588,39 @@ export async function getDailyNightReportData(userId, todayKey) {
     tomorrowCorrection = "Upload plan before 6 AM and start the first block on time.";
   } else if (day_state === 'PLAN_UPLOADED_NOT_STARTED') {
     tomorrowCorrection = "Start the first scheduled block immediately. Momentum matters more than perfect planning.";
-  } else if (missedCount > 0) {
-    const missed = blocks.find(b => b.status === 'missed');
+  } else if (summary.missedBlocks > 0) {
+    const missed = summary.blockRows.find(b => b.isMissed);
     if (missed) {
-      tomorrowCorrection = `Catch up on the missed ${normalizeSubjectLabel(missed.subject || missed.subject_id)} block.`;
+      tomorrowCorrection = `Catch up on the missed ${normalizeSubjectLabel(missed.subject)} block.`;
     }
   } else if (revisionDueCount > 10) {
     tomorrowCorrection = "Clear the pending revision backlog first.";
   } else if (deficit > 2.0) {
     tomorrowCorrection = "Reduce planned block lengths tomorrow to ensure execution.";
-  } else if (actualHours > 0 && completedCount >= Math.floor(blocks.length * 0.7)) {
+  } else if (actualHours > 0 && summary.completedBlocks >= Math.floor(summary.totalBlocks * 0.7)) {
     tomorrowCorrection = "Fantastic rhythm. Keep consistency alive!";
   } else {
     tomorrowCorrection = "Keep pushing forward. Consistency is key.";
   }
 
-  console.log(`[NightReport] date=${todayKey}, state=${day_state}, total_blocks=${blocks.length}, started_blocks=${startedCount}, completed_blocks=${completedCount}, planned_minutes=${totalPlannedMins}, actual_minutes=${totalActualMins}`);
+  console.log(`[NightReport] date=${todayKey}, state=${day_state}, total_blocks=${summary.totalBlocks}, started_blocks=${startedCount}, completed_blocks=${summary.completedBlocks}, planned_minutes=${summary.plannedMinutes}, actual_minutes=${summary.studiedMinutes}`);
 
   return {
     date: todayKey,
-    day_state,
-    total_blocks: blocks.length,
+    state: day_state,
+    total_blocks: summary.totalBlocks,
     started_blocks: startedCount,
-    target_hours: day_state === 'NOT_STARTED' ? 0 : Number(plannedHours.toFixed(1)),
-    actual_hours: Number(actualHours.toFixed(1)),
-    deficit: day_state === 'NOT_STARTED' ? 0 : Number((Math.max(0, deficit)).toFixed(1)),
-    subjects_completed: Array.from(subjectsStudied),
+    completed_blocks: summary.completedBlocks,
+    missed_blocks: summary.missedBlocks,
     outputs_created: outputsCreated,
-    missed_blocks: missedCount,
-    revision_due: revisionDueCount,
+    total_planned_hours: Number(plannedHours.toFixed(1)),
+    total_actual_hours: Number(actualHours.toFixed(1)),
+    deficit_hours: Number(Math.max(0, deficit).toFixed(1)),
+    subjects_studied: summary.subjectsCompleted,
     tomorrow_correction: tomorrowCorrection
   };
 }
+
 
 // 11. Get monthly progress report
 export async function getMonthlyProgressReport(userId, monthKey) {

@@ -28,6 +28,68 @@ export async function handleCommand(userId, destinationId, rawText) {
     const userRes = await query(`SELECT name FROM public.users WHERE id = $1`, [userId]);
     const userName = userRes.rows[0]?.name || "Moulika";
 
+    if (command.startsWith('debug daily summary')) {
+      const parts = command.split(' ');
+      let todayKey;
+      if (parts.length >= 4 && parts[3].match(/^\d{4}-\d{2}-\d{2}$/)) {
+        todayKey = parts[3];
+      } else {
+        const now = new Date();
+        const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(kolkataStr);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        todayKey = `${yyyy}-${mm}-${dd}`;
+      }
+
+      const { getDailyExecutionSummary } = await import('./dailyExecutionSummaryService.js');
+      const summary = await getDailyExecutionSummary(userId, todayKey);
+
+      let report = `⏱️ *Debug Daily Summary (${todayKey})*\n`;
+      report += `Total Blocks: ${summary.totalBlocks}\n`;
+      report += `Completed: ${summary.completedBlocks}\n`;
+      report += `Missed: ${summary.missedBlocks}\n`;
+      report += `Studied Minutes: ${summary.studiedMinutes}\n`;
+      report += `Planned Minutes: ${summary.plannedMinutes}\n`;
+      report += `Subjects Completed: ${summary.subjectsCompleted.join(', ') || 'None'}\n\n`;
+
+      for (const b of summary.blockRows) {
+        report += `*${b.title}* | ${b.subject}\n`;
+        report += `Status: ${b.status}\n`;
+        report += `Planned: ${b.plannedMinutes}m | Actual: ${b.actualMinutes}m | Effective: ${b.effectiveMinutes}m\n`;
+        report += `Completed: ${b.isCompleted ? 'YES' : 'NO'} | Missed: ${b.isMissed ? 'YES' : 'NO'}\n`;
+        if (b.skipReason) {
+          report += `Reason: ${b.skipReason}\n`;
+        }
+        report += `\n`;
+      }
+
+      await telegramService.sendMessage(destinationId, report, { parse_mode: 'Markdown' });
+      return;
+    }
+
+    if (command.startsWith('test night report')) {
+      const parts = command.split(' ');
+      let todayKey;
+      if (parts.length >= 4 && parts[3].match(/^\d{4}-\d{2}-\d{2}$/)) {
+        todayKey = parts[3];
+      } else {
+        const now = new Date();
+        const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(kolkataStr);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        todayKey = `${yyyy}-${mm}-${dd}`;
+      }
+
+      const data = await progressService.getDailyNightReportData(userId, todayKey);
+      const report = reportGeneratorService.generateNightReport(data, userName);
+      await telegramService.sendMessage(destinationId, report, { parse_mode: 'Markdown' });
+      return;
+    }
+
     switch (command) {
       case 'hi':
       case 'hello':
@@ -241,6 +303,121 @@ I’ll help you know what is completed, what is pending, and what to correct nex
       case 'day status': {
         const data = await progressService.getDailyProgressReport(userId);
         replyText = reportGeneratorService.generateDailyReport(data, userName);
+        break;
+      }
+
+
+      case 'debug block reminders': {
+        const now = new Date();
+        const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(kolkataStr);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        const todayKey = `${yyyy}-${mm}-${dd}`;
+        
+        let report = `⏱️ *Current IST time:* ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}\n\n`;
+
+        const { rows: todayBlocks } = await query(
+          `SELECT id, title, subject, topic, status, planned_start, planned_end, planned_minutes,
+                  COALESCE(actual_minutes, 0) AS actual_minutes,
+                  day_key, started_at, ended_at
+           FROM public.study_blocks
+           WHERE user_id = $1
+             AND day_key = $2
+           ORDER BY planned_start ASC`,
+          [userId, todayKey]
+        );
+
+        let eligibleCount = 0;
+
+        if (todayBlocks.length === 0) {
+          report += "No blocks found for today.";
+        } else {
+          for (const b of todayBlocks) {
+            const titleOrTopic = b.title || b.topic || b.subject;
+            report += `*${titleOrTopic}*\n`;
+            report += `Status: ${b.status}\n`;
+            report += `Start: ${b.planned_start}\n`;
+            report += `End: ${b.planned_end}\n`;
+            report += `Actual: ${b.actual_minutes || 0}m\n`;
+
+            if (!b.planned_start) {
+              report += `Skip reason: no planned_start\n\n`;
+              continue;
+            }
+
+            const [startH, startM] = b.planned_start.split(':').map(Number);
+            const blockStartDate = new Date(d);
+            blockStartDate.setHours(startH, startM, 0, 0);
+
+            const blockEndDate = b.planned_end ? new Date(d) : new Date(blockStartDate.getTime() + (b.planned_minutes || 60) * 60000);
+            if (b.planned_end) {
+               const [endH, endM] = b.planned_end.split(':').map(Number);
+               blockEndDate.setHours(endH, endM, 0, 0);
+            }
+
+            const actualMins = b.actual_minutes || 0;
+            const isCompleted = ['completed', 'done', 'partial'].includes(b.status) || actualMins > 0;
+            
+            if (isCompleted) {
+              report += `Skip reason: completed/done/partial or actual_minutes>0\n\n`;
+              continue;
+            }
+
+            if (['active', 'paused'].includes(b.status)) {
+              report += `Skip reason: active/paused (eligible only for pause-too-long)\n\n`;
+              continue;
+            }
+            
+            if (!['planned', 'upcoming', 'ready'].includes(b.status)) {
+              report += `Skip reason: status not planned/ready/upcoming\n\n`;
+              continue;
+            }
+
+            const timeDiffMins = (d.getTime() - blockStartDate.getTime()) / 60000;
+            const endsInMins = (blockEndDate.getTime() - d.getTime()) / 60000;
+
+            if (timeDiffMins >= 0 && timeDiffMins <= 10) {
+              report += `Eligible for: BLOCK_START_REMINDER\n\n`;
+              eligibleCount++;
+            } else if (timeDiffMins >= 15 && endsInMins > 0) {
+              report += `Eligible for: CURRENT_BLOCK_NOT_STARTED\n\n`;
+              eligibleCount++;
+            } else if (timeDiffMins >= 15 && endsInMins <= 0) {
+              report += `Eligible for: Missed silently (past planned_end)\n\n`;
+            } else if (timeDiffMins < 0) {
+              report += `Skip reason: wait_for_start_time\n\n`;
+            } else {
+              report += `Skip reason: wait_15_mins\n\n`;
+            }
+          }
+          
+          report = `⏱️ *Current IST time:* ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}\nBlocks found: ${todayBlocks.length}, eligible: ${eligibleCount}\n\n` + report.replace(/^⏱️.*?\n\n/m, '');
+        }
+        
+        replyText = report;
+        break;
+      }
+
+      case 'test block started': {
+        const { sendNotification } = await import('./notificationService.js');
+        await sendNotification(userId, 'BLOCK_STARTED', 'test', '123', `🚀 *Block Started*\nMoulika, Test Subject has started.\nTarget: 60m\nFocus: create output, not just reading.`);
+        replyText = "Sent BLOCK_STARTED test notification.";
+        break;
+      }
+
+      case 'test block completed': {
+        const { sendNotification } = await import('./notificationService.js');
+        await sendNotification(userId, 'BLOCK_COMPLETED', 'test', '123', `✅ *Block Completed*\nSubject: Test Subject\nPlanned: 60m\nActual: 55m\nThis counts toward your target.`);
+        replyText = "Sent BLOCK_COMPLETED test notification.";
+        break;
+      }
+
+      case 'test pause long': {
+        const { sendNotification } = await import('./notificationService.js');
+        await sendNotification(userId, 'BLOCK_PAUSED_TOO_LONG', 'test', '123', `⏸️ *Pause Alert*\nMoulika, this block has been paused for 25 minutes.\nRestart with just 25 minutes. No perfection needed.`);
+        replyText = "Sent BLOCK_PAUSED_TOO_LONG test notification.";
         break;
       }
 
