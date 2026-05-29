@@ -1,4 +1,4 @@
-import { getDisplayStatus } from "../../utils/studyEngine";
+﻿import { getDisplayStatus } from "../../utils/studyEngine";
 
 // ── helpers ───────────────────────────────────────────────────────────────────
 
@@ -33,8 +33,8 @@ function derivePyqNodeId(block) {
 const SC = {
   active:    { bg: "rgba(249,115,22,0.10)", border: "rgba(249,115,22,0.30)", color: "#f97316", dot: "#f97316", label: "ACTIVE"    },
   paused:    { bg: "rgba(234,179,8,0.09)",  border: "rgba(234,179,8,0.28)",  color: "#eab308", dot: "#eab308", label: "PAUSED"    },
-  completed: { bg: "rgba(100,116,139,0.07)",border: "rgba(100,116,139,0.18)",color: "#475569", dot: "#334155", label: "DONE"      },
-  done:      { bg: "rgba(100,116,139,0.07)",border: "rgba(100,116,139,0.18)",color: "#475569", dot: "#334155", label: "DONE"      },
+  completed: { bg: "rgba(34, 197, 94, 0.08)",border: "rgba(34, 197, 94, 0.22)",color: "#16a34a", dot: "#15803d", label: "DONE"      },
+  done:      { bg: "rgba(34, 197, 94, 0.08)",border: "rgba(34, 197, 94, 0.22)",color: "#16a34a", dot: "#15803d", label: "DONE"      },
   planned:   { bg: "rgba(148,163,184,0.06)",border: "rgba(148,163,184,0.14)",color: "#475569", dot: "#1e2d4a", label: "PLANNED"   },
 };
 
@@ -59,7 +59,7 @@ export default function BlockCard({ block, busy, onStart, onPause, onResume, onS
   const isActive    = status === "active";
   const isPaused    = status === "paused";
   const isPlanned   = status === "planned";
-  const isCompleted = status === "completed" || status === "done";
+  const isCompleted = status === "completed" || status === "done" || status === "stopped" || status === "missed";
   const isDone      = isCompleted;
 
   const title    = deriveTitle(block);
@@ -94,7 +94,7 @@ export default function BlockCard({ block, busy, onStart, onPause, onResume, onS
   return (
     <article style={{
       background: isActive ? "linear-gradient(145deg, var(--mo-surface), var(--mo-surface-2))" : "linear-gradient(145deg, var(--mo-surface), var(--mo-bg-soft))",
-      border: `1px solid ${isActive ? "var(--mo-border-amber)" : "var(--mo-border)"}`,
+      border: `1px solid ${isActive ? "var(--mo-border-amber)" : (isDone ? "rgba(34, 197, 94, 0.15)" : "var(--mo-border)")}`,
       borderRadius: 22,
       padding: "14px 16px",
       display: "flex",
@@ -166,14 +166,18 @@ export default function BlockCard({ block, busy, onStart, onPause, onResume, onS
             <div style={{
               height: "100%", borderRadius: 2,
               width: `${pct}%`,
-              background: isActive ? "#f97316" : isPaused ? "#eab308" : "#1e2d4a",
+              background: isActive ? "#f97316" : isPaused ? "#eab308" : isDone ? "rgba(34, 197, 94, 0.4)" : "#1e2d4a",
               transition: "width 1s linear",
               minWidth: pct > 0 ? 2 : 0,
             }} />
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <span style={{ fontSize: 10, color: "#334155", fontFamily: "var(--mono,monospace)" }}>
-              {doneMin > 0 ? `${doneMin} min done · ${leftMin} min left` : `${totalMin} min left`}
+              {doneMin > 0
+                ? doneMin > totalMin 
+                  ? `${doneMin} min studied · ${doneMin - totalMin} min overtime`
+                  : isDone ? `${doneMin} min studied · completed` : `${doneMin} min done · ${leftMin} min left`
+                : isDone ? `0 min studied · completed` : `${totalMin} min left`}
             </span>
             {pct > 0 && (
               <span style={{ fontSize: 10, color: "#1e2d4a", fontFamily: "var(--mono,monospace)" }}>
