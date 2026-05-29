@@ -603,31 +603,83 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
     await client.query('BEGIN');
     for (const b of gasBlocks) {
       if (!b.BlockId) continue;
-      await client.query(
-        `INSERT INTO study_blocks
-           (user_id, block_id, day_key, title, subject, topic,
-            planned_start, planned_end, planned_minutes, status)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,'planned')
-         ON CONFLICT (user_id, block_id, day_key)
-         DO UPDATE SET
-           title           = EXCLUDED.title,
-           subject         = EXCLUDED.subject,
-           topic           = EXCLUDED.topic,
-           planned_start   = EXCLUDED.planned_start,
-           planned_end     = EXCLUDED.planned_end,
-           planned_minutes = EXCLUDED.planned_minutes,
-           updated_at      = NOW()
-         WHERE study_blocks.status = 'planned'`,
-        [
-          userId, b.BlockId, dayKey,
-          b.Subject || b.PlannedSubject || '',
-          b.Subject || b.PlannedSubject || '',
-          b.Topic   || b.PlannedTopic  || '',
-          b.Start   || b.PlannedStart  || '',
-          b.End     || b.PlannedEnd    || '',
-          Number(b.Minutes || b.PlannedMinutes || 0),
-        ]
+      
+      const rawStatus = String(b.Status || '').toUpperCase();
+      const incomingStatus = rawStatus === 'DONE' ? 'completed' : rawStatus === 'MISSED' ? 'missed' : 'planned';
+      const plannedMins = Number(b.Minutes || b.PlannedMinutes || 0);
+      const incomingActualMins = incomingStatus === 'completed' ? plannedMins : 0;
+      
+      const { rows } = await client.query(
+        `SELECT id, status FROM study_blocks WHERE user_id=$1 AND block_id=$2 AND day_key=$3`,
+        [userId, b.BlockId, dayKey]
       );
+      
+      if (rows.length === 0) {
+         const res = await client.query(
+           `INSERT INTO study_blocks
+              (user_id, block_id, day_key, title, subject, topic,
+               planned_start, planned_end, planned_minutes, status, actual_minutes, completed_at, ended_at)
+            VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11, CASE WHEN $10='completed' THEN NOW() ELSE NULL END, CASE WHEN $10='completed' THEN NOW() ELSE NULL END)
+            RETURNING id`,
+           [
+             userId, b.BlockId, dayKey,
+             b.Subject || b.PlannedSubject || '',
+             b.Subject || b.PlannedSubject || '',
+             b.Topic   || b.PlannedTopic  || '',
+             b.Start   || b.PlannedStart  || '',
+             b.End     || b.PlannedEnd    || '',
+             plannedMins,
+             incomingStatus,
+             incomingActualMins
+           ]
+         );
+         
+         if (incomingStatus === 'completed') {
+             await client.query(
+                `INSERT INTO public.block_logs (block_id, user_id, started_at, ended_at, actual_minutes, completion_status)
+                 VALUES ($1, $2, NOW(), NOW(), $3, 'completed')`,
+                [res.rows[0].id, userId, incomingActualMins]
+             );
+         }
+      } else {
+         const dbId = rows[0].id;
+         const currentStatus = rows[0].status;
+         
+         await client.query(
+            `UPDATE study_blocks SET
+               title           = $1,
+               subject         = $2,
+               topic           = $3,
+               planned_start   = $4,
+               planned_end     = $5,
+               planned_minutes = $6,
+               updated_at      = NOW()
+             WHERE id = $7`,
+            [
+              b.Subject || b.PlannedSubject || '',
+              b.Subject || b.PlannedSubject || '',
+              b.Topic   || b.PlannedTopic  || '',
+              b.Start   || b.PlannedStart  || '',
+              b.End     || b.PlannedEnd    || '',
+              plannedMins,
+              dbId
+            ]
+         );
+         
+         if (currentStatus === 'planned' && incomingStatus !== 'planned') {
+             await client.query(
+                `UPDATE study_blocks SET status=$1, actual_minutes=$2, completed_at=CASE WHEN $1='completed' THEN NOW() ELSE NULL END, ended_at=NOW() WHERE id=$3`,
+                [incomingStatus, incomingActualMins, dbId]
+             );
+             if (incomingStatus === 'completed') {
+                 await client.query(
+                    `INSERT INTO public.block_logs (block_id, user_id, started_at, ended_at, actual_minutes, completion_status)
+                     VALUES ($1, $2, NOW(), NOW(), $3, 'completed')`,
+                    [dbId, userId, incomingActualMins]
+                 );
+             }
+         }
+      }
     }
     await client.query('COMMIT');
   } catch (err) {

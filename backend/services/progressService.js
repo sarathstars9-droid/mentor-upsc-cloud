@@ -213,24 +213,38 @@ export async function getDailyProgressReport(userId) {
 
   for (const b of blocks) {
     totalPlannedMinutes += b.planned_minutes || 0;
-
-    // Derive actual seconds using the standard logic
-    let actualSec = 0;
-    if (b.started_at) {
-      startedCount++;
-      if (['completed', 'partial', 'missed', 'skipped'].includes(b.status) && b.ended_at) {
-        actualSec = Math.max(0, Math.floor((new Date(b.ended_at).getTime() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
-      } else if (b.status === 'paused' && b.paused_at) {
-        actualSec = Math.max(0, Math.floor((new Date(b.paused_at).getTime() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
-      } else if (b.status === 'active') {
-        actualSec = Math.max(0, Math.floor((Date.now() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
-      }
+    
+    const st = String(b.status || '').toLowerCase();
+    const isCompleted = ['done', 'completed', 'partial'].includes(st) || (b.actual_minutes || 0) > 0;
+    
+    if (b.started_at || b.actual_minutes > 0 || ['active', 'paused'].includes(st)) {
+       startedCount++;
     }
-    totalActualSeconds += actualSec;
 
-    if (['completed', 'partial'].includes(b.status)) {
+    if (isCompleted) {
       completedCount++;
     }
+
+    let blockMinutes = 0;
+    if (b.actual_minutes > 0) {
+       blockMinutes = b.actual_minutes;
+    } else if (b.started_at) {
+      let actualSec = 0;
+      if (['done', 'completed', 'partial', 'missed', 'skipped'].includes(st) && b.ended_at) {
+        actualSec = Math.max(0, Math.floor((new Date(b.ended_at).getTime() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
+      } else if (st === 'paused' && b.paused_at) {
+        actualSec = Math.max(0, Math.floor((new Date(b.paused_at).getTime() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
+      } else if (st === 'active') {
+        actualSec = Math.max(0, Math.floor((Date.now() - new Date(b.started_at).getTime()) / 1000) - (b.total_pause_seconds || 0));
+      }
+      blockMinutes = Math.round(actualSec / 60.0);
+    }
+    
+    if (isCompleted && blockMinutes === 0) {
+       blockMinutes = b.planned_minutes || 0;
+    }
+
+    totalActualSeconds += (blockMinutes * 60);
 
     list.push({
       subject: normalizeSubjectLabel(b.subject || b.subject_id),
@@ -238,7 +252,7 @@ export async function getDailyProgressReport(userId) {
       planned_start: b.planned_start,
       planned_end: b.planned_end,
       status: b.status,
-      actual_minutes: Math.round(actualSec / 60.0),
+      actual_minutes: blockMinutes,
       planned_minutes: b.planned_minutes
     });
   }

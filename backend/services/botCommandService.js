@@ -244,6 +244,29 @@ I’ll help you know what is completed, what is pending, and what to correct nex
         break;
       }
 
+      case 'debug day blocks': {
+        const { query } = await import('../db/index.js');
+        const now = new Date();
+        const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(kolkataStr);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        const todayKey = `${yyyy}-${mm}-${dd}`;
+        
+        const { rows } = await query(`SELECT subject, status, planned_minutes, actual_minutes, started_at, ended_at FROM study_blocks WHERE user_id=$1 AND day_key=$2 ORDER BY planned_start ASC`, [userId, todayKey]);
+        
+        replyText = `🐛 *DEBUG: ${todayKey}*\n\n`;
+        if (!rows.length) {
+          replyText += "No blocks found today.";
+        } else {
+          rows.forEach((r, i) => {
+            replyText += `${i+1}. ${r.subject || 'No Subject'} | Status: ${r.status} | Plan: ${r.planned_minutes}m | Actual: ${r.actual_minutes}m | Start: ${r.started_at ? 'Yes' : 'No'}\n`;
+          });
+        }
+        break;
+      }
+
       case 'mission status': {
         const data = await progressService.getGoodMorningReportData(userId);
         const percent = data.target_hours > 0 ? ((data.completed_hours / data.target_hours) * 100).toFixed(1) : 0;
