@@ -46,6 +46,7 @@ export async function seedDefaultPreferences(userId) {
     { type: 'END_OF_DAY_REPORT', enabled: true },
     { type: 'SYLLABUS_TRACK_REPLY', enabled: true },
     { type: 'BACKLOG_ALERT', enabled: true },
+    { type: 'DISTRACTION_ALERT', enabled: true },
     { type: 'BLOCK_PAUSED', enabled: false },
     { type: 'BLOCK_RESUMED', enabled: false }
   ];

@@ -89,6 +89,7 @@ import progressRoutes from "./routes/progressRoutes.js";
 import behaviourRoutes from "./routes/behaviourRoutes.js";
 import whatsappWebhookRoutes from "./routes/whatsappWebhookRoutes.js";
 import disciplineRoutes from "./routes/disciplineRoutes.js";
+import guardianRoutes from "./routes/guardianRoutes.js";
 import { registerEnvChatId, startTelegramPolling } from "./services/telegramService.js";
 import { initNotificationScheduler } from "./services/notificationScheduler.js";
 import {
@@ -545,6 +546,7 @@ app.use("/api/behaviour", behaviourRoutes);
 // ── Discipline & Rescue System ────────────────────────────────────────────────
 app.use("/api", whatsappWebhookRoutes);
 app.use("/api/discipline", disciplineRoutes);
+app.use("/api/guardian", guardianRoutes);
 
 import { sendTelegramMessage } from "./services/telegramService.js";
 
