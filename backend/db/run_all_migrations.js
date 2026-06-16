@@ -184,6 +184,8 @@ async function runAllMigrations() {
     ['030 Add stop feedback',                            'migrations/030_add_stop_feedback.sql'],
     ['031 Behaviour signals block id text',              'migrations/031_behaviour_signals_block_id_text.sql'],
     ['032 Behavior escalation engine',                   'migrations/032_behavior_escalation_engine.sql'],
+    ['033 Add recovery notification idempotency',        'migrations/033_add_recovery_notification_idempotency.sql'],
+    ['034 Add recovery wizard fields',                   'migrations/034_add_recovery_wizard_fields.sql'],
   ];
 
   // Run 001-004 via standard runner

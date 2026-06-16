@@ -1,8 +1,9 @@
 // backend/services/behaviorEscalationService.js
-import { query } from '../db/index.js';
+import { query, withTransaction } from '../db/index.js';
 import { getDailyTargetMinutes } from './adaptiveGoalService.js';
 import { logDailyHealthState } from './missionHealthLogService.js';
 import * as telegramService from './telegramService.js';
+import * as psychologyMessageService from './psychologyMessageService.js';
 
 /**
  * Helper: Get yesterday's date key relative to todayKey.
@@ -124,6 +125,13 @@ export async function analyzeDailyRisk(userId, todayKey) {
   } else if (oldState === 'RECOVERY' && completedMinsYesterday === 0) {
     // Failed recovery, fall back to risk state
     newState = determineStateFromStreaks(zeroStreak, missedPlanStreak);
+  } else if (['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(oldState)) {
+    if (completedMinsYesterday > 0) {
+      newState = 'RECOVERY';
+      recDay = 1;
+    } else {
+      newState = 'MISSION_RECOVERY';
+    }
   } else {
     // Standard state transition
     newState = determineStateFromStreaks(zeroStreak, missedPlanStreak);
@@ -236,7 +244,7 @@ export async function analyzeDailyRisk(userId, todayKey) {
  * Determine the user health state based on streaks.
  */
 function determineStateFromStreaks(zeroStreak, missedPlanStreak) {
-  if (zeroStreak >= 21) return 'MISSION_FAILURE';
+  if (zeroStreak >= 21 || missedPlanStreak >= 21) return 'MISSION_FAILURE';
   if (zeroStreak >= 14) return 'CRITICAL';
   if (zeroStreak >= 7) return 'HIGH_RISK';
   if (zeroStreak >= 3 || missedPlanStreak >= 3) return 'AT_RISK';
@@ -250,54 +258,90 @@ function determineStateFromStreaks(zeroStreak, missedPlanStreak) {
  */
 export async function checkAndTriggerRecovery(userId, dayKey) {
   try {
-    // 1. Fetch user's current state
-    const userRes = await query(
-      `SELECT mission_health_state, recovery_day FROM public.users WHERE id = $1`,
-      [userId]
-    );
-    if (userRes.rows.length === 0) return;
-    const user = userRes.rows[0];
-    const currentState = user.mission_health_state || 'HEALTHY';
-
-    // Recovery is only triggered when returning from severe risk states
-    if (!['HIGH_RISK', 'CRITICAL', 'MISSION_FAILURE'].includes(currentState)) {
-      return;
-    }
-
-    // 2. Query today's completed study blocks and completed minutes
-    const completedRes = await query(
-      `SELECT COUNT(*) as count, SUM(actual_minutes) as completed_mins 
-       FROM public.study_blocks 
-       WHERE user_id = $1 AND day_key = $2 AND status IN ('completed', 'partial') AND actual_minutes > 0`,
-      [userId, dayKey]
-    );
-    const completedCount = Number(completedRes.rows[0]?.count || 0);
-    const completedMins = Number(completedRes.rows[0]?.completed_mins || 0);
-
-    if (completedCount > 0) {
-      console.log(`[BehaviorEscalation RECOVERY TRIGGER] User ${userId} completed a block in state ${currentState}. Initiating RECOVERY.`);
-      
-      const targetMins = getDailyTargetMinutes('RECOVERY', 1, 600);
-      const performanceRatio = targetMins > 0 ? (completedMins / targetMins) : 1.0;
-      const initialRecoveryScore = calculateRecoveryScore('RECOVERY', 1, performanceRatio);
-
-      // Update state to RECOVERY Day 1
-      await query(
-        `UPDATE public.users 
-         SET mission_health_state = 'RECOVERY',
-             recovery_day = 1,
-             recovery_score = $3,
-             consecutive_zero_study_days = 0,
-             consecutive_missed_plan_days = 0,
-             consecutive_ignored_reminder_days = 0,
-             last_meaningful_study_date = $2::date,
-             last_escalation_at = NOW()
-         WHERE id = $1`,
-        [userId, dayKey, initialRecoveryScore]
+    const result = await withTransaction(async (client) => {
+      // 1. Fetch user's current state with FOR UPDATE lock
+      const userRes = await client.query(
+        `SELECT mission_health_state, recovery_day, last_recovery_message_at 
+         FROM public.users WHERE id = $1 FOR UPDATE`,
+        [userId]
       );
+      if (userRes.rows.length === 0) return { triggered: false };
+      const user = userRes.rows[0];
+      const currentState = user.mission_health_state || 'HEALTHY';
+      const lastRecoveryMessageAt = user.last_recovery_message_at;
 
+      // Recovery is only triggered when returning from severe risk states
+      if (!['HIGH_RISK', 'CRITICAL', 'MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(currentState)) {
+        return { triggered: false };
+      }
+
+
+
+      // Check if we have a duplicate row in public.notification_events for today
+      const dupRes = await client.query(
+        `SELECT id FROM public.notification_events 
+         WHERE user_id = $1 AND notification_type = 'RECOVERY_NOTIFICATION' AND source_type = 'recovery_date' AND source_id = $2`,
+        [userId, dayKey]
+      );
+      if (dupRes.rows.length > 0) {
+        console.log(`[BehaviorEscalation RECOVERY] Recovery event already exists in notification_events today for user ${userId}. Skipping duplicate.`);
+        return { triggered: false };
+      }
+
+      // 2. Query today's completed study blocks and completed minutes
+      const completedRes = await client.query(
+        `SELECT COUNT(*) as count, SUM(actual_minutes) as completed_mins 
+         FROM public.study_blocks 
+         WHERE user_id = $1 AND day_key = $2 AND status IN ('completed', 'partial') AND actual_minutes > 0`,
+        [userId, dayKey]
+      );
+      const completedCount = Number(completedRes.rows[0]?.count || 0);
+      const completedMins = Number(completedRes.rows[0]?.completed_mins || 0);
+
+      if (completedCount > 0) {
+        console.log(`[BehaviorEscalation RECOVERY TRIGGER] User ${userId} completed a block in state ${currentState}. Initiating RECOVERY.`);
+        
+        const targetMins = getDailyTargetMinutes('RECOVERY', 1, 600);
+        const performanceRatio = targetMins > 0 ? (completedMins / targetMins) : 1.0;
+        const initialRecoveryScore = calculateRecoveryScore('RECOVERY', 1, performanceRatio);
+
+        // Update state to RECOVERY Day 1
+        await client.query(
+          `UPDATE public.users 
+           SET mission_health_state = 'RECOVERY',
+               recovery_day = 1,
+               recovery_score = $3,
+               consecutive_zero_study_days = 0,
+               consecutive_missed_plan_days = 0,
+               consecutive_ignored_reminder_days = 0,
+               last_meaningful_study_date = $2::date,
+               last_recovery_message_at = NOW(),
+               last_escalation_at = NOW(),
+               recovery_wizard_step = 0
+           WHERE id = $1`,
+          [userId, dayKey, initialRecoveryScore]
+        );
+
+        // Insert notification event for deduplication inside transaction
+        await client.query(
+          `INSERT INTO public.notification_events 
+             (user_id, notification_type, source_type, source_id, channel_type, status, sent_at)
+           VALUES ($1, 'RECOVERY_NOTIFICATION', 'recovery_date', $2, 'TELEGRAM', 'sent', NOW())
+           ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type) DO NOTHING`,
+          [userId, dayKey]
+        );
+
+        return { triggered: true, previousState: currentState };
+      }
+      return { triggered: false };
+    });
+
+    if (result && result.triggered) {
       // Send positive reinforcement Telegram message immediately
-      const text = `Good. The streak is broken. Don’t chase perfection today. Protect tomorrow.`;
+      let text = `Good. The streak is broken. Don’t chase perfection today. Protect tomorrow.`;
+      if (result.previousState === 'RECOVERY_WIZARD') {
+        text = `✅ Recovery Day 1\n\nYou broke the inactivity streak. Today's victory is not the number of hours. Today's victory is showing up. Tomorrow we'll build again.`;
+      }
 
       // Get Chat ID
       const destRes = await query(
@@ -313,6 +357,78 @@ export async function checkAndTriggerRecovery(userId, dayKey) {
     }
   } catch (err) {
     console.error(`[BehaviorEscalation checkAndTriggerRecovery ERROR]`, err);
+  }
+}
+
+/**
+ * Checks if the user is in MISSION_FAILURE state and, if so, transactionally 
+ * sends the recovery invitation and moves them to MISSION_RECOVERY state.
+ */
+export async function checkAndSendRecoveryInvitation(userId) {
+  try {
+    const result = await withTransaction(async (client) => {
+      const userRes = await client.query(
+        `SELECT mission_health_state, name FROM public.users WHERE id = $1 FOR UPDATE`,
+        [userId]
+      );
+      if (userRes.rows.length === 0) return { sent: false };
+      const user = userRes.rows[0];
+      const currentState = user.mission_health_state || 'HEALTHY';
+
+      if (currentState !== 'MISSION_FAILURE') {
+        return { sent: false };
+      }
+
+      // Record invitation in notification_events as deduplication
+      const todayKey = new Date().toISOString().slice(0, 10);
+      const dupRes = await client.query(
+        `SELECT id FROM public.notification_events 
+         WHERE user_id = $1 AND notification_type = 'RECOVERY_INVITATION' AND source_type = 'daily_date' AND source_id = $2`,
+        [userId, todayKey]
+      );
+      if (dupRes.rows.length > 0) {
+        return { sent: false };
+      }
+
+      // Update state to MISSION_RECOVERY and set last_recovery_message_at
+      await client.query(
+        `UPDATE public.users 
+         SET mission_health_state = 'MISSION_RECOVERY',
+             last_recovery_message_at = NOW(),
+             last_escalation_at = NOW(),
+             recovery_wizard_step = 0
+         WHERE id = $1`,
+        [userId]
+      );
+
+      // Insert event log
+      await client.query(
+        `INSERT INTO public.notification_events 
+           (user_id, notification_type, source_type, source_id, channel_type, status, sent_at)
+         VALUES ($1, 'RECOVERY_INVITATION', 'daily_date', $2, 'TELEGRAM', 'sent', NOW())
+         ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type) DO NOTHING`,
+        [userId, todayKey]
+      );
+
+      return { sent: true, userName: user.name || "Moulika" };
+    });
+
+    if (result && result.sent) {
+      const text = psychologyMessageService.getRecoveryInvitationMessage(result.userName);
+      
+      const destRes = await query(
+        `SELECT destination_id FROM public.notification_channels 
+         WHERE user_id = $1 AND channel_type = 'TELEGRAM' AND is_enabled = TRUE LIMIT 1`,
+        [userId]
+      );
+      if (destRes.rows.length > 0) {
+        const chatId = destRes.rows[0].destination_id;
+        await telegramService.sendTelegramMessage(chatId, text);
+        console.log(`[BehaviorEscalation] Sent Recovery Invitation to ${userId} (Chat: ${chatId})`);
+      }
+    }
+  } catch (err) {
+    console.error(`[BehaviorEscalation checkAndSendRecoveryInvitation ERROR]`, err);
   }
 }
 

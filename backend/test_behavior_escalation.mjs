@@ -9,11 +9,16 @@ import * as reportGeneratorService from './services/reportGeneratorService.js';
 
 const TEST_USER = 'test_user_escalation';
 
-// Mock Telegram API requests to return success instantly
+// Mock Telegram API requests to return success instantly and count messages
 const originalFetch = globalThis.fetch || global.fetch;
+let telegramMessageCount = 0;
+globalThis.resetTelegramMessageCount = () => { telegramMessageCount = 0; };
+globalThis.getTelegramMessageCount = () => telegramMessageCount;
+
 const mockFetch = async (url, options) => {
   const urlStr = typeof url === 'object' && url.href ? url.href : String(url);
   if (urlStr.includes('api.telegram.org')) {
+    telegramMessageCount++;
     return {
       ok: true,
       status: 200,
@@ -33,8 +38,8 @@ async function setupTestData() {
   await query(
     `INSERT INTO public.users (id, name, mission_health_state, consecutive_zero_study_days, 
                               consecutive_missed_plan_days, consecutive_ignored_reminder_days, 
-                              recovery_day, recovery_score, notification_count_today, last_notification_date)
-     VALUES ($1, 'Test User', 'HEALTHY', 0, 0, 0, 0, 100, 0, '2026-06-16')
+                              recovery_day, recovery_score, notification_count_today, last_notification_date, last_recovery_message_at)
+     VALUES ($1, 'Test User', 'HEALTHY', 0, 0, 0, 0, 100, 0, '2026-06-16', NULL)
      ON CONFLICT (id) DO UPDATE SET 
        mission_health_state = 'HEALTHY',
        consecutive_zero_study_days = 0,
@@ -43,7 +48,8 @@ async function setupTestData() {
        recovery_day = 0,
        recovery_score = 100,
        notification_count_today = 0,
-       last_notification_date = '2026-06-16'`,
+       last_notification_date = '2026-06-16',
+       last_recovery_message_at = NULL`,
     [TEST_USER]
   );
 
@@ -158,7 +164,11 @@ async function runTests() {
 
   // Set user to CRITICAL
   await query(
-    `UPDATE public.users SET mission_health_state = 'CRITICAL', consecutive_zero_study_days = 14 WHERE id = $1`,
+    `UPDATE public.users 
+     SET mission_health_state = 'CRITICAL', 
+         consecutive_zero_study_days = 14, 
+         last_recovery_message_at = NULL 
+     WHERE id = $1`,
     [TEST_USER]
   );
 
@@ -305,6 +315,236 @@ async function runTests() {
 
   // Test RECOVERY Day 5+ range: 80 - 95
   assertInRange(calc('RECOVERY', 5, 1.0, 100.0), 80, 95, 'RECOVERY Day 5+ (100% performance)');
+
+  // ===========================================================================
+  // TEST 6: Recovery Notification Idempotency & Deduplication
+  // ===========================================================================
+  console.log('\n[Test 6] Verifying Recovery Notification Idempotency & Deduplication...');
+  
+  // Reset user to CRITICAL
+  await query(
+    `UPDATE public.users 
+     SET mission_health_state = 'CRITICAL', 
+         consecutive_zero_study_days = 14,
+         recovery_day = 0,
+         recovery_score = 20,
+         last_recovery_message_at = NULL
+     WHERE id = $1`,
+    [TEST_USER]
+  );
+  await query(`DELETE FROM public.notification_events WHERE user_id = $1`, [TEST_USER]);
+
+  // Reset telegram message counter
+  globalThis.resetTelegramMessageCount();
+
+  // Insert 3 completed study blocks for today
+  await query(
+    `INSERT INTO public.study_blocks (user_id, block_id, day_key, subject, planned_minutes, actual_minutes, status, started_at, ended_at)
+     VALUES 
+       ($1, 'b_idem_1', '2026-06-16', 'Geography Optional', 25, 25, 'completed', NOW(), NOW()),
+       ($1, 'b_idem_2', '2026-06-16', 'Geography Optional', 25, 25, 'completed', NOW(), NOW()),
+       ($1, 'b_idem_3', '2026-06-16', 'Geography Optional', 25, 25, 'completed', NOW(), NOW())`,
+    [TEST_USER]
+  );
+
+  // Simulate 3 concurrent/duplicate calls (like websocket events / offline sync replay / concurrent finish requests)
+  await Promise.all([
+    behaviorEscalationService.checkAndTriggerRecovery(TEST_USER, '2026-06-16'),
+    behaviorEscalationService.checkAndTriggerRecovery(TEST_USER, '2026-06-16'),
+    behaviorEscalationService.checkAndTriggerRecovery(TEST_USER, '2026-06-16')
+  ]);
+
+  // Assert exactly 1 telegram message was sent
+  assertEqual(globalThis.getTelegramMessageCount(), 1, 'Exactly ONE recovery notification sent under concurrent block completions');
+
+  // Verify that the user state transitioned to RECOVERY
+  const checkUser = await query(`SELECT mission_health_state, last_recovery_message_at FROM public.users WHERE id = $1`, [TEST_USER]);
+  assertEqual(checkUser.rows[0].mission_health_state, 'RECOVERY', 'User state must be RECOVERY');
+  if (!checkUser.rows[0].last_recovery_message_at) {
+    console.error(`❌ FAILURE: last_recovery_message_at was not populated`);
+    process.exit(1);
+  } else {
+    console.log(`   ✅ PASS: last_recovery_message_at is populated`);
+  }
+
+  // Verify notification_events count is exactly 1
+  const checkEvent = await query(
+    `SELECT count(*) as count FROM public.notification_events 
+     WHERE user_id = $1 AND notification_type = 'RECOVERY_NOTIFICATION'`,
+    [TEST_USER]
+  );
+  assertEqual(Number(checkEvent.rows[0].count), 1, 'Exactly ONE row in notification_events for RECOVERY_NOTIFICATION');
+
+  // Simulate sequential calls on new blocks when user is already in RECOVERY
+  // Reset message count
+  globalThis.resetTelegramMessageCount();
+
+  await query(
+    `INSERT INTO public.study_blocks (user_id, block_id, day_key, subject, planned_minutes, actual_minutes, status, started_at, ended_at)
+     VALUES ($1, 'b_idem_4', '2026-06-16', 'Geography Optional', 25, 25, 'completed', NOW(), NOW())`,
+    [TEST_USER]
+  );
+
+  // Call checkAndTriggerRecovery again
+  await behaviorEscalationService.checkAndTriggerRecovery(TEST_USER, '2026-06-16');
+
+  // Assert that NO further telegram message was sent
+  assertEqual(globalThis.getTelegramMessageCount(), 0, 'No additional recovery notification sent for subsequent completed blocks while in RECOVERY');
+
+  // Verify state remains RECOVERY
+  const checkUserAfter = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [TEST_USER]);
+  assertEqual(checkUserAfter.rows[0].mission_health_state, 'RECOVERY', 'User state remains RECOVERY');
+
+  // ===========================================================================
+  // TEST 7: 21+ Day Recovery System / Restart Mode & Wizard E2E
+  // ===========================================================================
+  console.log('\n[Test 7] Verifying 21+ Day Recovery System / Restart Mode & Wizard E2E...');
+  
+  const { handleCommand } = await import('./services/botCommandService.js');
+
+  // A. Set user to MISSION_FAILURE due to 21 missed plan days
+  await query(
+    `UPDATE public.users 
+     SET mission_health_state = 'MISSION_FAILURE', 
+         consecutive_zero_study_days = 0,
+         consecutive_missed_plan_days = 20,
+         recovery_day = 0,
+         recovery_score = 10,
+         recovery_wizard_step = 0,
+         last_recovery_message_at = NULL
+     WHERE id = $1`,
+    [TEST_USER]
+  );
+  await query(`DELETE FROM public.notification_events WHERE user_id = $1`, [TEST_USER]);
+  globalThis.resetTelegramMessageCount();
+
+  // Trigger daily analyzer - should return MISSION_RECOVERY because they studied 0 yesterday
+  state = await behaviorEscalationService.analyzeDailyRisk(TEST_USER, '2026-06-16');
+  assertEqual(state, 'MISSION_RECOVERY', 'analyzeDailyRisk transitions user to MISSION_RECOVERY when they are in MISSION_FAILURE and did not study yesterday');
+
+  // Reset user to MISSION_FAILURE first to test the checker
+  await query(
+    `UPDATE public.users 
+     SET mission_health_state = 'MISSION_FAILURE', 
+         consecutive_zero_study_days = 21,
+         consecutive_missed_plan_days = 21,
+         recovery_day = 0,
+         recovery_score = 10,
+         recovery_wizard_step = 0,
+         last_recovery_message_at = NULL
+     WHERE id = $1`,
+    [TEST_USER]
+  );
+  await query(`DELETE FROM public.notification_events WHERE user_id = $1`, [TEST_USER]);
+  globalThis.resetTelegramMessageCount();
+
+  await behaviorEscalationService.checkAndSendRecoveryInvitation(TEST_USER);
+  
+  // Assert state is now MISSION_RECOVERY
+  const stateCheck1 = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [TEST_USER]);
+  assertEqual(stateCheck1.rows[0].mission_health_state, 'MISSION_RECOVERY', 'checkAndSendRecoveryInvitation transitions user to MISSION_RECOVERY');
+  assertEqual(globalThis.getTelegramMessageCount(), 1, 'Exactly one Recovery Invitation sent');
+
+  // Call it again - should not send duplicate invitation
+  await behaviorEscalationService.checkAndSendRecoveryInvitation(TEST_USER);
+  assertEqual(globalThis.getTelegramMessageCount(), 1, 'Deduplication works for checkAndSendRecoveryInvitation');
+
+  // B. Option responses coaching checks (Options 2-5)
+  // Let's send non-option text, should repeat the invitation
+  globalThis.resetTelegramMessageCount();
+  await handleCommand(TEST_USER, '123456789', 'random text');
+  assertEqual(globalThis.getTelegramMessageCount(), 1, 'Non-option text repeats the invitation');
+
+  // Send Option 2
+  globalThis.resetTelegramMessageCount();
+  await handleCommand(TEST_USER, '123456789', '2');
+  assertEqual(globalThis.getTelegramMessageCount(), 1, 'Option 2 response sent');
+
+  // Send Option 5
+  globalThis.resetTelegramMessageCount();
+  await handleCommand(TEST_USER, '123456789', '5');
+  assertEqual(globalThis.getTelegramMessageCount(), 1, 'Option 5 response sent');
+
+  // C. Start Recovery Wizard (Option 1)
+  globalThis.resetTelegramMessageCount();
+  await handleCommand(TEST_USER, '123456789', '1');
+  
+  // Check user state & step
+  const wizardUser1 = await query(`SELECT mission_health_state, recovery_wizard_step FROM public.users WHERE id = $1`, [TEST_USER]);
+  assertEqual(wizardUser1.rows[0].mission_health_state, 'RECOVERY_WIZARD', 'Option 1 transitions user to RECOVERY_WIZARD');
+  assertEqual(wizardUser1.rows[0].recovery_wizard_step, 1, 'Wizard starts at step 1');
+  assertEqual(globalThis.getTelegramMessageCount(), 1, 'Duration choice prompt sent');
+
+  // Submit invalid duration
+  globalThis.resetTelegramMessageCount();
+  await handleCommand(TEST_USER, '123456789', 'invalid');
+  const wizardUserInvalid = await query(`SELECT recovery_wizard_step FROM public.users WHERE id = $1`, [TEST_USER]);
+  assertEqual(wizardUserInvalid.rows[0].recovery_wizard_step, 1, 'Wizard remains on step 1 for invalid duration');
+  assertEqual(globalThis.getTelegramMessageCount(), 1, 'Validation error prompt sent');
+
+  // Submit valid duration (e.g. choose option 2 -> 25m)
+  globalThis.resetTelegramMessageCount();
+  await handleCommand(TEST_USER, '123456789', '2');
+  const wizardUser2 = await query(`SELECT recovery_wizard_step, recovery_wizard_duration FROM public.users WHERE id = $1`, [TEST_USER]);
+  assertEqual(wizardUser2.rows[0].recovery_wizard_step, 2, 'Valid duration advances wizard to step 2');
+  assertEqual(wizardUser2.rows[0].recovery_wizard_duration, 25, 'Duration set to 25m');
+  assertEqual(globalThis.getTelegramMessageCount(), 1, 'Subject choice prompt sent');
+
+  // Submit valid subject (e.g. choose option 1 -> Geography)
+  globalThis.resetTelegramMessageCount();
+  const todayKey = new Date().toISOString().slice(0, 10);
+  await query(`DELETE FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [TEST_USER, todayKey]);
+
+  await handleCommand(TEST_USER, '123456789', '1');
+  const wizardUser3 = await query(`SELECT mission_health_state, recovery_wizard_step, recovery_wizard_subject FROM public.users WHERE id = $1`, [TEST_USER]);
+  assertEqual(wizardUser3.rows[0].mission_health_state, 'RECOVERY_WIZARD', 'Wizard finishes but remains in RECOVERY_WIZARD state');
+  assertEqual(wizardUser3.rows[0].recovery_wizard_step, 0, 'Step is reset to 0');
+  assertEqual(wizardUser3.rows[0].recovery_wizard_subject, 'Geography', 'Subject set to Geography');
+  assertEqual(globalThis.getTelegramMessageCount(), 1, 'Confirmation message sent');
+
+  // Verify a planned block was inserted for today
+  const blocksToday = await query(
+    `SELECT block_id, subject, planned_minutes, status 
+     FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`,
+    [TEST_USER, todayKey]
+  );
+  assertEqual(blocksToday.rows.length, 1, 'One planned block created for today');
+  assertEqual(blocksToday.rows[0].subject, 'Geography', 'Block subject is Geography');
+  assertEqual(blocksToday.rows[0].planned_minutes, 25, 'Block duration is 25m');
+  assertEqual(blocksToday.rows[0].status, 'planned', 'Block status is planned');
+
+  // Test wizard reset (restart option from step 0)
+  globalThis.resetTelegramMessageCount();
+  await handleCommand(TEST_USER, '123456789', 'restart');
+  const wizardResetUser = await query(`SELECT recovery_wizard_step FROM public.users WHERE id = $1`, [TEST_USER]);
+  assertEqual(wizardResetUser.rows[0].recovery_wizard_step, 1, 'Wizard resets to step 1 upon restart command');
+  assertEqual(globalThis.getTelegramMessageCount(), 1, 'Duration prompt sent on reset');
+
+  // Re-submit duration and subject to return to step 0
+  await handleCommand(TEST_USER, '123456789', '2');
+  await handleCommand(TEST_USER, '123456789', 'Polity');
+
+  // D. Transition to RECOVERY Day 1 upon block completion
+  // Mark the generated block as completed
+  await query(
+    `UPDATE public.study_blocks 
+     SET status = 'completed', actual_minutes = 25, ended_at = NOW() 
+     WHERE user_id = $1 AND day_key = $2`,
+    [TEST_USER, todayKey]
+  );
+
+  globalThis.resetTelegramMessageCount();
+  await behaviorEscalationService.checkAndTriggerRecovery(TEST_USER, todayKey);
+
+  // Assert state transitions to RECOVERY Day 1
+  const postRecoveryUser = await query(
+    `SELECT mission_health_state, recovery_day, recovery_score FROM public.users WHERE id = $1`,
+    [TEST_USER]
+  );
+  assertEqual(postRecoveryUser.rows[0].mission_health_state, 'RECOVERY', 'Completing wizard block transitions user to RECOVERY');
+  assertEqual(postRecoveryUser.rows[0].recovery_day, 1, 'Recovery day is 1');
+  assertInRange(postRecoveryUser.rows[0].recovery_score, 40, 60, 'Recovery Day 1 score is in [40, 60] range');
+  assertEqual(globalThis.getTelegramMessageCount(), 1, 'Day 1 completion praise message sent');
 
   // Clean up
   await query(`DELETE FROM public.users WHERE id = $1`, [TEST_USER]);

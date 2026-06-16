@@ -2037,9 +2037,9 @@ app.post("/api/prelims/practice/build", (req, res) => {
 
 /* -------------------- REMINDER ENGINE TICK -------------------- */
 
-setInterval(() => {
+setInterval(async () => {
   try {
-    tickReminderEngine();
+    await tickReminderEngine();
   } catch (err) {
     console.error("[ReminderEngine Tick ERR]", err);
   }

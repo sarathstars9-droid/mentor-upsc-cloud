@@ -1,4 +1,5 @@
 // backend/reminderEngine.js (ESM)
+import { query } from './db/index.js';
 
 const schedules = new Map(); // dayKey -> { userId, dayKey, blocks }
 const deliveredEvents = new Set(); // prevents duplicate reminders
@@ -135,8 +136,18 @@ export function getDay(dayKey) {
   return schedules.get(dayKey) || null;
 }
 
-export function tickReminderEngine(now = Date.now()) {
+export async function tickReminderEngine(now = Date.now()) {
   for (const [, day] of schedules) {
+    try {
+      const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [day.userId]);
+      const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+      if (['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+        continue;
+      }
+    } catch (dbErr) {
+      console.error(`[ReminderEngine DB Error] failed to fetch state for user ${day.userId}:`, dbErr.message);
+    }
+
     for (const block of day.blocks) {
       if (block.status === "started" || block.status === "completed") continue;
       if (!block.startTime) continue;

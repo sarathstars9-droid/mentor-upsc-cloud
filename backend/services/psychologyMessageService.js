@@ -34,7 +34,7 @@ export const TONE_CATEGORIES = {
 /**
  * Get plan not uploaded reminder text based on the user's state.
  */
-export function getPlanNotUploadedMessage(state, userName = "Moulika") {
+export function getPlanNotUploadedMessage(state, userName = "Moulika", recoveryDay = 1) {
   const normState = (state || 'HEALTHY').toUpperCase();
 
   switch (normState) {
@@ -112,7 +112,7 @@ Upload today's plan now and start the first block on time.`;
 
 ${userName}, you are rebuilding the habit.
 
-Today is Day of recovery. Protect the progress.
+Today is Day ${recoveryDay} of recovery. Protect the progress.
 Target: Upload a light plan.
 
 Let's break the friction early today!`;
@@ -152,3 +152,201 @@ export function chooseToneForState(state) {
       return 'GENTLE_RESET'; // gentle reset / data based
   }
 }
+
+/**
+ * Get plan not started message based on state.
+ */
+export function getPlanNotStartedMessage(state, userName = "Moulika", startTime, recoveryDay = 1) {
+  const normState = (state || 'HEALTHY').toUpperCase();
+  switch (normState) {
+    case 'MISSION_FAILURE':
+      return `🚨 MISSION FAILURE - PLAN NOT STARTED\n\n${userName}, your plan was scheduled to start at ${startTime}. We reset your plan to 10-20 minutes today. Show up now to break the cycle.`;
+    case 'CRITICAL':
+      return `🚨 CRITICAL STATE - START NOW\n\n${userName}, you are late for your plan scheduled at ${startTime}. You only need to complete ONE 25-minute block today. Start it now.`;
+    case 'HIGH_RISK':
+      return `⚠️ HIGH RISK - ESCALATING LATE START\n\n${userName}, your plan scheduled at ${startTime} has not started yet. Break the streak of zero days. Get to your desk.`;
+    case 'AT_RISK':
+      return `⚠️ AT RISK - LATE START\n\n${userName}, your plan scheduled at ${startTime} has not started. Don't let it slip. Start the first block now.`;
+    case 'RECOVERY':
+      return `🔄 RECOVERY IN PROGRESS - START TIME PASSED\n\n${userName}, you are rebuilding the habit (Day ${recoveryDay}). Your block scheduled at ${startTime} is waiting. Show up for a quick win.`;
+    case 'SLIGHT_RISK':
+      return `⚠️ SLIGHT RISK - LATE START\n\n${userName}, your study plan scheduled at ${startTime} is late. Win the first block to protect your streak.`;
+    case 'HEALTHY':
+    default:
+      return `⚠️ *Plan Not Started*\n\n${userName}, your study plan for today was scheduled to start at ${startTime}. It has been more than 15 minutes and you haven't started yet. Let's start the engine!`;
+  }
+}
+
+/**
+ * Get current block not started message based on state.
+ */
+export function getCurrentBlockNotStartedMessage(state, userName = "Moulika", subject, startTime, recoveryDay = 1) {
+  const normState = (state || 'HEALTHY').toUpperCase();
+  switch (normState) {
+    case 'MISSION_FAILURE':
+      return `🚨 restart now: ${subject}\n\n${userName}, this block started at ${startTime}. Execute just 10 minutes. Break the friction.`;
+    case 'CRITICAL':
+      return `🚨 critical recovery: ${subject}\n\n${userName}, this block started at ${startTime}. You only need to do 25 minutes today. Start now.`;
+    case 'HIGH_RISK':
+      return `⚠️ high risk: ${subject} not started\n\n${userName}, this block started at ${startTime}. Action cures fear. Start now.`;
+    case 'AT_RISK':
+      return `⚠️ at risk: ${subject} not started\n\n${userName}, this block was scheduled at ${startTime}. Don't let the day slip.`;
+    case 'RECOVERY':
+      return `🔄 recovery day ${recoveryDay}: ${subject} not started\n\n${userName}, this block scheduled at ${startTime} is ready. Step up for your recovery.`;
+    case 'SLIGHT_RISK':
+      return `⚠️ slight risk: ${subject} not started\n\n${userName}, this block was scheduled at ${startTime}. Execute now to keep consistency.`;
+    case 'HEALTHY':
+    default:
+      return `⚠️ *${subject} not started*\n\nThis ${subject} block was scheduled at ${startTime}.\nStart a 25-minute rescue version now.`;
+  }
+}
+
+/**
+ * Get block start reminder message based on state.
+ */
+export function getBlockStartReminderMessage(state, userName = "Moulika", subject, startTime, endTime, duration, recoveryDay = 1) {
+  const normState = (state || 'HEALTHY').toUpperCase();
+  switch (normState) {
+    case 'MISSION_FAILURE':
+      return `▶️ *Start Now (Failure Mode): ${subject}*\nScheduled: ${startTime}–${endTime || '?'}\nDuration: ${duration || 0} min\n\n${userName}, do not think about the backlog. Just study 10 minutes of ${subject} now.`;
+    case 'CRITICAL':
+      return `▶️ *Start Now (Critical Mode): ${subject}*\nScheduled: ${startTime}–${endTime || '?'}\nDuration: ${duration || 0} min\n\n${userName}, win this single 25-minute block. That is your entire target today.`;
+    case 'HIGH_RISK':
+      return `▶️ *Start Now (High Risk): ${subject}*\nScheduled: ${startTime}–${endTime || '?'}\nDuration: ${duration || 0} min\n\n${userName}, break the zero streak. Focus purely on ${subject} for the next ${duration || 0} mins.`;
+    case 'AT_RISK':
+      return `▶️ *Start Now (At Risk): ${subject}*\nScheduled: ${startTime}–${endTime || '?'}\nDuration: ${duration || 0} min\n\n${userName}, show up for ${subject}. Protect your consistency.`;
+    case 'RECOVERY':
+      return `▶️ *Start Now (Recovery Day ${recoveryDay}): ${subject}*\nScheduled: ${startTime}–${endTime || '?'}\nDuration: ${duration || 0} min\n\n${userName}, block is ready. Rebuild the momentum with ${subject}.`;
+    case 'SLIGHT_RISK':
+      return `▶️ *Start Now (Slight Risk): ${subject}*\nScheduled: ${startTime}–${endTime || '?'}\nDuration: ${duration || 0} min\n\n${userName}, let's start ${subject}. Keep your streak alive.`;
+    case 'HEALTHY':
+    default:
+      return `▶️ *Start Now: ${subject}*\nScheduled: ${startTime}–${endTime || '?'}\nDuration: ${duration || 0} min\n\n${userName}, start this block now.\nDon’t think about the whole day. Win this block.`;
+  }
+}
+
+/**
+ * Get recovery invitation message.
+ */
+export function getRecoveryInvitationMessage(userName = "Moulika") {
+  return `🚨 MentorOS Recovery
+
+Hi ${userName},
+
+You've been away from your mission for a while.
+
+That's okay.
+
+Today we are not trying to recover the last few weeks.
+
+We're only trying to recover today.
+
+Would you like to restart?
+
+Reply with one option:
+1️⃣ Restart Today
+2️⃣ I'm Overwhelmed
+3️⃣ I Don't Have Time
+4️⃣ I'm Not Motivated
+5️⃣ Pause My Mission`;
+}
+
+/**
+ * Get recovery follow-up message (after 7 days of inactivity).
+ */
+export function getRecoveryFollowupMessage(userName = "Moulika") {
+  return `🚨 MentorOS Recovery
+
+Hi ${userName},
+
+Just checking in. It's been a week since we spoke about restarting.
+
+There is no pressure to catch up on the past. We only focus on today.
+
+Would you like to restart your mission?
+
+Reply with one option:
+1️⃣ Restart Today
+2️⃣ I'm Overwhelmed
+3️⃣ I Don't Have Time
+4️⃣ I'm Not Motivated
+5️⃣ Pause My Mission`;
+}
+
+/**
+ * Get recovery weekly check-in message.
+ */
+export function getRecoveryWeeklyCheckinMessage(userName = "Moulika") {
+  return `🚨 MentorOS Weekly Check-in
+
+Hi ${userName},
+
+I'm still here to help you rebuild your UPSC study habit whenever you're ready.
+
+No backlog tracking, no pressure. Just a single block to get back in the flow.
+
+Reply with "Restart" when you're ready to take the first step.`;
+}
+
+/**
+ * Get the canned response text for a chosen recovery option.
+ */
+export function getRecoveryOptionResponse(option) {
+  const opt = Number(option);
+  switch (opt) {
+    case 1:
+      return `Excellent.
+
+Forget the last 21+ days.
+
+Today's mission is simple.
+
+✅ Upload ONE study block.
+
+Study for only 25 minutes.
+
+Nothing else.
+
+When finished, MentorOS automatically creates Recovery Day 1.`;
+    case 2:
+      return `Then don't think about the entire UPSC syllabus.
+
+Open the easiest subject.
+
+Read for 10 minutes.
+
+That is enough for today.`;
+    case 3:
+      return `Then don't aim for hours.
+
+Give yourself just 15 minutes before sleeping.
+
+Consistency matters more than duration.`;
+    case 4:
+      return `Motivation comes after action.
+
+Not before.
+
+Let's complete one small block together.
+
+25 minutes.
+
+That's today's only mission.`;
+    case 5:
+      return `Understood.
+
+I'll stop daily performance reminders.
+
+Whenever you're ready,
+
+send:
+
+Restart
+
+and we'll rebuild your mission together.`;
+    default:
+      return "";
+  }
+}
+
+

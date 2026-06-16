@@ -83,10 +83,57 @@ async function tickScheduler(userId) {
         // Run daily risk analyzer before consistency record and report generation
         await behaviorEscalationService.analyzeDailyRisk(userId, todayKey);
         await consistencyService.recordDailyConsistency(userId, yesterdayKey);
-        const data = await progressService.getGoodMorningReportData(userId);
-        const text = reportGeneratorService.generateGoodMorningReport(data, "Moulika");
-        await notificationService.sendNotification(userId, 'GOOD_MORNING_MISSION', 'daily_date', todayKey, text, {});
-        await recordEvent(userId, 'GOOD_MORNING_MISSION', todayKey);
+        
+        const userRes = await query(`SELECT mission_health_state, last_recovery_message_at, name FROM public.users WHERE id = $1`, [userId]);
+        const user = userRes.rows[0];
+        const state = user?.mission_health_state || 'HEALTHY';
+        const lastRecoveryMessageAt = user?.last_recovery_message_at;
+        const userName = user?.name || "Moulika";
+
+        if (state === 'MISSION_FAILURE') {
+          await behaviorEscalationService.checkAndSendRecoveryInvitation(userId);
+          await recordEvent(userId, 'GOOD_MORNING_MISSION', todayKey);
+        } else if (state === 'MISSION_RECOVERY') {
+          if (lastRecoveryMessageAt) {
+            const diffDays = Math.floor((now.getTime() - new Date(lastRecoveryMessageAt).getTime()) / (1000 * 60 * 60 * 24));
+            
+            if (diffDays >= 7 && diffDays < 14) {
+              const alreadySentFollowup = await hasEvent(userId, 'RECOVERY_FOLLOWUP', todayKey);
+              if (!alreadySentFollowup) {
+                const text = psychologyMessageService.getRecoveryFollowupMessage(userName);
+                await notificationService.sendNotification(userId, 'RECOVERY_FOLLOWUP', 'daily_date', todayKey, text, {});
+                await recordEvent(userId, 'RECOVERY_FOLLOWUP', todayKey);
+              }
+            } else if (diffDays >= 14) {
+              const lastCheckinRes = await query(
+                `SELECT sent_at FROM public.notification_events 
+                 WHERE user_id = $1 AND notification_type = 'RECOVERY_WEEKLY_CHECKIN' 
+                 ORDER BY sent_at DESC LIMIT 1`,
+                [userId]
+              );
+              let shouldSendCheckin = true;
+              if (lastCheckinRes.rows.length > 0) {
+                const lastCheckinTime = new Date(lastCheckinRes.rows[0].sent_at).getTime();
+                const daysSinceLastCheckin = (now.getTime() - lastCheckinTime) / (1000 * 60 * 60 * 24);
+                if (daysSinceLastCheckin < 6.5) {
+                  shouldSendCheckin = false;
+                }
+              }
+
+              if (shouldSendCheckin) {
+                const text = psychologyMessageService.getRecoveryWeeklyCheckinMessage(userName);
+                await notificationService.sendNotification(userId, 'RECOVERY_WEEKLY_CHECKIN', 'daily_date', todayKey, text, {});
+                await recordEvent(userId, 'RECOVERY_WEEKLY_CHECKIN', todayKey);
+              }
+            }
+          }
+          await recordEvent(userId, 'GOOD_MORNING_MISSION', todayKey);
+        } else if (state !== 'RECOVERY_WIZARD') {
+          const data = await progressService.getGoodMorningReportData(userId);
+          const text = reportGeneratorService.generateGoodMorningReport(data, userName);
+          await notificationService.sendNotification(userId, 'GOOD_MORNING_MISSION', 'daily_date', todayKey, text, {});
+          await recordEvent(userId, 'GOOD_MORNING_MISSION', todayKey);
+        }
       }
     } catch (err) {
       console.error("[NotificationScheduler] good morning report failed:", err.message);
@@ -96,15 +143,18 @@ async function tickScheduler(userId) {
   // ── 1.c Plan Not Uploaded Alert (06:00 AM) ─────────────────────────────────
   if (hour === 6 && minute === 0) {
     try {
-      if (!(await hasEvent(userId, 'PLAN_NOT_UPLOADED', todayKey))) {
-        const { rows } = await query(`SELECT id FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [userId, todayKey]);
-        if (rows.length === 0) {
-          const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
-          const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
-          const text = psychologyMessageService.getPlanNotUploadedMessage(state, "Moulika");
-          
-          await notificationService.sendNotification(userId, 'PLAN_NOT_UPLOADED', 'daily_date', todayKey, text, {});
-          await recordEvent(userId, 'PLAN_NOT_UPLOADED', todayKey);
+      const userRes = await query(`SELECT mission_health_state, recovery_day FROM public.users WHERE id = $1`, [userId]);
+      const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+      if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+        if (!(await hasEvent(userId, 'PLAN_NOT_UPLOADED', todayKey))) {
+          const { rows } = await query(`SELECT id FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [userId, todayKey]);
+          if (rows.length === 0) {
+            const recoveryDay = userRes.rows[0]?.recovery_day || 0;
+            const text = psychologyMessageService.getPlanNotUploadedMessage(state, "Moulika", recoveryDay);
+            
+            await notificationService.sendNotification(userId, 'PLAN_NOT_UPLOADED', 'daily_date', todayKey, text, {});
+            await recordEvent(userId, 'PLAN_NOT_UPLOADED', todayKey);
+          }
         }
       }
     } catch (err) {
@@ -115,20 +165,24 @@ async function tickScheduler(userId) {
   // ── 2. Daily Revision Due Alert (08:30 AM) ───────────────────────────────────
   if (hour === 8 && minute === 30) {
     try {
-      if (!(await hasEvent(userId, 'REVISION_DUE_ALERT', todayKey))) {
-        const data = await progressService.getRevisionDueReport(userId);
-        if (data.count > 0) {
-          const text = `📅 *Revision Due Alert*
+      const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
+      const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+      if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+        if (!(await hasEvent(userId, 'REVISION_DUE_ALERT', todayKey))) {
+          const data = await progressService.getRevisionDueReport(userId);
+          if (data.count > 0) {
+            const text = `📅 *Revision Due Alert*
 Moulika, you have *${data.count}* revision items due today. Don't let your queue pile up! Send \`revision due\` to see the list.`;
-          await notificationService.sendNotification(
-            userId, 
-            'REVISION_DUE_ALERT', 
-            'revision_date', 
-            todayKey, 
-            text, 
-            { count: data.count }
-          );
-          await recordEvent(userId, 'REVISION_DUE_ALERT', todayKey);
+            await notificationService.sendNotification(
+              userId, 
+              'REVISION_DUE_ALERT', 
+              'revision_date', 
+              todayKey, 
+              text, 
+              { count: data.count }
+            );
+            await recordEvent(userId, 'REVISION_DUE_ALERT', todayKey);
+          }
         }
       }
     } catch (err) {
@@ -139,18 +193,22 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
   // ── 3. Daily Night Report (10:00 PM) ──────────────────────────────────
   if (hour === 22 && minute === 0) {
     try {
-      if (!(await hasEvent(userId, 'DAILY_NIGHT_REPORT', todayKey))) {
-        const data = await progressService.getDailyNightReportData(userId, todayKey);
-        const text = reportGeneratorService.generateDailyNightReport(data, "Moulika");
-        await notificationService.sendNotification(
-          userId, 
-          'DAILY_NIGHT_REPORT', 
-          'daily_date', 
-          todayKey, 
-          text, 
-          {}
-        );
-        await recordEvent(userId, 'DAILY_NIGHT_REPORT', todayKey);
+      const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
+      const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+      if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+        if (!(await hasEvent(userId, 'DAILY_NIGHT_REPORT', todayKey))) {
+          const data = await progressService.getDailyNightReportData(userId, todayKey);
+          const text = reportGeneratorService.generateDailyNightReport(data, "Moulika");
+          await notificationService.sendNotification(
+            userId, 
+            'DAILY_NIGHT_REPORT', 
+            'daily_date', 
+            todayKey, 
+            text, 
+            {}
+          );
+          await recordEvent(userId, 'DAILY_NIGHT_REPORT', todayKey);
+        }
       }
     } catch (err) {
       console.error("[NotificationScheduler] daily night report failed:", err.message);
@@ -160,18 +218,22 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
   // ── 4. Weekly Mentor Report (Sunday 09:00 PM) ──────────────────────────────────
   if (dayOfWeek === 0 && hour === 21 && minute === 0) {
     try {
-      if (!(await hasEvent(userId, 'WEEKLY_MENTOR_REPORT', todayKey))) {
-        const data = await progressService.getWeeklyExecutionSummary(userId);
-        const text = reportGeneratorService.generateWeeklyMentorReport(data, "Moulika");
-        await notificationService.sendNotification(
-          userId, 
-          'WEEKLY_MENTOR_REPORT', 
-          'weekly_date', 
-          todayKey, 
-          text, 
-          {}
-        );
-        await recordEvent(userId, 'WEEKLY_MENTOR_REPORT', todayKey);
+      const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
+      const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+      if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+        if (!(await hasEvent(userId, 'WEEKLY_MENTOR_REPORT', todayKey))) {
+          const data = await progressService.getWeeklyExecutionSummary(userId);
+          const text = reportGeneratorService.generateWeeklyMentorReport(data, "Moulika");
+          await notificationService.sendNotification(
+            userId, 
+            'WEEKLY_MENTOR_REPORT', 
+            'weekly_date', 
+            todayKey, 
+            text, 
+            {}
+          );
+          await recordEvent(userId, 'WEEKLY_MENTOR_REPORT', todayKey);
+        }
       }
     } catch (err) {
       console.error("[NotificationScheduler] weekly mentor report failed:", err.message);
@@ -185,35 +247,39 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
 
   if (isLastDayOfMonth && hour === 21 && minute === 30) {
     try {
-      const monthKey = `${yyyy}-${mm}`;
-      if (!(await hasEvent(userId, 'MONTHLY_MENTOR_REPORT', monthKey))) {
-        const data = await progressService.getMonthlyMentorSummary(userId);
-        const text = reportGeneratorService.generateMonthlyMentorTextReport(data, "Moulika");
-        await notificationService.sendNotification(
-          userId, 
-          'MONTHLY_MENTOR_REPORT', 
-          'monthly_date', 
-          monthKey, 
-          text, 
-          {}
-        );
-        await recordEvent(userId, 'MONTHLY_MENTOR_REPORT', monthKey);
-      }
-      
-      if (!(await hasEvent(userId, 'MONTHLY_MENTOR_REPORT_PDF', monthKey))) {
-        const { sendMonthlyPdfReport } = await import('./monthlyPdfReportService.js');
-        // Retrieve telegram chat id
-        const { rows: channels } = await query(
-          `SELECT destination_id FROM public.notification_channels 
-           WHERE user_id = $1 AND channel_type = 'TELEGRAM' AND is_enabled = TRUE LIMIT 1`,
-          [userId]
-        );
-        if (channels.length > 0) {
-          const chatId = channels[0].destination_id;
-          await sendMonthlyPdfReport(userId, monthKey, chatId);
-          await recordEvent(userId, 'MONTHLY_MENTOR_REPORT_PDF', monthKey);
-        } else {
-          console.log("[NotificationScheduler] Monthly PDF skipped, no telegram channel for user:", userId);
+      const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
+      const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+      if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+        const monthKey = `${yyyy}-${mm}`;
+        if (!(await hasEvent(userId, 'MONTHLY_MENTOR_REPORT', monthKey))) {
+          const data = await progressService.getMonthlyMentorSummary(userId);
+          const text = reportGeneratorService.generateMonthlyMentorTextReport(data, "Moulika");
+          await notificationService.sendNotification(
+            userId, 
+            'MONTHLY_MENTOR_REPORT', 
+            'monthly_date', 
+            monthKey, 
+            text, 
+            {}
+          );
+          await recordEvent(userId, 'MONTHLY_MENTOR_REPORT', monthKey);
+        }
+        
+        if (!(await hasEvent(userId, 'MONTHLY_MENTOR_REPORT_PDF', monthKey))) {
+          const { sendMonthlyPdfReport } = await import('./monthlyPdfReportService.js');
+          // Retrieve telegram chat id
+          const { rows: channels } = await query(
+            `SELECT destination_id FROM public.notification_channels 
+             WHERE user_id = $1 AND channel_type = 'TELEGRAM' AND is_enabled = TRUE LIMIT 1`,
+            [userId]
+          );
+          if (channels.length > 0) {
+            const chatId = channels[0].destination_id;
+            await sendMonthlyPdfReport(userId, monthKey, chatId);
+            await recordEvent(userId, 'MONTHLY_MENTOR_REPORT_PDF', monthKey);
+          } else {
+            console.log("[NotificationScheduler] Monthly PDF skipped, no telegram channel for user:", userId);
+          }
         }
       }
     } catch (err) {
@@ -244,6 +310,13 @@ async function processTodayBlocks(userId, now) {
 
   if (todayBlocks.length === 0) return;
 
+  const userRes = await query(`SELECT mission_health_state, recovery_day FROM public.users WHERE id = $1`, [userId]);
+  const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+  if (['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+    return;
+  }
+  const recoveryDay = userRes.rows[0]?.recovery_day || 0;
+
   const actualMinutesToday = todayBlocks.reduce((sum, b) => sum + (b.actual_minutes || 0), 0);
   const startedOrDoneBlocks = todayBlocks.filter(b => ['active', 'completed', 'partial', 'done'].includes(b.status.toLowerCase())).length;
 
@@ -259,7 +332,7 @@ async function processTodayBlocks(userId, now) {
       if (actualMinutesToday === 0 && startedOrDoneBlocks === 0) {
         const alreadySent15 = await hasEvent(userId, 'PLAN_NOT_STARTED', todayKey);
         if (!alreadySent15) {
-          const alertText = `⚠️ *Plan Not Started*\nMoulika, your study plan for today was scheduled to start at ${earliest.planned_start}. It has been more than 15 minutes and you haven't started yet. Let's start the engine!`;
+          const alertText = psychologyMessageService.getPlanNotStartedMessage(state, "Moulika", earliest.planned_start, recoveryDay);
           await notificationService.sendNotification(userId, 'PLAN_NOT_STARTED', 'daily_date', todayKey, alertText, {});
           await recordEvent(userId, 'PLAN_NOT_STARTED', todayKey);
         }
@@ -356,7 +429,9 @@ async function processTodayBlocks(userId, now) {
        const alreadySentStart = await hasEvent(userId, 'BLOCK_START_REMINDER', String(b.id));
        if (!alreadySentStart) {
           const titleOrTopic = b.title || b.topic || b.subject;
-          const alertText = `▶️ *Start Now: ${titleOrTopic} — ${b.subject}*\nScheduled: ${b.planned_start}–${b.planned_end || '?'}\nDuration: ${b.planned_minutes || 0} min\n\nMoulika, start this block now.\nDon’t think about the whole day. Win this block.`;
+          const alertText = psychologyMessageService.getBlockStartReminderMessage(
+            state, "Moulika", titleOrTopic || b.subject, b.planned_start, b.planned_end, b.planned_minutes, recoveryDay
+          );
           await notificationService.sendNotification(userId, 'BLOCK_START_REMINDER', 'block', String(b.id), alertText, { block_id: b.id });
           await recordEvent(userId, 'BLOCK_START_REMINDER', String(b.id));
        }
@@ -370,7 +445,9 @@ async function processTodayBlocks(userId, now) {
        const alreadySentCurrent = await hasEvent(userId, 'CURRENT_BLOCK_NOT_STARTED', String(b.id));
        if (!alreadySentCurrent) {
           const titleOrTopic = b.title || b.topic || b.subject;
-          const alertText = `⚠️ *${titleOrTopic} not started*\n\nThis ${b.subject} block was scheduled at ${b.planned_start}.\nStart a 25-minute rescue version now.`;
+          const alertText = psychologyMessageService.getCurrentBlockNotStartedMessage(
+            state, "Moulika", titleOrTopic || b.subject, b.planned_start, recoveryDay
+          );
           await notificationService.sendNotification(userId, 'CURRENT_BLOCK_NOT_STARTED', 'block', String(b.id), alertText, { block_id: b.id });
           await recordEvent(userId, 'CURRENT_BLOCK_NOT_STARTED', String(b.id));
        }
@@ -404,6 +481,11 @@ async function processTodayBlocks(userId, now) {
 }
 
 async function detectAndProcessDayDiscipline(userId, now) {
+  const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
+  const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+  if (['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+    return;
+  }
   const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   const d = new Date(kolkataStr);
   const hour = d.getHours();

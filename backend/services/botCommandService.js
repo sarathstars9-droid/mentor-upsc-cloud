@@ -4,6 +4,7 @@ import * as reportGeneratorService from './reportGeneratorService.js';
 import * as telegramService from './telegramService.js';
 import * as consistencyService from './consistencyService.js';
 import { getPrelimsDaysLeft, getMainsDaysLeft } from '../config/examCalendar.js';
+import * as psychologyMessageService from './psychologyMessageService.js';
 
 // Normalizes incoming user message text by stripping leading slashes, converting 
 // underscores to spaces, and collapsing whitespace to match commands flexibly.
@@ -25,8 +26,15 @@ export async function handleCommand(userId, destinationId, rawText) {
   console.log(`[BotCommandService] Routing command: "${command}" (raw: "${rawText}") for user ${userId}`);
 
   try {
-    const userRes = await query(`SELECT name FROM public.users WHERE id = $1`, [userId]);
-    const userName = userRes.rows[0]?.name || "Moulika";
+    const userRes = await query(
+      `SELECT name, mission_health_state, recovery_wizard_step, recovery_wizard_duration, recovery_wizard_subject 
+       FROM public.users WHERE id = $1`,
+      [userId]
+    );
+    const user = userRes.rows[0] || {};
+    const userName = user.name || "Moulika";
+    const state = user.mission_health_state || "HEALTHY";
+    const wizardStep = user.recovery_wizard_step || 0;
 
     const isDeveloperCommand = command.startsWith('debug ') || command.startsWith('test ') || command.startsWith('sync ');
     if (isDeveloperCommand) {
@@ -277,6 +285,161 @@ export async function handleCommand(userId, destinationId, rawText) {
         console.error("[SyncCommand Error]", err);
         await telegramService.sendMessage(destinationId, `❌ Sync failed: ${err.message}`);
       }
+      return;
+    }
+
+    // -- 21+ Day Recovery System / Restart Mode & Wizard --
+    if (state === 'MISSION_RECOVERY') {
+      const lowerRaw = rawText.trim().toLowerCase();
+      const isOption1 = command === '1' || command === 'restart today' || command === 'restart' || command.startsWith('restart');
+      const isOption2 = command === '2' || command === 'i\'m overwhelmed' || command === 'im overwhelmed' || command === 'overwhelmed';
+      const isOption3 = command === '3' || command === 'i don\'t have time' || command === 'i dont have time' || command === 'no time' || command === 'dont have time' || command === 'don\'t have time';
+      const isOption4 = command === '4' || command === 'i\'m not motivated' || command === 'im not motivated' || command === 'not motivated' || command === 'no motivation' || command === 'motivation';
+      const isOption5 = command === '5' || command === 'pause my mission' || command === 'pause';
+
+      if (isOption1) {
+        // Transition to RECOVERY_WIZARD step 1
+        await query(
+          `UPDATE public.users 
+           SET mission_health_state = 'RECOVERY_WIZARD', 
+               recovery_wizard_step = 1,
+               recovery_wizard_duration = NULL,
+               recovery_wizard_subject = NULL
+           WHERE id = $1`,
+          [userId]
+        );
+        const responseText = psychologyMessageService.getRecoveryOptionResponse(1);
+        const promptText = `How long can you study today? (Reply with a number in minutes, or choose:\n1. 15m\n2. 25m\n3. 40m\n4. 60m)`;
+        await telegramService.sendTelegramMessage(destinationId, `${responseText}\n\n${promptText}`);
+        return;
+      } else if (isOption2) {
+        const text = psychologyMessageService.getRecoveryOptionResponse(2);
+        await telegramService.sendTelegramMessage(destinationId, text);
+        return;
+      } else if (isOption3) {
+        const text = psychologyMessageService.getRecoveryOptionResponse(3);
+        await telegramService.sendTelegramMessage(destinationId, text);
+        return;
+      } else if (isOption4) {
+        const text = psychologyMessageService.getRecoveryOptionResponse(4);
+        await telegramService.sendTelegramMessage(destinationId, text);
+        return;
+      } else if (isOption5) {
+        const text = psychologyMessageService.getRecoveryOptionResponse(5);
+        await telegramService.sendTelegramMessage(destinationId, text);
+        return;
+      } else {
+        // Any other messages in MISSION_RECOVERY show the invitation options
+        const text = psychologyMessageService.getRecoveryInvitationMessage(userName);
+        await telegramService.sendTelegramMessage(destinationId, text);
+        return;
+      }
+    }
+
+    if (state === 'RECOVERY_WIZARD') {
+      if (wizardStep === 1) {
+        // Parsing duration
+        let duration = null;
+        if (command === '1') duration = 15;
+        else if (command === '2') duration = 25;
+        else if (command === '3') duration = 40;
+        else if (command === '4') duration = 60;
+        else {
+          const match = command.match(/(\d+)/);
+          if (match) {
+            duration = parseInt(match[1], 10);
+          }
+        }
+
+        if (duration && duration > 0 && duration <= 480) {
+          await query(
+            `UPDATE public.users 
+             SET recovery_wizard_step = 2,
+                 recovery_wizard_duration = $2
+             WHERE id = $1`,
+            [userId, duration]
+          );
+          const promptText = `Which subject will you study? (Reply with subject name, or choose:\n1. Geography\n2. Polity\n3. Economy\n4. History\n5. CSAT)`;
+          await telegramService.sendTelegramMessage(destinationId, promptText);
+          return;
+        } else {
+          const promptText = `Please enter a valid duration in minutes (e.g., 25 or 25m), or choose:\n1. 15m\n2. 25m\n3. 40m\n4. 60m`;
+          await telegramService.sendTelegramMessage(destinationId, promptText);
+          return;
+        }
+      }
+
+      if (wizardStep === 2) {
+        // Parsing subject
+        let subject = null;
+        if (command === '1' || command === 'geography') subject = "Geography";
+        else if (command === '2' || command === 'polity') subject = "Polity";
+        else if (command === '3' || command === 'economy') subject = "Economy";
+        else if (command === '4' || command === 'history') subject = "History";
+        else if (command === '5' || command === 'csat') subject = "CSAT";
+        else {
+          subject = rawText.trim();
+        }
+
+        if (subject && subject.length > 0) {
+          const duration = user.recovery_wizard_duration || 25;
+          
+          // Generate block_id by counting today's study blocks
+          const now = new Date();
+          const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+          const d = new Date(kolkataStr);
+          const yyyy = d.getFullYear();
+          const mm = String(d.getMonth() + 1).padStart(2, '0');
+          const dd = String(d.getDate()).padStart(2, '0');
+          const todayKey = `${yyyy}-${mm}-${dd}`;
+
+          const countRes = await query(
+            `SELECT COUNT(*) as count FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`,
+            [userId, todayKey]
+          );
+          const nextIdx = Number(countRes.rows[0]?.count || 0) + 1;
+          const blockId = `B${nextIdx}`;
+
+          // Insert study block
+          await query(
+            `INSERT INTO public.study_blocks (
+               user_id, block_id, day_key, title, subject, planned_minutes, status, date, created_at, updated_at
+             )
+             VALUES ($1, $2, $3::TEXT, $4, $5, $6, 'planned', $3::DATE, NOW(), NOW())`,
+            [userId, blockId, todayKey, `Recovery ${subject}`, subject, duration]
+          );
+
+          // Update user wizard details and set wizard_step to 0 (user remains in RECOVERY_WIZARD state waiting to complete the block)
+          await query(
+            `UPDATE public.users 
+             SET recovery_wizard_step = 0,
+                 recovery_wizard_subject = $2
+             WHERE id = $1`,
+            [userId, subject]
+          );
+
+          const confirmText = `Perfect. I have created a ${duration}-minute block for ${subject} today. Start it whenever you are ready. Reply 'start' to begin, or mark it completed in the app when done.`;
+          await telegramService.sendTelegramMessage(destinationId, confirmText);
+          return;
+        } else {
+          const promptText = `Please enter a valid subject name, or choose:\n1. Geography\n2. Polity\n3. Economy\n4. History\n5. CSAT`;
+          await telegramService.sendTelegramMessage(destinationId, promptText);
+          return;
+        }
+      }
+    }
+
+    if (state === 'RECOVERY_WIZARD' && wizardStep === 0 && (command === 'restart' || command.startsWith('restart'))) {
+      await query(
+        `UPDATE public.users 
+         SET recovery_wizard_step = 1,
+             recovery_wizard_duration = NULL,
+             recovery_wizard_subject = NULL
+         WHERE id = $1`,
+        [userId]
+      );
+      const promptText = `How long can you study today? (Reply with a number in minutes, or choose:\n1. 15m\n2. 25m\n3. 40m\n4. 60m)`;
+      await telegramService.sendTelegramMessage(destinationId, promptText);
       return;
     }
 
