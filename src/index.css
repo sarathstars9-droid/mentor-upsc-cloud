@@ -1602,3 +1602,39 @@ button:disabled {
 .hover\:bg-slate-50:hover {
   background-color: #f8fafc !important;
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE Overrides for Prelims/Mains
+   ============================================================ */
+@media (max-width: 768px) {
+  .blocks-grid,
+  .chart-grid,
+  .plan-split-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .metrics-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .metric-value {
+    font-size: 32px !important;
+  }
+  
+  /* Prevent horizontal overflow on analytics cards */
+  .blocks-grid > *,
+  .chart-grid > *,
+  .metrics-grid > *,
+  .plan-split-grid > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  /* Table horizontal scroll safety */
+  .table-container,
+  .breakdown-table-wrapper {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}

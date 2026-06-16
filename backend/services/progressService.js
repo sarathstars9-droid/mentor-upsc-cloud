@@ -1,6 +1,7 @@
 import { query } from '../db/index.js';
 import { computeSyllabusProgress } from '../brain/syllabusProgressEngine.js';
 import { getPrelimsDaysLeft, getMainsDaysLeft } from '../config/examCalendar.js';
+import { getDailyTargetMinutes } from './adaptiveGoalService.js';
 
 // Helper to determine Monday of the current week in Asia/Kolkata timezone
 export function getMondayOfCurrentWeek() {
@@ -534,11 +535,10 @@ export async function getSubjectSubTargetsProgress(userId, parentSubject) {
 
 // 10. Get daily night report data
 export async function getDailyNightReportData(userId, todayKey) {
-  // Do not calculate studied minutes here. Use getDailyExecutionSummary.
   const { getDailyExecutionSummary } = await import('./dailyExecutionSummaryService.js');
   const summary = await getDailyExecutionSummary(userId, todayKey);
 
-  let outputsCreated = 0;
+  let outputsCreated = summary.outputsCreated || 0;
   let startedCount = summary.blockRows.filter(b => ['active','paused'].includes(b.status) || b.isCompleted).length;
 
   for (const b of summary.blockRows) {
@@ -553,7 +553,6 @@ export async function getDailyNightReportData(userId, todayKey) {
       ) {
         outputsCreated++;
       } else if (b.effectiveMinutes >= 30) {
-        // Fallback: any substantial study block counts as output effort
         outputsCreated++;
       }
     }
@@ -567,18 +566,29 @@ export async function getDailyNightReportData(userId, todayKey) {
   );
   const revisionDueCount = Number(revRes.rows[0]?.count || 0);
 
-  const plannedHours = summary.plannedMinutes / 60.0;
+  const userEscalationRes = await query(
+    `SELECT mission_health_state, recovery_day FROM public.users WHERE id = $1`,
+    [userId]
+  );
+  const userEscalation = userEscalationRes.rows[0] || { mission_health_state: 'HEALTHY', recovery_day: 0 };
+  const adaptiveTargetMins = getDailyTargetMinutes(
+    userEscalation.mission_health_state,
+    userEscalation.recovery_day,
+    summary.plannedMinutes || 600
+  );
+
+  const plannedHours = adaptiveTargetMins / 60.0;
   const actualHours = summary.studiedMinutes / 60.0;
-  const deficit = plannedHours - actualHours;
+  const deficitHours = plannedHours - actualHours;
 
   let day_state = 'ACTIVE';
   if (summary.totalBlocks === 0) {
     day_state = 'NOT_STARTED';
   } else if (startedCount === 0) {
     day_state = 'PLAN_UPLOADED_NOT_STARTED';
-  } else if (summary.missedBlocks > 2 || deficit > 3.0) {
+  } else if (summary.missedBlocks > 2 || deficitHours > 3.0) {
     day_state = 'SLIPPING';
-  } else if (summary.completedBlocks >= Math.floor(summary.totalBlocks * 0.7)) {
+  } else if (summary.completedBlocks >= Math.floor(summary.totalBlocks * 0.7) || actualHours >= plannedHours) {
     day_state = 'COMPLETED';
   }
 
@@ -595,7 +605,7 @@ export async function getDailyNightReportData(userId, todayKey) {
     }
   } else if (revisionDueCount > 10) {
     tomorrowCorrection = "Clear the pending revision backlog first.";
-  } else if (deficit > 2.0) {
+  } else if (deficitHours > 2.0) {
     tomorrowCorrection = "Reduce planned block lengths tomorrow to ensure execution.";
   } else if (actualHours > 0 && summary.completedBlocks >= Math.floor(summary.totalBlocks * 0.7)) {
     tomorrowCorrection = "Fantastic rhythm. Keep consistency alive!";
@@ -606,17 +616,22 @@ export async function getDailyNightReportData(userId, todayKey) {
   console.log(`[NightReport] date=${todayKey}, state=${day_state}, total_blocks=${summary.totalBlocks}, started_blocks=${startedCount}, completed_blocks=${summary.completedBlocks}, planned_minutes=${summary.plannedMinutes}, actual_minutes=${summary.studiedMinutes}`);
 
   return {
-    date: todayKey,
+    day_key: summary.dayKey,
     state: day_state,
-    total_blocks: summary.totalBlocks,
-    started_blocks: startedCount,
-    completed_blocks: summary.completedBlocks,
-    missed_blocks: summary.missedBlocks,
-    outputs_created: outputsCreated,
-    total_planned_hours: Number(plannedHours.toFixed(1)),
-    total_actual_hours: Number(actualHours.toFixed(1)),
-    deficit_hours: Number(Math.max(0, deficit).toFixed(1)),
-    subjects_studied: summary.subjectsCompleted,
+    target_minutes: adaptiveTargetMins,
+    planned_minutes: adaptiveTargetMins,
+    actual_minutes: summary.studiedMinutes || 0,
+    studied_minutes: summary.studiedMinutes || 0,
+    deficit_minutes: Math.max(0, adaptiveTargetMins - (summary.studiedMinutes || 0)),
+    completed_blocks: summary.completedBlocks || 0,
+    total_blocks: summary.totalBlocks || 0,
+    started_blocks: startedCount || 0,
+    missed_blocks: summary.missedBlocks || 0,
+    subjects_completed: summary.subjectsCompleted || [],
+    subject_minutes: summary.subjectMinutes || {},
+    execution_log: summary.blockRows || [],
+    revision_due: revisionDueCount || 0,
+    outputs_created: outputsCreated || 0,
     tomorrow_correction: tomorrowCorrection
   };
 }
@@ -742,6 +757,39 @@ export async function getGoodMorningReportData(userId) {
   const totalDaysLeft = Math.max(1, Math.ceil((missionEnd.getTime() - currentDay.getTime()) / (1000 * 60 * 60 * 24)));
   const todayRequiredPace = remainingHours / totalDaysLeft;
 
+  // 6b. Behavior escalation parameters
+  const userEscalationRes = await query(
+    `SELECT mission_health_state, consecutive_zero_study_days, recovery_day, recovery_score 
+     FROM public.users WHERE id = $1`,
+    [userId]
+  );
+  const userEscalation = userEscalationRes.rows[0] || {
+    mission_health_state: 'HEALTHY',
+    consecutive_zero_study_days: 0,
+    recovery_day: 0,
+    recovery_score: 100
+  };
+
+  const defaultTargetMins = Math.round(todayRequiredPace * 60);
+  const adaptiveTargetMins = getDailyTargetMinutes(
+    userEscalation.mission_health_state,
+    userEscalation.recovery_day,
+    defaultTargetMins
+  );
+  const adaptiveTargetHours = adaptiveTargetMins / 60.0;
+
+  // 6c. expectedMinutesTillToday & backlogMinutes
+  const totalDaysDuration = Math.max(1, Math.ceil((missionEnd.getTime() - missionStart.getTime()) / (1000 * 60 * 60 * 24)));
+  const yesterdayRef = new Date(currentDay);
+  yesterdayRef.setDate(currentDay.getDate() - 1);
+  let elapsedDays = 0;
+  if (yesterdayRef >= missionStart) {
+    elapsedDays = Math.round((yesterdayRef.getTime() - missionStart.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+  }
+  const dailyExpectedMinutes = (totalTargetHours * 60) / totalDaysDuration;
+  const expectedMinutesTillToday = Math.round(dailyExpectedMinutes * elapsedDays);
+  const backlogMinutes = Math.max(0, expectedMinutesTillToday - completedMins);
+
   // 7. Yesterday short summary
   const yesterdayBlocks = await query(
     `SELECT status, planned_minutes, actual_minutes, subject, subject_id 
@@ -797,7 +845,15 @@ export async function getGoodMorningReportData(userId) {
     remaining_hours: Number(remainingHours.toFixed(1)),
     today_required_pace: Number(todayRequiredPace.toFixed(2)),
     yesterday_summary: yesterdaySummary,
-    today_first_correction: todayCorrection
+    today_first_correction: todayCorrection,
+    mission_health_state: userEscalation.mission_health_state || 'HEALTHY',
+    consecutive_zero_study_days: userEscalation.consecutive_zero_study_days || 0,
+    recovery_day: userEscalation.recovery_day || 0,
+    recovery_score: userEscalation.recovery_score || 100,
+    expected_hours_till_today: Number((expectedMinutesTillToday / 60.0).toFixed(1)),
+    backlog_hours: Number((backlogMinutes / 60.0).toFixed(1)),
+    adaptive_target_minutes: adaptiveTargetMins,
+    adaptive_target_hours: Number(adaptiveTargetHours.toFixed(2))
   };
 }
 

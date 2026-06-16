@@ -4,12 +4,23 @@ export const BLOCK_STATUS = {
   ACTIVE: "active",
   PAUSED: "paused",
   COMPLETED: "completed",
+  STOPPED: "stopped",
   PARTIAL: "partial",
   MISSED: "missed",
   SKIPPED: "skipped",
   EXPIRED: "expired",
   UNVERIFIED: "unverified",
 };
+
+export const TERMINAL_BLOCK_STATUSES = [
+  "completed",
+  "stopped",
+  "missed",
+  "expired",
+  "auto_closed",
+  "skipped",
+  "partial"
+];
 
 export const COMPLETION_STATUS = {
   COMPLETED: "completed",

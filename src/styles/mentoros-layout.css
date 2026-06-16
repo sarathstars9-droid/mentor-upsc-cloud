@@ -1421,3 +1421,54 @@ select.field {
 .daily-actions-row .btn {
   min-width: 250px;
 }
+
+/* ============================================================
+   GLOBAL MOBILE SAFETY
+   ============================================================ */
+html, body, #root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.mentoros-shell,
+.mentoros-main,
+.mentoros-content,
+.page-container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  * {
+    box-sizing: border-box;
+  }
+
+  .mentoros-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .mentoros-content {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    max-width: 100% !important;
+  }
+
+  .mos-drawer-v2 {
+    width: min(78vw, 300px) !important;
+    max-width: 300px !important;
+  }
+
+  .mos-drawer-v2,
+  .mos-nav-scroll-v2 {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .mos-drawer-v2::-webkit-scrollbar,
+  .mos-nav-scroll-v2::-webkit-scrollbar {
+    display: none;
+  }
+}

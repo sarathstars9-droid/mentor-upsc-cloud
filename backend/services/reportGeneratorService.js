@@ -1,5 +1,7 @@
 // Helper to format decimal hours into hours & minutes (e.g. 17.25 -> 17h 15m)
 export function formatHoursAndMins(decimalHours) {
+  if (typeof decimalHours !== 'number' || isNaN(decimalHours) || !isFinite(decimalHours)) decimalHours = 0;
+  
   const absoluteHours = Math.abs(decimalHours);
   const hrs = Math.floor(absoluteHours);
   const mins = Math.round((absoluteHours - hrs) * 60);
@@ -332,6 +334,25 @@ ${userName}, here is your high-level syllabus progress:`;
 
 // 9. Good morning report generator
 export function generateGoodMorningReport(data, userName = "Moulika") {
+  const state = data.mission_health_state || 'HEALTHY';
+  
+  if (['AT_RISK', 'HIGH_RISK', 'CRITICAL', 'MISSION_FAILURE', 'RECOVERY'].includes(state)) {
+    const stateColor = state === 'RECOVERY' ? '🟡' : '🔴';
+    const streakDays = data.consecutive_zero_study_days || 0;
+    const recoveryTargetStr = formatHoursAndMins(data.adaptive_target_hours || 0);
+    const stateLabel = state === 'RECOVERY' ? `RECOVERY (Day ${data.recovery_day})` : state.replace('_', ' ');
+
+    return `Good morning ${userName} 🌅
+
+Mission Status: ${stateColor} *${stateLabel}*
+Zero-study streak: ${streakDays} day(s)
+Expected progress by today: ${data.expected_hours_till_today} hours
+Actual progress: ${formatHoursAndMins(data.completed_hours)}
+Backlog: ${data.backlog_hours} hours
+Today’s recovery target: ${recoveryTargetStr}
+Mission: ${state === 'RECOVERY' ? 'Protect the streak' : 'Break the streak'}`;
+  }
+
   let yesterdayText = "No study blocks registered yesterday.";
   let mentorNote = "";
   let todayCorrection = data.today_first_correction;
@@ -368,7 +389,16 @@ ${todayCorrection}`;
 
 // 10. Daily night report generator
 export function generateDailyNightReport(data, userName = "Moulika") {
-  if (data.day_state === 'NOT_STARTED') {
+  const targetHrs = (data.target_minutes ?? data.planned_minutes ?? 0) / 60.0;
+  const actualHrs = (data.actual_minutes ?? data.studied_minutes ?? 0) / 60.0;
+  const deficitHrs = (data.deficit_minutes ?? 0) / 60.0;
+  const totalBlocks = data.total_blocks || 0;
+  const subjectsCompleted = Array.isArray(data.subjects_completed) ? data.subjects_completed : [];
+  const missedBlocks = data.missed_blocks || 0;
+  const revisionDue = data.revision_due || 0;
+  const outputsCreated = data.outputs_created || 0;
+
+  if (data.state === 'NOT_STARTED') {
     return `⚠️ Daily Accountability Report — ${userName}
 
 • Plan uploaded: No
@@ -383,12 +413,12 @@ MentorOS could not evaluate today’s preparation because no study plan was uplo
 ${data.tomorrow_correction}`;
   }
 
-  if (data.day_state === 'PLAN_UPLOADED_NOT_STARTED') {
+  if (data.state === 'PLAN_UPLOADED_NOT_STARTED') {
     return `⚠️ Plan Created But Execution Missing — ${userName}
 
-• Planned: ${formatHoursAndMins(data.target_hours)}
+• Planned: ${formatHoursAndMins(targetHrs)}
 • Actual: 0m
-• Blocks started: 0/${data.total_blocks}
+• Blocks started: 0/${totalBlocks}
 
 Main issue:
 Plan was created, but execution did not begin.
@@ -400,15 +430,15 @@ ${data.tomorrow_correction}`;
   return `📘 Daily Night Report — ${userName}
 
 ━━━━━━━━━━━━━━
-• target hours: ${formatHoursAndMins(data.target_hours)}
-• actual hours: ${formatHoursAndMins(data.actual_hours)}
-• deficit: ${formatHoursAndMins(data.deficit)}
+• target hours: ${formatHoursAndMins(targetHrs)}
+• actual hours: ${formatHoursAndMins(actualHrs)}
+• deficit: ${formatHoursAndMins(deficitHrs)}
 ━━━━━━━━━━━━━━
 
-📚 *subjects completed:* ${data.subjects_completed.length > 0 ? data.subjects_completed.join(', ') : 'None'}
-📝 *outputs created:* ${data.outputs_created}
-❌ *missed blocks:* ${data.missed_blocks}
-📅 *revision due:* ${data.revision_due} items
+📚 *subjects completed:* ${subjectsCompleted.length > 0 ? subjectsCompleted.join(', ') : 'None'}
+📝 *outputs created:* ${outputsCreated}
+❌ *missed blocks:* ${missedBlocks}
+📅 *revision due:* ${revisionDue} items
 
 💡 *tomorrow correction:*
 ${data.tomorrow_correction}`;
@@ -603,4 +633,9 @@ ${data.top3_weak.length > 0 ? data.top3_weak.map((s, i) => `${i + 1}. ${s}`).joi
 
 *Next month prescription:*
 ${data.next_month_prescription}`;
+}
+
+// 18. Compatibility wrapper for generateNightReport
+export function generateNightReport(data, userName = "Moulika") {
+  return generateDailyNightReport(data, userName);
 }

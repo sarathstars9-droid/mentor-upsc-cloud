@@ -28,6 +28,16 @@ export async function handleCommand(userId, destinationId, rawText) {
     const userRes = await query(`SELECT name FROM public.users WHERE id = $1`, [userId]);
     const userName = userRes.rows[0]?.name || "Moulika";
 
+    const isDeveloperCommand = command.startsWith('debug ') || command.startsWith('test ') || command.startsWith('sync ');
+    if (isDeveloperCommand) {
+      const adminChatId = process.env.TELEGRAM_ADMIN_CHAT_ID || process.env.TELEGRAM_CHAT_ID;
+      if (String(destinationId) !== String(adminChatId)) {
+        console.log(`[BotCommandService] Unauthorized developer command attempt by ${destinationId}`);
+        await telegramService.sendMessage(destinationId, "❌ You are not authorized to run developer commands.");
+        return;
+      }
+    }
+
     if (command.startsWith('debug daily summary')) {
       const parts = command.split(' ');
       let todayKey;
@@ -69,6 +79,57 @@ export async function handleCommand(userId, destinationId, rawText) {
       return;
     }
 
+    if (command.startsWith('debug behavior state ')) {
+      const parts = command.split(' ');
+      const state = parts[3].toUpperCase();
+      let zeroDays = 0;
+      let missedPlans = 0;
+      let recDay = 0;
+      
+      if (state === 'SLIGHT_RISK') {
+        zeroDays = 1;
+      } else if (state === 'AT_RISK') {
+        zeroDays = 3;
+      } else if (state === 'HIGH_RISK') {
+        zeroDays = 7;
+      } else if (state === 'CRITICAL') {
+        zeroDays = 14;
+      } else if (state === 'MISSION_FAILURE') {
+        zeroDays = 21;
+      } else if (state === 'RECOVERY') {
+        recDay = 1;
+      }
+      
+      await query(
+        `UPDATE public.users 
+         SET mission_health_state = $2, 
+             consecutive_zero_study_days = $3, 
+             consecutive_missed_plan_days = $4,
+             recovery_day = $5,
+             recovery_score = 100,
+             notification_count_today = 0
+         WHERE id = $1`,
+        [userId, state, zeroDays, missedPlans, recDay]
+      );
+      await telegramService.sendMessage(destinationId, `✅ Updated behavior state to ${state} for ${userId}. Streaks updated.`);
+      return;
+    }
+
+    if (command === 'test daily analyzer') {
+      const now = new Date();
+      const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+      const d = new Date(kolkataStr);
+      const yyyy = d.getFullYear();
+      const mm = String(d.getMonth() + 1).padStart(2, '0');
+      const dd = String(d.getDate()).padStart(2, '0');
+      const todayKey = `${yyyy}-${mm}-${dd}`;
+      
+      const { analyzeDailyRisk } = await import('./behaviorEscalationService.js');
+      const newState = await analyzeDailyRisk(userId, todayKey);
+      await telegramService.sendMessage(destinationId, `✅ Executed analyzeDailyRisk. New health state: ${newState}`);
+      return;
+    }
+
     if (command.startsWith('test night report')) {
       const parts = command.split(' ');
       let todayKey;
@@ -85,8 +146,137 @@ export async function handleCommand(userId, destinationId, rawText) {
       }
 
       const data = await progressService.getDailyNightReportData(userId, todayKey);
-      const report = reportGeneratorService.generateNightReport(data, userName);
+      const report = reportGeneratorService.generateDailyNightReport(data, userName);
       await telegramService.sendMessage(destinationId, report, { parse_mode: 'Markdown' });
+      return;
+    }
+
+    if (command.startsWith('debug raw blocks')) {
+      const parts = command.split(' ');
+      let todayKey;
+      if (parts.length >= 4 && parts[3].match(/^\d{4}-\d{2}-\d{2}$/)) {
+        todayKey = parts[3];
+      } else {
+        const now = new Date();
+        const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(kolkataStr);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        todayKey = `${yyyy}-${mm}-${dd}`;
+      }
+
+      const { query } = await import('../db/index.js');
+      const { rows } = await query(
+        `SELECT id, title, subject, status, planned_minutes, actual_minutes, day_key, planned_start, planned_end, updated_at, block_id
+         FROM study_blocks WHERE user_id = $1 AND day_key = $2 ORDER BY planned_start, updated_at`,
+        [userId, todayKey]
+      );
+      
+      let report = `🗄️ *Raw DB Blocks (${todayKey})*\n\n`;
+      if (rows.length === 0) report += "No rows found.";
+      for (const r of rows) {
+        report += `*${r.title || r.subject}*\nid: \`${r.id}\`\nblock_id: \`${r.block_id}\`\nstatus: ${r.status} | planned: ${r.planned_minutes} | actual: ${r.actual_minutes}\nstart: ${r.planned_start} | end: ${r.planned_end}\nupdated: ${r.updated_at}\n\n`;
+      }
+      await telegramService.sendMessage(destinationId, report.substring(0, 4000), { parse_mode: 'Markdown' });
+      return;
+    }
+
+    if (command.startsWith('debug sheet blocks')) {
+      const parts = command.split(' ');
+      let todayKey;
+      if (parts.length >= 4 && parts[3].match(/^\d{4}-\d{2}-\d{2}$/)) {
+        todayKey = parts[3];
+      } else {
+        const now = new Date();
+        const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(kolkataStr);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        todayKey = `${yyyy}-${mm}-${dd}`;
+      }
+
+      const payload = { action: 'getBlocksForDate', date: todayKey, userId };
+      const url = process.env.SCRIPT_URL;
+      const res = await fetch(url, { method: 'POST', body: new URLSearchParams({data: JSON.stringify(payload)}) });
+      const data = await res.json();
+      const gasBlocks = data.blocks || [];
+      
+      let report = `📄 *Raw GAS Blocks (${todayKey})*\nTotal Fetched: ${gasBlocks.length}\n\n`;
+      
+      // Print keys of first block to know exact fields returned
+      if (gasBlocks.length > 0) {
+         report += `*Available Keys (First Block):*\n\`${Object.keys(gasBlocks[0]).join(', ')}\`\n\n`;
+      }
+
+      gasBlocks.forEach((b, i) => {
+        report += `*Row ${i+1}* | ${b.Subject || b.Title || 'No Subject'}\n`;
+        report += `BlockId: \`${b.BlockId}\`\n`;
+        report += `Status (raw): ${b.Status} | CompletionStatus: ${b.CompletionStatus}\n`;
+        report += `Planned Mins: ${b.Minutes || b.PlannedMinutes} | Actual Mins: ${b.ActualMinutes || b.actual_minutes}\n`;
+        report += `Start: ${b.Start || b.PlannedStart} | End: ${b.End || b.PlannedEnd}\n`;
+        report += `\n`;
+      });
+      await telegramService.sendMessage(destinationId, report.substring(0, 4000), { parse_mode: 'Markdown' });
+      return;
+    }
+
+    if (command.startsWith('sync today from sheet') || command.startsWith('sync date ')) {
+      let dateStr;
+      if (command.startsWith('sync date ')) {
+        const parts = command.split(' ');
+        if (parts.length >= 3 && parts[2].match(/^\d{4}-\d{2}-\d{2}$/)) {
+          dateStr = parts[2];
+        } else {
+          await telegramService.sendMessage(destinationId, "❌ Invalid format. Use: sync date YYYY-MM-DD from sheet");
+          return;
+        }
+      } else {
+        const now = new Date();
+        const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(kolkataStr);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        dateStr = `${yyyy}-${mm}-${dd}`;
+      }
+
+      await telegramService.sendMessage(destinationId, `Syncing blocks from Google Sheets for ${dateStr}...`);
+
+      const scriptUrl = process.env.SCRIPT_URL;
+      if (!scriptUrl) {
+        await telegramService.sendMessage(destinationId, "❌ SCRIPT_URL not found in environment variables.");
+        return;
+      }
+
+      try {
+        const payload = { action: 'getBlocksForDate', date: dateStr, userId };
+        const body = new URLSearchParams();
+        body.set("data", JSON.stringify(payload));
+        
+        const r = await fetch(scriptUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body,
+        });
+        
+        const text = await r.text();
+        let gasResult = {};
+        try { gasResult = JSON.parse(text); } catch { gasResult = { ok: true, raw: text }; }
+        
+        if (Array.isArray(gasResult?.blocks) && gasResult.blocks.length) {
+          const { mergeLifecycleIntoGasBlocks } = await import('./blockLifecycleService.js');
+          const mergedBlocks = await mergeLifecycleIntoGasBlocks(gasResult.blocks, userId, dateStr);
+          const stats = mergedBlocks._stats || { mergedCount: gasResult.blocks.length, doneCount: 0, plannedCount: gasResult.blocks.length };
+          await telegramService.sendMessage(destinationId, `✅ Fetched ${gasResult.blocks.length} sheet rows\nMerged into ${stats.mergedCount} canonical blocks\nUpdated done blocks: ${stats.doneCount}\nPlanned-only blocks: ${stats.plannedCount}`);
+        } else {
+          await telegramService.sendMessage(destinationId, `✅ Sheet returned 0 blocks for ${dateStr}. Nothing to sync.`);
+        }
+      } catch (err) {
+        console.error("[SyncCommand Error]", err);
+        await telegramService.sendMessage(destinationId, `❌ Sync failed: ${err.message}`);
+      }
       return;
     }
 
@@ -158,9 +348,41 @@ I’ll help you know what is completed, what is pending, and what to correct nex
         break;
       }
 
-      case 'today report': {
+      case 'today report':
+      case 'daily summary':
+      case 'what did i study today':
+      case 'how much did i study today': {
         const data = await progressService.getDailyProgressReport(userId);
         replyText = reportGeneratorService.generateDailyReport(data, userName);
+        break;
+      }
+
+      case 'yesterday report':
+      case 'what did i study yesterday':
+      case 'how much did i study yesterday': {
+        const now = new Date();
+        const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(kolkataStr);
+        d.setDate(d.getDate() - 1);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        const yesterdayKey = `${yyyy}-${mm}-${dd}`;
+        const data = await progressService.getDailyNightReportData(userId, yesterdayKey);
+        replyText = reportGeneratorService.generateDailyNightReport(data, userName);
+        break;
+      }
+
+      case 'night report': {
+        const now = new Date();
+        const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(kolkataStr);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        const todayKey = `${yyyy}-${mm}-${dd}`;
+        const data = await progressService.getDailyNightReportData(userId, todayKey);
+        replyText = reportGeneratorService.generateDailyNightReport(data, userName);
         break;
       }
 

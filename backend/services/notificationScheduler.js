@@ -3,6 +3,8 @@ import * as progressService from './progressService.js';
 import * as reportGeneratorService from './reportGeneratorService.js';
 import * as notificationService from './notificationService.js';
 import * as consistencyService from './consistencyService.js';
+import * as behaviorEscalationService from './behaviorEscalationService.js';
+import * as psychologyMessageService from './psychologyMessageService.js';
 
 let schedulerInterval = null;
 
@@ -78,6 +80,8 @@ async function tickScheduler(userId) {
     try {
       if (!(await hasEvent(userId, 'GOOD_MORNING_MISSION', todayKey))) {
         const yesterdayKey = getYesterdayKey(now);
+        // Run daily risk analyzer before consistency record and report generation
+        await behaviorEscalationService.analyzeDailyRisk(userId, todayKey);
         await consistencyService.recordDailyConsistency(userId, yesterdayKey);
         const data = await progressService.getGoodMorningReportData(userId);
         const text = reportGeneratorService.generateGoodMorningReport(data, "Moulika");
@@ -95,17 +99,10 @@ async function tickScheduler(userId) {
       if (!(await hasEvent(userId, 'PLAN_NOT_UPLOADED', todayKey))) {
         const { rows } = await query(`SELECT id FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [userId, todayKey]);
         if (rows.length === 0) {
-          const text = `Moulika, today’s plan is not uploaded yet ⚠️
-
-Without a plan, the day becomes reactive.
-
-Upload today’s blocks now:
-
-1. Geography Optional
-2. CSAT
-3. PYQ/MCQ
-4. Revision
-5. One answer-writing block`;
+          const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
+          const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+          const text = psychologyMessageService.getPlanNotUploadedMessage(state, "Moulika");
+          
           await notificationService.sendNotification(userId, 'PLAN_NOT_UPLOADED', 'daily_date', todayKey, text, {});
           await recordEvent(userId, 'PLAN_NOT_UPLOADED', todayKey);
         }

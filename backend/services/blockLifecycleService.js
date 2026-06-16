@@ -13,6 +13,7 @@
 import { pool } from '../db/index.js';
 import { computeBlockState, toFrontendBlock } from './computeBlockState.js';
 import { invalidateSuggestionsCache } from './plannerService.js';
+import { checkAndTriggerRecovery } from './behaviorEscalationService.js';
 
 const DEFAULT_USER = process.env.DEFAULT_USER_ID || 'moulika';
 
@@ -78,6 +79,7 @@ export async function ensureBlockRecord(client, {
 //   6. Commit → DB unique index enforces single-active as final guard
 
 export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadata = {}) {
+  console.log(`[LifecycleRoute] startBlock called blockId=${blockId}`);
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
@@ -149,6 +151,20 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
         console.error('[blockLifecycle] Auto-completed block log/event failed:', e.message);
       }
 
+      try {
+        const { sendNotification } = await import('./notificationService.js');
+        await sendNotification(
+          userId,
+          'BLOCK_COMPLETED',
+          'study_block',
+          row.id,
+          `✅ *Block Completed*\nSubject: ${row.subject || 'Block'}\nPlanned: ${row.planned_minutes || 0}m\nActual: ${actualMinutes}m\nThis counts toward your ${row.subject || 'target'}.`
+        );
+        console.log(`[TelegramLifecycle] BLOCK_COMPLETED sent blockId=${row.id}`);
+      } catch (e) {
+        console.error('[TelegramLifecycle] BLOCK_COMPLETED failed:', e.message);
+      }
+
       console.log(
         `[blockLifecycle] Auto-completed block ${row.block_id} (${row.id})` +
         ` to allow new block ${blockId} for user ${userId}`
@@ -206,6 +222,20 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
       console.error('[blockLifecycle] startBlock event log failed:', e.message);
     }
 
+    try {
+      const { sendNotification } = await import('./notificationService.js');
+      await sendNotification(
+        userId,
+        'BLOCK_STARTED',
+        'study_block',
+        targetRow.id,
+        `🚀 *Block Started*\nMoulika, ${targetRow.subject || 'your block'} has started.\nTarget: ${targetRow.planned_minutes || 0}m\nFocus: create output, not just reading.`
+      );
+      console.log(`[TelegramLifecycle] BLOCK_STARTED queued blockId=${targetRow.id}`);
+    } catch (e) {
+      console.error('[TelegramLifecycle] BLOCK_STARTED failed:', e.message);
+    }
+
     return computeBlockState(updated[0]);
 
   } catch (err) {
@@ -226,6 +256,7 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
 // ── PAUSE ────────────────────────────────────────────────────────────────────
 
 export async function pauseBlock(userId = DEFAULT_USER, blockId, dayKey) {
+  console.log(`[LifecycleRoute] pauseBlock called blockId=${blockId}`);
   const { rows } = await pool.query(
     `UPDATE study_blocks
      SET status      = 'paused',
@@ -265,6 +296,20 @@ export async function pauseBlock(userId = DEFAULT_USER, blockId, dayKey) {
     console.error('[blockLifecycle] pauseBlock event log failed:', e.message);
   }
 
+  try {
+    const { sendNotification } = await import('./notificationService.js');
+    await sendNotification(
+      userId,
+      'BLOCK_PAUSED',
+      'study_block',
+      rows[0].id,
+      `⏸️ *Block Paused*\nSubject: ${rows[0].subject || 'Block'}`
+    );
+    console.log(`[TelegramLifecycle] BLOCK_PAUSED queued blockId=${rows[0].id}`);
+  } catch (e) {
+    console.error('[TelegramLifecycle] BLOCK_PAUSED failed:', e.message);
+  }
+
   try { invalidateSuggestionsCache(userId); } catch {}
   return computeBlockState(rows[0]);
 }
@@ -274,6 +319,7 @@ export async function pauseBlock(userId = DEFAULT_USER, blockId, dayKey) {
 // No frontend arithmetic needed — value is authoritative.
 
 export async function resumeBlock(userId = DEFAULT_USER, blockId, dayKey) {
+  console.log(`[LifecycleRoute] resumeBlock called blockId=${blockId}`);
   const { rows } = await pool.query(
     `UPDATE study_blocks
      SET status               = 'active',
@@ -315,6 +361,20 @@ export async function resumeBlock(userId = DEFAULT_USER, blockId, dayKey) {
     console.error('[blockLifecycle] resumeBlock event log failed:', e.message);
   }
 
+  try {
+    const { sendNotification } = await import('./notificationService.js');
+    await sendNotification(
+      userId,
+      'BLOCK_RESUMED',
+      'study_block',
+      rows[0].id,
+      `▶️ *Block Resumed*\nSubject: ${rows[0].subject || 'Block'}`
+    );
+    console.log(`[TelegramLifecycle] BLOCK_RESUMED queued blockId=${rows[0].id}`);
+  } catch (e) {
+    console.error('[TelegramLifecycle] BLOCK_RESUMED failed:', e.message);
+  }
+
   try { invalidateSuggestionsCache(userId); } catch {}
   return computeBlockState(rows[0]);
 }
@@ -336,12 +396,14 @@ export async function completeBlock(
     weaknessNote = null
   } = {}
 ) {
+  console.log(`[LifecycleRoute] completeBlock called blockId=${blockId}`);
   const validReasons = new Set(['completed', 'partial', 'missed', 'skipped']);
   const finalStatus = validReasons.has(reason) ? reason : 'completed';
 
   const { rows } = await pool.query(
     `UPDATE study_blocks
      SET status              = $4,
+         started_at          = COALESCE(started_at, NOW()),
          ended_at            = NOW(),
          total_pause_seconds = total_pause_seconds
                                + CASE WHEN paused_at IS NOT NULL
@@ -355,7 +417,7 @@ export async function completeBlock(
          linkage_pending     = TRUE,
          updated_at          = NOW()
      WHERE user_id = $1 AND block_id = $2 AND day_key = $3
-       AND status IN ('active','paused')
+       AND status IN ('planned', 'active', 'paused')
      RETURNING *`,
     [userId, blockId, dayKey, finalStatus]
   );
@@ -384,6 +446,7 @@ export async function completeBlock(
     `UPDATE study_blocks SET actual_minutes = $1 WHERE id = $2`,
     [calculatedMins, rows[0].id]
   );
+  console.log(`[PlanWrite] study_blocks updated status=${finalStatus} actual_minutes=${calculatedMins}`);
 
   const numericConfidence = toNumericConfidence(confidence);
   const confidenceLabel = toConfidenceLabel(confidence);
@@ -402,6 +465,7 @@ export async function completeBlock(
      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
     insertParams
   );
+  console.log(`[PlanWrite] block_logs inserted`);
 
   try {
     const { logStudyEvent } = await import('./eventService.js');
@@ -427,8 +491,25 @@ export async function completeBlock(
       blockId: rows[0].id,
       metadata: studyEventMetadata
     });
+    console.log(`[PlanWrite] study_events inserted`);
   } catch (e) {
     console.error('[blockLifecycle] completeBlock event log failed:', e.message);
+  }
+
+  try {
+    const { sendNotification } = await import('./notificationService.js');
+    await sendNotification(
+      userId,
+      finalStatus === 'skipped' || finalStatus === 'missed' ? 'BLOCK_SKIPPED' : 'BLOCK_COMPLETED',
+      'study_block',
+      rows[0].id,
+      finalStatus === 'skipped' || finalStatus === 'missed' ?
+      `⏭️ *Block Skipped*\nSubject: ${rows[0].subject || 'Block'}\nPlanned: ${rows[0].planned_minutes || 0}m\nDon't worry, adjust your plan.` :
+      `✅ *Block Completed*\nSubject: ${rows[0].subject || 'Block'}\nPlanned: ${rows[0].planned_minutes || 0}m\nActual: ${calculatedMins}m\nThis counts toward your ${rows[0].subject || 'target'}.`
+    );
+    console.log(`[TelegramLifecycle] ${finalStatus === 'skipped' || finalStatus === 'missed' ? 'BLOCK_SKIPPED' : 'BLOCK_COMPLETED'} sent blockId=${rows[0].id}`);
+  } catch (e) {
+    console.error('[TelegramLifecycle] BLOCK_COMPLETED/SKIPPED failed:', e.message);
   }
 
   try { invalidateSuggestionsCache(userId); } catch {}
@@ -443,6 +524,8 @@ export async function completeBlock(
       console.error('[knowledge-linkage] async hook failed:', err.message)
     );
   } catch { /* linkage service not yet deployed — safe to ignore */ }
+
+  await checkAndTriggerRecovery(userId, dayKey);
 
   return computeBlockState(rows[0]);
 }
@@ -463,6 +546,7 @@ export async function stopBlock(
     productivityStatus = null
   } = {}
 ) {
+  console.log(`[LifecycleRoute] stopBlock called blockId=${blockId}`);
   const { rows } = await pool.query(
     `UPDATE study_blocks
      SET status              = 'stopped',
@@ -544,7 +628,23 @@ export async function stopBlock(
     console.error('[blockLifecycle] stopBlock event log failed:', e.message);
   }
 
+  try {
+    const { sendNotification } = await import('./notificationService.js');
+    await sendNotification(
+      userId,
+      'BLOCK_STOPPED',
+      'study_block',
+      rows[0].id,
+      `🛑 *Block Stopped*\nSubject: ${rows[0].subject || 'Block'}\nPlanned: ${rows[0].planned_minutes || 0}m\nActual: ${calculatedMins}m\nGreat effort!`
+    );
+    console.log(`[TelegramLifecycle] BLOCK_STOPPED queued blockId=${rows[0].id}`);
+  } catch (e) {
+    console.error('[TelegramLifecycle] BLOCK_STOPPED failed:', e.message);
+  }
+
   try { invalidateSuggestionsCache(userId); } catch {}
+
+  await checkAndTriggerRecovery(userId, dayKey);
 
   return computeBlockState(rows[0]);
 }
@@ -595,32 +695,114 @@ export async function getBlockState(userId = DEFAULT_USER, blockId, dayKey) {
 // without changing which endpoint it calls.
 
 export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
-  if (!Array.isArray(gasBlocks) || !gasBlocks.length) return gasBlocks;
+  if (!Array.isArray(gasBlocks) || !gasBlocks.length) return { mergedCount: 0, doneCount: 0, plannedCount: 0 };
+
+  // --- LAYER 1: Deduplicate incoming GAS blocks ---
+  const uniqueGasMap = new Map();
+  for (const b of gasBlocks) {
+    const pStart = b.Start || b.PlannedStart || '';
+    const normSubj = (b.Subject || b.PlannedSubject || '').trim().toLowerCase();
+    const logicalId = `${pStart}_${normSubj}`;
+    
+    const rawStatus = String(b.Status || b.status || b.CompletionStatus || b.completionStatus || b['✅ Done'] || b.Done || '').trim().toUpperCase();
+    const isDone = rawStatus.includes('DONE') || rawStatus.includes('COMPLETED') || rawStatus.includes('COMPLETE') || rawStatus === '✅ DONE' || rawStatus === '✅DONE';
+    const isMissed = rawStatus === 'MISSED' || rawStatus === 'SKIPPED';
+    const incomingStatus = isDone ? 'completed' : isMissed ? 'missed' : 'planned';
+    
+    // Parse planned minutes safely
+    let pMinsRaw = b.Minutes || b.PlannedMinutes || b.planned_minutes || b.plannedMinutes;
+    const plannedMins = isNaN(Number(pMinsRaw)) ? 0 : Number(pMinsRaw);
+    
+    // Parse actual minutes from various possible keys
+    let aMinsRaw = b.ActualMinutes || b.actual_minutes || b.actualMinutes || b.done_minutes || b.doneMinutes || b.completed_minutes || b.completedMinutes || b.Actual || b['Done Minutes'] || b['Minutes Done'] || b['Duration Done'] || b['Studied Minutes'];
+    
+    let parsedActual = 0;
+    if (typeof aMinsRaw === 'string') {
+       // Extract number from strings like "135m", "2h 15m", "301 min"
+       aMinsRaw = aMinsRaw.toLowerCase();
+       if (aMinsRaw.includes('h')) {
+           const match = aMinsRaw.match(/(\d+)\s*h(?:ours?)?\s*(?:(\d+)\s*m(?:in(?:utes?)?)?)?/);
+           if (match) {
+               parsedActual = (parseInt(match[1] || 0) * 60) + parseInt(match[2] || 0);
+           }
+       } else {
+           const match = aMinsRaw.match(/(\d+)/);
+           if (match) parsedActual = parseInt(match[1]);
+       }
+    } else if (!isNaN(Number(aMinsRaw))) {
+       parsedActual = Number(aMinsRaw);
+    }
+    
+    const incomingActualMins = incomingStatus === 'completed' ? (parsedActual || plannedMins) : 0;
+    
+    b._parsedStatus = incomingStatus;
+    b._parsedMins = incomingActualMins;
+    b._plannedMins = plannedMins;
+    
+    if (!uniqueGasMap.has(logicalId)) {
+      uniqueGasMap.set(logicalId, b);
+      continue;
+    }
+    
+    const existing = uniqueGasMap.get(logicalId);
+    const existingIsDone = existing._parsedStatus === 'completed';
+    const currentIsDone = incomingStatus === 'completed';
+    
+    if (currentIsDone && incomingActualMins > 0 && (!existingIsDone || existing._parsedMins === 0)) {
+      uniqueGasMap.set(logicalId, b);
+    } else if (existingIsDone && existing._parsedMins > 0 && (!currentIsDone || incomingActualMins === 0)) {
+      continue;
+    } else if (incomingActualMins > existing._parsedMins) {
+      uniqueGasMap.set(logicalId, b);
+    } else if (existing._parsedMins > incomingActualMins) {
+      continue;
+    } else if (currentIsDone && !existingIsDone) {
+      uniqueGasMap.set(logicalId, b);
+    }
+  }
+  
+  const deduplicatedGasBlocks = Array.from(uniqueGasMap.values());
+  let doneCount = 0;
+  let plannedCount = 0;
 
   // Upsert all schedule metadata in one round-trip (ensures rows exist)
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
-    for (const b of gasBlocks) {
-      if (!b.BlockId) continue;
+    for (const b of deduplicatedGasBlocks) {
+      const pStart = b.Start || b.PlannedStart || '';
+      const normSubj = (b.Subject || b.PlannedSubject || '').trim().toLowerCase();
       
-      const rawStatus = String(b.Status || '').toUpperCase();
-      const incomingStatus = rawStatus === 'DONE' ? 'completed' : rawStatus === 'MISSED' ? 'missed' : 'planned';
-      const plannedMins = Number(b.Minutes || b.PlannedMinutes || 0);
-      const incomingActualMins = incomingStatus === 'completed' ? plannedMins : 0;
+      let dbRow = null;
       
-      const { rows } = await client.query(
-        `SELECT id, status FROM study_blocks WHERE user_id=$1 AND block_id=$2 AND day_key=$3`,
-        [userId, b.BlockId, dayKey]
+      // 1. Try finding by logical identity
+      const { rows: logicalRows } = await client.query(
+        `SELECT id, status, actual_minutes FROM study_blocks WHERE user_id=$1 AND day_key=$2 AND planned_start=$3 AND lower(subject)=$4`,
+        [userId, dayKey, pStart, normSubj]
       );
       
-      if (rows.length === 0) {
+      if (logicalRows.length > 0) {
+        dbRow = logicalRows[0];
+      } else if (b.BlockId) {
+        // 2. Fallback to block_id
+        const { rows: fallbackRows } = await client.query(
+          `SELECT id, status, actual_minutes FROM study_blocks WHERE user_id=$1 AND block_id=$2 AND day_key=$3`,
+          [userId, b.BlockId, dayKey]
+        );
+        if (fallbackRows.length > 0) dbRow = fallbackRows[0];
+      }
+      
+      const incomingStatus = b._parsedStatus;
+      const incomingActualMins = b._parsedMins;
+      const plannedMins = b._plannedMins;
+      
+      if (!dbRow) {
          const res = await client.query(
            `INSERT INTO study_blocks
               (user_id, block_id, day_key, title, subject, topic,
                planned_start, planned_end, planned_minutes, status, actual_minutes, completed_at, ended_at)
             VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11, CASE WHEN $10='completed' THEN NOW() ELSE NULL END, CASE WHEN $10='completed' THEN NOW() ELSE NULL END)
-            RETURNING id`,
+            RETURNING id, subject, topic, node_id`,
            [
              userId, b.BlockId, dayKey,
              b.Subject || b.PlannedSubject || '',
@@ -640,10 +822,22 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
                  VALUES ($1, $2, NOW(), NOW(), $3, 'completed')`,
                 [res.rows[0].id, userId, incomingActualMins]
              );
+             try {
+               const { logStudyEvent } = await import('./eventService.js');
+               await logStudyEvent({
+                 userId,
+                 eventType: 'BLOCK_COMPLETED',
+                 subject: res.rows[0].subject,
+                 topic: res.rows[0].topic,
+                 syllabusNodeId: res.rows[0].node_id,
+                 blockId: res.rows[0].id,
+                 metadata: { actual_minutes: incomingActualMins, completion_status: 'completed' }
+               });
+             } catch(e) {}
          }
       } else {
-         const dbId = rows[0].id;
-         const currentStatus = rows[0].status;
+         const dbId = dbRow.id;
+         const currentStatus = dbRow.status;
          
          await client.query(
             `UPDATE study_blocks SET
@@ -677,9 +871,23 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
                      VALUES ($1, $2, NOW(), NOW(), $3, 'completed')`,
                     [dbId, userId, incomingActualMins]
                  );
+                 try {
+                   const { logStudyEvent } = await import('./eventService.js');
+                   await logStudyEvent({
+                     userId,
+                     eventType: 'BLOCK_COMPLETED',
+                     subject: b.Subject || b.PlannedSubject || '',
+                     topic: b.Topic || b.PlannedTopic || '',
+                     syllabusNodeId: null, // node_id not readily available here without extra query, null is safe
+                     blockId: dbId,
+                     metadata: { actual_minutes: incomingActualMins, completion_status: 'completed' }
+                   });
+                 } catch(e) {}
              }
          }
       }
+      if (incomingStatus === 'completed') doneCount++;
+      else plannedCount++;
     }
     await client.query('COMMIT');
   } catch (err) {
@@ -690,8 +898,6 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
   } finally {
     client.release();
   }
-
-  // Fetch fresh lifecycle state for all block IDs
   const blockIds = gasBlocks.map((b) => b.BlockId).filter(Boolean);
   if (!blockIds.length) return gasBlocks;
 
@@ -708,11 +914,23 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
   }
 
   // Merge: GAS provides schedule fields; PostgreSQL overrides lifecycle fields
-  return gasBlocks.map((gasBlock) => {
-    const db = dbMap[gasBlock.BlockId];
-    if (!db) return gasBlock;          // no DB row yet — keep GAS data
-    return toFrontendBlock(db, gasBlock);
+  const finalBlocks = gasBlocks.map((gasBlock) => {
+    const dbState = dbMap[gasBlock.BlockId];
+    if (dbState) {
+      return { ...gasBlock, ...dbState };
+    }
+    return gasBlock;
   });
+  
+  finalBlocks._stats = {
+    mergedCount: deduplicatedGasBlocks.length,
+    doneCount,
+    plannedCount
+  };
+  
+  await checkAndTriggerRecovery(userId, dayKey);
+
+  return finalBlocks;
 }
 
 // ── LEGACY REPAIR ─────────────────────────────────────────────────────────────

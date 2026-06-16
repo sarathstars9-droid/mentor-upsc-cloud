@@ -183,6 +183,7 @@ async function runAllMigrations() {
     ['029 Discipline and rescue',                        'migrations/029_discipline_and_rescue.sql'],
     ['030 Add stop feedback',                            'migrations/030_add_stop_feedback.sql'],
     ['031 Behaviour signals block id text',              'migrations/031_behaviour_signals_block_id_text.sql'],
+    ['032 Behavior escalation engine',                   'migrations/032_behavior_escalation_engine.sql'],
   ];
 
   // Run 001-004 via standard runner

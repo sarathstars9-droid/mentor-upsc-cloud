@@ -6,13 +6,7 @@ export function getCurrentBlock(todayBlocks, getEffectiveBlockStatus, BLOCK_STAT
     const visibleBlocks = todayBlocks
         .filter((b) => {
             const status = getEffectiveBlockStatus(b);
-            return (
-                status !== "review_pending" &&
-                status !== BLOCK_STATUS.COMPLETED &&
-                status !== BLOCK_STATUS.PARTIAL &&
-                status !== BLOCK_STATUS.MISSED &&
-                status !== BLOCK_STATUS.SKIPPED
-            );
+            return [BLOCK_STATUS.ACTIVE, BLOCK_STATUS.PAUSED].includes(String(status).toLowerCase());
         })
         .sort((a, b) => {
             const aMin = hhmmToMinutes(a?.PlannedStart) ?? Number.MAX_SAFE_INTEGER;
@@ -23,10 +17,8 @@ export function getCurrentBlock(todayBlocks, getEffectiveBlockStatus, BLOCK_STAT
     if (!visibleBlocks.length) return null;
 
     return (
-        visibleBlocks.find((b) => getEffectiveBlockStatus(b) === BLOCK_STATUS.ACTIVE) ||
-        visibleBlocks.find((b) => getEffectiveBlockStatus(b) === BLOCK_STATUS.PAUSED) ||
-        visibleBlocks.find((b) => getEffectiveBlockStatus(b) === BLOCK_STATUS.PLANNED) ||
-        visibleBlocks[0] ||
+        visibleBlocks.find((b) => String(getEffectiveBlockStatus(b)).toLowerCase() === BLOCK_STATUS.ACTIVE) ||
+        visibleBlocks.find((b) => String(getEffectiveBlockStatus(b)).toLowerCase() === BLOCK_STATUS.PAUSED) ||
         null
     );
 }

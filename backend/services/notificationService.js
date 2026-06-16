@@ -62,10 +62,54 @@ export async function seedDefaultPreferences(userId) {
   }
 }
 
+const REMINDER_TYPES = [
+  'PLAN_NOT_UPLOADED',
+  'PLAN_NOT_STARTED',
+  'CURRENT_BLOCK_NOT_STARTED',
+  'BLOCK_PAUSED_TOO_LONG',
+  'BLOCK_START_REMINDER'
+];
+
+function isReminderNotification(type) {
+  return REMINDER_TYPES.includes(type) || (type && type.startsWith('DAY_NOT_STARTED'));
+}
+
 // Main notification dispatcher with preference checks, quiet hour filters, and database deduplication
 export async function sendNotification(userId, notificationType, sourceType, sourceId, messageText, payload = {}) {
   try {
     await seedDefaultPreferences(userId);
+
+    // Fatigue protection check
+    if (isReminderNotification(notificationType)) {
+      const userRes = await query(
+        `SELECT mission_health_state, notification_count_today, last_notification_date 
+         FROM public.users WHERE id = $1`,
+        [userId]
+      );
+      if (userRes.rows.length > 0) {
+        const user = userRes.rows[0];
+        const state = user.mission_health_state || 'HEALTHY';
+        let count = user.notification_count_today || 0;
+
+        const nowKolkata = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(nowKolkata);
+        const todayKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+        if (user.last_notification_date !== todayKey) {
+          count = 0;
+        }
+
+        let limit = 2; // Default to 2 (HEALTHY, SLIGHT_RISK, RECOVERY, MISSION_FAILURE)
+        if (state === 'AT_RISK') limit = 3;
+        else if (state === 'HIGH_RISK' || state === 'CRITICAL') limit = 4;
+        else if (state === 'MISSION_FAILURE') limit = 2;
+
+        if (count >= limit) {
+          console.log(`[NotificationService] Fatigue protection active for ${userId} (state=${state}). Count=${count}/${limit}. Skipping ${notificationType}.`);
+          return { ok: false, reason: "Fatigue protection limit reached" };
+        }
+      }
+    }
 
     // 1. Fetch enabled preferences for this notification type
     const prefRes = await query(
@@ -155,6 +199,20 @@ export async function sendNotification(userId, notificationType, sourceType, sou
       }
 
       const finalStatus = success ? 'sent' : 'failed';
+
+      if (success && isReminderNotification(notificationType)) {
+        const nowKolkata = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+        const d = new Date(nowKolkata);
+        const todayKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+        await query(
+          `UPDATE public.users 
+           SET notification_count_today = CASE WHEN last_notification_date = $2 THEN notification_count_today + 1 ELSE 1 END,
+               last_notification_date = $2
+           WHERE id = $1`,
+          [userId, todayKey]
+        );
+      }
 
       // 6. Record the event
       await query(

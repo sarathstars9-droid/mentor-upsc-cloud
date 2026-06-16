@@ -23,15 +23,59 @@ export async function getDailyExecutionSummary(userId, dayKey) {
      FROM public.study_blocks
      WHERE user_id = $1
        AND day_key = $2
-     ORDER BY planned_start ASC`,
+     ORDER BY planned_start ASC, updated_at ASC`,
     [userId, dayKey]
   );
+
+  // --- DEFENSIVE DEDUPLICATION ---
+  // If old duplicate rows exist in study_blocks, group by same logical identity
+  // (planned_start + normalized subject) and choose the strongest row.
+  const canonicalMap = new Map();
+  for (const b of rows) {
+    const pStart = b.planned_start || '';
+    const normSubj = (b.subject || b.title || b.topic || '').trim().toLowerCase();
+    const identityKey = `${pStart}_${normSubj}`;
+    
+    if (!canonicalMap.has(identityKey)) {
+      canonicalMap.set(identityKey, b);
+      continue;
+    }
+    
+    const existing = canonicalMap.get(identityKey);
+    const existingIsDone = ['done', 'completed', 'partial'].includes((existing.status || '').toLowerCase());
+    const currentIsDone = ['done', 'completed', 'partial'].includes((b.status || '').toLowerCase());
+    
+    const existingMins = existing.actual_minutes || 0;
+    const currentMins = b.actual_minutes || 0;
+    
+    // Rule 1: DONE/completed row with actual_minutes > 0
+    if (currentIsDone && currentMins > 0 && (!existingIsDone || existingMins === 0)) {
+      canonicalMap.set(identityKey, b);
+    } else if (existingIsDone && existingMins > 0 && (!currentIsDone || currentMins === 0)) {
+      continue;
+    }
+    // Rule 2: row with highest actual_minutes
+    else if (currentMins > existingMins) {
+      canonicalMap.set(identityKey, b);
+    } else if (existingMins > currentMins) {
+      continue;
+    }
+    // Rule 3: row with latest updated_at/ended_at
+    // But since we ORDER BY updated_at ASC in the SQL, later rows natively override earlier ones!
+    else {
+      // Tie breaker goes to the later one (which is `b` since we ordered ASC)
+      canonicalMap.set(identityKey, b);
+    }
+  }
+  
+  const deduplicatedRows = Array.from(canonicalMap.values());
+  // --- END DEDUPLICATION ---
 
   const now = new Date();
   const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   const d = new Date(kolkataStr);
 
-  let totalBlocks = rows.length;
+  let totalBlocks = deduplicatedRows.length;
   let completedBlocksCount = 0;
   let missedBlocksCount = 0;
   let plannedMinutesTotal = 0;
@@ -41,7 +85,7 @@ export async function getDailyExecutionSummary(userId, dayKey) {
   const subjectMinutes = {};
   const blockRows = [];
 
-  for (const b of rows) {
+  for (const b of deduplicatedRows) {
     const st = String(b.status || '').toLowerCase();
     const plannedMins = b.planned_minutes || 0;
     const actualMins = b.actual_minutes || 0;

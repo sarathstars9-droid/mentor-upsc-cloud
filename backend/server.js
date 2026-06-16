@@ -1469,6 +1469,7 @@ app.get("/api/day/:dayKey", (req, res) => {
 
 const LIFECYCLE_ACTIONS = new Set([
   "startBlock", "pauseBlock", "resumeBlock", "completeBlock", "stopBlock",
+  "markDone", "markMissed", "skipBlock"
 ]);
 const DEFAULT_PLAN_USER = process.env.DEFAULT_USER_ID || "moulika";
 
@@ -1534,6 +1535,7 @@ app.post("/api/sheets", async (req, res) => {
       try {
         let block;
         if (action === "startBlock") {
+          console.log(`[PlanUI] action=startBlock blockId=${blockId}`);
           block = await dbStartBlock(userId, blockId, dayKey, {
             title:          p.title    || "",
             subject:        p.subject  || "",
@@ -1545,18 +1547,28 @@ app.post("/api/sheets", async (req, res) => {
           syncBlockToCalendar(block, "start").catch(() => {});
 
         } else if (action === "pauseBlock") {
+          console.log(`[PlanUI] action=pauseBlock blockId=${blockId}`);
           block = await dbPauseBlock(userId, blockId, dayKey);
           syncBlockToCalendar(block, "pause").catch(() => {});
 
         } else if (action === "resumeBlock") {
+          console.log(`[PlanUI] action=resumeBlock blockId=${blockId}`);
           block = await dbResumeBlock(userId, blockId, dayKey);
           syncBlockToCalendar(block, "resume").catch(() => {});
 
-        } else if (action === "completeBlock") {
+        } else if (action === "completeBlock" || action === "markDone") {
+          console.log(`[PlanUI] action=${action} blockId=${blockId}`);
           const reason = p.completionStatus || p.reason || "completed";
-          block = await dbCompleteBlock(userId, blockId, dayKey, { reason });
+          block = await dbCompleteBlock(userId, blockId, dayKey, { reason, actualMinutes: p.actualMinutes });
           syncBlockToCalendar(block, "complete").catch(() => {});
+        } else if (action === "markMissed") {
+          console.log(`[PlanUI] action=markMissed blockId=${blockId}`);
+          block = await dbCompleteBlock(userId, blockId, dayKey, { reason: "missed" });
+        } else if (action === "skipBlock") {
+          console.log(`[PlanUI] action=skipBlock blockId=${blockId}`);
+          block = await dbCompleteBlock(userId, blockId, dayKey, { reason: "skipped" });
         } else if (action === "stopBlock") {
+          console.log(`[PlanUI] action=stopBlock blockId=${blockId}`);
           block = await dbStopBlock(userId, blockId, dayKey);
           syncBlockToCalendar(block, "complete").catch(() => {});
         }

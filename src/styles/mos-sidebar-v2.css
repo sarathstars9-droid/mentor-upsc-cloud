@@ -312,9 +312,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 14px;
-  right: 14px;
+  position: relative;
   z-index: 10300; /* above the drawer itself */
   width: 32px;
   height: 32px;

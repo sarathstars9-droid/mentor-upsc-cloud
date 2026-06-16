@@ -60,6 +60,10 @@ export async function sendTelegramMessage(chatId, text, options = {}) {
   }
 }
 
+export async function sendMessage(chatId, text, options = {}) {
+  return sendTelegramMessage(chatId, text, options);
+}
+
 // ── Register env chat ID ─────────────────────────────────────────────────────
 export async function registerEnvChatId() {
   const envChatId = process.env.TELEGRAM_CHAT_ID;

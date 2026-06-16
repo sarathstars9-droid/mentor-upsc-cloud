@@ -368,6 +368,7 @@ function getEffectiveBlockStatus(block) {
 
   if (block.ActualEnd) {
     if (
+      rawStatus === BLOCK_STATUS.STOPPED ||
       rawStatus === BLOCK_STATUS.PARTIAL ||
       rawStatus === BLOCK_STATUS.MISSED ||
       rawStatus === BLOCK_STATUS.SKIPPED
@@ -1194,7 +1195,7 @@ export default function PlanPage() {
       if (!currentBlock?.ActualStart) { setLiveElapsedSec(0); return; }
       const status = getEffectiveBlockStatus(currentBlock);
       if (status !== BLOCK_STATUS.ACTIVE && status !== BLOCK_STATUS.PAUSED) {
-        setLiveElapsedSec(0); return;
+        return;
       }
 
       // Prefer backend-computed ActualSeconds (set by PostgreSQL merge layer).
@@ -2011,11 +2012,11 @@ export default function PlanPage() {
     setStopConfirmOpen(true);
   }
 
-  async function handleStopBlock(block) {
+  async function handleStopBlock(block, signalData = {}) {
     if (!block) return;
 
     const blockId = block.BlockId;
-    console.log("[StopBlock] clicked", block);
+    console.log("[StopBlock] clicked", block, signalData);
 
     // 1. Close modal + clear ALL execution state immediately for responsive UI
     console.log("[StopBlock] clearing execution state");
@@ -2030,7 +2031,7 @@ export default function PlanPage() {
     setTodayBlocks((prev) =>
       prev.map((b) =>
         b.BlockId === blockId
-          ? { ...b, Status: BLOCK_STATUS.PARTIAL, ActualEnd: new Date().toISOString() }
+          ? { ...b, Status: BLOCK_STATUS.STOPPED, ActualEnd: new Date().toISOString() }
           : b
       )
     );
@@ -2052,7 +2053,7 @@ export default function PlanPage() {
       const payload = {
         blockId,
         dayKey,
-        status: "partial",
+        status: "stopped",
         endedAt: new Date().toISOString(),
         elapsedSec: liveElapsedSec
       };
@@ -3035,10 +3036,10 @@ export default function PlanPage() {
         open={stopConfirmOpen && !!(pendingStopBlock || currentBlock)}
         block={pendingStopBlock || currentBlock}
         BACKEND_URL={BACKEND_URL}
-        onSignalSaved={() => {
+        onSignalSaved={(signalData) => {
           const stopTarget = pendingStopBlock || currentBlock;
           if (stopTarget) {
-            handleStopBlock(stopTarget);
+            handleStopBlock(stopTarget, signalData);
           }
         }}
         onClose={() => {
@@ -3215,3 +3216,4 @@ export default function PlanPage() {
     </div>
   );
 }
+

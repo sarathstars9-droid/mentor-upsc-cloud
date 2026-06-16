@@ -2274,6 +2274,14 @@ export default function MainsPage() {
   const stats          = useMainsStats();
   const perPaperStats  = usePerPaperStats();
 
+  const [winWidth, setWinWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => setWinWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  const isMobile = winWidth < 768;
+
   return (
     <div style={{ minHeight: "100vh", background: T.bg, color: T.text, fontFamily: T.font }}>
 
@@ -2330,7 +2338,7 @@ export default function MainsPage() {
         </div>
 
         {/* ═══ GS CARDS ════════════════════════════════════════════════════════ */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 18, marginBottom: 28 }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: 18, marginBottom: 28 }}>
           {GS_PAPERS.map((paper) => (
             <GSCard
               key={paper.id}
@@ -2404,7 +2412,7 @@ export default function MainsPage() {
                 </div>
               </div>
             ) : (
-              <div style={{ display: "flex", gap: 14 }}>
+              <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 14 }}>
                 <WeakColumn gs="GS1" accent={T.amber} items={weakAreas.GS1} />
                 <WeakColumn gs="GS2" accent={T.blue}  items={weakAreas.GS2} />
                 <WeakColumn gs="GS3" accent={T.green} items={weakAreas.GS3} />
