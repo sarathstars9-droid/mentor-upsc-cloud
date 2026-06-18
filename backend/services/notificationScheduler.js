@@ -22,14 +22,14 @@ export function initNotificationScheduler(userId = 'moulika') {
   
   console.log("[NotificationScheduler] Notification scheduler started.");
   
-  // Tick every 60 seconds
+  // Tick every 30 seconds to ensure timely active block auto-activation
   schedulerInterval = setInterval(async () => {
     try {
       await tickScheduler(userId);
     } catch (err) {
       console.error("[NotificationScheduler Tick Error]", err);
     }
-  }, 60 * 1000);
+  }, 30 * 1000);
 
   // Run a startup check immediately
   setTimeout(() => {
@@ -190,28 +190,20 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
     }
   }
 
-  // ── 3. Daily Night Report (10:00 PM) ──────────────────────────────────
-  if (hour === 22 && minute === 0) {
+  // ── 3. Daily Night Mentor Review (9:00 PM) ──────────────────────────────────
+  if (hour === 21 && minute === 0) {
     try {
       const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
       const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
       if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
-        if (!(await hasEvent(userId, 'DAILY_NIGHT_REPORT', todayKey))) {
-          const data = await progressService.getDailyNightReportData(userId, todayKey);
-          const text = reportGeneratorService.generateDailyNightReport(data, "Moulika");
-          await notificationService.sendNotification(
-            userId, 
-            'DAILY_NIGHT_REPORT', 
-            'daily_date', 
-            todayKey, 
-            text, 
-            {}
-          );
-          await recordEvent(userId, 'DAILY_NIGHT_REPORT', todayKey);
+        if (!(await hasEvent(userId, 'NIGHT_MENTOR_REVIEW', todayKey))) {
+          const { sendNightMentorReview } = await import('./mentorReviewService.js');
+          await sendNightMentorReview(userId, todayKey);
+          await recordEvent(userId, 'NIGHT_MENTOR_REVIEW', todayKey);
         }
       }
     } catch (err) {
-      console.error("[NotificationScheduler] daily night report failed:", err.message);
+      console.error("[NotificationScheduler] daily night mentor review failed:", err.message);
     }
   }
 
@@ -290,6 +282,14 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
 
 // Unified block scanner for reminders, pause checks, and missed blocks
 async function processTodayBlocks(userId, now) {
+  // Auto-activate any planned block matching the current time if no other block is active/paused
+  try {
+    const { activateTimeMatchingBlock } = await import('./blockLifecycleService.js');
+    await activateTimeMatchingBlock(userId);
+  } catch (err) {
+    console.error("[processTodayBlocks] activateTimeMatchingBlock failed:", err.message);
+  }
+
   const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   const d = new Date(kolkataStr);
   const yyyy = d.getFullYear();

@@ -94,13 +94,73 @@ export async function syncBlockToCalendar(block, lifecycleAction) {
     }
 
     await markSyncFailed(blockId, userId, dayKey, 'script_error');
-    console.warn('[calendarBridge] script returned not-ok:', JSON.stringify(data).slice(0, 300));
-    return { ok: false, reason: 'script_error', data };
+    // Explicitly log the GAS-level error so it surfaces in backend logs (not just GAS Stackdriver)
+    const gasError = data?.error || data?.message || '(no error field)';
+    console.warn(`[calendarBridge] GAS returned not-ok — gasError: "${gasError}" — full response: ${JSON.stringify(data).slice(0, 300)}`);
+    return { ok: false, reason: 'script_error', gasError, data };
 
   } catch (err) {
     const reason = err.name === 'AbortError' ? 'timeout' : 'network_error';
     console.error(`[calendarBridge] ${reason}:`, err.message);
     await markSyncFailed(blockId, userId, dayKey, reason);
+    return { ok: false, reason, error: err.message };
+  }
+}
+
+// ── Diagnostic probe ─────────────────────────────────────────────────────────
+// Sends a minimal test payload to GAS and returns the raw response.
+// Use GET /api/plan/blocks/verify-calendar-bridge to check if the GAS doPost
+// has the 'upsert_calendar_event' case deployed.
+
+export async function probeCalendarBridge() {
+  const scriptUrl = SCRIPT_URL();
+  if (!scriptUrl) return { ok: false, reason: 'no_script_url' };
+
+  const probe = {
+    action:          'upsert_calendar_event',
+    userId:          'probe',
+    blockId:         'probe-block',
+    dayKey:          new Date().toISOString().slice(0, 10),
+    title:           '[UPSC Mentor] Calendar bridge probe',
+    description:     'Automated connectivity check — not a real event',
+    lifecycleAction: 'start',
+    startTime:       new Date().toISOString(),
+    endTime:         new Date(Date.now() + 3600000).toISOString(),
+    calendarEventId: null,
+    notificationMinutesBefore: 0,
+    __probe: true,   // GAS can short-circuit on this flag if desired
+  };
+
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+
+    const body = new URLSearchParams();
+    body.set('data', JSON.stringify(probe));
+
+    const r = await fetch(scriptUrl, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+      signal:  controller.signal,
+    });
+    clearTimeout(timer);
+
+    const text = await r.text();
+    let data;
+    try { data = JSON.parse(text); } catch { data = { ok: false, raw: text }; }
+
+    const actionKnown = !(data?.error || '').toLowerCase().includes('unknown action');
+    return {
+      ok:          actionKnown,
+      actionKnown,
+      gasResponse: data,
+      diagnosis:   actionKnown
+        ? 'GAS doPost has upsert_calendar_event case — bridge ready'
+        : `GAS doPost missing upsert_calendar_event case — deploy docs/gas_calendar_handler.js`,
+    };
+  } catch (err) {
+    const reason = err.name === 'AbortError' ? 'timeout' : 'network_error';
     return { ok: false, reason, error: err.message };
   }
 }

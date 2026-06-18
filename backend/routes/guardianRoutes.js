@@ -2,6 +2,19 @@
 import express from 'express';
 import { query } from '../db/index.js';
 import { sendNotification } from '../services/notificationService.js';
+import { resolveActiveBlock } from '../services/blockLifecycleService.js';
+
+const DISTRACTION_APPS = [
+  'instagram',
+  'youtube',
+  'whatsapp',
+  'telegram',
+  'com.instagram.android',
+  'com.google.android.youtube',
+  'com.whatsapp',
+  'org.telegram.messenger'
+];
+const DISTRACTION_THRESHOLD_SECONDS = 900; // 15 minutes
 
 const router = express.Router();
 
@@ -22,37 +35,35 @@ function verifyGuardianKey(req, res, next) {
 
 // ── GET /api/guardian/current-block ───────────────────────────────────────────
 router.get('/current-block', verifyGuardianKey, async (req, res) => {
-  const userId = req.query.userId || req.body?.userId;
+  const userId = String(req.query.userId || req.body?.userId || '').toLowerCase().trim();
   if (!userId) {
     return res.status(400).json({ ok: false, error: 'userId is required' });
   }
   
+  console.log(`[Guardian Poll] Polling current block for user: ${userId}`);
+  
   try {
-    const { rows } = await query(
-      `SELECT id, block_id, subject, topic, started_at, planned_minutes, status
-       FROM public.study_blocks
-       WHERE user_id = $1 AND status IN ('active', 'paused')
-       ORDER BY started_at DESC
-       LIMIT 1`,
-      [userId]
-    );
+    const activeBlock = await resolveActiveBlock(userId);
     
-    if (rows.length === 0) {
+    if (!activeBlock) {
+      console.log(`[Guardian Poll] Received no active block for user: ${userId}`);
       return res.json({ active: false });
     }
     
-    const row = rows[0];
-    const start = new Date(row.started_at);
-    const plannedMinutes = Number(row.planned_minutes || 0);
+    const start = new Date(activeBlock.started_at);
+    const plannedMinutes = Number(activeBlock.planned_minutes || 0);
     const end = new Date(start.getTime() + plannedMinutes * 60000);
     
+    console.log(`[Guardian Poll] Received active block: ${activeBlock.subject} for user: ${userId}`);
+    console.log(`[Monitoring Started] Distraction monitoring started for user: ${userId}, block: ${activeBlock.subject}`);
+
     return res.json({
       active: true,
-      blockId: row.block_id,
-      subject: row.subject || row.topic || 'General Study',
+      blockId: activeBlock.block_id,
+      subject: activeBlock.subject || activeBlock.topic || 'General Study',
       startTime: start.toISOString(),
       endTime: end.toISOString(),
-      status: row.status === 'active' ? 'running' : 'paused'
+      status: activeBlock.status === 'active' ? 'running' : 'paused'
     });
   } catch (err) {
     console.error('[GET /current-block] Error:', err.message);
@@ -60,10 +71,7 @@ router.get('/current-block', verifyGuardianKey, async (req, res) => {
   }
 });
 
-// ── POST /api/guardian/phone-usage ────────────────────────────────────────────
-const DISTRACTION_APPS = ['instagram', 'youtube', 'whatsapp', 'telegram', 'facebook', 'x', 'snapchat', 'twitter'];
-const DISTRACTION_THRESHOLD_SECONDS = 900; // 15 minutes
-
+// ── POST /api/guardian/phone-usage ────────────────
 router.post('/phone-usage', verifyGuardianKey, async (req, res) => {
   const { 
     userId, 
@@ -80,6 +88,9 @@ router.post('/phone-usage', verifyGuardianKey, async (req, res) => {
     return res.status(400).json({ ok: false, error: 'userId, blockId, appPackage, and appName are required' });
   }
   
+  const normalizedUid = String(userId).toLowerCase().trim();
+  console.log(`[Guardian Sync] Syncing distraction session for app: ${appName} (${appPackage}), duration: ${durationSeconds}s, in block: ${blockId} for user: ${normalizedUid}`);
+  
   try {
     // 1. Insert phone distraction usage log
     const insertSql = `
@@ -90,7 +101,7 @@ router.post('/phone-usage', verifyGuardianKey, async (req, res) => {
       RETURNING *;
     `;
     const insertValues = [
-      userId,
+      normalizedUid,
       blockId,
       appPackage,
       appName,
@@ -101,6 +112,7 @@ router.post('/phone-usage', verifyGuardianKey, async (req, res) => {
     ];
     
     const insertResult = await query(insertSql, insertValues);
+    console.log(`[Guardian Sync] Distraction session synced successfully for app: ${appName}, block: ${blockId}`);
     
     // 2. Verify if app is considered distraction
     const isDistraction = DISTRACTION_APPS.some(app => 
@@ -124,7 +136,7 @@ router.post('/phone-usage', verifyGuardianKey, async (req, res) => {
         AND block_id = $2 
         AND (category = 'distraction' OR LOWER(app_name) = ANY($3) OR LOWER(app_package) = ANY($3));
     `;
-    const sumResult = await query(sumSql, [userId, blockId, DISTRACTION_APPS]);
+    const sumResult = await query(sumSql, [normalizedUid, blockId, DISTRACTION_APPS]);
     const totalSeconds = Number(sumResult.rows[0].total_duration);
     
     let alertTriggered = false;
@@ -141,7 +153,7 @@ router.post('/phone-usage', verifyGuardianKey, async (req, res) => {
         ORDER BY app_duration DESC
         LIMIT 1;
       `;
-      const topAppResult = await query(topAppSql, [userId, blockId, DISTRACTION_APPS]);
+      const topAppResult = await query(topAppSql, [normalizedUid, blockId, DISTRACTION_APPS]);
       const topAppName = topAppResult.rows[0]?.app_name || appName;
       
       // 5. Look up study block subject label
@@ -151,18 +163,18 @@ router.post('/phone-usage', verifyGuardianKey, async (req, res) => {
         WHERE user_id = $1 AND block_id = $2 
         LIMIT 1;
       `;
-      const blockResult = await query(blockSql, [userId, blockId]);
+      const blockResult = await query(blockSql, [normalizedUid, blockId]);
       const blockSubject = blockResult.rows[0]?.subject || blockResult.rows[0]?.topic || 'Study Block';
       
       const totalMinutes = Math.floor(totalSeconds / 60);
       
       // 6. Build the formatted alert message
       const alertText = `📱 *Focus Drift Detected*
-
+ 
 Active Block: ${blockSubject}
 Phone Distraction: ${totalMinutes} min
 Top App: ${topAppName}
-
+ 
 Return to mission now.`;
       
       // 7. Dispatch via unified notificationService (prevents duplicate triggers via database index deduplication)

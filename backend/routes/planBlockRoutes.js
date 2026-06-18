@@ -20,7 +20,7 @@ import {
   getBlockState,
   repairLegacyActiveBlocks,
 } from '../services/blockLifecycleService.js';
-import { syncBlockToCalendar, retryFailedCalendarSyncs } from '../services/calendarBridgeService.js';
+import { syncBlockToCalendar, retryFailedCalendarSyncs, probeCalendarBridge } from '../services/calendarBridgeService.js';
 
 const router = express.Router();
 const DEFAULT_USER = process.env.DEFAULT_USER_ID || 'moulika';
@@ -188,6 +188,23 @@ router.post('/retry-all-calendar', async (_req, res) => {
     const results = await retryFailedCalendarSyncs();
     return res.json({ ok: true, results });
   } catch (err) {
+    return res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+// ── GET /api/plan/blocks/verify-calendar-bridge ────────────────────────────────
+// Probes the live GAS endpoint to check whether the upsert_calendar_event
+// action is deployed.  Returns a plain-language diagnosis.
+// Example:
+//   curl https://<host>/api/plan/blocks/verify-calendar-bridge
+
+router.get('/verify-calendar-bridge', async (_req, res) => {
+  try {
+    const result = await probeCalendarBridge();
+    const status = result.ok ? 200 : 502;
+    return res.status(status).json(result);
+  } catch (err) {
+    console.error('[verify-calendar-bridge]', err.message);
     return res.status(500).json({ ok: false, message: err.message });
   }
 });

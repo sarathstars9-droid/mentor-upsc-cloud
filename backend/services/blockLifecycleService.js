@@ -652,11 +652,14 @@ export async function stopBlock(
 // ── FETCH ─────────────────────────────────────────────────────────────────────
 
 export async function getBlocksForDay(userId = DEFAULT_USER, dayKey) {
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+  console.log(`[Schedule] Today's blocks loaded for user: ${normalizedUid}, day: ${dayKey}`);
+
   const { rows } = await pool.query(
     `SELECT * FROM study_blocks
      WHERE user_id = $1 AND day_key = $2
      ORDER BY planned_start ASC, created_at ASC`,
-    [userId, dayKey]
+    [normalizedUid, dayKey]
   );
 
   // Phase 8: On-read retry for pending linkage.
@@ -901,23 +904,24 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
   const blockIds = gasBlocks.map((b) => b.BlockId).filter(Boolean);
   if (!blockIds.length) return gasBlocks;
 
+  const normalizedUid = String(userId || '').toLowerCase().trim();
   const { rows: dbRows } = await pool.query(
     `SELECT * FROM study_blocks
      WHERE user_id = $1 AND day_key = $2 AND block_id = ANY($3)`,
-    [userId, dayKey, blockIds]
+    [normalizedUid, dayKey, blockIds]
   );
 
   // Index by block_id for O(1) merge
   const dbMap = {};
   for (const row of dbRows) {
-    dbMap[row.block_id] = computeBlockState(row);
+    dbMap[row.block_id] = row;
   }
 
   // Merge: GAS provides schedule fields; PostgreSQL overrides lifecycle fields
   const finalBlocks = gasBlocks.map((gasBlock) => {
-    const dbState = dbMap[gasBlock.BlockId];
-    if (dbState) {
-      return { ...gasBlock, ...dbState };
+    const dbRow = dbMap[gasBlock.BlockId];
+    if (dbRow) {
+      return toFrontendBlock(dbRow, gasBlock);
     }
     return gasBlock;
   });
@@ -1020,6 +1024,7 @@ function toConfidenceLabel(val) {
 }
 
 export async function savePlanBlocksAndLogEvents(userId, date, items) {
+  console.log(`[Plan Upload] Today's plan upload starting for user: ${userId}, date: ${date}, block count: ${items.length}`);
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
@@ -1279,17 +1284,12 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
 
     await client.query('COMMIT');
 
-    // Trigger Telegram notification for PLAN_ACCEPTED_SUMMARY
+    // Trigger Telegram notification for PLAN_ACCEPTED_SUMMARY (Morning Pre-Block Recall)
     try {
-      const { getYesterdayStudySummary, auditTodayPlan } = await import('./progressService.js');
-      const { generatePlanAcceptedSummaryReport } = await import('./reportGeneratorService.js');
+      const { generateMorningRecallMessage } = await import('./mentorReviewService.js');
       const { sendNotification } = await import('./notificationService.js');
-      const userRes = await pool.query(`SELECT name FROM public.users WHERE id = $1`, [userId]);
-      const userName = userRes.rows[0]?.name || "Moulika";
 
-      const yesterdaySummary = await getYesterdayStudySummary(userId);
-      const todayAudit = await auditTodayPlan(userId, date);
-      const messageText = generatePlanAcceptedSummaryReport(yesterdaySummary, todayAudit, userName);
+      const messageText = await generateMorningRecallMessage(userId, date);
 
       await sendNotification(
         userId,
@@ -1300,7 +1300,19 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
         { date }
       );
     } catch (notifyErr) {
-      console.error('[savePlanBlocks] Failed to send PLAN_ACCEPTED_SUMMARY notification:', notifyErr.message);
+      console.error('[savePlanBlocks] Failed to send morning recall notification:', notifyErr.message);
+    }
+
+    console.log(`[Plan Upload] Today's plan successfully uploaded and saved for user: ${userId}, date: ${date}`);
+    
+    // Auto-activate any block matching the current time if this is today's plan
+    try {
+      const { dayKey } = getISTDateTime();
+      if (date === dayKey) {
+        await activateTimeMatchingBlock(userId);
+      }
+    } catch (activateErr) {
+      console.error('[savePlanBlocks] activateTimeMatchingBlock failed:', activateErr.message);
     }
 
     return { ok: true };
@@ -1311,4 +1323,136 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
   } finally {
     client.release();
   }
+}
+
+export function getISTDateTime() {
+  const now = new Date();
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  const ist = new Date(utc + (3600000 * 5.5));
+  const dayKey = ist.toISOString().slice(0, 10);
+  const timeStr = ist.toISOString().slice(11, 16);
+  return { dayKey, timeStr, date: ist };
+}
+
+export async function resolveActiveBlock(userId) {
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+  
+  // 1. Check for any block with status active or paused (Pure SELECT query)
+  const { rows: activeRows } = await pool.query(
+    `SELECT id, block_id, subject, topic, started_at, planned_minutes, status, planned_start, planned_end, day_key, syllabus_node_id as node_id
+     FROM public.study_blocks
+     WHERE user_id = $1 AND status IN ('active', 'paused')
+     ORDER BY started_at DESC
+     LIMIT 1`,
+    [normalizedUid]
+  );
+  
+  if (activeRows.length > 0) {
+    console.log(`[Current Block] Found active/paused block in DB: ${activeRows[0].subject} (${activeRows[0].block_id}) for user: ${normalizedUid}`);
+    return activeRows[0];
+  }
+  
+  console.log(`[Current Block] No active study block found for user: ${normalizedUid}`);
+  return null;
+}
+
+export async function activateTimeMatchingBlock(userId) {
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+  
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    
+    // Acquire a transaction-level advisory lock on the user ID to serialize updates for this user
+    await client.query('SELECT pg_advisory_xact_lock(hashtext($1))', [normalizedUid]);
+    
+    // 1. Check if there's already an active/paused block
+    const { rows: activeRows } = await client.query(
+      `SELECT id FROM public.study_blocks
+       WHERE user_id = $1 AND status IN ('active', 'paused')
+       LIMIT 1`,
+      [normalizedUid]
+    );
+    
+    if (activeRows.length > 0) {
+      await client.query('COMMIT');
+      return null; // A block is already active/paused, do not auto-start another
+    }
+    
+    // 2. If no explicitly active/paused block, check for time-matching planned/upcoming block
+    const { dayKey, timeStr } = getISTDateTime();
+    const { rows: plannedRows } = await client.query(
+      `SELECT id, block_id, subject, topic, started_at, planned_minutes, status, planned_start, planned_end, day_key, syllabus_node_id as node_id
+       FROM public.study_blocks
+       WHERE user_id = $1 
+         AND day_key = $2 
+         AND status IN ('planned', 'upcoming')
+         AND planned_start <= $3 
+         AND planned_end >= $3
+       ORDER BY planned_start ASC
+       LIMIT 1`,
+      [normalizedUid, dayKey, timeStr]
+    );
+    
+    if (plannedRows.length > 0) {
+      const targetBlock = plannedRows[0];
+      console.log(`[Current Block] Auto-activation triggered. Found planned block for user ${normalizedUid} covering time ${timeStr}: ${targetBlock.subject} (${targetBlock.block_id})`);
+      
+      const { rows: updatedRows } = await client.query(
+        `UPDATE public.study_blocks
+         SET status = 'active',
+             started_at = NOW(),
+             updated_at = NOW()
+         WHERE id = $1
+         RETURNING id, block_id, subject, topic, started_at, planned_minutes, status, planned_start, planned_end, day_key, syllabus_node_id as node_id`,
+        [targetBlock.id]
+      );
+      
+      await client.query('COMMIT');
+      
+      if (updatedRows.length > 0) {
+        const activeBlock = updatedRows[0];
+        // Log BLOCK_STARTED event for analytics/logs
+        try {
+          const { logStudyEvent } = await import('./eventService.js');
+          await logStudyEvent({
+            userId: normalizedUid,
+            eventType: 'BLOCK_STARTED',
+            subject: activeBlock.subject,
+            topic: activeBlock.topic,
+            syllabusNodeId: activeBlock.node_id,
+            blockId: activeBlock.id,
+            metadata: { auto_started: true }
+          });
+        } catch (e) {
+          console.error('[blockLifecycle] Auto-start event log failed:', e.message);
+        }
+        
+        // Send Telegram notification
+        try {
+          const { sendNotification } = await import('./notificationService.js');
+          await sendNotification(
+            normalizedUid,
+            'BLOCK_STARTED',
+            'study_block',
+            activeBlock.id,
+            `🚀 *Block Started*\nMoulika, ${activeBlock.subject || 'your block'} has started automatically.\nTarget: ${activeBlock.planned_minutes || 0}m\nFocus: create output, not just reading.`
+          );
+        } catch (e) {
+          console.error('[TelegramLifecycle] Auto-start Telegram failed:', e.message);
+        }
+        
+        return activeBlock;
+      }
+    } else {
+      await client.query('COMMIT');
+    }
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error('[activateTimeMatchingBlock] Transaction failed:', err.message);
+    throw err;
+  } finally {
+    client.release();
+  }
+  return null;
 }

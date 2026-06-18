@@ -186,6 +186,8 @@ async function runAllMigrations() {
     ['032 Behavior escalation engine',                   'migrations/032_behavior_escalation_engine.sql'],
     ['033 Add recovery notification idempotency',        'migrations/033_add_recovery_notification_idempotency.sql'],
     ['034 Add recovery wizard fields',                   'migrations/034_add_recovery_wizard_fields.sql'],
+    ['035 Daily mentor reviews',                         'migrations/035_daily_mentor_reviews.sql'],
+    ['036 Enforce single active/paused block',           'migrations/036_enforce_single_active_paused_block.sql'],
   ];
 
   // Run 001-004 via standard runner
