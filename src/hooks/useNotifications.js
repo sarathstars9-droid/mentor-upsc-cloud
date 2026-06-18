@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BACKEND_URL } from '../config';
 
 export function useNotifications(userId) {
   const [notifications, setNotifications] = useState([]);
@@ -8,7 +9,7 @@ export function useNotifications(userId) {
 
     const fetchUnread = async () => {
       try {
-        const res = await fetch(`/api/notifications/unread?userId=${encodeURIComponent(userId)}`);
+        const res = await fetch(`${BACKEND_URL}/api/notifications/unread?userId=${encodeURIComponent(userId)}`);
         const data = await res.json();
         if (data.ok) {
           setNotifications(data.notifications || []);
@@ -29,7 +30,7 @@ export function useNotifications(userId) {
 
   const markAsRead = async (id) => {
     try {
-      const res = await fetch(`/api/notifications/${id}/read`, { 
+      const res = await fetch(`${BACKEND_URL}/api/notifications/${id}/read`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
