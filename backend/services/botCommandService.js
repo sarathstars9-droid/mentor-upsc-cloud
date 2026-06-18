@@ -36,6 +36,19 @@ export async function handleCommand(userId, destinationId, rawText) {
     const state = user.mission_health_state || "HEALTHY";
     const wizardStep = user.recovery_wizard_step || 0;
 
+    // Intercept 1-6 replies to daily mentor review reflection questions (non-recovery states)
+    if (!['MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+      const isReflectionReply = ['1', '2', '3', '4', '5', '6'].includes(command);
+      if (isReflectionReply) {
+        const { handleMentorReviewReply } = await import('./mentorReviewService.js');
+        const msg = await handleMentorReviewReply(userId, command);
+        if (msg) {
+          await telegramService.sendTelegramMessage(destinationId, msg);
+          return;
+        }
+      }
+    }
+
     const isDeveloperCommand = command.startsWith('debug ') || command.startsWith('test ') || command.startsWith('sync ');
     if (isDeveloperCommand) {
       const adminChatId = process.env.TELEGRAM_ADMIN_CHAT_ID || process.env.TELEGRAM_CHAT_ID;
