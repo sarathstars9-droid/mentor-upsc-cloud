@@ -90,6 +90,7 @@ import behaviourRoutes from "./routes/behaviourRoutes.js";
 import whatsappWebhookRoutes from "./routes/whatsappWebhookRoutes.js";
 import disciplineRoutes from "./routes/disciplineRoutes.js";
 import guardianRoutes from "./routes/guardianRoutes.js";
+import notificationRoutes from "./routes/notificationRoutes.js";
 import { registerEnvChatId, startTelegramPolling } from "./services/telegramService.js";
 import { initNotificationScheduler } from "./services/notificationScheduler.js";
 import {
@@ -547,6 +548,7 @@ app.use("/api/behaviour", behaviourRoutes);
 app.use("/api", whatsappWebhookRoutes);
 app.use("/api/discipline", disciplineRoutes);
 app.use("/api/guardian", guardianRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 import { sendTelegramMessage } from "./services/telegramService.js";
 

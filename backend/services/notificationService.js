@@ -62,6 +62,17 @@ export async function seedDefaultPreferences(userId) {
        ON CONFLICT (user_id, notification_type, channel_type) DO NOTHING`,
       [userId, pref.type, pref.enabled]
     ).catch(e => console.error('[NotificationService] Seed error:', e.message));
+
+    // Also seed IN_APP for specific critical alerts
+    if (pref.type === 'DISTRACTION_ALERT') {
+      await query(
+        `INSERT INTO public.notification_preferences 
+         (user_id, notification_type, channel_type, is_enabled) 
+         VALUES ($1, $2, 'IN_APP', $3)
+         ON CONFLICT (user_id, notification_type, channel_type) DO NOTHING`,
+        [userId, pref.type, pref.enabled]
+      ).catch(e => console.error('[NotificationService] Seed error:', e.message));
+    }
   }
 }
 
@@ -162,29 +173,32 @@ export async function sendNotification(userId, notificationType, sourceType, sou
         continue;
       }
 
-      // 4. Fetch destination for the channel
-      const destRes = await query(
-        `SELECT destination_id FROM public.notification_channels 
-         WHERE user_id = $1 AND channel_type = $2 AND is_enabled = TRUE`,
-        [userId, channel]
-      );
-
-      if (destRes.rows.length === 0) {
-        console.log(`[NotificationService] No active destination found for user ${userId} on channel ${channel}. Skipping.`);
-        
-        await query(
-          `INSERT INTO public.notification_events 
-             (user_id, notification_type, source_type, source_id, channel_type, status, error_message, payload_json)
-           VALUES ($1, $2, $3, $4, $5, 'skipped', 'No active channel destination', $6)
-           ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type) DO NOTHING`,
-          [userId, notificationType, sourceType, sourceId, channel, JSON.stringify(payload)]
+      // 4. Fetch destination for the channel (Skip for IN_APP)
+      let destinationId = null;
+      if (channel !== 'IN_APP') {
+        const destRes = await query(
+          `SELECT destination_id FROM public.notification_channels 
+           WHERE user_id = $1 AND channel_type = $2 AND is_enabled = TRUE`,
+          [userId, channel]
         );
-        
-        results.push({ channel, status: "skipped", reason: "No destination registered" });
-        continue;
-      }
 
-      const destinationId = destRes.rows[0].destination_id;
+        if (destRes.rows.length === 0) {
+          console.log(`[NotificationService] No active destination found for user ${userId} on channel ${channel}. Skipping.`);
+          
+          await query(
+            `INSERT INTO public.notification_events 
+               (user_id, notification_type, source_type, source_id, channel_type, status, error_message, payload_json)
+             VALUES ($1, $2, $3, $4, $5, 'skipped', 'No active channel destination', $6)
+             ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type) DO NOTHING`,
+            [userId, notificationType, sourceType, sourceId, channel, JSON.stringify(payload)]
+          );
+          
+          results.push({ channel, status: "skipped", reason: "No destination registered" });
+          continue;
+        }
+
+        destinationId = destRes.rows[0].destination_id;
+      }
 
       // 5. Deliver notification based on channel
       let success = false;
@@ -193,6 +207,8 @@ export async function sendNotification(userId, notificationType, sourceType, sou
       try {
         if (channel === 'TELEGRAM') {
           success = await telegramService.sendTelegramMessage(destinationId, messageText);
+        } else if (channel === 'IN_APP') {
+          success = true; // In-app notifications are "sent" by being stored in the database
         } else {
           errorMsg = `Unsupported channel type: ${channel}`;
         }

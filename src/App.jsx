@@ -41,6 +41,7 @@ import PrelimsTestPage from "./pages/PrelimsTestPage";
 import PrelimsTestAttemptPage from "./pages/PrelimsTestAttemptPage";
 import PrelimsTestResultPage from "./pages/PrelimsTestResultPage";
 import { isLoggedIn, login, logout } from "./utils/auth";
+import NotificationBanner from "./components/Notifications/NotificationBanner";
 
 function AppRoutes({ onLogout }) {
   const location = useLocation();
@@ -217,8 +218,11 @@ export default function App() {
     return <LoginPage onLogin={handleLogin} />;
   }
 
+  const currentUserId = localStorage.getItem("userId");
+
   return (
     <BrowserRouter>
+      <NotificationBanner userId={currentUserId} />
       <AppRoutes onLogout={handleLogout} />
     </BrowserRouter>
   );
