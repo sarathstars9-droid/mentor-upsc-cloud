@@ -17,6 +17,8 @@ export function login() {
   isLoggedInMemory = true;
   try {
     sessionStorage.setItem(AUTH_KEY, "true");
+    localStorage.setItem("userId", "moulika");
+    localStorage.setItem("userName", "Moulika");
   } catch {}
 }
 
@@ -24,6 +26,8 @@ export function logout() {
   isLoggedInMemory = false;
   try {
     sessionStorage.removeItem(AUTH_KEY);
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userName");
   } catch {}
 }
 

@@ -218,9 +218,6 @@ export default function App() {
     return <LoginPage onLogin={handleLogin} />;
   }
 
-  console.log("localStorage keys", Object.keys(localStorage));
-  console.log("localStorage values", localStorage);
-
   const currentUserId = localStorage.getItem("userId");
 
   return (
