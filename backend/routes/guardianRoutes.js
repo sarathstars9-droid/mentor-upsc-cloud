@@ -9,10 +9,12 @@ const DISTRACTION_APPS = [
   'youtube',
   'whatsapp',
   'telegram',
+  'chrome',
   'com.instagram.android',
   'com.google.android.youtube',
   'com.whatsapp',
-  'org.telegram.messenger'
+  'org.telegram.messenger',
+  'com.android.chrome'
 ];
 const DISTRACTION_THRESHOLD_SECONDS = 900; // 15 minutes
 
@@ -178,7 +180,9 @@ Top App: ${topAppName}
 Return to mission now.`;
       
       // 7. Dispatch via unified notificationService (prevents duplicate triggers via database index deduplication)
-      const sourceId = `${blockId}_15m`;
+      // Send alerts at 15m intervals (15m, 30m, 45m, etc.) to prevent spamming while allowing follow-ups
+      const intervalMinutes = Math.floor(totalMinutes / 15) * 15;
+      const sourceId = `${blockId}_${intervalMinutes}m`;
       
       const notificationRes = await sendNotification(
         userId,
