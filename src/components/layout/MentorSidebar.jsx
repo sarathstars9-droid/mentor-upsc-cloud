@@ -71,7 +71,7 @@ const navGroups = [
 import { useTheme } from "../../context/ThemeContext";
 import { Sun, Moon } from "lucide-react";
 
-export default function MentorSidebar({ currentPage, onNavigate }) {
+export default function MentorSidebar({ currentPage, onNavigate, onLogout }) {
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -129,7 +129,7 @@ export default function MentorSidebar({ currentPage, onNavigate }) {
           <div className="mos-profile-name-v2">Moulika</div>
           <div className="mos-profile-role-v2">Active Aspirant</div>
         </div>
-        <button className="mos-logout-v2" type="button">Logout</button>
+        <button className="mos-logout-v2" type="button" onClick={onLogout}>Logout</button>
       </footer>
     </aside>
   );

@@ -73,7 +73,7 @@ const navGroups = [
 
 
 
-export default function MentorMobileDrawer({ open, currentPage, onNavigate, onClose }) {
+export default function MentorMobileDrawer({ open, currentPage, onNavigate, onClose, onLogout }) {
   const { theme, toggleTheme } = useTheme();
 
   // Lock body scroll when drawer is open
@@ -158,7 +158,7 @@ export default function MentorMobileDrawer({ open, currentPage, onNavigate, onCl
             <div className="mos-profile-name-v2">Moulika</div>
             <div className="mos-profile-role-v2">Active Aspirant</div>
           </div>
-          <button className="mos-logout-v2" type="button" onClick={onClose}>Close</button>
+          <button className="mos-logout-v2" type="button" onClick={onLogout}>Logout</button>
         </footer>
       </aside>
     </>

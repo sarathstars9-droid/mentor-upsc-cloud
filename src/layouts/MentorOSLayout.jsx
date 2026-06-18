@@ -34,6 +34,7 @@ function formatClock(date = new Date()) {
 export default function MentorOSLayout({
   currentPage,
   onNavigate,
+  onLogout,
   children,
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -65,6 +66,7 @@ export default function MentorOSLayout({
         currentPage={currentPage}
         onNavigate={handleNavigate}
         mobileOpen={mobileOpen}
+        onLogout={onLogout}
       />
 
       <div className="mentoros-main">
@@ -83,6 +85,7 @@ export default function MentorOSLayout({
         currentPage={currentPage}
         onNavigate={handleNavigate}
         onClose={() => setMobileOpen(false)}
+        onLogout={onLogout}
       />
     </div>
   );

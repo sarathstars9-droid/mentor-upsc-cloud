@@ -122,7 +122,7 @@ function AppRoutes({ onLogout }) {
   }
 
   return (
-    <MentorOSLayout currentPage={currentPage} onNavigate={handleNavigate}>
+    <MentorOSLayout currentPage={currentPage} onNavigate={handleNavigate} onLogout={onLogout}>
       <Routes>
         <Route path="/" element={<Navigate to="/plan" replace />} />
         <Route path="/prelims/mistakes" element={<PrelimsMistakesPage />} />
@@ -212,6 +212,7 @@ export default function App() {
   function handleLogout() {
     logout();
     setAuthenticated(false);
+    window.location.href = "/login";
   }
 
   if (!authenticated) {
