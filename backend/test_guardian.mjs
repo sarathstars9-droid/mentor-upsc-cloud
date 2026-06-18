@@ -17,7 +17,7 @@ async function cleanUp() {
   console.log('[Test Cleanup] Deleting test records...');
   await query(`DELETE FROM public.guardian_phone_usage_events WHERE block_id = $1`, [MOCK_BLOCK_ID]);
   await query(`DELETE FROM public.study_blocks WHERE id = $1`, [MOCK_BLOCK_UUID]);
-  await query(`DELETE FROM public.notification_events WHERE source_id = $1`, [`${MOCK_BLOCK_ID}_15m`]);
+  await query(`DELETE FROM public.notification_events WHERE source_id LIKE $1`, [`${MOCK_BLOCK_ID}_%`]);
   await query(`DELETE FROM public.notification_channels WHERE user_id = $1`, [MOCK_USER]);
   await query(`DELETE FROM public.notification_preferences WHERE user_id = $1`, [MOCK_USER]);
   console.log('✅ Cleanup complete');
@@ -117,90 +117,83 @@ async function runTests() {
     }
     console.log('✅ Passed Test 3: Active block details returned correctly');
 
-    // 6. Test phone usage logging under 15 minutes (should NOT trigger alert)
-    console.log('[Test 4] Log distraction under 15 minutes (5 min log)...');
-    const resUsage1 = await fetch(`${TEST_URL}/api/guardian/phone-usage`, {
-      method: 'POST',
-      headers: {
-        'x-guardian-api-key': 'test_guardian_key_123',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        userId: MOCK_USER,
-        blockId: MOCK_BLOCK_ID,
-        appPackage: 'com.instagram.android',
-        appName: 'Instagram',
-        category: 'distraction',
-        durationSeconds: 300,
-        startedAt: new Date(Date.now() - 300 * 1000).toISOString(),
-        endedAt: new Date().toISOString()
-      })
-    });
-    const jsonUsage1 = await resUsage1.json();
-    if (!jsonUsage1.ok || jsonUsage1.totalDistractionSeconds !== 300 || jsonUsage1.alertTriggered !== false) {
-      throw new Error(`Expected ok: true, duration 300s, alertTriggered: false. Got: ${JSON.stringify(jsonUsage1)}`);
+    // Helper to send distraction and verify response/DB state
+    async function sendDistraction(duration, expectedTotal, expectTriggerAttempt, expectedSourceId = null) {
+      const res = await fetch(`${TEST_URL}/api/guardian/phone-usage`, {
+        method: 'POST',
+        headers: {
+          'x-guardian-api-key': 'test_guardian_key_123',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          userId: MOCK_USER,
+          blockId: MOCK_BLOCK_ID,
+          appPackage: 'com.instagram.android',
+          appName: 'Instagram',
+          category: 'distraction',
+          durationSeconds: duration,
+          startedAt: new Date(Date.now() - duration * 1000).toISOString(),
+          endedAt: new Date().toISOString()
+        })
+      });
+      const json = await res.json();
+      if (!json.ok) {
+        throw new Error(`Request failed: ${JSON.stringify(json)}`);
+      }
+      if (json.totalDistractionSeconds !== expectedTotal) {
+        throw new Error(`Expected total distraction seconds ${expectedTotal}, got ${json.totalDistractionSeconds}`);
+      }
+      
+      if (expectTriggerAttempt) {
+        // Since we are running tests locally, Telegram fetch might time out and result in status: 'failed'.
+        // The definitive check is to verify that a row was recorded in notification_events database.
+        if (!expectedSourceId) {
+          throw new Error('expectedSourceId must be provided if expectTriggerAttempt is true');
+        }
+        const dbEvents = await query(
+          `SELECT status FROM public.notification_events 
+           WHERE user_id = $1 AND notification_type = 'DISTRACTION_ALERT' AND source_id = $2`,
+          [MOCK_USER, expectedSourceId]
+        );
+        if (dbEvents.rows.length === 0) {
+          throw new Error(`Expected distraction alert notification event for source_id ${expectedSourceId} to be recorded in DB, but none was found`);
+        }
+      } else {
+        // If we expect NO alert, alertTriggered must be false
+        if (json.alertTriggered !== false) {
+          throw new Error(`Expected alertTriggered to be false, got: ${json.alertTriggered}`);
+        }
+      }
     }
-    console.log('✅ Passed Test 4: First log saved without alert trigger');
 
-    // 7. Log phone usage exceeding 15 minutes (should trigger alert)
-    console.log('[Test 5] Log distraction over 15 minutes (additional 11 min log)...');
-    const resUsage2 = await fetch(`${TEST_URL}/api/guardian/phone-usage`, {
-      method: 'POST',
-      headers: {
-        'x-guardian-api-key': 'test_guardian_key_123',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        userId: MOCK_USER,
-        blockId: MOCK_BLOCK_ID,
-        appPackage: 'com.instagram.android',
-        appName: 'Instagram',
-        category: 'distraction',
-        durationSeconds: 660,
-        startedAt: new Date(Date.now() - 660 * 1000).toISOString(),
-        endedAt: new Date().toISOString()
-      })
-    });
-    const jsonUsage2 = await resUsage2.json();
-    if (!jsonUsage2.ok || jsonUsage2.totalDistractionSeconds !== 960) {
-      throw new Error(`Expected ok: true, duration 960s. Got: ${JSON.stringify(jsonUsage2)}`);
-    }
-    
-    // Check if the notification was tracked in the DB (sent or failed or skipped)
-    const dbEvents = await query(
-      `SELECT status FROM public.notification_events 
-       WHERE user_id = $1 AND notification_type = 'DISTRACTION_ALERT' AND source_id = $2`,
-      [MOCK_USER, `${MOCK_BLOCK_ID}_15m`]
-    );
-    if (dbEvents.rows.length === 0) {
-      throw new Error('Expected distraction alert notification event to be recorded in database, but none was found');
-    }
-    console.log(`✅ Passed Test 5: Alert triggered and logged with status: ${dbEvents.rows[0].status}`);
+    // 6. Test progressive distraction thresholds
+    console.log('[Test 4] Log 4 minutes of distraction (should NOT alert)...');
+    await sendDistraction(240, 240, false);
+    console.log('✅ Passed Test 4: 4 min log saved without alert');
 
-    // 8. Verify deduplication does not resend the alert
-    console.log('[Test 6] Verify deduplication stops secondary alerts...');
-    const resUsage3 = await fetch(`${TEST_URL}/api/guardian/phone-usage`, {
-      method: 'POST',
-      headers: {
-        'x-guardian-api-key': 'test_guardian_key_123',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        userId: MOCK_USER,
-        blockId: MOCK_BLOCK_ID,
-        appPackage: 'com.instagram.android',
-        appName: 'Instagram',
-        category: 'distraction',
-        durationSeconds: 200,
-        startedAt: new Date(Date.now() - 200 * 1000).toISOString(),
-        endedAt: new Date().toISOString()
-      })
-    });
-    const jsonUsage3 = await resUsage3.json();
-    if (!jsonUsage3.ok || jsonUsage3.alertTriggered !== false) {
-      throw new Error(`Deduplication failure. Expected alertTriggered: false, got: ${JSON.stringify(jsonUsage3)}`);
-    }
-    console.log('✅ Passed Test 6: Deduplication successfully avoided duplicate alert');
+    console.log('[Test 5] Log additional 1 minute of distraction (total 5 min, should alert 5m)...');
+    await sendDistraction(60, 300, true, `${MOCK_BLOCK_ID}_5m`);
+    console.log('✅ Passed Test 5: 5 min log triggered alert and recorded event');
+
+    console.log('[Test 6] Log additional 5 minutes of distraction (total 10 min, should alert 10m)...');
+    await sendDistraction(300, 600, true, `${MOCK_BLOCK_ID}_10m`);
+    console.log('✅ Passed Test 6: 10 min log triggered alert and recorded event');
+
+    console.log('[Test 7] Log additional 5 minutes of distraction (total 15 min, should alert 15m)...');
+    await sendDistraction(300, 900, true, `${MOCK_BLOCK_ID}_15m`);
+    console.log('✅ Passed Test 7: 15 min log triggered alert and recorded event');
+
+    console.log('[Test 8] Log additional 15 minutes of distraction (total 30 min, should alert 30m)...');
+    await sendDistraction(900, 1800, true, `${MOCK_BLOCK_ID}_30m`);
+    console.log('✅ Passed Test 8: 30 min log triggered alert and recorded event');
+
+    console.log('[Test 9] Log additional 1 minute of distraction (total 31 min, should NOT alert 30m again)...');
+    await sendDistraction(60, 1860, false);
+    console.log('✅ Passed Test 9: 31 min log did not trigger duplicate alert');
+
+    console.log('[Test 10] Log additional 14 minutes of distraction (total 45 min, should alert 45m)...');
+    await sendDistraction(840, 2700, true, `${MOCK_BLOCK_ID}_45m`);
+    console.log('✅ Passed Test 10: 45 min log triggered alert and recorded event');
 
   } catch (error) {
     console.error('❌ Test execution failed:', error.message);

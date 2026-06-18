@@ -16,7 +16,15 @@ const DISTRACTION_APPS = [
   'org.telegram.messenger',
   'com.android.chrome'
 ];
-const DISTRACTION_THRESHOLD_SECONDS = 900; // 15 minutes
+const DISTRACTION_THRESHOLD_SECONDS = 300; // 5 minutes (minimum threshold)
+
+function getDistractionThreshold(totalMinutes) {
+  if (totalMinutes < 5) return null;
+  if (totalMinutes < 10) return 5;
+  if (totalMinutes < 15) return 10;
+  if (totalMinutes < 30) return 15;
+  return Math.floor(totalMinutes / 15) * 15;
+}
 
 const router = express.Router();
 
@@ -142,8 +150,10 @@ router.post('/phone-usage', verifyGuardianKey, async (req, res) => {
     const totalSeconds = Number(sumResult.rows[0].total_duration);
     
     let alertTriggered = false;
+    const totalMinutes = Math.floor(totalSeconds / 60);
+    const matchedThreshold = getDistractionThreshold(totalMinutes);
     
-    if (totalSeconds >= DISTRACTION_THRESHOLD_SECONDS) {
+    if (matchedThreshold !== null) {
       // 4. Find app package with highest cumulative distraction in block
       const topAppSql = `
         SELECT app_name, SUM(duration_seconds) AS app_duration
@@ -168,8 +178,6 @@ router.post('/phone-usage', verifyGuardianKey, async (req, res) => {
       const blockResult = await query(blockSql, [normalizedUid, blockId]);
       const blockSubject = blockResult.rows[0]?.subject || blockResult.rows[0]?.topic || 'Study Block';
       
-      const totalMinutes = Math.floor(totalSeconds / 60);
-      
       // 6. Build the formatted alert message
       const alertText = `📱 *Focus Drift Detected*
  
@@ -180,9 +188,8 @@ Top App: ${topAppName}
 Return to mission now.`;
       
       // 7. Dispatch via unified notificationService (prevents duplicate triggers via database index deduplication)
-      // Send alerts at 15m intervals (15m, 30m, 45m, etc.) to prevent spamming while allowing follow-ups
-      const intervalMinutes = Math.floor(totalMinutes / 15) * 15;
-      const sourceId = `${blockId}_${intervalMinutes}m`;
+      // Send alerts at specified progressive thresholds: 5m, 10m, 15m, 30m, 45m, 60m...
+      const sourceId = `${blockId}_${matchedThreshold}m`;
       
       const notificationRes = await sendNotification(
         userId,
@@ -190,12 +197,12 @@ Return to mission now.`;
         'block_distraction',
         sourceId,
         alertText,
-        { blockId, totalMinutes, topApp: topAppName }
+        { blockId, totalMinutes, topApp: topAppName, threshold: matchedThreshold }
       );
       
       if (notificationRes.ok && notificationRes.results.some(r => r.status === 'sent')) {
         alertTriggered = true;
-        console.log(`[Guardian Service] Telegram distraction alert sent for block ${blockId}`);
+        console.log(`[Guardian Service] Telegram distraction alert sent for block ${blockId} at threshold ${matchedThreshold}m`);
       }
     }
     
