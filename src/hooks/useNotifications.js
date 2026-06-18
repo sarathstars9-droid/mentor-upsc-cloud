@@ -5,12 +5,15 @@ export function useNotifications(userId) {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
+    console.log('[useNotifications] Hook mounted. userId:', userId);
     if (!userId) return;
 
     const fetchUnread = async () => {
+      console.log(`[useNotifications] Fetching from: ${BACKEND_URL}/api/notifications/unread?userId=${encodeURIComponent(userId)}`);
       try {
         const res = await fetch(`${BACKEND_URL}/api/notifications/unread?userId=${encodeURIComponent(userId)}`);
         const data = await res.json();
+        console.log('[useNotifications] Response JSON:', data);
         if (data.ok) {
           setNotifications(data.notifications || []);
         }

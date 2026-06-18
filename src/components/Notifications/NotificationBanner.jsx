@@ -2,9 +2,13 @@ import React from 'react';
 import { useNotifications } from '../../hooks/useNotifications';
 
 export default function NotificationBanner({ userId }) {
+  console.log('[NotificationBanner] Component rendered with userId:', userId);
   const { notifications, markAsRead } = useNotifications(userId);
 
+  console.log('[NotificationBanner] Current notifications:', notifications);
+
   if (!userId || !notifications || notifications.length === 0) {
+    console.log('[NotificationBanner] Returning null. userId:', userId, 'notifications length:', notifications?.length);
     return null;
   }
 
