@@ -193,8 +193,8 @@ router.post('/retry-all-calendar', async (_req, res) => {
 });
 
 // ── GET /api/plan/blocks/verify-calendar-bridge ────────────────────────────────
-// Probes the live GAS endpoint to check whether the upsert_calendar_event
-// action is deployed.  Returns a plain-language diagnosis.
+// Probes the live GAS endpoint using getBlocksForDate (read-only, no side effects).
+// Returns a plain-language diagnosis of GAS reachability and supported actions.
 // Example:
 //   curl https://<host>/api/plan/blocks/verify-calendar-bridge
 

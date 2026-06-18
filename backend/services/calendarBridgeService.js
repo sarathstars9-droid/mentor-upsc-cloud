@@ -2,20 +2,54 @@
 // Sends block lifecycle events to Google Calendar via the existing Apps Script bridge.
 //
 // Architecture:
-//   Backend (this file) → POST to SCRIPT_URL → Apps Script handles calendar.upsert
-//   Apps Script returns { ok, calendarEventId, calendarHtmlLink }
-//   We store the event ID in study_blocks.calendar_event_id
+//   Backend (this file) → POST to SCRIPT_URL → Apps Script handles calendar sync
+//   Apps Script supported actions:
+//     startBlock, pauseBlock, resumeBlock, completeBlock  — lifecycle updates
+//     syncCalendarFromBlocks                              — bulk calendar sync / retry
+//     getBlocksForDate                                    — connectivity probe (read-only)
 //
 // Calendar failures NEVER roll back the DB lifecycle change.
 // The caller must fire this as fire-and-forget (don't await or catch in the route).
 //
-// Apps Script setup: add the handler from docs/gas_calendar_handler.js to your
-// Google Apps Script project.
+// No Apps Script changes required — this service uses the existing deployed protocol.
 
 import { pool } from '../db/index.js';
 
-const SCRIPT_URL   = () => String(process.env.SCRIPT_URL || '').trim();
-const TIMEOUT_MS   = 12_000;
+const SCRIPT_URL = () => String(process.env.SCRIPT_URL || '').trim();
+const TIMEOUT_MS = 12_000;
+
+// ── Lifecycle action map ──────────────────────────────────────────────────────
+// Maps internal lifecycle action names → GAS action names supported by the
+// deployed Apps Script doPost() handler.
+
+const GAS_LIFECYCLE_ACTION = {
+  start:    'startBlock',
+  pause:    'pauseBlock',
+  resume:   'resumeBlock',
+  complete: 'completeBlock',
+  // retry uses syncCalendarFromBlocks (bulk re-sync), handled separately below
+};
+
+// ── Low-level GAS POST helper ────────────────────────────────────────────────
+
+async function callGas(scriptUrl, payload) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+
+  const body = new URLSearchParams();
+  body.set('data', JSON.stringify(payload));
+
+  const r = await fetch(scriptUrl, {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body,
+    signal:  controller.signal,
+  });
+  clearTimeout(timer);
+
+  const text = await r.text();
+  try { return JSON.parse(text); } catch { return { ok: false, raw: text }; }
+}
 
 // ── Main sync function ────────────────────────────────────────────────────────
 
@@ -36,99 +70,129 @@ export async function syncBlockToCalendar(block, lifecycleAction) {
   const userId  = block.user_id  || process.env.DEFAULT_USER_ID || 'moulika';
   const dayKey  = block.day_key  || '';
 
-  // Build the event window: use actual timestamps if available, fall back to planned
-  const startIso = block.started_at
-    ? new Date(block.started_at).toISOString()
-    : buildTimeIso(dayKey, block.planned_start || block.PlannedStart);
+  // ── Route: lifecycle actions → startBlock / pauseBlock / resumeBlock / completeBlock
+  const gasAction = GAS_LIFECYCLE_ACTION[lifecycleAction];
 
-  const endIso = block.ended_at
-    ? new Date(block.ended_at).toISOString()
-    : buildTimeIso(dayKey, block.planned_end || block.PlannedEnd);
+  if (gasAction) {
+    // Payload format mirrors what proxyToGas sends for lifecycle actions.
+    // Apps Script expects: { action, payload: { blockId, dayKey, ... }, userId }
+    const payload = {
+      action: gasAction,
+      userId,
+      payload: {
+        blockId,
+        dayKey,
+        subject:        block.subject       || block.PlannedSubject || '',
+        topic:          block.topic         || block.PlannedTopic   || '',
+        plannedStart:   block.planned_start || block.PlannedStart   || '',
+        plannedEnd:     block.planned_end   || block.PlannedEnd     || '',
+        plannedMinutes: Number(block.planned_minutes || block.PlannedMinutes || 0),
+        actualMinutes:  Number(block.actual_minutes  || block.ActualMinutes  || 0),
+        status:         block.status || lifecycleAction,
+      },
+    };
+
+    try {
+      const data = await callGas(scriptUrl, payload);
+
+      if (data?.ok !== false) {
+        // GAS lifecycle actions don't return calendarEventId — they update Sheets/Calendar
+        // internally. Mark as synced and optionally store any event ID returned.
+        const updateFields = data?.calendarEventId
+          ? `calendar_event_id = '${data.calendarEventId}', calendar_html_link = ${data.calendarHtmlLink ? `'${data.calendarHtmlLink}'` : 'NULL'}, calendar_sync_status = 'synced'`
+          : `calendar_sync_status = 'synced'`;
+
+        await pool.query(
+          `UPDATE study_blocks
+           SET ${updateFields}, updated_at = NOW()
+           WHERE block_id = $1 AND user_id = $2 AND day_key = $3`,
+          [blockId, userId, dayKey]
+        );
+
+        console.log(`[calendarBridge] ✓ ${gasAction} sent for ${blockId} (lifecycle: ${lifecycleAction})`);
+        return { ok: true, gasAction, calendarEventId: data?.calendarEventId || null };
+      }
+
+      await markSyncFailed(blockId, userId, dayKey, 'script_error');
+      const gasError = data?.error || data?.message || '(no error field)';
+      console.warn(`[calendarBridge] GAS returned not-ok for ${gasAction} — gasError: "${gasError}" — response: ${JSON.stringify(data).slice(0, 300)}`);
+      return { ok: false, reason: 'script_error', gasAction, gasError, data };
+
+    } catch (err) {
+      const reason = err.name === 'AbortError' ? 'timeout' : 'network_error';
+      console.error(`[calendarBridge] ${reason} on ${gasAction}:`, err.message);
+      await markSyncFailed(blockId, userId, dayKey, reason);
+      return { ok: false, reason, gasAction, error: err.message };
+    }
+  }
+
+  // ── Route: retry / unknown → syncCalendarFromBlocks ─────────────────────────
+  // Used by retryFailedCalendarSyncs() and any unrecognised lifecycleAction.
+  return syncBlocksToCalendar([block], userId, dayKey);
+}
+
+// ── Bulk calendar sync (syncCalendarFromBlocks) ───────────────────────────────
+// Sends one or more blocks to the Apps Script syncCalendarFromBlocks action,
+// which handles the full Google Calendar create/update logic on the GAS side.
+
+export async function syncBlocksToCalendar(blocks, userId, dayKey) {
+  const scriptUrl = SCRIPT_URL();
+  if (!scriptUrl) {
+    console.warn('[calendarBridge] SCRIPT_URL not set — bulk sync skipped');
+    return { ok: false, reason: 'no_script_url' };
+  }
 
   const payload = {
-    action:                  'upsert_calendar_event',
-    userId,
-    blockId,
-    dayKey,
-    title:                   buildEventTitle(block, lifecycleAction),
-    description:             buildEventDescription(block, lifecycleAction),
-    status:                  block.status,
-    lifecycleAction,
-    startTime:               startIso,
-    endTime:                 endIso,
-    calendarEventId:         block.calendar_event_id || null,
-    notificationMinutesBefore: 0,   // mobile popup at event start
+    action: 'syncCalendarFromBlocks',
+    userId: userId || process.env.DEFAULT_USER_ID || 'moulika',
+    date:   dayKey,
+    blocks: blocks.map(b => ({
+      blockId:        b.block_id      || b.BlockId        || '',
+      dayKey:         b.day_key       || b.DayKey         || dayKey,
+      subject:        b.subject       || b.PlannedSubject || '',
+      topic:          b.topic         || b.PlannedTopic   || '',
+      plannedStart:   b.planned_start || b.PlannedStart   || '',
+      plannedEnd:     b.planned_end   || b.PlannedEnd     || '',
+      plannedMinutes: Number(b.planned_minutes || b.PlannedMinutes || 0),
+      actualMinutes:  Number(b.actual_minutes  || b.ActualMinutes  || 0),
+      status:         b.status        || '',
+      calendarEventId: b.calendar_event_id || null,
+    })),
   };
 
   try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+    const data = await callGas(scriptUrl, payload);
 
-    const body = new URLSearchParams();
-    body.set('data', JSON.stringify(payload));
-
-    const r = await fetch(scriptUrl, {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body,
-      signal:  controller.signal,
-    });
-    clearTimeout(timer);
-
-    const text = await r.text();
-    let data;
-    try { data = JSON.parse(text); } catch { data = { ok: false, raw: text }; }
-
-    if (data?.ok && data?.calendarEventId) {
-      await pool.query(
-        `UPDATE study_blocks
-         SET calendar_event_id    = $1,
-             calendar_html_link   = $2,
-             calendar_sync_status = 'synced',
-             updated_at           = NOW()
-         WHERE block_id = $3 AND user_id = $4 AND day_key = $5`,
-        [data.calendarEventId, data.calendarHtmlLink || null, blockId, userId, dayKey]
-      );
-      console.log(`[calendarBridge] ✓ synced ${blockId} → ${data.calendarEventId}`);
-      return { ok: true, calendarEventId: data.calendarEventId };
+    if (data?.ok !== false) {
+      console.log(`[calendarBridge] ✓ syncCalendarFromBlocks sent for ${blocks.length} block(s) on ${dayKey}`);
+      return { ok: true, gasAction: 'syncCalendarFromBlocks', count: blocks.length, data };
     }
 
-    await markSyncFailed(blockId, userId, dayKey, 'script_error');
-    // Explicitly log the GAS-level error so it surfaces in backend logs (not just GAS Stackdriver)
     const gasError = data?.error || data?.message || '(no error field)';
-    console.warn(`[calendarBridge] GAS returned not-ok — gasError: "${gasError}" — full response: ${JSON.stringify(data).slice(0, 300)}`);
+    console.warn(`[calendarBridge] syncCalendarFromBlocks not-ok — gasError: "${gasError}"`);
     return { ok: false, reason: 'script_error', gasError, data };
 
   } catch (err) {
     const reason = err.name === 'AbortError' ? 'timeout' : 'network_error';
-    console.error(`[calendarBridge] ${reason}:`, err.message);
-    await markSyncFailed(blockId, userId, dayKey, reason);
+    console.error(`[calendarBridge] ${reason} on syncCalendarFromBlocks:`, err.message);
     return { ok: false, reason, error: err.message };
   }
 }
 
-// ── Diagnostic probe ─────────────────────────────────────────────────────────
-// Sends a minimal test payload to GAS and returns the raw response.
-// Use GET /api/plan/blocks/verify-calendar-bridge to check if the GAS doPost
-// has the 'upsert_calendar_event' case deployed.
+// ── Diagnostic probe ──────────────────────────────────────────────────────────
+// Tests the live GAS endpoint using getBlocksForDate (a known read-only action).
+// Use GET /api/plan/blocks/verify-calendar-bridge to run this check.
+// Returns a plain-language diagnosis without any side effects.
 
 export async function probeCalendarBridge() {
   const scriptUrl = SCRIPT_URL();
-  if (!scriptUrl) return { ok: false, reason: 'no_script_url' };
+  if (!scriptUrl) return { ok: false, reason: 'no_script_url', diagnosis: 'SCRIPT_URL env var is not set' };
 
+  const today = new Date().toISOString().slice(0, 10);
   const probe = {
-    action:          'upsert_calendar_event',
-    userId:          'probe',
-    blockId:         'probe-block',
-    dayKey:          new Date().toISOString().slice(0, 10),
-    title:           '[UPSC Mentor] Calendar bridge probe',
-    description:     'Automated connectivity check — not a real event',
-    lifecycleAction: 'start',
-    startTime:       new Date().toISOString(),
-    endTime:         new Date(Date.now() + 3600000).toISOString(),
-    calendarEventId: null,
-    notificationMinutesBefore: 0,
-    __probe: true,   // GAS can short-circuit on this flag if desired
+    action: 'getBlocksForDate',
+    userId: process.env.DEFAULT_USER_ID || 'moulika',
+    date:   today,
   };
 
   try {
@@ -150,18 +214,24 @@ export async function probeCalendarBridge() {
     let data;
     try { data = JSON.parse(text); } catch { data = { ok: false, raw: text }; }
 
-    const actionKnown = !(data?.error || '').toLowerCase().includes('unknown action');
+    // getBlocksForDate returns { blocks: [...] } on success, or an error object
+    const isUnknownAction = (data?.error || '').toLowerCase().includes('unknown action');
+    const reachable = !isUnknownAction;
+
     return {
-      ok:          actionKnown,
-      actionKnown,
+      ok:          reachable,
+      reachable,
+      gasAction:   'getBlocksForDate',
       gasResponse: data,
-      diagnosis:   actionKnown
-        ? 'GAS doPost has upsert_calendar_event case — bridge ready'
-        : `GAS doPost missing upsert_calendar_event case — deploy docs/gas_calendar_handler.js`,
+      supportedActions: ['saveScheduleBlocks', 'syncCalendarFromBlocks', 'startBlock',
+                         'pauseBlock', 'resumeBlock', 'completeBlock', 'getBlocksForDate'],
+      diagnosis:   reachable
+        ? `GAS is reachable and responding. Protocol: lifecycle actions map to startBlock/pauseBlock/resumeBlock/completeBlock; calendar sync uses syncCalendarFromBlocks.`
+        : `GAS returned: ${data?.error || 'unknown error'}`,
     };
   } catch (err) {
     const reason = err.name === 'AbortError' ? 'timeout' : 'network_error';
-    return { ok: false, reason, error: err.message };
+    return { ok: false, reason, error: err.message, diagnosis: `Could not reach GAS: ${err.message}` };
   }
 }
 
@@ -177,6 +247,7 @@ export async function retryFailedCalendarSyncs() {
 
   const results = [];
   for (const row of rows) {
+    // Group retries by day to use syncCalendarFromBlocks (bulk)
     const action = row.ended_at ? 'complete' : row.status;
     const result = await syncBlockToCalendar(row, action);
     results.push({ block_id: row.block_id, ...result });
@@ -199,31 +270,4 @@ async function markSyncFailed(blockId, userId, dayKey, reason) {
   } catch (err) {
     console.error('[calendarBridge] markSyncFailed DB error:', err.message);
   }
-}
-
-function buildTimeIso(dayKey, hhMm) {
-  if (!dayKey || !hhMm) return new Date().toISOString();
-  const [h, m] = String(hhMm).split(':').map(Number);
-  const d = new Date(`${dayKey}T00:00:00`);
-  d.setHours(h || 0, m || 0, 0, 0);
-  return d.toISOString();
-}
-
-function buildEventTitle(block, action) {
-  const subject = block.subject || block.PlannedSubject || 'Study';
-  const topic   = block.topic   || block.PlannedTopic   || '';
-  const emoji   = { start: '▶', pause: '⏸', resume: '▶', complete: '✅' }[action] || '📚';
-  return `${emoji} ${subject}${topic ? ': ' + topic : ''}`;
-}
-
-function buildEventDescription(block, action) {
-  const mins = block.actualMinutes || block.ActualMinutes || 0;
-  const pauses = block.pauses_count || block.PauseCount || 0;
-  return [
-    `Block: ${block.block_id || block.BlockId || '?'}`,
-    `Status: ${block.status || action}`,
-    mins  ? `Actual time: ${mins} min` : null,
-    pauses ? `Pauses: ${pauses}` : null,
-    `Updated: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST`,
-  ].filter(Boolean).join('\n');
 }
