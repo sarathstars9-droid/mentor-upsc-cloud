@@ -2,13 +2,9 @@ import React from 'react';
 import { useNotifications } from '../../hooks/useNotifications';
 
 export default function NotificationBanner({ userId }) {
-  console.log('[NotificationBanner] Component rendered with userId:', userId);
   const { notifications, markAsRead } = useNotifications(userId);
 
-  console.log('[NotificationBanner] Current notifications:', notifications);
-
   if (!userId || !notifications || notifications.length === 0) {
-    console.log('[NotificationBanner] Returning null. userId:', userId, 'notifications length:', notifications?.length);
     return null;
   }
 
@@ -43,7 +39,7 @@ export default function NotificationBanner({ userId }) {
         <h3 style={{ margin: '0 0 4px 0', fontSize: '18px', fontWeight: 'bold' }}>
           {distractionAlert.title}
         </h3>
-        <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.4' }}>
+        <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.4', whiteSpace: 'pre-wrap' }}>
           {distractionAlert.message}
         </p>
       </div>

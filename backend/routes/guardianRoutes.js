@@ -180,11 +180,9 @@ router.post('/phone-usage', verifyGuardianKey, async (req, res) => {
       
       // 6. Build the formatted alert message
       const alertText = `📱 *Focus Drift Detected*
- 
-Active Block: ${blockSubject}
-Phone Distraction: ${totalMinutes} min
-Top App: ${topAppName}
- 
+
+You crossed the ${matchedThreshold}-minute distraction threshold.
+Top distraction: ${topAppName}.
 Return to mission now.`;
       
       // 7. Dispatch via unified notificationService (prevents duplicate triggers via database index deduplication)

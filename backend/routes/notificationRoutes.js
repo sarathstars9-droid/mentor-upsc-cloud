@@ -35,7 +35,9 @@ router.get('/unread', async (req, res) => {
       if (row.type === 'DISTRACTION_ALERT') {
         title = "Focus Drift Detected";
         severity = "warning";
-        message = row.payload_json?.message || `You have been distracted for ${row.payload_json?.totalMinutes || 0} minutes by ${row.payload_json?.topApp || 'an app'}. Return to mission now.`;
+        const threshold = row.payload_json?.threshold || row.payload_json?.totalMinutes || 5;
+        const topApp = row.payload_json?.topApp || 'an app';
+        message = `You crossed the ${threshold}-minute distraction threshold.\nTop distraction: ${topApp}.\nReturn to mission now.`;
       }
 
       return {
