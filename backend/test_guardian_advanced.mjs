@@ -1,4 +1,5 @@
 import 'dotenv/config';
+process.env.ENABLE_AUTO_START_BLOCKS = 'true';
 import { query } from './db/index.js';
 import { fork } from 'child_process';
 import { getISTDateTime, activateTimeMatchingBlock, resolveActiveBlock, savePlanBlocksAndLogEvents } from './services/blockLifecycleService.js';
@@ -43,7 +44,8 @@ async function runTests() {
         ...process.env,
         PORT: TEST_PORT,
         ENABLE_TELEGRAM_POLLING: 'false',
-        ENABLE_NOTIFICATION_SCHEDULER: 'false'
+        ENABLE_NOTIFICATION_SCHEDULER: 'false',
+        ENABLE_AUTO_START_BLOCKS: 'true'
       }
     });
 
@@ -95,13 +97,24 @@ async function runTests() {
 
     await savePlanBlocksAndLogEvents(MOCK_USER, dayKey, planItems);
 
-    // Verify it auto-activated
+    // Verify it is NOT auto-activated (remains planned) under the new design
+    const dbBlocksS1Before = await query(`SELECT status FROM public.study_blocks WHERE user_id = $1 AND block_id = $2`, [MOCK_USER, 'active-window-block-1']);
+    const blockS1Before = dbBlocksS1Before.rows[0];
+    if (blockS1Before.status !== 'planned') {
+      throw new Error(`Expected block to remain planned after upload, got status: ${blockS1Before?.status}`);
+    }
+    console.log('✅ Passed Scenario 1 Part A: Block remains planned upon plan upload');
+
+    // Trigger auto-activation manually
+    await activateTimeMatchingBlock(MOCK_USER);
+
+    // Verify it auto-activated now
     const dbBlocksS1 = await query(`SELECT status, started_at FROM public.study_blocks WHERE user_id = $1 AND block_id = $2`, [MOCK_USER, 'active-window-block-1']);
     const blockS1 = dbBlocksS1.rows[0];
     if (blockS1.status !== 'active' || !blockS1.started_at) {
       throw new Error(`Expected block to auto-activate to active, got status: ${blockS1?.status}`);
     }
-    console.log('✅ Passed Scenario 1: Block successfully auto-activated during plan upload');
+    console.log('✅ Passed Scenario 1 Part B: Block successfully auto-activated via activateTimeMatchingBlock');
 
     // --- Scenario 2: Guardian polling after scheduler activation ---
     console.log('\n[Scenario 2] Guardian polling after scheduler activation...');

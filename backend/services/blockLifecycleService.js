@@ -229,7 +229,7 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
         'BLOCK_STARTED',
         'study_block',
         targetRow.id,
-        `🚀 *Block Started*\nMoulika, ${targetRow.subject || 'your block'} has started.\nTarget: ${targetRow.planned_minutes || 0}m\nFocus: create output, not just reading.`
+        `🚀 *Block Started*\n\nSubject: ${targetRow.subject || 'Block'}\nTarget: ${targetRow.planned_minutes || 0}m\n\nFocus: create output, not just reading.`
       );
       console.log(`[TelegramLifecycle] BLOCK_STARTED queued blockId=${targetRow.id}`);
     } catch (e) {
@@ -1305,15 +1305,7 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
 
     console.log(`[Plan Upload] Today's plan successfully uploaded and saved for user: ${userId}, date: ${date}`);
     
-    // Auto-activate any block matching the current time if this is today's plan
-    try {
-      const { dayKey } = getISTDateTime();
-      if (date === dayKey) {
-        await activateTimeMatchingBlock(userId);
-      }
-    } catch (activateErr) {
-      console.error('[savePlanBlocks] activateTimeMatchingBlock failed:', activateErr.message);
-    }
+
 
     return { ok: true };
   } catch (err) {
@@ -1357,6 +1349,9 @@ export async function resolveActiveBlock(userId) {
 }
 
 export async function activateTimeMatchingBlock(userId) {
+  if (process.env.ENABLE_AUTO_START_BLOCKS !== 'true') {
+    return null;
+  }
   const normalizedUid = String(userId || '').toLowerCase().trim();
   
   const client = await pool.connect();
@@ -1436,7 +1431,7 @@ export async function activateTimeMatchingBlock(userId) {
             'BLOCK_STARTED',
             'study_block',
             activeBlock.id,
-            `🚀 *Block Started*\nMoulika, ${activeBlock.subject || 'your block'} has started automatically.\nTarget: ${activeBlock.planned_minutes || 0}m\nFocus: create output, not just reading.`
+            `🚀 *Block Started*\n\nSubject: ${activeBlock.subject || 'Block'}\nTarget: ${activeBlock.planned_minutes || 0}m\n\nFocus: create output, not just reading.`
           );
         } catch (e) {
           console.error('[TelegramLifecycle] Auto-start Telegram failed:', e.message);

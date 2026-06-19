@@ -1,11 +1,12 @@
 import 'dotenv/config';
+process.env.ENABLE_AUTO_START_BLOCKS = 'true';
 import { query } from './db/index.js';
 import { getISTDateTime, savePlanBlocksAndLogEvents, startBlock, pauseBlock, resumeBlock, completeBlock, activateTimeMatchingBlock } from './services/blockLifecycleService.js';
 import { syncBlockToCalendar } from './services/calendarBridgeService.js';
 import { sendNotification } from './services/notificationService.js';
 
 const MOCK_USER = 'test_integration_user';
-const dayKey = '2026-06-18';
+const { dayKey } = getISTDateTime();
 
 // Mock Telegram and Google Apps Script calls for clean E2E verification without external rate limits
 const originalFetch = globalThis.fetch || global.fetch;

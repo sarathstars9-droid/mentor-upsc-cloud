@@ -282,13 +282,7 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
 
 // Unified block scanner for reminders, pause checks, and missed blocks
 async function processTodayBlocks(userId, now) {
-  // Auto-activate any planned block matching the current time if no other block is active/paused
-  try {
-    const { activateTimeMatchingBlock } = await import('./blockLifecycleService.js');
-    await activateTimeMatchingBlock(userId);
-  } catch (err) {
-    console.error("[processTodayBlocks] activateTimeMatchingBlock failed:", err.message);
-  }
+
 
   const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   const d = new Date(kolkataStr);
