@@ -47,7 +47,7 @@ export default function EthicsPage() {
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 24 }}>
         <FeatureCard icon="⚖️" title="Ethics PYQ" description="Analyze past UPSC GS4 questions — identify ethical dimensions, stakeholder analysis, and case-handling strategy." badge="PYQ" onClick={() => navigate("/ethics/pyq")} />
-        <FeatureCard icon="🏛" title="Ethics Institutional" description="Upload institutional test papers, extract your answers, and evaluate against case study and theoretical ethics standards." badge="INST" onClick={() => navigate("/ethics/institutional")} />
+        <FeatureCard icon="🏛" title="Ethics Institutional" description="Upload institutional test papers, extract your answers, and evaluate against case study and theoretical ethics standards." badge="INST" onClick={() => navigate("/answer-writing/ethics/institutional")} />
         <FeatureCard icon="🔖" title="Ethics Mistakes" description="Review weak answers, repeated conceptual gaps, saved AI notes, and build a targeted ethics revision queue." badge="TRACK" onClick={() => navigate("/ethics/mistakes")} />
       </div>
 

@@ -48,6 +48,7 @@ import mainsRoutes from "./routes/mainsRoutes.js";
 import mainsIntelligenceRoutes from "./routes/mainsIntelligenceRoutes.js";
 import testGeminiRoute from "./routes/testGemini.js";
 import evaluateAnswerRoute from "./routes/evaluateAnswerRoute.js";
+import answerWritingRoutes from "./routes/answerWritingRoutes.js";
 import air1ReviewRoutes from "./routes/air1ReviewRoutes.js";
 import mainsPatternRoutes from "./routes/mainsPatternRoutes.js";
 import mainsRecommendationRoutes from "./routes/mainsRecommendationRoutes.js";
@@ -509,6 +510,7 @@ app.use("/api/blocks", blockResolveRoute);        // isolated block classificati
 app.use("/api/mistakes", mistakeRoutes);
 app.use("/api/test-gemini", testGeminiRoute);
 app.use("/api/evaluate-answer", evaluateAnswerRoute);
+app.use("/api/answer-writing", answerWritingRoutes);
 app.use("/api/air1-review", air1ReviewRoutes);
 app.use("/api/mains-patterns", mainsPatternRoutes);
 app.use("/api/mains-patterns", mainsRecommendationRoutes);

@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../../config";
 
 // ── Theme tokens ──────────────────────────────────────────────────────────────
@@ -379,7 +380,7 @@ function CategoryCard({ cat, active, count, onClick }) {
 }
 
 // ── Focus card ────────────────────────────────────────────────────────────────
-function FocusCard({ selectedQ, onClear }) {
+function FocusCard({ selectedQ, onClear, onWriteAnswer }) {
   if (!selectedQ) {
     return (
       <div
@@ -484,25 +485,45 @@ function FocusCard({ selectedQ, onClear }) {
             </div>
           )}
         </div>
-        <button
-          onClick={onClear}
-          style={{
-            background: "none",
-            border: `1px solid ${T.borderMid}`,
-            borderRadius: 7,
-            color: T.dim,
-            fontSize: 12,
-            cursor: "pointer",
-            padding: "5px 12px",
-            fontFamily: SAN,
-            flexShrink: 0,
-            transition: "color 0.15s, border-color 0.15s",
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.color = T.red; e.currentTarget.style.borderColor = T.red; }}
-          onMouseLeave={(e) => { e.currentTarget.style.color = T.dim; e.currentTarget.style.borderColor = T.borderMid; }}
-        >
-          Clear ×
-        </button>
+        <div style={{ display: "flex", gap: 10, flexShrink: 0 }}>
+          <button
+            onClick={onWriteAnswer}
+            style={{
+              background: T.green,
+              border: "none",
+              borderRadius: 7,
+              color: "#000",
+              fontSize: 12,
+              fontWeight: 800,
+              cursor: "pointer",
+              padding: "6px 14px",
+              fontFamily: SAN,
+              transition: "transform 0.15s",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.03)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
+          >
+            ✍️ Write / Upload Answer
+          </button>
+          <button
+            onClick={onClear}
+            style={{
+              background: "none",
+              border: `1px solid ${T.borderMid}`,
+              borderRadius: 7,
+              color: T.dim,
+              fontSize: 12,
+              cursor: "pointer",
+              padding: "5px 12px",
+              fontFamily: SAN,
+              transition: "color 0.15s, border-color 0.15s",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = T.red; e.currentTarget.style.borderColor = T.red; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = T.dim; e.currentTarget.style.borderColor = T.borderMid; }}
+          >
+            Clear ×
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -687,6 +708,7 @@ const inputBase = {
 };
 
 export default function GeographyOptionalPyqPage() {
+  const navigate = useNavigate();
   const [question, setQuestion] = useState("");
   const [source, setSource] = useState("");
   const [year, setYear] = useState("");
@@ -1096,7 +1118,21 @@ export default function GeographyOptionalPyqPage() {
 
       {/* ── Focus card ──────────────────────────────────────────────────────── */}
       <div ref={focusRef} style={{ scrollMarginTop: 16 }} />
-      <FocusCard selectedQ={selectedQ} onClear={handleClear} />
+      <FocusCard 
+        selectedQ={selectedQ} 
+        onClear={handleClear} 
+        onWriteAnswer={() => {
+          const stateObj = {
+            questionText: selectedQ.question,
+            year: selectedQ.year,
+            paper: selectedQ.paperNumber ? `Paper ${selectedQ.paperNumber}` : "",
+            marks: selectedQ.marks,
+            topic: selectedQ.theme || ""
+          };
+          sessionStorage.setItem("mains_pyq_metadata", JSON.stringify(stateObj));
+          navigate("/answer-writing/geography-optional/pyq", { state: stateObj });
+        }}
+      />
 
       {/* ── Workspace label ─────────────────────────────────────────────────── */}
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18 }}>

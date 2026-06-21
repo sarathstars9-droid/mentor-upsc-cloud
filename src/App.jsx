@@ -11,17 +11,15 @@ import MainsGS2Page from "./pages/MainsGS2Page";
 import MainsGS3Page from "./pages/MainsGS3Page";
 import AnswerWritingPage from "./pages/AnswerWritingPage";
 import MainsMistakeBookPage from "./pages/MainsMistakeBookPage";
+import AnswerWriting from "./pages/AnswerWriting";
 import EthicsPage from "./pages/ethics/EthicsPage";
 import EthicsPyqPage from "./pages/ethics/EthicsPyqPage";
-import EthicsInstitutionalPage from "./pages/ethics/EthicsInstitutionalPage";
 import EthicsMistakePage from "./pages/ethics/EthicsMistakePage";
 import EssayPage from "./pages/essay/EssayPage";
 import EssayPyqPage from "./pages/essay/EssayPyqPage";
-import EssayInstitutionalPage from "./pages/essay/EssayInstitutionalPage";
 import EssayMistakePage from "./pages/essay/EssayMistakePage";
 import GeographyOptionalPage from "./pages/geographyOptional/GeographyOptionalPage";
 import GeographyOptionalPyqPage from "./pages/geographyOptional/GeographyOptionalPyqPage";
-import GeographyOptionalInstitutionalPage from "./pages/geographyOptional/GeographyOptionalInstitutionalPage";
 import GeographyOptionalMistakePage from "./pages/geographyOptional/GeographyOptionalMistakePage";
 import SettingsPage from "./pages/SettingsPage";
 import PyqTopicPage from "./pages/PyqTopicPage.jsx";
@@ -114,6 +112,12 @@ function AppRoutes({ onLogout }) {
       ? "mains_mistakes"
       : path.startsWith("/mains/")
       ? "mains"
+      : path.startsWith("/answer-writing/essay")
+      ? "essay"
+      : path.startsWith("/answer-writing/ethics")
+      ? "ethics"
+      : path.startsWith("/answer-writing/geography-optional")
+      ? "optional"
       : routeToPageMap[path] || "plan";
 
   function handleNavigate(pageKey) {
@@ -136,7 +140,7 @@ function AppRoutes({ onLogout }) {
         <Route path="/csat" element={<CsatPage />} />
         <Route path="/geography-optional" element={<GeographyOptionalPage />} />
         <Route path="/geography-optional/pyq" element={<GeographyOptionalPyqPage />} />
-        <Route path="/geography-optional/institutional" element={<GeographyOptionalInstitutionalPage />} />
+        <Route path="/geography-optional-pyq" element={<GeographyOptionalPyqPage />} />
         <Route path="/geography-optional/mistakes" element={<GeographyOptionalMistakePage />} />
         <Route path="/backlog" element={<BacklogPage />} />
         <Route path="/focus" element={<FocusPage />} />
@@ -148,13 +152,12 @@ function AppRoutes({ onLogout }) {
         <Route path="/mains/gs3" element={<MainsGS3Page />} />
         <Route path="/mains/answer-writing" element={<AnswerWritingPage />} />
         <Route path="/mains/mistakes" element={<MainsMistakeBookPage />} />
+        <Route path="/answer-writing/:paperType/:sourceType" element={<AnswerWriting />} />
         <Route path="/ethics" element={<EthicsPage />} />
         <Route path="/ethics/pyq" element={<EthicsPyqPage />} />
-        <Route path="/ethics/institutional" element={<EthicsInstitutionalPage />} />
         <Route path="/ethics/mistakes" element={<EthicsMistakePage />} />
         <Route path="/essay" element={<EssayPage />} />
         <Route path="/essay/pyq" element={<EssayPyqPage />} />
-        <Route path="/essay/institutional" element={<EssayInstitutionalPage />} />
         <Route path="/essay/mistakes" element={<EssayMistakePage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/pyq/topic" element={<PyqTopicPage />} />

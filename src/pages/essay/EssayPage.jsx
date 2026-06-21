@@ -47,7 +47,7 @@ export default function EssayPage() {
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 24 }}>
         <FeatureCard icon="✍️" title="Essay PYQ" description="Analyze past UPSC essay topics — identify theme, philosophical breadth, multidimensionality, and develop your approach strategy." badge="PYQ" onClick={() => navigate("/essay/pyq")} />
-        <FeatureCard icon="🏛" title="Essay Institutional" description="Upload institutional essay tests, extract your written essays, and evaluate against UPSC essay standards for coherence and originality." badge="INST" onClick={() => navigate("/essay/institutional")} />
+        <FeatureCard icon="🏛" title="Essay Institutional" description="Upload institutional essay tests, extract your written essays, and evaluate against UPSC essay standards for coherence and originality." badge="INST" onClick={() => navigate("/answer-writing/essay/institutional")} />
         <FeatureCard icon="🔖" title="Essay Mistakes" description="Review weak essays, structural gaps, saved AI notes, and build a targeted revision queue for recurring weaknesses." badge="TRACK" onClick={() => navigate("/essay/mistakes")} />
       </div>
 

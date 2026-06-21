@@ -1,0 +1,274 @@
+[
+  {
+    "url": "/",
+    "expectedBehavior": "Login page accepts correct password and redirects",
+    "actualBehavior": "Logged in. Routed to http://localhost:4173/plan",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/geography-optional",
+    "expectedBehavior": "Opens Geography Optional Dashboard",
+    "actualBehavior": "Loads dashboard",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/geography-optional/pyq",
+    "expectedBehavior": "Opens Geography Optional PYQ bank Page",
+    "actualBehavior": "Navigates to /geography-optional/pyq",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/geography-optional/pyq",
+    "expectedBehavior": "Write / Upload Answer button is visible after selection",
+    "actualBehavior": "Button is visible",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/geography-optional/pyq",
+    "expectedBehavior": "Opens Geography Optional Workspace",
+    "actualBehavior": "Navigated to http://localhost:4173/answer-writing/geography-optional/pyq",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/geography-optional/pyq",
+    "expectedBehavior": "Selected question text is prefilled in textarea",
+    "actualBehavior": "Prefilled: Differences between Normal cycle and Ari...",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/geography-optional/pyq [refresh]",
+    "expectedBehavior": "Selected question metadata remains prefilled after refresh",
+    "actualBehavior": "Metadata remains intact",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/essay",
+    "expectedBehavior": "Opens Essay Dashboard",
+    "actualBehavior": "Loads dashboard",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/essay/pyq",
+    "expectedBehavior": "Opens Essay PYQ bank Page",
+    "actualBehavior": "Navigates to /essay/pyq",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/essay/pyq",
+    "expectedBehavior": "Write / Upload Essay button is visible after selection",
+    "actualBehavior": "Button is visible",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/essay/pyq",
+    "expectedBehavior": "Opens Essay Workspace",
+    "actualBehavior": "Navigated to http://localhost:4173/answer-writing/essay/pyq",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/essay/pyq",
+    "expectedBehavior": "Selected essay topic is prefilled in textarea",
+    "actualBehavior": "Prefilled: Contentment is natural wealth; luxury is...",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/essay/pyq [refresh]",
+    "expectedBehavior": "Selected topic remains prefilled after refresh",
+    "actualBehavior": "Metadata remains intact",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/ethics",
+    "expectedBehavior": "Opens Ethics Dashboard",
+    "actualBehavior": "Loads dashboard",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/ethics/pyq",
+    "expectedBehavior": "Opens Ethics PYQ bank Page",
+    "actualBehavior": "Navigates to /ethics/pyq",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/ethics/pyq",
+    "expectedBehavior": "Write / Upload Answer button is visible after selection",
+    "actualBehavior": "Button is visible",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/pyq",
+    "expectedBehavior": "Opens Ethics Workspace",
+    "actualBehavior": "Navigated to http://localhost:4173/answer-writing/ethics/pyq",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/pyq",
+    "expectedBehavior": "Selected ethics question is prefilled in textarea",
+    "actualBehavior": "Prefilled: \"What really matters for success, charac...",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/pyq",
+    "expectedBehavior": "Case Study badge is rendered if question is a case study",
+    "actualBehavior": "No badge rendered (or not a case study question)",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/pyq [refresh]",
+    "expectedBehavior": "Selected ethics question remains prefilled after refresh",
+    "actualBehavior": "Metadata remains intact",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/essay/institutional",
+    "expectedBehavior": "Shows upload area, question/answer textareas, and basic/AIR-1 evaluation buttons",
+    "actualBehavior": "All required interface elements are present",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/institutional",
+    "expectedBehavior": "Shows upload area, question/answer textareas, and basic/AIR-1 evaluation buttons",
+    "actualBehavior": "All required interface elements are present",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/geography-optional/institutional",
+    "expectedBehavior": "Shows upload area, question/answer textareas, and basic/AIR-1 evaluation buttons",
+    "actualBehavior": "All required interface elements are present",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/institutional [Basic Eval]",
+    "expectedBehavior": "Shows loading state spinner and indicator text",
+    "actualBehavior": "Loading indicator shown",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/institutional [Basic Eval]",
+    "expectedBehavior": "Renders AI evaluation report with Marks, Level and Impression",
+    "actualBehavior": "Report successfully loaded on UI with Estimated Marks card",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/institutional [AIR-1 Prompt]",
+    "expectedBehavior": "Generates ChatGPT prompt and displays prompt panel",
+    "actualBehavior": "Prompt generated and panel shown",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/institutional [AIR-1 Prompt]",
+    "expectedBehavior": "Shows Copy Again button on panel",
+    "actualBehavior": "Copy Again button is visible",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/institutional [Save Report]",
+    "expectedBehavior": "Imported ChatGPT report parses and renders saved score/impression in UI",
+    "actualBehavior": "Saved report renders successfully",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/institutional [unsupported file]",
+    "expectedBehavior": "Shows friendly error message for unsupported file types",
+    "actualBehavior": "Received toast error: ⚠️\nUnsupported file type: temp_invalid_file.txt. Only images and PDF files are allowed.",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/institutional [large file]",
+    "expectedBehavior": "Shows friendly error message for files exceeding 10MB",
+    "actualBehavior": "Received toast error: ⚠️\nFile size limit exceeded. Maximum allowed size is 10MB per file.",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/ethics/institutional [empty input]",
+    "expectedBehavior": "Shows proper validation error for empty question/answer",
+    "actualBehavior": "Received toast error: ⚠️\nPlease provide a question (type it or upload answer sheets containing it).",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "None"
+  },
+  {
+    "url": "/answer-writing/essay/pyq",
+    "expectedBehavior": "Sidebar highlights active category: Essay",
+    "actualBehavior": "Active highlighted: [\"Essay\",\"Essay\"]",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "Verify current page variable computation and sidebar config mapping"
+  },
+  {
+    "url": "/answer-writing/ethics/pyq",
+    "expectedBehavior": "Sidebar highlights active category: Ethics",
+    "actualBehavior": "Active highlighted: [\"Ethics\",\"Ethics\"]",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "Verify current page variable computation and sidebar config mapping"
+  },
+  {
+    "url": "/answer-writing/geography-optional/pyq",
+    "expectedBehavior": "Sidebar highlights active category: Optional Geography",
+    "actualBehavior": "Active highlighted: [\"Optional Geography\",\"Optional Geography\"]",
+    "status": "PASS",
+    "issueFound": "None",
+    "fixNeeded": "Verify current page variable computation and sidebar config mapping"
+  }
+]

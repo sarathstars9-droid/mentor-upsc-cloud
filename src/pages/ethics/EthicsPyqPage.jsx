@@ -230,20 +230,16 @@ function ActionBar({ selectedQ, weak, onWeakToggle, revision, onRevisionToggle }
 
   function handleStartWriting() {
     if (!hasQ) return;
-    navigate("/mains/answer-writing", {
-      state: {
-        question: {
-          paper:    "GS4",
-          mode:     "PYQ",
-          marks:    selectedQ.marks != null ? String(selectedQ.marks) : "",
-          year:     selectedQ.year || null,
-          priority: selectedQ.year ? `UPSC ${selectedQ.year} · GS4 Ethics` : "GS4 Ethics · PYQ",
-          question: selectedQ.question,
-          focus:    "",
-          structure: "",
-        },
-      },
-    });
+    const stateObj = {
+      questionText: selectedQ.question,
+      year: selectedQ.year,
+      paper: "GS4 (Ethics)",
+      marks: selectedQ.marks || 10,
+      topic: ETHICS_CATS.find(c => c.id === normalizeCategoryId(selectedQ))?.label || "",
+      caseStudy: selectedQ.type === "CASE_STUDY" || normalizeCategoryId(selectedQ) === "GS4-ETH-CS"
+    };
+    sessionStorage.setItem("mains_pyq_metadata", JSON.stringify(stateObj));
+    navigate("/answer-writing/ethics/pyq", { state: stateObj });
   }
 
   function handleOpenChatGPT() {
@@ -297,7 +293,7 @@ function ActionBar({ selectedQ, weak, onWeakToggle, revision, onRevisionToggle }
       borderRadius: 10, padding: "10px 14px", marginBottom: 20,
     }}>
       <button onClick={handleStartWriting} disabled={!hasQ} style={primary}>
-        ✏️ Start Writing
+        ✍️ Write / Upload Answer
       </button>
       <button onClick={handleOpenChatGPT} disabled={!hasQ} style={secondary(false)}>
         ↗ Open ChatGPT

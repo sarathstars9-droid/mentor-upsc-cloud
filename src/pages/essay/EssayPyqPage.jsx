@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../../config";
 
 // ── Theme tokens ──────────────────────────────────────────────────────────────
@@ -306,7 +307,7 @@ function EssayStepTracker({ steps }) {
 }
 
 // ── Focus card ────────────────────────────────────────────────────────────────
-function FocusCard({ selectedQ, onClear }) {
+function FocusCard({ selectedQ, onClear, onWriteAnswer }) {
   if (!selectedQ) {
     return (
       <div style={{ background: "#16161a", border: `1px solid ${T.borderMid}`, borderLeft: `3px solid ${ACCENT}55`, borderRadius: 12, padding: "24px 24px", marginBottom: 20, display: "flex", alignItems: "center", gap: 20 }}>
@@ -349,10 +350,31 @@ function FocusCard({ selectedQ, onClear }) {
             </div>
           )}
         </div>
-        <button onClick={onClear}
-          style={{ background: "none", border: `1px solid ${T.borderMid}`, borderRadius: 6, color: T.dim, fontSize: 12, cursor: "pointer", padding: "4px 10px", fontFamily: T.font, flexShrink: 0 }}>
-          Clear ×
-        </button>
+        <div style={{ display: "flex", gap: 10, flexShrink: 0 }}>
+          <button
+            onClick={onWriteAnswer}
+            style={{
+              background: T.green,
+              border: "none",
+              borderRadius: 7,
+              color: "#000",
+              fontSize: 12,
+              fontWeight: 800,
+              cursor: "pointer",
+              padding: "6px 14px",
+              fontFamily: T.font,
+              transition: "transform 0.15s",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.03)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
+          >
+            ✍️ Write / Upload Essay
+          </button>
+          <button onClick={onClear}
+            style={{ background: "none", border: `1px solid ${T.borderMid}`, borderRadius: 6, color: T.dim, fontSize: 12, cursor: "pointer", padding: "4px 10px", fontFamily: T.font }}>
+            Clear ×
+          </button>
+        </div>
       </div>
 
       {(cues.keywords.length > 0 || cues.microthemes.length > 0) && (
@@ -451,6 +473,7 @@ const REVIEW_ITEMS     = ["Intro effectiveness", "Thesis clarity", "Balance of d
 
 // ── Main page ─────────────────────────────────────────────────────────────────
 export default function EssayPyqPage() {
+  const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth < 768);
@@ -702,7 +725,21 @@ export default function EssayPyqPage() {
         <EssayStepTracker steps={essaySteps} />
 
         {/* Focus card */}
-        <FocusCard selectedQ={selectedQ} onClear={handleClear} />
+        <FocusCard 
+          selectedQ={selectedQ} 
+          onClear={handleClear} 
+          onWriteAnswer={() => {
+            const stateObj = {
+              questionText: selectedQ.topic,
+              year: selectedQ.year,
+              paper: "Essay",
+              marks: 125,
+              topic: selectedQ.sourceTopicBucket || selectedQ.themeCategory || ""
+            };
+            sessionStorage.setItem("mains_pyq_metadata", JSON.stringify(stateObj));
+            navigate("/answer-writing/essay/pyq", { state: stateObj });
+          }}
+        />
 
         {/* ── 1. WRITING SESSION ─────────────────────────────────────────────── */}
         <SectionCard title="Essay Writing Session" subtitle="Set your duration and start the clock" accent={T.green}>

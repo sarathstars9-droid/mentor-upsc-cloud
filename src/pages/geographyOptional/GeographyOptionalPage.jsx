@@ -97,7 +97,7 @@ export default function GeographyOptionalPage() {
           title="Geography Optional Institutional"
           description="Upload institutional question papers, extract your handwritten answers, evaluate against model answers, and save evaluations."
           badge="INST"
-          onClick={() => navigate("/geography-optional/institutional")}
+          onClick={() => navigate("/answer-writing/geography-optional/institutional")}
         />
         <FeatureCard
           icon="🔖"
