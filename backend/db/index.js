@@ -25,7 +25,7 @@ const isRailway = Boolean(
   (DATABASE_URL && DATABASE_URL.includes("railway.app"))
 );
 const isProduction = process.env.NODE_ENV === "production" || isRailway;
-const sslConfig = (isProduction || process.env.DB_SSL === "true")
+const sslConfig = (process.env.DB_SSL === "true")
   ? { rejectUnauthorized: false }   // Railway uses self-signed certs
   : false;
 
