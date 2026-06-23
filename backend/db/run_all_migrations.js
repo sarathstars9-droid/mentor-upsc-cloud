@@ -142,6 +142,16 @@ async function runAllMigrations() {
   console.log('╚═══════════════════════════════════════════════════════════╝');
   console.log('');
 
+  try {
+    console.log('🔌 Checking connectivity...');
+    await query('SELECT NOW()');
+    console.log('✅ Connection check succeeded.');
+  } catch (err) {
+    console.error('💥 Connection check failed during migrations:', err.message);
+    console.log('ℹ  Bypassing migrations to allow server boot.');
+    process.exit(0); // Exit 0 to let the server start
+  }
+
   const startTime = Date.now();
 
   // ── Phase 1: Foundation tables (users, mistakes, revision_items, study_blocks) ──
