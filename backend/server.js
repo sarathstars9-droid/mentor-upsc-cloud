@@ -784,6 +784,75 @@ app.get("/health", async (_req, res) => {
 app.get("/api/debug/db-check", async (req, res) => {
   const results = {};
 
+  // 0) Network Diagnostics
+  results.diagnostics = {};
+
+  // DNS resolve postgres.railway.internal
+  try {
+    const dns = await import("dns/promises");
+    const ips = await dns.resolve("postgres.railway.internal");
+    results.diagnostics.postgres_internal_ips = ips;
+  } catch (err) {
+    results.diagnostics.postgres_internal_dns_error = err.message || String(err);
+  }
+
+  // DNS resolve maglev.proxy.rlwy.net
+  try {
+    const dns = await import("dns/promises");
+    const ips = await dns.resolve("maglev.proxy.rlwy.net");
+    results.diagnostics.postgres_public_ips = ips;
+  } catch (err) {
+    results.diagnostics.postgres_public_dns_error = err.message || String(err);
+  }
+
+  // TCP connection check postgres.railway.internal:5432
+  try {
+    const net = await import("net");
+    const connectPromise = new Promise((resolve, reject) => {
+      const socket = net.connect(5432, "postgres.railway.internal");
+      socket.setTimeout(2500);
+      socket.on("connect", () => {
+        socket.destroy();
+        resolve("connected");
+      });
+      socket.on("timeout", () => {
+        socket.destroy();
+        reject(new Error("timeout"));
+      });
+      socket.on("error", (err) => {
+        socket.destroy();
+        reject(err);
+      });
+    });
+    results.diagnostics.postgres_internal_tcp = await connectPromise;
+  } catch (err) {
+    results.diagnostics.postgres_internal_tcp_error = err.message || String(err);
+  }
+
+  // TCP connection check maglev.proxy.rlwy.net:47713
+  try {
+    const net = await import("net");
+    const connectPromise = new Promise((resolve, reject) => {
+      const socket = net.connect(47713, "maglev.proxy.rlwy.net");
+      socket.setTimeout(2500);
+      socket.on("connect", () => {
+        socket.destroy();
+        resolve("connected");
+      });
+      socket.on("timeout", () => {
+        socket.destroy();
+        reject(new Error("timeout"));
+      });
+      socket.on("error", (err) => {
+        socket.destroy();
+        reject(err);
+      });
+    });
+    results.diagnostics.postgres_public_tcp = await connectPromise;
+  } catch (err) {
+    results.diagnostics.postgres_public_tcp_error = err.message || String(err);
+  }
+
   // 1) basic connection
   try {
     const r = await query("SELECT NOW() AS now");
