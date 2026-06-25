@@ -2223,6 +2223,15 @@ app.get("/api/system/db-test", async (req, res) => {
 app.get("/api/system/caddy-test", async (req, res) => {
   const results = {};
   
+  // DNS lookups
+  try {
+    const dns = await import("dns/promises");
+    results["dns-private-app"] = await dns.lookup("mentor-upsc-cloud.railway.internal", { all: true });
+    results["dns-private-db"] = await dns.lookup("postgres.railway.internal", { all: true });
+  } catch (err) {
+    results["dns-errors"] = err.message;
+  }
+  
   // Test http to private
   try {
     const r = await fetch("http://postgres.railway.internal:5432/", { signal: AbortSignal.timeout(3000) });
