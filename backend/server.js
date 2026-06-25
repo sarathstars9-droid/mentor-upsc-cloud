@@ -2126,6 +2126,52 @@ app.get("/api/system/health", async (req, res) => {
   }
 });
 
+/* -------------------- SYSTEM DB DIAGNOSTICS ENDPOINT -------------------- */
+
+app.get("/api/system/db-test", async (req, res) => {
+  try {
+    const pg = await import("pg");
+    const results = {};
+    
+    const sslOptions = [
+      { name: "ssl-disabled", ssl: false },
+      { name: "ssl-enabled-reject-false", ssl: { rejectUnauthorized: false } },
+      { name: "ssl-enabled-reject-true", ssl: { rejectUnauthorized: true } }
+    ];
+    
+    for (const opt of sslOptions) {
+      try {
+        const client = new pg.default.Client({
+          connectionString: process.env.DATABASE_URL,
+          ssl: opt.ssl,
+          connectionTimeoutMillis: 4000
+        });
+        const start = Date.now();
+        await client.connect();
+        const queryRes = await client.query("SELECT NOW()");
+        await client.end();
+        results[opt.name] = {
+          success: true,
+          timeMs: Date.now() - start,
+          serverTime: queryRes.rows[0].now
+        };
+      } catch (err) {
+        results[opt.name] = {
+          success: false,
+          error: err.message
+        };
+      }
+    }
+    
+    return res.json({
+      databaseUrl: process.env.DATABASE_URL ? process.env.DATABASE_URL.replace(/:\/\/[^@]+@/, "://<redacted>@") : "MISSING",
+      results
+    });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
 /* -------------------- REMINDER ENGINE TICK -------------------- */
 
 setInterval(async () => {
