@@ -1,4 +1,12 @@
 import "dotenv/config";
+
+// Delete standard pg env vars to prevent pg module from overriding DATABASE_URL with private/internal defaults injected by Railway
+delete process.env.PGHOST;
+delete process.env.PGPORT;
+delete process.env.PGUSER;
+delete process.env.PGPASSWORD;
+delete process.env.PGDATABASE;
+
 import pg from "pg";
 
 const { Pool } = pg;
@@ -15,6 +23,21 @@ if (!DATABASE_URL) {
   // Don't crash the process here so /health can still respond, but all DB calls will fail.
 }
 
+// Parse active host/port from DATABASE_URL
+export let activeDbHost = "";
+export let activeDbPort = "";
+export let activeDbSource = "DATABASE_URL";
+
+if (DATABASE_URL) {
+  try {
+    const parsed = new URL(DATABASE_URL);
+    activeDbHost = parsed.hostname;
+    activeDbPort = parsed.port || "5432";
+  } catch (e) {
+    activeDbHost = "Failed to parse DATABASE_URL";
+  }
+}
+
 // ── SSL config ──────────────────────────────────────────────────────────────
 // Railway Postgres always requires SSL. Detect Railway by checking NODE_ENV=production
 // OR by checking if the URL is a Railway private/public URL.
@@ -26,13 +49,19 @@ const isRailway = Boolean(
 );
 const isProduction = process.env.NODE_ENV === "production" || isRailway;
 const isRailwayPublic = DATABASE_URL && (DATABASE_URL.includes("railway.app") || DATABASE_URL.includes("rlwy.net"));
-const sslConfig = (process.env.DB_SSL === "true" || isRailwayPublic)
+export const sslConfig = (process.env.DB_SSL === "true" || isRailwayPublic)
   ? { rejectUnauthorized: false }   // Public Railway proxy requires SSL
   : false;
 
+export let activeDbSsl = sslConfig !== false ? "enabled" : "disabled";
+
 console.log("[DB INIT]", {
   DATABASE_URL: DATABASE_URL ? DATABASE_URL.replace(/:\/\/[^@]+@/, "://<redacted>@") : "MISSING",
-  ssl: sslConfig !== false ? "enabled (rejectUnauthorized=false)" : "disabled",
+  ssl: activeDbSsl,
+  activeDbHost,
+  activeDbPort,
+  activeDbSsl,
+  activeDbSource,
   isRailway,
   isProduction,
   pool_max: Number(process.env.DB_POOL_MAX || 10),

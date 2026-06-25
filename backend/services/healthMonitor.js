@@ -1,4 +1,10 @@
-import { query } from '../db/index.js';
+import {
+  query,
+  activeDbHost,
+  activeDbPort,
+  activeDbSsl,
+  activeDbSource
+} from '../db/index.js';
 import * as telegramService from './telegramService.js';
 
 class HealthMonitor {
@@ -129,7 +135,11 @@ class HealthMonitor {
       lastSuccessfulTelegramSend: this.lastTelegramSendSuccess,
       lastSuccessfulNotification: lastNotificationTime,
       recentFailureCount: this.getRecentFailureCount(),
-      unsentHeartbeatAlert
+      unsentHeartbeatAlert,
+      activeDbHost,
+      activeDbPort,
+      activeDbSsl,
+      activeDbSource
     };
   }
 

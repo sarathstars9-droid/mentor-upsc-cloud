@@ -28,7 +28,13 @@ import { buildDailyAdvice } from "./brain/adviceEngine.js";
 import prelimsPracticeRoute from "./routes/prelimsPracticeRoute.js";
 import prelimsDashboardRoute from "./routes/prelimsDashboardRoute.js";
 import prelimsRebuiltDatasetRoute from "./routes/prelimsRebuiltDatasetRoute.js";
-import { query } from "./db/index.js";
+import {
+  query,
+  activeDbHost,
+  activeDbPort,
+  activeDbSsl,
+  activeDbSource,
+} from "./db/index.js";
 import {
   mapPlanItemToMicroTheme,
   daysToPrelims,
@@ -898,7 +904,14 @@ app.get("/api/debug/db-check", async (req, res) => {
     }
   }
 
-  res.json({ ok: true, ...results });
+  res.json({
+    ok: true,
+    activeDbHost,
+    activeDbPort,
+    activeDbSsl,
+    activeDbSource,
+    ...results
+  });
 });
 
 app.post("/alexa/ping", (req, res) => {
@@ -2196,6 +2209,10 @@ app.get("/api/system/db-test", async (req, res) => {
 
     return res.json({
       databaseUrl: process.env.DATABASE_URL ? process.env.DATABASE_URL.replace(/:\/\/[^@]+@/, "://<redacted>@") : "MISSING",
+      activeDbHost,
+      activeDbPort,
+      activeDbSsl,
+      activeDbSource,
       results
     });
   } catch (err) {
