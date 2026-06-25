@@ -2220,6 +2220,53 @@ app.get("/api/system/db-test", async (req, res) => {
   }
 });
 
+app.get("/api/system/caddy-test", async (req, res) => {
+  const results = {};
+  
+  // Test http to private
+  try {
+    const r = await fetch("http://postgres.railway.internal:5432/", { signal: AbortSignal.timeout(3000) });
+    results["http-private"] = {
+      status: r.status,
+      statusText: r.statusText,
+      headers: Object.fromEntries(r.headers.entries()),
+      body: await r.text()
+    };
+  } catch (err) {
+    results["http-private"] = { error: err.message };
+  }
+
+  // Test https to private
+  try {
+    const r = await fetch("https://postgres.railway.internal:5432/", {
+      signal: AbortSignal.timeout(3000)
+    });
+    results["https-private"] = {
+      status: r.status,
+      statusText: r.statusText,
+      headers: Object.fromEntries(r.headers.entries()),
+      body: await r.text()
+    };
+  } catch (err) {
+    results["https-private"] = { error: err.message };
+  }
+
+  // Test http to public
+  try {
+    const r = await fetch("http://maglev.proxy.rlwy.net:47713/", { signal: AbortSignal.timeout(3000) });
+    results["http-public"] = {
+      status: r.status,
+      statusText: r.statusText,
+      headers: Object.fromEntries(r.headers.entries()),
+      body: await r.text()
+    };
+  } catch (err) {
+    results["http-public"] = { error: err.message };
+  }
+
+  return res.json(results);
+});
+
 /* -------------------- REMINDER ENGINE TICK -------------------- */
 
 setInterval(async () => {
