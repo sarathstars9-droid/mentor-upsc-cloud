@@ -2131,38 +2131,69 @@ app.get("/api/system/health", async (req, res) => {
 app.get("/api/system/db-test", async (req, res) => {
   try {
     const pg = await import("pg");
+    const dns = await import("dns/promises");
     const results = {};
     
-    const sslOptions = [
-      { name: "ssl-disabled", ssl: false },
-      { name: "ssl-enabled-reject-false", ssl: { rejectUnauthorized: false } },
-      { name: "ssl-enabled-reject-true", ssl: { rejectUnauthorized: true } }
+    // 1. DNS lookups
+    try {
+      const addr = await dns.lookup("postgres.railway.internal", { all: true });
+      results["dns-private"] = { success: true, addresses: addr };
+    } catch (err) {
+      results["dns-private"] = { success: false, error: err.message };
+    }
+
+    try {
+      const addr = await dns.lookup("maglev.proxy.rlwy.net", { all: true });
+      results["dns-public"] = { success: true, addresses: addr };
+    } catch (err) {
+      results["dns-public"] = { success: false, error: err.message };
+    }
+
+    // 2. Private DB Connection test
+    const privateOptions = [
+      { name: "private-ssl-disabled", ssl: false },
+      { name: "private-ssl-enabled", ssl: { rejectUnauthorized: false } }
     ];
-    
-    for (const opt of sslOptions) {
+    for (const opt of privateOptions) {
       try {
         const client = new pg.default.Client({
           connectionString: process.env.DATABASE_URL,
           ssl: opt.ssl,
-          connectionTimeoutMillis: 4000
+          connectionTimeoutMillis: 3000
         });
         const start = Date.now();
         await client.connect();
-        const queryRes = await client.query("SELECT NOW()");
+        await client.query("SELECT 1");
         await client.end();
-        results[opt.name] = {
-          success: true,
-          timeMs: Date.now() - start,
-          serverTime: queryRes.rows[0].now
-        };
+        results[opt.name] = { success: true, timeMs: Date.now() - start };
       } catch (err) {
-        results[opt.name] = {
-          success: false,
-          error: err.message
-        };
+        results[opt.name] = { success: false, error: err.message };
       }
     }
-    
+
+    // 3. Public DB Connection test
+    const publicUrl = "postgresql://postgres:oTppMQKCyrtAQQDbqKFBxJFbBkvnuiPw@maglev.proxy.rlwy.net:47713/railway";
+    const publicOptions = [
+      { name: "public-ssl-disabled", ssl: false },
+      { name: "public-ssl-enabled", ssl: { rejectUnauthorized: false } }
+    ];
+    for (const opt of publicOptions) {
+      try {
+        const client = new pg.default.Client({
+          connectionString: publicUrl,
+          ssl: opt.ssl,
+          connectionTimeoutMillis: 3000
+        });
+        const start = Date.now();
+        await client.connect();
+        await client.query("SELECT 1");
+        await client.end();
+        results[opt.name] = { success: true, timeMs: Date.now() - start };
+      } catch (err) {
+        results[opt.name] = { success: false, error: err.message };
+      }
+    }
+
     return res.json({
       databaseUrl: process.env.DATABASE_URL ? process.env.DATABASE_URL.replace(/:\/\/[^@]+@/, "://<redacted>@") : "MISSING",
       results
