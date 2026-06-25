@@ -25,8 +25,9 @@ const isRailway = Boolean(
   (DATABASE_URL && (DATABASE_URL.includes("railway.app") || DATABASE_URL.includes("rlwy.net") || DATABASE_URL.includes("railway.internal")))
 );
 const isProduction = process.env.NODE_ENV === "production" || isRailway;
-const sslConfig = (process.env.DB_SSL === "true" || isProduction || isRailway)
-  ? { rejectUnauthorized: false }   // Railway uses self-signed certs
+const isRailwayPublic = DATABASE_URL && (DATABASE_URL.includes("railway.app") || DATABASE_URL.includes("rlwy.net"));
+const sslConfig = (process.env.DB_SSL === "true" || isRailwayPublic)
+  ? { rejectUnauthorized: false }   // Public Railway proxy requires SSL
   : false;
 
 console.log("[DB INIT]", {
