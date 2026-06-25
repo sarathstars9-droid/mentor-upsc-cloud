@@ -22,10 +22,10 @@ if (!DATABASE_URL) {
 const isRailway = Boolean(
   process.env.RAILWAY_ENVIRONMENT ||         // set automatically by Railway
   process.env.RAILWAY_PROJECT_ID ||          // set automatically by Railway
-  (DATABASE_URL && DATABASE_URL.includes("railway.app"))
+  (DATABASE_URL && (DATABASE_URL.includes("railway.app") || DATABASE_URL.includes("rlwy.net") || DATABASE_URL.includes("railway.internal")))
 );
 const isProduction = process.env.NODE_ENV === "production" || isRailway;
-const sslConfig = (process.env.DB_SSL === "true")
+const sslConfig = (process.env.DB_SSL === "true" || isProduction || isRailway)
   ? { rejectUnauthorized: false }   // Railway uses self-signed certs
   : false;
 
@@ -78,7 +78,20 @@ pool.on("error", (err) => {
 
 // ── Query helper ─────────────────────────────────────────────────────────────
 export async function query(text, params = []) {
-  return pool.query(text, params);
+  try {
+    const res = await pool.query(text, params);
+    try {
+      const { healthMonitor } = await import("../services/healthMonitor.js");
+      healthMonitor.recordDbSuccess();
+    } catch (e) {}
+    return res;
+  } catch (err) {
+    try {
+      const { healthMonitor } = await import("../services/healthMonitor.js");
+      healthMonitor.recordDbFailure();
+    } catch (e) {}
+    throw err;
+  }
 }
 
 // ── Transaction helper ────────────────────────────────────────────────────────
@@ -88,9 +101,17 @@ export async function withTransaction(callback) {
     await client.query("BEGIN");
     const result = await callback(client);
     await client.query("COMMIT");
+    try {
+      const { healthMonitor } = await import("../services/healthMonitor.js");
+      healthMonitor.recordDbSuccess();
+    } catch (e) {}
     return result;
   } catch (err) {
     await client.query("ROLLBACK");
+    try {
+      const { healthMonitor } = await import("../services/healthMonitor.js");
+      healthMonitor.recordDbFailure();
+    } catch (e) {}
     throw err;
   } finally {
     client.release();

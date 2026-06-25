@@ -94,6 +94,7 @@ import guardianRoutes from "./routes/guardianRoutes.js";
 import notificationRoutes from "./routes/notificationRoutes.js";
 import { registerEnvChatId, startTelegramPolling } from "./services/telegramService.js";
 import { initNotificationScheduler } from "./services/notificationScheduler.js";
+import { healthMonitor } from "./services/healthMonitor.js";
 import {
   startBlock   as dbStartBlock,
   pauseBlock   as dbPauseBlock,
@@ -2108,6 +2109,23 @@ app.post("/api/prelims/practice/build", (req, res) => {
   }
 });
 
+/* -------------------- SYSTEM HEALTH ENDPOINT -------------------- */
+
+app.get("/api/system/health", async (req, res) => {
+  try {
+    const health = await healthMonitor.getHealthStatus();
+    return res.json(health);
+  } catch (err) {
+    console.error("[Health Endpoint Error]", err);
+    return res.status(500).json({
+      database: "Failed",
+      scheduler: "Failed",
+      telegram: "Failed",
+      error: err.message
+    });
+  }
+});
+
 /* -------------------- REMINDER ENGINE TICK -------------------- */
 
 setInterval(async () => {
@@ -2126,6 +2144,9 @@ const HOST = process.env.HOST || "0.0.0.0";
 console.log("[BOOT] about to listen", { HOST, PORT });
 app.listen(PORT, HOST, () => {
   console.log(`backend running on http://${HOST}:${PORT}`);
+  
+  // Start system health heartbeat checker
+  healthMonitor.startHeartbeatAlerts();
   
   // ── Boot sequence: register chat ID → start polling → start scheduler ──────
   // startTelegramPolling() has a module-level singleton guard (pollingLoopStarted).

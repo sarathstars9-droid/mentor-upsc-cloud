@@ -5,6 +5,7 @@ import * as notificationService from './notificationService.js';
 import * as consistencyService from './consistencyService.js';
 import * as behaviorEscalationService from './behaviorEscalationService.js';
 import * as psychologyMessageService from './psychologyMessageService.js';
+import { healthMonitor } from './healthMonitor.js';
 
 let schedulerInterval = null;
 
@@ -28,12 +29,16 @@ export function initNotificationScheduler(userId = 'moulika') {
       await tickScheduler(userId);
     } catch (err) {
       console.error("[NotificationScheduler Tick Error]", err);
+      healthMonitor.recordSchedulerFailure();
     }
   }, 30 * 1000);
 
   // Run a startup check immediately
   setTimeout(() => {
-    tickScheduler(userId).catch(err => console.error("[NotificationScheduler Startup Tick Error]", err));
+    tickScheduler(userId).catch(err => {
+      console.error("[NotificationScheduler Startup Tick Error]", err);
+      healthMonitor.recordSchedulerFailure();
+    });
   }, 2000);
 }
 
@@ -47,6 +52,7 @@ export function stopNotificationScheduler() {
 
 async function tickScheduler(userId) {
   const now = new Date();
+  let hasError = false;
   
   // 1. Get Kolkata timezone details
   const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
@@ -66,6 +72,7 @@ async function tickScheduler(userId) {
     await processTodayBlocks(userId, now);
   } catch (err) {
     console.error("[NotificationScheduler] processTodayBlocks failed:", err.message);
+    hasError = true;
   }
 
   // ── 1.b Discipline Checks (DAY_NOT_STARTED, SLIPPING) ──────────────────────
@@ -73,6 +80,7 @@ async function tickScheduler(userId) {
     await detectAndProcessDayDiscipline(userId, now);
   } catch (err) {
     console.error("[NotificationScheduler] discipline checks failed:", err.message);
+    hasError = true;
   }
 
   // ── 1.b Good Morning Mission (05:00 AM) ────────────────────────────────────
@@ -276,7 +284,14 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
       }
     } catch (err) {
       console.error("[NotificationScheduler] monthly report failed:", err.message);
+      hasError = true;
     }
+  }
+
+  if (hasError) {
+    healthMonitor.recordSchedulerFailure();
+  } else {
+    healthMonitor.recordSchedulerSuccess();
   }
 }
 

@@ -1108,6 +1108,7 @@ function StudyBlockCard({
 export default function PlanPage() {
   const [prelimsDate] = useState(DEFAULT_PRELIMS);
   const [mainsDate] = useState(DEFAULT_MAINS);
+  const [healthData, setHealthData] = useState(null);
 
   const studyBlocksRef = useRef(null);
   const nightReviewRef = useRef(null);
@@ -1351,6 +1352,23 @@ export default function PlanPage() {
       return;
     }
     setAlertPermission(Notification.permission);
+  }, []);
+
+  useEffect(() => {
+    async function fetchHealth() {
+      try {
+        const res = await fetch(`${BACKEND_URL}/api/system/health`, { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          setHealthData(data);
+        }
+      } catch (err) {
+        console.warn("Failed to fetch system health status:", err);
+      }
+    }
+    fetchHealth();
+    const interval = setInterval(fetchHealth, 15 * 1000);
+    return () => clearInterval(interval);
   }, []);
 
   const loadBlocksForDate = useCallback(
@@ -2913,6 +2931,7 @@ export default function PlanPage() {
           activeFlags={activeFlags}
           todayTriggered={todayTriggered}
           BACKEND_URL={BACKEND_URL}
+          healthData={healthData}
         />
       </div>{/* /mos-plan-grid */}
         </div>{/* /adv-controls-body */}

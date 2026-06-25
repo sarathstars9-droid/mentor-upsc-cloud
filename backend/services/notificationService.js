@@ -206,7 +206,15 @@ export async function sendNotification(userId, notificationType, sourceType, sou
 
       try {
         if (channel === 'TELEGRAM') {
-          success = await telegramService.sendTelegramMessage(destinationId, messageText);
+          success = await telegramService.sendTelegramMessage(destinationId, messageText, {
+            userId,
+            notificationType,
+            sourceType,
+            sourceId
+          });
+          if (!success) {
+            errorMsg = "Telegram delivery failed (queued for retry)";
+          }
         } else if (channel === 'IN_APP') {
           success = true; // In-app notifications are "sent" by being stored in the database
         } else {
@@ -215,6 +223,10 @@ export async function sendNotification(userId, notificationType, sourceType, sou
       } catch (err) {
         success = false;
         errorMsg = err.message || String(err);
+      }
+
+      if (!success) {
+        console.error(`[NotificationService DELIVERY FAILURE] Failed to deliver notification type ${notificationType} to user ${userId} via channel ${channel}. Reason/Error: ${errorMsg}`);
       }
 
       const finalStatus = success ? 'sent' : 'failed';
@@ -253,7 +265,15 @@ export async function sendNotification(userId, notificationType, sourceType, sou
     return { ok: true, results };
 
   } catch (err) {
-    console.error("[NotificationService ERROR]", err);
+    console.error("[NotificationService CRITICAL ERROR]", {
+      message: err.message,
+      stack: err.stack,
+      userId,
+      notificationType,
+      messageText,
+      sourceType,
+      sourceId
+    });
     return { ok: false, error: err.message || err };
   }
 }

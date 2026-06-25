@@ -8,6 +8,7 @@ let pollingLoopStarted = false;  // set to true permanently once the loop starts
 let isPolling = false;           // set to false by stopTelegramPolling() to end the loop
 
 let lastUpdateId = 0;
+export let inMemoryRetryQueue = [];
 
 // ── Markdown → Telegram HTML ─────────────────────────────────────────────────
 export function convertMarkdownToHtml(md) {
@@ -22,7 +23,7 @@ export function convertMarkdownToHtml(md) {
 }
 
 // ── Send message ─────────────────────────────────────────────────────────────
-export async function sendTelegramMessage(chatId, text, options = {}) {
+export async function sendTelegramMessageDirect(chatId, text, options = {}) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   if (!token) {
     console.warn(`[TelegramService] Cannot send message: TELEGRAM_BOT_TOKEN is missing. Chat ID: ${chatId}`);
@@ -30,14 +31,20 @@ export async function sendTelegramMessage(chatId, text, options = {}) {
   }
   
   try {
+    const { healthMonitor } = await import('./healthMonitor.js');
+    healthMonitor.recordTelegramAttempt();
+
     const htmlText = convertMarkdownToHtml(text);
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
     
+    // Omit custom non-Telegram options before sending body
+    const { skipEventLogging, userId, notificationType, sourceType, sourceId, skipQueue, ...telegramOptions } = options;
+
     const bodyPayload = {
       chat_id: chatId,
       text: htmlText,
       parse_mode: 'HTML',
-      ...options
+      ...telegramOptions
     };
 
     const res = await fetch(url, {
@@ -49,15 +56,48 @@ export async function sendTelegramMessage(chatId, text, options = {}) {
     if (!res.ok) {
       const errText = await res.text();
       console.error(`[TelegramService] Bot reply failed to ${chatId}. Status: ${res.status}. Response: ${errText}`);
+      healthMonitor.recordTelegramFailure();
       return false;
     }
     
     console.log(`[TelegramService] Bot reply sent to ${chatId}`);
+    healthMonitor.recordTelegramSuccess();
     return true;
   } catch (err) {
     console.error(`[TelegramService ERROR] Failed to send message to ${chatId}:`, err);
+    try {
+      const { healthMonitor } = await import('./healthMonitor.js');
+      healthMonitor.recordTelegramFailure();
+    } catch (e) {}
     return false;
   }
+}
+
+export async function sendTelegramMessage(chatId, text, options = {}) {
+  const success = await sendTelegramMessageDirect(chatId, text, options);
+  
+  if (!success && !options.skipQueue) {
+    try {
+      const nextRetryAt = new Date(Date.now() + 1 * 60 * 1000);
+      await query(
+        `INSERT INTO public.telegram_retry_queue (chat_id, text, options, retry_count, next_retry_at)
+         VALUES ($1, $2, $3, 0, $4)`,
+        [chatId, text, JSON.stringify(options), nextRetryAt]
+      );
+      console.log(`[TelegramService] Queued failed Telegram message to ${chatId} in database.`);
+    } catch (err) {
+      console.warn(`[TelegramService] Failed to queue message in DB, using in-memory fallback. Error: ${err.message}`);
+      inMemoryRetryQueue.push({
+        chat_id: chatId,
+        text: text,
+        options: options,
+        retry_count: 0,
+        next_retry_at: new Date(Date.now() + 1 * 60 * 1000),
+        created_at: new Date()
+      });
+    }
+  }
+  return success;
 }
 
 export async function sendMessage(chatId, text, options = {}) {
@@ -271,6 +311,10 @@ export async function sendTelegramDocument(chatId, filePath, caption = '') {
   }
   
   try {
+    try {
+      const { healthMonitor } = await import('./healthMonitor.js');
+      healthMonitor.recordTelegramAttempt();
+    } catch (e) {}
     const { readFileSync } = await import('fs');
     const { Blob } = await import('buffer');
     const { basename } = await import('path');
@@ -296,13 +340,168 @@ export async function sendTelegramDocument(chatId, filePath, caption = '') {
     if (!res.ok) {
       const errText = await res.text();
       console.error(`[TelegramService] Bot document send failed to ${chatId}. Status: ${res.status}. Response: ${errText}`);
+      try {
+        const { healthMonitor } = await import('./healthMonitor.js');
+        healthMonitor.recordTelegramFailure();
+      } catch (e) {}
       return false;
     }
     
     console.log(`[TelegramService] Bot document sent to ${chatId}`);
+    try {
+      const { healthMonitor } = await import('./healthMonitor.js');
+      healthMonitor.recordTelegramSuccess();
+    } catch (e) {}
     return true;
   } catch (err) {
     console.error(`[TelegramService ERROR] Failed to send document to ${chatId}:`, err);
+    try {
+      const { healthMonitor } = await import('./healthMonitor.js');
+      healthMonitor.recordTelegramFailure();
+    } catch (e) {}
     return false;
   }
 }
+
+// ── Telegram Retry Queue Helpers ──────────────────────────────────────────────
+export function getNextRetryInterval(retryCount) {
+  if (retryCount === 0) return 1; // 1 min
+  if (retryCount === 1) return 5; // 5 min
+  if (retryCount === 2) return 15; // 15 min
+  if (retryCount === 3) return 60; // 1 hour
+  return null; // permanently failed
+}
+
+export async function initRetryTable() {
+  try {
+    await query(`
+      CREATE TABLE IF NOT EXISTS public.telegram_retry_queue (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        chat_id TEXT NOT NULL,
+        text TEXT NOT NULL,
+        options JSONB DEFAULT '{}'::jsonb,
+        retry_count INT DEFAULT 0,
+        next_retry_at TIMESTAMPTZ NOT NULL,
+        created_at TIMESTAMPTZ DEFAULT NOW()
+      );
+    `);
+    console.log("[TelegramService] Telegram retry queue table checked/created.");
+  } catch (err) {
+    console.warn("[TelegramService] Could not verify/create telegram_retry_queue (DB might be down):", err.message);
+  }
+}
+
+let retryInterval = null;
+
+export function startRetryScheduler() {
+  if (retryInterval) return;
+  
+  retryInterval = setInterval(async () => {
+    try {
+      await processRetryQueue();
+      await processInMemoryQueue();
+    } catch (err) {
+      console.error("[TelegramService Retry Queue Tick Error]", err);
+    }
+  }, 30 * 1000); // Check every 30 seconds
+  
+  console.log("[TelegramService] Telegram retry scheduler started.");
+}
+
+export async function processRetryQueue() {
+  try {
+    const now = new Date();
+    // Fetch messages due for retry
+    const res = await query(
+      `SELECT id, chat_id, text, options, retry_count 
+       FROM public.telegram_retry_queue 
+       WHERE next_retry_at <= $1 
+       ORDER BY created_at ASC`,
+      [now]
+    );
+
+    for (const row of res.rows) {
+      const { id, chat_id, text, options, retry_count } = row;
+      console.log(`[TelegramService] Retrying message to ${chat_id} (Attempt ${retry_count + 1})...`);
+      
+      const success = await sendTelegramMessageDirect(chat_id, text, { ...options, skipQueue: true });
+      if (success) {
+        console.log(`[TelegramService] Retry successful for message to ${chat_id} on attempt ${retry_count + 1}.`);
+        await query(`DELETE FROM public.telegram_retry_queue WHERE id = $1`, [id]);
+        
+        // Update notification_events status to 'sent'
+        try {
+          await query(
+            `UPDATE public.notification_events 
+             SET status = 'sent', error_message = NULL, sent_at = NOW() 
+             WHERE user_id = $1 AND notification_type = $2 AND source_type = $3 AND source_id = $4`,
+            [options.userId || 'moulika', options.notificationType || 'SYSTEM', options.sourceType || 'system', options.sourceId || 'system']
+          );
+        } catch (e) {}
+      } else {
+        const nextRetryMins = getNextRetryInterval(retry_count + 1);
+        if (nextRetryMins !== null) {
+          const nextRetryAt = new Date(Date.now() + nextRetryMins * 60 * 1000);
+          console.warn(`[TelegramService] Retry failed for message to ${chat_id}. Next retry in ${nextRetryMins} mins (at ${nextRetryAt.toISOString()}).`);
+          await query(
+            `UPDATE public.telegram_retry_queue 
+             SET retry_count = retry_count + 1, next_retry_at = $2 
+             WHERE id = $1`,
+            [id, nextRetryAt]
+          );
+        } else {
+          console.error(`[TelegramService] Retry failed permanently for message to ${chat_id} after ${retry_count + 1} attempts.`);
+          await query(`DELETE FROM public.telegram_retry_queue WHERE id = $1`, [id]);
+          
+          try {
+            await query(
+              `UPDATE public.notification_events 
+               SET status = 'failed', error_message = 'Failed after maximum retry attempts', sent_at = NOW() 
+               WHERE user_id = $1 AND notification_type = $2 AND source_type = $3 AND source_id = $4`,
+              [options.userId || 'moulika', options.notificationType || 'SYSTEM', options.sourceType || 'system', options.sourceId || 'system']
+            );
+          } catch (e) {}
+        }
+      }
+    }
+  } catch (err) {
+    // DB down warning
+    console.warn("[TelegramService] Error fetching retry queue (DB might be offline):", err.message);
+  }
+}
+
+export async function processInMemoryQueue() {
+  if (inMemoryRetryQueue.length === 0) return;
+
+  const now = Date.now();
+  const activeRetries = inMemoryRetryQueue.filter(item => item.next_retry_at.getTime() <= now);
+  
+  inMemoryRetryQueue = inMemoryRetryQueue.filter(item => item.next_retry_at.getTime() > now);
+
+  for (const item of activeRetries) {
+    console.log(`[TelegramService] In-memory retrying message to ${item.chat_id} (Attempt ${item.retry_count + 1})...`);
+    const success = await sendTelegramMessageDirect(item.chat_id, item.text, { ...item.options, skipQueue: true });
+    if (success) {
+      console.log(`[TelegramService] In-memory retry successful to ${item.chat_id}.`);
+    } else {
+      const nextMins = getNextRetryInterval(item.retry_count + 1);
+      if (nextMins !== null) {
+        item.retry_count++;
+        item.next_retry_at = new Date(Date.now() + nextMins * 60 * 1000);
+        inMemoryRetryQueue.push(item);
+        console.warn(`[TelegramService] In-memory retry failed to ${item.chat_id}. Scheduled in ${nextMins} mins.`);
+      } else {
+        console.error(`[TelegramService] In-memory retry failed permanently to ${item.chat_id}.`);
+      }
+    }
+  }
+}
+
+// Start queue and scheduler boot initialization
+setTimeout(() => {
+  initRetryTable().then(() => {
+    startRetryScheduler();
+  }).catch(err => {
+    console.error("[TelegramService Retry Boot Error]", err);
+  });
+}, 1000);

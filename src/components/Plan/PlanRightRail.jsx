@@ -13,12 +13,118 @@ export default function PlanRightRail({
     activeFlags,
     todayTriggered,
     BACKEND_URL,
+    healthData,
 }) {
     const flags = Array.isArray(loops?.flags) ? loops.flags : [];
 
     return (
         <section className="plan-right">
             <SyllabusRadar radar={syllabusRadar} />
+
+            {/* Notification Health Card */}
+            <div className="plan-card" style={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}>
+                <h2 className="plan-card-title" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span>Notification Health</span>
+                    {healthData?.recentFailureCount > 0 && (
+                        <span style={{
+                            backgroundColor: "rgba(239, 68, 68, 0.2)",
+                            color: "#ef4444",
+                            padding: "2px 8px",
+                            borderRadius: "12px",
+                            fontSize: "11px",
+                            fontWeight: "bold"
+                        }}>
+                            {healthData.recentFailureCount} Failures
+                        </span>
+                    )}
+                </h2>
+
+                <div style={{ display: "grid", gap: 10, fontSize: 13, marginTop: 10 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <span style={{ opacity: 0.8 }}>Database:</span>
+                        <span style={{
+                            color: healthData?.database === "Healthy" ? "#10b981" : "#ef4444",
+                            fontWeight: "bold",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 4
+                        }}>
+                            <span style={{
+                                display: "inline-block",
+                                width: 8,
+                                height: 8,
+                                borderRadius: "50%",
+                                backgroundColor: healthData?.database === "Healthy" ? "#10b981" : "#ef4444"
+                            }}></span>
+                            {healthData?.database || "Unknown"}
+                        </span>
+                    </div>
+
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <span style={{ opacity: 0.8 }}>Scheduler:</span>
+                        <span style={{
+                            color: healthData?.scheduler === "Healthy" ? "#10b981" : "#ef4444",
+                            fontWeight: "bold",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 4
+                        }}>
+                            <span style={{
+                                display: "inline-block",
+                                width: 8,
+                                height: 8,
+                                borderRadius: "50%",
+                                backgroundColor: healthData?.scheduler === "Healthy" ? "#10b981" : "#ef4444"
+                            }}></span>
+                            {healthData?.scheduler || "Unknown"}
+                        </span>
+                    </div>
+
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <span style={{ opacity: 0.8 }}>Telegram Bot:</span>
+                        <span style={{
+                            color: healthData?.telegram === "Healthy" ? "#10b981" : "#ef4444",
+                            fontWeight: "bold",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 4
+                        }}>
+                            <span style={{
+                                display: "inline-block",
+                                width: 8,
+                                height: 8,
+                                borderRadius: "50%",
+                                backgroundColor: healthData?.telegram === "Healthy" ? "#10b981" : "#ef4444"
+                            }}></span>
+                            {healthData?.telegram || "Unknown"}
+                        </span>
+                    </div>
+
+                    <hr style={{ border: "0", borderTop: "1px solid rgba(255, 255, 255, 0.1)", margin: "4px 0" }} />
+
+                    {healthData?.lastSuccessfulNotification && (
+                        <div style={{ fontSize: 11, opacity: 0.7 }}>
+                            Last Success: {new Date(healthData.lastSuccessfulNotification).toLocaleString()}
+                        </div>
+                    )}
+
+                    {healthData?.unsentHeartbeatAlert && (
+                        <div style={{
+                            backgroundColor: "rgba(239, 68, 68, 0.1)",
+                            border: "1px solid rgba(239, 68, 68, 0.2)",
+                            borderRadius: "6px",
+                            padding: "8px",
+                            fontSize: "11px",
+                            color: "#fca5a5",
+                            marginTop: "4px",
+                            wordBreak: "break-word"
+                        }}>
+                            <strong>⚠️ Unsent Heartbeat Alert (Telegram Down):</strong>
+                            <p style={{ margin: "4px 0 0 0" }}>{healthData.unsentHeartbeatAlert.message}</p>
+                        </div>
+                    )}
+                </div>
+            </div>
 
             <div className="plan-card">
                 <h2 className="plan-card-title">Weekly Dashboard</h2>
