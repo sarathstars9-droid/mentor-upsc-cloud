@@ -784,7 +784,8 @@ async function acquireAtomicLock(userId, notificationType, sourceId) {
        VALUES ($1, $2, 'daily_date', $3, 'SYSTEM_LOCK', 'pending', NOW())
        ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type) 
        DO UPDATE SET status = 'pending', sent_at = NOW()
-       WHERE public.notification_events.status = 'failed'
+       WHERE public.notification_events.status = 'failed' 
+          OR (public.notification_events.status = 'pending' AND public.notification_events.sent_at < NOW() - INTERVAL '15 minutes')
        RETURNING id`,
       [userId, notificationType, sourceId]
     );
