@@ -349,4 +349,51 @@ and we'll rebuild your mission together.`;
   }
 }
 
+/**
+ * 9:00 AM Strict No-Plan Message
+ */
+export function getNoPlanStrict9AMMessage(userName = "Moulika") {
+  return `${userName}, it is 9 AM and no plan is uploaded yet.
+Without a plan, today will again become a zero-study day.
+Upload even a 45-minute plan now. Don't wait for motivation.`;
+}
+
+/**
+ * 12:00 PM Recovery Plan Message
+ */
+export function getRecoveryPlan12PMMessage(userName = "Moulika") {
+  return `It is 12 PM. The morning is gone, but the day is not gone.
+Upload a 45-minute recovery plan now.
+Target: one small block. No excuses. Break the zero-study streak today.`;
+}
+
+/**
+ * 3:00 PM High Risk Intervention Message
+ */
+export function getHighRiskIntervention3PMMessage(userName = "Moulika") {
+  return `${userName}, it is 3 PM and you still haven't uploaded today's plan.
+This is no longer a planning issue. This is avoidance.
+
+You don't need a perfect timetable now.
+You need one honest study block.
+
+Do this now:
+1. Choose one subject
+2. Study for 45 minutes
+3. Upload proof after completion
+
+Today's mission is not 8 hours.
+Today's mission is to stop the zero-study streak.
+Start now.`;
+}
+
+/**
+ * 6:00 PM Emergency Non-Zero Message
+ */
+export function getEmergencyNonZero6PMMessage(userName = "Moulika") {
+  return `${userName}, only the evening is left.
+Don't try to save the full day. Save your discipline.
+Sit for just 25 minutes now and upload proof.
+A small win today is better than another zero day.`;
+}
 

@@ -170,6 +170,135 @@ async function tickScheduler(userId) {
     }
   }
 
+  // ── 1.d Strict No-Plan Alert (09:00 AM) ────────────────────────────────────
+  if (hour === 9 && minute === 0) {
+    try {
+      const userRes = await query(`SELECT name, mission_health_state, consecutive_zero_study_days FROM public.users WHERE id = $1`, [userId]);
+      const user = userRes.rows[0];
+      const state = user?.mission_health_state || 'HEALTHY';
+      const userName = user?.name || "Moulika";
+      const zeroStreak = user?.consecutive_zero_study_days || 0;
+      
+      if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+        const isAtRisk = ['AT_RISK', 'HIGH_RISK', 'CRITICAL'].includes(state) || zeroStreak > 0;
+        
+        if (isAtRisk) {
+          const { rows } = await query(`SELECT id FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [userId, todayKey]);
+          if (rows.length === 0) {
+            if (await acquireAtomicLock(userId, 'NO_PLAN_STRICT_9AM', todayKey)) {
+              const text = psychologyMessageService.getNoPlanStrict9AMMessage(userName);
+              const result = await notificationService.sendNotification(userId, 'NO_PLAN_STRICT_9AM', 'daily_date', todayKey, text, {});
+              if (result && result.ok) {
+                await updateAtomicLockStatus(userId, 'NO_PLAN_STRICT_9AM', todayKey, 'sent');
+                await recordEvent(userId, 'NO_PLAN_STRICT_9AM', todayKey);
+              } else {
+                await updateAtomicLockStatus(userId, 'NO_PLAN_STRICT_9AM', todayKey, 'failed');
+              }
+            }
+          }
+        }
+      }
+    } catch (err) {
+      console.error("[NotificationScheduler] 9 AM no plan check failed:", err.message);
+    }
+  }
+
+  // ── 1.e Recovery Plan Reminder (12:00 PM) ──────────────────────────────────
+  if (hour === 12 && minute === 0) {
+    try {
+      const userRes = await query(`SELECT name, mission_health_state FROM public.users WHERE id = $1`, [userId]);
+      const user = userRes.rows[0];
+      const state = user?.mission_health_state || 'HEALTHY';
+      const userName = user?.name || "Moulika";
+      
+      if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+        const { rows } = await query(`SELECT id, status, actual_minutes FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [userId, todayKey]);
+        const hasCompletedBlock = rows.some(b => ['completed', 'done', 'partial'].includes(b.status) || (b.actual_minutes > 0));
+        if (rows.length === 0 && !hasCompletedBlock) {
+          if (await acquireAtomicLock(userId, 'RECOVERY_PLAN_12PM', todayKey)) {
+            const text = psychologyMessageService.getRecoveryPlan12PMMessage(userName);
+            const result = await notificationService.sendNotification(userId, 'RECOVERY_PLAN_12PM', 'daily_date', todayKey, text, {});
+            if (result && result.ok) {
+              await updateAtomicLockStatus(userId, 'RECOVERY_PLAN_12PM', todayKey, 'sent');
+              await recordEvent(userId, 'RECOVERY_PLAN_12PM', todayKey);
+            } else {
+              await updateAtomicLockStatus(userId, 'RECOVERY_PLAN_12PM', todayKey, 'failed');
+            }
+          }
+        }
+      }
+    } catch (err) {
+      console.error("[NotificationScheduler] 12 PM recovery plan check failed:", err.message);
+    }
+  }
+
+  // ── 1.f High Risk Intervention (3:00 PM) ───────────────────────────────────
+  if (hour === 15 && minute === 0) {
+    try {
+      const userRes = await query(`SELECT name, mission_health_state, consecutive_zero_study_days FROM public.users WHERE id = $1`, [userId]);
+      const user = userRes.rows[0];
+      const state = user?.mission_health_state || 'HEALTHY';
+      const userName = user?.name || "Moulika";
+      const zeroStreak = user?.consecutive_zero_study_days || 0;
+      
+      if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+        const isAtRisk = ['AT_RISK', 'HIGH_RISK', 'CRITICAL'].includes(state) || zeroStreak > 0;
+        
+        if (isAtRisk) {
+          const blocksRes = await query(`SELECT id, status, actual_minutes FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [userId, todayKey]);
+          const hasCompletedBlock = blocksRes.rows.some(b => ['completed', 'done', 'partial'].includes(b.status) || (b.actual_minutes > 0));
+          const hasPlan = blocksRes.rows.length > 0;
+          
+          if (!hasPlan && !hasCompletedBlock) {
+            if (await acquireAtomicLock(userId, 'HIGH_RISK_INTERVENTION_3PM', todayKey)) {
+              const text = psychologyMessageService.getHighRiskIntervention3PMMessage(userName);
+              const result = await notificationService.sendNotification(userId, 'HIGH_RISK_INTERVENTION_3PM', 'daily_date', todayKey, text, {});
+              if (result && result.ok) {
+                await updateAtomicLockStatus(userId, 'HIGH_RISK_INTERVENTION_3PM', todayKey, 'sent');
+                await recordEvent(userId, 'HIGH_RISK_INTERVENTION_3PM', todayKey);
+              } else {
+                await updateAtomicLockStatus(userId, 'HIGH_RISK_INTERVENTION_3PM', todayKey, 'failed');
+              }
+            }
+          }
+        }
+      }
+    } catch (err) {
+      console.error("[NotificationScheduler] 3 PM high risk check failed:", err.message);
+    }
+  }
+
+  // ── 1.g Emergency Non-Zero Reminder (6:00 PM) ──────────────────────────────
+  if (hour === 18 && minute === 0) {
+    try {
+      const userRes = await query(`SELECT name, mission_health_state FROM public.users WHERE id = $1`, [userId]);
+      const user = userRes.rows[0];
+      const state = user?.mission_health_state || 'HEALTHY';
+      const userName = user?.name || "Moulika";
+      
+      if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+        const blocksRes = await query(`SELECT id, status, actual_minutes FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [userId, todayKey]);
+        const hasCompletedBlock = blocksRes.rows.some(b => ['completed', 'done', 'partial'].includes(b.status) || (b.actual_minutes > 0));
+        const hasPlan = blocksRes.rows.length > 0;
+        
+        if (!hasPlan && !hasCompletedBlock) {
+          if (await acquireAtomicLock(userId, 'EMERGENCY_NON_ZERO_6PM', todayKey)) {
+            const text = psychologyMessageService.getEmergencyNonZero6PMMessage(userName);
+            const result = await notificationService.sendNotification(userId, 'EMERGENCY_NON_ZERO_6PM', 'daily_date', todayKey, text, {});
+            if (result && result.ok) {
+              await updateAtomicLockStatus(userId, 'EMERGENCY_NON_ZERO_6PM', todayKey, 'sent');
+              await recordEvent(userId, 'EMERGENCY_NON_ZERO_6PM', todayKey);
+            } else {
+              await updateAtomicLockStatus(userId, 'EMERGENCY_NON_ZERO_6PM', todayKey, 'failed');
+            }
+          }
+        }
+      }
+    } catch (err) {
+      console.error("[NotificationScheduler] 6 PM emergency check failed:", err.message);
+    }
+  }
+
   // ── 2. Daily Revision Due Alert (08:30 AM) ───────────────────────────────────
   if (hour === 8 && minute === 30) {
     try {
@@ -285,6 +414,50 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
     } catch (err) {
       console.error("[NotificationScheduler] monthly report failed:", err.message);
       hasError = true;
+    }
+  }
+
+  // ── 6. End of Day Distraction Report (10:00 PM) ──────────────────────────────
+  if (hour === 22 && minute === 0) {
+    try {
+      if (!(await hasEvent(userId, 'DAILY_DISTRACTION_REPORT_EOD', todayKey))) {
+        const usageRes = await query(
+          `SELECT app_name, duration_seconds 
+           FROM public.guardian_daily_phone_usage 
+           WHERE user_id = $1 AND date = $2
+           ORDER BY duration_seconds DESC`,
+          [userId, todayKey]
+        );
+
+        if (usageRes.rows.length > 0) {
+          const totalSec = usageRes.rows.reduce((sum, r) => sum + r.duration_seconds, 0);
+          const totalMins = Math.floor(totalSec / 60);
+
+          let msg = `📊 *Daily Phone Usage Summary* (Moulika)
+Total distraction usage: *${totalMins} minutes*
+
+Breakdown:`;
+          for (const row of usageRes.rows) {
+            const mins = Math.floor(row.duration_seconds / 60);
+            if (mins > 0) {
+              msg += `\n• *${row.app_name}*: ${mins}m`;
+            }
+          }
+
+          await notificationService.sendNotification(
+            userId,
+            'DAILY_NIGHT_REPORT',
+            'daily_distraction_report',
+            todayKey,
+            msg,
+            {}
+          );
+          await recordEvent(userId, 'DAILY_DISTRACTION_REPORT_EOD', todayKey);
+          console.log(`[NotificationScheduler] Daily distraction report sent for ${userId}`);
+        }
+      }
+    } catch (err) {
+      console.error("[NotificationScheduler] Daily distraction report failed:", err.message);
     }
   }
 
@@ -600,6 +773,39 @@ async function hasEvent(userId, notificationType, sourceId) {
     [userId, notificationType, sourceId]
   );
   return r2.length > 0;
+}
+
+// Helper: Atomic lock utilizing notification_events unique constraint
+async function acquireAtomicLock(userId, notificationType, sourceId) {
+  try {
+    const { rows } = await query(
+      `INSERT INTO public.notification_events 
+         (user_id, notification_type, source_type, source_id, channel_type, status, sent_at)
+       VALUES ($1, $2, 'daily_date', $3, 'SYSTEM_LOCK', 'pending', NOW())
+       ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type) 
+       DO UPDATE SET status = 'pending', sent_at = NOW()
+       WHERE public.notification_events.status = 'failed'
+       RETURNING id`,
+      [userId, notificationType, sourceId]
+    );
+    return rows.length > 0;
+  } catch (err) {
+    console.error("[NotificationScheduler acquireAtomicLock Error]", err.message);
+    return false;
+  }
+}
+
+async function updateAtomicLockStatus(userId, notificationType, sourceId, status) {
+  try {
+    await query(
+      `UPDATE public.notification_events 
+       SET status = $1 
+       WHERE user_id = $2 AND notification_type = $3 AND source_id = $4 AND channel_type = 'SYSTEM_LOCK'`,
+      [status, userId, notificationType, sourceId]
+    );
+  } catch (err) {
+    console.error("[NotificationScheduler updateAtomicLockStatus Error]", err.message);
+  }
 }
 
 // Helper: Record event in plan_block_events for audit
