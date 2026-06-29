@@ -29,22 +29,70 @@ import { syncBlockToCalendar, retryFailedCalendarSyncs, probeCalendarBridge } fr
 const router = express.Router();
 const DEFAULT_USER = process.env.DEFAULT_USER_ID || 'moulika';
 
-const uploadsDir = path.join(process.cwd(), 'uploads', 'proofs');
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
+function getProofsBaseDir() {
+  if (process.env.RAILWAY_VOLUME_MOUNT_PATH) {
+    return path.join(process.env.RAILWAY_VOLUME_MOUNT_PATH, 'proofs');
+  }
+  return path.join(process.cwd(), 'uploads', 'proofs');
 }
 
+const ALLOWED_MIME_TYPES = new Set([
+  'image/jpeg',
+  'image/png',
+  'image/webp',
+  'application/pdf'
+]);
+
 const storage = multer.diskStorage({
-  destination: (_req, _file, cb) => cb(null, uploadsDir),
+  destination: (req, _file, cb) => {
+    const uid = userId(req);
+    const targetDir = path.join(getProofsBaseDir(), uid);
+    if (!fs.existsSync(targetDir)) {
+      fs.mkdirSync(targetDir, { recursive: true });
+    }
+    cb(null, targetDir);
+  },
   filename: (_req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    cb(null, `proof_${Date.now()}_${Math.random().toString(36).substring(2, 8)}${ext}`);
+    const ext = path.extname(file.originalname).toLowerCase();
+    const safeExt = ['.jpg', '.jpeg', '.png', '.webp', '.pdf'].includes(ext) ? ext : '.bin';
+    cb(null, `proof_${Date.now()}_${Math.random().toString(36).substring(2, 8)}${safeExt}`);
   }
 });
-const upload = multer({ storage });
+
+const upload = multer({
+  storage,
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
+  fileFilter: (_req, file, cb) => {
+    if (ALLOWED_MIME_TYPES.has(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('INVALID_MIME_TYPE: Only image/jpeg, image/png, image/webp, and application/pdf are allowed.'));
+    }
+  }
+});
+
+function handleUpload(req, res, next) {
+  upload.single('file')(req, res, (err) => {
+    if (err) {
+      if (err.message?.includes('INVALID_MIME_TYPE') || err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(400).json({ ok: false, message: err.message || 'File size exceeds 10MB limit' });
+      }
+      return res.status(400).json({ ok: false, message: err.message });
+    }
+    next();
+  });
+}
 
 function userId(req) {
-  return req.body?.userId || req.query?.userId || DEFAULT_USER;
+  const authHeader = req.headers?.authorization;
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    const token = authHeader.substring(7).trim();
+    if (token && token !== 'undefined') return token.toLowerCase();
+  }
+  const xUserId = req.headers?.['x-user-id'];
+  if (xUserId) return String(xUserId).toLowerCase().trim();
+
+  return (req.body?.userId || req.query?.userId || DEFAULT_USER).toLowerCase().trim();
 }
 
 function todayKey() {
@@ -61,6 +109,56 @@ router.get('/', async (req, res) => {
     return res.json({ ok: true, blocks, userId: uid, dayKey });
   } catch (err) {
     console.error('[GET /api/plan/blocks]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+// ── GET /api/plan/blocks/proof-file ──────────────────────────────────────────
+// Authenticated secure proof download/view endpoint with ownership & traversal check
+
+router.get('/proof-file', async (req, res) => {
+  try {
+    const uid = userId(req);
+    const { blockId, dayKey, file } = req.query;
+
+    if (!blockId && !file) {
+      return res.status(400).json({ ok: false, message: 'blockId or file is required' });
+    }
+
+    let targetRelativePath = '';
+
+    if (blockId) {
+      const day = dayKey || todayKey();
+      const block = await getBlockState(uid, blockId, day);
+      if (!block) {
+        return res.status(403).json({ ok: false, message: 'Forbidden: Study block not found or unauthorized' });
+      }
+      if (!block.proofUrl) {
+        return res.status(404).json({ ok: false, message: 'Proof file not found on block' });
+      }
+      targetRelativePath = block.proofUrl.replace('/api/plan/blocks/proof-file?file=', '').replace('/uploads/proofs/', '');
+      targetRelativePath = decodeURIComponent(targetRelativePath);
+    } else {
+      targetRelativePath = decodeURIComponent(file);
+    }
+
+    // Sanitize path traversal
+    const baseDir = path.resolve(getProofsBaseDir());
+    const fullPath = path.resolve(baseDir, targetRelativePath);
+
+    if (!fullPath.startsWith(baseDir)) {
+      return res.status(403).json({ ok: false, message: 'Forbidden: Path traversal detected' });
+    }
+
+    if (!fs.existsSync(fullPath)) {
+      return res.status(404).json({ ok: false, message: 'Proof file does not exist on disk' });
+    }
+
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('Content-Security-Policy', "default-src 'none'");
+    return res.sendFile(fullPath);
+  } catch (err) {
+    console.error('[GET /api/plan/blocks/proof-file]', err.message);
     return res.status(500).json({ ok: false, message: err.message });
   }
 });
@@ -173,7 +271,7 @@ router.post('/complete', async (req, res) => {
 
 // ── POST /api/plan/blocks/upload-proof ─────────────────────────────────────────
 
-router.post('/upload-proof', upload.single('file'), async (req, res) => {
+router.post('/upload-proof', handleUpload, async (req, res) => {
   try {
     const blockId = req.body.blockId;
     const dayKey = req.body.dayKey || todayKey();
@@ -186,9 +284,19 @@ router.post('/upload-proof', upload.single('file'), async (req, res) => {
       return res.status(400).json({ ok: false, message: 'blockId is required' });
     }
 
+    // Ownership check before attaching proof
+    const existingBlock = await getBlockState(uid, blockId, dayKey);
+    if (!existingBlock) {
+      if (req.file && fs.existsSync(req.file.path)) {
+        fs.unlinkSync(req.file.path);
+      }
+      return res.status(403).json({ ok: false, message: 'Forbidden: Study block not found or ownership check failed' });
+    }
+
     let proofUrl = req.body.proofUrl || null;
     if (req.file) {
-      proofUrl = `/uploads/proofs/${req.file.filename}`;
+      const relPath = path.relative(getProofsBaseDir(), req.file.path).replace(/\\/g, '/');
+      proofUrl = `/api/plan/blocks/proof-file?file=${encodeURIComponent(relPath)}`;
     }
 
     const block = await attachBlockProof(uid, blockId, dayKey, {

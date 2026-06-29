@@ -503,6 +503,11 @@ app.use(cors({
 // ✅ MUST BE HERE (TOP)
 app.use(express.json({ limit: "25mb" }));
 app.use(express.urlencoded({ extended: true }));
+// Protected upload serving — forwards /uploads/proofs to authenticated proof-file route
+app.use("/uploads/proofs", (req, res, next) => {
+  req.url = `/proof-file?file=${encodeURIComponent(req.path.replace(/^\//, ''))}`;
+  return planBlockRoutes(req, res, next);
+});
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 /* -------------------- MIDDLEWARE -------------------- */

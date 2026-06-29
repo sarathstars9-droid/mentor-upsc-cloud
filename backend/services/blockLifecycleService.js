@@ -433,7 +433,7 @@ export async function completeBlock(
     const hasValidProof = Boolean(targetProofUrl) || ['verified', 'waived'].includes(targetProofStatus) || proofRequiredFlag === false;
     if (!hasValidProof) {
       throw Object.assign(
-        new Error(`Study block cannot be completed without uploading proof or marking 'no proof required'`),
+        new Error(`Proof is required before completing this study block.`),
         { code: 'PROOF_REQUIRED' }
       );
     }
