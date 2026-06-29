@@ -118,7 +118,14 @@ export async function sendNotification(userId, notificationType, sourceType, sou
         else if (state === 'HIGH_RISK' || state === 'CRITICAL') limit = 4;
         else if (state === 'MISSION_FAILURE') limit = 2;
 
-        if (count >= limit) {
+        const isCriticalEscalation = [
+          'NO_PLAN_STRICT_9AM',
+          'RECOVERY_PLAN_12PM',
+          'HIGH_RISK_INTERVENTION_3PM',
+          'EMERGENCY_NON_ZERO_6PM'
+        ].includes(notificationType);
+
+        if (!isCriticalEscalation && count >= limit) {
           console.log(`[NotificationService] Fatigue protection active for ${userId} (state=${state}). Count=${count}/${limit}. Skipping ${notificationType}.`);
           return { ok: false, reason: "Fatigue protection limit reached" };
         }
@@ -133,14 +140,25 @@ export async function sendNotification(userId, notificationType, sourceType, sou
       [userId, notificationType]
     );
 
-    if (prefRes.rows.length === 0) {
+    const isCriticalEscalation = [
+      'NO_PLAN_STRICT_9AM',
+      'RECOVERY_PLAN_12PM',
+      'HIGH_RISK_INTERVENTION_3PM',
+      'EMERGENCY_NON_ZERO_6PM'
+    ].includes(notificationType);
+
+    let prefsToProcess = prefRes.rows;
+    if (prefsToProcess.length === 0 && isCriticalEscalation) {
+      console.log(`[NotificationService] Preference fallback active for critical escalation ${notificationType} and user ${userId}. Defaulting to TELEGRAM.`);
+      prefsToProcess = [{ channel_type: 'TELEGRAM', quiet_hours_start: null, quiet_hours_end: null }];
+    } else if (prefsToProcess.length === 0) {
       console.log(`[NotificationService] Preferences disabled or not configured for type ${notificationType} and user ${userId}. Skipping.`);
       return { ok: false, reason: "Preferences disabled or missing" };
     }
 
     const results = [];
 
-    for (const pref of prefRes.rows) {
+    for (const pref of prefsToProcess) {
       const channel = pref.channel_type;
       
       // 2. Check for quiet hours
