@@ -25,6 +25,7 @@
 //   clear missed/weak signals, significant performance gap.
 //   Penalised for insufficient data.
 
+import { pool, query } from '../db/index.js';
 import {
   getRangeAggregate,
   getSubjectWiseSplit,
@@ -494,5 +495,159 @@ export async function generateSuggestions(userId = DEFAULT_USER, { endDate } = {
 export function invalidateSuggestionsCache(userId) {
   for (const key of _cache.keys()) {
     if (key.startsWith(`${userId}::`)) _cache.delete(key);
+  }
+}
+
+// ── BACKLOG & REBALANCING ────────────────────────────────────────────────────
+
+export async function getBacklogSummary(userId = DEFAULT_USER) {
+  const { rows } = await pool.query(
+    `SELECT id, block_id, day_key, title, subject, topic, planned_minutes, actual_minutes, status
+     FROM study_blocks
+     WHERE user_id = $1
+       AND status IN ('missed', 'skipped', 'partial')
+     ORDER BY day_key DESC`,
+    [userId]
+  );
+
+  let totalMissedMinutes = 0;
+  const subjectMap = {};
+
+  const missedBlocks = rows.map(r => {
+    const planned = Number(r.planned_minutes || 0);
+    const actual = Number(r.actual_minutes || 0);
+    const remaining = Math.max(0, planned - actual);
+    totalMissedMinutes += remaining;
+
+    const subj = r.subject || 'Uncategorized';
+    if (!subjectMap[subj]) {
+      subjectMap[subj] = { subject: subj, missedBlocksCount: 0, missedMinutes: 0, missedHours: 0 };
+    }
+    subjectMap[subj].missedBlocksCount += 1;
+    subjectMap[subj].missedMinutes += remaining;
+    subjectMap[subj].missedHours = Math.round((subjectMap[subj].missedMinutes / 60) * 10) / 10;
+
+    return {
+      id: r.id,
+      blockId: r.block_id,
+      dayKey: r.day_key,
+      title: r.title,
+      subject: subj,
+      topic: r.topic,
+      status: r.status,
+      plannedMinutes: planned,
+      actualMinutes: actual,
+      remainingMinutes: remaining
+    };
+  });
+
+  const subjectBreakdown = Object.values(subjectMap).sort((a, b) => b.missedMinutes - a.missedMinutes);
+  const totalMissedHours = Math.round((totalMissedMinutes / 60) * 10) / 10;
+
+  let recoveryPlan = 'Your schedule is up to date! Great consistency.';
+  if (totalMissedHours > 10) {
+    recoveryPlan = `High backlog (${totalMissedHours}h). Run adaptive rebalancing to spread catch-up blocks across the next 5-7 days realistically.`;
+  } else if (totalMissedHours > 0) {
+    recoveryPlan = `Moderate backlog (${totalMissedHours}h). Add 30-45m recovery focus blocks over the next few days.`;
+  }
+
+  return {
+    userId,
+    totalMissedBlocks: missedBlocks.length,
+    totalMissedMinutes,
+    totalMissedHours,
+    subjectBreakdown,
+    missedBlocks,
+    recoveryPlan
+  };
+}
+
+export async function rebalanceSchedule(userId = DEFAULT_USER, { startDate = null, maxHoursPerDay = 10 } = {}) {
+  const backlog = await getBacklogSummary(userId);
+  if (backlog.totalMissedMinutes === 0) {
+    return { ok: true, message: 'No backlog to rebalance.', rebalancedCount: 0, backlog };
+  }
+
+  const today = startDate || new Date().toISOString().slice(0, 10);
+  const maxMinutesPerDay = Math.max(300, maxHoursPerDay * 60);
+
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+
+    const { rows: futureBlocks } = await client.query(
+      `SELECT * FROM study_blocks
+       WHERE user_id = $1 AND day_key >= $2 AND status IN ('planned', 'upcoming')
+       ORDER BY day_key ASC, planned_start ASC`,
+      [userId, today]
+    );
+
+    const dayTotals = {};
+    for (const fb of futureBlocks) {
+      dayTotals[fb.day_key] = (dayTotals[fb.day_key] || 0) + Number(fb.planned_minutes || 0);
+    }
+
+    let rebalancedCount = 0;
+    const itemsToDistribute = backlog.subjectBreakdown.map(x => ({ ...x }));
+
+    let currentDate = new Date(today);
+
+    for (let i = 0; i < 7; i++) {
+      if (itemsToDistribute.length === 0) break;
+      const dKey = currentDate.toISOString().slice(0, 10);
+      const currentDayPlanned = dayTotals[dKey] || 0;
+      const availableCapacity = Math.max(0, maxMinutesPerDay - currentDayPlanned);
+
+      if (availableCapacity >= 30) {
+        const topSubj = itemsToDistribute[0];
+        const sessionMins = Math.min(60, availableCapacity, topSubj.missedMinutes);
+
+        if (sessionMins >= 25) {
+          const recoveryBlockId = `rec_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
+          await client.query(
+            `INSERT INTO study_blocks
+               (user_id, block_id, day_key, title, subject, topic, planned_start, planned_end, planned_minutes, status, block_type)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'planned', 'recovery')
+             ON CONFLICT (user_id, block_id, day_key) DO NOTHING`,
+            [
+              userId,
+              recoveryBlockId,
+              dKey,
+              `Recovery: ${topSubj.subject}`,
+              topSubj.subject,
+              'Backlog Catch-up',
+              '19:00',
+              '20:00',
+              sessionMins
+            ]
+          );
+
+          topSubj.missedMinutes -= sessionMins;
+          dayTotals[dKey] = (dayTotals[dKey] || 0) + sessionMins;
+          rebalancedCount += 1;
+
+          if (topSubj.missedMinutes < 15) {
+            itemsToDistribute.shift();
+          }
+        }
+      }
+
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    await client.query('COMMIT');
+    invalidateSuggestionsCache(userId);
+
+    return {
+      ok: true,
+      message: `Successfully created ${rebalancedCount} realistic recovery blocks across upcoming days without exceeding daily capacity limits.`,
+      rebalancedCount,
+      remainingBacklogMinutes: itemsToDistribute.reduce((sum, item) => sum + item.missedMinutes, 0)
+    };
+  } catch (err) {
+    await client.query('ROLLBACK');
+    throw err;
+  } finally {
+    client.release();
   }
 }

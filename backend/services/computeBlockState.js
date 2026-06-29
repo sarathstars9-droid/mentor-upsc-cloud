@@ -49,6 +49,12 @@ export function computeBlockState(block) {
     // Raw DB columns (preserved for consumers that need them)
     ...block,
 
+    proofUrl:                block.proof_url || null,
+    proofType:               block.proof_type || null,
+    proofUploadedAt:         block.proof_uploaded_at || null,
+    proofVerificationStatus: block.proof_verification_status || 'pending',
+    proofNotes:              block.proof_notes || null,
+
     // Derived — backend is truth, frontend renders directly
     actualSeconds,
     actualMinutes:  Math.floor(actualSeconds / 60),
@@ -87,6 +93,12 @@ export function toFrontendBlock(dbBlock, gasBlock = {}) {
 
     IsPaused:           computed.isPaused,
     IsActive:           computed.isActive,
+
+    ProofUrl:                computed.proofUrl,
+    ProofType:               computed.proofType,
+    ProofUploadedAt:         computed.proofUploadedAt,
+    ProofVerificationStatus: computed.proofVerificationStatus,
+    ProofNotes:              computed.proofNotes,
 
     CalendarEventId:    computed.calendar_event_id   || '',
     CalendarSyncStatus: computed.calendar_sync_status || 'pending',

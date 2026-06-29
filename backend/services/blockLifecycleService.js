@@ -393,18 +393,58 @@ export async function completeBlock(
     accuracy = null,
     score = null,
     confidence = null,
-    weaknessNote = null
+    weaknessNote = null,
+    proofUrl = null,
+    proofType = null,
+    proofStatus = null,
+    proofNotes = null,
+    completionSource = 'manual',
+    completedBy = null,
+    isTestData = false
   } = {}
 ) {
   console.log(`[LifecycleRoute] completeBlock called blockId=${blockId}`);
   const validReasons = new Set(['completed', 'partial', 'missed', 'skipped']);
   const finalStatus = validReasons.has(reason) ? reason : 'completed';
 
+  // 1. Inspect existing block state to check proof requirement before completing
+  const { rows: existingRows } = await pool.query(
+    `SELECT * FROM study_blocks WHERE user_id = $1 AND block_id = $2 AND day_key = $3`,
+    [userId, blockId, dayKey]
+  );
+  
+  const existingBlock = existingRows[0] || null;
+  const isTest = isTestData || completionSource === 'test' || String(blockId).includes('test') || Boolean(existingBlock?.is_test_data);
+
+  if (finalStatus === 'completed' && !isTest) {
+    const wasStartedOrUserAction = existingBlock?.status === 'active' || existingBlock?.status === 'paused' || ['manual', 'ui', 'telegram'].includes(completionSource);
+    if (!wasStartedOrUserAction) {
+      throw Object.assign(
+        new Error(`Study block cannot be marked completed without explicit user action or being started`),
+        { code: 'UNAUTHORIZED_COMPLETION' }
+      );
+    }
+
+    const targetProofUrl = proofUrl || existingBlock?.proof_url;
+    const targetProofType = proofType || existingBlock?.proof_type || (proofStatus === 'waived' ? 'none' : 'image');
+    const targetProofStatus = proofStatus || (proofType === 'none' ? 'waived' : existingBlock?.proof_verification_status);
+    const proofRequiredFlag = existingBlock?.proof_required ?? true;
+
+    const hasValidProof = Boolean(targetProofUrl) || ['verified', 'waived'].includes(targetProofStatus) || proofRequiredFlag === false;
+    if (!hasValidProof) {
+      throw Object.assign(
+        new Error(`Study block cannot be completed without uploading proof or marking 'no proof required'`),
+        { code: 'PROOF_REQUIRED' }
+      );
+    }
+  }
+
   const { rows } = await pool.query(
     `UPDATE study_blocks
      SET status              = $4,
          started_at          = COALESCE(started_at, NOW()),
          ended_at            = NOW(),
+         completed_at        = CASE WHEN $4 = 'completed' THEN NOW() ELSE completed_at END,
          total_pause_seconds = total_pause_seconds
                                + CASE WHEN paused_at IS NOT NULL
                                       THEN GREATEST(0,
@@ -413,13 +453,22 @@ export async function completeBlock(
                                  END,
          paused_at           = NULL,
          completion_reason   = $4,
+         proof_url           = COALESCE($5, proof_url),
+         proof_type          = COALESCE($6, proof_type),
+         proof_uploaded_at   = CASE WHEN $5 IS NOT NULL OR $7 = 'waived' THEN NOW() ELSE proof_uploaded_at END,
+         proof_verification_status = COALESCE($7, proof_verification_status, 'verified'),
+         proof_notes         = COALESCE($8, proof_notes),
+         completion_source   = $9,
+         completed_by        = COALESCE($10, user_id),
+         is_test_data        = $11,
+         proof_uploaded      = CASE WHEN $5 IS NOT NULL OR proof_url IS NOT NULL THEN TRUE ELSE proof_uploaded END,
          calendar_sync_status = 'pending',
          linkage_pending     = TRUE,
          updated_at          = NOW()
      WHERE user_id = $1 AND block_id = $2 AND day_key = $3
        AND status IN ('planned', 'active', 'paused')
      RETURNING *`,
-    [userId, blockId, dayKey, finalStatus]
+    [userId, blockId, dayKey, finalStatus, proofUrl, proofType, proofStatus, proofNotes, completionSource, completedBy, isTest]
   );
 
   if (!rows.length) {
@@ -440,6 +489,9 @@ export async function completeBlock(
     const endedAt = rows[0].ended_at ? new Date(rows[0].ended_at).getTime() : Date.now();
     const pauseSec = rows[0].total_pause_seconds || 0;
     calculatedMins = Math.max(0, Math.round((endedAt - startedAt - (pauseSec * 1000)) / 60000));
+  }
+  if (finalStatus === 'completed' && !isTest && calculatedMins <= 0) {
+    calculatedMins = rows[0].planned_minutes || 30;
   }
 
   await pool.query(
@@ -496,20 +548,24 @@ export async function completeBlock(
     console.error('[blockLifecycle] completeBlock event log failed:', e.message);
   }
 
-  try {
-    const { sendNotification } = await import('./notificationService.js');
-    await sendNotification(
-      userId,
-      finalStatus === 'skipped' || finalStatus === 'missed' ? 'BLOCK_SKIPPED' : 'BLOCK_COMPLETED',
-      'study_block',
-      rows[0].id,
-      finalStatus === 'skipped' || finalStatus === 'missed' ?
-      `⏭️ *Block Skipped*\nSubject: ${rows[0].subject || 'Block'}\nPlanned: ${rows[0].planned_minutes || 0}m\nDon't worry, adjust your plan.` :
-      `✅ *Block Completed*\nSubject: ${rows[0].subject || 'Block'}\nPlanned: ${rows[0].planned_minutes || 0}m\nActual: ${calculatedMins}m\nThis counts toward your ${rows[0].subject || 'target'}.`
-    );
-    console.log(`[TelegramLifecycle] ${finalStatus === 'skipped' || finalStatus === 'missed' ? 'BLOCK_SKIPPED' : 'BLOCK_COMPLETED'} sent blockId=${rows[0].id}`);
-  } catch (e) {
-    console.error('[TelegramLifecycle] BLOCK_COMPLETED/SKIPPED failed:', e.message);
+  if (!isTest) {
+    try {
+      const { sendNotification } = await import('./notificationService.js');
+      await sendNotification(
+        userId,
+        finalStatus === 'skipped' || finalStatus === 'missed' ? 'BLOCK_SKIPPED' : 'BLOCK_COMPLETED',
+        'study_block',
+        rows[0].id,
+        finalStatus === 'skipped' || finalStatus === 'missed' ?
+        `⏭️ *Block Skipped*\nSubject: ${rows[0].subject || 'Block'}\nPlanned: ${rows[0].planned_minutes || 0}m\nDon't worry, adjust your plan.` :
+        `✅ *Block Completed*\nSubject: ${rows[0].subject || 'Block'}\nPlanned: ${rows[0].planned_minutes || 0}m\nActual: ${calculatedMins}m\nThis counts toward your ${rows[0].subject || 'target'}.`
+      );
+      console.log(`[TelegramLifecycle] ${finalStatus === 'skipped' || finalStatus === 'missed' ? 'BLOCK_SKIPPED' : 'BLOCK_COMPLETED'} sent blockId=${rows[0].id}`);
+    } catch (e) {
+      console.error('[TelegramLifecycle] BLOCK_COMPLETED/SKIPPED failed:', e.message);
+    }
+  } else {
+    console.log(`[TelegramLifecycle] Skipped sending telegram message for test blockId=${rows[0].id}`);
   }
 
   try { invalidateSuggestionsCache(userId); } catch {}
@@ -1450,4 +1506,43 @@ export async function activateTimeMatchingBlock(userId) {
     client.release();
   }
   return null;
+}
+
+// ── ATTACH PROOF ──────────────────────────────────────────────────────────────
+export async function attachBlockProof(userId = DEFAULT_USER, blockId, dayKey, { proofUrl, proofType = 'image', proofNotes = '', verificationStatus = 'verified' } = {}) {
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    const { rows } = await client.query(
+      `SELECT * FROM study_blocks WHERE user_id = $1 AND block_id = $2 AND day_key = $3 FOR UPDATE`,
+      [userId, blockId, dayKey]
+    );
+    if (!rows.length) {
+      throw new Error(`Block ${blockId} not found`);
+    }
+    const block = rows[0];
+    const status = verificationStatus || (proofType === 'none' ? 'waived' : 'verified');
+
+    const { rows: updated } = await client.query(
+      `UPDATE study_blocks
+       SET proof_url = $1, proof_type = $2, proof_uploaded_at = NOW(), proof_verification_status = $3, proof_notes = $4, updated_at = NOW()
+       WHERE id = $5
+       RETURNING *`,
+      [proofUrl || null, proofType, status, proofNotes || null, block.id]
+    );
+
+    await client.query(
+      `INSERT INTO public.study_block_proofs (user_id, block_id, proof_url, proof_type, proof_notes, verification_status)
+       VALUES ($1, $2, $3, $4, $5, $6)`,
+      [userId, block.id, proofUrl || null, proofType, proofNotes || null, status]
+    );
+
+    await client.query('COMMIT');
+    return computeBlockState(updated[0]);
+  } catch (err) {
+    await client.query('ROLLBACK');
+    throw err;
+  } finally {
+    client.release();
+  }
 }

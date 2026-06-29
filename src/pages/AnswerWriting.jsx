@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import parseAir1ReviewJson from "../lib/mains/parseAir1ReviewJson.js";
+import { BACKEND_URL } from "../config";
 
 // ─── Design Theme & Style Tokens ──────────────────────────────────────────────
 const T = {
@@ -154,7 +155,7 @@ export default function AnswerWriting() {
     }
 
     try {
-      const response = await fetch("http://localhost:8787/api/answer-writing/basic-evaluation", {
+      const response = await fetch(`${BACKEND_URL}/api/answer-writing/basic-evaluation`, {
         method: "POST",
         body: formData
       });
@@ -211,7 +212,7 @@ export default function AnswerWriting() {
     }
 
     try {
-      const response = await fetch("http://localhost:8787/api/answer-writing/air1-chatgpt-prompt", {
+      const response = await fetch(`${BACKEND_URL}/api/answer-writing/air1-chatgpt-prompt`, {
         method: "POST",
         body: formData
       });
@@ -299,7 +300,7 @@ export default function AnswerWriting() {
         weaknessTags
       };
 
-      const response = await fetch("http://localhost:8787/api/answer-writing/save-report", {
+      const response = await fetch(`${BACKEND_URL}/api/answer-writing/save-report`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

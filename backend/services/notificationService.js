@@ -91,6 +91,13 @@ function isReminderNotification(type) {
 // Main notification dispatcher with preference checks, quiet hour filters, and database deduplication
 export async function sendNotification(userId, notificationType, sourceType, sourceId, messageText, payload = {}) {
   try {
+    if (process.env.SUPPRESS_TELEGRAM === 'true' || sourceType === 'test' || process.env.NODE_ENV === 'test' || (userId && userId.startsWith('test_'))) {
+      if (process.env.ALLOW_REAL_TELEGRAM !== 'true') {
+        console.log(`[NotificationService MOCK] Suppressed notification for user ${userId}, type ${notificationType} (test/mock mode active).`);
+        return { ok: true, mocked: true };
+      }
+    }
+
     await seedDefaultPreferences(userId);
 
     // Fatigue protection check

@@ -11,11 +11,15 @@
 //   POST /api/plan/blocks/:blockId/retry-calendar
 
 import express from 'express';
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
 import {
   startBlock,
   pauseBlock,
   resumeBlock,
   completeBlock,
+  attachBlockProof,
   getBlocksForDay,
   getBlockState,
   repairLegacyActiveBlocks,
@@ -24,6 +28,20 @@ import { syncBlockToCalendar, retryFailedCalendarSyncs, probeCalendarBridge } fr
 
 const router = express.Router();
 const DEFAULT_USER = process.env.DEFAULT_USER_ID || 'moulika';
+
+const uploadsDir = path.join(process.cwd(), 'uploads', 'proofs');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+  destination: (_req, _file, cb) => cb(null, uploadsDir),
+  filename: (_req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    cb(null, `proof_${Date.now()}_${Math.random().toString(36).substring(2, 8)}${ext}`);
+  }
+});
+const upload = multer({ storage });
 
 function userId(req) {
   return req.body?.userId || req.query?.userId || DEFAULT_USER;
@@ -128,7 +146,8 @@ router.post('/resume', async (req, res) => {
 router.post('/complete', async (req, res) => {
   const {
     blockId, dayKey, reason,
-    actualMinutes, outputType, outputCount, accuracy, score, confidence, weaknessNote
+    actualMinutes, outputType, outputCount, accuracy, score, confidence, weaknessNote,
+    proofUrl, proofType, proofStatus, proofNotes
   } = req.body || {};
   if (!blockId) return res.status(400).json({ ok: false, message: 'blockId is required' });
 
@@ -136,7 +155,8 @@ router.post('/complete', async (req, res) => {
     const uid   = userId(req);
     const day   = dayKey || todayKey();
     const block = await completeBlock(uid, blockId, day, {
-      reason, actualMinutes, outputType, outputCount, accuracy, score, confidence, weaknessNote
+      reason, actualMinutes, outputType, outputCount, accuracy, score, confidence, weaknessNote,
+      proofUrl, proofType, proofStatus, proofNotes
     });
 
     syncBlockToCalendar(block, 'complete').catch(() => {});
@@ -144,8 +164,44 @@ router.post('/complete', async (req, res) => {
     return res.json({ ok: true, block });
   } catch (err) {
     console.error('[POST /api/plan/blocks/complete]', err.message);
-    return res.status(err.code === 'NOT_STOPPABLE' ? 409 : 500)
-      .json({ ok: false, message: err.message, code: err.code });
+    const status = err.code === 'PROOF_REQUIRED' ? 422
+                 : err.code === 'NOT_STOPPABLE' ? 409
+                 : 500;
+    return res.status(status).json({ ok: false, message: err.message, code: err.code });
+  }
+});
+
+// ── POST /api/plan/blocks/upload-proof ─────────────────────────────────────────
+
+router.post('/upload-proof', upload.single('file'), async (req, res) => {
+  try {
+    const blockId = req.body.blockId;
+    const dayKey = req.body.dayKey || todayKey();
+    const uid = userId(req);
+    const proofType = req.body.proofType || (req.file ? 'image' : 'none');
+    const proofNotes = req.body.proofNotes || req.body.notes || '';
+    const verificationStatus = req.body.verificationStatus || (proofType === 'none' ? 'waived' : 'verified');
+
+    if (!blockId) {
+      return res.status(400).json({ ok: false, message: 'blockId is required' });
+    }
+
+    let proofUrl = req.body.proofUrl || null;
+    if (req.file) {
+      proofUrl = `/uploads/proofs/${req.file.filename}`;
+    }
+
+    const block = await attachBlockProof(uid, blockId, dayKey, {
+      proofUrl,
+      proofType,
+      proofNotes,
+      verificationStatus
+    });
+
+    return res.json({ ok: true, block, proofUrl });
+  } catch (err) {
+    console.error('[POST /api/plan/blocks/upload-proof]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
   }
 });
 

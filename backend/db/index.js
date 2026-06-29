@@ -49,6 +49,14 @@ const isRailway = Boolean(
 );
 const isProduction = process.env.NODE_ENV === "production" || isRailway;
 const isRailwayPublic = DATABASE_URL && (DATABASE_URL.includes("railway.app") || DATABASE_URL.includes("rlwy.net"));
+
+const mainScript = process.argv[1] || '';
+const isTestRunnerScript = /(test_|verify_|seed_|cleanup_)/i.test(mainScript);
+if (isTestRunnerScript && isRailway && process.env.ALLOW_PROD_TEST_WRITE !== 'true') {
+  console.error(`💥 [SAFETY GUARD FATAL] Test script "${mainScript}" attempted to connect to Production Railway DB! Aborting. Set ALLOW_PROD_TEST_WRITE=true to bypass.`);
+  process.exit(1);
+}
+
 export const sslConfig = (process.env.DB_SSL === "true" || isRailwayPublic)
   ? { rejectUnauthorized: false }   // Public Railway proxy requires SSL
   : false;

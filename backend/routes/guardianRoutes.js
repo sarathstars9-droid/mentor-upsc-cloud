@@ -216,4 +216,96 @@ Return to mission now.`;
   }
 });
 
+// ── POST /api/guardian/daily-phone-usage ────────────────
+router.post('/daily-phone-usage', verifyGuardianKey, async (req, res) => {
+  const { userId, date, apps, totalDistractionSeconds } = req.body || {};
+
+  if (!userId || !date || !Array.isArray(apps)) {
+    return res.status(400).json({ ok: false, error: 'userId, date (YYYY-MM-DD), and apps array are required' });
+  }
+
+  const normalizedUid = String(userId).toLowerCase().trim();
+  console.log(`[Guardian Daily Sync] Syncing daily phone usage for user: ${normalizedUid}, date: ${date}, distraction: ${totalDistractionSeconds}s`);
+
+  try {
+    // 1. Upsert each app package into guardian_daily_phone_usage
+    for (const app of apps) {
+      const { appPackage, appName, durationSeconds } = app;
+      if (!appPackage || !appName) continue;
+
+      const upsertSql = `
+        INSERT INTO public.guardian_daily_phone_usage (user_id, date, app_package, app_name, duration_seconds, updated_at)
+        VALUES ($1, $2, $3, $4, $5, NOW())
+        ON CONFLICT (user_id, date, app_package) 
+        DO UPDATE SET 
+          duration_seconds = EXCLUDED.duration_seconds,
+          app_name = EXCLUDED.app_name,
+          updated_at = NOW();
+      `;
+      await query(upsertSql, [normalizedUid, date, appPackage, appName, Number(durationSeconds || 0)]);
+    }
+
+    // 2. Perform distraction threshold alert check (45m, 60m, 90m)
+    const distMinutes = Math.floor(Number(totalDistractionSeconds || 0) / 60);
+    const thresholds = [45, 60, 90];
+    let triggeredThreshold = null;
+    let alertText = null;
+
+    // Check thresholds
+    for (const threshold of thresholds) {
+      if (distMinutes >= threshold) {
+        // Check if alert already sent today for this threshold
+        const alertType = `distraction_${threshold}`;
+        const checkLedgerSql = `
+          SELECT id FROM public.guardian_alert_ledger 
+          WHERE user_id = $1 AND date = $2 AND alert_type = $3;
+        `;
+        const ledgerCheck = await query(checkLedgerSql, [normalizedUid, date, alertType]);
+
+        if (ledgerCheck.rows.length === 0) {
+          // Record to ledger first to prevent race condition
+          const recordLedgerSql = `
+            INSERT INTO public.guardian_alert_ledger (user_id, date, alert_type)
+            VALUES ($1, $2, $3)
+            ON CONFLICT (user_id, date, alert_type) DO NOTHING
+            RETURNING id;
+          `;
+          const recordResult = await query(recordLedgerSql, [normalizedUid, date, alertType]);
+
+          // If successfully inserted (i.e. did not exist), send notification
+          if (recordResult.rows.length > 0) {
+            triggeredThreshold = threshold;
+            alertText = `📱 *Distraction Limit Crossed* (${threshold}m)
+            
+User Moulika has used distraction apps for *${distMinutes} minutes* today.
+Please resume your UPSC study mission.`;
+
+            await sendNotification(
+              normalizedUid,
+              'DISTRACTION_ALERT',
+              'daily_distraction',
+              `${date}_${threshold}`,
+              alertText,
+              { date, totalMinutes: distMinutes, threshold }
+            );
+            console.log(`[Guardian Daily Sync] Distraction alert sent for ${normalizedUid} at threshold ${threshold}m`);
+          }
+        }
+      }
+    }
+
+    return res.json({
+      ok: true,
+      userId: normalizedUid,
+      date,
+      totalDistractionMinutes: distMinutes,
+      alertTriggered: triggeredThreshold !== null,
+      triggeredThreshold
+    });
+  } catch (err) {
+    console.error('[POST /daily-phone-usage] Error:', err.message);
+    return res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 export default router;
