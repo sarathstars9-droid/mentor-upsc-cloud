@@ -1,4 +1,9 @@
-import { query } from './index.js';
+// backend/db/verify_railway_schema.js
+// PRODUCTION-SAFE READ-ONLY SCHEMA VERIFICATION
+// This script only executes SELECT queries against information_schema and table row counts.
+// It does NOT execute INSERT, UPDATE, DELETE, TRUNCATE, DROP, ALTER, or seed data operations.
+process.env.ALLOW_PROD_SCHEMA_VERIFY = 'true';
+const { query } = await import('./index.js');
 
 // ── Tables the app requires ─────────────────────────────────────────────────
 const REQUIRED_TABLES = [

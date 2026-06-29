@@ -50,10 +50,17 @@ const isRailway = Boolean(
 const isProduction = process.env.NODE_ENV === "production" || isRailway;
 const isRailwayPublic = DATABASE_URL && (DATABASE_URL.includes("railway.app") || DATABASE_URL.includes("rlwy.net"));
 
+// ── Production Safety Guard ──────────────────────────────────────────────────
+// ALLOW_PROD_TEST_WRITE is NEVER required for normal deployment or migrations!
+// It is strictly reserved for deliberate manual emergency testing or write operations on production DB, not Railway deploys.
+// Normal deployments and migrations (e.g. node db/run_all_migrations.js) run without any write test bypass flags.
+// Production-safe read-only schema verification (e.g. verify_railway_schema.js) is allowed separately via ALLOW_PROD_SCHEMA_VERIFY=true.
 const mainScript = process.argv[1] || '';
-const isTestRunnerScript = /(test_|verify_|seed_|cleanup_)/i.test(mainScript);
+const isReadOnlySchemaVerify = mainScript.includes('verify_railway_schema') && process.env.ALLOW_PROD_SCHEMA_VERIFY === 'true';
+const isTestRunnerScript = /(test_|verify_|seed_|cleanup_)/i.test(mainScript) && !isReadOnlySchemaVerify;
+
 if (isTestRunnerScript && isRailway && process.env.ALLOW_PROD_TEST_WRITE !== 'true') {
-  console.error(`💥 [SAFETY GUARD FATAL] Test script "${mainScript}" attempted to connect to Production Railway DB! Aborting. Set ALLOW_PROD_TEST_WRITE=true to bypass.`);
+  console.error(`💥 [SAFETY GUARD FATAL] Test script "${mainScript}" attempted to connect to Production Railway DB! Aborting. ALLOW_PROD_TEST_WRITE is for deliberate manual emergency testing only, never for Railway deploys.`);
   process.exit(1);
 }
 

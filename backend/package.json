@@ -7,6 +7,7 @@
     "start": "node server.js",
     "postinstall": "npx playwright install --with-deps chromium",
     "build:prelims-global": "node scripts/buildGlobalPrelimsIndex.js",
+    "migrate": "node db/run_all_migrations.js",
     "migrate:telegram": "node db/run_telegram_migration.js && node db/run_025_migration.js",
     "migrate:all": "node db/run_all_migrations.js",
     "verify:schema": "node db/verify_railway_schema.js"
