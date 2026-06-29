@@ -26,12 +26,21 @@ import {
 } from '../services/blockLifecycleService.js';
 import { syncBlockToCalendar, retryFailedCalendarSyncs, probeCalendarBridge } from '../services/calendarBridgeService.js';
 
+import { requireAuth, getAuthUserId } from '../middleware/authMiddleware.js';
+
 const router = express.Router();
 const DEFAULT_USER = process.env.DEFAULT_USER_ID || 'moulika';
 
 function getProofsBaseDir() {
   if (process.env.RAILWAY_VOLUME_MOUNT_PATH) {
     return path.join(process.env.RAILWAY_VOLUME_MOUNT_PATH, 'proofs');
+  }
+  const isProd = process.env.NODE_ENV === 'production' || process.env.RAILWAY_ENVIRONMENT;
+  if (isProd) {
+    throw Object.assign(
+      new Error('STORAGE_CONFIG_FATAL: Persistent storage (RAILWAY_VOLUME_MOUNT_PATH) is not configured in production. Ephemeral local storage fallback is disabled for data safety.'),
+      { status: 500, code: 'STORAGE_NOT_CONFIGURED' }
+    );
   }
   return path.join(process.cwd(), 'uploads', 'proofs');
 }
@@ -45,12 +54,17 @@ const ALLOWED_MIME_TYPES = new Set([
 
 const storage = multer.diskStorage({
   destination: (req, _file, cb) => {
-    const uid = userId(req);
-    const targetDir = path.join(getProofsBaseDir(), uid);
-    if (!fs.existsSync(targetDir)) {
-      fs.mkdirSync(targetDir, { recursive: true });
+    try {
+      const uid = userId(req);
+      if (!uid) return cb(new Error('UNAUTHORIZED: Valid authenticated user required'));
+      const targetDir = path.join(getProofsBaseDir(), uid);
+      if (!fs.existsSync(targetDir)) {
+        fs.mkdirSync(targetDir, { recursive: true });
+      }
+      cb(null, targetDir);
+    } catch (err) {
+      cb(err);
     }
-    cb(null, targetDir);
   },
   filename: (_req, file, cb) => {
     const ext = path.extname(file.originalname).toLowerCase();
@@ -74,6 +88,9 @@ const upload = multer({
 function handleUpload(req, res, next) {
   upload.single('file')(req, res, (err) => {
     if (err) {
+      if (err.code === 'STORAGE_NOT_CONFIGURED' || err.message?.includes('STORAGE_CONFIG_FATAL')) {
+        return res.status(500).json({ ok: false, message: err.message });
+      }
       if (err.message?.includes('INVALID_MIME_TYPE') || err.code === 'LIMIT_FILE_SIZE') {
         return res.status(400).json({ ok: false, message: err.message || 'File size exceeds 10MB limit' });
       }
@@ -84,15 +101,7 @@ function handleUpload(req, res, next) {
 }
 
 function userId(req) {
-  const authHeader = req.headers?.authorization;
-  if (authHeader && authHeader.startsWith('Bearer ')) {
-    const token = authHeader.substring(7).trim();
-    if (token && token !== 'undefined') return token.toLowerCase();
-  }
-  const xUserId = req.headers?.['x-user-id'];
-  if (xUserId) return String(xUserId).toLowerCase().trim();
-
-  return (req.body?.userId || req.query?.userId || DEFAULT_USER).toLowerCase().trim();
+  return getAuthUserId(req);
 }
 
 function todayKey() {

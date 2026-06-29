@@ -575,6 +575,7 @@ export async function rebalanceSchedule(userId = DEFAULT_USER, { startDate = nul
   try {
     await client.query('BEGIN');
 
+    // 1. Fetch future planned/upcoming blocks and existing recovery allocations
     const { rows: futureBlocks } = await client.query(
       `SELECT * FROM study_blocks
        WHERE user_id = $1 AND day_key >= $2 AND status IN ('planned', 'upcoming')
@@ -583,13 +584,39 @@ export async function rebalanceSchedule(userId = DEFAULT_USER, { startDate = nul
     );
 
     const dayTotals = {};
+    const existingRecoveryMinutesBySubject = {};
+
     for (const fb of futureBlocks) {
-      dayTotals[fb.day_key] = (dayTotals[fb.day_key] || 0) + Number(fb.planned_minutes || 0);
+      const mins = Number(fb.planned_minutes || 0);
+      dayTotals[fb.day_key] = (dayTotals[fb.day_key] || 0) + mins;
+
+      const isRecovery = fb.block_type === 'recovery' || (fb.title && fb.title.startsWith('Recovery:'));
+      if (isRecovery) {
+        const subj = fb.subject || 'Uncategorized';
+        existingRecoveryMinutesBySubject[subj] = (existingRecoveryMinutesBySubject[subj] || 0) + mins;
+      }
+    }
+
+    // 2. Subtract already scheduled future recovery minutes from pending backlog
+    const itemsToDistribute = backlog.subjectBreakdown
+      .map(x => {
+        const alreadyScheduled = existingRecoveryMinutesBySubject[x.subject] || 0;
+        const netMissed = Math.max(0, x.missedMinutes - alreadyScheduled);
+        return { ...x, missedMinutes: netMissed };
+      })
+      .filter(x => x.missedMinutes >= 15);
+
+    if (itemsToDistribute.length === 0) {
+      await client.query('COMMIT');
+      return {
+        ok: true,
+        message: 'All backlog hours are already allocated in upcoming recovery blocks. 0 new recovery blocks created.',
+        rebalancedCount: 0,
+        remainingBacklogMinutes: 0
+      };
     }
 
     let rebalancedCount = 0;
-    const itemsToDistribute = backlog.subjectBreakdown.map(x => ({ ...x }));
-
     let currentDate = new Date(today);
 
     for (let i = 0; i < 7; i++) {
@@ -603,29 +630,40 @@ export async function rebalanceSchedule(userId = DEFAULT_USER, { startDate = nul
         const sessionMins = Math.min(60, availableCapacity, topSubj.missedMinutes);
 
         if (sessionMins >= 25) {
-          const recoveryBlockId = `rec_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
-          await client.query(
-            `INSERT INTO study_blocks
-               (user_id, block_id, day_key, title, subject, topic, planned_start, planned_end, planned_minutes, status, block_type)
-             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'planned', 'recovery')
-             ON CONFLICT (user_id, block_id, day_key) DO NOTHING`,
-            [
-              userId,
-              recoveryBlockId,
-              dKey,
-              `Recovery: ${topSubj.subject}`,
-              topSubj.subject,
-              'Backlog Catch-up',
-              '19:00',
-              '20:00',
-              sessionMins
-            ]
+          const safeSubj = topSubj.subject.toLowerCase().replace(/[^a-z0-9]/g, '_').slice(0, 15);
+          const recoveryBlockId = `rec_${userId}_${dKey}_${safeSubj}_${Date.now().toString(36)}`;
+
+          // Check if exact recovery block already exists for day + subject
+          const { rows: dupCheck } = await client.query(
+            `SELECT id FROM study_blocks
+             WHERE user_id = $1 AND day_key = $2 AND subject = $3 AND (block_type = 'recovery' OR title LIKE 'Recovery:%') AND status IN ('planned', 'upcoming')`,
+            [userId, dKey, topSubj.subject]
           );
 
-          topSubj.missedMinutes -= sessionMins;
-          dayTotals[dKey] = (dayTotals[dKey] || 0) + sessionMins;
-          rebalancedCount += 1;
+          if (dupCheck.length === 0) {
+            await client.query(
+              `INSERT INTO study_blocks
+                 (user_id, block_id, day_key, title, subject, topic, planned_start, planned_end, planned_minutes, status, block_type)
+               VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'planned', 'recovery')
+               ON CONFLICT (user_id, block_id, day_key) DO NOTHING`,
+              [
+                userId,
+                recoveryBlockId,
+                dKey,
+                `Recovery: ${topSubj.subject}`,
+                topSubj.subject,
+                'Backlog Catch-up',
+                '19:00',
+                '20:00',
+                sessionMins
+              ]
+            );
 
+            rebalancedCount += 1;
+            dayTotals[dKey] = (dayTotals[dKey] || 0) + sessionMins;
+          }
+
+          topSubj.missedMinutes -= sessionMins;
           if (topSubj.missedMinutes < 15) {
             itemsToDistribute.shift();
           }

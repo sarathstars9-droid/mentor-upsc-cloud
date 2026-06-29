@@ -767,6 +767,16 @@ const openai = new OpenAI({
 
 /* -------------------- HEALTH ROUTE -------------------- */
 
+import { execSync } from "child_process";
+let RUNNING_COMMIT_SHA = process.env.RAILWAY_GIT_COMMIT_SHA || process.env.COMMIT_SHA || process.env.GIT_COMMIT_SHA || "";
+if (!RUNNING_COMMIT_SHA) {
+  try {
+    RUNNING_COMMIT_SHA = execSync("git rev-parse HEAD", { encoding: "utf8" }).trim();
+  } catch (e) {
+    RUNNING_COMMIT_SHA = "unknown";
+  }
+}
+
 app.get("/health", async (_req, res) => {
   let dbOk = false;
   let dbTime = null;
@@ -778,9 +788,19 @@ app.get("/health", async (_req, res) => {
   } catch (err) {
     dbError = err.message || err.code || String(err);
   }
+
+  const storageConfigured = Boolean(process.env.RAILWAY_VOLUME_MOUNT_PATH || process.env.S3_BUCKET);
+  const storageProvider = process.env.RAILWAY_VOLUME_MOUNT_PATH ? "volume" : (process.env.S3_BUCKET ? "s3" : (process.env.NODE_ENV === "production" ? "none" : "local"));
+
   res.status(dbOk ? 200 : 503).json({
     ok: dbOk,
     message: dbOk ? "backend live, DB connected" : "backend live, DB ERROR",
+    commit: RUNNING_COMMIT_SHA,
+    storage: {
+      provider: storageProvider,
+      configured: storageConfigured || process.env.NODE_ENV !== "production",
+      mountPath: process.env.RAILWAY_VOLUME_MOUNT_PATH || null
+    },
     db: { connected: dbOk, time: dbTime, error: dbError },
     env: {
       NODE_ENV: process.env.NODE_ENV || "(not set)",
