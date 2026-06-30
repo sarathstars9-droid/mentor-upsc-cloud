@@ -1,3 +1,5 @@
+import { getUpscCountdownSummary } from '../utils/upscCountdown.js';
+
 // Helper to format decimal hours into hours & minutes (e.g. 17.25 -> 17h 15m)
 export function formatHoursAndMins(decimalHours) {
   if (typeof decimalHours !== 'number' || isNaN(decimalHours) || !isFinite(decimalHours)) decimalHours = 0;
@@ -335,6 +337,7 @@ ${userName}, here is your high-level syllabus progress:`;
 // 9. Good morning report generator
 export function generateGoodMorningReport(data, userName = "Moulika") {
   const state = data.mission_health_state || 'HEALTHY';
+  let reportText = "";
   
   if (['AT_RISK', 'HIGH_RISK', 'CRITICAL', 'MISSION_FAILURE', 'RECOVERY'].includes(state)) {
     const stateColor = state === 'RECOVERY' ? '🟡' : '🔴';
@@ -342,7 +345,7 @@ export function generateGoodMorningReport(data, userName = "Moulika") {
     const recoveryTargetStr = formatHoursAndMins(data.adaptive_target_hours || 0);
     const stateLabel = state === 'RECOVERY' ? `RECOVERY (Day ${data.recovery_day})` : state.replace('_', ' ');
 
-    return `Good morning ${userName} 🌅
+    reportText = `Good morning ${userName} 🌅
 
 Mission Status: ${stateColor} *${stateLabel}*
 Zero-study streak: ${streakDays} day(s)
@@ -351,24 +354,23 @@ Actual progress: ${formatHoursAndMins(data.completed_hours)}
 Backlog: ${data.backlog_hours} hours
 Today’s recovery target: ${recoveryTargetStr}
 Mission: ${state === 'RECOVERY' ? 'Protect the streak' : 'Break the streak'}`;
-  }
+  } else {
+    let yesterdayText = "No study blocks registered yesterday.";
+    let mentorNote = "";
+    let todayCorrection = data.today_first_correction;
 
-  let yesterdayText = "No study blocks registered yesterday.";
-  let mentorNote = "";
-  let todayCorrection = data.today_first_correction;
+    if (data.yesterday_summary && data.yesterday_summary.has_data) {
+      const ys = data.yesterday_summary;
+      const executedStr = ys.actual_hours > 0 ? formatHoursAndMins(ys.actual_hours) : "0h 0m";
+      yesterdayText = `• Planned: ${ys.planned_hours}h\n• Executed: ${executedStr}\n• Execution rate: ${ys.execution_rate}%\n• Blocks touched/completed: ${ys.blocks_touched} / ${ys.blocks_completed}`;
 
-  if (data.yesterday_summary && data.yesterday_summary.has_data) {
-    const ys = data.yesterday_summary;
-    const executedStr = ys.actual_hours > 0 ? formatHoursAndMins(ys.actual_hours) : "0h 0m";
-    yesterdayText = `• Planned: ${ys.planned_hours}h\n• Executed: ${executedStr}\n• Execution rate: ${ys.execution_rate}%\n• Blocks touched/completed: ${ys.blocks_touched} / ${ys.blocks_completed}`;
-
-    if (ys.execution_rate < 40) {
-      mentorNote = `\nMentor note:\nThis is not failure. This is correction data.\n`;
-      todayCorrection = `Complete one full 60-minute block before thinking about the whole day.`;
+      if (ys.execution_rate < 40) {
+        mentorNote = `\nMentor note:\nThis is not failure. This is correction data.\n`;
+        todayCorrection = `Complete one full 60-minute block before thinking about the whole day.`;
+      }
     }
-  }
 
-  return `Good morning ${userName} 🌅
+    reportText = `Good morning ${userName} 🌅
 
 Mission Day: ${data.mission_day} / 325
 Days left for Prelims: ${data.prelims_days_left}
@@ -385,6 +387,10 @@ ${yesterdayText}
 ${mentorNote}
 Today’s first correction:
 ${todayCorrection}`;
+  }
+
+  const countdown = getUpscCountdownSummary();
+  return `${reportText}\n\n${countdown}`;
 }
 
 // 10. Daily night report generator
@@ -398,8 +404,10 @@ export function generateDailyNightReport(data, userName = "Moulika") {
   const revisionDue = data.revision_due || 0;
   const outputsCreated = data.outputs_created || 0;
 
+  let reportText = "";
+
   if (data.state === 'NOT_STARTED') {
-    return `⚠️ Daily Accountability Report — ${userName}
+    reportText = `⚠️ Daily Accountability Report — ${userName}
 
 • Plan uploaded: No
 • Study tracked: No
@@ -411,10 +419,8 @@ MentorOS could not evaluate today’s preparation because no study plan was uplo
 
 🎯 Tomorrow correction:
 ${data.tomorrow_correction}`;
-  }
-
-  if (data.state === 'PLAN_UPLOADED_NOT_STARTED') {
-    return `⚠️ Plan Created But Execution Missing — ${userName}
+  } else if (data.state === 'PLAN_UPLOADED_NOT_STARTED') {
+    reportText = `⚠️ Plan Created But Execution Missing — ${userName}
 
 • Planned: ${formatHoursAndMins(targetHrs)}
 • Actual: 0m
@@ -425,9 +431,8 @@ Plan was created, but execution did not begin.
 
 🎯 Tomorrow correction:
 ${data.tomorrow_correction}`;
-  }
-
-  return `📘 Daily Night Report — ${userName}
+  } else {
+    reportText = `📘 Daily Night Report — ${userName}
 
 ━━━━━━━━━━━━━━
 • target hours: ${formatHoursAndMins(targetHrs)}
@@ -442,6 +447,10 @@ ${data.tomorrow_correction}`;
 
 💡 *tomorrow correction:*
 ${data.tomorrow_correction}`;
+  }
+
+  const countdown = getUpscCountdownSummary();
+  return `${reportText}\n\n${countdown}`;
 }
 
 // 11. Monthly report generator

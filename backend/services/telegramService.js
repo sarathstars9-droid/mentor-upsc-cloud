@@ -231,7 +231,13 @@ async function runPollingLoop(token) {
       // On empty result (long-poll timeout expired with no messages), loop immediately
 
     } catch (err) {
-      console.error("[TelegramService polling error]", err.message);
+      console.error("[TelegramService polling error]", {
+        name: err?.name,
+        message: err?.message,
+        code: err?.code,
+        causeCode: err?.cause?.code,
+        causeMessage: err?.cause?.message
+      });
       await sleep(5000);
     }
   }
