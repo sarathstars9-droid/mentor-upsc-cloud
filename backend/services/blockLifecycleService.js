@@ -145,7 +145,8 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
             actual_minutes: actualMinutes,
             completion_status: 'completed',
             completion_reason: 'auto_stopped_on_new_start'
-          }
+          },
+          client
         });
       } catch (e) {
         console.error('[blockLifecycle] Auto-completed block log/event failed:', e.message);
@@ -223,13 +224,15 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
     }
 
     try {
+      const isTestRequest = (targetRow.block_id && targetRow.block_id.startsWith('volume_survival_test_block_')) || metadata?.isTestData === true || metadata?.is_test_data === true || targetRow.is_test_data === true;
       const { sendNotification } = await import('./notificationService.js');
       await sendNotification(
         userId,
         'BLOCK_STARTED',
         'study_block',
         targetRow.id,
-        `🚀 *Block Started*\n\nSubject: ${targetRow.subject || 'Block'}\nTarget: ${targetRow.planned_minutes || 0}m\n\nFocus: create output, not just reading.`
+        `🚀 *Block Started*\n\nSubject: ${targetRow.subject || 'Block'}\nTarget: ${targetRow.planned_minutes || 0}m\n\nFocus: create output, not just reading.`,
+        { isTestData: isTestRequest }
       );
       console.log(`[TelegramLifecycle] BLOCK_STARTED queued blockId=${targetRow.id}`);
     } catch (e) {
@@ -890,7 +893,7 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
                  topic: res.rows[0].topic,
                  syllabusNodeId: res.rows[0].node_id,
                  blockId: res.rows[0].id,
-                 metadata: { actual_minutes: incomingActualMins, completion_status: 'completed' }
+                 metadata: { actual_minutes: incomingActualMins, completion_status: 'completed' }, client
                });
              } catch(e) {}
          }
@@ -939,7 +942,7 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
                      topic: b.Topic || b.PlannedTopic || '',
                      syllabusNodeId: null, // node_id not readily available here without extra query, null is safe
                      blockId: dbId,
-                     metadata: { actual_minutes: incomingActualMins, completion_status: 'completed' }
+                     metadata: { actual_minutes: incomingActualMins, completion_status: 'completed' }, client
                    });
                  } catch(e) {}
              }
@@ -1481,13 +1484,15 @@ export async function activateTimeMatchingBlock(userId) {
         
         // Send Telegram notification
         try {
+          const isTestRequest = (activeBlock.block_id && activeBlock.block_id.startsWith('volume_survival_test_block_')) || activeBlock.is_test_data === true;
           const { sendNotification } = await import('./notificationService.js');
           await sendNotification(
             normalizedUid,
             'BLOCK_STARTED',
             'study_block',
             activeBlock.id,
-            `🚀 *Block Started*\n\nSubject: ${activeBlock.subject || 'Block'}\nTarget: ${activeBlock.planned_minutes || 0}m\n\nFocus: create output, not just reading.`
+            `🚀 *Block Started*\n\nSubject: ${activeBlock.subject || 'Block'}\nTarget: ${activeBlock.planned_minutes || 0}m\n\nFocus: create output, not just reading.`,
+            { isTestData: isTestRequest }
           );
         } catch (e) {
           console.error('[TelegramLifecycle] Auto-start Telegram failed:', e.message);

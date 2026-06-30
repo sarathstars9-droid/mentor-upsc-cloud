@@ -91,7 +91,18 @@ function isReminderNotification(type) {
 // Main notification dispatcher with preference checks, quiet hour filters, and database deduplication
 export async function sendNotification(userId, notificationType, sourceType, sourceId, messageText, payload = {}) {
   try {
-    if (process.env.SUPPRESS_TELEGRAM === 'true' || sourceType === 'test' || process.env.NODE_ENV === 'test' || (userId && userId.startsWith('test_'))) {
+    const isTestUser = userId && userId.startsWith('test_');
+    const isTestPayload = payload && (payload.is_test_data === true || payload.isTestData === true || payload.is_test === true);
+    const isTestBlock = sourceId && String(sourceId).includes('volume_survival_test_block');
+    const isTestText = messageText && (messageText.includes('Volume Survival') || messageText.includes('test_block'));
+
+    if (process.env.SUPPRESS_TELEGRAM === 'true' || 
+        sourceType === 'test' || 
+        process.env.NODE_ENV === 'test' || 
+        isTestUser || 
+        isTestPayload || 
+        isTestBlock || 
+        isTestText) {
       if (process.env.ALLOW_REAL_TELEGRAM !== 'true') {
         console.log(`[NotificationService MOCK] Suppressed notification for user ${userId}, type ${notificationType} (test/mock mode active).`);
         return { ok: true, mocked: true };
@@ -185,16 +196,20 @@ export async function sendNotification(userId, notificationType, sourceType, sou
         continue;
       }
 
-      // 3. Deduplication Check
-      const dupRes = await query(
-        `SELECT id, status FROM public.notification_events 
-         WHERE user_id = $1 AND notification_type = $2 AND source_type = $3 AND source_id = $4 AND channel_type = $5`,
-        [userId, notificationType, sourceType, sourceId, channel]
+      // 3. Deduplication Check & Atomic Guard
+      const insertRes = await query(
+        `INSERT INTO public.notification_events 
+           (user_id, notification_type, source_type, source_id, channel_type, status, payload_json)
+         VALUES ($1, $2, $3, $4, $5, 'sending', $6)
+         ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type) 
+         DO NOTHING
+         RETURNING id`,
+        [userId, notificationType, sourceType, sourceId, channel, JSON.stringify(payload)]
       );
-      
-      if (dupRes.rows.length > 0) {
-        console.log(`[NotificationService] Deduplication match for type ${notificationType}, source ${sourceType}:${sourceId} via ${channel}. Skipping.`);
-        results.push({ channel, status: "skipped", reason: "Deduplicated" });
+
+      if (insertRes.rows.length === 0) {
+        console.log(`[NotificationService] Atomic guard active: type ${notificationType}, source ${sourceType}:${sourceId} via ${channel} already exists. Skipping.`);
+        results.push({ channel, status: "skipped", reason: "Deduplicated via atomic guard" });
         continue;
       }
 
@@ -270,18 +285,12 @@ export async function sendNotification(userId, notificationType, sourceType, sou
         );
       }
 
-      // 6. Record the event
+      // 6. Update the event status after dispatch attempt
       await query(
-        `INSERT INTO public.notification_events 
-           (user_id, notification_type, source_type, source_id, channel_type, status, error_message, payload_json, sent_at)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())
-         ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type) 
-         DO UPDATE SET 
-           status = EXCLUDED.status,
-           error_message = EXCLUDED.error_message,
-           payload_json = EXCLUDED.payload_json,
-           sent_at = NOW()`,
-        [userId, notificationType, sourceType, sourceId, channel, finalStatus, errorMsg, JSON.stringify(payload)]
+        `UPDATE public.notification_events 
+         SET status = $1, error_message = $2, payload_json = $3, sent_at = NOW()
+         WHERE user_id = $4 AND notification_type = $5 AND source_type = $6 AND source_id = $7 AND channel_type = $8`,
+        [finalStatus, errorMsg, JSON.stringify(payload), userId, notificationType, sourceType, sourceId, channel]
       );
 
       results.push({ channel, status: finalStatus, error: errorMsg });

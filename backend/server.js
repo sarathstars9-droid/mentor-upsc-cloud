@@ -790,7 +790,7 @@ app.get("/health", async (_req, res) => {
   }
 
   const storageConfigured = Boolean(process.env.RAILWAY_VOLUME_MOUNT_PATH || process.env.S3_BUCKET);
-  const storageProvider = process.env.RAILWAY_VOLUME_MOUNT_PATH ? "volume" : (process.env.S3_BUCKET ? "s3" : (process.env.NODE_ENV === "production" ? "none" : "local"));
+  const storageProvider = process.env.RAILWAY_VOLUME_MOUNT_PATH ? "railway_volume" : (process.env.S3_BUCKET ? "s3" : (process.env.NODE_ENV === "production" ? "none" : "local"));
 
   res.status(dbOk ? 200 : 503).json({
     ok: dbOk,

@@ -47,11 +47,16 @@ export async function sendTelegramMessageDirect(chatId, text, options = {}) {
       ...telegramOptions
     };
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3000);
+
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(bodyPayload)
+      body: JSON.stringify(bodyPayload),
+      signal: controller.signal
     });
+    clearTimeout(timeoutId);
     
     if (!res.ok) {
       const errText = await res.text();
@@ -338,10 +343,15 @@ export async function sendTelegramDocument(chatId, filePath, caption = '') {
     
     const url = `https://api.telegram.org/bot${token}/sendDocument`;
     
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+
     const res = await fetch(url, {
       method: 'POST',
-      body: formData
+      body: formData,
+      signal: controller.signal
     });
+    clearTimeout(timeoutId);
     
     if (!res.ok) {
       const errText = await res.text();

@@ -179,6 +179,7 @@ router.post('/start', async (req, res) => {
     blockId, dayKey,
     title = '', subject = '', topic = '',
     plannedStart = '', plannedEnd = '', plannedMinutes = 0,
+    isTestData = false
   } = req.body || {};
 
   if (!blockId) {
@@ -187,6 +188,11 @@ router.post('/start', async (req, res) => {
 
   try {
     const uid = userId(req);
+    const isTestRequest = (blockId && blockId.startsWith('volume_survival_test_block_')) || isTestData === true;
+    const isTestUser = uid && uid.startsWith('test_');
+    if (isTestRequest && !isTestUser) {
+      return res.status(400).json({ ok: false, message: 'Forbidden: Test block IDs and test flags are only permitted for test users.' });
+    }
     const day = dayKey || todayKey();
 
     const block = await startBlock(uid, blockId, day, {
