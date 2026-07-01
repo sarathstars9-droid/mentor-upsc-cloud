@@ -308,4 +308,99 @@ Please resume your UPSC study mission.`;
   }
 });
 
+// ── POST /api/guardian/action/i-am-studying ────────────────
+router.post('/action/i-am-studying', verifyGuardianKey, async (req, res) => {
+  const userId = String(req.query.userId || req.body?.userId || '').toLowerCase().trim();
+  if (!userId) {
+    return res.status(400).json({ ok: false, error: 'userId is required' });
+  }
+
+  try {
+    // 1. Log discipline event
+    const { createEvent } = await import('../services/disciplineEventService.js');
+    await createEvent(userId, 'I_AM_STUDYING', 'low', 'GUARDIAN');
+    await createEvent(userId, 'DAY_NOT_STARTED_USER_STUDYING_WITHOUT_PLAN', 'medium', 'GUARDIAN');
+
+    console.log(`[Guardian Action] Logged I_AM_STUDYING and studying without plan events for ${userId}`);
+
+    return res.json({
+      ok: true,
+      message: 'Student marked as active. Escalations will be paused for 45 minutes.',
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    console.error('[POST /action/i-am-studying] Error:', err.message);
+    return res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// ── POST /api/guardian/action/upload-plan-now ──────────────
+router.post('/action/upload-plan-now', verifyGuardianKey, async (req, res) => {
+  const userId = String(req.query.userId || req.body?.userId || '').toLowerCase().trim();
+  if (!userId) {
+    return res.status(400).json({ ok: false, error: 'userId is required' });
+  }
+
+  try {
+    // 1. Log discipline event
+    const { createEvent } = await import('../services/disciplineEventService.js');
+    await createEvent(userId, 'DAY_UNTRACKED_STUDY_LOG_REQUESTED', 'medium', 'GUARDIAN');
+
+    console.log(`[Guardian Action] Logged UPLOAD_PLAN request event for ${userId}`);
+
+    return res.json({
+      ok: true,
+      message: 'Upload plan request processed.',
+      instruction: 'Please open the MentorOS app and upload your plan now.'
+    });
+  } catch (err) {
+    console.error('[POST /action/upload-plan-now] Error:', err.message);
+    return res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// ── POST /api/guardian/action/start-rescue-mode ────────────
+router.post('/action/start-rescue-mode', verifyGuardianKey, async (req, res) => {
+  const userId = String(req.query.userId || req.body?.userId || '').toLowerCase().trim();
+  if (!userId) {
+    return res.status(400).json({ ok: false, error: 'userId is required' });
+  }
+
+  try {
+    // 1. Start Rescue Mode using existing rescueModeService
+    const { startRescueMode } = await import('../services/rescueModeService.js');
+    const result = await startRescueMode(userId);
+
+    if (!result.success) {
+      return res.status(500).json({ ok: false, error: result.error || 'Failed to start Rescue Mode' });
+    }
+
+    // 2. Also log a confirmation event I_AM_STUDYING to pause alerts immediately
+    const { createEvent } = await import('../services/disciplineEventService.js');
+    await createEvent(userId, 'I_AM_STUDYING', 'low', 'GUARDIAN');
+
+    // Get dateKey in Kolkata time
+    const kolkataStr = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+    const d = new Date(kolkataStr);
+    const dateKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+    // 3. Query the created rescue blocks
+    const { rows: blocks } = await query(
+      `SELECT id, block_id, day_key, subject, topic, planned_minutes, status 
+       FROM public.study_blocks 
+       WHERE user_id = $1 AND day_key = $2 AND subject LIKE 'Rescue:%'`,
+      [userId, dateKey]
+    );
+
+    return res.json({
+      ok: true,
+      message: 'Rescue Mode started. 3 focused blocks generated.',
+      blocks
+    });
+  } catch (err) {
+    console.error('[POST /action/start-rescue-mode] Error:', err.message);
+    return res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 export default router;

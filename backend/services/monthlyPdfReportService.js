@@ -3,7 +3,8 @@ import { join } from 'path';
 import { existsSync, mkdirSync, unlinkSync } from 'fs';
 import * as progressService from './progressService.js';
 import * as telegramService from './telegramService.js';
-import { formatHoursAndMins } from './reportGeneratorService.js';
+import { formatHoursAndMins, generateMonthlyMentorTextReport } from './reportGeneratorService.js';
+import { query } from '../db/index.js';
 import os from 'os';
 
 export async function generateMonthlyReportHtml(userId, monthKey) {
@@ -65,7 +66,7 @@ export async function generateMonthlyReportHtml(userId, monthKey) {
             <div class="stat-label">Monthly Execution Rate</div>
           </div>
         </div>
-
+ 
         <div class="flex-container">
           <div class="stat-box">
             <div class="stat-value">${formatHoursAndMins(summary.total_planned_hours)}</div>
@@ -80,7 +81,7 @@ export async function generateMonthlyReportHtml(userId, monthKey) {
             <div class="stat-label">Strong Days</div>
           </div>
         </div>
-
+ 
         <h2>Subject Breakdown & Targets</h2>
         <table>
           <thead>
@@ -96,10 +97,10 @@ export async function generateMonthlyReportHtml(userId, monthKey) {
             ${subjectsHtml}
           </tbody>
         </table>
-
+ 
         <h2>Backlog & Weak Areas</h2>
         <p><strong>Top Weak Areas:</strong> ${summary.top3_weak.length > 0 ? summary.top3_weak.join(', ') : 'None detected this month.'}</p>
-
+ 
         <div class="prescription">
           <h2>Next Month Prescription</h2>
           <p>${summary.next_month_prescription}</p>
@@ -116,30 +117,68 @@ export async function generateMonthlyReportPdf(userId, monthKey) {
   const pdfFileName = `mentoros-monthly-report-${userId}-${monthKey}.pdf`;
   const pdfPath = join(os.tmpdir(), pdfFileName);
   
-  const browser = await chromium.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
-  const page = await browser.newPage();
-  await page.setContent(html, { waitUntil: 'networkidle' });
-  await page.pdf({ path: pdfPath, format: 'A4', printBackground: true, margin: { top: '20px', bottom: '20px' } });
-  await browser.close();
-  
-  return pdfPath;
+  let browser;
+  try {
+    browser = await chromium.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+    const page = await browser.newPage();
+    await page.setContent(html, { waitUntil: 'networkidle' });
+    await page.pdf({ path: pdfPath, format: 'A4', printBackground: true, margin: { top: '20px', bottom: '20px' } });
+    return pdfPath;
+  } finally {
+    if (browser) {
+      await browser.close();
+    }
+  }
 }
 
 export async function sendMonthlyPdfReport(userId, monthKey, chatId) {
-  const summary = await progressService.getMonthlyMentorSummary(userId);
+  let summary;
+  try {
+    summary = await progressService.getMonthlyMentorSummary(userId);
+  } catch (err) {
+    console.error("[monthlyPdfReportService] Failed to retrieve monthly summary:", err.message);
+    return;
+  }
+
   if (summary.total_planned_hours === 0 && summary.total_actual_hours === 0) {
     await telegramService.sendTelegramMessage(chatId, "Not enough data yet to generate a monthly PDF report.");
     return;
   }
 
-  const pdfPath = await generateMonthlyReportPdf(userId, monthKey);
-  const caption = "📘 Monthly Mentor Report is ready. This is not judgment — this is correction data.";
-  
+  let pdfPath = null;
   try {
-    await telegramService.sendTelegramDocument(chatId, pdfPath, caption);
+    pdfPath = await generateMonthlyReportPdf(userId, monthKey);
+    const caption = "📘 Monthly Mentor Report is ready. This is not judgment — this is correction data.";
+    const sent = await telegramService.sendTelegramDocument(chatId, pdfPath, caption);
+    if (!sent) {
+      throw new Error("Telegram document delivery failed (returned false)");
+    }
+  } catch (pdfErr) {
+    console.error("[monthlyPdfReportService] PDF generation/sending failed. Falling back to plain text report. Error:", pdfErr.message);
+    
+    // Retrieve user's name from database
+    let userName = "Moulika";
+    try {
+      const userRes = await query(`SELECT name FROM public.users WHERE id = $1`, [userId]);
+      if (userRes.rows.length > 0 && userRes.rows[0].name) {
+        userName = userRes.rows[0].name;
+      }
+    } catch (dbErr) {
+      console.error("[monthlyPdfReportService] Failed to fetch user name, using default. Error:", dbErr.message);
+    }
+
+    const textReport = generateMonthlyMentorTextReport(summary, userName);
+    const fallbackMessage = `⚠️ *Monthly Report (Text Fallback)*\n_PDF rendering was unavailable, sending plain text fallback._\n\n${textReport}`;
+    
+    await telegramService.sendTelegramMessage(chatId, fallbackMessage);
+    console.log("monthly_report_pdf_failed_text_fallback_sent");
   } finally {
-    if (existsSync(pdfPath)) {
-      unlinkSync(pdfPath);
+    if (pdfPath && existsSync(pdfPath)) {
+      try {
+        unlinkSync(pdfPath);
+      } catch (err) {
+        // ignore
+      }
     }
   }
 }

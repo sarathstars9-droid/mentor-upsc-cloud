@@ -67,9 +67,28 @@ async function tickScheduler(userId) {
   const minute = d.getMinutes();
   const dayOfWeek = d.getDay(); // 0 is Sunday, 1 is Monday...
 
+  // Check if escalations should be paused (derived from latest I_AM_STUDYING discipline event within the last 45 minutes)
+  let isEscalationPaused = false;
+  try {
+    const confirmRes = await query(
+      `SELECT created_at FROM public.discipline_events 
+       WHERE user_id = $1 AND event_type = 'I_AM_STUDYING' 
+       ORDER BY created_at DESC LIMIT 1`,
+      [userId]
+    );
+    if (confirmRes.rows.length > 0) {
+      const lastConfirm = new Date(confirmRes.rows[0].created_at).getTime();
+      if ((Date.now() - lastConfirm) < 45 * 60 * 1000) {
+        isEscalationPaused = true;
+      }
+    }
+  } catch (err) {
+    console.error("[NotificationScheduler] failed to query latest I_AM_STUDYING event:", err.message);
+  }
+
   // ── 1. Process Today's Blocks (Reminders, Pauses, Missed) ──────────────
   try {
-    await processTodayBlocks(userId, now);
+    await processTodayBlocks(userId, now, isEscalationPaused);
   } catch (err) {
     console.error("[NotificationScheduler] processTodayBlocks failed:", err.message);
     hasError = true;
@@ -77,7 +96,7 @@ async function tickScheduler(userId) {
 
   // ── 1.b Discipline Checks (DAY_NOT_STARTED, SLIPPING) ──────────────────────
   try {
-    await detectAndProcessDayDiscipline(userId, now);
+    await detectAndProcessDayDiscipline(userId, now, isEscalationPaused);
   } catch (err) {
     console.error("[NotificationScheduler] discipline checks failed:", err.message);
     hasError = true;
@@ -149,7 +168,7 @@ async function tickScheduler(userId) {
   }
 
   // ── 1.c Plan Not Uploaded Alert (06:00 AM) ─────────────────────────────────
-  if (hour === 6 && minute === 0) {
+  if (hour === 6 && minute === 0 && !isEscalationPaused) {
     try {
       const userRes = await query(`SELECT mission_health_state, recovery_day FROM public.users WHERE id = $1`, [userId]);
       const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
@@ -172,7 +191,7 @@ async function tickScheduler(userId) {
 
   // ── 1.d Strict No-Plan Alert (09:00–09:30 AM) ──────────────────────────────
   const is9amWindow = (hour === 9 && minute >= 0 && minute <= 30);
-  if (is9amWindow) {
+  if (is9amWindow && !isEscalationPaused) {
     try {
       const userRes = await query(`SELECT name, mission_health_state, consecutive_zero_study_days FROM public.users WHERE id = $1`, [userId]);
       const user = userRes.rows[0];
@@ -211,7 +230,7 @@ async function tickScheduler(userId) {
   // ── 1.e Recovery Plan Reminder (12:00–12:30 PM & Catch-up 12:30–14:59) ──────
   const is12pmWindow = (hour === 12 && minute >= 0 && minute <= 30);
   const is12pmCatchup = ((hour === 12 && minute > 30) || (hour >= 13 && hour < 15));
-  if (is12pmWindow || is12pmCatchup) {
+  if ((is12pmWindow || is12pmCatchup) && !isEscalationPaused) {
     try {
       const userRes = await query(`SELECT name, mission_health_state, consecutive_zero_study_days FROM public.users WHERE id = $1`, [userId]);
       const user = userRes.rows[0];
@@ -249,7 +268,7 @@ async function tickScheduler(userId) {
 
   // ── 1.f High Risk Intervention (15:00–15:30 PM) ───────────────────────────
   const is3pmWindow = (hour === 15 && minute >= 0 && minute <= 30);
-  if (is3pmWindow) {
+  if (is3pmWindow && !isEscalationPaused) {
     try {
       const userRes = await query(`SELECT name, mission_health_state, consecutive_zero_study_days FROM public.users WHERE id = $1`, [userId]);
       const user = userRes.rows[0];
@@ -287,7 +306,7 @@ async function tickScheduler(userId) {
 
   // ── 1.g Emergency Non-Zero Reminder (18:00–18:30 PM) ──────────────────────
   const is6pmWindow = (hour === 18 && minute >= 0 && minute <= 30);
-  if (is6pmWindow) {
+  if (is6pmWindow && !isEscalationPaused) {
     try {
       const userRes = await query(`SELECT name, mission_health_state, consecutive_zero_study_days FROM public.users WHERE id = $1`, [userId]);
       const user = userRes.rows[0];
@@ -493,7 +512,7 @@ Breakdown:`;
 }
 
 // Unified block scanner for reminders, pause checks, and missed blocks
-async function processTodayBlocks(userId, now) {
+async function processTodayBlocks(userId, now, isEscalationPaused = false) {
 
 
   const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
@@ -537,7 +556,7 @@ async function processTodayBlocks(userId, now) {
     if (d.getTime() > plannedStartDate.getTime() + 15 * 60 * 1000) {
       if (actualMinutesToday === 0 && startedOrDoneBlocks === 0) {
         const alreadySent15 = await hasEvent(userId, 'PLAN_NOT_STARTED', todayKey);
-        if (!alreadySent15) {
+        if (!alreadySent15 && !isEscalationPaused) {
           const alertText = psychologyMessageService.getPlanNotStartedMessage(state, "Moulika", earliest.planned_start, recoveryDay);
           await notificationService.sendNotification(userId, 'PLAN_NOT_STARTED', 'daily_date', todayKey, alertText, {});
           await recordEvent(userId, 'PLAN_NOT_STARTED', todayKey);
@@ -546,7 +565,7 @@ async function processTodayBlocks(userId, now) {
         // PLAN_UPLOADED_NOT_STARTED (30+ mins) via WhatsApp
         if (d.getTime() > plannedStartDate.getTime() + 30 * 60 * 1000) {
           const alreadySent30 = await hasEvent(userId, 'PLAN_UPLOADED_NOT_STARTED', todayKey);
-          if (!alreadySent30) {
+          if (!alreadySent30 && !isEscalationPaused) {
             const { sendWhatsAppButtons } = await import('./whatsappService.js');
             await sendWhatsAppButtons('91YOURNUMBER', 
               "MentorOS Alert\n\nPlan is uploaded, but execution has not started yet.\n\nA plan without starting becomes mental load.\n\nChoose one:", 
@@ -633,7 +652,7 @@ async function processTodayBlocks(userId, now) {
     // c. planned/ready/upcoming and now between planned_start and planned_start + 10 min → BLOCK_START_REMINDER
     if (timeDiffMins >= 0 && timeDiffMins <= 10) {
        const alreadySentStart = await hasEvent(userId, 'BLOCK_START_REMINDER', String(b.id));
-       if (!alreadySentStart) {
+       if (!alreadySentStart && !isEscalationPaused) {
           const titleOrTopic = b.title || b.topic || b.subject;
           const alertText = psychologyMessageService.getBlockStartReminderMessage(
             state, "Moulika", titleOrTopic || b.subject, b.planned_start, b.planned_end, b.planned_minutes, recoveryDay
@@ -649,7 +668,7 @@ async function processTodayBlocks(userId, now) {
            continue;
        }
        const alreadySentCurrent = await hasEvent(userId, 'CURRENT_BLOCK_NOT_STARTED', String(b.id));
-       if (!alreadySentCurrent) {
+       if (!alreadySentCurrent && !isEscalationPaused) {
           const titleOrTopic = b.title || b.topic || b.subject;
           const alertText = psychologyMessageService.getCurrentBlockNotStartedMessage(
             state, "Moulika", titleOrTopic || b.subject, b.planned_start, recoveryDay
@@ -686,7 +705,10 @@ async function processTodayBlocks(userId, now) {
   }
 }
 
-async function detectAndProcessDayDiscipline(userId, now) {
+async function detectAndProcessDayDiscipline(userId, now, isEscalationPaused = false) {
+  if (isEscalationPaused) {
+    return;
+  }
   const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
   const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
   if (['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
@@ -884,7 +906,18 @@ async function checkUserPlanState(userId, todayKey) {
   return { rows, totalBlocks: rows.length, realBlocksCount: realPlanBlocks.length, hasRealPlan, hasCompletedBlock };
 }
 
+const lastSkipLogTimes = new Map();
+
 function logEscalationDebug(type, userId, userName, state, zeroStreak, totalBlocks, hasRealPlan, hasCompletedBlock, lockAcquired, action, reason) {
+  if (action === 'SKIP') {
+    const key = `${type}_${userId}`;
+    const now = Date.now();
+    const lastLogged = lastSkipLogTimes.get(key);
+    if (lastLogged && (now - lastLogged) < 15 * 60 * 1000) {
+      return;
+    }
+    lastSkipLogTimes.set(key, now);
+  }
   const timeStr = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   console.log(`[ESCALATION_DEBUG] type=${type} userId=${userId} userName=${userName} state=${state} zeroStreak=${zeroStreak} blocks=${totalBlocks} hasRealPlan=${hasRealPlan} hasCompletedBlock=${hasCompletedBlock} lock=${lockAcquired} action=${action} reason="${reason}" time="${timeStr}"`);
 }

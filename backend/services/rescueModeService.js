@@ -61,9 +61,9 @@ export async function startRescueMode(userId) {
 
     for (const b of rescueBlocks) {
       await query(
-        `INSERT INTO study_blocks (block_id, user_id, day_key, subject, topic, planned_minutes, status, is_rescue_block)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
-        [b.block_id, b.user_id, b.day_key, b.subject, b.topic, b.planned_minutes, b.status, b.rescue_mode]
+        `INSERT INTO study_blocks (block_id, user_id, day_key, subject, topic, planned_minutes, status)
+         VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+        [b.block_id, b.user_id, b.day_key, b.subject, b.topic, b.planned_minutes, b.status]
       );
     }
 

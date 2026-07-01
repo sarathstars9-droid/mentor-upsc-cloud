@@ -771,7 +771,7 @@ import { execSync } from "child_process";
 let RUNNING_COMMIT_SHA = process.env.RAILWAY_GIT_COMMIT_SHA || process.env.COMMIT_SHA || process.env.GIT_COMMIT_SHA || "";
 if (!RUNNING_COMMIT_SHA) {
   try {
-    RUNNING_COMMIT_SHA = execSync("git rev-parse HEAD", { encoding: "utf8" }).trim();
+    RUNNING_COMMIT_SHA = execSync("git rev-parse HEAD", { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
   } catch (e) {
     RUNNING_COMMIT_SHA = "unknown";
   }
