@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import HandwrittenSheetReviewPanel from "../../components/HandwrittenSheetReviewPanel.jsx";
 
 const StatChip = ({ label, value }) => (
   <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", background: "#111", border: "1px solid #2a2a2a", borderRadius: 6, padding: "6px 14px", minWidth: 90 }}>
@@ -50,6 +51,14 @@ export default function EthicsPage() {
         <FeatureCard icon="🏛" title="Ethics Institutional" description="Upload institutional test papers, extract your answers, and evaluate against case study and theoretical ethics standards." badge="INST" onClick={() => navigate("/answer-writing/ethics/institutional")} />
         <FeatureCard icon="🔖" title="Ethics Mistakes" description="Review weak answers, repeated conceptual gaps, saved AI notes, and build a targeted ethics revision queue." badge="TRACK" onClick={() => navigate("/ethics/mistakes")} />
       </div>
+
+      <HandwrittenSheetReviewPanel
+        workspace="ethics"
+        subject="Ethics, Integrity & Aptitude"
+        paper="GS Paper IV"
+        answerType="ethics"
+        defaultMarks={15}
+      />
 
       <div style={s.sectionCard}>
         <div style={s.sectionLabel}>How to use this space</div>

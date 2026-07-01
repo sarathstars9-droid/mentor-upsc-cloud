@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import HandwrittenSheetReviewPanel from "../../components/HandwrittenSheetReviewPanel.jsx";
 
 const StatChip = ({ label, value }) => (
   <div style={{
@@ -107,6 +108,14 @@ export default function GeographyOptionalPage() {
           onClick={() => navigate("/geography-optional/mistakes")}
         />
       </div>
+
+      <HandwrittenSheetReviewPanel
+        workspace="geography_optional"
+        subject="Geography Optional"
+        paper="Optional Geography"
+        answerType="optional_geography"
+        defaultMarks={15}
+      />
 
       {/* Guidance */}
       <div style={s.sectionCard}>

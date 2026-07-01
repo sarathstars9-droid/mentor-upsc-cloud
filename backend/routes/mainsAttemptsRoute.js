@@ -69,6 +69,8 @@ function buildQuestionKey({ paper, year, questionText }) {
 }
 
 // ────────────────────────────────────────────────────────────────────────────
+
+// ────────────────────────────────────────────────────────────────────────────
 // POST /api/mains/attempts/save
 // ────────────────────────────────────────────────────────────────────────────
 
@@ -92,6 +94,12 @@ function validateQuestionIdentity(questionKey, questionText) {
   return { valid: true };
 }
 
+const WORKSPACE_PAPER_MAP = {
+  essay: "GS Paper I Essay",
+  ethics: "GS Paper IV",
+  geography_optional: "Optional Geography"
+};
+
 router.post("/save", async (req, res) => {
   const body = req.body || {};
   const { userId, status } = body;
@@ -104,7 +112,7 @@ router.post("/save", async (req, res) => {
   try {
     const questionText = extractQuestionText(body.questionText || body.question_text || body.question || "");
     const questionKey = body.questionKey || body.question_key || buildQuestionKey({
-      paper: body.paper || "",
+      paper: body.paper || WORKSPACE_PAPER_MAP[body.workspace] || body.workspace || "",
       year: body.year || body.sourceYear || "",
       questionText,
     });
@@ -130,9 +138,9 @@ router.post("/save", async (req, res) => {
       questionKey,
       question_key:       questionKey,
       questionText,
-      paper:              body.paper         || "",
+      paper:              body.paper         || WORKSPACE_PAPER_MAP[body.workspace] || body.workspace || "",
       subject:            body.subject       || "",
-      topic:              body.topic         || "",
+      topic:              body.topic         || body.answerType || "",
       marks:              body.marks,
       wordLimit:          body.wordLimit,
       finalAnswerText:    body.finalAnswerText || body.answerText || "",

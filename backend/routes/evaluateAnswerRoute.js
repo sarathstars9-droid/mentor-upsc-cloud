@@ -4,6 +4,12 @@ import { saveBasicEvaluation } from "../repositories/evaluateAnswerRepository.js
 
 const router = express.Router();
 
+const WORKSPACE_PAPER_MAP = {
+  essay: "GS Paper I Essay",
+  ethics: "GS Paper IV",
+  geography_optional: "Optional Geography"
+};
+
 router.post("/", async (req, res) => {
   try {
     const { 
@@ -37,10 +43,14 @@ router.post("/", async (req, res) => {
       });
     }
 
+    const finalPaper = paper || WORKSPACE_PAPER_MAP[req.body.workspace] || req.body.workspace || "General Studies";
+    const finalSubject = subject || "";
+    const finalTopic = topic || req.body.answerType || "";
+
     const evaluation = await evaluateMainsAnswer({
       question: questionText,
       answer: candidateAnswer,
-      paper: paper || "General Studies",
+      paper: finalPaper,
       marks: marks || 10,
       wordLimit: wordLimit || 150,
     });
@@ -55,7 +65,7 @@ router.post("/", async (req, res) => {
         userId: userId || 'user_1',
         question: questionText,
         answer: candidateAnswer,
-        paper: paper || "General Studies",
+        paper: finalPaper,
         marks: marks || 10,
         wordLimit: wordLimit || 150,
         evaluationJson: evaluation,
@@ -70,8 +80,8 @@ router.post("/", async (req, res) => {
         await logStudyEvent({
           userId: userId || "user_1",
           eventType: "BASIC_REVIEW_DONE",
-          subject: subject || null,
-          paper: paper || "General Studies",
+          subject: finalSubject || null,
+          paper: finalPaper,
           topic: questionText || null,
           syllabusNodeId: syllabusNodeId || syllabus_node_id || null,
           metadata: {

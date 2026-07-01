@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import HandwrittenSheetReviewPanel from "../../components/HandwrittenSheetReviewPanel.jsx";
 
 const StatChip = ({ label, value }) => (
   <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", background: "#111", border: "1px solid #2a2a2a", borderRadius: 6, padding: "6px 14px", minWidth: 90 }}>
@@ -50,6 +51,14 @@ export default function EssayPage() {
         <FeatureCard icon="🏛" title="Essay Institutional" description="Upload institutional essay tests, extract your written essays, and evaluate against UPSC essay standards for coherence and originality." badge="INST" onClick={() => navigate("/answer-writing/essay/institutional")} />
         <FeatureCard icon="🔖" title="Essay Mistakes" description="Review weak essays, structural gaps, saved AI notes, and build a targeted revision queue for recurring weaknesses." badge="TRACK" onClick={() => navigate("/essay/mistakes")} />
       </div>
+
+      <HandwrittenSheetReviewPanel
+        workspace="essay"
+        subject="Essay"
+        paper="GS Paper I Essay"
+        answerType="essay"
+        defaultMarks={15}
+      />
 
       <div style={s.sectionCard}>
         <div style={s.sectionLabel}>How to use this space</div>

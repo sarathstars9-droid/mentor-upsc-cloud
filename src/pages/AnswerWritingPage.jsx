@@ -1109,7 +1109,10 @@ export default function AnswerWritingPage() {
                 questionText,
                 question: questionText,
                 questionKey,
-                question_key: questionKey
+                question_key: questionKey,
+                workspace: uploadMeta.workspace || "",
+                subject: uploadMeta.subject || "",
+                answerType: uploadMeta.answerType || ""
             };
         }
 
@@ -1688,6 +1691,9 @@ export default function AnswerWritingPage() {
                 year: ctx.year,
                 marks: parseInt(ctx.marks),
                 wordLimit: ctx.wordLimit,
+                workspace: ctx.workspace || "",
+                answerType: ctx.answerType || "",
+                subject: ctx.subject || "",
                 source: {
                     mode: "pyq",
                     paper: ctx.paper,
@@ -2094,10 +2100,12 @@ export default function AnswerWritingPage() {
             question_id:        ctx.questionId,
             paper:              ctx.paper,
             year:               ctx.year,
-            subject:            topic || "",
-            topic:              ctx.topicNodeId || topic || "",
+            subject:            ctx.subject || topic || "",
+            topic:              ctx.topicNodeId || ctx.answerType || topic || "",
             marks:              parseInt(ctx.marks),
             wordLimit:          ctx.wordLimit,
+            workspace:          ctx.workspace || "",
+            answerType:         ctx.answerType || "",
             finalAnswerText:    pastedText.trim(),
             extractedText:      pastedText.trim(),
             answerSource:       hasPages ? "uploaded" : "typed",
