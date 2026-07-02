@@ -408,16 +408,45 @@ export async function initRetryTable() {
 }
 
 let retryInterval = null;
+let isRetrySchedulerRunning = false;
+let consecutiveRetryErrors = 0;
+let lastRetryErrorTime = 0;
 
 export function startRetryScheduler() {
   if (retryInterval) return;
   
   retryInterval = setInterval(async () => {
+    if (isRetrySchedulerRunning) {
+      console.log("[TelegramService] Overlapping retry tick detected. Skipping.");
+      return;
+    }
+
+    if (consecutiveRetryErrors > 0) {
+      const backoffMs = Math.min(consecutiveRetryErrors * 30000, 120000);
+      if (Date.now() - lastRetryErrorTime < backoffMs) {
+        return;
+      }
+    }
+
+    try {
+      const { isDbCircuitOpen } = await import('../db/index.js');
+      if (isDbCircuitOpen()) {
+        console.log("[TelegramService] DB circuit OPEN, skipping retry queue tick.");
+        return;
+      }
+    } catch (e) {}
+
+    isRetrySchedulerRunning = true;
     try {
       await processRetryQueue();
       await processInMemoryQueue();
+      consecutiveRetryErrors = 0;
     } catch (err) {
       console.error("[TelegramService Retry Queue Tick Error]", err);
+      consecutiveRetryErrors++;
+      lastRetryErrorTime = Date.now();
+    } finally {
+      isRetrySchedulerRunning = false;
     }
   }, 30 * 1000); // Check every 30 seconds
   

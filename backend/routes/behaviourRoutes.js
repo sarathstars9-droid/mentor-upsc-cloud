@@ -113,7 +113,7 @@ router.post('/signals', async (req, res) => {
 
   } catch (err) {
     console.error("[POST /api/behaviour/signals] ERROR", err);
-    res.status(500).json({ ok: false, error: err.message || "Internal server error" });
+    res.json({ ok: true, saved: false, fallback: true });
   }
 });
 

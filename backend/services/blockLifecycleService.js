@@ -10,7 +10,7 @@
 //   - completeBlock: folds any open pause, sets ended_at
 //   - repairLegacy : one-time cleanup for data created before this service existed
 
-import { pool } from '../db/index.js';
+import { pool, criticalQuery } from '../db/index.js';
 import { computeBlockState, toFrontendBlock } from './computeBlockState.js';
 import { invalidateSuggestionsCache } from './plannerService.js';
 import { checkAndTriggerRecovery } from './behaviorEscalationService.js';
@@ -260,7 +260,7 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
 
 export async function pauseBlock(userId = DEFAULT_USER, blockId, dayKey) {
   console.log(`[LifecycleRoute] pauseBlock called blockId=${blockId}`);
-  const { rows } = await pool.query(
+  const { rows } = await criticalQuery(
     `UPDATE study_blocks
      SET status      = 'paused',
          paused_at   = NOW(),
@@ -273,7 +273,7 @@ export async function pauseBlock(userId = DEFAULT_USER, blockId, dayKey) {
 
   if (!rows.length) {
     // Block may already be paused (duplicate click) — return current state
-    const { rows: current } = await pool.query(
+    const { rows: current } = await criticalQuery(
       `SELECT * FROM study_blocks WHERE user_id=$1 AND block_id=$2 AND day_key=$3`,
       [userId, blockId, dayKey]
     );
@@ -323,63 +323,80 @@ export async function pauseBlock(userId = DEFAULT_USER, blockId, dayKey) {
 
 export async function resumeBlock(userId = DEFAULT_USER, blockId, dayKey) {
   console.log(`[LifecycleRoute] resumeBlock called blockId=${blockId}`);
-  const { rows } = await pool.query(
-    `UPDATE study_blocks
-     SET status               = 'active',
-         total_pause_seconds  = total_pause_seconds
-                                + GREATEST(0,
-                                    EXTRACT(EPOCH FROM (NOW() - paused_at))::INTEGER),
-         last_resumed_at      = NOW(),
-         paused_at            = NULL,
-         updated_at           = NOW()
-     WHERE user_id = $1 AND block_id = $2 AND day_key = $3 AND status = 'paused'
-     RETURNING *`,
-    [userId, blockId, dayKey]
-  );
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    
+    // Step 1: Auto-complete any existing active block(s)
+    const { rows: activeRows } = await client.query(
+      `SELECT * FROM study_blocks WHERE user_id = $1 AND status = 'active' FOR UPDATE`,
+      [userId]
+    );
 
-  if (!rows.length) {
-    const { rows: current } = await pool.query(
-      `SELECT * FROM study_blocks WHERE user_id=$1 AND block_id=$2 AND day_key=$3`,
+    for (const row of activeRows) {
+      if (row.block_id === blockId) continue;
+      
+      const foldPauseSec = row.paused_at ? Math.max(0, Math.floor((Date.now() - new Date(row.paused_at).getTime()) / 1000)) : 0;
+      await client.query(
+        `UPDATE study_blocks SET status = 'completed', ended_at = NOW(), total_pause_seconds = total_pause_seconds + $2, paused_at = NULL, completion_reason = 'auto_stopped_on_new_resume', updated_at = NOW() WHERE id = $1`,
+        [row.id, foldPauseSec]
+      );
+    }
+
+    // Step 2: Resume target block
+    const { rows } = await client.query(
+      `UPDATE study_blocks
+       SET status               = 'active',
+           total_pause_seconds  = total_pause_seconds
+                                  + GREATEST(0,
+                                      EXTRACT(EPOCH FROM (NOW() - paused_at))::INTEGER),
+           last_resumed_at      = NOW(),
+           paused_at            = NULL,
+           updated_at           = NOW()
+       WHERE user_id = $1 AND block_id = $2 AND day_key = $3 AND status = 'paused'
+       RETURNING *`,
       [userId, blockId, dayKey]
     );
-    if (current.length) return computeBlockState(current[0]);
-    throw Object.assign(
-      new Error(`resumeBlock: block ${blockId} not found or not paused`),
-      { code: 'NOT_PAUSED' }
-    );
-  }
 
-  // Event Ledger Hook
-  try {
-    const { logStudyEvent } = await import('./eventService.js');
-    await logStudyEvent({
-      userId,
-      eventType: 'BLOCK_RESUMED',
-      subject: rows[0].subject,
-      topic: rows[0].topic,
-      syllabusNodeId: rows[0].node_id,
-      blockId: rows[0].id
-    });
-  } catch (e) {
-    console.error('[blockLifecycle] resumeBlock event log failed:', e.message);
-  }
+    if (!rows.length) {
+      const { rows: current } = await client.query(
+        `SELECT * FROM study_blocks WHERE user_id=$1 AND block_id=$2 AND day_key=$3`,
+        [userId, blockId, dayKey]
+      );
+      if (current.length) {
+        await client.query('COMMIT');
+        return computeBlockState(current[0]);
+      }
+      throw Object.assign(
+        new Error(`resumeBlock: block ${blockId} not found or not paused`),
+        { code: 'NOT_PAUSED' }
+      );
+    }
+    
+    await client.query('COMMIT');
 
-  try {
-    const { sendNotification } = await import('./notificationService.js');
-    await sendNotification(
-      userId,
-      'BLOCK_RESUMED',
-      'study_block',
-      rows[0].id,
-      `▶️ *Block Resumed*\nSubject: ${rows[0].subject || 'Block'}`
-    );
-    console.log(`[TelegramLifecycle] BLOCK_RESUMED queued blockId=${rows[0].id}`);
-  } catch (e) {
-    console.error('[TelegramLifecycle] BLOCK_RESUMED failed:', e.message);
-  }
+    // Secondary async work
+    (async () => {
+      try {
+        const { logStudyEvent } = await import('./eventService.js');
+        await logStudyEvent({ userId, eventType: 'BLOCK_RESUMED', subject: rows[0].subject, topic: rows[0].topic, syllabusNodeId: rows[0].node_id, blockId: rows[0].id });
+      } catch (e) { console.error('[blockLifecycle] resumeBlock event log failed:', e.message); }
 
-  try { invalidateSuggestionsCache(userId); } catch {}
-  return computeBlockState(rows[0]);
+      try {
+        const { sendNotification } = await import('./notificationService.js');
+        await sendNotification(userId, 'BLOCK_RESUMED', 'study_block', rows[0].id, `▶️ *Block Resumed*\nSubject: ${rows[0].subject || 'Block'}`);
+      } catch (e) { console.error('[TelegramLifecycle] BLOCK_RESUMED failed:', e.message); }
+
+      try { invalidateSuggestionsCache(userId); } catch {}
+    })();
+
+    return computeBlockState(rows[0]);
+  } catch (err) {
+    await client.query('ROLLBACK');
+    throw err;
+  } finally {
+    client.release();
+  }
 }
 
 // ── COMPLETE / STOP ───────────────────────────────────────────────────────────
@@ -411,7 +428,7 @@ export async function completeBlock(
   const finalStatus = validReasons.has(reason) ? reason : 'completed';
 
   // 1. Inspect existing block state to check proof requirement before completing
-  const { rows: existingRows } = await pool.query(
+  const { rows: existingRows } = await criticalQuery(
     `SELECT * FROM study_blocks WHERE user_id = $1 AND block_id = $2 AND day_key = $3`,
     [userId, blockId, dayKey]
   );
@@ -442,7 +459,7 @@ export async function completeBlock(
     }
   }
 
-  const { rows } = await pool.query(
+  const { rows } = await criticalQuery(
     `UPDATE study_blocks
      SET status              = $4,
          started_at          = COALESCE(started_at, NOW()),
@@ -475,7 +492,7 @@ export async function completeBlock(
   );
 
   if (!rows.length) {
-    const { rows: current } = await pool.query(
+    const { rows: current } = await criticalQuery(
       `SELECT * FROM study_blocks WHERE user_id=$1 AND block_id=$2 AND day_key=$3`,
       [userId, blockId, dayKey]
     );
@@ -497,7 +514,7 @@ export async function completeBlock(
     calculatedMins = rows[0].planned_minutes || 30;
   }
 
-  await pool.query(
+  await criticalQuery(
     `UPDATE study_blocks SET actual_minutes = $1 WHERE id = $2`,
     [calculatedMins, rows[0].id]
   );
@@ -512,7 +529,7 @@ export async function completeBlock(
   ];
   console.log(`[completeBlock] Executing block_logs INSERT with params:`, JSON.stringify(insertParams));
 
-  await pool.query(
+  await criticalQuery(
     `INSERT INTO public.block_logs (
        block_id, user_id, started_at, ended_at, actual_minutes, completion_status,
        output_type, output_count, accuracy, score, confidence, weakness_note
@@ -606,7 +623,7 @@ export async function stopBlock(
   } = {}
 ) {
   console.log(`[LifecycleRoute] stopBlock called blockId=${blockId}`);
-  const { rows } = await pool.query(
+  const { rows } = await criticalQuery(
     `UPDATE study_blocks
      SET status              = 'stopped',
          ended_at            = NOW(),
@@ -630,7 +647,7 @@ export async function stopBlock(
   );
 
   if (!rows.length) {
-    const { rows: current } = await pool.query(
+    const { rows: current } = await criticalQuery(
       `SELECT * FROM study_blocks WHERE user_id=$1 AND block_id=$2 AND day_key=$3`,
       [userId, blockId, dayKey]
     );
@@ -649,12 +666,12 @@ export async function stopBlock(
     calculatedMins = Math.max(0, Math.round((endedAt - startedAt - (pauseSec * 1000)) / 60000));
   }
 
-  await pool.query(
+  await criticalQuery(
     `UPDATE study_blocks SET actual_minutes = $1 WHERE id = $2`,
     [calculatedMins, rows[0].id]
   );
 
-  await pool.query(
+  await criticalQuery(
     `INSERT INTO public.block_logs (
        block_id, user_id, started_at, ended_at, actual_minutes, completion_status,
        output_type, output_count, weakness_note
@@ -714,7 +731,7 @@ export async function getBlocksForDay(userId = DEFAULT_USER, dayKey) {
   const normalizedUid = String(userId || '').toLowerCase().trim();
   console.log(`[Schedule] Today's blocks loaded for user: ${normalizedUid}, day: ${dayKey}`);
 
-  const { rows } = await pool.query(
+  const { rows } = await criticalQuery(
     `SELECT * FROM study_blocks
      WHERE user_id = $1 AND day_key = $2
      ORDER BY planned_start ASC, created_at ASC`,
@@ -744,7 +761,7 @@ export async function getBlocksForDay(userId = DEFAULT_USER, dayKey) {
 }
 
 export async function getBlockState(userId = DEFAULT_USER, blockId, dayKey) {
-  const { rows } = await pool.query(
+  const { rows } = await criticalQuery(
     `SELECT * FROM study_blocks
      WHERE user_id = $1 AND block_id = $2 AND day_key = $3`,
     [userId, blockId, dayKey]

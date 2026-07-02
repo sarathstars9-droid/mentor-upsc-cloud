@@ -9,6 +9,10 @@ import { healthMonitor } from './healthMonitor.js';
 
 let schedulerInterval = null;
 
+let isSchedulerRunning = false;
+let consecutiveSchedulerErrors = 0;
+let lastSchedulerErrorTime = 0;
+
 // Initialize the scheduler background timer
 export function initNotificationScheduler(userId = 'moulika') {
   const schedulerEnabled = process.env.ENABLE_NOTIFICATION_SCHEDULER;
@@ -25,20 +29,60 @@ export function initNotificationScheduler(userId = 'moulika') {
   
   // Tick every 30 seconds to ensure timely active block auto-activation
   schedulerInterval = setInterval(async () => {
+    if (isSchedulerRunning) {
+      console.log("[NotificationScheduler] Overlapping tick detected. Skipping.");
+      return;
+    }
+
+    if (consecutiveSchedulerErrors > 0) {
+      const backoffMs = Math.min(consecutiveSchedulerErrors * 30000, 120000);
+      if (Date.now() - lastSchedulerErrorTime < backoffMs) {
+        console.log(`[NotificationScheduler] Backoff active for ${backoffMs/1000}s due to previous error.`);
+        return;
+      }
+    }
+
+    const { isDbCircuitOpen } = await import('../db/index.js');
+    if (isDbCircuitOpen()) {
+      console.log("[NotificationScheduler] DB circuit is OPEN. Skipping tick.");
+      return;
+    }
+
+    isSchedulerRunning = true;
     try {
       await tickScheduler(userId);
+      consecutiveSchedulerErrors = 0;
     } catch (err) {
       console.error("[NotificationScheduler Tick Error]", err);
       healthMonitor.recordSchedulerFailure();
+      consecutiveSchedulerErrors++;
+      lastSchedulerErrorTime = Date.now();
+    } finally {
+      isSchedulerRunning = false;
     }
   }, 30 * 1000);
 
   // Run a startup check immediately
-  setTimeout(() => {
-    tickScheduler(userId).catch(err => {
+  setTimeout(async () => {
+    if (isSchedulerRunning) return;
+    isSchedulerRunning = true;
+    try {
+      const { isDbCircuitOpen } = await import('../db/index.js');
+      if (isDbCircuitOpen()) {
+        console.log("[NotificationScheduler] Startup: DB circuit is OPEN. Skipping.");
+        isSchedulerRunning = false;
+        return;
+      }
+      await tickScheduler(userId);
+      consecutiveSchedulerErrors = 0;
+    } catch (err) {
       console.error("[NotificationScheduler Startup Tick Error]", err);
       healthMonitor.recordSchedulerFailure();
-    });
+      consecutiveSchedulerErrors++;
+      lastSchedulerErrorTime = Date.now();
+    } finally {
+      isSchedulerRunning = false;
+    }
   }, 2000);
 }
 

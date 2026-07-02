@@ -110,6 +110,7 @@ import {
   mergeLifecycleIntoGasBlocks,
 } from "./services/blockLifecycleService.js";
 import { syncBlockToCalendar } from "./services/calendarBridgeService.js";
+import { flushOutbox } from "./services/outboxService.js";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -2550,6 +2551,40 @@ setInterval(async () => {
     console.error("[ReminderEngine Tick ERR]", err);
   }
 }, 30 * 1000);
+
+/* -------------------- OUTBOX WORKER -------------------- */
+setInterval(async () => {
+  try {
+    await flushOutbox();
+  } catch (err) {
+    console.error("[Outbox Worker ERR]", err);
+  }
+}, 30 * 1000);
+
+/* -------------------- GLOBAL ERROR HANDLER -------------------- */
+app.use((err, req, res, next) => {
+  console.error('[Global Error Handler]', err.message);
+  
+  // Force CORS headers so the frontend doesn't crash on 500/502
+  const origin = req.headers.origin;
+  if (origin && ALLOWED_ORIGINS.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+    res.header("Access-Control-Allow-Credentials", "true");
+  } else {
+    res.header("Access-Control-Allow-Origin", "*");
+  }
+  
+  if (res.headersSent) {
+    return next(err);
+  }
+  
+  const status = (err.code === 'CIRCUIT_OPEN' || err.message?.includes('timeout') || err.message?.includes('ECONNREFUSED')) ? 502 : 500;
+  res.status(status).json({
+    ok: false,
+    error: err.message || "Internal server error",
+    code: err.code
+  });
+});
 
 /* -------------------- LISTEN -------------------- */
 

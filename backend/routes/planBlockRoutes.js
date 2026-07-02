@@ -25,6 +25,7 @@ import {
   repairLegacyActiveBlocks,
 } from '../services/blockLifecycleService.js';
 import { syncBlockToCalendar, retryFailedCalendarSyncs, probeCalendarBridge } from '../services/calendarBridgeService.js';
+import { enqueueAction } from '../services/outboxService.js';
 
 import { requireAuth, getAuthUserId } from '../middleware/authMiddleware.js';
 
@@ -207,6 +208,15 @@ router.post('/start', async (req, res) => {
     return res.json({ ok: true, block });
   } catch (err) {
     console.error('[POST /api/plan/blocks/start]', err.message);
+    const isDbError = err.code === 'ECONNREFUSED' || err.code === 'ETIMEDOUT' || err.message?.includes('timeout') || err.message?.includes('connection') || err.code === 'CIRCUIT_OPEN';
+    if (isDbError) {
+      const payload = {
+        userId: userId(req), blockId, dayKey: req.body.dayKey || todayKey(), metadata: { title, subject, topic, plannedStart, plannedEnd, plannedMinutes, isTestData }
+      };
+      await enqueueAction('startBlock', payload);
+      return res.status(202).json({ ok: true, queued: true, message: 'Action queued due to database degradation.' });
+    }
+
     const status = err.code === 'RACE_CONDITION' ? 409
                  : err.code === 'INVALID_TRANSITION' ? 422
                  : 500;
@@ -230,6 +240,13 @@ router.post('/pause', async (req, res) => {
     return res.json({ ok: true, block });
   } catch (err) {
     console.error('[POST /api/plan/blocks/pause]', err.message);
+    const isDbError = err.code === 'ECONNREFUSED' || err.code === 'ETIMEDOUT' || err.message?.includes('timeout') || err.message?.includes('connection') || err.code === 'CIRCUIT_OPEN';
+    if (isDbError) {
+      const payload = { userId: userId(req), blockId, dayKey: req.body.dayKey || todayKey() };
+      await enqueueAction('pauseBlock', payload);
+      return res.status(202).json({ ok: true, queued: true, message: 'Action queued due to database degradation.' });
+    }
+
     return res.status(err.code === 'NOT_ACTIVE' ? 409 : 500)
       .json({ ok: false, message: err.message, code: err.code });
   }
@@ -251,6 +268,13 @@ router.post('/resume', async (req, res) => {
     return res.json({ ok: true, block });
   } catch (err) {
     console.error('[POST /api/plan/blocks/resume]', err.message);
+    const isDbError = err.code === 'ECONNREFUSED' || err.code === 'ETIMEDOUT' || err.message?.includes('timeout') || err.message?.includes('connection') || err.code === 'CIRCUIT_OPEN';
+    if (isDbError) {
+      const payload = { userId: userId(req), blockId, dayKey: req.body.dayKey || todayKey() };
+      await enqueueAction('resumeBlock', payload);
+      return res.status(202).json({ ok: true, queued: true, message: 'Action queued due to database degradation.' });
+    }
+
     return res.status(err.code === 'NOT_PAUSED' ? 409 : 500)
       .json({ ok: false, message: err.message, code: err.code });
   }
@@ -277,6 +301,16 @@ router.post('/complete', async (req, res) => {
     return res.json({ ok: true, block });
   } catch (err) {
     console.error('[POST /api/plan/blocks/complete]', err.message);
+    const isDbError = err.code === 'ECONNREFUSED' || err.code === 'ETIMEDOUT' || err.message?.includes('timeout') || err.message?.includes('connection') || err.code === 'CIRCUIT_OPEN';
+    if (isDbError) {
+      const payload = { 
+        userId: userId(req), blockId, dayKey: req.body.dayKey || todayKey(), 
+        metadata: { reason, actualMinutes, outputType, outputCount, accuracy, score, confidence, weaknessNote, proofUrl, proofType, proofStatus, proofNotes }
+      };
+      await enqueueAction('completeBlock', payload);
+      return res.status(202).json({ ok: true, queued: true, message: 'Action queued due to database degradation.' });
+    }
+
     const status = err.code === 'PROOF_REQUIRED' ? 422
                  : err.code === 'NOT_STOPPABLE' ? 409
                  : 500;
