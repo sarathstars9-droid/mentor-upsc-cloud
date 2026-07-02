@@ -218,15 +218,16 @@ Return to mission now.`;
 
 // ── POST /api/guardian/daily-phone-usage ────────────────
 router.post('/daily-phone-usage', verifyGuardianKey, async (req, res) => {
-  const { userId, deviceId, date, timezone, todayStartMillis, queryEndMillis, apps, totalDistractionSeconds } = req.body || {};
+  const { userId, deviceId, device_id, date, localDate, timezone, todayStartMillis, queryEndMillis, apps, totalDistractionSeconds } = req.body || {};
 
-  if (!userId || !date || !Array.isArray(apps)) {
-    return res.status(400).json({ ok: false, error: 'userId, date (YYYY-MM-DD), and apps array are required' });
+  const usageDate = date || localDate;
+  if (!userId || !usageDate || !Array.isArray(apps)) {
+    return res.status(400).json({ ok: false, error: 'userId, date/localDate, and apps array are required' });
   }
 
   const normalizedUid = String(userId).toLowerCase().trim();
-  const normalizedDeviceId = String(deviceId || 'default_device').trim();
-  console.log(`[Guardian Daily Sync] Syncing daily phone usage for user: ${normalizedUid}, device: ${normalizedDeviceId}, date: ${date}, distraction: ${totalDistractionSeconds}s`);
+  const normalizedDeviceId = String(deviceId || device_id || 'default_device').trim();
+  console.log(`[Guardian Daily Sync] Syncing daily phone usage for user: ${normalizedUid}, device: ${normalizedDeviceId}, date: ${usageDate}, distraction: ${totalDistractionSeconds}s`);
 
   try {
     // 1. Upsert each app package into guardian_daily_phone_usage
