@@ -1120,7 +1120,10 @@ app.post("/api/plan-photo", upload.single("photo"), async (req, res) => {
     const userPrompt = `
 Extract a UPSC daily study plan from the image as TIME BLOCKS.
 
-Return JSON exactly in this schema:
+Return ONLY valid JSON — no markdown, no code fences, no explanation text.
+Do NOT wrap the output in triple backticks or any code block markers.
+
+JSON schema (respond with exactly this structure):
 {
   "ok": true,
   "date": "YYYY-MM-DD",
@@ -1151,8 +1154,9 @@ RULES:
 6) Keep subject/topic clean, no emojis.
 7) date: if not present in image, use "${dateFallback}".
 8) totalMinutes: sum of item.minutes.
+9) If no blocks are found, return: {"ok":true,"date":"${dateFallback}","items":[],"totalMinutes":0}
 
-Output ONLY JSON.
+Output ONLY the JSON object. No preamble. No trailing text.
 `.trim();
 
     const schema = {
@@ -1217,17 +1221,41 @@ Output ONLY JSON.
       });
     }
 
-    const outText = aiResponse?.output_text || "";
+    // ── Extract text from all known Responses API shapes ───────────────────
+    // Shape A: response.output_text  (SDK shortcut field)
+    // Shape B: response.output[0].content[0].text  (raw REST shape)
+    let outText =
+      aiResponse?.output_text ||
+      aiResponse?.output?.[0]?.content?.[0]?.text ||
+      "";
+
+    // Always log a safe preview so we can see what the model actually returned
+    console.log("[plan-photo RAW MODEL OUTPUT]", String(outText || "").slice(0, 2000));
+
+    // Strip markdown code fences if present (```json ... ``` or ``` ... ```)
+    const stripped = String(outText || "")
+      .replace(/^```(?:json)?\s*/i, "")
+      .replace(/\s*```\s*$/i, "")
+      .trim();
+    if (stripped) outText = stripped;
 
     let parsed;
     try {
       parsed = JSON.parse(outText);
-    } catch {
-      console.error("[plan-photo ERR] Could not parse model output:", outText.slice(0, 500));
+    } catch (parseErr) {
+      console.error(
+        "[plan-photo ERR] Could not parse model output:",
+        String(outText || "").slice(0, 2000)
+      );
+      // Also log the raw aiResponse shape so we can diagnose missing output_text
+      console.error(
+        "[plan-photo ERR] Raw aiResponse keys:",
+        Object.keys(aiResponse || {})
+      );
       return res.status(400).json({
         ok: false,
         error: "Model did not return valid JSON",
-        detail: outText.slice(0, 500),
+        detail: String(outText || "").slice(0, 500) || "Model returned empty output",
       });
     }
 
