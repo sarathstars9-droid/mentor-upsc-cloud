@@ -575,19 +575,53 @@ function buildMappedObject(mapped, nonStudy, originalItem) {
 const app = express();
 
 // ── CORS ──────────────────────────────────────────────────────────────────────
-// Explicit allowed origins. PATCH must be listed for mistake/revision updates.
-const ALLOWED_ORIGINS = [
+const allowedOrigins = new Set([
+  "https://www.mentorupsc.in",
+  "https://mentorupsc.in",
   "http://localhost:5173",
   "http://localhost:5174",
-  "https://mentorupsc.in",
-  "https://www.mentorupsc.in",
-];
+  "http://localhost:3000"
+]);
+
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+
+  if (origin && allowedOrigins.has(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader("Vary", "Origin");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization, Cache-Control, Pragma"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+    );
+  }
+
+  if (req.method === "OPTIONS") {
+    return res.status(204).end();
+  }
+
+  next();
+});
+
+// Lightweight request logger
+app.use((req, res, next) => {
+  if (req.path === '/api/sheets' || req.path === '/api/notifications/unread' || req.path === '/api/system/health') {
+    console.log(`[REQ_LOG] ${req.method} ${req.path} origin=${req.headers.origin || 'none'}`);
+  }
+  next();
+});
+
+// Explicit allowed origins. PATCH must be listed for mistake/revision updates.
 
 app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (curl, Postman, Railway health checks)
     if (!origin) return callback(null, true);
-    if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+    if (allowedOrigins.has(origin)) return callback(null, true);
     // In development fall through to allow all; in production, block unknown origins
     if (process.env.NODE_ENV !== "production") return callback(null, true);
     return callback(new Error(`CORS: origin ${origin} not allowed`));
@@ -2563,25 +2597,24 @@ setInterval(async () => {
 
 /* -------------------- GLOBAL ERROR HANDLER -------------------- */
 app.use((err, req, res, next) => {
-  console.error('[Global Error Handler]', err.message);
-  
-  // Force CORS headers so the frontend doesn't crash on 500/502
   const origin = req.headers.origin;
-  if (origin && ALLOWED_ORIGINS.includes(origin)) {
-    res.header("Access-Control-Allow-Origin", origin);
-    res.header("Access-Control-Allow-Credentials", "true");
-  } else {
-    res.header("Access-Control-Allow-Origin", "*");
+  if (origin && allowedOrigins.has(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader("Vary", "Origin");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
   }
-  
-  if (res.headersSent) {
-    return next(err);
-  }
-  
-  const status = (err.code === 'CIRCUIT_OPEN' || err.message?.includes('timeout') || err.message?.includes('ECONNREFUSED')) ? 502 : 500;
-  res.status(status).json({
+
+  console.error("[FINAL_ERROR_HANDLER]", {
+    method: req.method,
+    path: req.path,
+    message: err.message,
+    stack: err.stack
+  });
+
+  res.status(err.status || ((err.code === 'CIRCUIT_OPEN' || err.message?.includes('timeout') || err.message?.includes('ECONNREFUSED')) ? 502 : 500)).json({
     ok: false,
-    error: err.message || "Internal server error",
+    error: "internal_server_error",
+    message: process.env.NODE_ENV === "production" ? "Server error" : err.message,
     code: err.code
   });
 });
