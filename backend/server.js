@@ -765,6 +765,81 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+// Safe boot log — never prints the actual key value
+console.log("[BOOT] OpenAI key loaded:", !!process.env.OPENAI_API_KEY);
+
+/**
+ * callOpenAIResponsesWithRetry
+ * ─────────────────────────────────────────────────────────────────────────────
+ * Calls the OpenAI Responses API using native fetch with:
+ *   - compress: false  (prevents node-fetch gzip ERR_STREAM_PREMATURE_CLOSE)
+ *   - Accept-Encoding: identity  (requests uncompressed response)
+ *   - response.text() → JSON.parse()  (avoids response.json() on partial body)
+ *   - Up to `attempts` retries on transient stream / network errors
+ */
+async function callOpenAIResponsesWithRetry(payload, attempts = 3) {
+  let lastErr;
+
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      const resp = await fetch("https://api.openai.com/v1/responses", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          "Content-Type": "application/json",
+          "Accept-Encoding": "identity",
+        },
+        body: JSON.stringify(payload),
+        compress: false,
+      });
+
+      const raw = await resp.text();
+
+      if (!resp.ok) {
+        console.error("[plan-photo OpenAI HTTP ERR]", resp.status, raw.slice(0, 1000));
+        const err = new Error(`OpenAI HTTP ${resp.status}`);
+        err.status = resp.status;
+        err.raw = raw.slice(0, 500);
+        throw err;
+      }
+
+      try {
+        return JSON.parse(raw);
+      } catch (parseErr) {
+        console.error("[plan-photo OpenAI PARSE ERR]", raw.slice(0, 1000));
+        const err = new Error("OpenAI returned invalid or partial JSON");
+        err.cause = parseErr;
+        throw err;
+      }
+    } catch (err) {
+      lastErr = err;
+
+      const msg  = String(err.message || "");
+      const code = String(err.code || err.errno || "");
+
+      const retryable =
+        code.includes("ERR_STREAM_PREMATURE_CLOSE") ||
+        code.includes("ETIMEDOUT") ||
+        code.includes("ECONNRESET") ||
+        msg.includes("Premature close") ||
+        msg.includes("fetch failed");
+
+      console.error(`[plan-photo OpenAI retry ${i}/${attempts}]`, {
+        message: err.message,
+        code: err.code || err.errno,
+        retryable,
+      });
+
+      if (!retryable || i === attempts) break;
+
+      // Linear backoff: 1 s, 2 s, …
+      await new Promise((resolve) => setTimeout(resolve, 1000 * i));
+    }
+  }
+
+  throw lastErr;
+}
+
 /* -------------------- HEALTH ROUTE -------------------- */
 
 import { execSync } from "child_process";
@@ -1106,41 +1181,53 @@ Output ONLY JSON.
       required: ["ok", "date", "items", "totalMinutes"],
     };
 
-    const response = await openai.responses.create({
-      model: "gpt-4o-mini",
-      input: [
-        {
-          role: "system",
-          content: "You are a strict JSON extraction engine. Output only JSON.",
+    // ── OpenAI Responses API call (with retry + stream-safe fetch) ──────────
+    let aiResponse;
+    try {
+      aiResponse = await callOpenAIResponsesWithRetry({
+        model: "gpt-4o-mini",
+        input: [
+          {
+            role: "system",
+            content: "You are a strict JSON extraction engine. Output only JSON.",
+          },
+          {
+            role: "user",
+            content: [
+              { type: "input_text", text: userPrompt },
+              { type: "input_image", image_url: dataUrl },
+            ],
+          },
+        ],
+        text: {
+          format: {
+            type: "json_schema",
+            name: "plan_photo_timeblocks",
+            strict: true,
+            schema,
+          },
         },
-        {
-          role: "user",
-          content: [
-            { type: "input_text", text: userPrompt },
-            { type: "input_image", image_url: dataUrl },
-          ],
-        },
-      ],
-      text: {
-        format: {
-          type: "json_schema",
-          name: "plan_photo_timeblocks",
-          strict: true,
-          schema,
-        },
-      },
-    });
+      });
+    } catch (aiErr) {
+      console.error("[plan-photo ERR] OpenAI call failed after retries:", aiErr.message);
+      return res.status(502).json({
+        ok: false,
+        error: "OpenAI request failed",
+        detail: String(aiErr.message || aiErr),
+      });
+    }
 
-    const outText = response.output_text || "";
+    const outText = aiResponse?.output_text || "";
 
     let parsed;
     try {
       parsed = JSON.parse(outText);
     } catch {
+      console.error("[plan-photo ERR] Could not parse model output:", outText.slice(0, 500));
       return res.status(400).json({
         ok: false,
-        message: "Model did not return valid JSON",
-        raw: outText,
+        error: "Model did not return valid JSON",
+        detail: outText.slice(0, 500),
       });
     }
 
@@ -1401,7 +1488,8 @@ Output ONLY JSON.
     console.error("[plan-photo ERR]", err);
     return res.status(500).json({
       ok: false,
-      message: String(err?.message || err),
+      error: "plan-photo internal error",
+      detail: String(err?.message || err),
     });
   }
 });
