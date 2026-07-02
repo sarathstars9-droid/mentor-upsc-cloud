@@ -201,6 +201,7 @@ async function runAllMigrations() {
     ['037 Guardian phase 3 tables',                      'migrations/037_guardian_phase3.sql'],
     ['038 Proof upload and backlog schema',              'migrations/038_proof_upload_and_backlog.sql'],
     ['039 Completion guard and audit fields',           'migrations/039_completion_guard_fields.sql'],
+    ['044 Guardian device id',                           'migrations/044_guardian_device_id.sql'],
   ];
 
   // Run 001-004 via standard runner
