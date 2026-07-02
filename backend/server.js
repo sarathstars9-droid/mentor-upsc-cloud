@@ -317,7 +317,8 @@ function inferHalfDay(items) {
 }
 
 /**
- * Non-study blocks should NOT be syllabus-mapped
+ * Non-study blocks should NOT be syllabus-mapped or returned to the frontend.
+ * isNonStudyBlock — negative blocklist check (subject OR topic contains a non-study keyword)
  */
 function isNonStudyBlock(subject, topic) {
   const s = String(subject || "").toLowerCase();
@@ -344,9 +345,104 @@ function isNonStudyBlock(subject, topic) {
     "gym",
     "workout",
     "exercise",
+    // extended
+    "hospital",
+    "clinic",
+    "doctor",
+    "personal",
+    "free time",
+    "family",
+    "office",
+    "college",
+    "work",
+    "class",
+    "school",
   ];
 
   return keys.some((k) => s.includes(k) || t.includes(k));
+}
+
+/**
+ * isStudyBlock — positive allowlist check (subject OR topic contains a study keyword).
+ * Applied AFTER isNonStudyBlock. An item must pass both:
+ *   !isNonStudyBlock(item) → strip obvious non-study entries
+ *   isStudyBlock(item)    → keep only items that are recognisably academic
+ *
+ * Items with very short / unrecognised subjects that aren't in either list are
+ * also kept (they may be OCR artefacts like "GS" or abbreviated subject names).
+ */
+function isStudyBlock(item) {
+  const text = [
+    item.subject,
+    item.topic,
+    item.title,
+    item.label,
+    item.activity,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  // Non-study blocklist takes priority
+  if (isNonStudyBlock(item.subject, item.topic)) return false;
+
+  const studyKeywords = [
+    "geography",
+    "gs",
+    "gs1",
+    "gs2",
+    "gs3",
+    "gs4",
+    "ethics",
+    "essay",
+    "prelims",
+    "mcq",
+    "csat",
+    "current affairs",
+    "revision",
+    "optional",
+    "answer writing",
+    "pyq",
+    "newspaper",
+    "mains",
+    "polity",
+    "economy",
+    "history",
+    "environment",
+    "science",
+    "mapping",
+    "sociology",
+    "hindi",
+    "english",
+    "aptitude",
+    "reading",
+    "study",
+    "practice",
+    "test",
+    "mock",
+    "upsc",
+    "ias",
+    "culture",
+    "art",
+    "economics",
+    "international",
+    "governance",
+    "social",
+    "security",
+    "agriculture",
+    "disaster",
+    "internal security",
+    "biodiversity",
+    "ecology",
+  ];
+
+  // Accept if any study keyword is present
+  if (studyKeywords.some((k) => text.includes(k))) return true;
+
+  // Fallback: accept short items that aren't in the blocklist
+  // (e.g., "GS", "CA", abbreviated subject codes from handwritten schedules)
+  const wordCount = text.trim().split(/\s+/).length;
+  return wordCount <= 3;
 }
 
 /**
@@ -1118,7 +1214,14 @@ app.post("/api/plan-photo", upload.single("photo"), async (req, res) => {
     const dataUrl = `data:${req.file.mimetype};base64,${base64}`;
 
     const userPrompt = `
-Extract a UPSC daily study plan from the image as TIME BLOCKS.
+Extract UPSC study sessions from the image as TIME BLOCKS.
+
+IMPORTANT: Include ONLY academic study sessions.
+Skip and IGNORE all non-study entries such as:
+  breaks, lunch, dinner, breakfast, hospital, clinic, doctor,
+  travel, commute, sleep, nap, rest, bath, prayer, yoga, puja,
+  exercise, gym, walk, personal work, family time, free time,
+  office, college (as institution), class (non-UPSC), school.
 
 Return ONLY valid JSON — no markdown, no code fences, no explanation text.
 Do NOT wrap the output in triple backticks or any code block markers.
@@ -1140,21 +1243,21 @@ JSON schema (respond with exactly this structure):
 }
 
 RULES:
-1) Each item must contain:
+1) Each item must be a real UPSC study session (e.g., Polity, CSAT, Geography, History, Economy, Ethics, Essay, Current Affairs, PYQ, Mains, Revision, Answer Writing, Optional).
+2) Each item must contain:
    - startTime: "HH:MM" (24-hour) or "" if not visible
    - endTime: "HH:MM" (24-hour) or "" if not visible
-   - subject: short subject label (e.g., Polity, CSAT, Geography Optional, History, Economy, Ethics, Essay)
-   - topic: specific topic text (e.g., "FR - Article 19", "RC Practice", "Geomorphology - Slope")
+   - subject: short subject label
+   - topic: specific topic text
    - minutes: integer minutes
-2) If minutes not explicitly written, compute:
+3) If minutes not explicitly written, compute:
    minutes = difference between endTime and startTime (if both exist).
-3) If only startTime exists and minutes exist, you may leave endTime as "".
-4) If times are written in formats like "4 40", "4:40", "04.40", normalize to "04:40".
-5) Ignore decorations/headings. Focus only on schedule blocks.
+4) If only startTime exists and minutes exist, you may leave endTime as "".
+5) If times are written in formats like "4 40", "4:40", "04.40", normalize to "04:40".
 6) Keep subject/topic clean, no emojis.
 7) date: if not present in image, use "${dateFallback}".
-8) totalMinutes: sum of item.minutes.
-9) If no blocks are found, return: {"ok":true,"date":"${dateFallback}","items":[],"totalMinutes":0}
+8) totalMinutes: sum of item.minutes for study items only.
+9) If no study blocks are found, return: {"ok":true,"date":"${dateFallback}","items":[],"totalMinutes":0}
 
 Output ONLY the JSON object. No preamble. No trailing text.
 `.trim();
@@ -1258,6 +1361,26 @@ Output ONLY the JSON object. No preamble. No trailing text.
         detail: String(outText || "").slice(0, 500) || "Model returned empty output",
       });
     }
+
+    // ── Deterministic non-study filter ────────────────────────────────────────
+    // Applied AFTER model output is parsed. Do not rely solely on the prompt.
+    const originalItems = Array.isArray(parsed.items) ? parsed.items : [];
+    const studyItems = originalItems.filter(isStudyBlock);
+
+    console.log("[plan-photo FILTER]", {
+      originalCount: originalItems.length,
+      studyCount: studyItems.length,
+      ignoredCount: originalItems.length - studyItems.length,
+      ignored: originalItems
+        .filter((it) => !isStudyBlock(it))
+        .map((it) => `${it.subject} / ${it.topic}`),
+    });
+
+    parsed.items = studyItems;
+    parsed.totalMinutes = studyItems.reduce(
+      (sum, it) => sum + Number(it.minutes || 0),
+      0
+    );
 
     const safeDate = String(parsed.date || "").trim() || dateFallback;
     let items = Array.isArray(parsed.items) ? parsed.items : [];
