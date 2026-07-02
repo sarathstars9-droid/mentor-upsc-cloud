@@ -218,14 +218,15 @@ Return to mission now.`;
 
 // ── POST /api/guardian/daily-phone-usage ────────────────
 router.post('/daily-phone-usage', verifyGuardianKey, async (req, res) => {
-  const { userId, date, apps, totalDistractionSeconds } = req.body || {};
+  const { userId, deviceId, date, timezone, todayStartMillis, queryEndMillis, apps, totalDistractionSeconds } = req.body || {};
 
   if (!userId || !date || !Array.isArray(apps)) {
     return res.status(400).json({ ok: false, error: 'userId, date (YYYY-MM-DD), and apps array are required' });
   }
 
   const normalizedUid = String(userId).toLowerCase().trim();
-  console.log(`[Guardian Daily Sync] Syncing daily phone usage for user: ${normalizedUid}, date: ${date}, distraction: ${totalDistractionSeconds}s`);
+  const normalizedDeviceId = String(deviceId || 'default_device').trim();
+  console.log(`[Guardian Daily Sync] Syncing daily phone usage for user: ${normalizedUid}, device: ${normalizedDeviceId}, date: ${date}, distraction: ${totalDistractionSeconds}s`);
 
   try {
     // 1. Upsert each app package into guardian_daily_phone_usage
@@ -234,15 +235,15 @@ router.post('/daily-phone-usage', verifyGuardianKey, async (req, res) => {
       if (!appPackage || !appName) continue;
 
       const upsertSql = `
-        INSERT INTO public.guardian_daily_phone_usage (user_id, date, app_package, app_name, duration_seconds, updated_at)
-        VALUES ($1, $2, $3, $4, $5, NOW())
-        ON CONFLICT (user_id, date, app_package) 
+        INSERT INTO public.guardian_daily_phone_usage (user_id, device_id, date, app_package, app_name, duration_seconds, updated_at)
+        VALUES ($1, $2, $3, $4, $5, $6, NOW())
+        ON CONFLICT (user_id, device_id, date, app_package) 
         DO UPDATE SET 
           duration_seconds = EXCLUDED.duration_seconds,
           app_name = EXCLUDED.app_name,
           updated_at = NOW();
       `;
-      await query(upsertSql, [normalizedUid, date, appPackage, appName, Number(durationSeconds || 0)]);
+      await query(upsertSql, [normalizedUid, normalizedDeviceId, date, appPackage, appName, Number(durationSeconds || 0)]);
     }
 
     // 2. Perform distraction threshold alert check (45m, 60m, 90m)
