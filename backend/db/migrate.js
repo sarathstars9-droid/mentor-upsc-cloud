@@ -27,6 +27,10 @@ async function run() {
     await query(fixNumericSql);
     console.log("✅ Migration 027_fix_numeric_types applied");
 
+    const repairGuardianSql = fs.readFileSync(path.join(__dirname, "migrations", "045_repair_guardian_phone_usage.sql"), "utf8");
+    await query(repairGuardianSql);
+    console.log("✅ Migration 045_repair_guardian_phone_usage applied");
+
     process.exit(0);
 }
 

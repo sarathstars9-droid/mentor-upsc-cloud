@@ -57,7 +57,14 @@ export async function ensureBlockRecord(client, {
        (user_id, block_id, day_key, title, subject, topic,
         planned_start, planned_end, planned_minutes, status)
      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,'planned')
-     ON CONFLICT (user_id, block_id, day_key) DO NOTHING`,
+     ON CONFLICT (user_id, block_id, day_key) DO UPDATE SET
+       title = EXCLUDED.title,
+       subject = EXCLUDED.subject,
+       topic = EXCLUDED.topic,
+       planned_start = EXCLUDED.planned_start,
+       planned_end = EXCLUDED.planned_end,
+       planned_minutes = EXCLUDED.planned_minutes,
+       updated_at = NOW()`,
     [userId, blockId, dayKey, title, subject, topic, plannedStart, plannedEnd, plannedMinutes]
   );
 
@@ -840,7 +847,8 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
     }
   }
   
-  const deduplicatedGasBlocks = Array.from(uniqueGasMap.values());
+  const deduplicatedGasBlocks = Array.from(uniqueGasMap.values())
+    .sort((a, b) => (a.BlockId || '').localeCompare(b.BlockId || ''));
   let doneCount = 0;
   let plannedCount = 0;
 
@@ -875,95 +883,80 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
       const incomingActualMins = b._parsedMins;
       const plannedMins = b._plannedMins;
       
-      if (!dbRow) {
-         const res = await client.query(
-           `INSERT INTO study_blocks
-              (user_id, block_id, day_key, title, subject, topic,
-               planned_start, planned_end, planned_minutes, status, actual_minutes, completed_at, ended_at)
-            VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11, CASE WHEN $10='completed' THEN NOW() ELSE NULL END, CASE WHEN $10='completed' THEN NOW() ELSE NULL END)
-            RETURNING id, subject, topic, node_id`,
-           [
-             userId, b.BlockId, dayKey,
-             b.Subject || b.PlannedSubject || '',
-             b.Subject || b.PlannedSubject || '',
-             b.Topic   || b.PlannedTopic  || '',
-             b.Start   || b.PlannedStart  || '',
-             b.End     || b.PlannedEnd    || '',
-             plannedMins,
-             incomingStatus,
-             incomingActualMins
-           ]
-         );
-         
-         if (incomingStatus === 'completed') {
-             await client.query(
-                `INSERT INTO public.block_logs (block_id, user_id, started_at, ended_at, actual_minutes, completion_status)
-                 VALUES ($1, $2, NOW(), NOW(), $3, 'completed')`,
-                [res.rows[0].id, userId, incomingActualMins]
-             );
-             try {
-               const { logStudyEvent } = await import('./eventService.js');
-               await logStudyEvent({
-                 userId,
-                 eventType: 'BLOCK_COMPLETED',
-                 subject: res.rows[0].subject,
-                 topic: res.rows[0].topic,
-                 syllabusNodeId: res.rows[0].node_id,
-                 blockId: res.rows[0].id,
-                 metadata: { actual_minutes: incomingActualMins, completion_status: 'completed' }, client
-               });
-             } catch(e) {}
+      if (dbRow) {
+         // Already exists logic tracking for counts
+         if (dbRow.status === 'planned' && incomingStatus !== 'planned') {
+            if (incomingStatus === 'completed') {
+                await client.query(
+                   `INSERT INTO public.block_logs (block_id, user_id, started_at, ended_at, actual_minutes, completion_status)
+                    VALUES ($1, $2, NOW(), NOW(), $3, 'completed')`,
+                   [dbRow.id, userId, incomingActualMins]
+                );
+                try {
+                  const { logStudyEvent } = await import('./eventService.js');
+                  await logStudyEvent({
+                    userId,
+                    eventType: 'BLOCK_COMPLETED',
+                    subject: b.Subject || b.PlannedSubject || '',
+                    topic: b.Topic || b.PlannedTopic || '',
+                    syllabusNodeId: null,
+                    blockId: dbRow.id,
+                    metadata: { actual_minutes: incomingActualMins, completion_status: 'completed' }, client
+                  });
+                } catch(e) {}
+            }
          }
-      } else {
-         const dbId = dbRow.id;
-         const currentStatus = dbRow.status;
-         
-         await client.query(
-            `UPDATE study_blocks SET
-               title           = $1,
-               subject         = $2,
-               topic           = $3,
-               planned_start   = $4,
-               planned_end     = $5,
-               planned_minutes = $6,
-               updated_at      = NOW()
-             WHERE id = $7`,
-            [
-              b.Subject || b.PlannedSubject || '',
-              b.Subject || b.PlannedSubject || '',
-              b.Topic   || b.PlannedTopic  || '',
-              b.Start   || b.PlannedStart  || '',
-              b.End     || b.PlannedEnd    || '',
-              plannedMins,
-              dbId
-            ]
-         );
-         
-         if (currentStatus === 'planned' && incomingStatus !== 'planned') {
-             await client.query(
-                `UPDATE study_blocks SET status=$1, actual_minutes=$2, completed_at=CASE WHEN $1='completed' THEN NOW() ELSE NULL END, ended_at=NOW() WHERE id=$3`,
-                [incomingStatus, incomingActualMins, dbId]
-             );
-             if (incomingStatus === 'completed') {
-                 await client.query(
-                    `INSERT INTO public.block_logs (block_id, user_id, started_at, ended_at, actual_minutes, completion_status)
-                     VALUES ($1, $2, NOW(), NOW(), $3, 'completed')`,
-                    [dbId, userId, incomingActualMins]
-                 );
-                 try {
-                   const { logStudyEvent } = await import('./eventService.js');
-                   await logStudyEvent({
-                     userId,
-                     eventType: 'BLOCK_COMPLETED',
-                     subject: b.Subject || b.PlannedSubject || '',
-                     topic: b.Topic || b.PlannedTopic || '',
-                     syllabusNodeId: null, // node_id not readily available here without extra query, null is safe
-                     blockId: dbId,
-                     metadata: { actual_minutes: incomingActualMins, completion_status: 'completed' }, client
-                   });
-                 } catch(e) {}
-             }
-         }
+      }
+      
+      const res = await client.query(
+        `INSERT INTO study_blocks
+           (user_id, block_id, day_key, title, subject, topic,
+            planned_start, planned_end, planned_minutes, status, actual_minutes, completed_at, ended_at)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11, CASE WHEN $10='completed' THEN NOW() ELSE NULL END, CASE WHEN $10='completed' THEN NOW() ELSE NULL END)
+         ON CONFLICT (user_id, block_id, day_key) DO UPDATE SET
+           title           = EXCLUDED.title,
+           subject         = EXCLUDED.subject,
+           topic           = EXCLUDED.topic,
+           planned_start   = EXCLUDED.planned_start,
+           planned_end     = EXCLUDED.planned_end,
+           planned_minutes = EXCLUDED.planned_minutes,
+           status          = CASE WHEN study_blocks.status = 'planned' AND EXCLUDED.status != 'planned' THEN EXCLUDED.status ELSE study_blocks.status END,
+           actual_minutes  = CASE WHEN study_blocks.status = 'planned' AND EXCLUDED.status != 'planned' THEN EXCLUDED.actual_minutes ELSE study_blocks.actual_minutes END,
+           completed_at    = CASE WHEN study_blocks.status = 'planned' AND EXCLUDED.status = 'completed' THEN NOW() ELSE study_blocks.completed_at END,
+           ended_at        = CASE WHEN study_blocks.status = 'planned' AND EXCLUDED.status != 'planned' THEN NOW() ELSE study_blocks.ended_at END,
+           updated_at      = NOW()
+         RETURNING id, subject, topic, node_id, status`,
+        [
+          userId, b.BlockId, dayKey,
+          b.Subject || b.PlannedSubject || '',
+          b.Subject || b.PlannedSubject || '',
+          b.Topic   || b.PlannedTopic  || '',
+          b.Start   || b.PlannedStart  || '',
+          b.End     || b.PlannedEnd    || '',
+          plannedMins,
+          incomingStatus,
+          incomingActualMins
+        ]
+      );
+      
+      if (!dbRow && incomingStatus === 'completed') {
+          await client.query(
+             `INSERT INTO public.block_logs (block_id, user_id, started_at, ended_at, actual_minutes, completion_status)
+              VALUES ($1, $2, NOW(), NOW(), $3, 'completed')`,
+             [res.rows[0].id, userId, incomingActualMins]
+          );
+          try {
+            const { logStudyEvent } = await import('./eventService.js');
+            await logStudyEvent({
+              userId,
+              eventType: 'BLOCK_COMPLETED',
+              subject: res.rows[0].subject,
+              topic: res.rows[0].topic,
+              syllabusNodeId: res.rows[0].node_id,
+              blockId: res.rows[0].id,
+              metadata: { actual_minutes: incomingActualMins, completion_status: 'completed' }, client
+            });
+          } catch(e) {}
       }
       if (incomingStatus === 'completed') doneCount++;
       else plannedCount++;

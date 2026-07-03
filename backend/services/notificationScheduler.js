@@ -414,21 +414,64 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
     }
   }
 
-  // ── 3. Daily Night Mentor Review (9:00 PM) ──────────────────────────────────
-  if (hour === 21 && minute === 0) {
-    try {
-      const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
-      const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
-      if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
-        if (!(await hasEvent(userId, 'NIGHT_MENTOR_REVIEW', todayKey))) {
+  // ── 3. Daily Night Mentor Review (Dynamic) ──────────────────────────────────
+  try {
+    const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
+    const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+    if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
+      if (!(await hasEvent(userId, 'NIGHT_MENTOR_REVIEW', todayKey))) {
+        const { getDailyExecutionSummary } = await import('./dailyExecutionSummaryService.js');
+        const summary = await getDailyExecutionSummary(userId, todayKey);
+        
+        let shouldSendReview = false;
+
+        if (summary.totalBlocks > 0) {
+          const hasPending = summary.blockRows.some(b => b.isPending);
+          if (!hasPending) {
+            let maxPlannedEndMs = 0;
+            for (const b of summary.blockRows) {
+              if (b.planned_end) {
+                const [endH, endM] = b.planned_end.split(':').map(Number);
+                const plannedEndDate = new Date(d);
+                plannedEndDate.setHours(endH, endM, 0, 0);
+                maxPlannedEndMs = Math.max(maxPlannedEndMs, plannedEndDate.getTime());
+              }
+            }
+
+            const finalBlock = summary.blockRows.reduce((prev, current) => {
+              const getEndMs = (b) => {
+                if (!b.planned_end) return 0;
+                const [h, m] = b.planned_end.split(':').map(Number);
+                return h * 60 + m;
+              };
+              return getEndMs(prev) > getEndMs(current) ? prev : current;
+            }, summary.blockRows[0]);
+
+            const finalBlockEndedAtMs = finalBlock && finalBlock.ended_at ? new Date(finalBlock.ended_at).getTime() : 0;
+            const isFinalBlockCompleted = finalBlock && finalBlock.isCompleted;
+
+            if (d.getTime() >= maxPlannedEndMs + 15 * 60000) {
+              shouldSendReview = true;
+            } else if (isFinalBlockCompleted && finalBlockEndedAtMs > 0 && d.getTime() >= finalBlockEndedAtMs + 60000) {
+              shouldSendReview = true;
+            }
+          }
+        } else {
+          // No blocks planned today. Fallback to 22:15.
+          if (hour >= 22 && minute >= 15) {
+            shouldSendReview = true;
+          }
+        }
+
+        if (shouldSendReview) {
           const { sendNightMentorReview } = await import('./mentorReviewService.js');
           await sendNightMentorReview(userId, todayKey);
           await recordEvent(userId, 'NIGHT_MENTOR_REVIEW', todayKey);
         }
       }
-    } catch (err) {
-      console.error("[NotificationScheduler] daily night mentor review failed:", err.message);
     }
+  } catch (err) {
+    console.error("[NotificationScheduler] daily night mentor review failed:", err.message);
   }
 
   // ── 4. Weekly Mentor Report (Sunday 09:00 PM) ──────────────────────────────────
@@ -739,11 +782,19 @@ async function processTodayBlocks(userId, now, isEscalationPaused = false) {
            [b.id]
          );
 
-         await query(
-           `INSERT INTO public.plan_block_events (user_id, block_id, event_type, metadata)
-            VALUES ($1, $2, 'BLOCK_MISSED', $3)`,
-           [userId, b.id, JSON.stringify({ block_id: b.block_id, subject: b.subject, planned_end: b.planned_end })]
-         );
+         // Confirm block exists in plan_blocks before inserting to prevent FK violation
+         const pBlockCheck = await query(`SELECT id FROM public.plan_blocks WHERE id = $1`, [b.id]).catch(() => ({ rows: [] }));
+         if (pBlockCheck.rows && pBlockCheck.rows.length > 0) {
+           await query(
+             `INSERT INTO public.plan_block_events (user_id, block_id, event_type, metadata)
+              VALUES ($1, $2, 'BLOCK_MISSED', $3)`,
+             [userId, b.id, JSON.stringify({ block_id: b.block_id, subject: b.subject, planned_end: b.planned_end })]
+           );
+         } else {
+           // Also log to study_blocks if it was meant for study_blocks but not plan_blocks
+           // Since plan_block_events has FK to plan_blocks, we just skip it for study_blocks-only items
+           console.log(`[NotificationScheduler] Skipping BLOCK_MISSED event, block_id ${b.id} not in plan_blocks`);
+         }
        }
     }
   }
