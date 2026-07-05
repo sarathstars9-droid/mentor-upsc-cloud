@@ -128,6 +128,13 @@ export async function updateMistake(id, changes) {
             typeof changes.is_read === "boolean"
                 ? changes.is_read
                 : undefined,
+        status: changes.status,
+        severity: changes.severity,
+        attempt_id: changes.attempt_id,
+        paper: changes.paper,
+        topic: changes.topic,
+        mistake_type: changes.mistake_type,
+        mistake_text: changes.mistake_text,
     };
 
     const entries = Object.entries(allowed).filter(([, value]) => value !== undefined);

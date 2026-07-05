@@ -48,7 +48,36 @@ export async function ensureRevisionItemFromMistake(mistake) {
             mistake.source_ref || null,
             mistake.stage || null
         );
-        if (existing) return existing;
+
+        let intervalDays = 1;
+        if (mistake.severity === "high") {
+            intervalDays = 1; // today or tomorrow
+        } else if (mistake.severity === "medium") {
+            intervalDays = 3; // 3 or 7 days
+        } else if (mistake.severity === "low") {
+            intervalDays = 7; // 7 to 14 days
+        }
+
+        const nextReviewAt = new Date();
+        nextReviewAt.setDate(nextReviewAt.getDate() + intervalDays);
+        const nextReviewAtStr = nextReviewAt.toISOString();
+
+        if (existing) {
+            const newPriority = getPriorityFromMistake(mistake);
+            const updates = {};
+            if (newPriority === "high" && existing.priority !== "high") {
+                updates.priority = "high";
+            }
+            if ((mistake.must_revise || mistake.severity === "high") && existing.status !== "pending") {
+                updates.status = "pending";
+                updates.next_review_at = nextReviewAtStr;
+                updates.due_date = nextReviewAtStr;
+            }
+            if (Object.keys(updates).length > 0) {
+                return await repo.updateRevisionItem(existing.id, updates);
+            }
+            return existing;
+        }
 
         return await repo.upsertRevisionItem({
             user_id: mistake.user_id,
@@ -62,9 +91,10 @@ export async function ensureRevisionItemFromMistake(mistake) {
             status: "pending",
             priority: getPriorityFromMistake(mistake),
             review_count: 0,
-            interval_days: 1,
+            interval_days: intervalDays,
             last_reviewed_at: null,
-            next_review_at: new Date().toISOString(),
+            next_review_at: nextReviewAtStr,
+            due_date: nextReviewAtStr,
             block_id: mistake.block_id || null,
             mistake_id: mistake.id || null,
         });

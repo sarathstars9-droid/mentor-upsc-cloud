@@ -74,6 +74,26 @@ router.post("/", async (req, res) => {
       });
       console.log("[evaluateAnswerRoute] Successfully saved to DB. Row ID:", savedRow?.id);
 
+      // Generate mistakes automatically for the Mistake Book
+      try {
+        const { generateMistakesFromBasicEvaluation } = await import("../services/mainsMistakeService.js");
+        await generateMistakesFromBasicEvaluation({
+          userId: userId || 'user_1',
+          attemptId: attemptId || null,
+          paper: finalPaper,
+          subject: finalSubject,
+          topic: finalTopic,
+          questionText,
+          candidateAnswer,
+          evaluationJson: evaluation,
+          score: finalScore,
+          nodeId: syllabusNodeId || syllabus_node_id || null
+        });
+        console.log("[evaluateAnswerRoute] Generated mistakes from basic review.");
+      } catch (mistakeErr) {
+        console.error("[evaluateAnswerRoute] generateMistakesFromBasicEvaluation failed:", mistakeErr);
+      }
+
       // Log BASIC_REVIEW_DONE study event
       try {
         const { logStudyEvent } = await import("../services/eventService.js");

@@ -101,6 +101,26 @@ router.post("/attempt/save", async (req, res) => {
         air1ReviewSaved = true;
         console.log(`[mainsReview] Saved AIR-1 review to DB for attempt ${attemptId}`);
 
+        // Generate/enrich mistakes automatically for the Mistake Book
+        try {
+          const { generateMistakesFromAir1Review } = await import("../services/mainsMistakeService.js");
+          await generateMistakesFromAir1Review({
+            userId: record.userId || "user_1",
+            attemptId: attemptId,
+            paper: record.source?.paper || record.question?.paper || null,
+            subject: record.source?.subject || record.question?.subjectTag || null,
+            topic: record.question?.topicNodeId || null,
+            questionText: record.question?.text || "",
+            candidateAnswer: record.extraction?.extractedText || record.extraction?.text || "",
+            air1ReviewJson: parsedJson || {},
+            score: parsedJson?.score || parsedJson?.estimatedScore || null,
+            nodeId: record.question?.topicNodeId || record.question?.syllabus_node_id || null
+          });
+          console.log(`[mainsReview] Generated/enriched mistakes from AIR-1 review for attempt ${attemptId}`);
+        } catch (mistakeErr) {
+          console.error(`[mainsReview] generateMistakesFromAir1Review failed for attempt ${attemptId}:`, mistakeErr);
+        }
+
         // Log AIR1_REVIEW_SAVED event
         try {
           const { logStudyEvent } = await import("../services/eventService.js");

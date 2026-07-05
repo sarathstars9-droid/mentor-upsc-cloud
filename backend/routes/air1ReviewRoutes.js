@@ -31,6 +31,26 @@ router.post("/extract", async (req, res) => {
       extractedJson: intelligence,
     });
 
+    // Generate/enrich mistakes automatically for the Mistake Book
+    try {
+      const { generateMistakesFromAir1Review } = await import("../services/mainsMistakeService.js");
+      await generateMistakesFromAir1Review({
+        userId: userId || "moulika",
+        attemptId: req.body.attemptId || req.body.attempt_id || null,
+        paper: paper || null,
+        subject: req.body.subject || null,
+        topic: req.body.topic || null,
+        questionText: question,
+        candidateAnswer: studentAnswer,
+        air1ReviewJson: intelligence,
+        score: intelligence?.estimatedMarks?.scored || null,
+        nodeId: req.body.syllabusNodeId || req.body.syllabus_node_id || null
+      });
+      console.log("[air1ReviewRoutes] Generated/enriched mistakes from AIR-1 review.");
+    } catch (mistakeErr) {
+      console.error("[air1ReviewRoutes] generateMistakesFromAir1Review failed:", mistakeErr);
+    }
+
     // Log AIR1_REVIEW_SAVED study event
     try {
       const { logStudyEvent } = await import("../services/eventService.js");

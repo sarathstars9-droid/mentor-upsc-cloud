@@ -1324,7 +1324,11 @@ export default function AnswerWritingPage() {
         clearVisibleAttemptState();
         console.log("[RESTORE USING DISPLAYED QUESTION]", restoreCtx);
 
-        fetchLatestMainsAttemptForQuestion("user_1", restoreCtx.questionKey)
+        const fetchPromise = (rs?.attemptId || attemptId)
+            ? fetchMainsAttempt(rs?.attemptId || attemptId)
+            : fetchLatestMainsAttemptForQuestion("user_1", restoreCtx.questionKey);
+
+        fetchPromise
             .then(res => {
                 if (cancelled || !res?.ok || !res?.attempt) return;
                 const attempt = res.attempt;

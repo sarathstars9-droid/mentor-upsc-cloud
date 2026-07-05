@@ -151,6 +151,26 @@ router.post("/basic-evaluation", uploadMiddleware, async (req, res) => {
       });
       console.log(`[answer-writing] Basic evaluation saved to DB. ID: ${savedRow?.id}`);
 
+      // Generate mistakes automatically for the Mistake Book
+      try {
+        const { generateMistakesFromBasicEvaluation } = await import("../services/mainsMistakeService.js");
+        await generateMistakesFromBasicEvaluation({
+          userId,
+          attemptId,
+          paper,
+          subject,
+          topic: req.body.topic || req.body.answerType || "",
+          questionText,
+          candidateAnswer,
+          evaluationJson: evaluation,
+          score: finalScore,
+          nodeId: syllabusNodeId
+        });
+        console.log("[answer-writing] Generated mistakes from basic review.");
+      } catch (mistakeErr) {
+        console.error("[answer-writing] generateMistakesFromBasicEvaluation failed:", mistakeErr);
+      }
+
       // Log study event
       try {
         const { logStudyEvent } = await import("../services/eventService.js");

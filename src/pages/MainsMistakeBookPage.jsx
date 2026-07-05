@@ -30,20 +30,37 @@ const label11 = (color = T.subtle) => ({
     letterSpacing: "0.11em", textTransform: "uppercase", color,
 });
 
-const PAPER_ACCENT = { GS1: T.amber, GS2: T.blue, GS3: T.green, All: T.purple };
+const PAPER_ACCENT = {
+    All: T.purple,
+    GS1: T.amber,
+    GS2: T.blue,
+    GS3: T.green,
+    Essay: T.purple,
+    Ethics: T.red,
+    "Geography Optional": T.blue,
+};
 const API_URL = `${BACKEND_URL}/api/mistakes?userId=user_1`;
 
 function inferPaper(mistake) {
-    if (mistake.paper) return String(mistake.paper).toUpperCase();
+    if (mistake.paper) {
+        const p = String(mistake.paper).toUpperCase();
+        if (p.includes("ESSAY")) return "Essay";
+        if (p.includes("ETHICS") || p.includes("GS4") || p.includes("GS PAPER IV") || p.includes("GS 4")) return "Ethics";
+        if (p.includes("GEOGRAPHY") || p.includes("OPTIONAL")) return "Geography Optional";
+        if (p.includes("GS1") || p.includes("GS 1") || p.includes("GENERAL STUDIES I")) return "GS1";
+        if (p.includes("GS2") || p.includes("GS 2") || p.includes("GENERAL STUDIES II")) return "GS2";
+        if (p.includes("GS3") || p.includes("GS 3") || p.includes("GENERAL STUDIES III")) return "GS3";
+        return mistake.paper;
+    }
     if (mistake.paper_type) return String(mistake.paper_type).toUpperCase();
     if (mistake.source_ref) {
         const ref = String(mistake.source_ref).toUpperCase();
         if (ref.includes("GS1")) return "GS1";
         if (ref.includes("GS2")) return "GS2";
         if (ref.includes("GS3")) return "GS3";
-        if (ref.includes("GS4")) return "GS4";
-        if (ref.includes("ESSAY")) return "ESSAY";
-        if (ref.includes("ETHICS")) return "GS4";
+        if (ref.includes("GS4")) return "Ethics";
+        if (ref.includes("ESSAY")) return "Essay";
+        if (ref.includes("ETHICS")) return "Ethics";
     }
     return "GS1";
 }
@@ -63,6 +80,19 @@ function inferSeverity(mistake) {
 }
 
 function normalizeMistake(m) {
+    let score = m.score ?? null;
+    let reviewSource = m.review_source ?? null;
+    let notes = m.notes ?? "";
+
+    if (m.notes && m.notes.startsWith("[Source:")) {
+        const match = m.notes.match(/^\[Source:\s*([^\]]+)\]\s*\[Score:\s*([^\]]+)\]\n([\s\S]*)$/);
+        if (match) {
+            reviewSource = match[1];
+            score = match[2] === "—" ? null : match[2];
+            notes = match[3];
+        }
+    }
+
     return {
         ...m,
         questionText: m.question_text ?? m.questionText ?? "",
@@ -78,11 +108,18 @@ function normalizeMistake(m) {
         questionId: m.question_id ?? m.questionId ?? m.id,
         mustRevise: Boolean(m.must_revise ?? m.mustRevise),
         errorType: m.error_type ?? m.errorType ?? "other",
-        notes: m.notes ?? "",
+        notes: notes,
         stage: m.stage ?? "mains",
         paper: inferPaper(m),
         status: inferStatus(m),
         severity: inferSeverity(m),
+        // Deserialized fields passed to card
+        score: score,
+        review_source: reviewSource,
+        attemptId: m.attempt_id ?? m.source_ref ?? null,
+        topic: m.topic ?? m.subject ?? "",
+        mistakeType: m.mistake_type ?? m.error_type ?? "",
+        mistakeText: m.mistake_text ?? notes,
     };
 }
 
@@ -338,7 +375,7 @@ export default function MainsMistakeBookPage() {
                     {/* Paper filter */}
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                         <span style={{ ...label11(T.subtle), fontSize: 9, width: 52 }}>Paper</span>
-                        {["All", "GS1", "GS2", "GS3"].map(p => (
+                        {["All", "GS1", "GS2", "GS3", "Essay", "Ethics", "Geography Optional"].map(p => (
                             <FilterPill
                                 key={p}
                                 label={p}

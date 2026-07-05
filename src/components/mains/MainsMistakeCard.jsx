@@ -2,6 +2,7 @@
 // Single mistake card used in the Mains Mistake Book page.
 
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // ─── Theme ────────────────────────────────────────────────────────────────────
 const T = {
@@ -23,41 +24,63 @@ const T = {
     font: "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
 };
 
-const PAPER_ACCENT = { GS1: T.amber, GS2: T.blue, GS3: T.green };
+const PAPER_ACCENT = {
+    GS1: T.amber,
+    GS2: T.blue,
+    GS3: T.green,
+    Ethics: T.red,
+    Essay: T.purple,
+    "Geography Optional": T.blue
+};
 
 const SEVERITY_COLOR = { low: T.green, medium: T.amber, high: T.red };
 
-const MISTAKE_LABELS = {
-    weak_intro: "Weak Intro",
-    weak_body_flow: "Weak Body Flow",
-    weak_conclusion: "Weak Conclusion",
-    no_subheadings: "No Subheadings",
-    missing_dimensions: "Missing Dimensions",
-    weak_examples: "Weak Examples",
-    factual_gap: "Factual Gap",
-    poor_question_understanding: "Poor Q Understanding",
-    too_short: "Too Short",
-    too_lengthy: "Too Lengthy",
-    time_overrun: "Time Overrun",
-    incomplete_attempt: "Incomplete Attempt",
-    vague_language: "Vague Language",
-    repetitive_expression: "Repetitive Expression",
-    low_clarity: "Low Clarity",
-    poor_formatting: "Poor Formatting",
-};
-
 export default function MainsMistakeCard({ mistake, onMarkResolved, onToggleMustRevise }) {
+    const navigate = useNavigate();
     const [expanded, setExpanded] = useState(false);
     const accent = PAPER_ACCENT[mistake.paper] || T.amber;
     const sevColor = SEVERITY_COLOR[mistake.severity] || T.amber;
     const isResolved = mistake.status === "resolved";
-    const dateStr = new Date(mistake.createdAt).toLocaleDateString("en-IN", {
-        day: "numeric", month: "short", year: "numeric",
-    });
+    const dateStr = mistake.createdAt 
+        ? new Date(mistake.createdAt).toLocaleDateString("en-IN", {
+            day: "numeric", month: "short", year: "numeric",
+          })
+        : "—";
 
-    const questionSnippet = (mistake.question || "").length > 120
-        ? mistake.question.slice(0, 120) + "…"
-        : mistake.question || "—";
+    const questionText = mistake.questionText || mistake.question || "—";
+    const questionSnippet = questionText.length > 120
+        ? questionText.slice(0, 120) + "…"
+        : questionText;
+
+    const sourceLabel = mistake.review_source === "chatgpt_air1" 
+        ? "ChatGPT AIR-1 Review" 
+        : mistake.review_source === "gemini_basic" 
+        ? "Gemini Basic Review"
+        : "Basic Evaluation";
+
+    const handleViewAttempt = () => {
+        if (!mistake.attemptId && !mistake.source_ref) return;
+        navigate("/mains/answer-writing", {
+            state: {
+                attemptId: mistake.attemptId || mistake.source_ref,
+                isRestored: true,
+                practiceMode: "typed",
+                paper: mistake.paper,
+                mode: "Custom",
+                questions: [
+                    {
+                        question: questionText,
+                        marks: mistake.marks || 15,
+                        wordLimit: mistake.wordLimit || 200,
+                        paper: mistake.paper,
+                        year: mistake.year || null,
+                        hint: mistake.topic || ""
+                    }
+                ],
+                currentIndex: 0
+            }
+        });
+    };
 
     return (
         <div style={{
@@ -76,7 +99,7 @@ export default function MainsMistakeCard({ mistake, onMarkResolved, onToggleMust
 
             <div style={{ padding: "16px 20px" }}>
 
-                {/* Top row: Paper badge + severity + date + must-revise */}
+                {/* Top row: Paper badge + severity + status + score + must-revise */}
                 <div style={{
                     display: "flex", alignItems: "center", gap: 8,
                     flexWrap: "wrap", marginBottom: 10,
@@ -92,13 +115,26 @@ export default function MainsMistakeCard({ mistake, onMarkResolved, onToggleMust
                     </span>
 
                     {/* Marks */}
-                    <span style={{
-                        fontSize: 10, fontWeight: 700, color: T.dim,
-                        background: T.bg, border: `1px solid ${T.border}`,
-                        borderRadius: 5, padding: "2px 8px",
-                    }}>
-                        {mistake.marks}M
-                    </span>
+                    {mistake.marks && (
+                        <span style={{
+                            fontSize: 10, fontWeight: 700, color: T.dim,
+                            background: T.bg, border: `1px solid ${T.border}`,
+                            borderRadius: 5, padding: "2px 8px",
+                        }}>
+                            {mistake.marks}M
+                        </span>
+                    )}
+
+                    {/* Score badge */}
+                    {mistake.score !== null && mistake.score !== undefined && (
+                        <span style={{
+                            fontSize: 10, fontWeight: 800, color: T.green,
+                            background: `${T.green}15`, border: `1px solid ${T.green}33`,
+                            borderRadius: 5, padding: "2px 8px",
+                        }}>
+                            Score: {mistake.score}
+                        </span>
+                    )}
 
                     {/* Severity */}
                     <span style={{
@@ -140,7 +176,7 @@ export default function MainsMistakeCard({ mistake, onMarkResolved, onToggleMust
                     </span>
                 </div>
 
-                {/* Question snippet */}
+                {/* Question title / snippet */}
                 <div
                     onClick={() => setExpanded(!expanded)}
                     style={{
@@ -149,29 +185,42 @@ export default function MainsMistakeCard({ mistake, onMarkResolved, onToggleMust
                         cursor: "pointer",
                     }}
                 >
-                    {expanded ? mistake.question : questionSnippet}
+                    {expanded ? questionText : questionSnippet}
                 </div>
 
-                {/* Mistake tags */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 12 }}>
-                    {(mistake.mistakeTypes || []).map((key) => (
-                        <span
-                            key={key}
-                            style={{
-                                fontSize: 10, fontWeight: 700,
-                                padding: "3px 10px", borderRadius: 6,
-                                background: `${T.red}12`,
-                                border: `1px solid ${T.red}25`,
-                                color: T.red,
-                                letterSpacing: "0.03em",
-                            }}
-                        >
-                            {MISTAKE_LABELS[key] || key}
+                {/* Source tag & Topic */}
+                <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12, flexWrap: "wrap" }}>
+                    <span style={{
+                        fontSize: 10, fontWeight: 700,
+                        padding: "2px 8px", borderRadius: 4,
+                        background: T.bg, border: `1px solid ${T.border}`,
+                        color: T.dim,
+                    }}>
+                        Source: {sourceLabel}
+                    </span>
+                    {mistake.topic && (
+                        <span style={{
+                            fontSize: 10, fontWeight: 700,
+                            padding: "2px 8px", borderRadius: 4,
+                            background: T.bg, border: `1px solid ${T.border}`,
+                            color: T.dim,
+                        }}>
+                            Topic: {mistake.topic}
                         </span>
-                    ))}
+                    )}
                 </div>
 
-                {/* Notes */}
+                {/* Mistake Summary */}
+                {mistake.mistakeText && (
+                    <div style={{
+                        fontSize: 12, color: T.textBright, fontWeight: 700,
+                        lineHeight: 1.5, marginBottom: 8
+                    }}>
+                        ⚠️ {mistake.mistakeText}
+                    </div>
+                )}
+
+                {/* Recommended Fix */}
                 {mistake.notes && (
                     <div style={{
                         fontSize: 11, color: T.dim, lineHeight: 1.6,
@@ -180,26 +229,12 @@ export default function MainsMistakeCard({ mistake, onMarkResolved, onToggleMust
                         borderRadius: 8, marginBottom: 12,
                         fontStyle: "italic",
                     }}>
-                        {mistake.notes}
-                    </div>
-                )}
-
-                {/* Expanded details */}
-                {expanded && (
-                    <div style={{
-                        display: "flex", gap: 12, flexWrap: "wrap",
-                        marginBottom: 12,
-                    }}>
-                        {mistake.wordCount > 0 && (
-                            <MiniPill label="Words" value={`${mistake.wordCount}/${mistake.targetWords}`} />
-                        )}
-                        {mistake.mode && <MiniPill label="Mode" value={mistake.mode} />}
-                        {mistake.year && <MiniPill label="Year" value={mistake.year} />}
+                        <strong>Fix suggestion:</strong> {mistake.notes}
                     </div>
                 )}
 
                 {/* Actions */}
-                <div style={{ display: "flex", gap: 8 }}>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8 }}>
                     {!isResolved && (
                         <button
                             onClick={() => onMarkResolved?.(mistake.id)}
@@ -229,26 +264,24 @@ export default function MainsMistakeCard({ mistake, onMarkResolved, onToggleMust
                     >
                         {mistake.mustRevise ? "🔁 Unmark Revise" : "🔁 Must Revise"}
                     </button>
+
+                    {(mistake.attemptId || mistake.source_ref) && (
+                        <button
+                            onClick={handleViewAttempt}
+                            style={{
+                                background: `${accent}18`,
+                                border: `1px solid ${accent}44`,
+                                borderRadius: 7, padding: "5px 14px",
+                                fontSize: 11, fontWeight: 700,
+                                color: accent, cursor: "pointer",
+                                fontFamily: T.font,
+                            }}
+                        >
+                            📝 Open Attempt Workspace
+                        </button>
+                    )}
                 </div>
             </div>
-        </div>
-    );
-}
-
-// Small detail pill for expanded view
-function MiniPill({ label, value }) {
-    return (
-        <div style={{
-            display: "flex", flexDirection: "column", gap: 2,
-            background: T.bg, border: `1px solid ${T.border}`,
-            borderRadius: 6, padding: "5px 10px",
-        }}>
-            <span style={{
-                fontSize: 8, fontWeight: 700,
-                letterSpacing: "0.1em", textTransform: "uppercase",
-                color: T.subtle,
-            }}>{label}</span>
-            <span style={{ fontSize: 11, fontWeight: 700, color: T.text }}>{value}</span>
         </div>
     );
 }
