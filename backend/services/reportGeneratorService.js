@@ -344,11 +344,12 @@ export function generateGoodMorningReport(data, userName = "Moulika") {
     const streakDays = data.consecutive_zero_study_days || 0;
     const recoveryTargetStr = formatHoursAndMins(data.adaptive_target_hours || 0);
     const stateLabel = state === 'RECOVERY' ? `RECOVERY (Day ${data.recovery_day})` : state.replace('_', ' ');
+    const streakLabel = (data.completed_hours === 0) ? "Zero-study streak" : "Days below minimum target";
 
     reportText = `Good morning ${userName} 🌅
 
 Mission Status: ${stateColor} *${stateLabel}*
-Zero-study streak: ${streakDays} day(s)
+${streakLabel}: ${streakDays} day(s)
 Expected progress by today: ${data.expected_hours_till_today} hours
 Actual progress: ${formatHoursAndMins(data.completed_hours)}
 Backlog: ${data.backlog_hours} hours

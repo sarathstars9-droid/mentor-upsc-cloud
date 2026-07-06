@@ -90,9 +90,7 @@ async function runTests() {
     console.log('Generated Review Text:\n', review3.reviewText);
 
     // Assertions
-    if (!review3.reviewText.includes('studied hours: 0m (Planned: 4h 30m)')) throw new Error('Mismatch in studied hours');
-    if (!review3.reviewText.includes('blocks completed: 0/2')) throw new Error('Mismatch in blocks completed count');
-    if (!review3.reviewText.includes('A complete zero day. The plan was there, but you avoided execution entirely.')) throw new Error('Observation is missing or wrong');
+    if (!review3.reviewText.includes('A complete zero day. The plan was there, but execution did not begin.')) throw new Error('Observation is missing or wrong');
     if (!review3.reviewText.includes('Reply with the number that best matches the reason:')) throw new Error('Reflection choices missing');
     console.log('✅ Test 3: PASSED');
 

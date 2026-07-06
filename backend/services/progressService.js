@@ -2,6 +2,7 @@ import { query } from '../db/index.js';
 import { computeSyllabusProgress } from '../brain/syllabusProgressEngine.js';
 import { getPrelimsDaysLeft, getMainsDaysLeft } from '../config/examCalendar.js';
 import { getDailyTargetMinutes } from './adaptiveGoalService.js';
+import { getBlockState } from './computeBlockState.js';
 
 // Helper to determine Monday of the current week in Asia/Kolkata timezone
 export function getMondayOfCurrentWeek() {
@@ -108,11 +109,11 @@ export async function getAreaProgress(userId, area) {
   }
   const target = targetRes.rows[0];
 
-  // Fetch all study blocks for this user that are completed or partial
+  // Fetch all study blocks for this user
   const blocksRes = await query(
-    `SELECT subject, subject_id, day_key, actual_minutes 
+    `SELECT subject, subject_id, day_key, status, actual_minutes, started_at, ended_at, planned_end 
      FROM public.study_blocks 
-     WHERE user_id = $1 AND status IN ('completed', 'partial') AND started_at IS NOT NULL`,
+     WHERE user_id = $1`,
     [userId]
   );
 
@@ -120,13 +121,18 @@ export async function getAreaProgress(userId, area) {
 
   let completedMins = 0;
   let thisWeekMins = 0;
+  const nowKolkata = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+  const nowMs = nowKolkata.getTime();
 
   for (const block of blocksRes.rows) {
     const blockArea = mapBlockToTargetArea(block);
     if (blockArea === area) {
-      completedMins += block.actual_minutes;
-      if (block.day_key >= mondayStr) {
-        thisWeekMins += block.actual_minutes;
+      const state = getBlockState(block, nowMs);
+      if (state === 'completed') {
+        completedMins += block.actual_minutes;
+        if (block.day_key >= mondayStr) {
+          thisWeekMins += block.actual_minutes;
+        }
       }
     }
   }
@@ -138,7 +144,6 @@ export async function getAreaProgress(userId, area) {
   // Diff in milliseconds
   const totalWeeks = Math.max(1.0, (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24 * 7));
 
-  const nowKolkata = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
   const remainingWeeks = Math.max(1.0, (end.getTime() - nowKolkata.getTime()) / (1000 * 60 * 60 * 24 * 7));
 
   const targetHours = Number(target.target_hours);
@@ -225,7 +230,7 @@ export async function getDailyProgressReport(userId, overrideDayKey = null) {
   return {
     date: todayKey,
     total_blocks: summary.totalBlocks,
-    started_blocks: summary.blockRows.filter(b => ['active','paused'].includes(b.status) || b.isCompleted).length,
+    started_blocks: summary.blockRows.filter(b => b.state === 'active' || b.state === 'completed').length,
     completed_blocks: summary.completedBlocks,
     total_planned_hours: Number((summary.plannedMinutes / 60.0).toFixed(1)),
     total_actual_hours: Number((summary.studiedMinutes / 60.0).toFixed(1)),
@@ -971,19 +976,22 @@ export async function getWeeklyExecutionSummary(userId) {
 
   const mondayStr = getMondayOfCurrentWeek();
   const blocksRes = await query(
-    `SELECT subject, subject_id, planned_minutes, actual_minutes, status 
+    `SELECT subject, subject_id, planned_minutes, actual_minutes, status, started_at, ended_at, planned_end, day_key 
      FROM public.study_blocks 
      WHERE user_id = $1 AND day_key >= $2`,
     [userId, mondayStr]
   );
   
   let outputCount = 0;
+  const nowKolkata = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+  const nowMs = nowKolkata.getTime();
 
   for (const block of blocksRes.rows) {
-    if (block.status !== 'missed' && block.status !== 'skipped') {
+    const state = getBlockState(block, nowMs);
+    if (state !== 'missed' && state !== 'postponed') {
       thisWeekPlanned += (block.planned_minutes || 0) / 60.0;
     }
-    if (['completed', 'partial'].includes(block.status)) {
+    if (state === 'completed') {
       if ((block.actual_minutes || 0) >= 30) {
          outputCount++;
       }
@@ -1008,10 +1016,8 @@ export async function getWeeklyExecutionSummary(userId) {
   const weeklyMissionTarget = totalMissionHours / totalMissionWeeks;  // ~75.4h/week
 
   // Required recovery pace: remaining hours / remaining weeks (from subjects)
-  const totalCompleted = subjects.reduce((acc, s) => acc + s.completed_hours, 0);
-  const totalRemaining = subjects.reduce((acc, s) => acc + s.remaining_hours, 0);
-  const nowKolkata = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
   const remainingWeeks = Math.max(1, (missionEnd.getTime() - nowKolkata.getTime()) / (1000 * 60 * 60 * 24 * 7));
+  const totalRemaining = subjects.reduce((acc, s) => acc + s.remaining_hours, 0);
   const requiredRecoveryPace = totalRemaining / remainingWeeks;
 
   // Deficit = mission weekly target - what was executed this week
@@ -1022,8 +1028,48 @@ export async function getWeeklyExecutionSummary(userId) {
   const sortedByPace = [...subjects].sort((a, b) => b.this_week_completed - a.this_week_completed);
   const strongSubjects = sortedByPace.slice(0, 3).filter(s => s.this_week_completed > 0).map(s => s.subject);
   
-  const sortedByDeficit = [...subjects].filter(s => s.weekly_deficit > 0).sort((a, b) => b.weekly_deficit - a.weekly_deficit);
-  const weakSubjects = sortedByDeficit.slice(0, 3).map(s => s.subject);
+  // Calculate risk subjects from real missed/postponed/low execution data this week
+  const subjectStats = {};
+  for (const block of blocksRes.rows) {
+    const subLabel = normalizeSubjectLabel(block.subject || block.subject_id);
+    if (!subjectStats[subLabel]) {
+      subjectStats[subLabel] = { subject: subLabel, plannedMins: 0, actualMins: 0, missedCount: 0 };
+    }
+    const state = getBlockState(block, nowMs);
+    subjectStats[subLabel].plannedMins += block.planned_minutes || 0;
+    if (state === 'completed') {
+      subjectStats[subLabel].actualMins += block.actual_minutes || 0;
+    }
+    if (['missed', 'postponed'].includes(state)) {
+      subjectStats[subLabel].missedCount += 1;
+    }
+  }
+
+  const riskSubjectsList = Object.values(subjectStats)
+    .map(stats => {
+      const execRate = stats.plannedMins > 0 ? (stats.actualMins / stats.plannedMins) * 100 : 100;
+      return {
+        ...stats,
+        execRate
+      };
+    })
+    .filter(stats => stats.plannedMins > 0)
+    .sort((a, b) => {
+      if (b.missedCount !== a.missedCount) {
+        return b.missedCount - a.missedCount;
+      }
+      if (a.execRate !== b.execRate) {
+        return a.execRate - b.execRate;
+      }
+      return b.plannedMins - a.plannedMins;
+    });
+
+  const activeRiskSubjects = riskSubjectsList.filter(s => s.missedCount > 0 || s.execRate < 85);
+  let weakSubjects = activeRiskSubjects.slice(0, 3).map(s => s.subject);
+  if (weakSubjects.length === 0) {
+    const sortedByDeficit = [...subjects].filter(s => s.weekly_deficit > 0).sort((a, b) => b.weekly_deficit - a.weekly_deficit);
+    weakSubjects = sortedByDeficit.slice(0, 3).map(s => s.subject);
+  }
   
   // Smart next_action: based on execution rate and plan vs execute gap
   let nextAction;

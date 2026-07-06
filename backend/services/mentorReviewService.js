@@ -3,6 +3,7 @@ import { getDailyExecutionSummary } from './dailyExecutionSummaryService.js';
 import { sendNotification } from './notificationService.js';
 import { formatHoursAndMins } from './reportGeneratorService.js';
 import * as telegramService from './telegramService.js';
+import { formatSubjectTopic } from './computeBlockState.js';
 
 function getYesterdayKeyFromDate(dateStr) {
   const [yyyy, mm, dd] = dateStr.split('-').map(Number);
@@ -79,17 +80,11 @@ export async function generateNightMentorReviewMessage(userId, dayKey) {
 
     // Misses calculation
     const missedBlocksList = summary.blockRows.filter(b => b.isMissed);
-    const missedSubjectDetails = missedBlocksList.map(b => `${b.subject} (${b.title || b.topic})`);
+    const missedSubjectDetails = missedBlocksList.map(b => b.title);
     
-    // Postponed subjects: planned subjects that have 0 completed minutes today
-    const postponedSubjects = [];
-    const subjectsPlanned = [...new Set(summary.blockRows.map(b => b.subject).filter(Boolean))];
-    for (const sub of subjectsPlanned) {
-      const subMins = summary.subjectMinutes[sub] || 0;
-      if (subMins === 0) {
-        postponedSubjects.push(sub);
-      }
-    }
+    // Postponed subjects must come from the same canonical classification logic.
+    // So postponedSubjects is the list of unique subjects of the missed/postponed blocks.
+    const postponedSubjects = [...new Set(missedBlocksList.map(b => b.subject).filter(Boolean))];
 
     // Repeated avoidance patterns
     const repeatedAvoidance = [];
@@ -160,16 +155,16 @@ export async function generateNightMentorReviewMessage(userId, dayKey) {
       reflectionQuestion = `What was the main reason you couldn't finish the last block today?`;
       recommendedFirstBlock = missedBlocksList[0]?.subject || summary.blockRows[0]?.subject || "CSAT";
     } else if (executionRate >= 40) {
-      mentorObservation = `A compromised day. You studied, but the execution was half-hearted. Only ${completedBlocks} out of ${totalBlocks} blocks were completed. You are escaping into comfort zones or losing focus in the afternoon. We need to tighten this up.`;
+      mentorObservation = `A compromised day. You studied, but the execution was partial. Only ${completedBlocks} out of ${totalBlocks} blocks were completed. Let's rebuild focus tomorrow.`;
       reflectionQuestion = `Why did your momentum drop in the afternoon?`;
       recommendedFirstBlock = missedBlocksList[0]?.subject || "Geography Optional";
     } else if (executionRate > 0) {
-      mentorObservation = `This was a struggle. You touched the books, but only did ${formatHoursAndMins(studiedHrs)} out of ${formatHoursAndMins(plannedHrs)} planned. Most of the plan was postponed. Procrastination is a slow poison in this preparation.`;
+      mentorObservation = `This was a struggle. You touched the books, but only did ${formatHoursAndMins(studiedHrs)} out of ${formatHoursAndMins(plannedHrs)} planned. Let's make sure we start tomorrow's blocks on time to rebuild momentum.`;
       reflectionQuestion = `What got in the way of starting your scheduled blocks today?`;
       recommendedFirstBlock = missedBlocksList[0]?.subject || "Geography Optional";
     } else {
       // 0% study
-      mentorObservation = `A complete zero day. The plan was there, but you avoided execution entirely. Procrastination in UPSC is a silent killer. You cannot clear this exam by studying only when you feel motivated.`;
+      mentorObservation = `A complete zero day. The plan was there, but execution did not begin. Remember, starting is the hardest part. Let's start tomorrow with just one small 25-minute block to break the inertia.`;
       reflectionQuestion = `What caused this total block today? Let's trace it honestly.`;
       recommendedFirstBlock = missedBlocksList[0]?.subject || "Geography Optional";
     }
@@ -273,14 +268,14 @@ export async function generateMorningRecallMessage(userId, date) {
     
     // completed
     if (achievements.completed_details && achievements.completed_details.length > 0) {
-      yesterdayCompleted = achievements.completed_details.map(d => `- ${d.subject} (${d.topic})`).join('\n');
+      yesterdayCompleted = achievements.completed_details.map(d => `- ${formatSubjectTopic(d.subject, d.topic)}`).join('\n');
     } else {
       yesterdayCompleted = "- No study blocks completed.";
     }
     
     // missed
     if (misses.missed_details && misses.missed_details.length > 0) {
-      yesterdayMissed = misses.missed_details.map(d => `- ${d.subject} (${d.topic})`).join('\n');
+      yesterdayMissed = misses.missed_details.map(d => `- ${formatSubjectTopic(d.subject, d.topic)}`).join('\n');
     } else {
       yesterdayMissed = "- No missed tasks.";
     }
@@ -295,13 +290,13 @@ export async function generateMorningRecallMessage(userId, date) {
         const missedList = summary.blockRows.filter(b => b.isMissed);
         
         if (completedList.length > 0) {
-          yesterdayCompleted = completedList.map(b => `- ${b.subject} (${b.title || b.topic})`).join('\n');
+          yesterdayCompleted = completedList.map(b => `- ${formatSubjectTopic(b.subject, b.title || b.topic)}`).join('\n');
         } else {
           yesterdayCompleted = "- No study blocks completed.";
         }
         
         if (missedList.length > 0) {
-          yesterdayMissed = missedList.map(b => `- ${b.subject} (${b.title || b.topic})`).join('\n');
+          yesterdayMissed = missedList.map(b => `- ${formatSubjectTopic(b.subject, b.title || b.topic)}`).join('\n');
           recommendedFirstBlock = missedList[0].subject;
         } else {
           yesterdayMissed = "- No missed tasks.";
@@ -327,6 +322,19 @@ Do not start with an easy comfort topic.
 
 Press Start.`;
     }
+  }
+
+  if (yesterdayMissed.includes("No missed tasks")) {
+    return `Good. Plan received.
+
+Before you begin, remember yesterday.
+
+You completed:
+${yesterdayCompleted}
+
+No missed tasks yesterday. Start today with your first planned priority: ${recommendedFirstBlock}.
+
+Press Start.`;
   }
 
   return `Good. Plan received.

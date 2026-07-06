@@ -107,3 +107,63 @@ export function toFrontendBlock(dbBlock, gasBlock = {}) {
     _lifecycleSource:   'postgres',
   };
 }
+
+export function getBlockState(block, now = Date.now()) {
+  if (!block) return null;
+
+  const status = (block.status || '').toLowerCase().trim();
+  const actualMinutes = Number(block.actual_minutes || block.actualMinutes || 0);
+
+  // 1. completed: status completed/done/stopped with actual_minutes > 0
+  const isCompletedStatus = ['completed', 'done', 'stopped', 'partial'].includes(status);
+  if (isCompletedStatus && actualMinutes > 0) {
+    return 'completed';
+  }
+
+  // 2. active/running: currently started and not stopped
+  const isActiveStatus = ['active', 'paused'].includes(status);
+  if (isActiveStatus || (block.started_at && !block.ended_at && !isCompletedStatus)) {
+    return 'active';
+  }
+
+  // Determine if planned_end has passed
+  let isPast = false;
+  if (block.planned_end && block.day_key) {
+    const dayKey = block.day_key;
+    const [endH, endM] = block.planned_end.split(':').map(Number);
+    // Parse planned_end in Asia/Kolkata timezone
+    const plannedEndDate = new Date(`${dayKey}T${String(endH).padStart(2, '0')}:${String(endM).padStart(2, '0')}:00+05:30`);
+    isPast = now > plannedEndDate.getTime();
+  } else if (block.day_key) {
+    // Fallback: compare day_key to today's date in Kolkata timezone
+    const kolkataStr = new Date(now).toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+    const todayStr = new Date(kolkataStr).toISOString().slice(0, 10);
+    isPast = block.day_key < todayStr;
+  }
+
+  // 3. missed/postponed: planned_end < now AND no actual study recorded
+  const isExplicitlyMissed = ['missed', 'skipped'].includes(status);
+  if (isExplicitlyMissed && actualMinutes === 0) {
+    return 'missed';
+  }
+
+  if (isPast && actualMinutes === 0) {
+    return 'postponed';
+  }
+
+  // 4. pending: now < planned_end and not completed
+  return 'pending';
+}
+
+export function formatSubjectTopic(subject, topic) {
+  const s = (subject || '').trim();
+  const t = (topic || '').trim();
+  if (!s && !t) return 'Unknown';
+  if (!s) return t;
+  if (!t) return s;
+  if (s.toLowerCase() === t.toLowerCase()) {
+    return s;
+  }
+  return `${s} (${t})`;
+}
+
