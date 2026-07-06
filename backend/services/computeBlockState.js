@@ -114,9 +114,12 @@ export function getBlockState(block, now = Date.now()) {
   const status = (block.status || '').toLowerCase().trim();
   const actualMinutes = Number(block.actual_minutes || block.actualMinutes || 0);
 
-  // 1. completed: status completed/done/stopped with actual_minutes > 0
+  // 1. completed: actual_minutes > 0 or status completed/done/stopped/partial
+  if (actualMinutes > 0) {
+    return 'completed';
+  }
   const isCompletedStatus = ['completed', 'done', 'stopped', 'partial'].includes(status);
-  if (isCompletedStatus && actualMinutes > 0) {
+  if (isCompletedStatus) {
     return 'completed';
   }
 

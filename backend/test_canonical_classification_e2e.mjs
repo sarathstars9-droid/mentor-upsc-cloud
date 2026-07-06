@@ -239,9 +239,106 @@ async function runAllTests() {
     
     if (weeklySummaryRisk.weak_subjects[0] !== 'Current Affairs') throw new Error('Current Affairs should be at highest risk');
     if (weeklySummaryRisk.weak_subjects[1] !== 'CSAT') throw new Error('CSAT should be second highest risk');
-    if (weeklySummaryRisk.weak_subjects[2] !== 'Geography Optional') throw new Error('Geography Optional should be third highest risk');
+    if (weeklySummaryRisk.weak_subjects.includes('Geography Optional')) {
+      throw new Error('Geography Optional should not appear under risk since it is in strong subjects');
+    }
 
     console.log('✅ Test 7: PASSED');
+
+    console.log('\n==================================================');
+    console.log('🤖 Test 8: Relaxed getBlockState completed logic cases');
+    console.log('==================================================');
+
+    // Case 1: status = planned, actual_minutes = 60
+    const state1 = getBlockState({ status: 'planned', actual_minutes: 60 });
+    console.log('Case 1 state:', state1);
+    if (state1 !== 'completed') throw new Error('Expected status = planned, actual_minutes = 60 to be completed');
+
+    // Case 2: status = done, actual_minutes = 0, started_at and ended_at exist
+    const state2 = getBlockState({ status: 'done', actual_minutes: 0, started_at: '2026-07-06T10:00:00Z', ended_at: '2026-07-06T11:00:00Z' });
+    console.log('Case 2 state:', state2);
+    if (state2 !== 'completed') throw new Error('Expected status = done to be completed');
+
+    // Verify dailyExecutionSummaryService calculated effective minutes for Case 2
+    await cleanup();
+    // Seed target areas for this test
+    await query(`
+      INSERT INTO public.subject_targets (user_id, subject, target_hours, mission_start_date, mission_end_date)
+      VALUES ($1, 'Geography Optional', 800, '2026-05-25', '2027-04-15')
+    `, [TEST_USER]);
+
+    await query(`
+      INSERT INTO public.study_blocks (user_id, block_id, day_key, subject, topic, planned_minutes, actual_minutes, status, started_at, ended_at, planned_end)
+      VALUES ($1, 'B_CASE2', '2026-07-06', 'Geography Optional', 'Geo', 60, 0, 'done', '2026-07-06T10:00:00Z', '2026-07-06T11:00:00Z', '12:00')
+    `, [TEST_USER]);
+
+    const summaryCase2 = await getDailyExecutionSummary(TEST_USER, '2026-07-06');
+    console.log('Case 2 effectiveMinutes:', summaryCase2.blockRows[0]?.effectiveMinutes);
+    if (summaryCase2.blockRows[0]?.effectiveMinutes !== 60) {
+      throw new Error(`Expected effectiveMinutes to be 60 calculated from started_at and ended_at, got ${summaryCase2.blockRows[0]?.effectiveMinutes}`);
+    }
+
+    // Case 3: status = done, actual_minutes = 0, no started_at/ended_at, planned_minutes = 90
+    await cleanup();
+    await query(`
+      INSERT INTO public.subject_targets (user_id, subject, target_hours, mission_start_date, mission_end_date)
+      VALUES ($1, 'Geography Optional', 800, '2026-05-25', '2027-04-15')
+    `, [TEST_USER]);
+    await query(`
+      INSERT INTO public.study_blocks (user_id, block_id, day_key, subject, topic, planned_minutes, actual_minutes, status, planned_end)
+      VALUES ($1, 'B_CASE3', '2026-07-06', 'Geography Optional', 'Geo', 90, 0, 'done', '12:00')
+    `, [TEST_USER]);
+
+    const summaryCase3 = await getDailyExecutionSummary(TEST_USER, '2026-07-06');
+    console.log('Case 3 effectiveMinutes:', summaryCase3.blockRows[0]?.effectiveMinutes);
+    if (summaryCase3.blockRows[0]?.effectiveMinutes !== 90) {
+      throw new Error(`Expected effectiveMinutes to fallback to planned_minutes = 90, got ${summaryCase3.blockRows[0]?.effectiveMinutes}`);
+    }
+
+    console.log('✅ Test 8: PASSED');
+
+    console.log('\n==================================================');
+    console.log('🤖 Test 9: Strong subject exclusion & empty risk report');
+    console.log('==================================================');
+
+    await cleanup();
+    // Seed default subject targets
+    await query(`
+      INSERT INTO public.subject_targets (user_id, subject, target_hours, mission_start_date, mission_end_date)
+      VALUES 
+        ($1, 'Geography Optional', 800, '2026-05-25', '2027-04-15'),
+        ($1, 'CSAT', 450, '2026-05-25', '2027-04-15')
+    `, [TEST_USER]);
+
+    // Geography Optional has 1 completed block of 180 mins. It is strong.
+    // We add a missed block for Geography Optional as well.
+    // It has missed count > 0, but since it is strong, it must not appear in risk.
+    await query(`
+      INSERT INTO public.study_blocks (user_id, block_id, day_key, subject, topic, planned_minutes, actual_minutes, status, started_at, ended_at, planned_end)
+      VALUES 
+        ($1, 'B_STRONG', $2, 'Geography Optional', 'Geo1', 180, 180, 'completed', '2026-07-06 09:00:00+05:30', '2026-07-06 12:00:00+05:30', '12:00'),
+        ($1, 'B_MISSED', $2, 'Geography Optional', 'Geo2', 60, 0, 'missed', NULL, NULL, '13:00')
+    `, [TEST_USER, mondayStr]);
+
+    const weeklySummaryCase4 = await getWeeklyExecutionSummary(TEST_USER);
+    console.log('Strong subjects:', weeklySummaryCase4.strong_subjects);
+    console.log('Weak subjects:', weeklySummaryCase4.weak_subjects);
+
+    if (!weeklySummaryCase4.strong_subjects.includes('Geography Optional')) throw new Error('Geography Optional should be strong');
+    if (weeklySummaryCase4.weak_subjects.includes('Geography Optional')) throw new Error('Geography Optional should not appear under risk since it is strong');
+
+    // Verify weekly report with no real risk subjects prints "None clearly at risk this week"
+    // Since there are no other subjects with missed/low execution blocks, weak_subjects should be empty.
+    if (weeklySummaryCase4.weak_subjects.length !== 0) throw new Error('Weak subjects should be empty');
+
+    const formattedWeeklyReport = await import('./services/reportGeneratorService.js').then(m => m.generateWeeklyMentorReport(weeklySummaryCase4, 'Moulika'));
+    console.log('Weekly Report Text:\n', formattedWeeklyReport);
+
+    if (!formattedWeeklyReport.includes('None clearly at risk this week')) {
+      throw new Error('Fallback string "None clearly at risk this week" missing in report');
+    }
+
+    console.log('✅ Test 9: PASSED');
 
     await cleanup();
     console.log('\n🎉 ALL CANONICAL E2E TESTS PASSED SUCCESSFULLY! 🎉\n');

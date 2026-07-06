@@ -560,7 +560,7 @@ ${userName}, here is your weekly progress overview:
 ${summary.strong_subjects.length > 0 ? summary.strong_subjects.map((s, i) => `${i + 1}. ${s}`).join('\n') : 'None yet this week'}
 
 *Top 3 areas at risk:*
-${summary.weak_subjects.length > 0 ? summary.weak_subjects.map((s, i) => `${i + 1}. ${s}`).join('\n') : 'None — all subjects on track!'}
+${summary.weak_subjects.length > 0 ? summary.weak_subjects.map((s, i) => `${i + 1}. ${s}`).join('\n') : 'None clearly at risk this week'}
 
 *Mentor:*
 ${summary.next_action}

@@ -1064,12 +1064,9 @@ export async function getWeeklyExecutionSummary(userId) {
       return b.plannedMins - a.plannedMins;
     });
 
-  const activeRiskSubjects = riskSubjectsList.filter(s => s.missedCount > 0 || s.execRate < 85);
-  let weakSubjects = activeRiskSubjects.slice(0, 3).map(s => s.subject);
-  if (weakSubjects.length === 0) {
-    const sortedByDeficit = [...subjects].filter(s => s.weekly_deficit > 0).sort((a, b) => b.weekly_deficit - a.weekly_deficit);
-    weakSubjects = sortedByDeficit.slice(0, 3).map(s => s.subject);
-  }
+  const activeRiskSubjects = riskSubjectsList.filter(s => (s.missedCount > 0 || s.execRate < 85) && !strongSubjects.includes(s.subject));
+  const weakSubjects = activeRiskSubjects.slice(0, 3).map(s => s.subject);
+
   
   // Smart next_action: based on execution rate and plan vs execute gap
   let nextAction;
