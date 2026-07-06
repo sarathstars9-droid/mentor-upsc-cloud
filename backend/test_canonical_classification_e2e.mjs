@@ -338,6 +338,16 @@ async function runAllTests() {
       throw new Error('Fallback string "None clearly at risk this week" missing in report');
     }
 
+    // Verify positive maintenance message is returned
+    if (!formattedWeeklyReport.includes('Good. No clear risk area this week. Maintain the same consistency and gradually increase planned hours.')) {
+      throw new Error('Expected positive maintenance message for next_action missing or wrong');
+    }
+
+    // Omit failure/rescue/correction wording
+    if (formattedWeeklyReport.includes('failure') || formattedWeeklyReport.includes('rescue') || formattedWeeklyReport.includes('correction data')) {
+      throw new Error('Defensive/correction wording should not be shown when no subjects are at risk');
+    }
+
     console.log('✅ Test 9: PASSED');
 
     await cleanup();

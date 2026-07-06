@@ -1081,7 +1081,7 @@ export async function getWeeklyExecutionSummary(userId) {
   } else if (weakSubjects.length > 0) {
     nextAction = `Focus on recovering ${weakSubjects[0]} first.`;
   } else {
-    nextAction = "This is not failure. This is correction data. Start with one rescue block today.";
+    nextAction = "Good. No clear risk area this week. Maintain the same consistency and gradually increase planned hours.";
   }
 
   return {

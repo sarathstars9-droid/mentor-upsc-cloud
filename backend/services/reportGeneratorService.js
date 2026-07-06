@@ -545,6 +545,9 @@ export function generateWeeklyMentorReport(summary, userName = "Moulika") {
     recoverLine = `\n• Required recovery pace: ${recoveryPace}/wk (mission pace is ${weeklyMissionTarget}/wk)`;
   }
     
+  const execRateVal = summary.execution_rate >= 99.9 ? 100 : summary.execution_rate;
+  const execRateStr = execRateVal === 100 ? '100%' : `${execRateVal}%`;
+
   let report = `📊 *Weekly Mentor Report*
 
 ${userName}, here is your weekly progress overview:
@@ -552,7 +555,7 @@ ${userName}, here is your weekly progress overview:
 • Weekly mission target: ${weeklyMissionTarget}/wk
 • Planned this week: ${formatHoursAndMins(summary.weekly_planned)}
 • Executed this week: ${formatHoursAndMins(summary.weekly_executed)}
-• Execution rate: ${summary.execution_rate}%
+• Execution rate: ${execRateStr}
 • ${deficitText}${recoverLine}
 • Output count: ${summary.output_count}
 
