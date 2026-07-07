@@ -16,7 +16,7 @@ const T = {
     muted: "#3f3f46",
     subtle: "#52525b",
     dim: "#71717a",
-    text: "#e4e4e7",
+    text: "#d4d4d8",
     textBright: "#f4f4f5",
     amber: "#f59e0b",
     blue: "#3b82f6",
@@ -234,17 +234,18 @@ function WeakPatternBar({ patterns }) {
 function StatPill({ label, value, accent }) {
     return (
         <div style={{
-            display: "flex", flexDirection: "column", gap: 3,
+            display: "flex", flexDirection: "column", gap: 4,
             background: T.surface,
             border: `1px solid ${T.border}`,
-            borderRadius: 10, padding: "10px 18px",
-            minWidth: 90,
+            borderTop: `3px solid ${accent || T.amber}`,
+            borderRadius: 10, padding: "12px 18px",
+            minWidth: 90, flex: "1 1 80px",
         }}>
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: T.subtle }}>
-                {label}
-            </span>
-            <span style={{ fontSize: 18, fontWeight: 900, color: accent || T.textBright }}>
+            <span style={{ fontSize: 22, fontWeight: 800, color: accent || T.textBright, lineHeight: 1 }}>
                 {value}
+            </span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: T.dim }}>
+                {label}
             </span>
         </div>
     );
@@ -627,15 +628,15 @@ export default function MainsMistakeBookPage() {
             <div style={{ padding: "24px 28px 48px", maxWidth: 900, margin: "0 auto" }}>
 
                 {/* ── Page heading ─────────────────────────────────────────────── */}
-                <div style={{ marginBottom: 24 }}>
+                <div style={{ marginBottom: 26 }}>
                     <h1 style={{
-                        fontSize: 24, fontWeight: 900, color: T.textBright,
+                        fontSize: 26, fontWeight: 800, color: T.textBright,
                         margin: "0 0 6px 0", letterSpacing: "-0.02em",
                     }}>
                         Mains Mistake Book
                     </h1>
-                    <p style={{ fontSize: 13, color: T.dim, margin: 0 }}>
-                        Self-tagged answer writing mistakes · personal weak-pattern tracker
+                    <p style={{ fontSize: 14, color: T.dim, margin: 0, lineHeight: 1.6 }}>
+                        Your answer writing mistakes, grouped by attempt — track patterns and improve.
                     </p>
                 </div>
 
@@ -656,9 +657,10 @@ export default function MainsMistakeBookPage() {
                 {/* ── Top Must Revise Section ─────────────────────────────────── */}
                 {!loading && topMustRevise.length > 0 && (
                     <div style={{
-                        background: `${T.red}04`,
-                        border: `1px dashed ${T.red}44`,
-                        borderRadius: 14,
+                        background: `${T.amber}06`,
+                        border: `1px solid ${T.amber}22`,
+                        borderLeft: `4px solid ${T.amber}`,
+                        borderRadius: 12,
                         padding: "20px 24px",
                         marginBottom: 28,
                     }}>
@@ -666,25 +668,24 @@ export default function MainsMistakeBookPage() {
                             display: "flex", 
                             alignItems: "center", 
                             justifyContent: "space-between", 
-                            marginBottom: 14 
+                            marginBottom: 16,
                         }}>
                             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ fontSize: 18 }}>🔥</span>
                                 <h2 style={{
-                                    fontSize: 15, fontWeight: 900, color: T.textBright,
+                                    fontSize: 15, fontWeight: 700, color: T.textBright,
                                     margin: 0, letterSpacing: "-0.01em"
                                 }}>
-                                    Top Must Revise
+                                    ⚑ Top Priority to Revise
                                 </h2>
                             </div>
                             <span style={{
-                                fontSize: 9, fontWeight: 800,
-                                padding: "2px 8px", borderRadius: 12,
-                                background: `${T.red}18`, color: T.red,
-                                border: `1px solid ${T.red}33`,
-                                letterSpacing: "0.05em", textTransform: "uppercase"
+                                fontSize: 10, fontWeight: 700,
+                                padding: "3px 10px", borderRadius: 12,
+                                background: `${T.amber}18`, color: T.amber,
+                                border: `1px solid ${T.amber}44`,
+                                letterSpacing: "0.04em",
                             }}>
-                                Critical Priority
+                                {topMustRevise.length} items
                             </span>
                         </div>
                         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -701,11 +702,14 @@ export default function MainsMistakeBookPage() {
                 )}
 
                 {/* ── Filters ──────────────────────────────────────────────────── */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24 }}>
-
+                <div style={{
+                    background: T.surface, border: `1px solid ${T.border}`,
+                    borderRadius: 12, padding: "16px 20px", marginBottom: 24,
+                    display: "flex", flexDirection: "column", gap: 10,
+                }}>
                     {/* Paper filter */}
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                        <span style={{ ...label11(T.subtle), fontSize: 9, width: 52 }}>Paper</span>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: T.subtle, minWidth: 60, textTransform: "uppercase", letterSpacing: "0.04em" }}>Paper</span>
                         {["All", "GS1", "GS2", "GS3", "Essay", "Ethics", "Geography Optional"].map(p => (
                             <FilterPill
                                 key={p}
@@ -719,7 +723,7 @@ export default function MainsMistakeBookPage() {
 
                     {/* Status filter */}
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                        <span style={{ ...label11(T.subtle), fontSize: 9, width: 52 }}>Status</span>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: T.subtle, minWidth: 60, textTransform: "uppercase", letterSpacing: "0.04em" }}>Status</span>
                         {[
                             { key: "All", label: "All", accent: T.purple },
                             { key: "open", label: "Open", accent: T.amber },
@@ -737,7 +741,7 @@ export default function MainsMistakeBookPage() {
 
                     {/* Severity filter */}
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                        <span style={{ ...label11(T.subtle), fontSize: 9, width: 52 }}>Severity</span>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: T.subtle, minWidth: 60, textTransform: "uppercase", letterSpacing: "0.04em" }}>Severity</span>
                         {[
                             { key: "All", label: "All", accent: T.purple },
                             { key: "low", label: "Low", accent: T.green },
@@ -756,9 +760,9 @@ export default function MainsMistakeBookPage() {
 
                     {/* Must revise toggle */}
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                        <span style={{ ...label11(T.subtle), fontSize: 9, width: 52 }}>Filter</span>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: T.subtle, minWidth: 60, textTransform: "uppercase", letterSpacing: "0.04em" }}>Show</span>
                         <FilterPill
-                            label="🔁 Must Revise Only"
+                            label="Must Revise Only"
                             active={filterMustRevise}
                             accent={T.amber}
                             onClick={() => setFilterMustRevise(!filterMustRevise)}

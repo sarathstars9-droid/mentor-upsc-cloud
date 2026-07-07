@@ -73,13 +73,16 @@ function pct(n, d) {
 function StatCard({ label, value, sub, accent = C.blue }) {
   return (
     <div style={{
-      background: C.card, border: `1px solid ${C.border}`,
+      background: C.card,
+      border: `1px solid ${C.border}`,
+      borderTop: `3px solid ${accent}`,
       borderRadius: 12, padding: "16px 20px", minWidth: 120,
+      flex: "1 1 110px",
     }}>
-      <div style={{ fontSize: 22, fontWeight: 800, color: accent, letterSpacing: "-0.02em" }}>
+      <div style={{ fontSize: 26, fontWeight: 800, color: accent, letterSpacing: "-0.02em", lineHeight: 1 }}>
         {value ?? "—"}
       </div>
-      <div style={{ fontSize: 13, fontWeight: 600, color: C.muted, marginTop: 4 }}>
+      <div style={{ fontSize: 13, fontWeight: 600, color: C.muted, marginTop: 6 }}>
         {label}
       </div>
       {sub && (
@@ -92,8 +95,9 @@ function StatCard({ label, value, sub, accent = C.blue }) {
 function SectionHeader({ children }) {
   return (
     <div style={{
-      fontSize: 11, fontWeight: 700, letterSpacing: "0.08em",
-      textTransform: "uppercase", color: C.muted, marginBottom: 10,
+      fontSize: 12, fontWeight: 700, letterSpacing: "0.06em",
+      textTransform: "uppercase", color: C.muted, marginBottom: 12,
+      fontFamily: "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
     }}>
       {children}
     </div>
@@ -223,12 +227,13 @@ function AiSummaryPanel({ summary }) {
   if (!summary) return null;
   return (
     <div style={{
-      padding: "16px 20px",
+      padding: "18px 22px",
       background: "rgba(167,139,250,0.07)",
-      border: "1px solid rgba(167,139,250,0.25)",
+      border: "1px solid rgba(167,139,250,0.2)",
+      borderLeft: "4px solid #a78bfa",
       borderRadius: 12, marginBottom: 24,
     }}>
-      <div style={{ fontSize: 12, fontWeight: 700, color: C.purple, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 10 }}>
+      <div style={{ fontSize: 11, fontWeight: 700, color: C.purple, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 10, fontFamily: "inherit" }}>
         🧠 AI Summary
       </div>
       <div style={{ fontSize: 14, color: C.text, lineHeight: 1.7, whiteSpace: "pre-wrap" }}>
@@ -1040,11 +1045,13 @@ function DashboardPanel() {
               key={r.id}
               onClick={() => setRange(r.id)}
               style={{
-                background: range === r.id ? "rgba(96,165,250,0.15)" : "none",
-                border: `1px solid ${range === r.id ? "rgba(96,165,250,0.4)" : C.border}`,
-                borderRadius: 8, color: range === r.id ? C.blue : C.muted,
-                padding: "6px 14px", fontSize: 13, fontWeight: 600, cursor: "pointer",
-                transition: "all 0.15s"
+                height: 30,
+                background: range === r.id ? "rgba(245,158,11,0.14)" : "transparent",
+                border: `1px solid ${range === r.id ? "rgba(245,158,11,0.5)" : C.border}`,
+                borderRadius: 20, color: range === r.id ? "#f59e0b" : C.muted,
+                padding: "0 14px", fontSize: 13, fontWeight: 600, cursor: "pointer",
+                fontFamily: "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
+                transition: "all 0.15s", whiteSpace: "nowrap",
               }}
             >
               {r.label}
@@ -1077,14 +1084,15 @@ function DashboardPanel() {
       {prescription && (
         <div style={{
           padding: "16px 20px",
-          background: "rgba(167,139,250,0.07)",
-          border: "1px solid rgba(167,139,250,0.25)",
+          background: "rgba(245,158,11,0.06)",
+          border: "1px solid rgba(245,158,11,0.22)",
+          borderLeft: "4px solid #f59e0b",
           borderRadius: 12, marginBottom: 24
         }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: C.purple, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 8 }}>
-            🧠 Mentor Prescription
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#f59e0b", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 8 }}>
+            Mentor Prescription
           </div>
-          <div style={{ fontSize: 14, color: C.text, lineHeight: 1.6 }}>
+          <div style={{ fontSize: 14, color: C.text, lineHeight: 1.65 }}>
             {prescription}
           </div>
         </div>
@@ -1257,15 +1265,18 @@ export default function ReportsPage() {
   const [month, setMonth] = useState(thisMonthKey());
 
   const tabStyle = (t) => ({
-    background:   tab === t ? "rgba(96,165,250,0.15)" : "none",
-    border:       `1px solid ${tab === t ? "rgba(96,165,250,0.4)" : C.border}`,
-    borderRadius: 8,
-    color:        tab === t ? C.blue : C.muted,
+    height:       36,
+    padding:      "0 18px",
+    background:   tab === t ? `rgba(245,158,11,0.14)` : "transparent",
+    border:       `1px solid ${tab === t ? "rgba(245,158,11,0.5)" : C.border}`,
+    borderRadius: 20,
+    color:        tab === t ? "#f59e0b" : C.muted,
     cursor:       "pointer",
     fontSize:     13,
     fontWeight:   700,
-    padding:      "7px 18px",
+    fontFamily:   "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
     transition:   "all 0.15s",
+    whiteSpace:   "nowrap",
   });
 
   return (
@@ -1273,15 +1284,19 @@ export default function ReportsPage() {
 
       {/* ── Page header ──────────────────────────────────────────────────── */}
       <div style={{
-        padding: "24px 24px 0 24px",
+        padding: "28px 28px 0 28px",
         borderBottom: `1px solid ${C.border}`,
         marginBottom: 24,
         paddingBottom: 20,
+        fontFamily: "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
       }}>
-        <div style={{ fontSize: 22, fontWeight: 800, color: C.text, letterSpacing: "-0.02em" }}>
+        <div style={{ fontSize: 11, fontWeight: 700, color: "#52525b", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}>
+          MentorOS · Reports
+        </div>
+        <div style={{ fontSize: 28, fontWeight: 800, color: C.text, letterSpacing: "-0.02em", lineHeight: 1.15 }}>
           Study Reports
         </div>
-        <div style={{ fontSize: 13, color: C.muted, marginTop: 4 }}>
+        <div style={{ fontSize: 14, color: C.muted, marginTop: 6, lineHeight: 1.5 }}>
           Review your study progress, consistency, and completed work
         </div>
 
