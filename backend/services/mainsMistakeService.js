@@ -117,7 +117,186 @@ export function getQuestionIdForMistake(attemptId, mistakeType, text) {
   }
   const hash = Math.abs(hashVal).toString(36).slice(0, 8);
   
-  return `mains_${cleanAttempt}_${mistakeType}_${hash}`;
+  return `mains:${cleanAttempt}:${mistakeType}:${hash}`;
+}
+
+// MISTAKE BOOK TEMPLATES (Why it matters, Fix)
+export const MISTAKE_TEMPLATES = {
+  question_demand_mismatch: {
+    why: "Misunderstanding the core directive or demand leads to off-topic arguments, scoring below-average marks.",
+    fix: "Read the question twice, underline the directive words (e.g. 'critically analyze'), and align every section directly with what is asked."
+  },
+  optional_concept_gap: {
+    why: "Optional papers require academic depth. Using generic language instead of core concepts or theories loses professional authority.",
+    fix: "Use precise terminologies, refer to relevant thinkers/theories, and explain the core concept explicitly."
+  },
+  content_gap: {
+    why: "Missing key dimensions makes the answer shallow and incomplete, leaving scope for the examiner to deduct marks.",
+    fix: "Brainstorm 360-degree aspects (social, economic, political, environmental) and write distinct points for each."
+  },
+  weak_structure: {
+    why: "Poorly structured answers make it hard for the examiner to navigate, reducing the overall impression and score.",
+    fix: "Divide the answer into clear sections with bold subheadings and use numbered/bullet points for readability."
+  },
+  weak_analysis: {
+    why: "One-sided or superficial arguments without critical analysis fail to demonstrate public servant problem-solving skills.",
+    fix: "Provide balanced arguments, state pros and cons, use the 'critically examine' approach, and back each point with reasoning."
+  },
+  essay_flow_issue: {
+    why: "Essays require seamless transition and coherence between paragraphs. Abrupt shifts break the narrative flow.",
+    fix: "Use logical connector sentences at the end of each paragraph to introduce the next theme smoothly."
+  },
+  ethics_example_missing: {
+    why: "Ethics answers without real-life examples, case studies, or moral dilemmas read like dry theory and lack personal conviction.",
+    fix: "Quote at least one real-life administrator example, historical incident, or case study per sub-part."
+  },
+  missing_examples: {
+    why: "Arguments without concrete illustrations remain theoretical and fail to convince the examiner of your practical understanding.",
+    fix: "Back every major argument with a real-world example, scheme, or case study."
+  },
+  missing_data_or_reports: {
+    why: "Lack of authoritative data, committee recommendations, or reports makes arguments look like personal opinions rather than verified facts.",
+    fix: "Cite relevant reports (e.g., ARC, NITI Aayog), constitutional articles, Supreme Court cases, or official statistics."
+  },
+  diagram_or_map_missing: {
+    why: "Visual aids like maps, flowcharts, or diagrams break monotony and save the examiner's time, boosting the score by 0.5 to 1 mark.",
+    fix: "Draw a neat schematic diagram, India/World map, or flowchart to illustrate spatial distributions or processes."
+  },
+  weak_introduction: {
+    why: "A weak or generic introduction fails to capture the examiner's interest and set a positive tone for the rest of the answer.",
+    fix: "Start with a precise definition, recent current affairs context, or relevant statistical data (max 30-40 words)."
+  },
+  weak_conclusion: {
+    why: "An abrupt or repetitive conclusion fails to leave a constructive, forward-looking impression.",
+    fix: "End with a positive, futuristic 'Way Forward', linking it to SDGs, national objectives, or constitutional values."
+  },
+  presentation_issue: {
+    why: "Poor handwriting, layout, or lack of highlighting makes reading laborious for the examiner, causing subtle marks deduction.",
+    fix: "Improve neatness, leave adequate margins, highlight key terms, and keep spacing uniform."
+  }
+};
+
+export const MISTAKE_WEAKNESS_MAP = {
+  question_demand_mismatch: "The answer does not fully address the core demand or directive of the question.",
+  optional_concept_gap: "The answer lacks core optional subject concepts, models, or geographers' perspectives.",
+  content_gap: "There is a gap in the coverage of essential dimensions and points.",
+  weak_structure: "The answer structure, subheadings, or structural flow needs improvement.",
+  weak_analysis: "The analysis lacks critical depth, balanced arguments, or detailed reasoning.",
+  essay_flow_issue: "The essay lacks smooth transitions and logical coherence between paragraphs.",
+  ethics_example_missing: "Ethics answer lacks relevant real-life examples or administrative case studies.",
+  missing_examples: "The arguments are not backed by concrete real-world examples.",
+  missing_data_or_reports: "The answer lacks authoritative data, statistics, or committee reports.",
+  diagram_or_map_missing: "The answer lacks illustrative diagrams, maps, or schematic flowcharts.",
+  weak_introduction: "The introduction is generic and does not set a strong context.",
+  weak_conclusion: "The conclusion lacks a constructive, forward-looking Way Forward.",
+  presentation_issue: "The overall presentation, neatness, margin spacing, or key terms highlighting needs improvement."
+};
+
+// Generic check
+export function isGenericMistake(text) {
+  if (!text) return true;
+  const t = String(text).trim().toLowerCase().replace(/[.!]$/, "");
+  
+  const genericPhrases = [
+    "improve the answer",
+    "add more points",
+    "choose another relevant national objective",
+    "more specific examples are needed",
+    "missing examples",
+    "add more examples",
+    "structure the answer",
+    "conclusion needs work",
+    "add data or facts",
+    "improve structure",
+    "explain better",
+    "weak structure",
+    "weak introduction",
+    "weak conclusion",
+    "missing data",
+    "missing reports",
+    "add examples",
+    "provide examples",
+    "poor analysis",
+    "weak analysis",
+    "more examples",
+    "more context",
+    "give examples",
+    "improve introduction",
+    "improve conclusion",
+    "better examples",
+    "needs better structure",
+    "more examples needed"
+  ];
+
+  if (genericPhrases.includes(t)) {
+    return true;
+  }
+  
+  return false;
+}
+
+// Text normalization check
+export function normalizeMistakeText(text) {
+  if (!text) return "";
+  let cleaned = String(text).toLowerCase();
+  cleaned = cleaned.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?'"“”[\]]/g, "");
+  const fillers = new Set([
+    "the", "a", "an", "and", "or", "but", "is", "are", "was", "were", "be", "been", "being",
+    "in", "on", "at", "to", "for", "of", "with", "by", "about", "against", "between", "into",
+    "through", "during", "before", "after", "above", "below", "from", "up", "down", "out",
+    "off", "over", "under", "again", "further", "then", "once", "here", "there", "when",
+    "where", "why", "how", "all", "any", "both", "each", "few", "more", "most", "other",
+    "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very",
+    "should", "would", "could", "must", "can"
+  ]);
+  cleaned = cleaned.split(/\s+/)
+    .filter(word => !fillers.has(word))
+    .join(" ");
+  return cleaned.slice(0, 100).trim();
+}
+
+// Text enricher
+export function enrichText(existingText, newText) {
+  if (!existingText) return newText;
+  if (!newText) return existingText;
+
+  let cleanNew = newText;
+  const newMatch = newText.match(/Why it matters:[\s\S]*$/i);
+  if (newMatch) {
+    cleanNew = newMatch[0].trim();
+  }
+
+  if (existingText.includes(cleanNew) || existingText.includes(newText)) {
+    return existingText;
+  }
+  
+  return `${existingText}\n\n${newText}`;
+}
+
+// Priority levels
+export function getPriorityLevel(mistakeType) {
+  switch (mistakeType) {
+    case 'question_demand_mismatch':
+      return 1;
+    case 'optional_concept_gap':
+    case 'content_gap':
+      return 2;
+    case 'weak_analysis':
+    case 'weak_structure':
+    case 'essay_flow_issue':
+      return 3;
+    case 'ethics_example_missing':
+    case 'missing_examples':
+    case 'missing_data_or_reports':
+    case 'diagram_or_map_missing':
+      return 4;
+    case 'weak_introduction':
+    case 'weak_conclusion':
+    case 'presentation_issue':
+      return 5;
+    default:
+      return 6;
+  }
 }
 
 // Upsert a single mistake row into the database
@@ -198,15 +377,183 @@ export async function upsertMainsMistake(data) {
   const res = await query(sql, values);
   const savedMistake = res.rows[0];
 
-  // Spaced repetition schedule matching requirements:
-  // High severity: tomorrow (+1 day), then 3 days, then 7 days
-  // Medium severity: 3 days or 7 days (defaults to +3 days)
-  // Low severity: 7 to 14 days (defaults to +7 days)
   if (savedMistake && (savedMistake.must_revise || savedMistake.severity === 'high' || savedMistake.severity === 'medium' || savedMistake.severity === 'low')) {
     await ensureRevisionItemFromMistake(savedMistake);
   }
 
   return savedMistake;
+}
+
+// Unified processor with quality gate & duplicate prevention
+export async function processMainsMistakes({
+  userId,
+  attemptId,
+  paper,
+  subject,
+  topic,
+  questionText,
+  candidateAnswer,
+  feedbackPoints,
+  score,
+  blockId,
+  nodeId,
+  sourceLabel
+}) {
+  const { scoreNum, maxScore } = parseScore(score);
+  const candidates = [];
+
+  for (const point of feedbackPoints) {
+    const rawText = String(point.text || "").trim();
+    if (!rawText) continue;
+
+    const mistakeType = classifyFeedbackPoint(rawText, paper);
+    const severity = determineSeverity(mistakeType, rawText, scoreNum, maxScore, point.isCritical || false);
+    // must_revise only for high severity or clearly critical AIR-1 feedback
+    const mustRevise = (severity === 'high') || (sourceLabel === 'chatgpt_air1' && point.isCritical === true);
+
+    let mistakeText = rawText;
+    if (point.type === 'fix') {
+      mistakeText = `Weakness: ${rawText}`;
+    } else if (point.type === 'dimension') {
+      mistakeText = `Missing dimension: ${rawText}`;
+    }
+
+    let baseNotes = rawText;
+    if (point.type === 'dimension') {
+      baseNotes = `Ensure you address this dimension: ${rawText}`;
+    }
+
+    // Quality gate: length checks (summary and fix must be >= 25 characters)
+    if (mistakeText.length < 25 || baseNotes.length < 25) {
+      console.log(`[QualityGate] Rejected point due to length (< 25): mistakeText="${mistakeText}", fix="${baseNotes}"`);
+      continue;
+    }
+
+    // Quality gate: generic rejections
+    if (isGenericMistake(rawText) || isGenericMistake(mistakeText) || isGenericMistake(baseNotes)) {
+      console.log(`[QualityGate] Rejected generic mistake: "${rawText}"`);
+      continue;
+    }
+
+    const tpl = MISTAKE_TEMPLATES[mistakeType] || MISTAKE_TEMPLATES.content_gap;
+    const whyItMatters = tpl.why;
+    
+    const displayScore = scoreNum !== null ? `${scoreNum}/${maxScore}` : (score || '—');
+    const notes = `Source: ${sourceLabel}\nScore: ${displayScore}\nWhy it matters: ${whyItMatters}\nFix: ${baseNotes}`;
+
+    candidates.push({
+      mistakeType,
+      mistakeText,
+      notes,
+      rawText,
+      baseNotes,
+      severity,
+      mustRevise
+    });
+  }
+
+  // Deduplicate in current batch
+  const uniqueCandidates = [];
+  const seenTypes = new Set();
+  const seenNormalizedTexts = new Set();
+
+  for (const cand of candidates) {
+    const norm = normalizeMistakeText(cand.rawText);
+    
+    let isDuplicate = false;
+    if (seenTypes.has(cand.mistakeType)) {
+      isDuplicate = true;
+    } else {
+      for (const seenNorm of seenNormalizedTexts) {
+        if (norm && seenNorm && (norm.startsWith(seenNorm) || seenNorm.startsWith(norm) || norm === seenNorm)) {
+          isDuplicate = true;
+          break;
+        }
+      }
+    }
+
+    if (isDuplicate) {
+      const existing = uniqueCandidates.find(x => {
+        if (x.mistakeType === cand.mistakeType) return true;
+        const xNorm = normalizeMistakeText(x.rawText);
+        return norm && xNorm && (norm.startsWith(xNorm) || xNorm.startsWith(norm) || norm === xNorm);
+      });
+      if (existing) {
+        existing.notes = enrichText(existing.notes, cand.notes);
+      }
+    } else {
+      uniqueCandidates.push(cand);
+      seenTypes.add(cand.mistakeType);
+      if (norm) seenNormalizedTexts.add(norm);
+    }
+  }
+
+  // Prioritize and slice to max 3 mistakes
+  uniqueCandidates.sort((a, b) => getPriorityLevel(a.mistakeType) - getPriorityLevel(b.mistakeType));
+  const finalCandidates = uniqueCandidates.slice(0, 3);
+
+  const results = [];
+  // Fetch all existing mistakes for this attempt to check duplicates
+  const existingDbRes = await query(
+    `SELECT * FROM mistakes WHERE user_id = $1 AND attempt_id = $2`,
+    [userId || 'user_1', attemptId]
+  );
+  const existingMistakes = existingDbRes.rows;
+
+  for (const cand of finalCandidates) {
+    const normCand = normalizeMistakeText(cand.rawText);
+    
+    // Find duplicate in DB: same mistake_type OR matching normalized text
+    const duplicateDb = existingMistakes.find(m => {
+      if (m.mistake_type === cand.mistakeType || m.error_type === cand.mistakeType) {
+        return true;
+      }
+      const normDb = normalizeMistakeText(m.mistake_text || m.notes || "");
+      return normCand && normDb && (normCand.startsWith(normDb) || normDb.startsWith(normCand) || normCand === normDb);
+    });
+
+    if (duplicateDb) {
+      console.log(`[DuplicatePrevention] Found existing duplicate mistake in DB (type: ${cand.mistakeType}, normalized match). Enriching...`);
+      
+      const enrichedNotes = enrichText(duplicateDb.notes, cand.notes);
+      const updated = await query(
+        `UPDATE mistakes SET notes = $1, updated_at = NOW() WHERE id = $2 RETURNING *`,
+        [enrichedNotes, duplicateDb.id]
+      );
+      
+      if (updated.rows[0]) {
+        await ensureRevisionItemFromMistake(updated.rows[0]);
+        results.push(updated.rows[0]);
+      }
+    } else {
+      const questionId = getQuestionIdForMistake(attemptId, cand.mistakeType, cand.rawText);
+      try {
+        const saved = await upsertMainsMistake({
+          userId,
+          attemptId,
+          questionId,
+          paper,
+          subject,
+          topic,
+          questionText,
+          candidateAnswer,
+          mistakeType: cand.mistakeType,
+          mistakeText: cand.mistakeText.slice(0, 255),
+          notes: cand.notes,
+          severity: cand.severity,
+          mustRevise: cand.mustRevise,
+          status: 'open',
+          blockId,
+          nodeId
+        });
+        results.push(saved);
+      } catch (err) {
+        console.error(`[processMainsMistakes] Failed to save mistake:`, err.message);
+      }
+    }
+  }
+
+  return results;
 }
 
 /**
@@ -227,7 +574,6 @@ export async function generateMistakesFromBasicEvaluation({
 }) {
   if (!evaluationJson) return [];
   const finalAttemptId = attemptId || `mains_basic_${Date.now()}`;
-  const { scoreNum, maxScore } = parseScore(score || evaluationJson.score);
 
   const feedbackPoints = [];
   if (Array.isArray(evaluationJson.topFixes)) {
@@ -242,55 +588,20 @@ export async function generateMistakesFromBasicEvaluation({
     });
   }
 
-  // Limit to maximum 5 mistakes
-  const pointsToUse = feedbackPoints.slice(0, 5);
-  const generatedMistakes = [];
-
-  for (const point of pointsToUse) {
-    const mistakeType = classifyFeedbackPoint(point.text, paper);
-    const severity = determineSeverity(mistakeType, point.text, scoreNum, maxScore);
-    const mustRevise = severity === 'high';
-    const questionId = getQuestionIdForMistake(finalAttemptId, mistakeType, point.text);
-
-    let baseNotes = point.text;
-    let mistakeText = point.text;
-    if (point.type === 'fix') {
-      mistakeText = `Weakness: ${point.text}`;
-    } else {
-      mistakeText = `Missing dimension: ${point.text}`;
-      baseNotes = `Ensure you address this dimension: ${point.text}`;
-    }
-
-    const displayScore = score || evaluationJson.score || '';
-    const scoreStr = displayScore ? String(displayScore) : '—';
-    const notes = `[Source: gemini_basic] [Score: ${scoreStr}]\n${baseNotes}`;
-
-    try {
-      const saved = await upsertMainsMistake({
-        userId,
-        attemptId: finalAttemptId,
-        questionId,
-        paper,
-        subject,
-        topic,
-        questionText,
-        candidateAnswer,
-        mistakeType,
-        mistakeText: mistakeText.slice(0, 255),
-        notes,
-        severity,
-        mustRevise,
-        status: 'open',
-        blockId,
-        nodeId
-      });
-      generatedMistakes.push(saved);
-    } catch (err) {
-      console.error("[BasicReviewMistakes] Failed to save mistake:", err.message);
-    }
-  }
-
-  return generatedMistakes;
+  return await processMainsMistakes({
+    userId,
+    attemptId: finalAttemptId,
+    paper,
+    subject,
+    topic,
+    questionText,
+    candidateAnswer,
+    feedbackPoints,
+    score: score || evaluationJson.score,
+    blockId,
+    nodeId,
+    sourceLabel: 'gemini_basic'
+  });
 }
 
 /**
@@ -312,13 +623,8 @@ export async function generateMistakesFromAir1Review({
   if (!air1ReviewJson) return [];
   const finalAttemptId = attemptId || `mains_air1_${Date.now()}`;
   
-  // Try to find the score from AIR-1 review
-  const scoredRaw = air1ReviewJson?.estimatedMarks?.scored || air1ReviewJson?.score || score;
-  const { scoreNum, maxScore } = parseScore(scoredRaw);
-
   const feedbackPoints = [];
   
-  // Extract from oneAnswerWeaknessSignals
   if (Array.isArray(air1ReviewJson.oneAnswerWeaknessSignals)) {
     air1ReviewJson.oneAnswerWeaknessSignals.forEach(sig => {
       const weaknessText = sig.weakness || sig.evidenceSnippet || '';
@@ -332,7 +638,6 @@ export async function generateMistakesFromAir1Review({
     });
   }
 
-  // Extract from missingDimensions
   if (Array.isArray(air1ReviewJson.missingDimensions)) {
     air1ReviewJson.missingDimensions.forEach(dim => {
       const dimText = dim.dimension || dim.customLabel || dim.normalizedKey || '';
@@ -346,7 +651,6 @@ export async function generateMistakesFromAir1Review({
     });
   }
 
-  // Fallbacks if structured lists are absent
   if (feedbackPoints.length === 0) {
     if (Array.isArray(air1ReviewJson.topImprovements)) {
       air1ReviewJson.topImprovements.forEach(imp => {
@@ -365,44 +669,19 @@ export async function generateMistakesFromAir1Review({
     }
   }
 
-  // Limit to maximum 5 mistakes
-  const pointsToUse = feedbackPoints.slice(0, 5);
-  const generatedMistakes = [];
-
-  for (const point of pointsToUse) {
-    const mistakeType = classifyFeedbackPoint(point.text, paper);
-    const severity = determineSeverity(mistakeType, point.text, scoreNum, maxScore, point.isCritical);
-    const mustRevise = severity === 'high' || point.isCritical;
-    const questionId = getQuestionIdForMistake(finalAttemptId, mistakeType, point.text);
-
-    const displayScore = scoreNum !== null ? `${scoreNum}/${maxScore}` : (score || '');
-    const scoreStr = displayScore ? String(displayScore) : '—';
-    const notes = `[Source: chatgpt_air1] [Score: ${scoreStr}]\nAIR-1 Feedback: ${point.text}`;
-
-    try {
-      const saved = await upsertMainsMistake({
-        userId,
-        attemptId: finalAttemptId,
-        questionId,
-        paper,
-        subject,
-        topic,
-        questionText,
-        candidateAnswer,
-        mistakeType,
-        mistakeText: point.text.slice(0, 255),
-        notes,
-        severity,
-        mustRevise,
-        status: 'open',
-        blockId,
-        nodeId
-      });
-      generatedMistakes.push(saved);
-    } catch (err) {
-      console.error("[Air1ReviewMistakes] Failed to save mistake:", err.message);
-    }
-  }
-
-  return generatedMistakes;
+  return await processMainsMistakes({
+    userId,
+    attemptId: finalAttemptId,
+    paper,
+    subject,
+    topic,
+    questionText,
+    candidateAnswer,
+    feedbackPoints,
+    score,
+    blockId,
+    nodeId,
+    sourceLabel: 'chatgpt_air1'
+  });
 }
+

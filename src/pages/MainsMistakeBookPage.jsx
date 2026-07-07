@@ -2,6 +2,7 @@
 // Mains Mistake Book — view, filter, and resolve mains writing mistakes.
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import MainsMistakeCard from "../components/mains/MainsMistakeCard";
 import { BACKEND_URL } from "../config";
 
@@ -84,12 +85,32 @@ function normalizeMistake(m) {
     let reviewSource = m.review_source ?? null;
     let notes = m.notes ?? "";
 
-    if (m.notes && m.notes.startsWith("[Source:")) {
-        const match = m.notes.match(/^\[Source:\s*([^\]]+)\]\s*\[Score:\s*([^\]]+)\]\n([\s\S]*)$/);
-        if (match) {
-            reviewSource = match[1];
-            score = match[2] === "—" ? null : match[2];
-            notes = match[3];
+    if (m.notes) {
+        if (m.notes.startsWith("[Source:")) {
+            const match = m.notes.match(/^\[Source:\s*([^\]]+)\]\s*\[Score:\s*([^\]]+)\]\n([\s\S]*)$/);
+            if (match) {
+                reviewSource = match[1];
+                score = match[2] === "—" ? null : match[2];
+                notes = match[3];
+            }
+        } else if (m.notes.startsWith("Source:")) {
+            const lines = m.notes.split("\n");
+            let parsedSource = null;
+            let parsedScore = null;
+            let startIdx = 0;
+            
+            if (lines[0] && lines[0].startsWith("Source:")) {
+                parsedSource = lines[0].substring(7).trim();
+                startIdx = 1;
+            }
+            if (lines[1] && lines[1].startsWith("Score:")) {
+                parsedScore = lines[1].substring(6).trim();
+                startIdx = 2;
+            }
+            
+            reviewSource = parsedSource || reviewSource;
+            score = (parsedScore === "—" || parsedScore === null) ? null : parsedScore;
+            notes = lines.slice(startIdx).join("\n").trim();
         }
     }
 
@@ -230,7 +251,158 @@ function StatPill({ label, value, accent }) {
 }
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
+// ─── Attempt Group Card Component ──────────────────────────────────────────
+function AttemptGroupCard({ group, expanded, onToggle, onMarkResolved, onToggleMustRevise, onOpenWorkspace }) {
+    const accent = PAPER_ACCENT[group.paper] || T.purple;
+    const isLegacy = !group.attemptId;
+    const dateStr = group.createdAt
+        ? new Date(group.createdAt).toLocaleDateString("en-IN", {
+            day: "numeric", month: "short", year: "numeric",
+          })
+        : "—";
+
+    const cleanTitle = group.questionText.replace(/[\n\r]+/g, " ").trim();
+    const shortTitle = cleanTitle.length > 60 ? cleanTitle.slice(0, 60) + "…" : cleanTitle;
+
+    const sourceLabel = group.reviewSource === "chatgpt_air1"
+        ? "AIR-1 Review"
+        : group.reviewSource === "gemini_basic"
+        ? "Gemini Basic"
+        : "Evaluation";
+
+    return (
+        <div style={{
+            background: T.surface,
+            border: `1px solid ${T.border}`,
+            borderLeft: `4px solid ${accent}`,
+            borderRadius: 12,
+            overflow: "hidden",
+            marginBottom: 14,
+            transition: "all 0.2s ease",
+        }}>
+            {/* Header section (click to toggle) */}
+            <div 
+                onClick={onToggle}
+                style={{
+                    padding: "16px 20px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    cursor: "pointer",
+                    userSelect: "none",
+                    flexWrap: "wrap",
+                    gap: 12,
+                    background: expanded ? T.surfaceHigh : "transparent",
+                    transition: "background 0.2s",
+                }}
+            >
+                <div style={{ display: "flex", flexDirection: "column", gap: 6, flex: 1, minWidth: 200 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                        <span style={{
+                            fontSize: 10, fontWeight: 900, color: accent,
+                            background: `${accent}15`, border: `1px solid ${accent}33`,
+                            borderRadius: 5, padding: "2px 8px",
+                            letterSpacing: "0.06em",
+                        }}>
+                            {group.paper}
+                        </span>
+                        {!isLegacy && group.score && (
+                            <span style={{
+                                fontSize: 10, fontWeight: 800, color: T.green,
+                                background: `${T.green}15`, border: `1px solid ${T.green}33`,
+                                borderRadius: 5, padding: "2px 8px",
+                            }}>
+                                Score: {group.score}
+                            </span>
+                        )}
+                        {!isLegacy && (
+                            <span style={{
+                                fontSize: 10, fontWeight: 700,
+                                padding: "2px 8px", borderRadius: 4,
+                                background: T.bg, border: `1px solid ${T.border}`,
+                                color: T.dim,
+                            }}>
+                                Source: {sourceLabel}
+                            </span>
+                        )}
+                        <span style={{
+                            fontSize: 10, fontWeight: 700,
+                            padding: "2px 8px", borderRadius: 4,
+                            background: `${T.blue}11`, border: `1px solid ${T.blue}33`,
+                            color: T.blue,
+                        }}>
+                            {group.mistakes.length} mistake{group.mistakes.length !== 1 ? "s" : ""}
+                        </span>
+                    </div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: T.textBright }}>
+                        {isLegacy ? "Legacy / Ungrouped Mistakes" : shortTitle}
+                    </div>
+                </div>
+
+                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                    {!isLegacy && (
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onOpenWorkspace?.(group);
+                            }}
+                            style={{
+                                background: `${accent}18`,
+                                border: `1px solid ${accent}44`,
+                                borderRadius: 7,
+                                padding: "4px 12px",
+                                fontSize: 10,
+                                fontWeight: 700,
+                                color: accent,
+                                cursor: "pointer",
+                                fontFamily: T.font,
+                            }}
+                        >
+                            📝 Open Workspace
+                        </button>
+                    )}
+                    <span style={{ fontSize: 11, color: T.subtle, fontWeight: 600 }}>
+                        {!isLegacy ? dateStr : ""}
+                    </span>
+                    <span style={{ 
+                        fontSize: 16, 
+                        color: T.dim,
+                        transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
+                        transition: "transform 0.2s ease",
+                        display: "inline-block"
+                    }}>
+                        ▼
+                    </span>
+                </div>
+            </div>
+
+            {/* Mistakes List Section */}
+            {expanded && (
+                <div style={{
+                    padding: "20px",
+                    background: T.bg,
+                    borderTop: `1px solid ${T.border}`,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 14
+                }}>
+                    {group.mistakes.map((m) => (
+                        <MainsMistakeCard
+                            key={m.id}
+                            mistake={m}
+                            onMarkResolved={onMarkResolved}
+                            onToggleMustRevise={onToggleMustRevise}
+                        />
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+// ─── Main Page ────────────────────────────────────────────────────────────────
 export default function MainsMistakeBookPage() {
+    const navigate = useNavigate();
     const [mistakes, setMistakes] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -239,6 +411,34 @@ export default function MainsMistakeBookPage() {
     const [filterStatus, setFilterStatus] = useState("All");
     const [filterSeverity, setFilterSeverity] = useState("All");
     const [filterMustRevise, setFilterMustRevise] = useState(false);
+
+    // Expanded groups
+    const [expandedAttempts, setExpandedAttempts] = useState({});
+
+    const handleOpenWorkspace = useCallback((group) => {
+        if (!group.attemptId) return;
+        const firstMistake = group.mistakes[0] || {};
+        navigate("/mains/answer-writing", {
+            state: {
+                attemptId: group.attemptId,
+                isRestored: true,
+                practiceMode: "typed",
+                paper: group.paper,
+                mode: "Custom",
+                questions: [
+                    {
+                        question: group.questionText,
+                        marks: firstMistake.marks || 15,
+                        wordLimit: firstMistake.wordLimit || 200,
+                        paper: group.paper,
+                        year: firstMistake.year || null,
+                        hint: group.topic || ""
+                    }
+                ],
+                currentIndex: 0
+            }
+        });
+    }, [navigate]);
 
     const reload = useCallback(async () => {
         setLoading(true);
@@ -305,12 +505,96 @@ export default function MainsMistakeBookPage() {
         return true;
     });
 
+    // ── Grouping (Main correction 5: Group mistakes by answer attempt) ──────────
+    const attemptGroups = useMemo(() => {
+        const groups = {};
+        filtered.forEach((m) => {
+            const key = m.attemptId || m.source_ref || "legacy_ungrouped";
+            if (!groups[key]) {
+                groups[key] = {
+                    attemptId: (m.attemptId || m.source_ref) ? (m.attemptId || m.source_ref) : null,
+                    paper: m.paper || "GS1",
+                    questionText: (m.attemptId || m.source_ref) ? (m.questionText || "Untitled Question") : "Legacy / Ungrouped Mistakes",
+                    score: m.score || null,
+                    createdAt: m.createdAt || null,
+                    reviewSource: m.review_source || null,
+                    mistakes: []
+                };
+            }
+            // limit to max 3 mistakes per group
+            if (groups[key].mistakes.length < 3) {
+                groups[key].mistakes.push(m);
+            }
+        });
+
+        return Object.values(groups).sort((a, b) => {
+            if (a.attemptId === null) return 1;
+            if (b.attemptId === null) return -1;
+            const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+            const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+            return dateB - dateA;
+        });
+    }, [filtered]);
+
+    // ── Top Must Revise (Main correction 5: Top Must Revise section) ───────────
+    const topMustRevise = useMemo(() => {
+        let list = mistakes.filter(m => m.status === "open");
+        if (filterPaper !== "All") {
+            list = list.filter(m => m.paper === filterPaper);
+        }
+
+        const typeCounts = {};
+        list.forEach(m => {
+            const t = m.mistakeType || m.errorType || "";
+            if (t) typeCounts[t] = (typeCounts[t] || 0) + 1;
+        });
+
+        const scored = list.map(m => {
+            let score = 0;
+            if (m.severity === "high") score += 50;
+            if (m.mustRevise) score += 30;
+
+            if (m.score !== null && m.score !== undefined) {
+                const sStr = String(m.score);
+                const match = sStr.match(/^([\d.]+)\s*\/\s*([\d.]+)$/);
+                if (match) {
+                    const num = parseFloat(match[1]);
+                    const den = parseFloat(match[2]);
+                    if (den > 0 && (num / den) < 0.45) score += 20;
+                } else {
+                    const num = parseFloat(sStr);
+                    if (!isNaN(num) && num < 5) score += 20;
+                }
+            }
+
+            const t = m.mistakeType || m.errorType || "";
+            const count = typeCounts[t] || 0;
+            if (count > 1) {
+                score += Math.min(count * 5, 20);
+            }
+
+            return { mistake: m, priorityScore: score };
+        });
+
+        return scored
+            .sort((a, b) => b.priorityScore - a.priorityScore)
+            .map(x => x.mistake)
+            .slice(0, 5);
+    }, [mistakes, filterPaper]);
+
     // ── Stats ──────────────────────────────────────────────────────────────────
     const total = mistakes.length;
     const open = mistakes.filter(m => m.status === "open").length;
     const resolved = mistakes.filter(m => m.status === "resolved").length;
     const mustReviseCount = mistakes.filter(m => m.mustRevise).length;
     const highSev = mistakes.filter(m => m.severity === "high").length;
+
+    const toggleAttemptExpand = (key) => {
+        setExpandedAttempts(prev => ({
+            ...prev,
+            [key]: !prev[key]
+        }));
+    };
 
     return (
         <div style={{ minHeight: "100vh", background: T.bg, color: T.text, fontFamily: T.font }}>
@@ -368,6 +652,53 @@ export default function MainsMistakeBookPage() {
 
                 {/* ── Weak pattern bar ─────────────────────────────────────────── */}
                 {total > 0 && <WeakPatternBar patterns={patterns} />}
+
+                {/* ── Top Must Revise Section ─────────────────────────────────── */}
+                {!loading && topMustRevise.length > 0 && (
+                    <div style={{
+                        background: `${T.red}04`,
+                        border: `1px dashed ${T.red}44`,
+                        borderRadius: 14,
+                        padding: "20px 24px",
+                        marginBottom: 28,
+                    }}>
+                        <div style={{ 
+                            display: "flex", 
+                            alignItems: "center", 
+                            justifyContent: "space-between", 
+                            marginBottom: 14 
+                        }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                <span style={{ fontSize: 18 }}>🔥</span>
+                                <h2 style={{
+                                    fontSize: 15, fontWeight: 900, color: T.textBright,
+                                    margin: 0, letterSpacing: "-0.01em"
+                                }}>
+                                    Top Must Revise
+                                </h2>
+                            </div>
+                            <span style={{
+                                fontSize: 9, fontWeight: 800,
+                                padding: "2px 8px", borderRadius: 12,
+                                background: `${T.red}18`, color: T.red,
+                                border: `1px solid ${T.red}33`,
+                                letterSpacing: "0.05em", textTransform: "uppercase"
+                            }}>
+                                Critical Priority
+                            </span>
+                        </div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                            {topMustRevise.map((m) => (
+                                <MainsMistakeCard
+                                    key={`top-${m.id}`}
+                                    mistake={m}
+                                    onMarkResolved={handleMarkResolved}
+                                    onToggleMustRevise={handleToggleMustRevise}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                )}
 
                 {/* ── Filters ──────────────────────────────────────────────────── */}
                 <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24 }}>
@@ -440,11 +771,11 @@ export default function MainsMistakeBookPage() {
                     fontSize: 11, color: T.subtle, marginBottom: 16,
                     fontWeight: 600, letterSpacing: "0.04em",
                 }}>
-                    {loading ? "Loading..." : `${filtered.length} result${filtered.length !== 1 ? "s" : ""}${filtered.length !== total ? ` (filtered from ${total})` : ""}`}
+                    {loading ? "Loading..." : `${attemptGroups.length} attempt group${attemptGroups.length !== 1 ? "s" : ""}${filtered.length !== total ? ` (filtered from ${total} mistakes)` : ""}`}
                 </div>
 
                 {/* ── Empty state ──────────────────────────────────────────────── */}
-                {!loading && filtered.length === 0 && (
+                {!loading && attemptGroups.length === 0 && (
                     <div style={{
                         background: T.surface,
                         border: `1px solid ${T.border}`,
@@ -464,16 +795,22 @@ export default function MainsMistakeBookPage() {
                     </div>
                 )}
 
-                {/* ── Mistake card list ─────────────────────────────────────────── */}
+                {/* ── Grouped Attempt Cards List ────────────────────────────────── */}
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                    {filtered.map((m) => (
-                        <MainsMistakeCard
-                            key={m.id}
-                            mistake={m}
-                            onMarkResolved={handleMarkResolved}
-                            onToggleMustRevise={handleToggleMustRevise}
-                        />
-                    ))}
+                    {attemptGroups.map((group) => {
+                        const key = group.attemptId || "legacy_ungrouped";
+                        return (
+                            <AttemptGroupCard
+                                key={key}
+                                group={group}
+                                expanded={Boolean(expandedAttempts[key])}
+                                onToggle={() => toggleAttemptExpand(key)}
+                                onMarkResolved={handleMarkResolved}
+                                onToggleMustRevise={handleToggleMustRevise}
+                                onOpenWorkspace={handleOpenWorkspace}
+                            />
+                        );
+                    })}
                 </div>
 
             </div>
