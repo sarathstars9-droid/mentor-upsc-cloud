@@ -725,33 +725,42 @@ export async function processTodayBlocks(userId, now, isEscalationPaused = false
            const alreadySent = await hasEvent(userId, 'BLOCK_TOO_MUCH_PAUSED', sourceId);
            if (!alreadySent) {
              const alertText = `⚠️ *Block Friction Detected*\nThis block (*${b.subject || 'Study'}*) has been paused too many times (${pauseCount} pauses, ${totalPausedMinutes}m total).\n\nChoose an action below to regain control:`;
+              
+              let sentSuccess = false;
+              try {
+                const { sendTelegramMessage } = await import('./telegramService.js');
+                const chatId = process.env.TELEGRAM_CHAT_ID;
+                if (chatId) {
+                  sentSuccess = await sendTelegramMessage(chatId, alertText, {
+                    reply_markup: {
+                      inline_keyboard: [
+                        [{ text: "Continue 25m without pause", callback_data: `CONTINUE_BLOCK_25:${b.id}` }],
+                        [{ text: "Reduce to smaller block", callback_data: `REDUCE_BLOCK:${b.id}` }],
+                        [{ text: "Move to Rescue Mode", callback_data: `START_RESCUE_MODE:${b.id}` }]
+                      ]
+                    }
+                  });
+                }
+              } catch (sendErr) {
+                console.error(`[NotificationScheduler] Failed to send Telegram friction alert for block ${b.id}:`, sendErr.message);
+              }
+
+              if (!sentSuccess) {
+                // Reset database lock so it can be retried on next scheduler tick
+                await query(
+                  `UPDATE public.study_blocks 
+                   SET friction_state = NULL,
+                       friction_alert_sent = FALSE,
+                       friction_alert_sent_at = NULL,
+                       telegram_action_pending = FALSE
+                   WHERE id = $1`,
+                  [b.id]
+                );
+              }
              
-             const { sendTelegramMessage } = await import('./telegramService.js');
-             const chatId = process.env.TELEGRAM_CHAT_ID;
-             if (chatId) {
-               await sendTelegramMessage(chatId, alertText, {
-                 reply_markup: {
-                   inline_keyboard: [
-                     [{ text: "Continue 25m without pause", callback_data: `CONTINUE_BLOCK_25:${b.id}` }],
-                     [{ text: "Reduce to smaller block", callback_data: `REDUCE_BLOCK:${b.id}` }],
-                     [{ text: "Move to Rescue Mode", callback_data: `START_RESCUE_MODE:${b.id}` }]
-                   ]
-                 }
-               });
+             if (sentSuccess) {
+               await recordEvent(userId, 'BLOCK_TOO_MUCH_PAUSED', String(b.id));
              }
-             
-             // Alert registration completed atomically above
-             if (false) await query(
-               `UPDATE public.study_blocks 
-                SET friction_state = 'unresolved',
-                    friction_alert_sent = TRUE,
-                    friction_alert_sent_at = NOW(),
-                    telegram_action_pending = TRUE
-                WHERE id = $1`,
-               [b.id]
-             );
-             
-             await recordEvent(userId, 'BLOCK_TOO_MUCH_PAUSED', String(b.id));
            }
          }
        }
