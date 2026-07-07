@@ -599,7 +599,7 @@ Breakdown:`;
 }
 
 // Unified block scanner for reminders, pause checks, and missed blocks
-async function processTodayBlocks(userId, now, isEscalationPaused = false) {
+export async function processTodayBlocks(userId, now, isEscalationPaused = false) {
 
 
   const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
@@ -702,28 +702,49 @@ async function processTodayBlocks(userId, now, isEscalationPaused = false) {
        const pauseCount = b.pauses_count || 0;
 
        if (pauseCount >= 3 || totalPausedMinutes >= 30) {
-         // Generate a sourceId based on total pauses/duration so it doesn't spam infinitely but alerts when severity changes
-         const severityStage = Math.floor(totalPausedMinutes / 30) + pauseCount;
-         const sourceId = String(b.id) + '_' + severityStage;
-         
-         const alreadySent = await hasEvent(userId, 'BLOCK_TOO_MUCH_PAUSED', sourceId);
-         if (!alreadySent) {
-           const alertText = `⚠️ *Block Friction Detected*\nThis block (*${b.subject || 'Study'}*) has been paused too many times (${pauseCount} pauses, ${totalPausedMinutes}m total).\n\nChoose an action below to regain control:`;
+         // Re-fetch current block state from DB to check status and prevent duplicate alerts
+         const { rows: latestRows } = await query(
+           `SELECT status, friction_alert_sent, telegram_action_pending FROM public.study_blocks WHERE id = $1`,
+           [b.id]
+         );
+         const latestBlock = latestRows[0];
+
+         if (latestBlock && latestBlock.status === 'paused' && !latestBlock.friction_alert_sent) {
+           // Generate a sourceId based on total pauses/duration so it doesn't spam infinitely but alerts when severity changes
+           const severityStage = Math.floor(totalPausedMinutes / 30) + pauseCount;
+           const sourceId = String(b.id) + '_' + severityStage;
            
-           const { sendTelegramMessage } = await import('./telegramService.js');
-           const chatId = process.env.TELEGRAM_CHAT_ID;
-           if (chatId) {
-             await sendTelegramMessage(chatId, alertText, {
-               reply_markup: {
-                 inline_keyboard: [
-                   [{ text: "Continue 25m without pause", callback_data: "CONTINUE_BLOCK_25" }],
-                   [{ text: "Reduce to smaller block", callback_data: "REDUCE_BLOCK" }],
-                   [{ text: "Move to Rescue Mode", callback_data: "START_RESCUE_MODE" }]
-                 ]
-               }
-             });
+           const alreadySent = await hasEvent(userId, 'BLOCK_TOO_MUCH_PAUSED', sourceId);
+           if (!alreadySent) {
+             const alertText = `⚠️ *Block Friction Detected*\nThis block (*${b.subject || 'Study'}*) has been paused too many times (${pauseCount} pauses, ${totalPausedMinutes}m total).\n\nChoose an action below to regain control:`;
+             
+             const { sendTelegramMessage } = await import('./telegramService.js');
+             const chatId = process.env.TELEGRAM_CHAT_ID;
+             if (chatId) {
+               await sendTelegramMessage(chatId, alertText, {
+                 reply_markup: {
+                   inline_keyboard: [
+                     [{ text: "Continue 25m without pause", callback_data: `CONTINUE_BLOCK_25:${b.id}` }],
+                     [{ text: "Reduce to smaller block", callback_data: `REDUCE_BLOCK:${b.id}` }],
+                     [{ text: "Move to Rescue Mode", callback_data: `START_RESCUE_MODE:${b.id}` }]
+                   ]
+                 }
+               });
+             }
+             
+             // Update database columns to register sent alert
+             await query(
+               `UPDATE public.study_blocks 
+                SET friction_state = 'unresolved',
+                    friction_alert_sent = TRUE,
+                    friction_alert_sent_at = NOW(),
+                    telegram_action_pending = TRUE
+                WHERE id = $1`,
+               [b.id]
+             );
+             
+             await recordEvent(userId, 'BLOCK_TOO_MUCH_PAUSED', String(b.id));
            }
-           await recordEvent(userId, 'BLOCK_TOO_MUCH_PAUSED', String(b.id));
          }
        }
        continue;

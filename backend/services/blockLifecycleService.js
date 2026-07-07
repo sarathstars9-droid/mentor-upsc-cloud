@@ -359,6 +359,10 @@ export async function resumeBlock(userId = DEFAULT_USER, blockId, dayKey) {
                                       EXTRACT(EPOCH FROM (NOW() - paused_at))::INTEGER),
            last_resumed_at      = NOW(),
            paused_at            = NULL,
+           friction_state       = NULL,
+           friction_alert_sent  = FALSE,
+           friction_alert_sent_at = NULL,
+           telegram_action_pending = FALSE,
            updated_at           = NOW()
        WHERE user_id = $1 AND block_id = $2 AND day_key = $3 AND status = 'paused'
        RETURNING *`,
@@ -479,6 +483,10 @@ export async function completeBlock(
                                       ELSE 0
                                  END,
          paused_at           = NULL,
+         friction_state      = NULL,
+         friction_alert_sent = FALSE,
+         friction_alert_sent_at = NULL,
+         telegram_action_pending = FALSE,
          completion_reason   = $4,
          proof_url           = COALESCE($5, proof_url),
          proof_type          = COALESCE($6, proof_type),
@@ -641,6 +649,10 @@ export async function stopBlock(
                                       ELSE 0
                                  END,
          paused_at           = NULL,
+         friction_state      = NULL,
+         friction_alert_sent = FALSE,
+         friction_alert_sent_at = NULL,
+         telegram_action_pending = FALSE,
          completion_reason   = 'stopped',
          stop_feedback       = $4,
          stop_reason         = $5,

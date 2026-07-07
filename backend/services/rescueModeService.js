@@ -17,6 +17,19 @@ export async function startRescueMode(userId) {
   const dateKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
   try {
+    // Stop any active or paused blocks before starting rescue mode
+    const { rows: activeOrPaused } = await query(
+      `SELECT id, block_id, day_key, status FROM study_blocks 
+       WHERE user_id = $1 AND day_key = $2 AND status IN ('active', 'paused')`,
+      [userId, dateKey]
+    );
+    for (const b of activeOrPaused) {
+       const { stopBlock } = await import('./blockLifecycleService.js');
+       await stopBlock(userId, b.block_id, b.day_key, {
+         reason: 'partial',
+         feedback: 'Stopped for Rescue Mode'
+       });
+    }
     // Optional: Cancel remaining 'planned' blocks for today so they don't clog the schedule
     await query(
       `UPDATE study_blocks 

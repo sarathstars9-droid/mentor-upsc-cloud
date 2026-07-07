@@ -973,13 +973,69 @@ export async function handleCallbackQuery(userId, destinationId, cb) {
   const payload = cb.data;
   console.log(`[BotCommandService] Routing callback: "${payload}" for user ${userId}`);
   
-  // Example for BLOCK_TOO_MUCH_PAUSED options
-  if (payload === 'CONTINUE_BLOCK_25') {
+  let action = payload;
+  let blockId = null;
+  if (payload.includes(':')) {
+    const parts = payload.split(':');
+    action = parts[0];
+    blockId = parts[1];
+  }
+
+  const { query } = await import('../db/index.js');
+  let block = null;
+  if (blockId) {
+    const { rows } = await query(`SELECT * FROM public.study_blocks WHERE id = $1`, [blockId]);
+    block = rows[0];
+  } else {
+    // Fallback to latest active or paused block for the user
+    const { rows } = await query(
+      `SELECT * FROM public.study_blocks WHERE user_id = $1 ORDER BY updated_at DESC LIMIT 1`,
+      [userId]
+    );
+    block = rows[0];
+  }
+
+  // If the block is already active, stopped, completed, or no longer pending telegram action
+  if (block && (block.status === 'active' || !block.telegram_action_pending || ['completed', 'partial', 'stopped', 'done'].includes(block.status))) {
+    await telegramService.sendTelegramMessage(destinationId, "This block is already active. No action needed.");
+    return;
+  }
+
+  if (action === 'CONTINUE_BLOCK_25') {
+    if (block) {
+      const { resumeBlock } = await import('./blockLifecycleService.js');
+      await resumeBlock(block.user_id, block.block_id, block.day_key);
+    }
     await telegramService.sendTelegramMessage(destinationId, "Excellent. Put your phone away and focus for 25 minutes without pause.");
-  } else if (payload === 'REDUCE_BLOCK') {
-    await telegramService.sendTelegramMessage(destinationId, "Okay. End the current block in the app and create a smaller 25-minute block. Take a 5-minute break first.");
-  } else if (payload === 'START_RESCUE_MODE') {
-    // Dynamic import to avoid circular dependency
+  } else if (action === 'REDUCE_BLOCK') {
+    if (block) {
+      const { completeBlock, startBlock } = await import('./blockLifecycleService.js');
+      // Mark current block as partial
+      await completeBlock(block.user_id, block.block_id, block.day_key, {
+        reason: 'partial',
+        completionSource: 'telegram'
+      });
+
+      // Create new 25m block
+      const now = new Date();
+      const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+      const d = new Date(kolkataStr);
+      const dateKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+      const countRes = await query(`SELECT COUNT(*) as count FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [block.user_id, dateKey]);
+      const nextIdx = Number(countRes.rows[0]?.count || 0) + 1;
+      const newBlockId = `B${nextIdx}`;
+
+      await startBlock(block.user_id, newBlockId, dateKey, {
+        title: `Reduced: ${block.title || block.subject || 'Study'}`,
+        subject: block.subject,
+        topic: block.topic,
+        plannedMinutes: 25,
+        isTestData: block.is_test_data
+      });
+    }
+    await telegramService.sendTelegramMessage(destinationId, "Okay. Ended the current block in the app as partial and created/started a smaller 25-minute block. Take a 5-minute break first.");
+  } else if (action === 'START_RESCUE_MODE') {
     const { startRescueMode } = await import('./rescueModeService.js');
     await startRescueMode(userId);
     await telegramService.sendTelegramMessage(destinationId, "Rescue Mode started. Check the app for your 3 strict blocks.");
