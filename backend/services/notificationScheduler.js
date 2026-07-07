@@ -702,14 +702,22 @@ export async function processTodayBlocks(userId, now, isEscalationPaused = false
        const pauseCount = b.pauses_count || 0;
 
        if (pauseCount >= 3 || totalPausedMinutes >= 30) {
-         // Re-fetch current block state from DB to check status and prevent duplicate alerts
-         const { rows: latestRows } = await query(
-           `SELECT status, friction_alert_sent, telegram_action_pending FROM public.study_blocks WHERE id = $1`,
-           [b.id]
-         );
-         const latestBlock = latestRows[0];
+          // Atomically update block to register alert sent only if status is paused and friction alert hasn't been sent yet
+          const { rows: updateRes } = await query(
+            `UPDATE public.study_blocks 
+             SET friction_state = 'unresolved',
+                 friction_alert_sent = TRUE,
+                 friction_alert_sent_at = NOW(),
+                 telegram_action_pending = TRUE
+             WHERE id = $1
+               AND status = 'paused'
+               AND COALESCE(friction_alert_sent, FALSE) = FALSE
+             RETURNING *`,
+            [b.id]
+          );
+          const latestBlock = updateRes[0];
 
-         if (latestBlock && latestBlock.status === 'paused' && !latestBlock.friction_alert_sent) {
+          if (latestBlock) {
            // Generate a sourceId based on total pauses/duration so it doesn't spam infinitely but alerts when severity changes
            const severityStage = Math.floor(totalPausedMinutes / 30) + pauseCount;
            const sourceId = String(b.id) + '_' + severityStage;
@@ -732,8 +740,8 @@ export async function processTodayBlocks(userId, now, isEscalationPaused = false
                });
              }
              
-             // Update database columns to register sent alert
-             await query(
+             // Alert registration completed atomically above
+             if (false) await query(
                `UPDATE public.study_blocks 
                 SET friction_state = 'unresolved',
                     friction_alert_sent = TRUE,
