@@ -24,7 +24,7 @@ const C = {
   purple:  "#a78bfa",
 };
 
-const TAB = { TODAY: "today", WEEK: "week", MONTH: "month", SUGGEST: "suggest" };
+const TAB = { DASHBOARD: "dashboard", TODAY: "today", WEEK: "week", MONTH: "month", SUGGEST: "suggest" };
 
 // ── API helpers ───────────────────────────────────────────────────────────────
 
@@ -986,10 +986,273 @@ function EmptyState({ message }) {
   );
 }
 
+function DashboardPanel() {
+  const [range, setRange] = useState("week");
+  const [paper, setPaper] = useState("all");
+  const [report, setReport] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/reports/learning-loop?range=${range}&paper=${paper}`, { cache: "no-store" });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.message || `Server error ${res.status}`);
+      if (!data.ok) throw new Error(data.message || "Report fetch failed");
+      setReport(data.report);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  }, [range, paper]);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  if (loading) return <Spinner />;
+  if (error) return <ErrorMsg msg={error} onRetry={load} />;
+  if (!report) return null;
+
+  const { execution, answers, mistakes, revisions, trends, prescription } = report;
+
+  // Detect if there is any data
+  const hasData = execution.plannedBlocks > 0 || answers.totalWritten > 0 || mistakes.totalOpen > 0 || revisions.completed > 0 || revisions.dueToday > 0;
+
+  return (
+    <div>
+      {/* ── Filters Bar ─────────────────────────────────────────────────── */}
+      <div style={{
+        display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap", alignItems: "center",
+        background: C.card, padding: "12px 18px", borderRadius: 12, border: `1px solid ${C.border}`
+      }}>
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+          {[
+            { id: "today", label: "Today" },
+            { id: "week", label: "This Week" },
+            { id: "month", label: "This Month" },
+            { id: "all", label: "All Time" }
+          ].map(r => (
+            <button
+              key={r.id}
+              onClick={() => setRange(r.id)}
+              style={{
+                background: range === r.id ? "rgba(96,165,250,0.15)" : "none",
+                border: `1px solid ${range === r.id ? "rgba(96,165,250,0.4)" : C.border}`,
+                borderRadius: 8, color: range === r.id ? C.blue : C.muted,
+                padding: "6px 14px", fontSize: 13, fontWeight: 600, cursor: "pointer",
+                transition: "all 0.15s"
+              }}
+            >
+              {r.label}
+            </button>
+          ))}
+        </div>
+
+        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={{ fontSize: 12, color: C.muted }}>Paper:</span>
+          <select
+            value={paper}
+            onChange={(e) => setPaper(e.target.value)}
+            style={{
+              background: C.bg, border: `1px solid ${C.border}`, borderRadius: 8,
+              color: C.text, padding: "6px 12px", fontSize: 13, cursor: "pointer", outline: "none"
+            }}
+          >
+            <option value="all">All Papers</option>
+            <option value="GS1">GS1 (GS Paper II)</option>
+            <option value="GS2">GS2 (GS Paper III)</option>
+            <option value="GS3">GS3 (GS Paper IV)</option>
+            <option value="Ethics">Ethics (GS Paper V)</option>
+            <option value="Essay">Essay</option>
+            <option value="Geography Optional">Geography Optional</option>
+          </select>
+        </div>
+      </div>
+
+      {/* ── Dynamic Prescription Banner ──────────────────────────────────── */}
+      {prescription && (
+        <div style={{
+          padding: "16px 20px",
+          background: "rgba(167,139,250,0.07)",
+          border: "1px solid rgba(167,139,250,0.25)",
+          borderRadius: 12, marginBottom: 24
+        }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: C.purple, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 8 }}>
+            🧠 Mentor Prescription
+          </div>
+          <div style={{ fontSize: 14, color: C.text, lineHeight: 1.6 }}>
+            {prescription}
+          </div>
+        </div>
+      )}
+
+      {/* ── Top KPI Cards ──────────────────────────────────────────────── */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12, marginBottom: 24 }}>
+        <StatCard label="Execution Rate" value={`${execution.executionRate}%`} sub={`${execution.completedBlocks}/${execution.plannedBlocks} blocks`} accent={C.green} />
+        <StatCard label="Study Hours" value={`${execution.totalCompletedHours}h`} sub={`${execution.totalPlannedHours}h planned`} accent={C.blue} />
+        <StatCard label="Avg Score" value={answers.totalWritten > 0 ? `${answers.averageScore}/10` : "—"} sub={`${answers.totalWritten} answers`} accent={C.amber} />
+        <StatCard label="Open Mistakes" value={`${mistakes.totalOpen}`} sub={`${mistakes.totalResolved} resolved`} accent={C.red} />
+        <StatCard label="Revisions Due" value={`${revisions.dueToday}`} sub={`${revisions.overdue} overdue`} accent={C.purple} />
+      </div>
+
+      {!hasData ? (
+        <div style={{
+          background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
+          padding: "48px 24px", textAlign: "center", color: C.dim
+        }}>
+          <div style={{ fontSize: 32, marginBottom: 12 }}>📊</div>
+          <div style={{ fontSize: 15, fontWeight: 600, color: C.muted }}>No execution or learning loop data found for the selected range.</div>
+          <div style={{ fontSize: 13, color: C.dim, marginTop: 4 }}>Start writing answers or scheduling blocks to populate metrics.</div>
+        </div>
+      ) : (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 20 }}>
+          {/* Left Column */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+            {/* Execution / Study Summary */}
+            <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: 20 }}>
+              <SectionHeader>📅 Study Execution</SectionHeader>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 14 }}>
+                <span style={{ fontSize: 13, color: C.muted }}>Streak:</span>
+                <span style={{ fontSize: 14, fontWeight: 700, color: C.amber }}>🔥 {execution.streak} days</span>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 14 }}>
+                <span style={{ fontSize: 13, color: C.muted }}>Blocks Completed:</span>
+                <span style={{ fontSize: 14, fontWeight: 700, color: C.green }}>{execution.completedBlocks} blocks</span>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 14 }}>
+                <span style={{ fontSize: 13, color: C.muted }}>Blocks Missed:</span>
+                <span style={{ fontSize: 14, fontWeight: 700, color: C.red }}>{execution.missedBlocks} blocks</span>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <span style={{ fontSize: 13, color: C.muted }}>Completed Study Hours:</span>
+                <span style={{ fontSize: 14, fontWeight: 700, color: C.blue }}>{execution.totalCompletedHours}h / {execution.totalPlannedHours}h</span>
+              </div>
+            </div>
+
+            {/* Answer Score Trend */}
+            <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: 20 }}>
+              <SectionHeader>📈 Answer Score Trend</SectionHeader>
+              {answers.trend.length === 0 ? (
+                <div style={{ fontSize: 12, color: C.dim, textAlign: "center", padding: "20px 0" }}>No evaluated answer attempts in this period.</div>
+              ) : (
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 10 }}>
+                  {answers.trend.slice(-5).map((t, idx) => (
+                    <div key={idx} style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <span style={{ fontSize: 12, color: C.muted }}>{t.date}</span>
+                      <div style={{ flex: 1, margin: "0 12px", height: 4, background: "rgba(255,255,255,0.06)", borderRadius: 2, overflow: "hidden" }}>
+                        <div style={{ height: "100%", width: `${(t.avg_score / 10) * 100}%`, background: C.amber }} />
+                      </div>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: C.text }}>{t.avg_score}/10</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Latest Attempts */}
+            {answers.latestAttempts.length > 0 && (
+              <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: 20 }}>
+                <SectionHeader>📝 Latest Answer Attempts</SectionHeader>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  {answers.latestAttempts.map((a, idx) => (
+                    <div key={idx} style={{
+                      display: "flex", justifyContent: "space-between", alignItems: "center",
+                      paddingBottom: 8, borderBottom: idx !== answers.latestAttempts.length - 1 ? `1px solid ${C.border}` : "none"
+                    }}>
+                      <div style={{ minWidth: 0, flex: 1 }}>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: C.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          {a.subject}{a.topic ? ` — ${a.topic}` : ""}
+                        </div>
+                        <div style={{ fontSize: 11, color: C.dim, marginTop: 2 }}>{a.paper} · {new Date(a.created_at).toLocaleDateString("en-IN")}</div>
+                      </div>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: C.green, marginLeft: 12 }}>{a.current_score || "N/A"}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Right Column */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+            {/* Revision Health */}
+            <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: 20 }}>
+              <SectionHeader>🔄 Revision Health</SectionHeader>
+              <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+                <ConsistencyRing score={revisions.completionRate} />
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: C.muted, marginBottom: 6 }}>
+                    <span>Revisions Completed:</span>
+                    <span style={{ fontWeight: 700, color: C.green }}>{revisions.completed}</span>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: C.muted, marginBottom: 6 }}>
+                    <span>Overdue Revisions:</span>
+                    <span style={{ fontWeight: 700, color: C.red }}>{revisions.overdue}</span>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: C.muted }}>
+                    <span>Must Revise Pending:</span>
+                    <span style={{ fontWeight: 700, color: C.purple }}>{revisions.mustRevisePending}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Paper-wise Weakness */}
+            <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: 20 }}>
+              <SectionHeader>⚠️ Weakness by Paper</SectionHeader>
+              {mistakes.topWeakPapers.length === 0 ? (
+                <div style={{ fontSize: 12, color: C.dim, textAlign: "center", padding: "20px 0" }}>No open mistakes recorded.</div>
+              ) : (
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  {mistakes.topWeakPapers.map((wp, idx) => (
+                    <div key={idx} style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <span style={{ fontSize: 13, fontWeight: 600, color: C.text }}>{wp.paper}</span>
+                      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                        <span style={{ fontSize: 11, color: C.dim }}>{wp.count} open mistakes</span>
+                        <div style={{ width: 40, height: 4, background: "rgba(255,255,255,0.06)", borderRadius: 2 }}>
+                          <div style={{ height: "100%", width: `${Math.min((wp.count / 10) * 100, 100)}%`, background: C.red }} />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Top 5 Must Fix Areas */}
+            <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: 20 }}>
+              <SectionHeader>🎯 Top 5 Must Fix Areas</SectionHeader>
+              {mistakes.topWeakAreas.length === 0 ? (
+                <div style={{ fontSize: 12, color: C.dim, textAlign: "center", padding: "20px 0" }}>No weak areas identified.</div>
+              ) : (
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  {mistakes.topWeakAreas.map((wa, idx) => (
+                    <div key={idx} style={{
+                      display: "flex", justifyContent: "space-between", alignItems: "center",
+                      paddingBottom: 6, borderBottom: idx !== mistakes.topWeakAreas.length - 1 ? `1px solid ${C.border}` : "none"
+                    }}>
+                      <span style={{ fontSize: 13, color: C.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{wa.area}</span>
+                      <span style={{ fontSize: 12, fontWeight: 700, color: C.amber, marginLeft: 12 }}>{wa.count} errors</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function ReportsPage() {
-  const [tab,   setTab]   = useState(TAB.TODAY);
+  const [tab,   setTab]   = useState(TAB.DASHBOARD);
   const [date,  setDate]  = useState(todayKey());
   const [month, setMonth] = useState(thisMonthKey());
 
@@ -1024,6 +1287,7 @@ export default function ReportsPage() {
 
         {/* ── Tab bar ────────────────────────────────────────────────────── */}
         <div style={{ display: "flex", gap: 8, marginTop: 20, flexWrap: "wrap" }}>
+          <button style={tabStyle(TAB.DASHBOARD)} onClick={() => setTab(TAB.DASHBOARD)}>Learning Loop</button>
           <button style={tabStyle(TAB.TODAY)}   onClick={() => setTab(TAB.TODAY)}>Today</button>
           <button style={tabStyle(TAB.WEEK)}    onClick={() => setTab(TAB.WEEK)}>Last 7 Days</button>
           <button style={tabStyle(TAB.MONTH)}   onClick={() => setTab(TAB.MONTH)}>This Month</button>
@@ -1048,6 +1312,7 @@ export default function ReportsPage() {
 
       {/* ── Panel area ───────────────────────────────────────────────────── */}
       <div style={{ padding: "0 24px" }}>
+        {tab === TAB.DASHBOARD && <DashboardPanel />}
         {tab === TAB.TODAY   && <DailyPanel date={date} onDateChange={setDate} />}
         {tab === TAB.WEEK    && <WeeklyPanel endDate={todayKey()} />}
         {tab === TAB.MONTH   && <MonthlyPanel month={month} />}

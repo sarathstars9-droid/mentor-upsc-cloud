@@ -11,7 +11,8 @@
     "migrate:telegram": "node db/run_telegram_migration.js && node db/run_025_migration.js",
     "migrate:all": "node db/run_all_migrations.js",
     "verify:schema": "node db/verify_railway_schema.js",
-    "test:telegram-friction": "node test_telegram_friction_alert.mjs"
+    "test:telegram-friction": "node test_telegram_friction_alert.mjs",
+    "test:reports-dashboard": "node test_reports_dashboard.mjs"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

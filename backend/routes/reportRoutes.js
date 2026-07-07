@@ -68,4 +68,28 @@ router.get('/monthly', async (req, res) => {
   }
 });
 
+// ── GET /api/reports/learning-loop ───────────────────────────────────────────
+
+router.get('/learning-loop', async (req, res) => {
+  const range = req.query.range || 'week';
+  const paper = req.query.paper || 'all';
+
+  if (!['today', 'week', 'month', 'all'].includes(range)) {
+    return res.status(400).json({ ok: false, message: 'range must be today, week, month, or all' });
+  }
+
+  if (!['all', 'GS1', 'GS2', 'GS3', 'Essay', 'Ethics', 'Geography Optional'].includes(paper)) {
+    return res.status(400).json({ ok: false, message: 'invalid paper type' });
+  }
+
+  try {
+    const { getReportsDashboardData } = await import('../services/reportsDashboardService.js');
+    const report = await getReportsDashboardData(uid(req), range, paper);
+    return res.json({ ok: true, report });
+  } catch (err) {
+    console.error('[GET /api/reports/learning-loop]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
 export default router;
