@@ -1,29 +1,18 @@
 import * as repo from "../repositories/revisionRepository.js";
+import { query } from "../db/index.js";
 
 function getPriorityFromMistake(mistake) {
-    if (mistake.must_revise) return "high";
+    if (mistake.must_revise || mistake.severity === "high") return "high";
     if (mistake.answer_status === "wrong") return "high";
-    if (mistake.answer_status === "unattempted") return "medium";
+    if (mistake.severity === "medium" || mistake.answer_status === "unattempted") return "medium";
     return "low";
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Spaced repetition interval ladder.
-//
-// reviewCount is the value BEFORE this review (i.e. how many times the item
-// has been reviewed so far). The returned value is the number of days until
-// the next review should be shown.
-//
-// Priority tuning:
-//   high  → 0.7× (review sooner — high-priority items need more reinforcement)
-//   low   → 1.2× (review later  — low-priority items can wait longer)
-//   medium → 1.0× (no change)
-//
-// Minimum enforced at 1 day so next_review_at never moves backwards.
 // ─────────────────────────────────────────────────────────────────────────────
 function getNextIntervalDays(reviewCount, priority) {
     const ladder = [1, 3, 7, 15, 30, 45, 60];
-    // reviewCount 0 → ladder[0]=1d, 1 → ladder[1]=3d … 5+ → ladder[6]=60d
     const base = ladder[Math.min(reviewCount, ladder.length - 1)];
 
     const multiplier =
@@ -40,43 +29,77 @@ export async function ensureRevisionItemFromMistake(mistake) {
     }
 
     try {
-        // SELECT first — prevents duplicates without depending on DB unique index
         const existing = await repo.findRevisionItemForMistake(
             mistake.user_id,
             mistake.question_id || null,
             mistake.source_type || null,
             mistake.source_ref || null,
-            mistake.stage || null
+            mistake.stage || null,
+            mistake.id || null
         );
 
-        let intervalDays = 1;
-        if (mistake.severity === "high") {
-            intervalDays = 1; // today or tomorrow
+        let intervalDays = 3; // default
+        if (mistake.severity === "high" || mistake.must_revise) {
+            intervalDays = 1;
         } else if (mistake.severity === "medium") {
-            intervalDays = 3; // 3 or 7 days
+            intervalDays = 3;
         } else if (mistake.severity === "low") {
-            intervalDays = 7; // 7 to 14 days
+            intervalDays = 7;
         }
 
         const nextReviewAt = new Date();
         nextReviewAt.setDate(nextReviewAt.getDate() + intervalDays);
         const nextReviewAtStr = nextReviewAt.toISOString();
 
-        if (existing) {
-            const newPriority = getPriorityFromMistake(mistake);
-            const updates = {};
-            if (newPriority === "high" && existing.priority !== "high") {
-                updates.priority = "high";
+        // Check if this mistake type was made before in a different attempt
+        let hasPreviousRepeat = false;
+        if (mistake.paper && mistake.mistake_type && mistake.attempt_id) {
+            const repeatCheck = await query(
+                `SELECT id FROM mistakes 
+                 WHERE user_id = $1 AND paper = $2 AND mistake_type = $3 AND attempt_id <> $4 AND id <> $5
+                 LIMIT 1`,
+                [mistake.user_id, mistake.paper, mistake.mistake_type, mistake.attempt_id, mistake.id]
+            );
+            if (repeatCheck.rows.length > 0) {
+                hasPreviousRepeat = true;
             }
-            if ((mistake.must_revise || mistake.severity === "high") && existing.status !== "pending") {
+        }
+
+        if (existing) {
+            const updates = {};
+            
+            // Priority escalation
+            let nextPriority = existing.priority || "low";
+            if (hasPreviousRepeat || mistake.severity === "high" || mistake.must_revise) {
+                nextPriority = "high";
+            } else {
+                if (nextPriority === "low") {
+                    nextPriority = "medium";
+                } else if (nextPriority === "medium") {
+                    nextPriority = "high";
+                }
+            }
+            if (nextPriority !== existing.priority) {
+                updates.priority = nextPriority;
+            }
+
+            // Reactivate completed / resolved revision item
+            const isCompleted = ["completed", "revised", "reviewed"].includes(existing.status);
+            if (isCompleted || existing.status !== "pending" || mistake.must_revise || mistake.severity === "high" || hasPreviousRepeat) {
                 updates.status = "pending";
                 updates.next_review_at = nextReviewAtStr;
                 updates.due_date = nextReviewAtStr;
             }
+
             if (Object.keys(updates).length > 0) {
                 return await repo.updateRevisionItem(existing.id, updates);
             }
             return existing;
+        }
+
+        let basePriority = getPriorityFromMistake(mistake);
+        if (hasPreviousRepeat) {
+            basePriority = "high";
         }
 
         return await repo.upsertRevisionItem({
@@ -87,9 +110,13 @@ export async function ensureRevisionItemFromMistake(mistake) {
             stage: mistake.stage,
             subject: mistake.subject,
             node_id: mistake.node_id,
-            question_text: mistake.question_text,
+            title: mistake.question_text
+                ? (mistake.question_text.length > 120 ? mistake.question_text.slice(0, 120) + "…" : mistake.question_text)
+                : (mistake.mistake_text || "Revision Item"),
+            content: mistake.question_text || mistake.mistake_text || null,
+            question_text: mistake.question_text || null,
             status: "pending",
-            priority: getPriorityFromMistake(mistake),
+            priority: basePriority,
             review_count: 0,
             interval_days: intervalDays,
             last_reviewed_at: null,
@@ -99,8 +126,6 @@ export async function ensureRevisionItemFromMistake(mistake) {
             mistake_id: mistake.id || null,
         });
     } catch (err) {
-        // Revision item creation must never break the mistake save flow.
-        // Log the error so it's visible in Railway logs, but do not rethrow.
         console.error(
             "[REVISION] ensureRevisionItemFromMistake failed — mistake was saved, revision item was not created:",
             err?.message || err,
@@ -118,8 +143,6 @@ export async function markRevisionReviewed(id) {
     const item = await repo.getRevisionItemById(id);
     if (!item) return null;
 
-    // Use review_count (preferred) or fall back to revision_count for
-    // backward compatibility with rows created before the migration.
     const currentReviewCount = item.review_count ?? item.revision_count ?? 0;
     const newReviewCount = currentReviewCount + 1;
 
@@ -128,14 +151,16 @@ export async function markRevisionReviewed(id) {
     const now = new Date();
     const nextReview = new Date(now);
     nextReview.setDate(nextReview.getDate() + intervalDays);
+    const nextReviewStr = nextReview.toISOString();
 
     const updated = await repo.updateRevisionItem(id, {
-        status:           "reviewed",
+        status:           "completed",
         review_count:     newReviewCount,
         revision_count:   newReviewCount,   // keep both fields in sync
         interval_days:    intervalDays,
         last_reviewed_at: now.toISOString(),
-        next_review_at:   nextReview.toISOString(),
+        next_review_at:   nextReviewStr,
+        due_date:         nextReviewStr,
     });
 
     if (updated) {

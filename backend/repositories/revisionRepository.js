@@ -187,10 +187,17 @@ export async function upsertRevisionItem(data) {
 // Gracefully handles columns that do not yet exist in the DB (schema errors
 // 42703 / 42P10 are caught and the next path is tried).
 // ─────────────────────────────────────────────────────────────────────────────
-export async function findRevisionItemForMistake(userId, questionId, _sourceType, sourceRef, stage) {
-  // 1. By question_id + stage  (requires migrated schema — column question_id)
-  //    This is the only correct key when question_id is present; do NOT fall
-  //    through to source_ref matching after this succeeds or finds nothing.
+export async function findRevisionItemForMistake(userId, questionId, _sourceType, sourceRef, stage, mistakeId) {
+  // 1. Try mistakeId match first (preferred)
+  if (mistakeId) {
+    const result = await query(
+      `SELECT * FROM revision_items WHERE user_id = $1 AND mistake_id = $2 LIMIT 1`,
+      [userId, mistakeId]
+    );
+    if (result.rows[0]) return result.rows[0];
+  }
+
+  // 2. By question_id + stage (requires migrated schema — column question_id)
   if (questionId) {
     try {
       const result = await query(
@@ -201,22 +208,14 @@ export async function findRevisionItemForMistake(userId, questionId, _sourceType
          LIMIT 1`,
         [userId, questionId, stage || null]
       );
-      // Row found → it's a true duplicate for this question.
       if (result.rows[0]) return result.rows[0];
-      // Row NOT found → this question has no revision item yet; return null
-      // immediately. Do NOT continue to source_ref — that would incorrectly
-      // treat another question from the same test as a duplicate.
       return null;
     } catch (err) {
       if (!isSchemaError(err)) throw err;
-      // column question_id doesn't exist yet — fall through to source_id check
     }
   }
 
-  // 2. By source_id + stage  (original schema — always exists)
-  //    Only reached when question_id is absent OR the question_id column
-  //    doesn't exist yet in the DB.
-  //    source_id stores source_ref || question_id (set during insert).
+  // 3. By source_id + stage (original schema — always exists)
   const sourceIdVal = sourceRef || questionId || null;
   if (sourceIdVal) {
     const result = await query(
@@ -234,31 +233,43 @@ export async function findRevisionItemForMistake(userId, questionId, _sourceType
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// listRevisionItems — unchanged
+// listRevisionItems
 // ─────────────────────────────────────────────────────────────────────────────
 export async function listRevisionItems(userId, options = {}) {
   const values = [userId];
-  const where = [`user_id = $1`];
+  const where = [`ri.user_id = $1`];
 
   if (options.stage) {
     values.push(options.stage);
-    where.push(`stage = $${values.length}`);
+    where.push(`ri.stage = $${values.length}`);
   }
 
   if (options.status) {
     values.push(options.status);
-    where.push(`status = $${values.length}`);
+    where.push(`ri.status = $${values.length}`);
   }
 
   if (options.dueOnly) {
-    where.push(`next_review_at <= NOW()`);
+    where.push(`ri.next_review_at <= NOW()`);
   }
 
   const sql = `
-    SELECT *
-    FROM revision_items
+    SELECT 
+      ri.*,
+      COALESCE(m.paper, m2.paper) AS mistake_paper,
+      COALESCE(m.mistake_type, m2.mistake_type) AS mistake_type,
+      COALESCE(m.mistake_text, m2.mistake_text) AS mistake_text,
+      COALESCE(m.notes, m2.notes) AS mistake_notes,
+      COALESCE(m.severity, m2.severity) AS mistake_severity,
+      COALESCE(m.must_revise, m2.must_revise) AS mistake_must_revise,
+      COALESCE(m.attempt_id, m2.attempt_id) AS mistake_attempt_id,
+      COALESCE(m.status, m2.status) AS mistake_status,
+      COALESCE(m.question_text, m2.question_text) AS mistake_question_text
+    FROM revision_items ri
+    LEFT JOIN mistakes m ON ri.mistake_id = m.id
+    LEFT JOIN mistakes m2 ON ri.mistake_id IS NULL AND ri.question_id = m2.question_id
     WHERE ${where.join(" AND ")}
-    ORDER BY next_review_at ASC, created_at DESC
+    ORDER BY ri.next_review_at ASC, ri.created_at DESC
   `;
 
   const result = await query(sql, values);
@@ -266,31 +277,48 @@ export async function listRevisionItems(userId, options = {}) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// getRevisionItemById — unchanged
+// getRevisionItemById
 // ─────────────────────────────────────────────────────────────────────────────
 export async function getRevisionItemById(id) {
   const result = await query(
-    `SELECT * FROM revision_items WHERE id = $1 LIMIT 1`,
+    `SELECT 
+       ri.*,
+       COALESCE(m.paper, m2.paper) AS mistake_paper,
+       COALESCE(m.mistake_type, m2.mistake_type) AS mistake_type,
+       COALESCE(m.mistake_text, m2.mistake_text) AS mistake_text,
+       COALESCE(m.notes, m2.notes) AS mistake_notes,
+       COALESCE(m.severity, m2.severity) AS mistake_severity,
+       COALESCE(m.must_revise, m2.must_revise) AS mistake_must_revise,
+       COALESCE(m.attempt_id, m2.attempt_id) AS mistake_attempt_id,
+       COALESCE(m.status, m2.status) AS mistake_status,
+       COALESCE(m.question_text, m2.question_text) AS mistake_question_text
+     FROM revision_items ri
+     LEFT JOIN mistakes m ON ri.mistake_id = m.id
+     LEFT JOIN mistakes m2 ON ri.mistake_id IS NULL AND ri.question_id = m2.question_id
+     WHERE ri.id = $1 LIMIT 1`,
     [id]
   );
   return result.rows[0] || null;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// updateRevisionItem — unchanged
+// updateRevisionItem
 // ─────────────────────────────────────────────────────────────────────────────
 export async function updateRevisionItem(id, changes) {
   const allowed = {
     status:           changes.status,
     priority:         changes.priority,
     review_count:     changes.review_count,
-    revision_count:   changes.revision_count,   // kept in sync with review_count
+    revision_count:   changes.revision_count,
     interval_days:    changes.interval_days,
     last_reviewed_at: changes.last_reviewed_at,
     next_review_at:   changes.next_review_at,
     question_text:    changes.question_text,
     subject:          changes.subject,
     node_id:          changes.node_id,
+    due_date:         changes.due_date,
+    block_id:         changes.block_id,
+    mistake_id:       changes.mistake_id,
   };
 
   const entries = Object.entries(allowed).filter(([, value]) => value !== undefined);

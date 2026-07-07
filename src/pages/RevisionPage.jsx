@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { BACKEND_URL as BASE_URL } from "../config";
 const USER_ID = "user_1";
 
@@ -24,62 +25,67 @@ function formatDate(iso) {
   return `in ${days}d`;
 }
 
-function isDue(item) {
-  if (!item.next_review_at) return true;
-  return new Date(item.next_review_at) <= new Date();
+function parseNotes(item) {
+  const rawNotes = item.mistake_notes || item.content || item.notes || "";
+  let whyItMatters = "";
+  let fixText = rawNotes;
+
+  if (rawNotes.includes("Why it matters:") && rawNotes.includes("Fix:")) {
+    const match = rawNotes.match(/Why it matters:\s*([\s\S]*?)\nFix:\s*([\s\S]*)/i);
+    if (match) {
+      whyItMatters = match[1].trim();
+      fixText = match[2].trim();
+    }
+  }
+  return { whyItMatters, fixText };
 }
 
-function isOverdue(item) {
-  if (!item.next_review_at) return false;
-  return new Date(item.next_review_at) < new Date(Date.now() - 3600000);
+function matchesPaperFilter(item, filter) {
+  if (filter === "all") return true;
+  const paper = String(item.mistake_paper || item.subject || item.stage || "").toLowerCase();
+  const stage = String(item.stage || "").toLowerCase();
+
+  if (filter === "gs1") {
+    return (paper.includes("gs1") || paper.includes("gs 1") || paper.includes("general studies i") || paper.includes("gs i")) && 
+           !paper.includes("essay") && !paper.includes("ethics") && !paper.includes("studies iv");
+  }
+  if (filter === "gs2") {
+    return paper.includes("gs2") || paper.includes("gs 2") || paper.includes("general studies ii") || paper.includes("gs ii");
+  }
+  if (filter === "gs3") {
+    return paper.includes("gs3") || paper.includes("gs 3") || paper.includes("general studies iii") || paper.includes("gs iii");
+  }
+  if (filter === "essay") {
+    return paper.includes("essay") || stage.includes("essay");
+  }
+  if (filter === "ethics") {
+    return paper.includes("ethics") || paper.includes("gs4") || paper.includes("gs 4") || paper.includes("general studies iv") || paper.includes("gs iv") || stage.includes("ethics");
+  }
+  if (filter === "geography") {
+    return paper.includes("geography") || paper.includes("optional") || stage.includes("optional");
+  }
+  return true;
 }
 
-function reviewedToday(item) {
-  if (!item.last_reviewed_at) return false;
-  const today = new Date();
-  const rev = new Date(item.last_reviewed_at);
-  return rev.toDateString() === today.toDateString();
-}
+const T = {
+  bg: "#060606",
+  cardBg: "#0c0c0c",
+  border: "#1c1c1c",
+  text: "#a0a0a0",
+  textBright: "#e5e7eb",
+  dim: "#666",
+  amber: "#f59e0b",
+  green: "#22c55e",
+  red: "#ef4444",
+  blue: "#2563eb",
+  indigo: "#6366f1",
+  purple: "#8b5cf6"
+};
 
-const PRIORITY_COLOR = { high: "#ef4444", medium: "#f59e0b", low: "#6b7280" };
-const PRIORITY_BG = { high: "#1a0000", medium: "#1a1200", low: "#111" };
-const STATUS_COLOR = { pending: "#f59e0b", reviewed: "#22c55e", snoozed: "#6366f1", skipped: "#6b7280" };
+const SEVERITY_COLOR = { low: T.green, medium: T.amber, high: T.red };
+const SEVERITY_BG = { low: "#0a1a0a", medium: "#1a1200", high: "#1a0000" };
 
-const RISK_COLOR = { low: "#6b7280", medium: "#f59e0b", high: "#f97316", critical: "#ef4444" };
-const RISK_BG    = { low: "#111",    medium: "#1a1200", high: "#1a0800", critical: "#1a0000" };
-
-/* ── lookupWeakness ──────────────────────────────────────────────────────────
- * Given an item and the weaknessMap returned by /api/weakness/map, returns
- * the matching weakness row (or null). Tries node_id::stage first, then
- * node_id alone as a fallback for items without a stage.
- * ─────────────────────────────────────────────────────────────────────────── */
-function lookupWeakness(item, weaknessMap) {
-  if (!item.node_id || !weaknessMap) return null;
-  return (
-    weaknessMap[`${item.node_id}::${item.stage || ""}`] ||
-    weaknessMap[item.node_id] ||
-    null
-  );
-}
-
-/* ── sortByWeakness ──────────────────────────────────────────────────────────
- * Within a bucket, sort by weakness_score DESC then next_review_at ASC.
- * Items with no matching weakness node score as 0 (fall to bottom).
- * ─────────────────────────────────────────────────────────────────────────── */
-function sortByWeakness(items, weaknessMap) {
-  return [...items].sort((a, b) => {
-    const wa = lookupWeakness(a, weaknessMap);
-    const wb = lookupWeakness(b, weaknessMap);
-    const sa = wa ? Number(wa.weakness_score) : 0;
-    const sb = wb ? Number(wb.weakness_score) : 0;
-    if (sb !== sa) return sb - sa; // higher weakness first
-    const da = a.next_review_at ? new Date(a.next_review_at).getTime() : 0;
-    const db = b.next_review_at ? new Date(b.next_review_at).getTime() : 0;
-    return da - db; // earlier time first within same score
-  });
-}
-
-/* ── Sub-components ── */
+/* ── Badge Component ── */
 const Badge = ({ label, color, bg }) => (
   <span style={{
     background: bg || "#111", border: `1px solid ${color}44`,
@@ -89,372 +95,215 @@ const Badge = ({ label, color, bg }) => (
   }}>{label}</span>
 );
 
+/* ── StatChip Component ── */
 const StatChip = ({ label, value, accent }) => (
   <div style={{
-    background: "#0f0f0f", border: `1px solid ${accent ? "#f59e0b44" : "#1e1e1e"}`,
-    borderRadius: 8, padding: "10px 16px", minWidth: 90, textAlign: "center"
+    background: "#0c0c0c", border: `1px solid ${accent ? `${T.amber}44` : T.border}`,
+    borderRadius: 8, padding: "10px 16px", minWidth: 90, textAlign: "center", flex: 1
   }}>
-    <div style={{ fontSize: 20, fontWeight: 700, color: accent ? "#f59e0b" : "#fff", fontFamily: "monospace" }}>{value}</div>
-    <div style={{ fontSize: 10, color: "#555", letterSpacing: "0.08em", textTransform: "uppercase", marginTop: 2 }}>{label}</div>
+    <div style={{ fontSize: 20, fontWeight: 700, color: accent ? T.amber : "#fff", fontFamily: "monospace" }}>{value}</div>
+    <div style={{ fontSize: 10, color: T.dim, letterSpacing: "0.08em", textTransform: "uppercase", marginTop: 2 }}>{label}</div>
   </div>
 );
 
+/* ── FilterPill Component ── */
 const FilterPill = ({ label, active, onClick }) => (
   <button onClick={onClick} style={{
-    background: active ? "#1a1200" : "#0a0a0a",
-    border: `1px solid ${active ? "#f59e0b" : "#2a2a2a"}`,
-    color: active ? "#f59e0b" : "#666",
+    background: active ? "#1a1200" : "#0c0c0c",
+    border: `1px solid ${active ? T.amber : T.border}`,
+    color: active ? T.amber : T.text,
     borderRadius: 20, padding: "5px 13px", fontSize: 11,
     cursor: "pointer", fontFamily: "monospace", transition: "all 0.15s",
     whiteSpace: "nowrap"
   }}>{label}</button>
 );
 
-/* ── WeakAreaPanel ───────────────────────────────────────────────────────────
- * Compact top-5 weak nodes display. Matches existing dark monochrome style.
- * Hidden when weaknessMap is empty (e.g. not yet computed or API unavailable).
- * ─────────────────────────────────────────────────────────────────────────── */
-function WeakAreaPanel({ weaknessMap }) {
-  const nodes = Object.values(weaknessMap || {})
-    .sort((a, b) => Number(b.weakness_score) - Number(a.weakness_score))
-    .slice(0, 5);
+/* ── SectionHeader Component ── */
+const SectionHeader = ({ label, count, color = T.amber }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14, marginTop: 18 }}>
+    <span style={{ fontSize: 11, fontWeight: 700, color, letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "monospace" }}>{label}</span>
+    <span style={{
+      background: `${color}11`, border: `1px solid ${color}44`, color,
+      fontSize: 10, fontWeight: 700, borderRadius: 10, padding: "1px 8px", fontFamily: "monospace"
+    }}>{count}</span>
+    <div style={{ flex: 1, height: 1, background: T.border }} />
+  </div>
+);
 
-  if (nodes.length === 0) return null;
-
-  return (
-    <div style={{
-      background: "#0f0f0f", border: "1px solid #1e1e1e",
-      borderRadius: 10, padding: "16px 20px", marginBottom: 20
-    }}>
-      <div style={{
-        fontSize: 10, fontWeight: 700, color: "#555",
-        letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12
-      }}>
-        Top Weak Areas
-      </div>
-
-      <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
-        {nodes.map((node, idx) => {
-          const risk = node.risk_level || "low";
-          const score = Number(node.weakness_score) || 0;
-          const barWidth = Math.min(100, score);
-          return (
-            <div key={`${node.node_id}::${node.stage || ""}`} style={{
-              background: "#0c0c0c",
-              border: `1px solid ${RISK_COLOR[risk]}22`,
-              borderLeft: `3px solid ${RISK_COLOR[risk]}`,
-              borderRadius: 7, padding: "10px 14px",
-              display: "flex", alignItems: "center", gap: 12
-            }}>
-              {/* Rank */}
-              <span style={{
-                fontSize: 9, fontWeight: 700, color: "#333",
-                fontFamily: "monospace", minWidth: 14, textAlign: "right"
-              }}>
-                {idx + 1}
-              </span>
-
-              {/* Node info */}
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{
-                  fontSize: 10, fontWeight: 600, color: "#aaa",
-                  fontFamily: "monospace", letterSpacing: "0.03em",
-                  whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"
-                }}>
-                  {node.node_id}
-                </div>
-                {node.subject && (
-                  <div style={{ fontSize: 9, color: "#444", fontFamily: "monospace", marginTop: 1 }}>
-                    {node.subject}{node.stage ? ` · ${node.stage}` : ""}
-                  </div>
-                )}
-                {/* Score bar */}
-                <div style={{
-                  marginTop: 5, height: 2, background: "#1a1a1a",
-                  borderRadius: 2, overflow: "hidden"
-                }}>
-                  <div style={{
-                    width: `${barWidth}%`, height: "100%",
-                    background: RISK_COLOR[risk], borderRadius: 2,
-                    transition: "width 0.4s ease"
-                  }} />
-                </div>
-              </div>
-
-              {/* Score + risk badge */}
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4, flexShrink: 0 }}>
-                <span style={{
-                  fontSize: 14, fontWeight: 700, color: RISK_COLOR[risk],
-                  fontFamily: "monospace", lineHeight: 1
-                }}>
-                  {score}
-                </span>
-                <span style={{
-                  background: RISK_BG[risk],
-                  border: `1px solid ${RISK_COLOR[risk]}44`,
-                  color: RISK_COLOR[risk],
-                  fontSize: 8, fontWeight: 700, borderRadius: 3,
-                  padding: "1px 5px", letterSpacing: "0.08em",
-                  textTransform: "uppercase", fontFamily: "monospace"
-                }}>
-                  {risk}
-                </span>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function RevisionCard({ item, onReview, onSnooze, loadingId, weaknessMap }) {
+/* ── RevisionCard Component ── */
+function RevisionCard({ item, onReview, onResolve, loadingId }) {
+  const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
   const isLoading = loadingId === item.id;
-  const overdue = isOverdue(item);
-  const due = isDue(item);
-  const revToday = reviewedToday(item);
-  const weakness = lookupWeakness(item, weaknessMap);
 
-  const urgencyBorder = overdue ? "#ef444422" : due ? "#f59e0b22" : "#1e1e1e";
-  const urgencyLeft = overdue ? "#ef4444" : due ? "#f59e0b" : "#2a2a2a";
+  // Extract custom fields from mistake join
+  const paperName = item.mistake_paper || item.subject || item.stage || "Prelims";
+  const severity = item.mistake_severity || item.priority || "medium";
+  const isMustRevise = Boolean(item.mistake_must_revise || item.must_revise);
+  const attemptId = item.mistake_attempt_id || item.source_ref || null;
+  const mistakeStatus = item.mistake_status || "open";
+
+  const cleanMistakeText = (item.mistake_text || item.title || "").trim().replace(/^(weakness|missing dimension):\s*/i, "");
+
+  const { whyItMatters, fixText } = parseNotes(item);
+
+  const sourceLabel = item.mistake_notes?.includes("Source: chatgpt_air1") 
+    ? "ChatGPT AIR-1" 
+    : item.mistake_notes?.includes("Source: gemini_basic") 
+    ? "Gemini Basic"
+    : item.source_type || "Spaced Repetition";
+
+  const handleOpenWorkspace = () => {
+    if (!attemptId) return;
+    navigate("/mains/answer-writing", {
+      state: {
+        attemptId: attemptId,
+        mode: "review"
+      }
+    });
+  };
 
   return (
     <div style={{
-      background: "#0c0c0c",
-      border: `1px solid ${urgencyBorder}`,
-      borderLeft: `3px solid ${urgencyLeft}`,
-      borderRadius: 9, padding: "16px 18px", marginBottom: 10,
+      background: T.cardBg,
+      border: `1px solid ${isMustRevise ? `${T.red}33` : T.border}`,
+      borderLeft: `4px solid ${isMustRevise ? T.red : SEVERITY_COLOR[severity] || T.dim}`,
+      borderRadius: 10, padding: "16px 18px", marginBottom: 12,
       opacity: isLoading ? 0.6 : 1, transition: "opacity 0.2s, border 0.2s",
-      boxShadow: overdue
-        ? "0 0 0 1px rgba(239,68,68,0.3)"
-        : due
-          ? "0 0 0 1px rgba(245,158,11,0.25)"
-          : "none",
-      position: "relative"
+      boxShadow: isMustRevise ? `0 0 8px ${T.red}11` : "none"
     }}>
-      {/* Top row */}
-      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, marginBottom: 8 }}>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 13, fontWeight: 600, color: "#e5e7eb", lineHeight: 1.4, marginBottom: 4 }}>
-            {item.title || item.question_text || "—"}
+      {/* Top Header */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 8 }}>
+        <div style={{ flex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 6 }}>
+            <Badge label={paperName} color={T.amber} bg="#1a1200" />
+            <Badge label={severity} color={SEVERITY_COLOR[severity]} bg={SEVERITY_BG[severity]} />
+            {isMustRevise && <Badge label="MUST REVISE" color={T.red} bg="#1a0000" />}
+            <span style={{ fontSize: 10, color: T.dim, fontFamily: "monospace" }}>{sourceLabel}</span>
           </div>
-          {item.question_text && item.question_text !== item.title && (
-            <div style={{ fontSize: 11, color: "#555", lineHeight: 1.5, marginBottom: 4 }}>
-              {expanded ? item.question_text : item.question_text.length > 120 ? item.question_text.slice(0, 120) + "…" : item.question_text}
-              {item.question_text.length > 120 && (
-                <button onClick={() => setExpanded(v => !v)} style={{ background: "none", border: "none", color: "#f59e0b", cursor: "pointer", fontSize: 10, padding: "0 4px", fontFamily: "monospace" }}>
-                  {expanded ? "collapse" : "expand"}
-                </button>
-              )}
-            </div>
-          )}
+
+          <h3 style={{ fontSize: 13, fontWeight: 700, color: T.textBright, margin: "0 0 6px 0", lineHeight: 1.4 }}>
+            {cleanMistakeText}
+          </h3>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 4, alignItems: "flex-end", flexShrink: 0 }}>
-          {item.source_type === "pyq_manual" && (
-            <span style={{
-              fontSize: 10, fontWeight: 800, padding: "3px 8px",
-              borderRadius: 999,
-              background: "rgba(6,182,212,0.12)",
-              border: "1px solid rgba(6,182,212,0.35)",
-              color: "#22d3ee",
-              letterSpacing: "0.06em",
-              whiteSpace: "nowrap",
-            }}>
-              📚 PYQ
-            </span>
-          )}
-          <Badge label={item.priority || "—"} color={PRIORITY_COLOR[item.priority || "low"]} bg={PRIORITY_BG[item.priority || "low"]} />
-          <Badge label={item.status || "—"} color={STATUS_COLOR[item.status] || "#6b7280"} />
-          {weakness && (
-            <Badge
-              label={`W:${Number(weakness.weakness_score)}`}
-              color={RISK_COLOR[weakness.risk_level || "low"]}
-              bg={RISK_BG[weakness.risk_level || "low"]}
-            />
-          )}
+
+        <div style={{ textAlign: "right", flexShrink: 0 }}>
+          <span style={{ fontSize: 10, fontFamily: "monospace", color: T.dim }}>
+            Due: {formatDate(item.next_review_at || item.due_date)}
+          </span>
         </div>
       </div>
 
-      {/* Meta row */}
-      <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 12, alignItems: "center" }}>
-        <span style={{ fontSize: 10, color: "#555", fontFamily: "monospace" }}>
-          <span style={{ color: "#3a3a3a" }}>subject</span>{" "}
-          <span style={{ color: "#888" }}>{item.subject || "—"}</span>
-        </span>
-        <span style={{ fontSize: 10, color: "#555", fontFamily: "monospace" }}>
-          <span style={{ color: "#3a3a3a" }}>stage</span>{" "}
-          <span style={{ color: "#888" }}>{item.stage || "—"}</span>
-        </span>
-        <span style={{ fontSize: 10, color: "#555", fontFamily: "monospace" }}>
-          <span style={{ color: "#3a3a3a" }}>source</span>{" "}
-          <span style={{ color: "#666" }}>{item.source_type ?? "unknown"}</span>
-        </span>
-        <span style={{ fontSize: 10, color: "#555", fontFamily: "monospace" }}>
-          <span style={{ color: "#3a3a3a" }}>reviews</span>{" "}
-          <span style={{ color: "#888" }}>{item.review_count ?? item.revision_count ?? 0}</span>
-        </span>
-        <span style={{ fontSize: 10, color: "#555", fontFamily: "monospace" }}>
-          <span style={{ color: "#3a3a3a" }}>interval</span>{" "}
-          <span style={{ color: "#888" }}>{item.interval_days ?? 1}d</span>
-        </span>
-        {item.node_id && (
-          <span style={{ fontSize: 9, color: "#333", fontFamily: "monospace", letterSpacing: "0.05em" }}>{item.node_id}</span>
-        )}
-        <span style={{
-          fontSize: 10, fontFamily: "monospace", marginLeft: "auto",
-          color: overdue ? "#ef4444" : due ? "#f59e0b" : "#555",
-          fontWeight: overdue || due ? 600 : 400
+      {/* Structured why and fix sections */}
+      {whyItMatters && (
+        <div style={{
+          fontSize: 12, color: T.text, lineHeight: 1.5,
+          marginBottom: 8, paddingLeft: 12, borderLeft: `2px solid ${T.amber}33`
         }}>
-          {overdue ? "⚠ " : due ? "● " : ""}{formatDate(item.next_review_at)}
-          {revToday && <span style={{ color: "#22c55e", marginLeft: 6 }}>✓ reviewed today</span>}
-        </span>
-      </div>
+          <span style={{ color: T.amber, fontWeight: 600 }}>Why it matters: </span>
+          {whyItMatters}
+        </div>
+      )}
 
-      {/* Action buttons */}
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
-        <button
-          onClick={() => onReview(item.id)}
-          disabled={isLoading}
-          style={{
-            background: "#0a1a0a", border: "1px solid #22c55e44", color: "#22c55e",
-            borderRadius: 6, padding: "6px 14px", fontSize: 11,
-            cursor: isLoading ? "not-allowed" : "pointer", fontFamily: "monospace", fontWeight: 600
-          }}
-        >
-          {isLoading ? "…" : "✓ Mark Reviewed"}
-        </button>
-        <button
-          onClick={() => onSnooze(item.id, 1)}
-          disabled={isLoading}
-          style={{
-            background: "#0a0a1a", border: "1px solid #6366f144", color: "#6366f1",
-            borderRadius: 6, padding: "6px 12px", fontSize: 11,
-            cursor: isLoading ? "not-allowed" : "pointer", fontFamily: "monospace"
-          }}
-        >
-          Snooze 1d
-        </button>
-        <button
-          onClick={() => onSnooze(item.id, 3)}
-          disabled={isLoading}
-          style={{
-            background: "#0a0a1a", border: "1px solid #6366f144", color: "#4f46e5",
-            borderRadius: 6, padding: "6px 12px", fontSize: 11,
-            cursor: isLoading ? "not-allowed" : "pointer", fontFamily: "monospace"
-          }}
-        >
-          Snooze 3d
-        </button>
+      {fixText && (
+        <div style={{
+          fontSize: 12, color: T.textBright, lineHeight: 1.5,
+          background: T.bg, border: `1px solid ${T.border}`, borderRadius: 6,
+          padding: "8px 12px", marginBottom: 12
+        }}>
+          <span style={{ color: T.green, fontWeight: 600 }}>✓ Fix: </span>
+          {fixText}
+        </div>
+      )}
+
+      {/* Footer Info & Actions */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10, borderTop: `1px solid ${T.border}`, paddingTop: 10, marginTop: 4 }}>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {item.status !== "completed" && item.status !== "revised" && (
+            <button
+              onClick={() => onReview(item.id)}
+              disabled={isLoading}
+              style={{
+                background: "#0a1a0a", border: `1px solid ${T.green}44`, color: T.green,
+                borderRadius: 6, padding: "5px 12px", fontSize: 11, fontWeight: 600,
+                cursor: "pointer", fontFamily: "monospace"
+              }}
+            >
+              ✓ Mark Revised
+            </button>
+          )}
+
+          {attemptId && (
+            <button
+              onClick={handleOpenWorkspace}
+              style={{
+                background: "#0c1a2d", border: `1px solid ${T.blue}44`, color: "#60a5fa",
+                borderRadius: 6, padding: "5px 12px", fontSize: 11, fontWeight: 600,
+                cursor: "pointer", fontFamily: "monospace"
+              }}
+            >
+              📂 Open Workspace
+            </button>
+          )}
+
+          {item.mistake_id && mistakeStatus !== "resolved" && (
+            <button
+              onClick={() => onResolve(item.mistake_id)}
+              style={{
+                background: "#1a0f0f", border: `1px solid ${T.red}44`, color: "#f87171",
+                borderRadius: 6, padding: "5px 12px", fontSize: 11, fontWeight: 600,
+                cursor: "pointer", fontFamily: "monospace"
+              }}
+            >
+              ⚠️ Mark Resolved
+            </button>
+          )}
+        </div>
+
+        <div style={{ fontSize: 9, color: T.dim, fontFamily: "monospace" }}>
+          Reviews: {item.review_count ?? 0} | Interval: {item.interval_days ?? 1}d
+        </div>
       </div>
     </div>
   );
 }
 
-function SectionHeader({ label, count }) {
-  return (
-    <div style={{
-      display: "flex", alignItems: "center", gap: 10, marginBottom: 10, marginTop: 4
-    }}>
-      <span style={{ fontSize: 11, fontWeight: 700, color: "#f59e0b", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "monospace" }}>{label}</span>
-      <span style={{
-        background: "#1a1200", border: "1px solid #f59e0b44", color: "#f59e0b",
-        fontSize: 10, fontWeight: 700, borderRadius: 10, padding: "1px 8px", fontFamily: "monospace"
-      }}>{count}</span>
-      <div style={{ flex: 1, height: 1, background: "#1a1a1a" }} />
-    </div>
-  );
-}
-
-/* ── Main Page ── */
+/* ── Main Revision Dashboard Page ── */
 export default function RevisionPage() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [loadingId, setLoadingId] = useState(null);
-  const [dueOnly, setDueOnly] = useState(false);
-  const [stageFilter, setStageFilter] = useState("all");
-  const [subjectFilter, setSubjectFilter] = useState("all");
-  const [priorityFilter, setPriorityFilter] = useState("all");
-  const [statusFilter, setStatusFilter] = useState("all");
+  
+  // Filters
+  const [paperFilter, setPaperFilter] = useState("all");
+  const [severityFilter, setSeverityFilter] = useState("all");
+  const [mustReviseOnly, setMustReviseOnly] = useState(false);
   const [search, setSearch] = useState("");
   const [lastRefresh, setLastRefresh] = useState(null);
-  const [weaknessMap, setWeaknessMap] = useState({});
 
   const fetchItems = useCallback(async (silent = false) => {
     if (!silent) setLoading(true);
     setError(null);
     try {
-      const revisionUrl = `${BASE_URL}/api/revision-items?userId=${USER_ID}${dueOnly ? "&dueOnly=true" : ""}`;
-      const weaknessUrl = `${BASE_URL}/api/weakness/map?userId=${USER_ID}`;
-
-      // Fetch both in parallel; weakness failure must never break the revision load
-      const [revRes, weakRes] = await Promise.allSettled([
-        fetch(revisionUrl, { cache: "no-store" }),
-        fetch(weaknessUrl, { cache: "no-store" }),
-      ]);
-
-      // Handle revision items (primary — errors propagate)
-      if (revRes.status === "rejected") throw revRes.reason;
-      if (!revRes.value.ok) throw new Error(`HTTP ${revRes.value.status}`);
-      const revData = await revRes.value.json();
-      const arr = Array.isArray(revData) ? revData : (revData.items || revData.data || []);
+      const res = await fetch(`${BASE_URL}/api/revision-items?userId=${USER_ID}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const arr = Array.isArray(data) ? data : (data.items || data.data || []);
       
-      const normalizedArr = arr.map(item => {
-        const nextRev = item.nextReviewAt || item.next_review_at || item.due_at || item.created_at || null;
-        return {
-          ...item,
-          title: item.title || item.question_text || item.questionText || "Untitled",
-          subject: String(item.subject || "unknown").toLowerCase(),
-          stage: String(item.stage || "prelims").toLowerCase(),
-          priority: String(item.priority || "medium").toLowerCase(),
-          status: String(item.status || "pending").toLowerCase(),
-          next_review_at: nextRev,
-          question_text: item.question_text || item.questionText || ""
-        };
-      });
-
-      normalizedArr.sort((a, b) => {
-        const da = a.next_review_at ? new Date(a.next_review_at).getTime() : 0;
-        const db = b.next_review_at ? new Date(b.next_review_at).getTime() : 0;
-        return da - db;
-      });
-      
-      console.log(`[RevisionPage] raw items: ${arr.length}, normalized: ${normalizedArr.length}`);
-      setItems(normalizedArr);
+      setItems(arr);
       setLastRefresh(new Date());
-
-      // Handle weakness map (secondary — errors are silent)
-      if (weakRes.status === "fulfilled" && weakRes.value.ok) {
-        try {
-          const weakData = await weakRes.value.json();
-          setWeaknessMap(weakData.map || {});
-        } catch (_) {
-          // malformed JSON — keep existing map, don't error
-        }
-      }
     } catch (e) {
       setError(e.message);
     } finally {
       setLoading(false);
     }
-  }, [dueOnly]);
+  }, []);
 
   useEffect(() => { fetchItems(); }, [fetchItems]);
 
   const handleReview = async (id) => {
     setLoadingId(id);
-    setItems(prev =>
-      prev.map(i =>
-        i.id === id
-          ? {
-            ...i,
-            status: "reviewed",
-            review_count: (i.review_count || 0) + 1
-          }
-          : i
-      )
-    );
     try {
       const res = await fetch(`${BASE_URL}/api/revision-items/${id}/review`, { method: "POST" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -466,195 +315,236 @@ export default function RevisionPage() {
     }
   };
 
-  const handleSnooze = async (id, days) => {
-    setLoadingId(id);
+  const handleResolveMistake = async (mistakeId) => {
     try {
-      const res = await fetch(`${BASE_URL}/api/revision-items/${id}/snooze`, {
-        method: "POST",
+      const res = await fetch(`${BASE_URL}/api/mistakes/${mistakeId}`, {
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ days })
+        body: JSON.stringify({ status: "resolved" })
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      setTimeout(() => { fetchItems(true); }, 150);
+      fetchItems(true);
     } catch (e) {
-      alert(`Snooze failed: ${e.message}`);
-    } finally {
-      setLoadingId(null);
+      alert(`Failed to resolve mistake: ${e.message}`);
     }
   };
 
-  /* ── derived data ── */
-  const subjects = [...new Set(items.map(i => i.subject).filter(Boolean))].sort();
-  const stages = [...new Set(items.map(i => i.stage).filter(Boolean))].sort();
+  // Helper date logic
+  const now = new Date();
+  const isOverdue = (item) => {
+    if (item.status === "completed" || item.status === "revised" || item.status === "reviewed") return false;
+    const due = new Date(item.next_review_at || item.due_date || now);
+    return due < now && due.toDateString() !== now.toDateString();
+  };
 
+  const isToday = (item) => {
+    if (item.status === "completed" || item.status === "revised" || item.status === "reviewed") return false;
+    const due = new Date(item.next_review_at || item.due_date || now);
+    return due.toDateString() === now.toDateString() || (due < now && !isOverdue(item));
+  };
+
+  const isUpcoming = (item) => {
+    if (item.status === "completed" || item.status === "revised" || item.status === "reviewed") return false;
+    const due = new Date(item.next_review_at || item.due_date || now);
+    return due > now && due.toDateString() !== now.toDateString();
+  };
+
+  const isCompleted = (item) => {
+    return item.status === "completed" || item.status === "revised" || item.status === "reviewed";
+  };
+
+  // Applying Filters
   const filtered = items.filter(item => {
-    if (statusFilter !== "all" && item.status !== statusFilter) {
-      return false;
+    // 1. Paper Filter
+    if (!matchesPaperFilter(item, paperFilter)) return false;
+
+    // 2. Severity/Priority Filter
+    if (severityFilter !== "all") {
+      const sev = (item.mistake_severity || item.priority || "").toLowerCase();
+      if (sev !== severityFilter) return false;
     }
-    if (stageFilter !== "all" && item.stage !== stageFilter) return false;
-    if (subjectFilter !== "all" && item.subject !== subjectFilter) return false;
-    if (priorityFilter !== "all" && item.priority !== priorityFilter) return false;
+
+    // 3. Must Revise Only
+    if (mustReviseOnly) {
+      const mustRev = Boolean(item.mistake_must_revise || item.must_revise);
+      if (!mustRev) return false;
+    }
+
+    // 4. Search text
     if (search.trim()) {
       const q = search.toLowerCase();
-      const haystack = [item.title, item.question_text, item.subject, item.node_id, item.source_type].join(" ").toLowerCase();
-      if (!haystack.includes(q)) return false;
+      const matchText = [
+        item.title,
+        item.mistake_text,
+        item.question_text,
+        item.subject,
+        item.mistake_paper
+      ].join(" ").toLowerCase();
+      if (!matchText.includes(q)) return false;
     }
+
     return true;
   });
 
-  console.log(`[RevisionPage] filtered items count: ${filtered.length}, active filters: { stage: '${stageFilter}', subject: '${subjectFilter}', priority: '${priorityFilter}', status: '${statusFilter}', dueOnly: ${dueOnly} }`);
+  // Highlight Section: Must Revise cards
+  const mustReviseHighlights = filtered.filter(item => Boolean(item.mistake_must_revise || item.must_revise) && !isCompleted(item));
 
-  // Split into buckets then sort each by weakness score (DESC) → time (ASC)
-  const overdueItems  = sortByWeakness(filtered.filter(i => isOverdue(i)), weaknessMap);
-  const dueNowItems   = sortByWeakness(filtered.filter(i => isDue(i) && !isOverdue(i)), weaknessMap);
-  const upcomingItems = sortByWeakness(filtered.filter(i => !isDue(i)), weaknessMap);
+  // Buckets
+  const overdueItems = filtered.filter(item => isOverdue(item));
+  const todayItems = filtered.filter(item => isToday(item));
+  const upcomingItems = filtered.filter(item => isUpcoming(item));
+  const completedItems = filtered.filter(item => isCompleted(item));
 
+  // Stats Counters
   const totalCount = items.length;
-  const dueCount = items.filter(i => isDue(i)).length;
-  const pendingCount = items.filter(i => i.status === "pending").length;
-  const highCount = items.filter(i => i.priority === "high").length;
-  const reviewedTodayCount = items.filter(i => reviewedToday(i)).length;
+  const overdueCount = items.filter(i => isOverdue(i)).length;
+  const todayCount = items.filter(i => isToday(i)).length;
+  const upcomingCount = items.filter(i => isUpcoming(i)).length;
+  const completedCount = items.filter(i => isCompleted(i)).length;
+  const mustReviseCount = items.filter(i => Boolean(i.mistake_must_revise || i.must_revise) && !isCompleted(i)).length;
 
   const s = {
-    page: { background: "#080808", minHeight: "100vh", padding: "28px 32px", fontFamily: "'JetBrains Mono', 'Fira Code', monospace", color: "#e5e7eb" },
-    input: { background: "#0a0a0a", border: "1px solid #1e1e1e", borderRadius: 6, color: "#ccc", fontSize: 12, padding: "7px 12px", fontFamily: "monospace", outline: "none", width: "100%", boxSizing: "border-box" },
-    sectionCard: { background: "#0f0f0f", border: "1px solid #1e1e1e", borderRadius: 10, padding: "18px 20px", marginBottom: 20 },
+    page: { background: T.bg, minHeight: "100vh", padding: "28px 32px", fontFamily: "'JetBrains Mono', 'Fira Code', monospace", color: T.text },
+    input: { background: "#0c0c0c", border: `1px solid ${T.border}`, borderRadius: 6, color: T.textBright, fontSize: 12, padding: "7px 12px", fontFamily: "monospace", outline: "none", width: "100%", boxSizing: "border-box" },
+    sectionCard: { background: T.cardBg, border: `1px solid ${T.border}`, borderRadius: 10, padding: "18px 20px", marginBottom: 20 },
   };
 
   return (
     <div style={s.page}>
       {/* HEADER */}
       <div style={{ marginBottom: 24 }}>
-        <div style={{ fontSize: 10, color: "#555", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 6 }}>MENTOROS · MEMORY ENGINE</div>
+        <div style={{ fontSize: 10, color: T.dim, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 6 }}>MENTOROS · MEMORY ENGINE</div>
         <div style={{ display: "flex", alignItems: "baseline", gap: 16, flexWrap: "wrap" }}>
-          <h1 style={{ margin: 0, fontSize: 26, fontWeight: 700, color: "#fff", letterSpacing: "-0.02em" }}>Revision Engine</h1>
+          <h1 style={{ margin: 0, fontSize: 26, fontWeight: 700, color: "#fff", letterSpacing: "-0.02em" }}>Revision Dashboard</h1>
           {lastRefresh && (
-            <span style={{ fontSize: 10, color: "#333", fontFamily: "monospace" }}>refreshed {lastRefresh.toLocaleTimeString()}</span>
+            <span style={{ fontSize: 10, color: T.dim, fontFamily: "monospace" }}>refreshed {lastRefresh.toLocaleTimeString()}</span>
           )}
-          <button onClick={fetchItems} disabled={loading} style={{
-            background: "#111", border: "1px solid #2a2a2a", color: "#666",
+          <button onClick={() => fetchItems()} disabled={loading} style={{
+            background: "#111", border: `1px solid ${T.border}`, color: T.dim,
             borderRadius: 5, padding: "4px 12px", fontSize: 10,
             cursor: loading ? "not-allowed" : "pointer", fontFamily: "monospace", marginLeft: "auto"
           }}>{loading ? "Loading…" : "↻ Refresh"}</button>
         </div>
-        <p style={{ margin: "6px 0 18px", fontSize: 12, color: "#555", maxWidth: 560 }}>
-          Spaced repetition queue — review what needs reinforcement, mark done, snooze when needed.
+        <p style={{ margin: "6px 0 18px", fontSize: 12, color: T.dim, maxWidth: 560 }}>
+          Transforming Mains mistakes into daily revision tasks using Spaced Repetition.
         </p>
 
-        {/* Stat chips */}
+        {/* Stats Panel */}
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-          <StatChip label="Total" value={totalCount} />
-          <StatChip label="Due Now" value={dueCount} accent />
-          <StatChip label="Pending" value={pendingCount} />
-          <StatChip label="High Priority" value={highCount} />
-          <StatChip label="Reviewed Today" value={reviewedTodayCount} />
+          <StatChip label="Overdue" value={overdueCount} accent={overdueCount > 0} />
+          <StatChip label="Due Today" value={todayCount} />
+          <StatChip label="Upcoming" value={upcomingCount} />
+          <StatChip label="Must Revise" value={mustReviseCount} />
+          <StatChip label="Completed" value={completedCount} />
         </div>
       </div>
 
-      {/* TOP WEAK AREAS */}
-      <WeakAreaPanel weaknessMap={weaknessMap} />
-
       {/* FILTERS */}
       <div style={s.sectionCard}>
-        <div style={{ fontSize: 10, fontWeight: 700, color: "#555", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>Filters</div>
+        <div style={{ fontSize: 10, fontWeight: 700, color: T.dim, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>Filter Options</div>
 
         {/* Search */}
         <div style={{ marginBottom: 12 }}>
           <input
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Search title, subject, node…"
+            placeholder="Search title, weakness, question, topic..."
             style={s.input}
           />
         </div>
 
-        {/* Filter rows */}
+        {/* Filter Rows */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          {/* Stage */}
+          {/* Subject / Paper */}
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-            <span style={{ fontSize: 10, color: "#444", minWidth: 58, textTransform: "uppercase", letterSpacing: "0.06em" }}>Stage</span>
-            <FilterPill label="All" active={stageFilter === "all"} onClick={() => setStageFilter("all")} />
-            {stages.map(s => <FilterPill key={s} label={s} active={stageFilter === s} onClick={() => setStageFilter(s)} />)}
+            <span style={{ fontSize: 10, color: T.dim, minWidth: 70, textTransform: "uppercase", letterSpacing: "0.06em" }}>Paper</span>
+            <FilterPill label="All" active={paperFilter === "all"} onClick={() => setPaperFilter("all")} />
+            <FilterPill label="GS1" active={paperFilter === "gs1"} onClick={() => setPaperFilter("gs1")} />
+            <FilterPill label="GS2" active={paperFilter === "gs2"} onClick={() => setPaperFilter("gs2")} />
+            <FilterPill label="GS3" active={paperFilter === "gs3"} onClick={() => setPaperFilter("gs3")} />
+            <FilterPill label="Essay" active={paperFilter === "essay"} onClick={() => setPaperFilter("essay")} />
+            <FilterPill label="Ethics" active={paperFilter === "ethics"} onClick={() => setPaperFilter("ethics")} />
+            <FilterPill label="Geography" active={paperFilter === "geography"} onClick={() => setPaperFilter("geography")} />
           </div>
 
-          {/* Subject */}
+          {/* Severity */}
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-            <span style={{ fontSize: 10, color: "#444", minWidth: 58, textTransform: "uppercase", letterSpacing: "0.06em" }}>Subject</span>
-            <FilterPill label="All" active={subjectFilter === "all"} onClick={() => setSubjectFilter("all")} />
-            {subjects.map(s => <FilterPill key={s} label={s} active={subjectFilter === s} onClick={() => setSubjectFilter(s)} />)}
+            <span style={{ fontSize: 10, color: T.dim, minWidth: 70, textTransform: "uppercase", letterSpacing: "0.06em" }}>Severity</span>
+            <FilterPill label="All" active={severityFilter === "all"} onClick={() => setSeverityFilter("all")} />
+            <FilterPill label="High" active={severityFilter === "high"} onClick={() => setSeverityFilter("high")} />
+            <FilterPill label="Medium" active={severityFilter === "medium"} onClick={() => setSeverityFilter("medium")} />
+            <FilterPill label="Low" active={severityFilter === "low"} onClick={() => setSeverityFilter("low")} />
           </div>
 
-          {/* Priority */}
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-            <span style={{ fontSize: 10, color: "#444", minWidth: 58, textTransform: "uppercase", letterSpacing: "0.06em" }}>Priority</span>
-            {["all", "high", "medium", "low"].map(p => (
-              <FilterPill key={p} label={p === "all" ? "All" : p} active={priorityFilter === p} onClick={() => setPriorityFilter(p)} />
-            ))}
-          </div>
-
-          {/* Status */}
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-            <span style={{ fontSize: 10, color: "#444", minWidth: 58, textTransform: "uppercase", letterSpacing: "0.06em" }}>Status</span>
-            {["all", "pending", "reviewed", "snoozed"].map(st => (
-              <FilterPill key={st} label={st === "all" ? "All" : st} active={statusFilter === st} onClick={() => setStatusFilter(st)} />
-            ))}
-          </div>
-
-          {/* Due toggle */}
+          {/* Must Revise Toggle */}
           <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-            <span style={{ fontSize: 10, color: "#444", minWidth: 58, textTransform: "uppercase", letterSpacing: "0.06em" }}>Queue</span>
-            <FilterPill label="All items" active={!dueOnly} onClick={() => setDueOnly(false)} />
-            <FilterPill label="Due only" active={dueOnly} onClick={() => setDueOnly(true)} />
+            <span style={{ fontSize: 10, color: T.dim, minWidth: 70, textTransform: "uppercase", letterSpacing: "0.06em" }}>Priority</span>
+            <FilterPill label="All Items" active={!mustReviseOnly} onClick={() => setMustReviseOnly(false)} />
+            <FilterPill label="Must Revise Only ⚠️" active={mustReviseOnly} onClick={() => setMustReviseOnly(true)} />
           </div>
         </div>
       </div>
 
       {/* ERROR */}
       {error && (
-        <div style={{ background: "#1a0000", border: "1px solid #ef444433", borderRadius: 8, padding: "12px 16px", marginBottom: 16, fontSize: 12, color: "#ef4444", fontFamily: "monospace" }}>
-          ⚠ Failed to load revision items: {error}
-          <button onClick={fetchItems} style={{ background: "none", border: "none", color: "#f59e0b", cursor: "pointer", marginLeft: 12, fontFamily: "monospace", fontSize: 11 }}>Retry</button>
+        <div style={{ background: "#1a0000", border: `1px solid ${T.red}33`, borderRadius: 8, padding: "12px 16px", marginBottom: 16, fontSize: 12, color: T.red, fontFamily: "monospace" }}>
+          ⚠ Failed to load revision queue: {error}
+          <button onClick={() => fetchItems()} style={{ background: "none", border: "none", color: T.amber, cursor: "pointer", marginLeft: 12, fontFamily: "monospace", fontSize: 11 }}>Retry</button>
         </div>
       )}
 
       {/* LOADING */}
       {loading && (
-        <div style={{ textAlign: "center", padding: "48px 0", color: "#333", fontSize: 12, fontFamily: "monospace" }}>
+        <div style={{ textAlign: "center", padding: "48px 0", color: T.dim, fontSize: 12, fontFamily: "monospace" }}>
           <div style={{ fontSize: 24, marginBottom: 10 }}>⟳</div>
-          Loading revision queue…
+          Loading revision items...
         </div>
       )}
 
-      {/* EMPTY */}
+      {/* EMPTY LIST */}
       {!loading && !error && filtered.length === 0 && (
-        <div style={{ background: "#0a0a0a", border: "1px dashed #1e1e1e", borderRadius: 10, padding: "48px 0", textAlign: "center" }}>
+        <div style={{ background: T.cardBg, border: `1px dashed ${T.border}`, borderRadius: 10, padding: "48px 0", textAlign: "center" }}>
           <div style={{ fontSize: 28, marginBottom: 10 }}>✓</div>
-          <div style={{ fontSize: 14, color: "#555", fontWeight: 600 }}>No items match current filters</div>
-          <div style={{ fontSize: 11, color: "#333", marginTop: 6 }}>
-            {items.length > 0 ? "Try clearing filters or switching to 'All items'." : "Your revision queue is empty."}
-          </div>
+          <div style={{ fontSize: 14, color: T.text, fontWeight: 600 }}>No revision items found matching filters.</div>
         </div>
       )}
 
-      {/* QUEUE */}
+      {/* TIMELINE QUEUE */}
       {!loading && !error && filtered.length > 0 && (
         <div>
+          {/* MUST REVISE HIGHLIGHT (TOP LEVEL) */}
+          {mustReviseHighlights.length > 0 && (
+            <div style={{
+              background: "#120505", border: `1px solid ${T.red}22`,
+              borderRadius: 10, padding: "16px 20px", marginBottom: 24
+            }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: T.red, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
+                ⚠️ CRITICAL MUST REVISE HIGHLIGHTS
+              </div>
+              <div>
+                {mustReviseHighlights.map(item => (
+                  <RevisionCard key={`highlight-${item.id}`} item={item} onReview={handleReview} onResolve={handleResolveMistake} loadingId={loadingId} />
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Overdue */}
           {overdueItems.length > 0 && (
             <div style={{ marginBottom: 24 }}>
-              <SectionHeader label="⚠ Overdue" count={overdueItems.length} />
+              <SectionHeader label="⚠ Overdue" count={overdueItems.length} color={T.red} />
               {overdueItems.map(item => (
-                <RevisionCard key={item.id} item={item} onReview={handleReview} onSnooze={handleSnooze} loadingId={loadingId} weaknessMap={weaknessMap} />
+                <RevisionCard key={item.id} item={item} onReview={handleReview} onResolve={handleResolveMistake} loadingId={loadingId} />
               ))}
             </div>
           )}
 
-          {/* Due Now */}
-          {dueNowItems.length > 0 && (
+          {/* Today */}
+          {todayItems.length > 0 && (
             <div style={{ marginBottom: 24 }}>
-              <SectionHeader label="● Due Now" count={dueNowItems.length} />
-              {dueNowItems.map(item => (
-                <RevisionCard key={item.id} item={item} onReview={handleReview} onSnooze={handleSnooze} loadingId={loadingId} weaknessMap={weaknessMap} />
+              <SectionHeader label="● Due Today" count={todayItems.length} color={T.amber} />
+              {todayItems.map(item => (
+                <RevisionCard key={item.id} item={item} onReview={handleReview} onResolve={handleResolveMistake} loadingId={loadingId} />
               ))}
             </div>
           )}
@@ -662,25 +552,22 @@ export default function RevisionPage() {
           {/* Upcoming */}
           {upcomingItems.length > 0 && (
             <div style={{ marginBottom: 24 }}>
-              <SectionHeader label="Upcoming" count={upcomingItems.length} />
+              <SectionHeader label="Upcoming" count={upcomingItems.length} color={T.indigo} />
               {upcomingItems.map(item => (
-                <RevisionCard key={item.id} item={item} onReview={handleReview} onSnooze={handleSnooze} loadingId={loadingId} weaknessMap={weaknessMap} />
+                <RevisionCard key={item.id} item={item} onReview={handleReview} onResolve={handleResolveMistake} loadingId={loadingId} />
               ))}
             </div>
           )}
-        </div>
-      )}
 
-      {/* Footer */}
-      {!loading && items.length > 0 && (
-        <div style={{ borderTop: "1px solid #111", paddingTop: 16, marginTop: 8, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
-          <span style={{ fontSize: 10, color: "#333", fontFamily: "monospace" }}>
-            showing {filtered.length} of {items.length} items
-          </span>
-          <span style={{ fontSize: 10, color: "#333", fontFamily: "monospace" }}>
-            {reviewedTodayCount > 0 && <span style={{ color: "#22c55e" }}>{reviewedTodayCount} reviewed today · </span>}
-            {dueCount} due · {pendingCount} pending
-          </span>
+          {/* Completed */}
+          {completedItems.length > 0 && (
+            <div style={{ marginBottom: 24 }}>
+              <SectionHeader label="✓ Completed / Revised" count={completedItems.length} color={T.green} />
+              {completedItems.map(item => (
+                <RevisionCard key={item.id} item={item} onReview={handleReview} onResolve={handleResolveMistake} loadingId={loadingId} />
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>
