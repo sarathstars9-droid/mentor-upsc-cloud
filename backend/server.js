@@ -1971,7 +1971,11 @@ app.post("/api/sheets", async (req, res) => {
 
       } catch (err) {
         console.error(`[sheets interceptor ${action}]`, err.message);
-        return res.status(err.code === "RACE_CONDITION" ? 409 : 500).json({
+        const status = err.code === "RACE_CONDITION" ? 409
+                     : err.code === "INVALID_TRANSITION" ? 422
+                     : err.code === "PROOF_REQUIRED" ? 422
+                     : 500;
+        return res.status(status).json({
           ok: false, message: err.message, code: err.code, dbError: err.message, stack: err.stack
         });
       }

@@ -14,7 +14,7 @@ export default function FocusModeModal({
 }) {
     if (!open || !block) return null;
 
-    const status = getDisplayStatus(block.Status);
+    const status = getDisplayStatus(block.Status, block.Date);
 
     const liveTimerDisplay = liveElapsedSec != null && liveElapsedSec > 0
         ? (() => {

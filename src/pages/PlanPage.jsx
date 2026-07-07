@@ -371,11 +371,16 @@ function getEffectiveBlockStatus(block) {
       rawStatus === BLOCK_STATUS.STOPPED ||
       rawStatus === BLOCK_STATUS.PARTIAL ||
       rawStatus === BLOCK_STATUS.MISSED ||
-      rawStatus === BLOCK_STATUS.SKIPPED
+      rawStatus === BLOCK_STATUS.SKIPPED ||
+      rawStatus === "skipped_rescue"
     ) {
       return rawStatus;
     }
     return BLOCK_STATUS.COMPLETED;
+  }
+
+  if (rawStatus === "skipped_rescue") {
+    return block.Date === getTodayLocalDate() ? BLOCK_STATUS.PLANNED : BLOCK_STATUS.SKIPPED;
   }
 
   if (rawStatus === "review_pending") {

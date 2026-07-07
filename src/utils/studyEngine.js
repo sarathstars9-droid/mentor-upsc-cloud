@@ -293,8 +293,20 @@ export function nowMinutesOfDay() {
   return d.getHours() * 60 + d.getMinutes();
 }
 
-export function getDisplayStatus(status) {
-  const normalized = String(status || BLOCK_STATUS.PLANNED).trim().toLowerCase();
+export function getDisplayStatus(status, blockDate = null) {
+  let normalized = String(status || BLOCK_STATUS.PLANNED).trim().toLowerCase();
+  if (normalized === "skipped_rescue") {
+    if (blockDate) {
+      const todayKey = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
+      if (blockDate === todayKey) {
+        normalized = "planned";
+      } else {
+        normalized = "skipped";
+      }
+    } else {
+      normalized = "skipped";
+    }
+  }
   return normalized;
 }
 

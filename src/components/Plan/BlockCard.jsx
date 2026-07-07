@@ -1,4 +1,4 @@
-﻿import { getDisplayStatus } from "../../utils/studyEngine";
+import { getDisplayStatus } from "../../utils/studyEngine";
 
 // ── helpers ───────────────────────────────────────────────────────────────────
 
@@ -54,7 +54,7 @@ const B = {
 // ── component ─────────────────────────────────────────────────────────────────
 
 export default function BlockCard({ block, busy, onStart, onPause, onResume, onStop }) {
-  const status      = getDisplayStatus(block.Status || "planned").toLowerCase();
+  const status      = getDisplayStatus(block.Status || "planned", block.Date).toLowerCase();
   const sc          = SC[status] || SC.planned;
   const isActive    = status === "active";
   const isPaused    = status === "paused";

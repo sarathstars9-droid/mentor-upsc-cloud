@@ -35,7 +35,17 @@ const ALLOWED_FROM = {
   skipped:   new Set(),
 };
 
-function assertTransition(fromStatus, toStatus) {
+function assertTransition(fromStatus, toStatus, targetRowDayKey) {
+  if (fromStatus === 'skipped_rescue' && toStatus === 'active') {
+    const todayKey = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
+    if (targetRowDayKey !== todayKey) {
+      throw Object.assign(
+        new Error(`Invalid lifecycle transition: cannot start past skipped_rescue block`),
+        { code: 'INVALID_TRANSITION', fromStatus, toStatus }
+      );
+    }
+    return;
+  }
   const allowed = ALLOWED_FROM[fromStatus];
   if (!allowed || !allowed.has(toStatus)) {
     throw Object.assign(
@@ -188,7 +198,7 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
 
     // Step 4: Validate transition
     if (!['planned', 'upcoming', 'active'].includes(targetRow.status)) {
-      assertTransition(targetRow.status, 'active');
+      assertTransition(targetRow.status, 'active', dayKey);
     }
     if (targetRow.status === 'active') {
       // Already active (same block re-started) — just return current state

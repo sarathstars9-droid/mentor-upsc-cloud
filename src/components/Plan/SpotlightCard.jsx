@@ -43,7 +43,7 @@ export default function SpotlightCard({
     );
   }
 
-  const status     = getDisplayStatus(currentBlock.Status || "planned").toLowerCase();
+  const status     = getDisplayStatus(currentBlock.Status || "planned", currentBlock.Date).toLowerCase();
   const cfg        = STATUS_CFG[status] || STATUS_CFG.planned;
   const isActive   = status === "active";
   const isPaused   = status === "paused";
