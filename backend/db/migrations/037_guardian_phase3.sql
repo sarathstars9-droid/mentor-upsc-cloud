@@ -11,6 +11,19 @@ CREATE TABLE IF NOT EXISTS public.guardian_daily_phone_usage (
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- Deduplicate before creating the unique index by keeping the row with the maximum duration_seconds
+DELETE FROM public.guardian_daily_phone_usage a
+WHERE a.id NOT IN (
+  SELECT id FROM (
+    SELECT id, ROW_NUMBER() OVER (
+      PARTITION BY user_id, date, app_package 
+      ORDER BY duration_seconds DESC, updated_at DESC, created_at DESC
+    ) as rn
+    FROM public.guardian_daily_phone_usage
+  ) sub
+  WHERE sub.rn = 1
+);
+
 CREATE UNIQUE INDEX IF NOT EXISTS uniq_guardian_daily_phone_usage
 ON public.guardian_daily_phone_usage (user_id, date, app_package);
 
