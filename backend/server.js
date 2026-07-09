@@ -83,6 +83,7 @@ import pyqExplanationRoutes from "./routes/pyqExplanationRoutes.js";
 import subjectPyqRoutes from "./routes/subjectPyqRoutes.js";
 import pyqIngestionRoutes from "./routes/pyqIngestionRoutes.js";
 import planBlockRoutes from "./routes/planBlockRoutes.js";
+import executionRoutes from "./routes/executionRoutes.js";
 import reportRoutes from "./routes/reportRoutes.js";
 import plannerRoutes from "./routes/plannerRoutes.js";
 import knowledgeLinkageRoutes from "./routes/knowledgeLinkageRoutes.js";
@@ -664,8 +665,9 @@ app.use("/api/weakness", weaknessRoutes);
 app.use("/api/pyq", pyqExplanationRoutes);
 app.use("/api/subject-pyq", subjectPyqRoutes);
 
-// ── Plan block lifecycle (PostgreSQL-backed, transaction-safe) ─────────────
+//  Plan block lifecycle (PostgreSQL-backed, transaction-safe) 
 app.use("/api/plan/blocks", planBlockRoutes);
+app.use("/api/daily-execution", executionRoutes);
 
 // ── Study reports (PostgreSQL only, no Sheets / Calendar dependency) ────────
 app.use("/api/reports", reportRoutes);
