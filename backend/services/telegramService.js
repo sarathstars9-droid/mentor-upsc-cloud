@@ -1,11 +1,15 @@
 import { query } from '../db/index.js';
 import * as botCommandService from './botCommandService.js';
 
-// ── Module-level singleton guards ────────────────────────────────────────────
-// These are process-lifetime flags. Even if startTelegramPolling() is called
-// multiple times (e.g., from a buggy boot sequence), only ONE polling loop runs.
-let pollingLoopStarted = false;  // set to true permanently once the loop starts
-let isPolling = false;           // set to false by stopTelegramPolling() to end the loop
+// ── Process-level singleton guards ───────────────────────────────────────────
+// These are process-lifetime flags on the Node.js global object. Even if startTelegramPolling() is called
+// multiple times or from duplicate module imports, only ONE polling loop runs per process.
+if (global.telegramPollingLoopStarted === undefined) {
+  global.telegramPollingLoopStarted = false;
+}
+if (global.telegramIsPolling === undefined) {
+  global.telegramIsPolling = false;
+}
 
 let lastUpdateId = 0;
 export let inMemoryRetryQueue = [];
@@ -150,7 +154,7 @@ export async function startTelegramPolling() {
   // Diagnostics on every call
   console.log("[TelegramService] startTelegramPolling() called.");
   console.log(`[TelegramService] ENABLE_TELEGRAM_POLLING=${pollingEnabled}`);
-  console.log(`[TelegramService] pollingLoopStarted=${pollingLoopStarted}`);
+  console.log(`[TelegramService] pollingLoopStarted=${global.telegramPollingLoopStarted}`);
   console.log(`[TelegramService] TELEGRAM_BOT_TOKEN present=${!!token}`);
 
   if (pollingEnabled !== "true") {
@@ -163,14 +167,14 @@ export async function startTelegramPolling() {
     return;
   }
 
-  // ── Singleton guard ──────────────────────────────────────────────────────
-  if (pollingLoopStarted || isPolling) {
+  // ── Process-Level Singleton guard ──────────────────────────────────────────
+  if (global.telegramPollingLoopStarted || global.telegramIsPolling) {
     console.log("[TelegramService] Polling already active. Skipping duplicate start.");
     return;
   }
 
-  pollingLoopStarted = true;
-  isPolling = true;
+  global.telegramPollingLoopStarted = true;
+  global.telegramIsPolling = true;
 
   // Step 1: Clear any leftover webhook (prevents 409 from prior webhook config)
   await deleteWebhook(token);
@@ -182,7 +186,7 @@ export async function startTelegramPolling() {
 }
 
 export function stopTelegramPolling() {
-  isPolling = false;
+  global.telegramIsPolling = false;
   console.log("[TelegramService] Long polling stopped.");
 }
 
@@ -193,7 +197,7 @@ export function stopTelegramPolling() {
 async function runPollingLoop(token) {
   let consecutive409 = 0;
 
-  while (isPolling) {
+  while (global.telegramIsPolling) {
     try {
       const url = `https://api.telegram.org/bot${token}/getUpdates?offset=${lastUpdateId + 1}&limit=10&timeout=25`;
       const res = await fetch(url);
@@ -216,7 +220,7 @@ async function runPollingLoop(token) {
 
       if (res.status === 401) {
         console.error("[TelegramService] 401 Unauthorized. Stopping polling. Check TELEGRAM_BOT_TOKEN.");
-        isPolling = false;
+        global.telegramIsPolling = false;
         return;
       }
 
