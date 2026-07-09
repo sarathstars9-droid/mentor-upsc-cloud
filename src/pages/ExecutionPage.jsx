@@ -53,10 +53,10 @@ export default function ExecutionPage() {
   // Block Actions
   const handleStart = async (blockId) => {
     try {
-      const res = await fetch(`${BACKEND_URL}/api/plan/blocks/start`, {
+      const res = await fetch(`${BACKEND_URL}/api/sheets`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ blockId, dayKey: todayKey, userId: USER_ID })
+        body: JSON.stringify({ action: 'startBlock', userId: USER_ID, payload: { blockId, dayKey: todayKey } })
       });
       const data = await res.json();
       if (data.ok) fetchData();
@@ -68,10 +68,10 @@ export default function ExecutionPage() {
 
   const handlePause = async (blockId) => {
     try {
-      const res = await fetch(`${BACKEND_URL}/api/plan/blocks/pause`, {
+      const res = await fetch(`${BACKEND_URL}/api/sheets`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ blockId, dayKey: todayKey, userId: USER_ID })
+        body: JSON.stringify({ action: 'pauseBlock', userId: USER_ID, payload: { blockId, dayKey: todayKey } })
       });
       const data = await res.json();
       if (data.ok) fetchData();
@@ -83,10 +83,10 @@ export default function ExecutionPage() {
 
   const handleResume = async (blockId) => {
     try {
-      const res = await fetch(`${BACKEND_URL}/api/plan/blocks/resume`, {
+      const res = await fetch(`${BACKEND_URL}/api/sheets`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ blockId, dayKey: todayKey, userId: USER_ID })
+        body: JSON.stringify({ action: 'resumeBlock', userId: USER_ID, payload: { blockId, dayKey: todayKey } })
       });
       const data = await res.json();
       if (data.ok) fetchData();
@@ -131,20 +131,23 @@ export default function ExecutionPage() {
         }
       }
 
-      const completeRes = await fetch(`${BACKEND_URL}/api/plan/blocks/complete`, {
+      const completeRes = await fetch(`${BACKEND_URL}/api/sheets`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          blockId,
-          dayKey: todayKey,
+          action: 'completeBlock',
           userId: USER_ID,
-          reason: 'completed',
-          outputType,
-          outputCount: Number(outputCount) || 1,
-          proofUrl,
-          proofType,
-          proofStatus,
-          proofNotes
+          payload: {
+            blockId,
+            dayKey: todayKey,
+            reason: 'completed',
+            outputType,
+            outputCount: Number(outputCount) || 1,
+            proofUrl,
+            proofType,
+            proofStatus,
+            proofNotes
+          }
         })
       });
 
