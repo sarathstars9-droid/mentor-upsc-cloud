@@ -1,0 +1,289 @@
+/* src/styles/mentorosPremium.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* Global Premium styling overrides and utilities */
+body {
+  background-color: #0E1117 !important;
+  background: radial-gradient(circle at 10% 10%, #161B26 0%, #0E1117 80%) !important;
+  color: #F5F7FB !important;
+  font-family: "Inter", "Manrope", "Aptos", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Premium Layout Container */
+.premium-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 40px 32px;
+  box-sizing: border-box;
+}
+
+/* Typography Scale */
+.premium-page-title {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: #F5F7FB;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.premium-page-subtitle {
+  font-size: 16.5px;
+  font-weight: 400;
+  color: #7F8897;
+  margin: 0 0 36px 0;
+  line-height: 1.6;
+}
+
+.premium-section-title {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #F5F7FB;
+  margin: 0 0 18px 0;
+  letter-spacing: -0.015em;
+}
+
+.premium-card-title {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: 17.5px;
+  font-weight: 700;
+  color: #F5F7FB;
+  margin: 0 0 10px 0;
+  line-height: 1.45;
+}
+
+.premium-body {
+  font-size: 15px;
+  font-weight: 400;
+  color: #B8C0CC;
+  line-height: 1.6;
+}
+
+.premium-metadata {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #7F8897;
+  letter-spacing: normal;
+}
+
+/* Surfaces */
+.premium-surface-card {
+  background-color: #171B23;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 26px 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.premium-surface-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+
+.premium-surface-card-inner {
+  background-color: #1C2230;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-sizing: border-box;
+}
+
+/* Directive Hero Panel */
+.premium-directive-hero {
+  background: linear-gradient(135deg, rgba(214, 181, 109, 0.04) 0%, rgba(214, 181, 109, 0.09) 100%);
+  border: 1px solid rgba(214, 181, 109, 0.2);
+  border-radius: 22px;
+  padding: 28px 32px;
+  margin-bottom: 36px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 32px rgba(214, 181, 109, 0.02);
+}
+
+/* Buttons - SaaS guided actions */
+.premium-button-primary {
+  background-color: #D6B56D;
+  color: #0E1117;
+  border: 1px solid #D6B56D;
+  border-radius: 10px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.premium-button-primary:hover {
+  background-color: #CFAF65;
+  border-color: #CFAF65;
+}
+
+.premium-button-primary:active {
+  transform: scale(0.98);
+}
+
+.premium-button-secondary {
+  background-color: transparent;
+  color: #B8C0CC;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.premium-button-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #F5F7FB;
+}
+
+.premium-button-secondary:active {
+  transform: scale(0.98);
+}
+
+.premium-text-link {
+  color: #7F8897;
+  background: none;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-family: inherit;
+  transition: color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.premium-text-link:hover {
+  color: #F5F7FB;
+}
+
+/* Badges */
+.premium-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.premium-badge-paper {
+  background-color: rgba(214, 181, 109, 0.08);
+  border: 1px solid rgba(214, 181, 109, 0.2);
+  color: #D6B56D;
+}
+
+.premium-badge-neutral {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #B8C0CC;
+}
+
+.premium-badge-danger {
+  background-color: rgba(224, 82, 82, 0.08);
+  border: 1px solid rgba(224, 82, 82, 0.2);
+  color: #E05252;
+}
+
+.premium-badge-success {
+  background-color: rgba(47, 191, 113, 0.08);
+  border: 1px solid rgba(47, 191, 113, 0.2);
+  color: #2FBF71;
+}
+
+/* Tab/Pill Segmented Switchers */
+.premium-pill-group {
+  display: flex;
+  background-color: #171B23;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+  width: max-content;
+  box-sizing: border-box;
+}
+
+.premium-pill-button {
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: #7F8897;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.premium-pill-button:hover {
+  color: #B8C0CC;
+}
+
+.premium-pill-button.active {
+  background-color: #1C2230;
+  color: #F5F7FB;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* KPI Dashboard Grids */
+.premium-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.premium-kpi-card {
+  background-color: #171B23;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px 28px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.premium-kpi-val {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #F5F7FB;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.premium-kpi-lbl {
+  font-size: 13px;
+  font-weight: 600;
+  color: #7F8897;
+  text-transform: none;
+  letter-spacing: normal;
+}

@@ -4,42 +4,31 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config";
+import "../styles/mentorosPremium.css";
 
 // ─── Theme ────────────────────────────────────────────────────────────────────
 const T = {
-    bg: "#09090b",
-    surface: "#111113",
-    surfaceHigh: "#18181b",
-    border: "#1f1f23",
-    borderMid: "#27272a",
-    muted: "#3f3f46",
-    subtle: "#52525b",
-    dim: "#a1a1aa",
-    text: "#d4d4d8",
-    textBright: "#f4f4f5",
-    amber: "#f59e0b",
-    blue: "#3b82f6",
-    green: "#10b981",
-    red: "#ef4444",
-    purple: "#8b5cf6",
-    font: "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
-    mono: "'JetBrains Mono', 'Fira Code', monospace",
+    bg: "#0E1117",
+    surface: "#171B23",
+    surfaceHigh: "#1C2230",
+    border: "rgba(255,255,255,0.08)",
+    text: "#F5F7FB",
+    textMuted: "#7F8897",
+    textSec: "#B8C0CC",
+    accent: "#D6B56D",
+    success: "#2FBF71",
+    danger: "#E05252",
+    font: "Inter, Manrope, Aptos, system-ui, sans-serif",
 };
 
-const label11 = (color = T.subtle) => ({
-    fontSize: 11, fontWeight: 700,
-    letterSpacing: "0.08em", textTransform: "uppercase", color,
-    fontFamily: T.font,
-});
-
 const PAPER_ACCENT = {
-    All: T.purple,
-    GS1: T.amber,
-    GS2: T.blue,
-    GS3: T.green,
-    Essay: T.purple,
-    Ethics: T.red,
-    "Geography Optional": T.blue,
+    All: "#8b5cf6",
+    GS1: "#D6B56D",
+    GS2: "#3b82f6",
+    GS3: "#2FBF71",
+    Essay: "#8b5cf6",
+    Ethics: "#D6B56D",
+    "Geography Optional": "#3b82f6",
 };
 
 const MISTAKE_TEMPLATES = {
@@ -95,6 +84,22 @@ const MISTAKE_TEMPLATES = {
         why: "Poor handwriting, layout, or lack of highlighting makes reading laborious for the examiner, causing subtle marks deduction.",
         fix: "Improve neatness, leave adequate margins, highlight key terms, and keep spacing uniform."
     }
+};
+
+const PATTERN_DRILLS = {
+    ethics_example_missing: "Review the model ethics answers database and write down 5 real-life administrator stories.",
+    question_demand_mismatch: "Take 3 test questions, underline their directive keywords, and write structure bullet points for each.",
+    weak_conclusion: "Practice drafting positive futuristic way forwards for 5 previous years' GS questions.",
+    missing_data_or_reports: "Memorize 10 key NITI Aayog/ARC recommendations and practice inserting them into answers.",
+    diagram_or_map_missing: "Practice drawing quick schematic value maps and 30-second India outlines.",
+    weak_introduction: "Draft current-affairs context definitions for 5 governance questions.",
+    content_gap: "Brainstorm political, social, economic, environmental aspects for 5 past topics.",
+    weak_structure: "Outline 3 case studies using bold, clear subheadings for each actor involved.",
+    weak_analysis: "List pros and cons with supporting data points for 3 major policies.",
+    essay_flow_issue: "Write logical paragraph connectors linking themes in a mock essay.",
+    optional_concept_gap: "Summarize 3 theoretical optional concepts using technical vocabulary.",
+    presentation_issue: "Set a 15-minute timer and practice clean presentation layout on ruled paper.",
+    missing_examples: "Build an example bank with 10 case-studies of administrative interventions."
 };
 
 const API_URL = `${BACKEND_URL}/api/mistakes?userId=user_1`;
@@ -191,7 +196,6 @@ function normalizeMistake(m) {
         paper: inferPaper(m),
         status: inferStatus(m),
         severity: inferSeverity(m),
-        // Deserialized fields passed to card
         score: score,
         review_source: reviewSource,
         attemptId: m.attempt_id ?? m.source_ref ?? null,
@@ -223,88 +227,22 @@ function buildWeakPatterns(items) {
 // ─── Shared UI Components ─────────────────────────────────────────────────────
 
 function Badge({ label, variant = "neutral", style: extra }) {
-  const styles = {
-    amber: { background: "rgba(245, 158, 11, 0.08)", border: "1px solid rgba(245, 158, 11, 0.25)", color: "#f59e0b" },
-    red:   { background: "rgba(239, 68, 68, 0.08)", border: "1px solid rgba(239, 68, 68, 0.25)", color: "#f87171" },
-    green: { background: "rgba(16, 185, 129, 0.08)", border: "1px solid rgba(16, 185, 129, 0.25)", color: "#34d399" },
-    blue:  { background: "rgba(59, 130, 246, 0.08)", border: "1px solid rgba(59, 130, 246, 0.25)", color: "#60a5fa" },
-    neutral: { background: "rgba(255, 255, 255, 0.04)", border: "1px solid rgba(255, 255, 255, 0.08)", color: "#a1a1aa" },
-  };
-  const activeStyle = styles[variant] || styles.neutral;
+  const cName = variant === "amber" ? "premium-badge-paper" : 
+                variant === "red" ? "premium-badge-danger" : 
+                variant === "green" ? "premium-badge-success" : 
+                "premium-badge-neutral";
   return (
-    <span style={{
-      display: "inline-flex", alignItems: "center",
-      borderRadius: 6, padding: "2px 8px",
-      fontSize: 10, fontWeight: 700,
-      letterSpacing: "0.02em",
-      fontFamily: T.font,
-      ...activeStyle,
-      ...extra,
-    }}>{label}</span>
+    <span className={`premium-badge ${cName}`} style={extra}>
+      {label}
+    </span>
   );
 }
 
-function ActionButton({ onClick, disabled, variant = "ghost", children, style: extra }) {
-  const [hover, setHover] = useState(false);
-
-  const variantStyles = {
-    primary: { background: "#f59e0b", color: "#09090b", border: "1px solid #f59e0b" },
-    green:   { background: "rgba(16, 185, 129, 0.08)", border: "1px solid rgba(16, 185, 129, 0.25)", color: "#34d399" },
-    blue:    { background: "rgba(59, 130, 246, 0.08)", border: "1px solid rgba(59, 130, 246, 0.25)", color: "#60a5fa" },
-    red:     { background: "rgba(239, 68, 68, 0.08)", border: "1px solid rgba(239, 68, 68, 0.2)", color: "#f87171" },
-    ghost:   { background: "transparent", border: "1px solid #27272a", color: "#a1a1aa" },
-  };
-
-  const hoverStyles = {
-    primary: { background: "#d97706", border: "1px solid #d97706" },
-    green:   { background: "rgba(16, 185, 129, 0.16)", border: "1px solid rgba(16, 185, 129, 0.45)" },
-    blue:    { background: "rgba(59, 130, 246, 0.16)", border: "1px solid rgba(59, 130, 246, 0.45)" },
-    red:     { background: "rgba(239, 68, 68, 0.14)", border: "1px solid rgba(239, 68, 68, 0.3)" },
-    ghost:   { background: "rgba(255, 255, 255, 0.04)", border: "1px solid #3f3f46", color: "#f4f4f5" },
-  };
-
-  const activeStyle = hover ? { ...variantStyles[variant], ...hoverStyles[variant] } : variantStyles[variant];
-
-  return (
-    <button 
-      onClick={onClick} 
-      disabled={disabled} 
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      style={{
-        display: "inline-flex", alignItems: "center", gap: 6,
-        height: 32, padding: "0 14px",
-        borderRadius: 8, fontSize: 12, fontWeight: 600,
-        cursor: disabled ? "not-allowed" : "pointer",
-        opacity: disabled ? 0.5 : 1,
-        fontFamily: T.font,
-        transition: "all 0.15s ease",
-        whiteSpace: "nowrap",
-        ...activeStyle,
-        ...extra,
-      }}>{children}</button>
-  );
-}
-
-function FilterPill({ label, active, accent = T.purple, onClick }) {
-    const [hover, setHover] = useState(false);
+function FilterPill({ label, active, onClick }) {
     return (
         <button
             onClick={onClick}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            style={{
-                padding: "5px 14px",
-                borderRadius: 20,
-                fontSize: 12, fontWeight: 600,
-                fontFamily: T.font,
-                cursor: "pointer",
-                border: `1px solid ${active ? accent + "66" : hover ? "#3f3f46" : T.borderMid}`,
-                background: active ? `${accent}18` : hover ? "rgba(255, 255, 255, 0.02)" : T.bg,
-                color: active ? accent : T.dim,
-                transition: "all 0.15s ease",
-                whiteSpace: "nowrap",
-            }}
+            className={`premium-pill-button ${active ? "active" : ""}`}
         >
             {label}
         </button>
@@ -318,7 +256,6 @@ function LocalMainsMistakeCard({ mistake, onMarkResolved, onToggleMustRevise }) 
     const [expanded, setExpanded] = useState(false);
     const [textExpanded, setTextExpanded] = useState(false);
     
-    const accent = PAPER_ACCENT[mistake.paper] || T.amber;
     const isResolved = mistake.status === "resolved";
     
     const dateStr = mistake.createdAt 
@@ -332,17 +269,10 @@ function LocalMainsMistakeCard({ mistake, onMarkResolved, onToggleMustRevise }) 
         ? questionText.slice(0, 120) + "…"
         : questionText;
 
-    const sourceLabel = mistake.review_source === "chatgpt_air1" || mistake.review_source === "chatgpt-air1" || mistake.review_source === "AIR-1"
-        ? "AIR-1 Review" 
-        : mistake.review_source === "gemini_basic" || mistake.review_source === "basic"
-        ? "Basic Review"
-        : "Basic Evaluation";
-
     const rawNotes = mistake.notes || "";
     let whyItMatters = "";
     let fixText = rawNotes;
 
-    // Parse Why it matters and Fix notes
     if (rawNotes.includes("Why it matters:") && rawNotes.includes("Fix:")) {
         const match = rawNotes.match(/Why it matters:\s*([\s\S]*?)\nFix:\s*([\s\S]*)/i);
         if (match) {
@@ -356,7 +286,6 @@ function LocalMainsMistakeCard({ mistake, onMarkResolved, onToggleMustRevise }) 
         fixText = rawNotes || tpl.fix;
     }
 
-    // Clean up weakness title
     let cleanMistakeText = (mistake.mistakeText || "").trim();
     cleanMistakeText = cleanMistakeText.replace(/^(weakness|missing dimension):\s*/i, "");
 
@@ -388,221 +317,202 @@ function LocalMainsMistakeCard({ mistake, onMarkResolved, onToggleMustRevise }) 
         });
     };
 
-    // Styling based on rules:
-    // Must Revise = amber/gold accent
-    // High Severity = red badge
-    // Resolved = green
-    let cardLeftBorder = `1px solid #27272a`;
+    let leftBorderColor = "transparent";
+    let cardBorder = "1px solid rgba(255,255,255,0.08)";
     if (isResolved) {
-        cardLeftBorder = `4px solid ${T.green}`;
+        leftBorderColor = T.success;
     } else if (mistake.mustRevise) {
-        cardLeftBorder = `4px solid ${T.amber}`;
+        leftBorderColor = T.accent;
     } else if (mistake.severity === "high") {
-        // Red left accent for open high-severity mistakes
-        cardLeftBorder = `4px solid ${T.red}`;
+        leftBorderColor = T.danger;
     }
 
     return (
-        <div style={{
-            background: T.surface,
-            border: `1px solid ${isResolved ? T.border : "rgba(255, 255, 255, 0.05)"}`,
-            borderLeft: cardLeftBorder,
-            borderRadius: 12,
-            overflow: "hidden",
-            opacity: isResolved ? 0.65 : 1,
-            transition: "opacity 0.2s ease",
-            padding: "16px 20px",
-            fontFamily: T.font,
-        }}>
-            {/* Top Row: Meta badges */}
-            <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
-                <Badge label={mistake.paper} variant="amber" />
-                
-                {mistake.marks && (
-                    <span style={{ fontSize: 11, fontWeight: 700, color: T.dim, background: T.bg, padding: "2px 8px", borderRadius: 6, border: `1px solid ${T.border}` }}>
-                        {mistake.marks} Marks
-                    </span>
-                )}
-
-                {mistake.score !== null && mistake.score !== undefined && (
-                    <Badge label={`Score: ${mistake.score}`} variant="green" />
-                )}
-
-                {mistake.severity === "high" && (
-                    <Badge label="High Severity" variant="red" />
-                )}
-
-                {mistake.mustRevise && (
-                    <Badge label="Must Revise" variant="amber" />
-                )}
-
-                <span style={{ fontSize: 11, color: T.subtle, fontWeight: 600 }}>{sourceLabel}</span>
-                <span style={{ marginLeft: "auto", fontSize: 11, color: T.subtle, fontWeight: 600 }}>{dateStr}</span>
+        <div 
+            className="premium-surface-card" 
+            style={{
+                border: cardBorder,
+                borderLeft: leftBorderColor !== "transparent" ? `4px solid ${leftBorderColor}` : cardBorder,
+                opacity: isResolved ? 0.65 : 1,
+                padding: "22px 28px",
+            }}
+        >
+            {/* Top Row */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                <span className="premium-metadata" style={{ color: T.textSec, fontWeight: 600 }}>
+                    {mistake.paper} • <span style={{ color: T.textMuted }}>{dateStr}</span>
+                </span>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    {mistake.score !== null && mistake.score !== undefined && (
+                        <span style={{ fontSize: 11, color: T.success, background: "rgba(47, 191, 113, 0.08)", padding: "1px 6px", borderRadius: 4, fontWeight: 600 }}>
+                            {mistake.score}
+                        </span>
+                    )}
+                    <span style={{ fontSize: 11.5, color: T.textMuted }}>Review</span>
+                </div>
             </div>
 
             {/* Question Snippet */}
             <div
                 onClick={() => setExpanded(!expanded)}
                 style={{
-                    fontSize: 14, fontWeight: 500, color: T.text,
-                    lineHeight: 1.6, marginBottom: 12,
+                    fontSize: 14.5, fontWeight: 550, color: T.textSec,
+                    lineHeight: 1.55, marginBottom: 12,
                     cursor: "pointer",
                 }}
             >
                 {expanded ? questionText : questionSnippet}
                 {questionText.length > 120 && (
-                    <span style={{ color: T.amber, fontSize: 12, cursor: "pointer", marginLeft: 6, fontWeight: 600 }}>
+                    <span style={{ color: T.accent, fontSize: 13, marginLeft: 6, fontWeight: 600 }}>
                         {expanded ? "Show less" : "Read more"}
                     </span>
                 )}
             </div>
 
-            {/* Topic & Metadata */}
-            {mistake.topic && (
-                <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
-                    <span style={{ fontSize: 11, fontWeight: 600, color: T.subtle }}>
-                        Topic: <span style={{ color: T.text }}>{mistake.topic}</span>
-                    </span>
-                </div>
-            )}
-
             {/* Weakness summary */}
             {cleanMistakeText && (
                 <div style={{
-                    fontSize: 14, color: T.textBright, fontWeight: 700,
-                    lineHeight: 1.5, marginBottom: 10,
+                    fontSize: 15.5, color: T.text, fontWeight: 700,
+                    lineHeight: 1.45, marginBottom: 12,
                     display: "flex", gap: 8, alignItems: "flex-start"
                 }}>
-                    <span style={{ color: T.red }}>⚠️</span>
+                    <span style={{ color: leftBorderColor !== "transparent" ? leftBorderColor : T.accent }}>⚠️</span>
                     <div>
-                        <span style={{ color: T.dim, fontWeight: 600 }}>Mistake: </span>
+                        <span style={{ color: T.textMuted, fontWeight: 550 }}>Mistake: </span>
                         {cleanMistakeText}
                     </div>
                 </div>
             )}
 
-            {/* Why it matters */}
+            {/* Why this improves marks */}
             {whyItMatters && (
                 <div style={{
-                    fontSize: 13, color: T.dim, lineHeight: 1.6,
-                    marginBottom: 12, paddingLeft: 14,
-                    borderLeft: `2px solid rgba(245, 158, 11, 0.3)`
+                    fontSize: 14.5, color: T.textSec, lineHeight: 1.6,
+                    marginBottom: 12, paddingLeft: 12,
+                    borderLeft: `2px solid rgba(214, 181, 109, 0.3)`
                 }}>
-                    <span style={{ color: T.amber, fontWeight: 700 }}>Why it matters: </span>
+                    <span style={{ color: T.accent, fontWeight: 600 }}>Why this improves marks: </span>
                     {whyItMatters}
                 </div>
             )}
 
-            {/* Fix Action */}
+            {/* Do this */}
             {fixText && (
-                <div style={{
-                    fontSize: 13, color: T.textBright, lineHeight: 1.6,
-                    padding: "10px 14px",
-                    background: T.bg, border: `1px solid ${T.border}`,
-                    borderRadius: 8, marginBottom: 14,
-                }}>
-                    <span style={{ color: T.green, fontWeight: 700 }}>Fix: </span>
-                    {displayFix}
-                    {needsExpand && (
-                        <button onClick={() => setTextExpanded(e => !e)} style={{
-                            background: "none", border: "none", color: T.amber,
-                            fontSize: 12, cursor: "pointer", marginLeft: 6, padding: 0,
-                            fontFamily: T.font, fontWeight: 600,
-                        }}>
-                            {textExpanded ? "Show less" : "Expand"}
-                        </button>
-                    )}
+                <div className="premium-surface-card-inner" style={{ padding: "14px 16px", marginBottom: 16 }}>
+                    <div className="premium-body" style={{ color: T.text, fontSize: 14.5 }}>
+                        <span style={{ color: T.success, fontWeight: 600 }}>Do this: </span>
+                        {displayFix}
+                        {needsExpand && (
+                            <button 
+                                onClick={() => setTextExpanded(e => !e)} 
+                                className="premium-text-link"
+                                style={{ marginLeft: 6, padding: 0, textDecoration: "none", color: T.accent }}
+                            >
+                                {textExpanded ? "Show less" : "Expand"}
+                            </button>
+                        )}
+                    </div>
                 </div>
             )}
 
             {/* Actions Toolbar */}
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8, borderTop: `1px solid ${T.border}`, paddingTop: 12 }}>
+            <div style={{ display: "flex", gap: 12, alignItems: "center", borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 14, marginTop: 4 }}>
                 {!isResolved && (
-                    <ActionButton variant="green" onClick={() => onMarkResolved?.(mistake.id)}>
-                        ✓ Mark Resolved
-                    </ActionButton>
+                    <button 
+                        onClick={() => onMarkResolved?.(mistake.id)}
+                        className="premium-button-primary"
+                        style={{ fontSize: 13, padding: "8px 16px", height: "auto" }}
+                    >
+                        Resolve
+                    </button>
                 )}
-                <ActionButton 
-                    variant={mistake.mustRevise ? "primary" : "ghost"} 
+                
+                <button 
                     onClick={() => onToggleMustRevise?.(mistake.id)}
+                    className="premium-button-secondary"
+                    style={{ fontSize: 13, padding: "8px 16px", height: "auto" }}
                 >
-                    🔁 {mistake.mustRevise ? "Must Revise Selected" : "Must Revise"}
-                </ActionButton>
+                    {mistake.mustRevise ? "Must revise first" : "Must revise"}
+                </button>
 
                 {(mistake.attemptId || mistake.source_ref) && (
-                    <ActionButton variant="blue" onClick={handleViewAttempt}>
-                        📝 Open Workspace
-                    </ActionButton>
+                    <button 
+                        onClick={handleViewAttempt}
+                        className="premium-text-link"
+                        style={{ fontSize: 13, border: "none", background: "none" }}
+                    >
+                        Open answer
+                    </button>
                 )}
             </div>
         </div>
     );
 }
 
-// ─── Weak pattern bar ─────────────────────────────────────────────────────────
+// ─── Weak Pattern Cards Grid ───────────────────────────────────────────────────
 
-function WeakPatternBar({ patterns }) {
+function WeakPatternCardsGrid({ patterns, mistakes }) {
     if (!patterns.length) return null;
     const top5 = patterns.slice(0, 5);
+    
     return (
-        <div style={{
-            background: T.surface,
-            border: `1px solid ${T.border}`,
-            borderRadius: 12,
-            padding: "18px 20px",
-            marginBottom: 24,
-            fontFamily: T.font,
-        }}>
-            <div style={{ ...label11(T.dim), marginBottom: 12 }}>Top Weak Patterns</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {top5.map((p) => (
-                    <div key={p.type}>
-                        <div style={{
-                            display: "flex", justifyContent: "space-between",
-                            marginBottom: 6,
-                        }}>
-                            <span style={{ fontSize: 13, color: T.text, fontWeight: 600 }}>
-                                {p.type.replace(/_/g, " ").replace(/ \w/g, c => c.toUpperCase())}
-                            </span>
-                            <span style={{ fontSize: 12, color: T.dim }}>
-                                {p.count} times · {p.pct}%
-                            </span>
+        <div style={{ marginBottom: 36 }}>
+            <h2 className="premium-section-title">Your top weak patterns</h2>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+                {top5.map((p) => {
+                    const cleanName = p.type === "ethics_example_missing" ? "Missing Ethics Examples" :
+                                      p.type === "question_demand_mismatch" ? "Directive Mismatch" :
+                                      p.type === "weak_conclusion" ? "Weak Conclusion" :
+                                      p.type === "missing_data_or_reports" ? "Missing Reports/Data" :
+                                      p.type === "diagram_or_map_missing" ? "Diagram/Map Missing" :
+                                      p.type.replace(/_/g, " ").replace(/ \w/g, c => c.toUpperCase());
+                    
+                    const drill = PATTERN_DRILLS[p.type] || "Practice drafting answers with standard templates.";
+                    
+                    // Find latest paper for this pattern
+                    const patternMistakes = mistakes.filter(m => m.errorType === p.type);
+                    const latestMistake = patternMistakes[0];
+                    const latestPaper = latestMistake ? latestMistake.paper : "GS1";
+
+                    return (
+                        <div key={p.type} className="premium-surface-card" style={{ padding: "22px 24px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                            <div>
+                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
+                                    <h3 className="premium-card-title" style={{ fontSize: 16.5, margin: 0, color: T.accent }}>
+                                        {cleanName}
+                                    </h3>
+                                    <span className="premium-metadata" style={{ color: T.text, background: "rgba(255,255,255,0.06)", padding: "2px 8px", borderRadius: 6, fontWeight: 700 }}>
+                                        {p.count}x
+                                    </span>
+                                </div>
+                                <div className="premium-metadata" style={{ marginBottom: 14, color: T.textMuted }}>
+                                    Latest: <span style={{ color: T.textSec }}>{latestPaper}</span>
+                                </div>
+
+                                <div className="premium-surface-card-inner" style={{ padding: "14px", marginBottom: 16, background: "rgba(214, 181, 109, 0.03)", borderColor: "rgba(214, 181, 109, 0.12)" }}>
+                                    <div style={{ fontSize: 11, color: T.accent, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>
+                                        Suggested Drill
+                                    </div>
+                                    <div className="premium-body" style={{ fontSize: 13.5, color: T.text, lineHeight: 1.45 }}>
+                                        {drill}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Progress bar indicator */}
+                            <div>
+                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                                    <span className="premium-metadata" style={{ fontSize: 11, color: T.textMuted }}>Impact level</span>
+                                    <span className="premium-metadata" style={{ fontSize: 11, color: T.accent, fontWeight: 700 }}>{p.pct}%</span>
+                                </div>
+                                <div style={{ height: 5, background: "rgba(255,255,255,0.06)", borderRadius: 999 }}>
+                                    <div style={{ height: 5, borderRadius: 999, background: T.accent, width: `${p.pct}%` }} />
+                                </div>
+                            </div>
                         </div>
-                        <div style={{ height: 6, background: T.border, borderRadius: 4, overflow: "hidden" }}>
-                            <div style={{
-                                height: "100%",
-                                width: `${p.pct}%`,
-                                background: p.pct > 60 ? T.red : p.pct > 30 ? T.amber : T.blue,
-                                borderRadius: 4,
-                                transition: "width 0.5s ease",
-                            }} />
-                        </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
-        </div>
-    );
-}
-
-// ─── Stats KPI card ───────────────────────────────────────────────────────────
-
-function StatPill({ label, value, accent }) {
-    return (
-        <div style={{
-            display: "flex", flexDirection: "column", gap: 6,
-            background: T.surface,
-            border: `1px solid ${T.border}`,
-            borderTop: `3px solid ${accent || T.amber}`,
-            borderRadius: 12, padding: "14px 18px",
-            minWidth: 100, flex: "1 1 100px",
-            fontFamily: T.font,
-        }}>
-            <span style={{ fontSize: 24, fontWeight: 800, color: accent || T.textBright, lineHeight: 1 }}>
-                {value}
-            </span>
-            <span style={{ fontSize: 12, fontWeight: 600, color: T.dim }}>
-                {label}
-            </span>
         </div>
     );
 }
@@ -621,88 +531,65 @@ function AttemptGroupCard({ group, expanded, onToggle, onMarkResolved, onToggleM
     const cleanTitle = group.questionText.replace(/[\n\r]+/g, " ").trim();
     const shortTitle = cleanTitle.length > 70 ? cleanTitle.slice(0, 70) + "…" : cleanTitle;
 
-    const sourceLabel = group.reviewSource === "chatgpt_air1" || group.reviewSource === "chatgpt-air1" || group.reviewSource === "AIR-1"
-        ? "AIR-1 Review"
-        : group.reviewSource === "gemini_basic" || group.reviewSource === "basic"
-        ? "Basic Review"
-        : "Evaluation";
-
     return (
-        <div style={{
-            background: T.surface,
-            border: `1px solid ${T.border}`,
-            borderLeft: `4px solid ${accent}`,
-            borderRadius: 12,
-            overflow: "hidden",
-            marginBottom: 14,
-            transition: "all 0.2s ease",
-            fontFamily: T.font,
-        }}>
-            {/* Header section (click to toggle) */}
+        <div 
+            className="premium-surface-card" 
+            style={{
+                border: `1px solid rgba(255,255,255,0.08)`,
+                borderLeft: `4px solid ${accent}`,
+                padding: 0,
+                marginBottom: 14,
+            }}
+        >
             <div 
                 onClick={onToggle}
                 style={{
-                    padding: "18px 20px",
+                    padding: "18px 24px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
                     cursor: "pointer",
                     userSelect: "none",
-                    flexWrap: "wrap",
-                    gap: 12,
-                    background: expanded ? T.surfaceHigh : "transparent",
-                    transition: "background 0.2s",
+                    background: expanded ? "rgba(255,255,255,0.02)" : "transparent",
                 }}
             >
                 <div style={{ display: "flex", flexDirection: "column", gap: 6, flex: 1, minWidth: 200 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                        <Badge label={group.paper} variant="amber" />
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                        <Badge label={group.paper} variant="neutral" />
                         
                         {!isLegacy && group.score && (
-                            <Badge label={`Score: ${group.score}`} variant="green" />
-                        )}
-                        {!isLegacy && (
-                            <span style={{
-                                fontSize: 11, fontWeight: 600,
-                                padding: "2px 8px", borderRadius: 6,
-                                background: T.bg, border: `1px solid ${T.border}`,
-                                color: T.dim,
-                            }}>
-                                {sourceLabel}
+                            <span style={{ fontSize: 11, color: T.success, background: "rgba(47, 191, 113, 0.08)", padding: "1px 6px", borderRadius: 4, fontWeight: 600 }}>
+                                {group.score}
                             </span>
                         )}
-                        <span style={{
-                            fontSize: 11, fontWeight: 600,
-                            padding: "2px 8px", borderRadius: 6,
-                            background: `rgba(59, 130, 246, 0.08)`, border: `1px solid rgba(59, 130, 246, 0.25)`,
-                            color: T.blue,
-                        }}>
+                        <span className="premium-metadata" style={{ color: T.accent }}>
                             {group.mistakes.length} mistake{group.mistakes.length !== 1 ? "s" : ""}
                         </span>
                     </div>
-                    <div style={{ fontSize: 14, fontWeight: 700, color: T.textBright, lineHeight: 1.4 }}>
+                    <div style={{ fontSize: 15, fontWeight: 600, color: T.text, lineHeight: 1.4 }}>
                         {isLegacy ? "Legacy / Ungrouped Mistakes" : shortTitle}
                     </div>
                 </div>
 
                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                     {!isLegacy && (
-                        <ActionButton
-                            variant="blue"
+                        <button
+                            className="premium-button-secondary"
+                            style={{ padding: "6px 14px", fontSize: 12.5 }}
                             onClick={(e) => {
                                 e.stopPropagation();
                                 onOpenWorkspace?.(group);
                             }}
                         >
-                            📝 Open Workspace
-                        </ActionButton>
+                            Open answer
+                        </button>
                     )}
-                    <span style={{ fontSize: 12, color: T.subtle, fontWeight: 600 }}>
+                    <span className="premium-metadata" style={{ color: T.textMuted }}>
                         {!isLegacy ? dateStr : ""}
                     </span>
                     <span style={{ 
                         fontSize: 14, 
-                        color: T.dim,
+                        color: T.textMuted,
                         transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
                         transition: "transform 0.2s ease",
                         display: "inline-block"
@@ -712,15 +599,14 @@ function AttemptGroupCard({ group, expanded, onToggle, onMarkResolved, onToggleM
                 </div>
             </div>
 
-            {/* Mistakes List Section */}
             {expanded && (
                 <div style={{
-                    padding: "20px",
-                    background: T.bg,
-                    borderTop: `1px solid ${T.border}`,
+                    padding: "22px 24px",
+                    background: "rgba(0,0,0,0.1)",
+                    borderTop: `1px solid rgba(255,255,255,0.06)`,
                     display: "flex",
                     flexDirection: "column",
-                    gap: 14
+                    gap: 16
                 }}>
                     {group.mistakes.map((m) => (
                         <LocalMainsMistakeCard
@@ -743,13 +629,11 @@ export default function MainsMistakeBookPage() {
     const [mistakes, setMistakes] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Filters
     const [filterPaper, setFilterPaper] = useState("All");
     const [filterStatus, setFilterStatus] = useState("All");
     const [filterSeverity, setFilterSeverity] = useState("All");
     const [filterMustRevise, setFilterMustRevise] = useState(false);
 
-    // Expanded groups
     const [expandedAttempts, setExpandedAttempts] = useState({});
 
     const handleOpenWorkspace = useCallback((group) => {
@@ -801,7 +685,6 @@ export default function MainsMistakeBookPage() {
 
     const patterns = useMemo(() => buildWeakPatterns(mistakes), [mistakes]);
 
-    // Actions
     const handleMarkResolved = async (id) => {
         setMistakes((prev) => prev.map((m) => (m.id === id ? { ...m, status: "resolved" } : m)));
         try {
@@ -811,7 +694,7 @@ export default function MainsMistakeBookPage() {
                 body: JSON.stringify({ status: "resolved" }),
             });
         } catch (error) {
-            console.warn("[MainsMistakeBookPage] PATCH /resolved not available yet", error);
+            console.warn("[MainsMistakeBookPage] PATCH /resolved failed", error);
         }
     };
 
@@ -829,11 +712,10 @@ export default function MainsMistakeBookPage() {
                 body: JSON.stringify({ must_revise: nextValue }),
             });
         } catch (error) {
-            console.warn("[MainsMistakeBookPage] PATCH /must_revise not available yet", error);
+            console.warn("[MainsMistakeBookPage] PATCH /must_revise failed", error);
         }
     };
 
-    // ── Filtering ──────────────────────────────────────────────────────────────
     const filtered = mistakes.filter((m) => {
         if (filterPaper !== "All" && m.paper !== filterPaper) return false;
         if (filterStatus !== "All" && m.status !== filterStatus) return false;
@@ -842,7 +724,6 @@ export default function MainsMistakeBookPage() {
         return true;
     });
 
-    // ── Grouping ───────────────────────────────────────────────────────────────
     const attemptGroups = useMemo(() => {
         const groups = {};
         filtered.forEach((m) => {
@@ -872,7 +753,6 @@ export default function MainsMistakeBookPage() {
         });
     }, [filtered]);
 
-    // ── Top Must Revise ────────────────────────────────────────────────────────
     const topMustRevise = useMemo(() => {
         let list = mistakes.filter(m => m.status === "open");
         if (filterPaper !== "All") {
@@ -918,7 +798,6 @@ export default function MainsMistakeBookPage() {
             .slice(0, 5);
     }, [mistakes, filterPaper]);
 
-    // ── Stats ──────────────────────────────────────────────────────────────────
     const total = mistakes.length;
     const open = mistakes.filter(m => m.status === "open").length;
     const resolved = mistakes.filter(m => m.status === "resolved").length;
@@ -935,94 +814,64 @@ export default function MainsMistakeBookPage() {
     return (
         <div style={{ minHeight: "100vh", background: T.bg, color: T.text, fontFamily: T.font }}>
 
-            {/* ── Sticky Top Bar ────────────────────────────────────────────── */}
+            {/* Sticky Top Bar */}
             <div style={{
                 borderBottom: `1px solid ${T.border}`,
-                padding: "14px 24px",
+                padding: "14px 32px",
                 display: "flex", alignItems: "center", justifyContent: "space-between",
                 background: T.bg, position: "sticky", top: 0, zIndex: 20,
             }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <span style={label11(T.dim)}>Mains</span>
-                    <span style={{ color: T.borderMid, fontSize: 11 }}>·</span>
-                    <span style={{ fontSize: 13, fontWeight: 800, color: T.textBright }}>
+                    <span className="premium-metadata" style={{ color: T.textMuted }}>Mains</span>
+                    <span style={{ color: "rgba(255,255,255,0.06)", fontSize: 11 }}>·</span>
+                    <span style={{ fontSize: 13.5, fontWeight: 700, color: T.text }}>
                         Mistake Book
                     </span>
                 </div>
-                <span style={{
-                    fontSize: 11, fontWeight: 700,
-                    padding: "4px 12px", borderRadius: 20,
-                    border: `1px solid ${T.red}33`,
-                    color: T.red, background: "rgba(239, 68, 68, 0.08)",
-                    letterSpacing: "0.05em", textTransform: "uppercase",
-                }}>
+                <span className="premium-badge premium-badge-danger">
                     {open} Open Mistakes
                 </span>
             </div>
 
-            <div style={{ padding: "32px 24px 60px", maxWidth: 900, margin: "0 auto" }}>
+            <div className="premium-container">
 
-                {/* ── Page Heading ─────────────────────────────────────────────── */}
-                <div style={{ marginBottom: 28 }}>
-                    <h1 style={{
-                        fontSize: 28, fontWeight: 800, color: T.textBright,
-                        margin: "0 0 8px 0", letterSpacing: "-0.02em",
-                    }}>
+                {/* Page Heading */}
+                <div style={{ marginBottom: 36 }}>
+                    <h1 className="premium-page-title">
                         Mains Mistake Book
                     </h1>
-                    <p style={{ fontSize: 14, color: T.dim, margin: 0, lineHeight: 1.6 }}>
+                    <p className="premium-page-subtitle" style={{ margin: 0 }}>
                         Your answer writing mistakes, grouped by attempt — track patterns and improve.
                     </p>
                 </div>
 
-                {/* ── KPI Stats Cards Grid ──────────────────────────────────────── */}
-                <div style={{
-                    display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: 12, marginBottom: 24,
-                }}>
-                    <StatPill label="Total Recorded" value={total} accent={T.textBright} />
-                    <StatPill label="Open Mistakes" value={open} accent={T.amber} />
-                    <StatPill label="Resolved" value={resolved} accent={T.green} />
-                    <StatPill label="Must Revise" value={mustReviseCount} accent={T.purple} />
-                    <StatPill label="High Severity" value={highSev} accent={T.red} />
-                </div>
+                {/* Weak Pattern Cards Grid */}
+                {total > 0 && <WeakPatternCardsGrid patterns={patterns} mistakes={mistakes} />}
 
-                {/* ── Weak pattern bar chart ─────────────────────────────────────── */}
-                {total > 0 && <WeakPatternBar patterns={patterns} />}
-
-                {/* ── Top Priority Must Revise section ─────────────────────────── */}
+                {/* Top Priority Must Revise section */}
                 {!loading && topMustRevise.length > 0 && (
                     <div style={{
-                        background: "rgba(245, 158, 11, 0.02)",
-                        border: `1px solid rgba(245, 158, 11, 0.15)`,
-                        borderLeft: `4px solid ${T.amber}`,
-                        borderRadius: 12,
-                        padding: "20px",
-                        marginBottom: 28,
+                        background: "rgba(214, 181, 109, 0.02)",
+                        border: `1px solid rgba(214, 181, 109, 0.18)`,
+                        borderLeft: `4px solid ${T.accent}`,
+                        borderRadius: 20,
+                        padding: "24px 28px",
+                        marginBottom: 36,
                     }}>
                         <div style={{ 
                             display: "flex", 
                             alignItems: "center", 
                             justifyContent: "space-between", 
-                            marginBottom: 16,
+                            marginBottom: 20,
                         }}>
-                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <h2 style={{
-                                    fontSize: 15, fontWeight: 700, color: T.textBright,
-                                    margin: 0, letterSpacing: "-0.01em"
-                                }}>
-                                    ⚑ Top Priority to Revise
-                                </h2>
-                            </div>
-                            <span style={{
-                                fontSize: 11, fontWeight: 700,
-                                padding: "3px 10px", borderRadius: 12,
-                                background: "rgba(245, 158, 11, 0.08)", color: T.amber,
-                                border: `1px solid rgba(245, 158, 11, 0.2)`,
-                            }}>
+                            <h2 className="premium-section-title" style={{ margin: 0, color: T.text }}>
+                                Must revise first
+                            </h2>
+                            <span className="premium-badge premium-badge-paper">
                                 {topMustRevise.length} Items Pending
                             </span>
                         </div>
-                        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                             {topMustRevise.map((m) => (
                                 <LocalMainsMistakeCard
                                     key={`top-${m.id}`}
@@ -1035,106 +884,83 @@ export default function MainsMistakeBookPage() {
                     </div>
                 )}
 
-                {/* ── Filter Controls Panel ─────────────────────────────────────── */}
-                <div style={{
-                    background: T.surface, border: `1px solid ${T.border}`,
-                    borderRadius: 12, padding: "18px 20px", marginBottom: 24,
-                    display: "flex", flexDirection: "column", gap: 12,
-                }}>
-                    {/* Paper filter */}
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: T.dim, minWidth: 70, textTransform: "uppercase", letterSpacing: "0.05em" }}>Paper</span>
-                        {["All", "GS1", "GS2", "GS3", "Essay", "Ethics", "Geography Optional"].map(p => (
-                            <FilterPill
-                                key={p}
-                                label={p}
-                                active={filterPaper === p}
-                                accent={PAPER_ACCENT[p] || T.purple}
-                                onClick={() => setFilterPaper(p)}
-                            />
-                        ))}
+                {/* Filter Controls Panel */}
+                <div className="premium-surface-card" style={{ padding: "24px", marginBottom: "36px", display: "flex", flexDirection: "column", gap: 14 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                        <span className="premium-metadata" style={{ minWidth: 80 }}>Paper</span>
+                        <div className="premium-pill-group">
+                            {["All", "GS1", "GS2", "GS3", "Essay", "Ethics", "Geography Optional"].map(v => (
+                                <FilterPill
+                                    key={v}
+                                    label={v}
+                                    active={filterPaper === v}
+                                    onClick={() => setFilterPaper(v)}
+                                />
+                            ))}
+                        </div>
                     </div>
 
-                    {/* Status filter */}
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: T.dim, minWidth: 70, textTransform: "uppercase", letterSpacing: "0.05em" }}>Status</span>
-                        {[
-                            { key: "All", label: "All", accent: T.purple },
-                            { key: "open", label: "Open", accent: T.amber },
-                            { key: "resolved", label: "Resolved", accent: T.green },
-                        ].map(s => (
-                            <FilterPill
-                                key={s.key}
-                                label={s.label}
-                                active={filterStatus === s.key}
-                                accent={s.accent}
-                                onClick={() => setFilterStatus(s.key)}
-                            />
-                        ))}
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                        <span className="premium-metadata" style={{ minWidth: 80 }}>Status</span>
+                        <div className="premium-pill-group">
+                            {[
+                                { key: "All", label: "All" },
+                                { key: "open", label: "Open" },
+                                { key: "resolved", label: "Resolved" },
+                            ].map(s => (
+                                <FilterPill
+                                    key={s.key}
+                                    label={s.label}
+                                    active={filterStatus === s.key}
+                                    onClick={() => setFilterStatus(s.key)}
+                                />
+                            ))}
+                        </div>
                     </div>
 
-                    {/* Severity filter */}
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: T.dim, minWidth: 70, textTransform: "uppercase", letterSpacing: "0.05em" }}>Severity</span>
-                        {[
-                            { key: "All", label: "All", accent: T.purple },
-                            { key: "low", label: "Low", accent: T.green },
-                            { key: "medium", label: "Medium", accent: T.amber },
-                            { key: "high", label: "High", accent: T.red },
-                        ].map(s => (
-                            <FilterPill
-                                key={s.key}
-                                label={s.label}
-                                active={filterSeverity === s.key}
-                                accent={s.accent}
-                                onClick={() => setFilterSeverity(s.key)}
-                            />
-                        ))}
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                        <span className="premium-metadata" style={{ minWidth: 80 }}>Severity</span>
+                        <div className="premium-pill-group">
+                            {[
+                                { key: "All", label: "All" },
+                                { key: "low", label: "Low" },
+                                { key: "medium", label: "Medium" },
+                                { key: "high", label: "High" },
+                            ].map(s => (
+                                <FilterPill
+                                    key={s.key}
+                                    label={s.label}
+                                    active={filterSeverity === s.key}
+                                    onClick={() => setFilterSeverity(s.key)}
+                                />
+                            ))}
+                        </div>
                     </div>
 
-                    {/* Must revise toggle */}
-                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: T.dim, minWidth: 70, textTransform: "uppercase", letterSpacing: "0.05em" }}>Show</span>
-                        <FilterPill
-                            label="Must Revise Only"
-                            active={filterMustRevise}
-                            accent={T.amber}
-                            onClick={() => setFilterMustRevise(!filterMustRevise)}
-                        />
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                        <span className="premium-metadata" style={{ minWidth: 80 }}>Show</span>
+                        <div className="premium-pill-group">
+                            <FilterPill
+                                label="All Items"
+                                active={!filterMustRevise}
+                                onClick={() => setFilterMustRevise(false)}
+                            />
+                            <FilterPill
+                                label="Must revise first"
+                                active={filterMustRevise}
+                                onClick={() => setFilterMustRevise(true)}
+                            />
+                        </div>
                     </div>
                 </div>
 
-                {/* ── Count Label ─────────────────────────────────────────────── */}
-                <div style={{
-                    fontSize: 12, color: T.subtle, marginBottom: 16,
-                    fontWeight: 600, letterSpacing: "0.02em",
-                }}>
-                    {loading ? "Loading..." : `${attemptGroups.length} attempt group${attemptGroups.length !== 1 ? "s" : ""}${filtered.length !== total ? ` (filtered from ${total} mistakes)` : ""}`}
+                {/* Count Label */}
+                <div className="premium-metadata" style={{ marginBottom: 16, color: T.textMuted }}>
+                    {loading ? "Loading..." : `Recent answer attempts (${attemptGroups.length} attempts found)`}
                 </div>
 
-                {/* ── Empty State Indicator ────────────────────────────────────── */}
-                {!loading && attemptGroups.length === 0 && (
-                    <div style={{
-                        background: T.surface,
-                        border: `1px dashed ${T.borderMid}`,
-                        borderRadius: 14,
-                        padding: "48px 24px",
-                        textAlign: "center",
-                    }}>
-                        <div style={{ fontSize: 36, marginBottom: 12 }}>📖</div>
-                        <div style={{ fontSize: 16, fontWeight: 700, color: T.textBright, marginBottom: 6 }}>
-                            {total === 0 ? "No mistakes logged yet" : "No results match your filters"}
-                        </div>
-                        <div style={{ fontSize: 13, color: T.dim, maxWidth: 360, margin: "0 auto", lineHeight: 1.6 }}>
-                            {total === 0
-                                ? "Write and review answers in the Mains workspace to build your mistake book."
-                                : "Try adjusting the filters above."}
-                        </div>
-                    </div>
-                )}
-
-                {/* ── Grouped Attempt Cards List ────────────────────────────────── */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                {/* Grouped Attempt Cards List */}
+                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                     {attemptGroups.map((group) => {
                         const key = group.attemptId || "legacy_ungrouped";
                         return (
