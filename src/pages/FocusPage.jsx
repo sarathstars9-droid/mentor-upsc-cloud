@@ -339,17 +339,50 @@ export default function FocusPage() {
   const [pyqSession, setPyqSession] = useState(null);
   const [showModeModal, setShowModeModal] = useState(false);
 
+  // Active Block State
+  const [activeTask, setActiveTask] = useState(null);
+  const [elapsed, setElapsed] = useState(0);
+  const [outputType, setOutputType] = useState('notes');
+  const [outputCount, setOutputCount] = useState(1);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [proofNotes, setProofNotes] = useState('');
+  const [noProofRequired, setNoProofRequired] = useState(false);
+  const [submittingProof, setSubmittingProof] = useState(false);
+
+  const getTodayKey = () => {
+    const d = new Date();
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+    return d.toISOString().split('T')[0];
+  };
+
   const load = useCallback(async () => {
-    if (!nodeId) { setLoading(false); return; }
     setLoading(true);
     setError(null);
     try {
-      const [weakRes, mistakeRes, revRes, pyqRes] = await Promise.allSettled([
-        fetch(`${BACKEND_URL}/api/weakness/map?userId=${USER_ID}`, { cache: "no-store" }),
-        fetch(`${BACKEND_URL}/api/mistakes?userId=${USER_ID}`, { cache: "no-store" }),
-        fetch(`${BACKEND_URL}/api/revision-items?userId=${USER_ID}`, { cache: "no-store" }),
-        fetch(`${BACKEND_URL}/api/pyq/node/${encodeURIComponent(nodeId)}`, { cache: "no-store" }),
+      const todayKey = getTodayKey();
+      const [weakRes, mistakeRes, revRes, pyqRes, cmdCenterRes] = await Promise.allSettled([
+        nodeId ? fetch(`${BACKEND_URL}/api/weakness/map?userId=${USER_ID}`, { cache: "no-store" }) : Promise.resolve({ ok: false }),
+        nodeId ? fetch(`${BACKEND_URL}/api/mistakes?userId=${USER_ID}`, { cache: "no-store" }) : Promise.resolve({ ok: false }),
+        nodeId ? fetch(`${BACKEND_URL}/api/revision-items?userId=${USER_ID}`, { cache: "no-store" }) : Promise.resolve({ ok: false }),
+        nodeId ? fetch(`${BACKEND_URL}/api/pyq/node/${encodeURIComponent(nodeId)}`, { cache: "no-store" }) : Promise.resolve({ ok: false }),
+        fetch(`${BACKEND_URL}/api/daily-execution/command-center?userId=${USER_ID}&date=${todayKey}`, { cache: "no-store" })
       ]);
+
+      if (cmdCenterRes.status === "fulfilled" && cmdCenterRes.value.ok) {
+        try {
+          const d = await cmdCenterRes.value.json();
+          if (d.nowTask && (d.nowTask.status === 'active' || d.command?.primaryAction === 'Continue Focus')) {
+            setActiveTask(d.nowTask);
+          } else {
+            setActiveTask(null);
+          }
+        } catch (_) {}
+      }
+
+      if (!nodeId) {
+        setLoading(false);
+        return;
+      }
 
       // Weakness
       if (weakRes.status === "fulfilled" && weakRes.value.ok) {
@@ -425,6 +458,105 @@ export default function FocusPage() {
     }
   };
 
+  useEffect(() => {
+    if (!activeTask) return;
+    const startStr = activeTask.actual_start || activeTask.started_at;
+    let startTime = startStr ? new Date(startStr).getTime() : Date.now();
+    const pausedSecs = activeTask.total_pause_seconds || 0;
+    
+    const interval = setInterval(() => {
+      const now = Date.now();
+      let diff = Math.floor((now - startTime) / 1000) - pausedSecs;
+      if (diff < 0) diff = 0;
+      setElapsed(diff);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [activeTask]);
+
+  const formatTime = (secs) => {
+    const h = Math.floor(secs / 3600);
+    const m = Math.floor((secs % 3600) / 60);
+    const s = secs % 60;
+    if (h > 0) return `${h}h ${m}m ${s}s`;
+    return `${m}m ${s}s`;
+  };
+
+  const handlePause = async () => {
+    if (!activeTask) return;
+    try {
+      const todayKey = getTodayKey();
+      const blockId = activeTask?.blockId || activeTask?.block_id || activeTask?.id;
+      if (!blockId) {
+        alert("Cannot identify the active study block. Please go back to Execution and start again.");
+        return;
+      }
+      const res = await fetch(`${BACKEND_URL}/api/sheets`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'pauseBlock', userId: USER_ID, payload: { blockId, dayKey: todayKey } })
+      });
+      const data = await res.json();
+      if (data.ok) navigate('/execution');
+      else alert(data.message);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const handleCompleteWithProof = async () => {
+    if (!activeTask) return;
+    if (!noProofRequired && !selectedFile && !proofNotes.trim()) {
+      alert('Proof validation required! Please upload a photo/file, enter proof notes, or check "No proof required".');
+      return;
+    }
+    try {
+      setSubmittingProof(true);
+      let proofUrl = null;
+      let proofStatus = noProofRequired ? 'waived' : 'verified';
+      let proofType = noProofRequired ? 'none' : (selectedFile ? 'image' : 'notes_text');
+      const todayKey = getTodayKey();
+      const blockId = activeTask?.blockId || activeTask?.block_id || activeTask?.id;
+      
+      if (!blockId) {
+        alert("Cannot identify the active study block. Please go back to Execution and start again.");
+        setSubmittingProof(false);
+        return;
+      }
+
+      if (selectedFile && !noProofRequired) {
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+        formData.append('blockId', blockId);
+        formData.append('dayKey', todayKey);
+        formData.append('proofType', proofType);
+        formData.append('proofNotes', proofNotes);
+        const uploadRes = await fetch(`${BACKEND_URL}/api/plan/blocks/upload-proof?userId=${USER_ID}`, {
+          method: 'POST',
+          body: formData
+        });
+        const uploadData = await uploadRes.json();
+        if (uploadData.ok) { proofUrl = uploadData.proofUrl; } 
+        else { alert('Failed to upload proof file: ' + uploadData.message); setSubmittingProof(false); return; }
+      }
+
+      const completeRes = await fetch(`${BACKEND_URL}/api/sheets`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'completeBlock',
+          userId: USER_ID,
+          payload: { blockId, dayKey: todayKey, reason: 'completed', outputType, outputCount: Number(outputCount) || 1, proofUrl, proofType, proofStatus, proofNotes }
+        })
+      });
+      const completeData = await completeRes.json();
+      if (completeData.ok) {
+        setSelectedFile(null); setProofNotes(''); setNoProofRequired(false); navigate('/execution');
+      } else {
+        alert(completeData.message || 'Failed to complete block');
+      }
+    } catch (err) { alert('Error: ' + err.message); } finally { setSubmittingProof(false); }
+  };
+
   // ── Derived ────────────────────────────────────────────────────────────────
   const risk = weakness?.risk_level || "none";
   const score = weakness ? Number(weakness.weakness_score) || 0 : null;
@@ -460,15 +592,6 @@ export default function FocusPage() {
       ? `Review ${revisions.length} pending revision item${revisions.length > 1 ? "s" : ""} first.`
       : `Solve ${mistakes.length} unanswered mistake${mistakes.length > 1 ? "s" : ""}.`;
 
-  if (!nodeId) {
-    return (
-      <div style={{ padding: "48px 32px", fontFamily: "monospace", color: "#555", textAlign: "center" }}>
-        <div style={{ fontSize: 20, marginBottom: 8 }}>No node selected.</div>
-        <div style={{ fontSize: 13 }}>Navigate here from Syllabus or Revision page.</div>
-      </div>
-    );
-  }
-
   if (pyqSession) {
     return (
       <FocusPyqSession
@@ -480,6 +603,81 @@ export default function FocusPage() {
           load();
         }}
       />
+    );
+  }
+
+  if (activeTask) {
+    return (
+      <div style={{ background: "#080808", minHeight: "100vh", padding: "28px 32px", fontFamily: "'JetBrains Mono', 'Fira Code', monospace", color: "#e5e7eb" }}>
+        <button onClick={() => navigate('/execution')} style={{ background: "none", border: "none", color: "#555", cursor: "pointer", fontSize: 12, fontFamily: "monospace", marginBottom: 20, padding: 0 }}>← Back to Execution</button>
+        <div style={{ background: "#0c0c0c", border: "1px solid #2FBF7133", borderLeft: "4px solid #2FBF71", borderRadius: 12, padding: "22px 26px", marginBottom: 24 }}>
+          <div style={{ fontSize: 10, color: "#444", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 6 }}>CURRENT FOCUS BLOCK</div>
+          <div style={{ fontSize: 22, fontWeight: 800, color: "#fff", marginBottom: 4 }}>{activeTask.subject || activeTask.title || 'Focus Session'}</div>
+          <div style={{ fontSize: 12, color: "#888", marginBottom: 12 }}>Planned: {activeTask.planned_start} - {activeTask.planned_end} ({activeTask.planned_minutes} min)</div>
+          <div style={{ fontSize: 48, fontWeight: 900, color: "#2FBF71", fontFamily: "monospace", lineHeight: 1 }}>{formatTime(elapsed)}</div>
+          <div style={{ fontSize: 12, color: "#7F8897", marginTop: 6, marginBottom: 20 }}>Elapsed Time</div>
+          
+          <button onClick={handlePause} style={{ background: "#1a1200", border: "1px solid #f59e0b66", color: "#f59e0b", borderRadius: 8, padding: "9px 18px", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "monospace" }}>Pause Block</button>
+        </div>
+
+        <div style={{ background: "#0c0c0c", border: "1px solid #1a1a1a", borderRadius: 12, padding: "22px 26px" }}>
+          <h3 style={{ fontSize: 14, color: "#D6B56D", margin: "0 0 20px 0", fontFamily: "monospace" }}>🛡️ Mandatory Study Proof</h3>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '20px' }}>
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', color: '#7F8897', marginBottom: '8px', fontFamily: "monospace" }}>Output Type</label>
+              <select value={outputType} onChange={e => setOutputType(e.target.value)} style={{ width: '100%', padding: '12px', background: '#111', border: '1px solid #222', borderRadius: '8px', color: '#e5e7eb', outline: 'none', fontFamily: "monospace" }}>
+                <option value="notes">Handwritten / Digital Notes</option>
+                <option value="pyq_practice">PYQ Questions Solved</option>
+                <option value="answer_written">Mains Answer Written</option>
+                <option value="revision_sheet">Revision Summary Sheet</option>
+              </select>
+            </div>
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', color: '#7F8897', marginBottom: '8px', fontFamily: "monospace" }}>Quantity (Pages/Qs)</label>
+              <input type="number" min="1" value={outputCount} onChange={e => setOutputCount(e.target.value)} style={{ width: '100%', padding: '12px', background: '#111', border: '1px solid #222', borderRadius: '8px', color: '#e5e7eb', outline: 'none', boxSizing: 'border-box', fontFamily: "monospace" }} />
+            </div>
+          </div>
+
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{ display: 'block', fontSize: '12px', color: '#7F8897', marginBottom: '8px', fontFamily: "monospace" }}>Proof File / Photo</label>
+            <input type="file" disabled={noProofRequired} onChange={e => setSelectedFile(e.target.files[0])} style={{ width: '100%', padding: '10px', background: '#111', border: '1px solid #222', borderRadius: '8px', color: '#B8C0CC', boxSizing: 'border-box', fontFamily: "monospace" }} />
+          </div>
+
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{ display: 'block', fontSize: '12px', color: '#7F8897', marginBottom: '8px', fontFamily: "monospace" }}>Study Notes</label>
+            <textarea rows="2" placeholder="Describe key takeaways..." value={proofNotes} onChange={e => setProofNotes(e.target.value)} style={{ width: '100%', padding: '12px', background: '#111', border: '1px solid #222', borderRadius: '8px', color: '#F5F7FB', outline: 'none', resize: 'vertical', boxSizing: 'border-box', fontFamily: "monospace" }} />
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
+            <input type="checkbox" id="noProof" checked={noProofRequired} onChange={e => setNoProofRequired(e.target.checked)} style={{ width: '16px', height: '16px', accentColor: '#D6B56D', cursor: 'pointer' }} />
+            <label htmlFor="noProof" style={{ fontSize: '12px', color: '#B8C0CC', cursor: 'pointer', fontFamily: "monospace" }}>
+              Mark "No proof required for this block"
+            </label>
+          </div>
+
+          <button 
+            onClick={handleCompleteWithProof} 
+            disabled={submittingProof} 
+            style={{ width: '100%', padding: '14px', fontSize: '14px', background: '#1a1a1a', border: '1px solid #2FBF7166', color: '#2FBF71', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontFamily: "monospace" }}
+          >
+            {submittingProof ? 'Verifying...' : '✓ Complete Block & Submit Verification'}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!nodeId) {
+    return (
+      <div style={{ background: "#080808", minHeight: "100vh", padding: "48px 32px", fontFamily: "'JetBrains Mono', 'Fira Code', monospace", color: "#e5e7eb", textAlign: "center" }}>
+        <div style={{ fontSize: 20, marginBottom: 8, color: "#fff" }}>No active focus session.</div>
+        <div style={{ fontSize: 13, color: "#888", marginBottom: 24 }}>Start a study block from Execution or Plan to enter Focus Mode.</div>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+          <ActionBtn label="Go to Execution" onClick={() => navigate('/execution')} variant="primary" />
+          <ActionBtn label="Go to Plan" onClick={() => navigate('/plan')} variant="default" />
+        </div>
+      </div>
     );
   }
 
