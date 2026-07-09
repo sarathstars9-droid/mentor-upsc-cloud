@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BACKEND_URL } from '../config';
+import '../styles/mentorosPremium.css';
 
 const USER_ID = 'moulika';
 
@@ -10,9 +12,14 @@ function formatTime(totalSeconds) {
 }
 
 export default function ExecutionPage() {
+  const navigate = useNavigate();
   const [blocks, setBlocks] = useState([]);
+  const [revisions, setRevisions] = useState([]);
+  const [mistakes, setMistakes] = useState([]);
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  
   const [selectedFile, setSelectedFile] = useState(null);
   const [proofNotes, setProofNotes] = useState('');
   const [noProofRequired, setNoProofRequired] = useState(false);
@@ -21,16 +28,32 @@ export default function ExecutionPage() {
   const [outputCount, setOutputCount] = useState(1);
 
   const todayKey = new Date().toISOString().slice(0, 10);
+  const isNight = new Date().getHours() >= 20; // 8 PM onwards
 
-  const fetchBlocks = async () => {
+  const fetchData = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`${BACKEND_URL}/api/plan/blocks?dayKey=${todayKey}&userId=${USER_ID}`);
-      const data = await res.json();
-      if (data.ok) {
-        setBlocks(data.blocks || []);
-      } else {
-        setError(data.message || 'Failed to load execution blocks');
+      const [blockRes, revRes, mistakeRes] = await Promise.allSettled([
+        fetch(`${BACKEND_URL}/api/plan/blocks?dayKey=${todayKey}&userId=${USER_ID}`),
+        fetch(`${BACKEND_URL}/api/revision-items?userId=${USER_ID}`),
+        fetch(`${BACKEND_URL}/api/mistakes?userId=${USER_ID}`)
+      ]);
+
+      if (blockRes.status === 'fulfilled' && blockRes.value.ok) {
+        const d = await blockRes.value.json();
+        setBlocks(d.blocks || []);
+      }
+
+      if (revRes.status === 'fulfilled' && revRes.value.ok) {
+        const d = await revRes.value.json();
+        const arr = Array.isArray(d) ? d : (d.items || d.data || []);
+        setRevisions(arr.filter(r => r.status !== 'reviewed' && new Date(r.next_review_at) <= new Date()));
+      }
+
+      if (mistakeRes.status === 'fulfilled' && mistakeRes.value.ok) {
+        const d = await mistakeRes.value.json();
+        const arr = Array.isArray(d) ? d : (d.items || []);
+        setMistakes(arr.filter(m => m.must_revise));
       }
     } catch (err) {
       setError(err.message || 'Error connecting to server');
@@ -40,15 +63,12 @@ export default function ExecutionPage() {
   };
 
   useEffect(() => {
-    fetchBlocks();
-    const interval = setInterval(fetchBlocks, 10000);
+    fetchData();
+    const interval = setInterval(fetchData, 10000);
     return () => clearInterval(interval);
   }, []);
 
-  const activeBlock = blocks.find(b => b.status === 'active' || b.status === 'paused');
-  const upcomingBlocks = blocks.filter(b => b.status === 'planned' || b.status === 'upcoming');
-  const completedBlocks = blocks.filter(b => ['completed', 'partial', 'done'].includes(b.status));
-
+  // Actions
   const handleStart = async (blockId) => {
     try {
       const res = await fetch(`${BACKEND_URL}/api/plan/blocks/start`, {
@@ -57,7 +77,7 @@ export default function ExecutionPage() {
         body: JSON.stringify({ blockId, dayKey: todayKey, userId: USER_ID })
       });
       const data = await res.json();
-      if (data.ok) fetchBlocks();
+      if (data.ok) fetchData();
       else alert(data.message || 'Failed to start block');
     } catch (err) {
       alert(err.message);
@@ -72,7 +92,7 @@ export default function ExecutionPage() {
         body: JSON.stringify({ blockId, dayKey: todayKey, userId: USER_ID })
       });
       const data = await res.json();
-      if (data.ok) fetchBlocks();
+      if (data.ok) fetchData();
       else alert(data.message);
     } catch (err) {
       alert(err.message);
@@ -87,7 +107,7 @@ export default function ExecutionPage() {
         body: JSON.stringify({ blockId, dayKey: todayKey, userId: USER_ID })
       });
       const data = await res.json();
-      if (data.ok) fetchBlocks();
+      if (data.ok) fetchData();
       else alert(data.message);
     } catch (err) {
       alert(err.message);
@@ -151,7 +171,7 @@ export default function ExecutionPage() {
         setSelectedFile(null);
         setProofNotes('');
         setNoProofRequired(false);
-        fetchBlocks();
+        fetchData();
       } else {
         alert(completeData.message || 'Failed to complete block');
       }
@@ -162,165 +182,367 @@ export default function ExecutionPage() {
     }
   };
 
+  // Derive categories
+  const activeBlock = blocks.find(b => b.status === 'active');
+  const pausedBlock = blocks.find(b => b.status === 'paused');
+  
+  const nowStr = formatTime(new Date().getHours() * 60 + new Date().getMinutes());
+  
+  // A block is overdue if it's planned/upcoming but its start time has passed (assuming we had a planned start time, otherwise we just show missed/skipped or the next one)
+  const upcomingBlocks = blocks.filter(b => b.status === 'planned' || b.status === 'upcoming');
+  const completedBlocks = blocks.filter(b => ['completed', 'partial', 'done', 'skipped'].includes(b.status));
+  
+  // Find overdue block (for simplicity, we consider a block overdue if it's past 10 AM and no blocks are completed, etc. Let's just pick the first uncompleted block if there's no active/paused)
+  const overdueBlock = upcomingBlocks.length > 0 ? upcomingBlocks[0] : null; 
+  
+  // Find mains block
+  const mainsBlock = upcomingBlocks.find(b => (b.subject || '').toLowerCase().includes('answer') || (b.topic || '').toLowerCase().includes('answer') || (b.topic || '').toLowerCase().includes('mains'));
+
+  // Derive the Primary Directive
+  let primaryDirective = null;
+
+  if (activeBlock) {
+    primaryDirective = {
+      type: 'active',
+      title: 'Active Study Session',
+      block: activeBlock,
+      actionLabel: 'Pause Session',
+      action: () => handlePause(activeBlock.block_id)
+    };
+  } else if (pausedBlock) {
+    primaryDirective = {
+      type: 'paused',
+      title: 'Session Paused',
+      block: pausedBlock,
+      actionLabel: 'Resume Session',
+      action: () => handleResume(pausedBlock.block_id)
+    };
+  } else if (blocks.length === 0 && !loading) {
+    primaryDirective = {
+      type: 'no-plan',
+      title: 'No Plan Uploaded',
+      description: 'You haven\'t uploaded a study plan for today. A plan is critical for focused execution.',
+      actionLabel: 'Upload Today\'s Plan',
+      action: () => navigate('/plan')
+    };
+  } else if (overdueBlock && overdueBlock.planned_minutes > 0) { // arbitrary rule for overdue
+     primaryDirective = {
+       type: 'overdue',
+       title: 'Start Next Block',
+       block: overdueBlock,
+       actionLabel: 'Start Session',
+       action: () => handleStart(overdueBlock.block_id)
+     };
+  } else if (revisions.length > 0) {
+    primaryDirective = {
+      type: 'revision',
+      title: 'Pending Revision',
+      description: `You have ${revisions.length} revision item(s) due today. Spaced repetition prevents memory decay.`,
+      actionLabel: 'Do Revision Now',
+      action: () => navigate('/revision')
+    };
+  } else if (mainsBlock) {
+    primaryDirective = {
+      type: 'mains',
+      title: 'Mains Answer Writing',
+      block: mainsBlock,
+      actionLabel: 'Write Answer Now',
+      action: () => handleStart(mainsBlock.block_id)
+    };
+  } else if (upcomingBlocks.length === 0 && blocks.length > 0) {
+     primaryDirective = {
+       type: 'completed',
+       title: 'Day Complete',
+       description: 'You have completed all planned blocks for today. Great consistency!',
+       actionLabel: 'View Night Report',
+       action: () => navigate('/reports')
+     };
+  } else {
+     primaryDirective = {
+       type: 'general',
+       title: 'Ready for Next Action',
+       description: 'Check your pending queue and prepare for the next study block.',
+       actionLabel: 'Attempt Prelims Practice',
+       action: () => navigate('/prelims')
+     };
+  }
+
+  const showNightReview = isNight || (blocks.length > 0 && upcomingBlocks.length === 0);
+
   return (
-    <div className="page-wrap" style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto', color: '#fff' }}>
-      {/* Page Header */}
-      <div style={{ marginBottom: '28px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div className="premium-container">
+      <div style={{ marginBottom: '32px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <h1 style={{ fontSize: '28px', fontWeight: '800', margin: 0, background: 'linear-gradient(90deg, #38bdf8, #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-            Active Execution Workbench
-          </h1>
-          <p style={{ fontSize: '14px', color: '#94a3b8', marginTop: '6px' }}>
-            Real-time study session execution, live timer, and mandatory proof verification.
-          </p>
+          <h1 className="premium-page-title">Command Center</h1>
+          <p className="premium-page-subtitle" style={{ margin: 0 }}>Daily Execution & Focus Workspace</p>
         </div>
-        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '8px 16px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', fontSize: '13px', fontFamily: 'monospace' }}>
-          Date: {todayKey}
+        <div className="premium-badge premium-badge-neutral">
+          {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
         </div>
       </div>
 
       {loading && blocks.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '60px', color: '#94a3b8' }}>Loading execution workspace...</div>
+        <div style={{ textAlign: 'center', padding: '60px', color: '#7F8897' }}>Synchronizing workspace...</div>
       ) : error ? (
-        <div style={{ padding: '16px', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid #ef4444', borderRadius: '12px', color: '#fca5a5' }}>
-          {error}
+        <div className="premium-surface-card" style={{ borderColor: '#E05252', marginBottom: '24px' }}>
+          <p style={{ color: '#E05252', margin: 0 }}>{error}</p>
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '24px' }}>
-          
-          {/* Main Work Area */}
-          <div>
-            {/* Active / Paused Block Focus Card */}
-            {activeBlock ? (
-              <div style={{ background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95))', borderRadius: '20px', padding: '28px', border: '1px solid rgba(56, 189, 248, 0.3)', boxShadow: '0 12px 32px rgba(0,0,0,0.4)', marginBottom: '24px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <span style={{ background: activeBlock.status === 'active' ? '#0ea5e9' : '#f59e0b', color: '#fff', fontSize: '11px', fontWeight: '800', padding: '4px 10px', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                    {activeBlock.status === 'active' ? '● LIVE ACTIVE SESSION' : '⏸ SESSION PAUSED'}
-                  </span>
-                  <span style={{ fontSize: '13px', color: '#94a3b8' }}>Planned: {activeBlock.planned_minutes} mins</span>
-                </div>
-
-                <h2 style={{ fontSize: '24px', fontWeight: '700', margin: '0 0 8px 0', color: '#f8fafc' }}>{activeBlock.subject || 'Study Session'}</h2>
-                <p style={{ fontSize: '15px', color: '#cbd5e1', margin: '0 0 24px 0' }}>{activeBlock.topic || activeBlock.title || 'General Focus Block'}</p>
-
-                {/* Live Timer Box */}
-                <div style={{ background: 'rgba(0, 0, 0, 0.4)', borderRadius: '16px', padding: '24px', textAlign: 'center', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '28px' }}>
-                  <div style={{ fontSize: '56px', fontWeight: '900', fontFamily: 'monospace', letterSpacing: '2px', color: activeBlock.status === 'active' ? '#38bdf8' : '#fbbf24' }}>
-                    {formatTime(activeBlock.actualSeconds || 0)}
-                  </div>
-                  <div style={{ fontSize: '12px', color: '#64748b', marginTop: '4px' }}>
-                    Actual Study Elapsed (Pauses Excluded: {activeBlock.pauseMinutes || 0}m)
-                  </div>
-                </div>
-
-                {/* Controls */}
-                <div style={{ display: 'flex', gap: '12px', marginBottom: '28px' }}>
-                  {activeBlock.status === 'active' ? (
-                    <button onClick={() => handlePause(activeBlock.block_id)} style={{ flex: 1, padding: '14px', borderRadius: '12px', background: '#f59e0b', color: '#000', fontWeight: '700', border: 'none', cursor: 'pointer' }}>
-                      Pause Session
-                    </button>
-                  ) : (
-                    <button onClick={() => handleResume(activeBlock.block_id)} style={{ flex: 1, padding: '14px', borderRadius: '12px', background: '#10b981', color: '#fff', fontWeight: '700', border: 'none', cursor: 'pointer' }}>
-                      Resume Session
-                    </button>
-                  )}
-                </div>
-
-                {/* Mandatory Proof & Output Logging Form */}
-                <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '16px', padding: '20px', border: '1px solid rgba(255,255,255,0.08)' }}>
-                  <h3 style={{ fontSize: '16px', fontWeight: '700', margin: '0 0 14px 0', color: '#f1f5f9', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span>🛡️</span> Mandatory Study Proof & Completion
-                  </h3>
-
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '14px' }}>
-                    <div>
-                      <label style={{ fontSize: '12px', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>Output Type</label>
-                      <select value={outputType} onChange={e => setOutputType(e.target.value)} style={{ width: '100%', padding: '10px', background: '#0f172a', border: '1px solid #334155', borderRadius: '8px', color: '#fff' }}>
-                        <option value="notes">Handwritten / Digital Notes</option>
-                        <option value="pyq_practice">PYQ Questions Solved</option>
-                        <option value="answer_written">Mains Answer Written</option>
-                        <option value="revision_sheet">Revision Summary Sheet</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label style={{ fontSize: '12px', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>Output Quantity (Pages/Questions)</label>
-                      <input type="number" min="1" value={outputCount} onChange={e => setOutputCount(e.target.value)} style={{ width: '100%', padding: '10px', background: '#0f172a', border: '1px solid #334155', borderRadius: '8px', color: '#fff' }} />
+        <>
+          {/* TOP SECTION: ONLY ONE PRIMARY DIRECTIVE */}
+          <div className="premium-directive-hero" style={{ 
+            background: primaryDirective.type === 'active' ? 'linear-gradient(135deg, rgba(47, 191, 113, 0.08) 0%, rgba(47, 191, 113, 0.02) 100%)' :
+                        primaryDirective.type === 'paused' ? 'linear-gradient(135deg, rgba(214, 181, 109, 0.08) 0%, rgba(214, 181, 109, 0.02) 100%)' :
+                        primaryDirective.type === 'completed' ? 'linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(56, 189, 248, 0.02) 100%)' :
+                        'linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%)',
+            borderColor: primaryDirective.type === 'active' ? 'rgba(47, 191, 113, 0.3)' :
+                         primaryDirective.type === 'paused' ? 'rgba(214, 181, 109, 0.3)' :
+                         primaryDirective.type === 'completed' ? 'rgba(56, 189, 248, 0.3)' :
+                         'rgba(255, 255, 255, 0.1)',
+            marginBottom: '40px'
+          }}>
+            <div style={{ fontSize: '12px', fontWeight: '700', color: primaryDirective.type === 'active' ? '#2FBF71' : '#D6B56D', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '12px' }}>
+              Do this now
+            </div>
+            
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '32px', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div style={{ flex: '1 1 300px' }}>
+                <h2 style={{ fontSize: '28px', fontWeight: '800', color: '#F5F7FB', margin: '0 0 8px 0', letterSpacing: '-0.02em' }}>
+                  {primaryDirective.title}
+                </h2>
+                
+                {primaryDirective.block ? (
+                  <div>
+                    <p style={{ fontSize: '16px', color: '#B8C0CC', margin: '0 0 16px 0' }}>
+                      {primaryDirective.block.subject} • {primaryDirective.block.topic || 'General Focus'}
+                    </p>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                      <span className="premium-badge premium-badge-neutral">
+                        Planned: {primaryDirective.block.planned_minutes}m
+                      </span>
                     </div>
                   </div>
+                ) : (
+                  <p style={{ fontSize: '15px', color: '#B8C0CC', margin: 0, lineHeight: 1.5, maxWidth: '500px' }}>
+                    {primaryDirective.description}
+                  </p>
+                )}
+              </div>
 
-                  <div style={{ marginBottom: '14px' }}>
-                    <label style={{ fontSize: '12px', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>Proof File / Photo Attachment</label>
-                    <input type="file" disabled={noProofRequired} onChange={e => setSelectedFile(e.target.files[0])} style={{ width: '100%', padding: '8px', background: '#0f172a', border: '1px solid #334155', borderRadius: '8px', color: '#fff', fontSize: '12px' }} />
+              {primaryDirective.block && (primaryDirective.type === 'active' || primaryDirective.type === 'paused') && (
+                <div style={{ textAlign: 'center', background: 'rgba(0,0,0,0.3)', padding: '20px 32px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                  <div style={{ fontSize: '48px', fontWeight: '800', fontFamily: 'monospace', color: primaryDirective.type === 'active' ? '#2FBF71' : '#D6B56D', lineHeight: 1 }}>
+                    {formatTime(primaryDirective.block.actualSeconds || 0)}
                   </div>
-
-                  <div style={{ marginBottom: '14px' }}>
-                    <label style={{ fontSize: '12px', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>Proof Summary / Study Notes</label>
-                    <textarea rows="2" placeholder="Describe key topics covered or proof details..." value={proofNotes} onChange={e => setProofNotes(e.target.value)} style={{ width: '100%', padding: '10px', background: '#0f172a', border: '1px solid #334155', borderRadius: '8px', color: '#fff', fontSize: '13px' }} />
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '18px' }}>
-                    <input type="checkbox" id="noProof" checked={noProofRequired} onChange={e => setNoProofRequired(e.target.checked)} style={{ width: '16px', height: '16px', cursor: 'pointer' }} />
-                    <label htmlFor="noProof" style={{ fontSize: '13px', color: '#cbd5e1', cursor: 'pointer' }}>
-                      Mark "No proof required for this block" (Waived)
-                    </label>
-                  </div>
-
-                  <button onClick={() => handleCompleteWithProof(activeBlock.block_id)} disabled={submittingProof} style={{ width: '100%', padding: '14px', borderRadius: '12px', background: 'linear-gradient(90deg, #3b82f6, #6366f1)', color: '#fff', fontWeight: '800', border: 'none', cursor: 'pointer', fontSize: '15px', boxShadow: '0 4px 14px rgba(99, 102, 241, 0.4)' }}>
-                    {submittingProof ? 'Verifying & Completing...' : '✓ Complete Block & Submit Verification'}
-                  </button>
+                  <div style={{ fontSize: '12px', color: '#7F8897', marginTop: '6px' }}>Elapsed Time</div>
                 </div>
+              )}
 
+              <div style={{ flexShrink: 0 }}>
+                <button 
+                  onClick={primaryDirective.action}
+                  className="premium-button-primary" 
+                  style={{ 
+                    padding: '14px 28px', 
+                    fontSize: '15px',
+                    background: primaryDirective.type === 'active' ? 'transparent' : '#D6B56D',
+                    color: primaryDirective.type === 'active' ? '#F5F7FB' : '#0E1117',
+                    border: primaryDirective.type === 'active' ? '1px solid rgba(255,255,255,0.2)' : 'none',
+                  }}
+                >
+                  {primaryDirective.actionLabel}
+                </button>
               </div>
-            ) : (
-              <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '20px', padding: '48px', textAlign: 'center', border: '1px dashed rgba(255,255,255,0.15)', marginBottom: '24px' }}>
-                <h3 style={{ fontSize: '20px', margin: '0 0 8px 0', color: '#f1f5f9' }}>No Active Study Session</h3>
-                <p style={{ color: '#94a3b8', fontSize: '14px', margin: '0 0 20px 0' }}>Select an upcoming planned block below to begin execution.</p>
-              </div>
-            )}
+            </div>
+          </div>
 
-            {/* Upcoming Blocks List */}
-            <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '20px', padding: '20px', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <h3 style={{ fontSize: '16px', fontWeight: '700', margin: '0 0 16px 0', color: '#cbd5e1' }}>Upcoming Planned Blocks ({upcomingBlocks.length})</h3>
-              {upcomingBlocks.length === 0 ? (
-                <div style={{ color: '#64748b', fontSize: '13px' }}>No pending upcoming blocks for today.</div>
-              ) : (
-                <div style={{ display: 'grid', gap: '10px' }}>
-                  {upcomingBlocks.map(b => (
-                    <div key={b.block_id} style={{ background: 'rgba(0,0,0,0.3)', padding: '14px 18px', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid rgba(255,255,255,0.05)' }}>
-                      <div>
-                        <div style={{ fontWeight: '700', fontSize: '15px', color: '#f8fafc' }}>{b.subject || 'Study Block'}</div>
-                        <div style={{ fontSize: '12px', color: '#94a3b8' }}>{b.topic || b.title || 'General Focus'} • {b.planned_minutes}m</div>
+          {/* ACTIVE BLOCK PROOF FORM */}
+          {(activeBlock || pausedBlock) && (
+            <div className="premium-surface-card" style={{ marginBottom: '40px' }}>
+              <h3 className="premium-section-title" style={{ fontSize: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ color: '#D6B56D' }}>🛡️</span> Mandatory Study Proof
+              </h3>
+              <p className="premium-body" style={{ marginBottom: '20px' }}>
+                To complete this block, you must verify your output.
+              </p>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '20px' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '13px', color: '#7F8897', marginBottom: '8px' }}>Output Type</label>
+                  <select value={outputType} onChange={e => setOutputType(e.target.value)} style={{ width: '100%', padding: '12px', background: '#1C2230', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', color: '#F5F7FB', outline: 'none' }}>
+                    <option value="notes">Handwritten / Digital Notes</option>
+                    <option value="pyq_practice">PYQ Questions Solved</option>
+                    <option value="answer_written">Mains Answer Written</option>
+                    <option value="revision_sheet">Revision Summary Sheet</option>
+                  </select>
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '13px', color: '#7F8897', marginBottom: '8px' }}>Quantity (Pages/Qs)</label>
+                  <input type="number" min="1" value={outputCount} onChange={e => setOutputCount(e.target.value)} style={{ width: '100%', padding: '12px', background: '#1C2230', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', color: '#F5F7FB', outline: 'none', boxSizing: 'border-box' }} />
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '20px' }}>
+                <label style={{ display: 'block', fontSize: '13px', color: '#7F8897', marginBottom: '8px' }}>Proof File / Photo</label>
+                <input type="file" disabled={noProofRequired} onChange={e => setSelectedFile(e.target.files[0])} style={{ width: '100%', padding: '10px', background: '#1C2230', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', color: '#B8C0CC', boxSizing: 'border-box' }} />
+              </div>
+
+              <div style={{ marginBottom: '20px' }}>
+                <label style={{ display: 'block', fontSize: '13px', color: '#7F8897', marginBottom: '8px' }}>Study Notes</label>
+                <textarea rows="2" placeholder="Describe key takeaways..." value={proofNotes} onChange={e => setProofNotes(e.target.value)} style={{ width: '100%', padding: '12px', background: '#1C2230', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', color: '#F5F7FB', outline: 'none', resize: 'vertical', boxSizing: 'border-box' }} />
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
+                <input type="checkbox" id="noProof" checked={noProofRequired} onChange={e => setNoProofRequired(e.target.checked)} style={{ width: '16px', height: '16px', accentColor: '#D6B56D', cursor: 'pointer' }} />
+                <label htmlFor="noProof" style={{ fontSize: '14px', color: '#B8C0CC', cursor: 'pointer' }}>
+                  Mark "No proof required for this block"
+                </label>
+              </div>
+
+              <button 
+                onClick={() => handleCompleteWithProof((activeBlock || pausedBlock).block_id)} 
+                disabled={submittingProof} 
+                className="premium-button-primary"
+                style={{ width: '100%', padding: '14px', fontSize: '15px' }}
+              >
+                {submittingProof ? 'Verifying...' : '✓ Complete Block & Submit Verification'}
+              </button>
+            </div>
+          )}
+
+          {/* MIDDLE SECTION: PENDING QUEUES */}
+          {blocks.length === 0 ? (
+            <div className="premium-surface-card" style={{ textAlign: 'center', padding: '60px 20px' }}>
+              <div style={{ fontSize: '32px', marginBottom: '16px' }}>📝</div>
+              <h3 className="premium-card-title">Ready to begin your day?</h3>
+              <p className="premium-body" style={{ maxWidth: '400px', margin: '0 auto 24px' }}>
+                You don't have an active study plan for today. Upload your plan to get focused execution tracking.
+              </p>
+              <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <button onClick={() => navigate('/plan')} className="premium-button-primary">Upload Plan</button>
+                <button onClick={() => navigate('/revision')} className="premium-button-secondary">Do Revision</button>
+                <button onClick={() => navigate('/mains')} className="premium-button-secondary">Write Mains Answer</button>
+              </div>
+            </div>
+          ) : (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginBottom: '40px' }}>
+              
+              {/* Upcoming / Overdue Blocks */}
+              <div className="premium-surface-card">
+                <h3 className="premium-section-title">Pending Blocks ({upcomingBlocks.length})</h3>
+                {upcomingBlocks.length === 0 ? (
+                  <p className="premium-body" style={{ margin: 0 }}>No more pending blocks for today.</p>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    {upcomingBlocks.map(b => (
+                      <div key={b.block_id} className="premium-surface-card-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div>
+                          <div style={{ fontSize: '14px', fontWeight: '700', color: '#F5F7FB', marginBottom: '4px' }}>{b.subject || 'Focus Block'}</div>
+                          <div style={{ fontSize: '13px', color: '#7F8897' }}>{b.topic} • {b.planned_minutes}m</div>
+                        </div>
+                        <button 
+                          onClick={() => handleStart(b.block_id)} 
+                          disabled={Boolean(activeBlock || pausedBlock)} 
+                          className={activeBlock || pausedBlock ? "premium-button-secondary" : "premium-text-link"}
+                          style={{ opacity: (activeBlock || pausedBlock) ? 0.5 : 1, padding: '6px 12px' }}
+                        >
+                          Start
+                        </button>
                       </div>
-                      <button onClick={() => handleStart(b.block_id)} disabled={Boolean(activeBlock)} style={{ padding: '8px 16px', borderRadius: '8px', background: activeBlock ? '#334155' : '#0ea5e9', color: activeBlock ? '#94a3b8' : '#fff', fontWeight: '700', border: 'none', cursor: activeBlock ? 'not-allowed' : 'pointer', fontSize: '13px' }}>
-                        Start Session
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Revision & Mistake Queues */}
+              <div className="premium-surface-card">
+                <h3 className="premium-section-title">Daily Maintenance</h3>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  
+                  {/* Revisions */}
+                  <div className="premium-surface-card-inner" style={{ borderColor: revisions.length > 0 ? 'rgba(214, 181, 109, 0.3)' : 'rgba(255,255,255,0.08)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div>
+                        <div style={{ fontSize: '14px', fontWeight: '700', color: revisions.length > 0 ? '#D6B56D' : '#F5F7FB', marginBottom: '4px' }}>Spaced Revision</div>
+                        <div style={{ fontSize: '13px', color: '#7F8897' }}>{revisions.length} items due today</div>
+                      </div>
+                      <button onClick={() => navigate('/revision')} className="premium-text-link" style={{ padding: '6px 12px' }}>
+                        View
                       </button>
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
+                  </div>
 
-          {/* Sidebar: Execution Summary & History */}
-          <div>
-            <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '20px', padding: '20px', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '20px' }}>
-              <h3 style={{ fontSize: '15px', fontWeight: '700', margin: '0 0 14px 0', color: '#cbd5e1' }}>Completed Today ({completedBlocks.length})</h3>
-              {completedBlocks.length === 0 ? (
-                <div style={{ color: '#64748b', fontSize: '13px' }}>No completed sessions yet today.</div>
-              ) : (
-                <div style={{ display: 'grid', gap: '10px' }}>
-                  {completedBlocks.map(b => (
-                    <div key={b.block_id} style={{ background: 'rgba(16, 185, 129, 0.08)', padding: '12px', borderRadius: '10px', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
-                      <div style={{ fontWeight: '700', fontSize: '13px', color: '#6ee7b7' }}>{b.subject}</div>
-                      <div style={{ fontSize: '11px', color: '#94a3b8', marginTop: '2px' }}>{b.actualMinutes}m completed • Status: {b.proofVerificationStatus || 'verified'}</div>
+                  {/* Mains Answer */}
+                  <div className="premium-surface-card-inner" style={{ borderColor: mainsBlock ? 'rgba(56, 189, 248, 0.3)' : 'rgba(255,255,255,0.08)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div>
+                        <div style={{ fontSize: '14px', fontWeight: '700', color: mainsBlock ? '#38bdf8' : '#F5F7FB', marginBottom: '4px' }}>Mains Answer</div>
+                        <div style={{ fontSize: '13px', color: '#7F8897' }}>{mainsBlock ? 'Pending today' : 'No target set'}</div>
+                      </div>
+                      <button onClick={() => navigate('/mains')} className="premium-text-link" style={{ padding: '6px 12px' }}>
+                        Write
+                      </button>
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Mistakes */}
+                  <div className="premium-surface-card-inner" style={{ borderColor: mistakes.length > 0 ? 'rgba(224, 82, 82, 0.3)' : 'rgba(255,255,255,0.08)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div>
+                        <div style={{ fontSize: '14px', fontWeight: '700', color: mistakes.length > 0 ? '#E05252' : '#F5F7FB', marginBottom: '4px' }}>Mistake Book</div>
+                        <div style={{ fontSize: '13px', color: '#7F8897' }}>{mistakes.length} unresolved</div>
+                      </div>
+                      <button onClick={() => navigate('/mistakes')} className="premium-text-link" style={{ padding: '6px 12px' }}>
+                        Review
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* BOTTOM SECTION: COMPLETED & NIGHT REVIEW */}
+          {(completedBlocks.length > 0 || showNightReview) && blocks.length > 0 && (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+              
+              <div className="premium-surface-card">
+                <h3 className="premium-section-title">Completed Today ({completedBlocks.length})</h3>
+                {completedBlocks.length === 0 ? (
+                  <p className="premium-body" style={{ margin: 0 }}>No sessions completed yet.</p>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    {completedBlocks.map(b => (
+                      <div key={b.block_id} className="premium-surface-card-inner" style={{ background: 'rgba(47, 191, 113, 0.04)', borderColor: 'rgba(47, 191, 113, 0.15)' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                          <span style={{ fontSize: '14px', fontWeight: '700', color: '#2FBF71' }}>{b.subject}</span>
+                          <span className="premium-badge premium-badge-success">{b.actualMinutes || b.planned_minutes}m</span>
+                        </div>
+                        <div style={{ fontSize: '13px', color: '#7F8897' }}>Status: Verified • {b.topic}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {showNightReview && (
+                <div className="premium-surface-card" style={{ background: 'rgba(214, 181, 109, 0.04)', borderColor: 'rgba(214, 181, 109, 0.2)' }}>
+                  <h3 className="premium-section-title" style={{ color: '#D6B56D' }}>Guardian & Night Review</h3>
+                  <p className="premium-body" style={{ marginBottom: '24px' }}>
+                    Your day is winding down. Review your daily analytics and prepare for tomorrow before your guardian summary is generated.
+                  </p>
+                  <button onClick={() => navigate('/reports')} className="premium-button-primary" style={{ width: '100%', padding: '12px' }}>
+                    View Daily Report
+                  </button>
                 </div>
               )}
-            </div>
-          </div>
 
-        </div>
+            </div>
+          )}
+
+        </>
       )}
     </div>
   );
