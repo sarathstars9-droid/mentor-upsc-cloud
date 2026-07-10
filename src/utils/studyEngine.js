@@ -310,15 +310,90 @@ export function getDisplayStatus(status, blockDate = null) {
   return normalized;
 }
 
-export function getStatusBadgeColor(status) {
-  const s = getDisplayStatus(status);
+export function getEffectiveBlockStatus(block) {
+  if (!block) return "planned";
 
-  if (s === BLOCK_STATUS.COMPLETED) return "#7B888A";
+  const rawStatus = String(block.Status || "").trim().toLowerCase();
+
+  if (block.ActualEnd) {
+    if (
+      rawStatus === "stopped" ||
+      rawStatus === "partial" ||
+      rawStatus === "missed" ||
+      rawStatus === "skipped" ||
+      rawStatus === "skipped_rescue"
+    ) {
+      return rawStatus;
+    }
+    return "completed";
+  }
+
+  const todayKey = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
+
+  if (rawStatus === "skipped_rescue") {
+    const blockDay = typeof block.Date === "string"
+      ? block.Date.slice(0, 10)
+      : block.Date
+        ? new Date(block.Date).toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" })
+        : null;
+    return blockDay === todayKey ? "planned" : "skipped";
+  }
+
+  if (rawStatus === "review_pending") {
+    return "review_pending";
+  }
+
+  if (
+    rawStatus === "paused" ||
+    (block.LastPauseAt &&
+      (!block.LastResumeAt ||
+        new Date(block.LastPauseAt).getTime() > new Date(block.LastResumeAt).getTime()))
+  ) {
+    return "paused";
+  }
+
+  if (rawStatus === "active" || block.ActualStart) {
+    return "active";
+  }
+
+  // Safe date normalization before comparisons
+  const blockDay = typeof block.Date === "string"
+    ? block.Date.slice(0, 10)
+    : block.Date
+      ? new Date(block.Date).toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" })
+      : null;
+
+  // Not started - check time window
+  const startMin = hhmmToMinutes(block.PlannedStart);
+  const endMin = hhmmToMinutes(block.PlannedEnd);
+  
+  if (blockDay === todayKey) {
+    if (startMin !== null && endMin !== null) {
+      const nowMin = nowMinutesOfDay();
+      if (nowMin >= startMin && nowMin <= endMin) {
+        return "ready_to_start";
+      } else if (nowMin > endMin) {
+        return "overdue";
+      }
+    }
+  } else if (blockDay && blockDay < todayKey) {
+    return "overdue";
+  }
+
+  return "planned";
+}
+
+export function getStatusBadgeColor(status) {
+  const s = String(status || "").trim().toLowerCase();
+
+  if (s === BLOCK_STATUS.COMPLETED || s === "stopped") return "#7B888A";
   if (s === BLOCK_STATUS.PARTIAL) return "#565C61";
   if (s === BLOCK_STATUS.MISSED) return "#393E43";
   if (s === BLOCK_STATUS.ACTIVE) return "#7B888A";
   if (s === BLOCK_STATUS.PAUSED) return "#565C61";
-  if (s === BLOCK_STATUS.SKIPPED || s === "skipped") return "#2D3038";
+  if (s === BLOCK_STATUS.SKIPPED || s === "skipped" || s === "skipped_rescue") return "#2D3038";
+  if (s === "ready_to_start") return "#3B82F6";
+  if (s === "overdue") return "#EF4444";
 
   return "#393E43";
 }

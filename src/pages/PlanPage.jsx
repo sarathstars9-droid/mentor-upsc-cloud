@@ -28,6 +28,7 @@ import {
   nowMinutesOfDay,
   getDisplayStatus,
   getStatusBadgeColor,
+  getEffectiveBlockStatus,
   plannedMinFromParsed,
   sumCsatMinutesFromParsed,
   buildApprovedOcrBlocks,
@@ -361,54 +362,14 @@ async function updateBlockAction(action, payload) {
   return post(action, { payload });
 }
 
-function getEffectiveBlockStatus(block) {
-  if (!block) return BLOCK_STATUS.PLANNED;
-
-  const rawStatus = String(block.Status || "").trim().toLowerCase();
-
-  if (block.ActualEnd) {
-    if (
-      rawStatus === BLOCK_STATUS.STOPPED ||
-      rawStatus === BLOCK_STATUS.PARTIAL ||
-      rawStatus === BLOCK_STATUS.MISSED ||
-      rawStatus === BLOCK_STATUS.SKIPPED ||
-      rawStatus === "skipped_rescue"
-    ) {
-      return rawStatus;
-    }
-    return BLOCK_STATUS.COMPLETED;
-  }
-
-  if (rawStatus === "skipped_rescue") {
-    return block.Date === getTodayLocalDate() ? BLOCK_STATUS.PLANNED : BLOCK_STATUS.SKIPPED;
-  }
-
-  if (rawStatus === "review_pending") {
-    return "review_pending";
-  }
-
-  if (
-    rawStatus === BLOCK_STATUS.PAUSED ||
-    (block.LastPauseAt &&
-      (!block.LastResumeAt ||
-        new Date(block.LastPauseAt).getTime() > new Date(block.LastResumeAt).getTime()))
-  ) {
-    return BLOCK_STATUS.PAUSED;
-  }
-
-  if (block.ActualStart) {
-    return BLOCK_STATUS.ACTIVE;
-  }
-
-  return BLOCK_STATUS.PLANNED;
-}
-
 function isFinishedStatus(status) {
   return (
     status === BLOCK_STATUS.COMPLETED ||
     status === BLOCK_STATUS.PARTIAL ||
     status === BLOCK_STATUS.MISSED ||
-    status === BLOCK_STATUS.SKIPPED
+    status === BLOCK_STATUS.SKIPPED ||
+    status === BLOCK_STATUS.STOPPED ||
+    status === "stopped"
   );
 }
 function normalizeMappingCode(code = "") {
@@ -899,15 +860,18 @@ function StudyBlockCard({
   const isActive    = statusValue === BLOCK_STATUS.ACTIVE;
   const isPaused    = statusValue === BLOCK_STATUS.PAUSED;
   const isDone      = isFinishedStatus(statusValue);
-  const isPlanned   = statusValue === BLOCK_STATUS.PLANNED;
+  const isPlanned   = ["planned", "ready_to_start", "overdue"].includes(statusValue);
 
   const SC_MAP = {
     active:    { bg: "rgba(194, 65, 12, 0.15)",  border: "rgba(194, 65, 12, 0.3)",  color: "#FF7A45", dot: "#FF7A45", label: "ACTIVE"   },
     paused:    { bg: "rgba(234, 179, 8, 0.12)",   border: "rgba(234, 179, 8, 0.24)",   color: "#D97706", dot: "#D97706", label: "PAUSED"   },
     completed: { bg: "rgba(16, 185, 129, 0.08)", border: "rgba(16, 185, 129, 0.2)", color: "#059669", dot: "#059669", label: "DONE"     },
+    stopped:   { bg: "rgba(16, 185, 129, 0.08)", border: "rgba(16, 185, 129, 0.2)", color: "#059669", dot: "#059669", label: "DONE"     },
     partial:   { bg: "rgba(245, 158, 11, 0.05)", border: "rgba(245, 158, 11, 0.15)", color: "#B45309", dot: "#B45309", label: "PARTIAL"  },
     missed:    { bg: "rgba(239, 68, 68, 0.06)",   border: "rgba(239, 68, 68, 0.15)",   color: "#DC2626", dot: "#DC2626", label: "MISSED"   },
     skipped:   { bg: "rgba(107, 114, 128, 0.06)", border: "rgba(107, 114, 128, 0.15)", color: "#4B5563", dot: "#4B5563", label: "SKIPPED"  },
+    ready_to_start: { bg: "rgba(59, 130, 246, 0.1)",  border: "rgba(59, 130, 246, 0.2)",  color: "#3B82F6", dot: "#3B82F6", label: "READY TO START" },
+    overdue:   { bg: "rgba(239, 68, 68, 0.1)",   border: "rgba(239, 68, 68, 0.2)",   color: "#EF4444", dot: "#EF4444", label: "OVERDUE" },
     planned:   { bg: "var(--mos-bg-soft)", border: "var(--mos-border)", color: "var(--mos-text-soft)", dot: "var(--mos-text-soft)", label: "PLANNED"  },
   };
   const sc = SC_MAP[statusValue] || SC_MAP.planned;

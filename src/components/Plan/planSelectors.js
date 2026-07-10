@@ -3,10 +3,18 @@ import { hhmmToMinutes } from "../../utils/studyEngine";
 export function getCurrentBlock(todayBlocks, getEffectiveBlockStatus, BLOCK_STATUS) {
     if (!todayBlocks.length) return null;
 
-    const visibleBlocks = todayBlocks
+    // 1. Explicitly active or paused block takes absolute precedence
+    const activeOrPaused = todayBlocks.find((b) => {
+        const status = String(getEffectiveBlockStatus(b)).toLowerCase();
+        return ["active", "paused"].includes(status);
+    });
+    if (activeOrPaused) return activeOrPaused;
+
+    // 2. Otherwise, select the most relevant not-started block (ready_to_start, overdue, or planned)
+    const notStartedBlocks = todayBlocks
         .filter((b) => {
-            const status = getEffectiveBlockStatus(b);
-            return [BLOCK_STATUS.ACTIVE, BLOCK_STATUS.PAUSED].includes(String(status).toLowerCase());
+            const status = String(getEffectiveBlockStatus(b)).toLowerCase();
+            return ["planned", "ready_to_start", "overdue"].includes(status);
         })
         .sort((a, b) => {
             const aMin = hhmmToMinutes(a?.PlannedStart) ?? Number.MAX_SAFE_INTEGER;
@@ -14,11 +22,11 @@ export function getCurrentBlock(todayBlocks, getEffectiveBlockStatus, BLOCK_STAT
             return aMin - bMin;
         });
 
-    if (!visibleBlocks.length) return null;
+    const readyBlock = notStartedBlocks.find((b) => getEffectiveBlockStatus(b) === "ready_to_start");
+    if (readyBlock) return readyBlock;
 
-    return (
-        visibleBlocks.find((b) => String(getEffectiveBlockStatus(b)).toLowerCase() === BLOCK_STATUS.ACTIVE) ||
-        visibleBlocks.find((b) => String(getEffectiveBlockStatus(b)).toLowerCase() === BLOCK_STATUS.PAUSED) ||
-        null
-    );
+    const overdueBlock = notStartedBlocks.find((b) => getEffectiveBlockStatus(b) === "overdue");
+    if (overdueBlock) return overdueBlock;
+
+    return notStartedBlocks[0] || null;
 }

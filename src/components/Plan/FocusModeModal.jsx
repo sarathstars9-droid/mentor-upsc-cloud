@@ -1,5 +1,5 @@
 import { BLOCK_STATUS } from "../../blockConstants";
-import { formatTimeOnly, getDisplayStatus } from "../../utils/studyEngine";
+import { formatTimeOnly, getEffectiveBlockStatus } from "../../utils/studyEngine";
 
 export default function FocusModeModal({
     open,
@@ -14,7 +14,7 @@ export default function FocusModeModal({
 }) {
     if (!open || !block) return null;
 
-    const status = getDisplayStatus(block.Status, block.Date);
+    const status = getEffectiveBlockStatus(block);
 
     const liveTimerDisplay = liveElapsedSec != null && liveElapsedSec > 0
         ? (() => {
@@ -44,7 +44,9 @@ export default function FocusModeModal({
                         {block.PlannedStart || "--:--"} → {block.PlannedEnd || "--:--"}
                     </span>
                     <span className="focus-chip">{block.PlannedMinutes || 0} min</span>
-                    <span className="focus-chip active">{status}</span>
+                    <span className="focus-chip active">
+                        {status === "ready_to_start" ? "READY TO START" : status === "overdue" ? "OVERDUE" : status.toUpperCase()}
+                    </span>
 
                     {block.ActualStart && (
                         <span className="focus-chip">
@@ -70,7 +72,7 @@ export default function FocusModeModal({
                 </div>
 
                 <div className="focus-actions">
-                    {status === BLOCK_STATUS.PLANNED && (
+                    {["planned", "ready_to_start", "overdue"].includes(status) && (
                         <button className="focus-btn-primary" disabled={busy} onClick={onStart}>
                             {busy ? "Processing..." : "Start Now"}
                         </button>

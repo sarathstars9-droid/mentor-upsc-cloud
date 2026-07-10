@@ -1,8 +1,10 @@
-import { getDisplayStatus } from "../../utils/studyEngine";
+import { getEffectiveBlockStatus } from "../../utils/studyEngine";
 
 const STATUS_CFG = {
   active:  { bg: "rgba(194, 65, 12, 0.15)",  border: "rgba(194, 65, 12, 0.3)",  color: "#FF7A45", dot: "#FF7A45", label: "ACTIVE"  },
   paused:  { bg: "rgba(234, 179, 8, 0.12)",   border: "rgba(234, 179, 8, 0.24)",   color: "#FACC15", dot: "#FACC15", label: "PAUSED"  },
+  ready_to_start: { bg: "rgba(59, 130, 246, 0.15)", border: "rgba(59, 130, 246, 0.3)", color: "#3B82F6", dot: "#3B82F6", label: "READY TO START" },
+  overdue:  { bg: "rgba(239, 68, 68, 0.15)",  border: "rgba(239, 68, 68, 0.3)",  color: "#EF4444", dot: "#EF4444", label: "OVERDUE" },
   planned: { bg: "rgba(255, 255, 255, 0.05)", border: "rgba(255, 255, 255, 0.1)", color: "#9CA3AF", dot: "#6B7280", label: "READY"   },
 };
 
@@ -43,11 +45,18 @@ export default function SpotlightCard({
     );
   }
 
-  const status     = getDisplayStatus(currentBlock.Status || "planned", currentBlock.Date).toLowerCase();
+  const status     = getEffectiveBlockStatus(currentBlock).toLowerCase();
   const cfg        = STATUS_CFG[status] || STATUS_CFG.planned;
   const isActive   = status === "active";
   const isPaused   = status === "paused";
-  const isPlanned  = status === "planned";
+  const isPlanned  = ["planned", "ready_to_start", "overdue"].includes(status);
+
+  const spotlightHeaderLabel = (() => {
+    if (isActive || isPaused) return "Current Block";
+    if (status === "ready_to_start") return "Ready to Start";
+    if (status === "overdue") return "Overdue Block";
+    return "Next Block";
+  })();
 
   // ── Title logic: avoid showing subject if it duplicates topic ───────────────
   const rawTopic   = currentBlock.PlannedTopic || "";
@@ -123,7 +132,7 @@ export default function SpotlightCard({
           fontFamily: "var(--mono,monospace)", fontSize: 10, letterSpacing: "0.12em",
           textTransform: "uppercase", color: "#64748B", fontWeight: 600,
         }}>
-          Current Block
+          {spotlightHeaderLabel}
         </span>
         <div style={{
           display: "flex", alignItems: "center", gap: 6,
