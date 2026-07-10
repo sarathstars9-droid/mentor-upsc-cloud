@@ -24,6 +24,7 @@ import {
     extractQuestionAnswerFromImagesApi,
     saveMainsAttemptToDB,
     fetchLatestMainsAttemptForQuestion,
+    fetchMainsAttempt,
 } from "../utils/mainsReviewApi.js";
 
 function extractQuestionText(value) {

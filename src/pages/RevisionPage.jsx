@@ -483,6 +483,7 @@ export function RevisionSection({ label, count, color, items, renderCard, defaul
 // ── Main Revision Dashboard ───────────────────────────────────────────────────
 
 export default function RevisionPage() {
+  const navigate = useNavigate();
   const [items,      setItems]      = useState([]);
   const [loading,    setLoading]    = useState(true);
   const [error,      setError]      = useState(null);
