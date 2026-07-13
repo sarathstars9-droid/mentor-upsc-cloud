@@ -1,4 +1,5 @@
 import { getUpscCountdownSummary } from '../utils/upscCountdown.js';
+import { formatDurationSeconds } from './progressNormalizer.js';
 
 // Helper to format decimal hours into hours & minutes (e.g. 17.25 -> 17h 15m)
 export function formatHoursAndMins(decimalHours) {
@@ -651,4 +652,37 @@ ${data.next_month_prescription}`;
 // 18. Compatibility wrapper for generateNightReport
 export function generateNightReport(data, userName = "Moulika") {
   return generateDailyNightReport(data, userName);
+}
+
+/**
+ * Generates the canonical Good Morning Telegram report text based on pure read-only calculated metrics.
+ *
+ * @param {Object} data - Canonical progress report data
+ * @param {string} userName - Name of the user (defaults to "Moulika")
+ * @returns {string} Formatted report text
+ */
+export function generateCanonicalGoodMorningReport(data, userName = "Moulika") {
+  const yesterdayVerified = formatDurationSeconds(data.yesterdayVerifiedSeconds);
+  const last7DaysVerified = formatDurationSeconds(data.last7DaysVerifiedSeconds);
+
+  const blocksStatus = data.todayBlocksCount > 0 ? "Available" : "Not available";
+  const minCommitmentLine = data.realisticMinimumMinutes
+    ? `Minimum commitment: ${data.realisticMinimumMinutes} minutes\n`
+    : "";
+
+  const reportText = `Good morning ${userName} 🌅
+
+Yesterday
+Timer verified: ${yesterdayVerified}
+
+Last 7 days
+Timer verified: ${last7DaysVerified}
+
+Today's blocks: ${blocksStatus}
+${minCommitmentLine}
+First action:
+${data.immediateAction}`;
+
+  const countdown = getUpscCountdownSummary();
+  return `${reportText}\n\n${countdown}`;
 }

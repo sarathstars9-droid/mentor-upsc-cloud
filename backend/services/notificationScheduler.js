@@ -200,8 +200,8 @@ async function tickScheduler(userId) {
           }
           await recordEvent(userId, 'GOOD_MORNING_MISSION', todayKey);
         } else if (state !== 'RECOVERY_WIZARD') {
-          const data = await progressService.getGoodMorningReportData(userId);
-          const text = reportGeneratorService.generateGoodMorningReport(data, userName);
+          const data = await progressService.getCanonicalGoodMorningReportData(userId);
+          const text = reportGeneratorService.generateCanonicalGoodMorningReport(data, userName);
           await notificationService.sendNotification(userId, 'GOOD_MORNING_MISSION', 'daily_date', todayKey, text, {});
           await recordEvent(userId, 'GOOD_MORNING_MISSION', todayKey);
         }

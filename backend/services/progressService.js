@@ -1,5 +1,6 @@
 import { query } from '../db/index.js';
 import { computeSyllabusProgress } from '../brain/syllabusProgressEngine.js';
+import { getKolkataDateKey, getRelativeKolkataDateKey, buildCanonicalGoodMorningData } from './progressNormalizer.js';
 import { getPrelimsDaysLeft, getMainsDaysLeft } from '../config/examCalendar.js';
 import { getDailyTargetMinutes } from './adaptiveGoalService.js';
 import { getBlockState } from './computeBlockState.js';
@@ -1225,4 +1226,69 @@ export async function getMonthlyMentorSummary(userId) {
     top3_weak: top3Weak,
     next_month_prescription: prescription
   };
+}
+
+export async function getCanonicalGoodMorningReportData(userId) {
+  const now = new Date();
+  const todayKey = getKolkataDateKey(now);
+  const yesterdayKey = getRelativeKolkataDateKey(now, -1);
+  const sevenDayEndKey = yesterdayKey;
+  const sevenDayStartKey = getRelativeKolkataDateKey(now, -7);
+
+  // 1. Fetch user metadata
+  const userRes = await query(
+    `SELECT name, mission_health_state, recovery_day FROM public.users WHERE id = $1`,
+    [userId]
+  );
+  const user = userRes.rows[0];
+
+  // 2. Fetch today's blocks
+  const todayBlocksRes = await query(
+    `SELECT * FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`,
+    [userId, todayKey]
+  );
+
+  // 3. Fetch yesterday's blocks
+  const yesterdayBlocksRes = await query(
+    `SELECT * FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`,
+    [userId, yesterdayKey]
+  );
+
+  // 4. Fetch seven-day blocks
+  const sevenDayBlocksRes = await query(
+    `SELECT * FROM public.study_blocks WHERE user_id = $1 AND day_key >= $2 AND day_key <= $3`,
+    [userId, sevenDayStartKey, sevenDayEndKey]
+  );
+
+  // 5. Fetch logs and events for yesterday and seven-day blocks
+  const allBlockIds = [
+    ...yesterdayBlocksRes.rows.map(b => b.id),
+    ...sevenDayBlocksRes.rows.map(b => b.id)
+  ].filter(Boolean);
+
+  let logs = [];
+  let events = [];
+  if (allBlockIds.length > 0) {
+    const logsRes = await query(
+      `SELECT * FROM public.block_logs WHERE block_id = ANY($1::uuid[])`,
+      [allBlockIds]
+    );
+    logs = logsRes.rows;
+
+    const eventsRes = await query(
+      `SELECT * FROM public.study_events WHERE block_id = ANY($1::uuid[])`,
+      [allBlockIds]
+    );
+    events = eventsRes.rows;
+  }
+
+  return buildCanonicalGoodMorningData({
+    now,
+    user,
+    todayBlocks: todayBlocksRes.rows,
+    yesterdayBlocks: yesterdayBlocksRes.rows,
+    sevenDayBlocks: sevenDayBlocksRes.rows,
+    logs,
+    events
+  });
 }
