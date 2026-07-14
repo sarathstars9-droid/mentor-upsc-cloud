@@ -987,42 +987,26 @@ if (!RUNNING_COMMIT_SHA) {
 
 app.get("/health", async (_req, res) => {
   let dbOk = false;
-  let dbTime = null;
-  let dbError = null;
   try {
-    const result = await query("SELECT NOW() AS now");
+    await query("SELECT 1");
     dbOk = true;
-    dbTime = result.rows[0].now;
   } catch (err) {
-    dbError = err.message || err.code || String(err);
+    // Log internally; never expose raw error details to callers.
+    console.error("[Health] DB liveness check failed:", err.message);
   }
-
-  const storageConfigured = Boolean(process.env.RAILWAY_VOLUME_MOUNT_PATH || process.env.S3_BUCKET);
-  const storageProvider = process.env.RAILWAY_VOLUME_MOUNT_PATH ? "railway_volume" : (process.env.S3_BUCKET ? "s3" : (process.env.NODE_ENV === "production" ? "none" : "local"));
-
-  res.status(dbOk ? 200 : 503).json({
-    ok: dbOk,
-    message: dbOk ? "backend live, DB connected" : "backend live, DB ERROR",
-    commit: RUNNING_COMMIT_SHA,
-    storage: {
-      provider: storageProvider,
-      configured: storageConfigured || process.env.NODE_ENV !== "production",
-      mountPath: process.env.RAILWAY_VOLUME_MOUNT_PATH || null
-    },
-    db: { connected: dbOk, time: dbTime, error: dbError },
-    env: {
-      NODE_ENV: process.env.NODE_ENV || "(not set)",
-      RAILWAY_ENVIRONMENT: process.env.RAILWAY_ENVIRONMENT || "(not set)",
-      DATABASE_URL_set: Boolean(process.env.DATABASE_URL),
-      DB_SSL: process.env.DB_SSL || "(not set)",
-      PORT: process.env.PORT || "(not set)",
-    },
+  return res.status(dbOk ? 200 : 503).json({
+    ok:     dbOk,
+    status: dbOk ? "healthy" : "unhealthy",
   });
 });
 
-/* -------------------- DEBUG DB CHECK (temporary) -------------------- */
+/* ── Production guard: blocks diagnostic routes in production ────────────── */
+// Returns 404 (not 403) so internal route structure is not disclosed.
+import { rejectInProduction } from './utils/productionGuard.js';
 
-app.get("/api/debug/db-check", async (req, res) => {
+/* -------------------- DEBUG DB CHECK (internal only) -------------------- */
+
+app.get("/api/debug/db-check", rejectInProduction, async (req, res) => {
   const results = {};
 
   // 0) Network Diagnostics
@@ -2432,22 +2416,23 @@ app.post("/api/prelims/practice/build", (req, res) => {
 
 app.get("/api/system/health", async (req, res) => {
   try {
-    const health = await healthMonitor.getHealthStatus();
-    return res.json(health);
+    // toPublicSummary() is a projection of getHealthStatus(); no second algorithm.
+    return res.json(await healthMonitor.toPublicSummary());
   } catch (err) {
-    console.error("[Health Endpoint Error]", err);
+    console.error("[Health Endpoint Error]", err.message);
+    // Never expose err.message or internal state to the caller.
     return res.status(500).json({
-      database: "Failed",
-      scheduler: "Failed",
-      telegram: "Failed",
-      error: err.message
+      status:    'unhealthy',
+      database:  'Failed',
+      scheduler: 'Failed',
+      telegram:  'Failed',
     });
   }
 });
 
-/* -------------------- SYSTEM DB DIAGNOSTICS ENDPOINT -------------------- */
+/* -------------------- SYSTEM DB DIAGNOSTICS (internal only) -------------------- */
 
-app.get("/api/system/db-test", async (req, res) => {
+app.get("/api/system/db-test", rejectInProduction, async (req, res) => {
   try {
     const pg = await import("pg");
     const dns = await import("dns/promises");

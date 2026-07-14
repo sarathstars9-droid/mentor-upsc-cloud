@@ -143,6 +143,25 @@ class HealthMonitor {
     };
   }
 
+  // Public projection of getHealthStatus().
+  // Returns only coarse, non-sensitive values safe for external callers.
+  // No second health algorithm — always derived from the internal result.
+  async toPublicSummary() {
+    const full = await this.getHealthStatus();
+    const overallStatus =
+      full.database === 'Healthy' &&
+      full.scheduler === 'Healthy' &&
+      full.telegram  === 'Healthy'
+        ? 'healthy'
+        : 'degraded';
+    return {
+      status:    overallStatus,
+      database:  full.database,
+      scheduler: full.scheduler,
+      telegram:  full.telegram,
+    };
+  }
+
   // Start heartbeat alert checks hourly
   startHeartbeatAlerts() {
     if (this.heartbeatInterval) return;
