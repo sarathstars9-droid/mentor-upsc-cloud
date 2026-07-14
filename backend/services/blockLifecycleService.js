@@ -90,14 +90,19 @@ export async function ensureBlockRecord(client, {
 // Transaction flow:
 //   1. Lock all active rows for user (FOR UPDATE prevents concurrent starts)
 //   2. Auto-complete any existing active block(s)
-//   3. Ensure target block row exists
-//   4. Validate transition
-//   5. Mark target active
+//   3. Fetch target block row by (user_id, block_id, day_key) — never upsert
+//   4. Validate transition via explicit status dispatch table
+//   5. Mark target active (lifecycle fields only — no metadata columns touched)
 //   6. Commit → DB unique index enforces single-active as final guard
+//   7. Post-commit: log event and dispatch notification from committed row
+//
+// B1A: A normal Start must not modify title, subject, topic, planned_start,
+//      planned_end, planned_minutes, subject_id, topic_id, node_id, block_id,
+//      day_key, or user_id. Missing block → 404 (no creation fallback).
 
-export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadata = {}) {
+export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadata = {}, deps = {}) {
   console.log(`[LifecycleRoute] startBlock called blockId=${blockId}`);
-  const client = await pool.connect();
+  const client = deps.poolClient || await pool.connect();
   try {
     await client.query('BEGIN');
 
@@ -109,7 +114,7 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
       [userId]
     );
 
-    // Step 2: Auto-complete each existing active block
+    // Step 2: Auto-complete each existing active block (unchanged behaviour)
     for (const row of activeRows) {
       if (row.block_id === blockId) continue; // handled in step 5
 
@@ -189,24 +194,77 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
       );
     }
 
-    // Step 3: Ensure target row exists
-    const targetRow = await ensureBlockRecord(client, {
-      userId, blockId, dayKey, ...metadata,
-    });
+    // Step 3: Fetch the persisted target block row.
+    // B1A: No upsert. Missing block → 404. Metadata is never overwritten here.
+    const { rows: fetchedRows } = await client.query(
+      `SELECT * FROM study_blocks
+       WHERE user_id = $1 AND block_id = $2 AND day_key = $3
+       FOR UPDATE`,
+      [userId, blockId, dayKey]
+    );
 
-    if (!targetRow) throw new Error(`ensureBlockRecord returned null for ${blockId}`);
-
-    // Step 4: Validate transition
-    if (!['planned', 'upcoming', 'active'].includes(targetRow.status)) {
-      assertTransition(targetRow.status, 'active', dayKey);
+    if (!fetchedRows.length) {
+      await client.query('ROLLBACK');
+      throw Object.assign(
+        new Error(`Block not found: blockId=${blockId} dayKey=${dayKey}`),
+        { code: 'NOT_FOUND', status: 404 }
+      );
     }
-    if (targetRow.status === 'active') {
-      // Already active (same block re-started) — just return current state
-      await client.query('COMMIT');
-      return computeBlockState(targetRow);
+
+    const targetRow = fetchedRows[0];
+
+    // Step 4: Explicit status dispatch table.
+    // Every non-startable status is handled explicitly; unknown status fails closed.
+    switch (targetRow.status) {
+      case 'planned':
+      case 'upcoming':
+      case 'skipped_rescue':
+        // Startable — fall through to step 5.
+        // skipped_rescue day-boundary guard is handled by assertTransition below.
+        if (targetRow.status === 'skipped_rescue') {
+          assertTransition(targetRow.status, 'active', dayKey);
+        }
+        break;
+
+      case 'active':
+        // Idempotent: same block re-sent. Return current state.
+        // No duplicate event created; no duplicate notification sent.
+        await client.query('COMMIT');
+        return computeBlockState(targetRow);
+
+      case 'paused':
+        // Paused blocks must go through resumeBlock, not startBlock.
+        await client.query('ROLLBACK');
+        throw Object.assign(
+          new Error(`Block is paused. Use Resume to continue.`),
+          { code: 'USE_RESUME', status: 409 }
+        );
+
+      case 'completed':
+      case 'partial':
+      case 'stopped':
+      case 'missed':
+      case 'skipped':
+      case 'expired':
+      case 'auto_closed':
+        // Terminal states — reject.
+        await client.query('ROLLBACK');
+        throw Object.assign(
+          new Error(`Block already in terminal state: ${targetRow.status}`),
+          { code: 'INVALID_TRANSITION', status: 409 }
+        );
+
+      default:
+        // Unknown status — fail closed.
+        await client.query('ROLLBACK');
+        throw Object.assign(
+          new Error(`Unknown block status '${targetRow.status}' — refusing to start`),
+          { code: 'INVALID_TRANSITION', status: 409 }
+        );
     }
 
-    // Step 5: Mark target active
+    // Step 5: Lifecycle-only UPDATE.
+    // Only lifecycle columns are modified. No metadata column is included.
     const { rows: updated } = await client.query(
       `UPDATE study_blocks
        SET status               = 'active',
@@ -215,51 +273,81 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
            last_resumed_at      = NULL,
            calendar_sync_status = 'pending',
            updated_at           = NOW()
-       WHERE id = $1
+       WHERE id = $1 AND user_id = $2
        RETURNING *`,
-      [targetRow.id]
+      [targetRow.id, userId]
     );
 
-    await client.query('COMMIT');
-    // Invalidate only after commit is confirmed — never on rollback path
-    try { invalidateSuggestionsCache(userId); } catch {}
+    if (updated.length !== 1) {
+      // Ownership check: if nothing returned, the user_id did not match.
+      await client.query('ROLLBACK');
+      throw Object.assign(
+        new Error(`Start update matched no rows — ownership check failed`),
+        { code: 'NOT_FOUND', status: 404 }
+      );
+    }
 
-    // Event Ledger Hook
+    await client.query('COMMIT');
+    // Invalidate suggestions cache only after successful commit.
+    try { 
+      if (deps.invalidateSuggestionsCache) deps.invalidateSuggestionsCache(userId);
+      else invalidateSuggestionsCache(userId); 
+    } catch {}
+
+    // committed row is the authoritative source for all post-commit work.
+    const committedRow = updated[0];
+
+    // Step 7a: Event ledger — uses committedRow, never request metadata.
+    // This is post-commit; failure must not roll back the committed start.
     try {
-      const { logStudyEvent } = await import('./eventService.js');
-      await logStudyEvent({
+      const logger = deps.logStudyEvent || (await import('./eventService.js')).logStudyEvent;
+      await logger({
         userId,
         eventType: 'BLOCK_STARTED',
-        subject: targetRow.subject,
-        topic: targetRow.topic,
-        syllabusNodeId: targetRow.node_id,
-        blockId: targetRow.id,
-        metadata
+        subject:        committedRow.subject,
+        topic:          committedRow.topic,
+        syllabusNodeId: committedRow.node_id,
+        blockId:        committedRow.id,
+        metadata: {
+          planned_minutes: committedRow.planned_minutes,
+          planned_start:   committedRow.planned_start,
+          planned_end:     committedRow.planned_end,
+        }
       });
     } catch (e) {
       console.error('[blockLifecycle] startBlock event log failed:', e.message);
     }
 
+    // Step 7b: Notification — uses committedRow exclusively.
+    // Post-commit: failure must not roll back or reverse the started state.
     try {
-      const isTestRequest = (targetRow.block_id && targetRow.block_id.startsWith('volume_survival_test_block_')) || metadata?.isTestData === true || metadata?.is_test_data === true || targetRow.is_test_data === true;
-      const { sendNotification } = await import('./notificationService.js');
-      await sendNotification(
+      const isTestRequest =
+        (committedRow.block_id && committedRow.block_id.startsWith('volume_survival_test_block_')) ||
+        metadata?.isTestData === true ||
+        metadata?.is_test_data === true ||
+        committedRow.is_test_data === true;
+      const sender = deps.sendNotification || (await import('./notificationService.js')).sendNotification;
+      await sender(
         userId,
         'BLOCK_STARTED',
         'study_block',
-        targetRow.id,
-        `🚀 *Block Started*\n\nSubject: ${targetRow.subject || 'Block'}\nTarget: ${targetRow.planned_minutes || 0}m\n\nFocus: create output, not just reading.`,
+        committedRow.id,
+        `🚀 *Block Started*\n\nSubject: ${committedRow.subject || 'Block'}\nTarget: ${committedRow.planned_minutes || 0}m\n\nFocus: create output, not just reading.`,
         { isTestData: isTestRequest }
       );
-      console.log(`[TelegramLifecycle] BLOCK_STARTED queued blockId=${targetRow.id}`);
+      console.log(`[TelegramLifecycle] BLOCK_STARTED queued blockId=${committedRow.id}`);
     } catch (e) {
       console.error('[TelegramLifecycle] BLOCK_STARTED failed:', e.message);
     }
 
-    return computeBlockState(updated[0]);
+    return computeBlockState(committedRow);
 
   } catch (err) {
-    await client.query('ROLLBACK');
+    // Only ROLLBACK if we haven't already committed or explicitly rolled back.
+    // Errors thrown after COMMIT will not have an open transaction.
+    if (err.code !== 'NOT_FOUND' && err.code !== 'USE_RESUME' && err.code !== 'INVALID_TRANSITION') {
+      try { await client.query('ROLLBACK'); } catch {}
+    }
     // Unique index violation = race condition: another tab already started a block
     if (err.code === '23505' && err.constraint === 'uniq_active_block_per_user') {
       throw Object.assign(
@@ -272,6 +360,7 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
     client.release();
   }
 }
+
 
 // ── PAUSE ────────────────────────────────────────────────────────────────────
 
