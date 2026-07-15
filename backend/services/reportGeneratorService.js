@@ -661,16 +661,18 @@ export function generateNightReport(data, userName = "Moulika") {
  * @param {string} userName - Name of the user (defaults to "Moulika")
  * @returns {string} Formatted report text
  */
-export function generateCanonicalGoodMorningReport(data, userName = "Moulika") {
+export function generateCanonicalGoodMorningReport(data, userName = "User") {
   const yesterdayVerified = formatDurationSeconds(data.yesterdayVerifiedSeconds);
   const last7DaysVerified = formatDurationSeconds(data.last7DaysVerifiedSeconds);
 
-  const blocksStatus = data.todayBlocksCount > 0 ? "Available" : "Not available";
-  const minCommitmentLine = data.realisticMinimumMinutes
-    ? `Minimum commitment: ${data.realisticMinimumMinutes} minutes\n`
-    : "";
+  if (!data.planState) {
+    // Legacy backward-compatible template format
+    const blocksStatus = data.todayBlocksCount > 0 ? "Available" : "Not available";
+    const minCommitmentLine = data.realisticMinimumMinutes
+      ? `Minimum commitment: ${data.realisticMinimumMinutes} minutes\n`
+      : "";
 
-  const reportText = `Good morning ${userName} 🌅
+    const reportText = `Good morning ${userName} 🌅
 
 Yesterday
 Timer verified: ${yesterdayVerified}
@@ -682,6 +684,36 @@ Today's blocks: ${blocksStatus}
 ${minCommitmentLine}
 First action:
 ${data.immediateAction}`;
+
+    const countdown = getUpscCountdownSummary();
+    return `${reportText}\n\n${countdown}`;
+  }
+
+  const planState = data.planState;
+  const state = planState.state;
+
+  let planStatusSection = "";
+  if (state === 'USER_PLAN_PRESENT') {
+    planStatusSection = `Today’s plan is ready ✅\n\nYour study blocks are available.\nFirst task:\n${data.immediateAction}`;
+  } else if (state === 'RECOVERY_ONLY') {
+    planStatusSection = `Today’s plan has not been uploaded yet.\n\nA recovery task is available, but please upload today’s full study plan so MentorOS can guide the complete day.\n\nFirst available recovery task:\n${data.immediateAction}`;
+  } else if (state === 'SYSTEM_PLAN_ONLY') {
+    planStatusSection = `Today’s personal plan has not been uploaded yet.\n\nMentorOS has prepared suggested tasks, but they will not be treated as your confirmed plan until you upload or approve today’s schedule.`;
+  } else if (state === 'NO_PLAN') {
+    planStatusSection = `Today’s plan has not been uploaded yet.\n\nUpload your study plan so MentorOS can organise your blocks, reminders and daily review.`;
+  } else { // AMBIGUOUS
+    planStatusSection = `MentorOS could not confirm today’s plan.\n\nPlease open the Plan page and upload or confirm today’s schedule.`;
+  }
+
+  const reportText = `Good morning ${userName} 🌅
+
+Yesterday
+Timer verified: ${yesterdayVerified}
+
+Last 7 days
+Timer verified: ${last7DaysVerified}
+
+${planStatusSection}`;
 
   const countdown = getUpscCountdownSummary();
   return `${reportText}\n\n${countdown}`;

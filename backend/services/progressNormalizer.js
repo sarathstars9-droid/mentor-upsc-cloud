@@ -1,4 +1,4 @@
-// backend/services/progressNormalizer.js
+export const APPLICATION_TIMEZONE = 'Asia/Kolkata';
 
 // SAFETY CONFIGURATION CONSTANTS
 // Genuine terminal execution statuses proven by lifecycle code
@@ -13,7 +13,7 @@ export const ACTIONABLE_STATUS_ALLOWLIST = ['planned', 'active', 'paused'];
  */
 export function getKolkataDateParts(date = new Date()) {
   const formatter = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'Asia/Kolkata',
+    timeZone: APPLICATION_TIMEZONE,
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -382,28 +382,71 @@ export function buildCanonicalGoodMorningData({
   sevenDayBlocks = [],
   logs = [],
   events = [],
-  maxSessionDurationSeconds = undefined
+  maxSessionDurationSeconds = undefined,
+  planState = null
 }) {
-  const userName = user?.name || 'Moulika';
+  const userName = user?.name || 'User';
 
   const yesterdayAgg = aggregateCanonicalProgress(yesterdayBlocks, logs, events, maxSessionDurationSeconds);
   const last7DaysAgg = aggregateCanonicalProgress(sevenDayBlocks, logs, events, maxSessionDurationSeconds);
 
   // Today's blocks status checking actionable allowlist
   const actionableTodayBlocks = todayBlocks.filter(b => ACTIONABLE_STATUS_ALLOWLIST.includes(b?.status));
+
   const todayBlocksCount = actionableTodayBlocks.length;
+  const userPlanBlockCount = planState ? planState.userPlanBlockCount : 0;
+  const recoveryBlockCount = planState ? planState.recoveryBlockCount : 0;
+  const systemGeneratedBlockCount = planState ? planState.systemGeneratedBlockCount : 0;
 
   let todayPlannedMinutes = 0;
   for (const b of actionableTodayBlocks) {
     todayPlannedMinutes += Number(b.planned_minutes) || 0;
   }
 
+  // Block classification helpers
+  const hasPlanAcceptedEvent = planState?.evidence?.hasPlanAcceptedEvent || false;
+
+  const isRecoveryBlock = (b) => {
+    return b.block_type === 'recovery' ||
+           (b.block_id && String(b.block_id).startsWith('rec_')) ||
+           (b.source_meta && b.source_meta.is_recovery === true);
+  };
+
+  const isSystemBlock = (b) => {
+    return ['system', 'placeholder', 'suggestion'].includes((b.source_type || '').toLowerCase()) ||
+           (b.source_meta && b.source_meta.is_system === true);
+  };
+
+  const isUserBlock = (b) => {
+    if (isRecoveryBlock(b) || isSystemBlock(b)) return false;
+    return b.source_type === 'uploaded_plan' ||
+           b.source_type === 'user_uploaded' ||
+           (b.source_type === 'ocr' && hasPlanAcceptedEvent);
+  };
+
   let immediateAction = "Upload one study block and begin it.";
-  if (actionableTodayBlocks.length > 0) {
+  let candidateBlocks = [];
+
+  if (planState) {
+    if (planState.state === 'USER_PLAN_PRESENT') {
+      candidateBlocks = actionableTodayBlocks.filter(isUserBlock);
+    } else if (planState.state === 'RECOVERY_ONLY') {
+      candidateBlocks = actionableTodayBlocks.filter(isRecoveryBlock);
+    } else if (planState.state === 'SYSTEM_PLAN_ONLY') {
+      candidateBlocks = actionableTodayBlocks.filter(isSystemBlock);
+    } else {
+      // NO_PLAN or AMBIGUOUS -> no immediate action
+      candidateBlocks = [];
+    }
+  } else {
+    candidateBlocks = actionableTodayBlocks;
+  }
+
+  if (candidateBlocks.length > 0) {
     // Priority order: active -> paused -> planned
-    const activeBlocks = actionableTodayBlocks.filter(b => b.status === 'active');
-    const pausedBlocks = actionableTodayBlocks.filter(b => b.status === 'paused');
-    const plannedBlocks = actionableTodayBlocks.filter(b => b.status === 'planned');
+    const activeBlocks = candidateBlocks.filter(b => b.status === 'active');
+    const pausedBlocks = candidateBlocks.filter(b => b.status === 'paused');
+    const plannedBlocks = candidateBlocks.filter(b => b.status === 'planned');
 
     let selectedBlock = null;
 
@@ -443,8 +486,12 @@ export function buildCanonicalGoodMorningData({
     last7DaysVerifiedSeconds: last7DaysAgg.verifiedTimerSeconds,
     last7DaysAcceptedSelfReportedSeconds: last7DaysAgg.acceptedSelfReportedSeconds,
     todayBlocksCount,
+    userPlanBlockCount,
+    recoveryBlockCount,
+    systemGeneratedBlockCount,
     todayPlannedMinutes,
     realisticMinimumMinutes: null, // Omitted in Phase 1
-    immediateAction
+    immediateAction,
+    planState
   };
 }

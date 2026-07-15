@@ -1,6 +1,6 @@
 import { query } from '../db/index.js';
 import { computeSyllabusProgress } from '../brain/syllabusProgressEngine.js';
-import { getKolkataDateKey, getRelativeKolkataDateKey, buildCanonicalGoodMorningData } from './progressNormalizer.js';
+import { getKolkataDateKey, getRelativeKolkataDateKey, buildCanonicalGoodMorningData, APPLICATION_TIMEZONE } from './progressNormalizer.js';
 import { getPrelimsDaysLeft, getMainsDaysLeft } from '../config/examCalendar.js';
 import { getDailyTargetMinutes } from './adaptiveGoalService.js';
 import { getBlockState } from './computeBlockState.js';
@@ -1282,6 +1282,15 @@ export async function getCanonicalGoodMorningReportData(userId) {
     events = eventsRes.rows;
   }
 
+  const timezone = APPLICATION_TIMEZONE;
+  let planState = null;
+  try {
+    const { getSafeDailyPlanState } = await import('./dailyPlanStateService.js');
+    planState = await getSafeDailyPlanState({ userId, dayKey: todayKey });
+  } catch (err) {
+    console.error('Failed to get safe daily plan state in getCanonicalGoodMorningReportData:', err);
+  }
+
   return buildCanonicalGoodMorningData({
     now,
     user,
@@ -1289,6 +1298,7 @@ export async function getCanonicalGoodMorningReportData(userId) {
     yesterdayBlocks: yesterdayBlocksRes.rows,
     sevenDayBlocks: sevenDayBlocksRes.rows,
     logs,
-    events
+    events,
+    planState
   });
 }

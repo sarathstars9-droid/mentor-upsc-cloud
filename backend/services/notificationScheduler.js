@@ -5,6 +5,8 @@ import * as notificationService from './notificationService.js';
 import * as consistencyService from './consistencyService.js';
 import * as behaviorEscalationService from './behaviorEscalationService.js';
 import * as psychologyMessageService from './psychologyMessageService.js';
+import { getSafeDailyPlanState, shouldSendMissingPlanReminder, buildMissingPlanReminder } from './dailyPlanStateService.js';
+import { APPLICATION_TIMEZONE } from './progressNormalizer.js';
 import { healthMonitor } from './healthMonitor.js';
 
 let schedulerInterval = null;
@@ -99,13 +101,14 @@ async function tickScheduler(userId) {
   let hasError = false;
   
   // 1. Get Kolkata timezone details
-  const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+  const kolkataStr = now.toLocaleString("en-US", { timeZone: APPLICATION_TIMEZONE });
   const d = new Date(kolkataStr);
   
   const yyyy = d.getFullYear();
   const mm = String(d.getMonth() + 1).padStart(2, '0');
   const dd = String(d.getDate()).padStart(2, '0');
   const todayKey = `${yyyy}-${mm}-${dd}`;
+  const timezone = APPLICATION_TIMEZONE;
   
   const hour = d.getHours();
   const minute = d.getMinutes();
@@ -214,17 +217,21 @@ async function tickScheduler(userId) {
   // ── 1.c Plan Not Uploaded Alert (06:00 AM) ─────────────────────────────────
   if (hour === 6 && minute === 0 && !isEscalationPaused) {
     try {
-      const userRes = await query(`SELECT mission_health_state, recovery_day FROM public.users WHERE id = $1`, [userId]);
-      const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+      const userRes = await query(`SELECT name, mission_health_state, recovery_day FROM public.users WHERE id = $1`, [userId]);
+      const user = userRes.rows[0];
+      const state = user?.mission_health_state || 'HEALTHY';
+      const userName = user?.name || "User";
       if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
         if (!(await hasEvent(userId, 'PLAN_NOT_UPLOADED', todayKey))) {
-          const { rows } = await query(`SELECT id FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [userId, todayKey]);
-          if (rows.length === 0) {
-            const recoveryDay = userRes.rows[0]?.recovery_day || 0;
-            const text = psychologyMessageService.getPlanNotUploadedMessage(state, "Moulika", recoveryDay);
+          const planState = await getSafeDailyPlanState({ userId, dayKey: todayKey });
+
+          if (shouldSendMissingPlanReminder(planState)) {
+            const msg = buildMissingPlanReminder({ planState, userName, notificationType: 'PLAN_NOT_UPLOADED' });
             
-            await notificationService.sendNotification(userId, 'PLAN_NOT_UPLOADED', 'daily_date', todayKey, text, {});
-            await recordEvent(userId, 'PLAN_NOT_UPLOADED', todayKey);
+            const result = await notificationService.sendNotification(userId, 'PLAN_NOT_UPLOADED', 'daily_date', todayKey, msg, {});
+            if (result && result.ok) {
+              await recordEvent(userId, 'PLAN_NOT_UPLOADED', todayKey);
+            }
           }
         }
       }
@@ -240,30 +247,28 @@ async function tickScheduler(userId) {
       const userRes = await query(`SELECT name, mission_health_state, consecutive_zero_study_days FROM public.users WHERE id = $1`, [userId]);
       const user = userRes.rows[0];
       const state = user?.mission_health_state || 'HEALTHY';
-      const userName = user?.name || "Moulika";
+      const userName = user?.name || "User";
       const zeroStreak = user?.consecutive_zero_study_days || 0;
       
-      const planState = await checkUserPlanState(userId, todayKey);
-      
-      if (planState.hasCompletedBlock) {
-        logEscalationDebug('NO_PLAN_STRICT_9AM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'User already completed study block');
-      } else if (planState.hasRealPlan) {
-        logEscalationDebug('NO_PLAN_STRICT_9AM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'User already has a real plan uploaded');
+      const planState = await getSafeDailyPlanState({ userId, dayKey: todayKey });
+
+      if (planState.state === 'USER_PLAN_PRESENT') {
+        logEscalationDebug('NO_PLAN_STRICT_9AM', userId, userName, state, zeroStreak, planState.evidence.totalBlocks, true, false, false, 'SKIP', 'User already has a real plan uploaded');
       } else {
         const lockAcquired = await acquireAtomicLock(userId, 'NO_PLAN_STRICT_9AM', todayKey);
         if (lockAcquired) {
-          const text = psychologyMessageService.getNoPlanStrict9AMMessage(userName);
+          const text = buildMissingPlanReminder({ planState, userName, notificationType: 'NO_PLAN_STRICT_9AM' });
           const result = await notificationService.sendNotification(userId, 'NO_PLAN_STRICT_9AM', 'daily_date', todayKey, text, {});
           if (result && result.ok) {
             await updateAtomicLockStatus(userId, 'NO_PLAN_STRICT_9AM', todayKey, 'sent');
             await recordEvent(userId, 'NO_PLAN_STRICT_9AM', todayKey);
-            logEscalationDebug('NO_PLAN_STRICT_9AM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, true, 'SEND', 'Lock acquired, notification sent successfully');
+            logEscalationDebug('NO_PLAN_STRICT_9AM', userId, userName, state, zeroStreak, planState.evidence.totalBlocks, false, false, true, 'SEND', 'Lock acquired, notification sent successfully');
           } else {
             await updateAtomicLockStatus(userId, 'NO_PLAN_STRICT_9AM', todayKey, 'failed');
-            logEscalationDebug('NO_PLAN_STRICT_9AM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, true, 'SKIP', `sendNotification failed: ${result?.reason || result?.error || 'unknown'}`);
+            logEscalationDebug('NO_PLAN_STRICT_9AM', userId, userName, state, zeroStreak, planState.evidence.totalBlocks, false, false, true, 'SKIP', `sendNotification failed: ${result?.reason || result?.error || 'unknown'}`);
           }
         } else {
-          logEscalationDebug('NO_PLAN_STRICT_9AM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'Atomic lock not acquired (already sent today or pending)');
+          logEscalationDebug('NO_PLAN_STRICT_9AM', userId, userName, state, zeroStreak, planState.evidence.totalBlocks, false, false, false, 'SKIP', 'Atomic lock not acquired (already sent today or pending)');
         }
       }
     } catch (err) {
@@ -1019,7 +1024,7 @@ async function checkUserPlanState(userId, todayKey) {
      WHERE user_id = $1 AND day_key = $2`,
     [userId, todayKey]
   );
-  
+
   const hasCompletedBlock = rows.some(b => 
     ['completed', 'done', 'partial'].includes((b.status || '').toLowerCase()) || ((b.actual_minutes || 0) > 0)
   );
