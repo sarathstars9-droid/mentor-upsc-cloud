@@ -106,6 +106,8 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
   try {
     await client.query('BEGIN');
 
+    const transitionAt = new Date().toISOString();
+
     // Step 1: Lock all currently active rows for this user
     const { rows: activeRows } = await client.query(
       `SELECT * FROM study_blocks
@@ -120,25 +122,25 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
 
       // Fold in any open pause duration before completing
       const foldPauseSec = row.paused_at
-        ? Math.max(0, Math.floor((Date.now() - new Date(row.paused_at).getTime()) / 1000))
+        ? Math.max(0, Math.floor((new Date(transitionAt).getTime() - new Date(row.paused_at).getTime()) / 1000))
         : 0;
 
       await client.query(
         `UPDATE study_blocks
          SET status                = 'completed',
-             ended_at              = NOW(),
-             total_pause_seconds   = total_pause_seconds + $2,
+             ended_at              = $2::timestamp with time zone,
+             total_pause_seconds   = total_pause_seconds + $3,
              paused_at             = NULL,
              completion_reason     = 'auto_stopped_on_new_start',
              calendar_sync_status  = 'pending',
-             updated_at            = NOW()
+             updated_at            = $2::timestamp with time zone
          WHERE id = $1`,
-        [row.id, foldPauseSec]
+        [row.id, transitionAt, foldPauseSec]
       );
       
       try {
-        const startedAt = row.started_at ? new Date(row.started_at).getTime() : Date.now();
-        const endedAt = Date.now();
+        const startedAt = row.started_at ? new Date(row.started_at).getTime() : new Date(transitionAt).getTime();
+        const endedAt = new Date(transitionAt).getTime();
         const pauseSec = (row.total_pause_seconds || 0) + foldPauseSec;
         const actualMinutes = Math.max(0, Math.round((endedAt - startedAt - (pauseSec * 1000)) / 60000));
 
@@ -151,8 +153,8 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
           `INSERT INTO public.block_logs (
              block_id, user_id, started_at, ended_at, actual_minutes, completion_status, confidence
            )
-           VALUES ($1, $2, $3, NOW(), $4, 'completed', 'auto_stopped_on_new_start')`,
-          [row.id, userId, row.started_at || new Date(), actualMinutes]
+           VALUES ($1, $2, $3, $4::timestamp with time zone, $5, 'completed', 'auto_stopped_on_new_start')`,
+          [row.id, userId, row.started_at || new Date(transitionAt), transitionAt, actualMinutes]
         );
 
         const { logStudyEvent } = await import('./eventService.js');
@@ -163,6 +165,7 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
           topic: row.topic,
           syllabusNodeId: row.node_id,
           blockId: row.id,
+          occurrenceTimestamp: transitionAt,
           metadata: {
             actual_minutes: actualMinutes,
             completion_status: 'completed',
@@ -181,7 +184,8 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
           'BLOCK_COMPLETED',
           'study_block',
           row.id,
-          `✅ *Block Completed*\nSubject: ${row.subject || 'Block'}\nPlanned: ${row.planned_minutes || 0}m\nActual: ${actualMinutes}m\nThis counts toward your ${row.subject || 'target'}.`
+          `✅ *Block Completed*\nSubject: ${row.subject || 'Block'}\nPlanned: ${row.planned_minutes || 0}m\nActual: ${actualMinutes}m\nThis counts toward your ${row.subject || 'target'}.`,
+          { actualEnd: transitionAt }
         );
         console.log(`[TelegramLifecycle] BLOCK_COMPLETED sent blockId=${row.id}`);
       } catch (e) {
@@ -268,14 +272,14 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
     const { rows: updated } = await client.query(
       `UPDATE study_blocks
        SET status               = 'active',
-           started_at           = COALESCE(started_at, NOW()),
+           started_at           = COALESCE(started_at, $3::timestamp with time zone),
            paused_at            = NULL,
            last_resumed_at      = NULL,
            calendar_sync_status = 'pending',
-           updated_at           = NOW()
+           updated_at           = $3::timestamp with time zone
        WHERE id = $1 AND user_id = $2
        RETURNING *`,
-      [targetRow.id, userId]
+      [targetRow.id, userId, transitionAt]
     );
 
     if (updated.length !== 1) {
@@ -308,6 +312,7 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
         topic:          committedRow.topic,
         syllabusNodeId: committedRow.node_id,
         blockId:        committedRow.id,
+        occurrenceTimestamp: committedRow.started_at,
         metadata: {
           planned_minutes: committedRow.planned_minutes,
           planned_start:   committedRow.planned_start,
@@ -333,7 +338,7 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
         'study_block',
         committedRow.id,
         `🚀 *Block Started*\n\nSubject: ${committedRow.subject || 'Block'}\nTarget: ${committedRow.planned_minutes || 0}m\n\nFocus: create output, not just reading.`,
-        { isTestData: isTestRequest }
+        { isTestData: isTestRequest, actualStart: committedRow.started_at }
       );
       console.log(`[TelegramLifecycle] BLOCK_STARTED queued blockId=${committedRow.id}`);
     } catch (e) {
@@ -569,16 +574,17 @@ export async function completeBlock(
     }
   }
 
+  const transitionAt = new Date().toISOString();
   const { rows } = await criticalQuery(
     `UPDATE study_blocks
      SET status              = $4,
-         started_at          = COALESCE(started_at, NOW()),
-         ended_at            = NOW(),
-         completed_at        = CASE WHEN $4 = 'completed' THEN NOW() ELSE completed_at END,
+         started_at          = COALESCE(started_at, $12::timestamp with time zone),
+         ended_at            = COALESCE(ended_at, $12::timestamp with time zone),
+         completed_at        = CASE WHEN $4 = 'completed' THEN COALESCE(completed_at, $12::timestamp with time zone) ELSE completed_at END,
          total_pause_seconds = total_pause_seconds
                                + CASE WHEN paused_at IS NOT NULL
                                       THEN GREATEST(0,
-                                             EXTRACT(EPOCH FROM (NOW() - paused_at))::INTEGER)
+                                             EXTRACT(EPOCH FROM ($12::timestamp with time zone - paused_at))::INTEGER)
                                       ELSE 0
                                  END,
          paused_at           = NULL,
@@ -589,7 +595,7 @@ export async function completeBlock(
          completion_reason   = $4,
          proof_url           = COALESCE($5, proof_url),
          proof_type          = COALESCE($6, proof_type),
-         proof_uploaded_at   = CASE WHEN $5 IS NOT NULL OR $7 = 'waived' THEN NOW() ELSE proof_uploaded_at END,
+         proof_uploaded_at   = CASE WHEN $5 IS NOT NULL OR $7 = 'waived' THEN COALESCE(proof_uploaded_at, $12::timestamp with time zone) ELSE proof_uploaded_at END,
          proof_verification_status = COALESCE($7, proof_verification_status, 'verified'),
          proof_notes         = COALESCE($8, proof_notes),
          completion_source   = $9,
@@ -598,11 +604,11 @@ export async function completeBlock(
          proof_uploaded      = CASE WHEN $5 IS NOT NULL OR proof_url IS NOT NULL THEN TRUE ELSE proof_uploaded END,
          calendar_sync_status = 'pending',
          linkage_pending     = TRUE,
-         updated_at          = NOW()
+         updated_at          = $12::timestamp with time zone
      WHERE user_id = $1 AND block_id = $2 AND day_key = $3
        AND status IN ('planned', 'active', 'paused')
      RETURNING *`,
-    [userId, blockId, dayKey, finalStatus, proofUrl, proofType, proofStatus, proofNotes, completionSource, completedBy, isTest]
+    [userId, blockId, dayKey, finalStatus, proofUrl, proofType, proofStatus, proofNotes, completionSource, completedBy, isTest, transitionAt]
   );
 
   if (!rows.length) {
@@ -628,17 +634,18 @@ export async function completeBlock(
     calculatedMins = rows[0].planned_minutes || 30;
   }
 
-  await criticalQuery(
-    `UPDATE study_blocks SET actual_minutes = $1 WHERE id = $2`,
+  const { rows: finalRows } = await criticalQuery(
+    `UPDATE study_blocks SET actual_minutes = $1 WHERE id = $2 RETURNING *`,
     [calculatedMins, rows[0].id]
   );
+  const finalBlock = finalRows[0] || rows[0];
   console.log(`[PlanWrite] study_blocks updated status=${finalStatus} actual_minutes=${calculatedMins}`);
 
   const numericConfidence = toNumericConfidence(confidence);
   const confidenceLabel = toConfidenceLabel(confidence);
 
   const insertParams = [
-      rows[0].id, userId, rows[0].started_at || new Date(), rows[0].ended_at || new Date(),
+      finalBlock.id, userId, finalBlock.started_at || new Date(), finalBlock.ended_at || new Date(),
       calculatedMins, finalStatus, outputType, outputCount || 0, accuracy, score, numericConfidence, weaknessNote
   ];
   console.log(`[completeBlock] Executing block_logs INSERT with params:`, JSON.stringify(insertParams));
@@ -671,10 +678,11 @@ export async function completeBlock(
     await logStudyEvent({
       userId,
       eventType: 'BLOCK_COMPLETED',
-      subject: rows[0].subject,
-      topic: rows[0].topic,
-      syllabusNodeId: rows[0].node_id,
-      blockId: rows[0].id,
+      subject: finalBlock.subject,
+      topic: finalBlock.topic,
+      syllabusNodeId: finalBlock.node_id,
+      blockId: finalBlock.id,
+      occurrenceTimestamp: finalBlock.ended_at,
       metadata: studyEventMetadata
     });
     console.log(`[PlanWrite] study_events inserted`);
@@ -689,17 +697,18 @@ export async function completeBlock(
         userId,
         finalStatus === 'skipped' || finalStatus === 'missed' ? 'BLOCK_SKIPPED' : 'BLOCK_COMPLETED',
         'study_block',
-        rows[0].id,
+        finalBlock.id,
         finalStatus === 'skipped' || finalStatus === 'missed' ?
-        `⏭️ *Block Skipped*\nSubject: ${rows[0].subject || 'Block'}\nPlanned: ${rows[0].planned_minutes || 0}m\nDon't worry, adjust your plan.` :
-        `✅ *Block Completed*\nSubject: ${rows[0].subject || 'Block'}\nPlanned: ${rows[0].planned_minutes || 0}m\nActual: ${calculatedMins}m\nThis counts toward your ${rows[0].subject || 'target'}.`
+        `⏭️ *Block Skipped*\nSubject: ${finalBlock.subject || 'Block'}\nPlanned: ${finalBlock.planned_minutes || 0}m\nDon't worry, adjust your plan.` :
+        `✅ *Block Completed*\nSubject: ${finalBlock.subject || 'Block'}\nPlanned: ${finalBlock.planned_minutes || 0}m\nActual: ${calculatedMins}m\nThis counts toward your ${finalBlock.subject || 'target'}.`,
+        { actualEnd: finalBlock.ended_at }
       );
-      console.log(`[TelegramLifecycle] ${finalStatus === 'skipped' || finalStatus === 'missed' ? 'BLOCK_SKIPPED' : 'BLOCK_COMPLETED'} sent blockId=${rows[0].id}`);
+      console.log(`[TelegramLifecycle] ${finalStatus === 'skipped' || finalStatus === 'missed' ? 'BLOCK_SKIPPED' : 'BLOCK_COMPLETED'} sent blockId=${finalBlock.id}`);
     } catch (e) {
       console.error('[TelegramLifecycle] BLOCK_COMPLETED/SKIPPED failed:', e.message);
     }
   } else {
-    console.log(`[TelegramLifecycle] Skipped sending telegram message for test blockId=${rows[0].id}`);
+    console.log(`[TelegramLifecycle] Skipped sending telegram message for test blockId=${finalBlock.id}`);
   }
 
   try { invalidateSuggestionsCache(userId); } catch {}
@@ -710,14 +719,14 @@ export async function completeBlock(
   // POST /api/knowledge/process-pending.
   try {
     const { handleBlockCompletionLinkage } = await import('./knowledgeLinkageService.js');
-    handleBlockCompletionLinkage(userId, rows[0].id).catch(err =>
+    handleBlockCompletionLinkage(userId, finalBlock.id).catch(err =>
       console.error('[knowledge-linkage] async hook failed:', err.message)
     );
   } catch { /* linkage service not yet deployed — safe to ignore */ }
 
   await checkAndTriggerRecovery(userId, dayKey);
 
-  return computeBlockState(rows[0]);
+  return computeBlockState(finalBlock);
 }
 
 // ── STOP ───────────────────────────────────────────────────────────────
@@ -737,14 +746,15 @@ export async function stopBlock(
   } = {}
 ) {
   console.log(`[LifecycleRoute] stopBlock called blockId=${blockId}`);
+  const transitionAt = new Date().toISOString();
   const { rows } = await criticalQuery(
     `UPDATE study_blocks
      SET status              = 'stopped',
-         ended_at            = NOW(),
+         ended_at            = COALESCE(ended_at, $7::timestamp with time zone),
          total_pause_seconds = total_pause_seconds
                                + CASE WHEN paused_at IS NOT NULL
                                       THEN GREATEST(0,
-                                             EXTRACT(EPOCH FROM (NOW() - paused_at))::INTEGER)
+                                             EXTRACT(EPOCH FROM ($7::timestamp with time zone - paused_at))::INTEGER)
                                       ELSE 0
                                  END,
          paused_at           = NULL,
@@ -757,11 +767,11 @@ export async function stopBlock(
          stop_reason         = $5,
          productivity_status = $6,
          calendar_sync_status = 'pending',
-         updated_at          = NOW()
+         updated_at          = $7::timestamp with time zone
      WHERE user_id = $1 AND block_id = $2 AND day_key = $3
        AND status IN ('active','paused')
      RETURNING *`,
-    [userId, blockId, dayKey, feedback, reason, productivityStatus]
+    [userId, blockId, dayKey, feedback, reason, productivityStatus, transitionAt]
   );
 
   if (!rows.length) {
@@ -784,10 +794,11 @@ export async function stopBlock(
     calculatedMins = Math.max(0, Math.round((endedAt - startedAt - (pauseSec * 1000)) / 60000));
   }
 
-  await criticalQuery(
-    `UPDATE study_blocks SET actual_minutes = $1 WHERE id = $2`,
+  const { rows: finalRows } = await criticalQuery(
+    `UPDATE study_blocks SET actual_minutes = $1 WHERE id = $2 RETURNING *`,
     [calculatedMins, rows[0].id]
   );
+  const finalBlock = finalRows[0] || rows[0];
 
   await criticalQuery(
     `INSERT INTO public.block_logs (
@@ -796,7 +807,7 @@ export async function stopBlock(
      )
      VALUES ($1, $2, $3, $4, $5, 'partial', $6, $7, $8)`,
     [
-      rows[0].id, userId, rows[0].started_at || new Date(), rows[0].ended_at || new Date(),
+      finalBlock.id, userId, finalBlock.started_at || new Date(), finalBlock.ended_at || new Date(),
       calculatedMins, outputType, outputCount || 0, weaknessNote
     ]
   );
@@ -806,10 +817,11 @@ export async function stopBlock(
     await logStudyEvent({
       userId,
       eventType: 'BLOCK_COMPLETED',
-      subject: rows[0].subject,
-      topic: rows[0].topic,
-      syllabusNodeId: rows[0].node_id,
-      blockId: rows[0].id,
+      subject: finalBlock.subject,
+      topic: finalBlock.topic,
+      syllabusNodeId: finalBlock.node_id,
+      blockId: finalBlock.id,
+      occurrenceTimestamp: finalBlock.ended_at,
       metadata: {
         actual_minutes: calculatedMins,
         completion_status: 'partial',
@@ -828,10 +840,11 @@ export async function stopBlock(
       userId,
       'BLOCK_STOPPED',
       'study_block',
-      rows[0].id,
-      `🛑 *Block Stopped*\nSubject: ${rows[0].subject || 'Block'}\nPlanned: ${rows[0].planned_minutes || 0}m\nActual: ${calculatedMins}m\nGreat effort!`
+      finalBlock.id,
+      `🛑 *Block Stopped*\nSubject: ${finalBlock.subject || 'Block'}\nPlanned: ${finalBlock.planned_minutes || 0}m\nActual: ${calculatedMins}m\nGreat effort!`,
+      { actualEnd: finalBlock.ended_at }
     );
-    console.log(`[TelegramLifecycle] BLOCK_STOPPED queued blockId=${rows[0].id}`);
+    console.log(`[TelegramLifecycle] BLOCK_STOPPED queued blockId=${finalBlock.id}`);
   } catch (e) {
     console.error('[TelegramLifecycle] BLOCK_STOPPED failed:', e.message);
   }
@@ -840,7 +853,7 @@ export async function stopBlock(
 
   await checkAndTriggerRecovery(userId, dayKey);
 
-  return computeBlockState(rows[0]);
+  return computeBlockState(finalBlock);
 }
 
 // ── FETCH ─────────────────────────────────────────────────────────────────────

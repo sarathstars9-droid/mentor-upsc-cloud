@@ -13,7 +13,8 @@ export async function logStudyEvent({
   syllabusNodeId = null,
   blockId = null,
   metadata = {},
-  client = null
+  client = null,
+  occurrenceTimestamp = null
 }) {
   // Defensive normalization: map numeric priority/confidence to text, or normalize text
   if (metadata) {
@@ -36,13 +37,21 @@ export async function logStudyEvent({
 
   const runQuery = client ? client.query.bind(client) : query;
 
-  const sql = `
-    INSERT INTO public.study_events (
-      user_id, event_type, subject, paper, topic, syllabus_node_id, block_id, metadata_json
-    )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-    RETURNING *;
-  `;
+  const sql = occurrenceTimestamp
+    ? `
+      INSERT INTO public.study_events (
+        user_id, event_type, subject, paper, topic, syllabus_node_id, block_id, metadata_json, created_at
+      )
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      RETURNING *;
+    `
+    : `
+      INSERT INTO public.study_events (
+        user_id, event_type, subject, paper, topic, syllabus_node_id, block_id, metadata_json
+      )
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+      RETURNING *;
+    `;
 
   // Ensure blockId is a valid UUID or null
   let dbBlockId = blockId;
@@ -70,6 +79,9 @@ export async function logStudyEvent({
     dbBlockId,
     JSON.stringify(metadata)
   ];
+  if (occurrenceTimestamp) {
+    values.push(occurrenceTimestamp);
+  }
 
   try {
     const res = await runQuery(sql, values);

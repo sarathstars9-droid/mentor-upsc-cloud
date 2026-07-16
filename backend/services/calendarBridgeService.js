@@ -53,7 +53,7 @@ async function callGas(scriptUrl, payload) {
 
 // ── Main sync function ────────────────────────────────────────────────────────
 
-export async function syncBlockToCalendar(block, lifecycleAction) {
+export async function syncBlockToCalendar(block, lifecycleAction, extraData = {}) {
   const scriptUrl = SCRIPT_URL();
 
   if (!scriptUrl) {
@@ -74,11 +74,37 @@ export async function syncBlockToCalendar(block, lifecycleAction) {
   const gasAction = GAS_LIFECYCLE_ACTION[lifecycleAction];
 
   if (gasAction) {
+    const getIsoString = (val) => {
+      if (!val) return '';
+      try {
+        const d = new Date(val);
+        return isNaN(d.getTime()) ? '' : d.toISOString();
+      } catch {
+        return '';
+      }
+    };
+
+    const actualStartVal = getIsoString(
+      extraData.actualStart || block.actualStart || block.started_at || block.startedAt || block.startTimestamp || block.ActualStart
+    );
+    const actualEndVal = getIsoString(
+      extraData.actualEnd || block.actualEnd || block.ended_at || block.endedAt || block.endTimestamp || block.ActualEnd
+    );
+
+    // Fail locally before callGas or fetch is invoked
+    if (gasAction === 'startBlock' && !actualStartVal) {
+      throw new Error(`startBlock: missing actualStart for block ${blockId}`);
+    }
+    if (gasAction === 'completeBlock' && !actualEndVal) {
+      throw new Error(`completeBlock: missing actualEnd for block ${blockId}`);
+    }
+
     // Payload format mirrors what proxyToGas sends for lifecycle actions.
     // Apps Script expects: { action, payload: { blockId, dayKey, ... }, userId }
     const payload = {
       action: gasAction,
       userId,
+      blockId,
       payload: {
         blockId,
         dayKey,
@@ -91,6 +117,14 @@ export async function syncBlockToCalendar(block, lifecycleAction) {
         status:         block.status || lifecycleAction,
       },
     };
+
+    if (gasAction === 'startBlock') {
+      payload.actualStart = actualStartVal;
+      payload.payload.actualStart = actualStartVal;
+    } else if (gasAction === 'completeBlock') {
+      payload.actualEnd = actualEndVal;
+      payload.payload.actualEnd = actualEndVal;
+    }
 
     try {
       const data = await callGas(scriptUrl, payload);
