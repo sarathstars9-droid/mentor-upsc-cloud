@@ -662,59 +662,173 @@ export function generateNightReport(data, userName = "Moulika") {
  * @returns {string} Formatted report text
  */
 export function generateCanonicalGoodMorningReport(data, userName = "User") {
-  const yesterdayVerified = formatDurationSeconds(data.yesterdayVerifiedSeconds);
-  const last7DaysVerified = formatDurationSeconds(data.last7DaysVerifiedSeconds);
-
-  if (!data.planState) {
-    // Legacy backward-compatible template format
-    const blocksStatus = data.todayBlocksCount > 0 ? "Available" : "Not available";
-    const minCommitmentLine = data.realisticMinimumMinutes
-      ? `Minimum commitment: ${data.realisticMinimumMinutes} minutes\n`
-      : "";
-
-    const reportText = `Good morning ${userName} 🌅
-
-Yesterday
-Timer verified: ${yesterdayVerified}
-
-Last 7 days
-Timer verified: ${last7DaysVerified}
-
-Today's blocks: ${blocksStatus}
-${minCommitmentLine}
-First action:
-${data.immediateAction}`;
-
+  const ys = data.yesterdaySummary;
+  if (!ys) {
+    const reportText = `Good morning ${userName} 🌅\n\nNo study recorded yesterday.`;
     const countdown = getUpscCountdownSummary();
     return `${reportText}\n\n${countdown}`;
   }
 
-  const planState = data.planState;
-  const state = planState.state;
+  let yesterdayText = "";
+  if (ys.dataQuality === 'CONFLICT') {
+    yesterdayText = "• MentorOS could not fully confirm yesterday’s execution.";
+  } else if (ys.totalRecordedSeconds === 0) {
+    yesterdayText = "• No study recorded.";
+  } else {
+    const sortedSubjects = [...ys.subjects].sort((a, b) => b.recordedSeconds - a.recordedSeconds);
+    const topSubjects = sortedSubjects.slice(0, 3);
+    const subLines = topSubjects.map(s => `• ${s.subject} — ${formatDurationSeconds(s.recordedSeconds)}`).join('\n');
+    const remainingCount = sortedSubjects.length - 3;
+    const moreText = remainingCount > 0 ? `\n...and ${remainingCount} more` : '';
+    yesterdayText = `${subLines}${moreText}`;
+  }
 
-  let planStatusSection = "";
-  if (state === 'USER_PLAN_PRESENT') {
-    planStatusSection = `Today’s plan is ready ✅\n\nYour study blocks are available.\nFirst task:\n${data.immediateAction}`;
-  } else if (state === 'RECOVERY_ONLY') {
-    planStatusSection = `Today’s plan has not been uploaded yet.\n\nA recovery task is available, but please upload today’s full study plan so MentorOS can guide the complete day.\n\nFirst available recovery task:\n${data.immediateAction}`;
-  } else if (state === 'SYSTEM_PLAN_ONLY') {
-    planStatusSection = `Today’s personal plan has not been uploaded yet.\n\nMentorOS has prepared suggested tasks, but they will not be treated as your confirmed plan until you upload or approve today’s schedule.`;
-  } else if (state === 'NO_PLAN') {
-    planStatusSection = `Today’s plan has not been uploaded yet.\n\nUpload your study plan so MentorOS can organise your blocks, reminders and daily review.`;
-  } else { // AMBIGUOUS
-    planStatusSection = `MentorOS could not confirm today’s plan.\n\nPlease open the Plan page and upload or confirm today’s schedule.`;
+  // Pending section
+  let pendingText = "";
+  const pendingSubjects = ys.subjects.filter(s => s.pendingSeconds > 0);
+  if (pendingSubjects.length === 0 && ys.revisionsDue === 0) {
+    pendingText = "No pending work.";
+  } else {
+    const topPending = pendingSubjects.slice(0, 3);
+    const pendingLines = topPending.map(s => `• ${s.subject} — ${formatDurationSeconds(s.pendingSeconds)} remaining`).join('\n');
+    const remainingCount = pendingSubjects.length - 3;
+    const moreText = remainingCount > 0 ? `\n...and ${remainingCount} more` : '';
+    const revisionsLine = ys.revisionsDue > 0 ? `\n• Overdue revisions — ${ys.revisionsDue} items` : '';
+    pendingText = `${pendingLines}${moreText}${revisionsLine}`;
+  }
+
+  // Today section
+  let planStatusText = "Plan is still pending.";
+  if (data.planState) {
+    const state = data.planState.state;
+    if (state === 'USER_PLAN_PRESENT') {
+      planStatusText = "Plan is ready ✅";
+    } else if (state === 'RECOVERY_ONLY') {
+      planStatusText = "Plan not uploaded yet (Recovery active).";
+    } else if (state === 'SYSTEM_PLAN_ONLY') {
+      planStatusText = "Plan not uploaded yet (Suggestions active).";
+    } else if (state === 'NO_PLAN') {
+      planStatusText = "Plan not uploaded yet.";
+    } else {
+      planStatusText = "Plan status is ambiguous. Please confirm.";
+    }
+  }
+
+  let recoveryText = "";
+  const recoveryBlocks = data.recoveryBlocks || [];
+  if (recoveryBlocks.length > 0) {
+    const b = recoveryBlocks[0];
+    recoveryText = `\nRecovery block available: ${b.subject || 'GS'} recovery — ${b.planned_start || '09:00'}–${b.planned_end || '10:30'}`;
   }
 
   const reportText = `Good morning ${userName} 🌅
 
 Yesterday
-Timer verified: ${yesterdayVerified}
+${yesterdayText}
 
-Last 7 days
-Timer verified: ${last7DaysVerified}
+Total recorded study — ${formatDurationSeconds(ys.totalRecordedSeconds)}
+Completed blocks — ${ys.completedBlockCount}
+Partial blocks — ${ys.partialBlockCount}
 
-${planStatusSection}`;
+Pending
+${pendingText}
+
+Today
+Plan Status: ${planStatusText}${recoveryText}
+
+Next action:
+${data.immediateAction}`;
 
   const countdown = getUpscCountdownSummary();
   return `${reportText}\n\n${countdown}`;
+}
+
+export function generateCanonicalWeeklyReport(data, userName = "Moulika") {
+  const activeDays = data.activeDaysCount;
+  const totalRecorded = formatDurationSeconds(data.totalRecordedSeconds);
+  const totalPlanned = formatHoursAndMins(data.totalPlannedSeconds / 3600);
+  const totalPending = formatDurationSeconds(data.pendingSeconds);
+  const execRate = data.totalPlannedSeconds > 0 ? ((data.totalRecordedSeconds / data.totalPlannedSeconds) * 100).toFixed(1) : '0';
+
+  const subLines = data.subjects.map(s =>
+    `• ${s.subject}: ${formatDurationSeconds(s.recordedSeconds)} (Planned: ${formatHoursAndMins(s.plannedSeconds / 3600)} | Pending: ${formatDurationSeconds(s.pendingSeconds)})`
+  ).join('\n');
+
+  let priorityText = "Keep your daily study blocks aligned with your main plan targets.";
+  if (data.revisionsDue > 5) {
+    priorityText = "Your overdue revision backlog is growing. Prioritize clearing pending revision items first.";
+  } else {
+    const geoSub = data.subjects.find(s => s.subject === 'Geography Optional');
+    if (geoSub && geoSub.pendingSeconds > 3600 * 3) {
+      priorityText = "Geography Optional has significant pending duration this week. Prioritize finishing scheduled optional blocks.";
+    }
+  }
+
+  const report = `📊 *Weekly Mentor Report*
+
+${userName}, here is your weekly progress overview:
+
+• Active study days: ${activeDays} days
+• Total recorded study: ${totalRecorded}
+• Execution rate: ${execRate}%
+
+*Subject Breakdown:*
+${subLines || "No subjects studied/planned."}
+
+*Completed & Missed Blocks:*
+• Completed blocks: ${data.completedBlockCount}
+• Partial blocks: ${data.partialBlockCount}
+• Missed blocks: ${data.missedBlockCount}
+
+*Pending Work & Revisions:*
+• Carried-forward pending work: ${totalPending}
+• Revisions due: ${data.revisionsDue} items
+
+*Mentor Priority:*
+${priorityText}`;
+
+  return report;
+}
+
+export function generateCanonicalMonthlyTextReport(dataset, userName = "Moulika") {
+  const thisMonth = dataset.thisMonth;
+  const mtd = dataset.missionToDate;
+  const totalPlanned = formatHoursAndMins(thisMonth.plannedSeconds / 3600);
+  const totalRecorded = formatDurationSeconds(thisMonth.recordedSeconds);
+  const execRate = thisMonth.plannedSeconds > 0 ? ((thisMonth.recordedSeconds / thisMonth.plannedSeconds) * 100).toFixed(1) : '0';
+
+  const subLines = thisMonth.subjects.map(s =>
+    `• ${s.subject}: ${formatDurationSeconds(s.recordedSeconds)} completed`
+  ).join('\n');
+
+  const weakStr = dataset.weakAreas.length > 0 ? dataset.weakAreas.join(', ') : 'None detected';
+
+  const report = `📊 *Monthly Mentor Report: ${dataset.monthKey}*
+
+${userName}, here is your summary for the month:
+
+THIS MONTH:
+• Planned study: ${totalPlanned}
+• Recorded study: ${totalRecorded}
+• Execution rate: ${execRate}%
+• Active study days: ${thisMonth.activeDaysCount} days
+• Completed blocks: ${thisMonth.completedBlockCount}
+• Partial blocks: ${thisMonth.partialBlockCount}
+• Missed blocks: ${thisMonth.missedBlockCount}
+
+*Subject execution:*
+${subLines || "No subjects studied."}
+
+MISSION TO DATE:
+• Overall progress toward 3500 hours: ${mtd.overallProgressPercent}%
+• Cumulative completed study: ${mtd.cumulativeCompletedHours}h
+• Target remaining: ${mtd.remainingHours}h
+
+*Weak Areas:*
+${weakStr}
+
+*Mentor prescription:*
+Ensure consistency by limiting consecutive zero-study days.`;
+
+  return report;
 }

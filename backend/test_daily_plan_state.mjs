@@ -197,45 +197,43 @@ runTestCase("real exported 6 AM and 9 AM decision helpers", () => {
   assert(shouldSendMissingPlanReminder(stateNo), "should send reminder when no plan");
 });
 
-runTestCase("dynamic display name / missing display name in messages", () => {
+runTestCase("missing plan reminder formatting (6 AM)", () => {
   const planState = { state: 'NO_PLAN' };
   const msg1 = buildMissingPlanReminder({ planState, userName: 'Moulika', notificationType: 'PLAN_NOT_UPLOADED' });
-  assert(msg1.includes("Good morning Moulika"), "Missing dynamic name in 6 AM reminder");
+  assert(msg1.includes("Today’s plan is still pending"), "Missing main text in 6 AM reminder");
+  assert(!msg1.includes("Good morning"), "6 AM reminder must not include Good morning");
 
   const msg2 = buildMissingPlanReminder({ planState, userName: '', notificationType: 'PLAN_NOT_UPLOADED' });
-  assert(msg2.includes("Good morning User"), "Failed to fallback to User when userName is empty");
-  assert(!msg2.includes("Moulika"), "Should not default to Moulika when missing");
+  assert(msg2.includes("Upload or confirm it now"), "Missing CTA in 6 AM reminder");
 });
 
 // ── 3. 5 AM Good Morning Report Formatting Tests ─────────────────────────────
 
 runTestCase("5 AM report templates for all states", () => {
   const baseData = {
-    yesterdayVerifiedSeconds: 3600,
-    last7DaysVerifiedSeconds: 7200,
+    yesterdaySummary: { totalRecordedSeconds: 3600, subjects: [], completedBlockCount: 0, partialBlockCount: 0 },
     immediateAction: "Study Polity"
   };
 
   // USER_PLAN_PRESENT
   const msgUser = generateCanonicalGoodMorningReport({ ...baseData, planState: { state: 'USER_PLAN_PRESENT' } }, 'User');
-  assert(msgUser.includes("Today’s plan is ready ✅"), "USER_PLAN_PRESENT text wrong");
+  assert(msgUser.includes("Plan is ready ✅"), "USER_PLAN_PRESENT text wrong");
 
   // RECOVERY_ONLY
   const msgRec = generateCanonicalGoodMorningReport({ ...baseData, planState: { state: 'RECOVERY_ONLY' } }, 'User');
-  assert(msgRec.includes("Today’s plan has not been uploaded yet."), "RECOVERY_ONLY plan text wrong");
-  assert(msgRec.includes("A recovery task is available"), "RECOVERY_ONLY recovery text wrong");
+  assert(msgRec.includes("Plan not uploaded yet (Recovery active)."), "RECOVERY_ONLY plan text wrong");
 
   // SYSTEM_PLAN_ONLY
   const msgSys = generateCanonicalGoodMorningReport({ ...baseData, planState: { state: 'SYSTEM_PLAN_ONLY' } }, 'User');
-  assert(msgSys.includes("MentorOS has prepared suggested tasks"), "SYSTEM_PLAN_ONLY text wrong");
+  assert(msgSys.includes("Plan not uploaded yet (Suggestions active)."), "SYSTEM_PLAN_ONLY text wrong");
 
   // NO_PLAN
   const msgNo = generateCanonicalGoodMorningReport({ ...baseData, planState: { state: 'NO_PLAN' } }, 'User');
-  assert(msgNo.includes("Upload your study plan so MentorOS can organise your blocks"), "NO_PLAN text wrong");
+  assert(msgNo.includes("Plan not uploaded yet."), "NO_PLAN text wrong");
 
   // AMBIGUOUS
   const msgAmb = generateCanonicalGoodMorningReport({ ...baseData, planState: { state: 'AMBIGUOUS' } }, 'User');
-  assert(msgAmb.includes("MentorOS could not confirm today’s plan."), "AMBIGUOUS text wrong");
+  assert(msgAmb.includes("Plan status is ambiguous. Please confirm."), "AMBIGUOUS text wrong");
 });
 
 runTestCase("first action selection is state-aware (provenance filtering)", () => {
@@ -310,7 +308,7 @@ runTestCase("first action selection is state-aware (provenance filtering)", () =
 
 runTestCase("Verified progress totals remain unchanged", () => {
   const blocks = [
-    { id: '1', day_key: '2026-07-15', status: 'completed', started_at: '2026-07-15T10:00:00Z', ended_at: '2026-07-15T11:00:00Z', planned_minutes: 60, actual_minutes: 60 }
+    { id: '1', day_key: '2026-07-14', status: 'completed', started_at: '2026-07-15T10:00:00Z', ended_at: '2026-07-15T11:00:00Z', planned_minutes: 60, actual_minutes: 60 }
   ];
   const logs = [
     { block_id: '1', completion_status: 'completed', started_at: '2026-07-15T10:00:00Z', ended_at: '2026-07-15T11:00:00Z', actual_minutes: 60 }
@@ -337,8 +335,8 @@ runTestCase("Verified progress totals remain unchanged", () => {
     planState
   });
 
-  assert(data.yesterdayVerifiedSeconds === 3600, "verified seconds should remain 3600");
-  assert(data.last7DaysVerifiedSeconds === 3600, "7-day verified seconds should remain 3600");
+  assert(data.yesterdaySummary.totalRecordedSeconds === 3600, "verified seconds should remain 3600");
+  assert(data.last7DaysTotalRecordedSeconds === 3600, "7-day verified seconds should remain 3600");
 });
 
 runTestCase("getDailyPlanState failure -> AMBIGUOUS fallback (pure query mock)", async () => {
@@ -360,14 +358,14 @@ runTestCase("getDailyPlanState failure -> AMBIGUOUS fallback (pure query mock)",
     planState: fallbackState
   });
   const morningMsg = generateCanonicalGoodMorningReport(reportData, 'User');
-  assert(morningMsg.includes("MentorOS could not confirm today’s plan."), "morning report must use fallback text");
+  assert(morningMsg.includes("Plan status is ambiguous. Please confirm."), "morning report must use fallback text");
   assert(!morningMsg.includes("Today's blocks: Available"), "morning report fallback must never say Available");
 
   // 6 AM & 9 AM checks formatting for fallback
   const shouldSend6 = shouldSendMissingPlanReminder(fallbackState);
   assert(shouldSend6 === true, "fallback state must send 6 AM reminder");
   const msg6 = buildMissingPlanReminder({ planState: fallbackState, userName: 'User', notificationType: 'PLAN_NOT_UPLOADED' });
-  assert(msg6.includes("Today’s full study plan is still not uploaded."), "6 AM fallback missing prompt");
+  assert(msg6.includes("Today’s plan is still pending"), "6 AM fallback missing prompt");
 
   const shouldSend9 = shouldSendMissingPlanReminder(fallbackState);
   assert(shouldSend9 === true, "fallback state must send 9 AM reminder");

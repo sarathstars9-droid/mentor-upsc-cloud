@@ -3,24 +3,42 @@ import { join } from 'path';
 import { existsSync, mkdirSync, unlinkSync } from 'fs';
 import * as progressService from './progressService.js';
 import * as telegramService from './telegramService.js';
-import { formatHoursAndMins, generateMonthlyMentorTextReport } from './reportGeneratorService.js';
+import { formatHoursAndMins, generateMonthlyMentorTextReport, generateCanonicalMonthlyTextReport } from './reportGeneratorService.js';
 import { query } from '../db/index.js';
 import os from 'os';
 
-export async function generateMonthlyReportHtml(userId, monthKey) {
-  const summary = await progressService.getMonthlyMentorSummary(userId);
-  // Optional: fetch extra data for more detail
-  const allSubjects = await progressService.getAllSubjectProgress(userId);
+export async function generateMonthlyReportHtml(userId, monthKey, dataset = null) {
+  // Accept a pre-validated dataset to avoid a second independent execution query.
+  // If not provided, fetch it (legacy path for direct HTML generation).
+  if (!dataset) {
+    dataset = await progressService.getCanonicalMonthlyReportDataset(userId, monthKey);
+  }
+  const thisMonth = dataset.thisMonth;
+  const mtd = dataset.missionToDate;
   
-  let subjectsHtml = '';
-  for (const s of allSubjects) {
-    subjectsHtml += `
+  let monthlySubjectsHtml = '';
+  for (const s of thisMonth.subjects) {
+    monthlySubjectsHtml += `
       <tr>
         <td>${s.subject}</td>
-        <td>${formatHoursAndMins(s.target_hours)}</td>
-        <td>${formatHoursAndMins(s.completed_hours)}</td>
-        <td>${formatHoursAndMins(s.remaining_hours)}</td>
-        <td>${s.completion_percent}%</td>
+        <td>${formatHoursAndMins(s.plannedSeconds / 3600)}</td>
+        <td>${formatHoursAndMins(s.recordedSeconds / 3600)}</td>
+        <td>${formatHoursAndMins(s.pendingSeconds / 3600)}</td>
+        <td>${s.completedBlockCount}</td>
+        <td>${s.partialBlockCount}</td>
+      </tr>
+    `;
+  }
+
+  let cumulativeSubjectsHtml = '';
+  for (const s of mtd.subjects) {
+    cumulativeSubjectsHtml += `
+      <tr>
+        <td>${s.subject}</td>
+        <td>${formatHoursAndMins(s.targetHours)}</td>
+        <td>${formatHoursAndMins(s.completedHours)}</td>
+        <td>${formatHoursAndMins(s.remainingHours)}</td>
+        <td>${s.progressPercent}%</td>
       </tr>
     `;
   }
@@ -43,7 +61,7 @@ export async function generateMonthlyReportHtml(userId, monthKey) {
         .stat-value { font-size: 24px; font-weight: bold; color: #2563eb; }
         .stat-label { font-size: 14px; color: #6b7280; text-transform: uppercase; margin-top: 4px; }
         .flex-container { display: flex; justify-content: space-between; flex-wrap: wrap; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; margin-bottom: 20px; }
         th, td { border: 1px solid #e5e7eb; padding: 12px; text-align: left; }
         th { background-color: #f9fafb; font-weight: 600; color: #374151; }
         .prescription { background-color: #eff6ff; border-left: 4px solid #3b82f6; padding: 20px; margin-top: 40px; }
@@ -56,54 +74,89 @@ export async function generateMonthlyReportHtml(userId, monthKey) {
           <p>Month: ${monthKey}</p>
         </div>
         
+        <h2>Monthly Executive Summary</h2>
         <div class="flex-container">
           <div class="stat-box large">
-            <div class="stat-value">${summary.mission_completed_percent}%</div>
+            <div class="stat-value">${mtd.overallProgressPercent}%</div>
             <div class="stat-label">Mission Progress (3500h)</div>
           </div>
           <div class="stat-box large">
-            <div class="stat-value">${summary.execution_rate}%</div>
+            <div class="stat-value">${thisMonth.plannedSeconds > 0 ? ((thisMonth.recordedSeconds / thisMonth.plannedSeconds) * 100).toFixed(1) : 0}%</div>
             <div class="stat-label">Monthly Execution Rate</div>
           </div>
         </div>
- 
+
+        <h2>Study Days & Consistency</h2>
         <div class="flex-container">
           <div class="stat-box">
-            <div class="stat-value">${formatHoursAndMins(summary.total_planned_hours)}</div>
-            <div class="stat-label">Planned Hours</div>
+            <div class="stat-value">${formatHoursAndMins(thisMonth.plannedSeconds / 3600)}</div>
+            <div class="stat-label">Planned Study</div>
           </div>
           <div class="stat-box">
-            <div class="stat-value">${formatHoursAndMins(summary.total_actual_hours)}</div>
-            <div class="stat-label">Executed Hours</div>
+            <div class="stat-value">${formatHoursAndMins(thisMonth.recordedSeconds / 3600)}</div>
+            <div class="stat-label">Recorded Study</div>
           </div>
           <div class="stat-box">
-            <div class="stat-value">${summary.strong_days}</div>
-            <div class="stat-label">Strong Days</div>
+            <div class="stat-value">${thisMonth.activeDaysCount}</div>
+            <div class="stat-label">Active Study Days</div>
           </div>
         </div>
- 
-        <h2>Subject Breakdown & Targets</h2>
+
+        <h2>Planned vs Completed Execution</h2>
+        <div class="flex-container">
+          <div class="stat-box">
+            <div class="stat-value">${thisMonth.completedBlockCount}</div>
+            <div class="stat-label">Completed Blocks</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">${thisMonth.partialBlockCount}</div>
+            <div class="stat-label">Partial Blocks</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">${thisMonth.missedBlockCount}</div>
+            <div class="stat-label">Missed Blocks</div>
+          </div>
+        </div>
+
+        <h2>This Month's Subject Performance</h2>
         <table>
           <thead>
             <tr>
               <th>Subject</th>
-              <th>Target</th>
-              <th>Completed</th>
-              <th>Remaining</th>
-              <th>Progress</th>
+              <th>Planned Study</th>
+              <th>Recorded Study</th>
+              <th>Pending Work</th>
+              <th>Completed Blocks</th>
+              <th>Partial Blocks</th>
             </tr>
           </thead>
           <tbody>
-            ${subjectsHtml}
+            ${monthlySubjectsHtml}
           </tbody>
         </table>
  
-        <h2>Backlog & Weak Areas</h2>
-        <p><strong>Top Weak Areas:</strong> ${summary.top3_weak.length > 0 ? summary.top3_weak.join(', ') : 'None detected this month.'}</p>
+        <h2>Cumulative Mission Progress (Mission to Date)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Target Hours</th>
+              <th>Completed Hours</th>
+              <th>Remaining Target</th>
+              <th>Progress %</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${cumulativeSubjectsHtml}
+          </tbody>
+        </table>
+ 
+        <h2>Pending Revisions & Weak Areas</h2>
+        <p><strong>Top Weak Areas:</strong> ${dataset.weakAreas.length > 0 ? dataset.weakAreas.join(', ') : 'None detected this month.'}</p>
  
         <div class="prescription">
-          <h2>Next Month Prescription</h2>
-          <p>${summary.next_month_prescription}</p>
+          <h2>Next Month Directives</h2>
+          <p>1. Target Geography Optional deficit blocks to stabilize weekly pacing.<br/>2. Clear the daily pending revision queue to maintain high retention.<br/>3. Restrict consecutive zero-study days to protect the habit streak.</p>
         </div>
       </div>
     </body>
@@ -131,28 +184,60 @@ export async function generateMonthlyReportPdf(userId, monthKey) {
   }
 }
 
-export async function sendMonthlyPdfReport(userId, monthKey, chatId) {
-  let summary;
+// Internal helper: generates PDF file from a pre-validated dataset
+async function generateMonthlyReportPdfFromDataset(userId, monthKey, dataset) {
+  const html = await generateMonthlyReportHtml(userId, monthKey, dataset);
+  let pdfPath = null;
+  let browser = null;
   try {
-    summary = await progressService.getMonthlyMentorSummary(userId);
+    browser = await chromium.launch({ args: ['--no-sandbox'] });
+    const page = await browser.newPage();
+    await page.setContent(html, { waitUntil: 'domcontentloaded' });
+    const reportsDir = join(process.cwd(), 'reports');
+    if (!existsSync(reportsDir)) mkdirSync(reportsDir, { recursive: true });
+    pdfPath = join(reportsDir, `monthly_report_${userId}_${monthKey}.pdf`);
+    await page.pdf({ path: pdfPath, format: 'A4', printBackground: true });
+    return pdfPath;
+  } finally {
+    if (browser) {
+      await browser.close();
+    }
+  }
+}
+
+export async function sendMonthlyPdfReport(userId, monthKey, chatId) {
+  let dataset;
+  try {
+    dataset = await progressService.getCanonicalMonthlyReportDataset(userId, monthKey);
   } catch (err) {
-    console.error("[monthlyPdfReportService] Failed to retrieve monthly summary:", err.message);
-    return;
+    if (err.message === 'MONTHLY_RECONCILIATION_FAILED') {
+      console.error("[monthlyPdfReportService] Monthly report blocked due to reconciliation mismatch.");
+      // Reconciliation failure: return not-delivered so the event is NOT recorded as sent.
+      // The scheduler will handle sending a deduplicated notice.
+      // The next monthly tick will retry once new data is available.
+      return { delivered: false, reason: 'RECONCILIATION_FAILED' };
+    }
+    console.error("[monthlyPdfReportService] Failed to retrieve monthly dataset:", err.message);
+    return { delivered: false, reason: 'DATASET_FETCH_ERROR' };
   }
 
-  if (summary.total_planned_hours === 0 && summary.total_actual_hours === 0) {
+  const thisMonth = dataset.thisMonth;
+  if (thisMonth.plannedSeconds === 0 && thisMonth.recordedSeconds === 0) {
     await telegramService.sendTelegramMessage(chatId, "Not enough data yet to generate a monthly PDF report.");
-    return;
+    // Insufficient data: record as delivered so we don't spam user every tick on 1st of month.
+    return { delivered: true, reason: 'INSUFFICIENT_DATA' };
   }
 
   let pdfPath = null;
   try {
-    pdfPath = await generateMonthlyReportPdf(userId, monthKey);
+    // Use the pre-validated dataset for PDF — no independent study-execution query
+    pdfPath = await generateMonthlyReportPdfFromDataset(userId, monthKey, dataset);
     const caption = "📘 Monthly Mentor Report is ready. This is not judgment — this is correction data.";
     const sent = await telegramService.sendTelegramDocument(chatId, pdfPath, caption);
     if (!sent) {
       throw new Error("Telegram document delivery failed (returned false)");
     }
+    return { delivered: true, reason: 'PDF_SENT' };
   } catch (pdfErr) {
     console.error("[monthlyPdfReportService] PDF generation/sending failed. Falling back to plain text report. Error:", pdfErr.message);
     
@@ -167,11 +252,12 @@ export async function sendMonthlyPdfReport(userId, monthKey, chatId) {
       console.error("[monthlyPdfReportService] Failed to fetch user name, using default. Error:", dbErr.message);
     }
 
-    const textReport = generateMonthlyMentorTextReport(summary, userName);
+    const textReport = generateCanonicalMonthlyTextReport(dataset, userName);
     const fallbackMessage = `⚠️ *Monthly Report (Text Fallback)*\n_PDF rendering was unavailable, sending plain text fallback._\n\n${textReport}`;
     
     await telegramService.sendTelegramMessage(chatId, fallbackMessage);
     console.log("monthly_report_pdf_failed_text_fallback_sent");
+    return { delivered: true, reason: 'TEXT_FALLBACK_SENT' };
   } finally {
     if (pdfPath && existsSync(pdfPath)) {
       try {

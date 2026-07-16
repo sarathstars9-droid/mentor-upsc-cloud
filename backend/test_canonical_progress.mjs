@@ -509,7 +509,7 @@ test("Today's blocks are considered available only if they are actionable", () =
 
   assert.strictEqual(payload1.todayBlocksCount, 0);
   const msg1 = generateCanonicalGoodMorningReport(payload1, 'Moulika');
-  assert.ok(msg1.includes("Today's blocks: Not available"));
+  assert.ok(msg1.includes("Plan Status: Plan is still pending."));
 
   const payload2 = buildCanonicalGoodMorningData({
     now: new Date('2026-07-12T05:00:00Z'),
@@ -523,7 +523,7 @@ test("Today's blocks are considered available only if they are actionable", () =
 
   assert.strictEqual(payload2.todayBlocksCount, 1);
   const msg2 = generateCanonicalGoodMorningReport(payload2, 'Moulika');
-  assert.ok(msg2.includes("Today's blocks: Available"));
+  assert.ok(msg2.includes("Plan Status: Plan is still pending."));
   assert.ok(msg2.includes("Start your first planned block (Geography Optional) at 09:00."));
 });
 
@@ -562,10 +562,8 @@ test('Pure production-data builder constructs correct payloads and filters v_blo
   });
 
   assert.strictEqual(payload.userName, 'Moulika');
-  assert.strictEqual(payload.yesterdayVerifiedSeconds, 4133);
-  assert.strictEqual(payload.yesterdayAcceptedSelfReportedSeconds, 0);
-  assert.strictEqual(payload.last7DaysVerifiedSeconds, 7500);
-  assert.strictEqual(payload.last7DaysAcceptedSelfReportedSeconds, 0);
+  assert.strictEqual(payload.yesterdaySummary.totalRecordedSeconds, 4133);
+  assert.strictEqual(payload.last7DaysTotalRecordedSeconds, 7500);
   assert.strictEqual(payload.todayBlocksCount, 1);
   assert.strictEqual(payload.todayPlannedMinutes, 60);
   assert.strictEqual(payload.realisticMinimumMinutes, null);
@@ -575,21 +573,28 @@ test('Pure production-data builder constructs correct payloads and filters v_blo
 test('Report text generator correctly prints metrics and omits minimum commitment when null', () => {
   const data = {
     userName: 'Moulika',
-    yesterdayVerifiedSeconds: 4219,
-    yesterdayAcceptedSelfReportedSeconds: 0,
-    last7DaysVerifiedSeconds: 7500,
-    last7DaysAcceptedSelfReportedSeconds: 0,
+    yesterdaySummary: {
+      dataQuality: 'OK',
+      totalRecordedSeconds: 4219,
+      completedBlockCount: 1,
+      partialBlockCount: 0,
+      missedBlockCount: 0,
+      pendingBlockCount: 0,
+      revisionsDue: 0,
+      subjects: [
+        { subject: 'Geography Optional', recordedSeconds: 4219, plannedSeconds: 4219, pendingSeconds: 0, completedBlockCount: 1, partialBlockCount: 0, missedBlockCount: 0 }
+      ]
+    },
     todayBlocksCount: 1,
     todayPlannedMinutes: 90,
     realisticMinimumMinutes: null,
-    immediateAction: "Start your first planned block (Geography Optional) at 09:00."
+    immediateAction: "Start your first planned block (Geography Optional) at 09:00.",
+    planState: { state: 'NO_PLAN', recoveryBlocks: [] }
   };
 
   const message = generateCanonicalGoodMorningReport(data, 'Moulika');
 
-  assert.ok(message.includes("Yesterday\nTimer verified: 1h 10m"));
-  assert.ok(message.includes("Last 7 days\nTimer verified: 2h 05m"));
-  assert.ok(message.includes("Today's blocks: Available"));
+  assert.ok(message.includes("Total recorded study — 1h 10m"));
   assert.ok(message.includes("Start your first planned block (Geography Optional) at 09:00."));
 
   assert.ok(!message.includes("Minimum commitment:"));

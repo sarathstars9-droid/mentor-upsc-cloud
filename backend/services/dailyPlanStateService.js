@@ -34,6 +34,7 @@ export function resolveDailyPlanState({ userId, dayKey, blocks = [], planEvents 
   let recoveryBlockCount = 0;
   let systemGeneratedBlockCount = 0;
   let unknownBlockCount = 0;
+  const recoveryBlocks = [];
 
   for (const b of blocks) {
     const isRecovery = b.block_type === 'recovery' || 
@@ -42,6 +43,7 @@ export function resolveDailyPlanState({ userId, dayKey, blocks = [], planEvents 
 
     if (isRecovery) {
       recoveryBlockCount++;
+      recoveryBlocks.push(b);
       continue;
     }
 
@@ -83,6 +85,7 @@ export function resolveDailyPlanState({ userId, dayKey, blocks = [], planEvents 
     state,
     userPlanBlockCount,
     recoveryBlockCount,
+    recoveryBlocks,
     systemGeneratedBlockCount,
     evidence: {
       hasPlanAcceptedEvent,
@@ -154,9 +157,14 @@ export function shouldSendMissingPlanReminder(planState) {
 export function buildMissingPlanReminder({ planState, userName, notificationType }) {
   const dynamicName = userName || 'User';
   if (notificationType === 'PLAN_NOT_UPLOADED') {
-    let msg = `Good morning ${dynamicName}.\n\nToday’s full study plan is still not uploaded.\n\nPlease upload or confirm it now so MentorOS can schedule your blocks and reminders correctly.`;
-    if (planState.recoveryBlockCount > 0) {
-      msg += `\n\nA recovery task is already available, but it is not a substitute for today’s complete plan.`;
+    let msg = `Today’s plan is still pending.\n\nUpload or confirm it now so MentorOS can guide your study blocks today.`;
+
+    const recoveryBlocks = planState.recoveryBlocks || [];
+    if (recoveryBlocks.length > 0) {
+      msg += `\n\nAvailable meanwhile:`;
+      for (const b of recoveryBlocks) {
+        msg += `\n${b.subject || 'GS'} recovery — ${b.planned_start || '09:00'}–${b.planned_end || '10:00'}`;
+      }
     }
     return msg;
   } else if (notificationType === 'NO_PLAN_STRICT_9AM') {

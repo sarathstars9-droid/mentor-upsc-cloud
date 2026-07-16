@@ -1,6 +1,6 @@
 import { query } from '../db/index.js';
 import { computeSyllabusProgress } from '../brain/syllabusProgressEngine.js';
-import { getKolkataDateKey, getRelativeKolkataDateKey, buildCanonicalGoodMorningData, APPLICATION_TIMEZONE } from './progressNormalizer.js';
+import { getKolkataDateKey, getRelativeKolkataDateKey, buildCanonicalGoodMorningData, APPLICATION_TIMEZONE, normalizeSubjectLabel } from './progressNormalizer.js';
 import { getPrelimsDaysLeft, getMainsDaysLeft } from '../config/examCalendar.js';
 import { getDailyTargetMinutes } from './adaptiveGoalService.js';
 import { getBlockState } from './computeBlockState.js';
@@ -21,76 +21,8 @@ export function getMondayOfCurrentWeek() {
   return `${yyyy}-${mm}-${dd}`;
 }
 
-export function normalizeSubjectLabel(subject) {
-  if (!subject) return "Revision/Buffer";
-  const lower = subject.trim().toLowerCase();
-
-  if (
-    lower === "geography" ||
-    lower === "geo" ||
-    lower === "optional" ||
-    lower.includes("geography optional") ||
-    lower.includes("geography")
-  ) {
-    return "Geography Optional";
-  }
-  if (lower.includes("csat")) {
-    return "CSAT";
-  }
-  if (lower.includes("mains answer") || lower.includes("answer writing")) {
-    return "Mains Answer Writing";
-  }
-  if (lower.includes("ethics") || lower.includes("gs4") || lower.includes("gs-4")) {
-    return "GS4 Ethics";
-  }
-  if (lower.includes("essay")) {
-    return "Essay";
-  }
-  if (lower.includes("current affairs") || lower.includes("news")) {
-    return "Current Affairs";
-  }
-  if (lower.includes("revision") || lower.includes("reunion") || lower.includes("buffer")) {
-    return "Revision/Buffer";
-  }
-  if (lower.includes("prelims") || lower.includes("mcq") || lower.includes("pyq")) {
-    return "Prelims GS MCQ + PYQ";
-  }
-  if (
-    lower.includes("history") || 
-    lower.includes("ancient") || 
-    lower.includes("culture") || 
-    lower.includes("society") || 
-    lower.includes("gs1") || 
-    lower.includes("gs-1")
-  ) {
-    return "GS1";
-  }
-  if (
-    lower.includes("polity") || 
-    lower.includes("governance") || 
-    lower.includes("social justice") || 
-    lower.includes("ir ") || 
-    lower.includes("international relations") || 
-    lower.includes("gs2") || 
-    lower.includes("gs-2")
-  ) {
-    return "GS2";
-  }
-  if (
-    lower.includes("economy") || 
-    lower.includes("environment") || 
-    lower.includes("security") || 
-    lower.includes("science") || 
-    lower.includes("s&t") || 
-    lower.includes("technology") || 
-    lower.includes("gs3") || 
-    lower.includes("gs-3")
-  ) {
-    return "GS3";
-  }
-
-  return "Revision/Buffer";
-}
+// Re-exported from progressNormalizer.js
+export { normalizeSubjectLabel };
 
 // Maps a raw study block to one of the 11 target areas seeded in subject_targets
 export function mapBlockToTargetArea(block) {
@@ -969,7 +901,11 @@ export async function auditTodayPlan(userId, dateStr) {
 }
 
 // 15. Get weekly execution summary
-export async function getWeeklyExecutionSummary(userId) {
+export async function getWeeklyExecutionSummary(userId, startDayKey = null, endDayKey = null) {
+  if (startDayKey && endDayKey) {
+    const { getWeeklyExecutionSummary: fetchWeekly } = await import('./reportExecutionSummaryService.js');
+    return fetchWeekly({ userId, startDayKey, endDayKey });
+  }
   const subjects = await getAllSubjectProgress(userId);
 
   let thisWeekPlanned = 0;
@@ -1291,6 +1227,14 @@ export async function getCanonicalGoodMorningReportData(userId) {
     console.error('Failed to get safe daily plan state in getCanonicalGoodMorningReportData:', err);
   }
 
+  // Fetch overdue revisions count
+  const revRes = await query(
+    `SELECT COUNT(*)::int as count FROM public.revision_items
+     WHERE user_id = $1 AND status = 'pending' AND next_review_at <= NOW()`,
+    [userId]
+  );
+  const revisionsDueCount = revRes.rows[0]?.count || 0;
+
   return buildCanonicalGoodMorningData({
     now,
     user,
@@ -1299,6 +1243,12 @@ export async function getCanonicalGoodMorningReportData(userId) {
     sevenDayBlocks: sevenDayBlocksRes.rows,
     logs,
     events,
-    planState
+    planState,
+    revisionsDueCount
   });
+}
+
+export async function getCanonicalMonthlyReportDataset(userId, monthKey) {
+  const { getCanonicalMonthlyReportDataset: fetchDataset } = await import('./reportExecutionSummaryService.js');
+  return fetchDataset({ userId, monthKey });
 }

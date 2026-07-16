@@ -1,3 +1,5 @@
+import { aggregateDailySummary } from './reportExecutionSummaryService.js';
+
 export const APPLICATION_TIMEZONE = 'Asia/Kolkata';
 
 // SAFETY CONFIGURATION CONSTANTS
@@ -383,12 +385,28 @@ export function buildCanonicalGoodMorningData({
   logs = [],
   events = [],
   maxSessionDurationSeconds = undefined,
-  planState = null
+  planState = null,
+  revisionsDueCount = 0
 }) {
   const userName = user?.name || 'User';
 
-  const yesterdayAgg = aggregateCanonicalProgress(yesterdayBlocks, logs, events, maxSessionDurationSeconds);
-  const last7DaysAgg = aggregateCanonicalProgress(sevenDayBlocks, logs, events, maxSessionDurationSeconds);
+  const yesterdayKey = getRelativeKolkataDateKey(now, -1);
+  const yesterdaySummary = aggregateDailySummary({
+    dayKey: yesterdayKey,
+    blocks: yesterdayBlocks,
+    logs,
+    events,
+    revisionItemsCount: revisionsDueCount
+  });
+
+  // Calculate weekly total by summing the individual 7 daily summaries
+  let last7DaysTotalRecordedSeconds = 0;
+  for (let i = 1; i <= 7; i++) {
+    const dayKey = getRelativeKolkataDateKey(now, -i);
+    const dayBlocks = sevenDayBlocks.filter(b => b.day_key === dayKey);
+    const daySummary = aggregateDailySummary({ dayKey, blocks: dayBlocks, logs, events });
+    last7DaysTotalRecordedSeconds += daySummary.totalRecordedSeconds;
+  }
 
   // Today's blocks status checking actionable allowlist
   const actionableTodayBlocks = todayBlocks.filter(b => ACTIONABLE_STATUS_ALLOWLIST.includes(b?.status));
@@ -479,12 +497,13 @@ export function buildCanonicalGoodMorningData({
     }
   }
 
+  // Find recovery blocks if any to expose start/end
+  const recoveryBlocks = actionableTodayBlocks.filter(isRecoveryBlock);
+
   return {
     userName,
-    yesterdayVerifiedSeconds: yesterdayAgg.verifiedTimerSeconds,
-    yesterdayAcceptedSelfReportedSeconds: yesterdayAgg.acceptedSelfReportedSeconds,
-    last7DaysVerifiedSeconds: last7DaysAgg.verifiedTimerSeconds,
-    last7DaysAcceptedSelfReportedSeconds: last7DaysAgg.acceptedSelfReportedSeconds,
+    yesterdaySummary,
+    last7DaysTotalRecordedSeconds,
     todayBlocksCount,
     userPlanBlockCount,
     recoveryBlockCount,
@@ -492,6 +511,81 @@ export function buildCanonicalGoodMorningData({
     todayPlannedMinutes,
     realisticMinimumMinutes: null, // Omitted in Phase 1
     immediateAction,
-    planState
+    planState,
+    recoveryBlocks
   };
+}
+
+export function normalizeSubjectLabel(subject) {
+  if (!subject) return "Revision/Buffer";
+  const lower = subject.trim().toLowerCase();
+
+  if (
+    lower === "geography" ||
+    lower === "geo" ||
+    lower === "optional" ||
+    lower.includes("geography optional") ||
+    lower.includes("geography")
+  ) {
+    return "Geography Optional";
+  }
+  if (lower.includes("csat")) {
+    return "CSAT";
+  }
+  if (lower.includes("mains answer") || lower.includes("answer writing")) {
+    return "Mains Answer Writing";
+  }
+  if (lower.includes("ethics") || lower.includes("gs4") || lower.includes("gs-4")) {
+    return "GS4 Ethics";
+  }
+  if (lower.includes("essay")) {
+    return "Essay";
+  }
+  if (lower.includes("current affairs") || lower.includes("news")) {
+    return "Current Affairs";
+  }
+  if (lower.includes("revision") || lower.includes("reunion") || lower.includes("buffer")) {
+    return "Revision/Buffer";
+  }
+  if (lower.includes("prelims") || lower.includes("mcq") || lower.includes("pyq")) {
+    return "Prelims GS MCQ + PYQ";
+  }
+  if (
+    lower.includes("history") ||
+    lower.includes("ancient") ||
+    lower.includes("medieval") ||
+    lower.includes("modern") ||
+    lower.includes("art & culture") ||
+    lower.includes("culture") ||
+    lower.includes("society") ||
+    lower.includes("gs1") ||
+    lower.includes("gs-1")
+  ) {
+    return "GS1";
+  }
+  if (
+    lower.includes("polity") ||
+    lower.includes("governance") ||
+    lower.includes("social justice") ||
+    lower.includes("ir ") ||
+    lower.includes("international relations") ||
+    lower.includes("gs2") ||
+    lower.includes("gs-2")
+  ) {
+    return "GS2";
+  }
+  if (
+    lower.includes("economy") ||
+    lower.includes("environment") ||
+    lower.includes("security") ||
+    lower.includes("science") ||
+    lower.includes("s&t") ||
+    lower.includes("technology") ||
+    lower.includes("gs3") ||
+    lower.includes("gs-3")
+  ) {
+    return "GS3";
+  }
+
+  return "Revision/Buffer";
 }

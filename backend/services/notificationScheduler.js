@@ -6,7 +6,7 @@ import * as consistencyService from './consistencyService.js';
 import * as behaviorEscalationService from './behaviorEscalationService.js';
 import * as psychologyMessageService from './psychologyMessageService.js';
 import { getSafeDailyPlanState, shouldSendMissingPlanReminder, buildMissingPlanReminder } from './dailyPlanStateService.js';
-import { APPLICATION_TIMEZONE } from './progressNormalizer.js';
+import { APPLICATION_TIMEZONE, getKolkataDateKey } from './progressNormalizer.js';
 import { healthMonitor } from './healthMonitor.js';
 
 let schedulerInterval = null;
@@ -479,24 +479,37 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
     console.error("[NotificationScheduler] daily night mentor review failed:", err.message);
   }
 
-  // ── 4. Weekly Mentor Report (Sunday 09:00 PM) ──────────────────────────────────
-  if (dayOfWeek === 0 && hour === 21 && minute === 0) {
+  // ── 4. Weekly Mentor Report (Monday 07:00 AM to 10:59 AM retry window) ───────────
+  if (dayOfWeek === 1 && hour >= 7 && hour <= 10) {
     try {
-      const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
-      const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+      const userRes = await query(`SELECT name, mission_health_state FROM public.users WHERE id = $1`, [userId]);
+      const user = userRes.rows[0];
+      const state = user?.mission_health_state || 'HEALTHY';
+      const userName = user?.name || "Moulika";
       if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
-        if (!(await hasEvent(userId, 'WEEKLY_MENTOR_REPORT', todayKey))) {
-          const data = await progressService.getWeeklyExecutionSummary(userId);
-          const text = reportGeneratorService.generateWeeklyMentorReport(data, "Moulika");
-          await notificationService.sendNotification(
-            userId, 
-            'WEEKLY_MENTOR_REPORT', 
-            'weekly_date', 
-            todayKey, 
-            text, 
+        const yesterdayDate = new Date(d);
+        yesterdayDate.setDate(d.getDate() - 1);
+        const endDayKey = getKolkataDateKey(yesterdayDate); // Sunday
+
+        const prevMondayDate = new Date(d);
+        prevMondayDate.setDate(d.getDate() - 7);
+        const startDayKey = getKolkataDateKey(prevMondayDate); // Monday
+        const periodKey = `${startDayKey}_${endDayKey}`;
+
+        if (!(await hasEvent(userId, 'WEEKLY_MENTOR_REPORT', periodKey))) {
+          const data = await progressService.getWeeklyExecutionSummary(userId, startDayKey, endDayKey);
+          const text = reportGeneratorService.generateCanonicalWeeklyReport(data, userName);
+          const result = await notificationService.sendNotification(
+            userId,
+            'WEEKLY_MENTOR_REPORT',
+            'weekly_date',
+            periodKey,
+            text,
             {}
           );
-          await recordEvent(userId, 'WEEKLY_MENTOR_REPORT', todayKey);
+          if (result && result.ok) {
+            await recordEvent(userId, 'WEEKLY_MENTOR_REPORT', periodKey);
+          }
         }
       }
     } catch (err) {
@@ -504,32 +517,39 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
     }
   }
 
-  // ── 5. Monthly Mentor Report (Last day of month at 09:30 PM) ────────────────
-  const tomorrow = new Date(d);
-  tomorrow.setDate(d.getDate() + 1);
-  const isLastDayOfMonth = tomorrow.getDate() === 1;
-
-  if (isLastDayOfMonth && hour === 21 && minute === 30) {
+  // ── 5. Monthly Mentor Report (First day of month 07:30 AM to 10:59 AM) ───────────
+  if (d.getDate() === 1 && hour >= 7 && hour <= 10) {
     try {
-      const userRes = await query(`SELECT mission_health_state FROM public.users WHERE id = $1`, [userId]);
-      const state = userRes.rows[0]?.mission_health_state || 'HEALTHY';
+      const userRes = await query(`SELECT name, mission_health_state FROM public.users WHERE id = $1`, [userId]);
+      const user = userRes.rows[0];
+      const state = user?.mission_health_state || 'HEALTHY';
+      const userName = user?.name || "Moulika";
       if (!['MISSION_FAILURE', 'MISSION_RECOVERY', 'RECOVERY_WIZARD'].includes(state)) {
-        const monthKey = `${yyyy}-${mm}`;
-        if (!(await hasEvent(userId, 'MONTHLY_MENTOR_REPORT', monthKey))) {
-          const data = await progressService.getMonthlyMentorSummary(userId);
-          const text = reportGeneratorService.generateMonthlyMentorTextReport(data, "Moulika");
-          await notificationService.sendNotification(
-            userId, 
-            'MONTHLY_MENTOR_REPORT', 
-            'monthly_date', 
-            monthKey, 
-            text, 
+        let prevMonthYear = yyyy;
+        let prevMonthNum = d.getMonth(); // 0-indexed: e.g. August (7) => July (7)
+        if (prevMonthNum === 0) {
+          prevMonthNum = 12;
+          prevMonthYear = yyyy - 1;
+        }
+        const prevMonthKey = `${prevMonthYear}-${String(prevMonthNum).padStart(2, '0')}`;
+
+        if (!(await hasEvent(userId, 'MONTHLY_MENTOR_REPORT', prevMonthKey))) {
+          const data = await progressService.getCanonicalMonthlyReportDataset(userId, prevMonthKey);
+          const text = reportGeneratorService.generateCanonicalMonthlyTextReport(data, userName);
+          const result = await notificationService.sendNotification(
+            userId,
+            'MONTHLY_MENTOR_REPORT',
+            'monthly_date',
+            prevMonthKey,
+            text,
             {}
           );
-          await recordEvent(userId, 'MONTHLY_MENTOR_REPORT', monthKey);
+          if (result && result.ok) {
+            await recordEvent(userId, 'MONTHLY_MENTOR_REPORT', prevMonthKey);
+          }
         }
         
-        if (!(await hasEvent(userId, 'MONTHLY_MENTOR_REPORT_PDF', monthKey))) {
+        if (!(await hasEvent(userId, 'MONTHLY_MENTOR_REPORT_PDF', prevMonthKey))) {
           const { sendMonthlyPdfReport } = await import('./monthlyPdfReportService.js');
           // Retrieve telegram chat id
           const { rows: channels } = await query(
@@ -539,12 +559,27 @@ Moulika, you have *${data.count}* revision items due today. Don't let your queue
           );
           if (channels.length > 0) {
             const chatId = channels[0].destination_id;
-            await sendMonthlyPdfReport(userId, monthKey, chatId);
-            await recordEvent(userId, 'MONTHLY_MENTOR_REPORT_PDF', monthKey);
+            // sendMonthlyPdfReport returns { delivered: bool, reason: string }
+            // Only record as sent if delivered=true (PDF, text fallback, or insufficient-data notice)
+            // RECONCILIATION_FAILED leaves delivered=false so next tick retries
+            const pdfResult = await sendMonthlyPdfReport(userId, prevMonthKey, chatId);
+            if (pdfResult && pdfResult.delivered) {
+              await recordEvent(userId, 'MONTHLY_MENTOR_REPORT_PDF', prevMonthKey);
+            } else if (pdfResult && pdfResult.reason === 'RECONCILIATION_FAILED') {
+              if (!(await hasEvent(userId, 'MONTHLY_RECONCILIATION_NOTICE', prevMonthKey))) {
+                await telegramService.sendTelegramMessage(chatId, "MentorOS found a data mismatch, so your monthly report has been held back rather than showing incorrect figures.");
+                await recordEvent(userId, 'MONTHLY_RECONCILIATION_NOTICE', prevMonthKey);
+              }
+              console.warn(`[NotificationScheduler] Monthly PDF not recorded: RECONCILIATION_FAILED`);
+            } else {
+              console.warn(`[NotificationScheduler] Monthly PDF not recorded: ${pdfResult?.reason || 'unknown'}`);
+            }
           } else {
             console.log("[NotificationScheduler] Monthly PDF skipped, no telegram channel for user:", userId);
           }
         }
+
+
       }
     } catch (err) {
       console.error("[NotificationScheduler] monthly report failed:", err.message);
