@@ -200,11 +200,11 @@ runTestCase("real exported 6 AM and 9 AM decision helpers", () => {
 runTestCase("missing plan reminder formatting (6 AM)", () => {
   const planState = { state: 'NO_PLAN' };
   const msg1 = buildMissingPlanReminder({ planState, userName: 'Moulika', notificationType: 'PLAN_NOT_UPLOADED' });
-  assert(msg1.includes("Today’s plan is still pending"), "Missing main text in 6 AM reminder");
+  assert(msg1.includes("Today’s study plan is still pending"), "Missing main text in 6 AM reminder");
   assert(!msg1.includes("Good morning"), "6 AM reminder must not include Good morning");
 
   const msg2 = buildMissingPlanReminder({ planState, userName: '', notificationType: 'PLAN_NOT_UPLOADED' });
-  assert(msg2.includes("Upload or confirm it now"), "Missing CTA in 6 AM reminder");
+  assert(msg2.includes("MentorOS will turn it into clear priorities"), "Missing CTA in 6 AM reminder");
 });
 
 // ── 3. 5 AM Good Morning Report Formatting Tests ─────────────────────────────
@@ -365,12 +365,12 @@ runTestCase("getDailyPlanState failure -> AMBIGUOUS fallback (pure query mock)",
   const shouldSend6 = shouldSendMissingPlanReminder(fallbackState);
   assert(shouldSend6 === true, "fallback state must send 6 AM reminder");
   const msg6 = buildMissingPlanReminder({ planState: fallbackState, userName: 'User', notificationType: 'PLAN_NOT_UPLOADED' });
-  assert(msg6.includes("Today’s plan is still pending"), "6 AM fallback missing prompt");
+  assert(msg6.includes("Today’s study plan is still pending"), "6 AM fallback missing prompt");
 
   const shouldSend9 = shouldSendMissingPlanReminder(fallbackState);
   assert(shouldSend9 === true, "fallback state must send 9 AM reminder");
   const msg9 = buildMissingPlanReminder({ planState: fallbackState, userName: 'User', notificationType: 'NO_PLAN_STRICT_9AM' });
-  assert(msg9.includes("Your study plan is still pending."), "9 AM fallback missing prompt");
+  assert(msg9.includes("Your UPSC goal needs a clear direction for today."), "9 AM fallback missing prompt");
 });
 
 console.log("\nALL TESTS PASSED SUCCESSFULLY!");

@@ -442,7 +442,7 @@ export function buildCanonicalGoodMorningData({
            (b.source_type === 'ocr' && hasPlanAcceptedEvent);
   };
 
-  let immediateAction = "Upload one study block and begin it.";
+  let immediateAction = "Share today’s study plan so MentorOS can turn it into clear priorities and help you move one step closer to your UPSC goal.";
   let candidateBlocks = [];
 
   if (planState) {

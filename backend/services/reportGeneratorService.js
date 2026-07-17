@@ -675,7 +675,7 @@ export function generateCanonicalGoodMorningReport(data, userName = "User") {
   } else if (ys.totalRecordedSeconds === 0) {
     yesterdayText = "• No study recorded.";
   } else {
-    const sortedSubjects = [...ys.subjects].sort((a, b) => b.recordedSeconds - a.recordedSeconds);
+    const sortedSubjects = [...ys.subjects].filter(s => s.recordedSeconds > 0).sort((a, b) => b.recordedSeconds - a.recordedSeconds);
     const topSubjects = sortedSubjects.slice(0, 3);
     const subLines = topSubjects.map(s => `• ${s.subject} — ${formatDurationSeconds(s.recordedSeconds)}`).join('\n');
     const remainingCount = sortedSubjects.length - 3;

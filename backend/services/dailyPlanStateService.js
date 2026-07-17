@@ -157,18 +157,18 @@ export function shouldSendMissingPlanReminder(planState) {
 export function buildMissingPlanReminder({ planState, userName, notificationType }) {
   const dynamicName = userName || 'User';
   if (notificationType === 'PLAN_NOT_UPLOADED') {
-    let msg = `Today’s plan is still pending.\n\nUpload or confirm it now so MentorOS can guide your study blocks today.`;
+    let msg = `Today’s study plan is still pending.\n\nShare what you can study today. MentorOS will turn it into clear priorities and help you move one step closer to your UPSC goal.`;
 
     const recoveryBlocks = planState.recoveryBlocks || [];
     if (recoveryBlocks.length > 0) {
-      msg += `\n\nAvailable meanwhile:`;
+      msg += `\n\nMeanwhile, your next recovery step is ready:`;
       for (const b of recoveryBlocks) {
-        msg += `\n${b.subject || 'GS'} recovery — ${b.planned_start || '09:00'}–${b.planned_end || '10:00'}`;
+        msg += `\n${b.subject || 'GS'} — ${b.planned_start || '09:00'}–${b.planned_end || '10:00'}`;
       }
     }
     return msg;
   } else if (notificationType === 'NO_PLAN_STRICT_9AM') {
-    return `Your study plan is still pending.\n\nWithout today’s plan, MentorOS cannot accurately guide your schedule, priorities or review.\n\nPlease upload or confirm today’s plan now.`;
+    return `Your UPSC goal needs a clear direction for today.\n\nUpload or confirm today’s plan now. MentorOS will identify what matters most and guide your next study block.`;
   }
   return '';
 }

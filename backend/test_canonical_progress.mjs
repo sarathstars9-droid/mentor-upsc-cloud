@@ -605,3 +605,38 @@ test('Report text generator correctly prints metrics and omits minimum commitmen
 
   assert.ok(!/\b\d+\.\d+\b/.test(message));
 });
+
+test('Report text generator correctly formats subjects and filters zero-duration from Yesterday but keeps in Pending', () => {
+  const data = {
+    userName: 'User',
+    yesterdaySummary: {
+      dataQuality: 'OK',
+      totalRecordedSeconds: 16980, // 4h 43m = 16980s
+      completedBlockCount: 2,
+      partialBlockCount: 0,
+      missedBlockCount: 1,
+      pendingBlockCount: 1,
+      revisionsDue: 0,
+      subjects: [
+        { subject: 'GS2', recordedSeconds: 9360, plannedSeconds: 9360, pendingSeconds: 0, completedBlockCount: 1, partialBlockCount: 0, missedBlockCount: 0 },
+        { subject: 'GS1', recordedSeconds: 7620, plannedSeconds: 7620, pendingSeconds: 0, completedBlockCount: 1, partialBlockCount: 0, missedBlockCount: 0 },
+        { subject: 'Current Affairs', recordedSeconds: 0, plannedSeconds: 3600, pendingSeconds: 3600, completedBlockCount: 0, partialBlockCount: 0, missedBlockCount: 1 },
+        { subject: 'Extra 1', recordedSeconds: 0, plannedSeconds: 0, pendingSeconds: 0, completedBlockCount: 0, partialBlockCount: 0, missedBlockCount: 0 }
+      ]
+    },
+    todayBlocksCount: 1,
+    todayPlannedMinutes: 90,
+    realisticMinimumMinutes: null,
+    immediateAction: "Share today’s study plan so MentorOS can turn it into clear priorities and help you move one step closer to your UPSC goal.",
+    planState: { state: 'NO_PLAN', recoveryBlocks: [] }
+  };
+
+  const message = generateCanonicalGoodMorningReport(data, 'User');
+  assert.ok(message.includes("GS2 — 2h 36m"));
+  assert.ok(message.includes("GS1 — 2h 07m"));
+  assert.ok(message.includes("Total recorded study — 4h 43m"));
+  assert.ok(!message.includes("Current Affairs — 0m"), "Zero duration subject must be hidden from Yesterday");
+  assert.ok(message.includes("Current Affairs — 1h 00m remaining"), "Zero duration subject must be preserved in Pending if it has pendingSeconds");
+  assert.ok(!message.includes("and 1 more") && !message.includes("and 2 more"), "Zero duration subject must not artificially inflate the ...and N more count");
+  assert.ok(message.includes("Share today’s study plan so MentorOS can turn it into clear priorities and help you move one step closer to your UPSC goal."), "Next action uses goal-oriented wording");
+});
