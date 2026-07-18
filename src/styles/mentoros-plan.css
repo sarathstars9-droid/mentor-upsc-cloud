@@ -103,15 +103,31 @@
   align-items: center;
 }
 
+.mos-actions-row .btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mos-actions-row .btn-primary {
+  background: var(--brand-primary);
+  color: #FFFFFF;
+  border: 1px solid var(--brand-primary);
+}
+
 /* ── STATUS BOX ── */
 .mos-status-box {
-  background: rgba(255, 140, 0, 0.05);
-  border: 1px solid rgba(255, 140, 0, 0.14);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-default);
   border-radius: 8px;
   padding: 8px 14px;
   font-family: var(--mono);
   font-size: 0.68rem;
-  color: var(--dim);
+  color: var(--text-secondary);
   line-height: 1.5;
 }
 
@@ -162,11 +178,11 @@
 .field-label input,
 .field-label textarea,
 .field-label select {
-  background: var(--mo-input, #070a11);
-  border: 1px solid var(--mo-input-border);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
   border-radius: 12px;
   padding: 9px 13px;
-  color: var(--mo-text);
+  color: var(--text-primary);
   font-family: var(--sans);
   font-size: 0.88rem;
   width: 100%;
@@ -233,10 +249,10 @@
 
 /* ── ADVANCED CONTROLS COLLAPSIBLE ── */
 .adv-controls {
-  border: 1px solid var(--mo-border);
+  border: 1px solid var(--border-default);
   border-radius: 14px;
   overflow: hidden;
-  background: var(--mo-surface);
+  background: var(--bg-surface);
 }
 
 .adv-controls-summary {
@@ -246,30 +262,30 @@
   padding: 14px 20px;
   cursor: pointer;
   list-style: none;
-  background: var(--mos-bg-soft);
+  background: var(--bg-subtle);
   font-family: var(--mono, monospace);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--mos-text-soft);
+  color: var(--text-secondary);
   user-select: none;
   transition: all 0.15s ease;
   border-bottom: 1px solid transparent;
 }
 .adv-controls-summary::-webkit-details-marker { display: none; }
 .adv-controls-summary:hover {
-  color: var(--mos-text);
+  color: var(--text-primary);
 }
 
 details.adv-controls[open] .adv-controls-summary {
-  border-bottom-color: var(--mos-border);
+  border-bottom-color: var(--border-default);
 }
 
 .adv-controls-chevron {
   font-size: 16px;
   font-weight: 400;
-  color: var(--mos-text-soft);
+  color: var(--text-secondary);
   transition: transform 0.2s;
   display: inline-block;
 }
@@ -279,7 +295,7 @@ details.adv-controls[open] .adv-controls-chevron {
 
 .adv-controls-body {
   padding: 20px;
-  background: var(--mos-surface);
+  background: var(--bg-surface);
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -300,19 +316,19 @@ details.adv-controls[open] .adv-controls-chevron {
 
 .mos-focus-modal {
   /* applied via inline style on the div — width handled there */
-  background: linear-gradient(145deg, #101827, #0b1220);
-  border: 1px solid var(--mo-border-amber);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
   border-radius: 24px;
   padding: 32px 36px;
   position: relative;
   overflow: hidden;
-  box-shadow: var(--mo-shadow-premium), var(--mo-shadow-amber);
+  box-shadow: var(--shadow-card);
 }
 .mos-focus-modal::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--mo-amber), transparent 50%);
+  background: var(--brand-primary);
 }
 
 .mos-focus-kicker {
@@ -320,7 +336,7 @@ details.adv-controls[open] .adv-controls-chevron {
   font-size: 0.6rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--saf);
+  color: var(--brand-primary);
   margin-bottom: 8px;
   font-weight: 700;
 }
@@ -619,4 +635,17 @@ details.adv-controls[open] .adv-controls-chevron {
     padding: 7px 14px;
     font-size: 0.65rem;
   }
+}
+
+.main-work-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(420px, 5fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.mos-plan-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px;
 }

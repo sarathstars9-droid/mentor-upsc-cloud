@@ -317,70 +317,34 @@ export function getEffectiveBlockStatus(block) {
 
   if (block.ActualEnd) {
     if (
-      rawStatus === "stopped" ||
       rawStatus === "partial" ||
       rawStatus === "missed" ||
-      rawStatus === "skipped" ||
-      rawStatus === "skipped_rescue"
+      rawStatus === "skipped"
     ) {
       return rawStatus;
     }
     return "completed";
   }
 
-  const todayKey = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
-
-  if (rawStatus === "skipped_rescue") {
-    const blockDay = typeof block.Date === "string"
-      ? block.Date.slice(0, 10)
-      : block.Date
-        ? new Date(block.Date).toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" })
-        : null;
-    return blockDay === todayKey ? "planned" : "skipped";
-  }
-
   if (rawStatus === "review_pending") {
     return "review_pending";
   }
 
-  if (
-    rawStatus === "paused" ||
-    (block.LastPauseAt &&
-      (!block.LastResumeAt ||
-        new Date(block.LastPauseAt).getTime() > new Date(block.LastResumeAt).getTime()))
-  ) {
+  const pausedAfterResume =
+    block.LastPauseAt &&
+    (!block.LastResumeAt ||
+      new Date(block.LastPauseAt).getTime() >
+        new Date(block.LastResumeAt).getTime());
+
+  if (rawStatus === "paused" || pausedAfterResume) {
     return "paused";
   }
 
-  if (rawStatus === "active" || block.ActualStart) {
+  if (block.ActualStart) {
     return "active";
   }
 
-  // Safe date normalization before comparisons
-  const blockDay = typeof block.Date === "string"
-    ? block.Date.slice(0, 10)
-    : block.Date
-      ? new Date(block.Date).toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" })
-      : null;
-
-  // Not started - check time window
-  const startMin = hhmmToMinutes(block.PlannedStart);
-  const endMin = hhmmToMinutes(block.PlannedEnd);
-  
-  if (blockDay === todayKey) {
-    if (startMin !== null && endMin !== null) {
-      const nowMin = nowMinutesOfDay();
-      if (nowMin >= startMin && nowMin <= endMin) {
-        return "ready_to_start";
-      } else if (nowMin > endMin) {
-        return "overdue";
-      }
-    }
-  } else if (blockDay && blockDay < todayKey) {
-    return "overdue";
-  }
-
-  return "planned";
+  return rawStatus || "planned";
 }
 
 export function getStatusBadgeColor(status) {
@@ -703,4 +667,52 @@ export function getTopicCoverageSummary(blocks) {
     if (minutes >= 60) return `${subject}: progressing`;
     return `${subject}: light coverage`;
   });
+}
+
+export function getBlockStart(block) {
+  return (
+    block.PlannedStart ||
+    block.Start ||
+    block.startTime ||
+    block.start ||
+    block.plannedStart ||
+    ""
+  );
+}
+
+export function getBlockEnd(block) {
+  return (
+    block.PlannedEnd ||
+    block.End ||
+    block.endTime ||
+    block.end ||
+    block.plannedEnd ||
+    ""
+  );
+}
+
+export function formatDisplayTime(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+
+  // Handles HH:mm
+  const match = raw.match(/^(\d{1,2}):(\d{2})$/);
+  if (match) {
+    const hours = Number(match[1]);
+    const minutes = match[2];
+    const suffix = hours >= 12 ? "PM" : "AM";
+    const h12 = hours % 12 || 12;
+    return `${h12}:${minutes} ${suffix}`;
+  }
+
+  return raw;
+}
+
+export function getBlockTimeRange(block) {
+  const start = getBlockStart(block);
+  const end = getBlockEnd(block);
+
+  if (!start || !end) return "Time not set";
+
+  return `${formatDisplayTime(start)} – ${formatDisplayTime(end)}`;
 }

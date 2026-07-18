@@ -1,19 +1,11 @@
-import { getEffectiveBlockStatus } from "../../utils/studyEngine";
+import { getEffectiveBlockStatus, formatTimeOnly, getBlockTimeRange } from "../../utils/studyEngine";
 
-const STATUS_CFG = {
-  active:  { bg: "rgba(194, 65, 12, 0.15)",  border: "rgba(194, 65, 12, 0.3)",  color: "#FF7A45", dot: "#FF7A45", label: "ACTIVE"  },
-  paused:  { bg: "rgba(234, 179, 8, 0.12)",   border: "rgba(234, 179, 8, 0.24)",   color: "#FACC15", dot: "#FACC15", label: "PAUSED"  },
-  ready_to_start: { bg: "rgba(59, 130, 246, 0.15)", border: "rgba(59, 130, 246, 0.3)", color: "#3B82F6", dot: "#3B82F6", label: "READY TO START" },
-  overdue:  { bg: "rgba(239, 68, 68, 0.15)",  border: "rgba(239, 68, 68, 0.3)",  color: "#EF4444", dot: "#EF4444", label: "OVERDUE" },
-  planned: { bg: "rgba(255, 255, 255, 0.05)", border: "rgba(255, 255, 255, 0.1)", color: "#9CA3AF", dot: "#6B7280", label: "READY"   },
-};
 
 const btnBase = {
   display: "inline-flex", alignItems: "center", justifyContent: "center",
-  height: 38, padding: "0 18px", borderRadius: 10,
-  fontWeight: 700, fontSize: 14, cursor: "pointer",
-  border: "none", letterSpacing: "-0.01em", whiteSpace: "nowrap",
-  transition: "all 0.15s ease",
+  height: 40, padding: "0 18px", borderRadius: 8,
+  fontWeight: 600, fontSize: 14, cursor: "pointer",
+  border: "none", transition: "all 0.15s ease",
 };
 
 export default function SpotlightCard({
@@ -27,231 +19,180 @@ export default function SpotlightCard({
   onResume,
   onStop,
   onMarkDone,
+  todayBlocks = [],
+  nowTick = Date.now(),
+  formatCountdown = () => "",
+  onOpenFocus
 }) {
   if (!currentBlock) {
+    const nextBlockIndex = todayBlocks.findIndex(b => {
+      const s = getEffectiveBlockStatus(b).toLowerCase();
+      return !['active', 'completed', 'done', 'missed', 'paused'].includes(s);
+    });
+    const nextBlock = nextBlockIndex !== -1 ? todayBlocks[nextBlockIndex] : null;
+
     return (
       <div style={{
-        background: "var(--mos-surface)",
-        border: "1px dashed var(--mos-border)",
+        background: "var(--bg-surface)",
+        border: "1px solid var(--border-default)",
         borderRadius: 16,
-        padding: "24px",
+        padding: "32px",
         textAlign: "center",
-        boxShadow: "var(--mos-shadow-soft)",
+        boxShadow: "var(--shadow-card)",
       }}>
-        <div style={{ fontSize: 13, color: "var(--mos-text-soft)", fontFamily: "var(--mono,monospace)" }}>
-          No active block — start one below
+        <div style={{ fontSize: 16, fontWeight: 600, color: "var(--text-primary)" }}>Current Execution</div>
+        <div style={{ fontSize: 14, color: "var(--text-secondary)", marginTop: 8, marginBottom: 20 }}>
+          No active block
+          <br/>
+          Start the next scheduled block from Today’s Sequence.
         </div>
+        <button 
+          disabled={!nextBlock || busy}
+          onClick={() => nextBlock && onStart && onStart(nextBlock)}
+          style={{ ...btnBase, background: "var(--bg-subtle)", color: "var(--text-primary)", border: "1px solid var(--border-default)" }}>
+          Start next block
+        </button>
       </div>
     );
   }
 
-  const status     = getEffectiveBlockStatus(currentBlock).toLowerCase();
-  const cfg        = STATUS_CFG[status] || STATUS_CFG.planned;
-  const isActive   = status === "active";
-  const isPaused   = status === "paused";
-  const isPlanned  = ["planned", "ready_to_start", "overdue"].includes(status);
+  const status = getEffectiveBlockStatus(currentBlock).toLowerCase();
+  const isActive = status === "active";
+  const isPaused = status === "paused";
+  const isPlanned = ["planned", "ready_to_start", "overdue"].includes(status);
 
-  const spotlightHeaderLabel = (() => {
-    if (isActive || isPaused) return "Current Block";
-    if (status === "ready_to_start") return "Ready to Start";
-    if (status === "overdue") return "Overdue Block";
-    return "Next Block";
-  })();
-
-  // ── Title logic: avoid showing subject if it duplicates topic ───────────────
-  const rawTopic   = currentBlock.PlannedTopic || "";
+  const rawTopic = currentBlock.PlannedTopic || "";
   const rawSubject = currentBlock.PlannedSubject || "";
-  const mappedNode = currentBlock.finalMapping?.nodeName || "";
+  const mainTitle = rawSubject || "Study Block";
+  const subtitle = rawTopic;
 
-  const mainTitle = (() => {
-    if (rawTopic && rawTopic.toLowerCase() !== rawSubject.toLowerCase()) return rawTopic;
-    if (mappedNode && mappedNode.toLowerCase() !== rawSubject.toLowerCase()) return mappedNode;
-    return rawSubject || "Study Block";
-  })();
-
-  const subtitle = (() => {
-    // Only show if it adds info (not a repeat of mainTitle)
-    if (mappedNode && mappedNode !== mainTitle && mappedNode.toLowerCase() !== rawSubject.toLowerCase()) return mappedNode;
-    const subj = currentBlock.finalMapping?.subjectName || rawSubject;
-    if (subj && subj !== mainTitle) return subj;
-    return null;
-  })();
-
-  // ── Progress ─────────────────────────────────────────────────────────────────
-  const totalMin   = currentBlock.PlannedMinutes || 0;
+  const totalMin = currentBlock.PlannedMinutes || 0;
   const elapsedSec = liveElapsedSec != null ? liveElapsedSec : (currentBlock.ActualMinutes || 0) * 60;
-  const doneMin    = Math.floor(elapsedSec / 60);
-  const leftMin    = Math.max(0, totalMin - doneMin);
-  const pct        = totalMin > 0 ? Math.min(100, Math.round((doneMin / totalMin) * 100)) : 0;
+  const doneMin = Math.floor(elapsedSec / 60);
+  const leftMin = Math.max(0, totalMin - doneMin);
+  const pctRaw = (doneMin / (doneMin + leftMin)) * 100;
+  const pct = isNaN(pctRaw) ? 0 : Math.min(100, Math.round(pctRaw));
 
-  // Only show elapsed line when there's real data
-  const showProgress = totalMin > 0 && (doneMin > 0 || isActive || isPaused);
+  let timeRemainingDisplay = "";
+  if (currentBlock && currentBlock.PlannedEnd) {
+    const status = getEffectiveBlockStatus(currentBlock).toLowerCase();
+    
+    // Convert e.g., "12:30" (or check if it's already am/pm)
+    // We assume PlannedEnd is HH:mm in 24h format for calculation
+    let h = 0, m = 0;
+    if (currentBlock.PlannedEnd.includes(':')) {
+       // if it already has AM/PM, parse it? studyEngine outputs HH:mm for PlannedEnd usually
+       const parts = currentBlock.PlannedEnd.replace(/AM|PM/i, '').trim().split(':');
+       h = parseInt(parts[0], 10);
+       m = parseInt(parts[1], 10);
+       if (currentBlock.PlannedEnd.toLowerCase().includes('pm') && h < 12) h += 12;
+       if (currentBlock.PlannedEnd.toLowerCase().includes('am') && h === 12) h = 0;
+    }
 
-  const progressLabel = (() => {
-    if (doneMin > 0 && leftMin > 0) return `${doneMin} min done · ${leftMin} min left`;
-    if (doneMin > 0 && leftMin === 0) return `${doneMin} min done · complete`;
-    if (isActive || isPaused) return `0 min done · ${totalMin} min left`;
-    return null;
-  })();
+    const d = new Date(nowTick);
+    d.setHours(h, m, 0, 0);
+    const remainingMs = d.getTime() - nowTick;
 
-  // ── Timer string ─────────────────────────────────────────────────────────────
-  const timerStr = elapsedSec > 0
-    ? `${Math.floor(elapsedSec / 60)}:${String(elapsedSec % 60).padStart(2, "0")}`
-    : null;
+    if (status === 'completed' || status === 'done') {
+      timeRemainingDisplay = 'Completed';
+    } else if (status === 'missed') {
+      timeRemainingDisplay = 'Missed';
+    } else if (remainingMs <= 0 && status !== 'active') {
+      timeRemainingDisplay = 'Time window ended';
+    } else {
+      timeRemainingDisplay = `${formatCountdown(remainingMs)} remaining`;
+    }
+  }
 
-  // ── PYQ ──────────────────────────────────────────────────────────────────────
-  const pyqTotal   = currentBlockPyq?.total || 0;
+
+
+  const pyqTotal = currentBlockPyq?.total || 0;
   const canOpenPyq = Boolean(currentBlockPyqNodeId);
 
   const handleMarkDone = onMarkDone || (onStop ? () => onStop(currentBlock) : undefined);
 
   return (
     <section style={{
-      position: "relative",
-      background: "#0B1220", /* Premium dark color */
-      border: `1px solid ${isActive ? "rgba(194,65,12,0.30)" : "rgba(255,255,255,0.08)"}`,
-      borderTop: `2px solid ${isActive ? "#C2410C" : "rgba(255,255,255,0.12)"}`,
+      background: "var(--bg-surface)",
+      border: "1px solid var(--border-default)",
       borderRadius: 16,
-      padding: "20px 24px 18px",
-      boxShadow: isActive
-        ? "0 4px 20px rgba(194,65,12,0.12), 0 8px 30px rgba(0,0,0,0.4)"
-        : "0 4px 12px rgba(0,0,0,0.3)",
-      overflow: "hidden",
+      padding: "28px 32px",
+      boxShadow: "0 2px 8px rgba(16, 24, 40, 0.04)",
+      display: "flex",
+      flexDirection: "column",
+      gap: 16
     }}>
-
-      {/* decorative glow — no interaction */}
-      <div style={{
-        position: "absolute", top: -40, right: -40, width: 180, height: 180,
-        background: "radial-gradient(circle, rgba(194,65,12,0.08) 0%, transparent 70%)",
-        pointerEvents: "none",
-      }} />
-
-      {/* ── Row 1: kicker + status chip ── */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
-        <span style={{
-          fontFamily: "var(--mono,monospace)", fontSize: 10, letterSpacing: "0.12em",
-          textTransform: "uppercase", color: "#64748B", fontWeight: 600,
-        }}>
-          {spotlightHeaderLabel}
-        </span>
-        <div style={{
-          display: "flex", alignItems: "center", gap: 6,
-          padding: "4px 11px", borderRadius: 20,
-          background: cfg.bg, border: `1px solid ${cfg.border}`,
-        }}>
-          <span style={{
-            width: 6, height: 6, borderRadius: "50%", flexShrink: 0,
-            background: cfg.dot,
-            boxShadow: isActive ? `0 0 5px ${cfg.dot}` : "none",
-          }} />
-          <span style={{
-            fontSize: 10, fontWeight: 700, letterSpacing: "0.1em",
-            color: cfg.color, fontFamily: "var(--mono,monospace)",
-          }}>
-            {cfg.label}
-          </span>
-        </div>
+      <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+        Current Execution
       </div>
 
-      {/* ── Row 2: title ── */}
-      <div style={{ marginBottom: subtitle ? 2 : 12 }}>
-        <div style={{
-          fontSize: 24, fontWeight: 800, color: "#FFFFFF",
-          letterSpacing: "-0.035em", lineHeight: 1.15,
-        }}>
+      <div>
+        <h2 style={{ fontSize: 32, fontWeight: 800, color: "var(--text-primary)", margin: "0 0 4px 0", letterSpacing: "-0.02em" }}>
           {mainTitle}
+        </h2>
+        <div style={{ fontSize: 15, color: "var(--text-secondary)", fontWeight: 500 }}>
+          GS-1 <span style={{ margin: "0 6px" }}>·</span> {subtitle}
         </div>
       </div>
 
-      {/* ── Row 3: subtitle (only if non-redundant) ── */}
-      {subtitle && (
-        <div style={{ fontSize: 13, color: "#9CA3AF", fontWeight: 500, marginBottom: 12, letterSpacing: "-0.01em" }}>
-          {subtitle}
-        </div>
-      )}
+      <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 14, fontWeight: 600, color: "var(--text-secondary)" }}>
+        <span style={{ color: "var(--text-primary)", display: "flex", alignItems: "center", gap: 6 }}>
+          <span style={{ fontSize: 16 }}>⏱</span> {getBlockTimeRange(currentBlock)}
+        </span>
+        <span>·</span>
+        <span style={{ color: "var(--brand-primary)" }}>{timeRemainingDisplay}</span>
+      </div>
 
-      {/* ── Row 4: time line ── */}
       <div style={{
-        display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap",
-        marginBottom: showProgress ? 10 : 16,
-        fontFamily: "var(--mono,monospace)",
+        background: "var(--bg-subtle)",
+        border: "1px solid var(--border-default)",
+        borderRadius: 8,
+        padding: "12px 16px",
+        fontSize: 14,
+        color: "var(--text-primary)",
+        fontWeight: 500,
+        display: "flex",
+        alignItems: "center",
+        gap: 8
       }}>
-        <span style={{ fontSize: 14, fontWeight: 700, color: "#E5E7EB" }}>
-          {currentBlock.PlannedStart} → {currentBlock.PlannedEnd}
-        </span>
-        <span style={{ color: "#374151" }}>·</span>
-        <span style={{ fontSize: 13, color: "#9CA3AF", fontWeight: 600 }}>
-          {totalMin} min
-        </span>
-        {timerStr && (
-          <>
-            <span style={{ color: "#374151" }}>·</span>
-            <span style={{ fontSize: 13, color: "#FF7A45", fontWeight: 700 }}>
-              ⏱ {timerStr}
-            </span>
-          </>
-        )}
+        <span style={{ color: "var(--text-secondary)" }}>📄</span>
+        Required output: 20-page revision + {pyqTotal} PYQs
       </div>
 
-      {/* ── Row 5: progress bar + label ── */}
-      {showProgress && (
-        <div style={{ marginBottom: 16 }}>
-          <div style={{ height: 4, borderRadius: 4, background: "#1F2937", overflow: "hidden", marginBottom: 6 }}>
-            <div style={{
-              height: "100%", borderRadius: 4,
-              width: `${pct}%`,
-              background: isActive ? "#C2410C" : isPaused ? "#D97706" : "#4B5563",
-              transition: "width 1s linear",
-              minWidth: pct > 0 ? 4 : 0,
-            }} />
-          </div>
-          {progressLabel && (
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span style={{ fontSize: 11, color: "#9CA3AF", fontFamily: "var(--mono,monospace)" }}>
-                {progressLabel}
-              </span>
-              <span style={{ fontSize: 11, color: "#E5E7EB", fontFamily: "var(--mono,monospace)" }}>
-                {pct}%
-              </span>
-            </div>
-          )}
+      <div style={{ marginTop: 12 }}>
+        <div style={{ height: 8, borderRadius: 4, background: "var(--brand-primary-soft)", overflow: "hidden", marginBottom: 8 }}>
+          <div style={{
+            height: "100%", borderRadius: 4, width: `${pct}%`, background: "var(--brand-primary)",
+            transition: "width 1s linear", minWidth: pct > 0 ? 8 : 0,
+          }} />
         </div>
-      )}
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, fontWeight: 600, color: "var(--text-secondary)" }}>
+          <span>{doneMin} min done <span style={{ margin: "0 4px" }}>·</span> {timeRemainingDisplay.replace(' remaining', ' left')}</span>
+          <span style={{ color: "var(--text-primary)" }}>{pct}% of this block</span>
+        </div>
+      </div>
 
-      {/* ── Row 6: actions (all in one row, PYQ right-aligned) ── */}
-      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 14 }}>
-
-        {isPlanned && (
-          <button disabled={busy} onClick={() => onStart?.(currentBlock.BlockId)} style={{
-            ...btnBase, background: "#C2410C", color: "#FFFFFF",
-            boxShadow: "0 2px 8px rgba(194, 65, 12, 0.25)",
-            padding: "0 22px",
+      <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 8 }}>
+        {(isActive || isPlanned) && (
+          <button disabled={busy} onClick={isActive ? onOpenFocus : () => onStart?.(currentBlock)} style={{
+            ...btnBase, background: "var(--brand-primary)", color: "#FFFFFF",
+            padding: "0 24px", boxShadow: "0 2px 4px rgba(10, 100, 245, 0.15)",
           }}>
-            ▶ Start
+            {isActive ? "Open focus mode" : "Start block"}
           </button>
         )}
 
         {isActive && (
           <>
-            <button disabled={busy} onClick={handleMarkDone} style={{
-              ...btnBase, background: "#C2410C", color: "#FFFFFF",
-              boxShadow: "0 2px 8px rgba(194, 65, 12, 0.25)",
-              padding: "0 22px",
-            }}>
-              ✓ Done
-            </button>
             <button disabled={busy} onClick={() => onPause?.(currentBlock.BlockId)} style={{
-              ...btnBase, background: "rgba(255, 255, 255, 0.08)", color: "#E5E7EB",
-              border: "1px solid rgba(255, 255, 255, 0.12)",
+              ...btnBase, background: "var(--bg-surface)", color: "var(--text-primary)", border: "1px solid var(--border-default)"
             }}>
-              ⏸ Pause
+              ⏸ Pause session
             </button>
             <button disabled={busy} onClick={() => onStop?.(currentBlock)} style={{
-              ...btnBase,
-              background: "rgba(239, 68, 68, 0.12)", color: "#FCA5A5",
-              border: "1px solid rgba(239, 68, 68, 0.25)",
+              ...btnBase, background: "var(--bg-surface)", color: "var(--text-primary)", border: "1px solid var(--border-default)"
             }}>
-              ■ Stop
+              ⋮ End block
             </button>
           </>
         )}
@@ -259,18 +200,15 @@ export default function SpotlightCard({
         {isPaused && (
           <>
             <button disabled={busy} onClick={() => onResume?.(currentBlock.BlockId)} style={{
-              ...btnBase, background: "#C2410C", color: "#FFFFFF",
-              boxShadow: "0 2px 8px rgba(194, 65, 12, 0.25)",
-              padding: "0 22px",
+              ...btnBase, background: "var(--brand-primary)", color: "#FFFFFF",
+              padding: "0 24px", boxShadow: "0 2px 4px rgba(10, 100, 245, 0.15)",
             }}>
-              ▶ Resume
+              Resume block
             </button>
             <button disabled={busy} onClick={() => onStop?.(currentBlock)} style={{
-              ...btnBase,
-              background: "rgba(239, 68, 68, 0.12)", color: "#FCA5A5",
-              border: "1px solid rgba(239, 68, 68, 0.25)",
+              ...btnBase, background: "var(--bg-surface)", color: "var(--text-primary)", border: "1px solid var(--border-default)"
             }}>
-              ■ Stop
+              ⋮ End block
             </button>
           </>
         )}
@@ -282,27 +220,14 @@ export default function SpotlightCard({
             rel="noopener noreferrer"
             style={{
               ...btnBase,
-              marginLeft: "auto",
-              textDecoration: "none",
-              background: "rgba(255, 255, 255, 0.04)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              color: "#9CA3AF", fontSize: 13,
+              marginLeft: "auto", background: "transparent",
+              color: "var(--brand-primary)", textDecoration: "none",
             }}
           >
-            {pyqTotal > 0 ? `${pyqTotal} PYQs →` : "PYQs →"}
+            View PYQs →
           </a>
         )}
       </div>
-
-      {/* ── Row 7: microcopy — only show when active or paused ── */}
-      {(isActive || isPaused) && (
-        <div style={{
-          fontSize: 11, color: "#9CA3AF",
-          fontFamily: "var(--mono,monospace)", letterSpacing: "0.01em",
-        }}>
-          {isActive ? "Stay focused. Every minute compounds." : "Paused. Resume when ready."}
-        </div>
-      )}
     </section>
   );
 }

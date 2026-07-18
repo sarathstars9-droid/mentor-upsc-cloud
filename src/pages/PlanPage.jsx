@@ -33,6 +33,7 @@ import {
   sumCsatMinutesFromParsed,
   buildApprovedOcrBlocks,
   buildScheduleBlocksPayload,
+  getBlockTimeRange,
 } from "../utils/studyEngine";
 
 function getPyqQuestionText(q) {
@@ -158,7 +159,20 @@ async function loadSyllabusRadar(blocks) {
   });
 
   const data = await res.json();
-  return data;
+  return null;
+}
+
+function formatCountdown(ms) {
+  const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  if (hours > 0) {
+    return `${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  return `${minutes}m ${seconds}s`;
 }
 
 /* ---------------- Local Backend: Text → Syllabus Map ---------------- */
@@ -863,14 +877,14 @@ function StudyBlockCard({
   const isPlanned   = ["planned", "ready_to_start", "overdue"].includes(statusValue);
 
   const SC_MAP = {
-    active:    { bg: "rgba(194, 65, 12, 0.15)",  border: "rgba(194, 65, 12, 0.3)",  color: "#FF7A45", dot: "#FF7A45", label: "ACTIVE"   },
+    active:    { bg: "rgba(10, 100, 245, 0.15)",  border: "rgba(10, 100, 245, 0.3)",  color: "#0A64F5", dot: "#0A64F5", label: "ACTIVE"   },
     paused:    { bg: "rgba(234, 179, 8, 0.12)",   border: "rgba(234, 179, 8, 0.24)",   color: "#D97706", dot: "#D97706", label: "PAUSED"   },
     completed: { bg: "rgba(16, 185, 129, 0.08)", border: "rgba(16, 185, 129, 0.2)", color: "#059669", dot: "#059669", label: "DONE"     },
     stopped:   { bg: "rgba(16, 185, 129, 0.08)", border: "rgba(16, 185, 129, 0.2)", color: "#059669", dot: "#059669", label: "DONE"     },
-    partial:   { bg: "rgba(245, 158, 11, 0.05)", border: "rgba(245, 158, 11, 0.15)", color: "#B45309", dot: "#B45309", label: "PARTIAL"  },
+    partial:   { bg: "rgba(10, 100, 245, 0.05)", border: "rgba(10, 100, 245, 0.15)", color: "#095BE0", dot: "#095BE0", label: "PARTIAL"  },
     missed:    { bg: "rgba(239, 68, 68, 0.06)",   border: "rgba(239, 68, 68, 0.15)",   color: "#DC2626", dot: "#DC2626", label: "MISSED"   },
     skipped:   { bg: "rgba(107, 114, 128, 0.06)", border: "rgba(107, 114, 128, 0.15)", color: "#4B5563", dot: "#4B5563", label: "SKIPPED"  },
-    ready_to_start: { bg: "rgba(59, 130, 246, 0.1)",  border: "rgba(59, 130, 246, 0.2)",  color: "#3B82F6", dot: "#3B82F6", label: "READY TO START" },
+    ready_to_start: { bg: "rgba(10, 100, 245, 0.1)",  border: "rgba(10, 100, 245, 0.2)",  color: "#0A64F5", dot: "#0A64F5", label: "READY TO START" },
     overdue:   { bg: "rgba(239, 68, 68, 0.1)",   border: "rgba(239, 68, 68, 0.2)",   color: "#EF4444", dot: "#EF4444", label: "OVERDUE" },
     planned:   { bg: "var(--mos-bg-soft)", border: "var(--mos-border)", color: "var(--mos-text-soft)", dot: "var(--mos-text-soft)", label: "PLANNED"  },
   };
@@ -925,33 +939,33 @@ function StudyBlockCard({
       border: "none", letterSpacing: "-0.01em", whiteSpace: "nowrap",
       transition: "all 0.15s ease",
     },
-    primary: { background: "var(--mos-accent)", color: "#fff", boxShadow: "0 2px 6px rgba(194, 65, 12, 0.15)" },
+    primary: { background: "var(--mos-accent)", color: "#fff", boxShadow: "0 2px 6px rgba(10, 100, 245, 0.15)" },
     muted:   {
-      background: isActive ? "rgba(255, 255, 255, 0.08)" : "var(--mos-bg-soft)",
-      color: isActive ? "#E5E7EB" : "var(--mos-text)",
-      border: `1px solid ${isActive ? "rgba(255, 255, 255, 0.12)" : "var(--mos-border)"}`
+      background: isActive ? "rgba(10, 100, 245, 0.08)" : "var(--mos-bg-soft)",
+      color: isActive ? "#0A64F5" : "var(--mos-text)",
+      border: `1px solid ${isActive ? "rgba(10, 100, 245, 0.12)" : "var(--mos-border)"}`
     },
     stop:    { background: "rgba(239, 68, 68, 0.08)", color: "#ef4444", border: "1px solid rgba(239,68,68,0.15)" },
     pyq:     {
-      background: isActive ? "rgba(255, 255, 255, 0.04)" : "var(--mos-bg-soft)",
-      color: isActive ? "#9CA3AF" : "var(--mos-text-soft)",
-      border: `1px solid ${isActive ? "rgba(255, 255, 255, 0.08)" : "var(--mos-border)"}`,
+      background: isActive ? "rgba(10, 100, 245, 0.04)" : "var(--mos-bg-soft)",
+      color: isActive ? "#0A64F5" : "var(--mos-text-soft)",
+      border: `1px solid ${isActive ? "rgba(10, 100, 245, 0.08)" : "var(--mos-border)"}`,
       textDecoration: "none"
     },
   };
 
   return (
     <article style={{
-      background: isActive ? "#0B1220" : "var(--mos-surface)",
-      border: `1px solid ${isActive ? "rgba(194,65,12,0.30)" : "var(--mos-border)"}`,
-      borderTop: `2px solid ${isActive ? "#C2410C" : isDone ? "var(--mos-border)" : "var(--mos-border-strong)"}`,
+      background: isActive ? "#EAF2FF" : "var(--mos-surface)",
+      border: `1px solid ${isActive ? "#CFE0FF" : "var(--mos-border)"}`,
+      borderTop: `2px solid ${isActive ? "#0A64F5" : isDone ? "var(--mos-border)" : "var(--mos-border-strong)"}`,
       borderRadius: 16,
       padding: "14px 16px",
       display: "flex",
       flexDirection: "column",
       gap: 8,
       overflow: "hidden",
-      boxShadow: isActive ? "0 4px 12px rgba(194,65,12,0.08)" : "var(--mos-shadow-soft)",
+      boxShadow: isActive ? "0 4px 12px rgba(10, 100, 245, 0.08)" : "var(--mos-shadow-soft)",
       opacity: isDone ? 0.75 : 1,
     }}>
       {/* ROW 1: title + time range */}
@@ -1009,19 +1023,19 @@ function StudyBlockCard({
       {/* ROW 4: progress bar OR starts-at */}
       {(isActive || isPaused || isDone) && totalMin > 0 ? (
         <div>
-          <div style={{ height: 2, borderRadius: 2, background: isActive ? '#1F2937' : 'var(--mos-bg-soft)', overflow: 'hidden', marginBottom: 4 }}>
+          <div style={{ height: 4, borderRadius: 2, background: 'var(--mos-bg-soft)', overflow: 'hidden', marginBottom: 4 }}>
             <div style={{
               height: '100%', borderRadius: 2, width: `${pct}%`,
-              background: isActive ? '#C2410C' : isPaused ? 'var(--mos-warning)' : 'var(--mos-text-soft)',
+              background: isActive ? '#0A64F5' : isPaused ? 'var(--mos-warning)' : 'var(--mos-text-soft)',
               transition: 'width 1s linear', minWidth: pct > 0 ? 2 : 0,
             }} />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <span style={{ fontSize: 10, color: isActive ? '#9CA3AF' : 'var(--mos-text-soft)', fontFamily: 'var(--mono,monospace)' }}>
+            <span style={{ fontSize: 10, color: 'var(--mos-text-soft)', fontFamily: 'var(--mono,monospace)' }}>
               {doneMin > 0 ? `${doneMin} min done · ${leftMin} min left` : `${totalMin} min left`}
             </span>
             {pct > 0 && (
-              <span style={{ fontSize: 10, color: isActive ? '#E5E7EB' : 'var(--mos-text)', fontFamily: 'var(--mono,monospace)' }}>{pct}%</span>
+              <span style={{ fontSize: 10, color: 'var(--mos-text)', fontFamily: 'var(--mono,monospace)' }}>{pct}%</span>
             )}
           </div>
         </div>
@@ -1107,6 +1121,14 @@ export default function PlanPage() {
   });
 
   const [addBlockOpen, setAddBlockOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("sequence");
+  const [nowTick, setNowTick] = useState(Date.now());
+
+  useEffect(() => {
+    const id = setInterval(() => setNowTick(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState("");
   const [weekly, setWeekly] = useState(null);
@@ -2627,131 +2649,138 @@ export default function PlanPage() {
         completionToday={completionToday}
         dailyMotivation={dailyMotivation}
         alertPermission={alertPermission}
-      />
-
-      <SpotlightCard
+        todayBlocks={todayBlocks}
         currentBlock={currentBlock}
-        currentBlockPyq={currentBlockPyq}
-        currentBlockPyqNodeId={currentBlockPyqNodeId}
-        currentBlockPyqLoading={currentBlockPyqLoading}
-        currentBlockPyqError={currentBlockPyqError}
-        spotlightMessage={spotlightMessage}
-        liveElapsedSec={liveElapsedSec}
-        busy={busy}
-        onStart={handleStartBlock}
-        onPause={handlePauseBlock}
-        onResume={handleResumeBlock}
-        onStop={requestStopBlock}
+        onStartBlock={() => currentBlock && handleStartBlock(currentBlock.BlockId)}
+        onPauseBlock={() => currentBlock && handlePauseBlock(currentBlock.BlockId)}
+        onResumeBlock={() => currentBlock && handleResumeBlock(currentBlock.BlockId)}
+        nextBlock={(() => {
+          const nextBlockIndex = todayBlocks.findIndex(b => {
+            const s = getEffectiveBlockStatus(b).toLowerCase();
+            return !['active', 'completed', 'done', 'missed', 'paused'].includes(s);
+          });
+          return nextBlockIndex !== -1 ? todayBlocks[nextBlockIndex] : null;
+        })()}
+        onStartNextBlock={(nextBlock) => nextBlock && handleStartBlock(nextBlock.BlockId)}
+        onOpenFocus={() => setSpotlightOpen(true)}
       />
 
-      {status && <div className="mos-status-box">{status}</div>}
+      <div className="main-work-grid">
+        <SpotlightCard
+          currentBlock={currentBlock}
+          currentBlockPyq={currentBlockPyq}
+          currentBlockPyqNodeId={currentBlockPyqNodeId}
+          currentBlockPyqLoading={currentBlockPyqLoading}
+          currentBlockPyqError={currentBlockPyqError}
+          spotlightMessage={spotlightMessage}
+          liveElapsedSec={liveElapsedSec}
+          busy={busy}
+          onStart={handleStartBlock}
+          onPause={handlePauseBlock}
+          onResume={handleResumeBlock}
+          onStop={requestStopBlock}
+          onOpenFocus={() => setSpotlightOpen(true)}
+          todayBlocks={todayBlocks}
+          nowTick={nowTick}
+          formatCountdown={formatCountdown}
+        />
+          <div style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 16, padding: "28px 32px", display: "flex", flexDirection: "column", gap: 16 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", margin: 0 }}>Today's Sequence</h2>
+              <button onClick={() => setAddBlockOpen(true)} style={{ background: "var(--bg-surface)", color: "var(--text-primary)", border: "1px solid var(--border-default)", borderRadius: 8, padding: "6px 12px", fontWeight: 600, fontSize: 13, cursor: "pointer" }}>Manage Today</button>
+            </div>
+            
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 8 }}>
+              {todayBlocks.length === 0 && <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>No blocks scheduled.</div>}
+              {todayBlocks.map((block, idx) => {
+                const status = getEffectiveBlockStatus(block).toLowerCase();
+                const isActive = status === "active";
+                const isDone = status === "completed" || status === "done";
+                
+                const nextBlockIndex = todayBlocks.findIndex(b => {
+                    const s = getEffectiveBlockStatus(b).toLowerCase();
+                    return !['active', 'completed', 'done', 'missed', 'paused'].includes(s);
+                });
 
-      {/* Phase 8: Knowledge Linkage — PYQ Recommendation Banner */}
-      {pyqRecommendation && (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 12,
-            padding: "10px 16px",
-            background: "rgba(249,115,22,0.06)",
-            border: "1px solid rgba(249,115,22,0.18)",
-            borderRadius: 10,
-          }}
-        >
-          <span style={{ fontSize: 13, color: "#94a3b8", fontFamily: "var(--mono,monospace)" }}>
-            <b style={{ color: "#f97316" }}>{pyqRecommendation.questionCount}</b> PYQs linked to this topic
-          </span>
-          <div style={{ display: "flex", gap: 8, flexShrink: 0 }}>
-            <a
-              href={`/pyq/topic/${encodeURIComponent(pyqRecommendation.nodeId || "")}`}
-              onClick={() => {
-                if (pyqRecommendation.linkId) {
-                  fetch(`${BACKEND_URL}/api/pyq-linkage/${pyqRecommendation.linkId}`, {
-                    method: "PATCH",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ status: "started" }),
-                  }).catch(() => {});
-                }
-              }}
-              style={{
-                padding: "5px 13px", borderRadius: 7,
-                background: "rgba(249,115,22,0.12)",
-                color: "#f97316", fontWeight: 700, fontSize: 12,
-                textDecoration: "none",
-                border: "1px solid rgba(249,115,22,0.24)",
-                fontFamily: "var(--mono,monospace)",
-              }}
-            >
-              Practice →
-            </a>
-            <button
-              onClick={() => setPyqRecommendation(null)}
-              style={{
-                padding: "5px 11px", borderRadius: 7,
-                background: "transparent",
-                color: "#475569", fontWeight: 500, fontSize: 12,
-                border: "1px solid #1a2740", cursor: "pointer",
-              }}
-            >
-              Dismiss
-            </button>
+                let timelineLabel = "LATER";
+                if (isActive || status === "paused") timelineLabel = "NOW";
+                else if (isDone) timelineLabel = "DONE";
+                else if (status === "missed") timelineLabel = "MISSED";
+                else if (idx === nextBlockIndex) timelineLabel = "NEXT";
+                
+                return (
+                  <div key={idx} style={{ 
+                    display: "flex", 
+                    gap: 16, 
+                    background: isActive ? "var(--brand-primary-soft)" : "transparent",
+                    border: isActive ? "1px solid var(--border-subtle)" : "1px solid transparent",
+                    borderRadius: 12,
+                    padding: isActive ? "16px" : "8px 16px",
+                    opacity: isDone ? 0.75 : 1
+                  }}>
+                    <div style={{ width: 48, flexShrink: 0, fontSize: 12, fontWeight: 700, color: isActive ? "var(--brand-primary)" : "var(--text-secondary)", display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                      <span>{timelineLabel}</span>
+                      <div style={{ width: 2, flex: 1, background: isActive ? "var(--brand-primary)" : "var(--border-default)", borderRadius: 2 }} />
+                    </div>
+                    
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
+                        <div style={{ fontSize: 16, fontWeight: 600, color: "var(--text-primary)" }}>
+                          {block.PlannedSubject || "Study Block"}
+                        </div>
+                        {isActive && (
+                          <div style={{ padding: "4px 10px", background: "var(--brand-primary)", color: "#FFFFFF", fontSize: 11, fontWeight: 700, borderRadius: 12, letterSpacing: "0.05em" }}>
+                            ACTIVE
+                          </div>
+                        )}
+                      </div>
+                      
+                      <div style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: isActive ? 12 : 0 }}>
+                        <div className="sequence-time" style={{ fontFamily: 'var(--mono,monospace)', marginBottom: 2 }}>
+                          {getBlockTimeRange(block)}
+                        </div>
+                        <div>{block.PlannedTopic && block.PlannedTopic !== "N/A" ? `${block.PlannedTopic} • ` : ""}{block.PlannedMinutes} min</div>
+                      </div>
+                      
+                      {isActive && (
+                        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                          <div style={{ flex: 1, height: 6, borderRadius: 3, background: "var(--border-default)", overflow: "hidden" }}>
+                            <div style={{ width: "40%", height: "100%", background: "var(--brand-primary)" }} />
+                          </div>
+                          <div style={{ color: "var(--brand-primary)", cursor: "pointer", fontWeight: 600 }}>›</div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      )}
-
-      {/* ── Today’s Study Blocks ────────────────────────────────────────── */}
-      <div
-        ref={studyBlocksRef}
-        style={{
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          marginBottom: 8,
-        }}
-      >
-        <h2 className="mos-block-section-title">
-          Today’s Study Blocks
-          {todayBlocks.length > 0 && (
-            <span style={{ fontSize: 12, fontWeight: 500, color: "#334155", marginLeft: 10, fontFamily: "var(--mono,monospace)" }}>
-              {todayBlocks.length}
-            </span>
-          )}
-        </h2>
-        <button
-          className="btn btn-primary"
-          style={{ fontSize: 12, padding: "7px 16px", whiteSpace: "nowrap" }}
-          onClick={() => setAddBlockOpen(true)}
-        >
-          + Add Block
-        </button>
       </div>
 
-      {todayBlocks.length > 0 && (
-        <div className="blocks-grid" style={{ marginTop: 0 }}>
-          {todayBlocks.map((block) => (
-            <StudyBlockCard
-              key={block.BlockId || `${block.PlannedStart}-${block.PlannedSubject}-${block.PlannedTopic}`}
-              block={block}
-              busy={busy}
-              onStart={handleStartBlock}
-              onPause={handlePauseBlock}
-              onResume={handleResumeBlock}
-              onStop={requestStopBlock}
-            />
-          ))}
+      <div style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 16, padding: "20px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", margin: "24px 0" }}>
+        <div>
+          <div style={{ fontSize: 15, fontWeight: 600, color: "var(--text-primary)" }}>Upload Plan Photo</div>
+          <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>Auto-extract subjects, topics, and schedule via OCR.</div>
         </div>
-      )}
-
-      {todayBlocks.length === 0 && (
-        <div style={{
-          padding: "20px", textAlign: "center",
-          border: "1px dashed #141e30", borderRadius: 12,
-          color: "#334155", fontSize: 13,
-          fontFamily: "var(--mono,monospace)",
-        }}>
-          No blocks scheduled. Click <b style={{ color: "#475569" }}>+ Add Block</b> to begin.
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setPlanPhoto(e.target.files?.[0] || null)}
+            style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 10, height: 44, padding: "8px 12px", fontSize: 14, color: "var(--text-primary)" }}
+          />
+          <button 
+            disabled={busy} 
+            onClick={onParsePhoto}
+            style={{ background: "var(--bg-surface)", color: "var(--brand-primary)", border: "1px solid var(--border-default)", borderRadius: 10, height: 44, padding: "0 20px", fontWeight: 600, cursor: "pointer", transition: "background 0.2s" }}
+            onMouseOver={e => e.currentTarget.style.background = "var(--brand-primary-soft)"}
+            onMouseOut={e => e.currentTarget.style.background = "var(--bg-surface)"}
+          >
+            Parse Plan Photo
+          </button>
         </div>
-      )}
+      </div>
 
       <details className="adv-controls">
         <summary className="adv-controls-summary">
@@ -2849,42 +2878,7 @@ export default function PlanPage() {
             )}
           </div>
 
-          <div className="plan-card">
-            <h3 className="mos-card-title">Plan Photo → Parse (OCR)</h3>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setPlanPhoto(e.target.files?.[0] || null)}
-            />
-            <div style={{ marginTop: 12 }}>
-              <button className="btn" disabled={busy} onClick={onParsePhoto}>
-                Parse Plan Photo (Review + Approve + Save)
-              </button>
-            </div>
 
-            {parsedPlan && (
-              <div style={{ marginTop: 16 }}>
-                <div className="mos-mini-stat-label" style={{ marginBottom: 8 }}>
-                  Parsed Output (debug)
-                </div>
-                <pre
-                  style={{
-                    whiteSpace: "pre-wrap",
-                    fontSize: 12,
-                    padding: 12,
-                    borderRadius: 14,
-                    border: "1px solid rgba(123, 136, 138, 0.16)",
-                    background: "#2D3038",
-                    maxHeight: 260,
-                    overflow: "auto",
-                    color: "#F3F2EE",
-                  }}
-                >
-                  {JSON.stringify(parsedPlan, null, 2)}
-                </pre>
-              </div>
-            )}
-          </div>
         </section>
 
         <PlanRightRail
@@ -3048,9 +3042,9 @@ export default function PlanPage() {
               Current block will be marked for review later. No review popup will appear now.
             </div>
             <div className="focus-actions">
-              <button onClick={handleSwitchBlockConfirm}>Yes, Switch Block</button>
+              <button className="focus-btn-primary" onClick={handleSwitchBlockConfirm}>Yes, Switch Block</button>
               <button
-                className="focus-close-btn"
+                className="focus-btn-secondary"
                 onClick={() => { setSwitchBlockConfirmOpen(false); setPendingStartRequest(null); }}
               >
                 Keep Current Block

@@ -121,24 +121,24 @@ export default function BehaviourSignalModal({
     };
 
     return (
-        <div className="focus-overlay" onClick={handleClose}>
-            <div className="focus-modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 400 }}>
-                {busy && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(15,23,42,0.7)', zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Saving...</div>}
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000000 }} onClick={handleClose}>
+            <div style={{ background: 'var(--bg-surface)', borderRadius: 24, padding: 32, width: '100%', maxWidth: 400, boxShadow: 'var(--shadow-card)', position: 'relative', border: '1px solid var(--border-subtle)' }} onClick={(e) => e.stopPropagation()}>
+                {busy && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(2px)', zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 24, color: 'var(--brand-primary)', fontWeight: 600 }}>Saving...</div>}
                 
                 {step === 1 && (
                     <>
-                        <h2 className="focus-title">How did this block go?</h2>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 20 }}>
-                            <button onClick={() => handleStatusSelect('done')} style={{ padding: 16, background: '#059669', color: 'white', borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 16, fontWeight: 'bold' }}>
-                                ✅ Done
+                        <h2 style={{ margin: '0 0 24px 0', fontSize: 22, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em', textAlign: 'center' }}>How did this block go?</h2>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                            <button onClick={() => handleStatusSelect('done')} style={{ padding: 16, background: 'var(--brand-primary)', color: 'white', borderRadius: 14, border: 'none', cursor: 'pointer', fontSize: 16, fontWeight: 700, boxShadow: 'none', transition: 'transform 0.1s' }} onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.98)'} onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+                                ✓ Done
                             </button>
-                            <button onClick={() => handleStatusSelect('partial')} style={{ padding: 16, background: '#D97706', color: 'white', borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 16, fontWeight: 'bold' }}>
+                            <button onClick={() => handleStatusSelect('partial')} style={{ padding: 16, background: 'var(--bg-subtle)', color: 'var(--warning)', borderRadius: 14, border: '1px solid var(--border-default)', cursor: 'pointer', fontSize: 16, fontWeight: 700, transition: 'transform 0.1s' }} onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.98)'} onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                                 🟡 Partial
                             </button>
-                            <button onClick={() => handleStatusSelect('missed')} style={{ padding: 16, background: '#DC2626', color: 'white', borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 16, fontWeight: 'bold' }}>
-                                ❌ Missed
+                            <button onClick={() => handleStatusSelect('missed')} style={{ padding: 16, background: 'var(--bg-subtle)', color: 'var(--danger)', borderRadius: 14, border: '1px solid var(--border-default)', cursor: 'pointer', fontSize: 16, fontWeight: 700, transition: 'transform 0.1s' }} onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.98)'} onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+                                ✕ Missed
                             </button>
-                            <button onClick={handleClose} style={{ padding: 12, background: 'transparent', color: '#94A3B8', border: '1px solid #475569', borderRadius: 8, cursor: 'pointer', fontSize: 14, fontWeight: 'bold', marginTop: 8 }}>
+                            <button onClick={handleClose} style={{ padding: 14, background: 'transparent', color: 'var(--text-secondary)', border: 'none', borderRadius: 14, cursor: 'pointer', fontSize: 15, fontWeight: 600, marginTop: 4 }}>
                                 Cancel Stop
                             </button>
                         </div>
@@ -147,15 +147,15 @@ export default function BehaviourSignalModal({
 
                 {step === 2 && status === 'done' && (
                     <>
-                        <h2 className="focus-title">Quality of focus?</h2>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 20 }}>
-                            <button onClick={() => handleQualitySelect('strong')} style={{ padding: 16, background: '#3B82F6', color: 'white', borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 16, fontWeight: 'bold' }}>
+                        <h2 style={{ margin: '0 0 24px 0', fontSize: 22, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em', textAlign: 'center' }}>Quality of focus?</h2>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                            <button onClick={() => handleQualitySelect('strong')} style={{ padding: 16, background: '#0A64F5', color: 'white', borderRadius: 14, border: 'none', cursor: 'pointer', fontSize: 16, fontWeight: 700, boxShadow: '0 4px 12px rgba(10, 100, 245, 0.25)', transition: 'transform 0.1s' }} onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.98)'} onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                                 ⚡ Strong
                             </button>
-                            <button onClick={() => handleQualitySelect('normal')} style={{ padding: 16, background: '#6B7280', color: 'white', borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 16, fontWeight: 'bold' }}>
+                            <button onClick={() => handleQualitySelect('normal')} style={{ padding: 16, background: '#F8FAFC', color: 'var(--mos-text)', borderRadius: 14, border: '1px solid var(--mos-border)', cursor: 'pointer', fontSize: 16, fontWeight: 700, transition: 'transform 0.1s' }} onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.98)'} onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                                 👍 Normal
                             </button>
-                            <button onClick={() => handleQualitySelect('weak')} style={{ padding: 16, background: '#4B5563', color: 'white', borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 16, fontWeight: 'bold' }}>
+                            <button onClick={() => handleQualitySelect('weak')} style={{ padding: 16, background: '#FEF2F2', color: '#DC2626', borderRadius: 14, border: '1px solid #FECACA', cursor: 'pointer', fontSize: 16, fontWeight: 700, transition: 'transform 0.1s' }} onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.98)'} onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                                 😵 Weak
                             </button>
                         </div>
@@ -164,15 +164,15 @@ export default function BehaviourSignalModal({
 
                 {step === 2 && status === 'partial' && (
                     <>
-                        <h2 className="focus-title">Why partial?</h2>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 20 }}>
+                        <h2 style={{ margin: '0 0 16px 0', fontSize: 20, fontWeight: 800, color: 'var(--mos-text)', letterSpacing: '-0.02em' }}>Why partial?</h2>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                             {partialReasons.map(r => (
                                 <button key={r.id} 
                                     onClick={() => setReasonCode(r.id)}
                                     style={{ 
-                                        padding: '8px 12px', 
-                                        background: reasonCode === r.id ? '#D97706' : '#334155', 
-                                        color: 'white', borderRadius: 20, border: 'none', cursor: 'pointer', fontSize: 13 
+                                        padding: '10px 14px', 
+                                        background: reasonCode === r.id ? '#0A64F5' : 'var(--mos-bg-soft)', 
+                                        color: reasonCode === r.id ? '#FFFFFF' : 'var(--mos-text)', borderRadius: 20, border: '1px solid var(--mos-border)', cursor: 'pointer', fontSize: 14, fontWeight: 600, transition: 'all 0.15s' 
                                     }}>
                                     {r.label}
                                 </button>
@@ -180,13 +180,13 @@ export default function BehaviourSignalModal({
                         </div>
 
                         {reasonCode && (
-                            <div style={{ marginTop: 24 }}>
-                                <h3 style={{ color: '#94A3B8', fontSize: 14, marginBottom: 12 }}>Completion %</h3>
+                            <div style={{ marginTop: 24, paddingTop: 20, borderTop: '1px solid var(--mos-border)' }}>
+                                <h3 style={{ color: 'var(--mos-text-soft)', fontSize: 14, marginBottom: 12, fontWeight: 600 }}>Completion %</h3>
                                 <div style={{ display: 'flex', gap: 12 }}>
                                     {[25, 50, 75].map(pct => (
                                         <button key={pct}
                                             onClick={() => handlePartialSubmit(reasonCode, pct)}
-                                            style={{ flex: 1, padding: 12, background: '#475569', color: 'white', borderRadius: 8, border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+                                            style={{ flex: 1, padding: '14px 12px', background: 'var(--mos-bg-soft)', color: 'var(--mos-text)', borderRadius: 12, border: '1px solid var(--mos-border)', cursor: 'pointer', fontWeight: 700, fontSize: 15 }}>
                                             {pct}%
                                         </button>
                                     ))}
@@ -198,15 +198,15 @@ export default function BehaviourSignalModal({
 
                 {step === 2 && status === 'missed' && (
                     <>
-                        <h2 className="focus-title">Why missed?</h2>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 20 }}>
+                        <h2 style={{ margin: '0 0 16px 0', fontSize: 20, fontWeight: 800, color: 'var(--mos-text)', letterSpacing: '-0.02em' }}>Why missed?</h2>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                             {missedReasons.map(r => (
                                 <button key={r.id} 
                                     onClick={() => setReasonCode(r.id)}
                                     style={{ 
-                                        padding: '8px 12px', 
-                                        background: reasonCode === r.id ? '#DC2626' : '#334155', 
-                                        color: 'white', borderRadius: 20, border: 'none', cursor: 'pointer', fontSize: 13 
+                                        padding: '10px 14px', 
+                                        background: reasonCode === r.id ? '#DC2626' : 'var(--mos-bg-soft)', 
+                                        color: reasonCode === r.id ? '#FFFFFF' : 'var(--mos-text)', borderRadius: 20, border: '1px solid var(--mos-border)', cursor: 'pointer', fontSize: 14, fontWeight: 600, transition: 'all 0.15s' 
                                     }}>
                                     {r.label}
                                 </button>
@@ -214,11 +214,11 @@ export default function BehaviourSignalModal({
                         </div>
 
                         {reasonCode && (
-                            <div style={{ marginTop: 24 }}>
-                                <h3 style={{ color: '#94A3B8', fontSize: 14, marginBottom: 12 }}>Did you study something else?</h3>
+                            <div style={{ marginTop: 24, paddingTop: 20, borderTop: '1px solid var(--mos-border)' }}>
+                                <h3 style={{ color: 'var(--mos-text-soft)', fontSize: 14, marginBottom: 12, fontWeight: 600 }}>Did you study something else?</h3>
                                 <div style={{ display: 'flex', gap: 12 }}>
-                                    <button onClick={() => handleMissedSubmit(reasonCode, true)} style={{ flex: 1, padding: 12, background: '#475569', color: 'white', borderRadius: 8, border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Yes</button>
-                                    <button onClick={() => handleMissedSubmit(reasonCode, false)} style={{ flex: 1, padding: 12, background: '#475569', color: 'white', borderRadius: 8, border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>No</button>
+                                    <button onClick={() => handleMissedSubmit(reasonCode, true)} style={{ flex: 1, padding: '14px 12px', background: 'var(--mos-bg-soft)', color: 'var(--mos-text)', borderRadius: 12, border: '1px solid var(--mos-border)', cursor: 'pointer', fontWeight: 700, fontSize: 15 }}>Yes</button>
+                                    <button onClick={() => handleMissedSubmit(reasonCode, false)} style={{ flex: 1, padding: '14px 12px', background: 'var(--mos-bg-soft)', color: 'var(--mos-text)', borderRadius: 12, border: '1px solid var(--mos-border)', cursor: 'pointer', fontWeight: 700, fontSize: 15 }}>No</button>
                                 </div>
                             </div>
                         )}

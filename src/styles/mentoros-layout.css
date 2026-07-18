@@ -144,8 +144,8 @@
 }
 
 .nav-item:hover {
-  background: var(--s3);
-  color: var(--txt);
+  background: var(--bg-subtle);
+  color: var(--text-primary);
 }
 
 .nav-item::before {
@@ -161,14 +161,14 @@
 }
 
 .nav-item.active::before {
-  background: var(--saf);
-  box-shadow: 0 0 18px rgba(255, 140, 0, 0.14);
+  background: transparent;
+  box-shadow: none;
 }
 
 .nav-item.active {
-  background: linear-gradient(90deg, rgba(8,8,8,0.92), rgba(255,140,0,0.04));
-  color: var(--txt);
-  border-color: rgba(255,140,0,0.12);
+  background: var(--nav-active-bg);
+  color: var(--nav-active-color);
+  border-color: transparent;
 }
 
 .nav-item-left {
@@ -240,27 +240,27 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: var(--saf);
+  background: var(--brand-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--disp);
   font-weight: 800;
   font-size: 0.78rem;
-  color: #111;
+  color: #FFFFFF;
   flex-shrink: 0;
 }
 
 .sb-uname {
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--txt);
+  color: var(--text-primary);
   font-family: var(--sans);
 }
 
 .sb-role {
   font-size: 0.64rem;
-  color: var(--dim);
+  color: var(--text-tertiary);
   font-family: var(--mono);
   margin-top: 2px;
   letter-spacing: 0.06em;
@@ -298,9 +298,8 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(17, 17, 17, 0.96);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid #252525;
+  background: var(--bg-page);
+  border-bottom: 1px solid var(--border-subtle);
   padding: 0 28px;
   height: var(--topbar);
   display: flex;
@@ -329,7 +328,7 @@
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--mid);
+  color: var(--text-primary);
 }
 
 .tb-right {
@@ -387,7 +386,9 @@
 }
 
 .mentoros-content {
-  padding: 28px 32px 100px;
+  padding: 12px 32px 32px 32px;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .mentoros-mob-bar {
@@ -395,9 +396,9 @@
   position: sticky;
   top: 0;
   z-index: 150;
-  background: rgba(17, 17, 17, 0.97);
+  background: var(--bg-page);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid #252525;
+  border-bottom: 1px solid var(--border-subtle);
   padding: 11px 16px;
   align-items: center;
   justify-content: space-between;
@@ -416,6 +417,19 @@
   font-size: 0.9rem;
   color: var(--mid);
   transition: background 0.15s;
+}
+
+/* ── HERO SECTION ── */
+.mos-hero {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 36px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 32px;
 }
 
 .ham:hover {
@@ -554,13 +568,13 @@
     linear-gradient(90deg, rgba(255, 140, 0, 0.04), transparent 38%),
     var(--surf);
   border: 1px solid #252525;
-  border-radius: 16px;
-  padding: 28px 32px;
+  border-radius: 20px;
+  padding: 36px;
   margin-bottom: 20px;
   position: relative;
   overflow: hidden;
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.65fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
   gap: 20px;
   align-items: stretch;
 }
@@ -605,7 +619,7 @@
 .hero-title {
   font-family: var(--disp);
   font-weight: 800;
-  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  font-size: 38px;
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin-bottom: 10px;
@@ -616,7 +630,7 @@
 }
 
 .hero-sub {
-  font-size: 0.88rem;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--mid);
   font-weight: 400;
