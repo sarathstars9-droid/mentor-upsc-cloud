@@ -13,7 +13,6 @@ import BlockReviewModal from "../components/Plan/BlockReviewModal.jsx";
 import { humanizeMappingCode } from "../utils/mappingUtils";
 import HeroSection from "../components/Plan/HeroSection.jsx";
 import SpotlightCard from "../components/Plan/SpotlightCard.jsx";
-import { getCurrentBlock as selectCurrentBlock } from "../components/Plan/planSelectors.js";
 import PlanRightRail from "../components/Plan/PlanRightRail.jsx";
 import "../styles/mentoros-plan.css";
 
@@ -1088,6 +1087,16 @@ function StudyBlockCard({
   );
 }
 
+function normalizeCanonicalBlockStatus(block) {
+  return String(
+    block?.Status ??
+    block?.status ??
+    ""
+  )
+    .toLowerCase()
+    .trim();
+}
+
 export default function PlanPage() {
   const [prelimsDate] = useState(DEFAULT_PRELIMS);
   const [mainsDate] = useState(DEFAULT_MAINS);
@@ -1174,8 +1183,47 @@ export default function PlanPage() {
   });
 
   const currentBlock = useMemo(() => {
-    return selectCurrentBlock(todayBlocks, getEffectiveBlockStatus, BLOCK_STATUS);
+    const active = todayBlocks.find(
+      (block) =>
+        normalizeCanonicalBlockStatus(block) ===
+        "active"
+    );
+
+    if (active) return active;
+
+    return (
+      todayBlocks.find(
+        (block) =>
+          normalizeCanonicalBlockStatus(block) ===
+          "paused"
+      ) ?? null
+    );
   }, [todayBlocks]);
+
+  const nextBlock = useMemo(() => {
+    const currentIndex = currentBlock
+      ? todayBlocks.findIndex(
+          (block) =>
+            block.BlockId === currentBlock.BlockId
+        )
+      : -1;
+
+    const candidates = todayBlocks.slice(
+      currentIndex + 1
+    );
+
+    return (
+      candidates.find((block) => {
+        const status =
+          normalizeCanonicalBlockStatus(block);
+
+        return (
+          status === "planned" ||
+          status === "upcoming"
+        );
+      }) ?? null
+    );
+  }, [todayBlocks, currentBlock]);
 
   // Live elapsed timer.
   // Seeds from ActualSeconds (backend-derived, returned by the PostgreSQL merge layer)
@@ -1362,10 +1410,16 @@ export default function PlanPage() {
     return () => clearInterval(interval);
   }, []);
 
+  const blockLoadSequenceRef = useRef(0);
+
   const loadBlocksForDate = useCallback(
     async (targetDate = date) => {
+
+      const sequence = ++blockLoadSequenceRef.current;
       try {
         const res = await post("getBlocksForDate", { date: targetDate });
+
+        if (sequence !== blockLoadSequenceRef.current) return;
 
         if (!res?.ok && !res?.blocks) {
           console.warn("getBlocksForDate failed:", res);
@@ -1597,7 +1651,9 @@ export default function PlanPage() {
           console.warn("Radar load failed", err);
         }
       } catch (err) {
-        console.error("loadBlocksForDate failed", err);
+        if (sequence === blockLoadSequenceRef.current) {
+          console.error("loadBlocksForDate failed", err);
+        }
       }
     },
     [date]
@@ -2654,13 +2710,7 @@ export default function PlanPage() {
         onStartBlock={() => currentBlock && handleStartBlock(currentBlock.BlockId)}
         onPauseBlock={() => currentBlock && handlePauseBlock(currentBlock.BlockId)}
         onResumeBlock={() => currentBlock && handleResumeBlock(currentBlock.BlockId)}
-        nextBlock={(() => {
-          const nextBlockIndex = todayBlocks.findIndex(b => {
-            const s = getEffectiveBlockStatus(b).toLowerCase();
-            return !['active', 'completed', 'done', 'missed', 'paused'].includes(s);
-          });
-          return nextBlockIndex !== -1 ? todayBlocks[nextBlockIndex] : null;
-        })()}
+        nextBlock={nextBlock}
         onStartNextBlock={(nextBlock) => nextBlock && handleStartBlock(nextBlock.BlockId)}
         onOpenFocus={() => setSpotlightOpen(true)}
       />
@@ -2696,17 +2746,27 @@ export default function PlanPage() {
                 const status = getEffectiveBlockStatus(block).toLowerCase();
                 const isActive = status === "active";
                 const isDone = status === "completed" || status === "done";
-                
-                const nextBlockIndex = todayBlocks.findIndex(b => {
-                    const s = getEffectiveBlockStatus(b).toLowerCase();
-                    return !['active', 'completed', 'done', 'missed', 'paused'].includes(s);
-                });
 
                 let timelineLabel = "LATER";
                 if (isActive || status === "paused") timelineLabel = "NOW";
                 else if (isDone) timelineLabel = "DONE";
                 else if (status === "missed") timelineLabel = "MISSED";
-                else if (idx === nextBlockIndex) timelineLabel = "NEXT";
+                else if (
+                  nextBlock &&
+                  block.BlockId === nextBlock.BlockId
+                ) {
+                  timelineLabel = "NEXT";
+                } else {
+                  const normalizedTimelineStatus =
+                    normalizeCanonicalBlockStatus(block);
+
+                  if (
+                    normalizedTimelineStatus === "planned" ||
+                    normalizedTimelineStatus === "upcoming"
+                  ) {
+                    timelineLabel = "READY";
+                  }
+                }
                 
                 return (
                   <div key={idx} style={{ 
