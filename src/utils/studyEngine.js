@@ -716,3 +716,131 @@ export function getBlockTimeRange(block) {
 
   return `${formatDisplayTime(start)} – ${formatDisplayTime(end)}`;
 }
+
+export function getBlockEndStateIST(
+  block,
+  now = new Date()
+) {
+  const dayKey =
+    block?.Date ??
+    block?.day_key ??
+    block?.DayKey ??
+    "";
+
+  const endTimeStr =
+    block?.End ??
+    block?.PlannedEnd ??
+    block?.planned_end ??
+    "";
+
+  if (!dayKey || !endTimeStr) {
+    return {
+      valid: false,
+      isOverdue: false,
+      overdueMinutes: 0,
+      remainingMs: 0,
+    };
+  }
+
+  const match = String(endTimeStr)
+    .trim()
+    .match(/^(\d{1,2}):(\d{2})\s*(AM|PM)?$/i);
+
+  if (!match) {
+    return {
+      valid: false,
+      isOverdue: false,
+      overdueMinutes: 0,
+      remainingMs: 0,
+    };
+  }
+
+  let hour = Number(match[1]);
+  const minute = Number(match[2]);
+  const meridiem = match[3]?.toUpperCase();
+
+  if (
+    !Number.isInteger(hour) ||
+    !Number.isInteger(minute) ||
+    minute < 0 ||
+    minute > 59
+  ) {
+    return {
+      valid: false,
+      isOverdue: false,
+      overdueMinutes: 0,
+      remainingMs: 0,
+    };
+  }
+
+  if (meridiem) {
+    if (hour < 1 || hour > 12) {
+      return {
+        valid: false,
+        isOverdue: false,
+        overdueMinutes: 0,
+        remainingMs: 0,
+      };
+    }
+
+    if (meridiem === "PM" && hour < 12) hour += 12;
+    if (meridiem === "AM" && hour === 12) hour = 0;
+  } else if (hour < 0 || hour > 23) {
+    return {
+      valid: false,
+      isOverdue: false,
+      overdueMinutes: 0,
+      remainingMs: 0,
+    };
+  }
+
+  const [year, month, day] = dayKey
+    .split("-")
+    .map(Number);
+
+  if (
+    !year ||
+    !month ||
+    !day
+  ) {
+    return {
+      valid: false,
+      isOverdue: false,
+      overdueMinutes: 0,
+      remainingMs: 0,
+    };
+  }
+
+  const pad = (value) =>
+    String(value).padStart(2, "0");
+
+  const blockEnd = new Date(
+    `${year}-${pad(month)}-${pad(day)}` +
+    `T${pad(hour)}:${pad(minute)}:00+05:30`
+  );
+
+  if (Number.isNaN(blockEnd.getTime())) {
+    return {
+      valid: false,
+      isOverdue: false,
+      overdueMinutes: 0,
+      remainingMs: 0,
+    };
+  }
+
+  const remainingMs =
+    blockEnd.getTime() - now.getTime();
+
+  const isOverdue = remainingMs <= 0;
+
+  return {
+    valid: true,
+    isOverdue,
+    overdueMinutes: isOverdue
+      ? Math.floor(
+          Math.abs(remainingMs) / 60000
+        )
+      : 0,
+    remainingMs,
+  };
+}

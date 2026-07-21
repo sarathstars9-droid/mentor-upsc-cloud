@@ -2690,14 +2690,16 @@ export default function PlanPage() {
       console.error(e);
     }
   };
-
   function removeOcrDraftBlock(index) {
     setOcrDraftBlocks((prev) => prev.filter((_, i) => i !== index));
   }
 
+  const showAdvancedControls = false;
+
   return (
-    <div className="mentoros-content-inner">
-      <div className="mos-plan-wrapper">
+    <div className="mos-app-container-v2" data-page="plan">
+      <div className="mentoros-content-inner">
+        <div className="mos-plan-wrapper">
       <HeroSection
         dPre={dPre}
         dMains={dMains}
@@ -2734,7 +2736,7 @@ export default function PlanPage() {
           nowTick={nowTick}
           formatCountdown={formatCountdown}
         />
-          <div style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 16, padding: "28px 32px", display: "flex", flexDirection: "column", gap: 16 }}>
+          <div className="mos-sequence-card" style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 16, padding: "28px 32px", display: "flex", flexDirection: "column", gap: 16 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", margin: 0 }}>Today's Sequence</h2>
               <button onClick={() => setAddBlockOpen(true)} style={{ background: "var(--bg-surface)", color: "var(--text-primary)", border: "1px solid var(--border-default)", borderRadius: 8, padding: "6px 12px", fontWeight: 600, fontSize: 13, cursor: "pointer" }}>Manage Today</button>
@@ -2818,12 +2820,12 @@ export default function PlanPage() {
           </div>
       </div>
 
-      <div style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 16, padding: "20px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", margin: "24px 0" }}>
+      <div className="mos-upload-card" style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 16, padding: "20px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", margin: "24px 0" }}>
         <div>
           <div style={{ fontSize: 15, fontWeight: 600, color: "var(--text-primary)" }}>Upload Plan Photo</div>
           <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>Auto-extract subjects, topics, and schedule via OCR.</div>
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <div className="mos-upload-actions" style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <input
             type="file"
             accept="image/*"
@@ -2842,6 +2844,7 @@ export default function PlanPage() {
         </div>
       </div>
 
+      {showAdvancedControls && (
       <details className="adv-controls">
         <summary className="adv-controls-summary">
           <span>Advanced Controls</span>
@@ -2958,7 +2961,8 @@ export default function PlanPage() {
         />
       </div>{/* /mos-plan-grid */}
         </div>{/* /adv-controls-body */}
-      </details>{/* /adv-controls */}
+      </details>
+      )}
 
       <AddBlockModal
         open={addBlockOpen}
@@ -3256,6 +3260,6 @@ export default function PlanPage() {
         </div>
       )}
     </div>
+    </div>
   );
 }
-
