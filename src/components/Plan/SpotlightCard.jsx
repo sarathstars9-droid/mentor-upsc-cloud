@@ -1,4 +1,4 @@
-import { getEffectiveBlockStatus, formatTimeOnly, getBlockTimeRange } from "../../utils/studyEngine";
+import { getEffectiveBlockStatus, formatTimeOnly, getBlockTimeRange, getBlockEndStateIST } from "../../utils/studyEngine";
 
 
 const btnBase = {
@@ -74,40 +74,27 @@ export default function SpotlightCard({
   const pct = isNaN(pctRaw) ? 0 : Math.min(100, Math.round(pctRaw));
 
   let timeRemainingDisplay = "";
-  if (currentBlock && currentBlock.PlannedEnd) {
+  if (currentBlock) {
     const status = getEffectiveBlockStatus(currentBlock).toLowerCase();
-    
-    // Convert e.g., "12:30" (or check if it's already am/pm)
-    // We assume PlannedEnd is HH:mm in 24h format for calculation
-    let h = 0, m = 0;
-    if (currentBlock.PlannedEnd.includes(':')) {
-       // if it already has AM/PM, parse it? studyEngine outputs HH:mm for PlannedEnd usually
-       const parts = currentBlock.PlannedEnd.replace(/AM|PM/i, '').trim().split(':');
-       h = parseInt(parts[0], 10);
-       m = parseInt(parts[1], 10);
-       if (currentBlock.PlannedEnd.toLowerCase().includes('pm') && h < 12) h += 12;
-       if (currentBlock.PlannedEnd.toLowerCase().includes('am') && h === 12) h = 0;
-    }
-
-    const d = new Date(nowTick);
-    d.setHours(h, m, 0, 0);
-    const remainingMs = d.getTime() - nowTick;
+    const { valid, isOverdue, overdueMinutes, remainingMs } = getBlockEndStateIST(currentBlock, new Date(nowTick));
 
     if (status === 'completed' || status === 'done') {
       timeRemainingDisplay = 'Completed';
     } else if (status === 'missed') {
       timeRemainingDisplay = 'Missed';
-    } else if (remainingMs <= 0 && status !== 'active') {
+    } else if (isOverdue && (status === 'active' || status === 'paused')) {
+      timeRemainingDisplay = `${overdueMinutes} min overdue`;
+    } else if (isOverdue && status !== 'active' && status !== 'paused') {
       timeRemainingDisplay = 'Time window ended';
     } else {
-      timeRemainingDisplay = `${formatCountdown(remainingMs)} remaining`;
+      timeRemainingDisplay = valid ? `${formatCountdown(remainingMs)} remaining` : '';
     }
   }
 
 
 
   const pyqTotal = currentBlockPyq?.total || 0;
-  const canOpenPyq = Boolean(currentBlockPyqNodeId);
+  const canOpenPyq = Boolean(currentBlockPyqNodeId) && pyqTotal > 0;
 
   const handleMarkDone = onMarkDone || (onStop ? () => onStop(currentBlock) : undefined);
 
@@ -130,9 +117,11 @@ export default function SpotlightCard({
         <h2 style={{ fontSize: 32, fontWeight: 800, color: "var(--text-primary)", margin: "0 0 4px 0", letterSpacing: "-0.02em" }}>
           {mainTitle}
         </h2>
-        <div style={{ fontSize: 15, color: "var(--text-secondary)", fontWeight: 500 }}>
-          GS-1 <span style={{ margin: "0 6px" }}>·</span> {subtitle}
-        </div>
+        {subtitle && (
+          <div style={{ fontSize: 15, color: "var(--text-secondary)", fontWeight: 500 }}>
+            {subtitle}
+          </div>
+        )}
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 14, fontWeight: 600, color: "var(--text-secondary)" }}>
@@ -156,7 +145,7 @@ export default function SpotlightCard({
         gap: 8
       }}>
         <span style={{ color: "var(--text-secondary)" }}>📄</span>
-        Required output: 20-page revision + {pyqTotal} PYQs
+        Required output: 20-page revision{pyqTotal > 0 ? ` + ${pyqTotal} PYQs` : ''}
       </div>
 
       <div style={{ marginTop: 12 }}>
@@ -172,9 +161,9 @@ export default function SpotlightCard({
         </div>
       </div>
 
-      <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 8 }}>
+      <div className="mos-current-execution-actions" style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 8 }}>
         {(isActive || isPlanned) && (
-          <button disabled={busy} onClick={isActive ? onOpenFocus : () => onStart?.(currentBlock)} style={{
+          <button className="mos-primary-action" disabled={busy} onClick={isActive ? onOpenFocus : () => onStart?.(currentBlock)} style={{
             ...btnBase, background: "var(--brand-primary)", color: "#FFFFFF",
             padding: "0 24px", boxShadow: "0 2px 4px rgba(10, 100, 245, 0.15)",
           }}>
@@ -199,7 +188,7 @@ export default function SpotlightCard({
 
         {isPaused && (
           <>
-            <button disabled={busy} onClick={() => onResume?.(currentBlock.BlockId)} style={{
+            <button className="mos-primary-action" disabled={busy} onClick={() => onResume?.(currentBlock.BlockId)} style={{
               ...btnBase, background: "var(--brand-primary)", color: "#FFFFFF",
               padding: "0 24px", boxShadow: "0 2px 4px rgba(10, 100, 245, 0.15)",
             }}>
@@ -215,6 +204,7 @@ export default function SpotlightCard({
 
         {canOpenPyq && (
           <a
+            className="mos-pyq-action"
             href={`/pyq/topic/${currentBlockPyqNodeId}`}
             target="_blank"
             rel="noopener noreferrer"

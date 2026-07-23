@@ -1,4 +1,4 @@
-/* MOS Sidebar V2 — isolated premium styles
+﻿/* MOS Sidebar V2 Ã¢â‚¬â€ isolated premium styles
    Uses isolated class names to avoid legacy styles.
 */
 
@@ -59,8 +59,8 @@
 
 .mos-theme-toggle-v2 {
   margin-left: auto;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -123,7 +123,7 @@
 }
 
 .mos-nav-section-v2 {
-  margin-top: 14px;
+  margin-top: 24px;
 }
 
 .mos-nav-section-label-v2 {
@@ -132,7 +132,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--mos-muted);
-  padding: 8px 10px;
+  padding: 8px 16px;
 }
 
 .mos-nav-item-v2 {
@@ -140,48 +140,35 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  min-height: 38px;
-  padding: 0 12px;
-  border-radius: 9px;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 8px;
   background: transparent;
+  box-shadow: none;
+  width: 100%;
   color: var(--mos-text-soft);
   font-size: 14.5px;
   font-weight: 520;
   letter-spacing: -0.015em;
   border: 1px solid transparent;
+  border-left: 3px solid transparent;
   transition: all 0.16s ease;
   text-align: left;
-  margin-bottom: 1px;
+  margin-bottom: 4px;
 }
 
 .mos-nav-item-v2:hover {
-  background: var(--mo-amber-soft);
-  border-color: var(--mo-border-amber);
-  color: var(--mo-text);
-}
-
-/* thin accent left rail */
-.mos-nav-item-v2::before {
-  content: "";
-  position: absolute;
-  left: 0px;
-  top: 8px;
-  bottom: 8px;
-  width: 0px;
-  border-radius: 0 4px 4px 0;
-  background: var(--mo-amber);
-  transition: width 0.16s ease;
-}
-
-.mos-nav-item-v2.active::before {
-  width: 3px;
+  background: var(--bg-hover, rgba(15, 23, 42, 0.04));
+  box-shadow: none;
 }
 
 .mos-nav-item-v2.active {
-  background: var(--mo-amber-soft);
-  color: var(--mo-text);
-  border: 1px solid var(--mo-border-amber);
+  background: rgba(10, 100, 245, 0.08);
+  color: var(--brand-primary);
+  border-left: 3px solid var(--brand-primary);
+  border-radius: 8px;
   font-weight: 600;
+  box-shadow: none;
 }
 
 .mos-nav-item-left-v2 {
@@ -202,10 +189,13 @@
   transition: opacity 0.16s ease;
 }
 
-.mos-nav-item-v2:hover .mos-nav-item-icon-v2 svg,
+.mos-nav-item-v2:hover .mos-nav-item-icon-v2 svg {
+  opacity: 1;
+}
+
 .mos-nav-item-v2.active .mos-nav-item-icon-v2 svg {
   opacity: 1;
-  color: var(--mo-amber);
+  color: var(--brand-primary);
 }
 
 .mos-nav-item-label-v2 {
@@ -314,8 +304,8 @@
   justify-content: center;
   position: relative;
   z-index: 10300; /* above the drawer itself */
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 8px;
   background: transparent;
   border: 1px solid var(--mos-border);
@@ -349,7 +339,7 @@ body.mos-drawer-open {
 }
 
 /* ============================================================
-   MOBILE — hide desktop sidebar, let MentorMobileDrawer handle it
+   MOBILE Ã¢â‚¬â€ hide desktop sidebar, let MentorMobileDrawer handle it
    ============================================================ */
 @media (max-width: 768px) {
   /* The desktop sidebar must not render on mobile */
@@ -359,14 +349,15 @@ body.mos-drawer-open {
 }
 
 /* ============================================================
-   HIGH-SPECIFICITY OVERRIDES — Fix Grey Hover Leakage & Flat Styling
+   HIGH-SPECIFICITY OVERRIDES Ã¢â‚¬â€ Fix Grey Hover Leakage & Flat Styling
    ============================================================ */
 
 /* 1. Flat hover on all Sidebar V2 nav items */
 .mos-sidebar-v2 .mos-nav-item-v2:hover:not(.active),
 .mos-drawer-v2 .mos-nav-item-v2:hover:not(.active) {
-  background: rgba(15, 23, 42, 0.04) !important;
+  background: var(--bg-hover, rgba(15, 23, 42, 0.04)) !important;
   border-color: transparent !important;
+  border-left-color: transparent !important;
   color: var(--mos-text) !important;
   box-shadow: none !important;
   transform: none !important;
@@ -380,9 +371,10 @@ body.mos-drawer-open {
 /* 2. Flat active state */
 .mos-sidebar-v2 .mos-nav-item-v2.active,
 .mos-drawer-v2 .mos-nav-item-v2.active {
-  background: var(--mo-amber-soft) !important;
+  background: rgba(10, 100, 245, 0.08) !important;
   border-color: transparent !important;
-  color: var(--mo-text) !important;
+  border-left: 3px solid var(--brand-primary) !important;
+  color: var(--brand-primary) !important;
   box-shadow: none !important;
   transform: none !important;
   font-weight: 600;
@@ -391,10 +383,11 @@ body.mos-drawer-open {
 /* 3. Handle active hover */
 .mos-sidebar-v2 .mos-nav-item-v2.active:hover,
 .mos-drawer-v2 .mos-nav-item-v2.active:hover {
-  background: var(--mo-amber-soft) !important;
+  background: rgba(10, 100, 245, 0.08) !important;
   opacity: 0.95;
   border-color: transparent !important;
-  color: var(--mo-text) !important;
+  border-left: 3px solid var(--brand-primary) !important;
+  color: var(--brand-primary) !important;
   box-shadow: none !important;
 }
 
@@ -407,3 +400,56 @@ body.mos-drawer-open {
 }
 
 
+
+/* Dark mode mapping */
+html[data-theme="dark"] .mos-sidebar-v2,
+html[data-theme="dark"] .mos-drawer-v2 {
+  background: var(--bg-surface);
+  border-color: var(--border-subtle);
+  color: var(--text-primary);
+  box-shadow: none;
+}
+
+html[data-theme="dark"] .mos-header-title-v2,
+html[data-theme="dark"] .mos-profile-name-v2 {
+  color: var(--text-primary);
+}
+
+html[data-theme="dark"] .mos-header-sub-v2,
+html[data-theme="dark"] .mos-nav-section-label-v2,
+html[data-theme="dark"] .mos-profile-role-v2,
+html[data-theme="dark"] .mos-logout-v2 {
+  color: var(--text-secondary);
+}
+
+html[data-theme="dark"] .mos-nav-item-v2 {
+  color: var(--text-secondary);
+}
+
+html[data-theme="dark"] .mos-nav-item-v2.active {
+  background: var(--nav-active-bg) !important;
+  color: var(--nav-active-color) !important;
+  border-left: 3px solid var(--nav-active-color) !important;
+}
+
+html[data-theme="dark"] .mos-profile-v2 {
+  border-top-color: var(--border-subtle);
+}
+
+html[data-theme="dark"] .mos-theme-toggle-v2 {
+  border-color: var(--border-subtle);
+  color: var(--text-secondary);
+}
+html[data-theme="dark"] .mos-theme-toggle-v2:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+html[data-theme="dark"] .mos-drawer-close {
+  border-color: var(--border-subtle);
+  color: var(--text-secondary);
+}
+html[data-theme="dark"] .mos-drawer-close:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}

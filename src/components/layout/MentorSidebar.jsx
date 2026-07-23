@@ -87,8 +87,9 @@ export default function MentorSidebar({ currentPage, onNavigate, onLogout }) {
           className="mos-theme-toggle-v2" 
           onClick={toggleTheme} 
           title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          aria-label={theme === 'dark' ? "Switch to light mode" : "Switch to dark mode"}
         >
-          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          {theme === 'dark' ? <Sun size={20} strokeWidth={2} /> : <Moon size={20} strokeWidth={2} />}
         </button>
       </header>
 

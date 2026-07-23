@@ -9,7 +9,7 @@
 
 /* ── PAGE WRAPPER ── */
 .mentoros-content-inner {
-  /* inner wrapper inside .mentoros-content — no extra padding needed */
+  /* inner wrapper inside .mentoros-content - no extra padding needed */
 }
 
 /* ── PLAN TABS (Today's Study Blocks / Night Review / Loop Detector) ── */
@@ -315,7 +315,7 @@ details.adv-controls[open] .adv-controls-chevron {
 }
 
 .mos-focus-modal {
-  /* applied via inline style on the div — width handled there */
+  /* applied via inline style on the div - width handled there */
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: 24px;
@@ -366,7 +366,7 @@ details.adv-controls[open] .adv-controls-chevron {
 }
 
 .mos-focus-actions button:first-child {
-  /* "Approve and Continue" — primary style */
+  /* "Approve and Continue" - primary style */
   background: var(--saf);
   border: 1px solid var(--saf);
   color: #111;
@@ -434,9 +434,7 @@ details.adv-controls[open] .adv-controls-chevron {
   }
 }
 
-/* ══════════════════════════════════════════════════════════
-   PREMIUM UI UPGRADE — added layer (nothing above removed)
-   ══════════════════════════════════════════════════════════ */
+/* Premium UI upgrade */
 
 /* ── Plan wrapper: top-level page container ── */
 .mos-plan-wrapper {
@@ -648,4 +646,111 @@ details.adv-controls[open] .adv-controls-chevron {
   max-width: 1280px;
   margin: 0 auto;
   padding: 32px;
+}
+
+/* ── Mobile Layout Overrides ── */
+@media (max-width: 768px) {
+  .mos-plan-wrapper {
+    padding: 16px;
+    overflow-x: hidden;
+  }
+
+  .main-work-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .mos-hero-section {
+    flex-direction: column !important;
+    padding: 20px 16px !important;
+    gap: 16px !important;
+  }
+
+  .mos-hero-section > div {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .mos-hero-section h1 {
+    font-size: clamp(1.6rem, 8vw, 2.2rem) !important;
+    word-break: break-word;
+  }
+
+  .mos-sequence-card {
+    padding: 20px 16px !important;
+  }
+
+  .mos-upload-card {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 20px 16px !important;
+    gap: 16px !important;
+  }
+
+  .mos-upload-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .mos-upload-actions input[type="file"],
+  .mos-upload-actions button {
+    width: 100% !important;
+  }
+
+  .mos-hero-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .mos-hero-actions button,
+  .mos-hero-actions a {
+    width: 100% !important;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .mos-quick-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mos-pill-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mos-current-execution-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px !important;
+    width: 100%;
+  }
+  .mos-current-execution-actions .mos-primary-action {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  .mos-current-execution-actions .mos-pyq-action {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  .blocks-grid > *,
+  .chart-grid > *,
+  .metrics-grid > *,
+  .plan-split-grid > *,
+  .main-work-grid > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    word-break: break-word;
+    white-space: normal;
+  }
+  .mos-current-execution-actions button,
+  .mos-current-execution-actions a {
+    min-width: 0;
+    width: 100% !important;
+    min-height: 48px !important;
+    white-space: normal;
+    box-sizing: border-box;
+    padding: 0 16px !important;
+  }
 }
