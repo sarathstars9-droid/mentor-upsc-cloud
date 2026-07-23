@@ -67,7 +67,7 @@ export default function HeroSection({
         return () => clearInterval(interval);
     }, []);
 
-    let mentorCommand = "Today’s plan is complete. Close the day with revision and mistake review.";
+    let mentorCommand = "Today's plan is complete. Close the day with revision and mistake review.";
     let mentorReason = "All scheduled blocks have been processed.";
 
     const allCompleted = totalBlocks > 0 && completedBlocks === totalBlocks;
@@ -110,8 +110,13 @@ export default function HeroSection({
             mentorCommand = `Start ${subject}${startTime ? ` at ${startTime}` : ''}.`;
             mentorReason = `This is the next scheduled block in your plan.`;
         } else if (totalBlocks === 0) {
-            mentorCommand = "No blocks scheduled for today.";
-            mentorReason = "Take a break or add new study blocks.";
+            mentorCommand = "No study plan is scheduled for today.";
+            mentorReason = "Upload or create today's plan to begin execution.";
+            heroActionLabel = "Upload today's plan";
+            heroActionClick = () => {
+                const uploadCard = document.querySelector(".mos-upload-card");
+                if (uploadCard) uploadCard.scrollIntoView({ behavior: "smooth", block: "center" });
+            };
         }
     }
 
@@ -187,7 +192,7 @@ export default function HeroSection({
                         gap: 8,
                         boxShadow: "none"
                     }}>
-                        {heroActionLabel} <span>â€º</span>
+                        {heroActionLabel} <span>›</span>
                     </button>
 
                     <a href="#" onClick={(e) => { e.preventDefault(); setShowLogicModal(true); }} style={{
@@ -196,22 +201,26 @@ export default function HeroSection({
                         fontWeight: 500,
                         textDecoration: "none"
                     }}>
-                        View today's logic â€º
+                        View today's logic ›
                     </a>
                 </div>
 
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
-                        <span style={{ color: "var(--brand-primary)" }}>â±</span> 21 min left
-                    </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
-                        <span style={{ color: "var(--brand-primary)" }}>â—‹</span> 83% complete
-                    </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
-                        <span style={{ color: "var(--success)" }}>ðŸ›¡</span> Plan status: <span style={{ color: "var(--brand-primary)" }}>Recoverable</span>
-                    </div>
+                    {totalBlocks > 0 && (
+                        <>
+                            <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
+                                <span style={{ color: "var(--brand-primary)" }}>⏱</span> 21 min left
+                            </div>
+                            <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
+                                <span style={{ color: "var(--brand-primary)" }}>○</span> 83% complete
+                            </div>
+                            <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
+                                <span style={{ color: "var(--success)" }}>🛡</span> Plan status: <span style={{ color: "var(--brand-primary)" }}>Recoverable</span>
+                            </div>
 
-                    <div style={{ width: 1, height: 16, background: "var(--border-default)", margin: "0 4px" }} />
+                            <div style={{ width: 1, height: 16, background: "var(--border-default)", margin: "0 4px" }} />
+                        </>
+                    )}
 
                     <div style={{
                         color: "var(--text-secondary)",
@@ -286,13 +295,27 @@ export default function HeroSection({
                         <h2 style={{ margin: '0 0 16px', fontSize: 22, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>Why this block now?</h2>
                         <p style={{ margin: '0 0 12px', fontSize: 15, color: 'var(--text-secondary)' }}>MentorOS selected this block because:</p>
                         <ul style={{ margin: '0 0 24px', paddingLeft: 20, color: 'var(--text-primary)', fontSize: 14, lineHeight: 1.6 }}>
-                            <li>It is the active or next recoverable block in todayâ€™s schedule.</li>
-                            <li>Yesterdayâ€™s Modern History target carried forward.</li>
-                            <li>This topic is linked to two repeated mistakes.</li>
-                            <li>Polity should wait until this block is completed.</li>
+                            {totalBlocks === 0 ? (
+                                <>
+                                    <li>No study blocks are scheduled for the selected date.</li>
+                                    <li>Upload or create today's plan to begin execution.</li>
+                                </>
+                            ) : currentBlock ? (
+                                <>
+                                    <li>It is the active or next recoverable block in today's schedule.</li>
+                                    <li>Current block is {currentBlock.PlannedSubject || currentBlock.Subject || "Study Block"}.</li>
+                                </>
+                            ) : nextBlock ? (
+                                <>
+                                    <li>It is the next scheduled block in today's plan.</li>
+                                    <li>Next block is {nextBlock.PlannedSubject || nextBlock.Subject || "Study Block"}.</li>
+                                </>
+                            ) : (
+                                <li>All scheduled blocks have been processed.</li>
+                            )}
                         </ul>
                         <p style={{ margin: '0 0 24px', fontSize: 13, color: 'var(--text-tertiary)', fontStyle: 'italic' }}>
-                            This logic is generated from todayâ€™s plan, previous completion, pending blocks, and repeated mistakes.
+                            This guidance is based on today's scheduled blocks and their current statuses.
                         </p>
                         <button onClick={() => setShowLogicModal(false)} style={{ width: '100%', padding: '12px', background: 'var(--bg-subtle)', border: '1px solid var(--border-default)', borderRadius: 12, color: 'var(--text-primary)', fontSize: 15, fontWeight: 600, cursor: 'pointer' }}>Got it</button>
                     </div>
