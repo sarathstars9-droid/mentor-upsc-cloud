@@ -268,7 +268,7 @@ async function tickScheduler(userId) {
             logEscalationDebug('NO_PLAN_STRICT_9AM', userId, userName, state, zeroStreak, planState.evidence.totalBlocks, false, false, true, 'SKIP', `sendNotification failed: ${result?.reason || result?.error || 'unknown'}`);
           }
         } else {
-          logEscalationDebug('NO_PLAN_STRICT_9AM', userId, userName, state, zeroStreak, planState.evidence.totalBlocks, false, false, false, 'SKIP', 'Atomic lock not acquired (already sent today or pending)');
+          logEscalationDebug('NO_PLAN_STRICT_9AM', userId, userName, state, zeroStreak, planState.evidence.totalBlocks, false, false, false, 'SKIP', 'Atomic lock not acquired (already sent today or pending)', todayKey);
         }
       }
     } catch (err) {
@@ -307,7 +307,7 @@ async function tickScheduler(userId) {
             logEscalationDebug('RECOVERY_PLAN_12PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, true, 'SKIP', `sendNotification failed: ${result?.reason || result?.error || 'unknown'}`);
           }
         } else {
-          logEscalationDebug('RECOVERY_PLAN_12PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'Atomic lock not acquired (already sent today or pending)');
+          logEscalationDebug('RECOVERY_PLAN_12PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'Atomic lock not acquired (already sent today or pending)', todayKey);
         }
       }
     } catch (err) {
@@ -345,7 +345,7 @@ async function tickScheduler(userId) {
             logEscalationDebug('HIGH_RISK_INTERVENTION_3PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, true, 'SKIP', `sendNotification failed: ${result?.reason || result?.error || 'unknown'}`);
           }
         } else {
-          logEscalationDebug('HIGH_RISK_INTERVENTION_3PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'Atomic lock not acquired (already sent today or pending)');
+          logEscalationDebug('HIGH_RISK_INTERVENTION_3PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'Atomic lock not acquired (already sent today or pending)', todayKey);
         }
       }
     } catch (err) {
@@ -383,7 +383,7 @@ async function tickScheduler(userId) {
             logEscalationDebug('EMERGENCY_NON_ZERO_6PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, true, 'SKIP', `sendNotification failed: ${result?.reason || result?.error || 'unknown'}`);
           }
         } else {
-          logEscalationDebug('EMERGENCY_NON_ZERO_6PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'Atomic lock not acquired (already sent today or pending)');
+          logEscalationDebug('EMERGENCY_NON_ZERO_6PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'Atomic lock not acquired (already sent today or pending)', todayKey);
         }
       }
     } catch (err) {
@@ -694,7 +694,7 @@ export async function processTodayBlocks(userId, now, isEscalationPaused = false
           const alreadySent30 = await hasEvent(userId, 'PLAN_UPLOADED_NOT_STARTED', todayKey);
           if (!alreadySent30 && !isEscalationPaused) {
             const { sendWhatsAppButtons } = await import('./whatsappService.js');
-            await sendWhatsAppButtons('91YOURNUMBER', 
+            const sent = await sendWhatsAppButtons('91YOURNUMBER', 
               "MentorOS Alert\n\nPlan is uploaded, but execution has not started yet.\n\nA plan without starting becomes mental load.\n\nChoose one:", 
               [
                 { id: 'START_BLOCK_1', title: 'Start Block 1' },
@@ -702,7 +702,9 @@ export async function processTodayBlocks(userId, now, isEscalationPaused = false
                 { id: 'START_RESCUE_MODE', title: 'Rescue Mode' }
               ]
             );
-            await recordEvent(userId, 'PLAN_UPLOADED_NOT_STARTED', todayKey);
+            if (sent) {
+              await recordEvent(userId, 'PLAN_UPLOADED_NOT_STARTED', todayKey);
+            }
           }
         }
       }
@@ -914,7 +916,7 @@ async function detectAndProcessDayDiscipline(userId, now, isEscalationPaused = f
         const eventCode = `DAY_NOT_STARTED_${tp.level.toUpperCase()}`;
         if (!(await hasEvent(userId, eventCode, todayKey))) {
           const { sendWhatsAppButtons } = await import('./whatsappService.js');
-          await sendWhatsAppButtons('91YOURNUMBER', 
+          const sent = await sendWhatsAppButtons('91YOURNUMBER', 
             `MentorOS Alert\n\nToday’s plan is not uploaded yet (${tp.h}:${tp.m === 0 ? '00' : tp.m}).\n\nAre you studying without uploading the plan?\n\nChoose one:`, 
             [
               { id: 'I_AM_STUDYING', title: 'I am studying' },
@@ -922,7 +924,9 @@ async function detectAndProcessDayDiscipline(userId, now, isEscalationPaused = f
               { id: 'START_RESCUE_MODE', title: 'Start Rescue Mode' }
             ]
           );
-          await recordEvent(userId, eventCode, todayKey);
+          if (sent) {
+            await recordEvent(userId, eventCode, todayKey);
+          }
         }
       }
     }
@@ -952,7 +956,7 @@ async function detectAndProcessDayDiscipline(userId, now, isEscalationPaused = f
     ) {
       if (!(await hasEvent(userId, 'DAY_SLIPPING_BADLY', todayKey))) {
         const { sendWhatsAppButtons } = await import('./whatsappService.js');
-        await sendWhatsAppButtons('91YOURNUMBER', 
+        const sent = await sendWhatsAppButtons('91YOURNUMBER', 
           `MentorOS Rescue Alert\n\nToday is slipping, but it is not lost.\n\nDo not try to complete the full plan now.\nStart Rescue Mode: only 3 serious blocks for the remaining day.\n\nChoose one:`, 
           [
             { id: 'START_RESCUE_MODE', title: 'Start Rescue Mode' },
@@ -960,7 +964,9 @@ async function detectAndProcessDayDiscipline(userId, now, isEscalationPaused = f
             { id: 'NEED_RESET', title: 'Need Reset' }
           ]
         );
-        await recordEvent(userId, 'DAY_SLIPPING_BADLY', todayKey);
+        if (sent) {
+          await recordEvent(userId, 'DAY_SLIPPING_BADLY', todayKey);
+        }
       }
     }
   }
@@ -1078,20 +1084,42 @@ async function checkUserPlanState(userId, todayKey) {
   const hasRealPlan = realPlanBlocks.length > 0;
   return { rows, totalBlocks: rows.length, realBlocksCount: realPlanBlocks.length, hasRealPlan, hasCompletedBlock };
 }
+export const lastSkipLogTimes = new Map();
 
-const lastSkipLogTimes = new Map();
-
-function logEscalationDebug(type, userId, userName, state, zeroStreak, totalBlocks, hasRealPlan, hasCompletedBlock, lockAcquired, action, reason) {
+export function logEscalationDebug(type, userId, userName, state, zeroStreak, totalBlocks, hasRealPlan, hasCompletedBlock, lockAcquired, action, reason, sourceId = 'unknown', deps = { now: Date.now }) {
   if (action === 'SKIP') {
-    const key = `${type}_${userId}`;
-    const now = Date.now();
+    const key = `${type}_${userId}_${sourceId}`;
+    const now = deps.now();
     const lastLogged = lastSkipLogTimes.get(key);
+    
     if (lastLogged && (now - lastLogged) < 15 * 60 * 1000) {
       return;
     }
+
+    // Set new timestamp (moves to back of Map for insertion order tracking)
+    lastSkipLogTimes.delete(key);
     lastSkipLogTimes.set(key, now);
+    
+    // 15-minute TTL cleanup
+    for (const [k, v] of lastSkipLogTimes.entries()) {
+      if (now - v >= 15 * 60 * 1000) {
+        lastSkipLogTimes.delete(k);
+      } else {
+        // Map iterates in insertion order, so if this one isn't stale, the rest aren't either (mostly)
+        // Wait, because we delete and re-insert, the first elements are genuinely the oldest.
+        break; 
+      }
+    }
+    
+    // Hard maximum size of 1000 entries: evict oldest
+    if (lastSkipLogTimes.size > 1000) {
+      const keys = lastSkipLogTimes.keys();
+      while (lastSkipLogTimes.size > 1000) {
+        lastSkipLogTimes.delete(keys.next().value);
+      }
+    }
   }
-  const timeStr = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+  const timeStr = new Date(deps && deps.now ? deps.now() : Date.now()).toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   console.log(`[ESCALATION_DEBUG] type=${type} userId=${userId} userName=${userName} state=${state} zeroStreak=${zeroStreak} blocks=${totalBlocks} hasRealPlan=${hasRealPlan} hasCompletedBlock=${hasCompletedBlock} lock=${lockAcquired} action=${action} reason="${reason}" time="${timeStr}"`);
 }
 

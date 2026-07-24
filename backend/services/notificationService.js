@@ -89,7 +89,10 @@ function isReminderNotification(type) {
 }
 
 // Main notification dispatcher with preference checks, quiet hour filters, and database deduplication
-export async function sendNotification(userId, notificationType, sourceType, sourceId, messageText, payload = {}) {
+export async function sendNotification(userId, notificationType, sourceType, sourceId, messageText, payload = {}, deps = null) {
+  // Use injected query if provided, otherwise default to imported query
+  const queryFn = deps && deps.query ? deps.query : query;
+  
   try {
     const isTestUser = userId && userId.startsWith('test_');
     const isTestPayload = payload && (payload.is_test_data === true || payload.isTestData === true || payload.is_test === true);
@@ -150,11 +153,11 @@ export async function sendNotification(userId, notificationType, sourceType, sou
       }
     }
 
-    // 1. Fetch enabled preferences for this notification type
-    const prefRes = await query(
-      `SELECT channel_type, quiet_hours_start, quiet_hours_end 
+    // 1. Fetch preferences for this notification type
+    const prefRes = await queryFn(
+      `SELECT channel_type, is_enabled, quiet_hours_start, quiet_hours_end 
        FROM public.notification_preferences 
-       WHERE user_id = $1 AND notification_type = $2 AND is_enabled = TRUE`,
+       WHERE user_id = $1 AND notification_type = $2`,
       [userId, notificationType]
     );
 
@@ -165,7 +168,27 @@ export async function sendNotification(userId, notificationType, sourceType, sou
       'EMERGENCY_NON_ZERO_6PM'
     ].includes(notificationType);
 
-    let prefsToProcess = prefRes.rows;
+    let prefsToProcess = prefRes.rows.filter(r => r.is_enabled);
+
+    if (prefRes.rows.length === 0) {
+      // Missing row: disabled by default unless explicitly allowed
+      const explicitDefaultAllowlist = [
+        'BLOCK_STARTED', 'BLOCK_COMPLETED', 'BLOCK_STOPPED', 'BLOCK_SKIPPED',
+        'BLOCK_PAUSED_TOO_LONG', 'PLAN_NOT_STARTED', 'CURRENT_BLOCK_NOT_STARTED',
+        'MISSED_BLOCK_ALERT', 'GOOD_MORNING_MISSION', 'PLAN_NOT_UPLOADED',
+        'DAILY_NIGHT_REPORT', 'NIGHT_MENTOR_REVIEW', 'MORNING_RECALL',
+        'PLAN_ACCEPTED_SUMMARY', 'WEEKLY_MENTOR_REPORT', 'MONTHLY_MENTOR_REPORT',
+        'MONTHLY_MENTOR_REPORT_PDF', 'REVISION_DUE_ALERT', 'END_OF_DAY_REPORT',
+        'SYLLABUS_TRACK_REPLY', 'BACKLOG_ALERT', 'DISTRACTION_ALERT'
+      ];
+      if (explicitDefaultAllowlist.includes(notificationType)) {
+        console.log(`[NotificationService] Preference missing for ${notificationType} and user ${userId}. Defaulting to TELEGRAM.`);
+        prefsToProcess = [{ channel_type: 'TELEGRAM', quiet_hours_start: null, quiet_hours_end: null }];
+      } else {
+        console.log(`[NotificationService] Preference missing for ${notificationType} and user ${userId}. Defaulting to disabled.`);
+      }
+    }
+
     if (prefsToProcess.length === 0 && isCriticalEscalation) {
       console.log(`[NotificationService] Preference fallback active for critical escalation ${notificationType} and user ${userId}. Defaulting to TELEGRAM.`);
       prefsToProcess = [{ channel_type: 'TELEGRAM', quiet_hours_start: null, quiet_hours_end: null }];
@@ -184,7 +207,7 @@ export async function sendNotification(userId, notificationType, sourceType, sou
         console.log(`[NotificationService] Skipping delivery for user ${userId} via ${channel} due to quiet hours (${pref.quiet_hours_start}-${pref.quiet_hours_end}).`);
         
         // Log skipped event
-        await query(
+        await queryFn(
           `INSERT INTO public.notification_events 
              (user_id, notification_type, source_type, source_id, channel_type, status, error_message, payload_json)
            VALUES ($1, $2, $3, $4, $5, 'skipped', 'Quiet hours active', $6)
@@ -197,7 +220,7 @@ export async function sendNotification(userId, notificationType, sourceType, sou
       }
 
       // 3. Deduplication Check & Atomic Guard
-      const insertRes = await query(
+      const insertRes = await queryFn(
         `INSERT INTO public.notification_events 
            (user_id, notification_type, source_type, source_id, channel_type, status, payload_json)
          VALUES ($1, $2, $3, $4, $5, 'sending', $6)
@@ -216,7 +239,7 @@ export async function sendNotification(userId, notificationType, sourceType, sou
       // 4. Fetch destination for the channel (Skip for IN_APP)
       let destinationId = null;
       if (channel !== 'IN_APP') {
-        const destRes = await query(
+        const destRes = await queryFn(
           `SELECT destination_id FROM public.notification_channels 
            WHERE user_id = $1 AND channel_type = $2 AND is_enabled = TRUE`,
           [userId, channel]
@@ -286,7 +309,7 @@ export async function sendNotification(userId, notificationType, sourceType, sou
       }
 
       // 6. Update the event status after dispatch attempt
-      await query(
+      await queryFn(
         `UPDATE public.notification_events 
          SET status = $1, error_message = $2, payload_json = $3, sent_at = NOW()
          WHERE user_id = $4 AND notification_type = $5 AND source_type = $6 AND source_id = $7 AND channel_type = $8`,

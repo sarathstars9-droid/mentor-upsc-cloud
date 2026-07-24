@@ -1,5 +1,6 @@
 import { query } from '../db/index.js';
 import * as botCommandService from './botCommandService.js';
+import { healthMonitor } from './healthMonitor.js';
 
 // ── Process-level singleton guards ───────────────────────────────────────────
 // These are process-lifetime flags on the Node.js global object. Even if startTelegramPolling() is called
@@ -190,56 +191,133 @@ export function stopTelegramPolling() {
   console.log("[TelegramService] Long polling stopped.");
 }
 
+export function calculatePollingBackoffMs(consecutiveErrors, randomFn = Math.random) {
+  let baseDelay = 5000 * Math.pow(2, consecutiveErrors - 1);
+  if (baseDelay > 60000) baseDelay = 60000;
+  const jitter = baseDelay * 0.2 * randomFn();
+  return Math.min(60000, Math.floor(baseDelay + jitter));
+}
+
+export function classifyTelegramPollingResponse(status) {
+  if (status === 401) return 'FATAL_AUTH';
+  if (status === 409) return 'CONFLICT';
+  if (status === 429) return 'RATE_LIMIT';
+  if (status >= 500 && status < 600) return 'SERVER_ERROR';
+  if (status >= 200 && status < 300) return 'SUCCESS';
+  return 'UNKNOWN_ERROR';
+}
+
 // ── Sequential polling loop ───────────────────────────────────────────────────
 // This is the core long-polling loop. It is purely sequential:
 // each getUpdates call finishes BEFORE the next one starts.
 // 409 conflict is handled with a 30s back-off and a single log line.
-async function runPollingLoop(token) {
+export async function runPollingLoop(
+  token,
+  deps = {
+    fetchFn: fetch,
+    sleepFn: sleep,
+    randomFn: Math.random,
+    healthMonitorRef: healthMonitor,
+    getIsPolling: () => global.telegramIsPolling,
+    setIsPolling: (val) => { global.telegramIsPolling = val; }
+  }
+) {
   let consecutive409 = 0;
+  let consecutiveErrors = 0;
 
-  while (global.telegramIsPolling) {
+  while (deps.getIsPolling()) {
     try {
       const url = `https://api.telegram.org/bot${token}/getUpdates?offset=${lastUpdateId + 1}&limit=10&timeout=25`;
-      const res = await fetch(url);
+      const res = await deps.fetchFn(url);
 
-      // ── 409 Conflict: another poller is active ───────────────────────────
-      // This can happen during Railway deploy transitions when old + new container
-      // both run briefly. Back off 30s and retry (do NOT spam logs every second).
-      if (res.status === 409) {
+      const classification = classifyTelegramPollingResponse(res.status);
+
+      if (classification === 'CONFLICT') {
         consecutive409++;
         if (consecutive409 === 1) {
           console.warn("[TelegramService] 409 conflict. Another poller is active. Retrying in 30s.");
         }
-        // Wait 30 seconds before retrying — silently after first log
-        await sleep(30000);
+        await deps.sleepFn(30000);
         continue;
       }
 
-      // Reset 409 counter on any other response
       consecutive409 = 0;
 
-      if (res.status === 401) {
+      if (classification === 'FATAL_AUTH') {
         console.error("[TelegramService] 401 Unauthorized. Stopping polling. Check TELEGRAM_BOT_TOKEN.");
-        global.telegramIsPolling = false;
+        deps.setIsPolling(false);
         return;
       }
 
-      if (!res.ok) {
-        console.error(`[TelegramService] getUpdates failed: HTTP ${res.status}. Retrying in 5s.`);
-        await sleep(5000);
+      if (classification === 'RATE_LIMIT') {
+        consecutiveErrors++;
+        deps.healthMonitorRef.recordTelegramFailure();
+
+        // 429 usually comes with a JSON body from Telegram containing `parameters.retry_after`
+        let jsonRetryAfter = null;
+        let isMalformedJson = false;
+        try {
+          const rawText = await res.text();
+          if (rawText) {
+            const parsed = JSON.parse(rawText);
+            if (parsed && parsed.parameters && typeof parsed.parameters.retry_after === 'number') {
+              jsonRetryAfter = parsed.parameters.retry_after;
+            }
+          }
+        } catch (e) {
+          isMalformedJson = true;
+        }
+
+        const headerRetryAfter = res.headers ? res.headers.get('retry-after') : null;
+        
+        let delayInSeconds = null;
+        if (jsonRetryAfter !== null) {
+          delayInSeconds = jsonRetryAfter;
+        } else if (headerRetryAfter && !isNaN(parseInt(headerRetryAfter, 10))) {
+          delayInSeconds = parseInt(headerRetryAfter, 10);
+        }
+
+        let delayMs;
+        if (delayInSeconds !== null) {
+          delayMs = Math.min(60000, delayInSeconds * 1000); // cap to 60s
+        } else {
+          delayMs = calculatePollingBackoffMs(consecutiveErrors, deps.randomFn);
+        }
+
+        console.warn(`[TelegramService] 429 Rate limit. Retrying in ${delayMs}ms.`);
+        await deps.sleepFn(delayMs);
         continue;
       }
 
+      if (classification === 'SERVER_ERROR' || classification === 'UNKNOWN_ERROR') {
+        // e.g. 400, 403, 404, 500, 502
+        throw new Error(`HTTP ${res.status} ${res.statusText}`);
+      }
+
+      // Classification is SUCCESS
       const data = await res.json();
-      if (data.ok && Array.isArray(data.result) && data.result.length > 0) {
+      if (!data || !data.ok) {
+         throw new Error(`Telegram API Error: ${data ? data.description : 'Malformed response'}`);
+      }
+
+      // Success accounting: Only after OK response and successful JSON parse!
+      consecutiveErrors = 0;
+      deps.healthMonitorRef.recordTelegramSuccess();
+
+      if (Array.isArray(data.result) && data.result.length > 0) {
         for (const update of data.result) {
           lastUpdateId = Math.max(lastUpdateId, update.update_id);
+          // Note: for deep mocked tests we might want to inject handleIncomingUpdate,
+          // but for basic polling logic tests this is fine as long as we return empty array.
           await handleIncomingUpdate(update);
         }
       }
       // On empty result (long-poll timeout expired with no messages), loop immediately
 
     } catch (err) {
+      consecutiveErrors++;
+      deps.healthMonitorRef.recordTelegramFailure();
+
       console.error("[TelegramService polling error]", {
         name: err?.name,
         message: err?.message,
@@ -247,7 +325,10 @@ async function runPollingLoop(token) {
         causeCode: err?.cause?.code,
         causeMessage: err?.cause?.message
       });
-      await sleep(5000);
+
+      const nextDelay = calculatePollingBackoffMs(consecutiveErrors, deps.randomFn);
+      console.log(`[TelegramService] Retrying polling in ${nextDelay}ms (attempt ${consecutiveErrors})`);
+      await deps.sleepFn(nextDelay);
     }
   }
 

@@ -12,9 +12,14 @@ const ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
  * @param {string} text - The message text
  */
 export async function sendWhatsAppMessage(to, text) {
-  if (!WHATSAPP_ENABLED) {
-    console.log(`[WhatsApp Fallback] To: ${to} | Text: ${text}`);
-    return true;
+  if (!WHATSAPP_ENABLED || !to || to === '91YOURNUMBER' || !PHONE_NUMBER_ID || !ACCESS_TOKEN) {
+    let reason = 'provider_not_configured';
+    if (!to || to === '91YOURNUMBER') reason = 'placeholder_number';
+    else if (!PHONE_NUMBER_ID || !ACCESS_TOKEN) reason = 'provider_credentials_missing';
+    
+    const maskedTo = to ? `***${to.slice(-4)}` : 'null';
+    console.log(`[WhatsApp Fallback Disabled] reason=${reason} destination=${maskedTo}`);
+    return false;
   }
 
   try {
@@ -52,9 +57,14 @@ export async function sendWhatsAppMessage(to, text) {
  * @param {Array<{id: string, title: string}>} buttons - Array of button objects (max 3)
  */
 export async function sendWhatsAppButtons(to, text, buttons) {
-  if (!WHATSAPP_ENABLED) {
-    console.log(`[WhatsApp Fallback] To: ${to} | Buttons: ${JSON.stringify(buttons)} | Text: ${text}`);
-    return true;
+  if (!WHATSAPP_ENABLED || !to || to === '91YOURNUMBER' || !PHONE_NUMBER_ID || !ACCESS_TOKEN) {
+    let reason = 'provider_not_configured';
+    if (!to || to === '91YOURNUMBER') reason = 'placeholder_number';
+    else if (!PHONE_NUMBER_ID || !ACCESS_TOKEN) reason = 'provider_credentials_missing';
+    
+    const maskedTo = to ? `***${to.slice(-4)}` : 'null';
+    console.log(`[WhatsApp Fallback Disabled] reason=${reason} destination=${maskedTo}`);
+    return false;
   }
 
   try {
