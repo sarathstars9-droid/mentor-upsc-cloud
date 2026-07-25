@@ -157,12 +157,12 @@ export function calculateBlockTiming(block, nowMs) {
             severity = "active";
             displayPrimary = `${formatConciseDuration(remainingStudySeconds)} study remaining`;
             if (startDelaySeconds > 60) {
-                displaySecondary = `Started ${Math.floor(startDelaySeconds / 60)} min late Â· ${Math.floor(liveAccumulatedSeconds / 60)} min completed`;
+                displaySecondary = `Started ${Math.floor(startDelaySeconds / 60)} min late \u00b7 ${Math.floor(liveAccumulatedSeconds / 60)} min completed`;
             } else {
                 displaySecondary = `${Math.floor(liveAccumulatedSeconds / 60)} min completed`;
             }
             break;
-        case "PAUSED":
+        case "PAUSED": {
             badgeText = "PAUSED";
             severity = "warning";
             const pausedAt = block.LastPauseAt ? new Date(block.LastPauseAt).getTime() : nowMs;
@@ -170,19 +170,21 @@ export function calculateBlockTiming(block, nowMs) {
             displayPrimary = `Paused for ${formatDuration(pausedSeconds)}`;
             displaySecondary = `${formatConciseDuration(remainingStudySeconds)} study remaining`;
             break;
+        }
         case "MISSED":
             badgeText = "BLOCK MISSED";
             severity = "error";
             displayPrimary = `Scheduled window ended ${Math.floor(plannedWindowOverdueSeconds / 60)} min ago`;
             displaySecondary = `${Math.floor(plannedDurationSeconds / 60)} min study still pending`;
             break;
-        case "COMPLETED":
+        case "COMPLETED": {
             badgeText = "COMPLETED";
             severity = "success";
             displayPrimary = "Block completed";
             const doneTime = block.ActualEnd ? new Date(block.ActualEnd).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }) : "";
-            displaySecondary = `${Math.floor(liveAccumulatedSeconds / 60)} focused minutes${doneTime ? ` Â· Completed at ${doneTime}` : ''}`;
+            displaySecondary = `${Math.floor(liveAccumulatedSeconds / 60)} focused minutes${doneTime ? ` \u00b7 Completed at ${doneTime}` : ''}`;
             break;
+        }
     }
 
     return {
