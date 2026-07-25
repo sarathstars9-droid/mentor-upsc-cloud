@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getEffectiveBlockStatus, formatTimeOnly, getBlockEndStateIST } from "../../utils/studyEngine";
+import { useBlockTiming, formatConciseDuration } from "../../hooks/useBlockTiming";
 
 export default function HeroSection({
     dPre,
@@ -12,6 +13,7 @@ export default function HeroSection({
     nextBlock,
     onStartNextBlock,
     onOpenFocus,
+    nowTick
 }) {
     const [showLogicModal, setShowLogicModal] = useState(false);
 
@@ -21,12 +23,7 @@ export default function HeroSection({
         return s === 'completed' || s === 'done';
     }).length;
 
-    const pct = totalBlocks > 0 ? Math.round((completedBlocks / totalBlocks) * 100) : 0;
-
-    // Math for the SVG circle
-    const radius = 32;
-    const circumference = 2 * Math.PI * radius;
-    const strokeDashoffset = circumference - (pct / 100) * circumference;
+    const planPct = totalBlocks > 0 ? Math.round((completedBlocks / totalBlocks) * 100) : 0;
 
     let heroActionLabel = "Start next block";
     let heroActionClick = () => nextBlock && onStartNextBlock(nextBlock);
@@ -120,6 +117,29 @@ export default function HeroSection({
         }
     }
 
+    // Use shared block timing hook for rendering the block state
+    const timing = useBlockTiming(currentBlock, nowTick);
+
+    // Determine the Hero metrics labels
+    let primaryMetricLabel = "";
+    let secondaryMetricLabel = "";
+
+    if (timing) {
+       const { timingState, overdueSeconds, remainingStudySeconds, secondsUntilPlannedEnd } = timing;
+       if (timingState === "OVERDUE_NOT_STARTED" || timingState === "MISSED") {
+           primaryMetricLabel = `Start overdue: ${Math.floor(overdueSeconds / 60)} min`;
+       } else if (timingState === "ACTIVE" || timingState === "OVERDUE_ACTIVE" || timingState === "PAUSED") {
+           primaryMetricLabel = `Study remaining: ${formatConciseDuration(remainingStudySeconds)}`;
+           if (secondsUntilPlannedEnd > 0) {
+               secondaryMetricLabel = `Planned window remaining: ${Math.floor(secondsUntilPlannedEnd / 60)} min`;
+           }
+       } else if (timingState === "COMPLETED") {
+           primaryMetricLabel = `Block completed`;
+       } else if (timingState === "UPCOMING") {
+           primaryMetricLabel = `Starts in ${formatConciseDuration(timing.secondsUntilStart)}`;
+       }
+    }
+
     return (
         <section className="mos-hero-section" style={{
             background: "var(--bg-surface)",
@@ -192,7 +212,7 @@ export default function HeroSection({
                         gap: 8,
                         boxShadow: "none"
                     }}>
-                        {heroActionLabel} <span>›</span>
+                        {heroActionLabel} <span>Ã¢â‚¬Âº</span>
                     </button>
 
                     <a href="#" onClick={(e) => { e.preventDefault(); setShowLogicModal(true); }} style={{
@@ -201,21 +221,28 @@ export default function HeroSection({
                         fontWeight: 500,
                         textDecoration: "none"
                     }}>
-                        View today's logic ›
+                        View today's logic Ã¢â‚¬Âº
                     </a>
                 </div>
 
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
                     {totalBlocks > 0 && (
                         <>
+                            {primaryMetricLabel && (
+                                <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
+                                    <span style={{ color: "var(--brand-primary)" }}>Ã¢ÂÂ±</span> {primaryMetricLabel}
+                                </div>
+                            )}
+                            {secondaryMetricLabel && (
+                                <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
+                                    <span style={{ color: "var(--brand-primary)" }}>Ã¢ÂÂ±</span> {secondaryMetricLabel}
+                                </div>
+                            )}
                             <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
-                                <span style={{ color: "var(--brand-primary)" }}>⏱</span> 21 min left
+                                <span style={{ color: "var(--brand-primary)" }}>Ã¢â€”â€¹</span> {planPct}% plan complete
                             </div>
                             <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
-                                <span style={{ color: "var(--brand-primary)" }}>○</span> 83% complete
-                            </div>
-                            <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
-                                <span style={{ color: "var(--success)" }}>🛡</span> Plan status: <span style={{ color: "var(--brand-primary)" }}>Recoverable</span>
+                                <span style={{ color: "var(--success)" }}>Ã°Å¸â€ºÂ¡</span> Plan status: <span style={{ color: "var(--brand-primary)" }}>Recoverable</span>
                             </div>
 
                             <div style={{ width: 1, height: 16, background: "var(--border-default)", margin: "0 4px" }} />
