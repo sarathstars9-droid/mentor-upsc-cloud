@@ -1131,11 +1131,10 @@ export default function PlanPage() {
 
   const [addBlockOpen, setAddBlockOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("sequence");
-  const serverOffsetMs = useRef(0);
-  const [nowTick, setNowTick] = useState(Date.now() + serverOffsetMs.current);
+  const [nowTick, setNowTick] = useState(Date.now());
 
   useEffect(() => {
-    const id = setInterval(() => setNowTick(Date.now() + serverOffsetMs.current), 1000);
+    const id = setInterval(() => setNowTick(Date.now()), 1000);
     return () => clearInterval(id);
   }, []);
 
@@ -2716,7 +2715,6 @@ export default function PlanPage() {
         nextBlock={nextBlock}
         onStartNextBlock={(nextBlock) => nextBlock && handleStartBlock(nextBlock.BlockId)}
         onOpenFocus={() => setSpotlightOpen(true)}
-        nowTick={nowTick}
       />
 
       <div className="main-work-grid">
