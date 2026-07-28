@@ -35,3 +35,4 @@ backend/data/ingestion/extracted/*.json
 
 # PYQ ingestion — ignore reviewed drafts but track the folder via .gitkeep
 backend/data/ingestion/reviewed/*.json
+.claude/worktrees/
