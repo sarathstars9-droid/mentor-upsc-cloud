@@ -1,6 +1,12 @@
 import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
+import RouteMetadata from "./components/RouteMetadata";
+import LandingPage from "./pages/LandingPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsPage from "./pages/TermsPage";
+import ContactPage from "./pages/ContactPage";
+
 import PlanPage from "./pages/PlanPage";
 import LoginPage from "./pages/LoginPage";
 import PerformancePage from "./pages/PerformancePage";
@@ -204,6 +210,39 @@ class ErrorBoundary extends React.Component {
   }
 }
 
+function ProtectedRoute({ authenticated, children }) {
+  const location = useLocation();
+  if (!authenticated) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+  return children;
+}
+
+function getSafeReturnPath(from) {
+  const pathname = typeof from?.pathname === "string" ? from.pathname : "";
+  const search = typeof from?.search === "string" && (from.search === "" || from.search.startsWith("?")) ? from.search : "";
+  const hash = typeof from?.hash === "string" && (from.hash === "" || from.hash.startsWith("#")) ? from.hash : "";
+
+  const isSafeInternalPath = pathname.startsWith("/") && !pathname.startsWith("//") && pathname !== "/login";
+
+  if (!isSafeInternalPath) {
+    return "/plan";
+  }
+
+  return `${pathname}${search}${hash}`;
+}
+
+function LoginRoute({ authenticated, onLogin }) {
+  const location = useLocation();
+
+  if (authenticated) {
+    const destination = getSafeReturnPath(location.state?.from);
+    return <Navigate to={destination} replace />;
+  }
+
+  return <LoginPage onLogin={onLogin} />;
+}
+
 export default function App() {
   const [authenticated, setAuthenticated] = useState(isLoggedIn());
 
@@ -218,16 +257,28 @@ export default function App() {
     window.location.href = "/login";
   }
 
-  if (!authenticated) {
-    return <LoginPage onLogin={handleLogin} />;
-  }
-
   const currentUserId = localStorage.getItem("userId");
 
   return (
     <BrowserRouter>
-      <NotificationBanner userId={currentUserId} />
-      <AppRoutes onLogout={handleLogout} />
+      <RouteMetadata />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+
+        <Route path="/login" element={<LoginRoute authenticated={authenticated} onLogin={handleLogin} />} />
+
+        <Route path="/*" element={
+          <ProtectedRoute authenticated={authenticated}>
+            <>
+              <NotificationBanner userId={currentUserId} />
+              <AppRoutes onLogout={handleLogout} />
+            </>
+          </ProtectedRoute>
+        } />
+      </Routes>
     </BrowserRouter>
   );
 }
