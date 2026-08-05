@@ -23,6 +23,7 @@ import {
   getBlocksForDay,
   getBlockState,
   repairLegacyActiveBlocks,
+  recoverStaleBlock,
 } from '../services/blockLifecycleService.js';
 import { syncBlockToCalendar, retryFailedCalendarSyncs, probeCalendarBridge } from '../services/calendarBridgeService.js';
 import { enqueueAction } from '../services/outboxService.js';
@@ -236,7 +237,50 @@ router.post('/start', async (req, res) => {
     }
 
     const status = err.code === 'RACE_CONDITION' ? 409
+                 : err.code === 'STALE_ACTIVE_SESSION' ? 409
                  : err.code === 'INVALID_TRANSITION' ? 422
+                 : 500;
+
+    const payload = { ok: false, message: err.message, code: err.code };
+    if (err.code === 'STALE_ACTIVE_SESSION' && err.staleBlock) {
+      payload.staleBlock = err.staleBlock;
+    }
+    return res.status(status).json(payload);
+  }
+});
+
+// ── POST /api/plan/blocks/:blockId/recover-stale-session ──────────
+
+router.post('/:blockId/recover-stale-session', async (req, res) => {
+  const { blockId } = req.params;
+  const { actualMinutes, resolution, dayKey } = req.body || {};
+
+  if (!blockId) return res.status(400).json({ ok: false, message: 'blockId is required' });
+  if (typeof actualMinutes !== 'number' || !Number.isInteger(actualMinutes) || actualMinutes < 0) {
+    return res.status(400).json({ ok: false, message: 'actualMinutes must be a non-negative integer' });
+  }
+  if (!['user_confirmed', 'abandoned'].includes(resolution)) {
+    return res.status(400).json({ ok: false, message: 'Invalid resolution' });
+  }
+
+  try {
+    const uid = userId(req);
+    const day = dayKey || todayKey();
+
+    const block = await recoverStaleBlock(uid, blockId, day, actualMinutes, resolution);
+    syncBlockToCalendar(block, 'complete').catch(() => {});
+    return res.json({ ok: true, block });
+  } catch (err) {
+    console.error(`[POST /api/plan/blocks/${blockId}/recover-stale-session]`, err.message);
+    const isDbError = err.code === 'ECONNREFUSED' || err.code === 'ETIMEDOUT' || err.message?.includes('timeout') || err.message?.includes('connection') || err.code === 'CIRCUIT_OPEN';
+    if (isDbError) {
+      return res.status(202).json({ ok: true, queued: false, message: 'Database temporarily unavailable. Please try again.' });
+    }
+
+    const status = err.code === 'NOT_STALE' ? 409
+                 : err.code === 'INVALID_MINUTES' ? 400
+                 : err.code === 'NOT_FOUND' ? 404
+                 : err.code === 'NOT_ACTIVE' ? 409
                  : 500;
     return res.status(status).json({ ok: false, message: err.message, code: err.code });
   }
@@ -321,8 +365,8 @@ router.post('/complete', async (req, res) => {
     console.error('[POST /api/plan/blocks/complete]', err.message);
     const isDbError = err.code === 'ECONNREFUSED' || err.code === 'ETIMEDOUT' || err.message?.includes('timeout') || err.message?.includes('connection') || err.code === 'CIRCUIT_OPEN';
     if (isDbError) {
-      const payload = { 
-        userId: userId(req), blockId, dayKey: req.body.dayKey || todayKey(), 
+      const payload = {
+        userId: userId(req), blockId, dayKey: req.body.dayKey || todayKey(),
         metadata: { reason, actualMinutes, outputType, outputCount, accuracy, score, confidence, weaknessNote, proofUrl, proofType, proofStatus, proofNotes }
       };
       await enqueueAction('completeBlock', payload);

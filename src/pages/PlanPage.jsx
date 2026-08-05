@@ -10,6 +10,7 @@ import StopConfirmModal from "../components/Plan/StopConfirmModal.jsx";
 import BehaviourSignalModal from "../components/Plan/BehaviourSignalModal.jsx";
 import PyqSummaryPanel from "../components/PyqSummaryPanel.jsx";
 import BlockReviewModal from "../components/Plan/BlockReviewModal.jsx";
+import StaleRecoveryModal from "../components/Plan/StaleRecoveryModal.jsx";
 import { humanizeMappingCode } from "../utils/mappingUtils";
 import { fetchWithAuth } from "../utils/auth";
 import HeroSection from "../components/Plan/HeroSection.jsx";
@@ -1113,6 +1114,9 @@ export default function PlanPage() {
   const [switchBlockConfirmOpen, setSwitchBlockConfirmOpen] = useState(false);
   const [pendingStartRequest, setPendingStartRequest] = useState(null);
 
+  const [staleRecoveryModalOpen, setStaleRecoveryModalOpen] = useState(false);
+  const [staleBlockData, setStaleBlockData] = useState(null);
+
   const [date, setDate] = useState(getTodayLocalDate());
   const [planMin, setPlanMin] = useState(360);
   const [doneMin, setDoneMin] = useState(0);
@@ -1995,11 +1999,17 @@ export default function PlanPage() {
       const out = await updateBlockAction("startBlock", {
         blockId,
         actualStart: nowIso,
+        ...options,
       });
 
-      if (!out?.ok) {
+      if (out && !out.ok) {
+        if (out.code === "STALE_ACTIVE_SESSION") {
+          setStaleBlockData(out.staleBlock);
+          setStaleRecoveryModalOpen(true);
+          return;
+        }
+        startedBlocksRef.current.delete(blockId);
         setStatus(`❌ startBlock failed: ${out?.message || "unknown"}`);
-        await loadBlocksForDate(date);
         return;
       }
 
@@ -2141,7 +2151,7 @@ export default function PlanPage() {
     try {
       // ⚠️ CRITICAL: Must include dayKey so backend finds correct block on correct day
       const dayKey = date ? String(date).slice(0, 10) : new Date().toISOString().slice(0, 10);
-      
+
       const payload = {
         blockId,
         dayKey,
@@ -2149,11 +2159,11 @@ export default function PlanPage() {
         endedAt: new Date().toISOString(),
         elapsedSec: liveElapsedSec
       };
-      
+
       console.log("[StopBlock] payload", payload);
 
       const result = await updateBlockAction("stopBlock", payload);
-      
+
       console.log("[StopBlock] backend response", result);
       console.log("[StopBlock] backend status", result?.status ? result.status : (result?.ok ? 200 : 400));
 
@@ -2768,7 +2778,7 @@ export default function PlanPage() {
               <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", margin: 0 }}>Today's Sequence</h2>
               <button onClick={() => setAddBlockOpen(true)} style={{ background: "var(--bg-surface)", color: "var(--text-primary)", border: "1px solid var(--border-default)", borderRadius: 8, padding: "6px 12px", fontWeight: 600, fontSize: 13, cursor: "pointer" }}>Manage Today</button>
             </div>
-            
+
             <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 8 }}>
               {todayBlocks.length === 0 && <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>No blocks scheduled.</div>}
               {todayBlocks.map((block, idx) => {
@@ -2796,11 +2806,11 @@ export default function PlanPage() {
                     timelineLabel = "READY";
                   }
                 }
-                
+
                 return (
-                  <div key={idx} style={{ 
-                    display: "flex", 
-                    gap: 16, 
+                  <div key={idx} style={{
+                    display: "flex",
+                    gap: 16,
                     background: isActive ? "var(--brand-primary-soft)" : "transparent",
                     border: isActive ? "1px solid var(--border-subtle)" : "1px solid transparent",
                     borderRadius: 12,
@@ -2811,7 +2821,7 @@ export default function PlanPage() {
                       <span>{timelineLabel}</span>
                       <div style={{ width: 2, flex: 1, background: isActive ? "var(--brand-primary)" : "var(--border-default)", borderRadius: 2 }} />
                     </div>
-                    
+
                     <div style={{ flex: 1 }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
                         <div style={{ fontSize: 16, fontWeight: 600, color: "var(--text-primary)" }}>
@@ -2823,14 +2833,14 @@ export default function PlanPage() {
                           </div>
                         )}
                       </div>
-                      
+
                       <div style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: isActive ? 12 : 0 }}>
                         <div className="sequence-time" style={{ fontFamily: 'var(--mono,monospace)', marginBottom: 2 }}>
                           {getBlockTimeRange(block)}
                         </div>
                         <div>{block.PlannedTopic && block.PlannedTopic !== "N/A" ? `${block.PlannedTopic} • ` : ""}{block.PlannedMinutes} min</div>
                       </div>
-                      
+
                       {isActive && (
                         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                           <div style={{ flex: 1, height: 6, borderRadius: 3, background: "var(--border-default)", overflow: "hidden" }}>
@@ -2838,6 +2848,18 @@ export default function PlanPage() {
                           </div>
                           <div style={{ color: "var(--brand-primary)", cursor: "pointer", fontWeight: 600 }}>›</div>
                         </div>
+                      )}
+
+                      {block.RequiresRecovery && (
+                        <button
+                          onClick={() => {
+                            setStaleBlockData(block);
+                            setStaleRecoveryModalOpen(true);
+                          }}
+                          style={{ marginTop: 8, background: "var(--brand-primary)", color: "white", padding: "6px 12px", borderRadius: 6, border: "none", fontWeight: 600, cursor: "pointer", fontSize: 13 }}
+                        >
+                          Resolve session
+                        </button>
                       )}
                     </div>
                   </div>
@@ -2859,8 +2881,8 @@ export default function PlanPage() {
             onChange={(e) => setPlanPhoto(e.target.files?.[0] || null)}
             style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 10, height: 44, padding: "8px 12px", fontSize: 14, color: "var(--text-primary)" }}
           />
-          <button 
-            disabled={busy} 
+          <button
+            disabled={busy}
             onClick={onParsePhoto}
             style={{ background: "var(--bg-surface)", color: "var(--brand-primary)", border: "1px solid var(--border-default)", borderRadius: 10, height: 44, padding: "0 20px", fontWeight: 600, cursor: "pointer", transition: "background 0.2s" }}
             onMouseOver={e => e.currentTarget.style.background = "var(--brand-primary-soft)"}
@@ -2870,6 +2892,22 @@ export default function PlanPage() {
           </button>
         </div>
       </div>
+
+      {staleRecoveryModalOpen && (
+        <StaleRecoveryModal
+          isOpen={staleRecoveryModalOpen}
+          staleBlock={staleBlockData}
+          onClose={() => {
+            setStaleRecoveryModalOpen(false);
+            setStaleBlockData(null);
+          }}
+          onRecovered={() => {
+            setStaleRecoveryModalOpen(false);
+            setStaleBlockData(null);
+            loadBlocksForDate(date);
+          }}
+        />
+      )}
 
       {showAdvancedControls && (
       <details className="adv-controls">

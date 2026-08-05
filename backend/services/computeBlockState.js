@@ -3,6 +3,8 @@
 // Receives a raw DB row and returns backend-derived timing values.
 // Frontend must render these directly without any local recalculation.
 
+import { detectStaleSession } from '../utils/staleSessionUtils.js';
+
 export function computeBlockState(block) {
   if (!block) return null;
 
@@ -36,9 +38,14 @@ export function computeBlockState(block) {
 
       default:
         // completed / partial / missed / skipped
-        if (endMs) {
-          // total_pause_seconds already includes any pause that was open at completion
-          // (the completeBlock handler folds it in before setting ended_at)
+        // actual_minutes in the database is the authoritative source for terminal durations.
+        // We do NOT reconstruct from (ended_at - started_at) if a valid DB value exists,
+        // to support stale-session recovery without backdating ended_at.
+        if (block.actual_minutes !== undefined && block.actual_minutes !== null) {
+          actualSeconds = Number(block.actual_minutes) * 60;
+          pauseSeconds  = totalPauseSec;
+        } else if (endMs) {
+          // Fallback only if actual_minutes is totally missing (legacy rows)
           actualSeconds = Math.max(0, Math.floor((endMs - startMs) / 1000) - totalPauseSec);
           pauseSeconds  = totalPauseSec;
         }
@@ -72,7 +79,7 @@ export function toFrontendBlock(dbBlock, gasBlock = {}) {
   const computed = computeBlockState(dbBlock);
   if (!computed) return gasBlock;
 
-  return {
+  const result = {
     // ── Schedule fields from GAS / Sheets ───────────────────────────────────
     Title:              gasBlock.Title          || computed.title           || '',
     PlannedSubject:     gasBlock.PlannedSubject || computed.subject         || '',
@@ -105,6 +112,8 @@ export function toFrontendBlock(dbBlock, gasBlock = {}) {
 
     IsPaused:           computed.isPaused,
     IsActive:           computed.isActive,
+    IsCompleted:        computed.isCompleted,
+    Reason:             computed.completion_reason || '',
 
     ProofUrl:                computed.proofUrl,
     ProofType:               computed.proofType,
@@ -118,6 +127,20 @@ export function toFrontendBlock(dbBlock, gasBlock = {}) {
     // Internal — for debugging
     _lifecycleSource:   'postgres',
   };
+
+  if (computed.status === 'active' || computed.status === 'paused') {
+    const staleData = detectStaleSession(computed, new Date().toISOString());
+    if (staleData.isStale) {
+      result.IsStaleSession = true;
+      result.StaleSessionAgeMinutes = staleData.sessionAgeMinutes;
+      result.StaleFocusedElapsedMinutes = staleData.focusedElapsedMinutes;
+      result.StaleThresholdMinutes = staleData.thresholdMinutes;
+      result.RequiresRecovery = true;
+    }
+  }
+
+
+  return result;
 }
 
 export function getBlockState(block, now = Date.now()) {

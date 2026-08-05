@@ -45,3 +45,60 @@ test('toFrontendBlock handles null timestamps safely', (t) => {
   assert.strictEqual(mapped.ActualEnd, '');
   assert.strictEqual(mapped.ActualMinutes, 0); // computeBlockState uses Number(0) for null actual_minutes
 });
+
+test('recovered 95 minutes maps as exactly 95, despite long elapsed time', (t) => {
+  const startedAtStr = new Date(Date.now() - (48 * 3600 * 1000)).toISOString(); // 48 hours ago
+  const dbRow = {
+    id: 'blk-rec-95',
+    status: 'completed',
+    actual_minutes: 95,
+    started_at: startedAtStr,
+    ended_at: new Date().toISOString(), // ended now
+    total_pause_seconds: 0
+  };
+  const mapped = toFrontendBlock(dbRow);
+  assert.strictEqual(mapped.ActualMinutes, 95);
+});
+
+test('recovered zero maps as exactly zero', (t) => {
+  const dbRow = {
+    id: 'blk-rec-0',
+    status: 'completed',
+    actual_minutes: 0,
+    started_at: new Date(Date.now() - (48 * 3600 * 1000)).toISOString(),
+    ended_at: new Date().toISOString(),
+    total_pause_seconds: 0
+  };
+  const mapped = toFrontendBlock(dbRow);
+  assert.strictEqual(mapped.ActualMinutes, 0);
+});
+
+test('normal completed blocks without actual_minutes map correctly (fallback)', (t) => {
+  const startMs = Date.now() - (45 * 60000);
+  const endMs = Date.now();
+  const dbRow = {
+    id: 'blk-norm',
+    status: 'completed',
+    actual_minutes: null, // Legacy row missing actual_minutes
+    started_at: new Date(startMs).toISOString(),
+    ended_at: new Date(endMs).toISOString(),
+    total_pause_seconds: 300 // 5 minutes pause
+  };
+  const mapped = toFrontendBlock(dbRow);
+  assert.strictEqual(mapped.ActualMinutes, 40); // 45 total - 5 pause
+});
+
+test('active stale elapsed is not exposed as trusted actual study time', (t) => {
+  const startMs = Date.now() - (1000 * 60000); // 1000 mins ago
+  const dbRow = {
+    id: 'blk-stale-active',
+    status: 'active',
+    actual_minutes: null,
+    started_at: new Date(startMs).toISOString(),
+    ended_at: null,
+    total_pause_seconds: 0
+  };
+  const mapped = toFrontendBlock(dbRow);
+  // for active blocks, it calculates live elapsed
+  assert.strictEqual(mapped.ActualMinutes, 1000);
+});

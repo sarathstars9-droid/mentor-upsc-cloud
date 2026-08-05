@@ -12,6 +12,7 @@
 
 import { pool, criticalQuery } from '../db/index.js';
 import { computeBlockState, toFrontendBlock } from './computeBlockState.js';
+import { detectStaleSession } from '../utils/staleSessionUtils.js';
 import { invalidateSuggestionsCache } from './plannerService.js';
 import { checkAndTriggerRecovery } from './behaviorEscalationService.js';
 
@@ -108,22 +109,43 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
 
     const transitionAt = new Date().toISOString();
 
-    // Step 1: Lock all currently active rows for this user
-    const { rows: activeRows } = await client.query(
+    // Step 1: Lock all currently active/paused rows for this user
+    const { rows: openRows } = await client.query(
       `SELECT * FROM study_blocks
-       WHERE user_id = $1 AND status = 'active'
+       WHERE user_id = $1 AND status IN ('active', 'paused')
        FOR UPDATE`,
       [userId]
     );
 
-    // Step 2: Auto-complete each existing active block (unchanged behaviour)
-    for (const row of activeRows) {
+    // Step 2: Auto-complete each existing active block (unchanged behaviour for non-stale)
+    for (const row of openRows) {
       if (row.block_id === blockId) continue; // handled in step 5
 
+      const staleData = detectStaleSession(row, transitionAt);
+      if (staleData.isStale) {
+        await client.query('ROLLBACK');
+        const err = new Error("The previous study session needs confirmation before a new block can start.");
+        err.code = "STALE_ACTIVE_SESSION";
+        err.staleBlock = {
+          blockId: row.block_id,
+          startedAt: row.started_at,
+          plannedMinutes: row.planned_minutes || 120,
+          storedActualMinutes: row.actual_minutes || 0,
+          sessionAgeMinutes: staleData.sessionAgeMinutes,
+          focusedElapsedMinutes: staleData.focusedElapsedMinutes,
+          thresholdMinutes: staleData.thresholdMinutes,
+          status: row.status
+        };
+        throw err;
+      }
+
       // Fold in any open pause duration before completing
-      const foldPauseSec = row.paused_at
-        ? Math.max(0, Math.floor((new Date(transitionAt).getTime() - new Date(row.paused_at).getTime()) / 1000))
-        : 0;
+      let foldPauseSec = 0;
+      if (row.status === 'paused' && row.paused_at) {
+        foldPauseSec = Math.max(0, Math.floor((new Date(transitionAt).getTime() - new Date(row.paused_at).getTime()) / 1000));
+      } else if (row.status === 'active' && row.paused_at) {
+        foldPauseSec = Math.max(0, Math.floor((new Date(transitionAt).getTime() - new Date(row.paused_at).getTime()) / 1000));
+      }
 
       await client.query(
         `UPDATE study_blocks
@@ -137,12 +159,13 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
          WHERE id = $1`,
         [row.id, transitionAt, foldPauseSec]
       );
-      
+
+      let actualMinutes = 0;
       try {
         const startedAt = row.started_at ? new Date(row.started_at).getTime() : new Date(transitionAt).getTime();
         const endedAt = new Date(transitionAt).getTime();
         const pauseSec = (row.total_pause_seconds || 0) + foldPauseSec;
-        const actualMinutes = Math.max(0, Math.round((endedAt - startedAt - (pauseSec * 1000)) / 60000));
+        actualMinutes = Math.max(0, Math.round((endedAt - startedAt - (pauseSec * 1000)) / 60000));
 
         await client.query(
           `UPDATE study_blocks SET actual_minutes = $1 WHERE id = $2`,
@@ -293,9 +316,9 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
 
     await client.query('COMMIT');
     // Invalidate suggestions cache only after successful commit.
-    try { 
+    try {
       if (deps.invalidateSuggestionsCache) deps.invalidateSuggestionsCache(userId);
-      else invalidateSuggestionsCache(userId); 
+      else invalidateSuggestionsCache(userId);
     } catch {}
 
     // committed row is the authoritative source for all post-commit work.
@@ -437,7 +460,7 @@ export async function resumeBlock(userId = DEFAULT_USER, blockId, dayKey) {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
-    
+
     // Step 1: Auto-complete any existing active block(s)
     const { rows: activeRows } = await client.query(
       `SELECT * FROM study_blocks WHERE user_id = $1 AND status = 'active' FOR UPDATE`,
@@ -446,7 +469,7 @@ export async function resumeBlock(userId = DEFAULT_USER, blockId, dayKey) {
 
     for (const row of activeRows) {
       if (row.block_id === blockId) continue;
-      
+
       const foldPauseSec = row.paused_at ? Math.max(0, Math.floor((Date.now() - new Date(row.paused_at).getTime()) / 1000)) : 0;
       await client.query(
         `UPDATE study_blocks SET status = 'completed', ended_at = NOW(), total_pause_seconds = total_pause_seconds + $2, paused_at = NULL, completion_reason = 'auto_stopped_on_new_resume', updated_at = NOW() WHERE id = $1`,
@@ -487,7 +510,7 @@ export async function resumeBlock(userId = DEFAULT_USER, blockId, dayKey) {
         { code: 'NOT_PAUSED' }
       );
     }
-    
+
     await client.query('COMMIT');
 
     // Secondary async work
@@ -547,7 +570,7 @@ export async function completeBlock(
     `SELECT * FROM study_blocks WHERE user_id = $1 AND block_id = $2 AND day_key = $3`,
     [userId, blockId, dayKey]
   );
-  
+
   const existingBlock = existingRows[0] || null;
   const isTest = isTestData || completionSource === 'test' || String(blockId).includes('test') || Boolean(existingBlock?.is_test_data);
 
@@ -913,19 +936,19 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
     const pStart = b.Start || b.PlannedStart || '';
     const normSubj = (b.Subject || b.PlannedSubject || '').trim().toLowerCase();
     const logicalId = `${pStart}_${normSubj}`;
-    
+
     const rawStatus = String(b.Status || b.status || b.CompletionStatus || b.completionStatus || b['✅ Done'] || b.Done || '').trim().toUpperCase();
     const isDone = rawStatus.includes('DONE') || rawStatus.includes('COMPLETED') || rawStatus.includes('COMPLETE') || rawStatus === '✅ DONE' || rawStatus === '✅DONE';
     const isMissed = rawStatus === 'MISSED' || rawStatus === 'SKIPPED';
     const incomingStatus = isDone ? 'completed' : isMissed ? 'missed' : 'planned';
-    
+
     // Parse planned minutes safely
     let pMinsRaw = b.Minutes || b.PlannedMinutes || b.planned_minutes || b.plannedMinutes;
     const plannedMins = isNaN(Number(pMinsRaw)) ? 0 : Number(pMinsRaw);
-    
+
     // Parse actual minutes from various possible keys
     let aMinsRaw = b.ActualMinutes || b.actual_minutes || b.actualMinutes || b.done_minutes || b.doneMinutes || b.completed_minutes || b.completedMinutes || b.Actual || b['Done Minutes'] || b['Minutes Done'] || b['Duration Done'] || b['Studied Minutes'];
-    
+
     let parsedActual = 0;
     if (typeof aMinsRaw === 'string') {
        // Extract number from strings like "135m", "2h 15m", "301 min"
@@ -942,22 +965,22 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
     } else if (!isNaN(Number(aMinsRaw))) {
        parsedActual = Number(aMinsRaw);
     }
-    
+
     const incomingActualMins = incomingStatus === 'completed' ? (parsedActual || plannedMins) : 0;
-    
+
     b._parsedStatus = incomingStatus;
     b._parsedMins = incomingActualMins;
     b._plannedMins = plannedMins;
-    
+
     if (!uniqueGasMap.has(logicalId)) {
       uniqueGasMap.set(logicalId, b);
       continue;
     }
-    
+
     const existing = uniqueGasMap.get(logicalId);
     const existingIsDone = existing._parsedStatus === 'completed';
     const currentIsDone = incomingStatus === 'completed';
-    
+
     if (currentIsDone && incomingActualMins > 0 && (!existingIsDone || existing._parsedMins === 0)) {
       uniqueGasMap.set(logicalId, b);
     } else if (existingIsDone && existing._parsedMins > 0 && (!currentIsDone || incomingActualMins === 0)) {
@@ -970,7 +993,7 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
       uniqueGasMap.set(logicalId, b);
     }
   }
-  
+
   const deduplicatedGasBlocks = Array.from(uniqueGasMap.values())
     .sort((a, b) => (a.BlockId || '').localeCompare(b.BlockId || ''));
   let doneCount = 0;
@@ -983,15 +1006,15 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
     for (const b of deduplicatedGasBlocks) {
       const pStart = b.Start || b.PlannedStart || '';
       const normSubj = (b.Subject || b.PlannedSubject || '').trim().toLowerCase();
-      
+
       let dbRow = null;
-      
+
       // 1. Try finding by logical identity
       const { rows: logicalRows } = await client.query(
         `SELECT id, status, actual_minutes FROM study_blocks WHERE user_id=$1 AND day_key=$2 AND planned_start=$3 AND lower(subject)=$4`,
         [userId, dayKey, pStart, normSubj]
       );
-      
+
       if (logicalRows.length > 0) {
         dbRow = logicalRows[0];
       } else if (b.BlockId) {
@@ -1002,11 +1025,11 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
         );
         if (fallbackRows.length > 0) dbRow = fallbackRows[0];
       }
-      
+
       const incomingStatus = b._parsedStatus;
       const incomingActualMins = b._parsedMins;
       const plannedMins = b._plannedMins;
-      
+
       if (dbRow) {
          // Already exists logic tracking for counts
          if (dbRow.status === 'planned' && incomingStatus !== 'planned') {
@@ -1031,7 +1054,7 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
             }
          }
       }
-      
+
       const res = await client.query(
         `INSERT INTO study_blocks
            (user_id, block_id, day_key, title, subject, topic,
@@ -1062,7 +1085,7 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
           incomingActualMins
         ]
       );
-      
+
       if (!dbRow && incomingStatus === 'completed') {
           await client.query(
              `INSERT INTO public.block_logs (block_id, user_id, started_at, ended_at, actual_minutes, completion_status)
@@ -1118,13 +1141,13 @@ export async function mergeLifecycleIntoGasBlocks(gasBlocks, userId, dayKey) {
     }
     return gasBlock;
   });
-  
+
   finalBlocks._stats = {
     mergedCount: deduplicatedGasBlocks.length,
     doneCount,
     plannedCount
   };
-  
+
   await checkAndTriggerRecovery(userId, dayKey);
 
   return finalBlocks;
@@ -1224,10 +1247,10 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
 
     // 1. Log overall PLAN_ACCEPTED event (only if not logged for this date already)
     const existingOverallRes = await client.query(
-      `SELECT id FROM public.study_events 
-       WHERE user_id = $1 
-         AND event_type = 'PLAN_ACCEPTED' 
-         AND block_id IS NULL 
+      `SELECT id FROM public.study_events
+       WHERE user_id = $1
+         AND event_type = 'PLAN_ACCEPTED'
+         AND block_id IS NULL
          AND (metadata_json->>'date') = $2 LIMIT 1`,
       [userId, date]
     );
@@ -1244,13 +1267,13 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
 
     for (const b of items) {
       if (!b.blockId) continue;
-      
+
       const plannedMinutes = Number(b.planned_minutes || b.plannedMinutes || b.minutes || 0);
       const subject = b.subject || b.paper || '';
       const topic = b.topic || '';
       const rawNodeId = b.syllabus_node_id || b.syllabusNodeId || b.nodeId || '';
       let nodeId = rawNodeId && rawNodeId !== 'MISC-GEN' && !rawNodeId.startsWith('MISC') ? rawNodeId : null;
-      
+
       const mode = (b.mode || '').trim();
       const outputExpected = (b.output_expected || b.outputExpected || '').trim();
       const rawText = (b.raw_text || b.rawText || '').trim();
@@ -1318,8 +1341,8 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
       let existingBlockId = b.blockId;
       if ((finalRawText && finalRawText.trim()) || (subject && topic)) {
         const dupRes = await client.query(
-          `SELECT block_id FROM public.study_blocks 
-           WHERE user_id = $1 AND day_key = $2 
+          `SELECT block_id FROM public.study_blocks
+           WHERE user_id = $1 AND day_key = $2
              AND (
                ($3 <> '' AND raw_text = $3)
                OR (subject = $4 AND topic = $5 AND COALESCE(mode, '') = $6 AND planned_minutes = $7)
@@ -1398,14 +1421,14 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
 
       // 3. Log PLAN_ACCEPTED event for each block (only if not logged for this block already)
       const existingPlanEventRes = await client.query(
-        `SELECT id FROM public.study_events 
+        `SELECT id FROM public.study_events
          WHERE user_id = $1 AND event_type = 'PLAN_ACCEPTED' AND block_id = $2 LIMIT 1`,
          [userId, dbBlockId]
       );
 
       if (existingPlanEventRes.rows.length === 0) {
-        const studyEventMetadata = { 
-            blockId: existingBlockId, 
+        const studyEventMetadata = {
+            blockId: existingBlockId,
             date,
             planned_minutes: plannedMinutes,
             source_type: 'uploaded_plan',
@@ -1436,7 +1459,7 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
           const pyqSummary = getPyqSummaryForNode(nodeId, 500);
           if (pyqSummary && pyqSummary.total > 0) {
             const existingPyqEventRes = await client.query(
-              `SELECT id FROM public.study_events 
+              `SELECT id FROM public.study_events
                WHERE user_id = $1 AND event_type = 'PYQ_SEEN' AND block_id = $2 LIMIT 1`,
               [userId, dbBlockId]
             );
@@ -1497,7 +1520,7 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
     }
 
     console.log(`[Plan Upload] Today's plan successfully uploaded and saved for user: ${userId}, date: ${date}`);
-    
+
 
 
     return { ok: true };
@@ -1521,7 +1544,7 @@ export function getISTDateTime() {
 
 export async function resolveActiveBlock(userId) {
   const normalizedUid = String(userId || '').toLowerCase().trim();
-  
+
   // 1. Check for any block with status active or paused (Pure SELECT query)
   const { rows: activeRows } = await pool.query(
     `SELECT id, block_id, subject, topic, started_at, planned_minutes, status, planned_start, planned_end, day_key, syllabus_node_id as node_id
@@ -1531,12 +1554,12 @@ export async function resolveActiveBlock(userId) {
      LIMIT 1`,
     [normalizedUid]
   );
-  
+
   if (activeRows.length > 0) {
     console.log(`[Current Block] Found active/paused block in DB: ${activeRows[0].subject} (${activeRows[0].block_id}) for user: ${normalizedUid}`);
     return activeRows[0];
   }
-  
+
   console.log(`[Current Block] No active study block found for user: ${normalizedUid}`);
   return null;
 }
@@ -1546,14 +1569,14 @@ export async function activateTimeMatchingBlock(userId) {
     return null;
   }
   const normalizedUid = String(userId || '').toLowerCase().trim();
-  
+
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
-    
+
     // Acquire a transaction-level advisory lock on the user ID to serialize updates for this user
     await client.query('SELECT pg_advisory_xact_lock(hashtext($1))', [normalizedUid]);
-    
+
     // 1. Check if there's already an active/paused block
     const { rows: activeRows } = await client.query(
       `SELECT id FROM public.study_blocks
@@ -1561,31 +1584,31 @@ export async function activateTimeMatchingBlock(userId) {
        LIMIT 1`,
       [normalizedUid]
     );
-    
+
     if (activeRows.length > 0) {
       await client.query('COMMIT');
       return null; // A block is already active/paused, do not auto-start another
     }
-    
+
     // 2. If no explicitly active/paused block, check for time-matching planned/upcoming block
     const { dayKey, timeStr } = getISTDateTime();
     const { rows: plannedRows } = await client.query(
       `SELECT id, block_id, subject, topic, started_at, planned_minutes, status, planned_start, planned_end, day_key, syllabus_node_id as node_id
        FROM public.study_blocks
-       WHERE user_id = $1 
-         AND day_key = $2 
+       WHERE user_id = $1
+         AND day_key = $2
          AND status IN ('planned', 'upcoming')
-         AND planned_start <= $3 
+         AND planned_start <= $3
          AND planned_end >= $3
        ORDER BY planned_start ASC
        LIMIT 1`,
       [normalizedUid, dayKey, timeStr]
     );
-    
+
     if (plannedRows.length > 0) {
       const targetBlock = plannedRows[0];
       console.log(`[Current Block] Auto-activation triggered. Found planned block for user ${normalizedUid} covering time ${timeStr}: ${targetBlock.subject} (${targetBlock.block_id})`);
-      
+
       const { rows: updatedRows } = await client.query(
         `UPDATE public.study_blocks
          SET status = 'active',
@@ -1595,9 +1618,9 @@ export async function activateTimeMatchingBlock(userId) {
          RETURNING id, block_id, subject, topic, started_at, planned_minutes, status, planned_start, planned_end, day_key, syllabus_node_id as node_id`,
         [targetBlock.id]
       );
-      
+
       await client.query('COMMIT');
-      
+
       if (updatedRows.length > 0) {
         const activeBlock = updatedRows[0];
         // Log BLOCK_STARTED event for analytics/logs
@@ -1615,7 +1638,7 @@ export async function activateTimeMatchingBlock(userId) {
         } catch (e) {
           console.error('[blockLifecycle] Auto-start event log failed:', e.message);
         }
-        
+
         // Send Telegram notification
         try {
           const isTestRequest = (activeBlock.block_id && activeBlock.block_id.startsWith('volume_survival_test_block_')) || activeBlock.is_test_data === true;
@@ -1631,7 +1654,7 @@ export async function activateTimeMatchingBlock(userId) {
         } catch (e) {
           console.error('[TelegramLifecycle] Auto-start Telegram failed:', e.message);
         }
-        
+
         return activeBlock;
       }
     } else {
@@ -1678,6 +1701,90 @@ export async function attachBlockProof(userId = DEFAULT_USER, blockId, dayKey, {
 
     await client.query('COMMIT');
     return computeBlockState(updated[0]);
+  } catch (err) {
+    await client.query('ROLLBACK');
+    throw err;
+  } finally {
+    client.release();
+  }
+}
+
+export async function recoverStaleBlock(userId, blockId, dayKey, actualMinutes, resolution) {
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+
+    const { rows } = await client.query(
+      `SELECT * FROM study_blocks WHERE user_id = $1 AND block_id = $2 AND day_key = $3 FOR UPDATE`,
+      [userId, blockId, dayKey]
+    );
+    const row = rows[0];
+
+    if (!row) {
+      const err = new Error("Block not found");
+      err.code = "NOT_FOUND";
+      throw err;
+    }
+    if (row.status !== 'active' && row.status !== 'paused') {
+      const err = new Error(`Block cannot be recovered. Status is ${row.status}`);
+      err.code = "NOT_ACTIVE";
+      throw err;
+    }
+
+    const transitionAt = new Date().toISOString();
+    const staleData = detectStaleSession(row, transitionAt);
+    if (!staleData.isStale) {
+      const err = new Error("Block is not stale and cannot be recovered via this endpoint.");
+      err.code = "NOT_STALE";
+      throw err;
+    }
+
+    if (actualMinutes > staleData.thresholdMinutes) {
+      const err = new Error(`actualMinutes cannot exceed the threshold (${staleData.thresholdMinutes})`);
+      err.code = "INVALID_MINUTES";
+      throw err;
+    }
+
+    if (resolution === 'abandoned') {
+      actualMinutes = 0;
+    }
+
+    const newReason = resolution === 'abandoned' ? 'stale_session_abandoned' : 'stale_session_recovered';
+
+    const { rows: updatedRows } = await client.query(
+      `UPDATE study_blocks
+       SET status                = 'completed',
+           actual_minutes        = $1,
+           ended_at              = NOW(),
+           paused_at             = NULL,
+           completion_reason     = $2,
+           calendar_sync_status  = 'pending',
+           updated_at            = NOW()
+       WHERE id = $3
+       RETURNING *`,
+      [actualMinutes, newReason, row.id]
+    );
+
+    const recoveredRow = updatedRows[0];
+
+    // Log the recovery event
+    const { logStudyEvent } = await import('./eventService.js');
+    await logStudyEvent({
+      userId,
+      eventType: 'BLOCK_COMPLETED',
+      blockId: recoveredRow.block_id,
+      metadata: {
+        reason: 'stale_session_recovered',
+        resolution: resolution,
+        confirmedActualMinutes: actualMinutes,
+        detectedElapsedMinutes: staleData.elapsedMinutes,
+        thresholdMinutes: staleData.thresholdMinutes
+      },
+      client
+    });
+
+    await client.query('COMMIT');
+    return toFrontendBlock(updatedRows[0]);
   } catch (err) {
     await client.query('ROLLBACK');
     throw err;

@@ -1964,12 +1964,17 @@ app.post("/api/sheets", requireAuth, async (req, res) => {
       } catch (err) {
         console.error(`[sheets interceptor ${action}]`, err.message);
         const status = err.code === "RACE_CONDITION" ? 409
+                     : err.code === "STALE_ACTIVE_SESSION" ? 409
                      : err.code === "INVALID_TRANSITION" ? 422
                      : err.code === "PROOF_REQUIRED" ? 422
                      : 500;
-        return res.status(status).json({
+        const payloadOut = {
           ok: false, message: err.message, code: err.code, dbError: err.message, stack: err.stack
-        });
+        };
+        if (err.code === 'STALE_ACTIVE_SESSION' && err.staleBlock) {
+          payloadOut.staleBlock = err.staleBlock;
+        }
+        return res.status(status).json(payloadOut);
       }
     }
 
