@@ -26,10 +26,12 @@ import {
 } from '../services/blockLifecycleService.js';
 import { syncBlockToCalendar, retryFailedCalendarSyncs, probeCalendarBridge } from '../services/calendarBridgeService.js';
 import { enqueueAction } from '../services/outboxService.js';
+import { toFrontendBlock } from '../services/computeBlockState.js';
 
 import { requireAuth, getAuthUserId } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
+router.use(requireAuth);
 const DEFAULT_USER = process.env.DEFAULT_USER_ID || 'moulika';
 
 function getProofsBaseDir() {
@@ -109,17 +111,33 @@ function todayKey() {
   return new Date().toISOString().slice(0, 10);
 }
 
+export function isValidDayKey(key) {
+  if (!key || typeof key !== 'string') return false;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(key)) return false;
+  const d = new Date(key);
+  if (isNaN(d.getTime())) return false;
+  return d.toISOString().slice(0, 10) === key;
+}
+
 // ── GET /api/plan/blocks ──────────────────────────────────────────────────────
 
 router.get('/', async (req, res) => {
+  const dayKey = req.query.dayKey;
+  if (!dayKey) {
+    return res.status(400).json({ ok: false, source: 'validation_error', date: null, error: 'dayKey is required.' });
+  }
+  if (!isValidDayKey(dayKey)) {
+    return res.status(400).json({ ok: false, source: 'validation_error', date: dayKey, error: 'dayKey must use YYYY-MM-DD format and be a valid calendar date.' });
+  }
+
   try {
     const uid    = userId(req);
-    const dayKey = req.query.dayKey || todayKey();
-    const blocks = await getBlocksForDay(uid, dayKey);
-    return res.json({ ok: true, blocks, userId: uid, dayKey });
+    const rows = await getBlocksForDay(uid, dayKey);
+    const blocks = rows.map(r => toFrontendBlock(r));
+    return res.json({ ok: true, source: 'postgres', date: dayKey, blocks });
   } catch (err) {
-    console.error('[GET /api/plan/blocks]', err.message);
-    return res.status(500).json({ ok: false, message: err.message });
+    console.error('[GET /api/plan/blocks]', err);
+    return res.status(500).json({ ok: false, source: 'postgres_error', date: dayKey, error: 'Unable to load the current plan.' });
   }
 });
 

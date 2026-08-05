@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config";
+import { fetchWithAuth } from '../utils/auth.js';
 import FocusPyqSession from "../components/Prelims/FocusPyqSession";
 
 const USER_ID = "user_1";
@@ -530,7 +531,7 @@ export default function FocusPage() {
         formData.append('dayKey', todayKey);
         formData.append('proofType', proofType);
         formData.append('proofNotes', proofNotes);
-        const uploadRes = await fetch(`${BACKEND_URL}/api/plan/blocks/upload-proof?userId=${USER_ID}`, {
+        const uploadRes = await fetchWithAuth(`/api/plan/blocks/upload-proof?userId=${USER_ID}`, {
           method: 'POST',
           body: formData
         });

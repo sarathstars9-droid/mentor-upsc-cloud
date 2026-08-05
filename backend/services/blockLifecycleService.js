@@ -865,7 +865,7 @@ export async function getBlocksForDay(userId = DEFAULT_USER, dayKey) {
   const { rows } = await criticalQuery(
     `SELECT * FROM study_blocks
      WHERE user_id = $1 AND day_key = $2
-     ORDER BY planned_start ASC, created_at ASC`,
+     ORDER BY planned_start ASC, created_at ASC, id ASC`,
     [normalizedUid, dayKey]
   );
 

@@ -2,35 +2,45 @@
 // Production Authentication Middleware
 // Enforces verified user identity via req.user.id and strips unverified public headers (x-user-id) in production.
 
+import { verifyToken } from '../utils/tokenUtils.js';
+
 const DEFAULT_USER = (process.env.DEFAULT_USER_ID || 'moulika').toLowerCase().trim();
 
 export function requireAuth(req, res, next) {
   const isProd = process.env.NODE_ENV === 'production' || process.env.RAILWAY_ENVIRONMENT;
   const authHeader = req.headers?.authorization;
 
-  let verifiedUserId = null;
+  let verifiedPayload = null;
 
   if (authHeader && authHeader.startsWith('Bearer ')) {
     const token = authHeader.substring(7).trim();
     if (token && token !== 'undefined' && token !== 'null') {
-      // Decode or verify token identity. In our setup, valid tokens represent user identities
-      verifiedUserId = token.toLowerCase().trim();
+      verifiedPayload = verifyToken(token);
     }
   }
 
-  // In production, strictly reject unauthenticated requests and public x-user-id header trust
   if (isProd) {
-    if (!verifiedUserId) {
-      return res.status(401).json({
+    if (!process.env.MENTOROS_AUTH_SECRET) {
+      return res.status(503).json({
         ok: false,
-        message: 'Unauthorized: Verified authentication token (Bearer token) required in production environment.'
+        message: 'Authentication is temporarily unavailable.'
       });
     }
-    req.user = { id: verifiedUserId };
+    if (!verifiedPayload) {
+      return res.status(401).json({
+        ok: false,
+        message: 'Unauthorized: Valid signed token required.'
+      });
+    }
+    req.user = { id: verifiedPayload.sub, role: verifiedPayload.role };
   } else {
     // Development fallback
-    const fallbackId = verifiedUserId || req.headers?.['x-user-id'] || req.body?.userId || req.query?.userId || DEFAULT_USER;
-    req.user = { id: String(fallbackId).toLowerCase().trim() };
+    if (verifiedPayload) {
+      req.user = { id: verifiedPayload.sub, role: verifiedPayload.role };
+    } else {
+      const fallbackId = req.headers?.['x-user-id'] || req.body?.userId || req.query?.userId || DEFAULT_USER;
+      req.user = { id: String(fallbackId).toLowerCase().trim() };
+    }
   }
 
   next();
@@ -43,7 +53,10 @@ export function getAuthUserId(req) {
   const authHeader = req.headers?.authorization;
   if (authHeader && authHeader.startsWith('Bearer ')) {
     const token = authHeader.substring(7).trim();
-    if (token && token !== 'undefined') return token.toLowerCase().trim();
+    if (token && token !== 'undefined' && token !== 'null') {
+      const verifiedPayload = verifyToken(token);
+      if (verifiedPayload) return verifiedPayload.sub;
+    }
   }
 
   if (!isProd) {

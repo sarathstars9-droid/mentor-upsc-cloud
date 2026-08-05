@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { fetchWithAuth } from '../utils/auth.js';
 import { BACKEND_URL } from '../config';
 import '../styles/mentorosPremium.css';
 
@@ -117,7 +118,7 @@ export default function ExecutionPage() {
         formData.append('proofType', proofType);
         formData.append('proofNotes', proofNotes);
 
-        const uploadRes = await fetch(`${BACKEND_URL}/api/plan/blocks/upload-proof`, {
+        const uploadRes = await fetchWithAuth(`/api/plan/blocks/upload-proof`, {
           method: 'POST',
           body: formData
         });

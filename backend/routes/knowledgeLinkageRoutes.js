@@ -18,11 +18,14 @@ import {
 } from '../services/knowledgeLinkageService.js';
 import { getLinkageSummary } from '../repositories/knowledgeLinkageRepository.js';
 
+import { requireAuth } from '../middleware/authMiddleware.js';
+
 const router  = express.Router();
+router.use(requireAuth);
 const DEFAULT = process.env.DEFAULT_USER_ID || 'moulika';
 
 function uid(req) {
-  return req.body?.userId || req.query?.userId || DEFAULT;
+  return req.user?.id || DEFAULT;
 }
 
 // ── POST /api/knowledge/block-complete ───────────────────────────────────────

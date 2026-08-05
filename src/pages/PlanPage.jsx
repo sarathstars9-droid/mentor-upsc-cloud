@@ -11,6 +11,7 @@ import BehaviourSignalModal from "../components/Plan/BehaviourSignalModal.jsx";
 import PyqSummaryPanel from "../components/PyqSummaryPanel.jsx";
 import BlockReviewModal from "../components/Plan/BlockReviewModal.jsx";
 import { humanizeMappingCode } from "../utils/mappingUtils";
+import { fetchWithAuth } from "../utils/auth";
 import HeroSection from "../components/Plan/HeroSection.jsx";
 import SpotlightCard from "../components/Plan/SpotlightCard.jsx";
 import PlanRightRail from "../components/Plan/PlanRightRail.jsx";
@@ -132,7 +133,7 @@ function renderPyqPanel(block) {
 
 /* ---------------- Google Sheets POST (via Backend Proxy) ---------------- */
 async function post(action, payload = {}) {
-  const res = await fetch(`${BACKEND_URL}/api/sheets`, {
+  const res = await fetchWithAuth(`/api/sheets`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ action, ...payload }),
@@ -148,7 +149,7 @@ async function post(action, payload = {}) {
 }
 
 async function loadSyllabusRadar(blocks) {
-  const res = await fetch(`${BACKEND_URL}/api/syllabus-progress`, {
+  const res = await fetchWithAuth(`/api/syllabus-progress`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -179,7 +180,7 @@ async function mapTextToSyllabus(text) {
   const t = String(text || "").trim();
   if (!t) return null;
 
-  const res = await fetch(`${BACKEND_URL}/api/map-text`, {
+  const res = await fetchWithAuth(`/api/map-text`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text: t }),
@@ -200,7 +201,7 @@ async function parsePlanPhoto(file, date) {
   form.append("photo", file);
   form.append("date", date);
 
-  const res = await fetch(`${BACKEND_URL}/api/plan-photo`, {
+  const res = await fetchWithAuth(`/api/plan-photo`, {
     method: "POST",
     body: form,
     cache: "no-store",
@@ -216,7 +217,7 @@ async function parsePlanPhoto(file, date) {
 
 /* ---------------- Local Backend: Analyze Day ---------------- */
 async function analyzeDay(payload) {
-  const res = await fetch(`${BACKEND_URL}/api/analyze-day`, {
+  const res = await fetchWithAuth(`/api/analyze-day`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -233,7 +234,7 @@ async function analyzeDay(payload) {
 
 /* ---------------- Local Backend: Loop Detect ---------------- */
 async function loopDetect(payload) {
-  const res = await fetch(`${BACKEND_URL}/api/loop-detect`, {
+  const res = await fetchWithAuth(`/api/loop-detect`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -255,7 +256,7 @@ async function resolveBlock(inputText, minutes) {
   try {
     const body = { input: t };
     if (typeof minutes === "number" && minutes > 0) body.minutes = minutes;
-    const res = await fetch(`${BACKEND_URL}/api/blocks/resolve`, {
+    const res = await fetchWithAuth(`/api/blocks/resolve`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -1152,6 +1153,7 @@ export default function PlanPage() {
   const [loops, setLoops] = useState(null);
 
   const [todayBlocks, setTodayBlocks] = useState([]);
+  const [loadError, setLoadError] = useState(null);
   const todayBlocksRef = useRef([]);
   useEffect(() => { todayBlocksRef.current = todayBlocks; }, [todayBlocks]);
   // Tracks blocks that handleStartBlock has been called on, synchronously — used by the
@@ -1352,7 +1354,7 @@ export default function PlanPage() {
     (async () => {
       try {
         for (const nodeId of candidateNodeIds) {
-          const res = await fetch(`${BACKEND_URL}/api/pyq/node/${encodeURIComponent(nodeId)}`, { cache: "no-store" });
+          const res = await fetchWithAuth(`/api/pyq/node/${encodeURIComponent(nodeId)}`, { cache: "no-store" });
           const data = await res.json();
           if (ignore) return;
 
@@ -1414,15 +1416,40 @@ export default function PlanPage() {
 
   const loadBlocksForDate = useCallback(
     async (targetDate = date) => {
-
       const sequence = ++blockLoadSequenceRef.current;
+      setLoadError(null);
       try {
-        const res = await post("getBlocksForDate", { date: targetDate });
+        let pgRes = null;
+        let pgErr = null;
+        const startTime = Date.now();
+
+        try {
+          const rawPg = await fetchWithAuth(`/api/plan/blocks?dayKey=${targetDate}`);
+          pgRes = await rawPg.json();
+        } catch (err) {
+          pgErr = err.message;
+        }
 
         if (sequence !== blockLoadSequenceRef.current) return;
 
-        if (!res?.ok && !res?.blocks) {
-          console.warn("getBlocksForDate failed:", res);
+        let res = null;
+
+        if (pgRes && pgRes.ok && pgRes.blocks && pgRes.blocks.length > 0) {
+          res = pgRes;
+          console.log(JSON.stringify({ operation: 'load_plan', user_id: pgRes.userId || 'unknown', requested_date: targetDate, source: 'postgres', block_count: pgRes.blocks.length, elapsed_ms: Date.now() - startTime }));
+        } else if (pgRes && pgRes.ok && pgRes.blocks && pgRes.blocks.length === 0) {
+          res = pgRes;
+          console.log(JSON.stringify({ operation: 'load_plan', user_id: pgRes.userId || 'unknown', requested_date: targetDate, source: 'postgres', block_count: 0, elapsed_ms: Date.now() - startTime }));
+        } else {
+          // Postgres failed
+          res = { ok: false, source: 'postgres_error', error: 'Unable to load the current plan.' };
+          console.error(JSON.stringify({ operation: 'load_plan', requested_date: targetDate, source: 'postgres_error', error: pgErr || pgRes?.message }));
+        }
+
+        if (!res?.ok) {
+          console.warn("loadBlocksForDate failed:", res);
+          setTodayBlocks([]);
+          setLoadError(res?.error || "Failed to load plan blocks");
           return;
         }
 
@@ -2202,7 +2229,7 @@ export default function PlanPage() {
 
       // Phase 8: Knowledge Linkage — fetch PYQ recommendation (non-blocking)
       if (res?.block?.id) {
-        fetch(`${BACKEND_URL}/api/knowledge/block/${res.block.id}`, { cache: "no-store" })
+        fetchWithAuth(`/api/knowledge/block/${res.block.id}`, { cache: "no-store" })
           .then(r => r.json())
           .then(data => {
             if (data?.ok && data?.recommendation?.hasRecommendation) {
@@ -2443,7 +2470,7 @@ export default function PlanPage() {
 
       if (reminderBlocksToRegister.length > 0) {
         setStatus("Registering approved reminder blocks...");
-        const regRes = await fetch(`${BACKEND_URL}/api/schedule/register`, {
+        const regRes = await fetchWithAuth(`/api/schedule/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -2672,7 +2699,7 @@ export default function PlanPage() {
     if (!newNodeId) return;
     updateOcrDraftBlock(blockIndex, { nodeId: newNodeId, nodeName: newNodeId, SyllabusNodeId: newNodeId, isApproved: true });
     try {
-      const res = await fetch(`${BACKEND_URL}/api/pyq/node/${encodeURIComponent(newNodeId)}`);
+      const res = await fetchWithAuth(`/api/pyq/node/${encodeURIComponent(newNodeId)}`);
       if (res.ok) {
         const data = await res.json();
         const qs = Array.isArray(data?.questions) ? data.questions : (Array.isArray(data) ? data : []);

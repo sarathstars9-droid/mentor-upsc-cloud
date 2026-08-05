@@ -15,6 +15,7 @@ import OpenAI from "openai";
 import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
+import { requireAuth } from "./middleware/authMiddleware.js";
 import { fileURLToPath } from "url";
 import pyqRoutes from "./routes/pyqRoutes.js";
 import buildTopicTest from "./phase3a/builders/buildTopicTest.js";
@@ -574,6 +575,10 @@ function buildMappedObject(mapped, nonStudy, originalItem) {
 /* -------------------- APP INIT -------------------- */
 
 const app = express();
+
+if (process.env.RAILWAY_ENVIRONMENT) {
+  app.set("trust proxy", 1);
+}
 
 // ── CORS ──────────────────────────────────────────────────────────────────────
 const allowedOrigins = new Set([
@@ -1151,7 +1156,7 @@ app.get("/api/syllabus", (req, res) => {
   }
 });
 
-app.post("/api/loop-detect", (req, res) => {
+app.post("/api/loop-detect", requireAuth, (req, res) => {
   try {
     const out = detectLoops(req.body || {});
     return res.status(200).json(out);
@@ -1222,7 +1227,7 @@ app.get("/api/pyq/node/:nodeId", (req, res) => {
    Approval must happen on frontend before calling save/register routes.
 */
 
-app.post("/api/plan-photo", upload.single("photo"), async (req, res) => {
+app.post("/api/plan-photo", requireAuth, upload.single("photo"), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ ok: false, message: "No photo uploaded" });
@@ -1668,7 +1673,7 @@ Output ONLY the JSON object. No preamble. No trailing text.
 
 /* -------------------- TEXT → MICROTHEME MAP -------------------- */
 
-app.post("/api/map-text", upload.none(), (req, res) => {
+app.post("/api/map-text", requireAuth, upload.none(), (req, res) => {
   try {
     let text = "";
 
@@ -1700,7 +1705,7 @@ app.post("/api/map-text", upload.none(), (req, res) => {
 
 /* -------------------- ANALYZE DAY -------------------- */
 
-app.post("/api/analyze-day", (req, res) => {
+app.post("/api/analyze-day", requireAuth, (req, res) => {
   try {
     const date = String(req.body?.date || "").trim();
 
@@ -1744,7 +1749,7 @@ app.post("/api/analyze-day", (req, res) => {
 
 /* -------------------- SYLLABUS PROGRESS -------------------- */
 
-app.post("/api/syllabus-progress", (req, res) => {
+app.post("/api/syllabus-progress", requireAuth, (req, res) => {
   try {
     const { blocks = [] } = req.body || {};
     const out = computeSyllabusProgress(blocks);
@@ -1761,7 +1766,7 @@ app.post("/api/syllabus-progress", (req, res) => {
 /* -------------------- REMINDER ENGINE API -------------------- */
 /* Call this only AFTER OCR approval / manual confirmation */
 
-app.post("/api/schedule/register", (req, res) => {
+app.post("/api/schedule/register", requireAuth, (req, res) => {
   try {
     const { dayKey, userId, blocks } = req.body || {};
 
@@ -1858,7 +1863,7 @@ async function proxyToGas(payload, scriptUrl) {
   try { return JSON.parse(text); } catch { return { ok: true, raw: text }; }
 }
 
-app.post("/api/sheets", async (req, res) => {
+app.post("/api/sheets", requireAuth, async (req, res) => {
   try {
     const scriptUrl = String(process.env.SCRIPT_URL || "").trim();
     const payload   = req.body || {};
@@ -1868,7 +1873,8 @@ app.post("/api/sheets", async (req, res) => {
       return res.status(400).json({ ok: false, message: "Missing action" });
     }
 
-    const userId = payload.userId || DEFAULT_PLAN_USER;
+    const userId = req.user?.id || "moulika";
+    payload.userId = userId; // Override payload identity to ensure GAS receives the authenticated user
 
     // ── INTERCEPT: saveScheduleBlocks → PostgreSQL ───────────────────────────
     if (action === "saveScheduleBlocks") {

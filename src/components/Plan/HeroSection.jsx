@@ -21,7 +21,11 @@ export default function HeroSection({
         return s === 'completed' || s === 'done';
     }).length;
 
-    const pct = totalBlocks > 0 ? Math.round((completedBlocks / totalBlocks) * 100) : 0;
+    const totalPlannedMins = todayBlocks.reduce((sum, b) => sum + Number(b.PlannedMinutes || 0), 0);
+    const totalActualMins = todayBlocks.reduce((sum, b) => sum + Number(b.ActualMinutes || 0), 0);
+    const minLeft = Math.max(0, totalPlannedMins - totalActualMins);
+
+    const pct = totalPlannedMins > 0 ? Math.min(100, Math.round((totalActualMins / totalPlannedMins) * 100)) : 0;
 
     // Math for the SVG circle
     const radius = 32;
@@ -209,13 +213,13 @@ export default function HeroSection({
                     {totalBlocks > 0 && (
                         <>
                             <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
-                                <span style={{ color: "var(--brand-primary)" }}>⏱</span> 21 min left
+                                <span style={{ color: "var(--brand-primary)" }}>⏱</span> {totalPlannedMins > 0 ? `${minLeft} min left` : `— min left`}
                             </div>
                             <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
-                                <span style={{ color: "var(--brand-primary)" }}>○</span> 83% complete
+                                <span style={{ color: "var(--brand-primary)" }}>○</span> {totalPlannedMins > 0 ? `${pct}% time executed` : `—% time executed`}
                             </div>
                             <div style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--text-primary)", fontSize: 13, fontWeight: 500 }}>
-                                <span style={{ color: "var(--success)" }}>🛡</span> Plan status: <span style={{ color: "var(--brand-primary)" }}>Recoverable</span>
+                                <span style={{ color: "var(--success)" }}>🛡</span> Plan status: <span style={{ color: "var(--brand-primary)" }}>{totalBlocks > 0 ? 'Active' : '—'}</span>
                             </div>
 
                             <div style={{ width: 1, height: 16, background: "var(--border-default)", margin: "0 4px" }} />
@@ -230,7 +234,7 @@ export default function HeroSection({
                         padding: "4px 8px",
                         borderRadius: 6
                     }}>
-                        Prelims in <span style={{ color: "var(--warning)" }}>{dPre || 312} days</span>
+                        Prelims in <span style={{ color: "var(--warning)" }}>{dPre != null ? dPre : "—"} days</span>
                     </div>
                     <div style={{
                         color: "var(--text-secondary)",
@@ -240,7 +244,7 @@ export default function HeroSection({
                         padding: "4px 8px",
                         borderRadius: 6
                     }}>
-                        Mains in <span style={{ color: "var(--warning)" }}>{dMains || 401} days</span>
+                        Mains in <span style={{ color: "var(--warning)" }}>{dMains != null ? dMains : "—"} days</span>
                     </div>
                 </div>
             </div>
@@ -284,7 +288,7 @@ export default function HeroSection({
                         display: "flex", alignItems: "center", justifyContent: "center",
                         fontSize: 16, fontWeight: 700, color: "var(--text-primary)"
                     }}>
-                        {pct}%
+                        {Math.round((totalActualMins / (totalPlannedMins || 1)) * 100)}%
                     </div>
                 </div>
             </div>

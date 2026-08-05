@@ -1,20 +1,26 @@
 import { useState } from "react";
-import { checkPassword } from "../utils/auth";
+import { login } from "../utils/auth";
 
 export default function LoginPage({ onLogin }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    if (!password) return;
 
-    if (checkPassword(password)) {
-      setError("");
+    setIsLoading(true);
+    setError("");
+
+    const result = await login(password);
+    setIsLoading(false);
+
+    if (result.success) {
       onLogin();
-      return;
+    } else {
+      setError(result.error || "Incorrect password");
     }
-
-    setError("Incorrect password");
   }
 
   return (
@@ -39,8 +45,8 @@ export default function LoginPage({ onLogin }) {
 
           {error ? <div className="error-text">{error}</div> : null}
 
-          <button type="submit" className="primary-button full-width">
-            Enter
+          <button type="submit" className="primary-button full-width" disabled={isLoading}>
+            {isLoading ? "Authenticating..." : "Enter"}
           </button>
         </form>
       </div>
