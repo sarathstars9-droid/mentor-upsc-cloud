@@ -84,6 +84,7 @@ import pyqExplanationRoutes from "./routes/pyqExplanationRoutes.js";
 import subjectPyqRoutes from "./routes/subjectPyqRoutes.js";
 import pyqIngestionRoutes from "./routes/pyqIngestionRoutes.js";
 import planBlockRoutes from "./routes/planBlockRoutes.js";
+import mentorRoutes from "./routes/mentorRoutes.js";
 import executionRoutes from "./routes/executionRoutes.js";
 import reportRoutes from "./routes/reportRoutes.js";
 import plannerRoutes from "./routes/plannerRoutes.js";
@@ -672,6 +673,9 @@ app.use("/api/subject-pyq", subjectPyqRoutes);
 
 //  Plan block lifecycle (PostgreSQL-backed, transaction-safe) 
 app.use("/api/plan/blocks", planBlockRoutes);
+
+// Mentor AI Call MVP
+app.use("/api/mentor", mentorRoutes);
 app.use("/api/daily-execution", executionRoutes);
 
 // ── Study reports (PostgreSQL only, no Sheets / Calendar dependency) ────────
@@ -2487,7 +2491,7 @@ app.get("/api/system/db-test", rejectInProduction, async (req, res) => {
     }
 
     // 3. Public DB Connection test
-    const publicUrl = "postgresql://postgres:oTppMQKCyrtAQQDbqKFBxJFbBkvnuiPw@maglev.proxy.rlwy.net:47713/railway";
+    const publicUrl = process.env.DATABASE_URL;
     const publicOptions = [
       { name: "public-ssl-disabled", ssl: false },
       { name: "public-ssl-enabled", ssl: { rejectUnauthorized: false } }

@@ -1,27 +1,8 @@
-import 'dotenv/config';
 import test from 'node:test';
 import assert from 'node:assert';
-import { pool } from '../db/index.js';
+import { pool } from './testDbHelper.mjs';
 import { startBlock, recoverStaleBlock } from '../services/blockLifecycleService.js';
 import * as eventService from '../services/eventService.js';
-
-// SAFETY CHECK
-if (process.env.NODE_ENV !== 'test') {
-  console.error("DANGER: Integration tests must run with NODE_ENV=test");
-  process.exit(1);
-}
-
-if (!process.env.DATABASE_URL) {
-  console.error("DANGER: DATABASE_URL is required");
-  process.exit(1);
-}
-
-const dbUrl = new URL(process.env.DATABASE_URL);
-const safeHosts = ['localhost', '127.0.0.1', '::1'];
-if (!safeHosts.includes(dbUrl.hostname) || dbUrl.hostname.includes('railway') || dbUrl.hostname.includes('production')) {
-  console.error(`DANGER: DATABASE_URL hostname '${dbUrl.hostname}' is not explicitly safe. Aborting.`);
-  process.exit(1);
-}
 
 // Spy on logStudyEvent conceptually (we will prove it via call chain since ESM spy fails)
 let gasSyncCallCount = 0;

@@ -44,6 +44,7 @@ import PyqIngestionPage from "./pages/admin/PyqIngestionPage";
 import PrelimsTestPage from "./pages/PrelimsTestPage";
 import PrelimsTestAttemptPage from "./pages/PrelimsTestAttemptPage";
 import PrelimsTestResultPage from "./pages/PrelimsTestResultPage";
+import MentorCallSimulator from "./pages/MentorCallSimulator";
 import { isLoggedIn, login, logout } from "./utils/auth";
 import NotificationBanner from "./components/Notifications/NotificationBanner";
 
@@ -165,6 +166,7 @@ function AppRoutes({ onLogout }) {
         <Route path="/essay" element={<EssayPage />} />
         <Route path="/essay/pyq" element={<EssayPyqPage />} />
         <Route path="/essay/mistakes" element={<EssayMistakePage />} />
+        <Route path="/mentor-call" element={<MentorCallSimulator />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/pyq/topic" element={<PyqTopicPage />} />
         <Route path="/pyq/topic/:syllabusNodeId" element={<PyqTopicPage />} />

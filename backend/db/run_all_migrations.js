@@ -204,6 +204,7 @@ async function runAllMigrations() {
     ['044 Guardian device id',                           'migrations/044_guardian_device_id.sql'],
     ['045 Repair guardian phone usage',                  'migrations/045_repair_guardian_phone_usage.sql'],
     ['046 Study blocks friction fields',                 'migrations/046_study_blocks_friction_fields.sql'],
+    ['047 Mentor AI Sessions',                           'migrations/047_mentor_ai_sessions.sql'],
   ];
 
   // Run 001-004 via standard runner
