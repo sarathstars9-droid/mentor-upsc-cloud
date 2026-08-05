@@ -25,9 +25,17 @@ export function generateToken(payload) {
   const secret = getAuthSecret();
   if (!secret) throw new Error('Missing MENTOROS_AUTH_SECRET in production');
 
+  // Enforce required claims
+  const now = Math.floor(Date.now() / 1000);
+  const tokenPayload = {
+    ...payload,
+    iat: payload.iat || now,
+    exp: payload.exp || now + (60 * 60 * 24 * 7) // Default 7 days
+  };
+
   const header = { alg: 'HS256', typ: 'JWT' };
   const headerB64 = base64urlEncode(JSON.stringify(header));
-  const payloadB64 = base64urlEncode(JSON.stringify(payload));
+  const payloadB64 = base64urlEncode(JSON.stringify(tokenPayload));
 
   const unsignedToken = `${headerB64}.${payloadB64}`;
   const signature = crypto.createHmac('sha256', secret).update(unsignedToken).digest();
