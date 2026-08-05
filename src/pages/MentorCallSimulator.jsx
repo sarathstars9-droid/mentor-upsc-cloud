@@ -4,15 +4,16 @@ import { fetchWithAuth } from '../utils/auth';
 
 function MentorCallSimulator() {
   const navigate = useNavigate();
-  
+
   const [mentorState, setMentorState] = useState(null);
   const [session, setSession] = useState(null);
-  
+
   const [messages, setMessages] = useState([]);
   const [inputText, setInputText] = useState('');
-  
+
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -22,6 +23,12 @@ function MentorCallSimulator() {
   useEffect(() => {
     fetchState();
     initSpeechRecognition();
+    return () => {
+      stopSpeaking();
+      if (recognitionRef.current) {
+        recognitionRef.current.stop();
+      }
+    };
   }, []);
 
   const fetchState = async () => {
@@ -77,7 +84,11 @@ function MentorCallSimulator() {
       });
       if (!res.ok) throw new Error('Failed to start session');
       const data = await res.json();
-      setSession(data);
+      setSession({
+        id: data.session.id,
+        currentStage: data.session.current_stage,
+        status: data.session.status
+      });
       setMessages([data.initialMessage]);
       speakText(data.initialMessage.content);
     } catch (err) {
@@ -88,38 +99,42 @@ function MentorCallSimulator() {
   };
 
   const sendMessage = async (text) => {
-    if (!text.trim() || !session || session.status === 'completed') return;
-    
+    if (!text.trim() || !session || session.status === 'completed' || isProcessing) return;
+
     stopSpeaking();
-    
+    setIsProcessing(true);
+
     const userMsg = { role: 'user', content: text };
     setMessages(prev => [...prev, userMsg]);
     setInputText('');
 
     try {
-      const res = await fetchWithAuth(`/api/mentor/sessions/${session.sessionId}/message`, {
+      const res = await fetchWithAuth(`/api/mentor/sessions/${session.id}/message`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ content: text })
+        body: JSON.stringify({ message: text, stage: session.currentStage, requestId: crypto.randomUUID() })
       });
       if (!res.ok) throw new Error('Failed to send message');
       const data = await res.json();
-      
-      const mentorMsg = { role: 'mentor', content: data.message };
+
+      const mentorMsg = { role: 'mentor', content: data.mentorReply, source: data.source };
       setMessages(prev => [...prev, mentorMsg]);
-      setSession(prev => ({ ...prev, currentStage: data.stage }));
-      
-      speakText(data.message);
+      setSession(prev => ({ ...prev, currentStage: data.session.current_stage, status: data.session.status }));
+
+      speakText(data.mentorReply);
     } catch (err) {
       console.error(err);
+      // Fallback UI or retry handled conceptually; backend already falls back deterministically.
+    } finally {
+      setIsProcessing(false);
     }
   };
 
   const commitSession = async () => {
     try {
-      const res = await fetchWithAuth(`/api/mentor/sessions/${session.sessionId}/commit`, {
+      const res = await fetchWithAuth(`/api/mentor/sessions/${session.id}/commit`, {
         method: 'POST'
       });
       if (!res.ok) throw new Error('Failed to commit session');
@@ -185,7 +200,7 @@ function MentorCallSimulator() {
                 </ul>
               )}
             </div>
-            <button 
+            <button
               onClick={startSession}
               className="w-full bg-blue-600 text-white font-medium py-3 rounded hover:bg-blue-700 transition"
             >
@@ -197,10 +212,23 @@ function MentorCallSimulator() {
             <div className="flex-1 overflow-y-auto space-y-4 mb-4 p-4 bg-gray-50 rounded border">
               {messages.map((m, idx) => (
                 <div key={idx} className={`p-3 rounded-lg max-w-[80%] ${m.role === 'mentor' ? 'bg-white border text-gray-800 self-start' : 'bg-blue-600 text-white self-end ml-auto'}`}>
-                  <strong className="block text-xs opacity-75 mb-1">{m.role === 'mentor' ? 'Mentor' : 'You'}</strong>
+                  <div className="flex justify-between items-center mb-1">
+                    <strong className="block text-xs opacity-75">{m.role === 'mentor' ? 'Mentor' : 'You'}</strong>
+                    {m.role === 'mentor' && m.source && (
+                      <span className={`text-[10px] px-1.5 py-0.5 rounded ${m.source === 'ai' ? 'bg-blue-100 text-blue-700' : 'bg-gray-200 text-gray-600'}`}>
+                        {m.source}
+                      </span>
+                    )}
+                  </div>
                   {m.content}
                 </div>
               ))}
+              {isProcessing && (
+                <div className="p-3 rounded-lg max-w-[80%] bg-white border text-gray-800 self-start">
+                  <strong className="block text-xs opacity-75 mb-1">Mentor</strong>
+                  <span className="animate-pulse">Mentor is thinking...</span>
+                </div>
+              )}
             </div>
 
             {session.status !== 'completed' ? (
@@ -212,29 +240,30 @@ function MentorCallSimulator() {
                     onChange={(e) => setInputText(e.target.value)}
                     placeholder="Type your response..."
                     className="flex-1 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500"
-                    disabled={isListening}
+                    disabled={isListening || isProcessing}
                   />
-                  
+
                   {recognitionRef.current && (
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       onClick={toggleListening}
-                      className={`px-4 py-2 rounded font-medium transition ${isListening ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                      disabled={isProcessing}
+                      className={`px-4 py-2 rounded font-medium transition ${isListening ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'} disabled:opacity-50`}
                     >
                       {isListening ? 'Stop Listening' : 'Speak'}
                     </button>
                   )}
-                  
-                  <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded font-medium hover:bg-blue-700">Send</button>
+
+                  <button type="submit" disabled={isProcessing || !inputText.trim()} className="bg-blue-600 text-white px-6 py-2 rounded font-medium hover:bg-blue-700 disabled:opacity-50">Send</button>
                 </div>
-                
+
                 <div className="flex justify-between items-center text-sm text-gray-500">
                   {isSpeaking && (
                     <button type="button" onClick={stopSpeaking} className="text-red-500 hover:underline">
                       Stop Speaking
                     </button>
                   )}
-                  {session.currentStage >= 5 && (
+                  {['first_block_commitment', 'csat_commitment', 'confirmation'].includes(session.currentStage) && (
                     <button type="button" onClick={commitSession} className="text-blue-600 font-semibold hover:underline ml-auto">
                       Confirm Final Commitment
                     </button>
