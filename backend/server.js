@@ -17,6 +17,7 @@ import fs from "fs";
 import path from "path";
 import { requireAuth } from "./middleware/authMiddleware.js";
 import { fileURLToPath } from "url";
+import authRoutes from "./routes/authRoutes.js";
 import pyqRoutes from "./routes/pyqRoutes.js";
 import buildTopicTest from "./phase3a/builders/buildTopicTest.js";
 import {
@@ -652,6 +653,7 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 app.use("/api/prelims-rebuilt", prelimsRebuiltDatasetRoute);
 app.use("/api/prelims", prelimsAnalyticsRoute);
 app.use("/api/prelims", prelimsDashboardRoute);
+app.use("/api/auth", authRoutes);
 app.use("/api", pyqRoutes);
 app.use("/api/prelims/practice", prelimsPracticeRoute);
 app.use("/api/prelims/pyq", prelimsPyqTestRoutes);
