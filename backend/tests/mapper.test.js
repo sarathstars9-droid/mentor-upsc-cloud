@@ -99,6 +99,53 @@ test('active stale elapsed is not exposed as trusted actual study time', (t) => 
     total_pause_seconds: 0
   };
   const mapped = toFrontendBlock(dbRow);
-  // for active blocks, it calculates live elapsed
-  assert.strictEqual(mapped.ActualMinutes, 1000);
+  // stale active session age > 12 hours means wall-clock elapsed time is excluded
+  assert.strictEqual(mapped.ActualMinutes, 0);
+});
+
+import { safeExecutionPercent } from '../utils/mathUtils.js';
+import { buildMentorCommand } from '../services/mentorStateService.js';
+
+test('safeExecutionPercent helper logic', (t) => {
+  // 1. plannedMinutes = 0
+  assert.strictEqual(safeExecutionPercent(45, 0), 0);
+
+  // 2. plannedMinutes = null
+  assert.strictEqual(safeExecutionPercent(45, null), 0);
+
+  // 3. actualMinutes = 830 and plannedMinutes = 0
+  assert.strictEqual(safeExecutionPercent(830, 0), 0);
+
+  // 4. calculated percentage over 100 is capped at 100
+  assert.strictEqual(safeExecutionPercent(120, 60), 100);
+
+  // 5. negative values
+  assert.strictEqual(safeExecutionPercent(-10, 60), 0);
+  assert.strictEqual(safeExecutionPercent(45, -60), 0);
+  assert.strictEqual(safeExecutionPercent(-45, -60), 0);
+
+  // 10. valid zero actual minutes remains zero
+  assert.strictEqual(safeExecutionPercent(0, 60), 0);
+});
+
+test('invalid block and mentor command exclusion', (t) => {
+  // 6 & 7. missing subject and title, invalid block excluded from Mentor Command
+  const invalidBlock = {
+    subject: '',
+    title: '',
+    status: 'active'
+  };
+
+  const cmd = buildMentorCommand({
+    profile: {},
+    blocks: [invalidBlock],
+    pendingBlocks: [invalidBlock],
+    staleBlock: null,
+    activeBlock: invalidBlock,
+    pausedBlock: null,
+    hasPreviousDayLeakage: false
+  });
+
+  assert.strictEqual(cmd.title, 'Plan block needs correction');
+  assert.match(cmd.instruction, /missing subject or task details/);
 });

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getEffectiveBlockStatus, formatTimeOnly, getBlockEndStateIST } from "../../utils/studyEngine";
+import { getEffectiveBlockStatus, formatTimeOnly, getBlockEndStateIST, safeExecutionPercent } from "../../utils/studyEngine";
 
 export default function HeroSection({
     dPre,
@@ -288,7 +288,7 @@ export default function HeroSection({
                         display: "flex", alignItems: "center", justifyContent: "center",
                         fontSize: 16, fontWeight: 700, color: "var(--text-primary)"
                     }}>
-                        {Math.round((totalActualMins / (totalPlannedMins || 1)) * 100)}%
+                        {safeExecutionPercent(totalActualMins, totalPlannedMins)}%
                     </div>
                 </div>
             </div>

@@ -15,12 +15,19 @@ export function daysLeft(dateStr) {
   return Math.max(0, diff);
 }
 
-export function getCompletionPercent(planMin, doneMin) {
-  const p = safeNumber(planMin, 0);
-  const d = safeNumber(doneMin, 0);
+export function safeExecutionPercent(actualMinutes, plannedMinutes) {
+  const actual = Number(actualMinutes);
+  const planned = Number(plannedMinutes);
 
-  if (p <= 0) return 0;
-  return Math.max(0, Math.min(100, Math.round((d / p) * 100)));
+  if (!Number.isFinite(actual) || !Number.isFinite(planned) || planned <= 0 || actual < 0) {
+    return 0;
+  }
+
+  return Math.max(0, Math.min(100, Math.round((actual / planned) * 100)));
+}
+
+export function getCompletionPercent(planMin, doneMin) {
+  return safeExecutionPercent(doneMin, planMin);
 }
 
 export function getDailyMotivation(completionPercent) {

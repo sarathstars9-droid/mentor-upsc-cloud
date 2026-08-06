@@ -98,6 +98,34 @@ export default function SpotlightCard({
 
   const handleMarkDone = onMarkDone || (onStop ? () => onStop(currentBlock) : undefined);
 
+  const isInvalid = !rawSubject.trim() && !rawTopic.trim();
+  if (isInvalid) {
+    return (
+      <section style={{
+        background: "var(--bg-surface)",
+        border: "1px solid var(--border-default)",
+        borderRadius: 16,
+        padding: "28px 32px",
+        boxShadow: "0 2px 8px rgba(16, 24, 40, 0.04)",
+        display: "flex",
+        flexDirection: "column",
+        gap: 16
+      }}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: "rgba(239, 68, 68, 0.8)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+          ⚠️ Plan block needs correction
+        </div>
+        <div>
+          <h2 style={{ fontSize: 24, fontWeight: 800, color: "var(--text-primary)", margin: "0 0 12px 0", letterSpacing: "-0.02em" }}>
+            Missing Details
+          </h2>
+          <div style={{ fontSize: 15, color: "var(--text-secondary)", fontWeight: 500, lineHeight: 1.6 }}>
+            This plan block is missing subject or task details. Correct the plan before continuing execution.
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section style={{
       background: "var(--bg-surface)",

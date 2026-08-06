@@ -2,6 +2,13 @@ import { query } from '../db/index.js';
 import { MOULIKA_PROFILE } from './mentorProfile.js';
 import { detectStaleSession } from '../utils/staleSessionUtils.js';
 
+function isBlockInvalid(b) {
+  if (!b) return false;
+  const subj = (b.subject || b.PlannedSubject || '').trim();
+  const ttl = (b.title || b.PlannedTopic || b.topic || '').trim();
+  return !subj && !ttl;
+}
+
 export function buildMentorCommand({ profile, blocks, pendingBlocks, staleBlock, activeBlock, pausedBlock, hasPreviousDayLeakage }) {
   const csatBlock = pendingBlocks.find(b => (b.subject && b.subject.toUpperCase().includes('CSAT')) || (b.title && b.title.toUpperCase().includes('CSAT')));
   const revisionBlock = pendingBlocks.find(b => (b.subject && b.subject.toUpperCase().includes('REVISION')) || (b.title && b.title.toUpperCase().includes('REVISION')));
@@ -9,7 +16,19 @@ export function buildMentorCommand({ profile, blocks, pendingBlocks, staleBlock,
 
   let mentorCommand = null;
 
-  if (staleBlock) {
+  const invalidBlock = [staleBlock, activeBlock, pausedBlock].find(isBlockInvalid);
+
+  if (invalidBlock) {
+    mentorCommand = {
+      priority: 'high',
+      title: 'Plan block needs correction',
+      instruction: 'This plan block is missing subject or task details. Correct the plan before continuing execution.',
+      reason: 'A block without subject or task description cannot be executed or tracked reliably.',
+      evidence: ['Invalid block detected'],
+      completionProof: 'Block is updated with valid subject or title.',
+      mustNotStart: 'Any block execution.'
+    };
+  } else if (staleBlock) {
     mentorCommand = {
       priority: 'high',
       title: 'Stale Session Recovery Required',

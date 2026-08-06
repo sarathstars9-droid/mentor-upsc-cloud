@@ -4,6 +4,8 @@ import { getKolkataDateKey, getRelativeKolkataDateKey, buildCanonicalGoodMorning
 import { getPrelimsDaysLeft, getMainsDaysLeft } from '../config/examCalendar.js';
 import { getDailyTargetMinutes } from './adaptiveGoalService.js';
 import { getBlockState } from './computeBlockState.js';
+import { safeExecutionPercent } from '../utils/mathUtils.js';
+
 
 // Helper to determine Monday of the current week in Asia/Kolkata timezone
 export function getMondayOfCurrentWeek() {
@@ -960,7 +962,7 @@ export async function getWeeklyExecutionSummary(userId, startDayKey = null, endD
   // Deficit = mission weekly target - what was executed this week
   const deficit = weeklyMissionTarget - thisWeekCompleted;
   
-  const executionRate = thisWeekPlanned > 0 ? (thisWeekCompleted / thisWeekPlanned) * 100 : 0;
+  const executionRate = safeExecutionPercent(thisWeekCompleted, thisWeekPlanned);
 
   const sortedByPace = [...subjects].sort((a, b) => b.this_week_completed - a.this_week_completed);
   const strongSubjects = sortedByPace.slice(0, 3).filter(s => s.this_week_completed > 0).map(s => s.subject);
@@ -1106,7 +1108,7 @@ export async function getMonthlyMentorSummary(userId) {
   const totalCompletedHours = Number(blocksRes.rows[0]?.completed_mins || 0) / 60.0;
   const missionCompletedPercent = totalTargetHours > 0 ? (totalCompletedHours / totalTargetHours) * 100 : 0;
   
-  const executionRate = report.total_planned_hours > 0 ? (report.total_actual_hours / report.total_planned_hours) * 100 : 0;
+  const executionRate = safeExecutionPercent(report.total_actual_hours * 60, report.total_planned_hours * 60);
   
   // Strong subjects: sorted by actual hours executed (only those with > 0 actual hours)
   const sortedSubjects = [...report.subject_breakdown].sort((a, b) => b.hours - a.hours);

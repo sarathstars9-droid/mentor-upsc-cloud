@@ -1,5 +1,6 @@
 import { query } from '../db/index.js';
 import { getStreak } from '../repositories/reportRepository.js';
+import { safeExecutionPercent } from '../utils/mathUtils.js';
 
 // Derived actual seconds expression to calculate actual study hours consistently
 const ACTUAL_SECONDS_EXPR = `
@@ -123,7 +124,7 @@ export async function getReportsDashboardData(userId = 'moulika', range = 'week'
   const plannedBlocks = sAgg.total_blocks || 0;
   const completedBlocks = sAgg.completed_blocks || 0;
   const missedBlocks = sAgg.missed_blocks || 0;
-  const executionRate = plannedBlocks > 0 ? Math.round((completedBlocks / plannedBlocks) * 100) : 0;
+  const executionRate = safeExecutionPercent(completedBlocks, plannedBlocks);
   const totalPlannedHours = Math.round(((sAgg.total_planned_minutes || 0) / 60) * 10) / 10;
   const totalCompletedHours = Math.round(((sAgg.total_actual_seconds || 0) / 3600) * 10) / 10;
 

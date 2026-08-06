@@ -1,5 +1,6 @@
 import express from 'express';
 import { query } from '../db/index.js';
+import { safeExecutionPercent } from '../utils/mathUtils.js';
 
 const router = express.Router();
 
@@ -153,7 +154,7 @@ function calculateDailySummary(signals) {
     }
   }
 
-  const executionRate = plannedMinutes > 0 ? Math.round((completedMinutes / plannedMinutes) * 100) : 0;
+  const executionRate = safeExecutionPercent(completedMinutes, plannedMinutes);
 
   let strongestSubject = null;
   let maxAvg = 0;

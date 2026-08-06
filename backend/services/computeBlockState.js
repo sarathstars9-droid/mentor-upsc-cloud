@@ -19,22 +19,27 @@ export function computeBlockState(block) {
 
   if (startMs) {
     switch (block.status) {
-      case 'active':
-        // Live: elapsed since start minus all accumulated pauses.
-        // total_pause_seconds only contains *completed* pauses (each resume folds one in).
-        actualSeconds = Math.max(0, Math.floor((now - startMs) / 1000) - totalPauseSec);
+      case 'active': {
+        const staleRes = detectStaleSession(block, new Date().toISOString());
+        if (staleRes.isStale) {
+          actualSeconds = 0;
+        } else {
+          actualSeconds = Math.max(0, Math.floor((now - startMs) / 1000) - totalPauseSec);
+        }
         pauseSeconds  = totalPauseSec;
         break;
+      }
 
-      case 'paused':
-        // Timer frozen at the instant the latest pause began.
-        // Current pause duration is NOT yet in total_pause_seconds (it will be on resume).
-        if (pauseMs) {
+      case 'paused': {
+        const staleRes = detectStaleSession(block, new Date().toISOString());
+        if (staleRes.isStale) {
+          actualSeconds = 0;
+        } else if (pauseMs) {
           actualSeconds = Math.max(0, Math.floor((pauseMs - startMs) / 1000) - totalPauseSec);
-          // pauseSeconds includes current ongoing pause for display
           pauseSeconds  = totalPauseSec + Math.max(0, Math.floor((now - pauseMs) / 1000));
         }
         break;
+      }
 
       default:
         // completed / partial / missed / skipped

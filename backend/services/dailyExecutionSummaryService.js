@@ -1,5 +1,6 @@
 import { query } from '../db/index.js';
 import { getBlockState, formatSubjectTopic } from './computeBlockState.js';
+import { safeExecutionPercent } from '../utils/mathUtils.js';
 
 /**
  * Single source-of-truth for daily execution progress calculation.
@@ -145,7 +146,7 @@ export async function getDailyExecutionSummary(userId, dayKey) {
     });
   }
 
-  const executionRate = plannedMinutesTotal > 0 ? (studiedMinutesTotal / plannedMinutesTotal) * 100 : 0;
+  const executionRate = safeExecutionPercent(studiedMinutesTotal, plannedMinutesTotal);
 
   return {
     userId,
