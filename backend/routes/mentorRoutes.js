@@ -107,9 +107,10 @@ router.post('/sessions/:sessionId/message', async (req, res) => {
         );
 
         const meta = latestMentor[0]?.metadata || {};
-        return {
+         return {
           mentorReply: latestMentor[0]?.content || '',
           source: meta.source || 'ai',
+          metadata: process.env.NODE_ENV !== 'production' ? meta : undefined,
           session: { id: session.id, current_stage: session.current_stage, status: session.status }
         };
       }
@@ -175,6 +176,7 @@ router.post('/sessions/:sessionId/message', async (req, res) => {
       return {
         mentorReply: reply.message,
         source: reply.source,
+        metadata: process.env.NODE_ENV !== 'production' ? modelMeta : undefined,
         session: {
           id: session.id,
           current_stage: session.current_stage,

@@ -118,7 +118,7 @@ test('Mentor Session Integration', async (t) => {
     const res = await fetch(`${baseUrl}/sessions/${sessionId}/message`, {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${validToken}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: 'I feel energetic', stage: 'energy', requestId: reqId })
+      body: JSON.stringify({ message: 'I feel high energy', stage: 'energy', requestId: reqId })
     });
     assert.strictEqual(res.status, 200);
     const body = await res.json();
@@ -127,7 +127,7 @@ test('Mentor Session Integration', async (t) => {
 
     const sessionRes = await fetch(`${baseUrl}/sessions/${sessionId}`, { headers: { 'Authorization': `Bearer ${validToken}` } });
     const sessionBody = await sessionRes.json();
-    assert.strictEqual(sessionBody.session.energy_level, 'I feel energetic');
+    assert.strictEqual(sessionBody.session.energy_level, 'high');
   });
 
   await t.test('Duplicate requestId creates no duplicate mentor reply', async () => {

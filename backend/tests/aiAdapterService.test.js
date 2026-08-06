@@ -24,7 +24,7 @@ test('AI Adapter Unit Tests', async (t) => {
       mentorState: mockState,
       conversationHistory: [],
       currentStage: 'energy',
-      userMessage: 'I feel energetic'
+      userMessage: 'I feel high energy'
     });
     assert.strictEqual(res.source, 'deterministic');
     assert.strictEqual(res.nextStage, 'available_hours');
@@ -41,7 +41,7 @@ test('AI Adapter Unit Tests', async (t) => {
       mentorState: mockState,
       conversationHistory: [],
       currentStage: 'energy',
-      userMessage: 'I feel energetic'
+      userMessage: 'I feel high energy'
     });
     assert.strictEqual(res.source, 'deterministic');
     assert.strictEqual(fetchCalled, false);
@@ -63,7 +63,7 @@ test('AI Adapter Unit Tests', async (t) => {
       mentorState: mockState,
       conversationHistory: [],
       currentStage: 'energy',
-      userMessage: 'I feel energetic'
+      userMessage: 'I feel high energy'
     });
     assert.strictEqual(res.source, 'deterministic');
     assert.strictEqual(res.modelMetadata.fallbackReason, 'error');
@@ -82,7 +82,7 @@ test('AI Adapter Unit Tests', async (t) => {
       mentorState: mockState,
       conversationHistory: [],
       currentStage: 'energy',
-      userMessage: 'I feel energetic'
+      userMessage: 'I feel high energy'
     });
     assert.strictEqual(res.source, 'deterministic');
   });
@@ -100,7 +100,7 @@ test('AI Adapter Unit Tests', async (t) => {
       mentorState: mockState,
       conversationHistory: [],
       currentStage: 'energy',
-      userMessage: 'I feel energetic'
+      userMessage: 'I feel high energy'
     });
     assert.strictEqual(res.source, 'deterministic');
   });
@@ -121,7 +121,7 @@ test('AI Adapter Unit Tests', async (t) => {
       mentorState: mockState,
       conversationHistory: [],
       currentStage: 'energy',
-      userMessage: 'I feel energetic'
+      userMessage: 'I feel high energy'
     });
     assert.strictEqual(res.source, 'deterministic');
   });
@@ -145,7 +145,7 @@ test('AI Adapter Unit Tests', async (t) => {
       mentorState: mockState,
       conversationHistory: [],
       currentStage: 'energy',
-      userMessage: 'I feel energetic'
+      userMessage: 'I feel high energy'
     });
     assert.strictEqual(res.source, 'ai');
     assert.strictEqual(res.nextStage, 'available_hours');
@@ -170,7 +170,7 @@ test('AI Adapter Unit Tests', async (t) => {
       mentorState: mockState,
       conversationHistory: new Array(20).fill({ role: 'user', content: 'test' }), // Exceeds history
       currentStage: 'energy',
-      userMessage: 'B'.repeat(1000) // Exceeds 500 chars
+      userMessage: 'high ' + 'B'.repeat(1000) // Exceeds 500 chars but satisfies energy validation
     });
 
     assert.strictEqual(res.source, 'ai');
@@ -181,5 +181,70 @@ test('AI Adapter Unit Tests', async (t) => {
     assert.strictEqual(receivedPayload.messages.length, 12);
     // Reply capped to 1000
     assert.strictEqual(res.message.length, 1000);
+  });
+
+  await t.test('Validation and stage safeguards logic', async () => {
+    // 1 & 2. “hi” and “hello” do not satisfy energy
+    const resHi = await generateMentorReply({
+      profile: MOULIKA_PROFILE,
+      mentorState: mockState,
+      conversationHistory: [],
+      currentStage: 'energy',
+      userMessage: 'hi'
+    });
+    assert.strictEqual(resHi.nextStage, 'energy');
+    assert.strictEqual(resHi.message, 'Please choose your present energy level: low, medium, or high.');
+
+    const resHello = await generateMentorReply({
+      profile: MOULIKA_PROFILE,
+      mentorState: mockState,
+      conversationHistory: [],
+      currentStage: 'energy',
+      userMessage: 'hello'
+    });
+    assert.strictEqual(resHello.nextStage, 'energy');
+
+    // 3. “My energy is medium today” stores medium
+    const resMedium = await generateMentorReply({
+      profile: MOULIKA_PROFILE,
+      mentorState: mockState,
+      conversationHistory: [],
+      currentStage: 'energy',
+      userMessage: 'My energy is medium today'
+    });
+    assert.strictEqual(resMedium.nextStage, 'available_hours');
+    assert.strictEqual(resMedium.extracted.energy_level, 'medium');
+
+    // 5. “hello” does not satisfy available hours
+    const resHoursHello = await generateMentorReply({
+      profile: MOULIKA_PROFILE,
+      mentorState: mockState,
+      conversationHistory: [],
+      currentStage: 'available_hours',
+      userMessage: 'hello'
+    });
+    assert.strictEqual(resHoursHello.nextStage, 'available_hours');
+    assert.strictEqual(resHoursHello.message, 'Please tell me how many focused study hours you can realistically give today.');
+
+    // 6. “6 hours” stores 6 and advances legally
+    const resHours6 = await generateMentorReply({
+      profile: MOULIKA_PROFILE,
+      mentorState: mockState,
+      conversationHistory: [],
+      currentStage: 'available_hours',
+      userMessage: '6 hours'
+    });
+    assert.strictEqual(resHours6.nextStage, 'mentor_command');
+    assert.strictEqual(resHours6.extracted.available_hours, '6');
+
+    // 8. values above the accepted maximum are rejected (>16 hours)
+    const resHours18 = await generateMentorReply({
+      profile: MOULIKA_PROFILE,
+      mentorState: mockState,
+      conversationHistory: [],
+      currentStage: 'available_hours',
+      userMessage: '18 hours'
+    });
+    assert.strictEqual(resHours18.nextStage, 'available_hours');
   });
 });

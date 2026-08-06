@@ -1,5 +1,28 @@
 import { MOULIKA_PROFILE } from './mentorProfile.js';
 
+export function normalizeEnergy(text) {
+  if (!text || typeof text !== 'string') return null;
+  const lower = text.toLowerCase().trim();
+  if (/\blow\b/.test(lower)) return 'low';
+  if (/\bmedium\b/.test(lower)) return 'medium';
+  if (/\bhigh\b/.test(lower)) return 'high';
+  return null;
+}
+
+export function parseAvailableHours(text) {
+  if (!text || typeof text !== 'string') return null;
+  const lower = text.toLowerCase().trim();
+  if (/\b(yes|hello|medium|low|high|ok|okay)\b/.test(lower)) return null;
+
+  const match = lower.match(/(\d+(\.\d+)?)/);
+  if (!match) return null;
+  const val = parseFloat(match[1]);
+  if (Number.isFinite(val) && val > 0 && val <= 16) {
+    return val;
+  }
+  return null;
+}
+
 // Configuration constants
 const MAX_USER_MESSAGE_LENGTH = 500;
 const MAX_HISTORY_MESSAGES = 10;
@@ -10,6 +33,35 @@ export async function generateMentorReply({ profile, mentorState, conversationHi
   const provider = process.env.MENTOR_AI_PROVIDER || 'deterministic';
   const apiKey = process.env.MENTOR_AI_API_KEY;
   const model = process.env.MENTOR_AI_MODEL || (provider === 'gemini' ? 'gemini-1.5-pro' : 'gpt-4o');
+
+  // Input validation stage safeguards
+  if (currentStage === 'energy') {
+    const normEnergy = normalizeEnergy(userMessage);
+    if (!normEnergy) {
+      return {
+        message: "Please choose your present energy level: low, medium, or high.",
+        nextStage: 'energy',
+        extracted: {},
+        source: 'deterministic',
+        safetyFlags: [],
+        modelMetadata: { provider, fallbackReason: 'invalid_energy_input' }
+      };
+    }
+  }
+
+  if (currentStage === 'available_hours') {
+    const hours = parseAvailableHours(userMessage);
+    if (hours === null) {
+      return {
+        message: "Please tell me how many focused study hours you can realistically give today.",
+        nextStage: 'available_hours',
+        extracted: {},
+        source: 'deterministic',
+        safetyFlags: [],
+        modelMetadata: { provider, fallbackReason: 'invalid_hours_input' }
+      };
+    }
+  }
 
   // Truncate user message
   const safeUserMessage = userMessage.substring(0, MAX_USER_MESSAGE_LENGTH);
@@ -80,12 +132,14 @@ function generateDeterministicReply(currentStage, userMessage, mentorState) {
       nextStage = 'energy';
       break;
     case 'energy':
-      extracted.energy_level = userMessage;
+      const normEnergy = normalizeEnergy(userMessage);
+      extracted.energy_level = normEnergy;
       message = `Understood. Now, how many hours do you realistically have available to study today?`;
       nextStage = 'available_hours';
       break;
     case 'available_hours':
-      extracted.available_hours = userMessage;
+      const hours = parseAvailableHours(userMessage);
+      extracted.available_hours = String(hours);
       nextStage = 'mentor_command';
       const command = mentorState?.mentorCommand || { title: 'plan', instruction: 'Do it.', reason: 'Important.' };
       message = `I see. Here is your priority right now: ${command.title}. ${command.instruction} ${command.reason} Are you ready to proceed?`;
@@ -207,8 +261,14 @@ function validateAndFormatOutput(parsedJson, currentStage, userMessage, mentorSt
   let dbExtracted = {};
   if (parsedJson.extractedData) {
     const ext = parsedJson.extractedData;
-    if (ext.energyLevel && ext.energyLevel !== 'null') dbExtracted.energy_level = ext.energyLevel;
-    if (ext.availableHours && ext.availableHours !== 'null') dbExtracted.available_hours = ext.availableHours;
+    if (ext.energyLevel && ext.energyLevel !== 'null') {
+      const norm = normalizeEnergy(ext.energyLevel);
+      if (norm) dbExtracted.energy_level = norm;
+    }
+    if (ext.availableHours && ext.availableHours !== 'null') {
+      const parsed = parseAvailableHours(String(ext.availableHours));
+      if (parsed !== null) dbExtracted.available_hours = String(parsed);
+    }
     if (ext.obstacle && ext.obstacle !== 'null') dbExtracted.obstacle = ext.obstacle;
     if (ext.firstBlockCommitment && ext.firstBlockCommitment !== 'null') dbExtracted.first_block_commitment = ext.firstBlockCommitment;
     if (ext.intendedStartTime && ext.intendedStartTime !== 'null') dbExtracted.intended_start_time = ext.intendedStartTime;

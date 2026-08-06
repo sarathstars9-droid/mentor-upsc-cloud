@@ -119,7 +119,12 @@ function MentorCallSimulator() {
       if (!res.ok) throw new Error('Failed to send message');
       const data = await res.json();
 
-      const mentorMsg = { role: 'mentor', content: data.mentorReply, source: data.source };
+      const mentorMsg = {
+        role: 'mentor',
+        content: data.mentorReply,
+        source: data.source,
+        fallbackReason: data.metadata?.fallbackReason
+      };
       setMessages(prev => [...prev, mentorMsg]);
       setSession(prev => ({ ...prev, currentStage: data.session.current_stage, status: data.session.status }));
 
@@ -209,18 +214,25 @@ function MentorCallSimulator() {
           </div>
         ) : (
           <div className="flex flex-col h-[60vh]">
-            <div className="flex-1 overflow-y-auto space-y-4 mb-4 p-4 bg-gray-50 rounded border">
+            <div className="flex-1 overflow-y-auto flex flex-col gap-4 mb-4 p-4 bg-gray-50 rounded border">
               {messages.map((m, idx) => (
-                <div key={idx} className={`p-3 rounded-lg max-w-[80%] ${m.role === 'mentor' ? 'bg-white border text-gray-800 self-start' : 'bg-blue-600 text-white self-end ml-auto'}`}>
-                  <div className="flex justify-between items-center mb-1">
+                <div key={idx} className={`p-3 rounded-lg max-w-[80%] ${m.role === 'mentor' ? 'bg-white border text-gray-800 self-start' : 'bg-blue-600 text-white self-end ml-auto'}`} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', gap: 12 }}>
                     <strong className="block text-xs opacity-75">{m.role === 'mentor' ? 'Mentor' : 'You'}</strong>
                     {m.role === 'mentor' && m.source && (
-                      <span className={`text-[10px] px-1.5 py-0.5 rounded ${m.source === 'ai' ? 'bg-blue-100 text-blue-700' : 'bg-gray-200 text-gray-600'}`}>
-                        {m.source}
+                      <span className={`text-[10px] px-2 py-0.5 rounded font-semibold ${m.source === 'ai' ? 'bg-blue-100 text-blue-700' : 'bg-orange-100 text-orange-850'}`}>
+                        {m.source === 'ai' ? 'AI' : 'Safety fallback'}
                       </span>
                     )}
                   </div>
-                  {m.content}
+                  <div style={{ fontSize: 14, lineHeight: 1.5 }}>
+                    {m.content}
+                  </div>
+                  {m.role === 'mentor' && m.source === 'deterministic' && m.fallbackReason && (
+                    <div style={{ fontSize: 10, color: 'var(--text-secondary)', opacity: 0.6, marginTop: 2, fontStyle: 'italic' }}>
+                      Diagnostic: fallback reason = {m.fallbackReason}
+                    </div>
+                  )}
                 </div>
               ))}
               {isProcessing && (
