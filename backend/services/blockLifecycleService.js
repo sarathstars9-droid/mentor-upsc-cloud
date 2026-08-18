@@ -314,6 +314,14 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
       );
     }
 
+    // Cancel pending zero-study and first-block-not-started notifications
+    await client.query(
+      `DELETE FROM public.notification_events
+       WHERE user_id = $1
+         AND notification_type IN ('PLAN_NOT_STARTED', 'PLAN_UPLOADED_NOT_STARTED', 'CURRENT_BLOCK_NOT_STARTED', 'NO_PLAN_STRICT_9AM', 'RECOVERY_PLAN_12PM', 'HIGH_RISK_INTERVENTION_3PM', 'EMERGENCY_NON_ZERO_6PM')`,
+      [userId]
+    ).catch(e => console.error('[startBlock] Failed to delete pending notifications on block start:', e.message));
+
     await client.query('COMMIT');
     // Invalidate suggestions cache only after successful commit.
     try {
@@ -1264,6 +1272,15 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
         client
       });
     }
+
+    // Cancel / Invalidate pending no-plan and recovery-plan notification jobs for that user and date
+    await client.query(
+      `DELETE FROM public.notification_events
+       WHERE user_id = $1
+         AND day_key = $2
+         AND notification_type IN ('PLAN_NOT_UPLOADED', 'NO_PLAN_STRICT_9AM', 'RECOVERY_PLAN_12PM', 'HIGH_RISK_INTERVENTION_3PM', 'EMERGENCY_NON_ZERO_6PM')`,
+      [userId, date]
+    ).catch(e => console.error('[savePlanBlocksAndLogEvents] Failed to delete pending no-plan notifications:', e.message));
 
     for (const b of items) {
       if (!b.blockId) continue;

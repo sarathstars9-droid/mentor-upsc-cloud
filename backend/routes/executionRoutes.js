@@ -1,5 +1,6 @@
 import express from "express";
 import { query } from "../db/index.js";
+import { fetchPyqsForTopic } from "../services/pyqTopicService.js";
 
 const router = express.Router();
 
@@ -197,6 +198,26 @@ router.get("/command-center", async (req, res) => {
       lastAnswerWritten: lastAnswer ? lastAnswer.created_at : null,
       riskLevel
     };
+
+    if (nowTask && (nowTask.topic_id || nowTask.node_id)) {
+      try {
+        const pyqData = fetchPyqsForTopic(nowTask.topic_id || nowTask.node_id);
+        if (pyqData && pyqData.questions && pyqData.questions.length > 0) {
+          nowTask.pyqIntelligence = {
+            count: pyqData.questions.length,
+            lastAskedYear: pyqData.lastAskedYear,
+            topicId: pyqData.nodeId,
+            questionsPreview: pyqData.questions.slice(0, 2).map(q => ({
+              year: q.year,
+              text: q.questionText || q.text,
+              marks: q.marks || 10
+            }))
+          };
+        }
+      } catch (err) {
+        console.error("Failed to load PYQ intelligence for nowTask", err);
+      }
+    }
 
     return res.json({
       ok: true,

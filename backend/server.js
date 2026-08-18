@@ -54,6 +54,7 @@ import mainsThemeRoutes from "./routes/mainsThemeRoutes.js";
 import mainsReviewRoutes from "./routes/mainsReviewRoutes.js";
 import mainsRoutes from "./routes/mainsRoutes.js";
 import mainsIntelligenceRoutes from "./routes/mainsIntelligenceRoutes.js";
+import mainsKnowledgeReviewRoutes from "./routes/mainsKnowledgeReviewRoutes.js";
 import testGeminiRoute from "./routes/testGemini.js";
 import evaluateAnswerRoute from "./routes/evaluateAnswerRoute.js";
 import answerWritingRoutes from "./routes/answerWritingRoutes.js";
@@ -244,7 +245,7 @@ function normalizeOcrTopic(topic = "", subject = "") {
 }
 
 function todayISODate() {
-  return new Date().toISOString().slice(0, 10);
+  return new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
 }
 
 function safeNum(n, fallback = 0) {
@@ -285,39 +286,81 @@ function toMinutes(hhmm) {
   return Number(m[1]) * 60 + Number(m[2]);
 }
 
-function diffMinutes(start, end) {
-  const s = toMinutes(start);
-  const e = toMinutes(end);
-  if (s == null || e == null) return null;
-  let d = e - s;
-  if (d < 0) d += 24 * 60;
-  return d;
+function formatMinutes(m) {
+  if (m === null) return "";
+  let d = Math.round(m) % 1440;
+  if (d < 0) d += 1440;
+  const hh = Math.floor(d / 60);
+  const mm = d % 60;
+  return `${String(hh).padStart(2, "0")}:${String(mm).padStart(2, "0")}`;
 }
 
-// infer PM blocks if time goes backwards later in the same day
-function inferHalfDay(items) {
-  let last = null;
+// robust chronological sequence validator
+function inferCorrectTimeSequence(items) {
+  let lastMin = null;
   return items.map((it) => {
     let st = normTime(it.startTime);
     let en = normTime(it.endTime);
 
-    const sMin = toMinutes(st);
-    if (sMin != null && last != null) {
-      if (sMin + 60 < last && sMin < 12 * 60) {
-        const hh = Number(st.slice(0, 2)) + 12;
-        if (hh <= 23) st = `${String(hh).padStart(2, "0")}:${st.slice(3)}`;
+    let sMin = toMinutes(st);
+    let eMin = toMinutes(en);
 
-        if (en) {
-          const eh = Number(en.slice(0, 2)) + 12;
-          if (eh <= 23) en = `${String(eh).padStart(2, "0")}:${en.slice(3)}`;
+    // Rule 1: Attempt to convert AM to PM if it strictly enforces chronological progression
+    if (sMin !== null && lastMin !== null) {
+      if (sMin + 60 < lastMin && sMin < 12 * 60) {
+         sMin += 12 * 60;
+      }
+    }
+    
+    if (eMin !== null && sMin !== null) {
+      if (eMin < sMin && eMin < 12 * 60) {
+         eMin += 12 * 60;
+      }
+    }
+
+    // Rule 2: Validation of logical sequence
+    let needsConfirmation = false;
+    let diff = null;
+    if (sMin !== null && eMin !== null) {
+      diff = eMin - sMin;
+      if (diff < 0) diff += 1440; // overnight?
+      
+      // If it's a ridiculous duration (> 8 hrs) or starting way before previous block
+      if (diff > 480 || diff < 0 || (lastMin !== null && sMin < lastMin - 120)) {
+        if (it.minutes && it.minutes > 0 && it.minutes <= 360) {
+          // Attempt to anchor using explicit duration if provided by OCR
+          if (eMin !== null && eMin >= (lastMin || 0)) {
+            sMin = eMin - it.minutes;
+            if (sMin < 0) sMin += 1440;
+            needsConfirmation = false;
+          } else if (sMin !== null && sMin >= (lastMin || 0)) {
+            eMin = sMin + it.minutes;
+            needsConfirmation = false;
+          } else {
+             needsConfirmation = true;
+          }
+        } else {
+          needsConfirmation = true;
         }
       }
     }
 
-    const newSMin = toMinutes(st);
-    if (newSMin != null) last = newSMin;
+    if (!it.minutes && sMin !== null && eMin !== null) {
+       it.minutes = eMin - sMin;
+       if (it.minutes < 0) it.minutes += 1440;
+    }
 
-    return { ...it, startTime: st, endTime: en };
+    // Format back
+    st = formatMinutes(sMin) || st;
+    en = formatMinutes(eMin) || en;
+
+    if (eMin !== null) {
+      lastMin = eMin;
+    } else if (sMin !== null && it.minutes) {
+      lastMin = sMin + it.minutes;
+    }
+
+    return { ...it, startTime: st, endTime: en, needsTimeConfirmation: needsConfirmation };
   });
 }
 
@@ -660,6 +703,8 @@ app.use("/api/prelims/pyq", prelimsPyqTestRoutes);
 app.use("/api/blocks", blockResolveRoute);        // isolated block classification — no PYQ/CSAT side-effects
 
 // ── Mistake, Revision & Weakness routes ──────────────────────────────────────
+app.use("/api/mains-intelligence", mainsIntelligenceRoutes);
+app.use("/api/mains/knowledge/review", mainsKnowledgeReviewRoutes);
 app.use("/api/mistakes", mistakeRoutes);
 app.use("/api/test-gemini", testGeminiRoute);
 app.use("/api/evaluate-answer", evaluateAnswerRoute);
@@ -1268,6 +1313,9 @@ JSON schema (respond with exactly this structure):
       "endTime": "HH:MM",
       "subject": "string",
       "topic": "string",
+      "activity": "string",
+      "targetValue": number or null,
+      "targetUnit": "string",
       "minutes": number
     }
   ],
@@ -1280,7 +1328,10 @@ RULES:
    - startTime: "HH:MM" (24-hour) or "" if not visible
    - endTime: "HH:MM" (24-hour) or "" if not visible
    - subject: short subject label
-   - topic: specific topic text
+   - topic: specific topic text (do not include activity here)
+   - activity: e.g. "PYQ_ANSWER_WRITING", "READING", "REVISION", "MOCK_TEST". If unknown, use "STUDY".
+   - targetValue: number of items targeted (e.g., 5 for "5 PYQs") or null if not applicable.
+   - targetUnit: e.g. "PYQs", "Chapters", "Pages", or "" if not applicable.
    - minutes: integer minutes
 3) If minutes not explicitly written, compute:
    minutes = difference between endTime and startTime (if both exist).
@@ -1310,9 +1361,12 @@ Output ONLY the JSON object. No preamble. No trailing text.
               endTime: { type: "string" },
               subject: { type: "string" },
               topic: { type: "string" },
+              activity: { type: "string" },
+              targetValue: { type: ["number", "null"] },
+              targetUnit: { type: "string" },
               minutes: { type: "number" },
             },
-            required: ["startTime", "endTime", "subject", "topic", "minutes"],
+            required: ["startTime", "endTime", "subject", "topic", "activity", "minutes"],
           },
         },
         totalMinutes: { type: "number" },
@@ -1441,21 +1495,23 @@ Output ONLY the JSON object. No preamble. No trailing text.
       }
 
       return {
-        startTime: normTime(it.startTime),
-        endTime: normTime(it.endTime),
+        startTime: it.startTime || "",
+        endTime: it.endTime || "",
         subject,
         topic,
+        activity: it.activity || "",
+        targetValue: it.targetValue !== undefined ? it.targetValue : null,
+        targetUnit: it.targetUnit || "",
         minutes: Number(it.minutes || 0),
       };
     });
 
-    items = inferHalfDay(items);
+    items = inferCorrectTimeSequence(items);
 
     items = items.map((it) => {
       let mins = safeNum(it.minutes, 0);
-      if ((!mins || mins <= 0) && it.startTime && it.endTime) {
-        const d = diffMinutes(it.startTime, it.endTime);
-        if (d != null) mins = d;
+      if (!mins || mins <= 0) {
+         mins = 120;
       }
       return { ...it, minutes: Math.max(0, Math.round(mins)) };
     });
@@ -1611,21 +1667,30 @@ Output ONLY the JSON object. No preamble. No trailing text.
         });
       }
 
+      const targetStr = (item.targetValue && item.targetUnit) ? `${item.targetValue} ${item.targetUnit}` : "";
+      
       return {
         ...item,
-        subject: item.subject && item.subject !== "Unknown" ? item.subject : (mappingResult.subjectName || "Unknown"), // Preserve text recognized by OCR, fallback to resolved
+        // Override OCR extraction with canonical mapping to preserve hierarchy: Subject -> Topic
+        subject: (mappingResult.subjectName && mappingResult.subjectName !== "Unknown" && mappingResult.subjectName !== "Unmapped") 
+          ? mappingResult.subjectName 
+          : (item.subject || "Unknown"),
+        topic: (resolvedNodeId && mappingResult.nodeName && mappingResult.nodeName !== "Unmapped") 
+          ? mappingResult.nodeName 
+          : (item.topic || ""),
         finalMapping,
         subjectCandidates: mappingResult.subjectCandidates,
         topicCandidates: mappingResult.topicCandidates,
         textQuality: mappingResult.textQuality,
         confidenceBadge: mappingResult.confidenceBadge,
         linkedPyqs,
-        // Phase 2A fields
-        mode: itemMode,
-        outputExpected: itemOutputExpected,
+        // Phase 2A fields: Map OCR activity to mode, OCR target to outputExpected
+        mode: item.activity || itemMode,
+        outputExpected: targetStr || itemOutputExpected,
         rawText,
         subtopic: mappingResult.nodeName !== "Unmapped" ? mappingResult.nodeName : "",
-        syllabusNodeId: resolvedNodeId
+        syllabusNodeId: resolvedNodeId,
+        needsTimeConfirmation: item.needsTimeConfirmation || false
       };
     });
 
@@ -1911,7 +1976,7 @@ app.post("/api/sheets", requireAuth, async (req, res) => {
     if (LIFECYCLE_ACTIONS.has(action)) {
       const p = payload.payload || {};   // frontend wraps args in payload.payload
       const blockId = p.blockId;
-      const dayKey  = p.dayKey || (payload.date ? String(payload.date).slice(0, 10) : new Date().toISOString().slice(0, 10));
+      const dayKey  = p.dayKey || (payload.date ? String(payload.date).slice(0, 10) : new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' }));
 
       if (!blockId) {
         return res.status(400).json({ ok: false, message: "Missing blockId" });
@@ -1990,7 +2055,7 @@ app.post("/api/sheets", requireAuth, async (req, res) => {
         return res.status(500).json({ ok: false, message: "Missing SCRIPT_URL in backend .env" });
       }
       const gasResult = await proxyToGas(payload, scriptUrl);
-      const dayKey = String(payload.date || new Date().toISOString().slice(0, 10)).slice(0, 10);
+      const dayKey = String(payload.date || new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })).slice(0, 10);
 
       if (Array.isArray(gasResult?.blocks) && gasResult.blocks.length) {
         try {
@@ -2651,7 +2716,6 @@ app.listen(PORT, HOST, () => {
       startTelegramPolling().catch(err => {
         console.error("[BOOT] startTelegramPolling error:", err);
       });
-      // Scheduler runs independently of polling
       initNotificationScheduler('moulika');
     })
     .catch(err => {
@@ -2659,3 +2723,4 @@ app.listen(PORT, HOST, () => {
     });
 });
 
+export default app;

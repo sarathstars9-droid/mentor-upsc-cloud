@@ -243,10 +243,37 @@ export default function ExecutionPage() {
                 </p>
                 
                 {data.nowTask && data.nowTask.subject && (
-                  <div style={{ marginTop: '16px', display: 'flex', gap: '12px', alignItems: 'center' }}>
-                    <span className="premium-badge premium-badge-neutral">
-                      Target: {data.nowTask.subject || data.nowTask.title}
-                    </span>
+                  <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                      <span className="premium-badge premium-badge-neutral">
+                        Target: {data.nowTask.subject || data.nowTask.title}
+                      </span>
+                    </div>
+                    {data.nowTask.pyqIntelligence && (
+                      <div style={{ background: 'rgba(56, 189, 248, 0.05)', border: '1px solid rgba(56, 189, 248, 0.15)', borderRadius: '12px', padding: '16px', marginTop: '8px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+                          <div style={{ fontSize: '13px', fontWeight: '700', color: '#38bdf8' }}>
+                            PYQ Intelligence: {data.nowTask.pyqIntelligence.count} relevant questions
+                          </div>
+                          {data.nowTask.pyqIntelligence.lastAskedYear && (
+                            <div style={{ fontSize: '12px', color: '#7F8897' }}>
+                              Last asked in {data.nowTask.pyqIntelligence.lastAskedYear}
+                            </div>
+                          )}
+                        </div>
+                        {data.nowTask.pyqIntelligence.questionsPreview.map((q, i) => (
+                          <div key={i} style={{ fontSize: '13px', color: '#B8C0CC', marginBottom: '8px', paddingLeft: '12px', borderLeft: '2px solid rgba(56, 189, 248, 0.3)' }}>
+                            <span style={{ color: '#F5F7FB', fontWeight: '600' }}>[{q.year}]</span> {q.text} <span style={{ color: '#7F8897' }}>({q.marks}m)</span>
+                          </div>
+                        ))}
+                        <button 
+                          onClick={() => navigate(`/pyq/topic/${data.nowTask.pyqIntelligence.topicId}`)}
+                          className="premium-text-link" 
+                          style={{ fontSize: '13px', color: '#38bdf8', marginTop: '4px', cursor: 'pointer', background: 'transparent', border: 'none', padding: 0 }}>
+                          View all PYQs →
+                        </button>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
