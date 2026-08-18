@@ -31,6 +31,7 @@ export function getNodesBySubject(subjectId) {
     if (normSubj === "CULTURE" || normSubj === "GS1-CUL") return code.startsWith("GS1-CUL");
     if (normSubj === "ENVIRONMENT" || normSubj === "GS3-ENV") return code.startsWith("GS3-ENV");
     if (normSubj.startsWith("CSAT")) return code.startsWith("CSAT");
+    if (normSubj === "OPT-GEO") return code.startsWith("OPT-P1") || code.startsWith("OPT-P2");
     
     // Fallback exact match or general startsWith
     if (code.startsWith(normSubj)) return true;
@@ -96,6 +97,7 @@ export function validateSubjectNodeMatch(subjectId, nodeId) {
   if (normSubj.includes("ENVIRONMENT") || normSubj === "GS3-ENV") return code.startsWith("GS3-ENV");
   if (normSubj.includes("CULTURE") || normSubj === "GS1-CUL") return code.startsWith("GS1-CUL");
   if (normSubj.includes("CSAT") || normSubj === "CSAT") return code.startsWith("CSAT");
+  if (normSubj.includes("OPT-GEO") || normSubj === "OPT-GEO") return code.startsWith("OPT-P1") || code.startsWith("OPT-P2");
 
   return code.startsWith(normSubj);
 }

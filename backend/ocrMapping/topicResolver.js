@@ -198,13 +198,11 @@ export function resolveTopic(cleanedText, lockedSubjectId, ctx = {}) {
 
   /* ---------- AMBIGUITY LOGIC ---------- */
 
-  const isAmbiguous =
-    confidenceScore < 0.50 ||
-    (confidenceScore < 0.80 && gap < 0.15);
+  const isAmbiguous = confidenceScore < 0.25;
 
   const confidenceBadge = isAmbiguous
     ? "LOW"
-    : confidenceScore >= 0.85 && gap >= 0.15
+    : confidenceScore >= 0.70
       ? "HIGH"
       : "MEDIUM";
 

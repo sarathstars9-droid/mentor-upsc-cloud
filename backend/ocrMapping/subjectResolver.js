@@ -477,6 +477,26 @@ const SUBJECT_DICT = [
       "paper 2",
     ],
   },
+  {
+    id: "OPT-GEO",
+    name: "Geography Optional",
+    exact: [
+      "geography optional",
+      "geography opt",
+      "geo optional",
+      "optional geography",
+    ],
+    keywords: [
+      "geomorphology",
+      "climatology",
+      "oceanography",
+      "biogeography",
+      "human geography",
+      "population geography",
+      "settlement geography",
+      "regional planning",
+    ],
+  },
 ];
 
 function normalizeText(text = "") {

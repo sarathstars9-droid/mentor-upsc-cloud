@@ -112,8 +112,11 @@ async function runTests() {
 
   // 2. 3 AM Upload Ownership
   console.log("\n--- 2. 3 AM IST Plan Upload Ownership ---");
+  console.log("Goal: Ensure 03:00 IST maps to the same calendar date without a 5 AM rollover.");
   const utc3amLocal = new Date("2026-08-17T21:30:00Z"); // 3 AM IST Aug 18
   const dayKey3am = getKolkataDateKey(utc3amLocal);
+  console.log(`3 AM IST Time: ${utc3amLocal.toISOString()}`);
+  console.log(`Resolved Day Key: ${dayKey3am}`);
   assert(dayKey3am === "2026-08-18", `3 AM IST belongs to Aug 18 (Got ${dayKey3am})`);
 
 
