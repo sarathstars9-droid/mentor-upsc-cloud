@@ -8,9 +8,9 @@ const router = express.Router();
 
 router.post("/attempts/bulk", async (req, res) => {
     try {
-        const { userId = "user_1", testId, attempts = [] } = req.body || {};
+        const { userId = "user_1", testId, attempts = [], skipCanonicalLedger = false } = req.body || {};
 
-        const saved = await recordPyqAttempts({ userId, testId, attempts });
+        const saved = await recordPyqAttempts({ userId, testId, attempts, skipCanonicalLedger });
 
         res.json({
             success: true,

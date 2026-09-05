@@ -28,9 +28,27 @@ revision_flag BOOLEAN DEFAULT FALSE,
 is_important BOOLEAN DEFAULT FALSE,
 is_weak BOOLEAN DEFAULT FALSE,
 is_read BOOLEAN DEFAULT FALSE,
+review_status TEXT,
+reviewed_at TIMESTAMPTZ,
 created_at TIMESTAMPTZ DEFAULT NOW(),
 updated_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_constraint
+    WHERE conname = 'mistakes_review_status_check'
+  ) THEN
+    ALTER TABLE mistakes
+      ADD CONSTRAINT mistakes_review_status_check
+      CHECK (
+        review_status IS NULL
+        OR review_status IN ('new', 'reviewed', 'retest_due')
+      );
+  END IF;
+END $$;
 
 -- REVISION ITEMS
 CREATE TABLE IF NOT EXISTS revision_items (
@@ -85,6 +103,34 @@ source TEXT DEFAULT 'chatgpt',
 created_at TIMESTAMPTZ DEFAULT NOW(),
 updated_at TIMESTAMPTZ DEFAULT NOW(),
 UNIQUE (user_id, question_id)
+);
+
+-- PRELIMS QUESTION ATTEMPT LEDGER
+CREATE TABLE IF NOT EXISTS prelims_question_attempts (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+user_id TEXT NOT NULL,
+attempt_id TEXT NOT NULL,
+question_id TEXT NOT NULL,
+selected_answer TEXT,
+correct_answer TEXT,
+answer_status TEXT NOT NULL CHECK (answer_status IN ('correct', 'wrong', 'unattempted')),
+source_type TEXT NOT NULL,
+source_ref TEXT,
+stage TEXT NOT NULL DEFAULT 'prelims' CHECK (stage = 'prelims'),
+paper TEXT,
+subject TEXT,
+topic TEXT,
+node_id TEXT,
+question_text TEXT,
+error_type TEXT,
+evidence_quality TEXT NOT NULL DEFAULT 'verified' CHECK (evidence_quality IN ('verified', 'legacy_uncertain')),
+is_legacy_backfill BOOLEAN NOT NULL DEFAULT FALSE,
+history_complete BOOLEAN NOT NULL DEFAULT TRUE,
+is_retest BOOLEAN NOT NULL DEFAULT FALSE,
+attempted_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+created_at TIMESTAMPTZ DEFAULT NOW(),
+updated_at TIMESTAMPTZ DEFAULT NOW(),
+UNIQUE (user_id, attempt_id, question_id, source_type)
 );
 
 -- ── Plan block lifecycle ─────────────────────────────────────────────────────
@@ -215,6 +261,13 @@ CREATE INDEX IF NOT EXISTS idx_mains_node ON mains_answers(node_id);
 
 CREATE INDEX IF NOT EXISTS idx_pyq_explanations_user ON pyq_explanations(user_id);
 CREATE INDEX IF NOT EXISTS idx_pyq_explanations_question ON pyq_explanations(question_id);
+
+CREATE INDEX IF NOT EXISTS idx_pqa_user_question_attempted
+  ON prelims_question_attempts(user_id, question_id, attempted_at DESC);
+CREATE INDEX IF NOT EXISTS idx_pqa_user_source
+  ON prelims_question_attempts(user_id, source_type, source_ref);
+CREATE INDEX IF NOT EXISTS idx_pqa_user_retest
+  ON prelims_question_attempts(user_id, is_retest, attempted_at DESC);
 
 -- ── Planner suggestion log (adaptive decay) ────────────────────────────────────
 -- See full migration in backend/db/migrations/003_planner_suggestions_log.sql

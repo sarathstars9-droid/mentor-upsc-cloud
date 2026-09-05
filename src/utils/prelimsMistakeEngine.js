@@ -50,9 +50,10 @@ function uid() {
 }
 
 function normalizeStatus(status) {
-    if (status === "correct" || status === "wrong" || status === "unattempted") {
-        return status;
-    }
+    const normalized = String(status || "").trim().toLowerCase();
+    if (normalized === "correct") return "correct";
+    if (normalized === "wrong" || normalized === "incorrect") return "wrong";
+    if (normalized === "unattempted" || normalized === "skipped") return "unattempted";
     return "wrong";
 }
 
@@ -130,7 +131,7 @@ async function apiCreateMistake(payload) {
 }
 
 async function apiFetchMistakes() {
-    const res = await fetch(`${API_BASE}?userId=${encodeURIComponent(DEFAULT_USER_ID)}`);
+    const res = await fetch(`${API_BASE}?userId=${encodeURIComponent(DEFAULT_USER_ID)}&stage=prelims`);
     const text = await res.text();
 
     try {
@@ -142,6 +143,31 @@ async function apiFetchMistakes() {
     } catch (err) {
         throw new Error(`Failed to fetch mistakes: ${err.message}`);
     }
+}
+
+async function apiRecordAttemptLedger(items) {
+    if (!Array.isArray(items) || !items.length) return { count: 0, items: [] };
+
+    const res = await fetch(`${API_BASE}/attempts/bulk`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items }),
+    });
+
+    const text = await res.text();
+    let data = {};
+
+    try {
+        data = text ? JSON.parse(text) : {};
+    } catch {
+        throw new Error(`Attempt ledger sync failed: non-JSON response (${res.status})`);
+    }
+
+    if (!res.ok || data?.success === false) {
+        throw new Error(data?.error || `Attempt ledger sync failed with status ${res.status}`);
+    }
+
+    return data;
 }
 
 async function refreshMistakeCache() {
@@ -187,20 +213,20 @@ export async function addMistakes(newMistakes = []) {
     if (!candidates.length) return [];
 
     const payload = candidates.map((m) => ({
-        user_id: DEFAULT_USER_ID,
-        source_type: m.sourceType || m.source_type || "prelims_pyq",
-        source_ref: m.testId || m.source_ref || null,
-        question_id: m.questionId || m.question_id || null,
+        userId: m.userId || m.user_id || DEFAULT_USER_ID,
+        sourceType: m.sourceType || m.source_type || "prelims_pyq",
+        testId: m.testId || m.source_ref || null,
+        questionId: m.questionId || m.question_id,
         stage: m.stage || "prelims",
         subject: m.subject || null,
-        node_id: m.nodeId || m.node_id || null,
-        question_text: m.questionText || m.question_text || "",
-        selected_answer: m.latestUserAnswer || m.selected_answer || null,
-        correct_answer: m.correctAnswer || m.correct_answer || null,
-        answer_status: normalizeStatus(m.latestResult || m.answer_status || "wrong"),
-        error_type: m.mistakeType || m.error_type || "conceptual_error",
+        nodeId: m.nodeId || m.node_id || null,
+        questionText: m.questionText || m.question_text || "",
+        latestUserAnswer: m.latestUserAnswer ?? m.selected_answer ?? null,
+        correctAnswer: m.correctAnswer ?? m.correct_answer ?? null,
+        latestResult: normalizeStatus(m.latestResult || m.answer_status || "wrong"),
+        mistakeType: m.mistakeType || m.errorType || m.error_type || "conceptual_error",
         notes: m.notes || "",
-        must_revise: Boolean(m.must_revise ?? true),
+        mustRevise: Boolean(m.mustRevise ?? m.must_revise ?? true),
     }));
 
     try {
@@ -249,6 +275,37 @@ export async function recordTestAttempt(testContext, evaluatedQuestions, resultS
         return status === "wrong" || status === "unattempted";
     });
 
+    const ledgerItems = evaluatedQuestions
+        .filter((q) => q.questionId || q.id)
+        .map((q) => {
+            const answerStatus = normalizeStatus(q.status);
+            return {
+                userId: DEFAULT_USER_ID,
+                attemptId,
+                sourceType: sourceType || "prelims_pyq",
+                sourceRef: testId || null,
+                questionId: q.questionId || q.id,
+                stage: "prelims",
+                paper,
+                year: year ? String(year) : null,
+                subject: subject || q.subject || null,
+                topic: topic || q.topic || null,
+                nodeId: q.syllabusNodeId || q.nodeId || null,
+                questionText: q.questionText || q.question || "",
+                selectedAnswer: q.latestUserAnswer ?? q.userAnswer ?? null,
+                correctAnswer: q.correctAnswer || q.answer || null,
+                answerStatus,
+                errorType:
+                    q.mistakeType ||
+                    (answerStatus !== "correct"
+                        ? classifyMistakeType(answerStatus, q.confidence || "not_sure")
+                        : null),
+                isRetest: String(sourceType || "").includes("retest") ||
+                    String(testContext?.mode || "").startsWith("retry"),
+                attemptedAt: new Date().toISOString(),
+            };
+        });
+
     const itemsToSync = mistakeQuestions.map(q => ({
         sourceType,
         testId,
@@ -266,6 +323,12 @@ export async function recordTestAttempt(testContext, evaluatedQuestions, resultS
         mistakeType: classifyMistakeType(normalizeStatus(q.status), q.confidence || "not_sure"),
     }));
 
+    try {
+        await apiRecordAttemptLedger(ledgerItems);
+    } catch (err) {
+        console.error("[recordTestAttempt] attempt ledger sync failed", err);
+    }
+
     await addMistakes(itemsToSync);
     return attemptId;
 }
@@ -276,7 +339,7 @@ export async function recordTestAttempt(testContext, evaluatedQuestions, resultS
 
 export async function getAllMistakes() {
     try {
-        const res = await fetch(`${API_BASE}?userId=${encodeURIComponent(DEFAULT_USER_ID)}`);
+        const res = await fetch(`${API_BASE}?userId=${encodeURIComponent(DEFAULT_USER_ID)}&stage=prelims`);
         return await res.json();
     } catch (err) {
         console.error("Failed to fetch mistakes");

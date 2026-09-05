@@ -6,8 +6,9 @@ import {
 import { getQuestionsByNodeId } from "../brain/nodeIdTopicEngine.js";
 import { loadAllPrelimsQuestions } from "../loaders/prelimsUnifiedLoader.js";
 import { upsertNodeWeakness } from "../repositories/adaptiveWeaknessRepository.js";
+import { recordPrelimsQuestionAttempts } from "./prelimsAttemptLedgerService.js";
 
-export async function recordPyqAttempts({ userId, testId, attempts }) {
+export async function recordPyqAttempts({ userId, testId, attempts, skipCanonicalLedger = false }) {
     const saved = [];
     const updatedNodes = new Set();
 
@@ -38,6 +39,35 @@ export async function recordPyqAttempts({ userId, testId, attempts }) {
         // Track unique nodes for batch weakness update
         updatedNodes.add(a.nodeId);
         saved.push(row);
+    }
+
+    if (!skipCanonicalLedger) {
+        try {
+            const ledgerAttemptId = `${testId || "pyq_intelligence"}:${Date.now()}`;
+            await recordPrelimsQuestionAttempts((attempts || []).map((a) => ({
+                userId,
+                attemptId: a.attemptId || ledgerAttemptId,
+                questionId: a.questionId,
+                selectedAnswer: a.selectedAnswer,
+                correctAnswer: a.correctAnswer,
+                answerStatus: a.isCorrect === true
+                    ? "correct"
+                    : a.selectedAnswer
+                        ? "wrong"
+                        : "unattempted",
+                sourceType: a.sourceType || "pyq_practice",
+                sourceRef: testId || null,
+                stage: "prelims",
+                paper: a.paper || null,
+                subject: a.subjectId || null,
+                topic: a.topic || null,
+                nodeId: a.nodeId || null,
+                isRetest: Boolean(a.isRetest || String(a.sourceType || "").includes("retest")),
+                attemptedAt: a.attemptedAt || new Date().toISOString(),
+            })));
+        } catch (err) {
+            console.warn("[pyq-intelligence] attempt ledger sync failed:", err.message);
+        }
     }
 
     // ── Adaptive Intelligence: update node_weakness for each affected node ──

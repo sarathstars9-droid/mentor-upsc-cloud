@@ -57,6 +57,10 @@ export async function getMistakes(userId, stage = null) {
     return await repo.listMistakes(userId, stage);
 }
 
+export async function getMistakeById(id) {
+    return await repo.findMistakeById(id);
+}
+
 export async function patchMistake(id, changes) {
     return await repo.updateMistake(id, changes);
 }

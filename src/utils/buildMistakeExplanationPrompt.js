@@ -1,18 +1,14 @@
+import {
+    getMistakeDiagnosisLabel,
+    getMistakeSourceLabel,
+    normalizeMistakeDiagnosis,
+} from "./mistakeBookNormalization.js";
+
 /**
  * buildMistakeExplanationPrompt.js
  * Generates a strong, prelims-focused ChatGPT explanation prompt
  * from a unified mistake object (PYQ or Institutional).
  */
-
-/**
- * Normalize sourceType to a display label.
- */
-function sourceLabel(sourceType) {
-    if (!sourceType) return "PYQ";
-    const s = String(sourceType).toLowerCase();
-    if (s === "institutional") return "Institutional Test";
-    return "PYQ";
-}
 
 /**
  * Format options object/array into a clean A/B/C/D string.
@@ -64,10 +60,13 @@ export function buildMistakeExplanationPrompt(mistake) {
         subject,
         topic,
         year,
+        errorType,
+        error_type,
     } = mistake;
 
-    const source = sourceLabel(sourceType);
+    const source = getMistakeSourceLabel(sourceType);
     const paperDisplay = paperType || paper || "GS";
+    const diagnosis = getMistakeDiagnosisLabel(normalizeMistakeDiagnosis(errorType || error_type));
 
     const rawAnswer = latestUserAnswer !== undefined ? latestUserAnswer : userAnswer;
     const isUnattempted =
@@ -94,6 +93,7 @@ export function buildMistakeExplanationPrompt(mistake) {
 Analyze the following question like a top UPSC mentor and teach me how to solve it correctly in the exam.
 
 Source: ${source} (${paperDisplay})${contextLine ? `\nContext: ${contextLine}` : ""}
+Current Mistake Diagnosis: ${diagnosis}
 
 ---
 

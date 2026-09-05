@@ -1963,6 +1963,7 @@ export default function PrelimsPage() {
             questionIds: questions.map((q) => q?.id || q?.questionId).filter(Boolean),
             questions,
             answers: answersMap,
+            skipCanonicalLedger: true,
           };
           const submitResp = await fetch(`${BACKEND_URL}/api/prelims/practice/submit`, {
             method: "POST",
@@ -2040,6 +2041,7 @@ export default function PrelimsPage() {
           body: JSON.stringify({
             userId: "user_1",
             testId,
+            skipCanonicalLedger: true,
             attempts: questions.map((q) => {
               const selectedAnswer = answersMap[q.id];
               const correctAnswer = q.correctAnswer || q.answer;

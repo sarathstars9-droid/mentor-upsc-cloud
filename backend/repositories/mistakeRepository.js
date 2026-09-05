@@ -95,19 +95,21 @@ export async function findMistakeByUserAndQuestion(userId, questionId) {
     return result.rows[0] || null;
 }
 
+export async function findMistakeById(id) {
+    const result = await query(
+        `SELECT * FROM mistakes WHERE id = $1 LIMIT 1`,
+        [id]
+    );
+
+    return result.rows[0] || null;
+}
+
 export async function updateMistake(id, changes) {
     const allowed = {
-        source_type: changes.source_type,
-        source_ref: changes.source_ref,
-        stage: changes.stage,
-        subject: changes.subject,
-        node_id: changes.node_id,
-        question_text: changes.question_text,
         selected_answer: changes.selected_answer,
         correct_answer: changes.correct_answer,
         answer_status: changes.answer_status,
         error_type: changes.error_type,
-        notes: changes.notes,
         must_revise:
             typeof changes.must_revise === "boolean"
                 ? changes.must_revise
@@ -116,25 +118,9 @@ export async function updateMistake(id, changes) {
             typeof changes.revision_flag === "boolean"
                 ? changes.revision_flag
                 : undefined,
-        is_important:
-            typeof changes.is_important === "boolean"
-                ? changes.is_important
-                : undefined,
-        is_weak:
-            typeof changes.is_weak === "boolean"
-                ? changes.is_weak
-                : undefined,
-        is_read:
-            typeof changes.is_read === "boolean"
-                ? changes.is_read
-                : undefined,
         status: changes.status,
-        severity: changes.severity,
-        attempt_id: changes.attempt_id,
-        paper: changes.paper,
-        topic: changes.topic,
-        mistake_type: changes.mistake_type,
-        mistake_text: changes.mistake_text,
+        review_status: changes.review_status,
+        reviewed_at: changes.reviewed_at,
     };
 
     const entries = Object.entries(allowed).filter(([, value]) => value !== undefined);

@@ -59,6 +59,43 @@ export async function syncToMistakeBook(test, evaluationResult) {
     }
 }
 
+export async function syncToAttemptLedger(test, evaluationResult) {
+    const items = (evaluationResult.questionResults || []).map((q) => ({
+        userId: "user_1",
+        attemptId: test.id,
+        sourceType: "institutional",
+        sourceRef: test.id,
+        questionId: mistakeQid(test.id, q.questionNumber),
+        stage: "prelims",
+        paper: q.paperType || test.paperType || "GS",
+        subject: q.subjectBucket || null,
+        topic: test.title || null,
+        nodeId: null,
+        questionText: q.questionText || "",
+        selectedAnswer: q.userAnswer || null,
+        correctAnswer: q.correctAnswer || null,
+        answerStatus: q.result,
+        errorType: q.result === "unattempted" ? "knowledge_gap" : "unclassified",
+        isRetest: false,
+        attemptedAt: evaluationResult.evaluatedAt || new Date().toISOString(),
+    }));
+
+    if (!items.length) return { added: 0, skipped: 0 };
+
+    try {
+        const res = await fetch(`${BACKEND_URL}/api/mistakes/attempts/bulk`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ items }),
+        });
+        const data = await res.json();
+        return { added: data.count || 0, skipped: 0 };
+    } catch (err) {
+        console.error("Failed to sync institutional attempt ledger", err);
+        return { added: 0, skipped: items.length };
+    }
+}
+
 export async function syncToRevisionQueue(test, evaluationResult) {
     // Handled automatically by backend hook during Mistake Book bulk-sync
     return { added: 0, skipped: 0 };

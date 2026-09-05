@@ -17,6 +17,7 @@ import {
 } from "../repositories/prelimsTestRepository.js";
 import { upsertMistake } from "../repositories/mistakeRepository.js";
 import { upsertNodeWeakness } from "../repositories/adaptiveWeaknessRepository.js";
+import { recordPrelimsQuestionAttempts } from "./prelimsAttemptLedgerService.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
@@ -322,6 +323,30 @@ export async function submitAttempt(attemptId, userId, rawResponses) {
 
   // Bulk-update all responses in DB
   await bulkUpdateResponses(attemptId, userId, evaluated);
+
+  try {
+    await recordPrelimsQuestionAttempts(evaluated.map((r) => ({
+      userId,
+      attemptId,
+      questionId: r.question_id,
+      selectedAnswer: r.selected_answer,
+      correctAnswer: r.correct_answer,
+      answerStatus: r.is_skipped ? "unattempted" : r.is_correct ? "correct" : "wrong",
+      sourceType: attempt.mode === "year" ? "full_length_pyq"
+        : attempt.mode === "topic" ? "topic_test"
+          : "sectional_test",
+      sourceRef: attemptId,
+      paper: attempt.paper,
+      subject: r.question?.subject || null,
+      topic: r.question?.topic || attempt.title || null,
+      nodeId: r.question?.syllabusNodeId || r.question?.nodeId || attempt.node_id || null,
+      questionText: r.question?.question || null,
+      isRetest: false,
+      attemptedAt: new Date().toISOString(),
+    })));
+  } catch (err) {
+    console.warn(`[PrelimTest] attempt ledger sync failed for attempt ${attemptId}:`, err.message);
+  }
 
   // Compute summary -- exclude questions with missing source answers from scoring
   const scorable  = evaluated.filter(r => !r.skippedDueToMissingAnswer);

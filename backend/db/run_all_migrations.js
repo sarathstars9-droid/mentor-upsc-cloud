@@ -206,6 +206,11 @@ async function runAllMigrations() {
     ['046 Study blocks friction fields',                 'migrations/046_study_blocks_friction_fields.sql'],
     ['047 Mentor AI Sessions',                           'migrations/047_mentor_ai_sessions.sql'],
     ['048 Mentor Messages Metadata',                     'migrations/048_mentor_messages_metadata.sql'],
+    ['049 Mains knowledge items',                        'migrations/049_mains_knowledge_items.sql'],
+    ['050 Mains eval RAG metadata',                      'migrations/050_mains_eval_rag_metadata.sql'],
+    ['051 Prelims mistake review lifecycle',             'migrations/051_prelims_mistake_review_lifecycle.sql'],
+    ['052 Prelims question attempt ledger',              'migrations/052_prelims_question_attempt_ledger.sql'],
+    ['053 Prelims attempt evidence integrity',           'migrations/053_prelims_attempt_evidence_integrity.sql'],
   ];
 
   // Run 001-004 via standard runner

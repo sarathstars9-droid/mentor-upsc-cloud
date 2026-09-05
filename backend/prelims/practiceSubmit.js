@@ -5,6 +5,7 @@
 import { createAttempt, updateProgress } from "./topicProgressStore.js";
 import { computeUpscScore } from "./scoringEngine.js";
 import { loadAllQuestionsForNodeId } from "./practiceBuilder.js";
+import { recordPrelimsQuestionAttempts } from "../services/prelimsAttemptLedgerService.js";
 
 // ─── Answer normalization ─────────────────────────────────────────────────────
 
@@ -152,6 +153,42 @@ export default async function practiceSubmitHandler(req, res) {
             negativeMarks,
             totalQuestionsInPool,
         });
+
+        if (!body.skipCanonicalLedger) {
+            try {
+                await recordPrelimsQuestionAttempts(questions.map((q) => {
+                    const qid = q?.id || q?.questionId;
+                    const selectedAnswer = normalizeAnswer(answersMap?.[qid] || "");
+                    const correctAnswer = normalizeAnswer(q?.answer || q?.correctAnswer || "");
+                    const answerStatus = correctIds.includes(qid)
+                        ? "correct"
+                        : wrongIds.includes(qid)
+                            ? "wrong"
+                            : "unattempted";
+
+                    return {
+                        userId,
+                        attemptId: attempt.attemptId,
+                        questionId: qid,
+                        selectedAnswer,
+                        correctAnswer,
+                        answerStatus,
+                        sourceType: mode && mode.startsWith("retry") ? "topic_retest" : "topic_test",
+                        sourceRef: topicNodeId,
+                        stage,
+                        paper: paperType,
+                        subject: q?.subject || null,
+                        topic: topicNodeId,
+                        nodeId: q?.syllabusNodeId || q?.nodeId || topicNodeId,
+                        questionText: q?.questionText || q?.question || "",
+                        isRetest: mode && mode.startsWith("retry"),
+                        attemptedAt: attempt.submittedAt,
+                    };
+                }));
+            } catch (e) {
+                console.error("[practiceSubmitHandler] attempt ledger sync failed:", e.message);
+            }
+        }
 
         // ── Step 5b: Log Study Event ───────────────────────────────────────────
         try {

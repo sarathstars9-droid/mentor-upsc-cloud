@@ -17,6 +17,7 @@ import {
 import { parseInstitutionalQuestionPaper } from "../utils/parseInstitutionalQuestionPaper";
 import {
     previewSync,
+    syncToAttemptLedger,
     syncToMistakeBook,
     syncToRevisionQueue,
 } from "../utils/prelimsInstitutionalSyncEngine";
@@ -463,18 +464,26 @@ export default function PrelimsInstitutionalTestsPage() {
         setPreviewModal({ test, evaluationResult: ev, syncTarget });
     }
 
-    function handleConfirmSync() {
+    async function handleConfirmSync() {
         if (!previewModal) return;
         const { test, evaluationResult, syncTarget } = previewModal;
         let result;
 
         if (syncTarget === "mistakes") {
-            result = syncToMistakeBook(test, evaluationResult);
+            const [mistakeResult, ledgerResult] = await Promise.all([
+                syncToMistakeBook(test, evaluationResult),
+                syncToAttemptLedger(test, evaluationResult),
+            ]);
+            result = {
+                added: mistakeResult.added || 0,
+                skipped: mistakeResult.skipped || 0,
+                ledgerAdded: ledgerResult.added || 0,
+            };
             const updated = markMistakeBookSynced(test.id);
             setStagedTests(updated);
-            setSyncMsg((p) => ({ ...p, [test.id]: `✓ Mistake Book: ${result.added} added, ${result.skipped} already present` }));
+            setSyncMsg((p) => ({ ...p, [test.id]: `✓ Mistake Book: ${result.added} added, ${result.ledgerAdded} attempt rows saved` }));
         } else {
-            result = syncToRevisionQueue(test, evaluationResult);
+            result = await syncToRevisionQueue(test, evaluationResult);
             const updated = markRevisionSynced(test.id);
             setStagedTests(updated);
             setSyncMsg((p) => ({ ...p, [test.id]: `✓ Revision Queue: ${result.added} added, ${result.skipped} already present` }));
