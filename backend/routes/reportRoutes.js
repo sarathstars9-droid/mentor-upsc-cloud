@@ -17,7 +17,7 @@ function uid(req) {
 // ── GET /api/reports/daily ────────────────────────────────────────────────────
 
 router.get('/daily', async (req, res) => {
-  const date = req.query.date || new Date().toISOString().slice(0, 10);
+  const date = req.query.date || new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
 
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
     return res.status(400).json({ ok: false, message: 'date must be YYYY-MM-DD' });
@@ -35,7 +35,7 @@ router.get('/daily', async (req, res) => {
 // ── GET /api/reports/weekly ───────────────────────────────────────────────────
 
 router.get('/weekly', async (req, res) => {
-  const endDate = req.query.endDate || new Date().toISOString().slice(0, 10);
+  const endDate = req.query.endDate || new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
 
   if (!/^\d{4}-\d{2}-\d{2}$/.test(endDate)) {
     return res.status(400).json({ ok: false, message: 'endDate must be YYYY-MM-DD' });

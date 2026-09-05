@@ -67,31 +67,29 @@ import WeakAreasPanel from "../components/Prelims/WeakAreasPanel";
 import TrapPanel from "../components/Prelims/TrapPanel";
 import RecommendationsPanel from "../components/Prelims/RecommendationsPanel";
 import StatsBreakdownPanel from "../components/Prelims/StatsBreakdownPanel";
+import PracticeLanding from "../components/Prelims/PracticeLanding";
+import "../styles/mentoros-prelims-practice.css";
 
 const pageStyle = {
   minHeight: "100%",
-  padding: 20,
-  background: "#06091a",
-  color: "#f1f5f9",
 };
 
 const heroStyle = {
-  background: "#0d1224",
-  border: "1px solid #1e2a45",
+  background: "var(--pr-surface)",
+  border: "1px solid var(--pr-border)",
   borderRadius: 16,
   padding: 22,
   marginBottom: 16,
-  boxShadow: "0 1px 0 rgba(99,102,241,0.12) inset",
 };
 
 const sectionStyle = {
-  marginTop: 16,
+  marginTop: 0,
 };
 
 const cardStyle = {
-  background: "#0d1224",
-  border: "1px solid #1e2a45",
-  borderRadius: 14,
+  background: "var(--pr-surface)",
+  border: "1px solid var(--pr-border)",
+  borderRadius: 16,
   padding: 18,
 };
 
@@ -251,45 +249,17 @@ function ModeButton({ active, children, onClick, disabled = false }) {
   );
 }
 
-function InfoBlock({ title, items, accent }) {
+function InfoBlock({ title, items = [] }) {
   return (
-    <div
-      style={{
-        ...cardStyle,
-        padding: "16px 18px",
-        borderTop: `2px solid ${accent}55`,
-        background: "rgba(15,23,42,0.75)",
-      }}
-    >
-      <div style={{
-        color: accent,
-        fontWeight: 800,
-        marginBottom: 10,
-        fontSize: 13,
-        letterSpacing: 0.4,
-        textTransform: "uppercase",
-      }}>
-        {title}
+    <div className="mos-practice-card mos-list-panel">
+      <div className="mos-practice-section-head"><h3>{title}</h3></div>
+      <div className="mos-list-panel__list">
+        {items.length === 0 ? (
+          <div className="mos-list-row">No updates yet.</div>
+        ) : items.slice(0, 5).map((item, index) => (
+          <div className="mos-list-row" key={`${title}-${index}`}>{item}</div>
+        ))}
       </div>
-      {items.length === 0 ? (
-        <div style={{ color: "#334155", fontSize: 12 }}>
-          No updates available.
-        </div>
-      ) : (
-        <ul
-          style={{
-            margin: 0,
-            paddingLeft: 16,
-            color: "#94a3b8",
-            lineHeight: 1.75,
-            fontSize: 13,
-          }}
-        >
-          {items.map((item, index) => (
-            <li key={`${title}-${index}`}>{item}</li>
-          ))}
-        </ul>
-      )}
     </div>
   );
 }
@@ -398,7 +368,7 @@ function buildLocalFallbackResult({
     },
     grouped: {},
     prescription: {
-      priority: "Real analytics response not connected yet. Showing evaluated fallback result.",
+      priority: "Not enough evidence yet to generate a reliable priority action. Complete a few more questions to strengthen MentorOS recommendations.",
       revise: [],
       practice: [],
       avoid: [],
@@ -2073,6 +2043,7 @@ export default function PrelimsPage() {
             attempts: questions.map((q) => {
               const selectedAnswer = answersMap[q.id];
               const correctAnswer = q.correctAnswer || q.answer;
+              const qid = q.id || q.questionId;
 
               return {
                 questionId: q.id,
@@ -2084,7 +2055,7 @@ export default function PrelimsPage() {
                 isCorrect:
                   String(selectedAnswer || "").toUpperCase() ===
                   String(correctAnswer || "").toUpperCase(),
-                timeTakenSec: timeSpentByQuestion?.[q.id] || 0,
+                timeTakenSec: Math.round((finalTimeMap?.[qid] || 0) / 1000),
                 sourceType: testMode === "full_length" ? "full_length_pyq" : "topic_pyq",
               };
             }),
@@ -2204,381 +2175,44 @@ export default function PrelimsPage() {
   }
 
   return (
-    <div style={pageStyle}>
+    <div className="mos-practice-root" style={pageStyle}>
+      <div className="mos-practice-shell">
       {testStage === "start" && (
-        <>
-          {/* ── Intelligence card: Weak Area Recommendation ── */}
-          <div style={{
-            background: "#0d1224",
-            border: "1px solid #2d3a5c",
-            borderTop: "1px solid #4338ca",
-            borderRadius: 14,
-            padding: "20px 22px",
-            marginBottom: 16,
-            position: "relative",
-          }}>
-
-            {weakAreaSuggestion.hasData ? (
-              <div>
-                {/* Label row */}
-                <div style={{ fontSize: 10, fontWeight: 700, color: "#6366f1", letterSpacing: 2.5, textTransform: "uppercase", marginBottom: 12, display: "flex", alignItems: "center", gap: 5 }}>
-                  <span style={{ fontSize: 12 }}>◎</span> Your Next Best Test
-                </div>
-
-                {/* Subject + target (side by side) */}
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 14 }}>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 22, fontWeight: 800, color: "#f1f5f9", lineHeight: 1.2, marginBottom: weakAreaSuggestion.topic ? 4 : 0 }}>
-                      {weakAreaSuggestion.subject}
-                    </div>
-                    {weakAreaSuggestion.topic && (
-                      <div style={{ fontSize: 13, fontWeight: 500, color: "#818cf8", lineHeight: 1.35, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                        {weakAreaSuggestion.topic}
-                      </div>
-                    )}
-                  </div>
-                  <div style={{ textAlign: "right", flexShrink: 0 }}>
-                    <div style={{ fontSize: 11, color: "#475569", letterSpacing: 0.5, textTransform: "uppercase", marginBottom: 2 }}>Target</div>
-                    <div style={{ fontSize: 18, fontWeight: 900, color: "#f1f5f9", lineHeight: 1 }}>85%+</div>
-                  </div>
-                </div>
-
-                {/* Stats pills row — compact inline */}
-                <div style={{ display: "flex", gap: 8, marginBottom: 14, flexWrap: "wrap" }}>
-                  {weakAreaSuggestion.accuracy != null && (
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, background: "#131d38", border: "1px solid #2d3a5c", borderRadius: 8, padding: "6px 10px" }}>
-                      <div style={{
-                        width: 36, height: 36, borderRadius: "50%", flexShrink: 0,
-                        background: `conic-gradient(#818cf8 ${weakAreaSuggestion.accuracy * 3.6}deg, #1e2a45 0deg)`,
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                      }}>
-                        <div style={{ width: 26, height: 26, borderRadius: "50%", background: "#0d1224", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <span style={{ fontSize: 10, fontWeight: 800, color: "#a78bfa" }}>{weakAreaSuggestion.accuracy}%</span>
-                        </div>
-                      </div>
-                      <div>
-                        <div style={{ fontSize: 11, color: "#94a3b8", lineHeight: 1 }}>Your Accuracy</div>
-                        {weakAreaSuggestion.previousAccuracy != null && (
-                          <div style={{ fontSize: 10, color: weakAreaSuggestion.accuracy >= weakAreaSuggestion.previousAccuracy ? "#4ade80" : "#f87171", fontWeight: 700, lineHeight: 1, marginTop: 2 }}>
-                            {weakAreaSuggestion.accuracy >= weakAreaSuggestion.previousAccuracy ? "↑" : "↓"} from {weakAreaSuggestion.previousAccuracy}%
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                  {weakAreaSuggestion.lastRevisedDays != null && (
-                    <div style={{ background: "#131d38", border: "1px solid #2d3a5c", borderRadius: 8, padding: "6px 12px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: "#e2e8f0", lineHeight: 1 }}>{weakAreaSuggestion.lastRevisedDays} Days</div>
-                      <div style={{ fontSize: 10, color: "#64748b", marginTop: 2 }}>Last Revised</div>
-                    </div>
-                  )}
-                  {weakAreaSuggestion.priority && (
-                    <div style={{
-                      background: weakAreaSuggestion.priority === "Critical" ? "#1f1020" : "#1a1608",
-                      border: `1px solid ${weakAreaSuggestion.priority === "Critical" ? "#7f1d1d" : "#78350f"}`,
-                      borderRadius: 8, padding: "6px 12px", display: "flex", flexDirection: "column", justifyContent: "center",
-                    }}>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: weakAreaSuggestion.priority === "Critical" ? "#f87171" : "#fbbf24", lineHeight: 1 }}>{weakAreaSuggestion.priority}</div>
-                      <div style={{ fontSize: 10, color: "#475569", marginTop: 2 }}>Priority (AI)</div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Why this test? */}
-                {weakAreaSuggestion.whyBullets?.length > 0 && (
-                  <div style={{ marginBottom: 16, paddingLeft: 0 }}>
-                    <div style={{ fontSize: 11, fontWeight: 600, color: "#475569", letterSpacing: 0.5, marginBottom: 6 }}>Why this test?</div>
-                    <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
-                      {weakAreaSuggestion.whyBullets.map((b, i) => (
-                        <li key={i} style={{ fontSize: 12, color: "#64748b", marginBottom: 4, display: "flex", alignItems: "flex-start", gap: 7, lineHeight: 1.4 }}>
-                          <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#6366f1", marginTop: 4, flexShrink: 0 }} />
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* CTA row */}
-                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  <button
-                    type="button"
-                    onClick={() => startWeakAreaFix(weakAreaSuggestion.subjectId, weakAreaSuggestion.nodeId, 10)}
-                    disabled={builderLoading}
-                    style={{
-                      background: builderLoading ? "rgba(99,102,241,0.2)" : "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)",
-                      color: "#fff", border: "none", borderRadius: 10,
-                      padding: "11px 28px", fontWeight: 700, fontSize: 14,
-                      cursor: builderLoading ? "not-allowed" : "pointer",
-                      boxShadow: builderLoading ? "none" : "0 4px 16px rgba(99,102,241,0.35)",
-                      letterSpacing: 0.2, fontFamily: "inherit", whiteSpace: "nowrap",
-                    }}
-                  >
-                    {builderLoading ? "Loading…" : "Start Smart Test →"}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setCustomizeOpen(true)}
-                    style={{
-                      background: "none", border: "none", color: "#6366f1",
-                      fontSize: 12, fontWeight: 600, cursor: "pointer",
-                      padding: 0, fontFamily: "inherit",
-                      textDecoration: "underline", textUnderlineOffset: 3,
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    ◎ Preview 10 Questions
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div>
-                <div style={{ fontSize: 10, fontWeight: 700, color: "#38bdf8", letterSpacing: 2.5, textTransform: "uppercase", marginBottom: 10 }}>
-                  Recommended Next Test
-                </div>
-                <div style={{ fontSize: 20, fontWeight: 800, color: "#f1f5f9", lineHeight: 1.2, marginBottom: 6 }}>
-                  {selectedSubjectId
-                    ? `Start with ${subjects.find(s => s.id === selectedSubjectId)?.label || selectedSubjectId}`
-                    : "Take your first test"}
-                </div>
-                <div style={{ fontSize: 12, color: "#475569", marginBottom: 16, lineHeight: 1.5 }}>
-                  {selectedSubjectId ? "Continue practising PYQs from this subject." : "Complete a test and your AI weak-area card unlocks here."}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => startWeakAreaFix(selectedSubjectId || "ancient_history", "", 10)}
-                  disabled={builderLoading}
-                  style={{
-                    background: builderLoading ? "rgba(14,165,233,0.15)" : "linear-gradient(135deg, #0284c7, #0ea5e9)",
-                    color: "#fff", border: "none", borderRadius: 10,
-                    padding: "11px 28px", fontWeight: 700, fontSize: 14,
-                    cursor: builderLoading ? "not-allowed" : "pointer",
-                    boxShadow: builderLoading ? "none" : "0 4px 16px rgba(14,165,233,0.28)",
-                    letterSpacing: 0.2, fontFamily: "inherit",
-                  }}
-                >
-                  {builderLoading ? "Loading…" : "Start Smart Test →"}
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/* ── Adaptive Weakness Test Card ── */}
-          <div style={{
-            background: "#0d1224",
-            border: "1px solid #2d3a5c",
-            borderLeft: "4px solid #ec4899",
-            borderRadius: 14,
-            padding: "20px 22px",
-            marginBottom: 16,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 16
-          }}>
-            <div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: "#f1f5f9", marginBottom: 4 }}>
-                Adaptive Weakness Test
-              </div>
-              <div style={{ fontSize: 12, color: "#94a3b8" }}>
-                Take a customized test targeting your weakest areas first.
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={startAdaptiveTest}
-              disabled={builderLoading}
-              style={{
-                background: builderLoading ? "rgba(236,72,153,0.2)" : "linear-gradient(135deg, #db2777 0%, #be185d 100%)",
-                color: "#fff", border: "none", borderRadius: 10,
-                padding: "10px 24px", fontWeight: 700, fontSize: 13,
-                cursor: builderLoading ? "not-allowed" : "pointer",
-                boxShadow: builderLoading ? "none" : "0 4px 12px rgba(236,72,153,0.3)",
-                letterSpacing: 0.2, fontFamily: "inherit", whiteSpace: "nowrap",
-              }}
-            >
-              {builderLoading ? "Loading…" : "Start Adaptive Test"}
-            </button>
-          </div>
-
-          {/* ── Adaptive Next Actions card ── */}
-          {adaptiveActions.length > 0 && (
-            <div style={{
-              background: "#0d1224",
-              border: "1px solid #2d3a5c",
-              borderTop: "2px solid #10b981",
-              borderRadius: 14,
-              padding: "20px 22px",
-              marginBottom: 16,
-            }}>
-              <div style={{
-                fontSize: 10, fontWeight: 700, color: "#10b981",
-                letterSpacing: 2.5, textTransform: "uppercase", marginBottom: 14,
-                display: "flex", alignItems: "center", gap: 6,
-              }}>
-                <span style={{ fontSize: 13 }}>⚡</span> Adaptive Next Actions
-              </div>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {adaptiveActions.slice(0, 3).map((action, idx) => {
-                  const levelColors = {
-                    critical: { bg: "#1f1020", border: "#7f1d1d", text: "#f87171", chipBg: "rgba(248,113,113,0.15)" },
-                    weak: { bg: "#1a1608", border: "#78350f", text: "#fbbf24", chipBg: "rgba(251,191,36,0.15)" },
-                    needs_revision: { bg: "#0c1a2e", border: "#1e3a5f", text: "#38bdf8", chipBg: "rgba(56,189,248,0.15)" },
-                    stable: { bg: "#0d1a12", border: "#14532d", text: "#4ade80", chipBg: "rgba(74,222,128,0.15)" },
-                  };
-                  const lc = levelColors[action.weaknessLevel] || levelColors.stable;
-                  const nodeName = prettyNodeName(action.nodeId);
-
-                  return (
-                    <div key={action.nodeId || idx} style={{
-                      background: lc.bg,
-                      border: `1px solid ${lc.border}`,
-                      borderRadius: 10,
-                      padding: "12px 14px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: 12,
-                      flexWrap: "wrap",
-                    }}>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, flexWrap: "wrap" }}>
-                          <span style={{
-                            fontSize: 14, fontWeight: 700, color: "#e2e8f0",
-                            whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: 220,
-                          }}>
-                            {nodeName || action.subject || `Node ${idx + 1}`}
-                          </span>
-                          <span style={{
-                            padding: "2px 8px", borderRadius: 99, fontSize: 10,
-                            fontWeight: 700, background: lc.chipBg,
-                            color: lc.text, border: `1px solid ${lc.border}`,
-                            textTransform: "uppercase", letterSpacing: 0.5,
-                          }}>
-                            {(action.weaknessLevel || "").replace("_", " ")}
-                          </span>
-                        </div>
-                        <div style={{ fontSize: 11, color: "#94a3b8", lineHeight: 1.4 }}>
-                          {action.actionText}
-                        </div>
-                        <div style={{ fontSize: 10, color: "#475569", marginTop: 3 }}>
-                          Score: {action.weaknessScore} · Accuracy: {action.accuracyPercent}% · Wrong: {action.wrongCount}
-                        </div>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (action.nodeId) {
-                            window.location.href = `/pyq/topic/${encodeURIComponent(action.nodeId)}`;
-                          }
-                        }}
-                        style={{
-                          background: `linear-gradient(135deg, ${lc.text}22, ${lc.text}10)`,
-                          border: `1px solid ${lc.text}44`,
-                          borderRadius: 8,
-                          padding: "8px 16px",
-                          color: lc.text,
-                          fontWeight: 700, fontSize: 12,
-                          cursor: "pointer",
-                          fontFamily: "inherit",
-                          whiteSpace: "nowrap",
-                        }}
-                      >
-                        Practice Now
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+        <PracticeLanding
+          weakAreaSuggestion={weakAreaSuggestion}
+          adaptiveActions={adaptiveActions}
+          adaptiveActionsLoading={adaptiveActionsLoading}
+          builderLoading={builderLoading}
+          subjects={subjects}
+          selectedSubjectId={selectedSubjectId}
+          onStartRecommended={() => startWeakAreaFix(
+            weakAreaSuggestion.hasData ? weakAreaSuggestion.subjectId : (selectedSubjectId || "ancient_history"),
+            weakAreaSuggestion.hasData ? weakAreaSuggestion.nodeId : "",
+            10
           )}
-          {adaptiveActionsLoading && (
-            <div style={{
-              background: "#0d1224", border: "1px solid #1e2a45", borderRadius: 14,
-              padding: "16px 22px", marginBottom: 16,
-            }}>
-              <div style={{ fontSize: 12, color: "#64748b" }}>Loading adaptive recommendations…</div>
-            </div>
+          onPreviewRecommended={() => { setCustomizeOpen(true); }}
+          onStartAdaptive={startAdaptiveTest}
+          onPracticeAction={(action) => {
+            if (action?.nodeId) window.location.href = `/pyq/topic/${encodeURIComponent(action.nodeId)}`;
+          }}
+          onQuickWeak={() => startWeakAreaFix(
+            weakAreaSuggestion.hasData ? weakAreaSuggestion.subjectId : (selectedSubjectId || "ancient_history"),
+            weakAreaSuggestion.hasData ? weakAreaSuggestion.nodeId : "",
+            10
           )}
-
-          {/* ── Quick Start tiles ── */}
-          <div style={{ marginBottom: 16 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#64748b", letterSpacing: 2, textTransform: "uppercase", marginBottom: 10 }}>
-              Practice Command Center
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 10, marginBottom: 10 }}>
-              <button
-                type="button"
-                onClick={() => startWeakAreaFix(
-                  weakAreaSuggestion.hasData ? weakAreaSuggestion.subjectId : (selectedSubjectId || "ancient_history"),
-                  weakAreaSuggestion.hasData ? weakAreaSuggestion.nodeId : "",
-                  10
-                )}
-                disabled={builderLoading}
-                style={{
-                  background: "#131d38", border: "1px solid #3d2e10",
-                  borderLeft: "3px solid #d97706",
-                  borderRadius: 12, padding: "14px 16px", textAlign: "left",
-                  cursor: builderLoading ? "not-allowed" : "pointer",
-                  color: "#f1f5f9", fontFamily: "inherit",
-                }}
-              >
-                <div style={{ fontWeight: 700, fontSize: 13, color: "#f59e0b", marginBottom: 3 }}>AI Weak Area</div>
-                <div style={{ fontSize: 11, color: "#64748b", lineHeight: 1.4 }}>Let AI pick weak areas for you automatically</div>
-              </button>
-              <button
-                type="button"
-                onClick={() => { setPracticeScope("subject"); setTestMode("sectional"); setCustomizeOpen(true); }}
-                style={{
-                  background: "#131d38", border: "1px solid #1e2a45",
-                  borderLeft: "3px solid #3b82f6",
-                  borderRadius: 12, padding: "14px 16px", textAlign: "left",
-                  cursor: "pointer", color: "#f1f5f9", fontFamily: "inherit",
-                }}
-              >
-                <div style={{ fontWeight: 700, fontSize: 13, color: "#93c5fd", marginBottom: 3 }}>Full Subject</div>
-                <div style={{ fontSize: 11, color: "#64748b", lineHeight: 1.4 }}>Practice all topics from the subject</div>
-              </button>
-              <button
-                type="button"
-                onClick={() => { setPracticeScope("topic"); setCustomizeOpen(true); }}
-                style={{
-                  background: "#131d38", border: "1px solid #1e2a45",
-                  borderLeft: "3px solid #22c55e",
-                  borderRadius: 12, padding: "14px 16px", textAlign: "left",
-                  cursor: "pointer", color: "#f1f5f9", fontFamily: "inherit",
-                }}
-              >
-                <div style={{ fontWeight: 700, fontSize: 13, color: "#86efac", marginBottom: 3 }}>Topic-wise</div>
-                <div style={{ fontSize: 11, color: "#64748b", lineHeight: 1.4 }}>Practice a specific topic in depth</div>
-              </button>
-              <button
-                type="button"
-                onClick={() => { setPracticeScope("subtopic"); setCustomizeOpen(true); }}
-                style={{
-                  background: "#131d38", border: "1px solid #1e2a45",
-                  borderLeft: "3px solid #a78bfa",
-                  borderRadius: 12, padding: "14px 16px", textAlign: "left",
-                  cursor: "pointer", color: "#f1f5f9", fontFamily: "inherit",
-                }}
-              >
-                <div style={{ fontWeight: 700, fontSize: 13, color: "#c4b5fd", marginBottom: 3 }}>Subtopic-wise</div>
-                <div style={{ fontSize: 11, color: "#64748b", lineHeight: 1.4 }}>Focus on micro topics for better accuracy</div>
-              </button>
-            </div>
-          </div>
-        </>
+          onQuickSubject={() => { setPracticeScope("subject"); setTestMode("sectional"); setCustomizeOpen(true); }}
+          onQuickTopic={() => { setPracticeScope("topic"); setTestMode("sectional"); setCustomizeOpen(true); }}
+          onQuickSubtopic={() => { setPracticeScope("subtopic"); setTestMode("sectional"); setCustomizeOpen(true); }}
+        />
       )}
 
       <section style={sectionStyle}>
-        <div style={{ ...cardStyle }}>
+        <div className="mos-practice-card mos-pr-builder-wrap">
           {testStage !== "start" && (
-            <div style={{ marginBottom: 14 }}>
-              <h2 style={{ margin: 0, fontSize: 17, fontWeight: 800, letterSpacing: 0.2, color: "#e2e8f0" }}>PYQ Test Flow</h2>
-              <div style={{ color: "#475569", fontSize: 12, marginTop: 4 }}>
-                Start → Attempt → Result
+            <div className="mos-practice-section-head" style={{ padding: "16px 18px 0" }}>
+              <div>
+                <h2>{testStage === "attempt" ? "Test Workspace" : "Test Result"}</h2>
+                <div className="mos-practice-small mos-practice-muted" style={{ marginTop: 3 }}>Practice → Attempt → Result</div>
               </div>
             </div>
           )}
@@ -2591,18 +2225,7 @@ export default function PrelimsPage() {
               (builderError.includes('"Unknown"') || builderError.includes("Unknown"));
             if (isStaleCSATUnknown) return null;
             return (
-              <div
-                style={{
-                  marginBottom: 14,
-                  padding: 12,
-                  borderRadius: 12,
-                  border: "1px solid rgba(239, 68, 68, 0.22)",
-                  background: "rgba(127, 29, 29, 0.14)",
-                  color: "#fecaca",
-                }}
-              >
-                {builderError}
-              </div>
+              <div className="mos-pr-alert mos-pr-alert--danger" style={{ margin: "0 18px 14px" }}>{builderError}</div>
             );
           })()}
 
@@ -2630,20 +2253,13 @@ export default function PrelimsPage() {
               <button
                 type="button"
                 onClick={() => setCustomizeOpen(v => !v)}
-                style={{
-                  width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
-                  background: customizeOpen ? "rgba(15,23,42,0.8)" : "rgba(30,41,59,0.5)",
-                  border: "1px solid rgba(148,163,184,0.15)",
-                  borderRadius: customizeOpen ? "12px 12px 0 0" : 12,
-                  padding: "12px 18px", cursor: "pointer", color: "#94a3b8",
-                  fontWeight: 700, fontSize: 13, fontFamily: "inherit", marginBottom: 0,
-                }}
+                className="mos-pr-builder-toggle"
               >
-                <span>⚙ Customize Test</span>
-                <span style={{ fontSize: 12, color: "#64748b" }}>{customizeOpen ? "▲ Collapse" : "▼ Expand"}</span>
+                <span className="mos-pr-builder-toggle__main">Build Your Practice</span>
+                <span className="mos-pr-builder-toggle__sub">{customizeOpen ? "Collapse ↑" : "Customize test ↓"}</span>
               </button>
               {customizeOpen && (
-                <div style={{ border: "1px solid rgba(148,163,184,0.15)", borderTop: "none", borderRadius: "0 0 12px 12px", padding: "16px 0 4px 0" }}>
+                <div className="mos-pr-builder-body">
                   <PyqTestStart
                 testMode={testMode}
                 setTestMode={setTestMode}
@@ -2701,13 +2317,7 @@ export default function PrelimsPage() {
           )}
 
           {testStage === "attempt" && builderWarning && (
-            <div style={{
-              padding: "10px 14px", borderRadius: 12, marginBottom: 4,
-              background: "rgba(234,179,8,0.1)", border: "1px solid rgba(234,179,8,0.3)",
-              color: "#fef08a", fontSize: 13, fontWeight: 600,
-            }}>
-              ⚠ {builderWarning}
-            </div>
+            <div className="mos-pr-alert mos-pr-alert--warning" style={{ margin: "0 18px 10px" }}>⚠ {builderWarning}</div>
           )}
 
           {testStage === "attempt" && testMode === "sectional" && practicePaper === "CSAT" && selectedSubjectId === "csat_rc" && rcPassageGroups.length > 0 && (() => {
@@ -2722,94 +2332,31 @@ export default function PrelimsPage() {
             return (
               <div>
                 {/* ── RC header: title + stats + timer ─────────────────────── */}
-                <div style={{
-                  marginBottom: 12, padding: "14px 18px",
-                  background: "rgba(15,23,42,0.88)",
-                  border: "1px solid rgba(148,163,184,0.12)",
-                  borderRadius: 14,
-                }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
+                <div className="mos-practice-card mos-rc-head">
+                  <div className="mos-rc-head__top">
                     <div>
-                      <div style={{ fontSize: 13, fontWeight: 800, color: "#e0f2fe" }}>
-                        CSAT · Reading Comprehension
-                      </div>
-                      <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>
-                        {rcPassageGroups.length} passages · {totalQ} questions
-                      </div>
+                      <div className="mos-rc-head__title">CSAT · Reading Comprehension</div>
+                      <div className="mos-rc-head__sub">{rcPassageGroups.length} passages · {totalQ} questions</div>
                     </div>
-                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
-                      {/* Timer */}
-                      <span style={{
-                        fontSize: 13, fontWeight: 800, fontVariantNumeric: "tabular-nums",
-                        color: "#a78bfa", background: "rgba(167,139,250,0.1)",
-                        border: "1px solid rgba(167,139,250,0.25)",
-                        borderRadius: 8, padding: "4px 12px", letterSpacing: "0.05em",
-                      }}>
-                        ⏱ {mm}:{ss}
-                      </span>
-                      {/* Passage */}
-                      <span style={{
-                        fontSize: 12, fontWeight: 700, color: "#38bdf8",
-                        background: "rgba(56,189,248,0.1)", border: "1px solid rgba(56,189,248,0.25)",
-                        borderRadius: 8, padding: "4px 12px",
-                      }}>
-                        P {currentRcPassageIndex + 1}/{rcPassageGroups.length}
-                      </span>
-                      {/* Questions answered */}
-                      <span style={{
-                        fontSize: 12, fontWeight: 700,
-                        color: answeredQ === totalQ ? "#22c55e" : "#f59e0b",
-                        background: answeredQ === totalQ ? "rgba(34,197,94,0.1)" : "rgba(245,158,11,0.1)",
-                        border: `1px solid ${answeredQ === totalQ ? "rgba(34,197,94,0.25)" : "rgba(245,158,11,0.25)"}`,
-                        borderRadius: 8, padding: "4px 12px",
-                      }}>
-                        {answeredQ}/{totalQ} Q
-                      </span>
-                      {/* Passages attempted */}
-                      <span style={{
-                        fontSize: 12, fontWeight: 700, color: "#94a3b8",
-                        background: "rgba(148,163,184,0.08)", border: "1px solid rgba(148,163,184,0.18)",
-                        borderRadius: 8, padding: "4px 12px",
-                      }}>
-                        {attemptedPassages}/{rcPassageGroups.length} passages
-                      </span>
-                      {builderLoading && (
-                        <span style={{ fontSize: 12, color: "#f59e0b", fontWeight: 600 }}>Submitting…</span>
-                      )}
+                    <div style={{ display: "flex", gap: 7, flexWrap: "wrap", alignItems: "center" }}>
+                      <span className="mos-pr-badge mos-pr-badge--purple">⏱ {mm}:{ss}</span>
+                      <span className="mos-pr-badge mos-pr-badge--primary">P {currentRcPassageIndex + 1}/{rcPassageGroups.length}</span>
+                      <span className={`mos-pr-badge ${answeredQ === totalQ ? "mos-pr-badge--success" : "mos-pr-badge--warning"}`}>{answeredQ}/{totalQ} Q</span>
+                      <span className="mos-pr-badge">{attemptedPassages}/{rcPassageGroups.length} passages</span>
+                      {builderLoading ? <span className="mos-pr-badge mos-pr-badge--warning">Submitting…</span> : null}
                     </div>
                   </div>
-
-                  {/* ── Passage palette ──────────────────────────────────── */}
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  <div className="mos-rc-palette">
                     {rcPassageGroups.map((grp, idx) => {
                       const grpAnswered = grp.questions.filter(q => answersMap[q.id || q.questionId || q.qid]).length;
                       const grpTotal = grp.questions.length;
                       const isCurrent = idx === currentRcPassageIndex;
                       const isFullyAnswered = grpAnswered === grpTotal && grpTotal > 0;
                       const isPartial = grpAnswered > 0 && !isFullyAnswered;
-                      const color = isCurrent ? "#38bdf8" : isFullyAnswered ? "#22c55e" : isPartial ? "#f59e0b" : "#64748b";
+                      const cls = isCurrent ? "is-current" : isFullyAnswered ? "is-complete" : isPartial ? "is-partial" : "";
                       return (
-                        <button
-                          key={grp.passageId}
-                          type="button"
-                          onClick={() => setCurrentRcPassageIndex(idx)}
-                          style={{
-                            minWidth: 42, height: 32, borderRadius: 8,
-                            fontSize: 11, fontWeight: 800,
-                            border: `1px solid ${color}${isCurrent ? "88" : "44"}`,
-                            background: isCurrent ? `${color}20` : `${color}0a`,
-                            color,
-                            cursor: "pointer",
-                            fontFamily: "inherit",
-                            transition: "all 0.15s",
-                          }}
-                        >
-                          P{idx + 1}
-                          {grpAnswered > 0 && (
-                            <span style={{ fontSize: 9, marginLeft: 3, opacity: 0.85 }}>
-                              {grpAnswered}/{grpTotal}
-                            </span>
-                          )}
+                        <button key={grp.passageId} type="button" className={cls} onClick={() => setCurrentRcPassageIndex(idx)}>
+                          P{idx + 1}{grpAnswered > 0 ? <span style={{ marginLeft: 3, opacity: .8 }}>{grpAnswered}/{grpTotal}</span> : null}
                         </button>
                       );
                     })}
@@ -2915,167 +2462,27 @@ export default function PrelimsPage() {
           )}
 
           {testStage === "result" && (
-            <div style={{ display: "grid", gap: 18 }}>
-
-              {/* ── UPSC Score Card (this attempt) ── */}
-              {lastSubmitData?.summary && (
-                <div style={{
-                  ...cardStyle,
-                  background: "linear-gradient(135deg, rgba(14,165,233,0.08), rgba(168,85,247,0.06))",
-                  border: "1px solid rgba(56,189,248,0.22)",
-                  padding: 20,
-                }}>
-                  <div style={{ fontWeight: 800, fontSize: 15, color: "#e0f2fe", marginBottom: 14, letterSpacing: 0.3 }}>
-                    This Attempt — UPSC Score
-                  </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px,1fr))", gap: 10, marginBottom: 14 }}>
-                    {[
-                      { label: "Total", value: lastSubmitData.summary.total, color: "#94a3b8" },
-                      { label: "Correct", value: lastSubmitData.summary.correct, color: "#22c55e" },
-                      { label: "Wrong", value: lastSubmitData.summary.wrong, color: "#f87171" },
-                      { label: "Unanswered", value: lastSubmitData.summary.unattempted, color: "#f59e0b" },
-                      { label: "+Marks", value: `+${lastSubmitData.summary.positiveMarks}`, color: "#4ade80" },
-                      { label: "−Marks", value: `−${lastSubmitData.summary.negativeMarks}`, color: "#f87171" },
-                      { label: "Score", value: lastSubmitData.summary.finalScore, color: "#38bdf8" },
-                      { label: "Accuracy", value: `${lastSubmitData.summary.accuracy}%`, color: "#a78bfa" },
-                    ].map(({ label, value, color }) => (
-                      <div key={label} style={{
-                        background: "rgba(15,23,42,0.75)", borderRadius: 10,
-                        padding: "10px 8px", textAlign: "center",
-                        border: "1px solid rgba(148,163,184,0.1)",
-                      }}>
-                        <div style={{ fontSize: 20, fontWeight: 800, color }}>{value}</div>
-                        <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>{label}</div>
-                      </div>
-                    ))}
-                  </div>
-                  {/* Timing row */}
-                  {lastSubmitData.totalTimeSpent > 0 && (
-                    <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                      <span style={statPill("#60a5fa")}>
-                        ⏱ {Math.round(lastSubmitData.totalTimeSpent / 1000)}s total
-                      </span>
-                      <span style={statPill("#818cf8")}>
-                        ~{Math.round(lastSubmitData.averageTimePerQuestion / 1000)}s avg / question
-                      </span>
-                      <span style={statPill("#94a3b8")}>
-                        Paper: {lastSubmitData.summary.paperType || "GS"}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* ── Overall Subject Progress Card ── */}
-              {lastSubmitData?.updatedProgress && (() => {
-                const p = lastSubmitData.updatedProgress;
-                const cov = p.coveragePercent || 0;
-                return (
-                  <div style={{
-                    ...cardStyle,
-                    background: "linear-gradient(135deg, rgba(34,197,94,0.06), rgba(168,85,247,0.04))",
-                    border: "1px solid rgba(34,197,94,0.18)",
-                    padding: 20,
-                  }}>
-                    <div style={{ fontWeight: 800, fontSize: 15, color: "#d1fae5", marginBottom: 14, letterSpacing: 0.3 }}>
-                      Overall Subject Progress
-                    </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(110px,1fr))", gap: 10, marginBottom: 14 }}>
-                      {[
-                        { label: "Unique Seen", value: p.servedQuestionIds?.length ?? 0, color: "#38bdf8" },
-                        { label: "Correct", value: p.correctQuestionIds?.length ?? 0, color: "#22c55e" },
-                        { label: "Wrong", value: p.wrongQuestionIds?.length ?? 0, color: "#f87171" },
-                        { label: "Coverage", value: `${cov}%`, color: "#a78bfa" },
-                        { label: "Attempts", value: p.attemptsCount ?? 0, color: "#94a3b8" },
-                        { label: "Best Score", value: p.bestScore ?? "—", color: "#4ade80" },
-                        { label: "Last Score", value: p.latestScore ?? "—", color: "#60a5fa" },
-                      ].map(({ label, value, color }) => (
-                        <div key={label} style={{
-                          background: "rgba(15,23,42,0.75)", borderRadius: 10,
-                          padding: "10px 8px", textAlign: "center",
-                          border: "1px solid rgba(148,163,184,0.1)",
-                        }}>
-                          <div style={{ fontSize: 20, fontWeight: 800, color }}>{value}</div>
-                          <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>{label}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <div style={{ background: "rgba(30,41,59,0.8)", borderRadius: 99, height: 7, overflow: "hidden" }}>
-                      <div style={{
-                        height: "100%", width: `${cov}%`,
-                        background: cov >= 100 ? "linear-gradient(90deg,#22c55e,#16a34a)" : "linear-gradient(90deg,#0ea5e9,#8b5cf6)",
-                        borderRadius: 99, transition: "width 0.4s",
-                      }} />
-                    </div>
-                  </div>
-                );
-              })()}
-
-              {/* ── Action buttons ── */}
-              {activeTopicNodeId && (
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  {[
-                    { mode: "continue", label: "▶ Continue Unseen", color: "#38bdf8" },
-                    { mode: "retry_wrong", label: "🔁 Retry Wrong", color: "#f87171" },
-                    { mode: "retry_attempted", label: "↩ Retry Attempted", color: "#f59e0b" },
-                  ].map(({ mode, label, color }) => (
-                    <button key={mode} type="button"
-                      onClick={() => {
-                        setTestStage("start");
-                        setResult(null);
-                        setLastSubmitData(null);
-                        setSelectedPracticeMode(mode);
-                        if (activeTopicNodeId) fetchTopicProgress(activeTopicNodeId);
-                      }}
-                      style={{
-                        height: 44, padding: "0 18px", borderRadius: 12,
-                        border: `1px solid ${color}44`,
-                        background: `${color}14`,
-                        color, fontWeight: 700, fontSize: 13, cursor: "pointer",
-                      }}
-                    >{label}</button>
-                  ))}
-                  <button type="button"
-                    onClick={() => {
-                      setTestStage("start");
-                      setResult(null);
-                      setLastSubmitData(null);
-                      if (activeTopicNodeId) fetchTopicProgress(activeTopicNodeId);
-                    }}
-                    style={{
-                      height: 44, padding: "0 18px", borderRadius: 12,
-                      border: "1px solid rgba(148,163,184,0.2)",
-                      background: "rgba(30,41,59,0.6)",
-                      color: "#94a3b8", fontWeight: 700, fontSize: 13, cursor: "pointer",
-                    }}
-                  >← Back to Subject</button>
-                </div>
-              )}
-
-              {/* ── Existing detailed result ── */}
-              <PyqTestResult
-                result={result}
-                testId={testId}
-                testMode={testMode}
-                onRestart={() => {
-                  setTestStage("start");
-                  setResult(null);
-                  setLastSubmitData(null);
-                  setQuestions([]);
-                  setCurrentIndex(0);
-                  setAnswersMap({});
-                  setConfidenceMap({});
-                  if (activeTopicNodeId) fetchTopicProgress(activeTopicNodeId);
-                }}
-                onReattempt={() => {
-                  setTestStage("attempt");
-                  setCurrentIndex(0);
-                  setAnswersMap({});
-                  setConfidenceMap({});
-                  setResult(null);
-                }}
-              />
-            </div>
+            <PyqTestResult
+              result={result}
+              submission={lastSubmitData}
+              onRestart={() => {
+                setTestStage("start");
+                setResult(null);
+                setLastSubmitData(null);
+                setQuestions([]);
+                setCurrentIndex(0);
+                setAnswersMap({});
+                setConfidenceMap({});
+                if (activeTopicNodeId) fetchTopicProgress(activeTopicNodeId);
+              }}
+              onReattempt={() => {
+                setTestStage("attempt");
+                setCurrentIndex(0);
+                setAnswersMap({});
+                setConfidenceMap({});
+                setResult(null);
+              }}
+            />
           )}
         </div>
       </section>
@@ -3085,11 +2492,7 @@ export default function PrelimsPage() {
         <>
           <section style={sectionStyle}>
             {dashboardLoading && (
-              <div style={cardStyle}>
-                <div style={{ color: "#93c5fd", fontWeight: 700 }}>
-                  Loading AIR-1 intelligence dashboard...
-                </div>
-              </div>
+              <div className="mos-practice-card mos-home-loading">Loading Mentor Intelligence…</div>
             )}
 
             {dashboardError && !dashboardLoading && (
@@ -3106,33 +2509,22 @@ export default function PrelimsPage() {
             )}
 
             {!dashboardLoading && !dashboardError && dashboard && (
-              <div style={{ display: "grid", gap: 18 }}>
-                <DashboardSummary
-                  summary={dashboard.summary}
-                  behaviour={dashboard.behaviour}
-                />
-
-                <WeakAreasPanel
-                  weakSubjects={dashboard.weakSubjects}
-                  weakNodes={dashboard.weakNodes}
-                  weakTypes={dashboard.weakTypes}
-                />
-
-                <TrapPanel
-                  trapAlerts={dashboard.trapAlerts}
-                  trapStats={dashboard.trapStats}
-                />
-
-                <RecommendationsPanel
-                  recommendations={dashboard.recommendations}
-                />
-
-                <StatsBreakdownPanel
-                  subjectStats={dashboard.subjectStats}
-                  typeStats={dashboard.typeStats}
-                  difficultyStats={dashboard.difficultyStats}
-                  nodeStats={dashboard.nodeStats}
-                />
+              <div className="mos-pr-dashboard">
+                <DashboardSummary summary={dashboard.summary} behaviour={dashboard.behaviour} />
+                <RecommendationsPanel recommendations={dashboard.recommendations} />
+                <details className="mos-practice-card mos-pr-details">
+                  <summary className="mos-pr-details__summary">
+                    <span>View Detailed Analysis</span>
+                    <span className="mos-practice-small mos-practice-muted">Weak areas · traps · breakdowns ⌄</span>
+                  </summary>
+                  <div className="mos-pr-details__body" style={{ paddingTop: 14 }}>
+                    <div className="mos-pr-dashboard-details">
+                      <WeakAreasPanel weakSubjects={dashboard.weakSubjects} weakNodes={dashboard.weakNodes} weakTypes={dashboard.weakTypes} />
+                      <TrapPanel trapAlerts={dashboard.trapAlerts} trapStats={dashboard.trapStats} />
+                      <StatsBreakdownPanel subjectStats={dashboard.subjectStats} typeStats={dashboard.typeStats} difficultyStats={dashboard.difficultyStats} nodeStats={dashboard.nodeStats} />
+                    </div>
+                  </div>
+                </details>
               </div>
             )}
           </section>
@@ -3155,6 +2547,7 @@ export default function PrelimsPage() {
           )}
         </>
       )}
+      </div>
     </div>
   );
 }

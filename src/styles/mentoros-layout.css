@@ -16,8 +16,8 @@
   top: 0;
   bottom: 0;
   width: var(--sb);
-  background: #161616;
-  border-right: 1px solid #252525;
+  background: var(--mos-sidebar-bg, #161616);
+  border-right: 1px solid var(--border-subtle, #252525);
   display: flex;
   flex-direction: column;
   z-index: 200;
@@ -34,7 +34,7 @@
 /* brand */
 .sb-logo {
   padding: 20px 18px 16px;
-  border-bottom: 1px solid #252525;
+  border-bottom: 1px solid var(--border-subtle, #252525);
   flex-shrink: 0;
 }
 
@@ -132,7 +132,7 @@
   font-family: var(--sans);
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--mid);
+  color: var(--text-secondary);
   cursor: pointer;
   transition: background 0.16s, border-color 0.16s, color 0.16s, box-shadow 0.16s;
   margin-bottom: 4px;
@@ -198,8 +198,8 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--dim);
-  background: var(--s2);
-  border: 1px solid #2A2A2A;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
   padding: 3px 9px;
   border-radius: 20px;
   white-space: nowrap;
@@ -222,7 +222,7 @@
 /* footer */
 .sb-footer {
   padding: 14px 18px;
-  border-top: 1px solid #252525;
+  border-top: 1px solid var(--border-subtle, #252525);
   font-family: var(--mono);
   font-size: 0.58rem;
   color: var(--dim);
@@ -343,19 +343,19 @@
   gap: 5px;
   padding: 4px 12px;
   border-radius: 20px;
-  background: var(--s2);
-  border: 1px solid #2A2A2A;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
   font-family: var(--mono);
   font-size: 0.62rem;
-  color: var(--mid);
+  color: var(--text-secondary);
   letter-spacing: 0.03em;
   white-space: nowrap;
 }
 
 .chip.live {
-  border-color: var(--saf-b);
-  color: var(--saf);
-  background: rgba(255, 140, 0, 0.06);
+  border-color: var(--brand-primary-border, var(--border-default));
+  color: var(--brand-primary);
+  background: var(--brand-primary-soft);
 }
 
 .chip.ok {
@@ -380,7 +380,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--saf);
+  background: var(--brand-primary);
   animation: pulse 1.4s infinite;
   flex-shrink: 0;
 }
@@ -1485,4 +1485,22 @@ html, body, #root {
   .mos-nav-scroll-v2::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* MentorOS Practice workspace gets a wider canvas without changing other pages. */
+.mentoros-content:has(.mos-practice-root) {
+  max-width: 1540px;
+  padding-top: 14px;
+}
+
+html[data-theme="light"] .chip {
+  background: var(--bg-surface);
+  border-color: var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+html[data-theme="dark"] .chip {
+  background: var(--bg-surface);
+  border-color: var(--border-subtle);
+  color: var(--text-secondary);
 }

@@ -1,4 +1,8 @@
+import { CalendarDays, Clock3, Flame } from "lucide-react";
+
 export default function MentorTopbar({ title, clock, onMenuClick, mobileOpen }) {
+  const dateLabel = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+
   return (
     <>
       <div className="mentoros-mob-bar">
@@ -11,27 +15,16 @@ export default function MentorTopbar({ title, clock, onMenuClick, mobileOpen }) 
         >
           {mobileOpen ? "✕" : "☰"}
         </button>
-
-        <div className="mobile-page-title">
-          {(title || "Plan · Daily Execution").split("·")[0].trim().toUpperCase()}
-        </div>
-
-        <div className="chip live">
-          <span className="live-dot" />
-          <span>{clock}</span>
-        </div>
+        <div className="mobile-page-title">{(title || "Plan · Daily Execution").split("·")[0].trim()}</div>
+        <div className="chip live"><Clock3 size={12} /><span>{clock}</span></div>
       </div>
 
       <div className="mentoros-topbar">
         <div className="tb-title">{title}</div>
-
         <div className="tb-right">
-          <div className="chip live">
-            <span className="live-dot" />
-            <span>{clock}</span>
-          </div>
-          <div className="chip">🔥 0 Day Streak</div>
-          <div className="chip">📅 {new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
+          <div className="chip live"><Clock3 size={12} /><span>{clock}</span></div>
+          <div className="chip"><Flame size={12} /><span>0 Day Streak</span></div>
+          <div className="chip"><CalendarDays size={12} /><span>{dateLabel}</span></div>
         </div>
       </div>
     </>

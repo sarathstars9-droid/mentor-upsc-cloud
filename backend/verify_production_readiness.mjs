@@ -12,7 +12,7 @@ async function runFullVerification() {
 
   const userId = 'verify_user_prod_1';
   const otherUserId = 'verify_user_prod_2';
-  const dayKey = new Date().toISOString().slice(0, 10);
+  const dayKey = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
   const testBlockId = `blk_guard_chk_${Date.now()}`;
   const otherBlockId = `blk_other_chk_${Date.now()}`;
 

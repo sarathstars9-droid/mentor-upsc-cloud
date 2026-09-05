@@ -82,7 +82,7 @@
   width: 44px;
   height: 44px;
   border-radius: 14px;
-  background: linear-gradient(135deg, var(--mos-accent) 0%, #b45309 100%);
+  background: linear-gradient(135deg, var(--brand-primary, var(--mos-accent)) 0%, #2563eb 100%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -93,7 +93,7 @@
 }
 
 [data-theme="dark"] .mos-logo-tile-v2 {
-  color: #0b0b0b;
+  color: #ffffff;
 }
 
 .mos-header-title-v2 {

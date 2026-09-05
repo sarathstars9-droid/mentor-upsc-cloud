@@ -15,7 +15,7 @@ const pageTitleMap = {
   backlog: "Backlog · Rescue Queue",
   focus: "Focus · Deep Work Mode",
   reports: "Reports · Study Analytics",
-  prelims: "Prelims · Practice & PYQs",
+  prelims: "Practice · Prelims Command Center",
   prelims_institutional: "Prelims · Institutional Tests",
   mains: "Mains · Answer Writing",
   ethics: "Ethics · Case Practice",

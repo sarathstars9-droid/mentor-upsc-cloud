@@ -35,7 +35,7 @@
 import { pool } from './db/index.js';
 
 const TEST_USER  = 'moulika';
-const TEST_DATE  = process.argv[2] || new Date().toISOString().slice(0, 10);
+const TEST_DATE  = process.argv[2] || new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
 const INCLUDE_LEGACY = process.argv.includes('--include-legacy-empty');
 
 // ── helpers ──────────────────────────────────────────────────────────────────

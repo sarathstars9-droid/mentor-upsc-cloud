@@ -222,7 +222,7 @@ export async function probeCalendarBridge() {
   const scriptUrl = SCRIPT_URL();
   if (!scriptUrl) return { ok: false, reason: 'no_script_url', diagnosis: 'SCRIPT_URL env var is not set' };
 
-  const today = new Date().toISOString().slice(0, 10);
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
   const probe = {
     action: 'getBlocksForDate',
     userId: process.env.DEFAULT_USER_ID || 'moulika',

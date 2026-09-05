@@ -274,7 +274,7 @@ async function generateAiSummary({
 // ── Daily report ──────────────────────────────────────────────────────────────
 
 export async function getDailyReport(userId = DEFAULT_USER, date) {
-  const dayKey = String(date || new Date().toISOString().slice(0, 10)).slice(0, 10);
+  const dayKey = String(date || new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })).slice(0, 10);
 
   const [agg, blocks, subjectSplit, topicSplit, stageSplit, sourceSplit] = await Promise.all([
     getDayAggregate(userId, dayKey).catch(e => { throw new Error(`getDayAggregate: ${e.message}`); }),
@@ -327,7 +327,7 @@ export async function getDailyReport(userId = DEFAULT_USER, date) {
 // ── Weekly report ─────────────────────────────────────────────────────────────
 
 export async function getWeeklyReport(userId = DEFAULT_USER, endDate) {
-  const endKey   = String(endDate || new Date().toISOString().slice(0, 10)).slice(0, 10);
+  const endKey   = String(endDate || new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })).slice(0, 10);
   const end      = new Date(endKey);
   const start    = new Date(end);
   start.setDate(end.getDate() - 6);

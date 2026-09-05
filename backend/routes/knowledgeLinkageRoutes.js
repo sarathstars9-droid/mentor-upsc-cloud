@@ -109,7 +109,7 @@ router.get('/node/:nodeId', async (req, res) => {
 
 router.get('/report-summary', async (req, res) => {
   const startDate = req.query.startDate || new Date(Date.now() - 7 * 86400000).toISOString().slice(0, 10);
-  const endDate   = req.query.endDate   || new Date().toISOString().slice(0, 10);
+  const endDate   = req.query.endDate   || new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
 
   try {
     const summary = await getLinkageSummary(uid(req), startDate, endDate);

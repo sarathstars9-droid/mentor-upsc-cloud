@@ -202,7 +202,7 @@ export async function generateBacklogRescue(userId) {
   if (!userId) return [];
 
   const createdBacklogs = [];
-  const todayKey = new Date().toISOString().slice(0, 10);
+  const todayKey = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
 
   try {
     // Helper to log a backlog item

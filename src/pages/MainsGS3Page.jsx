@@ -5,30 +5,41 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config.js";
+import {
+  PaperHero as PremiumPaperHero,
+  ThemeSelector as PremiumThemeSelector,
+  FilterBar as PremiumFilterBar,
+  QuestionCard as PremiumQuestionCard,
+  LoadingSkeleton as PremiumLoadingSkeleton,
+  ErrorState as PremiumErrorState,
+  EmptyState as PremiumEmptyState,
+  Pagination as PremiumPagination,
+} from "../components/mains/MainsPaperWorkspaceUI.jsx";
+
 
 // ─── Theme tokens ─────────────────────────────────────────────────────────────
 const T = {
-  bg:          "#09090b",
-  surface:     "#111113",
-  surfaceHigh: "#18181b",
-  border:      "#1f1f23",
-  borderMid:   "#27272a",
-  muted:       "#3f3f46",
-  subtle:      "#52525b",
-  dim:         "#71717a",
-  text:        "#e4e4e7",
-  textBright:  "#f4f4f5",
+  bg:          "var(--bg-page)",
+  surface:     "var(--bg-surface)",
+  surfaceHigh: "var(--bg-subtle)",
+  border:      "var(--border-subtle)",
+  borderMid:   "var(--border-default)",
+  muted:       "var(--text-muted, var(--text-tertiary))",
+  subtle:      "var(--text-tertiary)",
+  dim:         "var(--text-tertiary)",
+  text:        "var(--text-secondary)",
+  textBright:  "var(--text-primary)",
+  blue:        "#0A64F5",
   green:       "#22c55e",
   amber:       "#f59e0b",
-  blue:        "#3b82f6",
   red:         "#ef4444",
   purple:      "#8b5cf6",
   teal:        "#14b8a6",
   rose:        "#f43f5e",
-  font:        "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
+  font:        "var(--sans)",
 };
 
-const ACCENT = T.green;
+const ACCENT = T.blue;
 
 // ─── GS3 Theme groups ─────────────────────────────────────────────────────────
 const THEMES = [
@@ -1063,46 +1074,33 @@ function ErrorState({ message, onRetry }) {
   );
 }
 
-// ─── Main Page ────────────────────────────────────────────────────────────────
+// ─── Main Page — premium MentorOS workspace ──────────────────────────────────
 export default function MainsGS3Page() {
   const navigate = useNavigate();
 
-  const [questions,     setQuestions]     = useState([]);
-  const [loading,       setLoading]       = useState(true);
-  const [error,         setError]         = useState(null);
-  const [activeTheme,   setActiveTheme]   = useState("all");
-  const [markFilter,    setMarkFilter]    = useState("all");
-  const [sourceFilter,  setSourceFilter]  = useState("all");
-  const [showAnalysis,  setShowAnalysis]  = useState(false);
-  const [showTrends,    setShowTrends]    = useState(false);
-  const [showYearTest,  setShowYearTest]  = useState(false);
+  const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [activeTheme, setActiveTheme] = useState("all");
+  const [markFilter, setMarkFilter] = useState("all");
+  const [sourceFilter, setSourceFilter] = useState("all");
+  const [sortOrder, setSortOrder] = useState("latest");
+  const [page, setPage] = useState(1);
+  const [showAnalysis, setShowAnalysis] = useState(false);
+  const [showTrends, setShowTrends] = useState(false);
+  const [showYearTest, setShowYearTest] = useState(false);
 
-  // Map raw subject values from the clean dataset to GS3 theme IDs
   const GS3_SUBJECT_MAP = {
-    "Economy":             "Economy",
-    "ECONOMY":             "Economy",
-    "Agriculture":         "Economy",
-    "AGRICULTURE":         "Economy",
-    "Environment":         "Environment",
-    "ENVIRONMENT":         "Environment",
-    "Science & Tech":      "Science & Tech",
-    "Science & Technology":"Science & Tech",
-    "SCIENCE_TECH":        "Science & Tech",
-    "Internal Security":   "Internal Security",
-    "INTERNAL_SECURITY":   "Internal Security",
-    "Disaster Management": "Internal Security",
-    "DISASTER_MANAGEMENT": "Internal Security",
+    Economy: "Economy", ECONOMY: "Economy", Agriculture: "Economy", AGRICULTURE: "Economy",
+    Environment: "Environment", ENVIRONMENT: "Environment",
+    "Science & Tech": "Science & Tech", "Science & Technology": "Science & Tech", SCIENCE_TECH: "Science & Tech",
+    "Internal Security": "Internal Security", INTERNAL_SECURITY: "Internal Security",
+    "Disaster Management": "Internal Security", DISASTER_MANAGEMENT: "Internal Security",
   };
 
   function normalizeQuestion(q) {
     const theme = q.theme || GS3_SUBJECT_MAP[q.subject] || q.subject || "";
-    return {
-      ...q,
-      theme,
-      source:    q.source    || "PYQ",
-      focus:     q.focus     || "",
-      structure: q.structure || "",
-    };
+    return { ...q, theme, source: q.source || "PYQ", focus: q.focus || "", structure: q.structure || "" };
   }
 
   async function fetchQuestions() {
@@ -1123,287 +1121,126 @@ export default function MainsGS3Page() {
 
   useEffect(() => { fetchQuestions(); }, []);
 
-  // Dedupe by id (backend normalizes all 6 GS3 files; questionNumber is not in the output)
-  const validQuestions = useMemo(() => {
-    return Array.from(
-      new Map((questions || []).map((q) => [q.id, q])).values()
-    );
-  }, [questions]);
+  const validQuestions = useMemo(() => Array.from(new Map((questions || []).map((q) => [q.id, q])).values()), [questions]);
 
-  const filtered = useMemo(() => {
-    return validQuestions.filter(q => {
-      if (activeTheme !== "all" && q.theme !== activeTheme) return false;
-      if (markFilter  !== "all" && String(q.marks) !== markFilter) return false;
-      if (sourceFilter !== "all" && q.source !== sourceFilter) return false;
-      return true;
-    });
-  }, [validQuestions, activeTheme, markFilter, sourceFilter]);
+  const filtered = useMemo(() => validQuestions.filter((q) => {
+    if (activeTheme !== "all" && q.theme !== activeTheme) return false;
+    if (markFilter !== "all" && String(q.marks) !== markFilter) return false;
+    if (sourceFilter !== "all" && q.source !== sourceFilter) return false;
+    return true;
+  }), [validQuestions, activeTheme, markFilter, sourceFilter]);
+
+  const sortedFiltered = useMemo(() => [...filtered].sort((a, b) => {
+    const ay = Number(a.year || 0);
+    const by = Number(b.year || 0);
+    return sortOrder === "oldest" ? ay - by : by - ay;
+  }), [filtered, sortOrder]);
+
+  const themeCounts = useMemo(() => Object.fromEntries(
+    THEMES.map((theme) => [theme.id, validQuestions.filter((q) => q.theme === theme.id).length]),
+  ), [validQuestions]);
+
+  useEffect(() => { setPage(1); }, [activeTheme, markFilter, sourceFilter, sortOrder]);
+
+  const PAGE_SIZE = 8;
+  const pageCount = Math.max(1, Math.ceil(sortedFiltered.length / PAGE_SIZE));
+  const currentPage = Math.min(page, pageCount);
+  const pagedQuestions = sortedFiltered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
   function normalizeQ(q) {
     return {
-      id:             q.id || "",
-      paper:          "GS3",
-      year:           q.year || null,
-      question:       q.question || "",
-      marks:          q.marks != null ? String(q.marks) : "15",
-      structure:      q.structure || "",
-      focus:          q.focus || "",
-      priority:       q.source === "PYQ" ? "UPSC PYQ · High Priority" : `${q.theme || ""} · Topic Practice`,
-      subparts:       q.subparts || [],
+      id: q.id || "",
+      paper: "GS3",
+      year: q.year || null,
+      question: q.question || "",
+      marks: q.marks != null ? String(q.marks) : "15",
+      structure: q.structure || "",
+      focus: q.focus || "",
+      priority: q.source === "PYQ" ? "UPSC PYQ · High Priority" : `${q.theme || ""} · Topic Practice`,
+      subparts: q.subparts || [],
       syllabusNodeId: q.nodeId || "",
     };
   }
 
   function handleStart(q) {
-    const normList = filtered.map(normalizeQ);
-    const idx = normList.findIndex(item => item.id && item.id === (q.id || ""));
+    const normList = sortedFiltered.map(normalizeQ);
+    const idx = normList.findIndex((item) => item.id && item.id === (q.id || ""));
     navigate("/mains/answer-writing", {
       state: {
-        paper:          "GS3",
-        mode:           q.source || "PYQ",
-        year:           q.year || null,
-        topic:          q.theme || "",
+        paper: "GS3",
+        mode: q.source || "PYQ",
+        year: q.year || null,
+        topic: q.theme || "",
         syllabusNodeId: q.nodeId || "",
-        questions:      idx >= 0 ? normList : [normalizeQ(q)],
-        currentIndex:   idx >= 0 ? idx : 0,
+        questions: idx >= 0 ? normList : [normalizeQ(q)],
+        currentIndex: idx >= 0 ? idx : 0,
       },
     });
   }
 
-  function toggleTheme(id) {
-    setActiveTheme(prev => (prev === id ? "all" : id));
-  }
+  const pyqCount = validQuestions.filter((q) => q.source === "PYQ").length;
+  const topicCount = validQuestions.filter((q) => q.source === "Topic").length;
+  const years = validQuestions.map((q) => Number(q.year)).filter(Boolean);
+  const yearRange = years.length ? `${Math.min(...years)}–${Math.max(...years)}` : "Year data pending";
+  const sourceOptions = [
+    { value: "all", label: "All" },
+    { value: "PYQ", label: "PYQ Only" },
+    ...(topicCount > 0 ? [{ value: "Topic", label: "Topic Only" }] : []),
+  ];
 
-  const pyqCount    = validQuestions.filter(q => q.source === "PYQ").length;
-  const yearsPresent = validQuestions.map(q => q.year).filter(Boolean);
-  const latestYear   = yearsPresent.length ? Math.max(...yearsPresent) : null;
+  const resetFilters = () => {
+    setActiveTheme("all"); setMarkFilter("all"); setSourceFilter("all"); setSortOrder("latest");
+  };
 
   return (
-    <div style={{ minHeight: "100vh", background: T.bg, color: T.text, fontFamily: T.font }}>
+    <div className="mpw-page">
+      <main className="mpw-shell">
+        <PremiumPaperHero
+          eyebrow="GS Paper III"
+          title="General Studies III"
+          subtitle="Economy, Environment, Science & Technology and Internal Security — browse the paper, study PYQ patterns, and start focused answer writing."
+          stats={[
+            { value: validQuestions.length, label: "Questions" },
+            { value: pyqCount, label: "PYQs" },
+            { value: yearRange, label: "Coverage" },
+          ]}
+          actions={[
+            { icon: "◉", label: "PYQ Analysis", active: showAnalysis, activeLabel: "Hide Analysis", onClick: () => { setShowAnalysis((v) => !v); setShowTrends(false); setShowYearTest(false); } },
+            { icon: "↗", label: "Year-wise Trends", active: showTrends, activeLabel: "Hide Trends", onClick: () => { setShowTrends((v) => !v); setShowAnalysis(false); setShowYearTest(false); } },
+            { icon: "▦", label: "Year-wise Test", active: showYearTest, activeLabel: "Hide Test", onClick: () => { setShowYearTest((v) => !v); setShowAnalysis(false); setShowTrends(false); } },
+          ]}
+        />
 
-      {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
-      <div style={{
-        borderBottom: `1px solid ${T.border}`, padding: "14px 32px",
-        display: "flex", alignItems: "center", gap: 8,
-        background: T.bg, position: "sticky", top: 0, zIndex: 10,
-      }}>
-        <button onClick={() => navigate("/mains")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: T.font }}>
-          <span style={label11(T.subtle)}>Mains</span>
-        </button>
-        <span style={{ color: T.muted, fontSize: 11 }}>›</span>
-        <span style={label11(ACCENT)}>General Studies III</span>
-      </div>
+        {showAnalysis ? <div className="mpw-insight-area"><PYQAnalysisPanel questions={validQuestions} /></div> : null}
+        {showTrends ? <div className="mpw-insight-area"><YearwiseTrendsPanel questions={validQuestions} /></div> : null}
+        {showYearTest ? <div className="mpw-insight-area"><YearTestPanel questions={validQuestions} onStart={handleStart} /></div> : null}
 
-      <div style={{ padding: "28px 32px", maxWidth: 1080, margin: "0 auto" }}>
+        <PremiumThemeSelector themes={THEMES} activeTheme={activeTheme} onSelect={setActiveTheme} counts={themeCounts} total={validQuestions.length} />
+        <PremiumFilterBar
+          markFilter={markFilter} setMarkFilter={setMarkFilter}
+          sourceFilter={sourceFilter} setSourceFilter={setSourceFilter}
+          sourceOptions={sourceOptions}
+          sortOrder={sortOrder} setSortOrder={setSortOrder}
+          resultCount={sortedFiltered.length} onReset={resetFilters}
+        />
 
-        {/* ── Hero header ─────────────────────────────────────────────────────── */}
-        <div style={{
-          background: `linear-gradient(135deg, ${T.surface} 0%, ${T.surfaceHigh} 100%)`,
-          border: `1px solid ${T.borderMid}`, borderRadius: 16,
-          padding: "28px 32px", marginBottom: 28, position: "relative", overflow: "hidden",
-        }}>
-          <div style={{
-            position: "absolute", left: 0, top: 0, bottom: 0, width: 3,
-            background: `linear-gradient(180deg, ${ACCENT}, ${ACCENT}44)`,
-            borderRadius: "14px 0 0 14px",
-          }} />
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 14 }}>
-            <div>
-              <div style={{ ...label11(ACCENT), marginBottom: 8 }}>GS Paper III</div>
-              <h1 style={{ fontSize: 26, fontWeight: 900, color: T.textBright, margin: "0 0 6px 0", letterSpacing: "-0.02em" }}>
-                General Studies III
-              </h1>
-              <p style={{ fontSize: 13, color: T.dim, margin: "0 0 18px 0", lineHeight: 1.6, maxWidth: 520 }}>
-                Economy, Environment, Science &amp; Tech &amp; Internal Security — select a theme or question below.
-              </p>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                {loading ? (
-                  <span style={{ fontSize: 11, color: T.dim }}>Loading questions…</span>
-                ) : error ? (
-                  <span style={{ fontSize: 11, color: T.red }}>Could not load count</span>
-                ) : (
-                  [
-                    { label: `${validQuestions.length} Questions`, color: T.textBright },
-                    { label: `${pyqCount} PYQs`,                   color: T.green },
-                    { label: latestYear ? `Latest: ${latestYear}` : "No year data", color: ACCENT },
-                  ].map(p => (
-                    <span key={p.label} style={{
-                      fontSize: 11, fontWeight: 700, color: p.color,
-                      background: T.surface, border: `1px solid ${T.border}`,
-                      borderRadius: 20, padding: "4px 12px",
-                    }}>{p.label}</span>
-                  ))
-                )}
-              </div>
+        <section aria-labelledby="gs3-question-list-title">
+          <div className="mpw-list-heading">
+            <div><div className="mpw-eyebrow">Question Library</div><h2 id="gs3-question-list-title">{activeTheme === "all" ? "All GS3 Questions" : activeTheme}</h2></div>
+            <span className="mpw-list-heading__count">Page {currentPage} of {pageCount}</span>
+          </div>
+          {loading ? <PremiumLoadingSkeleton /> : null}
+          {!loading && error ? <PremiumErrorState message={error} onRetry={fetchQuestions} /> : null}
+          {!loading && !error && pagedQuestions.length ? (
+            <div className="mpw-question-list">
+              {pagedQuestions.map((q) => <PremiumQuestionCard key={q.id} q={q} onStart={handleStart} themeLabel={THEMES.find((theme) => theme.id === q.theme)?.label || q.theme} />)}
             </div>
-
-            {/* Intelligence toggle buttons */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 8, alignSelf: "flex-start", flexShrink: 0 }}>
-              <button
-                onClick={() => { setShowAnalysis(s => !s); setShowTrends(false); setShowYearTest(false); }}
-                style={{
-                  background: showAnalysis ? ACCENT : T.surfaceHigh,
-                  color: showAnalysis ? "#09090b" : ACCENT,
-                  border: `1.5px solid ${ACCENT}${showAnalysis ? "ff" : "55"}`,
-                  borderRadius: 10, fontWeight: 800, fontSize: 12.5,
-                  padding: "10px 20px", cursor: "pointer",
-                  fontFamily: T.font, letterSpacing: "0.03em",
-                  boxShadow: showAnalysis ? `0 0 20px ${ACCENT}30` : "none",
-                  transition: "all 0.15s ease",
-                  display: "flex", alignItems: "center", gap: 8, whiteSpace: "nowrap",
-                }}
-              >
-                <span style={{ fontSize: 15 }}>🧠</span>
-                {showAnalysis ? "Hide Analysis" : "PYQ Analysis"}
-              </button>
-              <button
-                onClick={() => { setShowTrends(s => !s); setShowAnalysis(false); setShowYearTest(false); }}
-                style={{
-                  background: showTrends ? T.blue : T.surfaceHigh,
-                  color: showTrends ? "#fff" : T.blue,
-                  border: `1.5px solid ${T.blue}${showTrends ? "ff" : "55"}`,
-                  borderRadius: 10, fontWeight: 800, fontSize: 12.5,
-                  padding: "10px 20px", cursor: "pointer",
-                  fontFamily: T.font, letterSpacing: "0.03em",
-                  boxShadow: showTrends ? `0 0 20px ${T.blue}30` : "none",
-                  transition: "all 0.15s ease",
-                  display: "flex", alignItems: "center", gap: 8, whiteSpace: "nowrap",
-                }}
-              >
-                <span style={{ fontSize: 15 }}>📈</span>
-                {showTrends ? "Hide Trends" : "Year-wise Trends"}
-              </button>
-              <button
-                onClick={() => { setShowYearTest(s => !s); setShowAnalysis(false); setShowTrends(false); }}
-                style={{
-                  background: showYearTest ? T.green : T.surfaceHigh,
-                  color: showYearTest ? "#09090b" : T.green,
-                  border: `1.5px solid ${T.green}${showYearTest ? "ff" : "55"}`,
-                  borderRadius: 10, fontWeight: 800, fontSize: 12.5,
-                  padding: "10px 20px", cursor: "pointer",
-                  fontFamily: T.font, letterSpacing: "0.03em",
-                  boxShadow: showYearTest ? `0 0 20px ${T.green}30` : "none",
-                  transition: "all 0.15s ease",
-                  display: "flex", alignItems: "center", gap: 8, whiteSpace: "nowrap",
-                }}
-              >
-                <span style={{ fontSize: 15 }}>📅</span>
-                {showYearTest ? "Hide Year Test" : "Year-wise Test"}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* ── PYQ Analysis Panel ───────────────────────────────────────────────── */}
-        {showAnalysis && <PYQAnalysisPanel questions={validQuestions} />}
-
-        {/* ── Year-wise Trends Panel ───────────────────────────────────────────── */}
-        {showTrends && <YearwiseTrendsPanel questions={validQuestions} />}
-
-        {/* ── Year-wise Full Test Panel ────────────────────────────────────────── */}
-        {showYearTest && <YearTestPanel questions={validQuestions} onStart={handleStart} />}
-
-        {/* ── Theme cards ──────────────────────────────────────────────────────── */}
-        <div style={{ ...label11(T.subtle), marginBottom: 12 }}>Filter by Theme</div>
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 24 }}>
-          <button
-            onClick={() => setActiveTheme("all")}
-            style={{
-              flex: "0 0 auto",
-              background: activeTheme === "all" ? `${ACCENT}12` : T.surface,
-              border: activeTheme === "all" ? `1.5px solid ${ACCENT}66` : `1px solid ${T.border}`,
-              borderRadius: 12, padding: "10px 20px",
-              cursor: "pointer", fontFamily: T.font,
-              fontSize: 12, fontWeight: activeTheme === "all" ? 800 : 600,
-              color: activeTheme === "all" ? ACCENT : T.dim,
-            }}
-          >
-            All Themes
-          </button>
-          {THEMES.map(t => (
-            <ThemeCard key={t.id} theme={t} active={activeTheme} onClick={() => toggleTheme(t.id)} />
-          ))}
-        </div>
-
-        {/* ── Inline filters ──────────────────────────────────────────────────── */}
-        <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 20, flexWrap: "wrap" }}>
-          <div style={label11(T.subtle)}>Filter:</div>
-
-          <div style={{ display: "flex", gap: 6 }}>
-            {["all", "10", "15"].map(m => (
-              <button
-                key={m}
-                onClick={() => setMarkFilter(m)}
-                style={{
-                  padding: "5px 12px", borderRadius: 7,
-                  border: markFilter === m ? `1.5px solid ${ACCENT}` : `1px solid ${T.borderMid}`,
-                  background: markFilter === m ? `${ACCENT}15` : T.surface,
-                  color: markFilter === m ? ACCENT : T.dim,
-                  fontWeight: markFilter === m ? 800 : 500,
-                  fontSize: 11, cursor: "pointer", fontFamily: T.font,
-                }}
-              >
-                {m === "all" ? "All Marks" : `${m}M`}
-              </button>
-            ))}
-          </div>
-
-          <div style={{ width: 1, height: 18, background: T.border }} />
-
-          <div style={{ display: "flex", gap: 6 }}>
-            {[{ v: "all", l: "All" }, { v: "PYQ", l: "PYQ Only" }].map(s => (
-              <button
-                key={s.v}
-                onClick={() => setSourceFilter(s.v)}
-                style={{
-                  padding: "5px 12px", borderRadius: 7,
-                  border: sourceFilter === s.v ? `1.5px solid ${T.purple}` : `1px solid ${T.borderMid}`,
-                  background: sourceFilter === s.v ? `${T.purple}15` : T.surface,
-                  color: sourceFilter === s.v ? T.purple : T.dim,
-                  fontWeight: sourceFilter === s.v ? 800 : 500,
-                  fontSize: 11, cursor: "pointer", fontFamily: T.font,
-                }}
-              >
-                {s.l}
-              </button>
-            ))}
-          </div>
-
-          {!loading && !error && (
-            <span style={{ fontSize: 11, color: T.muted, marginLeft: "auto" }}>
-              {filtered.length} question{filtered.length !== 1 ? "s" : ""}
-            </span>
-          )}
-        </div>
-
-        {/* ── Question list / states ───────────────────────────────────────────── */}
-        {loading && <LoadingSkeleton />}
-
-        {!loading && error && <ErrorState message={error} onRetry={fetchQuestions} />}
-
-        {!loading && !error && filtered.length > 0 && (
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            {filtered.map(q => <QuestionCard key={q.id} q={q} onStart={handleStart} />)}
-          </div>
-        )}
-
-        {!loading && !error && questions.length > 0 && filtered.length === 0 && (
-          <div style={{ padding: "48px 24px", textAlign: "center", border: `1px dashed ${T.borderMid}`, borderRadius: 14 }}>
-            <div style={{ fontSize: 28, marginBottom: 12, opacity: 0.5 }}>🔍</div>
-            <div style={{ fontSize: 13, fontWeight: 700, color: T.subtle }}>No questions match this filter</div>
-            <div style={{ fontSize: 12, color: T.muted, marginTop: 5 }}>Try changing the theme or marks filter above.</div>
-          </div>
-        )}
-
-        {!loading && !error && questions.length === 0 && (
-          <div style={{ padding: "48px 24px", textAlign: "center", border: `1px dashed ${T.borderMid}`, borderRadius: 14 }}>
-            <div style={{ fontSize: 28, marginBottom: 12, opacity: 0.5 }}>📭</div>
-            <div style={{ fontSize: 13, fontWeight: 700, color: T.subtle }}>No questions loaded</div>
-            <div style={{ fontSize: 12, color: T.muted, marginTop: 5 }}>Check that the tagged data files are present in the backend.</div>
-          </div>
-        )}
-
-      </div>
+          ) : null}
+          {!loading && !error && validQuestions.length > 0 && sortedFiltered.length === 0 ? <PremiumEmptyState /> : null}
+          {!loading && !error && validQuestions.length === 0 ? <PremiumEmptyState title="No questions loaded" copy="Check that the tagged Mains data is available from the backend." /> : null}
+          {!loading && !error && sortedFiltered.length > 0 ? <PremiumPagination page={currentPage} pageCount={pageCount} onChange={(next) => { setPage(next); window.scrollTo({ top: 0, behavior: "smooth" }); }} /> : null}
+        </section>
+      </main>
     </div>
   );
 }

@@ -67,3 +67,42 @@ export function getAuthUserId(req) {
 
   return null;
 }
+
+/**
+ * requireKnowledgeReviewer ensures the authenticated user is explicitly allowed
+ * to access internal knowledge review endpoints.
+ * This is an internal-alpha authorization mechanism.
+ */
+export function requireKnowledgeReviewer(req, res, next) {
+  const userId = req.user?.id;
+  if (!userId) {
+    return res.status(401).json({ ok: false, message: 'Unauthorized: User not authenticated.' });
+  }
+
+  const isProd = process.env.NODE_ENV === 'production' || process.env.RAILWAY_ENVIRONMENT;
+  
+  let allowedReviewersStr = process.env.KNOWLEDGE_REVIEWER_USER_IDS;
+  
+  if (isProd && !allowedReviewersStr) {
+    return res.status(403).json({ 
+      ok: false, 
+      message: 'Forbidden: Reviewer allowlist not configured in production.' 
+    });
+  }
+
+  // Development fallback
+  if (!allowedReviewersStr) {
+    allowedReviewersStr = 'moulika,admin';
+  }
+
+  const allowedReviewers = allowedReviewersStr.split(',').map(s => s.toLowerCase().trim());
+
+  if (!allowedReviewers.includes(userId)) {
+    return res.status(403).json({ 
+      ok: false, 
+      message: 'Forbidden: Insufficient privileges for Knowledge Review.' 
+    });
+  }
+
+  next();
+}

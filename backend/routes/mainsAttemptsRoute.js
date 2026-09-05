@@ -16,6 +16,7 @@
 
 import { Router } from "express";
 import { randomUUID } from "crypto";
+import { aggregateCosts } from "../services/geminiCostTracker.js";
 import {
   upsertMainsAttempt,
   getMainsAttemptById,
@@ -24,6 +25,7 @@ import {
   getMainsAttempts,
 } from "../repositories/mainsAttemptRepository.js";
 import { generateLearningLoop } from "../services/learningLoopService.js";
+import { findVerifiedEvidenceForContext, deriveEvidenceGap } from "../services/mainsEvidenceOrchestrator.js";
 
 const router = Router();
 
@@ -132,6 +134,25 @@ router.post("/save", async (req, res) => {
       });
     }
 
+    let basicReviewJson = body.basicReview || body.basicReviewJson || null;
+    let air1ParsedJson = body.air1ParsedJson || body.air1ParsedReview || null;
+
+    // Aggregate telemetry from air1ParsedJson (Question Intelligence) into basicReviewJson
+    if (basicReviewJson && air1ParsedJson?.ai_usage) {
+      if (!basicReviewJson.evaluation_meta) basicReviewJson.evaluation_meta = {};
+      if (!basicReviewJson.evaluation_meta.ai_usage) basicReviewJson.evaluation_meta.ai_usage = { calls: [] };
+      if (!basicReviewJson.evaluation_meta.ai_usage.calls) basicReviewJson.evaluation_meta.ai_usage.calls = [];
+      
+      const qIntellUsage = air1ParsedJson.ai_usage;
+      const existingCalls = basicReviewJson.evaluation_meta.ai_usage.calls;
+      
+      // Avoid duplicating if saved multiple times
+      if (!existingCalls.find(c => c.operation === "MAINS_QUESTION_INTELLIGENCE" && c.timestamp === qIntellUsage.timestamp)) {
+        existingCalls.push(qIntellUsage);
+        basicReviewJson.evaluation_meta.ai_usage.normal_evaluation = aggregateCosts(existingCalls);
+      }
+    }
+
     const saved = await upsertMainsAttempt({
       attemptId,
       userId:             body.userId        || "user_1",
@@ -147,9 +168,9 @@ router.post("/save", async (req, res) => {
       extractedText:      body.extractedText  || "",
       answerSource:       body.answerSource   || "typed",
       uploadedPagesMeta:  body.uploadedPagesMeta || [],
-      basicReviewJson:    body.basicReview    || body.basicReviewJson || null,
+      basicReviewJson,
       air1RawReview:      body.air1RawReview  || "",
-      air1ParsedJson:     body.air1ParsedJson || body.air1ParsedReview || null,
+      air1ParsedJson,
       currentScore:       body.currentScore   || "",
       targetScore:        body.targetScore    || "",
       status:             status              || "draft",
@@ -341,5 +362,111 @@ function formatAttemptRow(row) {
     finalizedAt:        row.finalized_at,
   };
 }
+
+// ────────────────────────────────────────────────────────────────────────────
+// POST /api/mains/attempts/:attemptId/find-verified-evidence
+// Moulika User-Flow Endpoint for discovering live evidence.
+// ────────────────────────────────────────────────────────────────────────────
+router.post("/:attemptId/find-verified-evidence", async (req, res) => {
+  const { attemptId } = req.params;
+  const userId = req.user?.id || "user_1"; // Assume standard auth pattern
+  const { evidence_type } = req.body || {};
+
+  try {
+    const row = await getMainsAttemptById(attemptId);
+    if (!row) {
+      return res.status(404).json({ ok: false, error: "Attempt not found" });
+    }
+
+    // 1. Cross-User Security Block
+    if (row.user_id !== userId) {
+      return res.status(403).json({ ok: false, error: "Unauthorized access to this attempt" });
+    }
+
+    // 2. Only Evaluated Attempts
+    const evaluationJson = row.air1_parsed_json || row.basic_review_json;
+    if (!evaluationJson || row.status !== "finalized") {
+      return res.status(400).json({ ok: false, error: "EVALUATION_NOT_READY" });
+    }
+
+    // 3. Derive Evidence Gap
+    const gap = deriveEvidenceGap(evaluationJson);
+    if (!gap.has_gap) {
+      return res.status(400).json({ ok: false, error: "No evidence gap identified for this answer." });
+    }
+
+    // Strict validation of requested evidence type against what's identified
+    if (evidence_type && !gap.missing_types.includes(evidence_type)) {
+      return res.status(400).json({ ok: false, error: "Requested evidence type does not match evaluation gap." });
+    }
+
+    // 4. Server-Derived Context
+    const evaluationContext = {
+      question_intelligence: {
+        paper: row.paper,
+        subject: row.subject,
+        topic: row.topic,
+        syllabus_node_id: evaluationJson.question_intelligence?.syllabus_node_id || ""
+      },
+      question_text: row.question_text,
+      evidence_analysis: evaluationJson.evidence_analysis || {},
+      best_value_addition: evaluationJson.best_value_addition || null
+    };
+
+    // 5. Call Shared Orchestrator
+    const result = await findVerifiedEvidenceForContext({
+      userId,
+      attemptId,
+      evaluationContext,
+      evidenceType: evidence_type
+    });
+
+    // 6. Append Evidence AI Usage safely (without overwriting normal usage)
+    if (evaluationJson.evaluation_meta && evaluationJson.evaluation_meta.ai_usage) {
+      if (!evaluationJson.evaluation_meta.ai_usage.evidence) {
+        evaluationJson.evaluation_meta.ai_usage.evidence = { search_calls: 0, verifier_calls: 0, estimated_cost_usd: 0 };
+      }
+      
+      const evUsage = evaluationJson.evaluation_meta.ai_usage.evidence;
+      // We increment the placeholder calls to show it was run
+      evUsage.search_calls += 1;
+      // Note: Full per-call token metadata from discovery/verification 
+      // can be injected here if the orchestrator returns it in result.ai_usage
+      if (result.ai_usage) {
+         evUsage.estimated_cost_usd += (result.ai_usage.estimated_cost_usd || 0);
+      }
+      
+      // Save back to DB
+      await upsertMainsAttempt({
+        attemptId: row.attempt_id,
+        userId: row.user_id,
+        questionKey: row.question_key,
+        questionText: row.question_text,
+        paper: row.paper,
+        subject: row.subject,
+        topic: row.topic,
+        marks: row.marks,
+        wordLimit: row.word_limit,
+        finalAnswerText: row.final_answer_text,
+        extractedText: row.extracted_text,
+        answerSource: row.answer_source,
+        uploadedPagesMeta: row.uploaded_pages_meta,
+        basicReviewJson: row.air1_parsed_json ? row.basic_review_json : evaluationJson,
+        air1RawReview: row.air1_raw_review,
+        air1ParsedJson: row.air1_parsed_json ? evaluationJson : row.air1_parsed_json,
+        currentScore: row.current_score,
+        targetScore: row.target_score,
+        status: row.status,
+        finalizedAt: row.finalized_at
+      });
+    }
+
+    return res.json({ ok: true, ...result });
+
+  } catch (err) {
+    console.error("[mains-attempt] find-verified-evidence error:", err);
+    return res.status(500).json({ ok: false, error: "Internal server error during discovery" });
+  }
+});
 
 export default router;

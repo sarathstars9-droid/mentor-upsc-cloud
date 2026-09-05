@@ -14,6 +14,9 @@ import Air1PremiumReport from "../components/mains/air1Review/Air1PremiumReport"
 import Air1ReviewMode from "../components/mains/air1Review/Air1ReviewMode";
 import { parseAir1ReviewJson } from "../lib/mains/parseAir1ReviewJson.js";
 import { downloadAir1ReviewPdf } from "../utils/downloadAir1ReviewPdf";
+import { normalizeMainsEvaluationForUI } from "../utils/normalizeMainsEvaluationForUI";
+import { MainsEvaluationV1Result } from "../components/mains/MainsEvaluationV1Result";
+import { FIXTURE_GS2_CA, FIXTURE_GEO_PROCESS, FIXTURE_GEO_MAP, FIXTURE_LEGACY } from "../components/mains/MainsEvaluationFixture";
 import {
     saveMainsAttempt,
     saveMainsReview,
@@ -617,7 +620,7 @@ function MainsIntelligenceCard({ refreshTrigger }) {
 }
 
 // ─── Timer component ──────────────────────────────────────────────────────────
-function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
+function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef, onTick, isWritingDone, onDoneWriting, actualWritingTimeSeconds }) {
     const timeLimit = TIME_LIMITS[marks] || TIME_LIMITS["15"];
     const [phase, setPhase] = useState("idle");
     const [countdown, setCountdown] = useState(5);
@@ -631,16 +634,21 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
     }, [timerRef]);
 
     useEffect(() => {
-        if (autoStart && phase === "idle") {
+        if (autoStart && phase === "idle" && !isWritingDone) {
             setCountdown(5);
             setPhase("countdown");
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [autoStart]);
 
-    const remaining = Math.max(timeLimit - elapsed, 0);
-    const overTime = elapsed > timeLimit;
-    const pct = Math.min((elapsed / timeLimit) * 100, 100);
+    useEffect(() => {
+        onTick?.(elapsed);
+    }, [elapsed, onTick]);
+
+    const displayElapsed = isWritingDone ? (actualWritingTimeSeconds || elapsed) : elapsed;
+    const remaining = Math.max(timeLimit - displayElapsed, 0);
+    const overTime = displayElapsed > timeLimit;
+    const pct = Math.min((displayElapsed / timeLimit) * 100, 100);
 
     const fmt = (s) => {
         const m = Math.floor(Math.abs(s) / 60).toString().padStart(2, "0");
@@ -649,37 +657,41 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
     };
 
     useEffect(() => {
-        if (phase === "running") onStatusChange?.(STATUSES.RUNNING);
+        if (isWritingDone) {
+            onStatusChange?.("Writing Complete");
+        } else if (phase === "running") onStatusChange?.(STATUSES.RUNNING);
         else if (phase === "paused") onStatusChange?.(STATUSES.PAUSED);
         else if (phase === "done") onStatusChange?.(STATUSES.DONE);
         else if (phase === "countdown") onStatusChange?.(STATUSES.COUNTDOWN);
         else if (phase === "idle") onStatusChange?.(STATUSES.IDLE);
-    }, [phase]); // eslint-disable-line
+    }, [phase, isWritingDone]); // eslint-disable-line
 
     useEffect(() => {
-        if (elapsed >= timeLimit && !bellFired.current && phase === "running") {
+        if (elapsed >= timeLimit && !bellFired.current && phase === "running" && !isWritingDone) {
             bellFired.current = true;
             ringBell(3);
         }
-    }, [elapsed, timeLimit, phase]);
+    }, [elapsed, timeLimit, phase, isWritingDone]);
 
     useEffect(() => {
+        if (isWritingDone) return;
         if (phase !== "countdown") return;
         if (countdown <= 0) { setPhase("running"); return; }
         const t = setTimeout(() => setCountdown((c) => c - 1), 1000);
         return () => clearTimeout(t);
-    }, [phase, countdown]);
+    }, [phase, countdown, isWritingDone]);
 
     useEffect(() => {
-        if (phase === "running") {
+        if (phase === "running" && !isWritingDone) {
             intervalRef.current = setInterval(() => setElapsed((e) => e + 1), 1000);
         } else {
             clearInterval(intervalRef.current);
         }
         return () => clearInterval(intervalRef.current);
-    }, [phase]);
+    }, [phase, isWritingDone]);
 
     const handleStart = () => {
+        if (isWritingDone) return;
         if (phase === "idle") { setCountdown(5); setPhase("countdown"); }
         else if (phase === "paused") { setPhase("running"); }
         else if (phase === "running") { setPhase("paused"); }
@@ -691,10 +703,11 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
         bellFired.current = false;
     };
 
-    const barColor = phase === "done" || overTime ? T.red
-        : pct > 80 ? T.red
-            : pct > 60 ? T.amber
-                : T.primaryAccent;
+    const barColor = isWritingDone ? T.green
+        : phase === "done" || overTime ? T.red
+            : pct > 80 ? T.red
+                : pct > 60 ? T.amber
+                    : T.primaryAccent;
 
     return (
         <div
@@ -702,13 +715,14 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
             style={{
                 background: T.surface,
                 border: `1px solid ${
-                    phase === "done" ? T.red + "55"
+                    isWritingDone ? T.green + "55"
+                    : phase === "done" ? T.red + "55"
                     : phase === "running" || phase === "countdown" ? (phase === "countdown" ? T.amber : barColor) + "55"
                     : T.border
                 }`,
                 borderRadius: 12, padding: "16px 20px",
                 display: "flex", flexDirection: "column", gap: 12,
-                boxShadow: (phase === "running" || phase === "countdown")
+                boxShadow: (phase === "running" || phase === "countdown") && !isWritingDone
                     ? `0 0 24px ${(phase === "countdown" ? T.amber : barColor)}22` : "none",
                 transition: "border-color 0.3s, box-shadow 0.3s",
             }}>
@@ -726,7 +740,7 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
                     </div>
                 </div>
                 <div style={{ textAlign: "right" }}>
-                    {phase === "countdown" ? (
+                    {phase === "countdown" && !isWritingDone ? (
                         <div style={{
                             fontSize: 38, fontWeight: 900, color: T.amber,
                             letterSpacing: "-0.02em", lineHeight: 1, fontVariantNumeric: "tabular-nums",
@@ -736,17 +750,18 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
                     ) : (
                         <div style={{
                             fontSize: 38, fontWeight: 900,
-                            color: overTime ? T.red : phase === "done" ? T.red : T.textBright,
+                            color: isWritingDone ? T.green : overTime ? T.red : phase === "done" ? T.red : T.textBright,
                             letterSpacing: "-0.02em", lineHeight: 1, fontVariantNumeric: "tabular-nums",
                         }}>
-                            {overTime ? `+${fmt(elapsed - timeLimit)}` : fmt(remaining)}
+                            {overTime ? `+${fmt(displayElapsed - timeLimit)}` : fmt(remaining)}
                         </div>
                     )}
-                    <div style={{ fontSize: 10, color: T.subtle, marginTop: 3, textAlign: "right" }}>
-                        {phase === "countdown" ? "Get ready…"
-                            : overTime ? "Over time"
-                                : phase === "done" ? "Time's up!"
-                                    : `${fmt(elapsed)} elapsed`}
+                    <div style={{ fontSize: 10, color: isWritingDone ? T.green : T.subtle, marginTop: 3, textAlign: "right", fontWeight: isWritingDone ? 700 : 400 }}>
+                        {isWritingDone ? `Writing frozen at ${fmt(displayElapsed)}`
+                            : phase === "countdown" ? "Get ready…"
+                                : overTime ? `Overtime (+${fmt(displayElapsed - timeLimit)})`
+                                    : phase === "done" ? "Time's up!"
+                                        : `${fmt(elapsed)} elapsed`}
                     </div>
                 </div>
             </div>
@@ -770,60 +785,87 @@ function Timer({ marks, accent, autoStart = false, onStatusChange, timerRef }) {
                 ))}
             </div>
 
-            <div style={{ display: "flex", gap: 8 }}>
-                {phase !== "done" && phase !== "idle" && (
-                    <button
-                        onClick={handleStart}
-                        disabled={phase === "countdown"}
-                        style={{
-                            flex: 1,
-                            background: T.primaryGradient,
-                            color: "#ffffff",
-                            border: "none",
-                            borderRadius: 8, fontWeight: 900, fontSize: 13,
-                            padding: "10px 0",
-                            cursor: phase === "countdown" ? "not-allowed" : "pointer",
-                            fontFamily: T.font, letterSpacing: "0.04em",
-                            opacity: phase === "countdown" ? 0.6 : 1,
-                        }}
-                    >
-                        {phase === "countdown" ? `Starting in ${countdown}…`
-                                : phase === "running" ? "▐▐  Pause"
-                                    : "▶  Resume"}
-                    </button>
-                )}
-                {phase === "done" && (
-                    <div style={{
-                        flex: 1, background: `${T.red}11`,
-                        border: `1px solid ${T.red}33`, borderRadius: 8,
-                        padding: "10px 16px", textAlign: "center",
-                        fontSize: 13, fontWeight: 700, color: T.red,
-                    }}>
-                        🔔 Time's up! Wrap up your answer.
+            {!isWritingDone && (
+                <div style={{ display: "flex", gap: 8, flexDirection: "column" }}>
+                    <div style={{ display: "flex", gap: 8 }}>
+                        {phase !== "done" && phase !== "idle" && (
+                            <button
+                                onClick={handleStart}
+                                disabled={phase === "countdown"}
+                                style={{
+                                    flex: 1,
+                                    background: T.primaryGradient,
+                                    color: "#ffffff",
+                                    border: "none",
+                                    borderRadius: 8, fontWeight: 900, fontSize: 13,
+                                    padding: "10px 0",
+                                    cursor: phase === "countdown" ? "not-allowed" : "pointer",
+                                    fontFamily: T.font, letterSpacing: "0.04em",
+                                    opacity: phase === "countdown" ? 0.6 : 1,
+                                }}
+                            >
+                                {phase === "countdown" ? `Starting in ${countdown}…`
+                                        : phase === "running" ? "▐▐  Pause"
+                                            : "▶  Resume"}
+                            </button>
+                        )}
+                        {phase !== "idle" && (
+                            <button onClick={handleReset} style={{
+                                background: "transparent", color: T.dim,
+                                border: `1px solid ${T.border}`, borderRadius: 8,
+                                fontWeight: 600, fontSize: 13, padding: "10px 16px",
+                                cursor: "pointer", fontFamily: T.font,
+                            }}>
+                                ↺ Reset
+                            </button>
+                        )}
                     </div>
-                )}
-                {phase !== "idle" && (
-                    <button onClick={handleReset} style={{
-                        background: "transparent", color: T.dim,
-                        border: `1px solid ${T.border}`, borderRadius: 8,
-                        fontWeight: 600, fontSize: 13, padding: "10px 16px",
-                        cursor: "pointer", fontFamily: T.font,
-                    }}>
-                        ↺ Reset
-                    </button>
-                )}
-            </div>
 
-            {overTime && phase === "running" && (
+                    {(phase === "running" || overTime) && onDoneWriting && (
+                        <button
+                            type="button"
+                            onClick={onDoneWriting}
+                            style={{
+                                width: "100%",
+                                background: "linear-gradient(135deg, #059669 0%, #10b981 100%)",
+                                color: "#ffffff",
+                                border: "none",
+                                borderRadius: 8,
+                                fontWeight: 800,
+                                fontSize: 13,
+                                padding: "10px 12px",
+                                cursor: "pointer",
+                                fontFamily: T.font,
+                                letterSpacing: "0.02em",
+                                boxShadow: "0 2px 8px rgba(16, 185, 129, 0.25)",
+                            }}
+                        >
+                            ✓ Done Writing
+                        </button>
+                    )}
+                </div>
+            )}
+
+            {isWritingDone && (
+                <div style={{
+                    background: `${T.green}15`, border: `1px solid ${T.green}33`,
+                    borderRadius: 8, padding: "8px 12px", fontSize: 12,
+                    color: T.green, fontWeight: 700, textAlign: "center",
+                }}>
+                    ✓ Writing phase completed in {fmt(displayElapsed)} (Target: {fmt(timeLimit)})
+                </div>
+            )}
+
+            {overTime && phase === "running" && !isWritingDone && (
                 <div style={{
                     background: `${T.red}11`, border: `1px solid ${T.red}22`,
                     borderRadius: 8, padding: "8px 12px", fontSize: 12,
                     color: T.red, fontWeight: 600, textAlign: "center",
                 }}>
-                    ⚠ Over time by {fmt(elapsed - timeLimit)} — finish quickly and move on.
+                    ⚠ Over time by {fmt(elapsed - timeLimit)} — finish writing and click Done Writing.
                 </div>
             )}
-            {phase === "running" && (
+            {phase === "running" && !isWritingDone && (
                 <div style={{ fontSize: 11, color: T.amber, marginTop: 2 }}>
                     ⚡ Stick to structure: Intro → Key Points → Conclusion
                 </div>
@@ -861,7 +903,6 @@ export default function AnswerWritingPage() {
     const resolvedAttemptId =
       attemptId ||
       initialRs?.attemptId ||
-      (typeof rs !== "undefined" ? rs?.attemptId : null) ||
       (typeof currentAttempt !== "undefined" ? (currentAttempt?.attemptId || currentAttempt?.id) : null) ||
       (typeof activeAttempt !== "undefined" ? (activeAttempt?.attemptId || activeAttempt?.id) : null) ||
       (typeof latestAttempt !== "undefined" ? (latestAttempt?.attemptId || latestAttempt?.id) : null) ||
@@ -871,8 +912,8 @@ export default function AnswerWritingPage() {
         paper: "GS1",
         year: "",
         questionNumber: "",
-        marks: "15",
-        wordLimit: "250",
+        marks: "",
+        wordLimit: "",
         instituteName: "",
         testName: "",
         subjectTopic: ""
@@ -886,6 +927,7 @@ export default function AnswerWritingPage() {
         setAir1JsonText("");
         setAir1ParseResult(null);
         setSaved(false);
+        setExtractedVisualArtifacts(null);
     };
 
     const handleUpdateUploadMeta = (updates) => {
@@ -985,7 +1027,7 @@ export default function AnswerWritingPage() {
 
     const [isMobile, setIsMobile] = useState(false);
     useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        const checkMobile = () => setIsMobile(window.innerWidth < 1100);
         checkMobile();
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
@@ -1021,7 +1063,11 @@ export default function AnswerWritingPage() {
             if (rs.ocrExtracted !== undefined) setOcrExtracted(rs.ocrExtracted);
             if (rs.verifiedQuestionText !== undefined) setVerifiedQuestionText(rs.verifiedQuestionText);
             if (rs.pastedText !== undefined) setPastedText(rs.pastedText);
-            if (rs.attemptId !== undefined) setAttemptId(rs.attemptId);
+            if (rs.attemptId !== undefined) {
+                setAttemptId(rs.attemptId);
+            } else {
+                setAttemptId(null);
+            }
             if (rs.uploadMeta) setUploadMeta(rs.uploadMeta);
             if (rs.sessionStarted !== undefined) {
                 setSessionStarted(rs.sessionStarted);
@@ -1033,12 +1079,29 @@ export default function AnswerWritingPage() {
             }
         }
     }, [rs]);
-    const paper          = rs.paper          || "GS1";
-    const mode           = rs.mode           || "PYQ";
-    const year           = rs.year           || null;
-    const topic          = rs.topic          || "";
-    const syllabusNodeId = rs.syllabusNodeId || "";
-    const questions      = (rs.questions && rs.questions.length > 0) ? rs.questions : FALLBACK_QUESTIONS;
+    const paper          = rs.paper          || rs.question?.paper || "GS1";
+    const mode           = rs.mode           || rs.question?.mode  || "PYQ";
+    const year           = rs.year           || rs.question?.year  || null;
+    const topic          = rs.topic          || rs.question?.topic || "";
+    const syllabusNodeId = rs.syllabusNodeId || rs.question?.syllabusNodeId || "";
+
+    const rawQuestionSingle = rs.question
+        ? (typeof rs.question === "object"
+            ? {
+                ...rs.question,
+                paper: rs.question.paper || paper,
+                year: rs.question.year || year,
+                marks: rs.question.marks || rs.marks || "15",
+                question: extractQuestionText(rs.question)
+              }
+            : { question: String(rs.question), paper, mode, year, topic })
+        : null;
+
+    const questions = (rs.questions && rs.questions.length > 0)
+        ? rs.questions
+        : rawQuestionSingle
+            ? [rawQuestionSingle]
+            : FALLBACK_QUESTIONS;
 
     const [currentIndex, setCurrentIndex] = useState(() => {
         return rs.currentIndex || 0;
@@ -1060,11 +1123,11 @@ export default function AnswerWritingPage() {
 
     // ─── Derived session ──────────────────────────────────────────────────────
     const paperAccent = getPaperAccent(paper);
-    const marks       = String(activeQ.marks || "15");
+    const marks       = activeQ.marks ? String(activeQ.marks) : "";
     const timeLimit   = TIME_LIMITS[marks] || TIME_LIMITS["15"];
-    const wordTarget  = practiceMode === "upload"
-        ? parseInt(uploadMeta.wordLimit || (uploadMeta.marks === "10" ? "150" : "250"))
-        : (WORD_TARGETS[marks] || 200);
+    const wordTarget  = activeQ.wordLimit
+        ? parseInt(activeQ.wordLimit)
+        : (WORD_TARGETS[marks] || (marks === "10" ? 150 : 200));
 
     const SESSION = {
         paper,
@@ -1082,41 +1145,6 @@ export default function AnswerWritingPage() {
     };
 
     const getCurrentQuestionContext = () => {
-        if (practiceMode === "upload") {
-            const questionText = verifiedQuestionText || "";
-            const ctxPaper = uploadMeta.paper || "GS1";
-            const ctxYear = uploadMeta.year || "";
-            const ctxMarks = uploadMeta.marks || "15";
-            const ctxWordLimit = uploadMeta.wordLimit || "250";
-            const questionId = resolvedAttemptId;
-            const questionKey = buildQuestionKey({
-                paper: ctxPaper,
-                year: ctxYear,
-                questionText
-            });
-            return {
-                raw: null,
-                paper: ctxPaper,
-                year: ctxYear,
-                marks: ctxMarks,
-                wordLimit: ctxWordLimit,
-                questionId,
-                attemptId: resolvedAttemptId,
-                mode: uploadMeta.sourceOption,
-                focus: uploadMeta.subjectTopic || "",
-                topicNodeId: "",
-                structure: "",
-                priority: "",
-                questionText,
-                question: questionText,
-                questionKey,
-                question_key: questionKey,
-                workspace: uploadMeta.workspace || "",
-                subject: uploadMeta.subject || "",
-                answerType: uploadMeta.answerType || ""
-            };
-        }
-
         const q = activeQ || currentQuestion || questions?.[currentIndex] || SESSION;
 
         const questionText = extractQuestionText(
@@ -1124,14 +1152,15 @@ export default function AnswerWritingPage() {
             q?.questionText ||
             q?.text ||
             q?.title ||
-            SESSION?.question
+            SESSION?.question ||
+            (practiceMode === "upload" && verifiedQuestionText)
         );
 
-        const ctxPaper = q?.paper || SESSION?.paper || "GS1";
-        const ctxYear = q?.year || q?.questionYear || SESSION?.year || "";
-        const ctxMarks = q?.marks || SESSION?.marks;
-        const ctxWordLimit = q?.wordLimit || SESSION?.wordLimit || wordTarget;
-        const questionId = q?.id || q?.questionId || q?.question_id || null;
+        const ctxPaper = q?.paper || SESSION?.paper || (practiceMode === "upload" && uploadMeta.paper) || "GS1";
+        const ctxYear = q?.year || q?.questionYear || SESSION?.year || (practiceMode === "upload" && uploadMeta.year) || "";
+        const ctxMarks = q?.marks || SESSION?.marks || (practiceMode === "upload" && uploadMeta.marks) || "15";
+        const ctxWordLimit = q?.wordLimit || WORD_TARGETS[String(ctxMarks)] || (practiceMode === "upload" && uploadMeta.wordLimit) || wordTarget;
+        const questionId = q?.id || q?.questionId || q?.question_id || resolvedAttemptId || null;
 
         const questionKey = buildQuestionKey({
             paper: ctxPaper,
@@ -1147,15 +1176,18 @@ export default function AnswerWritingPage() {
             wordLimit: ctxWordLimit,
             questionId,
             attemptId: resolvedAttemptId,
-            mode: SESSION.mode,
-            focus: q?.focus || SESSION.focus || "",
+            mode: practiceMode === "upload" ? (uploadMeta.sourceOption || "pyq") : SESSION.mode,
+            focus: (practiceMode === "upload" && uploadMeta.subjectTopic) || q?.focus || SESSION.focus || "",
             topicNodeId: q?.syllabusNodeId || q?.topicNodeId || SESSION.topicNodeId || "",
             structure: q?.structure || SESSION.structure || "",
             priority: q?.priority || SESSION.priority || "",
             questionText,
             question: questionText,
             questionKey,
-            question_key: questionKey
+            question_key: questionKey,
+            workspace: uploadMeta.workspace || "",
+            subject: uploadMeta.subject || "",
+            answerType: uploadMeta.answerType || ""
         };
     };
 
@@ -1177,9 +1209,19 @@ export default function AnswerWritingPage() {
     // ─── Per-question state ───────────────────────────────────────────────────
     const [timerStatus, setTimerStatus]   = useState(STATUSES.IDLE);
     const [sessionStarted, setSessionStarted] = useState(() => initialRs.sessionStarted || (initialRs.ocrExtracted ? true : false));
+    const [isWritingDone, setIsWritingDone] = useState(false);
+    const [timerElapsed, setTimerElapsed] = useState(0);
+    const [actualWritingTimeSeconds, setActualWritingTimeSeconds] = useState(0);
     const timerSectionRef = useRef(null);
     // Phase 2: tracks which question the current answer belongs to
     const answerQuestionKeyRef = useRef(null);
+
+    const handleDoneWriting = () => {
+        const writingDuration = timerElapsed;
+        setActualWritingTimeSeconds(writingDuration);
+        setIsWritingDone(true);
+        setTimerStatus("Writing Complete");
+    };
 
     const [uploadedPages, setUploadedPages] = useState(() => {
         if (initialRs.uploadedPagesMeta) {
@@ -1199,6 +1241,7 @@ export default function AnswerWritingPage() {
     const [evalPromptCopied, setEvalPromptCopied] = useState(false);
     const [isEvaluating, setIsEvaluating]         = useState(false);
     const [isExtracting, setIsExtracting]         = useState(false);
+    const [extractedVisualArtifacts, setExtractedVisualArtifacts] = useState(null);
 
     const [saved, setSaved]                     = useState(false);
     const [savedAttemptData, setSavedAttemptData] = useState(null);
@@ -1274,6 +1317,9 @@ export default function AnswerWritingPage() {
         setSaved(false);
         setSavedAttemptData(null);
         setSessionStarted(false);
+        setIsWritingDone(false);
+        setTimerElapsed(0);
+        setActualWritingTimeSeconds(0);
         setAttemptId(null);
         setDbAttempt(null);
         setReviewId(null);
@@ -1325,8 +1371,8 @@ export default function AnswerWritingPage() {
         clearVisibleAttemptState();
         console.log("[RESTORE USING DISPLAYED QUESTION]", restoreCtx);
 
-        const fetchPromise = (rs?.attemptId || attemptId)
-            ? fetchMainsAttempt(rs?.attemptId || attemptId)
+        const fetchPromise = rs?.attemptId
+            ? fetchMainsAttempt(rs.attemptId)
             : fetchLatestMainsAttemptForQuestion("user_1", restoreCtx.questionKey);
 
         fetchPromise
@@ -1455,6 +1501,7 @@ export default function AnswerWritingPage() {
         setPastedText("");
         setSaved(false);
         setPromptCopied(false);
+        setExtractedVisualArtifacts(null);
     };
 
     // ─── Extraction prompt guard ──────────────────────────────────────────────
@@ -1500,6 +1547,17 @@ export default function AnswerWritingPage() {
     // ─── Gemini Basic Review ──────────────────────────────────────────────────
     const handleBasicReview = async () => {
         const ctx = getCurrentQuestionContext();
+        
+        // Prevent reusing a finalized attempt
+        let currentAttemptId = attemptId;
+        let currentDbAttempt = dbAttempt;
+        if (dbAttempt && dbAttempt.status === "finalized") {
+            currentAttemptId = null;
+            currentDbAttempt = null;
+            setAttemptId(null);
+            setDbAttempt(null);
+        }
+
         // Phase 2 guard: block if question context is invalid
         const ctxGuard = validateSaveContext(ctx);
         if (!ctxGuard.ok) {
@@ -1514,35 +1572,48 @@ export default function AnswerWritingPage() {
             );
             return;
         }
+        
+        const effectiveMarks = (currentAttemptId && currentDbAttempt) ? currentDbAttempt.marks : ctx.marks;
+        if (!effectiveMarks) {
+            setReviewUiError("Please confirm question marks before evaluation.");
+            return;
+        }
+        const effectiveWordLimit = (currentAttemptId && currentDbAttempt) ? (currentDbAttempt.wordLimit || currentDbAttempt.word_limit) : ctx.wordLimit;
+        if (!effectiveWordLimit) {
+            setReviewUiError("Please confirm question word limit before evaluation.");
+            return;
+        }
         setIsEvaluating(true);
         setReviewUiError("");
         const questionKeyAtStart = ctx.questionKey;
         try {
             let payload;
-            if (attemptId && dbAttempt) {
+            if (currentAttemptId && currentDbAttempt) {
                 payload = {
-                    userId: dbAttempt.userId || "user_1",
-                    attemptId: attemptId,
-                    paper: dbAttempt.paper || "GS1",
-                    subject: dbAttempt.subject || dbAttempt.topic || "",
-                    topic: dbAttempt.topic || "",
-                    questionText: dbAttempt.questionText || dbAttempt.question || "",
-                    candidateAnswer: dbAttempt.finalAnswerText || dbAttempt.answerText || dbAttempt.extractedText || pastedText.trim(),
-                    marks: parseInt(dbAttempt.marks || 15),
-                    wordLimit: parseInt(dbAttempt.wordLimit || dbAttempt.word_limit || 200),
-                    sourceType: dbAttempt.answerSource || "typed",
-                    questionSourceType: dbAttempt.mode || "PYQ",
-                    answerSourceType: dbAttempt.answerSource || "typed",
+                    userId: currentDbAttempt.userId || "user_1",
+                    attemptId: currentAttemptId,
+                    paper: currentDbAttempt.paper || "GS1",
+                    subject: currentDbAttempt.subject || currentDbAttempt.topic || "",
+                    topic: currentDbAttempt.topic || "",
+                    questionText: currentDbAttempt.questionText || currentDbAttempt.question || "",
+                    candidateAnswer: currentDbAttempt.finalAnswerText || currentDbAttempt.answerText || currentDbAttempt.extractedText || pastedText.trim(),
+                    visualArtifacts: extractedVisualArtifacts || null,
+                    marks: parseInt(currentDbAttempt.marks),
+                    wordLimit: parseInt(currentDbAttempt.wordLimit || currentDbAttempt.word_limit),
+                    sourceType: currentDbAttempt.answerSource || "typed",
+                    questionSourceType: currentDbAttempt.mode || "PYQ",
+                    answerSourceType: currentDbAttempt.answerSource || "typed",
                 };
             } else {
                 payload = {
                     userId: "user_1",
-                    attemptId: attemptId || undefined,
+                    attemptId: currentAttemptId || undefined,
                     paper: ctx.paper,
                     subject: practiceMode === "upload" ? (uploadMeta.subjectTopic || "General") : (ctx.topicNodeId || topic || ""),
                     topic: practiceMode === "upload" ? (uploadMeta.detectedTopic || uploadMeta.subjectTopic || "General") : (ctx.topicNodeId || topic || ""),
                     questionText: ctx.questionText,
                     candidateAnswer: pastedText.trim(),
+                    visualArtifacts: extractedVisualArtifacts || null,
                     marks: parseInt(ctx.marks),
                     wordLimit: parseInt(ctx.wordLimit || wordTarget),
                     sourceType: hasPages ? "uploaded" : "typed",
@@ -1593,6 +1664,13 @@ export default function AnswerWritingPage() {
     // ─── Extraction (Gemini Vision) ───────────────────────────────────────────
     const handleExtractAnswer = async () => {
         if (!hasPages) return;
+        
+        // Prevent reusing a finalized attempt
+        if (dbAttempt && dbAttempt.status === "finalized") {
+            setAttemptId(null);
+            setDbAttempt(null);
+        }
+
         // Phase 3: capture question key before async operation
         const questionKeyAtStart = getCurrentQuestionContext().questionKey;
         setIsExtracting(true);
@@ -1613,12 +1691,14 @@ export default function AnswerWritingPage() {
             if (res.ok && res.text) {
                 answerQuestionKeyRef.current = questionKeyAtStart;
                 setPastedText(res.text);
+                setExtractedVisualArtifacts(res.visualArtifacts || null);
+                setOcrExtracted(true);
             } else {
-                setReviewUiError(res.error || "Extraction failed.");
+                setReviewUiError(res.error || "Couldn't extract this page. Try again.");
             }
         } catch (error) {
             console.error("Extraction error:", error);
-            setReviewUiError(error?.message || "Extraction failed. Please try again or use the manual fallback.");
+            setReviewUiError("Couldn't extract this page. Try again.");
         } finally {
             setIsExtracting(false);
         }
@@ -1723,7 +1803,12 @@ export default function AnswerWritingPage() {
                 writingSession: {
                     startedAt: new Date().toISOString(),
                     endedAt: new Date().toISOString(),
-                    timeTakenSeconds: 0,
+                    timeTakenSeconds: actualWritingTimeSeconds || timerElapsed,
+                    targetTimeSeconds: timeLimit,
+                    actualWritingTimeSeconds: actualWritingTimeSeconds || timerElapsed,
+                    overtimeSeconds: Math.max(0, (actualWritingTimeSeconds || timerElapsed) - timeLimit),
+                    timerStatus: isWritingDone ? "Writing Complete" : timerStatus,
+                    isWritingDone,
                 },
                 answerUpload: {
                     pageCount: uploadedPages.length,
@@ -1737,6 +1822,7 @@ export default function AnswerWritingPage() {
                     method: "chatgpt_manual_paste",
                     promptVersion: "mains-answer-extraction-v1",
                     extractedText: pastedText,
+                    visualArtifacts: extractedVisualArtifacts,
                 },
                 ...(air1ReviewText.trim() ? {
                     air1Review: {
@@ -2174,7 +2260,7 @@ export default function AnswerWritingPage() {
     const compactSteps = [
         { label: "Attempt",      done: sessionStarted },
         { label: "Write & Verify",   done: hasEvaluationText },
-        { label: "Evaluate & Finalize", done: !!attemptId || saved },
+        { label: "Evaluate & Finalize", done: saved },
     ];
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -2202,11 +2288,174 @@ export default function AnswerWritingPage() {
     
     const getNextAction = () => {
         if (!sessionStarted) return { text: "Read question and start the attempt timer.", cta: "Start Attempt", action: handleStartSession, primary: true };
-        if (!hasPastedText) return { text: "Type your answer in the workspace below (minimum 20 characters).", cta: "Evaluate Answer", action: () => {}, primary: false };
-        if (!hasEvaluationText) return { text: "Run basic evaluation to get initial scores.", cta: "Evaluate Answer", action: handleBasicReview, primary: true };
-        if (!parsedAir1Json && !air1ReviewText) return { text: "Copy prompt, run in AIR-1 Evaluator, and paste review back.", cta: "Generate AIR-1 Prompt", action: handleCopyReviewPrompt, primary: true };
+        if (!hasPastedText) {
+            if (practiceMode === "upload") {
+                if (uploadedPages.length === 0) {
+                    return { text: "Upload and extract your handwritten answer to evaluate.", cta: "Evaluate Answer", action: () => {}, primary: false };
+                }
+                return { text: "Click 'Extract with OCR' to read handwriting.", cta: "Extract with OCR", action: handleExtractAnswer, primary: true };
+            }
+            return { text: "Type your answer below to evaluate.", cta: "Evaluate Answer", action: () => {}, primary: false };
+        }
+        if (!hasEvaluationText) {
+            if (practiceMode === "upload" && ocrExtracted) {
+                return { text: "Review the extracted text, then evaluate.", cta: "Evaluate Answer", action: handleBasicReview, primary: true };
+            }
+            return { text: "Run basic evaluation to get initial scores.", cta: "Evaluate Answer", action: handleBasicReview, primary: true };
+        }
         if (!saved) return { text: "Finalize this attempt to save intelligence to your profile.", cta: finalizeState === "saving" ? "Saving…" : "Finalize Attempt", action: handleFinalize, primary: true };
         return { text: "Attempt completed successfully. Great job!", cta: "Next Question", action: handleNext, primary: false };
+    };
+
+    const renderQuickReviewContent = () => {
+        const uiEval = normalizeMainsEvaluationForUI(evaluationData);
+        if (uiEval) {
+            if (uiEval.isV1) {
+                return (
+                    <div style={{ padding: "0 0" }}>
+                        <MainsEvaluationV1Result 
+                            evaluation={uiEval}
+                            candidateAnswer={pastedText}
+                            onOpenMistakes={() => handleOpenMistakeBook()}
+                            onOpenRevision={() => handleOpenRevisionTasks()}
+                        />
+                    </div>
+                );
+            } else {
+                // Render legacy format UI block
+                return (
+                    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                        {/* Top Summary Strip */}
+                        <div style={{ display: "flex", gap: 16, background: T.surfaceHigh, padding: isMobile ? "16px" : "16px 24px", borderRadius: 12, border: `1px solid ${T.borderMid}`, alignItems: isMobile ? "flex-start" : "center", flexDirection: isMobile ? "column" : "row", flexWrap: "wrap" }}>
+                            <div style={{ flex: isMobile ? "none" : "1 1 120px", width: "100%" }}>
+                                <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Score</div>
+                                <div style={{ fontSize: 24, fontWeight: 900, color: T.amber, lineHeight: 1 }}>{evaluationData.score}</div>
+                            </div>
+                            <div style={{ flex: isMobile ? "none" : "1 1 120px", borderLeft: isMobile ? "none" : `1px solid ${T.borderMid}`, borderTop: isMobile ? `1px solid ${T.borderMid}` : "none", paddingLeft: isMobile ? 0 : 16, paddingTop: isMobile ? 12 : 0, width: "100%" }}>
+                                <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Level</div>
+                                <div style={{ fontSize: 13, fontWeight: 700, color: T.textBright, background: T.bg, padding: "4px 10px", borderRadius: 12, border: `1px solid ${T.borderMid}`, width: "fit-content" }}>{evaluationData.level || "Beginner"}</div>
+                            </div>
+                            {evaluationData.finalAdvice && (
+                            <div style={{ flex: isMobile ? "none" : "2 1 200px", borderLeft: isMobile ? "none" : `1px solid ${T.borderMid}`, borderTop: isMobile ? `1px solid ${T.borderMid}` : "none", paddingLeft: isMobile ? 0 : 16, paddingTop: isMobile ? 12 : 0, width: "100%" }}>
+                                <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Next Action</div>
+                                <div style={{ fontSize: 14, color: T.textBright, fontWeight: 600, lineHeight: 1.5, overflowWrap: "break-word" }}>{evaluationData.finalAdvice}</div>
+                            </div>
+                            )}
+                        </div>
+
+                        {/* Examiner Impression */}
+                        {evaluationData.examinerImpression && (
+                            <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>30-Second Examiner Impression</div>
+                                <div style={{ fontSize: 15, color: T.textBright, lineHeight: 1.65 }}>{evaluationData.examinerImpression}</div>
+                            </div>
+                        )}
+
+                        {/* Top 3 Fixes */}
+                        {evaluationData.topFixes && evaluationData.topFixes.length > 0 && (
+                            <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                <div style={{ fontSize: 11, fontWeight: 800, color: T.red, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 16 }}>Top 3 Fixes</div>
+                                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                                    {evaluationData.topFixes.map((fix, i) => (
+                                        <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start", background: T.bg, padding: 12, borderRadius: 8, border: `1px solid ${T.borderMid}` }}>
+                                            <div style={{ background: T.surfaceHigh, color: T.red, width: 24, height: 24, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 800, flexShrink: 0 }}>{i + 1}</div>
+                                            <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{fix}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* UPSC Structure */}
+                        {evaluationData.upscStructure && Array.isArray(evaluationData.upscStructure) && evaluationData.upscStructure.length > 0 && (
+                            <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                <div style={{ fontSize: 11, fontWeight: 800, color: T.blue, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 16 }}>Suggested Answer Structure</div>
+                                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                                    {evaluationData.upscStructure.map((struct, i) => (
+                                        <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                                            <div style={{ background: T.bg, color: T.blue, width: 20, height: 20, borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0, marginTop: 2 }}>{i + 1}</div>
+                                            <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{struct}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                        {evaluationData.upscStructure && typeof evaluationData.upscStructure === 'string' && (
+                            <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                <div style={{ fontSize: 11, fontWeight: 800, color: T.blue, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Suggested Answer Structure</div>
+                                <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6, whiteSpace: "pre-wrap" }}>{evaluationData.upscStructure}</div>
+                            </div>
+                        )}
+
+                        {/* Rewrite Toolkit Grid */}
+                        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
+                            {/* Missing Dimensions */}
+                            {evaluationData.missingDimensions && evaluationData.missingDimensions.length > 0 && (
+                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.amber, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 16 }}>Missing UPSC Dimensions</div>
+                                    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                                        {evaluationData.missingDimensions.map((dim, i) => (
+                                            <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                                                <span style={{ color: T.amber, fontSize: 14 }}>•</span>
+                                                <span style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{dim}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                            
+                            {/* Improved Intro */}
+                            {evaluationData.improvedIntro && (
+                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.green, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Improved Introduction</div>
+                                    <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{evaluationData.improvedIntro}</div>
+                                </div>
+                            )}
+                            
+                            {/* Improved Conclusion */}
+                            {evaluationData.improvedConclusion && (
+                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.green, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Improved Conclusion</div>
+                                    <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{evaluationData.improvedConclusion}</div>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Final Advice */}
+                        {evaluationData.finalAdvice && (
+                            <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}`, borderLeft: `4px solid ${T.amber}` }}>
+                                <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Before rewriting, do this</div>
+                                <div style={{ fontSize: 15, color: T.textBright, lineHeight: 1.6, fontWeight: 600 }}>{evaluationData.finalAdvice}</div>
+                            </div>
+                        )}
+                    </div>
+                );
+            }
+        } else if (evaluationText) {
+            return (
+                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: T.textBright, marginBottom: 4 }}>Mentor Notes</div>
+                    <div style={{ fontSize: 12, color: T.dim, marginBottom: 16 }}>Structured review was not available, so showing raw mentor feedback.</div>
+                    <div style={{ 
+                        fontSize: 14, 
+                        color: T.textBright, 
+                        lineHeight: 1.7, 
+                        whiteSpace: "pre-wrap", 
+                        maxHeight: "400px", 
+                        overflowY: "auto",
+                        fontFamily: T.font
+                    }}>
+                        {evaluationText}
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div style={{ padding: 32, textAlign: "center", color: T.dim, fontSize: 14, background: T.surfaceHigh, borderRadius: 12, border: `1px dashed ${T.borderMid}` }}>
+                    Paste your answer text and click "Run Quick Review" to get a mentor evaluation.
+                </div>
+            );
+        }
     };
 
     const nextAction = getNextAction();
@@ -2301,8 +2550,6 @@ export default function AnswerWritingPage() {
                             })}
                         </div>
 
-                        {practiceMode === "typed" ? (
-                            <>
                                 {/* Question Card */}
                                 <div style={{ 
                                     background: `linear-gradient(180deg, ${T.surface}, ${T.bg})`,
@@ -2345,476 +2592,227 @@ export default function AnswerWritingPage() {
                                     </div>
                                 </div>
 
-                                {/* Candidate Answer Card */}
+                                {/* Answer Input Workspace */}
                                 {sessionStarted && (
                                     <SectionCard accentTop={T.blue}>
                                         <div style={{ padding: 32 }}>
-                                            <div style={{ fontSize: 20, fontWeight: 900, color: T.textBright, marginBottom: 24, letterSpacing: "-0.01em" }}>Your Answer</div>
-                                            <textarea
-                                                value={pastedText}
-                                                onChange={(e) => { setPastedText(e.target.value); setSaved(false); }}
-                                                rows={8}
-                                                style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 16, fontFamily: T.font, fontSize: 14, lineHeight: 1.6, resize: "vertical", outline: "none" }}
-                                                placeholder="Your answer text..."
-                                            />
-                                            <div style={{ fontSize: 12, color: T.dim, marginTop: 8 }}>Words: {wordCount} / {wordTarget}</div>
-                                        </div>
-                                    </SectionCard>
-                                )}
-                            </>
-                        ) : (
-                            <>
-                                {/* Upload Mode Workspace */}
-                                {!ocrExtracted ? (
-                                    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                                        {/* Source selector & Metadata Fields */}
-                                        <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 12, padding: 20 }}>
-                                            <h3 style={{ fontSize: 12, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 12, marginTop: 0 }}>Source Type</h3>
-                                            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                                                {["pyq", "institute", "custom"].map((opt) => (
+                                            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24, flexWrap: "wrap", gap: 16 }}>
+                                                <div style={{ fontSize: 20, fontWeight: 900, color: T.textBright, letterSpacing: "-0.01em" }}>Your Answer</div>
+                                                
+                                                {/* Segmented Control: Type Answer | Upload Handwritten */}
+                                                <div style={{ display: "flex", background: T.surfaceHigh, padding: 4, borderRadius: 10, border: `1px solid ${T.borderMid}` }}>
                                                     <button
-                                                        key={opt}
                                                         type="button"
-                                                        onClick={() => { setUploadMeta(prev => ({ ...prev, sourceOption: opt })); }}
+                                                        onClick={() => {
+                                                            setPracticeMode("typed");
+                                                        }}
                                                         style={{
-                                                            padding: "8px 16px",
-                                                            borderRadius: 8,
+                                                            padding: "6px 16px",
+                                                            borderRadius: 7,
                                                             fontSize: 12,
                                                             fontWeight: 700,
                                                             border: "none",
-                                                            background: uploadMeta.sourceOption === opt ? T.primaryAccent : T.surfaceHigh,
-                                                            color: uploadMeta.sourceOption === opt ? "#fff" : T.text,
+                                                            background: practiceMode === "typed" ? T.primaryAccent : "transparent",
+                                                            color: practiceMode === "typed" ? "#ffffff" : T.text,
                                                             cursor: "pointer",
-                                                            textTransform: "capitalize",
-                                                            transition: "background 0.2s"
+                                                            transition: "all 0.15s ease"
                                                         }}
                                                     >
-                                                        {opt === "pyq" ? "UPSC PYQ" : opt === "institute" ? "Institute Test" : "Custom Practice"}
+                                                        Type Answer
                                                     </button>
-                                                ))}
-                                            </div>
-
-                                            {/* Meta Options Grid */}
-                                            <div style={{
-                                                display: "grid",
-                                                gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(180px, 1fr))",
-                                                gap: 16,
-                                                marginTop: 20,
-                                                borderTop: `1px solid ${T.border}`,
-                                                paddingTop: 16
-                                            }}>
-                                                {uploadMeta.sourceOption === "pyq" && (
-                                                    <>
-                                                        <div>
-                                                            <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Paper</label>
-                                                            <select 
-                                                                value={uploadMeta.paper} 
-                                                                onChange={e => setUploadMeta(prev => ({ ...prev, paper: e.target.value }))}
-                                                                style={{ width: "100%", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
-                                                            >
-                                                                {["GS1", "GS2", "GS3", "GS4", "Essay", "Ethics", "Optional"].map(p => <option key={p} value={p}>{p}</option>)}
-                                                            </select>
-                                                        </div>
-                                                        <div>
-                                                            <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Year</label>
-                                                            <input 
-                                                                type="number" 
-                                                                placeholder="e.g. 2023"
-                                                                value={uploadMeta.year} 
-                                                                onChange={e => setUploadMeta(prev => ({ ...prev, year: e.target.value }))}
-                                                                style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
-                                                            />
-                                                        </div>
-                                                        <div>
-                                                            <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Question No.</label>
-                                                            <input 
-                                                                type="text" 
-                                                                placeholder="e.g. 3a"
-                                                                value={uploadMeta.questionNumber} 
-                                                                onChange={e => setUploadMeta(prev => ({ ...prev, questionNumber: e.target.value }))}
-                                                                style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
-                                                            />
-                                                        </div>
-                                                    </>
-                                                )}
-
-                                                {uploadMeta.sourceOption === "institute" && (
-                                                    <>
-                                                        <div style={{ gridColumn: isMobile ? "span 1" : "span 2" }}>
-                                                            <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Institute Name</label>
-                                                            <input 
-                                                                type="text" 
-                                                                placeholder="Vision IAS, Forum IAS..."
-                                                                value={uploadMeta.instituteName || ""} 
-                                                                onChange={e => setUploadMeta(prev => ({ ...prev, instituteName: e.target.value }))}
-                                                                style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
-                                                            />
-                                                        </div>
-                                                        <div style={{ gridColumn: isMobile ? "span 1" : "span 2" }}>
-                                                            <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Test Name / Code</label>
-                                                            <input 
-                                                                type="text" 
-                                                                placeholder="Mains Test 4..."
-                                                                value={uploadMeta.testName || ""} 
-                                                                onChange={e => setUploadMeta(prev => ({ ...prev, testName: e.target.value }))}
-                                                                style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
-                                                            />
-                                                        </div>
-                                                        <div>
-                                                            <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Paper</label>
-                                                            <select 
-                                                                value={uploadMeta.paper} 
-                                                                onChange={e => setUploadMeta(prev => ({ ...prev, paper: e.target.value }))}
-                                                                style={{ width: "100%", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
-                                                            >
-                                                                {["GS1", "GS2", "GS3", "GS4", "Essay", "Ethics", "Optional"].map(p => <option key={p} value={p}>{p}</option>)}
-                                                            </select>
-                                                        </div>
-                                                        <div>
-                                                            <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Question No.</label>
-                                                            <input 
-                                                                type="text" 
-                                                                value={uploadMeta.questionNumber} 
-                                                                onChange={e => setUploadMeta(prev => ({ ...prev, questionNumber: e.target.value }))}
-                                                                style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
-                                                            />
-                                                        </div>
-                                                    </>
-                                                )}
-
-                                                {uploadMeta.sourceOption === "custom" && (
-                                                    <>
-                                                        <div style={{ gridColumn: isMobile ? "span 1" : "span 2" }}>
-                                                            <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Subject / Topic</label>
-                                                            <input 
-                                                                type="text" 
-                                                                placeholder="e.g. Art & Culture, Internal Security"
-                                                                value={uploadMeta.subjectTopic || ""} 
-                                                                onChange={e => setUploadMeta(prev => ({ ...prev, subjectTopic: e.target.value }))}
-                                                                style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
-                                                            />
-                                                        </div>
-                                                        <div>
-                                                            <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Paper</label>
-                                                            <select 
-                                                                value={uploadMeta.paper} 
-                                                                onChange={e => setUploadMeta(prev => ({ ...prev, paper: e.target.value }))}
-                                                                style={{ width: "100%", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
-                                                            >
-                                                                {["GS1", "GS2", "GS3", "GS4", "Essay", "Ethics", "Optional"].map(p => <option key={p} value={p}>{p}</option>)}
-                                                            </select>
-                                                        </div>
-                                                    </>
-                                                )}
-
-                                                <div>
-                                                    <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Marks</label>
-                                                    <select 
-                                                        value={uploadMeta.marks} 
-                                                        onChange={e => setUploadMeta(prev => ({ ...prev, marks: e.target.value }))}
-                                                        style={{ width: "100%", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => {
+                                                            setPracticeMode("upload");
+                                                        }}
+                                                        style={{
+                                                            padding: "6px 16px",
+                                                            borderRadius: 7,
+                                                            fontSize: 12,
+                                                            fontWeight: 700,
+                                                            border: "none",
+                                                            background: practiceMode === "upload" ? T.primaryAccent : "transparent",
+                                                            color: practiceMode === "upload" ? "#ffffff" : T.text,
+                                                            cursor: "pointer",
+                                                            transition: "all 0.15s ease"
+                                                        }}
                                                     >
-                                                        {["10", "15", "20", "250"].map(m => <option key={m} value={m}>{m} Marks</option>)}
-                                                    </select>
-                                                </div>
-                                                <div>
-                                                    <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase" }}>Word Limit</label>
-                                                    <select 
-                                                        value={uploadMeta.wordLimit} 
-                                                        onChange={e => setUploadMeta(prev => ({ ...prev, wordLimit: e.target.value }))}
-                                                        style={{ width: "100%", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, marginTop: 4, outline: "none" }}
-                                                    >
-                                                        {["150", "250", "1000", "2000"].map(w => <option key={w} value={w}>{w} Words</option>)}
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* ONE Upload Card */}
-                                        <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 12, padding: 20 }}>
-                                            <h3 style={{ fontSize: 14, fontWeight: 800, color: T.textBright, margin: "0 0 16px 0" }}>Upload Question + Answer Sheet</h3>
-                                            <div 
-                                                onClick={() => fileInputRef.current.click()}
-                                                onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
-                                                onDragLeave={() => setIsDragging(false)}
-                                                onDrop={handleDrop}
-                                                style={{
-                                                    border: `2px dashed ${isDragging ? T.primaryAccent : T.borderMid}`,
-                                                    borderRadius: 8,
-                                                    padding: "32px 20px",
-                                                    textAlign: "center",
-                                                    cursor: "pointer",
-                                                    background: isDragging ? `${T.primaryAccent}08` : "transparent",
-                                                    transition: "all 0.2s"
-                                                }}
-                                            >
-                                                <input 
-                                                    type="file" 
-                                                    ref={fileInputRef} 
-                                                    multiple 
-                                                    accept="image/*,application/pdf" 
-                                                    onChange={(e) => addFiles(e.target.files)} 
-                                                    style={{ display: "none" }} 
-                                                />
-                                                <div style={{ fontSize: 24, marginBottom: 8 }}>📤</div>
-                                                <div style={{ fontSize: 13, fontWeight: 700, color: T.textBright }}>
-                                                    Click or drag files here to upload
-                                                </div>
-                                                <div style={{ fontSize: 11, color: T.dim, marginTop: 4 }}>
-                                                    Supports images and PDFs (max {MAX_PAGES} pages)
+                                                        Upload Handwritten
+                                                    </button>
                                                 </div>
                                             </div>
 
-                                            {uploadedPages.length > 0 && (
-                                                <div style={{ marginTop: 20 }}>
-                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", marginBottom: 10 }}>Uploaded Pages ({uploadedPages.length})</div>
-                                                    <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-                                                        {uploadedPages.map((pg, idx) => (
-                                                            <div key={idx} style={{ position: "relative", width: 80, height: 80, borderRadius: 8, overflow: "hidden", border: `1px solid ${T.borderMid}` }}>
-                                                                {pg.file?.type === "application/pdf" ? (
-                                                                    <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: T.surfaceHigh, fontSize: 12, fontWeight: 800, color: T.red }}>PDF</div>
-                                                                ) : (
-                                                                    <img src={pg.preview} alt={`Page ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                                                                )}
-                                                                <button 
-                                                                    type="button"
-                                                                    onClick={() => handleRemovePage(idx)}
-                                                                    style={{
-                                                                        position: "absolute",
-                                                                        top: 2,
-                                                                        right: 2,
-                                                                        background: T.red,
-                                                                        color: "#fff",
-                                                                        border: "none",
-                                                                        borderRadius: "50%",
-                                                                        width: 18,
-                                                                        height: 18,
-                                                                        display: "flex",
-                                                                        alignItems: "center",
-                                                                        justifyContent: "center",
-                                                                        fontSize: 10,
-                                                                        cursor: "pointer",
-                                                                        fontWeight: "bold"
-                                                                    }}
-                                                                >
-                                                                    ×
-                                                                </button>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        {reviewUiError && (
-                                            <div style={{ background: `${T.red}15`, border: `1px solid ${T.red}33`, borderRadius: 8, padding: 12, fontSize: 13, color: T.red }}>
-                                                ⚠️ {reviewUiError}
-                                            </div>
-                                        )}
-
-                                        <button
-                                            type="button"
-                                            disabled={isExtracting || uploadedPages.length === 0}
-                                            onClick={handleExtractQuestionAnswer}
-                                            style={{
-                                                width: "100%",
-                                                background: isExtracting ? T.muted : T.primaryGradient,
-                                                color: "#ffffff",
-                                                border: "none",
-                                                borderRadius: 8,
-                                                fontWeight: 950,
-                                                fontSize: 14,
-                                                padding: "14px 20px",
-                                                cursor: isExtracting || uploadedPages.length === 0 ? "not-allowed" : "pointer",
-                                                transition: "all 0.2s"
-                                            }}
-                                        >
-                                            {isExtracting ? "🔍 Extracting Question & Answer (Gemini OCR)..." : "🔍 Extract & Verify"}
-                                        </button>
-                                    </div>
-                                ) : (
-                                    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                                        {/* Verification View */}
-                                        <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 12, padding: 24 }}>
-                                            <h3 style={{ fontSize: 16, fontWeight: 900, color: T.textBright, marginBottom: 8, letterSpacing: "-0.01em" }}>Verify Extracted Text</h3>
-                                            <p style={{ fontSize: 13, color: T.dim, marginBottom: 20 }}>
-                                                Verify and edit the separated question, answer sheet text, and detected metadata below before running reviews.
-                                            </p>
-
-                                            {/* Metadata Editor Grid */}
-                                            <div style={{
-                                                display: "grid",
-                                                gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
-                                                gap: 16,
-                                                background: T.surfaceHigh,
-                                                padding: 20,
-                                                borderRadius: 10,
-                                                border: `1px solid ${T.borderMid}`,
-                                                marginBottom: 24
-                                            }}>
-                                                <div>
-                                                    <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase", display: "block", marginBottom: 6 }}>Paper</label>
-                                                    <select
-                                                        value={uploadMeta.paper || "GS1"}
-                                                        onChange={(e) => handleUpdateUploadMeta({ paper: e.target.value })}
-                                                        style={{ width: "100%", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, outline: "none", fontFamily: T.font, fontSize: 13 }}
-                                                    >
-                                                        {["GS1", "GS2", "GS3", "GS4", "Essay", "Geography Optional", "Ethics", "Optional"].map(p => (
-                                                            <option key={p} value={p}>{p}</option>
-                                                        ))}
-                                                    </select>
-                                                </div>
-
-                                                <div>
-                                                    <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase", display: "block", marginBottom: 6 }}>Subject</label>
-                                                    <input
-                                                        type="text"
-                                                        value={uploadMeta.subjectTopic || ""}
-                                                        onChange={(e) => handleUpdateUploadMeta({ subjectTopic: e.target.value })}
-                                                        placeholder="e.g. History"
-                                                        style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, outline: "none", fontFamily: T.font, fontSize: 13 }}
-                                                    />
-                                                </div>
-
-                                                <div>
-                                                    <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase", display: "block", marginBottom: 6 }}>Topic</label>
-                                                    <input
-                                                        type="text"
-                                                        value={uploadMeta.detectedTopic || ""}
-                                                        onChange={(e) => handleUpdateUploadMeta({ detectedTopic: e.target.value })}
-                                                        placeholder="e.g. Bhakti Movement"
-                                                        style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, outline: "none", fontFamily: T.font, fontSize: 13 }}
-                                                    />
-                                                </div>
-
-                                                <div>
-                                                    <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase", display: "block", marginBottom: 6 }}>Marks</label>
-                                                    <select
-                                                        value={uploadMeta.marks || "15"}
-                                                        onChange={(e) => handleUpdateUploadMeta({ marks: e.target.value })}
-                                                        style={{ width: "100%", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, outline: "none", fontFamily: T.font, fontSize: 13 }}
-                                                    >
-                                                        {["10", "15", "20"].map(m => (
-                                                            <option key={m} value={m}>{m} Marks</option>
-                                                        ))}
-                                                    </select>
-                                                </div>
-
-                                                <div>
-                                                    <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase", display: "block", marginBottom: 6 }}>Word Limit</label>
-                                                    <select
-                                                        value={uploadMeta.wordLimit || "250"}
-                                                        onChange={(e) => handleUpdateUploadMeta({ wordLimit: e.target.value })}
-                                                        style={{ width: "100%", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 8, outline: "none", fontFamily: T.font, fontSize: 13 }}
-                                                    >
-                                                        {["150", "250", "1000", "2000"].map(w => (
-                                                            <option key={w} value={w}>{w} Words</option>
-                                                        ))}
-                                                    </select>
-                                                </div>
-
-                                                <div>
-                                                    <label style={{ fontSize: 10, fontWeight: 700, color: T.subtle, textTransform: "uppercase", display: "block", marginBottom: 6 }}>OCR Confidence</label>
-                                                    <div style={{
-                                                        display: "flex",
-                                                        alignItems: "center",
-                                                        height: "34px",
-                                                        padding: "0 10px",
-                                                        borderRadius: 8,
-                                                        background: T.bg,
-                                                        border: `1px solid ${T.borderMid}`,
-                                                        fontSize: 12,
-                                                        fontWeight: 700,
-                                                        color: T.green
-                                                    }}>
-                                                        {(() => {
-                                                            const conf = uploadMeta.confidence || {};
-                                                            const avg = Math.round(
-                                                                ((conf.questionText || 0.95) +
-                                                                 (conf.answerText || 0.9) +
-                                                                 (conf.paper || 0.85) +
-                                                                 (conf.subject || 0.8)) / 4 * 100
-                                                            );
-                                                            return `⚡ ${avg}% Accuracy`;
-                                                        })()}
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                                                <div>
-                                                    <label style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", display: "block", marginBottom: 6, letterSpacing: "0.05em" }}>1. Question Text</label>
-                                                    <textarea
-                                                        value={verifiedQuestionText}
-                                                        onChange={(e) => handleVerifiedQuestionChange(e.target.value)}
-                                                        rows={4}
-                                                        style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 14, fontFamily: T.font, fontSize: 14, lineHeight: 1.6, resize: "vertical", outline: "none" }}
-                                                        placeholder="Verify extracted question text here..."
-                                                    />
-                                                </div>
-
-                                                <div>
-                                                    <label style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", display: "block", marginBottom: 6, letterSpacing: "0.05em" }}>2. Candidate Answer</label>
+                                            {practiceMode === "typed" ? (
+                                                <>
                                                     <textarea
                                                         value={pastedText}
-                                                        onChange={(e) => handleVerifiedAnswerChange(e.target.value)}
-                                                        rows={12}
-                                                        style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 8, color: T.text, padding: 14, fontFamily: T.font, fontSize: 14, lineHeight: 1.6, resize: "vertical", outline: "none" }}
-                                                        placeholder="Verify extracted candidate answer text here..."
+                                                        onChange={(e) => { setPastedText(e.target.value); setSaved(false); }}
+                                                        rows={10}
+                                                        style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 10, color: T.text, padding: 16, fontFamily: T.font, fontSize: 14, lineHeight: 1.6, resize: "vertical", outline: "none" }}
+                                                        placeholder="Write your answer here..."
                                                     />
-                                                </div>
-                                            </div>
+                                                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 10 }}>
+                                                        <span style={{ fontSize: 12, color: T.dim }}>Words: {wordCount} / {wordTarget}</span>
+                                                        {wordCount < 20 && (
+                                                            <span style={{ fontSize: 11, color: T.amber }}>Type at least 20 characters to enable evaluation.</span>
+                                                        )}
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                                                    {!ocrExtracted ? (
+                                                        <>
+                                                            <div style={{ background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 12, padding: 24, textAlign: "center" }}>
+                                                                <h4 style={{ fontSize: 16, fontWeight: 800, color: T.textBright, margin: "0 0 6px 0" }}>Upload handwritten answer</h4>
+                                                                <p style={{ fontSize: 13, color: T.dim, margin: "0 0 20px 0" }}>
+                                                                    Upload JPG or PNG pages. MentorOS will extract the handwriting and let you verify the text before evaluation.
+                                                                </p>
 
-                                            {reviewUiError && (
-                                                <div style={{ background: `${T.red}15`, border: `1px solid ${T.red}33`, borderRadius: 8, padding: 12, fontSize: 13, color: T.red, marginTop: 16 }}>
-                                                    ⚠️ {reviewUiError}
+                                                                <div 
+                                                                    onClick={() => fileInputRef.current?.click()}
+                                                                    onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
+                                                                    onDragLeave={() => setIsDragging(false)}
+                                                                    onDrop={handleDrop}
+                                                                    style={{
+                                                                        border: `2px dashed ${isDragging ? T.primaryAccent : T.borderMid}`,
+                                                                        borderRadius: 10,
+                                                                        padding: "36px 20px",
+                                                                        cursor: "pointer",
+                                                                        background: isDragging ? `${T.primaryAccent}08` : T.surfaceHigh,
+                                                                        transition: "all 0.2s ease"
+                                                                    }}
+                                                                >
+                                                                    <input 
+                                                                        type="file" 
+                                                                        ref={fileInputRef} 
+                                                                        multiple 
+                                                                        accept="image/*" 
+                                                                        onChange={(e) => addFiles(e.target.files)} 
+                                                                        style={{ display: "none" }} 
+                                                                    />
+                                                                    <div style={{ fontSize: 32, marginBottom: 8 }}>📄</div>
+                                                                    <div style={{ fontSize: 14, fontWeight: 700, color: T.textBright }}>
+                                                                        Drag & drop answer pages here, or click to browse
+                                                                    </div>
+                                                                    <div style={{ fontSize: 11, color: T.dim, marginTop: 6 }}>
+                                                                        JPG, PNG (Up to {MAX_PAGES} pages)
+                                                                    </div>
+                                                                </div>
+
+                                                                {uploadedPages.length > 0 && (
+                                                                    <div style={{ marginTop: 20, textAlign: "left" }}>
+                                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", marginBottom: 10 }}>
+                                                                            Uploaded Pages ({uploadedPages.length})
+                                                                        </div>
+                                                                        <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+                                                                            {uploadedPages.map((pg, idx) => (
+                                                                                <div key={idx} style={{ position: "relative", width: 80, height: 80, borderRadius: 8, overflow: "hidden", border: `1px solid ${T.borderMid}` }}>
+                                                                                    {pg.file?.type === "application/pdf" ? (
+                                                                                        <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: T.surfaceHigh, fontSize: 12, fontWeight: 800, color: T.red }}>PDF</div>
+                                                                                    ) : (
+                                                                                        <img src={pg.preview} alt={`Page ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                                                                    )}
+                                                                                    <button 
+                                                                                        type="button"
+                                                                                        onClick={() => handleRemovePage(idx)}
+                                                                                        style={{
+                                                                                            position: "absolute",
+                                                                                            top: 2, right: 2,
+                                                                                            background: T.red, color: "#fff",
+                                                                                            border: "none", borderRadius: "50%",
+                                                                                            width: 18, height: 18,
+                                                                                            display: "flex", alignItems: "center", justifyContent: "center",
+                                                                                            fontSize: 10, cursor: "pointer", fontWeight: "bold"
+                                                                                        }}
+                                                                                    >
+                                                                                        ×
+                                                                                    </button>
+                                                                                </div>
+                                                                            ))}
+                                                                        </div>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+
+                                                            {reviewUiError && (
+                                                                <div style={{ background: `${T.red}15`, border: `1px solid ${T.red}33`, borderRadius: 8, padding: 12, fontSize: 13, color: T.red }}>
+                                                                    ⚠️ {reviewUiError}
+                                                                </div>
+                                                            )}
+
+                                                            <button
+                                                                type="button"
+                                                                disabled={isExtracting || uploadedPages.length === 0}
+                                                                onClick={handleExtractAnswer}
+                                                                style={{
+                                                                    width: "100%",
+                                                                    background: isExtracting ? T.muted : T.primaryAccent,
+                                                                    color: "#ffffff",
+                                                                    border: "none",
+                                                                    borderRadius: 10,
+                                                                    fontWeight: 800,
+                                                                    fontSize: 14,
+                                                                    padding: "14px 20px",
+                                                                    cursor: isExtracting || uploadedPages.length === 0 ? "not-allowed" : "pointer",
+                                                                    transition: "all 0.2s"
+                                                                }}
+                                                            >
+                                                                {isExtracting ? "Extracting handwriting…" : "Extract with OCR →"}
+                                                            </button>
+                                                        </>
+                                                    ) : (
+                                                        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                                                            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: `${T.green}12`, border: `1px solid ${T.green}33`, padding: "10px 14px", borderRadius: 8 }}>
+                                                                <span style={{ fontSize: 12, fontWeight: 700, color: T.green }}>
+                                                                    ✓ OCR complete — verify the text before evaluation.
+                                                                </span>
+                                                                <div style={{ display: "flex", gap: 8 }}>
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={handleExtractAnswer}
+                                                                        disabled={isExtracting}
+                                                                        style={{ background: "transparent", border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: "4px 10px", fontSize: 11, fontWeight: 700, color: T.textBright, cursor: "pointer" }}
+                                                                    >
+                                                                        {isExtracting ? "Extracting…" : "Re-run OCR"}
+                                                                    </button>
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={() => {
+                                                                            setOcrExtracted(false);
+                                                                            setPastedText("");
+                                                                            setUploadedPages([]);
+                                                                        }}
+                                                                        style={{ background: "transparent", border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: "4px 10px", fontSize: 11, fontWeight: 700, color: T.red, cursor: "pointer" }}
+                                                                    >
+                                                                        Clear Upload
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+
+                                                            <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                                                                OCR Extracted Answer
+                                                            </div>
+                                                            <textarea
+                                                                value={pastedText}
+                                                                onChange={(e) => {
+                                                                    setPastedText(e.target.value);
+                                                                    setSaved(false);
+                                                                }}
+                                                                rows={12}
+                                                                style={{ width: "100%", boxSizing: "border-box", background: T.bg, border: `1px solid ${T.borderMid}`, borderRadius: 10, color: T.text, padding: 16, fontFamily: T.font, fontSize: 14, lineHeight: 1.6, resize: "vertical", outline: "none" }}
+                                                                placeholder="Extracted answer text..."
+                                                            />
+                                                            <div style={{ fontSize: 12, color: T.dim }}>
+                                                                Words: {wordCount} / {wordTarget} (from {uploadedPages.length} uploaded page{uploadedPages.length === 1 ? "" : "s"})
+                                                            </div>
+                                                        </div>
+                                                    )}
                                                 </div>
                                             )}
-
-                                            <div style={{ display: "flex", gap: 12, marginTop: 24 }}>
-                                                <button
-                                                    type="button"
-                                                    onClick={() => {
-                                                        clearVisibleAttemptState();
-                                                        navigate("/mains");
-                                                    }}
-                                                    style={{
-                                                        padding: "12px 20px",
-                                                        borderRadius: 8,
-                                                        fontSize: 13,
-                                                        fontWeight: 700,
-                                                        background: "transparent",
-                                                        color: T.dim,
-                                                        border: `1px solid ${T.borderMid}`,
-                                                        cursor: "pointer"
-                                                    }}
-                                                >
-                                                    ← Cancel & Go Back
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    disabled={isEvaluating || !verifiedQuestionText.trim() || !pastedText.trim()}
-                                                    onClick={handleBasicReview}
-                                                    style={{
-                                                        flex: 1,
-                                                        background: T.primaryGradient,
-                                                        color: "#ffffff",
-                                                        border: "none",
-                                                        borderRadius: 8,
-                                                        fontWeight: 900,
-                                                        fontSize: 13,
-                                                        padding: "12px 20px",
-                                                        cursor: (isEvaluating || !verifiedQuestionText.trim() || !pastedText.trim()) ? "not-allowed" : "pointer"
-                                                    }}
-                                                >
-                                                    {isEvaluating ? "Evaluating..." : "Run Basic Review"}
-                                                </button>
-                                            </div>
                                         </div>
-                                    </div>
+                                    </SectionCard>
                                 )}
-                            </>
-                        )}
+
                     </div> {/* End Left Column */}
 
                     {/* Full-width container for Reviews */}
@@ -2825,151 +2823,75 @@ export default function AnswerWritingPage() {
                                 <div style={{ padding: 32 }}>
                                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 32, gap: 16, flexWrap: "wrap" }}>
                                         <div>
-                                            <div style={{ fontSize: 20, fontWeight: 900, color: T.textBright, letterSpacing: "-0.01em" }}>Quick Mentor Review</div>
-                                            <div style={{ fontSize: 14, color: T.dim, marginTop: 6, lineHeight: 1.5 }}>Understand your score, missing dimensions, and rewrite direction in 30 seconds.</div>
+                                            {!evaluationData?.isV1 && (
+                                                <>
+                                                    <div style={{ fontSize: 20, fontWeight: 900, color: T.textBright, letterSpacing: "-0.01em" }}>Quick Mentor Review</div>
+                                                    <div style={{ fontSize: 14, color: T.dim, marginTop: 6, lineHeight: 1.5 }}>Understand your score, missing dimensions, and rewrite direction in 30 seconds.</div>
+                                                </>
+                                            )}
                                         </div>
-                                        <button onClick={handleBasicReview} disabled={isEvaluating} style={{ background: T.surfaceHigh, border: `1px solid ${T.borderMid}`, color: T.textBright, padding: "8px 16px", borderRadius: 8, fontWeight: 700, cursor: "pointer", fontSize: 13, boxShadow: "0 2px 4px rgba(0,0,0,0.05)" }}>
-                                            {isEvaluating ? "Evaluating..." : "Run Quick Review"}
-                                        </button>
+                                        <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+                                            {/* Developer Fixture Toolbar */}
+                                            {import.meta.env.DEV && (
+                                                <>
+                                                    <span style={{ fontSize: 10, fontWeight: 800, color: T.dim }}>DEV FIXTURES:</span>
+                                                    <button 
+                                                        onClick={() => {
+                                                            setEvaluationData(FIXTURE_GS2_CA);
+                                                            setEvaluationText("Fixture GS2 CA Selected.");
+                                                        }}
+                                                        style={{ background: T.bg, border: `1px solid ${T.borderMid}`, color: T.text, padding: "5px 10px", borderRadius: 6, fontSize: 11, cursor: "pointer" }}
+                                                    >
+                                                        GS2 (CA)
+                                                    </button>
+                                                    <button 
+                                                        onClick={() => {
+                                                            setEvaluationData(FIXTURE_GEO_PROCESS);
+                                                            setEvaluationText("Fixture Geo Process Selected.");
+                                                        }}
+                                                        style={{ background: T.bg, border: `1px solid ${T.borderMid}`, color: T.text, padding: "5px 10px", borderRadius: 6, fontSize: 11, cursor: "pointer" }}
+                                                    >
+                                                        Geo (Process)
+                                                    </button>
+                                                    <button 
+                                                        onClick={() => {
+                                                            setEvaluationData(FIXTURE_GEO_MAP);
+                                                            setEvaluationText("Fixture Geo Map Selected.");
+                                                        }}
+                                                        style={{ background: T.bg, border: `1px solid ${T.borderMid}`, color: T.text, padding: "5px 10px", borderRadius: 6, fontSize: 11, cursor: "pointer" }}
+                                                    >
+                                                        Geo (Map)
+                                                    </button>
+                                                    <button 
+                                                        onClick={() => {
+                                                            setEvaluationData(FIXTURE_LEGACY);
+                                                            setEvaluationText("Fixture Legacy Selected.");
+                                                        }}
+                                                        style={{ background: T.bg, border: `1px solid ${T.borderMid}`, color: T.text, padding: "5px 10px", borderRadius: 6, fontSize: 11, cursor: "pointer" }}
+                                                    >
+                                                        Legacy Only
+                                                    </button>
+                                                </>
+                                            )}
+
+                                            <button onClick={handleBasicReview} disabled={isEvaluating} style={{ background: T.surfaceHigh, border: `1px solid ${T.borderMid}`, color: T.textBright, padding: "8px 16px", borderRadius: 8, fontWeight: 700, cursor: "pointer", fontSize: 13, boxShadow: "0 2px 4px rgba(0,0,0,0.05)" }}>
+                                                {isEvaluating ? "Evaluating..." : "Run Quick Review"}
+                                            </button>
+                                        </div>
                                     </div>
                                     
-                                    {evaluationData && evaluationData.level !== "Format Issue" && evaluationData.level !== "Error" && (evaluationData.examinerImpression || evaluationData.topFixes || evaluationData.level) ? (
-                                        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                                            {/* Top Summary Strip */}
-                                            <div style={{ display: "flex", gap: 16, background: T.surfaceHigh, padding: isMobile ? "16px" : "16px 24px", borderRadius: 12, border: `1px solid ${T.borderMid}`, alignItems: isMobile ? "flex-start" : "center", flexDirection: isMobile ? "column" : "row", flexWrap: "wrap" }}>
-                                                <div style={{ flex: isMobile ? "none" : "1 1 120px", width: "100%" }}>
-                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Score</div>
-                                                    <div style={{ fontSize: 24, fontWeight: 900, color: T.amber, lineHeight: 1 }}>{evaluationData.score}</div>
-                                                </div>
-                                                <div style={{ flex: isMobile ? "none" : "1 1 120px", borderLeft: isMobile ? "none" : `1px solid ${T.borderMid}`, borderTop: isMobile ? `1px solid ${T.borderMid}` : "none", paddingLeft: isMobile ? 0 : 16, paddingTop: isMobile ? 12 : 0, width: "100%" }}>
-                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Level</div>
-                                                    <div style={{ fontSize: 13, fontWeight: 700, color: T.textBright, background: T.bg, padding: "4px 10px", borderRadius: 12, border: `1px solid ${T.borderMid}`, width: "fit-content" }}>{evaluationData.level || "Beginner"}</div>
-                                                </div>
-                                                {evaluationData.finalAdvice && (
-                                                <div style={{ flex: isMobile ? "none" : "2 1 200px", borderLeft: isMobile ? "none" : `1px solid ${T.borderMid}`, borderTop: isMobile ? `1px solid ${T.borderMid}` : "none", paddingLeft: isMobile ? 0 : 16, paddingTop: isMobile ? 12 : 0, width: "100%" }}>
-                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Next Action</div>
-                                                    <div style={{ fontSize: 14, color: T.textBright, fontWeight: 600, lineHeight: 1.5, overflowWrap: "break-word" }}>{evaluationData.finalAdvice}</div>
-                                                </div>
-                                                )}
-                                            </div>
-
-                                            {/* Examiner Impression */}
-                                            {evaluationData.examinerImpression && (
-                                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
-                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>30-Second Examiner Impression</div>
-                                                    <div style={{ fontSize: 15, color: T.textBright, lineHeight: 1.65 }}>{evaluationData.examinerImpression}</div>
-                                                </div>
-                                            )}
-
-                                            {/* Top 3 Fixes */}
-                                            {evaluationData.topFixes && evaluationData.topFixes.length > 0 && (
-                                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
-                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.red, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 16 }}>Top 3 Fixes</div>
-                                                    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                                                        {evaluationData.topFixes.map((fix, i) => (
-                                                            <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start", background: T.bg, padding: 12, borderRadius: 8, border: `1px solid ${T.borderMid}` }}>
-                                                                <div style={{ background: T.surfaceHigh, color: T.red, width: 24, height: 24, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 800, flexShrink: 0 }}>{i + 1}</div>
-                                                                <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{fix}</div>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )}
-
-                                            {/* UPSC Structure */}
-                                            {evaluationData.upscStructure && Array.isArray(evaluationData.upscStructure) && evaluationData.upscStructure.length > 0 && (
-                                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
-                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.blue, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 16 }}>Suggested Answer Structure</div>
-                                                    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                                                        {evaluationData.upscStructure.map((struct, i) => (
-                                                            <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                                                                <div style={{ background: T.bg, color: T.blue, width: 20, height: 20, borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0, marginTop: 2 }}>{i + 1}</div>
-                                                                <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{struct}</div>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )}
-                                            {evaluationData.upscStructure && typeof evaluationData.upscStructure === 'string' && (
-                                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
-                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.blue, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Suggested Answer Structure</div>
-                                                    <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6, whiteSpace: "pre-wrap" }}>{evaluationData.upscStructure}</div>
-                                                </div>
-                                            )}
-
-                                            {/* Rewrite Toolkit Grid */}
-                                            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
-                                                {/* Missing Dimensions */}
-                                                {evaluationData.missingDimensions && evaluationData.missingDimensions.length > 0 && (
-                                                    <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
-                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.amber, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 16 }}>Missing UPSC Dimensions</div>
-                                                        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                                                            {evaluationData.missingDimensions.map((dim, i) => (
-                                                                <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                                                                    <span style={{ color: T.amber, fontSize: 14 }}>•</span>
-                                                                    <span style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{dim}</span>
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-                                                )}
-                                                
-                                                {/* Improved Intro */}
-                                                {evaluationData.improvedIntro && (
-                                                    <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
-                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.green, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Improved Introduction</div>
-                                                        <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{evaluationData.improvedIntro}</div>
-                                                    </div>
-                                                )}
-                                                
-                                                {/* Improved Conclusion */}
-                                                {evaluationData.improvedConclusion && (
-                                                    <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
-                                                        <div style={{ fontSize: 11, fontWeight: 800, color: T.green, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 12 }}>Improved Conclusion</div>
-                                                        <div style={{ fontSize: 14, color: T.textBright, lineHeight: 1.6 }}>{evaluationData.improvedConclusion}</div>
-                                                    </div>
-                                                )}
-
-
-                                            </div>
-
-                                            {/* Final Advice */}
-                                            {evaluationData.finalAdvice && (
-                                                <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}`, borderLeft: `4px solid ${T.amber}` }}>
-                                                    <div style={{ fontSize: 11, fontWeight: 800, color: T.subtle, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Before rewriting, do this</div>
-                                                    <div style={{ fontSize: 15, color: T.textBright, lineHeight: 1.6, fontWeight: 600 }}>{evaluationData.finalAdvice}</div>
-                                                </div>
-                                            )}
-                                        </div>
-                                    ) : evaluationText ? (
-                                        <div style={{ background: T.surfaceHigh, padding: 24, borderRadius: 12, border: `1px solid ${T.borderMid}` }}>
-                                            <div style={{ fontSize: 14, fontWeight: 800, color: T.textBright, marginBottom: 4 }}>Mentor Notes</div>
-                                            <div style={{ fontSize: 12, color: T.dim, marginBottom: 16 }}>Structured review was not available, so showing raw mentor feedback.</div>
-                                            <div style={{ 
-                                                fontSize: 14, 
-                                                color: T.textBright, 
-                                                lineHeight: 1.7, 
-                                                whiteSpace: "pre-wrap", 
-                                                maxHeight: "400px", 
-                                                overflowY: "auto",
-                                                fontFamily: T.font
-                                            }}>
-                                                {evaluationText}
-                                            </div>
-                                        </div>
-                                    ) : (
-                                        <div style={{ padding: 32, textAlign: "center", color: T.dim, fontSize: 14, background: T.surfaceHigh, borderRadius: 12, border: `1px dashed ${T.borderMid}` }}>
-                                            Paste your answer text and click "Run Quick Review" to get a mentor evaluation.
-                                        </div>
-                                    )}
+                                    {renderQuickReviewContent()}
                                 </div>
                             </SectionCard>
                         )}
-
+                        
                         {/* Advanced AIR-1 Review Card */}
                         {hasEvaluationText && (
-                            <SectionCard accentTop={T.purple}>
-                                <div style={{ padding: 32 }}>
+                            <details style={{ background: "#ffffff", border: "1px solid var(--mos-border, #EAECF0)", borderRadius: 12, overflow: "hidden" }}>
+                                <summary style={{ padding: "16px 24px", fontSize: 14, fontWeight: 700, color: "#101828", cursor: "pointer", userSelect: "none", outline: "none", background: "#F9FAFB" }}>
+                                    Optional Second Opinion {parsedAir1Json ? "✅" : ""}
+                                </summary>
+                                <div style={{ padding: 32, borderTop: "1px solid var(--mos-border, #EAECF0)" }}>
                                     <div style={{ fontSize: 20, fontWeight: 900, color: T.textBright, marginBottom: 24, letterSpacing: "-0.01em" }}>Advanced AIR-1 Review</div>
                                     <MainsReviewPromptCard
                                         currentQuestion={{ text: currentCtx.questionText, marks: parseInt(currentCtx.marks), paper: currentCtx.paper, topic: topic, syllabusNode: syllabusNodeId }}
@@ -3015,7 +2937,7 @@ export default function AnswerWritingPage() {
                                         </button>
                                     )}
                                 </div>
-                            </SectionCard>
+                            </details>
                         )}
                         
                     </div> {/* End Full-width container */}
@@ -3027,28 +2949,64 @@ export default function AnswerWritingPage() {
 
                     {/* Right Column: Sticky Panel */}
                     <div style={{ position: isMobile ? "static" : "sticky", top: 100, display: "flex", flexDirection: "column", gap: 24, minWidth: 0, gridColumn: isMobile ? "1" : "2", gridRow: isMobile ? "auto" : "1", maxWidth: "100%" }}>
-                        {sessionStarted && practiceMode !== "upload" && (
+                        {sessionStarted && (
                             <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, overflow: "hidden", boxShadow: isDark ? "none" : "0 4px 6px -1px rgba(0, 0, 0, 0.05)" }}>
-                                <Timer key={currentIndex} marks={marks} accent={paperAccent} autoStart={sessionStarted} timerRef={timerSectionRef} onStatusChange={setTimerStatus} />
+                                <Timer
+                                    key={currentIndex}
+                                    marks={marks}
+                                    accent={paperAccent}
+                                    autoStart={sessionStarted}
+                                    timerRef={timerSectionRef}
+                                    onStatusChange={setTimerStatus}
+                                    onTick={setTimerElapsed}
+                                    isWritingDone={isWritingDone}
+                                    onDoneWriting={handleDoneWriting}
+                                    actualWritingTimeSeconds={actualWritingTimeSeconds}
+                                />
                             </div>
                         )}
                         <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, padding: 24, boxShadow: isDark ? "none" : "0 4px 6px -1px rgba(0, 0, 0, 0.05)" }}>
                             <div style={{ fontSize: 14, fontWeight: 800, color: T.textBright, marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ width: 8, height: 8, borderRadius: "50%", background: saved ? T.green : T.amber }}></span>
+                                <span style={{ width: 8, height: 8, borderRadius: "50%", background: saved ? T.green : isWritingDone ? T.blue : T.amber }}></span>
                                 Attempt Intelligence
                             </div>
                             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     <span style={{ color: T.dim, fontSize: 13 }}>Words</span>
-                                    <span style={{ color: T.textBright, fontSize: 13, fontWeight: 700 }}>{wordCount} / {wordTarget}</span>
+                                    <span style={{ color: T.textBright, fontSize: 13, fontWeight: 700 }}>
+                                        {practiceMode === "upload" && !ocrExtracted ? "—" : `${wordCount} / ${wordTarget}`}
+                                    </span>
                                 </div>
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     <span style={{ color: T.dim, fontSize: 13 }}>Pages</span>
-                                    <span style={{ color: T.textBright, fontSize: 13, fontWeight: 700 }}>{uploadedPages.length}</span>
+                                    <span style={{ color: T.textBright, fontSize: 13, fontWeight: 700 }}>
+                                        {practiceMode === "upload" ? uploadedPages.length : 0}
+                                    </span>
                                 </div>
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     <span style={{ color: T.dim, fontSize: 13 }}>State</span>
-                                    <span style={{ color: T.textBright, fontSize: 13, fontWeight: 700 }}>{saved ? "Finalized" : "Draft"}</span>
+                                    <span style={{ color: T.textBright, fontSize: 13, fontWeight: 700 }}>
+                                        {saved
+                                            ? "Evaluated"
+                                            : isExtracting
+                                                ? "Extracting"
+                                                : practiceMode === "upload"
+                                                    ? ocrExtracted
+                                                        ? "Ready to Evaluate"
+                                                        : uploadedPages.length > 0
+                                                            ? (isWritingDone ? "Uploaded" : "Writing")
+                                                            : isWritingDone
+                                                                ? "Writing Complete"
+                                                                : sessionStarted
+                                                                    ? "Writing"
+                                                                    : "Ready"
+                                                    : hasPastedText
+                                                        ? "Ready to Evaluate"
+                                                        : sessionStarted
+                                                            ? "Writing"
+                                                            : "Ready"
+                                        }
+                                    </span>
                                 </div>
                             </div>
                             

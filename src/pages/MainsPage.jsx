@@ -3,24 +3,25 @@
 // Ethics, Essay, Geography Optional: separate pages later.
 // Frontend-only. No backend wiring. Production-safe.
 
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "../config.js";
-import { saveMainsAttemptToDB, extractAnswerFromImagesApi } from "../utils/mainsReviewApi.js";
 import HandwrittenSheetReviewPanel from "../components/HandwrittenSheetReviewPanel.jsx";
 
-// ─── Theme tokens ─────────────────────────────────────────────────────────────
+// ─── Theme bridge ─────────────────────────────────────────────────────────────
+// Surfaces/text come from the global MentorOS light/dark theme. Paper accents are
+// intentionally stable identifiers and are used sparingly.
 const T = {
-  bg: "#09090b",
-  surface: "#111113",
-  surfaceHigh: "#18181b",
-  border: "#1f1f23",
-  borderMid: "#27272a",
-  muted: "#3f3f46",
-  subtle: "#52525b",
-  dim: "#71717a",
-  text: "#e4e4e7",
-  textBright: "#f4f4f5",
+  bg: "var(--bg-page)",
+  surface: "var(--bg-surface)",
+  surfaceHigh: "var(--bg-subtle)",
+  border: "var(--border-subtle)",
+  borderMid: "var(--border-default)",
+  muted: "var(--text-tertiary)",
+  subtle: "var(--text-tertiary)",
+  dim: "var(--text-tertiary)",
+  text: "var(--text-secondary)",
+  textBright: "var(--text-primary)",
   amber: "#f59e0b",
   amberDim: "#d97706",
   blue: "#3b82f6",
@@ -29,7 +30,7 @@ const T = {
   greenDim: "#16a34a",
   red: "#ef4444",
   purple: "#8b5cf6",
-  font: "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
+  font: "var(--sans)",
 };
 
 // ─── GS paper definitions ─────────────────────────────────────────────────────
@@ -651,472 +652,7 @@ function WeakColumn({ gs, accent, items }) {
   );
 }
 
-// ─── MainsThemeBrowser ────────────────────────────────────────────────────────
-// Minimal, additive. Fetches subject-theme tree from backend and renders
-// a drill-down: paper selector → subject cards → theme rows → subtheme rows → PYQ list.
 
-const THEME_PAPERS = [
-  { id: "GS1", accent: T.amber, label: "GS1", title: "General Studies I" },
-  { id: "GS2", accent: T.blue,  label: "GS2", title: "General Studies II" },
-  { id: "GS3", accent: T.green, label: "GS3", title: "General Studies III" },
-  { id: "GS4", accent: T.purple, label: "GS4", title: "General Studies IV" },
-];
-
-function MainsThemeBrowser() {
-  const [paper,      setPaper]      = useState("GS1");
-  const [tree,       setTree]       = useState([]);         // [{subject, count, themes}]
-  const [loading,    setLoading]    = useState(false);
-  const [error,      setError]      = useState("");
-  const [openSubject, setOpenSubject] = useState(null);
-  const [openTheme,   setOpenTheme]   = useState(null);
-  const [openSubtheme, setOpenSubtheme] = useState(null);
-  const [pyqs,       setPyqs]       = useState([]);         // full question objects
-  const [pyqsLoading, setPyqsLoading] = useState(false);
-  const [pyqsError,   setPyqsError]   = useState("");
-
-  // ── Cascading filter state ─────────────────────────────────────────────────
-  const [selSubject,  setSelSubject]  = useState("all");
-  const [selTopic,    setSelTopic]    = useState("all");
-  const [selSubtopic, setSelSubtopic] = useState("all");
-
-  const accent = THEME_PAPERS.find(p => p.id === paper)?.accent || T.amber;
-
-  // ── Derived dropdown options (from live tree data only) ───────────────────
-  const availableSubjects = useMemo(
-    () => tree.map(s => s.subject).filter(Boolean),
-    [tree]
-  );
-
-  const availableTopics = useMemo(() => {
-    if (selSubject === "all") return [];
-    const node = tree.find(s => s.subject === selSubject);
-    return (node?.themes || []).map(t => t.name).filter(Boolean);
-  }, [tree, selSubject]);
-
-  const availableSubtopics = useMemo(() => {
-    if (selSubject === "all" || selTopic === "all") return [];
-    const node = tree.find(s => s.subject === selSubject);
-    const themeNode = (node?.themes || []).find(t => t.name === selTopic);
-    return (themeNode?.subthemes || []).map(st => st.name).filter(Boolean);
-  }, [tree, selSubject, selTopic]);
-
-  const showSubtopicDropdown = availableSubtopics.length > 0;
-
-  // ── Filtered tree for accordion rendering ─────────────────────────────────
-  const filteredTree = useMemo(() => {
-    if (selSubject === "all") return tree;
-    return tree
-      .filter(s => s.subject === selSubject)
-      .map(s => {
-        if (selTopic === "all") return s;
-        const filteredThemes = (s.themes || [])
-          .filter(t => t.name === selTopic)
-          .map(t => {
-            if (selSubtopic === "all") return t;
-            return { ...t, subthemes: (t.subthemes || []).filter(st => st.name === selSubtopic) };
-          });
-        return { ...s, themes: filteredThemes };
-      });
-  }, [tree, selSubject, selTopic, selSubtopic]);
-
-  // ── Cascading handlers ────────────────────────────────────────────────────
-  function handleSelSubject(v) {
-    setSelSubject(v);
-    setSelTopic("all");
-    setSelSubtopic("all");
-    setOpenSubject(v !== "all" ? v : null);
-    setOpenTheme(null);
-    setOpenSubtheme(null);
-    setPyqs([]);
-  }
-
-  function handleSelTopic(v) {
-    setSelTopic(v);
-    setSelSubtopic("all");
-    setOpenTheme(v !== "all" && selSubject !== "all" ? `${selSubject}||${v}` : null);
-    setOpenSubtheme(null);
-    setPyqs([]);
-  }
-
-  function handleSelSubtopic(v) {
-    setSelSubtopic(v);
-    if (v !== "all" && selSubject !== "all" && selTopic !== "all") {
-      const stKey = `${selSubject}||${selTopic}||${v}`;
-      setOpenSubtheme(stKey);
-      setPyqs([]);
-      setPyqsError("");
-      setPyqsLoading(true);
-      fetch(
-        `${BACKEND_URL}/api/mains/pyqs/by-subtheme` +
-        `?paper=${encodeURIComponent(paper)}` +
-        `&subject=${encodeURIComponent(selSubject)}` +
-        `&theme=${encodeURIComponent(selTopic)}` +
-        `&subtheme=${encodeURIComponent(v)}`
-      )
-        .then(r => r.json())
-        .then(data => { if (data.ok) setPyqs(data.questions || []); else setPyqsError(data.error || "Failed"); })
-        .catch(e => setPyqsError(String(e?.message || e)))
-        .finally(() => setPyqsLoading(false));
-    } else {
-      setOpenSubtheme(null);
-      setPyqs([]);
-    }
-  }
-
-  // ── Dropdown style (matches page dark theme) ──────────────────────────────
-  const dropdownStyle = {
-    background: T.bg, border: `1px solid ${T.borderMid}`,
-    borderRadius: 8, color: T.text, fontSize: 12,
-    padding: "6px 10px", fontFamily: T.font,
-    cursor: "pointer", outline: "none", minWidth: 140,
-  };
-
-  // ── Fetch tree on paper change ─────────────────────────────────────────────
-  useEffect(() => {
-    setTree([]);
-    setOpenSubject(null);
-    setOpenTheme(null);
-    setOpenSubtheme(null);
-    setPyqs([]);
-    setError("");
-    setLoading(true);
-
-    fetch(`${BACKEND_URL}/api/mains/themes/${paper}`)
-      .then(r => r.json())
-      .then(data => {
-        if (data.ok) setTree(data.tree || []);
-        else setError(data.error || "Failed to load themes");
-      })
-      .catch(e => setError(String(e?.message || e)))
-      .finally(() => setLoading(false));
-  }, [paper]);
-
-  // ── Fetch PYQs when subtheme selected ─────────────────────────────────────
-  function loadSubthemePyqs(subject, theme, subtheme) {
-    setPyqs([]);
-    setPyqsError("");
-    setPyqsLoading(true);
-
-    const url = `${BACKEND_URL}/api/mains/pyqs/by-subtheme`
-      + `?paper=${encodeURIComponent(paper)}`
-      + `&subject=${encodeURIComponent(subject)}`
-      + `&theme=${encodeURIComponent(theme)}`
-      + `&subtheme=${encodeURIComponent(subtheme)}`;
-
-    fetch(url)
-      .then(r => r.json())
-      .then(data => {
-        if (data.ok) setPyqs(data.questions || []);
-        else setPyqsError(data.error || "Failed to load PYQs");
-      })
-      .catch(e => setPyqsError(String(e?.message || e)))
-      .finally(() => setPyqsLoading(false));
-  }
-
-  function handleSubthemeClick(subject, theme, subtheme) {
-    const key = `${subject}||${theme}||${subtheme}`;
-    if (openSubtheme === key) {
-      setOpenSubtheme(null);
-      setPyqs([]);
-      return;
-    }
-    setOpenSubtheme(key);
-    loadSubthemePyqs(subject, theme, subtheme);
-  }
-
-  const chevron = (open) => (
-    <span style={{ fontSize: 13, color: accent, transition: "transform 0.2s",
-      display: "inline-block", transform: open ? "rotate(90deg)" : "rotate(0deg)" }}>›</span>
-  );
-
-  return (
-    <div style={{
-      background: T.surface, border: `1px solid ${T.border}`,
-      borderRadius: 14, overflow: "hidden", marginBottom: 28,
-    }}>
-      {/* Header accent bar */}
-      <div style={{ height: 2, background: `linear-gradient(90deg, ${accent}, ${accent}44, transparent)` }} />
-      <div style={{ padding: "20px 24px" }}>
-
-        {/* Section title + paper selector */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, flexWrap: "wrap", gap: 12 }}>
-          <div>
-            <div style={{ ...label11(accent), marginBottom: 5 }}>PYQ Theme Intelligence</div>
-            <div style={{ fontSize: 16, fontWeight: 900, color: T.textBright }}>Browse PYQs by Theme</div>
-            <div style={{ fontSize: 12, color: T.dim, marginTop: 3 }}>Select paper → subject → theme → subtheme</div>
-          </div>
-          {/* Paper pills */}
-          <div style={{ display: "flex", gap: 6 }}>
-            {THEME_PAPERS.map(p => (
-              <button
-                key={p.id}
-                onClick={() => setPaper(p.id)}
-                style={{
-                  padding: "6px 14px", borderRadius: 8,
-                  border: paper === p.id ? `1.5px solid ${p.accent}` : `1px solid ${T.borderMid}`,
-                  background: paper === p.id ? `${p.accent}18` : T.bg,
-                  color: paper === p.id ? p.accent : T.dim,
-                  fontWeight: paper === p.id ? 800 : 500,
-                  fontSize: 12, cursor: "pointer", fontFamily: T.font, letterSpacing: "0.04em",
-                }}
-              >{p.label}</button>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Cascading filters ── */}
-        {tree.length > 0 && (
-          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14, flexWrap: "wrap" }}>
-            {/* Subject */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: T.subtle }}>Subject</span>
-              <select value={selSubject} onChange={e => handleSelSubject(e.target.value)} style={dropdownStyle}>
-                <option value="all">All Subjects</option>
-                {availableSubjects.map(s => <option key={s} value={s}>{s}</option>)}
-              </select>
-            </div>
-
-            {/* Topic — only enabled when subject is selected */}
-            {selSubject !== "all" && (
-              <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: T.subtle }}>Topic</span>
-                <select value={selTopic} onChange={e => handleSelTopic(e.target.value)} style={dropdownStyle}>
-                  <option value="all">All Topics</option>
-                  {availableTopics.map(t => <option key={t} value={t}>{t}</option>)}
-                </select>
-              </div>
-            )}
-
-            {/* Subtopic — only when topic selected AND subtopics exist */}
-            {selTopic !== "all" && showSubtopicDropdown && (
-              <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: T.subtle }}>Subtopic</span>
-                <select value={selSubtopic} onChange={e => handleSelSubtopic(e.target.value)} style={dropdownStyle}>
-                  <option value="all">All Subtopics</option>
-                  {availableSubtopics.map(st => <option key={st} value={st}>{st}</option>)}
-                </select>
-              </div>
-            )}
-
-            {/* Reset pill */}
-            {selSubject !== "all" && (
-              <button
-                onClick={() => { handleSelSubject("all"); }}
-                style={{
-                  alignSelf: "flex-end", background: "transparent",
-                  border: `1px solid ${T.borderMid}`, borderRadius: 6,
-                  color: T.dim, fontSize: 11, padding: "6px 12px",
-                  cursor: "pointer", fontFamily: T.font,
-                }}
-              >
-                Reset
-              </button>
-            )}
-          </div>
-        )}
-
-        {/* State: loading/error/empty */}
-        {loading && (
-          <div style={{ padding: "20px 0", textAlign: "center", fontSize: 12, color: T.muted }}>Loading themes…</div>
-        )}
-        {error && (
-          <div style={{ padding: "12px", background: `${T.red}12`, border: `1px solid ${T.red}33`, borderRadius: 8, fontSize: 12, color: T.red }}>{error}</div>
-        )}
-
-        {/* No results after filtering */}
-        {!loading && !error && tree.length > 0 && filteredTree.length === 0 && (
-          <div style={{ padding: "16px 0", fontSize: 12, color: T.muted }}>No themes match the selected filters.</div>
-        )}
-
-        {/* Subject list */}
-        {!loading && !error && filteredTree.length > 0 && (
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            {filteredTree.map(({ subject, count, themes }) => {
-              const isSubjectOpen = openSubject === subject;
-              return (
-                <div key={subject} style={{
-                  border: `1px solid ${isSubjectOpen ? accent + "44" : T.border}`,
-                  borderRadius: 10, overflow: "hidden",
-                  background: isSubjectOpen ? `${accent}06` : T.bg,
-                  transition: "background 0.15s",
-                }}>
-                  {/* Subject header */}
-                  <button
-                    onClick={() => {
-                      setOpenSubject(isSubjectOpen ? null : subject);
-                      setOpenTheme(null);
-                      setOpenSubtheme(null);
-                      setPyqs([]);
-                    }}
-                    style={{
-                      width: "100%", background: "none", border: "none",
-                      padding: "12px 16px", cursor: "pointer",
-                      display: "flex", alignItems: "center", justifyContent: "space-between",
-                      fontFamily: T.font, textAlign: "left",
-                    }}
-                  >
-                    <span style={{ fontSize: 13, fontWeight: 800, color: isSubjectOpen ? accent : T.textBright }}>{subject}</span>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                      <span style={{
-                        fontSize: 10, fontWeight: 700, color: accent,
-                        background: `${accent}14`, border: `1px solid ${accent}30`,
-                        borderRadius: 20, padding: "2px 9px",
-                      }}>{count} PYQs</span>
-                      {chevron(isSubjectOpen)}
-                    </div>
-                  </button>
-
-                  {/* Theme list */}
-                  {isSubjectOpen && (
-                    <div style={{ borderTop: `1px solid ${T.border}`, padding: "8px 0" }}>
-                      {themes.map(({ name: themeName, count: themeCount, subthemes }) => {
-                        const themeKey  = `${subject}||${themeName}`;
-                        const isThemeOpen = openTheme === themeKey;
-                        return (
-                          <div key={themeName}>
-                            <button
-                              onClick={() => {
-                                setOpenTheme(isThemeOpen ? null : themeKey);
-                                setOpenSubtheme(null);
-                                setPyqs([]);
-                              }}
-                              style={{
-                                width: "100%", background: "none", border: "none",
-                                padding: "9px 16px 9px 28px", cursor: "pointer",
-                                display: "flex", alignItems: "center", justifyContent: "space-between",
-                                fontFamily: T.font, textAlign: "left",
-                              }}
-                            >
-                              <span style={{ fontSize: 12, fontWeight: 700, color: isThemeOpen ? accent : T.text }}>▸ {themeName}</span>
-                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ fontSize: 10, color: T.muted }}>{themeCount} Qs</span>
-                                {chevron(isThemeOpen)}
-                              </div>
-                            </button>
-
-                            {/* Subtheme list */}
-                            {isThemeOpen && (
-                              <div style={{ borderTop: `1px solid ${T.border}22`, padding: "4px 0 8px" }}>
-                                {subthemes.map(({ name: subthemeName, count: stCount, lastAskedYear, years, topDirective, matchModeSummary }) => {
-                                  const stKey    = `${subject}||${themeName}||${subthemeName}`;
-                                  const isStOpen = openSubtheme === stKey;
-
-                                  // Compute match quality label from matchModeSummary
-                                  const mms      = matchModeSummary || {};
-                                  const exact    = mms.mappedNodeExact || 0;
-                                  const fallback = (mms.keywordStrong || 0) + (mms.keywordModerate || 0) + (mms.themeNameFallback || 0);
-                                  const matchLabel = stCount === 0 ? null
-                                    : exact === stCount ? "Exact"
-                                    : fallback === stCount ? "Fallback"
-                                    : exact > 0 ? "Mixed"
-                                    : null;
-                                  const matchLabelColor = matchLabel === "Exact" ? T.green
-                                    : matchLabel === "Mixed" ? T.amber
-                                    : T.red;
-                                  return (
-                                    <div key={subthemeName} style={{ borderBottom: `1px solid ${T.border}22` }}>
-                                      <button
-                                        onClick={() => handleSubthemeClick(subject, themeName, subthemeName)}
-                                        style={{
-                                          width: "100%", background: isStOpen ? `${accent}0a` : "none",
-                                          border: "none", padding: "8px 16px 8px 44px",
-                                          cursor: "pointer", display: "flex", alignItems: "center",
-                                          justifyContent: "space-between", fontFamily: T.font, textAlign: "left",
-                                        }}
-                                      >
-                                        <div>
-                                          <span style={{ fontSize: 11.5, fontWeight: isStOpen ? 700 : 500, color: isStOpen ? accent : T.textBright }}>– {subthemeName}</span>
-                                          <div style={{ display: "flex", gap: 8, marginTop: 2, flexWrap: "wrap", alignItems: "center" }}>
-                                            <span style={{ fontSize: 10, color: T.muted }}>{stCount} question{stCount !== 1 ? "s" : ""}</span>
-                                            {lastAskedYear && <span style={{ fontSize: 10, color: T.dim }}>Last: {lastAskedYear}</span>}
-                                            {years && years.length > 0 && (
-                                              <span style={{ fontSize: 10, color: T.muted }}>{years.slice(0, 4).join(", ")}{years.length > 4 ? "…" : ""}</span>
-                                            )}
-                                            {topDirective && (
-                                              <span style={{ fontSize: 9, fontWeight: 700, color: accent, background: `${accent}12`, border: `1px solid ${accent}25`, borderRadius: 4, padding: "1px 6px", letterSpacing: "0.04em" }}>
-                                                {topDirective}
-                                              </span>
-                                            )}
-                                            {matchLabel && (
-                                              <span style={{ fontSize: 9, fontWeight: 800, color: matchLabelColor, background: `${matchLabelColor}12`, border: `1px solid ${matchLabelColor}30`, borderRadius: 4, padding: "1px 7px", letterSpacing: "0.06em", textTransform: "uppercase" }}>
-                                                {matchLabel}
-                                              </span>
-                                            )}
-                                          </div>
-                                        </div>
-                                        {chevron(isStOpen)}
-                                      </button>
-
-                                      {/* PYQ panel */}
-                                      {isStOpen && (
-                                        <div style={{ padding: "10px 16px 14px 44px" }}>
-                                          {pyqsLoading && (
-                                            <div style={{ fontSize: 11, color: T.muted, padding: "6px 0" }}>Loading PYQs…</div>
-                                          )}
-                                          {pyqsError && (
-                                            <div style={{ fontSize: 11, color: T.red }}>{pyqsError}</div>
-                                          )}
-                                          {!pyqsLoading && !pyqsError && pyqs.length === 0 && (
-                                            <div style={{ fontSize: 11, color: T.muted }}>No PYQs found for this subtheme.</div>
-                                          )}
-                                          {!pyqsLoading && pyqs.length > 0 && (
-                                            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                                              {pyqs.map(q => (
-                                                <div key={q.id} style={{
-                                                  background: T.surface, border: `1px solid ${T.border}`,
-                                                  borderRadius: 8, padding: "12px 14px",
-                                                }}>
-                                                  <div style={{ display: "flex", gap: 6, marginBottom: 6, flexWrap: "wrap" }}>
-                                                    {q.year && (
-                                                      <span style={{
-                                                        fontSize: 10, fontWeight: 700, color: accent,
-                                                        background: `${accent}14`, border: `1px solid ${accent}30`,
-                                                        borderRadius: 5, padding: "2px 8px",
-                                                      }}>UPSC {q.year}</span>
-                                                    )}
-                                                    {q.marks && (
-                                                      <span style={{
-                                                        fontSize: 10, fontWeight: 600, color: T.dim,
-                                                        background: T.bg, border: `1px solid ${T.border}`,
-                                                        borderRadius: 5, padding: "2px 8px",
-                                                      }}>{q.marks}M</span>
-                                                    )}
-                                                    {q.wordLimit && (
-                                                      <span style={{
-                                                        fontSize: 10, color: T.muted,
-                                                        background: T.bg, border: `1px solid ${T.border}`,
-                                                        borderRadius: 5, padding: "2px 8px",
-                                                      }}>{q.wordLimit} words</span>
-                                                    )}
-                                                  </div>
-                                                  <div style={{ fontSize: 12.5, color: T.text, lineHeight: 1.65 }}>
-                                                    {q.question}
-                                                  </div>
-                                                </div>
-                                              ))}
-                                            </div>
-                                          )}
-                                        </div>
-                                      )}
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
 
 // ─── Quick Practice ───────────────────────────────────────────────────────────
 function QuickPractice() {
@@ -1124,47 +660,7 @@ function QuickPractice() {
   const [mode, setMode] = useState("pyq");
   const [marks, setMarks] = useState("15");
   const [qIndex, setQIndex] = useState(0);
-  const [inputMethod, setInputMethod] = useState("typed"); // "typed" | "handwritten"
-
-  // OCR/Upload State
-  const [uploadedPages, setUploadedPages] = useState([]);
-  const [isDragging, setIsDragging] = useState(false);
-  const [questionSource, setQuestionSource] = useState("auto"); // "auto", "pyq", "institute", "custom", "essay", "geography"
-  const [isExtracting, setIsExtracting] = useState(false);
-  const [ocrError, setOcrError] = useState("");
-  const [ocrSuccess, setOcrSuccess] = useState(false);
-
-  // Verification Form State
-  const [verifiedQuestion, setVerifiedQuestion] = useState("");
-  const [verifiedAnswer, setVerifiedAnswer] = useState("");
-  const [verifiedPaper, setVerifiedPaper] = useState("gs1");
-  const [verifiedTopic, setVerifiedTopic] = useState("");
-  const [verifiedMarks, setVerifiedMarks] = useState("15");
-  const [verifiedYear, setVerifiedYear] = useState("");
-  const [verifiedInstitute, setVerifiedInstitute] = useState("");
-  const [verifiedTestName, setVerifiedTestName] = useState("");
-  const [verifiedQuestionNumber, setVerifiedQuestionNumber] = useState("");
-
-  const [useSelectedCardQuestion, setUseSelectedCardQuestion] = useState(false);
-
-  const [isSavingAttempt, setIsSavingAttempt] = useState(false);
-  const [saveSuccess, setSaveSuccess] = useState(false);
-  const [saveError, setSaveError] = useState("");
-
-  const fileInputRef = useRef(null);
-
-  const getPaperAccent = (p) => {
-    switch (p) {
-      case "gs1": return T.amber;
-      case "gs2": return T.blue;
-      case "gs3": return T.green;
-      case "gs4": return T.purple;
-      case "essay": return "#ec4899"; // pink
-      case "geo_p1": return "#f59e0b"; // amber
-      case "geo_p2": return "#10b981"; // green
-      default: return T.amber;
-    }
-  };
+  const navigate = useNavigate();
 
   const getPaperLabel = (p) => {
     switch (p) {
@@ -1179,38 +675,59 @@ function QuickPractice() {
     }
   };
 
-  const paperAccent = getPaperAccent(paper);
-  const paperLabel  = getPaperLabel(paper);
-
-  const pool       = PRACTICE_QUESTIONS?.[paper]?.[mode]?.[marks] || [];
+  const paperLabel = getPaperLabel(paper);
+  const pool = PRACTICE_QUESTIONS?.[paper]?.[mode]?.[marks] || [];
   const totalInPool = pool.length;
-  const currentQ   = totalInPool > 0 ? pool[qIndex % totalInPool] : null;
+  const currentQ = totalInPool > 0 ? pool[qIndex % totalInPool] : null;
 
-  const handleNext  = () => { if (totalInPool > 1) setQIndex((i) => (i + 1) % totalInPool); };
+  const handleNext = () => {
+    if (totalInPool > 1) setQIndex((i) => (i + 1) % totalInPool);
+  };
   const handlePaper = (v) => { setPaper(v); setQIndex(0); };
-  const handleMode  = (v) => { setMode(v);  setQIndex(0); };
+  const handleMode = (v) => { setMode(v); setQIndex(0); };
   const handleMarks = (v) => { setMarks(v); setQIndex(0); };
 
-  const modeColor  = mode === "pyq" ? T.purple : mode === "topic" ? T.amber : T.blue;
-  const modeLabel  = mode === "pyq" ? "PYQ" : mode === "topic" ? "Topic" : "Mixed";
-
-  const wordGuide   = marks === "10" ? "~150 words" : marks === "15" ? "~200 words" : "~250 words";
-  const timeGuide   = marks === "10" ? "7 min"      : marks === "15" ? "10 min"     : "13 min";
-  const structGuide = marks === "10" ? "Intro + 3 pts + Concl" : marks === "15" ? "Intro + 4–5 pts + Concl" : "Intro + 6 pts + Concl";
-
-  const navigate = useNavigate();
+  const wordGuide = marks === "10" ? "~150 words" : marks === "15" ? "~200 words" : "~250 words";
+  const timeGuide = marks === "10" ? "7 min" : marks === "15" ? "10 min" : "13 min";
+  const structGuide = marks === "10"
+    ? "Intro + 3 points + conclusion"
+    : marks === "15"
+      ? "Intro + 4–5 points + conclusion"
+      : "Intro + 6 points + conclusion";
+  const modeLabel = mode === "pyq" ? "PYQ" : mode === "topic" ? "Topic" : "Mixed";
 
   const handleStartWriting = () => {
     if (!currentQ) return;
-    const priorityLabel = mode === "pyq" ? "UPSC PYQ · High Priority"
-      : mode === "topic" ? "Topic Practice · Depth Builder"
-      : "Mixed Mode · Breadth Drill";
+    const priorityLabel = mode === "pyq"
+      ? "UPSC PYQ · High Priority"
+      : mode === "topic"
+        ? "Topic Practice · Depth Builder"
+        : "Mixed Mode · Breadth Drill";
+
     navigate("/mains/answer-writing", {
       state: {
+        paper: paperLabel,
+        mode: modeLabel,
+        year: currentQ.year || null,
+        topic: "",
+        syllabusNodeId: "",
+        questions: [
+          {
+            paper: paperLabel,
+            mode: modeLabel,
+            marks,
+            year: currentQ.year || null,
+            structure: structGuide,
+            focus: currentQ.hint || "",
+            priority: priorityLabel,
+            question: currentQ.q,
+          }
+        ],
+        currentIndex: 0,
         question: {
           paper: paperLabel,
           mode: modeLabel,
-          marks: marks,
+          marks,
           year: currentQ.year || null,
           structure: structGuide,
           focus: currentQ.hint || "",
@@ -1221,735 +738,807 @@ function QuickPractice() {
     });
   };
 
-  // Upload actions
-  const addFiles = (files) => {
-    const validFiles = Array.from(files).filter(
-      (f) => f.type.startsWith("image/") || f.type === "application/pdf"
-    );
-    const toAdd = validFiles.map((file) => ({
-      file,
-      preview: file.type.startsWith("image/") ? URL.createObjectURL(file) : null,
-      name: file.name,
-      type: file.type,
-    }));
-    setUploadedPages((prev) => [...prev, ...toAdd]);
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
-
-  const handleDragLeave = () => {
-    setIsDragging(false);
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    setIsDragging(false);
-    if (e.dataTransfer.files) {
-      addFiles(e.dataTransfer.files);
-    }
-  };
-
-  const handleRemovePage = (index) => {
-    setUploadedPages((prev) => {
-      const page = prev[index];
-      if (page.preview) {
-        URL.revokeObjectURL(page.preview);
-      }
-      return prev.filter((_, i) => i !== index);
-    });
-  };
-
-  const handlePrepareAnswerText = async () => {
-    if (uploadedPages.length === 0) {
-      setOcrError("Please upload at least one image or PDF page.");
-      return;
-    }
-    setIsExtracting(true);
-    setOcrError("");
-    try {
-      const files = uploadedPages.map((pg) => pg.file).filter(Boolean);
-      let extractedText = "";
-      if (files.length > 0) {
-        try {
-          const res = await extractAnswerFromImagesApi(files);
-          if (res && res.ok && res.text) {
-            extractedText = res.text;
-          } else {
-            extractedText = `Mock extracted answer text from uploaded pages.\n\nPaper: ${getPaperLabel(paper)}\nQuestion Source: ${questionSource}\n\nCandidate's handwritten answer text goes here. The extraction pipeline is ready. (OCR API returned status ok but text empty or error: ${res?.error || 'none'})`;
-          }
-        } catch (apiErr) {
-          console.warn("OCR API error, falling back to mock text for development preview", apiErr);
-          extractedText = `Sample Extracted Answer:\n\nThe Bhakti movement was a significant socio-religious movement in medieval India. It originated in South India in the 7th-8th centuries and spread to North India in the 14th-15th centuries. It challenged the rigid caste system, advocated for devotion to a personal god, and promoted regional languages.\n\nKey Saint-poets:\n1. Kabir: Criticized external rituals and emphasized Hindu-Muslim unity.\n2. Mirabai: Expressed intense devotion to Lord Krishna.\n3. Guru Nanak: Founded Sikhism based on equality and devotion.\n\nImpact on Society:\n- Weakened the caste barriers.\n- Promoted vernacular literature (Hindi, Bengali, Marathi).\n- Fostered social reform and equality.`;
-        }
-      } else {
-        extractedText = "No files uploaded to extract.";
-      }
-
-      setVerifiedAnswer(extractedText);
-      
-      if (useSelectedCardQuestion && currentQ) {
-        setVerifiedQuestion(currentQ.q);
-        setVerifiedPaper(paper);
-        setVerifiedMarks(marks);
-        setVerifiedYear(currentQ.year || "");
-        setVerifiedTopic(currentQ.hint ? currentQ.hint.replace("Focus: ", "") : "");
-      } else {
-        setVerifiedQuestion("");
-        setVerifiedPaper(paper);
-        setVerifiedMarks(marks);
-        setVerifiedYear("");
-        setVerifiedTopic("");
-      }
-      setOcrSuccess(true);
-    } catch (err) {
-      setOcrError("Failed to extract text: " + err.message);
-    } finally {
-      setIsExtracting(false);
-    }
-  };
-
-  const handleSaveAndContinue = async () => {
-    setIsSavingAttempt(true);
-    setSaveError("");
-    setSaveSuccess(false);
-
-    const existingAttemptId = `mains_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
-
-    const payload = {
-      attemptId:          existingAttemptId,
-      userId:             "user_1",
-      questionText:       verifiedQuestion,
-      paper:              getPaperLabel(verifiedPaper),
-      subject:            verifiedTopic || "General",
-      topic:              verifiedTopic || "General",
-      marks:              parseInt(verifiedMarks) || 15,
-      wordLimit:          parseInt(verifiedMarks) === 10 ? 150 : 200,
-      finalAnswerText:    verifiedAnswer.trim(),
-      extractedText:      verifiedAnswer.trim(),
-      answerSource:       "uploaded",
-      uploadedPagesMeta:  uploadedPages.map((pg, idx) => ({ pageNo: idx + 1, fileName: pg.name || `page_${idx+1}.jpg` })),
-      basicReview:        null,
-      air1RawReview:      "",
-      air1ParsedJson:     null,
-      currentScore:       "",
-      targetScore:        "",
-      status:             "finalized",
-      metadata: {
-        questionSource,
-        year: verifiedYear,
-        institute: verifiedInstitute,
-        testName: verifiedTestName,
-        questionNumber: verifiedQuestionNumber,
-      }
-    };
-
-    try {
-      const res = await saveMainsAttemptToDB(payload);
-      if (res && res.ok) {
-        setSaveSuccess(true);
-        setTimeout(() => {
-          setInputMethod("typed");
-          setUploadedPages([]);
-          setOcrSuccess(false);
-          setSaveSuccess(false);
-          localStorage.setItem("current_mains_attempt_id", res.attemptId);
-          navigate("/mains/answer-writing", {
-            state: {
-              attemptId: res.attemptId,
-              isRestored: true,
-              paper: getPaperLabel(verifiedPaper),
-              mode: "Custom",
-              question: {
-                question: verifiedQuestion,
-                paper: getPaperLabel(verifiedPaper),
-                marks: verifiedMarks,
-                focus: verifiedTopic,
-              }
-            }
-          });
-        }, 1500);
-      } else {
-        setSaveError(res?.error || "Failed to save attempt to DB.");
-      }
-    } catch (err) {
-      console.error(err);
-      setSaveError("Failed to save attempt: " + err.message);
-    } finally {
-      setIsSavingAttempt(false);
-    }
-  };
-
-  const sourceLine = mode === "pyq"
-    ? { dot: T.green,  label: "UPSC PYQ",              sub: "High Priority" }
-    : mode === "topic"
-    ? { dot: T.amber,  label: "Topic Practice",         sub: "Depth Builder" }
-    : { dot: T.blue,   label: "Mixed Mode",              sub: "Breadth Drill" };
+  const papers = [
+    ["GS1", "gs1"], ["GS2", "gs2"], ["GS3", "gs3"], ["GS4", "gs4"],
+    ["Essay", "essay"], ["Geo P1", "geo_p1"], ["Geo P2", "geo_p2"],
+  ];
 
   return (
-    <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 14, overflow: "hidden" }}>
-      <div style={{ height: 3, background: `linear-gradient(90deg, ${paperAccent}, ${paperAccent}44, transparent)` }} />
+    <section className="mos-surface mos-question-picker" aria-labelledby="mos-question-picker-title">
+      <div className="mos-question-picker__head">
+        <h2 id="mos-question-picker-title">Choose another question</h2>
+      </div>
 
-      <div style={{ padding: "26px 28px 28px" }}>
-        
-        {/* ── Section header ── */}
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 20 }}>
-          <div>
-            <div style={{ ...label11(paperAccent), marginBottom: 7, letterSpacing: "0.14em" }}>Answer Writing Practice</div>
-            <div style={{ fontSize: 20, fontWeight: 900, color: T.textBright, lineHeight: 1.15, letterSpacing: "-0.01em" }}>
-              Mains Practice Session
-            </div>
-            <div style={{ fontSize: 13, color: T.dim, marginTop: 6, lineHeight: 1.5 }}>
-              Select paper, mode, and marker type — then begin focused mains writing.
-            </div>
-          </div>
-
-          <div style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 7,
-            flexShrink: 0,
-            background: T.bg,
-            border: `1px solid ${T.borderMid}`,
-            borderRadius: 10,
-            padding: "9px 16px",
-          }}>
-            <span style={{ fontSize: 13, fontWeight: 900, color: paperAccent, letterSpacing: "0.04em" }}>{paperLabel}</span>
-            {inputMethod === "typed" && (
-              <>
-                <span style={{ color: T.muted, fontSize: 12 }}>·</span>
-                <span style={{ fontSize: 12, fontWeight: 800, color: modeColor, letterSpacing: "0.06em" }}>{modeLabel}</span>
-                <span style={{ color: T.muted, fontSize: 12 }}>·</span>
-                <span style={{ fontSize: 12, fontWeight: 700, color: T.text }}>{marks}M</span>
-              </>
-            )}
-          </div>
+      <div className="mos-question-picker__controls">
+        <div className="mos-scroll-segment" aria-label="Select paper">
+          {papers.map(([label, value]) => (
+            <button
+              key={value}
+              type="button"
+              className={paper === value ? "is-active" : ""}
+              data-paper={value}
+              onClick={() => handlePaper(value)}
+            >
+              {label}
+            </button>
+          ))}
         </div>
 
-        {/* ── Input Method selector ── */}
-        <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
-          <button
-            onClick={() => setInputMethod("typed")}
-            style={{
-              flex: 1,
-              padding: "10px 16px",
-              borderRadius: 8,
-              border: `1.5px solid ${paperAccent}`,
-              background: `${paperAccent}15`,
-              color: paperAccent,
-              fontWeight: 800,
-              fontSize: 13,
-              cursor: "pointer",
-              fontFamily: T.font,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 8,
-              transition: "all 0.15s ease",
-            }}
-          >
-            ⌨️ Typed Answer
-          </button>
-        </div>
-
-        {/* ── Selectors Area ── */}
-        <div style={{
-          background: T.bg,
-          borderRadius: 10,
-          border: `1px solid ${T.border}`,
-          padding: "16px",
-          marginBottom: 24,
-        }}>
-          {/* Paper Selector (Full Width Row) */}
-          <div style={{ marginBottom: inputMethod === "typed" ? 16 : 0 }}>
-            <div style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Select Paper</div>
-            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-              {[
-                { label: "GS1", value: "gs1" },
-                { label: "GS2", value: "gs2" },
-                { label: "GS3", value: "gs3" },
-                { label: "GS4 Ethics", value: "gs4" },
-                { label: "Essay", value: "essay" },
-                { label: "Geography Optional P1", value: "geo_p1" },
-                { label: "Geography Optional P2", value: "geo_p2" },
-              ].map((opt) => {
-                const isActive = paper === opt.value;
-                const acc = getPaperAccent(opt.value);
-                return (
-                  <button
-                    key={opt.value}
-                    onClick={() => handlePaper(opt.value)}
-                    style={{
-                      padding: "6px 14px",
-                      borderRadius: 7,
-                      border: isActive ? `1.5px solid ${acc}` : `1px solid ${T.borderMid}`,
-                      background: isActive ? `${acc}18` : "transparent",
-                      color: isActive ? acc : T.dim,
-                      fontWeight: isActive ? 800 : 500,
-                      fontSize: 12,
-                      cursor: "pointer",
-                      fontFamily: T.font,
-                      letterSpacing: "0.04em",
-                      transition: "all 0.12s ease",
-                    }}
-                  >
-                    {opt.label}
-                  </button>
-                );
-              })}
+        <div className="mos-question-picker__lower-controls">
+          <div className="mos-segment" aria-label="Select mode">
+            {[["PYQ", "pyq"], ["Topic", "topic"], ["Mixed", "mixed"]].map(([label, value]) => (
+              <button key={value} type="button" className={mode === value ? "is-active" : ""} onClick={() => handleMode(value)}>
+                {label}
+              </button>
+            ))}
+          </div>
+          <div className="mos-marks-control">
+            <span>Marks</span>
+            <div className="mos-segment">
+              {["10", "15", "20"].map((value) => (
+                <button key={value} type="button" className={marks === value ? "is-active" : ""} onClick={() => handleMarks(value)}>
+                  {value}M
+                </button>
+              ))}
             </div>
           </div>
-
-          {/* Mode & Answer Type Selectors (Only for Typed Answer) */}
-          {inputMethod === "typed" && (
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 16,
-              borderTop: `1px solid ${T.border}`,
-              paddingTop: 16,
-            }}>
-              <div>
-                <div style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Mode</div>
-                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                  {[
-                    { label: "PYQ", value: "pyq" },
-                    { label: "Topic", value: "topic" },
-                    { label: "Mixed", value: "mixed" },
-                  ].map((opt) => {
-                    const isActive = mode === opt.value;
-                    return (
-                      <button
-                        key={opt.value}
-                        onClick={() => handleMode(opt.value)}
-                        style={{
-                          padding: "6px 14px",
-                          borderRadius: 7,
-                          border: isActive ? `1.5px solid ${T.purple}` : `1px solid ${T.borderMid}`,
-                          background: isActive ? `${T.purple}18` : "transparent",
-                          color: isActive ? T.purple : T.dim,
-                          fontWeight: isActive ? 800 : 500,
-                          fontSize: 12,
-                          cursor: "pointer",
-                          fontFamily: T.font,
-                          letterSpacing: "0.04em",
-                          transition: "all 0.12s ease",
-                        }}
-                      >
-                        {opt.label}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div>
-                <div style={{ ...label11(T.subtle), marginBottom: 8, fontSize: 10 }}>Answer Type</div>
-                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                  {[
-                    { label: "10 Marker", value: "10" },
-                    { label: "15 Marker", value: "15" },
-                    { label: "20 Marker", value: "20" },
-                  ].map((opt) => {
-                    const isActive = marks === opt.value;
-                    return (
-                      <button
-                        key={opt.value}
-                        onClick={() => handleMarks(opt.value)}
-                        style={{
-                          padding: "6px 14px",
-                          borderRadius: 7,
-                          border: isActive ? `1.5px solid ${paperAccent}` : `1px solid ${T.borderMid}`,
-                          background: isActive ? `${paperAccent}18` : "transparent",
-                          color: isActive ? paperAccent : T.dim,
-                          fontWeight: isActive ? 800 : 500,
-                          fontSize: 12,
-                          cursor: "pointer",
-                          fontFamily: T.font,
-                          letterSpacing: "0.04em",
-                          transition: "all 0.12s ease",
-                        }}
-                      >
-                        {opt.label}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          )}
         </div>
+      </div>
 
-        {/* ── Typed Answer Practice Flow ── */}
-        {inputMethod === "typed" && (
+      <div className="mos-question-picker__question">
+        {currentQ ? (
           <>
-            {currentQ ? (
-              <div style={{
-                background: T.bg,
-                border: `1px solid ${paperAccent}22`,
-                borderRadius: 12, overflow: "hidden", marginBottom: 22,
-              }}>
-                {/* Card header */}
-                <div style={{
-                  display: "flex", alignItems: "center", justifyContent: "space-between",
-                  padding: "11px 18px",
-                  borderBottom: `1px solid ${T.border}`,
-                  background: `${paperAccent}07`,
-                }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <span style={{
-                      fontSize: 11, fontWeight: 900, color: paperAccent,
-                      background: `${paperAccent}18`, border: `1px solid ${paperAccent}33`,
-                      borderRadius: 6, padding: "3px 10px", letterSpacing: "0.07em",
-                    }}>
-                      {paperLabel}
-                    </span>
-                    <span style={{
-                      fontSize: 10, fontWeight: 800, color: modeColor,
-                      background: `${modeColor}14`, border: `1px solid ${modeColor}30`,
-                      borderRadius: 6, padding: "3px 9px", letterSpacing: "0.07em", textTransform: "uppercase",
-                    }}>
-                      {modeLabel}
-                    </span>
-                    {currentQ.year && (
-                      <span style={{ fontSize: 11, color: T.dim, fontWeight: 600 }}>UPSC {currentQ.year}</span>
-                    )}
-                  </div>
-
-                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <span style={{
-                      fontSize: 11, fontWeight: 800, color: T.textBright,
-                      background: T.surface, border: `1px solid ${T.borderMid}`,
-                      borderRadius: 6, padding: "3px 10px",
-                    }}>
-                      {marks} Marks
-                    </span>
-                    {totalInPool > 0 && (
-                      <span style={{
-                        fontSize: 11, fontWeight: 600, color: T.dim,
-                        background: T.surface, border: `1px solid ${T.border}`,
-                        borderRadius: 6, padding: "3px 10px",
-                      }}>
-                        {totalInPool} Question{totalInPool !== 1 ? "s" : ""} Available
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Card body */}
-                <div style={{ padding: "22px 20px 0" }}>
-                  <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
-                    {[
-                      { label: "Word Limit", value: wordGuide },
-                      { label: "Time",       value: timeGuide },
-                      { label: "Structure",  value: structGuide },
-                    ].map((g) => (
-                      <div key={g.label} style={{
-                        display: "flex", alignItems: "center", gap: 5,
-                        background: T.surface, border: `1px solid ${T.border}`,
-                        borderRadius: 6, padding: "4px 11px",
-                      }}>
-                        <span style={{ fontSize: 10, color: T.subtle, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em" }}>{g.label}:</span>
-                        <span style={{ fontSize: 11, color: T.text, fontWeight: 700 }}>{g.value}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div style={{
-                    fontSize: 17, fontWeight: 700, color: T.textBright,
-                    lineHeight: 1.85, letterSpacing: "0.01em",
-                    paddingBottom: 20,
-                  }}>
-                    {currentQ.q}
-                  </div>
-                </div>
-
-                {/* Card footer */}
-                <div style={{
-                  padding: "14px 20px 16px",
-                  borderTop: `1px solid ${T.border}`,
-                  background: `${T.surface}88`,
-                  display: "flex", flexDirection: "column", gap: 9,
-                }}>
-                  {currentQ.hint && (
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                      <span style={{
-                        fontSize: 10, fontWeight: 800, color: paperAccent,
-                        textTransform: "uppercase", letterSpacing: "0.1em",
-                        flexShrink: 0, marginTop: 1,
-                      }}>Focus</span>
-                      <span style={{ fontSize: 12, color: T.dim, fontWeight: 500, lineHeight: 1.5 }}>
-                        {currentQ.hint}
-                      </span>
-                    </div>
-                  )}
-
-                  <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
-                    <div style={{
-                      width: 6, height: 6, borderRadius: "50%",
-                      background: sourceLine.dot, flexShrink: 0,
-                    }} />
-                    <span style={{ fontSize: 11, fontWeight: 700, color: T.text }}>{sourceLine.label}</span>
-                    <span style={{ color: T.muted, fontSize: 10 }}>·</span>
-                    <span style={{ fontSize: 11, color: T.subtle }}>{sourceLine.sub}</span>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div style={{
-                background: T.bg, border: `1px dashed ${T.borderMid}`,
-                borderRadius: 12, padding: "48px 24px",
-                textAlign: "center", marginBottom: 22,
-              }}>
-                <div style={{ fontSize: 28, marginBottom: 12, opacity: 0.6 }}>📝</div>
-                <div style={{ fontSize: 13, color: T.subtle, fontWeight: 700 }}>No questions for this combination</div>
-                <div style={{ fontSize: 12, color: T.muted, marginTop: 6 }}>Try a different paper, mode, or marker type</div>
-              </div>
+            <div className="mos-question-meta">
+              <span>{paperLabel}</span>
+              <span>{modeLabel}</span>
+              {currentQ.year && <span>UPSC {currentQ.year}</span>}
+              <span>{marks} marks</span>
+            </div>
+            <h3>{currentQ.q}</h3>
+            <div className="mos-guides">
+              <span>{timeGuide}</span>
+              <span>{wordGuide}</span>
+              <span>{structGuide}</span>
+            </div>
+            {currentQ.hint && (
+              <p className="mos-focus"><strong>Focus</strong>{currentQ.hint.replace(/^Focus:\s*/i, "")}</p>
             )}
-
-            {/* Action buttons */}
-            <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", paddingTop: 4 }}>
-              <button
-                disabled={!currentQ}
-                onClick={handleStartWriting}
-                style={{
-                  background: currentQ ? paperAccent : T.muted,
-                  color: "#09090b",
-                  border: "none", borderRadius: 9,
-                  fontWeight: 900, fontSize: 13,
-                  padding: "12px 28px",
-                  cursor: currentQ ? "pointer" : "not-allowed",
-                  fontFamily: T.font, letterSpacing: "0.04em",
-                  opacity: currentQ ? 1 : 0.45,
-                  boxShadow: currentQ ? `0 0 18px ${paperAccent}30` : "none",
-                }}
-              >
-                ✏️&nbsp;&nbsp;Start Writing
-              </button>
-
-              <button
-                onClick={handleNext}
-                disabled={!currentQ || totalInPool <= 1}
-                style={{
-                  background: "transparent",
-                  color: currentQ && totalInPool > 1 ? T.text : T.muted,
-                  border: `1px solid ${T.borderMid}`,
-                  borderRadius: 9, fontWeight: 700, fontSize: 13,
-                  padding: "11px 22px",
-                  cursor: currentQ && totalInPool > 1 ? "pointer" : "not-allowed",
-                  fontFamily: T.font, letterSpacing: "0.03em",
-                  opacity: currentQ && totalInPool > 1 ? 1 : 0.4,
-                }}
-              >
-                Next Question →
-              </button>
-
-              <button
-                style={{
-                  background: "transparent",
-                  color: T.purple,
-                  border: `1px solid ${T.purple}44`,
-                  borderRadius: 9, fontWeight: 600, fontSize: 13,
-                  padding: "11px 20px",
-                  cursor: "pointer",
-                  fontFamily: T.font, letterSpacing: "0.02em",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                View More PYQs
-              </button>
+            <div className="mos-actions">
+              <button type="button" className="mos-btn mos-btn--primary" onClick={handleStartWriting}>Start Writing</button>
+              <button type="button" className="mos-btn mos-btn--quiet" onClick={handleNext} disabled={totalInPool <= 1}>Another Question →</button>
             </div>
           </>
+        ) : (
+          <div className="mos-inline-state">No questions for this combination. Try another paper, source or mark value.</div>
         )}
-
-
       </div>
-    </div>
+    </section>
   );
 }
 
+
+
+// ─── Command-center helpers ───────────────────────────────────────────────────
+const PAPER_LABELS = { gs1: "GS1", gs2: "GS2", gs3: "GS3" };
+const MODE_LABELS = { pyq: "PYQ", topic: "Topic", mixed: "Mixed" };
+
+function practiceGuides(marks) {
+  const m = String(marks || "15");
+  if (m === "10") return { words: "~150 words", time: "7 min", structure: "Intro + 3 points + conclusion" };
+  if (m === "20") return { words: "~250 words", time: "13 min", structure: "Intro + 6 points + conclusion" };
+  return { words: "~200 words", time: "10 min", structure: "Intro + 4–5 points + conclusion" };
+}
+
+function tokenSet(value = "") {
+  const stop = new Set(["the", "and", "for", "with", "from", "this", "that", "into", "your", "area", "areas", "missing", "weak", "examples", "example", "question", "answer"]);
+  return new Set(
+    String(value)
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, " ")
+      .split(/\s+/)
+      .filter((word) => word.length > 3 && !stop.has(word))
+  );
+}
+
+function overlapScore(a, b) {
+  const left = tokenSet(a);
+  const right = tokenSet(b);
+  let score = 0;
+  left.forEach((token) => { if (right.has(token)) score += 1; });
+  return score;
+}
+
+function flattenPracticeQuestions(paperId) {
+  const bank = PRACTICE_QUESTIONS[paperId] || {};
+  const result = [];
+  ["topic", "pyq", "mixed"].forEach((mode) => {
+    const byMarks = bank[mode] || {};
+    ["15", "10", "20"].forEach((marks) => {
+      (byMarks[marks] || []).forEach((question) => {
+        result.push({ paper: paperId, mode, marks, question });
+      });
+    });
+  });
+  return result;
+}
+
+function buildCommandCandidates(weakAreas) {
+  const weakPaper = ["GS1", "GS2", "GS3"].find((paper) => (weakAreas?.[paper] || []).length > 0);
+  const paperId = weakPaper ? weakPaper.toLowerCase() : "gs1";
+  const focus = weakPaper ? weakAreas[weakPaper][0] : "";
+  const primary = flattenPracticeQuestions(paperId);
+
+  primary.sort((a, b) => {
+    const aScore = overlapScore(focus, `${a.question.q} ${a.question.hint || ""}`);
+    const bScore = overlapScore(focus, `${b.question.q} ${b.question.hint || ""}`);
+    return bScore - aScore;
+  });
+
+  const fallback = ["gs1", "gs2", "gs3"]
+    .filter((id) => id !== paperId)
+    .flatMap(flattenPracticeQuestions);
+
+  return [...primary, ...fallback].map((item) => ({ ...item, focus }));
+}
+
+function routeStateForPractice(item) {
+  if (!item?.question) return null;
+  const guides = practiceGuides(item.marks);
+  const modeLabel = MODE_LABELS[item.mode] || "Practice";
+  const priority = item.mode === "pyq"
+    ? "UPSC PYQ · High Priority"
+    : item.mode === "topic"
+      ? "Topic Practice · Depth Builder"
+      : "Mixed Mode · Breadth Drill";
+
+  const paperLabel = PAPER_LABELS[item.paper] || item.paper?.toUpperCase() || "GS1";
+
+  const questionObj = {
+    id: item.question.id || `q_${item.paper}_${item.question.year || "topic"}_${item.marks}`,
+    paper: paperLabel,
+    year: item.question.year || null,
+    question: item.question.q || item.question.question || "",
+    marks: String(item.marks || 15),
+    wordLimit: guides.words,
+    structure: guides.structure,
+    focus: item.question.hint || "",
+    priority,
+    subparts: item.question.subparts || [],
+    syllabusNodeId: item.question.syllabusNodeId || "",
+  };
+
+  return {
+    paper: paperLabel,
+    mode: modeLabel,
+    year: item.question.year || null,
+    topic: item.focus || "",
+    syllabusNodeId: item.question.syllabusNodeId || "",
+    questions: [questionObj],
+    currentIndex: 0,
+    question: questionObj,
+  };
+}
+
+function MentorCommandCard({ weakAreas }) {
+  const navigate = useNavigate();
+  const candidates = useMemo(() => buildCommandCandidates(weakAreas), [weakAreas]);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => setIndex(0), [candidates]);
+
+  const item = candidates[index % Math.max(candidates.length, 1)] || null;
+  if (!item) return null;
+
+  const paperLabel = PAPER_LABELS[item.paper] || item.paper.toUpperCase();
+  const guides = practiceGuides(item.marks);
+  const topic = item.focus ? item.focus.split("—")[0].trim() : "today's writing target";
+  const rawWeakness = item.focus?.includes("—") ? item.focus.split("—").slice(1).join("—").trim() : "";
+  const weakness = rawWeakness
+    ? rawWeakness.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
+    : "Build answer-writing consistency";
+
+  const start = () => {
+    const state = routeStateForPractice(item);
+    if (state) navigate("/mains/answer-writing", { state });
+  };
+
+  return (
+    <section className="mos-surface mos-command-hero" aria-labelledby="mains-command-title">
+      <div className="mos-command-hero__topline">
+        <span className="mos-kicker">Next action</span>
+        <span className="mos-recommended">Recommended for you</span>
+      </div>
+      <h2 id="mains-command-title">Write one {paperLabel} answer on {topic}</h2>
+      <p className="mos-command-question">{item.question.q}</p>
+      <div className="mos-repair-line"><span>Repair</span><strong>{weakness}</strong></div>
+      <div className="mos-command-facts">
+        <span>{item.marks} marks</span>
+        <span>{guides.time}</span>
+        <span>{guides.words}</span>
+        <span>{guides.structure}</span>
+      </div>
+      <div className="mos-actions">
+        <button type="button" className="mos-btn mos-btn--primary" onClick={start}>Start {guides.time} Answer</button>
+        <button type="button" className="mos-btn mos-btn--secondary" onClick={() => setIndex((current) => (current + 1) % candidates.length)}>Change</button>
+        <button type="button" className="mos-btn mos-btn--text" onClick={() => document.getElementById("mos-review-repair")?.scrollIntoView({ behavior: "smooth", block: "center" })}>Why this?</button>
+      </div>
+    </section>
+  );
+}
+
+function PaperQuickAccess({ perPaperStats }) {
+  const navigate = useNavigate();
+  const [showUpload, setShowUpload] = useState(false);
+
+  return (
+    <section className="mos-practice-access" aria-labelledby="mos-practice-access-title">
+      <div className="mos-section-head mos-section-head--simple">
+        <div>
+          <span className="mos-kicker">Practice</span>
+          <h2 id="mos-practice-access-title">Open a paper workspace</h2>
+        </div>
+        <span className="mos-section-note">GS4, Essay & Geography Optional are available below</span>
+      </div>
+
+      <div className="mos-paper-grid">
+        {GS_PAPERS.map((paper) => {
+          const values = perPaperStats?.[paper.label] || {};
+          return (
+            <button key={paper.id} type="button" className="mos-paper-item" data-paper={paper.id} onClick={() => navigate(paper.route)}>
+              <span className="mos-paper-item__accent" />
+              <span className="mos-paper-item__copy">
+                <small>{paper.label}</small>
+                <strong>{paper.title}</strong>
+                <span>{values.answersWritten ?? 0} answers · {values.openWeakAreas ?? 0} weak areas</span>
+              </span>
+              <span className="mos-paper-item__open">Open →</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="mos-other-ways">
+        <span className="mos-kicker">Other ways</span>
+        <div className="mos-utility-grid">
+          <div className="mos-utility-row">
+            <div>
+              <strong>Handwritten Answer Review</strong>
+              <span>Upload an answer sheet for extraction and evaluation.</span>
+            </div>
+            <button type="button" className="mos-btn mos-btn--quiet" onClick={() => setShowUpload((v) => !v)}>{showUpload ? "Close" : "Upload →"}</button>
+          </div>
+          <div className="mos-utility-row">
+            <div>
+              <strong>PYQ by Themes</strong>
+              <span>Drill from paper to subject, theme and subtheme.</span>
+            </div>
+            <button type="button" className="mos-btn mos-btn--quiet" onClick={() => navigate("/mains/pyq-explorer")}>Browse →</button>
+          </div>
+        </div>
+      </div>
+
+      {showUpload && <div className="mos-upload-host"><HandwrittenSheetReviewPanel /></div>}
+    </section>
+  );
+}
+
+function WritingBaselineCard({ stats }) {
+  const target = 10;
+  const completed = Math.min(stats.total || 0, target);
+  const remaining = Math.max(target - completed, 0);
+  const pct = Math.round((completed / target) * 100);
+
+  return (
+    <section className="mains-command__side-card" aria-labelledby="writing-baseline-title">
+      <span className="mains-command__eyebrow">Writing Baseline</span>
+      <div className="mains-command__baseline-head">
+        <div>
+          <h2 id="writing-baseline-title">{completed} / {target}</h2>
+          <p>{remaining > 0 ? `${remaining} more evaluated answers to build a reliable pattern.` : "Baseline volume reached. Keep building evidence across papers."}</p>
+        </div>
+        <span className="mains-command__baseline-pct">{pct}%</span>
+      </div>
+      <div className="mains-command__progress" aria-label={`${pct}% baseline progress`}>
+        <span style={{ width: `${pct}%` }} />
+      </div>
+      <div className="mains-command__fact-grid">
+        <div><strong>{stats.total || 0}</strong><span>Total answers</span></div>
+        <div><strong>{stats.thisWeek || 0}</strong><span>This week</span></div>
+        <div><strong>{stats.openMistakes || 0}</strong><span>Weak signals</span></div>
+      </div>
+      <p className="mains-command__baseline-footnote">
+        Paper strength is intentionally hidden until a real score-based performance measure exists.
+      </p>
+    </section>
+  );
+}
+
+function LatestAnswerCard({ attempt }) {
+  if (!attempt) {
+    return (
+      <section className="mains-command__section-card mains-command__review-card">
+        <span className="mains-command__eyebrow">Latest Answer</span>
+        <h2>Start your first evaluated answer</h2>
+        <p className="mains-command__empty-copy">Your latest attempt and review signals will appear here.</p>
+      </section>
+    );
+  }
+
+  const score = attempt.currentScore ?? attempt.score ?? attempt.marksAwarded ?? null;
+  return (
+    <section className="mains-command__section-card mains-command__review-card">
+      <div className="mains-command__section-heading-row">
+        <div>
+          <span className="mains-command__eyebrow">Latest Answer</span>
+          <h2>{attempt.paper || "Mains"} · {attempt.marks ? `${attempt.marks} Marks` : "Saved attempt"}</h2>
+        </div>
+        {score !== null && score !== "" && <span className="mains-command__score-chip">{score}</span>}
+      </div>
+      <p className="mains-command__latest-question">{attempt.question || attempt.questionText || attempt.title || "Answer attempt"}</p>
+      <div className="mains-command__latest-meta">
+        {attempt.topic && <span>{attempt.topic}</span>}
+        {attempt.createdAt && <span>{timeAgo(attempt.createdAt)}</span>}
+        <span>{attempt.status || "Saved"}</span>
+      </div>
+    </section>
+  );
+}
+
+function ActiveWeakAreasCard({ weakAreas }) {
+  const navigate = useNavigate();
+  const flattened = ["GS1", "GS2", "GS3"].flatMap((paper) =>
+    (weakAreas?.[paper] || []).map((label) => ({ paper, label }))
+  ).slice(0, 5);
+
+  return (
+    <section id="mains-active-weak-areas" className="mains-command__section-card mains-command__weak-card">
+      <div className="mains-command__section-heading-row">
+        <div>
+          <span className="mains-command__eyebrow">Active Weak Areas</span>
+          <h2>What to repair next</h2>
+        </div>
+        <button type="button" className="mains-command__text-btn" onClick={() => navigate("/mains/mistakes")}>View All</button>
+      </div>
+
+      {flattened.length === 0 ? (
+        <p className="mains-command__empty-copy">No open Mains weakness signals yet. MentorOS will populate this after evaluated answers.</p>
+      ) : (
+        <div className="mains-command__weak-list">
+          {flattened.map((item, index) => (
+            <div className="mains-command__weak-item" key={`${item.paper}-${index}`}>
+              <span className="mains-command__weak-index">{String(index + 1).padStart(2, "0")}</span>
+              <span className="mains-command__weak-label">{item.label}</span>
+              <span className="mains-command__weak-paper">{item.paper}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
+function ReviewRepair({ attempt, weakAreas }) {
+  const navigate = useNavigate();
+  const flattened = ["GS1", "GS2", "GS3"].flatMap((paper) =>
+    (weakAreas?.[paper] || []).map((label) => ({ paper, label }))
+  ).slice(0, 3);
+  const score = attempt ? (attempt.currentScore ?? attempt.score ?? attempt.marksAwarded ?? null) : null;
+  const candidate = buildCommandCandidates(weakAreas)[0] || null;
+
+  const practiceWeakest = () => {
+    if (!candidate) return;
+    const state = routeStateForPractice(candidate);
+    if (state) navigate("/mains/answer-writing", { state });
+  };
+
+  const splitWeakness = (label = "") => {
+    const [topic, raw = ""] = label.split("—").map((part) => part.trim());
+    return {
+      topic,
+      issue: raw ? raw.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) : "Needs repair",
+    };
+  };
+
+  return (
+    <section id="mos-review-repair" className="mos-surface mos-review-repair" aria-labelledby="mos-review-repair-title">
+      <div className="mos-review-repair__head">
+        <span className="mos-kicker">Review & Repair</span>
+        <h2 id="mos-review-repair-title">Close the loop</h2>
+      </div>
+      <div className="mos-review-repair__grid">
+        <div className="mos-review-pane">
+          <span className="mos-kicker">{score !== null && score !== "" ? "Last evaluation" : "Last answer"}</span>
+          {attempt ? (
+            <>
+              <div className="mos-last-answer__title-row">
+                <h3>{attempt.paper || "Mains"}{attempt.marks ? ` · ${attempt.marks} Marks` : ""}</h3>
+                {score !== null && score !== "" && <span className="mos-score">{score}</span>}
+              </div>
+              <p>{attempt.question || attempt.questionText || attempt.title || "Answer attempt"}</p>
+              <div className="mos-muted-meta">
+                {attempt.createdAt && <span>{timeAgo(attempt.createdAt)}</span>}
+                <span>{attempt.status || "Saved"}</span>
+              </div>
+            </>
+          ) : (
+            <p className="mos-empty-copy">Your latest answer will appear here after your first attempt.</p>
+          )}
+        </div>
+
+        <div className="mos-review-pane mos-review-pane--fix">
+          <div className="mos-fix-head">
+            <div>
+              <span className="mos-kicker">Fix next</span>
+              <h3>Open weakness signals</h3>
+            </div>
+            {candidate && <button type="button" className="mos-btn mos-btn--primary mos-btn--small" onClick={practiceWeakest}>Practice weakest area →</button>}
+          </div>
+
+          {flattened.length > 0 ? (
+            <div className="mos-fix-list">
+              {flattened.map((item, index) => {
+                const parsed = splitWeakness(item.label);
+                return (
+                  <div className="mos-fix-item" key={`${item.paper}-${index}`}>
+                    <span className="mos-fix-index">0{index + 1}</span>
+                    <span className="mos-fix-copy"><strong>{parsed.issue}</strong><small>{parsed.topic}</small></span>
+                    <span className="mos-paper-badge">{item.paper}</span>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p className="mos-empty-copy">No open Mains weakness signals yet.</p>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RecentAnswersCard({ attempts }) {
+  return (
+    <section className="mos-flat-section" aria-labelledby="mos-recent-work-title">
+      <div className="mos-section-head mos-section-head--simple">
+        <div>
+          <span className="mos-kicker">Recent work</span>
+          <h2 id="mos-recent-work-title">Your latest saved work</h2>
+        </div>
+        <span className="mos-section-note">Showing up to 3 recent attempts</span>
+      </div>
+      {attempts.length > 0 ? (
+        <div className="mos-recent-list">
+          {attempts.map((item, index) => {
+            const paper = item.paper || "GS";
+            const title = item.question || item.questionText || item.title || "Answer attempt";
+            const score = item.currentScore ?? item.score ?? item.marksAwarded ?? null;
+            return (
+              <div className="mos-recent-row" key={item.id || index}>
+                <span className="mos-recent-paper">{paper.toUpperCase().slice(0, 3)}</span>
+                <span className="mos-recent-copy">
+                  <strong>{title}</strong>
+                  <small>{item.marks ? `${item.marks}M` : ""}{item.createdAt ? `${item.marks ? " · " : ""}${new Date(item.createdAt).toLocaleDateString()}` : ""}</small>
+                </span>
+                <span className={score !== null && score !== "" ? "mos-recent-status mos-recent-status--score" : "mos-recent-status"}>{score !== null && score !== "" ? score : "Saved"}</span>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <p className="mos-empty-copy">No attempts yet. Start with the recommended answer above.</p>
+      )}
+    </section>
+  );
+}
+
+function QuickTools() {
+  const [showUpload, setShowUpload] = useState(false);
+
+  return (
+    <section className="mains-command__quick-tools" aria-labelledby="mains-quick-tools-title">
+      <div className="mains-command__section-heading-row mains-command__quick-tools-heading">
+        <div>
+          <span className="mains-command__eyebrow">Quick Tools</span>
+          <h2 id="mains-quick-tools-title">Alternative ways to practice</h2>
+        </div>
+      </div>
+
+      <div className="mains-command__tool-grid">
+        <div className="mains-command__tool-card">
+          <span className="mains-command__tool-icon">✎</span>
+          <div>
+            <h3>Handwritten Answer Review</h3>
+            <p>Upload an answer sheet for extraction, verification and evaluation.</p>
+          </div>
+          <button type="button" className="mains-command__secondary-btn" onClick={() => setShowUpload((value) => !value)}>
+            {showUpload ? "Close Upload" : "Upload Answer Sheet"}
+          </button>
+        </div>
+
+        <div className="mains-command__tool-card">
+          <span className="mains-command__tool-icon">⌕</span>
+          <div>
+            <h3>PYQ Theme Intelligence</h3>
+            <p>Drill from paper to subject, theme and subtheme using the live PYQ index.</p>
+          </div>
+          <button
+            type="button"
+            className="mains-command__secondary-btn"
+            onClick={() => document.getElementById("mains-theme-intelligence")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          >
+            Browse Themes
+          </button>
+        </div>
+      </div>
+
+      {showUpload && (
+        <div className="mains-command__handwritten-host">
+          <HandwrittenSheetReviewPanel />
+        </div>
+      )}
+    </section>
+  );
+}
+
+const PREMIUM_MAINS_CSS = `
+.mos-premium {
+  min-height: 100vh;
+  background: var(--bg-page, var(--mos-bg));
+  color: var(--text-primary, var(--mos-text));
+  padding: 22px 28px 56px;
+}
+.mos-premium__inner { width: min(1180px, 100%); margin: 0 auto; display: grid; gap: 22px; }
+.mos-page-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding: 2px 2px 0; }
+.mos-page-head h1 { margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -0.025em; font-weight: 740; }
+.mos-page-head__meta, .mos-section-note { color: var(--text-tertiary); font-size: 12px; font-weight: 550; }
+.mos-surface {
+  background: var(--bg-surface, var(--mos-surface));
+  border: 1px solid var(--border-subtle, var(--mos-border));
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(16,24,40,.035), 0 8px 24px rgba(16,24,40,.035);
+}
+html[data-theme="dark"] .mos-surface { box-shadow: none; }
+.mos-kicker { display: block; color: var(--text-tertiary); font-size: 10px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+.mos-command-hero { position: relative; padding: 26px 28px 27px 32px; overflow: hidden; }
+.mos-command-hero::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--brand-primary); }
+.mos-command-hero__topline { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+.mos-recommended { color: var(--brand-primary); font-size: 11px; font-weight: 650; }
+.mos-command-hero h2 { margin: 0; max-width: 920px; font-size: clamp(22px, 2.1vw, 30px); line-height: 1.16; letter-spacing: -.032em; font-weight: 760; }
+.mos-command-question { margin: 8px 0 0; max-width: 920px; color: var(--text-secondary); font-size: 13.5px; line-height: 1.6; }
+.mos-repair-line { display: flex; gap: 9px; align-items: baseline; margin-top: 12px; color: var(--text-tertiary); font-size: 12px; }
+.mos-repair-line strong { color: var(--text-secondary); font-weight: 650; }
+.mos-command-facts, .mos-guides { display: flex; gap: 0; flex-wrap: wrap; margin-top: 13px; color: var(--text-secondary); font-size: 11.5px; font-weight: 600; }
+.mos-command-facts span + span::before, .mos-guides span + span::before { content: "·"; margin: 0 9px; color: var(--text-tertiary); }
+.mos-actions { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; margin-top: 18px; }
+.mos-btn { min-height: 36px; border-radius: 10px; border: 1px solid transparent; padding: 0 14px; font: inherit; font-size: 12px; font-weight: 680; transition: .16s ease; cursor: pointer; }
+.mos-btn:focus-visible, .mos-segment button:focus-visible, .mos-scroll-segment button:focus-visible, .mos-paper-item:focus-visible, .mos-subject-row:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 2px; }
+.mos-btn--primary { background: var(--brand-primary); color: white; }
+.mos-btn--primary:hover { background: var(--brand-primary-hover); }
+.mos-btn--secondary { background: var(--bg-surface); border-color: var(--border-default); color: var(--text-primary); }
+.mos-btn--secondary:hover, .mos-btn--quiet:hover { background: var(--bg-subtle); }
+.mos-btn--quiet { background: transparent; border-color: var(--border-subtle); color: var(--text-primary); }
+.mos-btn--text { background: transparent; color: var(--brand-primary); padding-inline: 5px; }
+.mos-btn--small { min-height: 32px; padding-inline: 11px; font-size: 11px; }
+.mos-practice-access { padding: 2px 0 0; }
+.mos-section-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 14px; }
+.mos-section-head--simple { align-items: baseline; }
+.mos-section-head h2, .mos-review-repair__head h2 { margin: 4px 0 0; font-size: 16px; line-height: 1.25; letter-spacing: -.016em; font-weight: 720; }
+.mos-section-head p { margin: 4px 0 0; color: var(--text-tertiary); font-size: 11.5px; }
+.mos-paper-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.mos-paper-item { position: relative; display: grid; grid-template-columns: 3px 1fr auto; gap: 11px; align-items: center; min-height: 84px; padding: 14px 14px 14px 0; border: 1px solid var(--border-subtle); border-radius: 14px; background: var(--bg-surface); color: var(--text-primary); text-align: left; transition: .16s ease; }
+.mos-paper-item:hover { border-color: var(--border-default); background: var(--bg-subtle); transform: translateY(-1px); }
+.mos-paper-item__accent { width: 3px; align-self: stretch; border-radius: 0 3px 3px 0; background: var(--brand-primary); }
+.mos-paper-item[data-paper="gs1"] .mos-paper-item__accent { background:#f59e0b; }
+.mos-paper-item[data-paper="gs2"] .mos-paper-item__accent { background:#3b82f6; }
+.mos-paper-item[data-paper="gs3"] .mos-paper-item__accent { background:#22c55e; }
+.mos-paper-item__copy { display: grid; gap: 2px; }
+.mos-paper-item__copy small { color: var(--text-tertiary); font-size: 10px; font-weight: 750; }
+.mos-paper-item__copy strong { font-size: 13px; font-weight: 700; }
+.mos-paper-item__copy span { color: var(--text-tertiary); font-size: 10.5px; }
+.mos-paper-item__open { color: var(--brand-primary); font-size: 11px; font-weight: 650; }
+.mos-other-ways { margin-top: 16px; padding-top: 15px; border-top: 1px solid var(--border-subtle); }
+.mos-utility-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 8px; }
+.mos-utility-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 58px; padding: 9px 11px 9px 13px; border-radius: 12px; border: 1px solid var(--border-subtle); background: color-mix(in srgb, var(--bg-surface) 82%, var(--bg-subtle)); }
+.mos-utility-row > div { display: grid; gap: 2px; min-width: 0; }
+.mos-utility-row strong { font-size: 12px; }
+.mos-utility-row span { color: var(--text-tertiary); font-size: 10.5px; line-height: 1.4; }
+.mos-upload-host { margin-top: 14px; }
+.mos-question-picker { padding: 22px 24px 24px; }
+.mos-question-picker__head h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -.014em; }
+.mos-question-picker__controls { margin-top: 14px; }
+.mos-scroll-segment { display: flex; gap: 5px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+.mos-scroll-segment::-webkit-scrollbar { display: none; }
+.mos-scroll-segment button, .mos-segment button { white-space: nowrap; border: 1px solid var(--border-subtle); background: transparent; color: var(--text-secondary); min-height: 30px; padding: 0 10px; border-radius: 8px; font: inherit; font-size: 11px; font-weight: 600; }
+.mos-scroll-segment button.is-active, .mos-segment button.is-active { background: var(--brand-primary-soft); border-color: color-mix(in srgb, var(--brand-primary) 48%, var(--border-default)); color: var(--brand-primary); }
+.mos-scroll-segment button[data-paper="gs1"].is-active { color:#d97706; border-color:rgba(245,158,11,.45); background:rgba(245,158,11,.07); }
+.mos-question-picker__lower-controls { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 9px; }
+.mos-segment { display: inline-flex; align-items: center; gap: 5px; }
+.mos-marks-control { display: flex; align-items: center; gap: 8px; }
+.mos-marks-control > span { color: var(--text-tertiary); font-size: 9px; font-weight: 750; text-transform: uppercase; letter-spacing: .08em; }
+.mos-question-picker__question { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+.mos-question-meta { display: flex; flex-wrap: wrap; gap: 7px; color: var(--text-tertiary); font-size: 10.5px; font-weight: 650; }
+.mos-question-meta span + span::before { content:"·"; margin-right:7px; }
+.mos-question-picker__question h3 { max-width: 960px; margin: 9px 0 0; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.48; letter-spacing: -.017em; font-weight: 690; }
+.mos-guides { margin-top: 10px; color: var(--text-tertiary); }
+.mos-focus { margin: 10px 0 0; color: var(--text-secondary); font-size: 11.5px; line-height: 1.55; }
+.mos-focus strong { margin-right: 8px; color: var(--text-primary); }
+.mos-baseline-note { margin: -8px 2px 0; color: var(--text-tertiary); font-size: 11.5px; }
+.mos-review-repair { padding: 0; overflow: hidden; }
+.mos-review-repair__head { padding: 18px 22px 0; }
+.mos-review-repair__grid { display: grid; grid-template-columns: .85fr 1.15fr; margin-top: 13px; border-top: 1px solid var(--border-subtle); }
+.mos-review-pane { min-width: 0; padding: 20px 22px 22px; }
+.mos-review-pane + .mos-review-pane { border-left: 1px solid var(--border-subtle); }
+.mos-last-answer__title-row, .mos-fix-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.mos-review-pane h3 { margin: 5px 0 0; font-size: 15px; letter-spacing: -.01em; }
+.mos-review-pane p { margin: 9px 0 0; color: var(--text-secondary); font-size: 12px; line-height: 1.6; }
+.mos-score { flex: 0 0 auto; color: #15803d; background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.18); padding: 3px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; }
+.mos-muted-meta { display: flex; gap: 12px; margin-top: 10px; color: var(--text-tertiary); font-size: 10.5px; }
+.mos-fix-list { display: grid; margin-top: 11px; }
+.mos-fix-item { display: grid; grid-template-columns: 24px 1fr auto; gap: 10px; align-items: center; min-height: 48px; border-top: 1px solid var(--border-subtle); }
+.mos-fix-item:first-child { border-top: 0; }
+.mos-fix-index { color: var(--text-tertiary); font-size: 9px; font-variant-numeric: tabular-nums; }
+.mos-fix-copy { display: grid; gap: 2px; min-width: 0; }
+.mos-fix-copy strong { color: var(--text-primary); font-size: 11.5px; font-weight: 650; text-transform: none; }
+.mos-fix-copy small { color: var(--text-tertiary); font-size: 10.5px; }
+.mos-paper-badge { color: var(--brand-primary); font-size: 9px; font-weight: 750; }
+.mos-explore {
+  padding: 20px 22px 22px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(16,24,40,.025), 0 6px 18px rgba(16,24,40,.025);
+}
+html[data-theme="dark"] .mos-explore { box-shadow: none; }
+.mos-explore__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+.mos-explore__head h2 { margin: 4px 0 0; font-size: 16px; line-height: 1.25; letter-spacing: -.016em; font-weight: 720; color: var(--text-primary); }
+.mos-explore__head p { margin: 4px 0 0; color: var(--text-tertiary); font-size: 11.5px; }
+.mos-explore__paper-tabs { display: inline-flex; gap: 7px; align-items: center; }
+.mos-explore__paper-tabs button {
+  min-width: 44px;
+  height: 30px;
+  padding: 0 11px;
+  border-radius: 9px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 650;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(15,23,42,.05);
+  transition: border-color .16s ease, color .16s ease, background .16s ease, transform .16s ease;
+}
+html[data-theme="dark"] .mos-explore__paper-tabs button { box-shadow: none; }
+.mos-explore__paper-tabs button:hover { transform: translateY(-1px); border-color: var(--border-default); }
+.mos-explore__paper-tabs button.is-active {
+  color: var(--tab-accent, var(--brand-primary));
+  border-color: color-mix(in srgb, var(--tab-accent, var(--brand-primary)) 48%, var(--border-default));
+  background: color-mix(in srgb, var(--tab-accent, var(--brand-primary)) 7%, var(--bg-surface));
+}
+.mos-explore__filters { display: grid; gap: 5px; margin-top: 14px; }
+.mos-explore__filters label {
+  color: var(--text-tertiary);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.mos-explore__filters select {
+  width: 150px;
+  height: 32px;
+  padding: 0 30px 0 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 11px;
+  outline: none;
+}
+.mos-explore__filters select:focus { border-color: color-mix(in srgb, var(--brand-primary) 45%, var(--border-default)); }
+.mos-explore__subject-rows { display: grid; gap: 6px; margin-top: 12px; }
+.mos-explore__subject-row {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--bg-subtle) 62%, var(--bg-surface));
+  color: var(--text-primary);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .16s ease, background .16s ease, transform .16s ease;
+}
+.mos-explore__subject-row:hover {
+  border-color: var(--border-default);
+  background: var(--bg-subtle);
+  transform: translateY(-1px);
+}
+.mos-explore__subject-name { font-size: 12px; font-weight: 650; color: var(--text-secondary); }
+.mos-explore__subject-meta { display: inline-flex; align-items: center; gap: 9px; }
+.mos-explore__count {
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--explore-accent, #f59e0b) 8%, transparent);
+  color: color-mix(in srgb, var(--explore-accent, #f59e0b) 78%, var(--text-secondary));
+  font-size: 9.5px;
+  font-weight: 650;
+}
+.mos-explore__chevron { color: color-mix(in srgb, var(--explore-accent, #f59e0b) 72%, var(--text-tertiary)); font-size: 15px; line-height: 1; }
+.mos-inline-state { padding: 18px 0; color: var(--text-tertiary); font-size: 12px; }
+.mos-inline-state--error { color: var(--error, #ef4444); }
+.mos-flat-section { padding: 1px 0 0; }
+.mos-recent-list { border-top: 1px solid var(--border-subtle); }
+.mos-recent-row { display: grid; grid-template-columns: 42px 1fr auto; gap: 12px; align-items: center; min-height: 58px; border-bottom: 1px solid var(--border-subtle); }
+.mos-recent-row:last-child { border-bottom: 0; }
+.mos-recent-paper { color: var(--brand-primary); font-size: 10px; font-weight: 750; }
+.mos-recent-copy { display: grid; gap: 2px; min-width: 0; }
+.mos-recent-copy strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11.5px; font-weight: 650; }
+.mos-recent-copy small { color: var(--text-tertiary); font-size: 10px; }
+.mos-recent-status { color: #16a34a; font-size: 10px; font-weight: 650; }
+.mos-recent-status--score { color: var(--text-primary); }
+.mos-empty-copy { color: var(--text-tertiary); font-size: 12px; }
+@media (max-width: 900px) {
+  .mos-premium { padding-inline: 18px; }
+  .mos-paper-grid { grid-template-columns: 1fr; }
+  .mos-utility-grid, .mos-review-repair__grid { grid-template-columns: 1fr; }
+  .mos-review-pane + .mos-review-pane { border-left: 0; border-top: 1px solid var(--border-subtle); }
+  .mos-page-head { align-items: flex-start; flex-direction: column; gap: 5px; }
+}
+@media (max-width: 640px) {
+  .mos-premium { padding: 16px 12px 40px; }
+  .mos-premium__inner { gap: 16px; }
+  .mos-command-hero, .mos-question-picker, .mos-explore { padding: 20px 18px; }
+  .mos-command-hero h2 { font-size: 22px; }
+  .mos-section-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .mos-question-picker__lower-controls { align-items: flex-start; flex-direction: column; }
+  .mos-marks-control { width: 100%; justify-content: space-between; }
+  .mos-utility-grid { grid-template-columns: 1fr; }
+  .mos-utility-row { align-items: flex-start; }
+  .mos-fix-head { align-items: flex-start; flex-direction: column; }
+  .mos-recent-row { grid-template-columns: 34px 1fr auto; }
+  .mos-explore__head { flex-direction: column; gap: 10px; }
+  .mos-explore__paper-tabs { width: 100%; overflow-x: auto; padding-bottom: 2px; }
+  .mos-explore__filters select { width: min(180px, 100%); }
+}
+
+`;
 
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function MainsPage() {
-  const navigate       = useNavigate();
   const recentAttempts = useRecentAttempts(3);
-  const weakAreas      = useWeakAreas();
-  const stats          = useMainsStats();
-  const perPaperStats  = usePerPaperStats();
-
-  const [winWidth, setWinWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => setWinWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-  const isMobile = winWidth < 768;
+  const weakAreas = useWeakAreas();
+  const stats = useMainsStats();
+  const perPaperStats = usePerPaperStats();
+  const baselineTarget = 10;
+  const baselineRemaining = Math.max(baselineTarget - Math.min(stats.total || 0, baselineTarget), 0);
 
   return (
-    <div style={{ minHeight: "100vh", background: T.bg, color: T.text, fontFamily: T.font }}>
+    <div className="mos-premium">
+      <style>{PREMIUM_MAINS_CSS}</style>
+      <div className="mos-premium__inner">
+        <header className="mos-page-head">
+          <h1>Mains Answer Writing</h1>
+          <div className="mos-page-head__meta">{stats.total} answers · {stats.openMistakes} weak signals</div>
+        </header>
 
-      {/* Breadcrumb bar */}
-      <div style={{
-        borderBottom: `1px solid ${T.border}`,
-        padding: "14px 32px",
-        display: "flex", alignItems: "center", gap: 8,
-        background: T.bg, position: "sticky", top: 0, zIndex: 10,
-      }}>
-        <span style={label11(T.subtle)}>Mains</span>
-        <span style={{ color: T.muted, fontSize: 11 }}>·</span>
-        <span style={label11(T.dim)}>Answer Writing System</span>
-      </div>
-
-      <div style={{ padding: "28px 32px", maxWidth: 1080, margin: "0 auto" }}>
-
-        {/* ═══ HERO ════════════════════════════════════════════════════════════ */}
-        <div style={{
-          background: `linear-gradient(135deg, ${T.surface} 0%, ${T.surfaceHigh} 100%)`,
-          border: `1px solid ${T.borderMid}`, borderRadius: 16,
-          padding: "30px 32px", marginBottom: 28,
-          position: "relative", overflow: "hidden",
-        }}>
-          <div style={{
-            position: "absolute", left: 0, top: 0, bottom: 0, width: 3,
-            background: `linear-gradient(180deg, ${T.amber}, ${T.blue}, ${T.green})`,
-            borderRadius: "14px 0 0 14px",
-          }} />
-          <div style={{ ...label11(T.subtle), marginBottom: 10 }}>Mains Preparation System</div>
-          <h1 style={{ fontSize: 28, fontWeight: 900, color: T.textBright, margin: "0 0 8px 0", letterSpacing: "-0.02em", lineHeight: 1.15 }}>
-            Mains{" "}
-            <span style={{ background: `linear-gradient(90deg, ${T.amber}, ${T.blue})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              Answer Writing
-            </span>
-          </h1>
-          <p style={{ fontSize: 14, color: T.dim, margin: "0 0 22px 0", maxWidth: 520, lineHeight: 1.65 }}>
-            Build structure. Refine content. Turn your knowledge into marks.
-          </p>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-            <Chip label="GS1" accent={T.amber} />
-            <Chip label="GS2" accent={T.blue} />
-            <Chip label="GS3" accent={T.green} />
-            <div style={{ width: 1, height: 18, background: T.border, margin: "0 4px" }} />
-            {[
-              { label: `${stats.total} Answers Written`,   color: T.textBright },
-              { label: `${stats.openMistakes} Weak Areas`, color: T.red },
-            ].map((p) => (
-              <span key={p.label} style={{ fontSize: 12, fontWeight: 600, color: p.color, background: T.surface, border: `1px solid ${T.border}`, borderRadius: 20, padding: "4px 12px" }}>
-                {p.label}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* ═══ GS CARDS ════════════════════════════════════════════════════════ */}
-        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: 18, marginBottom: 28 }}>
-          {GS_PAPERS.map((paper) => (
-            <GSCard
-              key={paper.id}
-              paper={paper}
-              stats={perPaperStats[paper.label] ?? null}
-            />
-          ))}
-        </div>
-
-        {/* ═══ THEME BROWSER — generated from backend theme index ═══════════════ */}
-        <MainsThemeBrowser />
-
-        {/* ═══ PERFORMANCE STRIP ═══════════════════════════════════════════════ */}
-        <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 14, padding: "20px 24px", marginBottom: 28 }}>
-          <div style={{ ...label11(T.subtle), marginBottom: 16 }}>Mains Performance Overview</div>
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-            <StatBox label="Total Answers Written" value={String(stats.total)}     accent={T.textBright} />
-            <StatBox label="This Week"             value={String(stats.thisWeek)}  accent={T.amber} />
-            <StatBox label="Strongest Paper"       value={stats.strongestPaper}    accent={T.blue} />
-            <StatBox label="Weakest Paper"         value={stats.weakestPaper}      accent={T.red} />
-          </div>
-        </div>
-
-        {/* ═══ RECENT ANSWER WRITING — real localStorage data ══════════════════ */}
-        <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 14, overflow: "hidden", marginBottom: 28 }}>
-          <div style={{ height: 2, background: `linear-gradient(90deg, ${T.amber}88, ${T.border})` }} />
-          <div style={{ padding: "20px 24px" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
-              <div style={label11(T.subtle)}>Recent Answer Writing</div>
-              <button
-                style={{ ...outlineBtn(T.dim), fontSize: 11, padding: "5px 12px" }}
-                onClick={() => navigate("/mains/mistakes")}
-              >
-                View All
-              </button>
-            </div>
-
-            {recentAttempts.length > 0 ? (
-              recentAttempts.map((item, i) => (
-                <RecentRow
-                  key={item.id || i}
-                  item={item}
-                  isLast={i === recentAttempts.length - 1}
-                />
-              ))
-            ) : (
-              <div style={{
-                padding: "32px 0", textAlign: "center",
-                borderTop: `1px solid ${T.border}`,
-              }}>
-                <div style={{ fontSize: 24, marginBottom: 10, opacity: 0.5 }}>✏️</div>
-                <div style={{ fontSize: 13, fontWeight: 700, color: T.subtle }}>No attempts yet</div>
-                <div style={{ fontSize: 12, color: T.muted, marginTop: 5 }}>
-                  Use Quick Practice below to write your first answer.
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* ═══ CURRENT FOCUS / WEAK AREAS — real localStorage data ══════════════ */}
-        <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 14, overflow: "hidden", marginBottom: 28 }}>
-          <div style={{ height: 2, background: `linear-gradient(90deg, ${T.red}66, ${T.border})` }} />
-          <div style={{ padding: "20px 24px" }}>
-            <div style={{ ...label11(T.subtle), marginBottom: 16 }}>Current Focus — Weak Areas</div>
-            {weakAreas.GS1.length === 0 && weakAreas.GS2.length === 0 && weakAreas.GS3.length === 0 ? (
-              <div style={{ padding: "20px 0", textAlign: "center" }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: T.subtle }}>No weak areas yet.</div>
-                <div style={{ fontSize: 12, color: T.muted, marginTop: 5 }}>
-                  Start writing answers to generate insights.
-                </div>
-              </div>
-            ) : (
-              <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 14 }}>
-                <WeakColumn gs="GS1" accent={T.amber} items={weakAreas.GS1} />
-                <WeakColumn gs="GS2" accent={T.blue}  items={weakAreas.GS2} />
-                <WeakColumn gs="GS3" accent={T.green} items={weakAreas.GS3} />
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* ═══ UPLOAD REVIEW CARD ══════════════════════════════════════════════ */}
-        <HandwrittenSheetReviewPanel />
-
-        {/* ═══ QUICK PRACTICE ══════════════════════════════════════════════════ */}
+        <MentorCommandCard weakAreas={weakAreas} />
+        <PaperQuickAccess perPaperStats={perPaperStats} />
         <QuickPractice />
 
+        {baselineRemaining > 0 && (
+          <p className="mos-baseline-note">{baselineRemaining} more answer{baselineRemaining === 1 ? "" : "s"} needed for reliable pattern intelligence.</p>
+        )}
+
+        <ReviewRepair attempt={recentAttempts[0]} weakAreas={weakAreas} />
+        <RecentAnswersCard attempts={recentAttempts} />
       </div>
     </div>
   );
 }
-
-/*
- ─── WIRE-UP NOTES ─────────────────────────────────────────────────────────────
- 1.  GSCard "Open GS1/2/3"           → useNavigate() to paper.route
- 2.  GSCard "Practice Qs"            → /mains/gs1/practice
- 3.  GSCard "Weak Areas"             → /mains/gs1/weak-areas or drawer
- 4.  Recent "Continue"               → /mains/answer-editor?id={item.id}
- 5.  Recent "View All"               → /mains/answer-log
- 6.  QuickPractice "Start Writing"   → open answer editor with currentQ data
- 7.  QuickPractice "View More PYQs"  → /mains/{paper}/pyq
- 8.  Stat values (72, 9 etc.)        → useMainsAnalytics() hook
- 9.  GS card progress %              → syllabusProgressEngine / attempt analytics
-10.  WEAK_AREAS data                 → weaknessEngine.js computation
-11.  PRACTICE_QUESTIONS bank         → replace with real PYQ loader from data layer
- ──────────────────────────────────────────────────────────────────────────────
-*/

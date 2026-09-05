@@ -1,0 +1,132 @@
+.eth-page {
+  min-height: 100vh;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--sans, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  padding: 28px 32px 56px;
+}
+
+.eth-shell { max-width: 1220px; margin: 0 auto; }
+.eth-kicker { font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 8px; }
+.eth-title { margin: 0; font-size: clamp(28px, 3vw, 38px); line-height: 1.08; letter-spacing: -.035em; font-weight: 800; }
+.eth-subtitle { margin: 8px 0 0; color: var(--text-secondary); font-size: 14px; line-height: 1.55; }
+.eth-meta-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.eth-meta-pill { display: inline-flex; align-items: center; gap: 7px; min-height: 30px; padding: 0 11px; border: 1px solid var(--border-subtle); border-radius: 999px; background: var(--bg-surface); color: var(--text-secondary); font-size: 12px; font-weight: 650; }
+.eth-meta-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--brand-primary); }
+
+.eth-section { margin-top: 28px; }
+.eth-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+.eth-section-title { margin: 0; font-size: 18px; letter-spacing: -.02em; font-weight: 780; }
+.eth-section-copy { margin: 4px 0 0; font-size: 12px; color: var(--text-tertiary); }
+.eth-link-button { border: 0; background: transparent; color: var(--brand-primary); font: inherit; font-size: 12px; font-weight: 700; padding: 4px 0; }
+
+.eth-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 18px; box-shadow: var(--shadow-card); }
+.eth-next { position: relative; overflow: hidden; padding: 24px 26px; border-left: 4px solid var(--brand-primary); }
+.eth-next::after { content: ''; position: absolute; inset: 0 0 0 auto; width: 34%; pointer-events: none; background: radial-gradient(circle at 90% 28%, var(--brand-primary-soft), transparent 64%); opacity: .85; }
+.eth-next > * { position: relative; z-index: 1; }
+.eth-next-label { display: flex; align-items: center; justify-content: space-between; gap: 14px; color: var(--brand-primary); font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.eth-next-question { max-width: 860px; margin: 12px 0 6px; font-size: clamp(22px, 2.4vw, 31px); font-weight: 800; letter-spacing: -.035em; line-height: 1.18; }
+.eth-next-reason { max-width: 820px; color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
+.eth-next-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.eth-next-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; }
+
+.eth-btn { min-height: 40px; padding: 0 16px; border-radius: 10px; border: 1px solid var(--border-default); background: var(--bg-surface); color: var(--text-primary); font: inherit; font-size: 13px; font-weight: 700; transition: transform .15s ease, border-color .15s ease, background .15s ease; }
+.eth-btn:hover { transform: translateY(-1px); border-color: var(--brand-primary-border, var(--brand-primary)); }
+.eth-btn-primary { border-color: var(--brand-primary); background: var(--brand-primary); color: #fff; box-shadow: 0 8px 20px color-mix(in srgb, var(--brand-primary) 20%, transparent); }
+.eth-btn-primary:hover { background: var(--brand-primary-hover); }
+.eth-btn-ghost { background: var(--bg-subtle); border-color: transparent; }
+.eth-btn-small { min-height: 34px; padding: 0 12px; font-size: 12px; }
+.eth-btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
+.eth-practice-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.eth-practice-card { min-height: 154px; padding: 18px; display: flex; flex-direction: column; cursor: pointer; transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease; }
+.eth-practice-card:hover { transform: translateY(-2px); border-color: var(--brand-primary-border, var(--border-default)); }
+.eth-icon-box { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 11px; background: var(--brand-primary-soft); color: var(--brand-primary); font-size: 18px; margin-bottom: 14px; }
+.eth-practice-name { font-size: 14px; font-weight: 760; letter-spacing: -.015em; }
+.eth-practice-desc { color: var(--text-tertiary); font-size: 12px; line-height: 1.5; margin-top: 5px; flex: 1; }
+.eth-practice-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 13px; font-size: 11px; color: var(--text-tertiary); }
+.eth-arrow { width: 26px; height: 26px; border-radius: 999px; display: grid; place-items: center; background: var(--brand-primary-soft); color: var(--brand-primary); font-weight: 800; }
+
+.eth-syllabus-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.eth-syllabus-card { min-height: 108px; padding: 14px 15px; text-align: left; border: 1px solid var(--border-subtle); border-radius: 15px; background: var(--bg-surface); color: var(--text-primary); font: inherit; box-shadow: none; cursor: pointer; transition: border-color .15s ease, background .15s ease, transform .15s ease; }
+.eth-syllabus-card:hover { transform: translateY(-1px); border-color: var(--brand-primary); }
+.eth-syllabus-card.active { border-color: var(--brand-primary); background: var(--brand-primary-soft); }
+.eth-syllabus-icon { font-size: 18px; }
+.eth-syllabus-name { font-size: 12px; font-weight: 760; line-height: 1.35; margin-top: 9px; }
+.eth-syllabus-count { font-size: 11px; color: var(--text-tertiary); margin-top: 6px; }
+
+.eth-two-col { display: grid; grid-template-columns: 1.2fr .8fr; gap: 12px; }
+.eth-panel { padding: 20px; }
+.eth-panel-title { display: flex; align-items: center; gap: 8px; margin: 0 0 14px; font-size: 15px; font-weight: 780; }
+.eth-framework-list { display: grid; gap: 10px; }
+.eth-framework-row { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; }
+.eth-framework-index { width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; background: var(--brand-primary-soft); color: var(--brand-primary); font-size: 11px; font-weight: 800; }
+.eth-framework-main { font-size: 12px; font-weight: 700; line-height: 1.45; }
+.eth-framework-sub { color: var(--text-tertiary); font-size: 11px; line-height: 1.5; margin-top: 2px; }
+.eth-thinkers { display: flex; flex-wrap: wrap; gap: 8px; }
+.eth-thinker { padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border-subtle); background: var(--bg-subtle); color: var(--text-secondary); font: inherit; font-size: 11px; font-weight: 650; cursor: pointer; transition: border-color .15s ease, color .15s ease, background .15s ease; }
+.eth-thinker:hover { border-color: var(--brand-primary); color: var(--brand-primary); background: var(--brand-primary-soft); }
+
+.eth-review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.eth-review-card { padding: 20px; }
+.eth-empty { padding: 24px 16px; border: 1px dashed var(--border-default); border-radius: 13px; text-align: center; background: var(--bg-subtle); }
+.eth-empty-title { font-size: 13px; font-weight: 750; }
+.eth-empty-copy { max-width: 460px; margin: 5px auto 0; color: var(--text-tertiary); font-size: 12px; line-height: 1.5; }
+
+.eth-recent-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.eth-recent-table th { text-align: left; color: var(--text-tertiary); font-size: 10px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; padding: 0 10px 10px; }
+.eth-recent-table td { border-top: 1px solid var(--border-subtle); padding: 12px 10px; color: var(--text-secondary); vertical-align: middle; }
+.eth-recent-table td:first-child { color: var(--text-primary); font-weight: 650; }
+
+.eth-upload-wrap { margin-top: 12px; padding: 18px; }
+.eth-upload-wrap[hidden] { display: none; }
+
+/* PYQ explorer */
+.eth-explorer-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.eth-back { width: 38px; height: 38px; border-radius: 11px; border: 1px solid var(--border-subtle); background: var(--bg-surface); color: var(--text-primary); font-size: 17px; }
+.eth-explorer-stats { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; }
+.eth-filter-bar { padding: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.eth-search { min-width: 220px; flex: 1; height: 38px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--border-default); background: var(--bg-surface); color: var(--text-primary); outline: none; }
+.eth-search:focus { border-color: var(--brand-primary); box-shadow: 0 0 0 3px var(--brand-primary-soft); }
+.eth-filter-chip { height: 34px; padding: 0 11px; border-radius: 9px; border: 1px solid var(--border-subtle); background: var(--bg-surface); color: var(--text-secondary); font: inherit; font-size: 11px; font-weight: 700; }
+.eth-filter-chip.active { color: var(--brand-primary); border-color: var(--brand-primary-border, var(--brand-primary)); background: var(--brand-primary-soft); }
+.eth-question-list { display: grid; gap: 10px; }
+.eth-question-card { padding: 18px 19px; }
+.eth-question-top { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.eth-badge { display: inline-flex; align-items: center; min-height: 24px; padding: 0 8px; border-radius: 7px; border: 1px solid var(--border-subtle); background: var(--bg-subtle); color: var(--text-secondary); font-size: 10px; font-weight: 750; }
+.eth-badge-blue { color: var(--brand-primary); background: var(--brand-primary-soft); border-color: var(--brand-primary-border, var(--border-subtle)); }
+.eth-question-category { margin-left: auto; color: var(--brand-primary); font-size: 10px; font-weight: 750; }
+.eth-question-text { margin: 13px 0 14px; font-size: 14px; font-weight: 700; line-height: 1.6; letter-spacing: -.01em; }
+.eth-question-details { margin: -3px 0 14px; padding: 11px 12px; border-radius: 10px; background: var(--bg-subtle); color: var(--text-tertiary); font-size: 11px; line-height: 1.55; }
+.eth-question-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.eth-pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 18px; }
+.eth-page-btn { min-width: 34px; height: 34px; border-radius: 9px; border: 1px solid var(--border-subtle); background: var(--bg-surface); color: var(--text-secondary); font: inherit; font-size: 11px; font-weight: 700; }
+.eth-page-btn.active { background: var(--brand-primary); border-color: var(--brand-primary); color: #fff; }
+.eth-page-btn:disabled { opacity: .35; }
+
+/* Mistakes */
+.eth-mistake-list { display: grid; gap: 10px; }
+.eth-mistake-item { padding: 16px 17px; }
+.eth-mistake-meta { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 8px; }
+.eth-mistake-text { font-size: 13px; font-weight: 690; line-height: 1.55; }
+.eth-mistake-note { color: var(--text-tertiary); font-size: 11px; line-height: 1.5; margin-top: 6px; }
+
+html[data-theme='dark'] .eth-btn-primary { box-shadow: none; }
+html[data-theme='dark'] .eth-next::after { opacity: .45; }
+html[data-theme='dark'] .eth-practice-card:hover,
+html[data-theme='dark'] .eth-card { box-shadow: none; }
+
+@media (max-width: 980px) {
+  .eth-practice-grid, .eth-syllabus-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .eth-two-col, .eth-review-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .eth-page { padding: 20px 16px 42px; }
+  .eth-next { padding: 22px 20px; }
+  .eth-practice-grid, .eth-syllabus-grid { grid-template-columns: 1fr; }
+  .eth-section-head, .eth-explorer-head { align-items: flex-start; flex-direction: column; }
+  .eth-question-category { margin-left: 0; }
+  .eth-search { min-width: 100%; }
+  .eth-recent-table th:nth-child(3), .eth-recent-table td:nth-child(3) { display: none; }
+}

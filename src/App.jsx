@@ -17,6 +17,7 @@ import MainsGS2Page from "./pages/MainsGS2Page";
 import MainsGS3Page from "./pages/MainsGS3Page";
 import AnswerWritingPage from "./pages/AnswerWritingPage";
 import MainsMistakeBookPage from "./pages/MainsMistakeBookPage";
+import MainsPyqExplorerPage from "./pages/MainsPyqExplorerPage";
 import AnswerWriting from "./pages/AnswerWriting";
 import EthicsPage from "./pages/ethics/EthicsPage";
 import EthicsPyqPage from "./pages/ethics/EthicsPyqPage";
@@ -45,6 +46,7 @@ import PrelimsTestPage from "./pages/PrelimsTestPage";
 import PrelimsTestAttemptPage from "./pages/PrelimsTestAttemptPage";
 import PrelimsTestResultPage from "./pages/PrelimsTestResultPage";
 import MentorCallSimulator from "./pages/MentorCallSimulator";
+import KnowledgeReviewPage from "./pages/KnowledgeReviewPage";
 import { isLoggedIn, login, logout } from "./utils/auth";
 import NotificationBanner from "./components/Notifications/NotificationBanner";
 
@@ -77,13 +79,13 @@ function AppRoutes({ onLogout }) {
     "/mains/mistakes": "mains_mistakes",
     "/ethics": "ethics",
     "/ethics/pyq": "ethics",
-    "/ethics/institutional": "ethics",
     "/ethics/mistakes": "ethics",
     "/essay": "essay",
     "/essay/pyq": "essay",
     "/essay/institutional": "essay",
     "/essay/mistakes": "essay",
     "/settings": "settings",
+    "/knowledge-review": "knowledge_review",
   };
 
   const pageToRouteMap = {
@@ -106,6 +108,7 @@ function AppRoutes({ onLogout }) {
     ethics: "/ethics",
     essay: "/essay",
     settings: "/settings",
+    knowledge_review: "/knowledge-review",
   };
 
   const currentPage =
@@ -159,6 +162,7 @@ function AppRoutes({ onLogout }) {
         <Route path="/mains/gs3" element={<MainsGS3Page />} />
         <Route path="/mains/answer-writing" element={<AnswerWritingPage />} />
         <Route path="/mains/mistakes" element={<MainsMistakeBookPage />} />
+        <Route path="/mains/pyq-explorer" element={<MainsPyqExplorerPage />} />
         <Route path="/answer-writing/:paperType/:sourceType" element={<AnswerWriting />} />
         <Route path="/ethics" element={<EthicsPage />} />
         <Route path="/ethics/pyq" element={<EthicsPyqPage />} />
@@ -176,6 +180,7 @@ function AppRoutes({ onLogout }) {
         <Route path="/prelims/test" element={<PrelimsTestPage />} />
         <Route path="/prelims/test/:attemptId" element={<PrelimsTestAttemptPage />} />
         <Route path="/prelims/test/result/:attemptId" element={<PrelimsTestResultPage />} />
+        <Route path="/knowledge-review" element={<KnowledgeReviewPage />} />
         <Route path="*" element={<Navigate to="/plan" replace />} />
       </Routes>
     </MentorOSLayout>

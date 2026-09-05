@@ -257,7 +257,7 @@ async function tickScheduler(userId) {
       } else {
         const lockAcquired = await acquireAtomicLock(userId, 'NO_PLAN_STRICT_9AM', todayKey);
         if (lockAcquired) {
-          const text = buildMissingPlanReminder({ planState, userName, notificationType: 'NO_PLAN_STRICT_9AM' });
+          const text = buildMissingPlanReminder({ planState, userName, notificationType: 'NO_PLAN_STRICT_9AM', consecutiveZeroDays: zeroStreak });
           const result = await notificationService.sendNotification(userId, 'NO_PLAN_STRICT_9AM', 'daily_date', todayKey, text, {});
           if (result && result.ok) {
             await updateAtomicLockStatus(userId, 'NO_PLAN_STRICT_9AM', todayKey, 'sent');
@@ -281,22 +281,40 @@ async function tickScheduler(userId) {
   const is12pmCatchup = ((hour === 12 && minute > 30) || (hour >= 13 && hour < 15));
   if ((is12pmWindow || is12pmCatchup) && !isEscalationPaused) {
     try {
+      // Re-query user details immediately before sending to avoid stale cached/frontend state
       const userRes = await query(`SELECT name, mission_health_state, consecutive_zero_study_days FROM public.users WHERE id = $1`, [userId]);
       const user = userRes.rows[0];
       const state = user?.mission_health_state || 'HEALTHY';
       const userName = user?.name || "Moulika";
       const zeroStreak = user?.consecutive_zero_study_days || 0;
       
+      // Determine live state from PostgreSQL
       const planState = await checkUserPlanState(userId, todayKey);
       
-      if (planState.hasCompletedBlock) {
-        logEscalationDebug('RECOVERY_PLAN_12PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'User already completed study block');
-      } else if (planState.hasRealPlan) {
-        logEscalationDebug('RECOVERY_PLAN_12PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'User already has a real plan uploaded');
+      // Revalidate: If notification is more than 15 minutes late, drop/regenerate
+      const targetTime = new Date(d);
+      targetTime.setHours(12, 0, 0, 0);
+      const isLate = (d.getTime() - targetTime.getTime()) > 15 * 60 * 1000;
+
+      // Suppression Rules:
+      // - If today's plan exists, never send "upload a recovery plan" as a no-plan fallback.
+      // - If actual study minutes > 0, never use "zero-study streak" wording.
+      let hasStartedOrDone = planState.hasCompletedBlock || planState.rows.some(b => ['active', 'paused'].includes((b.status || '').toLowerCase()));
+
+      if (planState.hasRealPlan) {
+        logEscalationDebug('RECOVERY_PLAN_12PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'User already has today\'s plan accepted/uploaded');
+      } else if (hasStartedOrDone) {
+        logEscalationDebug('RECOVERY_PLAN_12PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'Suppressing recovery reminder because a block has started or completed');
       } else {
         const lockAcquired = await acquireAtomicLock(userId, 'RECOVERY_PLAN_12PM', todayKey);
         if (lockAcquired) {
-          const text = psychologyMessageService.getRecoveryPlan12PMMessage(userName);
+          let text = '';
+          if (isLate) {
+            // Drop stale 12 PM phrasing and regenerate from current state
+            text = `Midday check: No plan is uploaded yet. The day is moving fast. Take a moment to reset and upload a light recovery plan now.`;
+          } else {
+            text = psychologyMessageService.getRecoveryPlan12PMMessage(userName, zeroStreak);
+          }
           const result = await notificationService.sendNotification(userId, 'RECOVERY_PLAN_12PM', 'daily_date', todayKey, text, {});
           if (result && result.ok) {
             await updateAtomicLockStatus(userId, 'RECOVERY_PLAN_12PM', todayKey, 'sent');
@@ -327,14 +345,24 @@ async function tickScheduler(userId) {
       
       const planState = await checkUserPlanState(userId, todayKey);
       
-      if (planState.hasCompletedBlock) {
-        logEscalationDebug('HIGH_RISK_INTERVENTION_3PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'User already completed study block');
-      } else if (planState.hasRealPlan) {
-        logEscalationDebug('HIGH_RISK_INTERVENTION_3PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'User already has a real plan uploaded');
+      const targetTime = new Date(d);
+      targetTime.setHours(15, 0, 0, 0);
+      const isLate = (d.getTime() - targetTime.getTime()) > 15 * 60 * 1000;
+      let hasStartedOrDone = planState.hasCompletedBlock || planState.rows.some(b => ['active', 'paused'].includes((b.status || '').toLowerCase()));
+
+      if (planState.hasRealPlan) {
+        logEscalationDebug('HIGH_RISK_INTERVENTION_3PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'User already has today\'s plan accepted/uploaded');
+      } else if (hasStartedOrDone) {
+        logEscalationDebug('HIGH_RISK_INTERVENTION_3PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'Suppressing high risk reminder because a block has started or completed');
       } else {
         const lockAcquired = await acquireAtomicLock(userId, 'HIGH_RISK_INTERVENTION_3PM', todayKey);
         if (lockAcquired) {
-          const text = psychologyMessageService.getHighRiskIntervention3PMMessage(userName);
+          let text = '';
+          if (isLate) {
+            text = `Afternoon check: No plan is uploaded. The day is slipping. Reset your focus and upload a single 45-minute block now to keep your streak alive.`;
+          } else {
+            text = psychologyMessageService.getHighRiskIntervention3PMMessage(userName, zeroStreak);
+          }
           const result = await notificationService.sendNotification(userId, 'HIGH_RISK_INTERVENTION_3PM', 'daily_date', todayKey, text, {});
           if (result && result.ok) {
             await updateAtomicLockStatus(userId, 'HIGH_RISK_INTERVENTION_3PM', todayKey, 'sent');
@@ -365,14 +393,24 @@ async function tickScheduler(userId) {
       
       const planState = await checkUserPlanState(userId, todayKey);
       
-      if (planState.hasCompletedBlock) {
-        logEscalationDebug('EMERGENCY_NON_ZERO_6PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'User already completed study block');
-      } else if (planState.hasRealPlan) {
-        logEscalationDebug('EMERGENCY_NON_ZERO_6PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'User already has a real plan uploaded');
+      const targetTime = new Date(d);
+      targetTime.setHours(18, 0, 0, 0);
+      const isLate = (d.getTime() - targetTime.getTime()) > 15 * 60 * 1000;
+      let hasStartedOrDone = planState.hasCompletedBlock || planState.rows.some(b => ['active', 'paused'].includes((b.status || '').toLowerCase()));
+
+      if (planState.hasRealPlan) {
+        logEscalationDebug('EMERGENCY_NON_ZERO_6PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'User already has today\'s plan accepted/uploaded');
+      } else if (hasStartedOrDone) {
+        logEscalationDebug('EMERGENCY_NON_ZERO_6PM', userId, userName, state, zeroStreak, planState.totalBlocks, planState.hasRealPlan, planState.hasCompletedBlock, false, 'SKIP', 'Suppressing emergency reminder because a block has started or completed');
       } else {
         const lockAcquired = await acquireAtomicLock(userId, 'EMERGENCY_NON_ZERO_6PM', todayKey);
         if (lockAcquired) {
-          const text = psychologyMessageService.getEmergencyNonZero6PMMessage(userName);
+          let text = '';
+          if (isLate) {
+            text = `Evening check: Only the evening is left. Sit for just 25 minutes now to protect your discipline.`;
+          } else {
+            text = psychologyMessageService.getEmergencyNonZero6PMMessage(userName, zeroStreak);
+          }
           const result = await notificationService.sendNotification(userId, 'EMERGENCY_NON_ZERO_6PM', 'daily_date', todayKey, text, {});
           if (result && result.ok) {
             await updateAtomicLockStatus(userId, 'EMERGENCY_NON_ZERO_6PM', todayKey, 'sent');
@@ -816,8 +854,9 @@ export async function processTodayBlocks(userId, now, isEscalationPaused = false
     const timeDiffMins = (d.getTime() - blockStartDate.getTime()) / 60000;
     const endsInMins = (blockEndDate.getTime() - d.getTime()) / 60000;
 
-    // c. planned/ready/upcoming and now between planned_start and planned_start + 10 min → BLOCK_START_REMINDER
-    if (timeDiffMins >= 0 && timeDiffMins <= 10) {
+    // c. planned/ready/upcoming and now between planned_start - 5 min and planned_start → BLOCK_START_REMINDER
+    // timeDiffMins = (now - start) / 60000. So at 08:10 for an 08:15 block, timeDiffMins is -5.
+    if (timeDiffMins >= -5 && timeDiffMins <= 0) {
        const alreadySentStart = await hasEvent(userId, 'BLOCK_START_REMINDER', String(b.id));
        if (!alreadySentStart && !isEscalationPaused) {
           const titleOrTopic = b.title || b.topic || b.subject;

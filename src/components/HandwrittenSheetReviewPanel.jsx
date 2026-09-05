@@ -2,18 +2,20 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { extractQuestionAnswerFromImagesApi } from "../utils/mainsReviewApi.js";
 
-// ─── Theme tokens (consistent with MentorOS dark theme) ──────────────────────
+// ─── Theme bridge ─────────────────────────────────────────────────────────────
+// The component keeps its existing behavior but now inherits MentorOS light/dark
+// surfaces and typography from the global theme.
 const T = {
-  bg: "#09090b",
-  surface: "#111113",
-  surfaceHigh: "#18181b",
-  border: "#1f1f23",
-  borderMid: "#27272a",
-  muted: "#3f3f46",
-  subtle: "#52525b",
-  dim: "#71717a",
-  text: "#e4e4e7",
-  textBright: "#f4f4f5",
+  bg: "var(--bg-page)",
+  surface: "var(--bg-surface)",
+  surfaceHigh: "var(--bg-subtle)",
+  border: "var(--border-subtle)",
+  borderMid: "var(--border-default)",
+  muted: "var(--text-tertiary)",
+  subtle: "var(--text-tertiary)",
+  dim: "var(--text-tertiary)",
+  text: "var(--text-secondary)",
+  textBright: "var(--text-primary)",
   amber: "#f59e0b",
   amberDim: "#d97706",
   blue: "#3b82f6",
@@ -22,7 +24,7 @@ const T = {
   greenDim: "#16a34a",
   red: "#ef4444",
   purple: "#8b5cf6",
-  font: "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
+  font: "var(--sans)",
 };
 
 const label11 = (color = T.subtle) => ({
@@ -211,6 +213,7 @@ export default function HandwrittenSheetReviewPanel({
 
   return (
     <div
+      className="hw-review"
       style={{
         background: T.surface,
         border: `1px solid ${T.border}`,

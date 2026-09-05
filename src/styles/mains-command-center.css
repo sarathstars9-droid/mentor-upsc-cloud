@@ -1,0 +1,476 @@
+/* MentorOS · Mains Command Center Style
+   Scoped to /mains. Apple productivity software + intelligent execution mentor aesthetic. */
+
+:root {
+  --bg-page: #F5F7FA;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F7F8FA;
+  --border-subtle: #E8EBF0;
+  --border-default: #D0D5DD;
+  --text-primary: #111827;
+  --text-secondary: #475467;
+  --text-tertiary: #667085;
+  --brand-primary: #0A64F5;
+  --brand-primary-hover: #0852CA;
+  --brand-primary-soft: rgba(10, 100, 245, 0.08);
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-hero: 0 4px 14px rgba(16, 24, 40, 0.06);
+}
+
+html[data-theme="dark"] {
+  --bg-page: #07080A;
+  --bg-surface: #101216;
+  --bg-subtle: #15181D;
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-default: rgba(255, 255, 255, 0.14);
+  --text-primary: #F9FAFB;
+  --text-secondary: #9CA3AF;
+  --text-tertiary: #6B7280;
+  --brand-primary: #3B82F6;
+  --brand-primary-hover: #2563EB;
+  --brand-primary-soft: rgba(59, 130, 246, 0.14);
+  --shadow-card: none;
+  --shadow-hero: none;
+}
+
+.mains-command {
+  min-height: 100vh;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--sans, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+.mains-command__inner {
+  width: min(1180px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 32px 0 64px;
+}
+
+.mains-command__eyebrow {
+  color: var(--text-tertiary);
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Card Surface Standard (used ONLY for Next Action, Manual Practice, Review & Repair) */
+.mains-command__section-card,
+.mains-command__hero,
+.mains-quick-practice {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  box-shadow: var(--shadow-card);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+}
+
+.mains-command__hero {
+  box-shadow: var(--shadow-hero);
+  position: relative;
+  overflow: hidden;
+}
+
+.mains-command__hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--brand-primary);
+}
+
+/* Buttons & Segmented Controls */
+.mains-command__primary-btn,
+.mains-command__secondary-btn,
+.mains-command__text-btn {
+  min-height: 36px;
+  border-radius: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.14s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mains-command__primary-btn {
+  border: 1px solid var(--brand-primary);
+  background: var(--brand-primary);
+  color: #ffffff;
+  padding: 0 18px;
+}
+
+.mains-command__primary-btn:hover {
+  background: var(--brand-primary-hover);
+  border-color: var(--brand-primary-hover);
+}
+
+.mains-command__secondary-btn {
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  padding: 0 14px;
+}
+
+.mains-command__secondary-btn:hover {
+  background: var(--bg-subtle);
+}
+
+.mains-command__text-btn {
+  border: 0;
+  background: transparent;
+  color: var(--brand-primary);
+  padding: 0 8px;
+}
+
+.mains-command__text-btn:hover {
+  text-decoration: underline;
+}
+
+.mains-command__segmented-pill {
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.12s ease;
+}
+
+.mains-command__segmented-pill:hover {
+  color: var(--text-primary);
+  background: var(--bg-subtle);
+}
+
+.mains-command__segmented-pill.active {
+  border-color: var(--brand-primary);
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  font-weight: 700;
+}
+
+/* Practice Row Buttons */
+.mains-command__paper-row-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-subtle);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.14s ease;
+  text-align: left;
+}
+
+.mains-command__paper-row-btn:hover {
+  background: var(--bg-surface);
+  border-color: var(--border-default);
+}
+
+.mains-command__tool-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-subtle);
+}
+
+/* Subject List Rows */
+.mains-command__subject-list-row {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: inherit;
+  text-align: left;
+  transition: background 0.12s ease;
+}
+
+.mains-command__subject-list-row:hover {
+  background: var(--bg-subtle);
+}
+
+/* Score Chip */
+.mains-command__score-chip {
+  color: var(--success, #22c55e);
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Drawer Component Styles */
+.mains-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  animation: mainsFadeIn 0.18s ease-out;
+}
+
+.mains-drawer-panel {
+  width: min(520px, 92vw);
+  height: 100vh;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border-left: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15);
+  animation: mainsSlideIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mains-drawer-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.mains-drawer-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.mains-drawer-close {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  transition: all 0.12s ease;
+}
+
+.mains-drawer-close:hover {
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
+@keyframes mainsFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes mainsSlideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Responsive Layout */
+@media (max-width: 860px) {
+  .mains-command__inner {
+    width: calc(100% - 32px);
+    padding: 20px 0 40px;
+  }
+
+  .mains-command__paper-strip {
+    grid-template-columns: 1fr !important;
+  }
+
+  .mains-drawer-panel {
+    width: 100vw;
+  }
+}
+
+/* Explore PYQs Compact Card (Screenshot 3 style) */
+.mos-explore-card {
+  padding: 22px 24px;
+}
+
+.mos-explore-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.mos-explore-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.mos-explore-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+}
+
+.mos-explore-subtext {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+/* Top-right paper selector tabs */
+.mos-explore-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-subtle);
+  padding: 3px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+}
+
+.mos-explore-tab {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.mos-explore-tab:hover {
+  color: var(--text-primary);
+}
+
+.mos-explore-tab.is-active {
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  font-weight: 700;
+}
+
+/* Filter Block (Subject label + Dropdown) */
+.mos-explore-filter-block {
+  margin-bottom: 16px;
+}
+
+.mos-explore-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.mos-explore-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.mos-explore-select {
+  width: 100%;
+  appearance: none;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.12s ease;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+}
+
+.mos-explore-select:focus {
+  border-color: var(--brand-primary);
+}
+
+/* Compact Subject Rows */
+.mos-explore-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mos-explore-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.14s ease;
+  text-align: left;
+}
+
+.mos-explore-row:hover {
+  background: var(--bg-surface);
+  border-color: var(--border-default);
+}
+
+.mos-explore-row-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.mos-explore-row-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mos-explore-row-count {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.mos-explore-row-chevron {
+  font-size: 15px;
+  color: var(--text-tertiary);
+  line-height: 1;
+}
+
+.mos-inline-state {
+  padding: 16px 0;
+  font-size: 13px;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+.mos-inline-state--error {
+  color: #ef4444;
+}
+

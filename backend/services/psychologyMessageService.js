@@ -184,20 +184,20 @@ export function getCurrentBlockNotStartedMessage(state, userName = "Moulika", su
   const normState = (state || 'HEALTHY').toUpperCase();
   switch (normState) {
     case 'MISSION_FAILURE':
-      return `🚨 restart now: ${subject}\n\n${userName}, this block started at ${startTime}. Execute just 10 minutes. Break the friction.`;
+      return `🚨 restart now: ${subject}\n\n${userName}, This block was scheduled to start at ${startTime}. Execute just 10 minutes. Break the friction.`;
     case 'CRITICAL':
-      return `🚨 critical recovery: ${subject}\n\n${userName}, this block started at ${startTime}. You only need to do 25 minutes today. Start now.`;
+      return `🚨 critical recovery: ${subject}\n\n${userName}, This block was scheduled to start at ${startTime}. You only need to do 25 minutes today. Start now.`;
     case 'HIGH_RISK':
-      return `⚠️ high risk: ${subject} not started\n\n${userName}, this block started at ${startTime}. Action cures fear. Start now.`;
+      return `⚠️ high risk: ${subject} not started\n\n${userName}, This block was scheduled to start at ${startTime}. Action cures fear. Start now.`;
     case 'AT_RISK':
-      return `⚠️ at risk: ${subject} not started\n\n${userName}, this block was scheduled at ${startTime}. Don't let the day slip.`;
+      return `⚠️ at risk: ${subject} not started\n\n${userName}, This block was scheduled to start at ${startTime}. Don't let the day slip.`;
     case 'RECOVERY':
-      return `🔄 recovery day ${recoveryDay}: ${subject} not started\n\n${userName}, this block scheduled at ${startTime} is ready. Step up for your recovery.`;
+      return `🔄 recovery day ${recoveryDay}: ${subject} not started\n\n${userName}, This block was scheduled to start at ${startTime} is ready. Step up for your recovery.`;
     case 'SLIGHT_RISK':
-      return `⚠️ slight risk: ${subject} not started\n\n${userName}, this block was scheduled at ${startTime}. Execute now to keep consistency.`;
+      return `⚠️ slight risk: ${subject} not started\n\n${userName}, This block was scheduled to start at ${startTime}. Execute now to keep consistency.`;
     case 'HEALTHY':
     default:
-      return `⚠️ *${subject} not started*\n\nThis ${subject} block was scheduled at ${startTime}.\nStart a 25-minute rescue version now.`;
+      return `⚠️ *${subject} not started*\n\nThis block was scheduled to start at ${startTime}.\nStart a 25-minute rescue version now.`;
   }
 }
 
@@ -352,25 +352,28 @@ and we'll rebuild your mission together.`;
 /**
  * 9:00 AM Strict No-Plan Message
  */
-export function getNoPlanStrict9AMMessage(userName = "Moulika") {
+export function getNoPlanStrict9AMMessage(userName = "Moulika", consecutiveZeroDays = 0) {
+  const streakText = consecutiveZeroDays > 0 ? "today will again become a zero-study day" : "we need to establish today's focus early";
   return `${userName}, it is 9 AM and no plan is uploaded yet.
-Without a plan, today will again become a zero-study day.
+Without a plan, ${streakText}.
 Upload even a 45-minute plan now. Don't wait for motivation.`;
 }
 
 /**
  * 12:00 PM Recovery Plan Message
  */
-export function getRecoveryPlan12PMMessage(userName = "Moulika") {
+export function getRecoveryPlan12PMMessage(userName = "Moulika", consecutiveZeroDays = 0) {
+  const streakText = consecutiveZeroDays > 0 ? "Break the zero-study streak today." : "Reset and continue with a fresh start.";
   return `It is 12 PM. The morning is gone, but the day is not gone.
 Upload a 45-minute recovery plan now.
-Target: one small block. No excuses. Break the zero-study streak today.`;
+Target: one small block. No excuses. ${streakText}`;
 }
 
 /**
  * 3:00 PM High Risk Intervention Message
  */
-export function getHighRiskIntervention3PMMessage(userName = "Moulika") {
+export function getHighRiskIntervention3PMMessage(userName = "Moulika", consecutiveZeroDays = 0) {
+  const streakText = consecutiveZeroDays > 0 ? "Today's mission is to stop the zero-study streak." : "Today's mission is to reset your plan and continue.";
   return `${userName}, it is 3 PM and you still haven't uploaded today's plan.
 This is no longer a planning issue. This is avoidance.
 
@@ -382,18 +385,17 @@ Do this now:
 2. Study for 45 minutes
 3. Upload proof after completion
 
-Today's mission is not 8 hours.
-Today's mission is to stop the zero-study streak.
+${streakText}
 Start now.`;
 }
 
 /**
  * 6:00 PM Emergency Non-Zero Message
  */
-export function getEmergencyNonZero6PMMessage(userName = "Moulika") {
+export function getEmergencyNonZero6PMMessage(userName = "Moulika", consecutiveZeroDays = 0) {
+  const streakText = consecutiveZeroDays > 0 ? "A small win today is better than another zero day." : "A small win today keeps the momentum going.";
   return `${userName}, only the evening is left.
 Don't try to save the full day. Save your discipline.
 Sit for just 25 minutes now and upload proof.
-A small win today is better than another zero day.`;
+${streakText}`;
 }
-

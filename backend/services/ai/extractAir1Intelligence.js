@@ -1,4 +1,5 @@
 import { geminiModel } from "./geminiClient.js";
+import { parseGeminiUsage } from "../geminiCostTracker.js";
 
 function stripMarkdownFence(rawText = "") {
   let cleanText = String(rawText || "").trim();
@@ -231,7 +232,11 @@ export async function extractAir1Intelligence({
   try {
     rawText = result.response.text();
     const cleanText = stripMarkdownFence(rawText);
-    return JSON.parse(cleanText);
+    const parsed = JSON.parse(cleanText);
+    
+    // Add server telemetry for usage metadata
+    parsed.ai_usage = parseGeminiUsage(result.response.usageMetadata, "MAINS_QUESTION_INTELLIGENCE", result.response.modelVersion || "gemini-2.5-flash");
+    return parsed;
   } catch (error) {
     console.error(
       "[extractAir1Intelligence] Failed to parse Gemini response as JSON."

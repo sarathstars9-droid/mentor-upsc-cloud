@@ -363,3 +363,28 @@ async function callOpenAI(apiKey, model, systemPrompt, history, userMessage) {
     throw err;
   }
 }
+
+let mockGenerateAIContentFn = null;
+
+export function setMockGenerateAIContent(fn) {
+  mockGenerateAIContentFn = fn;
+}
+
+/**
+ * Provider-neutral wrapper for other systems (like Knowledge Builder)
+ * that need to call the AI without the mentor chat state.
+ */
+export async function generateAIContent({ provider, apiKey, model, systemPrompt, userMessage = '', history = [] }) {
+  if (mockGenerateAIContentFn) {
+    return mockGenerateAIContentFn({ provider, apiKey, model, systemPrompt, userMessage, history });
+  }
+
+  if (provider === 'gemini') {
+    return await callGemini(apiKey, model, systemPrompt, history, userMessage);
+  } else if (provider === 'openai') {
+    return await callOpenAI(apiKey, model, systemPrompt, history, userMessage);
+  } else {
+    throw new Error(`Unsupported provider: ${provider}`);
+  }
+}
+

@@ -271,7 +271,7 @@ async function runTests() {
   assertEqual(c2.ok, true, 'Second critical reminder should succeed');
   assertEqual(c3.ok, true, 'Third critical reminder should succeed');
   assertEqual(c4.ok, true, 'Fourth critical reminder should succeed');
-  assertEqual(c5.ok, false, 'Fifth critical reminder should be blocked (Limit is 4 for CRITICAL)');
+  assertEqual(c5.ok, true, 'Fifth critical reminder should succeed because BLOCK_START_REMINDER is exempt from fatigue protection');
 
   // ===========================================================================
   // TEST 5: Recovery Score Mappings (All States)
@@ -492,7 +492,7 @@ async function runTests() {
 
   // Submit valid subject (e.g. choose option 1 -> Geography)
   globalThis.resetTelegramMessageCount();
-  const todayKey = new Date().toISOString().slice(0, 10);
+  const todayKey = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
   await query(`DELETE FROM public.study_blocks WHERE user_id = $1 AND day_key = $2`, [TEST_USER, todayKey]);
 
   await handleCommand(TEST_USER, '123456789', '1');

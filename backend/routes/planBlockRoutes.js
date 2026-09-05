@@ -109,7 +109,7 @@ function userId(req) {
 }
 
 function todayKey() {
-  return new Date().toISOString().slice(0, 10);
+  return new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
 }
 
 export function isValidDayKey(key) {

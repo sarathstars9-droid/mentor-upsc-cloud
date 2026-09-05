@@ -109,9 +109,23 @@ export function findBestMainsNodeMatches(query, { subject = "", paper = "", limi
     const normQuery   = normalize(query);
     const queryTokens = normQuery.split(" ").filter(t => t.length >= 3);
 
+    let pool = mainsNodes;
+
+    // Strict Paper Isolation BEFORE semantic matching
+    if (paper && paper !== "Unknown") {
+        const normPaper = normalize(paper);
+        const paperFiltered = pool.filter(n => {
+            const nodePaper = normalize(n.gsPaper || n.rootPaper || "");
+            return nodePaper === normPaper || nodePaper.includes(normPaper) || normPaper.includes(nodePaper);
+        });
+        // Enforce the isolation strictly - if we find matches for the paper, restrict the pool entirely to those nodes.
+        if (paperFiltered.length > 0) {
+            pool = paperFiltered;
+        }
+    }
+
     // Subject narrowing using enriched normalizedSubject / normalizedSection fields
     const normSubject = normalize(subject);
-    let pool = mainsNodes;
     if (normSubject) {
         const narrowed = mainsNodes.filter(n => {
             const ns = n.normalizedSubject || normalize(n.subject || "");

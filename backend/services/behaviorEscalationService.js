@@ -380,7 +380,7 @@ export async function checkAndSendRecoveryInvitation(userId) {
       }
 
       // Record invitation in notification_events as deduplication
-      const todayKey = new Date().toISOString().slice(0, 10);
+      const todayKey = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
       const dupRes = await client.query(
         `SELECT id FROM public.notification_events 
          WHERE user_id = $1 AND notification_type = 'RECOVERY_INVITATION' AND source_type = 'daily_date' AND source_id = $2`,

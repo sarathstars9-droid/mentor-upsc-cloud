@@ -1,65 +1,20 @@
 import { normalizeArray, getRecommendationLabel } from "./prelimsDashboardUtils";
 
-const panelStyle = {
-    background: "#0f172a",
-    border: "1px solid rgba(148, 163, 184, 0.16)",
-    borderRadius: 18,
-    padding: 16,
-    boxShadow: "0 10px 24px rgba(2, 6, 23, 0.18)",
-};
-
 export default function RecommendationsPanel({ recommendations = [] }) {
-    const items = normalizeArray(recommendations);
-
-    return (
-        <section style={panelStyle}>
-            <div style={{ marginBottom: 14 }}>
-                <h3 style={{ margin: 0, color: "#f8fafc", fontSize: 20 }}>Next Best Actions</h3>
-                <div style={{ color: "#94a3b8", fontSize: 13, marginTop: 4 }}>
-                    System-generated action path after this test
-                </div>
-            </div>
-
-            {items.length === 0 ? (
-                <div style={{ color: "#94a3b8", fontSize: 13 }}>No recommendations available yet.</div>
-            ) : (
-                <div style={{ display: "grid", gap: 10 }}>
-                    {items.map((item, index) => (
-                        <div
-                            key={`recommendation-${index}`}
-                            style={{
-                                display: "flex",
-                                gap: 12,
-                                alignItems: "flex-start",
-                                background: "rgba(15, 23, 42, 0.72)",
-                                border: "1px solid rgba(148, 163, 184, 0.12)",
-                                borderRadius: 14,
-                                padding: 12,
-                            }}
-                        >
-                            <div
-                                style={{
-                                    width: 26,
-                                    height: 26,
-                                    borderRadius: 999,
-                                    background: "rgba(34, 197, 94, 0.18)",
-                                    border: "1px solid rgba(34, 197, 94, 0.24)",
-                                    color: "#86efac",
-                                    display: "grid",
-                                    placeItems: "center",
-                                    fontWeight: 800,
-                                    flexShrink: 0,
-                                }}
-                            >
-                                {index + 1}
-                            </div>
-                            <div style={{ color: "#e2e8f0", fontSize: 14, lineHeight: 1.55 }}>
-                                {getRecommendationLabel(item)}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            )}
-        </section>
-    );
+  const items = normalizeArray(recommendations);
+  return (
+    <section className="mos-practice-card mos-list-panel">
+      <div className="mos-practice-section-head">
+        <div><h2>Next Best Actions</h2><div className="mos-practice-small mos-practice-muted" style={{ marginTop: 3 }}>Turn analysis into the next concrete study move.</div></div>
+      </div>
+      <div className="mos-list-panel__list">
+        {items.length ? items.slice(0, 6).map((item, index) => (
+          <div className="mos-list-row" key={`recommendation_${index}`} style={{ display: "grid", gridTemplateColumns: "26px 1fr", gap: 10, alignItems: "start" }}>
+            <span className="mos-pr-badge mos-pr-badge--primary" style={{ width: 26, height: 26, padding: 0, justifyContent: "center" }}>{index + 1}</span>
+            <span>{getRecommendationLabel(item)}</span>
+          </div>
+        )) : <div className="mos-list-row">Complete more questions to unlock ranked next actions.</div>}
+      </div>
+    </section>
+  );
 }

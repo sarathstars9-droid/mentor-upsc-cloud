@@ -154,7 +154,7 @@ export function shouldSendMissingPlanReminder(planState) {
 /**
  * Dynamic message builder.
  */
-export function buildMissingPlanReminder({ planState, userName, notificationType }) {
+export function buildMissingPlanReminder({ planState, userName, notificationType, consecutiveZeroDays = 0 }) {
   const dynamicName = userName || 'User';
   if (notificationType === 'PLAN_NOT_UPLOADED') {
     let msg = `Today’s study plan is still pending.\n\nShare what you can study today. MentorOS will turn it into clear priorities and help you move one step closer to your UPSC goal.`;
@@ -168,6 +168,7 @@ export function buildMissingPlanReminder({ planState, userName, notificationType
     }
     return msg;
   } else if (notificationType === 'NO_PLAN_STRICT_9AM') {
+    const streakText = consecutiveZeroDays > 0 ? "today will again become a zero-study day" : "we need to establish today's focus early";
     return `Your UPSC goal needs a clear direction for today.\n\nUpload or confirm today’s plan now. MentorOS will identify what matters most and guide your next study block.`;
   }
   return '';

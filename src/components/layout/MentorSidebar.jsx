@@ -64,15 +64,54 @@ const navGroups = [
       { id: "focus", key: "focus", icon: Clock, label: "Focus" },
       { id: "reports", key: "reports", icon: PieChart, label: "Reports" },
       { id: "settings", key: "settings", icon: Settings, label: "Settings" },
+      // knowledge_review is dynamically added if authorized
     ],
   },
 ];
 
+import React, { useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { Sun, Moon } from "lucide-react";
 
 export default function MentorSidebar({ currentPage, onNavigate, onLogout }) {
   const { theme, toggleTheme } = useTheme();
+  const [canReview, setCanReview] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const token = localStorage.getItem("mos_token");
+        const headers = {};
+        if (token) headers["Authorization"] = `Bearer ${token}`;
+        const res = await fetch("/api/mains/knowledge/review/auth-status", { headers });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.can_review_knowledge) {
+            setCanReview(true);
+          }
+        }
+      } catch (e) {
+        // silently ignore
+      }
+    };
+    checkAuth();
+  }, []);
+
+  const dynamicGroups = navGroups.map(group => {
+    if (group.key === 'system' && canReview) {
+      // Avoid duplicate insertion
+      if (!group.items.find(i => i.id === 'knowledge_review')) {
+        return {
+          ...group,
+          items: [
+            ...group.items,
+            { id: "knowledge_review", key: "knowledge_review", icon: Archive, label: "Knowledge Review" }
+          ]
+        };
+      }
+    }
+    return group;
+  });
 
   return (
     <aside className="mos-sidebar-v2" role="navigation" aria-label="MentorOS navigation">
@@ -80,7 +119,7 @@ export default function MentorSidebar({ currentPage, onNavigate, onLogout }) {
       <header className="mos-sidebar-header-v2">
         <div className="mos-logo-tile-v2">M</div>
         <div>
-          <div className="mos-header-title-v2">MENTORSHIP OS</div>
+          <div className="mos-header-title-v2">MentorOS</div>
           <div className="mos-header-sub-v2">AIR-1 Execution System</div>
         </div>
         <button 
@@ -94,7 +133,7 @@ export default function MentorSidebar({ currentPage, onNavigate, onLogout }) {
       </header>
 
       <div className="mos-nav-scroll-v2">
-          {navGroups.map((group) => (
+          {dynamicGroups.map((group) => (
             <section className="mos-nav-section-v2" key={group.key} aria-labelledby={`mos-sec-${group.key}`}>
               <div id={`mos-sec-${group.key}`} className="mos-nav-section-label-v2">{group.label}</div>
               <div>
@@ -128,7 +167,7 @@ export default function MentorSidebar({ currentPage, onNavigate, onLogout }) {
         <div className="mos-profile-avatar-v2">M</div>
         <div className="mos-profile-info-v2">
           <div className="mos-profile-name-v2">Moulika</div>
-          <div className="mos-profile-role-v2">Active Aspirant</div>
+          <div className="mos-profile-role-v2">UPSC CSE 2027</div>
         </div>
         <button className="mos-logout-v2" type="button" onClick={onLogout}>Logout</button>
       </footer>

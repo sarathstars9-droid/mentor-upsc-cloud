@@ -304,10 +304,22 @@ router.post("/air1-prompt", async (req, res) => {
 // Returns: { ok: true, text: "extracted answer text" }
 // ────────────────────────────────────────────────────────────────────────────
 router.post("/extract-answer", upload.array("pages", 5), async (req, res) => {
+  console.log("[OCR ROUTE VERSION] mime-normalization-v2");
   try {
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ ok: false, error: "No pages uploaded" });
     }
+
+    req.files.forEach((file, idx) => {
+      console.log(`[OCR FILE ${idx}]`, {
+        fieldname: file.fieldname,
+        originalname: file.originalname,
+        mimetype: file.mimetype,
+        size: file.size,
+        hasBuffer: !!file.buffer,
+        bufferLength: file.buffer?.length
+      });
+    });
 
     const type = req.query.type || req.body.type || "answer";
     let customPrompt = null;
@@ -320,22 +332,49 @@ Rules:
 4. Return only the extracted question text.`;
     }
 
-    const images = req.files.map(file => ({
-      inlineData: {
-        data: file.buffer.toString("base64"),
-        mimeType: file.mimetype
+    const images = req.files.map(file => {
+      const rawMime = (file.mimetype || "").toLowerCase();
+      let normalizedMimeType = "image/jpeg";
+      if (rawMime.includes("png")) {
+        normalizedMimeType = "image/png";
+      } else if (rawMime.includes("pdf")) {
+        normalizedMimeType = "application/pdf";
+      } else if (rawMime.includes("webp")) {
+        normalizedMimeType = "image/webp";
+      } else if (rawMime.includes("jpeg") || rawMime.includes("jpg")) {
+        normalizedMimeType = "image/jpeg";
       }
-    }));
+      return {
+        inlineData: {
+          data: file.buffer ? file.buffer.toString("base64") : "",
+          mimeType: normalizedMimeType
+        }
+      };
+    });
 
-    const text = await extractHandwrittenAnswer(images, customPrompt);
+    const extraction = await extractHandwrittenAnswer(images, customPrompt);
 
-    return res.json({ ok: true, text });
+    return res.json({ 
+      ok: true, 
+      text: extraction.text,
+      visualArtifacts: extraction.visualArtifacts 
+    });
   } catch (err) {
-    console.error("[mainsReview] extract-answer error:", err);
+    console.error("[OCR provider failure]", {
+      name: err?.name,
+      message: err?.message,
+      status: err?.status,
+      statusText: err?.statusText,
+      cause: err?.cause,
+      response: err?.response?.data || err?.response,
+      errorDetails: err?.errorDetails,
+      stack: err?.stack
+    });
     return res.status(500).json({
       success: false,
-      message: "AI extraction temporarily unavailable. Please retry.",
-      error: "AI extraction temporarily unavailable. Please retry."
+      message: err?.message || "AI extraction temporarily unavailable. Please retry.",
+      error: err?.message || "AI extraction temporarily unavailable. Please retry.",
+      details: err?.errorDetails || null
     });
   }
 });

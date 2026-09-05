@@ -4,6 +4,7 @@ import { extractQuestionAnswerFromImages } from "../services/ai/extractQuestionA
 import { extractHandwrittenAnswer } from "../services/ai/extractHandwrittenAnswer.js";
 import { evaluateMainsAnswer } from "../services/ai/evaluateAnswer.js";
 import { saveBasicEvaluation } from "../repositories/evaluateAnswerRepository.js";
+import { aggregateCosts } from "../services/geminiCostTracker.js";
 import { buildAir1Prompt } from "../mainsReview/buildAir1Prompt.js";
 
 const upload = multer({
@@ -72,6 +73,7 @@ router.post("/basic-evaluation", uploadMiddleware, async (req, res) => {
   try {
     let ocrQuestion = "";
     let ocrAnswer = "";
+    let aiUsages = [];
     const files = req.files || [];
 
     if (files.length > 0) {
@@ -81,11 +83,14 @@ router.post("/basic-evaluation", uploadMiddleware, async (req, res) => {
         const ocrResult = await extractQuestionAnswerFromImages(images);
         ocrQuestion = ocrResult?.questionText || "";
         ocrAnswer = ocrResult?.answerText || "";
+        if (ocrResult?.ai_usage) aiUsages.push(ocrResult.ai_usage);
         console.log("[answer-writing] OCR extraction successful.");
       } catch (err) {
         console.error("[answer-writing] extractQuestionAnswerFromImages failed, falling back to extractHandwrittenAnswer:", err);
         try {
-          ocrAnswer = await extractHandwrittenAnswer(images);
+          const fallbackResult = await extractHandwrittenAnswer(images);
+          ocrAnswer = fallbackResult.text;
+          if (fallbackResult.usage) aiUsages.push(fallbackResult.usage);
         } catch (fallbackErr) {
           console.error("[answer-writing] extractHandwrittenAnswer fallback failed:", fallbackErr);
         }
@@ -124,6 +129,19 @@ router.post("/basic-evaluation", uploadMiddleware, async (req, res) => {
       marks,
       wordLimit,
     });
+
+    // Extract eval usage and aggregate with OCR
+    const evalUsage = evaluation.evaluation_meta?.ai_usage || evaluation.mains_eval_v1?.evaluation_meta?.ai_usage;
+    if (evalUsage) {
+      aiUsages.push(evalUsage);
+    }
+    
+    // Store aggregated usages inside evaluationJson so it persists
+    if (!evaluation.evaluation_meta) evaluation.evaluation_meta = {};
+    evaluation.evaluation_meta.ai_usage = {
+      calls: aiUsages,
+      normal_evaluation: aggregateCosts(aiUsages)
+    };
 
     let savedRow = null;
     let finalScore = null;

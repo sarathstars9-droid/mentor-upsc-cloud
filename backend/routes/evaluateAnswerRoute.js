@@ -1,6 +1,7 @@
 import express from "express";
 import { evaluateMainsAnswer } from "../services/ai/evaluateAnswer.js";
 import { saveBasicEvaluation } from "../repositories/evaluateAnswerRepository.js";
+import { aggregateCosts } from "../services/geminiCostTracker.js";
 
 const router = express.Router();
 
@@ -20,6 +21,7 @@ router.post("/", async (req, res) => {
       topic,
       questionText,
       candidateAnswer,
+      visualArtifacts,
       marks,
       wordLimit,
       sourceType,
@@ -48,18 +50,34 @@ router.post("/", async (req, res) => {
     const finalTopic = topic || req.body.answerType || "";
 
     const evaluation = await evaluateMainsAnswer({
+      userId: userId || "user_1",
       question: questionText,
       answer: candidateAnswer,
+      visualArtifacts: visualArtifacts,
       paper: finalPaper,
+      subject: finalSubject,
+      topic: finalTopic,
       marks: marks || 10,
       wordLimit: wordLimit || 150,
     });
 
+    // Elevate and aggregate telemetry usage
+    const evalUsage = evaluation.mains_eval_v1?.evaluation_meta?.ai_usage;
+    const aiUsages = evalUsage ? [evalUsage] : [];
+    if (!evaluation.evaluation_meta) evaluation.evaluation_meta = {};
+    evaluation.evaluation_meta.ai_usage = {
+      calls: aiUsages,
+      normal_evaluation: aggregateCosts(aiUsages)
+    };
+
     try {
-      console.log("[evaluateAnswerRoute] Attempting to save to DB. Score:", evaluation.score, "Tags:", evaluation.weakness_tags);
-      console.log("[evaluateAnswerRoute] evaluation.score:", evaluation?.score);
-      const parsedScore = Number(evaluation?.score);
-      const finalScore = isNaN(parsedScore) ? null : parsedScore;
+      console.log("[evaluateAnswerRoute] Attempting to save to DB. Score:", evaluation.score);
+
+      // Extract numeric score from the V1 payload for clean DB insertion
+      const finalScore = evaluation.mains_eval_v1?.score?.awarded ?? null;
+
+      // Extract RAG retrieval metadata (V1.5A) — null-safe
+      const ragMeta = evaluation.rag_retrieval_meta || null;
 
       const savedRow = await saveBasicEvaluation({
         userId: userId || 'user_1',
@@ -71,6 +89,11 @@ router.post("/", async (req, res) => {
         evaluationJson: evaluation,
         score: finalScore,
         weaknessTags: evaluation.weakness_tags || [],
+        ragRetrievalVersion: ragMeta?.retrieval_version || null,
+        ragKnowledgeItemIds: ragMeta?.knowledge_item_ids || [],
+        ragRetrievedPyqIds: ragMeta?.retrieved_pyq_ids || [],
+        ragMissingCategories: evaluation.mains_eval_v1?.evaluation_meta?.rag_missing_categories || [],
+        ragCategoryCounts: ragMeta?.category_counts || {}
       });
       console.log("[evaluateAnswerRoute] Successfully saved to DB. Row ID:", savedRow?.id);
 

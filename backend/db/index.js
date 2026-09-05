@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "../config/env.js";
 
 // Delete standard pg env vars to prevent pg module from overriding DATABASE_URL with private/internal defaults injected by Railway
 delete process.env.PGHOST;

@@ -1,53 +1,204 @@
 import { geminiModel } from "./geminiClient.js";
+import { parseGeminiUsage } from "../geminiCostTracker.js";
+import { query } from "../../db/index.js";
+import { resolveMainsSyllabusContext } from "../../mainsReview/resolveMainsSyllabusContext.js";
+import { getQuestionsByNodeId } from "../../brain/nodeIdTopicEngine.js";
+import { selectSubjectProfile } from "./subjectProfiles.js";
+import { validateAndNormalizeV1Payload, getFallbackPayload } from "./mainsEvaluationSchema.js";
+import { buildMainsEvaluationPrompt } from "./buildMainsEvaluationPrompt.js";
+import { getMainsRagContext } from "../mainsRagContextService.js";
 
-export async function evaluateMainsAnswer({ question, answer, paper, marks, wordLimit }) {
-  const prompt = `Return STRICT JSON only. No markdown. No explanation outside JSON.
-Evaluate the UPSC Mains answer as a strict but helpful UPSC mentor.
-The output must be easy for an aspirant to understand within 30 seconds.
+/**
+ * Enhanced Mains Answer Evaluator (V1 Pipeline)
+ * Supporting structured rubrics, ideal blueprints, examiner impact, visual schemas,
+ * and mistake book candidates while preserving backward compatibility.
+ */
+export async function evaluateMainsAnswer({ userId = "user_1", question, answer, visualArtifacts = null, paper, subject, topic, marks, wordLimit }) {
+  const finalPaper = paper || "General Studies";
+  const finalSubject = subject || "";
+  const finalTopic = topic || "";
+  const finalMarks = marks ? parseInt(marks) : 10;
+  const finalWordLimit = wordLimit ? parseInt(wordLimit) : 150;
 
-Paper: ${paper}
-Marks: ${marks}
-Word Limit: ${wordLimit}
+  // --- Map Syllabus Node & Context ---
+  let syllabusNodeId = "";
+  let syllabusNodeLabel = "";
+  let confidence = "low";
+  let matchSource = "global_inference";
+  let relatedPyqs = [];
+  let previousRelevantMistakes = [];
 
-Question:
-${question}
+  try {
+    const mapping = resolveMainsSyllabusContext({
+      question,
+      paper: finalPaper,
+      subject: finalSubject,
+      topic: finalTopic
+    });
 
-Student Answer:
-${answer}
+    if (mapping && mapping.resolvedNodeId) {
+      syllabusNodeId = mapping.resolvedNodeId;
+      syllabusNodeLabel = mapping.resolvedSyllabusNode;
+      confidence = mapping.confidence || "low";
+      matchSource = mapping.matchSource || "global_inference";
 
-Return this JSON shape exactly:
-{
-  "score": "",
-  "level": "",
-  "examinerImpression": "",
-  "topFixes": [],
-  "missingDimensions": [],
-  "upscStructure": [],
-  "improvedIntro": "",
-  "improvedConclusion": "",
-  "memoryMnemonic": "",
-  "finalAdvice": ""
-}
+      try {
+        const pyqRes = getQuestionsByNodeId({ nodeId: syllabusNodeId, subjectId: finalSubject });
+        if (pyqRes && Array.isArray(pyqRes.questions)) {
+          relatedPyqs = pyqRes.questions.slice(0, 3).map(q => ({
+            id: q.id,
+            question: q.question,
+            year: q.year,
+            marks: q.marks
+          }));
+        }
+      } catch (e) {
+        console.warn("[evaluateAnswer] Failed to fetch PYQs for node:", syllabusNodeId, e.message);
+      }
 
-Field rules:
-1. score: Use realistic UPSC marks (e.g. "4.5/10" or "6/15"). Do not inflate.
-2. level: Use one of "Poor", "Below Average", "Average", "Good", "Excellent".
-3. examinerImpression: Under 60 words. 30-second impression on relevance, structure, factual accuracy.
-4. topFixes: Exactly 3 points. Specific and actionable (e.g., "Convert the answer into a direct comparison...").
-5. missingDimensions: 3 to 6 points. Exact missing UPSC dimensions (e.g., "Political transformation: tribal polity to territorial kingdoms").
-6. upscStructure: Array of the ideal answer structure.
-7. improvedIntro: One UPSC-ready introduction (max 45 words).
-8. improvedConclusion: One UPSC-ready conclusion (max 45 words).
-9. memoryMnemonic: Must be an empty string. Final mnemonic is generated only in AIR-1 Review.
-10. finalAdvice: One practical next action before rewriting.
+      try {
+        const dbRes = await query(
+          `SELECT id, mistake_type as "mistakeType", mistake_text as "mistakeText", notes, severity 
+           FROM mistakes 
+           WHERE user_id = $1 AND node_id = $2 
+           ORDER BY created_at DESC 
+           LIMIT 3`,
+          [userId, syllabusNodeId]
+        );
+        previousRelevantMistakes = dbRes.rows || [];
+      } catch (dbErr) {
+        console.warn("[evaluateAnswer] Failed to fetch previous mistakes:", dbErr.message);
+      }
+    }
+  } catch (err) {
+    console.error("[evaluateAnswer] Error mapping & retrieving:", err);
+  }
 
-Strict quality rules:
-- Do not produce generic feedback.
-- Do not give long essay-like review.
-- Do not invent fake facts or scholars.
-- If the answer has factual errors, mention them clearly.
-- Language must be simple and mentor-like.
-- The output must be parseable JSON. No markdown outside JSON. No trailing commas.`;
+  // Get subject profile
+  const profile = selectSubjectProfile(finalPaper, finalSubject || finalTopic);
+
+  // --- RAG Knowledge Retrieval (V1.5A) ---
+  // Runs non-fatally: if retrieval fails, evaluation continues without RAG context.
+  let ragContext = null;
+  try {
+    ragContext = await getMainsRagContext({
+      userId,
+      questionIntelligence: {
+        syllabus_node_id: syllabusNodeId,
+        paper: finalPaper,
+        subject: finalSubject,
+        topic: finalTopic,
+        micro_topic: syllabusNodeLabel
+      },
+      queryText: question
+    });
+    const itemCount = ragContext?.retrieval_meta?.knowledge_item_ids?.length || 0;
+    console.log(`[evaluateAnswer] RAG context retrieved: ${itemCount} knowledge items, ${ragContext?.related_pyqs?.length || 0} PYQs`);
+  } catch (ragErr) {
+    console.warn("[evaluateAnswer] RAG context retrieval failed (non-fatal):", ragErr.message);
+    // Emit a minimal sentinel so analytics can distinguish failure from empty-store.
+    // IMPORTANT: Never expose stack traces or DB secrets here.
+    ragContext = {
+      syllabus_node: null,
+      related_pyqs: [],
+      subject_language: [], dimensions: [], evidence: [],
+      value_additions: [], geography_optional: [],
+      previous_relevant_mistakes: [],
+      missing_categories: [],
+      retrieval_meta: {
+        status: 'FAILED',
+        error_code: 'RAG_RETRIEVAL_ERROR',
+        retrieval_version: 'mains-rag-v1',
+        knowledge_item_ids: [],
+        retrieved_pyq_ids: [],
+        category_counts: {}
+      }
+    };
+  }
+
+
+  // pre-eval visual detection (Legacy fallback vs Structured metadata)
+  const lowerAnswer = String(answer || "").toLowerCase();
+  
+  let hasFlowchart = false;
+  let hasDiagram = false;
+  let hasMap = false;
+  let hasTable = false;
+
+  if (visualArtifacts && typeof visualArtifacts === "object") {
+    // New flow: Use structured metadata
+    hasFlowchart = Boolean(visualArtifacts.flowchart);
+    hasDiagram = Boolean(visualArtifacts.diagram) || Boolean(visualArtifacts.geographicalSketch) || Boolean(visualArtifacts.graph);
+    hasMap = Boolean(visualArtifacts.map);
+    hasTable = Boolean(visualArtifacts.table);
+  } else {
+    // Legacy fallback
+    hasFlowchart = lowerAnswer.includes("flowchart") || lowerAnswer.includes("flow-chart") || lowerAnswer.includes("process flow") || lowerAnswer.includes("step-by-step");
+    hasDiagram = lowerAnswer.includes("diagram") || lowerAnswer.includes("sketch") || lowerAnswer.includes("figure") || lowerAnswer.includes("illustration");
+    hasMap = lowerAnswer.includes("map") || lowerAnswer.includes("india map") || lowerAnswer.includes("world map");
+    hasTable = lowerAnswer.includes("table") || lowerAnswer.includes("comparison") || lowerAnswer.includes("matrix");
+  }
+
+  // Determine question nature keywords
+  const lowerQuest = String(question || "").toLowerCase();
+  const questionNatures = [];
+  if (lowerQuest.includes("analyze") || lowerQuest.includes("critically") || lowerQuest.includes("discuss")) {
+    questionNatures.push("ANALYTICAL");
+  }
+  if (lowerQuest.includes("how") || lowerQuest.includes("process") || lowerQuest.includes("mechanism")) {
+    questionNatures.push("PROCESS");
+    questionNatures.push("MECHANISM");
+  }
+  if (lowerQuest.includes("spatial") || lowerQuest.includes("distribution") || lowerQuest.includes("where")) {
+    questionNatures.push("SPATIAL");
+    questionNatures.push("DISTRIBUTIONAL");
+  }
+  if (lowerQuest.includes("history") || lowerQuest.includes("century") || lowerQuest.includes("evolution") || lowerQuest.includes("chronology")) {
+    questionNatures.push("HISTORICAL");
+    questionNatures.push("EVOLUTIONARY");
+  }
+  if (lowerQuest.includes("compare") || lowerQuest.includes("difference") || lowerQuest.includes("distinguish")) {
+    questionNatures.push("COMPARATIVE");
+  }
+  if (lowerQuest.includes("data") || lowerQuest.includes("percent") || lowerQuest.includes("rate") || lowerQuest.includes("statistics")) {
+    questionNatures.push("DATA_ORIENTED");
+  }
+  if (lowerQuest.includes("contemporary") || lowerQuest.includes("recent") || lowerQuest.includes("current") || lowerQuest.includes("judgment")) {
+    questionNatures.push("CONTEMPORARY");
+  }
+  if (lowerQuest.includes("ethics") || lowerQuest.includes("morality") || lowerQuest.includes("values") || lowerQuest.includes("ethical")) {
+    questionNatures.push("ETHICAL");
+  }
+  if (lowerQuest.includes("case study") || lowerQuest.includes("situation")) {
+    questionNatures.push("CASE_STUDY");
+  }
+  if (questionNatures.length === 0) {
+    questionNatures.push("CONCEPTUAL");
+  }
+
+  // Construct prompt
+  const prompt = buildMainsEvaluationPrompt({
+    question,
+    answer,
+    marks: finalMarks,
+    wordLimit: finalWordLimit,
+    paper: finalPaper,
+    subject: finalSubject,
+    topic: finalTopic,
+    syllabusNodeId,
+    syllabusNodeLabel,
+    confidence,
+    matchSource,
+    relatedPyqs,
+    previousRelevantMistakes,
+    profile,
+    questionNatures,
+    hasFlowchart,
+    hasDiagram,
+    hasMap,
+    hasTable,
+    ragContext
+  });
 
   let rawText = "";
   let result;
@@ -82,112 +233,100 @@ Strict quality rules:
     const jsonCandidate = extractJsonObject(rawText);
     parsed = JSON.parse(jsonCandidate);
   } catch (firstErr) {
-    console.warn("[evaluate-answer] JSON parse failed on first attempt", {
-      error: firstErr.message,
-      preview: rawText?.slice(0, 500),
-    });
     try {
       const repairedCandidate = repairJsonCandidate(rawText);
       parsed = JSON.parse(repairedCandidate);
     } catch (secondErr) {
-      console.warn("[evaluate-answer] Failed to parse Gemini JSON after repair", {
-        firstError: firstErr.message,
-        secondError: secondErr.message,
-        preview: rawText?.slice(0, 500),
-      });
-      return {
-        score: "N/A",
-        level: "Format Issue",
-        examinerImpression: "Review completed, but structured formatting failed. Showing raw mentor notes below.",
-        topFixes: [],
-        missingDimensions: [],
-        upscStructure: [],
-        improvedIntro: "",
-        improvedConclusion: "",
-        memoryMnemonic: "",
-        finalAdvice: "Rerun Quick Review once.",
-        rawOutput: rawText
-      };
+      console.warn("[evaluate-answer] Failed to parse Gemini JSON after repair, returning fallback structural payload", secondErr.message);
+      parsed = getFallbackPayload(finalPaper, finalSubject, finalTopic, syllabusNodeId, syllabusNodeLabel, finalMarks, finalWordLimit, profile.id);
     }
   }
 
+  // Server-side validation & normalization
+  const normalized = validateAndNormalizeV1Payload(parsed, finalPaper, finalSubject, finalTopic, syllabusNodeId, syllabusNodeLabel, finalMarks, finalWordLimit, profile.id);
 
+  if (!normalized.evaluation_meta) {
+    normalized.evaluation_meta = {};
+  }
+  normalized.evaluation_meta.ai_usage = parseGeminiUsage(
+    result?.response?.usageMetadata, 
+    "MAINS_EVALUATION", 
+    result?.response?.modelVersion || "gemini-2.5-flash"
+  );
+
+  // --- BACKWARD COMPATIBILITY LAYER ---
+  const legacyMap = {
+    score: normalized.score?.awarded !== undefined ? `${normalized.score.awarded}/${normalized.score.maximum}` : "N/A",
+    level: normalized.score?.awarded !== undefined && normalized.score?.maximum > 0
+      ? getLegacyLevel(normalized.score.awarded, normalized.score.maximum)
+      : "Average",
+    examinerImpression: normalized.examiner_impact?.reason || normalized.score?.reason || "Evaluation completed.",
+    topFixes: Array.isArray(normalized.strengths) ? normalized.strengths.slice(0, 3) : [],
+    missingDimensions: Array.isArray(normalized.dimension_coverage?.missing)
+      ? normalized.dimension_coverage.missing.map(m => `${m.dimension || "General"}: ${m.how_to_add || ""}`)
+      : [],
+    upscStructure: Array.isArray(normalized.ideal_blueprint?.expected_dimensions) ? normalized.ideal_blueprint.expected_dimensions : [],
+    improvedIntro: normalized.model_answer?.answer ? normalized.model_answer.answer.substring(0, 150) + "..." : "",
+    improvedConclusion: normalized.ideal_blueprint?.way_forward_expectation || "",
+    memoryMnemonic: "",
+    finalAdvice: normalized.best_value_addition?.content || "Focus on dimensions and core demand."
+  };
 
   return {
-    score: parsed.score || "N/A",
-    level: parsed.level || "Format Issue",
-    examinerImpression: parsed.examinerImpression || "Evaluation completed.",
-    topFixes: Array.isArray(parsed.topFixes) ? parsed.topFixes.slice(0, 3) : [],
-    missingDimensions: Array.isArray(parsed.missingDimensions) ? parsed.missingDimensions : [],
-    upscStructure: Array.isArray(parsed.upscStructure) ? parsed.upscStructure : [],
-    improvedIntro: parsed.improvedIntro || "",
-    improvedConclusion: parsed.improvedConclusion || "",
-    memoryMnemonic: "",
-    finalAdvice: parsed.finalAdvice || ""
+    ...legacyMap,
+    weakness_tags: normalized.mistakes.map(m => m.category),
+    mains_eval_v1: normalized,
+    rag_retrieval_meta: ragContext?.retrieval_meta || null
   };
 }
 
 function extractJsonObject(rawText) {
   if (!rawText || typeof rawText !== "string") return null;
-
   let text = rawText.trim();
-
-  // Strip markdown fences
   text = text
     .replace(/^```json\s*/i, "")
     .replace(/^```\s*/i, "")
     .replace(/```$/i, "")
     .trim();
-
-  // Strip common Gemini prefixes
   text = text.replace(/^Raw AI Output:\s*/i, "").trim();
   text = text.replace(/^JSON:\s*/i, "").trim();
-
-  // Extract first JSON object
   const firstBrace = text.indexOf("{");
   const lastBrace  = text.lastIndexOf("}");
   if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
     return text.slice(firstBrace, lastBrace + 1).trim();
   }
-
   return text;
 }
 
 function repairJsonCandidate(rawText) {
   if (!rawText || typeof rawText !== "string") return rawText;
-
   let repaired = rawText.trim();
-
-  // Strip markdown fences
   repaired = repaired
     .replace(/^```json\s*/i, "")
     .replace(/^```\s*/i, "")
     .replace(/```$/i, "")
     .trim();
-
-  // Extract first JSON object
   const firstBrace = repaired.indexOf("{");
   const lastBrace  = repaired.lastIndexOf("}");
   if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
     repaired = repaired.slice(firstBrace, lastBrace + 1);
   }
-
-  // Remove trailing commas before } or ]
   repaired = repaired.replace(/,\s*([}\]])/g, "$1");
-
-  // Normalize smart/curly quotes to straight quotes
   repaired = repaired
     .replace(/[\u201c\u201d]/g, '"')
     .replace(/[\u2018\u2019]/g, "'");
-
-  // Fix invalid score format like "4./10"
-  repaired = repaired.replace(/"score"\s*:\s*"(\d+)\.\/( \d+)"/, '"score":"$1/$2"');
-
-  // Strip control characters that break JSON
   repaired = repaired.replace(/[\u0000-\u001F\u007F]/g, (ch) => {
     if (ch === "\n" || ch === "\r" || ch === "\t") return " ";
     return "";
   });
-
   return repaired;
+}
+
+function getLegacyLevel(awarded, max) {
+  const pct = max > 0 ? awarded / max : 0;
+  if (pct < 0.35) return "Poor";
+  if (pct < 0.45) return "Below Average";
+  if (pct < 0.55) return "Average";
+  if (pct < 0.70) return "Good";
+  return "Excellent";
 }

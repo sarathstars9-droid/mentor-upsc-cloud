@@ -370,7 +370,7 @@ function buildRecommendations({
 // ── Public API ────────────────────────────────────────────────────────────────
 
 export async function generateSuggestions(userId = DEFAULT_USER, { endDate } = {}) {
-  const endKey   = String(endDate || new Date().toISOString().slice(0, 10)).slice(0, 10);
+  const endKey   = String(endDate || new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })).slice(0, 10);
   const cacheKey = `${userId}::${endKey}`;
 
   // Serve from cache if available
@@ -568,7 +568,7 @@ export async function rebalanceSchedule(userId = DEFAULT_USER, { startDate = nul
     return { ok: true, message: 'No backlog to rebalance.', rebalancedCount: 0, backlog };
   }
 
-  const today = startDate || new Date().toISOString().slice(0, 10);
+  const today = startDate || new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
   const maxMinutesPerDay = Math.max(300, maxHoursPerDay * 60);
 
   const client = await pool.connect();

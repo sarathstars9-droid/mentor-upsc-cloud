@@ -139,19 +139,66 @@ export async function sendNotification(userId, notificationType, sourceType, sou
         else if (state === 'HIGH_RISK' || state === 'CRITICAL') limit = 4;
         else if (state === 'MISSION_FAILURE') limit = 2;
 
-        const isCriticalEscalation = [
+        const isFatigueExempt = [
           'NO_PLAN_STRICT_9AM',
           'RECOVERY_PLAN_12PM',
           'HIGH_RISK_INTERVENTION_3PM',
-          'EMERGENCY_NON_ZERO_6PM'
+          'EMERGENCY_NON_ZERO_6PM',
+          'BLOCK_START_REMINDER'
         ].includes(notificationType);
 
-        if (!isCriticalEscalation && count >= limit) {
+        if (!isFatigueExempt && count >= limit) {
           console.log(`[NotificationService] Fatigue protection active for ${userId} (state=${state}). Count=${count}/${limit}. Skipping ${notificationType}.`);
           return { ok: false, reason: "Fatigue protection limit reached" };
         }
       }
     }
+
+    // --- Dynamic Revalidation and Suppression Rules ---
+    const nowKolkata = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+    const d = new Date(nowKolkata);
+    const todayKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+    // Query Postgres for current live state of plan/study blocks
+    const { rows: liveBlocks } = await queryFn(
+      `SELECT id, status, COALESCE(actual_minutes, 0) AS actual_minutes, source_type, title, subject, topic
+       FROM public.study_blocks
+       WHERE user_id = $1 AND day_key = $2`,
+      [userId, todayKey]
+    );
+
+    const hasRealPlan = liveBlocks.some(b => {
+      const src = (b.source_type || '').toLowerCase();
+      const titleStr = (b.title || b.subject || b.topic || '').toLowerCase();
+      return !['placeholder', 'system'].includes(src) && !titleStr.includes('placeholder');
+    });
+
+    const totalActualMinutes = liveBlocks.reduce((sum, b) => sum + (b.actual_minutes || 0), 0);
+    const hasStartedOrDone = liveBlocks.some(b =>
+      ['active', 'paused', 'completed', 'done', 'partial'].includes((b.status || '').toLowerCase()) || b.actual_minutes > 0
+    );
+
+    // Suppressions:
+    // - If today's plan exists, never send "upload a recovery plan" as a no-plan fallback.
+    // - If actual study minutes > 0, never use "zero-study streak" wording.
+    if (notificationType === 'RECOVERY_PLAN_12PM' && hasRealPlan) {
+      console.log(`[NotificationService] Suppression: Plan already exists. Dropping RECOVERY_PLAN_12PM.`);
+      return { ok: false, reason: "Plan already exists" };
+    }
+    if (hasStartedOrDone && (notificationType === 'PLAN_NOT_UPLOADED' || notificationType === 'NO_PLAN_STRICT_9AM' || notificationType === 'RECOVERY_PLAN_12PM' || notificationType === 'HIGH_RISK_INTERVENTION_3PM' || notificationType === 'EMERGENCY_NON_ZERO_6PM')) {
+      console.log(`[NotificationService] Suppression: A block has already started or completed. Suppressing pending no-plan/recovery reminders.`);
+      return { ok: false, reason: "Block execution already started/completed" };
+    }
+    if (totalActualMinutes > 0 && messageText.includes("zero-study streak")) {
+      console.log(`[NotificationService] Suppression: Actual study minutes > 0. Suppressing zero-study streak message.`);
+      return { ok: false, reason: "User has completed study minutes" };
+    }
+
+    // Idempotency check: enforce atomic guard using (userId + localDate + notificationType)
+    // We already do ON CONFLICT on (user_id, notification_type, source_type, source_id, channel_type).
+    // Let's ensure the sourceId we write for SYSTEM_LOCK is todayKey so it uses: user_id + notification_type + 'daily_date' + todayKey + channel_type
+    const actualSourceId = ['NO_PLAN_STRICT_9AM', 'RECOVERY_PLAN_12PM', 'HIGH_RISK_INTERVENTION_3PM', 'EMERGENCY_NON_ZERO_6PM'].includes(notificationType) ? todayKey : sourceId;
+    const actualSourceType = ['NO_PLAN_STRICT_9AM', 'RECOVERY_PLAN_12PM', 'HIGH_RISK_INTERVENTION_3PM', 'EMERGENCY_NON_ZERO_6PM'].includes(notificationType) ? 'daily_date' : sourceType;
 
     // 1. Fetch preferences for this notification type
     const prefRes = await queryFn(
@@ -179,7 +226,8 @@ export async function sendNotification(userId, notificationType, sourceType, sou
         'DAILY_NIGHT_REPORT', 'NIGHT_MENTOR_REVIEW', 'MORNING_RECALL',
         'PLAN_ACCEPTED_SUMMARY', 'WEEKLY_MENTOR_REPORT', 'MONTHLY_MENTOR_REPORT',
         'MONTHLY_MENTOR_REPORT_PDF', 'REVISION_DUE_ALERT', 'END_OF_DAY_REPORT',
-        'SYLLABUS_TRACK_REPLY', 'BACKLOG_ALERT', 'DISTRACTION_ALERT'
+        'SYLLABUS_TRACK_REPLY', 'BACKLOG_ALERT', 'DISTRACTION_ALERT',
+        'BLOCK_START_REMINDER'
       ];
       if (explicitDefaultAllowlist.includes(notificationType)) {
         console.log(`[NotificationService] Preference missing for ${notificationType} and user ${userId}. Defaulting to TELEGRAM.`);
@@ -212,7 +260,7 @@ export async function sendNotification(userId, notificationType, sourceType, sou
              (user_id, notification_type, source_type, source_id, channel_type, status, error_message, payload_json)
            VALUES ($1, $2, $3, $4, $5, 'skipped', 'Quiet hours active', $6)
            ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type) DO NOTHING`,
-          [userId, notificationType, sourceType, sourceId, channel, JSON.stringify(payload)]
+          [userId, notificationType, actualSourceType, actualSourceId, channel, JSON.stringify(payload)]
         );
         
         results.push({ channel, status: "skipped", reason: "Quiet hours" });
@@ -227,11 +275,11 @@ export async function sendNotification(userId, notificationType, sourceType, sou
          ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type) 
          DO NOTHING
          RETURNING id`,
-        [userId, notificationType, sourceType, sourceId, channel, JSON.stringify(payload)]
+        [userId, notificationType, actualSourceType, actualSourceId, channel, JSON.stringify(payload)]
       );
 
       if (insertRes.rows.length === 0) {
-        console.log(`[NotificationService] Atomic guard active: type ${notificationType}, source ${sourceType}:${sourceId} via ${channel} already exists. Skipping.`);
+        console.log(`[NotificationService] Atomic guard active: type ${notificationType}, source ${actualSourceType}:${actualSourceId} via ${channel} already exists. Skipping.`);
         results.push({ channel, status: "skipped", reason: "Deduplicated via atomic guard" });
         continue;
       }
@@ -253,7 +301,7 @@ export async function sendNotification(userId, notificationType, sourceType, sou
                (user_id, notification_type, source_type, source_id, channel_type, status, error_message, payload_json)
              VALUES ($1, $2, $3, $4, $5, 'skipped', 'No active channel destination', $6)
              ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type) DO NOTHING`,
-            [userId, notificationType, sourceType, sourceId, channel, JSON.stringify(payload)]
+            [userId, notificationType, actualSourceType, actualSourceId, channel, JSON.stringify(payload)]
           );
           
           results.push({ channel, status: "skipped", reason: "No destination registered" });
@@ -272,8 +320,8 @@ export async function sendNotification(userId, notificationType, sourceType, sou
           success = await telegramService.sendTelegramMessage(destinationId, messageText, {
             userId,
             notificationType,
-            sourceType,
-            sourceId
+            sourceType: actualSourceType,
+            sourceId: actualSourceId
           });
           if (!success) {
             errorMsg = "Telegram delivery failed (queued for retry)";
@@ -313,7 +361,7 @@ export async function sendNotification(userId, notificationType, sourceType, sou
         `UPDATE public.notification_events 
          SET status = $1, error_message = $2, payload_json = $3, sent_at = NOW()
          WHERE user_id = $4 AND notification_type = $5 AND source_type = $6 AND source_id = $7 AND channel_type = $8`,
-        [finalStatus, errorMsg, JSON.stringify(payload), userId, notificationType, sourceType, sourceId, channel]
+        [finalStatus, errorMsg, JSON.stringify(payload), userId, notificationType, actualSourceType, actualSourceId, channel]
       );
 
       results.push({ channel, status: finalStatus, error: errorMsg });
@@ -328,8 +376,8 @@ export async function sendNotification(userId, notificationType, sourceType, sou
       userId,
       notificationType,
       messageText,
-      sourceType,
-      sourceId
+      sourceType: actualSourceType,
+      sourceId: actualSourceId
     });
     return { ok: false, error: err.message || err };
   }

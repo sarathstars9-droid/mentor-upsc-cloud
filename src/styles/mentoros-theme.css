@@ -53,23 +53,23 @@
    LIGHT MODE (Apple-inspired White Premium / Calm Executive Mentor)
    ------------------------------------------------------------ */
 :root {
-  --mos-bg: #F7F7F9;
-  --mos-bg-soft: #F0F0F2;
+  --mos-bg: #F8FAFC;
+  --mos-bg-soft: #F1F5F9;
   --mos-surface: #FFFFFF;
   --mos-surface-raised: #FFFFFF;
   --mos-sidebar-bg: #FFFFFF;
   
-  --mos-border: #EAECF0;
-  --mos-border-strong: rgba(15, 23, 42, 0.12);
+  --mos-border: #E2E8F0;
+  --mos-border-strong: #CBD5E1;
   
-  --mos-text: #101828;
-  --mos-text-soft: #6B7280;
-  --mos-muted: #9CA3AF;
+  --mos-text: #0F172A;
+  --mos-text-soft: #334155;
+  --mos-muted: #64748B;
   
   --mos-accent: #0A64F5;
   --mos-accent-hover: #095BE0;
   --mos-accent-pressed: #084FC2;
-  --mos-accent-soft: #EAF2FF;
+  --mos-accent-soft: #EFF6FF;
   
   --mos-danger: #ef4444;
   --mos-danger-soft: rgba(239, 68, 68, 0.06);
@@ -84,10 +84,10 @@
   --mos-warning-brd: rgba(245, 158, 11, 0.15);
 
   --mos-stable: #0A64F5;
-  --mos-stable-soft: #EAF2FF;
+  --mos-stable-soft: #EFF6FF;
   --mos-stable-brd: #CFE0FF;
   
-  --mos-shadow-soft: 0 1px 3px rgba(16, 24, 40, 0.1), 0 1px 2px rgba(16, 24, 40, 0.06);
+  --mos-shadow-soft: 0 4px 12px rgba(15, 23, 42, 0.04);
   --mos-card-bg: #FFFFFF;
   --mos-input-bg: #FFFFFF;
   --mos-button-bg: #0A64F5;
@@ -115,23 +115,23 @@
    LIGHT MODE (Apple-inspired White Premium / Calm Executive Mentor)
    ------------------------------------------------------------ */
 :root[data-theme="light"] {
-  --mos-bg: #F5F5F7; /* Apple style light gray background */
-  --mos-bg-soft: #F0F0F2;
+  --mos-bg: #F8FAFC; /* Apple style light gray background */
+  --mos-bg-soft: #F1F5F9;
   --mos-surface: #ffffff;
   --mos-surface-raised: #ffffff;
   --mos-sidebar-bg: #ffffff;
   
-  --mos-border: rgba(15, 23, 42, 0.08); /* Modern slate border */
-  --mos-border-strong: rgba(15, 23, 42, 0.12);
+  --mos-border: #E2E8F0; /* Modern slate border */
+  --mos-border-strong: #CBD5E1;
   
-  --mos-text: #111827; /* Deep slate */
-  --mos-text-soft: #6B7280; /* Neutral grey */
-  --mos-muted: #9CA3AF;
+  --mos-text: #0F172A; /* Deep slate */
+  --mos-text-soft: #334155; /* Neutral grey */
+  --mos-muted: #64748B;
   
   --mos-accent: #0A64F5; /* Blue */
   --mos-accent-hover: #095BE0;
   --mos-accent-pressed: #084FC2;
-  --mos-accent-soft: #EAF2FF; /* Soft background */
+  --mos-accent-soft: #EFF6FF; /* Soft background */
   
   --mos-danger: #ef4444;
   --mos-danger-soft: rgba(239, 68, 68, 0.06);
@@ -146,10 +146,10 @@
   --mos-warning-brd: rgba(245, 158, 11, 0.15);
 
   --mos-stable: #0A64F5;
-  --mos-stable-soft: #EAF2FF;
+  --mos-stable-soft: #EFF6FF;
   --mos-stable-brd: #CFE0FF;
   
-  --mos-shadow-soft: 0 1px 3px rgba(15, 23, 42, 0.03), 0 1px 2px rgba(15, 23, 42, 0.06);
+  --mos-shadow-soft: 0 4px 12px rgba(15, 23, 42, 0.04);
   --mos-card-bg: #ffffff;
   --mos-input-bg: #ffffff;
   --mos-button-bg: #ffffff;
@@ -247,20 +247,20 @@ textarea {
 
 :root,
 html[data-theme="light"] {
-  --bg-page: #F7F7F9;
+  --bg-page: #F8FAFC;
   --bg-surface: #FFFFFF;
-  --bg-subtle: #F5F6F8;
-  --text-primary: #101828;
-  --text-secondary: #475467;
-  --text-tertiary: #667085;
-  --border-subtle: #EAECF0;
-  --border-default: #DDE2E8;
+  --bg-subtle: #F1F5F9;
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-tertiary: #64748B;
+  --border-subtle: #E2E8F0;
+  --border-default: #CBD5E1;
   --brand-primary: #0A64F5;
   --brand-primary-hover: #095BE0;
-  --brand-primary-soft: #EAF2FF;
-  --nav-active-bg: #F1F5FF;
+  --brand-primary-soft: #EFF6FF;
+  --nav-active-bg: #EFF6FF;
   --nav-active-color: #0A64F5;
-  --shadow-card: 0 2px 8px rgba(16, 24, 40, 0.05);
+  --shadow-card: 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
 html[data-theme="dark"] {

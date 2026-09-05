@@ -88,7 +88,7 @@ async function getColumnExists(tableName, columnName) {
 
 async function createTestBlock() {
   const blockId = `block_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
-  const dayKey = new Date().toISOString().slice(0, 10);
+  const dayKey = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
   
   const result = await pool.query(
     `INSERT INTO study_blocks (

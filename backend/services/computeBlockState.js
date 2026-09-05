@@ -179,8 +179,7 @@ export function getBlockState(block, now = Date.now()) {
     isPast = now > plannedEndDate.getTime();
   } else if (block.day_key) {
     // Fallback: compare day_key to today's date in Kolkata timezone
-    const kolkataStr = new Date(now).toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
-    const todayStr = new Date(kolkataStr).toISOString().slice(0, 10);
+    const todayStr = new Date(now).toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
     isPast = block.day_key < todayStr;
   }
 

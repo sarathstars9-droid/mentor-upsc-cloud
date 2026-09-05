@@ -8,15 +8,17 @@
 // - PYQ enrichment matches by item.id first, then year + question number
 // - no reminder/calendar/downstream registration before OCR approval
 
+import "./config/env.js";
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 import express from "express";
 import cors from "cors";
 import multer from "multer";
 import OpenAI from "openai";
-import dotenv from "dotenv";
 import fs from "fs";
-import path from "path";
 import { requireAuth } from "./middleware/authMiddleware.js";
-import { fileURLToPath } from "url";
 import authRoutes from "./routes/authRoutes.js";
 import pyqRoutes from "./routes/pyqRoutes.js";
 import buildTopicTest from "./phase3a/builders/buildTopicTest.js";
@@ -30,6 +32,7 @@ import { buildDailyAdvice } from "./brain/adviceEngine.js";
 import prelimsPracticeRoute from "./routes/prelimsPracticeRoute.js";
 import prelimsDashboardRoute from "./routes/prelimsDashboardRoute.js";
 import prelimsRebuiltDatasetRoute from "./routes/prelimsRebuiltDatasetRoute.js";
+import prelimsTopicCountRoutes from "./routes/prelimsTopicCountRoutes.js";
 import {
   query,
   activeDbHost,
@@ -103,6 +106,7 @@ import whatsappWebhookRoutes from "./routes/whatsappWebhookRoutes.js";
 import disciplineRoutes from "./routes/disciplineRoutes.js";
 import guardianRoutes from "./routes/guardianRoutes.js";
 import notificationRoutes from "./routes/notificationRoutes.js";
+import performanceRoute from "./routes/performanceRoute.js";
 import { registerEnvChatId, startTelegramPolling } from "./services/telegramService.js";
 import { initNotificationScheduler } from "./services/notificationScheduler.js";
 import { healthMonitor } from "./services/healthMonitor.js";
@@ -116,10 +120,7 @@ import {
 } from "./services/blockLifecycleService.js";
 import { syncBlockToCalendar } from "./services/calendarBridgeService.js";
 import { flushOutbox } from "./services/outboxService.js";
-dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const PRELIMS_FULL_LENGTH_DIR = path.join(__dirname, "data", "pyq_papers", "prelims");
 
 console.log("[BOOT] server.js loaded");
@@ -696,6 +697,7 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 app.use("/api/prelims-rebuilt", prelimsRebuiltDatasetRoute);
 app.use("/api/prelims", prelimsAnalyticsRoute);
 app.use("/api/prelims", prelimsDashboardRoute);
+app.use("/api/prelims", prelimsTopicCountRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api", pyqRoutes);
 app.use("/api/prelims/practice", prelimsPracticeRoute);
@@ -753,6 +755,7 @@ app.use("/api", whatsappWebhookRoutes);
 app.use("/api/discipline", disciplineRoutes);
 app.use("/api/guardian", guardianRoutes);
 app.use("/api/notifications", notificationRoutes);
+app.use("/api/performance", performanceRoute);
 
 import { sendTelegramMessage } from "./services/telegramService.js";
 
