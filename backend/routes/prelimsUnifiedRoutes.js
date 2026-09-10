@@ -3,6 +3,8 @@
 
 import { Router } from "express";
 import { loadAllPrelimsQuestions } from "../loaders/prelimsUnifiedLoader.js";
+import { getPyqById } from "../brain/pyqLinkEngine.js";
+import { getPhysicalExamIdentity } from "../brain/pyqPhysicalIdentity.js";
 
 const router = Router();
 
@@ -133,6 +135,16 @@ router.get("/questions", (req, res) => {
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message });
   }
+});
+
+// Exact canonical-ID lookup used by Syllabus → Practice deep links.
+router.get("/questions/:questionId", (req, res) => {
+  const question = getPyqById(req.params.questionId);
+  const physicalPaper = question ? getPhysicalExamIdentity(question).physicalPaper : null;
+  if (!question || !["PRELIMS_GS", "CSAT"].includes(physicalPaper)) {
+    return res.status(404).json({ ok: false, questionId: req.params.questionId, error: "Prelims question not found" });
+  }
+  return res.json({ ok: true, question: { ...question, physicalPaper } });
 });
 
 

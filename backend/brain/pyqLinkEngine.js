@@ -1,4 +1,9 @@
 import fs from "fs";
+import { isDeepStrictEqual } from "node:util";
+import { getPhysicalExamIdentity, PHYSICAL_STAGE } from "./pyqPhysicalIdentity.js";
+import { resolveMappingNode } from "./pyqMappingResolution.js";
+import { loadCSATData } from "../data/loaders/csatLoader.js";
+import { getCsatSourceConflictIndex, resetPyqSourceTrustCache } from "./pyqSourceTrust.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -30,12 +35,115 @@ function safeReadJson(filePath, fallback = {}) {
   }
 }
 
+const MAINS_QUESTIONS_DIR = path.join(__dirname, '../data/pyq_questions/mains');
+export const TAGGED_MAINS_SPECS = [
+  ...['art_culture', 'geography', 'history', 'society'].map(s => ({ file: 'mains_gs1_' + s + '_tagged.json', physicalPaper: 'MAINS_GS1' })),
+  ...['governance', 'international_relations', 'polity', 'social_justice'].map(s => ({ file: 'mains_gs2_' + s + '_tagged.json', physicalPaper: 'MAINS_GS2' })),
+  ...['agriculture', 'disaster_management', 'economy', 'environment', 'internal_security', 'science_tech'].map(s => ({ file: 'mains_gs3_' + s + '_tagged.json', physicalPaper: 'MAINS_GS3' })),
+  { file: 'mains_gs4_ethics_tagged.json', physicalPaper: 'MAINS_GS4' },
+  { file: 'mains_essay_tagged.json', physicalPaper: 'ESSAY' },
+  { file: 'optional_geography_paper1_tagged.json', physicalPaper: 'OPTIONAL_P1' },
+  { file: 'optional_geography_paper2_tagged.json', physicalPaper: 'OPTIONAL_P2' },
+];
+const BUCKET_STAGES = ['prelims', 'mains', 'csat', 'essay', 'ethics', 'optional'];
+
+export function loadTaggedMainsDatasets(pyqByNodeMap = PYQ_BY_NODE, masterIndexMap = PYQ_MASTER_INDEX, specs = TAGGED_MAINS_SPECS) {
+  const diagnostics = { conflicts: [], invalidRecords: [], fileErrors: [] };
+  for (const spec of specs) {
+    let raw;
+    try { raw = JSON.parse(fs.readFileSync(path.join(MAINS_QUESTIONS_DIR, spec.file), 'utf8')); }
+    catch (err) { diagnostics.fileErrors.push({ file: spec.file, error: err.message }); continue; }
+    const items = Array.isArray(raw) ? raw : raw.questions || raw.topics || [];
+    for (const item of items) {
+      if (!item.id) { diagnostics.invalidRecords.push({ file: spec.file, reason: 'missing ID' }); continue; }
+      const identity = getPhysicalExamIdentity(item, spec.physicalPaper);
+      if (!identity.physicalPaper) { diagnostics.conflicts.push({ id: item.id, file: spec.file, ...identity }); continue; }
+      const stage = PHYSICAL_STAGE[identity.physicalPaper];
+      const nodeId = item.syllabusNodeId || item.nodeId || null;
+      const record = {
+        ...item, id: item.id, year: item.year || null,
+        exam: item.exam || item.source || 'UPSC CSE', stage,
+        physicalPaper: identity.physicalPaper,
+        paper: item.paper || (identity.physicalPaper.startsWith('MAINS_') ? identity.physicalPaper.slice(6) : identity.physicalPaper),
+        question: item.question || item.topic || '', syllabusNodeId: nodeId,
+        sourceFile: item.sourceFile || spec.file,
+      };
+      const existing = masterIndexMap[item.id];
+      if (existing && !isDeepStrictEqual(existing, record)) {
+        diagnostics.conflicts.push({ id: item.id, file: spec.file, reason: 'duplicate ID with different record', existingIdentity: getPhysicalExamIdentity(existing), incomingIdentity: identity });
+        continue;
+      }
+      if (!existing) masterIndexMap[item.id] = record;
+      if (!nodeId) continue;
+      const key = normalizeNodeId(nodeId);
+      const bucket = pyqByNodeMap[key] ||= { total: 0, latestYear: null };
+      for (const bucketStage of BUCKET_STAGES) bucket[bucketStage] = [...new Set(bucket[bucketStage] || [])];
+      if (!bucket[stage].includes(item.id)) bucket[stage].push(item.id);
+      bucket.total = new Set(BUCKET_STAGES.flatMap(k => bucket[k])).size;
+      bucket.latestYear = Math.max(Number(bucket.latestYear) || 0, Number(item.year) || 0) || null;
+    }
+  }
+  return diagnostics;
+}
+
+export function loadDedicatedCsatDataset(pyqByNodeMap = PYQ_BY_NODE, masterIndexMap = PYQ_MASTER_INDEX) {
+  const conflicts = getCsatSourceConflictIndex();
+  const diagnostics = { sourceUnique: 0, addedPhysicalIds: [], addedValidMappings: [], unresolvedSourceNodeIds: [], contentConflictIds: [...conflicts.keys()].sort() };
+  const sourceQuestions = Object.values(loadCSATData()).flat();
+  diagnostics.sourceUnique = new Set(sourceQuestions.map(q => q.id)).size;
+
+  for (const source of sourceQuestions) {
+    if (!source.id) continue;
+    const conflict = conflicts.get(source.id);
+    const existing = masterIndexMap[source.id];
+    if (existing) {
+      if (conflict) existing.sourceCertification = conflict;
+      continue;
+    }
+
+    const nodeId = source.canonicalNodeId || source.nodeId || null;
+    const record = {
+      ...source,
+      id: source.id,
+      physicalPaper: "CSAT",
+      stage: "csat",
+      paper: "CSAT",
+      question: source.question || source.questionText || "",
+      syllabusNodeId: nodeId,
+      nodeId,
+      sourceFile: source.sourceFile || "dedicated-csat-loader",
+      ...(conflict ? { sourceCertification: conflict } : {}),
+    };
+    masterIndexMap[source.id] = record;
+    diagnostics.addedPhysicalIds.push(source.id);
+
+    const resolution = nodeId ? resolveMappingNode(nodeId) : { valid: false };
+    if (!resolution.valid) {
+      diagnostics.unresolvedSourceNodeIds.push({ id: source.id, nodeId });
+      continue;
+    }
+    const key = normalizeNodeId(nodeId);
+    const bucket = pyqByNodeMap[key] ||= { total: 0, latestYear: null };
+    for (const bucketStage of BUCKET_STAGES) bucket[bucketStage] = [...new Set(bucket[bucketStage] || [])];
+    if (!bucket.csat.includes(source.id)) bucket.csat.push(source.id);
+    bucket.total = new Set(BUCKET_STAGES.flatMap(stage => bucket[stage])).size;
+    bucket.latestYear = Math.max(Number(bucket.latestYear) || 0, Number(source.year) || 0) || null;
+    diagnostics.addedValidMappings.push({ id: source.id, nodeId: key });
+  }
+  return diagnostics;
+}
+
 let PYQ_BY_NODE = safeReadJson(PYQ_BY_NODE_PATH, {});
 let PYQ_MASTER_INDEX = safeReadJson(PYQ_MASTER_INDEX_PATH, {});
+let taggedLoadDiagnostics = loadTaggedMainsDatasets(PYQ_BY_NODE, PYQ_MASTER_INDEX);
+let csatLoadDiagnostics = loadDedicatedCsatDataset(PYQ_BY_NODE, PYQ_MASTER_INDEX);
 
 function reloadPyqIndexes() {
   PYQ_BY_NODE = safeReadJson(PYQ_BY_NODE_PATH, {});
   PYQ_MASTER_INDEX = safeReadJson(PYQ_MASTER_INDEX_PATH, {});
+  taggedLoadDiagnostics = loadTaggedMainsDatasets(PYQ_BY_NODE, PYQ_MASTER_INDEX);
+  resetPyqSourceTrustCache();
+  csatLoadDiagnostics = loadDedicatedCsatDataset(PYQ_BY_NODE, PYQ_MASTER_INDEX);
   rebuildDerivedIndexes();
 }
 
@@ -276,7 +384,7 @@ function getBucketStageArrays(bucket) {
   };
 }
 
-import { getNodeById, getAllDescendantLeafNodeIds, isLeafNode } from "./unifiedSyllabusIndex.js";
+import { getAllDescendantLeafNodeIds } from "./unifiedSyllabusIndex.js";
 
 // ---------------------------------------------------------
 // PREFIX ALIAS CANONICALIZATION
@@ -334,49 +442,22 @@ export function resolveInputToLookupNodeIds(inputId) {
   const normalizedInput = normalizeNodeId(inputId);
   if (!normalizedInput) return [];
 
-  // 1. Is it a known node in the registry?
-  const node = getNodeById(normalizedInput);
-  if (!node) {
-    // Direct hit in PYQ index?
-    if (PYQ_NODE_KEY_SET.has(normalizedInput)) return [normalizedInput];
-    // Prefix-descendant lookup (handles mismatched naming schemes)
-    const descendantsByPrefix = getDescendantPyqNodeIds(normalizedInput);
-    if (descendantsByPrefix.length > 0) return descendantsByPrefix;
-    // Subject prefix canonicalization: e.g. GS2-POLITY-FR → GS2-POL-FR.
-    // Fires only when the above two paths both fail, so it never overrides
-    // any node that already resolves correctly.
-    const canonical = tryCanonicalizePrefix(normalizedInput);
-    if (canonical !== normalizedInput) {
-      const canonicalResult = resolveInputToLookupNodeIds(canonical);
-      if (canonicalResult.length > 0) return canonicalResult;
+  const canonicalIds = resolveMappingNode(normalizedInput).canonicalNodeIds;
+  const lookup = new Set(PYQ_NODE_KEY_SET.has(normalizedInput) ? [normalizedInput] : []);
+  // Broad alias mappings belong to their container, not to every child leaf.
+  const nodes = new Set(canonicalIds.flatMap(id => [id, ...getAllDescendantLeafNodeIds(id)]));
+  for (const id of nodes) if (PYQ_NODE_KEY_SET.has(id)) lookup.add(id);
+  for (const alias of PYQ_NODE_KEYS) {
+    const targets = resolveMappingNode(alias).canonicalNodeIds;
+    if (targets.length && targets.every(id => nodes.has(id))) {
+      if (PYQ_NODE_KEY_SET.has(normalizeNodeId(alias))) lookup.add(normalizeNodeId(alias));
     }
-    return [];
   }
-
-  // 2. If it's a leaf, just return it — but also try prefix descendants if it has no direct PYQ
-  if (isLeafNode(normalizedInput)) {
-    // Direct hit in PYQ index?
-    if (PYQ_NODE_KEY_SET.has(normalizedInput)) return [normalizedInput];
-    // Walk ancestor prefixes to find PYQ-keyed relatives (bridges naming gap)
-    const parts = normalizedInput.split("-");
-    for (let len = parts.length - 1; len >= 2; len--) {
-      const prefix = parts.slice(0, len).join("-");
-      const descendants = getDescendantPyqNodeIds(prefix);
-      if (descendants.length > 0) return descendants;
-    }
-    return [normalizedInput]; // fallback to self even if not in index
-  }
-
-  // 3. If it's a parent, fetch all leaf descendants from registry.
-  // The registry already guarantees they are strict children of this node, thus same subject.
-  const leaves = getAllDescendantLeafNodeIds(normalizedInput);
-  
-  if (leaves.length === 0) {
-    return [normalizedInput]; // Fallback to itself if no leaves
-  }
-
-  // Also include the parent itself just in case pyqs are mapped directly to it
-  return Array.from(new Set([normalizedInput, ...leaves]));
+  if (lookup.size) return [...lookup];
+  if (canonicalIds.length) return canonicalIds;
+  const canonical = tryCanonicalizePrefix(normalizedInput);
+  if (canonical !== normalizedInput) return resolveInputToLookupNodeIds(canonical);
+  return getDescendantPyqNodeIds(normalizedInput);
 }
 
 // ---------------------------------------------------------
@@ -493,8 +574,9 @@ function humanizeTopicFromNodeId(nodeId = "") {
 function hydrateQuestions(questionIds = [], fallbackNodeId = "") {
   return questionIds
     .map((qid) => {
-      const q = PYQ_MASTER_INDEX[qid];
-      if (!q) return null;
+      const source = PYQ_MASTER_INDEX[qid];
+      if (!source) return null;
+      const q = { ...source, physicalPaper: getPhysicalExamIdentity(source).physicalPaper };
 
       const topic =
         String(
@@ -548,6 +630,20 @@ export function getPyqsForTopic(inputNodeId, limit = 50, options = {}) {
   return questions;
 }
 
+export function getPyqById(questionId) {
+  const id = String(questionId || "").trim();
+  if (!id || !PYQ_MASTER_INDEX[id]) return null;
+  return hydrateQuestions([id])[0] || null;
+}
+
+// Historical callers pass a block object whose primaryNodeId identifies the
+// same syllabus target accepted by getPyqsForTopic(). This compatibility
+// wrapper existed in the test contract but was never exported by the engine.
+export function getPyqsForBlock(block = {}, limit = 50, options = {}) {
+  const nodeId = block.primaryNodeId || block.syllabusNodeId || block.nodeId;
+  return nodeId ? getPyqsForTopic(nodeId, limit, options) : [];
+}
+
 export function getPyqQuestionIdsForTopic(inputNodeId, options = {}) {
   const lookupNodeIds = resolveInputToLookupNodeIds(inputNodeId);
   return flattenQuestionIdsFromNodeBuckets(lookupNodeIds, options);
@@ -563,56 +659,7 @@ export function getPyqBucketsForTopic(inputNodeId) {
 }
 
 function getQuestionStage(q = {}) {
-  const id = String(q?.id || "").trim().toUpperCase();
-  const exam = String(q?.exam || "").trim().toLowerCase();
-  const paper = String(q?.paper || "").trim().toLowerCase();
-  const subject = String(q?.subject || "").trim().toLowerCase();
-
-  // 1) ID PREFIX HAS HIGHEST PRIORITY
-  if (id.startsWith("PRE_CSAT_") || id.startsWith("CSAT_")) return "csat";
-  if (id.startsWith("PRE_")) return "prelims";
-  if (id.startsWith("ESSAY_")) return "essay";
-  if (id.startsWith("ETH_")) return "ethics";
-  if (id.startsWith("OPT_")) return "optional";
-  if (id.startsWith("MAINS_") || id.startsWith("MAIN_")) return "mains";
-
-  // support mains ids like GS1_2020_Q1, GS2_2019_Q3, etc.
-  if (/^GS[1-4]_/.test(id)) {
-    if (id.startsWith("GS4_")) return "ethics";
-    return "mains";
-  }
-
-  // 2) EXAM FIELD NEXT
-  if (
-    exam === "prelims" ||
-    exam === "mains" ||
-    exam === "essay" ||
-    exam === "ethics" ||
-    exam === "optional" ||
-    exam === "csat"
-  ) {
-    return exam;
-  }
-
-  // 3) PAPER FIELD LAST
-  if (paper === "prelims") return "prelims";
-  if (paper === "mains") return "mains";
-  if (paper === "essay") return "essay";
-  if (paper === "ethics") return "ethics";
-  if (paper === "optional") return "optional";
-  if (paper === "csat") return "csat";
-
-  if (paper.includes("optional")) return "optional";
-  if (paper === "gs4") return "ethics";
-
-  if (
-    (paper === "gs1" || paper === "gs2" || paper === "gs3") &&
-    subject.includes("csat")
-  ) {
-    return "csat";
-  }
-
-  return "";
+  return PHYSICAL_STAGE[getPhysicalExamIdentity(q).physicalPaper] || '';
 }
 
 export function getPyqSummaryForNode(inputNodeId, limit = 50, options = {}) {
@@ -694,3 +741,6 @@ export function getPyqIndexesMeta() {
 }
 
 export { reloadPyqIndexes };
+export function getPyqRegistrySnapshot() {
+  return structuredClone({ master: PYQ_MASTER_INDEX, byNode: PYQ_BY_NODE, diagnostics: taggedLoadDiagnostics, sourceDiagnostics: csatLoadDiagnostics });
+}

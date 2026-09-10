@@ -5,6 +5,7 @@ import { GS4_2026 } from "./syllabusGS4.js";
 import { ESSAY_2026 } from "./syllabusEssay.js";
 import { CSAT_2026 } from "./syllabusCSAT.js";
 import OPTIONAL_2026 from "./syllabusOptional.js";
+import { getPyqCountForTopic } from "./pyqLinkEngine.js";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const PYQ_INDEX_DIR = path.join(DATA_DIR, "pyq_index");
@@ -467,7 +468,7 @@ export async function computeSyllabusProgress() {
 
     paper.pyq.totalPyqs += Array.isArray(pyqByNode?.[node.nodeId])
       ? pyqByNode[node.nodeId].length
-      : safeNum(pyqByNode?.[node.nodeId]?.count, 0);
+      : safeNum(pyqByNode?.[node.nodeId]?.total || pyqByNode?.[node.nodeId]?.count, 0);
 
     paper.pyq.attemptedPyqs += safeNum(pyqRow.attempted, 0);
     paper.pyq.revisedPyqs += safeNum(pyqRow.revised, 0);

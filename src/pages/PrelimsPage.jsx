@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, useCallback, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 import { BACKEND_URL } from "../config";
 import {
   fetchUnifiedQuestions,
@@ -662,6 +663,8 @@ function statPill(color) {
 // ═══════════════════════════════════════════════════════════════════════════
 
 export default function PrelimsPage() {
+  const [searchParams] = useSearchParams();
+  const requestedQuestionId = searchParams.get("questionId")?.trim() || "";
   const [testStage, setTestStage] = useState("start");
   const [testMode, setTestMode] = useState("sectional");
   const [testId, setTestId] = useState("prelims_2020_gs1");
@@ -748,11 +751,49 @@ export default function PrelimsPage() {
   const [rcElapsedSeconds, setRcElapsedSeconds] = useState(0);
   const rcTimerRef = useRef(null);
   const [customizeOpen, setCustomizeOpen] = useState(false);
+  const deepLinkRequestRef = useRef("");
 
   // ── Unified dynamic topics (GS subjects) ────────────────────────────────
   const [unifiedTopics, setUnifiedTopics] = useState([]);
   const [unifiedTopicsLoading, setUnifiedTopicsLoading] = useState(false);
   const [unifiedTopicsError, setUnifiedTopicsError] = useState("");
+
+  useEffect(() => {
+    if (!requestedQuestionId || deepLinkRequestRef.current === requestedQuestionId) return undefined;
+    deepLinkRequestRef.current = requestedQuestionId;
+    const controller = new AbortController();
+    setBuilderLoading(true);
+    setBuilderError("");
+    fetch(`${BACKEND_URL}/api/prelims-unified/questions/${encodeURIComponent(requestedQuestionId)}`, { signal: controller.signal })
+      .then(async response => {
+        const body = await response.json().catch(() => ({}));
+        if (!response.ok || !body?.question) throw new Error(body?.error || `Question ${requestedQuestionId} was not found.`);
+        const selected = sanitizeQuestions([body.question]);
+        if (selected.length !== 1 || selected[0].id !== requestedQuestionId) throw new Error(`Question ${requestedQuestionId} was not found.`);
+        const isCsat = body.question.physicalPaper === "CSAT";
+        setPracticePaper(isCsat ? "CSAT" : "GS");
+        setTestMode("sectional");
+        setPracticeScope("subject");
+        setQuestions(selected);
+        setCurrentIndex(0);
+        setAnswersMap({});
+        setConfidenceMap({});
+        setResult(null);
+        setTestId(`syllabus_deep_link_${requestedQuestionId}`);
+        setTestStartTime(Date.now());
+        setQuestionEnteredAt(Date.now());
+        setBuilderWarning("");
+        setTestStage("attempt");
+      })
+      .catch(error => {
+        if (error.name === "AbortError") return;
+        setQuestions([]);
+        setTestStage("start");
+        setBuilderError(error.message || `Question ${requestedQuestionId} was not found.`);
+      })
+      .finally(() => setBuilderLoading(false));
+    return () => controller.abort();
+  }, [requestedQuestionId]);
 
   // Fetch actual buildable GS counts from backend once on mount
   useEffect(() => {

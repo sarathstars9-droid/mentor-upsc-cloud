@@ -54,6 +54,7 @@ import { loadGs1TopicQuestions } from "./api/mainsGs1TopicQuestions.js";
 import { loadGs2Questions } from "./api/mainsGs2Questions.js";
 import { loadGs3Questions } from "./api/mainsGs3Questions.js";
 import mainsThemeRoutes from "./routes/mainsThemeRoutes.js";
+import syllabusDrilldownRoutes from "./routes/syllabusDrilldownRoutes.js";
 import mainsReviewRoutes from "./routes/mainsReviewRoutes.js";
 import mainsRoutes from "./routes/mainsRoutes.js";
 import mainsIntelligenceRoutes from "./routes/mainsIntelligenceRoutes.js";
@@ -745,6 +746,9 @@ app.use("/api/prelims-tests", prelimsTestRoutes);
 // ── PYQ Ingestion pipeline (Step 1: upload only) ───────────────────────────
 // Isolated admin utility — does NOT touch existing PYQ master/index logic
 app.use("/api/pyq-ingestion", pyqIngestionRoutes);
+
+// ── Syllabus Drill-down Navigation & PYQ Intelligence ───────────────────────
+app.use("/api/syllabus", syllabusDrilldownRoutes);
 
 // ── Progress & Notification Engine ──────────────────────────────────────────
 app.use("/api", progressRoutes);

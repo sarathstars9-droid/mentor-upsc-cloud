@@ -80,6 +80,7 @@ export function normalizePyqRecord(raw, fileMeta) {
 
   return {
     id:               finalId,
+    originalId:       raw.originalId || null,
     exam:             raw.exam || "UPSC CSE",
     stage:            stage,
     paper:            raw.paper || rawPaper || null,

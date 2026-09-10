@@ -184,8 +184,43 @@ async function runTests() {
   assert(row.status === 'active', "DB row status is 'active'");
   assert(row.activity === undefined, "Activity/Target are not structurally persisted in columns (schema limitation)");
 
+  // 8. PYQ physical-corpus and metric semantics
+  console.log("\n--- 8. PYQ Metric Semantics & Exposure Assertions ---");
+  const { buildPyqCorpusInventory, getWorkspacePyqMetrics } = await import("../brain/pyqCorpusInventory.js");
+  const inventory = buildPyqCorpusInventory();
+  const emptyAttempts = new Set();
+  const paperKeys = ["GS1", "GS2", "GS3", "GS4", "ESSAY", "CSAT", "OPTIONAL_P1", "OPTIONAL_P2"];
+  const metrics = Object.fromEntries(paperKeys.map((paperKey) => [
+    paperKey,
+    getWorkspacePyqMetrics(paperKey, emptyAttempts, inventory),
+  ]));
+
+  assert(metrics.GS3.attemptedUnique === 0, "Zero attempts yields attemptedUnique = 0");
+  assert(metrics.GS3.pyqExposurePercent === 0, "Zero attempts yields pyqExposurePercent = 0%");
+  assert(metrics.GS3.mappingCoverage === 100, "GS3 mapping coverage is 100%");
+  assert(metrics.GS3.mappingCoverage !== metrics.GS3.pyqExposurePercent, "Mapping completeness does not inflate user exposure (remains 0%)");
+
+  for (const paperKey of paperKeys) {
+    const paper = metrics[paperKey];
+    assert(paper.mappedInCorpusUnique <= paper.physicalCorpusTotal, `${paperKey} mappedInCorpusUnique (${paper.mappedInCorpusUnique}) <= physicalCorpusTotal (${paper.physicalCorpusTotal})`);
+    assert(paper.mappedInCorpusUnique + paper.unmappedInCorpus === paper.physicalCorpusTotal, `${paperKey} physical corpus equation holds`);
+  }
+
+  assert(metrics.CSAT.physicalCorpusTotal === 1200, "CSAT physical corpus is 1200");
+  assert(metrics.CSAT.mappedInCorpusUnique === 1169, "CSAT valid in-corpus mappings is 1169");
+  assert(metrics.CSAT.invalidNodeMappings === 28, "CSAT unresolved active node mappings is 28");
+  assert(metrics.CSAT.completelyUnmappedUnique === 3, "CSAT questions with no mapping record remain completely unmapped");
+
+  const rootGs3 = { ...metrics.GS3 };
+  const drilldownGs3 = getWorkspacePyqMetrics("GS3", emptyAttempts, inventory);
+  assert(rootGs3.attemptedUnique === drilldownGs3.attemptedUnique, "Dashboard GS3 attempted PYQs matches 0 attempts");
+  assert(rootGs3.mappingCoverage === drilldownGs3.mappingCoverage && rootGs3.physicalCorpusTotal === drilldownGs3.physicalCorpusTotal, "Drill-down GS3 PYQ metric semantics match dashboard");
+  console.log("✅ PASS: Metric semantics & exposure assertions verified");
+
   console.log("\n=== REGRESSION TESTS COMPLETE ===");
   console.log(`Passed: ${passed}/${total}`);
+  await pool.query('DELETE FROM study_blocks WHERE user_id = $1', [testUserId]);
+  await pool.end();
   process.exit(passed === total ? 0 : 1);
 }
 
