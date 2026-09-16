@@ -4,35 +4,52 @@ import { generateToken, getAuthSecret } from '../utils/tokenUtils.js';
 
 const router = express.Router();
 
-// Simple in-memory rate limiter (5 failed attempts per 15 minutes)
+// In-memory rate limiter for login attempts
 const loginAttempts = new Map();
-const WINDOW_MS = 15 * 60 * 1000;
-const MAX_ATTEMPTS = 5;
 
-// Periodically clean up the Map to prevent memory leaks from single-attempt IPs
-setInterval(() => {
+function getRateLimitConfig() {
+  const isProd = process.env.NODE_ENV === 'production' || process.env.RAILWAY_ENVIRONMENT;
+  return {
+    windowMs: isProd ? 15 * 60 * 1000 : 60 * 1000,
+    maxAttempts: isProd ? 5 : 20
+  };
+}
+
+// Periodically clean up the Map to prevent memory leaks
+const cleanupTimer = setInterval(() => {
+  const { windowMs } = getRateLimitConfig();
   const now = Date.now();
   for (const [ip, data] of loginAttempts.entries()) {
-    if (now - data.firstAttempt > WINDOW_MS) {
+    if (now - data.firstAttempt > windowMs) {
       loginAttempts.delete(ip);
     }
   }
-}, WINDOW_MS);
+}, 60 * 1000);
+if (cleanupTimer.unref) cleanupTimer.unref();
 
-function checkRateLimit(ip) {
+function isRateLimited(ip) {
+  const { windowMs, maxAttempts } = getRateLimitConfig();
+  const now = Date.now();
+  const attemptData = loginAttempts.get(ip);
+  if (!attemptData) return false;
+  if (now - attemptData.firstAttempt > windowMs) {
+    loginAttempts.delete(ip);
+    return false;
+  }
+  return attemptData.count >= maxAttempts;
+}
+
+function recordFailedAttempt(ip) {
+  const { windowMs } = getRateLimitConfig();
   const now = Date.now();
   const attemptData = loginAttempts.get(ip) || { count: 0, firstAttempt: now };
-
-  if (now - attemptData.firstAttempt > WINDOW_MS) {
-    // Reset window
+  if (now - attemptData.firstAttempt > windowMs) {
     attemptData.count = 1;
     attemptData.firstAttempt = now;
   } else {
     attemptData.count++;
   }
-
   loginAttempts.set(ip, attemptData);
-  return attemptData.count <= MAX_ATTEMPTS;
 }
 
 function clearRateLimit(ip) {
@@ -56,7 +73,7 @@ router.post('/login', (req, res) => {
   const effectivePassword = configuredPassword || 'mentor2026';
 
   const ip = req.ip || req.connection.remoteAddress;
-  if (!checkRateLimit(ip)) {
+  if (isRateLimited(ip)) {
     return res.status(429).json({
       ok: false,
       error: 'Too many login attempts. Please try again later.'
@@ -65,6 +82,7 @@ router.post('/login', (req, res) => {
 
   const { password } = req.body;
   if (!password || typeof password !== 'string') {
+    recordFailedAttempt(ip);
     return res.status(401).json({
       ok: false,
       error: 'Invalid credentials.'
@@ -76,6 +94,7 @@ router.post('/login', (req, res) => {
   const providedHash = crypto.createHash('sha256').update(password).digest();
 
   if (expectedHash.length !== providedHash.length || !crypto.timingSafeEqual(expectedHash, providedHash)) {
+    recordFailedAttempt(ip);
     return res.status(401).json({
       ok: false,
       error: 'Invalid credentials.'

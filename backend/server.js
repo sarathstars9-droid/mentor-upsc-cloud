@@ -14,10 +14,12 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 import express from "express";
+import http from "http";
 import cors from "cors";
 import multer from "multer";
 import OpenAI from "openai";
 import fs from "fs";
+import { setupMentorVoiceGateway } from "./services/voice/mentorVoiceGateway.js";
 import { requireAuth } from "./middleware/authMiddleware.js";
 import authRoutes from "./routes/authRoutes.js";
 import pyqRoutes from "./routes/pyqRoutes.js";
@@ -54,6 +56,7 @@ import { loadGs1TopicQuestions } from "./api/mainsGs1TopicQuestions.js";
 import { loadGs2Questions } from "./api/mainsGs2Questions.js";
 import { loadGs3Questions } from "./api/mainsGs3Questions.js";
 import mainsThemeRoutes from "./routes/mainsThemeRoutes.js";
+import syllabusDrilldownRoutes from "./routes/syllabusDrilldownRoutes.js";
 import mainsReviewRoutes from "./routes/mainsReviewRoutes.js";
 import mainsRoutes from "./routes/mainsRoutes.js";
 import mainsIntelligenceRoutes from "./routes/mainsIntelligenceRoutes.js";
@@ -622,8 +625,8 @@ function buildMappedObject(mapped, nonStudy, originalItem) {
 
 const app = express();
 
-if (process.env.RAILWAY_ENVIRONMENT) {
-  app.set("trust proxy", 1);
+if (process.env.RAILWAY_ENVIRONMENT || process.env.NODE_ENV === "production") {
+  app.set("trust proxy", 2);
 }
 
 // ── CORS ──────────────────────────────────────────────────────────────────────
@@ -632,19 +635,22 @@ const allowedOrigins = new Set([
   "https://mentorupsc.in",
   "http://localhost:5173",
   "http://localhost:5174",
-  "http://localhost:3000"
+  "http://localhost:3000",
+  "http://127.0.0.1:5173",
+  "http://127.0.0.1:5174",
+  "http://127.0.0.1:3000"
 ]);
 
 app.use((req, res, next) => {
   const origin = req.headers.origin;
 
-  if (origin && allowedOrigins.has(origin)) {
+  if (origin && (allowedOrigins.has(origin) || process.env.NODE_ENV !== "production")) {
     res.setHeader("Access-Control-Allow-Origin", origin);
     res.setHeader("Vary", "Origin");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader(
       "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept, Authorization, Cache-Control, Pragma"
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization, Cache-Control, Pragma, X-User-Id, x-user-id"
     );
     res.setHeader(
       "Access-Control-Allow-Methods",
@@ -679,7 +685,7 @@ app.use(cors({
     return callback(new Error(`CORS: origin ${origin} not allowed`));
   },
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-User-Id", "x-user-id"],
   credentials: true,
 }));
 
@@ -729,6 +735,7 @@ app.use("/api/daily-execution", executionRoutes);
 
 // ── Study reports (PostgreSQL only, no Sheets / Calendar dependency) ────────
 app.use("/api/reports", reportRoutes);
+app.use("/api/performance", performanceRoute);
 
 // ── Adaptive Planner Engine ──────────────────────────────────────────────────
 app.use("/api/planner", plannerRoutes);
@@ -745,6 +752,9 @@ app.use("/api/prelims-tests", prelimsTestRoutes);
 // ── PYQ Ingestion pipeline (Step 1: upload only) ───────────────────────────
 // Isolated admin utility — does NOT touch existing PYQ master/index logic
 app.use("/api/pyq-ingestion", pyqIngestionRoutes);
+
+// ── Syllabus Drill-down Navigation & PYQ Intelligence ───────────────────────
+app.use("/api/syllabus", syllabusDrilldownRoutes);
 
 // ── Progress & Notification Engine ──────────────────────────────────────────
 app.use("/api", progressRoutes);
@@ -988,10 +998,15 @@ async function callOpenAIResponsesWithRetry(payload, attempts = 3) {
       const raw = await resp.text();
 
       if (!resp.ok) {
+        console.error("[plan-photo OpenAI RAW ERROR]", {
+          status: resp.status,
+          statusText: resp.statusText,
+          body: raw
+        });
         console.error("[plan-photo OpenAI HTTP ERR]", resp.status, raw.slice(0, 1000));
         const err = new Error(`OpenAI HTTP ${resp.status}`);
         err.status = resp.status;
-        err.raw = raw.slice(0, 500);
+        err.raw = raw;
         throw err;
       }
 
@@ -1018,8 +1033,10 @@ async function callOpenAIResponsesWithRetry(payload, attempts = 3) {
 
       console.error(`[plan-photo OpenAI retry ${i}/${attempts}]`, {
         message: err.message,
+        status: err.status,
         code: err.code || err.errno,
         retryable,
+        rawBody: err.raw,
       });
 
       if (!retryable || i === attempts) break;
@@ -1366,10 +1383,10 @@ Output ONLY the JSON object. No preamble. No trailing text.
               topic: { type: "string" },
               activity: { type: "string" },
               targetValue: { type: ["number", "null"] },
-              targetUnit: { type: "string" },
+              targetUnit: { type: ["string", "null"] },
               minutes: { type: "number" },
             },
-            required: ["startTime", "endTime", "subject", "topic", "activity", "minutes"],
+            required: ["startTime", "endTime", "subject", "topic", "activity", "targetValue", "targetUnit", "minutes"],
           },
         },
         totalMinutes: { type: "number" },
@@ -1593,52 +1610,84 @@ Output ONLY the JSON object. No preamble. No trailing text.
         mappingResult.confidenceBadge = "LOW";
       }
 
-      let linkedPyqs = { total: 0, mappedNodes: [] };
-      // Try confirmed nodeId first, then scan all top candidates for best PYQ coverage
-      const candidateNodeIds = [
-        mappingResult.nodeId,
-        ...(mappingResult.topicCandidates || []).map(c => c.nodeId),
-      ].filter(Boolean);
+      // Step 1: Resolve FINAL syllabusNodeId
+      let finalResolvedNodeId = mappingResult.nodeId || item.syllabusNodeId || null;
+      let canonicalSubject = mappingResult.subjectName && mappingResult.subjectName !== "Unmapped" ? mappingResult.subjectName : (item.subject || "Unknown");
+      let canonicalTopic = mappingResult.nodeName && mappingResult.nodeName !== "Unmapped" ? mappingResult.nodeName : (item.topic || "");
 
-      for (const cid of candidateNodeIds) {
+      if (item.topic && item.subject) {
         try {
-          const result = getPyqSummaryForNode(cid, 500);
-          if (result.total > linkedPyqs.total) {
-            linkedPyqs = result;
+          const fallbackMap = mapPlanItemToMicroTheme(item.topic, item.subject);
+          if (fallbackMap && fallbackMap.matched && fallbackMap.syllabusNodeId) {
+            if (!finalResolvedNodeId || mappingResult.confidenceBadge === "LOW" || mappingResult.resolverConfidence < 0.7) {
+              finalResolvedNodeId = fallbackMap.syllabusNodeId;
+              canonicalTopic = fallbackMap.microTheme || fallbackMap.mappedTopicName || canonicalTopic;
+              if (canonicalSubject === "Unknown" && fallbackMap.gsPaper) {
+                canonicalSubject = fallbackMap.gsPaper;
+              }
+            }
           }
-          if (mappingResult.nodeId && cid === mappingResult.nodeId && linkedPyqs.total > 0) break; // confirmed match, stop
+        } catch (e) {
+          console.error("[plan-photo fallback mapping error]", e);
+        }
+      }
+
+      const resolvedNodeId = finalResolvedNodeId || null;
+
+      // Step 2: PYQ Enrichment using final resolved node with controlled parent walking
+      let linkedPyqs = { total: 0, sourceNodeId: null, matchLevel: null, questions: [], mappedNodes: [] };
+      if (resolvedNodeId) {
+        try {
+          // A & B: Try exact node
+          const exact = getPyqSummaryForNode(resolvedNodeId, 5);
+          if (exact && exact.total > 0) {
+            linkedPyqs = {
+              total: exact.total,
+              sourceNodeId: resolvedNodeId,
+              matchLevel: "exact",
+              questions: (exact.questions || []).slice(0, 5),
+              mappedNodes: [resolvedNodeId]
+            };
+          } else {
+            // C: Walk controlled canonical parents only
+            const parts = resolvedNodeId.split("-");
+            const parentCandidates = [];
+            if (parts.length >= 4) {
+              parentCandidates.push({ nodeId: parts.slice(0, parts.length - 1).join("-"), level: "parent_1" });
+              if (parts.length >= 5 || parts[0] === "CSAT") {
+                parentCandidates.push({ nodeId: parts.slice(0, parts.length - 2).join("-"), level: "parent_2" });
+              }
+            } else if (parts.length === 3 && parts[0] === "CSAT") {
+              parentCandidates.push({ nodeId: parts.slice(0, 2).join("-"), level: "parent_1" });
+            }
+
+            const disallowed = new Set(["GS1", "GS2", "GS3", "GS4", "CSAT", "GS1-HIS", "GS1-GEO", "GS1-SOC", "GS2-POL", "GS2-GOV", "GS2-IR", "GS3-ECO", "GS3-AGR", "GS3-ENV", "GS3-SCT", "GS3-SEC"]);
+
+            for (const cand of parentCandidates) {
+              if (disallowed.has(cand.nodeId) || cand.nodeId.split("-").length < 2) continue;
+              const parentSummary = getPyqSummaryForNode(cand.nodeId, 5);
+              if (parentSummary && parentSummary.total > 0) {
+                linkedPyqs = {
+                  total: parentSummary.total,
+                  sourceNodeId: cand.nodeId,
+                  matchLevel: cand.level,
+                  questions: (parentSummary.questions || []).slice(0, 5),
+                  mappedNodes: [cand.nodeId]
+                };
+                break;
+              }
+            }
+          }
         } catch (e) {
           console.error("[plan-photo PYQ load error]", e);
         }
       }
-      // Also try subject-level fallback if nothing found
-      if (linkedPyqs.total === 0 && mappingResult.subjectCandidates?.[0]?.subjectId) {
-        try {
-          const r = getPyqSummaryForNode(mappingResult.subjectCandidates[0].subjectId, 500);
-          if (r.total > 0) { linkedPyqs = r; }
-        } catch (e) { }
-      }
-      // Final fallback: walk parent prefixes of top candidate (e.g. GS3-ECO-BANKING-MT03 → GS3-ECO-BANKING → GS3-ECO)
-      if (linkedPyqs.total === 0 && candidateNodeIds[0]) {
-        const parts = candidateNodeIds[0].split("-");
-        for (let len = parts.length - 1; len >= 2; len--) {
-          const prefix = parts.slice(0, len).join("-");
-          try {
-            const r = getPyqSummaryForNode(prefix, 500);
-            if (r.total > 0) { linkedPyqs = r; break; }
-          } catch (e) { }
-        }
-      }
-      // pyqNodeLinked must ONLY be the confidently-mapped node from the OCR pipeline.
-      // bestLookupNodeId is used only for linkedPyqs data (PYQ count/panel), never for display.
-      // Mains blocks, mixed PYQ blocks, or any block with ambiguous topic → nodeId = null.
-      const resolvedNodeId = mappingResult.nodeId || null;
 
       const finalMapping = {
         subjectId: mappingResult.subjectId,
         subjectName: mappingResult.subjectName,
         nodeId: resolvedNodeId,
-        nodeName: mappingResult.nodeName !== "Unmapped" ? mappingResult.nodeName : (mappingResult.topicCandidates?.[0]?.nodeName || mappingResult.nodeName),
+        nodeName: canonicalTopic || mappingResult.nodeName,
         mappingSource: mappingResult.mappingSource,
         resolverConfidence: mappingResult.resolverConfidence,
         isApproved: mappingResult.isApproved,
@@ -1654,7 +1703,7 @@ Output ONLY the JSON object. No preamble. No trailing text.
         itemOutputExpected = "Study goals completed";
       }
 
-      const rawText = `${item.startTime || ""} - ${item.endTime || ""} ${item.subject || ""} - ${item.topic || ""}`.trim();
+      const rawText = `${item.startTime || ""} - ${item.endTime || ""} ${item.subject || ""} - ${item.topic || ""}${item.activity ? ` (${item.activity})` : ""}`.trim();
 
       // Log Stage 1 OCR parsed block
       if (itemIndex === 0) {
@@ -1674,13 +1723,18 @@ Output ONLY the JSON object. No preamble. No trailing text.
       
       return {
         ...item,
-        // Override OCR extraction with canonical mapping to preserve hierarchy: Subject -> Topic
-        subject: (mappingResult.subjectName && mappingResult.subjectName !== "Unknown" && mappingResult.subjectName !== "Unmapped") 
-          ? mappingResult.subjectName 
-          : (item.subject || "Unknown"),
-        topic: (resolvedNodeId && mappingResult.nodeName && mappingResult.nodeName !== "Unmapped") 
-          ? mappingResult.nodeName 
-          : (item.topic || ""),
+        // Preserve raw OCR fields; provide canonical fields separately
+        subject: item.subject || "Unknown",
+        rawSubject: item.subject || "Unknown",
+        topic: item.topic || "",
+        rawTopic: item.topic || "",
+        activity: item.activity || "",
+        rawActivity: item.activity || "",
+
+        canonicalSubject: canonicalSubject || "Unknown",
+        canonicalTopic: canonicalTopic || (item.topic || ""),
+        canonicalActivity: itemMode,
+
         finalMapping,
         subjectCandidates: mappingResult.subjectCandidates,
         topicCandidates: mappingResult.topicCandidates,
@@ -1691,7 +1745,7 @@ Output ONLY the JSON object. No preamble. No trailing text.
         mode: item.activity || itemMode,
         outputExpected: targetStr || itemOutputExpected,
         rawText,
-        subtopic: mappingResult.nodeName !== "Unmapped" ? mappingResult.nodeName : "",
+        subtopic: canonicalTopic || "",
         syllabusNodeId: resolvedNodeId,
         needsTimeConfirmation: item.needsTimeConfirmation || false
       };
@@ -2700,19 +2754,17 @@ app.use((err, req, res, next) => {
 const PORT = Number(process.env.PORT || 8787);
 const HOST = process.env.HOST || "0.0.0.0";
 
+const server = http.createServer(app);
+setupMentorVoiceGateway(server);
+
 console.log("[BOOT] about to listen", { HOST, PORT });
-app.listen(PORT, HOST, () => {
+server.listen(PORT, HOST, () => {
   console.log(`backend running on http://${HOST}:${PORT}`);
   
   // Start system health heartbeat checker
   healthMonitor.startHeartbeatAlerts();
   
   // ── Boot sequence: register chat ID → start polling → start scheduler ──────
-  // startTelegramPolling() has a module-level singleton guard (pollingLoopStarted).
-  // Even if this callback fires more than once, only one polling loop will run.
-  // startTelegramPolling() is async (awaits deleteWebhook pre-flight) but the
-  // polling loop itself runs forever inside it, so we intentionally do NOT await
-  // the full call — we just let it run in the background.
   registerEnvChatId()
     .then(() => {
       // Kick off polling (non-blocking). The singleton guard prevents duplicates.
