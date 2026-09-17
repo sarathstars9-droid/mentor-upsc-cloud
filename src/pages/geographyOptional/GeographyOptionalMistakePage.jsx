@@ -1,110 +1,107 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const FILTER_CHIPS = ["All", "Weak Questions", "Repeated Mistakes", "AI Notes", "Revision Queue"];
+const PRIMARY = "#0A64F5";
+const FILTERS = ["All", "Weak Questions", "Repeated Mistakes", "AI Notes", "Revision Queue"];
 
-const EmptyCard = ({ icon, label, subtext }) => (
-  <div style={{
-    background: "#0a0a0a", border: "1px dashed #1e1e1e", borderRadius: 8,
-    padding: "24px 20px", textAlign: "center", marginBottom: 14
-  }}>
-    <div style={{ fontSize: 28, marginBottom: 8 }}>{icon}</div>
-    <div style={{ fontSize: 13, color: "#555", fontWeight: 600 }}>{label}</div>
-    {subtext && <div style={{ fontSize: 11, color: "#333", marginTop: 4 }}>{subtext}</div>}
-  </div>
-);
+function detectTheme() {
+  const html = document.documentElement;
+  const body = document.body;
+  const explicit = (html.getAttribute("data-theme") || body?.getAttribute("data-theme") || localStorage.getItem("theme") || localStorage.getItem("mentor-theme") || "").toLowerCase();
+  if (explicit.includes("dark")) return "dark";
+  if (explicit.includes("light")) return "light";
+  if (html.classList.contains("dark") || body?.classList.contains("dark")) return "dark";
+  return window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
 
-const PlaceholderEntry = ({ title, tag, date }) => (
-  <div style={{
-    display: "flex", justifyContent: "space-between", alignItems: "center",
-    background: "#0a0a0a", border: "1px solid #1a1a1a", borderRadius: 8,
-    padding: "12px 16px", marginBottom: 10
-  }}>
-    <div>
-      <div style={{ fontSize: 12, color: "#bbb" }}>{title}</div>
-      <div style={{ fontSize: 10, color: "#444", marginTop: 2 }}>{date}</div>
+function useMentorTheme() {
+  const [mode, setMode] = useState(() => detectTheme());
+  useEffect(() => {
+    const update = () => setMode(detectTheme());
+    const observer = new MutationObserver(update);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-theme", "style"] });
+    if (document.body) observer.observe(document.body, { attributes: true, attributeFilter: ["class", "data-theme", "style"] });
+    window.addEventListener("storage", update);
+    return () => { observer.disconnect(); window.removeEventListener("storage", update); };
+  }, []);
+  return mode;
+}
+
+function makePalette(mode) {
+  const dark = mode === "dark";
+  return {
+    bg: dark ? "#07090D" : "#F6F8FB",
+    surface: dark ? "#0D1117" : "#FFFFFF",
+    surface2: dark ? "#111720" : "#F8FAFC",
+    border: dark ? "#202A36" : "#E1E7EF",
+    border2: dark ? "#2A3544" : "#CFD8E5",
+    text: dark ? "#F7F9FC" : "#111827",
+    text2: dark ? "#D5DCE7" : "#344054",
+    muted: dark ? "#8A96A8" : "#667085",
+    primary: PRIMARY,
+    primarySoft: dark ? "rgba(10,100,245,.14)" : "rgba(10,100,245,.075)",
+    shadow: dark ? "none" : "0 12px 36px rgba(15,23,42,.055)",
+  };
+}
+
+function EmptyState({ P, title, sub, action, onAction }) {
+  return (
+    <div style={{ background: P.surface2, border: `1px dashed ${P.border2}`, borderRadius: 14, padding: "28px 18px", textAlign: "center" }}>
+      <div style={{ width: 40, height: 40, borderRadius: 12, background: P.primarySoft, color: P.primary, display: "grid", placeItems: "center", margin: "0 auto 10px", fontWeight: 900 }}>○</div>
+      <div style={{ color: P.text, fontSize: 14, fontWeight: 850 }}>{title}</div>
+      <div style={{ color: P.muted, fontSize: 11, marginTop: 5, lineHeight: 1.5 }}>{sub}</div>
+      {action ? <button onClick={onAction} style={{ marginTop: 14, border: "none", background: P.primary, color: "#fff", borderRadius: 9, padding: "9px 14px", fontWeight: 800, cursor: "pointer" }}>{action} →</button> : null}
     </div>
-    <span style={{
-      background: "#1a1200", border: "1px solid #f59e0b44", color: "#f59e0b",
-      fontSize: 9, fontWeight: 700, borderRadius: 4, padding: "2px 8px",
-      textTransform: "uppercase", letterSpacing: "0.08em"
-    }}>{tag}</span>
-  </div>
-);
+  );
+}
 
 export default function GeographyOptionalMistakePage() {
+  const navigate = useNavigate();
+  const mode = useMentorTheme();
+  const P = useMemo(() => makePalette(mode), [mode]);
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const s = {
-    page: { background: "#080808", minHeight: "100vh", padding: "28px 32px", fontFamily: "'JetBrains Mono', 'Fira Code', monospace", color: "#e5e7eb" },
-    sectionCard: { background: "#0f0f0f", border: "1px solid #1e1e1e", borderRadius: 10, padding: "20px 22px", marginBottom: 20 },
-    sectionLabel: { fontSize: 11, fontWeight: 700, color: "#f59e0b", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 4 },
-    sectionSub: { fontSize: 12, color: "#555", marginBottom: 16 },
-    chip: (active) => ({
-      background: active ? "#1a1200" : "#0a0a0a",
-      border: `1px solid ${active ? "#f59e0b" : "#2a2a2a"}`,
-      color: active ? "#f59e0b" : "#555",
-      borderRadius: 20, padding: "5px 14px", fontSize: 11,
-      cursor: "pointer", fontFamily: "monospace", transition: "all 0.2s"
-    }),
-  };
-
   return (
-    <div style={s.page}>
-      {/* Header */}
-      <div style={{ marginBottom: 28 }}>
-        <div style={{ fontSize: 10, color: "#555", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 6 }}>GEOGRAPHY OPTIONAL · MISTAKES</div>
-        <h1 style={{ margin: 0, fontSize: 26, fontWeight: 700, color: "#fff", letterSpacing: "-0.02em" }}>Geography Optional Mistakes</h1>
-        <p style={{ margin: "6px 0 0", fontSize: 12, color: "#555", maxWidth: 540 }}>
-          Weak questions, repeated errors, saved AI notes, and revision queue — all in one place. Future sync will auto-populate from PYQ and Institutional pages.
-        </p>
-      </div>
-
-      {/* Filter chips */}
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 24 }}>
-        {FILTER_CHIPS.map(chip => (
-          <button key={chip} onClick={() => setActiveFilter(chip)} style={s.chip(activeFilter === chip)}>{chip}</button>
-        ))}
-      </div>
-
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-        {/* LEFT */}
-        <div>
-          <div style={s.sectionCard}>
-            <div style={s.sectionLabel}>Weak Questions</div>
-            <div style={s.sectionSub}>Questions flagged as weak from PYQ or Institutional sessions.</div>
-            <EmptyCard icon="⚠️" label="No weak questions yet" subtext="Flag questions from PYQ or Institutional pages to see them here." />
-            <PlaceholderEntry title="Placeholder: Discuss the concept of central place theory..." tag="Weak" date="—" />
-            <PlaceholderEntry title="Placeholder: Analyze the Von Thunen model with modifications..." tag="Weak" date="—" />
+    <div style={{ background: P.bg, minHeight: "100vh", color: P.text, fontFamily: "-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif" }}>
+      <div style={{ maxWidth: 1240, margin: "0 auto", padding: "28px 28px 40px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 14, marginBottom: 22 }}>
+          <div>
+            <div style={{ color: P.muted, fontSize: 10, fontWeight: 850, letterSpacing: ".1em", textTransform: "uppercase" }}>Geography Optional · Review</div>
+            <h1 style={{ margin: "6px 0 0", fontSize: 30, fontWeight: 900, letterSpacing: "-.03em" }}>Mistakes & Revision</h1>
+            <div style={{ color: P.muted, fontSize: 12, marginTop: 6 }}>Weak questions, recurring errors and revision items will appear here after real attempts.</div>
           </div>
-
-          <div style={s.sectionCard}>
-            <div style={s.sectionLabel}>Repeated Mistakes</div>
-            <div style={s.sectionSub}>Patterns appearing more than once across sessions.</div>
-            <EmptyCard icon="🔄" label="No repeated mistakes detected" subtext="Mistakes appearing across multiple sessions will surface here." />
-          </div>
+          <button onClick={() => navigate("/geography-optional/pyq")} style={{ border: `1px solid ${P.border2}`, background: P.surface, color: P.text2, borderRadius: 9, padding: "9px 13px", cursor: "pointer", fontWeight: 750 }}>Practice PYQs →</button>
         </div>
 
-        {/* RIGHT */}
-        <div>
-          <div style={s.sectionCard}>
-            <div style={s.sectionLabel}>Saved AI Notes</div>
-            <div style={s.sectionSub}>ChatGPT analysis and source-fit notes saved from sessions.</div>
-            <EmptyCard icon="🤖" label="No AI notes saved yet" subtext="Save ChatGPT outputs from PYQ and Institutional pages to see them here." />
-            <PlaceholderEntry title="Placeholder: AI analysis — Geomorphology question pattern..." tag="AI Note" date="—" />
-          </div>
-
-          <div style={s.sectionCard}>
-            <div style={s.sectionLabel}>Revision Queue</div>
-            <div style={s.sectionSub}>Questions and topics added for scheduled revision.</div>
-            <EmptyCard icon="📅" label="Revision queue empty" subtext="Toggle 'Add to Future Revision' on PYQ questions to build this queue." />
-            <PlaceholderEntry title="Placeholder: Economic Geography — Market Areas..." tag="Revision" date="—" />
-          </div>
+        <div style={{ display: "flex", gap: 7, flexWrap: "wrap", marginBottom: 18 }}>
+          {FILTERS.map((f) => <button key={f} onClick={() => setActiveFilter(f)} style={{ border: `1px solid ${activeFilter === f ? P.primary : P.border}`, background: activeFilter === f ? P.primarySoft : P.surface, color: activeFilter === f ? P.primary : P.muted, borderRadius: 999, padding: "7px 12px", fontSize: 11, fontWeight: 750, cursor: "pointer" }}>{f}</button>)}
         </div>
-      </div>
 
-      <div style={{ background: "#0a0f0a", border: "1px solid #1a2a1a", borderRadius: 8, padding: "12px 16px", fontSize: 11, color: "#444", marginTop: 4 }}>
-        <span style={{ color: "#22c55e", fontWeight: 700 }}>Future sync: </span>
-        Flagged questions and AI notes from PYQ and Institutional pages will auto-populate all sections here once the backend sync layer is activated.
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 14 }}>
+          <section style={{ background: P.surface, border: `1px solid ${P.border}`, borderRadius: 16, padding: 18, boxShadow: P.shadow }}>
+            <div style={{ color: P.text, fontWeight: 850, fontSize: 16 }}>Weak Questions</div>
+            <div style={{ color: P.muted, fontSize: 11, margin: "4px 0 14px" }}>Questions explicitly marked weak after practice or evaluation.</div>
+            <EmptyState P={P} title="No weak questions recorded" sub="Once you flag a Geography answer or PYQ as weak, it can be surfaced here." action="Practice a PYQ" onAction={() => navigate("/geography-optional/pyq")} />
+          </section>
+
+          <section style={{ background: P.surface, border: `1px solid ${P.border}`, borderRadius: 16, padding: 18, boxShadow: P.shadow }}>
+            <div style={{ color: P.text, fontWeight: 850, fontSize: 16 }}>Repeated Mistakes</div>
+            <div style={{ color: P.muted, fontSize: 11, margin: "4px 0 14px" }}>Patterns should appear only after enough evaluated attempts exist.</div>
+            <EmptyState P={P} title="No repeated pattern yet" sub="MentorOS should only label an error repeated when there is real evidence across attempts." />
+          </section>
+
+          <section style={{ background: P.surface, border: `1px solid ${P.border}`, borderRadius: 16, padding: 18, boxShadow: P.shadow }}>
+            <div style={{ color: P.text, fontWeight: 850, fontSize: 16 }}>Saved Analysis Notes</div>
+            <div style={{ color: P.muted, fontSize: 11, margin: "4px 0 14px" }}>Question analysis and evaluator notes saved from Geography sessions.</div>
+            <EmptyState P={P} title="No analysis notes saved" sub="Analyse a PYQ or complete an evaluation to start building your evidence base." action="Open PYQ Analysis" onAction={() => navigate("/geography-optional/pyq-analysis")} />
+          </section>
+
+          <section style={{ background: P.surface, border: `1px solid ${P.border}`, borderRadius: 16, padding: 18, boxShadow: P.shadow }}>
+            <div style={{ color: P.text, fontWeight: 850, fontSize: 16 }}>Revision Queue</div>
+            <div style={{ color: P.muted, fontSize: 11, margin: "4px 0 14px" }}>Questions due for targeted revision.</div>
+            <EmptyState P={P} title="Revision queue is empty" sub="Add real weak questions to revision after evaluation rather than using placeholder items." />
+          </section>
+        </div>
       </div>
     </div>
   );
