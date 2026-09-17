@@ -16,18 +16,20 @@ function readSQL(relativePath) {
   return fs.readFileSync(fullPath, 'utf8');
 }
 
+let failedMigrations = [];
+
 /**
- * Strip SELECT / DO $$ ... $$ verify blocks that return result-sets 
+ * Strip standalone SELECT / DO $$ ... $$ verify blocks that return result-sets 
  * which crash when run inside multi-statement query() calls.
  * We keep CREATE / ALTER / INSERT / UPDATE / DELETE / CREATE INDEX.
  */
 function stripVerifySelects(sql) {
-  // Remove standalone SELECT statements used only for verification
-  // Keep SELECTs that are part of DO blocks, INSERTs, etc.
+  // Remove standalone SELECT statements used only for schema/table verification.
+  // Never remove SELECTs that are part of INSERT INTO ... SELECT or CTEs.
   return sql
-    .replace(/^SELECT\s+.*?;\s*$/gms, '-- (verify SELECT removed for automated run)')
+    .replace(/^SELECT\s+(?:table_name|column_name|COUNT\(\*\)|'[^']+').*?;\s*$/gms, '-- (verify SELECT removed for automated run)')
     .replace(/^DO\s+\$\$[\s\S]*?\$\$\s*;\s*$/gm, function(match) {
-      // Keep DO blocks that have ALTER/CREATE inside (they're functional)
+      // Keep DO blocks that have ALTER/CREATE/INSERT/UPDATE/DELETE inside (they're functional)
       if (/ALTER|CREATE|INSERT|UPDATE|DELETE/i.test(match)) return match;
       return '-- (verify DO block removed for automated run)';
     });
@@ -42,9 +44,9 @@ async function runSQL(label, relativePath) {
     await query(cleanSQL);
     console.log(`    ✅ ${label} — done`);
   } catch (err) {
-    // Log but don't crash — let remaining migrations proceed
     console.error(`    ❌ ${label} — FAILED: ${err.message}`);
     if (err.detail) console.error(`       Detail: ${err.detail}`);
+    failedMigrations.push({ label, file: relativePath, error: err.message, detail: err.detail });
   }
 }
 
@@ -131,6 +133,7 @@ async function run005RepairStudyBlocksPK() {
   } catch (err) {
     console.error(`    ❌ ${label} — FAILED: ${err.message}`);
     if (err.detail) console.error(`       Detail: ${err.detail}`);
+    failedMigrations.push({ label, file: 'migrations/005_repair_study_blocks_pk.sql', error: err.message, detail: err.detail });
   }
 }
 
@@ -321,7 +324,19 @@ async function runAllMigrations() {
   // ── Summary ───────────────────────────────────────────────────────────────
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log('');
-  console.log(`🎉 All migrations completed in ${elapsed}s`);
+
+  if (failedMigrations.length > 0) {
+    console.error(`💥 ${failedMigrations.length} migration(s) FAILED:`);
+    for (const f of failedMigrations) {
+      console.error(`   ❌ [${f.label}] (${f.file}): ${f.error}`);
+      if (f.detail) console.error(`      Detail: ${f.detail}`);
+    }
+    console.error('');
+    console.error('Migration runner failed. Exiting with status 1.');
+    process.exit(1);
+  }
+
+  console.log(`🎉 All migrations completed successfully in ${elapsed}s`);
   console.log('   Run "node db/verify_railway_schema.js" to verify.');
   console.log('');
 
