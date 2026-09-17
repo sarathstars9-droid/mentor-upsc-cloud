@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
+import crypto from "crypto";
 import { fileURLToPath } from "url";
 import { normalizePyqRecord } from "../brain/normalizePyqRecord.js";
 import { normalizePyqNodeId } from "../brain/pyqNodeAliasMap.js";
@@ -81,10 +82,46 @@ function normalizeText(text) {
     .trim();
 }
 
-function textFingerprint(q) {
-  const text = normalizeText(q.question || q.questionText || q.text || q.stem);
+function normalizePaperIdentity(q) {
+  return String(q.paper || q.stage || "UNKNOWN").trim().toUpperCase();
+}
+
+function orderValue(value) {
+  if (Array.isArray(value)) return value.map(orderValue);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.keys(value).sort().map(key => [key, orderValue(value[key])]));
+  }
+  return value;
+}
+
+/**
+ * Deterministic physical-question identity used by the master builder.
+ * A supplied canonical ID is authoritative and is never merged merely because
+ * another ID has similar text. Structural and content fallbacks are reserved
+ * for records that genuinely have no canonical ID.
+ */
+export function physicalQuestionIdentity(q, canonicalId = q?.id || q?.questionId || null) {
+  const id = String(canonicalId || "").trim();
+  if (id) return `canonical-id::${id}`;
+
+  const originalId = String(q?.originalId || "").trim();
+  if (originalId) return `original-id::${originalId}`;
+
+  const year = Number(q?.year);
+  const questionNumber = Number(q?.questionNumber ?? q?.questionNo ?? q?.qno);
+  if (Number.isInteger(year) && year > 1900 && Number.isInteger(questionNumber) && questionNumber > 0) {
+    return `official-slot::${year}::${normalizePaperIdentity(q)}::${questionNumber}`;
+  }
+
+  const text = normalizeText(q?.question || q?.questionText || q?.text || q?.stem);
   if (!text) return null;
-  return `${q.year ?? "unknown"}::${String(q.paper || q.stage || "GS").toUpperCase()}::${text.slice(0, 180)}`;
+  const content = JSON.stringify(orderValue({
+    paper: normalizePaperIdentity(q),
+    year: Number.isFinite(year) ? year : null,
+    question: text,
+    options: q?.options || null,
+  }));
+  return `full-content::${crypto.createHash("sha256").update(content).digest("hex")}`;
 }
 
 function deriveNodeIdFromIdPrefix(id) {
@@ -204,7 +241,7 @@ async function buildMasterIndex() {
   console.log(`   Found ${files.length} candidate files.`);
 
   const masterIndex = {};
-  const fpToId = new Map();
+  const identityToId = new Map();
 
   let totalRead = 0;
   let inserted = 0;
@@ -293,18 +330,18 @@ async function buildMasterIndex() {
         normalized.nodeId = refinement.nodeId;
       }
 
-      const fp = textFingerprint(normalized);
+      const physicalIdentity = physicalQuestionIdentity(normalized, rawId);
       const id = normalized.id;
 
       const existingById = masterIndex[id];
-      const existingIdByFp = fp ? fpToId.get(fp) : null;
-      const existingByFp = existingIdByFp ? masterIndex[existingIdByFp] : null;
+      const existingIdByIdentity = physicalIdentity ? identityToId.get(physicalIdentity) : null;
+      const existingByIdentity = existingIdByIdentity ? masterIndex[existingIdByIdentity] : null;
 
-      const existing = existingById || existingByFp;
+      const existing = existingById || existingByIdentity;
 
       if (!existing) {
         masterIndex[id] = normalized;
-        if (fp) fpToId.set(fp, id);
+        if (physicalIdentity) identityToId.set(physicalIdentity, id);
         inserted++;
         continue;
       }
@@ -317,7 +354,7 @@ async function buildMasterIndex() {
         }
 
         masterIndex[id] = normalized;
-        if (fp) fpToId.set(fp, id);
+        if (physicalIdentity) identityToId.set(physicalIdentity, id);
 
         replaced++;
       } else {
@@ -380,7 +417,9 @@ async function buildMasterIndex() {
   console.log(`[PYQ BUILD] Stats saved: ${statsPath}`);
 }
 
-buildMasterIndex().catch(e => {
-  console.error("Fatal error during buildMasterIndex:", e);
-  process.exit(1);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  buildMasterIndex().catch(e => {
+    console.error("Fatal error during buildMasterIndex:", e);
+    process.exit(1);
+  });
+}

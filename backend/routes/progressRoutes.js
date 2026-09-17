@@ -1,7 +1,10 @@
 import express from 'express';
 import * as progressService from '../services/progressService.js';
 import * as telegramService from '../services/telegramService.js';
+import { computeSyllabusProgress } from '../brain/syllabusProgressEngine.js';
+import { reconcileDashboardPyqInventory } from '../services/pyqInventoryService.js';
 import { query } from '../db/index.js';
+import { getAuthUserId } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
@@ -26,6 +29,27 @@ function normalizeSubjectSlug(slug) {
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
 }
+
+// 0. GET /api/syllabus/dashboard & GET /api/syllabus
+const handleSyllabusDashboard = async (req, res) => {
+  try {
+    const userId = getAuthUserId(req);
+    const data = await computeSyllabusProgress();
+    const result = await reconcileDashboardPyqInventory(data, userId);
+    result.meta = {
+      ...(result.meta || {}),
+      userId,
+      user_id: userId,
+    };
+    res.json(result);
+  } catch (err) {
+    console.error("[Route /syllabus/dashboard ERROR]", err);
+    res.status(500).json({ ok: false, error: err.message || err });
+  }
+};
+
+router.get('/syllabus/dashboard', handleSyllabusDashboard);
+router.get('/syllabus', handleSyllabusDashboard);
 
 // 1. GET /api/progress/weekly?userId=user_1
 router.get('/weekly', async (req, res) => {

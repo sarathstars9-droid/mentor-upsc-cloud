@@ -33,6 +33,8 @@ import PyqTopicPage from "./pages/PyqTopicPage.jsx";
 import ExecutionPage from "./pages/ExecutionPage";
 import RevisionPage from "./pages/RevisionPage";
 import SyllabusPage from "./pages/SyllabusPage";
+import SyllabusPaperPage from "./pages/SyllabusPaperPage";
+import SyllabusTopicPage from "./pages/SyllabusTopicPage";
 import CsatPage from "./pages/CSATPage";
 import BacklogPage from "./pages/BacklogPage";
 import FocusPage from "./pages/FocusPage";
@@ -147,6 +149,8 @@ function AppRoutes({ onLogout }) {
         <Route path="/performance" element={<PerformancePage />} />
         <Route path="/revision" element={<RevisionPage />} />
         <Route path="/syllabus" element={<SyllabusPage />} />
+        <Route path="/syllabus/:paperKey" element={<SyllabusPaperPage />} />
+        <Route path="/syllabus/:paperKey/topic/:nodeId" element={<SyllabusTopicPage />} />
         <Route path="/csat" element={<CsatPage />} />
         <Route path="/geography-optional" element={<GeographyOptionalPage />} />
         <Route path="/geography-optional/pyq" element={<GeographyOptionalPyqPage />} />

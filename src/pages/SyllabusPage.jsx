@@ -1,1212 +1,182 @@
-import { useEffect, useMemo, useState } from "react";
-import { BACKEND_URL } from "../config";
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import '../styles/syllabus-intelligence.css';
+import {
+  PAPERS, canonicalPaperKey, classifyAttention, chooseMentorPriority, count, dateText,
+  firstDefined, list, normalizeDashboard, numberText, overviewEvidence, paperInfo, paperPath,
+  paperReadiness, percent, preparationStatus, ratioPercent, searchText, text, timeText,
+  topicPath, focusPath, verifiedUserId, readinessState,
+} from './syllabus-intelligence';
+import {
+  Badge, Button, EmptyState, FilterReset, Icon, Metric, PageHeader, Progress,
+  ResourceState, SearchInput, SectionHeading, Segmented, Select, getJson,
+  getJsonWithFallback, useSyllabusResource,
+} from './syllabus-ui';
 
-const USER_ID = "user_1";
+const INITIAL_FILTERS = { paper: 'ALL', status: 'ALL', search: '' };
+const STATUS_OPTIONS = [
+  { value: 'ALL', label: 'All readiness states' },
+  { value: 'no_evidence', label: 'No evidence' },
+  { value: 'critical', label: 'Critical' }, { value: 'lagging', label: 'Lagging' },
+  { value: 'balanced', label: 'Balanced' }, { value: 'strong', label: 'Strong' },
+  { value: 'exam_ready', label: 'Exam ready' },
+];
 
-const STATUS_COLORS = {
-  critical: "#ff6b6b",
-  lagging: "#f59e0b",
-  balanced: "#38bdf8",
-  strong: "#22c55e",
-  "exam ready": "#14b8a6",
-};
-
-// ── Weakness risk colors (consistent with RevisionPage) ──────────────────────
-const RISK_COLOR = { low: "#6b7280", medium: "#f59e0b", high: "#f97316", critical: "#ef4444" };
-const RISK_BG    = { low: "#111",    medium: "#1a1200",  high: "#1a0800",  critical: "#1a0000" };
-
-function safeNum(value, fallback = 0) {
-  const n = Number(value);
-  return Number.isFinite(n) ? n : fallback;
+function SummaryMetrics({ dashboard }) {
+  const summary = dashboard.summary;
+  const evidence = overviewEvidence(dashboard);
+  const readiness = readinessState(summary.overallReadinessScore, summary, evidence);
+  const totalNodes = firstDefined(summary.totalNodes, summary.syllabusTotalNodes);
+  const totalPyqs = firstDefined(summary.totalPyqs, summary.availablePyqs);
+  return <section className="si-metrics" aria-label="Overall preparation evidence">
+    <Metric label="Syllabus coverage" value={percent(summary.overallSyllabusCoveragePercent)} helper={totalNodes != null ? `${numberText(firstDefined(summary.coveredNodes, 0))} of ${numberText(totalNodes)} nodes covered` : 'Node-level completion'} icon="book" tone="blue" progress={summary.overallSyllabusCoveragePercent}/>
+    <Metric label="PYQ exposure" value={percent(summary.overallPyqCoveragePercent)} helper={totalPyqs != null ? `${numberText(firstDefined(summary.attemptedPyqs, 0))} of ${numberText(totalPyqs)} questions attempted` : 'Unique questions attempted'} icon="file" tone="violet" progress={summary.overallPyqCoveragePercent}/>
+    <Metric label="Revision depth" value={percent(summary.overallRevisionPercent)} helper="Recorded revisits and reinforcement" icon="repeat" tone="teal" progress={summary.overallRevisionPercent}/>
+    <Metric label="Readiness" value={readiness.value} helper={readiness.available ? 'Based on recorded study, PYQs and tests' : 'Complete study, PYQ and test evidence to establish a score'} icon="chart" tone="green"/>
+  </section>;
 }
 
-function pct(value) {
-  const n = safeNum(value, 0);
-  return `${Math.max(0, Math.min(100, Math.round(n)))}%`;
-}
-
-function formatDateTime(value) {
-  if (!value) return "—";
-  const d = new Date(value);
-  if (Number.isNaN(d.getTime())) return String(value);
-  return d.toLocaleString();
-}
-
-function formatShortDate(value) {
-  if (!value) return "—";
-  const d = new Date(value);
-  if (Number.isNaN(d.getTime())) return String(value);
-  return d.toLocaleDateString();
-}
-
-function normalizeStatusLabel(status) {
-  const s = String(status || "").trim().toLowerCase();
-  if (!s) return "Balanced";
-  if (s === "exam_ready") return "Exam Ready";
-  return s
-    .split(/[\s_-]+/)
-    .map((x) => x.charAt(0).toUpperCase() + x.slice(1))
-    .join(" ");
-}
-
-function statusColor(status) {
-  const s = String(status || "").trim().toLowerCase().replace("_", " ");
-  return STATUS_COLORS[s] || "#8b9bb4";
-}
-
-// ── lookupWeakness ────────────────────────────────────────────────────────────
-// Looks up a node_id (+ optional stage) in the weakness map.
-// Tries "node_id::stage" first, then plain "node_id" as fallback.
-// Returns the matching weakness row or null.
-function lookupWeakness(nodeId, stage, weaknessMap) {
-  if (!nodeId || !weaknessMap) return null;
-  return (
-    weaknessMap[`${nodeId}::${stage || ""}`] ||
-    weaknessMap[nodeId] ||
-    null
-  );
-}
-
-// ── WeaknessBadge ─────────────────────────────────────────────────────────────
-// Inline badge rendered next to a node label when weakness data exists.
-function WeaknessBadge({ weakness }) {
-  if (!weakness) return null;
-  const risk = weakness.risk_level || "low";
-  const score = Number(weakness.weakness_score) || 0;
-  if (score === 0) return null;
-  return (
-    <span style={{
-      background: RISK_BG[risk],
-      border: `1px solid ${RISK_COLOR[risk]}44`,
-      color: RISK_COLOR[risk],
-      fontSize: 10, fontWeight: 700, borderRadius: 4,
-      padding: "2px 7px", letterSpacing: "0.06em", textTransform: "uppercase",
-      fontFamily: "monospace", flexShrink: 0, whiteSpace: "nowrap",
-    }}>
-      W:{score} · {risk}
-    </span>
-  );
-}
-
-// ── WeaknessHeatPanel ─────────────────────────────────────────────────────────
-// Compact top-N weak nodes panel, shown above the Filters card.
-// Hidden when no weakness data is available.
-function WeaknessHeatPanel({ weaknessMap }) {
-  const nodes = useMemo(() => {
-    return Object.values(weaknessMap || {})
-      .filter(n => Number(n.weakness_score) > 0)
-      .sort((a, b) => Number(b.weakness_score) - Number(a.weakness_score))
-      .slice(0, 6);
-  }, [weaknessMap]);
-
-  if (nodes.length === 0) return null;
-
-  return (
-    <div style={{
-      padding: 20, borderRadius: 20,
-      background: "rgba(255,255,255,0.04)",
-      border: "1px solid rgba(255,255,255,0.08)",
-    }}>
-      <div style={{
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        gap: 12, marginBottom: 14,
-      }}>
-        <h3 style={{ margin: 0, fontSize: 18 }}>Weakness Heat Map</h3>
-        <span style={{ fontSize: 12, opacity: 0.56 }}>top {nodes.length} weak nodes · live from revision data</span>
+function MentorVerdict({ dashboard, weaknessMap, onFocus }) {
+  const priority = useMemo(() => chooseMentorPriority(dashboard, weaknessMap), [dashboard, weaknessMap]);
+  const target = priority.target;
+  const destination = target?.nodeId ? topicPath(target.paperKey, target.nodeId) : target?.paperKey ? paperPath(target.paperKey) : '/plan';
+  const evidence = priority.evidence;
+  const readiness = readinessState(dashboard.summary?.overallReadinessScore, dashboard.summary, evidence);
+  return <section className="si-verdict" aria-labelledby="si-verdict-title">
+    <div className="si-verdict__main">
+      <div className="si-verdict__eyebrow"><span className="si-verdict__mark"><Icon name="spark" size={18}/></span><span>MENTOR VERDICT</span><Badge tone={priority.baseline ? 'info' : 'success'}>{priority.baseline ? 'Baseline building' : readiness.available ? 'Evidence active' : 'Early signals'}</Badge></div>
+      <h2 id="si-verdict-title">{priority.title}</h2>
+      <p className="si-verdict__description">{priority.reason}</p>
+      <div className="si-verdict__evidence"><span><Icon name="checkCircle" size={15}/> {evidence.study ? 'Study evidence recorded' : 'Study evidence pending'}</span><span><Icon name="file" size={15}/> {evidence.pyq ? 'PYQ attempts recorded' : 'PYQ attempts pending'}</span><span><Icon name="chart" size={15}/> {evidence.test ? 'Test evidence recorded' : 'Test evidence pending'}</span></div>
+      {target?.nodeId && <Link className="si-text-link si-verdict__detail" to={destination}>View topic evidence <Icon name="arrowRight" size={16}/></Link>}
+    </div>
+    <div className="si-verdict__action">
+      <div className="si-eyebrow">{priority.baseline ? 'SUGGESTED STARTING POINT' : 'YOUR NEXT STEP'}</div>
+      <h3>{priority.label}</h3>
+      <p>{priority.action}</p>
+      <div className="si-verdict__buttons">
+        {target?.nodeId ? <Button variant="primary" icon="arrowRight" onClick={() => onFocus(target.nodeId)}>Open focus block</Button> : <Button variant="primary" to={destination} icon="arrowRight">Open preparation plan</Button>}
+        {target?.nodeId && <Button to={destination} variant="secondary">View topic</Button>}
       </div>
-
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 10 }}>
-        {nodes.map((node) => {
-          const risk = node.risk_level || "low";
-          const score = Number(node.weakness_score) || 0;
-          const barWidth = Math.min(100, score);
-          return (
-            <div
-              key={`${node.node_id}::${node.stage || ""}`}
-              onClick={() => { window.location.href = `/focus?nodeId=${encodeURIComponent(node.node_id)}`; }}
-              style={{
-                background: "rgba(0,0,0,0.3)",
-                border: `1px solid ${RISK_COLOR[risk]}33`,
-                borderLeft: `3px solid ${RISK_COLOR[risk]}`,
-                borderRadius: 12, padding: "12px 14px",
-                cursor: "pointer",
-              }}
-            >
-              {/* Node ID */}
-              <div style={{
-                fontSize: 11, fontWeight: 700, color: "#ccc",
-                fontFamily: "monospace", letterSpacing: "0.02em",
-                whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-                marginBottom: 3,
-              }}>
-                {node.node_id}
-              </div>
-
-              {/* Subject / stage */}
-              <div style={{ fontSize: 11, opacity: 0.52, marginBottom: 8, fontFamily: "monospace" }}>
-                {[node.subject, node.stage].filter(Boolean).join(" · ") || "—"}
-              </div>
-
-              {/* Score bar */}
-              <div style={{ height: 3, background: "rgba(255,255,255,0.06)", borderRadius: 2, overflow: "hidden", marginBottom: 8 }}>
-                <div style={{
-                  width: `${barWidth}%`, height: "100%",
-                  background: RISK_COLOR[risk], borderRadius: 2,
-                }} />
-              </div>
-
-              {/* Score + risk */}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{
-                  fontSize: 18, fontWeight: 800, color: RISK_COLOR[risk],
-                  fontFamily: "monospace", lineHeight: 1,
-                }}>
-                  {score}
-                </span>
-                <span style={{
-                  background: RISK_BG[risk],
-                  border: `1px solid ${RISK_COLOR[risk]}44`,
-                  color: RISK_COLOR[risk],
-                  fontSize: 9, fontWeight: 700, borderRadius: 4,
-                  padding: "2px 6px", letterSpacing: "0.08em",
-                  textTransform: "uppercase", fontFamily: "monospace",
-                }}>
-                  {risk}
-                </span>
-              </div>
-
-              {/* Sub-metrics */}
-              <div style={{ marginTop: 8, display: "flex", gap: 8, flexWrap: "wrap" }}>
-                {Number(node.mistake_count) > 0 && (
-                  <span style={{ fontSize: 9, color: "#ef444488", fontFamily: "monospace" }}>
-                    {node.mistake_count} mistakes
-                  </span>
-                )}
-                {Number(node.overdue_revision_count) > 0 && (
-                  <span style={{ fontSize: 9, color: "#f59e0b88", fontFamily: "monospace" }}>
-                    {node.overdue_revision_count} overdue
-                  </span>
-                )}
-                {Number(node.reviewed_count) > 0 && (
-                  <span style={{ fontSize: 9, color: "#22c55e88", fontFamily: "monospace" }}>
-                    {node.reviewed_count} reviewed
-                  </span>
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      {priority.baseline && <small>Suggested from existing syllabus data, not a measured weakness.</small>}
     </div>
-  );
+  </section>;
 }
 
-function ProgressBar({ label, value, subtext }) {
-  const width = Math.max(0, Math.min(100, safeNum(value, 0)));
-
-  return (
-    <div style={{ display: "grid", gap: 6 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-        <span style={{ fontSize: 13, opacity: 0.84 }}>{label}</span>
-        <span style={{ fontSize: 13, fontWeight: 700 }}>{pct(width)}</span>
-      </div>
-
-      <div
-        style={{
-          height: 8,
-          borderRadius: 999,
-          background: "rgba(255,255,255,0.08)",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            width: `${width}%`,
-            height: "100%",
-            borderRadius: 999,
-            background: "linear-gradient(90deg, rgba(96,165,250,0.95), rgba(34,197,94,0.95))",
-          }}
-        />
-      </div>
-
-      {subtext ? (
-        <div style={{ fontSize: 12, opacity: 0.65 }}>{subtext}</div>
-      ) : null}
-    </div>
-  );
+function PaperCard({ paper }) {
+  const info = paperInfo(paper.paperKey);
+  const totals = paper.totals || {};
+  const pyq = paper.pyq || {};
+  const progress = paper.progress || {};
+  const status = preparationStatus(paper);
+  const readiness = paperReadiness(paper);
+  return <article className="si-paper-card">
+    <div className="si-paper-card__top"><span className={`si-paper-icon si-paper-icon--${info.color}`}>{info.short}</span><div className="si-paper-card__identity"><h3>{paper.paperLabel || info.label}</h3><p>{paper.subtitle || info.description}</p></div><Link className="si-icon-link" to={paperPath(paper.paperKey)} aria-label={`Open ${info.label}`}><Icon name="arrowRight" size={18}/></Link></div>
+    <div className="si-paper-card__status"><Badge tone={status.tone}>{status.label}</Badge>{status.key !== 'no_evidence' && readiness.available && <span className="si-paper-card__readiness">Readiness {readiness.value}</span>}</div>
+    <div className="si-paper-card__coverage"><strong>{percent(progress.syllabusPercent)}</strong><span>{numberText(totals.coveredNodes)} / {numberText(totals.totalNodes)} nodes covered</span></div>
+    <Progress value={progress.syllabusPercent} label={`${info.label} syllabus coverage`} tone={info.color}/>
+    <div className="si-paper-card__facts"><div><span>PYQ exposure</span><strong>{percent(progress.pyqPercent)}</strong></div><div><span>Revision</span><strong>{percent(progress.revisionPercent)}</strong></div><div><span>Not started</span><strong>{numberText(totals.untouchedNodes)}</strong></div></div>
+    <div className="si-paper-card__footer"><span>{numberText(pyq.attemptedPyqs)} / {numberText(pyq.totalPyqs)} PYQs attempted</span><Link to={paperPath(paper.paperKey)}>Explore <Icon name="arrowRight" size={15}/></Link></div>
+  </article>;
 }
 
-function TopStatCard({ label, value, subtext }) {
-  return (
-    <div
-      style={{
-        padding: 18,
-        borderRadius: 18,
-        background: "rgba(255,255,255,0.04)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        minHeight: 108,
-      }}
-    >
-      <div style={{ fontSize: 13, opacity: 0.72, marginBottom: 10 }}>{label}</div>
-      <div style={{ fontSize: 28, fontWeight: 800, marginBottom: 6 }}>{value}</div>
-      <div style={{ fontSize: 12, opacity: 0.62 }}>{subtext}</div>
-    </div>
-  );
-}
-
-function SectionCard({ title, right, children }) {
-  return (
-    <div
-      style={{
-        padding: 20,
-        borderRadius: 20,
-        background: "rgba(255,255,255,0.04)",
-        border: "1px solid rgba(255,255,255,0.08)",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 12,
-          marginBottom: 16,
-        }}
-      >
-        <h3 style={{ margin: 0, fontSize: 18 }}>{title}</h3>
-        {right}
-      </div>
-      {children}
-    </div>
-  );
-}
-
-function PaperCard({ paper, weaknessMap }) {
-  const progress = paper?.progress || {};
-  const totals = paper?.totals || {};
-  const pyq = paper?.pyq || {};
-  const status = normalizeStatusLabel(paper?.status);
-
-  // Count weak nodes belonging to this paper by matching paperKey prefix in node_id
-  // (node IDs follow a pattern like GS1_ECO_PRE_... so paperKey is a reliable prefix)
-  const paperKey = (paper?.paperKey || "").toLowerCase();
-  const weakNodeCount = useMemo(() => {
-    if (!weaknessMap || !paperKey) return 0;
-    return Object.values(weaknessMap).filter(n => {
-      const nid = (n.node_id || "").toLowerCase();
-      return nid.startsWith(paperKey) && Number(n.weakness_score) > 0;
-    }).length;
-  }, [weaknessMap, paperKey]);
-
-  const maxRisk = useMemo(() => {
-    if (!weaknessMap || !paperKey) return null;
-    const nodes = Object.values(weaknessMap).filter(n => {
-      return (n.node_id || "").toLowerCase().startsWith(paperKey) && Number(n.weakness_score) > 0;
-    });
-    if (!nodes.length) return null;
-    const order = ["critical", "high", "medium", "low"];
-    for (const r of order) {
-      if (nodes.some(n => n.risk_level === r)) return r;
-    }
-    return null;
-  }, [weaknessMap, paperKey]);
-
-  return (
-    <div
-      style={{
-        padding: 18,
-        borderRadius: 18,
-        background: "rgba(255,255,255,0.04)",
-        border: maxRisk
-          ? `1px solid ${RISK_COLOR[maxRisk]}44`
-          : "1px solid rgba(255,255,255,0.08)",
-        display: "grid",
-        gap: 14,
-        boxShadow: maxRisk && maxRisk !== "low"
-          ? `0 0 0 1px ${RISK_COLOR[maxRisk]}22`
-          : "none",
-      }}
-    >
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "flex-start" }}>
-        <div>
-          <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 4 }}>
-            {paper?.paperLabel || paper?.paperKey || "Paper"}
-          </div>
-          <div style={{ fontSize: 12, opacity: 0.66 }}>
-            {paper?.subtitle || "Preparation coverage"}
-          </div>
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
-          <div
-            style={{
-              padding: "6px 10px",
-              borderRadius: 999,
-              fontSize: 12,
-              fontWeight: 700,
-              color: "#fff",
-              background: statusColor(paper?.status),
-              whiteSpace: "nowrap",
-            }}
-          >
-            {status}
-          </div>
-          {weakNodeCount > 0 && maxRisk && (
-            <div style={{
-              padding: "4px 8px",
-              borderRadius: 999,
-              fontSize: 11,
-              fontWeight: 700,
-              color: RISK_COLOR[maxRisk],
-              background: RISK_BG[maxRisk],
-              border: `1px solid ${RISK_COLOR[maxRisk]}44`,
-              whiteSpace: "nowrap",
-              fontFamily: "monospace",
-            }}>
-              {weakNodeCount} weak node{weakNodeCount !== 1 ? "s" : ""}
-            </div>
-          )}
-        </div>
-      </div>
-
-      <div style={{ display: "grid", gap: 12 }}>
-        <ProgressBar
-          label="Syllabus"
-          value={progress.syllabusPercent}
-          subtext={`${safeNum(totals.coveredNodes)} / ${safeNum(totals.totalNodes)} covered`}
-        />
-        <ProgressBar
-          label="PYQ"
-          value={progress.pyqPercent}
-          subtext={`${safeNum(pyq.attemptedPyqs)} / ${safeNum(pyq.totalPyqs)} attempted`}
-        />
-        <ProgressBar
-          label="Revision"
-          value={progress.revisionPercent}
-          subtext={`${safeNum(totals.revisedNodes)} revised`}
-        />
-      </div>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-          gap: 10,
-        }}
-      >
-        <MetricMini label="Untouched" value={safeNum(totals.untouchedNodes)} />
-        <MetricMini label="Weak Zones" value={safeNum(paper?.weakZonesCount)} />
-        <MetricMini label="Readiness" value={safeNum(paper?.readinessScore)} />
-      </div>
-
-      <div style={{ fontSize: 12, opacity: 0.65 }}>
-        Last activity: {formatDateTime(paper?.lastActivityAt)}
-      </div>
-    </div>
-  );
-}
-
-function MetricMini({ label, value }) {
-  return (
-    <div
-      style={{
-        borderRadius: 14,
-        padding: 12,
-        background: "rgba(255,255,255,0.03)",
-        border: "1px solid rgba(255,255,255,0.06)",
-      }}
-    >
-      <div style={{ fontSize: 12, opacity: 0.66, marginBottom: 6 }}>{label}</div>
-      <div style={{ fontSize: 18, fontWeight: 800 }}>{value}</div>
-    </div>
-  );
-}
-
-function SmallBarList({ rows, labelKey = "paper", valueKey = "value" }) {
-  return (
-    <div style={{ display: "grid", gap: 12 }}>
-      {(rows || []).map((row, idx) => {
-        const label = row?.[labelKey] || `Item ${idx + 1}`;
-        const value = safeNum(row?.[valueKey], 0);
-        return (
-          <div key={`${label}-${idx}`} style={{ display: "grid", gap: 6 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-              <span style={{ fontSize: 13 }}>{label}</span>
-              <span style={{ fontSize: 13, fontWeight: 700 }}>{pct(value)}</span>
-            </div>
-            <div
-              style={{
-                height: 8,
-                borderRadius: 999,
-                background: "rgba(255,255,255,0.08)",
-                overflow: "hidden",
-              }}
-            >
-              <div
-                style={{
-                  width: `${Math.max(0, Math.min(100, value))}%`,
-                  height: "100%",
-                  borderRadius: 999,
-                  background: "linear-gradient(90deg, rgba(168,85,247,0.95), rgba(59,130,246,0.95))",
-                }}
-              />
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function FiltersBar({ filters, onChange, paperOptions }) {
-  return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-        gap: 12,
-      }}
-    >
-      <select value={filters.paper} onChange={(e) => onChange("paper", e.target.value)} style={filterStyle}>
-        <option value="ALL">All Papers</option>
-        {paperOptions.map((x) => (
-          <option key={x.value} value={x.value}>
-            {x.label}
-          </option>
-        ))}
-      </select>
-
-      <select value={filters.status} onChange={(e) => onChange("status", e.target.value)} style={filterStyle}>
-        <option value="ALL">All Status</option>
-        <option value="critical">Critical</option>
-        <option value="lagging">Lagging</option>
-        <option value="balanced">Balanced</option>
-        <option value="strong">Strong</option>
-        <option value="exam_ready">Exam Ready</option>
-      </select>
-
-      <select value={filters.activitySource} onChange={(e) => onChange("activitySource", e.target.value)} style={filterStyle}>
-        <option value="ALL">All Sources</option>
-        <option value="ocr">OCR</option>
-        <option value="focus">Focus</option>
-        <option value="night_extra_review">Night Extra</option>
-        <option value="pyq_test">PYQ Test</option>
-        <option value="institutional_test">Institutional</option>
-      </select>
-
-      <input
-        style={filterStyle}
-        value={filters.search}
-        onChange={(e) => onChange("search", e.target.value)}
-        placeholder="Search paper / topic / node"
-      />
-    </div>
-  );
-}
-
-const filterStyle = {
-  width: "100%",
-  background: "rgba(255,255,255,0.04)",
-  color: "#fff",
-  border: "1px solid rgba(255,255,255,0.1)",
-  borderRadius: 14,
-  padding: "12px 14px",
-  outline: "none",
-};
-
-function CoverageTable({ rows }) {
-  return (
-    <div style={{ overflowX: "auto" }}>
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          minWidth: 1300,
-        }}
-      >
-        <thead>
-          <tr>
-            {[
-              "Paper",
-              "Total Nodes",
-              "Touched",
-              "In Progress",
-              "Covered",
-              "Revised",
-              "Mastered",
-              "Untouched",
-              "Total PYQs",
-              "Attempted",
-              "Correct %",
-              "PYQs Revised",
-              "Sectionals",
-              "Full Tests",
-              "Institutionals",
-              "Weak Zones",
-              "Last Activity",
-              "Readiness",
-              "Status",
-            ].map((head) => (
-              <th
-                key={head}
-                style={{
-                  textAlign: "left",
-                  fontSize: 12,
-                  opacity: 0.72,
-                  padding: "12px 10px",
-                  borderBottom: "1px solid rgba(255,255,255,0.08)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {head}
-              </th>
-            ))}
-          </tr>
-        </thead>
-
-        <tbody>
-          {(rows || []).map((row) => (
-            <tr key={row.paperKey || row.paperLabel}>
-              <td style={cellStyleStrong}>{row.paperLabel || row.paperKey}</td>
-              <td style={cellStyle}>{safeNum(row.totalNodes)}</td>
-              <td style={cellStyle}>{safeNum(row.touchedNodes)}</td>
-              <td style={cellStyle}>{safeNum(row.inProgressNodes)}</td>
-              <td style={cellStyle}>{safeNum(row.coveredNodes)}</td>
-              <td style={cellStyle}>{safeNum(row.revisedNodes)}</td>
-              <td style={cellStyle}>{safeNum(row.masteredNodes)}</td>
-              <td style={cellStyle}>{safeNum(row.untouchedNodes)}</td>
-              <td style={cellStyle}>{safeNum(row.totalPyqs)}</td>
-              <td style={cellStyle}>{safeNum(row.attemptedPyqs)}</td>
-              <td style={cellStyle}>{pct(row.correctPercent)}</td>
-              <td style={cellStyle}>{safeNum(row.revisedPyqs)}</td>
-              <td style={cellStyle}>{safeNum(row.sectionalTests)}</td>
-              <td style={cellStyle}>{safeNum(row.fullTests)}</td>
-              <td style={cellStyle}>{safeNum(row.institutionalTests)}</td>
-              <td style={cellStyle}>{safeNum(row.weakZones)}</td>
-              <td style={cellStyle}>{formatShortDate(row.lastActivityAt)}</td>
-              <td style={cellStyleStrong}>{safeNum(row.readinessScore)}</td>
-              <td style={cellStyle}>
-                <span
-                  style={{
-                    padding: "5px 10px",
-                    borderRadius: 999,
-                    fontSize: 12,
-                    fontWeight: 700,
-                    color: "#fff",
-                    background: statusColor(row.status),
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {normalizeStatusLabel(row.status)}
-                </span>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-const cellStyle = {
-  padding: "12px 10px",
-  borderBottom: "1px solid rgba(255,255,255,0.06)",
-  fontSize: 13,
-  whiteSpace: "nowrap",
-};
-
-const cellStyleStrong = {
-  ...cellStyle,
-  fontWeight: 700,
-};
-
-function ListPanel({ items, renderItem, emptyLabel = "Nothing yet.", getCardStyle }) {
-  if (!items?.length) {
-    return <div style={{ fontSize: 14, opacity: 0.66 }}>{emptyLabel}</div>;
-  }
-
-  return (
-    <div style={{ display: "grid", gap: 12 }}>
-      {items.map((item, index) => (
-        <div
-          key={index}
-          style={{
-            padding: 14,
-            borderRadius: 14,
-            background: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(255,255,255,0.06)",
-            ...(getCardStyle ? getCardStyle(item) : {}),
-          }}
-        >
-          {renderItem(item, index)}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function buildFallbackDashboard(raw) {
-  const summary = raw?.summary || {};
-  const papers = Array.isArray(raw?.papers) ? raw.papers : [];
-  const tableRows = Array.isArray(raw?.tableRows) ? raw.tableRows : papers.map((paper) => ({
-    paperKey: paper.paperKey,
-    paperLabel: paper.paperLabel,
-    totalNodes: paper?.totals?.totalNodes || 0,
-    touchedNodes: paper?.totals?.touchedNodes || 0,
-    inProgressNodes: paper?.totals?.inProgressNodes || 0,
-    coveredNodes: paper?.totals?.coveredNodes || 0,
-    revisedNodes: paper?.totals?.revisedNodes || 0,
-    masteredNodes: paper?.totals?.masteredNodes || 0,
-    untouchedNodes: paper?.totals?.untouchedNodes || 0,
-    totalPyqs: paper?.pyq?.totalPyqs || 0,
-    attemptedPyqs: paper?.pyq?.attemptedPyqs || 0,
-    correctPercent: paper?.pyq?.correctPercent || 0,
-    revisedPyqs: paper?.pyq?.revisedPyqs || 0,
-    sectionalTests: paper?.tests?.sectionalCount || 0,
-    fullTests: paper?.tests?.fullTestCount || 0,
-    institutionalTests: paper?.tests?.institutionalTestCount || 0,
-    weakZones: paper?.weakZonesCount || 0,
-    lastActivityAt: paper?.lastActivityAt || null,
-    readinessScore: paper?.readinessScore || 0,
-    status: paper?.status || "balanced",
-  }));
-
-  return {
-    meta: raw?.meta || {},
-    summary: {
-      overallSyllabusCoveragePercent: summary.overallSyllabusCoveragePercent || 0,
-      overallPyqCoveragePercent: summary.overallPyqCoveragePercent || 0,
-      overallRevisionPercent: summary.overallRevisionPercent || 0,
-      overallReadinessScore: summary.overallReadinessScore || 0,
-      untouchedNodes: summary.untouchedNodes || 0,
-      weakClusters: summary.weakClusters || 0,
-    },
-    papers,
-    tableRows,
-    charts: raw?.charts || {
-      syllabusByPaper: papers.map((p) => ({
-        paper: p.paperLabel,
-        value: p?.progress?.syllabusPercent || 0,
-      })),
-      pyqByPaper: papers.map((p) => ({
-        paper: p.paperLabel,
-        value: p?.progress?.pyqPercent || 0,
-      })),
-    },
-    weakZones: raw?.weakZones || [],
-    untouchedZones: raw?.untouchedZones || [],
-    recentActivity: raw?.recentActivity || [],
-    nextActions: raw?.nextActions || [],
+function PriorityQueue({ dashboard, weaknessMap, filters, navigate }) {
+  const [tab, setTab] = useState('actions');
+  const [showAll, setShowAll] = useState(false);
+  const groups = useMemo(() => classifyAttention(dashboard, weaknessMap), [dashboard, weaknessMap]);
+  const matches = (item) => {
+    if (filters.paper !== 'ALL' && canonicalPaperKey(item.paperKey) !== canonicalPaperKey(filters.paper)) return false;
+    return !filters.search || searchText(item.topicLabel, item.label, item.nodeId, item.reason, item.action, item.suggestedAction).includes(filters.search.toLowerCase());
   };
+  const actions = list(dashboard.nextActions).filter(matches);
+  const observed = groups.observed.filter(matches);
+  const gaps = groups.gaps.filter(matches);
+  const untouched = groups.untouched.filter(matches);
+  const options = [
+    { value: 'actions', label: `Next actions (${actions.length})` },
+    { value: 'weak', label: `Observed weakness (${observed.length})` },
+    { value: 'gaps', label: `Coverage gaps (${gaps.length})` },
+    { value: 'untouched', label: `Not started (${untouched.length})` },
+  ];
+  const rows = tab === 'actions' ? actions : tab === 'weak' ? observed : tab === 'gaps' ? gaps : untouched;
+  const descriptions = {
+    actions: 'Recommendations supplied by MentorOS. Open a topic to see its evidence before acting.',
+    weak: 'Recorded performance signals, not simply topics with low syllabus coverage.',
+    gaps: 'Preparation coverage requiring attention. These are not automatically proven weaknesses.',
+    untouched: 'Topics with no recorded coverage. The backend supplies their suggested order.',
+  };
+  const visible = showAll ? rows : rows.slice(0, 5);
+  return <section className="si-section" aria-labelledby="si-queue-title">
+    <SectionHeading id="si-queue-title" title="What needs your attention" description="One queue for recommendations and preparation gaps, without repeating the same lists."/>
+    <div className="si-panel si-queue"><div className="si-queue__toolbar"><Segmented options={options} value={tab} onChange={(value) => { setTab(value); setShowAll(false); }} label="Priority category"/></div><p className="si-queue__description">{descriptions[tab]}</p>
+      {visible.length ? <div className="si-queue__rows">{visible.map((item, index) => {
+        const title = item.topicLabel || item.label || item.nodeId || 'Recommended action';
+        const reason = tab === 'actions' ? item.action : item.reason || item.suggestedAction || 'Open the topic for its recorded evidence.';
+        const target = item.nodeId ? topicPath(item.paperKey, item.nodeId) : item.paperKey ? paperPath(item.paperKey) : '/plan';
+        return <div className="si-queue-row" key={`${tab}-${item.nodeId || title}-${index}`}><span className="si-queue-row__number">{String(index + 1).padStart(2, '0')}</span><div className="si-queue-row__body"><div className="si-queue-row__title"><strong>{title}</strong>{item.priority && <Badge tone={tab === 'weak' ? 'warning' : 'neutral'}>{prettyPriority(item.priority)}</Badge>}</div><p>{reason}</p>{item.paperKey && <small>{paperInfo(item.paperKey).label}{item.linkedPyqCount != null ? ` · ${numberText(item.linkedPyqCount)} linked PYQs` : ''}{item.suggestedBlockMinutes ? ` · ${numberText(item.suggestedBlockMinutes)} min suggested` : ''}</small>}</div><div className="si-queue-row__actions">{item.nodeId && <Button variant="ghost" onClick={() => navigate(focusPath(item.nodeId))}>Focus</Button>}<Button to={target} variant="secondary" icon="arrowRight">{item.nodeId ? 'Details' : 'Open'}</Button></div></div>;
+      })}</div> : <EmptyState title={tab === 'weak' ? 'No observed weaknesses to show' : 'Nothing matches this view'} description={tab === 'weak' ? 'A low coverage score alone is not proof of weakness. Recorded test and mistake signals will appear here when available.' : 'Try another category or clear the filters.'}/>}
+      {rows.length > 5 && <div className="si-queue__footer"><Button variant="ghost" onClick={() => setShowAll((value) => !value)} icon={showAll ? 'chevronDown' : 'arrowRight'}>{showAll ? 'Show fewer' : `Show all ${numberText(rows.length)}`}</Button></div>}
+    </div>
+  </section>;
+}
+function prettyPriority(value) { return text(value).replace(/[_-]/g, ' ').toLowerCase().replace(/^\w/, (c) => c.toUpperCase()); }
+
+function Details({ dashboard, filters }) {
+  const [source, setSource] = useState('ALL');
+  const rows = list(dashboard.tableRows).filter((row) => filters.paper === 'ALL' || canonicalPaperKey(row.paperKey) === canonicalPaperKey(filters.paper));
+  const activity = list(dashboard.recentActivity).filter((row) => (source === 'ALL' || row.source === source) && (filters.paper === 'ALL' || canonicalPaperKey(row.paperKey) === canonicalPaperKey(filters.paper)) && (!filters.search || searchText(row.label, row.paperKey, row.mappedNodeIds).includes(filters.search.toLowerCase())));
+  const sources = [...new Set(list(dashboard.recentActivity).map((row) => row.source).filter(Boolean))];
+  const metadata = dashboard.meta || {};
+  return <details className="si-details"><summary><span className="si-details__icon"><Icon name="chart" size={20}/></span><span><strong>Detailed coverage and evidence</strong><small>Full audit table, source activity and inventory metadata</small></span><Icon name="chevronDown" size={19}/></summary><div className="si-details__content">
+    <div className="si-section-heading"><div><h2>Coverage audit</h2><p>Reported totals from the syllabus API. Percentages do not imply readiness.</p></div></div>
+    <div className="si-table-scroll"><table className="si-table"><thead><tr><th>Paper</th><th>Nodes</th><th>Covered</th><th>Revised</th><th>Untouched</th><th>Available PYQs</th><th>Attempted</th><th>Accuracy</th><th>Weak</th><th>Readiness</th><th>Last activity</th></tr></thead><tbody>{rows.map((row) => {
+      const paper = list(dashboard.papers).find((p) => canonicalPaperKey(p.paperKey) === canonicalPaperKey(row.paperKey));
+      const readiness = paper ? paperReadiness(paper) : readinessState(row.readinessScore, row, { study: count(row.touchedNodes) > 0, pyq: count(row.attemptedPyqs) > 0, test: count(row.sectionalTests) + count(row.fullTests) + count(row.institutionalTests) > 0 });
+      return <tr key={row.paperKey || row.paperLabel}><th scope="row"><Link to={paperPath(row.paperKey)}>{row.paperLabel || row.paperKey}</Link></th><td>{numberText(row.totalNodes)}</td><td>{numberText(row.coveredNodes)}</td><td>{numberText(row.revisedNodes)}</td><td>{numberText(row.untouchedNodes)}</td><td>{numberText(row.totalPyqs)}</td><td>{numberText(row.attemptedPyqs)}</td><td>{count(row.attemptedPyqs) ? percent(row.correctPercent) : '—'}</td><td>{numberText(row.weakZones)}</td><td>{readiness.value}</td><td>{dateText(row.lastActivityAt)}</td></tr>;
+    })}</tbody></table></div>
+    <div className="si-details__activity-head"><h3>Recent activity</h3><Select label="Activity source" value={source} onChange={setSource} options={[{ value: 'ALL', label: 'All sources' }, ...sources.map((value) => ({ value, label: text(value).replace(/_/g, ' ') }))]}/></div>
+    {activity.length ? <div className="si-activity-list">{activity.map((item, index) => <div className="si-activity-row" key={`${item.time}-${index}`}><div><strong>{item.label || item.activityType || 'Study activity'}</strong><small>{[item.paperKey, item.source, item.activityType].filter(Boolean).join(' · ')}</small></div><time>{timeText(item.time)}</time></div>)}</div> : <EmptyState title="No activity matches these filters" description="Recorded study and test events will appear here."/>}
+    {(metadata.mappingCompleteness != null || metadata.unresolvedMappings != null) && <p className="si-data-note">Inventory data quality: {metadata.mappingCompleteness != null ? `Mapping completeness ${percent(metadata.mappingCompleteness)}. ` : ''}{metadata.unresolvedMappings != null ? `${numberText(metadata.unresolvedMappings)} unresolved mappings.` : ''} Mapping completeness is not learner PYQ exposure.</p>}
+  </div></details>;
 }
 
-export default function SyllabusPage() {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [dashboard, setDashboard] = useState(null);
+export default function SyllabusPage({ userId = null }) {
+  const navigate = useNavigate();
+  const [filters, setFilters] = useState(INITIAL_FILTERS);
   const [weaknessMap, setWeaknessMap] = useState({});
-  const [filters, setFilters] = useState({
-    paper: "ALL",
-    status: "ALL",
-    activitySource: "ALL",
-    search: "",
-  });
-
+  const [weaknessError, setWeaknessError] = useState('');
+  const loadDashboard = useCallback(async (signal) => normalizeDashboard(await getJsonWithFallback(['/api/syllabus/dashboard', '/api/syllabus'], signal)), []);
+  const { data: dashboard, loading, error, refresh } = useSyllabusResource(loadDashboard, []);
+  const identity = verifiedUserId(dashboard, userId);
   useEffect(() => {
-    let ignore = false;
-
-    async function load() {
-      setLoading(true);
-      setError("");
-
-      try {
-        // Fetch dashboard and weakness map in parallel.
-        // Weakness failure must never break the main dashboard load.
-        const [dashResult, weakResult] = await Promise.allSettled([
-          (async () => {
-            const primary = await fetch(`${BACKEND_URL}/api/syllabus/dashboard`);
-            if (primary.ok) return primary.json();
-            const fallback = await fetch(`${BACKEND_URL}/api/syllabus`);
-            if (!fallback.ok) throw new Error("Failed to load syllabus dashboard");
-            return fallback.json();
-          })(),
-          fetch(`${BACKEND_URL}/api/weakness/map?userId=${USER_ID}`, { cache: "no-store" }),
-        ]);
-
-        if (dashResult.status === "rejected") {
-          throw dashResult.reason;
-        }
-
-        if (!ignore) {
-          setDashboard(buildFallbackDashboard(dashResult.value));
-        }
-
-        // Apply weakness map (secondary — silent on failure)
-        if (weakResult.status === "fulfilled" && weakResult.value.ok) {
-          try {
-            const weakData = await weakResult.value.json();
-            if (!ignore) setWeaknessMap(weakData.map || {});
-          } catch (_) {
-            // malformed JSON — leave map empty
-          }
-        }
-      } catch (err) {
-        if (!ignore) {
-          setError(err?.message || "Failed to load syllabus dashboard");
-        }
-      } finally {
-        if (!ignore) setLoading(false);
-      }
-    }
-
-    load();
-    return () => {
-      ignore = true;
-    };
-  }, []);
-
-  const paperOptions = useMemo(() => {
-    const rows = dashboard?.papers || [];
-    return rows.map((x) => ({
-      value: x.paperKey,
-      label: x.paperLabel,
-    }));
-  }, [dashboard]);
-
-  const filteredPapers = useMemo(() => {
-    const rows = dashboard?.papers || [];
-    const q = String(filters.search || "").trim().toLowerCase();
-
-    return rows.filter((row) => {
-      if (filters.paper !== "ALL" && row.paperKey !== filters.paper) return false;
-      if (filters.status !== "ALL" && String(row.status || "").toLowerCase() !== filters.status) return false;
-
-      if (!q) return true;
-
-      const hay = [
-        row.paperKey,
-        row.paperLabel,
-        row.subtitle,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-
-      return hay.includes(q);
+    if (!dashboard) return undefined;
+    const controller = new AbortController();
+    setWeaknessMap({}); setWeaknessError('');
+    const url = `/api/weakness/map${identity ? `?userId=${encodeURIComponent(identity)}` : ''}`;
+    getJson(url, controller.signal).then((value) => { if (!controller.signal.aborted) setWeaknessMap(value.map || {}); }).catch((err) => {
+      if (!controller.signal.aborted) setWeaknessError(err?.message || 'Weakness signals unavailable.');
     });
-  }, [dashboard, filters]);
-
-  const filteredTableRows = useMemo(() => {
-    const rows = dashboard?.tableRows || [];
-    const q = String(filters.search || "").trim().toLowerCase();
-
-    return rows.filter((row) => {
-      if (filters.paper !== "ALL" && row.paperKey !== filters.paper) return false;
-      if (filters.status !== "ALL" && String(row.status || "").toLowerCase() !== filters.status) return false;
-      if (!q) return true;
-
-      return `${row.paperKey || ""} ${row.paperLabel || ""}`.toLowerCase().includes(q);
-    });
-  }, [dashboard, filters]);
-
-  const filteredRecentActivity = useMemo(() => {
-    const rows = dashboard?.recentActivity || [];
-    const q = String(filters.search || "").trim().toLowerCase();
-
-    return rows.filter((row) => {
-      if (filters.paper !== "ALL" && row.paperKey !== filters.paper) return false;
-      if (filters.activitySource !== "ALL" && row.source !== filters.activitySource) return false;
-      if (!q) return true;
-
-      return `${row.label || ""} ${row.paperKey || ""} ${(row.mappedNodeIds || []).join(" ")}`.toLowerCase().includes(q);
-    });
-  }, [dashboard, filters]);
-
-  const filteredWeakZones = useMemo(() => {
-    const riskOrder = { critical: 0, high: 1, medium: 2, low: 3 };
-    const rows = dashboard?.weakZones || [];
-    const q = String(filters.search || "").trim().toLowerCase();
-
-    return rows
-      .filter((row) => {
-        if (filters.paper !== "ALL" && row.paperKey !== filters.paper) return false;
-        if (!q) return true;
-        return `${row.topicLabel || ""} ${row.reason || ""} ${row.nodeId || ""}`.toLowerCase().includes(q);
-      })
-      .sort((a, b) => {
-        const ra = riskOrder[String(a.priority || "low").toLowerCase()] ?? 3;
-        const rb = riskOrder[String(b.priority || "low").toLowerCase()] ?? 3;
-        return ra - rb;
-      });
-  }, [dashboard, filters]);
-
-  const filteredUntouchedZones = useMemo(() => {
-    const rows = dashboard?.untouchedZones || [];
-    const q = String(filters.search || "").trim().toLowerCase();
-
-    return rows.filter((row) => {
-      if (filters.paper !== "ALL" && row.paperKey !== filters.paper) return false;
-      if (!q) return true;
-
-      return `${row.topicLabel || ""} ${row.nodeId || ""}`.toLowerCase().includes(q);
-    });
-  }, [dashboard, filters]);
-
-  function updateFilter(key, value) {
-    setFilters((prev) => ({ ...prev, [key]: value }));
-  }
-
-  const summary = dashboard?.summary || {};
-  const charts = dashboard?.charts || {};
-
-  return (
-    <div style={{ padding: 22, display: "grid", gap: 18 }}>
-      <div
-        style={{
-          padding: 24,
-          borderRadius: 24,
-          background: "linear-gradient(135deg, rgba(59,130,246,0.16), rgba(168,85,247,0.12))",
-          border: "1px solid rgba(255,255,255,0.08)",
-        }}
-      >
-        <div style={{ fontSize: 13, opacity: 0.72, marginBottom: 8 }}>UPSC Coverage Command Center</div>
-        <div style={{ fontSize: 30, fontWeight: 900, marginBottom: 8 }}>Syllabus Intelligence Dashboard</div>
-        <div style={{ fontSize: 14, opacity: 0.72, maxWidth: 840, lineHeight: 1.6 }}>
-          Track syllabus completion, PYQ exposure, revision depth, test evidence, untouched zones,
-          and weak clusters across Prelims, Mains, CSAT, Essay, Ethics, and Geography Optional.
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            gap: 14,
-            flexWrap: "wrap",
-            marginTop: 16,
-            fontSize: 12,
-            opacity: 0.8,
-          }}
-        >
-          <span>Last activity: {formatDateTime(dashboard?.meta?.lastActivityAt)}</span>
-          <span>Generated: {formatDateTime(dashboard?.meta?.generatedAt)}</span>
-          <span>Date range: {dashboard?.meta?.dateRange || "all"}</span>
-        </div>
-      </div>
-
-      {loading ? (
-        <div
-          style={{
-            padding: 18,
-            borderRadius: 18,
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.08)",
-          }}
-        >
-          Loading syllabus dashboard...
-        </div>
-      ) : null}
-
-      {error ? (
-        <div
-          style={{
-            padding: 18,
-            borderRadius: 18,
-            background: "rgba(255,107,107,0.12)",
-            border: "1px solid rgba(255,107,107,0.24)",
-            color: "#ffd5d5",
-          }}
-        >
-          {error}
-        </div>
-      ) : null}
-
-      {!loading && !error && dashboard ? (
-        <>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(6, minmax(0, 1fr))",
-              gap: 14,
-            }}
-          >
-            <TopStatCard
-              label="Overall Syllabus Coverage"
-              value={pct(summary.overallSyllabusCoveragePercent)}
-              subtext="Node-level syllabus completion"
-            />
-            <TopStatCard
-              label="Overall PYQ Coverage"
-              value={pct(summary.overallPyqCoveragePercent)}
-              subtext="Question exposure across papers"
-            />
-            <TopStatCard
-              label="Revision Progress"
-              value={pct(summary.overallRevisionPercent)}
-              subtext="Depth of revisit and reinforcement"
-            />
-            <TopStatCard
-              label="Readiness Score"
-              value={safeNum(summary.overallReadinessScore)}
-              subtext="Merged from study + PYQ + tests"
-            />
-            <TopStatCard
-              label="Untouched Nodes"
-              value={safeNum(summary.untouchedNodes)}
-              subtext="Topics still not entered properly"
-            />
-            <TopStatCard
-              label="Weak Clusters"
-              value={safeNum(summary.weakClusters)}
-              subtext="Urgent danger areas"
-            />
-          </div>
-
-          {/* WEAKNESS HEAT MAP — inserted between stat chips and filters */}
-          {Object.keys(weaknessMap).length > 0 && (
-            <div style={{
-              padding: "12px 18px",
-              borderRadius: 14,
-              background: "rgba(239,68,68,0.08)",
-              border: "1px solid rgba(239,68,68,0.2)",
-              fontSize: 13,
-              color: "#fca5a5",
-              fontWeight: 600,
-              letterSpacing: "0.01em",
-            }}>
-              If you fix these nodes, your score improves fastest.
-            </div>
-          )}
-          <WeaknessHeatPanel weaknessMap={weaknessMap} />
-
-          <SectionCard title="Filters">
-            <FiltersBar filters={filters} onChange={updateFilter} paperOptions={paperOptions} />
-          </SectionCard>
-
-          <SectionCard
-            title="Paper Readiness Grid"
-            right={<div style={{ fontSize: 12, opacity: 0.64 }}>{filteredPapers.length} papers</div>}
-          >
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-                gap: 14,
-              }}
-            >
-              {filteredPapers.map((paper) => (
-                <PaperCard key={paper.paperKey} paper={paper} weaknessMap={weaknessMap} />
-              ))}
-            </div>
-          </SectionCard>
-
-          <SectionCard title="Coverage Table">
-            <CoverageTable rows={filteredTableRows} />
-          </SectionCard>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 16,
-            }}
-          >
-            <SectionCard title="Syllabus Completion by Paper">
-              <SmallBarList rows={charts.syllabusByPaper || []} />
-            </SectionCard>
-
-            <SectionCard title="PYQ Coverage by Paper">
-              <SmallBarList rows={charts.pyqByPaper || []} />
-            </SectionCard>
-          </div>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 16,
-            }}
-          >
-            <SectionCard
-              title={`Weak Zones — Auto-priority from your mistakes (${filteredWeakZones.length})`}
-            >
-              <ListPanel
-                items={filteredWeakZones}
-                emptyLabel="No weak zones found for current filters."
-                getCardStyle={(item) => {
-                  const w = lookupWeakness(item.nodeId, null, weaknessMap);
-                  if (!w || Number(w.weakness_score) === 0) return {};
-                  const risk = w.risk_level || "low";
-                  return {
-                    border: `1px solid ${RISK_COLOR[risk]}33`,
-                    boxShadow: risk !== "low" ? `0 0 0 1px ${RISK_COLOR[risk]}22` : "none",
-                  };
-                }}
-                renderItem={(item) => {
-                  const weakness = lookupWeakness(item.nodeId, null, weaknessMap);
-                  return (
-                    <div
-                      style={{ display: "grid", gap: 8, cursor: "pointer" }}
-                      onClick={() => { window.location.href = `/focus?nodeId=${item.nodeId}`; }}
-                    >
-                      <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-                        <div style={{ fontWeight: 800 }}>{item.topicLabel || item.nodeId}</div>
-                        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                          <WeaknessBadge weakness={weakness} />
-                          <div
-                            style={{
-                              padding: "4px 8px",
-                              borderRadius: 999,
-                              background: item.priority === "high" ? "rgba(255,107,107,0.18)" : "rgba(245,158,11,0.16)",
-                              color: "#fff",
-                              fontSize: 12,
-                              fontWeight: 700,
-                            }}
-                          >
-                            {String(item.priority || "medium").toUpperCase()}
-                          </div>
-                        </div>
-                      </div>
-                      <div style={{ fontSize: 13, opacity: 0.72 }}>{item.reason}</div>
-                      <div style={{ fontSize: 12, opacity: 0.6 }}>
-                        {item.paperKey} • {item.nodeId} • {item.evidenceType}
-                      </div>
-                      <div style={{ fontSize: 13 }}>
-                        <b>Action:</b> {item.suggestedAction}
-                      </div>
-                      <button
-                        style={{
-                          marginTop: 8,
-                          padding: "6px 10px",
-                          borderRadius: 8,
-                          background: "#ef4444",
-                          color: "#fff",
-                          fontWeight: 700,
-                          border: "none",
-                          cursor: "pointer",
-                          alignSelf: "flex-start",
-                        }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.location.href = `/focus?nodeId=${item.nodeId}`;
-                        }}
-                      >
-                        Fix Now
-                      </button>
-                    </div>
-                  );
-                }}
-              />
-            </SectionCard>
-
-            <SectionCard title="Untouched / Overdue Zones">
-              <ListPanel
-                items={filteredUntouchedZones}
-                emptyLabel="No untouched zones found for current filters."
-                getCardStyle={(item) => {
-                  const w = lookupWeakness(item.nodeId, null, weaknessMap);
-                  if (!w || Number(w.weakness_score) === 0) return {};
-                  const risk = w.risk_level || "low";
-                  return {
-                    border: `1px solid ${RISK_COLOR[risk]}33`,
-                    boxShadow: risk !== "low" ? `0 0 0 1px ${RISK_COLOR[risk]}22` : "none",
-                  };
-                }}
-                renderItem={(item) => {
-                  const weakness = lookupWeakness(item.nodeId, null, weaknessMap);
-                  return (
-                    <div
-                      style={{ display: "grid", gap: 8, cursor: "pointer" }}
-                      onClick={() => { window.location.href = `/focus?nodeId=${item.nodeId}`; }}
-                    >
-                      <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-                        <div style={{ fontWeight: 800 }}>{item.topicLabel || item.nodeId}</div>
-                        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                          <WeaknessBadge weakness={weakness} />
-                          <div
-                            style={{
-                              padding: "4px 8px",
-                              borderRadius: 999,
-                              background: item.priority === "high" ? "rgba(255,107,107,0.18)" : "rgba(59,130,246,0.16)",
-                              color: "#fff",
-                              fontSize: 12,
-                              fontWeight: 700,
-                            }}
-                          >
-                            {String(item.priority || "medium").toUpperCase()}
-                          </div>
-                        </div>
-                      </div>
-                      <div style={{ fontSize: 12, opacity: 0.66 }}>
-                        {item.paperKey} • {item.nodeId}
-                      </div>
-                      <div style={{ fontSize: 13, opacity: 0.76 }}>
-                        Linked PYQs: <b>{safeNum(item.linkedPyqCount)}</b> • Days pending: <b>{safeNum(item.daysPending)}</b> • Suggested block: <b>{safeNum(item.suggestedBlockMinutes)} min</b>
-                      </div>
-                    </div>
-                  );
-                }}
-              />
-            </SectionCard>
-          </div>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 16,
-            }}
-          >
-            <SectionCard title="Recent Activity Feed">
-              <ListPanel
-                items={filteredRecentActivity}
-                emptyLabel="No recent activity found for current filters."
-                renderItem={(item) => (
-                  <div style={{ display: "grid", gap: 8 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}>
-                      <div style={{ fontWeight: 800 }}>{item.label}</div>
-                      <div style={{ fontSize: 12, opacity: 0.64 }}>{formatDateTime(item.time)}</div>
-                    </div>
-                    <div style={{ fontSize: 12, opacity: 0.68 }}>
-                      {item.paperKey} • {item.source} • {item.activityType}
-                    </div>
-                    {!!item.mappedNodeIds?.length && (
-                      <div style={{ fontSize: 12, opacity: 0.64 }}>
-                        Nodes: {item.mappedNodeIds.join(", ")}
-                      </div>
-                    )}
-                  </div>
-                )}
-              />
-            </SectionCard>
-
-            <SectionCard title="Next Actions">
-              <ListPanel
-                items={dashboard?.nextActions || []}
-                emptyLabel="No next actions generated yet."
-                renderItem={(item) => (
-                  <div style={{ display: "grid", gap: 8 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}>
-                      <div style={{ fontWeight: 800 }}>{item.label}</div>
-                      <div
-                        style={{
-                          padding: "4px 8px",
-                          borderRadius: 999,
-                          background: item.priority === "high" ? "rgba(255,107,107,0.18)" : "rgba(34,197,94,0.16)",
-                          color: "#fff",
-                          fontSize: 12,
-                          fontWeight: 700,
-                        }}
-                      >
-                        {String(item.priority || "medium").toUpperCase()}
-                      </div>
-                    </div>
-                    <div style={{ fontSize: 13, opacity: 0.78 }}>{item.action}</div>
-                  </div>
-                )}
-              />
-            </SectionCard>
-          </div>
-        </>
-      ) : null}
-    </div>
-  );
+    return () => controller.abort();
+  }, [dashboard, identity]);
+  const filteredPapers = useMemo(() => list(dashboard?.papers).filter((paper) => {
+    if (filters.paper !== 'ALL' && canonicalPaperKey(paper.paperKey) !== canonicalPaperKey(filters.paper)) return false;
+    if (filters.status !== 'ALL' && preparationStatus(paper).key !== filters.status) return false;
+    return !filters.search || searchText(paper.paperKey, paper.paperLabel, paper.subtitle, paperInfo(paper.paperKey).description).includes(filters.search.toLowerCase());
+  }), [dashboard, filters]);
+  const activeFilters = Object.values(filters).some((value) => value && value !== 'ALL');
+  return <main className="si si-overview">
+    <PageHeader eyebrow="KNOWLEDGE · COVERAGE" title="Syllabus Intelligence" description="Know what’s covered, what’s weak, and what to do next." breadcrumbs={[{ label: 'Syllabus' }]}><Button variant="secondary" icon="refresh" onClick={refresh} disabled={loading}>Refresh</Button></PageHeader>
+    <ResourceState loading={loading} error={error} onRetry={refresh} label="syllabus intelligence">{dashboard && <>
+      <MentorVerdict dashboard={dashboard} weaknessMap={weaknessMap} onFocus={(nodeId) => navigate(focusPath(nodeId))}/>
+      <SummaryMetrics dashboard={dashboard}/>
+      <section className="si-section" aria-labelledby="si-subject-title"><SectionHeading id="si-subject-title" title="Subject health" description="See the preparation state of each paper. Open one to inspect its canonical syllabus and linked questions." action={<span className="si-section-count">{numberText(filteredPapers.length)} of {numberText(dashboard.papers.length)} papers</span>}/>
+        <div className="si-filterbar"><SearchInput value={filters.search} onChange={(value) => setFilters((prev) => ({ ...prev, search: value }))} placeholder="Search papers or subjects"/><Select label="Paper" value={filters.paper} onChange={(value) => setFilters((prev) => ({ ...prev, paper: value }))} options={[{ value: 'ALL', label: 'All papers' }, ...PAPERS.map((paper) => ({ value: paper.key, label: paper.label }))]}/><Select label="Readiness state" value={filters.status} onChange={(value) => setFilters((prev) => ({ ...prev, status: value }))} options={STATUS_OPTIONS}/><FilterReset disabled={!activeFilters} onClick={() => setFilters(INITIAL_FILTERS)}/></div>
+        {filteredPapers.length ? <div className="si-paper-grid">{filteredPapers.map((paper) => <PaperCard key={paper.paperKey} paper={paper}/>)}</div> : <EmptyState title="No papers match" description="Try a different search or clear the filters." action={<Button onClick={() => setFilters(INITIAL_FILTERS)}>Clear filters</Button>}/>}
+      </section>
+      <PriorityQueue dashboard={dashboard} weaknessMap={weaknessMap} filters={filters} navigate={navigate}/>
+      <Details dashboard={dashboard} filters={filters}/>
+      <footer className="si-footer"><span><Icon name="info" size={15}/> Counts and recommendations come from your recorded syllabus evidence.</span><span>{dashboard.meta.generatedAt ? `Updated ${timeText(dashboard.meta.generatedAt)}` : 'Live syllabus view'}</span></footer>
+      {weaknessError && <p className="si-data-note" role="status">Additional weakness signals could not be loaded: {weaknessError}. The syllabus overview remains available.</p>}
+    </>}</ResourceState>
+  </main>;
 }
