@@ -1521,11 +1521,11 @@ export default function PlanPage() {
 
           return {
             BlockId: b.BlockId,
-            PlannedSubject: b.Subject || "Unknown",
-            PlannedTopic: b.Topic || "",
-            PlannedStart: b.Start || "",
-            PlannedEnd: b.End || "",
-            PlannedMinutes: Number(b.Minutes || 0),
+            PlannedSubject: b.PlannedSubject || b.Subject || "Unknown",
+            PlannedTopic: b.PlannedTopic || b.Topic || "",
+            PlannedStart: b.PlannedStart || b.Start || "",
+            PlannedEnd: b.PlannedEnd || b.End || "",
+            PlannedMinutes: Number(b.PlannedMinutes ?? b.Minutes ?? 0),
 
             ActualStart: b.ActualStart || "",
             ActualEnd: b.ActualEnd || "",
@@ -3196,119 +3196,25 @@ export default function PlanPage() {
       />
 
       {ocrApprovalOpen && (
-        <div className="mos-focus-overlay">
+        <div className="mos-ocr-review-overlay">
           <div
-            className="focus-modal"
+            className="mos-ocr-review-modal"
             onClick={(e) => e.stopPropagation()}
-            style={{ width: "min(980px, 96vw)", maxHeight: "88vh", overflow: "auto" }}
           >
-            <div className="mos-focus-kicker">OCR Review</div>
-            <h2 className="mos-focus-title">Approve Parsed Plan</h2>
-            <div className="mos-focus-subtitle">
-              Review subject, topic, time, minutes, mapping, and PYQ intelligence before saving.
-            </div>
-
-            <div style={{ display: "grid", gap: 14, marginTop: 20 }}>
-              {ocrDraftBlocks.map((block, index) => {
-                const mappedNodes = safeMappedNodes(block);
-
-                let cardBorderColor = "transparent";
-                if (block.confidenceBadge === "LOW") cardBorderColor = "#ef4444";
-                else if (block.confidenceBadge === "MEDIUM") cardBorderColor = "#eab308";
-                else if (block.confidenceBadge === "HIGH" || block.isApproved) cardBorderColor = "#22c55e";
-
-                const displayCandidates = [...(block.topicCandidates || []), ...(block.subjectCandidates || [])]
-                  .filter((c, i, self) => self.findIndex(x => x.nodeId === c.nodeId) === i);
-
-                return (
-                  <div
-                    key={block.BlockId || `${block.PlannedStart}-${index}`}
-                    className={`mos-ocr-block-card ${getDisplayStatus(block.Status) === BLOCK_STATUS.ACTIVE
-                      ? "mos-ocr-block-card--active"
-                      : ""
-                      }`}
-                    style={{ border: `1px solid ${cardBorderColor}` }}
-                  >
-                    <div className="mos-split-grid">
-                      <label className="field-label">
-                        Subject
-                        <input
-                          value={block.PlannedSubject || ""}
-                          onChange={(e) =>
-                            updateOcrDraftBlock(index, { PlannedSubject: e.target.value })
-                          }
-                        />
-                      </label>
-
-                      <label className="field-label">
-                        Topic
-                        <input
-                          value={block.PlannedTopic || ""}
-                          onChange={(e) =>
-                            updateOcrDraftBlock(index, { PlannedTopic: e.target.value })
-                          }
-                        />
-                      </label>
-
-                      <label className="field-label">
-                        Start
-                        <input
-                          value={block.PlannedStart || ""}
-                          onChange={(e) =>
-                            updateOcrDraftBlock(index, { PlannedStart: e.target.value })
-                          }
-                        />
-                      </label>
-
-                      <label className="field-label">
-                        End
-                        <input
-                          value={block.PlannedEnd || ""}
-                          onChange={(e) =>
-                            updateOcrDraftBlock(index, { PlannedEnd: e.target.value })
-                          }
-                        />
-                      </label>
-
-                      <label className="field-label">
-                        Minutes
-                        <input
-                          type="number"
-                          value={block.PlannedMinutes || 0}
-                          onChange={(e) =>
-                            updateOcrDraftBlock(index, {
-                              PlannedMinutes: Number(e.target.value || 0),
-                            })
-                          }
-                        />
-                      </label>
-                    </div>
-
-                    {renderPyqPanel(block)}
-
-
-                    <div style={{ marginTop: 12, display: "flex", justifyContent: "flex-end" }}>
-                      <button className="btn mos-btn-close" onClick={() => removeOcrDraftBlock(index)}>
-                        Remove Block
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="mos-focus-actions" style={{ marginTop: 24 }}>
-              <button
-                disabled={busy}
-                onClick={handleApproveOcrBlocks}
-                style={{ opacity: busy ? 0.6 : 1 }}
-              >
-                {busy ? "Processing..." : "Approve and Continue"}
-              </button>
+            <header className="mos-ocr-review-header">
+              <div className="mos-ocr-review-heading">
+                <div className="mos-ocr-review-eyebrow">OCR Review</div>
+                <h2 className="mos-ocr-review-title">Approve Parsed Plan</h2>
+                <p className="mos-ocr-review-subtitle">
+                  Review what MentorOS extracted. Your original wording stays visible while mapping and PYQ intelligence work in the background.
+                </p>
+              </div>
 
               <button
+                type="button"
+                className="mos-ocr-review-close-btn"
+                aria-label="Close OCR review"
                 disabled={busy}
-                className="btn mos-btn-close"
                 onClick={() => {
                   setOcrApprovalOpen(false);
                   setOcrDraftBlocks([]);
@@ -3318,9 +3224,185 @@ export default function PlanPage() {
                   setStatus("OCR review closed. Nothing was saved or synced.");
                 }}
               >
-                Cancel
+                ✕
               </button>
+            </header>
+
+            <div className="mos-ocr-review-summary-bar">
+              <div className="mos-ocr-review-summary-pills">
+                <span className="mos-ocr-review-pill">
+                  {ocrDraftBlocks.length} {ocrDraftBlocks.length === 1 ? "block" : "blocks"}
+                </span>
+                <span className="mos-ocr-review-pill">
+                  {ocrDraftBlocks.reduce((sum, block) => sum + Number(block?.PlannedMinutes || 0), 0)} min planned
+                </span>
+              </div>
+              <span className="mos-ocr-review-summary-note">Nothing is saved until you approve.</span>
             </div>
+
+            <div className="mos-ocr-review-body">
+              <div className="mos-ocr-review-cards">
+                {ocrDraftBlocks.map((block, index) => {
+                  const rawActivity = String(
+                    block?.RawActivity || block?.rawActivity || block?.Mode || block?.mode || "Study"
+                  ).trim();
+                  const activityLabel = rawActivity
+                    .replace(/[_-]+/g, " ")
+                    .replace(/\b\w/g, (c) => c.toUpperCase());
+                  const confidence = String(block?.confidenceBadge || "").trim().toUpperCase();
+                  const canonicalSubject =
+                    block?.CanonicalSubject || block?.canonicalSubject || block?.finalMapping?.subjectName || "";
+                  const canonicalTopic =
+                    block?.CanonicalTopic || block?.canonicalTopic || block?.finalMapping?.nodeName || "";
+                  const mappingLabel = [canonicalSubject, canonicalTopic].filter(Boolean).join(" · ");
+
+                  return (
+                    <section
+                      key={block.BlockId || `${block.PlannedStart}-${index}`}
+                      className={`mos-ocr-review-card ${
+                        getDisplayStatus(block.Status) === BLOCK_STATUS.ACTIVE
+                          ? "mos-ocr-review-card--active"
+                          : ""
+                      }`}
+                    >
+                      <div className="mos-ocr-review-card-head">
+                        <div className="mos-ocr-review-card-head-left">
+                          <span className="mos-ocr-review-card-index">Block {index + 1}</span>
+                          <div className="mos-ocr-review-card-badges">
+                            <span className="mos-ocr-badge mos-ocr-badge--subject">
+                              {block.PlannedSubject || "Subject"}
+                            </span>
+                            <span className="mos-ocr-badge mos-ocr-badge--activity">{activityLabel}</span>
+                            {confidence ? (
+                              <span className={`mos-ocr-badge mos-ocr-badge--${confidence.toLowerCase()}`}>
+                                {confidence.charAt(0) + confidence.slice(1).toLowerCase()} confidence
+                              </span>
+                            ) : null}
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          className="mos-ocr-review-remove-btn"
+                          onClick={() => removeOcrDraftBlock(index)}
+                        >
+                          Remove
+                        </button>
+                      </div>
+
+                      <div className="mos-ocr-review-card-summary">
+                        <div className="mos-ocr-review-summary-main">
+                          <h3 className="mos-ocr-review-topic-title">{block.PlannedTopic || "Untitled study block"}</h3>
+                          <div className="mos-ocr-review-time-row">
+                            {block.PlannedStart || "—"}–{block.PlannedEnd || "—"}
+                            <span> • </span>
+                            {Number(block.PlannedMinutes || 0)} min
+                          </div>
+                        </div>
+
+                        {mappingLabel ? (
+                          <div className="mos-ocr-review-mapping" title={block?.SyllabusNodeId || block?.syllabusNodeId || ""}>
+                            <span className="mos-ocr-review-mapping-label">Mentor mapping</span>
+                            <strong className="mos-ocr-review-mapping-value">{mappingLabel}</strong>
+                          </div>
+                        ) : null}
+                      </div>
+
+                      <div className="mos-ocr-review-fields">
+                        <label className="mos-ocr-field-label mos-ocr-field-label--subject">
+                          <span>Subject</span>
+                          <input
+                            value={block.PlannedSubject || ""}
+                            onChange={(e) =>
+                              updateOcrDraftBlock(index, { PlannedSubject: e.target.value })
+                            }
+                          />
+                        </label>
+
+                        <label className="mos-ocr-field-label mos-ocr-field-label--topic">
+                          <span>Topic</span>
+                          <input
+                            value={block.PlannedTopic || ""}
+                            onChange={(e) =>
+                              updateOcrDraftBlock(index, { PlannedTopic: e.target.value })
+                            }
+                          />
+                        </label>
+
+                        <label className="mos-ocr-field-label mos-ocr-field-label--start">
+                          <span>Start</span>
+                          <input
+                            value={block.PlannedStart || ""}
+                            onChange={(e) =>
+                              updateOcrDraftBlock(index, { PlannedStart: e.target.value })
+                            }
+                          />
+                        </label>
+
+                        <label className="mos-ocr-field-label mos-ocr-field-label--end">
+                          <span>End</span>
+                          <input
+                            value={block.PlannedEnd || ""}
+                            onChange={(e) =>
+                              updateOcrDraftBlock(index, { PlannedEnd: e.target.value })
+                            }
+                          />
+                        </label>
+
+                        <label className="mos-ocr-field-label mos-ocr-field-label--minutes">
+                          <span>Minutes</span>
+                          <input
+                            type="number"
+                            min="0"
+                            value={block.PlannedMinutes || 0}
+                            onChange={(e) =>
+                              updateOcrDraftBlock(index, {
+                                PlannedMinutes: Number(e.target.value || 0),
+                              })
+                            }
+                          />
+                        </label>
+                      </div>
+
+                      {renderPyqPanel(block)}
+                    </section>
+                  );
+                })}
+              </div>
+            </div>
+
+            <footer className="mos-ocr-review-footer">
+              <div className="mos-ocr-review-footer-note">
+                Review complete? Approving saves these blocks to today&apos;s execution plan.
+              </div>
+
+              <div className="mos-ocr-review-footer-actions">
+                <button
+                  type="button"
+                  disabled={busy}
+                  className="mos-ocr-btn-secondary"
+                  onClick={() => {
+                    setOcrApprovalOpen(false);
+                    setOcrDraftBlocks([]);
+                    setOcrPreviewReminderBlocks([]);
+                    setParsedPlan(null);
+                    setReminderState({});
+                    setStatus("OCR review closed. Nothing was saved or synced.");
+                  }}
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="button"
+                  disabled={busy}
+                  className="mos-ocr-btn-primary"
+                  onClick={handleApproveOcrBlocks}
+                >
+                  {busy ? "Processing…" : "Approve & Continue"}
+                </button>
+              </div>
+            </footer>
           </div>
         </div>
       )}
