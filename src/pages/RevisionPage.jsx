@@ -272,8 +272,8 @@ function RevisionTaskCard({ P, item, onReview, onResolve, loadingId }) {
 
   return (
     <Card P={P} style={{ padding: 16, borderLeft: `4px solid ${borderColor}`, opacity: isLoading ? 0.55 : 1 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 14, alignItems: "flex-start", flexWrap: "wrap" }}>
-        <div style={{ minWidth: 0, flex: 1 }}>
+      <div className="revision-task-row">
+        <div className="revision-task-main">
           <div style={{ display: "flex", gap: 7, flexWrap: "wrap", alignItems: "center", marginBottom: 8 }}>
             <span style={{ color: P.primary, fontSize: 9.5, fontWeight: 850 }}>{paperName}</span>
             <span style={{ color: sev === "high" ? P.red : sev === "medium" ? P.amber : P.green, background: sev === "high" ? P.redSoft : sev === "medium" ? P.amberSoft : P.greenSoft, borderRadius: 999, padding: "3px 7px", fontSize: 8.5, fontWeight: 850 }}>
@@ -285,16 +285,16 @@ function RevisionTaskCard({ P, item, onReview, onResolve, loadingId }) {
             <span style={{ color: P.faint, fontSize: 9 }}>{dueLabel}</span>
           </div>
 
-          <div style={{ color: P.text, fontSize: 13, fontWeight: 850, lineHeight: 1.45 }}>{title}</div>
+          <div style={{ color: P.text, fontSize: 13, fontWeight: 850, lineHeight: 1.45, wordBreak: "break-word", overflowWrap: "break-word" }}>{title}</div>
 
           {whyItMatters ? (
-            <div style={{ color: P.muted, fontSize: 10, lineHeight: 1.55, marginTop: 6 }}>
+            <div style={{ color: P.muted, fontSize: 10, lineHeight: 1.55, marginTop: 6, wordBreak: "break-word", overflowWrap: "break-word" }}>
               <span style={{ color: P.amber, fontWeight: 800 }}>Why this improves marks: </span>{whyItMatters}
             </div>
           ) : null}
 
           {fixText ? (
-            <div style={{ marginTop: 9, background: P.greenSoft, border: `1px solid ${P.green}20`, borderRadius: 9, padding: "9px 11px", color: P.text2, fontSize: 10, lineHeight: 1.5 }}>
+            <div style={{ marginTop: 9, background: P.greenSoft, border: `1px solid ${P.green}20`, borderRadius: 9, padding: "9px 11px", color: P.text2, fontSize: 10, lineHeight: 1.5, wordBreak: "break-word", overflowWrap: "break-word" }}>
               <span style={{ color: P.green, fontWeight: 850 }}>✦ Do this: </span>{displayFix}
               {fixText.length > clamp ? (
                 <button onClick={() => setExpanded(v => !v)} style={{ border: "none", background: "transparent", color: P.primary, fontSize: 9.5, fontWeight: 800, cursor: "pointer", padding: "0 0 0 5px" }}>
@@ -305,16 +305,18 @@ function RevisionTaskCard({ P, item, onReview, onResolve, loadingId }) {
           ) : null}
         </div>
 
-        <div style={{ minWidth: 175 }}>
-          <div style={{ display: "flex", justifyContent: "flex-end", gap: 7, flexWrap: "wrap" }}>
+        <div className="revision-task-actions">
+          <div className="revision-task-btn-group">
             {!completed ? <Button P={P} onClick={() => onReview(item.id)} disabled={isLoading}>Mark Revised</Button> : null}
             {attemptId ? <Button P={P} primary onClick={() => navigate("/mains/answer-writing", { state: { attemptId, mode: "review" } })}>Open Answer →</Button> : null}
             {item.mistake_id && item.mistake_status !== "resolved" ? (
               <button onClick={() => onResolve(item.mistake_id)} style={{ border: "none", background: "transparent", color: P.muted, fontSize: 9.5, fontWeight: 750, cursor: "pointer", padding: "8px 4px" }}>Resolve</button>
             ) : null}
           </div>
-          <div style={{ color: P.faint, fontSize: 8.5, textAlign: "right", marginTop: 8 }}>Reviews: {item.review_count ?? 0} · Interval: {item.interval_days ?? 1}d</div>
-          {score ? <div style={{ color: P.green, fontSize: 9, fontWeight: 800, textAlign: "right", marginTop: 4 }}>Score: {score}</div> : null}
+          <div className="revision-task-meta">
+            <span>Reviews: {item.review_count ?? 0} · Interval: {item.interval_days ?? 1}d</span>
+            {score ? <span style={{ color: P.green, fontWeight: 800 }}>Score: {score}</span> : null}
+          </div>
         </div>
       </div>
     </Card>
@@ -475,11 +477,11 @@ export default function RevisionPage() {
 
   return (
     <div style={{ width: "100%", minWidth: 0, boxSizing: "border-box", background: P.bg, color: P.text, fontFamily: "-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif" }}>
-      <div style={{ width: "100%", boxSizing: "border-box", padding: "24px 26px 44px" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, marginBottom: 17, flexWrap: "wrap" }}>
+      <div className="revision-page-inner">
+        <div className="revision-page-head">
           <div>
             <div style={{ color: P.primary, fontSize: 10, fontWeight: 850, letterSpacing: ".1em", textTransform: "uppercase" }}>Revision · Spaced Recall</div>
-            <h1 style={{ margin: "5px 0 0", color: P.text, fontSize: 30, fontWeight: 900, letterSpacing: "-.035em" }}>Revision Dashboard</h1>
+            <h1 style={{ margin: "5px 0 0", color: P.text, fontSize: "clamp(22px, 5vw, 30px)", fontWeight: 900, letterSpacing: "-.035em" }}>Revision Dashboard</h1>
             <div style={{ color: P.muted, fontSize: 12, marginTop: 5 }}>Today’s spaced recall tasks from your Mains mistakes.</div>
           </div>
           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
@@ -489,16 +491,16 @@ export default function RevisionPage() {
         </div>
 
         {!loading && !error ? (
-          <Card P={P} style={{ padding: 18, marginBottom: 14, background: P.dark ? "linear-gradient(135deg, rgba(245,158,11,.11), rgba(10,100,245,.09))" : "linear-gradient(135deg, rgba(255,247,237,.95), rgba(239,246,255,.95))" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
-              <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                <div style={{ width: 40, height: 40, borderRadius: 12, display: "grid", placeItems: "center", background: P.amberSoft, color: P.amber, fontSize: 18, fontWeight: 900 }}>⚡</div>
-                <div>
+          <Card P={P} style={{ padding: "clamp(14px, 2.5vw, 18px)", marginBottom: 14, background: P.dark ? "linear-gradient(135deg, rgba(245,158,11,.11), rgba(10,100,245,.09))" : "linear-gradient(135deg, rgba(255,247,237,.95), rgba(239,246,255,.95))" }}>
+            <div className="revision-priority-head">
+              <div style={{ display: "flex", gap: 12, alignItems: "center", minWidth: 0 }}>
+                <div style={{ width: 40, height: 40, borderRadius: 12, display: "grid", placeItems: "center", background: P.amberSoft, color: P.amber, fontSize: 18, fontWeight: 900, flexShrink: 0 }}>⚡</div>
+                <div style={{ minWidth: 0 }}>
                   <div style={{ color: P.text, fontSize: 16, fontWeight: 900 }}>Today’s Revision Priority</div>
                   <div style={{ color: P.muted, fontSize: 10.5, marginTop: 3 }}>{top3PriorityTasks.length ? `${top3PriorityTasks.length} high-impact task${top3PriorityTasks.length > 1 ? "s" : ""} from recent mistakes` : "No high-priority tasks scheduled"}</div>
                 </div>
               </div>
-              <div style={{ display: "flex", gap: 8 }}>
+              <div className="revision-priority-actions">
                 <Button P={P} primary disabled={!top3PriorityTasks.length} onClick={startRevision}>Start Revision →</Button>
                 <Button P={P} onClick={() => document.getElementById("revision-tasks")?.scrollIntoView({ behavior: "smooth" })}>View All Tasks</Button>
               </div>
@@ -511,7 +513,7 @@ export default function RevisionPage() {
                     <span style={{ color: P.primary, fontSize: 9, fontWeight: 850 }}>{top3PriorityTasks[0].mistake_paper || top3PriorityTasks[0].subject || "Mains"}</span>
                     <span style={{ color: P.red, background: P.redSoft, borderRadius: 999, padding: "2px 7px", fontSize: 8.5, fontWeight: 850 }}>High Priority</span>
                   </div>
-                  <div style={{ color: P.text, fontSize: 12.5, fontWeight: 850, lineHeight: 1.45 }}>{cleanTaskTitle(top3PriorityTasks[0])}</div>
+                  <div style={{ color: P.text, fontSize: 12.5, fontWeight: 850, lineHeight: 1.45, wordBreak: "break-word" }}>{cleanTaskTitle(top3PriorityTasks[0])}</div>
                   <div style={{ color: P.faint, fontSize: 9.5, marginTop: 6 }}>Marked weak · {formatDueDate(top3PriorityTasks[0].next_review_at || top3PriorityTasks[0].due_date)}</div>
                 </div>
                 {(top3PriorityTasks[0].mistake_attempt_id || top3PriorityTasks[0].source_ref) ? <Button P={P} onClick={() => { const attemptId = top3PriorityTasks[0].mistake_attempt_id || top3PriorityTasks[0].source_ref; navigate("/mains/answer-writing", { state: { attemptId, mode: "review" } }); }}>Open Answer →</Button> : null}
@@ -528,25 +530,31 @@ export default function RevisionPage() {
           <StatCard P={P} icon="✓" tone="green" value={completedCount} label="Completed revisions" sub="This cycle" />
         </div>
 
-        <Card P={P} style={{ padding: 14, marginBottom: 20 }}>
+        <Card P={P} style={{ padding: "clamp(12px, 2vw, 16px)", marginBottom: 20 }}>
           <div style={{ position: "relative", marginBottom: 12 }}>
             <span style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: P.faint, fontSize: 13 }}>⌕</span>
             <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search by subject, topic, or weakness…" style={{ width: "100%", boxSizing: "border-box", border: `1px solid ${P.border}`, background: P.surface2, color: P.text, borderRadius: 10, padding: "10px 12px 10px 34px", outline: "none", fontSize: 11.5, fontFamily: "inherit" }} />
           </div>
 
           <div style={{ display: "grid", gap: 10 }}>
-            <div style={{ display: "flex", gap: 9, alignItems: "center", flexWrap: "wrap" }}>
-              <div style={{ width: 62, color: P.muted, fontSize: 9.5, fontWeight: 800 }}>Paper</div>
-              {[['all','All'],['gs1','GS1'],['gs2','GS2'],['gs3','GS3'],['ethics','GS4'],['essay','Essay'],['geography','Geography']].map(([id,label]) => <Pill key={id} P={P} label={label} active={paperFilter===id} onClick={() => setPaperFilter(id)} />)}
+            <div className="revision-filter-row">
+              <div className="revision-filter-label" style={{ color: P.muted }}>Paper</div>
+              <div className="revision-pill-list">
+                {[['all','All'],['gs1','GS1'],['gs2','GS2'],['gs3','GS3'],['ethics','GS4'],['essay','Essay'],['geography','Geography']].map(([id,label]) => <Pill key={id} P={P} label={label} active={paperFilter===id} onClick={() => setPaperFilter(id)} />)}
+              </div>
             </div>
-            <div style={{ display: "flex", gap: 9, alignItems: "center", flexWrap: "wrap" }}>
-              <div style={{ width: 62, color: P.muted, fontSize: 9.5, fontWeight: 800 }}>Severity</div>
-              {[['all','All','blue'],['high','High','red'],['medium','Medium','amber'],['low','Low','green']].map(([id,label,tone]) => <Pill key={id} P={P} label={label} tone={tone} active={severityFilter===id} onClick={() => setSeverityFilter(id)} />)}
+            <div className="revision-filter-row">
+              <div className="revision-filter-label" style={{ color: P.muted }}>Severity</div>
+              <div className="revision-pill-list">
+                {[['all','All','blue'],['high','High','red'],['medium','Medium','amber'],['low','Low','green']].map(([id,label,tone]) => <Pill key={id} P={P} label={label} tone={tone} active={severityFilter===id} onClick={() => setSeverityFilter(id)} />)}
+              </div>
             </div>
-            <div style={{ display: "flex", gap: 9, alignItems: "center", flexWrap: "wrap" }}>
-              <div style={{ width: 62, color: P.muted, fontSize: 9.5, fontWeight: 800 }}>Show</div>
-              {[['all','All Tasks'],['today','Due Today'],['overdue','Overdue'],['upcoming','Upcoming'],['completed','Completed']].map(([id,label]) => <Pill key={id} P={P} label={label} active={statusFilter===id} onClick={() => setStatusFilter(id)} />)}
-              <Pill P={P} label="Must revise first" tone="amber" active={mustReviseOnly} onClick={() => setMustReviseOnly(v => !v)} />
+            <div className="revision-filter-row">
+              <div className="revision-filter-label" style={{ color: P.muted }}>Show</div>
+              <div className="revision-pill-list">
+                {[['all','All Tasks'],['today','Due Today'],['overdue','Overdue'],['upcoming','Upcoming'],['completed','Completed']].map(([id,label]) => <Pill key={id} P={P} label={label} active={statusFilter===id} onClick={() => setStatusFilter(id)} />)}
+                <Pill P={P} label="Must revise first" tone="amber" active={mustReviseOnly} onClick={() => setMustReviseOnly(v => !v)} />
+              </div>
             </div>
           </div>
         </Card>
@@ -567,11 +575,133 @@ export default function RevisionPage() {
       </div>
 
       <style>{`
+        .revision-page-inner {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 24px 26px 44px;
+        }
+        .revision-page-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 16px;
+          margin-bottom: 17px;
+          flex-wrap: wrap;
+        }
+        .revision-priority-head {
+          display: flex;
+          justify-content: space-between;
+          gap: 14px;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+        .revision-priority-actions {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+        .revision-filter-row {
+          display: flex;
+          gap: 9px;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+        .revision-filter-label {
+          width: 62px;
+          font-size: 9.5px;
+          font-weight: 800;
+          flex-shrink: 0;
+        }
+        .revision-pill-list {
+          display: flex;
+          gap: 6px;
+          flex-wrap: wrap;
+          align-items: center;
+          flex: 1;
+          min-width: 0;
+        }
+        .revision-task-row {
+          display: flex;
+          justify-content: space-between;
+          gap: 14px;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          width: 100%;
+        }
+        .revision-task-main {
+          min-width: 0;
+          flex: 1;
+        }
+        .revision-task-actions {
+          min-width: 175px;
+        }
+        .revision-task-btn-group {
+          display: flex;
+          justify-content: flex-end;
+          gap: 7px;
+          flex-wrap: wrap;
+        }
+        .revision-task-meta {
+          color: ${P.faint};
+          font-size: 8.5px;
+          text-align: right;
+          margin-top: 8px;
+        }
         @media (max-width: 1050px) {
           .revision-kpi-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
         }
+        @media (max-width: 768px) {
+          .revision-page-inner {
+            padding: 12px 2px 32px;
+          }
+          .revision-task-row {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 12px !important;
+          }
+          .revision-task-main {
+            width: 100% !important;
+          }
+          .revision-task-actions {
+            min-width: 0 !important;
+            width: 100% !important;
+            border-top: 1px solid ${P.border};
+            padding-top: 10px;
+            margin-top: 4px;
+          }
+          .revision-task-btn-group {
+            justify-content: flex-start !important;
+          }
+          .revision-task-meta {
+            text-align: left !important;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 6px !important;
+          }
+        }
         @media (max-width: 680px) {
           .revision-kpi-grid { grid-template-columns: 1fr !important; }
+          .revision-page-head {
+            flex-direction: column;
+            align-items: stretch;
+          }
+          .revision-priority-head {
+            flex-direction: column;
+            align-items: stretch;
+          }
+          .revision-priority-actions {
+            width: 100%;
+          }
+          .revision-priority-actions > * {
+            flex: 1;
+          }
+          .revision-filter-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+          }
         }
       `}</style>
     </div>

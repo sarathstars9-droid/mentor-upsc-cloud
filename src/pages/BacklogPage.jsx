@@ -3,6 +3,299 @@ import { BACKEND_URL } from '../config';
 
 const USER_ID = 'moulika';
 
+const BACKLOG_CSS = `
+.backlog-page-wrap {
+  padding: 24px 20px 60px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  color: #fff;
+  box-sizing: border-box;
+  min-width: 0;
+}
+.backlog-header {
+  margin-bottom: 24px;
+}
+.backlog-header h1 {
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  overflow-wrap: break-word;
+}
+.backlog-header p {
+  font-size: 13.5px;
+  color: #94a3b8;
+  margin-top: 6px;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+.backlog-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+  min-width: 0;
+}
+.backlog-kpi-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-width: 0;
+  box-sizing: border-box;
+}
+.backlog-kpi-label {
+  font-size: 12.5px;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.backlog-kpi-val {
+  font-size: clamp(26px, 4vw, 32px);
+  font-weight: 800;
+  line-height: 1.1;
+  overflow-wrap: break-word;
+}
+.backlog-kpi-sub {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 6px;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+.backlog-rebalance-card {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(239, 68, 68, 0.16));
+  border-radius: 18px;
+  padding: 22px 24px;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.backlog-rebalance-info {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.backlog-rebalance-info h3 {
+  font-size: 17px;
+  font-weight: 750;
+  margin: 0 0 6px 0;
+  color: #fbbf24;
+  overflow-wrap: break-word;
+}
+.backlog-rebalance-info p {
+  font-size: 13px;
+  color: #e2e8f0;
+  margin: 0;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+.backlog-rebalance-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.backlog-rebalance-cap {
+  font-size: 12px;
+  color: #cbd5e1;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.backlog-rebalance-input {
+  width: 50px;
+  padding: 6px;
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  color: #fff;
+  text-align: center;
+  font: inherit;
+  font-size: 13px;
+}
+.backlog-rebalance-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+  color: #000;
+  font-weight: 750;
+  border: none;
+  cursor: pointer;
+  font-size: 13.5px;
+  transition: opacity 0.15s ease;
+  white-space: nowrap;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.backlog-rebalance-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.backlog-main-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) 1fr;
+  gap: 20px;
+  min-width: 0;
+}
+.backlog-section-panel {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-width: 0;
+  box-sizing: border-box;
+}
+.backlog-section-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 14px 0;
+  color: #cbd5e1;
+  overflow-wrap: break-word;
+}
+.backlog-split-item {
+  background: rgba(0, 0, 0, 0.32);
+  padding: 13px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.backlog-split-left {
+  min-width: 0;
+}
+.backlog-split-subj {
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #f8fafc;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.backlog-split-count {
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin-top: 2px;
+  overflow-wrap: break-word;
+}
+.backlog-split-hours {
+  font-weight: 800;
+  font-size: 14px;
+  color: #f59e0b;
+  text-align: right;
+  white-space: nowrap;
+}
+.backlog-block-item {
+  background: rgba(0, 0, 0, 0.32);
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.backlog-block-info {
+  min-width: 0;
+}
+.backlog-block-header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 3px;
+  flex-wrap: wrap;
+}
+.backlog-block-subj {
+  font-weight: 700;
+  font-size: 14px;
+  color: #f8fafc;
+  overflow-wrap: break-word;
+}
+.backlog-block-badge {
+  font-size: 9.5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(239, 68, 68, 0.22);
+  color: #fca5a5;
+  text-transform: uppercase;
+  font-weight: 750;
+  flex-shrink: 0;
+}
+.backlog-block-meta {
+  font-size: 11.5px;
+  color: #94a3b8;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.backlog-block-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+.backlog-block-min {
+  font-weight: 800;
+  font-size: 14.5px;
+  color: #fbbf24;
+}
+.backlog-block-rem {
+  font-size: 10.5px;
+  color: #64748b;
+}
+
+@media (max-width: 860px) {
+  .backlog-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 720px) {
+  .backlog-page-wrap {
+    padding: 16px 12px 48px;
+  }
+  .backlog-kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .backlog-rebalance-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 18px 16px;
+    gap: 14px;
+  }
+  .backlog-rebalance-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+  }
+  .backlog-rebalance-cap {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .backlog-rebalance-btn {
+    width: 100%;
+    min-height: 44px;
+  }
+  .backlog-section-panel {
+    padding: 16px 12px;
+  }
+}
+`;
+
 export default function BacklogPage() {
   const [backlogData, setBacklogData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -59,17 +352,14 @@ export default function BacklogPage() {
   };
 
   return (
-    <div className="page-wrap" style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto', color: '#fff' }}>
+    <div className="backlog-page-wrap">
+      <style>{BACKLOG_CSS}</style>
       {/* Page Header */}
-      <div style={{ marginBottom: '28px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div>
-          <h1 style={{ fontSize: '28px', fontWeight: '800', margin: 0, background: 'linear-gradient(90deg, #f59e0b, #ef4444)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-            Backlog Rescue Hub
-          </h1>
-          <p style={{ fontSize: '14px', color: '#94a3b8', marginTop: '6px' }}>
-            Subject-wise backlog tracking, missed hours recovery, and realistic adaptive schedule rebalancing.
-          </p>
-        </div>
+      <div className="backlog-header">
+        <h1>Backlog Rescue Hub</h1>
+        <p>
+          Subject-wise backlog tracking, missed hours recovery, and realistic adaptive schedule rebalancing.
+        </p>
       </div>
 
       {loading ? (
@@ -81,72 +371,85 @@ export default function BacklogPage() {
       ) : (
         <div>
           {/* Metrics Top Row */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '24px' }}>
-            <div style={{ background: 'rgba(255,255,255,0.04)', borderRadius: '16px', padding: '20px', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <div style={{ fontSize: '13px', color: '#94a3b8', marginBottom: '6px' }}>Total Backlog Hours</div>
-              <div style={{ fontSize: '32px', fontWeight: '800', color: backlogData.totalMissedHours > 10 ? '#ef4444' : backlogData.totalMissedHours > 0 ? '#f59e0b' : '#10b981' }}>
+          <div className="backlog-kpi-grid">
+            <div className="backlog-kpi-card">
+              <div className="backlog-kpi-label">Total Backlog Hours</div>
+              <div className="backlog-kpi-val" style={{ color: backlogData.totalMissedHours > 10 ? '#ef4444' : backlogData.totalMissedHours > 0 ? '#f59e0b' : '#10b981' }}>
                 {backlogData.totalMissedHours || 0} hrs
               </div>
-              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '4px' }}>{backlogData.totalMissedMinutes || 0} total uncompleted minutes</div>
+              <div className="backlog-kpi-sub">{backlogData.totalMissedMinutes || 0} total uncompleted minutes</div>
             </div>
 
-            <div style={{ background: 'rgba(255,255,255,0.04)', borderRadius: '16px', padding: '20px', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <div style={{ fontSize: '13px', color: '#94a3b8', marginBottom: '6px' }}>Uncompleted Blocks</div>
-              <div style={{ fontSize: '32px', fontWeight: '800', color: '#f8fafc' }}>
+            <div className="backlog-kpi-card">
+              <div className="backlog-kpi-label">Uncompleted Blocks</div>
+              <div className="backlog-kpi-val" style={{ color: '#f8fafc' }}>
                 {backlogData.totalMissedBlocks || 0} blocks
               </div>
-              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '4px' }}>Missed, skipped or partial sessions</div>
+              <div className="backlog-kpi-sub">Missed, skipped or partial sessions</div>
             </div>
 
-            <div style={{ background: 'rgba(255,255,255,0.04)', borderRadius: '16px', padding: '20px', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <div style={{ fontSize: '13px', color: '#94a3b8', marginBottom: '6px' }}>Recovery Diagnosis</div>
-              <div style={{ fontSize: '14px', color: '#cbd5e1', fontWeight: '600', marginTop: '4px', lineHeight: '1.4' }}>
+            <div className="backlog-kpi-card">
+              <div className="backlog-kpi-label">Recovery Diagnosis</div>
+              <div style={{ fontSize: '13.5px', color: '#cbd5e1', fontWeight: '600', marginTop: '4px', lineHeight: '1.45', wordBreak: 'break-word' }}>
                 {backlogData.recoveryPlan || 'No diagnosis available.'}
               </div>
             </div>
           </div>
 
           {/* Rebalancing Banner Trigger */}
-          <div style={{ background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.15))', borderRadius: '20px', padding: '24px', border: '1px solid rgba(245, 158, 11, 0.3)', marginBottom: '28px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div>
-              <h3 style={{ fontSize: '18px', fontWeight: '700', margin: '0 0 4px 0', color: '#fbbf24' }}>⚡ Adaptive Schedule Rebalancing</h3>
-              <p style={{ fontSize: '14px', color: '#cbd5e1', margin: 0 }}>
+          <div className="backlog-rebalance-card">
+            <div className="backlog-rebalance-info">
+              <h3>⚡ Adaptive Schedule Rebalancing</h3>
+              <p>
                 Redistribute missed backlog blocks realistically across the upcoming 7 days without generating impossible schedules.
               </p>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div style={{ fontSize: '12px', color: '#94a3b8' }}>
-                Max Day Cap:
-                <input type="number" min="6" max="14" value={maxHoursPerDay} onChange={e => setMaxHoursPerDay(e.target.value)} style={{ width: '50px', padding: '6px', marginLeft: '6px', background: '#0f172a', border: '1px solid #334155', borderRadius: '6px', color: '#fff', textAlign: 'center' }} /> hrs
+            <div className="backlog-rebalance-actions">
+              <div className="backlog-rebalance-cap">
+                <span>Max Day Cap:</span>
+                <input
+                  type="number"
+                  min="6"
+                  max="14"
+                  value={maxHoursPerDay}
+                  onChange={e => setMaxHoursPerDay(e.target.value)}
+                  className="backlog-rebalance-input"
+                  aria-label="Max hours per day"
+                />
+                <span>hrs</span>
               </div>
-              <button onClick={handleRebalance} disabled={rebalancing || backlogData.totalMissedBlocks === 0} style={{ padding: '12px 24px', borderRadius: '12px', background: 'linear-gradient(90deg, #f59e0b, #d97706)', color: '#000', fontWeight: '800', border: 'none', cursor: backlogData.totalMissedBlocks === 0 ? 'not-allowed' : 'pointer', fontSize: '14px' }}>
+              <button
+                onClick={handleRebalance}
+                disabled={rebalancing || backlogData.totalMissedBlocks === 0}
+                className="backlog-rebalance-btn"
+              >
                 {rebalancing ? 'Rebalancing...' : 'Run Adaptive Rebalance'}
               </button>
             </div>
           </div>
 
           {rebalanceResult && (
-            <div style={{ padding: '16px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid #10b981', borderRadius: '12px', color: '#6ee7b7', marginBottom: '24px', fontSize: '14px' }}>
+            <div style={{ padding: '14px 16px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid #10b981', borderRadius: '12px', color: '#6ee7b7', marginBottom: '24px', fontSize: '13.5px', wordBreak: 'break-word' }}>
               ✓ {rebalanceResult.message}
             </div>
           )}
 
-          <div style={{ display: 'grid', gridTemplateColumns: '360px 1fr', gap: '24px' }}>
+          <div className="backlog-main-grid">
             {/* Subject Breakdown */}
             <div>
-              <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '20px', padding: '20px', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <h3 style={{ fontSize: '16px', fontWeight: '700', margin: '0 0 16px 0', color: '#cbd5e1' }}>Subject Backlog Split</h3>
+              <div className="backlog-section-panel">
+                <h3 className="backlog-section-title">Subject Backlog Split</h3>
                 {(!backlogData.subjectBreakdown || backlogData.subjectBreakdown.length === 0) ? (
                   <div style={{ color: '#64748b', fontSize: '13px' }}>No subject backlog logged.</div>
                 ) : (
-                  <div style={{ display: 'grid', gap: '12px' }}>
+                  <div style={{ display: 'grid', gap: '10px' }}>
                     {backlogData.subjectBreakdown.map(s => (
-                      <div key={s.subject} style={{ background: 'rgba(0,0,0,0.3)', padding: '14px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                          <span style={{ fontWeight: '700', fontSize: '14px', color: '#f8fafc' }}>{s.subject}</span>
-                          <span style={{ fontWeight: '800', fontSize: '14px', color: '#f59e0b' }}>{s.missedHours} hrs</span>
+                      <div key={s.subject} className="backlog-split-item">
+                        <div className="backlog-split-left">
+                          <div className="backlog-split-subj">{s.subject}</div>
+                          <div className="backlog-split-count">{s.missedBlocksCount} uncompleted session(s)</div>
                         </div>
-                        <div style={{ fontSize: '12px', color: '#94a3b8' }}>{s.missedBlocksCount} uncompleted session(s)</div>
+                        <div className="backlog-split-hours">{s.missedHours} hrs</div>
                       </div>
                     ))}
                   </div>
@@ -156,24 +459,24 @@ export default function BacklogPage() {
 
             {/* Missed Blocks Detailed List */}
             <div>
-              <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '20px', padding: '20px', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <h3 style={{ fontSize: '16px', fontWeight: '700', margin: '0 0 16px 0', color: '#cbd5e1' }}>Uncompleted Blocks Timeline</h3>
+              <div className="backlog-section-panel">
+                <h3 className="backlog-section-title">Uncompleted Blocks Timeline</h3>
                 {(!backlogData.missedBlocks || backlogData.missedBlocks.length === 0) ? (
                   <div style={{ color: '#64748b', fontSize: '13px' }}>Your timeline has no missed blocks!</div>
                 ) : (
                   <div style={{ display: 'grid', gap: '10px' }}>
                     {backlogData.missedBlocks.map(b => (
-                      <div key={b.id || b.blockId} style={{ background: 'rgba(0,0,0,0.3)', padding: '14px 18px', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid rgba(255,255,255,0.05)' }}>
-                        <div>
-                          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '4px' }}>
-                            <span style={{ fontWeight: '700', fontSize: '15px', color: '#f8fafc' }}>{b.subject}</span>
-                            <span style={{ fontSize: '10px', padding: '2px 6px', borderRadius: '4px', background: 'rgba(239,68,68,0.2)', color: '#fca5a5', textTransform: 'uppercase', fontWeight: '700' }}>{b.status}</span>
+                      <div key={b.id || b.blockId} className="backlog-block-item">
+                        <div className="backlog-block-info">
+                          <div className="backlog-block-header">
+                            <span className="backlog-block-subj">{b.subject}</span>
+                            <span className="backlog-block-badge">{b.status}</span>
                           </div>
-                          <div style={{ fontSize: '12px', color: '#94a3b8' }}>{b.topic || b.title || 'Focus Session'} • Date: {b.dayKey}</div>
+                          <div className="backlog-block-meta">{b.topic || b.title || 'Focus Session'} • Date: {b.dayKey}</div>
                         </div>
-                        <div style={{ textAlign: 'right' }}>
-                          <div style={{ fontWeight: '800', fontSize: '15px', color: '#fbbf24' }}>{Math.round(b.remainingMinutes)}m</div>
-                          <div style={{ fontSize: '11px', color: '#64748b' }}>remaining</div>
+                        <div className="backlog-block-right">
+                          <div className="backlog-block-min">{Math.round(b.remainingMinutes)}m</div>
+                          <div className="backlog-block-rem">remaining</div>
                         </div>
                       </div>
                     ))}
