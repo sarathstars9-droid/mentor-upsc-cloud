@@ -1979,16 +1979,68 @@ const LIFECYCLE_ACTIONS = new Set([
 ]);
 const DEFAULT_PLAN_USER = process.env.DEFAULT_USER_ID || "moulika";
 
-async function proxyToGas(payload, scriptUrl) {
-  const body = new URLSearchParams();
-  body.set("data", JSON.stringify(payload));
-  const r = await fetch(scriptUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body,
-  });
-  const text = await r.text();
-  try { return JSON.parse(text); } catch { return { ok: true, raw: text }; }
+async function proxyToGas(payload, scriptUrl, maxRetries = 3) {
+  let attempt = 0;
+  while (attempt < maxRetries) {
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 15000);
+      const body = new URLSearchParams();
+      body.set("data", JSON.stringify(payload));
+      const r = await fetch(scriptUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+        signal: controller.signal,
+      });
+      clearTimeout(timer);
+      const text = await r.text();
+      let parsed;
+      try {
+        parsed = JSON.parse(text);
+      } catch {
+        parsed = { ok: true, raw: text };
+      }
+
+      const bodyText = [
+        parsed?.error,
+        parsed?.message,
+        parsed?.raw
+      ].filter(Boolean).join(' ');
+
+      const bodyLooksTransient =
+        /rate\s*limit|quota|user\s*rate\s*limit\s*exceeded|too\s*many\s*requests|service\s*unavailable|maximum\s*execution\s*time/i
+          .test(bodyText);
+
+      const isTransient =
+        r.status === 429 ||
+        r.status === 503 ||
+        (r.status === 403 && bodyLooksTransient) ||
+        (r.status === 200 && bodyLooksTransient);
+
+      if (isTransient && attempt < maxRetries - 1) {
+        attempt++;
+        const jitter = Math.floor(Math.random() * 250);
+        const delayMs = Math.pow(2, attempt) * 500 + jitter;
+        console.warn(`[proxyToGas] Rate limit / quota / transient error returned for action "${payload?.action}" (status: ${r.status}), retrying in ${delayMs}ms (attempt ${attempt}/${maxRetries})...`);
+        await new Promise(resolve => setTimeout(resolve, delayMs));
+        continue;
+      }
+
+      return parsed;
+    } catch (err) {
+      const isRetryable = err.name === 'AbortError' || err.message?.includes('timeout') || err.message?.includes('ECONNRESET');
+      if (isRetryable && attempt < maxRetries - 1) {
+        attempt++;
+        const jitter = Math.floor(Math.random() * 250);
+        const delayMs = Math.pow(2, attempt) * 500 + jitter;
+        console.warn(`[proxyToGas] Retryable network error for "${payload?.action}" (${err.message}), retrying in ${delayMs}ms (attempt ${attempt}/${maxRetries})...`);
+        await new Promise(resolve => setTimeout(resolve, delayMs));
+        continue;
+      }
+      throw err;
+    }
+  }
 }
 
 app.post("/api/sheets", requireAuth, async (req, res) => {
@@ -2123,6 +2175,89 @@ app.post("/api/sheets", requireAuth, async (req, res) => {
         }
       }
       return res.status(200).json(gasResult);
+    }
+
+    // ── INTERCEPT: syncCalendarFromBlocks → structured validation & diagnostics ──
+    if (action === "syncCalendarFromBlocks") {
+      if (!scriptUrl) {
+        return res.status(500).json({ ok: false, message: "Missing SCRIPT_URL in backend .env" });
+      }
+
+      const date = String(payload.date || payload.dayKey || new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })).slice(0, 10);
+      payload.skipCompanionReminders = true;
+
+      // Validate database blocks for this date and user
+      try {
+        const { rows: dbBlocks } = await query(
+          `SELECT block_id, day_key, planned_start, planned_end, subject, topic, mode, planned_minutes
+           FROM public.study_blocks
+           WHERE user_id = $1 AND day_key = $2
+           ORDER BY planned_start ASC`,
+          [userId, date]
+        );
+
+        for (const b of dbBlocks) {
+          const startTime = b.planned_start || '';
+          const endTime = b.planned_end || '';
+          if (!startTime || !endTime) {
+            console.error('[CALENDAR_BLOCK_SYNC_ERROR]', {
+              blockId: b.block_id,
+              date,
+              startTime,
+              endTime,
+              subject: b.subject,
+              topic: b.topic,
+              mode: b.mode,
+              errorMessage: 'Missing start or end time for block'
+            });
+          }
+        }
+      } catch (dbErr) {
+        console.warn('[CalendarSync] DB block pre-check error (non-fatal):', dbErr.message);
+      }
+
+      try {
+        const gasResult = await proxyToGas(payload, scriptUrl);
+
+        const isSuccessful = gasResult?.ok !== false && (Number(gasResult?.errors || 0) === 0);
+        if (isSuccessful) {
+          await query(
+            `UPDATE public.study_blocks
+             SET calendar_sync_status = 'synced', updated_at = NOW()
+             WHERE user_id = $1 AND day_key = $2`,
+            [userId, date]
+          ).catch(() => {});
+        }
+
+        if (gasResult?.errors > 0 || gasResult?.ok === false) {
+          console.error('[CALENDAR_BLOCK_SYNC_ERROR]', {
+            date,
+            calendarId: gasResult?.calendarId,
+            synced: gasResult?.synced,
+            skipped: gasResult?.skipped,
+            errors: gasResult?.errors,
+            errorMessage: gasResult?.error || gasResult?.message || 'GAS reported one or more sync errors'
+          });
+        }
+
+        return res.status(200).json({
+          ok: isSuccessful,
+          synced: Number(gasResult?.synced || 0),
+          skipped: Number(gasResult?.skipped || 0),
+          errors: Number(gasResult?.errors || 0),
+          companionReminderErrors: 0,
+          calendarId: gasResult?.calendarId || null,
+          dateFilter: gasResult?.dateFilter || date,
+          skipCompanionReminders: true
+        });
+      } catch (proxyErr) {
+        console.error('[CALENDAR_BLOCK_SYNC_ERROR]', {
+          date,
+          errorMessage: proxyErr.message,
+          stack: proxyErr.stack
+        });
+        return res.status(500).json({ ok: false, error: proxyErr.message, errors: 1 });
+      }
     }
 
     // ── Default: proxy everything else to GAS ─────────────────────────────────

@@ -30,25 +30,74 @@ const GAS_LIFECYCLE_ACTION = {
   // retry uses syncCalendarFromBlocks (bulk re-sync), handled separately below
 };
 
-// ── Low-level GAS POST helper ────────────────────────────────────────────────
+// ── Low-level GAS POST helper with Bounded Retry + Exponential Backoff ───────
 
-async function callGas(scriptUrl, payload) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+async function callGas(scriptUrl, payload, maxRetries = 3) {
+  let attempt = 0;
+  while (attempt < maxRetries) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
 
-  const body = new URLSearchParams();
-  body.set('data', JSON.stringify(payload));
+    try {
+      const body = new URLSearchParams();
+      body.set('data', JSON.stringify(payload));
 
-  const r = await fetch(scriptUrl, {
-    method:  'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body,
-    signal:  controller.signal,
-  });
-  clearTimeout(timer);
+      const r = await fetch(scriptUrl, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
+        signal:  controller.signal,
+      });
+      clearTimeout(timer);
 
-  const text = await r.text();
-  try { return JSON.parse(text); } catch { return { ok: false, raw: text }; }
+      const text = await r.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        data = { ok: false, raw: text };
+      }
+
+      const bodyText = [
+        data?.error,
+        data?.message,
+        data?.raw
+      ].filter(Boolean).join(' ');
+
+      const bodyLooksTransient =
+        /rate\s*limit|quota|user\s*rate\s*limit\s*exceeded|too\s*many\s*requests|service\s*unavailable|maximum\s*execution\s*time/i
+          .test(bodyText);
+
+      const isTransient =
+        r.status === 429 ||
+        r.status === 503 ||
+        (r.status === 403 && bodyLooksTransient) ||
+        (r.status === 200 && bodyLooksTransient);
+
+      if (isTransient && attempt < maxRetries - 1) {
+        attempt++;
+        const jitter = Math.floor(Math.random() * 250);
+        const delayMs = Math.pow(2, attempt) * 500 + jitter;
+        console.warn(`[calendarBridge] Rate limit / quota / transient error encountered from GAS (status: ${r.status}), retrying in ${delayMs}ms (attempt ${attempt}/${maxRetries})...`);
+        await new Promise(res => setTimeout(res, delayMs));
+        continue;
+      }
+
+      return data;
+    } catch (err) {
+      clearTimeout(timer);
+      const isRetryable = err.name === 'AbortError' || err.message?.includes('timeout') || err.message?.includes('ECONNRESET');
+      if (isRetryable && attempt < maxRetries - 1) {
+        attempt++;
+        const jitter = Math.floor(Math.random() * 250);
+        const delayMs = Math.pow(2, attempt) * 500 + jitter;
+        console.warn(`[calendarBridge] Retryable network error (${err.message}), retrying in ${delayMs}ms (attempt ${attempt}/${maxRetries})...`);
+        await new Promise(res => setTimeout(res, delayMs));
+        continue;
+      }
+      throw err;
+    }
+  }
 }
 
 // ── Main sync function ────────────────────────────────────────────────────────
@@ -149,11 +198,32 @@ export async function syncBlockToCalendar(block, lifecycleAction, extraData = {}
 
       await markSyncFailed(blockId, userId, dayKey, 'script_error');
       const gasError = data?.error || data?.message || '(no error field)';
+      console.error('[CALENDAR_BLOCK_SYNC_ERROR]', {
+        blockId,
+        date: dayKey,
+        startTime: block.planned_start || block.PlannedStart || '',
+        endTime: block.planned_end || block.PlannedEnd || '',
+        subject: block.subject || block.PlannedSubject || '',
+        topic: block.topic || block.PlannedTopic || '',
+        mode: block.mode || 'STUDY',
+        errorMessage: gasError,
+        apiData: data
+      });
       console.warn(`[calendarBridge] GAS returned not-ok for ${gasAction} — gasError: "${gasError}" — response: ${JSON.stringify(data).slice(0, 300)}`);
       return { ok: false, reason: 'script_error', gasAction, gasError, data };
 
     } catch (err) {
       const reason = err.name === 'AbortError' ? 'timeout' : 'network_error';
+      console.error('[CALENDAR_BLOCK_SYNC_ERROR]', {
+        blockId,
+        date: dayKey,
+        startTime: block.planned_start || block.PlannedStart || '',
+        endTime: block.planned_end || block.PlannedEnd || '',
+        subject: block.subject || block.PlannedSubject || '',
+        topic: block.topic || block.PlannedTopic || '',
+        mode: block.mode || 'STUDY',
+        errorMessage: err.message
+      });
       console.error(`[calendarBridge] ${reason} on ${gasAction}:`, err.message);
       await markSyncFailed(blockId, userId, dayKey, reason);
       return { ok: false, reason, gasAction, error: err.message };
@@ -180,6 +250,7 @@ export async function syncBlocksToCalendar(blocks, userId, dayKey) {
     action: 'syncCalendarFromBlocks',
     userId: userId || process.env.DEFAULT_USER_ID || 'moulika',
     date:   dayKey,
+    skipCompanionReminders: true,
     blocks: blocks.map(b => ({
       blockId:        b.block_id      || b.BlockId        || '',
       dayKey:         b.day_key       || b.DayKey         || dayKey,
@@ -197,17 +268,32 @@ export async function syncBlocksToCalendar(blocks, userId, dayKey) {
   try {
     const data = await callGas(scriptUrl, payload);
 
-    if (data?.ok !== false) {
+    if (data?.ok !== false && (!data?.errors || Number(data.errors) === 0)) {
       console.log(`[calendarBridge] ✓ syncCalendarFromBlocks sent for ${blocks.length} block(s) on ${dayKey}`);
       return { ok: true, gasAction: 'syncCalendarFromBlocks', count: blocks.length, data };
     }
 
     const gasError = data?.error || data?.message || '(no error field)';
+    console.error('[CALENDAR_BLOCK_SYNC_ERROR]', {
+      blockCount: blocks.length,
+      date: dayKey,
+      errors: data?.errors,
+      synced: data?.synced,
+      skipped: data?.skipped,
+      calendarId: data?.calendarId,
+      errorMessage: gasError,
+      apiData: data
+    });
     console.warn(`[calendarBridge] syncCalendarFromBlocks not-ok — gasError: "${gasError}"`);
     return { ok: false, reason: 'script_error', gasError, data };
 
   } catch (err) {
     const reason = err.name === 'AbortError' ? 'timeout' : 'network_error';
+    console.error('[CALENDAR_BLOCK_SYNC_ERROR]', {
+      blockCount: blocks.length,
+      date: dayKey,
+      errorMessage: err.message
+    });
     console.error(`[calendarBridge] ${reason} on syncCalendarFromBlocks:`, err.message);
     return { ok: false, reason, error: err.message };
   }

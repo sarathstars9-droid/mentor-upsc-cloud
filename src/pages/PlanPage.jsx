@@ -2444,14 +2444,24 @@ export default function PlanPage() {
         const calSkippedRatio = calTotal > 0 ? calSkipped / calTotal : 0;
 
         if (calFailed) {
-          console.error("syncCalendarFromBlocks failed:", calOut);
+          console.error("[CALENDAR_BLOCK_SYNC_ERROR]", {
+            date: selectedDate,
+            errors: calOut?.errors,
+            synced: calOut?.synced,
+            skipped: calOut?.skipped,
+            calendarId: calOut?.calendarId,
+            errorMessage: calOut?.message || calOut?.error || "Calendar sync reported failure"
+          });
         } else if (calTotal >= 20 && calSkippedRatio > 0.9) {
           console.warn("High skip ratio in calendar sync:", calOut);
         } else {
           console.log("syncCalendarFromBlocks success:", calOut);
         }
       } catch (err) {
-        console.error("syncCalendarFromBlocks failed:", err);
+        console.error("[CALENDAR_BLOCK_SYNC_ERROR]", {
+          date: selectedDate,
+          errorMessage: err?.message || String(err)
+        });
       }
 
       setStatus("Syncing fixed reminders...");
