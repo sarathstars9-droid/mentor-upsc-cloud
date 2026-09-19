@@ -2759,6 +2759,7 @@ setupMentorVoiceGateway(server);
 
 console.log("[BOOT] about to listen", { HOST, PORT });
 server.listen(PORT, HOST, () => {
+  console.log('[DEPLOY_VERSION] plan-save-postcommit-source-id-v2');
   console.log(`backend running on http://${HOST}:${PORT}`);
   
   // Start system health heartbeat checker

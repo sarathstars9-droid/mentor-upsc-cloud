@@ -1248,6 +1248,7 @@ function toConfidenceLabel(val) {
 }
 
 export async function savePlanBlocksAndLogEvents(userId, date, items) {
+  console.log('[PLAN_SAVE_VERSION] postcommit-notification-cleanup-v2');
   console.log(`[Plan Upload] Today's plan upload starting for user: ${userId}, date: ${date}, block count: ${items.length}`);
   const client = await pool.connect();
   try {
@@ -1272,15 +1273,6 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
         client
       });
     }
-
-    // Cancel / Invalidate pending no-plan and recovery-plan notification jobs for that user and date
-    await client.query(
-      `DELETE FROM public.notification_events
-       WHERE user_id = $1
-         AND day_key = $2
-         AND notification_type IN ('PLAN_NOT_UPLOADED', 'NO_PLAN_STRICT_9AM', 'RECOVERY_PLAN_12PM', 'HIGH_RISK_INTERVENTION_3PM', 'EMERGENCY_NON_ZERO_6PM')`,
-      [userId, date]
-    ).catch(e => console.error('[savePlanBlocksAndLogEvents] Failed to delete pending no-plan notifications:', e.message));
 
     for (const b of items) {
       if (!b.blockId) continue;
@@ -1516,6 +1508,37 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
     }
 
     await client.query('COMMIT');
+    console.log(`[savePlanBlocksAndLogEvents] plan_save=success for user: ${userId}, date: ${date}, block_count: ${items.length}`);
+
+    // Best-effort cleanup of obsolete NO_PLAN and recovery-plan notification jobs for that user and date
+    const cleanupTypes = [
+      'PLAN_NOT_UPLOADED',
+      'NO_PLAN_STRICT_9AM',
+      'RECOVERY_PLAN_12PM',
+      'HIGH_RISK_INTERVENTION_3PM',
+      'EMERGENCY_NON_ZERO_6PM'
+    ];
+    try {
+      const notifResult = await pool.query(
+        `DELETE FROM public.notification_events
+         WHERE user_id = $1
+           AND source_id = $2
+           AND notification_type = ANY($3::text[])`,
+        [userId, date, cleanupTypes]
+      );
+      console.log('[savePlanBlocksAndLogEvents] notification_cleanup=success', {
+        userId,
+        date,
+        types: cleanupTypes,
+        deletedCount: notifResult?.rowCount ?? 0
+      });
+    } catch (notifErr) {
+      console.warn('[savePlanBlocksAndLogEvents] notification_cleanup=failure', {
+        userId,
+        date,
+        error: notifErr.message
+      });
+    }
 
     // Trigger Telegram notification for PLAN_ACCEPTED_SUMMARY (Morning Pre-Block Recall)
     try {
@@ -1538,12 +1561,10 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
 
     console.log(`[Plan Upload] Today's plan successfully uploaded and saved for user: ${userId}, date: ${date}`);
 
-
-
     return { ok: true };
   } catch (err) {
-    await client.query('ROLLBACK');
-    console.error('[savePlanBlocksAndLogEvents] Transaction failed:', err.message);
+    await client.query('ROLLBACK').catch(() => {});
+    console.error(`[savePlanBlocksAndLogEvents] plan_save=failure for user: ${userId}, date: ${date}:`, err.message);
     throw err;
   } finally {
     client.release();
