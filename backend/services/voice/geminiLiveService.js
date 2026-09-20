@@ -168,6 +168,16 @@ export class GeminiLiveService {
       if (msg.serverContent) {
         const sc = msg.serverContent;
 
+        // Fallback userTurn check if inputTranscription was missing
+        if (sc.userTurn?.parts) {
+          for (const part of sc.userTurn.parts) {
+            if (part.text) {
+              console.log(`[VOICE DEBUG] userTurn text fallback: "${part.text}"`);
+              this.emit({ type: 'final_transcript', text: part.text });
+            }
+          }
+        }
+
         // Native Barge-in / Interruption
         if (sc.interrupted === true) {
           console.log('[GeminiLive] Native serverContent.interrupted triggered! Halting audio.');
@@ -228,10 +238,12 @@ export class GeminiLiveService {
       const base64Data = buffer.toString('base64');
       const payload = {
         realtimeInput: {
-          audio: {
-            mimeType: 'audio/pcm;rate=16000',
-            data: base64Data
-          }
+          mediaChunks: [
+            {
+              mimeType: 'audio/pcm;rate=16000',
+              data: base64Data
+            }
+          ]
         }
       };
       this.ws.send(JSON.stringify(payload));
