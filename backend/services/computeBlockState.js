@@ -86,21 +86,21 @@ export function toFrontendBlock(dbBlock, gasBlock = {}) {
 
   const result = {
     // ── Schedule fields from GAS / Sheets ───────────────────────────────────
-    Title:              gasBlock.Title          || computed.title           || '',
-    PlannedSubject:     gasBlock.PlannedSubject || computed.subject         || '',
-    PlannedTopic:       gasBlock.PlannedTopic   || computed.topic           || '',
-    PlannedStart:       gasBlock.PlannedStart   || computed.planned_start   || '',
-    PlannedEnd:         gasBlock.PlannedEnd     || computed.planned_end     || '',
-    PlannedMinutes:     gasBlock.PlannedMinutes ?? computed.planned_minutes ?? 0,
-    Mode:               gasBlock.Mode           || computed.block_type      || '',
-    RawText:            gasBlock.RawText        || computed.raw_text        || '',
-    OutputExpected:     gasBlock.OutputExpected || computed.output_expected || '',
-    Subtopic:           gasBlock.Subtopic       || computed.subtopic        || '',
-    SyllabusNodeId:     gasBlock.SyllabusNodeId ?? computed.node_id ?? '',
+    Title:              gasBlock.Title          || computed.title           || computed.Title           || '',
+    PlannedSubject:     gasBlock.PlannedSubject || computed.subject         || computed.PlannedSubject || '',
+    PlannedTopic:       gasBlock.PlannedTopic   || computed.topic           || computed.PlannedTopic   || '',
+    PlannedStart:       gasBlock.PlannedStart   || computed.planned_start   || computed.PlannedStart   || '',
+    PlannedEnd:         gasBlock.PlannedEnd     || computed.planned_end     || computed.PlannedEnd     || '',
+    PlannedMinutes:     gasBlock.PlannedMinutes ?? computed.planned_minutes ?? computed.PlannedMinutes ?? 0,
+    Mode:               gasBlock.Mode           || computed.block_type      || computed.Mode           || '',
+    RawText:            gasBlock.RawText        || computed.raw_text        || computed.RawText        || '',
+    OutputExpected:     gasBlock.OutputExpected || computed.output_expected || computed.OutputExpected || '',
+    Subtopic:           gasBlock.Subtopic       || computed.subtopic        || computed.Subtopic       || '',
+    SyllabusNodeId:     gasBlock.SyllabusNodeId ?? computed.node_id ?? computed.SyllabusNodeId ?? '',
     ...gasBlock,
 
     // ── Lifecycle fields from PostgreSQL (override any GAS values) ──────────
-    BlockId:            computed.block_id || computed.id,
+    BlockId:            computed.block_id || computed.BlockId || computed.id,
     Date:               computed.day_key,
     Status:             computed.status,
 

@@ -137,9 +137,8 @@ router.get('/', async (req, res) => {
   }
 
   try {
-    const uid    = userId(req);
-    const rows = await getBlocksForDay(uid, dayKey);
-    const blocks = rows.map(r => toFrontendBlock(r));
+    const uid = userId(req);
+    const blocks = await getBlocksForDay(uid, dayKey);
     return res.json({ ok: true, source: 'postgres', date: dayKey, blocks });
   } catch (err) {
     console.error('[GET /api/plan/blocks]', err);
