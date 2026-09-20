@@ -124,8 +124,25 @@ export function resolveBlockRecordedDuration(block, logs = [], events = []) {
     }
   }
 
-  // Rule 4: Accepted self-reported duration from study events
-  const blockEvents = events.filter(e => e.block_id === block.id || (e.metadata_json && e.metadata_json.blockId === block.block_id));
+  // Reset-boundary guard: If block is currently planned with no started_at and 0 actual_minutes,
+  // pre-reset execution cannot contribute to current totals.
+  if (block.status === 'planned' && !block.started_at && (Number(block.actual_minutes) || 0) === 0) {
+    return { seconds: 0, source: 'PLANNED_ZERO', issues };
+  }
+
+  // Rule 4: Accepted self-reported duration from study events (excluding pre-reset events)
+  const resetEvent = events.find(e => e.event_type === 'DAY_EXECUTION_RESET' && (e.metadata_json?.dayKey === block.day_key || !e.metadata_json?.dayKey));
+  const resetTime = resetEvent ? new Date(resetEvent.created_at || 0).getTime() : 0;
+
+  const blockEvents = events.filter(e => {
+    const isTargetBlock = e.block_id === block.id || (e.metadata_json && e.metadata_json.blockId === block.block_id);
+    if (!isTargetBlock) return false;
+    if (resetTime > 0) {
+      const eventTime = new Date(e.created_at || 0).getTime();
+      if (eventTime <= resetTime) return false;
+    }
+    return true;
+  });
   const selfReportEvent = blockEvents.find(e => e.event_type === 'BLOCK_COMPLETED' || e.event_type === 'BLOCK_STOPPED');
   if (selfReportEvent && selfReportEvent.metadata_json && selfReportEvent.metadata_json.actualMinutes > 0) {
     return { seconds: selfReportEvent.metadata_json.actualMinutes * 60, source: 'SELF_REPORT_EVENT', issues };

@@ -100,7 +100,7 @@ export function toFrontendBlock(dbBlock, gasBlock = {}) {
     ...gasBlock,
 
     // ── Lifecycle fields from PostgreSQL (override any GAS values) ──────────
-    BlockId:            computed.id || computed.block_id,
+    BlockId:            computed.block_id || computed.id,
     Date:               computed.day_key,
     Status:             computed.status,
 

@@ -16,6 +16,8 @@ import { fetchWithAuth } from "../utils/auth";
 import HeroSection from "../components/Plan/HeroSection.jsx";
 import SpotlightCard from "../components/Plan/SpotlightCard.jsx";
 import PlanRightRail from "../components/Plan/PlanRightRail.jsx";
+import TimePicker12Hour from "../components/Plan/TimePicker12Hour.jsx";
+import ManageTodayModal from "../components/Plan/ManageTodayModal.jsx";
 import "../styles/mentoros-plan.css";
 
 import {
@@ -761,99 +763,252 @@ function getBlockPyqNavPath(block) {
    Lets the user manually add a study block by typing free text.
    Calls /api/blocks/resolve to classify, then appends to todayBlocks.
    ─────────────────────────────────────────────────────────────────────────── */
-function AddBlockModal({ open, busy, onClose, onAdd }) {
+function AddBlockModal({ open, busy, onClose, onSave, editingBlock = null, existingBlocks = [] }) {
   const [text, setText] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
+  const [subject, setSubject] = useState("");
+  const [startTime, setStartTime] = useState("09:00");
+  const [endTime, setEndTime] = useState("10:00");
   const [resolving, setResolving] = useState(false);
   const [resolveError, setResolveError] = useState("");
 
+  useEffect(() => {
+    if (open) {
+      if (editingBlock) {
+        setText(editingBlock.PlannedTopic || editingBlock.topic || editingBlock.PlannedSubject || "");
+        setSubject(editingBlock.PlannedSubject || editingBlock.subject || "");
+        setStartTime(editingBlock.PlannedStart || editingBlock.start || "09:00");
+        setEndTime(editingBlock.PlannedEnd || editingBlock.end || "10:00");
+      } else {
+        const now = new Date();
+        const start = now.toTimeString().slice(0, 5);
+        const endD = new Date(now.getTime() + 60 * 60000);
+        const end = endD.toTimeString().slice(0, 5);
+        setText("");
+        setSubject("");
+        setStartTime(start);
+        setEndTime(end);
+      }
+      setResolveError("");
+    }
+  }, [open, editingBlock]);
+
   if (!open) return null;
+
+  const startMin = hhmmToMinutes(startTime);
+  const endMin = hhmmToMinutes(endTime);
+  const durationMin = (startMin !== null && endMin !== null && endMin > startMin) ? endMin - startMin : 0;
+
+  let validationError = "";
+  if (startMin === null || endMin === null) {
+    validationError = "Please select valid start and end times.";
+  } else if (endMin <= startMin) {
+    validationError = "End time must be after start time.";
+  } else {
+    const targetBlockId = editingBlock?.BlockId || editingBlock?.blockId;
+    const hasOverlap = (existingBlocks || []).some((b) => {
+      const bId = b.BlockId || b.blockId;
+      if (targetBlockId && bId === targetBlockId) return false; // exclude self!
+      const bStart = hhmmToMinutes(b.PlannedStart || b.start);
+      const bEnd = hhmmToMinutes(b.PlannedEnd || b.end);
+      if (bStart === null || bEnd === null) return false;
+      return (startMin < bEnd && endMin > bStart);
+    });
+
+    if (hasOverlap) {
+      validationError = "Selected time range overlaps with another scheduled block.";
+    }
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!text.trim()) return;
+    if (!text.trim() || validationError) return;
     setResolving(true);
     setResolveError("");
     try {
-      // Compute minutes so the resolver can split accurately
-      const sm = hhmmToMinutes(startTime);
-      const em = hhmmToMinutes(endTime);
-      const blockMinutes = (sm != null && em != null && em > sm) ? em - sm : 0;
-      const resolved = await resolveBlock(text.trim(), blockMinutes || undefined);
-      onAdd({ text: text.trim(), startTime, endTime, resolved });
-      setText(""); setStartTime(""); setEndTime("");
+      let resolved = null;
+      if (!editingBlock) {
+        resolved = await resolveBlock(text.trim(), durationMin || undefined);
+      }
+      onSave({
+        blockId: editingBlock?.BlockId || editingBlock?.blockId,
+        text: text.trim(),
+        subject: subject.trim(),
+        startTime,
+        endTime,
+        plannedMinutes: durationMin,
+        resolved,
+        isEdit: !!editingBlock,
+      });
+      onClose();
     } catch (err) {
-      setResolveError("Block resolver unavailable. Block will be added with basic info.");
-      onAdd({ text: text.trim(), startTime, endTime, resolved: null });
-      setText(""); setStartTime(""); setEndTime("");
+      setResolveError("Save failed. Will proceed with manual input.");
+      onSave({
+        blockId: editingBlock?.BlockId || editingBlock?.blockId,
+        text: text.trim(),
+        subject: subject.trim(),
+        startTime,
+        endTime,
+        plannedMinutes: durationMin,
+        resolved: null,
+        isEdit: !!editingBlock,
+      });
+      onClose();
     } finally {
       setResolving(false);
     }
   }
 
   return (
-    <div className="mos-focus-overlay" onClick={onClose}>
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: "rgba(15, 23, 42, 0.75)",
+        backdropFilter: "blur(4px)",
+        zIndex: 1100,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "16px",
+      }}
+      onClick={onClose}
+    >
       <div
-        className="focus-modal"
+        style={{
+          width: "min(520px, 96vw)",
+          maxHeight: "90vh",
+          overflowY: "auto",
+          backgroundColor: "#ffffff",
+          borderRadius: "16px",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+          padding: "24px",
+          border: "1px solid #e2e8f0",
+          opacity: 1,
+        }}
         onClick={(e) => e.stopPropagation()}
-        style={{ width: "min(480px, 96vw)", maxHeight: "88vh", overflow: "auto" }}
       >
-        <div className="mos-focus-kicker">Manual Entry</div>
-        <h2 className="mos-focus-title" style={{ marginBottom: 4 }}>Add Study Block</h2>
-        <div className="mos-focus-subtitle" style={{ marginBottom: 20 }}>
-          Type a block description — the resolver will classify it automatically.
+        <div style={{ fontSize: 12, fontWeight: 800, color: "#0A64F5", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 2 }}>
+          {editingBlock ? "Edit Study Block" : "Manual Entry"}
+        </div>
+        <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0f172a", margin: "0 0 4px 0" }}>
+          {editingBlock ? "Update Study Block" : "Add Study Block"}
+        </h2>
+        <div style={{ fontSize: 13, color: "#64748b", marginBottom: 20 }}>
+          {editingBlock ? "Modify schedule details below." : "Type block details — MentorOS will classify it."}
         </div>
 
-        <form onSubmit={handleSubmit}>
-          <label className="field-label" style={{ marginBottom: 14, display: "block" }}>
-            Block Description *
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#1e293b" }}>Block Description / Topic *</span>
             <input
               autoFocus
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="e.g. Polity revision, Economy PYQs, World mapping"
-              style={{ marginTop: 6, fontSize: 15, fontWeight: 600 }}
+              style={{
+                height: 42,
+                padding: "0 12px",
+                borderRadius: 8,
+                border: "1px solid #cbd5e1",
+                background: "#ffffff",
+                color: "#0f172a",
+                fontSize: 14,
+                fontWeight: 600,
+              }}
               required
             />
           </label>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 20 }}>
-            <label className="field-label">
-              Start Time
-              <input
-                type="time"
-                value={startTime}
-                onChange={(e) => setStartTime(e.target.value)}
-                style={{ marginTop: 6 }}
-              />
-            </label>
-            <label className="field-label">
-              End Time
-              <input
-                type="time"
-                value={endTime}
-                onChange={(e) => setEndTime(e.target.value)}
-                style={{ marginTop: 6 }}
-              />
-            </label>
+          <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#1e293b" }}>Subject (Optional)</span>
+            <input
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              placeholder="e.g. Polity, Economy, Geography"
+              style={{
+                height: 42,
+                padding: "0 12px",
+                borderRadius: 8,
+                border: "1px solid #cbd5e1",
+                background: "#ffffff",
+                color: "#0f172a",
+                fontSize: 14,
+                fontWeight: 600,
+              }}
+            />
+          </label>
+
+          {/* Explicit 12-Hour AM/PM Time Pickers */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            <TimePicker12Hour label="Start Time *" value={startTime} onChange={setStartTime} />
+            <TimePicker12Hour label="End Time *" value={endTime} onChange={setEndTime} />
           </div>
 
-          {resolveError && (
-            <div style={{ color: "#fca5a5", fontSize: 12, marginBottom: 12 }}>{resolveError}</div>
+          {/* Duration Indicator */}
+          <div
+            style={{
+              fontSize: 13,
+              fontWeight: 700,
+              color: durationMin > 0 ? "#0A64F5" : "#64748b",
+              background: "#f0f6ff",
+              padding: "8px 12px",
+              borderRadius: 8,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <span>Calculated Duration:</span>
+            <span>{durationMin > 0 ? `${durationMin} min (${Math.floor(durationMin / 60)}h ${durationMin % 60}m)` : "0 min"}</span>
+          </div>
+
+          {/* Validation Error / Overlap Warning */}
+          {validationError && (
+            <div style={{ color: "#dc2626", background: "#fef2f2", border: "1px solid #fecaca", padding: "8px 12px", borderRadius: 8, fontSize: 13, fontWeight: 600 }}>
+              ⚠️ {validationError}
+            </div>
           )}
 
-          <div className="mos-focus-actions">
+          {resolveError && <div style={{ color: "#d97706", fontSize: 12 }}>{resolveError}</div>}
+
+          {/* Actions */}
+          <div style={{ display: "flex", justifyContent: "flex-end", gap: 10, marginTop: 8 }}>
+            <button
+              type="button"
+              onClick={onClose}
+              style={{
+                padding: "10px 18px",
+                borderRadius: 8,
+                background: "#ffffff",
+                color: "#475569",
+                fontWeight: 700,
+                fontSize: 13,
+                border: "1px solid #cbd5e1",
+                cursor: "pointer",
+              }}
+            >
+              Cancel
+            </button>
             <button
               type="submit"
-              className="btn btn-primary"
-              disabled={resolving || busy || !text.trim()}
-              style={{ opacity: resolving ? 0.6 : 1 }}
+              disabled={resolving || busy || !text.trim() || !!validationError}
+              style={{
+                padding: "10px 20px",
+                borderRadius: 8,
+                background: "#0A64F5",
+                color: "#ffffff",
+                fontWeight: 700,
+                fontSize: 13,
+                border: "none",
+                cursor: "pointer",
+                opacity: resolving || busy || !text.trim() || !!validationError ? 0.6 : 1,
+                boxShadow: "0 2px 4px rgba(10, 100, 245, 0.2)",
+              }}
             >
-              {resolving ? "Classifying…" : "Add Block"}
-            </button>
-            <button type="button" className="btn mos-btn-close" onClick={onClose}>
-              Cancel
+              {resolving ? "Processing…" : editingBlock ? "Save Changes" : "Add Block"}
             </button>
           </div>
         </form>
@@ -1135,6 +1290,8 @@ export default function PlanPage() {
   });
 
   const [addBlockOpen, setAddBlockOpen] = useState(false);
+  const [manageTodayOpen, setManageTodayOpen] = useState(false);
+  const [editingBlock, setEditingBlock] = useState(null);
   const [activeTab, setActiveTab] = useState("sequence");
   const [nowTick, setNowTick] = useState(Date.now());
 
@@ -2786,7 +2943,7 @@ export default function PlanPage() {
           <div className="mos-sequence-card" style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 16, padding: "28px 32px", display: "flex", flexDirection: "column", gap: 16 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", margin: 0 }}>Today's Sequence</h2>
-              <button onClick={() => setAddBlockOpen(true)} style={{ background: "var(--bg-surface)", color: "var(--text-primary)", border: "1px solid var(--border-default)", borderRadius: 8, padding: "6px 12px", fontWeight: 600, fontSize: 13, cursor: "pointer" }}>Manage Today</button>
+              <button onClick={() => setManageTodayOpen(true)} style={{ background: "var(--bg-surface)", color: "var(--text-primary)", border: "1px solid var(--border-default)", borderRadius: 8, padding: "6px 12px", fontWeight: 600, fontSize: 13, cursor: "pointer" }}>Manage Today</button>
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 8 }}>
@@ -3039,101 +3196,136 @@ export default function PlanPage() {
       </details>
       )}
 
+      <ManageTodayModal
+        open={manageTodayOpen}
+        onClose={() => setManageTodayOpen(false)}
+        todayBlocks={todayBlocks}
+        onOpenAddBlock={() => {
+          setEditingBlock(null);
+          setAddBlockOpen(true);
+        }}
+        onEditBlock={(block) => {
+          setEditingBlock(block);
+          setAddBlockOpen(true);
+        }}
+        onDeleteBlock={async (block) => {
+          setBusy(true);
+          setStatus(`Deleting block "${block.PlannedSubject || "study block"}"...`);
+          try {
+            const res = await post("deleteBlock", { blockId: block.BlockId, dayKey: date });
+            if (!res?.ok) {
+              setStatus(`❌ Delete block failed: ${res?.message || "unknown"}`);
+            } else {
+              setStatus("✅ Block deleted.");
+              await loadBlocksForDate(date);
+            }
+          } catch (err) {
+            setStatus(`❌ Delete block failed: ${err.message}`);
+          } finally {
+            setBusy(false);
+          }
+        }}
+        onResetExecution={async () => {
+          setBusy(true);
+          setStatus("Resetting execution...");
+          try {
+            const res = await post("resetDayExecution", { dayKey: date });
+            if (!res?.ok) {
+              setStatus(`❌ Reset execution failed: ${res?.message || "unknown"}`);
+            } else {
+              setStatus("✅ Execution reset.");
+              await loadBlocksForDate(date);
+            }
+          } catch (err) {
+            setStatus(`❌ Reset execution failed: ${err.message}`);
+          } finally {
+            setBusy(false);
+          }
+        }}
+        onClearTimetable={async () => {
+          setBusy(true);
+          setStatus("Clearing timetable...");
+          try {
+            const res = await post("clearTodayTimetable", { dayKey: date });
+            if (!res?.ok) {
+              setStatus(`❌ Clear timetable failed: ${res?.message || "unknown"}`);
+            } else {
+              setStatus("✅ Timetable cleared.");
+              await loadBlocksForDate(date);
+            }
+          } catch (err) {
+            setStatus(`❌ Clear timetable failed: ${err.message}`);
+          } finally {
+            setBusy(false);
+          }
+        }}
+        busy={busy}
+      />
+
       <AddBlockModal
         open={addBlockOpen}
         busy={busy}
-        onClose={() => setAddBlockOpen(false)}
-        onAdd={({ text, startTime, endTime, resolved }) => {
-          const now = new Date();
-          const defaultStart = startTime || now.toTimeString().slice(0, 5);
-          const defaultEnd = endTime || (() => {
-            const d = new Date(now.getTime() + 60 * 60000);
-            return d.toTimeString().slice(0, 5);
-          })();
-          const startMin = hhmmToMinutes(defaultStart) ?? 0;
-          const endMin = hhmmToMinutes(defaultEnd) ?? (startMin + 60);
-          const totalMinutes = Math.max(0, endMin - startMin);
-
-          function makeBlock(subject, topic, pStart, pEnd, pMin, extra = {}) {
-            return {
-              BlockId: `manual_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
-              PlannedSubject: subject || text,
-              PlannedTopic: topic || text,
-              PlannedStart: pStart,
-              PlannedEnd: pEnd,
-              PlannedMinutes: pMin,
-              ActualStart: "", ActualEnd: "", ActualMinutes: 0,
-              PauseCount: 0, TotalPauseMinutes: 0,
-              LastPauseAt: "", LastResumeAt: "",
-              Status: BLOCK_STATUS.PLANNED,
-              finalMapping: {
-                subjectId: "", subjectName: subject || text,
-                nodeId: "", nodeName: topic || text,
-                mappingSource: "MANUAL_RESOLVER", resolverConfidence: 0, isApproved: false,
-              },
-              mappedNodes: [],
-              _isManual: true,
-              ...extra,
-            };
-          }
-
-          // ── Split-block path: resolver detected 2+ subjects ───────────────
-          const subBlocks = Array.isArray(resolved?.subBlocks) && resolved.subBlocks.length >= 2
-            ? resolved.subBlocks
-            : null;
-
-          if (subBlocks) {
-            const perMin = Math.floor(totalMinutes / subBlocks.length);
-            const newBlocks = subBlocks.map((sub, i) => {
-              const subStartMin = startMin + i * perMin;
-              const subEndMin = i === subBlocks.length - 1 ? endMin : startMin + (i + 1) * perMin;
-              const subjectLabel = sub.splitSubjectLabel || sub.resolution?.subjectLabel || text;
-              const activityLabel = sub.resolution?.activityType || sub.resolution?.meta?.activityType || text;
-              const subNodeId = sub.resolution?.nodeId || "";
-              const subStage = sub.resolution?.stageLock || sub.detections?.stage?.stage || "";
-              const subPaper = sub.resolution?.gsPaper || "";
-              return makeBlock(
-                subjectLabel, activityLabel,
-                minutesToHHMM(subStartMin), minutesToHHMM(subEndMin),
-                subEndMin - subStartMin,
-                {
-                  _isSplit: true, _splitIndex: i,
-                  finalMapping: {
-                    subjectId: "", subjectName: subjectLabel,
-                    nodeId: subNodeId, nodeName: activityLabel,
-                    stageLock: subStage, gsPaper: subPaper,
-                    mappingSource: "SPLIT_RESOLVER",
-                    resolverConfidence: sub.overallConfidence || 0,
-                    isApproved: false,
-                  },
-                }
-              );
-            });
-            setTodayBlocks((prev) => [...prev, ...newBlocks]);
-            setAddBlockOpen(false);
-            setStatus(`✅ Split into ${newBlocks.length} blocks: ${subBlocks.map(s => s.splitSubjectLabel).join(" + ")}`);
-            return;
-          }
-
-          // ── Single-block path ─────────────────────────────────────────────
-          const resolverData = resolved?.ok !== false ? {
-            subjectLabel: resolved?.resolution?.subjectLabel || resolved?.subject || "",
-            activityType: resolved?.resolution?.activityType || resolved?.activityType || text,
-            stage: resolved?.resolution?.stageLock || resolved?.stage || "",
-            confidence: resolved?.overallConfidence ?? null,
-            tags: resolved?.resolution?.tags || [],
-          } : null;
-
-          const manualBlock = makeBlock(
-            resolverData?.subjectLabel, resolverData?.activityType,
-            defaultStart, defaultEnd, totalMinutes,
-            { _resolverData: resolverData }
-          );
-          manualBlock.finalMapping.resolverConfidence = resolverData?.confidence || 0;
-
-          setTodayBlocks((prev) => [...prev, manualBlock]);
+        onClose={() => {
           setAddBlockOpen(false);
-          setStatus(`✅ Block "${text}" added manually.`);
+          setEditingBlock(null);
+        }}
+        editingBlock={editingBlock}
+        existingBlocks={todayBlocks}
+        onSave={async ({ blockId, text, subject, startTime, endTime, plannedMinutes, resolved, isEdit }) => {
+          setBusy(true);
+          if (isEdit) {
+            setStatus(`Updating block "${subject || text}"...`);
+            try {
+              const res = await post("updateBlock", {
+                blockId,
+                dayKey: date,
+                patch: {
+                  PlannedSubject: subject || text,
+                  PlannedTopic: text,
+                  PlannedStart: startTime,
+                  PlannedEnd: endTime,
+                  PlannedMinutes: plannedMinutes,
+                },
+              });
+              if (!res?.ok) {
+                setStatus(`❌ Update failed: ${res?.message || "unknown"}`);
+              } else {
+                setStatus(`✅ Block updated.`);
+                await loadBlocksForDate(date);
+              }
+            } catch (e) {
+              setStatus(`❌ Update failed: ${e.message}`);
+            } finally {
+              setBusy(false);
+            }
+          } else {
+            setStatus(`Adding block "${subject || text}"...`);
+            try {
+              const res = await post("createBlock", {
+                dayKey: date,
+                blockData: {
+                  BlockId: `manual_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+                  PlannedSubject: subject || text,
+                  PlannedTopic: text,
+                  PlannedStart: startTime,
+                  PlannedEnd: endTime,
+                  PlannedMinutes: plannedMinutes,
+                  mode: resolved?.resolution?.activityType || "study",
+                  rawText: text,
+                },
+              });
+              if (!res?.ok) {
+                setStatus(`❌ Add block failed: ${res?.message || "unknown"}`);
+              } else {
+                setStatus(`✅ Block "${text}" added.`);
+                await loadBlocksForDate(date);
+              }
+            } catch (e) {
+              setStatus(`❌ Add block failed: ${e.message}`);
+            } finally {
+              setBusy(false);
+            }
+          }
         }}
       />
 

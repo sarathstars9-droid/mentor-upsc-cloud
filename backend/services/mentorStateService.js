@@ -126,7 +126,7 @@ export function buildMentorCommand({ profile, blocks, pendingBlocks, staleBlock,
 export async function getMentorState(userId, dayKey) {
   // 1. Fetch today's plan
   const { rows: blocks } = await query(
-    `SELECT * FROM public.study_blocks WHERE user_id = $1 AND day_key = $2 ORDER BY planned_start ASC, updated_at ASC`,
+    `SELECT * FROM public.study_blocks WHERE user_id = $1 AND day_key = $2 AND archived_at IS NULL AND schedule_deleted_at IS NULL ORDER BY planned_start ASC, updated_at ASC`,
     [userId, dayKey]
   );
 
@@ -170,7 +170,7 @@ export async function getMentorState(userId, dayKey) {
   const yesterdayKey = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
   
   const { rows: yesterdayBlocks } = await query(
-    `SELECT * FROM public.study_blocks WHERE user_id = $1 AND day_key = $2 AND status IN ('planned', 'upcoming', 'active', 'paused') LIMIT 1`,
+    `SELECT * FROM public.study_blocks WHERE user_id = $1 AND day_key = $2 AND status IN ('planned', 'upcoming', 'active', 'paused') AND archived_at IS NULL AND schedule_deleted_at IS NULL LIMIT 1`,
     [userId, yesterdayKey]
   );
   const hasPreviousDayLeakage = yesterdayBlocks.length > 0;

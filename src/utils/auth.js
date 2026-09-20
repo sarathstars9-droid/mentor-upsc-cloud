@@ -10,6 +10,14 @@ export function isLoggedIn() {
   }
 }
 
+export function getAuthToken() {
+  try {
+    return sessionStorage.getItem(TOKEN_KEY) || "";
+  } catch {
+    return "";
+  }
+}
+
 export async function login(password) {
   try {
     const res = await fetch(`${BACKEND_URL}/api/auth/login`, {

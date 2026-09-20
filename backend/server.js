@@ -2081,6 +2081,73 @@ app.post("/api/sheets", requireAuth, async (req, res) => {
       }
     }
 
+    if (action === "createBlock") {
+      const p = payload.payload || payload;
+      const dayKey = p.dayKey || payload.date || new Date().toISOString().slice(0, 10);
+      try {
+        const { createStudyBlock } = await import("./services/blockLifecycleService.js");
+        const block = await createStudyBlock(userId, dayKey, p.blockData || p);
+        return res.json({ ok: true, block });
+      } catch (err) {
+        console.error("[sheets interceptor createBlock]", err.message);
+        return res.status(500).json({ ok: false, message: err.message });
+      }
+    }
+
+    if (action === "updateBlock") {
+      const p = payload.payload || payload;
+      const dayKey = p.dayKey || payload.date || new Date().toISOString().slice(0, 10);
+      const blockId = p.blockId || p.BlockId;
+      try {
+        const { updateStudyBlock } = await import("./services/blockLifecycleService.js");
+        const block = await updateStudyBlock(userId, dayKey, blockId, p.patch || p);
+        return res.json({ ok: true, block });
+      } catch (err) {
+        console.error("[sheets interceptor updateBlock]", err.message);
+        return res.status(500).json({ ok: false, message: err.message });
+      }
+    }
+
+    if (action === "deleteBlock") {
+      const p = payload.payload || payload;
+      const dayKey = p.dayKey || payload.date || new Date().toISOString().slice(0, 10);
+      const blockId = p.blockId || p.BlockId;
+      try {
+        const { deleteStudyBlock } = await import("./services/blockLifecycleService.js");
+        const result = await deleteStudyBlock(userId, dayKey, blockId);
+        return res.json({ ok: true, result });
+      } catch (err) {
+        console.error("[sheets interceptor deleteBlock]", err.message);
+        return res.status(500).json({ ok: false, message: err.message });
+      }
+    }
+
+    if (action === "clearTodayTimetable") {
+      const p = payload.payload || payload;
+      const dayKey = p.dayKey || payload.date || new Date().toISOString().slice(0, 10);
+      try {
+        const { clearDayTimetable } = await import("./services/blockLifecycleService.js");
+        const result = await clearDayTimetable(userId, dayKey);
+        return res.json({ ok: true, result });
+      } catch (err) {
+        console.error("[sheets interceptor clearTodayTimetable]", err.message);
+        return res.status(500).json({ ok: false, message: err.message });
+      }
+    }
+
+    if (action === "resetDayExecution") {
+      const p = payload.payload || payload;
+      const dayKey = p.dayKey || payload.date || new Date().toISOString().slice(0, 10);
+      try {
+        const { resetDayExecution } = await import("./services/blockLifecycleService.js");
+        const result = await resetDayExecution(userId, dayKey);
+        return res.json({ ok: true, result });
+      } catch (err) {
+        console.error("[sheets interceptor resetDayExecution]", err.message);
+        return res.status(500).json({ ok: false, message: err.message });
+      }
+    }
+
     // ── INTERCEPT: lifecycle → PostgreSQL ────────────────────────────────────
     if (LIFECYCLE_ACTIONS.has(action)) {
       const p = payload.payload || {};   // frontend wraps args in payload.payload

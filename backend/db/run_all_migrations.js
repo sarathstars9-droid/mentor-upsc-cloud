@@ -214,6 +214,8 @@ async function runAllMigrations() {
     ['051 Prelims mistake review lifecycle',             'migrations/051_prelims_mistake_review_lifecycle.sql'],
     ['052 Prelims question attempt ledger',              'migrations/052_prelims_question_attempt_ledger.sql'],
     ['053 Prelims attempt evidence integrity',           'migrations/053_prelims_attempt_evidence_integrity.sql'],
+    ['054 Mentor AI Usage tracking',                     'migrations/054_mentor_ai_usage.sql'],
+    ['055 Study blocks archived columns',                'migrations/055_study_blocks_archived_columns.sql'],
   ];
 
   // Run 001-004 via standard runner

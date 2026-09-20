@@ -24,6 +24,11 @@ import {
   getBlockState,
   repairLegacyActiveBlocks,
   recoverStaleBlock,
+  createStudyBlock,
+  updateStudyBlock,
+  deleteStudyBlock,
+  clearDayTimetable,
+  resetDayExecution,
 } from '../services/blockLifecycleService.js';
 import { syncBlockToCalendar, retryFailedCalendarSyncs, probeCalendarBridge } from '../services/calendarBridgeService.js';
 import { enqueueAction } from '../services/outboxService.js';
@@ -480,6 +485,83 @@ router.get('/verify-calendar-bridge', async (_req, res) => {
     return res.status(status).json(result);
   } catch (err) {
     console.error('[verify-calendar-bridge]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+// ── CRUD & MANAGEMENT ENDPOINTS ───────────────────────────────────────────────
+
+router.post('/create', async (req, res) => {
+  try {
+    const uid = userId(req);
+    const { dayKey, blockData } = req.body;
+    if (!dayKey || !blockData) {
+      return res.status(400).json({ ok: false, message: 'dayKey and blockData are required' });
+    }
+    const block = await createStudyBlock(uid, dayKey, blockData);
+    return res.json({ ok: true, block });
+  } catch (err) {
+    console.error('[POST /api/plan/blocks/create]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+router.post('/update', async (req, res) => {
+  try {
+    const uid = userId(req);
+    const { dayKey, blockId, patch } = req.body;
+    if (!dayKey || !blockId || !patch) {
+      return res.status(400).json({ ok: false, message: 'dayKey, blockId, and patch are required' });
+    }
+    const block = await updateStudyBlock(uid, dayKey, blockId, patch);
+    return res.json({ ok: true, block });
+  } catch (err) {
+    console.error('[POST /api/plan/blocks/update]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+router.post('/delete', async (req, res) => {
+  try {
+    const uid = userId(req);
+    const { dayKey, blockId } = req.body;
+    if (!dayKey || !blockId) {
+      return res.status(400).json({ ok: false, message: 'dayKey and blockId are required' });
+    }
+    const result = await deleteStudyBlock(uid, dayKey, blockId);
+    return res.json({ ok: true, result });
+  } catch (err) {
+    console.error('[POST /api/plan/blocks/delete]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+router.post('/clear-today', async (req, res) => {
+  try {
+    const uid = userId(req);
+    const { dayKey } = req.body;
+    if (!dayKey) {
+      return res.status(400).json({ ok: false, message: 'dayKey is required' });
+    }
+    const result = await clearDayTimetable(uid, dayKey);
+    return res.json({ ok: true, result });
+  } catch (err) {
+    console.error('[POST /api/plan/blocks/clear-today]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+router.post('/reset-execution', async (req, res) => {
+  try {
+    const uid = userId(req);
+    const { dayKey } = req.body;
+    if (!dayKey) {
+      return res.status(400).json({ ok: false, message: 'dayKey is required' });
+    }
+    const result = await resetDayExecution(uid, dayKey);
+    return res.json({ ok: true, result });
+  } catch (err) {
+    console.error('[POST /api/plan/blocks/reset-execution]', err.message);
     return res.status(500).json({ ok: false, message: err.message });
   }
 });

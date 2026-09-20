@@ -889,13 +889,27 @@ export async function stopBlock(
 
 // ── FETCH ─────────────────────────────────────────────────────────────────────
 
+async function ensureSoftDeleteColumns() {
+  try {
+    await pool.query(`
+      ALTER TABLE public.study_blocks
+      ADD COLUMN IF NOT EXISTS archived_at TIMESTAMPTZ,
+      ADD COLUMN IF NOT EXISTS schedule_deleted_at TIMESTAMPTZ;
+    `);
+  } catch (err) {
+    console.warn("ensureSoftDeleteColumns warning:", err.message);
+  }
+}
+
 export async function getBlocksForDay(userId = DEFAULT_USER, dayKey) {
+  await ensureSoftDeleteColumns();
   const normalizedUid = String(userId || '').toLowerCase().trim();
   console.log(`[Schedule] Today's blocks loaded for user: ${normalizedUid}, day: ${dayKey}`);
 
   const { rows } = await criticalQuery(
     `SELECT * FROM study_blocks
      WHERE user_id = $1 AND day_key = $2
+       AND archived_at IS NULL AND schedule_deleted_at IS NULL
      ORDER BY planned_start ASC, created_at ASC, id ASC`,
     [normalizedUid, dayKey]
   );
@@ -919,7 +933,7 @@ export async function getBlocksForDay(userId = DEFAULT_USER, dayKey) {
     }
   } catch { /* linkage retry is non-critical */ }
 
-  return rows.map(computeBlockState);
+  return rows.map(r => toFrontendBlock(r));
 }
 
 export async function getBlockState(userId = DEFAULT_USER, blockId, dayKey) {
@@ -928,7 +942,236 @@ export async function getBlockState(userId = DEFAULT_USER, blockId, dayKey) {
      WHERE user_id = $1 AND block_id = $2 AND day_key = $3`,
     [userId, blockId, dayKey]
   );
-  return rows.length ? computeBlockState(rows[0]) : null;
+  return rows.length ? toFrontendBlock(rows[0]) : null;
+}
+
+// ── CRUD & TIMETABLE MANAGEMENT ──────────────────────────────────────────────
+
+export async function createStudyBlock(userId = DEFAULT_USER, dayKey, blockData) {
+  await ensureSoftDeleteColumns();
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+  const blockId = blockData.BlockId || blockData.blockId || `manual_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+  const title = blockData.PlannedTopic || blockData.topic || blockData.PlannedSubject || blockData.subject || "Study Block";
+  const subject = blockData.PlannedSubject || blockData.subject || "Unknown";
+  const topic = blockData.PlannedTopic || blockData.topic || "";
+  const plannedStart = blockData.PlannedStart || blockData.plannedStart || "";
+  const plannedEnd = blockData.PlannedEnd || blockData.plannedEnd || "";
+  const plannedMinutes = Number(blockData.PlannedMinutes || blockData.plannedMinutes || blockData.minutes || 0);
+  const mode = blockData.mode || blockData.Mode || "study";
+  const rawText = blockData.rawText || blockData.RawText || topic || subject;
+
+  const { rows } = await criticalQuery(
+    `INSERT INTO public.study_blocks (
+       user_id, block_id, day_key, title, subject, topic,
+       planned_start, planned_end, planned_minutes, status,
+       date, mode, raw_text, source_type, created_at, updated_at
+     )
+     VALUES ($1, $2, $3::TEXT, $4, $5, $6, $7, $8, $9, 'planned', $3::DATE, $10, $11, 'manual', NOW(), NOW())
+     RETURNING *`,
+    [normalizedUid, blockId, dayKey, title, subject, topic, plannedStart, plannedEnd, plannedMinutes, mode, rawText]
+  );
+
+  const newBlock = toFrontendBlock(rows[0]);
+  try {
+    const { logStudyEvent } = await import('./eventService.js');
+    await logStudyEvent({
+      userId: normalizedUid,
+      eventType: 'PLAN_ACCEPTED',
+      subject,
+      topic,
+      blockId: rows[0].id,
+      metadata: { date: dayKey, blockId, plannedMinutes, source_type: 'manual' }
+    });
+  } catch (e) {
+    console.warn("createStudyBlock event logging failed:", e.message);
+  }
+
+  if (plannedStart) {
+    try {
+      await pool.query(
+        `INSERT INTO public.notification_events (
+           user_id, notification_type, source_type, source_id, channel_type, status, payload_json, created_at
+         ) VALUES ($1, 'BLOCK_START_REMINDER', 'study_block', $2, 'TELEGRAM', 'pending', $3, NOW())
+         ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type)
+         DO UPDATE SET status = 'pending', payload_json = EXCLUDED.payload_json, created_at = NOW()`,
+        [
+          normalizedUid,
+          blockId,
+          JSON.stringify({ day_key: dayKey, planned_start: plannedStart, subject, topic })
+        ]
+      );
+    } catch (err) {
+      console.warn("createStudyBlock notification scheduling error:", err.message);
+    }
+  }
+
+  return newBlock;
+}
+
+export async function updateStudyBlock(userId = DEFAULT_USER, dayKey, blockId, patch) {
+  await ensureSoftDeleteColumns();
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+  
+  const title = patch.PlannedTopic || patch.topic || patch.PlannedSubject || patch.subject || patch.title || "Study Block";
+  const subject = patch.PlannedSubject || patch.subject || "Unknown";
+  const topic = patch.PlannedTopic || patch.topic || "";
+  const plannedStart = patch.PlannedStart || patch.plannedStart || "";
+  const plannedEnd = patch.PlannedEnd || patch.plannedEnd || "";
+  const plannedMinutes = Number(patch.PlannedMinutes || patch.plannedMinutes || patch.minutes || 0);
+
+  const { rows } = await criticalQuery(
+    `UPDATE public.study_blocks
+     SET title = $1, subject = $2, topic = $3,
+         planned_start = $4, planned_end = $5, planned_minutes = $6,
+         updated_at = NOW()
+     WHERE user_id = $7 AND block_id = $8 AND day_key = $9 AND archived_at IS NULL AND schedule_deleted_at IS NULL
+     RETURNING *`,
+    [title, subject, topic, plannedStart, plannedEnd, plannedMinutes, normalizedUid, blockId, dayKey]
+  );
+
+  if (!rows.length) {
+    throw new Error(`Block ${blockId} not found or is archived.`);
+  }
+
+  const updatedBlock = rows[0];
+
+  // Transactionally cancel old pending notifications for this block
+  try {
+    await pool.query(
+      `DELETE FROM public.notification_events
+       WHERE user_id = $1 AND (source_id = $2 OR source_id = $3) AND status = 'pending'`,
+      [normalizedUid, blockId, String(updatedBlock.id)]
+    );
+
+    // Schedule single updated pending notification if planned_start is present
+    if (plannedStart) {
+      await pool.query(
+        `INSERT INTO public.notification_events (
+           user_id, notification_type, source_type, source_id, channel_type, status, payload_json, created_at
+         ) VALUES ($1, 'BLOCK_START_REMINDER', 'study_block', $2, 'TELEGRAM', 'pending', $3, NOW())
+         ON CONFLICT (user_id, notification_type, source_type, source_id, channel_type)
+         DO UPDATE SET status = 'pending', payload_json = EXCLUDED.payload_json, created_at = NOW()`,
+        [
+          normalizedUid,
+          blockId,
+          JSON.stringify({ day_key: dayKey, planned_start: plannedStart, subject, topic })
+        ]
+      );
+    }
+  } catch (err) {
+    console.warn("updateStudyBlock notification update error:", err.message);
+  }
+
+  return toFrontendBlock(updatedBlock);
+}
+
+export async function deleteStudyBlock(userId = DEFAULT_USER, dayKey, blockId) {
+  await ensureSoftDeleteColumns();
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+
+  const { rows } = await criticalQuery(
+    `SELECT * FROM public.study_blocks WHERE user_id = $1 AND block_id = $2 AND day_key = $3`,
+    [normalizedUid, blockId, dayKey]
+  );
+
+  if (!rows.length) {
+    return { ok: true, deleted: false, message: "Block not found" };
+  }
+
+  const blockRow = rows[0];
+  const hasExecutionHistory = !!(
+    blockRow.started_at ||
+    blockRow.ended_at ||
+    (blockRow.actual_minutes && blockRow.actual_minutes > 0) ||
+    ['active', 'paused', 'partial', 'stopped', 'completed'].includes(String(blockRow.status || '').toLowerCase())
+  );
+
+  if (hasExecutionHistory) {
+    await criticalQuery(
+      `UPDATE public.study_blocks
+       SET schedule_deleted_at = NOW(), archived_at = NOW(), updated_at = NOW()
+       WHERE id = $1`,
+      [blockRow.id]
+    );
+  } else {
+    await criticalQuery(`DELETE FROM public.study_blocks WHERE id = $1`, [blockRow.id]);
+  }
+
+  try {
+    await pool.query(
+      `DELETE FROM public.notification_events
+       WHERE user_id = $1 AND source_id = $2`,
+      [normalizedUid, blockId]
+    );
+  } catch (err) {
+    console.warn("deleteStudyBlock notification cleanup error:", err.message);
+  }
+
+  return { ok: true, deleted: true, softDeleted: hasExecutionHistory };
+}
+
+export async function clearDayTimetable(userId = DEFAULT_USER, dayKey) {
+  await ensureSoftDeleteColumns();
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+
+  await criticalQuery(
+    `UPDATE public.study_blocks
+     SET schedule_deleted_at = NOW(), archived_at = NOW(), updated_at = NOW()
+     WHERE user_id = $1 AND day_key = $2
+       AND (started_at IS NOT NULL OR ended_at IS NOT NULL OR COALESCE(actual_minutes,0) > 0 OR status IN ('active','paused','partial','stopped','completed'))`,
+    [normalizedUid, dayKey]
+  );
+
+  await criticalQuery(
+    `DELETE FROM public.study_blocks
+     WHERE user_id = $1 AND day_key = $2 AND archived_at IS NULL AND schedule_deleted_at IS NULL`,
+    [normalizedUid, dayKey]
+  );
+
+  try {
+    await pool.query(
+      `DELETE FROM public.notification_events
+       WHERE user_id = $1 AND source_id = $2`,
+      [normalizedUid, dayKey]
+    );
+  } catch (err) {
+    console.warn("clearDayTimetable notification cleanup error:", err.message);
+  }
+
+  return { ok: true, cleared: true };
+}
+
+export async function resetDayExecution(userId = DEFAULT_USER, dayKey) {
+  await ensureSoftDeleteColumns();
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+
+  await criticalQuery(
+    `UPDATE public.study_blocks
+     SET status = 'planned',
+         started_at = NULL,
+         ended_at = NULL,
+         actual_minutes = 0,
+         pauses_count = 0,
+         total_pause_seconds = 0,
+         paused_at = NULL,
+         last_resumed_at = NULL,
+         updated_at = NOW()
+     WHERE user_id = $1 AND day_key = $2 AND archived_at IS NULL AND schedule_deleted_at IS NULL`,
+    [normalizedUid, dayKey]
+  );
+
+  try {
+    const { logStudyEvent } = await import('./eventService.js');
+    await logStudyEvent({
+      userId: normalizedUid,
+      eventType: 'DAY_EXECUTION_RESET',
+      metadata: { date: dayKey, timestamp: new Date().toISOString() }
+    });
+  } catch (err) {
+    console.warn("resetDayExecution audit logging error:", err.message);
+  }
+
+  return { ok: true, reset: true };
 }
 
 // ── MERGE helper: overlay PostgreSQL lifecycle onto a GAS block array ─────────

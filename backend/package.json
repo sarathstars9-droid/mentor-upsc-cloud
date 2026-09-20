@@ -15,6 +15,7 @@
     "test:reports-dashboard": "node test_reports_dashboard.mjs"
   },
   "dependencies": {
+    "@google/genai": "^2.23.0",
     "@google/generative-ai": "^0.24.1",
     "cheerio": "^1.2.0",
     "cors": "^2.8.5",
