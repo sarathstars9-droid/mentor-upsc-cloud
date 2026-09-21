@@ -49,7 +49,7 @@ import PrelimsTestAttemptPage from "./pages/PrelimsTestAttemptPage";
 import PrelimsTestResultPage from "./pages/PrelimsTestResultPage";
 import MentorCallSimulator from "./pages/MentorCallSimulator";
 import KnowledgeReviewPage from "./pages/KnowledgeReviewPage";
-import { isLoggedIn, login, logout } from "./utils/auth";
+import { isLoggedIn, logout, getAuthUserId } from "./utils/auth";
 import NotificationBanner from "./components/Notifications/NotificationBanner";
 
 function AppRoutes({ onLogout }) {
@@ -258,7 +258,6 @@ export default function App() {
   const [authenticated, setAuthenticated] = useState(isLoggedIn());
 
   function handleLogin() {
-    login();
     setAuthenticated(true);
   }
 
@@ -268,7 +267,7 @@ export default function App() {
     window.location.href = "/login";
   }
 
-  const currentUserId = localStorage.getItem("userId");
+  const currentUserId = getAuthUserId() || "moulika";
 
   return (
     <BrowserRouter>

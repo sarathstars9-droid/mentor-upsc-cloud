@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { fetchWithAuth } from "../../utils/auth";
-import { theme } from "../../theme/theme";
 
 export default function StaleRecoveryModal({ isOpen, staleBlock, onClose, onRecovered }) {
   const [minutes, setMinutes] = useState("");
@@ -9,30 +8,47 @@ export default function StaleRecoveryModal({ isOpen, staleBlock, onClose, onReco
 
   if (!isOpen || !staleBlock) return null;
 
+  const plannedMinutes = Number(staleBlock.plannedMinutes || staleBlock.PlannedMinutes || 120);
+  const sessionAgeMinutes = Number(
+    staleBlock.wallClockOpenMinutes ||
+    staleBlock.sessionAgeMinutes ||
+    staleBlock.StaleSessionAgeMinutes ||
+    0
+  );
+  const openHours = (sessionAgeMinutes / 60).toFixed(1);
+  const maxCeiling = Math.min(staleBlock.thresholdMinutes || staleBlock.StaleThresholdMinutes || 720, 720);
+  const blockId = staleBlock.blockId || staleBlock.BlockId || "";
+  const dayKey = staleBlock.dayKey || staleBlock.DayKey || (blockId.startsWith("20") ? blockId.slice(0, 10) : undefined);
+  const startedAtStr = staleBlock.startedAt || staleBlock.ActualStart;
+
   const handleRecover = async (resolution) => {
     setIsSubmitting(true);
     setError("");
-    
+
     let actualMin = 0;
-    if (resolution === 'user_confirmed') {
+    if (resolution === "user_confirmed") {
       actualMin = parseInt(minutes, 10);
       if (isNaN(actualMin) || actualMin < 0) {
-        setError("Please enter a valid number of minutes.");
+        setError("Please enter a valid non-negative number of minutes.");
         setIsSubmitting(false);
         return;
       }
-      if (actualMin > staleBlock.thresholdMinutes) {
-        setError(`Minutes cannot exceed the maximum threshold of ${staleBlock.thresholdMinutes}.`);
+      if (actualMin > maxCeiling) {
+        setError(`Minutes cannot exceed the maximum allowed ceiling of ${maxCeiling} minutes (12 hours).`);
         setIsSubmitting(false);
         return;
       }
     }
 
     try {
-      const res = await fetchWithAuth(`/api/plan/blocks/${staleBlock.blockId}/recover-stale-session`, {
+      const res = await fetchWithAuth(`/api/plan/blocks/${encodeURIComponent(blockId)}/recover-stale-session`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ actualMinutes: actualMin, resolution })
+        body: JSON.stringify({
+          actualMinutes: actualMin,
+          resolution,
+          dayKey
+        })
       });
       const data = await res.json();
       if (!res.ok || !data.ok) {
@@ -41,100 +57,161 @@ export default function StaleRecoveryModal({ isOpen, staleBlock, onClose, onReco
         onRecovered();
       }
     } catch (err) {
-      setError(err.message);
+      setError(err.message || "Network error while resolving session");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const elapsedHours = (staleBlock.elapsedMinutes / 60).toFixed(1);
-
   return (
-    <div className="focus-overlay" onClick={onClose} style={{ zIndex: 9999 }}>
-      <div 
-        className="focus-modal-content" 
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: "rgba(15, 23, 42, 0.75)",
+        backdropFilter: "blur(4px)",
+        zIndex: 1100,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "16px",
+      }}
+      onClick={onClose}
+    >
+      <div
+        style={{
+          width: "min(480px, 96vw)",
+          maxHeight: "90vh",
+          overflowY: "auto",
+          backgroundColor: "#ffffff",
+          borderRadius: "16px",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+          padding: "24px",
+          border: "1px solid #e2e8f0",
+          opacity: 1,
+          color: "#0f172a",
+        }}
         onClick={(e) => e.stopPropagation()}
-        style={{ maxWidth: 450, padding: 24, textAlign: 'center' }}
       >
-        <h2 style={{ margin: "0 0 16px", color: theme.colors.textHighlight, fontSize: 22 }}>Session Recovery Required</h2>
-        
-        <p style={{ margin: "0 0 16px", color: theme.colors.textSecondary, fontSize: 15, lineHeight: 1.5 }}>
-          MentorOS found an earlier study session that remained open much longer than expected. Please confirm the actual focused study time before continuing.
+        <div style={{ fontSize: 12, fontWeight: 800, color: "#0A64F5", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 2 }}>
+          Lifecycle Recovery
+        </div>
+        <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0f172a", margin: "0 0 8px 0" }}>
+          Session Recovery Required
+        </h2>
+
+        <p style={{ margin: "0 0 16px", color: "#475569", fontSize: 14, lineHeight: 1.5 }}>
+          MentorOS detected a study session that technically remained open across multiple days. Please confirm your actual focused study time for this block before starting a new session.
         </p>
 
-        <div style={{ background: "rgba(255,255,255,0.05)", padding: 16, borderRadius: 8, marginBottom: 20, textAlign: 'left' }}>
-          <div style={{ marginBottom: 8 }}><span style={{ color: theme.colors.textSecondary }}>Block ID:</span> {staleBlock.blockId || staleBlock.BlockId}</div>
-          <div style={{ marginBottom: 8 }}><span style={{ color: theme.colors.textSecondary }}>Started At:</span> {new Date(staleBlock.startedAt || staleBlock.ActualStart).toLocaleString()}</div>
-          <div style={{ marginBottom: 8 }}><span style={{ color: theme.colors.textSecondary }}>Session Open For:</span> {((staleBlock.sessionAgeMinutes || staleBlock.StaleSessionAgeMinutes || 0) / 60).toFixed(1)} hours</div>
-          <div style={{ marginBottom: 8 }}><span style={{ color: theme.colors.textSecondary }}>Focused Elapsed:</span> {staleBlock.focusedElapsedMinutes || staleBlock.StaleFocusedElapsedMinutes} minutes</div>
-          <div><span style={{ color: theme.colors.textSecondary }}>Planned:</span> {staleBlock.plannedMinutes || staleBlock.PlannedMinutes} minutes</div>
+        <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", padding: "14px 16px", borderRadius: 10, marginBottom: 18, fontSize: 13 }}>
+          <div style={{ marginBottom: 6, display: "flex", justifyContent: "space-between" }}>
+            <span style={{ color: "#64748b", fontWeight: 500 }}>Block ID:</span>
+            <span style={{ fontWeight: 600, color: "#0f172a", wordBreak: "break-all", marginLeft: 8 }}>{blockId}</span>
+          </div>
+          {startedAtStr && (
+            <div style={{ marginBottom: 6, display: "flex", justifyContent: "space-between" }}>
+              <span style={{ color: "#64748b", fontWeight: 500 }}>Started At:</span>
+              <span style={{ fontWeight: 600, color: "#0f172a" }}>{new Date(startedAtStr).toLocaleString()}</span>
+            </div>
+          )}
+          <div style={{ marginBottom: 6, display: "flex", justifyContent: "space-between" }}>
+            <span style={{ color: "#64748b", fontWeight: 500 }}>Session Open For (Wall Clock):</span>
+            <span style={{ fontWeight: 700, color: "#d97706" }}>{openHours} hours</span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <span style={{ color: "#64748b", fontWeight: 500 }}>Planned Duration:</span>
+            <span style={{ fontWeight: 600, color: "#0f172a" }}>{plannedMinutes} minutes</span>
+          </div>
         </div>
 
-        {error && <div style={{ color: theme.colors.danger, marginBottom: 16, fontSize: 14 }}>{error}</div>}
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <div style={{ display: 'flex', gap: 8, alignItems: 'stretch' }}>
-            <input
-              type="number"
-              placeholder="Actual study minutes..."
-              value={minutes}
-              onChange={(e) => setMinutes(e.target.value)}
-              disabled={isSubmitting}
-              style={{
-                flex: 1,
-                background: "rgba(255,255,255,0.1)",
-                border: "1px solid rgba(255,255,255,0.2)",
-                borderRadius: 8,
-                padding: "12px 16px",
-                color: "white",
-                fontSize: 16
-              }}
-            />
-            <button 
-              disabled={isSubmitting}
-              onClick={() => handleRecover('user_confirmed')}
-              style={{
-                background: theme.colors.success,
-                color: 'white',
-                border: 'none',
-                borderRadius: 8,
-                padding: "0 20px",
-                fontWeight: 600,
-                cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                opacity: isSubmitting ? 0.7 : 1
-              }}
-            >
-              Confirm
-            </button>
+        {error && (
+          <div style={{ background: "#fef2f2", border: "1px solid #fecaca", color: "#dc2626", padding: "10px 12px", borderRadius: 8, marginBottom: 14, fontSize: 13, fontWeight: 500 }}>
+            {error}
           </div>
-          
-          <button 
+        )}
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#1e293b" }}>Actual Focused Study Time (Minutes)</span>
+            <div style={{ display: "flex", gap: 8 }}>
+              <input
+                type="number"
+                min="0"
+                max={maxCeiling}
+                placeholder={`e.g. ${plannedMinutes}`}
+                value={minutes}
+                onChange={(e) => setMinutes(e.target.value)}
+                disabled={isSubmitting}
+                style={{
+                  flex: 1,
+                  height: 42,
+                  padding: "0 12px",
+                  borderRadius: 8,
+                  border: "1px solid #cbd5e1",
+                  background: "#ffffff",
+                  color: "#0f172a",
+                  fontSize: 14,
+                  fontWeight: 600,
+                }}
+              />
+              <button
+                type="button"
+                disabled={isSubmitting || minutes === ""}
+                onClick={() => handleRecover("user_confirmed")}
+                style={{
+                  background: "#0A64F5",
+                  color: "#ffffff",
+                  border: "none",
+                  borderRadius: 8,
+                  padding: "0 18px",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  cursor: isSubmitting || minutes === "" ? "not-allowed" : "pointer",
+                  opacity: isSubmitting || minutes === "" ? 0.6 : 1,
+                }}
+              >
+                Confirm
+              </button>
+            </div>
+          </label>
+
+          <button
+            type="button"
             disabled={isSubmitting}
-            onClick={() => handleRecover('abandoned')}
+            onClick={() => handleRecover("abandoned")}
             style={{
-              background: "rgba(255,255,255,0.1)",
-              color: 'white',
-              border: '1px solid rgba(255,255,255,0.2)',
+              background: "#f1f5f9",
+              color: "#334155",
+              border: "1px solid #cbd5e1",
               borderRadius: 8,
-              padding: "12px 16px",
-              fontWeight: 500,
-              cursor: isSubmitting ? 'not-allowed' : 'pointer',
-              opacity: isSubmitting ? 0.7 : 1
+              padding: "10px 16px",
+              fontWeight: 600,
+              fontSize: 13,
+              cursor: isSubmitting ? "not-allowed" : "pointer",
+              opacity: isSubmitting ? 0.7 : 1,
+              transition: "background 0.2s",
             }}
           >
             Mark as Abandoned (0 minutes)
           </button>
-          
-          <button 
+
+          <button
+            type="button"
             disabled={isSubmitting}
             onClick={onClose}
             style={{
               background: "transparent",
-              color: theme.colors.textSecondary,
-              border: 'none',
-              padding: "8px",
-              cursor: isSubmitting ? 'not-allowed' : 'pointer',
-              textDecoration: 'underline'
+              color: "#64748b",
+              border: "none",
+              padding: "6px",
+              fontSize: 13,
+              fontWeight: 500,
+              cursor: isSubmitting ? "not-allowed" : "pointer",
+              textDecoration: "underline",
             }}
           >
             Cancel and resolve later

@@ -11,8 +11,7 @@ import BehaviourSignalModal from "../components/Plan/BehaviourSignalModal.jsx";
 import PyqSummaryPanel from "../components/PyqSummaryPanel.jsx";
 import BlockReviewModal from "../components/Plan/BlockReviewModal.jsx";
 import StaleRecoveryModal from "../components/Plan/StaleRecoveryModal.jsx";
-import { humanizeMappingCode } from "../utils/mappingUtils";
-import { fetchWithAuth } from "../utils/auth";
+import { fetchWithAuth, getAuthUserId, isLoggedIn } from "../utils/auth";
 import HeroSection from "../components/Plan/HeroSection.jsx";
 import SpotlightCard from "../components/Plan/SpotlightCard.jsx";
 import PlanRightRail from "../components/Plan/PlanRightRail.jsx";
@@ -1595,16 +1594,17 @@ export default function PlanPage() {
 
         let res = null;
 
+        const authUserId = getAuthUserId() || pgRes?.userId || "moulika";
         if (pgRes && pgRes.ok && pgRes.blocks && pgRes.blocks.length > 0) {
           res = pgRes;
-          console.log(JSON.stringify({ operation: 'load_plan', user_id: pgRes.userId || 'unknown', requested_date: targetDate, source: 'postgres', block_count: pgRes.blocks.length, elapsed_ms: Date.now() - startTime }));
+          console.log(JSON.stringify({ operation: 'load_plan', user_id: authUserId, requested_date: targetDate, source: 'postgres', block_count: pgRes.blocks.length, elapsed_ms: Date.now() - startTime }));
         } else if (pgRes && pgRes.ok && pgRes.blocks && pgRes.blocks.length === 0) {
           res = pgRes;
-          console.log(JSON.stringify({ operation: 'load_plan', user_id: pgRes.userId || 'unknown', requested_date: targetDate, source: 'postgres', block_count: 0, elapsed_ms: Date.now() - startTime }));
+          console.log(JSON.stringify({ operation: 'load_plan', user_id: authUserId, requested_date: targetDate, source: 'postgres', block_count: 0, elapsed_ms: Date.now() - startTime }));
         } else {
           // Postgres failed
           res = { ok: false, source: 'postgres_error', error: 'Unable to load the current plan.' };
-          console.error(JSON.stringify({ operation: 'load_plan', requested_date: targetDate, source: 'postgres_error', error: pgErr || pgRes?.message }));
+          console.error(JSON.stringify({ operation: 'load_plan', user_id: authUserId, requested_date: targetDate, source: 'postgres_error', error: pgErr || pgRes?.message }));
         }
 
         if (!res?.ok) {
@@ -2160,13 +2160,17 @@ export default function PlanPage() {
       });
 
       if (out && !out.ok) {
+        startedBlocksRef.current.delete(blockId);
         if (out.code === "STALE_ACTIVE_SESSION") {
+          setSpotlightOpen(false);
+          setStatus("⚠️ Previous session needs confirmation before a new block can start.");
           setStaleBlockData(out.staleBlock);
           setStaleRecoveryModalOpen(true);
+          await loadBlocksForDate(date);
           return;
         }
-        startedBlocksRef.current.delete(blockId);
         setStatus(`❌ startBlock failed: ${out?.message || "unknown"}`);
+        await loadBlocksForDate(date);
         return;
       }
 

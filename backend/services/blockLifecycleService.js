@@ -128,10 +128,12 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
         err.code = "STALE_ACTIVE_SESSION";
         err.staleBlock = {
           blockId: row.block_id,
+          dayKey: row.day_key,
           startedAt: row.started_at,
           plannedMinutes: row.planned_minutes || 120,
           storedActualMinutes: row.actual_minutes || 0,
           sessionAgeMinutes: staleData.sessionAgeMinutes,
+          wallClockOpenMinutes: staleData.wallClockOpenMinutes || staleData.sessionAgeMinutes,
           focusedElapsedMinutes: staleData.focusedElapsedMinutes,
           thresholdMinutes: staleData.thresholdMinutes,
           status: row.status
@@ -1995,11 +1997,29 @@ export async function recoverStaleBlock(userId, blockId, dayKey, actualMinutes, 
   try {
     await client.query('BEGIN');
 
-    const { rows } = await client.query(
-      `SELECT * FROM study_blocks WHERE user_id = $1 AND block_id = $2 AND day_key = $3 FOR UPDATE`,
-      [userId, blockId, dayKey]
-    );
-    const row = rows[0];
+    let row = null;
+    if (dayKey) {
+      const { rows } = await client.query(
+        `SELECT * FROM study_blocks WHERE user_id = $1 AND block_id = $2 AND day_key = $3 FOR UPDATE`,
+        [userId, blockId, dayKey]
+      );
+      row = rows[0] || null;
+    }
+
+    if (!row) {
+      // Do not loosely recover by (user_id, block_id) unless exactly one active/paused row matches; otherwise fail closed
+      const { rows: matchingRows } = await client.query(
+        `SELECT * FROM study_blocks WHERE user_id = $1 AND block_id = $2 AND status IN ('active', 'paused') FOR UPDATE`,
+        [userId, blockId]
+      );
+      if (matchingRows.length === 1) {
+        row = matchingRows[0];
+      } else if (matchingRows.length > 1) {
+        const err = new Error("Ambiguous stale sessions found for blockId. Please specify exact dayKey.");
+        err.code = "AMBIGUOUS_STALE_SESSION";
+        throw err;
+      }
+    }
 
     if (!row) {
       const err = new Error("Block not found");
@@ -2020,8 +2040,9 @@ export async function recoverStaleBlock(userId, blockId, dayKey, actualMinutes, 
       throw err;
     }
 
-    if (actualMinutes > staleData.thresholdMinutes) {
-      const err = new Error(`actualMinutes cannot exceed the threshold (${staleData.thresholdMinutes})`);
+    const ceiling = Math.min(staleData.thresholdMinutes || 720, 720);
+    if (actualMinutes > ceiling) {
+      const err = new Error(`actualMinutes cannot exceed the threshold (${ceiling})`);
       err.code = "INVALID_MINUTES";
       throw err;
     }
@@ -2030,36 +2051,40 @@ export async function recoverStaleBlock(userId, blockId, dayKey, actualMinutes, 
       actualMinutes = 0;
     }
 
+    const newStatus = resolution === 'abandoned' ? 'stopped' : 'completed';
     const newReason = resolution === 'abandoned' ? 'stale_session_abandoned' : 'stale_session_recovered';
+    const eventType = resolution === 'abandoned' ? 'BLOCK_STOPPED' : 'BLOCK_COMPLETED';
 
     const { rows: updatedRows } = await client.query(
       `UPDATE study_blocks
-       SET status                = 'completed',
-           actual_minutes        = $1,
+       SET status                = $1,
+           actual_minutes        = $2,
            ended_at              = NOW(),
            paused_at             = NULL,
-           completion_reason     = $2,
+           completion_reason     = $3,
            calendar_sync_status  = 'pending',
            updated_at            = NOW()
-       WHERE id = $3
+       WHERE id = $4
        RETURNING *`,
-      [actualMinutes, newReason, row.id]
+      [newStatus, actualMinutes, newReason, row.id]
     );
 
     const recoveredRow = updatedRows[0];
 
-    // Log the recovery event
+    // Log the recovery event matching exact lifecycle event semantics
     const { logStudyEvent } = await import('./eventService.js');
     await logStudyEvent({
       userId,
-      eventType: 'BLOCK_COMPLETED',
+      eventType,
       blockId: recoveredRow.block_id,
       metadata: {
-        reason: 'stale_session_recovered',
+        reason: newReason,
         resolution: resolution,
+        status: newStatus,
         confirmedActualMinutes: actualMinutes,
-        detectedElapsedMinutes: staleData.elapsedMinutes,
-        thresholdMinutes: staleData.thresholdMinutes
+        wallClockOpenMinutes: staleData.wallClockOpenMinutes || staleData.sessionAgeMinutes,
+        thresholdMinutes: staleData.thresholdMinutes,
+        recoveredFromStaleSession: true
       },
       client
     });

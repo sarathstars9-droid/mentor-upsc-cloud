@@ -9,7 +9,7 @@ export function getStaleThresholdMinutes() {
 
 export function detectStaleSession(block, serverNowStr) {
   const thresholdMinutes = getStaleThresholdMinutes();
-  const defaultRes = { isStale: false, sessionAgeMinutes: 0, focusedElapsedMinutes: 0, thresholdMinutes, invalidTimestamp: true };
+  const defaultRes = { isStale: false, sessionAgeMinutes: 0, wallClockOpenMinutes: 0, focusedElapsedMinutes: 0, thresholdMinutes, invalidTimestamp: true };
   if (!block || !block.started_at) {
     return defaultRes;
   }
@@ -37,11 +37,13 @@ export function detectStaleSession(block, serverNowStr) {
   const pauseSec = (block.total_pause_seconds || 0) + foldPauseSec;
   
   const sessionAgeMinutes = Math.floor((now - startedAt) / 60000);
+  const wallClockOpenMinutes = sessionAgeMinutes;
   const focusedElapsedMinutes = Math.max(0, Math.floor((now - startedAt - (pauseSec * 1000)) / 60000));
   
   return {
     isStale: sessionAgeMinutes > thresholdMinutes,
     sessionAgeMinutes,
+    wallClockOpenMinutes,
     focusedElapsedMinutes,
     thresholdMinutes,
     invalidTimestamp

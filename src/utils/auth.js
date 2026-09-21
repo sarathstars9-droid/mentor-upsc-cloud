@@ -1,5 +1,6 @@
 export const AUTH_KEY = "mentor_os_logged_in";
 export const TOKEN_KEY = "mentor_os_auth_token";
+export const USER_ID_KEY = "mentor_os_user_id";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || (window.location.hostname === "localhost" ? "http://localhost:8787" : "https://api.mentorupsc.in");
 
 export function isLoggedIn() {
@@ -18,6 +19,35 @@ export function getAuthToken() {
   }
 }
 
+export function getAuthUser() {
+  const token = getAuthToken();
+  if (!token) return null;
+  try {
+    const parts = token.split(".");
+    if (parts.length === 3) {
+      const payloadJson = atob(parts[1].replace(/-/g, "+").replace(/_/g, "/"));
+      const parsed = JSON.parse(payloadJson);
+      return {
+        id: parsed.sub || parsed.userId || parsed.id || null,
+        role: parsed.role || "aspirant",
+        exp: parsed.exp
+      };
+    }
+  } catch (e) {
+    console.warn("Failed to parse auth token payload:", e);
+  }
+  const fallbackId = sessionStorage.getItem(USER_ID_KEY) || localStorage.getItem("userId");
+  if (fallbackId) {
+    return { id: fallbackId, role: "aspirant" };
+  }
+  return null;
+}
+
+export function getAuthUserId() {
+  const user = getAuthUser();
+  return user?.id || null;
+}
+
 export async function login(password) {
   try {
     const res = await fetch(`${BACKEND_URL}/api/auth/login`, {
@@ -29,11 +59,10 @@ export async function login(password) {
     if (res.ok && data.ok && data.token) {
       sessionStorage.setItem(AUTH_KEY, "true");
       sessionStorage.setItem(TOKEN_KEY, data.token);
-      // Remove insecure storage if present
-      localStorage.removeItem("userId");
-      localStorage.removeItem("userName");
-      localStorage.removeItem("token");
-      return { success: true };
+      const uid = data.user?.id || "moulika";
+      sessionStorage.setItem(USER_ID_KEY, uid);
+      localStorage.setItem("userId", uid);
+      return { success: true, user: data.user };
     }
     return { success: false, error: data.error || "Login failed" };
   } catch (err) {
@@ -45,6 +74,7 @@ export function logout() {
   try {
     sessionStorage.removeItem(AUTH_KEY);
     sessionStorage.removeItem(TOKEN_KEY);
+    sessionStorage.removeItem(USER_ID_KEY);
     localStorage.removeItem("userId");
     localStorage.removeItem("userName");
     localStorage.removeItem("token");

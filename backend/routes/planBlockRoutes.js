@@ -139,7 +139,7 @@ router.get('/', async (req, res) => {
   try {
     const uid = userId(req);
     const blocks = await getBlocksForDay(uid, dayKey);
-    return res.json({ ok: true, source: 'postgres', date: dayKey, blocks });
+    return res.json({ ok: true, source: 'postgres', userId: uid, date: dayKey, blocks });
   } catch (err) {
     console.error('[GET /api/plan/blocks]', err);
     return res.status(500).json({ ok: false, source: 'postgres_error', date: dayKey, error: 'Unable to load the current plan.' });
@@ -269,7 +269,8 @@ router.post('/:blockId/recover-stale-session', async (req, res) => {
 
   try {
     const uid = userId(req);
-    const day = dayKey || todayKey();
+    const derivedDay = (typeof blockId === 'string' && /^\d{4}-\d{2}-\d{2}/.test(blockId)) ? blockId.slice(0, 10) : null;
+    const day = dayKey || derivedDay || null;
 
     const block = await recoverStaleBlock(uid, blockId, day, actualMinutes, resolution);
     syncBlockToCalendar(block, 'complete').catch(() => {});
@@ -283,6 +284,7 @@ router.post('/:blockId/recover-stale-session', async (req, res) => {
 
     const status = err.code === 'NOT_STALE' ? 409
                  : err.code === 'INVALID_MINUTES' ? 400
+                 : err.code === 'AMBIGUOUS_STALE_SESSION' ? 400
                  : err.code === 'NOT_FOUND' ? 404
                  : err.code === 'NOT_ACTIVE' ? 409
                  : 500;

@@ -99,3 +99,16 @@ test('Stale Session Detection - future paused_at is rejected safely', (t) => {
   assert.strictEqual(result.isStale, true);
   assert.strictEqual(result.invalidTimestamp, true);
 });
+
+test('Stale Session Detection - multi-day 115-hour stale session separates wall clock from focused time', (t) => {
+  const now = Date.now();
+  const block = {
+    started_at: new Date(now - (115 * 60 * 60000)).toISOString(), // 115 hours ago
+    status: 'active'
+  };
+  const result = detectStaleSession(block, new Date(now).toISOString());
+  assert.strictEqual(result.isStale, true);
+  assert.strictEqual(result.wallClockOpenMinutes, 115 * 60);
+  assert.strictEqual(result.sessionAgeMinutes, 6900);
+  assert.strictEqual(result.thresholdMinutes, 720);
+});

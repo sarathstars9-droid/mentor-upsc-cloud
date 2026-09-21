@@ -160,11 +160,19 @@ test('Stale Session Recovery Flow Integration', async (t) => {
       assert.strictEqual(repeatErr.code, 'STALE_ACTIVE_SESSION');
     });
 
-    await t.test('recoverStaleBlock with abandoned stores zero', async () => {
+    await t.test('recoverStaleBlock with abandoned stores zero and stopped status', async () => {
       const recovered = await recoverStaleBlock(userId2, stalePausedBlockId, dayKey, 0, 'abandoned');
-      assert.strictEqual(recovered.Status, 'completed');
+      assert.strictEqual(recovered.Status, 'stopped');
       assert.strictEqual(recovered.ActualMinutes, 0);
       assert.strictEqual(recovered.Reason, 'stale_session_abandoned');
+
+      const eventsRes = await pool.query(
+        `SELECT event_type, metadata_json FROM study_events WHERE user_id = $1 AND block_id = $2`,
+        [userId2, stalePausedBlockId]
+      );
+      const eventTypes = eventsRes.rows.map(r => r.event_type);
+      assert.ok(eventTypes.includes('BLOCK_STOPPED'), 'Must log BLOCK_STOPPED event');
+      assert.ok(!eventTypes.includes('BLOCK_COMPLETED'), 'Must NOT log BLOCK_COMPLETED event on abandonment');
     });
 
     await t.test('startBlock succeeds after recovery', async () => {
