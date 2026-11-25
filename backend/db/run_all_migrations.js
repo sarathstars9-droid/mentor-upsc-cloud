@@ -216,10 +216,28 @@ async function runAllMigrations() {
     ['053 Prelims attempt evidence integrity',           'migrations/053_prelims_attempt_evidence_integrity.sql'],
     ['054 Mentor AI Usage tracking',                     'migrations/054_mentor_ai_usage.sql'],
     ['055 Study blocks archived columns',                'migrations/055_study_blocks_archived_columns.sql'],
+    ['056 Official evidence layer',                      'migrations/056_official_evidence_layer.sql'],
+    ['057 Live verification & visual knowledge',         'migrations/057_live_verification_and_visual_knowledge.sql'],
+    ['058 Phase 2B schema reconciliation',               'migrations/058_phase2b_schema_reconciliation.sql'],
+    ['059 Provenance & status standardization',          'migrations/059_provenance_and_status_standardization.sql'],
+    ['060 Current affairs issues & retrieval',          'migrations/060_current_affairs_issues_and_retrieval.sql'],
+    ['061 Canonical study blocks',                       'migrations/061_canonical_study_blocks.sql'],
+    ['062 Daily plan images',                            'migrations/062_daily_plan_images.sql'],
+    ['063 Reconcile active constraint',                  'migrations/063_reconcile_active_constraint.sql'],
   ];
 
-  // Run 001-004 via standard runner
+  // Run 001-063 via standard runner
   for (const [label, file] of migrations.filter(([l]) => !l.startsWith('005'))) {
+    if (file.includes('036_enforce_single_active_paused_block')) {
+      const idxRes = await query(`
+        SELECT indexname FROM pg_indexes 
+        WHERE tablename = 'study_blocks' AND indexname = 'uniq_active_block_per_user'
+      `);
+      if (idxRes.rows.length > 0) {
+        console.log(`  → ${label} — skipped: superseded by migration 063 (uniq_active_block_per_user).`);
+        continue;
+      }
+    }
     await runSQL(label, file);
   }
 

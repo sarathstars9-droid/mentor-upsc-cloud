@@ -86,10 +86,24 @@ export async function processMentorTurn({ userId, sessionId, userMessage, reques
       [uuidv4(), sessionId, 'user', userMessage.trim(), session.current_stage, requestId]
     );
 
+    // Build current session state packet
+    const sessionState = {
+      energy_level: session.energy_level,
+      available_hours: session.available_hours,
+      obstacle: session.obstacle,
+      first_block_commitment: session.first_block_commitment,
+      intended_start_time: session.intended_start_time,
+      csat_commitment: session.csat_commitment,
+      instruction_accepted: session.instruction_accepted,
+      final_commitment: session.final_commitment,
+      current_stage: session.current_stage
+    };
+
     // Call authoritative AI reasoning (DeepSeek V4.1 Flash)
     const reply = await generateMentorReply({
       profile: session.mentor_state_snapshot?.student,
       mentorState: session.mentor_state_snapshot,
+      sessionState,
       conversationHistory: history,
       currentStage: session.current_stage,
       userMessage: userMessage.trim()
@@ -119,9 +133,11 @@ export async function processMentorTurn({ userId, sessionId, userMessage, reques
 
     if (reply.extracted) {
       for (const [key, val] of Object.entries(reply.extracted)) {
-        updateFields.push(`${key} = $${paramIndex++}`);
-        updateValues.push(val);
-        session[key] = val;
+        if (val !== undefined && val !== null && val !== '') {
+          updateFields.push(`${key} = $${paramIndex++}`);
+          updateValues.push(val);
+          session[key] = val;
+        }
       }
     }
 

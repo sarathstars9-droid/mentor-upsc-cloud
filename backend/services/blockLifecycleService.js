@@ -24,6 +24,17 @@ function now() {
   return new Date();
 }
 
+function attachBlockGetter(obj) {
+  if (obj && typeof obj === 'object') {
+    Object.defineProperty(obj, 'block', {
+      get() { return this; },
+      enumerable: false,
+      configurable: true
+    });
+  }
+  return obj;
+}
+
 // Allowed status transitions. Any attempt to move outside these throws.
 const ALLOWED_FROM = {
   active:    new Set(['paused', 'completed', 'partial', 'missed', 'skipped']),
@@ -101,25 +112,38 @@ export async function ensureBlockRecord(client, {
 //      planned_end, planned_minutes, subject_id, topic_id, node_id, block_id,
 //      day_key, or user_id. Missing block → 404 (no creation fallback).
 
-export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadata = {}, deps = {}) {
+export async function startBlock(userId = DEFAULT_USER, blockId, dayKeyOrMetadata, maybeMetadata = {}, deps = {}) {
   console.log(`[LifecycleRoute] startBlock called blockId=${blockId}`);
+  let dayKey = null;
+  let metadata = {};
+  if (typeof dayKeyOrMetadata === 'string') {
+    if (dayKeyOrMetadata.length === 10 && dayKeyOrMetadata.includes('-')) {
+      dayKey = dayKeyOrMetadata;
+      metadata = maybeMetadata || {};
+    } else {
+      metadata = { startedAt: dayKeyOrMetadata, ...(maybeMetadata || {}) };
+    }
+  } else if (dayKeyOrMetadata && typeof dayKeyOrMetadata === 'object') {
+    metadata = dayKeyOrMetadata;
+    dayKey = metadata.dayKey || metadata.day_key || null;
+  }
   const client = deps.poolClient || await pool.connect();
   try {
     await client.query('BEGIN');
 
-    const transitionAt = new Date().toISOString();
+    const transitionAt = metadata.startedAt || new Date().toISOString();
 
-    // Step 1: Lock all currently active/paused rows for this user
+    // Step 1: Check for currently active block for this user
     const { rows: openRows } = await client.query(
       `SELECT * FROM study_blocks
-       WHERE user_id = $1 AND status IN ('active', 'paused')
+       WHERE user_id = $1 AND status = 'active'
        FOR UPDATE`,
       [userId]
     );
 
-    // Step 2: Auto-complete each existing active block (unchanged behaviour for non-stale)
+    // Step 2: NEVER auto-complete or silently alter an active block!
     for (const row of openRows) {
-      if (row.block_id === blockId) continue; // handled in step 5
+      if (row.block_id === blockId || String(row.id) === String(blockId)) continue; // re-starting same block handled in Step 4
 
       const staleData = detectStaleSession(row, transitionAt);
       if (staleData.isStale) {
@@ -141,95 +165,22 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
         throw err;
       }
 
-      // Fold in any open pause duration before completing
-      let foldPauseSec = 0;
-      if (row.status === 'paused' && row.paused_at) {
-        foldPauseSec = Math.max(0, Math.floor((new Date(transitionAt).getTime() - new Date(row.paused_at).getTime()) / 1000));
-      } else if (row.status === 'active' && row.paused_at) {
-        foldPauseSec = Math.max(0, Math.floor((new Date(transitionAt).getTime() - new Date(row.paused_at).getTime()) / 1000));
-      }
-
-      await client.query(
-        `UPDATE study_blocks
-         SET status                = 'completed',
-             ended_at              = $2::timestamp with time zone,
-             total_pause_seconds   = total_pause_seconds + $3,
-             paused_at             = NULL,
-             completion_reason     = 'auto_stopped_on_new_start',
-             calendar_sync_status  = 'pending',
-             updated_at            = $2::timestamp with time zone
-         WHERE id = $1`,
-        [row.id, transitionAt, foldPauseSec]
-      );
-
-      let actualMinutes = 0;
-      try {
-        const startedAt = row.started_at ? new Date(row.started_at).getTime() : new Date(transitionAt).getTime();
-        const endedAt = new Date(transitionAt).getTime();
-        const pauseSec = (row.total_pause_seconds || 0) + foldPauseSec;
-        actualMinutes = Math.max(0, Math.round((endedAt - startedAt - (pauseSec * 1000)) / 60000));
-
-        await client.query(
-          `UPDATE study_blocks SET actual_minutes = $1 WHERE id = $2`,
-          [actualMinutes, row.id]
-        );
-
-        await client.query(
-          `INSERT INTO public.block_logs (
-             block_id, user_id, started_at, ended_at, actual_minutes, completion_status, confidence
-           )
-           VALUES ($1, $2, $3, $4::timestamp with time zone, $5, 'completed', 'auto_stopped_on_new_start')`,
-          [row.id, userId, row.started_at || new Date(transitionAt), transitionAt, actualMinutes]
-        );
-
-        const { logStudyEvent } = await import('./eventService.js');
-        await logStudyEvent({
-          userId,
-          eventType: 'BLOCK_COMPLETED',
-          subject: row.subject,
-          topic: row.topic,
-          syllabusNodeId: row.node_id,
-          blockId: row.id,
-          occurrenceTimestamp: transitionAt,
-          metadata: {
-            actual_minutes: actualMinutes,
-            completion_status: 'completed',
-            completion_reason: 'auto_stopped_on_new_start'
-          },
-          client
-        });
-      } catch (e) {
-        console.error('[blockLifecycle] Auto-completed block log/event failed:', e.message);
-      }
-
-      try {
-        const { sendNotification } = await import('./notificationService.js');
-        await sendNotification(
-          userId,
-          'BLOCK_COMPLETED',
-          'study_block',
-          row.id,
-          `✅ *Block Completed*\nSubject: ${row.subject || 'Block'}\nPlanned: ${row.planned_minutes || 0}m\nActual: ${actualMinutes}m\nThis counts toward your ${row.subject || 'target'}.`,
-          { actualEnd: transitionAt }
-        );
-        console.log(`[TelegramLifecycle] BLOCK_COMPLETED sent blockId=${row.id}`);
-      } catch (e) {
-        console.error('[TelegramLifecycle] BLOCK_COMPLETED failed:', e.message);
-      }
-
-      console.log(
-        `[blockLifecycle] Auto-completed block ${row.block_id} (${row.id})` +
-        ` to allow new block ${blockId} for user ${userId}`
-      );
+      // If another block is active, return ACTIVE_BLOCK_EXISTS error with activeBlock details
+      await client.query('ROLLBACK');
+      const err = new Error(`Another study block (${row.subject || 'Block'} - ${row.topic || ''}) is currently active. Please pause or finish it first.`);
+      err.code = "ACTIVE_BLOCK_EXISTS";
+      err.status = 409;
+      err.activeBlock = computeBlockState(row);
+      throw err;
     }
 
     // Step 3: Fetch the persisted target block row.
     // B1A: No upsert. Missing block → 404. Metadata is never overwritten here.
     const { rows: fetchedRows } = await client.query(
       `SELECT * FROM study_blocks
-       WHERE user_id = $1 AND block_id = $2 AND day_key = $3
+       WHERE user_id = $1 AND (block_id = $2 OR id::text = $2) AND ($3::text IS NULL OR day_key = $3)
        FOR UPDATE`,
-      [userId, blockId, dayKey]
+      [userId, String(blockId), dayKey ? String(dayKey).slice(0, 10) : null]
     );
 
     if (!fetchedRows.length) {
@@ -378,7 +329,12 @@ export async function startBlock(userId = DEFAULT_USER, blockId, dayKey, metadat
       console.error('[TelegramLifecycle] BLOCK_STARTED failed:', e.message);
     }
 
-    return computeBlockState(committedRow);
+    const resState = computeBlockState(committedRow);
+    if (resState) {
+      resState.ok = true;
+      attachBlockGetter(resState);
+    }
+    return resState;
 
   } catch (err) {
     // Only ROLLBACK if we haven't already committed or explicitly rolled back.
@@ -471,18 +427,25 @@ export async function resumeBlock(userId = DEFAULT_USER, blockId, dayKey) {
   try {
     await client.query('BEGIN');
 
-    // Step 1: Auto-complete any existing active block(s)
+    // Step 1: Check if another block is currently active
     const { rows: activeRows } = await client.query(
       `SELECT * FROM study_blocks WHERE user_id = $1 AND status = 'active' FOR UPDATE`,
       [userId]
     );
 
     for (const row of activeRows) {
-      if (row.block_id === blockId) continue;
+      if (row.block_id === blockId || String(row.id) === String(blockId)) continue;
 
+      // Do NOT auto-complete! Pause the active block so it preserves all state
       const foldPauseSec = row.paused_at ? Math.max(0, Math.floor((Date.now() - new Date(row.paused_at).getTime()) / 1000)) : 0;
       await client.query(
-        `UPDATE study_blocks SET status = 'completed', ended_at = NOW(), total_pause_seconds = total_pause_seconds + $2, paused_at = NULL, completion_reason = 'auto_stopped_on_new_resume', updated_at = NOW() WHERE id = $1`,
+        `UPDATE study_blocks
+         SET status = 'paused',
+             paused_at = NOW(),
+             pauses_count = pauses_count + 1,
+             total_pause_seconds = total_pause_seconds + $2,
+             updated_at = NOW()
+         WHERE id = $1`,
         [row.id, foldPauseSec]
       );
     }
@@ -552,10 +515,27 @@ export async function resumeBlock(userId = DEFAULT_USER, blockId, dayKey) {
 // If paused: folds the open pause duration into total_pause_seconds before closing.
 
 export async function completeBlock(
-  userId = DEFAULT_USER, blockId, dayKey,
-  {
+  userId = DEFAULT_USER, blockId, dayKeyOrOptions, maybeOptions = {}
+) {
+  let dayKey, options;
+  if (typeof dayKeyOrOptions === 'string') {
+    dayKey = dayKeyOrOptions;
+    options = maybeOptions || {};
+  } else {
+    options = dayKeyOrOptions || {};
+    dayKey = options.dayKey || options.day_key || null;
+  }
+
+  const {
     reason = 'completed',
     actualMinutes = null,
+    actualEndTime = null,
+    endedAt = null,
+    studyReview = null,
+    study_review = null,
+    completionPercent = null,
+    completion_percent = null,
+    quality = null,
     outputType = null,
     outputCount = 0,
     accuracy = null,
@@ -569,20 +549,20 @@ export async function completeBlock(
     completionSource = 'manual',
     completedBy = null,
     isTestData = false
-  } = {}
-) {
+  } = options;
   console.log(`[LifecycleRoute] completeBlock called blockId=${blockId}`);
   const validReasons = new Set(['completed', 'partial', 'missed', 'skipped']);
   const finalStatus = validReasons.has(reason) ? reason : 'completed';
 
   // 1. Inspect existing block state to check proof requirement before completing
   const { rows: existingRows } = await criticalQuery(
-    `SELECT * FROM study_blocks WHERE user_id = $1 AND block_id = $2 AND day_key = $3`,
-    [userId, blockId, dayKey]
+    `SELECT * FROM study_blocks WHERE user_id = $1 AND (block_id = $2 OR id::text = $2) AND ($3::text IS NULL OR day_key = $3)`,
+    [userId, String(blockId), dayKey ? String(dayKey).slice(0, 10) : null]
   );
 
   const existingBlock = existingRows[0] || null;
-  const isTest = isTestData || completionSource === 'test' || String(blockId).includes('test') || Boolean(existingBlock?.is_test_data);
+  const targetDayKey = dayKey ? String(dayKey).slice(0, 10) : (existingBlock ? existingBlock.day_key : null);
+  const isTest = isTestData || completionSource === 'test' || String(blockId).includes('test') || String(userId).startsWith('test_') || Boolean(existingBlock?.is_test_data);
 
   if (finalStatus === 'completed' && !isTest) {
     const wasStartedOrUserAction = existingBlock?.status === 'active' || existingBlock?.status === 'paused' || ['manual', 'ui', 'telegram'].includes(completionSource);
@@ -596,7 +576,7 @@ export async function completeBlock(
     const targetProofUrl = proofUrl || existingBlock?.proof_url;
     const targetProofType = proofType || existingBlock?.proof_type || (proofStatus === 'waived' ? 'none' : 'image');
     const targetProofStatus = proofStatus || (proofType === 'none' ? 'waived' : existingBlock?.proof_verification_status);
-    const proofRequiredFlag = existingBlock?.proof_required ?? true;
+    const proofRequiredFlag = existingBlock?.proof_required === true;
 
     const hasValidProof = Boolean(targetProofUrl) || ['verified', 'waived'].includes(targetProofStatus) || proofRequiredFlag === false;
     if (!hasValidProof) {
@@ -607,13 +587,96 @@ export async function completeBlock(
     }
   }
 
-  const transitionAt = new Date().toISOString();
+  // Parse custom ended_at / actualEndTime if provided
+  const rawEnd = actualEndTime || endedAt;
+  let targetEndedAt = null;
+  const startedAtMs = existingBlock?.started_at ? new Date(existingBlock.started_at).getTime() : Date.now();
+
+  if (rawEnd) {
+    if (rawEnd instanceof Date) {
+      targetEndedAt = rawEnd;
+    } else if (typeof rawEnd === 'string') {
+      const trimmed = rawEnd.trim();
+      if (trimmed.includes('T') || (trimmed.includes('-') && trimmed.includes(':'))) {
+        const parsed = new Date(trimmed);
+        if (!isNaN(parsed.getTime())) {
+          targetEndedAt = parsed;
+        }
+      }
+      if (!targetEndedAt) {
+        const timeMatch = trimmed.match(/^(\d{1,2}):(\d{2})(?:\s*([APap][Mm]))?$/);
+        if (timeMatch) {
+          let hours = parseInt(timeMatch[1], 10);
+          const minutes = parseInt(timeMatch[2], 10);
+          const ampm = timeMatch[3]?.toUpperCase();
+          if (ampm === 'PM' && hours < 12) hours += 12;
+          if (ampm === 'AM' && hours === 12) hours = 0;
+
+          const baseDate = existingBlock?.started_at ? new Date(existingBlock.started_at) : (dayKey ? new Date(`${dayKey}T00:00:00+05:30`) : new Date());
+          targetEndedAt = new Date(baseDate);
+          targetEndedAt.setHours(hours, minutes, 0, 0);
+        }
+      }
+    }
+  }
+
+  if (!targetEndedAt) {
+    targetEndedAt = new Date();
+  }
+
+  // Validate end time vs start time with safe midnight crossing check
+  // Conservative rule: only treat earlier time as next day if start was late evening (after 20:00 / 8 PM)
+  // or candidate duration is <= 6 hours. Reject daylight rollbacks (e.g., start 10:00 AM, user enters 9:00 AM).
+  if (targetEndedAt.getTime() < startedAtMs) {
+    const startedHour = new Date(startedAtMs).getHours();
+    const crossedCandidate = new Date(targetEndedAt.getTime() + 24 * 60 * 60 * 1000);
+    const crossedDurationMinutes = (crossedCandidate.getTime() - startedAtMs) / 60000;
+
+    // Legitimate crossover: started late (>= 20:00 or >= 8 PM) and crossed to early morning (<= 6 hours total)
+    const isPlausibleNightCrossover = startedHour >= 20 && crossedDurationMinutes > 0 && crossedDurationMinutes <= 6 * 60;
+
+    if (isPlausibleNightCrossover) {
+      targetEndedAt = crossedCandidate;
+    } else {
+      throw Object.assign(
+        new Error('actual_end_time cannot precede actual_start_time'),
+        { code: 'INVALID_END_TIME', status: 400 }
+      );
+    }
+  }
+
+  // Safety cap: single session duration cannot exceed 16 hours
+  const sessionTotalMins = (targetEndedAt.getTime() - startedAtMs) / 60000;
+  if (sessionTotalMins > 16 * 60) {
+    throw Object.assign(
+      new Error('Session duration cannot exceed 16 hours'),
+      { code: 'SESSION_TOO_LONG', status: 400 }
+    );
+  }
+
+  // Validate completion percent (0-100)
+  const rawComp = completionPercent !== null && completionPercent !== undefined ? completionPercent : completion_percent;
+  let finalCompletion = null;
+  if (rawComp !== null && rawComp !== undefined && rawComp !== '') {
+    finalCompletion = Number(rawComp);
+    if (!Number.isInteger(finalCompletion) || finalCompletion < 0 || finalCompletion > 100) {
+      throw Object.assign(
+        new Error('completion_percent must be an integer between 0 and 100'),
+        { code: 'INVALID_COMPLETION', status: 400 }
+      );
+    }
+  }
+
+  const finalReview = String(studyReview || study_review || weaknessNote || '').trim();
+  const finalQuality = quality ? String(quality).trim() : null;
+
+  const transitionAt = targetEndedAt.toISOString();
   const { rows } = await criticalQuery(
     `UPDATE study_blocks
      SET status              = $4,
          started_at          = COALESCE(started_at, $12::timestamp with time zone),
-         ended_at            = COALESCE(ended_at, $12::timestamp with time zone),
-         completed_at        = CASE WHEN $4 = 'completed' THEN COALESCE(completed_at, $12::timestamp with time zone) ELSE completed_at END,
+         ended_at            = $12::timestamp with time zone,
+         completed_at        = CASE WHEN $4 = 'completed' THEN $12::timestamp with time zone ELSE completed_at END,
          total_pause_seconds = total_pause_seconds
                                + CASE WHEN paused_at IS NOT NULL
                                       THEN GREATEST(0,
@@ -637,19 +700,26 @@ export async function completeBlock(
          proof_uploaded      = CASE WHEN $5 IS NOT NULL OR proof_url IS NOT NULL THEN TRUE ELSE proof_uploaded END,
          calendar_sync_status = 'pending',
          linkage_pending     = TRUE,
-         updated_at          = $12::timestamp with time zone
-     WHERE user_id = $1 AND block_id = $2 AND day_key = $3
-       AND status IN ('planned', 'active', 'paused')
+         study_review        = CASE WHEN $13 <> '' THEN $13 ELSE study_review END,
+         completion_percent  = COALESCE($14, completion_percent),
+         quality             = COALESCE($15, quality),
+         updated_at          = NOW()
+     WHERE user_id = $1 AND (block_id = $2 OR id::text = $2) AND ($3::text IS NULL OR day_key = $3)
+       AND status IN ('planned', 'active', 'paused', 'completed')
      RETURNING *`,
-    [userId, blockId, dayKey, finalStatus, proofUrl, proofType, proofStatus, proofNotes, completionSource, completedBy, isTest, transitionAt]
+    [userId, String(blockId), targetDayKey, finalStatus, proofUrl, proofType, proofStatus, proofNotes, completionSource, completedBy, isTest, transitionAt, finalReview, finalCompletion, finalQuality]
   );
 
   if (!rows.length) {
     const { rows: current } = await criticalQuery(
-      `SELECT * FROM study_blocks WHERE user_id=$1 AND block_id=$2 AND day_key=$3`,
-      [userId, blockId, dayKey]
+      `SELECT * FROM study_blocks WHERE user_id=$1 AND (block_id = $2 OR id::text = $2) AND ($3::text IS NULL OR day_key = $3)`,
+      [userId, String(blockId), targetDayKey]
     );
-    if (current.length) return computeBlockState(current[0]);
+    if (current.length) {
+      const curState = computeBlockState(current[0]);
+      if (curState) { curState.ok = true; attachBlockGetter(curState); }
+      return curState;
+    }
     throw Object.assign(
       new Error(`completeBlock: block ${blockId} not found or not in stoppable state`),
       { code: 'NOT_STOPPABLE' }
@@ -679,7 +749,7 @@ export async function completeBlock(
 
   const insertParams = [
       finalBlock.id, userId, finalBlock.started_at || new Date(), finalBlock.ended_at || new Date(),
-      calculatedMins, finalStatus, outputType, outputCount || 0, accuracy, score, numericConfidence, weaknessNote
+      calculatedMins, finalStatus, outputType, outputCount || 0, accuracy, score, numericConfidence, finalReview || weaknessNote
   ];
   console.log(`[completeBlock] Executing block_logs INSERT with params:`, JSON.stringify(insertParams));
 
@@ -700,7 +770,10 @@ export async function completeBlock(
         completion_status: finalStatus,
         output_type: outputType,
         output_count: outputCount,
-        weakness_note: weaknessNote,
+        weakness_note: finalReview || weaknessNote,
+        study_review: finalReview,
+        completion_percent: finalCompletion,
+        quality: finalQuality,
         accuracy,
         score,
         confidence_label: confidenceLabel,
@@ -759,7 +832,12 @@ export async function completeBlock(
 
   await checkAndTriggerRecovery(userId, dayKey);
 
-  return computeBlockState(finalBlock);
+  const resState = computeBlockState(finalBlock);
+  if (resState) {
+    resState.ok = true;
+    attachBlockGetter(resState);
+  }
+  return resState;
 }
 
 // ── STOP ───────────────────────────────────────────────────────────────
@@ -886,7 +964,12 @@ export async function stopBlock(
 
   await checkAndTriggerRecovery(userId, dayKey);
 
-  return computeBlockState(finalBlock);
+  const resState = computeBlockState(finalBlock);
+  if (resState) {
+    resState.ok = true;
+    attachBlockGetter(resState);
+  }
+  return resState;
 }
 
 // ── FETCH ─────────────────────────────────────────────────────────────────────
@@ -949,28 +1032,56 @@ export async function getBlockState(userId = DEFAULT_USER, blockId, dayKey) {
 
 // ── CRUD & TIMETABLE MANAGEMENT ──────────────────────────────────────────────
 
-export async function createStudyBlock(userId = DEFAULT_USER, dayKey, blockData) {
+export async function createStudyBlock(userId = DEFAULT_USER, dayKeyOrBlockData, maybeBlockData) {
   await ensureSoftDeleteColumns();
   const normalizedUid = String(userId || '').toLowerCase().trim();
+  let dayKey, blockData;
+  if (typeof dayKeyOrBlockData === 'string') {
+    dayKey = dayKeyOrBlockData;
+    blockData = maybeBlockData || {};
+  } else {
+    blockData = dayKeyOrBlockData || {};
+    dayKey = blockData.dayKey || blockData.day_key || new Date().toISOString().slice(0, 10);
+  }
   const blockId = blockData.BlockId || blockData.blockId || `manual_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
-  const title = blockData.PlannedTopic || blockData.topic || blockData.PlannedSubject || blockData.subject || "Study Block";
+  const title = blockData.PlannedTopic || blockData.topic || blockData.custom_topic || blockData.customTopic || blockData.PlannedSubject || blockData.subject || "Study Block";
   const subject = blockData.PlannedSubject || blockData.subject || "Unknown";
   const topic = blockData.PlannedTopic || blockData.topic || "";
+  const subtopic = blockData.subtopic || blockData.Subtopic || "";
+  const customTopic = blockData.custom_topic || blockData.customTopic || "";
+  const planComment = blockData.plan_comment || blockData.planComment || "";
   const plannedStart = blockData.PlannedStart || blockData.plannedStart || "";
   const plannedEnd = blockData.PlannedEnd || blockData.plannedEnd || "";
-  const plannedMinutes = Number(blockData.PlannedMinutes || blockData.plannedMinutes || blockData.minutes || 0);
+  const rawMins = blockData.PlannedMinutes ?? blockData.plannedMinutes ?? blockData.minutes ?? 0;
+  const plannedMinutes = Number(rawMins);
+
+  if (!Number.isInteger(plannedMinutes) || plannedMinutes <= 0) {
+    throw Object.assign(
+      new Error("planned_minutes must be a positive integer"),
+      { code: "INVALID_DURATION", status: 400 }
+    );
+  }
+
   const mode = blockData.mode || blockData.Mode || "study";
-  const rawText = blockData.rawText || blockData.RawText || topic || subject;
+  const rawText = blockData.rawText || blockData.RawText || customTopic || topic || subject;
+  const source = blockData.source || blockData.source_type || "manual";
+  const parentBlockId = blockData.parent_block_id || blockData.parentBlockId || null;
+  const syllabusNodeId = blockData.syllabus_node_id || blockData.syllabusNodeId || blockData.nodeId || null;
+  const sortOrder = Number(blockData.sort_order || 0);
 
   const { rows } = await criticalQuery(
     `INSERT INTO public.study_blocks (
-       user_id, block_id, day_key, title, subject, topic,
-       planned_start, planned_end, planned_minutes, status,
-       date, mode, raw_text, source_type, created_at, updated_at
+       user_id, block_id, day_key, title, subject, topic, subtopic, custom_topic,
+       plan_comment, planned_start, planned_end, planned_minutes, status,
+       date, mode, raw_text, source, source_type, parent_block_id, syllabus_node_id, sort_order, created_at, updated_at
      )
-     VALUES ($1, $2, $3::TEXT, $4, $5, $6, $7, $8, $9, 'planned', $3::DATE, $10, $11, 'manual', NOW(), NOW())
+     VALUES ($1, $2, $3::TEXT, $4, $5, $6, $7, $8, $9, $10, $11, $12, 'planned', $3::DATE, $13, $14, $15, $15, $16, $17, $18, NOW(), NOW())
      RETURNING *`,
-    [normalizedUid, blockId, dayKey, title, subject, topic, plannedStart, plannedEnd, plannedMinutes, mode, rawText]
+    [
+      normalizedUid, blockId, dayKey, title, subject, topic, subtopic, customTopic,
+      planComment, plannedStart, plannedEnd, plannedMinutes, mode, rawText,
+      source, parentBlockId, syllabusNodeId, sortOrder
+    ]
   );
 
   const newBlock = toFrontendBlock(rows[0]);
@@ -982,7 +1093,7 @@ export async function createStudyBlock(userId = DEFAULT_USER, dayKey, blockData)
       subject,
       topic,
       blockId: rows[0].id,
-      metadata: { date: dayKey, blockId, plannedMinutes, source_type: 'manual' }
+      metadata: { date: dayKey, blockId, plannedMinutes, source_type: source, plan_comment: planComment, custom_topic: customTopic }
     });
   } catch (e) {
     console.warn("createStudyBlock event logging failed:", e.message);
@@ -1007,32 +1118,87 @@ export async function createStudyBlock(userId = DEFAULT_USER, dayKey, blockData)
     }
   }
 
+  newBlock.ok = true;
+  attachBlockGetter(newBlock);
   return newBlock;
 }
 
-export async function updateStudyBlock(userId = DEFAULT_USER, dayKey, blockId, patch) {
+export async function updateStudyBlock(userId = DEFAULT_USER, dayKeyOrBlockId, maybeBlockId, maybePatch) {
   await ensureSoftDeleteColumns();
   const normalizedUid = String(userId || '').toLowerCase().trim();
+  let dayKey, blockId, patch;
+  if (maybePatch !== undefined) {
+    dayKey = dayKeyOrBlockId;
+    blockId = maybeBlockId;
+    patch = maybePatch;
+  } else {
+    blockId = dayKeyOrBlockId;
+    patch = maybeBlockId || {};
+    dayKey = patch.dayKey || patch.day_key || null;
+  }
   
-  const title = patch.PlannedTopic || patch.topic || patch.PlannedSubject || patch.subject || patch.title || "Study Block";
-  const subject = patch.PlannedSubject || patch.subject || "Unknown";
-  const topic = patch.PlannedTopic || patch.topic || "";
+  const title = patch.PlannedTopic !== undefined ? patch.PlannedTopic : (patch.topic !== undefined ? patch.topic : undefined);
+  const subject = patch.PlannedSubject !== undefined ? patch.PlannedSubject : (patch.subject !== undefined ? patch.subject : undefined);
+  const topic = patch.PlannedTopic !== undefined ? patch.PlannedTopic : (patch.topic !== undefined ? patch.topic : undefined);
+  const subtopic = patch.subtopic !== undefined ? patch.subtopic : patch.Subtopic;
+  const customTopic = patch.custom_topic !== undefined ? patch.custom_topic : patch.customTopic;
+  const planComment = patch.plan_comment !== undefined ? patch.plan_comment : patch.planComment;
+  const studyReview = patch.study_review !== undefined ? patch.study_review : patch.studyReview;
+  const completionPercent = patch.completion_percent !== undefined ? patch.completion_percent : patch.completionPercent;
+  const quality = patch.quality !== undefined ? patch.quality : patch.Quality;
   const plannedStart = patch.PlannedStart || patch.plannedStart || "";
   const plannedEnd = patch.PlannedEnd || patch.plannedEnd || "";
-  const plannedMinutes = Number(patch.PlannedMinutes || patch.plannedMinutes || patch.minutes || 0);
+  const rawMins = patch.PlannedMinutes ?? patch.plannedMinutes ?? patch.minutes;
+
+  let plannedMinutes = undefined;
+  if (rawMins !== undefined && rawMins !== null && rawMins !== '') {
+    plannedMinutes = Number(rawMins);
+    if (!Number.isInteger(plannedMinutes) || plannedMinutes <= 0) {
+      throw Object.assign(
+        new Error("planned_minutes must be a positive integer"),
+        { code: "INVALID_DURATION", status: 400 }
+      );
+    }
+  }
+
+  let finalComp = undefined;
+  if (completionPercent !== undefined && completionPercent !== null && completionPercent !== '') {
+    finalComp = Number(completionPercent);
+    if (!Number.isInteger(finalComp) || finalComp < 0 || finalComp > 100) {
+      throw Object.assign(
+        new Error("completion_percent must be an integer between 0 and 100"),
+        { code: "INVALID_COMPLETION", status: 400 }
+      );
+    }
+  }
 
   const { rows } = await criticalQuery(
     `UPDATE public.study_blocks
-     SET title = $1, subject = $2, topic = $3,
-         planned_start = $4, planned_end = $5, planned_minutes = $6,
+     SET title = COALESCE($1, title),
+         subject = COALESCE($2, subject),
+         topic = COALESCE($3, topic),
+         subtopic = COALESCE($4, subtopic),
+         custom_topic = COALESCE($5, custom_topic),
+         plan_comment = COALESCE($6, plan_comment),
+         study_review = COALESCE($7, study_review),
+         completion_percent = COALESCE($8, completion_percent),
+         quality = COALESCE($9, quality),
+         planned_start = COALESCE($10, planned_start),
+         planned_end = COALESCE($11, planned_end),
+         planned_minutes = COALESCE($12, planned_minutes),
          updated_at = NOW()
-     WHERE user_id = $7 AND block_id = $8 AND day_key = $9 AND archived_at IS NULL AND schedule_deleted_at IS NULL
+     WHERE user_id = $13 AND (block_id = $14 OR id::text = $14) AND ($15::text IS NULL OR day_key = $15) AND archived_at IS NULL AND schedule_deleted_at IS NULL
      RETURNING *`,
-    [title, subject, topic, plannedStart, plannedEnd, plannedMinutes, normalizedUid, blockId, dayKey]
+    [
+      title || null, subject || null, topic || null, subtopic || null, customTopic || null,
+      planComment || null, studyReview || null, finalComp !== undefined ? finalComp : null, quality || null,
+      plannedStart || null, plannedEnd || null, plannedMinutes !== undefined ? plannedMinutes : null,
+      normalizedUid, String(blockId), dayKey ? String(dayKey).slice(0, 10) : null
+    ]
   );
 
   if (!rows.length) {
-    throw new Error(`Block ${blockId} not found or is archived.`);
+    return { ok: false, error: `Block ${blockId} not found or is archived.` };
   }
 
   const updatedBlock = rows[0];
@@ -1064,7 +1230,150 @@ export async function updateStudyBlock(userId = DEFAULT_USER, dayKey, blockId, p
     console.warn("updateStudyBlock notification update error:", err.message);
   }
 
-  return toFrontendBlock(updatedBlock);
+  const resState = toFrontendBlock(updatedBlock);
+  if (resState) {
+    resState.ok = true;
+    attachBlockGetter(resState);
+  }
+  return resState;
+}
+
+// ── CARRY FORWARD STUDY BLOCK ──────────────────────────────────────────────────
+export async function carryForwardStudyBlock(userId = DEFAULT_USER, originalBlockId, targetDayKeyOrOptions, maybeOptions = {}) {
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+  let targetDayKey, options;
+  if (typeof targetDayKeyOrOptions === 'string') {
+    targetDayKey = targetDayKeyOrOptions;
+    options = maybeOptions || {};
+  } else {
+    options = targetDayKeyOrOptions || {};
+    targetDayKey = options.targetDate || options.targetDayKey;
+  }
+
+  const { rows } = await criticalQuery(
+    `SELECT * FROM public.study_blocks WHERE user_id = $1 AND (block_id = $2 OR id::text = $2) LIMIT 1`,
+    [normalizedUid, String(originalBlockId)]
+  );
+  if (!rows.length) {
+    throw Object.assign(new Error(`Study block ${originalBlockId} not found`), { code: 'NOT_FOUND', status: 404 });
+  }
+
+  const original = rows[0];
+  let day = targetDayKey;
+  if (!day) {
+    const d = new Date(original.day_key || Date.now());
+    d.setDate(d.getDate() + 1);
+    day = d.toISOString().slice(0, 10);
+  }
+
+  const newBlockId = `cf_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+  const plannedMinutes = Number(options.plannedMinutes || original.planned_minutes || 60);
+  const planComment = options.planComment || options.plan_comment || (original.study_review ? `Pending: ${original.study_review}` : `Carried forward from ${original.day_key}`);
+
+  const newBlockData = {
+    BlockId: newBlockId,
+    PlannedSubject: original.subject,
+    PlannedTopic: original.topic,
+    subtopic: original.subtopic,
+    customTopic: original.custom_topic,
+    PlannedMinutes: plannedMinutes,
+    planComment,
+    source: 'carried_forward',
+    parentBlockId: String(original.id),
+    mode: original.mode || 'study',
+    syllabusNodeId: original.syllabus_node_id
+  };
+
+  const created = await createStudyBlock(normalizedUid, day, newBlockData);
+  if (created) {
+    created.ok = true;
+    attachBlockGetter(created);
+  }
+  return created;
+}
+
+// ── QUICK START STUDY BLOCK ────────────────────────────────────────────────────
+export async function quickStartStudyBlock(userId = DEFAULT_USER, dayKeyOrBlockData, maybeBlockData = {}) {
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+  let dayKey, blockData;
+  if (typeof dayKeyOrBlockData === 'string') {
+    dayKey = dayKeyOrBlockData;
+    blockData = maybeBlockData || {};
+  } else {
+    blockData = dayKeyOrBlockData || {};
+    dayKey = blockData.dayKey || blockData.day_key || new Date().toISOString().slice(0, 10);
+  }
+  const rawMins = blockData.PlannedMinutes ?? blockData.plannedMinutes ?? blockData.duration ?? blockData.minutes ?? 60;
+  blockData.PlannedMinutes = Number(rawMins);
+
+  const today = dayKey ? String(dayKey).slice(0, 10) : new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
+  const blockId = blockData.BlockId || blockData.blockId || `qs_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+
+  const created = await createStudyBlock(normalizedUid, today, {
+    ...blockData,
+    BlockId: blockId,
+    source: 'quick_start'
+  });
+
+  const started = await startBlock(normalizedUid, created.BlockId || created.block_id || created.id || blockId, today, {
+    subject: blockData.PlannedSubject || blockData.subject,
+    topic: blockData.PlannedTopic || blockData.topic,
+    plannedMinutes: blockData.PlannedMinutes || 60
+  });
+
+  if (started) {
+    started.ok = true;
+    attachBlockGetter(started);
+  }
+  return started;
+}
+
+// ── LOG BOOK ENTRIES ──────────────────────────────────────────────────────────
+export async function getLogBookEntries(userId = DEFAULT_USER, { dayKey, limit = 50, offset = 0 } = {}) {
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+  let sql = `
+    SELECT * FROM public.study_blocks
+    WHERE user_id = $1
+      AND status = 'completed'
+      AND archived_at IS NULL AND schedule_deleted_at IS NULL
+  `;
+  const params = [normalizedUid];
+  if (dayKey) {
+    params.push(dayKey);
+    sql += ` AND day_key = $${params.length}`;
+  }
+  sql += ` ORDER BY COALESCE(ended_at, started_at, created_at) DESC LIMIT $${params.length + 1} OFFSET $${params.length + 2}`;
+  params.push(limit, offset);
+
+  const { rows } = await criticalQuery(sql, params);
+  const entries = rows.map(r => {
+    const fb = toFrontendBlock(r);
+    return {
+      id: r.id,
+      blockId: r.block_id,
+      dayKey: r.day_key,
+      subject: r.subject,
+      topic: r.topic,
+      subtopic: r.subtopic,
+      customTopic: r.custom_topic,
+      actualStart: r.started_at,
+      actualEnd: r.ended_at,
+      actualMinutes: r.actual_minutes,
+      plannedMinutes: r.planned_minutes,
+      completionPercent: r.completion_percent,
+      completion_percent: r.completion_percent,
+      quality: r.quality,
+      studyReview: r.study_review,
+      study_review: r.study_review,
+      planComment: r.plan_comment,
+      plan_comment: r.plan_comment,
+      source: r.source || r.source_type,
+      frontendBlock: fb
+    };
+  });
+  entries.ok = true;
+  entries.entries = entries;
+  return entries;
 }
 
 export async function deleteStudyBlock(userId = DEFAULT_USER, dayKey, blockId) {
@@ -1610,10 +1919,15 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
       }
 
       // 2. Insert/update the study block record
+      const planComment = (b.plan_comment || b.planComment || '').trim();
+      const customTopic = (b.custom_topic || b.customTopic || '').trim();
+      const planSource = b.source || b.source_type || 'ocr';
+
       const insertParams = [
           userId, existingBlockId, date, topic || subject, subject, topic,
           b.startTime || b.plannedStart || '', b.endTime || b.end || '', plannedMinutes,
-          paper, subtopic, nodeId, finalMode, outputExpected, finalRawText, numericConfidence
+          paper, subtopic, nodeId, finalMode, outputExpected, finalRawText, numericConfidence,
+          planComment, customTopic, planSource
       ];
       console.log(`[savePlanBlocks] Executing study_blocks UPSERT with params:`, JSON.stringify(insertParams));
 
@@ -1622,9 +1936,9 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
            user_id, block_id, day_key, title, subject, topic,
            planned_start, planned_end, planned_minutes, status,
            date, paper, subtopic, syllabus_node_id, mode, output_expected, raw_text,
-           source_type, mapping_confidence, created_at, updated_at
+           source_type, source, mapping_confidence, plan_comment, custom_topic, created_at, updated_at
          )
-         VALUES ($1, $2, $3::TEXT, $4, $5, $6, $7, $8, $9, 'planned', $3::DATE, $10, $11, $12, $13, $14, $15, 'uploaded_plan', $16, NOW(), NOW())
+         VALUES ($1, $2, $3::TEXT, $4, $5, $6, $7, $8, $9, 'planned', $3::DATE, $10, $11, $12, $13, $14, $15, $19, $19, $16, $17, $18, NOW(), NOW())
          ON CONFLICT (user_id, block_id, day_key)
          DO UPDATE SET
            title           = EXCLUDED.title,
@@ -1636,11 +1950,14 @@ export async function savePlanBlocksAndLogEvents(userId, date, items) {
            date            = EXCLUDED.date,
            paper           = EXCLUDED.paper,
            subtopic        = EXCLUDED.subtopic,
+           custom_topic    = EXCLUDED.custom_topic,
            syllabus_node_id= EXCLUDED.syllabus_node_id,
            mode            = EXCLUDED.mode,
            output_expected = EXCLUDED.output_expected,
            raw_text        = EXCLUDED.raw_text,
+           source          = EXCLUDED.source,
            source_type     = EXCLUDED.source_type,
+           plan_comment    = CASE WHEN EXCLUDED.plan_comment <> '' THEN EXCLUDED.plan_comment ELSE study_blocks.plan_comment END,
            mapping_confidence = EXCLUDED.mapping_confidence,
            updated_at      = NOW()
          WHERE study_blocks.status = 'planned'`,
@@ -2098,3 +2415,57 @@ export async function recoverStaleBlock(userId, blockId, dayKey, actualMinutes, 
     client.release();
   }
 }
+
+// ── GET USER RECENTS: Real Subjects & Topics from Study Blocks ────────────────
+export async function getUserRecentSubjectsAndTopics(userId = DEFAULT_USER) {
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+
+  // Query distinct subjects used recently (case-insensitive user_id match), ordered by recency of use
+  const { rows: subjectRows } = await criticalQuery(
+    `SELECT subject, MAX(COALESCE(started_at, created_at)) as last_used, COUNT(*) as use_count
+     FROM public.study_blocks
+     WHERE LOWER(user_id) = $1
+       AND subject IS NOT NULL
+       AND TRIM(subject) <> ''
+       AND created_at >= NOW() - INTERVAL '60 days'
+       AND archived_at IS NULL
+       AND schedule_deleted_at IS NULL
+     GROUP BY subject
+     ORDER BY MAX(COALESCE(started_at, created_at)) DESC
+     LIMIT 6`,
+    [normalizedUid]
+  );
+
+  const recentSubjects = subjectRows.map(r => r.subject.trim());
+
+  // Query distinct topics grouped by subject used recently
+  const { rows: topicRows } = await criticalQuery(
+    `SELECT subject, topic, MAX(COALESCE(started_at, created_at)) as last_used
+     FROM public.study_blocks
+     WHERE LOWER(user_id) = $1
+       AND topic IS NOT NULL
+       AND TRIM(topic) <> ''
+       AND created_at >= NOW() - INTERVAL '60 days'
+       AND archived_at IS NULL
+       AND schedule_deleted_at IS NULL
+     GROUP BY subject, topic
+     ORDER BY subject, MAX(COALESCE(started_at, created_at)) DESC`,
+    [normalizedUid]
+  );
+
+  const recentTopicsBySubject = {};
+  for (const r of topicRows) {
+    const s = r.subject.trim();
+    const t = r.topic.trim();
+    if (!recentTopicsBySubject[s]) recentTopicsBySubject[s] = [];
+    if (recentTopicsBySubject[s].length < 8 && !recentTopicsBySubject[s].includes(t)) {
+      recentTopicsBySubject[s].push(t);
+    }
+  }
+
+  return {
+    recentSubjects,
+    recentTopicsBySubject
+  };
+}
+

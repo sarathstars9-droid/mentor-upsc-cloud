@@ -20,6 +20,7 @@ const pageTitleMap = {
   mains: "Mains · Answer Writing",
   ethics: "Ethics · Case Practice",
   essay: "Essay · Theme Builder",
+  visual_studio: "Visual Studio · Official Evidence & Visual Knowledge",
   settings: "Settings · System Control",
 };
 

@@ -272,4 +272,8 @@ test('MentorOS Voice Provider V2 Test Suite', async (t) => {
     assert.ok(sentSetup.setup.inputAudioTranscription, 'inputAudioTranscription must be enabled');
     assert.equal(sentSetup.setup.generationConfig?.responseModalities?.[0], 'AUDIO', 'Audio modality must be set');
   });
+
+  // Cleanup test rows
+  await query('DELETE FROM public.mentor_ai_usage WHERE mentor_session_id = $1', [testSessionId]);
+  await query('DELETE FROM public.mentor_sessions WHERE id = $1', [testSessionId]);
 });

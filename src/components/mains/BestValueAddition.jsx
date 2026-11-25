@@ -1,11 +1,5 @@
-/**
- * src/components/mains/BestValueAddition.jsx
- *
- * Dedicated component representing the Best Value Addition recommended for the answer,
- * including visual diagrams rendering where applicable.
- */
-
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { MainsVisualRenderer } from "./MainsVisualRenderer";
 
 const DISPLAY_TYPES = {
@@ -18,6 +12,7 @@ const DISPLAY_TYPES = {
 };
 
 export function BestValueAddition({ bva }) {
+  const navigate = useNavigate();
   if (!bva || !bva.needed) return null;
 
   const isVisual = bva.mode === "VISUAL";
@@ -26,17 +21,89 @@ export function BestValueAddition({ bva }) {
   // Quantitative Safety Block
   const quantitativeSubtypes = ["BAR_CHART", "LINE_GRAPH", "PIE_CHART"];
   const isQuantitative = quantitativeSubtypes.includes(bva.subtype);
-  const hasProvenance = bva.evidence_reference && ["TRUSTED_RAG", "VERIFIED_EVIDENCE", "QUESTION_PROVIDED"].includes(bva.evidence_reference.status);
+  const evidenceRef = bva.evidence_reference || bva.evidence || null;
+  const isVerifiedEvidence = evidenceRef && (
+    evidenceRef.status === "TRUSTED_RAG" || 
+    evidenceRef.status === "VERIFIED_EVIDENCE" || 
+    evidenceRef.status === "VERIFIED_OFFICIAL" ||
+    evidenceRef.verification_status === "verified" ||
+    evidenceRef.verification_status === "verified_current" ||
+    evidenceRef.verification_status === "verified_historical" ||
+    evidenceRef.verification_status === "stale" ||
+    evidenceRef.status === "QUESTION_PROVIDED"
+  );
   
-  const blockQuantitative = isQuantitative && !hasProvenance;
+  const blockQuantitative = isQuantitative && !isVerifiedEvidence;
+  const isStale = Boolean(evidenceRef?.is_stale || evidenceRef?.verification_status === "stale");
+  const isOfficialSource = Boolean(evidenceRef?.is_official || evidenceRef?.authority_level === "PRIMARY_OFFICIAL" || evidenceRef?.source_tier === 1);
+
+  const visualAssetId = bva.visual_asset_id || bva.visual_spec?.id;
+  const topicId = bva.topic_id || bva.topic_slug;
+
+  const handleOpenVisualStudio = () => {
+    const params = new URLSearchParams();
+    if (visualAssetId) params.set("visual", visualAssetId);
+    if (topicId) params.set("topic", topicId);
+    if (bva.title) params.set("q", bva.title.replace(/^Value Addition:\s*/i, ""));
+    navigate(`/current-affairs/visual-studio?${params.toString()}`);
+  };
 
   return (
     <div style={styles.card}>
       <div style={styles.header}>
-        <div style={styles.badge}>{isVisual ? "VISUAL : " : "NON-VISUAL : "}{typeLabel}</div>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+          <div style={styles.badge}>{isVisual ? "VISUAL : " : "NON-VISUAL : "}{typeLabel}</div>
+          {evidenceRef && isVerifiedEvidence && (
+            <div style={isOfficialSource ? styles.officialBadge : styles.verifiedBadge}>
+              🏛️ {isOfficialSource ? "OFFICIAL SOURCE" : "VERIFIED EVIDENCE"}
+            </div>
+          )}
+          {isStale && (
+            <div style={styles.staleBadge}>
+              ⚠️ REFRESH REQUIRED
+            </div>
+          )}
+        </div>
+
+        <button 
+          onClick={handleOpenVisualStudio} 
+          style={styles.openVisualStudioBtn}
+          title="Open this visual structure in Visual Studio for deep exam study, recall practice & official provenance"
+        >
+          🎨 Open in Visual Studio ↗
+        </button>
       </div>
 
       <div style={styles.title}>{bva.title}</div>
+
+      {/* Official Evidence Metadata Banner */}
+      {evidenceRef && (evidenceRef.source_name || evidenceRef.data_period) && (
+        <div style={styles.evidenceMetaBox}>
+          <div style={styles.evidenceMetaItem}>
+            <span style={styles.evidenceMetaKey}>Source:</span>
+            <span style={styles.evidenceMetaVal}>{evidenceRef.source_name || "Official Registry"}</span>
+          </div>
+          {evidenceRef.data_period && (
+            <div style={styles.evidenceMetaItem}>
+              <span style={styles.evidenceMetaKey}>Data Period:</span>
+              <span style={styles.evidenceMetaVal}>{evidenceRef.data_period}</span>
+            </div>
+          )}
+          {evidenceRef.exam_context && (
+            <div style={styles.evidenceMetaItem}>
+              <span style={styles.evidenceMetaKey}>Scope:</span>
+              <span style={styles.evidenceMetaVal}>{evidenceRef.exam_context.toUpperCase()} {evidenceRef.region ? `(${evidenceRef.region.replace('_', ' ')})` : ''}</span>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Refresh Warning Alert */}
+      {isStale && (
+        <div style={styles.staleWarningBox}>
+          <strong>⚠️ Stale Evidence Notice:</strong> {evidenceRef?.refresh_warning || "This evidence data period is past expiration. Data should be refreshed from official portals before exam deployment."}
+        </div>
+      )}
 
       {bva.insertion_point && (
         <div style={styles.metaRow}>
@@ -60,7 +127,7 @@ export function BestValueAddition({ bva }) {
 
       {blockQuantitative ? (
         <div style={styles.avoidBox}>
-          <span style={{ fontWeight: 800 }}>Safety Blocked:</span> This chart requires verified data provenance but none was found. Inventing data is prohibited.
+          <span style={{ fontWeight: 800 }}>⛔ Official Safety Block:</span> This chart requires verified official data provenance, but candidate data was unverified. Fabricating fallback figures is prohibited by MentorOS policy.
         </div>
       ) : (
         isVisual && bva.visual_spec && (
@@ -154,5 +221,83 @@ const styles = {
   },
   visualWrapper: {
     marginTop: 16
-  }
+  },
+  officialBadge: {
+    fontSize: 10,
+    fontWeight: 800,
+    color: "#047857",
+    background: "#ecfdf5",
+    border: "1px solid #a7f3d0",
+    padding: "3px 8px",
+    borderRadius: 6,
+    letterSpacing: "0.03em",
+  },
+  verifiedBadge: {
+    fontSize: 10,
+    fontWeight: 800,
+    color: "#0369a1",
+    background: "#f0f9ff",
+    border: "1px solid #bae6fd",
+    padding: "3px 8px",
+    borderRadius: 6,
+    letterSpacing: "0.03em",
+  },
+  staleBadge: {
+    fontSize: 10,
+    fontWeight: 800,
+    color: "#b45309",
+    background: "#fffbeb",
+    border: "1px solid #fde68a",
+    padding: "3px 8px",
+    borderRadius: 6,
+    letterSpacing: "0.03em",
+  },
+  evidenceMetaBox: {
+    display: "flex",
+    gap: 14,
+    flexWrap: "wrap",
+    background: "#f8fafc",
+    border: "1px solid #e2e8f0",
+    borderRadius: 6,
+    padding: "8px 12px",
+    marginBottom: 12,
+  },
+  evidenceMetaItem: {
+    display: "flex",
+    gap: 6,
+    alignItems: "center",
+    fontSize: 12,
+  },
+  evidenceMetaKey: {
+    color: "#64748b",
+    fontWeight: 600,
+  },
+  evidenceMetaVal: {
+    color: "#0f172a",
+    fontWeight: 700,
+  },
+  staleWarningBox: {
+    fontSize: 12,
+    lineHeight: 1.5,
+    color: "#92400e",
+    background: "#fffbeb",
+    border: "1px solid #fef3c7",
+    borderRadius: 6,
+    padding: "8px 12px",
+    marginBottom: 12,
+  },
+  openVisualStudioBtn: {
+    background: "#f0fdf4",
+    border: "1px solid #bbf7d0",
+    color: "#166534",
+    padding: "4px 10px",
+    borderRadius: 6,
+    fontSize: 11,
+    fontWeight: 700,
+    cursor: "pointer",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 4,
+    transition: "all 0.15s ease",
+  },
 };

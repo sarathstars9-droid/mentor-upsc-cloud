@@ -100,6 +100,17 @@ export function toFrontendBlock(dbBlock, gasBlock = {}) {
     ...gasBlock,
 
     // ── Lifecycle fields from PostgreSQL (override any GAS values) ──────────
+    id:                 computed.id || computed.block_id || computed.BlockId,
+    block_id:           computed.block_id || computed.BlockId || computed.id,
+    subject:            gasBlock.PlannedSubject || computed.subject         || computed.PlannedSubject || '',
+    topic:              gasBlock.PlannedTopic   || computed.topic           || computed.PlannedTopic   || '',
+    subtopic:           gasBlock.Subtopic       || computed.subtopic        || computed.Subtopic       || '',
+    planned_minutes:    gasBlock.PlannedMinutes ?? computed.planned_minutes ?? computed.PlannedMinutes ?? 0,
+    actual_minutes:     computed.actualMinutes  ?? computed.actual_minutes  ?? 0,
+    started_at:         computed.started_at     || '',
+    ended_at:           computed.ended_at       || '',
+    status:             computed.status,
+    day_key:            computed.day_key        || '',
     BlockId:            computed.block_id || computed.BlockId || computed.id,
     Date:               computed.day_key,
     Status:             computed.status,
@@ -128,6 +139,23 @@ export function toFrontendBlock(dbBlock, gasBlock = {}) {
 
     CalendarEventId:    computed.calendar_event_id   || '',
     CalendarSyncStatus: computed.calendar_sync_status || 'pending',
+
+    // ── Canonical Study Block model fields ───────────────────────────
+    plan_comment:       computed.plan_comment       || computed.PlanComment       || '',
+    PlanComment:        computed.plan_comment       || computed.PlanComment       || '',
+    study_review:       computed.study_review       || computed.StudyReview       || '',
+    StudyReview:        computed.study_review       || computed.StudyReview       || '',
+    completion_percent: computed.completion_percent ?? computed.CompletionPercent ?? null,
+    CompletionPercent:  computed.completion_percent ?? computed.CompletionPercent ?? null,
+    quality:            computed.quality            || computed.Quality           || '',
+    Quality:            computed.quality            || computed.Quality           || '',
+    custom_topic:       computed.custom_topic       || computed.CustomTopic       || '',
+    CustomTopic:        computed.custom_topic       || computed.CustomTopic       || '',
+    parent_block_id:    computed.parent_block_id    || computed.ParentBlockId    || null,
+    ParentBlockId:      computed.parent_block_id    || computed.ParentBlockId    || null,
+    source:             computed.source             || computed.source_type       || 'manual',
+    Source:             computed.source             || computed.source_type       || 'manual',
+    sort_order:         computed.sort_order         || 0,
 
     // Internal — for debugging
     _lifecycleSource:   'postgres',

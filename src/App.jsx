@@ -49,6 +49,8 @@ import PrelimsTestAttemptPage from "./pages/PrelimsTestAttemptPage";
 import PrelimsTestResultPage from "./pages/PrelimsTestResultPage";
 import MentorCallSimulator from "./pages/MentorCallSimulator";
 import KnowledgeReviewPage from "./pages/KnowledgeReviewPage";
+import VisualStudioPage from "./pages/VisualStudioPage";
+import CurrentAffairsPage from "./pages/CurrentAffairsPage";
 import { isLoggedIn, logout, getAuthUserId } from "./utils/auth";
 import NotificationBanner from "./components/Notifications/NotificationBanner";
 
@@ -88,6 +90,9 @@ function AppRoutes({ onLogout }) {
     "/essay/mistakes": "essay",
     "/settings": "settings",
     "/knowledge-review": "knowledge_review",
+    "/current-affairs": "current_affairs",
+    "/current-affairs/visual-studio": "visual_studio",
+    "/visual-studio": "visual_studio",
   };
 
   const pageToRouteMap = {
@@ -111,10 +116,13 @@ function AppRoutes({ onLogout }) {
     essay: "/essay",
     settings: "/settings",
     knowledge_review: "/knowledge-review",
+    visual_studio: "/current-affairs/visual-studio",
   };
 
   const currentPage =
-    path.startsWith("/pyq/topic/")
+    path.startsWith("/current-affairs/visual-studio") || path.startsWith("/visual-studio")
+      ? "visual_studio"
+      : path.startsWith("/pyq/topic/")
       ? "prelims"
       : path.startsWith("/prelims/institutional-tests")
       ? "prelims_institutional"
@@ -185,6 +193,9 @@ function AppRoutes({ onLogout }) {
         <Route path="/prelims/test/:attemptId" element={<PrelimsTestAttemptPage />} />
         <Route path="/prelims/test/result/:attemptId" element={<PrelimsTestResultPage />} />
         <Route path="/knowledge-review" element={<KnowledgeReviewPage />} />
+        <Route path="/current-affairs" element={<CurrentAffairsPage />} />
+        <Route path="/current-affairs/visual-studio" element={<VisualStudioPage />} />
+        <Route path="/visual-studio" element={<VisualStudioPage />} />
         <Route path="*" element={<Navigate to="/plan" replace />} />
       </Routes>
     </MentorOSLayout>

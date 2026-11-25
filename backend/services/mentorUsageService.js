@@ -167,6 +167,79 @@ export async function recordMentorTurnUsage({
 }
 
 /**
+ * Record token usage from Visual Generation (DeepSeek / Gemini)
+ */
+export async function recordVisualGenerationUsage({
+  userId = 'system',
+  topicId = null,
+  visualType = 'diagram',
+  provider = 'deepseek',
+  model = 'deepseek-flash',
+  usage = {},
+  latencyMs = 0,
+  schemaValid = true,
+  metadata = {}
+}) {
+  try {
+    const usdInrRate = PRICING_CONFIG.USD_INR_RATE;
+    const promptTokens = usage.prompt_tokens || usage.promptTokens || usage.input_tokens || usage.promptTokenCount || 0;
+    const completionTokens = usage.completion_tokens || usage.completionTokens || usage.output_tokens || usage.candidatesTokenCount || 0;
+
+    let costUsd = 0;
+    if (provider === 'deepseek') {
+      costUsd =
+        (promptTokens / 1_000_000) * PRICING_CONFIG.DEEPSEEK.INPUT_PER_1M +
+        (completionTokens / 1_000_000) * PRICING_CONFIG.DEEPSEEK.OUTPUT_PER_1M;
+    } else if (provider === 'gemini') {
+      costUsd =
+        (promptTokens / 1_000_000) * (model.includes('lite') ? 0.10 : 0.30) +
+        (completionTokens / 1_000_000) * (model.includes('lite') ? 0.40 : 2.50);
+    } else {
+      costUsd =
+        (promptTokens / 1_000_000) * PRICING_CONFIG.OPENAI_FALLBACK.INPUT_PER_1M +
+        (completionTokens / 1_000_000) * PRICING_CONFIG.OPENAI_FALLBACK.OUTPUT_PER_1M;
+    }
+
+    const costInr = costUsd * usdInrRate;
+
+    await query(
+      `INSERT INTO public.mentor_ai_usage (
+        user_id, mentor_session_id, provider, model, usage_type,
+        input_audio_tokens, output_audio_tokens, input_text_tokens, output_text_tokens,
+        estimated_cost_usd, usd_inr_rate, estimated_cost_inr, metadata
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
+      [
+        userId,
+        null,
+        provider,
+        model,
+        'visual_generation',
+        0,
+        0,
+        promptTokens,
+        completionTokens,
+        costUsd,
+        usdInrRate,
+        costInr,
+        JSON.stringify({
+          topicId,
+          visualType,
+          latencyMs,
+          schemaValid,
+          ...metadata,
+          rawUsage: usage
+        })
+      ]
+    );
+
+    return { costUsd, costInr, promptTokens, completionTokens };
+  } catch (err) {
+    console.error('[MentorUsage] Error recording visual generation usage:', err.message);
+    return null;
+  }
+}
+
+/**
  * Fetch aggregated monthly usage and budget progress
  */
 export async function getMonthlyUsage(userId, monthKey = null) {
@@ -195,7 +268,11 @@ export async function getMonthlyUsage(userId, monthKey = null) {
         COALESCE(SUM(estimated_cost_usd), 0) as total_cost_usd,
         COALESCE(SUM(estimated_cost_inr), 0) as total_cost_inr
        FROM public.mentor_ai_usage
-       WHERE user_id = $1 AND created_at >= $2 AND created_at < $3
+       WHERE user_id = $1 
+         AND created_at >= $2 
+         AND created_at < $3
+         AND (metadata->>'is_mock' IS NULL OR metadata->>'is_mock' != 'true')
+         AND (metadata->>'source' IS NULL OR metadata->>'source' != 'automated_test')
        GROUP BY provider, usage_type`,
       [userId, startOfMonth, endOfMonth]
     );

@@ -147,7 +147,7 @@ export async function buildKnowledgeCandidate({
   let generatedData;
   const provider = process.env.MAINS_KNOWLEDGE_BUILDER_PROVIDER || process.env.MENTOR_AI_PROVIDER || 'gemini';
   const apiKey = process.env.MAINS_KNOWLEDGE_BUILDER_API_KEY || process.env.MENTOR_AI_API_KEY || process.env.GEMINI_API_KEY || 'mocked';
-  const model = process.env.MAINS_KNOWLEDGE_BUILDER_MODEL || process.env.MENTOR_AI_MODEL || 'gemini-1.5-pro';
+  const model = process.env.MAINS_KNOWLEDGE_BUILDER_MODEL || process.env.MENTOR_AI_MODEL || 'gemini-3.8-flash';
 
   try {
     generatedData = await generateAIContent({

@@ -52,6 +52,7 @@ const navGroups = [
     label: "Knowledge",
     items: [
       { id: "syllabus", key: "syllabus", icon: Layers, label: "Syllabus" },
+      { id: "visual_studio", key: "visual_studio", icon: BookOpen, label: "Visual Studio" },
       { id: "optional", key: "optional", icon: Map, label: "Optional Geography" },
       { id: "revision-know", key: "revision", icon: RefreshCw, label: "Revision", activeKey: null },
       { id: "backlog", key: "backlog", icon: Archive, label: "Backlog" },

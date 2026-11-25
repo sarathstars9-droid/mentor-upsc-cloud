@@ -78,7 +78,22 @@ export function MainsVisualRenderer({ schema, drawTimeSeconds }) {
       </div>
 
       <div style={styles.meta}>
-        <div style={styles.desc}>{description}</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+          <div style={styles.desc}>{description}</div>
+          {schema.evidence && (
+            <div style={styles.evidenceRow}>
+              <span style={schema.evidence.is_official ? styles.officialBadge : styles.verifiedBadge}>
+                🏛️ {schema.evidence.source_name || "Official Source"}
+              </span>
+              {schema.evidence.data_period && (
+                <span style={styles.periodBadge}>Period: {schema.evidence.data_period}</span>
+              )}
+              {schema.evidence.is_stale && (
+                <span style={styles.staleWarning}>⚠️ Stale Evidence (Refresh Needed)</span>
+              )}
+            </div>
+          )}
+        </div>
         {drawTimeSeconds && (
           <div style={styles.drawTime}>Approx. draw time: {drawTimeSeconds} sec</div>
         )}
@@ -693,5 +708,40 @@ const styles = {
     fontSize: 13,
     color: "#101828",
     lineHeight: 1.5,
+  },
+  evidenceRow: {
+    display: "flex",
+    gap: 8,
+    alignItems: "center",
+    marginTop: 4,
+    flexWrap: "wrap",
+  },
+  officialBadge: {
+    fontSize: 10,
+    fontWeight: 700,
+    color: "#047857",
+    background: "#ecfdf5",
+    border: "1px solid #a7f3d0",
+    padding: "2px 6px",
+    borderRadius: 4,
+  },
+  verifiedBadge: {
+    fontSize: 10,
+    fontWeight: 700,
+    color: "#0369a1",
+    background: "#f0f9ff",
+    border: "1px solid #bae6fd",
+    padding: "2px 6px",
+    borderRadius: 4,
+  },
+  periodBadge: {
+    fontSize: 10,
+    color: "#64748b",
+    fontWeight: 600,
+  },
+  staleWarning: {
+    fontSize: 10,
+    color: "#b45309",
+    fontWeight: 700,
   },
 };

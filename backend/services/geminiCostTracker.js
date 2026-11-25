@@ -8,15 +8,20 @@ const PRICING_REGISTRY = {
     input_usd_per_million: 0.075,
     output_usd_per_million: 0.30
   },
-  'gemini-1.5-pro': {
-    service_tier: 'STANDARD',
-    input_usd_per_million: 1.25,
-    output_usd_per_million: 5.00
-  },
   'gemini-2.5-flash': {
     service_tier: 'STANDARD',
     input_usd_per_million: 0.30,
     output_usd_per_million: 2.50
+  },
+  'gemini-3.8-flash': {
+    service_tier: 'STANDARD',
+    input_usd_per_million: 0.30,
+    output_usd_per_million: 2.50
+  },
+  'gemini-3.5-flash-lite': {
+    service_tier: 'STANDARD',
+    input_usd_per_million: 0.10,
+    output_usd_per_million: 0.40
   }
 };
 

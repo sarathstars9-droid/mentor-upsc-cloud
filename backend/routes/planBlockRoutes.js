@@ -29,6 +29,9 @@ import {
   deleteStudyBlock,
   clearDayTimetable,
   resetDayExecution,
+  carryForwardStudyBlock,
+  quickStartStudyBlock,
+  getLogBookEntries,
 } from '../services/blockLifecycleService.js';
 import { syncBlockToCalendar, retryFailedCalendarSyncs, probeCalendarBridge } from '../services/calendarBridgeService.js';
 import { enqueueAction } from '../services/outboxService.js';
@@ -139,7 +142,49 @@ router.get('/', async (req, res) => {
   try {
     const uid = userId(req);
     const blocks = await getBlocksForDay(uid, dayKey);
-    return res.json({ ok: true, source: 'postgres', userId: uid, date: dayKey, blocks });
+
+    // Performance & Execution calculations
+    let plannedMinutes = 0;
+    let completedMinutes = 0;
+    let studyingMinutes = 0;
+    let completedCount = 0;
+    let studyingCount = 0;
+
+    for (const b of blocks) {
+      const pMins = Number(b.PlannedMinutes || b.planned_minutes || 0);
+      const aMins = Number(b.ActualMinutes || b.actual_minutes || 0);
+      const st = String(b.Status || b.status || '').toLowerCase();
+
+      if (['completed', 'done'].includes(st)) {
+        completedMinutes += aMins;
+        completedCount++;
+        plannedMinutes += pMins;
+      } else if (['active', 'studying', 'running'].includes(st)) {
+        studyingMinutes += Math.floor(Number(b.ActualSeconds || 0) / 60);
+        studyingCount++;
+        plannedMinutes += pMins;
+      } else if (['planned', 'upcoming', 'paused'].includes(st)) {
+        plannedMinutes += pMins;
+      }
+    }
+
+    const remainingMinutes = Math.max(0, plannedMinutes - completedMinutes - studyingMinutes);
+    const executionPercent = plannedMinutes > 0
+      ? Math.min(100, Math.round(((completedMinutes + studyingMinutes) / plannedMinutes) * 1000) / 10)
+      : 0;
+
+    const metrics = {
+      plannedMinutes,
+      completedMinutes,
+      studyingMinutes,
+      remainingMinutes,
+      executionPercent,
+      completedCount,
+      studyingCount,
+      totalCount: blocks.length
+    };
+
+    return res.json({ ok: true, source: 'postgres', userId: uid, date: dayKey, blocks, metrics });
   } catch (err) {
     console.error('[GET /api/plan/blocks]', err);
     return res.status(500).json({ ok: false, source: 'postgres_error', date: dayKey, error: 'Unable to load the current plan.' });
@@ -241,11 +286,15 @@ router.post('/start', async (req, res) => {
     }
 
     const status = err.code === 'RACE_CONDITION' ? 409
+                 : err.code === 'ACTIVE_BLOCK_EXISTS' ? 409
                  : err.code === 'STALE_ACTIVE_SESSION' ? 409
                  : err.code === 'INVALID_TRANSITION' ? 422
-                 : 500;
+                 : (err.status || 500);
 
     const payload = { ok: false, message: err.message, code: err.code };
+    if (err.code === 'ACTIVE_BLOCK_EXISTS' && err.activeBlock) {
+      payload.activeBlock = err.activeBlock;
+    }
     if (err.code === 'STALE_ACTIVE_SESSION' && err.staleBlock) {
       payload.staleBlock = err.staleBlock;
     }
@@ -348,10 +397,12 @@ router.post('/resume', async (req, res) => {
   }
 });
 
-router.post('/complete', async (req, res) => {
+router.post(['/complete', '/finish'], async (req, res) => {
   const {
     blockId, dayKey, reason,
-    actualMinutes, outputType, outputCount, accuracy, score, confidence, weaknessNote,
+    actualMinutes, actualEndTime, endedAt,
+    studyReview, study_review, completionPercent, completion_percent, quality,
+    outputType, outputCount, accuracy, score, confidence, weaknessNote,
     proofUrl, proofType, proofStatus, proofNotes
   } = req.body || {};
   if (!blockId) return res.status(400).json({ ok: false, message: 'blockId is required' });
@@ -360,7 +411,11 @@ router.post('/complete', async (req, res) => {
     const uid   = userId(req);
     const day   = dayKey || todayKey();
     const block = await completeBlock(uid, blockId, day, {
-      reason, actualMinutes, outputType, outputCount, accuracy, score, confidence, weaknessNote,
+      reason, actualMinutes, actualEndTime: actualEndTime || endedAt,
+      studyReview: studyReview || study_review,
+      completionPercent: completionPercent !== undefined ? completionPercent : completion_percent,
+      quality,
+      outputType, outputCount, accuracy, score, confidence, weaknessNote,
       proofUrl, proofType, proofStatus, proofNotes
     });
 
@@ -373,7 +428,7 @@ router.post('/complete', async (req, res) => {
     if (isDbError) {
       const payload = {
         userId: userId(req), blockId, dayKey: req.body.dayKey || todayKey(),
-        metadata: { reason, actualMinutes, outputType, outputCount, accuracy, score, confidence, weaknessNote, proofUrl, proofType, proofStatus, proofNotes }
+        metadata: { reason, actualMinutes, actualEndTime: actualEndTime || endedAt, studyReview: studyReview || study_review, completionPercent, quality, outputType, outputCount, accuracy, score, confidence, weaknessNote, proofUrl, proofType, proofStatus, proofNotes }
       };
       await enqueueAction('completeBlock', payload);
       return res.status(202).json({ ok: true, queued: true, message: 'Action queued due to database degradation.' });
@@ -381,8 +436,179 @@ router.post('/complete', async (req, res) => {
 
     const status = err.code === 'PROOF_REQUIRED' ? 422
                  : err.code === 'NOT_STOPPABLE' ? 409
+                 : err.code === 'INVALID_END_TIME' ? 400
+                 : err.code === 'INVALID_COMPLETION' ? 400
                  : 500;
     return res.status(status).json({ ok: false, message: err.message, code: err.code });
+  }
+});
+
+// ── POST /api/plan/blocks/carry-forward ───────────────────────────────────────
+
+router.post('/carry-forward', async (req, res) => {
+  const { blockId, targetDayKey, targetDate, plannedMinutes, planComment } = req.body || {};
+  if (!blockId) return res.status(400).json({ ok: false, message: 'blockId is required' });
+
+  try {
+    const uid = userId(req);
+    const targetKey = targetDayKey || targetDate;
+    const block = await carryForwardStudyBlock(uid, blockId, targetKey, { plannedMinutes, planComment });
+    return res.json({ ok: true, block });
+  } catch (err) {
+    console.error('[POST /api/plan/blocks/carry-forward]', err.message);
+    const status = err.status || (err.code === 'NOT_FOUND' ? 404 : 500);
+    return res.status(status).json({ ok: false, message: err.message, code: err.code });
+  }
+});
+
+// ── POST /api/plan/blocks/quick-start ─────────────────────────────────────────
+
+router.post('/quick-start', async (req, res) => {
+  const { dayKey, blockData = {}, subject, topic, subtopic, customTopic, plannedMinutes, planComment } = req.body || {};
+  const data = {
+    ...blockData,
+    subject: subject || blockData.subject,
+    topic: topic || blockData.topic,
+    subtopic: subtopic || blockData.subtopic,
+    customTopic: customTopic || blockData.customTopic,
+    plannedMinutes: plannedMinutes || blockData.plannedMinutes,
+    planComment: planComment || blockData.planComment
+  };
+
+  try {
+    const uid = userId(req);
+    const day = dayKey || todayKey();
+    const block = await quickStartStudyBlock(uid, day, data);
+    return res.json({ ok: true, block });
+  } catch (err) {
+    console.error('[POST /api/plan/blocks/quick-start]', err.message);
+    const status = err.code === 'ACTIVE_BLOCK_EXISTS' ? 409
+                 : err.code === 'RACE_CONDITION' ? 409
+                 : err.code === 'STALE_ACTIVE_SESSION' ? 409
+                 : (err.status || (err.code === 'INVALID_DURATION' ? 400 : 500));
+
+    const payload = { ok: false, message: err.message, code: err.code };
+    if (err.code === 'ACTIVE_BLOCK_EXISTS' && err.activeBlock) {
+      payload.activeBlock = err.activeBlock;
+    }
+    return res.status(status).json(payload);
+  }
+});
+
+// ── POST /api/plan/blocks/confirm-ocr ─────────────────────────────────────────
+
+router.post('/confirm-ocr', async (req, res) => {
+  const { dayKey, items } = req.body || {};
+  if (!dayKey || !Array.isArray(items)) {
+    return res.status(400).json({ ok: false, message: 'dayKey and items array are required' });
+  }
+
+  try {
+    const uid = userId(req);
+    const { savePlanBlocksAndLogEvents } = await import('../services/blockLifecycleService.js');
+    const enriched = items.map((it, idx) => ({
+      ...it,
+      blockId: it.blockId || it.BlockId || `ocr_${Date.now()}_${idx + 1}`,
+      source: 'ocr',
+      source_type: 'ocr'
+    }));
+    const result = await savePlanBlocksAndLogEvents(uid, dayKey, enriched);
+    const blocks = await getBlocksForDay(uid, dayKey);
+    return res.json({ ok: true, result, blocks });
+  } catch (err) {
+    console.error('[POST /api/plan/blocks/confirm-ocr]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+// ── GET /api/plan/blocks/recents ──────────────────────────────────────────────
+router.get('/recents', async (req, res) => {
+  try {
+    const uid = userId(req);
+    const { getUserRecentSubjectsAndTopics } = await import('../services/blockLifecycleService.js');
+    const recents = await getUserRecentSubjectsAndTopics(uid);
+    const requestedSubject = req.query.subject;
+    const scopedTopics = requestedSubject ? (recents.recentTopicsBySubject?.[requestedSubject] || []) : [];
+    return res.json({ ok: true, ...recents, recentTopics: scopedTopics });
+  } catch (err) {
+    console.error('[GET /api/plan/blocks/recents]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+// ── DAILY PLAN IMAGE ROUTES (PER-DAY PERSISTENCE) ────────────────────────────
+router.get('/daily-image', async (req, res) => {
+  try {
+    const uid = userId(req);
+    const dayKey = req.query.dayKey || todayKey();
+    const { pool } = await import('../db/index.js');
+    const { rows } = await pool.query(
+      `SELECT day_key, image_data, mime_type, raw_ocr_text, created_at
+       FROM public.daily_plan_images
+       WHERE user_id = $1 AND day_key = $2`,
+      [uid, dayKey]
+    );
+
+    if (!rows.length) {
+      return res.json({ ok: true, exists: false, image: null });
+    }
+
+    return res.json({
+      ok: true,
+      exists: true,
+      image: {
+        dayKey: rows[0].day_key,
+        imageData: rows[0].image_data,
+        mimeType: rows[0].mime_type,
+        rawOcrText: rows[0].raw_ocr_text,
+        createdAt: rows[0].created_at
+      }
+    });
+  } catch (err) {
+    console.error('[GET /api/plan/blocks/daily-image]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+router.post('/daily-image', async (req, res) => {
+  try {
+    const uid = userId(req);
+    const { dayKey, imageData, mimeType, rawOcrText } = req.body || {};
+    if (!dayKey || !imageData) {
+      return res.status(400).json({ ok: false, message: 'dayKey and imageData are required' });
+    }
+
+    const { pool } = await import('../db/index.js');
+    await pool.query(
+      `INSERT INTO public.daily_plan_images (user_id, day_key, image_data, mime_type, raw_ocr_text, updated_at)
+       VALUES ($1, $2, $3, $4, $5, NOW())
+       ON CONFLICT (user_id, day_key)
+       DO UPDATE SET
+         image_data = EXCLUDED.image_data,
+         mime_type = EXCLUDED.mime_type,
+         raw_ocr_text = EXCLUDED.raw_ocr_text,
+         updated_at = NOW()`,
+      [uid, dayKey, imageData, mimeType || 'image/png', rawOcrText || null]
+    );
+
+    return res.json({ ok: true, message: 'Daily plan image persisted' });
+  } catch (err) {
+    console.error('[POST /api/plan/blocks/daily-image]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+// ── GET /api/plan/blocks/logbook ──────────────────────────────────────────────
+
+router.get('/logbook', async (req, res) => {
+  try {
+    const uid = userId(req);
+    const { dayKey, limit, offset } = req.query;
+    const entries = await getLogBookEntries(uid, { dayKey, limit: Number(limit) || 50, offset: Number(offset) || 0 });
+    return res.json({ ok: true, entries });
+  } catch (err) {
+    console.error('[GET /api/plan/blocks/logbook]', err.message);
+    return res.status(500).json({ ok: false, message: err.message });
   }
 });
 
@@ -492,35 +718,53 @@ router.get('/verify-calendar-bridge', async (_req, res) => {
 
 // ── CRUD & MANAGEMENT ENDPOINTS ───────────────────────────────────────────────
 
-router.post('/create', async (req, res) => {
+router.post(['/', '/create'], async (req, res) => {
   try {
     const uid = userId(req);
-    const { dayKey, blockData } = req.body;
-    if (!dayKey || !blockData) {
-      return res.status(400).json({ ok: false, message: 'dayKey and blockData are required' });
+    const dayKey = req.body?.dayKey;
+    const blockData = req.body?.blockData || {
+      subject: req.body?.subject,
+      topic: req.body?.topic,
+      subtopic: req.body?.subtopic,
+      customTopic: req.body?.customTopic,
+      plannedMinutes: req.body?.plannedMinutes,
+      planComment: req.body?.planComment,
+      source: req.body?.source || 'manual',
+      status: req.body?.status || 'planned'
+    };
+    if (!dayKey || (!blockData?.subject && !blockData?.PlannedSubject)) {
+      return res.status(400).json({ ok: false, message: 'dayKey and subject are required' });
     }
     const block = await createStudyBlock(uid, dayKey, blockData);
     return res.json({ ok: true, block });
   } catch (err) {
-    console.error('[POST /api/plan/blocks/create]', err.message);
+    console.error('[POST /api/plan/blocks]', err.message);
     return res.status(500).json({ ok: false, message: err.message });
   }
 });
 
-router.post('/update', async (req, res) => {
+const handleBlockUpdate = async (req, res) => {
   try {
     const uid = userId(req);
-    const { dayKey, blockId, patch } = req.body;
-    if (!dayKey || !blockId || !patch) {
-      return res.status(400).json({ ok: false, message: 'dayKey, blockId, and patch are required' });
+    const { dayKey, blockId, patch = {} } = req.body || {};
+    const finalBid = blockId || req.body?.BlockId;
+    if (!finalBid) {
+      return res.status(400).json({ ok: false, message: 'blockId is required' });
     }
-    const block = await updateStudyBlock(uid, dayKey, blockId, patch);
+    const finalPatch = Object.keys(patch).length > 0 ? patch : { ...req.body };
+    delete finalPatch.blockId;
+    delete finalPatch.BlockId;
+    delete finalPatch.dayKey;
+    const block = await updateStudyBlock(uid, dayKey || null, finalBid, finalPatch);
     return res.json({ ok: true, block });
   } catch (err) {
-    console.error('[POST /api/plan/blocks/update]', err.message);
+    console.error('[POST/PATCH /api/plan/blocks/update]', err.message);
     return res.status(500).json({ ok: false, message: err.message });
   }
-});
+};
+
+router.post('/update', handleBlockUpdate);
+router.patch(['/', '/update'], handleBlockUpdate);
 
 router.post('/delete', async (req, res) => {
   try {

@@ -30,6 +30,7 @@ export function setupMentorVoiceGateway(server) {
     const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
     const token = url.searchParams.get('token') || '';
     let sessionId = url.searchParams.get('sessionId') || null;
+    let clientMode = url.searchParams.get('mode') || 'call'; // 'call' | 'test_mic' | 'test_speaker'
     const isProd = process.env.NODE_ENV === 'production' || process.env.RAILWAY_ENVIRONMENT;
 
     let userId = null;
@@ -185,14 +186,19 @@ export function setupMentorVoiceGateway(server) {
                 text: userText
               }));
 
+              if (clientMode === 'test_mic') {
+                console.log(`[MentorVoiceGateway] Mic test transcript received: "${userText}". Skipping DeepSeek.`);
+                return;
+              }
+
               if (userText && sessionId && !isProcessingTurn) {
                 isProcessingTurn = true;
                 broadcastState('MENTOR_THINKING');
 
                 const turnRequestId = uuidv4();
                 try {
-                  console.log('[VOICE DEBUG] sending to canonical Mentor turn');
-                  console.log('[VOICE DEBUG] DeepSeek called');
+                  console.log(`[MIC-K] processMentorTurn called (userText: "${userText}")`);
+                  console.log('[MIC-L] DeepSeek called');
                   const tStart = Date.now();
 
                   const turnResult = await processMentorTurn({
@@ -205,7 +211,7 @@ export function setupMentorVoiceGateway(server) {
                   const latency = Date.now() - tStart;
                   console.log(`[VOICE DEBUG] DeepSeek reply received (${latency}ms): "${turnResult.mentorReply}"`);
 
-                  broadcastState('MENTOR_SPEAKING');
+                  broadcastState('MENTOR_GENERATING_VOICE');
                   clientWs.send(JSON.stringify({
                     type: 'mentor_reply',
                     reply: turnResult.mentorReply,
@@ -278,21 +284,27 @@ export function setupMentorVoiceGateway(server) {
     // ──────────────────────────────────────────
     clientWs.on('message', (message, isBinary) => {
       let buf = null;
-      if (isBinary || message instanceof Buffer || message instanceof ArrayBuffer) {
+      if (isBinary) {
         buf = Buffer.isBuffer(message) ? message : Buffer.from(message);
       } else {
         try {
-          const data = JSON.parse(message.toString());
+          const rawStr = typeof message === 'string' ? message : message.toString('utf-8');
+          const data = JSON.parse(rawStr);
 
           if (data.type === 'audio' && data.data) {
             buf = Buffer.from(data.data, 'base64');
+          } else if (data.type === 'set_mode') {
+            clientMode = data.mode || 'call';
+            console.log(`[MentorVoiceGateway] Mode dynamically changed to: ${clientMode}`);
           } else if (data.type === 'set_session' && data.sessionId) {
             sessionId = data.sessionId;
             if (voiceService && voiceService.sessionId !== undefined) {
               voiceService.sessionId = sessionId;
             }
             console.log(`[MentorVoiceGateway] Active session set to: ${sessionId}`);
-          } else if (data.type === 'speak' && data.text) {
+          } else if ((data.type === 'speak' || data.type === 'test_speaker') && (data.text || data.message)) {
+            const speechText = data.text || data.message || "Hello Moulika.";
+            console.log(`[SPK-1] gateway received text: "${speechText}" (mode: ${clientMode})`);
             if (provider === 'sarvam') {
               if (activeTtsSession) {
                 activeTtsSession.cancel();
@@ -302,7 +314,7 @@ export function setupMentorVoiceGateway(server) {
                 clientWs.send(JSON.stringify({ type: 'tts_start' }));
               }
               activeTtsSession = sarvamTtsService.synthesizeStream({
-                text: data.text,
+                text: speechText,
                 onAudioChunk: (audioBase64) => {
                   if (clientWs.readyState === clientWs.OPEN) {
                     clientWs.send(JSON.stringify({ type: 'tts_audio', audio: audioBase64 }));
@@ -320,7 +332,12 @@ export function setupMentorVoiceGateway(server) {
                 }
               });
             } else if (voiceService) {
-              voiceService.speakMentorText(data.text);
+              voiceService.speakMentorText(speechText);
+            }
+          } else if (data.type === 'audio_stream_end' || data.type === 'speech_end') {
+            console.log(`[END-1] client VAD speech-end detected (mode: ${clientMode})`);
+            if (voiceService && typeof voiceService.sendAudioStreamEnd === 'function') {
+              voiceService.sendAudioStreamEnd();
             }
           } else if (data.type === 'interrupt_tts' || data.type === 'stop_speaking' || data.type === 'interrupt') {
             if (provider === 'sarvam' && activeTtsSession) {
@@ -340,10 +357,8 @@ export function setupMentorVoiceGateway(server) {
       if (buf && voiceService) {
         backendChunks++;
         backendBytes += buf.length;
-        const now = Date.now();
-        if (now - lastBackendAudioLogTime >= 2000) {
-          lastBackendAudioLogTime = now;
-          console.log(`[VOICE DEBUG] backend audio received: chunks=${backendChunks}, bytes=${backendBytes}`);
+        if (backendChunks === 1 || backendChunks % 10 === 0) {
+          console.log(`[MIC-E] backend gateway received PCM (chunk #${backendChunks}, bytes=${buf.length}, totalBytes=${backendBytes})`);
         }
         voiceService.sendAudioChunk(buf);
       }

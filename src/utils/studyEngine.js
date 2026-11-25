@@ -497,6 +497,13 @@ export function buildScheduleBlocksPayload(blocks) {
       outputExpected: block.OutputExpected || block.outputExpected || "",
       rawText: block.RawText || block.rawText || "",
       subtopic: block.Subtopic || block.subtopic || "",
+      planComment: block.PlanComment || block.plan_comment || "",
+      plan_comment: block.PlanComment || block.plan_comment || "",
+      customTopic: block.CustomTopic || block.custom_topic || "",
+      custom_topic: block.CustomTopic || block.custom_topic || "",
+      source: "ocr",
+      source_type: "ocr",
+      status: "planned",
     };
   });
 }

@@ -6,14 +6,89 @@ import { BACKEND_URL } from '../config';
 const CALL_STATES = {
   IDLE: 'IDLE',
   CONNECTING: 'CONNECTING',
+  READY: 'READY',
   LISTENING: 'LISTENING',
   USER_SPEAKING: 'USER_SPEAKING',
+  PROCESSING_SPEECH: 'PROCESSING_SPEECH',
+  TRANSCRIBING: 'TRANSCRIBING',
   MENTOR_THINKING: 'MENTOR_THINKING',
+  MENTOR_GENERATING_VOICE: 'MENTOR_GENERATING_VOICE',
   MENTOR_SPEAKING: 'MENTOR_SPEAKING',
   INTERRUPTED: 'INTERRUPTED',
   ENDED: 'ENDED',
   ERROR: 'ERROR'
 };
+
+/**
+ * Stateful audio resampler with continuous phase tracking and anti-aliasing integration.
+ * Correctly resamples arbitrary hardware rates (48000Hz, 44100Hz, etc.) to 16000Hz mono Float32.
+ */
+class AudioResampler {
+  constructor(inputSampleRate, targetSampleRate = 16000) {
+    this.inputSampleRate = inputSampleRate;
+    this.targetSampleRate = targetSampleRate;
+    this.ratio = inputSampleRate / targetSampleRate;
+    this.phase = 0;
+    this.lastInputSample = 0;
+  }
+
+  reset() {
+    this.phase = 0;
+    this.lastInputSample = 0;
+  }
+
+  process(inputBuffer) {
+    if (this.inputSampleRate === this.targetSampleRate || this.ratio === 1) {
+      return inputBuffer;
+    }
+
+    const inputLen = inputBuffer.length;
+    const ratio = this.ratio;
+    let pos = this.phase;
+    const maxOutLen = Math.ceil((inputLen - pos) / ratio) + 2;
+    const output = new Float32Array(maxOutLen);
+    let outIdx = 0;
+
+    while (pos + ratio <= inputLen) {
+      const start = pos;
+      const end = pos + ratio;
+
+      let sum = 0;
+      let count = 0;
+
+      const iStart = Math.floor(start);
+      const iEnd = Math.floor(end);
+
+      if (iStart === iEnd) {
+        sum = (iStart >= 0 ? inputBuffer[iStart] : this.lastInputSample) * ratio;
+        count = ratio;
+      } else {
+        const firstWeight = (iStart + 1) - start;
+        sum += (iStart >= 0 ? inputBuffer[iStart] : this.lastInputSample) * firstWeight;
+        count += firstWeight;
+
+        for (let i = iStart + 1; i < iEnd; i++) {
+          sum += inputBuffer[i];
+          count += 1;
+        }
+
+        if (iEnd < inputLen) {
+          const lastWeight = end - iEnd;
+          sum += inputBuffer[iEnd] * lastWeight;
+          count += lastWeight;
+        }
+      }
+
+      output[outIdx++] = count > 0 ? (sum / count) : 0;
+      pos += ratio;
+    }
+
+    this.phase = pos - inputLen;
+    this.lastInputSample = inputBuffer[inputLen - 1] || 0;
+
+    return output.subarray(0, outIdx);
+  }
+}
 
 function MentorCallSimulator() {
   const navigate = useNavigate();
@@ -25,27 +100,193 @@ function MentorCallSimulator() {
   const [callState, setCallState] = useState(CALL_STATES.IDLE);
   const [monthlyUsage, setMonthlyUsage] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [errorStage, setErrorStage] = useState(null); // specific error stage string
+  const [errorStage, setErrorStage] = useState(null);
 
-  // Debug & Dev Status Panel State
-  const [micStatus, setMicStatus] = useState('FAILED'); // 'CONNECTED' | 'FAILED'
+  // Diagnostic Panel State
+  const [micStatus, setMicStatus] = useState('DISCONNECTED'); // 'CONNECTED' | 'DISCONNECTED' | 'FAILED'
+  const [micDeviceName, setMicDeviceName] = useState('DEFAULT / not detected');
+  const [outputDeviceName, setOutputDeviceName] = useState('DEFAULT (System Speakers)');
   const [micRms, setMicRms] = useState(0.0);
+  const [audioChunksSent, setAudioChunksSent] = useState(0);
+  const [totalPcmSamplesSent, setTotalPcmSamplesSent] = useState(0);
   const [voiceWsStatus, setVoiceWsStatus] = useState('CLOSED'); // 'CONNECTED' | 'CLOSED' | 'CONNECTING'
   const [geminiStatus, setGeminiStatus] = useState('WAITING'); // 'CONNECTED' | 'FAILED' | 'WAITING'
   const [speechDetected, setSpeechDetected] = useState(false);
   const [partialTranscript, setPartialTranscript] = useState('');
   const [finalTranscript, setFinalTranscript] = useState('');
   const [deepseekStatus, setDeepseekStatus] = useState('IDLE'); // 'IDLE' | 'RUNNING' | 'DONE' | 'FAILED'
-  const [geminiAudioStatus, setGeminiAudioStatus] = useState('WAITING'); // 'WAITING' | 'RECEIVING'
-  const [browserPlaybackStatus, setBrowserPlaybackStatus] = useState('IDLE'); // 'PLAYING' | 'BLOCKED' | 'IDLE'
+  const [deepseekReply, setDeepseekReply] = useState('');
+  const [geminiOutputChunks, setGeminiOutputChunks] = useState(0);
+  const [geminiOutputBytes, setGeminiOutputBytes] = useState(0);
+  const [audioContextState, setAudioContextState] = useState('CLOSED'); // 'RUNNING' | 'SUSPENDED' | 'CLOSED'
+  const [playbackQueueCount, setPlaybackQueueCount] = useState(0);
+  const [browserPlaybackStatus, setBrowserPlaybackStatus] = useState('STOPPED'); // 'PLAYING' | 'STOPPED' | 'BLOCKED'
+  const [speakerActivityLevel, setSpeakerActivityLevel] = useState(0); // 0-100 meter
+  const [lastInterruptionReason, setLastInterruptionReason] = useState('None');
+
+  // Session Duration & Cost Estimation
+  const [sessionDurationSec, setSessionDurationSec] = useState(0);
+  const sessionStartTimeRef = useRef(null);
+  const sessionTimerRef = useRef(null);
+
+  // Hard Standalone Test States
+  const [micTestRunning, setMicTestRunning] = useState(false);
+  const [micTestResult, setMicTestResult] = useState(null); // null | 'PASS' | 'FAIL'
+  const [micTestTranscript, setMicTestTranscript] = useState('');
+  
+  const [speakerTestRunning, setSpeakerTestRunning] = useState(false);
+  const [speakerTestResult, setSpeakerTestResult] = useState(null); // null | 'PASS' | 'FAIL'
+  const [speakerTestChunks, setSpeakerTestChunks] = useState(0);
+  const [speakerTestBytes, setSpeakerTestBytes] = useState(0);
+
+  // Human Audio Verification State
+  const [humanVerificationStatus, setHumanVerificationStatus] = useState('AWAITING HUMAN AUDIO CONFIRMATION');
 
   // Audio Pipeline References
   const wsRef = useRef(null);
   const audioContextRef = useRef(null);
+  const gainNodeRef = useRef(null);
+  const speakerAnalyserRef = useRef(null);
   const micStreamRef = useRef(null);
   const processorNodeRef = useRef(null);
+  const silenceGainNodeRef = useRef(null);
+  const resamplerRef = useRef(null);
   const nextPlayTimeRef = useRef(0);
   const activeSourcesRef = useRef([]);
+  const speakerMeterIntervalRef = useRef(null);
+  const hangoverCounterRef = useRef(0);
+  const voiceGenTimeoutRef = useRef(null);
+  const speechFinalizeTimeoutRef = useRef(null);
+  const userSpeechActiveRef = useRef(false);
+  const lastVoiceActivityAtRef = useRef(0);
+  const trailingSilenceFramesRef = useRef(0);
+  const audioStreamOpenRef = useRef(false);
+  const callStateRef = useRef(CALL_STATES.IDLE);
+  const browserPlaybackStatusRef = useRef('STOPPED');
+  const micStatusRef = useRef('DISCONNECTED');
+
+  const updateCallState = useCallback((newState) => {
+    callStateRef.current = newState;
+    setCallState(newState);
+  }, []);
+
+  const startVoiceGenTimeout = useCallback(() => {
+    if (voiceGenTimeoutRef.current) clearTimeout(voiceGenTimeoutRef.current);
+    voiceGenTimeoutRef.current = setTimeout(() => {
+      console.warn('[VoiceClient] 5s timeout: Gemini returned no audio');
+      setErrorStage('Gemini returned no audio.');
+      updateCallState(CALL_STATES.ERROR);
+    }, 5000);
+  }, [updateCallState]);
+
+  const clearVoiceGenTimeout = useCallback(() => {
+    if (voiceGenTimeoutRef.current) {
+      clearTimeout(voiceGenTimeoutRef.current);
+      voiceGenTimeoutRef.current = null;
+    }
+  }, []);
+
+  const clearSpeechFinalizeTimeout = useCallback(() => {
+    if (speechFinalizeTimeoutRef.current) {
+      clearTimeout(speechFinalizeTimeoutRef.current);
+      speechFinalizeTimeoutRef.current = null;
+    }
+  }, []);
+
+  // Keep ref synchronized with state for real-time audio thread access
+  useEffect(() => {
+    callStateRef.current = callState;
+  }, [callState]);
+
+  useEffect(() => {
+    browserPlaybackStatusRef.current = browserPlaybackStatus;
+  }, [browserPlaybackStatus]);
+
+  useEffect(() => {
+    micStatusRef.current = micStatus;
+  }, [micStatus]);
+
+  // Session timer management
+  useEffect(() => {
+    if (session && session.status !== 'completed') {
+      sessionStartTimeRef.current = Date.now();
+      sessionTimerRef.current = setInterval(() => {
+        if (sessionStartTimeRef.current) {
+          const elapsed = Math.floor((Date.now() - sessionStartTimeRef.current) / 1000);
+          setSessionDurationSec(elapsed);
+        }
+      }, 1000);
+    } else {
+      if (sessionTimerRef.current) clearInterval(sessionTimerRef.current);
+    }
+    return () => {
+      if (sessionTimerRef.current) clearInterval(sessionTimerRef.current);
+    };
+  }, [session]);
+
+  // Helper to ensure AudioContext exists and is running
+  const getOrCreateAudioContext = async () => {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!audioContextRef.current || audioContextRef.current.state === 'closed') {
+      const audioCtx = new AudioContextClass();
+      audioContextRef.current = audioCtx;
+
+      // Create GainNode set to 1.0
+      const gainNode = audioCtx.createGain();
+      gainNode.gain.value = 1.0;
+      gainNodeRef.current = gainNode;
+
+      // Create AnalyserNode for live speaker meter
+      const analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 256;
+      speakerAnalyserRef.current = analyser;
+
+      gainNode.connect(analyser);
+      analyser.connect(audioCtx.destination);
+    }
+
+    const audioCtx = audioContextRef.current;
+    if (audioCtx.state === 'suspended') {
+      await audioCtx.resume();
+    }
+    setAudioContextState(audioCtx.state.toUpperCase());
+    return audioCtx;
+  };
+
+  // Detect available audio output devices if supported
+  useEffect(() => {
+    if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
+      navigator.mediaDevices.enumerateDevices().then(devices => {
+        const audioOutputs = devices.filter(d => d.kind === 'audiooutput');
+        if (audioOutputs.length > 0 && audioOutputs[0].label) {
+          setOutputDeviceName(audioOutputs[0].label);
+        }
+      }).catch(() => {});
+    }
+  }, []);
+
+  // Speaker meter animation loop
+  useEffect(() => {
+    speakerMeterIntervalRef.current = setInterval(() => {
+      if (speakerAnalyserRef.current && browserPlaybackStatus === 'PLAYING') {
+        const dataArray = new Uint8Array(speakerAnalyserRef.current.frequencyBinCount);
+        speakerAnalyserRef.current.getByteFrequencyData(dataArray);
+        let sum = 0;
+        for (let i = 0; i < dataArray.length; i++) {
+          sum += dataArray[i];
+        }
+        const avg = sum / dataArray.length;
+        const normalized = Math.min(100, Math.round((avg / 128) * 100));
+        setSpeakerActivityLevel(normalized);
+      } else {
+        setSpeakerActivityLevel(0);
+      }
+    }, 50);
+
+    return () => {
+      if (speakerMeterIntervalRef.current) clearInterval(speakerMeterIntervalRef.current);
+    };
+  }, [browserPlaybackStatus]);
 
   const fetchStateAndUsage = useCallback(async () => {
     try {
@@ -71,6 +312,7 @@ function MentorCallSimulator() {
     }
   }, []);
 
+  // On page mount: fetch state and usage ONLY. Do not connect WebSockets or mic.
   useEffect(() => {
     fetchStateAndUsage();
     return () => {
@@ -78,11 +320,17 @@ function MentorCallSimulator() {
     };
   }, [fetchStateAndUsage]);
 
-  const cleanupVoicePipeline = () => {
-    stopCurrentAudioPlayback();
+  const cleanupVoicePipeline = (reason = 'cleanup') => {
+    clearVoiceGenTimeout();
+    clearSpeechFinalizeTimeout();
+    stopCurrentAudioPlayback(reason);
     if (processorNodeRef.current) {
       processorNodeRef.current.disconnect();
       processorNodeRef.current = null;
+    }
+    if (silenceGainNodeRef.current) {
+      silenceGainNodeRef.current.disconnect();
+      silenceGainNodeRef.current = null;
     }
     if (micStreamRef.current) {
       micStreamRef.current.getTracks().forEach(track => track.stop());
@@ -96,12 +344,24 @@ function MentorCallSimulator() {
       wsRef.current.close();
       wsRef.current = null;
     }
+    if (resamplerRef.current) {
+      resamplerRef.current.reset();
+    }
     setVoiceWsStatus('CLOSED');
-    setMicStatus('FAILED');
-    setBrowserPlaybackStatus('IDLE');
+    setMicStatus('DISCONNECTED');
+    setBrowserPlaybackStatus('STOPPED');
+    setAudioContextState('CLOSED');
+    setPlaybackQueueCount(0);
+    setMicRms(0);
+    setSpeechDetected(false);
+    setTotalPcmSamplesSent(0);
   };
 
-  const stopCurrentAudioPlayback = () => {
+  const stopCurrentAudioPlayback = (reason = 'user_barge_in') => {
+    if (activeSourcesRef.current.length > 0) {
+      console.log(`[AudioPlayback] source.stop() called on ${activeSourcesRef.current.length} active nodes. Reason: ${reason}`);
+      setLastInterruptionReason(reason);
+    }
     for (const source of activeSourcesRef.current) {
       try {
         source.stop();
@@ -110,12 +370,413 @@ function MentorCallSimulator() {
     }
     activeSourcesRef.current = [];
     nextPlayTimeRef.current = 0;
-    setBrowserPlaybackStatus('IDLE');
+    setBrowserPlaybackStatus('STOPPED');
+    setPlaybackQueueCount(0);
   };
 
-  const initVoiceWebSocket = (activeSessionId) => {
+  const scheduleAudioPlayback = async (base64Data, mimeType = 'audio/pcm;rate=24000') => {
+    if (!base64Data) return;
+
+    try {
+      const audioCtx = await getOrCreateAudioContext();
+
+      // Convert base64 to byte array
+      const binaryString = atob(base64Data);
+      const byteLength = binaryString.length;
+      setGeminiOutputChunks(prev => prev + 1);
+      setGeminiOutputBytes(prev => prev + byteLength);
+
+      let audioBuffer = null;
+
+      if (mimeType?.includes('audio/pcm')) {
+        const sampleRate = mimeType.includes('rate=16000') ? 16000 : 24000;
+        const sampleCount = Math.floor(byteLength / 2);
+        const float32Array = new Float32Array(sampleCount);
+
+        // Robust little-endian 16-bit PCM decoding
+        for (let i = 0; i < sampleCount; i++) {
+          const low = binaryString.charCodeAt(i * 2);
+          const high = binaryString.charCodeAt(i * 2 + 1);
+          let int16 = (high << 8) | low;
+          if (int16 >= 0x8000) int16 -= 0x10000;
+          float32Array[i] = int16 / 32768.0;
+        }
+
+        audioBuffer = audioCtx.createBuffer(1, float32Array.length, sampleRate);
+        audioBuffer.getChannelData(0).set(float32Array);
+      } else {
+        const bytes = new Uint8Array(byteLength);
+        for (let i = 0; i < byteLength; i++) {
+          bytes[i] = binaryString.charCodeAt(i);
+        }
+        audioBuffer = await audioCtx.decodeAudioData(bytes.buffer.slice(0));
+      }
+
+      if (audioBuffer) {
+        const sourceNode = audioCtx.createBufferSource();
+        sourceNode.buffer = audioBuffer;
+
+        // Connect through GainNode (gain = 1.0) and Analyser to audioCtx.destination
+        sourceNode.connect(gainNodeRef.current || audioCtx.destination);
+
+        const currentTime = audioCtx.currentTime;
+        const startTime = Math.max(currentTime, nextPlayTimeRef.current);
+        sourceNode.start(startTime);
+        nextPlayTimeRef.current = startTime + audioBuffer.duration;
+
+        clearVoiceGenTimeout();
+        updateCallState(CALL_STATES.MENTOR_SPEAKING);
+
+        activeSourcesRef.current.push(sourceNode);
+        setPlaybackQueueCount(activeSourcesRef.current.length);
+        setBrowserPlaybackStatus('PLAYING');
+
+        sourceNode.onended = () => {
+          activeSourcesRef.current = activeSourcesRef.current.filter(s => s !== sourceNode);
+          setPlaybackQueueCount(activeSourcesRef.current.length);
+          if (activeSourcesRef.current.length === 0 && audioCtx.currentTime >= nextPlayTimeRef.current - 0.05) {
+            console.log('[TURN] mentor playback ended');
+            console.log('[TURN] previous callState:', callStateRef.current);
+            console.log('[TURN] browserPlaybackStatus:', browserPlaybackStatusRef.current);
+            console.log('[TURN] setting state -> LISTENING');
+            setBrowserPlaybackStatus('STOPPED');
+            browserPlaybackStatusRef.current = 'STOPPED';
+            updateCallState(CALL_STATES.LISTENING);
+          }
+        };
+      }
+    } catch (playErr) {
+      console.warn('[VoiceClient] Audio playback error:', playErr);
+      setBrowserPlaybackStatus('BLOCKED');
+      setErrorStage('Audio playback blocked: ' + playErr.message);
+      updateCallState(CALL_STATES.ERROR);
+    }
+  };
+
+  const startMicrophoneCapture = async () => {
+    try {
+      const audioCtx = await getOrCreateAudioContext();
+
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          channelCount: 1,
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true
+        }
+      });
+
+      micStreamRef.current = stream;
+      setMicStatus('CONNECTED');
+      
+      const track = stream.getAudioTracks()[0];
+      if (track && track.label) {
+        setMicDeviceName(track.label);
+      }
+      console.log('[VoiceClient] Microphone stream acquired:', track?.label);
+
+      // Initialize stateful resampler for hardware input sample rate -> 16000 Hz
+      resamplerRef.current = new AudioResampler(audioCtx.sampleRate, 16000);
+      console.log(`[VoiceClient] AudioResampler initialized: Input=${audioCtx.sampleRate}Hz -> Output=16000Hz (ratio: ${(audioCtx.sampleRate / 16000).toFixed(4)})`);
+
+      const source = audioCtx.createMediaStreamSource(stream);
+      const processor = audioCtx.createScriptProcessor(2048, 1, 1);
+      processorNodeRef.current = processor;
+
+      // Silence GainNode to prevent microphone audio from feeding directly to speakers
+      const silenceGain = audioCtx.createGain();
+      silenceGain.gain.value = 0;
+      silenceGainNodeRef.current = silenceGain;
+
+      processor.onaudioprocess = (e) => {
+        const inputData = e.inputBuffer.getChannelData(0);
+        
+        // Calculate live RMS on raw microphone signal
+        let sumSquares = 0;
+        for (let i = 0; i < inputData.length; i++) {
+          sumSquares += inputData[i] * inputData[i];
+        }
+        const currentRms = Math.sqrt(sumSquares / inputData.length);
+        setMicRms(currentRms);
+
+        const isSpeakingOrPlaying = 
+          callStateRef.current === CALL_STATES.MENTOR_SPEAKING || 
+          callStateRef.current === CALL_STATES.MENTOR_THINKING ||
+          callStateRef.current === CALL_STATES.MENTOR_GENERATING_VOICE ||
+          callStateRef.current === CALL_STATES.CONNECTING ||
+          browserPlaybackStatusRef.current === 'PLAYING';
+
+        const isVoiceActive = currentRms >= 0.012;
+
+        if (isVoiceActive) {
+          audioStreamOpenRef.current = true;
+          userSpeechActiveRef.current = true;
+          lastVoiceActivityAtRef.current = Date.now();
+          trailingSilenceFramesRef.current = 20; // Send ~850ms of trailing silence after speech drops
+          setSpeechDetected(true);
+
+          if (callStateRef.current !== CALL_STATES.USER_SPEAKING && !isSpeakingOrPlaying) {
+            updateCallState(CALL_STATES.USER_SPEAKING);
+          }
+
+          console.log(`[MIC-A] RMS threshold crossed: ${currentRms.toFixed(4)}`);
+          console.log(`[MIC-B] callStateRef.current: ${callStateRef.current}`);
+        } else if (userSpeechActiveRef.current) {
+          if (trailingSilenceFramesRef.current > 0) {
+            trailingSilenceFramesRef.current -= 1;
+          } else {
+            // Speech ended and trailing silence window completed
+            userSpeechActiveRef.current = false;
+            setSpeechDetected(false);
+
+            // Send explicit audioStreamEnd signal to Gemini Live via WebSocket gateway once
+            if (audioStreamOpenRef.current && wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+              console.log('[END-1] client VAD speech-end detected -> sending audio_stream_end');
+              wsRef.current.send(JSON.stringify({ type: 'audio_stream_end' }));
+              audioStreamOpenRef.current = false;
+            }
+
+            if (callStateRef.current === CALL_STATES.USER_SPEAKING || callStateRef.current === CALL_STATES.LISTENING) {
+              console.log('[MIC] Trailing silence window completed. Setting state -> PROCESSING_SPEECH');
+              updateCallState(CALL_STATES.PROCESSING_SPEECH);
+
+              // Arm 3-second finalize timeout
+              if (speechFinalizeTimeoutRef.current) clearTimeout(speechFinalizeTimeoutRef.current);
+              speechFinalizeTimeoutRef.current = setTimeout(() => {
+                if (callStateRef.current === CALL_STATES.PROCESSING_SPEECH || callStateRef.current === CALL_STATES.USER_SPEAKING) {
+                  console.warn('[VoiceClient] 3s timeout: Speech audio reached Mentor, but Gemini did not finalize the transcript.');
+                  setErrorStage('Speech audio reached Mentor, but Gemini did not finalize the transcript.');
+                  updateCallState(CALL_STATES.ERROR);
+                }
+              }, 3000);
+            }
+          }
+        }
+
+        // Send audio while user is active OR while sending trailing silence
+        const shouldSendAudio = !isSpeakingOrPlaying && (isVoiceActive || trailingSilenceFramesRef.current > 0);
+
+        if (shouldSendAudio && wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+          // 1. Resample Float32 from hardware input sample rate to 16000 Hz
+          const resampler = resamplerRef.current || new AudioResampler(audioCtx.sampleRate, 16000);
+          const resampled16k = resampler.process(inputData);
+
+          // 2. Convert 16kHz Float32 to signed PCM16 little-endian
+          const pcm16 = new Int16Array(resampled16k.length);
+          for (let i = 0; i < resampled16k.length; i++) {
+            const s = Math.max(-1, Math.min(1, resampled16k[i]));
+            pcm16[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+          }
+
+          // 3. Compute output RMS for verification
+          let outSumSq = 0;
+          for (let i = 0; i < resampled16k.length; i++) {
+            outSumSq += resampled16k[i] * resampled16k[i];
+          }
+          const outputRms = resampled16k.length > 0 ? Math.sqrt(outSumSq / resampled16k.length) : 0;
+
+          console.log(`[MIC-C] In: ${inputData.length} samples (@${audioCtx.sampleRate}Hz, RMS=${currentRms.toFixed(4)}) -> Out: ${resampled16k.length} samples (@16000Hz, RMS=${outputRms.toFixed(4)}), PCM: ${pcm16.byteLength} B (isVoiceActive: ${isVoiceActive})`);
+          wsRef.current.send(pcm16.buffer);
+          console.log(`[MIC-D] PCM chunk sent through WebSocket`);
+          setAudioChunksSent(prev => prev + 1);
+          setTotalPcmSamplesSent(prev => prev + resampled16k.length);
+        }
+      };
+
+      source.connect(processor);
+      processor.connect(silenceGain);
+      silenceGain.connect(audioCtx.destination);
+    } catch (micErr) {
+      console.error('[VoiceClient] Microphone capture error:', micErr);
+      setMicStatus('FAILED');
+      setErrorStage('Microphone unavailable: ' + micErr.message);
+      setCallState(CALL_STATES.ERROR);
+    }
+  };
+
+  // ==========================================
+  // HARD TEST 1: TEST MICROPHONE
+  // ==========================================
+  const handleTestMicrophone = async () => {
+    try {
+      setMicTestRunning(true);
+      setMicTestResult(null);
+      setMicTestTranscript('');
+      setErrorStage(null);
+
+      await getOrCreateAudioContext();
+      await startMicrophoneCapture();
+
+      // Open WebSocket in test_mic mode
+      const token = getAuthToken() || '';
+      const wsProto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      let host = window.location.host;
+      if (BACKEND_URL && BACKEND_URL.startsWith('http')) {
+        const urlObj = new URL(BACKEND_URL);
+        host = urlObj.host;
+      }
+
+      const wsUrl = `${wsProto}//${host}/ws/mentor/voice?token=${encodeURIComponent(token)}&mode=test_mic`;
+      console.log('[TestMic] Connecting to:', wsUrl);
+
+      const testWs = new WebSocket(wsUrl);
+      wsRef.current = testWs;
+      setVoiceWsStatus('CONNECTING');
+
+      testWs.onopen = () => {
+        setVoiceWsStatus('CONNECTED');
+        console.log('[TestMic] Connected');
+      };
+
+      testWs.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          if (data.type === 'ready') {
+            setGeminiStatus('CONNECTED');
+          } else if (data.type === 'interim_transcript') {
+            setPartialTranscript(data.text || '');
+            setMicTestTranscript(data.text || '');
+          } else if (data.type === 'final_transcript') {
+            const heard = data.text || '';
+            setFinalTranscript(heard);
+            setMicTestTranscript(heard);
+            setPartialTranscript('');
+            if (heard.trim().length > 0) {
+              setMicTestResult('PASS');
+              // Automatically disconnect test after receiving transcript
+              setTimeout(() => {
+                handleStopMicrophoneTest();
+              }, 1200);
+            } else {
+              setMicTestResult('FAIL');
+            }
+          }
+        } catch (e) {
+          console.error('[TestMic] Error parsing message:', e);
+        }
+      };
+
+      testWs.onerror = (err) => {
+        console.error('[TestMic] WS error:', err);
+        setMicTestResult('FAIL');
+      };
+
+    } catch (err) {
+      console.error('[TestMic] Failed to run mic test:', err);
+      setMicTestResult('FAIL');
+      setErrorStage('Mic test error: ' + err.message);
+    }
+  };
+
+  const handleStopMicrophoneTest = () => {
+    setMicTestRunning(false);
+    if (!micTestResult && micTestTranscript.trim().length > 0) {
+      setMicTestResult('PASS');
+    }
+    if (processorNodeRef.current) {
+      processorNodeRef.current.disconnect();
+      processorNodeRef.current = null;
+    }
+    if (micStreamRef.current) {
+      micStreamRef.current.getTracks().forEach(track => track.stop());
+      micStreamRef.current = null;
+    }
+    if (wsRef.current) {
+      wsRef.current.close();
+      wsRef.current = null;
+    }
+    setVoiceWsStatus('CLOSED');
+    setMicStatus('DISCONNECTED');
+    setSpeechDetected(false);
+  };
+
+  // ==========================================
+  // HARD TEST 2: TEST MENTOR SPEAKER
+  // ==========================================
+  const handleTestSpeaker = async () => {
+    try {
+      setSpeakerTestRunning(true);
+      setSpeakerTestResult(null);
+      setSpeakerTestChunks(0);
+      setSpeakerTestBytes(0);
+      setErrorStage(null);
+
+      const audioCtx = await getOrCreateAudioContext();
+      setAudioContextState(audioCtx.state.toUpperCase());
+
+      const token = getAuthToken() || '';
+      const wsProto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      let host = window.location.host;
+      if (BACKEND_URL && BACKEND_URL.startsWith('http')) {
+        const urlObj = new URL(BACKEND_URL);
+        host = urlObj.host;
+      }
+
+      const wsUrl = `${wsProto}//${host}/ws/mentor/voice?token=${encodeURIComponent(token)}&mode=test_speaker`;
+      console.log('[TestSpeaker] Connecting to:', wsUrl);
+
+      const testWs = new WebSocket(wsUrl);
+      wsRef.current = testWs;
+      setVoiceWsStatus('CONNECTING');
+
+      const testSpeechText = "Hello Moulika. Mentor voice is working.";
+
+      testWs.onopen = () => {
+        setVoiceWsStatus('CONNECTED');
+        console.log('[TestSpeaker] Connected, waiting for ready event...');
+      };
+
+      testWs.onmessage = async (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          if (data.type === 'ready') {
+            setGeminiStatus('CONNECTED');
+            testWs.send(JSON.stringify({
+              type: 'speak',
+              text: testSpeechText
+            }));
+          } else if (data.type === 'audio_chunk' || data.type === 'tts_audio') {
+            const base64Data = data.audio || data.data;
+            const chunkBytes = atob(base64Data).length;
+            setSpeakerTestChunks(prev => prev + 1);
+            setSpeakerTestBytes(prev => prev + chunkBytes);
+            setSpeakerTestResult('PASS'); // Browser receives and schedules non-zero audio
+            await scheduleAudioPlayback(base64Data, data.mimeType);
+          } else if (data.type === 'turn_complete' || data.type === 'tts_end') {
+            setSpeakerTestRunning(false);
+            // Automatically close test WebSocket after delivery
+            setTimeout(() => {
+              if (testWs.readyState === WebSocket.OPEN) {
+                testWs.close();
+              }
+              setVoiceWsStatus('CLOSED');
+            }, 2500);
+          }
+        } catch (e) {
+          console.error('[TestSpeaker] Error handling message:', e);
+        }
+      };
+
+      testWs.onerror = (err) => {
+        console.error('[TestSpeaker] WS error:', err);
+        setSpeakerTestResult('FAIL');
+        setSpeakerTestRunning(false);
+      };
+
+    } catch (err) {
+      console.error('[TestSpeaker] Test speaker error:', err);
+      setSpeakerTestResult('FAIL');
+      setSpeakerTestRunning(false);
+      setErrorStage('Speaker test error: ' + err.message);
+    }
+  };
+
+  // ==========================================
+  // REAL LIVE CALL PIPELINE
+  // ==========================================
+  const initVoiceWebSocket = (activeSessionId, openingGreeting = '') => {
     setVoiceWsStatus('CONNECTING');
-    setCallState(CALL_STATES.CONNECTING);
+    updateCallState(CALL_STATES.CONNECTING);
 
     const token = getAuthToken() || '';
     const wsProto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -134,7 +795,7 @@ function MentorCallSimulator() {
     ws.onopen = () => {
       console.log('[VoiceClient] WebSocket connected');
       setVoiceWsStatus('CONNECTED');
-      setCallState(CALL_STATES.CONNECTING);
+      updateCallState(CALL_STATES.READY);
     };
 
     ws.onmessage = async (event) => {
@@ -145,34 +806,57 @@ function MentorCallSimulator() {
           case 'state_change':
             if (data.state === 'MENTOR_THINKING') {
               setDeepseekStatus('RUNNING');
+              clearVoiceGenTimeout();
+              updateCallState(CALL_STATES.MENTOR_THINKING);
+            } else if (data.state === 'MENTOR_GENERATING_VOICE') {
+              setDeepseekStatus('DONE');
+              startVoiceGenTimeout();
+              updateCallState(CALL_STATES.MENTOR_GENERATING_VOICE);
             } else if (data.state === 'MENTOR_SPEAKING') {
               setDeepseekStatus('DONE');
+              if (browserPlaybackStatusRef.current === 'PLAYING') {
+                updateCallState(CALL_STATES.MENTOR_SPEAKING);
+              }
+            } else {
+              updateCallState(data.state);
             }
-            setCallState(data.state);
             break;
 
           case 'ready':
             setGeminiStatus('CONNECTED');
-            setCallState(CALL_STATES.LISTENING);
+            // Section E: Mentor must speak FIRST upon connection
+            if (openingGreeting && openingGreeting.trim().length > 0) {
+              console.log('[VoiceClient] Triggering opening mentor greeting first:', openingGreeting);
+              startVoiceGenTimeout();
+              updateCallState(CALL_STATES.MENTOR_GENERATING_VOICE);
+              ws.send(JSON.stringify({ type: 'speak', text: openingGreeting }));
+            } else {
+              updateCallState(CALL_STATES.LISTENING);
+            }
             break;
 
           case 'interim_transcript':
             setPartialTranscript(data.text || '');
             setSpeechDetected(true);
-            setCallState(CALL_STATES.USER_SPEAKING);
+            updateCallState(CALL_STATES.USER_SPEAKING);
             break;
 
           case 'final_transcript':
+            clearSpeechFinalizeTimeout();
             setPartialTranscript('');
             setFinalTranscript(data.text || '');
             setSpeechDetected(false);
             setDeepseekStatus('RUNNING');
-            setCallState(CALL_STATES.MENTOR_THINKING);
+            // Once final_transcript is received: USER_SPEAKING ends immediately -> MENTOR_THINKING
+            updateCallState(CALL_STATES.MENTOR_THINKING);
             setMessages(prev => [...prev, { role: 'user', content: data.text }]);
             break;
 
           case 'mentor_reply':
             setDeepseekStatus('DONE');
+            setDeepseekReply(data.reply || '');
+            startVoiceGenTimeout();
+            updateCallState(CALL_STATES.MENTOR_GENERATING_VOICE);
             setMessages(prev => [...prev, {
               role: 'mentor',
               content: data.reply,
@@ -186,29 +870,32 @@ function MentorCallSimulator() {
 
           case 'audio_chunk':
           case 'tts_audio':
-            setGeminiAudioStatus('RECEIVING');
-            setCallState(CALL_STATES.MENTOR_SPEAKING);
+            clearVoiceGenTimeout();
+            updateCallState(CALL_STATES.MENTOR_SPEAKING);
             scheduleAudioPlayback(data.audio || data.data, data.mimeType);
             break;
 
           case 'interrupted':
           case 'tts_interrupted':
             console.log('[VoiceClient] Barge-in interrupted — halting playback');
-            stopCurrentAudioPlayback();
-            setCallState(CALL_STATES.USER_SPEAKING);
+            stopCurrentAudioPlayback('user_barge_in');
+            updateCallState(CALL_STATES.USER_SPEAKING);
             setSpeechDetected(true);
             break;
 
           case 'turn_complete':
           case 'tts_end':
-            setGeminiAudioStatus('WAITING');
-            setCallState(CALL_STATES.LISTENING);
+            // If audio playback in Web Audio queue has finished, transition to LISTENING
+            if (activeSourcesRef.current.length === 0 && browserPlaybackStatusRef.current === 'STOPPED') {
+              console.log('[TURN] turn_complete received with empty audio queue -> setting LISTENING');
+              updateCallState(CALL_STATES.LISTENING);
+            }
             break;
 
           case 'error':
             console.error('[VoiceClient] Voice Error:', data.error);
             setErrorStage(data.error || 'Voice connection lost');
-            setCallState(CALL_STATES.ERROR);
+            updateCallState(CALL_STATES.ERROR);
             break;
         }
       } catch (err) {
@@ -220,150 +907,16 @@ function MentorCallSimulator() {
       console.error('[VoiceClient] WebSocket Error:', err);
       setVoiceWsStatus('CLOSED');
       setErrorStage('Voice connection lost');
-      setCallState(CALL_STATES.ERROR);
+      updateCallState(CALL_STATES.ERROR);
     };
 
     ws.onclose = () => {
       console.log('[VoiceClient] WebSocket closed');
       setVoiceWsStatus('CLOSED');
-      if (callState !== CALL_STATES.ENDED) {
-        setCallState(CALL_STATES.IDLE);
+      if (callStateRef.current !== CALL_STATES.ENDED) {
+        updateCallState(CALL_STATES.IDLE);
       }
     };
-  };
-
-  const startMicrophoneCapture = async () => {
-    try {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (!audioContextRef.current || audioContextRef.current.state === 'closed') {
-        audioContextRef.current = new AudioContextClass({ sampleRate: 16000 });
-      }
-
-      const audioCtx = audioContextRef.current;
-      if (audioCtx.state === 'suspended') {
-        await audioCtx.resume();
-      }
-
-      const stream = await navigator.mediaDevices.getUserMedia({
-        audio: {
-          channelCount: 1,
-          sampleRate: 16000,
-          echoCancellation: true,
-          noiseSuppression: true,
-          autoGainControl: true
-        }
-      });
-
-      micStreamRef.current = stream;
-      setMicStatus('CONNECTED');
-      console.log('[VoiceClient] Microphone stream acquired');
-
-      const source = audioCtx.createMediaStreamSource(stream);
-      const processor = audioCtx.createScriptProcessor(1024, 1, 1);
-      processorNodeRef.current = processor;
-
-      processor.onaudioprocess = (e) => {
-        const inputData = e.inputBuffer.getChannelData(0);
-        
-        // Calculate RMS
-        let sumSquares = 0;
-        for (let i = 0; i < inputData.length; i++) {
-          sumSquares += inputData[i] * inputData[i];
-        }
-        const currentRms = Math.sqrt(sumSquares / inputData.length);
-        setMicRms(currentRms);
-
-        const hasVoice = currentRms > 0.015;
-        if (hasVoice && !speechDetected) {
-          setSpeechDetected(true);
-        } else if (!hasVoice && speechDetected && !partialTranscript) {
-          setSpeechDetected(false);
-        }
-
-        // Convert Float32 to PCM16
-        const pcm16 = new Int16Array(inputData.length);
-        for (let i = 0; i < inputData.length; i++) {
-          const s = Math.max(-1, Math.min(1, inputData[i]));
-          pcm16[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
-        }
-
-        if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
-          wsRef.current.send(pcm16.buffer);
-        }
-      };
-
-      source.connect(processor);
-      processor.connect(audioCtx.destination);
-    } catch (micErr) {
-      console.error('[VoiceClient] Microphone capture error:', micErr);
-      setMicStatus('FAILED');
-      setErrorStage('Microphone unavailable: ' + micErr.message);
-      setCallState(CALL_STATES.ERROR);
-    }
-  };
-
-  const scheduleAudioPlayback = async (base64Data, mimeType = 'audio/pcm;rate=24000') => {
-    if (!base64Data) return;
-
-    try {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (!audioContextRef.current || audioContextRef.current.state === 'closed') {
-        audioContextRef.current = new AudioContextClass();
-      }
-
-      const audioCtx = audioContextRef.current;
-      if (audioCtx.state === 'suspended') {
-        await audioCtx.resume();
-      }
-
-      // Convert base64 to byte array
-      const binaryString = atob(base64Data);
-      const bytes = new Uint8Array(binaryString.length);
-      for (let i = 0; i < binaryString.length; i++) {
-        bytes[i] = binaryString.charCodeAt(i);
-      }
-
-      let audioBuffer = null;
-
-      if (mimeType?.includes('audio/pcm')) {
-        const sampleRate = mimeType.includes('rate=16000') ? 16000 : 24000;
-        const int16Array = new Int16Array(bytes.buffer);
-        const float32Array = new Float32Array(int16Array.length);
-        for (let i = 0; i < int16Array.length; i++) {
-          float32Array[i] = int16Array[i] / 32768.0;
-        }
-        audioBuffer = audioCtx.createBuffer(1, float32Array.length, sampleRate);
-        audioBuffer.getChannelData(0).set(float32Array);
-      } else {
-        audioBuffer = await audioCtx.decodeAudioData(bytes.buffer.slice(0));
-      }
-
-      if (audioBuffer) {
-        const sourceNode = audioCtx.createBufferSource();
-        sourceNode.buffer = audioBuffer;
-        sourceNode.connect(audioCtx.destination);
-
-        const currentTime = audioCtx.currentTime;
-        const startTime = Math.max(currentTime, nextPlayTimeRef.current);
-        sourceNode.start(startTime);
-        nextPlayTimeRef.current = startTime + audioBuffer.duration;
-
-        activeSourcesRef.current.push(sourceNode);
-        setBrowserPlaybackStatus('PLAYING');
-
-        sourceNode.onended = () => {
-          activeSourcesRef.current = activeSourcesRef.current.filter(s => s !== sourceNode);
-          if (activeSourcesRef.current.length === 0 && audioCtx.currentTime >= nextPlayTimeRef.current - 0.05) {
-            setBrowserPlaybackStatus('IDLE');
-          }
-        };
-      }
-    } catch (playErr) {
-      console.warn('[VoiceClient] Audio playback error:', playErr);
-      setBrowserPlaybackStatus('BLOCKED');
-      setErrorStage('Audio playback blocked: ' + playErr.message);
-      setCallState(CALL_STATES.ERROR);
-    }
   };
 
   const startSession = async () => {
@@ -372,12 +925,8 @@ function MentorCallSimulator() {
       setErrorStage(null);
 
       // Pre-resume AudioContext on user gesture
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      const audioCtx = new AudioContextClass({ sampleRate: 16000 });
-      audioContextRef.current = audioCtx;
-      if (audioCtx.state === 'suspended') {
-        await audioCtx.resume();
-      }
+      const audioCtx = await getOrCreateAudioContext();
+      setAudioContextState(audioCtx.state.toUpperCase());
 
       const res = await fetchWithAuth('/api/mentor/sessions', {
         method: 'POST',
@@ -393,61 +942,33 @@ function MentorCallSimulator() {
         status: data.session.status
       };
       setSession(newSession);
-      setMessages([data.initialMessage]);
+
+      const openingText = data.initialMessage?.content || "Good morning Moulika. How is your energy today?";
+      setMessages([{ role: 'mentor', content: openingText, source: 'ai' }]);
+      setDeepseekReply(openingText);
 
       // Connect Voice Gateway & Start Mic
-      initVoiceWebSocket(newSession.id);
+      initVoiceWebSocket(newSession.id, openingText);
       await startMicrophoneCapture();
 
     } catch (err) {
       setErrorStage(err.message);
-      setCallState(CALL_STATES.ERROR);
+      updateCallState(CALL_STATES.ERROR);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleTestSpeaker = async () => {
-    try {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (!audioContextRef.current || audioContextRef.current.state === 'closed') {
-        audioContextRef.current = new AudioContextClass();
-      }
-      if (audioContextRef.current.state === 'suspended') {
-        await audioContextRef.current.resume();
-      }
-
-      const testText = "Hello Moulika. Mentor voice is working.";
-      console.log('[VoiceClient] Testing speaker with text:', testText);
-
-      if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
-        setDeepseekStatus('DONE');
-        setGeminiAudioStatus('WAITING');
-        wsRef.current.send(JSON.stringify({
-          type: 'speak',
-          text: testText
-        }));
-      } else {
-        setErrorStage('Voice connection lost (WebSocket not open)');
-        setCallState(CALL_STATES.ERROR);
-      }
-    } catch (err) {
-      console.error('[VoiceClient] Test speaker error:', err);
-      setErrorStage('Audio playback blocked: ' + err.message);
-      setCallState(CALL_STATES.ERROR);
     }
   };
 
   const sendMessage = async (text) => {
     if (!text.trim() || !session || session.status === 'completed') return;
 
-    stopCurrentAudioPlayback();
+    stopCurrentAudioPlayback('text_input_submitted');
     const userMsg = { role: 'user', content: text };
     setMessages(prev => [...prev, userMsg]);
     setInputText('');
     setFinalTranscript(text);
     setDeepseekStatus('RUNNING');
-    setCallState(CALL_STATES.MENTOR_THINKING);
+    updateCallState(CALL_STATES.MENTOR_THINKING);
 
     try {
       const res = await fetchWithAuth(`/api/mentor/sessions/${session.id}/message`, {
@@ -463,6 +984,7 @@ function MentorCallSimulator() {
       const data = await res.json();
 
       setDeepseekStatus('DONE');
+      setDeepseekReply(data.mentorReply || '');
       const mentorMsg = {
         role: 'mentor',
         content: data.mentorReply,
@@ -473,7 +995,8 @@ function MentorCallSimulator() {
 
       // Request voice synthesis if WebSocket is active
       if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
-        setGeminiAudioStatus('WAITING');
+        startVoiceGenTimeout();
+        updateCallState(CALL_STATES.MENTOR_GENERATING_VOICE);
         wsRef.current.send(JSON.stringify({ type: 'speak', text: data.mentorReply }));
       }
 
@@ -482,7 +1005,7 @@ function MentorCallSimulator() {
       console.error('[MentorCall] Send message error:', err);
       setDeepseekStatus('FAILED');
       setErrorStage('Mentor reasoning failed: ' + err.message);
-      setCallState(CALL_STATES.ERROR);
+      updateCallState(CALL_STATES.ERROR);
     }
   };
 
@@ -493,7 +1016,7 @@ function MentorCallSimulator() {
       });
       if (!res.ok) throw new Error('Failed to commit session');
       setSession(prev => ({ ...prev, status: 'completed' }));
-      cleanupVoicePipeline();
+      cleanupVoicePipeline('session_committed');
     } catch (err) {
       console.error('[MentorCall] Commit error:', err);
       setErrorStage('Failed to save commitment: ' + err.message);
@@ -501,11 +1024,11 @@ function MentorCallSimulator() {
   };
 
   const handleManualInterrupt = () => {
-    stopCurrentAudioPlayback();
+    stopCurrentAudioPlayback('manual_barge_in_button');
     if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
       wsRef.current.send(JSON.stringify({ type: 'stop_speaking' }));
     }
-    setCallState(CALL_STATES.USER_SPEAKING);
+    updateCallState(CALL_STATES.USER_SPEAKING);
   };
 
   const handleInputSubmit = (e) => {
@@ -513,8 +1036,13 @@ function MentorCallSimulator() {
     sendMessage(inputText);
   };
 
-  // Helper calculation for live volume visualizer bar heights
   const normalizedLevel = Math.min(100, Math.round(micRms * 800));
+
+  // Compute live audio duration & session cost estimation
+  const audioSecSent = Math.round((totalPcmSamplesSent / 16000) * 10) / 10;
+  const audioSecReceived = Math.round(geminiOutputBytes / (24000 * 2) * 10) / 10;
+  // Estimate cost: input audio ~₹0.003/sec, output audio ~₹0.012/sec, DeepSeek turn ~₹0.02
+  const sessionEstimatedCostInr = Math.round((audioSecSent * 0.003 + audioSecReceived * 0.012 + (deepseekStatus === 'DONE' ? 0.02 : 0)) * 100) / 100;
 
   if (loading && !session) {
     return (
@@ -529,13 +1057,13 @@ function MentorCallSimulator() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#05070A', color: '#F8FAFC', padding: '20px 16px 40px', boxSizing: 'border-box', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, sans-serif' }}>
-      <div style={{ maxWidth: 760, margin: '0 auto' }}>
+      <div style={{ maxWidth: 780, margin: '0 auto' }}>
         
         {/* Top Header & Monthly Budget */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 12 }}>
           <div>
             <div style={{ color: '#0A64F5', fontSize: 11, fontWeight: 800, letterSpacing: '.1em', textTransform: 'uppercase' }}>
-              MentorOS · Realtime Voice V2
+              MentorOS · Realtime Voice Self-Diagnosing Shell
             </div>
             <h1 style={{ margin: '4px 0 0', fontSize: 24, fontWeight: 800, color: '#FFFFFF' }}>
               Moulika Voice Check-in
@@ -544,7 +1072,7 @@ function MentorCallSimulator() {
 
           {monthlyUsage && (
             <div style={{ background: '#0D1117', border: '1px solid #202A36', borderRadius: 12, padding: '8px 14px', fontSize: 12 }}>
-              <div style={{ color: '#95A1B3', marginBottom: 2 }}>Monthly AI Spend:</div>
+              <div style={{ color: '#95A1B3', marginBottom: 2 }}>Production AI Spend:</div>
               <div style={{ fontWeight: 800, color: '#16B364' }}>
                 ₹{monthlyUsage.totalCostInr} / ₹{monthlyUsage.budgetInr}
                 <span style={{ color: '#95A1B3', fontWeight: 500, marginLeft: 6 }}>
@@ -555,7 +1083,190 @@ function MentorCallSimulator() {
           )}
         </div>
 
-        {/* Development Status Panel (Temporary for debugging & manual verification) */}
+        {/* SECTION A: TWO EXPLICIT HARD TEST BUTTONS & CARDS BEFORE CALL */}
+        {!session && (
+          <div style={{ background: '#0B1017', border: '1px solid #1E293B', borderRadius: 16, padding: '16px 20px', marginBottom: 20 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+              <h3 style={{ margin: 0, fontSize: 15, fontWeight: 800, color: '#F1F5F9', display: 'flex', alignItems: 'center', gap: 8 }}>
+                🔬 Pre-Call Hardware & Audio Diagnostics
+              </h3>
+              <span style={{ fontSize: 11, color: '#64748B', fontWeight: 600 }}>Zero cost until clicked · Auto-disconnects on completion</span>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 14 }}>
+              
+              {/* HARD TEST 1: MICROPHONE */}
+              <div style={{ background: '#0F172A', border: micTestResult === 'PASS' ? '1px solid #22C55E' : '1px solid #334155', borderRadius: 14, padding: 16 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                  <strong style={{ fontSize: 14, color: '#38BDF8' }}>🎤 Test Microphone</strong>
+                  {micTestResult && (
+                    <span style={{
+                      background: micTestResult === 'PASS' ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)',
+                      color: micTestResult === 'PASS' ? '#22C55E' : '#EF4444',
+                      padding: '2px 8px',
+                      borderRadius: 6,
+                      fontSize: 11,
+                      fontWeight: 800
+                    }}>
+                      {micTestResult}
+                    </span>
+                  )}
+                </div>
+
+                <div style={{ fontSize: 12, color: '#94A3B8', display: 'grid', gap: 4, marginBottom: 12 }}>
+                  <div>Microphone: <strong style={{ color: micStatus === 'CONNECTED' ? '#22C55E' : '#64748B' }}>{micStatus}</strong></div>
+                  <div>Input device: <strong style={{ color: '#F8FAFC' }}>{micDeviceName}</strong></div>
+                  <div>Mic level: <strong style={{ color: micRms > 0.01 ? '#38BDF8' : '#64748B' }}>{micRms.toFixed(4)} RMS</strong></div>
+                </div>
+
+                {/* Live Mic Meter */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 3, height: 24, marginBottom: 12, background: '#090D14', padding: '0 8px', borderRadius: 6 }}>
+                  {[...Array(20)].map((_, i) => {
+                    const barHeight = Math.max(4, Math.min(20, Math.round(normalizedLevel * (i / 10 + 0.2))));
+                    return (
+                      <div
+                        key={i}
+                        style={{
+                          flex: 1,
+                          height: `${barHeight}px`,
+                          borderRadius: 2,
+                          background: micRms > 0.01 ? '#38BDF8' : '#1E293B',
+                          transition: 'height 0.05s ease'
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+
+                {micTestRunning ? (
+                  <div style={{ background: '#1E293B', borderRadius: 8, padding: 10, marginBottom: 10 }}>
+                    <div style={{ color: '#F59E0B', fontSize: 12, fontWeight: 700, marginBottom: 4 }}>
+                      📢 Please say out loud:
+                    </div>
+                    <div style={{ color: '#FFFFFF', fontSize: 13, fontWeight: 700, fontStyle: 'italic' }}>
+                      "Testing MentorOS microphone."
+                    </div>
+                    {micTestTranscript && (
+                      <div style={{ marginTop: 8, fontSize: 12, color: '#38BDF8' }}>
+                        Gemini heard: <strong>"{micTestTranscript}"</strong>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  micTestTranscript && (
+                    <div style={{ background: '#131D2D', border: '1px solid #1E293B', borderRadius: 8, padding: 8, marginBottom: 10, fontSize: 12 }}>
+                      Gemini heard: <strong style={{ color: '#38BDF8' }}>"{micTestTranscript}"</strong>
+                    </div>
+                  )
+                )}
+
+                <div style={{ display: 'flex', gap: 8 }}>
+                  {!micTestRunning ? (
+                    <button
+                      onClick={handleTestMicrophone}
+                      style={{
+                        flex: 1,
+                        background: '#0A64F5',
+                        color: '#FFFFFF',
+                        border: 'none',
+                        borderRadius: 8,
+                        padding: '8px 14px',
+                        fontSize: 12,
+                        fontWeight: 700,
+                        cursor: 'pointer'
+                      }}
+                    >
+                      🎤 Test Microphone
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleStopMicrophoneTest}
+                      style={{
+                        flex: 1,
+                        background: '#EF4444',
+                        color: '#FFFFFF',
+                        border: 'none',
+                        borderRadius: 8,
+                        padding: '8px 14px',
+                        fontSize: 12,
+                        fontWeight: 700,
+                        cursor: 'pointer'
+                      }}
+                    >
+                      ⏹ Finish Mic Test
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* HARD TEST 2: SPEAKER */}
+              <div style={{ background: '#0F172A', border: speakerTestResult === 'PASS' ? '1px solid #22C55E' : '1px solid #334155', borderRadius: 14, padding: 16 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                  <strong style={{ fontSize: 14, color: '#16B364' }}>🔊 Test Mentor Speaker</strong>
+                  {speakerTestResult && (
+                    <span style={{
+                      background: speakerTestResult === 'PASS' ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)',
+                      color: speakerTestResult === 'PASS' ? '#22C55E' : '#EF4444',
+                      padding: '2px 8px',
+                      borderRadius: 6,
+                      fontSize: 11,
+                      fontWeight: 800
+                    }}>
+                      {speakerTestResult}
+                    </span>
+                  )}
+                </div>
+
+                <div style={{ fontSize: 12, color: '#94A3B8', display: 'grid', gap: 4, marginBottom: 12 }}>
+                  <div>AudioContext: <strong style={{ color: audioContextState === 'RUNNING' ? '#22C55E' : '#F59E0B' }}>{audioContextState}</strong></div>
+                  <div>Output device: <strong style={{ color: '#F8FAFC' }}>{outputDeviceName}</strong></div>
+                  <div>Gemini chunks received: <strong style={{ color: '#F8FAFC' }}>{speakerTestChunks}</strong></div>
+                  <div>Audio bytes received: <strong style={{ color: '#F8FAFC' }}>{speakerTestBytes} B</strong></div>
+                  <div>Playback state: <strong style={{ color: browserPlaybackStatus === 'PLAYING' ? '#22C55E' : '#94A3B8' }}>{browserPlaybackStatus}</strong></div>
+                </div>
+
+                {/* Visible 0-100 Speaker Output Meter */}
+                <div style={{ marginBottom: 12 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: '#64748B', marginBottom: 3 }}>
+                    <span>Speaker Output Activity Meter</span>
+                    <strong style={{ color: speakerActivityLevel > 0 ? '#16B364' : '#64748B' }}>{speakerActivityLevel}%</strong>
+                  </div>
+                  <div style={{ background: '#090D14', height: 10, borderRadius: 5, overflow: 'hidden' }}>
+                    <div
+                      style={{
+                        width: `${speakerActivityLevel}%`,
+                        height: '100%',
+                        background: speakerActivityLevel > 50 ? '#16B364' : '#0A64F5',
+                        transition: 'width 0.08s ease'
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleTestSpeaker}
+                  disabled={speakerTestRunning}
+                  style={{
+                    width: '100%',
+                    background: speakerTestRunning ? '#334155' : '#16B364',
+                    color: '#FFFFFF',
+                    border: 'none',
+                    borderRadius: 8,
+                    padding: '8px 14px',
+                    fontSize: 12,
+                    fontWeight: 700,
+                    cursor: speakerTestRunning ? 'default' : 'pointer'
+                  }}
+                >
+                  {speakerTestRunning ? '🔊 Playing Audio Test ("Hello Moulika...")...' : '🔊 Test Mentor Speaker'}
+                </button>
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* SECTION C: DIAGNOSTIC PANEL */}
         <div style={{
           background: '#0B1017',
           border: '1px solid #1E293B',
@@ -567,40 +1278,34 @@ function MentorCallSimulator() {
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8, borderBottom: '1px solid #1E293B', paddingBottom: 6 }}>
             <span style={{ fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '.05em' }}>
-              🛠️ Live Development Status Panel
+              🛠️ Live Self-Diagnostic Panel
             </span>
-            <button
-              onClick={handleTestSpeaker}
-              style={{
-                background: '#1E293B',
-                color: '#38BDF8',
-                border: '1px solid #38BDF8',
-                borderRadius: 6,
-                padding: '4px 10px',
-                fontSize: 11,
-                fontWeight: 700,
-                cursor: 'pointer'
-              }}
-            >
-              🔊 Test Mentor Speaker
-            </button>
+            <div style={{ fontSize: 11, color: '#64748B', display: 'flex', gap: 12 }}>
+              <span>Duration: <strong>{sessionDurationSec}s</strong></span>
+              <span>Audio Sent: <strong>{audioSecSent}s</strong></span>
+              <span>Est. Cost: <strong style={{ color: '#16B364' }}>₹{sessionEstimatedCostInr}</strong></span>
+            </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '8px 16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: '8px 14px' }}>
             <div>
-              <span style={{ color: '#64748B' }}>Mic: </span>
-              <strong style={{ color: micStatus === 'CONNECTED' ? '#22C55E' : '#EF4444' }}>{micStatus}</strong>
+              <span style={{ color: '#64748B' }}>Microphone: </span>
+              <strong style={{ color: micStatus === 'CONNECTED' ? '#22C55E' : '#64748B' }}>{micStatus}</strong>
             </div>
             <div>
               <span style={{ color: '#64748B' }}>Mic RMS: </span>
               <strong style={{ color: micRms > 0.01 ? '#38BDF8' : '#94A3B8' }}>{micRms.toFixed(4)}</strong>
             </div>
             <div>
-              <span style={{ color: '#64748B' }}>Voice WS: </span>
-              <strong style={{ color: voiceWsStatus === 'CONNECTED' ? '#22C55E' : voiceWsStatus === 'CONNECTING' ? '#F59E0B' : '#EF4444' }}>{voiceWsStatus}</strong>
+              <span style={{ color: '#64748B' }}>Audio chunks sent: </span>
+              <strong style={{ color: '#F8FAFC' }}>{audioChunksSent}</strong>
             </div>
             <div>
-              <span style={{ color: '#64748B' }}>Gemini: </span>
+              <span style={{ color: '#64748B' }}>Voice WebSocket: </span>
+              <strong style={{ color: voiceWsStatus === 'CONNECTED' ? '#22C55E' : voiceWsStatus === 'CONNECTING' ? '#F59E0B' : '#64748B' }}>{voiceWsStatus}</strong>
+            </div>
+            <div>
+              <span style={{ color: '#64748B' }}>Gemini Live: </span>
               <strong style={{ color: geminiStatus === 'CONNECTED' ? '#22C55E' : '#94A3B8' }}>{geminiStatus}</strong>
             </div>
             <div>
@@ -609,15 +1314,31 @@ function MentorCallSimulator() {
             </div>
             <div>
               <span style={{ color: '#64748B' }}>DeepSeek: </span>
-              <strong style={{ color: deepseekStatus === 'RUNNING' ? '#A855F7' : deepseekStatus === 'DONE' ? '#22C55E' : '#64748B' }}>{deepseekStatus}</strong>
+              <strong style={{ color: deepseekStatus === 'RUNNING' ? '#A855F7' : deepseekStatus === 'DONE' ? '#22C55E' : deepseekStatus === 'FAILED' ? '#EF4444' : '#64748B' }}>{deepseekStatus}</strong>
             </div>
             <div>
-              <span style={{ color: '#64748B' }}>Gemini audio: </span>
-              <strong style={{ color: geminiAudioStatus === 'RECEIVING' ? '#38BDF8' : '#64748B' }}>{geminiAudioStatus}</strong>
+              <span style={{ color: '#64748B' }}>Gemini output chunks: </span>
+              <strong style={{ color: '#F8FAFC' }}>{geminiOutputChunks}</strong>
             </div>
             <div>
-              <span style={{ color: '#64748B' }}>Browser playback: </span>
+              <span style={{ color: '#64748B' }}>Gemini output bytes: </span>
+              <strong style={{ color: '#F8FAFC' }}>{geminiOutputBytes} B ({audioSecReceived}s)</strong>
+            </div>
+            <div>
+              <span style={{ color: '#64748B' }}>AudioContext: </span>
+              <strong style={{ color: audioContextState === 'RUNNING' ? '#22C55E' : '#64748B' }}>{audioContextState}</strong>
+            </div>
+            <div>
+              <span style={{ color: '#64748B' }}>Playback queue: </span>
+              <strong style={{ color: '#F8FAFC' }}>{playbackQueueCount}</strong>
+            </div>
+            <div>
+              <span style={{ color: '#64748B' }}>Playback: </span>
               <strong style={{ color: browserPlaybackStatus === 'PLAYING' ? '#22C55E' : browserPlaybackStatus === 'BLOCKED' ? '#EF4444' : '#64748B' }}>{browserPlaybackStatus}</strong>
+            </div>
+            <div>
+              <span style={{ color: '#64748B' }}>Interruption reason: </span>
+              <strong style={{ color: '#94A3B8' }}>{lastInterruptionReason}</strong>
             </div>
           </div>
 
@@ -630,9 +1351,75 @@ function MentorCallSimulator() {
               <span style={{ color: '#64748B' }}>Final transcript: </span>
               <span style={{ color: '#38BDF8' }}>{finalTranscript ? `"${finalTranscript}"` : '(none)'}</span>
             </div>
+            {deepseekReply && (
+              <div>
+                <span style={{ color: '#64748B' }}>DeepSeek reply: </span>
+                <span style={{ color: '#A855F7' }}>"{deepseekReply}"</span>
+              </div>
+            )}
           </div>
         </div>
 
+        {/* SECTION F: HUMAN VERIFICATION STATUS CARD */}
+        <div style={{
+          background: '#0D1117',
+          border: humanVerificationStatus === 'CONFIRMED - AUDIO WORKING' ? '1px solid #16B364' : '1px solid #F59E0B',
+          borderRadius: 14,
+          padding: '12px 18px',
+          marginBottom: 16,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: 12
+        }}>
+          <div>
+            <div style={{ fontSize: 11, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '.05em', fontWeight: 700 }}>
+              Physical Audio Verification
+            </div>
+            <div style={{ fontSize: 14, fontWeight: 800, color: humanVerificationStatus === 'CONFIRMED - AUDIO WORKING' ? '#16B364' : '#F59E0B' }}>
+              {humanVerificationStatus}
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', gap: 8 }}>
+            {humanVerificationStatus !== 'CONFIRMED - AUDIO WORKING' ? (
+              <button
+                onClick={() => setHumanVerificationStatus('CONFIRMED - AUDIO WORKING')}
+                style={{
+                  background: '#16B364',
+                  color: '#FFFFFF',
+                  border: 'none',
+                  borderRadius: 8,
+                  padding: '8px 14px',
+                  fontSize: 12,
+                  fontWeight: 750,
+                  cursor: 'pointer'
+                }}
+              >
+                ✅ I Can Hear Mentor Voice Clearly
+              </button>
+            ) : (
+              <button
+                onClick={() => setHumanVerificationStatus('AWAITING HUMAN AUDIO CONFIRMATION')}
+                style={{
+                  background: '#1E293B',
+                  color: '#94A3B8',
+                  border: '1px solid #334155',
+                  borderRadius: 8,
+                  padding: '6px 12px',
+                  fontSize: 11,
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+              >
+                Reset Verification
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* MAIN BODY: START CALL OR ACTIVE CALL INTERFACE */}
         {!session ? (
           <div style={{ background: '#0D1117', border: '1px solid #202A36', borderRadius: 18, padding: 24 }}>
             <h2 style={{ fontSize: 18, fontWeight: 700, margin: '0 0 12px', color: '#F8FAFC' }}>
@@ -674,12 +1461,13 @@ function MentorCallSimulator() {
         ) : (
           <div style={{ display: 'grid', gap: 16 }}>
             
-            {/* UNMISTAKABLE VOICE STATE CARD */}
+            {/* SECTION B: UNMISTAKABLE REAL CALL UI STATES */}
             <div style={{
               background: '#0D1117',
               border: callState === CALL_STATES.ERROR ? '1px solid #EF4444' :
                       callState === CALL_STATES.MENTOR_SPEAKING ? '1px solid #16B364' :
                       callState === CALL_STATES.USER_SPEAKING ? '1px solid #D99100' :
+                      callState === CALL_STATES.TRANSCRIBING ? '1px solid #38BDF8' :
                       callState === CALL_STATES.MENTOR_THINKING ? '1px solid #8B5CF6' : '1px solid #202A36',
               borderRadius: 18,
               padding: 24,
@@ -694,7 +1482,7 @@ function MentorCallSimulator() {
                 <div>
                   <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 999, background: 'rgba(10, 100, 245, 0.15)', color: '#0A64F5', fontSize: 13, fontWeight: 750, marginBottom: 12 }}>
                     <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#0A64F5', animation: 'pulse 1.5s infinite' }} />
-                    Connecting
+                    CONNECTING
                   </div>
                   <h2 style={{ margin: '0 0 6px', fontSize: 22, fontWeight: 800, color: '#FFFFFF' }}>
                     Connecting to Mentor...
@@ -705,15 +1493,31 @@ function MentorCallSimulator() {
                 </div>
               )}
 
-              {/* 2. LISTENING STATE */}
+              {/* 2. READY STATE */}
+              {callState === CALL_STATES.READY && (
+                <div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 999, background: 'rgba(34, 197, 94, 0.15)', color: '#22C55E', fontSize: 13, fontWeight: 750, marginBottom: 12 }}>
+                    <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#22C55E' }} />
+                    READY
+                  </div>
+                  <h2 style={{ margin: '0 0 6px', fontSize: 22, fontWeight: 800, color: '#FFFFFF' }}>
+                    Mentor connected
+                  </h2>
+                  <p style={{ margin: 0, color: '#95A1B3', fontSize: 13 }}>
+                    Audio channel initialized and ready for check-in
+                  </p>
+                </div>
+              )}
+
+              {/* 3. LISTENING STATE (Only shown if mic is connected & active) */}
               {callState === CALL_STATES.LISTENING && (
                 <div>
                   <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 999, background: 'rgba(10, 100, 245, 0.15)', color: '#0A64F5', fontSize: 13, fontWeight: 750, marginBottom: 12 }}>
                     <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#0A64F5', animation: 'pulse 1.5s infinite' }} />
-                    Ready
+                    LISTENING
                   </div>
                   <h2 style={{ margin: '0 0 6px', fontSize: 22, fontWeight: 800, color: '#FFFFFF' }}>
-                    Listening...
+                    Listening to you...
                   </h2>
                   <p style={{ margin: '0 0 16px', color: '#95A1B3', fontSize: 13 }}>
                     Speak naturally in Telugu, English or mixed code-switching
@@ -741,12 +1545,12 @@ function MentorCallSimulator() {
                 </div>
               )}
 
-              {/* 3. USER SPEAKING STATE */}
+              {/* 4. USER SPEAKING STATE */}
               {callState === CALL_STATES.USER_SPEAKING && (
                 <div>
                   <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 999, background: 'rgba(217, 145, 0, 0.15)', color: '#D99100', fontSize: 13, fontWeight: 750, marginBottom: 12 }}>
                     <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#D99100', animation: 'pulse 0.8s infinite' }} />
-                    Audio Detected
+                    USER SPEAKING
                   </div>
                   <h2 style={{ margin: '0 0 6px', fontSize: 22, fontWeight: 800, color: '#D99100' }}>
                     I can hear you...
@@ -793,12 +1597,51 @@ function MentorCallSimulator() {
                 </div>
               )}
 
-              {/* 4. MENTOR THINKING STATE */}
+              {/* 4.5 PROCESSING SPEECH STATE */}
+              {callState === CALL_STATES.PROCESSING_SPEECH && (
+                <div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 999, background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', fontSize: 13, fontWeight: 750, marginBottom: 12 }}>
+                    <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#38BDF8', animation: 'pulse 0.8s infinite' }} />
+                    PROCESSING SPEECH
+                  </div>
+                  <h2 style={{ margin: '0 0 6px', fontSize: 22, fontWeight: 800, color: '#38BDF8' }}>
+                    Finalizing your speech...
+                  </h2>
+                  <p style={{ margin: 0, color: '#95A1B3', fontSize: 13 }}>
+                    Waiting for final utterance recognition from Gemini Live
+                  </p>
+                  {partialTranscript && (
+                    <div style={{ marginTop: 12, fontSize: 14, color: '#F8FAFC', fontStyle: 'italic' }}>
+                      "{partialTranscript}"
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* 5. TRANSCRIBING STATE */}
+              {callState === CALL_STATES.TRANSCRIBING && (
+                <div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 999, background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', fontSize: 13, fontWeight: 750, marginBottom: 12 }}>
+                    <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#38BDF8', animation: 'pulse 1s infinite' }} />
+                    TRANSCRIBING
+                  </div>
+                  <h2 style={{ margin: '0 0 6px', fontSize: 22, fontWeight: 800, color: '#38BDF8' }}>
+                    Understanding what you said...
+                  </h2>
+                  {finalTranscript && (
+                    <div style={{ margin: '10px 0 0', fontSize: 15, color: '#F8FAFC', fontWeight: 600 }}>
+                      "{finalTranscript}"
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* 6. MENTOR THINKING STATE */}
               {callState === CALL_STATES.MENTOR_THINKING && (
                 <div>
                   <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 999, background: 'rgba(139, 92, 246, 0.15)', color: '#8B5CF6', fontSize: 13, fontWeight: 750, marginBottom: 12 }}>
                     <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#8B5CF6', animation: 'pulse 1s infinite' }} />
-                    DeepSeek Flash
+                    MENTOR THINKING
                   </div>
                   
                   {finalTranscript && (
@@ -811,23 +1654,39 @@ function MentorCallSimulator() {
                     Mentor is thinking...
                   </h2>
                   <p style={{ margin: 0, color: '#95A1B3', fontSize: 13 }}>
-                    Evaluating readiness targets and UPSC preparation state
+                    DeepSeek Flash is evaluating readiness targets and UPSC preparation state
                   </p>
                 </div>
               )}
 
-              {/* 5. MENTOR SPEAKING STATE */}
+              {/* 6.5 MENTOR GENERATING VOICE STATE */}
+              {callState === CALL_STATES.MENTOR_GENERATING_VOICE && (
+                <div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 999, background: 'rgba(245, 158, 11, 0.15)', color: '#F59E0B', fontSize: 13, fontWeight: 750, marginBottom: 12 }}>
+                    <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#F59E0B', animation: 'pulse 0.8s infinite' }} />
+                    MENTOR GENERATING VOICE
+                  </div>
+                  <h2 style={{ margin: '0 0 6px', fontSize: 22, fontWeight: 800, color: '#F59E0B' }}>
+                    Generating mentor voice...
+                  </h2>
+                  <p style={{ margin: 0, color: '#95A1B3', fontSize: 13 }}>
+                    Synthesizing audio stream from Gemini 3.8 Live
+                  </p>
+                </div>
+              )}
+
+              {/* 7. MENTOR SPEAKING STATE */}
               {callState === CALL_STATES.MENTOR_SPEAKING && (
                 <div>
                   <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 999, background: 'rgba(22, 179, 100, 0.15)', color: '#16B364', fontSize: 13, fontWeight: 750, marginBottom: 12 }}>
                     <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#16B364', animation: 'pulse 0.6s infinite' }} />
-                    Gemini 3.8 Live
+                    MENTOR SPEAKING
                   </div>
                   <h2 style={{ margin: '0 0 6px', fontSize: 22, fontWeight: 800, color: '#16B364' }}>
                     Mentor is speaking...
                   </h2>
                   <p style={{ margin: '0 0 14px', color: '#95A1B3', fontSize: 13 }}>
-                    Audible spoken delivery in natural code-switching voice
+                    Gemini 3.8 Live spoken delivery in natural voice
                   </p>
 
                   {/* Animated Soundwave / Speaker Visualizer */}
@@ -866,22 +1725,22 @@ function MentorCallSimulator() {
                 </div>
               )}
 
-              {/* 6. ERROR STATE */}
+              {/* 8. ERROR STATE */}
               {callState === CALL_STATES.ERROR && (
                 <div>
                   <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 999, background: 'rgba(239, 68, 68, 0.15)', color: '#EF4444', fontSize: 13, fontWeight: 750, marginBottom: 12 }}>
                     <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#EF4444' }} />
-                    Stage Error
+                    ERROR
                   </div>
                   <h2 style={{ margin: '0 0 6px', fontSize: 22, fontWeight: 800, color: '#EF4444' }}>
-                    {errorStage || 'Voice Error'}
+                    {errorStage || 'Speech audio reached Mentor, but Gemini did not finalize the transcript.'}
                   </h2>
                   <p style={{ margin: '0 0 16px', color: '#95A1B3', fontSize: 13 }}>
-                    Please grant microphone permission, check audio output, or reconnect.
+                    Speech audio reached Mentor, but Gemini did not finalize the transcript.
                   </p>
                   <button
                     onClick={() => {
-                      cleanupVoicePipeline();
+                      cleanupVoicePipeline('reconnect');
                       startSession();
                     }}
                     style={{

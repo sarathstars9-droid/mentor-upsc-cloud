@@ -17,6 +17,14 @@ import SpotlightCard from "../components/Plan/SpotlightCard.jsx";
 import PlanRightRail from "../components/Plan/PlanRightRail.jsx";
 import TimePicker12Hour from "../components/Plan/TimePicker12Hour.jsx";
 import ManageTodayModal from "../components/Plan/ManageTodayModal.jsx";
+import AddStudyBlockModal from "../components/Plan/AddStudyBlockModal.jsx";
+import QuickStartModal from "../components/Plan/QuickStartModal.jsx";
+import CompletionSheetModal from "../components/Plan/CompletionSheetModal.jsx";
+import ActiveCommentModal from "../components/Plan/ActiveCommentModal.jsx";
+import ActiveConflictModal from "../components/Plan/ActiveConflictModal.jsx";
+import CarryForwardModal from "../components/Plan/CarryForwardModal.jsx";
+import EditPlannedBlockModal from "../components/Plan/EditPlannedBlockModal.jsx";
+import StudyBlockCard from "../components/Plan/StudyBlockCard.jsx";
 import "../styles/mentoros-plan.css";
 
 import {
@@ -280,6 +288,27 @@ function getTodayLocalDate() {
   const now = new Date();
   const tzOffsetMs = now.getTimezoneOffset() * 60000;
   return new Date(now.getTime() - tzOffsetMs).toISOString().slice(0, 10);
+}
+
+function formatDashboardDate(dateStr) {
+  try {
+    const d = new Date(dateStr + "T00:00:00");
+    if (isNaN(d.getTime())) return dateStr;
+    const dayName = d.toLocaleDateString("en-US", { weekday: "long" }).toUpperCase();
+    const formatted = d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }).toUpperCase();
+    return `${dayName}, ${formatted}`;
+  } catch {
+    return dateStr;
+  }
+}
+
+function formatMetricDuration(totalMinutes) {
+  const m = Math.max(0, Number(totalMinutes) || 0);
+  const hrs = Math.floor(m / 60);
+  const rem = m % 60;
+  if (hrs > 0 && rem > 0) return `${hrs}h${rem}m`;
+  if (hrs > 0) return `${hrs}h`;
+  return `${rem}m`;
 }
 
 /* ---------------- Mapping fields for Sheets ---------------- */
@@ -1016,233 +1045,6 @@ function AddBlockModal({ open, busy, onClose, onSave, editingBlock = null, exist
   );
 }
 
-function StudyBlockCard({
-  block,
-  busy,
-  onStart,
-  onPause,
-  onResume,
-  onStop,
-}) {
-  const statusValue = getEffectiveBlockStatus(block);
-
-  const isActive    = statusValue === BLOCK_STATUS.ACTIVE;
-  const isPaused    = statusValue === BLOCK_STATUS.PAUSED;
-  const isDone      = isFinishedStatus(statusValue);
-  const isPlanned   = ["planned", "ready_to_start", "overdue"].includes(statusValue);
-
-  const SC_MAP = {
-    active:    { bg: "rgba(10, 100, 245, 0.15)",  border: "rgba(10, 100, 245, 0.3)",  color: "#0A64F5", dot: "#0A64F5", label: "ACTIVE"   },
-    paused:    { bg: "rgba(234, 179, 8, 0.12)",   border: "rgba(234, 179, 8, 0.24)",   color: "#D97706", dot: "#D97706", label: "PAUSED"   },
-    completed: { bg: "rgba(16, 185, 129, 0.08)", border: "rgba(16, 185, 129, 0.2)", color: "#059669", dot: "#059669", label: "DONE"     },
-    stopped:   { bg: "rgba(16, 185, 129, 0.08)", border: "rgba(16, 185, 129, 0.2)", color: "#059669", dot: "#059669", label: "DONE"     },
-    partial:   { bg: "rgba(10, 100, 245, 0.05)", border: "rgba(10, 100, 245, 0.15)", color: "#095BE0", dot: "#095BE0", label: "PARTIAL"  },
-    missed:    { bg: "rgba(239, 68, 68, 0.06)",   border: "rgba(239, 68, 68, 0.15)",   color: "#DC2626", dot: "#DC2626", label: "MISSED"   },
-    skipped:   { bg: "rgba(107, 114, 128, 0.06)", border: "rgba(107, 114, 128, 0.15)", color: "#4B5563", dot: "#4B5563", label: "SKIPPED"  },
-    ready_to_start: { bg: "rgba(10, 100, 245, 0.1)",  border: "rgba(10, 100, 245, 0.2)",  color: "#0A64F5", dot: "#0A64F5", label: "READY TO START" },
-    overdue:   { bg: "rgba(239, 68, 68, 0.1)",   border: "rgba(239, 68, 68, 0.2)",   color: "#EF4444", dot: "#EF4444", label: "OVERDUE" },
-    planned:   { bg: "var(--mos-bg-soft)", border: "var(--mos-border)", color: "var(--mos-text-soft)", dot: "var(--mos-text-soft)", label: "PLANNED"  },
-  };
-  const sc = SC_MAP[statusValue] || SC_MAP.planned;
-
-  // Title: most specific non-subject candidate wins
-  const subjectStr = String(block?.finalMapping?.subjectName || block?.PlannedSubject || block?.ActualSubject || "").trim();
-  const topicStr   = String(block?.PlannedTopic || block?.ActualTopic || "").trim();
-  const mappedStr  = String(block?.finalMapping?.nodeName || "").trim();
-  const cardTitle = (() => {
-    for (const c of [topicStr, mappedStr]) {
-      if (c && c.toLowerCase() !== subjectStr.toLowerCase()) return c;
-    }
-    return subjectStr || "Study Block";
-  })();
-
-  // Paper label from node id
-  const nodeId = String(block?.finalMapping?.nodeId || block?.SyllabusNodeId || block?.SyllabusTop1Code || "").trim();
-  const paper = (() => {
-    const e = String(block?.GsPaper || "").trim().toUpperCase();
-    if (e) return e;
-    const m = nodeId.match(/^(GS\d)/i);
-    return m ? m[1].toUpperCase() : "";
-  })();
-
-  const subtitle = (() => {
-    const base = paper && subjectStr ? `${paper} · ${subjectStr}` : subjectStr;
-    return base.toLowerCase() === cardTitle.toLowerCase() ? "" : base;
-  })();
-
-  const nodeTag = (() => {
-    if (!nodeId || /^misc/i.test(nodeId)) return null;
-    const parts = nodeId.split("-");
-    return parts.length > 2 ? parts.slice(1).join("-") : null;
-  })();
-
-  const ctaLabel = getBlockCtaLabel(block);
-  const pyqNavPath = getBlockPyqNavPath(block);
-
-  const totalMin = Number(block?.PlannedMinutes || 0);
-  const doneMin  = Math.floor(Number(block?.ActualMinutes || 0));
-  const leftMin  = Math.max(0, totalMin - doneMin);
-  const pct      = totalMin > 0 ? Math.min(100, Math.round((doneMin / totalMin) * 100)) : 0;
-  const pyqCount = Number(block?.linkedPyqs?.total || block?.PyqCount || 0);
-  const pyqLabel = pyqCount > 0 ? `${pyqCount} PYQs →` : "PYQs →";
-
-  const B = {
-    base: {
-      display: "inline-flex", alignItems: "center", justifyContent: "center",
-      height: 30, padding: "0 12px", borderRadius: 7,
-      fontWeight: 700, fontSize: 11, cursor: "pointer",
-      border: "none", letterSpacing: "-0.01em", whiteSpace: "nowrap",
-      transition: "all 0.15s ease",
-    },
-    primary: { background: "var(--mos-accent)", color: "#fff", boxShadow: "0 2px 6px rgba(10, 100, 245, 0.15)" },
-    muted:   {
-      background: isActive ? "rgba(10, 100, 245, 0.08)" : "var(--mos-bg-soft)",
-      color: isActive ? "#0A64F5" : "var(--mos-text)",
-      border: `1px solid ${isActive ? "rgba(10, 100, 245, 0.12)" : "var(--mos-border)"}`
-    },
-    stop:    { background: "rgba(239, 68, 68, 0.08)", color: "#ef4444", border: "1px solid rgba(239,68,68,0.15)" },
-    pyq:     {
-      background: isActive ? "rgba(10, 100, 245, 0.04)" : "var(--mos-bg-soft)",
-      color: isActive ? "#0A64F5" : "var(--mos-text-soft)",
-      border: `1px solid ${isActive ? "rgba(10, 100, 245, 0.08)" : "var(--mos-border)"}`,
-      textDecoration: "none"
-    },
-  };
-
-  return (
-    <article style={{
-      background: isActive ? "#EAF2FF" : "var(--mos-surface)",
-      border: `1px solid ${isActive ? "#CFE0FF" : "var(--mos-border)"}`,
-      borderTop: `2px solid ${isActive ? "#0A64F5" : isDone ? "var(--mos-border)" : "var(--mos-border-strong)"}`,
-      borderRadius: 16,
-      padding: "14px 16px",
-      display: "flex",
-      flexDirection: "column",
-      gap: 8,
-      overflow: "hidden",
-      boxShadow: isActive ? "0 4px 12px rgba(10, 100, 245, 0.08)" : "var(--mos-shadow-soft)",
-      opacity: isDone ? 0.75 : 1,
-    }}>
-      {/* ROW 1: title + time range */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8 }}>
-        <div style={{
-          fontSize: 15, fontWeight: 800, color: isActive ? '#FFFFFF' : 'var(--mos-text)',
-          letterSpacing: '-0.025em', lineHeight: 1.2,
-          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0,
-        }}>
-          {cardTitle}
-        </div>
-        <div style={{
-          fontFamily: 'var(--mono,monospace)', fontSize: 11, fontWeight: 600,
-          color: isActive ? '#9CA3AF' : 'var(--mos-text-soft)', whiteSpace: 'nowrap', flexShrink: 0,
-        }}>
-          {block?.PlannedStart} {"→"} {block?.PlannedEnd}
-        </div>
-      </div>
-
-      {/* ROW 2: subtitle + duration */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div style={{ fontSize: 11, color: isActive ? '#9CA3AF' : 'var(--mos-text-soft)', fontWeight: 500 }}>
-          {subtitle || ' '}
-        </div>
-        <div style={{ fontFamily: 'var(--mono,monospace)', fontSize: 11, color: isActive ? '#E5E7EB' : 'var(--mos-text)' }}>
-          {totalMin > 0 ? `${totalMin} min` : ''}
-        </div>
-      </div>
-
-      {/* ROW 3: status chip + node tag */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-        <div style={{
-          display: 'inline-flex', alignItems: 'center', gap: 5,
-          padding: '2px 9px', borderRadius: 20,
-          background: sc.bg, border: `1px solid ${sc.border}`,
-        }}>
-          <span style={{
-            width: 5, height: 5, borderRadius: '50%', background: sc.dot,
-            boxShadow: isActive ? `0 0 4px ${sc.dot}` : 'none', flexShrink: 0,
-          }} />
-          <span style={{
-            fontSize: 9, fontWeight: 700, letterSpacing: '0.1em',
-            color: sc.color, fontFamily: 'var(--mono,monospace)',
-          }}>
-            {sc.label}
-          </span>
-        </div>
-        {nodeTag && (
-          <span style={{ fontSize: 10, color: isActive ? '#9CA3AF' : 'var(--mos-text-soft)', fontFamily: 'var(--mono,monospace)', fontWeight: 600 }}>
-            {nodeTag}
-          </span>
-        )}
-      </div>
-
-      {/* ROW 4: progress bar OR starts-at */}
-      {(isActive || isPaused || isDone) && totalMin > 0 ? (
-        <div>
-          <div style={{ height: 4, borderRadius: 2, background: 'var(--mos-bg-soft)', overflow: 'hidden', marginBottom: 4 }}>
-            <div style={{
-              height: '100%', borderRadius: 2, width: `${pct}%`,
-              background: isActive ? '#0A64F5' : isPaused ? 'var(--mos-warning)' : 'var(--mos-text-soft)',
-              transition: 'width 1s linear', minWidth: pct > 0 ? 2 : 0,
-            }} />
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <span style={{ fontSize: 10, color: 'var(--mos-text-soft)', fontFamily: 'var(--mono,monospace)' }}>
-              {doneMin > 0 ? `${doneMin} min done · ${leftMin} min left` : `${totalMin} min left`}
-            </span>
-            {pct > 0 && (
-              <span style={{ fontSize: 10, color: 'var(--mos-text)', fontFamily: 'var(--mono,monospace)' }}>{pct}%</span>
-            )}
-          </div>
-        </div>
-      ) : isPlanned && block?.PlannedStart ? (
-        <div style={{ fontSize: 10, color: 'var(--mos-text-soft)', fontFamily: 'var(--mono,monospace)' }}>
-          Starts at {block.PlannedStart}
-        </div>
-      ) : null}
-
-      {/* ROW 5: action buttons + PYQ link */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, paddingTop: 2 }}>
-        {isPlanned && (
-          <button disabled={busy} onClick={() => onStart?.(block.BlockId, { openFocus: true })}
-            style={{ ...B.base, ...B.primary }}>
-            {ctaLabel}
-          </button>
-        )}
-        {isActive && (
-          <>
-            <button disabled={busy} onClick={() => onPause?.(block.BlockId)}
-              style={{ ...B.base, ...B.muted }}>
-              Pause
-            </button>
-            <button disabled={busy} onClick={() => onStop?.(block)}
-              style={{ ...B.base, ...B.stop }}>
-              Stop
-            </button>
-          </>
-        )}
-        {isPaused && (
-          <>
-            <button disabled={busy} onClick={() => onResume?.(block.BlockId)}
-              style={{ ...B.base, ...B.primary }}>
-              Resume
-            </button>
-            <button disabled={busy} onClick={() => onStop?.(block)}
-              style={{ ...B.base, ...B.stop }}>
-              Stop
-            </button>
-          </>
-        )}
-        {pyqNavPath && (
-          <a href={pyqNavPath} target='_blank' rel='noopener noreferrer'
-            style={{ ...B.base, ...B.pyq, marginLeft: 'auto' }}>
-            {pyqLabel}
-          </a>
-        )}
-      </div>
-    </article>
-  );
-}
-
 function normalizeCanonicalBlockStatus(block) {
   return String(
     block?.Status ??
@@ -1326,6 +1128,17 @@ export default function PlanPage() {
   const [ocrApprovalOpen, setOcrApprovalOpen] = useState(false);
   const [ocrDraftBlocks, setOcrDraftBlocks] = useState([]);
   const [ocrPreviewReminderBlocks, setOcrPreviewReminderBlocks] = useState([]);
+
+  // Canonical Study Block Execution System Modals
+  const [addBlockModalOpen, setAddBlockModalOpen] = useState(false);
+  const [quickStartModalOpen, setQuickStartModalOpen] = useState(false);
+  const [completionSheetBlock, setCompletionSheetBlock] = useState(null);
+  const [activeCommentBlock, setActiveCommentBlock] = useState(null);
+  const [activeConflictData, setActiveConflictData] = useState(null);
+  const [carryForwardBlock, setCarryForwardBlock] = useState(null);
+  const [editPlannedBlock, setEditPlannedBlock] = useState(null);
+  const [viewUploadedPhotoOpen, setViewUploadedPhotoOpen] = useState(false);
+  const planPhotoInputRef = useRef(null);
 
   // Phase 8: Knowledge Linkage — PYQ recommendation after block completion
   const [pyqRecommendation, setPyqRecommendation] = useState(null);
@@ -1433,6 +1246,70 @@ export default function PlanPage() {
       id = null;
     };
   }, [currentBlock]);
+
+  const dashboardMetrics = useMemo(() => {
+    let plannedMinutes = 0;
+    let completedActual = 0;
+    let activeNetElapsed = 0;
+
+    for (const b of todayBlocks) {
+      const s = (b.Status || b.status || "").toLowerCase();
+      const planned = Number(b.PlannedMinutes ?? b.planned_minutes ?? b.Minutes ?? 0);
+      const actual = Number(b.ActualMinutes ?? b.actual_minutes ?? 0);
+
+      plannedMinutes += planned;
+
+      if (s === "completed" || s === "done") {
+        completedActual += actual;
+      } else if (s === "active" || s === "studying") {
+        activeNetElapsed += liveElapsedSec > 0 ? Math.floor(liveElapsedSec / 60) : (actual || 0);
+      } else if (s === "paused") {
+        activeNetElapsed += actual > 0 ? actual : 0;
+      }
+    }
+
+    const executedNow = completedActual + activeNetElapsed;
+    const remainingMinutes = Math.max(0, plannedMinutes - executedNow);
+    const executionPercent = plannedMinutes > 0
+      ? Math.min(100, Math.round((executedNow / plannedMinutes) * 100))
+      : 0;
+
+    return {
+      plannedMinutes,
+      completedMinutes: completedActual,
+      studyingMinutes: activeNetElapsed,
+      remainingMinutes,
+      executionPercent,
+    };
+  }, [todayBlocks, liveElapsedSec]);
+
+  const studyingBlocks = useMemo(() => {
+    return todayBlocks.filter((b) => {
+      const s = (b.Status || b.status || "").toLowerCase();
+      return s === "active" || s === "paused";
+    });
+  }, [todayBlocks]);
+
+  const nextBlocks = useMemo(() => {
+    return todayBlocks.filter((b) => {
+      const s = (b.Status || b.status || "").toLowerCase();
+      return s === "planned" || s === "upcoming" || (!s && !b.ActualStart);
+    });
+  }, [todayBlocks]);
+
+  const completedBlocks = useMemo(() => {
+    return todayBlocks.filter((b) => {
+      const s = (b.Status || b.status || "").toLowerCase();
+      return s === "completed" || s === "done";
+    });
+  }, [todayBlocks]);
+
+  const skippedBlocks = useMemo(() => {
+    return todayBlocks.filter((b) => {
+      const s = (b.Status || b.status || "").toLowerCase();
+      return s === "skipped" || s === "missed" || s === "partial" || s === "stopped";
+    });
+  }, [todayBlocks]);
 
   const currentBlockPyqNodeId = useMemo(() => {
     return getPrimaryPyqNodeId(currentBlock);
@@ -1707,6 +1584,21 @@ export default function PlanPage() {
             ActualSubject: b.ActualSubject || "",
             ActualTopic: b.ActualTopic || "",
 
+            plan_comment: b.plan_comment || b.PlanComment || b.planComment || "",
+            PlanComment: b.PlanComment || b.plan_comment || b.planComment || "",
+            study_review: b.study_review || b.StudyReview || b.studyReview || "",
+            StudyReview: b.StudyReview || b.study_review || b.studyReview || "",
+            completion_percent: b.completion_percent ?? b.CompletionPercent ?? b.completionPercent ?? null,
+            CompletionPercent: b.CompletionPercent ?? b.completion_percent ?? b.completionPercent ?? null,
+            quality: b.quality || b.Quality || "",
+            Quality: b.Quality || b.quality || "",
+            custom_topic: b.custom_topic || b.CustomTopic || b.customTopic || "",
+            CustomTopic: b.CustomTopic || b.custom_topic || b.customTopic || "",
+            source: b.source || b.Source || "manual",
+            Source: b.Source || b.source || "manual",
+            parent_block_id: b.parent_block_id || b.ParentBlockId || null,
+            ParentBlockId: b.ParentBlockId || b.parent_block_id || null,
+
             SyllabusTop1Code: normalizeMappingCode(b.MappingCode || ""),
             SyllabusTop1Path: b.MappingPath || "",
 
@@ -1849,6 +1741,21 @@ export default function PlanPage() {
 
   useEffect(() => {
     setReminderState({});
+    // Reset plan photo when navigating dates, then load saved daily image for the date
+    setPlanPhoto(null);
+    setParsedPlan(null);
+
+    fetchWithAuth(`/api/plan/blocks/daily-image?dayKey=${date}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.ok && data.exists && data.image) {
+          setPlanPhoto(data.image.imageData);
+          if (data.image.rawOcrText) {
+            setParsedPlan({ rawText: data.image.rawOcrText });
+          }
+        }
+      })
+      .catch((err) => console.warn("Failed to load daily plan image:", err));
   }, [date]);
 
   useEffect(() => {
@@ -2092,35 +1999,32 @@ export default function PlanPage() {
     await handleStartBlock(blockId, options);
   }
 
-  async function handleStartBlock(blockId, options = {}) {
-    const { openFocus = true } = options;
+  async function handleStartBlock(target, options = {}) {
+    const blockId = typeof target === 'object' && target !== null ? (target.BlockId || target.id) : target;
+    const { openFocus = true, forceStart = false } = options;
 
-    // Single-active enforcement: auto-stop any running block before starting a new one.
-    // Marks it as review_pending (no review popup) so the user can review it later.
+    // NEVER AUTO-COMPLETE AN ACTIVE BLOCK!
+    // Check if another block is currently ACTIVE or PAUSED
     const existingActive = todayBlocks.find(
-      (b) => getEffectiveBlockStatus(b) === BLOCK_STATUS.ACTIVE && b.BlockId !== blockId
+      (b) => {
+        const s = (b.Status || b.status || "").toLowerCase();
+        return (s === "active" || s === "paused") && (b.BlockId !== blockId && b.id !== blockId);
+      }
     );
-    if (existingActive) {
-      setTodayBlocks((prev) =>
-        prev.map((b) =>
-          b.BlockId === existingActive.BlockId ? { ...b, Status: "review_pending" } : b
-        )
-      );
-      setSpotlightOpen(false);
-      // Best-effort backend pause for the stopped block (fire-and-forget)
-      updateBlockAction("pauseBlock", {
-        blockId: existingActive.BlockId,
-        pausedAt: new Date().toISOString(),
-      }).catch(() => {});
+
+    if (existingActive && !forceStart) {
+      // Show confirmation modal with full details
+      const targetBlock = todayBlocks.find((b) => b.BlockId === blockId || b.id === blockId);
+      setActiveConflictData({
+        activeBlock: existingActive,
+        targetBlock: targetBlock || { id: blockId, BlockId: blockId }
+      });
+      return;
     }
 
     const nowIso = new Date().toISOString();
 
     // Mark this block as started SYNCHRONOUSLY before any React state update or await.
-    // The reminder interval reads startedBlocksRef inside its setReminderState updater,
-    // which runs during the render phase — after this synchronous code has already run.
-    // This prevents "Please begin" notifications during the stale-ref window between
-    // handleStartBlock being called and todayBlocksRef.current reflecting the new ACTIVE status.
     startedBlocksRef.current.add(blockId);
 
     if (openFocus) {
@@ -2129,7 +2033,7 @@ export default function PlanPage() {
 
     setTodayBlocks((prev) =>
       prev.map((b) =>
-        b.BlockId === blockId
+        (b.BlockId === blockId || b.id === blockId)
           ? {
             ...b,
             Status: BLOCK_STATUS.ACTIVE,
@@ -2161,6 +2065,15 @@ export default function PlanPage() {
 
       if (out && !out.ok) {
         startedBlocksRef.current.delete(blockId);
+        if (out.code === "ACTIVE_BLOCK_EXISTS") {
+          setSpotlightOpen(false);
+          setActiveConflictData({
+            activeBlock: out.activeBlock || existingActive,
+            targetBlock: { id: blockId, BlockId: blockId }
+          });
+          await loadBlocksForDate(date);
+          return;
+        }
         if (out.code === "STALE_ACTIVE_SESSION") {
           setSpotlightOpen(false);
           setStatus("⚠️ Previous session needs confirmation before a new block can start.");
@@ -2678,7 +2591,7 @@ export default function PlanPage() {
       setOcrApprovalOpen(false);
       setOcrDraftBlocks([]);
       setOcrPreviewReminderBlocks([]);
-      setParsedPlan(null);
+      // Requirement 6: OCR confirmation must NOT delete/replace source image association. Keep parsedPlan or photo reference
       setReminderState({});
 
       await loadBlocksForDate(date);
@@ -2772,6 +2685,298 @@ export default function PlanPage() {
     } finally {
       setBusy(false);
     }
+  }
+
+  /* ---------------- Canonical Study Block Execution Handlers ---------------- */
+  function handleFileSelected(e) {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Read as data URL and persist for this date
+      const reader = new FileReader();
+      reader.onload = (uploadEvent) => {
+        const base64Data = uploadEvent.target?.result;
+        if (base64Data) {
+          setPlanPhoto(base64Data);
+          fetchWithAuth("/api/plan/blocks/daily-image", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              dayKey: date,
+              imageData: base64Data,
+              mimeType: file.type || "image/jpeg"
+            })
+          }).catch((err) => console.warn("Failed to persist daily image:", err));
+        }
+      };
+      reader.readAsDataURL(file);
+
+      // Auto-trigger parse
+      parseSelectedFile(file);
+    }
+  }
+
+  async function parseSelectedFile(file) {
+    if (!file) return;
+    setBusy(true);
+    setStatus("Extracting daily plan with OCR…");
+    try {
+      const out = await parsePlanPhoto(file, date);
+      if (!out?.ok) {
+        setStatus("❌ Could not parse: " + (out?.message || "unknown"));
+        return;
+      }
+      setParsedPlan(out);
+      setReminderState({});
+      autoFillFromParsed(out);
+
+      const parsedItems = Array.isArray(out?.items) ? out.items : [];
+      const draftBlocks = buildTodayBlocksFromParsed(out).map((block, index) => {
+        const src = parsedItems[index] || {};
+        return {
+          ...block,
+          linkedPyqs: src.linkedPyqs || safePyq(),
+          mapped: src.mapped || null,
+          mappedNodes: src.mappedNodes || src?.linkedPyqs?.mappedNodes || [],
+          finalMapping: src.finalMapping || null,
+          nodeId: src.finalMapping?.nodeId || src.syllabusNodeId || "",
+          nodeName: src.finalMapping?.nodeName || "",
+          isApproved: src.finalMapping?.isApproved || false,
+          confidenceBadge: src.finalMapping?.confidenceBadge || src.confidenceBadge || "UNKNOWN",
+          mode: src.mode || block.mode || "",
+          rawText: src.rawText || block.rawText || "",
+          outputExpected: src.outputExpected || block.outputExpected || "",
+          subtopic: src.subtopic || block.subtopic || "",
+          syllabusNodeId: src.syllabusNodeId || src.finalMapping?.nodeId || block.syllabusNodeId || "",
+          planComment: src.planComment || src.plan_comment || block.plan_comment || "",
+          PlanComment: src.planComment || src.plan_comment || block.plan_comment || "",
+        };
+      });
+
+      setOcrDraftBlocks(draftBlocks);
+      const previewBlocks = Array.isArray(out?.reminderEngine?.previewBlocks) ? out.reminderEngine.previewBlocks : [];
+      setOcrPreviewReminderBlocks(previewBlocks);
+      setOcrApprovalOpen(true);
+      setStatus("✅ Plan photo parsed! Review your study blocks below.");
+    } catch (e) {
+      setStatus("❌ Photo parse failed: " + (e?.message || String(e)));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleCreateManualBlock({ subject, topic, subtopic, customTopic, plannedMinutes, planComment, source }) {
+    setBusy(true);
+    try {
+      const res = await fetchWithAuth("/api/plan/blocks", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          dayKey: date,
+          subject,
+          topic,
+          subtopic,
+          customTopic,
+          plannedMinutes,
+          planComment,
+          source: source || "manual",
+        }),
+      });
+      const data = await res.json();
+      if (!data?.ok) {
+        setStatus(`❌ Failed to add study block: ${data?.error || "unknown"}`);
+        return;
+      }
+      setAddBlockModalOpen(false);
+      setStatus("✅ Study block created.");
+      await loadBlocksForDate(date);
+    } catch (err) {
+      console.error("handleCreateManualBlock error:", err);
+      setStatus("❌ Failed to add study block.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleQuickStart({ subject, topic, duration, planComment }) {
+    setBusy(true);
+    try {
+      const res = await fetchWithAuth("/api/plan/blocks/quick-start", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          dayKey: date,
+          subject,
+          topic,
+          duration,
+          planComment,
+        }),
+      });
+      const data = await res.json();
+      if (!data?.ok) {
+        setStatus(`❌ Quick start failed: ${data?.error || "unknown"}`);
+        return;
+      }
+      setQuickStartModalOpen(false);
+      setStatus("⚡ Quick start active! Timer running.");
+      await loadBlocksForDate(date);
+    } catch (err) {
+      console.error("handleQuickStart error:", err);
+      setStatus("❌ Quick start failed.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleFinishBlock({ blockId, dayKey, actualEndTime, actualMinutes, completionPercent, quality, studyReview }) {
+    setBusy(true);
+    try {
+      const res = await fetchWithAuth("/api/plan/blocks/complete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          blockId,
+          dayKey: dayKey || date,
+          actualEndTime,
+          actualMinutes,
+          completionPercent,
+          quality,
+          studyReview,
+        }),
+      });
+      const data = await res.json();
+      if (!data?.ok) {
+        setStatus(`❌ Finish failed: ${data?.error || "unknown"}`);
+        return;
+      }
+      setCompletionSheetBlock(null);
+      setStatus("✅ Study block completed!");
+      await loadBlocksForDate(date);
+    } catch (err) {
+      console.error("handleFinishBlock error:", err);
+      setStatus("❌ Finish block failed.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleCarryForward({ blockId, targetDate, plannedMinutes, planComment }) {
+    setBusy(true);
+    try {
+      const res = await fetchWithAuth("/api/plan/blocks/carry-forward", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          blockId,
+          targetDate,
+          plannedMinutes,
+          planComment,
+        }),
+      });
+      const data = await res.json();
+      if (!data?.ok) {
+        setStatus(`❌ Carry forward failed: ${data?.error || "unknown"}`);
+        return;
+      }
+      setCarryForwardBlock(null);
+      setStatus(`✅ Work carried forward to ${targetDate}.`);
+      await loadBlocksForDate(date);
+    } catch (err) {
+      console.error("handleCarryForward error:", err);
+      setStatus("❌ Carry forward failed.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleSavePlannedPatch(blockId, patch) {
+    setBusy(true);
+    try {
+      const res = await fetchWithAuth("/api/plan/blocks", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          blockId,
+          ...patch,
+        }),
+      });
+      const data = await res.json();
+      if (!data?.ok) {
+        setStatus(`❌ Update failed: ${data?.error || "unknown"}`);
+        return;
+      }
+      setEditPlannedBlock(null);
+      setActiveCommentBlock(null);
+      setStatus("✅ Study block updated.");
+      await loadBlocksForDate(date);
+    } catch (err) {
+      console.error("handleSavePlannedPatch error:", err);
+      setStatus("❌ Update failed.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleDeletePlannedBlock(blockId) {
+    setBusy(true);
+    try {
+      const res = await fetchWithAuth(`/api/plan/blocks?blockId=${encodeURIComponent(blockId)}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!data?.ok) {
+        setStatus(`❌ Delete failed: ${data?.error || "unknown"}`);
+        return;
+      }
+      setEditPlannedBlock(null);
+      setStatus("✅ Study block deleted.");
+      await loadBlocksForDate(date);
+    } catch (err) {
+      console.error("handleDeletePlannedBlock error:", err);
+      setStatus("❌ Delete failed.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleDuplicateBlock(block) {
+    const subject = block.PlannedSubject || block.subject || "Study Block";
+    const topic = block.PlannedTopic || block.topic || block.custom_topic || "";
+    const subtopic = block.subtopic || block.Subtopic || "";
+    const plannedMinutes = Number(block.PlannedMinutes || block.planned_minutes || 60);
+    const planComment = block.plan_comment || block.PlanComment || "";
+    await handleCreateManualBlock({
+      subject,
+      topic,
+      subtopic,
+      customTopic: topic,
+      plannedMinutes,
+      planComment,
+      source: "manual",
+    });
+  }
+
+  async function handleMoveToTomorrow(block) {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const targetDate = tomorrow.toISOString().slice(0, 10);
+    const plannedMinutes = Number(block.PlannedMinutes || block.planned_minutes || 60);
+    const planComment = block.plan_comment || block.PlanComment || "";
+
+    await handleCarryForward({
+      blockId: block.BlockId || block.id,
+      targetDate,
+      plannedMinutes,
+      planComment,
+    });
+  }
+
+  async function handleSkipBlock(blockId) {
+    await handleSavePlannedPatch(blockId, { status: "skipped" });
+  }
+
+  async function handleSaveComment(blockId, text) {
+    // Only update studyReview so planComment remains strictly separated as pre-study intent!
+    await handleSavePlannedPatch(blockId, { studyReview: text });
   }
 
   async function onSaveNightReview() {
@@ -2908,6 +3113,178 @@ export default function PlanPage() {
     <div className="mos-app-container-v2" data-page="plan">
       <div className="mentoros-content-inner">
         <div className="mos-plan-wrapper">
+      <div className="mos-daily-dashboard" style={{
+        background: "var(--bg-surface)",
+        border: "1px solid var(--border-default)",
+        borderRadius: 18,
+        padding: "24px 28px",
+        marginBottom: 24,
+        boxShadow: "0 4px 16px rgba(0,0,0,0.04)"
+      }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16, marginBottom: 20 }}>
+          <div>
+            <div style={{ fontSize: 12, fontWeight: 800, color: "var(--brand-primary)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              DAILY EXECUTION CONTROL
+            </div>
+            <h1 style={{ fontSize: 24, fontWeight: 800, color: "var(--text-primary)", margin: "4px 0 0" }}>
+              TODAY — {formatDashboardDate(date)}
+            </h1>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+            <input
+              ref={planPhotoInputRef}
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handleFileSelected}
+            />
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => planPhotoInputRef.current?.click()}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "10px 16px",
+                borderRadius: 10,
+                border: "1px solid var(--border-default)",
+                background: "var(--bg-surface)",
+                color: "var(--text-primary)",
+                fontSize: 13,
+                fontWeight: 700,
+                cursor: "pointer",
+              }}
+            >
+              📷 Upload Daily Plan
+            </button>
+
+            {planPhoto && (
+              <button
+                type="button"
+                onClick={() => setViewUploadedPhotoOpen(true)}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
+                  padding: "10px 16px",
+                  borderRadius: 10,
+                  border: "1px solid #0A64F5",
+                  background: "rgba(10, 100, 245, 0.08)",
+                  color: "#0A64F5",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                }}
+              >
+                🔍 View Uploaded Plan
+              </button>
+            )}
+
+            <button
+              type="button"
+              onClick={() => setAddBlockModalOpen(true)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "10px 16px",
+                borderRadius: 10,
+                border: "1px solid #16a34a",
+                background: "rgba(22, 163, 74, 0.08)",
+                color: "#16a34a",
+                fontSize: 13,
+                fontWeight: 700,
+                cursor: "pointer",
+              }}
+            >
+              + Add Study Block
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setQuickStartModalOpen(true)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "10px 18px",
+                borderRadius: 10,
+                border: "none",
+                background: "#0A64F5",
+                color: "#ffffff",
+                fontSize: 13,
+                fontWeight: 700,
+                cursor: "pointer",
+                boxShadow: "0 2px 8px rgba(10, 100, 245, 0.3)"
+              }}
+            >
+              ⚡ Quick Start
+            </button>
+          </div>
+        </div>
+
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
+          gap: 12,
+          marginBottom: 20
+        }}>
+          <div style={{ background: "var(--bg-canvas, #f8fafc)", border: "1px solid var(--border-default)", borderRadius: 12, padding: "14px 16px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              Planned Time
+            </div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: "var(--text-primary)", marginTop: 4, fontFamily: "var(--mono, monospace)" }}>
+              {formatMetricDuration(dashboardMetrics.plannedMinutes)}
+            </div>
+          </div>
+
+          <div style={{ background: "var(--bg-canvas, #f8fafc)", border: "1px solid var(--border-default)", borderRadius: 12, padding: "14px 16px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "#16a34a", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              Completed Time
+            </div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: "#16a34a", marginTop: 4, fontFamily: "var(--mono, monospace)" }}>
+              {formatMetricDuration(dashboardMetrics.completedMinutes)}
+            </div>
+          </div>
+
+          <div style={{ background: "var(--bg-canvas, #f8fafc)", border: "1px solid var(--border-default)", borderRadius: 12, padding: "14px 16px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "#0A64F5", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              Currently Studying
+            </div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: "#0A64F5", marginTop: 4, fontFamily: "var(--mono, monospace)" }}>
+              {formatMetricDuration(dashboardMetrics.studyingMinutes)}
+            </div>
+          </div>
+
+          <div style={{ background: "var(--bg-canvas, #f8fafc)", border: "1px solid var(--border-default)", borderRadius: 12, padding: "14px 16px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              Remaining Time
+            </div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: "var(--text-primary)", marginTop: 4, fontFamily: "var(--mono, monospace)" }}>
+              {formatMetricDuration(dashboardMetrics.remainingMinutes)}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 12, fontWeight: 600, color: "var(--text-secondary)", marginBottom: 6 }}>
+            <span>Execution Progress (Executed / Planned Minutes)</span>
+            <span style={{ fontWeight: 800, color: "var(--text-primary)" }}>{dashboardMetrics.executionPercent}%</span>
+          </div>
+          <div style={{ height: 10, borderRadius: 5, background: "var(--border-default)", overflow: "hidden" }}>
+            <div style={{
+              height: "100%",
+              width: `${dashboardMetrics.executionPercent}%`,
+              background: "linear-gradient(90deg, #0A64F5, #16a34a)",
+              borderRadius: 5,
+              transition: "width 0.3s ease"
+            }} />
+          </div>
+        </div>
+      </div>
+
       <HeroSection
         dPre={dPre}
         dMains={dMains}
@@ -2944,99 +3321,136 @@ export default function PlanPage() {
           nowTick={nowTick}
           formatCountdown={formatCountdown}
         />
-          <div className="mos-sequence-card" style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 16, padding: "28px 32px", display: "flex", flexDirection: "column", gap: 16 }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", margin: 0 }}>Today's Sequence</h2>
-              <button onClick={() => setManageTodayOpen(true)} style={{ background: "var(--bg-surface)", color: "var(--text-primary)", border: "1px solid var(--border-default)", borderRadius: 8, padding: "6px 12px", fontWeight: 600, fontSize: 13, cursor: "pointer" }}>Manage Today</button>
+          <div className="mos-sequence-card" style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 16, padding: "24px 28px", display: "flex", flexDirection: "column", gap: 24 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid var(--border-subtle)", paddingBottom: 14 }}>
+              <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", margin: 0 }}>Study Block Execution</h2>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <button
+                  type="button"
+                  onClick={() => setManageTodayOpen(true)}
+                  style={{ background: "transparent", color: "var(--text-secondary)", border: "1px solid var(--border-default)", borderRadius: 8, padding: "6px 12px", fontWeight: 600, fontSize: 13, cursor: "pointer" }}
+                >
+                  Manage Today
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setAddBlockModalOpen(true)}
+                  style={{ background: "var(--brand-primary)", color: "#ffffff", border: "none", borderRadius: 8, padding: "6px 14px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+                >
+                  + Add Block
+                </button>
+              </div>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 8 }}>
-              {todayBlocks.length === 0 && <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>No blocks scheduled.</div>}
-              {todayBlocks.map((block, idx) => {
-                const status = getEffectiveBlockStatus(block).toLowerCase();
-                const isActive = status === "active";
-                const isDone = status === "completed" || status === "done";
+            {/* 1. CURRENTLY STUDYING */}
+            {studyingBlocks.length > 0 && (
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#16a34a" }} />
+                  <h3 style={{ fontSize: 13, fontWeight: 800, color: "#16a34a", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
+                    CURRENTLY STUDYING
+                  </h3>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                  {studyingBlocks.map((block) => (
+                    <StudyBlockCard
+                      key={block.BlockId || block.id}
+                      block={block}
+                      sectionType="studying"
+                      liveElapsedSec={liveElapsedSec}
+                      busy={busy}
+                      onStart={handleStartBlock}
+                      onPause={handlePauseBlock}
+                      onResume={handleResumeBlock}
+                      onFinish={(b) => setCompletionSheetBlock(b)}
+                      onOpenComment={(b) => setActiveCommentBlock(b)}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
 
-                let timelineLabel = "LATER";
-                if (isActive || status === "paused") timelineLabel = "NOW";
-                else if (isDone) timelineLabel = "DONE";
-                else if (status === "missed") timelineLabel = "MISSED";
-                else if (
-                  nextBlock &&
-                  block.BlockId === nextBlock.BlockId
-                ) {
-                  timelineLabel = "NEXT";
-                } else {
-                  const normalizedTimelineStatus =
-                    normalizeCanonicalBlockStatus(block);
-
-                  if (
-                    normalizedTimelineStatus === "planned" ||
-                    normalizedTimelineStatus === "upcoming"
-                  ) {
-                    timelineLabel = "READY";
-                  }
-                }
-
-                return (
-                  <div key={idx} style={{
-                    display: "flex",
-                    gap: 16,
-                    background: isActive ? "var(--brand-primary-soft)" : "transparent",
-                    border: isActive ? "1px solid var(--border-subtle)" : "1px solid transparent",
-                    borderRadius: 12,
-                    padding: isActive ? "16px" : "8px 16px",
-                    opacity: isDone ? 0.75 : 1
-                  }}>
-                    <div style={{ width: 48, flexShrink: 0, fontSize: 12, fontWeight: 700, color: isActive ? "var(--brand-primary)" : "var(--text-secondary)", display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-                      <span>{timelineLabel}</span>
-                      <div style={{ width: 2, flex: 1, background: isActive ? "var(--brand-primary)" : "var(--border-default)", borderRadius: 2 }} />
-                    </div>
-
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
-                        <div style={{ fontSize: 16, fontWeight: 600, color: "var(--text-primary)" }}>
-                          {block.PlannedSubject || "Study Block"}
-                        </div>
-                        {isActive && (
-                          <div style={{ padding: "4px 10px", background: "var(--brand-primary)", color: "#FFFFFF", fontSize: 11, fontWeight: 700, borderRadius: 12, letterSpacing: "0.05em" }}>
-                            ACTIVE
-                          </div>
-                        )}
-                      </div>
-
-                      <div style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: isActive ? 12 : 0 }}>
-                        <div className="sequence-time" style={{ fontFamily: 'var(--mono,monospace)', marginBottom: 2 }}>
-                          {getBlockTimeRange(block)}
-                        </div>
-                        <div>{block.PlannedTopic && block.PlannedTopic !== "N/A" ? `${block.PlannedTopic} • ` : ""}{block.PlannedMinutes} min</div>
-                      </div>
-
-                      {isActive && (
-                        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                          <div style={{ flex: 1, height: 6, borderRadius: 3, background: "var(--border-default)", overflow: "hidden" }}>
-                            <div style={{ width: "40%", height: "100%", background: "var(--brand-primary)" }} />
-                          </div>
-                          <div style={{ color: "var(--brand-primary)", cursor: "pointer", fontWeight: 600 }}>›</div>
-                        </div>
-                      )}
-
-                      {block.RequiresRecovery && (
-                        <button
-                          onClick={() => {
-                            setStaleBlockData(block);
-                            setStaleRecoveryModalOpen(true);
-                          }}
-                          style={{ marginTop: 8, background: "var(--brand-primary)", color: "white", padding: "6px 12px", borderRadius: 6, border: "none", fontWeight: 600, cursor: "pointer", fontSize: 13 }}
-                        >
-                          Resolve session
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
+            {/* 2. NEXT • PLANNED BLOCKS */}
+            <div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                <h3 style={{ fontSize: 13, fontWeight: 800, color: "var(--text-primary)", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
+                  NEXT • PLANNED BLOCKS ({nextBlocks.length})
+                </h3>
+              </div>
+              {nextBlocks.length === 0 ? (
+                <div style={{
+                  background: "var(--bg-canvas, #f8fafc)",
+                  border: "1px dashed var(--border-default)",
+                  borderRadius: 14,
+                  padding: "20px",
+                  textAlign: "center",
+                  color: "var(--text-secondary)",
+                  fontSize: 14
+                }}>
+                  No upcoming study blocks. Tap <strong>+ Add Study Block</strong> or <strong>Upload Daily Plan</strong> to add blocks.
+                </div>
+              ) : (
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {nextBlocks.map((block) => (
+                    <StudyBlockCard
+                      key={block.BlockId || block.id}
+                      block={block}
+                      sectionType="next"
+                      busy={busy}
+                      onStart={(b) => handleStartBlock(b?.BlockId || b?.id || b, { openFocus: false })}
+                      onEdit={(b) => setEditPlannedBlock(b)}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
+
+            {/* 3. COMPLETED BLOCKS */}
+            {completedBlocks.length > 0 && (
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                  <span style={{ fontSize: 14 }}>✅</span>
+                  <h3 style={{ fontSize: 13, fontWeight: 800, color: "var(--text-primary)", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
+                    COMPLETED ({completedBlocks.length})
+                  </h3>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {completedBlocks.map((block) => (
+                    <StudyBlockCard
+                      key={block.BlockId || block.id}
+                      block={block}
+                      sectionType="completed"
+                      busy={busy}
+                      onEditReview={(b) => setCompletionSheetBlock(b)}
+                      onCarryForward={(b) => setCarryForwardBlock(b)}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 4. OTHER / STOPPED / SKIPPED */}
+            {skippedBlocks.length > 0 && (
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                  <span style={{ fontSize: 14 }}>⏸️</span>
+                  <h3 style={{ fontSize: 13, fontWeight: 800, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
+                    OTHER / STOPPED / SKIPPED ({skippedBlocks.length})
+                  </h3>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {skippedBlocks.map((block) => (
+                    <StudyBlockCard
+                      key={block.BlockId || block.id}
+                      block={block}
+                      sectionType="skipped"
+                      busy={busy}
+                      onCarryForward={(b) => setCarryForwardBlock(b)}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
       </div>
 
@@ -3568,6 +3982,21 @@ export default function PlanPage() {
                             }
                           />
                         </label>
+
+                        <label className="mos-ocr-field-label mos-ocr-field-label--comment" style={{ gridColumn: "1 / -1", marginTop: 8 }}>
+                          <span>Plan Comment (Intent)</span>
+                          <input
+                            placeholder="What do you intend to complete in this block?"
+                            value={block.planComment || block.PlanComment || block.plan_comment || ""}
+                            onChange={(e) =>
+                              updateOcrDraftBlock(index, {
+                                planComment: e.target.value,
+                                PlanComment: e.target.value,
+                                plan_comment: e.target.value,
+                              })
+                            }
+                          />
+                        </label>
                       </div>
 
                       {renderPyqPanel(block)}
@@ -3579,7 +4008,7 @@ export default function PlanPage() {
 
             <footer className="mos-ocr-review-footer">
               <div className="mos-ocr-review-footer-note">
-                Review complete? Approving saves these blocks to today&apos;s execution plan.
+                Review complete? Confirming saves these blocks as canonical study blocks.
               </div>
 
               <div className="mos-ocr-review-footer-actions">
@@ -3605,10 +4034,158 @@ export default function PlanPage() {
                   className="mos-ocr-btn-primary"
                   onClick={handleApproveOcrBlocks}
                 >
-                  {busy ? "Processing…" : "Approve & Continue"}
+                  {busy ? "Processing…" : "Confirm All"}
                 </button>
               </div>
             </footer>
+          </div>
+        </div>
+      )}
+
+      {/* Canonical Study Block Execution System Modals */}
+      <AddStudyBlockModal
+        open={addBlockModalOpen}
+        onClose={() => setAddBlockModalOpen(false)}
+        onAdd={handleCreateManualBlock}
+        onAddBlock={handleCreateManualBlock}
+        existingBlocks={todayBlocks}
+        busy={busy}
+      />
+
+      <QuickStartModal
+        open={quickStartModalOpen}
+        onClose={() => setQuickStartModalOpen(false)}
+        onQuickStart={handleQuickStart}
+        existingBlocks={todayBlocks}
+        busy={busy}
+      />
+
+      <CompletionSheetModal
+        open={!!completionSheetBlock}
+        block={completionSheetBlock}
+        onClose={() => setCompletionSheetBlock(null)}
+        onComplete={handleFinishBlock}
+        busy={busy}
+      />
+
+      <ActiveCommentModal
+        open={!!activeCommentBlock}
+        block={activeCommentBlock}
+        onClose={() => setActiveCommentBlock(null)}
+        onSaveComment={(text) => activeCommentBlock && handleSaveComment(activeCommentBlock.BlockId || activeCommentBlock.id, text)}
+        busy={busy}
+      />
+
+      {/* Active Conflict Modal (Never Auto-Complete Active Block) */}
+      <ActiveConflictModal
+        open={!!activeConflictData}
+        activeBlock={activeConflictData?.activeBlock}
+        targetBlock={activeConflictData?.targetBlock}
+        onKeepStudying={() => setActiveConflictData(null)}
+        onPauseAndStartNew={async () => {
+          if (!activeConflictData?.activeBlock || !activeConflictData?.targetBlock) return;
+          const activeBid = activeConflictData.activeBlock.BlockId || activeConflictData.activeBlock.id;
+          const targetBid = activeConflictData.targetBlock.BlockId || activeConflictData.targetBlock.id;
+          setBusy(true);
+          try {
+            await handlePauseBlock(activeBid);
+            setActiveConflictData(null);
+            await handleStartBlock(targetBid, { forceStart: true });
+          } catch (err) {
+            console.error("Pause and start new failed:", err);
+          } finally {
+            setBusy(false);
+          }
+        }}
+        onFinishCurrentFirst={() => {
+          const activeB = activeConflictData?.activeBlock;
+          setActiveConflictData(null);
+          if (activeB) {
+            setCompletionSheetBlock(activeB);
+          }
+        }}
+        busy={busy}
+      />
+
+      <CarryForwardModal
+        open={!!carryForwardBlock}
+        block={carryForwardBlock}
+        onClose={() => setCarryForwardBlock(null)}
+        onCarryForward={handleCarryForward}
+        busy={busy}
+      />
+
+      <EditPlannedBlockModal
+        open={!!editPlannedBlock}
+        block={editPlannedBlock}
+        onClose={() => setEditPlannedBlock(null)}
+        onSavePatch={(patch) => editPlannedBlock && handleSavePlannedPatch(editPlannedBlock.BlockId || editPlannedBlock.id, patch)}
+        onDuplicate={() => editPlannedBlock && handleDuplicateBlock(editPlannedBlock)}
+        onMoveToTomorrow={() => editPlannedBlock && handleMoveToTomorrow(editPlannedBlock)}
+        onSkip={() => editPlannedBlock && handleSkipBlock(editPlannedBlock.BlockId || editPlannedBlock.id)}
+        onDelete={() => editPlannedBlock && handleDeletePlannedBlock(editPlannedBlock.BlockId || editPlannedBlock.id)}
+        busy={busy}
+      />
+
+      {/* Preserve Original Plan Photo View Modal (Section 14) */}
+      {viewUploadedPhotoOpen && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(15, 23, 42, 0.85)",
+            backdropFilter: "blur(6px)",
+            zIndex: 1400,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 20,
+          }}
+          onClick={() => setViewUploadedPhotoOpen(false)}
+        >
+          <div
+            style={{
+              background: "#ffffff",
+              borderRadius: 18,
+              maxWidth: 900,
+              width: "100%",
+              maxHeight: "90vh",
+              display: "flex",
+              flexDirection: "column",
+              overflow: "hidden",
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 24px", borderBottom: "1px solid #e2e8f0" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 18 }}>📷</span>
+                <h3 style={{ fontSize: 16, fontWeight: 700, margin: 0, color: "#0f172a" }}>Original Uploaded Daily Plan</h3>
+              </div>
+              <button
+                onClick={() => setViewUploadedPhotoOpen(false)}
+                style={{ background: "transparent", border: "none", fontSize: 20, cursor: "pointer", color: "#64748b" }}
+              >
+                ✕
+              </button>
+            </div>
+            <div style={{ padding: 20, overflowY: "auto", display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
+              {planPhoto && (
+                <img
+                  src={planPhoto instanceof File ? URL.createObjectURL(planPhoto) : planPhoto}
+                  alt="Uploaded Daily Plan"
+                  style={{ maxWidth: "100%", maxHeight: "65vh", objectFit: "contain", borderRadius: 8, border: "1px solid #cbd5e1" }}
+                />
+              )}
+              {parsedPlan?.rawText && (
+                <div style={{ width: "100%", background: "#f8fafc", padding: 12, borderRadius: 8, fontSize: 12, color: "#334155" }}>
+                  <strong>Extracted Plan Text:</strong>
+                  <pre style={{ margin: "6px 0 0", whiteSpace: "pre-wrap", fontFamily: "var(--mono, monospace)" }}>
+                    {parsedPlan.rawText}
+                  </pre>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

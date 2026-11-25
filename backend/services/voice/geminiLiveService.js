@@ -53,7 +53,7 @@ export class GeminiLiveService {
       outboundModel = `models/${outboundModel}`;
     }
 
-    console.log(`[GeminiLive] Session Init - configured GEMINI_LIVE_MODEL: "${configuredModel}", exact outbound model: "${outboundModel}", voice: "${this.voiceName}", provider: "gemini"`);
+    console.log(`[SPK-2] Gemini session created - outbound model: "${outboundModel}", voice: "${this.voiceName}"`);
 
     this.ws = new WebSocket(url);
 
@@ -85,6 +85,8 @@ export class GeminiLiveService {
     if (!modelName.startsWith('models/')) {
       modelName = `models/${modelName}`;
     }
+
+    console.log(`[SPK-3] AUDIO modality configured: responseModalities=['AUDIO'], voiceName='${this.voiceName}'`);
 
     const setupPayload = {
       setup: {
@@ -118,9 +120,23 @@ export class GeminiLiveService {
   handleServerMessage(rawData) {
     try {
       const msg = JSON.parse(rawData.toString());
+      const msgKeys = Object.keys(msg);
+      const sc = msg.serverContent;
+      const scKeys = sc ? Object.keys(sc) : [];
+
+      console.log('[SPK-7] Gemini event received:', {
+        keys: msgKeys,
+        serverContentKeys: scKeys,
+        modelTurnExists: Boolean(sc?.modelTurn),
+        partsCount: sc?.modelTurn?.parts?.length || 0,
+        generationComplete: Boolean(sc?.generationComplete),
+        turnComplete: Boolean(sc?.turnComplete),
+        interrupted: Boolean(sc?.interrupted),
+        hasError: Boolean(msg.error)
+      });
 
       if (msg.setupComplete) {
-        console.log('[VOICE DEBUG] Gemini session ready');
+        console.log('[GeminiLive] Setup complete. Ready for speech/audio.');
         this.isSetupComplete = true;
         this.emit({ type: 'ready' });
 
@@ -134,11 +150,11 @@ export class GeminiLiveService {
 
       // Voice Activity signals
       if (msg.serverContent?.activityStart || msg.activityStart) {
-        console.log('[VOICE DEBUG] activity start');
+        console.log('[MIC-G] Gemini activityStart / speech start received');
         this.emit({ type: 'activity_start' });
       }
       if (msg.serverContent?.activityEnd || msg.activityEnd) {
-        console.log('[VOICE DEBUG] activity end');
+        console.log('[MIC-I] Gemini activityEnd / speech end received');
         this.emit({ type: 'activity_end' });
       }
 
@@ -148,31 +164,29 @@ export class GeminiLiveService {
         const text = interimObj.text || '';
         if (text) {
           this.interimTranscript = text;
-          console.log(`[VOICE DEBUG] input transcription partial: "${text}"`);
+          console.log(`[MIC-H] Gemini partial input transcription received: "${text}"`);
           this.emit({ type: 'interim_transcript', text });
         }
       }
 
-      // Finalized Input Transcription (Canonical Moulika Utterance)
+      // Finalized Input Transcription (Canonical User Utterance)
       const finalObj = msg.serverContent?.inputTranscription || msg.inputTranscription;
       if (finalObj && finalObj.text !== undefined) {
         const text = (finalObj.text || this.interimTranscript || '').trim();
         this.interimTranscript = '';
         if (text) {
-          console.log(`[VOICE DEBUG] input transcription final: "${text}"`);
+          console.log(`[MIC-J] Gemini FINAL input transcription received: "${text}"`);
           this.emit({ type: 'final_transcript', text });
         }
       }
 
       // Server Content (Audio streaming, Interruption, Turn Complete)
       if (msg.serverContent) {
-        const sc = msg.serverContent;
-
         // Fallback userTurn check if inputTranscription was missing
         if (sc.userTurn?.parts) {
           for (const part of sc.userTurn.parts) {
             if (part.text) {
-              console.log(`[VOICE DEBUG] userTurn text fallback: "${part.text}"`);
+              console.log(`[GeminiLive] UserTurn text fallback: "${part.text}"`);
               this.emit({ type: 'final_transcript', text: part.text });
             }
           }
@@ -181,31 +195,42 @@ export class GeminiLiveService {
         // Native Barge-in / Interruption
         if (sc.interrupted === true) {
           console.log('[GeminiLive] Native serverContent.interrupted triggered! Halting audio.');
+          this.isMentorSpeaking = false;
           this.emit({ type: 'interrupted' });
         }
 
         // Audio model turn chunks (24kHz PCM)
         if (sc.modelTurn?.parts) {
-          for (const part of sc.modelTurn.parts) {
+          const partsCount = sc.modelTurn.parts.length;
+          for (let pIdx = 0; pIdx < partsCount; pIdx++) {
+            const part = sc.modelTurn.parts[pIdx];
             if (part.inlineData && part.inlineData.data) {
+              const mimeType = part.inlineData.mimeType || 'audio/pcm;rate=24000';
+              const byteLen = part.inlineData.data.length;
+              console.log(`[GeminiLive] modelTurn part[${pIdx}]: mimeType=${mimeType}, base64Bytes=${byteLen}`);
               this.emit({
                 type: 'audio_chunk',
                 data: part.inlineData.data,
-                mimeType: part.inlineData.mimeType || 'audio/pcm;rate=24000'
+                mimeType
               });
+            }
+            if (part.text) {
+              console.log(`[GeminiLive] modelTurn text part[${pIdx}]: "${part.text}"`);
             }
           }
         }
 
         // Turn complete
         if (sc.turnComplete === true) {
-          console.log('[VOICE DEBUG] turn complete');
+          console.log('[GeminiLive] Turn complete received from Gemini Live.');
+          this.isMentorSpeaking = false;
           this.emit({ type: 'turn_complete' });
         }
       }
 
       // Token Usage Metadata (Persist to mentor_ai_usage)
       if (msg.usageMetadata) {
+        console.log(`[GeminiLive] Usage metadata received: prompt=${msg.usageMetadata.promptTokenCount}, response=${msg.usageMetadata.responseTokenCount}`);
         recordGeminiLiveUsage({
           userId: this.userId,
           sessionId: this.sessionId,
@@ -234,16 +259,19 @@ export class GeminiLiveService {
       return;
     }
 
+    // Suppress mic streaming while Mentor is actively speaking to prevent self-interruption
+    if (this.isMentorSpeaking) {
+      return;
+    }
+
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
       const base64Data = buffer.toString('base64');
       const payload = {
         realtimeInput: {
-          mediaChunks: [
-            {
-              mimeType: 'audio/pcm;rate=16000',
-              data: base64Data
-            }
-          ]
+          audio: {
+            data: base64Data,
+            mimeType: 'audio/pcm;rate=16000'
+          }
         }
       };
       this.ws.send(JSON.stringify(payload));
@@ -251,11 +279,22 @@ export class GeminiLiveService {
       this.forwardedChunks++;
       this.forwardedBytes += buffer.length;
 
-      const now = Date.now();
-      if (now - this.lastForwardLogTime >= 2000) {
-        this.lastForwardLogTime = now;
-        console.log(`[VOICE DEBUG] audio forwarded: chunks=${this.forwardedChunks}, bytes=${this.forwardedBytes}`);
+      if (this.forwardedChunks === 1 || this.forwardedChunks % 10 === 0) {
+        console.log(`[MIC-F] geminiLiveService sent realtimeInput audio (chunk #${this.forwardedChunks}, bytes=${buffer.length}, totalForwarded=${this.forwardedBytes})`);
       }
+    }
+  }
+
+  sendAudioStreamEnd() {
+    if (!this.isConnected || !this.isSetupComplete) return;
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      console.log('[END-2] audioStreamEnd sent to Gemini Live');
+      const payload = {
+        realtimeInput: {
+          audioStreamEnd: true
+        }
+      };
+      this.ws.send(JSON.stringify(payload));
     }
   }
 
@@ -268,7 +307,8 @@ export class GeminiLiveService {
       return;
     }
 
-    console.log(`[GeminiLive] Supplying authoritative mentor reply to speak: "${mentorReplyText}"`);
+    console.log(`[SPK-4] speakMentorText entered: text="${mentorReplyText}"`);
+    this.isMentorSpeaking = true;
 
     const payload = {
       clientContent: {
@@ -277,7 +317,7 @@ export class GeminiLiveService {
             role: 'user',
             parts: [
               {
-                text: `[AUTHORITATIVE_MENTOR_DECISION]:\n${mentorReplyText}\n\nSpoken Delivery Instruction: Speak this authoritative mentor advice to Moulika faithfully, warmly, and concisely in natural voice.`
+                text: mentorReplyText
               }
             ]
           }
@@ -286,10 +326,13 @@ export class GeminiLiveService {
       }
     };
 
+    console.log(`[SPK-5] text submitted to clientContent payload: ${JSON.stringify(payload)}`);
     this.ws.send(JSON.stringify(payload));
+    console.log('[SPK-6] turn submitted/completed (turnComplete: true)');
   }
 
   interrupt() {
+    this.isMentorSpeaking = false;
     this.emit({ type: 'interrupted' });
   }
 

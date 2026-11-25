@@ -67,6 +67,9 @@ import answerWritingRoutes from "./routes/answerWritingRoutes.js";
 import air1ReviewRoutes from "./routes/air1ReviewRoutes.js";
 import mainsPatternRoutes from "./routes/mainsPatternRoutes.js";
 import mainsRecommendationRoutes from "./routes/mainsRecommendationRoutes.js";
+import evidenceRoutes from "./routes/evidenceRoutes.js";
+import visualKnowledgeRoutes from "./routes/visualKnowledgeRoutes.js";
+import currentAffairsRoutes from "./routes/currentAffairsRoutes.js";
 import {
   computeSyllabusProgress,
 } from "./brain/syllabusProgressEngine.js";
@@ -725,6 +728,9 @@ app.use("/api/revision", revisionRoutes);   // alias — same router, both paths
 app.use("/api/weakness", weaknessRoutes);
 app.use("/api/pyq", pyqExplanationRoutes);
 app.use("/api/subject-pyq", subjectPyqRoutes);
+app.use("/api/evidence", evidenceRoutes);
+app.use("/api/visual-knowledge", visualKnowledgeRoutes);
+app.use("/api/current-affairs", currentAffairsRoutes);
 
 //  Plan block lifecycle (PostgreSQL-backed, transaction-safe) 
 app.use("/api/plan/blocks", planBlockRoutes);
@@ -2148,6 +2154,33 @@ app.post("/api/sheets", requireAuth, async (req, res) => {
       }
     }
 
+    if (action === "carryForwardBlock") {
+      const p = payload.payload || payload;
+      const blockId = p.blockId || p.BlockId;
+      const targetDayKey = p.targetDayKey;
+      try {
+        const { carryForwardStudyBlock } = await import("./services/blockLifecycleService.js");
+        const block = await carryForwardStudyBlock(userId, blockId, targetDayKey, p);
+        return res.json({ ok: true, block });
+      } catch (err) {
+        console.error("[sheets interceptor carryForwardBlock]", err.message);
+        return res.status(err.status || 500).json({ ok: false, message: err.message });
+      }
+    }
+
+    if (action === "quickStartBlock") {
+      const p = payload.payload || payload;
+      const dayKey = p.dayKey || payload.date || new Date().toISOString().slice(0, 10);
+      try {
+        const { quickStartStudyBlock } = await import("./services/blockLifecycleService.js");
+        const block = await quickStartStudyBlock(userId, dayKey, p.blockData || p);
+        return res.json({ ok: true, block });
+      } catch (err) {
+        console.error("[sheets interceptor quickStartBlock]", err.message);
+        return res.status(err.status || 500).json({ ok: false, message: err.message });
+      }
+    }
+
     // ── INTERCEPT: lifecycle → PostgreSQL ────────────────────────────────────
     if (LIFECYCLE_ACTIONS.has(action)) {
       const p = payload.payload || {};   // frontend wraps args in payload.payload
@@ -2185,7 +2218,14 @@ app.post("/api/sheets", requireAuth, async (req, res) => {
         } else if (action === "completeBlock" || action === "markDone") {
           console.log(`[PlanUI] action=${action} blockId=${blockId}`);
           const reason = p.completionStatus || p.reason || "completed";
-          block = await dbCompleteBlock(userId, blockId, dayKey, { reason, actualMinutes: p.actualMinutes });
+          block = await dbCompleteBlock(userId, blockId, dayKey, {
+            reason,
+            actualMinutes: p.actualMinutes,
+            actualEndTime: p.actualEndTime || p.endedAt,
+            studyReview: p.studyReview || p.study_review,
+            completionPercent: p.completionPercent !== undefined ? p.completionPercent : p.completion_percent,
+            quality: p.quality
+          });
           syncBlockToCalendar(block, "complete").catch(() => {});
         } else if (action === "markMissed") {
           console.log(`[PlanUI] action=markMissed blockId=${blockId}`);
@@ -2212,6 +2252,7 @@ app.post("/api/sheets", requireAuth, async (req, res) => {
         console.error(`[sheets interceptor ${action}]`, err.message);
         const status = err.code === "RACE_CONDITION" ? 409
                      : err.code === "STALE_ACTIVE_SESSION" ? 409
+                     : err.code === "ACTIVE_BLOCK_EXISTS" ? 409
                      : err.code === "INVALID_TRANSITION" ? 422
                      : err.code === "PROOF_REQUIRED" ? 422
                      : 500;
@@ -2220,6 +2261,9 @@ app.post("/api/sheets", requireAuth, async (req, res) => {
         };
         if (err.code === 'STALE_ACTIVE_SESSION' && err.staleBlock) {
           payloadOut.staleBlock = err.staleBlock;
+        }
+        if (err.code === 'ACTIVE_BLOCK_EXISTS' && err.activeBlock) {
+          payloadOut.activeBlock = err.activeBlock;
         }
         return res.status(status).json(payloadOut);
       }
@@ -2963,6 +3007,10 @@ console.log("[BOOT] about to listen", { HOST, PORT });
 server.listen(PORT, HOST, () => {
   console.log('[DEPLOY_VERSION] plan-save-postcommit-source-id-v2');
   console.log(`backend running on http://${HOST}:${PORT}`);
+  console.log('[VOICE BUILD]');
+  console.log('geminiLiveService file:', path.resolve(__dirname, './services/voice/geminiLiveService.js'));
+  console.log('mentorVoiceGateway file:', path.resolve(__dirname, './services/voice/mentorVoiceGateway.js'));
+  console.log('startup timestamp:', new Date().toISOString());
   
   // Start system health heartbeat checker
   healthMonitor.startHeartbeatAlerts();

@@ -18,6 +18,11 @@ export default defineConfig({
         secure: true,
         rewrite: (path) => path.replace(/^\/api\/script/, "/exec"),
       },
+      "/api": {
+        target: "http://localhost:8787",
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 });
