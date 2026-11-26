@@ -14,7 +14,7 @@ function formatDuration(minutes) {
   if (m < 60) return `${m}m`;
   const hrs = Math.floor(m / 60);
   const rem = m % 60;
-  return rem > 0 ? `${hrs}h${rem}m` : `${hrs}h`;
+  return rem > 0 ? `${hrs}h ${rem}m` : `${hrs}h`;
 }
 
 function formatElapsedTimer(seconds) {
@@ -59,11 +59,15 @@ export default function StudyBlockCard({
     return (
       <div
         style={{
-          background: "linear-gradient(145deg, #ffffff, #f0fdf4)",
-          border: isPaused ? "2px solid #eab308" : "2px solid #16a34a",
+          background: isPaused
+            ? "linear-gradient(145deg, var(--bg-surface), rgba(234, 179, 8, 0.08))"
+            : "linear-gradient(145deg, var(--bg-surface), rgba(34, 197, 94, 0.08))",
+          border: isPaused ? "2px solid var(--warning, #eab308)" : "2px solid var(--success, #16a34a)",
           borderRadius: 18,
           padding: "20px 24px",
-          boxShadow: isPaused ? "0 10px 25px rgba(234, 179, 8, 0.15)" : "0 10px 25px rgba(22, 163, 74, 0.15)",
+          boxShadow: isPaused
+            ? "0 8px 24px rgba(234, 179, 8, 0.12)"
+            : "0 8px 24px rgba(22, 163, 74, 0.12)",
           display: "flex",
           flexDirection: "column",
           gap: 14,
@@ -73,7 +77,7 @@ export default function StudyBlockCard({
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 10 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-              <span style={{ fontSize: 13, fontWeight: 800, color: isPaused ? "#b45309" : "#15803d", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              <span style={{ fontSize: 13, fontWeight: 800, color: isPaused ? "var(--warning, #eab308)" : "var(--success, #16a34a)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                 {subject}
               </span>
               <span
@@ -86,47 +90,47 @@ export default function StudyBlockCard({
                   fontSize: 10,
                   fontWeight: 800,
                   letterSpacing: "0.08em",
-                  background: isPaused ? "rgba(234, 179, 8, 0.15)" : "rgba(22, 163, 74, 0.15)",
-                  color: isPaused ? "#b45309" : "#16a34a"
+                  background: isPaused ? "rgba(234, 179, 8, 0.15)" : "rgba(34, 197, 94, 0.15)",
+                  color: isPaused ? "var(--warning, #eab308)" : "var(--success, #16a34a)"
                 }}
               >
-                <span style={{ width: 6, height: 6, borderRadius: "50%", background: isPaused ? "#eab308" : "#16a34a" }} />
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: isPaused ? "var(--warning, #eab308)" : "var(--success, #16a34a)" }} />
                 {isPaused ? "PAUSED" : "LIVE"}
               </span>
             </div>
 
-            <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0f172a", margin: 0 }}>
+            <h3 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", margin: 0 }}>
               {topic}
-              {subtopic && <span style={{ color: "#64748b", fontWeight: 600 }}> → {subtopic}</span>}
+              {subtopic && <span style={{ color: "var(--text-secondary)", fontWeight: 600 }}> → {subtopic}</span>}
             </h3>
           </div>
 
           <div style={{ textAlign: "right" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#64748b", textTransform: "uppercase" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase" }}>
               Target: {formatDuration(plannedMinutes)}
             </div>
-            <div style={{ fontSize: 12, color: "#475569", marginTop: 2 }}>
+            <div style={{ fontSize: 12, color: "var(--text-secondary)", marginTop: 2 }}>
               Started: <strong>{formatClockTime(startedAt)}</strong>
             </div>
           </div>
         </div>
 
         {/* Big Live Elapsed Counter */}
-        <div style={{ display: "flex", alignItems: "baseline", gap: 12, background: "rgba(255, 255, 255, 0.7)", padding: "12px 18px", borderRadius: 12, border: "1px solid rgba(22, 163, 74, 0.2)" }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase" }}>Elapsed</div>
-          <div style={{ fontFamily: "var(--mono, monospace)", fontSize: 26, fontWeight: 800, color: isPaused ? "#b45309" : "#16a34a", letterSpacing: "0.04em" }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 12, background: "var(--bg-subtle)", padding: "12px 18px", borderRadius: 12, border: "1px solid var(--border-subtle)" }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase" }}>Elapsed</div>
+          <div style={{ fontFamily: "var(--mono, monospace)", fontSize: 26, fontWeight: 800, color: isPaused ? "var(--warning, #eab308)" : "var(--success, #16a34a)", letterSpacing: "0.04em" }}>
             {formatElapsedTimer(liveElapsedSec)}
           </div>
           {isPaused && (
-            <span style={{ fontSize: 12, color: "#b45309", fontWeight: 600 }}>(Timer paused)</span>
+            <span style={{ fontSize: 12, color: "var(--warning, #eab308)", fontWeight: 600 }}>(Timer paused)</span>
           )}
         </div>
 
         {/* Plan Comment or live notes */}
         {(planComment || studyReview) && (
-          <div style={{ fontSize: 13, color: "#334155", background: "#f8fafc", padding: "8px 12px", borderRadius: 8, borderLeft: "3px solid #0A64F5" }}>
-            {planComment && <div><span style={{ fontWeight: 700, color: "#0A64F5" }}>Plan: </span>{planComment}</div>}
-            {studyReview && <div style={{ marginTop: 4 }}><span style={{ fontWeight: 700, color: "#16a34a" }}>Note: </span>{studyReview}</div>}
+          <div style={{ fontSize: 13, color: "var(--text-primary)", background: "var(--bg-subtle)", padding: "10px 14px", borderRadius: 8, borderLeft: "3px solid var(--brand-primary)" }}>
+            {planComment && <div><span style={{ fontWeight: 700, color: "var(--brand-primary)" }}>Plan: </span>{planComment}</div>}
+            {studyReview && <div style={{ marginTop: 4 }}><span style={{ fontWeight: 700, color: "var(--success, #16a34a)" }}>Note: </span>{studyReview}</div>}
           </div>
         )}
 
@@ -139,9 +143,9 @@ export default function StudyBlockCard({
             style={{
               padding: "8px 14px",
               borderRadius: 8,
-              border: "1px solid #cbd5e1",
-              background: "#ffffff",
-              color: "#334155",
+              border: "1px solid var(--border-default)",
+              background: "var(--bg-subtle)",
+              color: "var(--text-primary)",
               fontSize: 13,
               fontWeight: 600,
               cursor: "pointer"
@@ -158,9 +162,9 @@ export default function StudyBlockCard({
               style={{
                 padding: "8px 16px",
                 borderRadius: 8,
-                border: "1px solid #16a34a",
-                background: "rgba(22, 163, 74, 0.1)",
-                color: "#15803d",
+                border: "1px solid var(--success, #16a34a)",
+                background: "rgba(34, 197, 94, 0.12)",
+                color: "var(--success, #16a34a)",
                 fontSize: 13,
                 fontWeight: 700,
                 cursor: "pointer"
@@ -176,9 +180,9 @@ export default function StudyBlockCard({
               style={{
                 padding: "8px 16px",
                 borderRadius: 8,
-                border: "1px solid #eab308",
-                background: "rgba(234, 179, 8, 0.1)",
-                color: "#b45309",
+                border: "1px solid var(--warning, #eab308)",
+                background: "rgba(234, 179, 8, 0.12)",
+                color: "var(--warning, #eab308)",
                 fontSize: 13,
                 fontWeight: 700,
                 cursor: "pointer"
@@ -196,7 +200,7 @@ export default function StudyBlockCard({
               padding: "8px 22px",
               borderRadius: 8,
               border: "none",
-              background: "#16a34a",
+              background: "var(--success, #16a34a)",
               color: "#ffffff",
               fontSize: 13,
               fontWeight: 700,
@@ -217,42 +221,42 @@ export default function StudyBlockCard({
     return (
       <div
         style={{
-          background: "#ffffff",
-          border: "1px solid #e2e8f0",
+          background: "var(--bg-surface)",
+          border: "1px solid var(--border-subtle)",
           borderRadius: 16,
           padding: "16px 20px",
           display: "flex",
           flexDirection: "column",
           gap: 10,
-          boxShadow: "0 2px 8px rgba(0,0,0,0.03)"
+          boxShadow: "var(--shadow-card)"
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
           <div>
-            <div style={{ fontSize: 12, fontWeight: 700, color: "#0A64F5", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: "var(--brand-primary)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               {subject}
             </div>
-            <div style={{ fontSize: 16, fontWeight: 700, color: "#0f172a", marginTop: 2 }}>
+            <div style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginTop: 2 }}>
               {topic}
-              {subtopic && <span style={{ color: "#64748b", fontWeight: 500 }}> → {subtopic}</span>}
+              {subtopic && <span style={{ color: "var(--text-secondary)", fontWeight: 500 }}> → {subtopic}</span>}
             </div>
           </div>
 
           <div style={{ textAlign: "right" }}>
-            <span style={{ padding: "4px 10px", background: "#f1f5f9", borderRadius: 8, fontSize: 12, fontWeight: 700, color: "#334155" }}>
+            <span style={{ padding: "4px 10px", background: "var(--bg-subtle)", border: "1px solid var(--border-subtle)", borderRadius: 8, fontSize: 12, fontWeight: 700, color: "var(--text-secondary)" }}>
               Target: {formatDuration(plannedMinutes)}
             </span>
           </div>
         </div>
 
         {planComment && (
-          <div style={{ fontSize: 12, color: "#475569", background: "#f8fafc", padding: "6px 10px", borderRadius: 6, borderLeft: "3px solid #cbd5e1" }}>
-            <span style={{ fontWeight: 600, color: "#334155" }}>Plan: </span>{planComment}
+          <div style={{ fontSize: 12, color: "var(--text-secondary)", background: "var(--bg-subtle)", padding: "6px 10px", borderRadius: 6, borderLeft: "3px solid var(--border-default)" }}>
+            <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>Plan: </span>{planComment}
           </div>
         )}
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 4 }}>
-          <div style={{ fontSize: 11, color: "#94a3b8" }}>
+          <div style={{ fontSize: 11, color: "var(--text-tertiary)" }}>
             {source === "ocr" ? "Source: OCR" : (source === "carried_forward" ? "Source: Carried Forward" : "")}
           </div>
 
@@ -264,9 +268,9 @@ export default function StudyBlockCard({
               style={{
                 padding: "6px 14px",
                 borderRadius: 8,
-                border: "1px solid #cbd5e1",
-                background: "#ffffff",
-                color: "#334155",
+                border: "1px solid var(--border-default)",
+                background: "var(--bg-subtle)",
+                color: "var(--text-primary)",
                 fontSize: 12,
                 fontWeight: 600,
                 cursor: "pointer"
@@ -283,7 +287,7 @@ export default function StudyBlockCard({
                 padding: "6px 20px",
                 borderRadius: 8,
                 border: "none",
-                background: "#0A64F5",
+                background: "var(--brand-primary)",
                 color: "#ffffff",
                 fontSize: 12,
                 fontWeight: 700,
@@ -304,61 +308,61 @@ export default function StudyBlockCard({
     return (
       <div
         style={{
-          background: "#ffffff",
-          border: "1px solid #dcfce7",
+          background: "var(--bg-surface)",
+          border: "1px solid var(--border-subtle)",
           borderRadius: 16,
           padding: "16px 20px",
           display: "flex",
           flexDirection: "column",
           gap: 10,
-          boxShadow: "0 2px 8px rgba(0,0,0,0.02)"
+          boxShadow: "var(--shadow-card)"
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ color: "#16a34a", fontWeight: 800 }}>✓</span>
-              <span style={{ fontSize: 13, fontWeight: 700, color: "#15803d", textTransform: "uppercase" }}>
+              <span style={{ color: "var(--success, #16a34a)", fontWeight: 800 }}>✓</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: "var(--success, #16a34a)", textTransform: "uppercase" }}>
                 {subject}
               </span>
               {quality && (
-                <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 12, background: "rgba(22, 163, 74, 0.1)", color: "#15803d" }}>
+                <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 12, background: "rgba(34, 197, 94, 0.12)", color: "var(--success, #16a34a)" }}>
                   {quality}
                 </span>
               )}
               {completionPercent !== null && (
-                <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 12, background: "#f1f5f9", color: "#334155" }}>
+                <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 12, background: "var(--bg-subtle)", color: "var(--text-secondary)", border: "1px solid var(--border-subtle)" }}>
                   {completionPercent}%
                 </span>
               )}
             </div>
 
-            <div style={{ fontSize: 16, fontWeight: 700, color: "#0f172a", marginTop: 2 }}>
+            <div style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginTop: 2 }}>
               {topic}
-              {subtopic && <span style={{ color: "#64748b", fontWeight: 500 }}> → {subtopic}</span>}
+              {subtopic && <span style={{ color: "var(--text-secondary)", fontWeight: 500 }}> → {subtopic}</span>}
             </div>
           </div>
 
           <div style={{ textAlign: "right" }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: "#0f172a" }}>
-              Actual: <span style={{ color: "#16a34a" }}>{formatDuration(actualMinutes)}</span>
-              <span style={{ color: "#94a3b8", fontWeight: 500 }}> (Target: {formatDuration(plannedMinutes)})</span>
+            <div style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)" }}>
+              Actual: <span style={{ color: "var(--success, #16a34a)" }}>{formatDuration(actualMinutes)}</span>
+              <span style={{ color: "var(--text-tertiary)", fontWeight: 500 }}> (Target: {formatDuration(plannedMinutes)})</span>
             </div>
-            <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>
+            <div style={{ fontSize: 11, color: "var(--text-secondary)", marginTop: 2 }}>
               {formatClockTime(startedAt)} → {formatClockTime(endedAt)}
             </div>
           </div>
         </div>
 
         {planComment && (
-          <div style={{ fontSize: 12, color: "#64748b" }}>
+          <div style={{ fontSize: 12, color: "var(--text-tertiary)" }}>
             <strong>Intent:</strong> {planComment}
           </div>
         )}
 
         {studyReview && (
-          <div style={{ fontSize: 13, color: "#1e293b", background: "#f8fafc", padding: "8px 12px", borderRadius: 8, borderLeft: "3px solid #16a34a" }}>
-            <span style={{ fontWeight: 700, color: "#15803d" }}>Review: </span>
+          <div style={{ fontSize: 13, color: "var(--text-primary)", background: "var(--bg-subtle)", padding: "8px 12px", borderRadius: 8, borderLeft: "3px solid var(--success, #16a34a)" }}>
+            <span style={{ fontWeight: 700, color: "var(--success, #16a34a)" }}>Review: </span>
             {studyReview}
           </div>
         )}
@@ -371,9 +375,9 @@ export default function StudyBlockCard({
             style={{
               padding: "5px 12px",
               borderRadius: 6,
-              border: "1px solid #cbd5e1",
-              background: "#ffffff",
-              color: "#475569",
+              border: "1px solid var(--border-default)",
+              background: "var(--bg-subtle)",
+              color: "var(--text-primary)",
               fontSize: 12,
               fontWeight: 600,
               cursor: "pointer"
@@ -389,9 +393,9 @@ export default function StudyBlockCard({
             style={{
               padding: "5px 14px",
               borderRadius: 6,
-              border: "1px solid #c4b5fd",
-              background: "rgba(139, 92, 246, 0.08)",
-              color: "#7c3aed",
+              border: "1px solid rgba(139, 92, 246, 0.3)",
+              background: "rgba(139, 92, 246, 0.12)",
+              color: "#a78bfa",
               fontSize: 12,
               fontWeight: 700,
               cursor: "pointer"
@@ -408,30 +412,30 @@ export default function StudyBlockCard({
   return (
     <div
       style={{
-        background: "#f8fafc",
-        border: "1px solid #e2e8f0",
+        background: "var(--bg-subtle)",
+        border: "1px solid var(--border-subtle)",
         borderRadius: 14,
         padding: "14px 18px",
-        opacity: 0.75,
+        opacity: 0.85,
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center"
       }}
     >
       <div>
-        <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase" }}>{subject}</div>
-        <div style={{ fontSize: 14, fontWeight: 600, color: "#334155" }}>{topic}</div>
-        {planComment && <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>{planComment}</div>}
+        <div style={{ fontSize: 12, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase" }}>{subject}</div>
+        <div style={{ fontSize: 14, fontWeight: 600, color: "var(--text-secondary)" }}>{topic}</div>
+        {planComment && <div style={{ fontSize: 11, color: "var(--text-tertiary)", marginTop: 2 }}>{planComment}</div>}
       </div>
 
       <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-        <span style={{ padding: "3px 8px", borderRadius: 6, fontSize: 11, fontWeight: 600, background: "#e2e8f0", color: "#475569" }}>
+        <span style={{ padding: "3px 8px", borderRadius: 6, fontSize: 11, fontWeight: 600, background: "var(--border-subtle)", color: "var(--text-secondary)" }}>
           {block.status || "skipped"}
         </span>
         <button
           type="button"
           onClick={() => onCarryForward?.(block)}
-          style={{ padding: "4px 10px", borderRadius: 6, border: "1px solid #cbd5e1", background: "#ffffff", fontSize: 11, fontWeight: 600, color: "#0A64F5", cursor: "pointer" }}
+          style={{ padding: "4px 10px", borderRadius: 6, border: "1px solid var(--border-default)", background: "var(--bg-surface)", fontSize: 11, fontWeight: 600, color: "var(--brand-primary)", cursor: "pointer" }}
         >
           Reschedule
         </button>

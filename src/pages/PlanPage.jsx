@@ -304,9 +304,10 @@ function formatDashboardDate(dateStr) {
 
 function formatMetricDuration(totalMinutes) {
   const m = Math.max(0, Number(totalMinutes) || 0);
+  if (m === 0) return "0m";
   const hrs = Math.floor(m / 60);
   const rem = m % 60;
-  if (hrs > 0 && rem > 0) return `${hrs}h${rem}m`;
+  if (hrs > 0 && rem > 0) return `${hrs}h ${rem}m`;
   if (hrs > 0) return `${hrs}h`;
   return `${rem}m`;
 }
@@ -3115,12 +3116,13 @@ export default function PlanPage() {
         <div className="mos-plan-wrapper">
       <div className="mos-daily-dashboard" style={{
         background: "var(--bg-surface)",
-        border: "1px solid var(--border-default)",
+        border: "1px solid var(--border-subtle)",
         borderRadius: 18,
         padding: "24px 28px",
         marginBottom: 24,
-        boxShadow: "0 4px 16px rgba(0,0,0,0.04)"
+        boxShadow: "var(--shadow-card)"
       }}>
+        {/* 1. Date and daily execution header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16, marginBottom: 20 }}>
           <div>
             <div style={{ fontSize: 12, fontWeight: 800, color: "var(--brand-primary)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -3131,6 +3133,7 @@ export default function PlanPage() {
             </h1>
           </div>
 
+          {/* 3. Primary study actions */}
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
             <input
               ref={planPhotoInputRef}
@@ -3170,9 +3173,9 @@ export default function PlanPage() {
                   gap: 6,
                   padding: "10px 16px",
                   borderRadius: 10,
-                  border: "1px solid #0A64F5",
-                  background: "rgba(10, 100, 245, 0.08)",
-                  color: "#0A64F5",
+                  border: "1px solid var(--brand-primary)",
+                  background: "var(--brand-primary-soft)",
+                  color: "var(--brand-primary)",
                   fontSize: 13,
                   fontWeight: 700,
                   cursor: "pointer",
@@ -3191,9 +3194,9 @@ export default function PlanPage() {
                 gap: 6,
                 padding: "10px 16px",
                 borderRadius: 10,
-                border: "1px solid #16a34a",
-                background: "rgba(22, 163, 74, 0.08)",
-                color: "#16a34a",
+                border: "1px solid var(--success, #16a34a)",
+                background: "rgba(34, 197, 94, 0.08)",
+                color: "var(--success, #16a34a)",
                 fontSize: 13,
                 fontWeight: 700,
                 cursor: "pointer",
@@ -3212,7 +3215,7 @@ export default function PlanPage() {
                 padding: "10px 18px",
                 borderRadius: 10,
                 border: "none",
-                background: "#0A64F5",
+                background: "var(--brand-primary)",
                 color: "#ffffff",
                 fontSize: 13,
                 fontWeight: 700,
@@ -3225,49 +3228,51 @@ export default function PlanPage() {
           </div>
         </div>
 
+        {/* 2. Study-hour metrics */}
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
           gap: 12,
           marginBottom: 20
         }}>
-          <div style={{ background: "var(--bg-canvas, #f8fafc)", border: "1px solid var(--border-default)", borderRadius: 12, padding: "14px 16px" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+          <div style={{ background: "var(--bg-subtle)", border: "1px solid var(--border-subtle)", borderRadius: 14, padding: "16px 18px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Planned Time
             </div>
-            <div style={{ fontSize: 22, fontWeight: 800, color: "var(--text-primary)", marginTop: 4, fontFamily: "var(--mono, monospace)" }}>
+            <div style={{ fontSize: 24, fontWeight: 800, color: "var(--text-primary)", marginTop: 6, fontFamily: "var(--mono, monospace)" }}>
               {formatMetricDuration(dashboardMetrics.plannedMinutes)}
             </div>
           </div>
 
-          <div style={{ background: "var(--bg-canvas, #f8fafc)", border: "1px solid var(--border-default)", borderRadius: 12, padding: "14px 16px" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#16a34a", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+          <div style={{ background: "var(--bg-subtle)", border: "1px solid var(--border-subtle)", borderRadius: 14, padding: "16px 18px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--success, #16a34a)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Completed Time
             </div>
-            <div style={{ fontSize: 22, fontWeight: 800, color: "#16a34a", marginTop: 4, fontFamily: "var(--mono, monospace)" }}>
+            <div style={{ fontSize: 24, fontWeight: 800, color: "var(--success, #16a34a)", marginTop: 6, fontFamily: "var(--mono, monospace)" }}>
               {formatMetricDuration(dashboardMetrics.completedMinutes)}
             </div>
           </div>
 
-          <div style={{ background: "var(--bg-canvas, #f8fafc)", border: "1px solid var(--border-default)", borderRadius: 12, padding: "14px 16px" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#0A64F5", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+          <div style={{ background: "var(--bg-subtle)", border: "1px solid var(--border-subtle)", borderRadius: 14, padding: "16px 18px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--brand-primary)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Currently Studying
             </div>
-            <div style={{ fontSize: 22, fontWeight: 800, color: "#0A64F5", marginTop: 4, fontFamily: "var(--mono, monospace)" }}>
+            <div style={{ fontSize: 24, fontWeight: 800, color: "var(--brand-primary)", marginTop: 6, fontFamily: "var(--mono, monospace)" }}>
               {formatMetricDuration(dashboardMetrics.studyingMinutes)}
             </div>
           </div>
 
-          <div style={{ background: "var(--bg-canvas, #f8fafc)", border: "1px solid var(--border-default)", borderRadius: 12, padding: "14px 16px" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+          <div style={{ background: "var(--bg-subtle)", border: "1px solid var(--border-subtle)", borderRadius: 14, padding: "16px 18px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               Remaining Time
             </div>
-            <div style={{ fontSize: 22, fontWeight: 800, color: "var(--text-primary)", marginTop: 4, fontFamily: "var(--mono, monospace)" }}>
+            <div style={{ fontSize: 24, fontWeight: 800, color: "var(--text-primary)", marginTop: 6, fontFamily: "var(--mono, monospace)" }}>
               {formatMetricDuration(dashboardMetrics.remainingMinutes)}
             </div>
           </div>
         </div>
 
+        {/* 2b. Progress */}
         <div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 12, fontWeight: 600, color: "var(--text-secondary)", marginBottom: 6 }}>
             <span>Execution Progress (Executed / Planned Minutes)</span>
@@ -3277,7 +3282,7 @@ export default function PlanPage() {
             <div style={{
               height: "100%",
               width: `${dashboardMetrics.executionPercent}%`,
-              background: "linear-gradient(90deg, #0A64F5, #16a34a)",
+              background: "linear-gradient(90deg, var(--brand-primary), var(--success, #16a34a))",
               borderRadius: 5,
               transition: "width 0.3s ease"
             }} />
@@ -3285,6 +3290,221 @@ export default function PlanPage() {
         </div>
       </div>
 
+      {/* 3. Empty-Day Experience (when no blocks planned) */}
+      {todayBlocks.length === 0 ? (
+        <div style={{
+          background: "var(--bg-surface)",
+          border: "1px dashed var(--border-default)",
+          borderRadius: 18,
+          padding: "40px 32px",
+          textAlign: "center",
+          marginBottom: 24,
+          boxShadow: "var(--shadow-card)"
+        }}>
+          <div style={{ fontSize: 36, marginBottom: 12 }}>📋</div>
+          <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", margin: "0 0 8px 0" }}>
+            Ready to plan your day?
+          </h2>
+          <p style={{ fontSize: 14, color: "var(--text-secondary)", margin: "0 0 24px 0", maxWidth: 520, marginLeft: "auto", marginRight: "auto", lineHeight: 1.5 }}>
+            Upload a handwritten plan, create study blocks manually, or start studying immediately.
+          </p>
+          <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => planPhotoInputRef.current?.click()}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "10px 18px",
+                borderRadius: 10,
+                border: "1px solid var(--border-default)",
+                background: "var(--bg-surface)",
+                color: "var(--text-primary)",
+                fontSize: 13,
+                fontWeight: 700,
+                cursor: "pointer"
+              }}
+            >
+              📷 Upload Daily Plan
+            </button>
+            <button
+              type="button"
+              onClick={() => setAddBlockModalOpen(true)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "10px 18px",
+                borderRadius: 10,
+                border: "1px solid var(--success, #16a34a)",
+                background: "rgba(34, 197, 94, 0.08)",
+                color: "var(--success, #16a34a)",
+                fontSize: 13,
+                fontWeight: 700,
+                cursor: "pointer"
+              }}
+            >
+              + Add Study Block
+            </button>
+            <button
+              type="button"
+              onClick={() => setQuickStartModalOpen(true)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "10px 20px",
+                borderRadius: 10,
+                border: "none",
+                background: "var(--brand-primary)",
+                color: "#ffffff",
+                fontSize: 13,
+                fontWeight: 700,
+                cursor: "pointer",
+                boxShadow: "0 2px 8px rgba(10, 100, 245, 0.3)"
+              }}
+            >
+              ⚡ Quick Start
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="mos-sequence-card" style={{ background: "var(--bg-surface)", border: "1px solid var(--border-subtle)", borderRadius: 18, padding: "24px 28px", display: "flex", flexDirection: "column", gap: 24, marginBottom: 24, boxShadow: "var(--shadow-card)" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid var(--border-subtle)", paddingBottom: 14 }}>
+            <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", margin: 0 }}>Study Block Execution</h2>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <button
+                type="button"
+                onClick={() => setManageTodayOpen(true)}
+                style={{ background: "transparent", color: "var(--text-secondary)", border: "1px solid var(--border-default)", borderRadius: 8, padding: "6px 12px", fontWeight: 600, fontSize: 13, cursor: "pointer" }}
+              >
+                Manage Today
+              </button>
+              <button
+                type="button"
+                onClick={() => setAddBlockModalOpen(true)}
+                style={{ background: "var(--brand-primary)", color: "#ffffff", border: "none", borderRadius: 8, padding: "6px 14px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+              >
+                + Add Block
+              </button>
+            </div>
+          </div>
+
+          {/* 4. ACTIVE STUDY BLOCK */}
+          {studyingBlocks.length > 0 && (
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--success, #16a34a)" }} />
+                <h3 style={{ fontSize: 13, fontWeight: 800, color: "var(--success, #16a34a)", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
+                  CURRENTLY STUDYING
+                </h3>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                {studyingBlocks.map((block) => (
+                  <StudyBlockCard
+                    key={block.BlockId || block.id}
+                    block={block}
+                    sectionType="studying"
+                    liveElapsedSec={liveElapsedSec}
+                    busy={busy}
+                    onStart={handleStartBlock}
+                    onPause={handlePauseBlock}
+                    onResume={handleResumeBlock}
+                    onFinish={(b) => setCompletionSheetBlock(b)}
+                    onOpenComment={(b) => setActiveCommentBlock(b)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 5. UPCOMING STUDY BLOCKS */}
+          <div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+              <h3 style={{ fontSize: 13, fontWeight: 800, color: "var(--text-primary)", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
+                NEXT • PLANNED BLOCKS ({nextBlocks.length})
+              </h3>
+            </div>
+            {nextBlocks.length === 0 ? (
+              <div style={{
+                background: "var(--bg-subtle)",
+                border: "1px dashed var(--border-default)",
+                borderRadius: 14,
+                padding: "20px",
+                textAlign: "center",
+                color: "var(--text-secondary)",
+                fontSize: 14
+              }}>
+                No upcoming study blocks. Tap <strong>+ Add Study Block</strong> or <strong>Upload Daily Plan</strong> to add blocks.
+              </div>
+            ) : (
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {nextBlocks.map((block) => (
+                  <StudyBlockCard
+                    key={block.BlockId || block.id}
+                    block={block}
+                    sectionType="next"
+                    busy={busy}
+                    onStart={(b) => handleStartBlock(b?.BlockId || b?.id || b, { openFocus: false })}
+                    onEdit={(b) => setEditPlannedBlock(b)}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* 6. COMPLETED STUDY BLOCKS */}
+          {completedBlocks.length > 0 && (
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                <span style={{ fontSize: 14 }}>✅</span>
+                <h3 style={{ fontSize: 13, fontWeight: 800, color: "var(--text-primary)", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
+                  COMPLETED ({completedBlocks.length})
+                </h3>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {completedBlocks.map((block) => (
+                  <StudyBlockCard
+                    key={block.BlockId || block.id}
+                    block={block}
+                    sectionType="completed"
+                    busy={busy}
+                    onEditReview={(b) => setCompletionSheetBlock(b)}
+                    onCarryForward={(b) => setCarryForwardBlock(b)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 6b. OTHER / STOPPED / SKIPPED */}
+          {skippedBlocks.length > 0 && (
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                <span style={{ fontSize: 14 }}>⏸️</span>
+                <h3 style={{ fontSize: 13, fontWeight: 800, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
+                  OTHER / STOPPED / SKIPPED ({skippedBlocks.length})
+                </h3>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {skippedBlocks.map((block) => (
+                  <StudyBlockCard
+                    key={block.BlockId || block.id}
+                    block={block}
+                    sectionType="skipped"
+                    busy={busy}
+                    onCarryForward={(b) => setCarryForwardBlock(b)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* 7. Mentor Command and daily guidance */}
       <HeroSection
         dPre={dPre}
         dMains={dMains}
@@ -3301,158 +3521,6 @@ export default function PlanPage() {
         onStartNextBlock={(nextBlock) => nextBlock && handleStartBlock(nextBlock.BlockId)}
         onOpenFocus={() => setSpotlightOpen(true)}
       />
-
-      <div className="main-work-grid">
-        <SpotlightCard
-          currentBlock={currentBlock}
-          currentBlockPyq={currentBlockPyq}
-          currentBlockPyqNodeId={currentBlockPyqNodeId}
-          currentBlockPyqLoading={currentBlockPyqLoading}
-          currentBlockPyqError={currentBlockPyqError}
-          spotlightMessage={spotlightMessage}
-          liveElapsedSec={liveElapsedSec}
-          busy={busy}
-          onStart={handleStartBlock}
-          onPause={handlePauseBlock}
-          onResume={handleResumeBlock}
-          onStop={requestStopBlock}
-          onOpenFocus={() => setSpotlightOpen(true)}
-          todayBlocks={todayBlocks}
-          nowTick={nowTick}
-          formatCountdown={formatCountdown}
-        />
-          <div className="mos-sequence-card" style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 16, padding: "24px 28px", display: "flex", flexDirection: "column", gap: 24 }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid var(--border-subtle)", paddingBottom: 14 }}>
-              <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", margin: 0 }}>Study Block Execution</h2>
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <button
-                  type="button"
-                  onClick={() => setManageTodayOpen(true)}
-                  style={{ background: "transparent", color: "var(--text-secondary)", border: "1px solid var(--border-default)", borderRadius: 8, padding: "6px 12px", fontWeight: 600, fontSize: 13, cursor: "pointer" }}
-                >
-                  Manage Today
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setAddBlockModalOpen(true)}
-                  style={{ background: "var(--brand-primary)", color: "#ffffff", border: "none", borderRadius: 8, padding: "6px 14px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
-                >
-                  + Add Block
-                </button>
-              </div>
-            </div>
-
-            {/* 1. CURRENTLY STUDYING */}
-            {studyingBlocks.length > 0 && (
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#16a34a" }} />
-                  <h3 style={{ fontSize: 13, fontWeight: 800, color: "#16a34a", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
-                    CURRENTLY STUDYING
-                  </h3>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  {studyingBlocks.map((block) => (
-                    <StudyBlockCard
-                      key={block.BlockId || block.id}
-                      block={block}
-                      sectionType="studying"
-                      liveElapsedSec={liveElapsedSec}
-                      busy={busy}
-                      onStart={handleStartBlock}
-                      onPause={handlePauseBlock}
-                      onResume={handleResumeBlock}
-                      onFinish={(b) => setCompletionSheetBlock(b)}
-                      onOpenComment={(b) => setActiveCommentBlock(b)}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* 2. NEXT • PLANNED BLOCKS */}
-            <div>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-                <h3 style={{ fontSize: 13, fontWeight: 800, color: "var(--text-primary)", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
-                  NEXT • PLANNED BLOCKS ({nextBlocks.length})
-                </h3>
-              </div>
-              {nextBlocks.length === 0 ? (
-                <div style={{
-                  background: "var(--bg-canvas, #f8fafc)",
-                  border: "1px dashed var(--border-default)",
-                  borderRadius: 14,
-                  padding: "20px",
-                  textAlign: "center",
-                  color: "var(--text-secondary)",
-                  fontSize: 14
-                }}>
-                  No upcoming study blocks. Tap <strong>+ Add Study Block</strong> or <strong>Upload Daily Plan</strong> to add blocks.
-                </div>
-              ) : (
-                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                  {nextBlocks.map((block) => (
-                    <StudyBlockCard
-                      key={block.BlockId || block.id}
-                      block={block}
-                      sectionType="next"
-                      busy={busy}
-                      onStart={(b) => handleStartBlock(b?.BlockId || b?.id || b, { openFocus: false })}
-                      onEdit={(b) => setEditPlannedBlock(b)}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* 3. COMPLETED BLOCKS */}
-            {completedBlocks.length > 0 && (
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                  <span style={{ fontSize: 14 }}>✅</span>
-                  <h3 style={{ fontSize: 13, fontWeight: 800, color: "var(--text-primary)", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
-                    COMPLETED ({completedBlocks.length})
-                  </h3>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                  {completedBlocks.map((block) => (
-                    <StudyBlockCard
-                      key={block.BlockId || block.id}
-                      block={block}
-                      sectionType="completed"
-                      busy={busy}
-                      onEditReview={(b) => setCompletionSheetBlock(b)}
-                      onCarryForward={(b) => setCarryForwardBlock(b)}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* 4. OTHER / STOPPED / SKIPPED */}
-            {skippedBlocks.length > 0 && (
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                  <span style={{ fontSize: 14 }}>⏸️</span>
-                  <h3 style={{ fontSize: 13, fontWeight: 800, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
-                    OTHER / STOPPED / SKIPPED ({skippedBlocks.length})
-                  </h3>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                  {skippedBlocks.map((block) => (
-                    <StudyBlockCard
-                      key={block.BlockId || block.id}
-                      block={block}
-                      sectionType="skipped"
-                      busy={busy}
-                      onCarryForward={(b) => setCarryForwardBlock(b)}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-      </div>
 
       <div className="mos-upload-card" style={{ background: "var(--bg-surface)", border: "1px solid var(--border-default)", borderRadius: 16, padding: "20px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", margin: "24px 0" }}>
         <div>

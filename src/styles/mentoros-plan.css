@@ -655,6 +655,10 @@ details.adv-controls[open] .adv-controls-chevron {
     overflow-x: hidden;
   }
 
+  .mos-daily-dashboard {
+    padding: 18px 16px !important;
+  }
+
   .main-work-grid {
     grid-template-columns: 1fr;
     gap: 16px;

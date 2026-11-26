@@ -250,6 +250,7 @@ html[data-theme="light"] {
   --bg-page: #F8FAFC;
   --bg-surface: #FFFFFF;
   --bg-subtle: #F1F5F9;
+  --bg-canvas: #F8FAFC;
   --text-primary: #0F172A;
   --text-secondary: #334155;
   --text-tertiary: #64748B;
@@ -260,6 +261,12 @@ html[data-theme="light"] {
   --brand-primary-soft: #EFF6FF;
   --nav-active-bg: #EFF6FF;
   --nav-active-color: #0A64F5;
+  --success: #16A34A;
+  --success-soft: rgba(22, 163, 74, 0.10);
+  --warning: #D97706;
+  --warning-soft: rgba(217, 119, 6, 0.10);
+  --error: #DC2626;
+  --error-soft: rgba(220, 38, 38, 0.10);
   --shadow-card: 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
@@ -267,6 +274,7 @@ html[data-theme="dark"] {
   --bg-page: #050506;
   --bg-surface: #0B0D10;
   --bg-subtle: #111318;
+  --bg-canvas: #050506;
   --bg-muted: #171A20;
   --bg-selected: #101827;
   --bg-hover: #12151C;

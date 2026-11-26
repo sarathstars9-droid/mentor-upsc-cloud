@@ -212,7 +212,7 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
       style={{
         position: "fixed",
         inset: 0,
-        backgroundColor: "rgba(15, 23, 42, 0.75)",
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
         backdropFilter: "blur(4px)",
         zIndex: 1200,
         display: "flex",
@@ -226,29 +226,29 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
         style={{
           width: "min(620px, 98vw)",
           maxHeight: "90vh",
-          backgroundColor: "#ffffff",
+          backgroundColor: "var(--bg-surface)",
           borderRadius: 20,
-          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.35)",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
-          border: "1px solid #e2e8f0"
+          border: "1px solid var(--border-default)"
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div style={{ padding: "20px 24px", borderBottom: "1px solid #e2e8f0", display: "flex", justifyContent: "space-between", alignItems: "center", background: "#f8fafc" }}>
+        <div style={{ padding: "20px 24px", borderBottom: "1px solid var(--border-subtle)", display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--bg-subtle)" }}>
           <div>
-            <div style={{ fontSize: 11, fontWeight: 800, color: "#0A64F5", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <div style={{ fontSize: 11, fontWeight: 800, color: "var(--brand-primary)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
               Study Block Planner
             </div>
-            <h2 style={{ fontSize: 18, fontWeight: 800, color: "#0f172a", margin: "2px 0 0 0" }}>
+            <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", margin: "2px 0 0 0" }}>
               + Add Study Block
             </h2>
           </div>
           <button
             onClick={onClose}
-            style={{ background: "transparent", border: "none", fontSize: 20, cursor: "pointer", color: "#64748b" }}
+            style={{ background: "transparent", border: "none", fontSize: 20, cursor: "pointer", color: "var(--text-secondary)" }}
           >
             ✕
           </button>
@@ -257,19 +257,19 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
         {/* Body */}
         <form onSubmit={handleSubmit} style={{ padding: "20px 24px", overflowY: "auto", display: "flex", flexDirection: "column", gap: 18 }}>
           {validationError && (
-            <div style={{ padding: "10px 14px", background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 10, color: "#dc2626", fontSize: 13, fontWeight: 600 }}>
+            <div style={{ padding: "10px 14px", background: "rgba(239, 68, 68, 0.12)", border: "1px solid var(--error, #dc2626)", borderRadius: 10, color: "var(--error, #dc2626)", fontSize: 13, fontWeight: 600 }}>
               {validationError}
             </div>
           )}
 
           {/* 1. SUBJECT */}
           <div>
-            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 8 }}>
+            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--text-secondary)", marginBottom: 8 }}>
               SUBJECT
             </label>
             {recentSubjects.length > 0 && (
               <>
-                <div style={{ fontSize: 11, fontWeight: 600, color: "#64748b", marginBottom: 6 }}>Recent Subjects:</div>
+                <div style={{ fontSize: 11, fontWeight: 600, color: "var(--text-tertiary)", marginBottom: 6 }}>Recent Subjects:</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
                   {recentSubjects.map((s) => (
                     <button
@@ -282,9 +282,9 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
                         fontSize: 12,
                         fontWeight: 600,
                         cursor: "pointer",
-                        border: !isCustomSubject && selectedSubject === s ? "2px solid #0A64F5" : "1px solid #cbd5e1",
-                        background: !isCustomSubject && selectedSubject === s ? "rgba(10, 100, 245, 0.08)" : "#ffffff",
-                        color: !isCustomSubject && selectedSubject === s ? "#0A64F5" : "#334155"
+                        border: !isCustomSubject && selectedSubject === s ? "2px solid var(--brand-primary)" : "1px solid var(--border-default)",
+                        background: !isCustomSubject && selectedSubject === s ? "var(--brand-primary-soft)" : "var(--bg-subtle)",
+                        color: !isCustomSubject && selectedSubject === s ? "var(--brand-primary)" : "var(--text-secondary)"
                       }}
                     >
                       {s}
@@ -302,11 +302,11 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
                   flex: 1,
                   height: 38,
                   borderRadius: 8,
-                  border: "1px solid #cbd5e1",
+                  border: "1px solid var(--border-default)",
                   padding: "0 10px",
                   fontSize: 13,
-                  color: "#0f172a",
-                  background: "#ffffff"
+                  color: "var(--text-primary)",
+                  background: "var(--bg-subtle)"
                 }}
               >
                 {STANDARD_SUBJECTS.map((s) => (
@@ -327,7 +327,9 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
                     width: "100%",
                     height: 38,
                     borderRadius: 8,
-                    border: "1px solid #0A64F5",
+                    border: "1px solid var(--brand-primary)",
+                    background: "var(--bg-subtle)",
+                    color: "var(--text-primary)",
                     padding: "0 12px",
                     fontSize: 13,
                     boxSizing: "border-box"
@@ -341,7 +343,7 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
           {/* 2. TOPIC & SUBTOPIC */}
           <div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
-              <label style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>
+              <label style={{ fontSize: 13, fontWeight: 700, color: "var(--text-secondary)" }}>
                 TOPIC
               </label>
               <button
@@ -350,7 +352,7 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
                   setIsCustomTopic(!isCustomTopic);
                   if (!isCustomTopic) setSelectedTopic("");
                 }}
-                style={{ background: "none", border: "none", color: "#0A64F5", fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+                style={{ background: "none", border: "none", color: "var(--brand-primary)", fontSize: 12, fontWeight: 600, cursor: "pointer" }}
               >
                 {isCustomTopic ? "← Pick from Suggested" : "+ Other / Custom Topic"}
               </button>
@@ -358,7 +360,7 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
 
             {!isCustomTopic && suggestedList.length > 0 && (
               <div style={{ marginBottom: 10 }}>
-                <div style={{ fontSize: 11, fontWeight: 600, color: "#64748b", marginBottom: 6 }}>Suggested for {selectedSubject}:</div>
+                <div style={{ fontSize: 11, fontWeight: 600, color: "var(--text-tertiary)", marginBottom: 6 }}>Suggested for {selectedSubject}:</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {suggestedList.map((t) => (
                     <button
@@ -374,9 +376,9 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
                         fontSize: 12,
                         fontWeight: 500,
                         cursor: "pointer",
-                        border: selectedTopic === t ? "1px solid #0A64F5" : "1px solid #e2e8f0",
-                        background: selectedTopic === t ? "rgba(10, 100, 245, 0.08)" : "#f8fafc",
-                        color: selectedTopic === t ? "#0A64F5" : "#475569"
+                        border: selectedTopic === t ? "1px solid var(--brand-primary)" : "1px solid var(--border-subtle)",
+                        background: selectedTopic === t ? "var(--brand-primary-soft)" : "var(--bg-subtle)",
+                        color: selectedTopic === t ? "var(--brand-primary)" : "var(--text-secondary)"
                       }}
                     >
                       {t}
@@ -401,7 +403,9 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
                 style={{
                   height: 38,
                   borderRadius: 8,
-                  border: "1px solid #cbd5e1",
+                  border: "1px solid var(--border-default)",
+                  background: "var(--bg-subtle)",
+                  color: "var(--text-primary)",
                   padding: "0 12px",
                   fontSize: 13,
                   boxSizing: "border-box"
@@ -415,10 +419,11 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
                 style={{
                   height: 34,
                   borderRadius: 8,
-                  border: "1px solid #e2e8f0",
+                  border: "1px solid var(--border-subtle)",
+                  background: "var(--bg-subtle)",
+                  color: "var(--text-secondary)",
                   padding: "0 12px",
                   fontSize: 12,
-                  color: "#475569",
                   boxSizing: "border-box"
                 }}
               />
@@ -428,10 +433,10 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
           {/* 3. PLANNED DURATION CHIPS */}
           <div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
-              <label style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>
+              <label style={{ fontSize: 13, fontWeight: 700, color: "var(--text-secondary)" }}>
                 PLANNED DURATION
               </label>
-              <span style={{ fontSize: 12, fontWeight: 700, color: "#0A64F5" }}>
+              <span style={{ fontSize: 12, fontWeight: 700, color: "var(--brand-primary)" }}>
                 {isCustomDuration
                   ? `${(Number(customHours) || 0)}h ${(Number(customMins) || 0)}m (${(Number(customHours) || 0) * 60 + (Number(customMins) || 0)} mins)`
                   : `${Math.floor(durationMinutes / 60)}h ${durationMinutes % 60 > 0 ? `${durationMinutes % 60}m` : ""} (${durationMinutes} mins)`}
@@ -452,9 +457,9 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
                       fontSize: 12,
                       fontWeight: 700,
                       cursor: "pointer",
-                      border: isSelected ? "2px solid #0A64F5" : "1px solid #cbd5e1",
-                      background: isSelected ? "rgba(10, 100, 245, 0.08)" : "#ffffff",
-                      color: isSelected ? "#0A64F5" : "#334155"
+                      border: isSelected ? "2px solid var(--brand-primary)" : "1px solid var(--border-default)",
+                      background: isSelected ? "var(--brand-primary-soft)" : "var(--bg-subtle)",
+                      color: isSelected ? "var(--brand-primary)" : "var(--text-secondary)"
                     }}
                   >
                     {chip.label}
@@ -464,7 +469,7 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
             </div>
 
             {isCustomDuration && (
-              <div style={{ marginTop: 12, padding: "12px 14px", background: "#f8fafc", borderRadius: 10, border: "1px solid #e2e8f0", display: "flex", alignItems: "center", gap: 12 }}>
+              <div style={{ marginTop: 12, padding: "12px 14px", background: "var(--bg-subtle)", borderRadius: 10, border: "1px solid var(--border-subtle)", display: "flex", alignItems: "center", gap: 12 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                   <input
                     type="number"
@@ -472,9 +477,9 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
                     max="16"
                     value={customHours}
                     onChange={(e) => handleCustomTimeChange(e.target.value, customMins)}
-                    style={{ width: 55, height: 34, textAlign: "center", borderRadius: 6, border: "1px solid #cbd5e1", fontSize: 14, fontWeight: 700 }}
+                    style={{ width: 55, height: 34, textAlign: "center", borderRadius: 6, border: "1px solid var(--border-default)", background: "var(--bg-surface)", color: "var(--text-primary)", fontSize: 14, fontWeight: 700 }}
                   />
-                  <span style={{ fontSize: 12, fontWeight: 600, color: "#64748b" }}>Hours</span>
+                  <span style={{ fontSize: 12, fontWeight: 600, color: "var(--text-secondary)" }}>Hours</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                   <input
@@ -484,11 +489,11 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
                     step="5"
                     value={customMins}
                     onChange={(e) => handleCustomTimeChange(customHours, e.target.value)}
-                    style={{ width: 55, height: 34, textAlign: "center", borderRadius: 6, border: "1px solid #cbd5e1", fontSize: 14, fontWeight: 700 }}
+                    style={{ width: 55, height: 34, textAlign: "center", borderRadius: 6, border: "1px solid var(--border-default)", background: "var(--bg-surface)", color: "var(--text-primary)", fontSize: 14, fontWeight: 700 }}
                   />
-                  <span style={{ fontSize: 12, fontWeight: 600, color: "#64748b" }}>Minutes</span>
+                  <span style={{ fontSize: 12, fontWeight: 600, color: "var(--text-secondary)" }}>Minutes</span>
                 </div>
-                <span style={{ fontSize: 12, color: "#64748b" }}>
+                <span style={{ fontSize: 12, color: "var(--text-tertiary)" }}>
                   = {(Number(customHours) || 0) * 60 + (Number(customMins) || 0)} integer minutes
                 </span>
               </div>
@@ -497,7 +502,7 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
 
           {/* 4. PLAN COMMENT (Pre-Study Intent) */}
           <div>
-            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--text-secondary)", marginBottom: 6 }}>
               PLAN COMMENT (Intent / Goals)
             </label>
             <textarea
@@ -509,7 +514,9 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
                 width: "100%",
                 padding: "10px 12px",
                 borderRadius: 8,
-                border: "1px solid #cbd5e1",
+                border: "1px solid var(--border-default)",
+                background: "var(--bg-subtle)",
+                color: "var(--text-primary)",
                 fontSize: 13,
                 fontFamily: "inherit",
                 resize: "vertical",
@@ -519,7 +526,7 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
           </div>
 
           {/* Actions */}
-          <div style={{ display: "flex", justifyContent: "flex-end", gap: 10, paddingTop: 8, borderTop: "1px solid #f1f5f9" }}>
+          <div style={{ display: "flex", justifyContent: "flex-end", gap: 10, paddingTop: 8, borderTop: "1px solid var(--border-subtle)" }}>
             <button
               type="button"
               onClick={onClose}
@@ -527,9 +534,9 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
               style={{
                 padding: "10px 18px",
                 borderRadius: 10,
-                border: "1px solid #cbd5e1",
-                background: "#ffffff",
-                color: "#475569",
+                border: "1px solid var(--border-default)",
+                background: "var(--bg-subtle)",
+                color: "var(--text-secondary)",
                 fontSize: 13,
                 fontWeight: 700,
                 cursor: "pointer"
@@ -544,7 +551,7 @@ export default function AddStudyBlockModal({ open, onClose, onAddBlock, onAdd, b
                 padding: "10px 22px",
                 borderRadius: 10,
                 border: "none",
-                background: "#0A64F5",
+                background: "var(--brand-primary)",
                 color: "#ffffff",
                 fontSize: 13,
                 fontWeight: 700,

@@ -135,7 +135,7 @@ export default function CompletionSheetModal({
       style={{
         position: "fixed",
         inset: 0,
-        backgroundColor: "rgba(15, 23, 42, 0.75)",
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
         backdropFilter: "blur(4px)",
         zIndex: 1300,
         display: "flex",
@@ -149,32 +149,32 @@ export default function CompletionSheetModal({
         style={{
           width: "min(580px, 98vw)",
           maxHeight: "92vh",
-          backgroundColor: "#ffffff",
+          backgroundColor: "var(--bg-surface)",
           borderRadius: 20,
-          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.35)",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
-          border: "1px solid #e2e8f0"
+          border: "1px solid var(--border-default)"
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div style={{ padding: "18px 24px", borderBottom: "1px solid #e2e8f0", display: "flex", justifyContent: "space-between", alignItems: "center", background: "#f8fafc" }}>
+        <div style={{ padding: "18px 24px", borderBottom: "1px solid var(--border-subtle)", display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--bg-subtle)" }}>
           <div>
-            <div style={{ fontSize: 11, fontWeight: 800, color: "#16a34a", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <div style={{ fontSize: 11, fontWeight: 800, color: "var(--success, #16a34a)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
               Study Execution Complete
             </div>
-            <h2 style={{ fontSize: 18, fontWeight: 800, color: "#0f172a", margin: "2px 0 0 0" }}>
+            <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", margin: "2px 0 0 0" }}>
               Finish: {block.PlannedSubject || block.subject || "Study Block"}
             </h2>
-            <div style={{ fontSize: 13, color: "#64748b" }}>
+            <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>
               {block.PlannedTopic || block.topic || block.custom_topic || ""}
             </div>
           </div>
           <button
             onClick={onClose}
-            style={{ background: "transparent", border: "none", fontSize: 20, cursor: "pointer", color: "#64748b" }}
+            style={{ background: "transparent", border: "none", fontSize: 20, cursor: "pointer", color: "var(--text-secondary)" }}
           >
             ✕
           </button>
@@ -183,22 +183,22 @@ export default function CompletionSheetModal({
         {/* Form Body */}
         <form onSubmit={handleSubmit} style={{ padding: "20px 24px", overflowY: "auto", display: "flex", flexDirection: "column", gap: 16 }}>
           {error && (
-            <div style={{ padding: "10px 14px", background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 10, color: "#dc2626", fontSize: 13, fontWeight: 600 }}>
+            <div style={{ padding: "10px 14px", background: "rgba(239, 68, 68, 0.12)", border: "1px solid var(--error, #dc2626)", borderRadius: 10, color: "var(--error, #dc2626)", fontSize: 13, fontWeight: 600 }}>
               {error}
             </div>
           )}
 
           {/* Timing Section: Start, End (editable), Actual Duration */}
-          <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 12, padding: "14px 16px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, alignItems: "center" }}>
+          <div style={{ background: "var(--bg-subtle)", border: "1px solid var(--border-subtle)", borderRadius: 12, padding: "14px 16px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, alignItems: "center" }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#64748b", textTransform: "uppercase" }}>Started</div>
-              <div style={{ fontSize: 15, fontWeight: 700, color: "#0f172a", marginTop: 2 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase" }}>Started</div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginTop: 2 }}>
                 {formatTimeOnly(startedAt)}
               </div>
             </div>
 
             <div>
-              <label style={{ display: "block", fontSize: 11, fontWeight: 700, color: "#0A64F5", textTransform: "uppercase", marginBottom: 2 }}>
+              <label style={{ display: "block", fontSize: 11, fontWeight: 700, color: "var(--brand-primary)", textTransform: "uppercase", marginBottom: 2 }}>
                 End Time (Correct)
               </label>
               <input
@@ -210,18 +210,18 @@ export default function CompletionSheetModal({
                   width: "100%",
                   padding: "0 6px",
                   borderRadius: 6,
-                  border: "1px solid #0A64F5",
+                  border: "1px solid var(--brand-primary)",
                   fontSize: 13,
                   fontWeight: 600,
-                  color: "#0f172a",
-                  background: "#ffffff"
+                  color: "var(--text-primary)",
+                  background: "var(--bg-surface)"
                 }}
               />
             </div>
 
             <div style={{ textAlign: "right" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#16a34a", textTransform: "uppercase" }}>Actual Time</div>
-              <div style={{ fontSize: 17, fontWeight: 800, color: "#16a34a", marginTop: 2 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "var(--success, #16a34a)", textTransform: "uppercase" }}>Actual Time</div>
+              <div style={{ fontSize: 17, fontWeight: 800, color: "var(--success, #16a34a)", marginTop: 2 }}>
                 {formatDurationDisplay(actualMinutesCalculated)}
               </div>
             </div>
@@ -229,7 +229,7 @@ export default function CompletionSheetModal({
 
           {/* Completion % Chips */}
           <div>
-            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--text-secondary)", marginBottom: 6 }}>
               Completion Percentage
             </label>
             <div style={{ display: "flex", gap: 10 }}>
@@ -247,9 +247,9 @@ export default function CompletionSheetModal({
                       fontSize: 13,
                       fontWeight: 700,
                       cursor: "pointer",
-                      border: isSelected ? "2px solid #0A64F5" : "1px solid #cbd5e1",
-                      background: isSelected ? "#0A64F5" : "#ffffff",
-                      color: isSelected ? "#ffffff" : "#334155"
+                      border: isSelected ? "2px solid var(--brand-primary)" : "1px solid var(--border-default)",
+                      background: isSelected ? "var(--brand-primary)" : "var(--bg-subtle)",
+                      color: isSelected ? "#ffffff" : "var(--text-secondary)"
                     }}
                   >
                     {val}%
@@ -261,7 +261,7 @@ export default function CompletionSheetModal({
 
           {/* Quality Chips */}
           <div>
-            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--text-secondary)", marginBottom: 6 }}>
               Study Quality
             </label>
             <div style={{ display: "flex", gap: 10 }}>
@@ -279,9 +279,9 @@ export default function CompletionSheetModal({
                       fontSize: 13,
                       fontWeight: 700,
                       cursor: "pointer",
-                      border: isSelected ? "2px solid #16a34a" : "1px solid #cbd5e1",
-                      background: isSelected ? "rgba(22, 163, 74, 0.12)" : "#ffffff",
-                      color: isSelected ? "#15803d" : "#334155"
+                      border: isSelected ? "2px solid var(--success, #16a34a)" : "1px solid var(--border-default)",
+                      background: isSelected ? "rgba(34, 197, 94, 0.15)" : "var(--bg-subtle)",
+                      color: isSelected ? "var(--success, #16a34a)" : "var(--text-secondary)"
                     }}
                   >
                     {q}
@@ -293,10 +293,10 @@ export default function CompletionSheetModal({
 
           {/* STUDY REVIEW / COMMENT */}
           <div>
-            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 4 }}>
+            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--text-secondary)", marginBottom: 4 }}>
               STUDY REVIEW / COMMENT
             </label>
-            <div style={{ fontSize: 12, color: "#64748b", marginBottom: 6 }}>
+            <div style={{ fontSize: 12, color: "var(--text-tertiary)", marginBottom: 6 }}>
               What did you actually study / learn / struggle with? (Preserved for Log Book and carry forward)
             </div>
             <textarea
@@ -308,7 +308,9 @@ export default function CompletionSheetModal({
                 width: "100%",
                 padding: "10px 12px",
                 borderRadius: 10,
-                border: "1px solid #cbd5e1",
+                border: "1px solid var(--border-default)",
+                background: "var(--bg-subtle)",
+                color: "var(--text-primary)",
                 fontSize: 13,
                 fontFamily: "inherit",
                 resize: "vertical",
@@ -319,7 +321,7 @@ export default function CompletionSheetModal({
           </div>
 
           {/* Action buttons */}
-          <div style={{ display: "flex", justifyContent: "flex-end", gap: 12, marginTop: 8, paddingTop: 14, borderTop: "1px solid #e2e8f0" }}>
+          <div style={{ display: "flex", justifyContent: "flex-end", gap: 12, marginTop: 8, paddingTop: 14, borderTop: "1px solid var(--border-subtle)" }}>
             <button
               type="button"
               onClick={onClose}
@@ -327,9 +329,9 @@ export default function CompletionSheetModal({
               style={{
                 padding: "10px 18px",
                 borderRadius: 10,
-                border: "1px solid #cbd5e1",
-                background: "#ffffff",
-                color: "#475569",
+                border: "1px solid var(--border-default)",
+                background: "var(--bg-subtle)",
+                color: "var(--text-secondary)",
                 fontWeight: 600,
                 fontSize: 13,
                 cursor: "pointer"
@@ -344,7 +346,7 @@ export default function CompletionSheetModal({
                 padding: "10px 24px",
                 borderRadius: 10,
                 border: "none",
-                background: "linear-gradient(135deg, #16a34a, #15803d)",
+                background: "var(--success, #16a34a)",
                 color: "#ffffff",
                 fontWeight: 700,
                 fontSize: 13,

@@ -32,7 +32,7 @@ export default function ActiveCommentModal({
       style={{
         position: "fixed",
         inset: 0,
-        backgroundColor: "rgba(15, 23, 42, 0.75)",
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
         backdropFilter: "blur(4px)",
         zIndex: 1300,
         display: "flex",
@@ -45,34 +45,34 @@ export default function ActiveCommentModal({
       <div
         style={{
           width: "min(500px, 98vw)",
-          backgroundColor: "#ffffff",
+          backgroundColor: "var(--bg-surface)",
           borderRadius: 18,
-          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.35)",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
-          border: "1px solid #e2e8f0"
+          border: "1px solid var(--border-default)"
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div style={{ padding: "16px 20px", borderBottom: "1px solid #e2e8f0", display: "flex", justifyContent: "space-between", alignItems: "center", background: "#f8fafc" }}>
+        <div style={{ padding: "16px 20px", borderBottom: "1px solid var(--border-subtle)", display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--bg-subtle)" }}>
           <div>
-            <div style={{ fontSize: 11, fontWeight: 800, color: "#0A64F5", textTransform: "uppercase", letterSpacing: "0.08em" }}>Live Notes</div>
-            <h3 style={{ fontSize: 16, fontWeight: 700, color: "#0f172a", margin: "2px 0 0 0" }}>
+            <div style={{ fontSize: 11, fontWeight: 800, color: "var(--brand-primary)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Live Notes</div>
+            <h3 style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", margin: "2px 0 0 0" }}>
               + Active Session Note / Comment
             </h3>
           </div>
-          <button onClick={onClose} style={{ background: "transparent", border: "none", fontSize: 18, cursor: "pointer", color: "#64748b" }}>✕</button>
+          <button onClick={onClose} style={{ background: "transparent", border: "none", fontSize: 18, cursor: "pointer", color: "var(--text-secondary)" }}>✕</button>
         </div>
 
         <form onSubmit={handleSubmit} style={{ padding: "18px 20px", display: "flex", flexDirection: "column", gap: 14 }}>
           {block.plan_comment && (
-            <div style={{ background: "#f1f5f9", padding: "10px 12px", borderRadius: 8, fontSize: 12, color: "#475569" }}>
-              <strong style={{ color: "#0f172a" }}>Pre-Study Intent (Plan Comment):</strong> {block.plan_comment}
+            <div style={{ background: "var(--bg-subtle)", padding: "10px 12px", borderRadius: 8, fontSize: 12, color: "var(--text-secondary)" }}>
+              <strong style={{ color: "var(--text-primary)" }}>Pre-Study Intent (Plan Comment):</strong> {block.plan_comment}
             </div>
           )}
 
-          <div style={{ fontSize: 12, color: "#64748b" }}>
+          <div style={{ fontSize: 12, color: "var(--text-tertiary)" }}>
             Take quick notes while studying. Autosaved immediately to the Study Block record (study review) so it survives navigation and reloads.
           </div>
           <textarea
@@ -84,7 +84,9 @@ export default function ActiveCommentModal({
               width: "100%",
               padding: "10px",
               borderRadius: 8,
-              border: "1px solid #cbd5e1",
+              border: "1px solid var(--border-default)",
+              background: "var(--bg-subtle)",
+              color: "var(--text-primary)",
               fontSize: 13,
               fontFamily: "inherit",
               resize: "vertical",
@@ -98,14 +100,14 @@ export default function ActiveCommentModal({
               type="button"
               onClick={onClose}
               disabled={busy}
-              style={{ padding: "8px 14px", borderRadius: 8, border: "1px solid #cbd5e1", background: "#ffffff", color: "#475569", fontWeight: 600, fontSize: 12, cursor: "pointer" }}
+              style={{ padding: "8px 14px", borderRadius: 8, border: "1px solid var(--border-default)", background: "var(--bg-subtle)", color: "var(--text-secondary)", fontWeight: 600, fontSize: 12, cursor: "pointer" }}
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={busy}
-              style={{ padding: "8px 18px", borderRadius: 8, border: "none", background: "#0A64F5", color: "#ffffff", fontWeight: 700, fontSize: 12, cursor: busy ? "not-allowed" : "pointer" }}
+              style={{ padding: "8px 18px", borderRadius: 8, border: "none", background: "var(--brand-primary)", color: "#ffffff", fontWeight: 700, fontSize: 12, cursor: busy ? "not-allowed" : "pointer" }}
             >
               {busy ? "Saving..." : "Save Note"}
             </button>

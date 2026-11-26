@@ -111,7 +111,7 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
       style={{
         position: "fixed",
         inset: 0,
-        backgroundColor: "rgba(15, 23, 42, 0.75)",
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
         backdropFilter: "blur(4px)",
         zIndex: 1200,
         display: "flex",
@@ -124,28 +124,28 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
       <div
         style={{
           width: "min(520px, 98vw)",
-          backgroundColor: "#ffffff",
+          backgroundColor: "var(--bg-surface)",
           borderRadius: 20,
-          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.35)",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
-          border: "1px solid #e2e8f0"
+          border: "1px solid var(--border-default)"
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div style={{ padding: "18px 24px", borderBottom: "1px solid #e2e8f0", display: "flex", justifyContent: "space-between", alignItems: "center", background: "#f8fafc" }}>
+        <div style={{ padding: "18px 24px", borderBottom: "1px solid var(--border-subtle)", display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--bg-subtle)" }}>
           <div>
-            <div style={{ fontSize: 11, fontWeight: 800, color: "#0A64F5", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <div style={{ fontSize: 11, fontWeight: 800, color: "var(--brand-primary)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
               Fast Track
             </div>
-            <h2 style={{ fontSize: 18, fontWeight: 800, color: "#0f172a", margin: "2px 0 0 0" }}>
+            <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", margin: "2px 0 0 0" }}>
               ⚡ Quick Start Study Block
             </h2>
           </div>
           <button
             onClick={onClose}
-            style={{ background: "transparent", border: "none", fontSize: 20, cursor: "pointer", color: "#64748b" }}
+            style={{ background: "transparent", border: "none", fontSize: 20, cursor: "pointer", color: "var(--text-secondary)" }}
           >
             ✕
           </button>
@@ -153,13 +153,13 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
 
         <form onSubmit={handleSubmit} style={{ padding: "20px 24px", display: "flex", flexDirection: "column", gap: 16 }}>
           {error && (
-            <div style={{ padding: "8px 12px", background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 8, color: "#dc2626", fontSize: 13, fontWeight: 600 }}>
+            <div style={{ padding: "8px 12px", background: "rgba(239, 68, 68, 0.12)", border: "1px solid var(--error, #dc2626)", borderRadius: 8, color: "var(--error, #dc2626)", fontSize: 13, fontWeight: 600 }}>
               {error}
             </div>
           )}
 
           <div>
-            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--text-secondary)", marginBottom: 6 }}>
               Subject
             </label>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
@@ -174,9 +174,9 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
                     fontSize: 12,
                     fontWeight: 600,
                     cursor: "pointer",
-                    border: subject === s ? "2px solid #0A64F5" : "1px solid #cbd5e1",
-                    background: subject === s ? "rgba(10, 100, 245, 0.08)" : "#ffffff",
-                    color: subject === s ? "#0A64F5" : "#334155"
+                    border: subject === s ? "2px solid var(--brand-primary)" : "1px solid var(--border-default)",
+                    background: subject === s ? "var(--brand-primary-soft)" : "var(--bg-subtle)",
+                    color: subject === s ? "var(--brand-primary)" : "var(--text-secondary)"
                   }}
                 >
                   {s}
@@ -186,7 +186,7 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
           </div>
 
           <div>
-            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--text-secondary)", marginBottom: 6 }}>
               Topic
             </label>
             <input
@@ -198,7 +198,9 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
                 width: "100%",
                 height: 40,
                 borderRadius: 8,
-                border: "1px solid #cbd5e1",
+                border: "1px solid var(--border-default)",
+                background: "var(--bg-subtle)",
+                color: "var(--text-primary)",
                 padding: "0 12px",
                 fontSize: 14,
                 boxSizing: "border-box"
@@ -209,10 +211,10 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
 
           <div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
-              <label style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>
+              <label style={{ fontSize: 13, fontWeight: 700, color: "var(--text-secondary)" }}>
                 Target Duration
               </label>
-              <span style={{ fontSize: 12, fontWeight: 700, color: "#0A64F5" }}>
+              <span style={{ fontSize: 12, fontWeight: 700, color: "var(--brand-primary)" }}>
                 {isCustomDuration ? `${(Number(customHours) || 0) * 60 + (Number(customMins) || 0)} mins` : `${durationMinutes} mins`}
               </span>
             </div>
@@ -231,9 +233,9 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
                       fontSize: 12,
                       fontWeight: 600,
                       cursor: "pointer",
-                      border: isSelected ? "2px solid #0A64F5" : "1px solid #cbd5e1",
-                      background: isSelected ? "rgba(10, 100, 245, 0.08)" : "#ffffff",
-                      color: isSelected ? "#0A64F5" : "#334155"
+                      border: isSelected ? "2px solid var(--brand-primary)" : "1px solid var(--border-default)",
+                      background: isSelected ? "var(--brand-primary-soft)" : "var(--bg-subtle)",
+                      color: isSelected ? "var(--brand-primary)" : "var(--text-secondary)"
                     }}
                   >
                     {chip.label}
@@ -243,16 +245,16 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
             </div>
 
             {isCustomDuration && (
-              <div style={{ marginTop: 8, padding: "8px 12px", background: "#f8fafc", borderRadius: 8, border: "1px solid #e2e8f0", display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ marginTop: 8, padding: "8px 12px", background: "var(--bg-subtle)", borderRadius: 8, border: "1px solid var(--border-subtle)", display: "flex", alignItems: "center", gap: 8 }}>
                 <input
                   type="number"
                   min="0"
                   max="16"
                   value={customHours}
                   onChange={(e) => handleCustomTimeChange(e.target.value, customMins)}
-                  style={{ width: 45, height: 30, textAlign: "center", borderRadius: 6, border: "1px solid #cbd5e1" }}
+                  style={{ width: 45, height: 30, textAlign: "center", borderRadius: 6, border: "1px solid var(--border-default)", background: "var(--bg-surface)", color: "var(--text-primary)" }}
                 />
-                <span style={{ fontSize: 12, color: "#64748b" }}>h</span>
+                <span style={{ fontSize: 12, color: "var(--text-tertiary)" }}>h</span>
                 <input
                   type="number"
                   min="0"
@@ -260,9 +262,9 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
                   step="5"
                   value={customMins}
                   onChange={(e) => handleCustomTimeChange(customHours, e.target.value)}
-                  style={{ width: 45, height: 30, textAlign: "center", borderRadius: 6, border: "1px solid #cbd5e1" }}
+                  style={{ width: 45, height: 30, textAlign: "center", borderRadius: 6, border: "1px solid var(--border-default)", background: "var(--bg-surface)", color: "var(--text-primary)" }}
                 />
-                <span style={{ fontSize: 12, color: "#64748b" }}>m</span>
+                <span style={{ fontSize: 12, color: "var(--text-tertiary)" }}>m</span>
               </div>
             )}
           </div>
@@ -275,9 +277,9 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
               style={{
                 padding: "10px 18px",
                 borderRadius: 10,
-                border: "1px solid #cbd5e1",
-                background: "#ffffff",
-                color: "#475569",
+                border: "1px solid var(--border-default)",
+                background: "var(--bg-subtle)",
+                color: "var(--text-secondary)",
                 fontSize: 13,
                 fontWeight: 700,
                 cursor: "pointer"
@@ -292,7 +294,7 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
                 padding: "10px 22px",
                 borderRadius: 10,
                 border: "none",
-                background: "#0A64F5",
+                background: "var(--brand-primary)",
                 color: "#ffffff",
                 fontSize: 13,
                 fontWeight: 700,
@@ -300,7 +302,7 @@ export default function QuickStartModal({ open, onClose, onQuickStart, busy = fa
                 boxShadow: "0 2px 8px rgba(10, 100, 245, 0.3)"
               }}
             >
-              {busy ? "Starting…" : "Start Studying Now"}
+              ⚡ Start Immediately
             </button>
           </div>
         </form>

@@ -67,7 +67,7 @@ export default function CarryForwardModal({
       style={{
         position: "fixed",
         inset: 0,
-        backgroundColor: "rgba(15, 23, 42, 0.75)",
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
         backdropFilter: "blur(4px)",
         zIndex: 1300,
         display: "flex",
@@ -80,42 +80,42 @@ export default function CarryForwardModal({
       <div
         style={{
           width: "min(520px, 98vw)",
-          backgroundColor: "#ffffff",
+          backgroundColor: "var(--bg-surface)",
           borderRadius: 20,
-          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.35)",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
-          border: "1px solid #e2e8f0"
+          border: "1px solid var(--border-default)"
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div style={{ padding: "18px 24px", borderBottom: "1px solid #e2e8f0", display: "flex", justifyContent: "space-between", alignItems: "center", background: "#f8fafc" }}>
+        <div style={{ padding: "18px 24px", borderBottom: "1px solid var(--border-subtle)", display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--bg-subtle)" }}>
           <div>
             <div style={{ fontSize: 11, fontWeight: 800, color: "#8b5cf6", textTransform: "uppercase", letterSpacing: "0.08em" }}>
               Work Continuity
             </div>
-            <h2 style={{ fontSize: 18, fontWeight: 800, color: "#0f172a", margin: "2px 0 0 0" }}>
+            <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", margin: "2px 0 0 0" }}>
               Carry Pending Topic Forward
             </h2>
           </div>
-          <button onClick={onClose} style={{ background: "transparent", border: "none", fontSize: 20, cursor: "pointer", color: "#64748b" }}>✕</button>
+          <button onClick={onClose} style={{ background: "transparent", border: "none", fontSize: 20, cursor: "pointer", color: "var(--text-secondary)" }}>✕</button>
         </div>
 
         <form onSubmit={handleSubmit} style={{ padding: "20px 24px", display: "flex", flexDirection: "column", gap: 16 }}>
-          <div style={{ background: "#f8fafc", padding: "12px 14px", borderRadius: 10, border: "1px solid #e2e8f0" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#64748b", textTransform: "uppercase" }}>Original Block</div>
-            <div style={{ fontSize: 14, fontWeight: 700, color: "#0f172a", marginTop: 2 }}>
+          <div style={{ background: "var(--bg-subtle)", padding: "12px 14px", borderRadius: 10, border: "1px solid var(--border-subtle)" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase" }}>Original Block</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginTop: 2 }}>
               {block.PlannedSubject || block.subject} • {block.PlannedTopic || block.topic}
             </div>
-            <div style={{ fontSize: 12, color: "#475569", marginTop: 2 }}>
+            <div style={{ fontSize: 12, color: "var(--text-secondary)", marginTop: 2 }}>
               Target: {block.PlannedMinutes || block.planned_minutes || 60}m • Actual done: {block.ActualMinutes || block.actual_minutes || 0}m
               {block.study_review ? ` • Note: "${block.study_review}"` : ""}
             </div>
           </div>
 
           <div>
-            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--text-secondary)", marginBottom: 6 }}>
               Target Date
             </label>
             <input
@@ -126,7 +126,9 @@ export default function CarryForwardModal({
                 width: "100%",
                 height: 38,
                 borderRadius: 8,
-                border: "1px solid #cbd5e1",
+                border: "1px solid var(--border-default)",
+                background: "var(--bg-subtle)",
+                color: "var(--text-primary)",
                 padding: "0 12px",
                 fontSize: 14,
                 boxSizing: "border-box"
@@ -136,7 +138,7 @@ export default function CarryForwardModal({
           </div>
 
           <div>
-            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--text-secondary)", marginBottom: 6 }}>
               Target Duration for Remaining Work
             </label>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -153,9 +155,9 @@ export default function CarryForwardModal({
                       fontSize: 12,
                       fontWeight: 700,
                       cursor: "pointer",
-                      border: isSelected ? "2px solid #8b5cf6" : "1px solid #cbd5e1",
-                      background: isSelected ? "rgba(139, 92, 246, 0.08)" : "#ffffff",
-                      color: isSelected ? "#8b5cf6" : "#334155"
+                      border: isSelected ? "2px solid #8b5cf6" : "1px solid var(--border-default)",
+                      background: isSelected ? "rgba(139, 92, 246, 0.15)" : "var(--bg-subtle)",
+                      color: isSelected ? "#a78bfa" : "var(--text-secondary)"
                     }}
                   >
                     {chip.label}
@@ -166,7 +168,7 @@ export default function CarryForwardModal({
           </div>
 
           <div>
-            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+            <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--text-secondary)", marginBottom: 6 }}>
               Plan Comment for Carried Block (Editable)
             </label>
             <textarea
@@ -178,7 +180,9 @@ export default function CarryForwardModal({
                 width: "100%",
                 padding: "10px 12px",
                 borderRadius: 8,
-                border: "1px solid #cbd5e1",
+                border: "1px solid var(--border-default)",
+                background: "var(--bg-subtle)",
+                color: "var(--text-primary)",
                 fontSize: 13,
                 fontFamily: "inherit",
                 resize: "vertical",
@@ -196,9 +200,9 @@ export default function CarryForwardModal({
               style={{
                 padding: "10px 18px",
                 borderRadius: 10,
-                border: "1px solid #cbd5e1",
-                background: "#ffffff",
-                color: "#475569",
+                border: "1px solid var(--border-default)",
+                background: "var(--bg-subtle)",
+                color: "var(--text-secondary)",
                 fontSize: 13,
                 fontWeight: 700,
                 cursor: "pointer"
