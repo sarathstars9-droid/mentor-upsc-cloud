@@ -53,31 +53,32 @@ export default function StudyBlockCard({
   const completionPercent = block.completion_percent ?? block.CompletionPercent ?? null;
   const quality = block.quality || block.Quality || "";
   const source = block.source || block.source_type || "manual";
+  const netElapsedMinutes = liveElapsedSec > 0 ? Math.floor(liveElapsedSec / 60) : actualMinutes;
+  const overTargetMinutes = plannedMinutes > 0 && netElapsedMinutes > plannedMinutes ? (netElapsedMinutes - plannedMinutes) : 0;
 
-  // 1. CURRENTLY STUDYING (Active or Paused)
+  // 1. CURRENTLY STUDYING (Active or Paused) - Compact Horizontal Execution Card
   if (sectionType === "studying") {
     return (
       <div
+        className="mos-active-block-card"
         style={{
           background: isPaused
-            ? "linear-gradient(145deg, var(--bg-surface), rgba(234, 179, 8, 0.08))"
-            : "linear-gradient(145deg, var(--bg-surface), rgba(34, 197, 94, 0.08))",
-          border: isPaused ? "2px solid var(--warning, #eab308)" : "2px solid var(--success, #16a34a)",
-          borderRadius: 18,
-          padding: "20px 24px",
-          boxShadow: isPaused
-            ? "0 8px 24px rgba(234, 179, 8, 0.12)"
-            : "0 8px 24px rgba(22, 163, 74, 0.12)",
+            ? "linear-gradient(135deg, var(--bg-surface), rgba(234, 179, 8, 0.05))"
+            : "linear-gradient(135deg, var(--bg-surface), rgba(34, 197, 94, 0.05))",
+          border: isPaused ? "1px solid var(--warning, #eab308)" : "1px solid var(--success, #16a34a)",
+          borderRadius: 14,
+          padding: "16px 20px",
+          boxShadow: "var(--shadow-card)",
           display: "flex",
           flexDirection: "column",
-          gap: 14,
+          gap: 10,
           position: "relative"
         }}
       >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 10 }}>
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-              <span style={{ fontSize: 13, fontWeight: 800, color: isPaused ? "var(--warning, #eab308)" : "var(--success, #16a34a)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 14 }}>
+          <div style={{ flex: "1 1 280px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, flexWrap: "wrap" }}>
+              <span style={{ fontSize: 12, fontWeight: 800, color: isPaused ? "var(--warning, #eab308)" : "var(--success, #16a34a)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                 {subject}
               </span>
               <span
@@ -85,11 +86,11 @@ export default function StudyBlockCard({
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 4,
-                  padding: "2px 8px",
-                  borderRadius: 20,
+                  padding: "2px 7px",
+                  borderRadius: 12,
                   fontSize: 10,
                   fontWeight: 800,
-                  letterSpacing: "0.08em",
+                  letterSpacing: "0.06em",
                   background: isPaused ? "rgba(234, 179, 8, 0.15)" : "rgba(34, 197, 94, 0.15)",
                   color: isPaused ? "var(--warning, #eab308)" : "var(--success, #16a34a)"
                 }}
@@ -97,121 +98,157 @@ export default function StudyBlockCard({
                 <span style={{ width: 6, height: 6, borderRadius: "50%", background: isPaused ? "var(--warning, #eab308)" : "var(--success, #16a34a)" }} />
                 {isPaused ? "PAUSED" : "LIVE"}
               </span>
+              <span style={{ fontSize: 11, color: "var(--text-secondary)" }}>
+                Started: <strong>{formatClockTime(startedAt)}</strong>
+              </span>
+              <span style={{ fontSize: 11, color: "var(--text-tertiary)" }}>
+                • Target: {formatDuration(plannedMinutes)}
+              </span>
+              {overTargetMinutes > 0 && (
+                <span
+                  style={{
+                    fontSize: 10,
+                    fontWeight: 800,
+                    color: "var(--warning, #eab308)",
+                    background: "rgba(234, 179, 8, 0.14)",
+                    padding: "2px 7px",
+                    borderRadius: 8,
+                    letterSpacing: "0.02em"
+                  }}
+                >
+                  +{overTargetMinutes}m over target
+                </span>
+              )}
             </div>
 
-            <h3 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", margin: 0 }}>
+            <h3 style={{ fontSize: 16, fontWeight: 800, color: "var(--text-primary)", margin: 0, lineHeight: 1.3 }}>
               {topic}
               {subtopic && <span style={{ color: "var(--text-secondary)", fontWeight: 600 }}> → {subtopic}</span>}
             </h3>
           </div>
 
-          <div style={{ textAlign: "right" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase" }}>
-              Target: {formatDuration(plannedMinutes)}
+          {/* Proportional live timer and execution controls */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+            <div style={{
+              display: "flex",
+              alignItems: "baseline",
+              gap: 8,
+              background: "var(--bg-subtle)",
+              padding: "6px 14px",
+              borderRadius: 10,
+              border: "1px solid var(--border-subtle)"
+            }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase" }}>
+                Elapsed
+              </span>
+              <span style={{
+                fontFamily: "var(--mono, monospace)",
+                fontSize: 20,
+                fontWeight: 800,
+                color: isPaused ? "var(--warning, #eab308)" : "var(--success, #16a34a)",
+                letterSpacing: "0.04em"
+              }}>
+                {formatElapsedTimer(liveElapsedSec)}
+              </span>
+              {overTargetMinutes > 0 && (
+                <span style={{ fontSize: 10, color: "var(--warning, #eab308)", fontWeight: 700 }}>
+                  (+{overTargetMinutes}m)
+                </span>
+              )}
             </div>
-            <div style={{ fontSize: 12, color: "var(--text-secondary)", marginTop: 2 }}>
-              Started: <strong>{formatClockTime(startedAt)}</strong>
+
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <button
+                type="button"
+                onClick={() => onOpenComment?.(block)}
+                disabled={busy}
+                style={{
+                  padding: "7px 12px",
+                  borderRadius: 8,
+                  border: "1px solid var(--border-default)",
+                  background: "var(--bg-surface)",
+                  color: "var(--text-primary)",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  cursor: "pointer"
+                }}
+              >
+                + Comment
+              </button>
+
+              {isPaused ? (
+                <button
+                  type="button"
+                  onClick={() => onResume?.(block.BlockId || block.block_id || block.id)}
+                  disabled={busy}
+                  style={{
+                    padding: "7px 14px",
+                    borderRadius: 8,
+                    border: "1px solid var(--success, #16a34a)",
+                    background: "rgba(34, 197, 94, 0.12)",
+                    color: "var(--success, #16a34a)",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    cursor: "pointer"
+                  }}
+                >
+                  ▶ Resume
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => onPause?.(block.BlockId || block.block_id || block.id)}
+                  disabled={busy}
+                  style={{
+                    padding: "7px 14px",
+                    borderRadius: 8,
+                    border: "1px solid var(--warning, #eab308)",
+                    background: "rgba(234, 179, 8, 0.12)",
+                    color: "var(--warning, #eab308)",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    cursor: "pointer"
+                  }}
+                >
+                  ⏸ Pause
+                </button>
+              )}
+
+              <button
+                type="button"
+                onClick={() => onFinish?.(block)}
+                disabled={busy}
+                style={{
+                  padding: "7px 16px",
+                  borderRadius: 8,
+                  border: "none",
+                  background: "var(--success, #16a34a)",
+                  color: "#ffffff",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  boxShadow: "0 2px 8px rgba(22, 163, 74, 0.25)"
+                }}
+              >
+                ✓ Finish Block
+              </button>
             </div>
           </div>
         </div>
 
-        {/* Big Live Elapsed Counter */}
-        <div style={{ display: "flex", alignItems: "baseline", gap: 12, background: "var(--bg-subtle)", padding: "12px 18px", borderRadius: 12, border: "1px solid var(--border-subtle)" }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase" }}>Elapsed</div>
-          <div style={{ fontFamily: "var(--mono, monospace)", fontSize: 26, fontWeight: 800, color: isPaused ? "var(--warning, #eab308)" : "var(--success, #16a34a)", letterSpacing: "0.04em" }}>
-            {formatElapsedTimer(liveElapsedSec)}
-          </div>
-          {isPaused && (
-            <span style={{ fontSize: 12, color: "var(--warning, #eab308)", fontWeight: 600 }}>(Timer paused)</span>
-          )}
-        </div>
-
-        {/* Plan Comment or live notes */}
-        {(planComment || studyReview) && (
-          <div style={{ fontSize: 13, color: "var(--text-primary)", background: "var(--bg-subtle)", padding: "10px 14px", borderRadius: 8, borderLeft: "3px solid var(--brand-primary)" }}>
-            {planComment && <div><span style={{ fontWeight: 700, color: "var(--brand-primary)" }}>Plan: </span>{planComment}</div>}
-            {studyReview && <div style={{ marginTop: 4 }}><span style={{ fontWeight: 700, color: "var(--success, #16a34a)" }}>Note: </span>{studyReview}</div>}
+        {planComment && (
+          <div style={{
+            fontSize: 12,
+            color: "var(--text-secondary)",
+            background: "var(--bg-subtle)",
+            padding: "6px 12px",
+            borderRadius: 6,
+            borderLeft: "3px solid var(--brand-primary)"
+          }}>
+            <span style={{ fontWeight: 700, color: "var(--brand-primary)" }}>Intent: </span>
+            {planComment}
           </div>
         )}
-
-        {/* Action Buttons: [+ Comment], [Pause/Resume], [Finish] */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center", marginTop: 4 }}>
-          <button
-            type="button"
-            onClick={() => onOpenComment?.(block)}
-            disabled={busy}
-            style={{
-              padding: "8px 14px",
-              borderRadius: 8,
-              border: "1px solid var(--border-default)",
-              background: "var(--bg-subtle)",
-              color: "var(--text-primary)",
-              fontSize: 13,
-              fontWeight: 600,
-              cursor: "pointer"
-            }}
-          >
-            + Comment
-          </button>
-
-          {isPaused ? (
-            <button
-              type="button"
-              onClick={() => onResume?.(block.BlockId || block.block_id || block.id)}
-              disabled={busy}
-              style={{
-                padding: "8px 16px",
-                borderRadius: 8,
-                border: "1px solid var(--success, #16a34a)",
-                background: "rgba(34, 197, 94, 0.12)",
-                color: "var(--success, #16a34a)",
-                fontSize: 13,
-                fontWeight: 700,
-                cursor: "pointer"
-              }}
-            >
-              ▶ Resume
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={() => onPause?.(block.BlockId || block.block_id || block.id)}
-              disabled={busy}
-              style={{
-                padding: "8px 16px",
-                borderRadius: 8,
-                border: "1px solid var(--warning, #eab308)",
-                background: "rgba(234, 179, 8, 0.12)",
-                color: "var(--warning, #eab308)",
-                fontSize: 13,
-                fontWeight: 700,
-                cursor: "pointer"
-              }}
-            >
-              ⏸ Pause
-            </button>
-          )}
-
-          <button
-            type="button"
-            onClick={() => onFinish?.(block)}
-            disabled={busy}
-            style={{
-              padding: "8px 22px",
-              borderRadius: 8,
-              border: "none",
-              background: "var(--success, #16a34a)",
-              color: "#ffffff",
-              fontSize: 13,
-              fontWeight: 700,
-              cursor: "pointer",
-              marginLeft: "auto",
-              boxShadow: "0 4px 12px rgba(22, 163, 74, 0.25)"
-            }}
-          >
-            ✓ Finish Block
-          </button>
-        </div>
       </div>
     );
   }
