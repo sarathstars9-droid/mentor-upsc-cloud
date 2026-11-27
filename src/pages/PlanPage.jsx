@@ -1272,17 +1272,23 @@ export default function PlanPage() {
   const dashboardMetrics = useMemo(() => {
     let plannedMinutes = 0;
     let completedActual = 0;
+    let provisionalRecovered = 0;
     let activeNetElapsed = 0;
 
     for (const b of todayBlocks) {
       const s = (b.Status || b.status || "").toLowerCase();
       const planned = Number(b.PlannedMinutes ?? b.planned_minutes ?? b.Minutes ?? 0);
       const actual = Number(b.ActualMinutes ?? b.actual_minutes ?? 0);
+      const isProvisional = Boolean(b.isProvisional || b.is_provisional || b.Reason === "stale_session_recovered" || b.completion_reason === "stale_session_recovered");
 
       plannedMinutes += planned;
 
       if (s === "completed" || s === "done") {
-        completedActual += actual;
+        if (isProvisional) {
+          provisionalRecovered += actual;
+        } else {
+          completedActual += actual;
+        }
       } else if (s === "active" || s === "studying") {
         activeNetElapsed += liveElapsedSec > 0 ? Math.floor(liveElapsedSec / 60) : (actual || 0);
       } else if (s === "paused") {
@@ -1299,6 +1305,7 @@ export default function PlanPage() {
     return {
       plannedMinutes,
       completedMinutes: completedActual,
+      provisionalMinutes: provisionalRecovered,
       studyingMinutes: activeNetElapsed,
       remainingMinutes,
       executionPercent,
@@ -1525,22 +1532,40 @@ export default function PlanPage() {
             (!b.LastResumeAt ||
               new Date(b.LastPauseAt).getTime() > new Date(b.LastResumeAt).getTime());
 
-          if (b.ActualEnd) {
-            if (
-              rawStatus === BLOCK_STATUS.PARTIAL ||
-              rawStatus === BLOCK_STATUS.MISSED ||
-              rawStatus === BLOCK_STATUS.SKIPPED
-            ) {
-              derivedStatus = rawStatus;
-            } else {
-              derivedStatus = BLOCK_STATUS.COMPLETED;
-            }
+          if (
+            rawStatus === BLOCK_STATUS.MISSED ||
+            rawStatus === "missed"
+          ) {
+            derivedStatus = BLOCK_STATUS.MISSED;
+          } else if (
+            rawStatus === BLOCK_STATUS.SKIPPED ||
+            rawStatus === "skipped" ||
+            rawStatus === "stopped"
+          ) {
+            derivedStatus = BLOCK_STATUS.SKIPPED;
+          } else if (
+            rawStatus === BLOCK_STATUS.PARTIAL ||
+            rawStatus === "partial"
+          ) {
+            derivedStatus = BLOCK_STATUS.PARTIAL;
+          } else if (
+            rawStatus === "carried_forward"
+          ) {
+            derivedStatus = "carried_forward";
+          } else if (
+            rawStatus === BLOCK_STATUS.COMPLETED ||
+            rawStatus === "completed" ||
+            b.IsCompleted
+          ) {
+            derivedStatus = BLOCK_STATUS.COMPLETED;
           } else if (rawStatus === "review_pending") {
             derivedStatus = "review_pending";
           } else if (rawStatus === BLOCK_STATUS.PAUSED || pausedAfterResume) {
             derivedStatus = BLOCK_STATUS.PAUSED;
-          } else if (b.ActualStart) {
+          } else if (b.ActualStart && !b.ActualEnd) {
             derivedStatus = BLOCK_STATUS.ACTIVE;
+          } else if (b.ActualEnd) {
+            derivedStatus = BLOCK_STATUS.COMPLETED;
           }
 
           let mappedNodes = [];
@@ -1620,6 +1645,11 @@ export default function PlanPage() {
             Source: b.Source || b.source || "manual",
             parent_block_id: b.parent_block_id || b.ParentBlockId || null,
             ParentBlockId: b.ParentBlockId || b.parent_block_id || null,
+
+            Reason: b.Reason || b.completion_reason || "",
+            completion_reason: b.completion_reason || b.Reason || "",
+            isProvisional: Boolean(b.isProvisional || b.is_provisional || b.Reason === "stale_session_recovered" || b.completion_reason === "stale_session_recovered"),
+            is_provisional: Boolean(b.isProvisional || b.is_provisional || b.Reason === "stale_session_recovered" || b.completion_reason === "stale_session_recovered"),
 
             SyllabusTop1Code: normalizeMappingCode(b.MappingCode || ""),
             SyllabusTop1Path: b.MappingPath || "",
@@ -2852,7 +2882,18 @@ export default function PlanPage() {
   async function handleFinishBlock({ blockId, dayKey, actualEndTime, actualMinutes, completionPercent, quality, studyReview }) {
     setBusy(true);
     try {
-      const res = await fetchWithAuth("/api/plan/blocks/complete", {
+      const isProvisional = Boolean(
+        completionSheetBlock?.IsProvisional ||
+        completionSheetBlock?.isProvisional ||
+        completionSheetBlock?.is_provisional ||
+        (completionSheetBlock?.Reason === "stale_session_recovered" && !completionSheetBlock?.completed_at && completionSheetBlock?.completion_source !== "user_confirmed")
+      );
+
+      const endpoint = isProvisional
+        ? "/api/plan/blocks/confirm-recovery"
+        : "/api/plan/blocks/complete";
+
+      const res = await fetchWithAuth(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -2867,11 +2908,11 @@ export default function PlanPage() {
       });
       const data = await res.json();
       if (!data?.ok) {
-        setStatus(`❌ Finish failed: ${data?.error || "unknown"}`);
+        setStatus(`❌ ${isProvisional ? "Confirmation" : "Finish"} failed: ${data?.message || data?.error || "unknown"}`);
         return;
       }
       setCompletionSheetBlock(null);
-      setStatus("✅ Study block completed!");
+      setStatus(isProvisional ? "✅ Recovery duration confirmed!" : "✅ Study block completed!");
       await loadBlocksForDate(date);
     } catch (err) {
       console.error("handleFinishBlock error:", err);

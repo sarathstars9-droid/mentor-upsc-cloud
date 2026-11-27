@@ -470,3 +470,4 @@ runTestCase("P0 Scheduler Deduplication E2E Logic Simulation", () => {
 });
 
 console.log("\nALL TESTS PASSED SUCCESSFULLY!");
+process.exit(0);

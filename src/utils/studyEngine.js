@@ -1,4 +1,4 @@
-import { BLOCK_STATUS } from "../blockConstants";
+import { BLOCK_STATUS } from "../blockConstants.js";
 
 export function safeNumber(value, fallback = 0) {
   const n = Number(value);
@@ -289,9 +289,44 @@ export function hhmmToMinutes(hhmm) {
   return Number(m[1]) * 60 + Number(m[2]);
 }
 
-export function sumActualMinutes(blocks) {
+export function sumActualMinutes(blocks, excludeProvisional = false) {
   return (blocks || []).reduce((sum, block) => {
+    if (excludeProvisional && (block?.isProvisional || block?.is_provisional || block?.Reason === 'stale_session_recovered')) {
+      return sum;
+    }
     return sum + safeNumber(block?.ActualMinutes, 0);
+  }, 0);
+}
+
+export function sumVerifiedActualMinutes(blocks) {
+  return (blocks || []).reduce((sum, block) => {
+    const isProvisional = Boolean(
+      block?.IsProvisional ||
+      block?.isProvisional ||
+      block?.is_provisional ||
+      (block?.Reason === 'stale_session_recovered' && !block?.IsUserConfirmed && block?.completion_source !== 'user_confirmed')
+    );
+    if (isProvisional) {
+      return sum;
+    }
+    const mins = Number(block?.ActualMinutes ?? block?.actual_minutes ?? 0);
+    return sum + (Number.isFinite(mins) ? mins : 0);
+  }, 0);
+}
+
+export function sumProvisionalMinutes(blocks) {
+  return (blocks || []).reduce((sum, block) => {
+    const isProvisional = Boolean(
+      block?.IsProvisional ||
+      block?.isProvisional ||
+      block?.is_provisional ||
+      (block?.Reason === 'stale_session_recovered' && !block?.IsUserConfirmed && block?.completion_source !== 'user_confirmed')
+    );
+    if (isProvisional) {
+      const mins = Number(block?.ActualMinutes ?? block?.actual_minutes ?? 0);
+      return sum + (Number.isFinite(mins) ? mins : 0);
+    }
+    return sum;
   }, 0);
 }
 

@@ -1552,6 +1552,13 @@ details.adv-controls[open] .adv-controls-chevron {
   }
 }
 
+.mos-app-container-v2 {
+  background: var(--bg-page);
+  color: var(--text-primary);
+  min-height: 100vh;
+  width: 100%;
+}
+
 /* ── MOBILE OVERFLOW & RESPONSIVENESS FIXES (320px - 600px) ── */
 @media (max-width: 600px) {
   .mos-app-container-v2 {

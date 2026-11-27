@@ -33,12 +33,25 @@ export default function CompletionSheetModal({
   const [actualMinutesCalculated, setActualMinutesCalculated] = useState(0);
   const [error, setError] = useState("");
 
+  const isProvisional = Boolean(
+    block?.isProvisional ||
+    block?.is_provisional ||
+    (block?.Reason === "stale_session_recovered" && !block?.completed_at && block?.completion_source !== "user_confirmed")
+  );
+
   const startedAt = block?.ActualStart ? new Date(block.ActualStart) : (block?.started_at ? new Date(block.started_at) : new Date());
 
   useEffect(() => {
     if (open && block) {
       const now = new Date();
-      setEndTimeInput(toTimeInputValue(now));
+      const initialMinutes = Number(block.ActualMinutes ?? block.actual_minutes ?? 0);
+      if (initialMinutes > 0 && startedAt && !isNaN(startedAt.getTime())) {
+        const targetEnd = new Date(startedAt.getTime() + initialMinutes * 60000);
+        setEndTimeInput(toTimeInputValue(targetEnd));
+        setActualMinutesCalculated(initialMinutes);
+      } else {
+        setEndTimeInput(toTimeInputValue(now));
+      }
       setCompletionPercent(block.completion_percent || block.CompletionPercent || 75);
       setQuality(block.quality || block.Quality || "Good");
       setStudyReview(block.study_review || block.StudyReview || "");
@@ -103,7 +116,7 @@ export default function CompletionSheetModal({
     endCandidate.setHours(hh, mm, 0, 0);
 
     let finalEndDate = endCandidate;
-    if (endCandidate.getTime() < startedAt.getTime()) {
+    if (!isProvisional && endCandidate.getTime() < startedAt.getTime()) {
       if (startedAt.getTime() - endCandidate.getTime() < 60000) {
         // Same minute rounding edge case: within 60s
         finalEndDate = new Date(startedAt.getTime() + 60000);
@@ -162,11 +175,11 @@ export default function CompletionSheetModal({
         {/* Header */}
         <div style={{ padding: "18px 24px", borderBottom: "1px solid var(--border-subtle)", display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--bg-subtle)" }}>
           <div>
-            <div style={{ fontSize: 11, fontWeight: 800, color: "var(--success, #16a34a)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-              Study Execution Complete
+            <div style={{ fontSize: 11, fontWeight: 800, color: isProvisional ? "var(--warning, #d97706)" : "var(--success, #16a34a)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              {isProvisional ? "Confirm Recovered Session" : "Study Execution Complete"}
             </div>
             <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", margin: "2px 0 0 0" }}>
-              Finish: {block.PlannedSubject || block.subject || "Study Block"}
+              {isProvisional ? "Confirm Duration: " : "Finish: "} {block.PlannedSubject || block.subject || "Study Block"}
             </h2>
             <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>
               {block.PlannedTopic || block.topic || block.custom_topic || ""}
@@ -199,7 +212,7 @@ export default function CompletionSheetModal({
 
             <div>
               <label style={{ display: "block", fontSize: 11, fontWeight: 700, color: "var(--brand-primary)", textTransform: "uppercase", marginBottom: 2 }}>
-                End Time (Correct)
+                End Time
               </label>
               <input
                 type="time"
@@ -214,16 +227,42 @@ export default function CompletionSheetModal({
                   fontSize: 13,
                   fontWeight: 600,
                   color: "var(--text-primary)",
-                  background: "var(--bg-surface)"
+                  background: "var(--bg-surface)",
+                  boxSizing: "border-box"
                 }}
               />
             </div>
 
-            <div style={{ textAlign: "right" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "var(--success, #16a34a)", textTransform: "uppercase" }}>Actual Time</div>
-              <div style={{ fontSize: 17, fontWeight: 800, color: "var(--success, #16a34a)", marginTop: 2 }}>
-                {formatDurationDisplay(actualMinutesCalculated)}
-              </div>
+            <div>
+              <label style={{ display: "block", fontSize: 11, fontWeight: 700, color: "var(--success, #16a34a)", textTransform: "uppercase", marginBottom: 2 }}>
+                Actual (Mins)
+              </label>
+              <input
+                type="number"
+                min="0"
+                max="720"
+                value={actualMinutesCalculated}
+                onChange={(e) => {
+                  const val = Math.max(0, parseInt(e.target.value, 10) || 0);
+                  setActualMinutesCalculated(val);
+                  if (startedAt && !isNaN(startedAt.getTime())) {
+                    const newEnd = new Date(startedAt.getTime() + val * 60000);
+                    setEndTimeInput(toTimeInputValue(newEnd));
+                  }
+                }}
+                style={{
+                  height: 32,
+                  width: "100%",
+                  padding: "0 8px",
+                  borderRadius: 6,
+                  border: "1px solid var(--border-default)",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  color: "var(--text-primary)",
+                  background: "var(--bg-surface)",
+                  boxSizing: "border-box"
+                }}
+              />
             </div>
           </div>
 
@@ -346,15 +385,15 @@ export default function CompletionSheetModal({
                 padding: "10px 24px",
                 borderRadius: 10,
                 border: "none",
-                background: "var(--success, #16a34a)",
+                background: isProvisional ? "var(--brand-primary)" : "var(--success, #16a34a)",
                 color: "#ffffff",
                 fontWeight: 700,
                 fontSize: 13,
                 cursor: busy ? "not-allowed" : "pointer",
-                boxShadow: "0 4px 14px rgba(22, 163, 74, 0.3)"
+                boxShadow: isProvisional ? "0 4px 14px rgba(10, 100, 245, 0.3)" : "0 4px 14px rgba(22, 163, 74, 0.3)"
               }}
             >
-              {busy ? "Saving..." : "✓ COMPLETE BLOCK"}
+              {busy ? "Saving..." : (isProvisional ? "✓ CONFIRM DURATION" : "✓ COMPLETE BLOCK")}
             </button>
           </div>
         </form>

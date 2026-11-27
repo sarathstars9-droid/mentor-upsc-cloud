@@ -16,6 +16,7 @@ export default function TodayExecutionRail({
 }) {
   const planned = Number(dashboardMetrics?.plannedMinutes) || 0;
   const completed = Number(dashboardMetrics?.completedMinutes) || 0;
+  const provisional = Number(dashboardMetrics?.provisionalMinutes) || 0;
   const studying = Number(dashboardMetrics?.studyingMinutes) || 0;
   const remaining = Number(dashboardMetrics?.remainingMinutes) || 0;
   const progressPercent = Math.min(100, Number(dashboardMetrics?.executionPercent) || 0);
@@ -92,6 +93,34 @@ export default function TodayExecutionRail({
           </div>
         </div>
       </div>
+
+      {/* Provisional (Unconfirmed) Recovery Notice */}
+      {provisional > 0 && (
+        <div
+          style={{
+            background: "rgba(217, 119, 6, 0.08)",
+            border: "1px solid rgba(217, 119, 6, 0.25)",
+            borderRadius: 8,
+            padding: "8px 12px",
+            marginBottom: 14,
+            display: "flex",
+            flexDirection: "column",
+            gap: 4
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span style={{ fontSize: 11, fontWeight: 700, color: "var(--warning, #d97706)" }}>
+              Provisional Recovery Time
+            </span>
+            <span style={{ fontSize: 12, fontWeight: 800, fontFamily: "var(--mono, monospace)", color: "var(--warning, #d97706)" }}>
+              {formatDuration(provisional)} (unconfirmed)
+            </span>
+          </div>
+          <div style={{ fontSize: 10, color: "var(--text-tertiary)", lineHeight: 1.3 }}>
+            Auto-recovered session — excluded from verified study time until confirmed.
+          </div>
+        </div>
+      )}
 
       {/* Over-Target Badge if applicable */}
       {overTargetMinutes > 0 && (

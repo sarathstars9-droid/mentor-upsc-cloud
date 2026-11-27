@@ -979,7 +979,10 @@ async function ensureSoftDeleteColumns() {
     await pool.query(`
       ALTER TABLE public.study_blocks
       ADD COLUMN IF NOT EXISTS archived_at TIMESTAMPTZ,
-      ADD COLUMN IF NOT EXISTS schedule_deleted_at TIMESTAMPTZ;
+      ADD COLUMN IF NOT EXISTS schedule_deleted_at TIMESTAMPTZ,
+      ADD COLUMN IF NOT EXISTS is_provisional BOOLEAN DEFAULT FALSE,
+      ADD COLUMN IF NOT EXISTS completion_source TEXT,
+      ADD COLUMN IF NOT EXISTS completed_by TEXT;
     `);
   } catch (err) {
     console.warn("ensureSoftDeleteColumns warning:", err.message);
@@ -1236,6 +1239,182 @@ export async function updateStudyBlock(userId = DEFAULT_USER, dayKeyOrBlockId, m
     attachBlockGetter(resState);
   }
   return resState;
+}
+
+// ── CONFIRM RECOVERED STUDY BLOCK (IDEMPOTENT) ──────────────────────────────────
+export async function confirmRecoveredBlock(
+  userId = DEFAULT_USER,
+  blockId,
+  dayKeyOrOptions,
+  maybeOptions = {}
+) {
+  await ensureSoftDeleteColumns();
+  const normalizedUid = String(userId || '').toLowerCase().trim();
+  let dayKey, options;
+  if (typeof dayKeyOrOptions === 'string') {
+    dayKey = dayKeyOrOptions;
+    options = maybeOptions || {};
+  } else {
+    options = dayKeyOrOptions || {};
+    dayKey = options.dayKey || options.day_key || null;
+  }
+
+  const {
+    actualMinutes = null,
+    actualEndTime = null,
+    endedAt = null,
+    studyReview = '',
+    study_review = '',
+    quality = 'Good',
+    completionPercent = 100,
+    completion_percent = 100
+  } = options;
+
+  const targetDayKey = dayKey ? String(dayKey).slice(0, 10) : null;
+
+  // 1. Strict User Isolation: fetch the target block for this user only
+  const { rows: existingRows } = await criticalQuery(
+    `SELECT * FROM public.study_blocks
+     WHERE user_id = $1 AND (block_id = $2 OR id::text = $2)
+       AND ($3::text IS NULL OR day_key = $3)`,
+    [normalizedUid, String(blockId), targetDayKey]
+  );
+
+  if (!existingRows.length) {
+    throw Object.assign(
+      new Error(`Study block ${blockId} not found or unauthorized for user ${userId}`),
+      { code: 'NOT_FOUND', status: 404 }
+    );
+  }
+
+  const existingBlock = existingRows[0];
+
+  // 2. Validate target block: must be a recovered or provisional block (or idempotent re-confirmation)
+  const isRecovered = existingBlock.completion_reason === 'stale_session_recovered';
+  const isProvisional = existingBlock.is_provisional === true || isRecovered;
+
+  if (!isProvisional && existingBlock.completion_source !== 'user_confirmed') {
+    throw Object.assign(
+      new Error(`Block ${blockId} is not a recovered provisional session requiring confirmation`),
+      { code: 'INVALID_CONFIRMATION_TARGET', status: 400 }
+    );
+  }
+
+  // 3. Calculate and validate actualMinutes
+  let finalActualMinutes = actualMinutes != null ? Number(actualMinutes) : existingBlock.actual_minutes;
+  if (!Number.isFinite(finalActualMinutes) || finalActualMinutes < 0) {
+    finalActualMinutes = existingBlock.actual_minutes || existingBlock.planned_minutes || 0;
+  }
+
+  const finalReview = String(studyReview || study_review || existingBlock.study_review || '').trim();
+  const finalQuality = String(quality || existingBlock.quality || 'Good').trim();
+  const finalCompletion = Number(completionPercent ?? completion_percent ?? existingBlock.completion_percent ?? 100);
+
+  const confirmTimestamp = new Date();
+  const finalEndedAt = actualEndTime || endedAt || existingBlock.ended_at || confirmTimestamp;
+
+  // 4. Update study_blocks:
+  // - Mark user_confirmed provenance
+  // - Set completed_at timestamp
+  // - Clear is_provisional
+  // - Preserve completion_reason = 'stale_session_recovered'
+  // - Update actual_minutes, study_review, quality, completion_percent
+  const { rows: updatedRows } = await criticalQuery(
+    `UPDATE public.study_blocks
+     SET actual_minutes = $1,
+         study_review = $2,
+         quality = $3,
+         completion_percent = $4,
+         status = 'completed',
+         completed_at = COALESCE(completed_at, $5),
+         completion_source = 'user_confirmed',
+         completed_by = $6,
+         ended_at = COALESCE(ended_at, $7),
+         is_provisional = FALSE,
+         updated_at = NOW()
+     WHERE id = $8
+     RETURNING *`,
+    [
+      finalActualMinutes,
+      finalReview,
+      finalQuality,
+      finalCompletion,
+      confirmTimestamp,
+      normalizedUid,
+      finalEndedAt,
+      existingBlock.id
+    ]
+  );
+
+  const finalBlock = updatedRows[0] || existingBlock;
+
+  // 5. Prevent duplicate block_logs: IDEMPOTENT upsert/check
+  const { rows: existingLogs } = await criticalQuery(
+    `SELECT id FROM public.block_logs
+     WHERE user_id = $1 AND block_id = $2`,
+    [normalizedUid, finalBlock.id]
+  );
+
+  if (existingLogs.length > 0) {
+    await criticalQuery(
+      `UPDATE public.block_logs
+       SET actual_minutes = $1,
+           weakness_note = $2,
+           completion_status = 'completed',
+           ended_at = $3
+       WHERE id = $4`,
+      [finalActualMinutes, finalReview, finalEndedAt, existingLogs[0].id]
+    );
+  } else {
+    await criticalQuery(
+      `INSERT INTO public.block_logs (
+         block_id, user_id, started_at, ended_at, actual_minutes, completion_status,
+         output_type, output_count, confidence, weakness_note
+       )
+       VALUES ($1, $2, $3, $4, $5, 'completed', null, 0, '1', $6)`,
+      [
+        finalBlock.id,
+        normalizedUid,
+        finalBlock.started_at || confirmTimestamp,
+        finalEndedAt,
+        finalActualMinutes,
+        finalReview
+      ]
+    );
+  }
+
+  // 6. Log RECOVERY_CONFIRMED event in study_events idempotently
+  try {
+    const { logStudyEvent } = await import('./eventService.js');
+    await logStudyEvent({
+      userId: normalizedUid,
+      eventType: 'RECOVERY_CONFIRMED',
+      subject: finalBlock.subject,
+      topic: finalBlock.topic,
+      syllabusNodeId: finalBlock.node_id || finalBlock.syllabus_node_id,
+      blockId: finalBlock.id,
+      occurrenceTimestamp: confirmTimestamp,
+      metadata: {
+        actual_minutes: finalActualMinutes,
+        previous_minutes: existingBlock.actual_minutes,
+        confirmation_provenance: 'user_confirmed',
+        confirmed_at: confirmTimestamp.toISOString(),
+        study_review: finalReview,
+        quality: finalQuality,
+        completion_percent: finalCompletion,
+        original_reason: existingBlock.completion_reason
+      }
+    });
+  } catch (err) {
+    console.error('[confirmRecoveredBlock] event logging error:', err.message);
+  }
+
+  const curState = toFrontendBlock(finalBlock);
+  if (curState) {
+    curState.ok = true;
+    attachBlockGetter(curState);
+  }
+  return curState;
 }
 
 // ── CARRY FORWARD STUDY BLOCK ──────────────────────────────────────────────────

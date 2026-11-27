@@ -224,9 +224,10 @@ async function runAllMigrations() {
     ['061 Canonical study blocks',                       'migrations/061_canonical_study_blocks.sql'],
     ['062 Daily plan images',                            'migrations/062_daily_plan_images.sql'],
     ['063 Reconcile active constraint',                  'migrations/063_reconcile_active_constraint.sql'],
+    ['064 Recovery confirmation & provisional columns',   'migrations/064_recovery_confirmation_and_provisional_columns.sql'],
   ];
 
-  // Run 001-063 via standard runner
+  // Run 001-064 via standard runner
   for (const [label, file] of migrations.filter(([l]) => !l.startsWith('005'))) {
     if (file.includes('036_enforce_single_active_paused_block')) {
       const idxRes = await query(`

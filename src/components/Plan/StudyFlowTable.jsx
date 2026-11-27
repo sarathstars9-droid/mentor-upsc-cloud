@@ -32,6 +32,12 @@ function getStatusPill(status) {
         color: "var(--success, #16a34a)",
         bg: "rgba(34, 197, 94, 0.1)"
       };
+    case "partial":
+      return {
+        label: "PARTIAL",
+        color: "var(--warning, #d97706)",
+        bg: "var(--warning-soft, rgba(217, 119, 6, 0.12))"
+      };
     case "planned":
     case "pending":
       return {
@@ -39,9 +45,14 @@ function getStatusPill(status) {
         color: "var(--text-secondary)",
         bg: "var(--bg-subtle)"
       };
+    case "missed":
+      return {
+        label: "MISSED",
+        color: "var(--danger, #ef4444)",
+        bg: "rgba(239, 68, 68, 0.12)"
+      };
     case "skipped":
     case "stopped":
-    case "missed":
       return {
         label: "SKIPPED",
         color: "var(--text-tertiary)",
@@ -50,8 +61,8 @@ function getStatusPill(status) {
     case "carried_forward":
       return {
         label: "CARRIED FORWARD",
-        color: "#a78bfa",
-        bg: "rgba(139, 92, 246, 0.1)"
+        color: "#8b5cf6",
+        bg: "rgba(139, 92, 246, 0.12)"
       };
     default:
       return {
@@ -123,13 +134,17 @@ export default function StudyFlowTable({
           const subtopic = block.subtopic || block.Subtopic || "";
           const plannedMins = Number(block.PlannedMinutes || block.planned_minutes || 0);
           const actualMins = Number(block.ActualMinutes || block.actual_minutes || 0);
+          const isProvisional = Boolean(block.isProvisional || block.is_provisional || block.Reason === "stale_session_recovered" || block.completion_reason === "stale_session_recovered");
           const pill = getStatusPill(s);
           const blockId = block.BlockId || block.block_id || block.id;
 
           const isActive = s === "active" || s === "studying";
           const isPaused = s === "paused";
           const isDone = s === "completed" || s === "done";
-          const isSkipped = s === "skipped" || s === "stopped" || s === "missed";
+          const isPartial = s === "partial";
+          const isMissed = s === "missed";
+          const isSkipped = s === "skipped" || s === "stopped";
+          const isCarriedForward = s === "carried_forward";
           const isPlanned = s === "planned" || s === "pending";
 
           return (
@@ -179,6 +194,22 @@ export default function StudyFlowTable({
                     >
                       {pill.label}
                     </span>
+                    {isProvisional && (
+                      <span
+                        style={{
+                          fontSize: 9,
+                          fontWeight: 800,
+                          letterSpacing: "0.04em",
+                          color: "var(--warning, #d97706)",
+                          background: "var(--warning-soft, rgba(217, 119, 6, 0.12))",
+                          border: "1px solid rgba(217, 119, 6, 0.25)",
+                          padding: "1px 6px",
+                          borderRadius: 4
+                        }}
+                      >
+                        Provisional (Unconfirmed)
+                      </span>
+                    )}
                   </div>
 
                   <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", wordBreak: "break-word", overflowWrap: "anywhere", lineHeight: 1.35 }}>
@@ -195,11 +226,19 @@ export default function StudyFlowTable({
 
               {/* Planned vs Actual Duration */}
               <div style={{ textAlign: "right" }}>
-                <div style={{ fontSize: 12, fontWeight: 800, fontFamily: "var(--mono, monospace)", color: "var(--text-primary)" }}>
-                  {isDone ? `${formatDuration(actualMins)} done` : formatDuration(plannedMins)}
+                <div style={{ fontSize: 12, fontWeight: 800, fontFamily: "var(--mono, monospace)", color: isProvisional ? "var(--warning, #d97706)" : (isDone || isPartial ? "var(--text-primary)" : "var(--text-secondary)") }}>
+                  {isDone
+                    ? (isProvisional ? `${formatDuration(actualMins)} (provisional)` : `${formatDuration(actualMins)} done`)
+                    : isPartial
+                    ? `${formatDuration(actualMins)} / ${formatDuration(plannedMins)}`
+                    : isMissed
+                    ? `0m / ${formatDuration(plannedMins)}`
+                    : isSkipped
+                    ? `Skipped (${formatDuration(plannedMins)})`
+                    : formatDuration(plannedMins)}
                 </div>
                 <div style={{ fontSize: 10, color: "var(--text-tertiary)" }}>
-                  {isDone ? `Planned: ${formatDuration(plannedMins)}` : "Planned target"}
+                  {isDone ? (isProvisional ? "Auto-recovered estimate" : `Planned: ${formatDuration(plannedMins)}`) : isPartial ? "Partial completion" : isMissed ? "Missed target" : isSkipped ? "Skipped session" : "Planned target"}
                 </div>
               </div>
 
@@ -321,7 +360,26 @@ export default function StudyFlowTable({
                   </>
                 )}
 
-                {isDone && (
+                {(isDone || isPartial) && isProvisional && (
+                  <button
+                    type="button"
+                    onClick={() => onEditReview?.(block)}
+                    style={{
+                      background: "rgba(217, 119, 6, 0.12)",
+                      color: "var(--warning, #d97706)",
+                      border: "1px solid rgba(217, 119, 6, 0.3)",
+                      borderRadius: 6,
+                      padding: "5px 10px",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      cursor: "pointer"
+                    }}
+                    title="Confirm or adjust actual study time for this recovered session"
+                  >
+                    Confirm Duration
+                  </button>
+                )}
+                {(isDone || isPartial) && !isProvisional && (
                   <button
                     type="button"
                     onClick={() => onEditReview?.(block)}
@@ -340,7 +398,7 @@ export default function StudyFlowTable({
                   </button>
                 )}
 
-                {isSkipped && (
+                {(isSkipped || isMissed) && (
                   <button
                     type="button"
                     onClick={() => onCarryForward?.(block)}

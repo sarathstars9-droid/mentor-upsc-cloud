@@ -1,18 +1,12 @@
 /* src/styles/mentorosPremium.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-/* Global Premium styling overrides and utilities */
-body {
-  background-color: #0E1117 !important;
-  background: radial-gradient(circle at 10% 10%, #161B26 0%, #0E1117 80%) !important;
-  color: #F5F7FB !important;
-  font-family: "Inter", "Manrope", "Aptos", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-}
-
 /* Premium Layout Container */
 .premium-container {
+  background-color: #0E1117;
+  background: radial-gradient(circle at 10% 10%, #161B26 0%, #0E1117 80%);
+  color: #F5F7FB;
+  font-family: "Inter", "Manrope", "Aptos", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   max-width: 1160px;
   margin: 0 auto;
   padding: 40px 32px;

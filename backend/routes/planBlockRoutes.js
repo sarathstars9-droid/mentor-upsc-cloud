@@ -19,6 +19,7 @@ import {
   pauseBlock,
   resumeBlock,
   completeBlock,
+  confirmRecoveredBlock,
   attachBlockProof,
   getBlocksForDay,
   getBlockState,
@@ -438,6 +439,32 @@ router.post(['/complete', '/finish'], async (req, res) => {
                  : err.code === 'NOT_STOPPABLE' ? 409
                  : err.code === 'INVALID_END_TIME' ? 400
                  : err.code === 'INVALID_COMPLETION' ? 400
+                 : 500;
+    return res.status(status).json({ ok: false, message: err.message, code: err.code });
+  }
+});
+
+// ── POST /api/plan/blocks/confirm-recovery ──────────────────────────────────
+router.post(['/confirm-recovery', '/:blockId/confirm-recovery'], async (req, res) => {
+  const finalBid = req.params?.blockId || req.body?.blockId || req.body?.BlockId;
+  if (!finalBid) return res.status(400).json({ ok: false, message: 'blockId is required' });
+
+  try {
+    const uid = userId(req);
+    const { dayKey, actualMinutes, actualEndTime, endedAt, studyReview, study_review, quality, completionPercent, completion_percent } = req.body || {};
+    const block = await confirmRecoveredBlock(uid, finalBid, dayKey || null, {
+      actualMinutes,
+      actualEndTime: actualEndTime || endedAt,
+      studyReview: studyReview || study_review,
+      quality,
+      completionPercent: completionPercent !== undefined ? completionPercent : completion_percent
+    });
+
+    return res.json({ ok: true, block });
+  } catch (err) {
+    console.error('[POST /api/plan/blocks/confirm-recovery]', err.message);
+    const status = err.code === 'NOT_FOUND' ? 404
+                 : err.code === 'INVALID_CONFIRMATION_TARGET' ? 400
                  : 500;
     return res.status(status).json({ ok: false, message: err.message, code: err.code });
   }

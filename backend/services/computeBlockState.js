@@ -17,7 +17,13 @@ export function computeBlockState(block) {
   let actualSeconds = 0;
   let pauseSeconds  = totalPauseSec;
 
-  if (startMs) {
+  if (['completed', 'partial', 'missed', 'skipped', 'carried_forward', 'done'].includes(block.status)) {
+    if (block.actual_minutes !== undefined && block.actual_minutes !== null) {
+      actualSeconds = Number(block.actual_minutes) * 60;
+    } else if (startMs && endMs) {
+      actualSeconds = Math.max(0, Math.floor((endMs - startMs) / 1000) - totalPauseSec);
+    }
+  } else if (startMs) {
     switch (block.status) {
       case 'active': {
         const staleRes = detectStaleSession(block, new Date().toISOString());
@@ -26,7 +32,6 @@ export function computeBlockState(block) {
         } else {
           actualSeconds = Math.max(0, Math.floor((now - startMs) / 1000) - totalPauseSec);
         }
-        pauseSeconds  = totalPauseSec;
         break;
       }
 
@@ -42,20 +47,15 @@ export function computeBlockState(block) {
       }
 
       default:
-        // completed / partial / missed / skipped
-        // actual_minutes in the database is the authoritative source for terminal durations.
-        // We do NOT reconstruct from (ended_at - started_at) if a valid DB value exists,
-        // to support stale-session recovery without backdating ended_at.
         if (block.actual_minutes !== undefined && block.actual_minutes !== null) {
           actualSeconds = Number(block.actual_minutes) * 60;
-          pauseSeconds  = totalPauseSec;
-        } else if (endMs) {
-          // Fallback only if actual_minutes is totally missing (legacy rows)
-          actualSeconds = Math.max(0, Math.floor((endMs - startMs) / 1000) - totalPauseSec);
-          pauseSeconds  = totalPauseSec;
         }
     }
   }
+
+  const isRecovered = block.completion_reason === 'stale_session_recovered';
+  const isUserConfirmed = Boolean(block.completed_at) && block.completion_source === 'user_confirmed';
+  const isProvisional = isRecovered && !isUserConfirmed;
 
   return {
     // Raw DB columns (preserved for consumers that need them)
@@ -74,7 +74,17 @@ export function computeBlockState(block) {
     pauseMinutes:   Math.floor(pauseSeconds / 60),
     isPaused:       block.status === 'paused',
     isActive:       block.status === 'active',
-    isCompleted:    ['completed', 'partial', 'missed', 'skipped'].includes(block.status),
+    isCompleted:    ['completed', 'done'].includes(block.status),
+    isPartial:      block.status === 'partial',
+    isMissed:       block.status === 'missed',
+    isSkipped:      ['skipped', 'stopped'].includes(block.status),
+    isCarriedForward: block.status === 'carried_forward',
+    isTerminal:     ['completed', 'partial', 'missed', 'skipped', 'carried_forward'].includes(block.status),
+    isProvisional,
+    is_provisional: isProvisional,
+    isUserConfirmed,
+    confirmationProvenance: block.completion_source === 'user_confirmed' ? 'user_confirmed' : null,
+    confirmedAt: isUserConfirmed ? block.completed_at : null
   };
 }
 
@@ -129,7 +139,20 @@ export function toFrontendBlock(dbBlock, gasBlock = {}) {
     IsPaused:           computed.isPaused,
     IsActive:           computed.isActive,
     IsCompleted:        computed.isCompleted,
+    IsPartial:          computed.isPartial,
+    IsMissed:           computed.isMissed,
+    IsSkipped:          computed.isSkipped,
+    IsCarriedForward:   computed.isCarriedForward,
+    IsTerminal:         computed.isTerminal,
     Reason:             computed.completion_reason || '',
+    completion_reason:  computed.completion_reason || '',
+    isProvisional:      computed.isProvisional,
+    is_provisional:     computed.is_provisional,
+    IsProvisional:      computed.isProvisional,
+    isUserConfirmed:    computed.isUserConfirmed,
+    IsUserConfirmed:    computed.isUserConfirmed,
+    confirmationProvenance: computed.confirmationProvenance,
+    confirmedAt:        computed.confirmedAt,
 
     ProofUrl:                computed.proofUrl,
     ProofType:               computed.proofType,
